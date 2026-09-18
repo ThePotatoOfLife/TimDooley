@@ -1,5 +1,5 @@
 {
-  "version": "3.7.0",
+  "version": "3.8.0",
   "updated": "2026-09-18",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
@@ -1853,8 +1853,14 @@
       "title": "House Architecture",
       "dwelling_id": "research-lab",
       "purpose": "Own active architecture research around Rooms, ownership, topology, interfaces, projections and migration before constitutional promotion.",
-      "primary_file_count": 17,
+      "primary_file_count": 18,
       "featured_holdings": [
+        {
+          "path": "data/house/foundation-landscape-synthesis.json",
+          "id": "foundation-landscape-synthesis",
+          "kind": "cross-domain Foundation trajectory landscape",
+          "basis": "foundation-landscape-wave-014"
+        },
         {
           "path": "data/house/foundation-placement-wave-003.json",
           "id": "foundation-placement-wave-003",
@@ -6214,6 +6220,11 @@
       "path": "data/house/foundation-placement-wave-003.json",
       "primary_owner_room_id": "house-architecture",
       "basis": "foundation-placement-wave-013"
+    },
+    {
+      "path": "data/house/foundation-landscape-synthesis.json",
+      "primary_owner_room_id": "house-architecture",
+      "basis": "foundation-landscape-wave-014"
     }
   ],
   "curated_unowned_paths": [
@@ -6352,8 +6363,8 @@
     "knowledge/story/story-registry.json"
   ],
   "summary": {
-    "scoped_files": 879,
-    "primary_owned_files": 746,
+    "scoped_files": 880,
+    "primary_owned_files": 747,
     "curated_or_navigation_files": 133,
     "rooms": 38,
     "rooms_with_zero_primary_files": []
