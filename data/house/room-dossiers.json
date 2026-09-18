@@ -1,8 +1,8 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-18",
   "authority": "house-room-dossiers",
-  "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership.",
+  "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
   "dossiers": [
     {
       "room_id": "canon-identities",
@@ -161,6 +161,44 @@
           "theology-god-language",
           "symbolic-architecture",
           "great-book-literature"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:canon-identities",
+        "scope_type": "room",
+        "scope_id": "canon-identities",
+        "parent_center": "potato-of-life",
+        "function": "Defines who and what the project says its central roles are before theology, comparison or biography elaborates them.",
+        "owner": "canon-identities",
+        "entry_routes": [
+          "developmental-genealogy",
+          "theology-god-language"
+        ],
+        "exit_routes": [
+          "theology-god-language",
+          "symbolic-architecture",
+          "great-book-literature"
+        ],
+        "center_nodes": [
+          "potato-of-life",
+          "father",
+          "son",
+          "spirit",
+          "door",
+          "axis"
+        ],
+        "handoff_targets": [
+          "theology-god-language",
+          "symbolic-architecture",
+          "great-book-literature"
+        ],
+        "active_lenses": [
+          "embodiment-spirit",
+          "memory-history"
+        ],
+        "shared_tests": [
+          "door-test",
+          "fruit-test"
         ]
       }
     },
@@ -326,6 +364,46 @@
           "practice-ethics",
           "symbolic-architecture"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:theology-god-language",
+        "scope_type": "room",
+        "scope_id": "theology-god-language",
+        "parent_center": "potato-of-life",
+        "function": "Explains the theological meaning of the nucleus and tests whether God/Father/Son/Spirit language remains internally coherent and externally bounded.",
+        "owner": "theology-god-language",
+        "entry_routes": [
+          "canon-identities",
+          "bible-christianity",
+          "other-traditions"
+        ],
+        "exit_routes": [
+          "practice-ethics",
+          "symbolic-architecture"
+        ],
+        "center_nodes": [
+          "father",
+          "son",
+          "spirit",
+          "house",
+          "door",
+          "garden",
+          "fruit"
+        ],
+        "handoff_targets": [
+          "practice-ethics",
+          "symbolic-architecture"
+        ],
+        "active_lenses": [
+          "polarity",
+          "embodiment-spirit",
+          "practice-path"
+        ],
+        "shared_tests": [
+          "door-test",
+          "fruit-test",
+          "garden-test"
+        ]
       }
     },
     {
@@ -348,8 +426,13 @@
       ],
       "epistemic_boundary": "Symbolic topology is not literal physical cosmology unless independently tested.",
       "knowledge_holdings": {
-        "primary_file_count": 22,
+        "primary_file_count": 23,
         "featured": [
+          {
+            "id": "shadow-integration-overlay",
+            "path": "knowledge/core/shadow-integration-overlay.json",
+            "kind": "cross-plane shadow/integration operator atlas"
+          },
           {
             "id": "tree-branching-pruning-atlas",
             "path": "knowledge/core/tree-branching-pruning-atlas.json",
@@ -369,11 +452,6 @@
             "id": "vertical-potato-mountain-plane-atlas",
             "path": "knowledge/core/vertical-potato-mountain-plane-atlas.json",
             "kind": "canonical vertical geometry and process field"
-          },
-          {
-            "id": "potato-path",
-            "path": "knowledge/practice/potato-path.json",
-            "kind": "practical transformation sequence"
           }
         ]
       },
@@ -514,6 +592,56 @@
           "practice-ethics",
           "systems-dynamics"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:symbolic-architecture",
+        "scope_type": "room",
+        "scope_id": "symbolic-architecture",
+        "parent_center": "potato-of-life",
+        "function": "Turns the center into a navigable grammar of fields, thresholds, organisms, terrains, regimes and routes.",
+        "owner": "symbolic-architecture",
+        "entry_routes": [
+          "canon-identities",
+          "math-geometry",
+          "comparative-mythology"
+        ],
+        "exit_routes": [
+          "house-architecture",
+          "practice-ethics",
+          "systems-dynamics"
+        ],
+        "center_nodes": [
+          "source-field",
+          "manifestation-field",
+          "door",
+          "axis",
+          "plane",
+          "cross",
+          "seed",
+          "root",
+          "tree",
+          "mountain",
+          "garden",
+          "swamp",
+          "forge",
+          "spiral"
+        ],
+        "handoff_targets": [
+          "house-architecture",
+          "practice-ethics",
+          "systems-dynamics"
+        ],
+        "active_lenses": [
+          "motion",
+          "polarity",
+          "memory-history"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
+        ]
       }
     },
     {
@@ -536,8 +664,23 @@
       ],
       "epistemic_boundary": "Practice principles do not override medical, legal or domain-specific professional standards.",
       "knowledge_holdings": {
-        "primary_file_count": 25,
+        "primary_file_count": 28,
         "featured": [
+          {
+            "id": "knowledge-fork-discernment-atlas",
+            "path": "knowledge/core/knowledge-fork-discernment-atlas.json",
+            "kind": "Knowledge-to-discernment routing atlas"
+          },
+          {
+            "id": "repair-forge-protocol",
+            "path": "knowledge/core/repair-forge-protocol.json",
+            "kind": "Repair/Forge accountability and reintegration protocol"
+          },
+          {
+            "id": "garden-regime-mechanics",
+            "path": "knowledge/core/garden-regime-mechanics.json",
+            "kind": "Garden generative-regime mechanics"
+          },
           {
             "id": "fruit-consequence-evaluation-atlas",
             "path": "knowledge/core/fruit-consequence-evaluation-atlas.json",
@@ -546,21 +689,6 @@
           {
             "id": "dormancy-hidden-years-and-practical-theology",
             "path": "knowledge/core/dormancy-hidden-years-and-practical-theology.json",
-            "kind": "room holding"
-          },
-          {
-            "id": "garden-mud-orientation",
-            "path": "knowledge/core/garden-mud-orientation.json",
-            "kind": "room holding"
-          },
-          {
-            "id": "gaze-ethic-observer-to-stewardship",
-            "path": "knowledge/core/gaze-ethic-observer-to-stewardship.json",
-            "kind": "room holding"
-          },
-          {
-            "id": "gift-preparation-receptivity-sorting",
-            "path": "knowledge/core/gift-preparation-receptivity-sorting.json",
             "kind": "room holding"
           }
         ]
@@ -641,6 +769,46 @@
           "works",
           "culture-information",
           "research-lab"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:practice-ethics",
+        "scope_type": "room",
+        "scope_id": "practice-ethics",
+        "parent_center": "potato-of-life",
+        "function": "Converts the project from description into conduct, cultivation, repair, responsibility and repeatable practice.",
+        "owner": "practice-ethics",
+        "entry_routes": [
+          "theology-god-language",
+          "symbolic-architecture",
+          "subculture-group-formation"
+        ],
+        "exit_routes": [
+          "works",
+          "culture-information",
+          "research-lab"
+        ],
+        "center_nodes": [
+          "door",
+          "garden",
+          "fruit",
+          "forge",
+          "spiral"
+        ],
+        "handoff_targets": [
+          "works",
+          "culture-information",
+          "research-lab"
+        ],
+        "active_lenses": [
+          "practice-path",
+          "social-formation"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
         ]
       }
     },
@@ -778,6 +946,40 @@
           "model-testing",
           "research-programmes"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:provenance-evidence",
+        "scope_type": "room",
+        "scope_id": "provenance-evidence",
+        "parent_center": "potato-of-life",
+        "function": "Keeps every synthesis traceable to sources, source type, lineage and evidential limits.",
+        "owner": "provenance-evidence",
+        "entry_routes": [
+          "witness-attestation",
+          "chronology-events"
+        ],
+        "exit_routes": [
+          "memory-recovery",
+          "model-testing",
+          "research-programmes"
+        ],
+        "center_nodes": [
+          "root",
+          "eye",
+          "tree-of-knowledge"
+        ],
+        "handoff_targets": [
+          "memory-recovery",
+          "model-testing",
+          "research-programmes"
+        ],
+        "active_lenses": [
+          "memory-history"
+        ],
+        "shared_tests": [
+          "fruit-test",
+          "door-test"
+        ]
       }
     },
     {
@@ -884,6 +1086,39 @@
         "hands_to": [
           "developmental-genealogy",
           "canon-identities"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:memory-recovery",
+        "scope_type": "room",
+        "scope_id": "memory-recovery",
+        "parent_center": "potato-of-life",
+        "function": "Recovers buried project material and turns forgotten residue into contextualized memory rather than mythology-by-reconstruction.",
+        "owner": "memory-recovery",
+        "entry_routes": [
+          "provenance-evidence",
+          "witness-attestation"
+        ],
+        "exit_routes": [
+          "developmental-genealogy",
+          "canon-identities"
+        ],
+        "center_nodes": [
+          "root",
+          "shadow",
+          "soil",
+          "seed"
+        ],
+        "handoff_targets": [
+          "developmental-genealogy",
+          "canon-identities"
+        ],
+        "active_lenses": [
+          "memory-history"
+        ],
+        "shared_tests": [
+          "spiral-test",
+          "door-test"
         ]
       }
     },
@@ -1034,6 +1269,37 @@
           "provenance-evidence",
           "developmental-genealogy"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:witness-attestation",
+        "scope_type": "room",
+        "scope_id": "witness-attestation",
+        "parent_center": "potato-of-life",
+        "function": "Pins claims to what was actually said, shown or published and when.",
+        "owner": "witness-attestation",
+        "entry_routes": [
+          "chronology-events",
+          "internet-platforms"
+        ],
+        "exit_routes": [
+          "provenance-evidence",
+          "developmental-genealogy"
+        ],
+        "center_nodes": [
+          "eye",
+          "root",
+          "tree-of-knowledge"
+        ],
+        "handoff_targets": [
+          "provenance-evidence",
+          "developmental-genealogy"
+        ],
+        "active_lenses": [
+          "memory-history"
+        ],
+        "shared_tests": [
+          "fruit-test"
+        ]
       }
     },
     {
@@ -1159,6 +1425,38 @@
         "hands_to": [
           "developmental-genealogy",
           "prediction-revelation-time"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:chronology-events",
+        "scope_type": "room",
+        "scope_id": "chronology-events",
+        "parent_center": "potato-of-life",
+        "function": "Provides occurrence order and date precision so change through time is not flattened into final canon.",
+        "owner": "chronology-events",
+        "entry_routes": [
+          "witness-attestation",
+          "geography-countries"
+        ],
+        "exit_routes": [
+          "developmental-genealogy",
+          "prediction-revelation-time"
+        ],
+        "center_nodes": [
+          "root",
+          "spiral",
+          "seed"
+        ],
+        "handoff_targets": [
+          "developmental-genealogy",
+          "prediction-revelation-time"
+        ],
+        "active_lenses": [
+          "memory-history",
+          "motion"
+        ],
+        "shared_tests": [
+          "spiral-test"
         ]
       }
     },
@@ -1313,6 +1611,40 @@
           "canon-identities",
           "great-book-literature"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:developmental-genealogy",
+        "scope_type": "room",
+        "scope_id": "developmental-genealogy",
+        "parent_center": "potato-of-life",
+        "function": "Shows how meanings and identities actually developed rather than backdating mature structures.",
+        "owner": "developmental-genealogy",
+        "entry_routes": [
+          "chronology-events",
+          "memory-recovery"
+        ],
+        "exit_routes": [
+          "canon-identities",
+          "great-book-literature"
+        ],
+        "center_nodes": [
+          "root",
+          "spiral",
+          "tree",
+          "seed"
+        ],
+        "handoff_targets": [
+          "canon-identities",
+          "great-book-literature"
+        ],
+        "active_lenses": [
+          "memory-history",
+          "motion"
+        ],
+        "shared_tests": [
+          "spiral-test",
+          "door-test"
+        ]
       }
     },
     {
@@ -1438,6 +1770,39 @@
         "hands_to": [
           "open-questions",
           "model-testing"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:prediction-revelation-time",
+        "scope_type": "room",
+        "scope_id": "prediction-revelation-time",
+        "parent_center": "potato-of-life",
+        "function": "Separates prior wording, event timing, claimed fulfillment and retrospective interpretation.",
+        "owner": "prediction-revelation-time",
+        "entry_routes": [
+          "chronology-events",
+          "witness-attestation"
+        ],
+        "exit_routes": [
+          "open-questions",
+          "model-testing"
+        ],
+        "center_nodes": [
+          "eye",
+          "spiral",
+          "tree-of-knowledge",
+          "fruit"
+        ],
+        "handoff_targets": [
+          "open-questions",
+          "model-testing"
+        ],
+        "active_lenses": [
+          "memory-history"
+        ],
+        "shared_tests": [
+          "fruit-test",
+          "spiral-test"
         ]
       }
     },
@@ -1577,6 +1942,45 @@
           "theology-god-language",
           "comparative-mythology"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:bible-christianity",
+        "scope_type": "room",
+        "scope_id": "bible-christianity",
+        "parent_center": "potato-of-life",
+        "function": "Supplies historically and textually grounded biblical/Christian context before project comparison.",
+        "owner": "bible-christianity",
+        "entry_routes": [
+          "provenance-evidence"
+        ],
+        "exit_routes": [
+          "theology-god-language",
+          "comparative-mythology"
+        ],
+        "center_nodes": [
+          "father",
+          "son",
+          "spirit",
+          "door",
+          "seed",
+          "tree",
+          "garden",
+          "fruit",
+          "mountain"
+        ],
+        "handoff_targets": [
+          "theology-god-language",
+          "comparative-mythology"
+        ],
+        "active_lenses": [
+          "practice-path",
+          "polarity",
+          "memory-history"
+        ],
+        "shared_tests": [
+          "fruit-test",
+          "garden-test"
+        ]
       }
     },
     {
@@ -1599,8 +2003,13 @@
       ],
       "epistemic_boundary": "Similarity is not genealogy or proof of borrowing.",
       "knowledge_holdings": {
-        "primary_file_count": 4,
+        "primary_file_count": 8,
         "featured": [
+          {
+            "id": "selected-cosmography-structural-exemplars",
+            "path": "knowledge/traditions/selected-cosmography-structural-exemplars.json",
+            "kind": "deep selected cosmography structural exemplar atlas"
+          },
           {
             "id": "biblical-overlap-additions",
             "path": "knowledge/traditions/biblical-overlap-additions.json",
@@ -1701,6 +2110,41 @@
           "symbolic-architecture",
           "religious-symbolic-branch-atlas"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:comparative-mythology",
+        "scope_type": "room",
+        "scope_id": "comparative-mythology",
+        "parent_center": "potato-of-life",
+        "function": "Provides structured motif comparison while preserving the independence of source traditions.",
+        "owner": "comparative-mythology",
+        "entry_routes": [
+          "other-traditions",
+          "provenance-evidence"
+        ],
+        "exit_routes": [
+          "symbolic-architecture",
+          "religious-symbolic-branch-atlas"
+        ],
+        "center_nodes": [
+          "axis",
+          "tree",
+          "mountain",
+          "door",
+          "seed",
+          "root"
+        ],
+        "handoff_targets": [
+          "symbolic-architecture",
+          "religious-symbolic-branch-atlas"
+        ],
+        "active_lenses": [
+          "motion",
+          "polarity"
+        ],
+        "shared_tests": [
+          "door-test"
+        ]
       }
     },
     {
@@ -1723,7 +2167,7 @@
       ],
       "epistemic_boundary": "Historical geometry and esoteric symbolism must stay separate from claims of physical mechanism.",
       "knowledge_holdings": {
-        "primary_file_count": 3,
+        "primary_file_count": 4,
         "featured": [
           {
             "id": "qliphoth-angels-ladder",
@@ -1739,6 +2183,11 @@
             "id": "vesica-esoteric-source-ledger",
             "path": "knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json",
             "kind": "source ledger for Vesica/Mandorla/Sun/Moon research"
+          },
+          {
+            "id": "providence-pyramid-pillars-atlas",
+            "path": "knowledge/traditions/providence-pyramid-pillars-atlas.json",
+            "kind": "historical-symbolic comparative atlas"
           }
         ]
       },
@@ -1813,6 +2262,41 @@
           "symbolic-architecture",
           "comparative-mythology"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:esoteric-sacred-geometry",
+        "scope_type": "room",
+        "scope_id": "esoteric-sacred-geometry",
+        "parent_center": "potato-of-life",
+        "function": "Handles historically sourced symbolic geometry and later esoteric reception without letting symbolism substitute for provenance.",
+        "owner": "esoteric-sacred-geometry",
+        "entry_routes": [
+          "math-geometry",
+          "other-traditions"
+        ],
+        "exit_routes": [
+          "symbolic-architecture",
+          "comparative-mythology"
+        ],
+        "center_nodes": [
+          "door",
+          "eye",
+          "axis",
+          "mountain",
+          "twin-pillars",
+          "plane"
+        ],
+        "handoff_targets": [
+          "symbolic-architecture",
+          "comparative-mythology"
+        ],
+        "active_lenses": [
+          "polarity",
+          "motion"
+        ],
+        "shared_tests": [
+          "door-test"
+        ]
       }
     },
     {
@@ -1835,7 +2319,7 @@
       ],
       "epistemic_boundary": "Each tradition is described on its own terms before cross-project synthesis.",
       "knowledge_holdings": {
-        "primary_file_count": 17,
+        "primary_file_count": 18,
         "featured": [
           {
             "id": "comparative-mythology-map",
@@ -1942,6 +2426,42 @@
         "hands_to": [
           "comparative-mythology",
           "theology-god-language"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:other-traditions",
+        "scope_type": "room",
+        "scope_id": "other-traditions",
+        "parent_center": "potato-of-life",
+        "function": "Keeps Buddhism, Daoism and other traditions on their own terms before they become project mirrors.",
+        "owner": "other-traditions",
+        "entry_routes": [
+          "provenance-evidence"
+        ],
+        "exit_routes": [
+          "comparative-mythology",
+          "theology-god-language"
+        ],
+        "center_nodes": [
+          "door",
+          "axis",
+          "spiral",
+          "garden",
+          "shadow"
+        ],
+        "handoff_targets": [
+          "comparative-mythology",
+          "theology-god-language"
+        ],
+        "active_lenses": [
+          "motion",
+          "polarity",
+          "practice-path",
+          "memory-history"
+        ],
+        "shared_tests": [
+          "door-test",
+          "garden-test"
         ]
       }
     },
@@ -2070,6 +2590,39 @@
           "systems-dynamics",
           "model-testing"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:math-geometry",
+        "scope_type": "room",
+        "scope_id": "math-geometry",
+        "parent_center": "potato-of-life",
+        "function": "Makes exact what can be exact: geometry, topology, projection, recurrence and mathematical constraints.",
+        "owner": "math-geometry",
+        "entry_routes": [
+          "symbolic-architecture"
+        ],
+        "exit_routes": [
+          "systems-dynamics",
+          "model-testing"
+        ],
+        "center_nodes": [
+          "axis",
+          "plane",
+          "cross",
+          "door",
+          "spiral"
+        ],
+        "handoff_targets": [
+          "systems-dynamics",
+          "model-testing"
+        ],
+        "active_lenses": [
+          "motion"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test"
+        ]
       }
     },
     {
@@ -2181,6 +2734,37 @@
         "hands_to": [
           "symbolic-architecture",
           "open-questions"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:physics-cosmology",
+        "scope_type": "room",
+        "scope_id": "physics-cosmology",
+        "parent_center": "potato-of-life",
+        "function": "Keeps physical/cosmological claims distinct from symbolic cosmology and supplies empirical constraints where relevant.",
+        "owner": "physics-cosmology",
+        "entry_routes": [
+          "model-testing"
+        ],
+        "exit_routes": [
+          "symbolic-architecture",
+          "open-questions"
+        ],
+        "center_nodes": [
+          "manifestation-field",
+          "plane",
+          "axis"
+        ],
+        "handoff_targets": [
+          "symbolic-architecture",
+          "open-questions"
+        ],
+        "active_lenses": [
+          "embodiment-spirit",
+          "polarity"
+        ],
+        "shared_tests": [
+          "fruit-test"
         ]
       }
     },
@@ -2335,6 +2919,43 @@
           "model-testing",
           "world-systems"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:systems-dynamics",
+        "scope_type": "room",
+        "scope_id": "systems-dynamics",
+        "parent_center": "potato-of-life",
+        "function": "Formalizes feedback, capture, resilience, flow and transformation across biological, cultural and institutional systems.",
+        "owner": "systems-dynamics",
+        "entry_routes": [
+          "math-geometry",
+          "culture-information"
+        ],
+        "exit_routes": [
+          "model-testing",
+          "world-systems"
+        ],
+        "center_nodes": [
+          "spiral",
+          "garden",
+          "swamp",
+          "shell-cube",
+          "forge",
+          "fruit"
+        ],
+        "handoff_targets": [
+          "model-testing",
+          "world-systems"
+        ],
+        "active_lenses": [
+          "motion",
+          "social-formation"
+        ],
+        "shared_tests": [
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
+        ]
       }
     },
     {
@@ -2470,6 +3091,42 @@
           "science-formal-models",
           "research-programmes"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:model-testing",
+        "scope_type": "room",
+        "scope_id": "model-testing",
+        "parent_center": "potato-of-life",
+        "function": "Decides what a candidate would have to predict, survive or fail before promotion.",
+        "owner": "model-testing",
+        "entry_routes": [
+          "experiments-formalization",
+          "provenance-evidence"
+        ],
+        "exit_routes": [
+          "science-formal-models",
+          "research-programmes"
+        ],
+        "center_nodes": [
+          "eye",
+          "door",
+          "forge",
+          "fruit"
+        ],
+        "handoff_targets": [
+          "science-formal-models",
+          "research-programmes"
+        ],
+        "active_lenses": [
+          "practice-path",
+          "memory-history"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
+        ]
       }
     },
     {
@@ -2582,6 +3239,42 @@
         "hands_to": [
           "symbolic-body-comparison",
           "practice-ethics"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:potato-biology",
+        "scope_type": "room",
+        "scope_id": "potato-biology",
+        "parent_center": "potato-of-life",
+        "function": "Provides the literal organism that grounds the project's biological metaphors and prevents symbolic drift.",
+        "owner": "potato-biology",
+        "entry_routes": [
+          "model-testing"
+        ],
+        "exit_routes": [
+          "symbolic-body-comparison",
+          "practice-ethics"
+        ],
+        "center_nodes": [
+          "potato",
+          "eye",
+          "seed",
+          "root",
+          "fruit"
+        ],
+        "handoff_targets": [
+          "symbolic-body-comparison",
+          "practice-ethics"
+        ],
+        "active_lenses": [
+          "embodiment-spirit",
+          "motion"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
         ]
       }
     },
@@ -2707,6 +3400,36 @@
           "symbolic-body-comparison",
           "whole-body"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:neurobiology",
+        "scope_type": "room",
+        "scope_id": "neurobiology",
+        "parent_center": "potato-of-life",
+        "function": "Owns evidence-graded brain anatomy and physiology used by body comparisons.",
+        "owner": "neurobiology",
+        "entry_routes": [
+          "model-testing"
+        ],
+        "exit_routes": [
+          "symbolic-body-comparison",
+          "whole-body"
+        ],
+        "center_nodes": [
+          "eye",
+          "spirit",
+          "axis"
+        ],
+        "handoff_targets": [
+          "symbolic-body-comparison",
+          "whole-body"
+        ],
+        "active_lenses": [
+          "embodiment-spirit"
+        ],
+        "shared_tests": [
+          "fruit-test"
+        ]
       }
     },
     {
@@ -2826,6 +3549,37 @@
         "hands_to": [
           "symbolic-body-comparison",
           "practice-ethics"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:whole-body",
+        "scope_type": "room",
+        "scope_id": "whole-body",
+        "parent_center": "potato-of-life",
+        "function": "Shows embodiment as integrated multi-system physiology rather than a brain-only model.",
+        "owner": "whole-body",
+        "entry_routes": [
+          "neurobiology"
+        ],
+        "exit_routes": [
+          "symbolic-body-comparison",
+          "practice-ethics"
+        ],
+        "center_nodes": [
+          "spirit",
+          "axis",
+          "root"
+        ],
+        "handoff_targets": [
+          "symbolic-body-comparison",
+          "practice-ethics"
+        ],
+        "active_lenses": [
+          "embodiment-spirit"
+        ],
+        "shared_tests": [
+          "fruit-test",
+          "garden-test"
         ]
       }
     },
@@ -2961,6 +3715,42 @@
         "hands_to": [
           "theology-god-language",
           "symbolic-architecture"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:symbolic-body-comparison",
+        "scope_type": "room",
+        "scope_id": "symbolic-body-comparison",
+        "parent_center": "potato-of-life",
+        "function": "Provides an explicit firewalled crosswalk between body structures and project symbols.",
+        "owner": "symbolic-body-comparison",
+        "entry_routes": [
+          "potato-biology",
+          "neurobiology",
+          "whole-body"
+        ],
+        "exit_routes": [
+          "theology-god-language",
+          "symbolic-architecture"
+        ],
+        "center_nodes": [
+          "eye",
+          "spirit",
+          "axis",
+          "door",
+          "house"
+        ],
+        "handoff_targets": [
+          "theology-god-language",
+          "symbolic-architecture"
+        ],
+        "active_lenses": [
+          "embodiment-spirit",
+          "polarity"
+        ],
+        "shared_tests": [
+          "door-test",
+          "fruit-test"
         ]
       }
     },
@@ -3104,6 +3894,41 @@
         "hands_to": [
           "research-programmes",
           "works"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:politics-governance",
+        "scope_type": "room",
+        "scope_id": "politics-governance",
+        "parent_center": "potato-of-life",
+        "function": "Tests how public power, institutions and governance arrangements affect agency, correction and collective capacity.",
+        "owner": "politics-governance",
+        "entry_routes": [
+          "history",
+          "law-justice"
+        ],
+        "exit_routes": [
+          "research-programmes",
+          "works"
+        ],
+        "center_nodes": [
+          "house",
+          "garden",
+          "shell-cube",
+          "swamp",
+          "fruit"
+        ],
+        "handoff_targets": [
+          "research-programmes",
+          "works"
+        ],
+        "active_lenses": [
+          "social-formation",
+          "memory-history"
+        ],
+        "shared_tests": [
+          "fruit-test",
+          "garden-test"
         ]
       }
     },
@@ -3249,6 +4074,41 @@
           "culture-information",
           "world-systems"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:law-justice",
+        "scope_type": "room",
+        "scope_id": "law-justice",
+        "parent_center": "potato-of-life",
+        "function": "Supplies procedural boundaries, rights, accountability and legitimate transition rules.",
+        "owner": "law-justice",
+        "entry_routes": [
+          "provenance-evidence",
+          "politics-governance"
+        ],
+        "exit_routes": [
+          "culture-information",
+          "world-systems"
+        ],
+        "center_nodes": [
+          "door",
+          "twin-pillars",
+          "house",
+          "garden",
+          "shell-cube"
+        ],
+        "handoff_targets": [
+          "culture-information",
+          "world-systems"
+        ],
+        "active_lenses": [
+          "social-formation",
+          "practice-path"
+        ],
+        "shared_tests": [
+          "door-test",
+          "garden-test"
+        ]
       }
     },
     {
@@ -3387,6 +4247,39 @@
         "hands_to": [
           "systems-dynamics",
           "research-programmes"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:economy-finance",
+        "scope_type": "room",
+        "scope_id": "economy-finance",
+        "parent_center": "potato-of-life",
+        "function": "Tracks whether economic flows produce durable capacity, dependency, extraction or resilience.",
+        "owner": "economy-finance",
+        "entry_routes": [
+          "provenance-evidence",
+          "infrastructure-capability"
+        ],
+        "exit_routes": [
+          "systems-dynamics",
+          "research-programmes"
+        ],
+        "center_nodes": [
+          "garden",
+          "swamp",
+          "fruit",
+          "root"
+        ],
+        "handoff_targets": [
+          "systems-dynamics",
+          "research-programmes"
+        ],
+        "active_lenses": [
+          "social-formation"
+        ],
+        "shared_tests": [
+          "fruit-test",
+          "garden-test"
         ]
       }
     },
@@ -3556,6 +4449,39 @@
           "research-programmes",
           "world-systems"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:infrastructure-capability",
+        "scope_type": "room",
+        "scope_id": "infrastructure-capability",
+        "parent_center": "potato-of-life",
+        "function": "Maps the material and digital capacity that lets world systems actually function and survive shocks.",
+        "owner": "infrastructure-capability",
+        "entry_routes": [
+          "economy-finance",
+          "geography-countries"
+        ],
+        "exit_routes": [
+          "research-programmes",
+          "world-systems"
+        ],
+        "center_nodes": [
+          "root",
+          "house",
+          "garden",
+          "fruit"
+        ],
+        "handoff_targets": [
+          "research-programmes",
+          "world-systems"
+        ],
+        "active_lenses": [
+          "social-formation"
+        ],
+        "shared_tests": [
+          "fruit-test",
+          "garden-test"
+        ]
       }
     },
     {
@@ -3694,6 +4620,38 @@
           "politics-governance",
           "infrastructure-capability"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:geography-countries",
+        "scope_type": "room",
+        "scope_id": "geography-countries",
+        "parent_center": "potato-of-life",
+        "function": "Anchors abstract programmes and histories in real territories, boundaries and country contexts.",
+        "owner": "geography-countries",
+        "entry_routes": [
+          "provenance-evidence"
+        ],
+        "exit_routes": [
+          "politics-governance",
+          "infrastructure-capability"
+        ],
+        "center_nodes": [
+          "plane",
+          "house",
+          "root",
+          "mountain"
+        ],
+        "handoff_targets": [
+          "politics-governance",
+          "infrastructure-capability"
+        ],
+        "active_lenses": [
+          "memory-history",
+          "polarity"
+        ],
+        "shared_tests": [
+          "door-test"
+        ]
       }
     },
     {
@@ -3803,6 +4761,40 @@
         "hands_to": [
           "subculture-group-formation",
           "witness-attestation"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:internet-platforms",
+        "scope_type": "room",
+        "scope_id": "internet-platforms",
+        "parent_center": "potato-of-life",
+        "function": "Explains how platform architecture changes visibility, persistence, incentives and social memory.",
+        "owner": "internet-platforms",
+        "entry_routes": [
+          "information-ecology"
+        ],
+        "exit_routes": [
+          "subculture-group-formation",
+          "witness-attestation"
+        ],
+        "center_nodes": [
+          "door",
+          "shadow",
+          "swamp",
+          "fruit"
+        ],
+        "handoff_targets": [
+          "subculture-group-formation",
+          "witness-attestation"
+        ],
+        "active_lenses": [
+          "social-formation",
+          "memory-history"
+        ],
+        "shared_tests": [
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
         ]
       }
     },
@@ -3944,6 +4936,42 @@
         "hands_to": [
           "practice-ethics",
           "law-justice"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:subculture-group-formation",
+        "scope_type": "room",
+        "scope_id": "subculture-group-formation",
+        "parent_center": "potato-of-life",
+        "function": "Analyzes how group identity becomes durable and when intensity becomes coercive capture rather than healthy culture.",
+        "owner": "subculture-group-formation",
+        "entry_routes": [
+          "internet-platforms",
+          "information-ecology"
+        ],
+        "exit_routes": [
+          "practice-ethics",
+          "law-justice"
+        ],
+        "center_nodes": [
+          "garden",
+          "swamp",
+          "tree-of-strife",
+          "shadow",
+          "shell-cube"
+        ],
+        "handoff_targets": [
+          "practice-ethics",
+          "law-justice"
+        ],
+        "active_lenses": [
+          "social-formation",
+          "practice-path"
+        ],
+        "shared_tests": [
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
         ]
       }
     },
@@ -4088,6 +5116,41 @@
           "subculture-group-formation",
           "memory-recovery"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:information-ecology",
+        "scope_type": "room",
+        "scope_id": "information-ecology",
+        "parent_center": "potato-of-life",
+        "function": "Tracks how attention, repetition, forgetting, correction and transmission shape collective memory.",
+        "owner": "information-ecology",
+        "entry_routes": [
+          "internet-platforms",
+          "provenance-evidence"
+        ],
+        "exit_routes": [
+          "subculture-group-formation",
+          "memory-recovery"
+        ],
+        "center_nodes": [
+          "root",
+          "shadow",
+          "swamp",
+          "tree-of-knowledge",
+          "spirit"
+        ],
+        "handoff_targets": [
+          "subculture-group-formation",
+          "memory-recovery"
+        ],
+        "active_lenses": [
+          "memory-history",
+          "social-formation"
+        ],
+        "shared_tests": [
+          "spiral-test",
+          "fruit-test"
+        ]
       }
     },
     {
@@ -4113,7 +5176,7 @@
         "primary_file_count": 181,
         "featured": [
           {
-            "id": "",
+            "id": "great-book/.keep",
             "path": "great-book/.keep",
             "kind": "room holding"
           },
@@ -4222,6 +5285,39 @@
           "works",
           "memory-recovery"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:great-book-literature",
+        "scope_type": "room",
+        "scope_id": "great-book-literature",
+        "parent_center": "potato-of-life",
+        "function": "Turns project material into authored long-form expression while preserving the distinction between art, memory and canon.",
+        "owner": "great-book-literature",
+        "entry_routes": [
+          "canon-identities",
+          "developmental-genealogy"
+        ],
+        "exit_routes": [
+          "works",
+          "memory-recovery"
+        ],
+        "center_nodes": [
+          "fruit",
+          "seed",
+          "tree",
+          "shadow"
+        ],
+        "handoff_targets": [
+          "works",
+          "memory-recovery"
+        ],
+        "active_lenses": [
+          "memory-history",
+          "practice-path"
+        ],
+        "shared_tests": [
+          "fruit-test"
+        ]
       }
     },
     {
@@ -4306,6 +5402,35 @@
         ],
         "hands_to": [
           "works"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:music-sound",
+        "scope_type": "room",
+        "scope_id": "music-sound",
+        "parent_center": "potato-of-life",
+        "function": "Carries project meaning through rhythm, voice, repetition and performance as creative Fruit.",
+        "owner": "music-sound",
+        "entry_routes": [
+          "canon-identities",
+          "practice-ethics"
+        ],
+        "exit_routes": [
+          "works"
+        ],
+        "center_nodes": [
+          "fruit",
+          "seed",
+          "spirit"
+        ],
+        "handoff_targets": [
+          "works"
+        ],
+        "active_lenses": [
+          "practice-path"
+        ],
+        "shared_tests": [
+          "fruit-test"
         ]
       }
     },
@@ -4400,6 +5525,38 @@
         "hands_to": [
           "works"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:visual-art",
+        "scope_type": "room",
+        "scope_id": "visual-art",
+        "parent_center": "potato-of-life",
+        "function": "Makes relational architecture visible through authored composition without turning depiction into proof.",
+        "owner": "visual-art",
+        "entry_routes": [
+          "symbolic-architecture",
+          "canon-identities"
+        ],
+        "exit_routes": [
+          "works"
+        ],
+        "center_nodes": [
+          "fruit",
+          "eye",
+          "door",
+          "tree",
+          "mountain"
+        ],
+        "handoff_targets": [
+          "works"
+        ],
+        "active_lenses": [
+          "polarity",
+          "practice-path"
+        ],
+        "shared_tests": [
+          "fruit-test"
+        ]
       }
     },
     {
@@ -4490,6 +5647,41 @@
         "hands_to": [
           "works",
           "experiments-formalization"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:games-simulations",
+        "scope_type": "room",
+        "scope_id": "games-simulations",
+        "parent_center": "potato-of-life",
+        "function": "Lets readers interact with project rules and consequences rather than only read about them.",
+        "owner": "games-simulations",
+        "entry_routes": [
+          "systems-dynamics",
+          "symbolic-architecture"
+        ],
+        "exit_routes": [
+          "works",
+          "experiments-formalization"
+        ],
+        "center_nodes": [
+          "fruit",
+          "door",
+          "spiral",
+          "garden"
+        ],
+        "handoff_targets": [
+          "works",
+          "experiments-formalization"
+        ],
+        "active_lenses": [
+          "motion",
+          "practice-path"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test"
         ]
       }
     },
@@ -4656,6 +5848,51 @@
           "navigation-manifest",
           "project-center"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:house-architecture",
+        "scope_type": "room",
+        "scope_id": "house-architecture",
+        "parent_center": "potato-of-life",
+        "function": "Owns unresolved architecture work before it is promoted into the constitutional House registries.",
+        "owner": "house-architecture",
+        "entry_routes": [
+          "symbolic-architecture",
+          "open-questions"
+        ],
+        "exit_routes": [
+          "navigation-manifest",
+          "project-center"
+        ],
+        "center_nodes": [
+          "potato-of-life",
+          "door",
+          "axis",
+          "plane",
+          "cross",
+          "house",
+          "tree",
+          "mountain",
+          "garden",
+          "swamp",
+          "forge"
+        ],
+        "handoff_targets": [
+          "navigation-manifest",
+          "project-center"
+        ],
+        "active_lenses": [
+          "motion",
+          "polarity",
+          "memory-history",
+          "social-formation"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
+        ]
       }
     },
     {
@@ -4804,6 +6041,45 @@
           "experiments-formalization",
           "research-programmes"
         ]
+      },
+      "local_center": {
+        "local_center_id": "room:open-questions",
+        "scope_type": "room",
+        "scope_id": "open-questions",
+        "parent_center": "potato-of-life",
+        "function": "Holds uncertainty explicitly so unresolved ideas do not leak into canon by repetition.",
+        "owner": "open-questions",
+        "entry_routes": [
+          "all-rooms"
+        ],
+        "exit_routes": [
+          "experiments-formalization",
+          "research-programmes"
+        ],
+        "center_nodes": [
+          "eye",
+          "door",
+          "forge",
+          "tree-of-knowledge"
+        ],
+        "handoff_targets": [
+          "experiments-formalization",
+          "research-programmes"
+        ],
+        "active_lenses": [
+          "motion",
+          "polarity",
+          "memory-history",
+          "social-formation",
+          "embodiment-spirit",
+          "practice-path"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
+        ]
       }
     },
     {
@@ -4949,6 +6225,45 @@
         "hands_to": [
           "model-testing",
           "house-architecture"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:experiments-formalization",
+        "scope_type": "room",
+        "scope_id": "experiments-formalization",
+        "parent_center": "potato-of-life",
+        "function": "Turns open questions into prototypes, explicit models and testable candidate structures.",
+        "owner": "experiments-formalization",
+        "entry_routes": [
+          "open-questions",
+          "math-geometry",
+          "systems-dynamics"
+        ],
+        "exit_routes": [
+          "model-testing",
+          "house-architecture"
+        ],
+        "center_nodes": [
+          "forge",
+          "door",
+          "spiral",
+          "fruit",
+          "eye"
+        ],
+        "handoff_targets": [
+          "model-testing",
+          "house-architecture"
+        ],
+        "active_lenses": [
+          "motion",
+          "embodiment-spirit",
+          "social-formation"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
         ]
       }
     },
@@ -5119,6 +6434,46 @@
         "hands_to": [
           "works",
           "project-center"
+        ]
+      },
+      "local_center": {
+        "local_center_id": "room:research-programmes",
+        "scope_type": "room",
+        "scope_id": "research-programmes",
+        "parent_center": "potato-of-life",
+        "function": "Coordinates multi-Room research into staged workstreams with sources, owners, promotion gates and outputs.",
+        "owner": "research-programmes",
+        "entry_routes": [
+          "open-questions",
+          "model-testing",
+          "world-systems"
+        ],
+        "exit_routes": [
+          "works",
+          "project-center"
+        ],
+        "center_nodes": [
+          "forge",
+          "house",
+          "tree",
+          "mountain",
+          "fruit"
+        ],
+        "handoff_targets": [
+          "works",
+          "project-center"
+        ],
+        "active_lenses": [
+          "motion",
+          "memory-history",
+          "social-formation",
+          "practice-path"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
         ]
       }
     }

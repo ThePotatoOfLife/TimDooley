@@ -1,5 +1,5 @@
 {
-  "version": "1.7.0",
+  "version": "1.8.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -13,6 +13,21 @@
       "concern": "whole-project synthesis / Room-to-center pairings",
       "owner": "data/house/project-synthesis.json",
       "rule": "Binds development waves, core operator pairings, Room contributions, living systems, tests and public composition without replacing canonical owners."
+    },
+    {
+      "concern": "scoped local centers",
+      "owner": "data/house/local-center-interface-patterns.json",
+      "rule": "Standardizes local centers for Dwellings, Rooms, surfaces and artifacts while preserving Potato as semantic center and Axis as global spatial center."
+    },
+    {
+      "concern": "Works as Fruit/output instrumentation",
+      "owner": "data/house/works-fruit-contract.json",
+      "rule": "Defines how mature Works declare source Rooms, Fruit types, intended effects, reception, risks and future Seed without equating completion/popularity with success."
+    },
+    {
+      "concern": "history/canon revision and propagation",
+      "owner": "data/house/history-canon-revision-protocol.json",
+      "rule": "Governs additive, narrowing, strengthening, reinterpretive, corrective, superseding and retraction revisions while preserving prior states/provenance."
     },
     {
       "concern": "cross-cutting reader lenses",

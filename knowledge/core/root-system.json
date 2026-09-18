@@ -2,7 +2,7 @@
   "id": "root-system",
   "title": "Potato of Life Root System",
   "kind": "foundational ontology and branching skeleton",
-  "version": "5.4.0",
+  "version": "5.5.0",
   "updated": "2026-09-18",
   "aliases": [
     "Potato of Life skeleton",
@@ -328,6 +328,14 @@
         "interpretation",
         "governance"
       ]
+    },
+    "crystallized_lifecycle": {
+      "text": "The project now has an explicit operating lifecycle: Knowledge/Signal → provenance → discernment → Door/transition → Tree/Garden growth → Fruit/consequence → History/Canon revision → Repair/Forge → renewed Seed/Return. Garden is an adaptive generative regime rather than a pleasant place; Fruit is domain-specific downstream consequence; Repair preserves truth while changing harmful mechanisms; revision preserves prior states rather than silently overwriting them; scoped local centers organize Rooms/pages without competing with Potato as semantic center or Axis as global spatial center.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation",
+        "governance"
+      ]
     }
   },
   "relationships": [
@@ -415,6 +423,11 @@
       "target": "living-project-map",
       "type": "integration",
       "description": "Coordinates embodiment, Spirit, memory/history and culture around the Potato center."
+    },
+    {
+      "target": "project-synthesis",
+      "type": "lifecycle",
+      "description": "Crystallizes Knowledge→Door→Garden/Tree→Fruit→History/Revision→Repair/Forge→Seed/Return and scoped local centers."
     }
   ],
   "retrieval": {

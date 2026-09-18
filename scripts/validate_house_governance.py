@@ -12,6 +12,15 @@ PROJECT_CENTER=ROOT/'data/house/project-center.json'
 CROSSCUTTING_LENSES=ROOT/'data/house/crosscutting-lenses.json'
 LIVING_PROJECT_MAP=ROOT/'data/house/living-project-map.json'
 PROJECT_SYNTHESIS=ROOT/'data/house/project-synthesis.json'
+SHADOW_OVERLAY=ROOT/'knowledge/core/shadow-integration-overlay.json'
+GARDEN_REGIME=ROOT/'knowledge/core/garden-regime-mechanics.json'
+REPAIR_FORGE=ROOT/'knowledge/core/repair-forge-protocol.json'
+FRUIT_ATLAS=ROOT/'knowledge/core/fruit-consequence-evaluation-atlas.json'
+TREE_BRANCHING=ROOT/'knowledge/core/tree-branching-pruning-atlas.json'
+KNOWLEDGE_FORK=ROOT/'knowledge/core/knowledge-fork-discernment-atlas.json'
+HISTORY_REVISION=ROOT/'data/house/history-canon-revision-protocol.json'
+WORKS_FRUIT=ROOT/'data/house/works-fruit-contract.json'
+LOCAL_CENTERS=ROOT/'data/house/local-center-interface-patterns.json'
 POTATO_CENTER_PAGE=ROOT/'potato-of-life/index.html'
 ORIENTATION_POPULATION=ROOT/'data/house/orientation-population.json'
 TREE_PLANE_ROUTING=ROOT/'data/house/tree-plane-routing.json'
@@ -683,6 +692,27 @@ def validate_project_synthesis(errors):
     p0=data.get('depth_program',{}).get('active_p0',[])
     required_p0=['door-liminality','spirit-relation','culture-formation-control','axis-local-centers','fruit-consequence','tree-branching']
     if p0!=required_p0: errors.append('project synthesis P0 depth programme drifted')
+
+
+def validate_depth_crystallization(errors):
+    required_paths=[SHADOW_OVERLAY,GARDEN_REGIME,REPAIR_FORGE,FRUIT_ATLAS,TREE_BRANCHING,KNOWLEDGE_FORK,HISTORY_REVISION,WORKS_FRUIT,LOCAL_CENTERS]
+    for p in required_paths:
+        if not p.is_file(): errors.append(f'missing crystallized operator/contract: {p.relative_to(ROOT)}')
+    synth=load(PROJECT_SYNTHESIS,errors)
+    if not synth: return
+    dp=synth.get('depth_program',{})
+    p1=[x.get('id') for x in dp.get('completed_p1',[]) if isinstance(x,dict)]
+    if p1!=['shadow-integration','providence-pillar-genealogy','selected-cosmographies']:
+        errors.append('P1 depth completion set/order drifted')
+    p2=[x.get('id') for x in dp.get('completed_p2',[]) if isinstance(x,dict)]
+    expected_p2=['garden-regime-mechanics','history-canon-revision-protocol','works-fruit-instrumentation','local-center-interface-patterns','repair-forge-protocol','knowledge-fork-discernment']
+    if p2!=expected_p2: errors.append('P2 depth completion set/order drifted')
+    p3=dp.get('next_p3',[])
+    if 'instrument-existing-works-with-fruit-contract' not in p3 or 'prune-or-merge-low-yield-duplicate-atlases' not in p3:
+        errors.append('P3 must remain population/instrumentation focused')
+    loop=synth.get('lifecycle_crystallization',{}).get('route',[])
+    if loop!=['knowledge','discernment','door','tree/garden','fruit','history/revision','repair/forge','seed/return']:
+        errors.append('crystallized lifecycle route drifted')
 
 def main():
     errors=[]

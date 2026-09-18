@@ -112,6 +112,13 @@ def main():
         if not pairing.get('contribution'): errors.append(f'Room dossier missing center contribution: {d.get("room_id")}')
         if not pairing.get('center_nodes'): errors.append(f'Room dossier missing center nodes: {d.get("room_id")}')
         if not pairing.get('hands_to'): errors.append(f'Room dossier missing mature handoff: {d.get("room_id")}')
+        local=d.get('local_center',{})
+        if not local: errors.append(f'Room dossier missing local_center: {d.get("room_id")}')
+        else:
+            if local.get('scope_type')!='room' or local.get('scope_id')!=d.get('room_id'): errors.append(f'Room dossier local_center scope drift: {d.get("room_id")}')
+            if local.get('parent_center')!='potato-of-life': errors.append(f'Room dossier local_center parent must remain Potato of Life: {d.get("room_id")}')
+            if local.get('owner')!=d.get('room_id'): errors.append(f'Room dossier local_center owner drift: {d.get("room_id")}')
+            if not local.get('exit_routes'): errors.append(f'Room dossier local_center missing exits: {d.get("room_id")}')
     if len(pulse_rows)!=len(rows): errors.append('House population pulse must cover every nested Room')
     if {x.get('room_id') for x in pulse_rows}!={x.get('id') for x in rows}: errors.append('House population pulse Room IDs drifted')
     federation_ids=[x.get('id') for x in federation.get('forms',[]) if isinstance(x,dict)]

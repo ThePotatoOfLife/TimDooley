@@ -1,0 +1,62 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "local-center-interface-patterns",
+  "purpose": "Standardize how Dwellings, nested Rooms, pages and artifacts can have local focal centers while preserving Potato of Life as global semantic center and Axis as global spatial center.",
+  "global_centers": {
+    "semantic": "potato-of-life",
+    "spatial": "axis"
+  },
+  "pattern": {
+    "required": [
+      "local_center_id",
+      "scope_type",
+      "scope_id",
+      "parent_center",
+      "function",
+      "owner",
+      "entry_routes",
+      "exit_routes",
+      "center_nodes",
+      "handoff_targets"
+    ],
+    "optional": [
+      "visual_marker",
+      "default_question",
+      "local_axis",
+      "local_plane",
+      "active_lenses",
+      "shared_tests"
+    ]
+  },
+  "scope_types": [
+    {
+      "id": "dwelling",
+      "example": "Culture & Information may center on Formation while still orbiting Potato center."
+    },
+    {
+      "id": "room",
+      "example": "Subculture & Group Formation may center on norm/identity transition."
+    },
+    {
+      "id": "surface",
+      "example": "History page centers on occurrence→source→memory→canon pipeline."
+    },
+    {
+      "id": "artifact",
+      "example": "A song or diagram may have its own compositional focal point."
+    }
+  ],
+  "rules": [
+    "Local center organizes attention and handoff inside a bounded context.",
+    "Local centers inherit global epistemic boundaries and cannot redefine project canon.",
+    "A local axis/plane is a view/projection only; it does not create a rival cosmos.",
+    "Every local center must expose exits back to parent scope and onward to mature handoff targets.",
+    "If a local center starts accumulating unrelated ownership, split/redirect ownership rather than promoting it into another global center."
+  ],
+  "source_context": [
+    "data/house/project-synthesis.json",
+    "data/house/room-dossiers.json",
+    "data/house/orientation-population.json"
+  ]
+}

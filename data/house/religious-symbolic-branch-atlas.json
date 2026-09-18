@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "updated": "2026-09-18",
   "authority": "religious-symbolic-branch-atlas",
   "purpose": "Populate the Potato House with religious, mythic, angelic, demonic, underworld, esoteric and sacred-architecture subjects already present in the repository while preserving own-tradition meaning before comparison.",
@@ -877,12 +877,15 @@
         "axis"
       ],
       "source_files": [
-        "knowledge/traditions/comparative-mythology-map.json"
+        "knowledge/traditions/comparative-mythology-map.json",
+        "knowledge/traditions/selected-cosmography-structural-exemplars.json"
       ],
       "visibility": "landmark",
       "note": "High-value comparator for a tree connecting differentiated realms/levels.",
       "boundary": "Yggdrasil and the Potato Tree are not historically identical.",
-      "layer_category": "organism"
+      "layer_category": "organism",
+      "structural_lesson": "World Tree as maintained, inhabited and damageable ecology; roots can hold wisdom, nourishment and threat, while the whole requires renewal.",
+      "depth_status": "selected-deep-exemplar"
     },
     {
       "id": "new-jerusalem",
@@ -1366,12 +1369,15 @@
       ],
       "source_files": [
         "knowledge/traditions/comparative-cosmography-population-wave-001.json",
-        "knowledge/traditions/adversarial-underworld-judgment-atlas.json"
+        "knowledge/traditions/adversarial-underworld-judgment-atlas.json",
+        "knowledge/traditions/selected-cosmography-structural-exemplars.json"
       ],
       "visibility": "room-detail",
       "layer_category": "terrain",
       "note": "Netherworld passage traversed in death/solar renewal traditions; strong example that Below need not mean punishment.",
-      "boundary": "Do not equate Duat with Hell or the Potatoverse Swamp."
+      "boundary": "Do not equate Duat with Hell or the Potatoverse Swamp.",
+      "structural_lesson": "Underworld as staged/timed passage through gates, hazards and transformation culminating in renewal rather than one static lower place.",
+      "depth_status": "selected-deep-exemplar"
     },
     {
       "id": "sheol",
@@ -1517,12 +1523,15 @@
         "cardinal-order"
       ],
       "source_files": [
-        "knowledge/traditions/comparative-cosmography-population-wave-001.json"
+        "knowledge/traditions/comparative-cosmography-population-wave-001.json",
+        "knowledge/traditions/selected-cosmography-structural-exemplars.json"
       ],
       "visibility": "room-detail",
       "layer_category": "terrain",
       "note": "Central cosmic mountain in several South Asian cosmographies; valuable comparator for center, cardinal order and layered worlds.",
-      "boundary": "Do not identify Meru with the Potato Mountain or Axis."
+      "boundary": "Do not identify Meru with the Potato Mountain or Axis.",
+      "structural_lesson": "Cosmic center as cardinal/concentric world-order, not merely a summit or personal ascent symbol.",
+      "depth_status": "selected-deep-exemplar"
     },
     {
       "id": "labyrinth",
@@ -1781,12 +1790,15 @@
         "liberation"
       ],
       "source_files": [
-        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json",
+        "knowledge/traditions/selected-cosmography-structural-exemplars.json"
       ],
       "visibility": "room-detail",
       "layer_category": "route",
       "note": "Intermediate/transitional state tradition, especially between death and rebirth; useful precisely because it is a transition system rather than a fixed underworld place.",
-      "boundary": "Potatoverse Door/Spiral comparisons must not be presented as Tibetan Buddhist doctrine."
+      "boundary": "Potatoverse Door/Spiral comparisons must not be presented as Tibetan Buddhist doctrine.",
+      "structural_lesson": "Intermediate state as transition-condition rather than fixed geography; useful for Door/liminality distinctions.",
+      "depth_status": "selected-deep-exemplar"
     },
     {
       "id": "olympus-realm",
@@ -2152,5 +2164,6 @@
     }
   ],
   "layer_grammar_authority": "data/house/layer-terrain-regime-atlas.json",
-  "center_out_rule": "Comparative branches exist to illuminate, challenge or contextualize project-native nodes. They do not define the Potato of Life from the outside."
+  "center_out_rule": "Comparative branches exist to illuminate, challenge or contextualize project-native nodes. They do not define the Potato of Life from the outside.",
+  "selection_rule": "Comparative nodes become deep exemplars only when they teach a structural function not already represented; otherwise remain room-detail/archive population."
 }
