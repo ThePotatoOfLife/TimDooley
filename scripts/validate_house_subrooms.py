@@ -8,6 +8,7 @@ ROOMS=ROOT/'data/house/rooms.json'
 SUBROOMS=ROOT/'data/house/subrooms.json'
 SCHEMA=ROOT/'schemas/house-subroom-registry.schema.json'
 TOPOLOGY=ROOT/'data/house/topology.json'
+INTERFACES=ROOT/'data/house/interfaces.json'
 SURFACES=ROOT/'data/house/public-surfaces.json'
 
 def load(path):
@@ -16,7 +17,7 @@ def load(path):
 def main():
     errors=[]
     try:
-        rooms=load(ROOMS); sub=load(SUBROOMS); topo=load(TOPOLOGY); surfaces=load(SURFACES); schema=load(SCHEMA)
+        rooms=load(ROOMS); sub=load(SUBROOMS); topo=load(TOPOLOGY); interfaces=load(INTERFACES); surfaces=load(SURFACES); schema=load(SCHEMA)
     except Exception as exc:
         print('HOUSE SUBROOM VALIDATION FAILED')
         print('-',exc)
@@ -54,6 +55,15 @@ def main():
 
     if topo.get('room_registry')!='data/house/rooms.json': errors.append('House topology Room registry drift')
     if topo.get('subroom_registry')!='data/house/subrooms.json': errors.append('House topology subroom registry drift')
+    if topo.get('interface_registry')!='data/house/interfaces.json': errors.append('House topology interface registry drift')
+    interface_rows=[x for x in interfaces.get('interfaces',[]) if isinstance(x,dict)]
+    interface_ids=[x.get('id') for x in interface_rows]
+    if len(interface_ids)!=len(set(interface_ids)): errors.append('duplicate House interface IDs')
+    for edge in interface_rows:
+        if edge.get('from') not in set(ids) or edge.get('to') not in set(ids):
+            errors.append(f'House interface has unknown nested Room endpoint: {edge.get("id")}')
+        if not edge.get('preserves'): errors.append(f'House interface {edge.get("id")} must declare preserved invariants')
+        if not edge.get('guard'): errors.append(f'House interface {edge.get("id")} must declare a guard')
     macro={x.get('id') for x in topo.get('macro_roles',[]) if isinstance(x,dict)}
     if macro!=parent_ids: errors.append('House topology macro roles must cover exactly the ten canonical Rooms')
     for band in topo.get('bands',[]):
