@@ -13,6 +13,7 @@ VOCAB=ROOT/'data/house/architectural-vocabulary.json'
 PROJECTIONS=ROOT/'data/house/projections.json'
 STRUCTURAL_CENSUS=ROOT/'data/house/structural-census.json'
 POPULATION=ROOT/'data/house/population-contract.json'
+POPULATION_PULSE=ROOT/'data/house/population-pulse.json'
 SURFACES=ROOT/'data/house/public-surfaces.json'
 
 def load(path):
@@ -21,7 +22,7 @@ def load(path):
 def main():
     errors=[]
     try:
-        rooms=load(ROOMS); sub=load(SUBROOMS); topo=load(TOPOLOGY); interfaces=load(INTERFACES); vocab=load(VOCAB); projections=load(PROJECTIONS); census=load(STRUCTURAL_CENSUS); population=load(POPULATION); surfaces=load(SURFACES); schema=load(SCHEMA)
+        rooms=load(ROOMS); sub=load(SUBROOMS); topo=load(TOPOLOGY); interfaces=load(INTERFACES); vocab=load(VOCAB); projections=load(PROJECTIONS); census=load(STRUCTURAL_CENSUS); population=load(POPULATION); pulse=load(POPULATION_PULSE); surfaces=load(SURFACES); schema=load(SCHEMA)
     except Exception as exc:
         print('HOUSE SUBROOM VALIDATION FAILED')
         print('-',exc)
@@ -76,6 +77,9 @@ def main():
         for sid in instance.get('public_surfaces',[]):
             if sid not in surface_ids: errors.append(f'House census instance {instance.get("id")} has unknown public surface {sid}')
     if population.get('structural_census')!='data/house/structural-census.json': errors.append('House population contract census pointer drift')
+    pulse_rows=[x for x in pulse.get('records',[]) if isinstance(x,dict)]
+    if len(pulse_rows)!=len(rows): errors.append('House population pulse must cover every nested Room')
+    if {x.get('room_id') for x in pulse_rows}!={x.get('id') for x in rows}: errors.append('House population pulse Room IDs drifted')
     if len(vocab.get('dwelling_projection',[]))!=10: errors.append('Architectural vocabulary must project exactly ten Dwellings')
     projected={x.get('canonical_room_id') for x in vocab.get('dwelling_projection',[]) if isinstance(x,dict)}
     if projected!=parent_ids: errors.append('Dwelling projection must cover exactly the ten canonical Rooms')
