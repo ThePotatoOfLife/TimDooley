@@ -100,21 +100,36 @@
     },
     {
       "id": "root-regeneration-cycle",
-      "source": "2026-master-framework.json",
+      "source": "knowledge/core/symbolic-relational-synthesis.json",
       "formula": "Tree → fire → ash → soil → Potato → sprout → Tree",
-      "class": "project regeneration cycle"
+      "class": "project regeneration cycle",
+      "source_records": [
+        "knowledge/core/symbolic-relational-synthesis.json",
+        "knowledge/core/root-system.json"
+      ],
+      "provenance_note": "Legacy 2026 synthesis source replaced by current symbolic/root owners."
     },
     {
       "id": "roots-strife-knowledge",
-      "source": "2026-master-framework.json",
+      "source": "knowledge/core/symbolic-relational-synthesis.json",
       "formula": "distinction → polarity → conflict → knowledge → consequence/mortality → ash → soil",
-      "class": "project causal-symbolic sequence"
+      "class": "project causal-symbolic sequence",
+      "source_records": [
+        "knowledge/core/symbolic-relational-synthesis.json",
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json"
+      ],
+      "provenance_note": "Legacy 2026 synthesis source replaced by current symbolic/strife owners."
     },
     {
       "id": "potato-cycle",
-      "source": "2026-master-framework.json",
+      "source": "knowledge/science/potato-biology-ecology-development-canon.json",
       "formula": "burial → darkness → stored life → eye → sprout → light → multiplication → nourishment → return",
-      "class": "project biological-symbolic cycle"
+      "class": "project biological-symbolic cycle",
+      "source_records": [
+        "knowledge/science/potato-biology-ecology-development-canon.json",
+        "knowledge/core/symbolic-relational-synthesis.json"
+      ],
+      "provenance_note": "Literal biology and symbolic interpretation are now owned separately."
     }
   ],
   "formalization_opportunity": {
