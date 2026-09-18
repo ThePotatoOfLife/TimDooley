@@ -116,8 +116,8 @@ def main() -> int:
     if primary != EXPECTED_PRIMARY:
         errors.append(f"homepage primary Doors drifted: expected {EXPECTED_PRIMARY!r}; got {primary!r}")
 
-    if "Explore the Rooms" not in home:
-        errors.append("homepage missing distinct 'Explore the Rooms' corridor")
+    if "Explore the Dwellings &amp; Rooms" not in home and "Explore the Dwellings & Rooms" not in home:
+        errors.append("homepage missing distinct 'Explore the Dwellings & Rooms' corridor")
     for href, label in REQUIRED_HOME_ROOM_LINKS.items():
         if f'href="{href}"' not in home and f"href='{href}'" not in home:
             errors.append(f"homepage Rooms corridor missing route {href} ({label})")
