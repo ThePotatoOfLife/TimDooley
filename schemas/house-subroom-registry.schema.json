@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thepotatooflife.github.io/TimDooley/schemas/house-subroom-registry.schema.json",
+  "title": "Potato House Nested Room Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "updated",
+    "authority",
+    "parent_room_registry",
+    "principle",
+    "admission_rule",
+    "subrooms"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "updated": {
+      "type": "string"
+    },
+    "authority": {
+      "const": "nested-bounded-context-governance"
+    },
+    "parent_room_registry": {
+      "const": "data/house/rooms.json"
+    },
+    "principle": {
+      "type": "string"
+    },
+    "admission_rule": {
+      "type": "string"
+    },
+    "subrooms": {
+      "type": "array",
+      "minItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "parent_room_id",
+          "kind",
+          "ownership_mode",
+          "local_role",
+          "purpose",
+          "knowledge_roots",
+          "public_surface_ids",
+          "adjacent_subroom_ids",
+          "epistemic_boundary",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "parent_room_id": {
+            "type": "string"
+          },
+          "kind": {
+            "const": "nested-room"
+          },
+          "ownership_mode": {
+            "const": "delegated-scope"
+          },
+          "local_role": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "knowledge_roots": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "public_surface_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "adjacent_subroom_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "epistemic_boundary": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "planned",
+              "retiring"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
