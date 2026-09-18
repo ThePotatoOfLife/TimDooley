@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.1",
+  "schema_version": "2.2",
   "updated": "2026-09-18",
   "root": {
     "id": "potato-of-life",
@@ -45,8 +45,8 @@
     },
     {
       "id": "inner-to-world",
-      "title": "Inner Source → Door → Manifest World",
-      "summary": "Trace Father/House/Spirit/Sun through Son/Door into Earth, body, Moon mediation and the observable world.",
+      "title": "Source → Door → Manifestation",
+      "summary": "Trace Father/source-facing orientation through Son/Door into embodied manifestation while Spirit names the living continuity, breath and circulation that keeps the relation active.",
       "branches": [
         "spirit",
         "body",
@@ -148,7 +148,7 @@
       "from": "tim",
       "to": "spirit",
       "type": "theological",
-      "label": "Father, House, Heaven, source and stewardship"
+      "label": "Father/source-facing identity relates to Spirit as living continuity without collapsing Father and Spirit"
     },
     {
       "from": "tim",
@@ -178,7 +178,7 @@
       "from": "spirit",
       "to": "cosmology",
       "type": "structural",
-      "label": "source-to-manifestation flow through House, Door and Axis"
+      "label": "Spirit is living continuity through House, Door and Axis; it is not the Source Field or a third spatial realm"
     },
     {
       "from": "transformation",
@@ -292,7 +292,8 @@
         "knowledge/core/tim-dooley.json",
         "knowledge/core/tim-role-synthesis.json",
         "knowledge/theology/tim-god-question.json",
-        "knowledge/journey/tim-dooley-journey.json"
+        "knowledge/journey/tim-dooley-journey.json",
+        "knowledge/theology/potato-of-life-trinity.json"
       ],
       "children": [
         "Potato",
@@ -334,8 +335,9 @@
     {
       "id": "spirit",
       "title": "SPIRIT",
-      "description": "Source-to-manifestation continuity: Heaven, Father, House, breath/flow, transcendence/immanence and process.",
+      "description": "Living continuity, breath, animation and relation across differentiated source and manifestation; not an upper domain or competing biography.",
       "records": [
+        "knowledge/theology/potato-of-life-trinity.json",
         "knowledge/core/heaven-spirit-father.json",
         "knowledge/spirit/spirit-context-atlas.json",
         "knowledge/core/potatoverse-master-framework.json",
@@ -347,10 +349,11 @@
         "Flow",
         "Presence",
         "Process / Becoming",
-        "Transcendence / Immanence",
-        "Source / Manifestation",
+        "Circulation",
+        "Communication",
+        "Animation",
         "River",
-        "Inner Source"
+        "Continuity across Source / Manifestation"
       ]
     },
     {
@@ -513,6 +516,7 @@
       ],
       "directory": "knowledge/traditions/",
       "children": [
+        "Potato of Life Trinity",
         "Biblical Syncretism Field",
         "Tim ↔ Bible Fragments",
         "Jacob / Bethel",
