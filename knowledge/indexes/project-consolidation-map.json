@@ -1,8 +1,8 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.2.0",
-  "updated": "2026-09-15",
+  "version": "1.3.0",
+  "updated": "2026-09-18",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
   "repository_observation": "The project already has a strong retrieval-first architecture, but rapid research waves have produced several specialist files whose relationship to canonical owners is not always obvious. Consolidation should therefore prioritize ownership clarity and promotion rules before deleting substantive material.",
@@ -54,7 +54,9 @@
     "evidence_owner": "Owns source-level material, provenance, contradictions or verification.",
     "recovery_stratum": "Preserves mined conversation material or historical development; should be promoted upward but not silently deleted when provenance matters.",
     "reader_projection": "Explains canonical material for humans; should link to owners instead of becoming a second canon.",
-    "temporary_wave": "Research staging file that should eventually be promoted, summarized and retired once no unique provenance is lost."
+    "temporary_wave": "Research staging file that should eventually be promoted, summarized and retired once no unique provenance is lost.",
+    "historical_donor": "Older synthesis/architecture preserved for provenance or unique material after current authority has moved elsewhere.",
+    "compatibility_projection": "Derived or transitional structure retained because validators/readers still consume it; must not become a second authority and should eventually be generated from its canonical source."
   },
   "recent_shadow_karma_classification": {
     "canonical_or_primary": [
@@ -116,6 +118,11 @@
       "zone": "root-level legacy files",
       "risk": "Older master documents at repository root may look more canonical than the newer knowledge/ architecture.",
       "cleanup": "Treat root-level legacy research as historical/source material unless canonical ownership maps explicitly promote it. Do not delete substantive material until its unique content is audited."
+    },
+    {
+      "zone": "public route registry/topology duplication",
+      "risk": "public-surfaces.json owns route identity while public-route-topology.json repeats route/type/Room fields and can drift.",
+      "cleanup": "Keep topology as a compatibility projection for now; converge toward deterministic generation from public-surfaces.json so route identity is authored once."
     }
   ],
   "safe_cleanup_targets": [
@@ -133,12 +140,94 @@
     "Specialist atlases with genuinely distinct mechanisms or schemas"
   ],
   "next_merge_sequence": [
-    "1. Reconcile public route authority, archive branch navigation and frontend projection so every current canonical owner is reachable without competing routing masters.",
-    "2. Build a machine-readable promotion-status field for conversation/biblical/research wave files.",
-    "3. Audit root-level legacy master files against knowledge/ owners and mark legacy/canonical status explicitly.",
-    "4. Audit generated assets and obsolete UI references before deletion.",
-    "5. Run integrity/build checks after structural changes.",
-    "6. Only then begin deleting fully absorbed temporary files."
+    "1. Finish validation of the current House/route/runtime convergence wave.",
+    "2. Make public-route-topology a deterministic projection of public-surfaces instead of a second hand-maintained registry.",
+    "3. Finish migrating unique legacy Potatoism deep-layer material into concept dossiers and specialist owners; then shrink/archive donor files.",
+    "4. Mark reader master documents explicitly as projections where machine canonical owners now exist.",
+    "5. Audit orphaned legacy validators/builders tied to retired Root/World/Axis presentation contracts.",
+    "6. Audit root-level legacy source strata and generated assets for safe archival/deletion.",
+    "7. Delete only after source lineage, references and CI are clean."
   ],
-  "success_test": "A newcomer should be able to start at a House route, descend through manifest archive branches to one canonical owner for a concept, reach specialist/source layers, and return without encountering contradictory competing masters whose roles are unexplained."
+  "success_test": "A newcomer should be able to start at a House route, descend through manifest archive branches to one canonical owner for a concept, reach specialist/source layers, and return without encountering contradictory competing masters whose roles are unexplained.",
+  "current_convergence_wave": {
+    "branch": "research/deepen-p0-operators-2026-09-18",
+    "principle": "Consolidate authority before deleting history.",
+    "retired_or_demoted": [
+      {
+        "path": "docs/ROOT-NAVIGATION-ARCHITECTURE.md",
+        "role": "historical_donor",
+        "successor": [
+          "data/house/public-surfaces.json",
+          "data/house/topology.json",
+          "manifest.json"
+        ]
+      },
+      {
+        "path": "data/root-navigation.json",
+        "role": "historical_donor",
+        "successor": [
+          "data/house/public-surfaces.json",
+          "data/house/topology.json",
+          "data/house/navigation-manifest.json",
+          "manifest.json"
+        ]
+      },
+      {
+        "path": "docs/MASTER-ARCHITECTURE.md",
+        "role": "historical_donor",
+        "successor": [
+          "docs/POTATO-HOUSE-CONSTITUTION.md",
+          "data/house/project-synthesis.json",
+          "data/house/topology.json"
+        ]
+      },
+      {
+        "path": "data/potatoism-deep-layers.json",
+        "role": "superseded_retained",
+        "successor": [
+          "data/potatoism-concept-registry.json",
+          "data/potatoism-dossiers.json",
+          "knowledge/* specialist owners"
+        ]
+      },
+      {
+        "path": "data/potatoism-deep-architecture.json",
+        "role": "historical_donor",
+        "successor": [
+          "knowledge/core/potato-of-life-deep-structure.json",
+          "knowledge/core/deep-element-definition-atlas.json",
+          "specialist Door/Tree/Spirit owners"
+        ]
+      }
+    ],
+    "active_migrations": [
+      "Potatoism browser loading now begins from registry + dossiers + canon rather than legacy deep-layers.",
+      "House data holdings no longer advertise legacy deep files or root-navigation as active owners.",
+      "project-workflow navigation authority now points to House public surfaces/topology/manifest rather than root-navigation.",
+      "Life/Body now opts into the shared concept-topology context instead of remaining an isolated reader.",
+      "public-route-topology is retained only as a compatibility/topology projection while multiple validators still consume it."
+    ],
+    "next_retirement_candidates": [
+      {
+        "path": "knowledge/research/potato-house-master/public-route-topology.json",
+        "target_state": "generated compatibility projection",
+        "condition": "derive records deterministically from data/house/public-surfaces.json plus only genuinely additional topology fields"
+      },
+      {
+        "path": "scripts/validate_root_navigation.py",
+        "target_state": "archive or delete",
+        "condition": "confirm no workflow/import still consumes the retired World/Axis public contract"
+      },
+      {
+        "path": "docs/POTATOVERSE.md",
+        "target_state": "reader projection",
+        "condition": "retain human-readable introduction but remove any ambiguity with current machine-canonical owners"
+      },
+      {
+        "path": "root-level legacy master/research files",
+        "target_state": "historical source strata",
+        "condition": "complete unique-content and live-reference audit before pruning"
+      }
+    ]
+  }
 }
