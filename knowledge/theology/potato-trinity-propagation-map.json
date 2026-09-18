@@ -1,0 +1,147 @@
+{
+  "id": "potato-trinity-propagation-map",
+  "title": "Potato of Life Trinity — Propagation & Integration Map",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "canonical integration ledger",
+  "owner": "knowledge/theology/potato-of-life-trinity.json",
+  "purpose": "Track where the mature triune Potato model has been integrated across the project, what semantic consequences follow from it, which historical strata must remain unchanged, and which surfaces still need migration.",
+  "core_law": {
+    "whole": "Potato of Life",
+    "Father": "source-facing theological relation / identity",
+    "Son": "manifestation- and passage-facing theological relation / identity",
+    "Spirit": "living continuity / breath / flow",
+    "rule": "Father, Son and Spirit are irreducible relations of one Potato of Life. Geometry, biography, biology and software may project or compare this grammar without becoming identical to the theological roles."
+  },
+  "derived_consequences": [
+    "Potato of Life must not be treated only as a synonym for Father when the subject is the total architecture.",
+    "Tim/Father may still be called Potato of Life in identity language, but canonical explanations should clarify that this is the source-facing identity within the whole.",
+    "Source Field and Manifestation Field are geometric/domain regions, not divine persons.",
+    "Father is oriented toward Source Field rather than identical with the complete field.",
+    "Son is oriented toward Manifestation Field and specializes as Door/Vessel rather than identical with the complete field.",
+    "Spirit is not Door, Axis, CSF, information or any physical flow; these are comparators/projections of continuity.",
+    "Door is an interface/threshold; Spirit is living continuity through relation.",
+    "The ordinary potato/tuber is a material and symbolic comparator, not a fourth member of the mature Trinity.",
+    "The 2024 New Trinity remains historically intact as a four-role precursor and must not be rewritten as if mature 2026 language existed then.",
+    "The mature Trinity is project theology and should be compared with, not silently identified with, Nicene Christianity."
+  ],
+  "propagation_layers": [
+    {
+      "id": "theology-owner",
+      "status": "integrated",
+      "targets": [
+        "knowledge/theology/potato-of-life-trinity.json",
+        "knowledge/core/heaven-spirit-father.json",
+        "knowledge/theology/father-son-door-reciprocity.json"
+      ]
+    },
+    {
+      "id": "house-topology",
+      "status": "integrated",
+      "targets": [
+        "data/house/concept-topology.json",
+        "data/house/topology-golden-fixture.json",
+        "house/index.html"
+      ]
+    },
+    {
+      "id": "religion-reader",
+      "status": "integrated",
+      "targets": [
+        "religion/trinity/index.html",
+        "religion/index.html",
+        "faq/index.html"
+      ]
+    },
+    {
+      "id": "deep-structure",
+      "status": "integrated",
+      "targets": [
+        "knowledge/core/potato-of-life-deep-structure.json",
+        "knowledge/core/root-system.json",
+        "data/potato-properties.json"
+      ]
+    },
+    {
+      "id": "identity-ontology",
+      "status": "in-progress",
+      "targets": [
+        "knowledge/core/tim-identity-ontology.json",
+        "knowledge/theology/divine-identity-answer-spine.json",
+        "knowledge/indexes/faq-tim-ontology-questions.json",
+        "tim-dooley/ontology/index.html"
+      ]
+    },
+    {
+      "id": "corpus",
+      "status": "in-progress",
+      "targets": [
+        "data/potatoism-canonical-corpus.json",
+        "2026-master-framework.json"
+      ]
+    },
+    {
+      "id": "geometry",
+      "status": "in-progress",
+      "targets": [
+        "knowledge/core/vertical-potato-mountain-plane-atlas.json",
+        "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
+        "docs/POTATO-HOUSE-CONSTITUTION.md",
+        "docs/MASTER-FRAME.md"
+      ]
+    },
+    {
+      "id": "machine-retrieval",
+      "status": "in-progress",
+      "targets": [
+        "llms.txt",
+        "llms-full.txt",
+        "scripts/build_site.py",
+        "scripts/patch_public_ontology.py"
+      ]
+    },
+    {
+      "id": "historical-strata",
+      "status": "preserve",
+      "targets": [
+        "great-book/chapters/163--chapter-110--the-new-trinity-a-covenant-for-the-ages.html",
+        "great-book/chapters/164--chapter-111--the-great-reversalconstructing-the-merkaba-and-revealing-the-cosmic-blue.html"
+      ],
+      "rule": "Do not modernize original 2024 source wording; connect it through later owners instead."
+    }
+  ],
+  "semantic_checks": [
+    {
+      "question": "Does this text use Potato of Life for the whole or for Tim/Father?",
+      "required_action": "If ambiguous, state source-facing identity versus triune whole."
+    },
+    {
+      "question": "Does this text equate Father with Source Field?",
+      "required_action": "Change identity language to orientation/role unless quoting an older source stratum."
+    },
+    {
+      "question": "Does this text equate Son with Manifestation Field?",
+      "required_action": "Change identity language to orientation/role and preserve Son-as-Door specialization."
+    },
+    {
+      "question": "Does this text treat Spirit as a location or substance?",
+      "required_action": "Restore continuity/flow role and label physical/anatomical comparators separately."
+    },
+    {
+      "question": "Does this text add Potato as a fourth Trinity member?",
+      "required_action": "In mature canon, move Potato to whole-form level; preserve 2024 historical exception."
+    },
+    {
+      "question": "Does this text claim Potatoism is simply Nicene Christianity?",
+      "required_action": "Separate structural comparison from doctrinal identity."
+    }
+  ],
+  "integration_goal": "The same triune law should be recoverable from theology, topology, identity ontology, machine retrieval, corpus, House geometry and public readers without forcing each layer to use identical metaphors.",
+  "next_research": [
+    "Trace the earliest explicit public Father/Son/Spirit triadic formulations after the 2024 New Trinity.",
+    "Distinguish when Potato of Life was used as Tim's personal identity versus when it functioned as whole-system language.",
+    "Audit biblical comparison corpus for passages that combine Father, Son/Christ, Spirit and House/Dwelling in one scene.",
+    "Audit body/neurotheology records so thalamus/pineal/CSF remain typed comparators rather than literal Trinity anatomy.",
+    "Audit science operator models so source/propagator/field analogies stay analogies to the Trinity owner rather than substitute definitions."
+  ]
+}
