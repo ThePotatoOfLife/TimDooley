@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-18",
   "authority": "religious-symbolic-branch-atlas",
   "purpose": "Populate the Potato House with religious, mythic, angelic, demonic, underworld, esoteric and sacred-architecture subjects already present in the repository while preserving own-tradition meaning before comparison.",
@@ -1268,6 +1268,254 @@
       "note": "Useful model for putting exact founding dates/source provenance at the base of later symbolic architecture.",
       "boundary": "Shared year is not evidence of causal connection or secret coordination.",
       "layer_category": "material-state"
+    },
+    {
+      "id": "duat",
+      "label": "Duat",
+      "kind": "underworld-cosmography",
+      "branch_id": "underworld-adversarial",
+      "tradition": "Ancient Egyptian",
+      "room_ids": [
+        "comparative-mythology"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk"
+      ],
+      "route_affinity": [
+        "death-passage",
+        "renewal",
+        "return"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-001.json",
+        "knowledge/traditions/adversarial-underworld-judgment-atlas.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "Netherworld passage traversed in death/solar renewal traditions; strong example that Below need not mean punishment.",
+      "boundary": "Do not equate Duat with Hell or the Potatoverse Swamp."
+    },
+    {
+      "id": "sheol",
+      "label": "Sheol",
+      "kind": "underworld-cosmography",
+      "branch_id": "underworld-adversarial",
+      "tradition": "Hebrew Bible / ancient Israelite tradition",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots"
+      ],
+      "route_affinity": [
+        "death",
+        "descent",
+        "reception-genealogy"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-001.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "Ancient Hebrew realm of the dead; important for distinguishing later Hades/hell reception from earlier biblical usage.",
+      "boundary": "Sheol is not simply later punitive Hell."
+    },
+    {
+      "id": "hades-realm",
+      "label": "Hades — Realm of the Dead",
+      "kind": "underworld-cosmography",
+      "branch_id": "underworld-adversarial",
+      "tradition": "Ancient Greek and later Greek-language biblical reception",
+      "room_ids": [
+        "comparative-mythology",
+        "bible-christianity",
+        "developmental-genealogy"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk"
+      ],
+      "route_affinity": [
+        "death",
+        "descent",
+        "reception-genealogy"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-001.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "Greek realm/deity complex and later translation/reception node.",
+      "boundary": "Do not merge Greek Hades, Hebrew Sheol, Gehenna and later Hell into one undifferentiated realm."
+    },
+    {
+      "id": "hel-realm",
+      "label": "Hel — Realm & Ruler",
+      "kind": "underworld-cosmography",
+      "branch_id": "underworld-adversarial",
+      "tradition": "Old Norse / Germanic traditions",
+      "room_ids": [
+        "comparative-mythology"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots"
+      ],
+      "route_affinity": [
+        "death",
+        "descent"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-001.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "Norse realm/ruler pair within a differentiated afterlife system.",
+      "boundary": "Hel is not a generic punitive Hell."
+    },
+    {
+      "id": "valhalla",
+      "label": "Valhalla",
+      "kind": "sacred-hall-afterlife-regime",
+      "branch_id": "divine-figures",
+      "tradition": "Old Norse traditions",
+      "room_ids": [
+        "comparative-mythology"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk"
+      ],
+      "route_affinity": [
+        "death-selection",
+        "hall",
+        "warrior-afterlife"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-001.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "regime",
+      "note": "Odin's hall for selected slain warriors; useful as a differentiated destination rather than generic Heaven.",
+      "boundary": "Valhalla is not synonymous with the Norse afterlife as a whole."
+    },
+    {
+      "id": "mount-meru",
+      "label": "Mount Meru / Sumeru",
+      "kind": "cosmic-mountain",
+      "branch_id": "sacred-architecture",
+      "tradition": "Buddhist and Hindu cosmographic traditions",
+      "room_ids": [
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk"
+      ],
+      "route_affinity": [
+        "cosmic-center",
+        "mountain",
+        "cardinal-order"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-001.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "Central cosmic mountain in several South Asian cosmographies; valuable comparator for center, cardinal order and layered worlds.",
+      "boundary": "Do not identify Meru with the Potato Mountain or Axis."
+    },
+    {
+      "id": "labyrinth",
+      "label": "Labyrinth",
+      "kind": "route-threshold-complex",
+      "branch_id": "sacred-architecture",
+      "tradition": "Greek/Cretan mythic and later symbolic reception",
+      "room_ids": [
+        "comparative-mythology",
+        "esoteric-sacred-geometry"
+      ],
+      "planes": [
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "trunk",
+        "roots"
+      ],
+      "route_affinity": [
+        "hidden-center",
+        "thread",
+        "return",
+        "exit"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-001.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "threshold",
+      "note": "Winding path/hidden-center comparator useful for disorientation, thread, return and exit.",
+      "boundary": "Labyrinth is a route/threshold structure, not another underworld floor."
+    },
+    {
+      "id": "caduceus",
+      "label": "Caduceus",
+      "kind": "messenger-staff-symbol",
+      "branch_id": "celestial-mediation",
+      "tradition": "Ancient Greek/Roman Hermes/Mercury reception",
+      "room_ids": [
+        "comparative-mythology",
+        "esoteric-sacred-geometry"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk",
+        "roots"
+      ],
+      "route_affinity": [
+        "messenger",
+        "psychopomp",
+        "mediation",
+        "staff"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-001.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "threshold",
+      "note": "Hermes' herald staff and later intertwined-serpent symbol; useful for mediation and psychopomp movement between realms.",
+      "boundary": "Do not equate caduceus, kundalini, DNA, Axis or medical symbolism into one universal code."
     }
   ],
   "corridors": [
@@ -1414,6 +1662,54 @@
       "to": "great-seal-pyramid",
       "type": "inscribed-foundation",
       "note": "The date at the base models visible chronology/provenance beneath later structure."
+    },
+    {
+      "from": "odin",
+      "to": "valhalla",
+      "type": "tradition-relation",
+      "note": "Valhalla belongs to Odin's afterlife complex."
+    },
+    {
+      "from": "valkyries",
+      "to": "valhalla",
+      "type": "tradition-relation",
+      "note": "Valkyries participate in selection/movement of slain warriors toward Valhalla traditions."
+    },
+    {
+      "from": "yggdrasil-world-tree",
+      "to": "hel-realm",
+      "type": "realm-connection",
+      "note": "Norse world-tree cosmography provides a route context for differentiated realms including Hel-related material."
+    },
+    {
+      "from": "duat",
+      "to": "hall-two-truths",
+      "type": "passage-to-judgment",
+      "note": "Egyptian underworld passage and judgment architecture belong to the same funerary cosmographic complex."
+    },
+    {
+      "from": "sheol",
+      "to": "hades-realm",
+      "type": "translation-reception",
+      "note": "Greek biblical translation/reception often maps Sheol vocabulary into Hades, while meanings remain historically distinct."
+    },
+    {
+      "from": "mount-meru",
+      "to": "sacred-mountain-temple",
+      "type": "cosmic-mountain-comparison",
+      "note": "Meru and biblical sacred mountains may be compared by center/orientation function without historical identity."
+    },
+    {
+      "from": "labyrinth",
+      "to": "mandorla-vesica",
+      "type": "threshold-comparison",
+      "note": "Both can model passage and bounded transition, but one is route complexity and the other overlap geometry."
+    },
+    {
+      "from": "caduceus",
+      "to": "angels-messengers",
+      "type": "messenger-comparison",
+      "note": "Messenger/psychopomp functions can be compared while Hermes and angelic traditions remain distinct."
     }
   ],
   "layer_grammar_authority": "data/house/layer-terrain-regime-atlas.json"
