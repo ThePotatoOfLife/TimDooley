@@ -82,6 +82,57 @@ def validate_house_bridges(errors: list[str]) -> None:
         if "See all Dwellings &amp; Rooms" not in text:
             errors.append(f"{rel} House bridge missing Rooms return path")
 
+
+def validate_specialist_subview_projection(errors: list[str]) -> None:
+    registry_path = ROOT / "data" / "house" / "specialist-subviews.json"
+    surfaces_path = ROOT / "data" / "house" / "public-surfaces.json"
+    if not registry_path.exists():
+        errors.append("missing specialist subview registry")
+        return
+    try:
+        registry = json.loads(registry_path.read_text(encoding="utf-8"))
+        surfaces = json.loads(surfaces_path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        errors.append(f"invalid specialist subview projection inputs: {exc}")
+        return
+    surface_by = {x.get("id"): x for x in surfaces.get("surfaces", []) if isinstance(x, dict) and x.get("id")}
+    by_parent: dict[str, int] = {}
+    for row in registry.get("records", []):
+        if not isinstance(row, dict):
+            continue
+        sid = row.get("id")
+        parent_id = row.get("parent_surface_id")
+        route = row.get("route", "/")
+        rel = canonical_route_to_rel(route)
+        path = SITE / rel
+        if not path.exists():
+            errors.append(f"specialist subview missing built route: {sid} -> {rel}")
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        marker = f'data-house-subview="{sid}"'
+        if marker not in text:
+            errors.append(f"{rel} missing specialist House marker {marker}")
+        if text.count(marker) != 1:
+            errors.append(f"{rel} must contain exactly one specialist House marker for {sid}")
+        if "Current owners:" not in text:
+            errors.append(f"{rel} specialist bridge missing current-owner links")
+        by_parent[parent_id] = by_parent.get(parent_id, 0) + 1
+    for parent_id, expected_count in by_parent.items():
+        parent = surface_by.get(parent_id)
+        if not parent:
+            continue
+        rel = canonical_route_to_rel(parent.get("canonical_route", "/"))
+        path = SITE / rel
+        if not path.exists():
+            errors.append(f"specialist parent surface missing built page: {parent_id}")
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        marker = f'data-specialist-subviews="{parent_id}"'
+        if marker not in text:
+            errors.append(f"{rel} missing specialist-subview family projection")
+        if text.count('class="specialist-subviews__card"') < expected_count:
+            errors.append(f"{rel} specialist-subview projection exposes fewer than {expected_count} registered child readers")
+
 def read(rel: str, errors: list[str]) -> str:
     path = SITE / rel
     if not path.exists():
@@ -328,6 +379,7 @@ def main() -> int:
                 if not target.exists() and not deploy_generated(target):
                     bad.append(f"{html_path.relative_to(SITE)} -> {raw}")
         validate_house_bridges(errors)
+        validate_specialist_subview_projection(errors)
 
         if bad:
             errors.append(f"broken local references in built site: {len(bad)}; examples: {bad[:8]}")
