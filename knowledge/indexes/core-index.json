@@ -1,5 +1,5 @@
 {
-  "version": "4.6.0",
+  "version": "4.7.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -12,6 +12,9 @@
   "canonical_groups": {
     "root_and_identity": [
       "root-system",
+      "tim-identity-ontology",
+      "potato-of-life",
+      "potato-of-life-trinity",
       "potatoverse-master-framework",
       "tim-dooley",
       "tim-role-synthesis",
@@ -41,6 +44,7 @@
       "timic-unification-program"
     ],
     "traditions": [
+      "potato-of-life-trinity",
       "biblical-overlap-atlas",
       "biblical-research-router",
       "vesica-esoteric-atlas",
@@ -84,6 +88,24 @@
     ]
   },
   "records": [
+    {
+      "id": "potato-of-life-trinity",
+      "path": "knowledge/theology/potato-of-life-trinity.json",
+      "branch": "root",
+      "kind": "canonical mature Trinity theology owner",
+      "terms": [
+        "Potato of Life",
+        "Trinity",
+        "Father",
+        "Son",
+        "Spirit",
+        "source-facing",
+        "manifestation",
+        "Door",
+        "continuity",
+        "New Trinity 2024"
+      ]
+    },
     {
       "id": "root-system",
       "path": "knowledge/core/root-system.json",
