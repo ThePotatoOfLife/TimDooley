@@ -1,10 +1,10 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-18",
   "authority": "nested-bounded-context-governance",
   "parent_room_registry": "data/house/rooms.json",
-  "principle": "The ten canonical Rooms remain the stable top-level bounded contexts. Nested Rooms delegate scope inside a parent Room; they do not create a second owner for the same fact family.",
-  "admission_rule": "A nested Room should have a distinct task/vocabulary or specialist representation, enough internal material to navigate, and clear interfaces. If it cannot state its boundary, keep it a Path, View, Programme or topic instead.",
+  "principle": "The ten canonical top-level bounded contexts remain the stable owners. Publicly they are projected as Dwellings; nested Rooms delegate scope inside a parent Dwelling and do not create a second owner for the same fact family.",
+  "admission_rule": "A nested Room should have a distinct task/vocabulary or specialist representation, enough internal material to navigate, and clear interfaces. If it cannot state its boundary, keep it a Path, View, Programme, Field, Collection or topic instead.",
   "subrooms": [
     {
       "id": "canon-identities",
