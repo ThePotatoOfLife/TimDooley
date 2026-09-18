@@ -367,8 +367,12 @@ def validate_symbolic_planes(errors,rooms):
     expected_rooms=['potatoverse-canon','traditions-texts','science-formal-models','life-body','world-systems','culture-information','time-history','archive-sources']
     if [x.get('room_id') for x in directions if isinstance(x,dict)]!=expected_rooms:
         errors.append('symbolic compass Room mapping drifted')
-    if compass.get('center',{}).get('room_id')!='research-lab':
-        errors.append('symbolic compass center must remain Research Lab')
+    if compass.get('center',{}).get('node_id')!='axis':
+        errors.append('symbolic compass spatial center must remain Axis')
+    if compass.get('center',{}).get('inner_ring_room_id')!='research-lab':
+        errors.append('Research Lab must remain the inner Forge ring around Axis')
+    if compass.get('semantic_center',{}).get('node_id')!='potato-of-life':
+        errors.append('symbolic compass semantic center must remain Potato of Life')
     if compass.get('outer_ring',{}).get('room_id')!='works':
         errors.append('symbolic compass outer ring must remain Works/Fruit')
     for row in directions:
@@ -484,7 +488,7 @@ def validate_navigation_consolidation(errors):
         'data/house/topology.json','data/house/concept-topology.json',
         'data/house/orientation-population.json','data/house/tree-plane-routing.json',
         'data/house/seed-spiral-routing.json','data/axis-flow-contract.json',
-        'data/house/religious-symbolic-branch-atlas.json','knowledge/core/root-system.json'
+        'data/house/religious-symbolic-branch-atlas.json','data/house/project-center.json','knowledge/core/root-system.json'
     }
     missing=sorted(required_owners-set(owners))
     if missing: errors.append('navigation manifest missing authorities: '+', '.join(missing))
