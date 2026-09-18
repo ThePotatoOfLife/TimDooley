@@ -20,13 +20,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote, urlparse
 
-from house_public_surfaces import (
-    parent_chain,
-    primary_gateway_rows,
-    surface_by_route,
-    surface_rows,
-    surfaces_by_id,
-)
+from house_public_surfaces import primary_gateway_rows
+from house_public_surfaces import parent_chain, surface_by_route, surface_rows, surfaces_by_id
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
