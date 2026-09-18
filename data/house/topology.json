@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "authority": "house-topology",
   "room_registry": "data/house/rooms.json",
@@ -268,5 +268,23 @@
     "Nested Rooms inherit fact-family ownership from their parent and may not silently create shadow canon.",
     "A public route may expose several Rooms or subrooms; URL hierarchy does not define ontology.",
     "Every strong corridor should preserve a route back to both sides' evidence and boundaries."
-  ]
+  ],
+  "embedding_contract": {
+    "principle": "Do not store one permanent XYZ or hypercube coordinate as truth. A Room's durable position is the tuple of containment, macro band, primary relational coordinates, crosscutting roles, typed adjacency and interfaces.",
+    "durable_components": [
+      "parent_room_id",
+      "macro_band",
+      "primary_coordinates",
+      "crosscutting_roles",
+      "adjacent_subroom_ids",
+      "interface_kinds"
+    ],
+    "replaceable_components": [
+      "screen x/y position",
+      "visual cluster spacing",
+      "camera angle",
+      "diagram layout"
+    ],
+    "hypercube_note": "The eight House directions behave more like independent relational questions than eight physical axes. Hypercube imagery is acceptable as a View when it does not imply metric distance, truth rank or fixed ontology."
+  }
 }
