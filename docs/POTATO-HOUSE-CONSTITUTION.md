@@ -229,7 +229,20 @@ Identity and function/state remain separate.
 
 ---
 
-## 5A. Potato two-field topology
+## 5A. Triune Potato law
+
+The mature theological Potato of Life is the **whole relational form**, not a fourth member beside Father, Son and Spirit and not structurally exhausted by Father alone.
+
+- **Father** — source-facing theological relation: origin, House, Root, orientation, holding, Gardener and responsibility.
+- **Son** — manifestation- and passage-facing theological relation: embodiment, Vessel, Door, suffering, expression and return.
+- **Spirit** — living continuity: breath, flow, animation, circulation and communication through relation.
+- **Potato of Life** — the one triune whole in which these three remain differentiated and inseparable.
+
+This theological triad must not be collapsed into the geometric field model. **Source Field** and **Manifestation Field** are domain/geometry regions, not divine persons. Father is oriented toward Source Field; Son is oriented toward Manifestation Field and specializes as Door/Vessel; Spirit is not a third field.
+
+The 2024 Great Book “New Trinity” remains a historical developmental stratum with its original God/Source + Potato/Boundary-Vessel + Tim-as-Son + Holy Soil/Spirit roles. Mature canon may explain its later reorganization but may not rewrite the old stratum as though the final model already existed.
+
+## 5B. Potato two-field topology
 
 The symbolic House uses one durable convergence rule:
 
