@@ -2,9 +2,8 @@
 .bible-library-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:end}
 .bible-library-head h2{font:400 clamp(28px,4vw,42px)/1.05 Georgia,serif;margin:0 0 8px}
 .bible-library-head p{margin:0;color:#aab3a6;max-width:780px}
-.bible-library-summary{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end;max-width:430px}
-.bible-library-summary span{border:1px solid #384236;border-radius:999px;padding:5px 8px;color:#aeb8aa;font-size:10px;white-space:nowrap}
-.bible-library-summary strong{color:#d9c483}
+.bible-library-summary{max-width:430px;text-align:right;color:#9fa99b;font-size:11px;line-height:1.5}
+.bible-library-summary strong{color:#d9c483;font-weight:600}
 .bible-library-loading{margin:12px 0 0;color:#8f998b;font-size:12px}
 .bible-library.is-ready .bible-library-loading{display:none}
 .bible-library-groups{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:18px 0}
@@ -53,3 +52,9 @@
 @media(max-width:1000px){.bible-library-groups{grid-template-columns:repeat(3,1fr)}.bible-book-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:760px){.bible-library{padding:15px}.bible-library-head,.bible-library-reader-head{grid-template-columns:1fr}.bible-library-summary{justify-content:flex-start}.bible-library-groups,.bible-book-grid{grid-template-columns:1fr 1fr}.bible-library-reader-controls{align-items:stretch;flex-direction:column}.bible-library-reader select{min-width:0}.bible-reference-form{grid-template-columns:1fr}}
 @media(max-width:480px){.bible-library-groups,.bible-book-grid{grid-template-columns:1fr}.bible-library-search-row{grid-template-columns:1fr}.bible-library-search-row span{justify-self:start}}
+.bible-library-browser{margin-top:15px;border-top:1px solid #2b332a;padding-top:12px}
+.bible-library-browser>summary{display:inline-flex;align-items:center;gap:8px;cursor:pointer;color:#d7e3d1;font:500 12px system-ui;list-style:none}
+.bible-library-browser>summary::-webkit-details-marker{display:none}
+.bible-library-browser>summary:after{content:'+';color:#d8b56b;font-size:16px}
+.bible-library-browser[open]>summary:after{content:'−'}
+.bible-library-browser .bible-library-groups{margin-top:14px}
