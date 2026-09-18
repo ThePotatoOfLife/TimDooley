@@ -1,5 +1,7 @@
 # Tim Dooley — Life, Persona and Myth Timeline
 
+**Lifecycle status:** retained readable timeline/source stratum. Canonical event identity lives in `data/timeline-events.json` and source routing in `data/timeline-source-registry.json`. This document remains useful for provenance, early-life roadmap context and unresolved historical research; it is not the canonical event database.
+
 > This timeline is intentionally split into **public-person history**, **mythic timeline**, and **open research**. A mythic event is not silently converted into a biographical fact.
 
 ## What we know, what we can infer, and what remains open
