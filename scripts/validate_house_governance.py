@@ -510,10 +510,18 @@ def validate_navigation_consolidation(errors):
         if not isinstance(edge,dict): continue
         if edge.get('from') not in by or edge.get('to') not in by:
             errors.append(f'branch atlas corridor references unknown node: {edge}')
+    branch_ids={x.get('id') for x in atlas.get('branches',[]) if isinstance(x,dict)}
+    if 'death-passage' not in branch_ids: errors.append('death-passage branch missing')
+    if 'garden-waters' not in branch_ids: errors.append('garden-waters branch missing')
+    nodes_by_id={x.get('id'):x for x in node_rows}
+    for nid in ('duat','sheol','hades-realm','hel-realm','hall-two-truths'):
+        if nodes_by_id.get(nid,{}).get('branch_id')!='death-passage': errors.append(f'{nid} must remain in death-passage rather than demonological branch')
+    for nid in ('eden-gan-eden','eden-four-rivers','eden-cherubim-gate'):
+        if nodes_by_id.get(nid,{}).get('branch_id')!='garden-waters': errors.append(f'{nid} must remain in garden-waters branch')
     rule=atlas.get('epistemic_rule','').casefold()
     for token in ('own historical/textual tradition','navigation/comparative projections','not proof of literal identity'):
         if token not in rule: errors.append(f'religious branch atlas missing epistemic boundary: {token}')
-    if len(node_rows)>64: errors.append('religious branch atlas should remain curated; split deeper population into archive-only registries before exceeding 64 primary nodes')
+    if len(node_rows)>80: errors.append('religious branch atlas should remain curated; split deeper population into archive-only registries before exceeding 80 primary nodes')
 
 
 def validate_providence_structure(errors):
