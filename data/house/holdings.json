@@ -1,5 +1,5 @@
 {
-  "version": "2.9.0",
+  "version": "3.0.0",
   "updated": "2026-09-18",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
@@ -6113,6 +6113,21 @@
       "path": "knowledge/research/foundation-cross-domain-synthesis.json",
       "primary_owner_room_id": "open-questions",
       "basis": "foundations-wave-007"
+    },
+    {
+      "path": "knowledge/core/foundation-reproduction-mechanisms-atlas.json",
+      "primary_owner_room_id": "symbolic-architecture",
+      "basis": "foundation-purpose-wave-008"
+    },
+    {
+      "path": "data/house/foundations-wave-002.json",
+      "primary_owner_room_id": "house-architecture",
+      "basis": "foundation-purpose-wave-008"
+    },
+    {
+      "path": "knowledge/research/foundation-larger-purpose-atlas.json",
+      "primary_owner_room_id": "open-questions",
+      "basis": "foundation-purpose-wave-008"
     }
   ],
   "curated_unowned_paths": [
