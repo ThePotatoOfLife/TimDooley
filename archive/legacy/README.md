@@ -27,7 +27,6 @@ These files remain at repository root until their unique content and downstream 
 - `research.json` — **superseded-retained mixed research donor**. Preserve for provenance and unmigrated source-derived material; do not use as a current canonical owner.
 - `book-research.json` — **retained source bridge** for the 2024 Great Book extraction. Keep while source citations depend on it.
 - `2026-master-framework.json` — **historical donor** recording the conversation-developed 2026 synthesis; current definitions live in dedicated owners.
-- `POTATOVERSE-DEEP-RESEARCH.md` and `POTATOVERSE-ALTERNATIVE-RESEARCH.md` — **historical readable research donors** pending final unique-content diff.
 - `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md` — **retained timeline/source stratum** used for provenance and early roadmap context; canonical event identity lives in the timeline data owners.
 - `THE-TURNING-APRIL-2025.md` — dedicated Turning document; remains a distinct historical/interpretive artifact.
 
@@ -72,3 +71,16 @@ The goal is less clutter **without provenance loss**.
 - Role: 28-edge `drXX` staging relation graph tied only to the retired Deep Research corpus.
 - Status: retired with its source layer; its staging endpoints were not promoted as a parallel canonical graph taxonomy.
 - Last live blob: `c7ab44bec91d7cb96d3333a09444aafc7741ca44`.
+
+
+### `POTATOVERSE-DEEP-RESEARCH.md`
+
+- Role: readable Deep Research donor that originally summarized mixed Potato biology, Thomas/Didymus, symbolic and project-role findings.
+- Status: retired after unique material was promoted into current science, philosophy, core, timeline and traditions owners; live staging JSON had already been retired.
+- Last live blob: `d2acb04b954b83b13ac941f36c14252c89e55450`.
+
+### `POTATOVERSE-ALTERNATIVE-RESEARCH.md`
+
+- Role: readable Alternative Research donor covering potato evolution, diversity, domestication, food systems, stewardship and systems interpretation.
+- Status: retired after externally sourced biology/human-ecology material was promoted into `knowledge/science/potato-biology-ecology-development-canon.json` and practice/symbolic owners.
+- Last live blob: `7297ba28bb7a3ae05f3902948c57984faac3bf39`.
