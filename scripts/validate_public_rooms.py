@@ -55,6 +55,7 @@ ROOM_PAGE_CONTRACTS = {
 }
 
 EXPECTED_PUBLIC_ROOMS = {
+    "axis": "axis/",
     "culture": "context/culture/",
     "history": "history/",
     "politics": "politics/",
