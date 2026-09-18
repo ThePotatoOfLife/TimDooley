@@ -1,7 +1,7 @@
 {
-  "version": "4.8.0",
+  "version": "5.0.0",
   "updated": "2026-09-18",
-  "purpose": "Canonical backend-to-frontend projection contract. Canonical data stays modular and keeps its existing owners; this bridge maps major archive branches and backend families into exactly five simple public doors plus a visible secondary Rooms layer and quieter global/deep surfaces.",
+  "purpose": "Canonical backend-to-frontend projection contract. Five broad public Doors remain simple entrances; mature Dwellings, registered Views and governed specialist subviews carry deeper navigation while canonical data stays modular and ownership remains with its source records.",
   "data_roots": [
     "data/",
     "knowledge/"
@@ -72,12 +72,13 @@
     },
     "spirit": {
       "primary_door": "religion",
-      "human_route": "religion/",
+      "human_route": "potato-of-life/spirit/",
       "archive_route": "explore/#branch=spirit",
       "static_topic_route": "topics/spirit/",
       "related_doors": [
         "philosophy"
-      ]
+      ],
+      "specialist_parent": "potato-of-life"
     },
     "transformation": {
       "primary_door": "philosophy",
@@ -90,13 +91,18 @@
       ]
     },
     "cosmology": {
-      "primary_door": "religion",
-      "human_route": "religion/",
+      "primary_door": "science",
+      "human_route": "science/",
       "archive_route": "explore/#branch=cosmology",
       "static_topic_route": "topics/cosmology/",
       "related_doors": [
-        "philosophy",
-        "science"
+        "religion",
+        "philosophy"
+      ],
+      "specialist_routes": [
+        "science/axis-11d-sun-spiral/",
+        "science/celestial-particles/",
+        "science/research-map/"
       ]
     },
     "science": {
@@ -110,23 +116,25 @@
     },
     "body": {
       "primary_door": "science",
-      "human_route": "science/",
+      "human_route": "life-body/",
       "archive_route": "explore/#branch=body",
       "static_topic_route": "topics/body/",
       "related_doors": [
         "religion",
         "philosophy"
-      ]
+      ],
+      "specialist_parent": "life-body"
     },
     "corporium": {
-      "primary_door": "philosophy",
+      "primary_door": "tim",
       "human_route": "corporium/",
       "archive_route": "explore/#branch=corporium",
       "static_topic_route": "topics/corporium/",
       "related_doors": [
-        "tim",
+        "philosophy",
         "science"
-      ]
+      ],
+      "specialist_parent": "tim"
     },
     "traditions": {
       "primary_door": "religion",
@@ -171,6 +179,10 @@
       "static_topic_route": "topics/works/",
       "related_doors": [
         "philosophy"
+      ],
+      "specialist_parent": "tim",
+      "specialist_routes": [
+        "great-book/"
       ]
     },
     "sources": {
@@ -195,7 +207,13 @@
     "north_europe_economic": {
       "primary_door": "world",
       "canonical_owner": "data/north-europe-system-atlas.json",
-      "deep_route": "explore/#branch=world"
+      "deep_route": "explore/#branch=world",
+      "global_route": "economy/",
+      "related_routes": [
+        "north/",
+        "world-systems/",
+        "world-map/"
+      ]
     },
     "legal": {
       "global_route": "law/",
@@ -212,7 +230,8 @@
         "philosophy",
         "tim"
       ],
-      "deep_route": "explore/#branch=traditions"
+      "deep_route": "explore/#branch=traditions",
+      "global_route": "potato-of-life/"
     },
     "religion": {
       "primary_door": "religion",
@@ -220,8 +239,9 @@
       "deep_route": "explore/#branch=traditions"
     },
     "research": {
-      "global_route": "explore/",
-      "canonical_owner": "data/research-frontier.json"
+      "global_route": "research-lab/",
+      "canonical_owner": "knowledge/research/",
+      "deep_route": "explore/"
     },
     "relationships": {
       "global_route": "explore/",
@@ -230,7 +250,11 @@
     "intelligence_security": {
       "primary_door": "world",
       "canonical_owner": "data/intelligence-security-graph.json",
-      "deep_route": "explore/#branch=world"
+      "deep_route": "below/",
+      "related_routes": [
+        "world-systems/",
+        "context/source-authority/"
+      ]
     },
     "culture": {
       "global_route": "context/culture/",
@@ -306,7 +330,8 @@
     "pathway": "explore/#path={id}",
     "static_record": "records/{id}/",
     "static_topic": "topics/{id}/",
-    "static_context": "context/{id}/"
+    "static_context": "context/{id}/",
+    "specialist_subview": "{parent}/{specialist}/"
   },
   "record_resolution": {
     "id_fields": [
@@ -369,7 +394,16 @@
     "House is the public structural guide above Rooms and Views; it is not a sixth primary Door",
     "Life & Body and Research Lab remain canonical top-level bounded contexts, publicly projected as Dwellings, with explicit routes",
     "The ten canonical top-level bounded contexts remain owners; publicly they are Dwellings, while nested Rooms delegate scope within them",
-    "House topology is typed and multi-axis; URL nesting or visual proximity never determines truth rank or ownership"
+    "House topology is typed and multi-axis; URL nesting or visual proximity never determines truth rank or ownership",
+    "Deep legacy readers use data/house/specialist-subviews.json rather than becoming extra global surfaces.",
+    "Mature bounded-context routes such as Life & Body, Research Lab, Below, Law and Economy take precedence over generic Explore links for ordinary reader navigation; Explore remains the deep archive browser."
   ],
-  "design_rule": "Five simple Doors above, ten visible Dwellings in the middle, nested Rooms within them, and one deep archive below. Specialist Views project the same canonical backend without duplicating truth or exposing internal file organization as navigation."
+  "design_rule": "Five simple Doors above; mature Dwellings and registered Views in the middle; nested specialist readers beneath their parent surfaces; canonical Rooms own knowledge; Explore remains the deep archive rather than the default destination for subjects with a mature reader.",
+  "public_projection_layers": {
+    "primary_gateways": "data/house/public-surfaces.json#primary_gateway_ids",
+    "registered_views": "data/house/public-surfaces.json",
+    "specialist_subviews": "data/house/specialist-subviews.json",
+    "house_integration": "data/house/legacy-modern-public-integration-contract.json",
+    "canonical_owners": "data/house/holdings.json"
+  }
 }
