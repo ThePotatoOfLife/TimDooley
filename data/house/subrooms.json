@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-18",
   "authority": "nested-bounded-context-governance",
   "parent_room_registry": "data/house/rooms.json",
@@ -542,7 +542,10 @@
       "local_role": "tradition context",
       "purpose": "Hold non-biblical traditions and philosophical comparators that deserve their own historical meanings before project comparison.",
       "knowledge_roots": [
-        "knowledge/traditions/"
+        "knowledge/traditions/",
+        "knowledge/traditions/comparative-mythology-map.json",
+        "knowledge/traditions/fate-thread-norns-moirai-comparative-atlas.json",
+        "knowledge/traditions/door-window-negative-space-tao-atlas.json"
       ],
       "public_surface_ids": [
         "religion",
@@ -618,7 +621,10 @@
       "local_role": "physical science",
       "purpose": "Own physical/cosmological claims, models and status boundaries around particles, fields, astronomy and cosmic analogies.",
       "knowledge_roots": [
-        "knowledge/science/"
+        "knowledge/science/",
+        "knowledge/science/advanced-physics-expansion-wave-003.json",
+        "knowledge/science/quantum-standard-model-astronomy-atlas.json",
+        "knowledge/science/celestial-astronomy-astrology-cosmology-canon.json"
       ],
       "public_surface_ids": [
         "science"
@@ -736,7 +742,9 @@
       "local_role": "organism biology",
       "purpose": "Own literal potato anatomy, tuber biology, growth, dormancy, propagation, storage and environmental constraints.",
       "knowledge_roots": [
-        "knowledge/biology/potato-growth-principles.json"
+        "knowledge/biology/potato-growth-principles.json",
+        "knowledge/science/potato-biology-ecology-development-canon.json",
+        "knowledge/timeline/potato-angels-eye-sprout-development-ledger.json"
       ],
       "public_surface_ids": [
         "life-body",
