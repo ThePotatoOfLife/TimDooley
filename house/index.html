@@ -51,6 +51,23 @@
 @media(max-width:900px){.purpose-grid{grid-template-columns:1fr 1fr}.value-ladder{grid-template-columns:1fr 1fr 1fr}.bridge-strip{grid-template-columns:1fr}.bridge-strip i{display:none}}
 @media(max-width:620px){.purpose-grid,.value-ladder{grid-template-columns:1fr}}
 
+
+.case-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}
+.case-tab{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:7px 10px;font:700 9px var(--site-font-sans);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.case-tab[aria-pressed="true"],.case-tab:hover{color:var(--site-green);border-color:#647b5d;background:#101710}
+.case-panel{border:1px solid var(--site-line);border-radius:14px;padding:18px;background:var(--site-panel)}
+.case-panel h3{font:400 28px/1.05 var(--site-font-serif);margin:0}
+.case-kicker{color:var(--site-green);font-size:9px;text-transform:uppercase;letter-spacing:.08em;margin:5px 0 10px}
+.case-triad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:14px 0}
+.case-triad article,.case-operator,.case-question{border-top:1px solid var(--site-line);padding-top:9px}
+.case-triad b,.case-operator b,.case-question b{display:block;font:400 15px var(--site-font-serif);color:var(--site-gold)}
+.case-triad span,.case-operator span,.case-question span{display:block;color:var(--site-muted);font-size:11px;line-height:1.45;margin-top:3px}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+.case-operators,.case-questions{display:grid;gap:8px}
+.case-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.case-meta span{border:1px solid var(--site-line);border-radius:999px;padding:5px 8px;color:var(--site-muted);font-size:9px}
+@media(max-width:760px){.case-triad,.case-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body class="house-depth-overview"><main class="page page--reading">
@@ -76,6 +93,15 @@
 </div></div></section>
 
 
+
+
+<section class="page-section" id="crystallized-cases">
+<p class="eyebrow">Crystallized cases</p>
+<h2>Run the House against reality</h2>
+<p class="topology-note">These are not examples of institutions “being” Potato symbols. Each dossier keeps the entity's own identity and sources, then asks whether project operators reveal a real mechanism worth testing.</p>
+<div class="case-tabs" id="entityCaseTabs"></div>
+<div class="case-panel" id="entityCasePanel"><p class="boundary">Loading crystallized dossiers…</p></div>
+</section>
 
 <section class="page-section" id="purpose-discovery">
 <p class="eyebrow">Purpose & discovery</p>
@@ -254,10 +280,27 @@
 (async()=>{
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   try{
-    const [subRes,topoRes,intRes,projRes,conceptRes,holdRes,collRes,dataHoldRes,dossierRes,societyRes]=await Promise.all([fetch('../data/house/subrooms.json'),fetch('../data/house/topology.json'),fetch('../data/house/interfaces.json'),fetch('../data/house/projections.json'),fetch('../data/house/concept-topology.json'),fetch('../data/house/holdings.json'),fetch('../data/house/collections.json'),fetch('../data/house/data-holdings.json'),fetch('../data/house/room-dossiers.json'),fetch('../data/house/society-population.json')]);
-    if(!subRes.ok||!topoRes.ok||!intRes.ok||!projRes.ok||!conceptRes.ok||!holdRes.ok||!collRes.ok||!dataHoldRes.ok||!dossierRes.ok||!societyRes.ok)throw new Error('House topology unavailable');
-    const sub=await subRes.json(),topo=await topoRes.json(),interfaces=await intRes.json(),projections=await projRes.json(),concepts=await conceptRes.json(),holdings=await holdRes.json(),collections=await collRes.json(),dataHoldings=await dataHoldRes.json(),dossiers=await dossierRes.json(),society=await societyRes.json();
+    const [subRes,topoRes,intRes,projRes,conceptRes,holdRes,collRes,dataHoldRes,dossierRes,societyRes,entityRes]=await Promise.all([fetch('../data/house/subrooms.json'),fetch('../data/house/topology.json'),fetch('../data/house/interfaces.json'),fetch('../data/house/projections.json'),fetch('../data/house/concept-topology.json'),fetch('../data/house/holdings.json'),fetch('../data/house/collections.json'),fetch('../data/house/data-holdings.json'),fetch('../data/house/room-dossiers.json'),fetch('../data/house/society-population.json'),fetch('../data/house/entity-dossiers-wave-001.json')]);
+    if(!subRes.ok||!topoRes.ok||!intRes.ok||!projRes.ok||!conceptRes.ok||!holdRes.ok||!collRes.ok||!dataHoldRes.ok||!dossierRes.ok||!societyRes.ok||!entityRes.ok)throw new Error('House topology unavailable');
+    const sub=await subRes.json(),topo=await topoRes.json(),interfaces=await intRes.json(),projections=await projRes.json(),concepts=await conceptRes.json(),holdings=await holdRes.json(),collections=await collRes.json(),dataHoldings=await dataHoldRes.json(),dossiers=await dossierRes.json(),society=await societyRes.json(),entityDossiers=await entityRes.json();
     const groups=document.getElementById('houseSubrooms'),corridors=document.getElementById('houseCorridors'),interfaceRoot=document.getElementById('houseInterfaces'),projectionTabs=document.getElementById('houseProjectionTabs'),projectionPanel=document.getElementById('houseProjectionPanel'),operatorRoot=document.getElementById('houseOperators'),operatorRelations=document.getElementById('houseOperatorRelations'),holdingsRoot=document.getElementById('houseHoldingsGrid'),collectionStrip=document.getElementById('houseCollectionStrip');
+
+
+    const entityTabs=document.getElementById('entityCaseTabs'),entityPanel=document.getElementById('entityCasePanel');
+    if(entityTabs&&entityPanel){
+      const rows=entityDossiers.dossiers||[];
+      entityTabs.innerHTML=rows.map((x,i)=>'<button class="case-tab" type="button" data-case-id="'+esc(x.id)+'" aria-pressed="'+String(i===0)+'">'+esc(x.identity?.name||x.id)+'</button>').join('');
+      function renderEntityCase(id){
+        const x=rows.find(r=>r.id===id)||rows[0];if(!x)return;
+        entityTabs.querySelectorAll('[data-case-id]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.caseId===x.id)));
+        const op=(x.operators||[]).map(o=>'<div class="case-operator"><b>'+esc(o.operator)+'</b><span>'+esc(o.why)+'</span><span><strong>Test:</strong> '+esc(o.test)+'</span></div>').join('');
+        const qs=(x.discovery_questions||[]).map(q=>'<div class="case-question"><b>Research question</b><span>'+esc(q)+'</span></div>').join('');
+        const tensions=(x.tensions||[]).map(t=>'<span>'+esc(t.text)+'</span>').join('');
+        entityPanel.innerHTML='<h3>'+esc(x.identity?.name||x.id)+'</h3><div class="case-kicker">'+esc(x.identity?.kind||'entity')+' · '+esc(x.identity?.jurisdiction_or_scope||'')+'</div><div class="case-triad"><article><b>Spirit</b><span>'+esc(x.spirit?.documented_mission||'')+'</span></article><article><b>Mind</b><span>'+esc(x.mind?.decision_system||'')+'</span></article><article><b>Body</b><span>'+esc(x.body?.operational_capacity||'')+'</span></article></div><div class="case-grid"><div><p class="eyebrow">Operators that survive contact with evidence</p><div class="case-operators">'+op+'</div></div><div><p class="eyebrow">Shadow & discovery</p><p class="boundary"><b>Known unknowns:</b> '+esc((x.shadow?.known_unknowns||[]).join(' · '))+'</p><div class="case-questions">'+qs+'</div></div></div><div class="case-meta">'+tensions+'</div>';
+      }
+      entityTabs.addEventListener('click',e=>{const b=e.target.closest('[data-case-id]');if(b)renderEntityCase(b.dataset.caseId)});
+      renderEntityCase(rows[0]?.id);
+    }
 
     const triuneRoot=document.getElementById('societyTriune'),societyTabs=document.getElementById('societyTabs'),societyFamilies=document.getElementById('societyFamilies'),societyAnchors=document.getElementById('societyAnchors');
     if(triuneRoot){
