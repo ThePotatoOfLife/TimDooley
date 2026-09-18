@@ -147,15 +147,15 @@ def main() -> int:
                 errors.append(f"missing required site file: {rel}")
 
         index = read("index.html", errors)
-        require(index, ("POTATO", "Main sections"), "index.html", errors)
+        require(index, ("POTATO", "One project, one visible spine", 'class="project-spine"', 'class="public-doors"', 'id="cross-cutting-views"'), "index.html", errors)
         for href in CANONICAL_HOME_LINKS:
             if f'href="{href}"' not in index:
                 errors.append(f"index.html missing canonical reader entrance: {href}")
         forbid(index, ('id="rootbtn"', 'id="branches"', 'id="reader"', "app/app.js", "explore/#root", "<iframe"), "index.html", errors)
 
-        primary_nav = re.search(r'<nav class="sections"[^>]*>(.*?)</nav>', index, flags=re.I | re.S)
+        primary_nav = re.search(r'<nav class="public-doors"[^>]*>(.*?)</nav>', index, flags=re.I | re.S)
         if not primary_nav:
-            errors.append("index.html missing canonical sections navigation")
+            errors.append("index.html missing canonical public Doors navigation")
         else:
             hrefs = re.findall(r'href="([^"]+)"', primary_nav.group(1))
             if tuple(hrefs) != CANONICAL_HOME_LINKS:
