@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "authority": "house-interface-governance",
   "subroom_registry": "data/house/subrooms.json",
@@ -332,6 +332,142 @@
       "guard": "Ethical evaluation must not substitute for sourced description of real groups.",
       "reversible": "yes",
       "public_use": "philosophy / culture"
+    },
+    {
+      "id": "if-memory-genealogy",
+      "from": "memory-recovery",
+      "to": "developmental-genealogy",
+      "type": "recovered-history",
+      "changes": "Recovered conversations/files are placed into developmental sequence while preserving their original wording, source state and date uncertainty.",
+      "preserves": [
+        "source identity",
+        "original wording",
+        "original epistemic status",
+        "time uncertainty"
+      ],
+      "guard": "Recovery may extend the known record but may not backdate later interpretation into the recovered source.",
+      "reversible": "yes",
+      "public_use": "history / story / explore"
+    },
+    {
+      "id": "if-myth-symbolic",
+      "from": "comparative-mythology",
+      "to": "symbolic-architecture",
+      "type": "motif-comparison",
+      "changes": "Cross-tradition motifs are compared with project symbolic architecture as structured neighbors.",
+      "preserves": [
+        "tradition-specific meaning",
+        "source tradition",
+        "project-internal status"
+      ],
+      "guard": "Similarity does not establish genealogy, borrowing, fulfillment or identity.",
+      "reversible": "yes",
+      "public_use": "religion / house"
+    },
+    {
+      "id": "if-esoteric-math",
+      "from": "esoteric-sacred-geometry",
+      "to": "math-geometry",
+      "type": "historical-formalization",
+      "changes": "Historical/esoteric geometric language is translated into exact mathematical objects where possible.",
+      "preserves": [
+        "historical source",
+        "symbolic interpretation",
+        "exact mathematical definition"
+      ],
+      "guard": "Exact geometry may clarify a symbol but cannot by itself establish a physical or theological mechanism.",
+      "reversible": "yes",
+      "public_use": "religion / science"
+    },
+    {
+      "id": "if-traditions-theology",
+      "from": "other-traditions",
+      "to": "theology-god-language",
+      "type": "comparative-theology",
+      "changes": "A non-biblical tradition is compared with Potatoverse theology after first being described on its own terms.",
+      "preserves": [
+        "tradition self-description",
+        "historical context",
+        "project-theology status"
+      ],
+      "guard": "Project synthesis may compare but may not rewrite the source tradition's own meaning.",
+      "reversible": "yes",
+      "public_use": "religion / philosophy"
+    },
+    {
+      "id": "if-potato-testing",
+      "from": "potato-biology",
+      "to": "model-testing",
+      "type": "biology-to-model",
+      "changes": "Literal potato biology constrains or tests biological metaphors and candidate project models.",
+      "preserves": [
+        "biological fact",
+        "experimental context",
+        "symbolic status"
+      ],
+      "guard": "Botanical correspondence is not evidence for unrelated metaphysical claims.",
+      "reversible": "yes",
+      "public_use": "life-body / science"
+    },
+    {
+      "id": "if-body-neuro",
+      "from": "whole-body",
+      "to": "neurobiology",
+      "type": "physiological-integration",
+      "changes": "Whole-body physiology is connected to neural/autonomic control while keeping system-specific evidence intact.",
+      "preserves": [
+        "organ-system evidence",
+        "neurobiological evidence",
+        "uncertainty"
+      ],
+      "guard": "Cross-system synthesis must not infer a mechanism absent from the underlying evidence.",
+      "reversible": "yes",
+      "public_use": "life-body / science"
+    },
+    {
+      "id": "if-music-platform",
+      "from": "music-sound",
+      "to": "internet-platforms",
+      "type": "publication-distribution",
+      "changes": "A music work enters platform publication, audience, circulation and reception contexts.",
+      "preserves": [
+        "work identity",
+        "lyrics/version",
+        "publication context"
+      ],
+      "guard": "Platform reception or lyric language does not automatically become factual biography or doctrine.",
+      "reversible": "yes",
+      "public_use": "works / culture"
+    },
+    {
+      "id": "if-art-symbolic",
+      "from": "visual-art",
+      "to": "symbolic-architecture",
+      "type": "visual-symbolic-translation",
+      "changes": "A visual work can render project symbols and spatial relations as an authored composition.",
+      "preserves": [
+        "artwork identity",
+        "creative status",
+        "source symbolic concepts"
+      ],
+      "guard": "Depiction neither proves the depicted claim nor becomes the unique owner of the underlying concept.",
+      "reversible": "yes",
+      "public_use": "works / house"
+    },
+    {
+      "id": "if-games-systems",
+      "from": "games-simulations",
+      "to": "systems-dynamics",
+      "type": "simulation-formalization",
+      "changes": "Interactive or game systems are read as simulations/models with explicit mechanics and state transitions.",
+      "preserves": [
+        "simulation rules",
+        "model assumptions",
+        "creative-work identity"
+      ],
+      "guard": "Simulation output is not automatically evidence about the real-world system it resembles.",
+      "reversible": "yes",
+      "public_use": "works / science"
     }
   ]
 }
