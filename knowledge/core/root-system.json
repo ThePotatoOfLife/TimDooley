@@ -2,7 +2,7 @@
   "id": "root-system",
   "title": "Potato of Life Root System",
   "kind": "foundational ontology and branching skeleton",
-  "version": "5.5.0",
+  "version": "5.6.0",
   "updated": "2026-09-18",
   "aliases": [
     "Potato of Life skeleton",
@@ -336,6 +336,14 @@
         "interpretation",
         "governance"
       ]
+    },
+    "center_population": {
+      "text": "The semantic center is now populated with 15 reader-complete junctions in three bands: Nucleus (Potato/Father/Son/Spirit), Interface (Eye/Knowledge Fork/Door/Axis), and Living Metabolism (Seed/Root/Tree/Garden/Fruit/Shadow/Forge-Repair). Each dossier carries function, inputs, outputs, failure modes, tests, canonical owner, source files, public routes, pairings and evidence boundary. Fields/Plane/Cross remain structural coordinates rather than extra center inhabitants.",
+      "epistemic_class": [
+        "project_canon",
+        "governance",
+        "interpretation"
+      ]
     }
   },
   "relationships": [
@@ -428,6 +436,11 @@
       "target": "project-synthesis",
       "type": "lifecycle",
       "description": "Crystallizes Knowledge→Door→Garden/Tree→Fruit→History/Revision→Repair/Forge→Seed/Return and scoped local centers."
+    },
+    {
+      "target": "center-population",
+      "type": "population",
+      "description": "Reader-complete dossiers for the selective Potato center kernel."
     }
   ],
   "retrieval": {
