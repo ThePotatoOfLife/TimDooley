@@ -2,7 +2,7 @@
   "id": "root-system",
   "title": "Potato of Life Root System",
   "kind": "foundational ontology and branching skeleton",
-  "version": "5.2.0",
+  "version": "5.3.0",
   "updated": "2026-09-18",
   "aliases": [
     "Potato of Life skeleton",
@@ -312,6 +312,14 @@
         "project_canon",
         "interpretation"
       ]
+    },
+    "crosscutting_lenses": {
+      "text": "The project now has six non-owning interpretive lenses around the center: Motion (Wheel/Ring/Path/Spiral), Polarity (up/down, light/shadow, material/spiritual), Memory/History (event→archive→interpretation, with Akashic Tree only as metaphor), Social Formation (culture/subculture/institution/high-control), Embodiment/Spirit (physical vs symbolic/theological flow), and Practice/Path (view/intention/conduct/attention/Fruit/return). Lenses never become Rooms, floors or proof.",
+      "epistemic_class": [
+        "project_canon",
+        "comparative",
+        "interpretation"
+      ]
     }
   },
   "relationships": [
@@ -389,6 +397,11 @@
       "target": "project-center",
       "type": "governance",
       "description": "Defines semantic center, spatial center distinction and center-out promotion rings."
+    },
+    {
+      "target": "crosscutting-lenses",
+      "type": "reader-lens",
+      "description": "Six cross-cutting ways to read the Potato center without new ownership."
     }
   ],
   "retrieval": {
