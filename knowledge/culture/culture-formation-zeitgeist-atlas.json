@@ -1,7 +1,7 @@
 {
   "id": "culture-formation-zeitgeist-atlas",
-  "version": "1.0.0",
-  "updated": "2026-09-14",
+  "version": "2.0.0",
+  "updated": "2026-09-18",
   "status": "active-analytical-atlas",
   "purpose": "Model how shared meaning forms, scales, fragments, institutionalizes, persists, becomes extractive or high-control, and can be corrected or repaired.",
   "epistemic_boundaries": [
@@ -12,56 +12,107 @@
     "Historical labels are dated relationships, not permanent intrinsic properties."
   ],
   "formation_states": [
-    {"id":"encounter","definition":"People share an event, object, place or recurring interaction."},
-    {"id":"microculture","definition":"A small group develops repeated language, norms, jokes, rituals or expectations."},
-    {"id":"scene","definition":"Participation becomes recognizable around venues, creators, practices or media."},
-    {"id":"subculture","definition":"A formation develops stronger identity, boundaries, insider knowledge and durable practices."},
-    {"id":"counterpublic","definition":"Participants create alternative channels of discussion, interpretation or legitimacy relative to a wider public."},
-    {"id":"movement","definition":"Culture begins producing durable organizations, campaigns, leadership or coordinated action."},
-    {"id":"institutional-culture","definition":"Rules, professions, budgets, organizations and procedures reproduce the formation."},
-    {"id":"mainstream-mass","definition":"Forms gain wide reach through established distribution and public recognition."},
-    {"id":"prestige-canonical","definition":"Institutions preserve, teach, award, archive or treat works and practices as exemplary or enduring."},
-    {"id":"tradition-civilizational-inheritance","definition":"A formation persists across generations and becomes material later cultures inherit, remix, contest or revive."}
+    {
+      "id": "encounter",
+      "definition": "People share an event, object, place or recurring interaction."
+    },
+    {
+      "id": "microculture",
+      "definition": "A small group develops repeated language, norms, jokes, rituals or expectations."
+    },
+    {
+      "id": "scene",
+      "definition": "Participation becomes recognizable around venues, creators, practices or media."
+    },
+    {
+      "id": "subculture",
+      "definition": "A formation develops stronger identity, boundaries, insider knowledge and durable practices."
+    },
+    {
+      "id": "counterpublic",
+      "definition": "Participants create alternative channels of discussion, interpretation or legitimacy relative to a wider public."
+    },
+    {
+      "id": "movement",
+      "definition": "Culture begins producing durable organizations, campaigns, leadership or coordinated action."
+    },
+    {
+      "id": "institutional-culture",
+      "definition": "Rules, professions, budgets, organizations and procedures reproduce the formation."
+    },
+    {
+      "id": "mainstream-mass",
+      "definition": "Forms gain wide reach through established distribution and public recognition."
+    },
+    {
+      "id": "prestige-canonical",
+      "definition": "Institutions preserve, teach, award, archive or treat works and practices as exemplary or enduring."
+    },
+    {
+      "id": "tradition-civilizational-inheritance",
+      "definition": "A formation persists across generations and becomes material later cultures inherit, remix, contest or revive."
+    }
   ],
   "cultural_dimensions": {
-    "reach":"intimate to mass exposure and participation",
-    "participation_depth":"exposure, audience, occasional, active, self-identification, formal membership, core production or leadership",
-    "boundary_strength":"insider vocabulary, initiation, status markers, shibboleths, credentials, rituals and outsider categories",
-    "boundary_permeability":"capacity to join, leave, disagree or participate partially",
-    "institutionalization":"reproduction through organizations, rules, funding, professions, education, archives or law",
-    "persistence":"duration and memory systems",
-    "prestige":"symbolic status conferred by institutions and gatekeepers",
-    "commerciality":"dependence on markets, sponsorship, advertising, patronage or platform economies",
-    "coercion_exit_cost":"social, economic, reputational or practical cost of dissent and departure",
-    "archive_persistence":"durability, searchability and reproducibility of traces",
-    "correctability":"capacity to revise false claims, preserve counterevidence, forgive, expire labels and restore reputation",
-    "generativity":"capacity to produce new works, skills, institutions, relations or capabilities",
-    "garden_repair_value":"project-normative measure of agency, reciprocity, protection, truth-seeking, meaningful exit and future capacity"
+    "reach": "intimate to mass exposure and participation",
+    "participation_depth": "exposure, audience, occasional, active, self-identification, formal membership, core production or leadership",
+    "boundary_strength": "insider vocabulary, initiation, status markers, shibboleths, credentials, rituals and outsider categories",
+    "boundary_permeability": "capacity to join, leave, disagree or participate partially",
+    "institutionalization": "reproduction through organizations, rules, funding, professions, education, archives or law",
+    "persistence": "duration and memory systems",
+    "prestige": "symbolic status conferred by institutions and gatekeepers",
+    "commerciality": "dependence on markets, sponsorship, advertising, patronage or platform economies",
+    "coercion_exit_cost": "social, economic, reputational or practical cost of dissent and departure",
+    "archive_persistence": "durability, searchability and reproducibility of traces",
+    "correctability": "capacity to revise false claims, preserve counterevidence, forgive, expire labels and restore reputation",
+    "generativity": "capacity to produce new works, skills, institutions, relations or capabilities",
+    "garden_repair_value": "project-normative measure of agency, reciprocity, protection, truth-seeking, meaningful exit and future capacity"
   },
   "concepts": {
-    "popular-culture":{"definition":"Culture with broad audience recognition or participation; popularity describes reach, not inferiority."},
-    "mass-culture":{"definition":"Culture produced or distributed through large-scale industrial or platform systems."},
-    "high-culture":{"definition":"Culture institutionally treated as prestigious, exemplary or refined; a prestige/canon relation rather than proof of greater human worth."},
-    "elite-culture":{"definition":"Practices, tastes or networks concentrated among high-status or high-resource groups; related to but not identical with high culture."},
-    "canonical-culture":{"definition":"Works, practices or ideas repeatedly preserved and taught as culturally important."},
-    "zeitgeist":{"definition":"A retrospective or analytical description of concerns, styles, technologies, anxieties, hopes, conflicts, symbols and assumptions especially salient in a period; not a mystical causal force."},
-    "peak-culture":{"status":"project-analytical","definition":"A formation or moment with unusually high combined cultural generativity and coherence. It is separate from moral quality."},
-    "ideal-culture":{"definition":"An explicit normative aspiration describing what a culture says human relations ought to become; compare declared ideals with observable practice."},
-    "conflict-culture":{"definition":"A dispute that develops recurring stories, roles, vocabulary, archives, rituals, status systems and institutions that reproduce the conflict."},
-    "cultural-repair":{"definition":"Processes that increase correction, accountability, proportion, exit, protection, reciprocity and future capacity."}
+    "popular-culture": {
+      "definition": "Culture with broad audience recognition or participation; popularity describes reach, not inferiority."
+    },
+    "mass-culture": {
+      "definition": "Culture produced or distributed through large-scale industrial or platform systems."
+    },
+    "high-culture": {
+      "definition": "Culture institutionally treated as prestigious, exemplary or refined; a prestige/canon relation rather than proof of greater human worth."
+    },
+    "elite-culture": {
+      "definition": "Practices, tastes or networks concentrated among high-status or high-resource groups; related to but not identical with high culture."
+    },
+    "canonical-culture": {
+      "definition": "Works, practices or ideas repeatedly preserved and taught as culturally important."
+    },
+    "zeitgeist": {
+      "definition": "A retrospective or analytical description of concerns, styles, technologies, anxieties, hopes, conflicts, symbols and assumptions especially salient in a period; not a mystical causal force."
+    },
+    "peak-culture": {
+      "status": "project-analytical",
+      "definition": "A formation or moment with unusually high combined cultural generativity and coherence. It is separate from moral quality."
+    },
+    "ideal-culture": {
+      "definition": "An explicit normative aspiration describing what a culture says human relations ought to become; compare declared ideals with observable practice."
+    },
+    "conflict-culture": {
+      "definition": "A dispute that develops recurring stories, roles, vocabulary, archives, rituals, status systems and institutions that reproduce the conflict."
+    },
+    "cultural-repair": {
+      "definition": "Processes that increase correction, accountability, proportion, exit, protection, reciprocity and future capacity."
+    }
   },
   "transformation_models": {
-    "formation":"interaction -> repetition -> shared meaning -> norm -> identity -> memory -> institution -> inheritance or mutation",
-    "conflict":"incident -> story -> roles -> allies -> vocabulary -> evidence archive -> status system -> recurring rituals -> institution or legal process -> inherited memory",
-    "reputation":"event or claim -> framing -> repetition -> audience adoption -> archive persistence -> counterclaim -> platform amplification -> professional intervention -> legal or institutional response -> correction, adjudication or unresolved memory",
-    "zeitgeist":"historical conditions + technologies + institutions + shocks + repeated symbols + public mood + creative response -> recognizable period pattern"
+    "formation": "interaction -> repetition -> shared meaning -> norm -> identity -> memory -> institution -> inheritance or mutation",
+    "conflict": "incident -> story -> roles -> allies -> vocabulary -> evidence archive -> status system -> recurring rituals -> institution or legal process -> inherited memory",
+    "reputation": "event or claim -> framing -> repetition -> audience adoption -> archive persistence -> counterclaim -> platform amplification -> professional intervention -> legal or institutional response -> correction, adjudication or unresolved memory",
+    "zeitgeist": "historical conditions + technologies + institutions + shocks + repeated symbols + public mood + creative response -> recognizable period pattern"
   },
   "project_mapping": {
-    "sektur":"project-defined semi-bounded conflict and attention territory; keep historical Da Sektur distinct from the later Timic generalization",
-    "farm":"project analytical model of recurring attention cultivation and extraction",
-    "swamp":"project metaphor for dense, blocked or opaque overlap among incentives, institutions, media, markets and unresolved residue",
-    "tree-of-strife":"root incentive -> mechanism -> relation -> event -> consequence -> seed of recurrence",
-    "garden":"project counter-model emphasizing correction, accountability, exit, protection, reciprocity and independent future growth"
+    "sektur": "project-defined semi-bounded conflict and attention territory; keep historical Da Sektur distinct from the later Timic generalization",
+    "farm": "project analytical model of recurring attention cultivation and extraction",
+    "swamp": "project metaphor for dense, blocked or opaque overlap among incentives, institutions, media, markets and unresolved residue",
+    "tree-of-strife": "root incentive -> mechanism -> relation -> event -> consequence -> seed of recurrence",
+    "garden": "project counter-model emphasizing correction, accountability, exit, protection, reciprocity and independent future growth"
   },
   "research_routes": [
     "data/culture-ontology.json",
@@ -72,5 +123,106 @@
   ],
   "sources": [
     "knowledge/culture/culture-theory-source-ledger.json"
+  ],
+  "formation_control_axes": {
+    "rule": "Culture, subculture, institution and high-control conditions should not be arranged on one moral ladder. Evaluate independent mechanisms.",
+    "axes": [
+      {
+        "id": "cohesion",
+        "low": "weak shared identity/norms",
+        "high": "strong shared identity/norms",
+        "note": "High cohesion can support care or coercion; it is not itself high-control."
+      },
+      {
+        "id": "authority-concentration",
+        "low": "distributed/reviewable authority",
+        "high": "few nodes control interpretation/resources/sanctions"
+      },
+      {
+        "id": "information-closure",
+        "low": "outside sources and correction accessible",
+        "high": "outside information discouraged, filtered or punished"
+      },
+      {
+        "id": "dependency",
+        "low": "members retain outside capacities/resources",
+        "high": "housing, income, identity, belonging or safety depend heavily on group"
+      },
+      {
+        "id": "exit-cost",
+        "low": "leaving is feasible without severe retaliation",
+        "high": "exit threatens social, material, reputational or safety losses"
+      },
+      {
+        "id": "correction-capacity",
+        "low": "leaders/norms resist correction",
+        "high": "errors can be surfaced, reviewed and propagated"
+      },
+      {
+        "id": "role-plasticity",
+        "low": "people become fixed labels/statuses",
+        "high": "roles can change, expire and be repaired"
+      },
+      {
+        "id": "attention-capture",
+        "low": "group occupies bounded share of life",
+        "high": "group/topic repeatedly monopolizes attention and interpretation"
+      }
+    ],
+    "classification_rule": "Use the pattern across axes rather than a single 'cult' score."
+  },
+  "formation_pipeline": {
+    "stages": [
+      {
+        "id": "interaction",
+        "question": "Who repeatedly encounters whom, through what medium?"
+      },
+      {
+        "id": "shared-signal",
+        "question": "What language, story, symbol or problem becomes salient?"
+      },
+      {
+        "id": "norm",
+        "question": "Which behaviors become expected/rewarded/punished?"
+      },
+      {
+        "id": "identity",
+        "question": "When does 'people who do X' become 'people like us/them'?"
+      },
+      {
+        "id": "institution",
+        "question": "Which roles, rules, archives, resources and sanctions reproduce the pattern beyond individuals?"
+      },
+      {
+        "id": "inheritance",
+        "question": "How is the pattern transmitted to newcomers or later generations?"
+      },
+      {
+        "id": "mutation-or-repair",
+        "question": "Can criticism, exit, new evidence and changed conditions alter the inherited form?"
+      }
+    ],
+    "project_routes": {
+      "garden": "correction + reciprocity + source openness + role plasticity + meaningful exit + independent future capacity",
+      "strife": "enemy production + role lock + archive warfare + correction failure + dependency + attention capture",
+      "mixed": "Most real cultures contain both generative and capture mechanisms; classify mechanisms rather than entire populations."
+    }
+  },
+  "research_foundations": [
+    {
+      "topic": "social norms",
+      "source": "https://www.annualreviews.org/content/journals/10.1146/annurev-psych-033020-013319",
+      "use": "norm emergence, persistence and change"
+    },
+    {
+      "topic": "group identity/social influence",
+      "source": "https://www.annualreviews.org/content/journals/10.1146/annurev-psych-070620-111818",
+      "use": "identity-conditioned influence rather than generic conformity"
+    },
+    {
+      "topic": "coercive control",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/30803427/",
+      "use": "mechanism vocabulary around isolation, monitoring, intimidation and constrained autonomy"
+    }
   ]
 }
