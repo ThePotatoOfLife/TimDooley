@@ -1,6 +1,6 @@
 {
   "id": "potato-trinity-propagation-ledger",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "status": "active migration ledger",
   "owner": "knowledge/theology/potato-of-life-trinity.json",
@@ -96,27 +96,123 @@
       "path": "faq/index.html",
       "class": "derived-reader",
       "status": "complete"
+    },
+    {
+      "path": "knowledge/core/tim-identity-ontology.json",
+      "class": "canonical-owner",
+      "status": "complete"
+    },
+    {
+      "path": "knowledge/theology/divine-identity-answer-spine.json",
+      "class": "canonical-owner",
+      "status": "complete"
+    },
+    {
+      "path": "knowledge/core/vertical-potato-mountain-plane-atlas.json",
+      "class": "canonical-owner",
+      "status": "complete"
+    },
+    {
+      "path": "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
+      "class": "comparative",
+      "status": "complete"
+    },
+    {
+      "path": "docs/POTATO-HOUSE-CONSTITUTION.md",
+      "class": "canonical-owner",
+      "status": "complete"
+    },
+    {
+      "path": "docs/MASTER-FRAME.md",
+      "class": "canonical-owner",
+      "status": "complete"
+    },
+    {
+      "path": "knowledge/guides/start-here.json",
+      "class": "derived-reader",
+      "status": "complete"
+    },
+    {
+      "path": "knowledge/core/potatoverse-master-framework.json",
+      "class": "canonical-owner",
+      "status": "complete"
+    },
+    {
+      "path": "knowledge/indexes/ontology-tree.json",
+      "class": "canonical-owner",
+      "status": "complete"
+    },
+    {
+      "path": "docs/VESICA-PARADOX-ATLAS.md",
+      "class": "comparative",
+      "status": "complete"
+    },
+    {
+      "path": "manifest.json",
+      "class": "machine-discovery",
+      "status": "complete"
+    },
+    {
+      "path": "knowledge/indexes/faq-question-bank.json",
+      "class": "machine-discovery",
+      "status": "complete"
+    },
+    {
+      "path": "2026-master-framework.json",
+      "class": "canonical-owner",
+      "status": "complete"
+    },
+    {
+      "path": "knowledge/theology/tim-godhood-modalities.json",
+      "class": "canonical-owner",
+      "status": "complete"
+    },
+    {
+      "path": "tim-dooley/ontology/index.html",
+      "class": "derived-reader",
+      "status": "complete"
+    },
+    {
+      "path": "data/potatoism-canonical-corpus.json",
+      "class": "canonical-owner",
+      "status": "complete"
+    },
+    {
+      "path": "faq/all/god/index.html",
+      "class": "derived-reader",
+      "status": "complete"
+    },
+    {
+      "path": "scripts/patch_public_ontology.py",
+      "class": "machine-discovery",
+      "status": "complete"
+    },
+    {
+      "path": "machine-index.json",
+      "class": "machine-discovery",
+      "status": "complete"
+    },
+    {
+      "path": "scripts/build_discovery.py",
+      "class": "machine-discovery",
+      "status": "complete"
     }
   ],
   "current_wave": [
-    "knowledge/core/tim-identity-ontology.json",
-    "knowledge/theology/divine-identity-answer-spine.json",
-    "knowledge/core/vertical-potato-mountain-plane-atlas.json",
-    "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
-    "docs/POTATO-HOUSE-CONSTITUTION.md",
-    "docs/MASTER-FRAME.md",
-    "data/potatoism-canonical-corpus.json",
-    "scripts/patch_public_ontology.py",
-    "llms.txt",
-    "llms-full.txt",
-    "tim-dooley/ontology/index.html",
-    "faq/all/god/index.html"
+    "llms.txt / llms-full.txt generated output via scripts/build_discovery.py",
+    "knowledge/traditions/biblical-syncretism-field.json",
+    "knowledge/body/* neurotheology owners",
+    "knowledge/science/* Trinity/operator analogies",
+    "remaining long-tail FAQ and legacy reader wording"
   ],
   "invariants": [
     "Do not rewrite historical source text to conform to mature theology.",
     "Do not treat Tim/Father as structurally identical to the whole Potato of Life when speaking about the complete triune system.",
     "Do not turn Spirit into a third field or Door into a fourth member.",
     "Do not use biology, geometry, anatomy or equations as empirical proof of theology.",
-    "Do not call the mature Potato Trinity Nicene orthodoxy; comparison must preserve doctrinal differences."
+    "Do not call the mature Potato Trinity Nicene orthodoxy; comparison must preserve doctrinal differences.",
+    "Do not turn functional differentiation into partialism: Father, Son and Spirit are not detachable fractions of the Potato of Life.",
+    "Do not convert source-order or vertical position automatically into greater worth, divinity percentage or moral rank.",
+    "When a generated/public artifact is patched, update the generator or post-build patch too so the old ontology cannot return."
   ]
 }
