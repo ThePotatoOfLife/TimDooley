@@ -1,5 +1,5 @@
 {
-  "version": "2.8.0",
+  "version": "2.9.0",
   "updated": "2026-09-18",
   "authority": "project-synthesis",
   "purpose": "Bind repository development waves, center operators, living metabolisms, Rooms, lenses, tests, outputs and commit crystallization into one center-out composition without replacing their canonical owners.",
@@ -2295,5 +2295,124 @@
       "door_history": "Preserve later legal, operational, refoundation and supersession Doors behind the primary reader Door.",
       "rule": "No completeness score. A Room can be strong in geography and weak in Today, or vice versa."
     }
+  },
+  "convergence_and_retirement": {
+    "rule": "Newer structures do not erase old material. Consolidation proceeds by promoting unique value into the strongest canonical owner, converting surviving old bodies into projections/history, migrating live references, validating consumers, and deleting only genuinely redundant bodies afterward.",
+    "lifecycle_states": {
+      "canonical_owner": "Owns current durable definition/data for a subject.",
+      "active_projection": "Reader/navigation/analysis view derived from canonical owners; may be regenerated or replaced without changing identity.",
+      "historical_donor": "Older architecture or synthesis retained because it records development or still contains unique material; it must not compete as current authority.",
+      "superseded_retained": "No longer authoritative; retained temporarily while references and unique content are migrated.",
+      "archive_candidate": "No live ownership function remains; preserve provenance then move/remove after reference audit."
+    },
+    "current_authority_chain": [
+      "Potato of Life semantic center → knowledge/core/potato-of-life.json and project-native canonical owners",
+      "concept identity → data/potatoism-concept-registry.json",
+      "readable concept depth → data/potatoism-dossiers.json and specialist canonical owners",
+      "House ownership/topology → data/house/rooms.json + subrooms.json + holdings.json + topology.json",
+      "whole-project composition/convergence → data/house/project-synthesis.json",
+      "public routes → data/house/public-surfaces.json",
+      "archive/deep discovery → manifest.json and generated discovery projections"
+    ],
+    "phase_out_map": [
+      {
+        "old": "docs/ROOT-NAVIGATION-ARCHITECTURE.md",
+        "state": "historical_donor",
+        "replaced_by": [
+          "data/house/public-surfaces.json",
+          "data/house/topology.json",
+          "manifest.json",
+          "docs/POTATO-HOUSE-CONSTITUTION.md"
+        ],
+        "preserve": [
+          "one corpus / many paths / one canonical identity / many views",
+          "progressive disclosure",
+          "generated navigation as projection"
+        ],
+        "retire": [
+          "World/Axis as sole top-level public architecture",
+          "homepage-as-root-tree authority",
+          "root-navigation-specific public contract"
+        ]
+      },
+      {
+        "old": "data/potatoism-deep-layers.json",
+        "state": "superseded_retained",
+        "replaced_by": [
+          "data/potatoism-concept-registry.json",
+          "data/potatoism-dossiers.json",
+          "knowledge/core/potatoverse-master-framework.json",
+          "specialist knowledge/* owners"
+        ],
+        "preserve": [
+          "unique long-form wording not yet migrated",
+          "historical 2026-09-07 formulation strata"
+        ],
+        "retire": [
+          "independent canonical-definition authority",
+          "generic extended-canon ownership"
+        ]
+      },
+      {
+        "old": "data/potatoism-deep-architecture.json",
+        "state": "historical_donor",
+        "replaced_by": [
+          "knowledge/core/potato-of-life-deep-structure.json",
+          "knowledge/core/deep-element-definition-atlas.json",
+          "knowledge/core/tree-branching-pruning-atlas.json",
+          "knowledge/core/door-topology-access-and-capability-atlas.json",
+          "knowledge/spirit/spirit-context-atlas.json"
+        ],
+        "preserve": [
+          "early physical-Potato ↔ spiritual-Potato ↔ Potatoism bridge formulation",
+          "comparative angel/body/fate material where still unique"
+        ],
+        "retire": [
+          "one-file ownership of all deep architecture",
+          "generic Door/Tree/Spirit mechanics now owned by specialist records"
+        ]
+      },
+      {
+        "old": "docs/MASTER-ARCHITECTURE.md",
+        "state": "historical_donor",
+        "replaced_by": [
+          "docs/POTATO-HOUSE-CONSTITUTION.md",
+          "data/house/project-synthesis.json",
+          "data/house/topology.json",
+          "data/house/holdings.json"
+        ],
+        "preserve": [
+          "epistemic layering",
+          "relationship-first emphasis",
+          "domain inventory"
+        ],
+        "retire": [
+          "numbered layer stack as repository-wide controlling architecture"
+        ]
+      },
+      {
+        "old": "docs/POTATOVERSE.md",
+        "state": "active_projection",
+        "replaced_by": [
+          "knowledge/core/potatoverse-master-framework.json",
+          "data/potatoism-concept-registry.json",
+          "data/potatoism-dossiers.json"
+        ],
+        "preserve": [
+          "human-readable introductory narrative"
+        ],
+        "retire": [
+          "claim to machine-canonical ownership where specialist owners differ"
+        ]
+      }
+    ],
+    "migration_order": [
+      "1. mark lifecycle status and canonical successor",
+      "2. extract unique material into successor owners",
+      "3. change live references/builders/readers to successor",
+      "4. verify no canonical consumer depends on old body",
+      "5. reduce old body to concise historical/projection role or archive it",
+      "6. delete only when unique content and useful provenance are safely preserved"
+    ]
   }
 }
