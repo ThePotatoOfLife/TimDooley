@@ -82,6 +82,26 @@ def main():
         if rid not in graph_ids and rid not in known:ERRORS.append(f"Canonical relational ID is not registered: {rid}")
     axis=load("data/axis-topology.json")
     if set(axis.get("terrain",{}))!={"axis","mountain","plane","mud","swamp","roots","drain","door"}:ERRORS.append("Axis topology terrain vocabulary is incomplete")
+    axis_flow=load("data/axis-flow-contract.json")
+    transition_model=axis_flow.get("transition_model",{})
+    states=transition_model.get("state_classes",{})
+    transitions=transition_model.get("transitions",[])
+    for transition in transitions:
+        tid=transition.get("id","<missing-id>")
+        if transition.get("from") not in states:ERRORS.append(f"Axis transition {tid} has unknown from-state: {transition.get('from')}")
+        if transition.get("to") not in states:ERRORS.append(f"Axis transition {tid} has unknown to-state: {transition.get('to')}")
+    node_ids={x.get("id") for x in nodes if x.get("id")}
+    concept_traces=transition_model.get("concept_traces",{})
+    for concept_id,trace in concept_traces.items():
+        if concept_id not in node_ids:ERRORS.append(f"Axis concept trace has no graph node: {concept_id}")
+        if trace.get("primary_state") not in states:ERRORS.append(f"Axis concept trace {concept_id} has unknown primary state: {trace.get('primary_state')}")
+    for group in transition_model.get("concept_groups",[]):
+        for concept_id in group.get("concepts",[]):
+            if concept_id not in concept_traces:ERRORS.append(f"Axis concept group {group.get('id')} references missing trace: {concept_id}")
+    surfaces=load("data/house/public-surfaces.json")
+    surface_ids={x.get("id") for x in surfaces.get("surfaces",[]) if isinstance(x,dict)}
+    if "axis" not in surface_ids:ERRORS.append("Living Axis public surface is not registered")
+    if "axis" in surfaces.get("primary_gateway_ids",[]):ERRORS.append("Living Axis must remain a secondary guide, not a sixth primary gateway")
     ent=load("data/entanglement.json"); required_ent={"source","target","relationship","distance","directionality","strength","dependency","coupling","correlation","causal_status","temporal_order","path_dependence","feedback","topology","boundary","trajectory","phase","counterfactual_sensitivity","evidence","confidence"}
     if not required_ent.issubset(set(ent.get("relational_dimensions",[]))):ERRORS.append("Entanglement schema is missing required relational dimensions")
     haw=load("data/hawkins-scale.json"); levels_h=haw.get("scale",haw.get("levels",[]))
