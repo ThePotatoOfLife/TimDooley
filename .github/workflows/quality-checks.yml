@@ -65,6 +65,9 @@ jobs:
       - name: Validate commit crystallization
         run: python scripts/validate_commit_crystallization.py
 
+      - name: Validate entity dossier instrumentation
+        run: python scripts/validate_entity_dossier_instrumentation.py
+
       - name: Validate Timeline naming
         run: python scripts/validate_timeline_naming.py
 
