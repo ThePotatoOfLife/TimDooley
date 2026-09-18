@@ -11,6 +11,8 @@ HOUSE_TOPOLOGY=ROOT/'data/house/topology.json'
 ORIENTATION_POPULATION=ROOT/'data/house/orientation-population.json'
 TREE_PLANE_ROUTING=ROOT/'data/house/tree-plane-routing.json'
 SEED_SPIRAL_ROUTING=ROOT/'data/house/seed-spiral-routing.json'
+NAVIGATION_MANIFEST=ROOT/'data/house/navigation-manifest.json'
+RELIGIOUS_BRANCH_ATLAS=ROOT/'data/house/religious-symbolic-branch-atlas.json'
 SUBROOMS=ROOT/'data/house/subrooms.json'
 CONCEPT_TOPOLOGY=ROOT/'data/house/concept-topology.json'; CONCEPT_TOPOLOGY_SCHEMA=ROOT/'schemas/house-concept-topology.schema.json'
 TOPOLOGY_FIXTURE=ROOT/'data/house/topology-golden-fixture.json'
@@ -397,7 +399,7 @@ def validate_symbolic_planes(errors,rooms):
         errors.append('Akashic Tree view must remain an archive metaphor rather than evidence claim')
 
 
-def validate_orientation_population(errors,rooms); validate_tree_plane_routing(errors); validate_seed_spiral_routing(errors):
+def validate_orientation_population(errors,rooms); validate_tree_plane_routing(errors); validate_seed_spiral_routing(errors); validate_navigation_consolidation(errors):
     population=load(ORIENTATION_POPULATION,errors); subrooms=load(SUBROOMS,errors)
     if not population or not subrooms: return
     sub_ids=[x.get('id') for x in subrooms.get('subrooms',[]) if isinstance(x,dict)]
@@ -467,6 +469,48 @@ def validate_seed_spiral_routing(errors):
     for token in ('states/transitions of generative potential','not the deepest point','downward spiral can be rooting','upward spiral can be life','ring and spiral must remain distinct'):
         if token not in laws: errors.append(f'seed spiral routing missing law: {token}')
     if data.get('ring',{}).get('vertical_sign')!='zero': errors.append('Ring must remain zero axial displacement')
+
+
+def validate_navigation_consolidation(errors):
+    manifest=load(NAVIGATION_MANIFEST,errors); atlas=load(RELIGIOUS_BRANCH_ATLAS,errors)
+    if not manifest or not atlas: return
+    owners=[x.get('owner') for x in manifest.get('authorities',[]) if isinstance(x,dict)]
+    required_owners={
+        'data/house/rooms.json','data/house/subrooms.json','data/house/holdings.json',
+        'data/house/topology.json','data/house/concept-topology.json',
+        'data/house/orientation-population.json','data/house/tree-plane-routing.json',
+        'data/house/seed-spiral-routing.json','data/axis-flow-contract.json',
+        'data/house/religious-symbolic-branch-atlas.json','knowledge/core/root-system.json'
+    }
+    missing=sorted(required_owners-set(owners))
+    if missing: errors.append('navigation manifest missing authorities: '+', '.join(missing))
+    branches={x.get('id') for x in atlas.get('branches',[]) if isinstance(x,dict)}
+    node_rows=[x for x in atlas.get('nodes',[]) if isinstance(x,dict)]
+    node_ids=[x.get('id') for x in node_rows]
+    if len(node_ids)!=len(set(node_ids)): errors.append('religious branch atlas node ids must be unique')
+    room_data=load(SUBROOMS,errors)
+    room_ids={x.get('id') for x in room_data.get('subrooms',[]) if isinstance(x,dict)}
+    planes={'heaven-plane','world-plane','below-plane'}
+    vis={'landmark','room-detail','archive-only'}
+    for node in node_rows:
+        nid=node.get('id')
+        if node.get('branch_id') not in branches: errors.append(f'branch atlas {nid} unknown branch {node.get("branch_id")}')
+        for rid in node.get('room_ids',[]):
+            if rid not in room_ids: errors.append(f'branch atlas {nid} unknown Room {rid}')
+        if not set(node.get('planes',[]))<=planes: errors.append(f'branch atlas {nid} invalid plane')
+        if node.get('visibility') not in vis: errors.append(f'branch atlas {nid} invalid visibility')
+        for source in node.get('source_files',[]):
+            if source.startswith('data/') or source.startswith('knowledge/'):
+                if not (ROOT/source).is_file(): errors.append(f'branch atlas {nid} missing source file {source}')
+    by=set(node_ids)
+    for edge in atlas.get('corridors',[]):
+        if not isinstance(edge,dict): continue
+        if edge.get('from') not in by or edge.get('to') not in by:
+            errors.append(f'branch atlas corridor references unknown node: {edge}')
+    rule=atlas.get('epistemic_rule','').casefold()
+    for token in ('own historical/textual tradition','navigation/comparative projections','not proof of literal identity'):
+        if token not in rule: errors.append(f'religious branch atlas missing epistemic boundary: {token}')
+    if len(node_rows)>64: errors.append('religious branch atlas should remain curated; split deeper population into archive-only registries before exceeding 64 primary nodes')
 
 def main():
     errors=[]; rooms=validate_rooms(errors); surfaces=validate_surfaces(errors,rooms); validate_concept_topology(errors,rooms,surfaces); validate_symbolic_planes(errors,rooms); validate_orientation_population(errors,rooms)
