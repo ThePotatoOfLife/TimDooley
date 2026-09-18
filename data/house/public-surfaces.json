@@ -1,5 +1,5 @@
 {
-  "version": "1.7.0",
+  "version": "1.8.0",
   "updated": "2026-09-18",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
@@ -173,6 +173,27 @@
       ],
       "status": "active",
       "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "foundation-timeline",
+      "route": "/timeline/foundations/",
+      "canonical_route": "/timeline/foundations/",
+      "surface_type": "explorer",
+      "title": "Foundation Timeline",
+      "primary_parent": "timeline",
+      "primary_room_ids": [
+        "time-history",
+        "world-systems",
+        "traditions-texts",
+        "culture-information",
+        "archive-sources"
+      ],
+      "status": "active",
+      "visibility": "specialist",
       "primary_navigation": false,
       "is_view": true,
       "knowledge_owner": false,
