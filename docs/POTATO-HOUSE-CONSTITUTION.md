@@ -556,3 +556,18 @@ These forms are **not one strict ladder**. Household concerns participants; Hous
 No federation-scale form transfers ownership automatically. Houses, institutions and participants retain identity unless an explicit real-world legal relation says otherwise. Project-symbolic Kingdom/Realm language does not confer civil sovereignty, jurisdiction, state authority or ownership over persons.
 
 The canonical federation-scale registry is `data/house/federation-scale.json`.
+
+
+### Public legibility law
+
+Internal structural richness must not become mandatory reader vocabulary.
+
+The default public entrance uses progressive disclosure:
+
+1. **Enter** — five primary public Doors and ordinary subject language.
+2. **Orient** — House, ten Dwellings, Living Axis, Paths and source/evidence routes.
+3. **Study** — nested Rooms, topology, projections, federation-scale forms, structural census, guarded interfaces and maintenance diagnostics.
+
+The deeper layers remain canonical and searchable, but they are not all given equal visual weight on first contact. A public page should prefer the smallest vocabulary sufficient for the reader's task. Maintenance structures such as population pulse, census, interface registries and migration/governance details belong behind an explicit deeper-reading choice unless they are the user's actual task.
+
+This law changes presentation, not knowledge ownership or ontology.
