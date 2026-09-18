@@ -75,6 +75,10 @@ HOME_SPINE=(
     "fetch('data/house/layer-terrain-regime-atlas.json')",
     "fetch('data/house/concept-topology.json')",
     'Direction alone does not decide Life or Strife',
+    'id="axisLevelTabs"',
+    'Eleven transformation regimes',
+    'D1–D11 are not eleven literal floors',
+    "fetch('data/axis-flow-contract.json')",
     'id="project-motion"',
     'id="materialized-now"',
     'id="reality-cases"',
@@ -730,6 +734,9 @@ def validate_project_synthesis(errors):
     movement=axis_teaching.get('movement_rule','')
     if 'Up/down direction alone does not determine value' not in movement:
         errors.append('homepage Axis movement rule must preserve non-moral direction')
+    runtime=set(hp.get('runtime_sources',[]))
+    for path in ('data/house/layer-terrain-regime-atlas.json','data/house/concept-topology.json','data/axis-flow-contract.json'):
+        if path not in runtime: errors.append(f'homepage projection missing teaching runtime source: {path}')
 
 
 def validate_depth_crystallization(errors):
