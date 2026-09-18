@@ -159,3 +159,12 @@ textarea:focus-visible,
 .topology-context-relations small{color:var(--site-muted);line-height:1.45}
 .topology-context-boundary{margin:13px 0 0;color:var(--site-faint);font-size:10px;line-height:1.45}
 @media(max-width:700px){.topology-context-head{display:block}.topology-context-house{display:inline-block;margin-top:8px}.topology-context-relations li{grid-template-columns:1fr;gap:2px}}
+
+.topology-traversal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+.topology-traversal-card{border:1px solid var(--site-line);border-radius:12px;padding:16px;background:var(--site-panel)}
+.topology-traversal-card h3{margin:0 0 7px;font:400 22px/1.1 var(--site-font-serif);color:var(--site-gold)}
+.topology-traversal-card p:not(.eyebrow){margin:0;color:var(--site-muted);font-size:12px;line-height:1.5}
+.topology-traversal-sequence{display:flex;flex-wrap:wrap;gap:4px 7px;align-items:center;margin:12px 0 10px;font-size:11px}
+.topology-traversal-sequence a{color:var(--site-green);text-decoration:none;border-bottom:1px solid #3b4438}
+.topology-traversal-card q{display:block;color:#cbd1c8;font:italic 13px/1.45 var(--site-font-serif)}
+@media(max-width:700px){.topology-traversal-grid{grid-template-columns:1fr}}
