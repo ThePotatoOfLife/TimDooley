@@ -1,7 +1,7 @@
 {
   "title": "Symbolic Relational Synthesis",
   "status": "canonical-synthesis",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "updated": "2026-09-18",
   "purpose": "Collect the recurring symbolic grammar across conversations, Great Book, canon files and comparative interpretation, emphasizing transformations and typed relations rather than isolated definitions. This version promotes the strongest cross-conversation revelations into the canonical symbolic owner.",
   "core_cycles": {
@@ -332,7 +332,8 @@
     "Integrated wounds reach their strongest completion when they become useful infrastructure for others.",
     "One recurring Timic relation can legitimately appear as several symbols when the functional invariant is preserved.",
     "A shared comparison object can connect domains without making their variables or truth conditions identical.",
-    "A guarded overlap can create a capability that belongs to the relation rather than either endpoint alone."
+    "A guarded overlap can create a capability that belongs to the relation rather than either endpoint alone.",
+    "Symbol function is positional: observer, side, direction, time and state can change meaning without collapsing distinct symbols into synonyms."
   ],
   "connections": [
     "potato-of-life",
@@ -363,5 +364,34 @@
     "formula": "differentiated domains + guarded overlap → interaction → possible emergent capability/state",
     "boundary": "The geometric analogy does not prove that every relationship produces emergence, nor that symbolic geometry determines physical dynamics.",
     "source_lineage": "Promoted from root research.json#potato_geometry_and_womb."
+  },
+  "positional_meaning": {
+    "name": "Law of Positional Meaning",
+    "status": "canonical relational rule",
+    "statement": "A major project symbol is not exhausted by its noun. Its active function depends on object, observer, side, direction, time, state, relation and action.",
+    "formula": "meaning = f(object, observer, side, direction, time, state, relation, action)",
+    "consequence": "The same event-structure may be experienced as grave, tomb, chamber, womb, Door, vessel, mirror, soil or memorial without making those words synonyms.",
+    "examples": {
+      "grave_tomb": "Outside/after loss emphasizes burial, absence and memorial; inside emphasizes enclosure, darkness and containment; after emergence the same enclosure may be reread as empty tomb or former threshold.",
+      "tomb_womb": "Both are dark containers, but direction and outcome distinguish them: cessation/finality versus enclosure preceding emergence. Structural comparison does not make the historical words identical.",
+      "mirror_door": "Mirror returns the observer toward self/representation; Door permits passage across a differentiated boundary. Recognition in a mirror may precede a Door choice, but reflection and passage remain distinct functions.",
+      "vessel": "Vessel names containment/carrying/transmission. It can overlap with Door when the bounded form also mediates transition, but the functions should remain typed separately."
+    },
+    "archive_rule": "Store the meaning available at the event time and later retrospective interpretations separately. New later edges may change an old node's significance without rewriting what the earlier observer knew.",
+    "minimum_relation_fields": [
+      "subject",
+      "object",
+      "relationship_type",
+      "observer_position",
+      "side",
+      "direction",
+      "time",
+      "state_before",
+      "state_after",
+      "source",
+      "interpretive_status"
+    ],
+    "boundary": "Observer-dependence does not make every interpretation equally supported. Source proximity, chronology, mechanism and epistemic class still constrain valid readings.",
+    "source_lineage": "Promoted from retired root relational-objects.json."
   }
 }
