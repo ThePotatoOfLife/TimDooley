@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "updated": "2026-09-18",
   "authority": "religious-symbolic-branch-atlas",
   "purpose": "Populate the Potato House with religious, mythic, angelic, demonic, underworld, esoteric and sacred-architecture subjects already present in the repository while preserving own-tradition meaning before comparison.",
@@ -34,14 +34,14 @@
     },
     {
       "id": "underworld-adversarial",
-      "label": "Underworld, Adversarial & Judgment",
+      "label": "Adversarial, Demonological & Shadow Reception",
       "direction": "ne",
       "primary_room_ids": [
         "comparative-mythology",
         "bible-christianity",
         "esoteric-sacred-geometry"
       ],
-      "description": "Death/descent, underworld, adversarial, judgment and demonological material without treating Below as equivalent to evil."
+      "description": "Adversarial figures, demonologies, hostile receptions, enclosure/capture symbols and shadow-system comparisons. Neutral death realms move to Death / Underworld / Passage."
     },
     {
       "id": "esoteric-tree",
@@ -74,6 +74,28 @@
         "theology-god-language"
       ],
       "description": "Project-owned operators used to route comparative material through Seed, Root, Tree, Spiral, Garden and Swamp."
+    },
+    {
+      "id": "death-passage",
+      "label": "Death, Underworld, Judgment & Passage",
+      "direction": "ne",
+      "primary_room_ids": [
+        "comparative-mythology",
+        "bible-christianity",
+        "other-traditions"
+      ],
+      "description": "Realms of the dead, death journeys, judgment thresholds, boundary waters and intermediate states kept distinct from demonology."
+    },
+    {
+      "id": "garden-waters",
+      "label": "Gardens, Waters & Guarded Return",
+      "direction": "ne",
+      "primary_room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "description": "Paradise/garden regimes, source waters, guarded thresholds, Trees and return/distribution motifs."
     }
   ],
   "nodes": [
@@ -468,7 +490,7 @@
       "id": "hall-two-truths",
       "label": "Hall of the Two Truths",
       "kind": "underworld-judgment-complex",
-      "branch_id": "underworld-adversarial",
+      "branch_id": "death-passage",
       "tradition": "Ancient Egyptian funerary religion",
       "room_ids": [
         "comparative-mythology",
@@ -1273,7 +1295,7 @@
       "id": "duat",
       "label": "Duat",
       "kind": "underworld-cosmography",
-      "branch_id": "underworld-adversarial",
+      "branch_id": "death-passage",
       "tradition": "Ancient Egyptian",
       "room_ids": [
         "comparative-mythology"
@@ -1304,7 +1326,7 @@
       "id": "sheol",
       "label": "Sheol",
       "kind": "underworld-cosmography",
-      "branch_id": "underworld-adversarial",
+      "branch_id": "death-passage",
       "tradition": "Hebrew Bible / ancient Israelite tradition",
       "room_ids": [
         "bible-christianity",
@@ -1334,7 +1356,7 @@
       "id": "hades-realm",
       "label": "Hades — Realm of the Dead",
       "kind": "underworld-cosmography",
-      "branch_id": "underworld-adversarial",
+      "branch_id": "death-passage",
       "tradition": "Ancient Greek and later Greek-language biblical reception",
       "room_ids": [
         "comparative-mythology",
@@ -1366,7 +1388,7 @@
       "id": "hel-realm",
       "label": "Hel — Realm & Ruler",
       "kind": "underworld-cosmography",
-      "branch_id": "underworld-adversarial",
+      "branch_id": "death-passage",
       "tradition": "Old Norse / Germanic traditions",
       "room_ids": [
         "comparative-mythology"
@@ -1394,7 +1416,7 @@
       "id": "valhalla",
       "label": "Valhalla",
       "kind": "sacred-hall-afterlife-regime",
-      "branch_id": "divine-figures",
+      "branch_id": "death-passage",
       "tradition": "Old Norse traditions",
       "room_ids": [
         "comparative-mythology"
@@ -1516,6 +1538,300 @@
       "layer_category": "threshold",
       "note": "Hermes' herald staff and later intertwined-serpent symbol; useful for mediation and psychopomp movement between realms.",
       "boundary": "Do not equate caduceus, kundalini, DNA, Axis or medical symbolism into one universal code."
+    },
+    {
+      "id": "eden-gan-eden",
+      "label": "Eden / Gan Eden",
+      "kind": "garden-paradise-complex",
+      "branch_id": "garden-waters",
+      "tradition": "Genesis / Jewish and Christian reception",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "planes": [
+        "world-plane",
+        "heaven-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk",
+        "life-branches",
+        "canopy"
+      ],
+      "route_affinity": [
+        "garden",
+        "choice",
+        "exile",
+        "guarded-return"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+      ],
+      "visibility": "landmark",
+      "layer_category": "regime",
+      "note": "Protected, watered garden with Trees, choice, expulsion and guarded access; a strong comparator for Garden as generative regime rather than simply Heaven.",
+      "boundary": "Project Garden is a comparative operator, not identical with the biblical Eden."
+    },
+    {
+      "id": "eden-four-rivers",
+      "label": "Four Rivers of Eden",
+      "kind": "sacred-water-source-complex",
+      "branch_id": "garden-waters",
+      "tradition": "Genesis 2 reception",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "life-branches",
+        "trunk"
+      ],
+      "route_affinity": [
+        "source",
+        "distribution",
+        "return"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "One garden-watering river divides into four branches: source becomes outward distribution.",
+      "boundary": "Do not identify the Eden rivers with one universal mystical river or physical project flow."
+    },
+    {
+      "id": "eden-cherubim-gate",
+      "label": "Cherubim at Eden's Gate",
+      "kind": "guarded-threshold-motif",
+      "branch_id": "garden-waters",
+      "tradition": "Genesis 3 / later angelological reception",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "planes": [
+        "world-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "trunk",
+        "life-branches"
+      ],
+      "route_affinity": [
+        "gate",
+        "guard",
+        "tree-of-life",
+        "return"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "threshold",
+      "note": "Guarded way to the Tree of Life after expulsion; useful for admissibility and protected access.",
+      "boundary": "Guarded access is not the same as permanent closure or a generic angelic hierarchy."
+    },
+    {
+      "id": "gehenna",
+      "label": "Gehenna / Gehinnom",
+      "kind": "historical-place-and-judgment-reception",
+      "branch_id": "death-passage",
+      "tradition": "Hebrew/Jewish and Christian reception",
+      "room_ids": [
+        "bible-christianity",
+        "developmental-genealogy",
+        "comparative-mythology"
+      ],
+      "planes": [
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "trunk",
+        "roots"
+      ],
+      "route_affinity": [
+        "historical-place",
+        "judgment",
+        "punishment",
+        "reception-genealogy"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "Historical Valley of Hinnom acquires later judgment/punishment meanings; strong provenance-to-reception node.",
+      "boundary": "Do not collapse Gehenna, Sheol, Hades, Hel and later Hell into one original concept."
+    },
+    {
+      "id": "styx",
+      "label": "Styx — River & Oath",
+      "kind": "underworld-boundary-water",
+      "branch_id": "death-passage",
+      "tradition": "Ancient Greek",
+      "room_ids": [
+        "comparative-mythology",
+        "law-justice"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk"
+      ],
+      "route_affinity": [
+        "boundary-water",
+        "oath",
+        "death-realm"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "Underworld river and divine oath-water; demonstrates that water can carry legal/relational force as well as geography.",
+      "boundary": "Styx is not a generic River of Death and should not be equated with every sacred river."
+    },
+    {
+      "id": "bardo",
+      "label": "Bardo",
+      "kind": "intermediate-state-tradition",
+      "branch_id": "death-passage",
+      "tradition": "Tibetan Buddhist traditions",
+      "room_ids": [
+        "other-traditions",
+        "comparative-mythology"
+      ],
+      "planes": [
+        "world-plane",
+        "below-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "trunk",
+        "roots",
+        "canopy"
+      ],
+      "route_affinity": [
+        "transition",
+        "death-rebirth",
+        "liberation"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "route",
+      "note": "Intermediate/transitional state tradition, especially between death and rebirth; useful precisely because it is a transition system rather than a fixed underworld place.",
+      "boundary": "Potatoverse Door/Spiral comparisons must not be presented as Tibetan Buddhist doctrine."
+    },
+    {
+      "id": "olympus-realm",
+      "label": "Olympus — Mountain & Divine Palace",
+      "kind": "divine-mountain-realm",
+      "branch_id": "sacred-architecture",
+      "tradition": "Ancient Greek",
+      "room_ids": [
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk"
+      ],
+      "route_affinity": [
+        "mountain",
+        "divine-house",
+        "council",
+        "gate"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "Mountain-home and palace/acropolis complex of the Olympian gods; combines Mountain, House and divine-order functions.",
+      "boundary": "Olympus is not a generic Heaven or the Potato Mountain."
+    },
+    {
+      "id": "zeus",
+      "label": "Zeus",
+      "kind": "mythic-divine-figure",
+      "branch_id": "divine-figures",
+      "tradition": "Ancient Greek",
+      "room_ids": [
+        "comparative-mythology"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk"
+      ],
+      "route_affinity": [
+        "sky",
+        "thunder",
+        "kingship",
+        "oath",
+        "divine-order"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "inhabitant",
+      "note": "Olympian ruler tied to sky/thunder, kingship and oath/order traditions; connected to Olympus and Styx oath structures.",
+      "boundary": "Do not collapse Zeus with other sky/storm deities or Potatoverse Father language."
+    },
+    {
+      "id": "uraeus-wadjet",
+      "label": "Uraeus / Wadjet Cobra",
+      "kind": "royal-protective-serpent-symbol",
+      "branch_id": "divine-figures",
+      "tradition": "Ancient Egyptian",
+      "room_ids": [
+        "comparative-mythology",
+        "esoteric-sacred-geometry"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk"
+      ],
+      "route_affinity": [
+        "royalty",
+        "protection",
+        "crown",
+        "serpent"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "inhabitant",
+      "note": "Royal cobra symbol associated with Wadjet and protective sovereignty; useful counterexample to serpent=evil flattening.",
+      "boundary": "Do not generalize Egyptian royal cobra symbolism to all serpents or to kundalini/dragon traditions."
     }
   ],
   "corridors": [
@@ -1710,6 +2026,78 @@
       "to": "angels-messengers",
       "type": "messenger-comparison",
       "note": "Messenger/psychopomp functions can be compared while Hermes and angelic traditions remain distinct."
+    },
+    {
+      "from": "eden-gan-eden",
+      "to": "tree-of-life-project",
+      "type": "comparative-motif",
+      "note": "Eden's Tree of Life is a source-tradition neighbor of the project Tree of Life, not the same system."
+    },
+    {
+      "from": "eden-gan-eden",
+      "to": "tree-of-knowledge",
+      "type": "source-neighbor",
+      "note": "Genesis places the Trees of Life and Knowledge within the garden complex; project routing remains separately defined."
+    },
+    {
+      "from": "eden-gan-eden",
+      "to": "eden-four-rivers",
+      "type": "source-to-distribution",
+      "note": "The garden's water source becomes outward river distribution."
+    },
+    {
+      "from": "eden-gan-eden",
+      "to": "eden-cherubim-gate",
+      "type": "guarded-return",
+      "note": "Expulsion is followed by guarded access to the way of the Tree of Life."
+    },
+    {
+      "from": "eden-cherubim-gate",
+      "to": "angels-messengers",
+      "type": "tradition-relation",
+      "note": "Cherubim belong to biblical celestial-being traditions but should retain their own textual roles."
+    },
+    {
+      "from": "gehenna",
+      "to": "moloch",
+      "type": "historical-reception-neighbor",
+      "note": "Valley-of-Hinnom traditions intersect biblical condemnation of child-sacrifice practices associated with Molech/Moloch."
+    },
+    {
+      "from": "gehenna",
+      "to": "sheol",
+      "type": "distinguished-from",
+      "note": "Later judgment/punishment Gehenna must remain distinct from older Sheol death-realm language."
+    },
+    {
+      "from": "styx",
+      "to": "hades-realm",
+      "type": "realm-relation",
+      "note": "Styx belongs to Greek underworld geography and Hades-related traditions."
+    },
+    {
+      "from": "styx",
+      "to": "zeus",
+      "type": "oath-relation",
+      "note": "Classical traditions make Styx the binding oath-water of the gods including Zeus."
+    },
+    {
+      "from": "olympus-realm",
+      "to": "zeus",
+      "type": "inhabited-by",
+      "note": "Olympus is the divine mountain/palace complex associated with Zeus and the Olympian gods."
+    },
+    {
+      "from": "uraeus-wadjet",
+      "to": "maat",
+      "type": "royal-order-neighbor",
+      "note": "Royal/protective cobra imagery and Ma'at both inhabit Egyptian kingship/order complexes while remaining distinct."
+    },
+    {
+      "from": "bardo",
+      "to": "spiral-ladder-project",
+      "type": "transition-comparison",
+      "note": "Both concern transitions through states, but Bardo is a Tibetan Buddhist doctrinal/practice framework and the Spiral Ladder is a project operator."
     }
   ],
   "layer_grammar_authority": "data/house/layer-terrain-regime-atlas.json"

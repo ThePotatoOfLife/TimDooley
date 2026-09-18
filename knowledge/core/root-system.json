@@ -2,7 +2,7 @@
   "id": "root-system",
   "title": "Potato of Life Root System",
   "kind": "foundational ontology and branching skeleton",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "updated": "2026-09-18",
   "aliases": [
     "Potato of Life skeleton",
@@ -298,6 +298,13 @@
         "interpretation",
         "comparative"
       ]
+    },
+    "population_wave_002": {
+      "text": "Population wave 002 sharpens branch taxonomy and adds Garden/Paradise, sacred waters, guarded return, death-realm/judgment, intermediate-state, divine-mountain and protective-serpent material. Neutral death/passages are separated from adversarial/demonological branches. Eden/Gan Eden is modeled as a protected generative regime with source-water, Trees and guarded access; Gehenna is kept as historical-place→judgment reception rather than collapsed with Sheol/Hades; Styx is boundary/oath water; Bardo is an intermediate route/state; Olympus combines Mountain and divine House; Uraeus/Wadjet demonstrates protective/royal serpent symbolism.",
+      "epistemic_class": [
+        "comparative",
+        "interpretation"
+      ]
     }
   },
   "relationships": [
@@ -365,6 +372,11 @@
       "target": "placement-matrix",
       "type": "navigation-governance",
       "description": "Operational what-goes-where resolver for new structural and comparative population."
+    },
+    {
+      "target": "comparative-cosmography-population-wave-002",
+      "type": "population",
+      "description": "Research wave for Garden, water, judgment, Bardo, Olympus, Zeus and protective serpent material."
     }
   ],
   "retrieval": {
