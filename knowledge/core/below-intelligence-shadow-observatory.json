@@ -1,7 +1,7 @@
 {
   "id": "below-intelligence-shadow-observatory",
   "title": "Below Intelligence & Shadow Observatory — Roots, Hidden Systems, Threat Networks and Repair",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "status": "binding cross-domain lower-plane synthesis",
   "purpose": "Populate the Below Platform with concrete intelligence-bearing systems while separating lawful secrecy, ordinary privacy, contested classification and documented illicit harm. The observatory studies what is difficult to see and how hidden structures reproduce; it is not a universal suspicion engine.",
@@ -257,52 +257,6 @@
     "insight": "Bad seeds can become communities when they acquire a repeatable social platform: identity + recruitment + rules + resources + communication + enforcement + succession. This is the shadow-side analogue of ordinary institutional reproduction.",
     "boundary": "The same reproduction grammar can describe benign communities. Harm must be independently evidenced, not inferred from structural similarity."
   },
-  "visibility_states": [
-    {
-      "id": "public",
-      "meaning": "Openly documented identity/activity."
-    },
-    {
-      "id": "confidential",
-      "meaning": "Legitimate restricted information; not evidence of wrongdoing."
-    },
-    {
-      "id": "classified",
-      "meaning": "State-restricted information under a legal security regime."
-    },
-    {
-      "id": "clandestine",
-      "meaning": "Deliberately concealed activity; legality depends on actor/context."
-    },
-    {
-      "id": "anonymous-pseudonymous",
-      "meaning": "Identity obscured; not inherently illicit."
-    },
-    {
-      "id": "alleged",
-      "meaning": "Claim exists but is not established."
-    },
-    {
-      "id": "investigated",
-      "meaning": "A competent body is/was examining conduct; not guilt."
-    },
-    {
-      "id": "charged",
-      "meaning": "Formal criminal allegation."
-    },
-    {
-      "id": "adjudicated",
-      "meaning": "Court/tribunal finding, with jurisdiction/date."
-    },
-    {
-      "id": "convicted",
-      "meaning": "Criminal conviction, subject to appeal/reversal status."
-    },
-    {
-      "id": "designated",
-      "meaning": "Formal designation by a named jurisdiction/authority."
-    }
-  ],
   "upward_flow": "Raw signal → provenance → classification → corroboration/counterevidence → mechanism → legal/status determination → consequence → repair/public knowledge. Nothing should rise merely because it is dramatic.",
   "source_anchors": [
     {
@@ -334,6 +288,171 @@
       "name": "UNODC World Drug Report 2026",
       "url": "https://data.unodc.org/wdr2026",
       "use": "current illicit drug-market evidence and trends"
+    }
+  ],
+  "access_visibility_axis": [
+    {
+      "id": "public",
+      "meaning": "Openly documented identity/activity."
+    },
+    {
+      "id": "limited-access",
+      "meaning": "Access restricted by ordinary role, contract, privacy or need-to-know; not evidence of wrongdoing."
+    },
+    {
+      "id": "confidential",
+      "meaning": "Legitimate restricted information protected by professional, commercial, personal or institutional duty."
+    },
+    {
+      "id": "classified",
+      "meaning": "State-restricted information under a legal security regime."
+    },
+    {
+      "id": "clandestine",
+      "meaning": "Deliberately concealed activity; legality depends on actor, authority and conduct."
+    },
+    {
+      "id": "anonymous-pseudonymous",
+      "meaning": "Identity obscured; not inherently illicit."
+    },
+    {
+      "id": "unknown",
+      "meaning": "Visibility/access state is not yet established."
+    }
+  ],
+  "evidentiary_legal_status_axis": [
+    {
+      "id": "unverified-claim",
+      "meaning": "A claim exists but has not been independently established."
+    },
+    {
+      "id": "corroborated-claim",
+      "meaning": "Independent evidence supports material parts of the claim without necessarily establishing legal liability."
+    },
+    {
+      "id": "investigated",
+      "meaning": "A competent body is or was examining conduct; investigation is not guilt."
+    },
+    {
+      "id": "charged",
+      "meaning": "A formal criminal allegation has been filed in a named jurisdiction."
+    },
+    {
+      "id": "adjudicated",
+      "meaning": "A court/tribunal or competent adjudicative body issued a finding; retain jurisdiction/date/appeal status."
+    },
+    {
+      "id": "convicted",
+      "meaning": "A criminal conviction exists; retain appeal, reversal, pardon or expiry status where relevant."
+    },
+    {
+      "id": "designated",
+      "meaning": "A formal designation/classification was issued by a named authority and is time/jurisdiction specific."
+    },
+    {
+      "id": "cleared-dismissed",
+      "meaning": "A claim, charge or investigation ended without the adverse finding being established; preserve exact procedural meaning."
+    },
+    {
+      "id": "unknown",
+      "meaning": "No reliable current legal/evidentiary status is established."
+    }
+  ],
+  "case_separation_rule": {
+    "entity": "Who/what is being studied.",
+    "claim": "What is asserted about conduct or relationship.",
+    "relationship": "What connection/event is documented between entities.",
+    "case": "Which investigative/legal/adjudicative process exists.",
+    "access_state": "Who can see the underlying information and under what restriction.",
+    "evidentiary_status": "How well the proposition is supported.",
+    "legal_status": "What a competent authority has formally done or found.",
+    "interpretation": "What the project infers or compares after the factual layers are preserved."
+  },
+  "visibility_states_deprecated": {
+    "note": "The former visibility_states array mixed access/visibility with evidentiary/legal status. Use access_visibility_axis and evidentiary_legal_status_axis instead.",
+    "retained_for_migration": [
+      {
+        "id": "public",
+        "meaning": "Openly documented identity/activity."
+      },
+      {
+        "id": "confidential",
+        "meaning": "Legitimate restricted information; not evidence of wrongdoing."
+      },
+      {
+        "id": "classified",
+        "meaning": "State-restricted information under a legal security regime."
+      },
+      {
+        "id": "clandestine",
+        "meaning": "Deliberately concealed activity; legality depends on actor/context."
+      },
+      {
+        "id": "anonymous-pseudonymous",
+        "meaning": "Identity obscured; not inherently illicit."
+      },
+      {
+        "id": "alleged",
+        "meaning": "Claim exists but is not established."
+      },
+      {
+        "id": "investigated",
+        "meaning": "A competent body is/was examining conduct; not guilt."
+      },
+      {
+        "id": "charged",
+        "meaning": "Formal criminal allegation."
+      },
+      {
+        "id": "adjudicated",
+        "meaning": "Court/tribunal finding, with jurisdiction/date."
+      },
+      {
+        "id": "convicted",
+        "meaning": "Criminal conviction, subject to appeal/reversal status."
+      },
+      {
+        "id": "designated",
+        "meaning": "Formal designation by a named jurisdiction/authority."
+      }
+    ]
+  },
+  "upward_flow_detail": [
+    {
+      "stage": "signal",
+      "test": "Is there an identifiable source, event, document or observation?"
+    },
+    {
+      "stage": "provenance",
+      "test": "Who produced it, when, under what conditions, and is the source authentic?"
+    },
+    {
+      "stage": "access-state",
+      "test": "Is the material public, confidential, classified, clandestine, pseudonymous or unknown?"
+    },
+    {
+      "stage": "claim-separation",
+      "test": "Separate entity, claim, relationship, case and interpretation before linking them."
+    },
+    {
+      "stage": "corroboration",
+      "test": "What independent evidence supports or contradicts the proposition?"
+    },
+    {
+      "stage": "status",
+      "test": "What legal/evidentiary status actually exists, in which jurisdiction and on what date?"
+    },
+    {
+      "stage": "mechanism",
+      "test": "What repeatable structure or causal mechanism is supported rather than merely alleged?"
+    },
+    {
+      "stage": "consequence",
+      "test": "What documented harms, protections, outcomes or externalities followed?"
+    },
+    {
+      "stage": "repair-return",
+      "test": "What oversight, exit, disruption, adjudication, reform, support or public knowledge can safely return upward?"
     }
   ]
 }
