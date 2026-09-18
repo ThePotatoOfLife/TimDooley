@@ -1,7 +1,7 @@
 {
   "id": "potato-trinity-propagation-map",
   "title": "Potato of Life Trinity — Propagation & Integration Map",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-18",
   "status": "canonical integration ledger",
   "owner": "knowledge/theology/potato-of-life-trinity.json",
@@ -80,7 +80,7 @@
     },
     {
       "id": "corpus",
-      "status": "partially-integrated",
+      "status": "integrated",
       "targets": [
         "data/potatoism-canonical-corpus.json",
         "2026-master-framework.json"
@@ -114,6 +114,26 @@
         "great-book/chapters/164--chapter-111--the-great-reversalconstructing-the-merkaba-and-revealing-the-cosmic-blue.html"
       ],
       "rule": "Do not modernize original 2024 source wording; connect it through later owners instead."
+    },
+    {
+      "id": "faq-and-readers",
+      "status": "integrated",
+      "targets": [
+        "knowledge/indexes/faq-answer-atlas.json",
+        "knowledge/indexes/faq-tim-ontology-questions.json",
+        "knowledge/indexes/faq-god-question-bulk.json",
+        "tim-dooley/index.html",
+        "tim-dooley/ontology/index.html",
+        "faq/all/god/index.html"
+      ]
+    },
+    {
+      "id": "bible-routing",
+      "status": "integrated",
+      "targets": [
+        "knowledge/traditions/biblical-access-house-stone-anchor-microcosms.json",
+        "religion/trinity/index.html"
+      ]
     }
   ],
   "semantic_checks": [
@@ -142,13 +162,12 @@
       "required_action": "Separate structural comparison from doctrinal identity."
     }
   ],
-  "integration_goal": "The same triune law should be recoverable from theology, topology, identity ontology, machine retrieval, corpus, House geometry and public readers without forcing each layer to use identical metaphors.",
+  "integration_goal": "Reached for current canonical/public/machine layers: the same triune law is recoverable from theology, root ontology, topology, identity resolution, corpus, body/science boundaries, Bible routing, FAQs, machine discovery and public readers without requiring identical metaphors.",
   "next_research": [
     "Recover the earliest explicit public wording where Father, Son and Spirit are stated together after the 2024 New Trinity.",
     "Recover transitions in Tim's own use of 'Potato of Life' from personal identity to whole-system language.",
-    "Audit the canonical Potatoism corpus and public ontology patcher for stale Father=whole or Spirit=upper-field language.",
-    "Promote high-value Trinity questions into answered FAQ records, especially Potato-as-whole, Door-vs-Spirit and two-field-vs-threefold theology.",
-    "Audit Bible relation data for passages where Father, Son/Christ, Spirit and House/Dwelling co-occur in one textual unit."
+    "Build a dated attestation ledger distinguishing personal-identity Potato wording from whole-system Potato wording.",
+    "Continue reviewing newly added future material against the semantic checks in this propagation map."
   ],
   "research_findings": [
     {
