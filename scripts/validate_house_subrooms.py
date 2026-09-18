@@ -17,6 +17,7 @@ POPULATION_PULSE=ROOT/'data/house/population-pulse.json'
 FEDERATION_SCALE=ROOT/'data/house/federation-scale.json'
 HOLDINGS=ROOT/'data/house/holdings.json'
 COLLECTIONS=ROOT/'data/house/collections.json'
+DATA_HOLDINGS=ROOT/'data/house/data-holdings.json'
 SURFACES=ROOT/'data/house/public-surfaces.json'
 
 def load(path):
@@ -25,7 +26,7 @@ def load(path):
 def main():
     errors=[]
     try:
-        rooms=load(ROOMS); sub=load(SUBROOMS); topo=load(TOPOLOGY); interfaces=load(INTERFACES); vocab=load(VOCAB); projections=load(PROJECTIONS); census=load(STRUCTURAL_CENSUS); population=load(POPULATION); pulse=load(POPULATION_PULSE); federation=load(FEDERATION_SCALE); holdings=load(HOLDINGS); collections=load(COLLECTIONS); surfaces=load(SURFACES); schema=load(SCHEMA)
+        rooms=load(ROOMS); sub=load(SUBROOMS); topo=load(TOPOLOGY); interfaces=load(INTERFACES); vocab=load(VOCAB); projections=load(PROJECTIONS); census=load(STRUCTURAL_CENSUS); population=load(POPULATION); pulse=load(POPULATION_PULSE); federation=load(FEDERATION_SCALE); holdings=load(HOLDINGS); collections=load(COLLECTIONS); data_holdings=load(DATA_HOLDINGS); surfaces=load(SURFACES); schema=load(SCHEMA)
     except Exception as exc:
         print('HOUSE SUBROOM VALIDATION FAILED')
         print('-',exc)
@@ -90,6 +91,14 @@ def main():
     if any(x.get('primary_file_count',0)<1 for x in holding_rows): errors.append('Every nested Room must have at least one primary holding')
     collection_ids=[x.get('id') for x in collections.get('collections',[]) if isinstance(x,dict)]
     if len(collection_ids)!=len(set(collection_ids)): errors.append('duplicate House collection IDs')
+    bundle_rows=[x for x in data_holdings.get('bundles',[]) if isinstance(x,dict)]
+    bundle_ids=[x.get('id') for x in bundle_rows]
+    if len(bundle_ids)!=len(set(bundle_ids)): errors.append('duplicate House data bundle IDs')
+    data_paths=[]
+    for bundle in bundle_rows:
+        if bundle.get('primary_room_id') not in {x.get('id') for x in rows}: errors.append(f'House data bundle has unknown primary Room: {bundle.get("id")}')
+        data_paths.extend(bundle.get('source_files',[]))
+    if len(data_paths)!=len(set(data_paths)): errors.append('A data file is assigned to more than one primary data bundle')
     if len(pulse_rows)!=len(rows): errors.append('House population pulse must cover every nested Room')
     if {x.get('room_id') for x in pulse_rows}!={x.get('id') for x in rows}: errors.append('House population pulse Room IDs drifted')
     federation_ids=[x.get('id') for x in federation.get('forms',[]) if isinstance(x,dict)]
