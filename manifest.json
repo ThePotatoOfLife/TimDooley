@@ -681,9 +681,10 @@
       "status": "phased legacy/source strata; current authority lives in canonical owners and specialist records",
       "classifications": {
         "research.json": {
-          "role": "superseded-retained mixed research donor",
-          "authority": "non-canonical",
-          "retirement_condition": "promote remaining unique source-backed material and rewire live references"
+          "role": "closed historical mixed-research donor",
+          "authority": "provenance/source-lineage only; no current canon ownership",
+          "retirement_condition": "rewire remaining live source references to specialist owners/primary sources or archived provenance, then remove root copy",
+          "closed_for_new_research": true
         },
         "book-research.json": {
           "role": "retained 2024 Great Book source-extraction bridge",
