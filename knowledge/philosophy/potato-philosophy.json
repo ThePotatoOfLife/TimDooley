@@ -1,9 +1,9 @@
 {
   "id": "potato-philosophy",
   "title": "Potato Philosophy: Simplicity, Burial, Relation, Riddle and Return",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "kind": "spiritual philosophy and teachings",
-  "updated": "2026-09-18",
+  "updated": "2026-09-19",
   "aliases": [
     "Potato philosophy",
     "Potatoism teachings",
@@ -220,28 +220,6 @@
       "principle": "A philosophical principle should remain examinable by a skeptic before the skeptic accepts the identity, theology, or community surrounding it.",
       "corruption": "Loyalty tests and doctrinal insulation.",
       "test": "Can someone seriously investigate this idea without first becoming Potatoist?"
-    },
-    "sacred_hypocrisy": {
-      "title": "Sacred Hypocrisy / Layered Paradox",
-      "source_status": "2024 Great Book primary concept + later archive interpretation",
-      "principle": "A contradiction should first be tested for changes of stage, scale, role, direction or relation before being treated as simple inconsistency. Two opposed formulations can both carry truth when they answer different levels of the system.",
-      "boundary": "This is not permission for arbitrary inconsistency, evasion or changing standards to escape criticism. The archive must name the layer difference that makes the paradox coherent.",
-      "examples": [
-        "simplicity ↔ symbolic complexity",
-        "stillness/dormancy ↔ latent growth",
-        "center/height ↔ increased burden and service",
-        "autonomy ↔ necessary boundaries",
-        "death of one form ↔ continuation or multiplication through surviving generative structure"
-      ],
-      "test": "Can the apparent contradiction be resolved by naming a different stage, scale, role or relation without erasing evidence?"
-    },
-    "two_faced_potato": {
-      "title": "Two-Faced Potato / Integrated Polarity",
-      "source_status": "2024 Great Book primary symbol",
-      "principle": "The Potato can hold light and shadow, memory and creation, mud and sun inside one living system without declaring either pole the whole.",
-      "relation_to_red_blue": "The later Red/Blue model can be read as a developed polarity grammar: expansion/creation and memory/protection require coupling rather than mutual annihilation.",
-      "relation_to_many_eyes": "One tuber can contain multiple eyes and possible shoots while remaining one body; plurality of perspective does not require loss of continuity.",
-      "boundary": "Integration does not make every polarity equally desirable in every context; empirical, ethical and functional differences still matter."
     }
   },
   "gardeners_paradox": {
@@ -508,6 +486,42 @@
       "source_lineage": [
         "research.json#other_food_archetypes",
         "Great Book food chapters"
+      ]
+    },
+    "sacred_hypocrisy": {
+      "text": "Sacred Hypocrisy names a disciplined way to read apparent contradiction: first test whether opposed statements belong to different stages, scales, roles, directions or relations. A paradox can preserve truth across levels without requiring one formulation to erase the other.",
+      "examples": [
+        "simplicity ↔ symbolic complexity",
+        "stillness/dormancy ↔ latent growth",
+        "center/height ↔ increased burden and service",
+        "autonomy ↔ necessary boundaries",
+        "death of one form ↔ continuation or multiplication through surviving generative structure"
+      ],
+      "boundary": "This is not permission for arbitrary inconsistency, evasion or changing standards to escape criticism. The archive must name the layer difference that makes the paradox coherent.",
+      "test": "Can the apparent contradiction be resolved by naming a different stage, scale, role or relation without erasing evidence?",
+      "source_status": "2024 Great Book primary concept + later archive interpretation",
+      "epistemic_class": [
+        "book_primary_source",
+        "archive_interpretation"
+      ],
+      "source_lineage": [
+        "knowledge/research/great-book-2024-source-extraction.json",
+        "retired research.json#sacred_hypocrisy_and_recursive_truth"
+      ]
+    },
+    "two_faced_potato": {
+      "text": "The Two-Faced Potato is a Great Book symbol for integrated polarity: light and shadow, mud and sun, memory and creation can coexist inside one living system without either pole becoming the whole. The later Red/Blue Potato model can be read as a developed version of this polarity grammar.",
+      "relation_to_red_blue": "The later Red/Blue model can be read as a developed polarity grammar: expansion/creation and memory/protection require coupling rather than mutual annihilation.",
+      "relation_to_many_eyes": "One tuber can contain multiple eyes and possible shoots while remaining one body; plurality of perspective does not require loss of continuity.",
+      "boundary": "Integration does not make every polarity equally desirable in every context; empirical, ethical and functional differences still matter.",
+      "source_status": "2024 Great Book primary symbol",
+      "epistemic_class": [
+        "book_primary_source",
+        "archive_interpretation"
+      ],
+      "source_lineage": [
+        "knowledge/research/great-book-2024-source-extraction.json",
+        "retired research.json#two_faced_potato"
       ]
     }
   },
