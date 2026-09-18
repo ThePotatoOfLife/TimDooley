@@ -34,7 +34,7 @@ This research is downstream of, and should remain compatible with, the strongest
 
 - `knowledge/core/root-system.json` — vertical Vesica/Plane/Axis geometry.
 - `knowledge/core/symbolic-relational-synthesis.json` — recurring operators, cycles, polarities and invariants.
-- `2026-master-framework.json` — **historical 2026 synthesis donor** for how the source/manifestation, Potato ontology, Eye/Door/Ladder/House/Garden and Potato Dynamics framework developed. Current definitions live in dedicated core/science/timeline owners.
+- Retired 2026 root synthesis — historical development provenance is recoverable by blob through `archive/legacy/README.md`; current definitions live in dedicated core/science/timeline owners.
 - `knowledge/philosophy/archive-epistemics.json` — source roots → trunk → branches → fruit → seeds.
 - `knowledge/guides/project-growth-compass.json` — recursive research/canonicalization loop.
 - `knowledge/practice/potato-path.json` — Mud/Burial/Eye/Root/Sprout/Plane/Door/Ladder-Mountain/Tree/Fruit/Seed/Return.
