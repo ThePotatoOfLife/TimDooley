@@ -9,6 +9,7 @@ SUBROOMS=ROOT/'data/house/subrooms.json'
 SCHEMA=ROOT/'schemas/house-subroom-registry.schema.json'
 TOPOLOGY=ROOT/'data/house/topology.json'
 INTERFACES=ROOT/'data/house/interfaces.json'
+VOCAB=ROOT/'data/house/architectural-vocabulary.json'
 SURFACES=ROOT/'data/house/public-surfaces.json'
 
 def load(path):
@@ -17,7 +18,7 @@ def load(path):
 def main():
     errors=[]
     try:
-        rooms=load(ROOMS); sub=load(SUBROOMS); topo=load(TOPOLOGY); interfaces=load(INTERFACES); surfaces=load(SURFACES); schema=load(SCHEMA)
+        rooms=load(ROOMS); sub=load(SUBROOMS); topo=load(TOPOLOGY); interfaces=load(INTERFACES); vocab=load(VOCAB); surfaces=load(SURFACES); schema=load(SCHEMA)
     except Exception as exc:
         print('HOUSE SUBROOM VALIDATION FAILED')
         print('-',exc)
@@ -56,6 +57,10 @@ def main():
     if topo.get('room_registry')!='data/house/rooms.json': errors.append('House topology Room registry drift')
     if topo.get('subroom_registry')!='data/house/subrooms.json': errors.append('House topology subroom registry drift')
     if topo.get('interface_registry')!='data/house/interfaces.json': errors.append('House topology interface registry drift')
+    if topo.get('architectural_vocabulary')!='data/house/architectural-vocabulary.json': errors.append('House topology architectural vocabulary drift')
+    if len(vocab.get('dwelling_projection',[]))!=10: errors.append('Architectural vocabulary must project exactly ten Dwellings')
+    projected={x.get('canonical_room_id') for x in vocab.get('dwelling_projection',[]) if isinstance(x,dict)}
+    if projected!=parent_ids: errors.append('Dwelling projection must cover exactly the ten canonical Rooms')
     interface_rows=[x for x in interfaces.get('interfaces',[]) if isinstance(x,dict)]
     interface_ids=[x.get('id') for x in interface_rows]
     if len(interface_ids)!=len(set(interface_ids)): errors.append('duplicate House interface IDs')
