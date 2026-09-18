@@ -60,17 +60,22 @@ WORKS_MARKERS=(
     '../corporium/','../explore/#branch=works','../context/source-authority/',
 )
 HOME_FILE=ROOT/'index.html'
-HOME_CORRIDOR=(
-    '<strong>Ways in</strong>',
-    'href="tim-dooley/story/">Story</a>',
-    'href="timeline/">Timeline</a>',
-    'href="corporium/">Collection</a>',
-    'href="works/">Works</a>',
-    'href="questions/"',
-    'href="index-a-z/"',
+HOME_SPINE=(
+    'class="project-spine"',
+    'href="potato-of-life/"',
+    'href="house/"',
+    'href="rooms/"',
     'href="explore/"',
+    'class="public-doors"',
+    'href="tim-dooley/"',
+    'href="religion/"',
+    'href="philosophy/"',
+    'href="science/"',
+    'href="world/"',
+    'Seed</b><i>→</i><b>Foundation</b><i>→</i><b>Root</b><i>→</i><b>Tree</b><i>→</i><b>Fruit</b><i>→</i><b>Memory</b><i>→</i><b>Return</b>',
+    'href="timeline/"',
+    'href="works/"',
     'href="context/source-authority/"',
-    'href="tools/tts/"',
 )
 DISCOVERY_BUILDER=ROOT/'scripts/build_discovery.py'
 AUTHORITY_BUILDER=ROOT/'scripts/build_site_authority.py'
@@ -135,13 +140,13 @@ def validate_works_reader(errors):
 def validate_home_corridor(errors):
     if not HOME_FILE.is_file(): errors.append('missing homepage index.html'); return
     text=HOME_FILE.read_text(encoding='utf-8',errors='replace')
-    for marker in HOME_CORRIDOR:
-        if marker not in text: errors.append(f'index.html missing Ways-in/utility marker: {marker}')
-    nav=re.search(r'<nav class="sections"[^>]*>(.*?)</nav>',text,flags=re.I|re.S)
-    if not nav: errors.append('index.html missing canonical sections nav')
+    for marker in HOME_SPINE:
+        if marker not in text: errors.append(f'index.html missing project-spine marker: {marker}')
+    nav=re.search(r'<nav class="public-doors"[^>]*>(.*?)</nav>',text,flags=re.I|re.S)
+    if not nav: errors.append('index.html missing canonical public-doors nav')
     else:
         hrefs=re.findall(r'href=["\']([^"\']+)["\']',nav.group(1),flags=re.I)
-        if hrefs!=[x.lstrip('/') for x in GATEWAY_ROUTES]: errors.append(f'homepage primary routes drifted: {hrefs!r}')
+        if hrefs!=[x.lstrip('/') for x in GATEWAY_ROUTES]: errors.append(f'homepage public-door routes drifted: {hrefs!r}')
 
 def validate_builder_authority(errors):
     checks=(
