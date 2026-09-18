@@ -64,8 +64,26 @@
     "sources": [
       "https://pubmed.ncbi.nlm.nih.gov/23801487/",
       "https://pubmed.ncbi.nlm.nih.gov/17177637/",
-      "https://pubmed.ncbi.nlm.nih.gov/9891879/"
-    ]
+      "https://pubmed.ncbi.nlm.nih.gov/9891879/",
+      "https://pubmed.ncbi.nlm.nih.gov/37526426/"
+    ],
+    "root_architecture_detail": {
+      "scope": "The cited root-branching review is centered mainly on Arabidopsis and examines lateral-root distribution, initiation and organogenesis.",
+      "mechanism": "Root architecture emerges from primary-root growth plus regulated lateral branching. Environmental inputs and endogenous developmental programs are continuously integrated rather than branches appearing by a single on/off rule.",
+      "functional_consequences": [
+        "branching pattern changes the soil volume explored",
+        "root branching affects water acquisition",
+        "root branching affects nutrient acquisition",
+        "root architecture contributes to anchorage"
+      ],
+      "project_lesson": "A new branch should therefore be justified by the environment/function it serves and by the resources it consumes, not by branch count alone.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/23801487/"
+    },
+    "shoot_architecture_detail": {
+      "mechanism": "Shoot branching is coordinated through interacting hormonal and other signals. Modern strigolactone research treats bud outgrowth as dynamically regulated within a network rather than as a simple consequence of removing a dominant apex.",
+      "project_lesson": "Suppression, activation and outgrowth are separate states. A dormant project branch may exist as retained capacity without needing active staffing, public routing or resource allocation.",
+      "source": "https://pubmed.ncbi.nlm.nih.gov/37526426/"
+    }
   },
   "connections": [
     "tree",
@@ -77,5 +95,25 @@
     "research-lab",
     "symbolic-architecture",
     "potato-biology"
+  ],
+  "branch_metrics": {
+    "branch_initiation_rate": "new branch candidates created per defined period or parent scope",
+    "activation_fraction": "share of latent candidates that receive resources and become active",
+    "functional_distinctness": "how much the branch owns a function not already served by siblings/parent",
+    "resource_draw": "maintenance, attention, compute, money, editorial or governance cost",
+    "fruit_yield": "useful outputs/consequences attributable to the branch, assessed with the Fruit contract",
+    "redundancy": "degree of duplicated ownership or repeated content",
+    "persistence": "how long the branch remains active and useful",
+    "pruning_cost": "knowledge, resilience or optionality lost if the branch is removed",
+    "recovery_path": "where provenance and recoverable material remain after pruning"
+  },
+  "branch_decision_protocol": [
+    "Do not activate a branch merely because a topic exists.",
+    "Identify the environmental/problem signal that makes differentiation useful.",
+    "Name the distinct function and parent relationship.",
+    "Estimate resource draw and duplication before activation.",
+    "Define Fruit or evidence that would justify continued growth.",
+    "Allow dormancy when option value exists but present demand does not.",
+    "Prune only after preserving provenance and testing whether the branch supplies resilience or unique function."
   ]
 }
