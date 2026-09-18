@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "authority": "nested-bounded-context-governance",
   "parent_room_registry": "data/house/rooms.json",
@@ -30,7 +30,21 @@
         "great-book-literature"
       ],
       "epistemic_boundary": "Project-canon identity does not become external empirical identity.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "core",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "up",
+          "through"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "meaning-translation"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "theology-god-language",
@@ -54,7 +68,21 @@
         "symbolic-body-comparison"
       ],
       "epistemic_boundary": "Project theology remains distinguishable from historical doctrine and empirical proof.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "core",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "up",
+          "through"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "meaning-translation"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "symbolic-architecture",
@@ -82,7 +110,21 @@
         "systems-dynamics"
       ],
       "epistemic_boundary": "Symbolic topology is not literal physical cosmology unless independently tested.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "core",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "up",
+          "through"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "meaning-translation"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "practice-ethics",
@@ -108,7 +150,21 @@
         "open-questions"
       ],
       "epistemic_boundary": "Practice principles do not override medical, legal or domain-specific professional standards.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "core",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "up",
+          "through"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "meaning-translation"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "provenance-evidence",
@@ -133,7 +189,22 @@
         "law-justice"
       ],
       "epistemic_boundary": "Custody of a source does not grant ownership of every claim derived from it.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "down"
+        ],
+        "crosscutting_roles": [
+          "provenance"
+        ],
+        "interface_kinds": [
+          "evidence-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "memory-recovery",
@@ -158,7 +229,22 @@
         "great-book-literature"
       ],
       "epistemic_boundary": "Recovered material retains its original epistemic and temporal status.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "down"
+        ],
+        "crosscutting_roles": [
+          "provenance"
+        ],
+        "interface_kinds": [
+          "evidence-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "witness-attestation",
@@ -184,7 +270,22 @@
         "internet-platforms"
       ],
       "epistemic_boundary": "Attestation proves wording/timing, not the truth of every claim in the wording.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "down"
+        ],
+        "crosscutting_roles": [
+          "provenance"
+        ],
+        "interface_kinds": [
+          "evidence-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "chronology-events",
@@ -209,7 +310,23 @@
         "geography-countries"
       ],
       "epistemic_boundary": "Occurrence time remains distinct from publication and later interpretation time.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "down"
+        ],
+        "crosscutting_roles": [
+          "time"
+        ],
+        "interface_kinds": [
+          "temporal-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "developmental-genealogy",
@@ -235,7 +352,23 @@
         "great-book-literature"
       ],
       "epistemic_boundary": "Later synthesis may reinterpret earlier material but may not silently rewrite its original state.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "down"
+        ],
+        "crosscutting_roles": [
+          "time"
+        ],
+        "interface_kinds": [
+          "temporal-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "prediction-revelation-time",
@@ -261,7 +394,24 @@
         "open-questions"
       ],
       "epistemic_boundary": "A later match must not be backdated into an earlier prediction, and project claims remain distinguishable from verified forecasting.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "down",
+          "through"
+        ],
+        "crosscutting_roles": [
+          "time"
+        ],
+        "interface_kinds": [
+          "temporal-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "bible-christianity",
@@ -286,7 +436,21 @@
         "esoteric-sacred-geometry"
       ],
       "epistemic_boundary": "Project resemblance does not establish historical identity, fulfillment or transmission.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "down"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "comparison",
+          "historical-translation"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "comparative-mythology",
@@ -311,7 +475,22 @@
         "esoteric-sacred-geometry"
       ],
       "epistemic_boundary": "Similarity is not genealogy or proof of borrowing.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "down",
+          "up"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "comparison",
+          "historical-translation"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "esoteric-sacred-geometry",
@@ -337,7 +516,22 @@
         "comparative-mythology"
       ],
       "epistemic_boundary": "Historical geometry and esoteric symbolism must stay separate from claims of physical mechanism.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "down",
+          "up"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "comparison",
+          "historical-translation"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "other-traditions",
@@ -360,7 +554,21 @@
         "theology-god-language"
       ],
       "epistemic_boundary": "Each tradition is described on its own terms before cross-project synthesis.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "down"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "comparison",
+          "historical-translation"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "math-geometry",
@@ -384,7 +592,22 @@
         "systems-dynamics"
       ],
       "epistemic_boundary": "Mathematical fit does not by itself establish a physical or theological claim.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "up",
+          "through"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "formalization",
+          "testing"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "physics-cosmology",
@@ -406,7 +629,22 @@
         "symbolic-architecture"
       ],
       "epistemic_boundary": "Speculative or symbolic models remain labeled until independently testable and supported.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "up",
+          "through"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "formalization",
+          "testing"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "systems-dynamics",
@@ -432,7 +670,22 @@
         "symbolic-architecture"
       ],
       "epistemic_boundary": "Systems analogy must identify the variables and information lost by the analogy.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "up",
+          "through"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "formalization",
+          "testing"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "model-testing",
@@ -457,7 +710,22 @@
         "provenance-evidence"
       ],
       "epistemic_boundary": "A model remains provisional when its discriminating observations or falsifiers are unavailable.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "up",
+          "through"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "formalization",
+          "testing"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "potato-biology",
@@ -480,7 +748,22 @@
         "model-testing"
       ],
       "epistemic_boundary": "Biological facts may motivate metaphor but do not prove spiritual interpretation.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "down"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "embodiment",
+          "measurement-boundary"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "neurobiology",
@@ -504,7 +787,22 @@
         "model-testing"
       ],
       "epistemic_boundary": "Human, animal, theoretical and speculative evidence remain separately graded.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "down"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "embodiment",
+          "measurement-boundary"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "whole-body",
@@ -528,7 +826,22 @@
         "symbolic-body-comparison"
       ],
       "epistemic_boundary": "Whole-body synthesis must preserve uncertainty and domain-specific evidence.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "down"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "embodiment",
+          "measurement-boundary"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "symbolic-body-comparison",
@@ -554,7 +867,22 @@
         "bible-christianity"
       ],
       "epistemic_boundary": "A symbolic neighbor is not anatomical identity or evidence of supernatural physiology.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "down"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "embodiment",
+          "measurement-boundary"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "politics-governance",
@@ -580,7 +908,22 @@
         "subculture-group-formation"
       ],
       "epistemic_boundary": "Political description must remain sourced and distinct from symbolic North/Axis framing.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "world-facing",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "up"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "world-application",
+          "institutional-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "law-justice",
@@ -605,7 +948,22 @@
         "subculture-group-formation"
       ],
       "epistemic_boundary": "Legal claims require jurisdiction, date and source; project ethics does not substitute for law.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "world-facing",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "up"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "world-application",
+          "institutional-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "economy-finance",
@@ -630,7 +988,22 @@
         "geography-countries"
       ],
       "epistemic_boundary": "Symbolic/karmic accounting remains separate from material legal or financial accounting.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "world-facing",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "up"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "world-application",
+          "institutional-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "infrastructure-capability",
@@ -656,7 +1029,21 @@
         "research-programmes"
       ],
       "epistemic_boundary": "Capability claims require observable assets, relations and time-sensitive sources.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "world-facing",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "world-application",
+          "institutional-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "geography-countries",
@@ -682,7 +1069,21 @@
         "chronology-events"
       ],
       "epistemic_boundary": "Symbolic direction or project quadrant must not overwrite ordinary geography or sovereignty.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "world-facing",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "world-application",
+          "institutional-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "internet-platforms",
@@ -707,7 +1108,21 @@
         "witness-attestation"
       ],
       "epistemic_boundary": "Documented public behavior stays distinct from motive claims and private information.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "world-facing",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "out"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "mediation",
+          "transmission"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "subculture-group-formation",
@@ -733,7 +1148,22 @@
         "law-justice"
       ],
       "epistemic_boundary": "Cult/high-control terminology requires stated criteria and must not become an unsupported label for disliked groups.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "world-facing",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "out",
+          "up"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "mediation",
+          "transmission"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "information-ecology",
@@ -758,7 +1188,21 @@
         "great-book-literature"
       ],
       "epistemic_boundary": "Information flow and social interpretation remain distinguishable from factual claim status.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "world-facing",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "out"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "mediation",
+          "transmission"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "great-book-literature",
@@ -785,7 +1229,21 @@
         "visual-art"
       ],
       "epistemic_boundary": "Creative/literary expression does not automatically become doctrine, biography or evidence.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "output",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "out"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "expression",
+          "fruit"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "music-sound",
@@ -808,7 +1266,21 @@
         "visual-art"
       ],
       "epistemic_boundary": "Lyrics and performance language retain creative-work status unless separately attested as claims.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "output",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "out"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "expression",
+          "fruit"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "visual-art",
@@ -832,7 +1304,21 @@
         "symbolic-architecture"
       ],
       "epistemic_boundary": "Depiction is not evidence of the depicted claim.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "output",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "out"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "expression",
+          "fruit"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "games-simulations",
@@ -855,7 +1341,21 @@
         "practice-ethics"
       ],
       "epistemic_boundary": "Simulation behavior is model output, not automatically a claim about the real world.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "output",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "out"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "expression",
+          "fruit"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "house-architecture",
@@ -881,7 +1381,24 @@
         "experiments-formalization"
       ],
       "epistemic_boundary": "Research design remains provisional until promoted into constitutional/governance owners.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "through",
+          "state",
+          "up"
+        ],
+        "crosscutting_roles": [
+          "frontier"
+        ],
+        "interface_kinds": [
+          "promotion-door"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "open-questions",
@@ -907,7 +1424,23 @@
         "practice-ethics"
       ],
       "epistemic_boundary": "Indexing a hypothesis does not promote it to canon.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "through",
+          "state"
+        ],
+        "crosscutting_roles": [
+          "frontier"
+        ],
+        "interface_kinds": [
+          "promotion-door"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "experiments-formalization",
@@ -932,7 +1465,23 @@
         "research-programmes"
       ],
       "epistemic_boundary": "Experimental/formal elegance is not evidence without appropriate observation or validation.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "through",
+          "state"
+        ],
+        "crosscutting_roles": [
+          "frontier"
+        ],
+        "interface_kinds": [
+          "promotion-door"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     },
     {
       "id": "research-programmes",
@@ -959,7 +1508,24 @@
         "experiments-formalization"
       ],
       "epistemic_boundary": "A Programme coordinates work but does not steal fact ownership from participating Rooms.",
-      "status": "active"
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "through",
+          "state",
+          "out"
+        ],
+        "crosscutting_roles": [
+          "frontier"
+        ],
+        "interface_kinds": [
+          "promotion-door"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
     }
   ]
 }
