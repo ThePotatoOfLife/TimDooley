@@ -228,6 +228,9 @@ jobs:
       - name: Check CSS namespaces
         run: python scripts/check_css_namespace_collisions.py
 
+      - name: Validate House accessibility and responsive contracts
+        run: python scripts/validate_house_accessibility.py
+
       - name: Check biblical syncretism field
         run: python scripts/check_biblical_syncretism_field.py
 
