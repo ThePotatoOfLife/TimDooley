@@ -1,5 +1,5 @@
 {
-  "version": "2.3.0",
+  "version": "2.4.0",
   "updated": "2026-09-18",
   "authority": "project-synthesis",
   "purpose": "Bind repository development waves, center operators, living metabolisms, Rooms, lenses, tests, outputs and commit crystallization into one center-out composition without replacing their canonical owners.",
@@ -1930,6 +1930,7 @@
       "operating-cycles",
       "route-comparison",
       "foundation-landscape",
+      "foundation-rooms",
       "materialized-project-state",
       "reality-cases",
       "working-capabilities",
@@ -2002,6 +2003,11 @@
         "id": "foundation-landscape",
         "purpose": "Teach recurring Foundation trajectories from the full population: pressure → Door → reproduction → continuity → World return.",
         "owner": "data/house/foundation-landscape-synthesis.json"
+      },
+      {
+        "id": "foundation-rooms",
+        "purpose": "Make selected Foundations tangible as Door/date/place + House location + Today snapshot, with genealogy secondary.",
+        "owner": "data/house/foundation-room-atlas.json"
       }
     ],
     "runtime_sources": [
@@ -2015,7 +2021,8 @@
       "data/axis-flow-contract.json",
       "data/house/concept-topology.json",
       "data/house/route-case-matrix-wave-001.json",
-      "data/house/foundation-landscape-synthesis.json"
+      "data/house/foundation-landscape-synthesis.json",
+      "data/house/foundation-room-atlas.json"
     ],
     "anti_drift": [
       "Do not duplicate full dossiers on Home.",
@@ -2205,5 +2212,18 @@
       "inquiry-to-school"
     ],
     "rule": "Use archetypes as navigation and comparison. Preserve distributed/gradual formations when no single Door fits."
+  },
+  "foundation_rooms": {
+    "authority": "data/house/foundation-room-atlas.json",
+    "contract": "data/house/foundation-room-contract.json",
+    "population": 52,
+    "model": "Foundation = tangible Room/blob. Origin Door, House location and Today are primary; Seed genealogy is secondary technical depth.",
+    "coordinates": {
+      "house": "primary Room + circle/field + plane",
+      "earth": "Door place + precision + later geocode/geometry",
+      "today": "dated continuity + current form + typed reach measures"
+    },
+    "summary": null,
+    "reader": "timeline/foundations/#foundation-rooms"
   }
 }
