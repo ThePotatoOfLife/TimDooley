@@ -14,6 +14,7 @@ SEED_SPIRAL_ROUTING=ROOT/'data/house/seed-spiral-routing.json'
 NAVIGATION_MANIFEST=ROOT/'data/house/navigation-manifest.json'
 RELIGIOUS_BRANCH_ATLAS=ROOT/'data/house/religious-symbolic-branch-atlas.json'
 PROVIDENCE_STRUCTURE=ROOT/'data/house/providence-pillars-esoteric-structure.json'
+LAYER_TERRAIN_ATLAS=ROOT/'data/house/layer-terrain-regime-atlas.json'
 SUBROOMS=ROOT/'data/house/subrooms.json'
 CONCEPT_TOPOLOGY=ROOT/'data/house/concept-topology.json'; CONCEPT_TOPOLOGY_SCHEMA=ROOT/'schemas/house-concept-topology.schema.json'
 TOPOLOGY_FIXTURE=ROOT/'data/house/topology-golden-fixture.json'
@@ -400,7 +401,7 @@ def validate_symbolic_planes(errors,rooms):
         errors.append('Akashic Tree view must remain an archive metaphor rather than evidence claim')
 
 
-def validate_orientation_population(errors,rooms); validate_tree_plane_routing(errors); validate_seed_spiral_routing(errors); validate_navigation_consolidation(errors); validate_providence_structure(errors):
+def validate_orientation_population(errors,rooms); validate_tree_plane_routing(errors); validate_seed_spiral_routing(errors); validate_navigation_consolidation(errors); validate_providence_structure(errors); validate_layer_terrain_atlas(errors):
     population=load(ORIENTATION_POPULATION,errors); subrooms=load(SUBROOMS,errors)
     if not population or not subrooms: return
     sub_ids=[x.get('id') for x in subrooms.get('subrooms',[]) if isinstance(x,dict)]
@@ -526,6 +527,27 @@ def validate_providence_structure(errors):
     rules=' '.join(data.get('anti_conspiracy_rules',[])).casefold()
     for token in ('shared symbols do not prove','shared date does not prove','later masonic or occult adoption does not backdate','eye imagery does not by itself prove','comparative interpretations'):
         if token not in rules: errors.append(f'Providence/pillars atlas missing boundary: {token}')
+
+
+def validate_layer_terrain_atlas(errors):
+    data=load(LAYER_TERRAIN_ATLAS,errors)
+    if not data: return
+    categories={x.get('id') for x in data.get('categories',[]) if isinstance(x,dict)}
+    required={'whole','coordinate','standing-plane','terrain','regime','organism','material-state','threshold','perceptual-layer','process','route','inhabitant'}
+    if categories!=required: errors.append('layer terrain atlas category set drifted')
+    nodes={x.get('id'):x for x in data.get('nodes',[]) if isinstance(x,dict)}
+    for nid in ('potato-of-life','mountain','pyramid','garden','swamp','shadow','roots','tree-of-knowledge','tree-of-life','tree-of-strife','mud','ash','soil','door-pillars','eye','forge','spiral-family'):
+        if nid not in nodes: errors.append(f'layer terrain atlas missing {nid}')
+    expectations={
+        'mountain':'terrain','pyramid':'terrain','garden':'regime','swamp':'terrain','shadow':'perceptual-layer',
+        'tree-of-life':'organism','tree-of-strife':'organism','mud':'material-state','ash':'material-state',
+        'soil':'material-state','door-pillars':'threshold','eye':'perceptual-layer','forge':'process','spiral-family':'route'
+    }
+    for nid,cat in expectations.items():
+        if nodes.get(nid,{}).get('category')!=cat: errors.append(f'layer terrain atlas {nid} must remain {cat}')
+    diffs=' '.join(data.get('crucial_differences',[])).casefold()
+    for token in ('below is a reader plane','shadow is an occlusion','literal wetlands are not','mountain is terrain','garden is a generative regime','roots are not strife'):
+        if token not in diffs: errors.append(f'layer terrain atlas missing distinction: {token}')
 
 def main():
     errors=[]; rooms=validate_rooms(errors); surfaces=validate_surfaces(errors,rooms); validate_concept_topology(errors,rooms,surfaces); validate_symbolic_planes(errors,rooms); validate_orientation_population(errors,rooms)
