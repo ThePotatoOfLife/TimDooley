@@ -20,13 +20,20 @@ def load(path: Path) -> dict:
 
 def build_records(surface_doc: dict) -> list[dict]:
     gateways = set(surface_doc.get("primary_gateway_ids") or [])
+    surface_by_id = {
+        row.get("id"): row
+        for row in surface_doc.get("surfaces") or []
+        if isinstance(row, dict) and row.get("id")
+    }
     records = []
     for row in surface_doc.get("surfaces") or []:
         if not isinstance(row, dict) or row.get("status") != "active":
             continue
         sid = row.get("id")
         parent = row.get("primary_parent")
-        primary_hub = sid if sid in gateways else (parent if parent in gateways else None)
+        parent_row = surface_by_id.get(parent) or {}
+        parent_can_hub = parent_row.get("surface_type") in {"hub", "explorer"} and parent != "home"
+        primary_hub = sid if sid in gateways else (parent if parent_can_hub else None)
         records.append({
             "surface_id": sid,
             "surface_type": row.get("surface_type"),
@@ -49,6 +56,8 @@ def build_document(surface_doc: dict, existing: dict) -> dict:
         "canonical_source": "data/house/public-surfaces.json",
         "lifecycle_status": "compatibility-projection",
         "purpose": existing.get("purpose") or "Compatibility topology projection derived from the canonical House public-surface registry.",
+        "room_registry": "data/house/rooms.json",
+        "public_surface_registry": "data/house/public-surfaces.json",
         "generation_rule": "Route identity, canonical route, surface type and primary Room membership derive from data/house/public-surfaces.json. This file may retain only compatibility/topology representation; it must not independently redefine public route identity.",
         "retirement_target": "Remain generated while legacy consumers require this shape, then remove consumers and retire this file.",
         "records": build_records(surface_doc),
