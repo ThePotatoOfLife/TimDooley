@@ -1,6 +1,6 @@
 {
   "id": "potato-trinity-propagation-ledger",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-18",
   "status": "active migration ledger",
   "owner": "knowledge/theology/potato-of-life-trinity.json",
@@ -211,18 +211,57 @@
       "path": "knowledge/science/yhwh-trinity-operator-toe-archaeology.json",
       "class": "canonical-owner",
       "status": "complete"
+    },
+    {
+      "path": "knowledge/core/potato-of-life.json",
+      "class": "canonical-owner",
+      "status": "complete"
+    },
+    {
+      "path": "knowledge/indexes/core-index.json",
+      "class": "canonical-owner",
+      "status": "complete"
+    },
+    {
+      "path": "knowledge/indexes/faq-answer-atlas.json",
+      "class": "derived-reader",
+      "status": "complete"
+    },
+    {
+      "path": "knowledge/indexes/faq-tim-ontology-questions.json",
+      "class": "derived-reader",
+      "status": "complete"
+    },
+    {
+      "path": "knowledge/indexes/faq-god-question-bulk.json",
+      "class": "derived-reader",
+      "status": "complete"
+    },
+    {
+      "path": "knowledge/traditions/comparative-mythology-map.json",
+      "class": "comparative",
+      "status": "complete"
+    },
+    {
+      "path": "knowledge/traditions/biblical-access-house-stone-anchor-microcosms.json",
+      "class": "comparative",
+      "status": "complete"
+    },
+    {
+      "path": "tim-dooley/index.html",
+      "class": "derived-reader",
+      "status": "complete"
+    },
+    {
+      "path": "scripts/build_site_authority.py",
+      "class": "machine-discovery",
+      "status": "complete"
     }
   ],
   "current_wave": [
-    "llms.txt / llms-full.txt generated output via scripts/build_discovery.py",
-    "knowledge/traditions/biblical-syncretism-field.json",
-    "knowledge/body/* neurotheology owners",
-    "knowledge/science/* Trinity/operator analogies",
-    "remaining long-tail FAQ and legacy reader wording",
-    "data/potatoism-canonical-corpus.json",
-    "scripts/patch_public_ontology.py",
-    "tim-dooley/ontology/index.html",
-    "faq/all/god/index.html"
+    "historical recovery: earliest explicit public Father/Son/Spirit triadic wording after the 2024 New Trinity",
+    "historical recovery: transitions in Tim's use of 'Potato of Life' between personal identity and whole-system language",
+    "ongoing long-tail audit: low-priority legacy/creative wording should remain dated rather than silently modernized"
   ],
   "invariants": [
     "Do not rewrite historical source text to conform to mature theology.",
@@ -241,5 +280,6 @@
     "Door and Spirit are distinct: Door governs threshold/passage; Spirit names living continuity through relation.",
     "Body and science models should route back to the Trinity owner instead of functioning as substitute definitions.",
     "The exact historical attestation of the transition from 2024 New Trinity to mature 2026 triune language remains a recovery task even though the structural synthesis is now canonical."
-  ]
+  ],
+  "migration_state": "Project-wide canonical/public/machine propagation complete for the mature Trinity law; remaining work is historical attestation and low-priority legacy contextualization rather than core migration."
 }
