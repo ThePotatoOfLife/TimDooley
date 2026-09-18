@@ -1,0 +1,1063 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "center-population",
+  "purpose": "Populate the semantic center of the Potato of Life with a small set of reader-complete junctions. Each center dossier points to its canonical Room owner, deeper files, tests, failure modes and lifecycle handoffs without becoming a new knowledge owner.",
+  "rule": "Center population is selective. Structural coordinates such as Source Field, Manifestation Field, Plane and Cross remain in concept topology; the populated center contains only the junctions a reader repeatedly needs to understand, navigate and test the project.",
+  "bands": [
+    {
+      "id": "nucleus",
+      "label": "Nucleus",
+      "question": "What is the Potato of Life and which irreducible relations constitute it?",
+      "ids": [
+        "potato-of-life",
+        "father",
+        "son",
+        "spirit"
+      ]
+    },
+    {
+      "id": "interface",
+      "label": "Interface",
+      "question": "How does the whole perceive, orient, decide and cross into changed states?",
+      "ids": [
+        "eye",
+        "knowledge-fork",
+        "door",
+        "axis"
+      ]
+    },
+    {
+      "id": "metabolism",
+      "label": "Living Metabolism",
+      "question": "How does possibility become growth, consequence, integration, repair and renewed capacity?",
+      "ids": [
+        "seed",
+        "root",
+        "tree",
+        "garden",
+        "fruit",
+        "shadow",
+        "forge-repair"
+      ]
+    }
+  ],
+  "dossiers": [
+    {
+      "id": "potato-of-life",
+      "label": "Potato of Life",
+      "band": "nucleus",
+      "concept_id": "potato-of-life",
+      "short_definition": "The project-level triune relational whole: Father/source, Son/manifestation-and-passage and Spirit/living continuity in one living form.",
+      "central_question": "How can one whole preserve source, manifestation and relation without collapsing them into one role?",
+      "primary_functions": [
+        "semantic center",
+        "integration",
+        "container of differentiated relation",
+        "project identity"
+      ],
+      "inputs": [
+        "Father/source relation",
+        "Son/manifestation-and-passage relation",
+        "Spirit/living continuity"
+      ],
+      "outputs": [
+        "coherent center",
+        "House grammar",
+        "living metabolism",
+        "reader orientation"
+      ],
+      "failure_modes": [
+        "turning the Potato into a fourth member beside Father/Son/Spirit",
+        "reducing the whole to one role",
+        "letting comparative traditions replace project-native definition"
+      ],
+      "tests": [
+        "center-test",
+        "fruit-test"
+      ],
+      "owner_room_id": "canon-identities",
+      "crossing_room_ids": [
+        "theology-god-language",
+        "symbolic-architecture",
+        "potato-biology"
+      ],
+      "source_files": [
+        "knowledge/core/potato-of-life.json",
+        "knowledge/core/potato-of-life-deep-structure.json",
+        "knowledge/theology/potato-of-life-trinity.json",
+        "data/house/project-center.json"
+      ],
+      "public_routes": [
+        "potato-of-life/",
+        "religion/trinity/",
+        "house/"
+      ],
+      "paired_with": [
+        "father",
+        "son",
+        "spirit"
+      ],
+      "next": [
+        "eye",
+        "knowledge-fork",
+        "door",
+        "axis"
+      ],
+      "evidence_boundary": "Project canon/theology. The literal potato and external religions remain separately evidenced."
+    },
+    {
+      "id": "father",
+      "label": "Father / Source",
+      "band": "nucleus",
+      "concept_id": "father",
+      "short_definition": "Source-facing project role of origin, House, Root, holding, orientation and Gardener responsibility.",
+      "central_question": "What does it mean to be source without swallowing the manifestation or making dependence the goal?",
+      "primary_functions": [
+        "source",
+        "holding",
+        "orientation",
+        "House",
+        "Gardener responsibility"
+      ],
+      "inputs": [
+        "whole Potato relation",
+        "Root/provenance",
+        "House/Garden responsibilities"
+      ],
+      "outputs": [
+        "orientation",
+        "support",
+        "conditions for growth",
+        "return destination"
+      ],
+      "failure_modes": [
+        "source becoming monopoly",
+        "Gardener becoming permanent dependency",
+        "Father collapsed into the whole",
+        "source authority without Fruit/accountability"
+      ],
+      "tests": [
+        "garden-test",
+        "fruit-test"
+      ],
+      "owner_room_id": "canon-identities",
+      "crossing_room_ids": [
+        "theology-god-language",
+        "practice-ethics"
+      ],
+      "source_files": [
+        "knowledge/theology/potato-of-life-trinity.json",
+        "knowledge/theology/father-son-door-reciprocity.json",
+        "knowledge/core/root-system.json"
+      ],
+      "public_routes": [
+        "religion/trinity/",
+        "potato-of-life/"
+      ],
+      "paired_with": [
+        "son",
+        "spirit",
+        "root",
+        "garden"
+      ],
+      "next": [
+        "garden",
+        "fruit"
+      ],
+      "evidence_boundary": "Project theological role; not an empirical claim about external divine identity."
+    },
+    {
+      "id": "son",
+      "label": "Son / Manifestation & Passage",
+      "band": "nucleus",
+      "concept_id": "son",
+      "short_definition": "Manifestation-facing project role of embodiment, Vessel, Door, visible expression, suffering, passage and return.",
+      "central_question": "How does the source become manifest and pass through change without the manifestation becoming identical with the source?",
+      "primary_functions": [
+        "embodiment",
+        "manifestation",
+        "Vessel",
+        "Door relation",
+        "passage",
+        "return"
+      ],
+      "inputs": [
+        "source relation",
+        "conditions of embodiment",
+        "Door/threshold"
+      ],
+      "outputs": [
+        "visible expression",
+        "lived consequence",
+        "passage",
+        "return"
+      ],
+      "failure_modes": [
+        "Son collapsed into Father",
+        "passage mistaken for completion",
+        "suffering romanticized instead of transformed",
+        "historical/comparative figures overwritten by project mapping"
+      ],
+      "tests": [
+        "door-test",
+        "fruit-test"
+      ],
+      "owner_room_id": "canon-identities",
+      "crossing_room_ids": [
+        "theology-god-language",
+        "bible-christianity",
+        "symbolic-architecture"
+      ],
+      "source_files": [
+        "knowledge/theology/potato-of-life-trinity.json",
+        "knowledge/theology/father-son-door-reciprocity.json",
+        "data/house/concept-topology.json"
+      ],
+      "public_routes": [
+        "religion/trinity/",
+        "potato-of-life/",
+        "house/"
+      ],
+      "paired_with": [
+        "father",
+        "spirit",
+        "door",
+        "seed"
+      ],
+      "next": [
+        "door",
+        "fruit"
+      ],
+      "evidence_boundary": "Project theological role; comparative/historical Son or Jesus material remains separately owned."
+    },
+    {
+      "id": "spirit",
+      "label": "Spirit / Living Relation",
+      "band": "nucleus",
+      "concept_id": "spirit",
+      "short_definition": "The living continuity that animates, communicates, circulates, translates and returns across differentiated parts.",
+      "central_question": "What keeps differentiated parts in living relation without turning Spirit into one physical carrier or vague synonym for everything relational?",
+      "primary_functions": [
+        "continuity",
+        "communication",
+        "circulation",
+        "translation",
+        "animation",
+        "return"
+      ],
+      "inputs": [
+        "differentiated roles/states",
+        "carriers/interfaces",
+        "attention/participation"
+      ],
+      "outputs": [
+        "living relation",
+        "coordination",
+        "translation",
+        "return into consequence"
+      ],
+      "failure_modes": [
+        "Spirit = breath/CSF/electricity/qi",
+        "Spirit = every relation",
+        "flow language with no downstream consequence",
+        "Spirit language used to sanctify authority"
+      ],
+      "tests": [
+        "fruit-test",
+        "garden-test"
+      ],
+      "owner_room_id": "theology-god-language",
+      "crossing_room_ids": [
+        "symbolic-body-comparison",
+        "whole-body",
+        "other-traditions",
+        "information-ecology",
+        "practice-ethics"
+      ],
+      "source_files": [
+        "knowledge/spirit/spirit-context-atlas.json",
+        "knowledge/theology/potato-of-life-trinity.json",
+        "potato-of-life/spirit/index.html"
+      ],
+      "public_routes": [
+        "potato-of-life/spirit/",
+        "potato-of-life/",
+        "life-body/"
+      ],
+      "paired_with": [
+        "father",
+        "son",
+        "door",
+        "axis"
+      ],
+      "next": [
+        "eye",
+        "door",
+        "fruit"
+      ],
+      "evidence_boundary": "Project theology/interpretation; bodily and cross-tradition analogues do not establish one physical or universal substance."
+    },
+    {
+      "id": "eye",
+      "label": "Eye / Discernment",
+      "band": "interface",
+      "concept_id": "eye",
+      "short_definition": "Perception and evaluation junction that asks what is actually seen, distinguished and judged before action.",
+      "central_question": "What is present, what is merely inferred, and what does the current frame fail to see?",
+      "primary_functions": [
+        "perception",
+        "discernment",
+        "integration of evidence",
+        "evaluation",
+        "attention"
+      ],
+      "inputs": [
+        "signals",
+        "sources",
+        "Face/presentation",
+        "counterevidence",
+        "Shadow"
+      ],
+      "outputs": [
+        "distinctions",
+        "questions",
+        "attention priorities",
+        "candidate judgment"
+      ],
+      "failure_modes": [
+        "seeing mistaken for knowing",
+        "height/status mistaken for truth",
+        "surveillance mistaken for discernment",
+        "ignored counterevidence/model-shadow"
+      ],
+      "tests": [
+        "evidence-test",
+        "shadow-test"
+      ],
+      "owner_room_id": "symbolic-architecture",
+      "crossing_room_ids": [
+        "provenance-evidence",
+        "potato-biology",
+        "symbolic-body-comparison",
+        "esoteric-sacred-geometry"
+      ],
+      "source_files": [
+        "knowledge/core/knowledge-fork-discernment-atlas.json",
+        "knowledge/traditions/providence-pyramid-pillars-atlas.json",
+        "knowledge/science/potato-biology-ecology-development-canon.json"
+      ],
+      "public_routes": [
+        "potato-of-life/",
+        "axis/",
+        "life-body/"
+      ],
+      "paired_with": [
+        "knowledge-fork",
+        "shadow",
+        "face"
+      ],
+      "next": [
+        "knowledge-fork"
+      ],
+      "evidence_boundary": "Symbolic function and biological/historical comparators remain separately typed."
+    },
+    {
+      "id": "knowledge-fork",
+      "label": "Knowledge / Discernment Fork",
+      "band": "interface",
+      "short_definition": "The routing point where information passes through provenance, interpretation and responsibility before becoming action, Life, withholding or Strife.",
+      "central_question": "What is this knowledge being made to grow?",
+      "primary_functions": [
+        "source checking",
+        "uncertainty handling",
+        "discernment",
+        "choice",
+        "responsible disclosure",
+        "routing"
+      ],
+      "inputs": [
+        "signal/data",
+        "provenance",
+        "interpretation",
+        "risk",
+        "audience/incentives"
+      ],
+      "outputs": [
+        "Life-oriented action",
+        "temporary withholding",
+        "Door transition",
+        "Strife-risk warning",
+        "revision question"
+      ],
+      "failure_modes": [
+        "exposure without context",
+        "corroboration inflation",
+        "knowledge used for humiliation/role-lock",
+        "hidden counterevidence",
+        "action before uncertainty is understood"
+      ],
+      "tests": [
+        "evidence-test",
+        "fruit-test",
+        "shadow-test"
+      ],
+      "owner_room_id": "practice-ethics",
+      "crossing_room_ids": [
+        "provenance-evidence",
+        "information-ecology",
+        "model-testing",
+        "memory-recovery"
+      ],
+      "source_files": [
+        "knowledge/core/knowledge-fork-discernment-atlas.json",
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json"
+      ],
+      "public_routes": [
+        "potato-of-life/",
+        "philosophy/",
+        "research-lab/"
+      ],
+      "paired_with": [
+        "eye",
+        "door",
+        "tree",
+        "shadow"
+      ],
+      "next": [
+        "door",
+        "tree",
+        "shadow"
+      ],
+      "evidence_boundary": "Project epistemic/practice operator; it does not make a claim true merely because it is routed responsibly."
+    },
+    {
+      "id": "door",
+      "label": "Door / Threshold",
+      "band": "interface",
+      "concept_id": "door",
+      "short_definition": "The shared/conditional transition where a state, status, context or capability actually changes.",
+      "central_question": "What changes across this threshold, under what conditions, and how is the new state incorporated?",
+      "primary_functions": [
+        "transition",
+        "guarding",
+        "permission/capability change",
+        "liminality",
+        "incorporation"
+      ],
+      "inputs": [
+        "before-state",
+        "separation condition",
+        "liminal state",
+        "guard/test",
+        "consent/credentials"
+      ],
+      "outputs": [
+        "after-state",
+        "new rights/capabilities",
+        "incorporated identity/context",
+        "return/reversal path"
+      ],
+      "failure_modes": [
+        "false Door",
+        "permanent liminality",
+        "coercive separation",
+        "crossing with no capability change",
+        "irreversible passage without informed conditions"
+      ],
+      "tests": [
+        "door-test",
+        "fruit-test"
+      ],
+      "owner_room_id": "symbolic-architecture",
+      "crossing_room_ids": [
+        "practice-ethics",
+        "law-justice",
+        "research-programmes",
+        "subculture-group-formation"
+      ],
+      "source_files": [
+        "knowledge/core/door-topology-access-and-capability-atlas.json",
+        "data/house/concept-topology.json",
+        "data/house/history-canon-revision-protocol.json"
+      ],
+      "public_routes": [
+        "house/",
+        "axis/",
+        "potato-of-life/"
+      ],
+      "paired_with": [
+        "son",
+        "spirit",
+        "knowledge-fork",
+        "garden",
+        "forge-repair"
+      ],
+      "next": [
+        "tree",
+        "garden",
+        "forge-repair"
+      ],
+      "evidence_boundary": "Project transition grammar; ritual/anthropological threshold comparisons do not make every Door sacred."
+    },
+    {
+      "id": "axis",
+      "label": "Axis / Orientation",
+      "band": "interface",
+      "concept_id": "axis",
+      "short_definition": "The global spatial centerline that keeps orientation stable while planes, Rooms, routes and local centers change.",
+      "central_question": "What remains the reference line when the reader changes level, plane, subject or route?",
+      "primary_functions": [
+        "orientation",
+        "vertical relation",
+        "navigation continuity",
+        "parent reference for local centers"
+      ],
+      "inputs": [
+        "global semantic center",
+        "plane/section",
+        "local centers",
+        "route positions"
+      ],
+      "outputs": [
+        "stable coordinates",
+        "up/down relation",
+        "scope inheritance",
+        "return path"
+      ],
+      "failure_modes": [
+        "Axis mistaken for semantic center",
+        "local center promoted into rival cosmos",
+        "height treated as moral rank",
+        "direction treated as truth"
+      ],
+      "tests": [
+        "scope-test",
+        "return-test"
+      ],
+      "owner_room_id": "symbolic-architecture",
+      "crossing_room_ids": [
+        "house-architecture",
+        "math-geometry",
+        "comparative-mythology"
+      ],
+      "source_files": [
+        "data/house/project-synthesis.json",
+        "data/house/local-center-interface-patterns.json",
+        "knowledge/core/vertical-potato-mountain-plane-atlas.json"
+      ],
+      "public_routes": [
+        "axis/",
+        "house/",
+        "rooms/"
+      ],
+      "paired_with": [
+        "potato-of-life",
+        "plane",
+        "cross",
+        "mountain"
+      ],
+      "next": [
+        "seed",
+        "root",
+        "tree"
+      ],
+      "evidence_boundary": "Project navigation geometry; axis-mundi comparisons do not establish historical identity or physical cosmology."
+    },
+    {
+      "id": "seed",
+      "label": "Seed / Stored Possibility",
+      "band": "metabolism",
+      "concept_id": "seed",
+      "short_definition": "Compact transferable potential capable of entering dormancy, burial, activation and future growth.",
+      "central_question": "What is preserved now that can become viable future growth later?",
+      "primary_functions": [
+        "storage",
+        "potential",
+        "transfer",
+        "dormancy",
+        "future initiation"
+      ],
+      "inputs": [
+        "Fruit/output",
+        "memory/pattern",
+        "resources",
+        "conditions"
+      ],
+      "outputs": [
+        "future growth option",
+        "sprout",
+        "new cycle",
+        "transferred capacity"
+      ],
+      "failure_modes": [
+        "dead Seed mistaken for viable potential",
+        "Seed carrying unresolved pathogen/cost",
+        "premature activation",
+        "potential treated as achieved Fruit"
+      ],
+      "tests": [
+        "viability-test",
+        "future-seed-test"
+      ],
+      "owner_room_id": "symbolic-architecture",
+      "crossing_room_ids": [
+        "potato-biology",
+        "developmental-genealogy",
+        "works"
+      ],
+      "source_files": [
+        "data/house/seed-spiral-routing.json",
+        "knowledge/science/potato-biology-ecology-development-canon.json",
+        "knowledge/core/root-system.json"
+      ],
+      "public_routes": [
+        "axis/",
+        "potato-of-life/",
+        "life-body/"
+      ],
+      "paired_with": [
+        "fruit",
+        "root",
+        "son"
+      ],
+      "next": [
+        "root",
+        "door"
+      ],
+      "evidence_boundary": "Project operator; plant seed/tuber analogies are biological comparators with distinct literal structures."
+    },
+    {
+      "id": "root",
+      "label": "Root / Provenance & Nourishment",
+      "band": "metabolism",
+      "concept_id": "root",
+      "short_definition": "Buried support and continuity: provenance, nourishment, historical depth and conditions that sustain later visible growth.",
+      "central_question": "What beneath the visible structure actually feeds, anchors or constrains it?",
+      "primary_functions": [
+        "support",
+        "provenance",
+        "nourishment",
+        "historical continuity",
+        "resource acquisition"
+      ],
+      "inputs": [
+        "soil/context",
+        "history",
+        "sources",
+        "stored resources",
+        "water/nutrients"
+      ],
+      "outputs": [
+        "anchorage",
+        "nourishment",
+        "contextualized memory",
+        "support for branching"
+      ],
+      "failure_modes": [
+        "depth treated as inferiority",
+        "tuber/root biology collapsed",
+        "uncontextualized residue becoming Mud",
+        "history becoming permanent debt"
+      ],
+      "tests": [
+        "provenance-test",
+        "soil-test"
+      ],
+      "owner_room_id": "symbolic-architecture",
+      "crossing_room_ids": [
+        "provenance-evidence",
+        "developmental-genealogy",
+        "potato-biology",
+        "memory-recovery"
+      ],
+      "source_files": [
+        "knowledge/core/root-system.json",
+        "knowledge/core/garden-mud-orientation.json",
+        "knowledge/core/tree-branching-pruning-atlas.json"
+      ],
+      "public_routes": [
+        "axis/",
+        "history/",
+        "potato-of-life/"
+      ],
+      "paired_with": [
+        "seed",
+        "tree",
+        "shadow"
+      ],
+      "next": [
+        "tree",
+        "garden"
+      ],
+      "evidence_boundary": "Project operator; biological root systems, archives and historical provenance remain distinct literal domains."
+    },
+    {
+      "id": "tree",
+      "label": "Tree / Regulated Differentiation",
+      "band": "metabolism",
+      "concept_id": "tree",
+      "short_definition": "A regulated branching organism/system: potential becomes differentiated structure under resource, environmental and ownership constraints.",
+      "central_question": "Which branches deserve activation, specialization, pruning or dormancy?",
+      "primary_functions": [
+        "differentiation",
+        "branching",
+        "specialization",
+        "distributed growth",
+        "connection of Root to Fruit"
+      ],
+      "inputs": [
+        "Root/resources",
+        "signals",
+        "questions",
+        "environment",
+        "ownership needs"
+      ],
+      "outputs": [
+        "branches",
+        "specialized Rooms/functions",
+        "canopy/visibility",
+        "Fruit-bearing capacity"
+      ],
+      "failure_modes": [
+        "more branches mistaken for progress",
+        "duplicate ownership",
+        "unpruned dead branches",
+        "resource-starved expansion",
+        "Tree of Life/Strife collapsed into one moralized tree"
+      ],
+      "tests": [
+        "branch-need-test",
+        "fruit-test",
+        "pruning-test"
+      ],
+      "owner_room_id": "symbolic-architecture",
+      "crossing_room_ids": [
+        "potato-biology",
+        "systems-dynamics",
+        "information-ecology",
+        "house-architecture"
+      ],
+      "source_files": [
+        "knowledge/core/tree-branching-pruning-atlas.json",
+        "data/house/tree-plane-routing.json",
+        "knowledge/core/root-system.json"
+      ],
+      "public_routes": [
+        "axis/",
+        "rooms/",
+        "potato-of-life/"
+      ],
+      "paired_with": [
+        "root",
+        "garden",
+        "fruit",
+        "shadow"
+      ],
+      "next": [
+        "garden",
+        "fruit"
+      ],
+      "evidence_boundary": "Project/systemic Tree; plant-development and comparative world-tree material are bounded comparators."
+    },
+    {
+      "id": "garden",
+      "label": "Garden / Generative Regime",
+      "band": "metabolism",
+      "concept_id": "garden",
+      "short_definition": "A bounded but adaptive regime that supports differentiated growth, circulation, correction, meaningful exit and future independent capacity.",
+      "central_question": "Does this environment make living parts more capable of growing without permanent dependence on the center?",
+      "primary_functions": [
+        "cultivation",
+        "boundary protection",
+        "resource circulation",
+        "feedback",
+        "learning",
+        "participation",
+        "regeneration"
+      ],
+      "inputs": [
+        "Tree/life",
+        "resources",
+        "boundaries",
+        "feedback",
+        "stewardship",
+        "diversity"
+      ],
+      "outputs": [
+        "nourishment",
+        "resilience",
+        "Fruit",
+        "future Seed",
+        "independent capacity"
+      ],
+      "failure_modes": [
+        "Garden drifting into Farm",
+        "boundary becoming Shell",
+        "stewardship becoming monopoly",
+        "growth without diversity/correction",
+        "exit punished"
+      ],
+      "tests": [
+        "garden-test",
+        "fruit-test"
+      ],
+      "owner_room_id": "practice-ethics",
+      "crossing_room_ids": [
+        "culture-information",
+        "world-systems",
+        "research-programmes",
+        "symbolic-architecture"
+      ],
+      "source_files": [
+        "knowledge/core/garden-regime-mechanics.json",
+        "knowledge/core/garden-mud-orientation.json",
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json"
+      ],
+      "public_routes": [
+        "potato-of-life/",
+        "context/culture/",
+        "philosophy/"
+      ],
+      "paired_with": [
+        "tree",
+        "fruit",
+        "forge-repair",
+        "swamp"
+      ],
+      "next": [
+        "fruit",
+        "forge-repair"
+      ],
+      "evidence_boundary": "Project regime model; ecological resilience supplies comparison, not literal equivalence for social/spiritual systems."
+    },
+    {
+      "id": "fruit",
+      "label": "Fruit / Consequence",
+      "band": "metabolism",
+      "concept_id": "fruit",
+      "short_definition": "The downstream output of a process whose quality is tested across beneficiaries, harms, timescale, externalities, reversibility and future capacity.",
+      "central_question": "What actually changed downstream, for whom, and what future Seed did it create?",
+      "primary_functions": [
+        "output",
+        "evaluation",
+        "externality visibility",
+        "transferable capacity",
+        "feedback into revision"
+      ],
+      "inputs": [
+        "Tree/Garden activity",
+        "Works",
+        "practice",
+        "research",
+        "institutional action"
+      ],
+      "outputs": [
+        "nourishment",
+        "repair",
+        "knowledge",
+        "creative Work",
+        "institutional change",
+        "future Seed"
+      ],
+      "failure_modes": [
+        "completion = success",
+        "popularity = truth",
+        "metric gaming",
+        "hidden externalities",
+        "sterile output",
+        "dependency-producing success"
+      ],
+      "tests": [
+        "fruit-test",
+        "future-seed-test",
+        "externality-test"
+      ],
+      "owner_room_id": "practice-ethics",
+      "crossing_room_ids": [
+        "works",
+        "model-testing",
+        "research-programmes",
+        "world-systems"
+      ],
+      "source_files": [
+        "knowledge/core/fruit-consequence-evaluation-atlas.json",
+        "data/house/works-fruit-contract.json"
+      ],
+      "public_routes": [
+        "works/",
+        "potato-of-life/",
+        "research-lab/"
+      ],
+      "paired_with": [
+        "seed",
+        "garden",
+        "forge-repair",
+        "history"
+      ],
+      "next": [
+        "seed",
+        "history/revision"
+      ],
+      "evidence_boundary": "Project evaluation operator; domain-specific claims require domain-specific evidence."
+    },
+    {
+      "id": "shadow",
+      "label": "Shadow / Unintegrated Material",
+      "band": "metabolism",
+      "short_definition": "Content, capacity, history, incentive or contradiction excluded from the declared self/model/system and therefore poorly integrated or displaced elsewhere.",
+      "central_question": "What does the current identity or model exclude, and what cost does that exclusion create?",
+      "primary_functions": [
+        "occlusion detection",
+        "projection warning",
+        "self-critique",
+        "integration target",
+        "model boundary"
+      ],
+      "inputs": [
+        "excluded evidence",
+        "disowned traits/capacities",
+        "historical omissions",
+        "institutional blind spots",
+        "counterexamples"
+      ],
+      "outputs": [
+        "recognition",
+        "revised model",
+        "integration question",
+        "repair candidate"
+      ],
+      "failure_modes": [
+        "Shadow = evil",
+        "Shadow = Below",
+        "psychological diagnosis of groups",
+        "projection inferred from disagreement",
+        "positive capacity ignored"
+      ],
+      "tests": [
+        "shadow-test",
+        "evidence-test",
+        "fruit-test"
+      ],
+      "owner_room_id": "symbolic-architecture",
+      "crossing_room_ids": [
+        "memory-recovery",
+        "subculture-group-formation",
+        "politics-governance",
+        "open-questions"
+      ],
+      "source_files": [
+        "knowledge/core/shadow-integration-overlay.json",
+        "knowledge/core/shadow-ledger-entanglement-axis.json"
+      ],
+      "public_routes": [
+        "potato-of-life/",
+        "context/culture/",
+        "history/",
+        "research-lab/"
+      ],
+      "paired_with": [
+        "eye",
+        "knowledge-fork",
+        "root",
+        "forge-repair"
+      ],
+      "next": [
+        "forge-repair",
+        "revision"
+      ],
+      "evidence_boundary": "Project interpretive overlay; Jungian comparison is not a license to diagnose named people or populations."
+    },
+    {
+      "id": "forge-repair",
+      "label": "Forge / Repair",
+      "band": "metabolism",
+      "short_definition": "The bounded transformation process that converts harm, contradiction, pressure or failed structure into correction, redesigned capacity, legitimate separation or reintegration.",
+      "central_question": "What must change so the same harmful recurrence does not simply repeat?",
+      "primary_functions": [
+        "stabilization",
+        "evidence reconstruction",
+        "responsibility",
+        "repair planning",
+        "redesign",
+        "observation",
+        "reintegration/release"
+      ],
+      "inputs": [
+        "Ash/Mud",
+        "harm report",
+        "negative result",
+        "Shadow recognition",
+        "failed Door",
+        "contradiction"
+      ],
+      "outputs": [
+        "corrected relation",
+        "redesigned system",
+        "tool/model",
+        "reintegrated capacity",
+        "legitimate separation",
+        "new Seed"
+      ],
+      "failure_modes": [
+        "punishment substituted for repair",
+        "forced reconciliation",
+        "truth deletion",
+        "permanent tribunal",
+        "confession without reintegration",
+        "repair defined only by gatekeeper"
+      ],
+      "tests": [
+        "spiral-test",
+        "fruit-test",
+        "garden-test"
+      ],
+      "owner_room_id": "practice-ethics",
+      "crossing_room_ids": [
+        "research-programmes",
+        "law-justice",
+        "model-testing",
+        "history",
+        "culture-information"
+      ],
+      "source_files": [
+        "knowledge/core/repair-forge-protocol.json",
+        "knowledge/core/garden-mud-orientation.json",
+        "research-lab/index.html"
+      ],
+      "public_routes": [
+        "research-lab/",
+        "potato-of-life/",
+        "context/culture/"
+      ],
+      "paired_with": [
+        "shadow",
+        "door",
+        "garden",
+        "fruit",
+        "seed"
+      ],
+      "next": [
+        "seed",
+        "garden",
+        "revision"
+      ],
+      "evidence_boundary": "Project repair protocol; legal, therapeutic or restorative practices retain their own professional/safety standards."
+    }
+  ],
+  "lifecycle": [
+    "eye",
+    "knowledge-fork",
+    "door",
+    "seed",
+    "root",
+    "tree",
+    "garden",
+    "fruit",
+    "shadow",
+    "forge-repair",
+    "seed"
+  ],
+  "lifecycle_note": "The center is not one linear conveyor. Shadow/Forge/Revision can interrupt any stage; Spirit runs through the whole; Axis keeps orientation; Fruit returns evaluated capacity into Seed.",
+  "completeness_rule": "A center dossier is complete only when it has a definition, central question, functions, inputs, outputs, failure modes, tests, canonical owner, source files, public routes, pairings and explicit evidence boundary."
+}
