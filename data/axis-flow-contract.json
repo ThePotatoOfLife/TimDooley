@@ -1,6 +1,6 @@
 {
   "id": "axis-flow-contract",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "updated": "2026-09-18",
   "status": "active project-symbolic flow contract",
   "purpose": "Define the bidirectional flow grammar of the D1-D11 Axis so the Atlas can place residue, obligations, recurrence, repair, growth, transmission and integration consistently without confusing project symbolism with empirical physics.",
@@ -1101,7 +1101,23 @@
           "return"
         ]
       }
-    ]
+    ],
+    "house_concept_map": {
+      "plane": "plane",
+      "cross": "cross",
+      "door": "door",
+      "spiral": "spiral",
+      "ladder": "ladder",
+      "living-root": "root",
+      "tree-of-life": "tree",
+      "garden": "garden",
+      "fruit": "fruit",
+      "eye": "eye",
+      "seed": "seed",
+      "mountain": "mountain",
+      "swamp": "swamp"
+    },
+    "house_concept_rule": "When an Axis trace maps to a House concept, identity/function boundaries are owned by data/house/concept-topology.json. Axis may add state-transition meaning but may not redefine the mapped House operator."
   },
   "lifecycle_projection": {
     "authority": "knowledge/practice/potato-path.json",
