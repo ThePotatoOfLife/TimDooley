@@ -347,11 +347,55 @@ def validate_symbolic_planes(errors,rooms):
     world=next((x for x in rows if isinstance(x,dict) and x.get('id')=='world-plane'),{})
     if 'Plane' not in world.get('aliases',[]):
         errors.append('World Plane must preserve Plane alias')
+    compass=data.get('symbolic_compass')
+    if not isinstance(compass,dict):
+        errors.append('symbolic compass missing'); return
+    directions=compass.get('directions',[])
+    expected_dirs=['n','ne','e','se','s','sw','w','nw']
+    if [x.get('id') for x in directions if isinstance(x,dict)]!=expected_dirs:
+        errors.append('symbolic compass directions/order must remain N, NE, E, SE, S, SW, W, NW')
+    expected_rooms=['potatoverse-canon','traditions-texts','science-formal-models','life-body','world-systems','culture-information','time-history','archive-sources']
+    if [x.get('room_id') for x in directions if isinstance(x,dict)]!=expected_rooms:
+        errors.append('symbolic compass Room mapping drifted')
+    if compass.get('center',{}).get('room_id')!='research-lab':
+        errors.append('symbolic compass center must remain Research Lab')
+    if compass.get('outer_ring',{}).get('room_id')!='works':
+        errors.append('symbolic compass outer ring must remain Works/Fruit')
+    for row in directions:
+        if not isinstance(row,dict): continue
+        focus=row.get('focus_by_plane',{})
+        for pid in ('heaven-plane','world-plane','below-plane'):
+            if pid not in focus: errors.append(f'compass direction {row.get("id")} missing {pid} focus')
+        for sid in row.get('subroom_ids',[]):
+            if not isinstance(sid,str) or not sid: errors.append(f'compass direction {row.get("id")} has invalid subroom id')
+    rules=' '.join(compass.get('entity_projection_rule',[])).casefold()
+    for token in ('historically rooted','does not create several entities','not synonyms','potatoverse mappings'):
+        if token not in rules: errors.append(f'symbolic compass entity projection rule missing boundary: {token}')
+    tree=data.get('symbolic_tree_ecology')
+    if not isinstance(tree,dict):
+        errors.append('symbolic tree ecology missing'); return
+    fork=tree.get('central_fork',{})
+    if 'upstream of both Life and Strife' not in fork.get('principle',''):
+        errors.append('Tree of Knowledge must remain upstream of Life and Strife')
+    zone_ids=[x.get('id') for x in tree.get('zones',[]) if isinstance(x,dict)]
+    expected_zones=['roots','trunk','life-branches','strife-branches','canopy']
+    if zone_ids!=expected_zones:
+        errors.append('symbolic tree ecology zones/order drifted')
+    foundations=[x.get('id') for x in tree.get('religious_foundations',[]) if isinstance(x,dict)]
+    if foundations!=['own-tradition','reception','motif','project-map']:
+        errors.append('religious foundation reading order drifted')
+    guards=' '.join(x.get('guard','') for x in tree.get('zones',[]) if isinstance(x,dict)).casefold()
+    for token in ('not classify peoples','does not assert literal divinity','separate categories','not a universal claim'):
+        if token not in guards:
+            errors.append(f'symbolic tree ecology missing guard: {token}')
+    akashic=tree.get('akashic_tree_view',{})
+    if 'does not assert a literal Akashic Record' not in akashic.get('boundary',''):
+        errors.append('Akashic Tree view must remain an archive metaphor rather than evidence claim')
 
 def main():
     errors=[]; rooms=validate_rooms(errors); surfaces=validate_surfaces(errors,rooms); validate_concept_topology(errors,rooms,surfaces); validate_symbolic_planes(errors,rooms)
     if errors:
         print('POTATO HOUSE GOVERNANCE VALIDATION FAILED'); [print('-',e) for e in errors]; return 1
-    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, surfaces, semantic topology, reader corridor and route authority converge'); return 0
+    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, surfaces, semantic topology, three planes, cardinal compass, reader corridor and route authority converge'); return 0
 
 if __name__=='__main__': raise SystemExit(main())
