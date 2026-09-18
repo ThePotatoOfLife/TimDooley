@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -53,6 +53,11 @@
       "concern": "religious/mythic/esoteric branch population",
       "owner": "data/house/religious-symbolic-branch-atlas.json",
       "rule": "Curates named subjects with own-tradition anchors, Room placement, plane projections, Tree affinities and repository sources."
+    },
+    {
+      "concern": "Eye / pyramid / twin-pillar comparative structure",
+      "owner": "data/house/providence-pillars-esoteric-structure.json",
+      "rule": "Defines sourced structural correspondences and anti-conspiracy boundaries for Providence, Great Seal pyramid, Jachin/Boaz and 1776."
     },
     {
       "concern": "human-readable master synthesis",
