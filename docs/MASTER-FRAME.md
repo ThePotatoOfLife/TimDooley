@@ -2,21 +2,28 @@
 
 ## The readable entrance
 
-The project is easiest to enter through a three-part relation:
+The project is easiest to enter as one overlapping relation rather than a stack:
 
 ```text
-PLANE → CROSS → DOOR
+UPPER / SOURCE FIELD
+        ∩
+      DOOR
+        ∩
+LOWER / MANIFESTATION FIELD
 ```
 
-- **Plane** is the inhabited world: bodies, matter, history, institutions, geography, evidence and consequence.
-- **Cross** is Plane × Axis: the horizontal world intersects a vertical relation of root/fruit, manifestation/source and descent/ascent.
-- **Door** is the threshold where a relation can change state. It is passage, not the destination.
+The **Potato House** is the union of the two complete fields. Their shared Vesica/Mandorla is the **Door**.
 
-The Plane remains. The Axis does not replace the world; it gives the world another coordinate.
+- **Plane** is the inhabited/world-facing horizontal section through the Door's widest middle: bodies, matter, history, institutions, geography, evidence and consequence.
+- **Axis** is the vertical source↔manifestation orientation through both field centers.
+- **Cross** is Plane × Axis at the relational midpoint inside the Door.
+- **Door** is the shared threshold field in which the two domains genuinely overlap and state/context can change.
+
+So Plane → Cross → Door is useful only as a reading prompt, not as a sequence of cosmic floors. Plane and Cross are internal coordinates of the Door relation. The Plane remains; the Axis does not replace the world; it makes another coordinate legible within the same House.
 
 ## One Axis, several routes
 
-D1–D11 is the project's current vertical scaffold. Life, Strife, Repair and Tim's ascent are **routes through the scaffold**, not competing cosmologies.
+D1–D11 remains a **navigation projection** over the House, not the base ontology. Life, Strife, Repair and Tim's ascent are routes through the same two-field/overlap system, not competing cosmologies or literal stacked realms.
 
 ### Life
 
@@ -118,3 +125,31 @@ Prefer one thick canonical owner and many projections over duplicate explanation
 - April 2025 developmental hinge: `THE-TURNING-APRIL-2025.md`
 
 Every relationship must preserve its type and evidence class.
+
+
+## House, field and shell
+
+The current topology distinguishes **composition** from **boundary regime**.
+
+- **Potato House** — the whole union of the upper/source and lower/manifestation fields.
+- **Room** — a bounded semantic/context region with local rules and typed interfaces.
+- **Door** — overlap/transition relation enabling passage between bounded contexts.
+- **House/Garden regime** — boundaries protect differentiated life while preserving legitimate circulation, return, repair and autonomy.
+- **Shell/Cube regime** — boundaries capture, compress, raise exit cost or block viable circulation.
+
+The lower manifestation field is not identical with Saturn/666/Cube. Saturnian Cube belongs to the project's enclosure/compression vocabulary and can be modeled as a local regime within manifestation. A separate Heaven-cube tradition is preserved independently. Geometry by itself has no fixed moral sign.
+
+**Mansion** remains poetic/scriptural dwelling vocabulary rather than a new universal containment primitive in the backend.
+
+## 3D geometric lift
+
+The canonical 2D Vesica can be read as an axial section through two equal overlapping balls/spheres separated by one radius. In that lift:
+
+- the Potato House is the union of the two balls;
+- the Door is their shared spherical-lens volume;
+- Plane is the widest middle section of that lens;
+- Cross is Plane × Axis at its center;
+- the Door's middle section has radius √3r/2;
+- the shared lens volume is 5πr³/12.
+
+This is a mathematical extension of the project's geometry, not a claim about physical cosmology.
