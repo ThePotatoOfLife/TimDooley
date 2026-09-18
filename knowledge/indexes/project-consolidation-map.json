@@ -1,7 +1,7 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "updated": "2026-09-18",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
@@ -290,6 +290,12 @@
         "action": "delete root copy",
         "reason": "all substantive sections promoted/routed, open questions moved to current frontier, live dependencies drained",
         "last_live_blob": "353678889ad4b46890319c812951ae494cf1e791"
+      },
+      {
+        "path": "2026-master-framework.json",
+        "action": "delete root copy",
+        "reason": "formula consumers and live source lists rewired to current specialist owners; historical value preserved by blob",
+        "last_live_blob": "796c32f54109fafb611c83838b45ac5b3f56a43a"
       }
     ],
     "root_source_strata": {
@@ -306,10 +312,10 @@
         "next": "preserve while dependent citations remain"
       },
       "2026-master-framework.json": {
-        "state": "historical-donor",
-        "role": "2026 synthesis history",
-        "authority": "non-current",
-        "next": "rewire any authority-like consumers; retain historical source references"
+        "state": "retired",
+        "role": "former 2026 conversation-developed synthesis",
+        "authority": "none",
+        "provenance": "archive/legacy/README.md + blob 796c32f54109fafb611c83838b45ac5b3f56a43a"
       },
       "POTATOVERSE-DEEP-RESEARCH.md": {
         "state": "historical-donor",
