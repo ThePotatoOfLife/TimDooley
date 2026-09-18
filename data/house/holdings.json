@@ -713,7 +713,7 @@
       "title": "Comparative Mythology",
       "dwelling_id": "traditions-texts",
       "purpose": "Compare world-tree, axis, initiation, deity, death-return and other motifs across traditions without collapsing differences.",
-      "primary_file_count": 4,
+      "primary_file_count": 5,
       "featured_holdings": [
         {
           "path": "knowledge/traditions/biblical-overlap-additions.json",
@@ -738,6 +738,12 @@
           "id": "july31-tammuz-tomb-north-gate-atlas",
           "kind": "room holding",
           "basis": "tradition-topic"
+        },
+        {
+          "path": "knowledge/traditions/axis-mundi-shadow-wetland-context-atlas.json",
+          "id": "axis-mundi-shadow-wetland-context-atlas",
+          "kind": "comparative religion psychology ecology boundary atlas",
+          "basis": "comparative-structure-boundary"
         }
       ],
       "public_surface_ids": [
@@ -5803,6 +5809,11 @@
       "path": "knowledge/traditions/providence-pyramid-pillars-atlas.json",
       "primary_owner_room_id": "esoteric-sacred-geometry",
       "basis": "curated-symbol-architecture"
+    },
+    {
+      "path": "knowledge/traditions/axis-mundi-shadow-wetland-context-atlas.json",
+      "primary_owner_room_id": "comparative-mythology",
+      "basis": "comparative-structure-boundary"
     }
   ],
   "curated_unowned_paths": [
