@@ -1,5 +1,5 @@
 {
-  "version": "1.9.0",
+  "version": "2.0.0",
   "updated": "2026-09-18",
   "authority": "house-topology",
   "room_registry": "data/house/rooms.json",
@@ -384,6 +384,10 @@
     "purpose": "Project the same Potato House / Tree onto three symbolic circular standing platforms so readers can enter the system from an upper integrative view, the ordinary visible world, or the buried/root-facing underside without turning those views into separate cosmologies.",
     "geometry_boundary": "These circles are navigation discs/platforms, not the two Source/Manifestation field circles of the Potato geometry. The World Plane is the existing Plane read as a standing surface; Heaven Plane and Below Plane are additional symbolic navigation projections.",
     "projection_rules": [
+      "Heaven is concretely Garden-facing: Garden, House, Crown/North, Canopy, Mountain/Summit and Orchard/Fruit are upper places.",
+      "Below is concretely root/repair-facing: Root Archive, Seed Bed, Ash/Mud, Shadow, Wide Road, Swamp, Forge and bounded underworld-comparison caverns are lower places.",
+      "Forge and Swamp are distinct lower spaces: Swamp is unresolved entanglement; Forge is bounded transformation/repair.",
+      "The center repeats locally inside every Room/process as a scoped junction while Potato remains global semantic center and Axis global orientation.",
       "Plane placement is navigation emphasis, not exclusive knowledge ownership.",
       "A Room may appear on more than one plane when its material crosses levels of the same Tree.",
       "Heaven emphasizes integration, orientation, Garden/House, ascent, transmission and return; it does not make a claim of physical altitude or automatic truth rank.",
@@ -395,11 +399,11 @@
     "planes": [
       {
         "id": "heaven-plane",
-        "label": "Heaven Plane",
+        "label": "Heaven / Garden Plane",
         "position": "upper",
         "tree_position": "crown / upper branches / integrative canopy",
         "orientation": "integration, source-facing orientation, ascent, transmission and return",
-        "description": "Stand here to read the House from its integrative side: Heaven, Garden, North, theology, meaning, Tree of Life, Fruit and the responsibility of returning what has been integrated to the visible world.",
+        "description": "Stand in the upper Garden-facing space: House, Crown/North, Tree canopy, Mountain/Summit, Orchard/Fruit and the responsibility of returning integrated capacity to the World.",
         "primary_room_ids": [
           "potatoverse-canon",
           "traditions-texts"
@@ -442,6 +446,14 @@
             "label": "Works / Fruit",
             "route": "works/"
           }
+        ],
+        "anchor_space_ids": [
+          "garden",
+          "house",
+          "crown-north",
+          "canopy",
+          "mountain-summit",
+          "orchard"
         ]
       },
       {
@@ -499,11 +511,21 @@
             "label": "World Systems",
             "route": "world-systems/"
           }
+        ],
+        "anchor_space_ids": [
+          "crossroads",
+          "living-trunk",
+          "body-lab",
+          "civic-field",
+          "culture-square",
+          "history-road",
+          "research-workshop",
+          "world-gates"
         ]
       },
       {
         "id": "below-plane",
-        "label": "Below Plane",
+        "label": "Below / Root-Forge Plane",
         "aliases": [
           "Below",
           "under-plane"
@@ -511,7 +533,7 @@
         "position": "lower",
         "tree_position": "roots / buried underside / shadow layer",
         "orientation": "provenance, buried causation, residue, shadow, subculture, Strife and unresolved recurrence",
-        "description": "Stand here to inspect what operates beneath the visible surface: archive roots, past causes, hidden or neglected context, subculture, shadow, residue, Roots of Strife, the Wide Road and Swamp-like entanglement.",
+        "description": "Stand in the lower root-and-repair space: provenance, Seed burial, Ash/Mud, Shadow, Wide Road, Swamp and Forge. Below contains both unresolved entanglement and the mechanisms that can transform it.",
         "primary_room_ids": [
           "archive-sources",
           "time-history",
@@ -555,15 +577,26 @@
             "label": "Research Lab",
             "route": "research-lab/"
           }
+        ],
+        "anchor_space_ids": [
+          "root-archive",
+          "seed-bed",
+          "ash-mud",
+          "shadow-gallery",
+          "wide-road",
+          "swamp",
+          "forge",
+          "underworld-caverns"
         ]
       }
-    ]
+    ],
+    "space_registry": "data/house/plane-spaces.json"
   },
   "symbolic_compass": {
     "status": "canonical orientation projection",
     "purpose": "Give the three symbolic planes one stable cardinal reading wheel. Direction chooses the kind of question/Room; vertical plane chooses the orientation or depth from which that question is read; distance from center controls specialization. The compass is a navigation projection over the same House, not a new ownership system.",
     "angular_rule": "The eight cardinal/intercardinal directions stay stable across Heaven, World and Below so readers can change plane without losing subject orientation.",
-    "depth_rule": "Center is Research Lab / unresolved synthesis. Moving toward a Door enters a Dwelling and its nested Rooms. Moving farther outward reaches specialist material and Works/Fruit. Distance is reading depth, not truth rank.",
+    "depth_rule": "The global Axis keeps orientation, but each Room/process has a scoped local center. Distance changes reading depth; plane selects the surrounding space; neither determines truth rank.",
     "entity_projection_rule": [
       "Named gods, spirits, demons, saints, heroes, movements and symbols remain historically rooted in their own traditions, texts and receptions before project comparison.",
       "One entity may project onto several planes when different historically grounded aspects or receptions are being read; this does not create several entities.",
@@ -577,7 +610,7 @@
       "symbol": "Spatial center",
       "route": "axis/#routing",
       "question": "What keeps orientation stable while subjects, planes and routes change?",
-      "note": "Axis is the exact spatial center. Research Lab is the inner Forge ring around it, not the center itself.",
+      "note": "Axis is the global spatial orientation. Local centers repeat in every Room/process as question→test→Door→handoff junctions; Research Lab/Forge remains a lower/inner transformation workspace, not the universal center.",
       "inner_ring_room_id": "research-lab"
     },
     "outer_ring": {
