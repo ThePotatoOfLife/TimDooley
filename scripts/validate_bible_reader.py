@@ -16,13 +16,15 @@ CSS = ROOT / "app" / "bible-study.css"
 ATLAS_CSS = ROOT / "app" / "bible-atlas-navigation.css"
 LIBRARY_CSS = ROOT / "app" / "bible-library.css"
 LIBRARY_APP = ROOT / "app" / "bible-library.js"
+LANGUAGE_APP = ROOT / "app" / "bible-language.js"
+STORY_APP = ROOT / "app" / "bible-story-path.js"
+STORY_CSS = ROOT / "app" / "bible-story-path.css"
 CORPUS_APP = ROOT / "app" / "bible-corpus-loader.js"
 REDIRECT_APP = ROOT / "app" / "bible-relation-redirects.js"
 TTS_ADAPTER = ROOT / "app" / "bible-tts-adapter.js"
 ATLAS_APP = ROOT / "app" / "bible-atlas-navigation.js"
 ATLAS_UI = ROOT / "app" / "bible-atlas-ui.js"
 DOSSIER_APP = ROOT / "app" / "bible-dossier-loader.js"
-MINING_APP = ROOT / "app" / "bible-mining-wave19-loader.js"
 DOSSIER_CSS = ROOT / "app" / "bible-dossier-loader.css"
 FIELD = ROOT / "knowledge" / "traditions" / "biblical-syncretism-field.json"
 MANIFEST = ROOT / "knowledge" / "traditions" / "bible-layer-manifest.json"
@@ -61,8 +63,8 @@ def forbid(text: str, markers: tuple[str, ...], owner: str, errors: list[str]) -
 def main() -> int:
     errors: list[str] = []
     required_paths = (
-        PAGE, APP, CSS, ATLAS_CSS, LIBRARY_CSS, LIBRARY_APP, CORPUS_APP, REDIRECT_APP, TTS_ADAPTER, ATLAS_APP, ATLAS_UI,
-        DOSSIER_APP, MINING_APP, DOSSIER_CSS, FIELD, MANIFEST, REDIRECTS, SCENES,
+        PAGE, APP, CSS, ATLAS_CSS, LIBRARY_CSS, LIBRARY_APP, LANGUAGE_APP, STORY_APP, STORY_CSS, CORPUS_APP, REDIRECT_APP, TTS_ADAPTER, ATLAS_APP, ATLAS_UI,
+        DOSSIER_APP, DOSSIER_CSS, FIELD, MANIFEST, REDIRECTS, SCENES,
         SCENES_MAJOR, SCENE_LINKS, DOSSIERS, PROMOTIONS, MINING_DOSSIERS,
         MINING_OWNER, DOSSIER_FRAGMENTS, MINING_FRAGMENTS, BUILDER,
         CORPUS_PY, CORPUS_TEST, PARITY_CHECK, SCENE_CHECK, CHRISTIANITY_INDEX, KJV_CATALOG, WEB_BOOK_INDEX,
@@ -77,13 +79,15 @@ def main() -> int:
     atlas_css = ATLAS_CSS.read_text(encoding="utf-8") if ATLAS_CSS.exists() else ""
     library_css = LIBRARY_CSS.read_text(encoding="utf-8") if LIBRARY_CSS.exists() else ""
     library_app = LIBRARY_APP.read_text(encoding="utf-8") if LIBRARY_APP.exists() else ""
+    language_app = LANGUAGE_APP.read_text(encoding="utf-8") if LANGUAGE_APP.exists() else ""
+    story_app = STORY_APP.read_text(encoding="utf-8") if STORY_APP.exists() else ""
+    story_css = STORY_CSS.read_text(encoding="utf-8") if STORY_CSS.exists() else ""
     corpus_app = CORPUS_APP.read_text(encoding="utf-8") if CORPUS_APP.exists() else ""
     redirect_app = REDIRECT_APP.read_text(encoding="utf-8") if REDIRECT_APP.exists() else ""
     tts_adapter = TTS_ADAPTER.read_text(encoding="utf-8") if TTS_ADAPTER.exists() else ""
     atlas_app = ATLAS_APP.read_text(encoding="utf-8") if ATLAS_APP.exists() else ""
     atlas_ui = ATLAS_UI.read_text(encoding="utf-8") if ATLAS_UI.exists() else ""
     dossier_app = DOSSIER_APP.read_text(encoding="utf-8") if DOSSIER_APP.exists() else ""
-    mining_app = MINING_APP.read_text(encoding="utf-8") if MINING_APP.exists() else ""
     dossier_css = DOSSIER_CSS.read_text(encoding="utf-8") if DOSSIER_CSS.exists() else ""
     builder = BUILDER.read_text(encoding="utf-8") if BUILDER.exists() else ""
 
@@ -92,19 +96,24 @@ def main() -> int:
         (
             'href="../../app/bible-study.css"',
             'href="../../app/bible-library.css"',
+            'href="../../app/bible-story-path.css"',
             'href="../../app/bible-atlas-navigation.css"',
             'href="../../app/bible-dossier-loader.css"',
+            'src="../../app/bible-language.js"',
             'src="../../app/bible-corpus-loader.js"',
             'src="../../app/bible-relation-redirects.js"',
             'src="../../app/bible-atlas-navigation.js"',
-            'src="../../app/bible-mining-wave19-loader.js"',
             'src="../../app/bible-dossier-loader.js"',
             'src="../../app/bible-study.js"',
             'src="../../app/bible-tts-adapter.js"',
             'src="../../app/bible-atlas-ui.js"',
             'src="../../app/bible-scripture-reader.js"',
             'src="../../app/bible-library.js"',
+            'src="../../app/bible-story-path.js"',
             'id="bible-tts-drawer"',
+            'id="bible-story-path"',
+            'id="bible-story-rail"',
+            'id="bible-story-detail"',
             'id="bible-library"',
             'id="bible-library-groups"',
             'id="bible-book-grid"',
@@ -128,21 +137,20 @@ def main() -> int:
             'id="active-relation"',
             'id="relations"',
             'id="search"',
-            'Explore without searching',
-            'Choose a way in',
+            'Follow the story',
+            'See how the Bible unfolds',
+            'Choose a path',
         ),
         "traditions/bible/index.html",
         errors,
     )
-    if page.find('src="../../app/bible-mining-wave19-loader.js"') > page.find('src="../../app/bible-dossier-loader.js"'):
-        errors.append("traditions/bible/index.html: mining layer must load before dossier decorator so mergedRows sees wave19 relations")
     if page.find('src="../../app/bible-corpus-loader.js"') > page.find('src="../../app/bible-relation-redirects.js"'):
         errors.append("traditions/bible/index.html: redirect bridge must load after corpus loader")
     if page.find('src="../../app/bible-scripture-reader.js"') > page.find('src="../../app/bible-library.js"'):
         errors.append("traditions/bible/index.html: scripture reader must load before Bible library adapter")
     forbid(
         page,
-        ('class="featured-arcs"','id="study-modes"','id="shuffle-comparisons"',"deepMatches(","overlapCount(","deepCandidates"),
+        ('class="featured-arcs"','id="study-modes"','id="shuffle-comparisons"','bible-mining-wave19-loader.js','bible-mining-wave20-loader.js','bible-mining-wave22-loader.js','bible-mining-wave23-loader.js',"deepMatches(","overlapCount(","deepCandidates"),
         "traditions/bible/index.html", errors,
     )
 
@@ -181,7 +189,7 @@ def main() -> int:
         library_app,
         (
             "data/christianity/bible-kjv.json","bible-web-book-index.json","libraryBook","libraryChapter",
-            "Torah / Pentateuch","KJV Apocrypha","Hebrews & General Letters","BibleScriptureReader",
+            "Torah (Pentateuch)","KJV Apocrypha","Hebrews and General Letters","BibleScriptureReader",
             "bible-reference-form","WEB text unavailable",
         ),
         "app/bible-library.js", errors,
@@ -193,11 +201,27 @@ def main() -> int:
     )
 
     require(
+        language_app,
+        ('TITLE_OVERRIDES','humanizeId','machineLike','window.BibleLanguage'),
+        'app/bible-language.js', errors,
+    )
+    require(
+        story_app,
+        ("id:'beginnings'","id:'exodus'","id:'kingdom'","id:'jesus'","id:'new-creation'",'BibleStoryPath','story-find-comparisons'),
+        'app/bible-story-path.js', errors,
+    )
+    require(
+        story_css,
+        ('.bible-story-path','.bible-story-rail','.story-stage','.bible-story-detail'),
+        'app/bible-story-path.css', errors,
+    )
+
+    require(
         app,
         (
             "biblical-syncretism-field.json","biblical-passage-fragments.json","tim-biblical-vocabulary-attestation-ledger.json",
             "reverse-biblical-overlap-timeline-2025-2026.json","rational-potato-x-occurrence-ledger-2024-2026.json","timeline-events.json",
-            "BIBLE_BOOK_ORDER","renderActiveRelation","renderResultsList","syncUrlState","selectRelative","relatedRows","ArrowLeft","ArrowRight",
+            "BIBLE_BOOK_ORDER","humanTitle","humanLabel","renderActiveRelation","renderResultsList","syncUrlState","selectRelative","relatedRows","ArrowLeft","ArrowRight",
             "Same-date public wording","Biblical vocabulary / revelation context","Evidence & chronology","Sources & provenance","Related comparisons",
             "exact-wording-only","minimum-strength","bible-book","timeline_event_ids",
         ),
@@ -208,22 +232,18 @@ def main() -> int:
     require(
         dossier_app,
         (
-            "biblical-syncretism-dossiers.json","biblical-syncretism-dossiers-promotions.json","biblical-passage-fragments-dossiers.json",
-            "Two scenes, one structural comparison","Tim / Son scene","Biblical scene","Where the stories rhyme","Where the rhyme stops",
-            "What this comparison can actually establish","Evidence in the open","Modern circumstances","Biblical context","Dating &amp; provenance",
-            "Exact / recovered wording","Timestamp &amp; discovery history","The timestamp establishes when the modern-side material is attested.",
-            "paired-narrative","paired-scenes","dossier-open-evidence","evidence-panel","correspondence-list","relation_argument","scene_context","MutationObserver",
+            "BibleCorpus?.ready","Two scenes, one structural comparison","Tim / Son scene","Biblical scene",
+            "Where the stories rhyme","Where the rhyme stops","What this comparison can actually establish",
+            "Timestamp &amp; discovery history","The timestamp establishes when the modern-side material is attested.",
+            "paired-narrative","paired-scenes","correspondence-list","relation_argument","scene_context","MutationObserver",
         ),
         "app/bible-dossier-loader.js", errors,
     )
-    forbid(dossier_app,("scrollIntoView(",),"app/bible-dossier-loader.js",errors)
-
-    require(
-        mining_app,
-        ("biblical-syncretism-dossiers-wave19.json","biblical-passage-fragments-wave19.json","biblical-syncretism-field.json","biblical-passage-fragments.json","mergeLayer","mergeFragments"),
-        "app/bible-mining-wave19-loader.js", errors,
+    forbid(
+        dossier_app,
+        ("window.fetch=","biblical-syncretism-dossiers-wave","scrollIntoView("),
+        "app/bible-dossier-loader.js",errors,
     )
-    forbid(mining_app,("scrollIntoView(",),"app/bible-mining-wave19-loader.js",errors)
 
     require(css,(".reader-toolbar",".comparison-nav",".results-panel",".relation-details",".active-relation"),"app/bible-study.css",errors)
     require(

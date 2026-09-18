@@ -7,17 +7,17 @@ const $=selector=>document.querySelector(selector);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 const groups=[
-  {id:'pentateuch',label:'Torah / Pentateuch',description:'Genesis through Deuteronomy: creation, ancestors, Exodus, covenant and Torah.',books:['genesis','exodus','leviticus','numbers','deuteronomy']},
+  {id:'pentateuch',label:'Torah (Pentateuch)',description:'Genesis through Deuteronomy: creation, ancestors, Exodus, covenant and Torah.',books:['genesis','exodus','leviticus','numbers','deuteronomy']},
   {id:'history',label:'Historical Books',description:'Israel, monarchy, exile and return in the Protestant Old Testament ordering.',books:['joshua','judges','ruth','1-samuel','2-samuel','1-kings','2-kings','1-chronicles','2-chronicles','ezra','nehemiah','esther']},
-  {id:'wisdom',label:'Poetry & Wisdom',description:'Prayer, wisdom, suffering, love poetry and reflection.',books:['job','psalms','proverbs','ecclesiastes','song-of-solomon']},
+  {id:'wisdom',label:'Poetry and Wisdom',description:'Prayer, wisdom, suffering, love poetry and reflection.',books:['job','psalms','proverbs','ecclesiastes','song-of-solomon']},
   {id:'major-prophets',label:'Major Prophets',description:'Isaiah through Daniel, grouped by traditional Christian ordering.',books:['isaiah','jeremiah','lamentations','ezekiel','daniel']},
   {id:'minor-prophets',label:'Twelve Prophets',description:'Hosea through Malachi: the twelve shorter prophetic books.',books:['hosea','joel','amos','obadiah','jonah','micah','nahum','habakkuk','zephaniah','haggai','zechariah','malachi']},
   {id:'apocrypha',label:'KJV Apocrypha',description:'The fourteen-book Apocrypha section printed between the Testaments in the 1611 KJV tradition.',section:'apocrypha'},
   {id:'gospels',label:'Gospels',description:'Four narrative witnesses to Jesus: Matthew, Mark, Luke and John.',books:['matthew','mark','luke','john']},
   {id:'acts',label:'Acts',description:'The early Jesus movement, mission and expansion after the resurrection narratives.',books:['acts']},
   {id:'pauline',label:'Pauline Letters',description:'Romans through Philemon in traditional New Testament ordering.',books:['romans','1-corinthians','2-corinthians','galatians','ephesians','philippians','colossians','1-thessalonians','2-thessalonians','1-timothy','2-timothy','titus','philemon']},
-  {id:'general',label:'Hebrews & General Letters',description:'Hebrews, James, Peter, John and Jude. Hebrews is kept separate from Pauline authorship claims.',books:['hebrews','james','1-peter','2-peter','1-john','2-john','3-john','jude']},
-  {id:'apocalypse',label:'Apocalypse',description:'Revelation: letters, visions, judgment, renewal and the New Jerusalem.',books:['revelation']}
+  {id:'general',label:'Hebrews and General Letters',description:'Hebrews, James, Peter, John and Jude. Hebrews is kept separate from Pauline authorship claims.',books:['hebrews','james','1-peter','2-peter','1-john','2-john','3-john','jude']},
+  {id:'apocalypse',label:'Revelation',description:'Revelation: letters, visions, judgment, renewal and the New Jerusalem.',books:['revelation']}
 ];
 
 const state={catalog:null,web:null,section:'all',search:'',selected:null,chapter:1};
@@ -50,13 +50,7 @@ function renderSummary(){
   const apoc=books.filter(book=>book.section==='apocrypha').length;
   const next=books.filter(book=>book.section==='new').length;
   const web=books.filter(webReadable).length;
-  $('#bible-library-summary').innerHTML=`
-    <span><strong>${books.length}</strong> KJV catalogue books</span>
-    <span><strong>${old}</strong> Old Testament</span>
-    <span><strong>${apoc}</strong> Apocrypha</span>
-    <span><strong>${next}</strong> New Testament</span>
-    <span><strong>${web}</strong> WEB-readable books</span>
-  `;
+  $('#bible-library-summary').innerHTML='<strong>'+books.length+' books</strong> in the 1611 KJV arrangement · '+web+' available in the WEB reader · '+apoc+' Apocrypha books kept distinct';
 }
 
 function renderGroups(){
@@ -185,6 +179,18 @@ async function init(){
     root.querySelector('.bible-library-loading').textContent=`Bible library could not load: ${error.message}`;
   }
 }
+
+window.BibleLibrary={
+  selectBook,
+  selectByName:(name,chapter=1)=>{
+    if(!state.catalog)return false;
+    const book=state.catalog.books.find(item=>item.name===name);
+    if(!book)return false;
+    selectBook(book.id,chapter,true);
+    return true;
+  },
+  selected:()=>state.selected
+};
 
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();

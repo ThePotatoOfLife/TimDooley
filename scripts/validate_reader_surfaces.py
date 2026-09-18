@@ -215,8 +215,16 @@ def main() -> int:
         'id="active-relation"',
     ):
         require(bible, marker, "traditions/bible/index.html", errors)
-    for label in ("Jesus / Son", "Father / House", "Door / Ladder", "God / Presence", "Garden / Spirit"):
-        require_any(bible, (label,), "traditions/bible/index.html", f"comparison focus {label}", errors)
+    # Public labels may become more readable while these semantic focus categories remain stable.
+    bible_focuses = (
+        ("Jesus / Son", ("Jesus / Son", "Jesus &amp; Son", "Jesus & Son")),
+        ("Father / House", ("Father / House", "Father &amp; House", "Father & House")),
+        ("Door / Ladder", ("Door / Ladder", "Door &amp; Ladder", "Door & Ladder")),
+        ("God / Presence", ("God / Presence", ">Presence<")),
+        ("Garden / Spirit", ("Garden / Spirit", "Garden &amp; Spirit", "Garden & Spirit")),
+    )
+    for label, markers in bible_focuses:
+        require_any(bible, markers, "traditions/bible/index.html", f"comparison focus {label}", errors)
     require_absent(bible, 'class="featured-arcs"', "traditions/bible/index.html", errors)
     require_absent(bible, 'id="shuffle-comparisons"', "traditions/bible/index.html", errors)
     require(bible_js, "biblical-syncretism-field.json", "app/bible-study.js", errors)
