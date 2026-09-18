@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "authority": "house-population-pulse",
   "purpose": "Observable structural-population signals for nested Rooms. This is a maintenance diagnostic, not an importance/truth ranking.",
@@ -249,7 +249,7 @@
       "title": "Other Traditions & Philosophies",
       "parent_room_id": "traditions-texts",
       "signals": {
-        "durable_root_count": 1,
+        "durable_root_count": 4,
         "guarded_interface_count": 1,
         "declared_adjacency_count": 3,
         "dedicated_public_surface_count": 2,
@@ -259,10 +259,9 @@
         "religion-belief"
       ],
       "flags": [
-        "sparse-roots",
         "active-frontier-nearby"
       ],
-      "guidance": "Deepen durable owners/sources before splitting the Room."
+      "guidance": "No structural split implied; continue population through existing owner."
     },
     {
       "room_id": "math-geometry",
@@ -290,7 +289,7 @@
       "title": "Physics & Cosmology",
       "parent_room_id": "science-formal-models",
       "signals": {
-        "durable_root_count": 1,
+        "durable_root_count": 4,
         "guarded_interface_count": 1,
         "declared_adjacency_count": 3,
         "dedicated_public_surface_count": 1,
@@ -302,10 +301,9 @@
         "environment-resources"
       ],
       "flags": [
-        "sparse-roots",
         "active-frontier-nearby"
       ],
-      "guidance": "Deepen durable owners/sources before splitting the Room."
+      "guidance": "No structural split implied; continue population through existing owner."
     },
     {
       "room_id": "systems-dynamics",
@@ -354,7 +352,7 @@
       "title": "Potato Biology",
       "parent_room_id": "life-body",
       "signals": {
-        "durable_root_count": 1,
+        "durable_root_count": 3,
         "guarded_interface_count": 1,
         "declared_adjacency_count": 3,
         "dedicated_public_surface_count": 2,
@@ -364,10 +362,9 @@
         "people-labour"
       ],
       "flags": [
-        "sparse-roots",
         "active-frontier-nearby"
       ],
-      "guidance": "Deepen durable owners/sources before splitting the Room."
+      "guidance": "No structural split implied; continue population through existing owner."
     },
     {
       "room_id": "neurobiology",
@@ -814,7 +811,7 @@
   "summary": {
     "nested_rooms": 38,
     "no_guarded_interface": 0,
-    "sparse_roots": 3,
+    "sparse_roots": 0,
     "no_public_surface": 0,
     "adjacent_but_unguarded": 0
   }
