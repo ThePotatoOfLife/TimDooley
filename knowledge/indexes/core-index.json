@@ -1,5 +1,5 @@
 {
-  "version": "5.0.0",
+  "version": "5.1.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -84,7 +84,9 @@
       "house-structural-census",
       "house-population-contract",
       "house-population-pulse",
-      "house-federation-scale"
+      "house-federation-scale",
+      "house-holdings",
+      "house-collections"
     ]
   },
   "records": [
@@ -1179,6 +1181,34 @@
         "Garden-City",
         "federation"
       ]
+    },
+    {
+      "id": "house-holdings",
+      "path": "data/house/holdings.json",
+      "branch": "root",
+      "kind": "file-level primary ownership and featured holdings for all nested Rooms",
+      "terms": [
+        "holdings",
+        "primary owner",
+        "Room contents",
+        "featured holding",
+        "unique ownership"
+      ]
+    },
+    {
+      "id": "house-collections",
+      "path": "data/house/collections.json",
+      "branch": "root",
+      "kind": "cross-Room curated collections that assemble holdings without transferring ownership",
+      "terms": [
+        "Corporium",
+        "Story",
+        "Reader dossiers",
+        "Guides",
+        "Indexes",
+        "collection",
+        "curation"
+      ]
     }
   ],
   "retrieval_routes": [
@@ -1386,6 +1416,15 @@
         "house-projections",
         "house-architectural-vocabulary",
         "new-jerusalem-network-civilization-atlas"
+      ]
+    },
+    {
+      "question": "What actually lives in each Room?",
+      "records": [
+        "house-holdings",
+        "house-collections",
+        "house-subrooms",
+        "house-interfaces"
       ]
     }
   ],
