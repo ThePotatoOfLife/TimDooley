@@ -1,5 +1,5 @@
 {
-  "version": "4.0.0",
+  "version": "4.1.0",
   "updated": "2026-09-18",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
@@ -338,13 +338,19 @@
       "title": "Memory & Recovery",
       "dwelling_id": "archive-sources",
       "purpose": "Recover prior conversations, files, historical strata and forgotten project material while preserving source/time boundaries.",
-      "primary_file_count": 1,
+      "primary_file_count": 2,
       "featured_holdings": [
         {
           "path": "knowledge/indexes/conversation-recovery-inventory.json",
           "id": "conversation-recovery-inventory",
           "kind": "room holding",
           "basis": "exact-owner"
+        },
+        {
+          "path": "knowledge/indexes/memory-recovery-method-atlas.json",
+          "id": "memory-recovery-method-atlas",
+          "kind": "recovery method and temporal-strata atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1098,7 +1104,7 @@
       "title": "Testing & Falsifiability",
       "dwelling_id": "science-formal-models",
       "purpose": "Own tests, observables, falsifiers, uncertainty, calibration and scientific red-team protocols.",
-      "primary_file_count": 5,
+      "primary_file_count": 6,
       "featured_holdings": [
         {
           "path": "knowledge/science/model-testing-protocol.json",
@@ -1129,6 +1135,12 @@
           "id": "science-theory-rigor-completion-matrix-2026-09-11",
           "kind": "room holding",
           "basis": "science-topic"
+        },
+        {
+          "path": "knowledge/science/model-discrimination-calibration-atlas.json",
+          "id": "model-discrimination-calibration-atlas",
+          "kind": "model comparison, calibration and falsification atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1149,7 +1161,7 @@
       "title": "Potato Biology",
       "dwelling_id": "life-body",
       "purpose": "Own literal potato anatomy, tuber biology, growth, dormancy, propagation, storage and environmental constraints.",
-      "primary_file_count": 3,
+      "primary_file_count": 4,
       "featured_holdings": [
         {
           "path": "knowledge/biology/potato-growth-principles.json",
@@ -1168,6 +1180,12 @@
           "id": "potato-angels-eye-sprout-development-ledger",
           "kind": "room holding",
           "basis": "exact-owner"
+        },
+        {
+          "path": "knowledge/biology/potato-organism-cycle-atlas.json",
+          "id": "potato-organism-cycle-atlas",
+          "kind": "literal potato organism and developmental-cycle atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1536,7 +1554,7 @@
       "title": "Geography & Countries",
       "dwelling_id": "world-systems",
       "purpose": "Own countries, territories, geographic identity, boundaries and country-level relational context.",
-      "primary_file_count": 4,
+      "primary_file_count": 5,
       "featured_holdings": [
         {
           "path": "knowledge/geopolitics/greater-israel-covenant-land-tikkun-atlas.json",
@@ -1561,6 +1579,12 @@
           "id": "operation-rising-lion-tim-window-2025",
           "kind": "room holding",
           "basis": "geopolitics-family"
+        },
+        {
+          "path": "knowledge/world/geography-place-state-boundary-atlas.json",
+          "id": "geography-place-state-boundary-atlas",
+          "kind": "neutral geographic object and boundary atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1580,13 +1604,19 @@
       "title": "Internet & Platforms",
       "dwelling_id": "culture-information",
       "purpose": "Own platforms, online spaces, public digital behavior, media formats and platform-specific context.",
-      "primary_file_count": 1,
+      "primary_file_count": 2,
       "featured_holdings": [
         {
           "path": "knowledge/culture/digital-witness-livestream-liturgy.json",
           "id": "digital-witness-livestream-liturgy",
           "kind": "room holding",
           "basis": "culture-topic"
+        },
+        {
+          "path": "knowledge/culture/platform-mechanics-atlas.json",
+          "id": "platform-mechanics-atlas",
+          "kind": "platform mediation and mechanics atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1674,13 +1704,19 @@
       "title": "Information Ecology & Memory",
       "dwelling_id": "culture-information",
       "purpose": "Own attention, information flow, repetition, memory, forgetting, transmission and public-discourse ecology.",
-      "primary_file_count": 1,
+      "primary_file_count": 2,
       "featured_holdings": [
         {
           "path": "knowledge/world/digital-memory-forgetting-restoration-atlas.json",
           "id": "digital-memory-forgetting-restoration-atlas",
           "kind": "room holding",
           "basis": "exact-owner"
+        },
+        {
+          "path": "knowledge/culture/information-ecology-mechanics-atlas.json",
+          "id": "information-ecology-mechanics-atlas",
+          "kind": "attention, memory and correction mechanics atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -6258,6 +6294,36 @@
       "path": "data/house/foundation-first-reproduction-wave-001.json",
       "primary_owner_room_id": "house-architecture",
       "basis": "foundation-population-wave-016"
+    },
+    {
+      "path": "knowledge/indexes/memory-recovery-method-atlas.json",
+      "primary_owner_room_id": "memory-recovery",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/culture/platform-mechanics-atlas.json",
+      "primary_owner_room_id": "internet-platforms",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/culture/information-ecology-mechanics-atlas.json",
+      "primary_owner_room_id": "information-ecology",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/biology/potato-organism-cycle-atlas.json",
+      "primary_owner_room_id": "potato-biology",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/world/geography-place-state-boundary-atlas.json",
+      "primary_owner_room_id": "geography-countries",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/science/model-discrimination-calibration-atlas.json",
+      "primary_owner_room_id": "model-testing",
+      "basis": "room-deepening"
     }
   ],
   "curated_unowned_paths": [
