@@ -154,7 +154,7 @@
     }
     if(censusTabs&&censusGrid){
       const roleRows=census.role_types||[], instances=census.instances||[];
-      const preferred=['field','vineyard','path','view','court','table','gate','door','archive','treasury','foundation','pillar','state','projection','tabernacle','vessel'];
+      const preferred=['field','vineyard','road','path','view','court','table','bridge','gate','door','archive','treasury','foundation','pillar','protocol','state','projection','tabernacle','vessel'];
       const roles=['all',...preferred.filter(id=>roleRows.some(r=>r.id===id))];
       censusTabs.innerHTML=roles.map((id,i)=>'<button class="census-tab" type="button" data-census-role="'+esc(id)+'" aria-pressed="'+String(i===0)+'">'+esc(id==='all'?'All roles':id)+'</button>').join('');
       function renderCensus(role='all'){
