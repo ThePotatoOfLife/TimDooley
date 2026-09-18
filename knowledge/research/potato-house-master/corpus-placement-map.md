@@ -48,7 +48,7 @@ If a future file cannot be classified by these rules, that is an architecture de
 
 | Current family | Placement | Future treatment |
 |---|---|---|
-| `2026-master-framework.json` | Historical 2026 synthesis donor / development artifact | preserve for source lineage and framework-development history; current ownership lives in dedicated core, science, timeline and world records |
+| retired 2026 root synthesis | Historical development artifact recoverable through `archive/legacy/README.md` | current ownership lives in dedicated core, science, timeline and world records |
 | `THE-TURNING-APRIL-2025.md` | Artifact + Occurrence-related historical/source material | Archive/Time roots; may support Tim/Potatoverse dossiers |
 | `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md` | Retained readable timeline/source stratum | Time & History uses it for provenance/early roadmap context; canonical event identity belongs to `data/timeline-events.json` |
 | `POTATOVERSE-*-RESEARCH.md` | Research-Lab Artifacts / candidate Assertions | not canonical merely because root-level |
