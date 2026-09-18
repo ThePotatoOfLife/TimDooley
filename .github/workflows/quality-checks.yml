@@ -62,6 +62,9 @@ jobs:
       - name: Validate Foundation layer
         run: python scripts/validate_foundation_layer.py
 
+      - name: Validate Foundation Seed genealogy
+        run: python scripts/validate_foundation_seed_genealogy.py
+
       - name: Validate commit crystallization
         run: python scripts/validate_commit_crystallization.py
 
