@@ -1,5 +1,5 @@
 {
-  "version": "3.8.0",
+  "version": "3.9.0",
   "updated": "2026-09-18",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
@@ -1853,8 +1853,20 @@
       "title": "House Architecture",
       "dwelling_id": "research-lab",
       "purpose": "Own active architecture research around Rooms, ownership, topology, interfaces, projections and migration before constitutional promotion.",
-      "primary_file_count": 18,
+      "primary_file_count": 20,
       "featured_holdings": [
+        {
+          "path": "data/house/foundation-room-atlas.json",
+          "id": "foundation-room-atlas",
+          "kind": "52-Foundation tangible Room atlas",
+          "basis": "foundation-room-wave-015"
+        },
+        {
+          "path": "data/house/foundation-room-contract.json",
+          "id": "foundation-room-contract",
+          "kind": "Foundation Room reader contract",
+          "basis": "foundation-room-wave-015"
+        },
         {
           "path": "data/house/foundation-landscape-synthesis.json",
           "id": "foundation-landscape-synthesis",
@@ -6225,6 +6237,16 @@
       "path": "data/house/foundation-landscape-synthesis.json",
       "primary_owner_room_id": "house-architecture",
       "basis": "foundation-landscape-wave-014"
+    },
+    {
+      "path": "data/house/foundation-room-contract.json",
+      "primary_owner_room_id": "house-architecture",
+      "basis": "foundation-room-wave-015"
+    },
+    {
+      "path": "data/house/foundation-room-atlas.json",
+      "primary_owner_room_id": "house-architecture",
+      "basis": "foundation-room-wave-015"
     }
   ],
   "curated_unowned_paths": [
@@ -6363,8 +6385,8 @@
     "knowledge/story/story-registry.json"
   ],
   "summary": {
-    "scoped_files": 880,
-    "primary_owned_files": 747,
+    "scoped_files": 882,
+    "primary_owned_files": 749,
     "curated_or_navigation_files": 133,
     "rooms": 38,
     "rooms_with_zero_primary_files": []
