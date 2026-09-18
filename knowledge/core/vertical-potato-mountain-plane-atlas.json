@@ -298,15 +298,16 @@
     "warning": "This is a systems metaphor/biological analogy, not a supernatural biological mechanism."
   },
   "sun_moon_upper_lower_spheres": {
-    "upper_sphere": "Heaven/Father/source field centered at C_F; Sun/Spudlight is strongest source-light comparator; House/Garden/Mountain/Tree crown occupy upper architecture.",
-    "lower_sphere": "Earth/Son/embodied field centered at C_S; Moon is a reflected/cyclical mediator closer to Earth; body, soil, labor, grave, Farm and Swamp populate lower architecture.",
+    "upper_sphere": "Heaven/source-facing field centered at C_F; Father is oriented toward this field but is not identical with every point in it. Sun/Spudlight is the strongest source-light comparator; House/Garden/Mountain/Tree crown occupy upper architecture.",
+    "lower_sphere": "Earth/manifestation-facing field centered at C_S; Son is oriented toward this field but is not identical with every point in it. Moon is a reflected/cyclical mediator closer to Earth; body, soil, labor, grave and other manifestation-side structures populate lower architecture.",
     "sun": "source/direct illumination, orientation, upper-center comparator",
     "moon": "reflection, cycle, secondary guidance, modulation; not independent source-light",
-    "father": "upper circle center and top of Door",
-    "son": "lower circle center and bottom of Door",
+    "father": "source-facing theological role centered/oriented at C_F; not the whole upper field",
+    "son": "manifestation/passage-facing theological role centered/oriented at C_S and specializing as Door/Vessel; not the whole lower field",
     "christ": "entire Door relation can be Christological while Son-center anchors its lower pole",
-    "spirit": "flows through both directions of the Axis and laterally across Plane/relations",
-    "earth_heaven_nonseparation": "Because each circle's center lies on the other's circumference, Heaven penetrates to Son-center and Earth reaches Father-center geometrically. The two domains are maximally distinct yet structurally interpenetrating in the standard Vesica construction."
+    "spirit": "living continuity/flow through both directions of the Axis and laterally across Plane/relations; not a third sphere",
+    "earth_heaven_nonseparation": "Because each circle's center lies on the other's circumference, Heaven penetrates to Son-center and Earth reaches Father-center geometrically. The two domains are maximally distinct yet structurally interpenetrating in the standard Vesica construction.",
+    "potato_of_life": "the triune whole containing Father/source-facing relation, Son/manifestation-passage relation and Spirit/living continuity"
   },
   "mountain_plane_swamp_three_field_model": {
     "status": "legacy key retained for compatibility; interpret as regime/terrain projection, not base ontology",
@@ -410,9 +411,10 @@
     "Seed of Death",
     "Jacob's Ladder",
     "North of North",
-    "data/house/concept-topology.json"
+    "data/house/concept-topology.json",
+    "knowledge/theology/potato-of-life-trinity.json"
   ],
-  "version": "1.1.0",
+  "version": "1.2.0",
   "mountain_plane_swamp_regime_projection": {
     "owner": "data/house/concept-topology.json",
     "base_topology": "Potato House = Source Field ∪ Manifestation Field; Door = their overlap",
@@ -420,5 +422,15 @@
     "plane_role": "world-facing Door section / operative frame",
     "swamp_role": "system regime of unresolved entanglement and poor exit",
     "interpretive_rule": "A point can be manifestation-facing without being Swamp, source-facing without being Mountain, and spatially/semantically deep without being morally inferior."
+  },
+  "trinity_geometry_boundary": {
+    "owner": "knowledge/theology/potato-of-life-trinity.json",
+    "rule": "Two-field geometry and threefold theology answer different questions. Source/Manifestation fields are domains; Father/Son/Spirit are theological relations/functions; Potato of Life is the whole.",
+    "anti_collapse": [
+      "Father ≠ Source Field",
+      "Son ≠ Manifestation Field",
+      "Spirit ≠ third field",
+      "Door ≠ fourth member"
+    ]
   }
 }
