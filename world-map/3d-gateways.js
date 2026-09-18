@@ -115,21 +115,25 @@ async function injectSystemRole(code) {
   code = String(code || '').toUpperCase();
   const card = document.getElementById('atlasCountryCard');
   if (!card || card.hidden || !/^[A-Z]{3}$/.test(code)) return;
-  if (card.querySelector('#atlasCountrySystemRole')) return;
+  const host = card.querySelector('[data-country-context-enrichments]');
+  let section = host?.querySelector('#atlasCountrySystemRole') || card.querySelector('#atlasCountrySystemRole');
   countEnhancement();
   const systems = await runtime.systemContext(code);
   const gateways = await runtime.gatewaysForCountry(code);
   const capabilities = systems.capabilities || [];
   const dependencies = systems.dependencies || [];
   const builds = systems.builds || [];
-  if (!capabilities.length && !dependencies.length && !builds.length && !gateways.length) return;
-
-  const section = document.createElement('div');
-  section.id = 'atlasCountrySystemRole';
-  section.className = 'atlas-country-section';
+  if (!host || (!capabilities.length && !dependencies.length && !builds.length && !gateways.length)) {
+    section?.remove();
+    return;
+  }
+  if (!section) {
+    section = document.createElement('div');
+    section.id = 'atlasCountrySystemRole';
+    section.className = 'atlas-country-section';
+  }
+  if (section.parentElement !== host) host.appendChild(section);
   section.innerHTML = `<small>System role · evidence-backed</small>${tags('Can', capabilities)}${tags('Depends', dependencies)}${tags('Building', builds, buildLabel)}${tags('Gateways', gateways, row => row.label)}`;
-  const actions = card.querySelector('.atlas-country-actions');
-  if (actions) actions.before(section); else card.appendChild(section);
 }
 
 function currentCode(detail = null) {

@@ -1,48 +1,39 @@
-// Compact contextual country card for ordinary World Map exploration.
-// Canonical dossiers own country detail; the shared map runtime owns comparable
-// empirical scalars, institutional memberships, Axis profiles and functional chains.
+// Selected-country workspace for ordinary World Map exploration.
+// Selection owns the persistent subject, Country Presentation normalizes shared
+// summary data, and the Inspector remains the deep-dive surface.
 
 const layers = window.__potatoAtlasLayers;
 const selection = window.__potatoAtlasSelection;
-const activeView = window.__potatoAtlasActiveView;
-if (!layers || !selection) throw new Error('Country card requires registry and selection APIs.');
+const presentation = window.__potatoAtlasCountryPresentation;
+if (!layers || !selection || !presentation) throw new Error('Country card requires registry, selection and Country Presentation APIs.');
 await layers.ready;
 
 const INDEX_URL = '../data/countries/index.json';
-const DEMOGRAPHY_URL = '../data/world-country-demography.json';
 const RELATION_LABELS = { all:'All context', money:'Money', systems:'Systems', institutions:'Institutions', project:'Project', other:'Other' };
-const RUNTIME_GROUPS = ['eu','oecd','g7','g20','schengen','euro-area','usmca','asean','african-union','sadc','pacific-islands-forum','sco','mercosur','gcc','arctic-council','nato','brics','aukus','five-eyes'];
-const FIGURE_COUNTRY_CODES = {
-  'Canada':'CAN','China':'CHN','Russia':'RUS','India':'IND','United States':'USA','Israel':'ISR',
-  'Australia':'AUS','New Zealand':'NZL','Papua New Guinea':'PNG','South Africa':'ZAF'
-};
-
 let index = null;
-let demography = null;
 let renderedCode = null;
 let renderVersion = 0;
+let activeTab = 'overview';
 const records = new Map();
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 async function fetchJson(url) { const response = await fetch(url, { cache:'no-cache' }); if (!response.ok) throw new Error(`${response.status} ${url}`); return response.json(); }
 async function indexData() { if (!index) index = await fetchJson(INDEX_URL); return index; }
-async function demographyData() { if (!demography) demography = await fetchJson(DEMOGRAPHY_URL); return demography; }
 function runtime() { return window.__potatoAtlasDataRuntime; }
 async function populationObservation(code) { return runtime()?.populationObservation?.(code) || null; }
 async function areaObservation(code) { return runtime()?.areaObservation?.(code) || null; }
-
+function observation(record, key) {
+  const value = record?.observations?.[key];
+  return value && typeof value === 'object' && 'value' in value ? value : null;
+}
 function formatNumber(value, maximumFractionDigits = 1) {
+  if (value == null || value === '') return '—';
   const number = Number(value);
   if (!Number.isFinite(number)) return '—';
   return new Intl.NumberFormat(undefined, { maximumFractionDigits }).format(number);
 }
-function formatCompact(value) {
-  const number = Number(value);
-  if (!Number.isFinite(number)) return '—';
-  return new Intl.NumberFormat(undefined, { notation:'compact', maximumFractionDigits:1 }).format(number);
-}
-function formatRuntimeCell(cell) {
-  if (!cell || !Number.isFinite(Number(cell.value))) return '—';
+function formatObservation(cell) {
+  if (!cell || cell.value == null || !Number.isFinite(Number(cell.value))) return '—';
   const value = Number(cell.value);
   const unit = String(cell.unit || '');
   if (unit.includes('USD') || unit.includes('international $')) return new Intl.NumberFormat(undefined, { style:'currency', currency:'USD', maximumFractionDigits:0 }).format(value);
@@ -54,11 +45,6 @@ function flagEmoji(iso2) {
   if (!/^[A-Z]{2}$/.test(code)) return '🌐';
   return [...code].map(char => String.fromCodePoint(127397 + char.charCodeAt(0))).join('');
 }
-function observation(record, key) {
-  const value = record?.observations?.[key];
-  return value && typeof value === 'object' && 'value' in value ? value : null;
-}
-
 async function countryRecord(code) {
   if (records.has(code)) return records.get(code);
   const data = await indexData();
@@ -71,116 +57,98 @@ async function countryRecord(code) {
   } catch { return null; }
 }
 
-async function religionShare(code, id) {
-  const data = await demographyData();
-  const tail = id.split('.').pop();
-  const key = tail === 'other' ? 'other_religions' : tail;
-  const value = Number(data?.countries?.[code]?.religion?.composition?.[key]);
-  return Number.isFinite(value) ? value : null;
-}
-
-async function defaultMetrics(code, record) {
+async function defaultMetrics(code, record, shared) {
   const population = await populationObservation(code);
+  const area = await areaObservation(code);
   const gdp = observation(record, 'gdp');
+  const gdpPerCapita = observation(record, 'gdp_per_capita');
   const growth = observation(record, 'real_growth') || observation(record, 'real_gdp_growth');
   const inflation = observation(record, 'inflation');
   const unemployment = observation(record, 'unemployment');
   return [
-    ['Population', population ? formatCompact(population.value) : '—'],
-    ['GDP', gdp ? `${formatNumber(gdp.value, 1)} ${gdp.unit || ''}`.trim() : '—'],
-    ['Growth', growth ? `${formatNumber(growth.value, 1)}%` : '—'],
-    ['Inflation', inflation ? `${formatNumber(inflation.value, 1)}%` : '—'],
-    ['Unemployment', unemployment ? `${formatNumber(unemployment.value, 1)}%` : '—'],
+    ['Population', shared?.population?.display || presentation.formatPopulation(population?.value)],
+    ['GDP', formatObservation(gdp)],
+    ['GDP per capita', formatObservation(gdpPerCapita)],
+    ['Growth', formatObservation(growth)],
+    ['Inflation', formatObservation(inflation)],
+    ['Unemployment', formatObservation(unemployment)],
+    ['Area', shared?.identity?.area?.display || presentation.formatArea(area?.value)],
   ];
-}
-
-async function membershipLabels(record, code) {
-  const dossier = (record?.relationships || [])
-    .filter(row => row?.type === 'member-of' && row?.status === 'active')
-    .map(row => String(row.target || '').replaceAll('-', ' '))
-    .filter(Boolean);
-  const empirical = [];
-  for (const groupId of RUNTIME_GROUPS) {
-    const members = await runtime()?.members?.(groupId) || [];
-    if (!members.includes(code)) continue;
-    const meta = await runtime()?.groupMeta?.(groupId);
-    empirical.push(meta?.label || groupId.replaceAll('-', ' '));
-  }
-  return [...new Set([...dossier, ...empirical])].slice(0, 10);
 }
 
 async function axisContext(code) {
   const profile = await runtime()?.axisProfile?.(code) || { status:'unresolved', orientations:[] };
-  const orientations = (profile.orientations || []).filter(item => item?.role !== 'unresolved').slice(0, 3);
+  const orientations = (profile.orientations || []).filter(item => item?.role !== 'unresolved').slice(0, 4);
   const chains = await runtime()?.chainsForCountry?.(code) || [];
-  const figures = await runtime()?.referenceFigures?.() || [];
-  const directFigure = figures.find(figure => FIGURE_COUNTRY_CODES[figure.country_or_institution] === code) || null;
-  return { profile, orientations, chains, directFigure };
-}
-
-function activeComparisonLayer() {
-  const active = layers.active().map(id => layers.get(id)).filter(Boolean);
-  return active.find(entry => entry.kind === 'scalar' && (entry.family === 'religion' || entry.id === 'stat.population' || entry.id === 'stat.area' || entry.runtime_metric)) || null;
-}
-
-async function comparisonValue(code, record, entry) {
-  if (entry?.family === 'religion') {
-    const value = await religionShare(code, entry.id);
-    return { value, display:value == null ? '—' : `${formatNumber(value, 1)}%` };
-  }
-  if (entry?.id === 'stat.area') {
-    const cell = await areaObservation(code);
-    const value = Number(cell?.value);
-    return { value:Number.isFinite(value) ? value : null, display:Number.isFinite(value) ? `${formatNumber(value)} km²` : '—', cell };
-  }
-  if (entry?.runtime_metric) {
-    const cell = await runtime()?.metric?.(code, entry.runtime_metric);
-    const value = Number(cell?.value);
-    return { value:Number.isFinite(value) ? value : null, display:formatRuntimeCell(cell), cell };
-  }
-  const population = await populationObservation(code);
-  const value = Number(population?.value);
-  return { value:Number.isFinite(value) ? value : null, display:Number.isFinite(value) ? formatCompact(value) : '—', cell:population };
-}
-
-async function comparisonRows(codes) {
-  const selected = [...new Set((codes || []).map(code => String(code || '').toUpperCase()).filter(code => /^[A-Z]{3}$/.test(code)))];
-  if (selected.length < 2) return null;
-  const entry = activeComparisonLayer();
-  const label = entry?.label || 'Population';
-  const metricMeta = entry?.runtime_metric ? await runtime()?.metricMeta?.(entry.runtime_metric) : null;
-  const rows = await Promise.all(selected.slice(0, 6).map(async code => {
-    const record = await countryRecord(code);
-    const metric = await comparisonValue(code, record || {}, entry);
-    return { code, name:record?.identity?.name || selection.countryName?.(code) || code, display:metric.display, value:metric.value, active:code === selection.current?.activeCode };
-  }));
-  rows.sort((a, b) => {
-    if (a.active !== b.active) return a.active ? -1 : 1;
-    if (a.value == null && b.value != null) return 1;
-    if (a.value != null && b.value == null) return -1;
-    if (a.value != null && b.value != null && a.value !== b.value) return b.value - a.value;
-    return a.name.localeCompare(b.name);
-  });
-  return { label, metricMeta, rows, remaining:Math.max(0, selected.length - 6) };
+  return { profile, orientations, chains };
 }
 
 function connectionRows(code) {
-  return (selection.connectionsFor?.(code, 4) || []).map(edge => {
+  return (selection.connectionsFor?.(code, 6) || []).map(edge => {
     const partner = edge.a === code ? edge.b : edge.a;
     const types = (edge.types || []).map(type => String(type).replaceAll('-', ' '));
     return { partner, name:selection.countryName?.(partner) || partner, types:types.length ? types.join(' · ') : String(edge.layer || 'relation').replaceAll('-', ' ') };
   });
 }
 
-async function contextualRows(code) {
-  const view = await activeView?.forCountry?.(code);
-  if (!view?.sets?.length) return [];
-  const rows = [];
-  if (view.memberships?.memberships?.length) {
-    rows.push([`${String(view.memberships.mode || 'any').toUpperCase()} set query`, view.memberships.matches ? 'matches' : 'outside']);
-    rows.push(['Active sets', view.memberships.memberships.map(item => item.label).join(' · ')]);
+async function contextualRows(code, shared = null) {
+  const result = [];
+  const memberships = shared?.memberships?.memberships || [];
+  if (memberships.length) {
+    result.push([`${String(shared.memberships.mode || 'any').toUpperCase()} set query`, shared.memberships.matches ? 'Matches' : 'Outside']);
+    result.push(['Active sets', memberships.map(item => `${item.label}: ${item.member ? 'yes' : 'no'}`).join(' · ')]);
   }
-  return rows;
+  const axisLayers = layers.active().filter(id => String(id).startsWith('axis.'));
+  if (axisLayers.length) {
+    const axis = await axisContext(code);
+    if (axis.orientations.length) result.push(['Axis orientation', axis.orientations.map(item => `${item.axis}: ${item.role}`).join(' · ')]);
+    if (axis.chains.length) result.push(['Functional chains', axis.chains.slice(0, 3).map(item => item.label).join(' · ')]);
+  }
+  return result;
+}
+
+// Retained public helper for compatibility with older callers. Pinned comparison
+// presentation now belongs to 3d-pinned-context.js, not the selected-country card.
+async function comparisonRows(codes) {
+  const unique = [...new Set((codes || []).map(code => String(code || '').toUpperCase()).filter(code => /^[A-Z]{3}$/.test(code)))];
+  return Promise.all(unique.slice(0, 6).map(code => presentation.forCountry(code)));
+}
+
+function currentAnswerHtml(shared) {
+  const answer = shared?.answer;
+  if (!answer || answer.kind === 'none' || answer.status === 'neutral') return '';
+  // Population is already a permanent orientation field. When it is the active
+  // scalar, source/period are attached there instead of rendering the same value twice.
+  if (answer.populationPrimary) return '';
+  if (answer.kind === 'scalar') {
+    const meta = [answer.period, answer.source].filter(Boolean).join(' · ');
+    return `<section class="atlas-country-current-answer" data-answer-kind="scalar"><small>Current map</small><span>${esc(answer.label)}</span><strong>${esc(answer.display || 'Unknown')}</strong>${meta ? `<em>${esc(meta)}</em>` : ''}</section>`;
+  }
+  const memberships = answer.memberships?.memberships || [];
+  return `<section class="atlas-country-current-answer" data-answer-kind="set"><small>Current map</small><span>${esc(answer.label || 'Set query')}</span><strong>${esc(answer.display || 'Outside')}</strong>${memberships.length ? `<em>${esc(memberships.map(item => `${item.label}: ${item.member ? 'yes' : 'no'}`).join(' · '))}</em>` : ''}</section>`;
+}
+
+function governmentRows(record) {
+  const political = record?.political_system || {};
+  const rows = [];
+  if (political.system_type) rows.push(['System', political.system_type]);
+  const leader = political.current_leader?.name;
+  const office = political.current_leader?.office || political.head_of_government || 'Leader';
+  if (leader) rows.push([office, leader]);
+  if (political.head_of_state && political.head_of_state !== leader) rows.push(['Head of state', political.head_of_state]);
+  return rows.slice(0, 3);
+}
+
+function activateTab(tab) {
+  const card = document.getElementById('atlasCountryCard');
+  if (!card || !['overview','context','connections'].includes(tab)) return;
+  activeTab = tab;
+  card.querySelectorAll('[data-country-tab]').forEach(button => {
+    const selected = button.dataset.countryTab === tab;
+    button.classList.toggle('active', selected);
+    button.setAttribute('aria-selected', selected ? 'true' : 'false');
+  });
+  card.querySelectorAll('.atlas-country-tab-panel').forEach(panel => { panel.hidden = panel.dataset.countryPanel !== tab; });
 }
 
 function openInspector() { document.getElementById('atlasApp')?.classList.remove('panel-collapsed'); }
@@ -222,20 +190,7 @@ function syncTraceAction() {
   if (!button) return;
   const active = window.__potatoEntityTrace?.isEnabled?.() === true;
   button.classList.toggle('active', active);
-  button.textContent = active ? 'Trace connections · on' : 'Trace connections';
-}
-function mapViewHtml(view) {
-  if (!view || view.status === 'neutral') return '';
-  if (view.scalar) {
-    const meta = [view.period, view.source].filter(Boolean).join(' · ');
-    const coverage = view.coverage?.coverage != null && view.coverage?.country_count != null ? `${view.coverage.coverage}/${view.coverage.country_count} countries` : '';
-    return `<div class="atlas-map-view" data-view-status="${esc(view.status)}"><small>Map color · ${esc(view.scalar.label)}</small><strong>${esc(view.display || 'Unknown')}</strong>${meta || coverage ? `<span>${esc(meta || coverage)}</span>` : ''}${view.status === 'unknown' ? '<span>No comparable observation for this country</span>' : ''}</div>`;
-  }
-  const membership = view.memberships?.memberships || [];
-  if (membership.length) {
-    return `<div class="atlas-map-view"><small>Map view · ${esc(String(view.memberships.mode || 'any').toUpperCase())} set query</small><strong>${view.memberships.matches ? 'Matches' : 'Outside'}</strong><span>${membership.map(item => `${item.label}: ${item.member ? 'yes' : 'no'}`).join(' · ')}</span></div>`;
-  }
-  return '';
+  button.textContent = active ? 'Trace · on' : 'Trace';
 }
 
 function install() {
@@ -243,16 +198,18 @@ function install() {
   const style = document.createElement('style');
   style.id = 'atlasCountryCardStyle';
   style.textContent = `
-    #atlasCountryCard{position:absolute;left:10px;top:10px;z-index:7;width:min(320px,calc(100% - 20px));max-height:calc(100% - 20px);overflow:auto;background:#0a1010ed;border:1px solid #344343;border-radius:13px;padding:11px;box-shadow:0 10px 30px #0009;backdrop-filter:blur(12px)}
-    #atlasCountryCard[hidden]{display:none!important}.atlas-country-head{display:flex;align-items:flex-start;gap:9px}.atlas-country-flag{font-size:25px;line-height:1}.atlas-country-title{min-width:0;flex:1}.atlas-country-title b{display:block;font:400 18px/1.05 Georgia,serif}.atlas-country-title small{display:block;color:#9ea9a4;font-size:10px;margin-top:2px}.atlas-country-close{border:0!important;background:transparent!important;color:#9ea9a4!important;padding:1px 4px!important;min-height:0!important}.atlas-map-view{margin-top:9px;padding:8px 9px;border:1px solid #4a5d58;border-radius:9px;background:#111a18}.atlas-map-view small{display:block;color:#9bac9f;font-size:9px;text-transform:uppercase;letter-spacing:.07em}.atlas-map-view strong{display:block;margin-top:2px;color:#f0dfaa;font-size:16px}.atlas-map-view span{display:block;margin-top:2px;color:#87948e;font-size:9px;line-height:1.35}.atlas-map-view[data-view-status="unknown"] strong{color:#aab4af}.atlas-country-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:9px}.atlas-country-metric{padding:6px;border:1px solid #273333;border-radius:8px;min-width:0}.atlas-country-metric span{display:block;color:#8f9c96;font-size:9px;text-transform:uppercase;letter-spacing:.05em}.atlas-country-metric b{display:block;font-size:12px;overflow-wrap:anywhere}.atlas-country-row{display:flex;justify-content:space-between;gap:9px;padding:5px 0;border-bottom:1px solid #202b2a;font-size:11px}.atlas-country-row:last-child{border:0}.atlas-country-row span{color:#9aa6a0}.atlas-country-row b{text-align:right;font-weight:600}.atlas-country-section{margin-top:9px}.atlas-country-section>small{display:block;color:#7f8d87;text-transform:uppercase;letter-spacing:.09em;font-size:8px;margin-bottom:2px}.atlas-country-tags{display:flex;flex-wrap:wrap;gap:4px}.atlas-country-tag{border:1px solid #2b3937;border-radius:999px;padding:2px 6px;font-size:9px;color:#bec8c3}.atlas-axis-tag[data-axis="north"]{border-color:#47758a}.atlas-axis-tag[data-axis="west"]{border-color:#315979}.atlas-axis-tag[data-axis="east"]{border-color:#7d493b}.atlas-axis-tag[data-axis="south"]{border-color:#81713a}.atlas-country-compare{width:100%;display:flex;justify-content:space-between;gap:8px;align-items:center;padding:5px 0;border:0;border-bottom:1px solid #202b2a;background:transparent;color:inherit;text-align:left}.atlas-country-compare:last-child{border-bottom:0}.atlas-country-compare:hover,.atlas-country-compare.active{color:#f3dfa4}.atlas-country-compare span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#b7c2bd;font-size:10px}.atlas-country-compare b{flex:0 0 auto;font-size:10px}.atlas-country-more,.atlas-country-coverage{color:#77847e;font-size:9px;padding-top:3px}.atlas-country-connection{display:grid;grid-template-columns:minmax(74px,.9fr) 1.3fr;gap:8px;padding:5px 0;border-bottom:1px solid #202b2a;font-size:10px}.atlas-country-connection:last-child{border:0}.atlas-country-connection b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.atlas-country-connection span{color:#909c96;text-align:right;overflow-wrap:anywhere}.atlas-country-actions{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px;padding-top:8px;border-top:1px solid #273333}.atlas-country-actions button{flex:1 1 30%;min-height:29px;padding:5px 7px;background:#111918;border:1px solid #2e3a38;color:#bcc8c2;border-radius:7px;font-size:10px}.atlas-country-actions button:hover,.atlas-country-actions button.active{border-color:#708d83;color:#dff1d8;background:#17211f}.atlas-country-actions button[data-atlas-pin][aria-pressed="true"]{border-color:#d1b76f;color:#f3dfa4}.atlas-country-source{margin-top:8px;color:#75827c;font-size:8px}@media(max-width:900px){#atlasCountryCard{top:auto;bottom:8px;left:8px;right:8px;width:auto;max-height:42vh}}
+    #atlasCountryCard{position:absolute;left:10px;top:10px;z-index:7;width:min(330px,calc(100% - 20px));max-height:calc(100% - 20px);overflow:auto;background:#0a1010ed;border:1px solid #344343;border-radius:13px;padding:11px;box-shadow:0 10px 30px #0009;backdrop-filter:blur(12px)}
+    #atlasCountryCard[hidden]{display:none!important}.atlas-country-head{display:flex;align-items:flex-start;gap:9px}.atlas-country-flag{font-size:25px;line-height:1}.atlas-country-title{min-width:0;flex:1}.atlas-country-title b{display:block;font:400 18px/1.05 Georgia,serif}.atlas-country-title small{display:block;color:#9ea9a4;font-size:10px;margin-top:2px;line-height:1.35}.atlas-country-title .population-primary{color:#f0dfaa}.atlas-country-close{border:0!important;background:transparent!important;color:#9ea9a4!important;padding:1px 4px!important;min-height:0!important}.atlas-country-pin{margin-left:auto;min-height:25px;padding:3px 7px;border:1px solid #394844;border-radius:7px;background:#111918;color:#c4cec9;font-size:9px}.atlas-country-pin[aria-pressed="true"]{border-color:#d1b76f;color:#f3dfa4}.atlas-country-current-answer{margin-top:9px;padding:8px 9px;border:1px solid #4a5d58;border-radius:9px;background:#111a18}.atlas-country-current-answer small,.atlas-country-current-answer span,.atlas-country-current-answer strong,.atlas-country-current-answer em{display:block}.atlas-country-current-answer small{color:#9bac9f;font-size:8px;text-transform:uppercase;letter-spacing:.09em}.atlas-country-current-answer span{margin-top:2px;color:#aeb9b3;font-size:9px}.atlas-country-current-answer strong{margin-top:1px;color:#f0dfaa;font-size:16px}.atlas-country-current-answer em{margin-top:2px;color:#87948e;font-size:9px;font-style:normal}.atlas-country-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:9px}.atlas-country-tabs button{min-height:29px;padding:5px;border:1px solid #2d3937;border-radius:7px;background:#0f1615;color:#9eaaa4;font-size:9px}.atlas-country-tabs button.active{border-color:#617a73;background:#17201e;color:#e3ebe6}.atlas-country-tab-panel{margin-top:8px}.atlas-country-tab-panel[hidden]{display:none!important}.atlas-country-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px}.atlas-country-metric{padding:6px;border:1px solid #273333;border-radius:8px;min-width:0}.atlas-country-metric span{display:block;color:#8f9c96;font-size:8px;text-transform:uppercase;letter-spacing:.05em}.atlas-country-metric b{display:block;margin-top:1px;font-size:11px;overflow-wrap:anywhere}.atlas-country-row{display:flex;justify-content:space-between;gap:9px;padding:5px 0;border-bottom:1px solid #202b2a;font-size:10px}.atlas-country-row:last-child{border:0}.atlas-country-row span{color:#9aa6a0}.atlas-country-row b{text-align:right;font-weight:600}.atlas-country-section{margin-top:8px}.atlas-country-section>small{display:block;color:#7f8d87;text-transform:uppercase;letter-spacing:.09em;font-size:8px;margin-bottom:3px}.atlas-country-tags{display:flex;flex-wrap:wrap;gap:4px}.atlas-country-tag{border:1px solid #2b3937;border-radius:999px;padding:2px 6px;font-size:9px;color:#bec8c3}.atlas-country-connection{display:grid;grid-template-columns:minmax(78px,.9fr) 1.3fr;gap:8px;padding:6px 0;border-bottom:1px solid #202b2a;font-size:10px}.atlas-country-connection:last-child{border:0}.atlas-country-connection button{border:0;background:transparent;color:#d9e2dc;text-align:left;padding:0;font-weight:600}.atlas-country-connection span{color:#909c96;text-align:right;overflow-wrap:anywhere}.atlas-country-empty{padding:8px 0;color:#7f8b85;font-size:10px}.atlas-country-actions{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px;padding-top:8px;border-top:1px solid #273333}.atlas-country-actions button{flex:1 1 29%;min-height:29px;padding:5px 6px;background:#111918;border:1px solid #2e3a38;color:#bcc8c2;border-radius:7px;font-size:9px}.atlas-country-actions button:hover,.atlas-country-actions button.active{border-color:#708d83;color:#dff1d8;background:#17211f}.atlas-country-source{margin-top:7px;color:#75827c;font-size:8px}@media(max-width:900px){#atlasCountryCard{top:auto;bottom:8px;left:8px;right:8px;width:auto;max-height:44vh}}
   `;
   document.head.appendChild(style);
   const card = document.createElement('section');
   card.id = 'atlasCountryCard'; card.hidden = true; card.setAttribute('aria-live', 'polite');
   document.querySelector('.mapwrap')?.appendChild(card);
   card.addEventListener('click', event => {
-    const compare = event.target.closest('[data-compare-code]')?.dataset.compareCode;
-    if (compare) { selection.activate?.(compare); return; }
+    const tab = event.target.closest('[data-country-tab]')?.dataset.countryTab;
+    if (tab) { activateTab(tab); return; }
+    const partner = event.target.closest('[data-connection-country]')?.dataset.connectionCountry;
+    if (partner) { selection.activate?.(partner); return; }
     const pin = event.target.closest('[data-atlas-pin]');
     if (pin) { selection.togglePinnedCountry?.(pin.dataset.atlasPin); return; }
     if (event.target.closest('[data-atlas-statistics]')) { showStatistics(); return; }
@@ -271,58 +228,73 @@ async function render(code = selection.current?.activeCode || selection.current?
   const version = ++renderVersion;
   if (!/^[A-Z]{3}$/.test(code)) { renderedCode = null; card.hidden = true; card.innerHTML = ''; return; }
   renderedCode = code;
-  const record = await countryRecord(code);
-  if (renderVersion !== version || renderedCode !== code) return;
-  const identity = record?.identity || {};
-  const political = record?.political_system || {};
-  const metrics = await defaultMetrics(code, record || {});
-  const [context, comparison, memberships, axis, view] = await Promise.all([
-    contextualRows(code),
-    comparisonRows(selection.current?.pinnedCodes || selection.current?.selectedCodes || []),
-    membershipLabels(record || {}, code),
-    axisContext(code),
-    activeView?.forCountry?.(code) || null,
+  const [record, shared] = await Promise.all([countryRecord(code), presentation.forCountry(code)]);
+  if (renderVersion !== version || renderedCode !== code || !shared) return;
+  const [metrics, context] = await Promise.all([
+    defaultMetrics(code, record || {}, shared),
+    contextualRows(code, shared),
   ]);
   if (renderVersion !== version || renderedCode !== code) return;
+
+  const identity = record?.identity || {};
+  const government = governmentRows(record || {});
   const connections = connectionRows(code);
-  const relationMode = selection.getRelationMode?.() || 'all';
-  const leader = political?.current_leader?.name || '—';
-  const leaderOffice = political?.current_leader?.office || political?.head_of_government || '';
-  const head = political?.head_of_state || '';
-  const refreshed = record?.coverage?.last_enriched || record?.updated || record?.provenance?.retrieved || record?.provenance?.last_refresh || '';
-  const coverage = comparison?.metricMeta?.coverage != null ? `${comparison.metricMeta.coverage}/${comparison.metricMeta.country_count} countries` : '';
-  const visibleChains = axis.chains.slice(0, 2);
-  const remainingChains = Math.max(0, axis.chains.length - visibleChains.length);
+  const relationMode = shared.relation?.mode || selection.getRelationMode?.() || 'all';
   const pinned = selection.isPinned?.(code) === true;
+  const populationMeta = shared.answer?.populationPrimary ? [shared.population?.period, shared.population?.source].filter(Boolean).join(' · ') : '';
+  const refreshed = record?.coverage?.last_enriched || record?.updated || record?.provenance?.retrieved || record?.provenance?.last_refresh || '';
+  const name = shared.identity?.name || identity.name || selection.countryName?.(code) || code;
+  const capital = shared.identity?.capital || identity.capital || record?.capital || 'Capital unavailable';
 
   card.innerHTML = `
-    <div class="atlas-country-head"><div class="atlas-country-flag" aria-hidden="true">${flagEmoji(identity.iso2 || record?.iso2)}</div><div class="atlas-country-title"><b>${esc(identity.name || record?.country_id || selection.countryName?.(code) || code)}</b><small>${esc(identity.capital || record?.capital || 'Capital unavailable')}${identity.official_name && identity.official_name !== identity.name ? ` · ${esc(identity.official_name)}` : ''}</small></div><button class="atlas-country-close" type="button" aria-label="Close country card">×</button></div>
-    ${mapViewHtml(view)}
-    ${axis.orientations.length ? `<div class="atlas-country-section"><small>Axis orientation · project interpretation</small><div class="atlas-country-tags">${axis.orientations.map(item => `<span class="atlas-country-tag atlas-axis-tag" data-axis="${esc(item.axis)}" title="${esc(item.note || '')}">${esc(item.axis.charAt(0).toUpperCase()+item.axis.slice(1))} · ${esc(item.role)}</span>`).join('')}</div></div>` : ''}
-    <div class="atlas-country-grid">${metrics.map(([label, value]) => `<div class="atlas-country-metric"><span>${esc(label)}</span><b>${esc(value)}</b></div>`).join('')}</div>
-    ${comparison ? `<div class="atlas-country-section"><small>Pinned comparison · ${esc(comparison.label)}</small>${comparison.rows.map(row => `<button type="button" class="atlas-country-compare${row.active ? ' active' : ''}" data-compare-code="${esc(row.code)}"><span>${esc(row.name)}</span><b>${esc(row.display)}</b></button>`).join('')}${coverage ? `<div class="atlas-country-coverage">Coverage · ${esc(coverage)}</div>` : ''}${comparison.remaining ? `<div class="atlas-country-more">+${comparison.remaining} more pinned</div>` : ''}</div>` : ''}
-    <div class="atlas-country-section"><small>Government</small><div class="atlas-country-row"><span>${esc(leaderOffice || 'Leader')}</span><b>${esc(leader)}</b></div>${head && head !== leader ? `<div class="atlas-country-row"><span>Head of state</span><b>${esc(head)}</b></div>` : ''}${political.system_type ? `<div class="atlas-country-row"><span>System</span><b>${esc(political.system_type)}</b></div>` : ''}</div>
-    ${axis.directFigure ? `<div class="atlas-country-section"><small>Axis reference · project interpretation</small><div class="atlas-country-row"><span>${esc(axis.directFigure.real_office)}</span><b>${esc(axis.directFigure.person)}</b></div><div class="atlas-country-source">${esc(axis.directFigure.axis_role)} · as of ${esc(axis.directFigure.as_of)}</div></div>` : ''}
-    ${visibleChains.length ? `<div class="atlas-country-section"><small>Functional chains</small><div class="atlas-country-tags">${visibleChains.map(chain => `<span class="atlas-country-tag" title="${esc(chain.description || '')}">${esc(chain.label)}</span>`).join('')}${remainingChains ? `<span class="atlas-country-tag">+${remainingChains}</span>` : ''}</div></div>` : ''}
-    ${context.length ? `<div class="atlas-country-section"><small>Map view</small>${context.map(([label, value]) => `<div class="atlas-country-row"><span>${esc(label)}</span><b>${esc(value)}</b></div>`).join('')}</div>` : ''}
-    ${connections.length ? `<div class="atlas-country-section"><small>Connections${relationMode !== 'all' ? ` · ${esc(RELATION_LABELS[relationMode] || relationMode)}` : ''}</small>${connections.map(row => `<div class="atlas-country-connection"><b>${esc(row.name)}</b><span>${esc(row.types)}</span></div>`).join('')}</div>` : ''}
-    ${memberships.length ? `<div class="atlas-country-section"><small>Memberships</small><div class="atlas-country-tags">${memberships.map(label => `<span class="atlas-country-tag">${esc(label)}</span>`).join('')}</div></div>` : ''}
-    <div class="atlas-country-actions"><button type="button" data-atlas-pin="${esc(code)}" aria-pressed="${pinned ? 'true' : 'false'}">${pinned ? 'Unpin' : 'Pin'}</button><button type="button" data-atlas-statistics>Statistics</button><button type="button" data-country-action="details">More data</button><button type="button" data-country-action="entity-trace">Trace connections</button><button type="button" data-country-action="path">Path to…</button><button type="button" data-country-action="impact">Impact</button></div>
+    <div class="atlas-country-head">
+      <div class="atlas-country-flag" aria-hidden="true">${flagEmoji(identity.iso2 || record?.iso2)}</div>
+      <div class="atlas-country-title"><b>${esc(name)}</b><small>${esc(code)} · ${esc(capital)}<br><span class="${shared.answer?.populationPrimary ? 'population-primary' : ''}">Population · ${esc(shared.population?.display || '—')}${populationMeta ? ` · ${esc(populationMeta)}` : ''}</span></small></div>
+      <button class="atlas-country-pin" type="button" data-atlas-pin="${esc(code)}" aria-pressed="${pinned ? 'true' : 'false'}">${pinned ? 'Pinned' : 'Pin'}</button>
+      <button class="atlas-country-close" type="button" aria-label="Close country card">×</button>
+    </div>
+    ${currentAnswerHtml(shared)}
+    <div class="atlas-country-tabs" role="tablist" aria-label="Country information">
+      <button type="button" data-country-tab="overview" role="tab">Overview</button>
+      <button type="button" data-country-tab="context" role="tab">Context</button>
+      <button type="button" data-country-tab="connections" role="tab">Connections</button>
+    </div>
+    <section class="atlas-country-tab-panel" data-country-panel="overview" role="tabpanel">
+      <div class="atlas-country-grid">${metrics.map(([label,value]) => `<div class="atlas-country-metric"><span>${esc(label)}</span><b>${esc(value)}</b></div>`).join('')}</div>
+      ${government.length ? `<div class="atlas-country-section"><small>Government / system identity</small>${government.map(([label,value]) => `<div class="atlas-country-row"><span>${esc(label)}</span><b>${esc(value)}</b></div>`).join('')}</div>` : ''}
+    </section>
+    <section class="atlas-country-tab-panel" data-country-panel="context" role="tabpanel">
+      ${context.length ? `<div class="atlas-country-section"><small>Active map context</small>${context.map(([label,value]) => `<div class="atlas-country-row"><span>${esc(label)}</span><b>${esc(value)}</b></div>`).join('')}</div>` : '<div class="atlas-country-empty">No country-specific supporting context is active.</div>'}
+      <div data-country-context-enrichments></div>
+    </section>
+    <section class="atlas-country-tab-panel" data-country-panel="connections" role="tabpanel">
+      <div class="atlas-country-section"><small>${esc(RELATION_LABELS[relationMode] || relationMode)} · ${connections.length} represented</small>${connections.length ? connections.map(row => `<div class="atlas-country-connection"><button type="button" data-connection-country="${esc(row.partner)}">${esc(row.name)}</button><span>${esc(row.types)}</span></div>`).join('') : '<div class="atlas-country-empty">No represented relationships match this filter.</div>'}</div>
+    </section>
+    <div class="atlas-country-actions"><button type="button" data-atlas-statistics>Statistics</button><button type="button" data-country-action="details">More data</button><button type="button" data-country-action="entity-trace">Trace</button><button type="button" data-country-action="path">Path</button><button type="button" data-country-action="impact">Impact</button></div>
     <div class="atlas-country-source">${refreshed ? `Country record · ${esc(refreshed)}` : 'Country record'} · missing values remain unavailable</div>`;
   card.hidden = false;
   card.querySelector('.atlas-country-close')?.addEventListener('click', () => { card.hidden = true; });
+  activateTab(activeTab);
   syncTraceAction();
   if (window.__potatoAtlasDiagnostics) window.__potatoAtlasDiagnostics.countryCardRenders = (window.__potatoAtlasDiagnostics.countryCardRenders || 0) + 1;
-  window.dispatchEvent(new CustomEvent('potato-atlas-country-card-rendered', { detail:{ code, version, pinned, view } }));
+  window.dispatchEvent(new CustomEvent('potato-atlas-country-card-rendered', { detail:{ code, version, pinned, answer:shared.answer } }));
 }
 
 install();
 window.addEventListener('potato-atlas-working-selection-change', event => render(event?.detail?.activeCode || event?.detail?.code));
 window.addEventListener('potato-atlas-pin-change', () => { if (renderedCode) render(renderedCode); });
-window.addEventListener('potato-atlas-active-view-change', event => { const code = event?.detail?.code; if (code && code === renderedCode) render(code); });
+window.addEventListener('potato-atlas-active-view-change', event => { const code = event?.detail?.code; if (!code || code === renderedCode) render(renderedCode); });
 window.addEventListener('potato-atlas-query-change', () => { if (renderedCode) render(renderedCode); });
 window.addEventListener('potato-atlas-relation-mode-change', () => { if (renderedCode) render(renderedCode); });
 window.addEventListener('potato-atlas-entity-trace-change', syncTraceAction);
 if (selection.current?.selected) render(selection.current.activeCode || selection.current.code);
 
-window.__potatoAtlasCountryCard = { render, comparisonRows, connectionRows, contextualRows, axisContext, close() { const card = document.getElementById('atlasCountryCard'); if (card) card.hidden = true; } };
+window.__potatoAtlasCountryCard = {
+  render,
+  comparisonRows,
+  connectionRows,
+  contextualRows,
+  axisContext,
+  activateTab,
+  close() { const card = document.getElementById('atlasCountryCard'); if (card) card.hidden = true; },
+};

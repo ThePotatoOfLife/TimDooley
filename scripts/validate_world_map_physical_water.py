@@ -39,6 +39,8 @@ def main() -> int:
     dataset = str(source.get("dataset", ""))
     if "1:110m" not in dataset or "1:50m" not in dataset:
         errors.append("physical.water.base must document both 1:110m overview and 1:50m regional detail")
+    if "seam-safe" not in dataset.lower():
+        errors.append("physical.water.base must document the seam-safe ocean base")
     if PINNED_NE_SHA not in str(source.get("version", "")):
         errors.append("physical.water.base must pin the Natural Earth source commit")
 
@@ -48,17 +50,21 @@ def main() -> int:
         text = WATER.read_text(encoding="utf-8", errors="replace")
         for token in (
             PINNED_NE_SHA,
-            "ne_110m_ocean.geojson",
             "ne_110m_rivers_lake_centerlines.geojson",
             "ne_110m_lakes.geojson",
             "ne_110m_coastline.geojson",
-            "ne_50m_ocean.geojson",
             "ne_50m_rivers_lake_centerlines.geojson",
             "ne_50m_lakes.geojson",
             "ne_50m_coastline.geojson",
-            "oceanFill",
+            "atlas-physical-water-ocean-grid",
+            "atlas-physical-water-land-mask",
+            "buildOceanMesh",
+            "OCEAN_SOURCE",
+            "landMask",
+            "physical-surface",
             "physical-water",
             "physical-line",
+            "buffer: 0",
             "DETAIL_ZOOM",
             "ensureDetailSources",
             "detailInstalled",
@@ -70,6 +76,9 @@ def main() -> int:
         ):
             if token not in text:
                 errors.append(f"physical water module missing {token}")
+        for forbidden in ("ne_110m_ocean.geojson", "ne_50m_ocean.geojson"):
+            if forbidden in text:
+                errors.append(f"physical water must not load globe-spanning Natural Earth ocean polygon: {forbidden}")
         if "map.getZoom() >= DETAIL_ZOOM" not in text:
             errors.append("physical water detail must be zoom-gated")
         detail_has_native_minzoom = "const minZoom = detail ? DETAIL_ZOOM : 0;" in text

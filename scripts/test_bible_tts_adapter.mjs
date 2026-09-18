@@ -53,4 +53,16 @@ assert.ok(adapterSource.includes("event.sectionId==='scripture'"),'Bible word hi
 assert.ok(adapterSource.includes("event.sectionId==='why'"),'Bible word highlighting must map the Why scope back to explanation/boundary text');
 assert.ok(adapterSource.includes('pageHighlighter.clear()'),'Bible page highlighting must clear at speech end or relation change');
 
+// Continuous listen-through is Bible-specific: it keeps the existing drawer,
+// preserves the selected scope, and advances through the comparator's visible
+// result sequence only after a natural speech completion.
+assert.ok(adapterSource.includes('Continue through results'),'Bible TTS must expose a continue-through-results control');
+assert.ok(adapterSource.includes('bibleContinue'),'Bible TTS must persist the continuation preference');
+assert.ok(adapterSource.includes("getElementById('next-relation')"),'Bible TTS continuation must use the comparator next-result control');
+assert.ok(adapterSource.includes("event.type==='complete'"),'Bible TTS continuation must react to natural completion');
+assert.ok(adapterSource.includes('waitForRelationChange'),'Bible TTS must wait for the next relation before restarting speech');
+assert.ok(adapterSource.includes('continuing=false'),'Bible TTS must be able to stop automatic continuation');
+assert.ok(adapterSource.includes("event.type==='stop'"),'Stop must disable automatic continuation');
+assert.ok(adapterSource.includes("event.type==='error'"),'Errors must disable automatic continuation');
+
 console.log('bible tts adapter contract: ok');

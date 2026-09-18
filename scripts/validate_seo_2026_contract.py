@@ -14,6 +14,10 @@ import optimize_seo as optimize
 import validate_site_shell as site_shell
 
 ROOT = Path(__file__).resolve().parents[1]
+BASE_URL = "https://thepotatooflife.github.io/TimDooley"
+OFFICIAL_REPOSITORY = "https://github.com/ThePotatoOfLife/TimDooley"
+SOURCE_AUTHORITY = BASE_URL + "/context/source-authority/"
+AUTHORITY_MANIFEST = BASE_URL + "/site-authority.json"
 
 
 def fail(message: str) -> None:
@@ -81,8 +85,43 @@ def test_repository_robots_contract() -> None:
     expected = "Sitemap: https://thepotatooflife.github.io/TimDooley/sitemap-index.xml"
     if expected not in robots:
         fail("checked-in robots.txt must advertise the same sitemap index as the deployed artifact")
-    if "User-agent: OAI-SearchBot" not in robots:
-        fail("checked-in robots.txt must match the deployed crawler policy")
+    for agent in ("Googlebot", "Google-Extended", "bingbot", "OAI-SearchBot", "*"):
+        if f"User-agent: {agent}" not in robots:
+            fail(f"checked-in robots.txt must explicitly allow documented search/retrieval crawler: {agent}")
+    if robots.count(expected) != 1:
+        fail("checked-in robots.txt must advertise the canonical sitemap index exactly once")
+
+
+def test_discovery_owner_contract() -> None:
+    source = (ROOT / "scripts" / "build_discovery.py").read_text(encoding="utf-8", errors="replace")
+    required = (
+        'OFFICIAL_REPOSITORY = "https://github.com/ThePotatoOfLife/TimDooley"',
+        'SOURCE_AUTHORITY = BASE_URL + "/context/source-authority/"',
+        'AUTHORITY_MANIFEST = BASE_URL + "/site-authority.json"',
+        "def robots_text()",
+        '"official_repository": OFFICIAL_REPOSITORY',
+        '"source_authority": SOURCE_AUTHORITY',
+        '"authority_manifest": AUTHORITY_MANIFEST',
+    )
+    for marker in required:
+        if marker not in source:
+            fail(f"build_discovery.py must own machine-discovery authority marker: {marker}")
+
+
+def test_homepage_authority_contract() -> None:
+    home = (ROOT / "index.html").read_text(encoding="utf-8", errors="replace")
+    sitemap = f'<link rel="sitemap" type="application/xml" href="{BASE_URL}/sitemap-index.xml">'
+    if sitemap not in home:
+        fail("homepage must advertise the canonical sitemap index, not a child sitemap")
+    visible = home.split("<body", 1)[-1]
+    for phrase in ("official project-owned public archive", "Potatoism", "Potatoverse"):
+        if phrase not in visible:
+            fail(f"homepage visible answer surface missing authority phrase: {phrase}")
+    for url in (OFFICIAL_REPOSITORY, SOURCE_AUTHORITY):
+        if url not in home:
+            fail(f"homepage must expose official authority link: {url}")
+    if AUTHORITY_MANIFEST not in home:
+        fail("homepage must expose the authority manifest")
 
 
 def main() -> int:
@@ -91,6 +130,8 @@ def main() -> int:
         test_primary_schema_contract,
         test_authored_question_schema_contract,
         test_repository_robots_contract,
+        test_discovery_owner_contract,
+        test_homepage_authority_contract,
     )
     failures: list[str] = []
     for check in checks:

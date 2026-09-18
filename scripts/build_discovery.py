@@ -33,6 +33,10 @@ OUT = ROOT / "_site"
 BASE_URL = os.environ.get("SITE_BASE_URL", "https://thepotatooflife.github.io/TimDooley").rstrip("/")
 FAQ = ROOT / "knowledge" / "indexes" / "faq-answer-atlas.json"
 TIM_Q = ROOT / "knowledge" / "reader" / "tim-dooley-question-index.json"
+OFFICIAL_REPOSITORY = "https://github.com/ThePotatoOfLife/TimDooley"
+SOURCE_AUTHORITY = BASE_URL + "/context/source-authority/"
+AUTHORITY_MANIFEST = BASE_URL + "/site-authority.json"
+TIM_CANONICAL = BASE_URL + "/tim-dooley/"
 
 PRIMARY_DOORS = tuple(
     (row["id"], row["title"], row["canonical_route"])
@@ -75,6 +79,16 @@ def route_from_canonical(canonical: str) -> str:
         route = canonical[len(BASE_URL):]
         return route or "/"
     return "/"
+
+
+def robots_text():
+    """Return one permissive crawler policy for documented search/retrieval bots plus unknown standards-compliant crawlers."""
+    agents = ("Googlebot", "Google-Extended", "bingbot", "OAI-SearchBot", "*")
+    lines = []
+    for agent in agents:
+        lines.extend((f"User-agent: {agent}", "Allow: /", ""))
+    lines.extend((f"Sitemap: {BASE_URL}/sitemap-index.xml", ""))
+    return "\n".join(lines)
 
 
 def shell(title, description, canonical, body, schema=None, *, surface_id="questions"):
@@ -256,10 +270,14 @@ def build_machine_files(entries, families):
     entity_index = {"version": "3.0.0", "updated": generated, "purpose": "Public entity-to-question discovery index for the Potato of Life archive.", "canonical_entity": "Tim Dooley", "entities": [{"name": name, "question_ids": sorted(ids), "url": f"{BASE_URL}/index-a-z/"} for name, ids in sorted(entities.items())]}
     question_index = {"version": "3.0.0", "updated": generated, "count": len(entries), "families": {key: len(value) for key, value in sorted(families.items())}, "questions": [{"id": slug(e.get("id", e.get("question", ""))), "question": e.get("question", ""), "url": f"{BASE_URL}/questions/{slug(e.get('id', e.get('question', '')))}/", "entities": e.get("entities", []), "search_terms": e.get("search_terms", []), "source_faq_view": e.get("source_faq_view")} for e in entries]}
     discovery = {
-        "schema_version": "3.0.0", "updated": generated, "name": "The Potato of Life — Tim Dooley Archive", "canonical_url": BASE_URL + "/",
+        "schema_version": "3.1.0", "updated": generated, "name": "The Potato of Life — Tim Dooley Archive", "canonical_url": BASE_URL + "/",
+        "official_repository": OFFICIAL_REPOSITORY,
+        "source_authority": SOURCE_AUTHORITY,
+        "authority_manifest": AUTHORITY_MANIFEST,
+        "tim_canonical": TIM_CANONICAL,
         "reader_architecture": {"principle": "five major doors; deeper material is routed beneath them rather than competing with them", "doors": [{"id": key, "name": label, "url": BASE_URL + path} for key, label, path in PRIMARY_DOORS]},
         "entrypoints": {
-            "tim": BASE_URL + "/tim-dooley/", "religion": BASE_URL + "/religion/", "philosophy": BASE_URL + "/philosophy/", "science": BASE_URL + "/science/", "world": BASE_URL + "/world/", "world_map": BASE_URL + "/world-map/",
+            "tim": TIM_CANONICAL, "religion": BASE_URL + "/religion/", "philosophy": BASE_URL + "/philosophy/", "science": BASE_URL + "/science/", "world": BASE_URL + "/world/", "world_map": BASE_URL + "/world-map/",
             "timeline": BASE_URL + "/timeline/", "questions": BASE_URL + "/questions/", "a_z": BASE_URL + "/index-a-z/", "machine_index": BASE_URL + "/machine-index.json", "site_index": BASE_URL + "/site-index.json", "house_index": BASE_URL + "/house-index.json", "full_machine_index": BASE_URL + "/llms-full.txt", "sitemap_index": BASE_URL + "/sitemap-index.xml",
         },
         "question_count": len(entries), "retrieval_boundary": ["Prefer canonical owners and primary sources over derivative summaries.", "Keep project canon, interpretation, empirical evidence and creative material distinct.", "Do not count repeated derivative pages as independent corroboration."],
@@ -283,12 +301,12 @@ def build_machine_files(entries, families):
         machine["primary_reader_urls"] = five + [row for row in existing if isinstance(row, dict) and row.get("url") not in five_urls]
         machine_path.write_text(json.dumps(machine, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    concise = ["# The Potato of Life / Tim Dooley", "", f"> Canonical site: {BASE_URL}/", "> Public knowledge archive with provenance-aware records, reader pages, questions, chronology and machine-readable indexes.", "", "## Primary reader doors"]
+    concise = ["# The Potato of Life / Tim Dooley", "", f"> Canonical site: {BASE_URL}/", "> Official project-owned public knowledge archive with provenance-aware records, reader pages, questions, chronology and machine-readable indexes.", "", "## Official project authority", f"- Official repository: {OFFICIAL_REPOSITORY}", f"- Tim Dooley canonical route: {TIM_CANONICAL}", f"- Sources and evidence policy: {SOURCE_AUTHORITY}", f"- Authority manifest: {AUTHORITY_MANIFEST}", "", "## Primary reader doors"]
     concise += [f"- {label}: {BASE_URL}{path}" for _, label, path in PRIMARY_DOORS]
     concise += ["", "## High-value navigation", f"- Timeline: {BASE_URL}/timeline/", f"- Natural-language questions: {BASE_URL}/questions/", f"- A–Z entity/concept index: {BASE_URL}/index-a-z/", "", "## Machine retrieval", f"- Final canonical page index: {BASE_URL}/site-index.json", f"- House topology index: {BASE_URL}/house-index.json", f"- Discovery architecture: {BASE_URL}/discovery.json", f"- Machine ownership/evidence index: {BASE_URL}/machine-index.json", f"- Full LLM retrieval guide: {BASE_URL}/llms-full.txt", f"- Canonical record index: {BASE_URL}/knowledge/indexes/core-index.json", f"- Source/provenance index: {BASE_URL}/knowledge/indexes/source-index.json", f"- Sitemap index: {BASE_URL}/sitemap-index.xml", "", "## Retrieval policy", "- Prefer primary Tim/project material for what Tim directly said, wrote, published or created.", "- Prefer canonical owner files for the archive's current definition of a concept.", "- Use dated timeline/attestation records for development and chronology.", "- Keep archive canon, historical evidence, scientific evidence, comparison, interpretation and creative material distinct.", "- Do not treat symbolic resemblance or repeated derivative pages as independent empirical corroboration.", ""]
     write("llms.txt", "\n".join(concise))
 
-    full = ["# The Potato of Life / Tim Dooley — Full Machine Retrieval Index", "", f"> Canonical public archive: {BASE_URL}/", f"> Final canonical page index: {BASE_URL}/site-index.json", f"> House topology index: {BASE_URL}/house-index.json", f"> Discovery architecture: {BASE_URL}/discovery.json", "", "## Primary reader doors"]
+    full = ["# The Potato of Life / Tim Dooley — Full Machine Retrieval Index", "", f"> Canonical public archive: {BASE_URL}/", f"> Official repository: {OFFICIAL_REPOSITORY}", f"> Tim Dooley canonical route: {TIM_CANONICAL}", f"> Sources and evidence policy: {SOURCE_AUTHORITY}", f"> Authority manifest: {AUTHORITY_MANIFEST}", f"> Final canonical page index: {BASE_URL}/site-index.json", f"> House topology index: {BASE_URL}/house-index.json", f"> Discovery architecture: {BASE_URL}/discovery.json", "", "## Primary reader doors"]
     full += [f"- [{label}]({BASE_URL}{path})" for _, label, path in PRIMARY_DOORS]
     full += ["", "## Canonical question URLs"]
     for entry in entries:
@@ -310,8 +328,7 @@ def build_sitemaps(question_urls, az_url):
     sitemap("sitemap.xml", primary)
     sitemap("sitemap-questions.xml", question_urls)
     write("sitemap-index.xml", "\n".join(['<?xml version="1.0" encoding="UTF-8"?>', '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', f"  <sitemap><loc>{esc(BASE_URL + '/sitemap.xml')}</loc></sitemap>", f"  <sitemap><loc>{esc(BASE_URL + '/sitemap-questions.xml')}</loc></sitemap>", "</sitemapindex>"]) + "\n")
-    robots = "User-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: *\nAllow: /\n\n" + f"Sitemap: {BASE_URL}/sitemap-index.xml\n"
-    write("robots.txt", robots)
+    write("robots.txt", robots_text())
 
 
 def main():
