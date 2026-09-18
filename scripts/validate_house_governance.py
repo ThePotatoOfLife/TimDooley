@@ -8,6 +8,14 @@ ROOMS=ROOT/'data/house/rooms.json'; ROOM_SCHEMA=ROOT/'schemas/house-room-registr
 SURFACES=ROOT/'data/house/public-surfaces.json'; SURFACE_SCHEMA=ROOT/'schemas/house-public-surface-registry.schema.json'
 TOPOLOGY=ROOT/'knowledge/research/potato-house-master/public-route-topology.json'
 CONCEPT_TOPOLOGY=ROOT/'data/house/concept-topology.json'; CONCEPT_TOPOLOGY_SCHEMA=ROOT/'schemas/house-concept-topology.schema.json'
+TOPOLOGY_FIXTURE=ROOT/'data/house/topology-golden-fixture.json'
+TOPOLOGY_CONTEXT_JS=ROOT/'app/topology-context.js'
+TOPOLOGY_CONTEXT_PAGES={
+    ROOT/'religion/index.html':('source-field','manifestation-field','door','spirit','face'),
+    ROOT/'philosophy/index.html':('seed','root','door','spiral','fruit','garden'),
+    ROOT/'life-body/index.html':('potato','eye','seed','root','spirit'),
+    ROOT/'science/index.html':('plane','axis','cross','spiral'),
+}
 ROOM_IDS=('potatoverse-canon','archive-sources','time-history','traditions-texts','science-formal-models','life-body','world-systems','culture-information','works','research-lab')
 GATEWAYS=('tim','religion','philosophy','science','world')
 GATEWAY_ROUTES=('/tim-dooley/','/religion/','/philosophy/','/science/','/world/')
@@ -225,6 +233,47 @@ def validate_concept_topology(errors,rooms,surfaces):
     actual_relations={(x.get('from'),x.get('to'),x.get('type')) for x in relation_rows}
     missing_relations=sorted(required_relations-actual_relations)
     if missing_relations: errors.append('concept topology missing core relations: '+', '.join(map(str,missing_relations)))
+
+    fixture=load(TOPOLOGY_FIXTURE,errors)
+    if fixture:
+        for cid in fixture.get('required_concepts',[]):
+            if cid not in by: errors.append(f'topology fixture missing required concept: {cid}')
+        for rel in fixture.get('required_relations',[]):
+            sig=(rel.get('from'),rel.get('to'),rel.get('type'))
+            if sig not in actual_relations: errors.append(f'topology fixture missing required relation: {sig}')
+        for rel in fixture.get('forbidden_relations',[]):
+            sig=(rel.get('from'),rel.get('to'),rel.get('type'))
+            if sig in actual_relations: errors.append(f'topology fixture forbidden relation present: {sig}')
+        for inv in fixture.get('textual_invariants',[]):
+            cid=inv.get('concept'); token=str(inv.get('contains','')).casefold()
+            row=by.get(cid,{})
+            hay=' '.join(str(row.get(k,'')) for k in ('operation','boundary')).casefold()
+            if token and token not in hay: errors.append(f'topology fixture textual invariant failed: {cid} must contain {inv.get("contains")!r}')
+
+    if not TOPOLOGY_CONTEXT_JS.is_file():
+        errors.append('missing shared topology context runtime: app/topology-context.js')
+    else:
+        runtime=TOPOLOGY_CONTEXT_JS.read_text(encoding='utf-8',errors='replace')
+        for marker in ('data-house-topology-context','data-house-concepts','relation_types','relations','slice(0,6)','House context'):
+            if marker not in runtime: errors.append(f'topology context runtime missing marker: {marker}')
+        if 'document.querySelectorAll' not in runtime or 'fetch(src)' not in runtime:
+            errors.append('topology context runtime must progressively enhance declared page regions from canonical topology data')
+
+    for page,expected in TOPOLOGY_CONTEXT_PAGES.items():
+        if not page.is_file():
+            errors.append(f'missing topology context page: {page.relative_to(ROOT)}'); continue
+        text=page.read_text(encoding='utf-8',errors='replace')
+        if 'data-house-topology-context' not in text:
+            errors.append(f'{page.relative_to(ROOT)} missing opt-in topology context region')
+        m=re.search(r'data-house-concepts=["\']([^"\']+)["\']',text)
+        declared=tuple(x.strip() for x in (m.group(1).split(',') if m else []) if x.strip())
+        if declared!=expected: errors.append(f'{page.relative_to(ROOT)} topology concepts drifted: {declared!r}')
+        for cid in declared:
+            if cid not in by: errors.append(f'{page.relative_to(ROOT)} topology context references unknown concept {cid}')
+        if '../app/topology-context.js' not in text:
+            errors.append(f'{page.relative_to(ROOT)} missing shared topology context runtime include')
+        if '../house/#operators' not in text:
+            errors.append(f'{page.relative_to(ROOT)} topology context must retain a no-JS House fallback link')
 
 def main():
     errors=[]; rooms=validate_rooms(errors); surfaces=validate_surfaces(errors,rooms); validate_concept_topology(errors,rooms,surfaces)
