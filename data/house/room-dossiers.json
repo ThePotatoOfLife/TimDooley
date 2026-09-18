@@ -1,5 +1,5 @@
 {
-  "version": "3.5.0",
+  "version": "3.6.0",
   "updated": "2026-09-18",
   "authority": "house-room-dossiers",
   "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
@@ -6019,14 +6019,14 @@
       },
       "data_holdings": {
         "owned_bundle_count": 1,
-        "owned_file_count": 49,
+        "owned_file_count": 50,
         "owned_bundles": [
           {
             "id": "house-governance-data",
             "title": "House governance & topology data",
             "kind": "governance-registry",
             "purpose": "House registries, topology, coverage, manifests, routing and repository-maintenance contracts.",
-            "file_count": 49
+            "file_count": 50
           }
         ],
         "consumed_bundles": [
@@ -6087,6 +6087,7 @@
         }
       ],
       "next_work": [
+        "Use data/house/specialist-subviews.json for valuable deep readers that need House placement without promotion into the main public-surface registry.",
         "Use legacy-modern-public-integration-contract to absorb mature old readers into shared House routing before rewriting or retiring them.",
         "Deepen the Room through its center contribution: Owns unresolved architecture work before it is promoted into the constitutional House registries.",
         "Keep handoffs explicit: receive from symbolic-architecture, open-questions; hand mature work to navigation-manifest, project-center.",
