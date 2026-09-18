@@ -69,6 +69,18 @@ def main():
         errors.append('Foundation Room summary total drifted')
     if summary.get('unresolved_owner_count')!=0:
         errors.append('Foundation Room atlas has unresolved Room ownership')
+    geometry_counts={}
+    for row in rows:
+        k=row.get('origin_door',{}).get('map_geometry') or 'unresolved'
+        geometry_counts[k]=geometry_counts.get(k,0)+1
+    if summary.get('earth_geometry_counts')!=geometry_counts:
+        errors.append('Foundation Room earth geometry summary drifted')
+    calculated_quant=sum(1 for x in rows if x.get('today',{}).get('typed_reach'))
+    if summary.get('current_quantitative_snapshots')!=calculated_quant:
+        errors.append('Foundation Room quantified Today count drifted')
+    calculated_metrics=sum(len(x.get('today',{}).get('typed_reach') or []) for x in rows)
+    if summary.get('current_metric_count')!=calculated_metrics:
+        errors.append('Foundation Room current metric count drifted')
     if len(repro.get('records') or [])!=52:
         errors.append('Foundation reproduction ledger must cover all 52 Rooms')
     if {x.get('foundation_id') for x in repro.get('records',[])}!={x.get('foundation_id') for x in rows}:
