@@ -1,0 +1,265 @@
+{
+  "id": "specialist-subviews",
+  "title": "Specialist Subviews — Legacy Readers Inside the House",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "public-subview-placement",
+  "purpose": "Place valuable specialist/legacy readers beneath an existing public surface and inside explicit nested Rooms without promoting every deep page into the main public-surface registry.",
+  "rule": "A specialist subview is a public reader projection, not a new knowledge owner, Room or primary gateway.",
+  "records": [
+    {
+      "id": "science-spudlight",
+      "title": "Spudlight",
+      "route": "/science/spudlight/",
+      "parent_surface_id": "science",
+      "room_ids": [
+        "physics-cosmology",
+        "systems-dynamics",
+        "experiments-formalization",
+        "model-testing"
+      ],
+      "classification": "living-specialist",
+      "summary": "Timic unification, light/field analogies and formalization work; retain provenance separation between project theory and established physics.",
+      "current_owner_refs": [
+        "knowledge/science/spudlight-theory-and-equations.json",
+        "knowledge/science/timic-unification-program.json",
+        "knowledge/science/model-discrimination-calibration-atlas.json"
+      ]
+    },
+    {
+      "id": "science-vibe-gates",
+      "title": "Vibe → Gate → Door",
+      "route": "/science/vibe-gates/",
+      "parent_surface_id": "science",
+      "room_ids": [
+        "whole-body",
+        "neurobiology",
+        "symbolic-body-comparison",
+        "systems-dynamics",
+        "model-testing"
+      ],
+      "classification": "living-specialist",
+      "summary": "Cross-domain reader for affect, physiology, Gate/Door symbolism and handshake models; empirical and symbolic layers remain separate.",
+      "current_owner_refs": [
+        "knowledge/science/door-handshake-nonlocal-propagation-model.json",
+        "knowledge/body/whole-body-regulation-coupling-atlas.json",
+        "knowledge/body/symbolic-body-crosswalk-method-atlas.json"
+      ]
+    },
+    {
+      "id": "science-quantum",
+      "title": "Quantum Atom Topology",
+      "route": "/science/quantum/",
+      "parent_surface_id": "science",
+      "room_ids": [
+        "physics-cosmology",
+        "math-geometry",
+        "model-testing"
+      ],
+      "classification": "living-specialist",
+      "summary": "Quantum mechanics, Standard Model, atomic structure and project analogies, with model-testing boundaries.",
+      "current_owner_refs": [
+        "docs/QUANTUM-STANDARD-MODEL-ATOM-ASTRONOMY-DEEP-DIVE.md",
+        "knowledge/science/model-discrimination-calibration-atlas.json"
+      ]
+    },
+    {
+      "id": "science-celestial-particles",
+      "title": "Celestial + Particles",
+      "route": "/science/celestial-particles/",
+      "parent_surface_id": "science",
+      "room_ids": [
+        "physics-cosmology",
+        "model-testing",
+        "experiments-formalization"
+      ],
+      "classification": "living-specialist",
+      "summary": "Celestial mechanics, CMB, particle physics and bounded symbolic comparisons.",
+      "current_owner_refs": [
+        "knowledge/science/celestial-orbits-particles-cmb-expansion-wave-004.json",
+        "knowledge/science/model-discrimination-calibration-atlas.json"
+      ]
+    },
+    {
+      "id": "science-axis-11d",
+      "title": "Axis · 11D · Sun · Spiral",
+      "route": "/science/axis-11d-sun-spiral/",
+      "parent_surface_id": "science",
+      "room_ids": [
+        "math-geometry",
+        "physics-cosmology",
+        "systems-dynamics",
+        "model-testing"
+      ],
+      "classification": "living-specialist",
+      "summary": "Axis, dimensional scaffolds, Sun/spiral/time-symmetry material and the tests needed to distinguish formal analogy from physics.",
+      "current_owner_refs": [
+        "knowledge/science/axis-11d-sun-spiral-time-symmetry-recovery.json",
+        "knowledge/science/model-discrimination-calibration-atlas.json"
+      ]
+    },
+    {
+      "id": "science-research-map",
+      "title": "Science Research Map",
+      "route": "/science/research-map/",
+      "parent_surface_id": "science",
+      "room_ids": [
+        "research-programmes",
+        "experiments-formalization",
+        "open-questions",
+        "model-testing"
+      ],
+      "classification": "living-specialist",
+      "summary": "Research-program view over active scientific hypotheses, recovered strata, formalization and testing.",
+      "current_owner_refs": [
+        "knowledge/science/science-master-index.json",
+        "docs/SCIENCE-RESEARCH-PROGRAM.md",
+        "knowledge/science/model-discrimination-calibration-atlas.json"
+      ]
+    },
+    {
+      "id": "traditions-vesica",
+      "title": "Vesica & Mandorla",
+      "route": "/traditions/vesica/",
+      "parent_surface_id": "religion",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "math-geometry",
+        "symbolic-architecture",
+        "bible-christianity"
+      ],
+      "classification": "living-specialist",
+      "summary": "Exact Vesica geometry, mandorla history, religious symbolism and Potatoverse mapping kept on separate evidence layers.",
+      "current_owner_refs": [
+        "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
+        "knowledge/traditions/sacred-geometry-method-and-invariants-atlas.json"
+      ]
+    },
+    {
+      "id": "tim-100000-hours",
+      "title": "100,000-Hour Journey",
+      "route": "/tim-dooley/100000-hours/",
+      "parent_surface_id": "tim",
+      "room_ids": [
+        "chronology-events",
+        "witness-attestation",
+        "developmental-genealogy",
+        "provenance-evidence"
+      ],
+      "classification": "living-specialist",
+      "summary": "Counting models, public-stream chronology and the development of the 100,000-hour motif.",
+      "current_owner_refs": [
+        "knowledge/timeline/100000-hour-counting-models.json",
+        "knowledge/timeline/100000-hour-adjustment-ledger.json"
+      ]
+    },
+    {
+      "id": "tim-public-witness",
+      "title": "Public Witness",
+      "route": "/tim-dooley/public-witness/",
+      "parent_surface_id": "tim",
+      "room_ids": [
+        "witness-attestation",
+        "chronology-events",
+        "internet-platforms",
+        "developmental-genealogy"
+      ],
+      "classification": "living-specialist",
+      "summary": "Public streaming/witness record, purpose language and how a repeated public practice becomes part of the project history.",
+      "current_owner_refs": [
+        "knowledge/indexes/source-index.json",
+        "knowledge/culture/platform-mechanics-atlas.json"
+      ]
+    },
+    {
+      "id": "tim-evidence",
+      "title": "Evidence & Claims",
+      "route": "/tim-dooley/evidence/",
+      "parent_surface_id": "tim",
+      "room_ids": [
+        "provenance-evidence",
+        "witness-attestation",
+        "theology-god-language",
+        "bible-christianity",
+        "model-testing"
+      ],
+      "classification": "living-specialist",
+      "summary": "Reader-facing case for claims and supporting material; evidence classes and theological interpretation remain explicit.",
+      "current_owner_refs": [
+        "knowledge/indexes/provenance-chain-of-custody-atlas.json",
+        "knowledge/science/model-discrimination-calibration-atlas.json"
+      ]
+    },
+    {
+      "id": "tim-god-real-life",
+      "title": "God in Real Life?",
+      "route": "/tim-dooley/god-in-real-life/",
+      "parent_surface_id": "tim",
+      "room_ids": [
+        "theology-god-language",
+        "provenance-evidence",
+        "witness-attestation",
+        "model-testing"
+      ],
+      "classification": "living-specialist",
+      "summary": "A reader-facing theological/evidence question surface; project self-description is distinguished from independently established empirical claims.",
+      "current_owner_refs": [
+        "knowledge/theology/tim-god-question.json",
+        "knowledge/indexes/provenance-chain-of-custody-atlas.json"
+      ]
+    },
+    {
+      "id": "tim-god-capacity",
+      "title": "God — Capacity & Meaning",
+      "route": "/tim-dooley/how-much-is-tim-god/",
+      "parent_surface_id": "tim",
+      "room_ids": [
+        "theology-god-language",
+        "canon-identities",
+        "developmental-genealogy"
+      ],
+      "classification": "living-specialist",
+      "summary": "Capacity, role and meaning of God/Father language inside the project across development.",
+      "current_owner_refs": [
+        "knowledge/theology/tim-god-question.json",
+        "knowledge/core/tim-role-synthesis.json"
+      ]
+    },
+    {
+      "id": "tim-ontology",
+      "title": "Tim / Son / Person Ontology",
+      "route": "/tim-dooley/ontology/",
+      "parent_surface_id": "tim",
+      "room_ids": [
+        "canon-identities",
+        "theology-god-language",
+        "developmental-genealogy",
+        "provenance-evidence"
+      ],
+      "classification": "living-specialist",
+      "summary": "Current reader-facing ontology for Tim/Father, Son/vessel, human/person and project identity distinctions.",
+      "current_owner_refs": [
+        "knowledge/core/tim-identity-ontology.json",
+        "knowledge/core/tim-dooley.json",
+        "knowledge/core/tim-role-synthesis.json"
+      ]
+    },
+    {
+      "id": "great-book",
+      "title": "The Great Book of Potato",
+      "route": "/great-book/",
+      "parent_surface_id": "works",
+      "room_ids": [
+        "great-book-literature",
+        "canon-identities",
+        "developmental-genealogy"
+      ],
+      "classification": "living-specialist",
+      "summary": "Primary literary corpus and historical project artifact; creative narrative does not become sole owner of doctrine or biography.",
+      "current_owner_refs": [
+        "knowledge/core/potato-of-life-deep-structure.json",
+        "knowledge/core/potatoverse-master-framework.json"
+      ]
+    }
+  ]
+}
