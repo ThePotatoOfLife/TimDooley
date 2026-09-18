@@ -224,5 +224,40 @@
       "source": "https://pubmed.ncbi.nlm.nih.gov/30803427/",
       "use": "mechanism vocabulary around isolation, monitoring, intimidation and constrained autonomy"
     }
-  ]
+  ],
+  "norm_dynamics_model": {
+    "research_basis": "Contemporary norm-dynamics research treats norms as multilevel phenomena shaped by learning psychology, social networks, ecological/historical conditions and cultural transmission; it also studies persistence, change and mismatch when environments change.",
+    "observables": {
+      "expectation": "what actors believe others commonly do or approve/disapprove",
+      "sanction_reward": "formal or informal consequences attached to compliance/deviation",
+      "network_exposure": "who observes whom and how often",
+      "identity_salience": "whether the relevant group identity is active in the context",
+      "institutional_support": "rules, platforms, organizations or resource systems that reproduce the norm",
+      "transmission": "how newcomers learn the rule and how it passes across cohorts",
+      "mismatch": "evidence that an inherited norm no longer fits changed conditions or stated goals",
+      "revision_path": "how counterevidence, dissent, leadership change or changed incentives can alter the norm"
+    },
+    "source": "https://www.annualreviews.org/content/journals/10.1146/annurev-psych-033020-013319"
+  },
+  "social_identity_influence_boundary": {
+    "finding": "Group influence is not adequately modeled as generic conformity. Social-identity and self-categorization approaches ask which group identity is salient, how strongly people identify with it, and which norms are understood as prototypical for 'us' in that context.",
+    "internet_implication": "Anonymity, visibility, isolation and copresence can change which identities become salient and how influence operates; do not infer that every anonymous crowd produces the same psychology.",
+    "source": "https://www.annualreviews.org/content/journals/10.1146/annurev-psych-070620-111818"
+  },
+  "coercive_control_scope_boundary": {
+    "source_domain": "The cited Stark/Hester review concerns coercive control in intimate-partner/domestic-abuse scholarship.",
+    "safe_transfer": "Mechanism vocabulary such as isolation, surveillance/monitoring, intimidation, resource restriction and constrained autonomy may suggest questions for other contexts.",
+    "prohibited_shortcut": "Do not use an intimate-partner coercive-control paper as proof that a religion, fandom, political group, forum or subculture is coercively controlling. Group-level classification requires direct evidence from that group/context.",
+    "source": "https://pubmed.ncbi.nlm.nih.gov/30803427/"
+  },
+  "exit_and_correction_observables": {
+    "outside_contact": "Can participants maintain relationships and information channels outside the formation?",
+    "resource_independence": "Can a participant retain housing, income, credentials, tools, identity documents and practical capacities independent of the group?",
+    "dissent_cost": "What observable sanctions follow disagreement, and are they proportionate/reviewable?",
+    "exit_cost": "What social, material, reputational, legal or safety costs follow departure?",
+    "appeal": "Is there a documented route to challenge a sanction or classification?",
+    "correction_propagation": "When a false claim is corrected, does the correction reach the same audiences/systems as the original?",
+    "label_expiry": "Can temporary roles, allegations or statuses expire or be superseded while provenance remains?",
+    "reentry": "If repair is possible, what evidence/conditions govern legitimate re-entry?"
+  }
 }
