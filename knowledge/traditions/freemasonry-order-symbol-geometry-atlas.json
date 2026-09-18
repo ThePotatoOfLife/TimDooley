@@ -1,0 +1,296 @@
+{
+  "id": "freemasonry-order-symbol-geometry-atlas",
+  "title": "Freemasonry — Craft, Rites, Temple Symbols and Geometry",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "historical/institutional structure + symbolic geometry comparison",
+  "purpose": "Give the repository a precise Freemasonry model so Craft degrees, Royal Arch, Scottish Rite, York Rite, Temple/pillar symbolism, square-and-compasses, working tools and sacred-geometry claims are not collapsed into one generic 33-step occult pyramid.",
+  "master_rule": "Freemasonry is federated and jurisdiction-dependent. Always state jurisdiction/body. The three Craft degrees are not the same thing as the Scottish Rite's numbered degrees, and York Rite bodies are not a continuation of Scottish Rite numbering.",
+  "craft_masonry": {
+    "canonical_three_degrees": [
+      {
+        "n": 1,
+        "name": "Entered Apprentice",
+        "structural_theme": "initiation/equality/first entry into the lodge tradition"
+      },
+      {
+        "n": 2,
+        "name": "Fellow Craft",
+        "structural_theme": "education, development, skilled work and further formation"
+      },
+      {
+        "n": 3,
+        "name": "Master Mason",
+        "structural_theme": "maturity, mortality, memory and responsible use of life"
+      }
+    ],
+    "england_royal_arch_relation": "Under UGLE's 1813 formulation, pure Antient Masonry consists of the three degrees and includes the Supreme Order of the Holy Royal Arch as an indissolubly linked completion/extension rather than a fourth Craft degree in the ordinary count.",
+    "sources": [
+      "https://www.ugle.org.uk/discover-freemasonry/what-is-freemasonry",
+      "https://www.ugle.org.uk/discover-freemasonry/blog/supreme-grand-chapter-completing-journey"
+    ]
+  },
+  "scottish_rite_southern_jurisdiction_reference": {
+    "precondition": "Master Mason in regular Craft Masonry",
+    "bodies": [
+      {
+        "body": "Lodge of Perfection",
+        "degrees": "4–14",
+        "named_endpoint": "14° Perfect Elu"
+      },
+      {
+        "body": "Chapter of Rose Croix",
+        "degrees": "15–18",
+        "named_endpoint": "18° Knight Rose Croix"
+      },
+      {
+        "body": "Council of Kadosh",
+        "degrees": "19–30",
+        "named_endpoint": "30° Knight Kadosh"
+      },
+      {
+        "body": "Consistory",
+        "degrees": "31–32",
+        "named_endpoint": "32° Master of the Royal Secret"
+      }
+    ],
+    "full_degree_names": [
+      {
+        "n": 4,
+        "name": "Secret Master"
+      },
+      {
+        "n": 5,
+        "name": "Perfect Master"
+      },
+      {
+        "n": 6,
+        "name": "Intimate Secretary"
+      },
+      {
+        "n": 7,
+        "name": "Provost and Judge"
+      },
+      {
+        "n": 8,
+        "name": "Intendant of the Building"
+      },
+      {
+        "n": 9,
+        "name": "Elu of the Nine"
+      },
+      {
+        "n": 10,
+        "name": "Elu of the Fifteen"
+      },
+      {
+        "n": 11,
+        "name": "Elu of the Twelve"
+      },
+      {
+        "n": 12,
+        "name": "Master Architect"
+      },
+      {
+        "n": 13,
+        "name": "Royal Arch of Solomon"
+      },
+      {
+        "n": 14,
+        "name": "Perfect Elu"
+      },
+      {
+        "n": 15,
+        "name": "Knight of the East"
+      },
+      {
+        "n": 16,
+        "name": "Prince of Jerusalem"
+      },
+      {
+        "n": 17,
+        "name": "Knight of the East and West"
+      },
+      {
+        "n": 18,
+        "name": "Knight Rose Croix"
+      },
+      {
+        "n": 19,
+        "name": "Pontiff"
+      },
+      {
+        "n": 20,
+        "name": "Master of the Symbolic Lodge"
+      },
+      {
+        "n": 21,
+        "name": "Noachite or Prussian Knight"
+      },
+      {
+        "n": 22,
+        "name": "Knight of the Royal Axe / Prince of Libanus"
+      },
+      {
+        "n": 23,
+        "name": "Chief of the Tabernacle"
+      },
+      {
+        "n": 24,
+        "name": "Prince of the Tabernacle"
+      },
+      {
+        "n": 25,
+        "name": "Knight of the Brazen Serpent"
+      },
+      {
+        "n": 26,
+        "name": "Prince of Mercy"
+      },
+      {
+        "n": 27,
+        "name": "Knight Commander of the Temple"
+      },
+      {
+        "n": 28,
+        "name": "Knight of the Sun / Prince Adept"
+      },
+      {
+        "n": 29,
+        "name": "Scottish Knight of St. Andrew"
+      },
+      {
+        "n": 30,
+        "name": "Knight Kadosh"
+      },
+      {
+        "n": 31,
+        "name": "Inspector Inquisitor"
+      },
+      {
+        "n": 32,
+        "name": "Master of the Royal Secret"
+      }
+    ],
+    "degree_33": "The 33° is associated with the Supreme Council / Inspector General distinction rather than a normal sequential working degree that every Scottish Rite Mason automatically receives.",
+    "boundary": "Exact titles, requirements and conferral practice vary by Supreme Council/jurisdiction.",
+    "source": "https://scottishrite.org/wp-content/uploads/2020/04/Statutes-SRSJ-2019.pdf"
+  },
+  "york_rite_us_reference": {
+    "precondition": "Master Mason",
+    "royal_arch_chapter": [
+      "Mark Master",
+      "Past Master (Virtual)",
+      "Most Excellent Master",
+      "Royal Arch"
+    ],
+    "cryptic_council": [
+      "Royal Master",
+      "Select Master",
+      "Super Excellent Master"
+    ],
+    "commandery_orders": [
+      "Illustrious Order of the Red Cross",
+      "Order of Knight of Malta",
+      "Order of the Temple"
+    ],
+    "structural_note": "The Commandery confers Orders rather than merely extending a single numbered degree ladder.",
+    "sources": [
+      "https://www.yorkrite.org/getrifold.html",
+      "https://yorkrite.org/wp/ktorders/",
+      "https://yorkrite.org/wp/become-a-member/"
+    ]
+  },
+  "temple_threshold_architecture": {
+    "solomons_temple": "A major symbolic architecture in Masonic ritual and later bodies; building, loss, recovery, completion and dedication recur as narrative operators.",
+    "jachin_boaz": "Biblical named pillars flanking the Temple entrance become important later Masonic threshold symbols. Preserve biblical provenance and later Masonic reception as different strata.",
+    "unfinished_completed_temple_distinction": "Different degree systems use Temple building/completion/recovery in different ways; do not flatten all rites into one Temple story.",
+    "potato_use": "Temple can be compared with House; pillars with threshold supports; building with disciplined formation; lost/recovered word with provenance/knowledge recovery. These are comparative functions, not evidence of historical Potato doctrine."
+  },
+  "symbolic_geometry": {
+    "square": {
+      "operative_function": "construct/test right angles",
+      "masonic_symbolic_use": "moral rectitude / right conduct in common Masonic explanation",
+      "geometry": "two perpendicular directions; 90° relation; local orthogonality"
+    },
+    "compasses": {
+      "operative_function": "draw circles/arcs and transfer radius",
+      "masonic_symbolic_use": "self-limitation, relation and bounded conduct in common explanations",
+      "geometry": "fixed center + radius -> locus/circle; can construct intersections and proportional figures"
+    },
+    "letter_g": {
+      "common_us_associations": [
+        "Geometry",
+        "God / Great Architect language in many jurisdictions"
+      ],
+      "caution": "Not universal in every jurisdiction or period."
+    },
+    "rough_and_perfect_ashlar": {
+      "function": "unfinished stone -> shaped/polished stone",
+      "project_neighbor": "Forge/formation/repair",
+      "boundary": "Masonic ethical-symbolic use is not a literal psychological measurement."
+    },
+    "level_plumb_rule_trowel": {
+      "level": "horizontal/equality/reference-plane comparator",
+      "plumb": "vertical/upright/axis comparator",
+      "rule": "measurement/order comparator",
+      "trowel": "binding/spreading/cementing relation comparator"
+    },
+    "point_circle_center": {
+      "project_use": "center/radius/boundary is mathematically precise and useful for House/Door construction, but Masonic center symbolism must be sourced to its own ritual/writing rather than inferred from generic Euclid."
+    }
+  },
+  "sacred_geometry_boundary": {
+    "exact_geometry": [
+      "Euclidean constructions",
+      "circle intersections",
+      "equilateral triangles",
+      "perpendicular bisectors",
+      "squares",
+      "regular polygons",
+      "ratios and symmetries"
+    ],
+    "historical_symbolism": [
+      "Masonic working-tool symbolism",
+      "Christian mandorla/iconography",
+      "Kabbalistic/Hermetic diagrams",
+      "Renaissance/occult correspondences"
+    ],
+    "rule": "A geometric construction can be exact while its symbolic interpretation remains tradition-specific. Mathematical coincidence does not prove secret lineage.",
+    "potato_relation": "The Potato of Life may use exact Vesica geometry as its native mathematical skeleton, then layer Masonic, Christian, Kabbalistic or other comparators only with typed provenance."
+  },
+  "topology_relations": {
+    "lodge": "bounded social/ritual room; not identical with House as global project organism",
+    "east": "orientation/seat of lodge leadership in many Craft settings; useful directional comparator, not Potato North",
+    "pillars": "paired threshold supports",
+    "temple": "constructed House/formation narrative",
+    "degree": "institutionally authorized transition/status in a rite",
+    "working_tool": "physical instrument transformed into ethical/symbolic teaching device",
+    "geometry": "formal relation independent of the moral allegory later attached to it"
+  },
+  "anti_collapse_rules": [
+    "Do not call all Freemasonry 'Scottish Rite'.",
+    "Do not call the 33° the 33rd universal Masonic step.",
+    "Do not merge York Rite and Scottish Rite sequences.",
+    "Do not treat Great Seal pyramid courses as Masonic degrees.",
+    "Do not backdate later Masonic pillar meanings into 1 Kings.",
+    "Do not infer organizational connection from shared Eye, compass, pillar, triangle, Temple, 33 or Vesica motifs alone."
+  ],
+  "sources": [
+    "https://www.ugle.org.uk/discover-freemasonry/what-is-freemasonry",
+    "https://www.ugle.org.uk/discover-freemasonry/blog/supreme-grand-chapter-completing-journey",
+    "https://scottishrite.org/wp-content/uploads/2020/04/Statutes-SRSJ-2019.pdf",
+    "https://www.yorkrite.org/getrifold.html",
+    "https://freemason.org/what-is-freemasonry/symbols/",
+    "knowledge/traditions/providence-pyramid-pillars-atlas.json",
+    "archive/legacy-backlog/2026-09-12/knowledge/traditions/jachin-boaz-paired-threshold-geometry-atlas.json"
+  ],
+  "connections": [
+    "providence-pyramid-pillars-atlas",
+    "hierarchy-pyramid-scale-comparative-atlas",
+    "tree-of-life-knowledge-qliphoth-structure-atlas",
+    "vesica-mandorla-sun-moon-esoteric-atlas",
+    "door-topology-access-and-capability-atlas",
+    "repair-forge-protocol"
+  ]
+}
