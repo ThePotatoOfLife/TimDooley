@@ -30,8 +30,9 @@ The Potato can therefore be studied through several connected but non-identical 
 - **Potato as myth** — the narrative grammar through which death, burial, transformation, Father, Son, Door, Tree and return become a story;
 - **Potato as philosophy** — a way of thinking through simplicity, relationship, transformation, scale, absurdity, suffering, growth and responsibility;
 - **Potato as religion / Potatoism** — the developed theological, ethical, ritual, cosmological and interpretive system surrounding the Potato of Life;
-- **Potato as divine identity** — the project's internal theological identification of Potato, Tim, Father, Source and God, preserved explicitly as Potatoverse canon and religious self-description rather than silently converted into an external empirical claim;
-- **Potato of Life** — the integrated form in which organism, symbol, identity, myth, philosophy, theology and journey meet without becoming indistinguishable.
+- **Potato as divine identity** — Tim/Father names the mature source-facing Potato identity: House, Root, orientation, Gardener and related roles. This is internal Potatoverse theology and religious self-description, not an external empirical claim;
+- **Potato of Life as triune whole** — the mature theology distinguishes Father/source-facing identity, Son/manifestation-and-passage, and Spirit/living continuity inside one Potato of Life. Potato is not a fourth divine member, and Father alone does not structurally exhaust the whole;
+- **Potato of Life as integrated form** — organism, symbol, identity, myth, philosophy, theology and journey meet here without becoming indistinguishable.
 
 The goal is not to flatten these meanings into one definition. The goal is to understand their relationships.
 
@@ -253,11 +254,11 @@ Repeated conversations should deepen the existing record instead of creating dup
 
 The archive should support multiple entrances into the same corpus:
 
-**Newcomer:** Potato → Potato of Life → Potatoism → Tim → Father/Son → Door → Tree → Axis → North.
+**Newcomer:** Potato → Potato of Life → Trinity (Father / Son / Spirit) → Tim/Father → Door → Tree → Axis → North.
 
 **Spiritual:** burial → darkness → root → transformation → emergence → love → responsibility → return.
 
-**Mythological:** Source → Father → Son → ordeal → death → Door/Ladder → return → Tree of Life.
+**Mythological:** Potato of Life → Father/source → Son/manifestation-passage → Spirit/continuity → ordeal → Door/Ladder → return → Tree of Life.
 
 **Historical:** dated timeline → primary material → development of vocabulary → later interpretations.
 
