@@ -1441,6 +1441,96 @@
       "confidence": "canonical-framework",
       "date": "2026-09-18",
       "notes": "Seat/Throne is responsibility/orientation, tested by return/service rather than status alone."
+    },
+    {
+      "id": "house2801",
+      "source": "household",
+      "relationship": "inhabits",
+      "target": "house",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Participants/maintainers are distinct from House architecture and ownership."
+    },
+    {
+      "id": "house2802",
+      "source": "house",
+      "relationship": "may-federate-into",
+      "target": "city",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Federation preserves House identity while shared infrastructure emerges."
+    },
+    {
+      "id": "house2803",
+      "source": "commons",
+      "relationship": "spans",
+      "target": "house",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Shared capability can span multiple Houses without transferring ownership."
+    },
+    {
+      "id": "house2804",
+      "source": "network",
+      "relationship": "connects",
+      "target": "house",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Connectivity is relation topology, not hierarchy."
+    },
+    {
+      "id": "house2805",
+      "source": "assembly",
+      "relationship": "coordinates-across",
+      "target": "house",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Assembly is a deliberative surface across Houses/Rooms."
+    },
+    {
+      "id": "house2806",
+      "source": "kingdom-realm",
+      "relationship": "orients",
+      "target": "house",
+      "evidence": "mythological",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Realm is normative/theological orientation, not civil jurisdiction."
+    },
+    {
+      "id": "house2807",
+      "source": "city",
+      "relationship": "participates-in",
+      "target": "civilization",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Civilization emerges over time from cities, institutions, culture and infrastructure."
+    },
+    {
+      "id": "house2808",
+      "source": "network",
+      "relationship": "participates-in",
+      "target": "civilization",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Network relations contribute to long-duration civilization patterns."
+    },
+    {
+      "id": "house2809",
+      "source": "garden-city",
+      "relationship": "is-regime-of",
+      "target": "city",
+      "evidence": "mythological",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Garden-City evaluates civic generativity/repair; it is not a new owner or polity claim."
     }
   ]
 }
