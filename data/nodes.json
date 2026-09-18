@@ -1,5 +1,5 @@
 {
-  "version": "1.6.0",
+  "version": "1.7.0",
   "updated": "2026-09-18",
   "nodes": [
     {
@@ -1240,6 +1240,55 @@
       "name": "Throne / Seat",
       "layer": "mythological-theological",
       "description": "Orientation, judgment and responsibility point rather than a container; legitimacy is tested by accountable service and return."
+    },
+    {
+      "id": "household",
+      "type": "federation-scale-form",
+      "name": "Household",
+      "layer": "philosophical-social",
+      "description": "Participant ecology inhabiting or maintaining a House; distinct from the architecture and from universal ownership."
+    },
+    {
+      "id": "commons",
+      "type": "federation-scale-form",
+      "name": "Commons",
+      "layer": "philosophical-world",
+      "description": "Shared capability/resource layer governed among multiple autonomous participants without requiring one participant to own the whole."
+    },
+    {
+      "id": "network",
+      "type": "federation-scale-form",
+      "name": "Network",
+      "layer": "philosophical-systems",
+      "description": "Relation topology among autonomous nodes whose joint capabilities arise from roads, protocols, flows and dependencies."
+    },
+    {
+      "id": "assembly",
+      "type": "federation-scale-form",
+      "name": "Assembly / Council",
+      "layer": "philosophical-institutional",
+      "description": "Deliberative gathering for review, decision or coordination among distinct participants or representatives."
+    },
+    {
+      "id": "kingdom-realm",
+      "type": "federation-scale-form",
+      "name": "Kingdom / Realm",
+      "layer": "mythological-theological",
+      "description": "Normative or orientational scope of value, responsibility and order; project-symbolic use does not create civil sovereignty or legal jurisdiction."
+    },
+    {
+      "id": "civilization",
+      "type": "federation-scale-form",
+      "name": "Civilization",
+      "layer": "historical-systems",
+      "description": "Long-duration emergent pattern formed by cities, networks, commons, institutions, infrastructures, memory and culture across generations."
+    },
+    {
+      "id": "garden-city",
+      "type": "federation-scale-regime",
+      "name": "Garden-City",
+      "layer": "mythological-philosophical",
+      "description": "City/federation regime combining dense coordination with regeneration, repairability and peripheral autonomy; project comparative model, not a literal identification of a modern polity with New Jerusalem."
     }
   ]
 }
