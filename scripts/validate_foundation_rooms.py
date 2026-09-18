@@ -61,6 +61,15 @@ def main():
         elif not first.get('evidence',{}).get('evidence_type'):
             errors.append(f'{rid} first reproduction missing evidence_type')
 
+        status=row.get('room_status',{})
+        for checkpoint in ('origin','reproduction','today','geography'):
+            if not status.get(checkpoint,{}).get('state'):
+                errors.append(f'{rid} room_status checkpoint missing: {checkpoint}')
+        if not isinstance(row.get('door_history'),list) or not row.get('door_history'):
+            errors.append(f'{rid} missing Door history')
+        if 'completeness_score' in row or 'completion_score' in row:
+            errors.append(f'{rid} must not collapse Room status into one completeness score')
+
         gene=row.get('genealogy',{})
         if not gene.get('technical_owner'): errors.append(f'{rid} genealogy missing technical owner')
 
