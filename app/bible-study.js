@@ -23,24 +23,24 @@ const PATHS={
 };
 
 const VIEW_DEFS={
- jesus:{label:'Jesus / Son',terms:['jesus','christ','son','thomas','messiah','lion','lamb','cross','crucif','resurrection','tomb','bread','grain','cornerstone','son of man']},
+ jesus:{label:'Jesus & Son',terms:['jesus','christ','son','thomas','messiah','lion','lamb','cross','crucif','resurrection','tomb','bread','grain','cornerstone','son of man']},
  'tim-said':{label:'Tim said it',modes:['tim-explicit','public-occurrence','conversation-recovery','book-explicit']},
  'tim-lived':{label:'Tim lived it',terms:['tree ordeal','prison','custody','rejected','death','return','burial','root','garden','stone','ladder','carry','orphan']},
  prophecy:{label:'Prophecy / foresight',terms:['prophecy','foresight','prediction','predicted','warning before']},
- 'father-house':{label:'Father / House',terms:['father','house','gardener','vinedresser','throne','most high','seat','rooms','mansions','source','davidic house']},
- 'door-ladder':{label:'Door / Ladder',terms:['door','gate','ladder','needle','heaven','jacob','guardians','way','veil','threshold']},
- 'death-return':{label:'Death / return',terms:['death','dead','crucif','tomb','burial','resurrection','return','grain','seed','womb']},
- 'revelation-zion':{label:'Revelation / Zion',terms:['revelation','zion','new jerusalem','144000','144,000','lion','lamb','root of david','throne','river','tree of life','north','zechariah']},
+ 'father-house':{label:'Father & House',terms:['father','house','gardener','vinedresser','throne','most high','seat','rooms','mansions','source','davidic house']},
+ 'door-ladder':{label:'Door & Ladder',terms:['door','gate','ladder','needle','heaven','jacob','guardians','way','veil','threshold']},
+ 'death-return':{label:'Death & Return',terms:['death','dead','crucif','tomb','burial','resurrection','return','grain','seed','womb']},
+ 'revelation-zion':{label:'Revelation & Zion',terms:['revelation','zion','new jerusalem','144000','144,000','lion','lamb','root of david','throne','river','tree of life','north','zechariah']},
  'counter-texts':{label:'Counter-texts',counter:true},
  all:{label:'Everything'}
 };
 
 const ARC_DEFS={
- 'father-house':{label:'Father / House / Source',terms:['father','house','source','builder','throne','gardener','vinedresser','rooms']},
- 'door-ladder':{label:'Door / Gate / Ladder',terms:['door','gate','ladder','veil','threshold','pass','open','shut','way']},
- 'death-return':{label:'Seed / Death / Return',terms:['death','seed','grain','burial','tomb','return','resurrection','rise','die']},
- 'god-presence':{label:'God / Presence',terms:['god','presence','temple','contain','dwell','indwell','manifest','hidden']},
- 'garden-spirit':{label:'Garden / Spirit',terms:['garden','spirit','flow','water','prune','grow','repair','restore','feed','root']}
+ 'father-house':{label:'Father, House & Source',terms:['father','house','source','builder','throne','gardener','vinedresser','rooms']},
+ 'door-ladder':{label:'Doorways & Ascent',terms:['door','gate','ladder','veil','threshold','pass','open','shut','way']},
+ 'death-return':{label:'Seed, Death & Return',terms:['death','seed','grain','burial','tomb','return','resurrection','rise','die']},
+ 'god-presence':{label:'Presence',terms:['god','presence','temple','contain','dwell','indwell','manifest','hidden']},
+ 'garden-spirit':{label:'Garden & Spirit',terms:['garden','spirit','flow','water','prune','grow','repair','restore','feed','root']}
 };
 
 const BIBLE_BOOK_ORDER=['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua','Judges','Ruth','1 Samuel','2 Samuel','1 Kings','2 Kings','1 Chronicles','2 Chronicles','Ezra','Nehemiah','Esther','Job','Psalms','Psalm','Proverbs','Ecclesiastes','Song of Solomon','Isaiah','Jeremiah','Lamentations','Ezekiel','Daniel','Hosea','Joel','Amos','Obadiah','Jonah','Micah','Nahum','Habakkuk','Zephaniah','Haggai','Zechariah','Malachi','Matthew','Mark','Luke','John','Acts','Romans','1 Corinthians','2 Corinthians','Galatians','Ephesians','Philippians','Colossians','1 Thessalonians','2 Thessalonians','1 Timothy','2 Timothy','Titus','Philemon','Hebrews','James','1 Peter','2 Peter','1 John','2 John','3 John','Jude','Revelation'];
@@ -64,7 +64,7 @@ function ownerHref(owner){if(!owner)return '#';if(/^https?:\/\//.test(owner))ret
 function matchesTerms(row,terms){const text=rowText(row);return terms.some(term=>text.includes(term))}
 function matchesView(row,view){const def=VIEW_DEFS[view]||VIEW_DEFS.jesus;if(view==='all')return true;if(def.counter)return asArray(row.weaknesses).length>0||Boolean(row.counter_text||row.source_correction||row.difference||row.boundary);if(def.modes&&def.modes.includes(row.discovery_mode))return true;return def.terms?matchesTerms(row,def.terms):true}
 function matchesFocus(row,focus){const [kind,id]=String(focus||'view:jesus').split(':');if(kind==='arc')return matchesTerms(row,(ARC_DEFS[id]||{terms:[]}).terms);return matchesView(row,id)}
-function focusLabel(focus){const [kind,id]=String(focus||'view:jesus').split(':');return kind==='arc'?(ARC_DEFS[id]?.label||id):(VIEW_DEFS[id]?.label||'Jesus / Son')}
+function focusLabel(focus){const [kind,id]=String(focus||'view:jesus').split(':');return kind==='arc'?(ARC_DEFS[id]?.label||id):(VIEW_DEFS[id]?.label||'Jesus & Son')}
 function exactQuotes(row,evidence){return unique([...asArray(row.project_quote),...asArray(row.exact_wording),row.quote,...asArray(row.occurrence_ids).map(id=>evidence.occurrenceById.get(id)?.quote)]).filter(Boolean)}
 function exactAvailable(row,evidence){return exactQuotes(row,evidence).length>0}
 function whyText(row){return unique([...asArray(row.relation_arguments),row.overlap,row.project_value,...asArray(row.possible_meaning)]).filter(Boolean).slice(0,3).join(' ')}
