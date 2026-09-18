@@ -1,5 +1,5 @@
 {
-  "version": "2.7.0",
+  "version": "2.8.0",
   "updated": "2026-09-18",
   "authority": "project-synthesis",
   "purpose": "Bind repository development waves, center operators, living metabolisms, Rooms, lenses, tests, outputs and commit crystallization into one center-out composition without replacing their canonical owners.",
@@ -2283,6 +2283,17 @@
       "authority": "data/house/foundation-first-reproduction-wave-001.json",
       "rule": "Founding is not proof of reproduction. Record the earliest recovered successor/branch/operation/implementation after the Door and preserve uncertainty about whether it is historically first."
     },
-    "population_rule": "Populate Origin, first reproduction and Today independently. A Room may be strong in one dimension and incomplete in another; gaps remain visible research targets."
+    "population_rule": "Populate Origin, first reproduction and Today independently. A Room may be strong in one dimension and incomplete in another; gaps remain visible research targets.",
+    "maintenance": {
+      "checkpoints": [
+        "origin",
+        "reproduction",
+        "today",
+        "geography"
+      ],
+      "research_queue": "Generated per Room from missing checkpoint evidence.",
+      "door_history": "Preserve later legal, operational, refoundation and supersession Doors behind the primary reader Door.",
+      "rule": "No completeness score. A Room can be strong in geography and weak in Today, or vice versa."
+    }
   }
 }
