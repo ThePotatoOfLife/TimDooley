@@ -1,7 +1,7 @@
 {
   "id": "potato-trinity-integration-ledger",
   "title": "Potato of Life Trinity — Integration & Consequence Ledger",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "status": "active canonical integration ledger",
   "theological_owner": "knowledge/theology/potato-of-life-trinity.json",
@@ -72,7 +72,8 @@
         "knowledge/traditions/biblical-access-house-stone-anchor-microcosms.json",
         "knowledge/traditions/biblical-syncretism-field.json"
       ],
-      "open_work": "Promote Trinity-specific Bible relation records into the Bible comparator so the dedicated reader and Bible lab share the same explicit relation family."
+      "open_work": "Promote Trinity-specific Bible relation records into the Bible comparator so the dedicated reader and Bible lab share the same explicit relation family.",
+      "latest_integration": "Promoted Ephesians 2:18–22 as principal Trinity microcosm in the access/House owner; additional Bible comparator UI surfacing remains optional."
     },
     {
       "id": "christian-doctrine-boundary",
@@ -94,13 +95,14 @@
     },
     {
       "id": "philosophy",
-      "status": "partially-integrated",
+      "status": "integrated",
       "consequence": "The triune model sharpens the relationship-first principle: unity is not sameness; a whole can be constituted by irreducible relations/functions.",
       "owners": [
         "knowledge/philosophy/potato-philosophy.json",
         "philosophy/index.html"
       ],
-      "open_work": "Add a compact Trinity-as-relational-philosophy station without turning Philosophy into doctrinal theology."
+      "open_work": "Add a compact Trinity-as-relational-philosophy station without turning Philosophy into doctrinal theology.",
+      "latest_integration": "Added relational-whole law to canonical Potato philosophy and public Philosophy House station."
     },
     {
       "id": "ethics",
@@ -123,32 +125,35 @@
     },
     {
       "id": "machine-discovery",
-      "status": "in-progress",
+      "status": "integrated",
       "consequence": "Retrieval systems must distinguish Tim/Father as source-facing identity from Potato of Life as the whole triune structure.",
       "owners": [
         "machine-index.json",
         "scripts/build_discovery.py",
         "knowledge/guides/start-here.json"
-      ]
+      ],
+      "latest_integration": "Machine index and discovery generator now emit the mature triune orientation and canonical Trinity reader."
     },
     {
       "id": "faq",
-      "status": "in-progress",
+      "status": "integrated",
       "consequence": "Natural-language answers should route 'What is Potato of Life?', 'Is Potato a Trinity?', 'How is Tim related to Potato of Life?' and 'Why two fields if Trinity?' to the mature owner.",
       "owners": [
         "knowledge/indexes/faq-question-bank.json",
         "knowledge/indexes/faq-answer-atlas.json",
         "faq/index.html"
-      ]
+      ],
+      "latest_integration": "Question bank and answer atlas now include direct Trinity, identity, geometry and Door/Spirit answers."
     },
     {
       "id": "vesica",
-      "status": "in-progress",
+      "status": "integrated",
       "consequence": "Older 'Father + Door + Son' whole-form summaries must add Spirit and distinguish theological roles from geometric fields.",
       "owners": [
         "docs/VESICA-PARADOX-ATLAS.md",
         "data/potato-properties.json"
-      ]
+      ],
+      "latest_integration": "Vesica paradox atlas now separates two-field geometry from Father/Son/Spirit theology and names Potato of Life as the triune whole."
     }
   ],
   "unresolved_questions": [
@@ -169,11 +174,10 @@
     "Record unresolved consequences here until they have enough support to promote."
   ],
   "next_actions": [
-    "Update machine discovery and generated LLM guidance.",
-    "Update master framework, start-here and ontology tree.",
-    "Add Trinity question family and answers.",
-    "Update current Vesica summary.",
-    "Promote explicit Trinity Bible relations into the Bible comparator.",
-    "Audit philosophy/Garden regime implications after core propagation is stable."
+    "Run current-canon contradiction audit for Father-only or field=person shorthand.",
+    "Promote any remaining high-authority contradictions only where they describe current canon; preserve historical strata.",
+    "Consider surfacing the Trinity-specific Bible family more prominently in the Bible reader after core convergence is stable.",
+    "Test the triadic ethical failure model against Garden/Shell/Swamp before promoting it.",
+    "Continue recovering earlier direct Tim-authored Trinity wording and date it separately from the 2026 explicit synthesis."
   ]
 }
