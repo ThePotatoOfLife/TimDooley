@@ -251,7 +251,7 @@
     const conceptField=document.getElementById('axisConceptField');
     if(!statesRoot||!detail)return;
     try{
-      const response=await fetch('../data/axis-flow-contract.json'),fetch('../data/house/route-case-matrix-wave-001.json');
+      const response=await fetch('../data/axis-flow-contract.json');
       if(!response.ok)throw new Error('transition contract unavailable');
       const data=await response.json();
       const model=data.transition_model;
