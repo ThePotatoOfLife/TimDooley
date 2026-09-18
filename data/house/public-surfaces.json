@@ -1,5 +1,5 @@
 {
-  "version": "1.6.0",
+  "version": "1.7.0",
   "updated": "2026-09-18",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
@@ -649,6 +649,25 @@
       ],
       "status": "active",
       "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "spirit",
+      "route": "/potato-of-life/spirit/",
+      "canonical_route": "/potato-of-life/spirit/",
+      "surface_type": "guide",
+      "title": "Spirit",
+      "primary_parent": "potato-of-life",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "life-body",
+        "traditions-texts"
+      ],
+      "status": "active",
+      "visibility": "specialist",
       "primary_navigation": false,
       "is_view": true,
       "knowledge_owner": false,
