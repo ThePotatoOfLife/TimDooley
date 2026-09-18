@@ -571,3 +571,14 @@ The default public entrance uses progressive disclosure:
 The deeper layers remain canonical and searchable, but they are not all given equal visual weight on first contact. A public page should prefer the smallest vocabulary sufficient for the reader's task. Maintenance structures such as population pulse, census, interface registries and migration/governance details belong behind an explicit deeper-reading choice unless they are the user's actual task.
 
 This law changes presentation, not knowledge ownership or ontology.
+
+
+### Holdings and collections law
+
+A **holding** is substantive project material with one primary nested-Room owner. Cross-Room relevance does not create duplicate ownership; it is expressed through guarded interfaces, typed relations, citations, Views or collections.
+
+A **collection** assembles holdings from several owners for reading, interpretation, recovery, comparison or navigation. Corporium, Story, Reader dossiers, project Guides and routing Indexes are canonical examples of collections rather than additional Rooms.
+
+Every active nested Room should expose at least one substantive holding. A broad directory may be used as a classification pool, but it must not make every Room that references the directory a co-owner of every file beneath it.
+
+The canonical file-level ownership ledger is `data/house/holdings.json`; curated cross-Room collections are registered in `data/house/collections.json`.
