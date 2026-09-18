@@ -1,5 +1,5 @@
 {
-  "version": "4.2.0",
+  "version": "4.3.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -75,7 +75,9 @@
       "house-rooms",
       "axis-flow-contract",
       "potato-path",
-      "root-system"
+      "root-system",
+      "house-subrooms",
+      "house-topology"
     ]
   },
   "records": [
@@ -999,6 +1001,41 @@
         "Soil",
         "Return"
       ]
+    },
+    {
+      "id": "house-subrooms",
+      "path": "data/house/subrooms.json",
+      "branch": "root",
+      "kind": "nested bounded-context registry beneath the ten canonical Rooms",
+      "terms": [
+        "nested Room",
+        "subcontext",
+        "delegated scope",
+        "adjacency",
+        "topology profile",
+        "interface",
+        "House directions"
+      ]
+    },
+    {
+      "id": "house-topology",
+      "path": "data/house/topology.json",
+      "branch": "root",
+      "kind": "multi-axis House topology and visual embedding contract",
+      "terms": [
+        "House topology",
+        "WITHIN",
+        "HERE",
+        "UP",
+        "DOWN",
+        "OUT",
+        "ACROSS",
+        "THROUGH",
+        "STATE",
+        "crosscutting axes",
+        "corridor",
+        "embedding"
+      ]
     }
   ],
   "retrieval_routes": [
@@ -1141,6 +1178,16 @@
         "potato-path",
         "farm-swamp-atlas",
         "root-system"
+      ]
+    },
+    {
+      "question": "How are nested Rooms positioned in the House?",
+      "records": [
+        "potato-house-constitution",
+        "house-rooms",
+        "house-subrooms",
+        "house-topology",
+        "axis-flow-contract"
       ]
     }
   ],
