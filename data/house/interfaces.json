@@ -1,0 +1,337 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "house-interface-governance",
+  "subroom_registry": "data/house/subrooms.json",
+  "principle": "Adjacency becomes architecturally meaningful when the passage states what is translated, what must remain invariant, what guard applies, and whether the crossing can be reversed or reviewed.",
+  "interfaces": [
+    {
+      "id": "if-symbolic-math",
+      "from": "symbolic-architecture",
+      "to": "math-geometry",
+      "type": "formalization",
+      "changes": "A project-symbolic relation is rewritten as explicit geometry, topology or mathematics with named assumptions.",
+      "preserves": [
+        "source symbolic claim",
+        "definitions",
+        "uncertainty"
+      ],
+      "guard": "The formal model must state what is analogy, what is exact, and what would count as misuse.",
+      "reversible": "yes, with loss noted",
+      "public_use": "science / axis"
+    },
+    {
+      "id": "if-theology-bible",
+      "from": "theology-god-language",
+      "to": "bible-christianity",
+      "type": "comparative-translation",
+      "changes": "Project theology is compared with historically/textually described Christian material.",
+      "preserves": [
+        "project/internal status",
+        "text source identity",
+        "historical difference"
+      ],
+      "guard": "Resemblance must not be promoted into historical identity, fulfillment or transmission without evidence.",
+      "reversible": "yes",
+      "public_use": "religion / bible"
+    },
+    {
+      "id": "if-symbolic-neuro",
+      "from": "symbolic-body-comparison",
+      "to": "neurobiology",
+      "type": "epistemic-firewall",
+      "changes": "A symbolic anatomy mapping is tested against empirical neuroanatomy and evidence grades.",
+      "preserves": [
+        "symbolic interpretation as interpretation",
+        "scientific source status"
+      ],
+      "guard": "No symbolic mapping may overwrite established anatomy or uncertainty.",
+      "reversible": "yes",
+      "public_use": "life-body / science"
+    },
+    {
+      "id": "if-body-theology",
+      "from": "symbolic-body-comparison",
+      "to": "theology-god-language",
+      "type": "interpretive-coupling",
+      "changes": "Body imagery is read within project theology without becoming a biological claim.",
+      "preserves": [
+        "body evidence boundary",
+        "project-theology status"
+      ],
+      "guard": "Theological meaning must remain separately typed from physiology.",
+      "reversible": "yes",
+      "public_use": "life-body / religion"
+    },
+    {
+      "id": "if-question-experiment",
+      "from": "open-questions",
+      "to": "experiments-formalization",
+      "type": "research-door",
+      "changes": "An unresolved question becomes a testable candidate, prototype or formal experiment.",
+      "preserves": [
+        "question provenance",
+        "known unknowns",
+        "counterevidence"
+      ],
+      "guard": "A candidate must name assumptions and what result would change confidence.",
+      "reversible": "yes",
+      "public_use": "research-lab"
+    },
+    {
+      "id": "if-experiment-test",
+      "from": "experiments-formalization",
+      "to": "model-testing",
+      "type": "validation-door",
+      "changes": "A candidate model enters explicit observables, falsifiers, calibration and uncertainty review.",
+      "preserves": [
+        "model version",
+        "assumptions",
+        "negative results"
+      ],
+      "guard": "Testing criteria must be stated before promotion claims.",
+      "reversible": "yes",
+      "public_use": "research-lab / science"
+    },
+    {
+      "id": "if-test-science",
+      "from": "model-testing",
+      "to": "physics-cosmology",
+      "type": "promotion-door",
+      "changes": "A tested candidate can become part of a scientific/formal owner at an explicit evidence status.",
+      "preserves": [
+        "test history",
+        "limitations",
+        "provenance"
+      ],
+      "guard": "Passing a local test does not imply universal validity; evidence scope must be declared.",
+      "reversible": "reviewable",
+      "public_use": "science"
+    },
+    {
+      "id": "if-provenance-witness",
+      "from": "provenance-evidence",
+      "to": "witness-attestation",
+      "type": "source-attestation",
+      "changes": "A source-bearing artifact is connected to what wording or public act it actually attests.",
+      "preserves": [
+        "artifact identity",
+        "capture lineage",
+        "timestamp precision"
+      ],
+      "guard": "Attestation may prove wording/time without proving the claim's truth.",
+      "reversible": "yes",
+      "public_use": "sources / timeline"
+    },
+    {
+      "id": "if-witness-time",
+      "from": "witness-attestation",
+      "to": "chronology-events",
+      "type": "temporal-placement",
+      "changes": "Attested wording or activity is placed into occurrence and development time.",
+      "preserves": [
+        "attestation time",
+        "source identity",
+        "date uncertainty"
+      ],
+      "guard": "Publication/capture time and occurrence time must remain distinguishable.",
+      "reversible": "yes",
+      "public_use": "timeline / history"
+    },
+    {
+      "id": "if-time-genealogy",
+      "from": "chronology-events",
+      "to": "developmental-genealogy",
+      "type": "developmental-synthesis",
+      "changes": "Events become a sequence of changing meanings, roles or concepts without rewriting earlier states.",
+      "preserves": [
+        "event order",
+        "first attestations",
+        "later interpretation time"
+      ],
+      "guard": "Later synthesis may relate backward but not silently backdate itself.",
+      "reversible": "yes",
+      "public_use": "history / story"
+    },
+    {
+      "id": "if-prediction-evidence",
+      "from": "prediction-revelation-time",
+      "to": "provenance-evidence",
+      "type": "prediction-audit",
+      "changes": "Prediction/revelation claims are routed to source and timestamp evidence.",
+      "preserves": [
+        "earliest wording",
+        "scope",
+        "date precision"
+      ],
+      "guard": "Retrospective matches must remain visibly retrospective.",
+      "reversible": "yes",
+      "public_use": "timeline / sources"
+    },
+    {
+      "id": "if-politics-law",
+      "from": "politics-governance",
+      "to": "law-justice",
+      "type": "institutional-translation",
+      "changes": "Political proposal, action or institution is translated into jurisdiction, authority, procedure and legal constraints.",
+      "preserves": [
+        "actor",
+        "date",
+        "jurisdiction",
+        "source"
+      ],
+      "guard": "Political preference does not become legal status without authoritative law or procedure.",
+      "reversible": "yes",
+      "public_use": "politics / law"
+    },
+    {
+      "id": "if-politics-economy",
+      "from": "politics-governance",
+      "to": "economy-finance",
+      "type": "policy-impact",
+      "changes": "Governance choices are traced into fiscal, ownership, trade, labour or financial consequences.",
+      "preserves": [
+        "policy source",
+        "time period",
+        "affected population/system"
+      ],
+      "guard": "Causal claims require evidence and must distinguish proposal, enactment and measured effect.",
+      "reversible": "analytical",
+      "public_use": "politics / economy"
+    },
+    {
+      "id": "if-economy-infra",
+      "from": "economy-finance",
+      "to": "infrastructure-capability",
+      "type": "capital-capability",
+      "changes": "Finance, investment, ownership or procurement is connected to physical/digital productive capability.",
+      "preserves": [
+        "amount/unit",
+        "owner",
+        "date",
+        "source"
+      ],
+      "guard": "Money flow and capability are related but not interchangeable.",
+      "reversible": "analytical",
+      "public_use": "economy / world-systems"
+    },
+    {
+      "id": "if-geography-world",
+      "from": "geography-countries",
+      "to": "infrastructure-capability",
+      "type": "spatial-system",
+      "changes": "Country/place identity is connected to infrastructure, dependencies and cross-border capability.",
+      "preserves": [
+        "ordinary geography",
+        "jurisdiction",
+        "time"
+      ],
+      "guard": "Project-symbolic quadrants may not replace ordinary geography or sovereignty.",
+      "reversible": "yes",
+      "public_use": "world-map / world-systems"
+    },
+    {
+      "id": "if-platform-info",
+      "from": "internet-platforms",
+      "to": "information-ecology",
+      "type": "mediation",
+      "changes": "Platform-specific behavior is interpreted as attention, memory, repetition or information-flow structure.",
+      "preserves": [
+        "platform context",
+        "public/private boundary",
+        "source timing"
+      ],
+      "guard": "System interpretation must not invent motive or private facts.",
+      "reversible": "yes",
+      "public_use": "culture"
+    },
+    {
+      "id": "if-info-subculture",
+      "from": "information-ecology",
+      "to": "subculture-group-formation",
+      "type": "social-formation",
+      "changes": "Repeated information and interaction patterns are examined for group identity, norms, boundaries and control dynamics.",
+      "preserves": [
+        "documented behavior",
+        "context",
+        "uncertainty"
+      ],
+      "guard": "High-control/cult terminology requires explicit criteria and sourced behavior.",
+      "reversible": "yes",
+      "public_use": "culture"
+    },
+    {
+      "id": "if-canon-literature",
+      "from": "canon-identities",
+      "to": "great-book-literature",
+      "type": "creative-expression",
+      "changes": "Canonical project material becomes literary or narrative expression.",
+      "preserves": [
+        "authorship/work identity",
+        "creative status"
+      ],
+      "guard": "Creative depiction does not become unique owner of doctrine or biography.",
+      "reversible": "yes",
+      "public_use": "works / story"
+    },
+    {
+      "id": "if-literature-culture",
+      "from": "great-book-literature",
+      "to": "information-ecology",
+      "type": "publication-reception",
+      "changes": "A work enters media, audience, quotation, remix, memory and reception contexts.",
+      "preserves": [
+        "work version",
+        "authorship",
+        "publication context"
+      ],
+      "guard": "Reception does not rewrite the source work's original wording.",
+      "reversible": "yes",
+      "public_use": "works / culture"
+    },
+    {
+      "id": "if-house-systems",
+      "from": "house-architecture",
+      "to": "systems-dynamics",
+      "type": "architecture-formalization",
+      "changes": "House architecture candidates are translated into systems, graph, control or information models for stress testing.",
+      "preserves": [
+        "architectural question",
+        "candidate status",
+        "failure cases"
+      ],
+      "guard": "A formal analogy remains research until constitution/governance promotion.",
+      "reversible": "yes",
+      "public_use": "house / research-lab"
+    },
+    {
+      "id": "if-research-world",
+      "from": "research-programmes",
+      "to": "infrastructure-capability",
+      "type": "programme-application",
+      "changes": "A research programme consumes world-system inputs and produces analyses or proposed outputs.",
+      "preserves": [
+        "Room ownership",
+        "source lineage",
+        "scenario status"
+      ],
+      "guard": "Programme coordination never steals identity/fact ownership from World Systems.",
+      "reversible": "yes",
+      "public_use": "north / world-systems"
+    },
+    {
+      "id": "if-practice-culture",
+      "from": "practice-ethics",
+      "to": "subculture-group-formation",
+      "type": "ethics-to-social",
+      "changes": "Project ethics are tested against group formation, agency, boundary and repair questions.",
+      "preserves": [
+        "ethical claim as project philosophy",
+        "documented social facts"
+      ],
+      "guard": "Ethical evaluation must not substitute for sourced description of real groups.",
+      "reversible": "yes",
+      "public_use": "philosophy / culture"
+    }
+  ]
+}
