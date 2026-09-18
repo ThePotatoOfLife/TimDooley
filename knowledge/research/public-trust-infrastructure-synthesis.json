@@ -1,7 +1,7 @@
 {
   "id": "public-trust-infrastructure-synthesis",
   "title": "Four Public Trust Infrastructures — Money, Knowledge, Science and Humanitarian Access",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "status": "E2 strong structural synthesis with E3 research questions",
   "purpose": "Crystallize the first cross-domain use of the entity dossier system by comparing four institutions whose outputs depend on sustained public/stakeholder trust but whose trust objects differ.",
@@ -75,5 +75,17 @@
     "data/house/entity-dossiers-wave-001.json",
     "knowledge/research/concrete-revelations-wave-006.json",
     "knowledge/research/rare-value-undiscovered-knowledge-protocol.json"
-  ]
+  ],
+  "instrumentation_update": {
+    "status": "implemented in entity dossier wave 001",
+    "contract": "data/house/entity-dossier-schema.json",
+    "audit": "knowledge/research/element-materialization-audit-2026-09-18.json",
+    "added_dimensions": [
+      "scale",
+      "reproduction/correction",
+      "visibility/access",
+      "longitudinal indicators"
+    ],
+    "interpretation_rule": "Observed changes remain descriptive unless separate evidence supports a causal claim."
+  }
 }
