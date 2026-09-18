@@ -9,17 +9,18 @@ PLACEMENT=ROOT/'data/house/foundation-placement-wave-003.json'
 CONTRACT=ROOT/'data/house/foundation-axis-placement-contract.json'
 TIMELINE=ROOT/'timeline/foundations/index.html'
 SYNTH=ROOT/'data/house/project-synthesis.json'
+LANDSCAPE=ROOT/'data/house/foundation-landscape-synthesis.json'
 
 def load(p): return json.loads(p.read_text(encoding='utf-8'))
 
 def main():
     errors=[]
-    for p in (WAVE,PLACEMENT,CONTRACT,TIMELINE,SYNTH):
+    for p in (WAVE,PLACEMENT,CONTRACT,TIMELINE,SYNTH,LANDSCAPE):
         if not p.is_file(): errors.append(f'missing {p.relative_to(ROOT)}')
     if errors:
         print('\n'.join(errors)); raise SystemExit(1)
 
-    wave=load(WAVE); placement=load(PLACEMENT); contract=load(CONTRACT); synth=load(SYNTH)
+    wave=load(WAVE); placement=load(PLACEMENT); contract=load(CONTRACT); synth=load(SYNTH); landscape=load(LANDSCAPE)
     ids={x.get('id') for x in wave.get('records',[])}
     pids={x.get('foundation_id') for x in placement.get('records',[])}
     if ids!=pids:
@@ -46,6 +47,12 @@ def main():
 
     if synth.get('foundation_seed_genealogy',{}).get('current_population')!=52:
         errors.append('project synthesis Foundation population must be 52')
+    if landscape.get('population')!=52:
+        errors.append('Foundation landscape population must be 52')
+    archetypes=[x.get('id') for x in landscape.get('trajectory_archetypes',[]) if isinstance(x,dict)]
+    expected_archetypes=['crisis-to-law','loss-to-portable-community','need-to-mutual-aid','experiment-to-method','fragmentation-to-standard','manifesto-to-movement','migration-to-community','venture-to-platform','inquiry-to-school']
+    if archetypes!=expected_archetypes:
+        errors.append('Foundation landscape trajectory archetypes drifted')
 
     text=TIMELINE.read_text(encoding='utf-8',errors='replace')
     for marker in ('foundation-placement-wave-003.json','stage-path','status-chip'):
