@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-18",
   "authority": "house-structural-role-census",
   "purpose": "Inventory important project structures by architectural role without turning every recurring topic into another containment level.",
@@ -77,6 +77,12 @@
       "ownership_effect": "none"
     },
     {
+      "id": "bridge",
+      "question": "What connection creates new usable capability across an existing separation?",
+      "test": "A durable cross-boundary relation that makes previously difficult/impossible exchange, translation or traversal possible.",
+      "ownership_effect": "none; connective capability only"
+    },
+    {
       "id": "gate",
       "question": "What controls entry to a broader domain?",
       "test": "Perimeter access/navigation boundary.",
@@ -111,6 +117,12 @@
       "question": "What cross-cutting invariant repeatedly supports many spaces?",
       "test": "Rule/service that spans several Dwellings without owning them.",
       "ownership_effect": "cross-cutting service"
+    },
+    {
+      "id": "protocol",
+      "question": "What shared grammar/rules let different nodes interoperate without becoming identical?",
+      "test": "Explicit shared conventions for meaning, evidence, data, passage, standards or exchange among heterogeneous participants.",
+      "ownership_effect": "none; coordination grammar only"
     },
     {
       "id": "state",
@@ -1130,6 +1142,102 @@
         "world-map"
       ],
       "note": "Observable dependency/flow chains across World Systems; route semantics are distinct from ownership."
+    },
+    {
+      "id": "bridge-global-graph",
+      "title": "Global graph bridge",
+      "roles": [
+        "bridge"
+      ],
+      "status": "active",
+      "sources": [
+        "data/global-graph-bridge.json"
+      ],
+      "public_surfaces": [
+        "explore"
+      ],
+      "note": "Connects graph/atlas structures across otherwise separated data surfaces."
+    },
+    {
+      "id": "bridge-frontend-atlas",
+      "title": "Frontend ↔ Atlas bridge",
+      "roles": [
+        "bridge"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/frontend-atlas-bridge.json"
+      ],
+      "public_surfaces": [
+        "house",
+        "explore"
+      ],
+      "note": "Connects canonical backend families to replaceable public routes without transferring ownership."
+    },
+    {
+      "id": "bridge-interpretive-justice",
+      "title": "Interpretive Justice bridge",
+      "roles": [
+        "bridge"
+      ],
+      "status": "active",
+      "sources": [
+        "knowledge/philosophy/information-war-interpretive-justice-bridge.json"
+      ],
+      "public_surfaces": [
+        "interpretive-justice",
+        "context"
+      ],
+      "note": "Connects information-war analysis to source-aware interpretive-justice rules while preserving evidence boundaries."
+    },
+    {
+      "id": "protocol-model-testing",
+      "title": "Model testing protocol",
+      "roles": [
+        "protocol"
+      ],
+      "status": "canonical",
+      "sources": [
+        "knowledge/science/model-testing-protocol.json"
+      ],
+      "public_surfaces": [
+        "science",
+        "research-lab"
+      ],
+      "note": "Shared rules for observables, falsifiers, uncertainty and test discipline."
+    },
+    {
+      "id": "protocol-recursive-expansion",
+      "title": "Recursive expansion protocol",
+      "roles": [
+        "protocol"
+      ],
+      "status": "active",
+      "sources": [
+        "docs/RECURSIVE-EXPANSION-PROTOCOL.md"
+      ],
+      "public_surfaces": [
+        "research-lab"
+      ],
+      "note": "Shared rules for expanding the project without losing provenance, ownership or structural integrity."
+    },
+    {
+      "id": "protocol-north-gate",
+      "title": "North Gate semantic protocol",
+      "roles": [
+        "protocol",
+        "gate"
+      ],
+      "status": "project-canon",
+      "sources": [
+        "knowledge/core/new-jerusalem-network-civilization-atlas.json",
+        "knowledge/core/door-topology-access-and-capability-atlas.json"
+      ],
+      "public_surfaces": [
+        "north",
+        "house"
+      ],
+      "note": "Project-symbolic interoperability grammar: enough shared meaning/evidence/language for heterogeneous nodes to communicate without collapsing."
     }
   ],
   "unresolved_candidates": [
