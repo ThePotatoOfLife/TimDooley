@@ -1,0 +1,186 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "lower-plane-population-atlas",
+  "purpose": "Concrete population projection for the Below Platform. This is a navigational/intelligence View over canonical domain records, never a guilt list.",
+  "placement_rule": "Place subjects below-facing when the research question is primarily about hidden provenance, restricted information, clandestine/illicit coordination, coercive reproduction, buried evidence, blocked accountability or investigative repair. The same entity can appear elsewhere under a different View.",
+  "platform": {
+    "id": "below-intelligence-platform",
+    "parent_geometry": "manifestation-field / lower-facing projection",
+    "standing_plane": "below-plane",
+    "terrains": [
+      "roots",
+      "shadow",
+      "swamp"
+    ],
+    "process": [
+      "forge"
+    ],
+    "organisms": [
+      "tree-of-knowledge",
+      "tree-of-strife",
+      "living-root"
+    ],
+    "routes": [
+      "descent",
+      "investigation",
+      "repair-spiral",
+      "return"
+    ],
+    "center_question": "What is beneath the visible account, how is it known, what reproduces there, and what must happen before it should be trusted or returned upward?"
+  },
+  "zones": [
+    {
+      "id": "intelligence-desk",
+      "label": "Intelligence Desk",
+      "population": [
+        "public intelligence/security agencies",
+        "law-enforcement intelligence",
+        "threat-assessment institutions",
+        "OSINT/investigative analysis"
+      ],
+      "owner_files": [
+        "data/security-intelligence-organizations.json",
+        "data/security-intelligence-country-layer.json"
+      ]
+    },
+    {
+      "id": "organized-crime-desk",
+      "label": "Organized Crime & Gang Desk",
+      "population": [
+        "organized criminal networks",
+        "street/prison gangs",
+        "fraud/extortion networks"
+      ],
+      "owner_files": [
+        "data/extremism-cults-atlas-2026-09.json",
+        "data/extremism-terrorism-nrm-expansion.json"
+      ]
+    },
+    {
+      "id": "exploitation-desk",
+      "label": "Trafficking & Exploitation Desk",
+      "population": [
+        "human trafficking",
+        "forced labour",
+        "sexual exploitation",
+        "facilitation/protection failures"
+      ],
+      "owner_files": [
+        "knowledge/world/institutional-protection-private-intelligence-atlas.json"
+      ]
+    },
+    {
+      "id": "illicit-markets-desk",
+      "label": "Illicit Markets Desk",
+      "population": [
+        "drug trafficking",
+        "smuggling",
+        "illicit marketplaces",
+        "money laundering"
+      ],
+      "owner_files": [
+        "data/swamp-research-seeds.json",
+        "data/blueprints/finance-debt-blueprint.json"
+      ]
+    },
+    {
+      "id": "extremism-desk",
+      "label": "Extremism & Terrorism Desk",
+      "population": [
+        "designated terrorist groups",
+        "violent extremist networks",
+        "armed ideological movements"
+      ],
+      "owner_files": [
+        "data/extremism-terrorism-nrm-expansion.json",
+        "data/extremism-cults-atlas-2026-09.json"
+      ]
+    },
+    {
+      "id": "high-control-desk",
+      "label": "High-Control & Hate Desk",
+      "population": [
+        "hate-group classifications",
+        "high-control movements",
+        "destructive cult-studies cases"
+      ],
+      "owner_files": [
+        "data/extremism-cults-atlas-2026-09.json",
+        "knowledge/world/farm-shadow-source-ledger.json"
+      ]
+    },
+    {
+      "id": "digital-underground-desk",
+      "label": "Digital Underground Desk",
+      "population": [
+        "harassment networks",
+        "anonymous subcultures",
+        "fraud/radicalization forums",
+        "archive ecosystems"
+      ],
+      "owner_files": [
+        "data/digital-underground-networks.json"
+      ]
+    },
+    {
+      "id": "private-intelligence-desk",
+      "label": "Private Intelligence & Surveillance Desk",
+      "population": [
+        "private investigators",
+        "intelligence firms",
+        "surveillance/forensics vendors",
+        "reputation/security services"
+      ],
+      "owner_files": [
+        "knowledge/world/institutional-protection-private-intelligence-atlas.json"
+      ]
+    },
+    {
+      "id": "forge-casework",
+      "label": "Forge / Casework",
+      "population": [
+        "evidence triage",
+        "counterevidence",
+        "legal status",
+        "classification review",
+        "relationship verification",
+        "repair/disruption outcomes"
+      ],
+      "owner_files": [
+        "knowledge/core/shadow-west-swamp-synthesis.json",
+        "knowledge/philosophy/archive-epistemics.json"
+      ]
+    }
+  ],
+  "evidence_ladder": [
+    "public institutional fact",
+    "primary record",
+    "credible independent corroboration",
+    "official investigation",
+    "charge",
+    "adjudicated finding",
+    "conviction/designation",
+    "interpretation",
+    "hypothesis"
+  ],
+  "non_inference_rules": [
+    "An intelligence/security agency is not placed in Swamp merely because it is secretive.",
+    "A person is not a member of a gang/cult/extremist group without documented evidence.",
+    "Being named in a document, contact list or archive is not participation or guilt.",
+    "A designation/classification must name the issuing body and date.",
+    "Historical status must not be silently presented as current.",
+    "No tactical instructions, evasion guidance, target selection or private identifying data."
+  ],
+  "foundation_questions": [
+    "Who/what founded the organization or network?",
+    "Was foundation legal, ideological, social, market-based or clandestine?",
+    "What rules/norms make membership intelligible?",
+    "How are people recruited, initiated, credentialed or trusted?",
+    "What material resources sustain it?",
+    "How is discipline/enforcement maintained?",
+    "How does succession or fragmentation work?",
+    "What rebrands/refoundations followed disruption?",
+    "What institutions investigate, constrain or repair it?"
+  ]
+}
