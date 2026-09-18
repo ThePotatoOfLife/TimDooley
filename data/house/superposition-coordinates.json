@@ -1,0 +1,288 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "superposition-coordinate-model",
+  "purpose": "Give the Potato House one simple coordinate grammar capable of superposing planes, Rooms, routes, organisms, comparative structures and temporal development without flattening them into one tradition.",
+  "global_rule": "Every navigable state can be described by four questions: how high/deep, how inward/outward, which subject direction, and how its state changes through recurrence.",
+  "coordinates": [
+    {
+      "id": "vertical",
+      "label": "Up / Down",
+      "symbol": "z",
+      "question": "Which plane or depth am I in?",
+      "positive": "up / Heaven-facing integration",
+      "zero": "World / visible Plane",
+      "negative": "down / Below-facing roots, burial, residue and repair",
+      "anchors": {
+        "positive": [
+          "garden",
+          "house",
+          "crown-north",
+          "canopy",
+          "mountain-summit",
+          "orchard"
+        ],
+        "zero": [
+          "crossroads",
+          "living-trunk",
+          "body-lab",
+          "civic-field",
+          "culture-square",
+          "history-road",
+          "research-workshop",
+          "world-gates"
+        ],
+        "negative": [
+          "root-archive",
+          "seed-bed",
+          "ash-mud",
+          "shadow-gallery",
+          "wide-road",
+          "swamp",
+          "forge",
+          "underworld-caverns"
+        ]
+      },
+      "boundary": "Vertical position is not moral worth or truth rank."
+    },
+    {
+      "id": "radial",
+      "label": "Inside / Outside",
+      "symbol": "r",
+      "question": "Is this relation moving toward integration/centered belonging or outward dispersion/capture?",
+      "inward": "inside / House / Garden / integrated center",
+      "middle": "Door / Room boundary / negotiated relation",
+      "outward": "outside / Wide Road / dispersion / external field",
+      "anchors": {
+        "inward": [
+          "house",
+          "garden",
+          "crossroads",
+          "living-trunk"
+        ],
+        "middle": [
+          "world-gates",
+          "door",
+          "forge"
+        ],
+        "outward": [
+          "wide-road",
+          "swamp",
+          "external networks"
+        ]
+      },
+      "boundary": "Outside is not evil. Exteriority enables exchange, travel, plurality and return; Wide Road names unintegrated dispersion, not all outward movement."
+    },
+    {
+      "id": "angular",
+      "label": "Around / Direction",
+      "symbol": "θ",
+      "question": "Which subject family or Room am I facing?",
+      "model": "eight-direction compass",
+      "rule": "Direction changes topic/owner while preserving plane and radial state.",
+      "examples": [
+        "Canon",
+        "Traditions",
+        "Science",
+        "Life & Body",
+        "World Systems",
+        "Culture & Information",
+        "Time & History",
+        "Archive & Sources"
+      ],
+      "boundary": "Angular direction is classification/navigation, not cosmic hierarchy."
+    },
+    {
+      "id": "temporal",
+      "label": "Spiral / Recurrence",
+      "symbol": "t + Δstate",
+      "question": "What changed this cycle besides elapsed time?",
+      "positive": "learning/ascent/sprouting/integration",
+      "zero": "ring/cycle with little net state change",
+      "negative": "descent/rooting/burial or degrading recurrence depending context",
+      "boundary": "Spiral direction requires named state variables; clockwise/counter-clockwise alone carries no universal moral meaning."
+    }
+  ],
+  "derived_structures": [
+    {
+      "id": "axis",
+      "kind": "orientation-line",
+      "definition": "Global z-reference through the House.",
+      "coordinate_use": [
+        "vertical"
+      ],
+      "meaning": "Keeps up/down relation stable while Rooms and local centers change."
+    },
+    {
+      "id": "ladder",
+      "kind": "discrete-transition-sequence",
+      "definition": "A sequence of guarded Doors ordered mainly along vertical change.",
+      "coordinate_use": [
+        "vertical",
+        "temporal"
+      ],
+      "meaning": "Discrete ascent/descent through thresholds."
+    },
+    {
+      "id": "mountain",
+      "kind": "continuous-gradient",
+      "definition": "Continuous increase in integration/perspective toward an upper coordination point.",
+      "coordinate_use": [
+        "vertical",
+        "radial"
+      ],
+      "meaning": "Gradient rather than rung sequence."
+    },
+    {
+      "id": "tree",
+      "kind": "branching-organism",
+      "definition": "Rooted vertical organism whose branching introduces angular differentiation and whose Fruit returns as Seed.",
+      "coordinate_use": [
+        "vertical",
+        "angular",
+        "temporal"
+      ],
+      "meaning": "Roots below, trunk through World, canopy/fruit above, with branches differentiating into Rooms/functions."
+    },
+    {
+      "id": "root",
+      "kind": "buried-support-network",
+      "definition": "Lower branching that acquires resources/provenance and carries memory/cause beneath visible structure.",
+      "coordinate_use": [
+        "vertical",
+        "angular"
+      ],
+      "meaning": "Depth and distribution beneath visible life."
+    },
+    {
+      "id": "sprout",
+      "kind": "emergence-transition",
+      "definition": "Seed crosses a developmental threshold from buried/dormant potential into visible growth.",
+      "coordinate_use": [
+        "vertical",
+        "temporal"
+      ],
+      "meaning": "A Door event from Below toward World."
+    },
+    {
+      "id": "branch",
+      "kind": "differentiation-path",
+      "definition": "A specialized directional extension from trunk/core.",
+      "coordinate_use": [
+        "angular",
+        "temporal"
+      ],
+      "meaning": "New Room/function only when specialization earns distinct ownership."
+    },
+    {
+      "id": "wheel",
+      "kind": "coordinated-cycle",
+      "definition": "Multiple functions or practices arranged around a center, returning cyclically without requiring vertical displacement.",
+      "coordinate_use": [
+        "angular",
+        "temporal"
+      ],
+      "meaning": "Coordination around center."
+    },
+    {
+      "id": "spiral",
+      "kind": "cycle-with-displacement",
+      "definition": "Wheel/ring recurrence plus measurable state displacement.",
+      "coordinate_use": [
+        "angular",
+        "temporal",
+        "vertical",
+        "radial"
+      ],
+      "meaning": "Repeated passage that changes level, integration or capability."
+    },
+    {
+      "id": "fibonacci-log-spiral",
+      "kind": "mathematical-comparator",
+      "definition": "A logarithmic/growth-spiral comparator in which scale changes continuously with angle; Fibonacci/golden-ratio constructions are special approximations/relationships, not the definition of all natural spirals.",
+      "coordinate_use": [
+        "angular",
+        "radial",
+        "temporal"
+      ],
+      "meaning": "Useful for visualizing proportional growth and self-similar scaling across turns.",
+      "boundary": "Do not claim plants, galaxies, shells or the Potato House universally obey Fibonacci/golden-ratio geometry."
+    },
+    {
+      "id": "dao-circulation",
+      "kind": "comparative-process-lens",
+      "definition": "Comparative reminder that coordinated change can be cyclical, relational and nonmoral rather than simple upward victory/downward failure.",
+      "coordinate_use": [
+        "temporal",
+        "radial"
+      ],
+      "meaning": "Flow, complementarity and return can cross inward/outward and up/down without collapsing into a single moral axis.",
+      "boundary": "Daoism remains its own philosophical/religious tradition; this is a bounded process comparison."
+    }
+  ],
+  "inhabitants": {
+    "angels": {
+      "default_vector": "upper ↔ world",
+      "rule": "Angels/messengers usually project between Heaven-facing and World-facing zones because their source traditions assign celestial/messenger roles; texts, appearances and reception remain World-owned.",
+      "likely_spaces": [
+        "crown-north",
+        "house",
+        "world-gates",
+        "culture-square"
+      ],
+      "boundary": "Not every helpful person or upward symbol is an angel."
+    },
+    "demons": {
+      "default_vector": "below ↔ world",
+      "rule": "Demon/adversarial figures generally project between Below-facing and World-facing zones when their own traditions locate them in adversarial, underworld or harmful-spirit roles.",
+      "likely_spaces": [
+        "underworld-caverns",
+        "shadow-gallery",
+        "culture-square",
+        "world-gates"
+      ],
+      "boundary": "Do not infer literal demonic identity for people, groups, subcultures or disliked religions."
+    },
+    "spirits": {
+      "default_vector": "crosscutting",
+      "rule": "Tradition-specific spirits may inhabit upper, world or lower zones depending on their own source tradition; Spirit as Potatoverse relation is a crosscutting function rather than an inhabitant.",
+      "likely_spaces": [
+        "world-gates",
+        "living-trunk",
+        "canopy",
+        "underworld-caverns"
+      ]
+    },
+    "gods": {
+      "default_vector": "upper ↔ world with tradition-specific exceptions",
+      "rule": "Divine figures usually project upper/world through theology, cult, text and institution; chthonic/death aspects may also project Below.",
+      "likely_spaces": [
+        "house",
+        "crown-north",
+        "mountain-summit",
+        "culture-square",
+        "underworld-caverns"
+      ]
+    }
+  },
+  "center_everywhere": {
+    "formula": "local center = governing question + active inputs + tests + available Doors + handoff/return",
+    "rule": "The center is repeated functionally at every meaningful Room/process junction. It is not a duplicated Potato. It is the local place where orientation and transition become actionable.",
+    "process_examples": [
+      "Seed Bed center: Is this potential viable, dormant, damaged or ready to sprout?",
+      "Culture Square center: What norm/identity/information process is forming here and what are its correction/exit conditions?",
+      "Forge center: What evidence, responsibility and redesign are required to prevent recurrence?",
+      "Garden center: What conditions increase independent future capacity?",
+      "History Road center: What changed between occurrence, source, interpretation and current canon?",
+      "World Gate center: What state/capability changes if this Door is crossed?"
+    ]
+  },
+  "simple_reader_model": [
+    "1. Stand somewhere: Heaven, World or Below.",
+    "2. Ask whether the movement is inward/integrating, boundary-crossing, or outward/dispersing.",
+    "3. Turn toward a Room/subject direction.",
+    "4. Follow the relevant structure: Root, Tree, Road, Wheel, Ladder, Mountain, Spiral or Door.",
+    "5. At every junction, use the local center question and tests.",
+    "6. Evaluate Fruit and either return, revise, repair or reseed."
+  ]
+}
