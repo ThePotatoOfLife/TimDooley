@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "authority": "house-architectural-vocabulary",
   "purpose": "Distinguish biblical/project architectural metaphors by function and scale so House, Dwelling/Mansion, Room, Chamber, Court, Gate, Door, Temple, City, Body, Garden and other images can cooperate without collapsing into one filing metaphor.",
@@ -63,6 +63,12 @@
         "project_use": "Public hub/common comparison space where several Rooms meet without transferring ownership."
       },
       {
+        "id": "bridge",
+        "label": "Bridge",
+        "function": "Connection that creates usable capability across an existing separation.",
+        "project_use": "Cross-Room/system translation or infrastructure that preserves endpoint identity while enabling traversal/exchange."
+      },
+      {
         "id": "gate",
         "label": "Gate",
         "function": "Perimeter access regime controlling entry to a larger domain, city, garden or compound.",
@@ -85,6 +91,12 @@
         "label": "Ladder / Stair",
         "function": "Ordered sequence of distinct thresholds allowing vertical or staged traversal.",
         "project_use": "Living Axis ordered transformation path."
+      },
+      {
+        "id": "protocol",
+        "label": "Protocol",
+        "function": "Shared grammar/rules that let heterogeneous nodes interoperate without becoming identical.",
+        "project_use": "Evidence classes, standards, APIs, translation rules and semantic passage conditions."
       }
     ],
     "structural_support": [
@@ -326,6 +338,8 @@
     "Use City and Body as alternate integrated-plurality Views, not replacements for House ownership.",
     "Use Field/Vineyard/Garden for work and stewardship regimes, not as aliases for folders.",
     "Use Foundation/Cornerstone/Pillar for support/alignment/invariant functions, not status rank.",
-    "Use Treasury for stored capability and Archive for preserved provenance; do not collapse them."
+    "Use Treasury for stored capability and Archive for preserved provenance; do not collapse them.",
+    "Use Road for a traversable relation, Bridge when the connection creates new capability across separation, Gate for perimeter admission, and Door for guarded state/context change.",
+    "Use Protocol for shared interoperability grammar; it must not become a hidden owner or compulsory monopoly."
   ]
 }
