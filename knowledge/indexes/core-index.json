@@ -1,5 +1,5 @@
 {
-  "version": "4.9.0",
+  "version": "5.0.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -1013,7 +1013,7 @@
       "id": "house-subrooms",
       "path": "data/house/subrooms.json",
       "branch": "root",
-      "kind": "nested bounded-context registry beneath the ten canonical Rooms",
+      "kind": "nested bounded-context registry beneath the ten canonical top-level Dwellings",
       "terms": [
         "nested Room",
         "subcontext",
@@ -1021,7 +1021,9 @@
         "adjacency",
         "topology profile",
         "interface",
-        "House directions"
+        "House directions",
+        "Dwelling",
+        "public scale"
       ]
     },
     {
@@ -1322,7 +1324,7 @@
       ]
     },
     {
-      "question": "How are nested Rooms positioned in the House?",
+      "question": "How are Dwellings and nested Rooms positioned in the House?",
       "records": [
         "potato-house-constitution",
         "house-rooms",
