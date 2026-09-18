@@ -1,5 +1,5 @@
 {
-  "version": "1.6.0",
+  "version": "1.5.0",
   "updated": "2026-09-18",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
@@ -484,6 +484,25 @@
       "legacy_routes": [
         "/religion/jesus-tim/"
       ]
+    },
+    {
+      "id": "trinity",
+      "route": "/religion/trinity/",
+      "canonical_route": "/religion/trinity/",
+      "surface_type": "guide",
+      "title": "Potato of Life Trinity",
+      "primary_parent": "religion",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "archive-sources"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
     },
     {
       "id": "culture",
