@@ -10,6 +10,7 @@ TOPOLOGY=ROOT/'knowledge/research/potato-house-master/public-route-topology.json
 HOUSE_TOPOLOGY=ROOT/'data/house/topology.json'
 PROJECT_CENTER=ROOT/'data/house/project-center.json'
 CROSSCUTTING_LENSES=ROOT/'data/house/crosscutting-lenses.json'
+LIVING_PROJECT_MAP=ROOT/'data/house/living-project-map.json'
 POTATO_CENTER_PAGE=ROOT/'potato-of-life/index.html'
 ORIENTATION_POPULATION=ROOT/'data/house/orientation-population.json'
 TREE_PLANE_ROUTING=ROOT/'data/house/tree-plane-routing.json'
@@ -622,6 +623,43 @@ def validate_crosscutting_lenses(errors):
         page=POTATO_CENTER_PAGE.read_text(encoding='utf-8',errors='replace')
         for marker in ('id="definition"','id="literal-potato"','id="structure"','id="metabolism"','id="lenses"','id="rooms"'):
             if marker not in page: errors.append(f'Potato center reader missing {marker}')
+
+
+def validate_living_project_map(errors):
+    data=load(LIVING_PROJECT_MAP,errors)
+    if not data: return
+    systems=[x for x in data.get('systems',[]) if isinstance(x,dict)]
+    ids=[x.get('id') for x in systems]
+    expected=['organism','spirit-relation','memory-history','culture-formation']
+    if ids!=expected: errors.append('living project system set/order drifted')
+    room_data=load(SUBROOMS,errors)
+    room_ids={x.get('id') for x in room_data.get('subrooms',[]) if isinstance(x,dict)}
+    parent_rooms={'potatoverse-canon','archive-sources','time-history','traditions-texts','science-formal-models','life-body','world-systems','culture-information','works','research-lab'}
+    for row in systems:
+        sid=row.get('id')
+        for rid in row.get('subroom_ids',[])+row.get('crossing_subroom_ids',[]):
+            if rid not in room_ids: errors.append(f'living project {sid} unknown subroom {rid}')
+        for rid in row.get('primary_room_ids',[]):
+            if rid not in parent_rooms: errors.append(f'living project {sid} unknown primary Room {rid}')
+    spirit=next((x for x in systems if x.get('id')=='spirit-relation'),{})
+    if spirit.get('primary_room_ids')!=['potatoverse-canon']:
+        errors.append('Spirit must remain center-native project canon relation, not a new Room owner')
+    anti=' '.join(data.get('anti_redundancy',[])).casefold()
+    for token in ('do not create a spirit room','do not create a memory realm','do not make culture synonymous with strife','do not turn body metaphors into anatomy'):
+        if token not in anti: errors.append(f'living project missing anti-redundancy rule: {token}')
+    routes=data.get('public_routes',{})
+    required_routes={
+        'center':'potato-of-life/',
+        'organism':'life-body/',
+        'spirit':'potato-of-life/spirit/',
+        'memory':'history/',
+        'culture':'context/culture/',
+        'research':'research-lab/'
+    }
+    if routes!=required_routes: errors.append('living project public routes drifted')
+    for rel in required_routes.values():
+        p=ROOT/rel/'index.html' if rel.endswith('/') else ROOT/rel
+        if not p.is_file(): errors.append(f'living project public route missing: {rel}')
 
 def main():
     errors=[]
