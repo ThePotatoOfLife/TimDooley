@@ -7,6 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 GEN=ROOT/'data/house/foundation-door-seed-genealogy.json'
 F1=ROOT/'data/house/foundations-wave-001.json'
 F2=ROOT/'data/house/foundations-wave-002.json'
+F3=ROOT/'data/house/foundations-wave-003.json'
 SYNTH=ROOT/'data/house/project-synthesis.json'
 PAGE=ROOT/'timeline/foundations/index.html'
 
@@ -14,12 +15,12 @@ def load(p): return json.loads(p.read_text(encoding='utf-8'))
 
 def main():
     errors=[]
-    for p in (GEN,F1,F2,SYNTH,PAGE):
+    for p in (GEN,F1,F2,F3,SYNTH,PAGE):
         if not p.is_file(): errors.append(f'missing {p.relative_to(ROOT)}')
     if errors:
         print('\n'.join(errors)); raise SystemExit(1)
-    gen=load(GEN); f1=load(F1); f2=load(F2); synth=load(SYNTH)
-    source_ids={x.get('id') for x in [*(f1.get('records') or []),*(f2.get('records') or [])]}
+    gen=load(GEN); f1=load(F1); f2=load(F2); f3=load(F3); synth=load(SYNTH)
+    source_ids={x.get('id') for x in [*(f1.get('records') or []),*(f2.get('records') or []),*(f3.get('records') or [])]}
     rows=gen.get('records') or []
     if len(rows)!=len(source_ids):
         errors.append(f'genealogy population {len(rows)} != Foundation population {len(source_ids)}')
