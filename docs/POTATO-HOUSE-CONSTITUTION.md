@@ -581,4 +581,4 @@ A **collection** assembles holdings from several owners for reading, interpretat
 
 Every active nested Room should expose at least one substantive holding. A broad directory may be used as a classification pool, but it must not make every Room that references the directory a co-owner of every file beneath it.
 
-The canonical file-level ownership ledger is `data/house/holdings.json`; curated cross-Room collections are registered in `data/house/collections.json`.
+The canonical file-level ownership ledger is `data/house/holdings.json`; curated cross-Room collections are registered in `data/house/collections.json`. Grouped backend datasets, ledgers, registries and contracts are owned through `data/house/data-holdings.json`; runtime/render/config files may remain deliberately unbundled when they are implementation rather than knowledge.
