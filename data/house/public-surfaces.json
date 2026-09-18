@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "updated": "2026-09-18",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
@@ -38,6 +38,26 @@
       "legacy_routes": [
         "/learn/"
       ]
+    },
+    {
+      "id": "potato-of-life",
+      "route": "/potato-of-life/",
+      "canonical_route": "/potato-of-life/",
+      "surface_type": "guide",
+      "title": "Potato of Life",
+      "primary_parent": "home",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "life-body",
+        "traditions-texts",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
     },
     {
       "id": "tim",
