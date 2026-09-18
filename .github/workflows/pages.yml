@@ -145,6 +145,12 @@ jobs:
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
 
+      - name: Validate public House style ownership
+        run: python scripts/validate_public_house_styles.py
+
+      - name: Validate House accessibility and responsive contracts
+        run: python scripts/validate_house_accessibility.py
+
       - name: Remove internal archive from Pages artifact
         run: rm -rf _site/archive && test ! -e _site/archive
 
