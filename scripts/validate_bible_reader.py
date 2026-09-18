@@ -14,6 +14,8 @@ PAGE = ROOT / "traditions" / "bible" / "index.html"
 APP = ROOT / "app" / "bible-study.js"
 CSS = ROOT / "app" / "bible-study.css"
 ATLAS_CSS = ROOT / "app" / "bible-atlas-navigation.css"
+LIBRARY_CSS = ROOT / "app" / "bible-library.css"
+LIBRARY_APP = ROOT / "app" / "bible-library.js"
 CORPUS_APP = ROOT / "app" / "bible-corpus-loader.js"
 REDIRECT_APP = ROOT / "app" / "bible-relation-redirects.js"
 TTS_ADAPTER = ROOT / "app" / "bible-tts-adapter.js"
@@ -39,6 +41,9 @@ CORPUS_PY = ROOT / "scripts" / "bible_corpus.py"
 CORPUS_TEST = ROOT / "scripts" / "test_bible_corpus.py"
 PARITY_CHECK = ROOT / "scripts" / "check_bible_static_dynamic_parity.py"
 SCENE_CHECK = ROOT / "scripts" / "check_biblical_scenes.py"
+CHRISTIANITY_INDEX = ROOT / "data" / "christianity" / "index.json"
+KJV_CATALOG = ROOT / "data" / "christianity" / "bible-kjv.json"
+WEB_BOOK_INDEX = ROOT / "data" / "sources" / "bible-web-book-index.json"
 
 
 def require(text: str, markers: tuple[str, ...], owner: str, errors: list[str]) -> None:
@@ -56,11 +61,11 @@ def forbid(text: str, markers: tuple[str, ...], owner: str, errors: list[str]) -
 def main() -> int:
     errors: list[str] = []
     required_paths = (
-        PAGE, APP, CSS, ATLAS_CSS, CORPUS_APP, REDIRECT_APP, TTS_ADAPTER, ATLAS_APP, ATLAS_UI,
+        PAGE, APP, CSS, ATLAS_CSS, LIBRARY_CSS, LIBRARY_APP, CORPUS_APP, REDIRECT_APP, TTS_ADAPTER, ATLAS_APP, ATLAS_UI,
         DOSSIER_APP, MINING_APP, DOSSIER_CSS, FIELD, MANIFEST, REDIRECTS, SCENES,
         SCENES_MAJOR, SCENE_LINKS, DOSSIERS, PROMOTIONS, MINING_DOSSIERS,
         MINING_OWNER, DOSSIER_FRAGMENTS, MINING_FRAGMENTS, BUILDER,
-        CORPUS_PY, CORPUS_TEST, PARITY_CHECK, SCENE_CHECK,
+        CORPUS_PY, CORPUS_TEST, PARITY_CHECK, SCENE_CHECK, CHRISTIANITY_INDEX, KJV_CATALOG, WEB_BOOK_INDEX,
     )
     for path in required_paths:
         if not path.exists():
@@ -70,6 +75,8 @@ def main() -> int:
     app = APP.read_text(encoding="utf-8") if APP.exists() else ""
     css = CSS.read_text(encoding="utf-8") if CSS.exists() else ""
     atlas_css = ATLAS_CSS.read_text(encoding="utf-8") if ATLAS_CSS.exists() else ""
+    library_css = LIBRARY_CSS.read_text(encoding="utf-8") if LIBRARY_CSS.exists() else ""
+    library_app = LIBRARY_APP.read_text(encoding="utf-8") if LIBRARY_APP.exists() else ""
     corpus_app = CORPUS_APP.read_text(encoding="utf-8") if CORPUS_APP.exists() else ""
     redirect_app = REDIRECT_APP.read_text(encoding="utf-8") if REDIRECT_APP.exists() else ""
     tts_adapter = TTS_ADAPTER.read_text(encoding="utf-8") if TTS_ADAPTER.exists() else ""
@@ -84,6 +91,7 @@ def main() -> int:
         page,
         (
             'href="../../app/bible-study.css"',
+            'href="../../app/bible-library.css"',
             'href="../../app/bible-atlas-navigation.css"',
             'href="../../app/bible-dossier-loader.css"',
             'src="../../app/bible-corpus-loader.js"',
@@ -94,7 +102,14 @@ def main() -> int:
             'src="../../app/bible-study.js"',
             'src="../../app/bible-tts-adapter.js"',
             'src="../../app/bible-atlas-ui.js"',
+            'src="../../app/bible-scripture-reader.js"',
+            'src="../../app/bible-library.js"',
             'id="bible-tts-drawer"',
+            'id="bible-library"',
+            'id="bible-library-groups"',
+            'id="bible-book-grid"',
+            'id="bible-library-reader"',
+            'id="bible-reference-form"',
             'id="atlas-explorer"',
             'id="atlas-routes"',
             'id="atlas-topics"',
@@ -123,6 +138,8 @@ def main() -> int:
         errors.append("traditions/bible/index.html: mining layer must load before dossier decorator so mergedRows sees wave19 relations")
     if page.find('src="../../app/bible-corpus-loader.js"') > page.find('src="../../app/bible-relation-redirects.js"'):
         errors.append("traditions/bible/index.html: redirect bridge must load after corpus loader")
+    if page.find('src="../../app/bible-scripture-reader.js"') > page.find('src="../../app/bible-library.js"'):
+        errors.append("traditions/bible/index.html: scripture reader must load before Bible library adapter")
     forbid(
         page,
         ('class="featured-arcs"','id="study-modes"','id="shuffle-comparisons"',"deepMatches(","overlapCount(","deepCandidates"),
@@ -158,6 +175,21 @@ def main() -> int:
         atlas_css,
         ('.atlas-explorer','.atlas-routes','.atlas-route','.atlas-topic-grid','.atlas-breadcrumbs'),
         'app/bible-atlas-navigation.css', errors,
+    )
+
+    require(
+        library_app,
+        (
+            "data/christianity/bible-kjv.json","bible-web-book-index.json","libraryBook","libraryChapter",
+            "Torah / Pentateuch","KJV Apocrypha","Hebrews & General Letters","BibleScriptureReader",
+            "bible-reference-form","WEB text unavailable",
+        ),
+        "app/bible-library.js", errors,
+    )
+    require(
+        library_css,
+        ('.bible-library','.bible-library-groups','.bible-book-grid','.bible-library-reader','.scripture-dialog','.scripture-verse'),
+        'app/bible-library.css', errors,
     )
 
     require(
@@ -227,6 +259,40 @@ def main() -> int:
                         errors.append(f"relation {row.get('id')} references unknown biblical scene {sid}")
         except (OSError, ValueError, CorpusError) as exc:
             errors.append(f"manifest-defined Bible corpus failed to assemble: {exc}")
+
+    if KJV_CATALOG.exists() and WEB_BOOK_INDEX.exists() and CHRISTIANITY_INDEX.exists():
+        try:
+            kjv = json.loads(KJV_CATALOG.read_text(encoding="utf-8"))
+            web = json.loads(WEB_BOOK_INDEX.read_text(encoding="utf-8"))
+            christianity = json.loads(CHRISTIANITY_INDEX.read_text(encoding="utf-8"))
+            books = kjv.get("books", [])
+            section_counts = {
+                section: sum(1 for book in books if book.get("section") == section)
+                for section in ("old", "apocrypha", "new")
+            }
+            if len(books) != 80:
+                errors.append(f"KJV catalogue must contain 80 books; found {len(books)}")
+            if section_counts != {"old": 39, "apocrypha": 14, "new": 27}:
+                errors.append(f"KJV catalogue section counts drifted: {section_counts}")
+            web_books = web.get("books", {})
+            if len(web_books) != 66:
+                errors.append(f"WEB reader index must contain 66 books; found {len(web_books)}")
+            canonical_names = {book.get("name") for book in books if book.get("section") in {"old", "new"}}
+            if canonical_names != set(web_books):
+                missing = sorted(canonical_names - set(web_books))
+                extra = sorted(set(web_books) - canonical_names)
+                errors.append(f"KJV 66-book names and WEB reader index differ; missing={missing}, extra={extra}")
+            index_text = CHRISTIANITY_INDEX.read_text(encoding="utf-8")
+            if "bible.html" in index_text:
+                errors.append("Christianity scripture index still references retired bible.html route")
+            canonical_ids = {item.get("id") for item in christianity.get("canonical_texts", [])}
+            if not {"bible-kjv", "bible-web"} <= canonical_ids:
+                errors.append("Christianity scripture index must expose distinct KJV catalogue and WEB reader sources")
+            routes = christianity.get("reading_routes", [])
+            if not routes or any(not route.startswith("traditions/bible/") for route in routes):
+                errors.append("Christianity scripture reading routes must point to traditions/bible/")
+        except (OSError, ValueError, TypeError) as exc:
+            errors.append(f"Bible scripture library metadata failed validation: {exc}")
 
     if FIELD.exists():
         field=json.loads(FIELD.read_text(encoding="utf-8")); rows=field.get("relations",[])
