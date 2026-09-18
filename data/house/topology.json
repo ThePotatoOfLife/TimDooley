@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "updated": "2026-09-18",
   "authority": "house-topology",
   "room_registry": "data/house/rooms.json",
@@ -378,5 +378,185 @@
     },
     "ui_rule": "Rectangular cards, grids and diagrams are projections only. They must never imply that Rooms are literal cubes or that the House is rectilinear."
   },
-  "federation_scale_registry": "data/house/federation-scale.json"
+  "federation_scale_registry": "data/house/federation-scale.json",
+  "symbolic_planes": {
+    "status": "canonical navigation projection",
+    "purpose": "Project the same Potato House / Tree onto three symbolic circular standing platforms so readers can enter the system from an upper integrative view, the ordinary visible world, or the buried/root-facing underside without turning those views into separate cosmologies.",
+    "geometry_boundary": "These circles are navigation discs/platforms, not the two Source/Manifestation field circles of the Potato geometry. The World Plane is the existing Plane read as a standing surface; Heaven Plane and Below Plane are additional symbolic navigation projections.",
+    "projection_rules": [
+      "Plane placement is navigation emphasis, not exclusive knowledge ownership.",
+      "A Room may appear on more than one plane when its material crosses levels of the same Tree.",
+      "Heaven emphasizes integration, orientation, Garden/House, ascent, transmission and return; it does not make a claim of physical altitude or automatic truth rank.",
+      "World emphasizes the ordinary visible/embodied/public frame: bodies, evidence, institutions, history, geography, work and consequence.",
+      "Below emphasizes what lies under the visible surface: roots, provenance, buried causes, residue, shadow, subculture, Strife, Swamp and repeated wide-road patterns.",
+      "Below is not identical with Earth, Manifestation, matter, evil, inferiority or literal underground geography.",
+      "Roots themselves remain neutral: they can nourish Life, preserve evidence, or carry unresolved Strife."
+    ],
+    "planes": [
+      {
+        "id": "heaven-plane",
+        "label": "Heaven Plane",
+        "position": "upper",
+        "tree_position": "crown / upper branches / integrative canopy",
+        "orientation": "integration, source-facing orientation, ascent, transmission and return",
+        "description": "Stand here to read the House from its integrative side: Heaven, Garden, North, theology, meaning, Tree of Life, Fruit and the responsibility of returning what has been integrated to the visible world.",
+        "primary_room_ids": [
+          "potatoverse-canon",
+          "traditions-texts"
+        ],
+        "crossing_room_ids": [
+          "works",
+          "research-lab",
+          "time-history"
+        ],
+        "subjects": [
+          "House / Garden / Heaven",
+          "North / Crown / orientation",
+          "Religion / Trinity / theology",
+          "Philosophy / integration / meaning",
+          "Tree of Life / ascent",
+          "Fruit / Works / return"
+        ],
+        "navigation": [
+          {
+            "label": "Potato House",
+            "route": "house/"
+          },
+          {
+            "label": "North",
+            "route": "north/"
+          },
+          {
+            "label": "Religion",
+            "route": "religion/"
+          },
+          {
+            "label": "Philosophy",
+            "route": "philosophy/"
+          },
+          {
+            "label": "Tree of Life",
+            "route": "axis/?path=life#paths"
+          },
+          {
+            "label": "Works / Fruit",
+            "route": "works/"
+          }
+        ]
+      },
+      {
+        "id": "world-plane",
+        "label": "World Plane",
+        "aliases": [
+          "Plane",
+          "ordinary Plane"
+        ],
+        "position": "middle",
+        "tree_position": "trunk / visible cross-section / lived present",
+        "orientation": "embodiment, evidence, public reality, ordinary consequence and choice",
+        "description": "Stand here for the ordinary Plane: bodies, science, geography, institutions, history, public culture and observable consequence. This is the main world-facing cross-section through the House.",
+        "primary_room_ids": [
+          "science-formal-models",
+          "life-body",
+          "world-systems"
+        ],
+        "crossing_room_ids": [
+          "time-history",
+          "traditions-texts",
+          "culture-information",
+          "works"
+        ],
+        "subjects": [
+          "Body / life",
+          "Science / evidence / models",
+          "World systems / institutions / economy",
+          "Timeline / visible history",
+          "Culture / information / public discourse",
+          "Choice / work / consequence"
+        ],
+        "navigation": [
+          {
+            "label": "Five Doors",
+            "route": ""
+          },
+          {
+            "label": "World Map",
+            "route": "world-map/"
+          },
+          {
+            "label": "Timeline",
+            "route": "timeline/"
+          },
+          {
+            "label": "Science",
+            "route": "science/"
+          },
+          {
+            "label": "Life & Body",
+            "route": "life-body/"
+          },
+          {
+            "label": "World Systems",
+            "route": "world-systems/"
+          }
+        ]
+      },
+      {
+        "id": "below-plane",
+        "label": "Below Plane",
+        "aliases": [
+          "Below",
+          "under-plane"
+        ],
+        "position": "lower",
+        "tree_position": "roots / buried underside / shadow layer",
+        "orientation": "provenance, buried causation, residue, shadow, subculture, Strife and unresolved recurrence",
+        "description": "Stand here to inspect what operates beneath the visible surface: archive roots, past causes, hidden or neglected context, subculture, shadow, residue, Roots of Strife, the Wide Road and Swamp-like entanglement.",
+        "primary_room_ids": [
+          "archive-sources",
+          "time-history",
+          "culture-information"
+        ],
+        "crossing_room_ids": [
+          "world-systems",
+          "research-lab",
+          "potatoverse-canon"
+        ],
+        "subjects": [
+          "Archive / provenance / buried evidence",
+          "Roots / ancestry / past causes",
+          "Shadow / subculture / hidden mud",
+          "Strife / capture / repeating conflict",
+          "Swamp / opacity / fragmentation",
+          "Wide Road / repetition without transformation"
+        ],
+        "navigation": [
+          {
+            "label": "Tree of Strife",
+            "route": "axis/?path=strife#paths"
+          },
+          {
+            "label": "Culture & Information",
+            "route": "context/culture/"
+          },
+          {
+            "label": "Archive & Sources",
+            "route": "context/source-authority/"
+          },
+          {
+            "label": "History / Roots",
+            "route": "history/"
+          },
+          {
+            "label": "D3–D1 lower map",
+            "route": "world-map/?axisD=3"
+          },
+          {
+            "label": "Research Lab",
+            "route": "research-lab/"
+          }
+        ]
+      }
+    ]
+  }
 }
