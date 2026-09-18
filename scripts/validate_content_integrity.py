@@ -99,9 +99,20 @@ def main():
         for concept_id in group.get("concepts",[]):
             if concept_id not in concept_traces:ERRORS.append(f"Axis concept group {group.get('id')} references missing trace: {concept_id}")
     surfaces=load("data/house/public-surfaces.json")
-    surface_ids={x.get("id") for x in surfaces.get("surfaces",[]) if isinstance(x,dict)}
+    surface_rows=[x for x in surfaces.get("surfaces",[]) if isinstance(x,dict)]
+    surface_ids={x.get("id") for x in surface_rows}
     if "axis" not in surface_ids:ERRORS.append("Living Axis public surface is not registered")
     if "axis" in surfaces.get("primary_gateway_ids",[]):ERRORS.append("Living Axis must remain a secondary guide, not a sixth primary gateway")
+    for required_surface in ("house","paths","life-body","research-lab"):
+        if required_surface not in surface_ids:ERRORS.append(f"Required structural public surface is not registered: {required_surface}")
+    house_rooms=load("data/house/rooms.json").get("rooms",[])
+    for room in house_rooms:
+        room_id=room.get("id")
+        if room_id and not any(room_id in (surface.get("primary_room_ids") or []) for surface in surface_rows):
+            ERRORS.append(f"Canonical Room has no public surface coverage: {room_id}")
+    primary_gateways=surfaces.get("primary_gateway_ids",[])
+    if primary_gateways!=["tim","religion","philosophy","science","world"]:
+        ERRORS.append(f"Primary gateway contract drifted: {primary_gateways}")
     ent=load("data/entanglement.json"); required_ent={"source","target","relationship","distance","directionality","strength","dependency","coupling","correlation","causal_status","temporal_order","path_dependence","feedback","topology","boundary","trajectory","phase","counterfactual_sensitivity","evidence","confidence"}
     if not required_ent.issubset(set(ent.get("relational_dimensions",[]))):ERRORS.append("Entanglement schema is missing required relational dimensions")
     haw=load("data/hawkins-scale.json"); levels_h=haw.get("scale",haw.get("levels",[]))
