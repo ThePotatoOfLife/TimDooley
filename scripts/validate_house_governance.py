@@ -13,6 +13,7 @@ TREE_PLANE_ROUTING=ROOT/'data/house/tree-plane-routing.json'
 SEED_SPIRAL_ROUTING=ROOT/'data/house/seed-spiral-routing.json'
 NAVIGATION_MANIFEST=ROOT/'data/house/navigation-manifest.json'
 RELIGIOUS_BRANCH_ATLAS=ROOT/'data/house/religious-symbolic-branch-atlas.json'
+PROVIDENCE_STRUCTURE=ROOT/'data/house/providence-pillars-esoteric-structure.json'
 SUBROOMS=ROOT/'data/house/subrooms.json'
 CONCEPT_TOPOLOGY=ROOT/'data/house/concept-topology.json'; CONCEPT_TOPOLOGY_SCHEMA=ROOT/'schemas/house-concept-topology.schema.json'
 TOPOLOGY_FIXTURE=ROOT/'data/house/topology-golden-fixture.json'
@@ -399,7 +400,7 @@ def validate_symbolic_planes(errors,rooms):
         errors.append('Akashic Tree view must remain an archive metaphor rather than evidence claim')
 
 
-def validate_orientation_population(errors,rooms); validate_tree_plane_routing(errors); validate_seed_spiral_routing(errors); validate_navigation_consolidation(errors):
+def validate_orientation_population(errors,rooms); validate_tree_plane_routing(errors); validate_seed_spiral_routing(errors); validate_navigation_consolidation(errors); validate_providence_structure(errors):
     population=load(ORIENTATION_POPULATION,errors); subrooms=load(SUBROOMS,errors)
     if not population or not subrooms: return
     sub_ids=[x.get('id') for x in subrooms.get('subrooms',[]) if isinstance(x,dict)]
@@ -511,6 +512,20 @@ def validate_navigation_consolidation(errors):
     for token in ('own historical/textual tradition','navigation/comparative projections','not proof of literal identity'):
         if token not in rule: errors.append(f'religious branch atlas missing epistemic boundary: {token}')
     if len(node_rows)>64: errors.append('religious branch atlas should remain curated; split deeper population into archive-only registries before exceeding 64 primary nodes')
+
+
+def validate_providence_structure(errors):
+    data=load(PROVIDENCE_STRUCTURE,errors)
+    if not data: return
+    ids={x.get('id') for x in data.get('historical_findings',[]) if isinstance(x,dict)}
+    for rid in ('great-seal-reverse','eye-providence','jachin-boaz-biblical','jachin-boaz-masonic','1776-coincidence-boundary'):
+        if rid not in ids: errors.append(f'Providence/pillars atlas missing historical finding {rid}')
+    corr={x.get('id') for x in data.get('structural_correspondences',[]) if isinstance(x,dict)}
+    for rid in ('twin-pillars-door','pyramid-mountain','eye-above-pyramid','providence-vs-surveillance','base-date-provenance'):
+        if rid not in corr: errors.append(f'Providence/pillars atlas missing structural correspondence {rid}')
+    rules=' '.join(data.get('anti_conspiracy_rules',[])).casefold()
+    for token in ('shared symbols do not prove','shared date does not prove','later masonic or occult adoption does not backdate','eye imagery does not by itself prove','comparative interpretations'):
+        if token not in rules: errors.append(f'Providence/pillars atlas missing boundary: {token}')
 
 def main():
     errors=[]; rooms=validate_rooms(errors); surfaces=validate_surfaces(errors,rooms); validate_concept_topology(errors,rooms,surfaces); validate_symbolic_planes(errors,rooms); validate_orientation_population(errors,rooms)
