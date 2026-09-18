@@ -371,6 +371,26 @@ def validate_symbolic_planes(errors,rooms):
     rules=' '.join(compass.get('entity_projection_rule',[])).casefold()
     for token in ('historically rooted','does not create several entities','not synonyms','potatoverse mappings'):
         if token not in rules: errors.append(f'symbolic compass entity projection rule missing boundary: {token}')
+    tree=data.get('symbolic_tree_ecology')
+    if not isinstance(tree,dict):
+        errors.append('symbolic tree ecology missing'); return
+    fork=tree.get('central_fork',{})
+    if 'upstream of both Life and Strife' not in fork.get('principle',''):
+        errors.append('Tree of Knowledge must remain upstream of Life and Strife')
+    zone_ids=[x.get('id') for x in tree.get('zones',[]) if isinstance(x,dict)]
+    expected_zones=['roots','trunk','life-branches','strife-branches','canopy']
+    if zone_ids!=expected_zones:
+        errors.append('symbolic tree ecology zones/order drifted')
+    foundations=[x.get('id') for x in tree.get('religious_foundations',[]) if isinstance(x,dict)]
+    if foundations!=['own-tradition','reception','motif','project-map']:
+        errors.append('religious foundation reading order drifted')
+    guards=' '.join(x.get('guard','') for x in tree.get('zones',[]) if isinstance(x,dict)).casefold()
+    for token in ('not classify peoples','does not assert literal divinity','separate categories','not a universal claim'):
+        if token not in guards:
+            errors.append(f'symbolic tree ecology missing guard: {token}')
+    akashic=tree.get('akashic_tree_view',{})
+    if 'does not assert a literal Akashic Record' not in akashic.get('boundary',''):
+        errors.append('Akashic Tree view must remain an archive metaphor rather than evidence claim')
 
 def main():
     errors=[]; rooms=validate_rooms(errors); surfaces=validate_surfaces(errors,rooms); validate_concept_topology(errors,rooms,surfaces); validate_symbolic_planes(errors,rooms)
