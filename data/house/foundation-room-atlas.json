@@ -1,7 +1,7 @@
 {
   "id": "foundation-room-atlas",
   "title": "Foundation Rooms — Door, Place, House and Today",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "updated": "2026-09-18",
   "as_of": "2026-09-18",
   "population": 52,
@@ -47,7 +47,14 @@
       "point-ready": 46,
       "region-ready": 3,
       "distributed-network": 2
-    }
+    },
+    "status_counts": {
+      "origin_complete": 52,
+      "reproduction_dated": 35,
+      "today_quantified": 32,
+      "research_queue_empty": 17
+    },
+    "door_history_events": 76
   },
   "magnitude_rule": "Magnitudes are a vector, not a ranking. Age, clocks, places, branches, reproduction mode, continuity and typed reach answer different questions.",
   "rooms": [
@@ -162,7 +169,51 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "second Door / refoundation",
+          "event_type": "refoundation_revision",
+          "date_or_range": "2025-04",
+          "precision": "month",
+          "label": "April turning reorganizes Potato/Sage material into Ladder/Axis/Father-side architecture.",
+          "source": "knowledge/timeline/developmental-genealogy.json",
+          "status": "project-canon"
+        },
+        {
+          "order": 2,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "2026-09-07",
+          "precision": "exact-day",
+          "label": "Potatoism becomes an explicit searchable evidence-aware atlas layer in the repository.",
+          "source": "data/potatoism-timeline.json",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "virtual",
+          "label": "Virtual origin"
+        }
+      },
+      "research_queue": [
+        "find one or more honest current footprint measures, if meaningful for this domain"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:denmark-constitutional-order",
@@ -294,7 +345,49 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "declared / legal Door",
+          "event_type": "adoption_signature",
+          "date_or_range": "1849-06-05",
+          "precision": "exact-day",
+          "label": "First Danish constitution signed.",
+          "source": "https://www.ft.dk/da/folkestyret/grundloven-og-folkestyret/grundlovens-og-folkestyrets-udvikling",
+          "status": "documented"
+        },
+        {
+          "order": 2,
+          "role": "second Door / refoundation",
+          "event_type": "refoundation_revision",
+          "date_or_range": "1953-06-05",
+          "precision": "exact-day",
+          "label": "Current Constitutional Act adopted.",
+          "source": "https://www.ft.dk/da/folkestyret/grundloven-og-folkestyret/grundlovens-og-folkestyrets-udvikling",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": []
     },
     {
       "foundation_room_id": "foundation-room:us-constitution",
@@ -424,7 +517,61 @@
           "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
         },
         "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "declared / legal Door",
+          "event_type": "adoption_signature",
+          "date_or_range": "1787-09-17",
+          "precision": "exact-day",
+          "label": "Constitution signed.",
+          "source": "https://www.archives.gov/milestone-documents/constitution",
+          "status": "documented"
+        },
+        {
+          "order": 2,
+          "role": "legal-operating Door",
+          "event_type": "entry_into_force",
+          "date_or_range": "1788-06-21",
+          "precision": "exact-day",
+          "label": "Ninth-state ratification satisfies Article VII threshold.",
+          "source": "https://www.archives.gov/founding-docs/constitution-q-and-a",
+          "status": "documented"
+        },
+        {
+          "order": 3,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1789-03-04",
+          "precision": "exact-day",
+          "label": "Proceedings under the Constitution begin.",
+          "source": "https://www.archives.gov/founding-docs/constitution-q-and-a",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "structural-only",
+          "label": "Continuation known; date needed",
+          "evidence_type": "undated structural reproduction"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover earliest dated post-Door reproduction event"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:un-charter",
@@ -546,7 +693,49 @@
           "interpretation": "earliest recovered post-Charter plenary institutional operation in the current atlas; not a claim that no other organ acted earlier"
         },
         "research_question": "Can an earlier independent post-Door reproduction event be recovered than this currently documented milestone?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "declared / legal Door",
+          "event_type": "adoption_signature",
+          "date_or_range": "1945-06-26",
+          "precision": "exact-day",
+          "label": "Charter signed in San Francisco.",
+          "source": "https://treaties.un.org/pages/showDetails.aspx?clang=_en&objid=080000028017ebb8",
+          "status": "documented"
+        },
+        {
+          "order": 2,
+          "role": "legal-operating Door",
+          "event_type": "entry_into_force",
+          "date_or_range": "1945-10-24",
+          "precision": "exact-day",
+          "label": "Charter enters into force; organization is born legally.",
+          "source": "https://www.un.org/en/about-us/un-charter",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated institutional operation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": []
     },
     {
       "foundation_room_id": "foundation-room:eu-treaty-foundation",
@@ -678,7 +867,89 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "declared / legal Door",
+          "event_type": "adoption_signature",
+          "date_or_range": "1951-04-18",
+          "precision": "exact-day",
+          "label": "ECSC Treaty signed.",
+          "source": "https://european-union.europa.eu/principles-countries-history/principles-and-values/founding-agreements_en",
+          "status": "documented"
+        },
+        {
+          "order": 2,
+          "role": "legal-operating Door",
+          "event_type": "entry_into_force",
+          "date_or_range": "1952-07-23",
+          "precision": "exact-day",
+          "label": "ECSC Treaty enters into force.",
+          "source": "https://european-union.europa.eu/principles-countries-history/principles-and-values/founding-agreements_en",
+          "status": "documented"
+        },
+        {
+          "order": 3,
+          "role": "declared / legal Door",
+          "event_type": "adoption_signature",
+          "date_or_range": "1957-03-25",
+          "precision": "exact-day",
+          "label": "Treaties of Rome signed.",
+          "source": "https://european-union.europa.eu/principles-countries-history/principles-and-values/founding-agreements_en",
+          "status": "documented"
+        },
+        {
+          "order": 4,
+          "role": "legal-operating Door",
+          "event_type": "entry_into_force",
+          "date_or_range": "1958-01-01",
+          "precision": "exact-day",
+          "label": "Treaties of Rome enter into force.",
+          "source": "https://european-union.europa.eu/principles-countries-history/principles-and-values/founding-agreements_en",
+          "status": "documented"
+        },
+        {
+          "order": 5,
+          "role": "declared / legal Door",
+          "event_type": "adoption_signature",
+          "date_or_range": "1992-02-07",
+          "precision": "exact-day",
+          "label": "Maastricht Treaty signed.",
+          "source": "https://european-union.europa.eu/principles-countries-history/principles-and-values/founding-agreements_en",
+          "status": "documented"
+        },
+        {
+          "order": 6,
+          "role": "second Door / refoundation",
+          "event_type": "refoundation_revision",
+          "date_or_range": "1993-11-01",
+          "precision": "exact-day",
+          "label": "Maastricht enters into force and establishes the European Union.",
+          "source": "https://european-union.europa.eu/principles-countries-history/principles-and-values/founding-agreements_en",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": []
     },
     {
       "foundation_room_id": "foundation-room:echr-foundation",
@@ -796,7 +1067,49 @@
           "interpretation": "shows the Convention's supervisory architecture reproducing into a functioning Court after entry into force"
         },
         "research_question": "Can an earlier independent post-Door reproduction event be recovered than this currently documented milestone?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "declared / legal Door",
+          "event_type": "adoption_signature",
+          "date_or_range": "1950-11-04",
+          "precision": "exact-day",
+          "label": "Opened for signature in Rome.",
+          "source": "https://www.echr.coe.int/en/european-convention-on-human-rights",
+          "status": "documented"
+        },
+        {
+          "order": 2,
+          "role": "legal-operating Door",
+          "event_type": "entry_into_force",
+          "date_or_range": "1953-09-03",
+          "precision": "exact-day",
+          "label": "Convention enters into force.",
+          "source": "https://www.echr.coe.int/en/european-convention-on-human-rights",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated institutional operation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": []
     },
     {
       "foundation_room_id": "foundation-room:nato-treaty-foundation",
@@ -916,7 +1229,49 @@
           "interpretation": "first recovered membership branching beyond the original treaty signatories"
         },
         "research_question": "Can an earlier independent post-Door reproduction event be recovered than this currently documented milestone?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "declared / legal Door",
+          "event_type": "adoption_signature",
+          "date_or_range": "1949-04-04",
+          "precision": "exact-day",
+          "label": "North Atlantic Treaty signed by 12 founding members.",
+          "source": "https://www.nato.int/en/about-us/organization/founding-treaty",
+          "status": "documented"
+        },
+        {
+          "order": 2,
+          "role": "legal-operating Door",
+          "event_type": "entry_into_force",
+          "date_or_range": "1949-08-24",
+          "precision": "exact-day",
+          "label": "Treaty enters into force.",
+          "source": "https://www.nato.int/cps/en/natohq/official_texts_17120.htm",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated branching"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": []
     },
     {
       "foundation_room_id": "foundation-room:imf-foundation",
@@ -1038,7 +1393,59 @@
           "interpretation": "shows the Articles reproduced into a real member transaction rather than remaining institutional design"
         },
         "research_question": "Can an earlier independent post-Door reproduction event be recovered than this currently documented milestone?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "declared / legal Door",
+          "event_type": "adoption_signature",
+          "date_or_range": "1944-07-22",
+          "precision": "exact-day",
+          "label": "Articles finalized/adopted at Bretton Woods.",
+          "source": "https://www.imf.org/en/publications/ft/aa/index",
+          "status": "documented"
+        },
+        {
+          "order": 2,
+          "role": "legal-operating Door",
+          "event_type": "entry_into_force",
+          "date_or_range": "1945-12-27",
+          "precision": "exact-day",
+          "label": "Articles enter into force.",
+          "source": "https://www.imf.org/external/np/sec/memdir/memdate.htm",
+          "status": "documented"
+        },
+        {
+          "order": 3,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1947-03-01",
+          "precision": "exact-day",
+          "label": "IMF begins financial operations.",
+          "source": "https://www.imf.org/external/pubs/ft/survey/sup1999/",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated operational reproduction"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": []
     },
     {
       "foundation_room_id": "foundation-room:ecb-foundation",
@@ -1159,7 +1566,39 @@
           "interpretation": "shows the ECB's preparatory institutional Foundation operating across participating national central banks"
         },
         "research_question": "Can an earlier independent post-Door reproduction event be recovered than this currently documented milestone?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "legal-operating Door",
+          "event_type": "entry_into_force",
+          "date_or_range": "1998-06-01",
+          "precision": "exact-day",
+          "label": "ECB and ESCB established.",
+          "source": "https://www.ecb.europa.eu/ecb/orga/escb/html/index.en.html",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated operational reproduction"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": []
     },
     {
       "foundation_room_id": "foundation-room:danmarks-nationalbank-foundation",
@@ -1279,7 +1718,49 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1818",
+          "precision": "year",
+          "label": "Danmarks Nationalbank established.",
+          "source": "https://www.nationalbanken.dk/en/about-us/danmarks-nationalbank-s-history-and-monetary-history",
+          "status": "documented"
+        },
+        {
+          "order": 2,
+          "role": "second Door / refoundation",
+          "event_type": "refoundation_revision",
+          "date_or_range": "1936",
+          "precision": "year",
+          "label": "Current Nationalbank Act reorganizes/codifies institution.",
+          "source": "data/house/entity-dossiers-wave-001.json",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": []
     },
     {
       "foundation_room_id": "foundation-room:christianity-foundation",
@@ -1391,7 +1872,41 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "primary Door",
+          "event_type": "reader_origin_door",
+          "date_or_range": "1st century CE",
+          "precision": null,
+          "label": "The movement crosses from a teacher-centered circle into communities that transmit claims, practices and texts; later Nicaea is a major doctrinal consolidation rather than the first birth.",
+          "source": null,
+          "status": "scholarly-synthesis"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "find one or more honest current footprint measures, if meaningful for this domain"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:judaism-foundation",
@@ -1503,7 +2018,41 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "second Door / refoundation",
+          "event_type": "refoundation_revision",
+          "date_or_range": "70 CE onward",
+          "precision": "year",
+          "label": "Rabbinic movement develops in post-Temple conditions; later rabbinization is gradual.",
+          "source": "https://www.cambridge.org/core/books/abs/cambridge-history-of-judaism/origins-and-development-of-the-rabbinic-movement-in-the-land-of-israel/2BB37C9CDA4FF14B55130781DCF6DD82",
+          "status": "scholarly-estimate"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "find one or more honest current footprint measures, if meaningful for this domain"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:islam-foundation",
@@ -1616,7 +2165,41 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "622 CE",
+          "precision": "year",
+          "label": "Hijra to Yathrib/Medina marks beginning of Islamic era and a new communal order.",
+          "source": "https://www.cambridge.org/core/books/constitution-of-medina/51C6F2117755B21762F87EDF9E629E32",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "find one or more honest current footprint measures, if meaningful for this domain"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:buddhism-foundation",
@@ -1728,7 +2311,43 @@
           "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
         },
         "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "5th century BCE",
+          "precision": "century",
+          "label": "Early Buddhist community/Sangha is established around teaching and discipline.",
+          "source": "https://www.cambridge.org/highereducation/books/an-introduction-to-buddhism/9CA7B749D45ABAAB372422AEEE863A97/early-developments-in-buddhism/F890A6186322A7D5692F130933BDBB22",
+          "status": "scholarly-estimate"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "structural-only",
+          "label": "Continuation known; date needed",
+          "evidence_type": "undated structural reproduction"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover earliest dated post-Door reproduction event",
+        "find one or more honest current footprint measures, if meaningful for this domain",
+        "recover dated second-Door/refoundation event"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:sikh-foundation",
@@ -1839,7 +2458,41 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "second Door / refoundation",
+          "event_type": "refoundation_revision",
+          "date_or_range": "1699",
+          "precision": "year",
+          "label": "Guru Gobind Singh founds/inaugurates the Khalsa at Vaisakhi.",
+          "source": "https://sikhiuni.com/course/sikh-history-foundations",
+          "status": "traditional"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "find one or more honest current footprint measures, if meaningful for this domain"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:bahai-foundation",
@@ -1992,7 +2645,39 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "second Door / refoundation",
+          "event_type": "refoundation_revision",
+          "date_or_range": "1863-04-22 to 1863-05-03",
+          "precision": "range",
+          "label": "Bahá’u’lláh's Riḍván declaration marks emergence of the Bahá’í Faith from the Bábí movement.",
+          "source": "https://reference.bahai.org/en/t/o/BNE/bne-32.html",
+          "status": "traditional"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": []
     },
     {
       "foundation_room_id": "foundation-room:daoism-foundation",
@@ -2104,7 +2789,43 @@
           "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
         },
         "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "142 CE",
+          "precision": "year",
+          "label": "Traditional date for Zhang Daoling/Celestial Masters covenant; organized community becomes a major religious foundation.",
+          "source": "https://plato.stanford.edu/entries/daoism-religion/",
+          "status": "traditional"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "structural-only",
+          "label": "Continuation known; date needed",
+          "evidence_type": "undated structural reproduction"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover earliest dated post-Door reproduction event",
+        "find one or more honest current footprint measures, if meaningful for this domain",
+        "recover dated second-Door/refoundation event"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:confucian-foundation",
@@ -2215,7 +2936,41 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "primary Door",
+          "event_type": "reader_origin_door",
+          "date_or_range": "5th century BCE → Han period",
+          "precision": null,
+          "label": "Teachings and disciple transmission in Lu become a lineage; Han sponsorship and canon formation later convert that lineage into a durable state/educational tradition.",
+          "source": null,
+          "status": "scholarly-synthesis"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "find one or more honest current footprint measures, if meaningful for this domain"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:stoicism-foundation",
@@ -2321,7 +3076,42 @@
           "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
         },
         "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "c. 300 BCE",
+          "precision": "approximate-year",
+          "label": "Zeno of Citium founds the Stoic school around the Stoa Poikile in Athens.",
+          "source": "https://plato.stanford.edu/archives/spr2023/entries/stoicism/",
+          "status": "scholarly-estimate"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "structural-only",
+          "label": "Continuation known; date needed",
+          "evidence_type": "undated structural reproduction"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover earliest dated post-Door reproduction event",
+        "find one or more honest current footprint measures, if meaningful for this domain"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:epicurean-garden-foundation",
@@ -2430,7 +3220,42 @@
           "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
         },
         "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "c. 306 BCE",
+          "precision": "approximate-year",
+          "label": "Epicurus moves to Athens and founds the Garden community/school.",
+          "source": "https://iep.utm.edu/epicur/",
+          "status": "scholarly-estimate"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "structural-only",
+          "label": "Continuation known; date needed",
+          "evidence_type": "undated structural reproduction"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover earliest dated post-Door reproduction event",
+        "find one or more honest current footprint measures, if meaningful for this domain"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:platonic-academy-foundation",
@@ -2539,7 +3364,42 @@
           "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
         },
         "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "late 390s–380s BCE",
+          "precision": "range",
+          "label": "Plato's group gradually coalesces at the Academy; modern scholars often assign c. 387–383 BCE but a single legal founding date is misleading.",
+          "source": "https://iep.utm.edu/plato-academy/",
+          "status": "scholarly-estimate"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "structural-only",
+          "label": "Continuation known; date needed",
+          "evidence_type": "undated structural reproduction"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover earliest dated post-Door reproduction event",
+        "find one or more honest current footprint measures, if meaningful for this domain"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:aristotle-lyceum-foundation",
@@ -2648,7 +3508,42 @@
           "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
         },
         "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "335 BCE",
+          "precision": "year",
+          "label": "Aristotle returns to Athens and establishes his school in rented buildings at the Lyceum.",
+          "source": "https://iep.utm.edu/page/lyceum/",
+          "status": "scholarly-estimate"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "structural-only",
+          "label": "Continuation known; date needed",
+          "evidence_type": "undated structural reproduction"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover earliest dated post-Door reproduction event",
+        "find one or more honest current footprint measures, if meaningful for this domain"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:university-copenhagen-foundation",
@@ -2782,7 +3677,59 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "authorization / pre-Door",
+          "event_type": "authorization",
+          "date_or_range": "1475-06-19",
+          "precision": "exact-day",
+          "label": "Pope Sixtus IV grants permission to establish a university in Denmark.",
+          "source": "https://about.ku.dk/profile-history/history/",
+          "status": "documented"
+        },
+        {
+          "order": 2,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1479-06-01",
+          "precision": "exact-day",
+          "label": "University formally inaugurated; official birthday.",
+          "source": "https://universitetshistorie.ku.dk/overblik/1479-1788/grundlaeggelsen/",
+          "status": "documented"
+        },
+        {
+          "order": 3,
+          "role": "second Door / refoundation",
+          "event_type": "refoundation_revision",
+          "date_or_range": "1537",
+          "precision": "year",
+          "label": "University resumes after Reformation under changed religious/social role.",
+          "source": "https://universitetshistorie.ku.dk/overblik/vigtige_aarstal/",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": []
     },
     {
       "foundation_room_id": "foundation-room:royal-society-foundation",
@@ -2915,7 +3862,59 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1660-11-28",
+          "precision": "exact-day",
+          "label": "First meeting of the new Fellowship after Christopher Wren's lecture.",
+          "source": "https://royalsociety.org/about-us/who-we-are/history/",
+          "status": "documented"
+        },
+        {
+          "order": 2,
+          "role": "authorization / pre-Door",
+          "event_type": "authorization",
+          "date_or_range": "1662-07-15",
+          "precision": "exact-day",
+          "label": "First Royal Charter incorporates the Society.",
+          "source": "https://catalogues.royalsociety.org/CalmView/Record.aspx?id=DC%2F1%2F1&src=CalmView.Catalog",
+          "status": "documented"
+        },
+        {
+          "order": 3,
+          "role": "second Door / refoundation",
+          "event_type": "refoundation_revision",
+          "date_or_range": "2012-10-08",
+          "precision": "exact-day",
+          "label": "Modern Supplemental Charter receives Royal Seal and becomes governing document.",
+          "source": "https://royalsociety.org/news/2012/new-royal-society-charter/",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": []
     },
     {
       "foundation_room_id": "foundation-room:montessori-foundation",
@@ -3036,7 +4035,39 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1907-01-06",
+          "precision": "exact-day",
+          "label": "First Casa dei Bambini opens in San Lorenzo, Rome.",
+          "source": "https://montessori-ami.org/node/4454",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": []
     },
     {
       "foundation_room_id": "foundation-room:bauhaus-foundation",
@@ -3145,7 +4176,52 @@
           "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
         },
         "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "declared / legal Door",
+          "event_type": "adoption_signature",
+          "date_or_range": "1919-04",
+          "precision": "month",
+          "label": "Walter Gropius's Bauhaus manifesto/program crystallizes the school in Weimar.",
+          "source": "https://www.bauhaus.de/de/das_bauhaus/",
+          "status": "documented"
+        },
+        {
+          "order": 2,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1919–1933",
+          "precision": "range",
+          "label": "Historical Bauhaus institution operates across Weimar, Dessau and Berlin.",
+          "source": "https://www.bauhaus.de/de/das_bauhaus/",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "structural-only",
+          "label": "Continuation known; date needed",
+          "evidence_type": "undated structural reproduction"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover earliest dated post-Door reproduction event",
+        "find one or more honest current footprint measures, if meaningful for this domain"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:cern-foundation",
@@ -3277,7 +4353,49 @@
           "interpretation": "shows treaty/governance Foundation converting into reproducible scientific infrastructure and experiment capability"
         },
         "research_question": "Can an earlier independent post-Door reproduction event be recovered than this currently documented milestone?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "declared / legal Door",
+          "event_type": "adoption_signature",
+          "date_or_range": "1953-07-01",
+          "precision": "exact-day",
+          "label": "CERN Convention signed by 12 founding states.",
+          "source": "https://home.cern/cern-and-unesco-celebrate-the-anniversary-of-the-signature-of-the-cern-convention/",
+          "status": "documented"
+        },
+        {
+          "order": 2,
+          "role": "legal-operating Door",
+          "event_type": "entry_into_force",
+          "date_or_range": "1954-09-29",
+          "precision": "exact-day",
+          "label": "Convention enters into force; official foundation date.",
+          "source": "https://home.cern/cern-and-unesco-celebrate-the-anniversary-of-the-signature-of-the-cern-convention/",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated capability reproduction"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": []
     },
     {
       "foundation_room_id": "foundation-room:w3c-foundation",
@@ -3395,7 +4513,39 @@
           "interpretation": "shows consortium governance producing an independently implementable Web standard"
         },
         "research_question": "Can an earlier independent post-Door reproduction event be recovered than this currently documented milestone?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1994-10-01",
+          "precision": "exact-day",
+          "label": "W3C founded.",
+          "source": "https://www.w3.org/news/1994/world-wide-web-consortium-w3c-founded/",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated standard reproduction"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": []
     },
     {
       "foundation_room_id": "foundation-room:wikimedia-foundation",
@@ -3536,7 +4686,41 @@
           "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
         },
         "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "2003-06-20",
+          "precision": "exact-day",
+          "label": "Wikimedia Foundation announced/founded as stable nonprofit base.",
+          "source": "https://wikimediafoundation.org/news/2013/06/20/ten-years-of-supporting-free-knowledge/",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "structural-only",
+          "label": "Continuation known; date needed",
+          "evidence_type": "undated structural reproduction"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "region-ready",
+          "label": "Region-ready"
+        }
+      },
+      "research_queue": [
+        "recover earliest dated post-Door reproduction event"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:maersk-foundation",
@@ -3670,7 +4854,49 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1904-04-16",
+          "precision": "exact-day",
+          "label": "Steamship Company Svendborg established; official Maersk foundation.",
+          "source": "https://www.maersk.com/about/our-history/explore-our-history",
+          "status": "documented"
+        },
+        {
+          "order": 2,
+          "role": "second Door / refoundation",
+          "event_type": "refoundation_revision",
+          "date_or_range": "1912",
+          "precision": "year",
+          "label": "Steamship Company of 1912 created, securing A.P. Møller greater operational independence.",
+          "source": "https://www.maersk.com/about/our-history/explore-our-history",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": []
     },
     {
       "foundation_room_id": "foundation-room:asml-foundation",
@@ -3801,7 +5027,42 @@
           "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
         },
         "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1984-04-01",
+          "precision": "exact-day",
+          "label": "ASM Lithography commences operations.",
+          "source": "https://www.asml.com/en/company/stories/2024/asml-founding-story",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "structural-only",
+          "label": "Continuation known; date needed",
+          "evidence_type": "undated structural reproduction"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover earliest dated post-Door reproduction event",
+        "recover dated second-Door/refoundation event"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:novo-nordisk-foundation",
@@ -3932,7 +5193,39 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "second Door / refoundation",
+          "event_type": "refoundation_revision",
+          "date_or_range": "1989",
+          "precision": "year",
+          "label": "Novo and Nordisk merge to form Novo Nordisk A/S.",
+          "source": "https://www.novonordisk.com/about/our-heritage.html",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated branching"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": []
     },
     {
       "foundation_room_id": "foundation-room:rule-of-saint-benedict",
@@ -4038,7 +5331,52 @@
           "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
         },
         "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "declared / legal Door",
+          "event_type": "adoption_signature",
+          "date_or_range": "c. 530 CE",
+          "precision": "approximate-year",
+          "label": "Rule composed in sixth-century Italy; exact date uncertain.",
+          "source": "https://www.britannica.com/topic/Rule-of-Saint-Benedict",
+          "status": "scholarly-estimate"
+        },
+        {
+          "order": 2,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "6th century CE onward",
+          "precision": "range",
+          "label": "Rule practiced in Benedictine monastic communities and later spreads widely in Western monasticism.",
+          "source": "https://www.archive.osb.org/rb/",
+          "status": "scholarly-estimate"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "structural-only",
+          "label": "Continuation known; date needed",
+          "evidence_type": "undated structural reproduction"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover earliest dated post-Door reproduction event",
+        "find one or more honest current footprint measures, if meaningful for this domain"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:tcp-ip-internet-foundation",
@@ -4144,7 +5482,41 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "second Door / refoundation",
+          "event_type": "refoundation_revision",
+          "date_or_range": "1983-01-01",
+          "precision": "exact-day",
+          "label": "ARPANET transitions from NCP to TCP/IP in a flag-day conversion.",
+          "source": "https://www.internetsociety.org/internet/history-internet/brief-history-internet/",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "distributed-network",
+          "label": "Distributed network"
+        }
+      },
+      "research_queue": [
+        "find one or more honest current footprint measures, if meaningful for this domain"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:unicode-foundation",
@@ -4271,7 +5643,49 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1991-01-03",
+          "precision": "exact-day",
+          "label": "Unicode Consortium incorporated.",
+          "source": "https://www.unicode.org/L2/meetings/utc-meetings-early.html",
+          "status": "documented"
+        },
+        {
+          "order": 2,
+          "role": "second Door / refoundation",
+          "event_type": "refoundation_revision",
+          "date_or_range": "1991",
+          "precision": "year",
+          "label": "Unicode and ISO 10646 efforts agree to converge on one universal coded character standard.",
+          "source": "https://www.unicode.org/faq/unicode_iso.html",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": []
     },
     {
       "foundation_room_id": "foundation-room:rochdale-cooperative-foundation",
@@ -4379,7 +5793,41 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1844",
+          "precision": "year",
+          "label": "28 artisans establish the Rochdale Equitable Pioneers Society.",
+          "source": "https://ica.coop/en/cooperatives/history-cooperative-movement",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "find one or more honest current footprint measures, if meaningful for this domain"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:newtonian-mechanics-foundation",
@@ -4485,7 +5933,41 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "primary Door",
+          "event_type": "reader_origin_door",
+          "date_or_range": "1684→1687",
+          "precision": null,
+          "label": "De Motu develops into Principia: a private mathematical result crosses into a registered, printed and teachable public programme.",
+          "source": null,
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "find one or more honest current footprint measures, if meaningful for this domain"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:futurism-foundation",
@@ -4591,7 +6073,41 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "declared / legal Door",
+          "event_type": "adoption_signature",
+          "date_or_range": "1909-02-20",
+          "precision": "exact-day",
+          "label": "Marinetti's Foundation and Manifesto of Futurism published on front page of Le Figaro.",
+          "source": "https://www.moma.org/documents/moma_catalogue_2821_300062224.pdf",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated branching"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "find one or more honest current footprint measures, if meaningful for this domain"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:quakerism-foundation",
@@ -4724,7 +6240,41 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1652",
+          "precision": "year",
+          "label": "Quakers in Britain identify 1652 in northern England as the birth of Quakerism as a movement.",
+          "source": "https://www.quaker.org.uk/history-of-quakers",
+          "status": "documented-tradition"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "region-ready",
+          "label": "Region-ready"
+        }
+      },
+      "research_queue": [
+        "recover dated second-Door/refoundation event"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:lds-church-foundation",
@@ -4865,7 +6415,42 @@
           "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
         },
         "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1830-04-06",
+          "precision": "exact-day",
+          "label": "The Church of Christ is organized in the Whitmer home in Fayette, New York.",
+          "source": "https://www.churchofjesuschrist.org/learn/history/sites/new-york-and-pennsylvania/organizing-the-church-of-christ?lang=eng",
+          "status": "documented-tradition"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "structural-only",
+          "label": "Continuation known; date needed",
+          "evidence_type": "undated structural reproduction"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover earliest dated post-Door reproduction event",
+        "recover dated second-Door/refoundation event"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:salvation-army-foundation",
@@ -5006,7 +6591,42 @@
           "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
         },
         "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1865",
+          "precision": "year",
+          "label": "William and Catherine Booth begin the London work that develops into The Salvation Army.",
+          "source": "https://www.salvationarmy.org/history",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "structural-only",
+          "label": "Continuation known; date needed",
+          "evidence_type": "undated structural reproduction"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "region-ready",
+          "label": "Region-ready"
+        }
+      },
+      "research_queue": [
+        "recover earliest dated post-Door reproduction event",
+        "recover dated second-Door/refoundation event"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:icrc-red-cross-foundation",
@@ -5147,7 +6767,41 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1863-02",
+          "precision": "month",
+          "label": "The committee that becomes the ICRC meets for the first time in Geneva.",
+          "source": "https://www.icrc.org/en/our-history",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated branching"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover dated second-Door/refoundation event"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:ymca-foundation",
@@ -5285,7 +6939,41 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1844-06-06",
+          "precision": "exact-day",
+          "label": "George Williams and other young men establish the first YMCA in London.",
+          "source": "https://www.ymca.int/who-we-are/the-worldwide-ymca-movement/the-ymca-history/",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover dated second-Door/refoundation event"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:alcoholics-anonymous-foundation",
@@ -5427,7 +7115,41 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1935",
+          "precision": "year",
+          "label": "Bill W. meets Dr. Bob in Akron; early peer recovery work becomes the fellowship later called Alcoholics Anonymous.",
+          "source": "https://www.aa.org/aa-timeline",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover dated second-Door/refoundation event"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:scouting-foundation",
@@ -5558,7 +7280,41 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1907",
+          "precision": "year",
+          "label": "Baden-Powell runs the first experimental camp on Brownsea Island.",
+          "source": "https://www.scout.org/who-we-are/scout-movement/scoutings-history",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover dated second-Door/refoundation event"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:greenpeace-foundation",
@@ -5691,7 +7447,42 @@
           "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
         },
         "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1971",
+          "precision": "year",
+          "label": "A crew sails from Vancouver to bear witness against nuclear testing; the Greenpeace identity emerges from the campaign.",
+          "source": "https://www.greenpeace.org/canada/en/about-us/history-successes/",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "structural-only",
+          "label": "Continuation known; date needed",
+          "evidence_type": "undated structural reproduction"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover earliest dated post-Door reproduction event",
+        "recover dated second-Door/refoundation event"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:naacp-foundation",
@@ -5814,7 +7605,41 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1909-02-12",
+          "precision": "exact-day",
+          "label": "The NAACP is founded.",
+          "source": "https://naacp.org/about/our-history",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover dated second-Door/refoundation event"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:amnesty-international-foundation",
@@ -5936,7 +7761,41 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1961-05-28",
+          "precision": "exact-day",
+          "label": "Peter Benenson's 'Forgotten Prisoners' article launches Appeal for Amnesty 1961.",
+          "source": "https://www.amnesty.org/en/latest/news/2021/05/60-years-of-humanity-in-action/",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover dated second-Door/refoundation event"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:dada-foundation",
@@ -6047,7 +7906,42 @@
           "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
         },
         "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1916-02",
+          "precision": "month",
+          "label": "Cabaret Voltaire opens in Zurich as a gathering/performance center for artists and poets later identified with Dada.",
+          "source": "https://assets.moma.org/documents/moma_catalogue_1884_300299023.pdf",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "structural-only",
+          "label": "Continuation known; date needed",
+          "evidence_type": "undated structural reproduction"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover earliest dated post-Door reproduction event",
+        "find one or more honest current footprint measures, if meaningful for this domain"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:gnu-free-software-foundation",
@@ -6157,7 +8051,43 @@
           "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
         },
         "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1984-01",
+          "precision": "month",
+          "label": "GNU development begins.",
+          "source": "https://www.gnu.org/gnu/gnu-history.en.html",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "structural-only",
+          "label": "Continuation known; date needed",
+          "evidence_type": "undated structural reproduction"
+        },
+        "today": {
+          "state": "structural-only",
+          "label": "Today structural"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover earliest dated post-Door reproduction event",
+        "find one or more honest current footprint measures, if meaningful for this domain",
+        "recover dated second-Door/refoundation event"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:linux-kernel-foundation",
@@ -6277,7 +8207,42 @@
           "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
         },
         "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "1991-08",
+          "precision": "month",
+          "label": "Linus Torvalds announces the Linux kernel project while at the University of Helsinki.",
+          "source": "https://www.linuxfoundation.org/about/leadership",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "structural-only",
+          "label": "Continuation known; date needed",
+          "evidence_type": "undated structural reproduction"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "point-ready",
+          "label": "Point-ready"
+        }
+      },
+      "research_queue": [
+        "recover earliest dated post-Door reproduction event",
+        "recover dated second-Door/refoundation event"
+      ]
     },
     {
       "foundation_room_id": "foundation-room:creative-commons-foundation",
@@ -6399,7 +8364,41 @@
           "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
         },
         "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
-      }
+      },
+      "door_history": [
+        {
+          "order": 1,
+          "role": "operating Door",
+          "event_type": "first_operation",
+          "date_or_range": "2001",
+          "precision": "year",
+          "label": "Creative Commons is founded as a nonprofit organization.",
+          "source": "https://creativecommons.org/history/",
+          "status": "documented"
+        }
+      ],
+      "room_status": {
+        "origin": {
+          "state": "documented-or-bounded",
+          "label": "Origin bounded"
+        },
+        "reproduction": {
+          "state": "dated",
+          "label": "Dated continuation",
+          "evidence_type": "dated consolidation/refoundation"
+        },
+        "today": {
+          "state": "quantified",
+          "label": "Today quantified"
+        },
+        "geography": {
+          "state": "distributed-network",
+          "label": "Distributed network"
+        }
+      },
+      "research_queue": [
+        "recover dated second-Door/refoundation event"
+      ]
     }
   ],
   "placement_note": "Primary Room ownership has been resolved across all current Foundation domains; House Architecture owns the shared contract and comparisons, not the substantive identity of domain Foundations.",
