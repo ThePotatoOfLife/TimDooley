@@ -1,5 +1,5 @@
 {
-  "version": "5.8.0",
+  "version": "5.9.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -18,7 +18,10 @@
       "potato-of-life-deep-structure",
       "water-flow-river-drain-atlas",
       "material-state-stone-clay-dust-ash-atlas",
-      "inhabited-house-society-ontology"
+      "inhabited-house-society-ontology",
+      "purpose-growth-orientation-atlas",
+      "planes-routes-metabolism-expanded-atlas",
+      "center-living-metabolism-expanded-atlas"
     ],
     "geometry_and_transformation": [
       "vertical-potato-mountain-plane-atlas",
@@ -64,7 +67,8 @@
       "temple-body-chamber-furniture-atlas",
       "fire-light-heat-symbol-atlas",
       "animal-role-symbol-atlas",
-      "time-cycle-season-sabbath-jubilee-atlas"
+      "time-cycle-season-sabbath-jubilee-atlas",
+      "comparative-placement-cosmography-expanded-atlas"
     ],
     "timeline_and_evidence": [
       "timeline-events",
@@ -113,7 +117,12 @@
       "symbol-conversation-archaeology-wave-002",
       "symbol-confusion-registry-wave-004",
       "symbol-population-matrix-wave-004",
-      "society-population"
+      "society-population",
+      "rare-value-contract",
+      "recent-commit-embodiment-atlas-257-276",
+      "symbol-society-discovery-integration-atlas",
+      "rare-value-undiscovered-knowledge-protocol",
+      "discovery-candidates"
     ]
   },
   "records": [
@@ -1773,6 +1782,143 @@
         "ICRC",
         "Companies",
         "Banks"
+      ]
+    },
+    {
+      "id": "purpose-growth-orientation-atlas",
+      "path": "knowledge/core/purpose-growth-orientation-atlas.json",
+      "branch": "root",
+      "kind": "purpose growth and agency framework",
+      "terms": [
+        "Purpose",
+        "Meaning",
+        "Coherence",
+        "Mattering",
+        "Autonomy",
+        "Competence",
+        "Relatedness",
+        "Capability",
+        "Fruit"
+      ]
+    },
+    {
+      "id": "rare-value-undiscovered-knowledge-protocol",
+      "path": "knowledge/research/rare-value-undiscovered-knowledge-protocol.json",
+      "branch": "research",
+      "kind": "undiscovered public knowledge and bridge-discovery protocol",
+      "terms": [
+        "Rare Value",
+        "Undiscovered Public Knowledge",
+        "Literature Based Discovery",
+        "A B C",
+        "Bridge",
+        "Discovery"
+      ]
+    },
+    {
+      "id": "recent-commit-embodiment-atlas-257-276",
+      "path": "knowledge/research/recent-commit-embodiment-atlas-257-276.json",
+      "branch": "research",
+      "kind": "retrospective embodiment audit for the twenty recent carving commits",
+      "terms": [
+        "Commit 257",
+        "Commit 276",
+        "Embodiment",
+        "Underfed",
+        "Latent Job",
+        "Discovery"
+      ]
+    },
+    {
+      "id": "planes-routes-metabolism-expanded-atlas",
+      "path": "knowledge/core/planes-routes-metabolism-expanded-atlas.json",
+      "branch": "root",
+      "kind": "operational deepening of planes compass Tree Seed and Spiral",
+      "terms": [
+        "Heaven",
+        "World",
+        "Below",
+        "Compass",
+        "Tree",
+        "Seed",
+        "Death",
+        "Spiral",
+        "Return"
+      ]
+    },
+    {
+      "id": "comparative-placement-cosmography-expanded-atlas",
+      "path": "knowledge/traditions/comparative-placement-cosmography-expanded-atlas.json",
+      "branch": "traditions",
+      "kind": "existential-problem indexed comparative cosmography atlas",
+      "terms": [
+        "Cosmography",
+        "Death",
+        "Knowledge",
+        "Judgment",
+        "Purification",
+        "Belonging",
+        "Transformation",
+        "Ecology"
+      ]
+    },
+    {
+      "id": "center-living-metabolism-expanded-atlas",
+      "path": "knowledge/core/center-living-metabolism-expanded-atlas.json",
+      "branch": "root",
+      "kind": "center lenses Spirit Mind Body History Culture and repair integration",
+      "terms": [
+        "Center",
+        "Spirit",
+        "Mind",
+        "Body",
+        "History",
+        "Culture",
+        "Garden",
+        "Repair",
+        "Revision",
+        "Fruit"
+      ]
+    },
+    {
+      "id": "symbol-society-discovery-integration-atlas",
+      "path": "knowledge/research/symbol-society-discovery-integration-atlas.json",
+      "branch": "research",
+      "kind": "integration of typed symbols with society and discovery",
+      "terms": [
+        "Symbols",
+        "Society",
+        "Threshold",
+        "Flow",
+        "Carrier",
+        "Institution",
+        "Discovery",
+        "Literature Based Discovery"
+      ]
+    },
+    {
+      "id": "discovery-candidates",
+      "path": "data/house/discovery-candidates.json",
+      "branch": "house",
+      "kind": "seed source-grounded rare-value discovery candidates",
+      "terms": [
+        "Garden Capability",
+        "Mission Drift",
+        "Epistemic Vigilance",
+        "Discovery Candidate"
+      ]
+    },
+    {
+      "id": "rare-value-contract",
+      "path": "data/house/rare-value-contract.json",
+      "branch": "house",
+      "kind": "public value promotion contract from reference to discovery",
+      "terms": [
+        "Reference",
+        "Context",
+        "Connection",
+        "Synthesis",
+        "Discovery Candidate"
       ]
     }
   ],
