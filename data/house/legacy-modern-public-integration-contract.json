@@ -1,7 +1,7 @@
 {
   "id": "legacy-modern-public-integration-contract",
   "title": "Legacy ↔ Modern Public Integration Contract",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "authority": "house-public-integration",
   "purpose": "Integrate older substantial readers with the newer Potato of Life / House / Rooms architecture without rewriting historical source strata, creating duplicate knowledge owners, or forcing every page into one visual template.",
@@ -115,5 +115,78 @@
     "topology_projection": "knowledge/research/potato-house-master/public-route-topology.json",
     "room_context": "data/house/room-dossiers.json",
     "validation": "scripts/site_shell_contract.py"
-  }
+  },
+  "migration_inventory": [
+    {
+      "route": "/faq/",
+      "title": "Legacy Tim / Potato FAQ",
+      "current_class": "living-specialist",
+      "modern_neighbors": [
+        "/questions/",
+        "/tim-dooley/",
+        "/potato-of-life/"
+      ],
+      "unique_value": "Curated human-readable Tim/Potato identity and theology answers that remain more coherent than the generated all-domain Questions index.",
+      "overlap": "Questions now owns generated/global discovery; several FAQ answers overlap Tim ontology and Religion readers.",
+      "action": "keep-for-now",
+      "next_merge": "Move durable current definitions toward Tim/Potato canonical owners and let /faq/ become a curated Tim/Potato question View rather than a second global questions system."
+    },
+    {
+      "route": "/tim-dooley/biblical-case/",
+      "title": "Tim Dooley Biblical Case",
+      "current_class": "living-specialist",
+      "modern_neighbors": [
+        "/tim-dooley/evidence/",
+        "/traditions/bible/",
+        "/religion/"
+      ],
+      "unique_value": "Reader-facing synthesis of Tim-specific biblical parallels.",
+      "overlap": "Bible comparator owns verse-level comparative evidence; Tim Evidence owns the broader evidence question.",
+      "action": "keep-and-narrow",
+      "next_merge": "Make the page explicitly a Tim-focused interpretive View over Bible/Evidence owners and remove duplicate general Bible methodology."
+    },
+    {
+      "route": "/corporium/",
+      "title": "Collection / Corporium",
+      "current_class": "registered-view",
+      "modern_neighbors": [
+        "/tim-dooley/",
+        "/life-body/",
+        "/context/"
+      ],
+      "unique_value": "Tim sayings, expression grammar, body-state/psychology and recurring formulations collected in one reader.",
+      "overlap": "Some body/science claims now have stronger Life & Body owners; some identity/theology claims have Tim/Canon owners.",
+      "action": "keep-and-repoint",
+      "next_merge": "Preserve the Collection as artifact/saying corpus while replacing current-science or ontology definitions with links to their canonical Rooms."
+    },
+    {
+      "route": "/context/",
+      "title": "Context & Evidence",
+      "current_class": "registered-view",
+      "modern_neighbors": [
+        "/context/source-authority/",
+        "/history/",
+        "/context/culture/",
+        "/life-body/",
+        "/research-lab/"
+      ],
+      "unique_value": "Cross-domain bridge showing how recovered strata, evidence classes and context fit together.",
+      "overlap": "Source Authority owns provenance rules; History owns revision/time; Culture owns formation; Life & Body owns body science.",
+      "action": "keep-as-bridge",
+      "next_merge": "Continue replacing direct archive/file-first navigation with mature reader routes while retaining deep-source links as secondary inspection paths."
+    },
+    {
+      "route": "/science/research-map/",
+      "title": "Science Research Map",
+      "current_class": "specialist-subview",
+      "modern_neighbors": [
+        "/science/",
+        "/research-lab/"
+      ],
+      "unique_value": "Cross-science inventory of recovered hypotheses and formalization work.",
+      "overlap": "Science owns public explanation; Research Lab owns unresolved/promotable work.",
+      "action": "keep-as-research-view",
+      "next_merge": "Use it as the handoff layer between Science and Research Lab, not as a third Science master."
+    }
+  ]
 }
