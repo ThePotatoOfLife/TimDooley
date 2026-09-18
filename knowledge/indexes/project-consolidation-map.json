@@ -1,7 +1,7 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "updated": "2026-09-18",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
@@ -205,18 +205,16 @@
       "House data holdings no longer advertise legacy deep files or root-navigation as active owners.",
       "project-workflow navigation authority now points to House public surfaces/topology/manifest rather than root-navigation.",
       "Life/Body now opts into the shared concept-topology context instead of remaining an isolated reader.",
-      "public-route-topology is retained only as a compatibility/topology projection while multiple validators still consume it."
+      "public-route-topology is retained only as a compatibility/topology projection while multiple validators still consume it.",
+      "Foundation validation now derives canonical record waves from data/house/foundation-integration-contract.json rather than hard-coding wave 001 + wave 002.",
+      "House reader now loads Foundation wave 003 so Home, House and Foundation Timeline describe the same 52-Foundation corpus.",
+      "Timeline product naming is being normalized away from active 'Chronology' labels while retaining chronology as a legitimate conceptual/analytical term."
     ],
     "next_retirement_candidates": [
       {
         "path": "knowledge/research/potato-house-master/public-route-topology.json",
         "target_state": "generated compatibility projection",
         "condition": "derive records deterministically from data/house/public-surfaces.json plus only genuinely additional topology fields"
-      },
-      {
-        "path": "scripts/validate_root_navigation.py",
-        "target_state": "archive or delete",
-        "condition": "confirm no workflow/import still consumes the retired World/Axis public contract"
       },
       {
         "path": "docs/POTATOVERSE.md",
@@ -227,6 +225,13 @@
         "path": "root-level legacy master/research files",
         "target_state": "historical source strata",
         "condition": "complete unique-content and live-reference audit before pruning"
+      }
+    ],
+    "completed_retirements": [
+      {
+        "path": "scripts/validate_root_navigation.py",
+        "action": "deleted",
+        "reason": "orphaned validator enforced retired WORLD/AXIS-only public-root contract; historical provenance remains in data/root-navigation.json and docs/ROOT-NAVIGATION-ARCHITECTURE.md"
       }
     ]
   }
