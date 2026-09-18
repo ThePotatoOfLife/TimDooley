@@ -1,5 +1,5 @@
 {
-  "version": "4.2.0",
+  "version": "4.3.0",
   "updated": "2026-09-18",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
@@ -344,7 +344,7 @@
       "title": "Memory & Recovery",
       "dwelling_id": "archive-sources",
       "purpose": "Recover prior conversations, files, historical strata and forgotten project material while preserving source/time boundaries.",
-      "primary_file_count": 2,
+      "primary_file_count": 3,
       "featured_holdings": [
         {
           "path": "knowledge/indexes/conversation-recovery-inventory.json",
@@ -356,6 +356,12 @@
           "path": "knowledge/indexes/memory-recovery-method-atlas.json",
           "id": "memory-recovery-method-atlas",
           "kind": "recovery method and temporal-strata atlas",
+          "basis": "room-deepening"
+        },
+        {
+          "path": "knowledge/indexes/memory-recovery-promotion-state-atlas.json",
+          "id": "memory-recovery-promotion-state-atlas",
+          "kind": "recovery-to-canon promotion state machine",
           "basis": "room-deepening"
         }
       ],
@@ -1376,13 +1382,19 @@
       "title": "Politics & Governance",
       "dwelling_id": "world-systems",
       "purpose": "Own documented political positions, governance structures, institutions and geopolitical relations as world-system material.",
-      "primary_file_count": 1,
+      "primary_file_count": 2,
       "featured_holdings": [
         {
           "path": "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
           "id": "tim-dooley-politics-geopolitics-compendium",
           "kind": "room holding",
           "basis": "politics-family"
+        },
+        {
+          "path": "knowledge/politics/governance-institutions-policy-lifecycle-atlas.json",
+          "id": "governance-institutions-policy-lifecycle-atlas",
+          "kind": "neutral governance institutions and policy-lifecycle atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1470,7 +1482,7 @@
       "title": "Economy & Finance",
       "dwelling_id": "world-systems",
       "purpose": "Own observable finance, debt, banking, trade, ownership, production, labour and economic flows.",
-      "primary_file_count": 4,
+      "primary_file_count": 5,
       "featured_holdings": [
         {
           "path": "knowledge/economics/gold-indexed-sovereign-bond-model.json",
@@ -1494,6 +1506,12 @@
           "path": "knowledge/economics/stock-flow-obligation-network-atlas.json",
           "id": "stock-flow-obligation-network-atlas",
           "kind": "stock-flow-balance-sheet and obligation network grammar",
+          "basis": "room-deepening"
+        },
+        {
+          "path": "knowledge/economics/public-finance-fiscal-capacity-atlas.json",
+          "id": "public-finance-fiscal-capacity-atlas",
+          "kind": "government balance-sheet and fiscal-capacity atlas",
           "basis": "room-deepening"
         }
       ],
@@ -1584,7 +1602,7 @@
       "title": "Geography & Countries",
       "dwelling_id": "world-systems",
       "purpose": "Own countries, territories, geographic identity, boundaries and country-level relational context.",
-      "primary_file_count": 5,
+      "primary_file_count": 6,
       "featured_holdings": [
         {
           "path": "knowledge/geopolitics/greater-israel-covenant-land-tikkun-atlas.json",
@@ -1615,6 +1633,12 @@
           "id": "geography-place-state-boundary-atlas",
           "kind": "neutral geographic object and boundary atlas",
           "basis": "room-deepening"
+        },
+        {
+          "path": "knowledge/world/country-capability-dependency-atlas.json",
+          "id": "country-capability-dependency-atlas",
+          "kind": "country capability dependency and complementarity atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1634,7 +1658,7 @@
       "title": "Internet & Platforms",
       "dwelling_id": "culture-information",
       "purpose": "Own platforms, online spaces, public digital behavior, media formats and platform-specific context.",
-      "primary_file_count": 2,
+      "primary_file_count": 3,
       "featured_holdings": [
         {
           "path": "knowledge/culture/digital-witness-livestream-liturgy.json",
@@ -1646,6 +1670,12 @@
           "path": "knowledge/culture/platform-mechanics-atlas.json",
           "id": "platform-mechanics-atlas",
           "kind": "platform mediation and mechanics atlas",
+          "basis": "room-deepening"
+        },
+        {
+          "path": "knowledge/culture/platform-governance-portability-atlas.json",
+          "id": "platform-governance-portability-atlas",
+          "kind": "platform governance dependency and portability atlas",
           "basis": "room-deepening"
         }
       ],
@@ -1734,7 +1764,7 @@
       "title": "Information Ecology & Memory",
       "dwelling_id": "culture-information",
       "purpose": "Own attention, information flow, repetition, memory, forgetting, transmission and public-discourse ecology.",
-      "primary_file_count": 2,
+      "primary_file_count": 3,
       "featured_holdings": [
         {
           "path": "knowledge/world/digital-memory-forgetting-restoration-atlas.json",
@@ -1746,6 +1776,12 @@
           "path": "knowledge/culture/information-ecology-mechanics-atlas.json",
           "id": "information-ecology-mechanics-atlas",
           "kind": "attention, memory and correction mechanics atlas",
+          "basis": "room-deepening"
+        },
+        {
+          "path": "knowledge/culture/information-correction-memory-repair-atlas.json",
+          "id": "information-correction-memory-repair-atlas",
+          "kind": "correction propagation and memory repair atlas",
           "basis": "room-deepening"
         }
       ],
@@ -6378,6 +6414,36 @@
     {
       "path": "knowledge/traditions/sacred-geometry-method-and-invariants-atlas.json",
       "primary_owner_room_id": "esoteric-sacred-geometry",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/politics/governance-institutions-policy-lifecycle-atlas.json",
+      "primary_owner_room_id": "politics-governance",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/indexes/memory-recovery-promotion-state-atlas.json",
+      "primary_owner_room_id": "memory-recovery",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/culture/platform-governance-portability-atlas.json",
+      "primary_owner_room_id": "internet-platforms",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/culture/information-correction-memory-repair-atlas.json",
+      "primary_owner_room_id": "information-ecology",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/world/country-capability-dependency-atlas.json",
+      "primary_owner_room_id": "geography-countries",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/economics/public-finance-fiscal-capacity-atlas.json",
+      "primary_owner_room_id": "economy-finance",
       "basis": "room-deepening"
     }
   ],
