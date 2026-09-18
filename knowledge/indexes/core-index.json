@@ -1,5 +1,5 @@
 {
-  "version": "4.6.0",
+  "version": "4.7.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -80,7 +80,9 @@
       "house-topology",
       "house-interfaces",
       "house-architectural-vocabulary",
-      "house-projections"
+      "house-projections",
+      "house-structural-census",
+      "house-population-contract"
     ]
   },
   "records": [
@@ -1100,6 +1102,46 @@
         "integrated plurality",
         "noncollapse"
       ]
+    },
+    {
+      "id": "house-structural-census",
+      "path": "data/house/structural-census.json",
+      "branch": "root",
+      "kind": "multi-role census of Fields, Vineyards, Paths, Views, Courts, Gates, Archives, Treasuries, Foundations, States and other House structures",
+      "terms": [
+        "Field",
+        "Vineyard",
+        "Programme",
+        "Path",
+        "View",
+        "Court",
+        "Table",
+        "Gate",
+        "Door",
+        "Archive",
+        "Treasury",
+        "Foundation",
+        "Pillar",
+        "State",
+        "Tabernacle",
+        "Vessel"
+      ]
+    },
+    {
+      "id": "house-population-contract",
+      "path": "data/house/population-contract.json",
+      "branch": "root",
+      "kind": "population, inheritance and promotion contract for House structures",
+      "terms": [
+        "population",
+        "inheritance",
+        "promotion",
+        "owner",
+        "source",
+        "public surface",
+        "structural role",
+        "Chamber reserve"
+      ]
     }
   ],
   "retrieval_routes": [
@@ -1279,6 +1321,15 @@
         "house-architectural-vocabulary",
         "potato-house-constitution",
         "house-topology"
+      ]
+    },
+    {
+      "question": "What kind of structure is this if it is not a Room?",
+      "records": [
+        "house-structural-census",
+        "house-population-contract",
+        "house-architectural-vocabulary",
+        "potato-house-constitution"
       ]
     }
   ],
