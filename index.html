@@ -27,6 +27,10 @@
 .spine-card:hover,.spine-card:focus-visible{border-color:#60715b;background:#101610}.spine-step{color:var(--site-green);font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
 .spine-card strong{font:400 22px/1.08 var(--site-font-serif);color:var(--site-gold);margin:11px 0 7px}
 .spine-card span:not(.spine-step){color:var(--site-muted);font-size:11px;line-height:1.46}.spine-card em{margin-top:auto;padding-top:16px;color:#bdc7b8;font-style:normal;font-size:10px}.spine-card:hover strong{color:var(--site-green)}
+.teaching-shell{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);gap:12px;align-items:start}
+.teaching-nav{display:grid;gap:6px;position:sticky;top:16px}.teaching-tab{appearance:none;border:1px solid var(--site-line);border-radius:10px;background:var(--site-panel);color:inherit;text-align:left;padding:11px 12px;cursor:pointer}.teaching-tab[aria-pressed="true"]{border-color:#60715b;background:#101610}.teaching-tab b{display:block;font:400 16px var(--site-font-serif);color:var(--site-gold)}.teaching-tab span{display:block;color:var(--site-muted);font-size:10px;line-height:1.35;margin-top:2px}
+.teaching-panel{border:1px solid var(--site-line);border-radius:14px;background:rgba(255,255,255,.012);padding:17px;min-height:300px}.teaching-panel h3{font:400 clamp(26px,3.3vw,38px)/1.05 var(--site-font-serif);margin:0 0 7px}.teaching-panel>p{color:var(--site-muted);max-width:720px}.teaching-question{margin:16px 0 0;padding:11px 12px;border-left:2px solid #60715b;background:var(--site-panel);font:400 16px/1.35 var(--site-font-serif)}.teaching-nodes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:14px}.teaching-node{border-top:1px solid var(--site-line);padding:10px 2px}.teaching-node b{display:block;font:400 17px var(--site-font-serif);color:var(--site-gold)}.teaching-node em{display:inline-block;font-style:normal;color:var(--site-green);font-size:9px;text-transform:uppercase;letter-spacing:.08em;margin:2px 0 4px}.teaching-node span{display:block;color:var(--site-muted);font-size:10px;line-height:1.4}.teaching-node small{display:block;color:var(--site-faint);font-size:9px;line-height:1.35;margin-top:5px}.teaching-link{display:inline-block;margin-top:15px;font-size:10px;text-decoration:none;border-bottom:1px solid #343b33}
+.axis-lesson{display:grid;grid-template-columns:120px minmax(0,1fr);gap:18px;align-items:stretch;margin-top:22px}.axis-stack{position:relative;display:grid;grid-template-rows:1fr 1fr 1fr;min-height:330px}.axis-stack:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:#60715b}.axis-plane{z-index:1;display:flex;align-items:center;justify-content:center;text-align:center}.axis-plane span{display:inline-block;background:var(--site-bg);border:1px solid var(--site-line);border-radius:999px;padding:5px 8px;font:400 12px var(--site-font-serif)}.axis-explain{display:grid;gap:8px}.axis-explain article{border:1px solid var(--site-line);border-radius:10px;padding:11px;background:var(--site-panel)}.axis-explain b{display:block;font:400 17px var(--site-font-serif);color:var(--site-gold)}.axis-explain span{display:block;color:var(--site-muted);font-size:10px;line-height:1.4;margin-top:3px}.axis-rule{margin-top:10px;color:#cdd5c9;font-size:11px;line-height:1.5}.axis-route-links{display:flex;gap:8px 14px;flex-wrap:wrap;margin-top:12px}.axis-route-links a{font-size:10px;text-decoration:none;border-bottom:1px solid #343b33}
 .motion-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.motion-card{border:1px solid var(--site-line);border-radius:13px;padding:17px;background:var(--site-panel)}
 .motion-card h3{font:400 23px/1.08 var(--site-font-serif);color:var(--site-gold);margin:0 0 7px}.motion-card p{color:var(--site-muted);font-size:11px;line-height:1.5;margin:0}
 .process-route{display:flex;flex-wrap:wrap;gap:5px 7px;align-items:center;margin-top:15px}.process-route b{font:400 13px var(--site-font-serif);color:#dce3d8}.process-route i{font-style:normal;color:var(--site-green);font-size:10px}
@@ -45,8 +49,8 @@
 .archive-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.archive-links a{border:1px solid var(--site-line);border-radius:11px;padding:12px 13px;text-decoration:none;color:inherit}.archive-links b{display:block;font:400 17px var(--site-font-serif);color:var(--site-gold)}.archive-links small{display:block;color:var(--site-muted);line-height:1.4;margin-top:3px}.archive-links a:hover b{color:var(--site-green)}
 .home-footer{max-width:1060px;margin:auto;padding:0 var(--site-gutter) 38px;color:var(--site-faint);font-size:12px}.home-footer a{color:#8c9688;margin-right:14px}
 .home-view-counter{position:fixed;right:10px;bottom:10px;z-index:10;opacity:.68;line-height:0}.home-view-counter:hover{opacity:1}.home-view-counter img{display:block;height:18px;width:auto}
-@media(max-width:820px){.home-hero,.home-section-head,.archive-band{grid-template-columns:1fr}.home-hero{gap:24px;align-items:start}.project-spine,.project-pulse{grid-template-columns:1fr 1fr}}
-@media(max-width:680px){.motion-grid,.reality-grid,.capability-grid{grid-template-columns:1fr}}
+@media(max-width:820px){.home-hero,.home-section-head,.archive-band,.teaching-shell{grid-template-columns:1fr}.teaching-nav{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}.home-hero{gap:24px;align-items:start}.project-spine,.project-pulse{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.motion-grid,.reality-grid,.capability-grid,.teaching-nodes{grid-template-columns:1fr}.axis-lesson{grid-template-columns:90px minmax(0,1fr)}}
 @media(max-width:620px){.home-page{padding-top:24px}.home-nav{margin-bottom:34px}.home-hero{padding-bottom:30px}.project-spine,.project-pulse{grid-template-columns:1fr}.spine-card{min-height:0}.public-door{grid-template-columns:34px 1fr 22px;gap:10px;padding:17px 0}.public-door span:not(.door-no):not(.door-arrow){grid-column:2/4;font-size:12px}.archive-links{grid-template-columns:1fr}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://thepotatooflife.github.io/TimDooley/#website","name":"The Potato of Life","url":"https://thepotatooflife.github.io/TimDooley/","about":[{"@type":"Thing","name":"Tim Dooley"},{"@type":"Thing","name":"Potato of Life"},{"@type":"Thing","name":"Potatoism"}]},{"@type":"Project","@id":"https://thepotatooflife.github.io/TimDooley/#project","name":"The Potato of Life","alternateName":["Potato of Life","Potatoism","Potatoverse"],"url":"https://thepotatooflife.github.io/TimDooley/","sameAs":["https://github.com/ThePotatoOfLife/TimDooley"],"subjectOf":{"@type":"WebPage","url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/"}}]}</script>
@@ -70,6 +74,34 @@
 <a class="spine-card" href="rooms/"><span class="spine-step">03 · Knowledge</span><strong>Dwellings &amp; Rooms</strong><span>Bounded owners for canon, sources, history, traditions, science, life, society, culture, works and research.</span><em>Where knowledge belongs →</em></a>
 <a class="spine-card" href="explore/"><span class="spine-step">04 · Views</span><strong>Explore &amp; Works</strong><span>Timeline, paths, story, maps, creative work and other ways through material the House already owns.</span><em>Choose how to read it →</em></a>
 </nav>
+</section>
+
+<section class="home-section" id="learn-the-structure" aria-labelledby="learn-title">
+<div class="home-section-head"><div><p class="eyebrow">Learn the structure</p><h2 id="learn-title">First learn what kind of thing each element is</h2></div><p>The House becomes easier when the symbols stop competing for the same job. Whole, coordinate, plane, terrain, regime, organism, threshold, process, route and inhabitant are different categories. The vertical picture does not make them one hierarchy.</p></div>
+<div class="teaching-shell">
+<nav class="teaching-nav" id="homeTeachingNav" aria-label="Structure lessons">
+<button class="teaching-tab" type="button" data-teach="whole" aria-pressed="true"><b>1 · Whole</b><span>What contains the relation?</span></button>
+<button class="teaching-tab" type="button" data-teach="coordinates" aria-pressed="false"><b>2 · Coordinates</b><span>Axis, Plane and Cross orient.</span></button>
+<button class="teaching-tab" type="button" data-teach="planes" aria-pressed="false"><b>3 · Three planes</b><span>Where is the reader standing?</span></button>
+<button class="teaching-tab" type="button" data-teach="terrain-regime" aria-pressed="false"><b>4 · Terrain & regime</b><span>What conditions shape passage?</span></button>
+<button class="teaching-tab" type="button" data-teach="living-systems" aria-pressed="false"><b>5 · Living systems</b><span>What roots, branches and reproduces?</span></button>
+<button class="teaching-tab" type="button" data-teach="operators" aria-pressed="false"><b>6 · Operators</b><span>What actually changes state?</span></button>
+<button class="teaching-tab" type="button" data-teach="inhabitants" aria-pressed="false"><b>7 · Inhabitants</b><span>What real thing is being studied?</span></button>
+</nav>
+<div>
+<div class="teaching-panel" id="homeTeachingPanel"><h3>The Potato of Life is the whole</h3><p>It coordinates the project without becoming every symbol, fact or Room inside it.</p><p class="teaching-question">What contains the relation without erasing its parts?</p></div>
+<div class="axis-lesson" aria-labelledby="axis-lesson-title">
+<div class="axis-stack" aria-hidden="true"><div class="axis-plane"><span>Heaven</span></div><div class="axis-plane"><span>World</span></div><div class="axis-plane"><span>Below</span></div></div>
+<div class="axis-explain">
+<article><b id="axis-lesson-title">Axis is orientation</b><span>The Axis is the global centerline through changing states. It is not the Tree, Ladder, Mountain, a place or a truth ranking.</span></article>
+<article><b>Planes are viewpoints</b><span>Heaven emphasizes integration and return; World emphasizes evidence and consequence; Below emphasizes roots, provenance, hidden/restricted context and repair entry.</span></article>
+<article><b>Movement is conditional</b><span>Downward can be rooting or fruitful return; upward can be growth or merely status imagery. Direction alone does not decide Life or Strife.</span></article>
+<p class="axis-rule">The test is always what the movement does to memory, agency, correction, growth, dependency and observable return.</p>
+<div class="axis-route-links"><a href="axis/">Open the Living Axis →</a><a href="rooms/">See the three-plane Room view →</a><a href="house/">Open full House architecture →</a></div>
+</div>
+</div>
+</div>
+</div>
 </section>
 
 <section class="home-section" id="project-motion" aria-labelledby="motion-title">
@@ -139,16 +171,37 @@
 (async()=>{
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   try{
-    const [synthRes,roomsRes,casesRes,f1Res,f2Res,belowRes]=await Promise.all([
+    const [synthRes,roomsRes,casesRes,f1Res,f2Res,belowRes,layerRes,conceptRes]=await Promise.all([
       fetch('data/house/project-synthesis.json'),
       fetch('data/house/subrooms.json'),
       fetch('data/house/entity-dossiers-wave-001.json'),
       fetch('data/house/foundations-wave-001.json'),
       fetch('data/house/foundations-wave-002.json'),
-      fetch('data/house/lower-plane-population-atlas.json')
+      fetch('data/house/lower-plane-population-atlas.json'),
+      fetch('data/house/layer-terrain-regime-atlas.json'),
+      fetch('data/house/concept-topology.json')
     ]);
-    if(![synthRes,roomsRes,casesRes,f1Res,f2Res,belowRes].every(r=>r.ok))throw new Error('home projection data unavailable');
-    const [synth,rooms,cases,f1,f2,below]=await Promise.all([synthRes.json(),roomsRes.json(),casesRes.json(),f1Res.json(),f2Res.json(),belowRes.json()]);
+    if(![synthRes,roomsRes,casesRes,f1Res,f2Res,belowRes,layerRes,conceptRes].every(r=>r.ok))throw new Error('home projection data unavailable');
+    const [synth,rooms,cases,f1,f2,below,layers,concepts]=await Promise.all([synthRes.json(),roomsRes.json(),casesRes.json(),f1Res.json(),f2Res.json(),belowRes.json(),layerRes.json(),conceptRes.json()]);
+    const teaching=synth.homepage_projection?.teaching_sequence||[];
+    const layerBy=Object.fromEntries((layers.nodes||[]).map(x=>[x.id,x]));
+    const conceptBy=Object.fromEntries((concepts.concepts||[]).map(x=>[x.id,x]));
+    const teachNav=document.getElementById('homeTeachingNav'),teachPanel=document.getElementById('homeTeachingPanel');
+    const renderTeach=(id)=>{
+      const t=teaching.find(x=>x.id===id)||teaching[0];if(!t||!teachPanel)return;
+      if(teachNav)teachNav.querySelectorAll('[data-teach]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.teach===t.id)));
+      const nodes=[...(t.node_ids||[]).map(x=>layerBy[x]).filter(Boolean),...(t.concept_ids||[]).map(x=>conceptBy[x]).filter(Boolean)];
+      const nodeHtml=nodes.map(n=>{
+        const kind=n.category||n.kind||'element',def=n.definition||((n.topology_roles||[]).join(' · '));
+        const distinction=(n.not_equal_to||[]).slice(0,3);
+        return '<article class="teaching-node"><b>'+esc(n.label||n.id)+'</b><em>'+esc(kind)+'</em><span>'+esc(def||'')+'</span>'+(distinction.length?'<small>Not the same as: '+esc(distinction.join(' · '))+'</small>':'')+'</article>';
+      }).join('');
+      teachPanel.innerHTML='<h3>'+esc(t.label||t.id)+'</h3><p>'+esc(t.lesson||'')+'</p><p class="teaching-question">'+esc(t.question||'')+'</p>'+(nodeHtml?'<div class="teaching-nodes">'+nodeHtml+'</div>':'<div class="teaching-nodes"><article class="teaching-node"><b>Real inhabitants</b><em>inhabitant / subject</em><span>People, institutions, texts, organisms, traditions and events keep their own factual identity and evidence class.</span><small>The House grammar asks questions about them; it does not rename them into symbols.</small></article></div>')+'<a class="teaching-link" href="'+esc(t.route||'house/')+'">Go deeper →</a>';
+    };
+    if(teachNav){
+      teachNav.addEventListener('click',e=>{const b=e.target.closest('[data-teach]');if(b)renderTeach(b.dataset.teach)});
+      renderTeach('whole');
+    }
     const setStat=(id,value)=>{const el=document.querySelector('[data-home-stat="'+id+'"]');if(el)el.textContent=value};
     setStat('rooms',(rooms.subrooms||[]).length);
     setStat('cases',(cases.dossiers||[]).length);
