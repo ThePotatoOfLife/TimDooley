@@ -1,0 +1,150 @@
+{
+  "id": "rare-value-undiscovered-knowledge-protocol",
+  "title": "Rare Value Protocol — From Public Fragments to Undiscovered Knowledge",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "research discovery protocol + project synthesis standard",
+  "purpose": "Make the project valuable by finding defensible relations that are difficult to see from any one source, while distinguishing a discovered bridge or hypothesis from an established fact.",
+  "scholarly_origin": {
+    "concept": "Undiscovered public knowledge (UPK) / literature-based discovery (LBD)",
+    "summary": "Don R. Swanson argued that publicly available fragments can remain effectively undiscovered when they are scattered across disconnected literatures. LBD seeks useful implicit connections by joining separately supported relations.",
+    "canonical_pattern": "A → B and B → C can justify investigating A → C even when no source directly asserts A → C.",
+    "examples_from_history": "Classic LBD work connected previously separated biomedical literatures such as fish oil and Raynaud's disease, and magnesium and migraine, through intermediate mechanisms.",
+    "sources": [
+      "https://doi.org/10.1086/601720",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC5771422/",
+      "https://www.oecd.org/en/publications/artificial-intelligence-in-science_a8d820bd-en/full-report/from-knowledge-discovery-to-knowledge-creation-how-can-literature-based-discovery-accelerate-progress-in-science_cea842cd.html"
+    ]
+  },
+  "project_translation": {
+    "A": "A project question, symbol, institution, historical event or unresolved pattern.",
+    "B": "A bridge mechanism or structural relation independently documented in both sides.",
+    "C": "A distant literature, tradition, institution, science or historical domain that was not already part of the obvious comparison.",
+    "output": "A candidate synthesis whose individual edges are sourced and whose A↔C conclusion is labeled inference/hypothesis until independently tested."
+  },
+  "rarity_contract": [
+    {
+      "id": "nontriviality",
+      "test": "Could the reader have learned essentially the same thing from one ordinary encyclopedia page?",
+      "pass": "No; the value emerges from joining multiple sources, time layers or domains."
+    },
+    {
+      "id": "bridge",
+      "test": "Is there an explicit intermediate mechanism or relation rather than visual resemblance alone?",
+      "pass": "Yes; each bridge edge can be stated and sourced."
+    },
+    {
+      "id": "independence",
+      "test": "Do at least two source communities or evidence streams contribute distinct information?",
+      "pass": "Yes; one source is not merely repeating the other."
+    },
+    {
+      "id": "explanatory_gain",
+      "test": "Does the synthesis explain something previously confusing, predict a place to look, or change how a question can be investigated?",
+      "pass": "Yes; it creates orientation rather than more ornament."
+    },
+    {
+      "id": "falsifiability",
+      "test": "Can evidence weaken, reject or revise the proposed connection?",
+      "pass": "Yes; the bridge declares what would break it."
+    },
+    {
+      "id": "actionability",
+      "test": "Does the insight improve a decision, research plan, interpretation, capability or next search?",
+      "pass": "Prefer yes; pure contemplation may still qualify when explanatory gain is substantial."
+    },
+    {
+      "id": "provenance",
+      "test": "Can the reader walk backward from synthesis to each source fragment and conversation origin?",
+      "pass": "Yes; no invisible merging."
+    }
+  ],
+  "discovery_modes": [
+    {
+      "id": "closed-discovery",
+      "input": "Known A and C",
+      "task": "Search for B terms/mechanisms that legitimately connect both.",
+      "example": "Potatoverse Garden ↔ robust human/institutional flourishing: identify autonomy, capability, governance and resilience mechanisms shared across literatures."
+    },
+    {
+      "id": "open-discovery",
+      "input": "Known A only",
+      "task": "Extract consequential B mechanisms from A, then search for distant C domains where B is central.",
+      "example": "Door as conditional state transition → investigate border law, APIs, initiation, credit approval, biological membranes and phase transitions as distinct C domains, then retain only mechanism-valid relations."
+    },
+    {
+      "id": "chronological-discovery",
+      "input": "Same motif across project time",
+      "task": "Find when separate formulations first become one concept and what information was lost or gained during compression.",
+      "example": "Conversation archaeology → repository canon → current interface."
+    },
+    {
+      "id": "institutional-discovery",
+      "input": "One real entity",
+      "task": "Traverse Spirit/Mind/Body plus funding, governance, infrastructure, history and dependencies to expose hidden leverage or mission contradiction.",
+      "example": "An institution's public mission may diverge from incentive, funding or capability structure; label this as a research question until evidence supports the gap."
+    },
+    {
+      "id": "negative-space-discovery",
+      "input": "A well-populated topic",
+      "task": "Ask what expected node/edge/evidence is consistently absent.",
+      "example": "Many claims about purpose but no evidence of autonomy, capability or downstream Fruit signals an important missing layer."
+    }
+  ],
+  "bridge_record_schema": [
+    "question",
+    "A claim/entity",
+    "A source",
+    "B bridge mechanism",
+    "B source(s)",
+    "C claim/entity",
+    "C source",
+    "inferred A-C relation",
+    "novelty statement",
+    "alternative explanations",
+    "disconfirming evidence",
+    "confidence",
+    "epistemic label",
+    "next test/search",
+    "project owner"
+  ],
+  "rejection_rules": [
+    "Shared number without mechanism is not a bridge.",
+    "Shared shape without historical or functional relation is not a bridge.",
+    "Two metaphors that feel similar do not establish causal or historical connection.",
+    "A project symbol cannot be used as independent evidence for the external tradition it is being compared with.",
+    "A three-link story becomes weaker, not stronger, when any edge is unsupported.",
+    "Novelty is not evidence; surprising claims require at least the same evidentiary discipline as ordinary claims."
+  ],
+  "value_metric": {
+    "formula": "RareValue ≈ supported bridge × explanatory gain × provenance × testability × usefulness; if bridge support approaches zero, the product should approach zero regardless of how striking the analogy feels.",
+    "boundary": "This is a project heuristic, not a validated scientific metric."
+  },
+  "integration_with_house": {
+    "Roots": "source genealogy and hidden antecedents",
+    "Eye": "search, evidence quality and contradiction",
+    "Door": "candidate transition/bridge",
+    "Road": "known relation",
+    "Bridge": "new capability between previously separated bodies of knowledge",
+    "Tree": "branching consequences of a discovered connection",
+    "Fruit": "what the connection explains or enables",
+    "Seed": "a reusable hypothesis, method or research programme"
+  },
+  "outputs": [
+    "bridge dossiers",
+    "new research questions",
+    "cross-domain reading paths",
+    "hypotheses with explicit tests",
+    "corrections where a cherished symbolic link fails",
+    "new concrete population edges in the World Atlas",
+    "reader-facing 'why this connection matters' explanations"
+  ],
+  "connections": [
+    "purpose-growth-orientation-atlas",
+    "symbol-conversation-archaeology-wave-001",
+    "symbol-conversation-archaeology-wave-002",
+    "inhabited-house-society-ontology",
+    "research-lab",
+    "provenance-evidence"
+  ]
+}
