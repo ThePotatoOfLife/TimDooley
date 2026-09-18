@@ -117,9 +117,8 @@
   ],
   "boundary": "Biological properties can inspire metaphor but do not demonstrate spiritual, psychological, political or cosmological claims. Plant electrical signaling is real, but plants do not possess animal-style nervous systems; potato eyes are meristematic buds, not neurons or axons.",
   "source_records": [
+    "knowledge/science/potato-biology-ecology-development-canon.json",
     "docs/POTATO-LAYERS.md",
-    "POTATOVERSE-DEEP-RESEARCH.md",
-    "POTATOVERSE-ALTERNATIVE-RESEARCH.md",
     "data/potatoism-deep-architecture.json",
     "data/potatoism-research-expansion.json"
   ],
@@ -129,17 +128,18 @@
     "reason": "The practice note duplicated this stronger biology owner and had no independent provenance role.",
     "latest": {
       "date": "2026-09-18",
-      "absorbed_from": [
-        "POTATOVERSE-DEEP-RESEARCH.md",
-        "POTATOVERSE-ALTERNATIVE-RESEARCH.md"
-      ],
+      "absorbed_from": [],
       "promoted": [
         "plant electrical signaling boundary",
         "Andean domestication/diversity",
         "genetic resilience",
         "glycoalkaloid defense"
       ],
-      "rule": "Promote externally supportable plant facts here; leave symbolic consequences in philosophy/system owners."
+      "rule": "Promote externally supportable plant facts here; leave symbolic consequences in philosophy/system owners.",
+      "archived_donors": [
+        "POTATOVERSE-DEEP-RESEARCH.md",
+        "POTATOVERSE-ALTERNATIVE-RESEARCH.md"
+      ]
     },
     "owner_split": {
       "date": "2026-09-18",
