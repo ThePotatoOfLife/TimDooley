@@ -189,7 +189,7 @@ def main() -> int:
         library_app,
         (
             "data/christianity/bible-kjv.json","bible-web-book-index.json","libraryBook","libraryChapter",
-            "Torah / Pentateuch","KJV Apocrypha","Hebrews & General Letters","BibleScriptureReader",
+            "Torah (Pentateuch)","KJV Apocrypha","Hebrews and General Letters","BibleScriptureReader",
             "bible-reference-form","WEB text unavailable",
         ),
         "app/bible-library.js", errors,
