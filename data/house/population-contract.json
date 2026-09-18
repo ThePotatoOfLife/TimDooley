@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-18",
   "authority": "house-population-contract",
   "purpose": "Define how the House is populated from existing canonical registries and repository material without multiplying owners.",
@@ -67,6 +67,11 @@
       "promotion": "representation role only"
     },
     {
+      "role": "bridge",
+      "derive": "durable connection that creates capability across an existing separation",
+      "promotion": "connective role only; must preserve both endpoints and state what new traversal/exchange becomes possible"
+    },
+    {
       "role": "gate",
       "derive": "primary perimeter gateway into broad public domain",
       "promotion": "must not be confused with canonical ownership"
@@ -97,6 +102,11 @@
       "promotion": "must not absorb participating Room ownership"
     },
     {
+      "role": "protocol",
+      "derive": "shared grammar/rules for interoperable meaning, evidence, data, standards or passage among heterogeneous nodes",
+      "promotion": "coordination grammar only; must not become a hidden owner or compulsory monopoly"
+    },
+    {
       "role": "state",
       "derive": "regime/lifecycle condition from canonical flow model",
       "promotion": "never treated as identity/container by default"
@@ -124,7 +134,9 @@
     "Containment and role are separate: a Room can host a Field, emit a View, participate in a Vineyard and expose a Door.",
     "Promotion moves responsibility into the correct owner but preserves research/source history.",
     "Roads and Doors are distinct: a Road connects laterally; a Door changes state/context under a guard.",
-    "Population-pulse diagnostics may guide maintenance but never determine truth, prestige or ownership."
+    "Population-pulse diagnostics may guide maintenance but never determine truth, prestige or ownership.",
+    "A Bridge creates capability across separation; it does not erase the separation or merge endpoint ownership.",
+    "A Protocol coordinates heterogeneous nodes through shared grammar; it must preserve local identity and transparent revision/appeal where applicable."
   ],
   "health_checks": [
     "Can a visitor tell whether the thing owns facts or merely presents/routes them?",
