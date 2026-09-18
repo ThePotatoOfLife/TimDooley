@@ -8,6 +8,7 @@
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/traditions/bible/">
 <link rel="stylesheet" href="../../app/bible-study.css">
+<link rel="stylesheet" href="../../app/bible-library.css">
 <link rel="stylesheet" href="../../app/bible-atlas-navigation.css">
 <link rel="stylesheet" href="../../app/bible-dossier-loader.css">
 <link rel="stylesheet" href="../../app/bible-witness-loader.css">
@@ -23,6 +24,54 @@
 <p class="bible-lede">Explore by story, role, symbol, transformation, Bible book or project chronology, then move through one comparison at a time.</p>
 <p class="bible-sub">Project wording, autobiography, scripture, later comparison and independent evidence remain separate evidence classes. A resemblance is not automatically prophecy, identity or historical dependence.</p>
 </header>
+
+<section class="bible-library" id="bible-library" aria-label="Bible scripture library">
+  <div class="bible-library-head">
+    <div>
+      <div class="eyebrow">Scripture library</div>
+      <h2>Read the Bible itself</h2>
+      <p>The comparison atlas sits beside a real book-and-chapter library: the complete 80-book 1611 KJV catalogue is preserved as metadata, while exact chapter reading uses the separate 66-book public-domain World English Bible source.</p>
+    </div>
+    <div class="bible-library-summary" id="bible-library-summary" aria-label="Bible catalogue summary"></div>
+  </div>
+  <p class="bible-library-loading">Loading the scripture catalogue…</p>
+
+  <div class="bible-library-groups" id="bible-library-groups" aria-label="Bible divisions"></div>
+
+  <div class="bible-library-tools">
+    <div class="bible-library-tabs" aria-label="Filter Bible books by section">
+      <button type="button" data-bible-section="all" class="is-active" aria-pressed="true">All 80</button>
+      <button type="button" data-bible-section="old" aria-pressed="false">Old Testament</button>
+      <button type="button" data-bible-section="apocrypha" aria-pressed="false">KJV Apocrypha</button>
+      <button type="button" data-bible-section="new" aria-pressed="false">New Testament</button>
+    </div>
+    <div class="bible-library-search-row">
+      <input id="bible-book-search" type="search" placeholder="Find a book or division — Isaiah, wisdom, gospel…" autocomplete="off" aria-label="Find a Bible book">
+      <span id="bible-book-count">80 books</span>
+    </div>
+    <div class="bible-book-grid" id="bible-book-grid" aria-label="Bible books"></div>
+  </div>
+
+  <section class="bible-library-reader" id="bible-library-reader" hidden aria-label="Selected Bible book">
+    <div class="bible-library-reader-head">
+      <div>
+        <div class="eyebrow">Selected book</div>
+        <h3 id="bible-reader-book">John</h3>
+        <p id="bible-reader-meta"></p>
+      </div>
+      <div class="bible-library-reader-controls">
+        <select id="bible-reader-chapter" aria-label="Choose chapter"></select>
+        <button id="bible-read-chapter" type="button">Read exact WEB chapter</button>
+      </div>
+    </div>
+    <p class="bible-reader-source" id="bible-reader-source"></p>
+    <form class="bible-reference-form" id="bible-reference-form">
+      <input id="bible-reference-input" type="text" placeholder="Open a precise WEB reference — John 12:24; Genesis 28:12-17" aria-label="Bible reference">
+      <button type="submit">Open reference</button>
+    </form>
+    <div class="bible-reference-help">The reference reader supports book + chapter, verse, ranges, comma continuations and semicolon-separated passages inside the current 66-book WEB source.</div>
+  </section>
+</section>
 
 <section class="study-shell" aria-label="Bible comparison study tool">
 <section class="atlas-explorer" id="atlas-explorer" hidden aria-label="Explore the Bible comparison atlas">
@@ -145,6 +194,7 @@
 <script src="../../app/tts-drawer.js"></script>
 <script src="../../app/bible-tts-adapter.js"></script>
 <script src="../../app/bible-scripture-reader.js"></script>
+<script src="../../app/bible-library.js"></script>
 <script src="../../app/bible-scene-reader.js"></script>
 <script src="../../app/bible-atlas-ui.js"></script>
 </body>
