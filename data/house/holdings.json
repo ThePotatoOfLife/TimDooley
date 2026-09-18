@@ -713,7 +713,7 @@
       "title": "Comparative Mythology",
       "dwelling_id": "traditions-texts",
       "purpose": "Compare world-tree, axis, initiation, deity, death-return and other motifs across traditions without collapsing differences.",
-      "primary_file_count": 6,
+      "primary_file_count": 7,
       "featured_holdings": [
         {
           "path": "knowledge/traditions/biblical-overlap-additions.json",
@@ -748,6 +748,12 @@
         {
           "path": "knowledge/traditions/comparative-cosmography-population-wave-001.json",
           "id": "comparative-cosmography-population-wave-001",
+          "kind": "comparative cosmography population wave",
+          "basis": "comparative-cosmography-population"
+        },
+        {
+          "path": "knowledge/traditions/comparative-cosmography-population-wave-002.json",
+          "id": "comparative-cosmography-population-wave-002",
           "kind": "comparative cosmography population wave",
           "basis": "comparative-cosmography-population"
         }
@@ -5823,6 +5829,11 @@
     },
     {
       "path": "knowledge/traditions/comparative-cosmography-population-wave-001.json",
+      "primary_owner_room_id": "comparative-mythology",
+      "basis": "comparative-cosmography-population"
+    },
+    {
+      "path": "knowledge/traditions/comparative-cosmography-population-wave-002.json",
       "primary_owner_room_id": "comparative-mythology",
       "basis": "comparative-cosmography-population"
     }
