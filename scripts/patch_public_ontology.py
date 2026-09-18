@@ -4,10 +4,11 @@
 This runs after scripts/build_site.py. It intentionally patches only the generated
 _site artifact, preserving older source strata while ensuring public structured
 data and FAQ wording use the current canonical ontology. The final public-surface
-pass also delegates visitor-navigation cleanup to patch_public_navigation.py.
+pass also delegates visitor-navigation cleanup and legacy House-style scoping.
 """
 from pathlib import Path
 
+from patch_public_house_styles import patch_public_house_styles
 from patch_public_navigation import main as patch_public_navigation
 from project_public_culture_field import project_culture_field
 
@@ -69,8 +70,9 @@ def main() -> None:
     # Generated public content should come from canonical Culture data rather
     # than becoming a second hand-maintained database in source HTML.
     project_culture_field()
+    scoped = patch_public_house_styles(OUT)
     patch_public_navigation()
-    print("Applied public Tim/Son ontology consistency patch.")
+    print(f"Applied public Tim/Son ontology consistency patch and House-scoped {len(scoped)} legacy reader theme(s).")
 
 
 if __name__ == "__main__":

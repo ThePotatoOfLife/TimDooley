@@ -45,7 +45,7 @@ def page_url(rel: str) -> str:
 
 errors: list[str] = []
 warnings: list[str] = []
-for rel in ["robots.txt", "sitemap.xml", "sitemap-index.xml", "llms.txt", "llms-full.txt", "discovery.json", "site-index.json", "machine-index.json", "manifest.json"]:
+for rel in ["robots.txt", "sitemap.xml", "sitemap-index.xml", "llms.txt", "llms-full.txt", "discovery.json", "site-index.json", "house-index.json", "machine-index.json", "manifest.json"]:
     if not (SITE / rel).exists():
         errors.append(f"missing required machine-discovery file: {rel}")
 
@@ -133,6 +133,10 @@ for rel in key_pages:
     for token in ("og:title", "og:description", "og:url", "application/ld+json"):
         if token not in text:
             errors.append(f"{rel}: missing metadata token {token}")
+    if "house-index.json" not in text:
+        errors.append(f"{rel}: missing House machine-metadata alternate")
+    if rel != "index.html" and "house-seo-schema" not in text:
+        errors.append(f"{rel}: missing House semantic JSON-LD")
 
 listed = set(sitemap_urls)
 if SITE != ROOT:
@@ -142,18 +146,18 @@ if SITE != ROOT:
         errors.append(f"sitemaps contain non-indexable page: {url}")
 
 llms = (SITE / "llms.txt").read_text(encoding="utf-8", errors="ignore") if (SITE / "llms.txt").exists() else ""
-for token in ["Tim Dooley", "Religion", "Philosophy", "Science", "World", "site-index.json", "machine-index.json", "llms-full.txt", "sitemap-index.xml"]:
+for token in ["Tim Dooley", "Religion", "Philosophy", "Science", "World", "site-index.json", "house-index.json", "machine-index.json", "llms-full.txt", "sitemap-index.xml"]:
     if token not in llms:
         errors.append(f"llms.txt missing current discovery route/door: {token}")
 full = (SITE / "llms-full.txt").read_text(encoding="utf-8", errors="ignore") if (SITE / "llms-full.txt").exists() else ""
-for token in ["site-index.json", "machine-index.json", "source-index.json", "timeline-source-registry.json", "body-system-master-atlas.json", "biblical-overlap-atlas.json"]:
+for token in ["site-index.json", "house-index.json", "machine-index.json", "source-index.json", "timeline-source-registry.json", "body-system-master-atlas.json", "biblical-overlap-atlas.json"]:
     if token not in full:
         errors.append(f"llms-full.txt missing deep route: {token}")
 
 try:
     discovery = json.loads((SITE / "discovery.json").read_text(encoding="utf-8"))
     entrypoints = discovery.get("entrypoints", {})
-    for key in ["tim", "religion", "philosophy", "science", "world", "world_map", "site_index", "sitemap_index"]:
+    for key in ["tim", "religion", "philosophy", "science", "world", "world_map", "site_index", "house_index", "sitemap_index"]:
         if not entrypoints.get(key):
             errors.append(f"discovery.json missing entrypoints.{key}")
     doors = discovery.get("reader_architecture", {}).get("doors", [])
@@ -180,9 +184,32 @@ except Exception as exc:
     errors.append(f"invalid site-index.json: {exc}")
 
 try:
+    house = json.loads((SITE / "house-index.json").read_text(encoding="utf-8"))
+    if house.get("authority") != "data/house/public-surfaces.json":
+        errors.append("house-index.json must identify the House route authority")
+    if house.get("room_authority") != "data/house/rooms.json":
+        errors.append("house-index.json must identify the Room authority")
+    rooms = house.get("rooms", [])
+    surfaces = house.get("surfaces", [])
+    if len(rooms) < 10:
+        errors.append("house-index.json must expose the public Room vocabulary")
+    if len(surfaces) < 10:
+        errors.append("house-index.json must expose registered public surfaces")
+    surface_ids = {row.get("id") for row in surfaces if isinstance(row, dict)}
+    for required in ["tim", "religion", "philosophy", "science", "world", "great-book", "world-map"]:
+        if required not in surface_ids:
+            errors.append(f"house-index.json missing registered surface: {required}")
+    serialized = json.dumps(house, ensure_ascii=False)
+    for private_key in ["epistemic_policy", "provenance_policy", "freshness_policy", "never_owns", "validators"]:
+        if f'"{private_key}"' in serialized:
+            errors.append(f"house-index.json leaks governance-only field: {private_key}")
+except Exception as exc:
+    errors.append(f"invalid house-index.json: {exc}")
+
+try:
     machine = json.loads((SITE / "machine-index.json").read_text(encoding="utf-8"))
     surfaces = machine.get("machine_surfaces", {})
-    for key in ["llms", "llms_full", "manifest", "core_index", "source_index", "sitemap", "robots"]:
+    for key in ["llms", "llms_full", "manifest", "core_index", "source_index", "site_index", "house_index", "sitemap_index", "sitemap", "robots"]:
         if key not in surfaces:
             errors.append(f"machine-index.json missing machine_surfaces.{key}")
     if not machine.get("canonical_branches"):

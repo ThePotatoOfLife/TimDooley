@@ -1,11 +1,21 @@
 #!/usr/bin/env python3
-"""Guard the small public navigation and deployed reader capability contract."""
+"""Guard the public House navigation and deployed reader capability contract."""
 from __future__ import annotations
 
 import re
 import subprocess
 from collections import Counter
 from pathlib import Path
+
+from house_public_surfaces import (
+    EXPECTED_PRIMARY_GATEWAY_IDS,
+    parent_chain,
+    primary_gateway_rows,
+    secondary_global_rows,
+    surface_by_route,
+    surface_rows,
+)
+from house_shell import render_house_bar, relative_href
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "_site"
@@ -59,14 +69,140 @@ CULTURE_FIELD_MARKERS = (
     "Concrete Tree of Strife",
 )
 
+GENERATED_REPRESENTATIVES = (
+    "questions/index.html",
+    "index-a-z/index.html",
+)
+
 
 def duplicate_hrefs(fragment: str) -> list[str]:
     counts = Counter(HREF.findall(fragment))
     return sorted(href for href, count in counts.items() if count > 1)
 
 
+def primary_nav_fragment(text: str) -> str:
+    match = re.search(
+        r'<nav\b[^>]*class=["\'][^"\']*\bsite-primary-nav\b[^"\']*["\'][^>]*>(.*?)</nav>',
+        text,
+        re.I | re.S,
+    )
+    return match.group(1) if match else ""
+
+
+def validate_source_architecture(errors: list[str]) -> None:
+    build_site = (ROOT / "scripts" / "build_site.py").read_text(encoding="utf-8", errors="replace")
+    discovery = (ROOT / "scripts" / "build_discovery.py").read_text(encoding="utf-8", errors="replace")
+    site_css = (ROOT / "app" / "site-system.css").read_text(encoding="utf-8", errors="replace")
+
+    if '"archive"' not in build_site.split("EXCLUDE", 1)[1].split("}", 1)[0]:
+        errors.append("build_site.py does not exclude archive from the public copy boundary")
+    if "DOOR_LABELS" in build_site:
+        errors.append("build_site.py still owns a duplicate DOOR_LABELS taxonomy")
+    if "from house_shell import" not in build_site or "render_house_bar_for_route" not in build_site:
+        errors.append("build_site.py does not consume the shared House renderer")
+    if "<style>:root" in build_site:
+        errors.append("build_site.py still embeds a second global :root theme")
+
+    if "from house_public_surfaces import primary_gateway_rows" not in discovery:
+        errors.append("build_discovery.py does not derive primary Doors from House authority")
+    if "from house_shell import" not in discovery or "render_house_bar_for_route" not in discovery:
+        errors.append("build_discovery.py does not consume the shared House renderer")
+    if "<style>:root" in discovery:
+        errors.append("build_discovery.py still embeds a second global :root theme")
+
+    for marker in (
+        ".site-housebar",
+        ".site-primary-nav",
+        ".site-breadcrumbs",
+        ".site-local-nav",
+        ".site-related",
+        ".site-footer",
+    ):
+        if marker not in site_css:
+            errors.append(f"shared site system missing House primitive: {marker}")
+
+
+def validate_house_authority(errors: list[str]) -> None:
+    try:
+        rows = surface_rows(ROOT)
+        primary = primary_gateway_rows(ROOT)
+        secondary = secondary_global_rows(ROOT)
+        ids = tuple(row["id"] for row in primary)
+        if ids != EXPECTED_PRIMARY_GATEWAY_IDS:
+            errors.append(f"primary gateway order mismatch: {ids!r}")
+
+        great_book = surface_by_route(ROOT, "/great-book/")
+        if not great_book or great_book.get("id") != "great-book":
+            errors.append("Great Book is not registered at /great-book/")
+        elif great_book.get("shell_type") != "longform":
+            errors.append("Great Book must use the longform shell")
+
+        secondary_ids = {row["id"] for row in secondary}
+        if "great-book" not in secondary_ids:
+            errors.append("Great Book is not globally discoverable")
+
+        for row in rows:
+            if row.get("status") != "active":
+                continue
+            try:
+                parent_chain(ROOT, row["id"])
+            except ValueError as exc:
+                errors.append(str(exc))
+
+        housebar = render_house_bar(ROOT, "world")
+        for label in ("Tim Dooley", "Religion", "Philosophy", "Science", "World"):
+            if label not in housebar:
+                errors.append(f"House renderer missing primary Door label: {label}")
+        primary_fragment = primary_nav_fragment(housebar)
+        if "World Map" in re.sub(r"\s+", " ", primary_fragment):
+            errors.append("House primary navigation still exposes World Map as a primary Door")
+        if 'aria-current="page"' not in housebar:
+            errors.append("House renderer does not mark the current Door")
+        if relative_href("/tim-dooley/story/", "/tim-dooley/") != "../":
+            errors.append("House relative route resolver returned an unexpected Tim parent href")
+    except ValueError as exc:
+        errors.append(f"House public-surface authority invalid: {exc}")
+
+
+def validate_generated_house_pages(errors: list[str]) -> None:
+    if not SITE.exists():
+        return
+
+    representatives = list(GENERATED_REPRESENTATIVES)
+    topics = sorted((SITE / "topics").glob("*/index.html")) if (SITE / "topics").exists() else []
+    records = sorted((SITE / "records").glob("*/index.html")) if (SITE / "records").exists() else []
+    contexts = sorted((SITE / "context").glob("*/index.html")) if (SITE / "context").exists() else []
+    for collection in (topics, records, contexts):
+        if collection:
+            representatives.append(str(collection[0].relative_to(SITE)))
+
+    expected_labels = [row["title"] for row in primary_gateway_rows(ROOT)]
+    for rel in representatives:
+        path = SITE / rel
+        if not path.exists():
+            errors.append(f"missing generated House representative: {rel}")
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        if "site-housebar" not in text:
+            errors.append(f"generated page lacks shared House bar: {rel}")
+        if "app/site-system.css" not in text and "../app/site-system.css" not in text:
+            if "site-system.css" not in text:
+                errors.append(f"generated page does not load shared site system: {rel}")
+        primary = primary_nav_fragment(text)
+        if not primary:
+            errors.append(f"generated page lacks primary Door nav: {rel}")
+            continue
+        for label in expected_labels:
+            if label not in primary:
+                errors.append(f"generated primary nav missing {label!r}: {rel}")
+        if "World Map" in primary:
+            errors.append(f"generated primary nav incorrectly exposes World Map as a Door: {rel}")
+
+
 def main() -> int:
     errors: list[str] = []
+    validate_source_architecture(errors)
+    validate_house_authority(errors)
 
     culture_contract = subprocess.run(
         ["python", str(ROOT / "scripts" / "test_concrete_culture_field.py")],
@@ -84,6 +220,12 @@ def main() -> int:
         pages: list[Path] = []
     else:
         pages = sorted(SITE.rglob("*.html"))
+        archive_html = sorted((SITE / "archive").rglob("*.html")) if (SITE / "archive").exists() else []
+        if archive_html:
+            preview = ", ".join(str(path.relative_to(SITE)) for path in archive_html[:10])
+            errors.append(f"historical archive HTML leaked into _site: {preview}")
+
+    validate_generated_house_pages(errors)
 
     for page in pages:
         text = page.read_text(encoding="utf-8", errors="replace")
@@ -127,6 +269,14 @@ def main() -> int:
             text = path.read_text(encoding="utf-8", errors="replace")
             if '../../religion/' not in text:
                 errors.append(f"{rel} does not link back to its Religion parent hub")
+
+    legacy_book = SITE / "great-book.html"
+    if legacy_book.exists():
+        book_text = legacy_book.read_text(encoding="utf-8", errors="replace")
+        if 'content="noindex,follow"' not in book_text:
+            errors.append("great-book.html compatibility route must be noindex,follow")
+        if "./great-book/" not in book_text:
+            errors.append("great-book.html compatibility route does not redirect to /great-book/")
 
     for rel, surface_id in CANONICAL_READER_SURFACES.items():
         path = SITE / rel
@@ -196,7 +346,7 @@ def main() -> int:
     print(
         f"PUBLIC NAVIGATION VALIDATION PASSED ({len(pages)} HTML pages checked; "
         f"{len(PROJECTED_TTS_PAGES)} projected TTS surfaces; "
-        f"{len(CANONICAL_READER_SURFACES)} canonical reader IDs; concrete Culture field)"
+        f"{len(CANONICAL_READER_SURFACES)} canonical reader IDs; shared generated House shell; concrete Culture field)"
     )
     return 0
 

@@ -229,6 +229,9 @@ jobs:
       - name: Check CSS namespaces
         run: python scripts/check_css_namespace_collisions.py
 
+      - name: Validate House accessibility and responsive contracts
+        run: python scripts/validate_house_accessibility.py
+
       - name: Check biblical syncretism field
         run: python scripts/check_biblical_syncretism_field.py
 
@@ -287,6 +290,9 @@ jobs:
 
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
+
+      - name: Validate public House style ownership
+        run: python scripts/validate_public_house_styles.py
 
       - name: Enrich weak page descriptions
         run: python scripts/enrich_weak_descriptions.py

@@ -20,6 +20,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote, urlparse
 
+from house_public_surfaces import primary_gateway_rows
+from house_public_surfaces import parent_chain, surface_by_route, surface_rows, surfaces_by_id
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
 PUBLIC_BASE_URL = "https://thepotatooflife.github.io/TimDooley"
@@ -38,13 +41,134 @@ SCRIPT_LD_RE = re.compile(r"<script\b[^>]*type=[\"']application/ld\+json[\"'][^>
 CODE_RE = re.compile(r"<code>([^<]+)</code>", re.I)
 TAG_RE = re.compile(r"<[^>]+>")
 
-PRIMARY_DOORS = (
-    ("tim-dooley", "Tim Dooley"),
-    ("religion", "Religion"),
-    ("philosophy", "Philosophy"),
-    ("science", "Science"),
-    ("world-map", "World Map"),
+PRIMARY_DOORS = tuple(
+    (
+        row["canonical_route"].strip("/").split("/", 1)[0],
+        row["title"],
+        row["canonical_route"],
+    )
+    for row in primary_gateway_rows(ROOT)
 )
+
+
+def public_rooms() -> dict[str, dict]:
+    path = ROOT / "data" / "house" / "rooms.json"
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        raise ValueError(f"cannot load public Room authority: {exc}") from exc
+    rows = data.get("rooms", []) if isinstance(data, dict) else []
+    return {
+        str(row["id"]): row
+        for row in rows
+        if isinstance(row, dict) and row.get("id") and row.get("status") == "active"
+    }
+
+
+def page_house_surface(page: Path) -> dict | None:
+    route = page_relative_route(page)
+    wanted = "/" if not route else f"/{route}/"
+    row = surface_by_route(ROOT, wanted)
+    if not row or row.get("status") != "active":
+        return None
+    return row
+
+
+def house_context(page: Path) -> dict | None:
+    surface = page_house_surface(page)
+    if not surface:
+        return None
+    rooms = public_rooms()
+    parent_id = surface.get("primary_parent")
+    parent = surfaces_by_id(ROOT).get(parent_id) if parent_id else None
+    return {
+        "surface_id": surface["id"],
+        "surface_type": surface["surface_type"],
+        "shell_type": surface["shell_type"],
+        "navigation_group": surface["navigation_group"],
+        "visibility": surface["visibility"],
+        "primary_parent": parent_id,
+        "parent_url": f"{BASE_URL}{parent['canonical_route']}" if parent else None,
+        "room_ids": list(surface.get("primary_room_ids", [])),
+        "rooms": [
+            {"id": room_id, "title": rooms[room_id]["title"]}
+            for room_id in surface.get("primary_room_ids", [])
+            if room_id in rooms
+        ],
+    }
+
+
+def build_house_index() -> dict:
+    rooms = public_rooms()
+    active_surfaces = [row for row in surface_rows(ROOT) if row.get("status") == "active"]
+    payload = {
+        "schema_version": "1.1.0",
+        "generated": datetime.now(timezone.utc).date().isoformat(),
+        "canonical_site": BASE_URL + "/",
+        "authority": "data/house/public-surfaces.json",
+        "room_authority": "data/house/rooms.json",
+        "policy": "Public semantic topology only; governance, validator and internal ownership policy fields are not projected.",
+        "primary_doors": [
+            {"id": row["id"], "title": row["title"], "url": f"{BASE_URL}{row['canonical_route']}"}
+            for row in primary_gateway_rows(ROOT)
+        ],
+        "rooms": [
+            {
+                "id": room["id"],
+                "title": room["title"],
+                "purpose": room.get("purpose", ""),
+            }
+            for room in rooms.values()
+        ],
+        "surfaces": [
+            {
+                "id": row["id"],
+                "title": row["title"],
+                "url": f"{BASE_URL}{row['canonical_route']}",
+                "surface_type": row["surface_type"],
+                "shell_type": row["shell_type"],
+                "navigation_group": row["navigation_group"],
+                "visibility": row["visibility"],
+                "primary_parent": row.get("primary_parent"),
+                "room_ids": list(row.get("primary_room_ids", [])),
+            }
+            for row in active_surfaces
+        ],
+    }
+    (OUT / "house-index.json").write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    return payload
+
+
+def house_page_schema(page: Path, title: str) -> str | None:
+    context = house_context(page)
+    if not context:
+        return None
+    data = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": page_url(page) + "#house-context",
+        "url": page_url(page),
+        "name": strip_site_suffix(title),
+        "isPartOf": {
+            "@type": "WebPage" if context.get("parent_url") else "WebSite",
+            "@id": (context.get("parent_url") or (BASE_URL + "/")) + ("#webpage" if context.get("parent_url") else "#website"),
+            "url": context.get("parent_url") or (BASE_URL + "/"),
+        },
+        "about": [
+            {
+                "@type": "Thing",
+                "@id": f"{BASE_URL}/house-index.json#room-{room['id']}",
+                "name": room["title"],
+                "identifier": room["id"],
+            }
+            for room in context["rooms"]
+        ],
+        "additionalType": f"{BASE_URL}/house-index.json#surface-{context['surface_id']}",
+    }
+    return json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 
 
 def attrs(tag: str) -> dict[str, str]:
@@ -171,6 +295,22 @@ def strip_site_suffix(title: str) -> str:
 
 
 def breadcrumb_items(page: Path, title: str) -> list[dict]:
+    surface = page_house_surface(page)
+    if surface:
+        chain = parent_chain(ROOT, surface["id"])
+        items = []
+        for position, row in enumerate(chain, start=1):
+            name = SITE_NAME if row["id"] == "home" else row["title"]
+            if row["id"] == surface["id"]:
+                name = strip_site_suffix(title)
+            items.append({
+                "@type": "ListItem",
+                "position": position,
+                "name": name,
+                "item": f"{BASE_URL}{row['canonical_route']}",
+            })
+        return items
+
     route = page_relative_route(page)
     items = [{"@type": "ListItem", "position": 1, "name": SITE_NAME, "item": BASE_URL + "/"}]
     if not route:
@@ -231,6 +371,8 @@ def inject_metadata(text: str, page: Path) -> tuple[str, int]:
         added.append(f'<link rel="alternate" type="text/plain" href="{BASE_URL}/llms.txt" title="LLM retrieval index">')
     if not has_alternate(text, BASE_URL + "/site-index.json", "application/json"):
         added.append(f'<link rel="alternate" type="application/json" href="{BASE_URL}/site-index.json" title="Canonical page index">')
+    if not has_alternate(text, BASE_URL + "/house-index.json", "application/json"):
+        added.append(f'<link rel="alternate" type="application/json" href="{BASE_URL}/house-index.json" title="House topology index">')
     social = {
         "og:type": "website" if page == OUT / "index.html" else "article",
         "og:site_name": SITE_NAME,
@@ -249,6 +391,9 @@ def inject_metadata(text: str, page: Path) -> tuple[str, int]:
         added.append(f'<script type="application/ld+json">{basic_webpage_schema(title, description, canonical)}</script>')
     if 'id="site-discovery-schema"' not in text:
         added.append(f'<script id="site-discovery-schema" type="application/ld+json">{site_graph_schema(page, title)}</script>')
+    house_schema = house_page_schema(page, title)
+    if house_schema and 'id="house-seo-schema"' not in text:
+        added.append(f'<script id="house-seo-schema" type="application/ld+json">{house_schema}</script>')
     if not re.search(r"<html\b[^>]*\blang=", text, re.I):
         text = re.sub(r"<html\b", '<html lang="en"', text, count=1, flags=re.I)
     if added:
@@ -369,7 +514,7 @@ def classify_page(route: str) -> tuple[str, str]:
         return "record", "records"
     if route.startswith("science/papers/"):
         return "science-paper", "science"
-    if first in {key for key, _ in PRIMARY_DOORS}:
+    if first in {key for key, _, _ in PRIMARY_DOORS}:
         return "reader", first
     return "support", first
 
@@ -386,7 +531,7 @@ def build_site_index(dates: dict[str, str], record_routes: dict[str, str], quest
         route = page_relative_route(page)
         kind, section = classify_page(route)
         title = page_title(text, page)
-        pages.append({
+        item = {
             "url": canonical,
             "path": "/" + route + ("/" if route else ""),
             "title": strip_site_suffix(title),
@@ -394,14 +539,19 @@ def build_site_index(dates: dict[str, str], record_routes: dict[str, str], quest
             "type": kind,
             "section": section,
             "lastmod": source_date_for_url(canonical, dates, record_routes, question_sources, faq_owners),
-        })
+        }
+        house = house_context(page)
+        if house:
+            item["house"] = house
+        pages.append(item)
     payload = {
-        "schema_version": "1.0.0",
+        "schema_version": "1.1.0",
         "generated": datetime.now(timezone.utc).date().isoformat(),
         "canonical_site": BASE_URL + "/",
-        "policy": "Only final, indexable, self-canonical HTML pages are listed.",
+        "policy": "Only final, indexable, self-canonical HTML pages are listed; registered public surfaces include House parentage and Room context.",
         "count": len(pages),
-        "primary_doors": [{"name": name, "url": f"{BASE_URL}/{key}/"} for key, name in PRIMARY_DOORS],
+        "primary_doors": [{"name": name, "url": f"{BASE_URL}{route}"} for _, name, route in PRIMARY_DOORS],
+        "house_index": BASE_URL + "/house-index.json",
         "pages": pages,
     }
     (OUT / "site-index.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -521,6 +671,10 @@ def audit_pages(site_pages: list[dict]) -> tuple[list[str], list[str], dict]:
             errors.append(f"{rel}: missing llms.txt alternate discovery link")
         if not has_alternate(text, BASE_URL + "/site-index.json", "application/json"):
             errors.append(f"{rel}: missing site-index.json alternate discovery link")
+        if not has_alternate(text, BASE_URL + "/house-index.json", "application/json"):
+            errors.append(f"{rel}: missing house-index.json alternate discovery link")
+        if page_house_surface(page) and 'id="house-seo-schema"' not in text:
+            errors.append(f"{rel}: missing House semantic JSON-LD")
         if len(title) > 75:
             warnings.append(f"{rel}: title is long ({len(title)} chars)")
         if len(description) > 180:
@@ -574,6 +728,7 @@ def main() -> None:
         if text != original:
             page.write_text(text, encoding="utf-8")
             changed_pages += 1
+    build_house_index()
     dates = git_lastmod_map()
     question_sources, faq_owners = question_source_map()
     site_pages = build_site_index(dates, routes, question_sources, faq_owners)

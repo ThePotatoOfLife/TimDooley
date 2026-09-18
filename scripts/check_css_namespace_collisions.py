@@ -1,17 +1,25 @@
 #!/usr/bin/env python3
-"""Detect layout-class collisions between shared app CSS and static reader pages.
+"""Detect layout-class collisions and duplicated global shell ownership.
 
 The interactive archive owns .archive-nav. Generic .nav is reserved for local/static
-legacy pages and must never regain global layout behavior in app/style.css.
+legacy pages and must never regain global layout behavior in app/style.css. Active
+registered editorial/longform readers may preserve historical source CSS only when
+the public compatibility scoper proves their deployed global theme ownership becomes
+local beneath the House.
 """
 from pathlib import Path
 import re
 import sys
 
+from house_public_surfaces import parent_chain, surface_rows
+from house_style_scope import has_legacy_global_theme, scope_legacy_inline_theme
+from validate_house_accessibility import main as validate_house_accessibility
+
 ROOT = Path(__file__).resolve().parents[1]
 STYLE = ROOT / "app" / "style.css"
 SITE_SYSTEM = ROOT / "app" / "site-system.css"
 READER = ROOT / "app" / "reader.css"
+READER_V2 = ROOT / "app" / "reader-v2.css"
 GUARD = ROOT / "app" / "layout-guard.css"
 HOME = ROOT / "index.html"
 
@@ -41,13 +49,57 @@ RISKY_GLOBAL = {
     ".status": ("position", "top", "z-index"),
 }
 
+INLINE_STYLE_RE = re.compile(r"<style\b[^>]*>(.*?)</style>", re.I | re.S)
+GLOBAL_THEME_SELECTORS = {
+    ":root": re.compile(r"(?:^|})\s*:root\s*\{", re.I),
+    "body": re.compile(r"(?:^|})\s*body\s*\{", re.I),
+    "a": re.compile(r"(?:^|})\s*a\s*\{", re.I),
+}
+
 errors = []
 warnings = []
+
+
+def route_source_path(route: str) -> Path:
+    normalized = route if route.startswith("/") else "/" + route
+    stripped = normalized.strip("/")
+    if not stripped:
+        return ROOT / "index.html"
+    if normalized.endswith("/"):
+        return ROOT / stripped / "index.html"
+    return ROOT / stripped
+
+
+def branch_family(surface_id: str) -> str:
+    """Return a useful reporting family while convergence policy stays generic."""
+    chain_ids = {row["id"] for row in parent_chain(ROOT, surface_id)}
+    if "faq" in chain_ids:
+        return "FAQ"
+    if "tim" in chain_ids and surface_id != "tim":
+        return "Tim"
+    return "House"
+
+
+def global_theme_owners(text: str) -> list[str]:
+    inline_css = "\n".join(INLINE_STYLE_RE.findall(text))
+    return [name for name, pattern in GLOBAL_THEME_SELECTORS.items() if pattern.search(inline_css)]
+
 
 if not GUARD.exists():
     errors.append("app/layout-guard.css is missing")
 if not READER.exists() or 'layout-guard.css' not in READER.read_text(encoding='utf-8'):
     errors.append("app/reader.css must import layout-guard.css")
+if not READER.exists() or 'reader-v2.css' not in READER.read_text(encoding='utf-8'):
+    errors.append("app/reader.css must import the House-scoped reader-v2.css convergence layer")
+if not READER_V2.exists():
+    errors.append("app/reader-v2.css is missing")
+else:
+    reader_v2 = READER_V2.read_text(encoding="utf-8")
+    if ".site-housebar ~ main" not in reader_v2:
+        errors.append("app/reader-v2.css must scope legacy-reader convergence beneath .site-housebar ~ main")
+    for forbidden in (r"(?m)^\s*body\s*\{", r"(?m)^\s*:root\s*\{", r"(?m)^\s*\.nav\s*\{", r"(?m)^\s*\.card\s*\{"):
+        if re.search(forbidden, reader_v2):
+            errors.append("app/reader-v2.css must not introduce unscoped global reader selectors")
 
 style = STYLE.read_text(encoding='utf-8') if STYLE.exists() else ""
 
@@ -59,7 +111,7 @@ else:
         for block in re.findall(re.escape(selector) + r"\s*\{([^}]*)\}", site_system):
             if re.search(r"\b(position|top|inset|z-index|display|grid-template-columns|grid-template-rows)\s*:", block):
                 errors.append(
-                    f"app/site-system.css must not assign structural layout through generic {selector}; use .page-* or a named component"
+                    f"app/site-system.css must not assign structural layout through generic {selector}; use .page-* or a named component class"
                 )
 
 for page, markers in MIGRATED_SHELL_REQUIREMENTS.items():
@@ -76,6 +128,42 @@ for path in MIGRATED_LOCAL_STYLE_SOURCES:
             warnings.append(
                 f"{path.relative_to(ROOT)} redefines canonical palette literals in :root: {', '.join(repeated)}"
             )
+
+# Registered editorial/longform convergence: historical source may still contain
+# an old theme, but the compatibility transform must prove those selectors become
+# local before generated public output is considered safe.
+for surface in surface_rows(ROOT):
+    if surface.get("status") != "active" or surface.get("shell_type") not in {"editorial", "longform"}:
+        continue
+    family = branch_family(surface["id"])
+    source = route_source_path(surface["canonical_route"])
+    if not source.exists():
+        continue
+    text = source.read_text(encoding="utf-8", errors="ignore")
+    if "reader.css" in text or "layout-guard.css" in text:
+        continue
+
+    source_owned = global_theme_owners(text)
+    if source_owned:
+        warnings.append(
+            f"{source.relative_to(ROOT)} ({family}) retains legacy source theme debt: {', '.join(source_owned)}"
+        )
+    if not has_legacy_global_theme(text):
+        continue
+
+    try:
+        projected = scope_legacy_inline_theme(text)
+    except ValueError as exc:
+        errors.append(f"{source.relative_to(ROOT)} cannot be House-scoped: {exc}")
+        continue
+
+    remaining = global_theme_owners(projected)
+    if remaining:
+        errors.append(
+            f"{source.relative_to(ROOT)} ({family}) still owns global selectors after public scoping: {', '.join(remaining)}"
+        )
+    if "house-content-scope" not in projected:
+        errors.append(f"{source.relative_to(ROOT)} public style scoping did not mark the content root")
 
 for block in re.findall(r"\.nav\s*\{([^}]*)\}", style):
     if re.search(r"\b(position|top|inset|z-index|display|grid-template-columns)\s*:", block):
@@ -126,3 +214,5 @@ if errors:
     sys.exit(1)
 
 print(f"CSS namespace check passed ({len(html_files)} HTML files scanned).")
+if validate_house_accessibility() != 0:
+    sys.exit(1)

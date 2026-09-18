@@ -91,12 +91,27 @@ def main() -> int:
             '"error_messages": errors',
             '"warning_messages": warnings',
             "seo-report.json",
+            "from house_public_surfaces import primary_gateway_rows",
+            "parent_chain",
+            "surface_by_route",
+            "surface_rows",
+            "surfaces_by_id",
+            "build_house_index",
+            "house_page_schema",
+            "house_context",
+            "house-index.json",
+            'id="house-seo-schema"',
+            '"room_authority": "data/house/rooms.json"',
+            "PRIMARY_DOORS = tuple(",
+            "primary_gateway_rows(ROOT)",
         ),
         "optimize_seo.py",
         errors,
     )
     if "canonical.startswith(BASE_URL" in optimize:
         errors.append("SEO artifact audit still relies on brittle canonical string-prefix matching")
+    if '("world-map", "World Map")' in optimize:
+        errors.append("optimize_seo.py still maintains stale World Map-as-fifth-Door taxonomy")
 
     require(
         strategy,
@@ -144,16 +159,18 @@ def main() -> int:
             "datetime.now(timezone.utc).date().isoformat()",
             'write("llms.txt"',
             '"site_index": BASE_URL + "/site-index.json"',
+            '"house_index": BASE_URL + "/house-index.json"',
+            "House topology index",
             '"sitemap_index": BASE_URL + "/sitemap-index.xml"',
             '"religion": BASE_URL + "/religion/"',
             '"philosophy": BASE_URL + "/philosophy/"',
             '"science": BASE_URL + "/science/"',
             '"world": BASE_URL + "/world/"',
             '"world_map": BASE_URL + "/world-map/"',
-            '"Googlebot"',
-            '"Google-Extended"',
-            '"bingbot"',
-            '"OAI-SearchBot"',
+            "Googlebot",
+            "Google-Extended",
+            "bingbot",
+            "OAI-SearchBot",
             "def robots_text()",
             "OFFICIAL_REPOSITORY",
             "SOURCE_AUTHORITY",
@@ -177,7 +194,7 @@ def main() -> int:
         "build_site_authority.py", errors,
     )
 
-    require(machine_audit,('"site-index.json"','"sitemap-index.xml"','"religion/index.html"','"philosophy/index.html"','"world-map/index.html"',"OAI-SearchBot","noindex URLs must not appear in sitemaps","canonical URL must match the page for indexable pages"),"check_machine_discoverability.py",errors)
+    require(machine_audit,('"site-index.json"','"house-index.json"','"sitemap-index.xml"','"religion/index.html"','"philosophy/index.html"','"world-map/index.html"',"house-seo-schema","data/house/public-surfaces.json","data/house/rooms.json","OAI-SearchBot","noindex URLs must not appear in sitemaps","canonical URL must match the page for indexable pages"),"check_machine_discoverability.py",errors)
     require(enrich,("only touches descriptions shorter than 40 characters","if len(current) >= 40","first substantial paragraph","dedupe_question_intents","dedupe_result = dedupe_question_intents()","apply_entity_intent_seo","result = apply_entity_intent_seo()"),"enrich_weak_descriptions.py",errors)
 
     for owner, text in (("quality-checks.yml", quality), ("pages.yml", pages)):
@@ -208,7 +225,7 @@ def main() -> int:
         return 1
 
     print("SEO PIPELINE VALIDATION PASSED")
-    print("SEO projection: House-derived five-door discovery · canonical-only crawl graph · deduplicated question intents · intent-aware metadata · typed structured data · source-backed freshness · social metadata · related canonical context · LLM indexes · first-party authority")
+    print("SEO projection: House-derived five-door discovery · canonical-only crawl graph · deduplicated question intents · intent-aware metadata · typed structured data · House topology metadata · source-backed freshness · social metadata · related canonical context · LLM indexes · first-party authority")
     return 0
 
 
