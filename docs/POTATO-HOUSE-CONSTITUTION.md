@@ -546,3 +546,13 @@ The census is descriptive and multi-role: one project structure may legitimately
 **Chamber remains reserved.** No active Chamber registry exists until a concrete case passes a stricter admission test based on protected/specialist boundary, task autonomy, and clear maintenance benefit. Corpus density alone is insufficient.
 
 The canonical role census is `data/house/structural-census.json`; population and promotion rules are owned by `data/house/population-contract.json`; structural-population diagnostics live in `data/house/population-pulse.json`.
+
+### Federation-scale law
+
+The House is not treated as the only scale of organization. The project distinguishes **Household, House, City, Commons, Network, Assembly/Council, Kingdom/Realm, Civilization and Garden-City** as higher-order or cross-House forms.
+
+These forms are **not one strict ladder**. Household concerns participants; House concerns bounded composition; City concerns federation and shared infrastructure; Commons concerns shared capability; Network concerns relation topology; Assembly concerns deliberation; Kingdom/Realm concerns normative or theological orientation; Civilization concerns long-duration emergence; Garden-City is a regime/test of civic coordination and generativity.
+
+No federation-scale form transfers ownership automatically. Houses, institutions and participants retain identity unless an explicit real-world legal relation says otherwise. Project-symbolic Kingdom/Realm language does not confer civil sovereignty, jurisdiction, state authority or ownership over persons.
+
+The canonical federation-scale registry is `data/house/federation-scale.json`.
