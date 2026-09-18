@@ -155,7 +155,7 @@
     "potato-dynamics-2-toy-model",
     "potato-growth-principles"
   ],
-  "version": "1.1.0",
+  "version": "1.2.0",
   "external_sources": [
     {
       "title": "International Potato Center — Potato Facts and Figures",
@@ -203,6 +203,56 @@
         "food-safety risk",
         "processing effects"
       ]
+    },
+    {
+      "title": "FAO — The potato’s travel through ages and continents",
+      "url": "https://www.fao.org/newsroom/story/the-potatos-travel-through-ages-and-continents/",
+      "supports": [
+        "Andean domestication",
+        "European diffusion",
+        "Chiloé biodiversity",
+        "rural women conservation",
+        "food-security context"
+      ]
+    },
+    {
+      "title": "FAO — Chiloé Agriculture, Chile (GIAHS)",
+      "url": "https://www.fao.org/giahs/giahs-around-the-world/chile-chiloe-agriculture/giahs-biodiversity/en",
+      "supports": [
+        "in-situ diversity",
+        "cultural continuity",
+        "women seed custodians",
+        "community agriculture"
+      ]
+    },
+    {
+      "title": "FAO — International Day of Potato",
+      "url": "https://www.fao.org/international-potato-day/en",
+      "supports": [
+        "global food security",
+        "livelihoods",
+        "employment",
+        "farmer stewardship"
+      ]
+    },
+    {
+      "title": "Nunn & Qian — The Potato's Contribution to Population and Urbanization",
+      "url": "https://www.nber.org/papers/w15157",
+      "supports": [
+        "Old World population growth",
+        "urbanization",
+        "historical economic impact"
+      ],
+      "note": "Published in Quarterly Journal of Economics (2011); NBER page links the published version."
+    },
+    {
+      "title": "International Potato Center — Guardians of Native Potatoes",
+      "url": "https://cipotato.org/blog/guardians-native-potatoes-rural-women-preserving-seeds-andes/",
+      "supports": [
+        "women custodians",
+        "native-variety conservation",
+        "intergenerational knowledge"
+      ]
     }
   ],
   "consolidation": {
@@ -213,6 +263,57 @@
       "POTATOVERSE-ALTERNATIVE-RESEARCH.md"
     ],
     "projection": "knowledge/biology/potato-growth-principles.json",
-    "rule": "This file owns literal potato biology/ecology/development. Practice-facing summaries may project from it but must not independently redefine biological facts."
+    "rule": "This file owns literal potato biology/ecology/development. Practice-facing summaries may project from it but must not independently redefine biological facts.",
+    "latest": {
+      "date": "2026-09-18",
+      "absorbed_from": [
+        "data/potatoverse-alternative-directions.json",
+        "POTATOVERSE-ALTERNATIVE-RESEARCH.md"
+      ],
+      "promoted": [
+        "human ecology",
+        "Chiloé/community stewardship",
+        "food-security role",
+        "historical economic impact",
+        "dependence/failure system",
+        "cultural memory boundary"
+      ],
+      "retirement_test": "The alternative-directions staging layer may retire when no live links depend on its adXX identifiers."
+    }
+  },
+  "human_ecology_and_food_system_context": {
+    "epistemic_rule": "These are documented historical, agricultural and economic contexts around potato cultivation. They are not evidence for Potatoverse theology; project reflections remain explicitly comparative.",
+    "findings": [
+      {
+        "id": "andes-chiloe-biodiversity",
+        "fact": "Potato was domesticated in the Andes thousands of years ago. Andean and Chiloé farming systems preserve substantial native diversity; FAO identifies Chiloé as a Globally Important Agricultural Heritage System in which potato cultivation is central to local culture, livelihoods and biodiversity.",
+        "project_use": "Treat diversity as a materially grounded resilience/resource question, not merely a symbolic preference for branching."
+      },
+      {
+        "id": "custodian-knowledge",
+        "fact": "FAO and the International Potato Center document rural and Indigenous farming communities—including women seed custodians—as important maintainers of native potato diversity and associated agricultural knowledge.",
+        "project_use": "Stewardship can be operationalized as conservation, transmission, clean seed, knowledge continuity and farmer agency rather than as an abstract title."
+      },
+      {
+        "id": "food-security-livelihoods",
+        "fact": "FAO describes potato as a globally important crop contributing to food security, nutrition, livelihoods and employment across smallholder and commercial farming systems.",
+        "project_use": "The Potato is legitimately connected to material subsistence and value chains; symbolic nourishment should remain anchored to actual food-system function."
+      },
+      {
+        "id": "old-world-demography",
+        "fact": "Economic-history research by Nathan Nunn and Nancy Qian found that adoption of the potato accounted for a significant portion of observed Old World population and urbanization growth during the eighteenth and nineteenth centuries.",
+        "project_use": "Potato can be studied as infrastructure whose agronomic properties changed settlement and demographic capacity; this is an empirical historical relationship, not a universal causal law."
+      },
+      {
+        "id": "dependence-and-failure",
+        "fact": "Potato late blight and historically concentrated dependence demonstrate how pathogen pressure, crop dependence and low effective diversity can interact into severe food-system failure.",
+        "project_use": "Tree-of-Strife comparisons should name the concrete systems variables—dependence, correlated exposure, pathogen pressure, redundancy and response capacity—rather than treating 'monoculture' as a free-standing moral metaphor."
+      },
+      {
+        "id": "culture-as-memory-system",
+        "fact": "FAO documents potato cultivation in Chiloé as embedded in inherited traditions, culinary practices, community work, beliefs and local mythology.",
+        "project_use": "Cultural memory can be carried through seed, practice, cuisine and intergenerational knowledge without implying supernatural continuity."
+      }
+    ]
   }
 }
