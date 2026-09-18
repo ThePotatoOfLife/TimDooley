@@ -1,5 +1,5 @@
 {
-  "version": "1.7.0",
+  "version": "1.8.0",
   "updated": "2026-09-18",
   "nodes": [
     {
@@ -1289,6 +1289,20 @@
       "name": "Garden-City",
       "layer": "mythological-philosophical",
       "description": "City/federation regime combining dense coordination with regeneration, repairability and peripheral autonomy; project comparative model, not a literal identification of a modern polity with New Jerusalem."
+    },
+    {
+      "id": "bridge",
+      "type": "connection-archetype",
+      "name": "Bridge",
+      "layer": "philosophical-systems",
+      "description": "Connection that creates usable capability across an existing separation while preserving endpoint identity."
+    },
+    {
+      "id": "protocol",
+      "type": "coordination-archetype",
+      "name": "Protocol",
+      "layer": "philosophical-systems",
+      "description": "Shared grammar or rules enabling heterogeneous nodes to interoperate without becoming identical or transferring ownership."
     }
   ]
 }
