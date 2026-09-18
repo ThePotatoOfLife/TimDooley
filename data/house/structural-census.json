@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-18",
   "authority": "house-structural-role-census",
   "purpose": "Inventory important project structures by architectural role without turning every recurring topic into another containment level.",
@@ -1238,6 +1238,85 @@
         "house"
       ],
       "note": "Project-symbolic interoperability grammar: enough shared meaning/evidence/language for heterogeneous nodes to communicate without collapsing."
+    },
+    {
+      "id": "view-specialist-subviews",
+      "title": "Nested specialist reader network",
+      "roles": [
+        "view"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/specialist-subviews.json"
+      ],
+      "public_surfaces": [
+        "tim",
+        "religion",
+        "science",
+        "works",
+        "potato-of-life"
+      ],
+      "note": "Governed deep/legacy readers beneath existing parent surfaces. They inherit Room placement and current-owner links without becoming new knowledge owners or primary gateways."
+    },
+    {
+      "id": "bridge-legacy-modern-readers",
+      "title": "Legacy ↔ modern public reader bridge",
+      "roles": [
+        "bridge",
+        "projection"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/house/legacy-modern-public-integration-contract.json",
+        "scripts/patch_public_navigation.py",
+        "scripts/site_shell_contract.py"
+      ],
+      "public_surfaces": [
+        "house",
+        "tim",
+        "religion",
+        "science",
+        "world",
+        "context",
+        "collection",
+        "below",
+        "shadow-farm"
+      ],
+      "note": "Build-time bridge that preserves authored/historical source pages while projecting current House context, parentage, Room placement and canonical-owner navigation."
+    },
+    {
+      "id": "view-below-observatory",
+      "title": "Below Observatory",
+      "roles": [
+        "view",
+        "table"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json",
+        "knowledge/core/below-intelligence-shadow-observatory.json"
+      ],
+      "public_surfaces": [
+        "below"
+      ],
+      "note": "Depth/evidence View across Archive, World, Culture and Research. It does not own allegations or domain facts."
+    },
+    {
+      "id": "view-shadow-farm",
+      "title": "Farm & Trees of Strife",
+      "roles": [
+        "view",
+        "table"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json",
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json"
+      ],
+      "public_surfaces": [
+        "shadow-farm"
+      ],
+      "note": "Specialist culture/information View over subculture, platform, archive and symbolic Strife material."
     }
   ],
   "unresolved_candidates": [
