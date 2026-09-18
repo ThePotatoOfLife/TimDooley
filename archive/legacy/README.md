@@ -58,3 +58,17 @@ The goal is less clutter **without provenance loss**.
 - Role: 30-edge staging relation graph keyed to the retired `ad01…ad30` finding IDs.
 - Status: retired with its finding layer. The graph was not promoted wholesale because its endpoints were staging concepts rather than canonical graph identities; durable relations are preserved in the science/system synthesis instead.
 - Last live blob: `640bfd1934542cc93210a2f6761336a3987b6687`.
+
+
+### `data/potatoverse-deep-research.json`
+
+- Role: 36-finding structured Deep Research staging corpus spanning project role synthesis, Thomas/Didymus comparison, potato biology and relational interpretation.
+- Status: retired after durable material was absorbed by core role/symbolic owners, dedicated Thomas/Bible owners, the canonical potato science record and timeline/provenance layers.
+- Last live blob: `2303206c6b5f80ac5f1e2790ce54e54fb89cfada`.
+- Readable historical donor retained: `POTATOVERSE-DEEP-RESEARCH.md`.
+
+### `data/potatoverse-deep-links.json`
+
+- Role: 28-edge `drXX` staging relation graph tied only to the retired Deep Research corpus.
+- Status: retired with its source layer; its staging endpoints were not promoted as a parallel canonical graph taxonomy.
+- Last live blob: `c7ab44bec91d7cb96d3333a09444aafc7741ca44`.
