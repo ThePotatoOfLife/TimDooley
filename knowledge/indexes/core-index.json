@@ -1,5 +1,5 @@
 {
-  "version": "6.1.0",
+  "version": "6.2.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -21,7 +21,8 @@
       "inhabited-house-society-ontology",
       "purpose-growth-orientation-atlas",
       "planes-routes-metabolism-expanded-atlas",
-      "center-living-metabolism-expanded-atlas"
+      "center-living-metabolism-expanded-atlas",
+      "foundation-rule-law-ontology"
     ],
     "geometry_and_transformation": [
       "vertical-potato-mountain-plane-atlas",
@@ -128,7 +129,10 @@
       "entity-dossier-schema",
       "entity-dossiers-wave-001",
       "trust-infrastructure-comparison",
-      "public-trust-infrastructure-synthesis"
+      "public-trust-infrastructure-synthesis",
+      "foundations-wave-001",
+      "foundation-timeline-wave-001",
+      "foundation-cross-domain-synthesis"
     ]
   },
   "records": [
@@ -2015,6 +2019,75 @@
         "Science",
         "Humanitarian Access",
         "Spirit Mind Body"
+      ]
+    },
+    {
+      "id": "foundation-rule-law-ontology",
+      "path": "knowledge/core/foundation-rule-law-ontology.json",
+      "branch": "root",
+      "kind": "cross-domain foundation rules laws and multi-clock origin ontology",
+      "terms": [
+        "Foundation",
+        "Seed",
+        "Center",
+        "Plane",
+        "Platform",
+        "Law",
+        "Rule",
+        "Charter",
+        "Treaty",
+        "Constitution",
+        "Refoundation"
+      ]
+    },
+    {
+      "id": "foundations-wave-001",
+      "path": "data/house/foundations-wave-001.json",
+      "branch": "house",
+      "kind": "first populated cross-domain foundation records",
+      "terms": [
+        "Denmark Constitution",
+        "US Constitution",
+        "UN Charter",
+        "EU Treaties",
+        "Christianity",
+        "Judaism",
+        "Islam",
+        "Buddhism",
+        "Stoicism",
+        "University of Copenhagen",
+        "CERN",
+        "W3C",
+        "Maersk",
+        "ASML",
+        "Novo Nordisk",
+        "Potatoism"
+      ]
+    },
+    {
+      "id": "foundation-timeline-wave-001",
+      "path": "data/house/foundation-timeline-wave-001.json",
+      "branch": "house",
+      "kind": "cross-domain timeline of seed authorization operation consolidation and refoundation",
+      "terms": [
+        "Foundation Timeline",
+        "F0",
+        "Entry into force",
+        "First operation",
+        "Refoundation"
+      ]
+    },
+    {
+      "id": "foundation-cross-domain-synthesis",
+      "path": "knowledge/research/foundation-cross-domain-synthesis.json",
+      "branch": "research",
+      "kind": "cross-domain synthesis of foundation mechanics and civilizational beginnings",
+      "terms": [
+        "Multiple Births",
+        "Foundation as Platform",
+        "Refoundation",
+        "Anti-amnesia",
+        "Branching"
       ]
     }
   ],
