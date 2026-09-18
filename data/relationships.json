@@ -1531,6 +1531,56 @@
       "confidence": "canonical-framework",
       "date": "2026-09-18",
       "notes": "Garden-City evaluates civic generativity/repair; it is not a new owner or polity claim."
+    },
+    {
+      "id": "house2901",
+      "source": "road",
+      "relationship": "may-be-upgraded-by",
+      "target": "bridge",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "A Road is traversable relation; a Bridge specifically creates capability across separation."
+    },
+    {
+      "id": "house2902",
+      "source": "bridge",
+      "relationship": "may-lead-to",
+      "target": "gate",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Bridge connects separated domains; Gate governs admission into a larger regime."
+    },
+    {
+      "id": "house2903",
+      "source": "gate",
+      "relationship": "may-contain-local",
+      "target": "door",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Gate governs perimeter admission; Door governs local guarded transition."
+    },
+    {
+      "id": "house2904",
+      "source": "protocol",
+      "relationship": "enables-interoperability-in",
+      "target": "network",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Shared grammar lets heterogeneous nodes communicate without collapsing identities."
+    },
+    {
+      "id": "house2905",
+      "source": "protocol",
+      "relationship": "supports",
+      "target": "commons",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Commons require transparent shared rules/standards for access and coordination."
     }
   ]
 }
