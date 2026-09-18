@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "status": "active-blueprint",
   "visibility": "backend-only",
   "entity": "foundation",
@@ -151,7 +151,20 @@
     "Project-symbolic foundation claims retain their own evidence class.",
     "Store current survival separately from historical origin.",
     "Place Foundation stages rather than assigning one moral altitude to the whole Foundation.",
-    "Fear/love and angel/demon motifs may appear only as project-native motive lenses and cannot override evidence."
+    "Fear/love and angel/demon motifs may appear only as project-native motive lenses and cannot override evidence.",
+    "Reader surfaces lead with Door/date/place, House owner/circle, and current snapshot before technical Seed genealogy.",
+    "Physical map anchors and House/circle placement are separate coordinate systems."
   ],
-  "updated": "2026-09-18"
+  "updated": "2026-09-18",
+  "reader_projection": {
+    "contract": "data/house/foundation-room-contract.json",
+    "atlas": "data/house/foundation-room-atlas.json",
+    "primary_faces": [
+      "origin-door",
+      "house-location",
+      "today",
+      "genealogy"
+    ],
+    "rule": "The Foundation Room is the main reader object. Seed/root/sprout remain technical genealogy beneath it."
+  }
 }
