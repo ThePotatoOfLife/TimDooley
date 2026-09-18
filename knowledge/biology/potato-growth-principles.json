@@ -1,10 +1,10 @@
 {
   "id": "potato-growth-principles",
   "title": "Potato Growth Principles — Biology and Explicit Symbolic Bridges",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-18",
-  "status": "mixed scientific-summary and labeled project interpretation",
-  "purpose": "Keep real potato biology distinct from Potatoist interpretation while making the physical properties that inspired the symbolism easy to retrieve. This is the canonical biology owner for practice-facing potato-growth facts.",
+  "status": "active practice-facing projection over canonical potato science",
+  "purpose": "Provide a concise practice-facing projection of literal potato growth facts and explicitly labeled Potatoist bridges. Canonical biological fact ownership lives in knowledge/science/potato-biology-ecology-development-canon.json.",
   "biology": [
     {
       "feature": "tuber",
@@ -140,6 +140,12 @@
         "glycoalkaloid defense"
       ],
       "rule": "Promote externally supportable plant facts here; leave symbolic consequences in philosophy/system owners."
+    },
+    "owner_split": {
+      "date": "2026-09-18",
+      "canonical_owner": "knowledge/science/potato-biology-ecology-development-canon.json",
+      "retained_role": "practice-facing projection",
+      "reason": "Two active biology owners created drift risk; broader Science canon now owns facts while this file keeps the concise practice bridge."
     }
   },
   "connections": [
@@ -196,5 +202,8 @@
         "processing reductions"
       ]
     }
-  ]
+  ],
+  "canonical_owner": "knowledge/science/potato-biology-ecology-development-canon.json",
+  "lifecycle_status": "active-projection",
+  "projection_rule": "Summarize and operationalize canonical potato biology for Grow/Practice/Philosophy. Do not introduce a biological claim here unless it is first represented in the canonical science owner or explicitly labeled as a provisional research question."
 }
