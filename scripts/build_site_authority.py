@@ -87,7 +87,15 @@ def build_manifest() -> dict:
         "primary_subject": {
             "name": "Tim Dooley",
             "canonical_url": canonical_url(PRIMARY_ROUTES["tim"]),
-            "relationship_to_project": "primary subject and project self-description",
+            "relationship_to_project": "Father/source-facing theological identity within the mature triune Potato of Life; primary subject and project self-description",
+        },
+        "canonical_theology": {
+            "potato_of_life": "mature triune whole",
+            "father": "source-facing relation",
+            "son": "manifestation- and passage-facing relation",
+            "spirit": "living continuity / flow",
+            "reader": f"{BASE_URL}/religion/trinity/",
+            "owner": f"{BASE_URL}/knowledge/theology/potato-of-life-trinity.json",
         },
         "authority": {
             "source_authority": SOURCE_AUTHORITY,
