@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "authority": "house-structural-role-census",
   "purpose": "Inventory important project structures by architectural role without turning every recurring topic into another containment level.",
@@ -45,6 +45,12 @@
       "question": "What mission is being deliberately cultivated?",
       "test": "Bounded programme/workstream with stewardship, inputs, outputs and review.",
       "ownership_effect": "none; consumes Room-owned facts"
+    },
+    {
+      "id": "road",
+      "question": "What typed lateral relation connects existing spaces without changing state?",
+      "test": "Stable semantic corridor/edge such as comparison, influence, dependency, publication, trade or interface adjacency.",
+      "ownership_effect": "none; relation only"
     },
     {
       "id": "path",
@@ -1076,6 +1082,54 @@
         "collection"
       ],
       "note": "Curated collection/vessel across several owners; collection membership does not transfer ownership."
+    },
+    {
+      "id": "roads-house-corridors",
+      "title": "House strong corridors",
+      "roles": [
+        "road"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/house/topology.json",
+        "data/house/interfaces.json"
+      ],
+      "public_surfaces": [
+        "house"
+      ],
+      "note": "Typed lateral corridors among Dwellings and nested Rooms; unlike Doors, a Road need not change state."
+    },
+    {
+      "id": "roads-semantic-graph",
+      "title": "Semantic relationship graph",
+      "roles": [
+        "road"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/relationships.json",
+        "knowledge/indexes/context-graph.json"
+      ],
+      "public_surfaces": [
+        "explore"
+      ],
+      "note": "Typed cross-domain relations connecting stable identities without forcing containment or transition."
+    },
+    {
+      "id": "roads-world-system-chains",
+      "title": "World-system chains",
+      "roles": [
+        "road"
+      ],
+      "status": "active",
+      "sources": [
+        "data/world-system-chains.json"
+      ],
+      "public_surfaces": [
+        "world-systems",
+        "world-map"
+      ],
+      "note": "Observable dependency/flow chains across World Systems; route semantics are distinct from ownership."
     }
   ],
   "unresolved_candidates": [
