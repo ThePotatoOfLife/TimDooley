@@ -9,6 +9,8 @@ SURFACES=ROOT/'data/house/public-surfaces.json'; SURFACE_SCHEMA=ROOT/'schemas/ho
 TOPOLOGY=ROOT/'knowledge/research/potato-house-master/public-route-topology.json'
 HOUSE_TOPOLOGY=ROOT/'data/house/topology.json'
 PROJECT_CENTER=ROOT/'data/house/project-center.json'
+CROSSCUTTING_LENSES=ROOT/'data/house/crosscutting-lenses.json'
+POTATO_CENTER_PAGE=ROOT/'potato-of-life/index.html'
 ORIENTATION_POPULATION=ROOT/'data/house/orientation-population.json'
 TREE_PLANE_ROUTING=ROOT/'data/house/tree-plane-routing.json'
 SEED_SPIRAL_ROUTING=ROOT/'data/house/seed-spiral-routing.json'
@@ -582,7 +584,8 @@ def validate_placement_matrix(errors):
     if data.get('output_contract',{}).get('unresolved_destination')!='research-lab/open-questions': errors.append('unresolved placements must route to Research Lab/Open Questions')
 
 
-def validate_project_center(errors):
+def validate_project_center(errors)
+    validate_crosscutting_lenses(errors):
     data=load(PROJECT_CENTER,errors)
     if not data: return
     centers=data.get('center_distinctions',{})
@@ -600,6 +603,25 @@ def validate_project_center(errors):
     rules=' '.join(data.get('promotion_rules',[])).casefold()
     for token in ('comparative node cannot enter ring 0–2','volume of sources does not determine centrality','semantic center is potato of life','home should explain ring 0–1'):
         if token not in rules: errors.append(f'project center missing promotion boundary: {token}')
+
+
+def validate_crosscutting_lenses(errors):
+    data=load(CROSSCUTTING_LENSES,errors)
+    if not data: return
+    expected=['motion','polarity','memory-history','social-formation','embodiment-spirit','practice-path']
+    ids=[x.get('id') for x in data.get('lenses',[]) if isinstance(x,dict)]
+    if ids!=expected: errors.append('cross-cutting lens order/set drifted')
+    rule=data.get('master_rule','').casefold()
+    for token in ('does not change who owns the knowledge','does not create a new ontological level'):
+        if token not in rule: errors.append(f'cross-cutting lenses missing boundary: {token}')
+    mirror_text=' '.join(str(m.get('boundary','')) for lens in data.get('lenses',[]) if isinstance(lens,dict) for m in lens.get('comparative_mirrors',[]) if isinstance(m,dict)).casefold()
+    for token in ('not a hidden potatoverse spiral','not evidence that daoism encodes','does not present a literal supernatural akashic record','should not be rewritten as potatoism'):
+        if token not in mirror_text: errors.append(f'cross-cutting comparative boundary missing: {token}')
+    if not POTATO_CENTER_PAGE.is_file(): errors.append('missing public Potato of Life center reader')
+    else:
+        page=POTATO_CENTER_PAGE.read_text(encoding='utf-8',errors='replace')
+        for marker in ('id="definition"','id="literal-potato"','id="structure"','id="metabolism"','id="lenses"','id="rooms"'):
+            if marker not in page: errors.append(f'Potato center reader missing {marker}')
 
 def main():
     errors=[]

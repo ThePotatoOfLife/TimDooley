@@ -818,7 +818,7 @@
       "title": "Other Traditions & Philosophies",
       "dwelling_id": "traditions-texts",
       "purpose": "Hold non-biblical traditions and philosophical comparators that deserve their own historical meanings before project comparison.",
-      "primary_file_count": 17,
+      "primary_file_count": 18,
       "featured_holdings": [
         {
           "path": "knowledge/traditions/comparative-mythology-map.json",
@@ -867,6 +867,12 @@
           "id": "joseph-son-dossier-set",
           "kind": "room holding",
           "basis": "traditions-remainder"
+        },
+        {
+          "path": "knowledge/traditions/buddhism-dao-akashic-center-lenses.json",
+          "id": "buddhism-dao-akashic-center-lenses",
+          "kind": "comparative philosophy/religion boundary atlas",
+          "basis": "center-lens-comparative-research"
         }
       ],
       "public_surface_ids": [
@@ -5836,6 +5842,11 @@
       "path": "knowledge/traditions/comparative-cosmography-population-wave-002.json",
       "primary_owner_room_id": "comparative-mythology",
       "basis": "comparative-cosmography-population"
+    },
+    {
+      "path": "knowledge/traditions/buddhism-dao-akashic-center-lenses.json",
+      "primary_owner_room_id": "other-traditions",
+      "basis": "center-lens-comparative-research"
     }
   ],
   "curated_unowned_paths": [
