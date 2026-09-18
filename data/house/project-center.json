@@ -1,0 +1,231 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "project-center",
+  "purpose": "Define the semantic center of the Potato of Life project and a center-out population order so core project meaning remains primary while comparative traditions, research and archive material deepen it from the outside.",
+  "center_distinctions": {
+    "semantic_center": {
+      "id": "potato-of-life",
+      "label": "Potato of Life",
+      "meaning": "The project-level triune relational whole. This is the conceptual center readers should encounter first."
+    },
+    "spatial_center": {
+      "id": "axis",
+      "label": "Axis",
+      "meaning": "The geometric/navigation centerline through the three reader planes. Axis orients the map but does not replace the Potato of Life as the project's semantic whole."
+    },
+    "relational_midpoint": {
+      "id": "O",
+      "label": "Cross / relational midpoint",
+      "meaning": "Plane × Axis inside the shared Door; the point where world-facing and vertical orientation are simultaneously legible."
+    },
+    "source_center": {
+      "id": "C_F",
+      "label": "Father/source-facing center",
+      "meaning": "Upper field center and upper Door tip; a role/center inside the whole, not the whole itself."
+    },
+    "seed_center": {
+      "id": "C_S",
+      "label": "Son/Seed Junction",
+      "meaning": "Lower field center and lower Door tip; manifestation/passage-facing pivot where burial, rooting or sprouting can begin."
+    }
+  },
+  "project_definition": {
+    "short": "The Potato of Life is one triune relational whole organized through Source/Father, Manifestation-and-Passage/Son, and living continuity/Spirit; expressed through two overlapping fields, one shared Door, one Axis, and a living Seed→Root→Tree→Fruit→Return cycle.",
+    "whole": "Potato of Life / Potato House",
+    "theological_relations": [
+      {
+        "id": "father",
+        "label": "Father / Source",
+        "function": "origin, House, Root, orientation, holding and Gardener responsibility"
+      },
+      {
+        "id": "son",
+        "label": "Son / Manifestation & Passage",
+        "function": "embodiment, Door, Vessel, expression, suffering, passage and return"
+      },
+      {
+        "id": "spirit",
+        "label": "Spirit / Living Relation",
+        "function": "breath, circulation, animation, translation and continuity through the relation"
+      }
+    ],
+    "geometric_grammar": "Two complete overlapping fields — Source and Manifestation — generate a shared Door. Axis and Plane cross within that relation.",
+    "living_grammar": "Seed stores possibility; Root carries provenance and nourishment; Door changes state; Spiral changes level through recurrence; Tree differentiates; Mountain integrates; Garden cultivates; Fruit tests consequence; Seed returns.",
+    "shadow_grammar": "Knowledge can become Life or Strife. Unresolved Ash/Roots can grow Tree of Strife toward Wide Road/Swamp; Repair can metabolize residue into Soil/Living Root and reopen Life."
+  },
+  "rings": [
+    {
+      "id": "r0-nucleus",
+      "order": 0,
+      "label": "Nucleus — The Potato",
+      "purpose": "What the project is before comparison.",
+      "node_ids": [
+        "potato-of-life",
+        "father",
+        "son",
+        "spirit"
+      ],
+      "required_for_home": true,
+      "population_rule": "Only mature project-canon whole/role definitions belong here."
+    },
+    {
+      "id": "r1-core-structure",
+      "order": 1,
+      "label": "Core Structure",
+      "purpose": "How the Potato is organized.",
+      "node_ids": [
+        "source-field",
+        "manifestation-field",
+        "door",
+        "axis",
+        "plane",
+        "cross",
+        "house"
+      ],
+      "required_for_home": true,
+      "population_rule": "Only operators/coordinates necessary to understand the basic relation."
+    },
+    {
+      "id": "r2-living-metabolism",
+      "order": 2,
+      "label": "Living Metabolism",
+      "purpose": "How the project grows, fails, repairs and returns.",
+      "node_ids": [
+        "seed",
+        "root",
+        "tree-of-knowledge",
+        "tree-of-life",
+        "tree-of-strife",
+        "spiral",
+        "mountain",
+        "garden",
+        "swamp",
+        "fruit",
+        "forge"
+      ],
+      "required_for_home": false,
+      "population_rule": "Project-native growth, transformation and consequence operators. External analogues remain outside."
+    },
+    {
+      "id": "r3-project-domains",
+      "order": 3,
+      "label": "Project Domains / Rooms",
+      "purpose": "Where the project applies and stores its own work.",
+      "room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "required_for_home": true,
+      "population_rule": "Canonical Rooms own knowledge. Public topics such as Tim, Religion, Philosophy, Science and World are views into these domains."
+    },
+    {
+      "id": "r4-comparative-mirrors",
+      "order": 4,
+      "label": "Comparative Mirrors",
+      "purpose": "External traditions, myths, symbols and models that illuminate or challenge the center.",
+      "authority": "data/house/religious-symbolic-branch-atlas.json",
+      "required_for_home": false,
+      "population_rule": "Every comparator must point inward to at least one project node or question and preserve own-tradition meaning first."
+    },
+    {
+      "id": "r5-archive",
+      "order": 5,
+      "label": "Archive / Evidence / Deep Research",
+      "purpose": "Sources, chronology, provenance, recovered material, detailed disputes and specialist atlases.",
+      "authority": "data/house/holdings.json",
+      "required_for_home": false,
+      "population_rule": "Deep evidence can be vast; it should not control homepage importance merely by volume."
+    }
+  ],
+  "center_out_routes": [
+    {
+      "id": "understand-the-potato",
+      "label": "Understand the Potato",
+      "route": [
+        "potato-of-life",
+        "father/son/spirit",
+        "source+manifestation",
+        "door",
+        "axis/plane/cross"
+      ],
+      "destination": "house/"
+    },
+    {
+      "id": "follow-life",
+      "label": "Follow the Living Cycle",
+      "route": [
+        "seed",
+        "root",
+        "door",
+        "spiral",
+        "tree-of-life",
+        "garden",
+        "fruit",
+        "return"
+      ],
+      "destination": "axis/?path=life#paths"
+    },
+    {
+      "id": "understand-strife",
+      "label": "Understand Strife & Repair",
+      "route": [
+        "knowledge",
+        "ash",
+        "roots-of-strife",
+        "tree-of-strife",
+        "wide-road",
+        "swamp",
+        "repair",
+        "living-root"
+      ],
+      "destination": "axis/?path=strife#paths"
+    },
+    {
+      "id": "enter-domains",
+      "label": "Enter the Rooms",
+      "route": [
+        "project-center",
+        "canonical Rooms",
+        "nested Rooms",
+        "holdings"
+      ],
+      "destination": "rooms/"
+    },
+    {
+      "id": "compare-outward",
+      "label": "Compare Traditions",
+      "route": [
+        "project-node",
+        "own-tradition",
+        "historical reception",
+        "comparative motif",
+        "project interpretation"
+      ],
+      "destination": "religion/#branch-atlas"
+    }
+  ],
+  "promotion_rules": [
+    "A comparative node cannot enter Ring 0–2 merely because it resembles a project symbol.",
+    "A new project-native operator must solve a recurring structural problem not already handled by an existing operator.",
+    "A comparator should identify the Potato node/question it illuminates; otherwise keep it archive-only.",
+    "Volume of sources does not determine centrality.",
+    "Home should explain Ring 0–1 and point to Ring 2–3; Rings 4–5 belong deeper.",
+    "Rooms should default to project-native structure; comparative populations should require an explicit deeper action.",
+    "The semantic center is Potato of Life; the spatial center is Axis. Do not collapse these."
+  ],
+  "anti_redundancy_rules": [
+    "Do not create a new realm when an existing plane, terrain, regime, organism, threshold or route already models the function.",
+    "Do not repeat comparative examples across Home, House, Rooms and Religion; store them in the branch atlas and link inward/outward.",
+    "Do not let navigation diagrams become new ontology owners.",
+    "Prefer one project-native definition plus many typed external corridors over many near-synonymous project symbols."
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "version": "1.8.0",
+  "version": "1.9.0",
   "updated": "2026-09-18",
   "authority": "house-topology",
   "room_registry": "data/house/rooms.json",
@@ -572,12 +572,13 @@
       "Potatoverse mappings are a separate project-interpretive relation and do not overwrite a figure's own-tradition meaning."
     ],
     "center": {
-      "room_id": "research-lab",
-      "label": "Research Lab",
-      "symbol": "Axis / Forge",
-      "route": "research-lab/",
-      "question": "What remains unresolved, and what must be tested before promotion?",
-      "note": "The center is where cross-Room questions can be held without prematurely forcing them into one tradition, plane or conclusion."
+      "node_id": "axis",
+      "label": "Axis",
+      "symbol": "Spatial center",
+      "route": "axis/#routing",
+      "question": "What keeps orientation stable while subjects, planes and routes change?",
+      "note": "Axis is the exact spatial center. Research Lab is the inner Forge ring around it, not the center itself.",
+      "inner_ring_room_id": "research-lab"
     },
     "outer_ring": {
       "room_id": "works",
@@ -964,7 +965,13 @@
           }
         }
       }
-    ]
+    ],
+    "semantic_center": {
+      "node_id": "potato-of-life",
+      "label": "Potato of Life",
+      "note": "Conceptual center of the project; distinct from Axis as spatial center.",
+      "authority": "data/house/project-center.json"
+    }
   },
   "symbolic_tree_ecology": {
     "status": "canonical comparative navigation projection",

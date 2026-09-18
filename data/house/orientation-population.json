@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-18",
   "authority": "house-orientation-population",
   "purpose": "Populate the three-plane cardinal House from existing governed Rooms and holdings, then add a small curated landmark layer for religious, mythic and project-symbolic wayfinding.",
@@ -11,6 +11,7 @@
     "data/house/religious-symbolic-branch-atlas.json"
   ],
   "rules": [
+    "Project-native operators and Rooms take visual precedence; comparative subjects remain one disclosure layer farther out unless a reader explicitly enters Traditions/Comparison.",
     "Population records do not change knowledge ownership.",
     "The compass shows landmarks sparingly; Room detail may show more; archive-only nodes stay out of primary navigation.",
     "Plane is reading orientation, direction is subject family, Tree zone is ecological/functional placement, and depth is navigation specificity.",
@@ -1861,7 +1862,7 @@
         "canopy",
         "trunk"
       ],
-      "visibility": "landmark",
+      "visibility": "room-detail",
       "route": "religion/#religious-tree",
       "note": "Tradition-specific messenger and celestial-order material; compare only after own-tradition context."
     },
@@ -1878,7 +1879,7 @@
         "roots",
         "strife-branches"
       ],
-      "visibility": "landmark",
+      "visibility": "room-detail",
       "route": "religion/#religious-tree",
       "note": "Tradition-specific demonologies and adversarial figures; not a label for disliked people or groups."
     },
@@ -1893,7 +1894,7 @@
       "tree_zone_ids": [
         "roots"
       ],
-      "visibility": "landmark",
+      "visibility": "room-detail",
       "route": "religion/#religious-tree",
       "note": "Death, burial, underworld, chthonic and descent traditions in their own historical contexts."
     },
@@ -1911,7 +1912,7 @@
         "life-branches",
         "trunk"
       ],
-      "visibility": "landmark",
+      "visibility": "room-detail",
       "route": "religion/#traditions-atlas",
       "note": "Divine figures remain rooted in their own traditions before motif or Potatoverse comparison."
     },
@@ -2108,5 +2109,15 @@
       "route": "religion/#traditions-atlas",
       "note": "Esoteric and later cultural receptions are tracked as dated layers rather than a generic demon category."
     }
-  ]
+  ],
+  "center_priority": {
+    "semantic_center": "Potato of Life",
+    "spatial_center": "Axis",
+    "primary_landmarks": [
+      "tree-of-life",
+      "tree-of-strife"
+    ],
+    "comparative_default": "room-detail",
+    "authority": "data/house/project-center.json"
+  }
 }
