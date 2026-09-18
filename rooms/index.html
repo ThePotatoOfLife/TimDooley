@@ -17,6 +17,8 @@
 
 .orientation-population{margin-top:16px;padding-top:13px;border-top:1px solid var(--site-line)}.orientation-population h4{font:400 16px var(--site-font-serif);margin:0 0 7px;color:var(--site-gold)}.population-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.population-item{border:1px solid var(--site-line);border-radius:9px;padding:8px 9px}.population-item b{display:block;font:400 13px var(--site-font-serif);color:#dce2d8}.population-item small{display:block;color:var(--site-muted);font-size:9px;margin-top:2px}.population-landmarks{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}.population-landmark{border:1px solid var(--site-line);border-radius:999px;padding:4px 7px;font-size:9px;color:var(--site-muted);text-decoration:none}.population-landmark:hover{color:var(--site-green);border-color:#60725a}.population-more{margin-top:8px;font-size:9px;color:var(--site-faint)}
 @media(max-width:520px){.population-grid{grid-template-columns:1fr}}
+
+.placement-browser{margin:38px 0;padding:28px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}.placement-browser h2{font:400 clamp(28px,4vw,40px)/1.05 var(--site-font-serif);margin:3px 0 8px;color:var(--site-gold)}.placement-controls{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0}.placement-control{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:6px 9px;font-size:9px;cursor:pointer}.placement-control[aria-pressed="true"],.placement-control:hover{color:var(--site-green);border-color:#60725a}.placement-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.placement-node{border:1px solid var(--site-line);border-radius:10px;padding:12px;background:var(--site-panel)}.placement-node strong{display:block;font:400 16px var(--site-font-serif);color:var(--site-gold)}.placement-node small{display:block;font-size:9px;color:var(--site-green);text-transform:uppercase;letter-spacing:.06em;margin:2px 0 5px}.placement-node p{font-size:10px;color:var(--site-muted);margin:0}.placement-count{margin-top:10px;font-size:10px;color:var(--site-muted)}@media(max-width:760px){.placement-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body><main class="page page--standard rooms-page" data-reader-surface="rooms">
@@ -33,6 +35,7 @@
 <div class="orientation-layout"><div class="orientation-compass" id="orientationCompass" aria-label="Eight-direction House compass"><span class="plane-loading">Loading compass…</span></div><article class="orientation-detail" id="orientationDetail"><p class="boundary">Choose a direction to inspect what that Door means on the selected plane.</p></article></div>
 <p class="orientation-law">The Axis is the exact center. Research Lab is the inner Forge ring around it, holding unresolved cross-Room questions before promotion. Works / Fruit stays at the outer ring because creative output can grow from every direction. The compass is a reading projection only; it does not change which Room owns a fact.</p>
 </section>
+<section class="placement-browser" id="placement-browser"><p class="eyebrow">Placement atlas</p><h2>What goes where?</h2><p class="boundary">Browse structural nodes by category or plane. This view combines the layer grammar with curated symbolic/religious population; it is for orientation, not ownership.</p><div class="placement-controls" id="placementControls"></div><div class="placement-grid" id="placementGrid"><p class="boundary">Loading placement atlas…</p></div><div class="placement-count" id="placementCount"></div></section>
 <section class="room-grid" aria-label="Canonical public Dwellings">
 <a class="room" href="../religion/"><strong>Potatoverse / Canon</strong><span>Project-canon identities, theology, roles, symbolic systems and mature Potatoverse synthesis.</span></a>
 <a class="room" href="../context/source-authority/"><strong>Archive &amp; Sources</strong><span>Source identity, captures, provenance lineage, evidence classes and archive state.</span></a>
@@ -109,6 +112,36 @@
     }catch(e){root.innerHTML='<span class="plane-loading">The orientation compass could not be loaded.</span>'}
   }
   renderCompass();
+})();
+</script>
+<script>
+(async function bootPlacementBrowser(){
+ const controls=document.getElementById('placementControls'),grid=document.getElementById('placementGrid'),count=document.getElementById('placementCount');if(!controls||!grid)return;
+ const esc=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+ try{
+  const [layerRes,branchRes]=await Promise.all([fetch('../data/house/layer-terrain-regime-atlas.json'),fetch('../data/house/religious-symbolic-branch-atlas.json')]);
+  if(!layerRes.ok||!branchRes.ok)throw new Error('placement data unavailable');
+  const [layer,branch]=await Promise.all([layerRes.json(),branchRes.json()]);
+  const structural=(layer.nodes||[]).map(n=>({id:n.id,label:n.label,category:n.category,planes:n.plane_ids||[],note:n.definition||'',source:'structure'}));
+  const inhabited=(branch.nodes||[]).map(n=>({id:n.id,label:n.label,category:n.layer_category||'inhabitant',planes:n.planes||[],note:n.note||'',source:'inhabitant'}));
+  const rows=[...structural,...inhabited];
+  const cats=['all',...Array.from(new Set(rows.map(x=>x.category))).sort()];
+  let active='all',plane='all';
+  controls.innerHTML='<button class="placement-control" data-kind="plane" data-value="all" aria-pressed="true">All planes</button>'+
+    ['heaven-plane','world-plane','below-plane'].map(p=>'<button class="placement-control" data-kind="plane" data-value="'+p+'" aria-pressed="false">'+p.replace('-plane','')+'</button>').join('')+
+    '<span style="width:8px"></span>'+
+    cats.map(c=>'<button class="placement-control" data-kind="cat" data-value="'+esc(c)+'" aria-pressed="'+(c==='all'?'true':'false')+'">'+esc(c)+'</button>').join('');
+  function render(){
+   const seen=new Set();
+   const out=rows.filter(x=>(active==='all'||x.category===active)&&(plane==='all'||x.planes.includes(plane))).filter(x=>{const k=x.source+':'+x.id;if(seen.has(k))return false;seen.add(k);return true;}).slice(0,48);
+   grid.innerHTML=out.map(x=>'<article class="placement-node"><strong>'+esc(x.label)+'</strong><small>'+esc(x.category)+' · '+esc((x.planes||[]).map(p=>p.replace('-plane','')).join(' / ')||'crosscutting')+'</small><p>'+esc(x.note)+'</p></article>').join('')||'<p class="boundary">No nodes in this slice.</p>';
+   count.textContent=out.length+' visible node'+(out.length===1?'':'s')+' in this slice';
+   controls.querySelectorAll('[data-kind="cat"]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.value===active)));
+   controls.querySelectorAll('[data-kind="plane"]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.value===plane)));
+  }
+  controls.addEventListener('click',e=>{const b=e.target.closest('.placement-control');if(!b)return;if(b.dataset.kind==='cat')active=b.dataset.value;else plane=b.dataset.value;render()});
+  render();
+ }catch(e){grid.innerHTML='<p class="boundary">Placement atlas could not be loaded.</p>'}
 })();
 </script>
 </body></html>
