@@ -1,6 +1,6 @@
 {
   "id": "axis-flow-contract",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "updated": "2026-09-18",
   "status": "active project-symbolic flow contract",
   "purpose": "Define the bidirectional flow grammar of the D1-D11 Axis so the Atlas can place residue, obligations, recurrence, repair, growth, transmission and integration consistently without confusing project symbolism with empirical physics.",
@@ -780,6 +780,156 @@
       "Does the transition preserve provenance?",
       "Does the relation become more generative or more dependent on repetition?",
       "If it moves upward, what observable return to D4 would count as evidence of useful integration?"
-    ]
+    ],
+    "concept_traces": {
+      "plane": {
+        "label": "Plane",
+        "kind": "domain",
+        "primary_state": "observed",
+        "function": "Where relations become observable as bodies, events, institutions, geography, evidence and consequence.",
+        "question": "What is actually happening in the world, and what can be sourced?"
+      },
+      "cross": {
+        "label": "Cross",
+        "kind": "operator",
+        "primary_state": "observed",
+        "function": "Plane × Axis: the operation that makes outward relation, downward root and upward integration simultaneously readable.",
+        "question": "Which direction is this relation taking, and what would change its direction?"
+      },
+      "knowledge": {
+        "label": "Knowledge / distinction",
+        "kind": "fork",
+        "primary_state": "residue",
+        "function": "Distinction makes memory, judgment, responsibility and choice possible; it can feed integration or unresolved repetition.",
+        "question": "What has become known, and is that knowledge becoming usable context or recurrent activation?"
+      },
+      "roots-of-ash": {
+        "label": "Roots of Ash",
+        "kind": "root-state",
+        "primary_state": "residue",
+        "function": "Stored consequence after rupture, burning, exhaustion or severance.",
+        "question": "Does the residue become evidence and soil, or does it keep being reactivated as Mud?"
+      },
+      "roots-of-strife": {
+        "label": "Roots of Strife",
+        "kind": "root-state",
+        "primary_state": "unresolved",
+        "function": "Buried material that keeps reproducing conflict, dependency, capture or fragmentation.",
+        "question": "What unresolved relation is being reproduced rather than metabolized?"
+      },
+      "tree-of-strife": {
+        "label": "Tree of Strife",
+        "kind": "reproductive-pattern",
+        "primary_state": "capture",
+        "function": "A living system whose branches depend on unresolved conflict continuing.",
+        "question": "What must remain unresolved for this system to keep reproducing itself?"
+      },
+      "wide-road": {
+        "label": "Wide Road",
+        "kind": "operator",
+        "primary_state": "unresolved",
+        "function": "The dispersive route where repetition becomes easier than a narrow regime-changing crossing.",
+        "question": "What makes continued repetition easier than transformation here?"
+      },
+      "swamp": {
+        "label": "Swamp",
+        "kind": "system-state",
+        "primary_state": "capture",
+        "function": "Accumulated entanglement, stagnant circulation and self-reproducing conflict ecology.",
+        "question": "Where are exit, agency, provenance or productive outflow blocked?"
+      },
+      "door": {
+        "label": "Door",
+        "kind": "threshold",
+        "primary_state": "threshold",
+        "function": "The regime-changing junction where a relation can be released, repaired, refused, transformed or routed.",
+        "question": "What concrete condition would prove this crossing changed the relation?"
+      },
+      "spiral": {
+        "label": "Spiral",
+        "kind": "trajectory",
+        "primary_state": "transformed_recurrence",
+        "function": "Return to related material at a changed level rather than a closed loop at the same level.",
+        "question": "What is actually different on this recurrence?"
+      },
+      "ladder": {
+        "label": "Ladder",
+        "kind": "path",
+        "primary_state": "transformed_recurrence",
+        "function": "Ordered passage through thresholds; the experiential route of changed recurrence along the Axis.",
+        "question": "Which threshold has been crossed, and what capability exists afterward?"
+      },
+      "living-root": {
+        "label": "Living Root",
+        "kind": "root-state",
+        "primary_state": "living_root",
+        "function": "Memory and consequence preserved without compulsory reenactment; the past becomes nourishment.",
+        "question": "Can the history stay visible without controlling the future?"
+      },
+      "tree-of-life": {
+        "label": "Tree of Life",
+        "kind": "reproductive-pattern",
+        "primary_state": "generative",
+        "function": "Integrated experience becomes branch, fruit, reciprocal nourishment and future seed.",
+        "question": "Does the structure make other nodes more capable without permanent dependence?"
+      },
+      "garden": {
+        "label": "Garden / Rooms",
+        "kind": "habitation",
+        "primary_state": "habitation",
+        "function": "Differentiated branches coexist with boundaries, passage, cultivation and room to remain distinct.",
+        "question": "Can plurality remain connected without capture or flattening?"
+      },
+      "rooms": {
+        "label": "Rooms",
+        "kind": "habitation",
+        "primary_state": "habitation",
+        "function": "Protected differentiated spaces inside a larger relational whole.",
+        "question": "Can each room keep identity, boundary and passage while contributing to the whole?"
+      },
+      "heaven": {
+        "label": "Heaven",
+        "kind": "integration-domain",
+        "primary_state": "integration",
+        "function": "Upper project-symbolic field of integrated perspective, evaluation, clarity and responsibility.",
+        "question": "What responsibility follows from the wider view, and how does it return to D4?"
+      },
+      "crown": {
+        "label": "Crown",
+        "kind": "integration-state",
+        "primary_state": "integration",
+        "function": "Summit compression of many perspectives into accountable judgment, orientation and service.",
+        "question": "What information was compressed, and what useful return follows?"
+      },
+      "north": {
+        "label": "North / North of North",
+        "kind": "orientation",
+        "primary_state": "orientation",
+        "function": "Source-facing criterion selection: deciding what deserves to count as orienting truth, life, repair, responsibility and service.",
+        "question": "By what standard is the standard itself judged?"
+      },
+      "gardener": {
+        "label": "Gardener",
+        "kind": "return-role",
+        "primary_state": "return",
+        "function": "Cultivation, protection, pruning, soil repair and practical return of integrated orientation to the Plane.",
+        "question": "What becomes more capable, nourished, protected or repairable in the world?"
+      },
+      "repair": {
+        "label": "Repair",
+        "kind": "route",
+        "primary_state": "threshold",
+        "function": "The return route that turns residue into provenance, recovers agency, crosses a threshold and restores generativity.",
+        "question": "What has to become true for repetition to become changed relation?"
+      },
+      "fruit": {
+        "label": "Fruit",
+        "kind": "output",
+        "primary_state": "return",
+        "function": "Manifest result by which a claimed integration can be evaluated in the inhabited world.",
+        "question": "What observable capacity, nourishment, truth, repair or service was actually produced?"
+      }
+    },
+    "concept_trace_rule": "Concept traces are entry points into relation states, not claims that a symbol is permanently identical with one state. Operators such as Cross, Wide Road and Repair describe movement; roles such as Gardener describe a return function; domains such as Plane and Heaven describe context."
   }
 }
