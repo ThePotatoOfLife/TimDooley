@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thepotatooflife.github.io/TimDooley/schemas/house-architectural-vocabulary.schema.json",
+  "title": "Potato House Architectural Vocabulary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "updated",
+    "authority",
+    "purpose",
+    "biblical_boundary",
+    "scale_ladder",
+    "families",
+    "dwelling_projection",
+    "view_rules"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "updated": {
+      "type": "string"
+    },
+    "authority": {
+      "const": "house-architectural-vocabulary"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "biblical_boundary": {
+      "type": "string"
+    },
+    "scale_ladder": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object"
+      }
+    },
+    "families": {
+      "type": "object"
+    },
+    "dwelling_projection": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object"
+      }
+    },
+    "view_rules": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
