@@ -1,5 +1,5 @@
 {
-  "version": "4.5.0",
+  "version": "4.6.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -79,7 +79,8 @@
       "house-subrooms",
       "house-topology",
       "house-interfaces",
-      "house-architectural-vocabulary"
+      "house-architectural-vocabulary",
+      "house-projections"
     ]
   },
   "records": [
@@ -1084,6 +1085,21 @@
         "Archive",
         "Tabernacle"
       ]
+    },
+    {
+      "id": "house-projections",
+      "path": "data/house/projections.json",
+      "branch": "root",
+      "kind": "alternate integrated-plurality projection registry",
+      "terms": [
+        "House View",
+        "Temple View",
+        "Body View",
+        "Tree Vine View",
+        "City View",
+        "integrated plurality",
+        "noncollapse"
+      ]
     }
   ],
   "retrieval_routes": [
@@ -1254,6 +1270,15 @@
         "potato-house-constitution",
         "house-rooms",
         "house-subrooms"
+      ]
+    },
+    {
+      "question": "How do House, Temple, Body, Tree and City differ?",
+      "records": [
+        "house-projections",
+        "house-architectural-vocabulary",
+        "potato-house-constitution",
+        "house-topology"
       ]
     }
   ],
