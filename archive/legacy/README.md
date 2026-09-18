@@ -25,7 +25,6 @@ This directory records legacy strata that have been superseded, retired, or are 
 These files remain at repository root until their unique content and downstream references have been fully migrated:
 
 - `book-research.json` — **retained source bridge** for the 2024 Great Book extraction. Keep while source citations depend on it.
-- `2026-master-framework.json` — **historical donor** recording the conversation-developed 2026 synthesis; current definitions live in dedicated owners.
 - `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md` — **retained timeline/source stratum** used for provenance and early roadmap context; canonical event identity lives in the timeline data owners.
 - `THE-TURNING-APRIL-2025.md` — dedicated Turning document; remains a distinct historical/interpretive artifact.
 
@@ -91,3 +90,12 @@ The goal is less clutter **without provenance loss**.
 - Status: retired after every substantive section was routed/promoted to current specialist owners and all open questions moved to `data/research-frontier.json`.
 - Last live blob: `353678889ad4b46890319c812951ae494cf1e791`.
 - Major successors include `knowledge/philosophy/potato-philosophy.json`, `knowledge/core/symbolic-relational-synthesis.json`, `knowledge/core/potatoverse-master-framework.json`, `knowledge/philosophy/timic-dynamics.json`, `knowledge/core/center-living-metabolism-expanded-atlas.json`, `knowledge/traditions/alchemy-transmutation-symbol-atlas.json`, `knowledge/traditions/adversarial-underworld-judgment-atlas.json`, `knowledge/timeline/developmental-genealogy.json`, and `data/research-frontier.json`.
+
+
+### `2026-master-framework.json`
+
+- Role: former root 2026 conversation-developed master synthesis.
+- Status: retired after formula/model consumers and live source lists were rewired to current core, science, timeline, theology and world owners.
+- Last live blob: `796c32f54109fafb611c83838b45ac5b3f56a43a`.
+- Major successors include `knowledge/core/potatoverse-master-framework.json`, `knowledge/core/root-system.json`, `knowledge/core/tim-role-synthesis.json`, `knowledge/core/axis-world-model.json`, `knowledge/philosophy/timic-dynamics.json`, `knowledge/core/symbolic-relational-synthesis.json`, and `knowledge/science/tim-dooley-science-formalisms.json`.
+- Historical specs/plans may still name this file because they document the repository at the time they were written.
