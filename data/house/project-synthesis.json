@@ -1,5 +1,5 @@
 {
-  "version": "2.1.0",
+  "version": "2.2.0",
   "updated": "2026-09-18",
   "authority": "project-synthesis",
   "purpose": "Bind repository development waves, center operators, living metabolisms, Rooms, lenses, tests, outputs and commit crystallization into one center-out composition without replacing their canonical owners.",
@@ -1869,6 +1869,11 @@
         "id": "map-foundation-seeds-through-door-time-place",
         "artifact": "data/house/foundation-door-seed-genealogy.json",
         "result": "All 38 current Foundations now carry project-native death/life Seed states, concrete Door crossings, historical clocks, physical/institutional places, rise/fall/refoundation and reproduction boundaries."
+      },
+      {
+        "id": "expand-foundations-across-underrepresented-domains",
+        "artifact": "data/house/foundations-wave-003.json",
+        "result": "Foundation population expanded from 38 to 52 with religious, mutual-aid, humanitarian, civil-rights, environmental, cultural and open-technology lineages, each carrying current status and House/Axis placement."
       }
     ]
   },
@@ -2156,7 +2161,26 @@
       "Fall may mean closure, supersession, merger, diaspora, dormancy or refoundation; it need not mean annihilation.",
       "Refoundation is a second Door crossing that preserves some residue while changing the operating platform."
     ],
-    "current_population": 38,
-    "public_reader": "timeline/foundations/"
+    "current_population": 52,
+    "public_reader": "timeline/foundations/",
+    "expansion_wave_003": {
+      "records": "data/house/foundations-wave-003.json",
+      "placement": "data/house/foundation-placement-wave-003.json",
+      "domains": [
+        "religion",
+        "humanitarian",
+        "social-religious",
+        "mutual-aid-health",
+        "youth-education",
+        "environmental-movement",
+        "civil-rights",
+        "human-rights",
+        "culture-art",
+        "technology-culture",
+        "technology-software",
+        "knowledge-infrastructure"
+      ],
+      "rule": "Plot stages independently: root/substrate, Door, sprout, branching and return. Do not assign a whole Foundation one moral altitude."
+    }
   }
 }
