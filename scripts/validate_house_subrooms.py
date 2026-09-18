@@ -15,6 +15,8 @@ STRUCTURAL_CENSUS=ROOT/'data/house/structural-census.json'
 POPULATION=ROOT/'data/house/population-contract.json'
 POPULATION_PULSE=ROOT/'data/house/population-pulse.json'
 FEDERATION_SCALE=ROOT/'data/house/federation-scale.json'
+HOLDINGS=ROOT/'data/house/holdings.json'
+COLLECTIONS=ROOT/'data/house/collections.json'
 SURFACES=ROOT/'data/house/public-surfaces.json'
 
 def load(path):
@@ -23,7 +25,7 @@ def load(path):
 def main():
     errors=[]
     try:
-        rooms=load(ROOMS); sub=load(SUBROOMS); topo=load(TOPOLOGY); interfaces=load(INTERFACES); vocab=load(VOCAB); projections=load(PROJECTIONS); census=load(STRUCTURAL_CENSUS); population=load(POPULATION); pulse=load(POPULATION_PULSE); federation=load(FEDERATION_SCALE); surfaces=load(SURFACES); schema=load(SCHEMA)
+        rooms=load(ROOMS); sub=load(SUBROOMS); topo=load(TOPOLOGY); interfaces=load(INTERFACES); vocab=load(VOCAB); projections=load(PROJECTIONS); census=load(STRUCTURAL_CENSUS); population=load(POPULATION); pulse=load(POPULATION_PULSE); federation=load(FEDERATION_SCALE); holdings=load(HOLDINGS); collections=load(COLLECTIONS); surfaces=load(SURFACES); schema=load(SCHEMA)
     except Exception as exc:
         print('HOUSE SUBROOM VALIDATION FAILED')
         print('-',exc)
@@ -79,6 +81,15 @@ def main():
             if sid not in surface_ids: errors.append(f'House census instance {instance.get("id")} has unknown public surface {sid}')
     if population.get('structural_census')!='data/house/structural-census.json': errors.append('House population contract census pointer drift')
     pulse_rows=[x for x in pulse.get('records',[]) if isinstance(x,dict)]
+    holding_rows=[x for x in holdings.get('holdings',[]) if isinstance(x,dict)]
+    if len(holding_rows)!=len(rows): errors.append('House holdings must cover every nested Room')
+    if {x.get('room_id') for x in holding_rows}!={x.get('id') for x in rows}: errors.append('House holdings Room IDs drifted')
+    assigned=[x for x in holdings.get('file_assignments',[]) if isinstance(x,dict)]
+    assigned_paths=[x.get('path') for x in assigned]
+    if len(assigned_paths)!=len(set(assigned_paths)): errors.append('A substantive file has more than one primary Room owner')
+    if any(x.get('primary_file_count',0)<1 for x in holding_rows): errors.append('Every nested Room must have at least one primary holding')
+    collection_ids=[x.get('id') for x in collections.get('collections',[]) if isinstance(x,dict)]
+    if len(collection_ids)!=len(set(collection_ids)): errors.append('duplicate House collection IDs')
     if len(pulse_rows)!=len(rows): errors.append('House population pulse must cover every nested Room')
     if {x.get('room_id') for x in pulse_rows}!={x.get('id') for x in rows}: errors.append('House population pulse Room IDs drifted')
     federation_ids=[x.get('id') for x in federation.get('forms',[]) if isinstance(x,dict)]
