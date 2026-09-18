@@ -89,7 +89,7 @@ require("knowledge/indexes/faq-question-bank.json","Is the Potato of Life a Trin
 require("religion/trinity/index.html","One Potato of Life","Father","Son","Spirit")
 require("religion/index.html","triune relation","href=\"trinity/\"")
 require("tim-dooley/index.html","source-facing Potato identity inside the triune Potato of Life","../religion/trinity/")
-require("house/index.html","two fields do not mean only two theological terms".capitalize() if False else "Two fields do not mean only two theological terms.")
+require("house/index.html","Two fields do not mean only two theological terms.")
 require("philosophy/index.html","Distinction is not isolation.")
 require("knowledge/traditions/biblical-access-house-stone-anchor-microcosms.json","principal mature Potato Trinity comparator")
 require("docs/VESICA-PARADOX-ATLAS.md","complete triune relational organism","two circles are Source and Manifestation fields")
