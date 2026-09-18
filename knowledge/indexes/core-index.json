@@ -1,5 +1,5 @@
 {
-  "version": "4.4.0",
+  "version": "4.5.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -78,7 +78,8 @@
       "root-system",
       "house-subrooms",
       "house-topology",
-      "house-interfaces"
+      "house-interfaces",
+      "house-architectural-vocabulary"
     ]
   },
   "records": [
@@ -1054,6 +1055,35 @@
         "promotion",
         "epistemic firewall"
       ]
+    },
+    {
+      "id": "house-architectural-vocabulary",
+      "path": "data/house/architectural-vocabulary.json",
+      "branch": "root",
+      "kind": "biblical-informed functional vocabulary for House scale, access, support, stewardship, participation, storage and portable architecture",
+      "terms": [
+        "House",
+        "Dwelling",
+        "Mansion",
+        "Room",
+        "Chamber",
+        "Court",
+        "Gate",
+        "Door",
+        "Sanctuary",
+        "Foundation",
+        "Cornerstone",
+        "Pillar",
+        "Temple",
+        "City",
+        "Body",
+        "Field",
+        "Vineyard",
+        "Garden",
+        "Treasury",
+        "Archive",
+        "Tabernacle"
+      ]
     }
   ],
   "retrieval_routes": [
@@ -1215,6 +1245,15 @@
         "house-subrooms",
         "house-topology",
         "potato-house-constitution"
+      ]
+    },
+    {
+      "question": "Are the ten top-level contexts Rooms or Mansions?",
+      "records": [
+        "house-architectural-vocabulary",
+        "potato-house-constitution",
+        "house-rooms",
+        "house-subrooms"
       ]
     }
   ],
