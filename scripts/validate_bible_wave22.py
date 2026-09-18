@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 TRAD=ROOT/'knowledge'/'traditions'
-LOADER=ROOT/'app'/'bible-mining-wave19-loader.js'
+MANIFEST=TRAD/'bible-layer-manifest.json'
 BUILDER=ROOT/'scripts'/'build_bible_study.py'
 FRAGMENTS=TRAD/'biblical-passage-fragments-wave22.json'
 REQUIRED={
@@ -49,13 +49,22 @@ def main()->int:
     for row in rows:
         for ref in row.get('biblical_refs',[]):
             if ref not in matches: errors.append(f'{row.get("id")}: no passage fragment for {ref}')
-    loader=LOADER.read_text(encoding='utf-8') if LOADER.exists() else ''
     builder=BUILDER.read_text(encoding='utf-8') if BUILDER.exists() else ''
-    for path in packs:
-        if path.name not in loader: errors.append(f'dynamic Bible loader missing {path.name}')
-    if 'biblical-operator-comparisons-wave22-' not in builder: errors.append('static Bible builder does not route wave22 packs')
-    if 'biblical-passage-fragments-wave22.json' not in loader: errors.append('dynamic Bible loader does not route wave22 fragments')
-    if 'biblical-passage-fragments-wave22.json' not in builder: errors.append('static Bible builder does not route wave22 fragments')
+    if not MANIFEST.exists():
+        errors.append('missing canonical Bible layer manifest')
+    else:
+        manifest=json.loads(MANIFEST.read_text(encoding='utf-8'))
+        active_paths={
+            item.get('path') for item in manifest.get('layers',[])
+            if item.get('status') in {'canonical','additive'}
+        }
+        for path in packs:
+            expected='knowledge/traditions/'+path.name
+            if expected not in active_paths: errors.append(f'Bible manifest missing {path.name}')
+        if 'knowledge/traditions/biblical-passage-fragments-wave22.json' not in active_paths:
+            errors.append('Bible manifest does not route wave22 fragments')
+    if 'assemble_relations' not in builder or 'load_manifest' not in builder:
+        errors.append('static Bible builder must consume the manifest-defined corpus')
     if errors:
         print('BIBLE WAVE22 VALIDATION FAILED')
         for error in errors: print(' -',error)
