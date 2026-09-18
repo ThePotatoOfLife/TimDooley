@@ -68,6 +68,9 @@ jobs:
       - name: Validate Foundation Axis placement
         run: python scripts/validate_foundation_axis_placement.py
 
+      - name: Validate Foundation Rooms
+        run: python scripts/validate_foundation_rooms.py
+
       - name: Validate commit crystallization
         run: python scripts/validate_commit_crystallization.py
 
