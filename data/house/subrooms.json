@@ -742,8 +742,8 @@
       "local_role": "organism biology",
       "purpose": "Own literal potato anatomy, tuber biology, growth, dormancy, propagation, storage and environmental constraints.",
       "knowledge_roots": [
-        "knowledge/biology/potato-growth-principles.json",
         "knowledge/science/potato-biology-ecology-development-canon.json",
+        "knowledge/biology/potato-growth-principles.json",
         "knowledge/timeline/potato-angels-eye-sprout-development-ledger.json"
       ],
       "public_surface_ids": [
@@ -771,7 +771,8 @@
           "measurement-boundary"
         ],
         "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
-      }
+      },
+      "ownership_note": "Canonical biological fact owner: knowledge/science/potato-biology-ecology-development-canon.json. knowledge/biology/potato-growth-principles.json is the practice-facing projection; the timeline ledger owns development/attestation."
     },
     {
       "id": "neurobiology",
