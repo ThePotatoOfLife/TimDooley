@@ -139,7 +139,7 @@ The current topology distinguishes **composition** from **boundary regime**.
 
 The lower manifestation field is not identical with Saturn/666/Cube. Saturnian Cube belongs to the project's enclosure/compression vocabulary and can be modeled as a local regime within manifestation. A separate Heaven-cube tradition is preserved independently. Geometry by itself has no fixed moral sign.
 
-**Mansion** remains poetic/scriptural dwelling vocabulary rather than a new universal containment primitive in the backend.
+**Dwelling/Mansion** is the public architectural projection of a major stable domain inside the House. The ten canonical top-level owners may be shown this way, but the label does not create a new fact-owning backend primitive or ownership layer.
 
 ## 3D geometric lift
 
