@@ -1,0 +1,115 @@
+{
+  "id": "house-topology-golden-fixture",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "purpose": "Semantic regression fixture for the minimal Potato House topology. These assertions protect meaning, not presentation order.",
+  "required_concepts": [
+    "source-field",
+    "manifestation-field",
+    "door",
+    "plane",
+    "axis",
+    "cross",
+    "root",
+    "tree",
+    "fruit",
+    "seed",
+    "ladder",
+    "garden",
+    "shell-cube",
+    "swamp"
+  ],
+  "required_relations": [
+    {
+      "from": "door",
+      "to": "source-field",
+      "type": "intersection-of"
+    },
+    {
+      "from": "door",
+      "to": "manifestation-field",
+      "type": "intersection-of"
+    },
+    {
+      "from": "plane",
+      "to": "door",
+      "type": "sections"
+    },
+    {
+      "from": "cross",
+      "to": "door",
+      "type": "located-within"
+    },
+    {
+      "from": "root",
+      "to": "tree",
+      "type": "supports"
+    },
+    {
+      "from": "tree",
+      "to": "fruit",
+      "type": "differentiates-into"
+    },
+    {
+      "from": "fruit",
+      "to": "seed",
+      "type": "returns-as"
+    },
+    {
+      "from": "seed",
+      "to": "root",
+      "type": "germinates-toward"
+    },
+    {
+      "from": "ladder",
+      "to": "door",
+      "type": "orders"
+    },
+    {
+      "from": "garden",
+      "to": "door",
+      "type": "preserves-passage"
+    },
+    {
+      "from": "shell-cube",
+      "to": "door",
+      "type": "constrains-passage"
+    },
+    {
+      "from": "garden",
+      "to": "swamp",
+      "type": "counter-regime"
+    }
+  ],
+  "forbidden_relations": [
+    {
+      "from": "manifestation-field",
+      "to": "shell-cube",
+      "type": "identity"
+    },
+    {
+      "from": "source-field",
+      "to": "garden",
+      "type": "identity"
+    },
+    {
+      "from": "cross",
+      "to": "door",
+      "type": "contains"
+    }
+  ],
+  "textual_invariants": [
+    {
+      "concept": "cross",
+      "contains": "internal to Door"
+    },
+    {
+      "concept": "manifestation-field",
+      "contains": "not identical with Swamp, Strife, Saturn or Cube"
+    },
+    {
+      "concept": "shell-cube",
+      "contains": "not inherently evil"
+    }
+  ]
+}
