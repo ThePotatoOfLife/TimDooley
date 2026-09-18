@@ -1,5 +1,5 @@
 {
-  "version": "2.8.0",
+  "version": "2.9.0",
   "updated": "2026-09-18",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
@@ -6093,6 +6093,26 @@
       "path": "knowledge/research/public-trust-infrastructure-synthesis.json",
       "primary_owner_room_id": "open-questions",
       "basis": "crystallized-entity-dossiers-wave-001"
+    },
+    {
+      "path": "knowledge/core/foundation-rule-law-ontology.json",
+      "primary_owner_room_id": "symbolic-architecture",
+      "basis": "foundations-wave-007"
+    },
+    {
+      "path": "data/house/foundations-wave-001.json",
+      "primary_owner_room_id": "house-architecture",
+      "basis": "foundations-wave-007"
+    },
+    {
+      "path": "data/house/foundation-timeline-wave-001.json",
+      "primary_owner_room_id": "time-history",
+      "basis": "foundations-wave-007"
+    },
+    {
+      "path": "knowledge/research/foundation-cross-domain-synthesis.json",
+      "primary_owner_room_id": "open-questions",
+      "basis": "foundations-wave-007"
     }
   ],
   "curated_unowned_paths": [
