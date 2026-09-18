@@ -1,7 +1,7 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.9.0",
+  "version": "1.10.0",
   "updated": "2026-09-18",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
@@ -219,7 +219,8 @@
       "Alternative Potato research staging material was externally re-sourced, promoted, then retired with blob provenance.",
       "POTATOVERSE-DEEP-RESEARCH.md remains only as a readable historical donor and no longer points to live staging JSON.",
       "Research frontier House holdings no longer count retired alternative/deep Potatoverse staging files.",
-      "Root research.json unique concepts are being drained into specialist owners before retirement; Center-as-reactor, Sacred Hypocrisy, Two-Faced Potato, comparison-adapter, generative-overlap, identity invariance, Crow transition, Third Temple living architecture and Merkaba choice have now been promoted."
+      "Root research.json unique concepts are being drained into specialist owners before retirement; Center-as-reactor, Sacred Hypocrisy, Two-Faced Potato, comparison-adapter, generative-overlap, identity invariance, Crow transition, Third Temple living architecture and Merkaba choice have now been promoted.",
+      "All research.json sections now have successor owners; its 15 open questions moved into data/research-frontier.json and the root donor is closed for new research."
     ],
     "next_retirement_candidates": [
       {
@@ -287,10 +288,10 @@
     ],
     "root_source_strata": {
       "research.json": {
-        "state": "superseded-retained",
-        "role": "mixed research donor",
-        "authority": "non-canonical",
-        "next": "continue unique-content promotion; canonical FAQ ownership already migrated away"
+        "state": "closed-historical-donor",
+        "role": "fully section-mapped mixed research donor",
+        "authority": "provenance only",
+        "next": "rewire remaining live source references, then retire root copy"
       },
       "book-research.json": {
         "state": "retained-source-bridge",
