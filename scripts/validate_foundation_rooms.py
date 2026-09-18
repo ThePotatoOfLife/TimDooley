@@ -7,6 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 ATLAS=ROOT/'data/house/foundation-room-atlas.json'
 CONTRACT=ROOT/'data/house/foundation-room-contract.json'
 SYNTH=ROOT/'data/house/project-synthesis.json'
+REPRO=ROOT/'data/house/foundation-first-reproduction-wave-001.json'
 HOME=ROOT/'index.html'
 TIMELINE=ROOT/'timeline/foundations/index.html'
 HOUSE=ROOT/'house/index.html'
@@ -15,12 +16,12 @@ def load(p): return json.loads(p.read_text(encoding='utf-8'))
 
 def main():
     errors=[]
-    for p in (ATLAS,CONTRACT,SYNTH,HOME,TIMELINE,HOUSE):
+    for p in (ATLAS,CONTRACT,SYNTH,REPRO,HOME,TIMELINE,HOUSE):
         if not p.is_file(): errors.append(f'missing {p.relative_to(ROOT)}')
     if errors:
         print('\n'.join(errors)); raise SystemExit(1)
 
-    atlas=load(ATLAS); contract=load(CONTRACT); synth=load(SYNTH)
+    atlas=load(ATLAS); contract=load(CONTRACT); synth=load(SYNTH); repro=load(REPRO)
     rows=atlas.get('rooms') or []
     if atlas.get('population')!=52 or len(rows)!=52:
         errors.append(f'Foundation Room population must be 52, got atlas={atlas.get("population")} rows={len(rows)}')
@@ -54,6 +55,12 @@ def main():
         if 'score' in row.get('magnitude_facets',{}):
             errors.append(f'{rid} must not carry a universal magnitude score')
 
+        first=row.get('first_reproduction',{})
+        if not first or not first.get('evidence'):
+            errors.append(f'{rid} missing first reproduction evidence/gap state')
+        elif not first.get('evidence',{}).get('evidence_type'):
+            errors.append(f'{rid} first reproduction missing evidence_type')
+
         gene=row.get('genealogy',{})
         if not gene.get('technical_owner'): errors.append(f'{rid} genealogy missing technical owner')
 
@@ -62,6 +69,10 @@ def main():
         errors.append('Foundation Room summary total drifted')
     if summary.get('unresolved_owner_count')!=0:
         errors.append('Foundation Room atlas has unresolved Room ownership')
+    if len(repro.get('records') or [])!=52:
+        errors.append('Foundation reproduction ledger must cover all 52 Rooms')
+    if {x.get('foundation_id') for x in repro.get('records',[])}!={x.get('foundation_id') for x in rows}:
+        errors.append('Foundation Room and reproduction-ledger populations differ')
 
     if 'typed_current_reach' not in contract.get('magnitude_facets',[]):
         errors.append('Foundation Room contract lost typed reach magnitude')
