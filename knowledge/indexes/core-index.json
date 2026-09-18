@@ -1,5 +1,5 @@
 {
-  "version": "4.3.0",
+  "version": "4.4.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -77,7 +77,8 @@
       "potato-path",
       "root-system",
       "house-subrooms",
-      "house-topology"
+      "house-topology",
+      "house-interfaces"
     ]
   },
   "records": [
@@ -1036,6 +1037,23 @@
         "corridor",
         "embedding"
       ]
+    },
+    {
+      "id": "house-interfaces",
+      "path": "data/house/interfaces.json",
+      "branch": "root",
+      "kind": "guarded cross-Room interface registry",
+      "terms": [
+        "Room Door",
+        "interface",
+        "translation",
+        "guard",
+        "preserved invariant",
+        "formalization",
+        "comparison",
+        "promotion",
+        "epistemic firewall"
+      ]
     }
   ],
   "retrieval_routes": [
@@ -1188,6 +1206,15 @@
         "house-subrooms",
         "house-topology",
         "axis-flow-contract"
+      ]
+    },
+    {
+      "question": "What changes when one Room connects to another?",
+      "records": [
+        "house-interfaces",
+        "house-subrooms",
+        "house-topology",
+        "potato-house-constitution"
       ]
     }
   ],
