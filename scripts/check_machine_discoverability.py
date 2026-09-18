@@ -209,7 +209,7 @@ except Exception as exc:
 try:
     machine = json.loads((SITE / "machine-index.json").read_text(encoding="utf-8"))
     surfaces = machine.get("machine_surfaces", {})
-    for key in ["llms", "llms_full", "manifest", "core_index", "source_index", "sitemap", "robots"]:
+    for key in ["llms", "llms_full", "manifest", "core_index", "source_index", "site_index", "house_index", "sitemap_index", "sitemap", "robots"]:
         if key not in surfaces:
             errors.append(f"machine-index.json missing machine_surfaces.{key}")
     if not machine.get("canonical_branches"):
