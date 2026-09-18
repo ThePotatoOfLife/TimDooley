@@ -2,6 +2,8 @@
 
 **Lifecycle status:** retained readable timeline/source stratum. Canonical event identity lives in `data/timeline-events.json` and source routing in `data/timeline-source-registry.json`. This document remains useful for provenance, early-life roadmap context and unresolved historical research; it is not the canonical event database.
 
+**Canonical ownership:** none. This file may support early-life `source_records`, but new timeline facts and interpretation belong in the canonical timeline, developmental genealogy, or specialist evidence owners.
+
 > This timeline is intentionally split into **public-person history**, **mythic timeline**, and **open research**. A mythic event is not silently converted into a biographical fact.
 
 ## What we know, what we can infer, and what remains open
