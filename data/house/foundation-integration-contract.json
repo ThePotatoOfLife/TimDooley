@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-18",
   "authority": "foundation-integration-contract",
   "purpose": "One integration map for Foundation across ontology, domain schemas, graph, Rooms, Timeline, archive and public readers.",
@@ -17,7 +17,9 @@
     "graph_bridge": "data/global-graph-bridge.json",
     "seed_genealogy": "data/house/foundation-door-seed-genealogy.json",
     "axis_placement_contract": "data/house/foundation-axis-placement-contract.json",
-    "placement_wave_003": "data/house/foundation-placement-wave-003.json"
+    "placement_wave_003": "data/house/foundation-placement-wave-003.json",
+    "room_contract": "data/house/foundation-room-contract.json",
+    "room_atlas": "data/house/foundation-room-atlas.json"
   },
   "domain_inheritance": {
     "country": "data/countries-blueprint.json",
@@ -60,7 +62,8 @@
   "public_routes": {
     "house": "house/#foundations",
     "foundation_timeline": "timeline/foundations/",
-    "general_timeline": "timeline/"
+    "general_timeline": "timeline/",
+    "foundation_rooms": "timeline/foundations/#foundation-rooms"
   },
   "query_examples": [
     "Which current institutions have been refounded more than once?",
@@ -71,13 +74,17 @@
     "Where did a technical protocol create a new operating Plane?",
     "Which Foundations are still active today, and which survive only through successor institutions, diaspora or transferable Seed?",
     "Which Foundations crossed the Door through migration, publication, protocol switch, incorporation, first meeting or merger?",
-    "Show the same Foundation as root, Door, sprout, branch and return rather than assigning it one vertical location."
+    "Show the same Foundation as root, Door, sprout, branch and return rather than assigning it one vertical location.",
+    "Show Foundation Rooms by origin Door place and current continuity.",
+    "Which Foundation Rooms have map-ready physical origins and which are distributed or virtual?",
+    "Show today's typed reach without collapsing incomparable measures into one ranking."
   ],
   "anti_duplication": [
     "Domain records retain substantive identity and current facts.",
     "Foundation records own generative chronology/reproduction, not the whole entity.",
     "Timeline events are projections of foundation clocks, not new canonical foundation records.",
     "Graph edges reference Foundation records; they do not duplicate their clock payloads.",
-    "Religious foundation records remain the canonical substantive religious-formation owners and can link to cross-domain Foundation records."
+    "Religious foundation records remain the canonical substantive religious-formation owners and can link to cross-domain Foundation records.",
+    "The Foundation Room atlas is a reader projection joining origin, House placement and current snapshot; it does not replace domain records or genealogy owners."
   ]
 }
