@@ -1,0 +1,821 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "house-population-pulse",
+  "purpose": "Observable structural-population signals for nested Rooms. This is a maintenance diagnostic, not an importance/truth ranking.",
+  "rule": "Counts reveal connective tissue, exposure and source-rooting only. Low counts do not imply low value; high counts do not imply truth, maturity or priority.",
+  "records": [
+    {
+      "room_id": "canon-identities",
+      "title": "Core Identities & Roles",
+      "parent_room_id": "potatoverse-canon",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 3,
+        "related_structural_instance_count": 7
+      },
+      "frontiers": [
+        "potatoism",
+        "religion-belief"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "theology-god-language",
+      "title": "Theology & God-language",
+      "parent_room_id": "potatoverse-canon",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 3,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 1,
+        "related_structural_instance_count": 2
+      },
+      "frontiers": [
+        "potatoism",
+        "religion-belief"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "symbolic-architecture",
+      "title": "Symbolic Architecture & Cosmology",
+      "parent_room_id": "potatoverse-canon",
+      "signals": {
+        "durable_root_count": 3,
+        "guarded_interface_count": 3,
+        "declared_adjacency_count": 5,
+        "dedicated_public_surface_count": 3,
+        "related_structural_instance_count": 17
+      },
+      "frontiers": [
+        "potatoism",
+        "religion-belief"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "practice-ethics",
+      "title": "Practice & Ethics",
+      "parent_room_id": "potatoverse-canon",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 5,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 9
+      },
+      "frontiers": [
+        "potatoism",
+        "religion-belief"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "provenance-evidence",
+      "title": "Provenance & Evidence",
+      "parent_room_id": "archive-sources",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 2,
+        "declared_adjacency_count": 5,
+        "dedicated_public_surface_count": 1,
+        "related_structural_instance_count": 3
+      },
+      "frontiers": [],
+      "flags": [],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "memory-recovery",
+      "title": "Memory & Recovery",
+      "parent_room_id": "archive-sources",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 7
+      },
+      "frontiers": [],
+      "flags": [],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "witness-attestation",
+      "title": "Witness & Attestation",
+      "parent_room_id": "archive-sources",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 2,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 3,
+        "related_structural_instance_count": 8
+      },
+      "frontiers": [],
+      "flags": [],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "chronology-events",
+      "title": "Events & Development",
+      "parent_room_id": "time-history",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 2,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 3
+      },
+      "frontiers": [
+        "history"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "developmental-genealogy",
+      "title": "Developmental Genealogy",
+      "parent_room_id": "time-history",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 2,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 3,
+        "related_structural_instance_count": 10
+      },
+      "frontiers": [
+        "history"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "prediction-revelation-time",
+      "title": "Prediction, Revelation & Interpretation Time",
+      "parent_room_id": "time-history",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 3,
+        "related_structural_instance_count": 10
+      },
+      "frontiers": [
+        "history"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "bible-christianity",
+      "title": "Bible & Christianity",
+      "parent_room_id": "traditions-texts",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 3
+      },
+      "frontiers": [
+        "religion-belief"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "comparative-mythology",
+      "title": "Comparative Mythology",
+      "parent_room_id": "traditions-texts",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 5
+      },
+      "frontiers": [
+        "religion-belief"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "esoteric-sacred-geometry",
+      "title": "Esoteric & Sacred Geometry",
+      "parent_room_id": "traditions-texts",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 3,
+        "related_structural_instance_count": 6
+      },
+      "frontiers": [
+        "religion-belief"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "other-traditions",
+      "title": "Other Traditions & Philosophies",
+      "parent_room_id": "traditions-texts",
+      "signals": {
+        "durable_root_count": 1,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 3,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 5
+      },
+      "frontiers": [
+        "religion-belief"
+      ],
+      "flags": [
+        "sparse-roots",
+        "active-frontier-nearby"
+      ],
+      "guidance": "Deepen durable owners/sources before splitting the Room."
+    },
+    {
+      "room_id": "math-geometry",
+      "title": "Mathematics & Geometry",
+      "parent_room_id": "science-formal-models",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 2,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 1,
+        "related_structural_instance_count": 1
+      },
+      "frontiers": [
+        "technology-industry",
+        "energy",
+        "environment-resources"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "physics-cosmology",
+      "title": "Physics & Cosmology",
+      "parent_room_id": "science-formal-models",
+      "signals": {
+        "durable_root_count": 1,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 3,
+        "dedicated_public_surface_count": 1,
+        "related_structural_instance_count": 1
+      },
+      "frontiers": [
+        "technology-industry",
+        "energy",
+        "environment-resources"
+      ],
+      "flags": [
+        "sparse-roots",
+        "active-frontier-nearby"
+      ],
+      "guidance": "Deepen durable owners/sources before splitting the Room."
+    },
+    {
+      "room_id": "systems-dynamics",
+      "title": "Systems & Dynamics",
+      "parent_room_id": "science-formal-models",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 2,
+        "declared_adjacency_count": 5,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 8
+      },
+      "frontiers": [
+        "technology-industry",
+        "energy",
+        "environment-resources"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "model-testing",
+      "title": "Testing & Falsifiability",
+      "parent_room_id": "science-formal-models",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 3,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 8
+      },
+      "frontiers": [
+        "technology-industry",
+        "energy",
+        "environment-resources"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "potato-biology",
+      "title": "Potato Biology",
+      "parent_room_id": "life-body",
+      "signals": {
+        "durable_root_count": 1,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 3,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 1
+      },
+      "frontiers": [
+        "people-labour"
+      ],
+      "flags": [
+        "sparse-roots",
+        "active-frontier-nearby"
+      ],
+      "guidance": "Deepen durable owners/sources before splitting the Room."
+    },
+    {
+      "room_id": "neurobiology",
+      "title": "Neurobiology",
+      "parent_room_id": "life-body",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 2,
+        "declared_adjacency_count": 3,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 1
+      },
+      "frontiers": [
+        "people-labour"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "whole-body",
+      "title": "Whole-body Physiology",
+      "parent_room_id": "life-body",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 3,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 1
+      },
+      "frontiers": [
+        "people-labour"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "symbolic-body-comparison",
+      "title": "Symbolic Body Crosswalk",
+      "parent_room_id": "life-body",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 2,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 3,
+        "related_structural_instance_count": 6
+      },
+      "frontiers": [
+        "people-labour"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "politics-governance",
+      "title": "Politics & Governance",
+      "parent_room_id": "world-systems",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 2,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 3,
+        "related_structural_instance_count": 3
+      },
+      "frontiers": [
+        "world",
+        "economic-graph",
+        "energy",
+        "infrastructure",
+        "technology-industry",
+        "people-labour",
+        "governance",
+        "environment-resources",
+        "intelligence-security",
+        "extremism-terrorism"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "law-justice",
+      "title": "Law & Justice",
+      "parent_room_id": "world-systems",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 2
+      },
+      "frontiers": [
+        "world",
+        "economic-graph",
+        "energy",
+        "infrastructure",
+        "technology-industry",
+        "people-labour",
+        "governance",
+        "environment-resources",
+        "intelligence-security",
+        "extremism-terrorism"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "economy-finance",
+      "title": "Economy & Finance",
+      "parent_room_id": "world-systems",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 2,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 2
+      },
+      "frontiers": [
+        "world",
+        "economic-graph",
+        "energy",
+        "infrastructure",
+        "technology-industry",
+        "people-labour",
+        "governance",
+        "environment-resources",
+        "intelligence-security",
+        "extremism-terrorism"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "infrastructure-capability",
+      "title": "Infrastructure & Capability",
+      "parent_room_id": "world-systems",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 3,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 3,
+        "related_structural_instance_count": 5
+      },
+      "frontiers": [
+        "world",
+        "economic-graph",
+        "energy",
+        "infrastructure",
+        "technology-industry",
+        "people-labour",
+        "governance",
+        "environment-resources",
+        "intelligence-security",
+        "extremism-terrorism"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "geography-countries",
+      "title": "Geography & Countries",
+      "parent_room_id": "world-systems",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 3,
+        "related_structural_instance_count": 4
+      },
+      "frontiers": [
+        "world",
+        "economic-graph",
+        "energy",
+        "infrastructure",
+        "technology-industry",
+        "people-labour",
+        "governance",
+        "environment-resources",
+        "intelligence-security",
+        "extremism-terrorism"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "internet-platforms",
+      "title": "Internet & Platforms",
+      "parent_room_id": "culture-information",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 2,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 2
+      },
+      "frontiers": [
+        "religion-belief",
+        "extremism-terrorism"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "subculture-group-formation",
+      "title": "Subculture, Cult & Group Formation",
+      "parent_room_id": "culture-information",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 2,
+        "declared_adjacency_count": 5,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 0
+      },
+      "frontiers": [
+        "religion-belief",
+        "extremism-terrorism"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "information-ecology",
+      "title": "Information Ecology & Memory",
+      "parent_room_id": "culture-information",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 3,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 3
+      },
+      "frontiers": [
+        "religion-belief",
+        "extremism-terrorism"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "great-book-literature",
+      "title": "Great Book & Literature",
+      "parent_room_id": "works",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 2,
+        "declared_adjacency_count": 6,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 2
+      },
+      "frontiers": [],
+      "flags": [],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "music-sound",
+      "title": "Music & Sound",
+      "parent_room_id": "works",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 3,
+        "dedicated_public_surface_count": 1,
+        "related_structural_instance_count": 0
+      },
+      "frontiers": [],
+      "flags": [],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "visual-art",
+      "title": "Visual Art & Symbolic Composition",
+      "parent_room_id": "works",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 1,
+        "related_structural_instance_count": 0
+      },
+      "frontiers": [],
+      "flags": [],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "games-simulations",
+      "title": "Games & Simulations",
+      "parent_room_id": "works",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 3,
+        "dedicated_public_surface_count": 1,
+        "related_structural_instance_count": 0
+      },
+      "frontiers": [],
+      "flags": [],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "house-architecture",
+      "title": "House Architecture",
+      "parent_room_id": "research-lab",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 3,
+        "related_structural_instance_count": 24
+      },
+      "frontiers": [
+        "world",
+        "intelligence-security",
+        "extremism-terrorism",
+        "religion-belief",
+        "economic-graph",
+        "energy",
+        "infrastructure",
+        "technology-industry",
+        "people-labour",
+        "governance",
+        "environment-resources",
+        "history",
+        "potatoism"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "open-questions",
+      "title": "Open Questions & Hypotheses",
+      "parent_room_id": "research-lab",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 5,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 8
+      },
+      "frontiers": [
+        "world",
+        "intelligence-security",
+        "extremism-terrorism",
+        "religion-belief",
+        "economic-graph",
+        "energy",
+        "infrastructure",
+        "technology-industry",
+        "people-labour",
+        "governance",
+        "environment-resources",
+        "history",
+        "potatoism"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "experiments-formalization",
+      "title": "Experiments & Formalization",
+      "parent_room_id": "research-lab",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 2,
+        "declared_adjacency_count": 4,
+        "dedicated_public_surface_count": 2,
+        "related_structural_instance_count": 8
+      },
+      "frontiers": [
+        "world",
+        "intelligence-security",
+        "extremism-terrorism",
+        "religion-belief",
+        "economic-graph",
+        "energy",
+        "infrastructure",
+        "technology-industry",
+        "people-labour",
+        "governance",
+        "environment-resources",
+        "history",
+        "potatoism"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    },
+    {
+      "room_id": "research-programmes",
+      "title": "Research Programmes",
+      "parent_room_id": "research-lab",
+      "signals": {
+        "durable_root_count": 2,
+        "guarded_interface_count": 1,
+        "declared_adjacency_count": 5,
+        "dedicated_public_surface_count": 3,
+        "related_structural_instance_count": 11
+      },
+      "frontiers": [
+        "world",
+        "intelligence-security",
+        "extremism-terrorism",
+        "religion-belief",
+        "economic-graph",
+        "energy",
+        "infrastructure",
+        "technology-industry",
+        "people-labour",
+        "governance",
+        "environment-resources",
+        "history",
+        "potatoism"
+      ],
+      "flags": [
+        "active-frontier-nearby"
+      ],
+      "guidance": "No structural split implied; continue population through existing owner."
+    }
+  ],
+  "summary": {
+    "nested_rooms": 38,
+    "no_guarded_interface": 0,
+    "sparse_roots": 3,
+    "no_public_surface": 0,
+    "adjacent_but_unguarded": 0
+  }
+}
