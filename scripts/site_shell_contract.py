@@ -35,7 +35,7 @@ WORLD_MACHINE_ROUTES = {
     "North Axis / North Programme": BASE + "north/",
     "World Systems": BASE + "world-systems/",
 }
-HOUSE_BRIDGE_EXCLUDED = {"home", "house", "rooms", "explore", "world-map", "questions", "index-a-z"}
+HOUSE_BRIDGE_EXCLUDED = {"home", "potato-of-life", "house", "rooms", "explore", "world-map", "questions", "index-a-z"}
 
 SITE_DISCOVERY_SCHEMA_RE = re.compile(
     r'<script\b[^>]*id=["\']site-discovery-schema["\'][^>]*>(.*?)</script>',
