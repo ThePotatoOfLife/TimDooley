@@ -1,5 +1,5 @@
 {
-  "version": "2.9.0",
+  "version": "3.0.0",
   "updated": "2026-09-18",
   "authority": "house-room-dossiers",
   "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
@@ -6074,6 +6074,13 @@
         "authority": "data/house/foundation-landscape-synthesis.json",
         "guard": "Archetypes are comparison aids, not identities. Distributed/gradual formations may resist one Door category.",
         "return_test": "Always ask what comes back to the World as capability, practice, law, infrastructure, knowledge, service or art."
+      },
+      "foundation_room_lens": {
+        "question": "What is this Foundation Room's Origin Door, where did it physically emerge, where does it sit in the House, and what is alive today?",
+        "authority": "data/house/foundation-room-atlas.json",
+        "contract": "data/house/foundation-room-contract.json",
+        "guard": "House coordinates and Earth coordinates are distinct. Current magnitude is typed, dated and not a ranking.",
+        "genealogy_rule": "Seed/root/sprout/fall details are a secondary drawer beneath the Foundation Room."
       }
     },
     {
