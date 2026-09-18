@@ -107,3 +107,11 @@ The goal is less clutter **without provenance loss**.
 - Last live root blob: `9168248304e821b4af092c5c5f9c506b7db51fb1`.
 - Current extraction owner: `knowledge/research/great-book-2024-source-extraction.json`.
 - Note: this is a path retirement, not a content deletion. The extraction remains live because it preserves cross-domain source archaeology from the 2024 Great Book.
+
+
+### `relational-objects.json`
+
+- Role: orphaned root relational-symbol theory for Grave/Tomb/Mirror/Door/Vessel and observer-dependent semantics.
+- Status: retired after the Law of Positional Meaning and temporal reinterpretation-as-graph-growth rules were promoted into `knowledge/core/symbolic-relational-synthesis.json` and `knowledge/philosophy/timic-dynamics.json`.
+- Last live blob: `806538c82dcda0d00128f8841cfc7ca704ac5298`.
+- No live consumer or canonical-source-map ownership remained at retirement.
