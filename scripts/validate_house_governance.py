@@ -11,6 +11,7 @@ HOUSE_TOPOLOGY=ROOT/'data/house/topology.json'
 PROJECT_CENTER=ROOT/'data/house/project-center.json'
 CROSSCUTTING_LENSES=ROOT/'data/house/crosscutting-lenses.json'
 LIVING_PROJECT_MAP=ROOT/'data/house/living-project-map.json'
+PROJECT_SYNTHESIS=ROOT/'data/house/project-synthesis.json'
 POTATO_CENTER_PAGE=ROOT/'potato-of-life/index.html'
 ORIENTATION_POPULATION=ROOT/'data/house/orientation-population.json'
 TREE_PLANE_ROUTING=ROOT/'data/house/tree-plane-routing.json'
@@ -660,6 +661,28 @@ def validate_living_project_map(errors):
     for rel in required_routes.values():
         p=ROOT/rel/'index.html' if rel.endswith('/') else ROOT/rel
         if not p.is_file(): errors.append(f'living project public route missing: {rel}')
+
+
+def validate_project_synthesis(errors):
+    data=load(PROJECT_SYNTHESIS,errors)
+    if not data: return
+    waves=[x.get('id') for x in data.get('development_waves',[]) if isinstance(x,dict)]
+    expected=['ownership-foundation','spatial-house','living-routes','comparative-expansion','center-refocus','reader-lenses','living-project']
+    if waves!=expected: errors.append('project synthesis development wave order drifted')
+    rooms=[x.get('room_id') for x in data.get('room_pairings',[]) if isinstance(x,dict)]
+    sub=load(SUBROOMS,errors)
+    expected_rooms=[x.get('id') for x in sub.get('subrooms',[]) if isinstance(x,dict)]
+    if set(rooms)!=set(expected_rooms): errors.append('project synthesis Room pairings must cover every nested Room')
+    for row in data.get('room_pairings',[]):
+        if not row.get('contribution'): errors.append(f'project synthesis Room missing contribution: {row.get("room_id")}')
+        if not row.get('hands'): errors.append(f'project synthesis Room missing handoff: {row.get("room_id")}')
+    scoped=data.get('scoped_centers',{})
+    levels={x.get('id'):x for x in scoped.get('levels',[]) if isinstance(x,dict)}
+    if levels.get('semantic-global',{}).get('center')!='potato-of-life': errors.append('scoped center semantic-global must remain Potato of Life')
+    if levels.get('spatial-global',{}).get('center')!='axis': errors.append('scoped center spatial-global must remain Axis')
+    p0=data.get('depth_program',{}).get('active_p0',[])
+    required_p0=['door-liminality','spirit-relation','culture-formation-control','axis-local-centers','fruit-consequence','tree-branching']
+    if p0!=required_p0: errors.append('project synthesis P0 depth programme drifted')
 
 def main():
     errors=[]

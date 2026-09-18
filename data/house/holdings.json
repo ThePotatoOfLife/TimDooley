@@ -153,8 +153,14 @@
       "title": "Symbolic Architecture & Cosmology",
       "dwelling_id": "potatoverse-canon",
       "purpose": "Own mature symbolic geometry and relational architecture: House, Axis, Door, Tree, Mountain, Garden, North and related cosmological forms.",
-      "primary_file_count": 21,
+      "primary_file_count": 22,
       "featured_holdings": [
+        {
+          "path": "knowledge/core/tree-branching-pruning-atlas.json",
+          "id": "tree-branching-pruning-atlas",
+          "kind": "project Tree branching/pruning atlas with plant-development context",
+          "basis": "center-depth-programme"
+        },
         {
           "path": "knowledge/core/root-system.json",
           "id": "root-system",
@@ -196,12 +202,6 @@
           "id": "dog-return-circle-door-axis-atlas",
           "kind": "room holding",
           "basis": "core-remainder"
-        },
-        {
-          "path": "knowledge/core/door-topology-access-and-capability-atlas.json",
-          "id": "door-topology-access-and-capability-atlas",
-          "kind": "room holding",
-          "basis": "core-remainder"
         }
       ],
       "public_surface_ids": [
@@ -223,8 +223,14 @@
       "title": "Practice & Ethics",
       "dwelling_id": "potatoverse-canon",
       "purpose": "Translate the philosophy into conduct, cultivation, responsibility, boundaries, repair and repeatable practice.",
-      "primary_file_count": 24,
+      "primary_file_count": 25,
       "featured_holdings": [
+        {
+          "path": "knowledge/core/fruit-consequence-evaluation-atlas.json",
+          "id": "fruit-consequence-evaluation-atlas",
+          "kind": "project-native consequence evaluation atlas",
+          "basis": "center-depth-programme"
+        },
         {
           "path": "knowledge/core/dormancy-hidden-years-and-practical-theology.json",
           "id": "dormancy-hidden-years-and-practical-theology",
@@ -264,12 +270,6 @@
         {
           "path": "knowledge/philosophy/ai-assisted-authorship-and-provenance.json",
           "id": "ai-assisted-authorship-and-provenance",
-          "kind": "room holding",
-          "basis": "philosophy-family"
-        },
-        {
-          "path": "knowledge/philosophy/belief-evolution-and-claim-testing.json",
-          "id": "belief-evolution-and-claim-testing",
           "kind": "room holding",
           "basis": "philosophy-family"
         }
@@ -2056,8 +2056,14 @@
       "title": "Research Programmes",
       "dwelling_id": "research-lab",
       "purpose": "Own coordinated multi-Room research programmes, workstreams, source ledgers and promotion plans.",
-      "primary_file_count": 9,
+      "primary_file_count": 10,
       "featured_holdings": [
+        {
+          "path": "knowledge/research/recent-commit-depth-audit-2026-09-18.json",
+          "id": "recent-commit-depth-audit-2026-09-18",
+          "kind": "whole-project research depth audit and priority programme",
+          "basis": "center-depth-programme"
+        },
         {
           "path": "knowledge/core/north-axis-tikkun-world-repair-synthesis.json",
           "id": "north-axis-tikkun-world-repair-synthesis",
@@ -2097,12 +2103,6 @@
         {
           "path": "knowledge/research/north-faith-composition-synthesis-2026-09-11.md",
           "id": "north-faith-composition-synthesis-2026-09-11",
-          "kind": "room holding",
-          "basis": "research-topic"
-        },
-        {
-          "path": "knowledge/research/world-atlas-whole-project-synthesis-2026-09-11.md",
-          "id": "world-atlas-whole-project-synthesis-2026-09-11",
           "kind": "room holding",
           "basis": "research-topic"
         }
@@ -5847,6 +5847,21 @@
       "path": "knowledge/traditions/buddhism-dao-akashic-center-lenses.json",
       "primary_owner_room_id": "other-traditions",
       "basis": "center-lens-comparative-research"
+    },
+    {
+      "path": "knowledge/core/fruit-consequence-evaluation-atlas.json",
+      "primary_owner_room_id": "practice-ethics",
+      "basis": "center-depth-programme"
+    },
+    {
+      "path": "knowledge/core/tree-branching-pruning-atlas.json",
+      "primary_owner_room_id": "symbolic-architecture",
+      "basis": "center-depth-programme"
+    },
+    {
+      "path": "knowledge/research/recent-commit-depth-audit-2026-09-18.json",
+      "primary_owner_room_id": "research-programmes",
+      "basis": "center-depth-programme"
     }
   ],
   "curated_unowned_paths": [

@@ -1,16 +1,27 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "authority": "house-room-dossiers",
-  "principle": "A Room dossier is a human-readable synthesis of what a Room owns, consumes, exposes and connects to. It does not create new ownership; it composes existing House registries into an entrance for readers and maintainers.",
+  "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership.",
   "dossiers": [
     {
       "room_id": "canon-identities",
       "title": "Core Identities & Roles",
       "dwelling_id": "potatoverse-canon",
       "entrance": "Own the project-internal definitions and role relations around Potato of Life, Tim, Father, Son, Spirit, Door, Axis and related canonical identities.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "mature project-native identity definitions",
+        "role relations and invariants",
+        "dated changes to canonical identity language",
+        "Material rooted in knowledge/core/tim-dooley.json"
+      ],
+      "stays_out": [
+        "external historical doctrine stated as project canon",
+        "empirical scientific claims without independent evidence",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Project-canon identity does not become external empirical identity.",
       "knowledge_holdings": {
         "primary_file_count": 9,
@@ -117,16 +128,60 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Defines who and what the project says its central roles are before theology, comparison or biography elaborates them.",
+        "Keep handoffs explicit: receive from developmental-genealogy, theology-god-language; hand mature work to theology-god-language, symbolic-architecture, great-book-literature.",
         "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Defines who and what the project says its central roles are before theology, comparison or biography elaborates them.",
+        "center_nodes": [
+          "potato-of-life",
+          "father",
+          "son",
+          "spirit",
+          "door",
+          "axis"
+        ],
+        "living_systems": [
+          "spirit-relation"
+        ],
+        "lenses": [
+          "embodiment-spirit",
+          "memory-history"
+        ],
+        "shared_tests": [
+          "door-test",
+          "fruit-test"
+        ],
+        "receives_from": [
+          "developmental-genealogy",
+          "theology-god-language"
+        ],
+        "hands_to": [
+          "theology-god-language",
+          "symbolic-architecture",
+          "great-book-literature"
+        ]
+      }
     },
     {
       "room_id": "theology-god-language",
       "title": "Theology & God-language",
       "dwelling_id": "potatoverse-canon",
       "entrance": "Develop project theology, God/Father/Son/Spirit language, House, Heaven, salvation, judgment and religious self-description.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "project theology",
+        "God-language and salvation/judgment grammar",
+        "Spirit as living relation",
+        "Material rooted in knowledge/theology/"
+      ],
+      "stays_out": [
+        "external historical doctrine stated as project canon",
+        "empirical scientific claims without independent evidence",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Project theology remains distinguishable from historical doctrine and empirical proof.",
       "knowledge_holdings": {
         "primary_file_count": 31,
@@ -235,20 +290,71 @@
         }
       ],
       "next_work": [
-        "Curate stronger featured entrances and continue consolidating duplicate or superseded material into the Room owner."
-      ]
+        "Deepen the Room through its center contribution: Explains the theological meaning of the nucleus and tests whether God/Father/Son/Spirit language remains internally coherent and externally bounded.",
+        "Keep handoffs explicit: receive from canon-identities, bible-christianity, other-traditions; hand mature work to practice-ethics, symbolic-architecture."
+      ],
+      "center_pairing": {
+        "contribution": "Explains the theological meaning of the nucleus and tests whether God/Father/Son/Spirit language remains internally coherent and externally bounded.",
+        "center_nodes": [
+          "father",
+          "son",
+          "spirit",
+          "house",
+          "door",
+          "garden",
+          "fruit"
+        ],
+        "living_systems": [
+          "spirit-relation"
+        ],
+        "lenses": [
+          "polarity",
+          "embodiment-spirit",
+          "practice-path"
+        ],
+        "shared_tests": [
+          "door-test",
+          "fruit-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "canon-identities",
+          "bible-christianity",
+          "other-traditions"
+        ],
+        "hands_to": [
+          "practice-ethics",
+          "symbolic-architecture"
+        ]
+      }
     },
     {
       "room_id": "symbolic-architecture",
       "title": "Symbolic Architecture & Cosmology",
       "dwelling_id": "potatoverse-canon",
       "entrance": "Own mature symbolic geometry and relational architecture: House, Axis, Door, Tree, Mountain, Garden, North and related cosmological forms.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "project-native operators",
+        "topology and route grammar",
+        "functional distinctions between planes terrains regimes organisms and routes",
+        "Material rooted in knowledge/core/root-system.json"
+      ],
+      "stays_out": [
+        "external historical doctrine stated as project canon",
+        "empirical scientific claims without independent evidence",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Symbolic topology is not literal physical cosmology unless independently tested.",
       "knowledge_holdings": {
-        "primary_file_count": 21,
+        "primary_file_count": 22,
         "featured": [
+          {
+            "id": "tree-branching-pruning-atlas",
+            "path": "knowledge/core/tree-branching-pruning-atlas.json",
+            "kind": "project Tree branching/pruning atlas with plant-development context"
+          },
           {
             "id": "root-system",
             "path": "knowledge/core/root-system.json",
@@ -268,11 +374,6 @@
             "id": "potato-path",
             "path": "knowledge/practice/potato-path.json",
             "kind": "practical transformation sequence"
-          },
-          {
-            "id": "compass-straightedge-vesica-dual-axis-atlas",
-            "path": "knowledge/core/compass-straightedge-vesica-dual-axis-atlas.json",
-            "kind": "room holding"
           }
         ]
       },
@@ -365,20 +466,83 @@
         }
       ],
       "next_work": [
-        "Curate stronger featured entrances and continue consolidating duplicate or superseded material into the Room owner."
-      ]
+        "Deepen the Room through its center contribution: Turns the center into a navigable grammar of fields, thresholds, organisms, terrains, regimes and routes.",
+        "Keep handoffs explicit: receive from canon-identities, math-geometry, comparative-mythology; hand mature work to house-architecture, practice-ethics, systems-dynamics."
+      ],
+      "center_pairing": {
+        "contribution": "Turns the center into a navigable grammar of fields, thresholds, organisms, terrains, regimes and routes.",
+        "center_nodes": [
+          "source-field",
+          "manifestation-field",
+          "door",
+          "axis",
+          "plane",
+          "cross",
+          "seed",
+          "root",
+          "tree",
+          "mountain",
+          "garden",
+          "swamp",
+          "forge",
+          "spiral"
+        ],
+        "living_systems": [
+          "organism",
+          "spirit-relation",
+          "memory-history",
+          "culture-formation"
+        ],
+        "lenses": [
+          "motion",
+          "polarity",
+          "memory-history"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "canon-identities",
+          "math-geometry",
+          "comparative-mythology"
+        ],
+        "hands_to": [
+          "house-architecture",
+          "practice-ethics",
+          "systems-dynamics"
+        ]
+      }
     },
     {
       "room_id": "practice-ethics",
       "title": "Practice & Ethics",
       "dwelling_id": "potatoverse-canon",
       "entrance": "Translate the philosophy into conduct, cultivation, responsibility, boundaries, repair and repeatable practice.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "conduct and cultivation",
+        "repair and reciprocity",
+        "tests of downstream consequence",
+        "Material rooted in knowledge/practice/"
+      ],
+      "stays_out": [
+        "external historical doctrine stated as project canon",
+        "empirical scientific claims without independent evidence",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Practice principles do not override medical, legal or domain-specific professional standards.",
       "knowledge_holdings": {
-        "primary_file_count": 24,
+        "primary_file_count": 25,
         "featured": [
+          {
+            "id": "fruit-consequence-evaluation-atlas",
+            "path": "knowledge/core/fruit-consequence-evaluation-atlas.json",
+            "kind": "project-native consequence evaluation atlas"
+          },
           {
             "id": "dormancy-hidden-years-and-practical-theology",
             "path": "knowledge/core/dormancy-hidden-years-and-practical-theology.json",
@@ -397,11 +561,6 @@
           {
             "id": "gift-preparation-receptivity-sorting",
             "path": "knowledge/core/gift-preparation-receptivity-sorting.json",
-            "kind": "room holding"
-          },
-          {
-            "id": "karma-closure-reduction-and-settlement-model",
-            "path": "knowledge/core/karma-closure-reduction-and-settlement-model.json",
             "kind": "room holding"
           }
         ]
@@ -445,17 +604,64 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Converts the project from description into conduct, cultivation, repair, responsibility and repeatable practice.",
+        "Keep handoffs explicit: receive from theology-god-language, symbolic-architecture, subculture-group-formation; hand mature work to works, culture-information, research-lab.",
         "Keep this Room knowledge-led unless a real structured dataset emerges.",
         "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Converts the project from description into conduct, cultivation, repair, responsibility and repeatable practice.",
+        "center_nodes": [
+          "door",
+          "garden",
+          "fruit",
+          "forge",
+          "spiral"
+        ],
+        "living_systems": [
+          "spirit-relation",
+          "culture-formation"
+        ],
+        "lenses": [
+          "practice-path",
+          "social-formation"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "theology-god-language",
+          "symbolic-architecture",
+          "subculture-group-formation"
+        ],
+        "hands_to": [
+          "works",
+          "culture-information",
+          "research-lab"
+        ]
+      }
     },
     {
       "room_id": "provenance-evidence",
       "title": "Provenance & Evidence",
       "dwelling_id": "archive-sources",
       "entrance": "Own source lineage, evidence class, source authority, extraction lineage and routes back from synthesis to artifacts.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "source lineage",
+        "evidence classification",
+        "routes from synthesis back to artifacts",
+        "Material rooted in knowledge/indexes/source-index.json"
+      ],
+      "stays_out": [
+        "final interpretation that belongs to another owner",
+        "unsourced reconstruction presented as attestation",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Custody of a source does not grant ownership of every claim derived from it.",
       "knowledge_holdings": {
         "primary_file_count": 4,
@@ -542,16 +748,56 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Keeps every synthesis traceable to sources, source type, lineage and evidential limits.",
+        "Keep handoffs explicit: receive from witness-attestation, chronology-events; hand mature work to memory-recovery, model-testing, research-programmes.",
         "Deepen the substantive corpus before considering further subdivision."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Keeps every synthesis traceable to sources, source type, lineage and evidential limits.",
+        "center_nodes": [
+          "root",
+          "eye",
+          "tree-of-knowledge"
+        ],
+        "living_systems": [
+          "memory-history"
+        ],
+        "lenses": [
+          "memory-history"
+        ],
+        "shared_tests": [
+          "fruit-test",
+          "door-test"
+        ],
+        "receives_from": [
+          "witness-attestation",
+          "chronology-events"
+        ],
+        "hands_to": [
+          "memory-recovery",
+          "model-testing",
+          "research-programmes"
+        ]
+      }
     },
     {
       "room_id": "memory-recovery",
       "title": "Memory & Recovery",
       "dwelling_id": "archive-sources",
       "entrance": "Recover prior conversations, files, historical strata and forgotten project material while preserving source/time boundaries.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "conversation/file recovery",
+        "lost context reconstruction",
+        "uncertainty-preserving memory",
+        "Material rooted in knowledge/indexes/conversation-recovery-inventory.json"
+      ],
+      "stays_out": [
+        "final interpretation that belongs to another owner",
+        "unsourced reconstruction presented as attestation",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Recovered material retains its original epistemic and temporal status.",
       "knowledge_holdings": {
         "primary_file_count": 1,
@@ -608,18 +854,57 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Recovers buried project material and turns forgotten residue into contextualized memory rather than mythology-by-reconstruction.",
+        "Keep handoffs explicit: receive from provenance-evidence, witness-attestation; hand mature work to developmental-genealogy, canon-identities.",
         "Deepen the substantive corpus before considering further subdivision.",
-        "Keep this Room knowledge-led unless a real structured dataset emerges.",
-        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+        "Keep this Room knowledge-led unless a real structured dataset emerges."
+      ],
+      "center_pairing": {
+        "contribution": "Recovers buried project material and turns forgotten residue into contextualized memory rather than mythology-by-reconstruction.",
+        "center_nodes": [
+          "root",
+          "shadow",
+          "soil",
+          "seed"
+        ],
+        "living_systems": [
+          "memory-history"
+        ],
+        "lenses": [
+          "memory-history"
+        ],
+        "shared_tests": [
+          "spiral-test",
+          "door-test"
+        ],
+        "receives_from": [
+          "provenance-evidence",
+          "witness-attestation"
+        ],
+        "hands_to": [
+          "developmental-genealogy",
+          "canon-identities"
+        ]
+      }
     },
     {
       "room_id": "witness-attestation",
       "title": "Witness & Attestation",
       "dwelling_id": "archive-sources",
       "entrance": "Track public wording, first attestation, source-bearing witness, captures and what was actually said or published when.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "first attestation",
+        "public wording and captures",
+        "independent witness structure",
+        "Material rooted in data/timeline-source-registry.json"
+      ],
+      "stays_out": [
+        "final interpretation that belongs to another owner",
+        "unsourced reconstruction presented as attestation",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Attestation proves wording/timing, not the truth of every claim in the wording.",
       "knowledge_holdings": {
         "primary_file_count": 21,
@@ -721,16 +1006,54 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Pins claims to what was actually said, shown or published and when.",
+        "Keep handoffs explicit: receive from chronology-events, internet-platforms; hand mature work to provenance-evidence, developmental-genealogy.",
         "Keep this Room knowledge-led unless a real structured dataset emerges."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Pins claims to what was actually said, shown or published and when.",
+        "center_nodes": [
+          "eye",
+          "root",
+          "tree-of-knowledge"
+        ],
+        "living_systems": [
+          "memory-history"
+        ],
+        "lenses": [
+          "memory-history"
+        ],
+        "shared_tests": [
+          "fruit-test"
+        ],
+        "receives_from": [
+          "chronology-events",
+          "internet-platforms"
+        ],
+        "hands_to": [
+          "provenance-evidence",
+          "developmental-genealogy"
+        ]
+      }
     },
     {
       "room_id": "chronology-events",
       "title": "Events & Development",
       "dwelling_id": "time-history",
       "entrance": "Own event sequence, date precision, occurrence identity and changing state through time.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "dated events",
+        "state changes",
+        "occurrence versus publication time",
+        "Material rooted in data/timeline-events.json"
+      ],
+      "stays_out": [
+        "later interpretation silently backdated into earlier events",
+        "undated material presented as chronology",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Occurrence time remains distinct from publication and later interpretation time.",
       "knowledge_holdings": {
         "primary_file_count": 32,
@@ -809,16 +1132,54 @@
         }
       ],
       "next_work": [
-        "Curate stronger featured entrances and continue consolidating duplicate or superseded material into the Room owner."
-      ]
+        "Deepen the Room through its center contribution: Provides occurrence order and date precision so change through time is not flattened into final canon.",
+        "Keep handoffs explicit: receive from witness-attestation, geography-countries; hand mature work to developmental-genealogy, prediction-revelation-time."
+      ],
+      "center_pairing": {
+        "contribution": "Provides occurrence order and date precision so change through time is not flattened into final canon.",
+        "center_nodes": [
+          "root",
+          "spiral",
+          "seed"
+        ],
+        "living_systems": [
+          "memory-history"
+        ],
+        "lenses": [
+          "memory-history",
+          "motion"
+        ],
+        "shared_tests": [
+          "spiral-test"
+        ],
+        "receives_from": [
+          "witness-attestation",
+          "geography-countries"
+        ],
+        "hands_to": [
+          "developmental-genealogy",
+          "prediction-revelation-time"
+        ]
+      }
     },
     {
       "room_id": "developmental-genealogy",
       "title": "Developmental Genealogy",
       "dwelling_id": "time-history",
       "entrance": "Track how identities, symbols, roles and interpretations developed without backdating mature meaning into earlier phases.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "versioned meaning",
+        "role development",
+        "earlier-to-later interpretive transitions",
+        "Material rooted in knowledge/timeline/developmental-genealogy.json"
+      ],
+      "stays_out": [
+        "later interpretation silently backdated into earlier events",
+        "undated material presented as chronology",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Later synthesis may reinterpret earlier material but may not silently rewrite its original state.",
       "knowledge_holdings": {
         "primary_file_count": 11,
@@ -921,16 +1282,57 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Shows how meanings and identities actually developed rather than backdating mature structures.",
+        "Keep handoffs explicit: receive from chronology-events, memory-recovery; hand mature work to canon-identities, great-book-literature.",
         "Keep this Room knowledge-led unless a real structured dataset emerges."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Shows how meanings and identities actually developed rather than backdating mature structures.",
+        "center_nodes": [
+          "root",
+          "spiral",
+          "tree",
+          "seed"
+        ],
+        "living_systems": [
+          "memory-history"
+        ],
+        "lenses": [
+          "memory-history",
+          "motion"
+        ],
+        "shared_tests": [
+          "spiral-test",
+          "door-test"
+        ],
+        "receives_from": [
+          "chronology-events",
+          "memory-recovery"
+        ],
+        "hands_to": [
+          "canon-identities",
+          "great-book-literature"
+        ]
+      }
     },
     {
       "room_id": "prediction-revelation-time",
       "title": "Prediction, Revelation & Interpretation Time",
       "dwelling_id": "time-history",
       "entrance": "Separate earliest prediction/revelation wording, event timing, claimed fulfillment and retrospective interpretation.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "prediction chronology",
+        "revelation wording",
+        "retrospective-match boundaries",
+        "Material rooted in knowledge/prophecy/"
+      ],
+      "stays_out": [
+        "later interpretation silently backdated into earlier events",
+        "undated material presented as chronology",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "A later match must not be backdated into an earlier prediction, and project claims remain distinguishable from verified forecasting.",
       "knowledge_holdings": {
         "primary_file_count": 23,
@@ -1006,17 +1408,57 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Separates prior wording, event timing, claimed fulfillment and retrospective interpretation.",
+        "Keep handoffs explicit: receive from chronology-events, witness-attestation; hand mature work to open-questions, model-testing.",
         "Keep this Room knowledge-led unless a real structured dataset emerges.",
         "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Separates prior wording, event timing, claimed fulfillment and retrospective interpretation.",
+        "center_nodes": [
+          "eye",
+          "spiral",
+          "tree-of-knowledge",
+          "fruit"
+        ],
+        "living_systems": [
+          "memory-history"
+        ],
+        "lenses": [
+          "memory-history"
+        ],
+        "shared_tests": [
+          "fruit-test",
+          "spiral-test"
+        ],
+        "receives_from": [
+          "chronology-events",
+          "witness-attestation"
+        ],
+        "hands_to": [
+          "open-questions",
+          "model-testing"
+        ]
+      }
     },
     {
       "room_id": "bible-christianity",
       "title": "Bible & Christianity",
       "dwelling_id": "traditions-texts",
       "entrance": "Own Bible passages, Christian textual context, historical traditions and carefully bounded project comparisons.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "primary biblical context",
+        "Christian reception history",
+        "bounded Potatoverse comparison",
+        "Material rooted in knowledge/traditions/biblical-overlap-atlas.json"
+      ],
+      "stays_out": [
+        "Potatoverse interpretation substituted for source-tradition meaning",
+        "historical influence inferred from motif similarity alone",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Project resemblance does not establish historical identity, fulfillment or transmission.",
       "knowledge_holdings": {
         "primary_file_count": 119,
@@ -1098,16 +1540,63 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Supplies historically and textually grounded biblical/Christian context before project comparison.",
+        "Keep handoffs explicit: receive from provenance-evidence; hand mature work to theology-god-language, comparative-mythology.",
         "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Supplies historically and textually grounded biblical/Christian context before project comparison.",
+        "center_nodes": [
+          "father",
+          "son",
+          "spirit",
+          "door",
+          "seed",
+          "tree",
+          "garden",
+          "fruit",
+          "mountain"
+        ],
+        "living_systems": [
+          "spirit-relation",
+          "memory-history"
+        ],
+        "lenses": [
+          "practice-path",
+          "polarity",
+          "memory-history"
+        ],
+        "shared_tests": [
+          "fruit-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "provenance-evidence"
+        ],
+        "hands_to": [
+          "theology-god-language",
+          "comparative-mythology"
+        ]
+      }
     },
     {
       "room_id": "comparative-mythology",
       "title": "Comparative Mythology",
       "dwelling_id": "traditions-texts",
       "entrance": "Compare world-tree, axis, initiation, deity, death-return and other motifs across traditions without collapsing differences.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "world trees and axes",
+        "death-return and divine figures",
+        "typed similarity without identity",
+        "Material rooted in knowledge/traditions/comparative-mythology-map.json"
+      ],
+      "stays_out": [
+        "Potatoverse interpretation substituted for source-tradition meaning",
+        "historical influence inferred from motif similarity alone",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Similarity is not genealogy or proof of borrowing.",
       "knowledge_holdings": {
         "primary_file_count": 4,
@@ -1179,17 +1668,59 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Provides structured motif comparison while preserving the independence of source traditions.",
+        "Keep handoffs explicit: receive from other-traditions, provenance-evidence; hand mature work to symbolic-architecture, religious-symbolic-branch-atlas.",
         "Deepen the substantive corpus before considering further subdivision.",
         "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Provides structured motif comparison while preserving the independence of source traditions.",
+        "center_nodes": [
+          "axis",
+          "tree",
+          "mountain",
+          "door",
+          "seed",
+          "root"
+        ],
+        "living_systems": [
+          "memory-history"
+        ],
+        "lenses": [
+          "motion",
+          "polarity"
+        ],
+        "shared_tests": [
+          "door-test"
+        ],
+        "receives_from": [
+          "other-traditions",
+          "provenance-evidence"
+        ],
+        "hands_to": [
+          "symbolic-architecture",
+          "religious-symbolic-branch-atlas"
+        ]
+      }
     },
     {
       "room_id": "esoteric-sacred-geometry",
       "title": "Esoteric & Sacred Geometry",
       "dwelling_id": "traditions-texts",
       "entrance": "Handle historical/esoteric geometry, mandorla, Vesica, cosmological diagrams and source-led comparison.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "mandorla/vesica",
+        "pillars/pyramid/eye",
+        "dated esoteric reception",
+        "Material rooted in knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json"
+      ],
+      "stays_out": [
+        "Potatoverse interpretation substituted for source-tradition meaning",
+        "historical influence inferred from motif similarity alone",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Historical geometry and esoteric symbolism must stay separate from claims of physical mechanism.",
       "knowledge_holdings": {
         "primary_file_count": 3,
@@ -1249,18 +1780,59 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Handles historically sourced symbolic geometry and later esoteric reception without letting symbolism substitute for provenance.",
+        "Keep handoffs explicit: receive from math-geometry, other-traditions; hand mature work to symbolic-architecture, comparative-mythology.",
         "Deepen the substantive corpus before considering further subdivision.",
-        "Keep this Room knowledge-led unless a real structured dataset emerges.",
-        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+        "Keep this Room knowledge-led unless a real structured dataset emerges."
+      ],
+      "center_pairing": {
+        "contribution": "Handles historically sourced symbolic geometry and later esoteric reception without letting symbolism substitute for provenance.",
+        "center_nodes": [
+          "door",
+          "eye",
+          "axis",
+          "mountain",
+          "twin-pillars",
+          "plane"
+        ],
+        "living_systems": [
+          "memory-history"
+        ],
+        "lenses": [
+          "polarity",
+          "motion"
+        ],
+        "shared_tests": [
+          "door-test"
+        ],
+        "receives_from": [
+          "math-geometry",
+          "other-traditions"
+        ],
+        "hands_to": [
+          "symbolic-architecture",
+          "comparative-mythology"
+        ]
+      }
     },
     {
       "room_id": "other-traditions",
       "title": "Other Traditions & Philosophies",
       "dwelling_id": "traditions-texts",
       "entrance": "Hold non-biblical traditions and philosophical comparators that deserve their own historical meanings before project comparison.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "source-tradition meaning",
+        "comparative philosophy",
+        "non-biblical practice and cosmology",
+        "Material rooted in knowledge/traditions/"
+      ],
+      "stays_out": [
+        "Potatoverse interpretation substituted for source-tradition meaning",
+        "historical influence inferred from motif similarity alone",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Each tradition is described on its own terms before cross-project synthesis.",
       "knowledge_holdings": {
         "primary_file_count": 17,
@@ -1337,16 +1909,60 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Keeps Buddhism, Daoism and other traditions on their own terms before they become project mirrors.",
+        "Keep handoffs explicit: receive from provenance-evidence; hand mature work to comparative-mythology, theology-god-language.",
         "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Keeps Buddhism, Daoism and other traditions on their own terms before they become project mirrors.",
+        "center_nodes": [
+          "door",
+          "axis",
+          "spiral",
+          "garden",
+          "shadow"
+        ],
+        "living_systems": [
+          "spirit-relation",
+          "memory-history"
+        ],
+        "lenses": [
+          "motion",
+          "polarity",
+          "practice-path",
+          "memory-history"
+        ],
+        "shared_tests": [
+          "door-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "provenance-evidence"
+        ],
+        "hands_to": [
+          "comparative-mythology",
+          "theology-god-language"
+        ]
+      }
     },
     {
       "room_id": "math-geometry",
       "title": "Mathematics & Geometry",
       "dwelling_id": "science-formal-models",
       "entrance": "Own exact geometry, mathematical structure, topology and formal analogies used by the project.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "exact geometry",
+        "topology/projection",
+        "formal recurrence",
+        "Material rooted in data/geometry-vesica-pisces-mandorla.json"
+      ],
+      "stays_out": [
+        "symbolic analogy presented as empirical result",
+        "untestable metaphysics labeled as science",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Mathematical fit does not by itself establish a physical or theological claim.",
       "knowledge_holdings": {
         "primary_file_count": 22,
@@ -1425,16 +2041,55 @@
         }
       ],
       "next_work": [
-        "Curate stronger featured entrances and continue consolidating duplicate or superseded material into the Room owner."
-      ]
+        "Deepen the Room through its center contribution: Makes exact what can be exact: geometry, topology, projection, recurrence and mathematical constraints.",
+        "Keep handoffs explicit: receive from symbolic-architecture; hand mature work to systems-dynamics, model-testing."
+      ],
+      "center_pairing": {
+        "contribution": "Makes exact what can be exact: geometry, topology, projection, recurrence and mathematical constraints.",
+        "center_nodes": [
+          "axis",
+          "plane",
+          "cross",
+          "door",
+          "spiral"
+        ],
+        "living_systems": [
+          "organism"
+        ],
+        "lenses": [
+          "motion"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test"
+        ],
+        "receives_from": [
+          "symbolic-architecture"
+        ],
+        "hands_to": [
+          "systems-dynamics",
+          "model-testing"
+        ]
+      }
     },
     {
       "room_id": "physics-cosmology",
       "title": "Physics & Cosmology",
       "dwelling_id": "science-formal-models",
       "entrance": "Own physical/cosmological claims, models and status boundaries around particles, fields, astronomy and cosmic analogies.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "physical models",
+        "astronomy/cosmology",
+        "empirical status of physical analogies",
+        "Material rooted in knowledge/science/"
+      ],
+      "stays_out": [
+        "symbolic analogy presented as empirical result",
+        "untestable metaphysics labeled as science",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Speculative or symbolic models remain labeled until independently testable and supported.",
       "knowledge_holdings": {
         "primary_file_count": 14,
@@ -1498,17 +2153,55 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Keeps physical/cosmological claims distinct from symbolic cosmology and supplies empirical constraints where relevant.",
+        "Keep handoffs explicit: receive from model-testing; hand mature work to symbolic-architecture, open-questions.",
         "Keep this Room knowledge-led unless a real structured dataset emerges.",
         "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Keeps physical/cosmological claims distinct from symbolic cosmology and supplies empirical constraints where relevant.",
+        "center_nodes": [
+          "manifestation-field",
+          "plane",
+          "axis"
+        ],
+        "living_systems": [
+          "organism"
+        ],
+        "lenses": [
+          "embodiment-spirit",
+          "polarity"
+        ],
+        "shared_tests": [
+          "fruit-test"
+        ],
+        "receives_from": [
+          "model-testing"
+        ],
+        "hands_to": [
+          "symbolic-architecture",
+          "open-questions"
+        ]
+      }
     },
     {
       "room_id": "systems-dynamics",
       "title": "Systems & Dynamics",
       "dwelling_id": "science-formal-models",
       "entrance": "Own dynamical systems, graph models, control, information, topology and transformation formalisms.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "feedback systems",
+        "control/capture versus generativity",
+        "graph and state-transition models",
+        "Material rooted in knowledge/research/house-atlas-systems-theory/"
+      ],
+      "stays_out": [
+        "symbolic analogy presented as empirical result",
+        "untestable metaphysics labeled as science",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Systems analogy must identify the variables and information lost by the analogy.",
       "knowledge_holdings": {
         "primary_file_count": 26,
@@ -1608,16 +2301,60 @@
         }
       ],
       "next_work": [
-        "Curate stronger featured entrances and continue consolidating duplicate or superseded material into the Room owner."
-      ]
+        "Deepen the Room through its center contribution: Formalizes feedback, capture, resilience, flow and transformation across biological, cultural and institutional systems.",
+        "Keep handoffs explicit: receive from math-geometry, culture-information; hand mature work to model-testing, world-systems."
+      ],
+      "center_pairing": {
+        "contribution": "Formalizes feedback, capture, resilience, flow and transformation across biological, cultural and institutional systems.",
+        "center_nodes": [
+          "spiral",
+          "garden",
+          "swamp",
+          "shell-cube",
+          "forge",
+          "fruit"
+        ],
+        "living_systems": [
+          "culture-formation",
+          "memory-history"
+        ],
+        "lenses": [
+          "motion",
+          "social-formation"
+        ],
+        "shared_tests": [
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "math-geometry",
+          "culture-information"
+        ],
+        "hands_to": [
+          "model-testing",
+          "world-systems"
+        ]
+      }
     },
     {
       "room_id": "model-testing",
       "title": "Testing & Falsifiability",
       "dwelling_id": "science-formal-models",
       "entrance": "Own tests, observables, falsifiers, uncertainty, calibration and scientific red-team protocols.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "falsifiers",
+        "observables and calibration",
+        "red-team review",
+        "Material rooted in knowledge/science/model-testing-protocol.json"
+      ],
+      "stays_out": [
+        "symbolic analogy presented as empirical result",
+        "untestable metaphysics labeled as science",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "A model remains provisional when its discriminating observations or falsifiers are unavailable.",
       "knowledge_holdings": {
         "primary_file_count": 5,
@@ -1697,16 +2434,62 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Decides what a candidate would have to predict, survive or fail before promotion.",
+        "Keep handoffs explicit: receive from experiments-formalization, provenance-evidence; hand mature work to science-formal-models, research-programmes.",
         "Keep this Room knowledge-led unless a real structured dataset emerges."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Decides what a candidate would have to predict, survive or fail before promotion.",
+        "center_nodes": [
+          "eye",
+          "door",
+          "forge",
+          "fruit"
+        ],
+        "living_systems": [
+          "organism",
+          "spirit-relation",
+          "memory-history",
+          "culture-formation"
+        ],
+        "lenses": [
+          "practice-path",
+          "memory-history"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "experiments-formalization",
+          "provenance-evidence"
+        ],
+        "hands_to": [
+          "science-formal-models",
+          "research-programmes"
+        ]
+      }
     },
     {
       "room_id": "potato-biology",
       "title": "Potato Biology",
       "dwelling_id": "life-body",
       "entrance": "Own literal potato anatomy, tuber biology, growth, dormancy, propagation, storage and environmental constraints.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "tuber anatomy",
+        "eyes/dormancy/sprouting",
+        "storage growth propagation and pathology",
+        "Material rooted in knowledge/biology/potato-growth-principles.json"
+      ],
+      "stays_out": [
+        "symbolic anatomy presented as established physiology",
+        "medical conclusions beyond the evidence held here",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Biological facts may motivate metaphor but do not prove spiritual interpretation.",
       "knowledge_holdings": {
         "primary_file_count": 3,
@@ -1766,18 +2549,60 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Provides the literal organism that grounds the project's biological metaphors and prevents symbolic drift.",
+        "Keep handoffs explicit: receive from model-testing; hand mature work to symbolic-body-comparison, practice-ethics.",
         "Deepen the substantive corpus before considering further subdivision.",
-        "Keep this Room knowledge-led unless a real structured dataset emerges.",
-        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+        "Keep this Room knowledge-led unless a real structured dataset emerges."
+      ],
+      "center_pairing": {
+        "contribution": "Provides the literal organism that grounds the project's biological metaphors and prevents symbolic drift.",
+        "center_nodes": [
+          "potato",
+          "eye",
+          "seed",
+          "root",
+          "fruit"
+        ],
+        "living_systems": [
+          "organism"
+        ],
+        "lenses": [
+          "embodiment-spirit",
+          "motion"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "model-testing"
+        ],
+        "hands_to": [
+          "symbolic-body-comparison",
+          "practice-ethics"
+        ]
+      }
     },
     {
       "room_id": "neurobiology",
       "title": "Neurobiology",
       "dwelling_id": "life-body",
       "entrance": "Own brain structures, networks, physiology and evidence grading relevant to body research.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "brain structures/networks",
+        "attention/arousal/memory physiology",
+        "evidence grading",
+        "Material rooted in knowledge/body/whole-brain-neurobiology-atlas.json"
+      ],
+      "stays_out": [
+        "symbolic anatomy presented as established physiology",
+        "medical conclusions beyond the evidence held here",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Human, animal, theoretical and speculative evidence remain separately graded.",
       "knowledge_holdings": {
         "primary_file_count": 7,
@@ -1855,16 +2680,53 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Owns evidence-graded brain anatomy and physiology used by body comparisons.",
+        "Keep handoffs explicit: receive from model-testing; hand mature work to symbolic-body-comparison, whole-body.",
         "Keep this Room knowledge-led unless a real structured dataset emerges."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Owns evidence-graded brain anatomy and physiology used by body comparisons.",
+        "center_nodes": [
+          "eye",
+          "spirit",
+          "axis"
+        ],
+        "living_systems": [
+          "organism"
+        ],
+        "lenses": [
+          "embodiment-spirit"
+        ],
+        "shared_tests": [
+          "fruit-test"
+        ],
+        "receives_from": [
+          "model-testing"
+        ],
+        "hands_to": [
+          "symbolic-body-comparison",
+          "whole-body"
+        ]
+      }
     },
     {
       "room_id": "whole-body",
       "title": "Whole-body Physiology",
       "dwelling_id": "life-body",
       "entrance": "Own body-system integration across nervous, autonomic, cardiovascular, respiratory, gut, immune and fluid interfaces.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "nervous/autonomic/cardiovascular/respiratory integration",
+        "fluid and gut/immune interfaces",
+        "whole-body uncertainty",
+        "Material rooted in knowledge/body/body-system-master-atlas.json"
+      ],
+      "stays_out": [
+        "symbolic anatomy presented as established physiology",
+        "medical conclusions beyond the evidence held here",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Whole-body synthesis must preserve uncertainty and domain-specific evidence.",
       "knowledge_holdings": {
         "primary_file_count": 4,
@@ -1936,18 +2798,55 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Shows embodiment as integrated multi-system physiology rather than a brain-only model.",
+        "Keep handoffs explicit: receive from neurobiology; hand mature work to symbolic-body-comparison, practice-ethics.",
         "Deepen the substantive corpus before considering further subdivision.",
-        "Keep this Room knowledge-led unless a real structured dataset emerges.",
-        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+        "Keep this Room knowledge-led unless a real structured dataset emerges."
+      ],
+      "center_pairing": {
+        "contribution": "Shows embodiment as integrated multi-system physiology rather than a brain-only model.",
+        "center_nodes": [
+          "spirit",
+          "axis",
+          "root"
+        ],
+        "living_systems": [
+          "organism"
+        ],
+        "lenses": [
+          "embodiment-spirit"
+        ],
+        "shared_tests": [
+          "fruit-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "neurobiology"
+        ],
+        "hands_to": [
+          "symbolic-body-comparison",
+          "practice-ethics"
+        ]
+      }
     },
     {
       "room_id": "symbolic-body-comparison",
       "title": "Symbolic Body Crosswalk",
       "dwelling_id": "life-body",
       "entrance": "Own explicitly comparative mappings between project symbols and anatomy while preserving the empirical/symbolic firewall.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "thalamus/House comparison",
+        "pineal/Eye timing metaphor",
+        "spine/Axis and fluid/Spirit analogues",
+        "Material rooted in knowledge/body/neurotheology-axis-house-spirit-atlas.json"
+      ],
+      "stays_out": [
+        "symbolic anatomy presented as established physiology",
+        "medical conclusions beyond the evidence held here",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "A symbolic neighbor is not anatomical identity or evidence of supernatural physiology.",
       "knowledge_holdings": {
         "primary_file_count": 3,
@@ -2029,16 +2928,60 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Provides an explicit firewalled crosswalk between body structures and project symbols.",
+        "Keep handoffs explicit: receive from potato-biology, neurobiology, whole-body; hand mature work to theology-god-language, symbolic-architecture.",
         "Deepen the substantive corpus before considering further subdivision."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Provides an explicit firewalled crosswalk between body structures and project symbols.",
+        "center_nodes": [
+          "eye",
+          "spirit",
+          "axis",
+          "door",
+          "house"
+        ],
+        "living_systems": [
+          "organism",
+          "spirit-relation"
+        ],
+        "lenses": [
+          "embodiment-spirit",
+          "polarity"
+        ],
+        "shared_tests": [
+          "door-test",
+          "fruit-test"
+        ],
+        "receives_from": [
+          "potato-biology",
+          "neurobiology",
+          "whole-body"
+        ],
+        "hands_to": [
+          "theology-god-language",
+          "symbolic-architecture"
+        ]
+      }
     },
     {
       "room_id": "politics-governance",
       "title": "Politics & Governance",
       "dwelling_id": "world-systems",
       "entrance": "Own documented political positions, governance structures, institutions and geopolitical relations as world-system material.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "documented political positions",
+        "governance structure",
+        "institutional relations and accountability",
+        "Material rooted in knowledge/politics/"
+      ],
+      "stays_out": [
+        "project mythology presented as public-world fact",
+        "motive claims without evidence",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Political description must remain sourced and distinct from symbolic North/Axis framing.",
       "knowledge_holdings": {
         "primary_file_count": 1,
@@ -2130,16 +3073,58 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Tests how public power, institutions and governance arrangements affect agency, correction and collective capacity.",
+        "Keep handoffs explicit: receive from history, law-justice; hand mature work to research-programmes, works.",
         "Deepen the substantive corpus before considering further subdivision."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Tests how public power, institutions and governance arrangements affect agency, correction and collective capacity.",
+        "center_nodes": [
+          "house",
+          "garden",
+          "shell-cube",
+          "swamp",
+          "fruit"
+        ],
+        "living_systems": [
+          "culture-formation"
+        ],
+        "lenses": [
+          "social-formation",
+          "memory-history"
+        ],
+        "shared_tests": [
+          "fruit-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "history",
+          "law-justice"
+        ],
+        "hands_to": [
+          "research-programmes",
+          "works"
+        ]
+      }
     },
     {
       "room_id": "law-justice",
       "title": "Law & Justice",
       "dwelling_id": "world-systems",
       "entrance": "Own law, procedure, rights, regulation, enforcement, accountability and jurisprudential relations.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "procedure and rights",
+        "judgment/accountability",
+        "regulatory and legal interfaces",
+        "Material rooted in knowledge/legal/"
+      ],
+      "stays_out": [
+        "project mythology presented as public-world fact",
+        "motive claims without evidence",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Legal claims require jurisdiction, date and source; project ethics does not substitute for law.",
       "knowledge_holdings": {
         "primary_file_count": 15,
@@ -2231,16 +3216,59 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Supplies procedural boundaries, rights, accountability and legitimate transition rules.",
+        "Keep handoffs explicit: receive from provenance-evidence, politics-governance; hand mature work to culture-information, world-systems.",
         "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Supplies procedural boundaries, rights, accountability and legitimate transition rules.",
+        "center_nodes": [
+          "door",
+          "twin-pillars",
+          "house",
+          "garden",
+          "shell-cube"
+        ],
+        "living_systems": [
+          "culture-formation",
+          "memory-history"
+        ],
+        "lenses": [
+          "social-formation",
+          "practice-path"
+        ],
+        "shared_tests": [
+          "door-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "provenance-evidence",
+          "politics-governance"
+        ],
+        "hands_to": [
+          "culture-information",
+          "world-systems"
+        ]
+      }
     },
     {
       "room_id": "economy-finance",
       "title": "Economy & Finance",
       "dwelling_id": "world-systems",
       "entrance": "Own observable finance, debt, banking, trade, ownership, production, labour and economic flows.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "finance/debt/trade",
+        "ownership and production",
+        "labour and economic flow",
+        "Material rooted in knowledge/economics/"
+      ],
+      "stays_out": [
+        "project mythology presented as public-world fact",
+        "motive claims without evidence",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Symbolic/karmic accounting remains separate from material legal or financial accounting.",
       "knowledge_holdings": {
         "primary_file_count": 3,
@@ -2330,16 +3358,56 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Tracks whether economic flows produce durable capacity, dependency, extraction or resilience.",
+        "Keep handoffs explicit: receive from provenance-evidence, infrastructure-capability; hand mature work to systems-dynamics, research-programmes.",
         "Deepen the substantive corpus before considering further subdivision."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Tracks whether economic flows produce durable capacity, dependency, extraction or resilience.",
+        "center_nodes": [
+          "garden",
+          "swamp",
+          "fruit",
+          "root"
+        ],
+        "living_systems": [
+          "culture-formation"
+        ],
+        "lenses": [
+          "social-formation"
+        ],
+        "shared_tests": [
+          "fruit-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "provenance-evidence",
+          "infrastructure-capability"
+        ],
+        "hands_to": [
+          "systems-dynamics",
+          "research-programmes"
+        ]
+      }
     },
     {
       "room_id": "infrastructure-capability",
       "title": "Infrastructure & Capability",
       "dwelling_id": "world-systems",
       "entrance": "Own physical/digital infrastructure, energy, industry, strategic dependencies, resilience and coupled capabilities.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "energy and industry",
+        "digital/physical infrastructure",
+        "dependencies resilience and capability",
+        "Material rooted in knowledge/world/"
+      ],
+      "stays_out": [
+        "project mythology presented as public-world fact",
+        "motive claims without evidence",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Capability claims require observable assets, relations and time-sensitive sources.",
       "knowledge_holdings": {
         "primary_file_count": 12,
@@ -2458,16 +3526,56 @@
         }
       ],
       "next_work": [
-        "Curate stronger featured entrances and continue consolidating duplicate or superseded material into the Room owner."
-      ]
+        "Deepen the Room through its center contribution: Maps the material and digital capacity that lets world systems actually function and survive shocks.",
+        "Keep handoffs explicit: receive from economy-finance, geography-countries; hand mature work to research-programmes, world-systems."
+      ],
+      "center_pairing": {
+        "contribution": "Maps the material and digital capacity that lets world systems actually function and survive shocks.",
+        "center_nodes": [
+          "root",
+          "house",
+          "garden",
+          "fruit"
+        ],
+        "living_systems": [
+          "organism",
+          "culture-formation"
+        ],
+        "lenses": [
+          "social-formation"
+        ],
+        "shared_tests": [
+          "fruit-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "economy-finance",
+          "geography-countries"
+        ],
+        "hands_to": [
+          "research-programmes",
+          "world-systems"
+        ]
+      }
     },
     {
       "room_id": "geography-countries",
       "title": "Geography & Countries",
       "dwelling_id": "world-systems",
       "entrance": "Own countries, territories, geographic identity, boundaries and country-level relational context.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "country/territory identity",
+        "boundaries and geography",
+        "country-level relational context",
+        "Material rooted in data/countries/"
+      ],
+      "stays_out": [
+        "project mythology presented as public-world fact",
+        "motive claims without evidence",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Symbolic direction or project quadrant must not overwrite ordinary geography or sovereignty.",
       "knowledge_holdings": {
         "primary_file_count": 4,
@@ -2555,17 +3663,57 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Anchors abstract programmes and histories in real territories, boundaries and country contexts.",
+        "Keep handoffs explicit: receive from provenance-evidence; hand mature work to politics-governance, infrastructure-capability.",
         "Deepen the substantive corpus before considering further subdivision.",
         "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Anchors abstract programmes and histories in real territories, boundaries and country contexts.",
+        "center_nodes": [
+          "plane",
+          "house",
+          "root",
+          "mountain"
+        ],
+        "living_systems": [
+          "memory-history",
+          "culture-formation"
+        ],
+        "lenses": [
+          "memory-history",
+          "polarity"
+        ],
+        "shared_tests": [
+          "door-test"
+        ],
+        "receives_from": [
+          "provenance-evidence"
+        ],
+        "hands_to": [
+          "politics-governance",
+          "infrastructure-capability"
+        ]
+      }
     },
     {
       "room_id": "internet-platforms",
       "title": "Internet & Platforms",
       "dwelling_id": "culture-information",
       "entrance": "Own platforms, online spaces, public digital behavior, media formats and platform-specific context.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "platform mechanics",
+        "public digital behavior",
+        "media formats and moderation/monetization context",
+        "Material rooted in knowledge/culture/"
+      ],
+      "stays_out": [
+        "group labels used as substitutes for mechanism-level evidence",
+        "private/motive claims inferred from public cultural traces",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Documented public behavior stays distinct from motive claims and private information.",
       "knowledge_holdings": {
         "primary_file_count": 1,
@@ -2623,17 +3771,59 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Explains how platform architecture changes visibility, persistence, incentives and social memory.",
+        "Keep handoffs explicit: receive from information-ecology; hand mature work to subculture-group-formation, witness-attestation.",
         "Deepen the substantive corpus before considering further subdivision.",
         "Keep this Room knowledge-led unless a real structured dataset emerges."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Explains how platform architecture changes visibility, persistence, incentives and social memory.",
+        "center_nodes": [
+          "door",
+          "shadow",
+          "swamp",
+          "fruit"
+        ],
+        "living_systems": [
+          "culture-formation",
+          "memory-history"
+        ],
+        "lenses": [
+          "social-formation",
+          "memory-history"
+        ],
+        "shared_tests": [
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "information-ecology"
+        ],
+        "hands_to": [
+          "subculture-group-formation",
+          "witness-attestation"
+        ]
+      }
     },
     {
       "room_id": "subculture-group-formation",
       "title": "Subculture, Cult & Group Formation",
       "dwelling_id": "culture-information",
       "entrance": "Own subculture, movement formation, high-control/cult analysis, group dynamics and social-boundary questions.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "subculture formation",
+        "high-control mechanisms",
+        "boundaries dissent dependency and exit",
+        "Material rooted in knowledge/culture/"
+      ],
+      "stays_out": [
+        "group labels used as substitutes for mechanism-level evidence",
+        "private/motive claims inferred from public cultural traces",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Cult/high-control terminology requires stated criteria and must not become an unsupported label for disliked groups.",
       "knowledge_holdings": {
         "primary_file_count": 21,
@@ -2723,16 +3913,58 @@
         }
       ],
       "next_work": [
-        "Curate stronger featured entrances and continue consolidating duplicate or superseded material into the Room owner."
-      ]
+        "Deepen the Room through its center contribution: Analyzes how group identity becomes durable and when intensity becomes coercive capture rather than healthy culture.",
+        "Keep handoffs explicit: receive from internet-platforms, information-ecology; hand mature work to practice-ethics, law-justice."
+      ],
+      "center_pairing": {
+        "contribution": "Analyzes how group identity becomes durable and when intensity becomes coercive capture rather than healthy culture.",
+        "center_nodes": [
+          "garden",
+          "swamp",
+          "tree-of-strife",
+          "shadow",
+          "shell-cube"
+        ],
+        "living_systems": [
+          "culture-formation"
+        ],
+        "lenses": [
+          "social-formation",
+          "practice-path"
+        ],
+        "shared_tests": [
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "internet-platforms",
+          "information-ecology"
+        ],
+        "hands_to": [
+          "practice-ethics",
+          "law-justice"
+        ]
+      }
     },
     {
       "room_id": "information-ecology",
       "title": "Information Ecology & Memory",
       "dwelling_id": "culture-information",
       "entrance": "Own attention, information flow, repetition, memory, forgetting, transmission and public-discourse ecology.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "attention flows",
+        "archive persistence/forgetting",
+        "correction and information transmission",
+        "Material rooted in knowledge/culture/"
+      ],
+      "stays_out": [
+        "group labels used as substitutes for mechanism-level evidence",
+        "private/motive claims inferred from public cultural traces",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Information flow and social interpretation remain distinguishable from factual claim status.",
       "knowledge_holdings": {
         "primary_file_count": 1,
@@ -2823,16 +4055,59 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Tracks how attention, repetition, forgetting, correction and transmission shape collective memory.",
+        "Keep handoffs explicit: receive from internet-platforms, provenance-evidence; hand mature work to subculture-group-formation, memory-recovery.",
         "Deepen the substantive corpus before considering further subdivision."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Tracks how attention, repetition, forgetting, correction and transmission shape collective memory.",
+        "center_nodes": [
+          "root",
+          "shadow",
+          "swamp",
+          "tree-of-knowledge",
+          "spirit"
+        ],
+        "living_systems": [
+          "memory-history",
+          "culture-formation"
+        ],
+        "lenses": [
+          "memory-history",
+          "social-formation"
+        ],
+        "shared_tests": [
+          "spiral-test",
+          "fruit-test"
+        ],
+        "receives_from": [
+          "internet-platforms",
+          "provenance-evidence"
+        ],
+        "hands_to": [
+          "subculture-group-formation",
+          "memory-recovery"
+        ]
+      }
     },
     {
       "room_id": "great-book-literature",
       "title": "Great Book & Literature",
       "dwelling_id": "works",
       "entrance": "Own long-form authored literature, Great Book material, essays, stories, poems and literary versions.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "Great Book chapters",
+        "essays stories poems",
+        "literary versions of project motifs",
+        "Material rooted in great-book/"
+      ],
+      "stays_out": [
+        "creative depiction treated as factual proof",
+        "source-owner material silently rewritten as art canon",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Creative/literary expression does not automatically become doctrine, biography or evidence.",
       "knowledge_holdings": {
         "primary_file_count": 181,
@@ -2917,16 +4192,56 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Turns project material into authored long-form expression while preserving the distinction between art, memory and canon.",
+        "Keep handoffs explicit: receive from canon-identities, developmental-genealogy; hand mature work to works, memory-recovery.",
         "Keep this Room knowledge-led unless a real structured dataset emerges."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Turns project material into authored long-form expression while preserving the distinction between art, memory and canon.",
+        "center_nodes": [
+          "fruit",
+          "seed",
+          "tree",
+          "shadow"
+        ],
+        "living_systems": [
+          "memory-history"
+        ],
+        "lenses": [
+          "memory-history",
+          "practice-path"
+        ],
+        "shared_tests": [
+          "fruit-test"
+        ],
+        "receives_from": [
+          "canon-identities",
+          "developmental-genealogy"
+        ],
+        "hands_to": [
+          "works",
+          "memory-recovery"
+        ]
+      }
     },
     {
       "room_id": "music-sound",
       "title": "Music & Sound",
       "dwelling_id": "works",
       "entrance": "Own songs, lyrics, sound works, music metadata and performance-oriented material.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "songs and lyrics",
+        "sound/performance metadata",
+        "musical project motifs",
+        "Material rooted in knowledge/creative/tim-dooley-suno-music-archive.json"
+      ],
+      "stays_out": [
+        "creative depiction treated as factual proof",
+        "source-owner material silently rewritten as art canon",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Lyrics and performance language retain creative-work status unless separately attested as claims.",
       "knowledge_holdings": {
         "primary_file_count": 1,
@@ -2964,18 +4279,54 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Carries project meaning through rhythm, voice, repetition and performance as creative Fruit.",
+        "Keep handoffs explicit: receive from canon-identities, practice-ethics; hand mature work to works.",
         "Deepen the substantive corpus before considering further subdivision.",
-        "Keep this Room knowledge-led unless a real structured dataset emerges.",
-        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+        "Keep this Room knowledge-led unless a real structured dataset emerges."
+      ],
+      "center_pairing": {
+        "contribution": "Carries project meaning through rhythm, voice, repetition and performance as creative Fruit.",
+        "center_nodes": [
+          "fruit",
+          "seed",
+          "spirit"
+        ],
+        "living_systems": [
+          "spirit-relation"
+        ],
+        "lenses": [
+          "practice-path"
+        ],
+        "shared_tests": [
+          "fruit-test"
+        ],
+        "receives_from": [
+          "canon-identities",
+          "practice-ethics"
+        ],
+        "hands_to": [
+          "works"
+        ]
+      }
     },
     {
       "room_id": "visual-art",
       "title": "Visual Art & Symbolic Composition",
       "dwelling_id": "works",
       "entrance": "Own visual compositions, artwork concepts, image archives and symbolic visual systems as creative works.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "visual compositions",
+        "symbolic scenes",
+        "image archives and art concepts",
+        "Material rooted in knowledge/creative/visual-art-symbolic-composition-archive.json"
+      ],
+      "stays_out": [
+        "creative depiction treated as factual proof",
+        "source-owner material silently rewritten as art canon",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Depiction is not evidence of the depicted claim.",
       "knowledge_holdings": {
         "primary_file_count": 2,
@@ -3018,18 +4369,57 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Makes relational architecture visible through authored composition without turning depiction into proof.",
+        "Keep handoffs explicit: receive from symbolic-architecture, canon-identities; hand mature work to works.",
         "Deepen the substantive corpus before considering further subdivision.",
-        "Keep this Room knowledge-led unless a real structured dataset emerges.",
-        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+        "Keep this Room knowledge-led unless a real structured dataset emerges."
+      ],
+      "center_pairing": {
+        "contribution": "Makes relational architecture visible through authored composition without turning depiction into proof.",
+        "center_nodes": [
+          "fruit",
+          "eye",
+          "door",
+          "tree",
+          "mountain"
+        ],
+        "living_systems": [
+          "spirit-relation"
+        ],
+        "lenses": [
+          "polarity",
+          "practice-path"
+        ],
+        "shared_tests": [
+          "fruit-test"
+        ],
+        "receives_from": [
+          "symbolic-architecture",
+          "canon-identities"
+        ],
+        "hands_to": [
+          "works"
+        ]
+      }
     },
     {
       "room_id": "games-simulations",
       "title": "Games & Simulations",
       "dwelling_id": "works",
       "entrance": "Own games, playful systems, simulations and interactive creative artifacts.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "interactive systems",
+        "simulations and prototypes",
+        "playful tests of rules and routes",
+        "Material rooted in knowledge/culture/creative-systems-archive.json"
+      ],
+      "stays_out": [
+        "creative depiction treated as factual proof",
+        "source-owner material silently rewritten as art canon",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Simulation behavior is model output, not automatically a claim about the real world.",
       "knowledge_holdings": {
         "primary_file_count": 1,
@@ -3067,18 +4457,60 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Lets readers interact with project rules and consequences rather than only read about them.",
+        "Keep handoffs explicit: receive from systems-dynamics, symbolic-architecture; hand mature work to works, experiments-formalization.",
         "Deepen the substantive corpus before considering further subdivision.",
-        "Keep this Room knowledge-led unless a real structured dataset emerges.",
-        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+        "Keep this Room knowledge-led unless a real structured dataset emerges."
+      ],
+      "center_pairing": {
+        "contribution": "Lets readers interact with project rules and consequences rather than only read about them.",
+        "center_nodes": [
+          "fruit",
+          "door",
+          "spiral",
+          "garden"
+        ],
+        "living_systems": [
+          "organism",
+          "culture-formation"
+        ],
+        "lenses": [
+          "motion",
+          "practice-path"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test"
+        ],
+        "receives_from": [
+          "systems-dynamics",
+          "symbolic-architecture"
+        ],
+        "hands_to": [
+          "works",
+          "experiments-formalization"
+        ]
+      }
     },
     {
       "room_id": "house-architecture",
       "title": "House Architecture",
       "dwelling_id": "research-lab",
       "entrance": "Own active architecture research around Rooms, ownership, topology, interfaces, projections and migration before constitutional promotion.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "Room ownership",
+        "topology/interfaces/projections",
+        "migration and consolidation architecture",
+        "Material rooted in knowledge/research/potato-house-master/"
+      ],
+      "stays_out": [
+        "candidate hypotheses presented as settled canon",
+        "unreviewed synthesis silently promoted",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Research design remains provisional until promoted into constitutional/governance owners.",
       "knowledge_holdings": {
         "primary_file_count": 13,
@@ -3179,16 +4611,71 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Owns unresolved architecture work before it is promoted into the constitutional House registries.",
+        "Keep handoffs explicit: receive from symbolic-architecture, open-questions; hand mature work to navigation-manifest, project-center.",
         "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Owns unresolved architecture work before it is promoted into the constitutional House registries.",
+        "center_nodes": [
+          "potato-of-life",
+          "door",
+          "axis",
+          "plane",
+          "cross",
+          "house",
+          "tree",
+          "mountain",
+          "garden",
+          "swamp",
+          "forge"
+        ],
+        "living_systems": [
+          "organism",
+          "spirit-relation",
+          "memory-history",
+          "culture-formation"
+        ],
+        "lenses": [
+          "motion",
+          "polarity",
+          "memory-history",
+          "social-formation"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "symbolic-architecture",
+          "open-questions"
+        ],
+        "hands_to": [
+          "navigation-manifest",
+          "project-center"
+        ]
+      }
     },
     {
       "room_id": "open-questions",
       "title": "Open Questions & Hypotheses",
       "dwelling_id": "research-lab",
       "entrance": "Own unresolved questions, candidate explanations and explicit uncertainty queues.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "unresolved questions",
+        "candidate explanations",
+        "uncertainty queues and negative evidence",
+        "Material rooted in knowledge/indexes/faq-question-bank.json"
+      ],
+      "stays_out": [
+        "candidate hypotheses presented as settled canon",
+        "unreviewed synthesis silently promoted",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Indexing a hypothesis does not promote it to canon.",
       "knowledge_holdings": {
         "primary_file_count": 8,
@@ -3278,16 +4765,65 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Holds uncertainty explicitly so unresolved ideas do not leak into canon by repetition.",
+        "Keep handoffs explicit: receive from all-rooms; hand mature work to experiments-formalization, research-programmes.",
         "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Holds uncertainty explicitly so unresolved ideas do not leak into canon by repetition.",
+        "center_nodes": [
+          "eye",
+          "door",
+          "forge",
+          "tree-of-knowledge"
+        ],
+        "living_systems": [
+          "organism",
+          "spirit-relation",
+          "memory-history",
+          "culture-formation"
+        ],
+        "lenses": [
+          "motion",
+          "polarity",
+          "memory-history",
+          "social-formation",
+          "embodiment-spirit",
+          "practice-path"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "all-rooms"
+        ],
+        "hands_to": [
+          "experiments-formalization",
+          "research-programmes"
+        ]
+      }
     },
     {
       "room_id": "experiments-formalization",
       "title": "Experiments & Formalization",
       "dwelling_id": "research-lab",
       "entrance": "Own experimental designs, candidate formal models, prototypes and test-oriented synthesis awaiting review.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "experiments",
+        "formal models",
+        "prototypes and test-oriented synthesis",
+        "Material rooted in knowledge/research/"
+      ],
+      "stays_out": [
+        "candidate hypotheses presented as settled canon",
+        "unreviewed synthesis silently promoted",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "Experimental/formal elegance is not evidence without appropriate observation or validation.",
       "knowledge_holdings": {
         "primary_file_count": 63,
@@ -3375,20 +4911,74 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Turns open questions into prototypes, explicit models and testable candidate structures.",
+        "Keep handoffs explicit: receive from open-questions, math-geometry, systems-dynamics; hand mature work to model-testing, house-architecture.",
         "Keep this Room knowledge-led unless a real structured dataset emerges."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Turns open questions into prototypes, explicit models and testable candidate structures.",
+        "center_nodes": [
+          "forge",
+          "door",
+          "spiral",
+          "fruit",
+          "eye"
+        ],
+        "living_systems": [
+          "organism",
+          "spirit-relation",
+          "memory-history",
+          "culture-formation"
+        ],
+        "lenses": [
+          "motion",
+          "embodiment-spirit",
+          "social-formation"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "open-questions",
+          "math-geometry",
+          "systems-dynamics"
+        ],
+        "hands_to": [
+          "model-testing",
+          "house-architecture"
+        ]
+      }
     },
     {
       "room_id": "research-programmes",
       "title": "Research Programmes",
       "dwelling_id": "research-lab",
       "entrance": "Own coordinated multi-Room research programmes, workstreams, source ledgers and promotion plans.",
-      "belongs_here": [],
-      "stays_out": [],
+      "belongs_here": [
+        "multi-Room programmes",
+        "source ledgers",
+        "promotion plans and implementation workstreams",
+        "Material rooted in knowledge/research/"
+      ],
+      "stays_out": [
+        "candidate hypotheses presented as settled canon",
+        "unreviewed synthesis silently promoted",
+        "material whose primary owner is another Room",
+        "claims promoted beyond their evidence class",
+        "comparative resemblance presented as identity or proof"
+      ],
       "epistemic_boundary": "A Programme coordinates work but does not steal fact ownership from participating Rooms.",
       "knowledge_holdings": {
-        "primary_file_count": 9,
+        "primary_file_count": 10,
         "featured": [
+          {
+            "id": "recent-commit-depth-audit-2026-09-18",
+            "path": "knowledge/research/recent-commit-depth-audit-2026-09-18.json",
+            "kind": "whole-project research depth audit and priority programme"
+          },
           {
             "id": "north-axis-tikkun-world-repair-synthesis",
             "path": "knowledge/core/north-axis-tikkun-world-repair-synthesis.json",
@@ -3407,11 +4997,6 @@
           {
             "id": "tim-dooley-real-world-entanglement",
             "path": "knowledge/core/tim-dooley-real-world-entanglement.json",
-            "kind": "room holding"
-          },
-          {
-            "id": "world-atlas-integrated-layer-stack",
-            "path": "knowledge/core/world-atlas-integrated-layer-stack.json",
             "kind": "room holding"
           }
         ]
@@ -3495,8 +5080,47 @@
         }
       ],
       "next_work": [
+        "Deepen the Room through its center contribution: Coordinates multi-Room research into staged workstreams with sources, owners, promotion gates and outputs.",
+        "Keep handoffs explicit: receive from open-questions, model-testing, world-systems; hand mature work to works, project-center.",
         "Look for another real guarded interface only if cross-Room work repeatedly needs it."
-      ]
+      ],
+      "center_pairing": {
+        "contribution": "Coordinates multi-Room research into staged workstreams with sources, owners, promotion gates and outputs.",
+        "center_nodes": [
+          "forge",
+          "house",
+          "tree",
+          "mountain",
+          "fruit"
+        ],
+        "living_systems": [
+          "organism",
+          "spirit-relation",
+          "memory-history",
+          "culture-formation"
+        ],
+        "lenses": [
+          "motion",
+          "memory-history",
+          "social-formation",
+          "practice-path"
+        ],
+        "shared_tests": [
+          "door-test",
+          "spiral-test",
+          "fruit-test",
+          "garden-test"
+        ],
+        "receives_from": [
+          "open-questions",
+          "model-testing",
+          "world-systems"
+        ],
+        "hands_to": [
+          "works",
+          "project-center"
+        ]
+      }
     }
   ]
 }

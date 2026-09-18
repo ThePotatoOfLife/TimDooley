@@ -34,7 +34,7 @@
       ],
       "kind": "governance-registry",
       "purpose": "House registries, topology, coverage, manifests, routing and repository-maintenance contracts.",
-      "file_count": 32,
+      "file_count": 45,
       "source_files": [
         "data/house/architectural-vocabulary.json",
         "data/house/collections.json",
@@ -67,17 +67,30 @@
         "data/discovery-aliases.json",
         "data/full-text-coverage.json",
         "data/layer-additions-2026-09.json",
-        "data/map-layer-placement-matrix.json"
+        "data/map-layer-placement-matrix.json",
+        "data/house/room-dossiers.json",
+        "data/house/navigation-manifest.json",
+        "data/house/project-center.json",
+        "data/house/project-synthesis.json",
+        "data/house/living-project-map.json",
+        "data/house/crosscutting-lenses.json",
+        "data/house/orientation-population.json",
+        "data/house/tree-plane-routing.json",
+        "data/house/seed-spiral-routing.json",
+        "data/house/layer-terrain-regime-atlas.json",
+        "data/house/placement-matrix.json",
+        "data/house/religious-symbolic-branch-atlas.json",
+        "data/house/providence-pillars-esoteric-structure.json"
       ],
       "featured_files": [
-        "data/house/architectural-vocabulary.json",
-        "data/house/collections.json",
+        "data/house/project-center.json",
+        "data/house/project-synthesis.json",
+        "data/house/living-project-map.json",
+        "data/house/navigation-manifest.json",
+        "data/house/room-dossiers.json",
         "data/house/concept-topology.json",
-        "data/house/federation-scale.json",
         "data/house/holdings.json",
-        "data/house/interfaces.json",
-        "data/house/population-contract.json",
-        "data/house/population-pulse.json"
+        "data/house/public-surfaces.json"
       ]
     },
     {
@@ -1386,7 +1399,8 @@
     "total_data_files": 543,
     "bundled_data_files": 537,
     "unbundled_data_files": 6,
-    "bundle_count": 25
+    "bundle_count": 25,
+    "total_files": 550
   },
   "unbundled_paths": [
     "data/bulk-data-reservoirs.json",
