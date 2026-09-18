@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0",
+  "version": "1.5.0",
   "updated": "2026-09-18",
   "authority": "house-orientation-population",
   "purpose": "Populate the three-plane cardinal House from existing governed Rooms and holdings, then add a small curated landmark layer for religious, mythic and project-symbolic wayfinding.",
@@ -305,7 +305,7 @@
         "across",
         "down"
       ],
-      "primary_file_count": 2,
+      "primary_file_count": 3,
       "featured_holdings": [
         {
           "id": "conversation-recovery-inventory",
@@ -316,6 +316,11 @@
           "id": "memory-recovery-method-atlas",
           "path": "knowledge/indexes/memory-recovery-method-atlas.json",
           "kind": "recovery method and temporal-strata atlas"
+        },
+        {
+          "id": "memory-recovery-promotion-state-atlas",
+          "path": "knowledge/indexes/memory-recovery-promotion-state-atlas.json",
+          "kind": "recovery-to-canon promotion state machine"
         }
       ]
     },
@@ -1168,12 +1173,17 @@
         "here",
         "up"
       ],
-      "primary_file_count": 1,
+      "primary_file_count": 2,
       "featured_holdings": [
         {
           "id": "tim-dooley-politics-geopolitics-compendium",
           "path": "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
           "kind": "room holding"
+        },
+        {
+          "id": "governance-institutions-policy-lifecycle-atlas",
+          "path": "knowledge/politics/governance-institutions-policy-lifecycle-atlas.json",
+          "kind": "neutral governance institutions and policy-lifecycle atlas"
         }
       ]
     },
@@ -1255,7 +1265,7 @@
         "here",
         "up"
       ],
-      "primary_file_count": 4,
+      "primary_file_count": 5,
       "featured_holdings": [
         {
           "id": "gold-indexed-sovereign-bond-model",
@@ -1276,6 +1286,11 @@
           "id": "stock-flow-obligation-network-atlas",
           "path": "knowledge/economics/stock-flow-obligation-network-atlas.json",
           "kind": "stock-flow-balance-sheet and obligation network grammar"
+        },
+        {
+          "id": "public-finance-fiscal-capacity-atlas",
+          "path": "knowledge/economics/public-finance-fiscal-capacity-atlas.json",
+          "kind": "government balance-sheet and fiscal-capacity atlas"
         }
       ]
     },
@@ -1355,7 +1370,7 @@
         "across",
         "here"
       ],
-      "primary_file_count": 5,
+      "primary_file_count": 6,
       "featured_holdings": [
         {
           "id": "greater-israel-covenant-land-tikkun-atlas",
@@ -1381,6 +1396,11 @@
           "id": "geography-place-state-boundary-atlas",
           "path": "knowledge/world/geography-place-state-boundary-atlas.json",
           "kind": "neutral geographic object and boundary atlas"
+        },
+        {
+          "id": "country-capability-dependency-atlas",
+          "path": "knowledge/world/country-capability-dependency-atlas.json",
+          "kind": "country capability dependency and complementarity atlas"
         }
       ]
     },
@@ -1409,7 +1429,7 @@
         "across",
         "out"
       ],
-      "primary_file_count": 2,
+      "primary_file_count": 3,
       "featured_holdings": [
         {
           "id": "digital-witness-livestream-liturgy",
@@ -1420,6 +1440,11 @@
           "id": "platform-mechanics-atlas",
           "path": "knowledge/culture/platform-mechanics-atlas.json",
           "kind": "platform mediation and mechanics atlas"
+        },
+        {
+          "id": "platform-governance-portability-atlas",
+          "path": "knowledge/culture/platform-governance-portability-atlas.json",
+          "kind": "platform governance dependency and portability atlas"
         }
       ]
     },
@@ -1500,7 +1525,7 @@
         "across",
         "out"
       ],
-      "primary_file_count": 2,
+      "primary_file_count": 3,
       "featured_holdings": [
         {
           "id": "digital-memory-forgetting-restoration-atlas",
@@ -1511,6 +1536,11 @@
           "id": "information-ecology-mechanics-atlas",
           "path": "knowledge/culture/information-ecology-mechanics-atlas.json",
           "kind": "attention, memory and correction mechanics atlas"
+        },
+        {
+          "id": "information-correction-memory-repair-atlas",
+          "path": "knowledge/culture/information-correction-memory-repair-atlas.json",
+          "kind": "correction propagation and memory repair atlas"
         }
       ]
     },
