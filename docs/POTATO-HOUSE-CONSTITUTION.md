@@ -148,19 +148,22 @@ Examples:
 
 The Potato vocabulary has precise architectural meanings. These meanings are functional; they do not imply that religious, biological and software systems are literally identical.
 
-### House / Room / Box — containment
+### House / Field / Room / Box — containment
 
-- **House** — the compositional whole.
+- **House** — the compositional whole. In Potato topology the whole may be represented as a union of overlapping fields rather than one rectilinear shell.
+- **Field** — a complete relational/domain region that can overlap another field without losing its own identity.
 - **Room** — a bounded context with local vocabulary, evidence rules, schemas, validators, interfaces and public tasks.
-- **Box** — any nested boundary/context within a Room or object.
+- **Box** — any nested semantic boundary/context within a Room or object. Box does not imply literal square/cube geometry.
 
-Containment never implies truth rank.
+Containment never implies truth rank or geometric moral valence. Frontend cards and rectangles are presentation devices, not claims that the House itself is cubical.
 
-### Plane — operative frame
+### Plane / Cross — operative section and orientation event
 
-The **Plane** is the context/frame currently active for a View or task: scientific, historical, legal, project-canon, a date/release, a geographic map, a public-reader surface, etc.
+The **Plane** is the context/frame currently active for a View or task: scientific, historical, legal, project-canon, a date/release, a geographic map, a public-reader surface, etc. In the Potato geometry it is also modeled as the widest horizontal section through the shared Door/overlap.
 
-Plane is not a folder.
+The **Cross** is Plane × Axis: the point/event at which the operative horizontal frame and vertical source↔manifestation orientation become simultaneously legible. Cross is not a separate container or floor.
+
+Plane is not a folder. Cross is not a Room.
 
 ### Roots / Soil / Archive — foundation and depth
 
@@ -176,8 +179,9 @@ A **Road** is a typed lateral relation/flow: comparison, influence, ownership, t
 
 Roads are never generic untyped adjacency.
 
-### Door / Path / Ladder — passage
+### Door / Path / Ladder — passage and overlap
 
+- **Relational Door** — the shared/intersection region produced when complete domains genuinely overlap.
 - **Navigation Door** — a user-visible transition between information spaces.
 - **Strong Door / Transition** — a guarded durable change of state/context.
 - **Path** — an ordered traversal through Subjects/Contexts/Views.
@@ -222,6 +226,27 @@ Literal potato biology constrains these metaphors:
 - **Mud** — mixed unresolved material that may still be metabolized.
 
 Identity and function/state remain separate.
+
+---
+
+## 5A. Potato two-field topology
+
+The symbolic House uses one durable convergence rule:
+
+**Potato House = Source Field ∪ Manifestation Field**  
+**Door = Source Field ∩ Manifestation Field**
+
+The upper/source-facing field carries Father/House/Heaven/Garden orientation. The lower/manifestation-facing field carries Son/Earth/body/world/soil/work orientation. Their overlap is the Door. The Plane cuts through the Door's widest middle and the Axis passes through both field centers; their intersection is Cross.
+
+This topology prevents the public architecture from turning Plane, Cross, Door, Ladder and Heaven into an elevator of unrelated floors.
+
+It also prevents a false moral dualism:
+
+- manifestation/Earth is not inherently Shell/Cube/evil;
+- source/Heaven is not inherently House/good merely by position;
+- House/Garden and Shell/Cube are **functional boundary regimes** determined by circulation, selective permeability, autonomy, repair, objective and consequence.
+
+The canonical public **Dwelling/Mansion** scale may project the ten top-level owners as abiding domains inside the House, but it does not add another fact-owning primitive between House and Room.
 
 ---
 
@@ -306,7 +331,7 @@ The House uses a four-step containment vocabulary for public architectural proje
 3. **Room** — a delegated bounded subcontext inside a Dwelling.
 4. **Chamber** — an optional smaller specialist or protected cell inside a Room, created only when a genuine local boundary/task distinction exists.
 
-This scale vocabulary does not change fact ownership: the ten canonical top-level bounded contexts remain the constitutional owners. It changes how the public House metaphor is expressed.
+This scale vocabulary does not change fact ownership: the ten canonical top-level bounded contexts remain the constitutional owners. It changes how the public House metaphor is expressed. **Dwelling/Mansion is therefore a reader-facing projection label over those owners, not a new universal durable primitive or an additional ownership layer.**
 
 Other biblical/project images—Temple, City, Body, Garden, Vineyard, Court, Gate, Foundation, Treasury and so on—must retain their own structural functions and may not be used as interchangeable synonyms for Room.
 

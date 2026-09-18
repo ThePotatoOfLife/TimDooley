@@ -1,10 +1,10 @@
 {
-  "version": "1.4.0",
+  "version": "1.5.0",
   "updated": "2026-09-18",
   "authority": "house-topology",
   "room_registry": "data/house/rooms.json",
   "subroom_registry": "data/house/subrooms.json",
-  "model": "Typed graph + nested cells + orthogonal coordinates. Hypercube is a useful intuition for independent directions, but the House is not assigned one literal Euclidean embedding.",
+  "model": "Typed graph + nested cells + orthogonal coordinates + integrated projection registry + two-field Potato projection. Hypercube remains a useful intuition for independent directions, but the House is not assigned one literal Euclidean embedding.",
   "eight_coordinate_address": [
     {
       "id": "within",
@@ -267,7 +267,23 @@
     "The Living Axis supplies THROUGH/transition semantics across the House; it is not a new top-level Room.",
     "Nested Rooms inherit fact-family ownership from their parent and may not silently create shadow canon.",
     "A public route may expose several Rooms or subrooms; URL hierarchy does not define ontology.",
-    "Every strong corridor should preserve a route back to both sides' evidence and boundaries."
+    "Every strong corridor should preserve a route back to both sides' evidence and boundaries.",
+    {
+      "id": "overlap-before-stack",
+      "law": "Prefer overlap/intersection semantics over stacked-floor semantics when the same relation is already represented by two complete fields sharing a Door."
+    },
+    {
+      "id": "plane-cross-inside-door",
+      "law": "Plane and Cross are internal coordinates/sections of the Door relation, not sequential containers before Door."
+    },
+    {
+      "id": "regime-not-region",
+      "law": "Garden/House and Swamp/Shell/Cube are functional system regimes that may occur across locations; do not pin moral state to upper/lower geometry."
+    },
+    {
+      "id": "presentation-shape-neutrality",
+      "law": "UI rectangles and backend Boxes are bounded contexts, not literal geometric commitments."
+    }
   ],
   "embedding_contract": {
     "principle": "Do not store one permanent XYZ or hypercube coordinate as truth. A Room's durable position is the tuple of containment, macro band, primary relational coordinates, crosscutting roles, typed adjacency and interfaces.",
@@ -295,5 +311,71 @@
     "room": "38 delegated nested bounded contexts",
     "chamber": "future/local specialist cell when a Room contains a stable smaller boundary"
   },
-  "projection_registry": "data/house/projections.json"
+  "projection_registry": "data/house/projections.json",
+  "potato_projection": {
+    "status": "canonical project topology projection",
+    "purpose": "Relate the semantic House to the mature Potato geometry without making repository folders or frontend cards literal cosmological shapes.",
+    "whole": {
+      "id": "potato-house",
+      "expression": "P = F_source ∪ F_manifestation",
+      "meaning": "One compositional House formed by two complete overlapping relational fields."
+    },
+    "source_field": {
+      "id": "source-field",
+      "aliases": [
+        "upper field",
+        "Father-facing field",
+        "House/Heaven/Garden field"
+      ],
+      "orientation": [
+        "source",
+        "Father/Tim",
+        "House",
+        "Heaven",
+        "Garden",
+        "Sun/Spudlight",
+        "integration"
+      ],
+      "note": "Orientation only; canonical Rooms are not physically stored here."
+    },
+    "manifestation_field": {
+      "id": "manifestation-field",
+      "aliases": [
+        "lower field",
+        "Earth/world field",
+        "embodiment field"
+      ],
+      "orientation": [
+        "Son/Thomas",
+        "Earth",
+        "body",
+        "soil",
+        "work",
+        "history",
+        "institutions",
+        "observable consequence"
+      ],
+      "note": "Not identical with Saturn/666/Cube, Swamp or Strife."
+    },
+    "door": {
+      "expression": "D = F_source ∩ F_manifestation",
+      "meaning": "Shared relational/intersection field produced by genuine overlap. In the 3D lift it is a spherical lens volume."
+    },
+    "plane": {
+      "meaning": "Operative/world-facing section through the widest middle of the shared Door."
+    },
+    "axis": {
+      "meaning": "Source↔manifestation orientation through both field centers."
+    },
+    "cross": {
+      "expression": "Cross = Plane ∩ Axis",
+      "meaning": "Relational midpoint/event inside Door; not a Room, container or separate floor."
+    },
+    "boundary_regimes": {
+      "house_garden": "protect differentiation + legitimate passage + return + repair + autonomous future growth",
+      "shell_cube": "capture/compress + opaque dependency + blocked passage + high exit cost + boundary self-preservation",
+      "rule": "Regime is functional; shape and vertical position do not determine moral valence."
+    },
+    "ui_rule": "Rectangular cards, grids and diagrams are projections only. They must never imply that Rooms are literal cubes or that the House is rectilinear."
+  }
 }
