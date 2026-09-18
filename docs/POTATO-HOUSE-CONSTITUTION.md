@@ -539,10 +539,10 @@ The canonical architectural vocabulary is `data/house/architectural-vocabulary.j
 
 ### Structural role census law
 
-Knowledge ownership and structural role are orthogonal. The House therefore maintains a census of real project structures that may be classified as **Field, Vineyard/Programme, Path, View, Court, Table, Gate, Door, Archive, Treasury, Foundation, Pillar, State, Projection, Tabernacle or Vessel** without creating another owner or containment tier.
+Knowledge ownership and structural role are orthogonal. The House therefore maintains a census of real project structures that may be classified as **Field, Vineyard/Programme, Road, Path, View, Court, Table, Gate, Door, Archive, Treasury, Foundation, Pillar, State, Projection, Tabernacle or Vessel** without creating another owner or containment tier.
 
 The census is descriptive and multi-role: one project structure may legitimately carry several roles. A View never becomes a fact owner merely because it is prominent; a Programme consumes Room-owned facts; an Archive owns provenance rather than every derived interpretation; a Treasury stores reusable capacity rather than provenance; and a State describes condition rather than identity.
 
 **Chamber remains reserved.** No active Chamber registry exists until a concrete case passes a stricter admission test based on protected/specialist boundary, task autonomy, and clear maintenance benefit. Corpus density alone is insufficient.
 
-The canonical role census is `data/house/structural-census.json`; population and promotion rules are owned by `data/house/population-contract.json`.
+The canonical role census is `data/house/structural-census.json`; population and promotion rules are owned by `data/house/population-contract.json`; structural-population diagnostics live in `data/house/population-pulse.json`.
