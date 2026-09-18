@@ -26,10 +26,12 @@ function render(root,data){
     .filter(r=>selected.has(r.from)||selected.has(r.to))
     .sort((a,b)=>priority(a,selected)-priority(b,selected))
     .slice(0,6);
-  const selectedLinks=valid.map(id=>{const x=by[id],href=x.kind==='field'?base+'#potato-model':base+'?operator='+encodeURIComponent(id)+'#operators';return '<a class="topology-context-chip" href="'+esc(href)+'">'+esc(x.label)+'</a>';}).join('');
+  const conceptHref=id=>{const x=by[id];if(!x)return base+'#operators';return x.kind==='field'?base+'#potato-model':base+'?operator='+encodeURIComponent(id)+'#operators';};
+  const conceptLink=id=>'<a href="'+esc(conceptHref(id))+'">'+esc(by[id]?.label||id)+'</a>';
+  const selectedLinks=valid.map(id=>'<a class="topology-context-chip" href="'+esc(conceptHref(id))+'">'+esc(by[id].label)+'</a>').join('');
   const rows=rels.map(r=>{
-    const from=by[r.from]?.label||r.from,to=by[r.to]?.label||r.to,label=type[r.type]?.label||r.type;
-    return '<li><span><b>'+esc(from)+'</b> <em>'+esc(label)+'</em> <b>'+esc(to)+'</b></span><small>'+esc(r.description)+'</small></li>';
+    const label=type[r.type]?.label||r.type;
+    return '<li><span><b>'+conceptLink(r.from)+'</b> <em>'+esc(label)+'</em> <b>'+conceptLink(r.to)+'</b></span><small>'+esc(r.description)+'</small></li>';
   }).join('');
   root.innerHTML='<div class="topology-context-head"><div><p class="eyebrow">House context</p><h2>How these ideas connect</h2></div><a class="topology-context-house" href="'+esc(base)+'#operators">Open House topology →</a></div><div class="topology-context-chips">'+selectedLinks+'</div>'+(rows?'<ul class="topology-context-relations">'+rows+'</ul>':'')+'<p class="topology-context-boundary">These are typed project relations, not identity claims. Each linked operator keeps its own domain and evidence boundary.</p>';
 }
