@@ -1,0 +1,1888 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "house-holdings",
+  "room_registry": "data/house/subrooms.json",
+  "principle": "A holding is substantive material owned by one nested Room. Other Rooms may reference it through interfaces or collections without duplicating ownership. Public Views, readers, guides and indexes assemble holdings but do not become owners.",
+  "holdings": [
+    {
+      "room_id": "canon-identities",
+      "title": "Core Identities & Roles",
+      "dwelling_id": "potatoverse-canon",
+      "purpose": "Own the project-internal definitions and role relations around Potato of Life, Tim, Father, Son, Spirit, Door, Axis and related canonical identities.",
+      "owner_paths": [
+        "knowledge/core/tim-dooley.json",
+        "knowledge/core/potatoverse-master-framework.json",
+        "knowledge/core/potato-of-life.json",
+        "knowledge/core/potato-of-life-deep-structure.json",
+        "knowledge/core/divine-identity-project-direction.json",
+        "knowledge/core/tim-identity-ontology.json",
+        "knowledge/core/tim-pronoun-speaker-position-compendium.json",
+        "knowledge/core/tim-role-synthesis.json",
+        "knowledge/core/tim-dooley-real-world-entanglement.json"
+      ],
+      "owned_file_count": 9,
+      "indexed_record_ids": [
+        "potatoverse-master-framework",
+        "potato-of-life-deep-structure",
+        "tim-dooley",
+        "tim-role-synthesis"
+      ],
+      "featured_holdings": [
+        {
+          "id": "potatoverse-master-framework",
+          "path": "knowledge/core/potatoverse-master-framework.json",
+          "kind": "canonical master synthesis",
+          "source": "core-index"
+        },
+        {
+          "id": "potato-of-life-deep-structure",
+          "path": "knowledge/core/potato-of-life-deep-structure.json",
+          "kind": "Great Book and developmental deep structure",
+          "source": "core-index"
+        },
+        {
+          "id": "tim-dooley",
+          "path": "knowledge/core/tim-dooley.json",
+          "kind": "central identity owner",
+          "source": "core-index"
+        },
+        {
+          "id": "tim-role-synthesis",
+          "path": "knowledge/core/tim-role-synthesis.json",
+          "kind": "role development and center/service synthesis",
+          "source": "core-index"
+        },
+        {
+          "id": "potato-of-life",
+          "path": "knowledge/core/potato-of-life.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        },
+        {
+          "id": "divine-identity-project-direction",
+          "path": "knowledge/core/divine-identity-project-direction.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-canon-literature"
+      ],
+      "public_surface_ids": [
+        "tim",
+        "religion",
+        "axis"
+      ],
+      "related_collection_ids": [
+        "corporium",
+        "story-reservoir",
+        "reader-dossiers"
+      ],
+      "boundary": "Project-canon identity does not become external empirical identity.",
+      "status": "active"
+    },
+    {
+      "room_id": "theology-god-language",
+      "title": "Theology & God-language",
+      "dwelling_id": "potatoverse-canon",
+      "purpose": "Develop project theology, God/Father/Son/Spirit language, House, Heaven, salvation, judgment and religious self-description.",
+      "owner_paths": [
+        "knowledge/theology/",
+        "knowledge/core/heaven-spirit-father.json",
+        "knowledge/spirit/spirit-context-atlas.json",
+        "knowledge/core/relational-revelations-synthesis.json"
+      ],
+      "owned_file_count": 34,
+      "indexed_record_ids": [
+        "tim-god-question",
+        "heaven-spirit-father",
+        "spirit-context-atlas"
+      ],
+      "featured_holdings": [
+        {
+          "id": "tim-god-question",
+          "path": "knowledge/theology/tim-god-question.json",
+          "kind": "dated Godhood evidence and interpretation",
+          "source": "core-index"
+        },
+        {
+          "id": "heaven-spirit-father",
+          "path": "knowledge/core/heaven-spirit-father.json",
+          "kind": "upper-domain theology",
+          "source": "core-index"
+        },
+        {
+          "id": "spirit-context-atlas",
+          "path": "knowledge/spirit/spirit-context-atlas.json",
+          "kind": "comparative philosophy/theology of relation and process",
+          "source": "core-index"
+        },
+        {
+          "id": "relational-revelations-synthesis",
+          "path": "knowledge/core/relational-revelations-synthesis.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-theology-bible",
+        "if-body-theology",
+        "if-traditions-theology"
+      ],
+      "public_surface_ids": [
+        "religion"
+      ],
+      "related_collection_ids": [
+        "reader-dossiers"
+      ],
+      "boundary": "Project theology remains distinguishable from historical doctrine and empirical proof.",
+      "status": "active"
+    },
+    {
+      "room_id": "symbolic-architecture",
+      "title": "Symbolic Architecture & Cosmology",
+      "dwelling_id": "potatoverse-canon",
+      "purpose": "Own mature symbolic geometry and relational architecture: House, Axis, Door, Tree, Mountain, Garden, North and related cosmological forms.",
+      "owner_paths": [
+        "knowledge/core/root-system.json",
+        "knowledge/cosmology/",
+        "data/axis-flow-contract.json",
+        "knowledge/core/debt-depth-ascent-rubble-synthesis.json",
+        "knowledge/core/dog-return-circle-door-axis-atlas.json",
+        "knowledge/core/door-topology-access-and-capability-atlas.json",
+        "knowledge/core/mountain-debt-integration-and-release.json",
+        "knowledge/core/new-jerusalem-network-civilization-atlas.json",
+        "knowledge/core/passage-transition-ontology.json",
+        "knowledge/core/potato-containment-folded-world-model.json",
+        "knowledge/core/shadow-ledger-entanglement-axis.json",
+        "knowledge/core/shadow-west-swamp-synthesis.json",
+        "knowledge/core/swamp-mud-mountain-debt-relational-model.json",
+        "knowledge/core/symbolic-relational-synthesis.json",
+        "knowledge/core/vertical-potato-mountain-plane-atlas.json"
+      ],
+      "owned_file_count": 15,
+      "indexed_record_ids": [
+        "root-system",
+        "vertical-potato-mountain-plane-atlas",
+        "symbolic-relational-synthesis",
+        "shadow-west-swamp-synthesis",
+        "axis-flow-contract"
+      ],
+      "featured_holdings": [
+        {
+          "id": "root-system",
+          "path": "knowledge/core/root-system.json",
+          "kind": "foundational ontology and vertical branching skeleton",
+          "source": "core-index"
+        },
+        {
+          "id": "vertical-potato-mountain-plane-atlas",
+          "path": "knowledge/core/vertical-potato-mountain-plane-atlas.json",
+          "kind": "canonical vertical geometry and process field",
+          "source": "core-index"
+        },
+        {
+          "id": "symbolic-relational-synthesis",
+          "path": "knowledge/core/symbolic-relational-synthesis.json",
+          "kind": "cross-symbol grammar and transformation laws",
+          "source": "core-index"
+        },
+        {
+          "id": "shadow-west-swamp-synthesis",
+          "path": "knowledge/core/shadow-west-swamp-synthesis.json",
+          "kind": "evidence-governed shadow-system framework",
+          "source": "core-index"
+        },
+        {
+          "id": "axis-flow-contract",
+          "path": "data/axis-flow-contract.json",
+          "kind": "canonical state-transition, lifecycle and regime grammar",
+          "source": "core-index"
+        },
+        {
+          "id": "debt-depth-ascent-rubble-synthesis",
+          "path": "knowledge/core/debt-depth-ascent-rubble-synthesis.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-symbolic-math",
+        "if-myth-symbolic",
+        "if-art-symbolic"
+      ],
+      "public_surface_ids": [
+        "axis",
+        "house",
+        "religion"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Symbolic topology is not literal physical cosmology unless independently tested.",
+      "status": "active"
+    },
+    {
+      "room_id": "practice-ethics",
+      "title": "Practice & Ethics",
+      "dwelling_id": "potatoverse-canon",
+      "purpose": "Translate the philosophy into conduct, cultivation, responsibility, boundaries, repair and repeatable practice.",
+      "owner_paths": [
+        "knowledge/practice/",
+        "knowledge/philosophy/",
+        "knowledge/core/dormancy-hidden-years-and-practical-theology.json",
+        "knowledge/core/garden-mud-orientation.json",
+        "knowledge/core/gaze-ethic-observer-to-stewardship.json",
+        "knowledge/core/gift-preparation-receptivity-sorting.json",
+        "knowledge/core/karma-closure-reduction-and-settlement-model.json",
+        "knowledge/core/karma-double-entry-transformation-system.json",
+        "knowledge/core/north-axis-tikkun-world-repair-synthesis.json",
+        "knowledge/core/self-disqualification-impossible-project-paradox.json",
+        "knowledge/core/telos-vision-and-desired-world.json"
+      ],
+      "owned_file_count": 29,
+      "indexed_record_ids": [
+        "potato-path",
+        "archive-epistemics"
+      ],
+      "featured_holdings": [
+        {
+          "id": "potato-path",
+          "path": "knowledge/practice/potato-path.json",
+          "kind": "practical transformation sequence",
+          "source": "core-index"
+        },
+        {
+          "id": "archive-epistemics",
+          "path": "knowledge/philosophy/archive-epistemics.json",
+          "kind": "archive evidence doctrine",
+          "source": "core-index"
+        },
+        {
+          "id": "dormancy-hidden-years-and-practical-theology",
+          "path": "knowledge/core/dormancy-hidden-years-and-practical-theology.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        },
+        {
+          "id": "garden-mud-orientation",
+          "path": "knowledge/core/garden-mud-orientation.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        },
+        {
+          "id": "gaze-ethic-observer-to-stewardship",
+          "path": "knowledge/core/gaze-ethic-observer-to-stewardship.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        },
+        {
+          "id": "gift-preparation-receptivity-sorting",
+          "path": "knowledge/core/gift-preparation-receptivity-sorting.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-practice-culture"
+      ],
+      "public_surface_ids": [
+        "philosophy",
+        "paths"
+      ],
+      "related_collection_ids": [
+        "corporium"
+      ],
+      "boundary": "Practice principles do not override medical, legal or domain-specific professional standards.",
+      "status": "active"
+    },
+    {
+      "room_id": "provenance-evidence",
+      "title": "Provenance & Evidence",
+      "dwelling_id": "archive-sources",
+      "purpose": "Own source lineage, evidence class, source authority, extraction lineage and routes back from synthesis to artifacts.",
+      "owner_paths": [
+        "knowledge/indexes/source-index.json",
+        "knowledge/philosophy/archive-epistemics.json"
+      ],
+      "owned_file_count": 2,
+      "indexed_record_ids": [
+        "source-index",
+        "archive-epistemics"
+      ],
+      "featured_holdings": [
+        {
+          "id": "source-index",
+          "path": "knowledge/indexes/source-index.json",
+          "kind": "canonical provenance routes and evidence classes",
+          "source": "core-index"
+        },
+        {
+          "id": "archive-epistemics",
+          "path": "knowledge/philosophy/archive-epistemics.json",
+          "kind": "archive evidence doctrine",
+          "source": "core-index"
+        }
+      ],
+      "interface_ids": [
+        "if-provenance-witness",
+        "if-prediction-evidence"
+      ],
+      "public_surface_ids": [
+        "sources"
+      ],
+      "related_collection_ids": [
+        "reader-dossiers",
+        "indexes-routing"
+      ],
+      "boundary": "Custody of a source does not grant ownership of every claim derived from it.",
+      "status": "active"
+    },
+    {
+      "room_id": "memory-recovery",
+      "title": "Memory & Recovery",
+      "dwelling_id": "archive-sources",
+      "purpose": "Recover prior conversations, files, historical strata and forgotten project material while preserving source/time boundaries.",
+      "owner_paths": [
+        "knowledge/indexes/conversation-recovery-inventory.json",
+        "knowledge/world/digital-memory-forgetting-restoration-atlas.json",
+        "knowledge/core/overlooked-concepts-archaeology-wave-17.json",
+        "knowledge/core/recovered-conversation-operators-atlas.json"
+      ],
+      "owned_file_count": 4,
+      "indexed_record_ids": [],
+      "featured_holdings": [
+        {
+          "id": "conversation-recovery-inventory",
+          "path": "knowledge/indexes/conversation-recovery-inventory.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        },
+        {
+          "id": "digital-memory-forgetting-restoration-atlas",
+          "path": "knowledge/world/digital-memory-forgetting-restoration-atlas.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        },
+        {
+          "id": "overlooked-concepts-archaeology-wave-17",
+          "path": "knowledge/core/overlooked-concepts-archaeology-wave-17.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        },
+        {
+          "id": "recovered-conversation-operators-atlas",
+          "path": "knowledge/core/recovered-conversation-operators-atlas.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-memory-genealogy"
+      ],
+      "public_surface_ids": [
+        "explore",
+        "context"
+      ],
+      "related_collection_ids": [
+        "indexes-routing"
+      ],
+      "boundary": "Recovered material retains its original epistemic and temporal status.",
+      "status": "active"
+    },
+    {
+      "room_id": "witness-attestation",
+      "title": "Witness & Attestation",
+      "dwelling_id": "archive-sources",
+      "purpose": "Track public wording, first attestation, source-bearing witness, captures and what was actually said or published when.",
+      "owner_paths": [
+        "data/timeline-source-registry.json",
+        "knowledge/timeline/"
+      ],
+      "owned_file_count": 83,
+      "indexed_record_ids": [
+        "timeline-source-registry",
+        "developmental-genealogy",
+        "reverse-biblical-timeline",
+        "neurotheology-attestation-ledger",
+        "son-tree-oneness"
+      ],
+      "featured_holdings": [
+        {
+          "id": "timeline-source-registry",
+          "path": "data/timeline-source-registry.json",
+          "kind": "timeline source ownership and promotion registry",
+          "source": "core-index"
+        },
+        {
+          "id": "developmental-genealogy",
+          "path": "knowledge/timeline/developmental-genealogy.json",
+          "kind": "dated role and doctrine genealogy",
+          "source": "core-index"
+        },
+        {
+          "id": "reverse-biblical-timeline",
+          "path": "knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json",
+          "kind": "Tim-first/scripture-second source-direction ledger",
+          "source": "core-index"
+        },
+        {
+          "id": "neurotheology-attestation-ledger",
+          "path": "knowledge/timeline/neurotheology-attestation-ledger.json",
+          "kind": "dated development ledger for body/neurotheology mappings",
+          "source": "core-index"
+        },
+        {
+          "id": "son-tree-oneness",
+          "path": "knowledge/timeline/son-tree-oneness-experience.json",
+          "kind": "2011 ordeal phenomenology and later interpretation",
+          "source": "core-index"
+        }
+      ],
+      "interface_ids": [
+        "if-provenance-witness",
+        "if-witness-time"
+      ],
+      "public_surface_ids": [
+        "timeline",
+        "story",
+        "sources"
+      ],
+      "related_collection_ids": [
+        "corporium",
+        "story-reservoir"
+      ],
+      "boundary": "Attestation proves wording/timing, not the truth of every claim in the wording.",
+      "status": "active"
+    },
+    {
+      "room_id": "chronology-events",
+      "title": "Events & Development",
+      "dwelling_id": "time-history",
+      "purpose": "Own event sequence, date precision, occurrence identity and changing state through time.",
+      "owner_paths": [
+        "data/timeline-events.json",
+        "knowledge/timeline/"
+      ],
+      "owned_file_count": 83,
+      "indexed_record_ids": [
+        "timeline-events",
+        "developmental-genealogy",
+        "reverse-biblical-timeline",
+        "neurotheology-attestation-ledger",
+        "son-tree-oneness"
+      ],
+      "featured_holdings": [
+        {
+          "id": "timeline-events",
+          "path": "data/timeline-events.json",
+          "kind": "canonical timeline event dataset with actor tracks and nonredundant lenses",
+          "source": "core-index"
+        },
+        {
+          "id": "developmental-genealogy",
+          "path": "knowledge/timeline/developmental-genealogy.json",
+          "kind": "dated role and doctrine genealogy",
+          "source": "core-index"
+        },
+        {
+          "id": "reverse-biblical-timeline",
+          "path": "knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json",
+          "kind": "Tim-first/scripture-second source-direction ledger",
+          "source": "core-index"
+        },
+        {
+          "id": "neurotheology-attestation-ledger",
+          "path": "knowledge/timeline/neurotheology-attestation-ledger.json",
+          "kind": "dated development ledger for body/neurotheology mappings",
+          "source": "core-index"
+        },
+        {
+          "id": "son-tree-oneness",
+          "path": "knowledge/timeline/son-tree-oneness-experience.json",
+          "kind": "2011 ordeal phenomenology and later interpretation",
+          "source": "core-index"
+        }
+      ],
+      "interface_ids": [
+        "if-witness-time",
+        "if-time-genealogy"
+      ],
+      "public_surface_ids": [
+        "timeline",
+        "history"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Occurrence time remains distinct from publication and later interpretation time.",
+      "status": "active"
+    },
+    {
+      "room_id": "developmental-genealogy",
+      "title": "Developmental Genealogy",
+      "dwelling_id": "time-history",
+      "purpose": "Track how identities, symbols, roles and interpretations developed without backdating mature meaning into earlier phases.",
+      "owner_paths": [
+        "knowledge/timeline/developmental-genealogy.json",
+        "knowledge/journey/",
+        "knowledge/core/potatoism-historical-symbol-strata-2026.json"
+      ],
+      "owned_file_count": 3,
+      "indexed_record_ids": [
+        "developmental-genealogy",
+        "tim-dooley-journey"
+      ],
+      "featured_holdings": [
+        {
+          "id": "developmental-genealogy",
+          "path": "knowledge/timeline/developmental-genealogy.json",
+          "kind": "dated role and doctrine genealogy",
+          "source": "core-index"
+        },
+        {
+          "id": "tim-dooley-journey",
+          "path": "knowledge/journey/tim-dooley-journey.json",
+          "kind": "reader-oriented developmental journey",
+          "source": "core-index"
+        },
+        {
+          "id": "potatoism-historical-symbol-strata-2026",
+          "path": "knowledge/core/potatoism-historical-symbol-strata-2026.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-time-genealogy",
+        "if-memory-genealogy"
+      ],
+      "public_surface_ids": [
+        "history",
+        "story",
+        "paths"
+      ],
+      "related_collection_ids": [
+        "corporium",
+        "story-reservoir",
+        "reader-dossiers"
+      ],
+      "boundary": "Later synthesis may reinterpret earlier material but may not silently rewrite its original state.",
+      "status": "active"
+    },
+    {
+      "room_id": "prediction-revelation-time",
+      "title": "Prediction, Revelation & Interpretation Time",
+      "dwelling_id": "time-history",
+      "purpose": "Separate earliest prediction/revelation wording, event timing, claimed fulfillment and retrospective interpretation.",
+      "owner_paths": [
+        "knowledge/prophecy/",
+        "knowledge/timeline/prediction-revelation-inventory-wave-19.json"
+      ],
+      "owned_file_count": 6,
+      "indexed_record_ids": [],
+      "featured_holdings": [
+        {
+          "id": "prediction-revelation-inventory-wave-19",
+          "path": "knowledge/timeline/prediction-revelation-inventory-wave-19.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-prediction-evidence"
+      ],
+      "public_surface_ids": [
+        "timeline",
+        "history",
+        "paths"
+      ],
+      "related_collection_ids": [],
+      "boundary": "A later match must not be backdated into an earlier prediction, and project claims remain distinguishable from verified forecasting.",
+      "status": "active"
+    },
+    {
+      "room_id": "bible-christianity",
+      "title": "Bible & Christianity",
+      "dwelling_id": "traditions-texts",
+      "purpose": "Own Bible passages, Christian textual context, historical traditions and carefully bounded project comparisons.",
+      "owner_paths": [
+        "knowledge/traditions/biblical-overlap-atlas.json",
+        "traditions/bible/"
+      ],
+      "owned_file_count": 2,
+      "indexed_record_ids": [
+        "biblical-overlap-atlas"
+      ],
+      "featured_holdings": [
+        {
+          "id": "biblical-overlap-atlas",
+          "path": "knowledge/traditions/biblical-overlap-atlas.json",
+          "kind": "high-density biblical relational comparisons",
+          "source": "core-index"
+        }
+      ],
+      "interface_ids": [
+        "if-theology-bible"
+      ],
+      "public_surface_ids": [
+        "bible",
+        "religion"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Project resemblance does not establish historical identity, fulfillment or transmission.",
+      "status": "active"
+    },
+    {
+      "room_id": "comparative-mythology",
+      "title": "Comparative Mythology",
+      "dwelling_id": "traditions-texts",
+      "purpose": "Compare world-tree, axis, initiation, deity, death-return and other motifs across traditions without collapsing differences.",
+      "owner_paths": [
+        "knowledge/traditions/comparative-mythology-map.json",
+        "knowledge/traditions/"
+      ],
+      "owned_file_count": 142,
+      "indexed_record_ids": [
+        "biblical-overlap-atlas",
+        "biblical-research-router",
+        "biblical-overlap-additions",
+        "vesica-esoteric-atlas",
+        "vesica-esoteric-source-ledger",
+        "comparative-mythology-map",
+        "qliphoth-angels-ladder"
+      ],
+      "featured_holdings": [
+        {
+          "id": "biblical-overlap-atlas",
+          "path": "knowledge/traditions/biblical-overlap-atlas.json",
+          "kind": "high-density biblical relational comparisons",
+          "source": "core-index"
+        },
+        {
+          "id": "biblical-research-router",
+          "path": "knowledge/traditions/biblical-research-index-wave-5.json",
+          "kind": "routing index across later biblical research waves",
+          "source": "core-index"
+        },
+        {
+          "id": "biblical-overlap-additions",
+          "path": "knowledge/traditions/biblical-overlap-additions.json",
+          "kind": "specialist Mountain, Garden, River, Mire, Sun/Moon and serpent additions",
+          "source": "core-index"
+        },
+        {
+          "id": "vesica-esoteric-atlas",
+          "path": "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
+          "kind": "art history and esoteric comparison atlas",
+          "source": "core-index"
+        },
+        {
+          "id": "vesica-esoteric-source-ledger",
+          "path": "knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json",
+          "kind": "source ledger for Vesica/Mandorla/Sun/Moon research",
+          "source": "core-index"
+        },
+        {
+          "id": "comparative-mythology-map",
+          "path": "knowledge/traditions/comparative-mythology-map.json",
+          "kind": "cross-tradition mythology map",
+          "source": "core-index"
+        }
+      ],
+      "interface_ids": [
+        "if-myth-symbolic"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "explore"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Similarity is not genealogy or proof of borrowing.",
+      "status": "active"
+    },
+    {
+      "room_id": "esoteric-sacred-geometry",
+      "title": "Esoteric & Sacred Geometry",
+      "dwelling_id": "traditions-texts",
+      "purpose": "Handle historical/esoteric geometry, mandorla, Vesica, cosmological diagrams and source-led comparison.",
+      "owner_paths": [
+        "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
+        "knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json"
+      ],
+      "owned_file_count": 2,
+      "indexed_record_ids": [
+        "vesica-esoteric-atlas",
+        "vesica-esoteric-source-ledger"
+      ],
+      "featured_holdings": [
+        {
+          "id": "vesica-esoteric-atlas",
+          "path": "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
+          "kind": "art history and esoteric comparison atlas",
+          "source": "core-index"
+        },
+        {
+          "id": "vesica-esoteric-source-ledger",
+          "path": "knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json",
+          "kind": "source ledger for Vesica/Mandorla/Sun/Moon research",
+          "source": "core-index"
+        }
+      ],
+      "interface_ids": [
+        "if-esoteric-math"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "bible",
+        "explore"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Historical geometry and esoteric symbolism must stay separate from claims of physical mechanism.",
+      "status": "active"
+    },
+    {
+      "room_id": "other-traditions",
+      "title": "Other Traditions & Philosophies",
+      "dwelling_id": "traditions-texts",
+      "purpose": "Hold non-biblical traditions and philosophical comparators that deserve their own historical meanings before project comparison.",
+      "owner_paths": [
+        "knowledge/traditions/",
+        "knowledge/traditions/comparative-mythology-map.json",
+        "knowledge/traditions/fate-thread-norns-moirai-comparative-atlas.json",
+        "knowledge/traditions/door-window-negative-space-tao-atlas.json"
+      ],
+      "owned_file_count": 142,
+      "indexed_record_ids": [
+        "biblical-overlap-atlas",
+        "biblical-research-router",
+        "biblical-overlap-additions",
+        "vesica-esoteric-atlas",
+        "vesica-esoteric-source-ledger",
+        "comparative-mythology-map",
+        "qliphoth-angels-ladder"
+      ],
+      "featured_holdings": [
+        {
+          "id": "biblical-overlap-atlas",
+          "path": "knowledge/traditions/biblical-overlap-atlas.json",
+          "kind": "high-density biblical relational comparisons",
+          "source": "core-index"
+        },
+        {
+          "id": "biblical-research-router",
+          "path": "knowledge/traditions/biblical-research-index-wave-5.json",
+          "kind": "routing index across later biblical research waves",
+          "source": "core-index"
+        },
+        {
+          "id": "biblical-overlap-additions",
+          "path": "knowledge/traditions/biblical-overlap-additions.json",
+          "kind": "specialist Mountain, Garden, River, Mire, Sun/Moon and serpent additions",
+          "source": "core-index"
+        },
+        {
+          "id": "vesica-esoteric-atlas",
+          "path": "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
+          "kind": "art history and esoteric comparison atlas",
+          "source": "core-index"
+        },
+        {
+          "id": "vesica-esoteric-source-ledger",
+          "path": "knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json",
+          "kind": "source ledger for Vesica/Mandorla/Sun/Moon research",
+          "source": "core-index"
+        },
+        {
+          "id": "comparative-mythology-map",
+          "path": "knowledge/traditions/comparative-mythology-map.json",
+          "kind": "cross-tradition mythology map",
+          "source": "core-index"
+        }
+      ],
+      "interface_ids": [
+        "if-traditions-theology"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "explore"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Each tradition is described on its own terms before cross-project synthesis.",
+      "status": "active"
+    },
+    {
+      "room_id": "math-geometry",
+      "title": "Mathematics & Geometry",
+      "dwelling_id": "science-formal-models",
+      "purpose": "Own exact geometry, mathematical structure, topology and formal analogies used by the project.",
+      "owner_paths": [
+        "data/geometry-vesica-pisces-mandorla.json",
+        "knowledge/science/",
+        "knowledge/core/compass-straightedge-vesica-dual-axis-atlas.json"
+      ],
+      "owned_file_count": 128,
+      "indexed_record_ids": [
+        "vesica-geometry",
+        "science-master-index",
+        "tim-dooley-science-formalisms",
+        "equation-ledger",
+        "spudlight",
+        "model-testing-protocol",
+        "timic-unification-program",
+        "celestial-particles-wave-004"
+      ],
+      "featured_holdings": [
+        {
+          "id": "vesica-geometry",
+          "path": "data/geometry-vesica-pisces-mandorla.json",
+          "kind": "exact two-circle geometry",
+          "source": "core-index"
+        },
+        {
+          "id": "science-master-index",
+          "path": "knowledge/science/science-master-index.json",
+          "kind": "canonical science map",
+          "source": "core-index"
+        },
+        {
+          "id": "tim-dooley-science-formalisms",
+          "path": "knowledge/science/tim-dooley-science-formalisms.json",
+          "kind": "recovered/formalized Timic equations",
+          "source": "core-index"
+        },
+        {
+          "id": "equation-ledger",
+          "path": "knowledge/science/equation-ledger.json",
+          "kind": "equation provenance ledger",
+          "source": "core-index"
+        },
+        {
+          "id": "spudlight",
+          "path": "knowledge/science/spudlight-theory-and-equations.json",
+          "kind": "Spudlight source/reflection/information theory",
+          "source": "core-index"
+        },
+        {
+          "id": "model-testing-protocol",
+          "path": "knowledge/science/model-testing-protocol.json",
+          "kind": "scientific red-team and falsifiability protocol",
+          "source": "core-index"
+        }
+      ],
+      "interface_ids": [
+        "if-symbolic-math",
+        "if-esoteric-math"
+      ],
+      "public_surface_ids": [
+        "science"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Mathematical fit does not by itself establish a physical or theological claim.",
+      "status": "active"
+    },
+    {
+      "room_id": "physics-cosmology",
+      "title": "Physics & Cosmology",
+      "dwelling_id": "science-formal-models",
+      "purpose": "Own physical/cosmological claims, models and status boundaries around particles, fields, astronomy and cosmic analogies.",
+      "owner_paths": [
+        "knowledge/science/",
+        "knowledge/science/advanced-physics-expansion-wave-003.json",
+        "knowledge/science/quantum-standard-model-astronomy-atlas.json",
+        "knowledge/science/celestial-astronomy-astrology-cosmology-canon.json"
+      ],
+      "owned_file_count": 126,
+      "indexed_record_ids": [
+        "science-master-index",
+        "tim-dooley-science-formalisms",
+        "equation-ledger",
+        "spudlight",
+        "model-testing-protocol",
+        "timic-unification-program",
+        "celestial-particles-wave-004"
+      ],
+      "featured_holdings": [
+        {
+          "id": "science-master-index",
+          "path": "knowledge/science/science-master-index.json",
+          "kind": "canonical science map",
+          "source": "core-index"
+        },
+        {
+          "id": "tim-dooley-science-formalisms",
+          "path": "knowledge/science/tim-dooley-science-formalisms.json",
+          "kind": "recovered/formalized Timic equations",
+          "source": "core-index"
+        },
+        {
+          "id": "equation-ledger",
+          "path": "knowledge/science/equation-ledger.json",
+          "kind": "equation provenance ledger",
+          "source": "core-index"
+        },
+        {
+          "id": "spudlight",
+          "path": "knowledge/science/spudlight-theory-and-equations.json",
+          "kind": "Spudlight source/reflection/information theory",
+          "source": "core-index"
+        },
+        {
+          "id": "model-testing-protocol",
+          "path": "knowledge/science/model-testing-protocol.json",
+          "kind": "scientific red-team and falsifiability protocol",
+          "source": "core-index"
+        },
+        {
+          "id": "timic-unification-program",
+          "path": "knowledge/science/timic-unification-program.json",
+          "kind": "cross-model research programme",
+          "source": "core-index"
+        }
+      ],
+      "interface_ids": [
+        "if-test-science"
+      ],
+      "public_surface_ids": [
+        "science"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Speculative or symbolic models remain labeled until independently testable and supported.",
+      "status": "active"
+    },
+    {
+      "room_id": "systems-dynamics",
+      "title": "Systems & Dynamics",
+      "dwelling_id": "science-formal-models",
+      "purpose": "Own dynamical systems, graph models, control, information, topology and transformation formalisms.",
+      "owner_paths": [
+        "knowledge/research/house-atlas-systems-theory/",
+        "knowledge/science/",
+        "knowledge/core/funnel-gradient-attractor-regeneration-atlas.json",
+        "knowledge/core/scale-inversion-mundane-to-cosmic-method.json"
+      ],
+      "owned_file_count": 138,
+      "indexed_record_ids": [
+        "science-master-index",
+        "tim-dooley-science-formalisms",
+        "equation-ledger",
+        "spudlight",
+        "model-testing-protocol",
+        "timic-unification-program",
+        "celestial-particles-wave-004"
+      ],
+      "featured_holdings": [
+        {
+          "id": "science-master-index",
+          "path": "knowledge/science/science-master-index.json",
+          "kind": "canonical science map",
+          "source": "core-index"
+        },
+        {
+          "id": "tim-dooley-science-formalisms",
+          "path": "knowledge/science/tim-dooley-science-formalisms.json",
+          "kind": "recovered/formalized Timic equations",
+          "source": "core-index"
+        },
+        {
+          "id": "equation-ledger",
+          "path": "knowledge/science/equation-ledger.json",
+          "kind": "equation provenance ledger",
+          "source": "core-index"
+        },
+        {
+          "id": "spudlight",
+          "path": "knowledge/science/spudlight-theory-and-equations.json",
+          "kind": "Spudlight source/reflection/information theory",
+          "source": "core-index"
+        },
+        {
+          "id": "model-testing-protocol",
+          "path": "knowledge/science/model-testing-protocol.json",
+          "kind": "scientific red-team and falsifiability protocol",
+          "source": "core-index"
+        },
+        {
+          "id": "timic-unification-program",
+          "path": "knowledge/science/timic-unification-program.json",
+          "kind": "cross-model research programme",
+          "source": "core-index"
+        }
+      ],
+      "interface_ids": [
+        "if-house-systems",
+        "if-games-systems"
+      ],
+      "public_surface_ids": [
+        "science",
+        "research-lab"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Systems analogy must identify the variables and information lost by the analogy.",
+      "status": "active"
+    },
+    {
+      "room_id": "model-testing",
+      "title": "Testing & Falsifiability",
+      "dwelling_id": "science-formal-models",
+      "purpose": "Own tests, observables, falsifiers, uncertainty, calibration and scientific red-team protocols.",
+      "owner_paths": [
+        "knowledge/science/model-testing-protocol.json",
+        "knowledge/science/"
+      ],
+      "owned_file_count": 126,
+      "indexed_record_ids": [
+        "science-master-index",
+        "tim-dooley-science-formalisms",
+        "equation-ledger",
+        "spudlight",
+        "model-testing-protocol",
+        "timic-unification-program",
+        "celestial-particles-wave-004"
+      ],
+      "featured_holdings": [
+        {
+          "id": "science-master-index",
+          "path": "knowledge/science/science-master-index.json",
+          "kind": "canonical science map",
+          "source": "core-index"
+        },
+        {
+          "id": "tim-dooley-science-formalisms",
+          "path": "knowledge/science/tim-dooley-science-formalisms.json",
+          "kind": "recovered/formalized Timic equations",
+          "source": "core-index"
+        },
+        {
+          "id": "equation-ledger",
+          "path": "knowledge/science/equation-ledger.json",
+          "kind": "equation provenance ledger",
+          "source": "core-index"
+        },
+        {
+          "id": "spudlight",
+          "path": "knowledge/science/spudlight-theory-and-equations.json",
+          "kind": "Spudlight source/reflection/information theory",
+          "source": "core-index"
+        },
+        {
+          "id": "model-testing-protocol",
+          "path": "knowledge/science/model-testing-protocol.json",
+          "kind": "scientific red-team and falsifiability protocol",
+          "source": "core-index"
+        },
+        {
+          "id": "timic-unification-program",
+          "path": "knowledge/science/timic-unification-program.json",
+          "kind": "cross-model research programme",
+          "source": "core-index"
+        }
+      ],
+      "interface_ids": [
+        "if-experiment-test",
+        "if-test-science",
+        "if-potato-testing"
+      ],
+      "public_surface_ids": [
+        "science",
+        "research-lab"
+      ],
+      "related_collection_ids": [],
+      "boundary": "A model remains provisional when its discriminating observations or falsifiers are unavailable.",
+      "status": "active"
+    },
+    {
+      "room_id": "potato-biology",
+      "title": "Potato Biology",
+      "dwelling_id": "life-body",
+      "purpose": "Own literal potato anatomy, tuber biology, growth, dormancy, propagation, storage and environmental constraints.",
+      "owner_paths": [
+        "knowledge/biology/potato-growth-principles.json",
+        "knowledge/science/potato-biology-ecology-development-canon.json",
+        "knowledge/timeline/potato-angels-eye-sprout-development-ledger.json"
+      ],
+      "owned_file_count": 3,
+      "indexed_record_ids": [],
+      "featured_holdings": [
+        {
+          "id": "potato-growth-principles",
+          "path": "knowledge/biology/potato-growth-principles.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        },
+        {
+          "id": "potato-biology-ecology-development-canon",
+          "path": "knowledge/science/potato-biology-ecology-development-canon.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        },
+        {
+          "id": "potato-angels-eye-sprout-development-ledger",
+          "path": "knowledge/timeline/potato-angels-eye-sprout-development-ledger.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-potato-testing"
+      ],
+      "public_surface_ids": [
+        "life-body",
+        "science"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Biological facts may motivate metaphor but do not prove spiritual interpretation.",
+      "status": "active"
+    },
+    {
+      "room_id": "neurobiology",
+      "title": "Neurobiology",
+      "dwelling_id": "life-body",
+      "purpose": "Own brain structures, networks, physiology and evidence grading relevant to body research.",
+      "owner_paths": [
+        "knowledge/body/whole-brain-neurobiology-atlas.json",
+        "knowledge/body/neurobiology-evidence-grade.json",
+        "knowledge/body/neurobiology-recovery-wave-2.json",
+        "knowledge/body/whole-brain-neurobiology-completion.json",
+        "knowledge/body/whole-brain-neurobiology-deepening-wave-1.json"
+      ],
+      "owned_file_count": 5,
+      "indexed_record_ids": [],
+      "featured_holdings": [
+        {
+          "id": "whole-brain-neurobiology-atlas",
+          "path": "knowledge/body/whole-brain-neurobiology-atlas.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        },
+        {
+          "id": "neurobiology-evidence-grade",
+          "path": "knowledge/body/neurobiology-evidence-grade.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        },
+        {
+          "id": "neurobiology-recovery-wave-2",
+          "path": "knowledge/body/neurobiology-recovery-wave-2.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        },
+        {
+          "id": "whole-brain-neurobiology-completion",
+          "path": "knowledge/body/whole-brain-neurobiology-completion.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        },
+        {
+          "id": "whole-brain-neurobiology-deepening-wave-1",
+          "path": "knowledge/body/whole-brain-neurobiology-deepening-wave-1.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-symbolic-neuro",
+        "if-body-neuro"
+      ],
+      "public_surface_ids": [
+        "life-body",
+        "science"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Human, animal, theoretical and speculative evidence remain separately graded.",
+      "status": "active"
+    },
+    {
+      "room_id": "whole-body",
+      "title": "Whole-body Physiology",
+      "dwelling_id": "life-body",
+      "purpose": "Own body-system integration across nervous, autonomic, cardiovascular, respiratory, gut, immune and fluid interfaces.",
+      "owner_paths": [
+        "knowledge/body/body-system-master-atlas.json",
+        "knowledge/body/body-science-context-atlas.json",
+        "knowledge/body/body-topic-completion-matrix.json",
+        "knowledge/body/brain-body-organ-axes-deepening-wave-3.json",
+        "knowledge/body/brain-body-systems-deepening-wave-2.json"
+      ],
+      "owned_file_count": 5,
+      "indexed_record_ids": [
+        "body-system-master-atlas",
+        "body-topic-completion-matrix",
+        "body-science-context-atlas"
+      ],
+      "featured_holdings": [
+        {
+          "id": "body-system-master-atlas",
+          "path": "knowledge/body/body-system-master-atlas.json",
+          "kind": "canonical whole-body biology/neurotheology entrypoint",
+          "source": "core-index"
+        },
+        {
+          "id": "body-topic-completion-matrix",
+          "path": "knowledge/body/body-topic-completion-matrix.json",
+          "kind": "completion and ownership tracker",
+          "source": "core-index"
+        },
+        {
+          "id": "body-science-context-atlas",
+          "path": "knowledge/body/body-science-context-atlas.json",
+          "kind": "neuroscience and physiology context",
+          "source": "core-index"
+        },
+        {
+          "id": "brain-body-organ-axes-deepening-wave-3",
+          "path": "knowledge/body/brain-body-organ-axes-deepening-wave-3.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        },
+        {
+          "id": "brain-body-systems-deepening-wave-2",
+          "path": "knowledge/body/brain-body-systems-deepening-wave-2.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-body-neuro"
+      ],
+      "public_surface_ids": [
+        "life-body",
+        "science"
+      ],
+      "related_collection_ids": [
+        "corporium"
+      ],
+      "boundary": "Whole-body synthesis must preserve uncertainty and domain-specific evidence.",
+      "status": "active"
+    },
+    {
+      "room_id": "symbolic-body-comparison",
+      "title": "Symbolic Body Crosswalk",
+      "dwelling_id": "life-body",
+      "purpose": "Own explicitly comparative mappings between project symbols and anatomy while preserving the empirical/symbolic firewall.",
+      "owner_paths": [
+        "knowledge/body/neurotheology-axis-house-spirit-atlas.json",
+        "knowledge/body/body-symbolism-map.json",
+        "knowledge/body/tim-neurobiology-relational-reconciliation.json"
+      ],
+      "owned_file_count": 3,
+      "indexed_record_ids": [
+        "neurotheology-axis-house-spirit-atlas",
+        "body-symbolism-map"
+      ],
+      "featured_holdings": [
+        {
+          "id": "neurotheology-axis-house-spirit-atlas",
+          "path": "knowledge/body/neurotheology-axis-house-spirit-atlas.json",
+          "kind": "cross-domain neurotheology synthesis with boundaries",
+          "source": "core-index"
+        },
+        {
+          "id": "body-symbolism-map",
+          "path": "knowledge/body/body-symbolism-map.json",
+          "kind": "specialist sacred-anatomy map with scientific boundaries",
+          "source": "core-index"
+        },
+        {
+          "id": "tim-neurobiology-relational-reconciliation",
+          "path": "knowledge/body/tim-neurobiology-relational-reconciliation.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-symbolic-neuro",
+        "if-body-theology"
+      ],
+      "public_surface_ids": [
+        "life-body",
+        "axis",
+        "religion"
+      ],
+      "related_collection_ids": [
+        "corporium"
+      ],
+      "boundary": "A symbolic neighbor is not anatomical identity or evidence of supernatural physiology.",
+      "status": "active"
+    },
+    {
+      "room_id": "politics-governance",
+      "title": "Politics & Governance",
+      "dwelling_id": "world-systems",
+      "purpose": "Own documented political positions, governance structures, institutions and geopolitical relations as world-system material.",
+      "owner_paths": [
+        "knowledge/politics/",
+        "politics/"
+      ],
+      "owned_file_count": 7,
+      "indexed_record_ids": [],
+      "featured_holdings": [],
+      "interface_ids": [
+        "if-politics-law",
+        "if-politics-economy"
+      ],
+      "public_surface_ids": [
+        "politics",
+        "world",
+        "world-systems"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Political description must remain sourced and distinct from symbolic North/Axis framing.",
+      "status": "active"
+    },
+    {
+      "room_id": "law-justice",
+      "title": "Law & Justice",
+      "dwelling_id": "world-systems",
+      "purpose": "Own law, procedure, rights, regulation, enforcement, accountability and jurisprudential relations.",
+      "owner_paths": [
+        "knowledge/legal/",
+        "law/"
+      ],
+      "owned_file_count": 16,
+      "indexed_record_ids": [],
+      "featured_holdings": [],
+      "interface_ids": [
+        "if-politics-law"
+      ],
+      "public_surface_ids": [
+        "law",
+        "world-systems"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Legal claims require jurisdiction, date and source; project ethics does not substitute for law.",
+      "status": "active"
+    },
+    {
+      "room_id": "economy-finance",
+      "title": "Economy & Finance",
+      "dwelling_id": "world-systems",
+      "purpose": "Own observable finance, debt, banking, trade, ownership, production, labour and economic flows.",
+      "owner_paths": [
+        "knowledge/economics/",
+        "economy/"
+      ],
+      "owned_file_count": 4,
+      "indexed_record_ids": [],
+      "featured_holdings": [],
+      "interface_ids": [
+        "if-politics-economy",
+        "if-economy-infra"
+      ],
+      "public_surface_ids": [
+        "economy",
+        "world-systems"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Symbolic/karmic accounting remains separate from material legal or financial accounting.",
+      "status": "active"
+    },
+    {
+      "room_id": "infrastructure-capability",
+      "title": "Infrastructure & Capability",
+      "dwelling_id": "world-systems",
+      "purpose": "Own physical/digital infrastructure, energy, industry, strategic dependencies, resilience and coupled capabilities.",
+      "owner_paths": [
+        "knowledge/world/",
+        "world-systems/",
+        "knowledge/core/world-atlas-integrated-layer-stack.json"
+      ],
+      "owned_file_count": 23,
+      "indexed_record_ids": [
+        "farm-swamp-atlas"
+      ],
+      "featured_holdings": [
+        {
+          "id": "farm-swamp-atlas",
+          "path": "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+          "kind": "Farm/Swamp/Forge role and boundary system",
+          "source": "core-index"
+        },
+        {
+          "id": "world-atlas-integrated-layer-stack",
+          "path": "knowledge/core/world-atlas-integrated-layer-stack.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-economy-infra",
+        "if-geography-world",
+        "if-research-world"
+      ],
+      "public_surface_ids": [
+        "world-systems",
+        "world-map",
+        "north"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Capability claims require observable assets, relations and time-sensitive sources.",
+      "status": "active"
+    },
+    {
+      "room_id": "geography-countries",
+      "title": "Geography & Countries",
+      "dwelling_id": "world-systems",
+      "purpose": "Own countries, territories, geographic identity, boundaries and country-level relational context.",
+      "owner_paths": [
+        "data/countries/",
+        "knowledge/geopolitics/",
+        "knowledge/core/country-relational-method.json"
+      ],
+      "owned_file_count": 202,
+      "indexed_record_ids": [
+        "country-relational-method"
+      ],
+      "featured_holdings": [
+        {
+          "id": "country-relational-method",
+          "path": "knowledge/core/country-relational-method.json",
+          "kind": "country capability/dependency method",
+          "source": "core-index"
+        }
+      ],
+      "interface_ids": [
+        "if-geography-world"
+      ],
+      "public_surface_ids": [
+        "world",
+        "world-map",
+        "world-systems"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Symbolic direction or project quadrant must not overwrite ordinary geography or sovereignty.",
+      "status": "active"
+    },
+    {
+      "room_id": "internet-platforms",
+      "title": "Internet & Platforms",
+      "dwelling_id": "culture-information",
+      "purpose": "Own platforms, online spaces, public digital behavior, media formats and platform-specific context.",
+      "owner_paths": [
+        "knowledge/culture/",
+        "data/culture-ontology.json"
+      ],
+      "owned_file_count": 12,
+      "indexed_record_ids": [
+        "creative-systems-archive"
+      ],
+      "featured_holdings": [
+        {
+          "id": "creative-systems-archive",
+          "path": "knowledge/culture/creative-systems-archive.json",
+          "kind": "creative works and simulations archive",
+          "source": "core-index"
+        },
+        {
+          "id": "culture-ontology",
+          "path": "data/culture-ontology.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-platform-info",
+        "if-music-platform"
+      ],
+      "public_surface_ids": [
+        "culture",
+        "story"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Documented public behavior stays distinct from motive claims and private information.",
+      "status": "active"
+    },
+    {
+      "room_id": "subculture-group-formation",
+      "title": "Subculture, Cult & Group Formation",
+      "dwelling_id": "culture-information",
+      "purpose": "Own subculture, movement formation, high-control/cult analysis, group dynamics and social-boundary questions.",
+      "owner_paths": [
+        "knowledge/culture/",
+        "knowledge/world/ritual-mimesis-scapegoat-collective-ecology.json"
+      ],
+      "owned_file_count": 12,
+      "indexed_record_ids": [
+        "creative-systems-archive"
+      ],
+      "featured_holdings": [
+        {
+          "id": "creative-systems-archive",
+          "path": "knowledge/culture/creative-systems-archive.json",
+          "kind": "creative works and simulations archive",
+          "source": "core-index"
+        },
+        {
+          "id": "ritual-mimesis-scapegoat-collective-ecology",
+          "path": "knowledge/world/ritual-mimesis-scapegoat-collective-ecology.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-info-subculture",
+        "if-practice-culture"
+      ],
+      "public_surface_ids": [
+        "culture",
+        "politics"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Cult/high-control terminology requires stated criteria and must not become an unsupported label for disliked groups.",
+      "status": "active"
+    },
+    {
+      "room_id": "information-ecology",
+      "title": "Information Ecology & Memory",
+      "dwelling_id": "culture-information",
+      "purpose": "Own attention, information flow, repetition, memory, forgetting, transmission and public-discourse ecology.",
+      "owner_paths": [
+        "knowledge/culture/",
+        "knowledge/world/digital-memory-forgetting-restoration-atlas.json"
+      ],
+      "owned_file_count": 12,
+      "indexed_record_ids": [
+        "creative-systems-archive"
+      ],
+      "featured_holdings": [
+        {
+          "id": "creative-systems-archive",
+          "path": "knowledge/culture/creative-systems-archive.json",
+          "kind": "creative works and simulations archive",
+          "source": "core-index"
+        },
+        {
+          "id": "digital-memory-forgetting-restoration-atlas",
+          "path": "knowledge/world/digital-memory-forgetting-restoration-atlas.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-platform-info",
+        "if-info-subculture",
+        "if-literature-culture"
+      ],
+      "public_surface_ids": [
+        "culture",
+        "context"
+      ],
+      "related_collection_ids": [
+        "corporium",
+        "story-reservoir"
+      ],
+      "boundary": "Information flow and social interpretation remain distinguishable from factual claim status.",
+      "status": "active"
+    },
+    {
+      "room_id": "great-book-literature",
+      "title": "Great Book & Literature",
+      "dwelling_id": "works",
+      "purpose": "Own long-form authored literature, Great Book material, essays, stories, poems and literary versions.",
+      "owner_paths": [
+        "great-book/",
+        "knowledge/creative/"
+      ],
+      "owned_file_count": 184,
+      "indexed_record_ids": [
+        "suno-music-archive"
+      ],
+      "featured_holdings": [
+        {
+          "id": "suno-music-archive",
+          "path": "knowledge/creative/tim-dooley-suno-music-archive.json",
+          "kind": "Suno music catalogue and recovered lyric records",
+          "source": "core-index"
+        }
+      ],
+      "interface_ids": [
+        "if-canon-literature",
+        "if-literature-culture"
+      ],
+      "public_surface_ids": [
+        "works",
+        "story"
+      ],
+      "related_collection_ids": [
+        "corporium",
+        "story-reservoir"
+      ],
+      "boundary": "Creative/literary expression does not automatically become doctrine, biography or evidence.",
+      "status": "active"
+    },
+    {
+      "room_id": "music-sound",
+      "title": "Music & Sound",
+      "dwelling_id": "works",
+      "purpose": "Own songs, lyrics, sound works, music metadata and performance-oriented material.",
+      "owner_paths": [
+        "knowledge/creative/tim-dooley-suno-music-archive.json",
+        "works/"
+      ],
+      "owned_file_count": 2,
+      "indexed_record_ids": [
+        "suno-music-archive"
+      ],
+      "featured_holdings": [
+        {
+          "id": "suno-music-archive",
+          "path": "knowledge/creative/tim-dooley-suno-music-archive.json",
+          "kind": "Suno music catalogue and recovered lyric records",
+          "source": "core-index"
+        }
+      ],
+      "interface_ids": [
+        "if-music-platform"
+      ],
+      "public_surface_ids": [
+        "works"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Lyrics and performance language retain creative-work status unless separately attested as claims.",
+      "status": "active"
+    },
+    {
+      "room_id": "visual-art",
+      "title": "Visual Art & Symbolic Composition",
+      "dwelling_id": "works",
+      "purpose": "Own visual compositions, artwork concepts, image archives and symbolic visual systems as creative works.",
+      "owner_paths": [
+        "knowledge/creative/visual-art-symbolic-composition-archive.json",
+        "works/"
+      ],
+      "owned_file_count": 2,
+      "indexed_record_ids": [],
+      "featured_holdings": [
+        {
+          "id": "visual-art-symbolic-composition-archive",
+          "path": "knowledge/creative/visual-art-symbolic-composition-archive.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-art-symbolic"
+      ],
+      "public_surface_ids": [
+        "works"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Depiction is not evidence of the depicted claim.",
+      "status": "active"
+    },
+    {
+      "room_id": "games-simulations",
+      "title": "Games & Simulations",
+      "dwelling_id": "works",
+      "purpose": "Own games, playful systems, simulations and interactive creative artifacts.",
+      "owner_paths": [
+        "knowledge/culture/creative-systems-archive.json",
+        "works/"
+      ],
+      "owned_file_count": 2,
+      "indexed_record_ids": [
+        "creative-systems-archive"
+      ],
+      "featured_holdings": [
+        {
+          "id": "creative-systems-archive",
+          "path": "knowledge/culture/creative-systems-archive.json",
+          "kind": "creative works and simulations archive",
+          "source": "core-index"
+        }
+      ],
+      "interface_ids": [
+        "if-games-systems"
+      ],
+      "public_surface_ids": [
+        "works"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Simulation behavior is model output, not automatically a claim about the real world.",
+      "status": "active"
+    },
+    {
+      "room_id": "house-architecture",
+      "title": "House Architecture",
+      "dwelling_id": "research-lab",
+      "purpose": "Own active architecture research around Rooms, ownership, topology, interfaces, projections and migration before constitutional promotion.",
+      "owner_paths": [
+        "knowledge/research/potato-house-master/",
+        "knowledge/research/house-atlas-systems-theory/"
+      ],
+      "owned_file_count": 22,
+      "indexed_record_ids": [],
+      "featured_holdings": [],
+      "interface_ids": [
+        "if-house-systems"
+      ],
+      "public_surface_ids": [
+        "house",
+        "research-lab",
+        "paths"
+      ],
+      "related_collection_ids": [
+        "project-guides",
+        "indexes-routing"
+      ],
+      "boundary": "Research design remains provisional until promoted into constitutional/governance owners.",
+      "status": "active"
+    },
+    {
+      "room_id": "open-questions",
+      "title": "Open Questions & Hypotheses",
+      "dwelling_id": "research-lab",
+      "purpose": "Own unresolved questions, candidate explanations and explicit uncertainty queues.",
+      "owner_paths": [
+        "knowledge/indexes/faq-question-bank.json",
+        "knowledge/research/"
+      ],
+      "owned_file_count": 39,
+      "indexed_record_ids": [],
+      "featured_holdings": [
+        {
+          "id": "faq-question-bank",
+          "path": "knowledge/indexes/faq-question-bank.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-question-experiment"
+      ],
+      "public_surface_ids": [
+        "research-lab",
+        "questions"
+      ],
+      "related_collection_ids": [
+        "project-guides",
+        "indexes-routing"
+      ],
+      "boundary": "Indexing a hypothesis does not promote it to canon.",
+      "status": "active"
+    },
+    {
+      "room_id": "experiments-formalization",
+      "title": "Experiments & Formalization",
+      "dwelling_id": "research-lab",
+      "purpose": "Own experimental designs, candidate formal models, prototypes and test-oriented synthesis awaiting review.",
+      "owner_paths": [
+        "knowledge/research/",
+        "knowledge/science/"
+      ],
+      "owned_file_count": 164,
+      "indexed_record_ids": [
+        "science-master-index",
+        "tim-dooley-science-formalisms",
+        "equation-ledger",
+        "spudlight",
+        "model-testing-protocol",
+        "timic-unification-program",
+        "celestial-particles-wave-004"
+      ],
+      "featured_holdings": [
+        {
+          "id": "science-master-index",
+          "path": "knowledge/science/science-master-index.json",
+          "kind": "canonical science map",
+          "source": "core-index"
+        },
+        {
+          "id": "tim-dooley-science-formalisms",
+          "path": "knowledge/science/tim-dooley-science-formalisms.json",
+          "kind": "recovered/formalized Timic equations",
+          "source": "core-index"
+        },
+        {
+          "id": "equation-ledger",
+          "path": "knowledge/science/equation-ledger.json",
+          "kind": "equation provenance ledger",
+          "source": "core-index"
+        },
+        {
+          "id": "spudlight",
+          "path": "knowledge/science/spudlight-theory-and-equations.json",
+          "kind": "Spudlight source/reflection/information theory",
+          "source": "core-index"
+        },
+        {
+          "id": "model-testing-protocol",
+          "path": "knowledge/science/model-testing-protocol.json",
+          "kind": "scientific red-team and falsifiability protocol",
+          "source": "core-index"
+        },
+        {
+          "id": "timic-unification-program",
+          "path": "knowledge/science/timic-unification-program.json",
+          "kind": "cross-model research programme",
+          "source": "core-index"
+        }
+      ],
+      "interface_ids": [
+        "if-question-experiment",
+        "if-experiment-test"
+      ],
+      "public_surface_ids": [
+        "research-lab",
+        "science"
+      ],
+      "related_collection_ids": [],
+      "boundary": "Experimental/formal elegance is not evidence without appropriate observation or validation.",
+      "status": "active"
+    },
+    {
+      "room_id": "research-programmes",
+      "title": "Research Programmes",
+      "dwelling_id": "research-lab",
+      "purpose": "Own coordinated multi-Room research programmes, workstreams, source ledgers and promotion plans.",
+      "owner_paths": [
+        "knowledge/research/",
+        "data/research-frontier.json",
+        "knowledge/core/european-commons.json",
+        "knowledge/core/european-coupling-programme.json",
+        "knowledge/core/world-axis-ledger-tikkun-task-synthesis.json"
+      ],
+      "owned_file_count": 42,
+      "indexed_record_ids": [
+        "european-coupling-programme",
+        "european-commons"
+      ],
+      "featured_holdings": [
+        {
+          "id": "european-coupling-programme",
+          "path": "knowledge/core/european-coupling-programme.json",
+          "kind": "European interoperability/capability proposal",
+          "source": "core-index"
+        },
+        {
+          "id": "european-commons",
+          "path": "knowledge/core/european-commons.json",
+          "kind": "European cultural/digital commons proposal",
+          "source": "core-index"
+        },
+        {
+          "id": "research-frontier",
+          "path": "data/research-frontier.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        },
+        {
+          "id": "world-axis-ledger-tikkun-task-synthesis",
+          "path": "knowledge/core/world-axis-ledger-tikkun-task-synthesis.json",
+          "kind": "direct owner",
+          "source": "room-root"
+        }
+      ],
+      "interface_ids": [
+        "if-research-world"
+      ],
+      "public_surface_ids": [
+        "research-lab",
+        "north",
+        "world-systems"
+      ],
+      "related_collection_ids": [
+        "project-guides"
+      ],
+      "boundary": "A Programme coordinates work but does not steal fact ownership from participating Rooms.",
+      "status": "active"
+    }
+  ]
+}
