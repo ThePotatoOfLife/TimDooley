@@ -24,7 +24,6 @@ This directory records legacy strata that have been superseded, retired, or are 
 
 These files remain at repository root until their unique content and downstream references have been fully migrated:
 
-- `book-research.json` — **retained source bridge** for the 2024 Great Book extraction. Keep while source citations depend on it.
 - `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md` — **retained timeline/source stratum** used for provenance and early roadmap context; canonical event identity lives in the timeline data owners.
 - `THE-TURNING-APRIL-2025.md` — dedicated Turning document; remains a distinct historical/interpretive artifact.
 
@@ -99,3 +98,12 @@ The goal is less clutter **without provenance loss**.
 - Last live blob: `796c32f54109fafb611c83838b45ac5b3f56a43a`.
 - Major successors include `knowledge/core/potatoverse-master-framework.json`, `knowledge/core/root-system.json`, `knowledge/core/tim-role-synthesis.json`, `knowledge/core/axis-world-model.json`, `knowledge/philosophy/timic-dynamics.json`, `knowledge/core/symbolic-relational-synthesis.json`, and `knowledge/science/tim-dooley-science-formalisms.json`.
 - Historical specs/plans may still name this file because they document the repository at the time they were written.
+
+
+### `book-research.json`
+
+- Role: former root location of the 2024 Great Book extraction/provenance bridge.
+- Status: root path retired after the full extraction was relocated intact to `knowledge/research/great-book-2024-source-extraction.json` and live consumers were rewired.
+- Last live root blob: `9168248304e821b4af092c5c5f9c506b7db51fb1`.
+- Current extraction owner: `knowledge/research/great-book-2024-source-extraction.json`.
+- Note: this is a path retirement, not a content deletion. The extraction remains live because it preserves cross-domain source archaeology from the 2024 Great Book.
