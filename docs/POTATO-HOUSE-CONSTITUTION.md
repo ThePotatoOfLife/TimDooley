@@ -297,6 +297,21 @@ Every Room must declare:
 
 A Room can contain nested Boxes/subcontexts. Nested containment does not create new canon automatically.
 
+### Nested Room law
+
+A **nested Room** is a bounded subcontext inside one of the ten canonical top-level Rooms. It may have its own vocabulary, specialist task, local interfaces, public Views and validators when those distinctions improve clarity or failure containment.
+
+Nested Rooms obey these laws:
+
+- they inherit fact-family ownership from their canonical parent Room unless an explicit constitutional revision creates a new top-level owner;
+- they may specialize scope but may not create shadow canon for material already owned elsewhere;
+- they may connect laterally to nested Rooms under other parents through typed interfaces;
+- their durable topological position is relational: parent containment, House band, primary House directions, cross-cutting roles, typed adjacency and interfaces;
+- a screen coordinate, diagram position, URL path or visual cluster is a replaceable View and never determines ontology;
+- if a candidate subcontext lacks distinct semantics, tasks or boundary rules, model it as a Path, View, Programme, Collection or topic instead of a nested Room.
+
+The canonical nested-Room registry is `data/house/subrooms.json`; its relational embedding contract is `data/house/topology.json`.
+
 ---
 
 ## 9. Multi-graph law
