@@ -1,6 +1,6 @@
 {
   "id": "axis-flow-contract",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "updated": "2026-09-18",
   "status": "active project-symbolic flow contract",
   "purpose": "Define the bidirectional flow grammar of the D1-D11 Axis so the Atlas can place residue, obligations, recurrence, repair, growth, transmission and integration consistently without confusing project symbolism with empirical physics.",
@@ -1031,18 +1031,32 @@
     "concept_trace_rule": "Concept traces are entry points into relation states, not claims that a symbol is permanently identical with one state. Operators such as Cross, Wide Road and Repair describe movement; roles such as Gardener describe a return function; domains such as Plane and Heaven describe context.",
     "concept_groups": [
       {
+        "id": "conditions",
+        "label": "Conditions & latency",
+        "concepts": [
+          "mud",
+          "burial",
+          "dormancy",
+          "eye",
+          "sprout",
+          "soil"
+        ]
+      },
+      {
         "id": "world",
         "label": "World & fork",
         "concepts": [
           "plane",
           "cross",
-          "knowledge"
+          "knowledge",
+          "ring"
         ]
       },
       {
         "id": "roots",
         "label": "Roots & Strife",
         "concepts": [
+          "ash",
           "roots-of-ash",
           "roots-of-strife",
           "tree-of-strife",
@@ -1055,7 +1069,9 @@
         "label": "Threshold & change",
         "concepts": [
           "door",
+          "wound",
           "repair",
+          "forge",
           "spiral",
           "ladder",
           "living-root"
@@ -1068,17 +1084,21 @@
           "tree-of-life",
           "garden",
           "rooms",
-          "fruit"
+          "mature",
+          "fruit",
+          "seed"
         ]
       },
       {
         "id": "return",
         "label": "Integration & return",
         "concepts": [
+          "mountain",
           "heaven",
           "crown",
           "north",
-          "gardener"
+          "gardener",
+          "return"
         ]
       }
     ]
