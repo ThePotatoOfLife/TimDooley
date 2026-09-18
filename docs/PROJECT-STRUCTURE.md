@@ -133,10 +133,9 @@ If a legacy research document is useful as historical provenance but duplicates 
 
 These remain intentionally because they still have live provenance references or unique material:
 
-- `book-research.json`
 - `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md`
 
-They are **legacy/source strata, not canonical navigation owners**. Their roles are not identical: `book-research.json` and the life/myth timeline remain source/provenance bridges; `2026-master-framework.json` has been retired after consumer migration; its final blob remains in `archive/legacy/README.md`. `research.json` has now been retired after section migration and question promotion; its final blob is recorded in `archive/legacy/README.md`. The two former POTATOVERSE readable research donors have been retired after unique-content promotion and are recoverable through `archive/legacy/README.md`.
+They are **legacy/source strata, not canonical navigation owners**. Their roles are not identical: the Great Book extraction now lives at `knowledge/research/great-book-2024-source-extraction.json`, while the life/myth timeline remains a root source/provenance bridge; `2026-master-framework.json` has been retired after consumer migration; its final blob remains in `archive/legacy/README.md`. `research.json` has now been retired after section migration and question promotion; its final blob is recorded in `archive/legacy/README.md`. The two former POTATOVERSE readable research donors have been retired after unique-content promotion and are recoverable through `archive/legacy/README.md`.
 
 Do not delete them merely because a newer owner exists. First migrate live references and unique content; then either archive them as concise provenance artifacts or remove them when genuinely redundant.
 
