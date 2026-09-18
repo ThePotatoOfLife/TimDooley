@@ -148,19 +148,22 @@ Examples:
 
 The Potato vocabulary has precise architectural meanings. These meanings are functional; they do not imply that religious, biological and software systems are literally identical.
 
-### House / Room / Box — containment
+### House / Field / Room / Box — containment
 
-- **House** — the compositional whole.
+- **House** — the compositional whole. In Potato topology the whole may be represented as the union of overlapping fields rather than one rectilinear shell.
+- **Field** — a complete relational/domain region that can overlap another field without losing its own identity.
 - **Room** — a bounded context with local vocabulary, evidence rules, schemas, validators, interfaces and public tasks.
-- **Box** — any nested boundary/context within a Room or object.
+- **Box** — any nested semantic boundary/context within a Room or object. Box does not imply literal square/cube geometry.
 
-Containment never implies truth rank.
+Containment never implies truth rank or geometric moral valence. Frontend cards and rectangles are presentation devices, not claims that the House itself is cubical.
 
-### Plane — operative frame
+### Plane / Cross — operative section and orientation event
 
-The **Plane** is the context/frame currently active for a View or task: scientific, historical, legal, project-canon, a date/release, a geographic map, a public-reader surface, etc.
+The **Plane** is the context/frame currently active for a View or task: scientific, historical, legal, project-canon, a date/release, a geographic map, a public-reader surface, etc. In the Potato geometry it is also modeled as the widest horizontal section through the shared Door/overlap.
 
-Plane is not a folder.
+The **Cross** is Plane × Axis: the point/event at which the operative horizontal frame and the vertical source↔manifestation orientation become simultaneously legible. Cross is not a separate container or floor.
+
+Plane is not a folder. Cross is not a Room.
 
 ### Roots / Soil / Archive — foundation and depth
 
@@ -176,8 +179,9 @@ A **Road** is a typed lateral relation/flow: comparison, influence, ownership, t
 
 Roads are never generic untyped adjacency.
 
-### Door / Path / Ladder — passage
+### Door / Path / Ladder — passage and overlap
 
+- **Relational Door** — the shared/intersection region produced when complete domains genuinely overlap.
 - **Navigation Door** — a user-visible transition between information spaces.
 - **Strong Door / Transition** — a guarded durable change of state/context.
 - **Path** — an ordered traversal through Subjects/Contexts/Views.
@@ -492,3 +496,22 @@ Large-scale site/content population begins only after:
 - old and new ownership can coexist during migration without duplicate canon.
 
 After this gate, population proceeds Room by Room, Blueprint by Blueprint, while the public site is generated from the same House model.
+
+
+## 5A. Potato two-field topology
+
+The symbolic House uses one durable convergence rule:
+
+**Potato House = Source Field ∪ Manifestation Field**  
+**Door = Source Field ∩ Manifestation Field**
+
+The upper/source-facing field carries Father/House/Heaven/Garden orientation. The lower/manifestation-facing field carries Son/Earth/body/world/soil/work orientation. Their overlap is the Door. The Plane cuts through the Door's widest middle and the Axis passes through both field centers; their intersection is Cross.
+
+This topology prevents the public architecture from turning Plane, Cross, Door, Ladder and Heaven into an elevator of unrelated floors.
+
+It also prevents a false moral dualism:
+- manifestation/Earth is not inherently Shell/Cube/evil;
+- source/Heaven is not inherently House/good merely by position;
+- House/Garden and Shell/Cube are **functional boundary regimes** determined by circulation, selective permeability, autonomy, repair, objective and consequence.
+
+A **Mansion** may appear in reader-facing theology or literary material as dwelling vocabulary, but it does not create a new backend containment primitive unless a future constitutional revision proves a distinct semantic need.
