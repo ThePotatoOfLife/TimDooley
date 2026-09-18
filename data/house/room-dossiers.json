@@ -1,5 +1,5 @@
 {
-  "version": "2.5.0",
+  "version": "2.6.0",
   "updated": "2026-09-18",
   "authority": "house-room-dossiers",
   "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
@@ -5845,8 +5845,13 @@
       ],
       "epistemic_boundary": "Research design remains provisional until promoted into constitutional/governance owners.",
       "knowledge_holdings": {
-        "primary_file_count": 13,
+        "primary_file_count": 14,
         "featured": [
+          {
+            "id": "route-case-matrix-wave-001",
+            "path": "data/house/route-case-matrix-wave-001.json",
+            "kind": "evidence-aware route case matrix"
+          },
           {
             "id": "house-atlas-systems-theory-2026-09-13",
             "path": "knowledge/research/house-atlas-systems-theory-2026-09-13.json",
@@ -6040,6 +6045,12 @@
         "shared_contract": "data/blueprints/foundation-blueprint.json",
         "timeline": "data/house/foundation-timeline-wave-001.json",
         "test": "Identify F0, reproduction mechanism, branches/refoundations, and preserved invariants without taking ownership away from the Room."
+      },
+      "route_case_lens": {
+        "question": "Given the same starting material, what operator changes what the relation reproduces—and what evidence would distinguish the route?",
+        "authority": "data/house/route-case-matrix-wave-001.json",
+        "guard": "Life/Strife/Repair/Return describe proposed transition mechanisms, not identities or moral verdicts.",
+        "required_test": "Every case needs counterevidence/falsifier and a World-level return measure."
       }
     },
     {
