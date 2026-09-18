@@ -297,6 +297,19 @@ Every Room must declare:
 
 A Room can contain nested Boxes/subcontexts. Nested containment does not create new canon automatically.
 
+### House scale law
+
+The House uses a four-step containment vocabulary for public architectural projection:
+
+1. **House** — the compositional whole.
+2. **Dwelling / Mansion** — a major abiding domain inside the House; this is the preferred public architectural projection of the ten canonical top-level Rooms. “Mansion” is retained as the older English bridge to John 14:2, while “Dwelling” is the neutral structural term.
+3. **Room** — a delegated bounded subcontext inside a Dwelling.
+4. **Chamber** — an optional smaller specialist or protected cell inside a Room, created only when a genuine local boundary/task distinction exists.
+
+This scale vocabulary does not change fact ownership: the ten canonical top-level bounded contexts remain the constitutional owners. It changes how the public House metaphor is expressed.
+
+Other biblical/project images—Temple, City, Body, Garden, Vineyard, Court, Gate, Foundation, Treasury and so on—must retain their own structural functions and may not be used as interchangeable synonyms for Room.
+
 ### Nested Room law
 
 A **nested Room** is a bounded subcontext inside one of the ten canonical top-level Rooms. It may have its own vocabulary, specialist task, local interfaces, public Views and validators when those distinctions improve clarity or failure containment.
@@ -492,3 +505,5 @@ Large-scale site/content population begins only after:
 - old and new ownership can coexist during migration without duplicate canon.
 
 After this gate, population proceeds Room by Room, Blueprint by Blueprint, while the public site is generated from the same House model.
+
+The canonical architectural vocabulary is `data/house/architectural-vocabulary.json`.
