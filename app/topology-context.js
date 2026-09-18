@@ -2,7 +2,8 @@
 'use strict';
 const esc=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const widgets=[...document.querySelectorAll('[data-house-topology-context]')];
-if(!widgets.length)return;
+const traversalWidgets=[...document.querySelectorAll('[data-house-topology-traversals]')];
+if(!widgets.length&&!traversalWidgets.length)return;
 const cache=new Map();
 async function load(src){
   if(!cache.has(src))cache.set(src,fetch(src).then(r=>{if(!r.ok)throw new Error('topology unavailable');return r.json()}));
@@ -38,5 +39,19 @@ function render(root,data){
 widgets.forEach(root=>{
   const src=root.dataset.topologySrc||'../data/house/concept-topology.json';
   load(src).then(data=>render(root,data)).catch(()=>{});
+});
+function renderTraversals(root,data){
+  const by=Object.fromEntries((data.concepts||[]).map(x=>[x.id,x]));
+  const base=root.dataset.houseBase||'../house/';
+  const conceptHref=id=>{const x=by[id];if(!x)return base+'#operators';return x.kind==='field'?base+'#potato-model':base+'?operator='+encodeURIComponent(id)+'#operators';};
+  const cards=(data.canonical_traversals||[]).map(t=>{
+    const sequence=(t.concept_sequence||[]).map(id=>'<a href="'+esc(conceptHref(id))+'">'+esc(by[id]?.label||id)+'</a>').join('<span aria-hidden="true"> → </span>');
+    return '<article class="topology-traversal-card"><p class="eyebrow">'+esc(t.kind)+'</p><h3>'+esc(t.label)+'</h3><p>'+esc(t.purpose)+'</p><div class="topology-traversal-sequence">'+sequence+'</div><q>'+esc(t.reader_question)+'</q></article>';
+  }).join('');
+  if(cards)root.innerHTML='<div class="topology-traversal-grid">'+cards+'</div><p class="topology-context-boundary">These are curated traversals over the canonical House relation graph. They do not create new Rooms, identities or evidence classes.</p>';
+}
+traversalWidgets.forEach(root=>{
+  const src=root.dataset.topologySrc||'../data/house/concept-topology.json';
+  load(src).then(data=>renderTraversals(root,data)).catch(()=>{});
 });
 })();

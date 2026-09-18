@@ -231,8 +231,27 @@ def validate_concept_topology(errors,rooms,surfaces):
         ('fruit','seed','returns-as'),
     }
     actual_relations={(x.get('from'),x.get('to'),x.get('type')) for x in relation_rows}
+    relation_by_id={x.get('id'):x for x in relation_rows if x.get('id')}
     missing_relations=sorted(required_relations-actual_relations)
     if missing_relations: errors.append('concept topology missing core relations: '+', '.join(map(str,missing_relations)))
+
+    traversal_ids=[]; traversal_by={}
+    for row in data.get('canonical_traversals',[]):
+        if not isinstance(row,dict): continue
+        tid=row.get('id'); traversal_ids.append(tid); traversal_by[tid]=row
+        sequence=row.get('concept_sequence',[])
+        for cid in sequence:
+            if cid not in by: errors.append(f'traversal {tid} unknown concept {cid}')
+        relation_ids=row.get('relation_ids',[])
+        for rid in relation_ids:
+            if rid not in relation_by_id: errors.append(f'traversal {tid} unknown relation {rid}')
+        used=set()
+        for rid in relation_ids:
+            rel=relation_by_id.get(rid,{})
+            used.update((rel.get('from'),rel.get('to')))
+        missing_nodes=sorted({cid for cid in sequence if cid not in used})
+        if missing_nodes: errors.append(f'traversal {tid} sequence concepts not covered by relations: {missing_nodes}')
+    if len(traversal_ids)!=len(set(traversal_ids)): errors.append('canonical traversal ids must be unique')
 
     fixture=load(TOPOLOGY_FIXTURE,errors)
     if fixture:
@@ -249,15 +268,25 @@ def validate_concept_topology(errors,rooms,surfaces):
             row=by.get(cid,{})
             hay=' '.join(str(row.get(k,'')) for k in ('operation','boundary')).casefold()
             if token and token not in hay: errors.append(f'topology fixture textual invariant failed: {cid} must contain {inv.get("contains")!r}')
+        for tid in fixture.get('required_traversals',[]):
+            if tid not in traversal_by: errors.append(f'topology fixture missing required traversal: {tid}')
 
     if not TOPOLOGY_CONTEXT_JS.is_file():
         errors.append('missing shared topology context runtime: app/topology-context.js')
     else:
         runtime=TOPOLOGY_CONTEXT_JS.read_text(encoding='utf-8',errors='replace')
-        for marker in ('data-house-topology-context','data-house-concepts','relation_types','relations','slice(0,6)','House context'):
+        for marker in ('data-house-topology-context','data-house-concepts','data-house-topology-traversals','canonical_traversals','relation_types','relations','slice(0,6)','House context'):
             if marker not in runtime: errors.append(f'topology context runtime missing marker: {marker}')
         if 'document.querySelectorAll' not in runtime or 'fetch(src)' not in runtime:
             errors.append('topology context runtime must progressively enhance declared page regions from canonical topology data')
+
+    paths_page=ROOT/'paths/index.html'
+    if not paths_page.is_file():
+        errors.append('missing Paths reader for topology traversals')
+    else:
+        text=paths_page.read_text(encoding='utf-8',errors='replace')
+        for marker in ('data-house-topology-traversals','../app/topology-context.js','../house/#operators','Topology traversals'):
+            if marker not in text: errors.append(f'paths/index.html missing topology traversal marker: {marker}')
 
     for page,expected in TOPOLOGY_CONTEXT_PAGES.items():
         if not page.is_file():
