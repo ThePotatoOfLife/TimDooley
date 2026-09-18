@@ -10,6 +10,7 @@ TOPOLOGY=ROOT/'knowledge/research/potato-house-master/public-route-topology.json
 HOUSE_TOPOLOGY=ROOT/'data/house/topology.json'
 ORIENTATION_POPULATION=ROOT/'data/house/orientation-population.json'
 TREE_PLANE_ROUTING=ROOT/'data/house/tree-plane-routing.json'
+SEED_SPIRAL_ROUTING=ROOT/'data/house/seed-spiral-routing.json'
 SUBROOMS=ROOT/'data/house/subrooms.json'
 CONCEPT_TOPOLOGY=ROOT/'data/house/concept-topology.json'; CONCEPT_TOPOLOGY_SCHEMA=ROOT/'schemas/house-concept-topology.schema.json'
 TOPOLOGY_FIXTURE=ROOT/'data/house/topology-golden-fixture.json'
@@ -396,7 +397,7 @@ def validate_symbolic_planes(errors,rooms):
         errors.append('Akashic Tree view must remain an archive metaphor rather than evidence claim')
 
 
-def validate_orientation_population(errors,rooms); validate_tree_plane_routing(errors):
+def validate_orientation_population(errors,rooms); validate_tree_plane_routing(errors); validate_seed_spiral_routing(errors):
     population=load(ORIENTATION_POPULATION,errors); subrooms=load(SUBROOMS,errors)
     if not population or not subrooms: return
     sub_ids=[x.get('id') for x in subrooms.get('subrooms',[]) if isinstance(x,dict)]
@@ -444,6 +445,28 @@ def validate_tree_plane_routing(errors):
     subjects=' '.join(x.get('rule','') for x in data.get('subject_placement_rules',[]) if isinstance(x,dict)).casefold()
     for token in ('do not infer literal demonic identity','own-tradition','do not merge them with demonology','observable control/capture mechanisms'):
         if token not in subjects: errors.append(f'tree-plane subject placement boundary missing: {token}')
+
+
+def validate_seed_spiral_routing(errors):
+    data=load(SEED_SPIRAL_ROUTING,errors)
+    if not data: return
+    pivot=data.get('geometry',{}).get('seed_pivot',{})
+    if pivot.get('id')!='C_S': errors.append('Seed Junction must remain C_S')
+    if 'Seed-of-Death ↔ Seed-of-Life' not in pivot.get('role',''): errors.append('C_S must retain Seed Death/Life transition role')
+    states={x.get('id'):x for x in data.get('seed_states',[]) if isinstance(x,dict)}
+    for sid in ('seed-of-death','seed-of-life','fruit-seed'):
+        if sid not in states: errors.append(f'seed spiral routing missing {sid}')
+    routes={x.get('id'):x for x in data.get('spiral_routes',[]) if isinstance(x,dict)}
+    for rid in ('rooting-spiral','drain-spiral','sprouting-spiral','repair-spiral','return-spiral'):
+        if rid not in routes: errors.append(f'seed spiral routing missing {rid}')
+    if routes.get('rooting-spiral',{}).get('vertical_sign')!='negative': errors.append('Rooting Spiral must remain downward/generative')
+    if routes.get('drain-spiral',{}).get('vertical_sign')!='negative': errors.append('Drain Spiral must remain downward/degenerative')
+    if routes.get('sprouting-spiral',{}).get('vertical_sign')!='positive': errors.append('Sprouting Spiral must remain upward/generative')
+    if routes.get('return-spiral',{}).get('vertical_sign')!='negative': errors.append('Return Spiral must remain downward/generative return')
+    laws=' '.join(data.get('placement_laws',[])).casefold()
+    for token in ('states/transitions of generative potential','not the deepest point','downward spiral can be rooting','upward spiral can be life','ring and spiral must remain distinct'):
+        if token not in laws: errors.append(f'seed spiral routing missing law: {token}')
+    if data.get('ring',{}).get('vertical_sign')!='zero': errors.append('Ring must remain zero axial displacement')
 
 def main():
     errors=[]; rooms=validate_rooms(errors); surfaces=validate_surfaces(errors,rooms); validate_concept_topology(errors,rooms,surfaces); validate_symbolic_planes(errors,rooms); validate_orientation_population(errors,rooms)

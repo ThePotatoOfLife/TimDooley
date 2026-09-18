@@ -2,7 +2,7 @@
   "id": "root-system",
   "title": "Potato of Life Root System",
   "kind": "foundational ontology and branching skeleton",
-  "version": "4.5.0",
+  "version": "4.6.0",
   "updated": "2026-09-18",
   "aliases": [
     "Potato of Life skeleton",
@@ -261,6 +261,13 @@
         "interpretation",
         "comparative"
       ]
+    },
+    "seed_spiral_routes": {
+      "text": "C_S, the Son-center/lower Door tip, is the strongest geometric Seed Junction. Seed of Death and Seed of Life are best treated as potentially sequential states of one generative object: burial/compression can lead to dormancy, decay, living root or sprout. Spiral is recurrence with axial displacement, but vertical sign alone does not determine valence. Downward motion has at least three distinct routes: generative Rooting Spiral (C_S→Below/Soil/Living Root), degenerative Drain/Strife Spiral (unresolved event→Ash→Roots of Strife→Wide Road→Swamp/Drain), and generative Fruit/Return Spiral (Garden/Fruit→Seed→World/service→planting). Upward Sprouting/Life Spiral runs Living Root/Seed of Life→C_S→Door→Plane→Spiral Ladder→Tree of Life→Garden/Fruit. Repair reverses a downward Strife route through evidence, acknowledgment, Door and Living Root. Ring remains zero-net-change recurrence.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
     }
   },
   "relationships": [
@@ -298,6 +305,11 @@
       "target": "axis-depths",
       "type": "navigation-projection",
       "description": "D1–D11 projects the same root system as navigable vertical stages and pathway grammar."
+    },
+    {
+      "target": "seed-spiral-routing",
+      "type": "navigation-contract",
+      "description": "Canonical routing for Seed of Death/Life, Rooting, Drain, Sprouting, Repair, Return and Ring."
     }
   ],
   "retrieval": {
@@ -339,7 +351,12 @@
       "Plane inside Door",
       "Cross inside Door",
       "triune Potato",
-      "Father Son Spirit"
+      "Father Son Spirit",
+      "Rooting Spiral",
+      "Drain Spiral",
+      "Sprouting Spiral",
+      "Return Spiral",
+      "Seed Junction"
     ],
     "questions": [
       "Where exactly are Father and Son in the Vesica?",
