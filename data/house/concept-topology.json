@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-18",
   "authority": "house-semantic-topology",
   "purpose": "Machine-readable topology assignments for the small set of operators that organize the Potato House. These annotations drive projection and navigation; they do not replace canonical concept owners or evidence classes.",
@@ -873,6 +873,98 @@
       "to": "swamp",
       "type": "counter-regime",
       "description": "Garden models viable generativity; Swamp models unresolved entanglement and feedback without healthy exit."
+    }
+  ],
+  "canonical_traversals": [
+    {
+      "id": "growth-return-cycle",
+      "label": "Growth & Return",
+      "kind": "cycle",
+      "concept_sequence": [
+        "seed",
+        "root",
+        "tree",
+        "fruit",
+        "seed"
+      ],
+      "relation_ids": [
+        "rel-seed-root",
+        "rel-root-tree",
+        "rel-tree-fruit",
+        "rel-fruit-seed"
+      ],
+      "purpose": "Show generativity as a cycle: stored possibility develops support, differentiates into visible output, and returns transferable capacity forward.",
+      "reader_question": "What has to be preserved so the output can become future capacity rather than terminal consumption?"
+    },
+    {
+      "id": "recognition-circuit",
+      "label": "Recognition",
+      "kind": "reciprocal",
+      "concept_sequence": [
+        "face",
+        "eye",
+        "face"
+      ],
+      "relation_ids": [
+        "rel-face-eye",
+        "rel-eye-face"
+      ],
+      "purpose": "Show recognition as a two-sided relation between presentation and perception rather than a property owned by one side alone.",
+      "reader_question": "What is being presented, what is actually perceived, and where can those two diverge?"
+    },
+    {
+      "id": "shared-door-bridge",
+      "label": "Shared Door",
+      "kind": "bridge",
+      "concept_sequence": [
+        "source-field",
+        "door",
+        "manifestation-field"
+      ],
+      "relation_ids": [
+        "rel-door-source",
+        "rel-door-manifestation"
+      ],
+      "purpose": "Show Door as the genuine shared region between two complete fields, not a third object inserted between them.",
+      "reader_question": "What can be shared without collapsing the distinction between source and manifestation?"
+    },
+    {
+      "id": "orientation-crossing",
+      "label": "Orientation at the Cross",
+      "kind": "coordinate",
+      "concept_sequence": [
+        "plane",
+        "cross",
+        "axis",
+        "door"
+      ],
+      "relation_ids": [
+        "rel-cross-plane",
+        "rel-cross-axis",
+        "rel-cross-door",
+        "rel-plane-door"
+      ],
+      "purpose": "Show Cross as a derived orientation event inside Door where world-facing Plane and vertical Axis become simultaneously legible.",
+      "reader_question": "Which frame is active, what orientation cuts through it, and what changes when both coordinates are visible?"
+    },
+    {
+      "id": "boundary-regime-test",
+      "label": "Boundary Regime Test",
+      "kind": "contrast",
+      "concept_sequence": [
+        "garden",
+        "door",
+        "shell-cube",
+        "swamp"
+      ],
+      "relation_ids": [
+        "rel-garden-door",
+        "rel-shell-door",
+        "rel-garden-shell",
+        "rel-garden-swamp"
+      ],
+      "purpose": "Test boundaries by function: whether they preserve viable passage, repair and autonomy or produce capture, opacity and unresolved entanglement.",
+      "reader_question": "Does this boundary help differentiated life circulate and grow, or make exit and repair progressively harder?"
     }
   ]
 }
