@@ -1,5 +1,5 @@
 {
-  "version": "1.6.0",
+  "version": "1.7.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -8,6 +8,11 @@
       "concern": "project semantic center / center-out importance",
       "owner": "data/house/project-center.json",
       "rule": "Defines the Potato of Life as semantic center, distinguishes it from Axis as spatial center, and governs center-out importance rings and promotion."
+    },
+    {
+      "concern": "whole-project synthesis / Room-to-center pairings",
+      "owner": "data/house/project-synthesis.json",
+      "rule": "Binds development waves, core operator pairings, Room contributions, living systems, tests and public composition without replacing canonical owners."
     },
     {
       "concern": "cross-cutting reader lenses",
@@ -92,6 +97,7 @@
   ],
   "resolver_order": [
     "0. Ask how the subject relates to the Potato of Life project center; centrality is semantic/structural, not file-volume or novelty.",
+    "0.5. Use project-synthesis to pair the subject with its center contribution, Room owner, handoffs, tests and public route before adding another registry.",
     "1. Identify the subject's canonical Room owner.",
     "2. Identify own-tradition / historical source context before project comparison.",
     "3. Add plane projection: Heaven, World, Below or crosscutting.",
@@ -116,6 +122,7 @@
     "ring": "recurrence with zero net displacement"
   },
   "anti_duplication_rules": [
+    "Prefer extending a Room dossier or project-synthesis pairing over creating another master map.",
     "Comparative and external subjects should point inward to project-native nodes rather than becoming parallel centers.",
     "Do not create a new registry when an existing authority can be extended cleanly.",
     "Do not copy detailed route sequences into topology.json when tree-plane-routing or seed-spiral-routing owns them.",
