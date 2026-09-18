@@ -1,7 +1,7 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "updated": "2026-09-18",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
@@ -284,14 +284,20 @@
         "path": "POTATOVERSE-ALTERNATIVE-RESEARCH.md",
         "action": "deleted",
         "reason": "readable historical donor fully diffed and externally re-sourced; durable biology/human-ecology content promoted; blob preserved in legacy registry"
+      },
+      {
+        "path": "research.json",
+        "action": "delete root copy",
+        "reason": "all substantive sections promoted/routed, open questions moved to current frontier, live dependencies drained",
+        "last_live_blob": "353678889ad4b46890319c812951ae494cf1e791"
       }
     ],
     "root_source_strata": {
       "research.json": {
-        "state": "closed-historical-donor",
-        "role": "fully section-mapped mixed research donor",
-        "authority": "provenance only",
-        "next": "rewire remaining live source references, then retire root copy"
+        "state": "retired",
+        "role": "former mixed Great Book/comparative research donor",
+        "authority": "none",
+        "provenance": "archive/legacy/README.md + blob 353678889ad4b46890319c812951ae494cf1e791"
       },
       "book-research.json": {
         "state": "retained-source-bridge",
