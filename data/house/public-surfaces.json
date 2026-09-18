@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0",
+  "version": "1.5.0",
   "updated": "2026-09-18",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
@@ -17,7 +17,8 @@
     "questions",
     "index-a-z",
     "context",
-    "rooms"
+    "rooms",
+    "house"
   ],
   "surfaces": [
     {
@@ -584,6 +585,73 @@
       "visibility": "specialist",
       "primary_navigation": false,
       "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "house",
+      "route": "/house/",
+      "canonical_route": "/house/",
+      "surface_type": "guide",
+      "title": "Potato House",
+      "primary_parent": "home",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "life-body",
+      "route": "/life-body/",
+      "canonical_route": "/life-body/",
+      "surface_type": "guide",
+      "title": "Life & Body",
+      "primary_parent": "science",
+      "primary_room_ids": [
+        "life-body",
+        "science-formal-models",
+        "archive-sources",
+        "potatoverse-canon"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "research-lab",
+      "route": "/research-lab/",
+      "canonical_route": "/research-lab/",
+      "surface_type": "guide",
+      "title": "Research Lab",
+      "primary_parent": "home",
+      "primary_room_ids": [
+        "research-lab",
+        "archive-sources",
+        "science-formal-models",
+        "potatoverse-canon",
+        "world-systems"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": false,
       "knowledge_owner": false,
       "legacy_routes": []
     }
