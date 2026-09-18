@@ -1,1 +1,514 @@
-{"version":"1.3.0","updated":"2026-09-16","purpose":"Route-topology bridge for active public surfaces; navigation/migration classification only, not substantive knowledge ownership.","room_registry":"data/house/rooms.json","public_surface_registry":"data/house/public-surfaces.json","records":[{"surface_id":"home","surface_type":"home","canonical_route":"/","primary_hub_id":null,"room_ids":[],"specialist_view":false,"migration_status":"current","compatibility_routes":["/learn/"]},{"surface_id":"tim","surface_type":"hub","canonical_route":"/tim-dooley/","primary_hub_id":"tim","room_ids":["potatoverse-canon","time-history","archive-sources","works","culture-information"],"specialist_view":false,"migration_status":"current","compatibility_routes":[]},{"surface_id":"religion","surface_type":"hub","canonical_route":"/religion/","primary_hub_id":"religion","room_ids":["potatoverse-canon","traditions-texts","time-history","archive-sources"],"specialist_view":false,"migration_status":"current","compatibility_routes":[]},{"surface_id":"philosophy","surface_type":"hub","canonical_route":"/philosophy/","primary_hub_id":"philosophy","room_ids":["potatoverse-canon","traditions-texts","research-lab"],"specialist_view":false,"migration_status":"current","compatibility_routes":[]},{"surface_id":"science","surface_type":"hub","canonical_route":"/science/","primary_hub_id":"science","room_ids":["science-formal-models","life-body","archive-sources","research-lab"],"specialist_view":false,"migration_status":"current","compatibility_routes":[]},{"surface_id":"world","surface_type":"hub","canonical_route":"/world/","primary_hub_id":"world","room_ids":["world-systems","time-history","archive-sources","culture-information","research-lab"],"specialist_view":false,"migration_status":"current","compatibility_routes":[]},{"surface_id":"timeline","surface_type":"explorer","canonical_route":"/timeline/","primary_hub_id":null,"room_ids":["time-history","archive-sources"],"specialist_view":true,"migration_status":"current","compatibility_routes":[]},{"surface_id":"explore","surface_type":"explorer","canonical_route":"/explore/","primary_hub_id":null,"room_ids":["potatoverse-canon","archive-sources","time-history","traditions-texts","science-formal-models","life-body","world-systems","culture-information","works","research-lab"],"specialist_view":true,"migration_status":"current","compatibility_routes":[]},{"surface_id":"sources","surface_type":"evidence","canonical_route":"/context/source-authority/","primary_hub_id":null,"room_ids":["archive-sources"],"specialist_view":true,"migration_status":"current","compatibility_routes":[]},{"surface_id":"questions","surface_type":"explorer","canonical_route":"/questions/","primary_hub_id":null,"room_ids":["potatoverse-canon","archive-sources","time-history","traditions-texts","science-formal-models","life-body","world-systems","culture-information","works","research-lab"],"specialist_view":true,"migration_status":"current","compatibility_routes":[]},{"surface_id":"index-a-z","surface_type":"explorer","canonical_route":"/index-a-z/","primary_hub_id":null,"room_ids":["potatoverse-canon","archive-sources","time-history","traditions-texts","science-formal-models","life-body","world-systems","culture-information","works","research-lab"],"specialist_view":true,"migration_status":"current","compatibility_routes":[]},{"surface_id":"context","surface_type":"guide","canonical_route":"/context/","primary_hub_id":null,"room_ids":["archive-sources","potatoverse-canon","time-history","traditions-texts","science-formal-models","life-body","world-systems","culture-information","works","research-lab"],"specialist_view":false,"migration_status":"current","compatibility_routes":[]},{"surface_id":"story","surface_type":"guide","canonical_route":"/tim-dooley/story/","primary_hub_id":"tim","room_ids":["potatoverse-canon","time-history","archive-sources","works","culture-information"],"specialist_view":true,"migration_status":"current","compatibility_routes":[]},{"surface_id":"collection","surface_type":"guide","canonical_route":"/corporium/","primary_hub_id":"tim","room_ids":["potatoverse-canon","culture-information","life-body","science-formal-models","archive-sources"],"specialist_view":true,"migration_status":"current","compatibility_routes":[]},{"surface_id":"works","surface_type":"guide","canonical_route":"/works/","primary_hub_id":"tim","room_ids":["works","culture-information","archive-sources","time-history"],"specialist_view":true,"migration_status":"current","compatibility_routes":[]},{"surface_id":"interpretive-justice","surface_type":"guide","canonical_route":"/philosophy/interpretive-justice.html","primary_hub_id":"philosophy","room_ids":["potatoverse-canon","archive-sources","culture-information","research-lab"],"specialist_view":true,"migration_status":"current","compatibility_routes":[]},{"surface_id":"world-map","surface_type":"explorer","canonical_route":"/world-map/","primary_hub_id":"world","room_ids":["world-systems","time-history","archive-sources"],"specialist_view":true,"migration_status":"current","compatibility_routes":["/world-map/3d.html"]},{"surface_id":"politics","surface_type":"guide","canonical_route":"/politics/","primary_hub_id":"world","room_ids":["world-systems","time-history","culture-information","archive-sources"],"specialist_view":false,"migration_status":"current","compatibility_routes":[]},{"surface_id":"north","surface_type":"guide","canonical_route":"/north/","primary_hub_id":"world","room_ids":["world-systems","potatoverse-canon","time-history","archive-sources","research-lab"],"specialist_view":false,"migration_status":"current","compatibility_routes":[]},{"surface_id":"world-systems","surface_type":"guide","canonical_route":"/world-systems/","primary_hub_id":"world","room_ids":["world-systems","archive-sources","research-lab"],"specialist_view":false,"migration_status":"current","compatibility_routes":[]},{"surface_id":"bible","surface_type":"explorer","canonical_route":"/traditions/bible/","primary_hub_id":"religion","room_ids":["traditions-texts","archive-sources","time-history","potatoverse-canon"],"specialist_view":true,"migration_status":"current","compatibility_routes":["/religion/jesus-tim/"]},{"surface_id":"culture","surface_type":"guide","canonical_route":"/context/culture/","primary_hub_id":null,"room_ids":["culture-information","archive-sources","world-systems"],"specialist_view":false,"migration_status":"current","compatibility_routes":[]},{"surface_id":"rooms","surface_type":"guide","canonical_route":"/rooms/","primary_hub_id":null,"room_ids":["potatoverse-canon","archive-sources","time-history","traditions-texts","science-formal-models","life-body","world-systems","culture-information","works","research-lab"],"specialist_view":true,"migration_status":"current","compatibility_routes":[]},{"surface_id":"history","surface_type":"guide","canonical_route":"/history/","primary_hub_id":null,"room_ids":["time-history","archive-sources","culture-information","world-systems"],"specialist_view":true,"migration_status":"current","compatibility_routes":[]},{"surface_id":"law","surface_type":"guide","canonical_route":"/law/","primary_hub_id":"world","room_ids":["world-systems","archive-sources","culture-information","research-lab"],"specialist_view":true,"migration_status":"current","compatibility_routes":[]},{"surface_id":"economy","surface_type":"guide","canonical_route":"/economy/","primary_hub_id":"world","room_ids":["world-systems","archive-sources","research-lab"],"specialist_view":true,"migration_status":"current","compatibility_routes":[]}]}
+{
+  "version": "1.4.0",
+  "updated": "2026-09-18",
+  "purpose": "Route-topology bridge for active public surfaces; navigation/migration classification only, not substantive knowledge ownership. House, Paths and Living Axis are structural projections over the canonical Rooms, not additional fact owners.",
+  "room_registry": "data/house/rooms.json",
+  "public_surface_registry": "data/house/public-surfaces.json",
+  "records": [
+    {
+      "surface_id": "home",
+      "surface_type": "home",
+      "canonical_route": "/",
+      "primary_hub_id": null,
+      "room_ids": [],
+      "specialist_view": false,
+      "migration_status": "current",
+      "compatibility_routes": [
+        "/learn/"
+      ]
+    },
+    {
+      "surface_id": "tim",
+      "surface_type": "hub",
+      "canonical_route": "/tim-dooley/",
+      "primary_hub_id": "tim",
+      "room_ids": [
+        "potatoverse-canon",
+        "time-history",
+        "archive-sources",
+        "works",
+        "culture-information"
+      ],
+      "specialist_view": false,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "religion",
+      "surface_type": "hub",
+      "canonical_route": "/religion/",
+      "primary_hub_id": "religion",
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "time-history",
+        "archive-sources"
+      ],
+      "specialist_view": false,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "philosophy",
+      "surface_type": "hub",
+      "canonical_route": "/philosophy/",
+      "primary_hub_id": "philosophy",
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "research-lab"
+      ],
+      "specialist_view": false,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "science",
+      "surface_type": "hub",
+      "canonical_route": "/science/",
+      "primary_hub_id": "science",
+      "room_ids": [
+        "science-formal-models",
+        "life-body",
+        "archive-sources",
+        "research-lab"
+      ],
+      "specialist_view": false,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "world",
+      "surface_type": "hub",
+      "canonical_route": "/world/",
+      "primary_hub_id": "world",
+      "room_ids": [
+        "world-systems",
+        "time-history",
+        "archive-sources",
+        "culture-information",
+        "research-lab"
+      ],
+      "specialist_view": false,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "timeline",
+      "surface_type": "explorer",
+      "canonical_route": "/timeline/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "time-history",
+        "archive-sources"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "explore",
+      "surface_type": "explorer",
+      "canonical_route": "/explore/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "sources",
+      "surface_type": "evidence",
+      "canonical_route": "/context/source-authority/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "archive-sources"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "questions",
+      "surface_type": "explorer",
+      "canonical_route": "/questions/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "index-a-z",
+      "surface_type": "explorer",
+      "canonical_route": "/index-a-z/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "context",
+      "surface_type": "guide",
+      "canonical_route": "/context/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "archive-sources",
+        "potatoverse-canon",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "story",
+      "surface_type": "guide",
+      "canonical_route": "/tim-dooley/story/",
+      "primary_hub_id": "tim",
+      "room_ids": [
+        "potatoverse-canon",
+        "time-history",
+        "archive-sources",
+        "works",
+        "culture-information"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "collection",
+      "surface_type": "guide",
+      "canonical_route": "/corporium/",
+      "primary_hub_id": "tim",
+      "room_ids": [
+        "potatoverse-canon",
+        "culture-information",
+        "life-body",
+        "science-formal-models",
+        "archive-sources"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "works",
+      "surface_type": "guide",
+      "canonical_route": "/works/",
+      "primary_hub_id": "tim",
+      "room_ids": [
+        "works",
+        "culture-information",
+        "archive-sources",
+        "time-history"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "interpretive-justice",
+      "surface_type": "guide",
+      "canonical_route": "/philosophy/interpretive-justice.html",
+      "primary_hub_id": "philosophy",
+      "room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "culture-information",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "world-map",
+      "surface_type": "explorer",
+      "canonical_route": "/world-map/",
+      "primary_hub_id": "world",
+      "room_ids": [
+        "world-systems",
+        "time-history",
+        "archive-sources"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": [
+        "/world-map/3d.html"
+      ]
+    },
+    {
+      "surface_id": "politics",
+      "surface_type": "guide",
+      "canonical_route": "/politics/",
+      "primary_hub_id": "world",
+      "room_ids": [
+        "world-systems",
+        "time-history",
+        "culture-information",
+        "archive-sources"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "axis",
+      "surface_type": "guide",
+      "canonical_route": "/axis/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "time-history",
+        "archive-sources",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "north",
+      "surface_type": "guide",
+      "canonical_route": "/north/",
+      "primary_hub_id": "world",
+      "room_ids": [
+        "world-systems",
+        "potatoverse-canon",
+        "time-history",
+        "archive-sources",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "world-systems",
+      "surface_type": "guide",
+      "canonical_route": "/world-systems/",
+      "primary_hub_id": "world",
+      "room_ids": [
+        "world-systems",
+        "archive-sources",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "bible",
+      "surface_type": "explorer",
+      "canonical_route": "/traditions/bible/",
+      "primary_hub_id": "religion",
+      "room_ids": [
+        "traditions-texts",
+        "archive-sources",
+        "time-history",
+        "potatoverse-canon"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": [
+        "/religion/jesus-tim/"
+      ]
+    },
+    {
+      "surface_id": "culture",
+      "surface_type": "guide",
+      "canonical_route": "/context/culture/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "culture-information",
+        "archive-sources",
+        "world-systems"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "rooms",
+      "surface_type": "guide",
+      "canonical_route": "/rooms/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "history",
+      "surface_type": "guide",
+      "canonical_route": "/history/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "time-history",
+        "archive-sources",
+        "culture-information",
+        "world-systems"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "law",
+      "surface_type": "guide",
+      "canonical_route": "/law/",
+      "primary_hub_id": "world",
+      "room_ids": [
+        "world-systems",
+        "archive-sources",
+        "culture-information",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "economy",
+      "surface_type": "guide",
+      "canonical_route": "/economy/",
+      "primary_hub_id": "world",
+      "room_ids": [
+        "world-systems",
+        "archive-sources",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "house",
+      "surface_type": "guide",
+      "canonical_route": "/house/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "life-body",
+      "surface_type": "guide",
+      "canonical_route": "/life-body/",
+      "primary_hub_id": "science",
+      "room_ids": [
+        "life-body",
+        "science-formal-models",
+        "archive-sources",
+        "potatoverse-canon"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "research-lab",
+      "surface_type": "guide",
+      "canonical_route": "/research-lab/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "research-lab",
+        "archive-sources",
+        "science-formal-models",
+        "potatoverse-canon",
+        "world-systems"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "paths",
+      "surface_type": "guide",
+      "canonical_route": "/paths/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    }
+  ]
+}
