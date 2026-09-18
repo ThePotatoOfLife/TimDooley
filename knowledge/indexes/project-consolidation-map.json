@@ -1,7 +1,7 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "updated": "2026-09-18",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
@@ -296,6 +296,13 @@
         "action": "delete root copy",
         "reason": "formula consumers and live source lists rewired to current specialist owners; historical value preserved by blob",
         "last_live_blob": "796c32f54109fafb611c83838b45ac5b3f56a43a"
+      },
+      {
+        "path": "book-research.json",
+        "action": "delete root copy after relocation",
+        "reason": "full extraction retained intact under knowledge/research and every live consumer rewired",
+        "successor": "knowledge/research/great-book-2024-source-extraction.json",
+        "last_live_blob": "9168248304e821b4af092c5c5f9c506b7db51fb1"
       }
     ],
     "root_source_strata": {
@@ -306,10 +313,11 @@
         "provenance": "archive/legacy/README.md + blob 353678889ad4b46890319c812951ae494cf1e791"
       },
       "book-research.json": {
-        "state": "retained-source-bridge",
-        "role": "2024 Great Book extraction",
-        "authority": "source/provenance",
-        "next": "preserve while dependent citations remain"
+        "state": "root-path-retired",
+        "role": "former root Great Book extraction path",
+        "authority": "none at root",
+        "successor": "knowledge/research/great-book-2024-source-extraction.json",
+        "provenance": "archive/legacy/README.md + blob 9168248304e821b4af092c5c5f9c506b7db51fb1"
       },
       "2026-master-framework.json": {
         "state": "retired",
