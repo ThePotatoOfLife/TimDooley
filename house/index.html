@@ -131,10 +131,10 @@
 (async()=>{
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   try{
-    const [subRes,topoRes,intRes,projRes,conceptRes]=await Promise.all([fetch('../data/house/subrooms.json'),fetch('../data/house/topology.json'),fetch('../data/house/interfaces.json'),fetch('../data/house/projections.json'),fetch('../data/house/concept-topology.json')]);
-    if(!subRes.ok||!topoRes.ok||!intRes.ok||!projRes.ok||!conceptRes.ok)throw new Error('House topology unavailable');
-    const sub=await subRes.json(),topo=await topoRes.json(),interfaces=await intRes.json(),projections=await projRes.json(),concepts=await conceptRes.json();
-    const groups=document.getElementById('houseSubrooms'),corridors=document.getElementById('houseCorridors'),interfaceRoot=document.getElementById('houseInterfaces'),projectionTabs=document.getElementById('houseProjectionTabs'),projectionPanel=document.getElementById('houseProjectionPanel'),operatorRoot=document.getElementById('houseOperators'),operatorRelations=document.getElementById('houseOperatorRelations');
+    const [subRes,topoRes,intRes,projRes,conceptRes,holdRes,collRes,dataHoldRes,dossierRes]=await Promise.all([fetch('../data/house/subrooms.json'),fetch('../data/house/topology.json'),fetch('../data/house/interfaces.json'),fetch('../data/house/projections.json'),fetch('../data/house/concept-topology.json'),fetch('../data/house/holdings.json'),fetch('../data/house/collections.json'),fetch('../data/house/data-holdings.json'),fetch('../data/house/room-dossiers.json')]);
+    if(!subRes.ok||!topoRes.ok||!intRes.ok||!projRes.ok||!conceptRes.ok||!holdRes.ok||!collRes.ok||!dataHoldRes.ok||!dossierRes.ok)throw new Error('House topology unavailable');
+    const sub=await subRes.json(),topo=await topoRes.json(),interfaces=await intRes.json(),projections=await projRes.json(),concepts=await conceptRes.json(),holdings=await holdRes.json(),collections=await collRes.json(),dataHoldings=await dataHoldRes.json(),dossiers=await dossierRes.json();
+    const groups=document.getElementById('houseSubrooms'),corridors=document.getElementById('houseCorridors'),interfaceRoot=document.getElementById('houseInterfaces'),projectionTabs=document.getElementById('houseProjectionTabs'),projectionPanel=document.getElementById('houseProjectionPanel'),operatorRoot=document.getElementById('houseOperators'),operatorRelations=document.getElementById('houseOperatorRelations'),holdingsRoot=document.getElementById('houseHoldingsGrid'),collectionStrip=document.getElementById('houseCollectionStrip');
     const parentOrder=['potatoverse-canon','archive-sources','time-history','traditions-texts','science-formal-models','life-body','world-systems','culture-information','works','research-lab'];
     const parentLabels={
       'potatoverse-canon':'Potatoverse / Canon','archive-sources':'Archive & Sources','time-history':'Time & History',
