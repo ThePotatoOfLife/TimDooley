@@ -4,9 +4,9 @@ const routes=[
 {id:'stories',label:'Stories'},
 {id:'roles',label:'People & Roles'},
 {id:'symbols',label:'Symbols & Images'},
-{id:'actions',label:'Actions & Transformations'},
+{id:'actions',label:'Movements & Changes'},
 {id:'books',label:'Bible Books'},
-{id:'timeline',label:'Tim / Son Timeline'}
+{id:'timeline',label:'Project Journey'}
 ];
 const curatedTopics={
  roles:[
@@ -86,13 +86,13 @@ function matchRoute(row,route,topic){
 }
 function breadcrumbs(state={}){
  const route=routes.find(r=>r.id===state.route)||routes[0],out=[{kind:'route',id:route.id,label:route.label}];
- if(state.topic){const topic=(curatedTopics[state.route]||[]).find(item=>item.id===state.topic);out.push({kind:'topic',id:state.topic,label:topic?.label||String(state.topic).replaceAll('-',' ')})}
- if(state.id)out.push({kind:'relation',id:state.id,label:state.id});
+ if(state.topic){const topic=(curatedTopics[state.route]||[]).find(item=>item.id===state.topic);out.push({kind:'topic',id:state.topic,label:topic?.label||window.BibleLanguage?.label(state.topic)||String(state.topic)})}
+ if(state.id)out.push({kind:'relation',id:state.id,label:window.BibleLanguage?.humanizeId(state.id)||state.id});
  return out;
 }
 function relatedPaths(row){
  const out=[]; const push=(route,topic,label)=>{if(topic&&!out.some(x=>x.route===route&&x.topic===topic))out.push({route,topic,label})};
- arr(row.biblical_scene_ids).slice(0,2).forEach(x=>push('stories',x,x.replaceAll('-',' ')));
+ arr(row.biblical_scene_ids).slice(0,2).forEach(x=>push('stories',x,window.BibleLanguage?.label(x)||x));
  arr(row.motifs).slice(0,3).forEach(x=>push('symbols',norm(x),x));
  arr(row.operators).slice(0,3).forEach(x=>push('actions',norm(x),x));
  const ref=arr(row.biblical_refs)[0]; if(ref){const book=String(ref).replace(/\s+\d.*$/,'');push('books',book,book)}
