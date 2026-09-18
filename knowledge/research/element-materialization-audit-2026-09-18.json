@@ -1,7 +1,7 @@
 {
   "id": "element-materialization-audit-2026-09-18",
   "title": "Element Materialization Audit — From Strong Definitions to Real-World Instrumentation",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "status": "active implementation audit",
   "purpose": "Audit high-value Potato House elements against the crystallization gate and identify where the project already has strong definitions but still lacks enough real-world population, longitudinal change, scale, visibility and correction data to make those elements analytically useful.",
@@ -80,7 +80,15 @@
       "CERN",
       "International Committee of the Red Cross"
     ],
-    "public_surface": "house/#crystallized-cases"
+    "public_surface": "house/#crystallized-cases",
+    "status": "implemented",
+    "completed_artifacts": [
+      "data/house/entity-dossier-schema.json",
+      "data/house/entity-dossiers-wave-001.json",
+      "house/index.html",
+      "scripts/validate_entity_dossier_instrumentation.py"
+    ],
+    "result": "Wave 001 now exposes scale, dependencies, reproduction/correction, visibility/access and source-backed longitudinal indicators for Danmarks Nationalbank, Wikimedia Foundation, CERN and ICRC; House renders these dimensions and CI validates the contract."
   },
   "next_candidates": [
     "instrument selected Works with the Fruit contract and actual reception/downstream effects",
