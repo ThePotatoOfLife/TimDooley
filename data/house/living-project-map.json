@@ -1,0 +1,397 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "living-project-map",
+  "purpose": "Compose the center-adjacent project into four interacting metabolisms—organism, Spirit/relation, memory/history and culture/formation—without creating new knowledge owners.",
+  "semantic_center": "potato-of-life",
+  "ownership_rule": "This map coordinates existing Rooms. It never overrides their ownership: Life & Body owns biology/embodiment; Potatoverse Canon owns project theology; Time & History plus Archive & Sources own chronology/memory/provenance; Culture & Information owns social formation; Research Lab owns unresolved synthesis.",
+  "systems": [
+    {
+      "id": "organism",
+      "label": "Organism / Embodiment",
+      "primary_room_ids": [
+        "life-body"
+      ],
+      "subroom_ids": [
+        "potato-biology",
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "project_question": "How does stored potential become embodied growth without confusing biology with metaphor?",
+      "inputs": [
+        "light",
+        "water",
+        "nutrients",
+        "stored reserves",
+        "developmental signals",
+        "environmental conditions"
+      ],
+      "transformations": [
+        "dormancy",
+        "activation",
+        "transport",
+        "storage",
+        "sprouting",
+        "growth",
+        "repair",
+        "reproduction"
+      ],
+      "outputs": [
+        "living tissue",
+        "new shoots",
+        "stored capacity",
+        "propagules",
+        "observable consequence"
+      ],
+      "failure_modes": [
+        "pathogen carryover",
+        "resource limitation",
+        "injury",
+        "misread symbolic anatomy",
+        "overclaiming from analogy"
+      ],
+      "repair_routes": [
+        "clean evidence",
+        "biological distinction",
+        "developmental context",
+        "resilience/diversity",
+        "symbolic boundary"
+      ],
+      "project_nodes": [
+        "potato-of-life",
+        "eye",
+        "seed",
+        "root",
+        "door",
+        "fruit"
+      ],
+      "source_files": [
+        "knowledge/science/potato-biology-ecology-development-canon.json",
+        "knowledge/body/neurotheology-axis-house-spirit-atlas.json"
+      ]
+    },
+    {
+      "id": "spirit-relation",
+      "label": "Spirit / Living Relation",
+      "primary_room_ids": [
+        "potatoverse-canon"
+      ],
+      "subroom_ids": [
+        "theology-god-language",
+        "canon-identities",
+        "symbolic-architecture"
+      ],
+      "crossing_subroom_ids": [
+        "symbolic-body-comparison",
+        "practice-ethics"
+      ],
+      "project_question": "What keeps differentiated parts in living relation without collapsing Spirit into one physical carrier or a third geometric sphere?",
+      "functions": [
+        "animation",
+        "continuity",
+        "circulation",
+        "communication",
+        "translation",
+        "mediation",
+        "relation across distinction",
+        "return"
+      ],
+      "interfaces": [
+        "Father↔Son",
+        "source↔manifestation",
+        "House↔Door",
+        "Root↔Canopy",
+        "memory↔present",
+        "insight↔practice"
+      ],
+      "not_identical_to": [
+        "Axis",
+        "Door",
+        "breath",
+        "CSF",
+        "blood",
+        "electricity",
+        "qi",
+        "information network",
+        "emotion"
+      ],
+      "failure_modes": [
+        "reifying metaphor as anatomy",
+        "treating flow as proof",
+        "making Spirit a vague synonym for everything relational",
+        "separating Spirit from embodied consequence"
+      ],
+      "repair_routes": [
+        "role/function distinction",
+        "carrier-specific evidence",
+        "return to Fruit/consequence",
+        "source-visible comparison"
+      ],
+      "project_nodes": [
+        "spirit",
+        "axis",
+        "door",
+        "spiral",
+        "return"
+      ],
+      "source_files": [
+        "knowledge/spirit/spirit-context-atlas.json",
+        "knowledge/theology/potato-of-life-trinity.json",
+        "knowledge/body/neurotheology-axis-house-spirit-atlas.json"
+      ]
+    },
+    {
+      "id": "memory-history",
+      "label": "Memory / History",
+      "primary_room_ids": [
+        "time-history",
+        "archive-sources"
+      ],
+      "subroom_ids": [
+        "chronology-events",
+        "developmental-genealogy",
+        "prediction-revelation-time",
+        "provenance-evidence",
+        "memory-recovery",
+        "witness-attestation"
+      ],
+      "project_question": "How does an occurrence become record, memory, interpretation and canon without later meaning being backdated into the past?",
+      "pipeline": [
+        "occurrence",
+        "artifact/source",
+        "attestation",
+        "archive",
+        "memory/recovery",
+        "interpretation",
+        "reception",
+        "canon",
+        "revision"
+      ],
+      "distinctions": [
+        "event≠source",
+        "source≠memory",
+        "memory≠interpretation",
+        "interpretation≠corroboration",
+        "later canon≠earlier state"
+      ],
+      "failure_modes": [
+        "backdating",
+        "source duplication masquerading as corroboration",
+        "context loss",
+        "archive persistence without correction",
+        "role lock",
+        "mythologizing chronology"
+      ],
+      "repair_routes": [
+        "date precision",
+        "source lineage",
+        "evidence class",
+        "original-context recovery",
+        "revision history",
+        "proportional memory"
+      ],
+      "project_nodes": [
+        "root",
+        "soil",
+        "shadow",
+        "seed",
+        "tree-of-knowledge"
+      ],
+      "source_files": [
+        "knowledge/timeline/developmental-genealogy.json",
+        "knowledge/indexes/source-index.json",
+        "knowledge/indexes/conversation-recovery-inventory.json"
+      ]
+    },
+    {
+      "id": "culture-formation",
+      "label": "Culture / Formation",
+      "primary_room_ids": [
+        "culture-information"
+      ],
+      "subroom_ids": [
+        "internet-platforms",
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "crossing_subroom_ids": [
+        "practice-ethics",
+        "law-justice",
+        "politics-governance"
+      ],
+      "project_question": "How does repeated social interaction become culture, durable identity, institution, Garden-like generativity or Strife-like capture?",
+      "formation_pipeline": [
+        "interaction",
+        "repetition",
+        "shared meaning",
+        "norm",
+        "identity",
+        "memory",
+        "institution",
+        "inheritance or mutation"
+      ],
+      "garden_direction": [
+        "correction",
+        "reciprocity",
+        "meaningful exit",
+        "source quality",
+        "proportional memory",
+        "independent future capacity",
+        "new creation"
+      ],
+      "strife_direction": [
+        "role lock",
+        "enemy production",
+        "reaction capture",
+        "archive warfare",
+        "dependency",
+        "punishment of dissent",
+        "blocked correction",
+        "high exit cost"
+      ],
+      "failure_modes": [
+        "cult label as substitute for analysis",
+        "confusing subculture with pathology",
+        "self-sealing interpretation",
+        "attention extraction",
+        "permanent tribunal",
+        "archive residue"
+      ],
+      "repair_routes": [
+        "mechanism-level analysis",
+        "right of reply",
+        "correction propagation",
+        "exit protection",
+        "outside accountability",
+        "new creation beyond conflict"
+      ],
+      "project_nodes": [
+        "garden",
+        "tree-of-strife",
+        "swamp",
+        "shadow",
+        "house",
+        "shell-cube"
+      ],
+      "source_files": [
+        "knowledge/culture/culture-formation-zeitgeist-atlas.json",
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+        "knowledge/core/shadow-ledger-entanglement-axis.json"
+      ]
+    }
+  ],
+  "interfaces": [
+    {
+      "from": "organism",
+      "to": "spirit-relation",
+      "type": "embodiment-boundary",
+      "question": "Which flows are literal physiology and which are project-theological or symbolic relation?",
+      "rule": "Physical carriers may illuminate but do not prove Spirit."
+    },
+    {
+      "from": "spirit-relation",
+      "to": "memory-history",
+      "type": "continuity-through-time",
+      "question": "What carries meaning forward without rewriting earlier states?",
+      "rule": "Continuity requires provenance; living reinterpretation may add meaning but must preserve developmental genealogy."
+    },
+    {
+      "from": "memory-history",
+      "to": "culture-formation",
+      "type": "inheritance",
+      "question": "How do archives and stories become social memory, roles and institutions?",
+      "rule": "Inherited memory should carry source context and correction capacity."
+    },
+    {
+      "from": "culture-formation",
+      "to": "organism",
+      "type": "conditions-of-life",
+      "question": "How do institutions, communities and information environments affect bodies, behavior and future capacity?",
+      "rule": "Social metaphor must not replace medical or biological evidence."
+    },
+    {
+      "from": "culture-formation",
+      "to": "spirit-relation",
+      "type": "communication-and-community",
+      "question": "When does relation become living reciprocity versus coercive dependency?",
+      "rule": "Spirit language does not sanctify authority; Fruit, reciprocity and meaningful exit remain tests."
+    },
+    {
+      "from": "organism",
+      "to": "memory-history",
+      "type": "development",
+      "question": "How do dormancy, growth, injury and repair become dated developmental sequences?",
+      "rule": "Biological lifecycle comparison must remain separate from biography or theology."
+    }
+  ],
+  "shared_tests": [
+    {
+      "id": "fruit-test",
+      "question": "What changed downstream?",
+      "applies_to": [
+        "organism",
+        "spirit-relation",
+        "memory-history",
+        "culture-formation"
+      ],
+      "positive_signs": [
+        "increased capacity",
+        "clearer provenance",
+        "better correction",
+        "nourishment",
+        "independent future growth"
+      ],
+      "negative_signs": [
+        "dependency",
+        "repetition without correction",
+        "lost provenance",
+        "blocked exit",
+        "decreased agency"
+      ]
+    },
+    {
+      "id": "door-test",
+      "question": "Did a real state/context/capability transition occur?",
+      "applies_to": [
+        "organism",
+        "spirit-relation",
+        "memory-history",
+        "culture-formation"
+      ]
+    },
+    {
+      "id": "spiral-test",
+      "question": "What is different this recurrence besides elapsed time?",
+      "applies_to": [
+        "organism",
+        "memory-history",
+        "culture-formation"
+      ]
+    },
+    {
+      "id": "garden-test",
+      "question": "Does the system leave others more capable of independent future growth?",
+      "applies_to": [
+        "spirit-relation",
+        "culture-formation",
+        "organism"
+      ]
+    }
+  ],
+  "public_routes": {
+    "center": "potato-of-life/",
+    "organism": "life-body/",
+    "spirit": "potato-of-life/spirit/",
+    "memory": "history/",
+    "culture": "context/culture/",
+    "research": "research-lab/"
+  },
+  "anti_redundancy": [
+    "Do not create a Spirit Room; Spirit remains a center-native role/relation owned by project canon and compared across existing Rooms.",
+    "Do not create a Memory realm; chronology and archive Rooms already own occurrence, provenance, recovery and interpretation.",
+    "Do not make Culture synonymous with Strife; Garden-like and Strife-like cultural directions are outcomes of formation, not definitions of culture.",
+    "Do not turn body metaphors into anatomy.",
+    "Do not let this coordination map become a replacement ontology for Rooms."
+  ]
+}
