@@ -1,5 +1,5 @@
 {
-  "version": "4.2.0",
+  "version": "4.3.0",
   "title": "Potato of Life Canonical Ontology Tree",
   "root": "potato-of-life",
   "rule": "The ontology is a relational index over the permanent Potato House. House/Room/View/Path, Axis/lifecycle and evidence/provenance are distinct structures that may overlap without becoming one hierarchy.",
@@ -280,7 +280,10 @@
             "topology-profile",
             "corridor",
             "crosscutting-axis",
-            "embedding-view"
+            "embedding-view",
+            "guarded-interface",
+            "preserved-invariant",
+            "room-door"
           ]
         },
         "lifecycle-and-regimes": {
@@ -360,7 +363,8 @@
     "Seed ↔ Return",
     "Canonical Room ↔ Nested Room",
     "Nested Room ↔ Corridor",
-    "Topology profile ↔ Replaceable View"
+    "Topology profile ↔ Replaceable View",
+    "Nested Room ↔ Guarded Interface"
   ],
   "canonical_files": {
     "root-system": "knowledge/core/root-system.json",
@@ -387,7 +391,8 @@
     "axis-flow": "data/axis-flow-contract.json",
     "practice-path": "knowledge/practice/potato-path.json",
     "house-subrooms": "data/house/subrooms.json",
-    "house-topology": "data/house/topology.json"
+    "house-topology": "data/house/topology.json",
+    "house-interfaces": "data/house/interfaces.json"
   },
   "promotion_rule": "Terms in this ontology are navigational concepts, not automatic files. Promote a term into its own canonical record only when its definition, development, relationships, teachings, evidence or literature can no longer be represented clearly inside its parent record."
 }
