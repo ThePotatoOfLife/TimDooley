@@ -1,0 +1,822 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "as_of": "2026-09-18",
+  "status": "first crystallized entity dossiers; facts sourced primarily to official institutional material, project operators labeled synthesis",
+  "dossiers": [
+    {
+      "id": "danmarks-nationalbank",
+      "identity": {
+        "name": "Danmarks Nationalbank",
+        "kind": "central bank",
+        "jurisdiction_or_scope": "Denmark",
+        "legal_or_institutional_form": "self-governing independent institution established by law"
+      },
+      "primary_rooms": [
+        "world-systems",
+        "economy-finance",
+        "law-justice",
+        "time-history"
+      ],
+      "sources": [
+        {
+          "id": "dnb-objectives",
+          "type": "official",
+          "title": "Questions about us",
+          "url": "https://www.nationalbanken.dk/en/frequently-asked-questions/questions-about-us",
+          "supports": [
+            "mission",
+            "independence",
+            "fixed exchange rate policy"
+          ]
+        },
+        {
+          "id": "dnb-law",
+          "type": "official",
+          "title": "What does the law say?",
+          "url": "https://www.nationalbanken.dk/en/about-us/the-law",
+          "supports": [
+            "statutory basis",
+            "governance",
+            "profit transfer",
+            "independence"
+          ]
+        },
+        {
+          "id": "dnb-governance",
+          "type": "official",
+          "title": "Board of Governors, Group Management and departments",
+          "url": "https://www.nationalbanken.dk/en/about-us/board-of-governors-group-management-and-departments",
+          "supports": [
+            "governance",
+            "decision system"
+          ]
+        },
+        {
+          "id": "dnb-annual-2025",
+          "type": "official",
+          "title": "Annual Report 2025",
+          "url": "https://www.nationalbanken.dk/en/news-and-knowledge/publications-and-speeches/report/2026/annual-report-2025",
+          "supports": [
+            "2025 result",
+            "material capacity"
+          ]
+        },
+        {
+          "id": "dnb-payments-2025",
+          "type": "official",
+          "title": "Oversight of the financial infrastructure 2025",
+          "url": "https://www.nationalbanken.dk/en/news-and-knowledge/publications-and-speeches/report/2026/oversight-of-the-financial-infrastructure-2025",
+          "supports": [
+            "payment infrastructure",
+            "oversight",
+            "flow scale"
+          ]
+        }
+      ],
+      "spirit": {
+        "documented_mission": "Stable prices, safe payments and a stable financial system; the statutory object is to maintain a safe and secure monetary system and facilitate/regulate money circulation and credit.",
+        "legitimacy_basis": "Danmarks Nationalbank Act of 1936, institutional independence, and public monetary mandate.",
+        "values_or_norms": [
+          "independence",
+          "credibility",
+          "safe and efficient payments",
+          "financial stability"
+        ],
+        "project_interpretation": "Spirit is the public mandate and trust claim: money and payments should remain reliable enough for society to coordinate."
+      },
+      "mind": {
+        "governance": "Three-member Board of Governors has overall management; the Board of Governors has sole responsibility for shaping and adjusting monetary policy. Group Management combines the Board with heads of seven departments for priorities, strategy and policy.",
+        "decision_system": "Monetary policy under Denmark's fixed-exchange-rate framework; continuous analysis of inflation, financial stability and payments.",
+        "knowledge_system": "Economic/financial analysis, statistics, market operations and oversight of financial infrastructure.",
+        "feedback_and_oversight": "Formal governance structure provides political insight while preserving monetary-policy independence; infrastructure oversight uses international standards."
+      },
+      "body": {
+        "people_or_members": "Institutional staff and three-governor top management; detailed current headcount not asserted in this dossier.",
+        "money_or_budget": "2025 profit DKK 24.7 billion; gold price gains contributed DKK 18.5 billion to portfolio returns.",
+        "infrastructure": "Central-bank financial portfolios, settlement/payment functions, banknotes/coins and oversight of central payment/securities systems.",
+        "operational_capacity": "In 2025, systems in the Danish payments infrastructure carried DKK 838 billion on an average banking day."
+      },
+      "history": [
+        {
+          "date": "1818",
+          "event": "Established to restore monetary order after the 1813 state bankruptcy."
+        },
+        {
+          "date": "1936",
+          "event": "Current Nationalbank Act reorganized the institution and codified its mandate/governance."
+        },
+        {
+          "date": "1982",
+          "event": "Denmark's modern fixed exchange rate policy dates from this period."
+        }
+      ],
+      "relationships": [
+        {
+          "type": "governs/operates",
+          "target": "monetary policy and central-bank functions in Denmark",
+          "evidence": "dnb-objectives"
+        },
+        {
+          "type": "oversees",
+          "target": "central payment and securities infrastructure",
+          "evidence": "dnb-payments-2025"
+        },
+        {
+          "type": "acts-for",
+          "target": "Danish central government on selected debt/borrowing tasks",
+          "evidence": "dnb-law"
+        },
+        {
+          "type": "transfers-profit-to",
+          "target": "Danish central government after allocations under the Act",
+          "evidence": "dnb-law"
+        }
+      ],
+      "operators": [
+        {
+          "operator": "River",
+          "status": "synthesis",
+          "why": "Payments are observable financial flows through infrastructure.",
+          "test": "Map sources, settlement systems, throughput, bottlenecks and outage/counterparty risks.",
+          "fails_if": "Used as a metaphor without actual flow data."
+        },
+        {
+          "operator": "Eye",
+          "status": "synthesis",
+          "why": "Infrastructure oversight and financial-stability analysis are observation/assessment functions.",
+          "test": "Trace what is monitored, standards used, recommendations issued and what remains outside the observation frame.",
+          "fails_if": "Oversight is treated as omniscience."
+        },
+        {
+          "operator": "Door",
+          "status": "synthesis",
+          "why": "Settlement, access and monetary-policy mechanisms change what financial actors can transmit or price.",
+          "test": "Identify explicit eligibility/access/settlement conditions.",
+          "fails_if": "No state or capability transition can be specified."
+        },
+        {
+          "operator": "Fruit",
+          "status": "synthesis",
+          "why": "Mission is justified by stable prices, safe payments and systemic stability rather than institutional activity itself.",
+          "test": "Use outcome indicators plus failure/externality measures, not institutional output alone.",
+          "fails_if": "Profit or publication volume substitutes for mandate outcomes."
+        }
+      ],
+      "fruit": {
+        "documented_outputs": [
+          "payment and securities settlement support",
+          "financial-stability analysis/recommendations",
+          "monetary-policy implementation",
+          "currency issuance/quality",
+          "official statistics and analysis"
+        ],
+        "measurable_current_examples": [
+          "DKK 838 billion average banking-day payment throughput in 2025",
+          "2025 annual financial result"
+        ],
+        "measurement_limits": "Counterfactual stability is difficult to observe directly: absence of failure does not prove a specific intervention caused stability."
+      },
+      "shadow": {
+        "known_unknowns": [
+          "Counterfactual contribution of individual oversight actions to crises that did not occur.",
+          "Full causal allocation between central-bank actions and broader market/EU/global conditions."
+        ],
+        "missingness_mechanism": "Some desired outcomes are prevention outcomes and therefore structurally hard to observe; causal attribution is incomplete rather than secret.",
+        "evidence_gap": "A deeper dossier needs longitudinal indicators for inflation, exchange-rate stability, system incidents, liquidity and recommendation follow-through."
+      },
+      "tensions": [
+        {
+          "status": "question",
+          "text": "How does an independent monetary authority maintain public legitimacy while preserving insulation from day-to-day political control?"
+        },
+        {
+          "status": "question",
+          "text": "How should safe-payment performance be judged when the highest-value outcome is often the non-occurrence of disruption?"
+        }
+      ],
+      "discovery_questions": [
+        "Can the House distinguish operational throughput (River) from trust/legitimacy (Spirit) and oversight quality (Eye) without collapsing them into one stability score?",
+        "Where are the most important single points of failure or alternative routes in Danish payment infrastructure?",
+        "Which Nationalbank recommendations measurably change capability or risk in the institutions receiving them?"
+      ],
+      "evidence_boundary": "No claim here rates Danish monetary policy or political choices. Project-operator mappings are analytical syntheses over official institutional facts."
+    },
+    {
+      "id": "wikimedia-foundation",
+      "identity": {
+        "name": "Wikimedia Foundation",
+        "kind": "nonprofit knowledge-infrastructure organization",
+        "jurisdiction_or_scope": "Global movement support; U.S.-based nonprofit operating globally",
+        "legal_or_institutional_form": "nonprofit foundation hosting/protecting Wikimedia projects"
+      },
+      "primary_rooms": [
+        "culture-information",
+        "internet-platforms",
+        "information-ecology",
+        "world-systems",
+        "works"
+      ],
+      "sources": [
+        {
+          "id": "wmf-plan-2627",
+          "type": "official movement plan",
+          "title": "Annual Plan 2026–2027 Budget Overview",
+          "url": "https://meta.wikimedia.org/wiki/Wikimedia_Foundation_Annual_Plan/2026-2027/Budget_Overview/en",
+          "supports": [
+            "current budget",
+            "strategic pressures",
+            "technology investment"
+          ]
+        },
+        {
+          "id": "wmf-trustee-2026",
+          "type": "official",
+          "title": "Our 2026 Trustee search",
+          "url": "https://wikimediafoundation.org/our-2026-trustee-search/",
+          "supports": [
+            "movement scale",
+            "board role",
+            "staff/revenue snapshot"
+          ]
+        },
+        {
+          "id": "wmf-annual-2425",
+          "type": "official",
+          "title": "Annual Report 2024–2025",
+          "url": "https://wikimediafoundation.org/annualreports/2024-2025-annual-report/",
+          "supports": [
+            "leadership",
+            "annual reporting"
+          ]
+        },
+        {
+          "id": "wmf-transparency-2025h2",
+          "type": "official",
+          "title": "Transparency report July–December 2025",
+          "url": "https://wikimediafoundation.org/who-we-are/transparency/2025-2/",
+          "supports": [
+            "legal requests",
+            "human rights",
+            "transparency"
+          ]
+        },
+        {
+          "id": "wmf-content-requests",
+          "type": "official",
+          "title": "Requests for content alteration and takedown, Jul–Dec 2025",
+          "url": "https://wikimediafoundation.org/who-we-are/transparency/2025-2/content/",
+          "supports": [
+            "takedown requests",
+            "community editorial boundary"
+          ]
+        },
+        {
+          "id": "wmf-user-requests",
+          "type": "official",
+          "title": "Requests for user information, Jul–Dec 2025",
+          "url": "https://wikimediafoundation.org/who-we-are/transparency/2025-2/user/",
+          "supports": [
+            "privacy/legal access"
+          ]
+        }
+      ],
+      "spirit": {
+        "documented_mission": "Enable people around the world to collect and develop educational content under free licenses or in the public domain and disseminate it effectively and globally; protect and sustain free knowledge projects.",
+        "legitimacy_basis": "Nonprofit mission plus volunteer/community governance traditions and public commitment to free knowledge.",
+        "values_or_norms": [
+          "free knowledge",
+          "openness",
+          "privacy",
+          "freedom of expression",
+          "community participation",
+          "long-term access"
+        ],
+        "project_interpretation": "Spirit is the claim that knowledge should remain freely shareable and available across generations."
+      },
+      "mind": {
+        "governance": "Board oversees management/strategy; a mix of community- and affiliate-selected and Board-selected trustees plus founder seat is described in the 2026 trustee materials.",
+        "decision_system": "Foundation executive/board planning plus decentralized volunteer editorial communities; these are related but not identical governance systems.",
+        "knowledge_system": "Volunteer editing, moderation, software/data systems, research/analytics, transparency reporting and movement planning.",
+        "feedback_and_oversight": "Annual plans, community consultation, transparency reports, audits, Board oversight and public project histories."
+      },
+      "body": {
+        "people_or_members": "About 650 staff in 46 countries according to 2026 trustee materials, alongside a much larger global volunteer movement.",
+        "money_or_budget": "FY2026–27 annual budget USD 240.0 million: 48% technology, 29% volunteer support, 12% fundraising, 11% general/administrative.",
+        "infrastructure": "Servers/platform infrastructure, APIs, software, data systems, fundraising, legal support and safety/trust systems supporting Wikipedia and sister projects.",
+        "operational_capacity": "Wikipedia hosts over 65 million volunteer-authored articles in 300+ languages and receives over 15 billion visits monthly according to 2026 trustee materials."
+      },
+      "history": [
+        {
+          "date": "2003",
+          "event": "Wikimedia Foundation established to support Wikimedia projects."
+        },
+        {
+          "date": "2025-2026",
+          "event": "Annual planning explicitly focused on changing information consumption, regulation, misinformation/disinformation and platform conditions."
+        },
+        {
+          "date": "2026-2027",
+          "event": "Budget increases technology investment amid AI/bot scraping, infrastructure and audience/contributor challenges."
+        }
+      ],
+      "relationships": [
+        {
+          "type": "hosts/protects",
+          "target": "Wikipedia and Wikimedia sister projects",
+          "evidence": "wmf-trustee-2026"
+        },
+        {
+          "type": "supports",
+          "target": "volunteer communities and affiliates",
+          "evidence": "wmf-plan-2627"
+        },
+        {
+          "type": "receives-legal-requests-from",
+          "target": "governments, individuals and corporations",
+          "evidence": "wmf-transparency-2025h2"
+        },
+        {
+          "type": "is-regulated-by",
+          "target": "applicable legal regimes including EU Digital Services Act for Wikipedia as VLOP",
+          "evidence": "wmf-transparency-2025h2"
+        }
+      ],
+      "operators": [
+        {
+          "operator": "House",
+          "status": "synthesis",
+          "why": "A centralized nonprofit materially hosts a decentralized knowledge movement with differentiated internal roles.",
+          "test": "Map which functions are Foundation-owned versus volunteer/community-owned.",
+          "fails_if": "Foundation and volunteer communities are treated as one institution."
+        },
+        {
+          "operator": "Door",
+          "status": "synthesis",
+          "why": "Legal takedown/user-data requests, account permissions and editorial/community processes are distinct access/transition gates.",
+          "test": "Specify which body controls each gate and what can be appealed.",
+          "fails_if": "All content moderation is attributed to the Foundation."
+        },
+        {
+          "operator": "Eye",
+          "status": "synthesis",
+          "why": "Transparency reports, community review and public histories expose decision/evidence processes.",
+          "test": "Measure what requests/decisions are visible and what categories remain opaque.",
+          "fails_if": "Transparency reporting is mistaken for full observability."
+        },
+        {
+          "operator": "Garden",
+          "status": "synthesis",
+          "why": "The movement's mission depends on growing independent volunteer contribution and reusable free knowledge.",
+          "test": "Does Foundation support increase contributor/community capability rather than central dependency?",
+          "fails_if": "Outputs grow while volunteer capability or community autonomy erodes."
+        }
+      ],
+      "fruit": {
+        "documented_outputs": [
+          "hosting and protecting Wikimedia projects",
+          "software and infrastructure",
+          "community support/grants",
+          "legal/privacy defense",
+          "public free knowledge"
+        ],
+        "measurable_current_examples": [
+          "65M+ articles",
+          "300+ languages",
+          "15B+ monthly visits",
+          "FY26–27 USD 240M budget allocation"
+        ],
+        "measurement_limits": "Traffic and article count are incomplete proxies for knowledge quality, contributor health, representation, trust and public value."
+      },
+      "shadow": {
+        "known_unknowns": [
+          "How AI-mediated consumption changes attribution, volunteer incentives and direct readership over time.",
+          "How well headline scale metrics capture representation and contributor health."
+        ],
+        "missingness_mechanism": "Some platform/community health dimensions are difficult to summarize in a single centralized dataset because authority and activity are distributed.",
+        "evidence_gap": "A deeper longitudinal dossier should combine editor retention, language coverage, governance participation, legal pressure, reader behavior and infrastructure load."
+      },
+      "tensions": [
+        {
+          "status": "observed",
+          "text": "The Foundation is centralized as an infrastructure/funding/legal organization while the movement and editorial production are unusually decentralized."
+        },
+        {
+          "status": "question",
+          "text": "How much central investment can increase resilience without displacing community capability or governance legitimacy?"
+        },
+        {
+          "status": "question",
+          "text": "How should Wikipedia optimize for reach in an AI/scraping environment without turning attention metrics into the end itself?"
+        }
+      ],
+      "discovery_questions": [
+        "Can Garden be operationalized as volunteer capability growth rather than content volume?",
+        "Which Doors are community-controlled, Foundation-controlled, state/legal, or technical—and where do these overlap?",
+        "Does increased API/AI infrastructure spending preserve the mission of free knowledge while changing the relationship between readers, contributors and external platforms?"
+      ],
+      "evidence_boundary": "This dossier does not rate Wikimedia political content or editorial viewpoints. It distinguishes Foundation governance from volunteer editorial governance."
+    },
+    {
+      "id": "cern",
+      "identity": {
+        "name": "CERN",
+        "kind": "intergovernmental scientific research organization",
+        "jurisdiction_or_scope": "European organization with global scientific participation",
+        "legal_or_institutional_form": "intergovernmental organization governed by Member States"
+      },
+      "primary_rooms": [
+        "science-formal-models",
+        "world-systems",
+        "knowledge-education",
+        "time-history",
+        "infrastructure-technology"
+      ],
+      "sources": [
+        {
+          "id": "cern-mission",
+          "type": "official",
+          "title": "Our Mission",
+          "url": "https://home.cern/about/who-we-are/our-mission/",
+          "supports": [
+            "mission",
+            "goals"
+          ]
+        },
+        {
+          "id": "cern-governance",
+          "type": "official",
+          "title": "Our Governance",
+          "url": "https://home.cern/about/who-we-are/our-governance/",
+          "supports": [
+            "Council",
+            "governance",
+            "management"
+          ]
+        },
+        {
+          "id": "cern-members",
+          "type": "official",
+          "title": "Our Member States",
+          "url": "https://home.cern/about/who-we-are/member-states/",
+          "supports": [
+            "25 member states",
+            "institutes",
+            "funding relationships"
+          ]
+        },
+        {
+          "id": "cern-strategy-2630",
+          "type": "official",
+          "title": "CERN publishes its strategy and main objectives for 2026–2030",
+          "url": "https://home.cern/cern-publishes-its-strategy-and-main-objectives-for-the-period-2026-2030/",
+          "supports": [
+            "current strategy",
+            "HL-LHC",
+            "FCC-ee timing"
+          ]
+        },
+        {
+          "id": "cern-espp-2026",
+          "type": "official",
+          "title": "2026 European Strategy for Particle Physics update",
+          "url": "https://home.cern/the-cern-council-decided-to-update-the-european-strategy-for-particle-physics/",
+          "supports": [
+            "field strategy",
+            "future collider priorities"
+          ]
+        }
+      ],
+      "spirit": {
+        "documented_mission": "Discovery through science, technological innovation, bringing nations together, inspiration and education; pursue fundamental understanding while serving a broad scientific community.",
+        "legitimacy_basis": "Intergovernmental convention, Member State governance, scientific peer communities and long-running shared infrastructure.",
+        "values_or_norms": [
+          "fundamental inquiry",
+          "international cooperation",
+          "scientific excellence",
+          "training",
+          "technology transfer",
+          "political neutrality in science"
+        ],
+        "project_interpretation": "Spirit is long-horizon shared inquiry: nations sustain infrastructure that no single ordinary laboratory could reproduce alone."
+      },
+      "mind": {
+        "governance": "CERN Council is highest authority and approves programmes/budgets; Scientific Policy Committee and Finance Committee assist; Director-General manages the laboratory.",
+        "decision_system": "Scientific strategy, Council decisions, programme prioritization, experiment collaborations and technical programme management.",
+        "knowledge_system": "Experimental particle physics, accelerator science, theory, computing, engineering, open scientific collaboration and external institutes.",
+        "feedback_and_oversight": "Council governance, scientific committees, international strategy process and experiment/scientific review."
+      },
+      "body": {
+        "people_or_members": "25 Member States and 11 Associated Member States; over 600 institutes/universities worldwide use CERN facilities.",
+        "money_or_budget": "Member States contribute to capital and operating costs; experiments also receive substantial financing/construction support from participating funding agencies outside CERN's direct budget.",
+        "infrastructure": "Accelerator complex including LHC/HL-LHC programme, detectors, computing, laboratories, civil engineering and support infrastructure.",
+        "operational_capacity": "2026–2030 top priority is timely completion of HL-LHC and detector upgrades; long-term objective is to be ready to seek Council approval for FCC-ee in 2028."
+      },
+      "history": [
+        {
+          "date": "1954",
+          "event": "Convention entered into force, establishing CERN."
+        },
+        {
+          "date": "2012",
+          "event": "Higgs boson discovery at the LHC."
+        },
+        {
+          "date": "2026",
+          "event": "Updated European Strategy and CERN 2026–2030 strategy set current medium/long-term priorities."
+        }
+      ],
+      "relationships": [
+        {
+          "type": "governed-by",
+          "target": "25 Member States through CERN Council",
+          "evidence": "cern-governance"
+        },
+        {
+          "type": "used-by",
+          "target": "600+ institutes and universities worldwide",
+          "evidence": "cern-members"
+        },
+        {
+          "type": "co-funded-with",
+          "target": "national and international experiment funding agencies",
+          "evidence": "cern-members"
+        },
+        {
+          "type": "strategy-linked-to",
+          "target": "European Strategy for Particle Physics",
+          "evidence": "cern-strategy-2630"
+        }
+      ],
+      "operators": [
+        {
+          "operator": "House",
+          "status": "synthesis",
+          "why": "Large-scale shared research infrastructure contains differentiated experiments, departments and external collaborations.",
+          "test": "Map local experiment autonomy versus shared infrastructure/governance.",
+          "fails_if": "CERN is treated as one homogeneous scientific actor."
+        },
+        {
+          "operator": "Forge",
+          "status": "synthesis",
+          "why": "Long-horizon engineering and experimentation transform money, expertise and hardware into capability and knowledge.",
+          "test": "Track inputs, milestones, technical learning, failed paths and resulting capability.",
+          "fails_if": "Only successful discoveries are counted and engineering learning is ignored."
+        },
+        {
+          "operator": "Garden",
+          "status": "synthesis",
+          "why": "Training, shared facilities and international collaboration can grow future scientific/engineering capability.",
+          "test": "Measure transferable training, institute participation and technology/knowledge spillovers.",
+          "fails_if": "The system produces outputs without expanding participant capability."
+        },
+        {
+          "operator": "Door",
+          "status": "synthesis",
+          "why": "Membership, experiment participation, facility access and strategic approval are distinct access gates.",
+          "test": "Specify governance/technical conditions for each form of access.",
+          "fails_if": "Scientific openness is assumed to imply equal institutional access."
+        }
+      ],
+      "fruit": {
+        "documented_outputs": [
+          "fundamental physics results",
+          "accelerator/detector technology",
+          "training",
+          "knowledge transfer",
+          "shared international scientific infrastructure"
+        ],
+        "measurable_current_examples": [
+          "25 Member States",
+          "600+ participating institutes/universities",
+          "HL-LHC completion programme",
+          "2028 decision readiness target for FCC-ee"
+        ],
+        "measurement_limits": "Discovery value is uncertain ex ante; narrow near-term return metrics can miss long-horizon scientific option value and capability spillovers."
+      },
+      "shadow": {
+        "known_unknowns": [
+          "Future scientific payoff and total long-term opportunity cost of next-generation collider choices.",
+          "Distribution of scientific/industrial return across Member and non-Member participants."
+        ],
+        "missingness_mechanism": "Long-horizon research contains irreducible uncertainty; future discoveries cannot be directly observed before investment decisions.",
+        "evidence_gap": "A deeper dossier needs programme costs, schedule risk, environmental impacts, procurement/industrial return and training outcomes in comparable time series."
+      },
+      "tensions": [
+        {
+          "status": "observed",
+          "text": "CERN must balance fundamental scientific priorities, stakeholder value, long-lived infrastructure and future-option decisions over decades."
+        },
+        {
+          "status": "question",
+          "text": "How should institutions evaluate projects whose central value is discovering what cannot be predicted in advance?"
+        },
+        {
+          "status": "question",
+          "text": "How does a shared intergovernmental House preserve scientific exploration while satisfying financial and political accountability?"
+        }
+      ],
+      "discovery_questions": [
+        "Can Fruit evaluation represent option value and capability creation without reducing science to near-term deliverables?",
+        "Which parts of CERN are modular enough to innovate locally, and which shared systems are single points of failure?",
+        "How do Member-State contributions, experimental funding and industrial return shape the actual network of capability?"
+      ],
+      "evidence_boundary": "No assessment here ranks collider projects or makes political recommendations. Operator mappings are project syntheses."
+    },
+    {
+      "id": "icrc",
+      "identity": {
+        "name": "International Committee of the Red Cross",
+        "kind": "neutral independent humanitarian organization",
+        "jurisdiction_or_scope": "Operations in armed conflict and other situations of violence worldwide",
+        "legal_or_institutional_form": "private association under Swiss law with international humanitarian mandate/status"
+      },
+      "primary_rooms": [
+        "world-systems",
+        "law-justice",
+        "civil-society",
+        "life-body",
+        "time-history"
+      ],
+      "sources": [
+        {
+          "id": "icrc-annual-2025",
+          "type": "official",
+          "title": "ICRC Annual Report 2025",
+          "url": "https://www.icrc.org/en/report/icrc-annual-report-2025",
+          "supports": [
+            "operations",
+            "funding",
+            "outcomes"
+          ]
+        },
+        {
+          "id": "icrc-finance",
+          "type": "official",
+          "title": "Our finances",
+          "url": "https://www.icrc.org/en/our-finances",
+          "supports": [
+            "voluntary funding model",
+            "donor mix"
+          ]
+        },
+        {
+          "id": "icrc-governance",
+          "type": "official",
+          "title": "The governing bodies of the ICRC",
+          "url": "https://www.icrc.org/en/governing-bodies-icrc",
+          "supports": [
+            "governance",
+            "Assembly",
+            "Directorate"
+          ]
+        },
+        {
+          "id": "icrc-accountability",
+          "type": "official",
+          "title": "Transparency and Accountability",
+          "url": "https://www.icrc.org/en/transparency-and-accountability",
+          "supports": [
+            "evaluation",
+            "accountability",
+            "evidence-based programming"
+          ]
+        }
+      ],
+      "spirit": {
+        "documented_mission": "Protect lives and dignity of people affected by armed conflict and other violence, assist them, and promote respect for international humanitarian law.",
+        "legitimacy_basis": "Humanitarian mandate, Geneva Conventions context, neutrality/independence/impartiality principles and long-standing field practice.",
+        "values_or_norms": [
+          "humanity",
+          "impartiality",
+          "neutrality",
+          "independence",
+          "dignity",
+          "international humanitarian law"
+        ],
+        "project_interpretation": "Spirit is the legitimacy required to enter conflict environments where ordinary political alignment could destroy access."
+      },
+      "mind": {
+        "governance": "Assembly is supreme governing body; Assembly Council supports it; Directorate is executive body responsible for day-to-day operational effectiveness.",
+        "decision_system": "Field assessment, confidential dialogue/negotiation, protection work, legal interpretation, humanitarian programming and operational prioritization.",
+        "knowledge_system": "Field presence, legal expertise, tracing/protection data, health/water assessments and programme monitoring/evaluation.",
+        "feedback_and_oversight": "Annual reporting, evaluation, accountability-to-affected-people processes, policies and donor reporting."
+      },
+      "body": {
+        "people_or_members": "Operations in more than 90 countries; institutional workforce and Red Cross/Red Crescent partnerships not reduced to one headcount in this dossier.",
+        "money_or_budget": "Around CHF 1.76 billion in contributions sustained 2025 operations; 84% came from governments and the European Commission, and 45% of funding was flexible.",
+        "infrastructure": "Field offices, logistics, medical support, water/sanitation projects, detention visits, tracing systems and humanitarian supply capacity.",
+        "operational_capacity": "2025 examples include improved water/shelter/sanitary access for 33.53 million people, 8.47 million primary-care consultations at supported centres, and 28,693 people's fate/whereabouts clarified."
+      },
+      "history": [
+        {
+          "date": "1863",
+          "event": "ICRC founded in Geneva."
+        },
+        {
+          "date": "2025",
+          "event": "Worked amid more than 130 armed conflicts according to 2025 annual reporting."
+        }
+      ],
+      "relationships": [
+        {
+          "type": "receives-funding-from",
+          "target": "states, European Commission, Red Cross/Red Crescent societies and other public/private sources",
+          "evidence": "icrc-finance"
+        },
+        {
+          "type": "negotiates-access-with",
+          "target": "states and armed actors in conflict settings",
+          "evidence": "icrc-annual-2025"
+        },
+        {
+          "type": "serves/protects",
+          "target": "people affected by armed conflict and other violence",
+          "evidence": "icrc-accountability"
+        },
+        {
+          "type": "promotes",
+          "target": "international humanitarian law",
+          "evidence": "icrc-annual-2025"
+        }
+      ],
+      "operators": [
+        {
+          "operator": "Door",
+          "status": "synthesis",
+          "why": "Humanitarian access to detainees, communities and conflict areas depends on negotiated permission, neutrality and trust.",
+          "test": "Map who controls access, what conditions apply, and where access is denied or partial.",
+          "fails_if": "Access is described without identifying controlling actors and constraints."
+        },
+        {
+          "operator": "Bridge",
+          "status": "synthesis",
+          "why": "The ICRC often operates between conflict parties and affected people without becoming a belligerent.",
+          "test": "Assess whether intermediary positioning creates practical access while preserving independence.",
+          "fails_if": "Neutrality is assumed from mission language without examining operational relationships."
+        },
+        {
+          "operator": "Garden",
+          "status": "synthesis",
+          "why": "Many interventions aim not only at relief but resilience/capability such as water, health and rehabilitation.",
+          "test": "Measure whether assistance restores independent functioning and local capacity.",
+          "fails_if": "Immediate output is mistaken for durable capability."
+        },
+        {
+          "operator": "Shadow",
+          "status": "synthesis",
+          "why": "Conflict conditions create systematic missingness: inaccessible areas, missing persons, confidentiality and security constraints.",
+          "test": "Record why populations/events are unobserved and how conclusions change under access limitations.",
+          "fails_if": "Unknown conflict information is treated as concealed misconduct by default."
+        }
+      ],
+      "fruit": {
+        "documented_outputs": [
+          "protection visits",
+          "family tracing/reunification",
+          "food and essential assistance",
+          "health care",
+          "water/sanitation",
+          "rehabilitation",
+          "IHL promotion"
+        ],
+        "measurable_current_examples": [
+          "33.53M people with improved water/shelter/sanitation access",
+          "8.47M primary-care consultations",
+          "28,693 fate/whereabouts cases clarified",
+          "CHF 1.76B contributions in 2025"
+        ],
+        "measurement_limits": "Humanitarian outputs do not by themselves identify counterfactual lives saved, durable resilience, or effects where access is denied."
+      },
+      "shadow": {
+        "known_unknowns": [
+          "Needs and harms in places without sufficient humanitarian access.",
+          "Counterfactual effects of confidential dialogue and prevention work.",
+          "Long-run dependence/capability effects of emergency assistance in repeated crises."
+        ],
+        "missingness_mechanism": "Conflict access, security, confidentiality and disrupted records can make missingness non-random.",
+        "evidence_gap": "A deeper dossier should compare access constraints, flexible versus earmarked funding, repeated-country exposure and local-capacity outcomes over time."
+      },
+      "tensions": [
+        {
+          "status": "observed",
+          "text": "A large share of ICRC funding comes from governments/European Commission while the organization emphasizes independence and neutrality."
+        },
+        {
+          "status": "question",
+          "text": "How does funding concentration interact with perceived and operational independence?"
+        },
+        {
+          "status": "question",
+          "text": "When should emergency relief prioritize direct delivery versus local capability-building under severe time and security constraints?"
+        }
+      ],
+      "discovery_questions": [
+        "Can Door analysis quantify humanitarian access rather than treating neutrality as an abstract principle?",
+        "Does flexible funding improve the organization's ability to follow need rather than donor earmarks?",
+        "Where does repeated emergency assistance become capability-building, and where can it unintentionally create dependency?"
+      ],
+      "evidence_boundary": "Funding composition is a documented fact, not evidence of compromised neutrality. Any causal claim about donor influence requires separate evidence."
+    }
+  ]
+}
