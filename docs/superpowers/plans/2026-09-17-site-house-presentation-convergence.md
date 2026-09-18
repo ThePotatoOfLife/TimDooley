@@ -273,7 +273,7 @@ git commit -m "feat: derive contextual continuation paths from House authority"
 - Consumes: shell type from House registry.
 - Produces: CI failure when active editorial/long-form pages recreate global site-level themes/navigation outside approved shared files.
 
-- [ ] **Step 1: Define approved global owners**
+- [x] **Step 1: Define approved global owners**
 
 At minimum:
 
@@ -286,15 +286,15 @@ app/specialist-house.css (namespaced only)
 app/utility-house.css (namespaced only)
 ```
 
-- [ ] **Step 2: Add RED scan of active registered source pages**
+- [x] **Step 2: Add RED scan of active registered source pages**
 
 Detect newly introduced inline `:root`/`body`/generic site-nav ownership in editorial/long-form surfaces. Exempt documented component-local scopes, specialists, utilities and diagnostics.
 
-- [ ] **Step 3: Remove or scope violations until GREEN**
+- [x] **Step 3: Remove or scope violations until GREEN**
 
 Prefer deleting redundant global blocks now owned by `site-system.css` over copying them into another stylesheet.
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git commit -m "test: enforce shared CSS ownership across public readers"
@@ -313,21 +313,21 @@ git commit -m "test: enforce shared CSS ownership across public readers"
 **Interfaces:**
 - Produces a consistent baseline for keyboard, focus, touch and narrow-screen navigation without rewriting specialist apps.
 
-- [ ] **Step 1: Add source/built assertions**
+- [x] **Step 1: Add source/built assertions**
 
 Require visible `:focus-visible`, mobile House navigation, 44px-class touch targets where practical, reduced-motion handling, horizontal overflow safety for breadcrumbs/continuation rows, and `aria-current` on active routes.
 
-- [ ] **Step 2: Harden shared editorial shell**
+- [x] **Step 2: Harden shared editorial shell**
 
 Check 320–390px width behavior for House bar, breadcrumbs, long titles and continuation links.
 
-- [ ] **Step 3: Harden namespaced specialist/utility escapes**
+- [x] **Step 3: Harden namespaced specialist/utility escapes**
 
 No fixed overlay may cover app primary controls; controls must remain keyboard reachable.
 
-- [ ] **Step 4: Run all specialist and reader suites**
+- [x] **Step 4: Run all specialist and reader suites**
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git commit -m "feat: harden House navigation accessibility and responsive behavior"
@@ -344,11 +344,11 @@ git commit -m "feat: harden House navigation accessibility and responsive behavi
 **Interfaces:**
 - Produces one merge-ready draft candidate with no known House architecture/presentation regressions.
 
-- [ ] **Step 1: Run the complete repository workflow**
+- [x] **Step 1: Run the complete repository workflow**
 
 Require all current quality/build stages to pass.
 
-- [ ] **Step 2: Inspect representative built shell families**
+- [x] **Step 2: Inspect representative built shell families**
 
 ```text
 Home
@@ -366,13 +366,15 @@ one generated record
 one generated question
 ```
 
-- [ ] **Step 3: Verify deployment/SEO invariants**
+- [x] **Step 3: Verify deployment/SEO invariants**
 
 Check canonical routes, robots rules, sitemap membership, archive absence, legacy redirect behavior, exact five-Door primary order, and Great Book secondary visibility.
 
-- [ ] **Step 4: Update PR body with exact head SHA and workflow run**
+- [x] **Step 4: Update PR body with exact head SHA and workflow run**
 
 Do not claim green until the workflow conclusion is `success`.
+
+Verified on head `c11efde463a2ab84ada07cba7bedc80e10c30b5f` by Repository quality checks run `35296191199` (`success`).
 
 - [ ] **Step 5: Request final code review before merge decision**
 
