@@ -125,6 +125,6 @@ The larger room can then contain another Door.
 
 A useful compact formulation is:
 
-> **The Potato of Life is the complete relational organism. Father and Son are coupled fields; the vesica/mandorla is their shared threshold; the Axis provides orientation; Spirit is movement through the relation.**
+> **The Potato of Life is the complete triune relational organism. Source Field and Manifestation Field are coupled domains; Father and Son are theological roles oriented toward those domains; the vesica/mandorla is the shared Door; the Axis provides orientation; Spirit is living continuity through the relation.**
 
-This is a project-level symbolic model. It should remain distinguishable from mathematical facts about the vesica, historical claims about religious iconography and scientific claims about biology or neuroscience.
+This is a project-level symbolic model. It should remain distinguishable from mathematical facts about the vesica, historical claims about religious iconography and scientific claims about biology or neuroscience. The geometry is two-field while the theology is triune; no third sphere is required merely to represent Spirit.
