@@ -310,7 +310,7 @@ Nested Rooms obey these laws:
 - a screen coordinate, diagram position, URL path or visual cluster is a replaceable View and never determines ontology;
 - if a candidate subcontext lacks distinct semantics, tasks or boundary rules, model it as a Path, View, Programme, Collection or topic instead of a nested Room.
 
-The canonical nested-Room registry is `data/house/subrooms.json`; its relational embedding contract is `data/house/topology.json`.
+The canonical nested-Room registry is `data/house/subrooms.json`; its relational embedding contract is `data/house/topology.json`; guarded cross-Room passages are owned by `data/house/interfaces.json`.
 
 ---
 
