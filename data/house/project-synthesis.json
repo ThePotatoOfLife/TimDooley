@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "authority": "project-synthesis",
   "purpose": "Bind the major repository development waves, center operators, living metabolisms, Rooms, lenses, tests and outputs into one center-out composition without replacing their canonical owners.",
@@ -1595,5 +1595,72 @@
     "forge": "research-lab/",
     "fruit": "works/"
   },
-  "fullness_rule": "A Room is considered compositionally full when it has a clear owner/boundary, substantive holdings, a center contribution, at least one inward/outward handoff, relevant tests/lenses where appropriate, and a public or archive route for its mature material."
+  "fullness_rule": "A Room is considered compositionally full when it has a clear owner/boundary, substantive holdings, a center contribution, at least one inward/outward handoff, relevant tests/lenses where appropriate, and a public or archive route for its mature material.",
+  "scoped_centers": {
+    "rule": "The Potato of Life remains the single semantic center and Axis the global navigation centerline. Local centers are scoped replicas/orientation points inside a Room, page, city/body/temple comparison or workflow; they must declare scope and parent center.",
+    "research_context": "Comparative religion records repeated/replicated center and axis imagery in houses, temples, cities, bodies and objects; multiple sacred centers can coexist within a cosmology. The project uses this only as comparative support for scoped navigation.",
+    "levels": [
+      {
+        "id": "semantic-global",
+        "center": "potato-of-life",
+        "scope": "whole project",
+        "may_repeat": false
+      },
+      {
+        "id": "spatial-global",
+        "center": "axis",
+        "scope": "whole House navigation",
+        "may_repeat": false
+      },
+      {
+        "id": "dwelling-center",
+        "center": "Room-defined orientation point",
+        "scope": "one canonical Room/Dwelling",
+        "may_repeat": true
+      },
+      {
+        "id": "nested-room-center",
+        "center": "question/owner/interface focal point",
+        "scope": "one nested Room",
+        "may_repeat": true
+      },
+      {
+        "id": "surface-center",
+        "center": "reader focal point",
+        "scope": "one public page/view",
+        "may_repeat": true
+      },
+      {
+        "id": "artifact-center",
+        "center": "composition or model focal point",
+        "scope": "one work/model",
+        "may_repeat": true
+      }
+    ],
+    "required_fields": [
+      "scope",
+      "parent_center",
+      "function",
+      "entry_routes",
+      "exit_routes",
+      "owner"
+    ],
+    "boundary": "A local center organizes a bounded context; it does not become a rival theological source, global Axis or proof that all traditions share one center.",
+    "sources": [
+      "https://www.encyclopedia.com/environment/encyclopedias-almanacs-transcripts-and-maps/axis-mundi",
+      "https://www.encyclopedia.com/environment/encyclopedias-almanacs-transcripts-and-maps/center-world"
+    ]
+  },
+  "depth_program": {
+    "authority": "knowledge/research/recent-commit-depth-audit-2026-09-18.json",
+    "stop_rule": "Deepen P0 cross-Room operators before another broad comparative population wave.",
+    "active_p0": [
+      "door-liminality",
+      "spirit-relation",
+      "culture-formation-control",
+      "axis-local-centers",
+      "fruit-consequence",
+      "tree-branching"
+    ]
+  }
 }
