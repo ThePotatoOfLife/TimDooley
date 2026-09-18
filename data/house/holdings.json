@@ -756,7 +756,7 @@
       "title": "Esoteric & Sacred Geometry",
       "dwelling_id": "traditions-texts",
       "purpose": "Handle historical/esoteric geometry, mandorla, Vesica, cosmological diagrams and source-led comparison.",
-      "primary_file_count": 3,
+      "primary_file_count": 4,
       "featured_holdings": [
         {
           "path": "knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json",
@@ -775,6 +775,12 @@
           "id": "vesica-esoteric-source-ledger",
           "kind": "source ledger for Vesica/Mandorla/Sun/Moon research",
           "basis": "exact-owner"
+        },
+        {
+          "path": "knowledge/traditions/providence-pyramid-pillars-atlas.json",
+          "id": "providence-pyramid-pillars-atlas",
+          "kind": "historical-symbolic comparative atlas",
+          "basis": "curated-symbol-architecture"
         }
       ],
       "public_surface_ids": [
@@ -5792,6 +5798,11 @@
       "path": "knowledge/world/world-shadow-research-index.json",
       "primary_owner_room_id": "subculture-group-formation",
       "basis": "world-topic"
+    },
+    {
+      "path": "knowledge/traditions/providence-pyramid-pillars-atlas.json",
+      "primary_owner_room_id": "esoteric-sacred-geometry",
+      "basis": "curated-symbol-architecture"
     }
   ],
   "curated_unowned_paths": [

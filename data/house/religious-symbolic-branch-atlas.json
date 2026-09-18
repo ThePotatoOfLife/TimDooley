@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "authority": "religious-symbolic-branch-atlas",
   "purpose": "Populate the Potato House with religious, mythic, angelic, demonic, underworld, esoteric and sacred-architecture subjects already present in the repository while preserving own-tradition meaning before comparison.",
@@ -1129,6 +1129,128 @@
       "visibility": "landmark",
       "note": "Spiral means recurrence with non-zero displacement; direction and outcome classify the route.",
       "boundary": "Narrative repetition alone is not enough to call something a Spiral."
+    },
+    {
+      "id": "eye-of-providence",
+      "label": "Eye of Providence",
+      "kind": "historical-symbol-and-reception",
+      "branch_id": "sacred-architecture",
+      "tradition": "Christian/European providential imagery; United States Great Seal; later esoteric/Masonic receptions",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "bible-christianity",
+        "developmental-genealogy"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk"
+      ],
+      "route_affinity": [
+        "eye",
+        "evaluation",
+        "providence"
+      ],
+      "source_files": [
+        "knowledge/traditions/providence-pyramid-pillars-atlas.json"
+      ],
+      "visibility": "landmark",
+      "note": "Historically documented providential/oversight symbol; useful for Eye as discernment/evaluation above or across structure.",
+      "boundary": "Eye imagery does not by itself prove surveillance, secret control or organizational membership."
+    },
+    {
+      "id": "great-seal-pyramid",
+      "label": "Great Seal Unfinished Pyramid",
+      "kind": "historical-symbol",
+      "branch_id": "sacred-architecture",
+      "tradition": "United States Great Seal reverse, adopted 1782",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "developmental-genealogy"
+      ],
+      "planes": [
+        "world-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "trunk",
+        "canopy"
+      ],
+      "route_affinity": [
+        "mountain",
+        "integration",
+        "foundation"
+      ],
+      "source_files": [
+        "knowledge/traditions/providence-pyramid-pillars-atlas.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Thirteen-course unfinished pyramid with 1776 at the base; strong structural comparator for foundation → layered integration → unfinished summit.",
+      "boundary": "The Potato/Mountain reading is comparative; the seal has its own documented civic meaning."
+    },
+    {
+      "id": "jachin-boaz",
+      "label": "Jachin & Boaz",
+      "kind": "biblical-threshold-symbol",
+      "branch_id": "sacred-architecture",
+      "tradition": "1 Kings 7 Temple pillars; later Masonic reception",
+      "room_ids": [
+        "bible-christianity",
+        "esoteric-sacred-geometry",
+        "symbolic-architecture"
+      ],
+      "planes": [
+        "world-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "trunk"
+      ],
+      "route_affinity": [
+        "door",
+        "threshold",
+        "support"
+      ],
+      "source_files": [
+        "knowledge/traditions/providence-pyramid-pillars-atlas.json",
+        "knowledge/traditions/biblical-heavenly-pattern-temple-city-atlas.json"
+      ],
+      "visibility": "landmark",
+      "note": "Two named pillars flank the Temple entrance; useful comparator for differentiated supports stabilizing a legitimate Door.",
+      "boundary": "Later Masonic meanings are a reception layer, not the original biblical meaning."
+    },
+    {
+      "id": "year-1776-provenance",
+      "label": "1776 / MDCCLXXVI",
+      "kind": "chronology-provenance-node",
+      "branch_id": "sacred-architecture",
+      "tradition": "United States founding chronology; separate coincidence with Bavarian Illuminati founding year",
+      "room_ids": [
+        "developmental-genealogy",
+        "provenance-evidence",
+        "esoteric-sacred-geometry"
+      ],
+      "planes": [
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk"
+      ],
+      "route_affinity": [
+        "provenance",
+        "foundation-date"
+      ],
+      "source_files": [
+        "knowledge/traditions/providence-pyramid-pillars-atlas.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Useful model for putting exact founding dates/source provenance at the base of later symbolic architecture.",
+      "boundary": "Shared year is not evidence of causal connection or secret coordination."
     }
   ],
   "corridors": [
@@ -1251,6 +1373,30 @@
       "to": "spiral-ladder-project",
       "type": "enters-route",
       "note": "Viable root/sprout potential enters the upward Life spiral."
+    },
+    {
+      "from": "jachin-boaz",
+      "to": "mandorla-vesica",
+      "type": "threshold-comparison",
+      "note": "Twin supports and overlap/threshold imagery both clarify passage into a differentiated interior without being historically identical."
+    },
+    {
+      "from": "eye-of-providence",
+      "to": "sacred-mountain-temple",
+      "type": "evaluation-over-structure",
+      "note": "Eye/evaluation can remain distinct from Mountain/status, preventing summit from being equated with truth."
+    },
+    {
+      "from": "great-seal-pyramid",
+      "to": "sacred-mountain-temple",
+      "type": "integration-comparison",
+      "note": "Layered pyramid compression is a useful comparator for Mountain/integration."
+    },
+    {
+      "from": "year-1776-provenance",
+      "to": "great-seal-pyramid",
+      "type": "inscribed-foundation",
+      "note": "The date at the base models visible chronology/provenance beneath later structure."
     }
   ]
 }
