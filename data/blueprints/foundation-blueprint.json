@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "status": "active-blueprint",
   "visibility": "backend-only",
   "entity": "foundation",
@@ -104,6 +104,28 @@
       "project_canon",
       "retrieved_at",
       "confidence"
+    ],
+    "geography": [
+      "emergence_places",
+      "place_precision",
+      "migration_or_relocation",
+      "virtual_or_distributed_origin"
+    ],
+    "current_state": [
+      "current_status",
+      "current_status_source",
+      "termination_or_supersession",
+      "living_successor",
+      "surviving_seed"
+    ],
+    "placement": [
+      "primary_room",
+      "supporting_rooms",
+      "field_stage",
+      "plane_projection",
+      "axis_direction",
+      "route_condition",
+      "motive_lens"
     ]
   },
   "relation_templates": [
@@ -126,6 +148,10 @@
     "A founding document is insufficient unless the reproduction/operation mechanism is stated.",
     "Refoundation must state what changed and what continuity is claimed.",
     "Superseded foundation states remain addressable in Archive.",
-    "Project-symbolic foundation claims retain their own evidence class."
-  ]
+    "Project-symbolic foundation claims retain their own evidence class.",
+    "Store current survival separately from historical origin.",
+    "Place Foundation stages rather than assigning one moral altitude to the whole Foundation.",
+    "Fear/love and angel/demon motifs may appear only as project-native motive lenses and cannot override evidence."
+  ],
+  "updated": "2026-09-18"
 }
