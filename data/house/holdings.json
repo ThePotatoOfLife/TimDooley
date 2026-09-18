@@ -1,5 +1,5 @@
 {
-  "version": "3.0.0",
+  "version": "3.1.0",
   "updated": "2026-09-18",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
@@ -6128,6 +6128,16 @@
       "path": "knowledge/research/foundation-larger-purpose-atlas.json",
       "primary_owner_room_id": "open-questions",
       "basis": "foundation-purpose-wave-008"
+    },
+    {
+      "path": "data/blueprints/foundation-blueprint.json",
+      "primary_owner_room_id": "house-architecture",
+      "basis": "whole-project-foundation-consolidation"
+    },
+    {
+      "path": "data/house/foundation-integration-contract.json",
+      "primary_owner_room_id": "house-architecture",
+      "basis": "whole-project-foundation-consolidation"
     }
   ],
   "curated_unowned_paths": [
