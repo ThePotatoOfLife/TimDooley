@@ -1221,6 +1221,226 @@
       "confidence": "canonical-framework",
       "date": "2026-09-18",
       "notes": "Repetition becomes Spiral only when a real threshold produces retained change in state or capability."
+    },
+    {
+      "id": "house2701",
+      "source": "house",
+      "relationship": "contains-major-domain",
+      "target": "dwelling",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Ten constitutional top-level bounded contexts are publicly projected as Dwellings/Mansions without changing ownership."
+    },
+    {
+      "id": "house2702",
+      "source": "dwelling",
+      "relationship": "contains",
+      "target": "rooms",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Nested Rooms are differentiated bounded contexts within Dwellings."
+    },
+    {
+      "id": "house2703",
+      "source": "rooms",
+      "relationship": "may-contain",
+      "target": "chamber",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Chambers are optional third-level specialist cells, not mandatory taxonomy."
+    },
+    {
+      "id": "house2704",
+      "source": "mansions",
+      "relationship": "translation-neighbor-of",
+      "target": "dwelling",
+      "evidence": "historical-textual",
+      "confidence": "comparative",
+      "date": "2026-09-18",
+      "notes": "Mansion is retained as older English John 14:2 vocabulary; Dwelling is the neutral project scale term."
+    },
+    {
+      "id": "house2705",
+      "source": "court",
+      "relationship": "approaches",
+      "target": "gate",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Court models shared approach before perimeter admission."
+    },
+    {
+      "id": "house2706",
+      "source": "gate",
+      "relationship": "may-open-to",
+      "target": "door",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Gate handles domain admission; Door handles local guarded state transition."
+    },
+    {
+      "id": "house2707",
+      "source": "foundation",
+      "relationship": "supports",
+      "target": "house",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Foundation represents load-bearing invariants beneath the House."
+    },
+    {
+      "id": "house2708",
+      "source": "cornerstone",
+      "relationship": "aligns",
+      "target": "foundation",
+      "evidence": "comparative",
+      "confidence": "framework-comparator",
+      "date": "2026-09-18",
+      "notes": "Cornerstone is an alignment/reference role, not every foundation element."
+    },
+    {
+      "id": "house2709",
+      "source": "pillar",
+      "relationship": "supports-integration",
+      "target": "crown",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Pillar models repeated support beneath upper integration."
+    },
+    {
+      "id": "house2710",
+      "source": "temple",
+      "relationship": "alternative-view-of",
+      "target": "house",
+      "evidence": "comparative",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Temple emphasizes presence/access rather than ownership."
+    },
+    {
+      "id": "house2711",
+      "source": "temple",
+      "relationship": "contains-protected",
+      "target": "sanctuary",
+      "evidence": "historical-textual",
+      "confidence": "comparative",
+      "date": "2026-09-18",
+      "notes": "Sanctuary names protected presence within temple grammar."
+    },
+    {
+      "id": "house2712",
+      "source": "body",
+      "relationship": "alternative-view-of",
+      "target": "house",
+      "evidence": "comparative",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Body emphasizes functional differentiated members."
+    },
+    {
+      "id": "house2713",
+      "source": "city",
+      "relationship": "federates",
+      "target": "dwelling",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "City scales plurality into many dwellings, gates, roads and institutions."
+    },
+    {
+      "id": "house2714",
+      "source": "vine",
+      "relationship": "alternative-growth-view-of",
+      "target": "tree-of-life",
+      "evidence": "comparative",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Vine and Tree share organic participation/growth functions but remain textually distinct."
+    },
+    {
+      "id": "house2715",
+      "source": "vineyard",
+      "relationship": "tests-by",
+      "target": "fruit",
+      "evidence": "comparative",
+      "confidence": "framework-comparator",
+      "date": "2026-09-18",
+      "notes": "Vineyard is stewardship/productive field evaluated through fruit."
+    },
+    {
+      "id": "house2716",
+      "source": "archive",
+      "relationship": "preserves",
+      "target": "roots",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Archive preserves provenance/memory roots rather than generic stored value."
+    },
+    {
+      "id": "house2717",
+      "source": "treasury",
+      "relationship": "stores-future-capacity-for",
+      "target": "return",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Treasury/storehouse retains typed capacity for future use; not identical to Archive."
+    },
+    {
+      "id": "house2718",
+      "source": "river",
+      "relationship": "flows-through",
+      "target": "garden",
+      "evidence": "comparative",
+      "confidence": "framework-comparator",
+      "date": "2026-09-18",
+      "notes": "River models life/resource/information flow through a cultivated system."
+    },
+    {
+      "id": "house2719",
+      "source": "well",
+      "relationship": "accesses",
+      "target": "source",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Well is a local retrieval/access point to a deeper source."
+    },
+    {
+      "id": "house2720",
+      "source": "table",
+      "relationship": "hosts-participation-among",
+      "target": "rooms",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Table models shared review/exchange without merging identities or ownership."
+    },
+    {
+      "id": "house2721",
+      "source": "tabernacle",
+      "relationship": "provisional-predecessor-of",
+      "target": "house",
+      "evidence": "comparative",
+      "confidence": "framework-comparator",
+      "date": "2026-09-18",
+      "notes": "Portable/provisional architecture can precede a durable House without being identical to it."
+    },
+    {
+      "id": "house2722",
+      "source": "throne",
+      "relationship": "orients",
+      "target": "crown",
+      "evidence": "framework",
+      "confidence": "canonical-framework",
+      "date": "2026-09-18",
+      "notes": "Seat/Throne is responsibility/orientation, tested by return/service rather than status alone."
     }
   ]
 }
