@@ -1,7 +1,7 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "updated": "2026-09-18",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
@@ -213,7 +213,10 @@
       "Order of Nine Angles keeps one canonical extremism/network entity ID; religious-adjacent research now uses a namespaced contextual projection with canonical_entity_id back-reference.",
       "FAQ canonical ownership no longer depends on root research.json; current specialist owners now carry those concepts.",
       "Root legacy research artifacts now declare their own lifecycle/authority status instead of relying on filename semantics.",
-      "knowledge.json stale 'still live' metadata removed; its retirement is now consistently documented."
+      "knowledge.json stale 'still live' metadata removed; its retirement is now consistently documented.",
+      "Potato Biology now has one canonical factual owner: knowledge/science/potato-biology-ecology-development-canon.json.",
+      "knowledge/biology/potato-growth-principles.json is now explicitly the practice-facing projection rather than a second biology authority.",
+      "Alternative Potato research staging material was externally re-sourced, promoted, then retired with blob provenance."
     ],
     "next_retirement_candidates": [
       {
@@ -247,6 +250,16 @@
         "path": "data/country-nodes-batch-2026-09-07-*.json",
         "action": "deleted",
         "reason": "retired generated node migration layer; data/country-nodes.json remains the consolidated graph projection"
+      },
+      {
+        "path": "data/potatoverse-alternative-directions.json",
+        "action": "deleted",
+        "reason": "30-finding research staging layer absorbed into canonical potato science/human-ecology owners"
+      },
+      {
+        "path": "data/potatoverse-alternative-links.json",
+        "action": "deleted",
+        "reason": "self-contained adXX staging graph retired with its source layer; durable relations preserved in canonical synthesis rather than promoting a parallel node taxonomy"
       }
     ],
     "root_source_strata": {
