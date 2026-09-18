@@ -1,0 +1,807 @@
+{
+  "id": "foundation-placement-wave-003",
+  "title": "Foundation Placement Wave 003 — Rooms, Fields, Plane and Axis",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "contract": "data/house/foundation-axis-placement-contract.json",
+  "records": [
+    {
+      "foundation_id": "quakerism-foundation",
+      "name": "Religious Society of Friends / Quakerism",
+      "current_status": "active",
+      "current_status_source": "https://www.quaker.org.uk/meetings",
+      "primary_room": "other-traditions",
+      "supporting_rooms": [
+        "chronology-events",
+        "developmental-genealogy",
+        "subculture-group-formation",
+        "practice-ethics"
+      ],
+      "field_projection": [
+        {
+          "stage": "root/substrate",
+          "field": "lower-manifestation-field",
+          "plane": "below-plane",
+          "direction": "root-down",
+          "content": "religious questioning and seeker networks"
+        },
+        {
+          "stage": "Door",
+          "field": "shared-door",
+          "plane": "world-plane",
+          "direction": "through-door",
+          "content": "1652 movement crystallization and gathering"
+        },
+        {
+          "stage": "sprout/first viable operation",
+          "field": "lower-manifestation-field",
+          "plane": "world-plane",
+          "direction": "sprout-up",
+          "content": "repeatable meeting practice"
+        },
+        {
+          "stage": "branching",
+          "field": "overlap",
+          "plane": "world-plane+heaven-plane",
+          "direction": "branch-out",
+          "content": "distributed meetings and testimonies"
+        },
+        {
+          "stage": "return/consequence",
+          "field": "overlap",
+          "plane": "world-plane",
+          "direction": "return-down",
+          "content": "peace/service/civic work varies by branch"
+        }
+      ],
+      "motive_lens": [
+        "transcendence/faith",
+        "liberation/rights",
+        "care/love"
+      ],
+      "route_condition": "unresolved/mixed until episode-level consequence evidence is supplied",
+      "placement_guard": "The Foundation itself is not assigned a moral altitude. Only stages receive field/plane/direction coordinates."
+    },
+    {
+      "foundation_id": "lds-church-foundation",
+      "name": "Church of Jesus Christ of Latter-day Saints / early Latter-day Saint movement",
+      "current_status": "active",
+      "current_status_source": "https://www.churchofjesuschrist.org/",
+      "primary_room": "other-traditions",
+      "supporting_rooms": [
+        "bible-christianity",
+        "chronology-events",
+        "subculture-group-formation",
+        "geography-countries"
+      ],
+      "field_projection": [
+        {
+          "stage": "root/substrate",
+          "field": "lower-manifestation-field",
+          "plane": "below-plane",
+          "direction": "root-down",
+          "content": "restorationist scripture/revelation field"
+        },
+        {
+          "stage": "Door",
+          "field": "shared-door",
+          "plane": "world-plane",
+          "direction": "through-door",
+          "content": "formal organization in Fayette"
+        },
+        {
+          "stage": "sprout/first viable operation",
+          "field": "lower-manifestation-field",
+          "plane": "world-plane",
+          "direction": "sprout-up",
+          "content": "congregation and offices"
+        },
+        {
+          "stage": "branching",
+          "field": "overlap",
+          "plane": "world-plane+heaven-plane",
+          "direction": "branch-out",
+          "content": "missionary expansion and denominational branching"
+        },
+        {
+          "stage": "return/consequence",
+          "field": "overlap",
+          "plane": "world-plane",
+          "direction": "return-down",
+          "content": "community institutions and religious practice"
+        }
+      ],
+      "motive_lens": [
+        "transcendence/faith",
+        "identity/belonging",
+        "coordination/order"
+      ],
+      "route_condition": "unresolved/mixed until episode-level consequence evidence is supplied",
+      "placement_guard": "The Foundation itself is not assigned a moral altitude. Only stages receive field/plane/direction coordinates."
+    },
+    {
+      "foundation_id": "salvation-army-foundation",
+      "name": "The Salvation Army",
+      "current_status": "active",
+      "current_status_source": "https://www.salvationarmy.org/history",
+      "primary_room": "other-traditions",
+      "supporting_rooms": [
+        "practice-ethics",
+        "subculture-group-formation",
+        "infrastructure-capability",
+        "chronology-events"
+      ],
+      "field_projection": [
+        {
+          "stage": "root/substrate",
+          "field": "lower-manifestation-field",
+          "plane": "below-plane",
+          "direction": "root-down",
+          "content": "urban poverty and mission field"
+        },
+        {
+          "stage": "Door",
+          "field": "shared-door",
+          "plane": "world-plane",
+          "direction": "through-door",
+          "content": "1865 mission organization"
+        },
+        {
+          "stage": "sprout/first viable operation",
+          "field": "lower-manifestation-field",
+          "plane": "world-plane",
+          "direction": "sprout-up",
+          "content": "repeatable corps/service model"
+        },
+        {
+          "stage": "branching",
+          "field": "overlap",
+          "plane": "world-plane+heaven-plane",
+          "direction": "branch-out",
+          "content": "international territories"
+        },
+        {
+          "stage": "return/consequence",
+          "field": "overlap",
+          "plane": "world-plane",
+          "direction": "return-down",
+          "content": "religious and social-service activity"
+        }
+      ],
+      "motive_lens": [
+        "transcendence/faith",
+        "care/love",
+        "scarcity/material-need"
+      ],
+      "route_condition": "unresolved/mixed until episode-level consequence evidence is supplied",
+      "placement_guard": "The Foundation itself is not assigned a moral altitude. Only stages receive field/plane/direction coordinates."
+    },
+    {
+      "foundation_id": "icrc-red-cross-foundation",
+      "name": "International Committee of the Red Cross / Red Cross movement seed",
+      "current_status": "active",
+      "current_status_source": "https://www.icrc.org/en/our-mandate-and-mission",
+      "primary_room": "law-justice",
+      "supporting_rooms": [
+        "politics-governance",
+        "infrastructure-capability",
+        "chronology-events",
+        "developmental-genealogy"
+      ],
+      "field_projection": [
+        {
+          "stage": "root/substrate",
+          "field": "lower-manifestation-field",
+          "plane": "below-plane",
+          "direction": "root-down",
+          "content": "battlefield suffering and witnessed failure"
+        },
+        {
+          "stage": "Door",
+          "field": "shared-door",
+          "plane": "world-plane",
+          "direction": "through-door",
+          "content": "Geneva committee formation"
+        },
+        {
+          "stage": "sprout/first viable operation",
+          "field": "lower-manifestation-field",
+          "plane": "world-plane",
+          "direction": "sprout-up",
+          "content": "neutral relief coordination"
+        },
+        {
+          "stage": "branching",
+          "field": "overlap",
+          "plane": "world-plane+heaven-plane",
+          "direction": "branch-out",
+          "content": "national societies + treaty law"
+        },
+        {
+          "stage": "return/consequence",
+          "field": "overlap",
+          "plane": "world-plane",
+          "direction": "return-down",
+          "content": "protection and assistance in conflict"
+        }
+      ],
+      "motive_lens": [
+        "care/love",
+        "fear/protection",
+        "coordination/order"
+      ],
+      "route_condition": "unresolved/mixed until episode-level consequence evidence is supplied",
+      "placement_guard": "The Foundation itself is not assigned a moral altitude. Only stages receive field/plane/direction coordinates."
+    },
+    {
+      "foundation_id": "ymca-foundation",
+      "name": "YMCA movement",
+      "current_status": "active",
+      "current_status_source": "https://www.ymca.int/",
+      "primary_room": "subculture-group-formation",
+      "supporting_rooms": [
+        "other-traditions",
+        "practice-ethics",
+        "chronology-events",
+        "infrastructure-capability"
+      ],
+      "field_projection": [
+        {
+          "stage": "root/substrate",
+          "field": "lower-manifestation-field",
+          "plane": "below-plane",
+          "direction": "root-down",
+          "content": "urban worker dislocation and fellowship need"
+        },
+        {
+          "stage": "Door",
+          "field": "shared-door",
+          "plane": "world-plane",
+          "direction": "through-door",
+          "content": "1844 London meeting"
+        },
+        {
+          "stage": "sprout/first viable operation",
+          "field": "lower-manifestation-field",
+          "plane": "world-plane",
+          "direction": "sprout-up",
+          "content": "local mutual-improvement association"
+        },
+        {
+          "stage": "branching",
+          "field": "overlap",
+          "plane": "world-plane+heaven-plane",
+          "direction": "branch-out",
+          "content": "international YMCAs"
+        },
+        {
+          "stage": "return/consequence",
+          "field": "overlap",
+          "plane": "world-plane",
+          "direction": "return-down",
+          "content": "youth/community services"
+        }
+      ],
+      "motive_lens": [
+        "identity/belonging",
+        "care/love",
+        "transcendence/faith"
+      ],
+      "route_condition": "unresolved/mixed until episode-level consequence evidence is supplied",
+      "placement_guard": "The Foundation itself is not assigned a moral altitude. Only stages receive field/plane/direction coordinates."
+    },
+    {
+      "foundation_id": "alcoholics-anonymous-foundation",
+      "name": "Alcoholics Anonymous",
+      "current_status": "active",
+      "current_status_source": "https://www.aa.org/",
+      "primary_room": "subculture-group-formation",
+      "supporting_rooms": [
+        "whole-body",
+        "practice-ethics",
+        "chronology-events",
+        "developmental-genealogy"
+      ],
+      "field_projection": [
+        {
+          "stage": "root/substrate",
+          "field": "lower-manifestation-field",
+          "plane": "below-plane",
+          "direction": "root-down",
+          "content": "addiction crisis and failed individual recovery"
+        },
+        {
+          "stage": "Door",
+          "field": "shared-door",
+          "plane": "world-plane",
+          "direction": "through-door",
+          "content": "peer encounter and first repeatable recovery relation"
+        },
+        {
+          "stage": "sprout/first viable operation",
+          "field": "lower-manifestation-field",
+          "plane": "world-plane",
+          "direction": "sprout-up",
+          "content": "meeting + Step practice"
+        },
+        {
+          "stage": "branching",
+          "field": "overlap",
+          "plane": "world-plane+heaven-plane",
+          "direction": "branch-out",
+          "content": "local groups"
+        },
+        {
+          "stage": "return/consequence",
+          "field": "overlap",
+          "plane": "world-plane",
+          "direction": "return-down",
+          "content": "peer support and service"
+        }
+      ],
+      "motive_lens": [
+        "care/love",
+        "identity/belonging",
+        "fear/protection"
+      ],
+      "route_condition": "unresolved/mixed until episode-level consequence evidence is supplied",
+      "placement_guard": "The Foundation itself is not assigned a moral altitude. Only stages receive field/plane/direction coordinates."
+    },
+    {
+      "foundation_id": "scouting-foundation",
+      "name": "Scout Movement",
+      "current_status": "active",
+      "current_status_source": "https://www.scout.org/who-we-are/scout-movement/scoutings-history",
+      "primary_room": "subculture-group-formation",
+      "supporting_rooms": [
+        "practice-ethics",
+        "chronology-events",
+        "infrastructure-capability",
+        "games-simulations"
+      ],
+      "field_projection": [
+        {
+          "stage": "root/substrate",
+          "field": "lower-manifestation-field",
+          "plane": "below-plane",
+          "direction": "root-down",
+          "content": "youth training experiments"
+        },
+        {
+          "stage": "Door",
+          "field": "shared-door",
+          "plane": "world-plane",
+          "direction": "through-door",
+          "content": "Brownsea camp"
+        },
+        {
+          "stage": "sprout/first viable operation",
+          "field": "lower-manifestation-field",
+          "plane": "world-plane",
+          "direction": "sprout-up",
+          "content": "repeatable patrol method"
+        },
+        {
+          "stage": "branching",
+          "field": "overlap",
+          "plane": "world-plane+heaven-plane",
+          "direction": "branch-out",
+          "content": "national/international scouting"
+        },
+        {
+          "stage": "return/consequence",
+          "field": "overlap",
+          "plane": "world-plane",
+          "direction": "return-down",
+          "content": "education, service and civic participation"
+        }
+      ],
+      "motive_lens": [
+        "identity/belonging",
+        "coordination/order",
+        "care/love"
+      ],
+      "route_condition": "unresolved/mixed until episode-level consequence evidence is supplied",
+      "placement_guard": "The Foundation itself is not assigned a moral altitude. Only stages receive field/plane/direction coordinates."
+    },
+    {
+      "foundation_id": "greenpeace-foundation",
+      "name": "Greenpeace",
+      "current_status": "active",
+      "current_status_source": "https://www.greenpeace.org/canada/en/faq/",
+      "primary_room": "subculture-group-formation",
+      "supporting_rooms": [
+        "geography-countries",
+        "information-ecology",
+        "chronology-events",
+        "practice-ethics"
+      ],
+      "field_projection": [
+        {
+          "stage": "root/substrate",
+          "field": "lower-manifestation-field",
+          "plane": "below-plane",
+          "direction": "root-down",
+          "content": "nuclear-testing/environmental threat"
+        },
+        {
+          "stage": "Door",
+          "field": "shared-door",
+          "plane": "world-plane",
+          "direction": "through-door",
+          "content": "1971 voyage"
+        },
+        {
+          "stage": "sprout/first viable operation",
+          "field": "lower-manifestation-field",
+          "plane": "world-plane",
+          "direction": "sprout-up",
+          "content": "witness-based campaign model"
+        },
+        {
+          "stage": "branching",
+          "field": "overlap",
+          "plane": "world-plane+heaven-plane",
+          "direction": "branch-out",
+          "content": "global offices/campaigns"
+        },
+        {
+          "stage": "return/consequence",
+          "field": "overlap",
+          "plane": "world-plane",
+          "direction": "return-down",
+          "content": "public pressure and environmental advocacy"
+        }
+      ],
+      "motive_lens": [
+        "fear/protection",
+        "care/love",
+        "liberation/rights"
+      ],
+      "route_condition": "unresolved/mixed until episode-level consequence evidence is supplied",
+      "placement_guard": "The Foundation itself is not assigned a moral altitude. Only stages receive field/plane/direction coordinates."
+    },
+    {
+      "foundation_id": "naacp-foundation",
+      "name": "National Association for the Advancement of Colored People (NAACP)",
+      "current_status": "active",
+      "current_status_source": "https://naacp.org/about/our-history",
+      "primary_room": "law-justice",
+      "supporting_rooms": [
+        "politics-governance",
+        "subculture-group-formation",
+        "chronology-events",
+        "information-ecology"
+      ],
+      "field_projection": [
+        {
+          "stage": "root/substrate",
+          "field": "lower-manifestation-field",
+          "plane": "below-plane",
+          "direction": "root-down",
+          "content": "racial violence and rights denial"
+        },
+        {
+          "stage": "Door",
+          "field": "shared-door",
+          "plane": "world-plane",
+          "direction": "through-door",
+          "content": "1909 organizational founding"
+        },
+        {
+          "stage": "sprout/first viable operation",
+          "field": "lower-manifestation-field",
+          "plane": "world-plane",
+          "direction": "sprout-up",
+          "content": "legal/membership infrastructure"
+        },
+        {
+          "stage": "branching",
+          "field": "overlap",
+          "plane": "world-plane+heaven-plane",
+          "direction": "branch-out",
+          "content": "local/state units"
+        },
+        {
+          "stage": "return/consequence",
+          "field": "overlap",
+          "plane": "world-plane",
+          "direction": "return-down",
+          "content": "rights advocacy and civic participation"
+        }
+      ],
+      "motive_lens": [
+        "liberation/rights",
+        "care/love",
+        "fear/protection"
+      ],
+      "route_condition": "unresolved/mixed until episode-level consequence evidence is supplied",
+      "placement_guard": "The Foundation itself is not assigned a moral altitude. Only stages receive field/plane/direction coordinates."
+    },
+    {
+      "foundation_id": "amnesty-international-foundation",
+      "name": "Amnesty International",
+      "current_status": "active",
+      "current_status_source": "https://www.amnesty.org/",
+      "primary_room": "law-justice",
+      "supporting_rooms": [
+        "information-ecology",
+        "subculture-group-formation",
+        "chronology-events",
+        "witness-attestation"
+      ],
+      "field_projection": [
+        {
+          "stage": "root/substrate",
+          "field": "lower-manifestation-field",
+          "plane": "below-plane",
+          "direction": "root-down",
+          "content": "documented imprisonment/rights abuse"
+        },
+        {
+          "stage": "Door",
+          "field": "shared-door",
+          "plane": "world-plane",
+          "direction": "through-door",
+          "content": "1961 public appeal"
+        },
+        {
+          "stage": "sprout/first viable operation",
+          "field": "lower-manifestation-field",
+          "plane": "world-plane",
+          "direction": "sprout-up",
+          "content": "repeatable case-adoption and research model"
+        },
+        {
+          "stage": "branching",
+          "field": "overlap",
+          "plane": "world-plane+heaven-plane",
+          "direction": "branch-out",
+          "content": "international sections/groups"
+        },
+        {
+          "stage": "return/consequence",
+          "field": "overlap",
+          "plane": "world-plane",
+          "direction": "return-down",
+          "content": "public action and legal/political pressure"
+        }
+      ],
+      "motive_lens": [
+        "liberation/rights",
+        "care/love",
+        "inquiry/truth"
+      ],
+      "route_condition": "unresolved/mixed until episode-level consequence evidence is supplied",
+      "placement_guard": "The Foundation itself is not assigned a moral altitude. Only stages receive field/plane/direction coordinates."
+    },
+    {
+      "foundation_id": "dada-foundation",
+      "name": "Dada",
+      "current_status": "historical movement with living artistic influence",
+      "current_status_source": "https://www.moma.org/",
+      "primary_room": "visual-art",
+      "supporting_rooms": [
+        "music-sound",
+        "great-book-literature",
+        "subculture-group-formation",
+        "chronology-events"
+      ],
+      "field_projection": [
+        {
+          "stage": "root/substrate",
+          "field": "lower-manifestation-field",
+          "plane": "below-plane",
+          "direction": "root-down",
+          "content": "World War I displacement and cultural rupture"
+        },
+        {
+          "stage": "Door",
+          "field": "shared-door",
+          "plane": "world-plane",
+          "direction": "through-door",
+          "content": "Cabaret Voltaire"
+        },
+        {
+          "stage": "sprout/first viable operation",
+          "field": "lower-manifestation-field",
+          "plane": "world-plane",
+          "direction": "sprout-up",
+          "content": "named performance/aesthetic grammar"
+        },
+        {
+          "stage": "branching",
+          "field": "overlap",
+          "plane": "world-plane+heaven-plane",
+          "direction": "branch-out",
+          "content": "city-based Dada formations"
+        },
+        {
+          "stage": "return/consequence",
+          "field": "overlap",
+          "plane": "world-plane",
+          "direction": "return-down",
+          "content": "later art/design/literary influence"
+        }
+      ],
+      "motive_lens": [
+        "creative-rupture",
+        "identity/belonging",
+        "mixed/contested"
+      ],
+      "route_condition": "unresolved/mixed until episode-level consequence evidence is supplied",
+      "placement_guard": "The Foundation itself is not assigned a moral altitude. Only stages receive field/plane/direction coordinates."
+    },
+    {
+      "foundation_id": "gnu-free-software-foundation",
+      "name": "GNU Project / free-software movement",
+      "current_status": "active",
+      "current_status_source": "https://www.gnu.org/",
+      "primary_room": "internet-platforms",
+      "supporting_rooms": [
+        "information-ecology",
+        "subculture-group-formation",
+        "chronology-events",
+        "infrastructure-capability"
+      ],
+      "field_projection": [
+        {
+          "stage": "root/substrate",
+          "field": "lower-manifestation-field",
+          "plane": "below-plane",
+          "direction": "root-down",
+          "content": "proprietary-software cooperation barriers"
+        },
+        {
+          "stage": "Door",
+          "field": "shared-door",
+          "plane": "world-plane",
+          "direction": "through-door",
+          "content": "1983 public GNU announcement"
+        },
+        {
+          "stage": "sprout/first viable operation",
+          "field": "lower-manifestation-field",
+          "plane": "world-plane",
+          "direction": "sprout-up",
+          "content": "working free software"
+        },
+        {
+          "stage": "branching",
+          "field": "overlap",
+          "plane": "world-plane+heaven-plane",
+          "direction": "branch-out",
+          "content": "projects/licenses/communities"
+        },
+        {
+          "stage": "return/consequence",
+          "field": "overlap",
+          "plane": "world-plane",
+          "direction": "return-down",
+          "content": "reusable software infrastructure"
+        }
+      ],
+      "motive_lens": [
+        "liberation/rights",
+        "inquiry/truth",
+        "identity/belonging"
+      ],
+      "route_condition": "unresolved/mixed until episode-level consequence evidence is supplied",
+      "placement_guard": "The Foundation itself is not assigned a moral altitude. Only stages receive field/plane/direction coordinates."
+    },
+    {
+      "foundation_id": "linux-kernel-foundation",
+      "name": "Linux kernel collaborative lineage",
+      "current_status": "active",
+      "current_status_source": "https://www.linuxfoundation.org/about/leadership",
+      "primary_room": "internet-platforms",
+      "supporting_rooms": [
+        "infrastructure-capability",
+        "subculture-group-formation",
+        "chronology-events",
+        "information-ecology"
+      ],
+      "field_projection": [
+        {
+          "stage": "root/substrate",
+          "field": "lower-manifestation-field",
+          "plane": "below-plane",
+          "direction": "root-down",
+          "content": "personal OS/kernel experimentation"
+        },
+        {
+          "stage": "Door",
+          "field": "shared-door",
+          "plane": "world-plane",
+          "direction": "through-door",
+          "content": "public 1991 announcement/source release"
+        },
+        {
+          "stage": "sprout/first viable operation",
+          "field": "lower-manifestation-field",
+          "plane": "world-plane",
+          "direction": "sprout-up",
+          "content": "external contribution"
+        },
+        {
+          "stage": "branching",
+          "field": "overlap",
+          "plane": "world-plane+heaven-plane",
+          "direction": "branch-out",
+          "content": "global maintainers/distributions"
+        },
+        {
+          "stage": "return/consequence",
+          "field": "overlap",
+          "plane": "world-plane",
+          "direction": "return-down",
+          "content": "widely embedded computing infrastructure"
+        }
+      ],
+      "motive_lens": [
+        "inquiry/truth",
+        "identity/belonging",
+        "coordination/order"
+      ],
+      "route_condition": "unresolved/mixed until episode-level consequence evidence is supplied",
+      "placement_guard": "The Foundation itself is not assigned a moral altitude. Only stages receive field/plane/direction coordinates."
+    },
+    {
+      "foundation_id": "creative-commons-foundation",
+      "name": "Creative Commons",
+      "current_status": "active",
+      "current_status_source": "https://creativecommons.org/",
+      "primary_room": "information-ecology",
+      "supporting_rooms": [
+        "law-justice",
+        "internet-platforms",
+        "chronology-events",
+        "infrastructure-capability"
+      ],
+      "field_projection": [
+        {
+          "stage": "root/substrate",
+          "field": "lower-manifestation-field",
+          "plane": "below-plane",
+          "direction": "root-down",
+          "content": "all-rights-reserved rigidity for voluntary sharing"
+        },
+        {
+          "stage": "Door",
+          "field": "shared-door",
+          "plane": "world-plane",
+          "direction": "through-door",
+          "content": "nonprofit + standardized license publication"
+        },
+        {
+          "stage": "sprout/first viable operation",
+          "field": "lower-manifestation-field",
+          "plane": "world-plane",
+          "direction": "sprout-up",
+          "content": "reusable legal permissions"
+        },
+        {
+          "stage": "branching",
+          "field": "overlap",
+          "plane": "world-plane+heaven-plane",
+          "direction": "branch-out",
+          "content": "global platform/institution adoption"
+        },
+        {
+          "stage": "return/consequence",
+          "field": "overlap",
+          "plane": "world-plane",
+          "direction": "return-down",
+          "content": "shared/reusable knowledge and culture"
+        }
+      ],
+      "motive_lens": [
+        "liberation/rights",
+        "coordination/order",
+        "inquiry/truth"
+      ],
+      "route_condition": "unresolved/mixed until episode-level consequence evidence is supplied",
+      "placement_guard": "The Foundation itself is not assigned a moral altitude. Only stages receive field/plane/direction coordinates."
+    }
+  ]
+}
