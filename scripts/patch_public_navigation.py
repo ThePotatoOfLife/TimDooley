@@ -36,6 +36,19 @@ HOUSE_BRIDGE_STYLE = """<style data-house-bridge-style>
 .house-bridge__kind{color:var(--site-gold,#d8b56b);font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}.house-bridge__body{display:grid;grid-template-columns:minmax(180px,.7fr) 1.3fr;gap:16px;margin-top:10px;padding-top:10px;border-top:1px solid var(--site-line,#30382f)}
 .house-bridge__body p{margin:0;color:var(--site-muted,#9fa79d);font-size:11px;line-height:1.45}.house-bridge__chips{display:flex;flex-wrap:wrap;gap:6px}.house-bridge__chip{border:1px solid var(--site-line,#30382f);border-radius:999px;padding:3px 7px;color:var(--site-muted,#9fa79d);font-size:10px}.house-bridge__rooms-link{color:var(--site-green,#b8dc82);font-size:11px;text-decoration:none;white-space:nowrap}
 @media(max-width:700px){.house-bridge__body{grid-template-columns:1fr}.house-bridge{margin-bottom:24px}}
+
+.specialist-subviews{margin:34px 0;padding-top:18px;border-top:1px solid var(--site-line,#30382f);font-family:var(--site-font-sans,system-ui,sans-serif)}
+.specialist-subviews h2{margin:0 0 6px;font:400 26px/1.15 var(--site-font-serif,Georgia,serif);color:var(--site-ink,#f4f0e5)}
+.specialist-subviews>p{margin:0 0 14px;color:var(--site-muted,#9fa79d);font-size:12px}
+.specialist-subviews__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px}
+.specialist-subviews__card{display:block;border:1px solid var(--site-line,#30382f);border-radius:10px;padding:12px 13px;background:var(--site-panel,#0f130f);text-decoration:none}
+.specialist-subviews__card strong{display:block;color:var(--site-gold,#d8b56b);font:400 18px/1.15 var(--site-font-serif,Georgia,serif);margin-bottom:5px}
+.specialist-subviews__card span{display:block;color:var(--site-muted,#9fa79d);font-size:11px;line-height:1.45}
+.specialist-subviews__card:hover,.specialist-subviews__card:focus-visible{border-color:#66755f}.specialist-subviews__card:hover strong,.specialist-subviews__card:focus-visible strong{color:var(--site-green,#b8dc82)}
+.house-subview-bridge{margin:18px 0 28px;padding:14px 16px;border:1px solid var(--site-line,#30382f);border-radius:12px;background:var(--site-panel,#0f130f);font-family:var(--site-font-sans,system-ui,sans-serif)}
+.house-subview-bridge__trail{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px}.house-subview-bridge__trail a{color:var(--site-green,#b8dc82);text-decoration:none}.house-subview-bridge__trail span{color:var(--site-faint,#727a70)}
+.house-subview-bridge__rooms{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;padding-top:10px;border-top:1px solid var(--site-line,#30382f)}
+.house-subview-bridge__owner{margin-top:10px;color:var(--site-muted,#9fa79d);font-size:10px;line-height:1.45}.house-subview-bridge__owner a{color:var(--site-green,#b8dc82)}
 </style>"""
 
 LEGACY_TTS_READERS = {
@@ -262,6 +275,126 @@ def patch_house_bridges(out: Path = OUT) -> set[Path]:
         changed.add(path)
     return changed
 
+
+def relative_repo_href(from_rel: Path, repo_path: str) -> str:
+    target = Path(str(repo_path).lstrip("/"))
+    rel = os.path.relpath(target, start=from_rel.parent).replace(os.sep, "/")
+    return rel
+
+
+def load_specialist_subviews() -> list[dict]:
+    doc = load_json(ROOT / "data" / "house" / "specialist-subviews.json", {}) or {}
+    return [x for x in doc.get("records", []) if isinstance(x, dict) and x.get("route") and x.get("parent_surface_id")]
+
+
+def build_subview_bridge(record: dict, parent: dict, room_titles: dict[str, str], rel: Path) -> str:
+    title = str(record.get("title", record.get("id", "")))
+    potato_href = relative_public_href(rel, "/potato-of-life/")
+    house_href = relative_public_href(rel, "/house/")
+    parent_href = relative_public_href(rel, parent.get("canonical_route", "/"))
+    room_chips = "".join(
+        f'<span class="house-bridge__chip">{html.escape(str(room_titles.get(rid, rid)))}</span>'
+        for rid in record.get("room_ids", [])
+    )
+    owner_links = []
+    for owner in record.get("current_owner_refs", [])[:5]:
+        href = relative_repo_href(rel, owner)
+        owner_links.append(f'<a href="{html.escape(href, quote=True)}">{html.escape(str(owner).split("/")[-1])}</a>')
+    owner_html = " · ".join(owner_links)
+    return (
+        '<aside class="house-subview-bridge" data-house-subview="' + html.escape(str(record.get("id")), quote=True) + '" aria-label="House specialist-view context">'
+        '<div class="house-subview-bridge__trail">'
+        f'<a href="{html.escape(potato_href, quote=True)}">Potato of Life</a><span>→</span>'
+        f'<a href="{html.escape(house_href, quote=True)}">House</a><span>→</span>'
+        f'<a href="{html.escape(parent_href, quote=True)}">{html.escape(str(parent.get("title", record.get("parent_surface_id"))))}</a><span>→</span>'
+        f'<strong>{html.escape(title)}</strong></div>'
+        '<div class="house-subview-bridge__rooms">' + room_chips + '</div>'
+        '<div class="house-subview-bridge__owner"><strong>Current owners:</strong> ' + owner_html +
+        '. This reader is a specialist View; the linked records remain the knowledge owners.</div></aside>'
+    )
+
+
+def build_parent_subview_section(parent: dict, records: list[dict], rel: Path) -> str:
+    cards = []
+    for record in records:
+        href = relative_public_href(rel, record.get("route", "/"))
+        cards.append(
+            '<a class="specialist-subviews__card" href="' + html.escape(href, quote=True) + '">'
+            '<strong>' + html.escape(str(record.get("title", record.get("id", "")))) + '</strong>'
+            '<span>' + html.escape(str(record.get("summary", ""))) + '</span></a>'
+        )
+    return (
+        '<section class="specialist-subviews" data-specialist-subviews="' + html.escape(str(parent.get("id")), quote=True) + '">'
+        '<p class="eyebrow">Deeper views already in the archive</p>'
+        '<h2>Specialist readers inside this part of the House</h2>'
+        '<p>These older/deeper pages keep their specialist identity while sharing this gateway, its Rooms and current canonical owners.</p>'
+        '<div class="specialist-subviews__grid">' + "".join(cards) + '</div></section>'
+    )
+
+
+def inject_after_header_or_before_end(text: str, fragment: str) -> str:
+    header = re.search(r"</header\s*>", text, flags=re.I)
+    if header:
+        return text[:header.end()] + fragment + text[header.end():]
+    main_end = re.search(r"</main\s*>", text, flags=re.I)
+    if main_end:
+        return text[:main_end.start()] + fragment + text[main_end.start():]
+    return text
+
+
+def patch_specialist_subviews(out: Path = OUT) -> set[Path]:
+    records = load_specialist_subviews()
+    if not records:
+        return set()
+    surfaces_doc = load_json(ROOT / "data" / "house" / "public-surfaces.json", {}) or {}
+    subrooms_doc = load_json(ROOT / "data" / "house" / "subrooms.json", {}) or {}
+    surface_by_id = {x.get("id"): x for x in surfaces_doc.get("surfaces", []) if isinstance(x, dict) and x.get("id")}
+    room_titles = {x.get("id"): x.get("title", x.get("id")) for x in subrooms_doc.get("subrooms", []) if isinstance(x, dict) and x.get("id")}
+    changed: set[Path] = set()
+
+    by_parent: dict[str, list[dict]] = {}
+    for record in records:
+        by_parent.setdefault(record["parent_surface_id"], []).append(record)
+        rel = public_route_to_rel(record["route"])
+        path = out / rel
+        parent = surface_by_id.get(record["parent_surface_id"])
+        if not path.exists() or not parent:
+            continue
+        page = path.read_text(encoding="utf-8", errors="replace")
+        if "data-house-bridge-style" not in page:
+            page = re.sub(r"</head\s*>", HOUSE_BRIDGE_STYLE + "</head>", page, count=1, flags=re.I)
+        marker = f'data-house-subview="{record.get("id")}"'
+        if marker not in page:
+            bridge = build_subview_bridge(record, parent, room_titles, rel)
+            main = re.search(r"<main\b[^>]*>", page, flags=re.I)
+            if main:
+                nav = re.search(r"<nav\b[^>]*>.*?</nav\s*>", page[main.end():], flags=re.I | re.S)
+                insert_at = main.end() + nav.end() if nav else main.end()
+                page = page[:insert_at] + bridge + page[insert_at:]
+        path.write_text(page, encoding="utf-8")
+        changed.add(path)
+
+    for parent_id, children in by_parent.items():
+        parent = surface_by_id.get(parent_id)
+        if not parent:
+            continue
+        rel = public_route_to_rel(parent.get("canonical_route", "/"))
+        path = out / rel
+        if not path.exists():
+            continue
+        page = path.read_text(encoding="utf-8", errors="replace")
+        marker = f'data-specialist-subviews="{parent_id}"'
+        if marker in page:
+            continue
+        if "data-house-bridge-style" not in page:
+            page = re.sub(r"</head\s*>", HOUSE_BRIDGE_STYLE + "</head>", page, count=1, flags=re.I)
+        section = build_parent_subview_section(parent, children, rel)
+        page = inject_after_header_or_before_end(page, section)
+        path.write_text(page, encoding="utf-8")
+        changed.add(path)
+    return changed
+
+
 def patch_text(path: Path, replacements: tuple[tuple[str, str], ...] = ()) -> bool:
     if not path.exists():
         return False
@@ -385,6 +518,7 @@ def main() -> None:
 
     changed.update(patch_legacy_tts_readers(OUT))
     changed.update(patch_house_bridges(OUT))
+    changed.update(patch_specialist_subviews(OUT))
 
     religion = OUT / "religion" / "index.html"
     if patch_text(
