@@ -11,7 +11,7 @@ CONCEPT_TOPOLOGY=ROOT/'data/house/concept-topology.json'; CONCEPT_TOPOLOGY_SCHEM
 TOPOLOGY_FIXTURE=ROOT/'data/house/topology-golden-fixture.json'
 TOPOLOGY_CONTEXT_JS=ROOT/'app/topology-context.js'
 TOPOLOGY_CONTEXT_PAGES={
-    ROOT/'religion/index.html':('source-field','manifestation-field','door','spirit','face'),
+    ROOT/'religion/index.html':('potato-of-life','father','son','spirit','door'),
     ROOT/'philosophy/index.html':('seed','root','door','spiral','fruit','garden'),
     ROOT/'life-body/index.html':('potato','eye','seed','root','spirit'),
     ROOT/'science/index.html':('plane','axis','cross','spiral'),
@@ -27,6 +27,7 @@ REQUIRED_SURFACES={
     'index-a-z':'/index-a-z/',
     'context':'/context/',
     'interpretive-justice':'/philosophy/interpretive-justice.html',
+    'trinity':'/religion/trinity/',
 }
 WORKS_FILE=ROOT/'works/index.html'
 WORKS_MARKERS=(
@@ -197,7 +198,7 @@ def validate_concept_topology(errors,rooms,surfaces):
         for sid in row.get('public_surface_ids',[]):
             if sid not in surface_ids: errors.append(f'concept {cid} unknown public surface {sid}')
     if len(ids)!=len(set(ids)): errors.append('concept topology ids must be unique')
-    required={'source-field','manifestation-field','door','plane','axis','cross','eye','face','spirit','potato','seed','root','tree','mountain','ladder','spiral','fruit','garden','shell-cube','swamp'}
+    required={'potato-of-life','father','son','source-field','manifestation-field','door','plane','axis','cross','eye','face','spirit','potato','seed','root','tree','mountain','ladder','spiral','fruit','garden','shell-cube','swamp'}
     missing=sorted(required-set(ids))
     if missing: errors.append('concept topology missing core operators: '+', '.join(missing))
     cross=by.get('cross',{})
@@ -229,6 +230,12 @@ def validate_concept_topology(errors,rooms,surfaces):
         ('root','tree','supports'),
         ('tree','fruit','differentiates-into'),
         ('fruit','seed','returns-as'),
+        ('potato-of-life','father','expresses-through'),
+        ('potato-of-life','son','expresses-through'),
+        ('potato-of-life','spirit','expresses-through'),
+        ('father','source-field','oriented-toward'),
+        ('son','manifestation-field','oriented-toward'),
+        ('son','door','specializes-as'),
     }
     actual_relations={(x.get('from'),x.get('to'),x.get('type')) for x in relation_rows}
     relation_by_id={x.get('id'):x for x in relation_rows if x.get('id')}
@@ -279,6 +286,14 @@ def validate_concept_topology(errors,rooms,surfaces):
             if marker not in runtime: errors.append(f'topology context runtime missing marker: {marker}')
         if 'document.querySelectorAll' not in runtime or 'fetch(src)' not in runtime:
             errors.append('topology context runtime must progressively enhance declared page regions from canonical topology data')
+
+    trinity_page=ROOT/'religion/trinity/index.html'
+    if not trinity_page.is_file():
+        errors.append('missing Potato of Life Trinity specialist reader')
+    else:
+        text=trinity_page.read_text(encoding='utf-8',errors='replace')
+        for marker in ('THE POTATO','One Potato of Life','data-house-concepts="potato-of-life,father,son,spirit,door"','../../app/topology-context.js','../../house/#operators'):
+            if marker not in text: errors.append(f'religion/trinity/index.html missing Trinity reader marker: {marker}')
 
     paths_page=ROOT/'paths/index.html'
     if not paths_page.is_file():
