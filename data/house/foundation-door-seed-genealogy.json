@@ -1,9 +1,9 @@
 {
   "id": "foundation-door-seed-genealogy",
   "title": "Foundation Door Genealogy — Seeds of Death, Seeds of Life, Time and Place",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
-  "status": "cross-domain Foundation genealogy derived from canonical Foundation records plus verified geographic anchors",
+  "status": "cross-domain Foundation genealogy expanded through wave 003",
   "purpose": "Show how every current Foundation record approaches, crosses, rises from, falls back toward, or is refounded through the Door by pairing project-native Seed states with concrete historical clocks and physical/institutional places.",
   "master_rule": "Do not call a whole religion, institution, nation, company, movement or school a Seed of Death or Seed of Life. The terms describe states in a Foundation transition: prior form/rupture/compression on one side of the Door and viable reproducible capacity on the other.",
   "door_model": {
@@ -3313,6 +3313,1164 @@
         "summary": "The current Foundation records do not yet carry a precise terminal clock; institutional movement activity declines while aesthetic influence persists in later art/design cultures."
       },
       "evidence_boundary": "Seed of Death / Seed of Life / Door are project-native analytical states layered over the historical record. Dates, places and events retain their source status; the symbolic mapping is not itself an external historical fact."
+    },
+    {
+      "foundation_id": "quakerism-foundation",
+      "name": "Religious Society of Friends / Quakerism",
+      "domain": "religion",
+      "foundation_types": [
+        "religious-historical formation",
+        "community covenant",
+        "practice tradition"
+      ],
+      "canonical_clocks": [
+        {
+          "date_or_range": "1647",
+          "year_start": 1647,
+          "event_type": "seed_idea",
+          "precision": "year",
+          "status": "documented-tradition",
+          "label": "George Fox later identifies an inward-light conviction as a formative turning point.",
+          "source": "https://www.quaker.org.uk/history-of-quakers"
+        },
+        {
+          "date_or_range": "1652",
+          "year_start": 1652,
+          "event_type": "first_operation",
+          "precision": "year",
+          "status": "documented-tradition",
+          "label": "Quakers in Britain identify 1652 in northern England as the birth of Quakerism as a movement.",
+          "source": "https://www.quaker.org.uk/history-of-quakers"
+        },
+        {
+          "date_or_range": "1655",
+          "year_start": 1655,
+          "event_type": "consolidation",
+          "precision": "year",
+          "status": "documented-tradition",
+          "label": "Margaret Fell helps shape national Quaker organization.",
+          "source": "https://www.quaker.org.uk/history-of-quakers"
+        }
+      ],
+      "emergence_places": [
+        {
+          "clock": "1647",
+          "place": "North of England / Lancashire",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        },
+        {
+          "clock": "1655",
+          "place": "distributed meeting network across Britain",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        }
+      ],
+      "seed_of_death": {
+        "kind": "pressure / predecessor / unresolved field",
+        "summary": "religious questioning and seeker networks",
+        "time": "1647",
+        "place": "North of England / Lancashire",
+        "status": "project-synthesis over documented Foundation history"
+      },
+      "door_crossing": {
+        "event": "1652 movement crystallization and gathering",
+        "time": "1652",
+        "place": "North of England / Lancashire",
+        "status": "documented event + project Door interpretation"
+      },
+      "seed_of_life": {
+        "summary": "repeatable meeting practice",
+        "time": "1655",
+        "place": "North of England / Lancashire → distributed meeting network across Britain",
+        "status": "documented+synthesis"
+      },
+      "foundation_rise": {
+        "definition": "The Foundation is treated as risen when its essential practice/rule/platform can be reproduced beyond the originating event.",
+        "reproduction_basis": "Local meetings, shared worship practice, itinerant ministry, testimony, records and later area/yearly meeting structures.",
+        "branches": [
+          "regional/yearly meetings",
+          "global Friends traditions"
+        ]
+      },
+      "fall_return_refoundation": {
+        "type": "no completed fall observed / continuing lineage",
+        "summary": "The Foundation remains active in current form or through living successor structures; future closure, merger or refoundation should be recorded as a new clock rather than inferred."
+      },
+      "motive_lens": [
+        "transcendence/faith",
+        "liberation/rights",
+        "care/love"
+      ],
+      "evidence_boundary": "Dates, places, current status and historical sequence belong to the Foundation record and cited sources. Seed/Death/Life, Door direction and motive are project-native analytical overlays, not external factual identities."
+    },
+    {
+      "foundation_id": "lds-church-foundation",
+      "name": "Church of Jesus Christ of Latter-day Saints / early Latter-day Saint movement",
+      "domain": "religion",
+      "foundation_types": [
+        "religious-historical formation",
+        "canonical community",
+        "institutional church"
+      ],
+      "canonical_clocks": [
+        {
+          "date_or_range": "1829–1830",
+          "year_start": 1829,
+          "year_end": 1830,
+          "event_type": "seed_idea",
+          "precision": "range",
+          "status": "documented-tradition",
+          "label": "Revelations and the publication context around the Book of Mormon prepare for formal church organization.",
+          "source": "https://www.churchofjesuschrist.org/learn/history/sites/new-york-and-pennsylvania/organizing-the-church-of-christ?lang=eng"
+        },
+        {
+          "date_or_range": "1830-04-06",
+          "year_start": 1830,
+          "event_type": "first_operation",
+          "precision": "exact-day",
+          "status": "documented-tradition",
+          "label": "The Church of Christ is organized in the Whitmer home in Fayette, New York.",
+          "source": "https://www.churchofjesuschrist.org/learn/history/sites/new-york-and-pennsylvania/organizing-the-church-of-christ?lang=eng"
+        }
+      ],
+      "emergence_places": [
+        {
+          "clock": "1829–1830",
+          "place": "Fayette, New York, USA",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        },
+        {
+          "clock": "1830-04-06",
+          "place": "later migration-centered communities in the United States",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        }
+      ],
+      "seed_of_death": {
+        "kind": "pressure / predecessor / unresolved field",
+        "summary": "restorationist scripture/revelation field",
+        "time": "1829–1830",
+        "place": "Fayette, New York, USA",
+        "status": "project-synthesis over documented Foundation history"
+      },
+      "door_crossing": {
+        "event": "formal organization in Fayette",
+        "time": "1830-04-06",
+        "place": "Fayette, New York, USA",
+        "status": "documented event + project Door interpretation"
+      },
+      "seed_of_life": {
+        "summary": "congregation and offices",
+        "time": "1830-04-06",
+        "place": "Fayette, New York, USA → later migration-centered communities in the United States",
+        "status": "documented+synthesis"
+      },
+      "foundation_rise": {
+        "definition": "The Foundation is treated as risen when its essential practice/rule/platform can be reproduced beyond the originating event.",
+        "reproduction_basis": "Congregations, priesthood/office succession, missionary work, canon, temple/congregational practice and family/community socialization.",
+        "branches": [
+          "main LDS Church",
+          "historical Latter-day Saint denominations"
+        ]
+      },
+      "fall_return_refoundation": {
+        "type": "no completed fall observed / continuing lineage",
+        "summary": "The Foundation remains active in current form or through living successor structures; future closure, merger or refoundation should be recorded as a new clock rather than inferred."
+      },
+      "motive_lens": [
+        "transcendence/faith",
+        "identity/belonging",
+        "coordination/order"
+      ],
+      "evidence_boundary": "Dates, places, current status and historical sequence belong to the Foundation record and cited sources. Seed/Death/Life, Door direction and motive are project-native analytical overlays, not external factual identities."
+    },
+    {
+      "foundation_id": "salvation-army-foundation",
+      "name": "The Salvation Army",
+      "domain": "religion-social",
+      "foundation_types": [
+        "religious movement",
+        "social-service institution",
+        "mission organization"
+      ],
+      "canonical_clocks": [
+        {
+          "date_or_range": "1865",
+          "year_start": 1865,
+          "event_type": "first_operation",
+          "precision": "year",
+          "status": "documented",
+          "label": "William and Catherine Booth begin the London work that develops into The Salvation Army.",
+          "source": "https://www.salvationarmy.org/history"
+        }
+      ],
+      "emergence_places": [
+        {
+          "clock": "1865",
+          "place": "East London, England",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        }
+      ],
+      "seed_of_death": {
+        "kind": "pressure / predecessor / unresolved field",
+        "summary": "urban poverty and mission field",
+        "time": "1865",
+        "place": "East London, England",
+        "status": "project-synthesis over documented Foundation history"
+      },
+      "door_crossing": {
+        "event": "1865 mission organization",
+        "time": "1865",
+        "place": "East London, England",
+        "status": "documented event + project Door interpretation"
+      },
+      "seed_of_life": {
+        "summary": "repeatable corps/service model",
+        "time": "1865",
+        "place": "East London, England",
+        "status": "documented+synthesis"
+      },
+      "foundation_rise": {
+        "definition": "The Foundation is treated as risen when its essential practice/rule/platform can be reproduced beyond the originating event.",
+        "reproduction_basis": "Corps, officer training, uniforms/symbols, mission/service programmes, international administrative structure and local congregational life.",
+        "branches": [
+          "national territories/commands",
+          "local corps and social-service institutions"
+        ]
+      },
+      "fall_return_refoundation": {
+        "type": "no completed fall observed / continuing lineage",
+        "summary": "The Foundation remains active in current form or through living successor structures; future closure, merger or refoundation should be recorded as a new clock rather than inferred."
+      },
+      "motive_lens": [
+        "transcendence/faith",
+        "care/love",
+        "scarcity/material-need"
+      ],
+      "evidence_boundary": "Dates, places, current status and historical sequence belong to the Foundation record and cited sources. Seed/Death/Life, Door direction and motive are project-native analytical overlays, not external factual identities."
+    },
+    {
+      "foundation_id": "icrc-red-cross-foundation",
+      "name": "International Committee of the Red Cross / Red Cross movement seed",
+      "domain": "humanitarian",
+      "foundation_types": [
+        "humanitarian institution",
+        "international-law catalyst",
+        "network foundation"
+      ],
+      "canonical_clocks": [
+        {
+          "date_or_range": "1859",
+          "year_start": 1859,
+          "event_type": "substrate",
+          "precision": "year",
+          "status": "documented",
+          "label": "Henry Dunant witnesses wounded soldiers after the Battle of Solferino.",
+          "source": "https://www.icrc.org/en/document/founding-and-early-years-icrc-1863-1914"
+        },
+        {
+          "date_or_range": "1862",
+          "year_start": 1862,
+          "event_type": "seed_idea",
+          "precision": "year",
+          "status": "documented",
+          "label": "Dunant publishes A Souvenir of Solferino, proposing relief societies and legal protection.",
+          "source": "https://www.icrc.org/en/document/founding-and-early-years-icrc-1863-1914"
+        },
+        {
+          "date_or_range": "1863-02",
+          "year_start": 1863,
+          "event_type": "first_operation",
+          "precision": "month",
+          "status": "documented",
+          "label": "The committee that becomes the ICRC meets for the first time in Geneva.",
+          "source": "https://www.icrc.org/en/our-history"
+        },
+        {
+          "date_or_range": "1864-08",
+          "year_start": 1864,
+          "event_type": "branching",
+          "precision": "month",
+          "status": "documented",
+          "label": "The first Geneva Convention gives legal framework to the humanitarian protection project.",
+          "source": "https://www.icrc.org/en/document/founding-and-early-years-icrc-1863-1914"
+        }
+      ],
+      "emergence_places": [
+        {
+          "clock": "1859",
+          "place": "Solferino, Italy",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        },
+        {
+          "clock": "1864-08",
+          "place": "Geneva, Switzerland",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        },
+        {
+          "clock": "1864-08",
+          "place": "international treaty network",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        }
+      ],
+      "seed_of_death": {
+        "kind": "pressure / predecessor / unresolved field",
+        "summary": "battlefield suffering and witnessed failure",
+        "time": "1859",
+        "place": "Solferino, Italy",
+        "status": "project-synthesis over documented Foundation history"
+      },
+      "door_crossing": {
+        "event": "Geneva committee formation",
+        "time": "1863-02",
+        "place": "Solferino, Italy",
+        "status": "documented event + project Door interpretation"
+      },
+      "seed_of_life": {
+        "summary": "neutral relief coordination",
+        "time": "1864-08",
+        "place": "Solferino, Italy → Geneva, Switzerland → international treaty network",
+        "status": "documented+synthesis"
+      },
+      "foundation_rise": {
+        "definition": "The Foundation is treated as risen when its essential practice/rule/platform can be reproduced beyond the originating event.",
+        "reproduction_basis": "Committee practice, treaty law, National Societies, trained delegates, protected emblems and recurring humanitarian operations.",
+        "branches": [
+          "ICRC",
+          "National Red Cross/Red Crescent Societies",
+          "International Federation",
+          "Geneva Conventions and related humanitarian-law institutions"
+        ]
+      },
+      "fall_return_refoundation": {
+        "type": "no completed fall observed / continuing lineage",
+        "summary": "The Foundation remains active in current form or through living successor structures; future closure, merger or refoundation should be recorded as a new clock rather than inferred."
+      },
+      "motive_lens": [
+        "care/love",
+        "fear/protection",
+        "coordination/order"
+      ],
+      "evidence_boundary": "Dates, places, current status and historical sequence belong to the Foundation record and cited sources. Seed/Death/Life, Door direction and motive are project-native analytical overlays, not external factual identities."
+    },
+    {
+      "foundation_id": "ymca-foundation",
+      "name": "YMCA movement",
+      "domain": "social-religious",
+      "foundation_types": [
+        "mutual-aid association",
+        "youth movement",
+        "religious-social movement"
+      ],
+      "canonical_clocks": [
+        {
+          "date_or_range": "1844-06-06",
+          "year_start": 1844,
+          "event_type": "first_operation",
+          "precision": "exact-day",
+          "status": "documented",
+          "label": "George Williams and other young men establish the first YMCA in London.",
+          "source": "https://www.ymca.int/who-we-are/the-worldwide-ymca-movement/the-ymca-history/"
+        },
+        {
+          "date_or_range": "1855",
+          "year_start": 1855,
+          "event_type": "consolidation",
+          "precision": "year",
+          "status": "documented",
+          "label": "The Paris Basis becomes a founding document for a movement already present in nine countries.",
+          "source": "https://www.ymca.int/who-we-are/the-worldwide-ymca-movement/the-ymca-history/"
+        }
+      ],
+      "emergence_places": [
+        {
+          "clock": "1844-06-06",
+          "place": "St Paul's Churchyard, London, England",
+          "precision": "site-or-institution",
+          "status": "documented or source-context as specified in Foundation record"
+        },
+        {
+          "clock": "1855",
+          "place": "Paris, France for early international consolidation",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        }
+      ],
+      "seed_of_death": {
+        "kind": "pressure / predecessor / unresolved field",
+        "summary": "urban worker dislocation and fellowship need",
+        "time": "1844-06-06",
+        "place": "St Paul's Churchyard, London, England",
+        "status": "project-synthesis over documented Foundation history"
+      },
+      "door_crossing": {
+        "event": "1844 London meeting",
+        "time": "1844-06-06",
+        "place": "St Paul's Churchyard, London, England",
+        "status": "documented event + project Door interpretation"
+      },
+      "seed_of_life": {
+        "summary": "local mutual-improvement association",
+        "time": "1855",
+        "place": "St Paul's Churchyard, London, England → Paris, France for early international consolidation",
+        "status": "documented+synthesis"
+      },
+      "foundation_rise": {
+        "definition": "The Foundation is treated as risen when its essential practice/rule/platform can be reproduced beyond the originating event.",
+        "reproduction_basis": "Local associations, programmes, facilities, staff/volunteer leadership, shared mission documents and international federation.",
+        "branches": [
+          "national YMCAs",
+          "local associations",
+          "youth/community programmes"
+        ]
+      },
+      "fall_return_refoundation": {
+        "type": "no completed fall observed / continuing lineage",
+        "summary": "The Foundation remains active in current form or through living successor structures; future closure, merger or refoundation should be recorded as a new clock rather than inferred."
+      },
+      "motive_lens": [
+        "identity/belonging",
+        "care/love",
+        "transcendence/faith"
+      ],
+      "evidence_boundary": "Dates, places, current status and historical sequence belong to the Foundation record and cited sources. Seed/Death/Life, Door direction and motive are project-native analytical overlays, not external factual identities."
+    },
+    {
+      "foundation_id": "alcoholics-anonymous-foundation",
+      "name": "Alcoholics Anonymous",
+      "domain": "mutual-aid-health",
+      "foundation_types": [
+        "mutual-aid fellowship",
+        "recovery community",
+        "rule/practice lineage"
+      ],
+      "canonical_clocks": [
+        {
+          "date_or_range": "1935",
+          "year_start": 1935,
+          "event_type": "first_operation",
+          "precision": "year",
+          "status": "documented",
+          "label": "Bill W. meets Dr. Bob in Akron; early peer recovery work becomes the fellowship later called Alcoholics Anonymous.",
+          "source": "https://www.aa.org/aa-timeline"
+        },
+        {
+          "date_or_range": "1935–1944",
+          "year_start": 1935,
+          "year_end": 1944,
+          "event_type": "consolidation",
+          "precision": "range",
+          "status": "documented",
+          "label": "Regular meetings and a distinct fellowship form across Akron, New York and beyond.",
+          "source": "https://www.aa.org/aa-timeline"
+        }
+      ],
+      "emergence_places": [
+        {
+          "clock": "1935",
+          "place": "Akron, Ohio, USA",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        },
+        {
+          "clock": "1935–1944",
+          "place": "Brooklyn/New York City, USA",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        }
+      ],
+      "seed_of_death": {
+        "kind": "pressure / predecessor / unresolved field",
+        "summary": "addiction crisis and failed individual recovery",
+        "time": "1935",
+        "place": "Akron, Ohio, USA",
+        "status": "project-synthesis over documented Foundation history"
+      },
+      "door_crossing": {
+        "event": "peer encounter and first repeatable recovery relation",
+        "time": "1935",
+        "place": "Akron, Ohio, USA",
+        "status": "documented event + project Door interpretation"
+      },
+      "seed_of_life": {
+        "summary": "meeting + Step practice",
+        "time": "1935–1944",
+        "place": "Akron, Ohio, USA → Brooklyn/New York City, USA",
+        "status": "documented+synthesis"
+      },
+      "foundation_rise": {
+        "definition": "The Foundation is treated as risen when its essential practice/rule/platform can be reproduced beyond the originating event.",
+        "reproduction_basis": "Meetings, sponsorship, repeated Step practice, literature, service roles and decentralized group formation.",
+        "branches": [
+          "local AA groups",
+          "regional service structures",
+          "adapted Twelve-Step fellowships outside AA"
+        ]
+      },
+      "fall_return_refoundation": {
+        "type": "no completed fall observed / continuing lineage",
+        "summary": "The Foundation remains active in current form or through living successor structures; future closure, merger or refoundation should be recorded as a new clock rather than inferred."
+      },
+      "motive_lens": [
+        "care/love",
+        "identity/belonging",
+        "fear/protection"
+      ],
+      "evidence_boundary": "Dates, places, current status and historical sequence belong to the Foundation record and cited sources. Seed/Death/Life, Door direction and motive are project-native analytical overlays, not external factual identities."
+    },
+    {
+      "foundation_id": "scouting-foundation",
+      "name": "Scout Movement",
+      "domain": "youth-education",
+      "foundation_types": [
+        "educational movement",
+        "youth movement",
+        "rule/practice lineage"
+      ],
+      "canonical_clocks": [
+        {
+          "date_or_range": "1907",
+          "year_start": 1907,
+          "event_type": "first_operation",
+          "precision": "year",
+          "status": "documented",
+          "label": "Baden-Powell runs the first experimental camp on Brownsea Island.",
+          "source": "https://www.scout.org/who-we-are/scout-movement/scoutings-history"
+        },
+        {
+          "date_or_range": "1908",
+          "year_start": 1908,
+          "event_type": "consolidation",
+          "precision": "year",
+          "status": "documented",
+          "label": "Scouting for Boys is published and rapidly spreads the method.",
+          "source": "https://www.scout.org/who-we-are/scout-movement/scoutings-history"
+        }
+      ],
+      "emergence_places": [
+        {
+          "clock": "1907",
+          "place": "Brownsea Island, Dorset, United Kingdom",
+          "precision": "site-or-institution",
+          "status": "documented or source-context as specified in Foundation record"
+        },
+        {
+          "clock": "1908",
+          "place": "distributed youth groups internationally",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        }
+      ],
+      "seed_of_death": {
+        "kind": "pressure / predecessor / unresolved field",
+        "summary": "youth training experiments",
+        "time": "1907",
+        "place": "Brownsea Island, Dorset, United Kingdom",
+        "status": "project-synthesis over documented Foundation history"
+      },
+      "door_crossing": {
+        "event": "Brownsea camp",
+        "time": "1907",
+        "place": "Brownsea Island, Dorset, United Kingdom",
+        "status": "documented event + project Door interpretation"
+      },
+      "seed_of_life": {
+        "summary": "repeatable patrol method",
+        "time": "1908",
+        "place": "Brownsea Island, Dorset, United Kingdom → distributed youth groups internationally",
+        "status": "documented+synthesis"
+      },
+      "foundation_rise": {
+        "definition": "The Foundation is treated as risen when its essential practice/rule/platform can be reproduced beyond the originating event.",
+        "reproduction_basis": "Local troops/patrols, trained leaders, handbook/method, badges, camps, national organizations and international movement structures.",
+        "branches": [
+          "national Scout organizations",
+          "age sections/programmes",
+          "World Scout Movement"
+        ]
+      },
+      "fall_return_refoundation": {
+        "type": "no completed fall observed / continuing lineage",
+        "summary": "The Foundation remains active in current form or through living successor structures; future closure, merger or refoundation should be recorded as a new clock rather than inferred."
+      },
+      "motive_lens": [
+        "identity/belonging",
+        "coordination/order",
+        "care/love"
+      ],
+      "evidence_boundary": "Dates, places, current status and historical sequence belong to the Foundation record and cited sources. Seed/Death/Life, Door direction and motive are project-native analytical overlays, not external factual identities."
+    },
+    {
+      "foundation_id": "greenpeace-foundation",
+      "name": "Greenpeace",
+      "domain": "environmental-movement",
+      "foundation_types": [
+        "environmental movement",
+        "campaign network",
+        "direct-action organization"
+      ],
+      "canonical_clocks": [
+        {
+          "date_or_range": "1970",
+          "year_start": 1970,
+          "event_type": "seed_idea",
+          "precision": "year",
+          "status": "documented",
+          "label": "The Don't Make A Wave Committee forms around opposition to nuclear testing at Amchitka.",
+          "source": "https://www.greenpeace.org/usa/our-history/"
+        },
+        {
+          "date_or_range": "1971",
+          "year_start": 1971,
+          "event_type": "first_operation",
+          "precision": "year",
+          "status": "documented",
+          "label": "A crew sails from Vancouver to bear witness against nuclear testing; the Greenpeace identity emerges from the campaign.",
+          "source": "https://www.greenpeace.org/canada/en/about-us/history-successes/"
+        }
+      ],
+      "emergence_places": [
+        {
+          "clock": "1970",
+          "place": "Vancouver, British Columbia, Canada",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        },
+        {
+          "clock": "1971",
+          "place": "Amchitka protest route / North Pacific",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        }
+      ],
+      "seed_of_death": {
+        "kind": "pressure / predecessor / unresolved field",
+        "summary": "nuclear-testing/environmental threat",
+        "time": "1970",
+        "place": "Vancouver, British Columbia, Canada",
+        "status": "project-synthesis over documented Foundation history"
+      },
+      "door_crossing": {
+        "event": "1971 voyage",
+        "time": "1971",
+        "place": "Vancouver, British Columbia, Canada",
+        "status": "documented event + project Door interpretation"
+      },
+      "seed_of_life": {
+        "summary": "witness-based campaign model",
+        "time": "1971",
+        "place": "Vancouver, British Columbia, Canada → Amchitka protest route / North Pacific",
+        "status": "documented+synthesis"
+      },
+      "foundation_rise": {
+        "definition": "The Foundation is treated as risen when its essential practice/rule/platform can be reproduced beyond the originating event.",
+        "reproduction_basis": "Campaign offices, ships/actions, media practices, volunteer/supporter networks, fundraising and international coordination.",
+        "branches": [
+          "Greenpeace International",
+          "national/regional offices",
+          "issue campaigns"
+        ]
+      },
+      "fall_return_refoundation": {
+        "type": "no completed fall observed / continuing lineage",
+        "summary": "The Foundation remains active in current form or through living successor structures; future closure, merger or refoundation should be recorded as a new clock rather than inferred."
+      },
+      "motive_lens": [
+        "fear/protection",
+        "care/love",
+        "liberation/rights"
+      ],
+      "evidence_boundary": "Dates, places, current status and historical sequence belong to the Foundation record and cited sources. Seed/Death/Life, Door direction and motive are project-native analytical overlays, not external factual identities."
+    },
+    {
+      "foundation_id": "naacp-foundation",
+      "name": "National Association for the Advancement of Colored People (NAACP)",
+      "domain": "civil-rights",
+      "foundation_types": [
+        "civil-rights organization",
+        "membership association",
+        "legal-advocacy movement"
+      ],
+      "canonical_clocks": [
+        {
+          "date_or_range": "1908",
+          "year_start": 1908,
+          "event_type": "substrate",
+          "precision": "year",
+          "status": "documented",
+          "label": "The Springfield race riot becomes a tipping-point event in the organizing field that leads to the NAACP.",
+          "source": "https://naacp.org/about/our-history"
+        },
+        {
+          "date_or_range": "1909-02-12",
+          "year_start": 1909,
+          "event_type": "first_operation",
+          "precision": "exact-day",
+          "status": "documented",
+          "label": "The NAACP is founded.",
+          "source": "https://naacp.org/about/our-history"
+        },
+        {
+          "date_or_range": "1910",
+          "year_start": 1910,
+          "event_type": "consolidation",
+          "precision": "year",
+          "status": "documented",
+          "label": "A national office, board and The Crisis publication consolidate the organization.",
+          "source": "https://naacp.org/about/our-history"
+        }
+      ],
+      "emergence_places": [
+        {
+          "clock": "1908",
+          "place": "New York City, USA",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        },
+        {
+          "clock": "1910",
+          "place": "national membership/branch network",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        }
+      ],
+      "seed_of_death": {
+        "kind": "pressure / predecessor / unresolved field",
+        "summary": "racial violence and rights denial",
+        "time": "1908",
+        "place": "New York City, USA",
+        "status": "project-synthesis over documented Foundation history"
+      },
+      "door_crossing": {
+        "event": "1909 organizational founding",
+        "time": "1909-02-12",
+        "place": "New York City, USA",
+        "status": "documented event + project Door interpretation"
+      },
+      "seed_of_life": {
+        "summary": "legal/membership infrastructure",
+        "time": "1910",
+        "place": "New York City, USA → national membership/branch network",
+        "status": "documented+synthesis"
+      },
+      "foundation_rise": {
+        "definition": "The Foundation is treated as risen when its essential practice/rule/platform can be reproduced beyond the originating event.",
+        "reproduction_basis": "Branches, membership, legal strategy, publications, campaigns, conventions and leadership succession.",
+        "branches": [
+          "state/local branches",
+          "youth/college units",
+          "legal and advocacy programmes"
+        ]
+      },
+      "fall_return_refoundation": {
+        "type": "no completed fall observed / continuing lineage",
+        "summary": "The Foundation remains active in current form or through living successor structures; future closure, merger or refoundation should be recorded as a new clock rather than inferred."
+      },
+      "motive_lens": [
+        "liberation/rights",
+        "care/love",
+        "fear/protection"
+      ],
+      "evidence_boundary": "Dates, places, current status and historical sequence belong to the Foundation record and cited sources. Seed/Death/Life, Door direction and motive are project-native analytical overlays, not external factual identities."
+    },
+    {
+      "foundation_id": "amnesty-international-foundation",
+      "name": "Amnesty International",
+      "domain": "human-rights",
+      "foundation_types": [
+        "human-rights movement",
+        "research-campaign organization",
+        "membership network"
+      ],
+      "canonical_clocks": [
+        {
+          "date_or_range": "1961-05-28",
+          "year_start": 1961,
+          "event_type": "first_operation",
+          "precision": "exact-day",
+          "status": "documented",
+          "label": "Peter Benenson's 'Forgotten Prisoners' article launches Appeal for Amnesty 1961.",
+          "source": "https://www.amnesty.org/en/latest/news/2021/05/60-years-of-humanity-in-action/"
+        },
+        {
+          "date_or_range": "1961",
+          "year_start": 1961,
+          "event_type": "consolidation",
+          "precision": "year",
+          "status": "documented",
+          "label": "An international meeting decides to establish a permanent movement; groups and a small London office form.",
+          "source": "https://www.amnesty.org/en/wp-content/uploads/2021/06/act300182011en.pdf"
+        }
+      ],
+      "emergence_places": [
+        {
+          "clock": "1961-05-28",
+          "place": "London, England",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        },
+        {
+          "clock": "1961",
+          "place": "international section/group network",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        }
+      ],
+      "seed_of_death": {
+        "kind": "pressure / predecessor / unresolved field",
+        "summary": "documented imprisonment/rights abuse",
+        "time": "1961-05-28",
+        "place": "London, England",
+        "status": "project-synthesis over documented Foundation history"
+      },
+      "door_crossing": {
+        "event": "1961 public appeal",
+        "time": "1961-05-28",
+        "place": "London, England",
+        "status": "documented event + project Door interpretation"
+      },
+      "seed_of_life": {
+        "summary": "repeatable case-adoption and research model",
+        "time": "1961",
+        "place": "London, England → international section/group network",
+        "status": "documented+synthesis"
+      },
+      "foundation_rise": {
+        "definition": "The Foundation is treated as risen when its essential practice/rule/platform can be reproduced beyond the originating event.",
+        "reproduction_basis": "Research offices, local/national sections, case files, urgent actions, reports, campaigns and elected movement governance.",
+        "branches": [
+          "national sections",
+          "local/youth groups",
+          "thematic campaigns"
+        ]
+      },
+      "fall_return_refoundation": {
+        "type": "no completed fall observed / continuing lineage",
+        "summary": "The Foundation remains active in current form or through living successor structures; future closure, merger or refoundation should be recorded as a new clock rather than inferred."
+      },
+      "motive_lens": [
+        "liberation/rights",
+        "care/love",
+        "inquiry/truth"
+      ],
+      "evidence_boundary": "Dates, places, current status and historical sequence belong to the Foundation record and cited sources. Seed/Death/Life, Door direction and motive are project-native analytical overlays, not external factual identities."
+    },
+    {
+      "foundation_id": "dada-foundation",
+      "name": "Dada",
+      "domain": "culture-art",
+      "foundation_types": [
+        "art movement",
+        "performance network",
+        "manifesto/review movement"
+      ],
+      "canonical_clocks": [
+        {
+          "date_or_range": "1916-02",
+          "year_start": 1916,
+          "event_type": "first_operation",
+          "precision": "month",
+          "status": "documented",
+          "label": "Cabaret Voltaire opens in Zurich as a gathering/performance center for artists and poets later identified with Dada.",
+          "source": "https://assets.moma.org/documents/moma_catalogue_1884_300299023.pdf"
+        }
+      ],
+      "emergence_places": [
+        {
+          "clock": "1916-02",
+          "place": "Cabaret Voltaire, Zurich, Switzerland",
+          "precision": "site-or-institution",
+          "status": "documented or source-context as specified in Foundation record"
+        },
+        {
+          "clock": "1916-02",
+          "place": "later Berlin, Paris, New York and other art networks",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        }
+      ],
+      "seed_of_death": {
+        "kind": "pressure / predecessor / unresolved field",
+        "summary": "World War I displacement and cultural rupture",
+        "time": "1916-02",
+        "place": "Cabaret Voltaire, Zurich, Switzerland",
+        "status": "project-synthesis over documented Foundation history"
+      },
+      "door_crossing": {
+        "event": "Cabaret Voltaire",
+        "time": "1916-02",
+        "place": "Cabaret Voltaire, Zurich, Switzerland",
+        "status": "documented event + project Door interpretation"
+      },
+      "seed_of_life": {
+        "summary": "named performance/aesthetic grammar",
+        "time": "1916-02",
+        "place": "Cabaret Voltaire, Zurich, Switzerland → later Berlin, Paris, New York and other art networks",
+        "status": "documented+synthesis"
+      },
+      "foundation_rise": {
+        "definition": "The Foundation is treated as risen when its essential practice/rule/platform can be reproduced beyond the originating event.",
+        "reproduction_basis": "Performances, journals, manifestos, exhibitions, local cells and stylistic imitation/adaptation.",
+        "branches": [
+          "Zurich Dada",
+          "Berlin Dada",
+          "Paris/New York receptions",
+          "later avant-garde influence"
+        ]
+      },
+      "fall_return_refoundation": {
+        "type": "historical movement decline / portable artistic Seed",
+        "summary": "The original movement's short institutional phase ended, while its methods and aesthetic vocabulary continued through later art and design."
+      },
+      "motive_lens": [
+        "creative-rupture",
+        "identity/belonging",
+        "mixed/contested"
+      ],
+      "evidence_boundary": "Dates, places, current status and historical sequence belong to the Foundation record and cited sources. Seed/Death/Life, Door direction and motive are project-native analytical overlays, not external factual identities."
+    },
+    {
+      "foundation_id": "gnu-free-software-foundation",
+      "name": "GNU Project / free-software movement",
+      "domain": "technology-culture",
+      "foundation_types": [
+        "software project",
+        "technical-political philosophy",
+        "open collaboration lineage"
+      ],
+      "canonical_clocks": [
+        {
+          "date_or_range": "1983-09-27",
+          "year_start": 1983,
+          "event_type": "seed_idea",
+          "precision": "exact-day",
+          "status": "documented",
+          "label": "Richard Stallman posts the initial GNU announcement.",
+          "source": "https://www.gnu.org/gnu/initial-announcement.en.html"
+        },
+        {
+          "date_or_range": "1984-01",
+          "year_start": 1984,
+          "event_type": "first_operation",
+          "precision": "month",
+          "status": "documented",
+          "label": "GNU development begins.",
+          "source": "https://www.gnu.org/gnu/gnu-history.en.html"
+        }
+      ],
+      "emergence_places": [
+        {
+          "clock": "1983-09-27",
+          "place": "MIT AI Lab / Cambridge, Massachusetts, USA",
+          "precision": "site-or-institution",
+          "status": "documented or source-context as specified in Foundation record"
+        },
+        {
+          "clock": "1984-01",
+          "place": "distributed Internet developer network",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        }
+      ],
+      "seed_of_death": {
+        "kind": "pressure / predecessor / unresolved field",
+        "summary": "proprietary-software cooperation barriers",
+        "time": "1983-09-27",
+        "place": "MIT AI Lab / Cambridge, Massachusetts, USA",
+        "status": "project-synthesis over documented Foundation history"
+      },
+      "door_crossing": {
+        "event": "1983 public GNU announcement",
+        "time": "1984-01",
+        "place": "MIT AI Lab / Cambridge, Massachusetts, USA",
+        "status": "documented event + project Door interpretation"
+      },
+      "seed_of_life": {
+        "summary": "working free software",
+        "time": "1984-01",
+        "place": "MIT AI Lab / Cambridge, Massachusetts, USA → distributed Internet developer network",
+        "status": "documented+synthesis"
+      },
+      "foundation_rise": {
+        "definition": "The Foundation is treated as risen when its essential practice/rule/platform can be reproduced beyond the originating event.",
+        "reproduction_basis": "Source code, licenses, maintainers, mailing lists, package/tool reuse and forkable implementations.",
+        "branches": [
+          "GNU software packages",
+          "Free Software Foundation",
+          "free-software communities and license lineages"
+        ]
+      },
+      "fall_return_refoundation": {
+        "type": "no completed fall observed / continuing lineage",
+        "summary": "The Foundation remains active in current form or through living successor structures; future closure, merger or refoundation should be recorded as a new clock rather than inferred."
+      },
+      "motive_lens": [
+        "liberation/rights",
+        "inquiry/truth",
+        "identity/belonging"
+      ],
+      "evidence_boundary": "Dates, places, current status and historical sequence belong to the Foundation record and cited sources. Seed/Death/Life, Door direction and motive are project-native analytical overlays, not external factual identities."
+    },
+    {
+      "foundation_id": "linux-kernel-foundation",
+      "name": "Linux kernel collaborative lineage",
+      "domain": "technology-software",
+      "foundation_types": [
+        "software project",
+        "open collaboration infrastructure"
+      ],
+      "canonical_clocks": [
+        {
+          "date_or_range": "1991-08",
+          "year_start": 1991,
+          "event_type": "first_operation",
+          "precision": "month",
+          "status": "documented",
+          "label": "Linus Torvalds announces the Linux kernel project while at the University of Helsinki.",
+          "source": "https://www.linuxfoundation.org/about/leadership"
+        }
+      ],
+      "emergence_places": [
+        {
+          "clock": "1991-08",
+          "place": "University of Helsinki, Finland",
+          "precision": "site-or-institution",
+          "status": "documented or source-context as specified in Foundation record"
+        },
+        {
+          "clock": "1991-08",
+          "place": "distributed global developer network",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        }
+      ],
+      "seed_of_death": {
+        "kind": "pressure / predecessor / unresolved field",
+        "summary": "personal OS/kernel experimentation",
+        "time": "1991-08",
+        "place": "University of Helsinki, Finland",
+        "status": "project-synthesis over documented Foundation history"
+      },
+      "door_crossing": {
+        "event": "public 1991 announcement/source release",
+        "time": "1991-08",
+        "place": "University of Helsinki, Finland",
+        "status": "documented event + project Door interpretation"
+      },
+      "seed_of_life": {
+        "summary": "external contribution",
+        "time": "1991-08",
+        "place": "University of Helsinki, Finland → distributed global developer network",
+        "status": "documented+synthesis"
+      },
+      "foundation_rise": {
+        "definition": "The Foundation is treated as risen when its essential practice/rule/platform can be reproduced beyond the originating event.",
+        "reproduction_basis": "Source tree, patches, maintainers, version control, distributions, downstream vendors and contributor communities.",
+        "branches": [
+          "Linux distributions",
+          "embedded/server/mobile uses",
+          "kernel subsystems and downstream forks"
+        ]
+      },
+      "fall_return_refoundation": {
+        "type": "no completed fall observed / continuing lineage",
+        "summary": "The Foundation remains active in current form or through living successor structures; future closure, merger or refoundation should be recorded as a new clock rather than inferred."
+      },
+      "motive_lens": [
+        "inquiry/truth",
+        "identity/belonging",
+        "coordination/order"
+      ],
+      "evidence_boundary": "Dates, places, current status and historical sequence belong to the Foundation record and cited sources. Seed/Death/Life, Door direction and motive are project-native analytical overlays, not external factual identities."
+    },
+    {
+      "foundation_id": "creative-commons-foundation",
+      "name": "Creative Commons",
+      "domain": "knowledge-infrastructure",
+      "foundation_types": [
+        "legal-license infrastructure",
+        "knowledge-sharing movement",
+        "nonprofit platform"
+      ],
+      "canonical_clocks": [
+        {
+          "date_or_range": "2001",
+          "year_start": 2001,
+          "event_type": "first_operation",
+          "precision": "year",
+          "status": "documented",
+          "label": "Creative Commons is founded as a nonprofit organization.",
+          "source": "https://creativecommons.org/history/"
+        },
+        {
+          "date_or_range": "2002",
+          "year_start": 2002,
+          "event_type": "consolidation",
+          "precision": "year",
+          "status": "documented",
+          "label": "The first Creative Commons licenses are published.",
+          "source": "https://creativecommons.org/history/"
+        }
+      ],
+      "emergence_places": [
+        {
+          "clock": "2001",
+          "place": "United States / academic-internet legal network",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        },
+        {
+          "clock": "2002",
+          "place": "global digital publishing ecosystem",
+          "precision": "city/region/distributed",
+          "status": "documented or source-context as specified in Foundation record"
+        }
+      ],
+      "seed_of_death": {
+        "kind": "pressure / predecessor / unresolved field",
+        "summary": "all-rights-reserved rigidity for voluntary sharing",
+        "time": "2001",
+        "place": "United States / academic-internet legal network",
+        "status": "project-synthesis over documented Foundation history"
+      },
+      "door_crossing": {
+        "event": "nonprofit + standardized license publication",
+        "time": "2001",
+        "place": "United States / academic-internet legal network",
+        "status": "documented event + project Door interpretation"
+      },
+      "seed_of_life": {
+        "summary": "reusable legal permissions",
+        "time": "2002",
+        "place": "United States / academic-internet legal network → global digital publishing ecosystem",
+        "status": "documented+synthesis"
+      },
+      "foundation_rise": {
+        "definition": "The Foundation is treated as risen when its essential practice/rule/platform can be reproduced beyond the originating event.",
+        "reproduction_basis": "License texts, metadata, platform support, legal-porting/versioning, institutional adoption and creator reuse.",
+        "branches": [
+          "license suite versions",
+          "CC0",
+          "platform/institutional adoption",
+          "open-education/open-culture uses"
+        ]
+      },
+      "fall_return_refoundation": {
+        "type": "no completed fall observed / continuing lineage",
+        "summary": "The Foundation remains active in current form or through living successor structures; future closure, merger or refoundation should be recorded as a new clock rather than inferred."
+      },
+      "motive_lens": [
+        "liberation/rights",
+        "coordination/order",
+        "inquiry/truth"
+      ],
+      "evidence_boundary": "Dates, places, current status and historical sequence belong to the Foundation record and cited sources. Seed/Death/Life, Door direction and motive are project-native analytical overlays, not external factual identities."
     }
   ],
   "emergent_patterns": [
@@ -3378,6 +4536,22 @@
     {
       "id": "refoundation-is-a-second-door",
       "finding": "A refoundation is structurally a second Door crossing: residue from the previous form is selectively preserved, discarded or recombined into a new operating platform."
+    },
+    {
+      "id": "living-lineage-needs-current-status",
+      "finding": "A Foundation map becomes more useful when historical origin and present survival are stored separately.",
+      "test": "Current activity, historical decline, merger, diaspora and successor survival must be typed rather than inferred from age."
+    },
+    {
+      "id": "social-foundations-are-often-practice-first",
+      "finding": "Mutual-aid, youth, rights and civic movements often reproduce less through a single sacred/legal text than through meetings, chapters, campaigns, training, service roles and portable practices.",
+      "examples": [
+        "Alcoholics Anonymous meetings and sponsorship",
+        "Scout patrol/troop method",
+        "YMCA local associations",
+        "NAACP branches",
+        "Amnesty sections/groups"
+      ]
     }
   ],
   "next_research": [
@@ -3385,5 +4559,6 @@
     "Separate founder death, institutional closure, protocol supersession, merger and diaspora into typed fall events across the Foundation timeline.",
     "Link each Foundation's first successful reproduction event: first successor, first branch, first copied implementation, first external school/community or first generation after founders.",
     "Add counterexamples where a seed crossed a Door but failed to reproduce, to distinguish Foundation from short-lived launch."
-  ]
+  ],
+  "population_count": 52
 }
