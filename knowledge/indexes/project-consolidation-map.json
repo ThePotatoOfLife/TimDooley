@@ -1,7 +1,7 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "updated": "2026-09-18",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
@@ -216,7 +216,9 @@
       "knowledge.json stale 'still live' metadata removed; its retirement is now consistently documented.",
       "Potato Biology now has one canonical factual owner: knowledge/science/potato-biology-ecology-development-canon.json.",
       "knowledge/biology/potato-growth-principles.json is now explicitly the practice-facing projection rather than a second biology authority.",
-      "Alternative Potato research staging material was externally re-sourced, promoted, then retired with blob provenance."
+      "Alternative Potato research staging material was externally re-sourced, promoted, then retired with blob provenance.",
+      "POTATOVERSE-DEEP-RESEARCH.md remains only as a readable historical donor and no longer points to live staging JSON.",
+      "Research frontier House holdings no longer count retired alternative/deep Potatoverse staging files."
     ],
     "next_retirement_candidates": [
       {
@@ -260,6 +262,16 @@
         "path": "data/potatoverse-alternative-links.json",
         "action": "deleted",
         "reason": "self-contained adXX staging graph retired with its source layer; durable relations preserved in canonical synthesis rather than promoting a parallel node taxonomy"
+      },
+      {
+        "path": "data/potatoverse-deep-research.json",
+        "action": "deleted",
+        "reason": "36-finding drXX staging corpus fully self-contained and absorbed by current core/science/timeline/traditions owners"
+      },
+      {
+        "path": "data/potatoverse-deep-links.json",
+        "action": "deleted",
+        "reason": "28-edge drXX staging graph retired with source layer; no live consumer or canonical endpoint dependency remained"
       }
     ],
     "root_source_strata": {
