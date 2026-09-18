@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "authority": "project-center",
   "purpose": "Define the semantic center of the Potato of Life project and a center-out population order so core project meaning remains primary while comparative traditions, research and archive material deepen it from the outside.",
@@ -157,7 +157,7 @@
         "door",
         "axis/plane/cross"
       ],
-      "destination": "house/"
+      "destination": "potato-of-life/"
     },
     {
       "id": "follow-life",
@@ -227,5 +227,17 @@
     "Do not repeat comparative examples across Home, House, Rooms and Religion; store them in the branch atlas and link inward/outward.",
     "Do not let navigation diagrams become new ontology owners.",
     "Prefer one project-native definition plus many typed external corridors over many near-synonymous project symbols."
-  ]
+  ],
+  "crosscutting_lenses": {
+    "authority": "data/house/crosscutting-lenses.json",
+    "rule": "Lenses change how the center is read without creating new Rooms, planes, realms or ownership.",
+    "ids": [
+      "motion",
+      "polarity",
+      "memory-history",
+      "social-formation",
+      "embodiment-spirit",
+      "practice-path"
+    ]
+  }
 }
