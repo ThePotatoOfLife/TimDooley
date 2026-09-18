@@ -18,6 +18,7 @@ FEDERATION_SCALE=ROOT/'data/house/federation-scale.json'
 HOLDINGS=ROOT/'data/house/holdings.json'
 COLLECTIONS=ROOT/'data/house/collections.json'
 DATA_HOLDINGS=ROOT/'data/house/data-holdings.json'
+ROOM_DOSSIERS=ROOT/'data/house/room-dossiers.json'
 SURFACES=ROOT/'data/house/public-surfaces.json'
 
 def load(path):
@@ -26,7 +27,7 @@ def load(path):
 def main():
     errors=[]
     try:
-        rooms=load(ROOMS); sub=load(SUBROOMS); topo=load(TOPOLOGY); interfaces=load(INTERFACES); vocab=load(VOCAB); projections=load(PROJECTIONS); census=load(STRUCTURAL_CENSUS); population=load(POPULATION); pulse=load(POPULATION_PULSE); federation=load(FEDERATION_SCALE); holdings=load(HOLDINGS); collections=load(COLLECTIONS); data_holdings=load(DATA_HOLDINGS); surfaces=load(SURFACES); schema=load(SCHEMA)
+        rooms=load(ROOMS); sub=load(SUBROOMS); topo=load(TOPOLOGY); interfaces=load(INTERFACES); vocab=load(VOCAB); projections=load(PROJECTIONS); census=load(STRUCTURAL_CENSUS); population=load(POPULATION); pulse=load(POPULATION_PULSE); federation=load(FEDERATION_SCALE); holdings=load(HOLDINGS); collections=load(COLLECTIONS); data_holdings=load(DATA_HOLDINGS); dossiers=load(ROOM_DOSSIERS); surfaces=load(SURFACES); schema=load(SCHEMA)
     except Exception as exc:
         print('HOUSE SUBROOM VALIDATION FAILED')
         print('-',exc)
@@ -99,6 +100,12 @@ def main():
         if bundle.get('primary_room_id') not in {x.get('id') for x in rows}: errors.append(f'House data bundle has unknown primary Room: {bundle.get("id")}')
         data_paths.extend(bundle.get('source_files',[]))
     if len(data_paths)!=len(set(data_paths)): errors.append('A data file is assigned to more than one primary data bundle')
+    dossier_rows=[x for x in dossiers.get('dossiers',[]) if isinstance(x,dict)]
+    if len(dossier_rows)!=len(rows): errors.append('House Room dossiers must cover every nested Room')
+    if {x.get('room_id') for x in dossier_rows}!={x.get('id') for x in rows}: errors.append('House Room dossier IDs drifted')
+    hold_count={x.get('room_id'):x.get('primary_file_count',0) for x in holding_rows}
+    for d in dossier_rows:
+        if d.get('knowledge_holdings',{}).get('primary_file_count')!=hold_count.get(d.get('room_id')): errors.append(f'Room dossier holding count drift: {d.get("room_id")}')
     if len(pulse_rows)!=len(rows): errors.append('House population pulse must cover every nested Room')
     if {x.get('room_id') for x in pulse_rows}!={x.get('id') for x in rows}: errors.append('House population pulse Room IDs drifted')
     federation_ids=[x.get('id') for x in federation.get('forms',[]) if isinstance(x,dict)]
