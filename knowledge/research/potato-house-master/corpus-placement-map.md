@@ -48,11 +48,11 @@ If a future file cannot be classified by these rules, that is an architecture de
 
 | Current family | Placement | Future treatment |
 |---|---|---|
-| `2026-master-framework.json` | Knowledge House: Potatoverse Dossier / synthesis Artifact | preserve as dense owner/source; adapt into Subjects, Assertions, Relations and Contexts; do not make file path the identity |
+| `2026-master-framework.json` | Historical 2026 synthesis donor / development artifact | preserve for source lineage and framework-development history; current ownership lives in dedicated core, science, timeline and world records |
 | `THE-TURNING-APRIL-2025.md` | Artifact + Occurrence-related historical/source material | Archive/Time roots; may support Tim/Potatoverse dossiers |
-| `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md` | Dossier/Collection over Occurrences | Time & History Room; preserve source/provenance distinction |
+| `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md` | Retained readable timeline/source stratum | Time & History uses it for provenance/early roadmap context; canonical event identity belongs to `data/timeline-events.json` |
 | `POTATOVERSE-*-RESEARCH.md` | Research-Lab Artifacts / candidate Assertions | not canonical merely because root-level |
-| `book-research.json` | Research Artifact / Collection | Research Lab or Works depending contents |
+| `book-research.json` | 2024 Great Book source-extraction bridge | preserve as source/provenance artifact; derived durable claims belong in specialist owners |
 | `README.md` | Governance/documentation | project entry point, never canonical knowledge merely by location |
 | `TODO.md` | Operations/Gardener work queue | not House knowledge unless individual tasks become research records |
 | `_config.yml`, `.gitignore` | Operations | repository/build configuration |
