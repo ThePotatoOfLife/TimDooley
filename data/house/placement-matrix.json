@@ -1,0 +1,391 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "house-placement-matrix",
+  "purpose": "Operational placement rules for assigning any new symbol, tradition, figure, realm, route, institution or archive object to the Potato House without inventing a new floor or conflating function with moral value.",
+  "authority_chain": [
+    "data/house/navigation-manifest.json",
+    "data/house/layer-terrain-regime-atlas.json",
+    "data/house/tree-plane-routing.json",
+    "data/house/seed-spiral-routing.json",
+    "data/house/religious-symbolic-branch-atlas.json",
+    "data/house/orientation-population.json"
+  ],
+  "placement_questions": [
+    "What is it in its own source/tradition?",
+    "What category is it: terrain, regime, organism, material, threshold, perceptual layer, process, route, inhabitant, coordinate, standing plane or whole?",
+    "Which Room owns the knowledge?",
+    "Which plane(s) can a reader usefully encounter it from?",
+    "Does it genuinely participate in Roots, trunk, Life, Strife, canopy, Repair or Return?",
+    "Is it a structural node, an inhabitant/subject, or merely a comparative neighbor?",
+    "What typed corridor connects it to existing nodes?",
+    "What must it not be confused with?",
+    "Should it be landmark, room-detail or archive-only?"
+  ],
+  "precedence": [
+    "own-tradition / primary-source meaning",
+    "dated historical reception",
+    "formal category",
+    "Room ownership",
+    "plane projection",
+    "Tree/route affinity",
+    "comparative structural relation",
+    "Potatoverse interpretation",
+    "visibility"
+  ],
+  "family_rules": [
+    {
+      "id": "heaven-realm",
+      "family": "Heavens / celestial realms",
+      "default_category": "terrain",
+      "default_planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "default_rooms": [
+        "comparative-mythology",
+        "bible-christianity",
+        "other-traditions"
+      ],
+      "default_tree_affinity": [
+        "canopy"
+      ],
+      "rule": "Treat a heaven/celestial realm as a tradition-specific cosmographic subject. World stores its texts, rites and historical reception; Heaven Plane is the comparative reader projection.",
+      "do_not": "Do not turn every divine realm into the Potatoverse Heaven Plane."
+    },
+    {
+      "id": "underworld-realm",
+      "family": "Underworlds / realms of the dead",
+      "default_category": "terrain",
+      "default_planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "default_rooms": [
+        "comparative-mythology",
+        "bible-christianity",
+        "other-traditions"
+      ],
+      "default_tree_affinity": [
+        "roots"
+      ],
+      "rule": "Anchor in the tradition's own death/afterlife cosmography; World stores texts/history, Below exposes descent/death/root functions.",
+      "do_not": "Do not equate underworld with punishment, evil, Hell or Tree of Strife unless the specific tradition supports it."
+    },
+    {
+      "id": "world-tree",
+      "family": "World trees / cosmic trees",
+      "default_category": "organism",
+      "default_planes": [
+        "below-plane",
+        "world-plane",
+        "heaven-plane"
+      ],
+      "default_rooms": [
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "default_tree_affinity": [
+        "roots",
+        "trunk",
+        "canopy"
+      ],
+      "rule": "World trees are high-value vertical connectors. Compare branching/rooting/function while preserving each tradition's cosmology.",
+      "do_not": "Do not silently rename external world trees as the Potatoverse Tree of Life."
+    },
+    {
+      "id": "sacred-mountain",
+      "family": "Sacred / cosmic mountains",
+      "default_category": "terrain",
+      "default_planes": [
+        "world-plane",
+        "heaven-plane"
+      ],
+      "default_rooms": [
+        "comparative-mythology",
+        "bible-christianity",
+        "symbolic-architecture"
+      ],
+      "default_tree_affinity": [
+        "trunk",
+        "canopy"
+      ],
+      "rule": "Mountain placement emphasizes integration, orientation, encounter, ascent/descent or world-center roles according to source.",
+      "do_not": "Do not infer holiness or truth simply from height."
+    },
+    {
+      "id": "temple-city",
+      "family": "Temples / sacred cities / heavenly cities",
+      "default_category": "regime",
+      "default_planes": [
+        "world-plane",
+        "heaven-plane"
+      ],
+      "default_rooms": [
+        "bible-christianity",
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "default_tree_affinity": [
+        "trunk",
+        "canopy"
+      ],
+      "rule": "Treat as built ordering regimes with gates, rooms, ritual access, civic or sacred functions.",
+      "do_not": "Do not equate city, temple, House and Garden merely because they overlap structurally."
+    },
+    {
+      "id": "cave-labyrinth",
+      "family": "Caves / labyrinths / inward passages",
+      "default_category": "threshold",
+      "default_planes": [
+        "world-plane",
+        "below-plane"
+      ],
+      "default_rooms": [
+        "comparative-mythology",
+        "esoteric-sacred-geometry"
+      ],
+      "default_tree_affinity": [
+        "roots",
+        "trunk"
+      ],
+      "rule": "Use for inward passage, burial, testing, hidden center, route-finding or emergence when the source supports it.",
+      "do_not": "Do not create a new Below floor for every descent image."
+    },
+    {
+      "id": "river-water",
+      "family": "Sacred rivers / waters / wells",
+      "default_category": "terrain",
+      "default_planes": [
+        "below-plane",
+        "world-plane",
+        "heaven-plane"
+      ],
+      "default_rooms": [
+        "comparative-mythology",
+        "bible-christianity",
+        "symbolic-architecture"
+      ],
+      "default_tree_affinity": [
+        "roots",
+        "trunk",
+        "life-branches"
+      ],
+      "rule": "Place by function: boundary, memory, purification, nourishment, death-crossing, source or return.",
+      "do_not": "Do not treat all water as Spirit/CSF or all rivers as one universal river."
+    },
+    {
+      "id": "gate-door",
+      "family": "Gates / doors / guarded thresholds",
+      "default_category": "threshold",
+      "default_planes": [
+        "world-plane",
+        "below-plane",
+        "heaven-plane"
+      ],
+      "default_rooms": [
+        "comparative-mythology",
+        "bible-christianity",
+        "symbolic-architecture"
+      ],
+      "default_tree_affinity": [
+        "trunk"
+      ],
+      "rule": "Gates are state/context-changing access points. Record guardian, admissibility rule, direction and consequence where source provides them.",
+      "do_not": "Do not call every transition a strong Door without a real state/context change."
+    },
+    {
+      "id": "pillar-axis",
+      "family": "Pillars / poles / staffs / axes",
+      "default_category": "coordinate",
+      "default_planes": [
+        "below-plane",
+        "world-plane",
+        "heaven-plane"
+      ],
+      "default_rooms": [
+        "comparative-mythology",
+        "esoteric-sacred-geometry",
+        "symbolic-architecture"
+      ],
+      "default_tree_affinity": [
+        "trunk",
+        "canopy"
+      ],
+      "rule": "Use as support/orientation/mediation comparators. A staff/pillar may carry messenger or threshold functions without becoming the central Axis.",
+      "do_not": "Do not flatten Jachin/Boaz, caduceus, world axis and tree trunk into one object."
+    },
+    {
+      "id": "serpent-dragon",
+      "family": "Serpents / dragons",
+      "default_category": "inhabitant",
+      "default_planes": [
+        "below-plane",
+        "world-plane",
+        "heaven-plane"
+      ],
+      "default_rooms": [
+        "comparative-mythology",
+        "bible-christianity",
+        "esoteric-sacred-geometry"
+      ],
+      "default_tree_affinity": [
+        "roots",
+        "trunk",
+        "canopy"
+      ],
+      "rule": "Place only by tradition-specific role: guardian, adversary, wisdom, renewal, chaos, medicine, world-boundary, death or transformation.",
+      "do_not": "Do not assume serpent = evil, kundalini, Satan or Spiral across traditions."
+    },
+    {
+      "id": "angel-messenger",
+      "family": "Angels / messengers / psychopomps",
+      "default_category": "inhabitant",
+      "default_planes": [
+        "heaven-plane",
+        "world-plane",
+        "below-plane"
+      ],
+      "default_rooms": [
+        "bible-christianity",
+        "comparative-mythology",
+        "other-traditions"
+      ],
+      "default_tree_affinity": [
+        "canopy",
+        "trunk",
+        "roots"
+      ],
+      "rule": "Messenger/psychopomp placement follows the source tradition's movement between realms and roles.",
+      "do_not": "Do not make all messenger figures angels."
+    },
+    {
+      "id": "demon-adversary",
+      "family": "Demons / adversaries / hostile spirits",
+      "default_category": "inhabitant",
+      "default_planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "default_rooms": [
+        "comparative-mythology",
+        "bible-christianity",
+        "esoteric-sacred-geometry"
+      ],
+      "default_tree_affinity": [
+        "roots",
+        "strife-branches"
+      ],
+      "rule": "Own-tradition demonology first; Tree-of-Strife comparison only when capture/distortion/repetition functions are actually relevant.",
+      "do_not": "Do not map real people or disliked groups to literal demons."
+    },
+    {
+      "id": "throne-crown",
+      "family": "Thrones / crowns / kingship symbols",
+      "default_category": "regime",
+      "default_planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "default_rooms": [
+        "comparative-mythology",
+        "bible-christianity",
+        "politics-governance",
+        "symbolic-architecture"
+      ],
+      "default_tree_affinity": [
+        "canopy",
+        "trunk"
+      ],
+      "rule": "Treat as authority/order/office symbols whose legitimacy, service, succession and limits must be source-specific.",
+      "do_not": "Do not infer moral superiority from rank or vertical height."
+    },
+    {
+      "id": "star-planet",
+      "family": "Stars / planets / celestial markers",
+      "default_category": "inhabitant",
+      "default_planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "default_rooms": [
+        "comparative-mythology",
+        "physics-cosmology",
+        "esoteric-sacred-geometry"
+      ],
+      "default_tree_affinity": [
+        "canopy"
+      ],
+      "rule": "Separate astronomical object, historical astrology, religious symbolism and project mapping into typed layers.",
+      "do_not": "Do not treat symbolic correspondence as physical causation."
+    },
+    {
+      "id": "judgment-weighing",
+      "family": "Judgment / weighing / tribunal systems",
+      "default_category": "process",
+      "default_planes": [
+        "world-plane",
+        "below-plane",
+        "heaven-plane"
+      ],
+      "default_rooms": [
+        "comparative-mythology",
+        "law-justice",
+        "bible-christianity"
+      ],
+      "default_tree_affinity": [
+        "trunk",
+        "roots",
+        "canopy"
+      ],
+      "rule": "Map judge, standard, evidence, gate, outcome and repair/return where present.",
+      "do_not": "Do not flatten all afterlife judgments or legal systems into one ledger."
+    },
+    {
+      "id": "burial-resurrection",
+      "family": "Death / burial / resurrection / rebirth cycles",
+      "default_category": "route",
+      "default_planes": [
+        "below-plane",
+        "world-plane",
+        "heaven-plane"
+      ],
+      "default_rooms": [
+        "comparative-mythology",
+        "bible-christianity",
+        "developmental-genealogy",
+        "symbolic-architecture"
+      ],
+      "default_tree_affinity": [
+        "roots",
+        "trunk",
+        "life-branches"
+      ],
+      "rule": "Use Seed/Spiral routing only after the source tradition's own death/return sequence is described.",
+      "do_not": "Do not label every seasonal or funerary cycle as the Potato Seed of Death/Life."
+    }
+  ],
+  "output_contract": {
+    "required_fields": [
+      "id",
+      "label",
+      "source_tradition",
+      "category",
+      "room_ids",
+      "plane_ids",
+      "tree_affinity",
+      "source_files",
+      "visibility",
+      "boundary"
+    ],
+    "optional_fields": [
+      "route_affinity",
+      "corridors",
+      "historical_reception",
+      "project_comparison",
+      "research_status"
+    ],
+    "unresolved_destination": "research-lab/open-questions",
+    "default_visibility": "archive-only"
+  }
+}
