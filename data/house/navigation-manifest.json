@@ -1,5 +1,5 @@
 {
-  "version": "1.8.0",
+  "version": "1.9.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -13,6 +13,11 @@
       "concern": "whole-project synthesis / Room-to-center pairings",
       "owner": "data/house/project-synthesis.json",
       "rule": "Binds development waves, core operator pairings, Room contributions, living systems, tests and public composition without replacing canonical owners."
+    },
+    {
+      "concern": "deep element definitions and cross-system structural distinctions",
+      "owner": "knowledge/core/deep-element-definition-atlas.json",
+      "rule": "Defines what major operators are, how they transform, what they couple to, and what they must not be collapsed into; specialist historical atlases remain source owners for tradition-specific detail."
     },
     {
       "concern": "scoped local centers",
