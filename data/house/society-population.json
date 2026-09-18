@@ -1,0 +1,843 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "public House population projection; anchor examples do not replace canonical entity records",
+  "title": "The Inhabited House — Society, Institutions and the Observable World",
+  "purpose": "Populate the Potato House with concrete social reality so symbolic operators describe how real relations behave rather than becoming the subject matter themselves.",
+  "source_owners": [
+    "data/repository-spine.json",
+    "knowledge/core/world-atlas-integrated-layer-stack.json",
+    "data/house/rooms.json",
+    "data/house/subrooms.json"
+  ],
+  "core_rule": "Symbols and operators are grammar. People, organizations, traditions, technologies, territories, resources, laws, events and relationships are the population.",
+  "triune_lenses": [
+    {
+      "id": "spirit",
+      "label": "Spirit / Meaning",
+      "question": "What makes this meaningful, legitimate, sacred, desirable, obligatory or worth preserving?",
+      "contains": [
+        "religions and theologies",
+        "philosophies and ethics",
+        "values and norms",
+        "constitutions and founding purposes",
+        "collective identities and narratives",
+        "aesthetics and symbolic languages",
+        "missions and institutional purposes"
+      ],
+      "caution": "Spirit is a meaning/legitimation lens, not a claim that every institution has a literal supernatural spirit."
+    },
+    {
+      "id": "mind",
+      "label": "Mind / Knowledge",
+      "question": "How does it perceive, remember, decide, coordinate, learn and communicate?",
+      "contains": [
+        "education and research",
+        "science and expertise",
+        "bureaucracy and administration",
+        "media and information systems",
+        "software and data",
+        "planning and policy",
+        "accounting and ledgers",
+        "institutional memory and archives"
+      ],
+      "caution": "Mind is a coordination/knowledge lens. It does not imply organizations are literally conscious."
+    },
+    {
+      "id": "body",
+      "label": "Body / Matter",
+      "question": "What materially embodies it, who participates, and what resources or infrastructure let it act?",
+      "contains": [
+        "people and households",
+        "states and territories",
+        "companies and assets",
+        "banks and payment systems",
+        "NGOs and associations",
+        "buildings and infrastructure",
+        "energy, transport and supply chains",
+        "budgets, labour and property",
+        "ecosystems and material resources"
+      ],
+      "caution": "The internal repository spine calls this Matter / Observable World. 'Body' is the public triune projection emphasizing embodiment."
+    }
+  ],
+  "entity_contract": [
+    "identity and legal/institutional form",
+    "geography and jurisdictions",
+    "people and roles",
+    "mission, beliefs, norms or mandate",
+    "decision and information systems",
+    "assets, budgets, infrastructure and material capacity",
+    "ownership, control and governance",
+    "funding, revenue, debt and obligations",
+    "memberships and affiliations",
+    "dependencies and suppliers",
+    "outputs, beneficiaries and externalities",
+    "history and current status",
+    "sources, dates, confidence and contradictions"
+  ],
+  "population_families": [
+    {
+      "id": "polities-governance",
+      "label": "Nations, governments & public authority",
+      "primary_rooms": [
+        "politics-governance",
+        "law-justice",
+        "world-systems"
+      ],
+      "examples": [
+        "states",
+        "municipalities",
+        "ministries",
+        "parliaments",
+        "courts",
+        "regulators",
+        "intergovernmental organizations",
+        "alliances"
+      ],
+      "relations": [
+        "governs",
+        "regulates",
+        "taxes",
+        "represents",
+        "treaty-member-of",
+        "administers",
+        "recognizes",
+        "sanctions",
+        "funds"
+      ]
+    },
+    {
+      "id": "economy-finance",
+      "label": "Economy, banks & finance",
+      "primary_rooms": [
+        "economy-finance",
+        "world-systems"
+      ],
+      "examples": [
+        "central banks",
+        "commercial banks",
+        "development banks",
+        "markets",
+        "payment systems",
+        "insurers",
+        "pension funds",
+        "asset managers",
+        "public treasuries"
+      ],
+      "relations": [
+        "lends-to",
+        "borrows-from",
+        "owns",
+        "funds",
+        "insures",
+        "settles",
+        "prices",
+        "invests-in",
+        "regulates"
+      ]
+    },
+    {
+      "id": "firms-production",
+      "label": "Companies, production & supply chains",
+      "primary_rooms": [
+        "economy-finance",
+        "world-systems",
+        "systems-dynamics"
+      ],
+      "examples": [
+        "manufacturers",
+        "logistics firms",
+        "healthcare companies",
+        "technology firms",
+        "energy firms",
+        "retailers",
+        "farms",
+        "service providers"
+      ],
+      "relations": [
+        "supplies",
+        "employs",
+        "owns",
+        "manufactures",
+        "ships",
+        "licenses",
+        "contracts-with",
+        "depends-on",
+        "competes-with"
+      ]
+    },
+    {
+      "id": "civil-society",
+      "label": "NGOs, foundations & associations",
+      "primary_rooms": [
+        "world-systems",
+        "culture-information",
+        "law-justice"
+      ],
+      "examples": [
+        "humanitarian organizations",
+        "charities",
+        "foundations",
+        "professional associations",
+        "trade unions",
+        "advocacy organizations",
+        "community groups",
+        "open-source foundations"
+      ],
+      "relations": [
+        "serves",
+        "advocates-for",
+        "funds",
+        "coordinates",
+        "mobilizes",
+        "partners-with",
+        "monitors",
+        "publishes"
+      ]
+    },
+    {
+      "id": "religion-tradition",
+      "label": "Religions, traditions & sacred institutions",
+      "primary_rooms": [
+        "traditions-texts",
+        "other-traditions",
+        "bible-christianity",
+        "theology-god-language"
+      ],
+      "examples": [
+        "churches",
+        "mosques",
+        "synagogues",
+        "temples",
+        "monasteries",
+        "religious orders",
+        "denominations",
+        "schools of interpretation",
+        "ritual communities"
+      ],
+      "relations": [
+        "worships",
+        "teaches",
+        "inherits-from",
+        "interprets",
+        "ordains",
+        "belongs-to",
+        "funds",
+        "governs",
+        "pilgrimages-to"
+      ]
+    },
+    {
+      "id": "knowledge-education",
+      "label": "Knowledge, research & education",
+      "primary_rooms": [
+        "science-formal-models",
+        "culture-information",
+        "time-history"
+      ],
+      "examples": [
+        "universities",
+        "schools",
+        "research institutes",
+        "libraries",
+        "archives",
+        "laboratories",
+        "standards bodies",
+        "scientific collaborations"
+      ],
+      "relations": [
+        "teaches",
+        "researches",
+        "cites",
+        "archives",
+        "certifies",
+        "publishes",
+        "collaborates-with",
+        "trains",
+        "standardizes"
+      ]
+    },
+    {
+      "id": "media-information",
+      "label": "Media, platforms & information systems",
+      "primary_rooms": [
+        "internet-platforms",
+        "information-ecology",
+        "culture-information"
+      ],
+      "examples": [
+        "newsrooms",
+        "publishers",
+        "social platforms",
+        "search engines",
+        "encyclopedias",
+        "archives",
+        "telecommunications",
+        "software communities"
+      ],
+      "relations": [
+        "publishes",
+        "hosts",
+        "indexes",
+        "moderates",
+        "amplifies",
+        "archives",
+        "connects",
+        "recommends",
+        "transmits"
+      ]
+    },
+    {
+      "id": "culture-aesthetics",
+      "label": "Culture, philosophies & aesthetics",
+      "primary_rooms": [
+        "culture-information",
+        "other-traditions",
+        "works",
+        "practice-ethics"
+      ],
+      "examples": [
+        "philosophical schools",
+        "art movements",
+        "music scenes",
+        "literary traditions",
+        "design languages",
+        "fashion",
+        "ritual aesthetics",
+        "subcultures",
+        "public memory"
+      ],
+      "relations": [
+        "influences",
+        "reacts-against",
+        "inherits-from",
+        "popularizes",
+        "criticizes",
+        "remixes",
+        "canonizes",
+        "transmits"
+      ]
+    },
+    {
+      "id": "households-families",
+      "label": "Families, households & everyday life",
+      "primary_rooms": [
+        "life-body",
+        "culture-information",
+        "economy-finance"
+      ],
+      "examples": [
+        "households",
+        "families",
+        "care networks",
+        "friendship networks",
+        "neighbourhoods",
+        "generations",
+        "kinship systems"
+      ],
+      "relations": [
+        "cares-for",
+        "inherits-from",
+        "lives-with",
+        "supports",
+        "depends-on",
+        "teaches",
+        "transfers-to",
+        "migrates"
+      ]
+    },
+    {
+      "id": "infrastructure-technology",
+      "label": "Infrastructure, technology & physical systems",
+      "primary_rooms": [
+        "world-systems",
+        "science-formal-models",
+        "economy-finance"
+      ],
+      "examples": [
+        "electric grids",
+        "roads",
+        "ports",
+        "rail",
+        "data centers",
+        "semiconductor fabs",
+        "water systems",
+        "hospitals",
+        "telecom networks",
+        "cloud infrastructure"
+      ],
+      "relations": [
+        "connects",
+        "powers",
+        "carries",
+        "stores",
+        "routes",
+        "hosts",
+        "depends-on",
+        "maintains",
+        "fails-over-to"
+      ]
+    },
+    {
+      "id": "people-roles",
+      "label": "People, roles & professions",
+      "primary_rooms": [
+        "life-body",
+        "world-systems",
+        "culture-information"
+      ],
+      "examples": [
+        "citizens",
+        "workers",
+        "scientists",
+        "teachers",
+        "artists",
+        "clergy",
+        "lawyers",
+        "engineers",
+        "caregivers",
+        "officials",
+        "executives",
+        "organizers"
+      ],
+      "relations": [
+        "works-for",
+        "leads",
+        "represents",
+        "teaches",
+        "serves",
+        "creates",
+        "votes",
+        "owns",
+        "cares-for",
+        "reports-to"
+      ]
+    },
+    {
+      "id": "ecology-resources",
+      "label": "Ecology, land & material resources",
+      "primary_rooms": [
+        "life-body",
+        "world-systems",
+        "science-formal-models"
+      ],
+      "examples": [
+        "watersheds",
+        "forests",
+        "farmland",
+        "oceans",
+        "minerals",
+        "energy resources",
+        "food systems",
+        "species",
+        "climate systems"
+      ],
+      "relations": [
+        "feeds",
+        "constrains",
+        "regenerates",
+        "depletes",
+        "pollinates",
+        "absorbs",
+        "emits",
+        "supplies",
+        "is-protected-by"
+      ]
+    }
+  ],
+  "anchors": [
+    {
+      "id": "united-nations",
+      "name": "United Nations",
+      "kind": "intergovernmental organization",
+      "family": "polities-governance",
+      "summary": "Founded in 1945; currently 193 Member States. It provides a forum where states deliberate, negotiate and coordinate under the UN Charter.",
+      "spirit": "Charter purposes, international norms, legitimacy and shared problem-solving.",
+      "mind": "General Assembly, Security Council, Secretariat, diplomacy, reporting and specialized knowledge systems.",
+      "body": "193 Member States, headquarters and offices, budgets, staff and operational programmes.",
+      "relations": [
+        "member-states",
+        "treaties",
+        "agencies",
+        "peace and security",
+        "development",
+        "human rights"
+      ],
+      "source": {
+        "label": "United Nations — About Us",
+        "url": "https://www.un.org/en/about-us",
+        "verified": "2026-09-18"
+      }
+    },
+    {
+      "id": "european-union",
+      "name": "European Union",
+      "kind": "political and economic union",
+      "family": "polities-governance",
+      "summary": "A union of 27 Member States with shared institutions, bodies, agencies and a treaty-based legal order.",
+      "spirit": "Treaties, shared legal-political commitments and European public purpose.",
+      "mind": "Commission, Parliament, Council structures, courts, agencies, regulation and policy coordination.",
+      "body": "27 Member States, almost 450 million inhabitants, common budget, market and institutional infrastructure.",
+      "relations": [
+        "member-states",
+        "law",
+        "trade",
+        "regulation",
+        "budget",
+        "agencies"
+      ],
+      "source": {
+        "label": "European Union — Key facts and figures",
+        "url": "https://european-union.europa.eu/principles-countries-history/facts-and-figures-european-union_en",
+        "verified": "2026-09-18"
+      }
+    },
+    {
+      "id": "world-health-organization",
+      "name": "World Health Organization",
+      "kind": "UN specialized agency / public-health institution",
+      "family": "knowledge-education",
+      "summary": "WHO coordinates international public-health work with 194 Member States across six regions.",
+      "spirit": "Right-to-health principles, equity, public-health purpose and institutional values.",
+      "mind": "Epidemiology, guidelines, health data, technical expertise, surveillance and programme coordination.",
+      "body": "Member States, Secretariat, regional offices, country presence, staff and health programmes.",
+      "relations": [
+        "member-states",
+        "ministries",
+        "researchers",
+        "health workers",
+        "civil society",
+        "international organizations"
+      ],
+      "source": {
+        "label": "WHO — Who we are",
+        "url": "https://www.who.int/about/who-we-are",
+        "verified": "2026-09-18"
+      }
+    },
+    {
+      "id": "international-monetary-fund",
+      "name": "International Monetary Fund",
+      "kind": "international financial institution",
+      "family": "economy-finance",
+      "summary": "A global organization accountable to 191 member countries, focused on monetary cooperation and financial stability.",
+      "spirit": "Cooperation, stability and stated prosperity objectives.",
+      "mind": "Economic surveillance, policy analysis, statistics, technical assistance and lending frameworks.",
+      "body": "191 member countries, financial resources, staff, lending capacity and country programmes.",
+      "relations": [
+        "member-countries",
+        "lending",
+        "policy advice",
+        "monetary cooperation",
+        "financial surveillance"
+      ],
+      "source": {
+        "label": "IMF — About",
+        "url": "https://www.imf.org/en/about",
+        "verified": "2026-09-18"
+      }
+    },
+    {
+      "id": "world-bank-group",
+      "name": "World Bank Group",
+      "kind": "multilateral development institution group",
+      "family": "economy-finance",
+      "summary": "Five organizations working together on development through financing, knowledge and expertise.",
+      "spirit": "Poverty reduction, shared prosperity and livable-planet development mission.",
+      "mind": "Development research, project appraisal, country diagnostics, policy expertise and evaluation.",
+      "body": "Five organizations, financial commitments, staff, country operations and funded projects.",
+      "relations": [
+        "governments",
+        "projects",
+        "private sector",
+        "civil society",
+        "multilateral institutions",
+        "finance"
+      ],
+      "source": {
+        "label": "World Bank Group — Who We Are",
+        "url": "https://www.worldbank.org/ext/en/who-we-are",
+        "verified": "2026-09-18"
+      }
+    },
+    {
+      "id": "bank-for-international-settlements",
+      "name": "Bank for International Settlements",
+      "kind": "international organization / central-bank cooperation institution",
+      "family": "economy-finance",
+      "summary": "Owned by 63 central banks and monetary authorities; provides a forum for central-bank cooperation and banking services to institutional partners.",
+      "spirit": "Monetary and financial stability, cooperation and institutional trust.",
+      "mind": "Research, committees, policy dialogue, statistics and financial-system analysis.",
+      "body": "63 member central banks/authorities, Basel headquarters, banking operations and Innovation Hub centres.",
+      "relations": [
+        "central banks",
+        "supervisors",
+        "committees",
+        "banking services",
+        "research"
+      ],
+      "source": {
+        "label": "BIS — Member central banks",
+        "url": "https://www.bis.org/about/organisation/members",
+        "verified": "2026-09-18"
+      }
+    },
+    {
+      "id": "european-central-bank",
+      "name": "European Central Bank",
+      "kind": "central bank / EU institution",
+      "family": "economy-finance",
+      "summary": "An official EU institution at the heart of the Eurosystem and the Single Supervisory Mechanism.",
+      "spirit": "Price stability mandate, institutional independence and public monetary responsibility.",
+      "mind": "Monetary analysis, policy decisions, banking supervision, statistics and economic research.",
+      "body": "ECB staff, Governing Council, euro-area national central banks and supervisory infrastructure.",
+      "relations": [
+        "national central banks",
+        "banks",
+        "EU institutions",
+        "financial markets",
+        "supervisors"
+      ],
+      "source": {
+        "label": "ECB — Organisation",
+        "url": "https://www.ecb.europa.eu/ecb/orga/html/index.en.html",
+        "verified": "2026-09-18"
+      }
+    },
+    {
+      "id": "danmarks-nationalbank",
+      "name": "Danmarks Nationalbank",
+      "kind": "central bank",
+      "family": "economy-finance",
+      "summary": "Denmark's central bank, with objectives including stable prices, safe payments and a stable financial system.",
+      "spirit": "Public monetary mandate and confidence in payments and financial stability.",
+      "mind": "Economic analysis, monetary policy operations, payment oversight and financial-stability monitoring.",
+      "body": "Central-bank balance sheet, payment infrastructure, staff, facilities and operational systems.",
+      "relations": [
+        "Danish state",
+        "banks",
+        "payment systems",
+        "ECB/BIS networks",
+        "financial markets"
+      ],
+      "source": {
+        "label": "Danmarks Nationalbank — About us",
+        "url": "https://www.nationalbanken.dk/en/about-us",
+        "verified": "2026-09-18"
+      }
+    },
+    {
+      "id": "unesco",
+      "name": "UNESCO",
+      "kind": "UN specialized agency",
+      "family": "culture-aesthetics",
+      "summary": "Works across education, science, culture and information with 194 Member States.",
+      "spirit": "Cultural diversity, peace, education, heritage and shared human knowledge.",
+      "mind": "Standards, policy knowledge, research cooperation, education and information programmes.",
+      "body": "Member States, field offices, national commissions, institutes, heritage and programme networks.",
+      "relations": [
+        "governments",
+        "schools",
+        "scientists",
+        "cultural institutions",
+        "heritage sites",
+        "media"
+      ],
+      "source": {
+        "label": "UNESCO — About us",
+        "url": "https://www.unesco.org/en/about-us",
+        "verified": "2026-09-18"
+      }
+    },
+    {
+      "id": "cern",
+      "name": "CERN",
+      "kind": "intergovernmental research organization",
+      "family": "knowledge-education",
+      "summary": "A European particle-physics laboratory run by 25 Member States, with wider international participation.",
+      "spirit": "Cooperative scientific inquiry and shared research infrastructure.",
+      "mind": "Physics theory, experiments, engineering, computation and international scientific collaboration.",
+      "body": "Accelerators, detectors, laboratories, computing infrastructure, staff and Member State funding.",
+      "relations": [
+        "member-states",
+        "universities",
+        "research institutes",
+        "scientists",
+        "technology suppliers"
+      ],
+      "source": {
+        "label": "CERN — Member States",
+        "url": "https://home.cern/about/who-we-are/member-states/",
+        "verified": "2026-09-18"
+      }
+    },
+    {
+      "id": "icrc",
+      "name": "International Committee of the Red Cross",
+      "kind": "neutral independent humanitarian organization",
+      "family": "civil-society",
+      "summary": "Provides protection and assistance to people affected by armed conflict and other violence and promotes international humanitarian law.",
+      "spirit": "Humanity, impartiality, neutrality, independence and protection of dignity.",
+      "mind": "Humanitarian law, field assessment, protection work, negotiation, tracing and operational coordination.",
+      "body": "Field offices in more than 90 countries, staff, logistics, medical assistance and relief operations.",
+      "relations": [
+        "states",
+        "armed actors",
+        "affected communities",
+        "Red Cross/Red Crescent network",
+        "donors"
+      ],
+      "source": {
+        "label": "ICRC — Who we are",
+        "url": "https://www.icrc.org/en/we-are-international-committee-red-cross-icrc",
+        "verified": "2026-09-18"
+      }
+    },
+    {
+      "id": "wikimedia-foundation",
+      "name": "Wikimedia Foundation",
+      "kind": "nonprofit knowledge-infrastructure organization",
+      "family": "media-information",
+      "summary": "Hosts and protects Wikipedia and other Wikimedia projects while supporting volunteer communities and free knowledge.",
+      "spirit": "Free knowledge, broad participation and long-term public access.",
+      "mind": "Editorial communities, software, governance, moderation, curation and knowledge organization.",
+      "body": "Servers, technical infrastructure, staff, grants and a global volunteer/movement network.",
+      "relations": [
+        "volunteers",
+        "readers",
+        "chapters",
+        "user groups",
+        "partners",
+        "open knowledge"
+      ],
+      "source": {
+        "label": "Wikimedia Foundation — Who we are",
+        "url": "https://wikimediafoundation.org/who-we-are/",
+        "verified": "2026-09-18"
+      }
+    },
+    {
+      "id": "linux-foundation",
+      "name": "Linux Foundation",
+      "kind": "nonprofit technology foundation",
+      "family": "civil-society",
+      "summary": "Provides a neutral organizational home and infrastructure for open-source technology projects and communities.",
+      "spirit": "Open collaboration, shared technology and ecosystem stewardship.",
+      "mind": "Standards, governance, project coordination, training, research and software collaboration.",
+      "body": "Hosted projects, contributor networks, member organizations, funding and technical/operational infrastructure.",
+      "relations": [
+        "developers",
+        "companies",
+        "open-source projects",
+        "standards",
+        "members"
+      ],
+      "source": {
+        "label": "Linux Foundation — About",
+        "url": "https://www.linuxfoundation.org/about",
+        "verified": "2026-09-18"
+      }
+    },
+    {
+      "id": "asml",
+      "name": "ASML",
+      "kind": "technology company / semiconductor-equipment manufacturer",
+      "family": "firms-production",
+      "summary": "Designs and manufactures lithography hardware, software and services used by chipmakers to mass-produce microchips.",
+      "spirit": "Corporate purpose, engineering culture and innovation priorities.",
+      "mind": "Optics, mechatronics, software, computational lithography, metrology and R&D knowledge.",
+      "body": "Lithography systems, factories, supply chain, employees, service network and customer fabs.",
+      "relations": [
+        "chipmakers",
+        "suppliers",
+        "research organizations",
+        "employees",
+        "governments",
+        "technology ecosystems"
+      ],
+      "source": {
+        "label": "ASML — About ASML",
+        "url": "https://www.asml.com/en/company/about-asml",
+        "verified": "2026-09-18"
+      }
+    },
+    {
+      "id": "maersk",
+      "name": "A.P. Moller - Maersk",
+      "kind": "logistics company",
+      "family": "firms-production",
+      "summary": "A global logistics company whose history runs from steam shipping through containerization to integrated logistics.",
+      "spirit": "Commercial purpose, service norms and organizational identity around connecting trade.",
+      "mind": "Routing, scheduling, logistics planning, data, customs and supply-chain coordination.",
+      "body": "Ships, terminals, warehouses, containers, trucks, contracts, employees and global routes.",
+      "relations": [
+        "shippers",
+        "ports",
+        "customers",
+        "customs authorities",
+        "suppliers",
+        "transport networks"
+      ],
+      "source": {
+        "label": "Maersk — Our history",
+        "url": "https://www.maersk.com/about/our-history",
+        "verified": "2026-09-18"
+      }
+    },
+    {
+      "id": "novo-nordisk",
+      "name": "Novo Nordisk",
+      "kind": "global healthcare company",
+      "family": "firms-production",
+      "summary": "A Denmark-headquartered healthcare company focused on chronic diseases including diabetes and obesity.",
+      "spirit": "Health mission, corporate values and stated patient focus.",
+      "mind": "Biomedical research, clinical development, data, regulatory knowledge and manufacturing know-how.",
+      "body": "Medicines, production sites, laboratories, employees, distribution and healthcare partnerships.",
+      "relations": [
+        "patients",
+        "health systems",
+        "regulators",
+        "researchers",
+        "suppliers",
+        "investors",
+        "partners"
+      ],
+      "source": {
+        "label": "Novo Nordisk — Who we are",
+        "url": "https://www.novonordisk.com/about/who-we-are.html",
+        "verified": "2026-09-18"
+      }
+    }
+  ],
+  "relation_families": [
+    "belongs-to",
+    "governs",
+    "regulates",
+    "owns",
+    "funds",
+    "lends-to",
+    "borrows-from",
+    "employs",
+    "supplies",
+    "contracts-with",
+    "trades-with",
+    "depends-on",
+    "allies-with",
+    "competes-with",
+    "educates",
+    "publishes",
+    "hosts",
+    "represents",
+    "serves",
+    "worships",
+    "inherits-from",
+    "influences",
+    "located-in",
+    "connects",
+    "protects",
+    "extracts-from",
+    "repairs"
+  ],
+  "page_note": "This is a seed population, not a complete world model. The long-term atlas should expand through canonical country/entity records and typed edges rather than turning the House page into a giant catalog."
+}

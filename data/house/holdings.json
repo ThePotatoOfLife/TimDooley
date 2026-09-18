@@ -1,5 +1,5 @@
 {
-  "version": "2.4.0",
+  "version": "2.5.0",
   "updated": "2026-09-18",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
@@ -6008,6 +6008,16 @@
       "path": "data/house/symbol-population-matrix-wave-004.json",
       "primary_owner_room_id": "house-architecture",
       "basis": "confusion-population-wave-004"
+    },
+    {
+      "path": "knowledge/core/inhabited-house-society-ontology.json",
+      "primary_owner_room_id": "house-architecture",
+      "basis": "inhabited-house-population"
+    },
+    {
+      "path": "data/house/society-population.json",
+      "primary_owner_room_id": "house-architecture",
+      "basis": "inhabited-house-population"
     }
   ],
   "curated_unowned_paths": [
