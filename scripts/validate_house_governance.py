@@ -9,6 +9,7 @@ SURFACES=ROOT/'data/house/public-surfaces.json'; SURFACE_SCHEMA=ROOT/'schemas/ho
 TOPOLOGY=ROOT/'knowledge/research/potato-house-master/public-route-topology.json'
 HOUSE_TOPOLOGY=ROOT/'data/house/topology.json'
 ORIENTATION_POPULATION=ROOT/'data/house/orientation-population.json'
+TREE_PLANE_ROUTING=ROOT/'data/house/tree-plane-routing.json'
 SUBROOMS=ROOT/'data/house/subrooms.json'
 CONCEPT_TOPOLOGY=ROOT/'data/house/concept-topology.json'; CONCEPT_TOPOLOGY_SCHEMA=ROOT/'schemas/house-concept-topology.schema.json'
 TOPOLOGY_FIXTURE=ROOT/'data/house/topology-golden-fixture.json'
@@ -395,7 +396,7 @@ def validate_symbolic_planes(errors,rooms):
         errors.append('Akashic Tree view must remain an archive metaphor rather than evidence claim')
 
 
-def validate_orientation_population(errors,rooms):
+def validate_orientation_population(errors,rooms); validate_tree_plane_routing(errors):
     population=load(ORIENTATION_POPULATION,errors); subrooms=load(SUBROOMS,errors)
     if not population or not subrooms: return
     sub_ids=[x.get('id') for x in subrooms.get('subrooms',[]) if isinstance(x,dict)]
@@ -419,6 +420,30 @@ def validate_orientation_population(errors,rooms):
     rules=' '.join(population.get('rules',[])).casefold()
     for token in ('do not change knowledge ownership','compass shows landmarks sparingly','remain rooted in their own traditions','not the moral essence'):
         if token not in rules: errors.append(f'orientation population missing governance rule: {token}')
+
+
+def validate_tree_plane_routing(errors):
+    data=load(TREE_PLANE_ROUTING,errors)
+    if not data: return
+    if data.get('master_rule')!='Planes are standing surfaces. Trees are vertical branching routes. Rooms are subject owners. Entities and traditions are inhabitants/subjects with anchors and projections. Corridors are typed relations between them.':
+        errors.append('tree-plane routing master rule drifted')
+    center=data.get('centerline',{})
+    if center.get('id')!='axis': errors.append('Axis must remain exact centerline')
+    if center.get('inner_ring',{}).get('room_id')!='research-lab': errors.append('Research Lab must remain inner Forge ring')
+    if center.get('outer_ring',{}).get('room_id')!='works': errors.append('Works must remain outer Fruit ring')
+    plane_ids=[x.get('id') for x in data.get('planes',[]) if isinstance(x,dict)]
+    if plane_ids!=['heaven-plane','world-plane','below-plane']: errors.append('tree-plane routing plane order drifted')
+    organisms={x.get('id'):x for x in data.get('vertical_organisms',[]) if isinstance(x,dict)}
+    for oid in ('akashic-tree','tree-of-knowledge','tree-of-life','tree-of-strife'):
+        if oid not in organisms: errors.append(f'tree-plane routing missing {oid}')
+    life=organisms.get('tree-of-life',{})
+    if life.get('spans')!=['below-plane','world-plane','heaven-plane']: errors.append('Tree of Life must span all three planes')
+    strife=organisms.get('tree-of-strife',{})
+    if strife.get('spans')!=['below-plane','world-plane']: errors.append('Tree of Strife must span Below and World')
+    if 'Roots of Ash are a principal root-state' not in strife.get('ash_rule',''): errors.append('Roots of Ash relation to Tree of Strife must remain explicit')
+    subjects=' '.join(x.get('rule','') for x in data.get('subject_placement_rules',[]) if isinstance(x,dict)).casefold()
+    for token in ('do not infer literal demonic identity','own-tradition','do not merge them with demonology','observable control/capture mechanisms'):
+        if token not in subjects: errors.append(f'tree-plane subject placement boundary missing: {token}')
 
 def main():
     errors=[]; rooms=validate_rooms(errors); surfaces=validate_surfaces(errors,rooms); validate_concept_topology(errors,rooms,surfaces); validate_symbolic_planes(errors,rooms); validate_orientation_population(errors,rooms)
