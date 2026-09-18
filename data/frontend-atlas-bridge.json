@@ -1,5 +1,5 @@
 {
-  "version": "4.5.0",
+  "version": "4.6.0",
   "updated": "2026-09-18",
   "purpose": "Canonical backend-to-frontend projection contract. Canonical data stays modular and keeps its existing owners; this bridge maps major archive branches and backend families into exactly five simple public doors plus a visible secondary Rooms layer and quieter global/deep surfaces.",
   "data_roots": [
@@ -46,7 +46,8 @@
     "explore": "explore/",
     "questions": "questions/",
     "index_a_z": "index-a-z/",
-    "rooms": "rooms/"
+    "rooms": "rooms/",
+    "paths": "paths/"
   },
   "branch_projection": {
     "tim": {
@@ -278,6 +279,17 @@
       "global_route": "house/",
       "canonical_owner": "docs/POTATO-HOUSE-CONSTITUTION.md",
       "supporting_owner": "data/house/rooms.json"
+    },
+    "paths": {
+      "global_route": "paths/",
+      "canonical_owner": "knowledge/research/potato-house-master/paths-doors-and-navigation.md",
+      "related_doors": [
+        "tim",
+        "religion",
+        "philosophy",
+        "science",
+        "world"
+      ]
     }
   },
   "route_map": {
