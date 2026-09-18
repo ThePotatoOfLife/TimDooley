@@ -1,9 +1,14 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
   "authorities": [
+    {
+      "concern": "project semantic center / center-out importance",
+      "owner": "data/house/project-center.json",
+      "rule": "Defines the Potato of Life as semantic center, distinguishes it from Axis as spatial center, and governs center-out importance rings and promotion."
+    },
     {
       "concern": "top-level Dwellings and ownership",
       "owner": "data/house/rooms.json",
@@ -76,6 +81,7 @@
     }
   ],
   "resolver_order": [
+    "0. Ask how the subject relates to the Potato of Life project center; centrality is semantic/structural, not file-volume or novelty.",
     "1. Identify the subject's canonical Room owner.",
     "2. Identify own-tradition / historical source context before project comparison.",
     "3. Add plane projection: Heaven, World, Below or crosscutting.",
@@ -100,6 +106,7 @@
     "ring": "recurrence with zero net displacement"
   },
   "anti_duplication_rules": [
+    "Comparative and external subjects should point inward to project-native nodes rather than becoming parallel centers.",
     "Do not create a new registry when an existing authority can be extended cleanly.",
     "Do not copy detailed route sequences into topology.json when tree-plane-routing or seed-spiral-routing owns them.",
     "Do not make named religious figures into new Rooms; they are subjects/inhabitants indexed into existing Rooms.",
