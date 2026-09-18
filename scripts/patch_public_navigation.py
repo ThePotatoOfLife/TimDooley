@@ -9,6 +9,8 @@ small public-only capability projections that should not mutate legacy source st
 from __future__ import annotations
 
 import html
+import json
+import os
 import re
 from pathlib import Path
 
@@ -27,6 +29,15 @@ PUBLIC_LABEL_REPLACEMENTS = (
     (">Tim dossier</a>", ">Tim Dooley</a>"),
     ("← Potato of Life archive</a>", "← Home</a>"),
 )
+HOUSE_BRIDGE_EXCLUDED = {"home", "house", "rooms", "explore", "world-map", "questions", "index-a-z"}
+HOUSE_BRIDGE_STYLE = """<style data-house-bridge-style>
+.house-bridge{margin:18px 0 34px;padding:14px 16px;border:1px solid var(--site-line,#30382f);border-radius:12px;background:color-mix(in srgb,var(--site-panel,#0f130f) 88%,transparent);font-family:var(--site-font-sans,system-ui,sans-serif)}
+.house-bridge__top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.house-bridge__trail{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12px}.house-bridge__trail a{color:var(--site-green,#b8dc82);text-decoration:none}.house-bridge__trail span{color:var(--site-faint,#727a70)}
+.house-bridge__kind{color:var(--site-gold,#d8b56b);font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}.house-bridge__body{display:grid;grid-template-columns:minmax(180px,.7fr) 1.3fr;gap:16px;margin-top:10px;padding-top:10px;border-top:1px solid var(--site-line,#30382f)}
+.house-bridge__body p{margin:0;color:var(--site-muted,#9fa79d);font-size:11px;line-height:1.45}.house-bridge__chips{display:flex;flex-wrap:wrap;gap:6px}.house-bridge__chip{border:1px solid var(--site-line,#30382f);border-radius:999px;padding:3px 7px;color:var(--site-muted,#9fa79d);font-size:10px}.house-bridge__rooms-link{color:var(--site-green,#b8dc82);font-size:11px;text-decoration:none;white-space:nowrap}
+@media(max-width:700px){.house-bridge__body{grid-template-columns:1fr}.house-bridge{margin-bottom:24px}}
+</style>"""
+
 LEGACY_TTS_READERS = {
     "shadow-farm/index.html": {
         "id": "shadow-farm",
@@ -126,6 +137,130 @@ LEGACY_TTS_READERS = {
     },
 }
 
+
+
+def load_json(path: Path, default=None):
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return default
+
+
+def public_route_to_rel(route: str) -> Path:
+    raw = str(route or "/").strip()
+    if raw == "/":
+        return Path("index.html")
+    clean = raw.strip("/")
+    if raw.endswith("/"):
+        return Path(clean) / "index.html"
+    return Path(clean)
+
+
+def relative_public_href(from_rel: Path, route: str) -> str:
+    target = public_route_to_rel(route)
+    start = from_rel.parent
+    rel = os.path.relpath(target, start=start).replace(os.sep, "/")
+    if rel.endswith("/index.html"):
+        rel = rel[:-len("index.html")]
+    elif rel == "index.html":
+        rel = "./"
+    return rel
+
+
+def build_house_bridge(surface: dict, surface_by_id: dict, dwellings: dict, local_rooms: list[dict], rel: Path) -> str:
+    sid = str(surface.get("id", ""))
+    title = str(surface.get("title", sid))
+    parent_id = surface.get("primary_parent")
+    parent = surface_by_id.get(parent_id) if parent_id else None
+    potato_href = relative_public_href(rel, "/potato-of-life/")
+    house_href = relative_public_href(rel, "/house/")
+    rooms_href = relative_public_href(rel, "/rooms/")
+    trail = [
+        f'<a href="{html.escape(potato_href, quote=True)}">Potato of Life</a>',
+        '<span aria-hidden="true">→</span>',
+        f'<a href="{html.escape(house_href, quote=True)}">House</a>',
+    ]
+    if parent and parent.get("id") not in {"home", "house"}:
+        trail += [
+            '<span aria-hidden="true">→</span>',
+            f'<a href="{html.escape(relative_public_href(rel, parent.get("canonical_route", "/")), quote=True)}">{html.escape(str(parent.get("title", parent_id)))}</a>',
+        ]
+    trail += ['<span aria-hidden="true">→</span>', f'<strong>{html.escape(title)}</strong>']
+
+    dwelling_chips = []
+    for rid in surface.get("primary_room_ids", []):
+        label = dwellings.get(rid, rid)
+        dwelling_chips.append(f'<span class="house-bridge__chip">{html.escape(str(label))}</span>')
+    local_chips = [
+        f'<span class="house-bridge__chip">{html.escape(str(x.get("title", x.get("room_id", ""))))}</span>'
+        for x in local_rooms[:6]
+    ]
+    chips = "".join(local_chips or dwelling_chips)
+    scope_text = (
+        "Local Rooms on this surface" if local_chips
+        else "Dwellings feeding this surface"
+    )
+    view_label = "House view" if surface.get("is_view") else ("Gateway" if surface.get("surface_type") == "hub" else "Reader surface")
+    return (
+        '<aside class="house-bridge" data-house-bridge="' + html.escape(sid, quote=True) + '" aria-label="Potato House context">'
+        '<div class="house-bridge__top"><div class="house-bridge__trail">' + "".join(trail) + '</div>'
+        '<span class="house-bridge__kind">' + html.escape(view_label) + '</span></div>'
+        '<div class="house-bridge__body"><p><strong>' + html.escape(scope_text) + '.</strong> '
+        'This page keeps its own subject and evidence rules while participating in the shared Potato House.</p>'
+        '<div class="house-bridge__chips">' + chips + '</div></div>'
+        '<a class="house-bridge__rooms-link" href="' + html.escape(rooms_href, quote=True) + '">See all Dwellings &amp; Rooms →</a>'
+        '</aside>'
+    )
+
+
+def inject_house_bridge(text: str, bridge: str) -> str:
+    if "data-house-bridge=" in text:
+        return text
+    if not re.search(r"</head\s*>", text, flags=re.I) or not re.search(r"<main\b[^>]*>", text, flags=re.I):
+        return text
+    if "data-house-bridge-style" not in text:
+        text = re.sub(r"</head\s*>", HOUSE_BRIDGE_STYLE + "</head>", text, count=1, flags=re.I)
+    main = re.search(r"<main\b[^>]*>", text, flags=re.I)
+    if not main:
+        return text
+    nav = re.search(r"<nav\b[^>]*>.*?</nav\s*>", text[main.end():], flags=re.I | re.S)
+    insert_at = main.end() + nav.end() if nav else main.end()
+    return text[:insert_at] + bridge + text[insert_at:]
+
+
+def patch_house_bridges(out: Path = OUT) -> set[Path]:
+    surfaces_doc = load_json(ROOT / "data" / "house" / "public-surfaces.json", {}) or {}
+    rooms_doc = load_json(ROOT / "data" / "house" / "rooms.json", {}) or {}
+    dossiers_doc = load_json(ROOT / "data" / "house" / "room-dossiers.json", {}) or {}
+    surfaces = [x for x in surfaces_doc.get("surfaces", []) if isinstance(x, dict) and x.get("status") == "active"]
+    surface_by_id = {x.get("id"): x for x in surfaces if x.get("id")}
+    dwellings = {x.get("id"): x.get("title", x.get("id")) for x in rooms_doc.get("rooms", []) if isinstance(x, dict) and x.get("id")}
+    local_by_surface: dict[str, list[dict]] = {}
+    for dossier in dossiers_doc.get("dossiers", []):
+        if not isinstance(dossier, dict):
+            continue
+        for public in dossier.get("public_surfaces", []):
+            sid = public.get("id") if isinstance(public, dict) else None
+            if sid:
+                local_by_surface.setdefault(sid, []).append(dossier)
+
+    changed: set[Path] = set()
+    for surface in surfaces:
+        sid = surface.get("id")
+        if sid in HOUSE_BRIDGE_EXCLUDED:
+            continue
+        rel = public_route_to_rel(surface.get("canonical_route", "/"))
+        path = out / rel
+        if not path.exists() or path.suffix.lower() != ".html":
+            continue
+        page = path.read_text(encoding="utf-8", errors="replace")
+        bridge = build_house_bridge(surface, surface_by_id, dwellings, local_by_surface.get(sid, []), rel)
+        projected = inject_house_bridge(page, bridge)
+        if projected == page:
+            continue
+        path.write_text(projected, encoding="utf-8")
+        changed.add(path)
+    return changed
 
 def patch_text(path: Path, replacements: tuple[tuple[str, str], ...] = ()) -> bool:
     if not path.exists():
@@ -249,6 +384,7 @@ def main() -> None:
             changed.add(page)
 
     changed.update(patch_legacy_tts_readers(OUT))
+    changed.update(patch_house_bridges(OUT))
 
     religion = OUT / "religion" / "index.html"
     if patch_text(
