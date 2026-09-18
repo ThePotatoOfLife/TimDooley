@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-18",
   "authority": "house-population-contract",
   "purpose": "Define how the House is populated from existing canonical registries and repository material without multiplying owners.",
@@ -93,8 +93,8 @@
     },
     {
       "role": "foundation",
-      "derive": "constitutional/schema/identity invariants required by structures above",
-      "promotion": "high-cost governed change"
+      "derive": "stable generative reference/platform with typed foundation clocks, load-bearing rules and an explicit reproduction mechanism",
+      "promotion": "high-cost governed change; mature Foundation records must state F0, what becomes possible, how continuity reproduces, and how refoundation/supersession is tracked"
     },
     {
       "role": "pillar",
@@ -136,7 +136,8 @@
     "Roads and Doors are distinct: a Road connects laterally; a Door changes state/context under a guard.",
     "Population-pulse diagnostics may guide maintenance but never determine truth, prestige or ownership.",
     "A Bridge creates capability across separation; it does not erase the separation or merge endpoint ownership.",
-    "A Protocol coordinates heterogeneous nodes through shared grammar; it must preserve local identity and transparent revision/appeal where applicable."
+    "A Protocol coordinates heterogeneous nodes through shared grammar; it must preserve local identity and transparent revision/appeal where applicable.",
+    "A Foundation is distinct from Root and Seed: Roots may predate it; a Seed becomes Foundation only when a durable reference/platform and reproduction mechanism exist."
   ],
   "health_checks": [
     "Can a visitor tell whether the thing owns facts or merely presents/routes them?",
@@ -148,6 +149,7 @@
     "Are States kept distinct from identities and containers?",
     "Is any candidate being promoted solely because there is a lot of content about it?",
     "Are important adjacencies represented as typed Roads or guarded Doors rather than generic proximity?",
-    "Does the population pulse reveal missing roots/interfaces without being mistaken for a quality score?"
+    "Does the population pulse reveal missing roots/interfaces without being mistaken for a quality score?",
+    "For anything labeled Foundation, can a later generation reinstantiate the system from its rules/practices/roles/standards without personal access to the founder?"
   ]
 }

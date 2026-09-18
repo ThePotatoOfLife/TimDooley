@@ -1,5 +1,5 @@
 {
-  "version": "2.8.0",
+  "version": "3.0.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -42,7 +42,7 @@
     {
       "concern": "center-adjacent living-system coordination",
       "owner": "data/house/living-project-map.json",
-      "rule": "Coordinates organism, Spirit/relation, memory/history and culture/formation across existing Room owners without creating replacement ownership."
+      "rule": "Coordinates organism, Spirit/relation, memory/history, Foundations/generative memory and culture/formation across existing Room owners without creating replacement ownership."
     },
     {
       "concern": "top-level Dwellings and ownership",
@@ -163,6 +163,21 @@
       "concern": "foundation reproduction and larger purpose",
       "owner": "knowledge/core/foundation-reproduction-mechanisms-atlas.json",
       "rule": "A Foundation is mature only when its reproduction mechanism is identified: how later actors can reinstantiate the founded order through law, discipline, canon, pedagogy, science, protocol, ownership, manifesto or lineage."
+    },
+    {
+      "concern": "whole-project Foundation integration across schemas graph Rooms and Timeline",
+      "owner": "data/house/foundation-integration-contract.json",
+      "rule": "Routes shared Foundation semantics into domain blueprints, graph references, Room lenses and public chronology without duplicating substantive domain ownership."
+    },
+    {
+      "concern": "Below intelligence shadow and clandestine-system research",
+      "owner": "knowledge/core/below-intelligence-shadow-observatory.json",
+      "rule": "Below is a depth/intelligence platform spanning hidden provenance, lawful intelligence, shadow, illicit networks and Forge review. Preserve legal/evidentiary class and never infer guilt from secrecy, adjacency or symbolism."
+    },
+    {
+      "concern": "concrete lower-plane population",
+      "owner": "data/house/lower-plane-population-atlas.json",
+      "rule": "Projects canonical intelligence/security, organized-crime, trafficking, extremist, high-control, digital-underground, illicit-market and casework records into the Below Platform without taking ownership from source domains."
     }
   ],
   "resolver_order": [
@@ -170,6 +185,7 @@
     "0.5. Use project-synthesis to pair the subject with its center contribution, Room owner, handoffs, tests and public route before adding another registry.",
     "1. Identify the subject's canonical Room owner.",
     "2. Identify own-tradition / historical source context before project comparison.",
+    "2.5. If the subject has a durable generative beginning, attach the shared Foundation contract: F0/multiple clocks, reproduction mechanism, branch/refoundation and preserved invariants.",
     "3. Add plane projection: Heaven, World, Below or crosscutting.",
     "4. Add Tree zone or route affinity: roots, trunk, Life, Strife, canopy, repair, return.",
     "5. Add Seed/Spiral route only if the subject genuinely participates in burial, recurrence, rooting, ascent, drain, repair or return.",
@@ -189,7 +205,8 @@
     "door": "state/context-changing threshold",
     "seed": "compressed transferable potential",
     "spiral": "recurrence with non-zero displacement",
-    "ring": "recurrence with zero net displacement"
+    "ring": "recurrence with zero net displacement",
+    "foundation": "stable generative reference/platform created when Seed becomes repeatable through rules, practice, lineage, protocol or institution"
   },
   "anti_duplication_rules": [
     "Prefer extending a Room dossier or project-synthesis pairing over creating another master map.",

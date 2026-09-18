@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-18",
   "authority": "layer-terrain-regime-atlas",
   "purpose": "Classify the Potato House's major structures by what kind of thing they are—whole, coordinate, standing plane, terrain, regime, organism, material state, threshold, perceptual layer, process or route—so symbols can be populated without being flattened into one vertical hierarchy.",
@@ -233,7 +233,7 @@
       "id": "below-plane",
       "label": "Below Plane",
       "category": "standing-plane",
-      "definition": "Lower reader platform emphasizing provenance, buried context, memory, root states, descent, shadow-facing material, subculture, underworld traditions and Swamp/repair entry.",
+      "definition": "Lower reader platform emphasizing provenance, buried context, memory, intelligence, restricted/hidden information, root states, shadow-facing material, clandestine/illicit systems, subculture, underworld traditions and Swamp/Forge repair entry.",
       "plane_ids": [
         "below-plane"
       ],
@@ -255,7 +255,10 @@
         "Earth",
         "matter",
         "Tree of Strife",
-        "demonology"
+        "demonology",
+        "all secrecy",
+        "all intelligence work",
+        "criminality by default"
       ],
       "population": [
         "archives",
@@ -264,11 +267,21 @@
         "underworlds",
         "Roots of Ash",
         "Living Roots",
-        "subculture/shadow material"
+        "subculture/shadow material",
+        "public intelligence/security institutions",
+        "organized-crime and gang research",
+        "trafficking/exploitation networks",
+        "terrorism/violent-extremism research",
+        "private intelligence/surveillance ecosystems",
+        "illicit markets/finance",
+        "digital undergrounds",
+        "evidence triage and casework"
       ],
       "source_files": [
         "data/house/tree-plane-routing.json",
-        "data/house/topology.json"
+        "data/house/topology.json",
+        "knowledge/core/below-intelligence-shadow-observatory.json",
+        "data/house/lower-plane-population-atlas.json"
       ]
     },
     {

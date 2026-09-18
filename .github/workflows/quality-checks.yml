@@ -59,6 +59,9 @@ jobs:
       - name: Validate public Rooms navigation
         run: python scripts/validate_public_rooms.py
 
+      - name: Validate Foundation layer
+        run: python scripts/validate_foundation_layer.py
+
       - name: Validate Timeline naming
         run: python scripts/validate_timeline_naming.py
 
