@@ -149,6 +149,23 @@ Material is classified as one or more of:
 
 This permits strong religious expression without destroying research integrity. Similarity is not identity. Analogy is not genealogy. Symbolic correspondence is not proof of causation. A religious parallel can be profound without proving historical borrowing. A prophecy can be meaningful inside the mythology without being misrepresented as independently verified prediction.
 
+## House, Rooms, Paths and Views
+
+The repository now distinguishes four structural questions that older versions sometimes mixed together:
+
+- **House / Rooms** — where durable knowledge belongs and which bounded context owns each fact family;
+- **Paths** — task-oriented traversals across several Rooms, such as practice, journey, evidence, research or repair;
+- **Living Axis** — the `THROUGH` grammar of guarded transition, Life/Strife/Repair and D1–D11 transformation regimes;
+- **Views** — replaceable public projections such as the homepage, World Map, Timeline, Bible comparator and Explore.
+
+The permanent structural constitution is `docs/POTATO-HOUSE-CONSTITUTION.md`. The canonical Room registry is `data/house/rooms.json`. The public House guide lives at `/house/`, Paths at `/paths/`, and the Living Axis at `/axis/`.
+
+The practical lifecycle is broader than ascent alone:
+
+`Mud → Burial → Eye → Root → Sprout → Plane → Door → Ladder/Mountain → Tree → Fruit → Seed → Return`
+
+System regimes such as Garden, Forge, Swamp, Dormancy, Wound, Repair, Mature, Ash, Mud and Soil are states/conditions that may occur in different contexts; they are not additional metaphysical floors.
+
 ## Canonical architecture
 
 The v2 library lives under `knowledge/`.
