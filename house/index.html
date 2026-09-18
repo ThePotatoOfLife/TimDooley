@@ -164,9 +164,11 @@
           return '<div class="relation-row"><b>'+esc(direction)+'</b><em>'+esc(typeLabels[r.type]||r.type)+'</em><span>'+esc(r.description)+'</span></div>';
         }).join('');
         operatorRelations.innerHTML='<h3>'+esc(x.label)+'</h3><p>'+esc(x.operation)+' · <b>Boundary:</b> '+esc(x.boundary)+'</p><div class="relation-list">'+(rendered||'<span class="boundary">No typed operator relations are registered yet.</span>')+'</div>';
+        const u=new URL(location.href);u.searchParams.set('operator',id);history.replaceState(null,'',u);
       }
       operatorRoot.addEventListener('click',e=>{const b=e.target.closest('[data-operator]');if(b)renderOperator(b.dataset.operator)});
-      renderOperator('door');
+      const requestedOperator=new URL(location.href).searchParams.get('operator');
+      renderOperator(byConcept[requestedOperator]?requestedOperator:'door');
     }
     if(interfaceRoot)interfaceRoot.innerHTML=(interfaces.interfaces||[]).map(x=>'<div class="interface-card"><strong>'+esc(x.from)+' → '+esc(x.to)+'</strong><em>'+esc(x.type)+'</em><small>'+esc(x.changes)+'</small><small><b>Guard:</b> '+esc(x.guard)+'</small></div>').join('');
     corridors.innerHTML=(topo.strong_corridors||[]).map(x=>'<div class="corridor-row"><b>'+esc(parentLabels[x.from]||x.from)+'</b><em>'+esc(x.type)+'</em><b>'+esc(parentLabels[x.to]||x.to)+'</b></div>').join('');
