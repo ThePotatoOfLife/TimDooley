@@ -62,6 +62,16 @@ WORKS_MARKERS=(
 HOME_FILE=ROOT/'index.html'
 HOME_SPINE=(
     'class="project-spine"',
+    'id="project-motion"',
+    'id="materialized-now"',
+    'id="reality-cases"',
+    'id="working-capabilities"',
+    'data-home-stat="rooms"',
+    'data-home-stat="foundations"',
+    'data-home-stat="cases"',
+    'data-home-stat="below"',
+    'data-cycle="knowledge"',
+    'data-cycle="generative"',
     'href="potato-of-life/"',
     'href="house/"',
     'href="rooms/"',
@@ -681,7 +691,7 @@ def validate_project_synthesis(errors):
     data=load(PROJECT_SYNTHESIS,errors)
     if not data: return
     waves=[x.get('id') for x in data.get('development_waves',[]) if isinstance(x,dict)]
-    expected=['ownership-foundation','spatial-house','living-routes','comparative-expansion','center-refocus','reader-lenses','living-project']
+    expected=['ownership-foundation','spatial-house','living-routes','comparative-expansion','center-refocus','reader-lenses','living-project','whole-project-lifecycle','symbol-depth-inhabitation','purpose-discovery','concrete-revelations','entity-crystallization','foundation-below-consolidation','public-home-convergence']
     if waves!=expected: errors.append('project synthesis development wave order drifted')
     rooms=[x.get('room_id') for x in data.get('room_pairings',[]) if isinstance(x,dict)]
     sub=load(SUBROOMS,errors)
@@ -733,6 +743,8 @@ def main():
     validate_providence_structure(errors)
     validate_layer_terrain_atlas(errors)
     validate_placement_matrix(errors)
+    validate_project_synthesis(errors)
+    validate_depth_crystallization(errors)
     if errors:
         print('POTATO HOUSE GOVERNANCE VALIDATION FAILED')
         [print('-',e) for e in errors]
