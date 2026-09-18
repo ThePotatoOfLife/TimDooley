@@ -21,6 +21,8 @@
 .placement-browser{margin:38px 0;padding:28px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}.placement-browser h2{font:400 clamp(28px,4vw,40px)/1.05 var(--site-font-serif);margin:3px 0 8px;color:var(--site-gold)}.placement-controls{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0}.placement-control{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:6px 9px;font-size:9px;cursor:pointer}.placement-control[aria-pressed="true"],.placement-control:hover{color:var(--site-green);border-color:#60725a}.placement-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.placement-node{border:1px solid var(--site-line);border-radius:10px;padding:12px;background:var(--site-panel)}.placement-node strong{display:block;font:400 16px var(--site-font-serif);color:var(--site-gold)}.placement-node small{display:block;font-size:9px;color:var(--site-green);text-transform:uppercase;letter-spacing:.06em;margin:2px 0 5px}.placement-node p{font-size:10px;color:var(--site-muted);margin:0}.placement-count{margin-top:10px;font-size:10px;color:var(--site-muted)}@media(max-width:760px){.placement-grid{grid-template-columns:1fr}}
 
 .center-nucleus{margin:28px 0;padding:24px;border:1px solid var(--site-line);border-radius:14px;background:var(--site-panel)}.center-nucleus h2{font:400 clamp(28px,4vw,40px)/1.05 var(--site-font-serif);margin:2px 0 8px;color:var(--site-gold)}.center-nucleus p{max-width:850px;color:var(--site-muted)}.center-nucleus-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:15px}.center-nucleus-grid a{border-top:1px solid var(--site-line);padding-top:9px;text-decoration:none;color:var(--site-muted);font-size:10px}.center-nucleus-grid b{display:block;font:400 16px var(--site-font-serif);color:#dce2d8;margin-bottom:3px}.center-nucleus-grid a:hover b{color:var(--site-green)}@media(max-width:760px){.center-nucleus-grid{grid-template-columns:1fr 1fr}}
+
+.plane-zones{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;max-width:360px;margin:9px auto 2px}.plane-zone{border:1px solid var(--site-line);border-radius:999px;padding:4px 6px;font-size:8px;color:var(--site-muted);background:rgba(0,0,0,.14)}.plane-zone--anchor{color:var(--site-green);border-color:#53634f}.plane-center-note{font-size:8px;color:var(--site-faint);margin-top:7px;max-width:340px}
 </style>
 </head>
 <body><main class="page page--standard rooms-page" data-reader-surface="rooms">
@@ -46,7 +48,7 @@
 <section class="planes" id="planes" aria-labelledby="planes-title">
 <p class="eyebrow">Three symbolic standing platforms</p>
 <h2 id="planes-title">Heaven · World · Below</h2>
-<p class="boundary">The same House and Tree can be entered from three navigation planes. The middle circle is the ordinary World Plane already used by the Axis; the new upper and lower circles let the reader stand in Heaven-facing integration or Below-facing roots/shadow without turning either one into a separate universe. Room placement here is a navigation emphasis, not a change of knowledge ownership.</p>
+<p class="boundary">These are now concrete symbolic spaces, not just topic filters: Heaven is Garden/House/Crown/Canopy/Mountain/Orchard; World is Crossroads/Trunk/Body/Civic/Culture/History/Research/Gates; Below is Root Archive/Seed Bed/Ash/Shadow/Wide Road/Swamp/Forge/Underworld comparison. Every Room keeps the same owner while projecting a local center into the spaces it actually uses.</p>
 <div class="plane-stack" id="planeStack"><span class="plane-loading">Loading the three planes…</span></div>
 </section>
 <section class="orientation" id="orientation" aria-labelledby="orientation-title">
@@ -66,16 +68,16 @@
   async function renderPlanes(){
     const root=document.getElementById('planeStack'); if(!root)return;
     try{
-      const [topologyRes,roomsRes]=await Promise.all([fetch('../data/house/topology.json'),fetch('../data/house/rooms.json')]);
-      if(!topologyRes.ok||!roomsRes.ok)throw new Error('plane data unavailable');
-      const [topology,rooms]=await Promise.all([topologyRes.json(),roomsRes.json()]);
+      const [topologyRes,roomsRes,spacesRes]=await Promise.all([fetch('../data/house/topology.json'),fetch('../data/house/rooms.json'),fetch('../data/house/plane-spaces.json')]);
+      if(!topologyRes.ok||!roomsRes.ok||!spacesRes.ok)throw new Error('plane data unavailable');
+      const [topology,rooms,spaceData]=await Promise.all([topologyRes.json(),roomsRes.json(),spacesRes.json()]);
       const roomTitles=Object.fromEntries((rooms.rooms||[]).map(r=>[r.id,r.title||r.id]));
-      const planes=topology.symbolic_planes?.planes||[];
+      const planes=topology.symbolic_planes?.planes||[],spaceByPlane=Object.fromEntries((spaceData.planes||[]).map(x=>[x.id,x]));
       root.innerHTML=planes.map(p=>{
         const nav=(p.navigation||[]).map(n=>'<a href="'+esc(href(n.route))+'">'+esc(n.label)+'</a>').join('');
         const primary=(p.primary_room_ids||[]).map(id=>roomTitles[id]||id).join(' · ');
         const crossing=(p.crossing_room_ids||[]).map(id=>roomTitles[id]||id).join(' · ');
-        return '<article class="plane-disc plane-disc--'+esc(p.id)+'" data-plane="'+esc(p.id)+'"><span class="plane-position">'+esc(p.position)+' plane</span><h3>'+esc(p.label)+'</h3><span class="plane-tree">'+esc(p.tree_position)+'</span><p class="plane-desc">'+esc(p.description)+'</p><nav class="plane-nav" aria-label="'+esc(p.label)+' navigation">'+nav+'</nav><p class="plane-rooms"><b>Primary Rooms</b> · '+esc(primary)+(crossing?'<br><b>Crosses</b> · '+esc(crossing):'')+'</p></article>';
+        const sp=spaceByPlane[p.id]||{},zones=(sp.zones||[]).map(z=>'<span class="plane-zone '+((p.anchor_space_ids||[]).includes(z.id)?'plane-zone--anchor':'')+'" title="'+esc(z.function)+'">'+esc(z.label)+'</span>').join('');return '<article class="plane-disc plane-disc--'+esc(p.id)+'" data-plane="'+esc(p.id)+'"><span class="plane-position">'+esc(p.position)+' plane</span><h3>'+esc(p.label)+'</h3><span class="plane-tree">'+esc(p.tree_position)+'</span><p class="plane-desc">'+esc(p.description)+'</p><div class="plane-zones">'+zones+'</div><p class="plane-center-note">'+esc(sp.center_expression||'')+' · center repeats locally in each Room/process</p><nav class="plane-nav" aria-label="'+esc(p.label)+' navigation">'+nav+'</nav><p class="plane-rooms"><b>Primary Rooms</b> · '+esc(primary)+(crossing?'<br><b>Crosses</b> · '+esc(crossing):'')+'</p></article>';
       }).join('')||'<span class="plane-loading">No plane projection is registered.</span>';
     }catch(e){root.innerHTML='<span class="plane-loading">The plane navigation data could not be loaded.</span>'}
   }
