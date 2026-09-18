@@ -1,9 +1,15 @@
 {
   "version": "1.6.0",
   "updated": "2026-09-18",
+  "status": "derived compatibility projection",
+  "authority": "derived-public-route-topology-projection",
+  "canonical_source": "data/house/public-surfaces.json",
+  "lifecycle_status": "compatibility-projection",
   "purpose": "Route-topology bridge for active public surfaces; navigation/migration classification only, not substantive knowledge ownership. House, Paths and Living Axis are structural projections over the canonical Rooms, not additional fact owners.",
   "room_registry": "data/house/rooms.json",
   "public_surface_registry": "data/house/public-surfaces.json",
+  "generation_rule": "Route identity, canonical route, surface type and primary Room membership derive from data/house/public-surfaces.json. This file may retain only compatibility/topology representation; it must not independently redefine public route identity.",
+  "retirement_target": "Remain generated while legacy consumers require this shape, then remove consumers and retire this file.",
   "records": [
     {
       "surface_id": "home",
@@ -569,10 +575,5 @@
       "migration_status": "current",
       "compatibility_routes": []
     }
-  ],
-  "authority": "derived-public-route-topology-projection",
-  "canonical_source": "data/house/public-surfaces.json",
-  "lifecycle_status": "compatibility-projection",
-  "generation_rule": "Route identity, canonical route, surface type and primary Room membership must derive from data/house/public-surfaces.json. This file may retain migration/topology-only fields but must not independently redefine public route identity.",
-  "retirement_target": "Become deterministically generated from public-surfaces plus topology-only annotations; do not remain a second hand-authored route registry."
+  ]
 }
