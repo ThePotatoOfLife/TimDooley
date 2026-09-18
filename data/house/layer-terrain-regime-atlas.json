@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "authority": "layer-terrain-regime-atlas",
   "purpose": "Classify the Potato House's major structures by what kind of thing they are—whole, coordinate, standing plane, terrain, regime, organism, material state, threshold, perceptual layer, process or route—so symbols can be populated without being flattened into one vertical hierarchy.",
@@ -434,7 +434,7 @@
       "id": "shadow",
       "label": "Shadow",
       "category": "perceptual-layer",
-      "definition": "Occluded, disowned, unintegrated or under-recognized content relative to a declared self/model/system. Shadow can contain harmful patterns or neglected positive capacities and can occur on any plane.",
+      "definition": "A cross-plane integration/visibility overlay: content, capacity, history, incentive or contradiction excluded from the declared self/model/system and therefore poorly integrated or displaced elsewhere.",
       "plane_ids": [
         "heaven-plane",
         "world-plane",
@@ -448,30 +448,35 @@
         "practice-ethics"
       ],
       "leads_to": [
-        "projection",
+        "recognition",
+        "projection/displacement",
         "evidence",
         "forge",
-        "repair",
-        "integration"
+        "integration",
+        "revised-model",
+        "repair"
       ],
       "not_equal_to": [
         "Swamp",
         "Below Plane",
         "evil",
         "demon",
-        "secret conspiracy"
+        "secret conspiracy",
+        "hidden motive diagnosis"
       ],
       "population": [
         "unexamined assumptions",
         "disowned motives",
-        "neglected capacities",
-        "ideal-vs-reality gaps",
-        "hidden incentives",
-        "unacknowledged residue"
+        "neglected positive capacities",
+        "historical omissions",
+        "institutional blind spots",
+        "ideal-vs-practice gaps",
+        "project self-critique"
       ],
       "source_files": [
         "knowledge/core/shadow-ledger-entanglement-axis.json",
-        "knowledge/world/world-shadow-research-index.json"
+        "knowledge/world/world-shadow-research-index.json",
+        "knowledge/core/shadow-integration-overlay.json"
       ]
     },
     {
@@ -893,7 +898,8 @@
     "Mud is residue; Ash is post-rupture residue; Soil is processed generative substrate; Swamp is the environment produced when unresolved material and recurrence dominate.",
     "Roots are not Strife. Rooting is not Drain. Descent may be generative, degenerative or return.",
     "Shadow is not inherently evil and can include neglected positive capacities; it may appear on any plane.",
-    "Literal wetlands are not the project's symbolic Swamp and should not inherit its negative valence."
+    "Literal wetlands are not the project's symbolic Swamp and should not inherit its negative valence.",
+    "Shadow can contain excluded positive capacity as well as harmful material; integration is tested by reduced blind repetition and improved choice/correction, not by confession alone."
   ],
   "population_rule": "Every new subject should receive: canonical Room owner → category → plane projection → compass direction → Tree/route affinity → source/provenance → visibility. If the subject cannot be placed without inventing meaning, keep it in Research/Open Questions."
 }
