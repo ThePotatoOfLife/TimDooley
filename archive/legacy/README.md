@@ -43,3 +43,18 @@ Before retiring any legacy file:
 6. only then delete it from the current branch.
 
 The goal is less clutter **without provenance loss**.
+
+## Retired research staging projections — 2026-09-18
+
+### `data/potatoverse-alternative-directions.json`
+
+- Role: structured 30-finding alternative Potato research staging layer.
+- Status: retired after empirical biology, human ecology, food-system history and boundary material was promoted into `knowledge/science/potato-biology-ecology-development-canon.json` and the practice projection.
+- Last live blob: `08b0469b3606af33879266a260509c46bf00f131`.
+- Successors: `knowledge/science/potato-biology-ecology-development-canon.json`, `knowledge/biology/potato-growth-principles.json`, `knowledge/philosophy/potato-philosophy.json`.
+
+### `data/potatoverse-alternative-links.json`
+
+- Role: 30-edge staging relation graph keyed to the retired `ad01…ad30` finding IDs.
+- Status: retired with its finding layer. The graph was not promoted wholesale because its endpoints were staging concepts rather than canonical graph identities; durable relations are preserved in the science/system synthesis instead.
+- Last live blob: `640bfd1934542cc93210a2f6761336a3987b6687`.
