@@ -62,6 +62,9 @@ jobs:
       - name: Validate Foundation layer
         run: python scripts/validate_foundation_layer.py
 
+      - name: Validate commit crystallization
+        run: python scripts/validate_commit_crystallization.py
+
       - name: Validate Timeline naming
         run: python scripts/validate_timeline_naming.py
 
