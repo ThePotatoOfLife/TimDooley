@@ -183,7 +183,11 @@
       "policy": "The root manifest owns the reconciliation and rooted-identity contract. Source ledgers own captured wording and provenance. Identifier layers may strengthen Roots only through unambiguous joins. Episodes, function threads, persistence diagnostics, Bible references, and literal role/title mentions are deterministic derived layers. Role/title mentions never establish actor-role assignment, identity, equivalence, causation, or role transfer. Timeline order is a traversal rather than the identity order."
     },
     "foundations": {
-      "canonical_owner": "data/house/foundations-wave-001.json + data/house/foundations-wave-002.json",
+      "canonical_owner": [
+        "data/house/foundations-wave-001.json",
+        "data/house/foundations-wave-002.json",
+        "data/house/foundations-wave-003.json"
+      ],
       "schema_owner": "data/blueprints/foundation-blueprint.json",
       "timeline_view": "data/house/foundation-timeline-wave-001.json",
       "ontology_owner": "knowledge/core/foundation-rule-law-ontology.json",
