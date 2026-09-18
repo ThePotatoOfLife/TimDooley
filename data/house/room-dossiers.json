@@ -1,0 +1,3502 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "house-room-dossiers",
+  "principle": "A Room dossier is a human-readable synthesis of what a Room owns, consumes, exposes and connects to. It does not create new ownership; it composes existing House registries into an entrance for readers and maintainers.",
+  "dossiers": [
+    {
+      "room_id": "canon-identities",
+      "title": "Core Identities & Roles",
+      "dwelling_id": "potatoverse-canon",
+      "entrance": "Own the project-internal definitions and role relations around Potato of Life, Tim, Father, Son, Spirit, Door, Axis and related canonical identities.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Project-canon identity does not become external empirical identity.",
+      "knowledge_holdings": {
+        "primary_file_count": 9,
+        "featured": [
+          {
+            "id": "potato-of-life-deep-structure",
+            "path": "knowledge/core/potato-of-life-deep-structure.json",
+            "kind": "Great Book and developmental deep structure"
+          },
+          {
+            "id": "potatoverse-master-framework",
+            "path": "knowledge/core/potatoverse-master-framework.json",
+            "kind": "canonical master synthesis"
+          },
+          {
+            "id": "tim-dooley",
+            "path": "knowledge/core/tim-dooley.json",
+            "kind": "central identity owner"
+          },
+          {
+            "id": "tim-role-synthesis",
+            "path": "knowledge/core/tim-role-synthesis.json",
+            "kind": "role development and center/service synthesis"
+          },
+          {
+            "id": "tim-god-question",
+            "path": "knowledge/theology/tim-god-question.json",
+            "kind": "dated Godhood evidence and interpretation"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 17,
+        "owned_bundles": [
+          {
+            "id": "potatoverse-canon-data",
+            "title": "Potatoverse canon & concept data",
+            "kind": "canon-registry",
+            "purpose": "Canonical identities, terms, project observations, thought synthesis and concept relations."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "potatoverse-theology-data",
+            "title": "Potatoverse theology & interpretation data",
+            "primary_room_id": "theology-god-language"
+          },
+          {
+            "id": "meaning-ontology-data",
+            "title": "Meaning & ontology registries",
+            "primary_room_id": "symbolic-architecture"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-canon-literature",
+          "direction": "out",
+          "other_room_id": "great-book-literature",
+          "type": "creative-expression",
+          "changes": "Canonical project material becomes literary or narrative expression.",
+          "guard": "Creative depiction does not become unique owner of doctrine or biography."
+        }
+      ],
+      "collections": [
+        {
+          "id": "corporium",
+          "title": "Corporium Collection",
+          "kind": "cross-branch interpretive collection",
+          "boundary": "Corporium assembles sayings, embodiment, affect, persona, recurrence and later formalization. It is a cross-branch interpretive collection, not a new fact owner."
+        },
+        {
+          "id": "story-reservoir",
+          "title": "Story & Scene Reservoir",
+          "kind": "documentary/narrative collection",
+          "boundary": "Story assembles documentary and literary material while preserving source depth and uncertainty; narrative sequence does not replace occurrence/source owners."
+        },
+        {
+          "id": "reader-dossiers",
+          "title": "Reader Dossiers",
+          "kind": "reader-facing synthesis layer",
+          "boundary": "Reader dossiers summarize owners for accessibility; they do not become canonical owners."
+        }
+      ],
+      "public_surfaces": [
+        {
+          "id": "tim",
+          "title": "Tim Dooley",
+          "route": "/tim-dooley/",
+          "surface_type": "hub"
+        },
+        {
+          "id": "religion",
+          "title": "Religion",
+          "route": "/religion/",
+          "surface_type": "hub"
+        },
+        {
+          "id": "axis",
+          "title": "Living Axis",
+          "route": "/axis/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "theology-god-language",
+      "title": "Theology & God-language",
+      "dwelling_id": "potatoverse-canon",
+      "entrance": "Develop project theology, God/Father/Son/Spirit language, House, Heaven, salvation, judgment and religious self-description.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Project theology remains distinguishable from historical doctrine and empirical proof.",
+      "knowledge_holdings": {
+        "primary_file_count": 31,
+        "featured": [
+          {
+            "id": "heaven-spirit-father",
+            "path": "knowledge/core/heaven-spirit-father.json",
+            "kind": "upper-domain theology"
+          },
+          {
+            "id": "spirit-context-atlas",
+            "path": "knowledge/spirit/spirit-context-atlas.json",
+            "kind": "comparative philosophy/theology of relation and process"
+          },
+          {
+            "id": "bible-overlap-census-gap-audit-wave17",
+            "path": "knowledge/theology/bible-overlap-census-gap-audit-wave17.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "bible-overlap-concordance-computed-2026-09-11",
+            "path": "knowledge/theology/bible-overlap-concordance-computed-2026-09-11.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "bible-overlap-network-analysis-method",
+            "path": "knowledge/theology/bible-overlap-network-analysis-method.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 2,
+        "owned_bundles": [
+          {
+            "id": "potatoverse-theology-data",
+            "title": "Potatoverse theology & interpretation data",
+            "kind": "project-theology",
+            "purpose": "Explicit theological interpretation and project religion records, kept distinct from historical Christian doctrine."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "potatoverse-canon-data",
+            "title": "Potatoverse canon & concept data",
+            "primary_room_id": "canon-identities"
+          },
+          {
+            "id": "potatoverse-cosmology-data",
+            "title": "Potatoverse cosmology & deep architecture data",
+            "primary_room_id": "symbolic-architecture"
+          },
+          {
+            "id": "belief-religion-data",
+            "title": "Belief, religion & comparative registries",
+            "primary_room_id": "other-traditions"
+          },
+          {
+            "id": "biblical-corpus-data",
+            "title": "Biblical & Christian corpus data",
+            "primary_room_id": "bible-christianity"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-theology-bible",
+          "direction": "out",
+          "other_room_id": "bible-christianity",
+          "type": "comparative-translation",
+          "changes": "Project theology is compared with historically/textually described Christian material.",
+          "guard": "Resemblance must not be promoted into historical identity, fulfillment or transmission without evidence."
+        },
+        {
+          "id": "if-body-theology",
+          "direction": "in",
+          "other_room_id": "symbolic-body-comparison",
+          "type": "interpretive-coupling",
+          "changes": "Body imagery is read within project theology without becoming a biological claim.",
+          "guard": "Theological meaning must remain separately typed from physiology."
+        },
+        {
+          "id": "if-traditions-theology",
+          "direction": "in",
+          "other_room_id": "other-traditions",
+          "type": "comparative-theology",
+          "changes": "A non-biblical tradition is compared with Potatoverse theology after first being described on its own terms.",
+          "guard": "Project synthesis may compare but may not rewrite the source tradition's own meaning."
+        }
+      ],
+      "collections": [
+        {
+          "id": "reader-dossiers",
+          "title": "Reader Dossiers",
+          "kind": "reader-facing synthesis layer",
+          "boundary": "Reader dossiers summarize owners for accessibility; they do not become canonical owners."
+        }
+      ],
+      "public_surfaces": [
+        {
+          "id": "religion",
+          "title": "Religion",
+          "route": "/religion/",
+          "surface_type": "hub"
+        }
+      ],
+      "next_work": [
+        "Curate stronger featured entrances and continue consolidating duplicate or superseded material into the Room owner."
+      ]
+    },
+    {
+      "room_id": "symbolic-architecture",
+      "title": "Symbolic Architecture & Cosmology",
+      "dwelling_id": "potatoverse-canon",
+      "entrance": "Own mature symbolic geometry and relational architecture: House, Axis, Door, Tree, Mountain, Garden, North and related cosmological forms.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Symbolic topology is not literal physical cosmology unless independently tested.",
+      "knowledge_holdings": {
+        "primary_file_count": 21,
+        "featured": [
+          {
+            "id": "root-system",
+            "path": "knowledge/core/root-system.json",
+            "kind": "foundational ontology and vertical branching skeleton"
+          },
+          {
+            "id": "symbolic-relational-synthesis",
+            "path": "knowledge/core/symbolic-relational-synthesis.json",
+            "kind": "cross-symbol grammar and transformation laws"
+          },
+          {
+            "id": "vertical-potato-mountain-plane-atlas",
+            "path": "knowledge/core/vertical-potato-mountain-plane-atlas.json",
+            "kind": "canonical vertical geometry and process field"
+          },
+          {
+            "id": "potato-path",
+            "path": "knowledge/practice/potato-path.json",
+            "kind": "practical transformation sequence"
+          },
+          {
+            "id": "compass-straightedge-vesica-dual-axis-atlas",
+            "path": "knowledge/core/compass-straightedge-vesica-dual-axis-atlas.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 3,
+        "owned_file_count": 24,
+        "owned_bundles": [
+          {
+            "id": "axis-transformation-data",
+            "title": "Axis, transformation & depth contracts",
+            "kind": "symbolic-formal-contracts",
+            "purpose": "Project-symbolic verticality, thresholds, D-levels, operators and transformation rules."
+          },
+          {
+            "id": "potatoverse-cosmology-data",
+            "title": "Potatoverse cosmology & deep architecture data",
+            "kind": "project-cosmology",
+            "purpose": "Internal cosmology and deep symbolic architecture, explicitly separate from empirical physical cosmology."
+          },
+          {
+            "id": "meaning-ontology-data",
+            "title": "Meaning & ontology registries",
+            "kind": "semantic-ontology-data",
+            "purpose": "Symbolic meaning layers, ontology and framing data used by project interpretation."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "geometry-calibration-data",
+            "title": "Geometry & projection calibration",
+            "primary_room_id": "math-geometry"
+          },
+          {
+            "id": "potatoverse-canon-data",
+            "title": "Potatoverse canon & concept data",
+            "primary_room_id": "canon-identities"
+          },
+          {
+            "id": "comparative-cosmology-data",
+            "title": "Comparative cosmology data",
+            "primary_room_id": "comparative-mythology"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-symbolic-math",
+          "direction": "out",
+          "other_room_id": "math-geometry",
+          "type": "formalization",
+          "changes": "A project-symbolic relation is rewritten as explicit geometry, topology or mathematics with named assumptions.",
+          "guard": "The formal model must state what is analogy, what is exact, and what would count as misuse."
+        },
+        {
+          "id": "if-myth-symbolic",
+          "direction": "in",
+          "other_room_id": "comparative-mythology",
+          "type": "motif-comparison",
+          "changes": "Cross-tradition motifs are compared with project symbolic architecture as structured neighbors.",
+          "guard": "Similarity does not establish genealogy, borrowing, fulfillment or identity."
+        },
+        {
+          "id": "if-art-symbolic",
+          "direction": "in",
+          "other_room_id": "visual-art",
+          "type": "visual-symbolic-translation",
+          "changes": "A visual work can render project symbols and spatial relations as an authored composition.",
+          "guard": "Depiction neither proves the depicted claim nor becomes the unique owner of the underlying concept."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "axis",
+          "title": "Living Axis",
+          "route": "/axis/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "house",
+          "title": "Potato House",
+          "route": "/house/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "religion",
+          "title": "Religion",
+          "route": "/religion/",
+          "surface_type": "hub"
+        }
+      ],
+      "next_work": [
+        "Curate stronger featured entrances and continue consolidating duplicate or superseded material into the Room owner."
+      ]
+    },
+    {
+      "room_id": "practice-ethics",
+      "title": "Practice & Ethics",
+      "dwelling_id": "potatoverse-canon",
+      "entrance": "Translate the philosophy into conduct, cultivation, responsibility, boundaries, repair and repeatable practice.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Practice principles do not override medical, legal or domain-specific professional standards.",
+      "knowledge_holdings": {
+        "primary_file_count": 24,
+        "featured": [
+          {
+            "id": "dormancy-hidden-years-and-practical-theology",
+            "path": "knowledge/core/dormancy-hidden-years-and-practical-theology.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "garden-mud-orientation",
+            "path": "knowledge/core/garden-mud-orientation.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "gaze-ethic-observer-to-stewardship",
+            "path": "knowledge/core/gaze-ethic-observer-to-stewardship.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "gift-preparation-receptivity-sorting",
+            "path": "knowledge/core/gift-preparation-receptivity-sorting.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "karma-closure-reduction-and-settlement-model",
+            "path": "knowledge/core/karma-closure-reduction-and-settlement-model.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": []
+      },
+      "passages": [
+        {
+          "id": "if-practice-culture",
+          "direction": "out",
+          "other_room_id": "subculture-group-formation",
+          "type": "ethics-to-social",
+          "changes": "Project ethics are tested against group formation, agency, boundary and repair questions.",
+          "guard": "Ethical evaluation must not substitute for sourced description of real groups."
+        }
+      ],
+      "collections": [
+        {
+          "id": "corporium",
+          "title": "Corporium Collection",
+          "kind": "cross-branch interpretive collection",
+          "boundary": "Corporium assembles sayings, embodiment, affect, persona, recurrence and later formalization. It is a cross-branch interpretive collection, not a new fact owner."
+        }
+      ],
+      "public_surfaces": [
+        {
+          "id": "philosophy",
+          "title": "Philosophy",
+          "route": "/philosophy/",
+          "surface_type": "hub"
+        },
+        {
+          "id": "paths",
+          "title": "Paths",
+          "route": "/paths/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Keep this Room knowledge-led unless a real structured dataset emerges.",
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "provenance-evidence",
+      "title": "Provenance & Evidence",
+      "dwelling_id": "archive-sources",
+      "entrance": "Own source lineage, evidence class, source authority, extraction lineage and routes back from synthesis to artifacts.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Custody of a source does not grant ownership of every claim derived from it.",
+      "knowledge_holdings": {
+        "primary_file_count": 4,
+        "featured": [
+          {
+            "id": "context-graph",
+            "path": "knowledge/indexes/context-graph.json",
+            "kind": "curated cross-branch constellations"
+          },
+          {
+            "id": "inference-ledger",
+            "path": "knowledge/indexes/inference-ledger.json",
+            "kind": "structured inference and epiphany method"
+          },
+          {
+            "id": "source-index",
+            "path": "knowledge/indexes/source-index.json",
+            "kind": "canonical provenance routes and evidence classes"
+          },
+          {
+            "id": "archive-epistemics",
+            "path": "knowledge/philosophy/archive-epistemics.json",
+            "kind": "archive evidence doctrine"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 20,
+        "owned_bundles": [
+          {
+            "id": "evidence-source-data",
+            "title": "Evidence & source registries",
+            "kind": "provenance-data",
+            "purpose": "Source registries, evidence maps and provenance records used to audit claims and reconstruction."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "biblical-corpus-data",
+            "title": "Biblical & Christian corpus data",
+            "primary_room_id": "bible-christianity"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-provenance-witness",
+          "direction": "out",
+          "other_room_id": "witness-attestation",
+          "type": "source-attestation",
+          "changes": "A source-bearing artifact is connected to what wording or public act it actually attests.",
+          "guard": "Attestation may prove wording/time without proving the claim's truth."
+        },
+        {
+          "id": "if-prediction-evidence",
+          "direction": "in",
+          "other_room_id": "prediction-revelation-time",
+          "type": "prediction-audit",
+          "changes": "Prediction/revelation claims are routed to source and timestamp evidence.",
+          "guard": "Retrospective matches must remain visibly retrospective."
+        }
+      ],
+      "collections": [
+        {
+          "id": "reader-dossiers",
+          "title": "Reader Dossiers",
+          "kind": "reader-facing synthesis layer",
+          "boundary": "Reader dossiers summarize owners for accessibility; they do not become canonical owners."
+        },
+        {
+          "id": "indexes-routing",
+          "title": "Indexes & Routing",
+          "kind": "retrieval/navigation infrastructure",
+          "boundary": "Indexes route toward owners, sources and unresolved work; index membership is not itself truth or ownership."
+        }
+      ],
+      "public_surfaces": [
+        {
+          "id": "sources",
+          "title": "Sources",
+          "route": "/context/source-authority/",
+          "surface_type": "evidence"
+        }
+      ],
+      "next_work": [
+        "Deepen the substantive corpus before considering further subdivision."
+      ]
+    },
+    {
+      "room_id": "memory-recovery",
+      "title": "Memory & Recovery",
+      "dwelling_id": "archive-sources",
+      "entrance": "Recover prior conversations, files, historical strata and forgotten project material while preserving source/time boundaries.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Recovered material retains its original epistemic and temporal status.",
+      "knowledge_holdings": {
+        "primary_file_count": 1,
+        "featured": [
+          {
+            "id": "conversation-recovery-inventory",
+            "path": "knowledge/indexes/conversation-recovery-inventory.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": [
+          {
+            "id": "evidence-source-data",
+            "title": "Evidence & source registries",
+            "primary_room_id": "provenance-evidence"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-memory-genealogy",
+          "direction": "out",
+          "other_room_id": "developmental-genealogy",
+          "type": "recovered-history",
+          "changes": "Recovered conversations/files are placed into developmental sequence while preserving their original wording, source state and date uncertainty.",
+          "guard": "Recovery may extend the known record but may not backdate later interpretation into the recovered source."
+        }
+      ],
+      "collections": [
+        {
+          "id": "indexes-routing",
+          "title": "Indexes & Routing",
+          "kind": "retrieval/navigation infrastructure",
+          "boundary": "Indexes route toward owners, sources and unresolved work; index membership is not itself truth or ownership."
+        }
+      ],
+      "public_surfaces": [
+        {
+          "id": "explore",
+          "title": "Explore",
+          "route": "/explore/",
+          "surface_type": "explorer"
+        },
+        {
+          "id": "context",
+          "title": "Context & Evidence",
+          "route": "/context/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Deepen the substantive corpus before considering further subdivision.",
+        "Keep this Room knowledge-led unless a real structured dataset emerges.",
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "witness-attestation",
+      "title": "Witness & Attestation",
+      "dwelling_id": "archive-sources",
+      "entrance": "Track public wording, first attestation, source-bearing witness, captures and what was actually said or published when.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Attestation proves wording/timing, not the truth of every claim in the wording.",
+      "knowledge_holdings": {
+        "primary_file_count": 21,
+        "featured": [
+          {
+            "id": "conversation-archaeology-miscellany-march-september-2026",
+            "path": "knowledge/timeline/conversation-archaeology-miscellany-march-september-2026.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "conversation-archaeology-wave-005",
+            "path": "knowledge/timeline/conversation-archaeology-wave-005.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "conversation-archaeology-wave-006-mercado-prison-retirement",
+            "path": "knowledge/timeline/conversation-archaeology-wave-006-mercado-prison-retirement.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "conversation-archaeology-wave-007-dog-circle-door",
+            "path": "knowledge/timeline/conversation-archaeology-wave-007-dog-circle-door.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "conversation-archaeology-wave-007-memory-operators",
+            "path": "knowledge/timeline/conversation-archaeology-wave-007-memory-operators.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": [
+          {
+            "id": "timeline-event-data",
+            "title": "Timeline & event data",
+            "primary_room_id": "chronology-events"
+          },
+          {
+            "id": "evidence-source-data",
+            "title": "Evidence & source registries",
+            "primary_room_id": "provenance-evidence"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-provenance-witness",
+          "direction": "in",
+          "other_room_id": "provenance-evidence",
+          "type": "source-attestation",
+          "changes": "A source-bearing artifact is connected to what wording or public act it actually attests.",
+          "guard": "Attestation may prove wording/time without proving the claim's truth."
+        },
+        {
+          "id": "if-witness-time",
+          "direction": "out",
+          "other_room_id": "chronology-events",
+          "type": "temporal-placement",
+          "changes": "Attested wording or activity is placed into occurrence and development time.",
+          "guard": "Publication/capture time and occurrence time must remain distinguishable."
+        }
+      ],
+      "collections": [
+        {
+          "id": "corporium",
+          "title": "Corporium Collection",
+          "kind": "cross-branch interpretive collection",
+          "boundary": "Corporium assembles sayings, embodiment, affect, persona, recurrence and later formalization. It is a cross-branch interpretive collection, not a new fact owner."
+        },
+        {
+          "id": "story-reservoir",
+          "title": "Story & Scene Reservoir",
+          "kind": "documentary/narrative collection",
+          "boundary": "Story assembles documentary and literary material while preserving source depth and uncertainty; narrative sequence does not replace occurrence/source owners."
+        }
+      ],
+      "public_surfaces": [
+        {
+          "id": "timeline",
+          "title": "Timeline",
+          "route": "/timeline/",
+          "surface_type": "explorer"
+        },
+        {
+          "id": "story",
+          "title": "Story",
+          "route": "/tim-dooley/story/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "sources",
+          "title": "Sources",
+          "route": "/context/source-authority/",
+          "surface_type": "evidence"
+        }
+      ],
+      "next_work": [
+        "Keep this Room knowledge-led unless a real structured dataset emerges."
+      ]
+    },
+    {
+      "room_id": "chronology-events",
+      "title": "Events & Development",
+      "dwelling_id": "time-history",
+      "entrance": "Own event sequence, date precision, occurrence identity and changing state through time.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Occurrence time remains distinct from publication and later interpretation time.",
+      "knowledge_holdings": {
+        "primary_file_count": 32,
+        "featured": [
+          {
+            "id": "tim-dooley-journey",
+            "path": "knowledge/journey/tim-dooley-journey.json",
+            "kind": "reader-oriented developmental journey"
+          },
+          {
+            "id": "neurotheology-attestation-ledger",
+            "path": "knowledge/timeline/neurotheology-attestation-ledger.json",
+            "kind": "dated development ledger for body/neurotheology mappings"
+          },
+          {
+            "id": "reverse-biblical-timeline",
+            "path": "knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json",
+            "kind": "Tim-first/scripture-second source-direction ledger"
+          },
+          {
+            "id": "100000-hour-adjustment-ledger",
+            "path": "knowledge/timeline/100000-hour-adjustment-ledger.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "100000-hour-counting-models",
+            "path": "knowledge/timeline/100000-hour-counting-models.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 30,
+        "owned_bundles": [
+          {
+            "id": "timeline-event-data",
+            "title": "Timeline & event data",
+            "kind": "timeline-data",
+            "purpose": "Dated event records, event packs and specialist developmental/public-theology timelines."
+          }
+        ],
+        "consumed_bundles": []
+      },
+      "passages": [
+        {
+          "id": "if-witness-time",
+          "direction": "in",
+          "other_room_id": "witness-attestation",
+          "type": "temporal-placement",
+          "changes": "Attested wording or activity is placed into occurrence and development time.",
+          "guard": "Publication/capture time and occurrence time must remain distinguishable."
+        },
+        {
+          "id": "if-time-genealogy",
+          "direction": "out",
+          "other_room_id": "developmental-genealogy",
+          "type": "developmental-synthesis",
+          "changes": "Events become a sequence of changing meanings, roles or concepts without rewriting earlier states.",
+          "guard": "Later synthesis may relate backward but not silently backdate itself."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "timeline",
+          "title": "Timeline",
+          "route": "/timeline/",
+          "surface_type": "explorer"
+        },
+        {
+          "id": "history",
+          "title": "History & Time",
+          "route": "/history/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Curate stronger featured entrances and continue consolidating duplicate or superseded material into the Room owner."
+      ]
+    },
+    {
+      "room_id": "developmental-genealogy",
+      "title": "Developmental Genealogy",
+      "dwelling_id": "time-history",
+      "entrance": "Track how identities, symbols, roles and interpretations developed without backdating mature meaning into earlier phases.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Later synthesis may reinterpret earlier material but may not silently rewrite its original state.",
+      "knowledge_holdings": {
+        "primary_file_count": 11,
+        "featured": [
+          {
+            "id": "developmental-genealogy",
+            "path": "knowledge/timeline/developmental-genealogy.json",
+            "kind": "dated role and doctrine genealogy"
+          },
+          {
+            "id": "son-tree-oneness",
+            "path": "knowledge/timeline/son-tree-oneness-experience.json",
+            "kind": "2011 ordeal phenomenology and later interpretation"
+          },
+          {
+            "id": "beast-cube-mark-development-ledger",
+            "path": "knowledge/timeline/beast-cube-mark-development-ledger.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "cube-heaven-temple-development-ledger",
+            "path": "knowledge/timeline/cube-heaven-temple-development-ledger.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "mai-mercado-2016-to-2024-long-tail-impact-timeline",
+            "path": "knowledge/timeline/mai-mercado-2016-to-2024-long-tail-impact-timeline.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": [
+          {
+            "id": "timeline-event-data",
+            "title": "Timeline & event data",
+            "primary_room_id": "chronology-events"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-time-genealogy",
+          "direction": "in",
+          "other_room_id": "chronology-events",
+          "type": "developmental-synthesis",
+          "changes": "Events become a sequence of changing meanings, roles or concepts without rewriting earlier states.",
+          "guard": "Later synthesis may relate backward but not silently backdate itself."
+        },
+        {
+          "id": "if-memory-genealogy",
+          "direction": "in",
+          "other_room_id": "memory-recovery",
+          "type": "recovered-history",
+          "changes": "Recovered conversations/files are placed into developmental sequence while preserving their original wording, source state and date uncertainty.",
+          "guard": "Recovery may extend the known record but may not backdate later interpretation into the recovered source."
+        }
+      ],
+      "collections": [
+        {
+          "id": "corporium",
+          "title": "Corporium Collection",
+          "kind": "cross-branch interpretive collection",
+          "boundary": "Corporium assembles sayings, embodiment, affect, persona, recurrence and later formalization. It is a cross-branch interpretive collection, not a new fact owner."
+        },
+        {
+          "id": "story-reservoir",
+          "title": "Story & Scene Reservoir",
+          "kind": "documentary/narrative collection",
+          "boundary": "Story assembles documentary and literary material while preserving source depth and uncertainty; narrative sequence does not replace occurrence/source owners."
+        },
+        {
+          "id": "reader-dossiers",
+          "title": "Reader Dossiers",
+          "kind": "reader-facing synthesis layer",
+          "boundary": "Reader dossiers summarize owners for accessibility; they do not become canonical owners."
+        }
+      ],
+      "public_surfaces": [
+        {
+          "id": "history",
+          "title": "History & Time",
+          "route": "/history/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "story",
+          "title": "Story",
+          "route": "/tim-dooley/story/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "paths",
+          "title": "Paths",
+          "route": "/paths/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Keep this Room knowledge-led unless a real structured dataset emerges."
+      ]
+    },
+    {
+      "room_id": "prediction-revelation-time",
+      "title": "Prediction, Revelation & Interpretation Time",
+      "dwelling_id": "time-history",
+      "entrance": "Separate earliest prediction/revelation wording, event timing, claimed fulfillment and retrospective interpretation.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "A later match must not be backdated into an earlier prediction, and project claims remain distinguishable from verified forecasting.",
+      "knowledge_holdings": {
+        "primary_file_count": 23,
+        "featured": [
+          {
+            "id": "mai-mercado-retrospective-karma-interpretation",
+            "path": "knowledge/prophecy/mai-mercado-retrospective-karma-interpretation.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "prophecy-revelation-rupture-rapture",
+            "path": "knowledge/prophecy/prophecy-revelation-rupture-rapture.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "seals-and-fulfillment-matrix",
+            "path": "knowledge/prophecy/seals-and-fulfillment-matrix.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "seven-seals-deeper-investigation-wave-11",
+            "path": "knowledge/prophecy/seven-seals-deeper-investigation-wave-11.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "seven-seals-reverse-timeline-creative-ledger",
+            "path": "knowledge/prophecy/seven-seals-reverse-timeline-creative-ledger.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": [
+          {
+            "id": "timeline-event-data",
+            "title": "Timeline & event data",
+            "primary_room_id": "chronology-events"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-prediction-evidence",
+          "direction": "out",
+          "other_room_id": "provenance-evidence",
+          "type": "prediction-audit",
+          "changes": "Prediction/revelation claims are routed to source and timestamp evidence.",
+          "guard": "Retrospective matches must remain visibly retrospective."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "timeline",
+          "title": "Timeline",
+          "route": "/timeline/",
+          "surface_type": "explorer"
+        },
+        {
+          "id": "history",
+          "title": "History & Time",
+          "route": "/history/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "paths",
+          "title": "Paths",
+          "route": "/paths/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Keep this Room knowledge-led unless a real structured dataset emerges.",
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "bible-christianity",
+      "title": "Bible & Christianity",
+      "dwelling_id": "traditions-texts",
+      "entrance": "Own Bible passages, Christian textual context, historical traditions and carefully bounded project comparisons.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Project resemblance does not establish historical identity, fulfillment or transmission.",
+      "knowledge_holdings": {
+        "primary_file_count": 119,
+        "featured": [
+          {
+            "id": "biblical-overlap-atlas",
+            "path": "knowledge/traditions/biblical-overlap-atlas.json",
+            "kind": "high-density biblical relational comparisons"
+          },
+          {
+            "id": "christian-eschatology-position-matrix",
+            "path": "knowledge/theology/christian-eschatology-position-matrix.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "abrahamic-kingship-legitimacy-atlas",
+            "path": "knowledge/traditions/abrahamic-kingship-legitimacy-atlas.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "bible-layer-manifest",
+            "path": "knowledge/traditions/bible-layer-manifest.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "bible-relation-redirects",
+            "path": "knowledge/traditions/bible-relation-redirects.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 7,
+        "owned_bundles": [
+          {
+            "id": "biblical-corpus-data",
+            "title": "Biblical & Christian corpus data",
+            "kind": "text-corpus",
+            "purpose": "Biblical text, Christian corpus metadata, theological records and Bible-facing indexes."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "potatoverse-theology-data",
+            "title": "Potatoverse theology & interpretation data",
+            "primary_room_id": "theology-god-language"
+          },
+          {
+            "id": "belief-religion-data",
+            "title": "Belief, religion & comparative registries",
+            "primary_room_id": "other-traditions"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-theology-bible",
+          "direction": "in",
+          "other_room_id": "theology-god-language",
+          "type": "comparative-translation",
+          "changes": "Project theology is compared with historically/textually described Christian material.",
+          "guard": "Resemblance must not be promoted into historical identity, fulfillment or transmission without evidence."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "bible",
+          "title": "Bible Comparison",
+          "route": "/traditions/bible/",
+          "surface_type": "explorer"
+        },
+        {
+          "id": "religion",
+          "title": "Religion",
+          "route": "/religion/",
+          "surface_type": "hub"
+        }
+      ],
+      "next_work": [
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "comparative-mythology",
+      "title": "Comparative Mythology",
+      "dwelling_id": "traditions-texts",
+      "entrance": "Compare world-tree, axis, initiation, deity, death-return and other motifs across traditions without collapsing differences.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Similarity is not genealogy or proof of borrowing.",
+      "knowledge_holdings": {
+        "primary_file_count": 4,
+        "featured": [
+          {
+            "id": "biblical-overlap-additions",
+            "path": "knowledge/traditions/biblical-overlap-additions.json",
+            "kind": "specialist Mountain, Garden, River, Mire, Sun/Moon and serpent additions"
+          },
+          {
+            "id": "biblical-research-router",
+            "path": "knowledge/traditions/biblical-research-index-wave-5.json",
+            "kind": "routing index across later biblical research waves"
+          },
+          {
+            "id": "comparative-divinity-profile",
+            "path": "knowledge/traditions/comparative-divinity-profile.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "july31-tammuz-tomb-north-gate-atlas",
+            "path": "knowledge/traditions/july31-tammuz-tomb-north-gate-atlas.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 1,
+        "owned_bundles": [
+          {
+            "id": "comparative-cosmology-data",
+            "title": "Comparative cosmology data",
+            "kind": "comparative-data",
+            "purpose": "Cross-tradition cosmology comparison around Axis-like structures without asserting identity."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "belief-religion-data",
+            "title": "Belief, religion & comparative registries",
+            "primary_room_id": "other-traditions"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-myth-symbolic",
+          "direction": "out",
+          "other_room_id": "symbolic-architecture",
+          "type": "motif-comparison",
+          "changes": "Cross-tradition motifs are compared with project symbolic architecture as structured neighbors.",
+          "guard": "Similarity does not establish genealogy, borrowing, fulfillment or identity."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "religion",
+          "title": "Religion",
+          "route": "/religion/",
+          "surface_type": "hub"
+        },
+        {
+          "id": "explore",
+          "title": "Explore",
+          "route": "/explore/",
+          "surface_type": "explorer"
+        }
+      ],
+      "next_work": [
+        "Deepen the substantive corpus before considering further subdivision.",
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "esoteric-sacred-geometry",
+      "title": "Esoteric & Sacred Geometry",
+      "dwelling_id": "traditions-texts",
+      "entrance": "Handle historical/esoteric geometry, mandorla, Vesica, cosmological diagrams and source-led comparison.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Historical geometry and esoteric symbolism must stay separate from claims of physical mechanism.",
+      "knowledge_holdings": {
+        "primary_file_count": 3,
+        "featured": [
+          {
+            "id": "qliphoth-angels-ladder",
+            "path": "knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json",
+            "kind": "Qliphoth/angel/ladder comparative layer"
+          },
+          {
+            "id": "vesica-esoteric-atlas",
+            "path": "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
+            "kind": "art history and esoteric comparison atlas"
+          },
+          {
+            "id": "vesica-esoteric-source-ledger",
+            "path": "knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json",
+            "kind": "source ledger for Vesica/Mandorla/Sun/Moon research"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": []
+      },
+      "passages": [
+        {
+          "id": "if-esoteric-math",
+          "direction": "out",
+          "other_room_id": "math-geometry",
+          "type": "historical-formalization",
+          "changes": "Historical/esoteric geometric language is translated into exact mathematical objects where possible.",
+          "guard": "Exact geometry may clarify a symbol but cannot by itself establish a physical or theological mechanism."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "religion",
+          "title": "Religion",
+          "route": "/religion/",
+          "surface_type": "hub"
+        },
+        {
+          "id": "bible",
+          "title": "Bible Comparison",
+          "route": "/traditions/bible/",
+          "surface_type": "explorer"
+        },
+        {
+          "id": "explore",
+          "title": "Explore",
+          "route": "/explore/",
+          "surface_type": "explorer"
+        }
+      ],
+      "next_work": [
+        "Deepen the substantive corpus before considering further subdivision.",
+        "Keep this Room knowledge-led unless a real structured dataset emerges.",
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "other-traditions",
+      "title": "Other Traditions & Philosophies",
+      "dwelling_id": "traditions-texts",
+      "entrance": "Hold non-biblical traditions and philosophical comparators that deserve their own historical meanings before project comparison.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Each tradition is described on its own terms before cross-project synthesis.",
+      "knowledge_holdings": {
+        "primary_file_count": 17,
+        "featured": [
+          {
+            "id": "comparative-mythology-map",
+            "path": "knowledge/traditions/comparative-mythology-map.json",
+            "kind": "cross-tradition mythology map"
+          },
+          {
+            "id": "adversarial-underworld-judgment-atlas",
+            "path": "knowledge/traditions/adversarial-underworld-judgment-atlas.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "ana-bkoach-42-tikkun-entanglement-atlas",
+            "path": "knowledge/traditions/ana-bkoach-42-tikkun-entanglement-atlas.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "babel-stone-ladder-spiral-two-architectures-atlas",
+            "path": "knowledge/traditions/babel-stone-ladder-spiral-two-architectures-atlas.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "beast-mark-forehead-666-cube-atlas",
+            "path": "knowledge/traditions/beast-mark-forehead-666-cube-atlas.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 31,
+        "owned_bundles": [
+          {
+            "id": "belief-religion-data",
+            "title": "Belief, religion & comparative registries",
+            "kind": "comparative-religion-data",
+            "purpose": "Comparative religion, belief-space and source registries that preserve tradition distinctions."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "comparative-cosmology-data",
+            "title": "Comparative cosmology data",
+            "primary_room_id": "comparative-mythology"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-traditions-theology",
+          "direction": "out",
+          "other_room_id": "theology-god-language",
+          "type": "comparative-theology",
+          "changes": "A non-biblical tradition is compared with Potatoverse theology after first being described on its own terms.",
+          "guard": "Project synthesis may compare but may not rewrite the source tradition's own meaning."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "religion",
+          "title": "Religion",
+          "route": "/religion/",
+          "surface_type": "hub"
+        },
+        {
+          "id": "explore",
+          "title": "Explore",
+          "route": "/explore/",
+          "surface_type": "explorer"
+        }
+      ],
+      "next_work": [
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "math-geometry",
+      "title": "Mathematics & Geometry",
+      "dwelling_id": "science-formal-models",
+      "entrance": "Own exact geometry, mathematical structure, topology and formal analogies used by the project.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Mathematical fit does not by itself establish a physical or theological claim.",
+      "knowledge_holdings": {
+        "primary_file_count": 22,
+        "featured": [
+          {
+            "id": "calabi-yau-compactification-mirror-duality-atlas",
+            "path": "knowledge/science/calabi-yau-compactification-mirror-duality-atlas.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "dimensional-phase-transition-full-recovery",
+            "path": "knowledge/science/dimensional-phase-transition-full-recovery.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "eleven-dimensional-axis-door-dual-spiral-recovery",
+            "path": "knowledge/science/eleven-dimensional-axis-door-dual-spiral-recovery.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "eleven-dimensional-projection-unification-recovery",
+            "path": "knowledge/science/eleven-dimensional-projection-unification-recovery.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "equation-ledger-wave-002",
+            "path": "knowledge/science/equation-ledger-wave-002.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 6,
+        "owned_bundles": [
+          {
+            "id": "geometry-calibration-data",
+            "title": "Geometry & projection calibration",
+            "kind": "formal-data",
+            "purpose": "Exact geometry, calibration and projection records used to separate mathematical structure from symbolic interpretation."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "axis-transformation-data",
+            "title": "Axis, transformation & depth contracts",
+            "primary_room_id": "symbolic-architecture"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-symbolic-math",
+          "direction": "in",
+          "other_room_id": "symbolic-architecture",
+          "type": "formalization",
+          "changes": "A project-symbolic relation is rewritten as explicit geometry, topology or mathematics with named assumptions.",
+          "guard": "The formal model must state what is analogy, what is exact, and what would count as misuse."
+        },
+        {
+          "id": "if-esoteric-math",
+          "direction": "in",
+          "other_room_id": "esoteric-sacred-geometry",
+          "type": "historical-formalization",
+          "changes": "Historical/esoteric geometric language is translated into exact mathematical objects where possible.",
+          "guard": "Exact geometry may clarify a symbol but cannot by itself establish a physical or theological mechanism."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "science",
+          "title": "Science",
+          "route": "/science/",
+          "surface_type": "hub"
+        }
+      ],
+      "next_work": [
+        "Curate stronger featured entrances and continue consolidating duplicate or superseded material into the Room owner."
+      ]
+    },
+    {
+      "room_id": "physics-cosmology",
+      "title": "Physics & Cosmology",
+      "dwelling_id": "science-formal-models",
+      "entrance": "Own physical/cosmological claims, models and status boundaries around particles, fields, astronomy and cosmic analogies.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Speculative or symbolic models remain labeled until independently testable and supported.",
+      "knowledge_holdings": {
+        "primary_file_count": 14,
+        "featured": [
+          {
+            "id": "advanced-physics-expansion-wave-003",
+            "path": "knowledge/science/advanced-physics-expansion-wave-003.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "celestial-astronomy-astrology-cosmology-canon",
+            "path": "knowledge/science/celestial-astronomy-astrology-cosmology-canon.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "celestial-axis-coordinate-measurement-model",
+            "path": "knowledge/science/celestial-axis-coordinate-measurement-model.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "deeper-physics-connections",
+            "path": "knowledge/science/deeper-physics-connections.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "equation-ledger-wave-004-quantum-geometry-energy",
+            "path": "knowledge/science/equation-ledger-wave-004-quantum-geometry-energy.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": [
+          {
+            "id": "potatoverse-cosmology-data",
+            "title": "Potatoverse cosmology & deep architecture data",
+            "primary_room_id": "symbolic-architecture"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-test-science",
+          "direction": "in",
+          "other_room_id": "model-testing",
+          "type": "promotion-door",
+          "changes": "A tested candidate can become part of a scientific/formal owner at an explicit evidence status.",
+          "guard": "Passing a local test does not imply universal validity; evidence scope must be declared."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "science",
+          "title": "Science",
+          "route": "/science/",
+          "surface_type": "hub"
+        }
+      ],
+      "next_work": [
+        "Keep this Room knowledge-led unless a real structured dataset emerges.",
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "systems-dynamics",
+      "title": "Systems & Dynamics",
+      "dwelling_id": "science-formal-models",
+      "entrance": "Own dynamical systems, graph models, control, information, topology and transformation formalisms.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Systems analogy must identify the variables and information lost by the analogy.",
+      "knowledge_holdings": {
+        "primary_file_count": 26,
+        "featured": [
+          {
+            "id": "control-authority-owner-dominator-agency-atlas",
+            "path": "knowledge/science/control-authority-owner-dominator-agency-atlas.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "conversation-formalisms-august-2026",
+            "path": "knowledge/science/conversation-formalisms-august-2026.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "door-handshake-nonlocal-propagation-model",
+            "path": "knowledge/science/door-handshake-nonlocal-propagation-model.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "door-window-screen-aperture-transition-model",
+            "path": "knowledge/science/door-window-screen-aperture-transition-model.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "2026-09-11-cross-model-defect-calculus",
+            "path": "knowledge/science/formulation-upgrades/2026-09-11-cross-model-defect-calculus.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 14,
+        "owned_bundles": [
+          {
+            "id": "graph-relational-data",
+            "title": "Graph & relational-system data",
+            "kind": "graph-data",
+            "purpose": "Typed nodes, relationships, couplings and graph-state structures that connect the project without replacing domain ownership."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "house-governance-data",
+            "title": "House governance & topology data",
+            "primary_room_id": "house-architecture"
+          },
+          {
+            "id": "axis-transformation-data",
+            "title": "Axis, transformation & depth contracts",
+            "primary_room_id": "symbolic-architecture"
+          },
+          {
+            "id": "world-infrastructure-data",
+            "title": "World infrastructure & dependency data",
+            "primary_room_id": "infrastructure-capability"
+          },
+          {
+            "id": "meaning-ontology-data",
+            "title": "Meaning & ontology registries",
+            "primary_room_id": "symbolic-architecture"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-house-systems",
+          "direction": "in",
+          "other_room_id": "house-architecture",
+          "type": "architecture-formalization",
+          "changes": "House architecture candidates are translated into systems, graph, control or information models for stress testing.",
+          "guard": "A formal analogy remains research until constitution/governance promotion."
+        },
+        {
+          "id": "if-games-systems",
+          "direction": "in",
+          "other_room_id": "games-simulations",
+          "type": "simulation-formalization",
+          "changes": "Interactive or game systems are read as simulations/models with explicit mechanics and state transitions.",
+          "guard": "Simulation output is not automatically evidence about the real-world system it resembles."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "science",
+          "title": "Science",
+          "route": "/science/",
+          "surface_type": "hub"
+        },
+        {
+          "id": "research-lab",
+          "title": "Research Lab",
+          "route": "/research-lab/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Curate stronger featured entrances and continue consolidating duplicate or superseded material into the Room owner."
+      ]
+    },
+    {
+      "room_id": "model-testing",
+      "title": "Testing & Falsifiability",
+      "dwelling_id": "science-formal-models",
+      "entrance": "Own tests, observables, falsifiers, uncertainty, calibration and scientific red-team protocols.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "A model remains provisional when its discriminating observations or falsifiers are unavailable.",
+      "knowledge_holdings": {
+        "primary_file_count": 5,
+        "featured": [
+          {
+            "id": "model-testing-protocol",
+            "path": "knowledge/science/model-testing-protocol.json",
+            "kind": "scientific red-team and falsifiability protocol"
+          },
+          {
+            "id": "door-handshake-synthetic-identification-test-2026-09-11",
+            "path": "knowledge/science/promising-models/door-handshake-synthetic-identification-test-2026-09-11.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "golden-spiral-center-uncertainty-profile-test-2026-09-11",
+            "path": "knowledge/science/promising-models/golden-spiral-center-uncertainty-profile-test-2026-09-11.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "2026-09-11-axis-door-observable-dynamics",
+            "path": "knowledge/science/research-notes/2026-09-11-axis-door-observable-dynamics.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "science-theory-rigor-completion-matrix-2026-09-11",
+            "path": "knowledge/science/science-theory-rigor-completion-matrix-2026-09-11.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": []
+      },
+      "passages": [
+        {
+          "id": "if-experiment-test",
+          "direction": "in",
+          "other_room_id": "experiments-formalization",
+          "type": "validation-door",
+          "changes": "A candidate model enters explicit observables, falsifiers, calibration and uncertainty review.",
+          "guard": "Testing criteria must be stated before promotion claims."
+        },
+        {
+          "id": "if-test-science",
+          "direction": "out",
+          "other_room_id": "physics-cosmology",
+          "type": "promotion-door",
+          "changes": "A tested candidate can become part of a scientific/formal owner at an explicit evidence status.",
+          "guard": "Passing a local test does not imply universal validity; evidence scope must be declared."
+        },
+        {
+          "id": "if-potato-testing",
+          "direction": "in",
+          "other_room_id": "potato-biology",
+          "type": "biology-to-model",
+          "changes": "Literal potato biology constrains or tests biological metaphors and candidate project models.",
+          "guard": "Botanical correspondence is not evidence for unrelated metaphysical claims."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "science",
+          "title": "Science",
+          "route": "/science/",
+          "surface_type": "hub"
+        },
+        {
+          "id": "research-lab",
+          "title": "Research Lab",
+          "route": "/research-lab/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Keep this Room knowledge-led unless a real structured dataset emerges."
+      ]
+    },
+    {
+      "room_id": "potato-biology",
+      "title": "Potato Biology",
+      "dwelling_id": "life-body",
+      "entrance": "Own literal potato anatomy, tuber biology, growth, dormancy, propagation, storage and environmental constraints.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Biological facts may motivate metaphor but do not prove spiritual interpretation.",
+      "knowledge_holdings": {
+        "primary_file_count": 3,
+        "featured": [
+          {
+            "id": "potato-growth-principles",
+            "path": "knowledge/biology/potato-growth-principles.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "potato-biology-ecology-development-canon",
+            "path": "knowledge/science/potato-biology-ecology-development-canon.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "potato-angels-eye-sprout-development-ledger",
+            "path": "knowledge/timeline/potato-angels-eye-sprout-development-ledger.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": [
+          {
+            "id": "potato-body-data",
+            "title": "Potato, body & symbolic anatomy data",
+            "primary_room_id": "symbolic-body-comparison"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-potato-testing",
+          "direction": "out",
+          "other_room_id": "model-testing",
+          "type": "biology-to-model",
+          "changes": "Literal potato biology constrains or tests biological metaphors and candidate project models.",
+          "guard": "Botanical correspondence is not evidence for unrelated metaphysical claims."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "life-body",
+          "title": "Life & Body",
+          "route": "/life-body/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "science",
+          "title": "Science",
+          "route": "/science/",
+          "surface_type": "hub"
+        }
+      ],
+      "next_work": [
+        "Deepen the substantive corpus before considering further subdivision.",
+        "Keep this Room knowledge-led unless a real structured dataset emerges.",
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "neurobiology",
+      "title": "Neurobiology",
+      "dwelling_id": "life-body",
+      "entrance": "Own brain structures, networks, physiology and evidence grading relevant to body research.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Human, animal, theoretical and speculative evidence remain separately graded.",
+      "knowledge_holdings": {
+        "primary_file_count": 7,
+        "featured": [
+          {
+            "id": "brain-body-organ-axes-deepening-wave-3",
+            "path": "knowledge/body/brain-body-organ-axes-deepening-wave-3.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "brain-body-systems-deepening-wave-2",
+            "path": "knowledge/body/brain-body-systems-deepening-wave-2.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "neurobiology-evidence-grade",
+            "path": "knowledge/body/neurobiology-evidence-grade.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "neurobiology-recovery-wave-2",
+            "path": "knowledge/body/neurobiology-recovery-wave-2.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "whole-brain-neurobiology-atlas",
+            "path": "knowledge/body/whole-brain-neurobiology-atlas.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": [
+          {
+            "id": "potato-body-data",
+            "title": "Potato, body & symbolic anatomy data",
+            "primary_room_id": "symbolic-body-comparison"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-symbolic-neuro",
+          "direction": "in",
+          "other_room_id": "symbolic-body-comparison",
+          "type": "epistemic-firewall",
+          "changes": "A symbolic anatomy mapping is tested against empirical neuroanatomy and evidence grades.",
+          "guard": "No symbolic mapping may overwrite established anatomy or uncertainty."
+        },
+        {
+          "id": "if-body-neuro",
+          "direction": "in",
+          "other_room_id": "whole-body",
+          "type": "physiological-integration",
+          "changes": "Whole-body physiology is connected to neural/autonomic control while keeping system-specific evidence intact.",
+          "guard": "Cross-system synthesis must not infer a mechanism absent from the underlying evidence."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "life-body",
+          "title": "Life & Body",
+          "route": "/life-body/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "science",
+          "title": "Science",
+          "route": "/science/",
+          "surface_type": "hub"
+        }
+      ],
+      "next_work": [
+        "Keep this Room knowledge-led unless a real structured dataset emerges."
+      ]
+    },
+    {
+      "room_id": "whole-body",
+      "title": "Whole-body Physiology",
+      "dwelling_id": "life-body",
+      "entrance": "Own body-system integration across nervous, autonomic, cardiovascular, respiratory, gut, immune and fluid interfaces.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Whole-body synthesis must preserve uncertainty and domain-specific evidence.",
+      "knowledge_holdings": {
+        "primary_file_count": 4,
+        "featured": [
+          {
+            "id": "body-science-context-atlas",
+            "path": "knowledge/body/body-science-context-atlas.json",
+            "kind": "neuroscience and physiology context"
+          },
+          {
+            "id": "body-system-master-atlas",
+            "path": "knowledge/body/body-system-master-atlas.json",
+            "kind": "canonical whole-body biology/neurotheology entrypoint"
+          },
+          {
+            "id": "body-topic-completion-matrix",
+            "path": "knowledge/body/body-topic-completion-matrix.json",
+            "kind": "completion and ownership tracker"
+          },
+          {
+            "id": "index",
+            "path": "knowledge/body/index.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": [
+          {
+            "id": "potato-body-data",
+            "title": "Potato, body & symbolic anatomy data",
+            "primary_room_id": "symbolic-body-comparison"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-body-neuro",
+          "direction": "out",
+          "other_room_id": "neurobiology",
+          "type": "physiological-integration",
+          "changes": "Whole-body physiology is connected to neural/autonomic control while keeping system-specific evidence intact.",
+          "guard": "Cross-system synthesis must not infer a mechanism absent from the underlying evidence."
+        }
+      ],
+      "collections": [
+        {
+          "id": "corporium",
+          "title": "Corporium Collection",
+          "kind": "cross-branch interpretive collection",
+          "boundary": "Corporium assembles sayings, embodiment, affect, persona, recurrence and later formalization. It is a cross-branch interpretive collection, not a new fact owner."
+        }
+      ],
+      "public_surfaces": [
+        {
+          "id": "life-body",
+          "title": "Life & Body",
+          "route": "/life-body/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "science",
+          "title": "Science",
+          "route": "/science/",
+          "surface_type": "hub"
+        }
+      ],
+      "next_work": [
+        "Deepen the substantive corpus before considering further subdivision.",
+        "Keep this Room knowledge-led unless a real structured dataset emerges.",
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "symbolic-body-comparison",
+      "title": "Symbolic Body Crosswalk",
+      "dwelling_id": "life-body",
+      "entrance": "Own explicitly comparative mappings between project symbols and anatomy while preserving the empirical/symbolic firewall.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "A symbolic neighbor is not anatomical identity or evidence of supernatural physiology.",
+      "knowledge_holdings": {
+        "primary_file_count": 3,
+        "featured": [
+          {
+            "id": "body-symbolism-map",
+            "path": "knowledge/body/body-symbolism-map.json",
+            "kind": "specialist sacred-anatomy map with scientific boundaries"
+          },
+          {
+            "id": "neurotheology-axis-house-spirit-atlas",
+            "path": "knowledge/body/neurotheology-axis-house-spirit-atlas.json",
+            "kind": "cross-domain neurotheology synthesis with boundaries"
+          },
+          {
+            "id": "tim-neurobiology-relational-reconciliation",
+            "path": "knowledge/body/tim-neurobiology-relational-reconciliation.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 3,
+        "owned_bundles": [
+          {
+            "id": "potato-body-data",
+            "title": "Potato, body & symbolic anatomy data",
+            "kind": "body-symbolism-data",
+            "purpose": "Potato properties and explicit symbolic/psychological body crosswalks, kept separate from scientific anatomy."
+          }
+        ],
+        "consumed_bundles": []
+      },
+      "passages": [
+        {
+          "id": "if-symbolic-neuro",
+          "direction": "out",
+          "other_room_id": "neurobiology",
+          "type": "epistemic-firewall",
+          "changes": "A symbolic anatomy mapping is tested against empirical neuroanatomy and evidence grades.",
+          "guard": "No symbolic mapping may overwrite established anatomy or uncertainty."
+        },
+        {
+          "id": "if-body-theology",
+          "direction": "out",
+          "other_room_id": "theology-god-language",
+          "type": "interpretive-coupling",
+          "changes": "Body imagery is read within project theology without becoming a biological claim.",
+          "guard": "Theological meaning must remain separately typed from physiology."
+        }
+      ],
+      "collections": [
+        {
+          "id": "corporium",
+          "title": "Corporium Collection",
+          "kind": "cross-branch interpretive collection",
+          "boundary": "Corporium assembles sayings, embodiment, affect, persona, recurrence and later formalization. It is a cross-branch interpretive collection, not a new fact owner."
+        }
+      ],
+      "public_surfaces": [
+        {
+          "id": "life-body",
+          "title": "Life & Body",
+          "route": "/life-body/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "axis",
+          "title": "Living Axis",
+          "route": "/axis/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "religion",
+          "title": "Religion",
+          "route": "/religion/",
+          "surface_type": "hub"
+        }
+      ],
+      "next_work": [
+        "Deepen the substantive corpus before considering further subdivision."
+      ]
+    },
+    {
+      "room_id": "politics-governance",
+      "title": "Politics & Governance",
+      "dwelling_id": "world-systems",
+      "entrance": "Own documented political positions, governance structures, institutions and geopolitical relations as world-system material.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Political description must remain sourced and distinct from symbolic North/Axis framing.",
+      "knowledge_holdings": {
+        "primary_file_count": 1,
+        "featured": [
+          {
+            "id": "tim-dooley-politics-geopolitics-compendium",
+            "path": "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 2,
+        "owned_file_count": 7,
+        "owned_bundles": [
+          {
+            "id": "politics-governance-data",
+            "title": "Politics & governance data",
+            "kind": "political-institutional-data",
+            "purpose": "Political vocabulary, actors, institutions and influence structures."
+          },
+          {
+            "id": "security-intelligence-data",
+            "title": "Security & intelligence data",
+            "kind": "security-data",
+            "purpose": "Security/intelligence organizations and relation graph, kept distinct from symbolic conflict language."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "country-atlas-data",
+            "title": "Country atlas & geographic data",
+            "primary_room_id": "geography-countries"
+          },
+          {
+            "id": "world-system-blueprints",
+            "title": "World-system blueprints",
+            "primary_room_id": "research-programmes"
+          },
+          {
+            "id": "north-programme-data",
+            "title": "North Programme data",
+            "primary_room_id": "research-programmes"
+          },
+          {
+            "id": "legal-accountability-data",
+            "title": "Law & accountability data",
+            "primary_room_id": "law-justice"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-politics-law",
+          "direction": "out",
+          "other_room_id": "law-justice",
+          "type": "institutional-translation",
+          "changes": "Political proposal, action or institution is translated into jurisdiction, authority, procedure and legal constraints.",
+          "guard": "Political preference does not become legal status without authoritative law or procedure."
+        },
+        {
+          "id": "if-politics-economy",
+          "direction": "out",
+          "other_room_id": "economy-finance",
+          "type": "policy-impact",
+          "changes": "Governance choices are traced into fiscal, ownership, trade, labour or financial consequences.",
+          "guard": "Causal claims require evidence and must distinguish proposal, enactment and measured effect."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "politics",
+          "title": "Politics & Geopolitics",
+          "route": "/politics/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "world",
+          "title": "World",
+          "route": "/world/",
+          "surface_type": "hub"
+        },
+        {
+          "id": "world-systems",
+          "title": "World Systems",
+          "route": "/world-systems/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Deepen the substantive corpus before considering further subdivision."
+      ]
+    },
+    {
+      "room_id": "law-justice",
+      "title": "Law & Justice",
+      "dwelling_id": "world-systems",
+      "entrance": "Own law, procedure, rights, regulation, enforcement, accountability and jurisprudential relations.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Legal claims require jurisdiction, date and source; project ethics does not substitute for law.",
+      "knowledge_holdings": {
+        "primary_file_count": 15,
+        "featured": [
+          {
+            "id": "mai-mercado-2016-canonical-casefile",
+            "path": "knowledge/legal/mai-mercado-2016-canonical-casefile.md",
+            "kind": "room holding"
+          },
+          {
+            "id": "mai-mercado-2016-complete-evidentiary-reconstruction",
+            "path": "knowledge/legal/mai-mercado-2016-complete-evidentiary-reconstruction.md",
+            "kind": "room holding"
+          },
+          {
+            "id": "mai-mercado-2016-conviction-by-conviction-innocence-audit",
+            "path": "knowledge/legal/mai-mercado-2016-conviction-by-conviction-innocence-audit.md",
+            "kind": "room holding"
+          },
+          {
+            "id": "mai-mercado-2016-direct-involvement-and-framing-findings",
+            "path": "knowledge/legal/mai-mercado-2016-direct-involvement-and-framing-findings.md",
+            "kind": "room holding"
+          },
+          {
+            "id": "mai-mercado-2016-false-flag-red-flag-audit",
+            "path": "knowledge/legal/mai-mercado-2016-false-flag-red-flag-audit.md",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 1,
+        "owned_bundles": [
+          {
+            "id": "legal-accountability-data",
+            "title": "Law & accountability data",
+            "kind": "legal-data",
+            "purpose": "Legal/accountability seeds and human-consequence routing."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "world-system-blueprints",
+            "title": "World-system blueprints",
+            "primary_room_id": "research-programmes"
+          },
+          {
+            "id": "politics-governance-data",
+            "title": "Politics & governance data",
+            "primary_room_id": "politics-governance"
+          },
+          {
+            "id": "security-intelligence-data",
+            "title": "Security & intelligence data",
+            "primary_room_id": "politics-governance"
+          },
+          {
+            "id": "high-control-extremism-data",
+            "title": "High-control, extremism & group-dynamics data",
+            "primary_room_id": "subculture-group-formation"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-politics-law",
+          "direction": "in",
+          "other_room_id": "politics-governance",
+          "type": "institutional-translation",
+          "changes": "Political proposal, action or institution is translated into jurisdiction, authority, procedure and legal constraints.",
+          "guard": "Political preference does not become legal status without authoritative law or procedure."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "law",
+          "title": "Law & Justice",
+          "route": "/law/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "world-systems",
+          "title": "World Systems",
+          "route": "/world-systems/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "economy-finance",
+      "title": "Economy & Finance",
+      "dwelling_id": "world-systems",
+      "entrance": "Own observable finance, debt, banking, trade, ownership, production, labour and economic flows.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Symbolic/karmic accounting remains separate from material legal or financial accounting.",
+      "knowledge_holdings": {
+        "primary_file_count": 3,
+        "featured": [
+          {
+            "id": "gold-indexed-sovereign-bond-model",
+            "path": "knowledge/economics/gold-indexed-sovereign-bond-model.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "north-obligation-graph-schema",
+            "path": "knowledge/economics/north-obligation-graph-schema.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "tim-dooley-inflation-ledger",
+            "path": "knowledge/economics/tim-dooley-inflation-ledger.md",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 7,
+        "owned_bundles": [
+          {
+            "id": "economy-europe-data",
+            "title": "Economy, finance & European system data",
+            "kind": "economic-system-data",
+            "purpose": "Observed and modeled economic coupling, indicators, sectors, trade and European system relations."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "country-atlas-data",
+            "title": "Country atlas & geographic data",
+            "primary_room_id": "geography-countries"
+          },
+          {
+            "id": "world-system-blueprints",
+            "title": "World-system blueprints",
+            "primary_room_id": "research-programmes"
+          },
+          {
+            "id": "north-programme-data",
+            "title": "North Programme data",
+            "primary_room_id": "research-programmes"
+          },
+          {
+            "id": "world-infrastructure-data",
+            "title": "World infrastructure & dependency data",
+            "primary_room_id": "infrastructure-capability"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-politics-economy",
+          "direction": "in",
+          "other_room_id": "politics-governance",
+          "type": "policy-impact",
+          "changes": "Governance choices are traced into fiscal, ownership, trade, labour or financial consequences.",
+          "guard": "Causal claims require evidence and must distinguish proposal, enactment and measured effect."
+        },
+        {
+          "id": "if-economy-infra",
+          "direction": "out",
+          "other_room_id": "infrastructure-capability",
+          "type": "capital-capability",
+          "changes": "Finance, investment, ownership or procurement is connected to physical/digital productive capability.",
+          "guard": "Money flow and capability are related but not interchangeable."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "economy",
+          "title": "Economy & Finance",
+          "route": "/economy/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "world-systems",
+          "title": "World Systems",
+          "route": "/world-systems/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Deepen the substantive corpus before considering further subdivision."
+      ]
+    },
+    {
+      "room_id": "infrastructure-capability",
+      "title": "Infrastructure & Capability",
+      "dwelling_id": "world-systems",
+      "entrance": "Own physical/digital infrastructure, energy, industry, strategic dependencies, resilience and coupled capabilities.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Capability claims require observable assets, relations and time-sensitive sources.",
+      "knowledge_holdings": {
+        "primary_file_count": 12,
+        "featured": [
+          {
+            "id": "country-relational-method",
+            "path": "knowledge/core/country-relational-method.json",
+            "kind": "country capability/dependency method"
+          },
+          {
+            "id": "european-commons",
+            "path": "knowledge/core/european-commons.json",
+            "kind": "European cultural/digital commons proposal"
+          },
+          {
+            "id": "european-coupling-programme",
+            "path": "knowledge/core/european-coupling-programme.json",
+            "kind": "European interoperability/capability proposal"
+          },
+          {
+            "id": "shadow-west-swamp-synthesis",
+            "path": "knowledge/core/shadow-west-swamp-synthesis.json",
+            "kind": "evidence-governed shadow-system framework"
+          },
+          {
+            "id": "farm-swamp-atlas",
+            "path": "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+            "kind": "Farm/Swamp/Forge role and boundary system"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 7,
+        "owned_bundles": [
+          {
+            "id": "world-infrastructure-data",
+            "title": "World infrastructure & dependency data",
+            "kind": "world-system-dataset",
+            "purpose": "Observable infrastructure, institutional membership, dependency chains and empirical networks."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "country-atlas-data",
+            "title": "Country atlas & geographic data",
+            "primary_room_id": "geography-countries"
+          },
+          {
+            "id": "world-system-blueprints",
+            "title": "World-system blueprints",
+            "primary_room_id": "research-programmes"
+          },
+          {
+            "id": "economy-europe-data",
+            "title": "Economy, finance & European system data",
+            "primary_room_id": "economy-finance"
+          },
+          {
+            "id": "north-programme-data",
+            "title": "North Programme data",
+            "primary_room_id": "research-programmes"
+          },
+          {
+            "id": "security-intelligence-data",
+            "title": "Security & intelligence data",
+            "primary_room_id": "politics-governance"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-economy-infra",
+          "direction": "in",
+          "other_room_id": "economy-finance",
+          "type": "capital-capability",
+          "changes": "Finance, investment, ownership or procurement is connected to physical/digital productive capability.",
+          "guard": "Money flow and capability are related but not interchangeable."
+        },
+        {
+          "id": "if-geography-world",
+          "direction": "in",
+          "other_room_id": "geography-countries",
+          "type": "spatial-system",
+          "changes": "Country/place identity is connected to infrastructure, dependencies and cross-border capability.",
+          "guard": "Project-symbolic quadrants may not replace ordinary geography or sovereignty."
+        },
+        {
+          "id": "if-research-world",
+          "direction": "in",
+          "other_room_id": "research-programmes",
+          "type": "programme-application",
+          "changes": "A research programme consumes world-system inputs and produces analyses or proposed outputs.",
+          "guard": "Programme coordination never steals identity/fact ownership from World Systems."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "world-systems",
+          "title": "World Systems",
+          "route": "/world-systems/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "world-map",
+          "title": "World Map",
+          "route": "/world-map/",
+          "surface_type": "explorer"
+        },
+        {
+          "id": "north",
+          "title": "North",
+          "route": "/north/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Curate stronger featured entrances and continue consolidating duplicate or superseded material into the Room owner."
+      ]
+    },
+    {
+      "room_id": "geography-countries",
+      "title": "Geography & Countries",
+      "dwelling_id": "world-systems",
+      "entrance": "Own countries, territories, geographic identity, boundaries and country-level relational context.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Symbolic direction or project quadrant must not overwrite ordinary geography or sovereignty.",
+      "knowledge_holdings": {
+        "primary_file_count": 4,
+        "featured": [
+          {
+            "id": "greater-israel-covenant-land-tikkun-atlas",
+            "path": "knowledge/geopolitics/greater-israel-covenant-land-tikkun-atlas.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "north-legitimacy-casus-belli-atlas",
+            "path": "knowledge/geopolitics/north-legitimacy-casus-belli-atlas.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "north-legitimacy-matrix",
+            "path": "knowledge/geopolitics/north-legitimacy-matrix.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "operation-rising-lion-tim-window-2025",
+            "path": "knowledge/geopolitics/operation-rising-lion-tim-window-2025.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 235,
+        "owned_bundles": [
+          {
+            "id": "country-atlas-data",
+            "title": "Country atlas & geographic data",
+            "kind": "geographic-dataset",
+            "purpose": "Ordinary geography, country entities, subdivisions, enrichment batches and measured spatial context."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "economy-europe-data",
+            "title": "Economy, finance & European system data",
+            "primary_room_id": "economy-finance"
+          },
+          {
+            "id": "north-programme-data",
+            "title": "North Programme data",
+            "primary_room_id": "research-programmes"
+          },
+          {
+            "id": "world-infrastructure-data",
+            "title": "World infrastructure & dependency data",
+            "primary_room_id": "infrastructure-capability"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-geography-world",
+          "direction": "out",
+          "other_room_id": "infrastructure-capability",
+          "type": "spatial-system",
+          "changes": "Country/place identity is connected to infrastructure, dependencies and cross-border capability.",
+          "guard": "Project-symbolic quadrants may not replace ordinary geography or sovereignty."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "world",
+          "title": "World",
+          "route": "/world/",
+          "surface_type": "hub"
+        },
+        {
+          "id": "world-map",
+          "title": "World Map",
+          "route": "/world-map/",
+          "surface_type": "explorer"
+        },
+        {
+          "id": "world-systems",
+          "title": "World Systems",
+          "route": "/world-systems/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Deepen the substantive corpus before considering further subdivision.",
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "internet-platforms",
+      "title": "Internet & Platforms",
+      "dwelling_id": "culture-information",
+      "entrance": "Own platforms, online spaces, public digital behavior, media formats and platform-specific context.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Documented public behavior stays distinct from motive claims and private information.",
+      "knowledge_holdings": {
+        "primary_file_count": 1,
+        "featured": [
+          {
+            "id": "digital-witness-livestream-liturgy",
+            "path": "knowledge/culture/digital-witness-livestream-liturgy.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": [
+          {
+            "id": "culture-platform-data",
+            "title": "Culture, platforms & information ecology data",
+            "primary_room_id": "information-ecology"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-platform-info",
+          "direction": "out",
+          "other_room_id": "information-ecology",
+          "type": "mediation",
+          "changes": "Platform-specific behavior is interpreted as attention, memory, repetition or information-flow structure.",
+          "guard": "System interpretation must not invent motive or private facts."
+        },
+        {
+          "id": "if-music-platform",
+          "direction": "in",
+          "other_room_id": "music-sound",
+          "type": "publication-distribution",
+          "changes": "A music work enters platform publication, audience, circulation and reception contexts.",
+          "guard": "Platform reception or lyric language does not automatically become factual biography or doctrine."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "culture",
+          "title": "Culture & Subculture",
+          "route": "/context/culture/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "story",
+          "title": "Story",
+          "route": "/tim-dooley/story/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Deepen the substantive corpus before considering further subdivision.",
+        "Keep this Room knowledge-led unless a real structured dataset emerges."
+      ]
+    },
+    {
+      "room_id": "subculture-group-formation",
+      "title": "Subculture, Cult & Group Formation",
+      "dwelling_id": "culture-information",
+      "entrance": "Own subculture, movement formation, high-control/cult analysis, group dynamics and social-boundary questions.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Cult/high-control terminology requires stated criteria and must not become an unsupported label for disliked groups.",
+      "knowledge_holdings": {
+        "primary_file_count": 21,
+        "featured": [
+          {
+            "id": "concrete-culture-field-atlas",
+            "path": "knowledge/culture/concrete-culture-field-atlas.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "concrete-culture-source-ledger",
+            "path": "knowledge/culture/concrete-culture-source-ledger.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "culture-formation-zeitgeist-atlas",
+            "path": "knowledge/culture/culture-formation-zeitgeist-atlas.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "culture-theory-source-ledger",
+            "path": "knowledge/culture/culture-theory-source-ledger.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "digital-testament-meme-resurrection-atlas",
+            "path": "knowledge/culture/digital-testament-meme-resurrection-atlas.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 17,
+        "owned_bundles": [
+          {
+            "id": "high-control-extremism-data",
+            "title": "High-control, extremism & group-dynamics data",
+            "kind": "group-dynamics-data",
+            "purpose": "Evidence-typed high-control, extremism, harassment and symbolic Swamp research data."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "legal-accountability-data",
+            "title": "Law & accountability data",
+            "primary_room_id": "law-justice"
+          },
+          {
+            "id": "culture-platform-data",
+            "title": "Culture, platforms & information ecology data",
+            "primary_room_id": "information-ecology"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-info-subculture",
+          "direction": "in",
+          "other_room_id": "information-ecology",
+          "type": "social-formation",
+          "changes": "Repeated information and interaction patterns are examined for group identity, norms, boundaries and control dynamics.",
+          "guard": "High-control/cult terminology requires explicit criteria and sourced behavior."
+        },
+        {
+          "id": "if-practice-culture",
+          "direction": "in",
+          "other_room_id": "practice-ethics",
+          "type": "ethics-to-social",
+          "changes": "Project ethics are tested against group formation, agency, boundary and repair questions.",
+          "guard": "Ethical evaluation must not substitute for sourced description of real groups."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "culture",
+          "title": "Culture & Subculture",
+          "route": "/context/culture/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "politics",
+          "title": "Politics & Geopolitics",
+          "route": "/politics/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Curate stronger featured entrances and continue consolidating duplicate or superseded material into the Room owner."
+      ]
+    },
+    {
+      "room_id": "information-ecology",
+      "title": "Information Ecology & Memory",
+      "dwelling_id": "culture-information",
+      "entrance": "Own attention, information flow, repetition, memory, forgetting, transmission and public-discourse ecology.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Information flow and social interpretation remain distinguishable from factual claim status.",
+      "knowledge_holdings": {
+        "primary_file_count": 1,
+        "featured": [
+          {
+            "id": "digital-memory-forgetting-restoration-atlas",
+            "path": "knowledge/world/digital-memory-forgetting-restoration-atlas.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 7,
+        "owned_bundles": [
+          {
+            "id": "culture-platform-data",
+            "title": "Culture, platforms & information ecology data",
+            "kind": "culture-information-data",
+            "purpose": "Culture, platform, underground-network and information-ecosystem records."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "world-system-blueprints",
+            "title": "World-system blueprints",
+            "primary_room_id": "research-programmes"
+          },
+          {
+            "id": "high-control-extremism-data",
+            "title": "High-control, extremism & group-dynamics data",
+            "primary_room_id": "subculture-group-formation"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-platform-info",
+          "direction": "in",
+          "other_room_id": "internet-platforms",
+          "type": "mediation",
+          "changes": "Platform-specific behavior is interpreted as attention, memory, repetition or information-flow structure.",
+          "guard": "System interpretation must not invent motive or private facts."
+        },
+        {
+          "id": "if-info-subculture",
+          "direction": "out",
+          "other_room_id": "subculture-group-formation",
+          "type": "social-formation",
+          "changes": "Repeated information and interaction patterns are examined for group identity, norms, boundaries and control dynamics.",
+          "guard": "High-control/cult terminology requires explicit criteria and sourced behavior."
+        },
+        {
+          "id": "if-literature-culture",
+          "direction": "in",
+          "other_room_id": "great-book-literature",
+          "type": "publication-reception",
+          "changes": "A work enters media, audience, quotation, remix, memory and reception contexts.",
+          "guard": "Reception does not rewrite the source work's original wording."
+        }
+      ],
+      "collections": [
+        {
+          "id": "corporium",
+          "title": "Corporium Collection",
+          "kind": "cross-branch interpretive collection",
+          "boundary": "Corporium assembles sayings, embodiment, affect, persona, recurrence and later formalization. It is a cross-branch interpretive collection, not a new fact owner."
+        },
+        {
+          "id": "story-reservoir",
+          "title": "Story & Scene Reservoir",
+          "kind": "documentary/narrative collection",
+          "boundary": "Story assembles documentary and literary material while preserving source depth and uncertainty; narrative sequence does not replace occurrence/source owners."
+        }
+      ],
+      "public_surfaces": [
+        {
+          "id": "culture",
+          "title": "Culture & Subculture",
+          "route": "/context/culture/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "context",
+          "title": "Context & Evidence",
+          "route": "/context/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Deepen the substantive corpus before considering further subdivision."
+      ]
+    },
+    {
+      "room_id": "great-book-literature",
+      "title": "Great Book & Literature",
+      "dwelling_id": "works",
+      "entrance": "Own long-form authored literature, Great Book material, essays, stories, poems and literary versions.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Creative/literary expression does not automatically become doctrine, biography or evidence.",
+      "knowledge_holdings": {
+        "primary_file_count": 181,
+        "featured": [
+          {
+            "id": "",
+            "path": "great-book/.keep",
+            "kind": "room holding"
+          },
+          {
+            "id": "book-index",
+            "path": "great-book/book-index.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "001--chapter-1--the-genesis-of-the-potatoverse-a-scientific-and-sacred-unfolding",
+            "path": "great-book/chapters/001--chapter-1--the-genesis-of-the-potatoverse-a-scientific-and-sacred-unfolding.html",
+            "kind": "room holding"
+          },
+          {
+            "id": "002--chapter-2--the-simplicity-of-the-potato",
+            "path": "great-book/chapters/002--chapter-2--the-simplicity-of-the-potato.html",
+            "kind": "room holding"
+          },
+          {
+            "id": "003--chapter-3--the-mud-dweller-s-burden",
+            "path": "great-book/chapters/003--chapter-3--the-mud-dweller-s-burden.html",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": []
+      },
+      "passages": [
+        {
+          "id": "if-canon-literature",
+          "direction": "in",
+          "other_room_id": "canon-identities",
+          "type": "creative-expression",
+          "changes": "Canonical project material becomes literary or narrative expression.",
+          "guard": "Creative depiction does not become unique owner of doctrine or biography."
+        },
+        {
+          "id": "if-literature-culture",
+          "direction": "out",
+          "other_room_id": "information-ecology",
+          "type": "publication-reception",
+          "changes": "A work enters media, audience, quotation, remix, memory and reception contexts.",
+          "guard": "Reception does not rewrite the source work's original wording."
+        }
+      ],
+      "collections": [
+        {
+          "id": "corporium",
+          "title": "Corporium Collection",
+          "kind": "cross-branch interpretive collection",
+          "boundary": "Corporium assembles sayings, embodiment, affect, persona, recurrence and later formalization. It is a cross-branch interpretive collection, not a new fact owner."
+        },
+        {
+          "id": "story-reservoir",
+          "title": "Story & Scene Reservoir",
+          "kind": "documentary/narrative collection",
+          "boundary": "Story assembles documentary and literary material while preserving source depth and uncertainty; narrative sequence does not replace occurrence/source owners."
+        }
+      ],
+      "public_surfaces": [
+        {
+          "id": "works",
+          "title": "Works",
+          "route": "/works/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "story",
+          "title": "Story",
+          "route": "/tim-dooley/story/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Keep this Room knowledge-led unless a real structured dataset emerges."
+      ]
+    },
+    {
+      "room_id": "music-sound",
+      "title": "Music & Sound",
+      "dwelling_id": "works",
+      "entrance": "Own songs, lyrics, sound works, music metadata and performance-oriented material.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Lyrics and performance language retain creative-work status unless separately attested as claims.",
+      "knowledge_holdings": {
+        "primary_file_count": 1,
+        "featured": [
+          {
+            "id": "suno-music-archive",
+            "path": "knowledge/creative/tim-dooley-suno-music-archive.json",
+            "kind": "Suno music catalogue and recovered lyric records"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": []
+      },
+      "passages": [
+        {
+          "id": "if-music-platform",
+          "direction": "out",
+          "other_room_id": "internet-platforms",
+          "type": "publication-distribution",
+          "changes": "A music work enters platform publication, audience, circulation and reception contexts.",
+          "guard": "Platform reception or lyric language does not automatically become factual biography or doctrine."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "works",
+          "title": "Works",
+          "route": "/works/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Deepen the substantive corpus before considering further subdivision.",
+        "Keep this Room knowledge-led unless a real structured dataset emerges.",
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "visual-art",
+      "title": "Visual Art & Symbolic Composition",
+      "dwelling_id": "works",
+      "entrance": "Own visual compositions, artwork concepts, image archives and symbolic visual systems as creative works.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Depiction is not evidence of the depicted claim.",
+      "knowledge_holdings": {
+        "primary_file_count": 2,
+        "featured": [
+          {
+            "id": "artifact-history-registry",
+            "path": "knowledge/creative/artifact-history-registry.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "visual-art-symbolic-composition-archive",
+            "path": "knowledge/creative/visual-art-symbolic-composition-archive.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": []
+      },
+      "passages": [
+        {
+          "id": "if-art-symbolic",
+          "direction": "out",
+          "other_room_id": "symbolic-architecture",
+          "type": "visual-symbolic-translation",
+          "changes": "A visual work can render project symbols and spatial relations as an authored composition.",
+          "guard": "Depiction neither proves the depicted claim nor becomes the unique owner of the underlying concept."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "works",
+          "title": "Works",
+          "route": "/works/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Deepen the substantive corpus before considering further subdivision.",
+        "Keep this Room knowledge-led unless a real structured dataset emerges.",
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "games-simulations",
+      "title": "Games & Simulations",
+      "dwelling_id": "works",
+      "entrance": "Own games, playful systems, simulations and interactive creative artifacts.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Simulation behavior is model output, not automatically a claim about the real world.",
+      "knowledge_holdings": {
+        "primary_file_count": 1,
+        "featured": [
+          {
+            "id": "creative-systems-archive",
+            "path": "knowledge/culture/creative-systems-archive.json",
+            "kind": "creative works and simulations archive"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": []
+      },
+      "passages": [
+        {
+          "id": "if-games-systems",
+          "direction": "out",
+          "other_room_id": "systems-dynamics",
+          "type": "simulation-formalization",
+          "changes": "Interactive or game systems are read as simulations/models with explicit mechanics and state transitions.",
+          "guard": "Simulation output is not automatically evidence about the real-world system it resembles."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "works",
+          "title": "Works",
+          "route": "/works/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Deepen the substantive corpus before considering further subdivision.",
+        "Keep this Room knowledge-led unless a real structured dataset emerges.",
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "house-architecture",
+      "title": "House Architecture",
+      "dwelling_id": "research-lab",
+      "entrance": "Own active architecture research around Rooms, ownership, topology, interfaces, projections and migration before constitutional promotion.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Research design remains provisional until promoted into constitutional/governance owners.",
+      "knowledge_holdings": {
+        "primary_file_count": 13,
+        "featured": [
+          {
+            "id": "house-atlas-systems-theory-2026-09-13",
+            "path": "knowledge/research/house-atlas-systems-theory-2026-09-13.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "01-system-cybernetics-and-control",
+            "path": "knowledge/research/house-atlas-systems-theory/01-system-cybernetics-and-control.md",
+            "kind": "room holding"
+          },
+          {
+            "id": "02-information-compression-and-views",
+            "path": "knowledge/research/house-atlas-systems-theory/02-information-compression-and-views.md",
+            "kind": "room holding"
+          },
+          {
+            "id": "03-graph-family-and-north",
+            "path": "knowledge/research/house-atlas-systems-theory/03-graph-family-and-north.md",
+            "kind": "room holding"
+          },
+          {
+            "id": "04-logic-provenance-time-and-truth-maintenance",
+            "path": "knowledge/research/house-atlas-systems-theory/04-logic-provenance-time-and-truth-maintenance.md",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 32,
+        "owned_bundles": [
+          {
+            "id": "house-governance-data",
+            "title": "House governance & topology data",
+            "kind": "governance-registry",
+            "purpose": "House registries, topology, coverage, manifests, routing and repository-maintenance contracts."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "graph-relational-data",
+            "title": "Graph & relational-system data",
+            "primary_room_id": "systems-dynamics"
+          },
+          {
+            "id": "research-frontier-data",
+            "title": "Research frontier & expansion data",
+            "primary_room_id": "open-questions"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-house-systems",
+          "direction": "out",
+          "other_room_id": "systems-dynamics",
+          "type": "architecture-formalization",
+          "changes": "House architecture candidates are translated into systems, graph, control or information models for stress testing.",
+          "guard": "A formal analogy remains research until constitution/governance promotion."
+        }
+      ],
+      "collections": [
+        {
+          "id": "project-guides",
+          "title": "Project Guides",
+          "kind": "orientation/navigation layer",
+          "boundary": "Guides route readers through the House and may be replaced without changing ontology."
+        },
+        {
+          "id": "indexes-routing",
+          "title": "Indexes & Routing",
+          "kind": "retrieval/navigation infrastructure",
+          "boundary": "Indexes route toward owners, sources and unresolved work; index membership is not itself truth or ownership."
+        }
+      ],
+      "public_surfaces": [
+        {
+          "id": "house",
+          "title": "Potato House",
+          "route": "/house/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "research-lab",
+          "title": "Research Lab",
+          "route": "/research-lab/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "paths",
+          "title": "Paths",
+          "route": "/paths/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "open-questions",
+      "title": "Open Questions & Hypotheses",
+      "dwelling_id": "research-lab",
+      "entrance": "Own unresolved questions, candidate explanations and explicit uncertainty queues.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Indexing a hypothesis does not promote it to canon.",
+      "knowledge_holdings": {
+        "primary_file_count": 8,
+        "featured": [
+          {
+            "id": "faq-question-bank",
+            "path": "knowledge/indexes/faq-question-bank.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "digital-underground-network-audit-2026-09",
+            "path": "knowledge/research/digital-underground-network-audit-2026-09.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "josh-moon-moloch-provenance-dossier-2026-09",
+            "path": "knowledge/research/josh-moon-moloch-provenance-dossier-2026-09.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "legal-accountability-human-consequence-source-ledger-2026-09",
+            "path": "knowledge/research/legal-accountability-human-consequence-source-ledger-2026-09.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "map-respect-and-layer-recovery-2026-09-11",
+            "path": "knowledge/research/map-respect-and-layer-recovery-2026-09-11.md",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 1,
+        "owned_file_count": 28,
+        "owned_bundles": [
+          {
+            "id": "research-frontier-data",
+            "title": "Research frontier & expansion data",
+            "kind": "research-frontier-data",
+            "purpose": "Open questions, expansion waves, alternative directions, research roadmaps and frontier state."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "house-governance-data",
+            "title": "House governance & topology data",
+            "primary_room_id": "house-architecture"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-question-experiment",
+          "direction": "out",
+          "other_room_id": "experiments-formalization",
+          "type": "research-door",
+          "changes": "An unresolved question becomes a testable candidate, prototype or formal experiment.",
+          "guard": "A candidate must name assumptions and what result would change confidence."
+        }
+      ],
+      "collections": [
+        {
+          "id": "project-guides",
+          "title": "Project Guides",
+          "kind": "orientation/navigation layer",
+          "boundary": "Guides route readers through the House and may be replaced without changing ontology."
+        },
+        {
+          "id": "indexes-routing",
+          "title": "Indexes & Routing",
+          "kind": "retrieval/navigation infrastructure",
+          "boundary": "Indexes route toward owners, sources and unresolved work; index membership is not itself truth or ownership."
+        }
+      ],
+      "public_surfaces": [
+        {
+          "id": "research-lab",
+          "title": "Research Lab",
+          "route": "/research-lab/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "questions",
+          "title": "Questions",
+          "route": "/questions/",
+          "surface_type": "explorer"
+        }
+      ],
+      "next_work": [
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    },
+    {
+      "room_id": "experiments-formalization",
+      "title": "Experiments & Formalization",
+      "dwelling_id": "research-lab",
+      "entrance": "Own experimental designs, candidate formal models, prototypes and test-oriented synthesis awaiting review.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "Experimental/formal elegance is not evidence without appropriate observation or validation.",
+      "knowledge_holdings": {
+        "primary_file_count": 63,
+        "featured": [
+          {
+            "id": "celestial-particles-wave-004",
+            "path": "knowledge/science/celestial-orbits-particles-cmb-expansion-wave-004.json",
+            "kind": "specialist celestial mechanics, CMB, QCD and spin reference expansion"
+          },
+          {
+            "id": "equation-ledger",
+            "path": "knowledge/science/equation-ledger.json",
+            "kind": "equation provenance ledger"
+          },
+          {
+            "id": "science-master-index",
+            "path": "knowledge/science/science-master-index.json",
+            "kind": "canonical science map"
+          },
+          {
+            "id": "spudlight",
+            "path": "knowledge/science/spudlight-theory-and-equations.json",
+            "kind": "Spudlight source/reflection/information theory"
+          },
+          {
+            "id": "tim-dooley-science-formalisms",
+            "path": "knowledge/science/tim-dooley-science-formalisms.json",
+            "kind": "recovered/formalized Timic equations"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 0,
+        "owned_file_count": 0,
+        "owned_bundles": [],
+        "consumed_bundles": [
+          {
+            "id": "geometry-calibration-data",
+            "title": "Geometry & projection calibration",
+            "primary_room_id": "math-geometry"
+          },
+          {
+            "id": "graph-relational-data",
+            "title": "Graph & relational-system data",
+            "primary_room_id": "systems-dynamics"
+          },
+          {
+            "id": "research-frontier-data",
+            "title": "Research frontier & expansion data",
+            "primary_room_id": "open-questions"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-question-experiment",
+          "direction": "in",
+          "other_room_id": "open-questions",
+          "type": "research-door",
+          "changes": "An unresolved question becomes a testable candidate, prototype or formal experiment.",
+          "guard": "A candidate must name assumptions and what result would change confidence."
+        },
+        {
+          "id": "if-experiment-test",
+          "direction": "out",
+          "other_room_id": "model-testing",
+          "type": "validation-door",
+          "changes": "A candidate model enters explicit observables, falsifiers, calibration and uncertainty review.",
+          "guard": "Testing criteria must be stated before promotion claims."
+        }
+      ],
+      "collections": [],
+      "public_surfaces": [
+        {
+          "id": "research-lab",
+          "title": "Research Lab",
+          "route": "/research-lab/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "science",
+          "title": "Science",
+          "route": "/science/",
+          "surface_type": "hub"
+        }
+      ],
+      "next_work": [
+        "Keep this Room knowledge-led unless a real structured dataset emerges."
+      ]
+    },
+    {
+      "room_id": "research-programmes",
+      "title": "Research Programmes",
+      "dwelling_id": "research-lab",
+      "entrance": "Own coordinated multi-Room research programmes, workstreams, source ledgers and promotion plans.",
+      "belongs_here": [],
+      "stays_out": [],
+      "epistemic_boundary": "A Programme coordinates work but does not steal fact ownership from participating Rooms.",
+      "knowledge_holdings": {
+        "primary_file_count": 9,
+        "featured": [
+          {
+            "id": "north-axis-tikkun-world-repair-synthesis",
+            "path": "knowledge/core/north-axis-tikkun-world-repair-synthesis.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "potato-containment-folded-world-model",
+            "path": "knowledge/core/potato-containment-folded-world-model.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "telos-vision-and-desired-world",
+            "path": "knowledge/core/telos-vision-and-desired-world.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "tim-dooley-real-world-entanglement",
+            "path": "knowledge/core/tim-dooley-real-world-entanglement.json",
+            "kind": "room holding"
+          },
+          {
+            "id": "world-atlas-integrated-layer-stack",
+            "path": "knowledge/core/world-atlas-integrated-layer-stack.json",
+            "kind": "room holding"
+          }
+        ]
+      },
+      "data_holdings": {
+        "owned_bundle_count": 2,
+        "owned_file_count": 41,
+        "owned_bundles": [
+          {
+            "id": "world-system-blueprints",
+            "title": "World-system blueprints",
+            "kind": "research-blueprints",
+            "purpose": "Reusable research templates for governance, law, finance, trade, infrastructure, technology, culture, labour, security and other observable systems."
+          },
+          {
+            "id": "north-programme-data",
+            "title": "North Programme data",
+            "kind": "programme-data",
+            "purpose": "Project programme evidence, geographic/system fields and relationship-oriented North research."
+          }
+        ],
+        "consumed_bundles": [
+          {
+            "id": "economy-europe-data",
+            "title": "Economy, finance & European system data",
+            "primary_room_id": "economy-finance"
+          },
+          {
+            "id": "politics-governance-data",
+            "title": "Politics & governance data",
+            "primary_room_id": "politics-governance"
+          },
+          {
+            "id": "security-intelligence-data",
+            "title": "Security & intelligence data",
+            "primary_room_id": "politics-governance"
+          },
+          {
+            "id": "research-frontier-data",
+            "title": "Research frontier & expansion data",
+            "primary_room_id": "open-questions"
+          }
+        ]
+      },
+      "passages": [
+        {
+          "id": "if-research-world",
+          "direction": "out",
+          "other_room_id": "infrastructure-capability",
+          "type": "programme-application",
+          "changes": "A research programme consumes world-system inputs and produces analyses or proposed outputs.",
+          "guard": "Programme coordination never steals identity/fact ownership from World Systems."
+        }
+      ],
+      "collections": [
+        {
+          "id": "project-guides",
+          "title": "Project Guides",
+          "kind": "orientation/navigation layer",
+          "boundary": "Guides route readers through the House and may be replaced without changing ontology."
+        }
+      ],
+      "public_surfaces": [
+        {
+          "id": "research-lab",
+          "title": "Research Lab",
+          "route": "/research-lab/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "north",
+          "title": "North",
+          "route": "/north/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "world-systems",
+          "title": "World Systems",
+          "route": "/world-systems/",
+          "surface_type": "guide"
+        }
+      ],
+      "next_work": [
+        "Look for another real guarded interface only if cross-Room work repeatedly needs it."
+      ]
+    }
+  ]
+}
