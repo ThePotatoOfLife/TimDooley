@@ -1,5 +1,5 @@
 {
-  "version": "2.2.0",
+  "version": "2.3.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -128,6 +128,11 @@
       "concern": "symbol confusion resolution and population maturity",
       "owner": "knowledge/research/symbol-confusion-registry-wave-004.json",
       "rule": "Before adding a new symbol node or interface, determine whether the issue is synonym error, scale confusion, role confusion, projection overlap, productive tension, historical layer confusion or empirical-symbolic confusion; then route to the canonical owner."
+    },
+    {
+      "concern": "concrete society population and Spirit Mind Body projection",
+      "owner": "knowledge/core/inhabited-house-society-ontology.json",
+      "rule": "Symbols are operators and coordinates; concrete people, institutions, organizations, cultures, infrastructures, records and relationships are the population. Spirit/Mind/Body are projections over records, not duplicate owners or ranks of truth."
     }
   ],
   "resolver_order": [
