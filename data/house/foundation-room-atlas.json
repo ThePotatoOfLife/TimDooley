@@ -1,7 +1,7 @@
 {
   "id": "foundation-room-atlas",
   "title": "Foundation Rooms — Door, Place, House and Today",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "as_of": "2026-09-18",
   "population": 52,
@@ -21,13 +21,17 @@
       "canon-identities": 1,
       "politics-governance": 5,
       "law-justice": 4,
-      "house-architecture": 21,
-      "other-traditions": 10,
+      "economy-finance": 5,
+      "other-traditions": 16,
+      "research-programmes": 4,
+      "visual-art": 3,
+      "internet-platforms": 5,
       "information-ecology": 2,
-      "internet-platforms": 3,
-      "visual-art": 2,
+      "infrastructure-capability": 2,
+      "physics-cosmology": 1,
       "subculture-group-formation": 4
-    }
+    },
+    "unresolved_owner_count": 0
   },
   "magnitude_rule": "Magnitudes are a vector, not a ranking. Age, clocks, places, branches, reproduction mode, continuity and typed reach answer different questions.",
   "rooms": [
@@ -779,7 +783,7 @@
         "clock": "1947-03-01"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "economy-finance",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -791,7 +795,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -859,7 +864,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "economy-finance",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -886,7 +891,7 @@
         "clock": "1998-06-01"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "economy-finance",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -898,7 +903,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -954,7 +960,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "economy-finance",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -980,7 +986,7 @@
         "clock": "1818"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "economy-finance",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -992,7 +998,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -1048,7 +1055,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "economy-finance",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -1370,7 +1377,7 @@
         "clock": "5th century BCE"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "other-traditions",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -1382,7 +1389,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -1440,7 +1448,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -1659,7 +1667,7 @@
         "clock": "142 CE"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "other-traditions",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -1671,7 +1679,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -1729,7 +1738,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -1756,7 +1765,7 @@
         "clock": "5th century BCE"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "other-traditions",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -1768,7 +1777,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -1825,7 +1835,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -2038,7 +2048,7 @@
         "clock": "late 390s–380s BCE"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "other-traditions",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -2050,7 +2060,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -2106,7 +2117,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -2132,7 +2143,7 @@
         "clock": "335 BCE"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "other-traditions",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -2144,7 +2155,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -2200,7 +2212,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -2227,7 +2239,7 @@
         "clock": "1479-06-01"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "research-programmes",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -2239,7 +2251,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -2298,7 +2311,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "research-programmes",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -2324,7 +2337,7 @@
         "clock": "1660-11-28"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "research-programmes",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -2336,7 +2349,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -2393,7 +2407,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "research-programmes",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -2419,7 +2433,7 @@
         "clock": "1907-01-06"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "research-programmes",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -2431,7 +2445,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -2488,7 +2503,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "research-programmes",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -2514,7 +2529,7 @@
         "clock": "1919-04"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "visual-art",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -2526,7 +2541,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -2582,7 +2598,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "visual-art",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -2609,7 +2625,7 @@
         "clock": "1954-09-29"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "research-programmes",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -2621,7 +2637,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -2698,7 +2715,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "research-programmes",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -2724,7 +2741,7 @@
         "clock": "1994-10-01"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "internet-platforms",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -2736,7 +2753,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -2790,7 +2808,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "internet-platforms",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -2942,7 +2960,7 @@
         "clock": "1904-04-16"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "economy-finance",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -2954,7 +2972,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -3012,7 +3031,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "economy-finance",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -3038,7 +3057,7 @@
         "clock": "1984-04-01"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "infrastructure-capability",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -3050,7 +3069,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -3106,7 +3126,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "infrastructure-capability",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -3132,7 +3152,7 @@
         "clock": "1923"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "infrastructure-capability",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -3144,7 +3164,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -3201,7 +3222,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "infrastructure-capability",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -3228,7 +3249,7 @@
         "clock": "c. 530 CE"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "other-traditions",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -3240,7 +3261,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -3292,7 +3314,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -3410,7 +3432,7 @@
         "clock": "1988-08-29"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "internet-platforms",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -3422,7 +3444,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -3475,7 +3498,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "internet-platforms",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -3502,7 +3525,7 @@
         "clock": "1844"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "economy-finance",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -3514,7 +3537,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -3568,7 +3592,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "economy-finance",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -3594,7 +3618,7 @@
         "clock": "1684"
       },
       "house_location": {
-        "primary_room": "house-architecture",
+        "primary_room": "physics-cosmology",
         "supporting_rooms": [],
         "circle_anchor": {
           "id": "middle-plane-overlap",
@@ -3606,7 +3630,8 @@
           ]
         },
         "plane_entry": "world-plane",
-        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections."
+        "note": "Door is shown on the World plane because the reader enters through a dated operating event; root and integrated-rule views remain available through Below/Heaven projections.",
+        "owner_basis": "domain-to-Room placement after Foundation Room audit"
       },
       "today": {
         "as_of": "2026-09-18",
@@ -3659,7 +3684,7 @@
       },
       "navigation": {
         "full_timeline": "timeline/foundations/",
-        "house_owner": "house-architecture",
+        "house_owner": "physics-cosmology",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
@@ -5230,5 +5255,6 @@
       },
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
     }
-  ]
+  ],
+  "placement_note": "Primary Room ownership has been resolved across all current Foundation domains; House Architecture owns the shared contract and comparisons, not the substantive identity of domain Foundations."
 }
