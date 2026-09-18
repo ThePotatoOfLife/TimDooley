@@ -223,7 +223,7 @@
     if(interfaceRoot)interfaceRoot.innerHTML=(interfaces.interfaces||[]).map(x=>'<div class="interface-card"><strong>'+esc(x.from)+' → '+esc(x.to)+'</strong><em>'+esc(x.type)+'</em><small>'+esc(x.changes)+'</small><small><b>Guard:</b> '+esc(x.guard)+'</small></div>').join('');
     corridors.innerHTML=(topo.strong_corridors||[]).map(x=>'<div class="corridor-row"><b>'+esc(parentLabels[x.from]||x.from)+'</b><em>'+esc(x.type)+'</em><b>'+esc(parentLabels[x.to]||x.to)+'</b></div>').join('');
   }catch(e){
-    document.getElementById('houseSubrooms').innerHTML='<p class="boundary">Nested Room data could not be loaded. The ten canonical Rooms above remain the stable structure.</p>';
+    document.getElementById('houseSubrooms').innerHTML='<p class="boundary">Nested Room data could not be loaded. The ten canonical Dwellings above remain the stable top-level structure.</p>';
     document.getElementById('houseCorridors').innerHTML='';
   }
 })();
