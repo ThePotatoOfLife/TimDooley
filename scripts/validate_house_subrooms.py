@@ -81,7 +81,7 @@ def main():
             if role not in role_ids: errors.append(f'House census instance {instance.get("id")} has unknown role {role}')
         for sid in instance.get('public_surfaces',[]):
             if sid not in surface_ids: errors.append(f'House census instance {instance.get("id")} has unknown public surface {sid}')
-    if population.get('structural_census')!='data/house/structural-census.json': errors.append('House population contract census pointer drift')
+    if population.get('sources_of_truth',{}).get('structural_census')!='data/house/structural-census.json': errors.append('House population contract census pointer drift')
     pulse_rows=[x for x in pulse.get('records',[]) if isinstance(x,dict)]
     holding_rows=[x for x in holdings.get('holdings',[]) if isinstance(x,dict)]
     if len(holding_rows)!=len(rows): errors.append('House holdings must cover every nested Room')
