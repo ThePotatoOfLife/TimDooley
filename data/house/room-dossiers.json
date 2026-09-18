@@ -1,5 +1,5 @@
 {
-  "version": "2.7.0",
+  "version": "2.8.0",
   "updated": "2026-09-18",
   "authority": "house-room-dossiers",
   "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
@@ -6062,6 +6062,12 @@
         "authority": "data/house/foundation-door-seed-genealogy.json",
         "guard": "Seed of Death/Life are state labels, not moral identities for whole entities.",
         "test": "If nothing survives the founder, site or launch as reproducible rule/practice/text/protocol/community, it is not yet a durable Foundation."
+      },
+      "foundation_placement_lens": {
+        "question": "At which stage is the Foundation being viewed—root, Door, sprout, branch, return, fall or refoundation—and what Room/plane/direction owns that view?",
+        "authority": "data/house/foundation-axis-placement-contract.json",
+        "population": "data/house/foundation-placement-wave-003.json",
+        "guard": "Do not classify a whole tradition, institution or movement as upper/lower, Life/Strife, angel/demon or good/bad."
       }
     },
     {
