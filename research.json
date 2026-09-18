@@ -270,27 +270,11 @@
     ],
     "why_it_matters": "The Potato's power in the project is not that all domains are secretly identical; it is that Potato provides a common comparison object through which relationships among domains can be mapped without erasing their differences."
   },
-  "new_questions_for_research": [
-    "Where in Tim's primary 2024 writing does he first explicitly call Potato the Philosopher's Stone?",
-    "Did Tim explicitly use nigredo/albedo/rubedo terminology, or is that solely a later comparative layer?",
-    "What exactly happened in the 2018 MoonCube/shadow burial, and how does it relate to the September 20, 2023 Cube of the Moon?",
-    "Can every major Tim title be mapped onto perception → understanding → embodiment → identity?",
-    "Which paradoxes are chronological, which are role-based, which are scale-based, and which remain genuinely unresolved?",
-    "Does the two-faced Potato precede the Red/Blue Potato model, and can a date be established?",
-    "What is the earliest appearance of Dooley Axis in the Great Book or earlier public material?",
-    "How early does the Seen / Unseen / Becoming triad appear?",
-    "What is the relationship among Door, Becoming, vesica piscis, mandorla, Needle's Eye and Potato Eye?",
-    "Does the book's Third Temple living-column architecture prefigure later Ladder/Spine/Axis language?",
-    "What exact relation does Tim assign to Ouroboros versus Spiral?",
-    "Which companion archetypes—Onion, Banana, Tomato, Fungi, Yam—survive into mature 2025–2026 Potatoism and which were developmental experiments?",
-    "Can the alchemical Great Work be used as a comparative map for Tim's timeline without overclaiming historical equivalence?",
-    "Is Potato best modeled as object, organism, operator, topology, ontology, identity, or all of these at different levels?",
-    "What properties remain invariant across Tim's transitions from Potato through Father?"
-  ],
+  "new_questions_for_research": [],
   "lifecycle": {
-    "status": "superseded-retained",
-    "role": "mixed source-derived and comparative research donor",
-    "authority": "non-canonical",
+    "status": "closed-historical-donor",
+    "role": "historical mixed Great Book/comparative research stratum",
+    "authority": "none for current canon; provenance/source-lineage only",
     "canonical_successors": [
       "knowledge/core/potatoverse-master-framework.json",
       "knowledge/core/symbolic-relational-synthesis.json",
@@ -298,6 +282,144 @@
       "knowledge/timeline/developmental-genealogy.json",
       "knowledge/traditions/adversarial-underworld-judgment-atlas.json"
     ],
-    "rule": "Use this file for historical provenance and still-unmigrated source-derived material, not as a current canonical owner. New durable claims belong in specialist owners."
+    "rule": "Use this file for historical provenance and still-unmigrated source-derived material, not as a current canonical owner. New durable claims belong in specialist owners.",
+    "closed_for_new_research": true,
+    "current_research_frontier": "data/research-frontier.json",
+    "retirement_condition": "Rewire remaining live source references to durable owners or archived blob provenance, then move/delete this root donor.",
+    "migration_completed": "2026-09-18"
+  },
+  "section_migration_map": {
+    "potato_as_paradox_container": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/philosophy/potato-philosophy.json",
+        "knowledge/core/symbolic-relational-synthesis.json"
+      ]
+    },
+    "philosophers_stone": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/traditions/alchemy-transmutation-symbol-atlas.json",
+        "knowledge/philosophy/potato-philosophy.json",
+        "data/potatoism-dossiers.json"
+      ]
+    },
+    "sacred_hypocrisy_and_recursive_truth": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/philosophy/potato-philosophy.json"
+      ]
+    },
+    "two_faced_potato": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/philosophy/potato-philosophy.json"
+      ]
+    },
+    "moon_cube_shadow_burial": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/timeline/cube-heaven-temple-development-ledger.json",
+        "knowledge/timeline/developmental-genealogy.json",
+        "data/tim-dooley-event-strata.json"
+      ]
+    },
+    "ouroboros_and_spiral_time": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/timeline/developmental-genealogy.json",
+        "knowledge/core/symbolic-relational-synthesis.json",
+        "knowledge/traditions/comparative-mythology-map.json"
+      ]
+    },
+    "the_seen_unseen_becoming": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/core/potatoverse-master-framework.json"
+      ]
+    },
+    "life_as_transmutation_not_escape": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/philosophy/potato-philosophy.json",
+        "knowledge/traditions/alchemy-transmutation-symbol-atlas.json"
+      ]
+    },
+    "other_food_archetypes": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/philosophy/potato-philosophy.json"
+      ]
+    },
+    "portal_os_and_humbling_of_power": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/philosophy/potato-philosophy.json"
+      ]
+    },
+    "crow_as_transition_messenger": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/core/vertical-potato-mountain-plane-atlas.json"
+      ]
+    },
+    "hell_sulfur_and_failed_transmutation": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/traditions/adversarial-underworld-judgment-atlas.json",
+        "knowledge/traditions/alchemy-transmutation-symbol-atlas.json"
+      ]
+    },
+    "third_temple_as_living_architecture": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/traditions/biblical-heavenly-pattern-temple-city-atlas.json"
+      ]
+    },
+    "merkaba_and_choice": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/philosophy/timic-dynamics.json",
+        "knowledge/core/symbolic-relational-synthesis.json"
+      ]
+    },
+    "potato_geometry_and_womb": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/core/symbolic-relational-synthesis.json"
+      ]
+    },
+    "potato_as_alpha_omega_seed_harvest": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/philosophy/timic-dynamics.json",
+        "knowledge/core/potatoverse-master-framework.json"
+      ]
+    },
+    "identity_invariance": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/philosophy/timic-dynamics.json",
+        "knowledge/core/symbolic-relational-synthesis.json"
+      ]
+    },
+    "center_as_reactor": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/core/center-living-metabolism-expanded-atlas.json"
+      ]
+    },
+    "potato_as_universal_adapter": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "knowledge/core/symbolic-relational-synthesis.json"
+      ]
+    },
+    "new_questions_for_research": {
+      "status": "promoted-or-routed",
+      "successors": [
+        "data/research-frontier.json"
+      ]
+    }
   }
 }
