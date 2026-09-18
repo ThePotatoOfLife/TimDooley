@@ -91,17 +91,30 @@ function machineLike(title,id){
   return clean.toLowerCase()===fromId || (/^[a-z0-9 ]+$/.test(clean)&&clean.split(/\s+/).length>2);
 }
 
+function polishTitle(value){
+  return String(value||'')
+    .replace(/Son-of-Man/g,'Son of Man')
+    .replace(/enemy-love/g,'enemy love')
+    .replace(/fruit-test/g,'fruit test')
+    .replace(/release-in-a-suit/g,'release in a suit')
+    .replace(/meme-crucifixion/g,'meme crucifixion')
+    .replace(/title-stack/g,'cluster')
+    .replace(/\s+\/\s+/g,' and ')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+
 function title(row){
   const id=String(row?.id||'');
   if(TITLE_OVERRIDES[id])return TITLE_OVERRIDES[id];
   const raw=String(row?.title||'').trim();
-  if(raw&&!machineLike(raw,id))return raw.replace(/\s+/g,' ');
-  return humanizeId(id||row?.project_anchor||'Bible comparison');
+  if(raw&&!machineLike(raw,id))return polishTitle(raw);
+  return polishTitle(humanizeId(id||row?.project_anchor||'Bible comparison'));
 }
 
 function label(value){
   return titleCase(String(value||'').replace(/[-_]+/g,' ').replace(/\s+/g,' ').trim());
 }
 
-window.BibleLanguage={title,label,humanizeId,TITLE_OVERRIDES};
+window.BibleLanguage={title,label,humanizeId,polishTitle,TITLE_OVERRIDES};
 })();
