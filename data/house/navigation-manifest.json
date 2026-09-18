@@ -1,5 +1,5 @@
 {
-  "version": "2.2.0",
+  "version": "2.3.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -213,6 +213,11 @@
       "concern": "tangible Foundation Room reader projection",
       "owner": "data/house/foundation-room-atlas.json",
       "rule": "Reader-facing Foundation identity leads with Origin Door, physical/placeable origin, House owner/circle and dated Today snapshot; Seed genealogy remains subordinate technical detail."
+    },
+    {
+      "concern": "Foundation first recovered reproduction",
+      "owner": "data/house/foundation-first-reproduction-wave-001.json",
+      "rule": "Do not treat the Door as proof that a lineage lived. Record the earliest recovered post-Door continuation and label it as recovered evidence, not automatically the historical first."
     }
   ],
   "resolver_order": [
