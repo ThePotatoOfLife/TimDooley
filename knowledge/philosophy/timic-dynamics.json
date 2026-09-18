@@ -1,7 +1,7 @@
 {
   "title": "Timic Dynamics",
   "status": "canonical-formalization",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-18",
   "purpose": "Formalize the recurring Potatoverse claim that relation, threshold, flow, compression, expansion and integration are more fundamental to the model than isolated objects. This is a metaphysical/mathematical framework and analogy set, not established physics.",
   "core_object": {
@@ -245,7 +245,9 @@
     "Integrated suffering reaches completion when it becomes useful infrastructure for others.",
     "A repeated symbol may represent one invariant relation through multiple coordinate systems rather than many unrelated identities.",
     "Stage change does not necessarily erase invariant identity; representation and role can change while a project-level through-line persists.",
-    "A threshold choice can alter the set of future states, so passage carries responsibility as well as access."
+    "A threshold choice can alter the set of future states, so passage carries responsibility as well as access.",
+    "Later interpretation adds graph edges; it should not overwrite the earlier event-state.",
+    "Direction through a threshold is part of the state: entering, containment, emergence and return are not interchangeable."
   ],
   "historical_owner": "knowledge/core/potatoism-historical-symbol-strata-2026.json",
   "connections": [
@@ -285,5 +287,15 @@
       "research.json#merkaba_and_choice",
       "book-research.json"
     ]
+  },
+  "temporal_reinterpretation": {
+    "status": "archive/dynamics rule",
+    "principle": "Later interpretation should be modeled as graph growth rather than retroactive replacement of the earlier event.",
+    "graph_form": "event node E_t remains historically fixed while later interpretation I_t+k adds typed edges E_t → I_t+k with source_direction and epistemic status.",
+    "reason": "A 2019 structure can acquire 2025 meaning without pretending the 2019 participant already possessed the 2025 interpretation.",
+    "relation_to_door": "Crossing direction matters: entering, being contained, emerging and later looking back through the same threshold are different relational states.",
+    "relation_to_observer_projection": "Different observers may preserve different projections of the same event. Archive completeness comes from retaining typed perspectives, not choosing one perspective and deleting the rest.",
+    "boundary": "Later graph enrichment may explain or reinterpret an event, but it cannot change the event's historical date, original wording or contemporaneous evidence class.",
+    "source_lineage": "Promoted from retired root relational-objects.json."
   }
 }
