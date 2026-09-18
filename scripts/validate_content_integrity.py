@@ -98,6 +98,15 @@ def main():
     for group in transition_model.get("concept_groups",[]):
         for concept_id in group.get("concepts",[]):
             if concept_id not in concept_traces:ERRORS.append(f"Axis concept group {group.get('id')} references missing trace: {concept_id}")
+    house_concepts=load("data/house/concept-topology.json")
+    house_concept_ids={x.get("id") for x in house_concepts.get("concepts",[]) if isinstance(x,dict) and x.get("id")}
+    house_map=transition_model.get("house_concept_map",{})
+    for axis_id,house_id in house_map.items():
+        if axis_id not in concept_traces:ERRORS.append(f"Axis→House map references missing Axis trace: {axis_id}")
+        if house_id not in house_concept_ids:ERRORS.append(f"Axis→House map references missing House concept: {house_id}")
+    required_house_map={"plane":"plane","cross":"cross","door":"door","spiral":"spiral","ladder":"ladder","living-root":"root","tree-of-life":"tree","garden":"garden","fruit":"fruit","eye":"eye","seed":"seed","mountain":"mountain","swamp":"swamp"}
+    for axis_id,house_id in required_house_map.items():
+        if house_map.get(axis_id)!=house_id:ERRORS.append(f"Axis→House map drift: {axis_id} must map to {house_id}")
     surfaces=load("data/house/public-surfaces.json")
     surface_rows=[x for x in surfaces.get("surfaces",[]) if isinstance(x,dict)]
     surface_ids={x.get("id") for x in surface_rows}
