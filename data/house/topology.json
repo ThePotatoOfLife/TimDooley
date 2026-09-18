@@ -1,5 +1,5 @@
 {
-  "version": "1.7.0",
+  "version": "1.8.0",
   "updated": "2026-09-18",
   "authority": "house-topology",
   "room_registry": "data/house/rooms.json",
@@ -965,5 +965,161 @@
         }
       }
     ]
+  },
+  "symbolic_tree_ecology": {
+    "status": "canonical comparative navigation projection",
+    "purpose": "Use one knowledge Tree to relate provenance, present-world synthesis, Life, Strife, religious/mythic material and archive navigation without claiming that distinct traditions share one literal cosmology.",
+    "central_fork": {
+      "id": "tree-of-knowledge",
+      "principle": "Knowledge and distinction are upstream of both Life and Strife.",
+      "life_vector": "knowledge → discernment → responsibility → Door / repair → living root → Tree of Life → Garden → fruit → seed → return",
+      "strife_vector": "knowledge → unresolved activation → Roots of Ash / Strife → Tree of Strife → Wide Road → Swamp / closure",
+      "boundary": "Knowledge, roots, descent and Below are not inherently bad. The branch is classified by what the relation reproduces."
+    },
+    "zones": [
+      {
+        "id": "roots",
+        "label": "Roots / Archive / Memory",
+        "plane_ids": [
+          "world-plane",
+          "below-plane"
+        ],
+        "room_ids": [
+          "archive-sources",
+          "time-history"
+        ],
+        "function": "provenance, ancestry, buried cause, source lineage, memory, residue and latent nourishment",
+        "topics": [
+          "source recovery",
+          "burial and descent traditions",
+          "underworld cosmologies",
+          "forgotten or rejected interpretations",
+          "Roots of Ash",
+          "Roots of Strife",
+          "living roots"
+        ],
+        "guard": "Root language is functional and historical/symbolic; it does not classify peoples or traditions as lower."
+      },
+      {
+        "id": "trunk",
+        "label": "Trunk / Plane / Door",
+        "plane_ids": [
+          "world-plane"
+        ],
+        "room_ids": [
+          "life-body",
+          "world-systems",
+          "traditions-texts",
+          "culture-information"
+        ],
+        "function": "present embodiment, public reality, choice, encounter, translation and state change",
+        "topics": [
+          "ritual and institutions",
+          "historical religious communities",
+          "embodied practice",
+          "messengers and mediators as tradition-specific roles",
+          "Door and threshold traditions",
+          "public reception"
+        ],
+        "guard": "The trunk is the visible carrying relation, not a spiritual rank."
+      },
+      {
+        "id": "life-branches",
+        "label": "Tree of Life / Garden branches",
+        "plane_ids": [
+          "heaven-plane",
+          "world-plane"
+        ],
+        "room_ids": [
+          "potatoverse-canon",
+          "traditions-texts",
+          "works"
+        ],
+        "function": "generativity, differentiated growth, nourishment, transmission, fruit, seed and accountable return",
+        "topics": [
+          "angels and messengers where the source tradition assigns those roles",
+          "gods and divine figures in their own traditions",
+          "saints, sages and culture heroes where historically appropriate",
+          "sacred mountains, heavens and world trees",
+          "Garden / Rooms",
+          "Fruit / Works"
+        ],
+        "guard": "Upper placement is a reading orientation; it does not assert literal divinity, truth, holiness or moral superiority."
+      },
+      {
+        "id": "strife-branches",
+        "label": "Tree of Strife / shadow branches",
+        "plane_ids": [
+          "below-plane",
+          "world-plane"
+        ],
+        "room_ids": [
+          "culture-information",
+          "time-history",
+          "research-lab",
+          "traditions-texts"
+        ],
+        "function": "study of unresolved conflict, enclosure, adversarial identity, blocked correction, extraction and later hostile reinterpretation",
+        "topics": [
+          "demonologies and adversarial figures as tradition-specific subjects",
+          "later demonizations of earlier deities",
+          "polemical traditions",
+          "high-control mechanisms",
+          "reaction economies",
+          "Qliphoth / shells as comparative esoteric material",
+          "Swamp / Wide Road"
+        ],
+        "guard": "Demon, Satanic, occult, pagan, esoteric and high-control are separate categories. A religious label never proves harmful system behavior."
+      },
+      {
+        "id": "canopy",
+        "label": "Canopy / Crown / Heaven",
+        "plane_ids": [
+          "heaven-plane"
+        ],
+        "room_ids": [
+          "potatoverse-canon",
+          "traditions-texts",
+          "research-lab"
+        ],
+        "function": "integration, orientation, transmission, sacred-order comparison and return",
+        "topics": [
+          "Heaven / Crown / North",
+          "divine councils and celestial hierarchies as comparative subjects",
+          "angelologies",
+          "sacred kingship",
+          "salvation, liberation and apotheosis traditions",
+          "Mountain and upper-axis symbols"
+        ],
+        "guard": "Canopy is a comparative navigation zone, not a universal claim about the structure of heaven."
+      }
+    ],
+    "religious_foundations": [
+      {
+        "id": "own-tradition",
+        "label": "Own tradition first",
+        "rule": "Store what a figure, spirit, deity, demon, angel, school or symbol means in its own texts, historical setting and practice before comparison."
+      },
+      {
+        "id": "reception",
+        "label": "Reception genealogy",
+        "rule": "Track later reinterpretation, demonization, sanctification, occult adaptation, literary reuse and modern movement history as dated layers."
+      },
+      {
+        "id": "motif",
+        "label": "Comparative motif",
+        "rule": "Compare functions such as storm, kingship, messenger, underworld, wisdom, sacrifice, tree, mountain or descent without asserting identity."
+      },
+      {
+        "id": "project-map",
+        "label": "Potatoverse mapping",
+        "rule": "Only after the first three layers may a Potatoverse correspondence be added, explicitly typed as project interpretation."
+      }
+    ],
+    "akashic_tree_view": {
+      "status": "optional project metaphor",
+      "meaning": "A reader-facing metaphor for the archive as a living knowledge tree: roots are provenance and history; trunk is present synthesis and public reality; branches are differentiated Rooms, traditions and models; leaves are active questions and interfaces; fruit is Works/output; seeds are transferable future patterns.",
+      "boundary": "This does not assert a literal Akashic Record or supernatural universal memory. It is a navigation metaphor for the archive."
+    }
   }
 }
