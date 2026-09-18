@@ -1,7 +1,10 @@
 # Root Navigation Architecture
 
-Status: active architectural specification
+Status: historical architecture / Explore UX donor; superseded as whole-site and homepage authority
 Date: 2026-09-08
+Superseded by: `docs/POTATO-HOUSE-CONSTITUTION.md`, `data/house/public-surfaces.json`, `data/house/topology.json`, and `manifest.json`
+
+> This document is retained for provenance and reusable navigation ideas. Its World/Axis root-tree model is no longer the controlling public architecture. The current hierarchy is Potato of Life → House → Rooms → Views, with five public gateways and Explore/deep-navigation derived from current House/manifest authority.
 
 ## Purpose
 
