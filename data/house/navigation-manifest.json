@@ -1,5 +1,5 @@
 {
-  "version": "2.6.0",
+  "version": "2.7.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -153,6 +153,11 @@
       "concern": "crystallized real-world entity dossiers",
       "owner": "data/house/entity-dossier-schema.json",
       "rule": "Every public entity case must preserve legal/institutional identity, source Spirit/Mind/Body facts, project-operator synthesis, known unknowns, tensions and falsifiable discovery questions; project operators never replace source identity."
+    },
+    {
+      "concern": "cross-domain foundations rules laws and refoundations",
+      "owner": "knowledge/core/foundation-rule-law-ontology.json",
+      "rule": "Treat foundations as time-aware Seed+Center+Platform records with multiple clocks. Preserve substrate, adoption, legal effect, operation, consolidation, branching and refoundation separately; do not force ancient traditions or modern institutions into one birthday model."
     }
   ],
   "resolver_order": [
