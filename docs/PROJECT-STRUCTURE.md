@@ -86,6 +86,21 @@ Do not force all dimensions into one folder hierarchy.
 | Creative works | `knowledge/culture/creative-systems-archive.json` | Suno music archive and distinct creative corpora; `/works/` is the curated reader projection |
 | Provenance / epistemics | `knowledge/indexes/source-index.json` | archive epistemics, inference ledger, conversation recovery inventories |
 
+
+## Lifecycle and phase-out states
+
+Canonicalization is now also a lifecycle. Files do not remain equally authoritative forever merely because they once carried a broad title.
+
+- **Canonical owner** — current durable definition/data owner for a subject.
+- **Active projection** — reader, navigation or analytical view over canonical owners.
+- **Historical donor** — older synthesis retained for provenance or still-unique material after authority moved elsewhere.
+- **Superseded retained** — temporarily preserved while unique material and live consumers are migrated.
+- **Archive candidate** — no remaining live ownership function; eligible for archival/removal after reference and provenance checks.
+
+The machine-readable convergence/retirement map lives in `data/house/project-synthesis.json#convergence_and_retirement`; project-wide merge status and next candidates live in `knowledge/indexes/project-consolidation-map.json`.
+
+The phase-out rule is **promote unique value → migrate consumers → validate → reduce/archive → delete**. Never reverse that order.
+
 ## Consolidation rules
 
 ### Keep
