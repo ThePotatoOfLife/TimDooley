@@ -11,6 +11,8 @@ TOPOLOGY=ROOT/'data/house/topology.json'
 INTERFACES=ROOT/'data/house/interfaces.json'
 VOCAB=ROOT/'data/house/architectural-vocabulary.json'
 PROJECTIONS=ROOT/'data/house/projections.json'
+STRUCTURAL_CENSUS=ROOT/'data/house/structural-census.json'
+POPULATION=ROOT/'data/house/population-contract.json'
 SURFACES=ROOT/'data/house/public-surfaces.json'
 
 def load(path):
@@ -19,7 +21,7 @@ def load(path):
 def main():
     errors=[]
     try:
-        rooms=load(ROOMS); sub=load(SUBROOMS); topo=load(TOPOLOGY); interfaces=load(INTERFACES); vocab=load(VOCAB); projections=load(PROJECTIONS); surfaces=load(SURFACES); schema=load(SCHEMA)
+        rooms=load(ROOMS); sub=load(SUBROOMS); topo=load(TOPOLOGY); interfaces=load(INTERFACES); vocab=load(VOCAB); projections=load(PROJECTIONS); census=load(STRUCTURAL_CENSUS); population=load(POPULATION); surfaces=load(SURFACES); schema=load(SCHEMA)
     except Exception as exc:
         print('HOUSE SUBROOM VALIDATION FAILED')
         print('-',exc)
@@ -62,6 +64,18 @@ def main():
     if topo.get('projection_registry')!='data/house/projections.json': errors.append('House topology projection registry drift')
     projection_ids=[x.get('id') for x in projections.get('projections',[]) if isinstance(x,dict)]
     if projection_ids!=['house-view','temple-view','body-view','tree-vine-view','city-view']: errors.append(f'Integrated plurality projection set drifted: {projection_ids}')
+    role_ids={x.get('id') for x in census.get('role_types',[]) if isinstance(x,dict)}
+    required_roles={'house','dwelling','room','chamber','field','vineyard','path','view','court','table','gate','door','archive','treasury','foundation','pillar','state','projection','tabernacle','vessel'}
+    if role_ids!=required_roles: errors.append(f'House structural role set drifted: {sorted(role_ids)}')
+    if census.get('chamber_status',{}).get('registered_count')!=0: errors.append('Chambers must remain reserved until an explicit Chamber registry is adopted')
+    instance_ids=[x.get('id') for x in census.get('instances',[]) if isinstance(x,dict)]
+    if len(instance_ids)!=len(set(instance_ids)): errors.append('duplicate House census instance IDs')
+    for instance in census.get('instances',[]):
+        for role in instance.get('roles',[]):
+            if role not in role_ids: errors.append(f'House census instance {instance.get("id")} has unknown role {role}')
+        for sid in instance.get('public_surfaces',[]):
+            if sid not in surface_ids: errors.append(f'House census instance {instance.get("id")} has unknown public surface {sid}')
+    if population.get('structural_census')!='data/house/structural-census.json': errors.append('House population contract census pointer drift')
     if len(vocab.get('dwelling_projection',[]))!=10: errors.append('Architectural vocabulary must project exactly ten Dwellings')
     projected={x.get('canonical_room_id') for x in vocab.get('dwelling_projection',[]) if isinstance(x,dict)}
     if projected!=parent_ids: errors.append('Dwelling projection must cover exactly the ten canonical Rooms')
