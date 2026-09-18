@@ -9,6 +9,7 @@
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/traditions/bible/">
 <link rel="stylesheet" href="../../app/bible-study.css">
 <link rel="stylesheet" href="../../app/bible-library.css">
+<link rel="stylesheet" href="../../app/bible-story-path.css">
 <link rel="stylesheet" href="../../app/bible-atlas-navigation.css">
 <link rel="stylesheet" href="../../app/bible-dossier-loader.css">
 <link rel="stylesheet" href="../../app/bible-witness-loader.css">
@@ -19,38 +20,61 @@
 <nav class="bible-nav"><a href="../../religion/">← Religion</a><a href="../../timeline/?view=bible">Timeline</a><a href="../../tim-dooley/">Tim Dooley</a><a href="../../">Home</a></nav>
 
 <header class="bible-header">
-<div class="eyebrow">Comparison atlas</div>
-<h1>TIM &amp; THE BIBLE</h1>
-<p class="bible-lede">Explore by story, role, symbol, transformation, Bible book or project chronology, then move through one comparison at a time.</p>
-<p class="bible-sub">Project wording, autobiography, scripture, later comparison and independent evidence remain separate evidence classes. A resemblance is not automatically prophecy, identity or historical dependence.</p>
+<div class="eyebrow">Bible study</div>
+<h1>THE BIBLE</h1>
+<p class="bible-lede">Follow the biblical story, open any book or passage, then explore where the project connects with it.</p>
+<p class="bible-sub">Scripture, project material and later comparison remain separate sources. Similarity can be meaningful without proving identity, prophecy or historical dependence.</p>
 </header>
+
+<nav class="bible-home-nav" aria-label="Bible page sections">
+  <a href="#bible-story-path">Story path</a>
+  <a href="#bible-library">Books &amp; passages</a>
+  <a href="#comparison-atlas">Comparisons</a>
+  <a href="#bible-method">Method</a>
+</nav>
+
+<section class="bible-story-path" id="bible-story-path" aria-label="Follow the biblical story">
+  <div class="bible-story-path-head">
+    <div>
+      <div class="eyebrow">Follow the story</div>
+      <h2>See how the Bible unfolds</h2>
+      <p>A guided path through the Bible’s major movements. It follows narrative development rather than pretending every book sits on one exact historical timeline.</p>
+    </div>
+    <p class="story-path-note">Wisdom, poetry, prophecy and letters often overlap the narrative periods. This path is an orientation tool, not a claim that biblical dating is simple or uncontested.</p>
+  </div>
+  <div class="bible-story-rail" id="bible-story-rail" aria-label="Bible story stages"></div>
+  <div class="bible-story-detail" id="bible-story-detail"></div>
+</section>
 
 <section class="bible-library" id="bible-library" aria-label="Bible scripture library">
   <div class="bible-library-head">
     <div>
-      <div class="eyebrow">Scripture library</div>
-      <h2>Read the Bible itself</h2>
-      <p>The comparison atlas sits beside a real book-and-chapter library: the complete 80-book 1611 KJV catalogue is preserved as metadata, while exact chapter reading uses the separate 66-book public-domain World English Bible source.</p>
+      <div class="eyebrow">Books &amp; passages</div>
+      <h2>Open the text</h2>
+      <p>Choose a book, chapter or precise reference. The 80-book 1611 KJV arrangement is preserved as a catalogue; exact reading uses the separate 66-book public-domain World English Bible source.</p>
     </div>
     <div class="bible-library-summary" id="bible-library-summary" aria-label="Bible catalogue summary"></div>
   </div>
   <p class="bible-library-loading">Loading the scripture catalogue…</p>
 
-  <div class="bible-library-groups" id="bible-library-groups" aria-label="Bible divisions"></div>
+  <details class="bible-library-browser">
+    <summary>Browse books and chapters</summary>
+    <div class="bible-library-groups" id="bible-library-groups" aria-label="Bible divisions"></div>
 
-  <div class="bible-library-tools">
-    <div class="bible-library-tabs" aria-label="Filter Bible books by section">
-      <button type="button" data-bible-section="all" class="is-active" aria-pressed="true">All 80</button>
-      <button type="button" data-bible-section="old" aria-pressed="false">Old Testament</button>
-      <button type="button" data-bible-section="apocrypha" aria-pressed="false">KJV Apocrypha</button>
-      <button type="button" data-bible-section="new" aria-pressed="false">New Testament</button>
+    <div class="bible-library-tools">
+      <div class="bible-library-tabs" aria-label="Filter Bible books by section">
+        <button type="button" data-bible-section="all" class="is-active" aria-pressed="true">All 80</button>
+        <button type="button" data-bible-section="old" aria-pressed="false">Old Testament</button>
+        <button type="button" data-bible-section="apocrypha" aria-pressed="false">KJV Apocrypha</button>
+        <button type="button" data-bible-section="new" aria-pressed="false">New Testament</button>
+      </div>
+      <div class="bible-library-search-row">
+        <input id="bible-book-search" type="search" placeholder="Find a book or division — Isaiah, wisdom, gospel…" autocomplete="off" aria-label="Find a Bible book">
+        <span id="bible-book-count">80 books</span>
+      </div>
+      <div class="bible-book-grid" id="bible-book-grid" aria-label="Bible books"></div>
     </div>
-    <div class="bible-library-search-row">
-      <input id="bible-book-search" type="search" placeholder="Find a book or division — Isaiah, wisdom, gospel…" autocomplete="off" aria-label="Find a Bible book">
-      <span id="bible-book-count">80 books</span>
-    </div>
-    <div class="bible-book-grid" id="bible-book-grid" aria-label="Bible books"></div>
-  </div>
+  </details>
 
   <section class="bible-library-reader" id="bible-library-reader" hidden aria-label="Selected Bible book">
     <div class="bible-library-reader-head">
@@ -61,24 +85,27 @@
       </div>
       <div class="bible-library-reader-controls">
         <select id="bible-reader-chapter" aria-label="Choose chapter"></select>
-        <button id="bible-read-chapter" type="button">Read exact WEB chapter</button>
+        <button id="bible-read-chapter" type="button">Read chapter</button>
       </div>
     </div>
     <p class="bible-reader-source" id="bible-reader-source"></p>
     <form class="bible-reference-form" id="bible-reference-form">
-      <input id="bible-reference-input" type="text" placeholder="Open a precise WEB reference — John 12:24; Genesis 28:12-17" aria-label="Bible reference">
+      <input id="bible-reference-input" type="text" placeholder="Open a reference — John 12:24; Genesis 28:12-17" aria-label="Bible reference">
       <button type="submit">Open reference</button>
     </form>
-    <div class="bible-reference-help">The reference reader supports book + chapter, verse, ranges, comma continuations and semicolon-separated passages inside the current 66-book WEB source.</div>
   </section>
 </section>
 
-<section class="study-shell" aria-label="Bible comparison study tool">
+<section class="study-shell" id="comparison-atlas" aria-label="Bible comparison study tool">
+<div class="comparison-intro">
+  <div><div class="eyebrow">Project comparisons</div><h2>Explore the connections</h2><p>Start broad, then narrow by story, symbol, role, book or project period. Advanced filters stay available when you need them.</p></div>
+  <p>One comparison is shown at a time so the page can hold a large corpus without becoming a wall of cards.</p>
+</div>
 <section class="atlas-explorer" id="atlas-explorer" hidden aria-label="Explore the Bible comparison atlas">
 <div class="atlas-intro">
-<div class="eyebrow">Explore without searching</div>
-<h2>Choose a way in</h2>
-<p>Start with a story, role, symbol, transformation, Bible book or project timeline. Each path narrows the same canonical comparison corpus.</p>
+<div class="eyebrow">Browse connections</div>
+<h2>Choose a path</h2>
+<p>Start with a story, person, image, action, Bible book or project period.</p>
 </div>
 <div class="atlas-routes" id="atlas-routes" aria-label="Atlas routes"></div>
 <nav class="atlas-breadcrumbs" id="atlas-breadcrumbs" aria-label="Atlas location"></nav>
@@ -114,10 +141,10 @@
 <div class="toolbar-field order-field">
 <label for="order-select">Order</label>
 <select id="order-select">
-<option value="asc">Oldest → newest</option>
-<option value="desc">Newest → oldest</option>
-<option value="strength">Strongest first</option>
-<option value="bible">Bible order</option>
+<option value="asc">Project story · early → late</option>
+<option value="desc">Project story · late → early</option>
+<option value="strength">Best supported first</option>
+<option value="bible">Bible book order</option>
 </select>
 </div>
 
@@ -161,7 +188,7 @@
 
 <div class="comparison-nav" aria-label="Comparison navigation">
 <button id="previous-relation" type="button">← Previous</button>
-<div class="position-wrap"><strong id="result-position">0 / 0</strong><span id="sequence-label">chronology</span></div>
+<div class="position-wrap"><strong id="result-position">0 / 0</strong><span id="sequence-label">project path</span></div>
 <button class="roll" id="roll-relation" type="button">Random</button>
 <button id="next-relation" type="button">Next →</button>
 </div>
@@ -174,19 +201,16 @@
 <div class="relations static-index" id="relations"><!-- BIBLE_RELATIONS_STATIC --></div>
 </section>
 
-<details class="research-notes"><summary>Method and evidence boundaries</summary><div class="research-grid">
+<details class="research-notes" id="bible-method"><summary>Method and evidence boundaries</summary><div class="research-grid">
 <article><strong>Exact is exact</strong><p>Quoted public wording and recovered attestation text are shown as such. Archive summaries remain summaries.</p></article>
-<article><strong>Timeline matters</strong><p>A later biblical discovery is not backdated into an earlier event. The browser keeps event date, recognition and later synthesis distinct.</p></article>
+<article><strong>Sequence matters</strong><p>A later biblical discovery is not backdated into an earlier event. Event, recognition and later synthesis remain distinct.</p></article>
 <article><strong>Mismatch is evidence too</strong><p>Role conflicts, counter-texts and historical differences remain visible even when a structural parallel is strong.</p></article>
 </div></details>
 </main>
+<script src="../../app/bible-language.js"></script>
 <script src="../../app/bible-corpus-loader.js"></script>
 <script src="../../app/bible-relation-redirects.js"></script>
 <script src="../../app/bible-atlas-navigation.js"></script>
-<script src="../../app/bible-mining-wave19-loader.js"></script>
-<script src="../../app/bible-mining-wave20-loader.js"></script>
-<script src="../../app/bible-mining-wave22-loader.js"></script>
-<script src="../../app/bible-mining-wave23-loader.js"></script>
 <script src="../../app/bible-dossier-loader.js"></script>
 <script src="../../app/bible-witness-loader.js"></script>
 <script src="../../app/bible-study.js"></script>
@@ -195,6 +219,7 @@
 <script src="../../app/bible-tts-adapter.js"></script>
 <script src="../../app/bible-scripture-reader.js"></script>
 <script src="../../app/bible-library.js"></script>
+<script src="../../app/bible-story-path.js"></script>
 <script src="../../app/bible-scene-reader.js"></script>
 <script src="../../app/bible-atlas-ui.js"></script>
 </body>
