@@ -1,0 +1,209 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "crosscutting-lenses",
+  "purpose": "Provide a small set of non-owning interpretive lenses that can be applied across the Potato of Life without creating new Rooms, planes or realms.",
+  "master_rule": "A lens changes how a subject is read; it does not change who owns the knowledge or create a new ontological level.",
+  "lenses": [
+    {
+      "id": "motion",
+      "label": "Motion — Wheel, Ring, Path & Spiral",
+      "question": "Is this repeating, circulating, practicing, returning or actually changing level?",
+      "project_operators": [
+        "ring",
+        "spiral",
+        "ladder",
+        "return",
+        "door"
+      ],
+      "room_ids": [
+        "symbolic-architecture",
+        "practice-ethics",
+        "systems-dynamics",
+        "math-geometry"
+      ],
+      "distinctions": [
+        "Ring = recurrence with zero net state displacement.",
+        "Spiral = recurrence with non-zero displacement.",
+        "Path = ordered practice/choice sequence through conditions.",
+        "Wheel = coordinated cycle or multi-part practice whose meaning depends on its tradition; it is not automatically a Ring or Spiral."
+      ],
+      "comparative_mirrors": [
+        {
+          "id": "buddhist-dharma-wheel",
+          "tradition": "Buddhist traditions",
+          "use": "The Dharma wheel and Eightfold Path offer a disciplined comparator for coordinated practice: multiple spokes/aspects belong to one path rather than one vertical ladder.",
+          "boundary": "The Noble Eightfold Path is a Buddhist teaching aimed at ending suffering; it is not a hidden Potatoverse spiral."
+        },
+        {
+          "id": "daoist-wheel-hub",
+          "tradition": "Daodejing chapter 11 / Daoist reception",
+          "use": "The useful empty hub helps distinguish center-as-capacity from center-as-filled-object.",
+          "boundary": "The Daoist image is a philosophical comparator, not evidence that Daoism encodes the Potato House."
+        }
+      ]
+    },
+    {
+      "id": "polarity",
+      "label": "Polarity — Up/Down, Light/Shadow, Material/Spiritual",
+      "question": "Which paired distinction is active, and is it directional, functional, perceptual or metaphysical?",
+      "project_operators": [
+        "axis",
+        "plane",
+        "shadow",
+        "eye",
+        "root",
+        "canopy"
+      ],
+      "room_ids": [
+        "symbolic-architecture",
+        "theology-god-language",
+        "comparative-mythology",
+        "symbolic-body-comparison"
+      ],
+      "distinctions": [
+        "Up/down are directions before they are values.",
+        "Light/shadow describe visibility/integration before moral worth.",
+        "Material/spiritual are interpretive domains, not automatically World/Heaven.",
+        "Root/canopy are organism positions, not lower/higher human worth."
+      ],
+      "comparative_mirrors": [
+        {
+          "id": "yin-yang",
+          "tradition": "Chinese/Daoist cosmological and philosophical traditions",
+          "use": "Useful comparator for complementary differentiated tendencies that can alternate and mutually condition one another.",
+          "boundary": "Yin/yang should not be reduced to good/evil, female/male stereotypes, or one-to-one Potato planes."
+        }
+      ]
+    },
+    {
+      "id": "memory-history",
+      "label": "Memory — Event, History, Archive & Akashic Metaphor",
+      "question": "What happened, what was recorded, what was remembered, and what later interpretation was layered on top?",
+      "project_operators": [
+        "root",
+        "seed",
+        "archive",
+        "soil",
+        "shadow"
+      ],
+      "room_ids": [
+        "chronology-events",
+        "developmental-genealogy",
+        "memory-recovery",
+        "provenance-evidence",
+        "witness-attestation"
+      ],
+      "distinctions": [
+        "Event is not the same as memory of event.",
+        "Archive is not the same as interpretation.",
+        "Repeated citation is not multiple independent provenance.",
+        "Integrated memory can become Soil; uncontextualized residue can become Mud/Swamp."
+      ],
+      "comparative_mirrors": [
+        {
+          "id": "akashic-records",
+          "tradition": "Theosophical and later esoteric traditions",
+          "use": "Useful only as a metaphorical neighbor for an all-encompassing record/archive idea. The project may use 'Akashic Tree' as a reader metaphor for connected provenance and memory.",
+          "boundary": "The project does not present a literal supernatural Akashic Record as established fact."
+        }
+      ]
+    },
+    {
+      "id": "social-formation",
+      "label": "Formation — Culture, Subculture, Institution & High-Control",
+      "question": "How does repeated interaction become norms, identity, memory, organization or capture?",
+      "project_operators": [
+        "garden",
+        "swamp",
+        "tree-of-strife",
+        "house",
+        "shell-cube"
+      ],
+      "room_ids": [
+        "subculture-group-formation",
+        "information-ecology",
+        "internet-platforms",
+        "politics-governance",
+        "institutions-markets"
+      ],
+      "distinctions": [
+        "Culture describes shared meaning/practice, not moral quality.",
+        "Subculture describes bounded identity/practice, not pathology.",
+        "Institution describes durable reproduction through rules/roles/resources.",
+        "High-control is a mechanism analysis of dependency, isolation, punishment, authority concentration and exit cost; it is not inferred from unusual religion or esotericism."
+      ]
+    },
+    {
+      "id": "embodiment-spirit",
+      "label": "Embodiment — Body, Material, Spirit & Flow",
+      "question": "What is physically embodied, what is metaphorical, and what is being claimed as theological/spiritual relation?",
+      "project_operators": [
+        "potato-of-life",
+        "spirit",
+        "door",
+        "axis",
+        "seed",
+        "root"
+      ],
+      "room_ids": [
+        "potato-biology",
+        "anatomy-physiology",
+        "symbolic-body-comparison",
+        "theology-god-language",
+        "model-testing"
+      ],
+      "distinctions": [
+        "Literal potato biology comes before metaphor.",
+        "Body mappings are symbolic comparisons unless independently scientific.",
+        "Spirit is project-theological living continuity/flow; it is not identical to CSF, breath, electricity or any one physical carrier.",
+        "A material process can illuminate a spiritual metaphor without proving it."
+      ]
+    },
+    {
+      "id": "practice-path",
+      "label": "Practice — View, Intention, Conduct, Attention & Return",
+      "question": "What does the model ask someone to notice, choose, practice, test and return to the world?",
+      "project_operators": [
+        "eye",
+        "door",
+        "spiral",
+        "garden",
+        "fruit",
+        "return"
+      ],
+      "room_ids": [
+        "practice-ethics",
+        "model-testing",
+        "open-questions",
+        "works"
+      ],
+      "distinctions": [
+        "Practice is not just ascent; it must affect speech, conduct, capability and consequence.",
+        "Fruit is the downstream test.",
+        "Return is required: insight that never changes relation or conduct remains incomplete in the project."
+      ],
+      "comparative_mirrors": [
+        {
+          "id": "noble-eightfold-path",
+          "tradition": "Buddhist traditions",
+          "use": "Strong comparator for a non-single-axis practice: right view/intention, speech/action/livelihood, effort/mindfulness/concentration coordinate wisdom, conduct and mental cultivation.",
+          "boundary": "The Eightfold Path belongs to Buddhist soteriology and ethics; Potatoism should compare structure, not claim ownership or equivalence."
+        },
+        {
+          "id": "wu-wei",
+          "tradition": "Daoist traditions",
+          "use": "Useful comparator for cultivation that works with conditions rather than confusing force with effective action.",
+          "boundary": "Wu wei is not mere passivity and is not a biological property of potatoes."
+        }
+      ]
+    }
+  ],
+  "application_order": [
+    "Start from a project-native node or Room-owned subject.",
+    "Apply one lens only if it clarifies a real question.",
+    "Use comparative mirrors after own-tradition meaning is established.",
+    "Do not let a lens become a new Room, floor, deity or metaphysical proof.",
+    "Return the clarified subject to its canonical Room and center-out ring."
+  ]
+}
