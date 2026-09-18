@@ -347,11 +347,35 @@ def validate_symbolic_planes(errors,rooms):
     world=next((x for x in rows if isinstance(x,dict) and x.get('id')=='world-plane'),{})
     if 'Plane' not in world.get('aliases',[]):
         errors.append('World Plane must preserve Plane alias')
+    compass=data.get('symbolic_compass')
+    if not isinstance(compass,dict):
+        errors.append('symbolic compass missing'); return
+    directions=compass.get('directions',[])
+    expected_dirs=['n','ne','e','se','s','sw','w','nw']
+    if [x.get('id') for x in directions if isinstance(x,dict)]!=expected_dirs:
+        errors.append('symbolic compass directions/order must remain N, NE, E, SE, S, SW, W, NW')
+    expected_rooms=['potatoverse-canon','traditions-texts','science-formal-models','life-body','world-systems','culture-information','time-history','archive-sources']
+    if [x.get('room_id') for x in directions if isinstance(x,dict)]!=expected_rooms:
+        errors.append('symbolic compass Room mapping drifted')
+    if compass.get('center',{}).get('room_id')!='research-lab':
+        errors.append('symbolic compass center must remain Research Lab')
+    if compass.get('outer_ring',{}).get('room_id')!='works':
+        errors.append('symbolic compass outer ring must remain Works/Fruit')
+    for row in directions:
+        if not isinstance(row,dict): continue
+        focus=row.get('focus_by_plane',{})
+        for pid in ('heaven-plane','world-plane','below-plane'):
+            if pid not in focus: errors.append(f'compass direction {row.get("id")} missing {pid} focus')
+        for sid in row.get('subroom_ids',[]):
+            if not isinstance(sid,str) or not sid: errors.append(f'compass direction {row.get("id")} has invalid subroom id')
+    rules=' '.join(compass.get('entity_projection_rule',[])).casefold()
+    for token in ('historically rooted','does not create several entities','not synonyms','potatoverse mappings'):
+        if token not in rules: errors.append(f'symbolic compass entity projection rule missing boundary: {token}')
 
 def main():
     errors=[]; rooms=validate_rooms(errors); surfaces=validate_surfaces(errors,rooms); validate_concept_topology(errors,rooms,surfaces); validate_symbolic_planes(errors,rooms)
     if errors:
         print('POTATO HOUSE GOVERNANCE VALIDATION FAILED'); [print('-',e) for e in errors]; return 1
-    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, surfaces, semantic topology, reader corridor and route authority converge'); return 0
+    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, surfaces, semantic topology, three planes, cardinal compass, reader corridor and route authority converge'); return 0
 
 if __name__=='__main__': raise SystemExit(main())
