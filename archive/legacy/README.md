@@ -24,7 +24,6 @@ This directory records legacy strata that have been superseded, retired, or are 
 
 These files remain at repository root until their unique content and downstream references have been fully migrated:
 
-- `research.json` — **superseded-retained mixed research donor**. Preserve for provenance and unmigrated source-derived material; do not use as a current canonical owner.
 - `book-research.json` — **retained source bridge** for the 2024 Great Book extraction. Keep while source citations depend on it.
 - `2026-master-framework.json` — **historical donor** recording the conversation-developed 2026 synthesis; current definitions live in dedicated owners.
 - `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md` — **retained timeline/source stratum** used for provenance and early roadmap context; canonical event identity lives in the timeline data owners.
@@ -84,3 +83,11 @@ The goal is less clutter **without provenance loss**.
 - Role: readable Alternative Research donor covering potato evolution, diversity, domestication, food systems, stewardship and systems interpretation.
 - Status: retired after externally sourced biology/human-ecology material was promoted into `knowledge/science/potato-biology-ecology-development-canon.json` and practice/symbolic owners.
 - Last live blob: `7297ba28bb7a3ae05f3902948c57984faac3bf39`.
+
+
+### `research.json`
+
+- Role: former root mixed Great Book/comparative research layer.
+- Status: retired after every substantive section was routed/promoted to current specialist owners and all open questions moved to `data/research-frontier.json`.
+- Last live blob: `353678889ad4b46890319c812951ae494cf1e791`.
+- Major successors include `knowledge/philosophy/potato-philosophy.json`, `knowledge/core/symbolic-relational-synthesis.json`, `knowledge/core/potatoverse-master-framework.json`, `knowledge/philosophy/timic-dynamics.json`, `knowledge/core/center-living-metabolism-expanded-atlas.json`, `knowledge/traditions/alchemy-transmutation-symbol-atlas.json`, `knowledge/traditions/adversarial-underworld-judgment-atlas.json`, `knowledge/timeline/developmental-genealogy.json`, and `data/research-frontier.json`.
