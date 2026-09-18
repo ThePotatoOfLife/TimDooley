@@ -1,5 +1,5 @@
 {
-  "version": "2.3.0",
+  "version": "2.4.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -133,6 +133,16 @@
       "concern": "concrete society population and Spirit Mind Body projection",
       "owner": "knowledge/core/inhabited-house-society-ontology.json",
       "rule": "Symbols are operators and coordinates; concrete people, institutions, organizations, cultures, infrastructures, records and relationships are the population. Spirit/Mind/Body are projections over records, not duplicate owners or ranks of truth."
+    },
+    {
+      "concern": "rare value and undiscovered-knowledge discovery",
+      "owner": "knowledge/research/rare-value-undiscovered-knowledge-protocol.json",
+      "rule": "Promote synthesis only when independently sourced bridge relations produce explanatory gain, provenance, testability and a new research or capability path."
+    },
+    {
+      "concern": "recent commit embodiment and depth completion",
+      "owner": "knowledge/research/recent-commit-embodiment-atlas-257-276.json",
+      "rule": "Treat commits #257–#276 as unfinished until their concepts have purpose, inhabitants, mechanisms, evidence boundaries, interfaces, downstream questions and at least one discovery route."
     }
   ],
   "resolver_order": [
