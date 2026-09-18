@@ -1,5 +1,5 @@
 {
-  "version": "4.6.0",
+  "version": "4.7.0",
   "updated": "2026-09-18",
   "purpose": "Canonical backend-to-frontend projection contract. Canonical data stays modular and keeps its existing owners; this bridge maps major archive branches and backend families into exactly five simple public doors plus a visible secondary Rooms layer and quieter global/deep surfaces.",
   "data_roots": [
@@ -278,7 +278,9 @@
     "house": {
       "global_route": "house/",
       "canonical_owner": "docs/POTATO-HOUSE-CONSTITUTION.md",
-      "supporting_owner": "data/house/rooms.json"
+      "supporting_owner": "data/house/rooms.json",
+      "subroom_registry": "data/house/subrooms.json",
+      "topology": "data/house/topology.json"
     },
     "paths": {
       "global_route": "paths/",
@@ -362,7 +364,9 @@
     "Requested record paths are fetched only after resolving through an approved registry/manifest allowlist",
     "Living Axis is a secondary cross-domain guide and never becomes a sixth primary Door",
     "House is the public structural guide above Rooms and Views; it is not a sixth primary Door",
-    "Life & Body and Research Lab remain canonical Rooms with explicit public routes"
+    "Life & Body and Research Lab remain canonical Rooms with explicit public routes",
+    "The ten canonical Rooms remain top-level owners while nested Rooms delegate scope within them",
+    "House topology is typed and multi-axis; URL nesting or visual proximity never determines truth rank or ownership"
   ],
   "design_rule": "Five simple doors above, visible subject Rooms in the middle, one deep archive below. World is the public domain; specialist views project the same canonical backend without duplicating truth or exposing internal file organization as navigation."
 }
