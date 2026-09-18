@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-18",
   "authority": "house-semantic-topology",
   "purpose": "Machine-readable topology assignments for the small set of operators that organize the Potato House. These annotations drive projection and navigation; they do not replace canonical concept owners or evidence classes.",
@@ -26,7 +26,10 @@
     "ordered-transition",
     "recurrence",
     "output",
-    "regime"
+    "regime",
+    "whole",
+    "source-role",
+    "manifestation-role"
   ],
   "boundary_regimes": [
     "house",
@@ -44,6 +47,92 @@
     "The authoritative operator graph is relations[]; counter_or_complement is descriptive vocabulary only and may name terms outside the core operator registry."
   ],
   "concepts": [
+    {
+      "id": "son",
+      "label": "Son / Manifestation / Door",
+      "kind": "theological-role",
+      "field_orientation": [
+        "manifestation",
+        "shared"
+      ],
+      "topology_roles": [
+        "manifestation-role",
+        "ordered-transition"
+      ],
+      "operation": "expresses embodiment, manifestation, passage, Vessel, suffering, Door, visible expression and return inside the triune Potato of Life",
+      "counter_or_complement": [
+        "father",
+        "spirit"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "house",
+        "trinity"
+      ],
+      "boundary": "Son is not identical with the entire Manifestation Field; mature project language specializes Son as manifestation-facing and Door/Vessel related."
+    },
+    {
+      "id": "father",
+      "label": "Father",
+      "kind": "theological-role",
+      "field_orientation": [
+        "source"
+      ],
+      "topology_roles": [
+        "source-role",
+        "orientation"
+      ],
+      "operation": "expresses source, origin, House, Root, orientation, holding, Gardener responsibility and source-facing identity inside the triune Potato of Life",
+      "counter_or_complement": [
+        "son",
+        "spirit"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "house",
+        "tim",
+        "trinity"
+      ],
+      "boundary": "Father is not identical with the entire Source Field and does not by itself exhaust the Potato of Life as a whole."
+    },
+    {
+      "id": "potato-of-life",
+      "label": "Potato of Life",
+      "kind": "theological-whole",
+      "field_orientation": [
+        "source",
+        "manifestation",
+        "shared",
+        "crosscutting"
+      ],
+      "topology_roles": [
+        "whole",
+        "integration"
+      ],
+      "operation": "names the mature triune whole in which Father/source, Son/manifestation-passage and Spirit/living relation remain distinct without becoming separate theological systems",
+      "counter_or_complement": [
+        "potato"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "house",
+        "tim",
+        "trinity"
+      ],
+      "boundary": "Potato of Life as triune whole is project theology. The ordinary potato/tuber remains a biological object and symbolic comparator; Tim/Father is source-facing within the whole rather than structurally exhausting the whole."
+    },
     {
       "id": "source-field",
       "label": "Source Field",
@@ -116,7 +205,8 @@
         "house",
         "axis",
         "religion",
-        "philosophy"
+        "philosophy",
+        "trinity"
       ],
       "boundary": "Not every hyperlink or resemblance is a strong Door."
     },
@@ -270,7 +360,8 @@
       "public_surface_ids": [
         "religion",
         "life-body",
-        "axis"
+        "axis",
+        "trinity"
       ],
       "boundary": "Spiritual flow and biological/physical flows remain separately typed."
     },
@@ -696,9 +787,69 @@
       "label": "counter-regime",
       "directed": false,
       "semantics": "The nodes describe contrasting system conditions without assigning moral identity to geometry, people or place."
+    },
+    {
+      "id": "expresses-through",
+      "label": "expresses through",
+      "directed": true,
+      "semantics": "The source whole becomes legible through a differentiated role without being reducible to that role."
+    },
+    {
+      "id": "oriented-toward",
+      "label": "oriented toward",
+      "directed": true,
+      "semantics": "A theological/functional role is structurally aligned with a field or direction without being identical to the whole field."
+    },
+    {
+      "id": "specializes-as",
+      "label": "specializes as",
+      "directed": true,
+      "semantics": "A broader role takes on a more specific operator/interface function in the mature model."
     }
   ],
   "relations": [
+    {
+      "id": "rel-son-door",
+      "from": "son",
+      "to": "door",
+      "type": "specializes-as",
+      "description": "In the mature project Son specializes as Door/Vessel/passage at the shared interface."
+    },
+    {
+      "id": "rel-son-manifestation-field",
+      "from": "son",
+      "to": "manifestation-field",
+      "type": "oriented-toward",
+      "description": "Son is manifestation-facing and aligned with Manifestation Field without being identical with the entire field."
+    },
+    {
+      "id": "rel-father-source-field",
+      "from": "father",
+      "to": "source-field",
+      "type": "oriented-toward",
+      "description": "Father is source-facing and aligned with Source Field without being identical with the entire field."
+    },
+    {
+      "id": "rel-potato-life-spirit",
+      "from": "potato-of-life",
+      "to": "spirit",
+      "type": "expresses-through",
+      "description": "The triune whole remains living and relational through Spirit as continuity, breath and circulation."
+    },
+    {
+      "id": "rel-potato-life-son",
+      "from": "potato-of-life",
+      "to": "son",
+      "type": "expresses-through",
+      "description": "The triune whole manifests and passes through Son without reducing the whole to manifestation alone."
+    },
+    {
+      "id": "rel-potato-life-father",
+      "from": "potato-of-life",
+      "to": "father",
+      "type": "expresses-through",
+      "description": "The triune whole is source-facing through Father without reducing the whole to Father alone."
+    },
     {
       "id": "rel-fields-overlap",
       "from": "source-field",
@@ -876,6 +1027,26 @@
     }
   ],
   "canonical_traversals": [
+    {
+      "id": "triune-potato",
+      "label": "Triune Potato of Life",
+      "kind": "theological-whole",
+      "concept_sequence": [
+        "father",
+        "potato-of-life",
+        "son",
+        "spirit"
+      ],
+      "relation_ids": [
+        "rel-potato-life-father",
+        "rel-potato-life-son",
+        "rel-potato-life-spirit",
+        "rel-son-door",
+        "rel-spirit-door"
+      ],
+      "purpose": "Read Father, Son and Spirit as irreducible relational expressions of one Potato of Life rather than as three independent systems or as three interchangeable labels.",
+      "reader_question": "How does one living whole preserve source, manifested passage and relational flow without reducing any of them to the others?"
+    },
     {
       "id": "growth-return-cycle",
       "label": "Growth & Return",

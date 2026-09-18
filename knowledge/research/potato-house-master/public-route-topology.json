@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0",
+  "version": "1.5.0",
   "updated": "2026-09-18",
   "purpose": "Route-topology bridge for active public surfaces; navigation/migration classification only, not substantive knowledge ownership. House, Paths and Living Axis are structural projections over the canonical Rooms, not additional fact owners.",
   "room_registry": "data/house/rooms.json",
@@ -357,6 +357,20 @@
       "compatibility_routes": [
         "/religion/jesus-tim/"
       ]
+    },
+    {
+      "surface_id": "trinity",
+      "surface_type": "guide",
+      "canonical_route": "/religion/trinity/",
+      "primary_hub_id": "religion",
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "archive-sources"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
     },
     {
       "surface_id": "culture",

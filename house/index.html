@@ -26,8 +26,8 @@
 <div class="model-axis" aria-hidden="true"></div><div class="model-plane" aria-hidden="true"></div><div class="model-cross" aria-hidden="true"></div>
 </div>
 <div class="model-caption"><p class="eyebrow">Canonical topology</p><h3 id="potato-model-title">One House, two fields, one shared Door</h3>
-<p>The Potato is not a stack of floors. Source and Manifestation remain complete while genuinely overlapping. Their shared region is Door. Plane cuts through its widest middle; Axis passes through both centers; Cross is Plane × Axis at the relational midpoint.</p>
-<div class="model-rules"><div><b>Plane and Cross are inside the Door.</b> <span>They are coordinates of the overlap, not places you must travel through first.</span></div>
+<p>The Potato is not a stack of floors. Geometrically, Source and Manifestation remain complete while genuinely overlapping; their shared region is Door. Theologically, the whole is triune: Father is source-facing, Son is manifestation/passage-facing, and Spirit is living continuity through the relation. Plane cuts through the overlap; Axis passes through both centers; Cross is Plane × Axis at the relational midpoint.</p>
+<div class="model-rules"><div><b>Two fields do not mean only two theological terms.</b> <span>Fields are geometry; Father, Son and Spirit are theological roles/relations; Potato of Life is the whole.</span></div><div><b>Plane and Cross are inside the Door.</b> <span>They are coordinates of the overlap, not places you must travel through first.</span></div>
 <div><b>Dwellings are public scale projections.</b> <span>The ten canonical owners can be read as major abiding domains without creating another fact-owning backend layer.</span></div>
 <div><b>House and Shell are regimes.</b> <span>Healthy containment preserves circulation, repair and autonomy; capture is not defined by shape or vertical position.</span></div></div>
 </div></div></section>
@@ -150,7 +150,7 @@
       renderProjection(rows[0]?.id);
     }
     if(operatorRoot){
-      const preferred=['door','plane','axis','cross','eye','face','spirit','potato','seed','root','tree','mountain','ladder','spiral','fruit','garden','shell-cube','swamp'];
+      const preferred=['potato-of-life','father','son','spirit','door','plane','axis','cross','eye','face','potato','seed','root','tree','mountain','ladder','spiral','fruit','garden','shell-cube','swamp'];
       const byConcept=Object.fromEntries((concepts.concepts||[]).map(x=>[x.id,x]));
       const typeLabels=Object.fromEntries((concepts.relation_types||[]).map(x=>[x.id,x.label]));
       operatorRoot.innerHTML=preferred.filter(id=>byConcept[id]).map(id=>{const x=byConcept[id];return '<button class="operator-card" type="button" data-operator="'+esc(id)+'" aria-controls="houseOperatorRelations" aria-pressed="false"><b>'+esc(x.label)+'</b><small>'+esc(x.operation)+'</small></button>';}).join('');
