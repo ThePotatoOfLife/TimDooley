@@ -2,7 +2,7 @@
   "id": "root-system",
   "title": "Potato of Life Root System",
   "kind": "foundational ontology and branching skeleton",
-  "version": "4.8.0",
+  "version": "4.9.0",
   "updated": "2026-09-18",
   "aliases": [
     "Potato of Life skeleton",
@@ -282,6 +282,14 @@
         "comparative",
         "interpretation"
       ]
+    },
+    "layer_terrain_regime_grammar": {
+      "text": "Major Potatoverse symbols now have category before valence: planes are reader surfaces; Mountain/Pyramid/Swamp are terrain or constructed integration/entanglement fields; Garden/House/Shell are regimes; Roots/Trees are organisms; Ash/Mud/Soil/Seed are material states; Door/Pillars are threshold architecture; Eye/Shadow are perceptual or occlusion layers; Forge is transformation process; Spiral/Ladder/Drain/Return are routes. Shadow is crosscutting rather than a Below floor, and symbolic Swamp remains distinct from literal wetlands.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation",
+        "comparative"
+      ]
     }
   },
   "relationships": [
@@ -339,6 +347,11 @@
       "target": "providence-pyramid-pillars-atlas",
       "type": "comparative-architecture",
       "description": "Sourced history and project comparison for Eye of Providence, unfinished pyramid, Jachin/Boaz, 1776 and later esoteric reception."
+    },
+    {
+      "target": "layer-terrain-regime-atlas",
+      "type": "classification",
+      "description": "Defines category-before-valence grammar for planes, terrain, regimes, organisms, material states, thresholds, perception layers, processes and routes."
     }
   ],
   "retrieval": {
