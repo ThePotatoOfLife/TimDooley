@@ -1,5 +1,5 @@
 {
-  "version": "3.0.0",
+  "version": "3.1.0",
   "updated": "2026-09-18",
   "authority": "house-room-dossiers",
   "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
@@ -1023,12 +1023,17 @@
       ],
       "epistemic_boundary": "Recovered material retains its original epistemic and temporal status.",
       "knowledge_holdings": {
-        "primary_file_count": 1,
+        "primary_file_count": 2,
         "featured": [
           {
             "id": "conversation-recovery-inventory",
             "path": "knowledge/indexes/conversation-recovery-inventory.json",
             "kind": "room holding"
+          },
+          {
+            "id": "memory-recovery-method-atlas",
+            "path": "knowledge/indexes/memory-recovery-method-atlas.json",
+            "kind": "recovery method and temporal-strata atlas"
           }
         ]
       },
@@ -1077,9 +1082,9 @@
         }
       ],
       "next_work": [
+        "Use memory-recovery-method-atlas as the working substance spine; continue filling it with dated examples, measurements, counterexamples and handoffs rather than creating another structural layer.",
         "Deepen the Room through its center contribution: Recovers buried project material and turns forgotten residue into contextualized memory rather than mythology-by-reconstruction.",
         "Keep handoffs explicit: receive from provenance-evidence, witness-attestation; hand mature work to developmental-genealogy, canon-identities.",
-        "Deepen the substantive corpus before considering further subdivision.",
         "Keep this Room knowledge-led unless a real structured dataset emerges."
       ],
       "center_pairing": {
@@ -3034,7 +3039,7 @@
       ],
       "epistemic_boundary": "A model remains provisional when its discriminating observations or falsifiers are unavailable.",
       "knowledge_holdings": {
-        "primary_file_count": 5,
+        "primary_file_count": 6,
         "featured": [
           {
             "id": "model-testing-protocol",
@@ -3060,6 +3065,11 @@
             "id": "science-theory-rigor-completion-matrix-2026-09-11",
             "path": "knowledge/science/science-theory-rigor-completion-matrix-2026-09-11.json",
             "kind": "room holding"
+          },
+          {
+            "id": "model-discrimination-calibration-atlas",
+            "path": "knowledge/science/model-discrimination-calibration-atlas.json",
+            "kind": "model comparison, calibration and falsification atlas"
           }
         ]
       },
@@ -3111,6 +3121,7 @@
         }
       ],
       "next_work": [
+        "Use model-discrimination-calibration-atlas as the working substance spine; continue filling it with dated examples, measurements, counterexamples and handoffs rather than creating another structural layer.",
         "Deepen the Room through its center contribution: Decides what a candidate would have to predict, survive or fail before promotion.",
         "Keep handoffs explicit: receive from experiments-formalization, provenance-evidence; hand mature work to science-formal-models, research-programmes.",
         "Keep this Room knowledge-led unless a real structured dataset emerges."
@@ -3205,7 +3216,7 @@
       ],
       "epistemic_boundary": "Biological facts may motivate metaphor but do not prove spiritual interpretation.",
       "knowledge_holdings": {
-        "primary_file_count": 3,
+        "primary_file_count": 4,
         "featured": [
           {
             "id": "potato-growth-principles",
@@ -3221,6 +3232,11 @@
             "id": "potato-angels-eye-sprout-development-ledger",
             "path": "knowledge/timeline/potato-angels-eye-sprout-development-ledger.json",
             "kind": "room holding"
+          },
+          {
+            "id": "potato-organism-cycle-atlas",
+            "path": "knowledge/biology/potato-organism-cycle-atlas.json",
+            "kind": "literal potato organism and developmental-cycle atlas"
           }
         ]
       },
@@ -3262,9 +3278,9 @@
         }
       ],
       "next_work": [
+        "Use potato-organism-cycle-atlas as the working substance spine; continue filling it with dated examples, measurements, counterexamples and handoffs rather than creating another structural layer.",
         "Deepen the Room through its center contribution: Provides the literal organism that grounds the project's biological metaphors and prevents symbolic drift.",
         "Keep handoffs explicit: receive from model-testing; hand mature work to symbolic-body-comparison, practice-ethics.",
-        "Deepen the substantive corpus before considering further subdivision.",
         "Keep this Room knowledge-led unless a real structured dataset emerges."
       ],
       "center_pairing": {
@@ -4602,7 +4618,7 @@
       ],
       "epistemic_boundary": "Symbolic direction or project quadrant must not overwrite ordinary geography or sovereignty.",
       "knowledge_holdings": {
-        "primary_file_count": 4,
+        "primary_file_count": 5,
         "featured": [
           {
             "id": "greater-israel-covenant-land-tikkun-atlas",
@@ -4623,6 +4639,11 @@
             "id": "operation-rising-lion-tim-window-2025",
             "path": "knowledge/geopolitics/operation-rising-lion-tim-window-2025.json",
             "kind": "room holding"
+          },
+          {
+            "id": "geography-place-state-boundary-atlas",
+            "path": "knowledge/world/geography-place-state-boundary-atlas.json",
+            "kind": "neutral geographic object and boundary atlas"
           }
         ]
       },
@@ -4687,9 +4708,9 @@
         }
       ],
       "next_work": [
+        "Use geography-place-state-boundary-atlas as the working substance spine; continue filling it with dated examples, measurements, counterexamples and handoffs rather than creating another structural layer.",
         "Deepen the Room through its center contribution: Anchors abstract programmes and histories in real territories, boundaries and country contexts.",
         "Keep handoffs explicit: receive from provenance-evidence; hand mature work to politics-governance, infrastructure-capability.",
-        "Deepen the substantive corpus before considering further subdivision.",
         "Look for another real guarded interface only if cross-Room work repeatedly needs it.",
         "Apply the Foundation lens where a durable beginning or refoundation materially explains current identity, rules or reproduction."
       ],
@@ -4779,12 +4800,17 @@
       ],
       "epistemic_boundary": "Documented public behavior stays distinct from motive claims and private information.",
       "knowledge_holdings": {
-        "primary_file_count": 1,
+        "primary_file_count": 2,
         "featured": [
           {
             "id": "digital-witness-livestream-liturgy",
             "path": "knowledge/culture/digital-witness-livestream-liturgy.json",
             "kind": "room holding"
+          },
+          {
+            "id": "platform-mechanics-atlas",
+            "path": "knowledge/culture/platform-mechanics-atlas.json",
+            "kind": "platform mediation and mechanics atlas"
           }
         ]
       },
@@ -4834,9 +4860,9 @@
         }
       ],
       "next_work": [
+        "Use platform-mechanics-atlas as the working substance spine; continue filling it with dated examples, measurements, counterexamples and handoffs rather than creating another structural layer.",
         "Deepen the Room through its center contribution: Explains how platform architecture changes visibility, persistence, incentives and social memory.",
         "Keep handoffs explicit: receive from information-ecology; hand mature work to subculture-group-formation, witness-attestation.",
-        "Deepen the substantive corpus before considering further subdivision.",
         "Keep this Room knowledge-led unless a real structured dataset emerges.",
         "Apply the Foundation lens where a durable beginning or refoundation materially explains current identity, rules or reproduction."
       ],
@@ -5128,12 +5154,17 @@
       ],
       "epistemic_boundary": "Information flow and social interpretation remain distinguishable from factual claim status.",
       "knowledge_holdings": {
-        "primary_file_count": 1,
+        "primary_file_count": 2,
         "featured": [
           {
             "id": "digital-memory-forgetting-restoration-atlas",
             "path": "knowledge/world/digital-memory-forgetting-restoration-atlas.json",
             "kind": "room holding"
+          },
+          {
+            "id": "information-ecology-mechanics-atlas",
+            "path": "knowledge/culture/information-ecology-mechanics-atlas.json",
+            "kind": "attention, memory and correction mechanics atlas"
           }
         ]
       },
@@ -5216,9 +5247,9 @@
         }
       ],
       "next_work": [
+        "Use information-ecology-mechanics-atlas as the working substance spine; continue filling it with dated examples, measurements, counterexamples and handoffs rather than creating another structural layer.",
         "Deepen the Room through its center contribution: Tracks how attention, repetition, forgetting, correction and transmission shape collective memory.",
-        "Keep handoffs explicit: receive from internet-platforms, provenance-evidence; hand mature work to subculture-group-formation, memory-recovery.",
-        "Deepen the substantive corpus before considering further subdivision."
+        "Keep handoffs explicit: receive from internet-platforms, provenance-evidence; hand mature work to subculture-group-formation, memory-recovery."
       ],
       "center_pairing": {
         "contribution": "Tracks how attention, repetition, forgetting, correction and transmission shape collective memory.",
