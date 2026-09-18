@@ -1,5 +1,5 @@
 {
-  "version": "4.8.0",
+  "version": "4.9.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -83,7 +83,8 @@
       "house-projections",
       "house-structural-census",
       "house-population-contract",
-      "house-population-pulse"
+      "house-population-pulse",
+      "house-federation-scale"
     ]
   },
   "records": [
@@ -1156,6 +1157,26 @@
         "public exposure",
         "maintenance diagnostic"
       ]
+    },
+    {
+      "id": "house-federation-scale",
+      "path": "data/house/federation-scale.json",
+      "branch": "root",
+      "kind": "higher-order and cross-House federation grammar",
+      "terms": [
+        "Household",
+        "House",
+        "City",
+        "Commons",
+        "Network",
+        "Assembly",
+        "Council",
+        "Kingdom",
+        "Realm",
+        "Civilization",
+        "Garden-City",
+        "federation"
+      ]
     }
   ],
   "retrieval_routes": [
@@ -1353,6 +1374,16 @@
         "house-subrooms",
         "house-interfaces",
         "house-structural-census"
+      ]
+    },
+    {
+      "question": "What exists above or between one House?",
+      "records": [
+        "house-federation-scale",
+        "house-topology",
+        "house-projections",
+        "house-architectural-vocabulary",
+        "new-jerusalem-network-civilization-atlas"
       ]
     }
   ],
