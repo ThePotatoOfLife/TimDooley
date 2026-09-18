@@ -1,5 +1,5 @@
 {
-  "version": "4.7.0",
+  "version": "4.8.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -82,7 +82,8 @@
       "house-architectural-vocabulary",
       "house-projections",
       "house-structural-census",
-      "house-population-contract"
+      "house-population-contract",
+      "house-population-pulse"
     ]
   },
   "records": [
@@ -1142,6 +1143,19 @@
         "structural role",
         "Chamber reserve"
       ]
+    },
+    {
+      "id": "house-population-pulse",
+      "path": "data/house/population-pulse.json",
+      "branch": "root",
+      "kind": "maintenance diagnostic for Room rooting, interfaces and public exposure",
+      "terms": [
+        "population pulse",
+        "sparse roots",
+        "guarded interface",
+        "public exposure",
+        "maintenance diagnostic"
+      ]
     }
   ],
   "retrieval_routes": [
@@ -1330,6 +1344,15 @@
         "house-population-contract",
         "house-architectural-vocabulary",
         "potato-house-constitution"
+      ]
+    },
+    {
+      "question": "Which parts of the House are structurally thin?",
+      "records": [
+        "house-population-pulse",
+        "house-subrooms",
+        "house-interfaces",
+        "house-structural-census"
       ]
     }
   ],
