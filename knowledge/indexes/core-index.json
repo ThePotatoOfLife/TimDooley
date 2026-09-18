@@ -1,5 +1,5 @@
 {
-  "version": "5.1.0",
+  "version": "5.2.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -86,7 +86,8 @@
       "house-population-pulse",
       "house-federation-scale",
       "house-holdings",
-      "house-collections"
+      "house-collections",
+      "house-data-holdings"
     ]
   },
   "records": [
@@ -1209,6 +1210,21 @@
         "collection",
         "curation"
       ]
+    },
+    {
+      "id": "house-data-holdings",
+      "path": "data/house/data-holdings.json",
+      "branch": "root",
+      "kind": "Room-owned grouped datasets, ledgers, registries and contracts",
+      "terms": [
+        "data holdings",
+        "dataset bundle",
+        "ledger",
+        "registry",
+        "contract",
+        "primary Room owner",
+        "backend data"
+      ]
     }
   ],
   "retrieval_routes": [
@@ -1425,6 +1441,15 @@
         "house-collections",
         "house-subrooms",
         "house-interfaces"
+      ]
+    },
+    {
+      "question": "Which datasets and ledgers belong to each Room?",
+      "records": [
+        "house-data-holdings",
+        "house-holdings",
+        "house-subrooms",
+        "house-collections"
       ]
     }
   ],
