@@ -1,7 +1,7 @@
 {
   "id": "foundation-room-atlas",
   "title": "Foundation Rooms — Door, Place, House and Today",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "updated": "2026-09-18",
   "as_of": "2026-09-18",
   "population": 52,
@@ -35,8 +35,12 @@
     "current_metric_count": 49,
     "first_reproduction_states": {
       "dated consolidation/refoundation": 25,
-      "undated structural reproduction": 24,
-      "dated branching": 3
+      "undated structural reproduction": 17,
+      "dated institutional operation": 2,
+      "dated branching": 4,
+      "dated operational reproduction": 2,
+      "dated capability reproduction": 1,
+      "dated standard reproduction": 1
     }
   },
   "magnitude_rule": "Magnitudes are a vector, not a ranking. Age, clocks, places, branches, reproduction mode, continuity and typed reach answer different questions.",
@@ -526,16 +530,16 @@
       "first_reproduction": {
         "family": "law-office-institution",
         "evidence": {
-          "evidence_type": "undated structural reproduction",
-          "date_or_range": null,
-          "year_start": null,
-          "label": "The canonical genealogy records surviving branches/descendants: General Assembly, Security Council, ECOSOC, Secretariat, ICJ, …",
-          "source": null,
-          "status": "structural evidence; date not yet recovered",
-          "precision": "undated",
-          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+          "evidence_type": "dated institutional operation",
+          "date_or_range": "1946-01-10",
+          "year_start": 1946,
+          "label": "The UN General Assembly held the first meeting of its first session in London with representatives of all 51 Members.",
+          "source": "https://digitallibrary.un.org/record/860253/files/1122966-EN.pdf",
+          "status": "documented",
+          "precision": "exact-day",
+          "interpretation": "earliest recovered post-Charter plenary institutional operation in the current atlas; not a claim that no other organ acted earlier"
         },
-        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+        "research_question": "Can an earlier independent post-Door reproduction event be recovered than this currently documented milestone?"
       }
     },
     {
@@ -776,16 +780,16 @@
       "first_reproduction": {
         "family": "law-review-institution",
         "evidence": {
-          "evidence_type": "undated structural reproduction",
-          "date_or_range": null,
-          "year_start": null,
-          "label": "The canonical genealogy records surviving branches/descendants: ECtHR jurisprudence, protocols, domestic implementation",
-          "source": null,
-          "status": "structural evidence; date not yet recovered",
-          "precision": "undated",
-          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+          "evidence_type": "dated institutional operation",
+          "date_or_range": "1959-01-21 → 1959-04-20",
+          "year_start": 1959,
+          "label": "The first judges were elected in January 1959 and the European Court of Human Rights was formally installed in 1959.",
+          "source": "https://www.echr.coe.int/en/archives",
+          "status": "documented",
+          "precision": "year+exact first-election date",
+          "interpretation": "shows the Convention's supervisory architecture reproducing into a functioning Court after entry into force"
         },
-        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+        "research_question": "Can an earlier independent post-Door reproduction event be recovered than this currently documented milestone?"
       }
     },
     {
@@ -896,16 +900,16 @@
       "first_reproduction": {
         "family": "law-office-institution",
         "evidence": {
-          "evidence_type": "undated structural reproduction",
-          "date_or_range": null,
-          "year_start": null,
-          "label": "The canonical genealogy records surviving branches/descendants: NATO institutions, enlargements, strategic concepts, command structures",
-          "source": null,
-          "status": "structural evidence; date not yet recovered",
-          "precision": "undated",
-          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+          "evidence_type": "dated branching",
+          "date_or_range": "1952-02-18",
+          "year_start": 1952,
+          "label": "Greece and Türkiye joined NATO in the Alliance's first enlargement.",
+          "source": "https://www.nato.int/content/dam/nato/legacy-wcm/media_pdf/pdf_archives/20121211_2012-12-11_nato_first_enlargement_booklet_1952.pdf",
+          "status": "documented",
+          "precision": "exact-day",
+          "interpretation": "first recovered membership branching beyond the original treaty signatories"
         },
-        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+        "research_question": "Can an earlier independent post-Door reproduction event be recovered than this currently documented milestone?"
       }
     },
     {
@@ -1018,16 +1022,16 @@
       "first_reproduction": {
         "family": "law-office-institution",
         "evidence": {
-          "evidence_type": "undated structural reproduction",
-          "date_or_range": null,
-          "year_start": null,
-          "label": "The canonical genealogy records surviving branches/descendants: lending facilities, SDR system, technical assistance, surveillance frameworks",
-          "source": null,
-          "status": "structural evidence; date not yet recovered",
-          "precision": "undated",
-          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+          "evidence_type": "dated operational reproduction",
+          "date_or_range": "1947-05-08",
+          "year_start": 1947,
+          "label": "France made the first drawing from the IMF after the Fund began operations on 1 March 1947.",
+          "source": "https://www.imf.org/external/pubs/ft/survey/sup0998/14.htm",
+          "status": "documented",
+          "precision": "exact-day",
+          "interpretation": "shows the Articles reproduced into a real member transaction rather than remaining institutional design"
         },
-        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+        "research_question": "Can an earlier independent post-Door reproduction event be recovered than this currently documented milestone?"
       }
     },
     {
@@ -1139,16 +1143,16 @@
       "first_reproduction": {
         "family": "law-office-institution",
         "evidence": {
-          "evidence_type": "undated structural reproduction",
-          "date_or_range": null,
-          "year_start": null,
-          "label": "The canonical genealogy records surviving branches/descendants: Eurosystem, single monetary policy, banking supervision layers",
-          "source": null,
-          "status": "structural evidence; date not yet recovered",
-          "precision": "undated",
-          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+          "evidence_type": "dated operational reproduction",
+          "date_or_range": "1999-01-01",
+          "year_start": 1999,
+          "label": "The Eurosystem assumed responsibility for the single monetary policy when the euro launched in 11 countries.",
+          "source": "https://www.ecb.europa.eu/press/key/date/1999/html/sp990929.en.html",
+          "status": "documented",
+          "precision": "exact-day",
+          "interpretation": "shows the ECB's preparatory institutional Foundation operating across participating national central banks"
         },
-        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+        "research_question": "Can an earlier independent post-Door reproduction event be recovered than this currently documented milestone?"
       }
     },
     {
@@ -3202,16 +3206,16 @@
       "first_reproduction": {
         "family": "institution-training-collaboration",
         "evidence": {
-          "evidence_type": "undated structural reproduction",
-          "date_or_range": null,
-          "year_start": null,
-          "label": "The canonical genealogy records surviving branches/descendants: accelerator programmes, experiments, computing/technology programmes, international collaborations",
-          "source": null,
-          "status": "structural evidence; date not yet recovered",
-          "precision": "undated",
-          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+          "evidence_type": "dated capability reproduction",
+          "date_or_range": "1957",
+          "year_start": 1957,
+          "label": "CERN's first accelerator, the 600-MeV Synchrocyclotron, came into operation and supplied beams for its first experiments.",
+          "source": "https://home.cern/science/accelerators/synchrocyclotron/",
+          "status": "documented",
+          "precision": "year",
+          "interpretation": "shows treaty/governance Foundation converting into reproducible scientific infrastructure and experiment capability"
         },
-        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+        "research_question": "Can an earlier independent post-Door reproduction event be recovered than this currently documented milestone?"
       }
     },
     {
@@ -3320,16 +3324,16 @@
       "first_reproduction": {
         "family": "technical-standard-working-groups",
         "evidence": {
-          "evidence_type": "undated structural reproduction",
-          "date_or_range": null,
-          "year_start": null,
-          "label": "The canonical genealogy records surviving branches/descendants: HTML/CSS/Web APIs/accessibility standards and working groups",
-          "source": null,
-          "status": "structural evidence; date not yet recovered",
-          "precision": "undated",
-          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+          "evidence_type": "dated standard reproduction",
+          "date_or_range": "1996-12-17",
+          "year_start": 1996,
+          "label": "W3C issued CSS Level 1 as a Recommendation after Member review, with vendor implementation support.",
+          "source": "https://www.w3.org/press-releases/1996/css1-rec/",
+          "status": "documented",
+          "precision": "exact-day",
+          "interpretation": "shows consortium governance producing an independently implementable Web standard"
         },
-        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+        "research_question": "Can an earlier independent post-Door reproduction event be recovered than this currently documented milestone?"
       }
     },
     {
