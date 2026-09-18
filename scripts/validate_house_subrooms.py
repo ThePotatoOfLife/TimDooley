@@ -65,7 +65,7 @@ def main():
     projection_ids=[x.get('id') for x in projections.get('projections',[]) if isinstance(x,dict)]
     if projection_ids!=['house-view','temple-view','body-view','tree-vine-view','city-view']: errors.append(f'Integrated plurality projection set drifted: {projection_ids}')
     role_ids={x.get('id') for x in census.get('role_types',[]) if isinstance(x,dict)}
-    required_roles={'house','dwelling','room','chamber','field','vineyard','path','view','court','table','gate','door','archive','treasury','foundation','pillar','state','projection','tabernacle','vessel'}
+    required_roles={'house','dwelling','room','chamber','field','vineyard','road','path','view','court','table','gate','door','archive','treasury','foundation','pillar','state','projection','tabernacle','vessel'}
     if role_ids!=required_roles: errors.append(f'House structural role set drifted: {sorted(role_ids)}')
     if census.get('chamber_status',{}).get('registered_count')!=0: errors.append('Chambers must remain reserved until an explicit Chamber registry is adopted')
     instance_ids=[x.get('id') for x in census.get('instances',[]) if isinstance(x,dict)]
