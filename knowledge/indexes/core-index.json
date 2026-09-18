@@ -1,5 +1,5 @@
 {
-  "version": "5.6.0",
+  "version": "5.7.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -16,7 +16,8 @@
       "tim-dooley",
       "tim-role-synthesis",
       "potato-of-life-deep-structure",
-      "water-flow-river-drain-atlas"
+      "water-flow-river-drain-atlas",
+      "material-state-stone-clay-dust-ash-atlas"
     ],
     "geometry_and_transformation": [
       "vertical-potato-mountain-plane-atlas",
@@ -58,7 +59,11 @@
       "biblical-symbol-function-atlas",
       "ark-vessel-chariot-merkavah-atlas",
       "number-measure-symbol-atlas",
-      "tree-family-crosswalk-atlas"
+      "tree-family-crosswalk-atlas",
+      "temple-body-chamber-furniture-atlas",
+      "fire-light-heat-symbol-atlas",
+      "animal-role-symbol-atlas",
+      "time-cycle-season-sabbath-jubilee-atlas"
     ],
     "timeline_and_evidence": [
       "timeline-events",
@@ -104,7 +109,9 @@
       "deep-element-definition-atlas",
       "symbol-depth-programme-wave-002",
       "symbol-conversation-archaeology-wave-001",
-      "symbol-conversation-archaeology-wave-002"
+      "symbol-conversation-archaeology-wave-002",
+      "symbol-confusion-registry-wave-004",
+      "symbol-population-matrix-wave-004"
     ]
   },
   "records": [
@@ -1616,6 +1623,118 @@
         "Vine",
         "Mustard Seed",
         "Root of Jesse"
+      ]
+    },
+    {
+      "id": "symbol-confusion-registry-wave-004",
+      "path": "knowledge/research/symbol-confusion-registry-wave-004.json",
+      "branch": "research",
+      "kind": "disambiguation registry for resolved confusions productive tensions and open knots",
+      "terms": [
+        "Confusion Registry",
+        "House Temple Body",
+        "Fire Light",
+        "Stone Clay",
+        "Animal Roles",
+        "Cycle Spiral"
+      ]
+    },
+    {
+      "id": "temple-body-chamber-furniture-atlas",
+      "path": "knowledge/traditions/temple-body-chamber-furniture-atlas.json",
+      "branch": "traditions",
+      "kind": "deep sacred architecture grammar",
+      "terms": [
+        "House",
+        "Temple",
+        "Body",
+        "Chamber",
+        "Throne",
+        "Seat",
+        "Table",
+        "Footstool",
+        "Altar",
+        "Lamp"
+      ]
+    },
+    {
+      "id": "material-state-stone-clay-dust-ash-atlas",
+      "path": "knowledge/core/material-state-stone-clay-dust-ash-atlas.json",
+      "branch": "root",
+      "kind": "material-state transformation atlas",
+      "terms": [
+        "Stone",
+        "Rock",
+        "Cornerstone",
+        "Clay",
+        "Dust",
+        "Ash",
+        "Mud",
+        "Soil"
+      ]
+    },
+    {
+      "id": "fire-light-heat-symbol-atlas",
+      "path": "knowledge/traditions/fire-light-heat-symbol-atlas.json",
+      "branch": "traditions",
+      "kind": "energy visibility and theophany distinction atlas",
+      "terms": [
+        "Fire",
+        "Heat",
+        "Flame",
+        "Light",
+        "Lamp",
+        "Glory",
+        "Sun",
+        "Spudlight"
+      ]
+    },
+    {
+      "id": "animal-role-symbol-atlas",
+      "path": "knowledge/traditions/animal-role-symbol-atlas.json",
+      "branch": "traditions",
+      "kind": "source-specific animal role atlas",
+      "terms": [
+        "Lion",
+        "Lamb",
+        "Shepherd",
+        "Ox",
+        "Cow",
+        "Red Heifer",
+        "Goat",
+        "Serpent",
+        "Eagle",
+        "Dog"
+      ]
+    },
+    {
+      "id": "time-cycle-season-sabbath-jubilee-atlas",
+      "path": "knowledge/traditions/time-cycle-season-sabbath-jubilee-atlas.json",
+      "branch": "traditions",
+      "kind": "temporal recurrence rest and release atlas",
+      "terms": [
+        "Cycle",
+        "Ring",
+        "Spiral",
+        "Season",
+        "Sabbath",
+        "Jubilee",
+        "Epoch"
+      ]
+    },
+    {
+      "id": "symbol-population-matrix-wave-004",
+      "path": "data/house/symbol-population-matrix-wave-004.json",
+      "branch": "house",
+      "kind": "symbol family maturity and build-readiness census",
+      "terms": [
+        "Population Matrix",
+        "Buildable",
+        "Fruiting",
+        "Architecture",
+        "Growth",
+        "Celestial",
+        "Numbers"
       ]
     }
   ],
