@@ -1,5 +1,5 @@
 {
-  "version": "3.3.0",
+  "version": "3.4.0",
   "updated": "2026-09-18",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
@@ -2062,8 +2062,14 @@
       "title": "Research Programmes",
       "dwelling_id": "research-lab",
       "purpose": "Own coordinated multi-Room research programmes, workstreams, source ledgers and promotion plans.",
-      "primary_file_count": 11,
+      "primary_file_count": 12,
       "featured_holdings": [
+        {
+          "path": "knowledge/research/element-materialization-audit-2026-09-18.json",
+          "id": "element-materialization-audit-2026-09-18",
+          "kind": "project-wide element materialization and instrumentation audit",
+          "basis": "element-instrumentation-wave-010"
+        },
         {
           "path": "knowledge/research/recent-commit-materialization-crystallization-257-283.json",
           "id": "recent-commit-materialization-crystallization-257-283",
@@ -6159,6 +6165,11 @@
       "path": "knowledge/research/recent-commit-materialization-crystallization-257-283.json",
       "primary_owner_room_id": "research-programmes",
       "basis": "commit-crystallization-wave-009"
+    },
+    {
+      "path": "knowledge/research/element-materialization-audit-2026-09-18.json",
+      "primary_owner_room_id": "research-programmes",
+      "basis": "element-instrumentation-wave-010"
     }
   ],
   "curated_unowned_paths": [
@@ -6297,8 +6308,8 @@
     "knowledge/story/story-registry.json"
   ],
   "summary": {
-    "scoped_files": 874,
-    "primary_owned_files": 741,
+    "scoped_files": 875,
+    "primary_owned_files": 742,
     "curated_or_navigation_files": 133,
     "rooms": 38,
     "rooms_with_zero_primary_files": []
