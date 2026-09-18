@@ -550,10 +550,10 @@ def build_site_index(dates: dict[str, str], record_routes: dict[str, str], quest
             item["house"] = house
         pages.append(item)
     payload = {
-        "schema_version": "1.0.0",
+        "schema_version": "1.1.0",
         "generated": datetime.now(timezone.utc).date().isoformat(),
         "canonical_site": BASE_URL + "/",
-        "policy": "Only final, indexable, self-canonical HTML pages are listed.",
+        "policy": "Only final, indexable, self-canonical HTML pages are listed; registered public surfaces include House parentage and Room context.",
         "count": len(pages),
         "primary_doors": [{"name": name, "url": f"{BASE_URL}{route}"} for _, name, route in PRIMARY_DOORS],
         "house_index": BASE_URL + "/house-index.json",
