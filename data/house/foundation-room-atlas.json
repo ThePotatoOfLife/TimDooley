@@ -1,7 +1,7 @@
 {
   "id": "foundation-room-atlas",
   "title": "Foundation Rooms — Door, Place, House and Today",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "updated": "2026-09-18",
   "as_of": "2026-09-18",
   "population": 52,
@@ -32,7 +32,12 @@
       "subculture-group-formation": 4
     },
     "unresolved_owner_count": 0,
-    "current_metric_count": 49
+    "current_metric_count": 49,
+    "first_reproduction_states": {
+      "dated consolidation/refoundation": 25,
+      "undated structural reproduction": 24,
+      "dated branching": 3
+    }
   },
   "magnitude_rule": "Magnitudes are a vector, not a ranking. Age, clocks, places, branches, reproduction mode, continuity and typed reach answer different questions.",
   "rooms": [
@@ -133,7 +138,21 @@
         "house_owner": "canon-identities",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "canon-project-community",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "2021–2023",
+          "year_start": 2021,
+          "label": "Potato persona/community grows into deeper reflective system; by 2023 'Potato of Life' crystallizes.",
+          "source": "knowledge/timeline/developmental-genealogy.json",
+          "status": "project-canon",
+          "precision": "range",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:denmark-constitutional-order",
@@ -251,7 +270,21 @@
         "house_owner": "politics-governance",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "law-office-institution",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1901",
+          "year_start": 1901,
+          "label": "Parliamentary government becomes established in practice.",
+          "source": "data/countries/denmark.json",
+          "status": "documented",
+          "precision": "year",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:us-constitution",
@@ -367,7 +400,21 @@
         "house_owner": "politics-governance",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "law-office-institution",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: federal institutions, amendments, constitutional jurisprudence, state-federal relations",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:un-charter",
@@ -475,7 +522,21 @@
         "house_owner": "politics-governance",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "law-office-institution",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: General Assembly, Security Council, ECOSOC, Secretariat, ICJ, …",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:eu-treaty-foundation",
@@ -593,7 +654,21 @@
         "house_owner": "politics-governance",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "law-office-institution",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1993-11-01",
+          "year_start": 1993,
+          "label": "Maastricht enters into force and establishes the European Union.",
+          "source": "https://european-union.europa.eu/principles-countries-history/principles-and-values/founding-agreements_en",
+          "status": "documented",
+          "precision": "exact-day",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:echr-foundation",
@@ -697,7 +772,21 @@
         "house_owner": "law-justice",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "law-review-institution",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: ECtHR jurisprudence, protocols, domestic implementation",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:nato-treaty-foundation",
@@ -803,7 +892,21 @@
         "house_owner": "politics-governance",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "law-office-institution",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: NATO institutions, enlargements, strategic concepts, command structures",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:imf-foundation",
@@ -911,7 +1014,21 @@
         "house_owner": "economy-finance",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "law-office-institution",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: lending facilities, SDR system, technical assistance, surveillance frameworks",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:ecb-foundation",
@@ -1018,7 +1135,21 @@
         "house_owner": "economy-finance",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "law-office-institution",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: Eurosystem, single monetary policy, banking supervision layers",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:danmarks-nationalbank-foundation",
@@ -1124,7 +1255,21 @@
         "house_owner": "economy-finance",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "law-infrastructure-institution",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1936",
+          "year_start": 1936,
+          "label": "Current Nationalbank Act reorganizes/codifies institution.",
+          "source": "data/house/entity-dossiers-wave-001.json",
+          "status": "documented",
+          "precision": "year",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:christianity-foundation",
@@ -1222,7 +1367,21 @@
         "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "community-canon-practice",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "325 CE",
+          "year_start": 325,
+          "label": "Council of Nicaea produces an enduring creedal foundation for major Christian traditions.",
+          "source": "data/religious-foundations.json",
+          "status": "documented",
+          "precision": "year",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:judaism-foundation",
@@ -1320,7 +1479,21 @@
         "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "community-canon-practice",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "Persian period (539–332 BCE)",
+          "year_start": -539,
+          "label": "Torah/scriptural legal authority becomes increasingly central in Judean/Jewish identity.",
+          "source": "https://www.thetorah.com/article/when-did-jews-start-observing-torah",
+          "status": "scholarly-estimate",
+          "precision": "range",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:islam-foundation",
@@ -1419,7 +1592,21 @@
         "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "community-law-practice",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "622–627 CE",
+          "year_start": 622,
+          "label": "Constitution of Medina deeds formalize aspects of the early umma/community.",
+          "source": "https://www.cambridge.org/core/journals/international-journal-of-middle-east-studies/article/constitution-of-medina-a-sociolegal-interpretation-of-muhammads-acts-of-foundation-of-the-umma/244CE1507A7C425A388949E545C1F019",
+          "status": "scholarly-estimate",
+          "precision": "range",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:buddhism-foundation",
@@ -1517,7 +1704,21 @@
         "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "community-teaching-practice",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: Theravada, Mahayana, Vajrayana, regional monastic and lay traditions",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:sikh-foundation",
@@ -1614,7 +1815,21 @@
         "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "community-initiation-practice",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1699",
+          "year_start": 1699,
+          "label": "Guru Gobind Singh founds/inaugurates the Khalsa at Vaisakhi.",
+          "source": "https://sikhiuni.com/course/sikh-history-foundations",
+          "status": "traditional",
+          "precision": "year",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:bahai-foundation",
@@ -1709,7 +1924,21 @@
         "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "community-canon-administration",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1863-04-22 to 1863-05-03",
+          "year_start": 1863,
+          "label": "Bahá’u’lláh's Riḍván declaration marks emergence of the Bahá’í Faith from the Bábí movement.",
+          "source": "https://reference.bahai.org/en/t/o/BNE/bne-32.html",
+          "status": "traditional",
+          "precision": "range",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:daoism-foundation",
@@ -1807,7 +2036,21 @@
         "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "lineage-ritual-community",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: Celestial Masters/Zhengyi, Quanzhen, local ritual traditions, philosophical reception",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:confucian-foundation",
@@ -1904,7 +2147,21 @@
         "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "text-education-office",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "Han period (202 BCE–220 CE)",
+          "year_start": -202,
+          "label": "Philosophical school categories/commentarial traditions and state-linked forms consolidate.",
+          "source": "https://plato.stanford.edu/entries/han-dynasty/",
+          "status": "scholarly-estimate",
+          "precision": "range",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:stoicism-foundation",
@@ -1996,7 +2253,21 @@
         "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "teaching-text-lineage",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: Early/Middle/Roman Stoicism, later Christian/modern receptions",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:epicurean-garden-foundation",
@@ -2091,7 +2362,21 @@
         "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "community-teaching-lineage",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: Hellenistic Epicurean communities, Roman reception, early-modern revival",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:platonic-academy-foundation",
@@ -2186,7 +2471,21 @@
         "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "school-succession",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: Old Academy, New Academy, later Platonisms",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:aristotle-lyceum-foundation",
@@ -2281,7 +2580,21 @@
         "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "school-succession",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: Peripatetic school, later Aristotelian traditions, medieval scholastic receptions",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:university-copenhagen-foundation",
@@ -2401,7 +2714,21 @@
         "house_owner": "research-programmes",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "education-office-institution",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1537",
+          "year_start": 1537,
+          "label": "University resumes after Reformation under changed religious/social role.",
+          "source": "https://universitetshistorie.ku.dk/overblik/vigtige_aarstal/",
+          "status": "documented",
+          "precision": "year",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:royal-society-foundation",
@@ -2520,7 +2847,21 @@
         "house_owner": "research-programmes",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "fellowship-publication-practice",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "2012-10-08",
+          "year_start": 2012,
+          "label": "Modern Supplemental Charter receives Royal Seal and becomes governing document.",
+          "source": "https://royalsociety.org/news/2012/new-royal-society-charter/",
+          "status": "documented",
+          "precision": "exact-day",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:montessori-foundation",
@@ -2616,7 +2957,21 @@
         "house_owner": "research-programmes",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "method-training-school",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1909",
+          "year_start": 1909,
+          "label": "First training course and first major method publication.",
+          "source": "https://montessori-ami.org/node/1821",
+          "status": "documented",
+          "precision": "year",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:bauhaus-foundation",
@@ -2711,7 +3066,21 @@
         "house_owner": "visual-art",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "school-workshop-diaspora",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: modernist design/architecture, design education, international Bauhaus receptions",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:cern-foundation",
@@ -2829,7 +3198,21 @@
         "house_owner": "research-programmes",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "institution-training-collaboration",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: accelerator programmes, experiments, computing/technology programmes, international collaborations",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:w3c-foundation",
@@ -2933,7 +3316,21 @@
         "house_owner": "internet-platforms",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "technical-standard-working-groups",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: HTML/CSS/Web APIs/accessibility standards and working groups",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:wikimedia-foundation",
@@ -3060,7 +3457,21 @@
         "house_owner": "information-ecology",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "platform-community-governance",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: Wikipedia, Wikimedia Commons, Wikidata, other Wikimedia projects, affiliates",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:maersk-foundation",
@@ -3157,7 +3568,21 @@
         "house_owner": "economy-finance",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "capital-operations-enterprise",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1912",
+          "year_start": 1912,
+          "label": "Steamship Company of 1912 created, securing A.P. Møller greater operational independence.",
+          "source": "https://www.maersk.com/about/our-history/explore-our-history",
+          "status": "documented",
+          "precision": "year",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:asml-foundation",
@@ -3274,7 +3699,21 @@
         "house_owner": "infrastructure-capability",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "capital-rd-supplier-network",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: lithography platforms, metrology/software, supplier ecosystems",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:novo-nordisk-foundation",
@@ -3391,7 +3830,21 @@
         "house_owner": "infrastructure-capability",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "research-manufacturing-enterprise",
+        "evidence": {
+          "evidence_type": "dated branching",
+          "date_or_range": "1925",
+          "year_start": 1925,
+          "label": "Novo Terapeutisk Laboratorium founded by Harald and Thorvald Pedersen.",
+          "source": "https://www.novonordisk.com/about/our-heritage.html",
+          "status": "documented",
+          "precision": "year",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:rule-of-saint-benedict",
@@ -3483,7 +3936,21 @@
         "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "written-rule-community-practice",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: Benedictine monasteries, Cistercian reform traditions, later monastic adaptations",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:tcp-ip-internet-foundation",
@@ -3575,7 +4042,21 @@
         "house_owner": "internet-platforms",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "technical-standard-implementation",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1983-01-01",
+          "year_start": 1983,
+          "label": "ARPANET transitions from NCP to TCP/IP in a flag-day conversion.",
+          "source": "https://www.internetsociety.org/internet/history-internet/brief-history-internet/",
+          "status": "documented",
+          "precision": "exact-day",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:unicode-foundation",
@@ -3688,7 +4169,21 @@
         "house_owner": "internet-platforms",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "technical-standard-implementation",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1991-10",
+          "year_start": 1991,
+          "label": "Unicode Standard Version 1.0 Volume 1 published.",
+          "source": "https://www.unicode.org/history/publicationdates.html",
+          "status": "documented",
+          "precision": "month",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:rochdale-cooperative-foundation",
@@ -3782,7 +4277,21 @@
         "house_owner": "economy-finance",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "membership-rules-cooperative",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1860",
+          "year_start": 1860,
+          "label": "Rules later known as Rochdale Principles are published in the Pioneers' almanac.",
+          "source": "https://ccr.ica.coop/sites/default/files/2022-08/Congress_Discussion_Paper_Final_EN_2021-10-09.pdf",
+          "status": "documented",
+          "precision": "year",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:newtonian-mechanics-foundation",
@@ -3874,7 +4383,21 @@
         "house_owner": "physics-cosmology",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "publication-teaching-application",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1687",
+          "year_start": 1687,
+          "label": "Principia published.",
+          "source": "https://royalsociety.org/news/2014/astronaut-tim-peake-principia/",
+          "status": "documented",
+          "precision": "year",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:futurism-foundation",
@@ -3966,7 +4489,21 @@
         "house_owner": "visual-art",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "manifesto-network-performance",
+        "evidence": {
+          "evidence_type": "dated branching",
+          "date_or_range": "1910-02-11",
+          "year_start": 1910,
+          "label": "Manifesto of Futurist Painters dated; specialized movement branches proliferate.",
+          "source": "https://www.moma.org/documents/moma_catalogue_2821_300062224.pdf",
+          "status": "documented",
+          "precision": "exact-day",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:quakerism-foundation",
@@ -4062,7 +4599,21 @@
         "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "meeting-community-practice",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1655",
+          "year_start": 1655,
+          "label": "Margaret Fell helps shape national Quaker organization.",
+          "source": "https://www.quaker.org.uk/history-of-quakers",
+          "status": "documented-tradition",
+          "precision": "year",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:lds-church-foundation",
@@ -4189,7 +4740,21 @@
         "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "congregation-office-mission",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: main LDS Church, historical Latter-day Saint denominations",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:salvation-army-foundation",
@@ -4316,7 +4881,21 @@
         "house_owner": "other-traditions",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "corps-training-service",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: national territories/commands, local corps and social-service institutions",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:icrc-red-cross-foundation",
@@ -4443,7 +5022,21 @@
         "house_owner": "law-justice",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "institution-law-national-societies",
+        "evidence": {
+          "evidence_type": "dated branching",
+          "date_or_range": "1864-08",
+          "year_start": 1864,
+          "label": "The first Geneva Convention gives legal framework to the humanitarian protection project.",
+          "source": "https://www.icrc.org/en/document/founding-and-early-years-icrc-1863-1914",
+          "status": "documented",
+          "precision": "month",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:ymca-foundation",
@@ -4567,7 +5160,21 @@
         "house_owner": "subculture-group-formation",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "local-association-programmes",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1855",
+          "year_start": 1855,
+          "label": "The Paris Basis becomes a founding document for a movement already present in nine countries.",
+          "source": "https://www.ymca.int/who-we-are/the-worldwide-ymca-movement/the-ymca-history/",
+          "status": "documented",
+          "precision": "year",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:alcoholics-anonymous-foundation",
@@ -4695,7 +5302,21 @@
         "house_owner": "subculture-group-formation",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "peer-meetings-sponsorship",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1935–1944",
+          "year_start": 1935,
+          "label": "Regular meetings and a distinct fellowship form across Akron, New York and beyond.",
+          "source": "https://www.aa.org/aa-timeline",
+          "status": "documented",
+          "precision": "range",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:scouting-foundation",
@@ -4812,7 +5433,21 @@
         "house_owner": "subculture-group-formation",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "troop-method-training",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1908",
+          "year_start": 1908,
+          "label": "Scouting for Boys is published and rapidly spreads the method.",
+          "source": "https://www.scout.org/who-we-are/scout-movement/scoutings-history",
+          "status": "documented",
+          "precision": "year",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:greenpeace-foundation",
@@ -4931,7 +5566,21 @@
         "house_owner": "subculture-group-formation",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "campaign-network-action",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: Greenpeace International, national/regional offices, issue campaigns",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:naacp-foundation",
@@ -5028,7 +5677,21 @@
         "house_owner": "law-justice",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "membership-branches-legal-strategy",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1910",
+          "year_start": 1910,
+          "label": "A national office, board and The Crisis publication consolidate the organization.",
+          "source": "https://naacp.org/about/our-history",
+          "status": "documented",
+          "precision": "year",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:amnesty-international-foundation",
@@ -5136,7 +5799,21 @@
         "house_owner": "law-justice",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "sections-research-campaigns",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "1961",
+          "year_start": 1961,
+          "label": "An international meeting decides to establish a permanent movement; groups and a small London office form.",
+          "source": "https://www.amnesty.org/en/wp-content/uploads/2021/06/act300182011en.pdf",
+          "status": "documented",
+          "precision": "year",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:dada-foundation",
@@ -5233,7 +5910,21 @@
         "house_owner": "visual-art",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "performance-publication-cells",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: Zurich Dada, Berlin Dada, Paris/New York receptions, later avant-garde influence",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:gnu-free-software-foundation",
@@ -5329,7 +6020,21 @@
         "house_owner": "internet-platforms",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "code-license-maintainers",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: GNU software packages, Free Software Foundation, free-software communities and license lineages",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:linux-kernel-foundation",
@@ -5424,7 +6129,21 @@
         "house_owner": "internet-platforms",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "code-maintainers-distributions",
+        "evidence": {
+          "evidence_type": "undated structural reproduction",
+          "date_or_range": null,
+          "year_start": null,
+          "label": "The canonical genealogy records surviving branches/descendants: Linux distributions, embedded/server/mobile uses, kernel subsystems and downstream forks",
+          "source": null,
+          "status": "structural evidence; date not yet recovered",
+          "precision": "undated",
+          "interpretation": "reproduction is structurally documented, but the first dated post-Door reproduction event remains a research gap"
+        },
+        "research_question": "What is the earliest dated successor, copied branch, implementation, congregation, chapter, school, office, or later cohort that proves continuity beyond the Door?"
+      }
     },
     {
       "foundation_room_id": "foundation-room:creative-commons-foundation",
@@ -5532,7 +6251,21 @@
         "house_owner": "information-ecology",
         "landscape": "data/house/foundation-landscape-synthesis.json"
       },
-      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
+      "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays.",
+      "first_reproduction": {
+        "family": "licenses-metadata-adoption",
+        "evidence": {
+          "evidence_type": "dated consolidation/refoundation",
+          "date_or_range": "2002",
+          "year_start": 2002,
+          "label": "The first Creative Commons licenses are published.",
+          "source": "https://creativecommons.org/history/",
+          "status": "documented",
+          "precision": "year",
+          "interpretation": "earliest recovered post-Door clock currently available in the canonical Foundation record; not necessarily the historically first reproduction event"
+        },
+        "research_question": "Can an earlier independent successor/copy be recovered than the current earliest post-Door clock?"
+      }
     }
   ],
   "placement_note": "Primary Room ownership has been resolved across all current Foundation domains; House Architecture owns the shared contract and comparisons, not the substantive identity of domain Foundations.",
@@ -5556,6 +6289,7 @@
   "population_program": {
     "priority": "Fill concrete Today and first-reproduction evidence before adding more Foundation theory.",
     "today_target": "Prefer official, dated, domain-native measures. A Foundation may remain structural-only where no honest comparable current measure exists.",
-    "earth_target": "Promote city/site/region anchors to map-ready when the canonical Foundation history establishes them; retain virtual/distributed origins as non-point geometry."
+    "earth_target": "Promote city/site/region anchors to map-ready when the canonical Foundation history establishes them; retain virtual/distributed origins as non-point geometry.",
+    "first_reproduction_target": "Recover the earliest dated successor/copy/branch/implementation after the Door. Store 'earliest recovered' rather than claiming historical first without evidence."
   }
 }
