@@ -62,6 +62,19 @@ WORKS_MARKERS=(
 HOME_FILE=ROOT/'index.html'
 HOME_SPINE=(
     'class="project-spine"',
+    'aria-label="Homepage learning path"',
+    'id="learn-the-structure"',
+    'id="homeTeachingNav"',
+    'data-teach="whole"',
+    'data-teach="coordinates"',
+    'data-teach="planes"',
+    'data-teach="terrain-regime"',
+    'data-teach="living-systems"',
+    'data-teach="operators"',
+    'data-teach="inhabitants"',
+    "fetch('data/house/layer-terrain-regime-atlas.json')",
+    "fetch('data/house/concept-topology.json')",
+    'Direction alone does not decide Life or Strife',
     'id="project-motion"',
     'id="materialized-now"',
     'id="reality-cases"',
@@ -707,6 +720,16 @@ def validate_project_synthesis(errors):
     p0=data.get('depth_program',{}).get('active_p0',[])
     required_p0=['door-liminality','spirit-relation','culture-formation-control','axis-local-centers','fruit-consequence','tree-branching']
     if p0!=required_p0: errors.append('project synthesis P0 depth programme drifted')
+    hp=data.get('homepage_projection',{})
+    teaching=[x.get('id') for x in hp.get('teaching_sequence',[]) if isinstance(x,dict)]
+    expected_teaching=['whole','coordinates','planes','terrain-regime','living-systems','operators','inhabitants']
+    if teaching!=expected_teaching: errors.append('homepage teaching sequence drifted')
+    axis_teaching=hp.get('axis_teaching',{})
+    if axis_teaching.get('invariant')!='Axis is the global orientation line, not the Tree, Ladder, Mountain or a truth hierarchy.':
+        errors.append('homepage Axis teaching invariant drifted')
+    movement=axis_teaching.get('movement_rule','')
+    if 'Up/down direction alone does not determine value' not in movement:
+        errors.append('homepage Axis movement rule must preserve non-moral direction')
 
 
 def validate_depth_crystallization(errors):
