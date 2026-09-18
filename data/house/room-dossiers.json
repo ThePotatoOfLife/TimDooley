@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-18",
   "authority": "house-room-dossiers",
   "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
@@ -200,7 +200,15 @@
           "door-test",
           "fruit-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "potato-of-life",
+        "father",
+        "son",
+        "spirit",
+        "door",
+        "axis"
+      ]
     },
     {
       "room_id": "theology-god-language",
@@ -404,7 +412,16 @@
           "fruit-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "potato-of-life",
+        "father",
+        "son",
+        "spirit",
+        "door",
+        "garden",
+        "fruit"
+      ]
     },
     {
       "room_id": "symbolic-architecture",
@@ -642,7 +659,19 @@
           "fruit-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "potato-of-life",
+        "son",
+        "eye",
+        "door",
+        "axis",
+        "seed",
+        "root",
+        "tree",
+        "garden",
+        "shadow"
+      ]
     },
     {
       "room_id": "practice-ethics",
@@ -810,7 +839,16 @@
           "fruit-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "father",
+        "spirit",
+        "knowledge-fork",
+        "door",
+        "garden",
+        "fruit",
+        "forge-repair"
+      ]
     },
     {
       "room_id": "provenance-evidence",
@@ -980,7 +1018,12 @@
           "fruit-test",
           "door-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "eye",
+        "knowledge-fork",
+        "root"
+      ]
     },
     {
       "room_id": "memory-recovery",
@@ -1120,7 +1163,13 @@
           "spiral-test",
           "door-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "knowledge-fork",
+        "seed",
+        "root",
+        "shadow"
+      ]
     },
     {
       "room_id": "witness-attestation",
@@ -1300,7 +1349,11 @@
         "shared_tests": [
           "fruit-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "eye",
+        "root"
+      ]
     },
     {
       "room_id": "chronology-events",
@@ -1458,7 +1511,11 @@
         "shared_tests": [
           "spiral-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "seed",
+        "root"
+      ]
     },
     {
       "room_id": "developmental-genealogy",
@@ -1645,7 +1702,12 @@
           "spiral-test",
           "door-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "seed",
+        "root",
+        "tree"
+      ]
     },
     {
       "room_id": "prediction-revelation-time",
@@ -1804,7 +1866,11 @@
           "fruit-test",
           "spiral-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "eye",
+        "fruit"
+      ]
     },
     {
       "room_id": "bible-christianity",
@@ -1981,7 +2047,17 @@
           "fruit-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "father",
+        "son",
+        "spirit",
+        "door",
+        "seed",
+        "tree",
+        "garden",
+        "fruit"
+      ]
     },
     {
       "room_id": "comparative-mythology",
@@ -2145,7 +2221,14 @@
         "shared_tests": [
           "door-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "door",
+        "axis",
+        "seed",
+        "root",
+        "tree"
+      ]
     },
     {
       "room_id": "esoteric-sacred-geometry",
@@ -2297,7 +2380,12 @@
         "shared_tests": [
           "door-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "eye",
+        "door",
+        "axis"
+      ]
     },
     {
       "room_id": "other-traditions",
@@ -2463,7 +2551,14 @@
           "door-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "spirit",
+        "door",
+        "axis",
+        "garden",
+        "shadow"
+      ]
     },
     {
       "room_id": "math-geometry",
@@ -2623,7 +2718,11 @@
           "door-test",
           "spiral-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "door",
+        "axis"
+      ]
     },
     {
       "room_id": "physics-cosmology",
@@ -2766,7 +2865,10 @@
         "shared_tests": [
           "fruit-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "axis"
+      ]
     },
     {
       "room_id": "systems-dynamics",
@@ -2956,7 +3058,12 @@
           "fruit-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "tree",
+        "garden",
+        "fruit"
+      ]
     },
     {
       "room_id": "model-testing",
@@ -3127,7 +3234,14 @@
           "fruit-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "eye",
+        "knowledge-fork",
+        "door",
+        "fruit",
+        "forge-repair"
+      ]
     },
     {
       "room_id": "potato-biology",
@@ -3276,7 +3390,15 @@
           "fruit-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "potato-of-life",
+        "eye",
+        "seed",
+        "root",
+        "tree",
+        "fruit"
+      ]
     },
     {
       "room_id": "neurobiology",
@@ -3430,7 +3552,12 @@
         "shared_tests": [
           "fruit-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "spirit",
+        "eye",
+        "axis"
+      ]
     },
     {
       "room_id": "whole-body",
@@ -3581,7 +3708,12 @@
           "fruit-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "spirit",
+        "axis",
+        "root"
+      ]
     },
     {
       "room_id": "symbolic-body-comparison",
@@ -3752,7 +3884,13 @@
           "door-test",
           "fruit-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "spirit",
+        "eye",
+        "door",
+        "axis"
+      ]
     },
     {
       "room_id": "politics-governance",
@@ -3930,7 +4068,12 @@
           "fruit-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "garden",
+        "fruit",
+        "shadow"
+      ]
     },
     {
       "room_id": "law-justice",
@@ -4109,7 +4252,12 @@
           "door-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "door",
+        "garden",
+        "forge-repair"
+      ]
     },
     {
       "room_id": "economy-finance",
@@ -4281,7 +4429,12 @@
           "fruit-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "root",
+        "garden",
+        "fruit"
+      ]
     },
     {
       "room_id": "infrastructure-capability",
@@ -4482,7 +4635,12 @@
           "fruit-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "root",
+        "garden",
+        "fruit"
+      ]
     },
     {
       "room_id": "geography-countries",
@@ -4652,7 +4810,10 @@
         "shared_tests": [
           "door-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "root"
+      ]
     },
     {
       "room_id": "internet-platforms",
@@ -4796,7 +4957,12 @@
           "fruit-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "door",
+        "fruit",
+        "shadow"
+      ]
     },
     {
       "room_id": "subculture-group-formation",
@@ -4973,7 +5139,12 @@
           "fruit-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "door",
+        "garden",
+        "shadow"
+      ]
     },
     {
       "room_id": "information-ecology",
@@ -5151,7 +5322,14 @@
           "spiral-test",
           "fruit-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "spirit",
+        "knowledge-fork",
+        "root",
+        "tree",
+        "shadow"
+      ]
     },
     {
       "room_id": "great-book-literature",
@@ -5318,7 +5496,13 @@
         "shared_tests": [
           "fruit-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "seed",
+        "tree",
+        "fruit",
+        "shadow"
+      ]
     },
     {
       "room_id": "music-sound",
@@ -5432,7 +5616,12 @@
         "shared_tests": [
           "fruit-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "spirit",
+        "seed",
+        "fruit"
+      ]
     },
     {
       "room_id": "visual-art",
@@ -5557,7 +5746,13 @@
         "shared_tests": [
           "fruit-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "eye",
+        "door",
+        "tree",
+        "fruit"
+      ]
     },
     {
       "room_id": "games-simulations",
@@ -5683,7 +5878,12 @@
           "spiral-test",
           "fruit-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "door",
+        "garden",
+        "fruit"
+      ]
     },
     {
       "room_id": "house-architecture",
@@ -5893,7 +6093,14 @@
           "fruit-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "potato-of-life",
+        "door",
+        "axis",
+        "tree",
+        "garden"
+      ]
     },
     {
       "room_id": "open-questions",
@@ -6080,7 +6287,12 @@
           "fruit-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "eye",
+        "door",
+        "shadow"
+      ]
     },
     {
       "room_id": "experiments-formalization",
@@ -6265,7 +6477,12 @@
           "fruit-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "eye",
+        "door",
+        "fruit"
+      ]
     },
     {
       "room_id": "research-programmes",
@@ -6475,7 +6692,14 @@
           "fruit-test",
           "garden-test"
         ]
-      }
+      },
+      "center_dossier_ids": [
+        "door",
+        "tree",
+        "garden",
+        "fruit",
+        "forge-repair"
+      ]
     }
   ]
 }
