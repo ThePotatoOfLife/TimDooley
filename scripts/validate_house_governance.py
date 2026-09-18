@@ -7,6 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 ROOMS=ROOT/'data/house/rooms.json'; ROOM_SCHEMA=ROOT/'schemas/house-room-registry.schema.json'
 SURFACES=ROOT/'data/house/public-surfaces.json'; SURFACE_SCHEMA=ROOT/'schemas/house-public-surface-registry.schema.json'
 TOPOLOGY=ROOT/'knowledge/research/potato-house-master/public-route-topology.json'
+HOUSE_TOPOLOGY=ROOT/'data/house/topology.json'
 CONCEPT_TOPOLOGY=ROOT/'data/house/concept-topology.json'; CONCEPT_TOPOLOGY_SCHEMA=ROOT/'schemas/house-concept-topology.schema.json'
 TOPOLOGY_FIXTURE=ROOT/'data/house/topology-golden-fixture.json'
 TOPOLOGY_CONTEXT_JS=ROOT/'app/topology-context.js'
@@ -319,8 +320,36 @@ def validate_concept_topology(errors,rooms,surfaces):
         if '../house/#operators' not in text:
             errors.append(f'{page.relative_to(ROOT)} topology context must retain a no-JS House fallback link')
 
+
+def validate_symbolic_planes(errors,rooms):
+    data=load(HOUSE_TOPOLOGY,errors)
+    if not data: return
+    projection=data.get('symbolic_planes')
+    if not isinstance(projection,dict):
+        errors.append('house topology missing symbolic_planes projection'); return
+    rows=projection.get('planes',[])
+    ids=[x.get('id') for x in rows if isinstance(x,dict)]
+    expected=['heaven-plane','world-plane','below-plane']
+    if ids!=expected: errors.append('symbolic planes must remain ordered heaven-plane, world-plane, below-plane')
+    room_ids={x.get('id') for x in rooms.get('rooms',[]) if isinstance(x,dict)}
+    for row in rows:
+        if not isinstance(row,dict): continue
+        pid=row.get('id')
+        for key in ('primary_room_ids','crossing_room_ids'):
+            for rid in row.get(key,[]):
+                if rid not in room_ids: errors.append(f'{pid} references unknown Room {rid}')
+        if not row.get('navigation'): errors.append(f'{pid} must expose navigation routes')
+        if not row.get('subjects'): errors.append(f'{pid} must expose subject groupings')
+    below=next((x for x in rows if isinstance(x,dict) and x.get('id')=='below-plane'),{})
+    text_blob=' '.join(projection.get('projection_rules',[]))+' '+below.get('description','')
+    if 'not identical with Earth' not in text_blob and 'not Earth' not in text_blob:
+        errors.append('Below Plane boundary must preserve distinction from Earth/Manifestation')
+    world=next((x for x in rows if isinstance(x,dict) and x.get('id')=='world-plane'),{})
+    if 'Plane' not in world.get('aliases',[]):
+        errors.append('World Plane must preserve Plane alias')
+
 def main():
-    errors=[]; rooms=validate_rooms(errors); surfaces=validate_surfaces(errors,rooms); validate_concept_topology(errors,rooms,surfaces)
+    errors=[]; rooms=validate_rooms(errors); surfaces=validate_surfaces(errors,rooms); validate_concept_topology(errors,rooms,surfaces); validate_symbolic_planes(errors,rooms)
     if errors:
         print('POTATO HOUSE GOVERNANCE VALIDATION FAILED'); [print('-',e) for e in errors]; return 1
     print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, surfaces, semantic topology, reader corridor and route authority converge'); return 0
