@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "updated": "2026-09-18",
   "purpose": "Route-topology bridge for active public surfaces; navigation/migration classification only, not substantive knowledge ownership. House, Paths and Living Axis are structural projections over the canonical Rooms, not additional fact owners.",
   "room_registry": "data/house/rooms.json",
@@ -100,6 +100,22 @@
       "primary_hub_id": null,
       "room_ids": [
         "time-history",
+        "archive-sources"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "foundation-timeline",
+      "surface_type": "explorer",
+      "canonical_route": "/timeline/foundations/",
+      "primary_hub_id": "timeline",
+      "room_ids": [
+        "time-history",
+        "world-systems",
+        "traditions-texts",
+        "culture-information",
         "archive-sources"
       ],
       "specialist_view": true,
