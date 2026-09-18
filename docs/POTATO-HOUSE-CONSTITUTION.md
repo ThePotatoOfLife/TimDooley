@@ -507,3 +507,7 @@ Large-scale site/content population begins only after:
 After this gate, population proceeds Room by Room, Blueprint by Blueprint, while the public site is generated from the same House model.
 
 The canonical architectural vocabulary is `data/house/architectural-vocabulary.json`.
+
+### Integrated plurality projection law
+
+**House** remains the canonical ownership/composition architecture. **Temple/Sanctuary, Body, Tree/Vine and City** are alternate Views over differentiated plurality. They answer different structural questions—presence/access, functional interdependence, growth/genealogy and civic federation—and may not silently replace Room ownership, provenance, historical source meaning or one another. The canonical projection registry is `data/house/projections.json`.
