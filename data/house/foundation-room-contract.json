@@ -1,7 +1,7 @@
 {
   "id": "foundation-room-contract",
   "title": "Foundation Room Contract — Origin Door, House Placement and Today",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "status": "canonical reader-object contract",
   "purpose": "Make each Foundation tangible as a Room/blob in the House with a dated/placeable origin Door, a conceptual House home, and a current snapshot. Genealogy remains a technical drawer rather than the Foundation's primary identity.",
@@ -30,6 +30,17 @@
       ]
     },
     {
+      "id": "room-status",
+      "question": "Which parts of the Room are already concrete and which still need research?",
+      "fields": [
+        "origin",
+        "reproduction",
+        "today",
+        "geography",
+        "research_queue"
+      ]
+    },
+    {
       "id": "today",
       "question": "What exists now?",
       "fields": [
@@ -39,6 +50,18 @@
         "snapshot_as_of",
         "snapshot_sources",
         "snapshot_coverage"
+      ]
+    },
+    {
+      "id": "door-history",
+      "question": "Which later Doors changed the operating form after the first crossing?",
+      "fields": [
+        "authorization",
+        "signature",
+        "entry_into_force",
+        "first_operation",
+        "refoundation",
+        "supersession"
       ]
     },
     {
@@ -78,6 +101,10 @@
     "Historical origin and current status must never be silently merged.",
     "One Foundation may have multiple historical Door/refoundation events; designate one primary reader Door and retain the others in genealogy.",
     "Do not infer current scale from historical importance.",
-    "Do not rank unlike reach measures."
-  ]
+    "Do not rank unlike reach measures.",
+    "Do not create a completeness score; preserve Origin, Reproduction, Today and Geography as separate checkpoint states.",
+    "A Room may be map-complete but Today-thin, or Today-rich but reproduction-undated; keep those differences visible."
+  ],
+  "maintenance_rule": "Use room_status and research_queue as the maintenance surface. They expose missing evidence without collapsing completeness into one score.",
+  "door_history_rule": "Keep the primary reader Door simple, but retain later legal, operational, refoundation and supersession Doors as a compact chronology. Do not force all meaningful thresholds into one founding date."
 }
