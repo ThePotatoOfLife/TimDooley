@@ -99,7 +99,7 @@ HOME_SPINE=(
     'href="philosophy/"',
     'href="science/"',
     'href="world/"',
-    'Seed</b><i>→</i><b>Foundation</b><i>→</i><b>Root</b><i>→</i><b>Tree</b><i>→</i><b>Fruit</b><i>→</i><b>Memory</b><i>→</i><b>Return</b>',
+    'Seed</b><i>→</i><b>Foundation</b><i>→</i><b>Reproduction</b><i>→</i><b>Branching</b><i>→</i><b>Fruit</b><i>→</i><b>Memory</b><i>→</i><b>Refoundation / Return</b>',
     'href="timeline/"',
     'href="works/"',
     'href="context/source-authority/"',
