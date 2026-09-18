@@ -2,7 +2,7 @@
   "id": "root-system",
   "title": "Potato of Life Root System",
   "kind": "foundational ontology and branching skeleton",
-  "version": "4.9.0",
+  "version": "5.0.0",
   "updated": "2026-09-18",
   "aliases": [
     "Potato of Life skeleton",
@@ -290,6 +290,14 @@
         "interpretation",
         "comparative"
       ]
+    },
+    "placement_matrix": {
+      "text": "The House now has an operational placement matrix for new subjects. Placement precedence is: own-tradition/primary-source meaning → dated reception → formal category → Room ownership → plane projection → Tree/route affinity → comparative relation → Potatoverse interpretation → visibility. Families such as heavens, underworlds, world trees, sacred mountains, cities/temples, caves/labyrinths, waters, gates, pillars, serpents, messengers, demons, thrones, stars/planets, judgment systems and death-return cycles have default placement rules but must still be source-led.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation",
+        "comparative"
+      ]
     }
   },
   "relationships": [
@@ -352,6 +360,11 @@
       "target": "layer-terrain-regime-atlas",
       "type": "classification",
       "description": "Defines category-before-valence grammar for planes, terrain, regimes, organisms, material states, thresholds, perception layers, processes and routes."
+    },
+    {
+      "target": "placement-matrix",
+      "type": "navigation-governance",
+      "description": "Operational what-goes-where resolver for new structural and comparative population."
     }
   ],
   "retrieval": {
