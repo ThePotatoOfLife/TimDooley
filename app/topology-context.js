@@ -15,7 +15,7 @@ function priority(rel,selected){
   return 2;
 }
 function render(root,data){
-  const ids=(root.dataset.houseConcepts||'').split(',').map(x=>x.trim()).filter(Boolean);
+  const ids=(root.getAttribute('data-house-concepts')||'').split(',').map(x=>x.trim()).filter(Boolean);
   const selected=new Set(ids);
   const by=Object.fromEntries((data.concepts||[]).map(x=>[x.id,x]));
   const type=Object.fromEntries((data.relation_types||[]).map(x=>[x.id,x]));
@@ -26,7 +26,7 @@ function render(root,data){
     .filter(r=>selected.has(r.from)||selected.has(r.to))
     .sort((a,b)=>priority(a,selected)-priority(b,selected))
     .slice(0,6);
-  const selectedLinks=valid.map(id=>'<a class="topology-context-chip" href="'+esc(base)+'?operator='+encodeURIComponent(id)+'#operators">'+esc(by[id].label)+'</a>').join('');
+  const selectedLinks=valid.map(id=>{const x=by[id],href=x.kind==='field'?base+'#potato-model':base+'?operator='+encodeURIComponent(id)+'#operators';return '<a class="topology-context-chip" href="'+esc(href)+'">'+esc(x.label)+'</a>';}).join('');
   const rows=rels.map(r=>{
     const from=by[r.from]?.label||r.from,to=by[r.to]?.label||r.to,label=type[r.type]?.label||r.type;
     return '<li><span><b>'+esc(from)+'</b> <em>'+esc(label)+'</em> <b>'+esc(to)+'</b></span><small>'+esc(r.description)+'</small></li>';
