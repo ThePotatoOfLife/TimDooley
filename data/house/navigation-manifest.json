@@ -1,5 +1,5 @@
 {
-  "version": "1.8.0",
+  "version": "1.9.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -8,6 +8,11 @@
       "concern": "project semantic center / center-out importance",
       "owner": "data/house/project-center.json",
       "rule": "Defines the Potato of Life as semantic center, distinguishes it from Axis as spatial center, and governs center-out importance rings and promotion."
+    },
+    {
+      "concern": "populated semantic center / operator dossiers",
+      "owner": "data/house/center-population.json",
+      "rule": "Defines the small reader-complete center kernel, its Room owners, source files, tests, failure modes and lifecycle handoffs."
     },
     {
       "concern": "whole-project synthesis / Room-to-center pairings",
@@ -112,6 +117,7 @@
   ],
   "resolver_order": [
     "0. Ask how the subject relates to the Potato of Life project center; centrality is semantic/structural, not file-volume or novelty.",
+    "0.25. If the subject is a central operator, resolve through center-population before opening outer comparative or archive layers.",
     "0.5. Use project-synthesis to pair the subject with its center contribution, Room owner, handoffs, tests and public route before adding another registry.",
     "1. Identify the subject's canonical Room owner.",
     "2. Identify own-tradition / historical source context before project comparison.",
