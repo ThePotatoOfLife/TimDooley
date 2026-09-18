@@ -1,0 +1,600 @@
+{
+  "id": "recent-commit-materialization-crystallization-257-283",
+  "title": "Recent Commit Materialization & Crystallization Ledger — #257 through #283",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "binding convergence ledger",
+  "purpose": "Merge the Sep 18 build sequence into one durable project state. A commit is not treated as finished merely because code or data exists: its result must be owned, connected, populated enough to be usable, bounded by evidence/status rules, exposed through an appropriate reader or archive surface, and protected by validation or revision rules.",
+  "predecessor": "knowledge/research/recent-commit-embodiment-atlas-257-276.json",
+  "range": {
+    "from_sequence": 257,
+    "to_sequence": 283,
+    "commit_count": 27,
+    "head_commit": "845609c6503ce5bf64cfcd7cfc4f57fd671d4baa"
+  },
+  "definitions": {
+    "materialization": "A carved concept becomes a usable project object: it has a canonical owner, concrete artifacts or population, typed interfaces/handoffs and a place in the House.",
+    "crystallization": "A materialized object becomes durable project law or a durable bounded research object: invariants, evidence boundaries, public/archive expression, anti-duplication rules, validation and revision paths are explicit.",
+    "completion_boundary": "Crystallized does not mean exhaustively researched. Open population, longitudinal evidence, case growth and falsification work may remain."
+  },
+  "crystallization_gate": [
+    "canonical owner is explicit",
+    "artifact or concrete population exists",
+    "interfaces or handoffs to neighboring systems are explicit",
+    "evidence/status boundary is explicit where claims or real entities are involved",
+    "reader surface or archive route exists",
+    "anti-duplication and revision path are known",
+    "validation or a concrete test protects the result from silent drift"
+  ],
+  "waves": [
+    {
+      "id": "orientation-and-routing",
+      "sequences": [
+        257,
+        258,
+        259,
+        260,
+        261,
+        262
+      ],
+      "crystal": "The House can be stood in, oriented, traversed and populated without changing knowledge ownership.",
+      "primary_owners": [
+        "data/house/topology.json",
+        "data/house/navigation-manifest.json",
+        "data/house/tree-plane-routing.json",
+        "data/house/seed-spiral-routing.json"
+      ]
+    },
+    {
+      "id": "typed-comparison-and-placement",
+      "sequences": [
+        263,
+        264,
+        265,
+        266
+      ],
+      "crystal": "Comparative symbols are typed before interpretation and routed as bounded inhabitants rather than rival centers.",
+      "primary_owners": [
+        "data/house/layer-terrain-regime-atlas.json",
+        "data/house/placement-matrix.json",
+        "data/house/religious-symbolic-branch-atlas.json"
+      ]
+    },
+    {
+      "id": "center-and-living-project",
+      "sequences": [
+        267,
+        268,
+        269
+      ],
+      "crystal": "Potato of Life is semantic center; Axis is spatial center; lenses and living metabolisms inspect the center without creating new owners.",
+      "primary_owners": [
+        "data/house/project-center.json",
+        "data/house/crosscutting-lenses.json",
+        "data/house/living-project-map.json"
+      ]
+    },
+    {
+      "id": "whole-project-lifecycle",
+      "sequences": [
+        270,
+        271
+      ],
+      "crystal": "Rooms, operators, tests, local centers, consequence, revision and repair form one self-correcting lifecycle.",
+      "primary_owners": [
+        "data/house/project-synthesis.json",
+        "data/house/room-dossiers.json",
+        "knowledge/core/repair-forge-protocol.json",
+        "data/house/history-canon-revision-protocol.json"
+      ]
+    },
+    {
+      "id": "symbol-depth-and-inhabitation",
+      "sequences": [
+        272,
+        273,
+        274,
+        275,
+        276
+      ],
+      "crystal": "Deep symbols preserve type/history boundaries and are subordinated to concrete inhabitants, institutions and relationships.",
+      "primary_owners": [
+        "knowledge/core/deep-element-definition-atlas.json",
+        "knowledge/core/inhabited-house-society-ontology.json",
+        "knowledge/research/symbol-confusion-registry-wave-004.json"
+      ]
+    },
+    {
+      "id": "purpose-discovery-and-revelation",
+      "sequences": [
+        277,
+        278
+      ],
+      "crystal": "The project distinguishes accumulation from useful discovery and requires evidence maturity before synthesis is promoted.",
+      "primary_owners": [
+        "knowledge/core/purpose-growth-orientation-atlas.json",
+        "knowledge/research/rare-value-undiscovered-knowledge-protocol.json",
+        "knowledge/research/concrete-revelations-wave-006.json"
+      ]
+    },
+    {
+      "id": "entity-case-crystallization",
+      "sequences": [
+        279
+      ],
+      "crystal": "Project operators can be tested against real entities without replacing source identity or evidence.",
+      "primary_owners": [
+        "data/house/entity-dossier-schema.json",
+        "data/house/entity-dossiers-wave-001.json"
+      ]
+    },
+    {
+      "id": "foundation-and-below-consolidation",
+      "sequences": [
+        280,
+        281,
+        282
+      ],
+      "crystal": "Durable beginnings are modeled through multiple clocks and reproduction, while hidden/illicit/intelligence material is routed through evidence-aware Below→Forge processing.",
+      "primary_owners": [
+        "data/house/foundation-integration-contract.json",
+        "knowledge/core/foundation-reproduction-mechanisms-atlas.json",
+        "knowledge/core/below-intelligence-shadow-observatory.json"
+      ]
+    },
+    {
+      "id": "public-home-convergence",
+      "sequences": [
+        283
+      ],
+      "crystal": "The public doorway expresses the canonical hierarchy instead of creating another competing map.",
+      "primary_owners": [
+        "index.html",
+        "data/house/project-synthesis.json",
+        "data/house/public-surfaces.json"
+      ]
+    }
+  ],
+  "commits": [
+    {
+      "sequence": 257,
+      "commit": "2e56b015efa7ea1d0b01c14d7f7946b1366fe213",
+      "theme": "Heaven / World / Below planes",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Three symbolic navigation planes tied to D1-D11 and the Living Axis.",
+      "canonical_materialization": [
+        "data/house/topology.json",
+        "rooms/index.html",
+        "axis/index.html"
+      ],
+      "remaining_population": "Needs domain-specific examples showing one institution/event across all three planes."
+    },
+    {
+      "sequence": 258,
+      "commit": "9d390e2be0c1e93d148b7d2e1e15ed71b26f9d3c",
+      "theme": "Compass + Tree ecology",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Cardinal navigator, Tree of Life/Strife, comparative trees, Akashic archive metaphor.",
+      "canonical_materialization": [
+        "data/house/topology.json",
+        "data/house/tree-plane-routing.json",
+        "knowledge/core/root-system.json"
+      ],
+      "remaining_population": "Needs relation-level cases where the same root produces Life or Strife under different regimes."
+    },
+    {
+      "sequence": 259,
+      "commit": "11ac87ae29eebf46df4a599312f5b36525b77a4d",
+      "theme": "Governed plane population",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Rooms/holdings projected into planes and compass slices.",
+      "canonical_materialization": [
+        "data/house/orientation-population.json",
+        "data/house/holdings.json",
+        "rooms/index.html"
+      ],
+      "remaining_population": "Population was repository-centric; needs real-world records and questions, now supplied by #276."
+    },
+    {
+      "sequence": 260,
+      "commit": "afb76a7a5159bd7909a1a60fe5c83807db53b8e4",
+      "theme": "Tree through planes",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Canonical Tree/plane routing and exact Axis center.",
+      "canonical_materialization": [
+        "data/house/tree-plane-routing.json",
+        "axis/index.html",
+        "house/index.html"
+      ],
+      "remaining_population": "Needs examples of roots above/below, grafting, pruning, network inheritance and cross-plane feedback."
+    },
+    {
+      "sequence": 261,
+      "commit": "bae34490d98b83a91803beb2401f646f29b2c6ba",
+      "theme": "Seed / Death / Spiral",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Seed junction, death, bidirectional spiral routes.",
+      "canonical_materialization": [
+        "data/house/seed-spiral-routing.json",
+        "data/axis-flow-contract.json",
+        "axis/index.html"
+      ],
+      "remaining_population": "Needs explicit distinction among dormancy, loss, transformation, inheritance and restart."
+    },
+    {
+      "sequence": 262,
+      "commit": "33a71e6142653ec899321bf908e4302e606ecba5",
+      "theme": "Navigation authority + religious branch atlas",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "One navigation authority and curated religious-symbolic population.",
+      "canonical_materialization": [
+        "data/house/navigation-manifest.json",
+        "data/house/religious-symbolic-branch-atlas.json",
+        "religion/index.html"
+      ],
+      "remaining_population": "Needs richer questions and provenance pathways per tradition."
+    },
+    {
+      "sequence": 263,
+      "commit": "f85cc1d5eb5f16e0dd3abd06d4f6e6990ed8c1d9",
+      "theme": "Providence / Pyramid / Jachin-Boaz",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Great Seal Eye/pyramid/pillars, threshold architecture and historical guardrails.",
+      "canonical_materialization": [
+        "data/house/providence-pillars-esoteric-structure.json",
+        "knowledge/traditions/providence-pyramid-pillars-atlas.json",
+        "house/index.html"
+      ],
+      "remaining_population": "Now strengthened by #272; needs reception-history timelines and documented variant diagrams."
+    },
+    {
+      "sequence": 264,
+      "commit": "c9f0c001e5a8df38b307b8627671d4aaf4238b0d",
+      "theme": "Terrain / regime / layer grammar",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Typed Mountain, Shadow, Swamp, Axis and contextual boundaries.",
+      "canonical_materialization": [
+        "data/house/layer-terrain-regime-atlas.json",
+        "house/index.html",
+        "rooms/index.html"
+      ],
+      "remaining_population": "Needs state-transition evidence and examples of regime change in concrete systems."
+    },
+    {
+      "sequence": 265,
+      "commit": "2446db16eedc305c62bbbd0367e55009af34e51c",
+      "theme": "Placement matrix + cosmography wave 1",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Operational placement plus underworld, mountain, labyrinth, messenger nodes.",
+      "canonical_materialization": [
+        "data/house/placement-matrix.json",
+        "data/house/religious-symbolic-branch-atlas.json",
+        "rooms/index.html"
+      ],
+      "remaining_population": "Needs problem/function indexing beyond motif labels."
+    },
+    {
+      "sequence": 266,
+      "commit": "8a94941ffd3d376accab67af4a42d148a50baa4d",
+      "theme": "Cosmography wave 2",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Garden, judgment, water, bardo, Olympus; navigable symbolic corridors.",
+      "canonical_materialization": [
+        "data/house/religious-symbolic-branch-atlas.json",
+        "religion/index.html",
+        "rooms/index.html"
+      ],
+      "remaining_population": "Needs comparison by existential question: death, guilt, belonging, transformation, justice, knowledge."
+    },
+    {
+      "sequence": 267,
+      "commit": "ce99520b44a1862ce0c41678e5a36229843cad05",
+      "theme": "Potato center",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Semantic center, center-out rings, comparative demotion.",
+      "canonical_materialization": [
+        "data/house/project-center.json",
+        "data/house/navigation-manifest.json",
+        "house/index.html"
+      ],
+      "remaining_population": "Needs explicit purpose function: why should a reader return to center after exploring the world?"
+    },
+    {
+      "sequence": 268,
+      "commit": "00f23fddbc40f5d6b633185768f4afc66d9d7d33",
+      "theme": "Cross-cutting lenses",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Wheel, polarity, memory, culture, practice plus Buddhism/Daoism/Akashic research.",
+      "canonical_materialization": [
+        "data/house/crosscutting-lenses.json",
+        "potato-of-life/index.html",
+        "data/house/project-center.json"
+      ],
+      "remaining_population": "Needs a general lens contract and examples where lenses disagree productively."
+    },
+    {
+      "sequence": 269,
+      "commit": "6884d6f756c1ce2b54c45ca6a2315ab42aac02b3",
+      "theme": "Living project — Body, Spirit, History, Culture",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Four living metabolisms and center-native readers.",
+      "canonical_materialization": [
+        "data/house/living-project-map.json",
+        "life-body/index.html",
+        "history/index.html",
+        "context/culture/index.html",
+        "research-lab/index.html"
+      ],
+      "remaining_population": "Mind/coordination was implicit; #276 now reveals a Spirit–Mind–Body triad needing integration with History/Culture."
+    },
+    {
+      "sequence": 270,
+      "commit": "16b6ace3d1408519fe851770179824150d6fef25",
+      "theme": "Whole-project pairings + operator depth",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Door, Spirit, Culture, Fruit, Tree deepened; all Rooms paired to center.",
+      "canonical_materialization": [
+        "data/house/project-synthesis.json",
+        "data/house/room-dossiers.json",
+        "knowledge/core/deep-element-definition-atlas.json"
+      ],
+      "remaining_population": "Pairings need real cases and failure data, not only descriptions."
+    },
+    {
+      "sequence": 271,
+      "commit": "1b5dd72b7d9309fbeaf526a959f01b7a45f272be",
+      "theme": "Shadow / Garden / Repair / Revision / Fruit / local centers",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Operational lifecycle and repair/revision contracts.",
+      "canonical_materialization": [
+        "knowledge/core/shadow-integration-overlay.json",
+        "knowledge/core/garden-regime-mechanics.json",
+        "knowledge/core/repair-forge-protocol.json",
+        "data/house/history-canon-revision-protocol.json",
+        "data/house/works-fruit-contract.json",
+        "data/house/local-center-interface-patterns.json"
+      ],
+      "remaining_population": "Needs longitudinal case records, measurable outcomes, consent/power analysis and purpose/capability criteria."
+    },
+    {
+      "sequence": 272,
+      "commit": "6d3ceb5510f16463cd111085c0791ed2b784ad39",
+      "theme": "Pyramid / Kabbalah / Qliphoth / Masonry / definitions",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Deep element atlas and historically separated esoteric structures.",
+      "canonical_materialization": [
+        "knowledge/core/deep-element-definition-atlas.json",
+        "knowledge/traditions/tree-of-life-knowledge-qliphoth-structure-atlas.json",
+        "knowledge/traditions/freemasonry-order-symbol-geometry-atlas.json"
+      ],
+      "remaining_population": "Needs reception histories, primary-source excerpts/metadata and explicit comparison questions rather than ever-larger correspondence lists."
+    },
+    {
+      "sequence": 273,
+      "commit": "67f397821b3cf4a67207158ab4683a38669bfee7",
+      "theme": "Alchemy / chakra / sacred geometry / biblical functions",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Conversation archaeology plus multiple tradition/science atlases.",
+      "canonical_materialization": [
+        "knowledge/traditions/alchemy-transmutation-symbol-atlas.json",
+        "knowledge/body/body-axis-chakra-kundalini-comparative-atlas.json",
+        "knowledge/science/sacred-geometry-solids-spirals-and-phyllotaxis-atlas.json",
+        "knowledge/traditions/biblical-symbol-function-atlas.json"
+      ],
+      "remaining_population": "Needs richer chain-of-transmission timelines and empirical checks where the project makes natural-pattern claims."
+    },
+    {
+      "sequence": 274,
+      "commit": "73d61e02ebf7b6fd20f562eb9ae5aff1b3b046bb",
+      "theme": "Water / vessel / number / celestial / trees",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Flow, carrier, measure, coordinate and organism families.",
+      "canonical_materialization": [
+        "knowledge/core/water-flow-river-drain-atlas.json",
+        "knowledge/traditions/ark-vessel-chariot-merkavah-atlas.json",
+        "knowledge/indexes/core-index.json"
+      ],
+      "remaining_population": "Needs cross-domain cases and computational relationship examples."
+    },
+    {
+      "sequence": 275,
+      "commit": "2db374e85301990f67bc8cac1bade81db872f8a8",
+      "theme": "Confusion + population maturity",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Confusion registry; architecture/material/fire/animals/time; maturity matrix.",
+      "canonical_materialization": [
+        "knowledge/research/symbol-confusion-registry-wave-004.json",
+        "knowledge/research/symbol-population-matrix-wave-004.json",
+        "knowledge/core/material-state-stone-clay-dust-ash-atlas.json"
+      ],
+      "remaining_population": "Needs automatic diagnostics, contradiction logging and evidence-driven maturity criteria."
+    },
+    {
+      "sequence": 276,
+      "commit": "67ae057407368d85a0d6d7f16dbf9afee18ca16c",
+      "theme": "Inhabited House / Spirit–Mind–Body / society",
+      "source": "recent-commit-embodiment-atlas-257-276",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Concrete population families and institutional anchors.",
+      "canonical_materialization": [
+        "knowledge/core/inhabited-house-society-ontology.json",
+        "house/index.html",
+        "data/house/room-dossiers.json"
+      ],
+      "remaining_population": "Reference population is still broad; next depth must use relationship graphs, longitudinal histories and rare-value discovery rather than catalog growth."
+    },
+    {
+      "sequence": 277,
+      "commit": "47e5af1d07e108b910efb9088fcacbac33090ad3",
+      "theme": "Purpose, rare value and embodiment",
+      "source": "direct commit materialization",
+      "state": "crystallized-with-open-population",
+      "visible_result": "The prior twenty commits were re-read as one organism; purpose, rare-value discovery and promotion gates became explicit.",
+      "canonical_materialization": [
+        "knowledge/core/purpose-growth-orientation-atlas.json",
+        "knowledge/research/rare-value-undiscovered-knowledge-protocol.json",
+        "data/house/rare-value-contract.json",
+        "data/house/discovery-candidates.json",
+        "knowledge/research/recent-commit-embodiment-atlas-257-276.json"
+      ],
+      "remaining_population": "Run discovery candidates against independent sources, concrete cases and downstream utility rather than generating more abstract candidates."
+    },
+    {
+      "sequence": 278,
+      "commit": "b94e9213e0f792e3fe39a2d791bee505d80c095d",
+      "theme": "Concrete revelations and evidence maturity",
+      "source": "direct commit materialization",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Cross-domain revelations gained an evidence maturity matrix separating established mechanisms, project mappings and discovery candidates.",
+      "canonical_materialization": [
+        "knowledge/research/concrete-revelations-wave-006.json",
+        "data/house/concrete-revelation-evidence-matrix.json"
+      ],
+      "remaining_population": "Promote only source-grounded revelations into domain owners and preserve disconfirming routes."
+    },
+    {
+      "sequence": 279,
+      "commit": "83e9ed6f976ab7a833858e20f69f72cd79459690",
+      "theme": "Entity dossier crystallization",
+      "source": "direct commit materialization",
+      "state": "crystallized-with-open-population",
+      "visible_result": "The first source-grounded real-world entity dossiers and trust-infrastructure comparisons turned operators into case-based analysis.",
+      "canonical_materialization": [
+        "data/house/entity-dossier-schema.json",
+        "data/house/entity-dossiers-wave-001.json",
+        "data/house/trust-infrastructure-comparison.json",
+        "knowledge/research/public-trust-infrastructure-synthesis.json",
+        "house/index.html"
+      ],
+      "remaining_population": "Expand beyond the first trust-infrastructure cases with longitudinal relations, changes over time and counterexamples."
+    },
+    {
+      "sequence": 280,
+      "commit": "e3289d8f04171e5f777df3aacedcef8b64debb57",
+      "theme": "Foundation clocks and cross-domain beginnings",
+      "source": "direct commit materialization",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Foundation became a typed generative beginning with substrate, multiple clocks, laws/rules, platform and refoundation.",
+      "canonical_materialization": [
+        "knowledge/core/foundation-rule-law-ontology.json",
+        "data/house/foundations-wave-001.json",
+        "data/house/foundation-timeline-wave-001.json",
+        "knowledge/research/foundation-cross-domain-synthesis.json"
+      ],
+      "remaining_population": "Populate more domains with precise multi-clock records instead of one founded date."
+    },
+    {
+      "sequence": 281,
+      "commit": "f7167ed4d4c46c8a0e3436adbe2d318e3bc8dba1",
+      "theme": "Foundation reproduction and living genealogy",
+      "source": "direct commit materialization",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Foundations gained reproduction mechanisms, branching, succession and a larger purpose as generative memory.",
+      "canonical_materialization": [
+        "knowledge/core/foundation-reproduction-mechanisms-atlas.json",
+        "data/house/foundations-wave-002.json",
+        "knowledge/research/foundation-larger-purpose-atlas.json",
+        "house/index.html"
+      ],
+      "remaining_population": "Measure and compare reproduction mechanisms across real institutions, schools, protocols, movements and traditions."
+    },
+    {
+      "sequence": 282,
+      "commit": "881d7cba33439efb4e477b6df4ea7bcd9c878cb6",
+      "theme": "Foundation consolidation and Below intelligence",
+      "source": "direct commit materialization",
+      "state": "crystallized-with-open-population",
+      "visible_result": "Foundation semantics were inherited across domain blueprints while Below became a concrete intelligence/shadow observatory with evidence and legal-status boundaries.",
+      "canonical_materialization": [
+        "data/blueprints/foundation-blueprint.json",
+        "data/house/foundation-integration-contract.json",
+        "knowledge/core/below-intelligence-shadow-observatory.json",
+        "data/house/lower-plane-population-atlas.json",
+        "data/house/project-synthesis.json",
+        "timeline/foundations/index.html",
+        "shadow-farm/index.html"
+      ],
+      "remaining_population": "Build more evidence-typed casework and a neutral Below reader that is broader than any single Farm/Strife case study."
+    },
+    {
+      "sequence": 283,
+      "commit": "845609c6503ce5bf64cfcd7cfc4f57fd671d4baa",
+      "theme": "Homepage convergence",
+      "source": "direct main commit",
+      "state": "crystallized",
+      "visible_result": "The homepage collapsed competing introductions into one public spine: Potato → House → Rooms → Views, with the five gateways treated as public entrances.",
+      "canonical_materialization": [
+        "index.html"
+      ],
+      "remaining_population": "Keep future homepage changes derived from the project synthesis and public-route authorities rather than reintroducing parallel ontologies."
+    }
+  ],
+  "cross_commit_crystals": [
+    {
+      "id": "semantic-vs-spatial-center",
+      "invariant": "Potato of Life is the semantic center; Axis is the spatial centerline. Local centers are scoped and cannot become rival global centers."
+    },
+    {
+      "id": "owner-vs-view",
+      "invariant": "Rooms/domain records own knowledge. Planes, compass, Timeline, House, maps and other views project owned material without stealing ownership."
+    },
+    {
+      "id": "type-before-value",
+      "invariant": "Classify a thing as plane, terrain, regime, organism, material, threshold, perception layer, process, route or inhabitant before moral or vertical interpretation."
+    },
+    {
+      "id": "knowledge-lifecycle",
+      "invariant": "Knowledge → provenance/discernment → Door → Tree/Garden → Fruit → History/Revision → Repair/Forge → Seed/Return."
+    },
+    {
+      "id": "generative-lifecycle",
+      "invariant": "Seed → Foundation → reproduction → branching → Fruit → memory → refoundation/return. Foundation is durable generative memory, not merely a birthday."
+    },
+    {
+      "id": "population-over-decoration",
+      "invariant": "Symbols and topology serve concrete people, institutions, records, relationships and cases; population has priority over adding another structural layer."
+    },
+    {
+      "id": "evidence-aware-below",
+      "invariant": "Below is not evil. Secret, private, classified, clandestine, alleged, investigated, charged, adjudicated, convicted and designated remain distinct statuses."
+    },
+    {
+      "id": "case-before-universalization",
+      "invariant": "Cross-domain revelation is promoted only through source-grounded cases, counterevidence and a concrete test; resemblance alone is not identity or proof."
+    },
+    {
+      "id": "public-spine",
+      "invariant": "The public hierarchy is Potato → House → Rooms → Views/Works. Tim, Religion, Philosophy, Science and World are broad entrances into that deeper House."
+    }
+  ],
+  "open_population_queue": [
+    "instrument existing Works with the Fruit contract",
+    "run a real canon revision through the revision protocol and preserve before/after states",
+    "build a Garden→Repair reader journey from concrete cases",
+    "extend Shadow/Below overlays across Culture, History and Research readers without turning secrecy into guilt",
+    "expand entity dossiers beyond wave 001 with longitudinal relationship data and counterexamples",
+    "populate Foundation records across additional domains with multiple clocks and reproduction mechanisms",
+    "attach measurable reproduction/exit/correction variables to community and institutional formation cases",
+    "prune or merge low-yield duplicate atlases after their unique information has been absorbed by stronger owners"
+  ],
+  "revision_rule": "When a later commit changes one of these crystals, update the canonical owner first, then this ledger, then affected readers/validators. Do not let commit history become a parallel ontology."
+}
