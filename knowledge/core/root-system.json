@@ -2,7 +2,7 @@
   "id": "root-system",
   "title": "Potato of Life Root System",
   "kind": "foundational ontology and branching skeleton",
-  "version": "5.3.0",
+  "version": "5.4.0",
   "updated": "2026-09-18",
   "aliases": [
     "Potato of Life skeleton",
@@ -320,6 +320,14 @@
         "comparative",
         "interpretation"
       ]
+    },
+    "living_project_map": {
+      "text": "The center now materializes through four coordinated metabolisms: Organism/Embodiment (Life & Body), Spirit/Living Relation (project-canon relational function), Memory/History (Time & History + Archive & Sources), and Culture/Formation (Culture & Information). These are not new owners. Shared tests—Door, Spiral, Fruit and Garden—let the project evaluate whether a claimed transformation changed capability, provenance, reciprocity or future growth. Research Lab is the Forge for unresolved synthesis between them.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation",
+        "governance"
+      ]
     }
   },
   "relationships": [
@@ -402,6 +410,11 @@
       "target": "crosscutting-lenses",
       "type": "reader-lens",
       "description": "Six cross-cutting ways to read the Potato center without new ownership."
+    },
+    {
+      "target": "living-project-map",
+      "type": "integration",
+      "description": "Coordinates embodiment, Spirit, memory/history and culture around the Potato center."
     }
   ],
   "retrieval": {
