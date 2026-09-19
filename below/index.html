@@ -93,4 +93,4 @@ repair:['Repair','Trace the exit route from Swamp and Mud through provenance, Fo
 };
 bar.addEventListener('click',e=>{const b=e.target.closest('button[data-basin-mode]');if(!b)return;const mode=b.dataset.basinMode;bar.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));map.dataset.mode=mode;map.querySelectorAll('.basin-node').forEach(n=>{const tags=(n.dataset.basinTags||'').split(/\s+/);n.classList.toggle('is-hot',mode==='all'||tags.includes(mode));});const d=copy[mode]||copy.all;panel.innerHTML='<b>'+d[0]+'</b><span>'+d[1]+'</span><small>'+d[2]+'</small>';});
 })();
-</script><script src="../app/tts-drawer.js"></script></body></html>
+</script><script src="../app/tts-drawer.js"></script><script src="../app/house-journey.js"></script></body></html>
