@@ -8,6 +8,7 @@ const byId = new Map();
 let manifest = null;
 let loadError = null;
 let installScheduled = false;
+let adapterSyncDepth = 0;
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 
@@ -40,23 +41,39 @@ async function ensureModule(row) {
   if(!ok) return false;
   return Boolean(globalApi(row.api_global));
 }
+async function setAdapterEnabled(row,next) {
+  const api=globalApi(row?.api_global);
+  if(typeof api?.setEnabled!=='function') return true;
+  adapterSyncDepth += 1;
+  try {
+    const requested=Boolean(next);
+    const result=await api.setEnabled(requested);
+    if(typeof result==='boolean' && result!==requested) {
+      throw new Error(`Evidence adapter ${row?.id || 'unknown'} refused ${requested ? 'activation' : 'deactivation'}.`);
+    }
+    return true;
+  } finally {
+    adapterSyncDepth=Math.max(0,adapterSyncDepth-1);
+  }
+}
 async function activate(id,{silent=false}={}) {
   const row=entry(id);
   if(!row || row.availability!=='current') return false;
+  if(isActive(row.id)) { renderMenu(); return true; }
   if(!(await ensureModule(row))) return false;
-  const api=globalApi(row.api_global);
-  if(typeof api?.setEnabled==='function') await api.setEnabled(true);
+  await setAdapterEnabled(row,true);
   activeIds.add(row.id);
   if(!silent) { persist(); emit('activate',row.id); }
   else renderMenu();
   return true;
 }
 async function deactivate(id,{silent=false}={}) {
-  const row=entry(id);
-  const changed=activeIds.delete(String(id || ''));
-  const api=globalApi(row?.api_global);
-  if(typeof api?.setEnabled==='function') await api.setEnabled(false);
-  if(changed && !silent) { persist(); emit('deactivate',row?.id || id); }
+  const key=String(id || '');
+  const row=entry(key);
+  if(!activeIds.has(key)) { renderMenu(); return false; }
+  await setAdapterEnabled(row,false);
+  const changed=activeIds.delete(key);
+  if(changed && !silent) { persist(); emit('deactivate',row?.id || key); }
   else renderMenu();
   return changed;
 }
@@ -150,8 +167,11 @@ async function load() {
 window.addEventListener('potato-atlas-module-ready', scheduleInstall);
 window.addEventListener('potato-atlas-ui-layout-change', scheduleInstall);
 window.addEventListener('potato-atlas-adl-heat-change',event=>{
+  if(adapterSyncDepth > 0) return;
   const on=Boolean(event?.detail?.enabled);
+  const wasOn=activeIds.has('adl-heat');
   if(on) activeIds.add('adl-heat'); else activeIds.delete('adl-heat');
+  if(wasOn===on) { renderMenu(); return; }
   persist();
   emit('adapter-sync','adl-heat');
 });
