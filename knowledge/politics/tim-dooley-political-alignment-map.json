@@ -1,0 +1,265 @@
+{
+  "id": "tim-dooley-political-alignment-map",
+  "title": "Tim Dooley — Political Alignment Map",
+  "version": "1.0.0",
+  "updated": "2026-09-19",
+  "kind": "qualitative political alignment synthesis",
+  "status": "canonical reader-support record; descriptive, non-electoral, non-scoring",
+  "purpose": "Describe Tim Dooley's recovered political alignment without forcing it into a synthetic two-axis score. Preserve Tim's own self-labels separately from archive synthesis and show the recurring tensions that make the position difficult to reduce to conventional left/right categories.",
+  "method": {
+    "rule": "Use dated Tim-originated positions where available. Archive synthesis may connect recurring positions but must remain labeled as synthesis.",
+    "no_score": "No numeric political-compass coordinate is assigned. The corpus is multidimensional, developmental and incomplete.",
+    "political_boundary": "This record describes Tim's positions; it does not recommend a party, candidate or vote."
+  },
+  "self_descriptions": [
+    {
+      "date": "2026-06-24",
+      "wording": "Tim considers himself radically centered, where he took the best from the left and from the right.",
+      "status": "user-originated self-description"
+    },
+    {
+      "date": "2026-07-31",
+      "wording": "he is cioonseervative lftist, h is radical centeer.",
+      "normalized": "conservative leftist; radical center",
+      "status": "user-originated description of Tim's political view"
+    },
+    {
+      "date": "2026-08-27",
+      "wording": "tim dooley says i can easily be left... while simultaneously... have a conservative outlook on the economy",
+      "status": "user-originated formulation",
+      "implication": "Left social commitments and a conservative/fiscally disciplined economic temperament are treated as compatible rather than contradictory."
+    }
+  ],
+  "alignment_axes": [
+    {
+      "axis": "economic system",
+      "recovered_orientation": "mixed-market / civic-developmentalist",
+      "substance": [
+        "private property",
+        "capitalism and entrepreneurship",
+        "wealth creation",
+        "public healthcare",
+        "public education",
+        "unions",
+        "welfare/social floor",
+        "strategic public investment"
+      ],
+      "boundary": "Tim does not resolve into doctrinaire laissez-faire capitalism, state socialism or communism. He repeatedly prefers mechanisms by function and outcome."
+    },
+    {
+      "axis": "fiscal temperament",
+      "recovered_orientation": "discipline plus investment",
+      "substance": [
+        "efficient spending",
+        "debt repayment",
+        "surplus where feasible",
+        "audit waste and duplication",
+        "retain or expand investment that builds durable capability"
+      ],
+      "tension": "Fiscal conservatism is not treated as an instruction to liquidate productive public capacity."
+    },
+    {
+      "axis": "state and governance",
+      "recovered_orientation": "lean-capable rather than simply small or large",
+      "substance": [
+        "government no larger than justified",
+        "preserve frontline capacity",
+        "simplify bureaucracy",
+        "merge/repurpose before demolition",
+        "democracy and hearing people",
+        "AI as coordination/audit tool rather than independent sovereign"
+      ],
+      "boundary": "Capability does not itself create legitimacy."
+    },
+    {
+      "axis": "civil liberty and social order",
+      "recovered_orientation": "liberty with responsibility",
+      "substance": [
+        "broad speech/civil-liberty instinct",
+        "drug decriminalization/non-criminalization preference",
+        "harm differentiation",
+        "personal accountability",
+        "protection of children and families",
+        "social coherence"
+      ],
+      "tension": "Individual freedom is defended, but freedom is not treated as permission to externalize unlimited harm."
+    },
+    {
+      "axis": "culture and society",
+      "recovered_orientation": "communitarian with individualist correction",
+      "substance": [
+        "Nordic social cohesion",
+        "reciprocal responsibility",
+        "public institutions",
+        "room for individuality",
+        "anti-bullying",
+        "anti-dehumanization",
+        "anti-nihilism"
+      ],
+      "tension": "Tim values Denmark's communal 'we' while also criticizing excessive suppression of the 'me'."
+    },
+    {
+      "axis": "nation, sovereignty and integration",
+      "recovered_orientation": "sovereignty-preserving coupling",
+      "substance": [
+        "national constitutional agency",
+        "voluntary participation",
+        "deep European/North cooperation",
+        "interoperability",
+        "shared capability without forced uniformity"
+      ],
+      "tension": "Sovereignty is not isolation; integration is not automatic absorption."
+    },
+    {
+      "axis": "Europe / North",
+      "recovered_orientation": "strategic autonomy and developmental integration",
+      "substance": [
+        "European defence capability",
+        "energy resilience",
+        "industrial capacity",
+        "compute/AI",
+        "federated digital sovereignty",
+        "capital/finance",
+        "Arctic and North Atlantic cooperation",
+        "Ukraine-linked capability",
+        "Turkey as later strategic gate"
+      ],
+      "developmental_roots": [
+        "2026-01-21 Axis of Protection and Growth around Greenland/Denmark/Nordics",
+        "2026-02-14 defence-burden shift: more European defence can allow reduced U.S. burden",
+        "2026-03-18 onward Europe/Canada/North becomes an explicit geopolitical topology"
+      ]
+    },
+    {
+      "axis": "United States",
+      "recovered_orientation": "reformist distance rather than simple hostility",
+      "substance": [
+        "reciprocity between privilege and obligation",
+        "reduced European dependence on U.S. security",
+        "smaller/rethought U.S. global footprint",
+        "domestic institutional audit",
+        "selected reshoring",
+        "more health/wealth/education/housing/energy capacity"
+      ],
+      "tension": "America may remain a partner, but Tim rejects one-way dependency or entitlement to hegemonic privilege without corresponding obligations."
+    },
+    {
+      "axis": "defence and coercion",
+      "recovered_orientation": "strong capability constrained by legitimacy",
+      "substance": [
+        "European deterrence",
+        "defence industry",
+        "drones and technology",
+        "reduced dependence",
+        "accountability",
+        "opposition to domination and self-justifying institutional expansion"
+      ],
+      "boundary": "The corpus does not support simple pacifism, militarism or a settled NATO-abolition doctrine."
+    },
+    {
+      "axis": "technology and information",
+      "recovered_orientation": "pro-technology / sovereignty-conscious / federated",
+      "substance": [
+        "AI and automation",
+        "persistent procedural memory",
+        "failure memory",
+        "interoperable public systems",
+        "European cloud/compute",
+        "permissioned data exchange",
+        "multi-vendor resilience",
+        "AI for audit and bureaucracy debugging"
+      ],
+      "tension": "Tim is strongly pro-capability but wary of opaque structural dependence on a single external platform or contractor."
+    },
+    {
+      "axis": "energy and production",
+      "recovered_orientation": "abundance and resilience rather than purity",
+      "substance": [
+        "gas where viable",
+        "wind and renewables",
+        "nuclear",
+        "grids",
+        "energy surplus",
+        "industrial production",
+        "compute",
+        "supply-chain resilience"
+      ],
+      "boundary": "The through-line is strategic resilience and productive capacity, not loyalty to one fuel ideology."
+    },
+    {
+      "axis": "immigration and membership",
+      "recovered_orientation": "civic/conduct based",
+      "substance": [
+        "citizenship matters",
+        "serious noncitizen criminality or espionage can justify lawful deportation",
+        "assimilation/contribution/social order matter",
+        "reject collective ethnic blame"
+      ],
+      "unresolved": [
+        "asylum quotas",
+        "complete labour-migration doctrine",
+        "family reunification doctrine"
+      ]
+    },
+    {
+      "axis": "justice and political ethics",
+      "recovered_orientation": "accountability plus repair",
+      "substance": [
+        "anti-corruption",
+        "anti-trafficking",
+        "anti-fascism",
+        "anti-authoritarianism",
+        "anti-dehumanization",
+        "institutional transparency",
+        "restoration where possible"
+      ],
+      "tension": "Conflict language can be severe, but mature programme design emphasizes repair, measurable outcomes and non-collective blame."
+    }
+  ],
+  "synthesis": {
+    "own_primary_label": "radically centered",
+    "other_user_originated_label": "conservative leftist / radical center",
+    "archive_labels": [
+      "Nordic civic developmentalism",
+      "radical pragmatic center",
+      "sovereignty-preserving strategic autonomy",
+      "productive freedom"
+    ],
+    "concise_description": "A mixed-economy, socially protective, fiscally disciplined, liberty-conscious and development-oriented radical center: pro-market but not anti-public-sector; pro-sovereignty but pro-deep cooperation; pro-defence but anti-domination; pro-technology but anti-dependency; communitarian without erasing individuality."
+  },
+  "recurring_tensions": [
+    "left social commitments ↔ conservative fiscal discipline",
+    "markets/private property ↔ public services/social floor",
+    "individual freedom ↔ civic responsibility",
+    "national sovereignty ↔ deep European/North coupling",
+    "strong defence ↔ anti-domination / legitimacy constraints",
+    "technology/AI acceleration ↔ data and infrastructure sovereignty",
+    "institutional skepticism ↔ desire for capable public institutions",
+    "communal Denmark ↔ protection of individual distinctness"
+  ],
+  "unresolved": [
+    "abortion",
+    "detailed LGBTQ/trans law",
+    "death penalty",
+    "exact gun-control regime",
+    "electoral system",
+    "full constitutional design",
+    "complete tax code",
+    "universal basic income as settled doctrine",
+    "central-bank mandate",
+    "NATO end-state",
+    "Ukraine final territorial settlement",
+    "Russia sanctions end-state",
+    "China/Taiwan comprehensive doctrine",
+    "Israel-Palestine final-state settlement",
+    "asylum quotas"
+  ],
+  "connections": [
+    "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
+    "knowledge/reader/what-tim-dooley-believes.json",
+    "knowledge/timeline/prediction-epiphany-causal-genealogy-2026.json",
+    "knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json",
+    "knowledge/core/european-coupling-programme.json",
+    "docs/NORTH-PROGRAMME.md"
+  ]
+}
