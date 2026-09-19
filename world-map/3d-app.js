@@ -183,7 +183,7 @@ function traceRelationData(code) {
   for (const e of graph.edges) {
     const a = by3[e.a]?.latlng, b = by3[e.b]?.latlng;
     if (!a || !b) continue;
-    features.push({type:'Feature', properties:{a:e.a,b:e.b,types:(e.types||[]).join(' · '),layer:e.layer||'',depth:e.trace_level,raw:JSON.stringify(e)}, geometry:{type:'LineString',coordinates:wrappedSegmentCoordinates([a[1],a[0]],[b[1],b[0]])}});
+    features.push({type:'Feature', properties:{a:e.a,b:e.b,types:(e.types||[]).join(' · '),layer:e.layer||'',depth:e.trace_level,geometry_meaning:'relationship_chord',raw:JSON.stringify(e)}, geometry:{type:'LineString',coordinates:wrappedSegmentCoordinates([a[1],a[0]],[b[1],b[0]])}});
   }
   return {type:'FeatureCollection', features};
 }
