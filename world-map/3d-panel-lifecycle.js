@@ -166,3 +166,21 @@ queueMicrotask(() => {
   maybeLoadSubdivisions();
   map?.on('zoomend', maybeLoadSubdivisions);
 });
+
+function bindAdlHeatLayerControl() {
+  const button = document.getElementById('adlHeatLayer');
+  if (!button || button.dataset.bound === 'true') return;
+  button.dataset.bound = 'true';
+  button.addEventListener('click', async () => {
+    button.disabled = true;
+    try {
+      await window.__potatoAtlasLoadModule?.('ADL H.E.A.T.', './3d-adl-heat.js');
+      await window.__potatoAtlasAdlHeat?.toggle?.();
+    } catch (error) {
+      console.warn('ADL H.E.A.T. layer unavailable:', error);
+    } finally {
+      button.disabled = false;
+    }
+  });
+}
+queueMicrotask(bindAdlHeatLayerControl);
