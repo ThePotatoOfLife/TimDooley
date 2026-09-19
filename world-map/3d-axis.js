@@ -70,6 +70,11 @@ function addAxisLayers(map) {
   map.addLayer({id:AXIS_LINE,type:'line',source:AXIS_SOURCE,filter:['==',['get','kind'],'threshold_arc'],paint:{'line-color':NORTH_ICE,'line-width':2.7,'line-opacity':0.94,'line-dasharray':[2,1.2]}});
   map.addLayer({id:AXIS_GATE,type:'circle',source:AXIS_SOURCE,filter:['==',['get','kind'],'axis_gate'],paint:{'circle-radius':['interpolate',['linear'],['zoom'],0,5,3,7.5,6,10],'circle-color':NORTH_ICE_BRIGHT,'circle-stroke-color':NORTH_ICE_DEEP,'circle-stroke-width':2,'circle-opacity':0.97}});
   map.addLayer({id:AXIS_LABEL,type:'symbol',source:AXIS_SOURCE,filter:['==',['get','kind'],'axis_gate'],minzoom:1,layout:{'text-field':'NORTH · AXIS · D5','text-size':11,'text-offset':[0,1.7],'text-anchor':'top','text-letter-spacing':0.12,'text-allow-overlap':true},paint:{'text-color':NORTH_ICE_BRIGHT,'text-halo-color':'#080b0b','text-halo-width':1.5}});
+  window.__potatoAtlasRenderStack?.register?.(AXIS_FILL, { slot:'geography-context', priority:210, owner:'axis:north' });
+  window.__potatoAtlasRenderStack?.register?.(AXIS_GLOW, { slot:'geography-context', priority:211, owner:'axis:north' });
+  window.__potatoAtlasRenderStack?.register?.(AXIS_LINE, { slot:'geography-context', priority:212, owner:'axis:north' });
+  window.__potatoAtlasRenderStack?.register?.(AXIS_GATE, { slot:'context-network', priority:80, owner:'axis:north' });
+  window.__potatoAtlasRenderStack?.register?.(AXIS_LABEL, { slot:'context-network', priority:81, owner:'axis:north' });
 }
 
 function setAxisVisible(map, visible) {
