@@ -89,6 +89,18 @@ MEANINGFUL_READER_MARKERS = {
         "Does a real Garden leave people more capable?",
         "Can source authority be claim-specific rather than status-based?",
     ),
+    "tim-dooley/story/index.html": (
+        "One river, different kinds of memory",
+        "What the river is changing",
+        "Documentary",
+        "Literary",
+    ),
+    "works/index.html": (
+        "What the works actually do",
+        "Potato Growth Game → inheritance you can play",
+        "AI Potato Town → emergence under compressed time",
+        "Visual compositions → relations before prose",
+    ),
 }
 
 CULTURE_FIELD_MARKERS = (
