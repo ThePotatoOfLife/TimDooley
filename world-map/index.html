@@ -24,8 +24,9 @@
   <div class="brand"><b>World Map</b><small>Map first · countries, layers, connections, time and evidence</small></div>
   <input id="search" list="country-list" placeholder="Find country…" aria-label="Find country"><datalist id="country-list"></datalist>
   <div class="quick-actions"><button id="compare">Compare</button><button id="panelToggle" class="panel-toggle" title="Show or hide deeper inspector" aria-label="Show or hide deeper inspector">Inspect</button></div>
+  <div id="atlasWorldBarHost" aria-label="World map controls"></div>
 
-  <details class="menu" id="layersMenu"><summary>Layers</summary><div class="menu-pop">
+  <details class="menu" id="layersMenu" hidden><summary>Layers</summary><div class="menu-pop">
     <div class="menu-title">Map layers</div>
     <button id="interior" class="active">Interior modules</button>
     <div class="menu-sep"></div>
