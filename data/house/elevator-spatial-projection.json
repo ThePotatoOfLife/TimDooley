@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-19",
   "authority": "elevator-spatial-projection",
   "title": "Door / Axis Elevator — Non-Euclidean House Projection",
@@ -91,17 +91,27 @@
         {
           "id": "below",
           "label": "Below Basin",
-          "route": "/below/"
+          "route": "/below/#basin"
+        },
+        {
+          "id": "roots",
+          "label": "Roots / Provenance",
+          "route": "/below/#roots"
+        },
+        {
+          "id": "ash",
+          "label": "Ash / Rupture",
+          "route": "/below/#ash"
+        },
+        {
+          "id": "swamp",
+          "label": "Swamp",
+          "route": "/below/#swamp"
         },
         {
           "id": "shadow-farm",
           "label": "Farm / Sektur",
           "route": "/shadow-farm/"
-        },
-        {
-          "id": "sources",
-          "label": "Roots / Sources",
-          "route": "/context/source-authority/"
         },
         {
           "id": "forge",
@@ -115,7 +125,7 @@
     {
       "id": "potatoverse-canon",
       "label": "Potatoverse / Canon",
-      "homepage": "/religion/",
+      "homepage": "/rooms/potatoverse-canon/",
       "local_center_label": "Meaning Heart",
       "neighbors": [
         "traditions-texts",
@@ -135,7 +145,7 @@
     {
       "id": "archive-sources",
       "label": "Archive & Sources",
-      "homepage": "/context/source-authority/",
+      "homepage": "/rooms/archive-sources/",
       "local_center_label": "Roots / Provenance",
       "neighbors": [
         "time-history",
@@ -155,7 +165,7 @@
     {
       "id": "time-history",
       "label": "Time & History",
-      "homepage": "/timeline/",
+      "homepage": "/rooms/time-history/",
       "local_center_label": "Chronology",
       "neighbors": [
         "archive-sources",
@@ -172,7 +182,7 @@
     {
       "id": "traditions-texts",
       "label": "Traditions & Texts",
-      "homepage": "/religion/",
+      "homepage": "/rooms/traditions-texts/",
       "local_center_label": "Tradition / Translation",
       "neighbors": [
         "potatoverse-canon",
@@ -189,7 +199,7 @@
     {
       "id": "science-formal-models",
       "label": "Science & Formal Models",
-      "homepage": "/science/",
+      "homepage": "/rooms/science-formal-models/",
       "local_center_label": "Test / Model",
       "neighbors": [
         "archive-sources",
@@ -206,7 +216,7 @@
     {
       "id": "life-body",
       "label": "Life & Body",
-      "homepage": "/life-body/",
+      "homepage": "/rooms/life-body/",
       "local_center_label": "Embodiment",
       "neighbors": [
         "science-formal-models",
@@ -221,7 +231,7 @@
     {
       "id": "world-systems",
       "label": "World Systems",
-      "homepage": "/world/",
+      "homepage": "/rooms/world-systems/",
       "local_center_label": "Institutions / Geography",
       "neighbors": [
         "science-formal-models",
@@ -239,7 +249,7 @@
     {
       "id": "culture-information",
       "label": "Culture & Information",
-      "homepage": "/context/culture/",
+      "homepage": "/rooms/culture-information/",
       "local_center_label": "Formation / Mediation",
       "neighbors": [
         "world-systems",
@@ -257,7 +267,7 @@
     {
       "id": "works",
       "label": "Works / Fruit",
-      "homepage": "/works/",
+      "homepage": "/rooms/works/",
       "local_center_label": "Fruit / Expression",
       "neighbors": [
         "potatoverse-canon",
@@ -273,7 +283,7 @@
     {
       "id": "research-lab",
       "label": "Research Lab / Forge",
-      "homepage": "/research-lab/",
+      "homepage": "/rooms/research-lab/",
       "local_center_label": "Forge Ring",
       "neighbors": [
         "potatoverse-canon",
