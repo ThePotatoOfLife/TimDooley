@@ -1,6 +1,6 @@
 {
   "version": "1.2.0",
-  "updated": "2026-09-18",
+  "updated": "2026-09-19",
   "authority": "house-orientation-population",
   "purpose": "Populate the three-plane cardinal House from existing governed Rooms and holdings, then add a small curated landmark layer for religious, mythic and project-symbolic wayfinding.",
   "source_registries": [
@@ -1121,7 +1121,7 @@
       ],
       "depth": "room",
       "visibility": "room-detail",
-      "purpose": "Own documented political positions, governance structures, institutions and geopolitical relations as world-system material.",
+      "purpose": "Own Tim's documented political positions, alignment synthesis, governance structures, institutions and geopolitical relations as world-system material.",
       "public_surface_ids": [
         "politics",
         "world",
@@ -1133,12 +1133,17 @@
         "here",
         "up"
       ],
-      "primary_file_count": 1,
+      "primary_file_count": 2,
       "featured_holdings": [
         {
           "id": "tim-dooley-politics-geopolitics-compendium",
           "path": "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
           "kind": "room holding"
+        },
+        {
+          "id": "tim-dooley-political-alignment-map",
+          "path": "knowledge/politics/tim-dooley-political-alignment-map.json",
+          "kind": "qualitative political alignment map"
         }
       ]
     },
