@@ -63,8 +63,8 @@ def main() -> int:
             errors.append(f"runtime telemetry test missing assertion: {token}")
     if "map.on('styledata'" in module or 'map.on("styledata"' in module:
         errors.append("runtime telemetry must consume Style Lifecycle events instead of adding another styledata listener")
-    if "loadAfterPaint('Runtime Telemetry', './3d-runtime-telemetry.js')" not in bootstrap:
-        errors.append("bootstrap must load Runtime Telemetry after the control-plane foundation")
+    if "['Runtime Telemetry', './3d-runtime-telemetry.js']" not in bootstrap or "loadDeferredCore" not in bootstrap:
+        errors.append("bootstrap must defer Runtime Telemetry until after the interactive control-plane foundation")
 
     node = shutil.which("node")
     if not node:
