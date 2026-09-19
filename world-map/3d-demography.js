@@ -5,6 +5,9 @@
 const DEMOGRAPHY_URL = '../data/world-country-demography.json';
 const RUNTIME_URL = '../data/world-map-data-runtime.json';
 const GEOMETRY_URL = '../data/world-countries.geo.json';
+const scaleRuntime = await window.__potatoAtlasScale?.ready;
+if (!scaleRuntime) throw new Error('Demography requires the shared scale runtime.');
+const POPULATION_LABEL_ZOOM = scaleRuntime.threshold('population-labels', 'label');
 const RELIGION_LABELS = {
   christian: 'Christian', muslim: 'Muslim', hindu: 'Hindu', buddhist: 'Buddhist',
   jewish: 'Jewish', other_religions: 'Other religions', unaffiliated: 'Unaffiliated'
@@ -204,7 +207,7 @@ async function addPopulationLabels(map, data) {
   if (map.getSource('country-population-labels')) map.getSource('country-population-labels').setData(sourceData);
   else {
     map.addSource('country-population-labels',{type:'geojson',data:sourceData});
-    map.addLayer({id:'country-population-labels',type:'symbol',source:'country-population-labels',minzoom:3.2,layout:{'text-field':['get','population_label'],'text-size':['interpolate',['linear'],['zoom'],3.2,9,6,12],'text-offset':[0,2.35],'text-allow-overlap':false},paint:{'text-color':'#dfe8dc','text-halo-color':'#080b0b','text-halo-width':1.2,'text-opacity':0.82}});
+    map.addLayer({id:'country-population-labels',type:'symbol',source:'country-population-labels',minzoom:POPULATION_LABEL_ZOOM,layout:{'text-field':['get','population_label'],'text-size':['interpolate',['linear'],['zoom'],POPULATION_LABEL_ZOOM,9,6,12],'text-offset':[0,2.35],'text-allow-overlap':false},paint:{'text-color':'#dfe8dc','text-halo-color':'#080b0b','text-halo-width':1.2,'text-opacity':0.82}});
   }
 }
 
