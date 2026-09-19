@@ -269,11 +269,7 @@ async function ensureSubdivisions() {
   }
   if (!window.__potatoAtlasSubdivisions) throw new Error('Subdivision runtime unavailable.');
   await window.__potatoAtlasSubdivisions.loadPartition('USA');
-  // Re-selecting with fit:false is avoided; the subdivision module already reconciles
-  // visible partitions on import/move. A synthetic moveend guarantees the U.S. source
-  // is populated after explicit evidence-layer activation at low zoom.
-  map.fire?.('moveend');
-  await new Promise(resolve => setTimeout(resolve, 0));
+  await window.__potatoAtlasSubdivisions.refresh?.();
 }
 async function loadData() {
   if (loaded) return;
