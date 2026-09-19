@@ -48,5 +48,10 @@ jobs:
           node scripts/test_world_map_inspector_visibility.mjs
           node scripts/test_world_map_motion_compositor.mjs
 
+      - name: Validate World Map visual channels
+        run: |
+          python scripts/validate_world_map_visual_channels.py
+          node scripts/test_world_map_visual_channels.mjs
+
       - name: Audit World Map runtime architecture
         run: python scripts/audit_world_map.py
