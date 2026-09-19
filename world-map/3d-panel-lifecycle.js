@@ -184,3 +184,21 @@ function bindAdlHeatLayerControl() {
   });
 }
 queueMicrotask(bindAdlHeatLayerControl);
+
+function bindMudBelowLayerControl() {
+  const button = document.getElementById('mudBelowLayer');
+  if (!button || button.dataset.bound === 'true') return;
+  button.dataset.bound = 'true';
+  button.addEventListener('click', async () => {
+    button.disabled = true;
+    try {
+      await window.__potatoAtlasLoadModule?.('Mud / Below U.S.', './3d-mud-below-us.js');
+      await window.__potatoAtlasMudBelow?.toggle?.();
+    } catch (error) {
+      console.warn('Mud / Below U.S. layer unavailable:', error);
+    } finally {
+      button.disabled = false;
+    }
+  });
+}
+queueMicrotask(bindMudBelowLayerControl);
