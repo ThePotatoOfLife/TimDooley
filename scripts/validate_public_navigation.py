@@ -47,11 +47,13 @@ CANONICAL_READER_SURFACES = {
 
 CULTURE_GROUNDING_MARKERS = (
     'data-culture-grounding="formation-in-practice"',
+    'data-culture-grounding="recognizability-in-practice"',
     'data-culture-grounding="control-in-practice"',
     'data-culture-grounding="tribunal-role-lock-in-practice"',
     'data-culture-grounding="classification-in-practice"',
     'data-culture-grounding="infrastructure-in-practice"',
     "Formation in practice — what the sequence looks like in the world",
+    "How recognizable culture looks in actual cases",
     "Control in practice — mechanisms, not labels",
     "Tribunal and role-lock in practice",
     "Classification and institutional action in practice",
