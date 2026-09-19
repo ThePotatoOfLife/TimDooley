@@ -104,6 +104,7 @@ queueMicrotask(async () => {
   }
   await window.__potatoAtlasLoadModule?.('Search', './3d-search.js');
   await window.__potatoAtlasLoadModule?.('Physical World', './3d-physical-layers.js');
+  await window.__potatoAtlasLoadModule?.('Evidence Layers', './3d-evidence-layers.js');
 });
 
 function selectedCountryCode(detail = null) {
