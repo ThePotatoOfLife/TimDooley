@@ -21,6 +21,12 @@ CONTEXT=ROOT/"world-map/3d-context-visibility.js"
 PANEL=ROOT/"world-map/3d-panel-lifecycle.js"
 WORLD_BAR=ROOT/"world-map/3d-world-bar.js"
 SPATIAL_UI=ROOT/"world-map/3d-spatial-overlay-ui.js"
+GATEWAYS=ROOT/"world-map/3d-gateways.js"
+CHAINS=ROOT/"world-map/3d-chain-explorer.js"
+IMPACT=ROOT/"world-map/3d-impact-trace.js"
+DEMOGRAPHY=ROOT/"world-map/3d-demography.js"
+AXIS=ROOT/"world-map/3d-axis.js"
+INDEX_HTML=ROOT/"world-map/index.html"
 
 def load(path,errors):
     try: return json.loads(path.read_text(encoding="utf-8"))
@@ -46,7 +52,7 @@ def node_check(path,errors):
 
 def main():
     errors=[]
-    for p in (SURFACES,EVIDENCE,SPATIAL,BELOW,EVIDENCE_JS,ADL_JS,SUBDIV,RENDER,MAP_STATE,CONTEXT,PANEL,WORLD_BAR,SPATIAL_UI):
+    for p in (SURFACES,EVIDENCE,SPATIAL,BELOW,EVIDENCE_JS,ADL_JS,SUBDIV,RENDER,MAP_STATE,CONTEXT,PANEL,WORLD_BAR,SPATIAL_UI,GATEWAYS,CHAINS,IMPACT,DEMOGRAPHY,AXIS,INDEX_HTML):
         if not p.exists(): errors.append(f"missing {p.relative_to(ROOT)}")
     if errors:
         for e in errors: print("ERROR:",e)
@@ -116,8 +122,14 @@ def main():
     require(PANEL,("Evidence Layers","./3d-evidence-layers.js"),errors)
     require(WORLD_BAR,("project.below.us-cases","Below · U.S. cases"),errors)
     require(SPATIAL_UI,("project.below","Below / Farm project cases","project.below.us-cases"),errors)
+    require(GATEWAYS,("__potatoAtlasRenderStack","slot:'context-network'","system-intelligence:gateways"),errors)
+    require(CHAINS,("__potatoAtlasRenderStack","slot:'selection-emphasis'","investigation:chain"),errors)
+    require(IMPACT,("__potatoAtlasRenderStack","slot:'selection-emphasis'","investigation:impact"),errors)
+    require(DEMOGRAPHY,("__potatoAtlasRenderStack","country-population-labels","owner:'demography'"),errors)
+    require(AXIS,("__potatoAtlasRenderStack","slot:'geography-context'","slot:'context-network'","owner:'axis:north'"),errors)
+    require(INDEX_HTML,('id="atlasWorldBarHost"','id="layersMenu" hidden'),errors)
 
-    for path in (EVIDENCE_JS,ADL_JS,SUBDIV,RENDER,MAP_STATE,CONTEXT,WORLD_BAR,SPATIAL_UI):
+    for path in (EVIDENCE_JS,ADL_JS,SUBDIV,RENDER,MAP_STATE,CONTEXT,WORLD_BAR,SPATIAL_UI,GATEWAYS,CHAINS,IMPACT,DEMOGRAPHY,AXIS):
         node_check(path,errors)
 
     if "3d-mud-below-us.js" in "\n".join([evidence_js,adl_js,subdiv,render]):
