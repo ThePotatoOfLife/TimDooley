@@ -1,5 +1,3 @@
-import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs';
-
 const CFG_URL='../data/world-axis-fields.json';
 const GEO_URL='../data/world-countries.geo.json';
 const SOURCE_ID='axis-fields-countries';
@@ -94,9 +92,10 @@ function setHistoricalSuppressed(on){
 }
 function roleLabel(r){return({primary:'primary/recovered',overlap:'overlap',hinge:'hinge',provisional:'provisional',future:'future/reconnection'}[r]||r);}
 function installInteractions(map){
-  const popup=new maplibregl.Popup({closeButton:false,closeOnClick:false,offset:8});
-  map.on('mouseenter',FILL_ID,e=>{if(historicalSuppressed)return;map.getCanvas().style.cursor='pointer';const p=e.features?.[0]?.properties||{};const lines=FIELD_NAMES.filter(n=>p[n]===1).map(n=>`${n[0].toUpperCase()+n.slice(1)} · ${roleLabel(p[`${n}_role`])}`);const institutional=p.brics_member===1?'BRICS · member':p.brics_partner===1?'BRICS · partner':'';popup.setLngLat(e.lngLat).setHTML(`<div class="atlas-hover"><b>${esc(p.name||p.iso3||'Country')}</b><br>${lines.length?lines.map(esc).join('<br>'):'No project-field assignment'}${institutional?`<br><span>${esc(institutional)}</span>`:''}<br><small>Project fields are interpretive and confidence-weighted; Center is convergence; BRICS is empirical.</small></div>`).addTo(map);});
-  map.on('mouseleave',FILL_ID,()=>{map.getCanvas().style.cursor='';popup.remove();});
+  const tooltip=window.__potatoAtlasTooltip;
+  if(!tooltip)throw new Error('Axis Fields require the shared Tooltip service.');
+  map.on('mouseenter',FILL_ID,e=>{if(historicalSuppressed)return;map.getCanvas().style.cursor='pointer';const p=e.features?.[0]?.properties||{};const lines=FIELD_NAMES.filter(n=>p[n]===1).map(n=>`${n[0].toUpperCase()+n.slice(1)} · ${roleLabel(p[`${n}_role`])}`);const institutional=p.brics_member===1?'BRICS · member':p.brics_partner===1?'BRICS · partner':'';const generation=tooltip.nextGeneration('fields');tooltip.show('fields',e.lngLat,`<div class="atlas-hover"><b>${esc(p.name||p.iso3||'Country')}</b><br>${lines.length?lines.map(esc).join('<br>'):'No project-field assignment'}${institutional?`<br><span>${esc(institutional)}</span>`:''}<br><small>Project fields are interpretive and confidence-weighted; Center is convergence; BRICS is empirical.</small></div>`,generation);});
+  map.on('mouseleave',FILL_ID,()=>{map.getCanvas().style.cursor='';tooltip.clear('fields');});
 }
 async function boot(){const[cfgRes,geoRes]=await Promise.all([fetch(CFG_URL),fetch(GEO_URL)]);if(!cfgRes.ok||!geoRes.ok)throw new Error('Axis field data unavailable');const[cfg,geo]=await Promise.all([cfgRes.json(),geoRes.json()]);for(let i=0;i<120&&!window.__potatoAtlasMap;i++)await new Promise(r=>setTimeout(r,50));const map=window.__potatoAtlasMap;if(!map)return;if(!map.loaded())await new Promise(r=>map.once('load',r));installedMap=map;installedCfg=cfg;addLayers(map,geo,cfg);installControl(map,cfg);installLegend(cfg);installInteractions(map);const state=window.__potatoAtlasTime?.getState?.();setHistoricalSuppressed(state&&state.mode!=='current');}
 window.addEventListener('atlas-time-change',event=>setHistoricalSuppressed(event.detail?.mode!=='current'));
