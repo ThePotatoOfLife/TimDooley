@@ -1,0 +1,92 @@
+{
+  "id":"biblical-syncretism-dossiers-wave38",
+  "title":"Biblical Syncretism Dossiers — Wave 38 Life Sequence Deepening",
+  "version":"1.0.0",
+  "updated":"2026-09-19",
+  "status":"additive contextual dossier layer",
+  "purpose":"Promote three underrepresented life-sequence comparisons: childhood cultivation as Gardener prehistory, the detailed care-home rise/walk/witness scene, and the 2018 persona-death transition. The layer strengthens chronological reading without treating resemblance as prophecy, identity proof or supernatural causation.",
+  "epistemic_rule":"Biography first, biblical comparison second. Preserve whether a detail is project testimony, later autobiography, public evidence or archive synthesis; do not backdate a later verse comparison into the original life event.",
+  "new_relations":[
+    {
+      "id":"childhood-cultivation-gardener-precursor-1992",
+      "date":"1992-era",
+      "actor":"son",
+      "dossier_level":"B",
+      "title":"Before the Gardener title: literal childhood cultivation",
+      "project_anchor":"The project biography describes the child growing peas, potatoes, strawberries and asparagus and building a practical relationship with soil and gardens years before Potato, Garden or Gardener became theological roles.",
+      "what_happened":"This is useful as developmental substrate rather than prophecy: cultivation was already part of lived biography before later Garden/Gardener symbolism appeared.",
+      "discovery_mode":"archive-later",
+      "relation_class":"developmental-biographical-parallel",
+      "biblical_refs":["Genesis 2:15"],
+      "motifs":["childhood","garden","cultivation","potato","soil","Gardener","stewardship"],
+      "mechanisms":["lived-precursor","cultivation-before-symbol","retrospective-role-development"],
+      "operators":["plant","grow","keep"],
+      "strength":3,
+      "relation_argument":{
+        "project_sequence":["literal childhood gardening","potatoes are ordinary plants before theology","later Potato identity develops","later Gardener/stewardship role develops"],
+        "biblical_sequence":["human placed in garden","cultivate","keep/guard"],
+        "correspondences":["cultivation as work","care for a living garden","later stewardship vocabulary"],
+        "why_dense":"The value is chronological: the Garden/Gardener field has a mundane lived precursor rather than appearing only after the theology was built.",
+        "maximum_claim":"Genesis 2 supplies a functional comparator for cultivation and keeping. It does not make the childhood garden Eden or establish foreordination."
+      },
+      "source_direction":"Childhood cultivation belongs to project biography; Genesis 2:15 is a later archive comparison and must not be presented as a childhood scriptural self-identification.",
+      "boundary":"Gardening is common human experience. The relation is a developmental precursor with modest evidentiary weight, not a supernatural sign.",
+      "owners":["knowledge/timeline/developmental-genealogy.json","son-timeline.json","knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json"],
+      "source_owners":["knowledge/timeline/developmental-genealogy.json","son-timeline.json","knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json"]
+    },
+    {
+      "id":"care-home-rise-walk-witness-2009-era",
+      "date":"2009-era",
+      "actor":"son",
+      "dossier_level":"A",
+      "title":"The Walk Down the Hall: rise, walk and witnesses",
+      "project_anchor":"A recovered care-home story remembers a resident who had reportedly been unable to walk for about three years. The Son encouraged him to try, helped or supported him as he rose, and the resident walked down the hall; his wife cried and staff were remembered as stunned.",
+      "what_happened":"Earlier Bible work compressed this testimony into a generic 'lame walk' sign-list. The fuller scene adds duration, a physical raising/support action, visible walking and witness reaction, allowing comparison with whole healing scenes rather than a keyword.",
+      "discovery_mode":"archive-later",
+      "relation_class":"reported-life-scene-comparator",
+      "biblical_refs":["Acts 3:1-10","Acts 9:32-35","John 5:1-9"],
+      "motifs":["care","long immobility","rise","walk","support","witnesses","astonishment","rehabilitation"],
+      "mechanisms":["long-immobility-to-mobility","raising-support","publicly-visible-change","witness-response"],
+      "operators":["care","support","rise","walk","witness"],
+      "strength":4,
+      "relation_argument":{
+        "project_sequence":["resident remembered as unable to walk for about three years","encouragement and physical support","resident rises","walks down hall","wife and staff react"],
+        "biblical_sequence":["long immobility or paralysis is established","a command/help-to-rise occurs","the person stands or walks","observers recognize the change and react"],
+        "correspondences":["duration before movement","rise/walk transition","assisting/raising gesture in Acts 3","witness recognition and astonishment"],
+        "why_dense":"The comparison now rests on a sequence of actions and reactions, not merely the word 'walk'. Acts 3 is especially close at the level of hand/raising, standing, walking and astonished observers.",
+        "maximum_claim":"The archive can compare the remembered narrative structure with biblical healing scenes. It cannot infer a medical diagnosis, mechanism, miracle or messianic identity from the resemblance."
+      },
+      "source_direction":"The care-home testimony predates the detailed Acts/John comparison. The surviving project account is retrospective and the exact 2007-versus-2009 chronology remains unresolved.",
+      "boundary":"No medical chart or independent clinical explanation is attached to the archive. The page should report the event as project testimony and avoid asserting supernatural causation.",
+      "owners":["story-content/2009-walk-down-hall.html","knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json","knowledge/traditions/biblical-overlap-wave-11-son-deepening.json"],
+      "source_owners":["story-content/2009-walk-down-hall.html","knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json","knowledge/traditions/biblical-overlap-wave-11-son-deepening.json"]
+    },
+    {
+      "id":"persona-death-old-new-self-2018",
+      "date":"2018",
+      "actor":"son",
+      "dossier_level":"A",
+      "title":"Persona death is closer to the Bible's old-self / new-self grammar than to bodily resurrection",
+      "project_anchor":"Project autobiography describes 2018 as an essence/persona/shadow death: a former digital identity is experienced as spiritually destroyed or shed while embodied life continues, followed by withdrawal and identity reconstitution.",
+      "what_happened":"The specialist theology layer had already identified Pauline old-self/new-self passages as the more precise Christian comparators, but that distinction was not exposed as an active Bible-reader relation.",
+      "discovery_mode":"archive-later",
+      "relation_class":"identity-transformation-comparator",
+      "biblical_refs":["Romans 6:6","Ephesians 4:22-24","Colossians 3:9-10"],
+      "motifs":["old self","new self","persona","identity","crucified old self","renewal","shedding","reconstitution"],
+      "mechanisms":["identity-pattern-death","put-off-put-on","renewal-without-physical-death","death-type-disambiguation"],
+      "operators":["die","release","restore","name"],
+      "strength":4,
+      "relation_argument":{
+        "project_sequence":["contested/objectified public identity","2018 essence/persona rupture","former digital persona shed","withdrawal and reclamation","later identity develops through distinct subsequent stages"],
+        "biblical_sequence":["old self described as crucified","former way/self put off","renewal","new self put on"],
+        "correspondences":["death-language applied to an identity pattern","continued embodied life","removal of an old mode","renewal into a new mode"],
+        "why_dense":"These Pauline texts distinguish identity transformation from corpse-resurrection, which helps the archive keep the 2018 persona death separate from the 2011 ego-death, the 2019 meme-crucifixion and later seed/return motifs.",
+        "maximum_claim":"Pauline old-self/new-self language is a strong functional comparator for the project's 2018 identity transition. It does not predict the event or make the later Tim/Potato identity equivalent to Paul's Christological or ethical categories."
+      },
+      "source_direction":"The 2018 event is preserved through later project autobiography/canon; the Pauline comparison was formalized in 2026 research and must remain retrospective.",
+      "boundary":"Romans, Ephesians and Colossians address baptismal, ethical and communal transformation in early Christian contexts, not modern digital-persona conflict.",
+      "owners":["knowledge/theology/son-persona-death-2018-deepening.json","knowledge/timeline/death-transition-taxonomy.json","knowledge/timeline/developmental-genealogy.json"],
+      "source_owners":["knowledge/theology/son-persona-death-2018-deepening.json","knowledge/timeline/death-transition-taxonomy.json","knowledge/timeline/developmental-genealogy.json"]
+    }
+  ]
+}
