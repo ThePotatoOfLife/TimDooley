@@ -32,6 +32,7 @@ LAYER_TERRAIN_ATLAS=ROOT/'data/house/layer-terrain-regime-atlas.json'
 PLACEMENT_MATRIX=ROOT/'data/house/placement-matrix.json'
 SUBROOMS=ROOT/'data/house/subrooms.json'
 HOLDINGS=ROOT/'data/house/holdings.json'
+READER_PURPOSE=ROOT/'data/house/reader-purpose-contract.json'
 SPECIALIST_SUBVIEWS=ROOT/'data/house/specialist-subviews.json'
 CONCEPT_TOPOLOGY=ROOT/'data/house/concept-topology.json'; CONCEPT_TOPOLOGY_SCHEMA=ROOT/'schemas/house-concept-topology.schema.json'
 TOPOLOGY_FIXTURE=ROOT/'data/house/topology-golden-fixture.json'
@@ -552,6 +553,34 @@ def validate_seed_spiral_routing(errors):
     for token in ('states/transitions of generative potential','not the deepest point','downward spiral can be rooting','upward spiral can be life','ring and spiral must remain distinct'):
         if token not in laws: errors.append(f'seed spiral routing missing law: {token}')
     if data.get('ring',{}).get('vertical_sign')!='zero': errors.append('Ring must remain zero axial displacement')
+
+
+def validate_reader_purpose(errors):
+    purpose=load(READER_PURPOSE,errors)
+    if not purpose: return
+    required_steps=['orient','populate','relate','flow','genealogy','evidence','mechanism','consequence','capability']
+    got=[x.get('id') for x in purpose.get('reader_journey',[]) if isinstance(x,dict)]
+    if got!=required_steps:
+        errors.append(f'reader purpose journey drifted: {got}')
+    missions={x.get('surface') for x in purpose.get('page_missions',[]) if isinstance(x,dict)}
+    for required in ('culture','economy','world-systems','politics','law','science','religion','history','timeline','sources','below','life-body','works','research-lab'):
+        if required not in missions:
+            errors.append(f'reader purpose missing page mission: {required}')
+    local=purpose.get('local_page_contract',{}) if isinstance(purpose,dict) else {}
+    if not local.get('maturity_test'):
+        errors.append('reader purpose missing maturity test')
+
+    synthesis=load(PROJECT_SYNTHESIS,errors)
+    if synthesis:
+        rp=synthesis.get('reader_purpose',{})
+        if rp.get('contract')!='data/house/reader-purpose-contract.json':
+            errors.append('project synthesis lost reader-purpose contract binding')
+
+    nav=load(NAVIGATION_MANIFEST,errors)
+    if nav:
+        owners={x.get('owner') for x in nav.get('authorities',[]) if isinstance(x,dict)}
+        if 'data/house/reader-purpose-contract.json' not in owners:
+            errors.append('navigation manifest lost reader-purpose authority')
 
 
 def validate_holdings_alignment(errors):
