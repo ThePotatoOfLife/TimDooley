@@ -96,7 +96,7 @@ def load_json(relative: str):
 
 
 def primary_hrefs(home: str) -> list[str]:
-    match = re.search(r'<nav\s+class=["\']sections["\'][^>]*>(.*?)</nav>', home, flags=re.I | re.S)
+    match = re.search(r'<nav\s+class=["\'][^"\']*public-doors[^"\']*["\'][^>]*>(.*?)</nav>', home, flags=re.I | re.S)
     if not match:
         return []
     return re.findall(r'href=["\']([^"\']+)["\']', match.group(1), flags=re.I)
