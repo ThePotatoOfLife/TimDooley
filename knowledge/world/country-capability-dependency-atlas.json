@@ -1,8 +1,8 @@
 {
   "id": "country-capability-dependency-atlas",
   "title": "Country Capability & Dependency Atlas",
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.1.0",
+  "updated": "2026-09-19",
   "owner_room": "geography-countries",
   "purpose": "Turn country records from static profiles into relational state models: what a country has, can do, needs, depends on, supplies to others, is building and cannot do alone.",
   "country_state_sequence": [
@@ -107,5 +107,97 @@
     "politics-governance",
     "data/countries/index.json",
     "world-map"
-  ]
+  ],
+  "worked_system_cases": [
+    {
+      "id": "eu-public-finance-contrast-2025",
+      "title": "A debt ratio is a starting coordinate, not a fiscal diagnosis",
+      "observed": {
+        "eu_general_government_debt_gdp_pct": 81.7,
+        "france_pct": 115.6,
+        "belgium_pct": 107.9,
+        "denmark_pct": 27.9,
+        "period": "end-2025"
+      },
+      "system_chain": [
+        "government perimeter",
+        "revenue/expenditure flows",
+        "gross debt stock",
+        "holder/maturity/currency profile",
+        "interest/refinancing burden",
+        "assets/contingent liabilities",
+        "real implementation capacity"
+      ],
+      "lesson": "France, Belgium and Denmark can be compared on the same Eurostat gross-debt definition, but the ratio alone does not tell the reader who holds the debt, when it matures, what public assets exist, what interest burden is, or how much administrative/productive capacity can absorb shocks.",
+      "reader_question": "What additional relation would change the interpretation most: maturity, interest cost, tax base, asset position, holder composition or implementation capacity?",
+      "source_refs": [
+        "data/research.json:f01",
+        "data/research.json:f02",
+        "data/research.json:f03",
+        "data/research.json:f04"
+      ],
+      "sources": [
+        "https://ec.europa.eu/eurostat/en/web/products-euro-indicators/w/2-22042026-bp"
+      ]
+    },
+    {
+      "id": "eu-energy-dependency-2024",
+      "title": "Energy dependency is a directed network, not one percentage",
+      "observed": {
+        "eu_energy_import_dependency_pct": 57,
+        "period": "2024"
+      },
+      "system_chain": [
+        "energy demand",
+        "domestic production",
+        "net imports",
+        "supplier countries/products",
+        "ports/pipelines/interconnectors",
+        "storage/buffers",
+        "industry/household use",
+        "price/security exposure"
+      ],
+      "lesson": "The 57% aggregate tells us net imports supplied a large share of EU gross energy needs under Eurostat's definition. It does not identify which fuels matter, which suppliers dominate, how much storage exists, what infrastructure constrains substitution, or how quickly dependence can be changed.",
+      "reader_question": "If one supplier or route fails, what fails first and how long does substitution require?",
+      "source_refs": [
+        "data/research.json:f15"
+      ],
+      "sources": [
+        "https://ec.europa.eu/eurostat/en/web/products-eurostat-news/w/wdn-20260318-1"
+      ]
+    },
+    {
+      "id": "eu-rd-capability-chain",
+      "title": "Research spending becomes capability only through a conversion chain",
+      "observed": {
+        "eu_rd_expenditure_2024_eur_billion": 403.1,
+        "eu_rd_share_gdp_pct": 2.2,
+        "business_share_pct": 66.5,
+        "eu_government_rd_budget_2025_eur_billion": 130.2,
+        "denmark_government_rd_budget_2025_eur_per_capita": 627.1
+      },
+      "system_chain": [
+        "funding",
+        "institutions/labs/firms",
+        "skills",
+        "equipment/compute",
+        "research activity",
+        "knowledge/IP",
+        "deployment/production",
+        "measured capability"
+      ],
+      "lesson": "Money is an input, not the capability itself. The useful world-system question is how funding is converted through institutions, people and infrastructure into research outputs and then into deployed technology, production or public capacity.",
+      "reader_question": "Where does the conversion chain bottleneck: money, people, infrastructure, coordination, commercialization, procurement or deployment?",
+      "source_refs": [
+        "data/research.json:f12",
+        "data/research.json:f13",
+        "data/research.json:f14"
+      ],
+      "sources": [
+        "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251204-2",
+        "https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20260807-2"
+      ]
+    }
+  ],
+  "reader_rule": "Every broad system noun should eventually open into actors → resources/flows → infrastructure → constraints → dependencies → capability → failure mode → evidence. A scalar becomes meaningful only after the relations behind it are visible."
 }
