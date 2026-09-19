@@ -66,6 +66,7 @@ def main() -> int:
             "physical-line",
             "buffer: 0",
             "DETAIL_ZOOM",
+            "scaleRuntime.threshold('physical-water-detail', 'render')",
             "ensureDetailSources",
             "detailInstalled",
             "zoomend",
