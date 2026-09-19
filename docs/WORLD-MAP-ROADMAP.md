@@ -99,11 +99,11 @@ Current compatibility rule: normal application interaction is Router-owned and d
 ## NEXT — RENDER + UI CONVERGENCE
 
 - [ ] Add visual-channel compatibility matrix.
-- [ ] Audit every writer of country fill/pattern/outline/height.
+- [~] Audit every writer of country fill/pattern/outline/height. Persistent planes are now explicit and specialist Gateways/Chains/Impact/Demography/Axis renderers register with the shared Render Stack; legacy dormant Fields/Networks remain compatibility debt.
 - [x] Centralize style-generation restoration for Render Stack and migrated physical layers.
 - [ ] Drain remaining duplicate style/lifecycle writers discovered by the architecture auditor.
 - [ ] Consolidate global UI design tokens, z-index bands and common surfaces.
-- [ ] Make top-level controls increasingly question-oriented: Browse / Compare / Connections / Evidence / Time / View.
+- [~] Make top-level controls increasingly question-oriented: the visible World Bar now converges Analytical / Physical / Geography / Evidence with Compare / Relations / Time / View; further wording simplification can continue without adding another control surface.
 - [ ] Audit mobile occlusion, keyboard access, focus return, color-only semantics and reduced motion.
 - [ ] Add concise accessible active-view summaries.
 
