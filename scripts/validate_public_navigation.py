@@ -60,6 +60,37 @@ CULTURE_GROUNDING_MARKERS = (
     "Infrastructure in practice — who stores memory and who controls the Door",
 )
 
+MEANINGFUL_READER_MARKERS = {
+    "world-systems/index.html": (
+        "Three systems, opened up",
+        "Public finance is more than a debt ratio",
+        "Energy dependency is a network",
+        "Research money must become capability",
+    ),
+    "economy/index.html": (
+        "Open the ledger: four concrete cases",
+        "27.9% and 7.6% can both be true",
+        "A bank can be asset-rich and liquidity-poor",
+        "Energy dependence reaches the budget through transmission",
+    ),
+    "science/index.html": (
+        "Four examples of what “test it” actually means",
+        "Spiral versus circle",
+        "Garden versus dependence",
+        "Symbolic mapping versus hindsight",
+    ),
+    "history/index.html": (
+        "Four ways the archive has actually changed",
+        "Root research.json → specialist owners",
+        "PR #283 → PR #284 convergence",
+    ),
+    "research-lab/index.html": (
+        "Three hypotheses the Lab is trying to earn",
+        "Does a real Garden leave people more capable?",
+        "Can source authority be claim-specific rather than status-based?",
+    ),
+}
+
 CULTURE_FIELD_MARKERS = (
     'data-culture-field="concrete-culture-field"',
     "Who is actually here?",
@@ -152,6 +183,16 @@ def main() -> int:
         marker = f'data-reader-surface="{surface_id}"'
         if marker not in text:
             errors.append(f"{rel} missing canonical reader marker {marker}")
+
+    for rel, markers in MEANINGFUL_READER_MARKERS.items():
+        path = SITE / rel
+        if not path.exists():
+            errors.append(f"missing meaningful public reader: {rel}")
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        for marker in markers:
+            if marker not in text:
+                errors.append(f"{rel} meaningful reader lost concrete section: {marker}")
 
     for rel, reader_id in PROJECTED_TTS_PAGES.items():
         path = SITE / rel
