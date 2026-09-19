@@ -99,7 +99,7 @@ HOME_SPINE=(
     'href="philosophy/"',
     'href="science/"',
     'href="world/"',
-    'Seed</b><i>→</i><b>Foundation</b><i>→</i><b>Root</b><i>→</i><b>Tree</b><i>→</i><b>Fruit</b><i>→</i><b>Memory</b><i>→</i><b>Return</b>',
+    'Seed</b><i>→</i><b>Foundation</b><i>→</i><b>Reproduction</b><i>→</i><b>Branching</b><i>→</i><b>Fruit</b><i>→</i><b>Memory</b><i>→</i><b>Refoundation / Return</b>',
     'href="timeline/"',
     'href="works/"',
     'href="context/source-authority/"',
@@ -627,8 +627,7 @@ def validate_placement_matrix(errors):
     if data.get('output_contract',{}).get('unresolved_destination')!='research-lab/open-questions': errors.append('unresolved placements must route to Research Lab/Open Questions')
 
 
-def validate_project_center(errors)
-    validate_crosscutting_lenses(errors):
+def validate_project_center(errors):
     data=load(PROJECT_CENTER,errors)
     if not data: return
     centers=data.get('center_distinctions',{})
@@ -672,7 +671,7 @@ def validate_living_project_map(errors):
     if not data: return
     systems=[x for x in data.get('systems',[]) if isinstance(x,dict)]
     ids=[x.get('id') for x in systems]
-    expected=['organism','spirit-relation','memory-history','culture-formation']
+    expected=['organism','spirit-relation','memory-history','foundations-generative-memory','culture-formation']
     if ids!=expected: errors.append('living project system set/order drifted')
     room_data=load(SUBROOMS,errors)
     room_ids={x.get('id') for x in room_data.get('subrooms',[]) if isinstance(x,dict)}
@@ -696,11 +695,13 @@ def validate_living_project_map(errors):
         'spirit':'potato-of-life/spirit/',
         'memory':'history/',
         'culture':'context/culture/',
-        'research':'research-lab/'
+        'research':'research-lab/',
+        'foundations':'house/#foundations'
     }
     if routes!=required_routes: errors.append('living project public routes drifted')
     for rel in required_routes.values():
-        p=ROOT/rel/'index.html' if rel.endswith('/') else ROOT/rel
+        route=rel.split('#',1)[0]
+        p=ROOT/route/'index.html' if route.endswith('/') else ROOT/route
         if not p.is_file(): errors.append(f'living project public route missing: {rel}')
 
 
@@ -765,6 +766,8 @@ def main():
     surfaces=validate_surfaces(errors,rooms)
     validate_concept_topology(errors,rooms,surfaces)
     validate_project_center(errors)
+    validate_crosscutting_lenses(errors)
+    validate_living_project_map(errors)
     validate_symbolic_planes(errors,rooms)
     validate_orientation_population(errors,rooms)
     validate_tree_plane_routing(errors)
