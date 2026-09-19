@@ -30,6 +30,8 @@ EXPECTED_CAPABILITIES = {
     "country-relations": {"load": 0, "render": 2.0, "label": 2.0, "interact": 2.0},
     "physical-water-detail": {"load": 3.4, "render": 3.4, "label": 3.4, "interact": 3.4},
     "hydrology": {"load": 4.0, "render": 4.0, "label": 4.0, "interact": 4.0},
+    "population-labels": {"load": 3.2, "render": 3.2, "label": 3.2, "interact": 3.2},
+    "gateway-labels": {"load": 2.7, "render": 2.7, "label": 2.7, "interact": 2.7},
 }
 
 
