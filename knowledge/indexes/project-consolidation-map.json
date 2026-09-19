@@ -1,7 +1,7 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.15.0",
+  "version": "1.16.0",
   "updated": "2026-09-19",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
@@ -140,13 +140,12 @@
     "Specialist atlases with genuinely distinct mechanisms or schemas"
   ],
   "next_merge_sequence": [
-    "1. Finish validation of the current House/route/runtime convergence wave.",
-    "2. Make public-route-topology a deterministic projection of public-surfaces instead of a second hand-maintained registry.",
-    "3. Finish migrating unique legacy Potatoism deep-layer material into concept dossiers and specialist owners; then shrink/archive donor files.",
-    "4. Mark reader master documents explicitly as projections where machine canonical owners now exist.",
-    "5. Audit orphaned legacy validators/builders tied to retired Root/World/Axis presentation contracts.",
-    "6. Audit root-level legacy source strata and generated assets for safe archival/deletion.",
-    "7. Delete only after source lineage, references and CI are clean."
+    "1. Audit remaining master/framework/synthesis files and mark each as canonical owner, specialist atlas, reader projection or historical donor.",
+    "2. Finish migrating any unique legacy Potatoism deep-layer material into concept dossiers/specialist owners, then shrink/archive donor files.",
+    "3. Audit orphaned legacy builders/validators tied to retired presentation contracts.",
+    "4. Audit root-level legacy source strata and generated assets for safe archival/deletion.",
+    "5. Deepen the highest-value Rooms with sourced cases, measurements, counterexamples and revision history rather than adding structural layers.",
+    "6. Delete only after source lineage, references and CI are clean."
   ],
   "success_test": "A newcomer should be able to start at a House route, descend through manifest archive branches to one canonical owner for a concept, reach specialist/source layers, and return without encountering contradictory competing masters whose roles are unexplained.",
   "current_convergence_wave": {
@@ -223,19 +222,11 @@
       "All research.json sections now have successor owners; its 15 open questions moved into data/research-frontier.json and the root donor is closed for new research.",
       "Great Book 2024 extraction now lives under knowledge/research/great-book-2024-source-extraction.json; live consumers were rewired from the retired root book-research.json path.",
       "Law of Positional Meaning now lives in symbolic-relational-synthesis; later reinterpretation is modeled as graph growth in Timic dynamics.",
-      "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md is intentionally retained only as early-life roadmap provenance; canonical event ownership remains in data/timeline-events.json."
+      "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md is intentionally retained only as early-life roadmap provenance; canonical event ownership remains in data/timeline-events.json.",
+      "public-route-topology is now deterministically generated from data/house/public-surfaces.json and CI checks projection drift; route identity is authored once.",
+      "docs/POTATOVERSE.md is now explicitly a human-readable reader projection rather than a canonical control plane."
     ],
     "next_retirement_candidates": [
-      {
-        "path": "knowledge/research/potato-house-master/public-route-topology.json",
-        "target_state": "generated compatibility projection",
-        "condition": "derive records deterministically from data/house/public-surfaces.json plus only genuinely additional topology fields"
-      },
-      {
-        "path": "docs/POTATOVERSE.md",
-        "target_state": "reader projection",
-        "condition": "retain human-readable introduction but remove any ambiguity with current machine-canonical owners"
-      },
       {
         "path": "root-level legacy master/research files",
         "target_state": "historical source strata",
@@ -318,6 +309,16 @@
         "action": "deleted",
         "reason": "orphaned root theory absorbed into canonical positional-meaning and temporal-reinterpretation owners",
         "last_live_blob": "806538c82dcda0d00128f8841cfc7ca704ac5298"
+      },
+      {
+        "path": "knowledge/research/potato-house-master/public-route-topology.json",
+        "action": "converted to generated compatibility projection",
+        "reason": "route identity, canonical route, surface type and Room membership now derive deterministically from data/house/public-surfaces.json; CI checks drift"
+      },
+      {
+        "path": "docs/POTATOVERSE.md",
+        "action": "demoted to reader projection",
+        "reason": "human-readable introductory narrative retained while canonical concept and House authority are explicitly delegated to machine owners"
       }
     ],
     "root_source_strata": {
