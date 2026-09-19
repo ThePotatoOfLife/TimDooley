@@ -18,6 +18,21 @@
       ]
     },
     {
+      "surface_id": "potato-of-life",
+      "surface_type": "guide",
+      "canonical_route": "/potato-of-life/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "potatoverse-canon",
+        "life-body",
+        "traditions-texts",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
       "surface_id": "tim",
       "surface_type": "hub",
       "canonical_route": "/tim-dooley/",
@@ -483,6 +498,20 @@
         "culture-information",
         "works",
         "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "spirit",
+      "surface_type": "guide",
+      "canonical_route": "/potato-of-life/spirit/",
+      "primary_hub_id": "potato-of-life",
+      "room_ids": [
+        "potatoverse-canon",
+        "life-body",
+        "traditions-texts"
       ],
       "specialist_view": true,
       "migration_status": "current",
