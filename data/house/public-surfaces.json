@@ -1,6 +1,6 @@
 {
-  "version": "1.8.0",
-  "updated": "2026-09-18",
+  "version": "1.9.0",
+  "updated": "2026-09-19",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
   "primary_gateway_ids": [
@@ -742,6 +742,32 @@
       "surface_type": "guide",
       "title": "Paths",
       "primary_parent": "house",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "elevator",
+      "route": "/elevator/",
+      "canonical_route": "/elevator/",
+      "surface_type": "guide",
+      "title": "Door / Axis Elevator",
+      "primary_parent": "home",
       "primary_room_ids": [
         "potatoverse-canon",
         "archive-sources",
