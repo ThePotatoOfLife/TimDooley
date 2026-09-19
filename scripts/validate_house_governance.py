@@ -31,6 +31,7 @@ PROVIDENCE_STRUCTURE=ROOT/'data/house/providence-pillars-esoteric-structure.json
 LAYER_TERRAIN_ATLAS=ROOT/'data/house/layer-terrain-regime-atlas.json'
 PLACEMENT_MATRIX=ROOT/'data/house/placement-matrix.json'
 SUBROOMS=ROOT/'data/house/subrooms.json'
+HOLDINGS=ROOT/'data/house/holdings.json'
 SPECIALIST_SUBVIEWS=ROOT/'data/house/specialist-subviews.json'
 CONCEPT_TOPOLOGY=ROOT/'data/house/concept-topology.json'; CONCEPT_TOPOLOGY_SCHEMA=ROOT/'schemas/house-concept-topology.schema.json'
 TOPOLOGY_FIXTURE=ROOT/'data/house/topology-golden-fixture.json'
@@ -551,6 +552,32 @@ def validate_seed_spiral_routing(errors):
     for token in ('states/transitions of generative potential','not the deepest point','downward spiral can be rooting','upward spiral can be life','ring and spiral must remain distinct'):
         if token not in laws: errors.append(f'seed spiral routing missing law: {token}')
     if data.get('ring',{}).get('vertical_sign')!='zero': errors.append('Ring must remain zero axial displacement')
+
+
+def validate_holdings_alignment(errors):
+    data=load(HOLDINGS,errors)
+    if not data: return
+    assignments={x.get('path'):x.get('primary_owner_room_id') for x in data.get('file_assignments',[]) if isinstance(x,dict) and x.get('path')}
+    room_ids={x.get('room_id') for x in data.get('holdings',[]) if isinstance(x,dict) and x.get('room_id')}
+    seen_featured={}
+    for room in data.get('holdings',[]):
+        if not isinstance(room,dict): continue
+        rid=room.get('room_id')
+        if rid not in room_ids: errors.append(f'holdings row missing valid room_id: {rid}')
+        featured=room.get('featured_holdings',[]) or []
+        for row in featured:
+            if not isinstance(row,dict) or not row.get('path'):
+                errors.append(f'Room {rid} contains invalid featured holding'); continue
+            path=row.get('path')
+            owner=assignments.get(path)
+            if owner and owner!=rid:
+                errors.append(f'featured holding {path} appears in {rid} but canonical assignment is {owner}')
+            if path in seen_featured and seen_featured[path]!=rid:
+                errors.append(f'featured holding {path} appears in multiple Rooms: {seen_featured[path]}, {rid}')
+            seen_featured[path]=rid
+    for path,rid in assignments.items():
+        if rid not in room_ids:
+            errors.append(f'file assignment {path} references unknown Room {rid}')
 
 
 def validate_navigation_consolidation(errors):
