@@ -144,6 +144,9 @@ function ensureLayer() {
       'line-blur':.35,
     },
   }, before);
+  window.__potatoAtlasRenderStack?.register?.(LAYER_ID, {
+    slot:'selection-emphasis', priority:40, owner:'investigation:impact'
+  });
 }
 
 function nodeCode(node) {
