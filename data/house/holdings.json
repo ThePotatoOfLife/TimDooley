@@ -1,6 +1,6 @@
 {
   "version": "4.0.0",
-  "updated": "2026-09-18",
+  "updated": "2026-09-19",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
   "principle": "Every substantive knowledge file has at most one primary Room owner. Cross-Room meaning travels through interfaces, collections and references rather than duplicate ownership. Curated navigation/reader/story/corporium material is classified separately.",
@@ -1333,13 +1333,19 @@
       "room_id": "politics-governance",
       "title": "Politics & Governance",
       "dwelling_id": "world-systems",
-      "purpose": "Own documented political positions, governance structures, institutions and geopolitical relations as world-system material.",
-      "primary_file_count": 1,
+      "purpose": "Own Tim's documented political positions, political alignment synthesis, governance structures, institutions and geopolitical relations as world-system material.",
+      "primary_file_count": 2,
       "featured_holdings": [
         {
           "path": "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
           "id": "tim-dooley-politics-geopolitics-compendium",
           "kind": "room holding",
+          "basis": "politics-family"
+        },
+        {
+          "path": "knowledge/politics/tim-dooley-political-alignment-map.json",
+          "id": "tim-dooley-political-alignment-map",
+          "kind": "qualitative alignment specialist view",
           "basis": "politics-family"
         }
       ],
@@ -6258,6 +6264,11 @@
       "path": "data/house/foundation-first-reproduction-wave-001.json",
       "primary_owner_room_id": "house-architecture",
       "basis": "foundation-population-wave-016"
+    },
+    {
+      "path": "knowledge/politics/tim-dooley-political-alignment-map.json",
+      "primary_owner_room_id": "politics-governance",
+      "basis": "politics-family"
     }
   ],
   "curated_unowned_paths": [
