@@ -31,11 +31,11 @@ for (const token of [
 ]) assert.ok(presentation.includes(token), `Country Presentation missing ${token}`);
 assert.ok(!presentation.includes("import('./3d-country-hover-presentation.js')"), 'Country Presentation must not secretly own hover loading; bootstrap owns module order and versioning');
 
-assert.ok(bootstrap.includes("loadAfterPaint('Country Presentation', './3d-country-presentation.js')"), 'bootstrap must load Country Presentation');
-assert.ok(bootstrap.includes("loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js')"), 'bootstrap must explicitly load the minimal country hover replacement');
-assert.ok(bootstrap.indexOf("loadAfterPaint('Active View', './3d-active-view.js')") < bootstrap.indexOf("loadAfterPaint('Country Presentation', './3d-country-presentation.js')"), 'Country Presentation must load after Active View');
-assert.ok(bootstrap.indexOf("loadAfterPaint('Country Presentation', './3d-country-presentation.js')") < bootstrap.indexOf("loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js')"), 'minimal hover must load after Country Presentation');
-assert.ok(bootstrap.indexOf("loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js')") < bootstrap.indexOf("loadAfterPaint('World Bar', './3d-world-bar.js')"), 'minimal hover must install before ordinary analytical browsing surfaces');
+assert.ok(bootstrap.includes("['Country Presentation', './3d-country-presentation.js']"), 'bootstrap must load Country Presentation');
+assert.ok(bootstrap.includes("['Country Hover Presentation', './3d-country-hover-presentation.js']"), 'bootstrap must explicitly load the minimal country hover replacement');
+assert.ok(bootstrap.indexOf("['Active View', './3d-active-view.js']") < bootstrap.indexOf("['Country Presentation', './3d-country-presentation.js']"), 'Country Presentation must load after Active View');
+assert.ok(bootstrap.indexOf("['Country Presentation', './3d-country-presentation.js']") < bootstrap.indexOf("['Country Hover Presentation', './3d-country-hover-presentation.js']"), 'minimal hover must load after Country Presentation');
+assert.ok(bootstrap.indexOf("['Country Hover Presentation', './3d-country-hover-presentation.js']") < bootstrap.indexOf("['World Bar', './3d-world-bar.js']"), 'minimal hover must install before ordinary analytical browsing surfaces');
 
 for (const token of ['__potatoAtlasCountryPresentation', "unregister('country-hover')", "register('country-hover-presentation'", 'Population ·']) {
   assert.ok(countryHover.includes(token), `minimal country hover missing ${token}`);
