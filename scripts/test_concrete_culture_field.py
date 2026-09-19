@@ -40,6 +40,7 @@ REQUIRED_CASE_IDS = {
 REQUIRED_HUMAN_CASE_IDS = {"ghyslain-raza-star-wars-kid"}
 REQUIRED_GROUNDING_IDS = {
     "formation-in-practice",
+    "recognizability-in-practice",
     "control-in-practice",
     "tribunal-role-lock-in-practice",
     "classification-in-practice",
