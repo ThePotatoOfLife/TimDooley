@@ -101,7 +101,7 @@ Current compatibility rule: normal application interaction is Router-owned and d
 ## NEXT — RENDER + UI CONVERGENCE
 
 - [x] Add and enforce visual-channel compatibility matrix (`data/world-map-visual-channel-contract.json`), including an explicit pattern+height fallback.
-- [ ] Audit every writer of country fill/pattern/outline/height.
+- [x] Audit canonical country fill/pattern/outline/height ownership and remove dormant Progressive UI country-surface writers; continue extending the audit when new channels are added.
 - [x] Centralize style-generation restoration for Render Stack and migrated physical layers.
 - [ ] Drain remaining duplicate style/lifecycle writers discovered by the architecture auditor.
 - [ ] Consolidate global UI design tokens, z-index bands and common surfaces.
