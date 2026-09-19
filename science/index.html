@@ -12,7 +12,7 @@
 <script defer src="./science-library.js?v=20260911a"></script>
 <style>
 .science-inquiry{max-width:1050px;border-top:1px solid var(--site-line);margin:0 0 42px}.science-inquiry .question-stub{display:grid;grid-template-columns:minmax(210px,.72fr) 1.28fr;gap:24px;padding:18px 0;border-bottom:1px solid var(--site-line)}.science-inquiry h2{font:400 23px/1.2 var(--site-font-serif);color:var(--site-green);margin:0}.science-inquiry p{margin:0;color:#c7cdc4}.science-inquiry .boundary-note{color:var(--site-gold);font:italic 14px/1.45 var(--site-font-serif);margin-top:6px}.science-deep{display:flex;gap:14px;flex-wrap:wrap;border-top:1px solid var(--site-line);padding-top:16px;margin-top:28px}.science-deep a{color:var(--site-green)}@media(max-width:720px){.science-inquiry .question-stub{grid-template-columns:1fr;gap:6px}}
-</style>
+.test-cases{border-top:1px solid var(--site-line);padding-top:28px;margin:0 0 42px}.test-cases h2{font:400 32px/1.1 var(--site-font-serif);color:var(--site-gold);margin:0 0 9px}.test-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.test-card{border:1px solid var(--site-line);border-radius:11px;padding:16px;background:var(--site-panel)}.test-card h3{font:400 21px/1.2 var(--site-font-serif);color:var(--site-green);margin:0 0 7px}.test-card p{font-size:13px;color:#c7cdc4}.test-card .chain{font-size:11px;color:var(--site-muted);border-top:1px solid var(--site-line);padding-top:9px}.test-card .fail{color:#d8b56b}@media(max-width:720px){.test-grid{grid-template-columns:1fr}}</style>
 </head>
 <body>
 <main class="page page--wide science-page" data-reader-surface="science">
@@ -46,7 +46,18 @@
   <article class="question-stub"><h2>What are the main uncertainty types?</h2><div><p>Measurement, sampling, parameter, structural, provenance and interpretive uncertainty are kept separate. A precise equation does not remove uncertainty in the data, model form or meaning assigned to the result.</p></div></article>
   <article class="question-stub"><h2>Where is the rigorous testing method?</h2><div><p><a href="../knowledge/science/model-discrimination-calibration-atlas.json">Model discrimination &amp; calibration atlas</a> · <a href="../knowledge/science/model-testing-protocol.json">Model testing protocol</a></p></div></article>
 </section>
-  <section class="topology-context" data-house-topology-context data-house-concepts="plane,axis,cross,spiral" data-topology-src="../data/house/concept-topology.json" data-house-base="../house/"><p><a href="../house/#operators">Open the House topology behind Plane, Axis, Cross and Spiral →</a></p></section>
+  <section class="test-cases" id="worked-tests" aria-label="Worked discriminating tests">
+<h2>Four examples of what “test it” actually means</h2>
+<p class="boundary-note">The point is not that these project models are already validated. The point is to make the standard of evidence explicit enough that failure is possible.</p>
+<div class="test-grid">
+<article class="test-card"><h3>Spiral versus circle</h3><p><strong>Claim:</strong> recurrence includes a real change of state rather than simply returning around a loop.</p><div class="chain">measure repeated phase → predeclare a non-returning coordinate → compare change against uncertainty → fit simpler periodic baseline</div><p class="fail"><strong>Failure:</strong> no reproducible state change beyond noise, or the “changing coordinate” is chosen only after seeing the trajectory.</p></article>
+<article class="test-card"><h3>Garden versus dependence</h3><p><strong>Claim:</strong> support creates durable local capability rather than permanent reliance on a central helper.</p><div class="chain">measure capability before → provide support → reduce support → measure retained function / choice / resilience</div><p class="fail"><strong>Failure:</strong> outcomes collapse when the center withdraws, or participant capability and exit options never improve.</p></article>
+<article class="test-card"><h3>Corroboration versus copying</h3><p><strong>Claim:</strong> ten references may still be one evidence root.</p><div class="chain">trace citation/repost lineage → collapse shared upstream roots → recount independent access/witnesses → compare later correction rate</div><p class="fail"><strong>Failure:</strong> source-root deduplication provides no gain in distinguishing reliable from fragile claims.</p></article>
+<article class="test-card"><h3>Symbolic mapping versus hindsight</h3><p><strong>Claim:</strong> a mapping is unusually structured rather than one of many equally plausible post-hoc correspondences.</p><div class="chain">declare mapping rules → generate alternative/permuted mappings → score all by the same criteria → test on new cases</div><p class="fail"><strong>Failure:</strong> many alternatives fit just as well or rules change case by case.</p></article>
+</div>
+<p><a href="../knowledge/science/model-discrimination-calibration-atlas.json">Open the full test cards →</a></p>
+</section>
+<section class="topology-context" data-house-topology-context data-house-concepts="plane,axis,cross,spiral" data-topology-src="../data/house/concept-topology.json" data-house-base="../house/"><p><a href="../house/#operators">Open the House topology behind Plane, Axis, Cross and Spiral →</a></p></section>
 
 <section class="science-library" aria-label="Science document library">
     <div class="science-controls">
