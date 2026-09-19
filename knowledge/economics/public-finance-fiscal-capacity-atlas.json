@@ -1,8 +1,8 @@
 {
   "id": "public-finance-fiscal-capacity-atlas",
   "title": "Public Finance & Fiscal Capacity Atlas",
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.1.0",
+  "updated": "2026-09-19",
   "owner_room": "economy-finance",
   "purpose": "Model government finance as a system of revenues, spending, assets, liabilities, institutions, contingent obligations and real implementation capacity rather than reducing fiscal condition to one debt ratio.",
   "fiscal_identity": {
@@ -206,5 +206,67 @@
     "politics-governance",
     "infrastructure-capability",
     "provenance-evidence"
+  ],
+  "worked_cases": [
+    {
+      "id": "denmark-two-debt-perimeters-2025",
+      "title": "One country can have two correct debt ratios because the perimeter differs",
+      "observations": [
+        "Eurostat reported Denmark general-government gross debt at 27.9% of GDP at end-2025.",
+        "Danmarks Nationalbank reported central-government debt at DKK 235 billion, 7.6% of GDP, at end-2025."
+      ],
+      "distinction": "general government statistical perimeter != central government debt-management perimeter",
+      "why_it_matters": "A reader who treats both numbers as the same object will think one source is wrong. The correct response is to inspect coverage, consolidation and definition before comparing magnitudes.",
+      "next_questions": [
+        "Which entities are included?",
+        "Is the measure gross or net?",
+        "What valuation basis is used?",
+        "What maturity/interest profile sits behind the stock?"
+      ],
+      "sources": [
+        "knowledge/economics/economy-concrete-source-ledger.json:eurostat-gov-debt-q4-2025",
+        "knowledge/economics/economy-concrete-source-ledger.json:dnb-central-government-debt-2025"
+      ]
+    },
+    {
+      "id": "denmark-debt-instrument-anatomy-2025",
+      "title": "A sovereign debt stock is made of instruments with dates and refinancing risk",
+      "observations": [
+        "Danmarks Nationalbank's 2025 debt report describes government financing through bonds and other borrowing, including a 10-year government bond and a two-year USD loan.",
+        "The report gives central-government interest costs of DKK 5 billion for 2025."
+      ],
+      "system_chain": [
+        "funding need",
+        "instrument issuance",
+        "investor/holder",
+        "currency",
+        "coupon/rate",
+        "maturity",
+        "refinancing",
+        "interest cost"
+      ],
+      "why_it_matters": "Debt sustainability is partly a timing problem. Two governments with the same debt ratio can face different near-term pressure if maturity, currency, rate reset and holder structures differ.",
+      "sources": [
+        "knowledge/economics/economy-concrete-source-ledger.json:dnb-central-government-debt-2025"
+      ]
+    },
+    {
+      "id": "eu-energy-import-fiscal-link",
+      "title": "An energy shock becomes fiscal only through policy and household/company transmission",
+      "observation": "EU energy import dependency was 57% in 2024 under Eurostat's definition.",
+      "system_chain": [
+        "import dependence",
+        "price/supply shock",
+        "household/company cost",
+        "production/inflation effects",
+        "policy response",
+        "subsidy/tax/transfer or public investment",
+        "budget/debt consequence"
+      ],
+      "why_it_matters": "Energy dependence is not itself public debt. A fiscal effect appears through support choices, tax-base effects, public investment, state-owned enterprise exposure or broader macroeconomic transmission.",
+      "sources": [
+        "knowledge/economics/economy-concrete-source-ledger.json:eurostat-energy-dependency-2024"
+      ]
+    }
   ]
 }
