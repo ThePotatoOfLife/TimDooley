@@ -102,7 +102,7 @@ def main() -> int:
 
     for token in (
         "atlas-subdivisions-active","adl-heat-state-fill","adl-heat-incident-points",
-        "feature-state","ADL H.E.A.T. filters","not a state hate/crime score",
+        "feature-state","ADL H.E.A.T. filters","not a general hate score or crime score",
         "__potatoAtlasAdlHeat","evidenceLayer","adlYear","adlType",
         "clickPriority:85","renderStateInspector","renderIncident",
     ):
