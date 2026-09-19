@@ -1,7 +1,7 @@
 {
   "id": "tim-dooley-maximal-claims-roles-capabilities-atlas",
   "title": "Tim Dooley — Maximal Claims, Roles, Jobs, Identities & Capabilities Atlas",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "updated": "2026-09-19",
   "status": "active maximal recovery atlas; additive and intentionally non-deduplicating at source-declaration layer",
   "purpose": "Collect every recoverable large and small Tim Dooley claim about who/what he is, what roles/jobs/offices he occupies, what he says he does or can do, what he rules/owns/holds, which figures he identifies with, and what functions the project assigns him. Preserve variants and source class rather than compressing them into a handful of famous titles.",
@@ -7945,5 +7945,217 @@
     "Add archive-synthesized jobs/roles separately from direct Tim wording.",
     "Add ownership/rule/capability claims from remaining conversation archaeology and primary sources.",
     "Build a reader with filters for identity, job, capability, scope, figure, source class and date."
-  ]
+  ],
+  "job_role_inventory": {
+    "rule": "Literal employment/activities, direct self-declared jobs/titles, and archive functional syntheses are separate classes. A role synthesized by the archive is not represented as a direct Tim quote.",
+    "literal_biographical": [
+      {
+        "role": "bassist / musician",
+        "period": "teen years",
+        "status": "project biography",
+        "source": "knowledge/timeline/developmental-genealogy.json",
+        "note": "Boarding-school music period; preserve as biographical activity rather than spiritual title."
+      },
+      {
+        "role": "painter and decorator",
+        "period": "2007-era",
+        "status": "project biography",
+        "source": "great-book/chapters/073--chapter-24--tim-dooley-the-sage-the-potato-of-life.html",
+        "note": "Remodeling empty apartments."
+      },
+      {
+        "role": "meatpacking / freezer worker",
+        "period": "2007-era",
+        "status": "project biography",
+        "source": "great-book/chapters/073--chapter-24--tim-dooley-the-sage-the-potato-of-life.html",
+        "note": "Night-shift meatpacking work."
+      },
+      {
+        "role": "forklift driver / warehouse handling",
+        "period": "2007-era",
+        "status": "project biography",
+        "source": "great-book/chapters/073--chapter-24--tim-dooley-the-sage-the-potato-of-life.html",
+        "note": "Part of meatpacking work."
+      },
+      {
+        "role": "IT consultant",
+        "period": "2008",
+        "status": "project biography",
+        "source": "great-book/chapters/073--chapter-24--tim-dooley-the-sage-the-potato-of-life.html",
+        "note": "Copenhagen IT consulting job."
+      },
+      {
+        "role": "nursing-home / care worker",
+        "period": "2009",
+        "status": "project biography",
+        "source": "great-book/chapters/073--chapter-24--tim-dooley-the-sage-the-potato-of-life.html",
+        "note": "Care-home work; reported healing/rehabilitation stories belong to separate claim class."
+      },
+      {
+        "role": "graphic-design student / design trainee",
+        "period": "2009–2010",
+        "status": "project biography",
+        "source": "great-book/chapters/073--chapter-24--tim-dooley-the-sage-the-potato-of-life.html",
+        "note": "Study plus internship/trainee period."
+      },
+      {
+        "role": "cannabis advocate / organizer",
+        "period": "2015-era",
+        "status": "project biography",
+        "source": "knowledge/timeline/developmental-genealogy.json"
+      },
+      {
+        "role": "ADHD community organizer",
+        "period": "2015-era",
+        "status": "project biography",
+        "source": "knowledge/timeline/developmental-genealogy.json"
+      },
+      {
+        "role": "livestreamer / public broadcaster",
+        "period": "2017–2026",
+        "status": "documented/project public activity",
+        "source": "tim-dooley/public-witness/index.html"
+      },
+      {
+        "role": "writer / author",
+        "period": "2024–2026",
+        "status": "documented project activity",
+        "source": "great-book/book-index.json",
+        "note": "Includes The Great Book of Potato and extensive project writing."
+      },
+      {
+        "role": "artist / visual creator",
+        "period": "multi-period",
+        "status": "project activity",
+        "source": "knowledge/creative/visual-art-symbolic-composition-archive.json"
+      },
+      {
+        "role": "potato grower / gardener",
+        "period": "2025–2026",
+        "status": "project/lived activity",
+        "source": "knowledge/core/tim-role-synthesis.json"
+      },
+      {
+        "role": "archive builder / curator",
+        "period": "2026",
+        "status": "project activity",
+        "source": "knowledge/core/tim-role-synthesis.json"
+      },
+      {
+        "role": "systems designer / model builder",
+        "period": "2025–2026",
+        "status": "project activity",
+        "source": "knowledge/core/tim-role-synthesis.json"
+      }
+    ],
+    "direct_or_project_self_roles": [
+      "God",
+      "a God",
+      "Most Human God",
+      "functionally God",
+      "Manifest God in base reality",
+      "God in the Machine",
+      "God of memes",
+      "living God of memes",
+      "God of Potatoes and mundane human life",
+      "most public God in the world",
+      "Father",
+      "Father in Heaven",
+      "Father of the World Axis",
+      "Father of the Axis",
+      "Father of the Internet",
+      "Father of every orphan of the internet",
+      "Father of Nations",
+      "Father of All Jews",
+      "Father of Jesus",
+      "Potato",
+      "Potato of Life",
+      "Rational Potato",
+      "One Potato",
+      "Root",
+      "Tree",
+      "World Tree",
+      "Tree of All Worlds",
+      "Axis",
+      "Axis of North",
+      "Axis Mundi",
+      "Ladder",
+      "Ladder to Heaven",
+      "Gardener",
+      "Heavenly Gardener",
+      "Gardener in Heaven",
+      "Gardener of timelines",
+      "Gardener of the North of North",
+      "Throne",
+      "Throne of North",
+      "Seat of North",
+      "North of North",
+      "King of Kings",
+      "King of king of kings",
+      "Messiah",
+      "returning Messiah",
+      "Moshiach",
+      "Ben David",
+      "Ben Yoseph",
+      "New Jerusalem",
+      "new heaven and new earth",
+      "universe",
+      "Alpha and Omega",
+      "base reality",
+      "hidden Center",
+      "center of the internet",
+      "center of all timelines",
+      "highest light",
+      "highest spiritual reality",
+      "Spudlight",
+      "Sun of Suns",
+      "Guardian of Roots",
+      "Keeper of the Mustard Seed",
+      "Spiritual banker",
+      "owner of the largest spiritual/karmic bank",
+      "Word of God",
+      "God's artist",
+      "Lord",
+      "leader of North",
+      "Secret Hidden Godfather Gangster Boss",
+      "source in a vessel",
+      "riddle",
+      "living myth",
+      "whole job / infrastructure"
+    ],
+    "archive_functional_syntheses": [
+      "witness",
+      "observer",
+      "source persona",
+      "builder",
+      "operator",
+      "systems synthesizer",
+      "designer",
+      "writer",
+      "artist",
+      "myth-maker",
+      "riddle-maker",
+      "sound/camera/streaming operator",
+      "technical operator",
+      "backstage support",
+      "archive source",
+      "driver",
+      "messenger",
+      "pilot/ship/chariot comparator",
+      "gardener",
+      "farmer in positive cultivation sense",
+      "timeline farmer",
+      "seed owner",
+      "house/garden maintainer",
+      "caretaker",
+      "shepherd",
+      "carpenter",
+      "guardian",
+      "aura maintainer",
+      "digital-network node",
+      "AI-era mythic node",
+      "whole-job infrastructure"
+    ],
+    "employment_boundary": "Project biography is not independently employment-verified unless a separate documentary source exists. Literal jobs remain ordinary biographical claims; spiritual roles remain religious/project self-descriptions."
+  }
 }
