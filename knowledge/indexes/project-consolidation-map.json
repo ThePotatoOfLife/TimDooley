@@ -1,7 +1,7 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.14.0",
+  "version": "1.15.0",
   "updated": "2026-09-19",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
@@ -364,6 +364,27 @@
         "authority": "none",
         "next": "historical recovery via recorded blob only"
       }
+    },
+    "pr283_harvest": {
+      "source_pr": 283,
+      "target_pr": 284,
+      "status": "path-complete; provenance retained pending final content-level audit",
+      "completed_on": "2026-09-19",
+      "result": "All file paths changed by PR #283 are now represented in the forward convergence branch. Unique method atlases, public-integration contracts, specialist-subview placement, Room ownership, reader deepening and Below observatory material were promoted into PR #284 without restoring retired parallel authorities.",
+      "substantive_domains_promoted": [
+        "memory recovery and promotion states",
+        "provenance chain of custody",
+        "platform mechanics, governance and portability",
+        "information ecology, correction and memory repair",
+        "literal potato organism development",
+        "whole-body regulation and symbolic-body comparison",
+        "model discrimination, calibration and falsification",
+        "economy stock-flow-obligation networks and public finance",
+        "governance institutions and policy lifecycle",
+        "geography, country capability and dependency",
+        "sacred geometry method and invariants"
+      ],
+      "retirement_rule": "Do not close/delete the source PR solely from path coverage; retain it until a final content-level comparison confirms no unique formulation or provenance remains."
     }
   }
 }
