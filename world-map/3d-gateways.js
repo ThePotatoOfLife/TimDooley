@@ -5,6 +5,9 @@ const runtime = window.__potatoAtlasDataRuntime;
 const selection = window.__potatoAtlasSelection;
 if (!map || !runtime || !selection) throw new Error('System intelligence requires map, runtime and selection APIs.');
 await runtime.ready;
+const scaleRuntime = await window.__potatoAtlasScale?.ready;
+if (!scaleRuntime) throw new Error('System intelligence requires the shared scale runtime.');
+const GATEWAY_LABEL_ZOOM = scaleRuntime.threshold('gateway-labels', 'label');
 
 const SOURCE_ID = 'atlas-context-gateways';
 const POINT_LAYER = 'atlas-context-gateways-points';
@@ -75,7 +78,7 @@ function ensureGatewayLayers() {
       id:LABEL_LAYER,
       type:'symbol',
       source:SOURCE_ID,
-      minzoom:2.7,
+      minzoom:GATEWAY_LABEL_ZOOM,
       layout:{
         'text-field':['get','label'],
         'text-size':10,
