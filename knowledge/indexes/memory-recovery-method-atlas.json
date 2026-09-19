@@ -1,8 +1,8 @@
 {
   "id": "memory-recovery-method-atlas",
   "title": "Memory Recovery Method Atlas — From Buried Trace to Contextualized Project Memory",
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.1.0",
+  "updated": "2026-09-19",
   "owner_room": "memory-recovery",
   "purpose": "Turn recovery into a disciplined process: locate traces, reconstruct context, grade temporal/source certainty, detect later reinterpretation, and promote only what another canonical owner can safely use.",
   "master_distinction": "Remembered meaning, recovered artifact, reconstructed context and later interpretation are four different objects.",
@@ -189,5 +189,83 @@
     "developmental-genealogy",
     "canon-identities",
     "information-ecology"
+  ],
+  "repository_recovery_cases": [
+    {
+      "id": "root-research-json-retirement",
+      "source_object": "research.json",
+      "source_role": "former mixed root research layer",
+      "recovery_path": [
+        "audit sections and live consumers",
+        "route each substantive concept to existing specialist owners",
+        "move unresolved questions to data/research-frontier.json",
+        "verify all sections have successors",
+        "record final blob in archive/legacy/README.md",
+        "retire root duplicate"
+      ],
+      "outcome": "promoted + retired",
+      "provenance_preserved_as": "archive/legacy/README.md blob 353678889ad4b46890319c812951ae494cf1e791",
+      "successors": [
+        "knowledge/philosophy/potato-philosophy.json",
+        "knowledge/core/symbolic-relational-synthesis.json",
+        "knowledge/core/potatoverse-master-framework.json",
+        "knowledge/philosophy/timic-dynamics.json",
+        "data/research-frontier.json"
+      ],
+      "lesson": "Retire only after both durable claims and unresolved research obligations have destinations."
+    },
+    {
+      "id": "great-book-extraction-path-migration",
+      "source_object": "book-research.json",
+      "source_role": "root path holding Great Book 2024 extraction/provenance bridge",
+      "recovery_path": [
+        "identify extraction as still-useful source archaeology",
+        "move content intact to a scoped knowledge/research owner",
+        "rewire live consumers",
+        "record old root blob",
+        "retire only the old path, not the content"
+      ],
+      "outcome": "path retired; content remains live",
+      "provenance_preserved_as": "archive/legacy/README.md blob 9168248304e821b4af092c5c5f9c506b7db51fb1",
+      "successor": "knowledge/research/great-book-2024-source-extraction.json",
+      "lesson": "File retirement and knowledge retirement are different operations."
+    },
+    {
+      "id": "potatoverse-staging-retirement",
+      "source_object": "data/potatoverse-alternative-directions.json + related staging graphs",
+      "source_role": "temporary research wave",
+      "recovery_path": [
+        "externally re-source empirical biology/human-ecology findings",
+        "promote durable material into canonical science/practice/philosophy owners",
+        "avoid promoting staging IDs as a second graph taxonomy",
+        "record final blobs",
+        "delete staging projection"
+      ],
+      "outcome": "absorbed + staging retired",
+      "lesson": "Promote meaning and provenance, not temporary batch identifiers."
+    },
+    {
+      "id": "pr283-to-pr284-harvest",
+      "source_object": "PR #283",
+      "source_role": "divergent development branch with specialist reader/substance work",
+      "recovery_path": [
+        "compare changed paths against forward convergence branch",
+        "promote non-conflicting contracts, atlases, reader changes and Room assignments",
+        "re-run changed-path comparison",
+        "reach zero source-only changed paths",
+        "retain source PR as provenance pending content-level comparison"
+      ],
+      "outcome": "path-complete harvest; provenance retained",
+      "target": "PR #284 / research/deepen-p0-operators-2026-09-18",
+      "lesson": "Path coverage is a useful migration checkpoint but does not prove every formulation is redundant; provenance can remain after functional convergence."
+    }
+  ],
+  "recovery_decision_tree": [
+    "Is the source still the best owner? If yes, keep it and improve routing.",
+    "If not, does it contain unique wording/date/provenance? Preserve that stratum even after promotion.",
+    "Can durable material move into an existing canonical owner? Prefer promotion over another master.",
+    "Is only the path obsolete while content remains valuable? Move/rewire rather than delete knowledge.",
+    "Are staging IDs or generated queues the only unique feature? Preserve final provenance, not unnecessary parallel taxonomy.",
+    "Has every live consumer and unresolved question been migrated? Only then retire/delete the duplicate."
   ]
 }
