@@ -162,6 +162,13 @@ def validate_browser() -> None:
 
 def validate_gateway_alternatives(runtime: dict) -> None:
     gateways = load_json(GATEWAYS).get("gateways") or {}
+    required_story_gateways = ("danish-straits", "suez-sumed", "bab-el-mandeb", "malacca-strait")
+    for gateway_id in required_story_gateways:
+        story = gateways.get(gateway_id, {}).get("impact_story") or {}
+        for key in ("title", "trace", "mechanism", "observed_flow", "failure_or_constraint", "consequence_questions"):
+            assert story.get(key), f"{gateway_id} missing impact_story.{key}"
+        assert len(story.get("trace") or []) >= 3, f"{gateway_id} impact trace must contain at least three spatial/system steps"
+        assert len(story.get("consequence_questions") or []) >= 2, f"{gateway_id} impact story needs consequence questions"
     for gateway_id in ("suez-sumed", "bab-el-mandeb"):
         alternatives = gateways.get(gateway_id, {}).get("alternatives") or []
         assert any(row.get("target") == "cape-good-hope-route" for row in alternatives if isinstance(row, dict)), f"{gateway_id} must explicitly document Cape rerouting alternative"
