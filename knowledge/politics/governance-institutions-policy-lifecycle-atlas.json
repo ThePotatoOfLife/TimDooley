@@ -1,8 +1,8 @@
 {
   "id": "governance-institutions-policy-lifecycle-atlas",
   "title": "Governance, Institutions & Policy Lifecycle Atlas",
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.1.0",
+  "updated": "2026-09-19",
   "owner_room": "politics-governance",
   "purpose": "Give the World layer a neutral governance grammar for describing how public authority is constituted, constrained, exercised, implemented, reviewed and changed without turning the Room into a partisan scorecard.",
   "master_rule": "Describe institutions, authority, procedures, incentives, outcomes and evidence separately. A governance record should make disagreement inspectable rather than hide it inside one overall rating.",
@@ -316,5 +316,107 @@
     "infrastructure-capability",
     "provenance-evidence",
     "information-ecology"
-  ]
+  ],
+  "institutional_process_cases": [
+    {
+      "id": "denmark-folketing-law-making",
+      "jurisdiction": "Denmark",
+      "institution": "Folketinget",
+      "process_type": "national legislative procedure",
+      "observed_sequence": [
+        "bill introduced",
+        "first reading",
+        "committee consideration",
+        "committee report",
+        "second reading and amendment votes",
+        "possible renewed committee consideration",
+        "third reading",
+        "final adoption or rejection"
+      ],
+      "procedural_facts": [
+        "The Danish Constitution requires a bill to be considered three times by the Folketing before final adoption.",
+        "Committee reporting is part of the ordinary route between readings; after second reading a bill can in some cases return to committee before third reading.",
+        "Folketing guidance imposes timing rules between readings and publication of committee reports, with separate provisions for expedited handling."
+      ],
+      "lifecycle_mapping": {
+        "agenda_setting": "bill introduction and sponsorship",
+        "authorization": "three parliamentary readings",
+        "scrutiny": "committee work and published reports",
+        "revision": "amendments and possible renewed committee handling",
+        "final_state": "third-reading adoption/rejection"
+      },
+      "research_questions": [
+        "How much did the text change between introduction and final reading?",
+        "Which amendments were adopted, rejected or withdrawn?",
+        "How much time elapsed between readings and committee publication?",
+        "Which committees, ministries and external submissions materially shaped the bill?"
+      ],
+      "boundary": "This case describes formal procedure. It does not by itself measure deliberative quality, public influence, policy effectiveness or democratic legitimacy.",
+      "sources": [
+        "https://www.ft.dk/da/haandbog-i-folketingsarbejdet/indholdsfortegnelse/kapitel-3/afsnit-3-9",
+        "https://www.ft.dk/da/haandbog-i-folketingsarbejdet/indholdsfortegnelse/kapitel-3/afsnit-3-2",
+        "https://www.ft.dk/haandbog-i-folketingsarbejdet/indholdsfortegnelse/kapitel-5/afsnit-5-1"
+      ]
+    },
+    {
+      "id": "eu-ordinary-legislative-procedure",
+      "jurisdiction": "European Union",
+      "institutions": [
+        "European Commission",
+        "European Parliament",
+        "Council of the European Union"
+      ],
+      "process_type": "ordinary legislative procedure",
+      "observed_sequence": [
+        "Commission legislative proposal",
+        "Parliament and Council first-reading positions",
+        "possible interinstitutional negotiations",
+        "second reading when necessary",
+        "conciliation when necessary",
+        "final approval of identical text by Parliament and Council",
+        "signature and publication in the Official Journal"
+      ],
+      "procedural_facts": [
+        "The ordinary legislative procedure is the general rule for adopting EU legislation in the policy areas where it applies.",
+        "Parliament and Council act as co-legislators on an equal footing and must approve the same final text.",
+        "The procedure can involve up to three readings; conciliation is the final stage if disagreement remains after second reading.",
+        "Once formally adopted and signed, legislative acts are published in the Official Journal."
+      ],
+      "lifecycle_mapping": {
+        "agenda_setting": "Commission proposal",
+        "scrutiny": "Parliament committee work and Council consideration",
+        "negotiation": "Parliament-Council interinstitutional negotiations, often with Commission participation",
+        "authorization": "matching approval by both co-legislators",
+        "dispute_resolution": "conciliation if second-reading disagreement remains",
+        "publication": "Official Journal after signing"
+      },
+      "research_questions": [
+        "At which reading was agreement reached?",
+        "What changed between Commission proposal and final act?",
+        "Which committee and rapporteur handled the file in Parliament?",
+        "Which amendments or Council positions changed the final text?",
+        "What implementation or transposition obligations follow from the adopted act?"
+      ],
+      "boundary": "This case describes institutional procedure. It does not assign a quality score to EU policymaking or imply that all EU acts follow the ordinary legislative procedure.",
+      "sources": [
+        "https://www.europarl.europa.eu/ordinary-legislative-procedure/en/home",
+        "https://www.europarl.europa.eu/olp/en/ordinary-legislative-procedure/overview",
+        "https://www.europarl.europa.eu/about-parliament/en/parliaments-powers/legislative-powers",
+        "https://www.europarl.europa.eu/olp/en/ordinary-legislative-procedure/concluded-and-signed-files"
+      ]
+    }
+  ],
+  "process_comparison_dimensions": [
+    "initiating institution",
+    "number and type of readings",
+    "committee/scrutiny stage",
+    "amendment mechanism",
+    "inter-institutional negotiation",
+    "time constraints",
+    "public document availability",
+    "final adoption threshold",
+    "publication/entry-into-force step",
+    "implementation responsibility"
+  ],
+  "process_comparison_rule": "Compare institutional sequences and observable outputs without turning procedural difference into an overall political ranking. A longer or shorter process is not intrinsically better; evaluate the function, context, safeguards, implementation and outcomes separately."
 }
