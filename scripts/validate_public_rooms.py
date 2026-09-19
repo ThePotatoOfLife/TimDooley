@@ -121,7 +121,7 @@ def main() -> int:
     for href, label in REQUIRED_HOME_ROOM_LINKS.items():
         if f'href="{href}"' not in home and f"href='{href}'" not in home:
             errors.append(f"homepage Rooms corridor missing route {href} ({label})")
-    corridor = re.search(r'<section\s+class=["\']rooms-corridor["\'][^>]*>(.*?)</section>', home, flags=re.I | re.S)
+    corridor = re.search(r'<section\s+class=["\'][^"\']*\brooms-corridor\b[^"\']*["\'][^>]*>(.*?)</section>', home, flags=re.I | re.S)
     if not corridor or "cult" not in corridor.group(1).lower():
         errors.append("homepage Rooms corridor must name cult/high-control culture explicitly")
 
