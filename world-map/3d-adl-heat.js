@@ -11,6 +11,7 @@ const SUMMARY_URL = '../data/world-incidents/adl-heat/state-summary.json';
 const META_URL = '../data/world-incidents/adl-heat/metadata.json';
 const STATE_SOURCE = 'atlas-subdivisions-active';
 const STATE_LAYER = 'adl-heat-state-fill';
+const STATE_OUTLINE = 'adl-heat-state-outline';
 const POINT_SOURCE = 'adl-heat-incidents';
 const POINT_LAYER = 'adl-heat-incident-points';
 const POINT_HIT = 'adl-heat-incident-hit';
@@ -98,7 +99,7 @@ function updateUrl() {
 }
 function setLayerVisibility(show) {
   const visibility = show ? 'visible' : 'none';
-  for (const id of [STATE_LAYER, POINT_LAYER, POINT_HIT]) {
+  for (const id of [STATE_LAYER, STATE_OUTLINE, POINT_LAYER, POINT_HIT]) {
     if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visibility);
   }
   const button = document.getElementById('adlHeatLayer');
@@ -247,6 +248,14 @@ function installLayers() {
     id:STATE_LAYER,type:'fill',source:STATE_SOURCE,
     paint:{'fill-color':stateColorExpression(),'fill-opacity':1}
   }, before);
+  if (!map.getLayer(STATE_OUTLINE)) map.addLayer({
+    id:STATE_OUTLINE,type:'line',source:STATE_SOURCE,
+    paint:{
+      'line-color':'#e3ece6',
+      'line-opacity':['interpolate',['linear'],['zoom'],3.2,0.52,5,0.78,7,0.92],
+      'line-width':['interpolate',['linear'],['zoom'],3.2,0.8,5,1.15,7,1.65]
+    }
+  }, map.getLayer('atlas-subdivision-label') ? 'atlas-subdivision-label' : undefined);
   if (!map.getLayer(POINT_LAYER)) map.addLayer({
     id:POINT_LAYER,type:'circle',source:POINT_SOURCE,minzoom:4.2,
     paint:{
