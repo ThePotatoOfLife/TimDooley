@@ -177,6 +177,9 @@ jobs:
       - name: Validate World Map spatial overlays
         run: python scripts/validate_world_map_spatial_overlays.py
 
+      - name: Validate ADL H.E.A.T. World Map evidence layer
+        run: python scripts/validate_world_map_adl_heat.py
+
       - name: Validate World Map Palestine geometry
         run: python scripts/validate_world_map_palestine.py
 
