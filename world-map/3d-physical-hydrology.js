@@ -9,9 +9,11 @@ if (!window.__potatoAtlasStyleLifecycle) {
   window.__potatoAtlasStyleLifecycle = createStyleLifecycle(map);
 }
 const styleLifecycle = window.__potatoAtlasStyleLifecycle;
+const scaleRuntime = await window.__potatoAtlasScale?.ready;
+if (!scaleRuntime) throw new Error('Hydrology requires the shared scale runtime.');
+const MIN_ZOOM = scaleRuntime.threshold('hydrology', 'load');
 
 const PHYSICAL_ID = 'physical.water.hydrology';
-const MIN_ZOOM = 4;
 const DEFAULT_OPACITY = 0.72;
 const BASIN_SERVICE = 'https://services3.arcgis.com/AdYB7LvDmN7hzWUb/arcgis/rest/services/Hydrobasins/FeatureServer/2/query';
 const RIVER_SERVICE = 'https://maps.fsc.org/server/rest/services/hosted/Optimized_Hyrdo/FeatureServer/0/query';
