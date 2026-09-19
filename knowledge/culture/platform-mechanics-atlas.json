@@ -1,8 +1,8 @@
 {
   "id": "platform-mechanics-atlas",
   "title": "Platform Mechanics Atlas — Visibility, Persistence, Incentives and Social Memory",
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.1.0",
+  "updated": "2026-09-19",
   "owner_room": "internet-platforms",
   "purpose": "Model a platform as an active mediation system rather than a neutral container. Track how affordances, ranking, identity, monetization, moderation, archive rules and portability change what becomes visible, repeatable and memorable.",
   "platform_stack": [
@@ -186,5 +186,113 @@
     "subculture_group_formation": "Pass repeated interaction patterns only when there is evidence of identity, norms, roles or reproduction.",
     "witness_attestation": "Preserve what was publicly witnessed without inferring private motive.",
     "below_observatory": "Escalate abuse, harassment or illicit-network questions only with evidence-specific case records."
+  },
+  "mechanism_cases": [
+    {
+      "id": "activitypub-distribution-topology",
+      "system": "ActivityPub",
+      "mechanisms": [
+        "distribution",
+        "interaction",
+        "portability",
+        "memory"
+      ],
+      "observation": "Federated server-to-server delivery allows social objects and notifications to move across independently implemented services, changing the candidate/distribution topology from one platform-owned graph to a network of servers.",
+      "measurable_questions": [
+        "How many independent servers/services participate in the path?",
+        "Which object metadata survives federation?",
+        "Can a receiving service render/reply to the object?",
+        "What happens to a thread when a source server disappears?"
+      ],
+      "boundary": "Federated delivery is not equivalent to global searchability, uniform moderation, guaranteed archival persistence or frictionless identity migration.",
+      "sources": [
+        "https://www.w3.org/TR/activitypub/",
+        "https://www.w3.org/news/2018/activitypub-is-now-a-w3c-recommendation/"
+      ]
+    },
+    {
+      "id": "atproto-identity-host-separation",
+      "system": "AT Protocol",
+      "mechanisms": [
+        "identity",
+        "portability",
+        "archive-persistence",
+        "creator-dependence"
+      ],
+      "observation": "AT Protocol separates persistent decentralized identity and signed user repositories from a specific hosting PDS, allowing provider changes without intending to change the user's underlying identity.",
+      "measurable_questions": [
+        "Does the DID remain stable after provider migration?",
+        "How much repository/content state moves?",
+        "Does the social graph resolve after migration?",
+        "Which application-specific state fails to migrate?"
+      ],
+      "boundary": "Protocol-level portability does not imply that every App View, labeler, recommendation history, moderation record or third-party application state is portable.",
+      "sources": [
+        "https://atproto.com/guides/identity",
+        "https://atproto.com/guides/account-migration",
+        "https://atproto.com/guides/overview"
+      ]
+    },
+    {
+      "id": "youtube-moderation-state-machine",
+      "system": "YouTube",
+      "mechanisms": [
+        "governance",
+        "moderation-shaping",
+        "creator-dependence",
+        "measurement"
+      ],
+      "observation": "YouTube distinguishes warnings, strikes, removals and restrictions; creators receive notices and many enforcement decisions can be appealed. Three Community Guidelines strikes within 90 days can terminate a channel.",
+      "measurable_questions": [
+        "What sanction type was applied?",
+        "Was notice given and what reason was supplied?",
+        "Was an appeal available and was the action reversed?",
+        "Is the action represented in the transparency-report category being used?"
+      ],
+      "boundary": "Platform-published enforcement totals are scoped datasets. Some restrictions and other legal/privacy/copyright processes are outside particular Community Guidelines report measures.",
+      "sources": [
+        "https://support.google.com/transparencyreport/answer/9209072",
+        "https://support.google.com/youtube/answer/185111",
+        "https://support.google.com/transparencyreport/answer/9198203"
+      ]
+    },
+    {
+      "id": "google-takeout-archive-export",
+      "system": "Google Takeout",
+      "mechanisms": [
+        "memory",
+        "portability",
+        "archive-persistence"
+      ],
+      "observation": "Users can create archives of data held across multiple Google products, demonstrating archive/data export as a distinct portability mechanism from live account or audience migration.",
+      "measurable_questions": [
+        "Which product data categories are exportable?",
+        "Are timestamps and metadata preserved?",
+        "Can another service import the export?",
+        "Which live identity, relationship or ranking state is absent from the archive?"
+      ],
+      "boundary": "An exportable archive improves user-held memory and exit resilience but does not recreate platform-native identity, audience relationships, recommendations or moderation state.",
+      "sources": [
+        "https://support.google.com/accounts/answer/3024190"
+      ]
+    }
+  ],
+  "case_analysis_template": [
+    "system",
+    "mechanism under study",
+    "observable object/state",
+    "before state",
+    "operator/intervention",
+    "after state",
+    "measurement",
+    "missing/unobservable variables",
+    "counterexample or failure mode",
+    "source/date"
+  ],
+  "cross_file_chain": {
+    "mechanics": "This file asks what the platform/protocol does to identity, distribution, interaction, memory and measurement.",
+    "governance": "platform-governance-portability-atlas asks who controls those mechanisms, what can be appealed/exported/migrated, and where dependency remains.",
+    "ecology": "information-ecology-mechanics-atlas asks what those mechanisms do to attention, repetition, provenance, correction and collective memory.",
+    "repair": "information-correction-memory-repair-atlas asks how changed status and corrections can propagate without erasing history."
   }
 }
