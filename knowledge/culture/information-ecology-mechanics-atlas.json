@@ -1,8 +1,8 @@
 {
   "id": "information-ecology-mechanics-atlas",
   "title": "Information Ecology Mechanics — Attention, Repetition, Memory, Correction and Forgetting",
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.1.0",
+  "updated": "2026-09-19",
   "owner_room": "information-ecology",
   "purpose": "Describe how information survives, spreads, mutates, concentrates, disappears and becomes collective memory across people, platforms, institutions and archives.",
   "unit_of_analysis": "A claim/object plus its copies, framings, audiences, corrections, sources and memory traces.",
@@ -151,5 +151,92 @@
     "subculture-group-formation",
     "culture-ontology",
     "below-intelligence-shadow-observatory"
-  ]
+  ],
+  "concrete_mechanism_cases": [
+    {
+      "id": "crossmark-current-status-linkage",
+      "system": "Crossref Crossmark",
+      "mechanisms": [
+        "correction-asymmetry",
+        "memory-repair",
+        "archive-lock-in"
+      ],
+      "observation": "Crossmark lets publishers register corrections, retractions and other editorially significant updates as linked metadata, so a reader can discover that an older publication's status has changed without deleting the original record.",
+      "measurable_questions": [
+        "Does the original record expose the update at retrieval time?",
+        "Is the update type machine-readable?",
+        "Does a downloaded PDF expose current status when Crossmark is embedded?",
+        "How long after the status change was update metadata registered?"
+      ],
+      "why_it_matters": "This is a practical model for making current status travel with durable historical records instead of relying on a searcher to independently discover a correction.",
+      "sources": [
+        "https://www.crossref.org/services/crossmark/",
+        "https://www.crossref.org/documentation/register-maintain-records/maintaining-your-metadata/registering-updates/"
+      ]
+    },
+    {
+      "id": "mediawiki-revision-memory",
+      "system": "MediaWiki",
+      "mechanisms": [
+        "memory-repair",
+        "context-erosion",
+        "collective-forgetting"
+      ],
+      "observation": "MediaWiki stores sequential revisions with IDs, timestamps and metadata and exposes history/diff tools, allowing current content and earlier states to coexist as inspectable versions.",
+      "measurable_questions": [
+        "Can a reader link to the exact historical version?",
+        "Can two versions be directly compared?",
+        "Does a rename preserve history?",
+        "Which revisions are hidden from ordinary users and why?"
+      ],
+      "why_it_matters": "Versioned history makes later correction compatible with provenance: the current representation can change without making the earlier public state unrecoverable.",
+      "sources": [
+        "https://www.mediawiki.org/wiki/Manual:Revision",
+        "https://www.mediawiki.org/wiki/Help:History"
+      ]
+    },
+    {
+      "id": "activitypub-federated-copy-lineage",
+      "system": "ActivityPub",
+      "mechanisms": [
+        "context-erosion",
+        "collective-forgetting",
+        "archive-lock-in"
+      ],
+      "observation": "Federated social objects can be delivered across independent servers and applications, creating derivative copies and conversational context across administrative boundaries.",
+      "measurable_questions": [
+        "Which server is the provenance root?",
+        "Which copies retain author/object identifiers?",
+        "What survives when one server removes or loses the source object?",
+        "Do replies and quotes preserve enough lineage to reconstruct context?"
+      ],
+      "why_it_matters": "Federation increases the importance of copy lineage: distributed availability can improve resilience while also making deletion, correction and context synchronization more complex.",
+      "sources": [
+        "https://www.w3.org/TR/activitypub/"
+      ]
+    },
+    {
+      "id": "youtube-enforcement-correction-loop",
+      "system": "YouTube",
+      "mechanisms": [
+        "correction-asymmetry",
+        "archive-lock-in",
+        "memory-repair"
+      ],
+      "observation": "YouTube supports appeals and reports appeals/reinstatements for Community Guidelines enforcement, creating an observable status-change loop from sanction to re-review to possible reversal.",
+      "measurable_questions": [
+        "Was the original sanction visible to an audience or only the creator?",
+        "Did reversal restore the same object/account state?",
+        "Can downstream references to the sanction discover the reversal?",
+        "Which sanction categories are excluded from the transparency metric being cited?"
+      ],
+      "why_it_matters": "A corrected platform decision is not automatically a corrected public memory; the ecological question is whether the changed status reaches the same retrieval and audience surfaces.",
+      "sources": [
+        "https://support.google.com/transparencyreport/answer/9209072",
+        "https://support.google.com/youtube/answer/185111"
+      ]
+    }
+  ],
+  "source_counting_rule": "Count provenance roots, not visible repetitions. A hundred pages deriving from one root source are one corroboration root plus a distribution graph, not one hundred independent confirmations.",
+  "correction_ecology_rule": "Measure correction as a propagation problem: authoring a correction, linking it to the original, distributing it, exposing it in search/archive surfaces and reducing recurrence are separate stages."
 }
