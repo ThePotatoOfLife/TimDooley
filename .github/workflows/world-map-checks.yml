@@ -46,6 +46,7 @@ jobs:
           node scripts/test_world_map_pinned_context_contract.mjs
           node scripts/test_world_map_inspection_bootstrap_staging.mjs
           node scripts/test_world_map_inspector_visibility.mjs
+          node scripts/test_world_map_motion_compositor.mjs
 
       - name: Audit World Map runtime architecture
         run: python scripts/audit_world_map.py
