@@ -31,6 +31,10 @@ linear-gradient(to bottom,rgba(12,16,12,.96),rgba(5,8,6,.995))}
 .local-panel{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;border:1px solid var(--site-line);border-top:0;padding:15px 18px;border-radius:0 0 18px 18px;margin-top:-1px}.local-copy b{font:400 20px var(--site-font-serif);color:var(--site-gold)}.local-copy span{display:block;color:var(--site-muted);font-size:10px;margin-top:4px}.local-controls{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
 .explain-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:28px}.explain-grid article{border-top:1px solid var(--site-line);padding-top:12px}.explain-grid b{display:block;font:400 19px var(--site-font-serif);color:var(--site-gold)}.explain-grid span{display:block;color:var(--site-muted);font-size:10px;margin-top:4px;line-height:1.45}
 .text-fallback{margin-top:24px}.text-fallback summary{cursor:pointer;color:var(--site-muted)}.text-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin-top:12px}.text-grid a{border:1px solid var(--site-line);padding:10px;text-decoration:none;color:inherit}.text-grid strong{display:block;color:var(--site-gold)}.text-grid small{color:var(--site-muted)}
+
+.level-portals{position:absolute;left:22px;bottom:20px;z-index:6;display:flex;flex-wrap:wrap;gap:6px;max-width:min(70%,620px)}
+.level-portals a{border:1px solid var(--site-line);background:rgba(5,8,6,.82);border-radius:999px;padding:6px 9px;color:var(--site-muted);text-decoration:none;font-size:8px;letter-spacing:.04em;text-transform:uppercase}
+.level-portals a:hover{color:var(--site-green);border-color:#62765b}
 @media(max-width:780px){.elevator-head{grid-template-columns:1fr}.level-controls{justify-content:flex-start}.viewport{min-height:520px}.door{--door-w:145px;--door-h:220px}.door{transform:rotateY(var(--angle)) translateZ(210px) rotateY(calc(var(--angle)*-1))}.door strong{font-size:17px}.door span{display:none}.axis-car{width:125px;height:125px}.floor-disc{width:92vw}.local-panel{grid-template-columns:1fr}.local-controls{justify-content:flex-start}.explain-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.rotunda,.door{transition:none}}
 </style>
@@ -39,7 +43,7 @@ linear-gradient(to bottom,rgba(12,16,12,.96),rgba(5,8,6,.995))}
 <nav class="elevator-nav"><a href="../">← Home</a><a href="../house/">House</a><a href="../rooms/">Rooms</a><a href="../below/">Below Basin</a><a href="../axis/">Axis</a></nav>
 <header class="elevator-head"><div><p class="eyebrow">Door · Axis · Elevator · Local Centers</p><h1>THE HOUSE<br>FROM THE CENTER</h1><p>Stand at the Door. Move up or down through the same Axis, or turn toward a Dwelling. Entering a room makes that room your local center; its neighboring doors recompose around you. The geometry is relational, not literal Euclidean architecture.</p></div><div class="level-controls" id="levelControls" aria-label="Elevator stops"></div></header>
 <section class="viewport" aria-label="Spatial Potato House navigator">
-<div class="level-sign" id="levelSign"></div>
+<div class="level-sign" id="levelSign"></div><div class="level-portals" id="levelPortals" aria-label="Level portals"></div>
 <div class="elevator-shaft" id="shaft" aria-label="Vertical elevator controls"></div>
 <div class="scene"><div class="floor-disc"></div><div class="rotunda" id="rotunda"></div><div class="axis-car" id="axisCar"><div><b>DOOR<br>/ AXIS</b><span>global spatial center</span></div></div></div>
 </section>
@@ -51,7 +55,7 @@ linear-gradient(to bottom,rgba(12,16,12,.96),rgba(5,8,6,.995))}
 (async()=>{
 const root=(p)=>'..'+p;
 const res=await fetch('../data/house/elevator-spatial-projection.json'); if(!res.ok)return;
-const data=await res.json(), rot=document.getElementById('rotunda'), lc=document.getElementById('levelControls'), shaft=document.getElementById('shaft'), sign=document.getElementById('levelSign'), copy=document.getElementById('localCopy'), textGrid=document.getElementById('textGrid');
+const data=await res.json(), rot=document.getElementById('rotunda'), lc=document.getElementById('levelControls'), shaft=document.getElementById('shaft'), sign=document.getElementById('levelSign'), portals=document.getElementById('levelPortals'), copy=document.getElementById('localCopy'), textGrid=document.getElementById('textGrid');
 let level=new URLSearchParams(location.search).get('level')||'world';
 let local=new URLSearchParams(location.search).get('room')||null;
 let yaw=0;
@@ -85,7 +89,7 @@ function renderDoors(){
  rot.style.transform='rotateY('+yaw+'deg)';
 }
 function renderSign(){
- const L=data.levels.find(x=>x.id===level)||data.levels[1];sign.innerHTML='<b>'+L.label+'</b><span>'+L.description+'</span>';
+ const L=data.levels.find(x=>x.id===level)||data.levels[1];sign.innerHTML='<b>'+L.label+'</b><span>'+L.description+'</span>';portals.innerHTML=(L.landmarks||[]).map(x=>'<a href="'+routeFor(x.route)+'">'+x.label+'</a>').join('');
  copy.innerHTML=local?'<b>'+roomById[local].label+'</b><span>'+roomById[local].local_center_label+' · this Dwelling is now locally central. Its graph-neighbors have reconfigured around you.</span>':'<b>Door / Axis</b><span>You are at the global center on the '+L.label+' stop. Select a Dwelling to make it the local center.</span>';
 }
 function renderText(){
