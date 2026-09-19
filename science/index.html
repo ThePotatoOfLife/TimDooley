@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="./science-library.css?v=20260914a">
 <script defer src="./science-library.js?v=20260911a"></script>
 <style>
-.science-inquiry{max-width:1050px;border-top:1px solid var(--site-line);margin:0 0 42px}.science-inquiry .question-stub{display:grid;grid-template-columns:minmax(210px,.72fr) 1.28fr;gap:24px;padding:18px 0;border-bottom:1px solid var(--site-line)}.science-inquiry h2{font:400 23px/1.2 var(--site-font-serif);color:var(--site-green);margin:0}.science-inquiry p{margin:0;color:#c7cdc4}.science-inquiry .boundary-note{color:var(--site-gold);font:italic 14px/1.45 var(--site-font-serif);margin-top:6px}.science-deep{display:flex;gap:14px;flex-wrap:wrap;border-top:1px solid var(--site-line);padding-top:16px;margin-top:28px}.science-deep a{color:var(--site-green)}@media(max-width:720px){.science-inquiry .question-stub{grid-template-columns:1fr;gap:6px}}
+.science-inquiry{max-width:1050px;border-top:1px solid var(--site-line);margin:0 0 42px}.science-inquiry .question-stub{display:grid;grid-template-columns:minmax(210px,.72fr) 1.28fr;gap:24px;padding:18px 0;border-bottom:1px solid var(--site-line)}.science-inquiry h2{font:400 23px/1.2 var(--site-font-serif);color:var(--site-green);margin:0}.science-inquiry p{margin:0;color:#c7cdc4}.science-inquiry .boundary-note{color:var(--site-gold);font:italic 14px/1.45 var(--site-font-serif);margin-top:6px}.science-deep{display:flex;gap:14px;flex-wrap:wrap;border-top:1px solid var(--site-line);padding-top:16px;margin-top:28px}.science-deep a{color:var(--site-green)}.maturity{margin:8px 0 42px}.maturity h2{font:400 31px var(--site-font-serif);margin-bottom:8px}.maturity-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.maturity-card{border:1px solid var(--site-line);border-radius:11px;padding:13px;background:var(--site-panel)}.maturity-card b{display:block;color:var(--site-gold);font:400 19px var(--site-font-serif)}.maturity-card span{display:block;color:var(--site-muted);font-size:10px;line-height:1.45;margin-top:5px}.maturity-card em{display:block;color:var(--site-green);font-size:9px;font-style:normal;margin-top:8px}.science-routes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:0 0 42px}.science-route{border:1px solid var(--site-line);border-radius:11px;padding:14px;text-decoration:none;color:inherit}.science-route strong{display:block;font:400 21px var(--site-font-serif);color:var(--site-green)}.science-route span{display:block;color:var(--site-muted);font-size:10px;line-height:1.45;margin-top:5px}@media(max-width:900px){.maturity-grid{grid-template-columns:repeat(2,1fr)}.science-routes{grid-template-columns:1fr}}@media(max-width:720px){.science-inquiry .question-stub,.maturity-grid{grid-template-columns:1fr;gap:6px}}
 </style>
 </head>
 <body>
@@ -30,6 +30,25 @@
     <p class="summary science-lede">The scientific side of the project asks what can be made precise, what can be measured, and where a symbolic idea stops being a scientific claim.</p>
   </header>
 
+  <section class="maturity" aria-labelledby="science-maturity-title">
+    <p class="eyebrow">Research status</p><h2 id="science-maturity-title">Not every scientific-looking object has the same status</h2>
+    <p>The library uses a progression from suggestive comparison to tested evidence. A record can move forward, backward or remain unresolved; mathematical detail alone does not promote it.</p>
+    <div class="maturity-grid">
+      <article class="maturity-card"><b>Analogy</b><span>Two systems share a pattern or useful resemblance.</span><em>Needs: explicit mismatch and limits</em></article>
+      <article class="maturity-card"><b>Formal model</b><span>Variables, assumptions and relations are stated precisely.</span><em>Needs: operational interpretation</em></article>
+      <article class="maturity-card"><b>Hypothesis</b><span>The model makes an observable claim about the world.</span><em>Needs: competing explanations</em></article>
+      <article class="maturity-card"><b>Test</b><span>A protocol identifies data and a possible failure result.</span><em>Needs: reproducible observation</em></article>
+      <article class="maturity-card"><b>Evidence</b><span>Observed results bear on the hypothesis with stated uncertainty.</span><em>Still open to revision</em></article>
+    </div>
+  </section>
+  <nav class="science-routes" aria-label="Science specialist readers">
+    <a class="science-route" href="research-map/"><strong>Research map</strong><span>See the equations, domains, missing tests and canonical research files together.</span></a>
+    <a class="science-route" href="quantum/"><strong>Quantum & atoms</strong><span>Separate established quantum/particle science from Tim-attributed and archive-recovered formalisms.</span></a>
+    <a class="science-route" href="spudlight/"><strong>Spudlight</strong><span>Move from symbolic light language toward information, photons, biophotons and measurable channels.</span></a>
+    <a class="science-route" href="vibe-gates/"><strong>Vibe → Gate → Door</strong><span>Translate state-language into accessibility, synchronization and testable coupling questions.</span></a>
+    <a class="science-route" href="celestial-particles/"><strong>Celestial + particles</strong><span>Keep orbital mechanics, astrophysics, QCD and symbolic correspondences on separate evidence tracks.</span></a>
+    <a class="science-route" href="axis-11d-sun-spiral/"><strong>Axis · dimensions · spiral</strong><span>Distinguish geometry, precession, solar motion, mathematical dimensions and speculative extension.</span></a>
+  </nav>
   <section class="science-inquiry" aria-label="Scientific questions">
     <article class="question-stub"><h2>Can these ideas be formalized?</h2><div><p>Some can. A formal model names variables, relations, assumptions and operations clearly enough that another person can inspect the mathematics. Formalization can sharpen an idea without proving that the idea describes nature.</p></div></article>
     <article class="question-stub"><h2>What is a model—and what is only an analogy or metaphor?</h2><div><p>A mathematical analogy can reveal shared structure while still referring to different things. Metaphor can organize thought without supplying measurements. The library therefore distinguishes formal model, mathematical analogy, symbolic metaphor and established scientific result.</p></div></article>

@@ -1,6 +1,6 @@
 {
-  "version": "1.8.0",
-  "updated": "2026-09-18",
+  "version": "2.0.0",
+  "updated": "2026-09-19",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
   "primary_gateway_ids": [
@@ -19,7 +19,8 @@
     "context",
     "rooms",
     "house",
-    "paths"
+    "paths",
+    "great-book"
   ],
   "surfaces": [
     {
@@ -321,6 +322,26 @@
       "legacy_routes": []
     },
     {
+      "id": "below",
+      "route": "/below/",
+      "canonical_route": "/below/",
+      "surface_type": "guide",
+      "title": "Below Observatory",
+      "primary_parent": "context",
+      "primary_room_ids": [
+        "archive-sources",
+        "culture-information",
+        "world-systems",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
       "id": "story",
       "route": "/tim-dooley/story/",
       "canonical_route": "/tim-dooley/story/",
@@ -332,6 +353,26 @@
         "time-history",
         "archive-sources",
         "works",
+        "culture-information"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "tim-claims",
+      "route": "/tim-dooley/claims/",
+      "canonical_route": "/tim-dooley/claims/",
+      "surface_type": "guide",
+      "title": "Tim Dooley Claims & Roles",
+      "primary_parent": "tim",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "time-history",
+        "archive-sources",
         "culture-information"
       ],
       "status": "active",
@@ -383,6 +424,28 @@
       "legacy_routes": []
     },
     {
+      "id": "great-book",
+      "route": "/great-book/",
+      "canonical_route": "/great-book/",
+      "surface_type": "guide",
+      "title": "The Great Book of Potato",
+      "primary_parent": "home",
+      "primary_room_ids": [
+        "works",
+        "potatoverse-canon",
+        "time-history",
+        "archive-sources"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": [
+        "/great-book.html"
+      ]
+    },
+    {
       "id": "interpretive-justice",
       "route": "/philosophy/interpretive-justice.html",
       "canonical_route": "/philosophy/interpretive-justice.html",
@@ -394,6 +457,26 @@
         "archive-sources",
         "culture-information",
         "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "potatoism-grow",
+      "route": "/potatoism/grow/",
+      "canonical_route": "/potatoism/grow/",
+      "surface_type": "guide",
+      "title": "Potatoism as Practice",
+      "primary_parent": "philosophy",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "research-lab",
+        "culture-information"
       ],
       "status": "active",
       "visibility": "specialist",
@@ -546,6 +629,65 @@
       "legacy_routes": []
     },
     {
+      "id": "vesica",
+      "route": "/traditions/vesica/",
+      "canonical_route": "/traditions/vesica/",
+      "surface_type": "guide",
+      "title": "Vesica Piscis & Mandorla",
+      "primary_parent": "religion",
+      "primary_room_ids": [
+        "traditions-texts",
+        "potatoverse-canon",
+        "science-formal-models",
+        "archive-sources"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "honor",
+      "route": "/theology/honor/",
+      "canonical_route": "/theology/honor/",
+      "surface_type": "guide",
+      "title": "Honor, Virtue & Reverence",
+      "primary_parent": "religion",
+      "primary_room_ids": [
+        "traditions-texts",
+        "potatoverse-canon",
+        "culture-information",
+        "archive-sources"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "tao-teh-king",
+      "route": "/taoism.html",
+      "canonical_route": "/taoism.html",
+      "surface_type": "guide",
+      "title": "The Tao Teh King",
+      "primary_parent": "religion",
+      "primary_room_ids": [
+        "traditions-texts",
+        "archive-sources",
+        "time-history"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
       "id": "culture",
       "route": "/context/culture/",
       "canonical_route": "/context/culture/",
@@ -561,6 +703,26 @@
       "visibility": "specialist",
       "primary_navigation": false,
       "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "shadow-farm",
+      "route": "/shadow-farm/",
+      "canonical_route": "/shadow-farm/",
+      "surface_type": "guide",
+      "title": "Shadow Farm",
+      "primary_parent": "culture",
+      "primary_room_ids": [
+        "culture-information",
+        "archive-sources",
+        "world-systems",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
       "knowledge_owner": false,
       "legacy_routes": []
     },

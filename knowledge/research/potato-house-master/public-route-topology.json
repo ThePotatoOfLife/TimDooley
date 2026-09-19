@@ -1,6 +1,6 @@
 {
-  "version": "1.6.0",
-  "updated": "2026-09-18",
+  "version": "1.8.0",
+  "updated": "2026-09-19",
   "purpose": "Route-topology bridge for active public surfaces; navigation/migration classification only, not substantive knowledge ownership. House, Paths and Living Axis are structural projections over the canonical Rooms, not additional fact owners.",
   "room_registry": "data/house/rooms.json",
   "public_surface_registry": "data/house/public-surfaces.json",
@@ -219,6 +219,21 @@
       "compatibility_routes": []
     },
     {
+      "surface_id": "below",
+      "surface_type": "guide",
+      "canonical_route": "/below/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "archive-sources",
+        "culture-information",
+        "world-systems",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
       "surface_id": "story",
       "surface_type": "guide",
       "canonical_route": "/tim-dooley/story/",
@@ -228,6 +243,21 @@
         "time-history",
         "archive-sources",
         "works",
+        "culture-information"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "tim-claims",
+      "surface_type": "guide",
+      "canonical_route": "/tim-dooley/claims/",
+      "primary_hub_id": "tim",
+      "room_ids": [
+        "potatoverse-canon",
+        "time-history",
+        "archive-sources",
         "culture-information"
       ],
       "specialist_view": true,
@@ -266,6 +296,23 @@
       "compatibility_routes": []
     },
     {
+      "surface_id": "great-book",
+      "surface_type": "guide",
+      "canonical_route": "/great-book/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "works",
+        "potatoverse-canon",
+        "time-history",
+        "archive-sources"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": [
+        "/great-book.html"
+      ]
+    },
+    {
       "surface_id": "interpretive-justice",
       "surface_type": "guide",
       "canonical_route": "/philosophy/interpretive-justice.html",
@@ -275,6 +322,21 @@
         "archive-sources",
         "culture-information",
         "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "potatoism-grow",
+      "surface_type": "guide",
+      "canonical_route": "/potatoism/grow/",
+      "primary_hub_id": "philosophy",
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "research-lab",
+        "culture-information"
       ],
       "specialist_view": true,
       "migration_status": "current",
@@ -389,6 +451,50 @@
       "compatibility_routes": []
     },
     {
+      "surface_id": "vesica",
+      "surface_type": "guide",
+      "canonical_route": "/traditions/vesica/",
+      "primary_hub_id": "religion",
+      "room_ids": [
+        "traditions-texts",
+        "potatoverse-canon",
+        "science-formal-models",
+        "archive-sources"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "honor",
+      "surface_type": "guide",
+      "canonical_route": "/theology/honor/",
+      "primary_hub_id": "religion",
+      "room_ids": [
+        "traditions-texts",
+        "potatoverse-canon",
+        "culture-information",
+        "archive-sources"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "tao-teh-king",
+      "surface_type": "guide",
+      "canonical_route": "/taoism.html",
+      "primary_hub_id": "religion",
+      "room_ids": [
+        "traditions-texts",
+        "archive-sources",
+        "time-history"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
       "surface_id": "culture",
       "surface_type": "guide",
       "canonical_route": "/context/culture/",
@@ -397,6 +503,21 @@
         "culture-information",
         "archive-sources",
         "world-systems"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "shadow-farm",
+      "surface_type": "guide",
+      "canonical_route": "/shadow-farm/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "culture-information",
+        "archive-sources",
+        "world-systems",
+        "research-lab"
       ],
       "specialist_view": true,
       "migration_status": "current",
