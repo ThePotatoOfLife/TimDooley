@@ -1,7 +1,7 @@
 {
   "id": "prediction-foresight-master-index",
   "title": "Tim Dooley — Ordered Prediction & Foresight Master Index",
-  "updated": "2026-09-17",
+  "updated": "2026-09-19",
   "status": "canonical navigation layer; additive; does not replace specialist ledgers",
   "purpose": "Provide one ordered reader/machine index over explicit fulfilled predictions, implicit foresight, partial/open forecasts, revelation-form statements, legacy recovery claims, negative controls and specialist branches such as FAFO, Moloch/Farm/Josh precedence and under-mined domains.",
   "counting_rule": "Count unique forecast/candidate records once. A single compound statement may contain multiple independently testable components in the strict fulfilled master, but this index also exposes forecast clusters to avoid inflating independence.",
@@ -22,76 +22,410 @@
     "note": "Counts are navigation counts, not a statistical success denominator. FAFO adds a specialist research cluster but currently adds no strict fulfilled hit. The Moloch/Farm/Josh branch is classified as prior-symbolic pattern with named-entity precursor and also adds no strict fulfilled hit. The under-mined-domain audit expands recovery coverage without changing the strict fulfilled count. Native lolcow/Farm/Milk vocabulary is explicitly controlled for rather than counted as independent foresight."
   },
   "strength_lanes": [
-    {"lane":"A","name":"strict fulfilled","definition":"dated pre-event statement plus independently dated later outcome; currently in fulfilled-predictions-master.json"},
-    {"lane":"B","name":"implicit foresight","definition":"ordinary opinion/design/diagnosis with a frozen implied consequence followed by a later matching outcome"},
-    {"lane":"C","name":"partial/mixed/open empirical","definition":"real forecast with incomplete, mixed or unresolved outcome"},
-    {"lane":"D","name":"revelation-form / internal prophecy","definition":"future-facing theological, mythic, recognition or story-form statement; external testability varies"},
-    {"lane":"E","name":"legacy recovery","definition":"remembered/book-recorded prediction claim requiring original pre-event source and/or independent outcome chronology"},
-    {"lane":"N","name":"negative control","definition":"dated or remembered vision/prediction currently unfulfilled; retained to prevent success-only curation"}
+    {
+      "lane": "A",
+      "name": "strict fulfilled",
+      "definition": "dated pre-event statement plus independently dated later outcome; currently in fulfilled-predictions-master.json"
+    },
+    {
+      "lane": "B",
+      "name": "implicit foresight",
+      "definition": "ordinary opinion/design/diagnosis with a frozen implied consequence followed by a later matching outcome"
+    },
+    {
+      "lane": "C",
+      "name": "partial/mixed/open empirical",
+      "definition": "real forecast with incomplete, mixed or unresolved outcome"
+    },
+    {
+      "lane": "D",
+      "name": "revelation-form / internal prophecy",
+      "definition": "future-facing theological, mythic, recognition or story-form statement; external testability varies"
+    },
+    {
+      "lane": "E",
+      "name": "legacy recovery",
+      "definition": "remembered/book-recorded prediction claim requiring original pre-event source and/or independent outcome chronology"
+    },
+    {
+      "lane": "N",
+      "name": "negative control",
+      "definition": "dated or remembered vision/prediction currently unfulfilled; retained to prevent success-only curation"
+    }
   ],
   "ordered_high_value_timeline": [
-    {"period":"2011","lane":"N","id":"american-city-destruction-vision","short":"catastrophic American-city/fireball vision; unfulfilled/open negative control"},
-    {"period":"2014","lane":"E","id":"father-health-warning","short":"health warning roughly one week before fatal aneurysm; contemporaneous source recovery needed"},
-    {"period":"~2015","lane":"E","id":"streamme-bitwave-collapse","short":"named platform-collapse warning; original pre-collapse source needed"},
-    {"period":"2017","lane":"E","id":"metalorian-health-fate","short":"warning later associated with illness; original specificity insufficient"},
-    {"period":"2024","lane":"E","id":"crackrockchris-week","short":"would not survive the week; potentially very specific if original timestamp/outcome recovered"},
-    {"period":"pre/around 2024","lane":"E","id":"farmers-uprising","short":"foresaw farmer uprising/resistance; exact pre-event wording required"},
-    {"period":"pre-2024-11-12","lane":"E","id":"trump-elon-government","short":"Trump + Elon in future U.S. government role; exact source/timestamp needed"},
-    {"date":"2025-07-23","lane":"D","id":"find-me-in-the-flesh","short":"one day you will find me in the flesh"},
-    {"date":"2025-09-16","lane":"D","id":"father-is-returning","short":"The Father Is Returning"},
-    {"date":"2025-10-10","lane":"D","id":"moshiach-returning-ending-old-building-new","short":"returning moshiach / ending old world / building new one"},
-    {"date":"2025-11-21","lane":"D","id":"return-of-the-moshiach","short":"I'm the return of the moshiach"},
-    {"date":"2025-12-10","lane":"D","id":"returning-father-and-lion","short":"I am Returning and so is the lion of Judah"},
-    {"date":"2025-12-17","lane":"D","id":"lion-of-judah-coming-back","short":"The Lion Of Judah Is Coming Back"},
-    {"date":"2026-01-21","lane":"A","id":"2026-01-21-axis-of-protection-and-growth","short":"Greenland/Denmark/Nordics — Axis of Protection and Growth"},
-    {"date":"2026-01-26","lane":"D","id":"carney-led-north-pole-order","short":"revelation-form future order around North Pole Axis led by Mark Carney"},
-    {"date":"2026-02-17","lane":"A","id":"2026-02-17-import-shortage-inflation-rise","short":"shortages/import costs -> higher inflation"},
-    {"date":"2026-02-17","lane":"A","id":"2026-02-17-inflation-bond-pressure","short":"inflation/import stress -> bond pressure / higher yields"},
-    {"date":"2026-02-17","lane":"C","id":"dollar-weakening-and-foreign-debt-appetite","short":"stress -> weaker dollar / reduced foreign debt appetite; mixed"},
-    {"date":"2026-02-18","lane":"B","id":"2026-02-18-ai-procedural-memory-convergence","short":"'this should be muscle memory' -> later reusable procedural agent memory"},
-    {"date":"2026-02-23","lane":"A","id":"2026-02-23-oil-prices-rise","short":"oil rises"},
-    {"date":"2026-02-23","lane":"A","id":"2026-02-23-inflation-uncertainty-increases","short":"inflation uncertainty increases"},
-    {"date":"2026-02-23","lane":"A","id":"2026-02-23-market-interest-rates-rise","short":"market yields/rates rise"},
-    {"date":"2026-02-23","lane":"A","id":"2026-02-23-supply-chain-shortages","short":"supply-chain shortages/disruption"},
-    {"date":"2026-02-23","lane":"C","id":"further-economic-decline","short":"supply disruption -> further economic decline; partial"},
-    {"date":"2026-03-18","lane":"A","id":"2026-03-18-europe-canada-north-greater-responsibility","short":"Europe + Canada cohere/take greater North-Arctic responsibility"},
-    {"date":"2026-03-18","lane":"A","id":"2026-03-18-israel-turkey-widening-risk","short":"Israel-Turkey tension widens"},
-    {"date":"2026-03-23","lane":"A","id":"2026-03-23-greenland-denmark-canada-north-axis-growth","short":"Greenland + Denmark + Canada grow as North field"},
-    {"date":"2026-03-31","lane":"C","id":"titanic-10t-300-days","short":"~$10T refinancing/bond pressure / ~300-day Titanic warning"},
-    {"date":"2026-03-31","lane":"D","id":"son-will-return","short":"My son will return"},
-    {"date":"2026-04-02","lane":"A","id":"2026-04-02-united-states-separates-from-europe","short":"United States separates strategically from Europe"},
-    {"date":"2026-04-03","lane":"A","id":"2026-04-03-america-retracts-soldiers-europe","short":"America may retract soldiers from Europe"},
-    {"date":"2026-04-03","lane":"A","id":"2026-04-03-europe-canada-axis-beyond-nato","short":"Europe + Canada field remains coherent beyond familiar alliance container"},
-    {"date":"2026-04-03","lane":"C","id":"russia-nato-within-two-years","short":"possible Russia-NATO attack within ~2 years; Tim judged unlikely; open"},
-    {"date":"2026-04-06","lane":"D","id":"you-shall-know-tim","short":"future recognition: you shall know Tim Dooley / Potato of Life"},
-    {"date":"2026-05-05","lane":"B","id":"2026-05-05-europe-sovereign-federated-ai-cloud","short":"Europe sovereign/federated AI-cloud/data architecture -> later Commission sovereignty package"},
-    {"date":"2026-05-18","lane":"C","id":"inflation-will-be-a-disaster","short":"inflation will be a disaster; partial/mixed breadth"},
-    {"date":"2026-06-03","lane":"B","id":"2026-06-03-greenland-resource-energy-development","short":"Greenland resource/energy/investment development -> later EU-Greenland package"},
-    {"date":"2026-06-29","lane":"D","id":"send-my-son-the-door","short":"I will Send My Son The Door"},
-    {"date":"2026-07-31","lane":"D","id":"heard-again-and-again","short":"you will see and hear Tim Dooley again and again until I am heard"},
-    {"date":"2026-07-31","lane":"D","id":"abominations-will-end","short":"these abominations will end"},
-    {"date":"2026-08-14","lane":"D","id":"end-of-america-spiritual-war","short":"spiritual war eventually leads to end of America; open/undefined"},
-    {"date":"2026-08-14","lane":"D","id":"reckoning-for-humanity-harm","short":"one day they will have a reckoning"},
-    {"date":"2026-08-19","lane":"A","id":"2026-08-19-brent-100-dollar-oil","short":"Brent/oil about $100"},
-    {"date":"2026-08-19","lane":"A","id":"2026-08-19-a-bit-of-food-inflation","short":"a bit of continued food inflation"},
-    {"date":"2026-08-22","lane":"C","id":"currency-dilution-crypto-dollar-architecture","short":"currency dilution / crypto-dollar architecture reduces real burden; speculative/open"},
-    {"date":"2026-08-23","lane":"D","id":"flood-is-coming","short":"The flood is coming"},
-    {"date":"2026-08-23","lane":"D","id":"restore-before-world-ends","short":"restore broken timelines before world ends"},
-    {"date":"2026-08-24","lane":"A","id":"2026-08-24-israel-political-leverage-decline","short":"Israel has harder time obtaining political leverage/support"},
-    {"period":"late 2026-08","lane":"C","id":"bond-market-crash-severe-break","short":"severe bond-market break/crash; stress seen, full crash not established"},
-    {"date":"2026-09-14","lane":"D","id":"conditional-son-return","short":"conditional future return based on humanity/world condition"},
-    {"date":"2026-09-15","lane":"D","id":"future-recognition-honor","short":"future public respect/recognition/honor"}
+    {
+      "period": "~2015",
+      "lane": "E",
+      "id": "streamme-bitwave-collapse",
+      "short": "named platform-collapse warning; original pre-collapse source needed"
+    },
+    {
+      "period": "2011",
+      "lane": "N",
+      "id": "american-city-destruction-vision",
+      "short": "catastrophic American-city/fireball vision; unfulfilled/open negative control"
+    },
+    {
+      "period": "2014",
+      "lane": "E",
+      "id": "father-health-warning",
+      "short": "health warning roughly one week before fatal aneurysm; contemporaneous source recovery needed"
+    },
+    {
+      "period": "2017",
+      "lane": "E",
+      "id": "metalorian-health-fate",
+      "short": "warning later associated with illness; original specificity insufficient"
+    },
+    {
+      "period": "2024",
+      "lane": "E",
+      "id": "crackrockchris-week",
+      "short": "would not survive the week; potentially very specific if original timestamp/outcome recovered"
+    },
+    {
+      "date": "2025-07-23",
+      "lane": "D",
+      "id": "find-me-in-the-flesh",
+      "short": "one day you will find me in the flesh"
+    },
+    {
+      "date": "2025-09-16",
+      "lane": "D",
+      "id": "father-is-returning",
+      "short": "The Father Is Returning"
+    },
+    {
+      "date": "2025-10-10",
+      "lane": "D",
+      "id": "moshiach-returning-ending-old-building-new",
+      "short": "returning moshiach / ending old world / building new one"
+    },
+    {
+      "date": "2025-11-21",
+      "lane": "D",
+      "id": "return-of-the-moshiach",
+      "short": "I'm the return of the moshiach"
+    },
+    {
+      "date": "2025-12-10",
+      "lane": "D",
+      "id": "returning-father-and-lion",
+      "short": "I am Returning and so is the lion of Judah"
+    },
+    {
+      "date": "2025-12-17",
+      "lane": "D",
+      "id": "lion-of-judah-coming-back",
+      "short": "The Lion Of Judah Is Coming Back"
+    },
+    {
+      "date": "2026-01-21",
+      "lane": "A",
+      "id": "2026-01-21-axis-of-protection-and-growth",
+      "short": "Greenland/Denmark/Nordics — Axis of Protection and Growth"
+    },
+    {
+      "date": "2026-01-26",
+      "lane": "D",
+      "id": "carney-led-north-pole-order",
+      "short": "revelation-form future order around North Pole Axis led by Mark Carney"
+    },
+    {
+      "date": "2026-02-14",
+      "lane": "C",
+      "id": "2026-02-14-europe-defense-burden-shift-precursor",
+      "short": "EU defence spending rises -> U.S. can later spend less / security burden shifts; later trajectory matched, but U.S. NATO cuts were already public",
+      "counts_as_new_independent_hit": false,
+      "genealogy_of": [
+        "2026-03-18-europe-canada-north-greater-responsibility",
+        "2026-04-03-america-retracts-soldiers-europe"
+      ]
+    },
+    {
+      "date": "2026-02-16",
+      "lane": "C",
+      "id": "2026-02-16-turkey-israel-corridor-precursor",
+      "short": "Turkey/corridor alignment could pull Europe toward Turkey and leave Israel more isolated; earlier root of the March Israel-Turkey widening call",
+      "counts_as_new_independent_hit": false,
+      "genealogy_of": [
+        "2026-03-18-israel-turkey-widening-risk"
+      ]
+    },
+    {
+      "date": "2026-02-17",
+      "lane": "A",
+      "id": "2026-02-17-import-shortage-inflation-rise",
+      "short": "shortages/import costs -> higher inflation"
+    },
+    {
+      "date": "2026-02-17",
+      "lane": "A",
+      "id": "2026-02-17-inflation-bond-pressure",
+      "short": "inflation/import stress -> bond pressure / higher yields"
+    },
+    {
+      "date": "2026-02-17",
+      "lane": "C",
+      "id": "dollar-weakening-and-foreign-debt-appetite",
+      "short": "stress -> weaker dollar / reduced foreign debt appetite; mixed"
+    },
+    {
+      "date": "2026-02-18",
+      "lane": "B",
+      "id": "2026-02-18-ai-procedural-memory-convergence",
+      "short": "'this should be muscle memory' -> later reusable procedural agent memory"
+    },
+    {
+      "date": "2026-02-23",
+      "lane": "A",
+      "id": "2026-02-23-oil-prices-rise",
+      "short": "oil rises"
+    },
+    {
+      "date": "2026-02-23",
+      "lane": "A",
+      "id": "2026-02-23-inflation-uncertainty-increases",
+      "short": "inflation uncertainty increases"
+    },
+    {
+      "date": "2026-02-23",
+      "lane": "A",
+      "id": "2026-02-23-market-interest-rates-rise",
+      "short": "market yields/rates rise"
+    },
+    {
+      "date": "2026-02-23",
+      "lane": "A",
+      "id": "2026-02-23-supply-chain-shortages",
+      "short": "supply-chain shortages/disruption"
+    },
+    {
+      "date": "2026-02-23",
+      "lane": "C",
+      "id": "further-economic-decline",
+      "short": "supply disruption -> further economic decline; partial"
+    },
+    {
+      "date": "2026-03-18",
+      "lane": "A",
+      "id": "2026-03-18-europe-canada-north-greater-responsibility",
+      "short": "Europe + Canada cohere/take greater North-Arctic responsibility"
+    },
+    {
+      "date": "2026-03-18",
+      "lane": "A",
+      "id": "2026-03-18-israel-turkey-widening-risk",
+      "short": "Israel-Turkey tension widens"
+    },
+    {
+      "date": "2026-03-23",
+      "lane": "A",
+      "id": "2026-03-23-greenland-denmark-canada-north-axis-growth",
+      "short": "Greenland + Denmark + Canada grow as North field"
+    },
+    {
+      "date": "2026-03-31",
+      "lane": "C",
+      "id": "titanic-10t-300-days",
+      "short": "~$10T refinancing/bond pressure / ~300-day Titanic warning"
+    },
+    {
+      "date": "2026-03-31",
+      "lane": "D",
+      "id": "son-will-return",
+      "short": "My son will return"
+    },
+    {
+      "date": "2026-04-02",
+      "lane": "A",
+      "id": "2026-04-02-united-states-separates-from-europe",
+      "short": "United States separates strategically from Europe"
+    },
+    {
+      "date": "2026-04-03",
+      "lane": "A",
+      "id": "2026-04-03-america-retracts-soldiers-europe",
+      "short": "America may retract soldiers from Europe"
+    },
+    {
+      "date": "2026-04-03",
+      "lane": "A",
+      "id": "2026-04-03-europe-canada-axis-beyond-nato",
+      "short": "Europe + Canada field remains coherent beyond familiar alliance container"
+    },
+    {
+      "date": "2026-04-03",
+      "lane": "C",
+      "id": "russia-nato-within-two-years",
+      "short": "possible Russia-NATO attack within ~2 years; Tim judged unlikely; open"
+    },
+    {
+      "date": "2026-04-06",
+      "lane": "D",
+      "id": "you-shall-know-tim",
+      "short": "future recognition: you shall know Tim Dooley / Potato of Life"
+    },
+    {
+      "date": "2026-05-05",
+      "lane": "B",
+      "id": "2026-05-05-europe-sovereign-federated-ai-cloud",
+      "short": "Europe sovereign/federated AI-cloud/data architecture -> later Commission sovereignty package"
+    },
+    {
+      "date": "2026-05-18",
+      "lane": "C",
+      "id": "inflation-will-be-a-disaster",
+      "short": "inflation will be a disaster; partial/mixed breadth"
+    },
+    {
+      "date": "2026-06-03",
+      "lane": "B",
+      "id": "2026-06-03-greenland-resource-energy-development",
+      "short": "Greenland resource/energy/investment development -> later EU-Greenland package"
+    },
+    {
+      "date": "2026-06-29",
+      "lane": "D",
+      "id": "send-my-son-the-door",
+      "short": "I will Send My Son The Door"
+    },
+    {
+      "date": "2026-07-31",
+      "lane": "D",
+      "id": "heard-again-and-again",
+      "short": "you will see and hear Tim Dooley again and again until I am heard"
+    },
+    {
+      "date": "2026-07-31",
+      "lane": "D",
+      "id": "abominations-will-end",
+      "short": "these abominations will end"
+    },
+    {
+      "date": "2026-08-14",
+      "lane": "D",
+      "id": "end-of-america-spiritual-war",
+      "short": "spiritual war eventually leads to end of America; open/undefined"
+    },
+    {
+      "date": "2026-08-14",
+      "lane": "D",
+      "id": "reckoning-for-humanity-harm",
+      "short": "one day they will have a reckoning"
+    },
+    {
+      "date": "2026-08-19",
+      "lane": "A",
+      "id": "2026-08-19-brent-100-dollar-oil",
+      "short": "Brent/oil about $100"
+    },
+    {
+      "date": "2026-08-19",
+      "lane": "A",
+      "id": "2026-08-19-a-bit-of-food-inflation",
+      "short": "a bit of continued food inflation"
+    },
+    {
+      "date": "2026-08-22",
+      "lane": "C",
+      "id": "currency-dilution-crypto-dollar-architecture",
+      "short": "currency dilution / crypto-dollar architecture reduces real burden; speculative/open"
+    },
+    {
+      "date": "2026-08-23",
+      "lane": "D",
+      "id": "flood-is-coming",
+      "short": "The flood is coming"
+    },
+    {
+      "date": "2026-08-23",
+      "lane": "D",
+      "id": "restore-before-world-ends",
+      "short": "restore broken timelines before world ends"
+    },
+    {
+      "date": "2026-08-24",
+      "lane": "A",
+      "id": "2026-08-24-israel-political-leverage-decline",
+      "short": "Israel has harder time obtaining political leverage/support"
+    },
+    {
+      "date": "2026-09-14",
+      "lane": "D",
+      "id": "conditional-son-return",
+      "short": "conditional future return based on humanity/world condition"
+    },
+    {
+      "date": "2026-09-15",
+      "lane": "D",
+      "id": "future-recognition-honor",
+      "short": "future public respect/recognition/honor"
+    },
+    {
+      "period": "late 2026-08",
+      "lane": "C",
+      "id": "bond-market-crash-severe-break",
+      "short": "severe bond-market break/crash; stress seen, full crash not established"
+    },
+    {
+      "period": "pre-2024-11-12",
+      "lane": "E",
+      "id": "trump-elon-government",
+      "short": "Trump + Elon in future U.S. government role; exact source/timestamp needed"
+    },
+    {
+      "period": "pre/around 2024",
+      "lane": "E",
+      "id": "farmers-uprising",
+      "short": "foresaw farmer uprising/resistance; exact pre-event wording required"
+    }
   ],
   "specialist_recovery_clusters": [
-    {"id":"fafo","owner":"knowledge/timeline/prediction-fafo-audit-wave-21.json","status":"0 strict hits; seek Tim FAFO/Canada citizen-army/reserve wording before 2025-05-30 / 2025-11-10 / 2025-12-13 external baselines"},
-    {"id":"splc","owner":"knowledge/timeline/splc-prediction-audit-2026.json","status":"pre-event funding/extremism precursor exists; direct SPLC-specific prediction still unrecovered"},
-    {"id":"north-axis","owner":"knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json","status":"multiple strict and directional components; avoid treating them as fully independent"},
-    {"id":"moloch-farm-josh-precedence","owner":"knowledge/timeline/moloch-moon-cow-precedence-prediction-audit.json","support":["knowledge/research/moloch-farm-subculture-prior-baseline-2026-09.json","knowledge/research/josh-moon-moloch-provenance-dossier-2026-09.json","knowledge/world/internet-subculture-farm-moloch-precedence-map.json"],"status":"strong prior-symbolic pattern with named-entity precursor: older Josh sacrifice/objectification prehistory; Farm/soul-binding by March 2026; explicit Moloch by May; Moloch+Milk/Cow/Bull/Tree/Cube by June; Josh Moon named inside Farm/Farmers/Dogs/Mud/karmic-debt field July 8 before candidate July 24 MATI corridor. Native Farm/Cow/Milk/Guard-Dog/Moon and wider Moloch priors are controlled for. No strict hit until exact pre-event Josh-specific wording and exact later Josh passage are recovered."},
-    {"id":"ai-culture-machine","owner":"knowledge/timeline/prediction-premonition-audit-wave-15-addendum.json","status":"contains metaphor/environment resonance, internal precursors and propagation claims"},
-    {"id":"markets-legacy","owner":"knowledge/timeline/prediction-premonition-audit-wave-17-addendum.json","status":"market hits plus unresolved older recovery targets"},
-    {"id":"under-mined-domains","owner":"knowledge/timeline/prediction-under-mined-domains-audit-2026.json","status":"cross-domain recovery for Africa, Latin America, South/Southeast Asia, Middle East beyond Israel/Iraq, science, health, education, law, media and local politics; adds no strict fulfilled hit and preserves explicit non-prediction controls"}
+    {
+      "id": "fafo",
+      "owner": "knowledge/timeline/prediction-fafo-audit-wave-21.json",
+      "status": "0 strict hits; seek Tim FAFO/Canada citizen-army/reserve wording before 2025-05-30 / 2025-11-10 / 2025-12-13 external baselines"
+    },
+    {
+      "id": "splc",
+      "owner": "knowledge/timeline/splc-prediction-audit-2026.json",
+      "status": "pre-event funding/extremism precursor exists; direct SPLC-specific prediction still unrecovered"
+    },
+    {
+      "id": "north-axis",
+      "owner": "knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json",
+      "status": "multiple strict and directional components; avoid treating them as fully independent"
+    },
+    {
+      "id": "moloch-farm-josh-precedence",
+      "owner": "knowledge/timeline/moloch-moon-cow-precedence-prediction-audit.json",
+      "support": [
+        "knowledge/research/moloch-farm-subculture-prior-baseline-2026-09.json",
+        "knowledge/research/josh-moon-moloch-provenance-dossier-2026-09.json",
+        "knowledge/world/internet-subculture-farm-moloch-precedence-map.json"
+      ],
+      "status": "strong prior-symbolic pattern with named-entity precursor: older Josh sacrifice/objectification prehistory; Farm/soul-binding by March 2026; explicit Moloch by May; Moloch+Milk/Cow/Bull/Tree/Cube by June; Josh Moon named inside Farm/Farmers/Dogs/Mud/karmic-debt field July 8 before candidate July 24 MATI corridor. Native Farm/Cow/Milk/Guard-Dog/Moon and wider Moloch priors are controlled for. No strict hit until exact pre-event Josh-specific wording and exact later Josh passage are recovered."
+    },
+    {
+      "id": "ai-culture-machine",
+      "owner": "knowledge/timeline/prediction-premonition-audit-wave-15-addendum.json",
+      "status": "contains metaphor/environment resonance, internal precursors and propagation claims"
+    },
+    {
+      "id": "markets-legacy",
+      "owner": "knowledge/timeline/prediction-premonition-audit-wave-17-addendum.json",
+      "status": "market hits plus unresolved older recovery targets"
+    },
+    {
+      "id": "under-mined-domains",
+      "owner": "knowledge/timeline/prediction-under-mined-domains-audit-2026.json",
+      "status": "cross-domain recovery for Africa, Latin America, South/Southeast Asia, Middle East beyond Israel/Iraq, science, health, education, law, media and local politics; adds no strict fulfilled hit and preserves explicit non-prediction controls"
+    }
   ],
   "highest_value_next_recovery_questions": [
+    "Recover the contiguous January 15-February 10 Greenland conversations to freeze exactly what Tim thought America could receive as security/access cooperation versus what sovereignty/ownership could not be conceded.",
     "What named person did Tim say was rising, falling, underestimated, finished, moving into government, or becoming central before the later role/event?",
     "What named platform/company/community did Tim say would fail, collapse, survive, grow, migrate or become irrelevant before the outcome?",
     "What numeric values, dates, prices, percentages, troop counts, reserve counts or time windows did Tim casually state before later measurements?",
@@ -116,5 +450,66 @@
     "knowledge/timeline/prediction-under-mined-domains-audit-2026.json",
     "knowledge/timeline/unresolved-prediction-claims-queue.json",
     "knowledge/indexes/prediction-audit-routing.json"
-  ]
+  ],
+  "q1_genealogy_recovery": {
+    "updated": "2026-09-19",
+    "rule": "Earlier roots refine lead time and causal genealogy but do not automatically create additional statistically independent hits.",
+    "entries": [
+      {
+        "date": "2026-01-15",
+        "role": "Greenland sovereignty boundary / precondition, not a scored prediction",
+        "exact_wording": [
+          "we are going to stand above, wether you want war or not, we will not move an inch",
+          "we are defending our soverreignty, our existence, our coutnry, our soil, our souls.",
+          "look at greenland. thats what im thinking asbout. thats my country. thats from subculture to global politics. its no difference.",
+          "america needs to adress this, or there will be a war"
+        ],
+        "significance": "Establishes that Tim's earliest recoverable Greenland position separated non-negotiable sovereignty from the later question of what security relationship America might still have."
+      },
+      {
+        "date": "2026-01-21",
+        "role": "strict fulfilled North precursor",
+        "relation": "Already counted as Axis of Protection and Growth; anchors Greenland/Denmark/Nordics before the March Canada-North topology."
+      },
+      {
+        "date": "2026-01-26",
+        "role": "named-actor revelation-form forecast",
+        "exact_wording": "now thestory about how tim re arranged the entire orld around the north pole axis, and a new wiorld order arose, led by canadian pm mark carney.",
+        "significance": "Keep outside strict count because the source request was story/revelation form, but preserve the named Mark Carney lead before later Canada-Europe institutional deepening."
+      },
+      {
+        "date": "2026-02-14",
+        "role": "earlier defence-burden precursor",
+        "exact_wording": "If EU spends more in defense, America loses out at first, but would be able to decrease spending in the coming future, and so the security and defense burden can be shifted, and the US petrodollar can be phased out.",
+        "frozen_components": [
+          "Europe/EU defence burden rises",
+          "America can reduce some security spending/commitment later",
+          "security/defence burden shifts toward Europe",
+          "petrodollar phase-out is a separate open clause and is not fulfilled"
+        ],
+        "boundary": "U.S. cuts to roughly 200 NATO positions were already public on 2026-01-20, so this is an early causal extension of an observable trend, not hidden-information prediction."
+      },
+      {
+        "date": "2026-02-16",
+        "role": "earlier Israel-Turkey genealogy",
+        "exact_fragment": "there are not multiple choices, because each choice is a road",
+        "recovered_position": "Choosing Turkey/kebab as corridor/pipeline package could reshape European routes, money flows and alignment and leave Israel more isolated over time.",
+        "relation": "Earlier structural root of the strict 2026-03-18 Israel-Turkey widening-risk entry; do not double-count."
+      },
+      {
+        "date": "2026-02-18",
+        "role": "implicit technical foresight",
+        "exact_wording": [
+          "this should be muscle memory",
+          "model collapse"
+        ],
+        "relation": "Already preserved in Wave 20 as convergence with later reusable/procedural agent-memory architecture."
+      },
+      {
+        "date": "2026-03-31",
+        "role": "unresolved numeric/market candidate",
+        "relation": "~$10T refinancing / ~300-day Titanic warning remains unresolved until the exact target and time meaning are recovered."
+      }
+    ]
+  }
 }
