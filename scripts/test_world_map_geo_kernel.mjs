@@ -6,6 +6,8 @@ import {
   minimalLongitudeInterval,
   antimeridianAwareBounds,
   haversineDistanceKm,
+  destinationPointKm,
+  wrappedSegmentCoordinates,
 } from '../world-map/3d-geo-kernel.js';
 
 assert.equal(normalizeLongitude(190), -170);
@@ -67,5 +69,15 @@ const distance = haversineDistanceKm([179, 0], [-179, 0]);
 assert.ok(distance > 200 && distance < 225, `expected about 222 km across dateline, got ${distance}`);
 assert.ok(haversineDistanceKm([12.5683, 55.6761], [12.5683, 55.6761]) < 1e-9);
 assert.throws(() => haversineDistanceKm([0, 91], [0, 0]), /latitude/i);
+
+const polarOffset = destinationPointKm([20, 80], 90, 200);
+const equatorialOffset = destinationPointKm([20, 0], 90, 200);
+assert.ok(Math.abs(haversineDistanceKm([20, 80], polarOffset) - 200) < 0.01);
+assert.ok(Math.abs(haversineDistanceKm([20, 0], equatorialOffset) - 200) < 0.01);
+assert.ok(Math.abs(polarOffset[0] - 20) > Math.abs(equatorialOffset[0] - 20), 'equal physical offsets should require more longitude near the pole');
+
+const wrapped = wrappedSegmentCoordinates([179, 10], [-179, 11]);
+assert.deepEqual(wrapped, [[179,10],[181,11]]);
+assert.ok(Math.abs(wrapped[1][0] - wrapped[0][0]) < 5, 'dateline relationship segment must take the short wrapped path');
 
 console.log('WORLD MAP GEO KERNEL REGRESSION PASSED');
