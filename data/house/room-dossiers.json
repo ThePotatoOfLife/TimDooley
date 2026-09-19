@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "updated": "2026-09-18",
+  "updated": "2026-09-19",
   "authority": "house-room-dossiers",
   "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
   "dossiers": [
@@ -3814,9 +3814,10 @@
       "room_id": "politics-governance",
       "title": "Politics & Governance",
       "dwelling_id": "world-systems",
-      "entrance": "Own documented political positions, governance structures, institutions and geopolitical relations as world-system material.",
+      "entrance": "Own Tim's documented political positions, qualitative political alignment, governance structures, institutions and geopolitical relations as world-system material.",
       "belongs_here": [
         "documented political positions",
+        "Tim-specific political alignment and issue-position synthesis",
         "governance structure",
         "institutional relations and accountability",
         "Material rooted in knowledge/politics/"
@@ -3830,12 +3831,17 @@
       ],
       "epistemic_boundary": "Political description must remain sourced and distinct from symbolic North/Axis framing.",
       "knowledge_holdings": {
-        "primary_file_count": 1,
+        "primary_file_count": 2,
         "featured": [
           {
             "id": "tim-dooley-politics-geopolitics-compendium",
             "path": "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
             "kind": "room holding"
+          },
+          {
+            "id": "tim-dooley-political-alignment-map",
+            "path": "knowledge/politics/tim-dooley-political-alignment-map.json",
+            "kind": "qualitative alignment specialist view"
           }
         ]
       },
@@ -3919,9 +3925,9 @@
         }
       ],
       "next_work": [
+        "Keep one politics owner chain: compendium for dated positions -> alignment map for multidimensional synthesis -> reader/FAQ projections for explanation.",
         "Deepen the Room through its center contribution: Tests how public power, institutions and governance arrangements affect agency, correction and collective capacity.",
         "Keep handoffs explicit: receive from history, law-justice; hand mature work to research-programmes, works.",
-        "Deepen the substantive corpus before considering further subdivision.",
         "Apply the Foundation lens where a durable beginning or refoundation materially explains current identity, rules or reproduction."
       ],
       "center_pairing": {
