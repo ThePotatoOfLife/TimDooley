@@ -1,6 +1,6 @@
 {
   "id": "concrete-culture-field-atlas",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-19",
   "purpose": "Evidence-backed concrete cases that make Culture-page mechanisms inspectable while preserving category, legal-status, provenance and privacy boundaries.",
   "formations": [
@@ -109,7 +109,15 @@
       },
       "source_refs": [
         "doj-nxivm-raniere-2020"
-      ]
+      ],
+      "cultural_profile": {
+        "language": "proprietary personal-development and organizational vocabulary",
+        "ritual": "courses, ranked progression and nested organizational practices described in public legal records",
+        "status": "proximity to leadership and advancement within the organization could structure rank and prestige",
+        "boundaries": "court records establish coercive criminal conduct tied to leadership and a secret nested structure; individual participants still require person-specific evidence",
+        "objects": "course materials, organizational records and evidence introduced in criminal proceedings",
+        "memory": "legal records preserve an externally reviewable account that must remain distinct from the organization's self-description"
+      }
     },
     {
       "id": "kiwi-farms",
@@ -181,7 +189,15 @@
       "source_refs": [
         "smithsonian-hiphop-anthology-2021",
         "smithsonian-hiphop-release-2021"
-      ]
+      ],
+      "cultural_profile": {
+        "language": "genre vocabulary, DJ/MC terminology, style references and local/global lineage markers",
+        "ritual": "performance, block-party, cypher, dance and recording practices",
+        "status": "creative skill, innovation, reputation, performance and cultural influence",
+        "boundaries": "scene membership is porous and historically varied; no single authority governs hip-hop as a whole",
+        "objects": "recordings, turntables, graffiti, fashion, flyers, photographs, anthologies and museum collections",
+        "memory": "recordings, oral histories, archives, scholarship and Smithsonian preservation make earlier scenes inheritable"
+      }
     },
     {
       "id": "medecins-sans-frontieres",
@@ -251,7 +267,15 @@
         "ao3-open-beta-exit-2026",
         "ao3-membership-drive-2026",
         "otw-reports-2025"
-      ]
+      ],
+      "cultural_profile": {
+        "language": "fandom, tagging, archive and volunteer-governance vocabulary",
+        "ritual": "creating, tagging, reading, commenting, preserving fanworks and participating in volunteer committees",
+        "status": "creative contribution, curation/tagging expertise, technical work and volunteer responsibility",
+        "boundaries": "community infrastructure has Terms of Service and governance while participation spans many fandoms rather than one total identity",
+        "objects": "fanworks, tags, collections, archive software, policy documents, reports and release notes",
+        "memory": "the archive deliberately preserves works and metadata beyond the lifespan of transient commercial-platform posts"
+      }
     },
     {
       "id": "burning-man",
@@ -292,7 +316,15 @@
         "burning-man-principles",
         "burning-man-financials",
         "burning-man-summary-financials-2024"
-      ]
+      ],
+      "cultural_profile": {
+        "language": "Ten Principles and event-specific vocabulary provide a shared interpretive shorthand",
+        "ritual": "annual event participation, gifting, art-building, temporary-city practices and regional events",
+        "status": "participation, contribution, art-making, volunteering and organizational roles can create recognition",
+        "boundaries": "participation is intense but formal nonprofit reporting, permits and outside law remain visible interfaces",
+        "objects": "large-scale art, event infrastructure, published principles, reports, permits and archival media",
+        "memory": "organizational reporting, event archives and repeated regional practice transmit the culture across years"
+      }
     },
     {
       "id": "skateboarding",
@@ -317,7 +349,15 @@
       "source_refs": [
         "sage-skateboarding-subculture-olympics-2022",
         "olympics-skateboarding-tokyo"
-      ]
+      ],
+      "cultural_profile": {
+        "language": "trick names, spot knowledge, style vocabulary and authenticity discourse",
+        "ritual": "street sessions, filming, DIY spot-building, contests and local scene participation",
+        "status": "skill, style, creativity, persistence, video visibility and competitive achievement",
+        "boundaries": "street/DIY, brand, professional and Olympic layers overlap without one authority defining all skate culture",
+        "objects": "boards, videos, magazines, spots, brands, competition records and public skate infrastructure",
+        "memory": "video archives, magazines, local histories, brands and institutional sport records preserve different versions of the culture"
+      }
     },
     {
       "id": "wikipedia",
@@ -343,7 +383,15 @@
       "source_refs": [
         "wikimedia-disputes-2025",
         "wikimedia-transparency-2025"
-      ]
+      ],
+      "cultural_profile": {
+        "language": "policy shorthand, editorial terminology, templates and dispute-resolution vocabulary",
+        "ritual": "editing, talk-page discussion, source review, consensus-building and Requests for Comment",
+        "status": "editorial experience, policy fluency, contribution history and community trust",
+        "boundaries": "participation is open in principle but governed by platform policies, permissions and community processes",
+        "objects": "articles, revisions, diffs, citations, talk pages, policies and logs",
+        "memory": "version histories and discussion archives make disagreement and correction inspectable"
+      }
     },
     {
       "id": "mastodon-activitypub",
@@ -1059,6 +1107,70 @@
           "object_id": "skateboarding-street-to-olympics",
           "label": "Subculture → professionalization without disappearance",
           "point": "Skateboarding became commercial and Olympic while local street/DIY scenes and authenticity disputes continued."
+        }
+      ]
+    },
+    {
+      "id": "recognizability-in-practice",
+      "anchor_before": "Two independent axes: cultural development and control",
+      "title": "How recognizable culture looks in actual cases",
+      "summary": "Language, ritual, status, boundaries, objects and memory recur across very different formations. Comparing them side by side shows why cultural intensity is not the same thing as coercion.",
+      "cards": [
+        {
+          "object_type": "formation",
+          "object_id": "hip-hop",
+          "label": "Hip-hop — scene vocabulary, performance and cultural memory",
+          "fields": [
+            "cultural_profile"
+          ],
+          "point": "A creative scene can become globally recognizable through repeated practices, portable artifacts and preserved lineage without needing centralized membership."
+        },
+        {
+          "object_type": "formation",
+          "object_id": "burning-man",
+          "label": "Burning Man — ritual intensity plus institutional interfaces",
+          "fields": [
+            "cultural_profile"
+          ],
+          "point": "Strong ritual and shared vocabulary can coexist with public reporting, permits and outside legal accountability."
+        },
+        {
+          "object_type": "formation",
+          "object_id": "wikipedia",
+          "label": "Wikipedia — culture organized around inspectable correction",
+          "fields": [
+            "cultural_profile"
+          ],
+          "point": "A knowledge-production culture can build status and insider language while preserving visible revision and dispute procedures."
+        },
+        {
+          "object_type": "formation",
+          "object_id": "organization-for-transformative-works-ao3",
+          "label": "AO3/OTW — fandom builds durable memory infrastructure",
+          "fields": [
+            "cultural_profile"
+          ],
+          "point": "Shared cultural production can generate nonprofit governance and archival infrastructure owned by the participating community."
+        },
+        {
+          "object_type": "formation",
+          "object_id": "skateboarding",
+          "label": "Skateboarding — overlapping scene, industry and sport",
+          "fields": [
+            "cultural_profile"
+          ],
+          "point": "Institutionalization can add professional and Olympic layers without erasing local scene authority or authenticity disputes."
+        },
+        {
+          "object_type": "formation",
+          "object_id": "nxivm",
+          "label": "NXIVM — where culture and control require separate evidence",
+          "fields": [
+            "cultural_profile",
+            "high_control_features",
+            "legal_status"
+          ],
+          "point": "The same cultural dimensions become analytically different when concentrated authority and coercive mechanisms are established by strong evidence."
         }
       ]
     },
