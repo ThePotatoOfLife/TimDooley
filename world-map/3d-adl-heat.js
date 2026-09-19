@@ -34,14 +34,17 @@ const fmt = value => new Intl.NumberFormat('en').format(Number(value) || 0);
 function yearOptions() {
   return [...new Set((incidents?.features || []).map(f => Number(f?.properties?.year)).filter(Number.isFinite))].sort((a,b)=>b-a);
 }
+function incidentTypeTokens(value) {
+  return String(value || '').split(';').map(token => token.trim()).filter(Boolean);
+}
 function typeOptions() {
-  return [...new Set((incidents?.features || []).map(f => String(f?.properties?.incident_type || '').trim()).filter(Boolean))].sort();
+  return [...new Set((incidents?.features || []).flatMap(feature => incidentTypeTokens(feature?.properties?.incident_type)))].sort();
 }
 function activeFeatures() {
   return (incidents?.features || []).filter(feature => {
     const p = feature.properties || {};
     const yearOk = selectedYear === 'all' || String(p.year) === String(selectedYear);
-    const typeOk = selectedType === 'all' || String(p.incident_type || '').split(';').map(x=>x.trim()).includes(selectedType);
+    const typeOk = selectedType === 'all' || incidentTypeTokens(p.incident_type).includes(selectedType);
     return yearOk && typeOk;
   });
 }
@@ -98,7 +101,9 @@ function setLayerVisibility(show) {
   for (const id of [STATE_LAYER, POINT_LAYER, POINT_HIT]) {
     if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visibility);
   }
-  document.getElementById('adlHeatLayer')?.classList.toggle('active', show);
+  const button = document.getElementById('adlHeatLayer');
+  button?.classList.toggle('active', show);
+  button?.setAttribute('aria-pressed', show ? 'true' : 'false');
 }
 function applyFilters() {
   filtered = { type:'FeatureCollection', features:activeFeatures() };
@@ -147,6 +152,8 @@ function renderControls() {
       ${types.map(type => `<option value="${esc(type)}"${type===selectedType?' selected':''}>${esc(type)}</option>`).join('')}
     </select>
     <div class="boundary"><b>${fmt(filtered.features.length)} records shown</b><br>${esc(sourceStatusText())}<br>Counts are records in this ADL-derived snapshot, not a general hate score or crime score.</div>
+    <div class="muted">State shading = filtered record count. Canonical state borders/labels remain above the shading. Gold dots = geocoded source records; zoom in for individual incidents.</div>
+    <button type="button" data-adl-focus>Focus U.S.</button>
     <button type="button" data-adl-source>Source / methodology</button>`;
   surface.querySelector('[data-adl-year]')?.addEventListener('change', event => {
     selectedYear = event.target.value || 'all';
@@ -155,6 +162,9 @@ function renderControls() {
   surface.querySelector('[data-adl-type]')?.addEventListener('change', event => {
     selectedType = event.target.value || 'all';
     applyFilters();
+  });
+  surface.querySelector('[data-adl-focus]')?.addEventListener('click', () => {
+    try { map.fitBounds([[-125,24],[-66,50]], { padding:60, duration:550, maxZoom:4.8 }); } catch {}
   });
   surface.querySelector('[data-adl-source]')?.addEventListener('click', () => renderDatasetInspector());
 }
@@ -249,6 +259,12 @@ function installLayers() {
     id:POINT_HIT,type:'circle',source:POINT_SOURCE,minzoom:4.2,
     paint:{'circle-radius':['interpolate',['linear'],['zoom'],4.2,8,8,12],'circle-opacity':0.001}
   });
+  window.__potatoAtlasRenderStack?.register?.(STATE_LAYER, {
+    slot:'subnational-fill', priority:20, owner:'evidence:adl-heat'
+  });
+  window.__potatoAtlasRenderStack?.register?.(POINT_LAYER, {
+    slot:'context-network', priority:70, owner:'evidence:adl-heat'
+  });
   if (interaction?.register) {
     interaction.register('adl-heat-incidents', {
       layers:[POINT_HIT], objectType:'evidence-record', clickPriority:85, hoverPriority:85,
@@ -287,7 +303,15 @@ async function loadData() {
 }
 async function setEnabled(next) {
   await loadData();
-  enabled = Boolean(next);
+  const requested = Boolean(next);
+  if (requested) {
+    if (window.__potatoAtlasSubdivisions?.retainPartition) {
+      await window.__potatoAtlasSubdivisions.retainPartition('USA');
+    } else {
+      await window.__potatoAtlasSubdivisions?.refresh?.();
+    }
+  }
+  enabled = requested;
   setLayerVisibility(enabled);
   applyFilters();
   renderControls();
@@ -295,6 +319,8 @@ async function setEnabled(next) {
     try {
       map.fitBounds([[-125,24],[-66,50]], { padding:60, duration:550, maxZoom:4.8 });
     } catch {}
+  } else {
+    await window.__potatoAtlasSubdivisions?.releasePartition?.('USA');
   }
   return enabled;
 }
@@ -311,7 +337,7 @@ window.__potatoAtlasAdlHeat = {
 };
 
 const params = new URL(location.href).searchParams;
-if (params.get('evidenceLayer') === 'adl-heat') {
+if (params.get('evidenceLayer') === 'adl-heat' && !window.__potatoAtlasEvidenceLayers) {
   window.__potatoAtlasAdlHeat.ready.then(()=>setEnabled(true)).catch(error=>console.warn('ADL H.E.A.T. layer unavailable:', error));
 }
 window.dispatchEvent(new CustomEvent('potato-atlas-adl-heat-ready'));
