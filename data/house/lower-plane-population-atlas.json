@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.1.0",
+  "updated": "2026-09-19",
   "authority": "lower-plane-population-atlas",
   "purpose": "Concrete population projection for the Below Platform. This is a navigational/intelligence View over canonical domain records, never a guilt list.",
   "placement_rule": "Place subjects below-facing when the research question is primarily about hidden provenance, restricted information, clandestine/illicit coordination, coercive reproduction, buried evidence, blocked accountability or investigative repair. The same entity can appear elsewhere under a different View.",
@@ -27,7 +27,53 @@
       "repair-spiral",
       "return"
     ],
-    "center_question": "What is beneath the visible account, how is it known, what reproduces there, and what must happen before it should be trusted or returned upward?"
+    "center_question": "What is beneath the visible account, how is it known, what reproduces there, and what must happen before it should be trusted or returned upward?",
+    "spatial_contract": "data/house/below-basin-spatial-contract.json",
+    "spatial_projection": {
+      "rim": [
+        "World interfaces",
+        "platforms",
+        "media",
+        "politics",
+        "law",
+        "classifiers",
+        "infrastructure"
+      ],
+      "surface": [
+        "culture",
+        "subculture",
+        "memes",
+        "roles",
+        "attention"
+      ],
+      "territories": [
+        "Sektur patches",
+        "scenes",
+        "conflict communities"
+      ],
+      "processes": [
+        "Farm loops",
+        "attention extraction",
+        "archive recirculation"
+      ],
+      "regime": [
+        "Swamp where blocked flow/opacity/recurrence dominate"
+      ],
+      "sediment": [
+        "Mud",
+        "Ash"
+      ],
+      "subfloor": [
+        "Roots",
+        "provenance",
+        "history"
+      ],
+      "center": [
+        "Forge ring",
+        "Axis",
+        "Drain / Root Junction"
+      ]
+    }
   },
   "zones": [
     {
@@ -182,5 +228,9 @@
     "How does succession or fragmentation work?",
     "What rebrands/refoundations followed disruption?",
     "What institutions investigate, constrain or repair it?"
+  ],
+  "source_files": [
+    "data/house/below-basin-spatial-contract.json",
+    "knowledge/world/culture-sektur-platform-media-political-ecology.json"
   ]
 }
