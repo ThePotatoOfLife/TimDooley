@@ -105,6 +105,8 @@ def main() -> int:
         "feature-state","ADL H.E.A.T. filters","not a general hate score or crime score",
         "__potatoAtlasAdlHeat","evidenceLayer","adlYear","adlType",
         "clickPriority:85","renderStateInspector","renderIncident",
+        "incidentTypeTokens","flatMap","retainPartition('USA')","releasePartition?.('USA')",
+        "State shading = filtered record count","data-adl-focus",
     ):
         require(js, token, "world-map/3d-adl-heat.js", errors)
     for token in ("id=\"adlHeatLayer\"","ADL H.E.A.T. incidents","U.S. evidence"):
