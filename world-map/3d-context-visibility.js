@@ -51,7 +51,9 @@ function activeInvestigationId() {
 }
 function evidenceActive() {
   const id = activeInvestigationId();
+  const evidenceLayers = window.__potatoAtlasEvidenceLayers?.active?.() || [];
   return Boolean(
+    evidenceLayers.length ||
     id === 'evidence' ||
     document.querySelector('[data-investigation="evidence"].active') ||
     document.getElementById('evidence')?.classList.contains('active') ||
@@ -183,6 +185,7 @@ for (const eventName of [
   'atlas-time-change',
   'potato-atlas-inspector-change',
   'potato-atlas-investigation-change',
+  'potato-atlas-evidence-layer-change',
   'potato-atlas-scale-ready',
   'potato-atlas-module-ready',
 ]) window.addEventListener(eventName, () => scheduleRefresh(eventName));
