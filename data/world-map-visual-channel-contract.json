@@ -1,0 +1,51 @@
+{
+  "id": "world-map-visual-channel-contract",
+  "version": "1.0.0",
+  "updated": "2026-09-19",
+  "status": "active",
+  "channels": {
+    "fill": "One scalar country surface at a time.",
+    "pattern": "Categorical/set membership on the flat country surface.",
+    "outline": "Selection, query match, hover and focus emphasis.",
+    "line": "Typed relationships, declared routes, flows and geographic boundaries.",
+    "point": "Honestly located entities, places and physical assets.",
+    "height": "One explicitly selected scalar extrusion.",
+    "card": "Nonspatial contextual information.",
+    "timeline": "Dated state and history.",
+    "scene": "Explicitly non-geographic topology or hierarchy."
+  },
+  "compatibility": {
+    "fill+pattern": {
+      "status": "compatible",
+      "policy": "compose",
+      "reason": "Scalar color and categorical membership use distinct flat-surface channels."
+    },
+    "fill+outline": {
+      "status": "compatible",
+      "policy": "compose",
+      "reason": "Selection and query emphasis remain boundary channels."
+    },
+    "pattern+outline": {
+      "status": "compatible",
+      "policy": "compose",
+      "reason": "Membership and selection/query emphasis remain independently legible."
+    },
+    "fill+height": {
+      "status": "compatible",
+      "policy": "compose-with-explicit-height-label",
+      "reason": "Color and height may encode separate named scalar questions."
+    },
+    "pattern+height": {
+      "status": "incompatible-current-renderer",
+      "policy": "prefer-pattern-flatten-height",
+      "reason": "The current membership pattern is a flat fill layer and is not mapped onto extrusion side/top surfaces."
+    }
+  },
+  "guardrails": [
+    "Selection never owns analytical fill.",
+    "Only one scalar owns country color at a time.",
+    "Only one scalar owns country height at a time.",
+    "A schematic relationship line must declare geometry meaning and must not imply a surveyed physical route.",
+    "Unsupported channel combinations degrade to the more information-preserving representation rather than silently misrendering."
+  ]
+}
