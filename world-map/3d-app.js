@@ -11,6 +11,9 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt
 const fmt = n => n == null ? '—' : new Intl.NumberFormat('en', {notation: Math.abs(n) > 1e9 ? 'compact' : 'standard', maximumFractionDigits: 1}).format(n);
 const title = s => String(s || '').replaceAll('_', ' ').replace(/\b\w/g, m => m.toUpperCase());
 const emptyFC = () => ({type:'FeatureCollection', features:[]});
+const geoKernel = window.__potatoAtlasGeo || await import('./3d-geo-kernel.js');
+if (!window.__potatoAtlasGeo) window.__potatoAtlasGeo = geoKernel;
+const { destinationPointKm, wrappedSegmentCoordinates } = geoKernel;
 
 const status = $('#status');
 function setStatus(message, kind='info') {
@@ -169,7 +172,7 @@ function traceRelationData(code) {
   for (const e of graph.edges) {
     const a = by3[e.a]?.latlng, b = by3[e.b]?.latlng;
     if (!a || !b) continue;
-    features.push({type:'Feature', properties:{a:e.a,b:e.b,types:(e.types||[]).join(' · '),layer:e.layer||'',depth:e.trace_level,raw:JSON.stringify(e)}, geometry:{type:'LineString',coordinates:[[a[1],a[0]],[b[1],b[0]]]}});
+    features.push({type:'Feature', properties:{a:e.a,b:e.b,types:(e.types||[]).join(' · '),layer:e.layer||'',depth:e.trace_level,raw:JSON.stringify(e)}, geometry:{type:'LineString',coordinates:wrappedSegmentCoordinates([a[1],a[0]],[b[1],b[0]])}});
   }
   return {type:'FeatureCollection', features};
 }
@@ -211,18 +214,18 @@ function getModule(h, record, code) {
 function hubData(code, record) {
   const r = by3[code];
   if (!r?.latlng) return {points:emptyFC(),lines:emptyFC()};
-  const lat=r.latlng[0], lon=r.latlng[1], baseRadius=Math.max(.7,Math.min(4.5,Math.sqrt(Math.max(r.area||1,1))/430));
+  const lat=r.latlng[0], lon=r.latlng[1];
+  const areaKm2=Math.max(Number(r.area)||1,1);
+  const baseRadiusKm=Math.max(90,Math.min(520,Math.sqrt(areaKm2)*.72));
   const groups=groupedModules(record,code);
   const pts=[],lines=[];
   groups.forEach((group,i)=>{
-    const a=i*GOLDEN_ANGLE;
+    const bearing=(i*GOLDEN_ANGLE)*180/Math.PI;
     const radialScale=.72+.13*Math.sqrt(i+1);
-    const radius=baseRadius*radialScale;
-    const dx=Math.cos(a)*radius, dy=Math.sin(a)*radius*.65;
-    const coord=[lon+dx,Math.max(-82,Math.min(82,lat+dy))];
+    const coord=destinationPointKm([lon,lat], bearing, baseRadiusKm*radialScale);
     const label=`${group.label} · ${group.modules.length}`;
-    pts.push({type:'Feature',properties:{id:group.id,label,plane:'group',code,count:group.modules.length},geometry:{type:'Point',coordinates:coord}});
-    lines.push({type:'Feature',properties:{id:group.id,code},geometry:{type:'LineString',coordinates:[[lon,lat],coord]}});
+    pts.push({type:'Feature',properties:{id:group.id,label,plane:'group',code,count:group.modules.length,geometry_meaning:'semantic_navigation'},geometry:{type:'Point',coordinates:coord}});
+    lines.push({type:'Feature',properties:{id:group.id,code,geometry_meaning:'symbolic_route'},geometry:{type:'LineString',coordinates:wrappedSegmentCoordinates([lon,lat],coord)}});
   });
   return {points:{type:'FeatureCollection',features:pts},lines:{type:'FeatureCollection',features:lines}};
 }
