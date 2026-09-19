@@ -202,3 +202,16 @@ function bindMudBelowLayerControl() {
   });
 }
 queueMicrotask(bindMudBelowLayerControl);
+
+function hydrateEvidenceLayersFromUrl() {
+  const params = new URL(location.href).searchParams;
+  const jobs = [];
+  if (params.get('evidenceLayer') === 'adl-heat') {
+    jobs.push(window.__potatoAtlasLoadModule?.('ADL H.E.A.T.', './3d-adl-heat.js'));
+  }
+  if (params.get('projectLayer') === 'mud-below-us') {
+    jobs.push(window.__potatoAtlasLoadModule?.('Mud / Below U.S.', './3d-mud-below-us.js'));
+  }
+  Promise.allSettled(jobs.filter(Boolean)).catch(() => {});
+}
+queueMicrotask(hydrateEvidenceLayersFromUrl);
