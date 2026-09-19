@@ -52,6 +52,12 @@ class AtlasMap extends runtime.Map {
       if (window.__potatoAtlasBootGuard) window.__potatoAtlasBootGuard.stage = 'map-loaded';
       window.dispatchEvent(new CustomEvent('potato-atlas-map-ready', { detail: { map: this } }));
     });
+
+    const motionClass = 'potato-atlas-map-moving';
+    const setMotion = moving => document.documentElement.classList.toggle(motionClass, Boolean(moving));
+    super.on('movestart', () => setMotion(true));
+    super.on('moveend', () => setMotion(false));
+    super.on('remove', () => setMotion(false));
   }
 
   // The old atlas style included an OpenStreetMap raster source. It is retained
