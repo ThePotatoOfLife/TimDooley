@@ -61,6 +61,30 @@ CULTURE_GROUNDING_MARKERS = (
 )
 
 MEANINGFUL_READER_MARKERS = {
+    "religion/index.html": (
+        "Three traditions as histories, texts and institutions",
+        "Judaism — covenant after rupture",
+        "Christianity — movement to creed",
+        "Islam — revelation to durable community",
+    ),
+    "below/index.html": (
+        "What a Below case looks like when evidence and status stay separate",
+        "NXIVM / Keith Raniere",
+        "EncroChat",
+        "encrypted service ≠ criminality",
+    ),
+    "world/index.html": (
+        "How a place becomes a spatial system",
+        "1 · Place",
+        "3 · Dependency",
+        "5 · Consequence",
+    ),
+    "world-map/index.html": (
+        "Start with a real spatial dependency",
+        "Danish Straits → Baltic access",
+        "Suez / SUMED → Cape alternative",
+        "Malacca → East Asian energy/logistics",
+    ),
     "world-systems/index.html": (
         "Three systems, opened up",
         "Public finance is more than a debt ratio",
