@@ -1,0 +1,60 @@
+{
+  "version": "1.0.0",
+  "record_type": "world-incident-dataset",
+  "id": "adl-heat",
+  "title": "ADL H.E.A.T. Map — U.S. incident evidence layer",
+  "source_organization": "Anti-Defamation League (ADL), Center on Extremism",
+  "official_source_url": "https://www.adl.org/resources/tools-to-track-hate/heat-map",
+  "official_app_url": "https://www.adl.org/apps/heatmap/",
+  "official_update_cadence": "monthly",
+  "official_access_note": "ADL states that H.E.A.T. Map users can download raw incident data as CSV.",
+  "snapshot": {
+    "status": "historical-seed",
+    "dataset": "Extremist murders",
+    "record_count": 335,
+    "geocoded_record_count": 335,
+    "date_start": "2005-01-01",
+    "date_end": "2023-10-11",
+    "exact_min_date": "2005-05-09",
+    "exact_max_date": "2023-10-11",
+    "years": [
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "mirror_repository": "abadeel/Mapping-Violent-Events-using-Python",
+    "mirror_file": "murder.csv",
+    "mirror_file_sha": "18fc0b2d0234d71821fdc6328cd1a8a5e833848d",
+    "project_retrieved": "2026-09-19",
+    "limitation": "This committed seed is a historical public mirror of an ADL H.E.A.T. export, not the current monthly ADL download. The renderer and importer are designed for replacement by a fresh official ADL CSV export without changing the map UI."
+  },
+  "methodology": {
+    "display_semantics": "Counts represent records in the selected ADL-derived snapshot. They are not a general hate score, crime rate, population-normalized risk measure, or characterization of a state or its residents.",
+    "overlap_rule": "One ADL record may carry multiple incident-type labels; the record is counted once in total incident counts.",
+    "missing_geometry": "Records without trustworthy coordinates remain eligible for state aggregation when a state is available but are omitted from the point layer.",
+    "source_boundary": "ADL classifications are presented as ADL classifications with source and snapshot status visible."
+  },
+  "refresh": {
+    "canonical_input": "official ADL H.E.A.T. CSV export",
+    "importer": "scripts/import_adl_heat.py",
+    "output_geojson": "data/world-incidents/adl-heat/incidents.geo.json",
+    "output_state_summary": "data/world-incidents/adl-heat/state-summary.json",
+    "expected_workflow": "Download the CSV from ADL H.E.A.T. Map, then run the importer and review the generated diff before commit."
+  }
+}

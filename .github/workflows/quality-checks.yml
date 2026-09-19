@@ -38,6 +38,9 @@ jobs:
       - name: Validate World Map ownership
         run: python scripts/validate_world_map_ownership.py
 
+      - name: Validate ADL H.E.A.T. World Map evidence layer
+        run: python scripts/validate_world_map_adl_heat.py
+
       - name: Validate archive runtime hardening
         run: python scripts/validate_archive_runtime_hardening.py
 

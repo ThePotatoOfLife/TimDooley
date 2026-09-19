@@ -1,0 +1,317 @@
+// ADL H.E.A.T. evidence layer for the canonical World Map.
+// Uses the existing U.S. subdivision source for state shading and a separate
+// incident point source for locality-level evidence. Source semantics remain
+// explicit: these are ADL-derived records, not a generic hate/crime score.
+
+const map = window.__potatoAtlasMap;
+if (!map) throw new Error('ADL H.E.A.T. layer requires the core map.');
+
+const DATA_URL = '../data/world-incidents/adl-heat/incidents.geo.json';
+const SUMMARY_URL = '../data/world-incidents/adl-heat/state-summary.json';
+const META_URL = '../data/world-incidents/adl-heat/metadata.json';
+const STATE_SOURCE = 'atlas-subdivisions-active';
+const STATE_LAYER = 'adl-heat-state-fill';
+const POINT_SOURCE = 'adl-heat-incidents';
+const POINT_LAYER = 'adl-heat-incident-points';
+const POINT_HIT = 'adl-heat-incident-hit';
+const STATE_KEY = 'adlHeatCount';
+const interaction = window.__potatoAtlasInteraction;
+
+let enabled = false;
+let loaded = false;
+let metadata = null;
+let summary = null;
+let incidents = null;
+let filtered = { type:'FeatureCollection', features:[] };
+let selectedYear = 'all';
+let selectedType = 'all';
+let stateValues = new Map();
+let controlsBound = false;
+
+const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const fmt = value => new Intl.NumberFormat('en').format(Number(value) || 0);
+
+function yearOptions() {
+  return [...new Set((incidents?.features || []).map(f => Number(f?.properties?.year)).filter(Number.isFinite))].sort((a,b)=>b-a);
+}
+function typeOptions() {
+  return [...new Set((incidents?.features || []).map(f => String(f?.properties?.incident_type || '').trim()).filter(Boolean))].sort();
+}
+function activeFeatures() {
+  return (incidents?.features || []).filter(feature => {
+    const p = feature.properties || {};
+    const yearOk = selectedYear === 'all' || String(p.year) === String(selectedYear);
+    const typeOk = selectedType === 'all' || String(p.incident_type || '').split(';').map(x=>x.trim()).includes(selectedType);
+    return yearOk && typeOk;
+  });
+}
+function recomputeStateValues() {
+  stateValues = new Map();
+  for (const feature of filtered.features || []) {
+    const id = feature?.properties?.subdivision_id;
+    if (!id) continue;
+    stateValues.set(id, (stateValues.get(id) || 0) + 1);
+  }
+}
+function maxCount() {
+  return Math.max(1, ...stateValues.values());
+}
+function stateColorExpression() {
+  const max = maxCount();
+  const mid = Math.max(1, Math.ceil(max / 3));
+  const high = Math.max(mid + 1, Math.ceil((max * 2) / 3));
+  return [
+    'interpolate', ['linear'], ['coalesce', ['feature-state', STATE_KEY], 0],
+    0, 'rgba(194,120,120,0)',
+    1, 'rgba(194,120,120,0.18)',
+    mid, 'rgba(194,120,120,0.36)',
+    high, 'rgba(194,120,120,0.56)',
+    max, 'rgba(194,120,120,0.76)'
+  ];
+}
+function updateStateFeatureState() {
+  for (const code of Object.keys(summary?.states || {})) {
+    const count = stateValues.get(code) || 0;
+    try { map.setFeatureState({ source:STATE_SOURCE, id:code }, { [STATE_KEY]:count }); } catch {}
+  }
+  if (map.getLayer(STATE_LAYER)) map.setPaintProperty(STATE_LAYER, 'fill-color', stateColorExpression());
+}
+function updatePointSource() {
+  const source = map.getSource(POINT_SOURCE);
+  if (source?.setData) source.setData(filtered);
+}
+function updateUrl() {
+  const url = new URL(location.href);
+  if (enabled) {
+    url.searchParams.set('evidenceLayer', 'adl-heat');
+    if (selectedYear !== 'all') url.searchParams.set('adlYear', selectedYear); else url.searchParams.delete('adlYear');
+    if (selectedType !== 'all') url.searchParams.set('adlType', selectedType); else url.searchParams.delete('adlType');
+  } else {
+    if (url.searchParams.get('evidenceLayer') === 'adl-heat') url.searchParams.delete('evidenceLayer');
+    url.searchParams.delete('adlYear');
+    url.searchParams.delete('adlType');
+  }
+  history.replaceState({}, '', url);
+}
+function setLayerVisibility(show) {
+  const visibility = show ? 'visible' : 'none';
+  for (const id of [STATE_LAYER, POINT_LAYER, POINT_HIT]) {
+    if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visibility);
+  }
+  document.getElementById('adlHeatLayer')?.classList.toggle('active', show);
+}
+function applyFilters() {
+  filtered = { type:'FeatureCollection', features:activeFeatures() };
+  recomputeStateValues();
+  updatePointSource();
+  updateStateFeatureState();
+  renderControls();
+  updateUrl();
+  window.dispatchEvent(new CustomEvent('potato-atlas-adl-heat-change', {
+    detail:{ enabled, year:selectedYear, incidentType:selectedType, records:filtered.features.length }
+  }));
+}
+function sourceStatusText() {
+  const snap = metadata?.snapshot || {};
+  const dates = [snap.exact_min_date, snap.exact_max_date].filter(Boolean).join(' → ');
+  return `${snap.status || 'snapshot'} · ${snap.dataset || 'ADL H.E.A.T.'}${dates ? ` · ${dates}` : ''}`;
+}
+function ensureControlSurface() {
+  const button = document.getElementById('adlHeatLayer');
+  if (!button) return null;
+  let surface = document.getElementById('adlHeatControls');
+  if (!surface) {
+    surface = document.createElement('div');
+    surface.id = 'adlHeatControls';
+    surface.className = 'adl-heat-controls';
+    surface.hidden = true;
+    button.insertAdjacentElement('afterend', surface);
+  }
+  return surface;
+}
+function renderControls() {
+  const surface = ensureControlSurface();
+  if (!surface) return;
+  surface.hidden = !enabled;
+  if (!enabled) return;
+  const years = yearOptions();
+  const types = typeOptions();
+  surface.innerHTML = `
+    <div class="menu-title">ADL H.E.A.T. filters</div>
+    <select data-adl-year aria-label="ADL H.E.A.T. year">
+      <option value="all">All years</option>
+      ${years.map(year => `<option value="${year}"${String(year)===String(selectedYear)?' selected':''}>${year}</option>`).join('')}
+    </select>
+    <select data-adl-type aria-label="ADL H.E.A.T. incident type">
+      <option value="all">All incident types</option>
+      ${types.map(type => `<option value="${esc(type)}"${type===selectedType?' selected':''}>${esc(type)}</option>`).join('')}
+    </select>
+    <div class="boundary"><b>${fmt(filtered.features.length)} records shown</b><br>${esc(sourceStatusText())}<br>Counts are records in this ADL-derived snapshot, not a general hate score or crime score.</div>
+    <button type="button" data-adl-source>Source / methodology</button>`;
+  surface.querySelector('[data-adl-year]')?.addEventListener('change', event => {
+    selectedYear = event.target.value || 'all';
+    applyFilters();
+  });
+  surface.querySelector('[data-adl-type]')?.addEventListener('change', event => {
+    selectedType = event.target.value || 'all';
+    applyFilters();
+  });
+  surface.querySelector('[data-adl-source]')?.addEventListener('click', () => renderDatasetInspector());
+}
+function renderDatasetInspector() {
+  const panel = document.getElementById('panel');
+  if (!panel) return;
+  const snap = metadata?.snapshot || {};
+  panel.innerHTML = `
+    <div class="eyebrow">Evidence dataset · ADL H.E.A.T.</div>
+    <h1>U.S. incident evidence layer</h1>
+    <p class="muted">Source owner: ${esc(metadata?.source_organization || 'Anti-Defamation League')}</p>
+    <div class="card"><b>Snapshot</b><p>${esc(sourceStatusText())}</p><p>${fmt(snap.record_count)} source records · ${fmt(snap.geocoded_record_count)} geocoded</p></div>
+    <div class="boundary">${esc(metadata?.methodology?.display_semantics || '')}</div>
+    <h2>Refresh contract</h2>
+    <p>The renderer accepts the official ADL H.E.A.T. CSV through <code>${esc(metadata?.refresh?.importer || 'scripts/import_adl_heat.py')}</code>. The committed seed is historical and visibly labelled as such.</p>
+    <p class="muted">${esc(snap.limitation || '')}</p>
+    <div class="actions"><a href="${esc(metadata?.official_source_url || '#')}" target="_blank" rel="noopener">Open ADL source</a></div>`;
+  window.__potatoAtlasPanelLifecycle?.publish?.();
+}
+function renderIncident(feature) {
+  const p = feature?.properties || {};
+  const panel = document.getElementById('panel');
+  if (!panel) return;
+  panel.innerHTML = `
+    <div class="eyebrow">ADL H.E.A.T. record</div>
+    <h1>${esc(p.city || p.state_name || 'Incident')}</h1>
+    <p class="muted">${esc(p.date || 'Undated')} · ${esc(p.state_name || p.state || '')}</p>
+    <div class="card"><b>${esc(p.incident_type || p.dataset || 'Incident')}</b>
+      ${p.ideology ? `<p><b>ADL ideology field:</b> ${esc(p.ideology)}</p>` : ''}
+      ${p.subideology ? `<p><b>Subideology:</b> ${esc(p.subideology)}</p>` : ''}
+      ${p.group ? `<p><b>Group:</b> ${esc(p.group)}</p>` : ''}
+      ${p.description ? `<p>${esc(p.description)}</p>` : ''}
+    </div>
+    <div class="boundary">Classification and description are presented as fields from the ADL-derived source snapshot. Location is the source record coordinate.</div>
+    <p class="muted">${esc(p.source_status || '')}</p>
+    <div class="actions">
+      <button type="button" data-adl-state>Open ${esc(p.state_name || p.state || 'state')}</button>
+      <button type="button" data-adl-source>Dataset methodology</button>
+    </div>`;
+  panel.querySelector('[data-adl-state]')?.addEventListener('click', () => renderStateInspector(p.subdivision_id));
+  panel.querySelector('[data-adl-source]')?.addEventListener('click', renderDatasetInspector);
+  window.__potatoAtlasPanelLifecycle?.publish?.();
+}
+function topEntries(obj = {}, limit = 6) {
+  return Object.entries(obj).sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0])).slice(0,limit);
+}
+function renderStateInspector(id) {
+  const row = summary?.states?.[id] || null;
+  const panel = document.getElementById('panel');
+  if (!panel || !row) return;
+  const visible = filtered.features.filter(f => f?.properties?.subdivision_id === id);
+  const byType = {};
+  const byYear = {};
+  for (const feature of visible) {
+    const p = feature.properties || {};
+    byType[p.incident_type || 'Unknown'] = (byType[p.incident_type || 'Unknown'] || 0) + 1;
+    if (p.year) byYear[p.year] = (byYear[p.year] || 0) + 1;
+  }
+  panel.innerHTML = `
+    <div class="eyebrow">Subdivision evidence · ADL H.E.A.T.</div>
+    <h1>${esc(row.name)}</h1>
+    <p class="muted">${fmt(visible.length)} records under the active filters · ${fmt(row.total)} in the full committed snapshot</p>
+    <div class="grid">
+      <div class="metric"><span>Filtered records</span><b>${fmt(visible.length)}</b></div>
+      <div class="metric"><span>Snapshot total</span><b>${fmt(row.total)}</b></div>
+    </div>
+    <h2>Incident-type fields</h2>
+    <div class="card">${topEntries(byType).map(([name,count])=>`<div class="row"><b>${fmt(count)}</b> ${esc(name)}</div>`).join('') || '<span class="muted">No records under current filters.</span>'}</div>
+    <h2>Years</h2>
+    <div class="card">${topEntries(byYear,10).map(([year,count])=>`<div class="row"><b>${esc(year)}</b> · ${fmt(count)}</div>`).join('') || '<span class="muted">No dated records under current filters.</span>'}</div>
+    <div class="boundary">These counts describe records in an ADL dataset snapshot. They are not population-normalized and should not be read as a ranking of residents, state character, or total hate crime.</div>
+    <div class="actions"><button type="button" data-adl-source>Source / methodology</button></div>`;
+  panel.querySelector('[data-adl-source]')?.addEventListener('click', renderDatasetInspector);
+  window.__potatoAtlasPanelLifecycle?.publish?.();
+}
+function installLayers() {
+  if (!map.getSource(POINT_SOURCE)) map.addSource(POINT_SOURCE, { type:'geojson', data:filtered, promoteId:'id' });
+  const before = map.getLayer('atlas-subdivision-line') ? 'atlas-subdivision-line' : (map.getLayer('countries-line') ? 'countries-line' : undefined);
+  if (!map.getLayer(STATE_LAYER)) map.addLayer({
+    id:STATE_LAYER,type:'fill',source:STATE_SOURCE,
+    paint:{'fill-color':stateColorExpression(),'fill-opacity':1}
+  }, before);
+  if (!map.getLayer(POINT_LAYER)) map.addLayer({
+    id:POINT_LAYER,type:'circle',source:POINT_SOURCE,minzoom:4.2,
+    paint:{
+      'circle-radius':['interpolate',['linear'],['zoom'],4.2,2.8,7,5.5,10,8],
+      'circle-color':'#e0bd78','circle-opacity':0.76,
+      'circle-stroke-color':'#101616','circle-stroke-width':1
+    }
+  });
+  if (!map.getLayer(POINT_HIT)) map.addLayer({
+    id:POINT_HIT,type:'circle',source:POINT_SOURCE,minzoom:4.2,
+    paint:{'circle-radius':['interpolate',['linear'],['zoom'],4.2,8,8,12],'circle-opacity':0.001}
+  });
+  if (interaction?.register) {
+    interaction.register('adl-heat-incidents', {
+      layers:[POINT_HIT], objectType:'evidence-record', clickPriority:85, hoverPriority:85,
+      enabled:()=>enabled,
+      onClick:(event, feature)=>renderIncident(feature)
+    });
+    interaction.register('adl-heat-states', {
+      layers:[STATE_LAYER], objectType:'subdivision-evidence', clickPriority:65, hoverPriority:20,
+      enabled:()=>enabled,
+      onClick:(event, feature)=>renderStateInspector(String(feature?.properties?.id || feature?.id || ''))
+    });
+  }
+  setLayerVisibility(false);
+}
+async function ensureSubdivisions() {
+  if (!window.__potatoAtlasSubdivisions) {
+    await window.__potatoAtlasLoadModule?.('Subdivisions', './3d-subdivisions.js');
+  }
+  if (!window.__potatoAtlasSubdivisions) throw new Error('Subdivision runtime unavailable.');
+  await window.__potatoAtlasSubdivisions.loadPartition('USA');
+  await window.__potatoAtlasSubdivisions.refresh?.();
+}
+async function loadData() {
+  if (loaded) return;
+  const [metaResponse, summaryResponse, incidentResponse] = await Promise.all([META_URL,SUMMARY_URL,DATA_URL].map(url=>fetch(url)));
+  for (const response of [metaResponse,summaryResponse,incidentResponse]) if (!response.ok) throw new Error(`ADL H.E.A.T. data unavailable (${response.status})`);
+  [metadata,summary,incidents] = await Promise.all([metaResponse.json(),summaryResponse.json(),incidentResponse.json()]);
+  const params = new URL(location.href).searchParams;
+  selectedYear = params.get('adlYear') || 'all';
+  selectedType = params.get('adlType') || 'all';
+  filtered = { type:'FeatureCollection', features:activeFeatures() };
+  recomputeStateValues();
+  await ensureSubdivisions();
+  installLayers();
+  loaded = true;
+}
+async function setEnabled(next) {
+  await loadData();
+  enabled = Boolean(next);
+  setLayerVisibility(enabled);
+  applyFilters();
+  renderControls();
+  if (enabled) {
+    try {
+      map.fitBounds([[-125,24],[-66,50]], { padding:60, duration:550, maxZoom:4.8 });
+    } catch {}
+  }
+  return enabled;
+}
+async function toggle() { return setEnabled(!enabled); }
+
+window.__potatoAtlasAdlHeat = {
+  ready:loadData(),
+  toggle,
+  setEnabled,
+  applyFilters,
+  renderDatasetInspector,
+  renderStateInspector,
+  status(){ return { enabled, loaded, year:selectedYear, incidentType:selectedType, records:filtered.features.length, snapshot:metadata?.snapshot || null }; }
+};
+
+const params = new URL(location.href).searchParams;
+if (params.get('evidenceLayer') === 'adl-heat') {
+  window.__potatoAtlasAdlHeat.ready.then(()=>setEnabled(true)).catch(error=>console.warn('ADL H.E.A.T. layer unavailable:', error));
+}
+window.dispatchEvent(new CustomEvent('potato-atlas-adl-heat-ready'));
