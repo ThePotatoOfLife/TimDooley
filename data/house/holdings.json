@@ -1,5 +1,5 @@
 {
-  "version": "4.3.0",
+  "version": "4.4.0",
   "updated": "2026-09-19",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
@@ -1482,7 +1482,7 @@
       "title": "Economy & Finance",
       "dwelling_id": "world-systems",
       "purpose": "Own observable finance, debt, banking, trade, ownership, production, labour and economic flows.",
-      "primary_file_count": 5,
+      "primary_file_count": 6,
       "featured_holdings": [
         {
           "path": "knowledge/economics/gold-indexed-sovereign-bond-model.json",
@@ -1513,6 +1513,12 @@
           "id": "stock-flow-obligation-network-atlas",
           "kind": "stock-flow-balance-sheet and obligation network grammar",
           "basis": "room-deepening"
+        },
+        {
+          "path": "knowledge/economics/economy-concrete-source-ledger.json",
+          "id": "economy-concrete-source-ledger",
+          "kind": "source ledger",
+          "basis": "concrete reader evidence"
         }
       ],
       "public_surface_ids": [
@@ -6445,6 +6451,12 @@
       "path": "knowledge/world/geography-place-state-boundary-atlas.json",
       "primary_owner_room_id": "geography-countries",
       "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/economics/economy-concrete-source-ledger.json",
+      "primary_owner_room_id": "economy-finance",
+      "assignment_basis": "economics source/provenance owner supporting concrete Economy reader cases",
+      "status": "active"
     }
   ],
   "curated_unowned_paths": [
