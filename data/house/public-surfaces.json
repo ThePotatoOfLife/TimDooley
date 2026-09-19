@@ -1,6 +1,6 @@
 {
-  "version": "1.8.0",
-  "updated": "2026-09-18",
+  "version": "1.9.0",
+  "updated": "2026-09-19",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
   "primary_gateway_ids": [
@@ -19,7 +19,8 @@
     "context",
     "rooms",
     "house",
-    "paths"
+    "paths",
+    "great-book"
   ],
   "surfaces": [
     {
@@ -342,6 +343,26 @@
       "legacy_routes": []
     },
     {
+      "id": "tim-claims",
+      "route": "/tim-dooley/claims/",
+      "canonical_route": "/tim-dooley/claims/",
+      "surface_type": "guide",
+      "title": "Tim Dooley Claims & Roles",
+      "primary_parent": "tim",
+      "primary_room_ids": [
+        "potatoverse-canon",
+        "time-history",
+        "archive-sources",
+        "culture-information"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
       "id": "collection",
       "route": "/corporium/",
       "canonical_route": "/corporium/",
@@ -381,6 +402,28 @@
       "is_view": true,
       "knowledge_owner": false,
       "legacy_routes": []
+    },
+    {
+      "id": "great-book",
+      "route": "/great-book/",
+      "canonical_route": "/great-book/",
+      "surface_type": "guide",
+      "title": "The Great Book of Potato",
+      "primary_parent": "home",
+      "primary_room_ids": [
+        "works",
+        "potatoverse-canon",
+        "time-history",
+        "archive-sources"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": [
+        "/great-book.html"
+      ]
     },
     {
       "id": "interpretive-justice",
