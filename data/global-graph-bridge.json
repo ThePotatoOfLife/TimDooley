@@ -171,13 +171,18 @@
     },
     {
       "id_pattern": "foundation:<id>",
-      "source": "data/house/foundations-wave-001.json + data/house/foundations-wave-002.json",
+      "source": "data/house/foundation-integration-contract.json",
       "owners": [
         "cross-domain foundation records",
         "domain canonical subject owner"
       ],
       "route": "house/#foundations",
-      "graph_relation": "founded-by / constituted-by / authorized-by / reproduces-through / refounded-by / branches-from / supersedes"
+      "graph_relation": "founded-by / constituted-by / authorized-by / reproduces-through / refounded-by / branches-from / supersedes",
+      "source_records": [
+        "data/house/foundations-wave-001.json",
+        "data/house/foundations-wave-002.json",
+        "data/house/foundations-wave-003.json"
+      ]
     }
   ],
   "orphan_classes": [
