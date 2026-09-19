@@ -11,6 +11,7 @@ await layers.ready;
 const WORLD_URL = '../data/world-relational-map.json';
 const DEMOGRAPHY_URL = '../data/world-country-demography.json';
 const WORLD_DATA_RUNTIME_URL = '../data/world-map-data-runtime.json';
+const VISUAL_CHANNEL_URL = '../data/world-map-visual-channel-contract.json';
 const NEUTRAL = '#566262';
 const UNKNOWN = '#303938';
 const PATTERN_LAYER = 'atlas-composition-fill';
@@ -20,6 +21,7 @@ const QUERY_LAYER = 'atlas-query-outline';
 let world = null;
 let demography = null;
 let worldRuntime = null;
+let visualChannelContract = null;
 let queryMode = new URL(location.href).searchParams.get('query') === 'all' ? 'all' : 'any';
 let setMemberships = new Map();
 let queryMarkedCodes = new Set();
@@ -39,6 +41,7 @@ async function fetchJson(url) {
 async function worldData() { if (!world) world = await fetchJson(WORLD_URL); return world; }
 async function demographyData() { if (!demography) demography = await fetchJson(DEMOGRAPHY_URL); return demography; }
 async function runtimeData() { if (!worldRuntime) worldRuntime = await fetchJson(WORLD_DATA_RUNTIME_URL); return worldRuntime; }
+async function visualChannels() { if (!visualChannelContract) visualChannelContract = await fetchJson(VISUAL_CHANNEL_URL); return visualChannelContract; }
 
 const runtimeReady = runtimeData().catch(error => {
   console.warn('World Map empirical runtime unavailable:', error);
@@ -296,6 +299,31 @@ function hashString(input) {
   return (hash >>> 0).toString(36);
 }
 
+async function enforceVisualCompatibility(entries) {
+  const height = document.getElementById('height');
+  if (!height) return { flattened:false, reason:null };
+  const setEntries = entries.filter(entry => entry.kind === 'set');
+  const contract = await visualChannels().catch(() => null);
+  const rule = contract?.compatibility?.['pattern+height'] || null;
+  const incompatible = setEntries.length > 0 && rule?.status === 'incompatible-current-renderer';
+  const previousDisabled = height.disabled;
+  height.disabled = incompatible;
+  if (incompatible) {
+    height.title = '3D height is temporarily unavailable while set-pattern layers are active.';
+    if (height.value !== 'flat') {
+      height.value = 'flat';
+      height.dispatchEvent(new Event('change', { bubbles:true }));
+      window.dispatchEvent(new CustomEvent('potato-atlas-visual-channel-resolution', {
+        detail:{ pair:'pattern+height', policy:rule.policy, action:'flatten-height', activeSets:setEntries.map(entry => entry.id) }
+      }));
+      return { flattened:true, reason:rule.reason || null };
+    }
+  } else {
+    if (previousDisabled) height.title = 'Polygon extrusion';
+  }
+  return { flattened:false, reason:incompatible ? rule?.reason || null : null };
+}
+
 async function applyPatterns(setEntries) {
   ensurePatternLayer();
   if (!setEntries.length) { map.setPaintProperty(PATTERN_LAYER, 'fill-pattern', PATTERN_NONE); return; }
@@ -370,6 +398,8 @@ async function render() {
   diagnosticCount('scalarCompositions');
   const entries = layers.active().map(id => layers.get(id)).filter(Boolean);
   try {
+    await enforceVisualCompatibility(entries);
+    if (serial !== renderSerial) return;
     await applyScalar(entries);
     if (serial !== renderSerial) return;
     await applyPatterns(entries.filter(entry => entry.kind === 'set'));
@@ -408,7 +438,7 @@ window.__potatoAtlasCompositor = {
   render,
   state() {
     const entries = layers.active().map(id => layers.get(id)).filter(Boolean);
-    return { active: entries.map(entry => entry.id), scalar: entries.find(entry => entry.kind === 'scalar')?.id || null, sets: entries.filter(entry => entry.kind === 'set').map(entry => entry.id), queryMode };
+    return { active: entries.map(entry => entry.id), scalar: entries.find(entry => entry.kind === 'scalar')?.id || null, sets: entries.filter(entry => entry.kind === 'set').map(entry => entry.id), queryMode, heightMode:document.getElementById('height')?.value || 'flat' };
   },
   reset() { layers.reset(); setQueryMode('any'); },
 };
