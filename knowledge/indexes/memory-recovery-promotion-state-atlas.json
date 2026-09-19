@@ -1,8 +1,8 @@
 {
   "id": "memory-recovery-promotion-state-atlas",
   "title": "Memory Recovery Promotion States — From Buried Trace to Canonical Use",
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.1.0",
+  "updated": "2026-09-19",
   "owner_room": "memory-recovery",
   "purpose": "Define the states through which recovered conversations, screenshots, files, recollections and archive fragments can move before they are reused by canonical owners.",
   "states": [
@@ -148,5 +148,56 @@
     "developmental-genealogy",
     "provenance-chain-of-custody-atlas",
     "source-index"
+  ],
+  "worked_state_examples": [
+    {
+      "id": "research-json-complete-promotion",
+      "object": "research.json",
+      "final_state": "provenance_only",
+      "state_trace": [
+        "authenticated",
+        "contextualized",
+        "typed",
+        "compared",
+        "candidate_for_promotion",
+        "promoted",
+        "provenance_only"
+      ],
+      "evidence": "Every substantive section received a successor owner; open questions moved to data/research-frontier.json; final live blob recorded in archive/legacy/README.md.",
+      "caution": "A final blob records provenance but does not make the retired file an active owner."
+    },
+    {
+      "id": "book-research-path-only-retirement",
+      "object": "book-research.json",
+      "final_state": "promoted",
+      "state_trace": [
+        "authenticated",
+        "compared",
+        "candidate_for_promotion",
+        "promoted"
+      ],
+      "evidence": "Content remains active as knowledge/research/great-book-2024-source-extraction.json while only the root path was retired.",
+      "caution": "Do not label this content deleted or provenance-only; the extraction remains a live source owner."
+    },
+    {
+      "id": "pr283-functional-convergence",
+      "object": "PR #283",
+      "final_state": "candidate_for_provenance_only",
+      "state_trace": [
+        "authenticated",
+        "compared",
+        "candidate_for_promotion",
+        "promoted"
+      ],
+      "evidence": "Changed-path audit reached zero paths unique to PR #283 after harvesting into PR #284.",
+      "caution": "Do not advance to provenance_only/closed solely from path coverage; content-level wording/history audit remains."
+    }
+  ],
+  "state_transition_guards": [
+    "promoted → provenance_only requires proof that no live ownership duty remains",
+    "path retirement does not imply content retirement",
+    "zero changed-path uniqueness is not equivalent to zero semantic uniqueness",
+    "rejected_or_deferred should preserve a review trigger rather than become silent discard",
+    "contradiction can promote into developmental genealogy without choosing one timeless winner"
   ]
 }
