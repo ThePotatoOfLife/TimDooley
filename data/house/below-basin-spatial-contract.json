@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-19",
   "authority": "below-basin-spatial-contract",
   "title": "Below Basin / Subterrain Vessel — Spatial Contract",
@@ -298,6 +298,29 @@
     "knowledge/core/repair-forge-protocol.json",
     "knowledge/world/culture-sektur-platform-media-political-ecology.json",
     "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
-    "knowledge/world/farm-sektur-attention-extraction-ecology.json"
+    "knowledge/world/farm-sektur-attention-extraction-ecology.json",
+    "data/house/below-basin-pathways.json",
+    "data/house/below-basin-dynamics.json"
+  ],
+  "progressive_disclosure": {
+    "level_1_overview": "One circular basin showing Rim, Culture surface, Sektur, Farm, Swamp, Mud/Ash, Roots, Forge and Axis/Drain. Goal: grasp the story in under a minute.",
+    "level_2_modes": "Switch Culture, Attention, Money, Power, Harm, Evidence and Repair views. Goal: understand one mechanism without redrawing the whole model.",
+    "level_3_cases": "Open a node/case dossier with dates, entities, source lineage, money, classifications, legal/evidence status, consequences, counterevidence and repair state. Goal: inspect claims without relying on the metaphor.",
+    "rule": "Do not place every entity label permanently on the basin. The basin shows system roles; case drawers/pages hold entity density."
+  },
+  "interaction_contract": {
+    "hover_or_focus": "Show short function + category + why it is in this zone.",
+    "click": "Open relevant deep reader or case view.",
+    "mode_switch": "Highlight route-relevant nodes and dim unrelated nodes without hiding them completely.",
+    "case_select": "Overlay one case path through the same basin, with each transition exposing its evidence reason.",
+    "accessibility": "All meaning must be available in text; color/position cannot be the only carrier of category or status."
+  },
+  "future_visual_layers": [
+    "animated current lines for attention/money/media/classification/legal flows",
+    "sediment density for unresolved Mud/Ash accumulation",
+    "root branches for provenance depth",
+    "Forge output fan for verified/narrowed/rejected/repaired/unresolved",
+    "time scrubber for showing how a case moved between zones",
+    "case comparison mode for two ecologies without merging them"
   ]
 }
