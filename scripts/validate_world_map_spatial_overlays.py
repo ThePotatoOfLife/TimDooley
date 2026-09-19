@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "data" / "world-map-spatial-overlays.json"
 MEASUREMENTS = ROOT / "data" / "world-map-spatial-measurements.json"
 UI = ROOT / "world-map" / "3d-spatial-overlay-ui.js"
+RUNTIME = ROOT / "world-map" / "3d-spatial-overlays.js"
 ALLOWED_TYPES = {
     "current_observed",
     "current_disputed",
@@ -159,6 +160,10 @@ def main() -> int:
                 errors.append(f"line measurement {fid} missing length_km")
 
     ui = UI.read_text(encoding="utf-8", errors="replace") if UI.is_file() else ""
+    runtime = RUNTIME.read_text(encoding="utf-8", errors="replace") if RUNTIME.is_file() else ""
+    for token in ("3d-geo-kernel.js", "antimeridianAwareBounds", "map.fitBounds"):
+        if token not in runtime:
+            errors.append(f"spatial overlay runtime missing antimeridian-safe fit marker: {token}")
     for token in ("world-map-spatial-measurements.json", "Geometry-derived", "area_sq_km", "length_km"):
         if token not in ui:
             errors.append(f"spatial overlay inspector missing measurement marker: {token}")
