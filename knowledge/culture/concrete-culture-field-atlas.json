@@ -1,186 +1,377 @@
 {
   "id": "concrete-culture-field-atlas",
-  "version": "1.1.0",
-  "updated": "2026-09-17",
+  "version": "1.2.0",
+  "updated": "2026-09-19",
   "purpose": "Evidence-backed concrete cases that make Culture-page mechanisms inspectable while preserving category, legal-status, provenance and privacy boundaries.",
   "formations": [
     {
       "id": "loyal-to-familia",
       "name": "Loyal to Familia (LTF)",
-      "formation_types": ["gang_or_criminal_group"],
+      "formation_types": [
+        "gang_or_criminal_group"
+      ],
       "description": "A Danish formation used here to show that social association, police classification, dated conflict relations and court-established dissolution are separate analytical layers.",
-      "places": ["Denmark"],
+      "places": [
+        "Denmark"
+      ],
       "period": "2013-2021 legal dissolution; conflict history appears in later police reporting",
       "status": "dissolved_by_court",
-      "legal_status": {"status": "dissolved_by_court", "date": "2021", "note": "The Danish Supreme Court upheld dissolution; this does not assign identical conduct to every person ever associated with LTF."},
-      "uncertainties": ["The atlas does not infer individual guilt from organizational association."],
-      "source_refs": ["dk-police-rocker-gang-2025", "dk-supreme-court-ltf-2021"]
+      "legal_status": {
+        "status": "dissolved_by_court",
+        "date": "2021",
+        "note": "The Danish Supreme Court upheld dissolution; this does not assign identical conduct to every person ever associated with LTF."
+      },
+      "uncertainties": [
+        "The atlas does not infer individual guilt from organizational association."
+      ],
+      "source_refs": [
+        "dk-police-rocker-gang-2025",
+        "dk-supreme-court-ltf-2021"
+      ]
     },
     {
       "id": "danish-rocker-gang-conflict-field",
       "name": "Danish rocker/gang conflict field",
-      "formation_types": ["institution"],
+      "formation_types": [
+        "institution"
+      ],
       "description": "An analytical field built from Danish Police reporting on named conflict pairs and aggregate environment statistics. It is not itself a single organization.",
-      "places": ["Denmark"],
+      "places": [
+        "Denmark"
+      ],
       "period": "2025 reporting year",
       "status": "analytical_field",
-      "uncertainties": ["Aggregate environment statistics are not attributed to each named group or every associated person."],
-      "source_refs": ["dk-police-rocker-gang-2025"]
+      "uncertainties": [
+        "Aggregate environment statistics are not attributed to each named group or every associated person."
+      ],
+      "source_refs": [
+        "dk-police-rocker-gang-2025"
+      ]
     },
     {
       "id": "otf-grimm-violence-as-a-service",
       "name": "OTF GRIMM / Violence-as-a-Service",
-      "formation_types": ["criminal_network"],
+      "formation_types": [
+        "criminal_network"
+      ],
       "description": "Europol operational framework for violence-as-a-service, used here to model a distributed service chain rather than a culturally homogeneous group.",
-      "places": ["Europe", "Denmark", "Sweden"],
+      "places": [
+        "Europe",
+        "Denmark",
+        "Sweden"
+      ],
       "period": "2025-2026",
       "status": "ongoing_law_enforcement_framework",
-      "structure": ["instigator", "recruiter", "enabler", "perpetrator"],
-      "recruitment_channels": ["encrypted messaging", "social platforms", "gaming/chat platforms"],
-      "legal_status": {"status": "investigated", "note": "OTF GRIMM coordinates investigations; operational reporting includes suspicions and arrests, not universal convictions."},
-      "source_refs": ["europol-vaas-chain-2025", "europol-grimm-operation-2026", "europol-denmark-sweden-vaas-2025"]
+      "structure": [
+        "instigator",
+        "recruiter",
+        "enabler",
+        "perpetrator"
+      ],
+      "recruitment_channels": [
+        "encrypted messaging",
+        "social platforms",
+        "gaming/chat platforms"
+      ],
+      "legal_status": {
+        "status": "investigated",
+        "note": "OTF GRIMM coordinates investigations; operational reporting includes suspicions and arrests, not universal convictions."
+      },
+      "source_refs": [
+        "europol-vaas-chain-2025",
+        "europol-grimm-operation-2026",
+        "europol-denmark-sweden-vaas-2025"
+      ]
     },
     {
       "id": "nxivm",
       "name": "NXIVM",
-      "formation_types": ["high_control_formation", "company"],
+      "formation_types": [
+        "high_control_formation",
+        "company"
+      ],
       "description": "A self-described personal-development organization used here as a court-grounded high-control case because federal convictions established racketeering and sex-trafficking offenses tied to its leadership and nested structures.",
-      "places": ["United States"],
+      "places": [
+        "United States"
+      ],
       "period": "1998-2018 organizational period; convictions/sentencing 2019-2020",
       "status": "historical_case",
       "self_description": "Personal-development / executive-success organization.",
-      "high_control_features": ["concentrated charismatic authority", "collateral mechanisms", "secret nested structure", "dependency and coercive leverage described in court proceedings"],
-      "legal_status": {"status": "convicted", "note": "Keith Raniere was convicted in 2019 and sentenced in 2020; other participants must be described according to their own legal records."},
-      "source_refs": ["doj-nxivm-raniere-2020"]
+      "high_control_features": [
+        "concentrated charismatic authority",
+        "collateral mechanisms",
+        "secret nested structure",
+        "dependency and coercive leverage described in court proceedings"
+      ],
+      "legal_status": {
+        "status": "convicted",
+        "note": "Keith Raniere was convicted in 2019 and sentenced in 2020; other participants must be described according to their own legal records."
+      },
+      "source_refs": [
+        "doj-nxivm-raniere-2020"
+      ]
     },
     {
       "id": "kiwi-farms",
       "name": "Kiwi Farms",
-      "formation_types": ["online_forum", "anti_fandom"],
+      "formation_types": [
+        "online_forum",
+        "anti_fandom"
+      ],
       "description": "An adversarial online forum/archive ecology used to distinguish forum infrastructure, user activity, target communities and provider decisions from one another.",
-      "places": ["online"],
+      "places": [
+        "online"
+      ],
       "period": "2013-present public history; 2022 infrastructure crisis used here",
       "status": "active_or_migratory_online_formation",
-      "platforms": ["web forum", "third-party infrastructure providers"],
-      "uncertainties": ["Forum repetition is not treated as factual corroboration about targets.", "The atlas does not infer a single motive or command structure for all users."],
-      "source_refs": ["cloudflare-kiwifarms-2022"]
+      "platforms": [
+        "web forum",
+        "third-party infrastructure providers"
+      ],
+      "uncertainties": [
+        "Forum repetition is not treated as factual corroboration about targets.",
+        "The atlas does not infer a single motive or command structure for all users."
+      ],
+      "source_refs": [
+        "cloudflare-kiwifarms-2022"
+      ]
     },
     {
       "id": "online-snark-communities",
       "name": "Online snark communities",
-      "formation_types": ["anti_fandom", "subculture"],
+      "formation_types": [
+        "anti_fandom",
+        "subculture"
+      ],
       "description": "A general scholarly case for recurring commentary communities that can develop vernacular, rules, sanctions, collective identity and informal knowledge hierarchies.",
-      "places": ["online"],
+      "places": [
+        "online"
+      ],
       "period": "contemporary digital culture",
       "status": "general_formation_class",
-      "structure": ["informal governance", "vernacular", "status and knowledge hierarchies"],
-      "uncertainties": ["The cited study covers two celebrity-snark spaces and should not be generalized to every anti-fandom community."],
-      "source_refs": ["sage-snarking-tiny-publics-2026"]
+      "structure": [
+        "informal governance",
+        "vernacular",
+        "status and knowledge hierarchies"
+      ],
+      "uncertainties": [
+        "The cited study covers two celebrity-snark spaces and should not be generalized to every anti-fandom community."
+      ],
+      "source_refs": [
+        "sage-snarking-tiny-publics-2026"
+      ]
     },
     {
       "id": "hip-hop",
       "name": "Hip-hop",
-      "formation_types": ["scene", "subculture", "mainstream_culture", "canonical_culture"],
+      "formation_types": [
+        "scene",
+        "subculture",
+        "mainstream_culture",
+        "canonical_culture"
+      ],
       "description": "A non-criminal cultural pathway showing how local scenes and practices can become mass culture and later enter museum, anthology and preservation institutions.",
-      "places": ["Bronx, New York", "United States", "global"],
+      "places": [
+        "Bronx, New York",
+        "United States",
+        "global"
+      ],
       "period": "1970s-present",
       "status": "living_global_culture",
-      "source_refs": ["smithsonian-hiphop-anthology-2021", "smithsonian-hiphop-release-2021"]
+      "source_refs": [
+        "smithsonian-hiphop-anthology-2021",
+        "smithsonian-hiphop-release-2021"
+      ]
     },
     {
       "id": "medecins-sans-frontieres",
       "name": "Médecins Sans Frontières (MSF)",
-      "formation_types": ["ngo", "charity"],
+      "formation_types": [
+        "ngo",
+        "charity"
+      ],
       "description": "Humanitarian organization included to make lawful NGO funding architecture concrete without implying donor control from funding share alone.",
-      "places": ["international"],
+      "places": [
+        "international"
+      ],
       "period": "2025 financial year",
       "status": "active",
       "funding_model": "MSF reports more than EUR 2.6 billion in 2025 revenue and 98% of operating income from private sources, with more than 7.5 million private donors/foundations.",
-      "uncertainties": ["Funding source mix does not by itself establish control over specific operational decisions."],
-      "source_refs": ["msf-2025-figures"]
+      "uncertainties": [
+        "Funding source mix does not by itself establish control over specific operational decisions."
+      ],
+      "source_refs": [
+        "msf-2025-figures"
+      ]
     },
     {
       "id": "icrc",
       "name": "International Committee of the Red Cross (ICRC)",
-      "formation_types": ["ngo", "institution"],
+      "formation_types": [
+        "ngo",
+        "institution"
+      ],
       "description": "Humanitarian organization included as a contrasting lawful funding architecture with a much larger governmental/public donor share.",
-      "places": ["international"],
+      "places": [
+        "international"
+      ],
       "period": "2025 financial year",
       "status": "active",
       "funding_model": "ICRC reports around CHF 1.76 billion in donor contributions for 2025, with 84% from governments and the European Commission in its published source mix.",
-      "uncertainties": ["Funding source mix does not by itself establish donor control over specific operational decisions."],
-      "source_refs": ["icrc-annual-report-2025"]
+      "uncertainties": [
+        "Funding source mix does not by itself establish donor control over specific operational decisions."
+      ],
+      "source_refs": [
+        "icrc-annual-report-2025"
+      ]
     },
     {
       "id": "organization-for-transformative-works-ao3",
       "name": "Organization for Transformative Works / Archive of Our Own",
-      "formation_types": ["ngo", "institution", "subculture"],
+      "formation_types": [
+        "ngo",
+        "institution",
+        "subculture"
+      ],
       "description": "A fan-created nonprofit and archive showing how a participatory subculture can build, fund and maintain its own durable infrastructure instead of existing only inside commercial platforms.",
-      "places": ["online", "international"],
+      "places": [
+        "online",
+        "international"
+      ],
       "period": "OTW founded 2007; AO3 open beta 2009-2026; active",
       "status": "active",
       "governance_model": "Nonprofit organizational governance with a Board of Directors, committees and extensive volunteer labor supporting projects including AO3.",
       "infrastructure_model": "Community-oriented archive software and hosting maintained by OTW volunteers and technical committees; AO3 exited open beta in April 2026 after reporting 10 million users and 17 million fanworks earlier that year.",
       "correction_mechanisms": "Published Terms of Service, release notes, committee processes, public organizational reporting and technical maintenance create inspectable routes for changes and policy revision.",
       "funding_model": "Donation/membership-supported nonprofit reporting public budgets and annual reports.",
-      "uncertainties": ["First-party user/work counts and governance descriptions establish reported scale and structure, not universal participant satisfaction or cultural impact."],
-      "source_refs": ["ao3-open-beta-exit-2026", "ao3-membership-drive-2026", "otw-reports-2025"]
+      "uncertainties": [
+        "First-party user/work counts and governance descriptions establish reported scale and structure, not universal participant satisfaction or cultural impact."
+      ],
+      "source_refs": [
+        "ao3-open-beta-exit-2026",
+        "ao3-membership-drive-2026",
+        "otw-reports-2025"
+      ]
     },
     {
       "id": "burning-man",
       "name": "Burning Man / Burning Man Project",
-      "formation_types": ["scene", "subculture", "ngo", "institution"],
+      "formation_types": [
+        "scene",
+        "subculture",
+        "ngo",
+        "institution"
+      ],
       "description": "A ritual-rich participatory culture paired with a formal nonprofit institution, useful for separating intensity, symbolic practice and shared principles from high-control mechanisms.",
-      "places": ["Black Rock Desert, Nevada", "international regional network"],
+      "places": [
+        "Black Rock Desert, Nevada",
+        "international regional network"
+      ],
       "period": "1986-present; nonprofit institutionalization developed later",
       "status": "active",
-      "stated_purpose_or_beliefs": ["Radical Inclusion", "Gifting", "Decommodification", "Radical Self-reliance", "Radical Self-expression", "Communal Effort", "Civic Responsibility", "Leaving No Trace", "Participation", "Immediacy"],
+      "stated_purpose_or_beliefs": [
+        "Radical Inclusion",
+        "Gifting",
+        "Decommodification",
+        "Radical Self-reliance",
+        "Radical Self-expression",
+        "Communal Effort",
+        "Civic Responsibility",
+        "Leaving No Trace",
+        "Participation",
+        "Immediacy"
+      ],
       "governance_model": "Burning Man Project operates as a 501(c)(3) California Public Benefit Corporation and publishes tax filings, annual/Dispatch reporting and other public documents.",
       "correction_mechanisms": "Formal nonprofit reporting, public financial disclosures, permits/public documents and evolving program-area reporting provide external and internal accountability channels beyond the ritual community itself.",
       "infrastructure_model": "Temporary-city production plus nonprofit administrative, cultural, regional and public-reporting infrastructure.",
-      "uncertainties": ["The Ten Principles are first-party statements of ethos and do not prove that every participant behaves consistently with them.", "Formal transparency does not by itself establish that every governance decision is correct."],
-      "source_refs": ["burning-man-principles", "burning-man-financials", "burning-man-summary-financials-2024"]
+      "uncertainties": [
+        "The Ten Principles are first-party statements of ethos and do not prove that every participant behaves consistently with them.",
+        "Formal transparency does not by itself establish that every governance decision is correct."
+      ],
+      "source_refs": [
+        "burning-man-principles",
+        "burning-man-financials",
+        "burning-man-summary-financials-2024"
+      ]
     },
     {
       "id": "skateboarding",
       "name": "Skateboarding",
-      "formation_types": ["scene", "subculture", "mainstream_culture"],
+      "formation_types": [
+        "scene",
+        "subculture",
+        "mainstream_culture"
+      ],
       "description": "A street/DIY culture that became professionally commercialized and Olympic while retaining documented tensions around authenticity, autonomy, competition and outside institutional control.",
-      "places": ["United States origins", "global"],
+      "places": [
+        "United States origins",
+        "global"
+      ],
       "period": "mid-20th century-present; Olympic debut at Tokyo 2020",
       "status": "living_global_culture_and_sport",
       "commercialization_tensions": "Scholarship describes a shift from creative urban/subcultural practice toward professional sport and multinational industry, with recurring tension between subcultural authenticity and commercialization/sportification.",
       "governance_model": "No single cultural authority governs skateboarding as a whole; organized sport bodies govern Olympic/competition layers while scenes, brands, media and local communities retain separate influence.",
-      "uncertainties": ["Institutionalization is uneven: becoming an Olympic sport does not mean every skateboarder or local scene accepts competitive sport values."],
-      "source_refs": ["sage-skateboarding-subculture-olympics-2022", "olympics-skateboarding-tokyo"]
+      "uncertainties": [
+        "Institutionalization is uneven: becoming an Olympic sport does not mean every skateboarder or local scene accepts competitive sport values."
+      ],
+      "source_refs": [
+        "sage-skateboarding-subculture-olympics-2022",
+        "olympics-skateboarding-tokyo"
+      ]
     },
     {
       "id": "wikipedia",
       "name": "Wikipedia editing culture",
-      "formation_types": ["online_community", "institution", "canonical_culture"],
+      "formation_types": [
+        "online_community",
+        "institution",
+        "canonical_culture"
+      ],
       "description": "A large-scale knowledge-production culture whose visible edit histories, talk pages and consensus procedures make correction and disagreement unusually inspectable.",
-      "places": ["online", "global"],
+      "places": [
+        "online",
+        "global"
+      ],
       "period": "2001-present",
       "status": "active",
       "governance_model": "Distributed volunteer editorial governance using policies, public discussion, consensus and escalation processes; the Wikimedia Foundation hosts the infrastructure but states that it does not decide article content disputes.",
       "correction_mechanisms": "Public page histories, talk pages, source-based argument, consensus-building and structured Requests for Comment make disagreement and revision visible rather than erasing the process.",
       "infrastructure_model": "Nonprofit-hosted encyclopedia infrastructure with public revision histories and discussion surfaces attached to articles.",
-      "uncertainties": ["Visible process does not eliminate error, bias, edit conflict or power differences; it makes more of the correction process inspectable."],
-      "source_refs": ["wikimedia-disputes-2025", "wikimedia-transparency-2025"]
+      "uncertainties": [
+        "Visible process does not eliminate error, bias, edit conflict or power differences; it makes more of the correction process inspectable."
+      ],
+      "source_refs": [
+        "wikimedia-disputes-2025",
+        "wikimedia-transparency-2025"
+      ]
     },
     {
       "id": "mastodon-activitypub",
       "name": "Mastodon / ActivityPub federation",
-      "formation_types": ["platform", "institution", "technical_network"],
+      "formation_types": [
+        "platform",
+        "institution",
+        "technical_network"
+      ],
       "description": "A federated social-web case showing how infrastructure architecture can distribute hosting and community governance across servers rather than placing the entire cultural field under one platform operator.",
-      "places": ["online", "global"],
+      "places": [
+        "online",
+        "global"
+      ],
       "period": "ActivityPub Recommendation 2018; Mastodon organizational restructuring 2025-2026",
       "status": "active_and_restructuring",
       "governance_model": "Mastodon has been moving key project assets toward nonprofit/community-oriented stewardship while server-level governance remains distributed across independently operated instances.",
       "infrastructure_model": "ActivityPub provides federated server-to-server and client-to-server APIs, allowing interoperable social networking across independently implemented services and servers.",
       "exit_or_portability": "Federation reduces dependence on a single hosting operator because communities can exist on different servers and still interoperate; protocol interoperability supports migration/choice, though practical portability varies by implementation and local policy.",
-      "uncertainties": ["Mastodon's legal restructuring has been a staged process; stated future governance plans must not be described as already completed when they were still in progress.", "Technical federation does not guarantee frictionless social migration or identical moderation rules."],
-      "source_refs": ["w3c-activitypub-2018", "mastodon-town-square-2025", "mastodon-admin-update-2026"]
+      "uncertainties": [
+        "Mastodon's legal restructuring has been a staged process; stated future governance plans must not be described as already completed when they were still in progress.",
+        "Technical federation does not guarantee frictionless social migration or identical moderation rules."
+      ],
+      "source_refs": [
+        "w3c-activitypub-2018",
+        "mastodon-town-square-2025",
+        "mastodon-admin-update-2026"
+      ]
     }
   ],
   "human_cases": [
@@ -191,15 +382,35 @@
       "case_type": "viral_subject",
       "summary": "A person-behind-the-label case showing how a private recording can be published by others, detached from its maker, repeated as a viral role, archived for years and later publicly recontextualized by the person involved.",
       "timeline": [
-        {"period": "2003", "event": "A private school recording was published online by other students and became widely remixed and circulated."},
-        {"period": "2003 onward", "event": "The public label and remix culture became more persistent than the original private context."},
-        {"period": "2022", "event": "Raza participated in the NFB documentary Star Wars Kid: The Rise of the Digital Shadows, adding his own later account and reclamation context."}
+        {
+          "period": "2003",
+          "event": "A private school recording was published online by other students and became widely remixed and circulated."
+        },
+        {
+          "period": "2003 onward",
+          "event": "The public label and remix culture became more persistent than the original private context."
+        },
+        {
+          "period": "2022",
+          "event": "Raza participated in the NFB documentary Star Wars Kid: The Rise of the Digital Shadows, adding his own later account and reclamation context."
+        }
       ],
-      "network_path": ["private recording", "publication by others", "viral circulation", "public label", "remix/archive persistence", "long digital identity", "later documentary participation and reclamation"],
+      "network_path": [
+        "private recording",
+        "publication by others",
+        "viral circulation",
+        "public label",
+        "remix/archive persistence",
+        "long digital identity",
+        "later documentary participation and reclamation"
+      ],
       "public_label_or_role": "Star Wars Kid - treated here as an audience-created public label, not an intrinsic type of person.",
       "reply_or_reclamation": "Later public participation in the documentary places the person back inside the story rather than leaving the inherited label as the only frame.",
       "privacy_notes": "No humiliating clip, private address, private contact information, incidental family details, diagnosis or other sensitive dossier material is reproduced.",
-      "source_refs": ["nfb-star-wars-kid-2022", "nfb-star-wars-kid-lesson-2022"]
+      "source_refs": [
+        "nfb-star-wars-kid-2022",
+        "nfb-star-wars-kid-lesson-2022"
+      ]
     }
   ],
   "events": [
@@ -207,73 +418,126 @@
       "id": "ltf-supreme-court-dissolution-2021",
       "event_type": "court_dissolution",
       "date_or_period": "2021",
-      "places": ["Denmark"],
-      "participants": ["loyal-to-familia", "Danish Supreme Court"],
+      "places": [
+        "Denmark"
+      ],
+      "participants": [
+        "loyal-to-familia",
+        "Danish Supreme Court"
+      ],
       "description": "The Danish Supreme Court upheld dissolution of Loyal to Familia. The legal finding concerns the organization/association and does not establish identical conduct by every associated person.",
       "evidence_status": "court_established",
       "legal_status": "dissolved_by_court",
-      "source_refs": ["dk-supreme-court-ltf-2021"]
+      "source_refs": [
+        "dk-supreme-court-ltf-2021"
+      ]
     },
     {
       "id": "danish-rocker-gang-2025-aggregate",
       "event_type": "official_environment_report",
       "date_or_period": "2025",
-      "places": ["Denmark"],
-      "participants": ["danish-rocker-gang-conflict-field"],
+      "places": [
+        "Denmark"
+      ],
+      "participants": [
+        "danish-rocker-gang-conflict-field"
+      ],
       "description": "Danish Police published aggregate 2025 rocker/gang-environment statistics alongside named conflict reporting. The atlas keeps those aggregate figures at environment level rather than assigning them to every named group.",
       "evidence_status": "official_record",
-      "source_refs": ["dk-police-rocker-gang-2025"]
+      "source_refs": [
+        "dk-police-rocker-gang-2025"
+      ]
     },
     {
       "id": "cloudflare-blocks-kiwi-farms-2022",
       "event_type": "platform_block",
       "date_or_period": "2022-09-03",
-      "places": ["online"],
-      "participants": ["Cloudflare", "kiwi-farms"],
+      "places": [
+        "online"
+      ],
+      "participants": [
+        "Cloudflare",
+        "kiwi-farms"
+      ],
       "description": "Cloudflare blocked Kiwi Farms from its services and published its own emergency rationale. This establishes the provider action and its stated reason, not every allegation ever made about the forum or its users.",
       "evidence_status": "first_party_stated",
-      "source_refs": ["cloudflare-kiwifarms-2022"]
+      "source_refs": [
+        "cloudflare-kiwifarms-2022"
+      ]
     },
     {
       "id": "raniere-sentencing-2020",
       "event_type": "conviction",
       "date_or_period": "2020-10-27",
-      "places": ["United States"],
-      "participants": ["nxivm", "Keith Raniere", "U.S. federal court"],
+      "places": [
+        "United States"
+      ],
+      "participants": [
+        "nxivm",
+        "Keith Raniere",
+        "U.S. federal court"
+      ],
       "description": "Keith Raniere was sentenced to 120 years after federal convictions including racketeering and sex-trafficking offenses.",
       "evidence_status": "court_established",
       "legal_status": "convicted",
-      "source_refs": ["doj-nxivm-raniere-2020"]
+      "source_refs": [
+        "doj-nxivm-raniere-2020"
+      ]
     },
     {
       "id": "smithsonian-hiphop-anthology-2021",
       "event_type": "museum_or_canon_milestone",
       "date_or_period": "2021",
-      "places": ["United States"],
-      "participants": ["hip-hop", "Smithsonian National Museum of African American History and Culture", "Smithsonian Folkways"],
+      "places": [
+        "United States"
+      ],
+      "participants": [
+        "hip-hop",
+        "Smithsonian National Museum of African American History and Culture",
+        "Smithsonian Folkways"
+      ],
       "description": "The Smithsonian anthology preserved and interpreted hip-hop as a major cultural history, marking an institutional preservation/canon milestone.",
       "evidence_status": "official_record",
-      "source_refs": ["smithsonian-hiphop-anthology-2021", "smithsonian-hiphop-release-2021"]
+      "source_refs": [
+        "smithsonian-hiphop-anthology-2021",
+        "smithsonian-hiphop-release-2021"
+      ]
     },
     {
       "id": "ao3-exits-open-beta-2026",
       "event_type": "institutional_milestone",
       "date_or_period": "2026-04",
-      "places": ["online"],
-      "participants": ["organization-for-transformative-works-ao3"],
+      "places": [
+        "online"
+      ],
+      "participants": [
+        "organization-for-transformative-works-ao3"
+      ],
       "description": "AO3 exited open beta after operating in that state since 2009; OTW also reported milestones of 10 million users and 17 million fanworks earlier in 2026.",
       "evidence_status": "first_party_stated",
-      "source_refs": ["ao3-open-beta-exit-2026", "ao3-membership-drive-2026"]
+      "source_refs": [
+        "ao3-open-beta-exit-2026",
+        "ao3-membership-drive-2026"
+      ]
     },
     {
       "id": "skateboarding-olympic-debut",
       "event_type": "mainstreaming_milestone",
       "date_or_period": "Tokyo 2020 Games",
-      "places": ["Tokyo", "global"],
-      "participants": ["skateboarding", "International Olympic Committee"],
+      "places": [
+        "Tokyo",
+        "global"
+      ],
+      "participants": [
+        "skateboarding",
+        "International Olympic Committee"
+      ],
       "description": "Skateboarding made its Olympic debut while retaining a distinct street-culture and subcultural history.",
       "evidence_status": "official_record",
-      "source_refs": ["olympics-skateboarding-tokyo", "sage-skateboarding-subculture-olympics-2022"]
+      "source_refs": [
+        "olympics-skateboarding-tokyo",
+        "sage-skateboarding-subculture-olympics-2022"
+      ]
     }
   ],
   "flows": [
@@ -285,7 +549,9 @@
       "period": "typical model described 2025",
       "description": "An instigator initiates the request/order that enters the Violence-as-a-Service chain.",
       "evidence_status": "official_record",
-      "source_refs": ["europol-vaas-chain-2025"]
+      "source_refs": [
+        "europol-vaas-chain-2025"
+      ]
     },
     {
       "id": "vaas-recruitment-flow",
@@ -295,7 +561,10 @@
       "period": "typical model described 2025",
       "description": "Recruiters identify or recruit perpetrators, including via encrypted messaging and online platforms in reported cases.",
       "evidence_status": "official_record",
-      "source_refs": ["europol-vaas-chain-2025", "europol-denmark-sweden-vaas-2025"]
+      "source_refs": [
+        "europol-vaas-chain-2025",
+        "europol-denmark-sweden-vaas-2025"
+      ]
     },
     {
       "id": "vaas-enablement-flow",
@@ -305,7 +574,9 @@
       "period": "typical model described 2025",
       "description": "Enablers support logistics, information, tools or instructions needed to execute the violent task.",
       "evidence_status": "official_record",
-      "source_refs": ["europol-vaas-chain-2025"]
+      "source_refs": [
+        "europol-vaas-chain-2025"
+      ]
     },
     {
       "id": "msf-private-funding-2025",
@@ -318,7 +589,9 @@
       "amount_type": "reported_total_revenue_greater_than_rounded",
       "description": "MSF reports more than EUR 2.6 billion in 2025 revenue and says 98% of operating income came from private sources.",
       "evidence_status": "audited_financial",
-      "source_refs": ["msf-2025-figures"]
+      "source_refs": [
+        "msf-2025-figures"
+      ]
     },
     {
       "id": "icrc-donor-contributions-2025",
@@ -331,7 +604,9 @@
       "amount_type": "reported_approximate_total_contributions",
       "description": "ICRC reports roughly CHF 1.76 billion in donor contributions in 2025 and a source mix with 84% from governments and the European Commission.",
       "evidence_status": "audited_financial",
-      "source_refs": ["icrc-annual-report-2025"]
+      "source_refs": [
+        "icrc-annual-report-2025"
+      ]
     },
     {
       "id": "viral-attention-raza",
@@ -341,7 +616,10 @@
       "period": "2003 onward",
       "description": "Audience attention, copying and remixing moved a private recording into durable public meme culture.",
       "evidence_status": "institutional_history",
-      "source_refs": ["nfb-star-wars-kid-2022", "nfb-star-wars-kid-lesson-2022"]
+      "source_refs": [
+        "nfb-star-wars-kid-2022",
+        "nfb-star-wars-kid-lesson-2022"
+      ]
     },
     {
       "id": "hiphop-scene-to-mainstream",
@@ -351,7 +629,9 @@
       "period": "1970s onward",
       "description": "Local practices and scenes expanded through recording, performance and distribution into broad national and global culture.",
       "evidence_status": "institutional_history",
-      "source_refs": ["smithsonian-hiphop-release-2021"]
+      "source_refs": [
+        "smithsonian-hiphop-release-2021"
+      ]
     },
     {
       "id": "ao3-fanwork-infrastructure-flow",
@@ -361,7 +641,11 @@
       "period": "2009-present",
       "description": "Fanworks, metadata and volunteer labor accumulate inside community-built archival infrastructure rather than being only transient activity on commercial social platforms.",
       "evidence_status": "project_analysis",
-      "source_refs": ["ao3-open-beta-exit-2026", "ao3-membership-drive-2026", "otw-reports-2025"]
+      "source_refs": [
+        "ao3-open-beta-exit-2026",
+        "ao3-membership-drive-2026",
+        "otw-reports-2025"
+      ]
     },
     {
       "id": "activitypub-federated-content-flow",
@@ -371,47 +655,544 @@
       "period": "2018-present",
       "description": "ActivityPub's server-to-server API enables content and notifications to move across independently implemented social-network services.",
       "evidence_status": "technical_standard",
-      "source_refs": ["w3c-activitypub-2018"]
+      "source_refs": [
+        "w3c-activitypub-2018"
+      ]
     }
   ],
   "relationships": [
-    {"id": "dk-conflict-ltf-ha", "from": "Loyal to Familia", "relationship": "IN_CONFLICT_WITH", "to": "Hells Angels MC", "period": "reported in Danish Police 2025 overview", "evidence_status": "official_record", "description": "Named conflict relation in Danish Police reporting. This edge does not assign aggregate environment statistics or identical conduct to every associated person.", "source_refs": ["dk-police-rocker-gang-2025"]},
-    {"id": "dk-conflict-brabrand-sort", "from": "Brabrandgruppen", "relationship": "IN_CONFLICT_WITH", "to": "Sort på Sort", "period": "reported in Danish Police 2025 overview", "evidence_status": "official_record", "description": "Named conflict relation in Danish Police reporting; no group-wide or person-wide guilt inference is made.", "source_refs": ["dk-police-rocker-gang-2025"]},
-    {"id": "dk-conflict-satudarah-a26", "from": "Satudarah MC", "relationship": "IN_CONFLICT_WITH", "to": "A26", "period": "reported in Danish Police 2025 overview", "evidence_status": "official_record", "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.", "source_refs": ["dk-police-rocker-gang-2025"]},
-    {"id": "dk-conflict-nbv-vo", "from": "NBV", "relationship": "IN_CONFLICT_WITH", "to": "VO Status", "period": "reported in Danish Police 2025 overview", "evidence_status": "official_record", "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.", "source_refs": ["dk-police-rocker-gang-2025"]},
-    {"id": "dk-conflict-lgp-mv", "from": "LGP Gruppen", "relationship": "IN_CONFLICT_WITH", "to": "MV Gruppen", "period": "reported in Danish Police 2025 overview", "evidence_status": "official_record", "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.", "source_refs": ["dk-police-rocker-gang-2025"]},
-    {"id": "dk-conflict-gt-afdeling12", "from": "GT Gruppen", "relationship": "IN_CONFLICT_WITH", "to": "Afdeling 12", "period": "reported in Danish Police 2025 overview", "evidence_status": "official_record", "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.", "source_refs": ["dk-police-rocker-gang-2025"]},
-    {"id": "dk-conflict-ltf-nnv", "from": "Loyal to Familia", "relationship": "IN_CONFLICT_WITH", "to": "NNV", "period": "reported in Danish Police 2025 overview", "evidence_status": "official_record", "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.", "source_refs": ["dk-police-rocker-gang-2025"]},
-    {"id": "dk-conflict-nnv-tingbjerg202", "from": "NNV", "relationship": "IN_CONFLICT_WITH", "to": "Tingbjerg 202", "period": "reported in Danish Police 2025 overview", "evidence_status": "official_record", "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.", "source_refs": ["dk-police-rocker-gang-2025"]},
-    {"id": "cloudflare-blocks-kiwifarms", "from": "Cloudflare", "relationship": "BLOCKS_OR_DEPLATFORMS", "to": "kiwi-farms", "period": "2022-09-03", "evidence_status": "first_party_stated", "description": "Cloudflare blocked Kiwi Farms from its services and stated its emergency rationale.", "source_refs": ["cloudflare-kiwifarms-2022"]},
-    {"id": "hiphop-mainstreams", "from": "hip-hop", "relationship": "MAINSTREAMS_INTO", "to": "mass and global culture", "period": "late 20th century onward", "evidence_status": "institutional_history", "description": "Hip-hop expanded beyond originating local scenes into broad national and global culture.", "source_refs": ["smithsonian-hiphop-release-2021"]},
-    {"id": "hiphop-canonized-smithsonian", "from": "hip-hop", "relationship": "CANONIZED_BY", "to": "Smithsonian institutional preservation", "period": "2021", "evidence_status": "official_record", "description": "Smithsonian anthology and museum work preserve hip-hop history as canonical cultural material.", "source_refs": ["smithsonian-hiphop-anthology-2021", "smithsonian-hiphop-release-2021"]},
-    {"id": "otw-hosts-ao3", "from": "Organization for Transformative Works", "relationship": "HOSTS", "to": "Archive of Our Own", "period": "2009-present", "evidence_status": "first_party_stated", "description": "OTW develops and maintains AO3 through nonprofit and volunteer organizational infrastructure.", "source_refs": ["ao3-membership-drive-2026", "otw-reports-2025"]},
-    {"id": "skateboarding-mainstreams-olympics", "from": "skateboarding", "relationship": "MAINSTREAMS_INTO", "to": "Olympic sport", "period": "Tokyo 2020 onward", "evidence_status": "official_record", "description": "Skateboarding entered Olympic competition while continuing to exist as street culture, local scenes and commercial/professional practice outside Olympic governance.", "source_refs": ["olympics-skateboarding-tokyo", "sage-skateboarding-subculture-olympics-2022"]},
-    {"id": "mastodon-uses-activitypub", "from": "Mastodon", "relationship": "HOSTS", "to": "ActivityPub-compatible federated social networking", "period": "2016-present", "evidence_status": "technical_standard", "description": "Mastodon participates in the federated social web using ActivityPub-compatible server-to-server interoperability.", "source_refs": ["w3c-activitypub-2018", "mastodon-town-square-2025"]}
+    {
+      "id": "dk-conflict-ltf-ha",
+      "from": "Loyal to Familia",
+      "relationship": "IN_CONFLICT_WITH",
+      "to": "Hells Angels MC",
+      "period": "reported in Danish Police 2025 overview",
+      "evidence_status": "official_record",
+      "description": "Named conflict relation in Danish Police reporting. This edge does not assign aggregate environment statistics or identical conduct to every associated person.",
+      "source_refs": [
+        "dk-police-rocker-gang-2025"
+      ]
+    },
+    {
+      "id": "dk-conflict-brabrand-sort",
+      "from": "Brabrandgruppen",
+      "relationship": "IN_CONFLICT_WITH",
+      "to": "Sort på Sort",
+      "period": "reported in Danish Police 2025 overview",
+      "evidence_status": "official_record",
+      "description": "Named conflict relation in Danish Police reporting; no group-wide or person-wide guilt inference is made.",
+      "source_refs": [
+        "dk-police-rocker-gang-2025"
+      ]
+    },
+    {
+      "id": "dk-conflict-satudarah-a26",
+      "from": "Satudarah MC",
+      "relationship": "IN_CONFLICT_WITH",
+      "to": "A26",
+      "period": "reported in Danish Police 2025 overview",
+      "evidence_status": "official_record",
+      "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.",
+      "source_refs": [
+        "dk-police-rocker-gang-2025"
+      ]
+    },
+    {
+      "id": "dk-conflict-nbv-vo",
+      "from": "NBV",
+      "relationship": "IN_CONFLICT_WITH",
+      "to": "VO Status",
+      "period": "reported in Danish Police 2025 overview",
+      "evidence_status": "official_record",
+      "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.",
+      "source_refs": [
+        "dk-police-rocker-gang-2025"
+      ]
+    },
+    {
+      "id": "dk-conflict-lgp-mv",
+      "from": "LGP Gruppen",
+      "relationship": "IN_CONFLICT_WITH",
+      "to": "MV Gruppen",
+      "period": "reported in Danish Police 2025 overview",
+      "evidence_status": "official_record",
+      "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.",
+      "source_refs": [
+        "dk-police-rocker-gang-2025"
+      ]
+    },
+    {
+      "id": "dk-conflict-gt-afdeling12",
+      "from": "GT Gruppen",
+      "relationship": "IN_CONFLICT_WITH",
+      "to": "Afdeling 12",
+      "period": "reported in Danish Police 2025 overview",
+      "evidence_status": "official_record",
+      "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.",
+      "source_refs": [
+        "dk-police-rocker-gang-2025"
+      ]
+    },
+    {
+      "id": "dk-conflict-ltf-nnv",
+      "from": "Loyal to Familia",
+      "relationship": "IN_CONFLICT_WITH",
+      "to": "NNV",
+      "period": "reported in Danish Police 2025 overview",
+      "evidence_status": "official_record",
+      "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.",
+      "source_refs": [
+        "dk-police-rocker-gang-2025"
+      ]
+    },
+    {
+      "id": "dk-conflict-nnv-tingbjerg202",
+      "from": "NNV",
+      "relationship": "IN_CONFLICT_WITH",
+      "to": "Tingbjerg 202",
+      "period": "reported in Danish Police 2025 overview",
+      "evidence_status": "official_record",
+      "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.",
+      "source_refs": [
+        "dk-police-rocker-gang-2025"
+      ]
+    },
+    {
+      "id": "cloudflare-blocks-kiwifarms",
+      "from": "Cloudflare",
+      "relationship": "BLOCKS_OR_DEPLATFORMS",
+      "to": "kiwi-farms",
+      "period": "2022-09-03",
+      "evidence_status": "first_party_stated",
+      "description": "Cloudflare blocked Kiwi Farms from its services and stated its emergency rationale.",
+      "source_refs": [
+        "cloudflare-kiwifarms-2022"
+      ]
+    },
+    {
+      "id": "hiphop-mainstreams",
+      "from": "hip-hop",
+      "relationship": "MAINSTREAMS_INTO",
+      "to": "mass and global culture",
+      "period": "late 20th century onward",
+      "evidence_status": "institutional_history",
+      "description": "Hip-hop expanded beyond originating local scenes into broad national and global culture.",
+      "source_refs": [
+        "smithsonian-hiphop-release-2021"
+      ]
+    },
+    {
+      "id": "hiphop-canonized-smithsonian",
+      "from": "hip-hop",
+      "relationship": "CANONIZED_BY",
+      "to": "Smithsonian institutional preservation",
+      "period": "2021",
+      "evidence_status": "official_record",
+      "description": "Smithsonian anthology and museum work preserve hip-hop history as canonical cultural material.",
+      "source_refs": [
+        "smithsonian-hiphop-anthology-2021",
+        "smithsonian-hiphop-release-2021"
+      ]
+    },
+    {
+      "id": "otw-hosts-ao3",
+      "from": "Organization for Transformative Works",
+      "relationship": "HOSTS",
+      "to": "Archive of Our Own",
+      "period": "2009-present",
+      "evidence_status": "first_party_stated",
+      "description": "OTW develops and maintains AO3 through nonprofit and volunteer organizational infrastructure.",
+      "source_refs": [
+        "ao3-membership-drive-2026",
+        "otw-reports-2025"
+      ]
+    },
+    {
+      "id": "skateboarding-mainstreams-olympics",
+      "from": "skateboarding",
+      "relationship": "MAINSTREAMS_INTO",
+      "to": "Olympic sport",
+      "period": "Tokyo 2020 onward",
+      "evidence_status": "official_record",
+      "description": "Skateboarding entered Olympic competition while continuing to exist as street culture, local scenes and commercial/professional practice outside Olympic governance.",
+      "source_refs": [
+        "olympics-skateboarding-tokyo",
+        "sage-skateboarding-subculture-olympics-2022"
+      ]
+    },
+    {
+      "id": "mastodon-uses-activitypub",
+      "from": "Mastodon",
+      "relationship": "HOSTS",
+      "to": "ActivityPub-compatible federated social networking",
+      "period": "2016-present",
+      "evidence_status": "technical_standard",
+      "description": "Mastodon participates in the federated social web using ActivityPub-compatible server-to-server interoperability.",
+      "source_refs": [
+        "w3c-activitypub-2018",
+        "mastodon-town-square-2025"
+      ]
+    }
   ],
   "pathways": [
-    {"id": "vaas-four-role-chain", "name": "Violence-as-a-Service role chain", "steps": ["instigator", "recruiter", "enabler", "perpetrator"], "description": "A typical operational sequence described by Europol; it is a model, not a claim that every violent offense uses all four roles.", "evidence_status": "official_record", "source_refs": ["europol-vaas-chain-2025"]},
-    {"id": "star-wars-kid-digital-shadow", "name": "Private act to durable public role", "steps": ["private recording", "publication by others", "viral label and remix culture", "archive/search persistence", "long public identity", "later documentary reclamation"], "description": "A human trajectory showing how the audience/archive layer can outlast the initiating event and later be re-entered by the person involved.", "evidence_status": "institutional_history", "source_refs": ["nfb-star-wars-kid-2022", "nfb-star-wars-kid-lesson-2022"]},
-    {"id": "hiphop-scene-to-canon", "name": "Hip-hop scene to mainstream to canon", "steps": ["Bronx neighborhood/block-party scenes", "local creative practices and crews", "recorded/commercial circulation", "national and global mass culture", "museum and anthology preservation"], "description": "A non-pathological formation pathway demonstrating that strong scenes and subcultures can become mainstream and canonical without being coercive.", "evidence_status": "institutional_history", "source_refs": ["smithsonian-hiphop-anthology-2021", "smithsonian-hiphop-release-2021"]},
-    {"id": "fandom-builds-infrastructure", "name": "Fandom builds its own institution", "steps": ["participatory fan culture", "shared preservation/legal needs", "nonprofit organization", "volunteer committees", "community-funded archive", "durable independent infrastructure"], "description": "OTW/AO3 shows one route by which a subculture creates formal governance and infrastructure without becoming a commercial platform or a high-control formation.", "evidence_status": "project_analysis", "source_refs": ["ao3-open-beta-exit-2026", "ao3-membership-drive-2026", "otw-reports-2025"]},
-    {"id": "ritual-to-institution-burning-man", "name": "Ritual culture to transparent institution", "steps": ["shared event and practices", "principles/ritual vocabulary", "regional reproduction", "formal nonprofit", "public financial and permit reporting"], "description": "Burning Man demonstrates that strong ritual, symbolic identity and communal norms can coexist with formal nonprofit disclosure and outside regulatory interfaces; intensity alone is not evidence of high control.", "evidence_status": "project_analysis", "source_refs": ["burning-man-principles", "burning-man-financials"]},
-    {"id": "skateboarding-street-to-olympics", "name": "Street scene to contested sport institution", "steps": ["DIY/urban practice", "local subculture", "brands/media/professionalization", "global industry", "Olympic sport", "continuing authenticity tension"], "description": "Skateboarding shows mainstreaming as negotiation: institutional legitimacy, professional opportunity and commercial reach can expand while subcultural arguments over authenticity continue.", "evidence_status": "scholarly_analysis", "source_refs": ["sage-skateboarding-subculture-olympics-2022", "olympics-skateboarding-tokyo"]},
-    {"id": "wikipedia-correction-loop", "name": "Visible correction loop", "steps": ["edit/claim", "public history", "talk-page disagreement", "source-based argument", "consensus/RfC", "revision visible in history"], "description": "Wikipedia provides a concrete counter-model to self-sealing interpretation because disagreement and revision can remain publicly inspectable even when consensus is difficult.", "evidence_status": "project_analysis", "source_refs": ["wikimedia-disputes-2025", "wikimedia-transparency-2025"]},
-    {"id": "activitypub-federation-path", "name": "Federated culture infrastructure", "steps": ["independent server/community", "ActivityPub interoperability", "cross-server content flow", "local moderation/governance", "choice of host/community", "network remains connected"], "description": "ActivityPub/Mastodon demonstrates how technical architecture can distribute cultural hosting and governance instead of making one operator the only gate to the social network.", "evidence_status": "project_analysis", "source_refs": ["w3c-activitypub-2018", "mastodon-town-square-2025", "mastodon-admin-update-2026"]}
+    {
+      "id": "vaas-four-role-chain",
+      "name": "Violence-as-a-Service role chain",
+      "steps": [
+        "instigator",
+        "recruiter",
+        "enabler",
+        "perpetrator"
+      ],
+      "description": "A typical operational sequence described by Europol; it is a model, not a claim that every violent offense uses all four roles.",
+      "evidence_status": "official_record",
+      "source_refs": [
+        "europol-vaas-chain-2025"
+      ]
+    },
+    {
+      "id": "star-wars-kid-digital-shadow",
+      "name": "Private act to durable public role",
+      "steps": [
+        "private recording",
+        "publication by others",
+        "viral label and remix culture",
+        "archive/search persistence",
+        "long public identity",
+        "later documentary reclamation"
+      ],
+      "description": "A human trajectory showing how the audience/archive layer can outlast the initiating event and later be re-entered by the person involved.",
+      "evidence_status": "institutional_history",
+      "source_refs": [
+        "nfb-star-wars-kid-2022",
+        "nfb-star-wars-kid-lesson-2022"
+      ]
+    },
+    {
+      "id": "hiphop-scene-to-canon",
+      "name": "Hip-hop scene to mainstream to canon",
+      "steps": [
+        "Bronx neighborhood/block-party scenes",
+        "local creative practices and crews",
+        "recorded/commercial circulation",
+        "national and global mass culture",
+        "museum and anthology preservation"
+      ],
+      "description": "A non-pathological formation pathway demonstrating that strong scenes and subcultures can become mainstream and canonical without being coercive.",
+      "evidence_status": "institutional_history",
+      "source_refs": [
+        "smithsonian-hiphop-anthology-2021",
+        "smithsonian-hiphop-release-2021"
+      ]
+    },
+    {
+      "id": "fandom-builds-infrastructure",
+      "name": "Fandom builds its own institution",
+      "steps": [
+        "participatory fan culture",
+        "shared preservation/legal needs",
+        "nonprofit organization",
+        "volunteer committees",
+        "community-funded archive",
+        "durable independent infrastructure"
+      ],
+      "description": "OTW/AO3 shows one route by which a subculture creates formal governance and infrastructure without becoming a commercial platform or a high-control formation.",
+      "evidence_status": "project_analysis",
+      "source_refs": [
+        "ao3-open-beta-exit-2026",
+        "ao3-membership-drive-2026",
+        "otw-reports-2025"
+      ]
+    },
+    {
+      "id": "ritual-to-institution-burning-man",
+      "name": "Ritual culture to transparent institution",
+      "steps": [
+        "shared event and practices",
+        "principles/ritual vocabulary",
+        "regional reproduction",
+        "formal nonprofit",
+        "public financial and permit reporting"
+      ],
+      "description": "Burning Man demonstrates that strong ritual, symbolic identity and communal norms can coexist with formal nonprofit disclosure and outside regulatory interfaces; intensity alone is not evidence of high control.",
+      "evidence_status": "project_analysis",
+      "source_refs": [
+        "burning-man-principles",
+        "burning-man-financials"
+      ]
+    },
+    {
+      "id": "skateboarding-street-to-olympics",
+      "name": "Street scene to contested sport institution",
+      "steps": [
+        "DIY/urban practice",
+        "local subculture",
+        "brands/media/professionalization",
+        "global industry",
+        "Olympic sport",
+        "continuing authenticity tension"
+      ],
+      "description": "Skateboarding shows mainstreaming as negotiation: institutional legitimacy, professional opportunity and commercial reach can expand while subcultural arguments over authenticity continue.",
+      "evidence_status": "scholarly_analysis",
+      "source_refs": [
+        "sage-skateboarding-subculture-olympics-2022",
+        "olympics-skateboarding-tokyo"
+      ]
+    },
+    {
+      "id": "wikipedia-correction-loop",
+      "name": "Visible correction loop",
+      "steps": [
+        "edit/claim",
+        "public history",
+        "talk-page disagreement",
+        "source-based argument",
+        "consensus/RfC",
+        "revision visible in history"
+      ],
+      "description": "Wikipedia provides a concrete counter-model to self-sealing interpretation because disagreement and revision can remain publicly inspectable even when consensus is difficult.",
+      "evidence_status": "project_analysis",
+      "source_refs": [
+        "wikimedia-disputes-2025",
+        "wikimedia-transparency-2025"
+      ]
+    },
+    {
+      "id": "activitypub-federation-path",
+      "name": "Federated culture infrastructure",
+      "steps": [
+        "independent server/community",
+        "ActivityPub interoperability",
+        "cross-server content flow",
+        "local moderation/governance",
+        "choice of host/community",
+        "network remains connected"
+      ],
+      "description": "ActivityPub/Mastodon demonstrates how technical architecture can distribute cultural hosting and governance instead of making one operator the only gate to the social network.",
+      "evidence_status": "project_analysis",
+      "source_refs": [
+        "w3c-activitypub-2018",
+        "mastodon-town-square-2025",
+        "mastodon-admin-update-2026"
+      ]
+    }
   ],
   "case_groups": [
-    {"id": "conflict-and-violence", "label": "Where violence actually appears", "formation_ids": ["danish-rocker-gang-conflict-field", "loyal-to-familia", "otf-grimm-violence-as-a-service"]},
-    {"id": "control-and-tribunal", "label": "Control, tribunal and adversarial archive", "formation_ids": ["nxivm", "kiwi-farms", "online-snark-communities"]},
-    {"id": "mainstreaming", "label": "Scene to mainstream to canon", "formation_ids": ["hip-hop", "skateboarding"]},
-    {"id": "funding-contrast", "label": "Lawful funding architectures", "formation_ids": ["medecins-sans-frontieres", "icrc"]},
-    {"id": "community-infrastructure", "label": "Communities that own or govern infrastructure", "formation_ids": ["organization-for-transformative-works-ao3", "wikipedia", "mastodon-activitypub"]},
-    {"id": "ritual-without-high-control", "label": "Ritual and intensity without automatic high-control classification", "formation_ids": ["burning-man"]}
+    {
+      "id": "conflict-and-violence",
+      "label": "Where violence actually appears",
+      "formation_ids": [
+        "danish-rocker-gang-conflict-field",
+        "loyal-to-familia",
+        "otf-grimm-violence-as-a-service"
+      ]
+    },
+    {
+      "id": "control-and-tribunal",
+      "label": "Control, tribunal and adversarial archive",
+      "formation_ids": [
+        "nxivm",
+        "kiwi-farms",
+        "online-snark-communities"
+      ]
+    },
+    {
+      "id": "mainstreaming",
+      "label": "Scene to mainstream to canon",
+      "formation_ids": [
+        "hip-hop",
+        "skateboarding"
+      ]
+    },
+    {
+      "id": "funding-contrast",
+      "label": "Lawful funding architectures",
+      "formation_ids": [
+        "medecins-sans-frontieres",
+        "icrc"
+      ]
+    },
+    {
+      "id": "community-infrastructure",
+      "label": "Communities that own or govern infrastructure",
+      "formation_ids": [
+        "organization-for-transformative-works-ao3",
+        "wikipedia",
+        "mastodon-activitypub"
+      ]
+    },
+    {
+      "id": "ritual-without-high-control",
+      "label": "Ritual and intensity without automatic high-control classification",
+      "formation_ids": [
+        "burning-man"
+      ]
+    }
   ],
   "public_projection": {
     "intro": "These cases are intentionally unlike one another. Their coexistence in one atlas is comparative, not a claim of moral or organizational equivalence.",
     "legal_notice": "Named conflict edges and aggregate police statistics are kept separate. A group-level relation does not establish guilt for every associated person, and aggregate environment figures are not assigned to a named group unless the source does so.",
     "source_notice": "Every externally testable claim in the canonical records resolves to the source ledger; project-analysis language is kept distinguishable from sourced external facts.",
     "expansion_notice": "The added cases focus on governance, infrastructure, correction, ritual, portability and commercialization so the Culture field explains how communities reproduce themselves, not only how they fail."
-  }
+  },
+  "topic_groundings": [
+    {
+      "id": "formation-in-practice",
+      "anchor_before": "From scene to canon",
+      "title": "Formation in practice — what the sequence looks like in the world",
+      "summary": "The formation chain is not only conceptual. These cases show different ways repeated practice becomes memory, status, infrastructure or canon without implying one universal ladder.",
+      "cards": [
+        {
+          "object_type": "pathway",
+          "object_id": "hiphop-scene-to-canon",
+          "label": "Local scene → mass culture → canon",
+          "point": "Hip-hop shows encounter, scene, commercial circulation and institutional preservation occurring across decades."
+        },
+        {
+          "object_type": "pathway",
+          "object_id": "fandom-builds-infrastructure",
+          "label": "Participatory culture → institution",
+          "point": "OTW/AO3 shows a community creating nonprofit governance, volunteer roles and durable archive infrastructure around its own cultural production."
+        },
+        {
+          "object_type": "pathway",
+          "object_id": "skateboarding-street-to-olympics",
+          "label": "Subculture → professionalization without disappearance",
+          "point": "Skateboarding became commercial and Olympic while local street/DIY scenes and authenticity disputes continued."
+        }
+      ]
+    },
+    {
+      "id": "control-in-practice",
+      "anchor_before": "When conflict becomes culture",
+      "title": "Control in practice — mechanisms, not labels",
+      "summary": "High-control analysis becomes useful only when a mechanism can be pointed to. A contrasting open/intense case is included so ritual or strong identity is not mistaken for coercion.",
+      "cards": [
+        {
+          "object_type": "formation",
+          "object_id": "nxivm",
+          "label": "Concentrated authority with court-established criminal conduct",
+          "fields": [
+            "high_control_features",
+            "legal_status"
+          ],
+          "point": "NXIVM supplies a legally grounded case where authority concentration, nested secrecy and coercive leverage can be discussed without relying on the word cult alone."
+        },
+        {
+          "object_type": "formation",
+          "object_id": "burning-man",
+          "label": "Intensity and ritual without automatic high-control classification",
+          "fields": [
+            "stated_purpose_or_beliefs",
+            "governance_model",
+            "correction_mechanisms"
+          ],
+          "point": "Burning Man is useful precisely because ritual, shared principles and strong symbolic identity coexist with external legal interfaces and public organizational reporting."
+        },
+        {
+          "object_type": "formation",
+          "object_id": "wikipedia",
+          "label": "Correction capacity as a control counter-test",
+          "fields": [
+            "governance_model",
+            "correction_mechanisms"
+          ],
+          "point": "Wikipedia provides an observable counter-model to self-sealing authority because disagreement and revision can remain publicly inspectable."
+        }
+      ]
+    },
+    {
+      "id": "tribunal-role-lock-in-practice",
+      "anchor_before": "Reputation, narrative capture and correction",
+      "title": "Tribunal and role-lock in practice",
+      "summary": "Role-lock becomes concrete when an audience-created label persists longer than the initiating event and new material is repeatedly interpreted through that inherited frame.",
+      "cards": [
+        {
+          "object_type": "human_case",
+          "object_id": "ghyslain-raza-star-wars-kid",
+          "label": "Private act → public label → durable archive role",
+          "point": "Ghyslain Raza's case shows how publication by others, remixing and search/archive persistence can turn one event into a long-lived public identity, and how later first-person participation can reopen the frame."
+        },
+        {
+          "object_type": "formation",
+          "object_id": "online-snark-communities",
+          "label": "Anti-fandom as a recurring interpretive public",
+          "point": "Research on snark communities gives a general case where vernacular, rules, sanctions and informal knowledge hierarchies can stabilize collective interpretation."
+        },
+        {
+          "object_type": "formation",
+          "object_id": "kiwi-farms",
+          "label": "Adversarial archive infrastructure",
+          "point": "Kiwi Farms provides an infrastructure case where forum archives, user activity, target lore and provider decisions need to be separated rather than collapsed into one actor or one verified account."
+        }
+      ]
+    },
+    {
+      "id": "classification-in-practice",
+      "anchor_before": "Cultural infrastructure",
+      "title": "Classification and institutional action in practice",
+      "summary": "A classification or institutional action is a dated relation between a subject and an authority. The source, method, legal status and scope matter more than the label alone.",
+      "cards": [
+        {
+          "object_type": "event",
+          "object_id": "ltf-supreme-court-dissolution-2021",
+          "label": "Court-established legal status",
+          "point": "The Danish Supreme Court dissolution of Loyal to Familia is a concrete legal event; it does not turn every associated person into the organization or establish identical conduct by all."
+        },
+        {
+          "object_type": "event",
+          "object_id": "danish-rocker-gang-2025-aggregate",
+          "label": "Official classification field versus aggregate statistics",
+          "point": "Danish Police reporting allows named conflict relations and environment-level statistics to be stored separately instead of smearing aggregate figures onto every named group."
+        },
+        {
+          "object_type": "event",
+          "object_id": "cloudflare-blocks-kiwi-farms-2022",
+          "label": "Infrastructure-provider action",
+          "point": "Cloudflare's 2022 block is an attributable provider action with a stated rationale; it should not be treated as proof of every claim made about the forum or its users."
+        }
+      ]
+    },
+    {
+      "id": "infrastructure-in-practice",
+      "anchor_before": "Culture is multidimensional",
+      "title": "Infrastructure in practice — who stores memory and who controls the Door",
+      "summary": "Culture is reproduced through storage, hosting, moderation, distribution and governance. Different infrastructures create different dependency and correction possibilities.",
+      "cards": [
+        {
+          "object_type": "formation",
+          "object_id": "organization-for-transformative-works-ao3",
+          "label": "Community-owned archival infrastructure",
+          "fields": [
+            "governance_model",
+            "infrastructure_model",
+            "funding_model"
+          ],
+          "point": "OTW/AO3 shows a subculture building nonprofit, volunteer-supported archival infrastructure instead of depending entirely on a commercial host."
+        },
+        {
+          "object_type": "formation",
+          "object_id": "wikipedia",
+          "label": "Publicly inspectable revision infrastructure",
+          "fields": [
+            "governance_model",
+            "correction_mechanisms",
+            "infrastructure_model"
+          ],
+          "point": "Wikipedia couples distributed editorial culture to visible revision histories and discussion surfaces."
+        },
+        {
+          "object_type": "formation",
+          "object_id": "mastodon-activitypub",
+          "label": "Federated hosting and local governance",
+          "fields": [
+            "governance_model",
+            "infrastructure_model",
+            "exit_or_portability"
+          ],
+          "point": "Mastodon/ActivityPub shows how hosting and moderation can be distributed across servers while interoperability preserves a wider network."
+        }
+      ]
+    }
+  ]
 }
