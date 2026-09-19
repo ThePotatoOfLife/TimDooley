@@ -1,7 +1,7 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.16.0",
+  "version": "1.17.0",
   "updated": "2026-09-19",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
@@ -224,7 +224,9 @@
       "Law of Positional Meaning now lives in symbolic-relational-synthesis; later reinterpretation is modeled as graph growth in Timic dynamics.",
       "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md is intentionally retained only as early-life roadmap provenance; canonical event ownership remains in data/timeline-events.json.",
       "public-route-topology is now deterministically generated from data/house/public-surfaces.json and CI checks projection drift; route identity is authored once.",
-      "docs/POTATOVERSE.md is now explicitly a human-readable reader projection rather than a canonical control plane."
+      "docs/POTATOVERSE.md is now explicitly a human-readable reader projection rather than a canonical control plane.",
+      "Symbol Atlas now reads from canonical concept/symbol owners instead of calling itself the canonical vocabulary.",
+      "Kingdom Atlas now preserves its historical 14-family relationship vocabulary as a reader while current typed relationship ownership lives in Inhabited House and domain registries."
     ],
     "next_retirement_candidates": [
       {
@@ -387,5 +389,58 @@
       ],
       "retirement_rule": "Do not close/delete the source PR solely from path coverage; retain it until a final content-level comparison confirms no unique formulation or provenance remains."
     }
+  },
+  "reader_projection_classification": {
+    "status": "first high-confusion document wave complete",
+    "rule": "Broad human-readable documents may summarize or teach canonical material, but filenames/titles such as master, framework or atlas do not grant ownership.",
+    "records": [
+      {
+        "path": "docs/POTATOVERSE.md",
+        "role": "reader_projection",
+        "current_authority": [
+          "data/potatoism-concept-registry.json",
+          "data/potatoism-dossiers.json",
+          "knowledge/core/potatoverse-master-framework.json",
+          "data/house/*"
+        ]
+      },
+      {
+        "path": "docs/MASTER-FRAME.md",
+        "role": "reader_projection",
+        "current_authority": [
+          "knowledge/core/root-system.json",
+          "knowledge/core/potatoverse-master-framework.json",
+          "data/house/*"
+        ]
+      },
+      {
+        "path": "docs/MASTER-ARCHITECTURE.md",
+        "role": "historical_donor",
+        "current_authority": [
+          "docs/POTATO-HOUSE-CONSTITUTION.md",
+          "data/house/project-synthesis.json",
+          "data/house/topology.json",
+          "data/house/holdings.json"
+        ]
+      },
+      {
+        "path": "docs/SYMBOL-ATLAS.md",
+        "role": "reader_projection",
+        "current_authority": [
+          "data/potatoism-concept-registry.json",
+          "data/potatoism-dossiers.json",
+          "knowledge/core/symbolic-relational-synthesis.json"
+        ]
+      },
+      {
+        "path": "docs/KINGDOM-ATLAS.md",
+        "role": "historical_reader_projection",
+        "current_authority": [
+          "knowledge/core/inhabited-house-society-ontology.json",
+          "data/potatoism-relationships.json",
+          "domain-specific relation registries"
+        ]
+      }
+    ]
   }
 }
