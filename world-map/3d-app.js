@@ -11,6 +11,17 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt
 const fmt = n => n == null ? '—' : new Intl.NumberFormat('en', {notation: Math.abs(n) > 1e9 ? 'compact' : 'standard', maximumFractionDigits: 1}).format(n);
 const title = s => String(s || '').replaceAll('_', ' ').replace(/\b\w/g, m => m.toUpperCase());
 const emptyFC = () => ({type:'FeatureCollection', features:[]});
+const geoKernel = window.__potatoAtlasGeo || await import('./3d-geo-kernel.js');
+if (!window.__potatoAtlasGeo) window.__potatoAtlasGeo = geoKernel;
+const { destinationPointKm, wrappedSegmentCoordinates } = geoKernel;
+if (!window.__potatoAtlasScale) await import('./3d-scale.js');
+const scaleRuntime = await window.__potatoAtlasScale?.ready;
+if (!scaleRuntime) throw new Error('World Map core requires the shared scale runtime.');
+const COUNTRY_HUB_RENDER_ZOOM = scaleRuntime.threshold('country-hubs', 'render');
+const COUNTRY_HUB_LABEL_ZOOM = scaleRuntime.threshold('country-hubs', 'label');
+const SEMANTIC_RENDER_ZOOM = scaleRuntime.threshold('semantic-interior', 'render');
+const SEMANTIC_LABEL_ZOOM = scaleRuntime.threshold('semantic-interior', 'label');
+const RELATION_RENDER_ZOOM = scaleRuntime.threshold('country-relations', 'render');
 
 const status = $('#status');
 function setStatus(message, kind='info') {
@@ -120,8 +131,11 @@ function groupedModules(record,code){
 }
 
 function mode() {
-  const z = map.getZoom();
-  return z < 3 ? 'world' : z < 5 ? 'regional' : z < 7 ? 'country' : 'subnational';
+  const band = scaleRuntime.bandForZoom(map.getZoom());
+  if (band === 'macro-region' || band === 'region') return 'regional';
+  if (band === 'country') return 'country';
+  if (band === 'subnational' || band === 'local') return 'subnational';
+  return 'world';
 }
 function relationEdgesFor(code) {
   return (worldCfg.curated_edges || []).filter(e => (e.a === code || e.b === code) && (relationType === 'all' || (e.types || []).includes(relationType)));
@@ -169,7 +183,7 @@ function traceRelationData(code) {
   for (const e of graph.edges) {
     const a = by3[e.a]?.latlng, b = by3[e.b]?.latlng;
     if (!a || !b) continue;
-    features.push({type:'Feature', properties:{a:e.a,b:e.b,types:(e.types||[]).join(' · '),layer:e.layer||'',depth:e.trace_level,raw:JSON.stringify(e)}, geometry:{type:'LineString',coordinates:[[a[1],a[0]],[b[1],b[0]]]}});
+    features.push({type:'Feature', properties:{a:e.a,b:e.b,types:(e.types||[]).join(' · '),layer:e.layer||'',depth:e.trace_level,geometry_meaning:'relationship_chord',raw:JSON.stringify(e)}, geometry:{type:'LineString',coordinates:wrappedSegmentCoordinates([a[1],a[0]],[b[1],b[0]])}});
   }
   return {type:'FeatureCollection', features};
 }
@@ -211,18 +225,18 @@ function getModule(h, record, code) {
 function hubData(code, record) {
   const r = by3[code];
   if (!r?.latlng) return {points:emptyFC(),lines:emptyFC()};
-  const lat=r.latlng[0], lon=r.latlng[1], baseRadius=Math.max(.7,Math.min(4.5,Math.sqrt(Math.max(r.area||1,1))/430));
+  const lat=r.latlng[0], lon=r.latlng[1];
+  const areaKm2=Math.max(Number(r.area)||1,1);
+  const baseRadiusKm=Math.max(90,Math.min(520,Math.sqrt(areaKm2)*.72));
   const groups=groupedModules(record,code);
   const pts=[],lines=[];
   groups.forEach((group,i)=>{
-    const a=i*GOLDEN_ANGLE;
+    const bearing=(i*GOLDEN_ANGLE)*180/Math.PI;
     const radialScale=.72+.13*Math.sqrt(i+1);
-    const radius=baseRadius*radialScale;
-    const dx=Math.cos(a)*radius, dy=Math.sin(a)*radius*.65;
-    const coord=[lon+dx,Math.max(-82,Math.min(82,lat+dy))];
+    const coord=destinationPointKm([lon,lat], bearing, baseRadiusKm*radialScale);
     const label=`${group.label} · ${group.modules.length}`;
-    pts.push({type:'Feature',properties:{id:group.id,label,plane:'group',code,count:group.modules.length},geometry:{type:'Point',coordinates:coord}});
-    lines.push({type:'Feature',properties:{id:group.id,code},geometry:{type:'LineString',coordinates:[[lon,lat],coord]}});
+    pts.push({type:'Feature',properties:{id:group.id,label,plane:'group',code,count:group.modules.length,geometry_meaning:'semantic_navigation'},geometry:{type:'Point',coordinates:coord}});
+    lines.push({type:'Feature',properties:{id:group.id,code,geometry_meaning:'symbolic_route'},geometry:{type:'LineString',coordinates:wrappedSegmentCoordinates([lon,lat],coord)}});
   });
   return {points:{type:'FeatureCollection',features:pts},lines:{type:'FeatureCollection',features:lines}};
 }
@@ -365,15 +379,15 @@ function addLayers(){
   map.addLayer({id:'countries-extrude',type:'fill-extrusion',source:'countries',layout:{visibility:'none'},paint:{'fill-extrusion-color':color,'fill-extrusion-height':['*',250000,['sqrt',['/', ['max',['get','population'],1],1000000]]],'fill-extrusion-opacity':.68}});
   const countryHubs={type:'FeatureCollection',features:rest.filter(x=>x.latlng?.length===2).map(x=>({type:'Feature',properties:{iso3:x.cca3,name:x.name.common},geometry:{type:'Point',coordinates:[x.latlng[1],x.latlng[0]]}}))};
   map.addSource('country-hubs',{type:'geojson',data:countryHubs});
-  map.addLayer({id:'country-hubs',type:'circle',source:'country-hubs',minzoom:3.2,paint:{'circle-radius':['interpolate',['linear'],['zoom'],3.2,2.5,7,6],'circle-color':'#bbdc8a','circle-stroke-color':'#101616','circle-stroke-width':1.2,'circle-opacity':.8}});
-  map.addLayer({id:'country-labels',type:'symbol',source:'country-hubs',minzoom:4,layout:{'text-field':['get','name'],'text-size':11,'text-offset':[0,1.2]},paint:{'text-color':'#eff4eb','text-halo-color':'#080b0b','text-halo-width':1.3}});
+  map.addLayer({id:'country-hubs',type:'circle',source:'country-hubs',minzoom:COUNTRY_HUB_RENDER_ZOOM,paint:{'circle-radius':['interpolate',['linear'],['zoom'],COUNTRY_HUB_RENDER_ZOOM,2.5,7,6],'circle-color':'#bbdc8a','circle-stroke-color':'#101616','circle-stroke-width':1.2,'circle-opacity':.8}});
+  map.addLayer({id:'country-labels',type:'symbol',source:'country-hubs',minzoom:COUNTRY_HUB_LABEL_ZOOM,layout:{'text-field':['get','name'],'text-size':11,'text-offset':[0,1.2]},paint:{'text-color':'#eff4eb','text-halo-color':'#080b0b','text-halo-width':1.3}});
   map.addSource('semantic-links',{type:'geojson',data:emptyFC()});
-  map.addLayer({id:'semantic-links',type:'line',source:'semantic-links',minzoom:3.6,paint:{'line-color':'#7e8b82','line-width':1,'line-dasharray':[2,2],'line-opacity':.55}});
+  map.addLayer({id:'semantic-links',type:'line',source:'semantic-links',minzoom:SEMANTIC_RENDER_ZOOM,paint:{'line-color':'#7e8b82','line-width':1,'line-dasharray':[2,2],'line-opacity':.55}});
   map.addSource('semantic-hubs',{type:'geojson',data:emptyFC()});
-  map.addLayer({id:'semantic-hubs',type:'circle',source:'semantic-hubs',minzoom:3.6,paint:{'circle-radius':['interpolate',['linear'],['zoom'],3.6,4,7,8],'circle-color':['match',['get','plane'],'project-canon','#c27878','interpretive-policy','#73a7d8','historical','#d39870','mixed','#a78bd4','#bbdc8a'],'circle-stroke-color':'#101616','circle-stroke-width':1.4,'circle-opacity':.9}});
-  map.addLayer({id:'semantic-labels',type:'symbol',source:'semantic-hubs',minzoom:4.6,layout:{'text-field':['get','label'],'text-size':10,'text-offset':[0,1.25]},paint:{'text-color':'#eff4eb','text-halo-color':'#080b0b','text-halo-width':1.2}});
+  map.addLayer({id:'semantic-hubs',type:'circle',source:'semantic-hubs',minzoom:SEMANTIC_RENDER_ZOOM,paint:{'circle-radius':['interpolate',['linear'],['zoom'],SEMANTIC_RENDER_ZOOM,4,7,8],'circle-color':['match',['get','plane'],'project-canon','#c27878','interpretive-policy','#73a7d8','historical','#d39870','mixed','#a78bd4','#bbdc8a'],'circle-stroke-color':'#101616','circle-stroke-width':1.4,'circle-opacity':.9}});
+  map.addLayer({id:'semantic-labels',type:'symbol',source:'semantic-hubs',minzoom:SEMANTIC_LABEL_ZOOM,layout:{'text-field':['get','label'],'text-size':10,'text-offset':[0,1.25]},paint:{'text-color':'#eff4eb','text-halo-color':'#080b0b','text-halo-width':1.2}});
   map.addSource('relations',{type:'geojson',data:emptyFC()});
-  map.addLayer({id:'relations',type:'line',source:'relations',minzoom:2,paint:{'line-color':['step',['get','depth'],'#73a7d8',2,'#8ba5bd',3,'#687f94'],'line-width':['interpolate',['linear'],['zoom'],2,1.2,6,3],'line-opacity':['step',['get','depth'],.82,2,.62,3,.44]}});
+  map.addLayer({id:'relations',type:'line',source:'relations',minzoom:RELATION_RENDER_ZOOM,paint:{'line-color':['step',['get','depth'],'#73a7d8',2,'#8ba5bd',3,'#687f94'],'line-width':['interpolate',['linear'],['zoom'],RELATION_RENDER_ZOOM,1.2,6,3],'line-opacity':['step',['get','depth'],.82,2,.62,3,.44]}});
   map.addSource('trace-hubs',{type:'geojson',data:emptyFC()});
   map.addLayer({id:'trace-hubs',type:'circle',source:'trace-hubs',paint:{'circle-radius':['step',['get','depth'],6,2,5,3,4],'circle-color':['step',['get','depth'],'#bbdc8a',2,'#73a7d8',3,'#8b91b9'],'circle-stroke-color':'#eff4eb','circle-stroke-width':1.2,'circle-opacity':.9}});
   map.addSource('compare-hubs',{type:'geojson',data:emptyFC()});
@@ -413,7 +427,7 @@ map.on('load',async()=>{
 });
 map.on('moveend',updateHud);map.on('zoom',updateHud);map.on('pitch',updateHud);map.on('rotate',updateHud);
 $('#height').onchange=extrusion;
-$('#interior').onclick=()=>{showInterior=!showInterior;$('#interior').classList.toggle('active',showInterior);updateSpatial();if(showInterior&&selected&&map.getZoom()<3.2)fitCodes([selected],78);window.dispatchEvent(new CustomEvent('potato-atlas-interior-change',{detail:{visible:showInterior}}))};
+$('#interior').onclick=()=>{showInterior=!showInterior;$('#interior').classList.toggle('active',showInterior);updateSpatial();if(showInterior&&selected&&map.getZoom()<COUNTRY_HUB_RENDER_ZOOM)fitCodes([selected],78);window.dispatchEvent(new CustomEvent('potato-atlas-interior-change',{detail:{visible:showInterior}}))};
 $('#relations').onclick=()=>{showRelations=!showRelations;$('#relations').classList.toggle('active',showRelations);updateSpatial();window.dispatchEvent(new CustomEvent('potato-atlas-relations-change',{detail:{visible:showRelations}}))};
 $('#relationType').onchange=e=>{relationType=e.target.value;updateSpatial();if(compareMode)renderCompare();else if(selected)renderCountry();updateUrl()};
 $('#traceDepth').onchange=e=>{traceDepth=Math.max(1,Math.min(TRACE_MAX_DEPTH,Number(e.target.value)||1));updateSpatial();if(selected&&!compareMode)renderCountry();updateUrl()};

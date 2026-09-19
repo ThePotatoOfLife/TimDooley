@@ -45,9 +45,9 @@ def main() -> int:
         errors.append("panel lifecycle must preload the shared Inspector Router before Places/subdivisions")
     if "__potatoAtlasLoadModule?.('Inspector URL', './3d-inspector-url.js')" not in lifecycle:
         errors.append("panel lifecycle must preload typed Inspector URL hydration before Places/subdivisions")
-    if "loadAfterPaint('Inspector URL', './3d-inspector-url.js')" not in bootstrap:
+    if "['Inspector URL', './3d-inspector-url.js']" not in bootstrap:
         errors.append("bootstrap must hydrate typed inspector URL state before Country selection")
-    if bootstrap.find("loadAfterPaint('Inspector URL', './3d-inspector-url.js')") > bootstrap.find("loadAfterPaint('Country selection', './3d-country-selection.js')"):
+    if bootstrap.find("['Inspector URL', './3d-inspector-url.js']") > bootstrap.find("['Country selection', './3d-country-selection.js']"):
         errors.append("typed Inspector URL hydration must boot before Country selection reads URL state")
 
     for label, source, node_type in (("Places", places, "place"), ("Subdivisions", subdivisions, "subdivision")):

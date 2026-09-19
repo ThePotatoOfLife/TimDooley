@@ -109,6 +109,13 @@ def main() -> int:
             errors.append("fixture output lost GeoNames license/attribution metadata")
         if index.get("runtime_budget") != EXPECTED_BUDGET:
             errors.append(f"fixture runtime budget must be exact: {EXPECTED_BUDGET}")
+        selection = index.get("selection") or {}
+        if selection.get("minimum_population") != 0:
+            errors.append("fixture build must preserve the default zero population floor")
+        if selection.get("national_capitals_always_included") is not True:
+            errors.append("Places build must always retain national capitals")
+        if selection.get("max_aliases_per_place") != 16:
+            errors.append("Places build must publish the bounded alias cap")
 
         search_records = index.get("search_records") or []
         if not search_records:
@@ -159,6 +166,8 @@ def main() -> int:
             props = feature.get("properties") or {}
             if props.get("dataset_refresh_date") != "2026-09-15-fixture":
                 errors.append(f"{props.get('id')}: fixture refresh date was not propagated")
+            if len(props.get("aliases") or []) > 16:
+                errors.append(f"{props.get('id')}: Places aliases exceed the bounded production cap")
 
     if errors:
         return fail(errors)

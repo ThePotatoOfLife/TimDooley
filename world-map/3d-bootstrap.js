@@ -31,6 +31,15 @@ function nextPaint(maxWaitMs = 160) {
     requestAnimationFrame(() => requestAnimationFrame(finish));
   });
 }
+function nextIdle(maxWaitMs = 900) {
+  return new Promise(resolve => {
+    if (typeof requestIdleCallback === 'function') {
+      requestIdleCallback(() => resolve(), { timeout:maxWaitMs });
+      return;
+    }
+    setTimeout(resolve, Math.min(240, maxWaitMs));
+  });
+}
 async function waitForCore(timeoutMs = 15000) {
   const started = Date.now();
   while (Date.now() - started < timeoutMs) {
@@ -94,6 +103,28 @@ async function loadSpecialist(label, path) {
   }
   return result;
 }
+async function loadBootStage(label, entries) {
+  const startedAt = now();
+  await nextPaint();
+  for (const [moduleLabel, path] of entries) await loadOptional(moduleLabel, path);
+  await nextPaint();
+  if (window.__potatoAtlasDiagnostics) {
+    const stages = window.__potatoAtlasDiagnostics.bootStages || (window.__potatoAtlasDiagnostics.bootStages = {});
+    stages[label] = { durationMs:Math.round(now() - startedAt), modules:entries.map(([moduleLabel]) => moduleLabel) };
+  }
+}
+async function loadDeferredCore() {
+  await nextIdle();
+  await loadBootStage('deferred-core', [
+    ['Spatial Overlays', './3d-spatial-overlays.js'],
+    ['Spatial Overlay UI', './3d-spatial-overlay-ui.js'],
+    ['Scalar Runtime Bridge', './3d-scalar-runtime-bridge.js'],
+    ['Runtime Telemetry', './3d-runtime-telemetry.js'],
+  ]);
+  if (window.__potatoAtlasDiagnostics) {
+    window.__potatoAtlasDiagnostics.deferredCoreReadyMs = Math.round(now() - window.__potatoAtlasDiagnostics.startedAt);
+  }
+}
 async function loadInspectionBasics() {
   await Promise.all([
     loadAfterPaint('Demography', './3d-demography.js'),
@@ -131,31 +162,33 @@ try {
   await import(versionedModule('./3d-core-interaction-handoff.js'));
   await import(versionedModule('./3d-hover.js'));
   const map = await waitForCore();
-  await nextPaint();
-  await loadAfterPaint('Interaction Router', './3d-interaction-router.js');
-  await loadAfterPaint('Inspector Router', './3d-inspector-router.js');
-  await loadAfterPaint('Inspector URL', './3d-inspector-url.js');
-  await loadAfterPaint('Inspector Visibility', './3d-inspector-visibility.js');
-  await loadAfterPaint('Country selection', './3d-country-selection.js');
-  await loadAfterPaint('Panel lifecycle', './3d-panel-lifecycle.js');
-  await loadAfterPaint('Layer Registry', './3d-layer-registry.js');
-  await loadAfterPaint('Compositor', './3d-compositor.js');
-  await loadAfterPaint('Spatial Overlays', './3d-spatial-overlays.js');
-  await loadAfterPaint('Spatial Overlay UI', './3d-spatial-overlay-ui.js');
-  await loadAfterPaint('Entity Runtime', './3d-entity-runtime.js');
-  await loadAfterPaint('Active View', './3d-active-view.js');
-  await loadAfterPaint('Country Presentation', './3d-country-presentation.js');
-  await loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js');
-  await loadAfterPaint('World Bar', './3d-world-bar.js');
-  await loadAfterPaint('Country Card', './3d-country-card.js');
-  await loadAfterPaint('Scalar Runtime Bridge', './3d-scalar-runtime-bridge.js');
-  await loadAfterPaint('Investigation Surface', './3d-investigation-surface.js');
-  await loadAfterPaint('Runtime Telemetry', './3d-runtime-telemetry.js');
+  await loadBootStage('control-plane', [
+    ['Interaction Router', './3d-interaction-router.js'],
+    ['Inspector Router', './3d-inspector-router.js'],
+    ['Inspector URL', './3d-inspector-url.js'],
+    ['Inspector Visibility', './3d-inspector-visibility.js'],
+    ['Country selection', './3d-country-selection.js'],
+    ['Panel lifecycle', './3d-panel-lifecycle.js'],
+  ]);
+  await loadBootStage('presentation-runtime', [
+    ['Layer Registry', './3d-layer-registry.js'],
+    ['Compositor', './3d-compositor.js'],
+    ['Entity Runtime', './3d-entity-runtime.js'],
+    ['Active View', './3d-active-view.js'],
+    ['Country Presentation', './3d-country-presentation.js'],
+    ['Country Hover Presentation', './3d-country-hover-presentation.js'],
+  ]);
+  await loadBootStage('interactive-surfaces', [
+    ['World Bar', './3d-world-bar.js'],
+    ['Country Card', './3d-country-card.js'],
+    ['Investigation Surface', './3d-investigation-surface.js'],
+  ]);
 
   setStatus('');
   if (guard()) guard().stage = 'interactive';
   window.__potatoAtlasDiagnostics.interactiveMs = Math.round(now() - window.__potatoAtlasDiagnostics.startedAt);
   window.dispatchEvent(new CustomEvent('potato-atlas-interactive'));
+  void loadDeferredCore();
 
   declareDormant('System Intelligence', './3d-gateways.js', 'first country inspection');
   declareDormant('Functional Chains', './3d-chain-explorer.js', 'first country inspection');
@@ -181,7 +214,7 @@ try {
     await loadInspectionBasics();
     await nextPaint();
     await loadInspectionContext();
-    await nextPaint();
+    await nextIdle(1200);
     await loadInspectionDeep();
   };
   let inspectionPromoted = false;

@@ -246,12 +246,9 @@ function installCapitalsControl() {
 function tuneMapSurface() {
   const map = window.__potatoAtlasMap;
   if (!map) return;
-  const selected = ['boolean',['feature-state','selected'],false];
-  const compared = ['boolean',['feature-state','compare'],false];
-  const countryColor = ['case',selected,'#e7c56f',compared,'#6cafe3','#576d6b'];
-  try { if (map.getLayer('countries-fill')) map.setPaintProperty('countries-fill','fill-color',countryColor); } catch {}
-  try { if (map.getLayer('countries-extrude')) map.setPaintProperty('countries-extrude','fill-extrusion-color',countryColor); } catch {}
-  try { if (map.getLayer('countries-line')) map.setPaintProperty('countries-line','line-color',['case',selected,'#f4e4ae',compared,'#b9ddf7','#22302f']); } catch {}
+  // Country fill/extrusion/outline ownership lives in the compositor,
+  // Physical World and selection/query emphasis layers. This dormant
+  // compatibility UI must never repaint those canonical channels.
   try { if (map.getLayer('country-hubs')) map.setLayoutProperty('country-hubs','visibility','none'); } catch {}
   try { if (map.getLayer('semantic-hubs')) map.setPaintProperty('semantic-hubs','circle-color',['match',['get','plane'],'project-canon','#cf7d7d','interpretive-policy','#70afe2','historical','#dda06e','mixed','#aa8ed9','#c3e58d']); } catch {}
   try { if (map.getLayer('relations')) { map.setPaintProperty('relations','line-color',['step',['get','depth'],'#70afe2',2,'#8eabc5',3,'#70879c']); map.setPaintProperty('relations','line-width',['interpolate',['linear'],['zoom'],2,.75,6,1.8]); map.setPaintProperty('relations','line-opacity',['step',['get','depth'],.6,2,.42,3,.28]); } } catch {}

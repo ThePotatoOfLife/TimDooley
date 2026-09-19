@@ -1,6 +1,6 @@
 # World Map Roadmap
 
-**Updated:** 2026-09-16  
+**Updated:** 2026-09-19  
 **Authority:** current live roadmap for the World Map / World Relational Atlas. Older `docs/superpowers/specs/` and `docs/superpowers/plans/` remain design history unless explicitly referenced here.
 
 ## Vision
@@ -44,7 +44,7 @@ These capabilities are established enough to build on:
 - mathematical calibration separating geography, topology, hierarchy, time and gated flow;
 - browse/performance regressions for known hover, panel, cache and overlap failures;
 - shared geospatial kernel with normalized longitude/wrapped identity and antimeridian-safe bounds;
-- shared scale runtime with named thresholds and hysteresis, used by Places and subdivisions;
+- shared scale runtime with named thresholds and hysteresis, now used by core country browsing, Places, subdivisions, population/gateway labels, Physical Water detail and Hydrology activation;
 - central Interaction Router with semantic click/hover priority;
 - router ownership for Places, subdivisions and spatial overlays;
 - typed Inspector Router and canonical inspector URL path with deterministic child/back semantics;
@@ -60,7 +60,7 @@ These capabilities are established enough to build on:
 - [x] Normalize longitudes and wrapped world-copy identity.
 - [x] Make bounds/fit calculations antimeridian-aware.
 - [ ] Replace degree-squared partition prioritization where physical/geographic distance is intended.
-- [ ] Define schematic-vs-physical route geometry semantics.
+- [x] Define schematic-vs-physical route geometry semantics for relationship chords and symbolic interior links; surveyed physical routes remain a separate future data type.
 - [x] Add dateline/globe/Mercator regressions for the shared kernel.
 
 ### B. Scale safety
@@ -69,7 +69,9 @@ These capabilities are established enough to build on:
 - [x] Separate load/render/label/interaction thresholds for migrated consumers.
 - [x] Add hysteresis for boundary crossings where churn is possible.
 - [x] Migrate Places/subdivision thresholds first.
-- [ ] Audit every remaining module for raw zoom magic numbers.
+- [x] Audit every remaining module for raw zoom magic numbers.
+
+Audit result (2026-09-19): ordinary browsing/display thresholds have been migrated where safe. Remaining literals are concentrated in fallback-capital label regimes, Axis label disclosure, Hydrology density tiers, and physical source/detail limits; those are tracked as explicit follow-up rather than silently mixed with camera-scale semantics.
 
 ### C. Interaction safety
 
@@ -86,7 +88,7 @@ Current compatibility rule: normal application interaction is Router-owned and d
 
 - [x] Add one transient-tooltip service.
 - [x] Centralize stale async suppression and motion/projection/style invalidation in the shared service.
-- [ ] Migrate every remaining country hover, Axis, Fields, Networks and infrastructure tooltip path.
+- [x] Migrate transient country, Axis, Fields and Networks hover paths to the shared Tooltip Service. Infrastructure/gateway detail popups remain click-owned persistent inspection surfaces by design.
 - [ ] Remove the boot-guard CSS workaround only after behavioral regressions prove equivalent behavior.
 
 ### E. Inspector/state safety
@@ -98,8 +100,8 @@ Current compatibility rule: normal application interaction is Router-owned and d
 
 ## NEXT — RENDER + UI CONVERGENCE
 
-- [ ] Add visual-channel compatibility matrix.
-- [ ] Audit every writer of country fill/pattern/outline/height.
+- [x] Add and enforce visual-channel compatibility matrix (`data/world-map-visual-channel-contract.json`), including an explicit pattern+height fallback.
+- [x] Audit canonical country fill/pattern/outline/height ownership and remove dormant Progressive UI country-surface writers; continue extending the audit when new channels are added.
 - [x] Centralize style-generation restoration for Render Stack and migrated physical layers.
 - [ ] Drain remaining duplicate style/lifecycle writers discovered by the architecture auditor.
 - [ ] Consolidate global UI design tokens, z-index bands and common surfaces.
@@ -114,7 +116,7 @@ Current compatibility rule: normal application interaction is Router-owned and d
 - [x] Track interaction registry size, dispatch counts and tooltip generation/stale suppression.
 - [x] Retain bounded Places/subdivision cache diagnostics.
 - [x] Publish and enforce the World Map architecture audit in CI.
-- [ ] Expand scenarios toward route geometry, remaining legacy interaction consumers and accessibility behavior.
+- [ ] Expand scenarios toward route geometry, remaining legacy interaction consumers and accessibility behavior. Dateline-short relationship segments, antimeridian-safe overlay fit and geodesic semantic-hub packing now have focused regressions.
 
 ## COMPATIBILITY RETIREMENT
 

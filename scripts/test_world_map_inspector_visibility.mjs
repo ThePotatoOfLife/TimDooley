@@ -7,12 +7,12 @@ const bootstrap = fs.readFileSync(new URL('world-map/3d-bootstrap.js', root), 'u
 
 assert.ok(fs.existsSync(moduleUrl), 'selected-country inspector visibility controller must exist');
 assert.ok(
-  bootstrap.includes("loadAfterPaint('Inspector Visibility', './3d-inspector-visibility.js')"),
+  bootstrap.includes("['Inspector Visibility', './3d-inspector-visibility.js']"),
   'bootstrap must always load the small inspector visibility controller',
 );
 assert.ok(
-  bootstrap.indexOf("loadAfterPaint('Inspector Visibility', './3d-inspector-visibility.js')") <
-    bootstrap.indexOf("loadAfterPaint('Country selection', './3d-country-selection.js')"),
+  bootstrap.indexOf("['Inspector Visibility', './3d-inspector-visibility.js']") <
+    bootstrap.indexOf("['Country selection', './3d-country-selection.js']"),
   'inspector visibility must be listening before Country selection restores or emits state',
 );
 assert.ok(

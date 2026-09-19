@@ -67,7 +67,7 @@ def main() -> int:
     if "coordinated:true" not in chain:
         errors.append("Chain must support coordinator-driven close without recursion")
 
-    surface_load = "loadAfterPaint('Investigation Surface', './3d-investigation-surface.js')"
+    surface_load = "['Investigation Surface', './3d-investigation-surface.js']"
     staged_specialists = (
         (
             "Chain",

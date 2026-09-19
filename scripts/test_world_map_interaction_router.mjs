@@ -108,8 +108,8 @@ assert.ok(subdivisions.includes("interaction.register('subdivisions'"), 'subdivi
 assert.ok(routerSource.includes('potato-atlas-interaction-ready'), 'Interaction Router must publish an explicit ready signal for early-boot handoff');
 const bootstrapCapture = bootstrap.indexOf("await import(versionedModule('./3d-core-interaction-handoff.js'))");
 const bootstrapHover = bootstrap.indexOf("await import(versionedModule('./3d-hover.js'))");
-const bootstrapRouter = bootstrap.indexOf("loadAfterPaint('Interaction Router', './3d-interaction-router.js')");
-const bootstrapCountry = bootstrap.indexOf("loadAfterPaint('Country selection', './3d-country-selection.js')");
+const bootstrapRouter = bootstrap.indexOf("['Interaction Router', './3d-interaction-router.js']");
+const bootstrapCountry = bootstrap.indexOf("['Country selection', './3d-country-selection.js']");
 assert.ok(bootstrapCapture >= 0 && bootstrapHover >= 0 && bootstrapCapture < bootstrapHover, 'bootstrap must arm core interaction capture before the renderer boots');
 assert.ok(bootstrapRouter >= 0 && bootstrapCountry >= 0 && bootstrapRouter < bootstrapCountry, 'bootstrap must load Interaction Router before canonical country selection');
 
