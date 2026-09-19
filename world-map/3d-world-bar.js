@@ -19,6 +19,7 @@
     ['biblical.genesis-15','Genesis 15 · Wadi el-Arish'],
     ['biblical.genesis-15-nile','Genesis 15 · Nile'],
     ['modern.greater-israel','Greater Israel'],
+    ['project.below.us-cases','Below · U.S. cases'],
   ];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const entries = family => layers.entries(family, {availableOnly:true, ordinaryOnly:true});
