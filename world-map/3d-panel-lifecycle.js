@@ -184,3 +184,34 @@ function bindAdlHeatLayerControl() {
   });
 }
 queueMicrotask(bindAdlHeatLayerControl);
+
+function bindMudBelowLayerControl() {
+  const button = document.getElementById('mudBelowLayer');
+  if (!button || button.dataset.bound === 'true') return;
+  button.dataset.bound = 'true';
+  button.addEventListener('click', async () => {
+    button.disabled = true;
+    try {
+      await window.__potatoAtlasLoadModule?.('Mud / Below U.S.', './3d-mud-below-us.js');
+      await window.__potatoAtlasMudBelow?.toggle?.();
+    } catch (error) {
+      console.warn('Mud / Below U.S. layer unavailable:', error);
+    } finally {
+      button.disabled = false;
+    }
+  });
+}
+queueMicrotask(bindMudBelowLayerControl);
+
+function hydrateEvidenceLayersFromUrl() {
+  const params = new URL(location.href).searchParams;
+  const jobs = [];
+  if (params.get('evidenceLayer') === 'adl-heat') {
+    jobs.push(window.__potatoAtlasLoadModule?.('ADL H.E.A.T.', './3d-adl-heat.js'));
+  }
+  if (params.get('projectLayer') === 'mud-below-us') {
+    jobs.push(window.__potatoAtlasLoadModule?.('Mud / Below U.S.', './3d-mud-below-us.js'));
+  }
+  Promise.allSettled(jobs.filter(Boolean)).catch(() => {});
+}
+queueMicrotask(hydrateEvidenceLayersFromUrl);

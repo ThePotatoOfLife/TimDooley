@@ -15,6 +15,8 @@ MODULE = ROOT / "world-map/3d-adl-heat.js"
 HTML = ROOT / "world-map/index.html"
 LIFECYCLE = ROOT / "world-map/3d-panel-lifecycle.js"
 IMPORTER = ROOT / "scripts/import_adl_heat.py"
+MUD_MODULE = ROOT / "world-map/3d-mud-below-us.js"
+MUD_DATA = ROOT / "data/world-symbolic/us-mud-below-project-cases.geo.json"
 
 EXPECTED_STATES = {
     "AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA",
@@ -35,7 +37,7 @@ def require(text: str, token: str, label: str, errors: list[str]) -> None:
 
 def main() -> int:
     errors: list[str] = []
-    for path in (META,SUMMARY,GEO,MODULE,HTML,LIFECYCLE,IMPORTER):
+    for path in (META,SUMMARY,GEO,MODULE,HTML,LIFECYCLE,IMPORTER,MUD_MODULE,MUD_DATA):
         if not path.exists():
             errors.append(f"missing ADL H.E.A.T. artifact: {path.relative_to(ROOT)}")
     if errors:
@@ -49,6 +51,8 @@ def main() -> int:
     html = HTML.read_text(encoding="utf-8")
     lifecycle = LIFECYCLE.read_text(encoding="utf-8")
     importer = IMPORTER.read_text(encoding="utf-8")
+    mud_js = MUD_MODULE.read_text(encoding="utf-8")
+    mud_data = load(MUD_DATA, errors)
 
     if meta.get("id") != "adl-heat":
         errors.append("metadata id must remain adl-heat")
@@ -101,16 +105,34 @@ def main() -> int:
             errors.append(f"historical seed metadata says {expected} geocoded records but GeoJSON has {len(features)}")
 
     for token in (
-        "atlas-subdivisions-active","adl-heat-state-fill","adl-heat-incident-points",
+        "atlas-subdivisions-active","adl-heat-state-fill","adl-heat-state-outline","adl-heat-incident-points",
         "feature-state","ADL H.E.A.T. filters","not a general hate score or crime score",
         "__potatoAtlasAdlHeat","evidenceLayer","adlYear","adlType",
         "clickPriority:85","renderStateInspector","renderIncident",
+        "incidentTypeTokens","flatMap","retainPartition('USA')","releasePartition?.('USA')",
+        "State shading = filtered record count","data-adl-focus",
     ):
         require(js, token, "world-map/3d-adl-heat.js", errors)
-    for token in ("id=\"adlHeatLayer\"","ADL H.E.A.T. incidents","U.S. evidence"):
+    for token in ("id=\"adlHeatLayer\"","ADL H.E.A.T. incidents","U.S. evidence","id=\"mudBelowLayer\"","Mud / Below cases","state centroids"):
         require(html, token, "world-map/index.html", errors)
     for token in ("bindAdlHeatLayerControl","./3d-adl-heat.js","__potatoAtlasAdlHeat?.toggle"):
         require(lifecycle, token, "world-map/3d-panel-lifecycle.js", errors)
+    for token in ("bindMudBelowLayerControl","./3d-mud-below-us.js","__potatoAtlasMudBelow?.toggle"):
+        require(lifecycle, token, "world-map/3d-panel-lifecycle.js", errors)
+    for token in ("hydrateEvidenceLayersFromUrl","evidenceLayer","projectLayer","mud-below-us"):
+        require(lifecycle, token, "world-map/3d-panel-lifecycle.js", errors)
+    for token in ("project-symbolic-case","state-centroid","retainPartition('USA')","not an objective classification"):
+        require(mud_js, token, "world-map/3d-mud-below-us.js", errors)
+    if mud_data.get("type") != "FeatureCollection" or len(mud_data.get("features") or []) < 2:
+        errors.append("Mud / Below project overlay must retain at least two broad U.S. project case anchors")
+    if (mud_data.get("metadata") or {}).get("coordinate_policy") != "state-centroid-only":
+        errors.append("Mud / Below project overlay must preserve state-centroid-only coordinate policy")
+    for feature in mud_data.get("features") or []:
+        props = feature.get("properties") or {}
+        if props.get("anchor_precision") != "state-centroid":
+            errors.append(f"Mud / Below feature {feature.get('id')} must use state-centroid precision")
+        if "not" not in str(props.get("boundary","")).lower():
+            errors.append(f"Mud / Below feature {feature.get('id')} is missing attribution/privacy boundary")
     for token in ("official ADL H.E.A.T. CSV export","source_sha256","missing_geometry_count","csv.DictReader"):
         require(importer, token, "scripts/import_adl_heat.py", errors)
 
@@ -124,9 +146,13 @@ def main() -> int:
         result = subprocess.run([node, "--check", str(MODULE)], cwd=ROOT, capture_output=True, text=True)
         if result.returncode:
             errors.append("3d-adl-heat.js syntax check failed: " + (result.stderr.strip() or result.stdout.strip()))
+        mud_result = subprocess.run([node, "--check", str(MUD_MODULE)], cwd=ROOT, capture_output=True, text=True)
+        if mud_result.returncode:
+            errors.append("3d-mud-below-us.js syntax check failed: " + (mud_result.stderr.strip() or mud_result.stdout.strip()))
 
     print(f"ADL H.E.A.T. snapshot: {snap.get('status')} · {len(features)} geocoded records · {len(states)} state/DC summaries")
-    print("Runtime: canonical subdivision feature-state fill + lazy locality points + URL filters + source inspector")
+    print("Runtime: canonical subdivision feature-state fill + explicit state outlines + lazy locality points + URL filters + source inspector")
+    print("Project overlay: Mud / Below case anchors use state-centroid-only coordinates and attributed project terminology")
     print("Provenance: source-owned classifications · snapshot vintage visible · no generic hate score")
     if errors:
         print("ADL H.E.A.T. WORLD MAP VALIDATION FAILED")

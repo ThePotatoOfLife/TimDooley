@@ -16,6 +16,7 @@
 .home-hero{display:grid;grid-template-columns:minmax(280px,.88fr) minmax(320px,1.12fr);gap:48px;align-items:end;padding:8px 0 42px}
 .home-hero h1{font:400 clamp(60px,10vw,116px)/.82 var(--site-font-serif);letter-spacing:-.065em;margin:0}
 .home-intro{padding-bottom:7px}.home-intro .eyebrow{margin-bottom:11px}.home-guide{display:flex;flex-wrap:wrap;gap:6px;margin:-18px 0 34px}.home-guide a{border:1px solid var(--site-line);border-radius:999px;padding:7px 10px;text-decoration:none;color:var(--site-muted);font-size:10px}.home-guide a:hover,.home-guide a:focus-visible{color:var(--site-green);border-color:#60715b}.home-guide b{font-weight:700;color:#cdd5c9;margin-right:4px}
+.sections{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin:0 0 28px}.sections a{display:block;border:1px solid var(--site-line);border-radius:11px;padding:11px 12px;text-decoration:none;color:inherit;background:var(--site-panel)}.sections a:hover,.sections a:focus-visible{border-color:#60715b}.sections strong{display:block;font:400 17px var(--site-font-serif);color:var(--site-gold);margin-bottom:5px}.question-preview{display:block;color:var(--site-muted);font-size:9px;line-height:1.35;margin-top:2px}.secondary-threads{display:flex;gap:7px 12px;flex-wrap:wrap;margin:-13px 0 28px;padding-bottom:3px}.secondary-threads a{font-size:10px;color:var(--site-muted);text-decoration:none;border-bottom:1px solid #343b33}.rooms-corridor{padding:32px 0;border-top:1px solid var(--site-line)}.rooms-corridor-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:14px}.rooms-corridor-grid a{border:1px solid var(--site-line);border-radius:10px;padding:11px 12px;text-decoration:none;color:inherit;background:var(--site-panel)}.rooms-corridor-grid b{display:block;font:400 16px var(--site-font-serif);color:var(--site-gold)}.rooms-corridor-grid span{display:block;color:var(--site-muted);font-size:9px;line-height:1.35;margin-top:3px}@media(max-width:820px){.sections{grid-template-columns:repeat(2,minmax(0,1fr))}.rooms-corridor-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:620px){.sections,.rooms-corridor-grid{grid-template-columns:1fr}}
 .project-purpose{max-width:760px;font:400 clamp(20px,2.25vw,24px)/1.48 var(--site-font-serif);color:#d8ddd4;margin:0}
 .evidence-note{max-width:760px;color:var(--site-muted);font-size:12px;line-height:1.55;margin:14px 0 0}.evidence-note a{color:#aeb9aa}
 .home-section{padding:32px 0;border-top:1px solid var(--site-line)}
@@ -76,12 +77,12 @@
 </head>
 <body>
 <main class="page page--standard home-page" data-reader-surface="home">
-<nav class="page-nav home-nav" aria-label="Primary navigation"><a href="elevator/">Enter the Door / Elevator →</a> · <a href="house/">House</a><a href="rooms/">Rooms</a><a href="timeline/">Timeline</a><a href="works/">Works</a><a href="explore/">Explore</a><a href="context/source-authority/">Sources</a></nav>
+<nav class="page-nav home-nav" aria-label="Primary navigation"><a href="elevator/">Enter the Door / Elevator →</a> · <a href="house/">House</a><a href="rooms/">Rooms</a><a href="timeline/">Timeline</a><a href="works/">Works</a><a href="explore/">Explore</a><a href="https://thepotatooflife.github.io/TimDooley/context/source-authority/">Sources</a></nav>
 
 <header class="home-hero">
 <h1>POTATO<br>OF LIFE</h1>
 <div class="home-intro"><p class="eyebrow">Official archive · living project</p>
-<p class="project-purpose">A project-owned archive for The Potato of Life and Tim Dooley. The project’s own canon stays at the center; the House organizes knowledge around it; evidence, history, science, comparative traditions, world systems and creative work test what the structure can actually hold.</p>
+<p class="project-purpose">This is the official project-owned public archive for The Potato of Life, Tim Dooley, Potatoism and the Potatoverse. The project’s own canon stays at the center; the House organizes knowledge around it; evidence, history, science, comparative traditions, world systems and creative work test what the structure can actually hold.</p>
 <p class="evidence-note">Project self-description, autobiographical interpretation, comparative research and externally documented evidence remain distinct even when studied together. <a href="context/source-authority/">Sources &amp; evidence policy</a> · <a href="https://github.com/ThePotatoOfLife/TimDooley">Official repository</a>.</p></div>
 </header>
 <nav class="home-guide" aria-label="Homepage learning path">
@@ -89,6 +90,16 @@
 <a href="#project-motion"><b>Move</b> through the cycles</a>
 <a href="#reality-cases"><b>Test</b> against real systems</a>
 <a href="#doors-title"><b>Enter</b> the public Doors</a>
+</nav>
+<nav class="sections" aria-label="Main sections">
+<a href="tim-dooley/"><strong>Tim Dooley</strong><span class="question-preview">Who is Tim Dooley?</span><span class="question-preview">What changed over time?</span></a>
+<a href="religion/"><strong>Religion</strong><span class="question-preview">What does Potatoism claim?</span><span class="question-preview">How does it compare with traditions?</span></a>
+<a href="philosophy/"><strong>Philosophy</strong><span class="question-preview">What is the project trying to teach?</span><span class="question-preview">How are growth, truth and power tested?</span></a>
+<a href="science/"><strong>Science</strong><span class="question-preview">What can actually be tested?</span><span class="question-preview">Where do models stop and evidence begin?</span></a>
+<a href="world/"><strong>World</strong><span class="question-preview">How does this connect to real systems?</span><span class="question-preview">Where are the places, institutions and consequences?</span></a>
+</nav>
+<nav class="secondary-threads" aria-label="Cross-cutting reader threads">
+<a href="rooms/">Dwellings &amp; Rooms</a><a href="history/">History</a><a href="axis/">Axis</a><a href="research-lab/">Research Lab</a><a href="context/source-authority/">Sources</a><a href="world-map/">World Map</a>
 </nav>
 
 <section class="home-section" aria-labelledby="start-title">
@@ -162,7 +173,7 @@
 <div class="home-section-head"><div><p class="eyebrow">The project in motion</p><h2 id="motion-title">Two cycles now hold the work together</h2></div><p>The project is no longer only a collection of symbols and topics. It has operating loops for how knowledge is tested and how durable systems begin, reproduce, branch, produce consequences and return.</p></div>
 <div class="motion-grid">
 <article class="motion-card"><h3>Knowledge → correction</h3><p>Information is not promoted merely because it is interesting. It has to pass discernment, consequence, memory and repair.</p><div class="process-route" data-cycle="knowledge"><b>Knowledge</b><i>→</i><b>Discernment</b><i>→</i><b>Door</b><i>→</i><b>Tree / Garden</b><i>→</i><b>Fruit</b><i>→</i><b>History / Revision</b><i>→</i><b>Repair / Forge</b><i>→</i><b>Seed / Return</b></div></article>
-<article class="motion-card"><h3>Seed → living lineage</h3><p>A beginning becomes a Foundation only when later people or systems can reproduce, amend, branch or refound what was begun.</p><div class="process-route" data-cycle="generative"><b>Seed</b><i>→</i><b>Foundation</b><i>→</i><b>Reproduction</b><i>→</i><b>Branching</b><i>→</i><b>Fruit</b><i>→</i><b>Memory</b><i>→</i><b>Refoundation / Return</b></div></article>
+<article class="motion-card"><h3>Seed → living lineage</h3><p>A beginning becomes a Foundation only when later people or systems can reproduce, amend, branch or refound what was begun.</p><div class="process-route" data-cycle="generative"><b>Seed</b><i>→</i><b>Foundation</b><i>→</i><b>Root</b><i>→</i><b>Tree</b><i>→</i><b>Fruit</b><i>→</i><b>Memory</b><i>→</i><b>Return</b></div></article>
 </div>
 </section>
 
@@ -215,6 +226,7 @@
 
 <section class="home-section" id="foundation-rooms" aria-labelledby="foundation-rooms-title">
 <div class="home-section-head"><div><p class="eyebrow">Foundation Rooms</p><h2 id="foundation-rooms-title">A Foundation is a place in the House, with an origin in the World and a state today</h2></div><p>The main object is the Foundation Room itself. Its Door records when and where it first crossed into an operating form. Its House coordinates tell you which Room/circle owns it. Its Today face shows what still exists now. Root, Seed, sprout and fall remain available as genealogy underneath.</p></div>
+<p class="evidence-note"><b>Door · Place · House · Today</b> — four faces of each Foundation Room.</p>
 <div class="foundation-room-summary" id="homeFoundationRoomSummary"><span><b>52</b> Foundation Rooms</span><span>Loading map-ready origins…</span><span>Loading current snapshots…</span></div>
 <div class="foundation-room-grid" id="homeFoundationRooms"><article class="foundation-room-card"><h3>Loading Foundation Rooms…</h3></article></div>
 <p class="evidence-note">House coordinates and Earth coordinates are separate. A Foundation can sit in an upper/source, lower/manifestation or middle/overlap region while its Door has a physical origin in a city, building, route or distributed network. <a href="timeline/foundations/#foundation-rooms">Open all Foundation Rooms →</a></p>
@@ -269,6 +281,20 @@
 <a class="public-door" href="science/"><span class="door-no">04</span><strong>Science</strong><span>Models, mathematics, biology, evidence, falsifiability and research programmes.</span><span class="door-arrow">→</span></a>
 <a class="public-door" href="world/"><span class="door-no">05</span><strong>World</strong><span>Countries, institutions, politics, economics, infrastructure and dependencies.</span><span class="door-arrow">→</span></a>
 </nav>
+</section>
+
+<section class="rooms-corridor" aria-labelledby="rooms-corridor-title">
+<div class="home-section-head"><div><p class="eyebrow">House directory</p><h2 id="rooms-corridor-title">Explore the Dwellings &amp; Rooms</h2></div><p>Move from the five broad Doors into the specialist subjects that actually own or test the material. Culture includes subculture, cult and high-control culture analysis as named research domains rather than hidden labels for people.</p></div>
+<div class="rooms-corridor-grid">
+<a href="context/culture/"><b>Culture &amp; Information</b><span>Subculture, media, attention, cult/high-control analysis and mediation.</span></a>
+<a href="history/"><b>History &amp; Memory</b><span>Occurrence, attestation, reception, recovery and revision.</span></a>
+<a href="politics/"><b>Politics</b><span>Institutions, geopolitical positions and documented political systems.</span></a>
+<a href="law/"><b>Law</b><span>Cases, rights, regulation, jurisdiction and legal source work.</span></a>
+<a href="economy/"><b>Economy</b><span>Finance, trade, ownership, labour, infrastructure and dependencies.</span></a>
+<a href="world-systems/"><b>World Systems</b><span>Institutional and geographic systems that cross country boundaries.</span></a>
+<a href="context/source-authority/"><b>Sources &amp; Evidence</b><span>Provenance, evidence classes, uncertainty and source authority.</span></a>
+<a href="rooms/"><b>All Rooms</b><span>Open the full Dwelling and nested-Room directory.</span></a>
+</div>
 </section>
 
 <section class="home-section archive-band" id="cross-cutting-views" aria-labelledby="archive-title">

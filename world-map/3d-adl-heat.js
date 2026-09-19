@@ -11,6 +11,7 @@ const SUMMARY_URL = '../data/world-incidents/adl-heat/state-summary.json';
 const META_URL = '../data/world-incidents/adl-heat/metadata.json';
 const STATE_SOURCE = 'atlas-subdivisions-active';
 const STATE_LAYER = 'adl-heat-state-fill';
+const STATE_OUTLINE = 'adl-heat-state-outline';
 const POINT_SOURCE = 'adl-heat-incidents';
 const POINT_LAYER = 'adl-heat-incident-points';
 const POINT_HIT = 'adl-heat-incident-hit';
@@ -34,14 +35,17 @@ const fmt = value => new Intl.NumberFormat('en').format(Number(value) || 0);
 function yearOptions() {
   return [...new Set((incidents?.features || []).map(f => Number(f?.properties?.year)).filter(Number.isFinite))].sort((a,b)=>b-a);
 }
+function incidentTypeTokens(value) {
+  return String(value || '').split(';').map(token => token.trim()).filter(Boolean);
+}
 function typeOptions() {
-  return [...new Set((incidents?.features || []).map(f => String(f?.properties?.incident_type || '').trim()).filter(Boolean))].sort();
+  return [...new Set((incidents?.features || []).flatMap(feature => incidentTypeTokens(feature?.properties?.incident_type)))].sort();
 }
 function activeFeatures() {
   return (incidents?.features || []).filter(feature => {
     const p = feature.properties || {};
     const yearOk = selectedYear === 'all' || String(p.year) === String(selectedYear);
-    const typeOk = selectedType === 'all' || String(p.incident_type || '').split(';').map(x=>x.trim()).includes(selectedType);
+    const typeOk = selectedType === 'all' || incidentTypeTokens(p.incident_type).includes(selectedType);
     return yearOk && typeOk;
   });
 }
@@ -95,10 +99,12 @@ function updateUrl() {
 }
 function setLayerVisibility(show) {
   const visibility = show ? 'visible' : 'none';
-  for (const id of [STATE_LAYER, POINT_LAYER, POINT_HIT]) {
+  for (const id of [STATE_LAYER, STATE_OUTLINE, POINT_LAYER, POINT_HIT]) {
     if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visibility);
   }
-  document.getElementById('adlHeatLayer')?.classList.toggle('active', show);
+  const button = document.getElementById('adlHeatLayer');
+  button?.classList.toggle('active', show);
+  button?.setAttribute('aria-pressed', show ? 'true' : 'false');
 }
 function applyFilters() {
   filtered = { type:'FeatureCollection', features:activeFeatures() };
@@ -147,6 +153,8 @@ function renderControls() {
       ${types.map(type => `<option value="${esc(type)}"${type===selectedType?' selected':''}>${esc(type)}</option>`).join('')}
     </select>
     <div class="boundary"><b>${fmt(filtered.features.length)} records shown</b><br>${esc(sourceStatusText())}<br>Counts are records in this ADL-derived snapshot, not a general hate score or crime score.</div>
+    <div class="muted">State shading = filtered record count. Gold dots = geocoded source records; zoom in for individual incidents.</div>
+    <button type="button" data-adl-focus>Focus U.S.</button>
     <button type="button" data-adl-source>Source / methodology</button>`;
   surface.querySelector('[data-adl-year]')?.addEventListener('change', event => {
     selectedYear = event.target.value || 'all';
@@ -155,6 +163,9 @@ function renderControls() {
   surface.querySelector('[data-adl-type]')?.addEventListener('change', event => {
     selectedType = event.target.value || 'all';
     applyFilters();
+  });
+  surface.querySelector('[data-adl-focus]')?.addEventListener('click', () => {
+    try { map.fitBounds([[-125,24],[-66,50]], { padding:60, duration:550, maxZoom:4.8 }); } catch {}
   });
   surface.querySelector('[data-adl-source]')?.addEventListener('click', () => renderDatasetInspector());
 }
@@ -237,6 +248,14 @@ function installLayers() {
     id:STATE_LAYER,type:'fill',source:STATE_SOURCE,
     paint:{'fill-color':stateColorExpression(),'fill-opacity':1}
   }, before);
+  if (!map.getLayer(STATE_OUTLINE)) map.addLayer({
+    id:STATE_OUTLINE,type:'line',source:STATE_SOURCE,
+    paint:{
+      'line-color':'#e3ece6',
+      'line-opacity':['interpolate',['linear'],['zoom'],3.2,0.52,5,0.78,7,0.92],
+      'line-width':['interpolate',['linear'],['zoom'],3.2,0.8,5,1.15,7,1.65]
+    }
+  }, map.getLayer('atlas-subdivision-label') ? 'atlas-subdivision-label' : undefined);
   if (!map.getLayer(POINT_LAYER)) map.addLayer({
     id:POINT_LAYER,type:'circle',source:POINT_SOURCE,minzoom:4.2,
     paint:{
@@ -269,7 +288,6 @@ async function ensureSubdivisions() {
   }
   if (!window.__potatoAtlasSubdivisions) throw new Error('Subdivision runtime unavailable.');
   await window.__potatoAtlasSubdivisions.loadPartition('USA');
-  await window.__potatoAtlasSubdivisions.refresh?.();
 }
 async function loadData() {
   if (loaded) return;
@@ -287,7 +305,15 @@ async function loadData() {
 }
 async function setEnabled(next) {
   await loadData();
-  enabled = Boolean(next);
+  const requested = Boolean(next);
+  if (requested) {
+    if (window.__potatoAtlasSubdivisions?.retainPartition) {
+      await window.__potatoAtlasSubdivisions.retainPartition('USA');
+    } else {
+      await window.__potatoAtlasSubdivisions?.refresh?.();
+    }
+  }
+  enabled = requested;
   setLayerVisibility(enabled);
   applyFilters();
   renderControls();
@@ -295,6 +321,8 @@ async function setEnabled(next) {
     try {
       map.fitBounds([[-125,24],[-66,50]], { padding:60, duration:550, maxZoom:4.8 });
     } catch {}
+  } else {
+    await window.__potatoAtlasSubdivisions?.releasePartition?.('USA');
   }
   return enabled;
 }
