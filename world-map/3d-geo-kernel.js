@@ -110,6 +110,37 @@ function haversineDistanceKm(a, b) {
   return 2 * EARTH_MEAN_RADIUS_KM * Math.asin(Math.min(1, Math.sqrt(h)));
 }
 
+function destinationPointKm(origin, bearingDegrees, distanceKm) {
+  const [lng, lat] = validatedPoint(origin, 'origin');
+  const bearing = finiteNumber(bearingDegrees, 'bearing');
+  const distance = finiteNumber(distanceKm, 'distance');
+  if (distance < 0) throw new RangeError('distance must be non-negative');
+  const toRadians = degrees => degrees * Math.PI / 180;
+  const toDegrees = radians => radians * 180 / Math.PI;
+  const angular = distance / EARTH_MEAN_RADIUS_KM;
+  const theta = toRadians(bearing);
+  const phi1 = toRadians(lat);
+  const lambda1 = toRadians(lng);
+  const sinPhi1 = Math.sin(phi1);
+  const cosPhi1 = Math.cos(phi1);
+  const sinAngular = Math.sin(angular);
+  const cosAngular = Math.cos(angular);
+  const phi2 = Math.asin(
+    sinPhi1 * cosAngular + cosPhi1 * sinAngular * Math.cos(theta)
+  );
+  const lambda2 = lambda1 + Math.atan2(
+    Math.sin(theta) * sinAngular * cosPhi1,
+    cosAngular - sinPhi1 * Math.sin(phi2)
+  );
+  return [normalizeLongitude(toDegrees(lambda2)), toDegrees(phi2)];
+}
+
+function wrappedSegmentCoordinates(a, b) {
+  const [lng1, lat1] = validatedPoint(a, 'segment start');
+  const [lng2, lat2] = validatedPoint(b, 'segment end');
+  return [[lng1, lat1], [unwrapLongitude(lng2, lng1), lat2]];
+}
+
 const api = Object.freeze({
   EARTH_MEAN_RADIUS_KM,
   normalizeLongitude,
@@ -118,6 +149,8 @@ const api = Object.freeze({
   minimalLongitudeInterval,
   antimeridianAwareBounds,
   haversineDistanceKm,
+  destinationPointKm,
+  wrappedSegmentCoordinates,
 });
 
 if (typeof window !== 'undefined') window.__potatoAtlasGeo = api;
@@ -130,4 +163,6 @@ export {
   minimalLongitudeInterval,
   antimeridianAwareBounds,
   haversineDistanceKm,
+  destinationPointKm,
+  wrappedSegmentCoordinates,
 };
