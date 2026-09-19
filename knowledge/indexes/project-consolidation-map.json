@@ -1,7 +1,7 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.18.0",
+  "version": "1.19.0",
   "updated": "2026-09-19",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
@@ -512,6 +512,49 @@
       "potato-biology: connect organism-cycle stages to empirical growth/storage cases without turning metaphor into biology",
       "model-testing: convert more project analogies into explicit competing-model tests and negative cases",
       "prune low-yield duplicate specialist atlases only after promoted laws and provenance are accounted for"
+    ]
+  },
+  "reader_population_pattern": {
+    "id": "local-concrete-grounding",
+    "status": "implemented first on Culture reader",
+    "problem": "A page can contain extensive framework language while requiring the reader to travel too far before encountering named objects, measurable flows, dated events or worked mechanisms.",
+    "rule": "Do not solve thin actuality by hand-pasting more prose into the page. Keep concrete records in canonical owners/source ledgers and project compact case blocks beside the abstract section they explain.",
+    "sequence": [
+      "abstract concept or mechanism",
+      "2–6 contrastive concrete cases immediately nearby",
+      "source/evidence links visible in the local block",
+      "deep canonical field later on the page",
+      "specialist/deep reader for full records"
+    ],
+    "quality_tests": [
+      "Every major mechanism should answer 'what is an actual example?' without forcing a long scroll.",
+      "Cases must be contrastive enough to prevent one example from becoming the definition.",
+      "Numbers, dates, legal status, institutional role and uncertainty should appear when the concept naturally depends on them.",
+      "Reader projections must not become new data owners.",
+      "A page should expose counterexamples and non-pathological cases when studying failure/control dynamics.",
+      "Repeated cases are acceptable only when they perform a different analytical job at each location."
+    ],
+    "culture_implementation": {
+      "owner": "knowledge/culture/concrete-culture-field-atlas.json",
+      "source_ledger": "knowledge/culture/concrete-culture-source-ledger.json",
+      "projector": "scripts/project_public_culture_field.py",
+      "validator": "scripts/test_concrete_culture_field.py",
+      "built_validator": "scripts/validate_public_navigation.py",
+      "local_groundings": [
+        "formation-in-practice",
+        "recognizability-in-practice",
+        "control-in-practice",
+        "tribunal-role-lock-in-practice",
+        "classification-in-practice",
+        "infrastructure-in-practice"
+      ]
+    },
+    "next_candidate_pages": [
+      "economy/index.html — connect stock/flow/debt/fiscal concepts to named budgets, balance sheets, instruments and dated cases",
+      "world-systems/index.html — connect dependency/capability language to real infrastructure and cross-border chains",
+      "science/index.html — connect formal operators to actual tests, measurements, failed models and discriminating observations",
+      "religion/index.html — connect comparative categories to primary texts, institutions, dates and distinct historical traditions",
+      "below/index.html — connect intelligence/shadow categories to evidence-typed public cases and explicit non-equivalence"
     ]
   }
 }
