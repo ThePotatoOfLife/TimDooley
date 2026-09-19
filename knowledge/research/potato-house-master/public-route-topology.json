@@ -1,6 +1,6 @@
 {
-  "version": "1.6.0",
-  "updated": "2026-09-18",
+  "version": "1.7.0",
+  "updated": "2026-09-19",
   "purpose": "Route-topology bridge for active public surfaces; navigation/migration classification only, not substantive knowledge ownership. House, Paths and Living Axis are structural projections over the canonical Rooms, not additional fact owners.",
   "room_registry": "data/house/rooms.json",
   "public_surface_registry": "data/house/public-surfaces.json",
@@ -235,6 +235,21 @@
       "compatibility_routes": []
     },
     {
+      "surface_id": "tim-claims",
+      "surface_type": "guide",
+      "canonical_route": "/tim-dooley/claims/",
+      "primary_hub_id": "tim",
+      "room_ids": [
+        "potatoverse-canon",
+        "time-history",
+        "archive-sources",
+        "culture-information"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
       "surface_id": "collection",
       "surface_type": "guide",
       "canonical_route": "/corporium/",
@@ -264,6 +279,23 @@
       "specialist_view": true,
       "migration_status": "current",
       "compatibility_routes": []
+    },
+    {
+      "surface_id": "great-book",
+      "surface_type": "guide",
+      "canonical_route": "/great-book/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "works",
+        "potatoverse-canon",
+        "time-history",
+        "archive-sources"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": [
+        "/great-book.html"
+      ]
     },
     {
       "surface_id": "interpretive-justice",
