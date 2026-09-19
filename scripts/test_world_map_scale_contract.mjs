@@ -5,6 +5,7 @@ import { createScaleRuntime } from '../world-map/3d-scale.js';
 const contract = JSON.parse(fs.readFileSync(new URL('../data/world-map-scale-contract.json', import.meta.url), 'utf8'));
 const scale = createScaleRuntime(contract);
 const lifecycle = fs.readFileSync(new URL('../world-map/3d-panel-lifecycle.js', import.meta.url), 'utf8');
+const app = fs.readFileSync(new URL('../world-map/3d-app.js', import.meta.url), 'utf8');
 
 assert.equal(scale.bandForZoom(0), 'world');
 assert.equal(scale.bandForZoom(2.6), 'macro-region');
@@ -21,6 +22,11 @@ assert.equal(scale.threshold('places-detail', 'load'), 4.2);
 assert.equal(scale.threshold('places-detail', 'render'), 4.2);
 assert.equal(scale.threshold('places-detail', 'label'), 5.0);
 assert.equal(scale.threshold('places-detail', 'interact'), 4.2);
+assert.equal(scale.threshold('country-hubs', 'render'), 3.2);
+assert.equal(scale.threshold('country-hubs', 'label'), 4.0);
+assert.equal(scale.threshold('semantic-interior', 'render'), 3.6);
+assert.equal(scale.threshold('semantic-interior', 'label'), 4.6);
+assert.equal(scale.threshold('country-relations', 'render'), 2.0);
 
 // Raw lookup reports the mathematical band without memory.
 assert.equal(scale.bandForZoom(4.21), 'country');
@@ -51,5 +57,16 @@ assert.ok(lifecycle.includes("capabilityActive('places-detail', 'load'"), 'Place
 assert.ok(lifecycle.includes("capabilityActive('subdivisions', 'load'"), 'Subdivision promotion must use the scale contract');
 assert.ok(!lifecycle.includes('map.getZoom() < 4.2'), 'Places load threshold must not remain duplicated in panel lifecycle');
 assert.ok(!lifecycle.includes('map.getZoom() < 3.4'), 'Subdivision load threshold must not remain duplicated in panel lifecycle');
+for (const token of [
+  "scaleRuntime.threshold('country-hubs', 'render')",
+  "scaleRuntime.threshold('country-hubs', 'label')",
+  "scaleRuntime.threshold('semantic-interior', 'render')",
+  "scaleRuntime.threshold('semantic-interior', 'label')",
+  "scaleRuntime.threshold('country-relations', 'render')",
+  'scaleRuntime.bandForZoom(map.getZoom())',
+]) assert.ok(app.includes(token), `core renderer must consume shared scale marker: ${token}`);
+for (const legacy of ['minzoom:3.2','minzoom:3.6','minzoom:4.6','map.getZoom()<3.2']) {
+  assert.ok(!app.includes(legacy), `core renderer must not retain raw browsing threshold: ${legacy}`);
+}
 
 console.log('WORLD MAP SCALE CONTRACT REGRESSION PASSED');
