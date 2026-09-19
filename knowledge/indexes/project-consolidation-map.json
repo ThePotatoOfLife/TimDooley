@@ -1,7 +1,7 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.20.0",
+  "version": "1.21.0",
   "updated": "2026-09-19",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
@@ -602,6 +602,59 @@
       "Below: add one or two worked public case-bundle examples only where provenance/legal-status separation can be demonstrated safely.",
       "World/Map: project worked capability/dependency chains into spatial Trace rather than duplicate them as prose.",
       "Works: link project cards to durable artifact IDs/paths as recovery improves."
+    ]
+  },
+  "religion_below_spatial_world_wave_2026_09_19": {
+    "status": "implemented",
+    "purpose": "Turn three previously label-heavy domains into inspectable systems with objects, timelines, mechanisms, evidence, conflicts and consequences.",
+    "religion": {
+      "owner": "data/religious-foundations/records.json",
+      "reader": "religion/index.html",
+      "gains": [
+        "Judaism presented as long-duration covenant/text/institution history with 70 CE Temple rupture and rabbinic continuity",
+        "Christianity presented as 1st-century movement → community/text development → 325 CE creedal consolidation",
+        "Islam presented as 7th-century revelation/community → 622 CE Hijra → Qur'anic/legal/institutional continuity",
+        "each case includes concrete objects, internal question, historical timeline and explicit cross-tradition comparison limit"
+      ],
+      "rule": "own tradition → dated development → source corpus → institution/practice → disagreement → comparative mapping"
+    },
+    "below": {
+      "owner": "knowledge/core/below-intelligence-shadow-observatory.json",
+      "reader": "below/index.html",
+      "gains": [
+        "NXIVM/Raniere worked case separates organization, participant roles, high-control mechanisms, conviction and sentencing",
+        "EncroChat worked case separates encryption/service infrastructure, criminal use, intercepted evidence, arrests/prosecutions and individual legal status",
+        "both cases carry provenance, uncertainty, victim/privacy safeguards, mechanisms, consequences and repair/disruption outcomes"
+      ],
+      "rule": "secrecy/access is never promoted to guilt; entity, claim, relationship, evidence and adjudication remain separate"
+    },
+    "spatial_world": {
+      "owners": [
+        "data/world-map-gateways.json",
+        "knowledge/world/geography-place-state-boundary-atlas.json",
+        "knowledge/world/country-capability-dependency-atlas.json"
+      ],
+      "readers": [
+        "world/index.html",
+        "world-map/index.html"
+      ],
+      "gains": [
+        "gateway impact stories for Danish Straits, Suez/SUMED, Bab el-Mandeb and Malacca",
+        "each gateway exposes spatial trace, observed flow, mechanism, constraint, alternatives and consequence questions",
+        "World gateway teaches place → association → explicit dependency → alternative → consequence",
+        "World Map inspector offers direct impact-trace entry points instead of passive map labels"
+      ],
+      "rule": "association/context is not causal dependency; dependency edges and alternatives must be explicitly represented and sourced"
+    },
+    "validation": [
+      "scripts/validate_public_navigation.py guards the new public sections",
+      "scripts/validate_world_map_impact_trace.py requires gateway impact-story completeness"
+    ],
+    "next_targets": [
+      "Religion: add one non-Abrahamic worked contrast where primary historical objects are already strong enough",
+      "Below: add a public case with dismissal/clearing or strong counterevidence so adverse and corrective status receive equal persistence",
+      "World Map: connect gateway impact stories to infrastructure assets in the inspector and expose dated change comparisons where source data supports them",
+      "World gateway: project one country capability/dependency chain end-to-end without inventing a country score"
     ]
   }
 }
