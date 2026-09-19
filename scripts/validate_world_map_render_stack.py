@@ -48,7 +48,7 @@ def main() -> int:
         RENDER_STACK,
         (
             "__potatoAtlasRenderStack", "register", "unregister", "reconcile", "state", "slotOrder",
-            "physical-surface", "physical-water", "physical-line", "geography-context", "context-network", "selection-emphasis",
+            "physical-surface", "physical-water", "physical-line", "geography-context", "subnational-fill", "context-network", "selection-emphasis",
             "moveLayer", "potato-atlas-render-stack-change", "queueMicrotask",
             "potato-atlas-module-ready", "localeCompare",
             "function styleSnapshot", "orderIndex", "renderStackStyleSnapshots",
@@ -64,7 +64,7 @@ def main() -> int:
         if forbidden in render:
             errors.append(f"render stack must not own map data/paint/style lifecycle or arbitrary z-index state: found {forbidden}")
     if render:
-        expected_order = ("physical-surface", "physical-water", "physical-line", "geography-context", "context-network", "selection-emphasis")
+        expected_order = ("physical-surface", "physical-water", "physical-line", "geography-context", "subnational-fill", "context-network", "selection-emphasis")
         positions = [render.find(repr(slot).replace('"', "'")) for slot in expected_order]
         if any(position < 0 for position in positions) or positions != sorted(positions):
             errors.append("render stack must declare canonical slot order bottom-to-top")
