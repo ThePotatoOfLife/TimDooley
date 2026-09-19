@@ -1,5 +1,5 @@
 {
-  "version": "2.4.0",
+  "version": "2.5.0",
   "updated": "2026-09-19",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -223,6 +223,11 @@
       "concern": "spatial Door / Axis elevator projection",
       "owner": "data/house/elevator-spatial-projection.json",
       "rule": "Projects canonical Dwellings and plane landmarks into a reconfigurable 3D rotunda. Graph adjacency and local-center behavior are authoritative; visual Euclidean coordinates are replaceable presentation."
+    },
+    {
+      "concern": "reader journey memory through spatial House",
+      "owner": "data/house/journey-thread-contract.json",
+      "rule": "Defines private browser-local path memory, bead types, restoration behavior and journey visualization. Journey state is navigation only; it is not canon, analytics, evidence or user profiling."
     }
   ],
   "resolver_order": [
