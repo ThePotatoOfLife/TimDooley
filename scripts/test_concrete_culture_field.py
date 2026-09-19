@@ -20,6 +20,7 @@ REQUIRED_TOP_LEVEL = (
     "pathways",
     "case_groups",
     "public_projection",
+    "topic_groundings",
 )
 REQUIRED_CASE_IDS = {
     "loyal-to-familia",
@@ -37,6 +38,13 @@ REQUIRED_CASE_IDS = {
     "mastodon-activitypub",
 }
 REQUIRED_HUMAN_CASE_IDS = {"ghyslain-raza-star-wars-kid"}
+REQUIRED_GROUNDING_IDS = {
+    "formation-in-practice",
+    "control-in-practice",
+    "tribunal-role-lock-in-practice",
+    "classification-in-practice",
+    "infrastructure-in-practice",
+}
 REQUIRED_EXPANSION_FIELDS = {
     "organization-for-transformative-works-ao3": {"governance_model", "infrastructure_model"},
     "burning-man": {"governance_model", "correction_mechanisms"},
@@ -147,6 +155,52 @@ def validate_expansion_fields(atlas: dict, errors: list[str]) -> None:
             errors.append(f"formation {case_id} missing expansion fields: {missing}")
 
 
+def validate_topic_groundings(atlas: dict, errors: list[str]) -> None:
+    collections = {
+        "formation": "formations",
+        "human_case": "human_cases",
+        "event": "events",
+        "flow": "flows",
+        "relationship": "relationships",
+        "pathway": "pathways",
+    }
+    indexes = {
+        kind: {
+            item.get("id")
+            for item in atlas.get(collection, [])
+            if isinstance(item, dict) and isinstance(item.get("id"), str)
+        }
+        for kind, collection in collections.items()
+    }
+    rows = [x for x in atlas.get("topic_groundings", []) if isinstance(x, dict)]
+    ids = {x.get("id") for x in rows}
+    missing = sorted(REQUIRED_GROUNDING_IDS - ids)
+    if missing:
+        errors.append(f"atlas missing required topic groundings: {missing}")
+    for row in rows:
+        gid = row.get("id")
+        if not row.get("anchor_before"):
+            errors.append(f"topic grounding {gid} missing anchor_before")
+        if not row.get("summary"):
+            errors.append(f"topic grounding {gid} missing summary")
+        cards = row.get("cards", [])
+        if not isinstance(cards, list) or len(cards) < 2:
+            errors.append(f"topic grounding {gid} must contain at least two concrete cards")
+            continue
+        for card in cards:
+            if not isinstance(card, dict):
+                errors.append(f"topic grounding {gid} contains invalid card")
+                continue
+            kind = card.get("object_type")
+            oid = card.get("object_id")
+            if kind not in indexes:
+                errors.append(f"topic grounding {gid} uses unknown object_type {kind}")
+            elif oid not in indexes[kind]:
+                errors.append(f"topic grounding {gid} points to missing {kind} {oid}")
+            if not card.get("point"):
+                errors.append(f"topic grounding {gid}/{oid} missing concrete point")
+
+
 def validate_projector(errors: list[str]) -> None:
     if not PROJECTOR.exists():
         errors.append("missing public projector: scripts/project_public_culture_field.py")
@@ -159,11 +213,13 @@ def validate_projector(errors: list[str]) -> None:
     spec.loader.exec_module(module)
     render = getattr(module, "render_concrete_culture_field", None)
     inject = getattr(module, "inject_concrete_culture_field", None)
-    if not callable(render) or not callable(inject):
-        errors.append("Culture projector must expose render_concrete_culture_field and inject_concrete_culture_field")
+    render_grounding = getattr(module, "render_topic_grounding", None)
+    inject_groundings = getattr(module, "inject_topic_groundings", None)
+    if not callable(render) or not callable(inject) or not callable(render_grounding) or not callable(inject_groundings):
+        errors.append("Culture projector must expose concrete-field and topic-grounding render/inject functions")
         return
 
-    atlas = {"formations": [], "human_cases": [], "events": [], "flows": [], "relationships": [], "pathways": [], "case_groups": [], "public_projection": {}}
+    atlas = {"formations": [], "human_cases": [], "events": [], "flows": [], "relationships": [], "pathways": [], "case_groups": [], "public_projection": {}, "topic_groundings": []}
     rendered = render(atlas, {})
     required = (
         'data-culture-field',
@@ -182,13 +238,38 @@ def validate_projector(errors: list[str]) -> None:
         if marker not in rendered:
             errors.append(f"Culture projector output missing marker: {marker}")
 
-    base = "<main class=\"culture-page\"><h2>Culture is multidimensional</h2></main>"
-    once = inject(base, rendered)
+    base = (
+        '<main class="culture-page">'
+        '<h2>From scene to canon</h2>'
+        '<h2>When conflict becomes culture</h2>'
+        '<h2>Reputation, narrative capture and correction</h2>'
+        '<h2>Cultural infrastructure</h2>'
+        '<h2>Culture is multidimensional</h2>'
+        '</main>'
+    )
+    grounding_fixture = {
+        "topic_groundings": [
+            {
+                "id": "fixture",
+                "anchor_before": "From scene to canon",
+                "title": "Fixture",
+                "summary": "Concrete fixture",
+                "cards": [],
+            }
+        ]
+    }
+    grounded_once = inject_groundings(base, grounding_fixture, {})
+    grounded_twice = inject_groundings(grounded_once, grounding_fixture, {})
+    if 'data-culture-grounding="fixture"' not in grounded_once:
+        errors.append("Culture projector did not inject topic grounding beside its theory anchor")
+    if grounded_once != grounded_twice:
+        errors.append("Culture topic-grounding injection must be idempotent")
+    once = inject(grounded_once, rendered)
     twice = inject(once, rendered)
-    if once == base:
+    if once == grounded_once:
         errors.append("Culture projector did not inject before the stable Culture anchor")
     if once != twice:
-        errors.append("Culture projector injection must be idempotent")
+        errors.append("Culture concrete-field injection must be idempotent")
 
 
 def main() -> int:
@@ -215,6 +296,7 @@ def main() -> int:
         validate_privacy_and_types(atlas, errors)
         validate_money_flows(atlas, errors)
         validate_expansion_fields(atlas, errors)
+        validate_topic_groundings(atlas, errors)
 
     if atlas and ledger:
         validate_source_refs(atlas, ledger, errors)
