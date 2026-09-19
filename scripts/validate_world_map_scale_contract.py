@@ -28,6 +28,8 @@ EXPECTED_CAPABILITIES = {
     "country-hubs": {"load": 0, "render": 3.2, "label": 4.0, "interact": 3.2},
     "semantic-interior": {"load": 3.2, "render": 3.6, "label": 4.6, "interact": 3.6},
     "country-relations": {"load": 0, "render": 2.0, "label": 2.0, "interact": 2.0},
+    "physical-water-detail": {"load": 3.4, "render": 3.4, "label": 3.4, "interact": 3.4},
+    "hydrology": {"load": 4.0, "render": 4.0, "label": 4.0, "interact": 4.0},
 }
 
 
@@ -113,7 +115,7 @@ def main() -> int:
     print("- bands: world → macro-region → region → country → subnational → local")
     print("- phases: load / render / label / interact")
     print("- hysteresis: 0.12 zoom")
-    print("- consumers: core country browsing + Places detail + subdivisions promotion")
+    print("- consumers: core browsing + Places + subdivisions + Physical Water + Hydrology")
     print(f"Errors: {len(errors)}")
     if errors:
         print("WORLD MAP SCALE CONTRACT VALIDATION FAILED")
