@@ -16,6 +16,7 @@ function snapshot() {
     projection: window.__potatoAtlasProjection?.get?.() || null,
     physical: window.__potatoAtlasPhysicalLayers?.active?.() || [],
     overlays: window.__potatoAtlasSpatialOverlays?.active?.() || [],
+    evidence: window.__potatoAtlasEvidenceLayers?.active?.() || [],
     places: window.__potatoAtlasPlaces?.current?.()?.properties?.id || url.searchParams.get('place') || null,
     subdivision: window.__potatoAtlasSubdivisions?.selected || url.searchParams.get('subdivision') || null,
     selection: window.__potatoAtlasSelection?.current || null,
@@ -63,6 +64,10 @@ async function reset() {
   await runStep('analytical', async () => window.__potatoAtlasCompositor?.reset?.(), cleared, failed);
   await runStep('physical', async () => window.__potatoAtlasPhysicalLayers?.reset?.(), cleared, failed);
   await runStep('geography', async () => window.__potatoAtlasSpatialOverlays?.reset?.(), cleared, failed);
+  await runStep('evidence', async () => {
+    if (window.__potatoAtlasEvidenceLayers?.reset) await window.__potatoAtlasEvidenceLayers.reset();
+    else clearUrlState(['evidenceLayer','adlYear','adlType']);
+  }, cleared, failed);
   await runStep('places', async () => {
     if (window.__potatoAtlasPlaces?.clear) window.__potatoAtlasPlaces.clear();
     else clearUrlState(['place']);
