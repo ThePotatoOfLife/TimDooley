@@ -22,6 +22,7 @@ import validate_world_map_physical_water as physical_water
 import validate_world_map_subdivisions as subdivisions
 import validate_world_map_search_race as search_race
 import validate_world_map_browse_performance as browse_performance
+import validate_world_map_visual_channels as visual_channels
 
 validator.HTML = Path(__file__).resolve().parents[1] / "world-map" / "index.html"
 
@@ -112,6 +113,9 @@ if __name__ == "__main__":
     if status:
         raise SystemExit(status)
     status = search_race.main()
+    if status:
+        raise SystemExit(status)
+    status = visual_channels.main()
     if status:
         raise SystemExit(status)
     raise SystemExit(browse_performance.main())
