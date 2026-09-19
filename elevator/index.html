@@ -45,6 +45,10 @@ linear-gradient(to bottom,rgba(12,16,12,.96),rgba(5,8,6,.995))}
 
 .door.is-wormhole a{border-color:#6f5d82;background:radial-gradient(circle at 50% 20%,rgba(90,68,110,.22),transparent 34%),linear-gradient(180deg,rgba(31,27,38,.97),rgba(10,9,13,.99))}
 .door.is-wormhole small{color:#c6acd8}.door.is-wormhole a:after{content:"cross-dwelling";position:absolute;top:12px;left:50%;transform:translateX(-50%);font:700 7px var(--site-font-sans);letter-spacing:.09em;text-transform:uppercase;color:#9c86ad}
+
+.journey{margin:14px 0 0;border:1px solid var(--site-line);border-radius:14px;padding:10px 12px;background:rgba(255,255,255,.015)}
+.journey-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:8px}.journey-head b{font:400 17px var(--site-font-serif);color:var(--site-gold)}.journey-actions{display:flex;gap:6px;flex-wrap:wrap}.journey-actions button{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:5px 8px;font-size:8px;cursor:pointer}
+.journey-track{display:flex;gap:0;align-items:center;overflow-x:auto;padding-bottom:2px;scrollbar-width:thin}.journey-bead{display:flex;align-items:center;white-space:nowrap}.journey-bead:after{content:"—";color:var(--site-faint);margin:0 5px}.journey-bead:last-child:after{display:none}.journey-bead button{appearance:none;border:1px solid var(--site-line);background:rgba(5,8,6,.6);color:var(--site-muted);border-radius:999px;padding:5px 8px;font-size:8px;cursor:pointer}.journey-bead.current button{color:var(--site-green);border-color:#61745b}.journey-bead.read button{border-style:dashed}
 @media(max-width:780px){.elevator-head{grid-template-columns:1fr}.level-controls{justify-content:flex-start}.viewport{min-height:520px}.door{--door-w:145px;--door-h:220px}.door{transform:rotateY(var(--angle)) translateZ(210px) rotateY(calc(var(--angle)*-1))}.door strong{font-size:17px}.door span{display:none}.axis-car{width:125px;height:125px}.floor-disc{width:92vw}.local-panel{grid-template-columns:1fr}.local-controls{justify-content:flex-start}.explain-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.rotunda,.door{transition:none}}
 </style>
@@ -52,7 +56,7 @@ linear-gradient(to bottom,rgba(12,16,12,.96),rgba(5,8,6,.995))}
 <body><main class="elevator-page"><div class="elevator-wrap">
 <nav class="elevator-nav"><a href="../">← Home</a><a href="../house/">House</a><a href="../rooms/">Rooms</a><a href="../below/">Below Basin</a><a href="../axis/">Axis</a></nav>
 <header class="elevator-head"><div><p class="eyebrow">Door · Axis · Elevator · Local Centers</p><h1>THE HOUSE<br>FROM THE CENTER</h1><p>Stand at the Door. Move up or down through the same Axis, or turn toward a Dwelling. Entering a room makes that room your local center; its neighboring doors recompose around you. The geometry is relational, not literal Euclidean architecture.</p></div><div class="level-controls" id="levelControls" aria-label="Elevator stops"></div></header>
-<div class="depth-crumbs" id="depthCrumbs" aria-label="Spatial breadcrumb"></div><section class="viewport" aria-label="Spatial Potato House navigator">
+<div class="depth-crumbs" id="depthCrumbs" aria-label="Spatial breadcrumb"></div><section class="journey" aria-label="Journey thread"><div class="journey-head"><b>Your thread through the House</b><div class="journey-actions"><button type="button" id="journeyBack">Back through thread</button><button type="button" id="journeyClear">Clear thread</button></div></div><div class="journey-track" id="journeyTrack"></div></section><section class="viewport" aria-label="Spatial Potato House navigator">
 <div class="level-sign" id="levelSign"></div><div class="inner-badge" id="innerBadge" hidden></div><div class="level-portals" id="levelPortals" aria-label="Level portals"></div>
 <div class="elevator-shaft" id="shaft" aria-label="Vertical elevator controls"></div>
 <div class="scene"><div class="floor-disc"></div><div class="rotunda" id="rotunda"></div><div class="axis-car" id="axisCar"><div><b>DOOR<br>/ AXIS</b><span>global spatial center</span></div></div></div>
@@ -71,9 +75,33 @@ const [eRes,sRes,pRes]=await Promise.all([
 ]);
 if(!eRes.ok||!sRes.ok||!pRes.ok)return;
 const data=await eRes.json(), subData=await sRes.json(), surfaceData=await pRes.json();
-const rot=document.getElementById('rotunda'),lc=document.getElementById('levelControls'),shaft=document.getElementById('shaft'),sign=document.getElementById('levelSign'),portals=document.getElementById('levelPortals'),copy=document.getElementById('localCopy'),textGrid=document.getElementById('textGrid'),crumbs=document.getElementById('depthCrumbs'),innerBadge=document.getElementById('innerBadge');
+const rot=document.getElementById('rotunda'),lc=document.getElementById('levelControls'),shaft=document.getElementById('shaft'),sign=document.getElementById('levelSign'),portals=document.getElementById('levelPortals'),copy=document.getElementById('localCopy'),textGrid=document.getElementById('textGrid'),crumbs=document.getElementById('depthCrumbs'),innerBadge=document.getElementById('innerBadge'),journeyTrack=document.getElementById('journeyTrack');
 const params=new URLSearchParams(location.search);
 let level=params.get('level')||'world', local=params.get('room')||null, inner=params.get('inner')||null, yaw=0;
+const JOURNEY_KEY='potato-house-journey-v1';
+let suppressJourney=false;
+function readJourney(){try{return JSON.parse(localStorage.getItem(JOURNEY_KEY)||'[]')}catch(e){return []}}
+let journey=readJourney();
+function labelForState(st){
+ if(st.inner&&subById[st.inner])return subById[st.inner].title;
+ if(st.room&&roomById[st.room])return roomById[st.room].label;
+ const L=data.levels.find(x=>x.id===st.level);return (L?.label||'Door / Axis');
+}
+function currentState(type='space'){return {level,room:local,inner,label:labelForState({level,room:local,inner}),type}}
+function sameState(a,b){return a&&b&&a.level===b.level&&(a.room||null)===(b.room||null)&&(a.inner||null)===(b.inner||null)&&a.type===b.type}
+function saveJourney(){try{localStorage.setItem(JOURNEY_KEY,JSON.stringify(journey.slice(-48)))}catch(e){}}
+function recordJourney(type='space'){
+ if(suppressJourney)return;
+ const st=currentState(type),last=journey[journey.length-1];
+ if(!sameState(last,st)){journey.push(st);journey=journey.slice(-48);saveJourney();}
+}
+function restoreJourney(st){suppressJourney=true;level=st.level||'world';local=st.room||null;inner=st.inner||null;yaw=0;render();suppressJourney=false}
+function renderJourney(){
+ journeyTrack.innerHTML='';
+ const cur=currentState('space');
+ journey.forEach((st,i)=>{const wrap=document.createElement('span');wrap.className='journey-bead'+(sameState(st,cur)?' current':'')+(st.type==='read'?' read':'');const b=document.createElement('button');b.type='button';b.textContent=st.label||labelForState(st);b.title=st.type==='read'?'Readable-room exit':'Return to this spatial center';b.onclick=()=>restoreJourney(st);wrap.appendChild(b);journeyTrack.appendChild(wrap)});
+ journeyTrack.scrollLeft=journeyTrack.scrollWidth;
+}
 const roomById=Object.fromEntries(data.dwellings.map(x=>[x.id,x]));
 const subById=Object.fromEntries(subData.subrooms.map(x=>[x.id,x]));
 const surfaceById=Object.fromEntries(surfaceData.surfaces.map(x=>[x.id,x]));
@@ -88,8 +116,8 @@ function writeUrl(){const q=new URLSearchParams();if(local)q.set('room',local);i
 function renderLevels(){
  lc.innerHTML='';shaft.innerHTML='';
  data.levels.forEach(L=>{
-   const b=document.createElement('button');b.type='button';b.textContent=L.label;b.dataset.level=L.id;b.setAttribute('aria-pressed',String(L.id===level));b.onclick=()=>{level=L.id;local=null;inner=null;yaw=0;render();};lc.appendChild(b);
-   const s=document.createElement('button');s.type='button';s.textContent=L.id==='heaven'?'↑':L.id==='below'?'↓':'•';s.title=L.label;s.className=L.id===level?'active':'';s.onclick=()=>{level=L.id;local=null;inner=null;yaw=0;render();};shaft.appendChild(s);
+   const b=document.createElement('button');b.type='button';b.textContent=L.label;b.dataset.level=L.id;b.setAttribute('aria-pressed',String(L.id===level));b.onclick=()=>{level=L.id;local=null;inner=null;yaw=0;render();recordJourney();renderJourney();};lc.appendChild(b);
+   const s=document.createElement('button');s.type='button';s.textContent=L.id==='heaven'?'↑':L.id==='below'?'↓':'•';s.title=L.label;s.className=L.id===level?'active':'';s.onclick=()=>{level=L.id;local=null;inner=null;yaw=0;render();recordJourney();renderJourney();};shaft.appendChild(s);
  });
 }
 function visibleItems(){
@@ -110,7 +138,7 @@ function visibleItems(){
 function setLocal(item){
  if(item.kind==='dwelling'){local=item.id;inner=null;}
  else {local=item.obj.parent_room_id;inner=item.id;}
- yaw=0;render();
+ yaw=0;render();recordJourney();renderJourney();
 }
 function renderDoors(){
  rot.innerHTML=''; const items=visibleItems(); const n=Math.max(items.length,1);
@@ -122,7 +150,7 @@ function renderDoors(){
    d.style.setProperty('--angle',((360/n)*i)+'deg');
    const a=document.createElement('a');a.href=I.homepage;
    a.innerHTML='<small>'+ (selected?'LOCAL CENTER':wormhole?'WORMHOLE DOOR':I.kind==='inner'?'INNER ROOM':'DWELLING') +'</small><strong>'+I.label+'</strong><span>'+I.subtitle+'</span>';
-   a.addEventListener('mouseenter',()=>{copy.innerHTML='<b>'+I.label+'</b><span>'+I.subtitle+' · open the readable room, or make this the local spatial center.</span>'});
+   a.addEventListener('mouseenter',()=>{copy.innerHTML='<b>'+I.label+'</b><span>'+I.subtitle+' · open the readable room, or make this the local spatial center.</span>'});a.addEventListener('click',()=>{recordJourney('read');renderJourney()});
    d.appendChild(a);
    const hit=document.createElement('button');hit.type='button';hit.textContent='center';hit.title='Make '+I.label+' the local center';hit.style.cssText='position:absolute;left:50%;bottom:-28px;transform:translateX(-50%);font:700 8px var(--site-font-sans);letter-spacing:.06em;text-transform:uppercase;background:rgba(6,8,6,.85);color:var(--site-muted);border:1px solid var(--site-line);border-radius:999px;padding:4px 7px;cursor:pointer';hit.onclick=e=>{e.preventDefault();setLocal(I)};d.appendChild(hit);
    rot.appendChild(d);
@@ -145,8 +173,8 @@ function renderSign(){
 function renderCrumbs(){
  crumbs.innerHTML='';
  const make=(label,fn,current=false)=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.disabled=current;b.onclick=fn;crumbs.appendChild(b)};
- make('Door / Axis',()=>{local=null;inner=null;yaw=0;render()},!local&&!inner);
- if(local){const R=roomById[local];make(R.label,()=>{inner=null;yaw=0;render()},!!local&&!inner)}
+ make('Door / Axis',()=>{local=null;inner=null;yaw=0;render();recordJourney();renderJourney()},!local&&!inner);
+ if(local){const R=roomById[local];make(R.label,()=>{inner=null;yaw=0;render();recordJourney();renderJourney()},!!local&&!inner)}
  if(inner){const S=subById[inner];make(S.title,()=>{},true)}
 }
 function renderText(){
@@ -160,12 +188,14 @@ function renderText(){
  }
  data.dwellings.forEach(R=>{const a=document.createElement('a');a.href=root(R.homepage);a.innerHTML='<strong>'+R.label+'</strong><small>'+R.local_center_label+'</small>';textGrid.appendChild(a)});
 }
-function render(){renderLevels();renderDoors();renderSign();renderCrumbs();renderText();writeUrl()}
-document.getElementById('centerBtn').onclick=()=>{if(inner){inner=null}else if(local){local=null}else{level='world'}yaw=0;render()};
+function render(){renderLevels();renderDoors();renderSign();renderCrumbs();renderText();writeUrl();renderJourney()}
+document.getElementById('centerBtn').onclick=()=>{if(inner){inner=null}else if(local){local=null}else{level='world'}yaw=0;render();recordJourney();renderJourney()};
 document.getElementById('rotateLeft').onclick=()=>{yaw-=35;rot.style.transform='rotateY('+yaw+'deg)'};
 document.getElementById('rotateRight').onclick=()=>{yaw+=35;rot.style.transform='rotateY('+yaw+'deg)'};
-document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){yaw-=35;rot.style.transform='rotateY('+yaw+'deg)'}if(e.key==='ArrowRight'){yaw+=35;rot.style.transform='rotateY('+yaw+'deg)'}if(e.key==='ArrowUp'){level='heaven';local=null;inner=null;yaw=0;render()}if(e.key==='ArrowDown'){level='below';local=null;inner=null;yaw=0;render()}if(e.key==='Escape'){if(inner)inner=null;else local=null;yaw=0;render()}});
-render();
+document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){yaw-=35;rot.style.transform='rotateY('+yaw+'deg)'}if(e.key==='ArrowRight'){yaw+=35;rot.style.transform='rotateY('+yaw+'deg)'}if(e.key==='ArrowUp'){level='heaven';local=null;inner=null;yaw=0;render();recordJourney();renderJourney()}if(e.key==='ArrowDown'){level='below';local=null;inner=null;yaw=0;render();recordJourney();renderJourney()}if(e.key==='Escape'){if(inner)inner=null;else local=null;yaw=0;render();recordJourney();renderJourney()}});
+document.getElementById('journeyBack').onclick=()=>{if(journey.length<2)return;journey.pop();saveJourney();const st=journey[journey.length-1];restoreJourney(st);renderJourney()};
+document.getElementById('journeyClear').onclick=()=>{journey=[];saveJourney();recordJourney();renderJourney()};
+render();recordJourney();renderJourney();
 })();
 </script>
 </body></html>
