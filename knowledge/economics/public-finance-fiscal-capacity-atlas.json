@@ -1,0 +1,210 @@
+{
+  "id": "public-finance-fiscal-capacity-atlas",
+  "title": "Public Finance & Fiscal Capacity Atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "owner_room": "economy-finance",
+  "purpose": "Model government finance as a system of revenues, spending, assets, liabilities, institutions, contingent obligations and real implementation capacity rather than reducing fiscal condition to one debt ratio.",
+  "fiscal_identity": {
+    "rule": "Flows over a period and stocks at a date must remain separate.",
+    "core_relations": [
+      "revenue − primary expenditure = primary balance",
+      "primary balance − net interest = overall balance, subject to the accounting presentation used",
+      "debt stock changes through deficits/surpluses, financing transactions, valuation effects and other stock-flow adjustments",
+      "gross debt, net debt and broader public-sector liabilities answer different questions"
+    ],
+    "caution": "National and international accounting frameworks differ in coverage and consolidation. Every measure must name its definition/source."
+  },
+  "revenue_structure": [
+    "personal income taxes",
+    "corporate taxes",
+    "consumption/VAT/sales taxes",
+    "social contributions",
+    "property taxes",
+    "resource revenues",
+    "customs/trade taxes",
+    "fees and non-tax revenue",
+    "transfers/grants"
+  ],
+  "expenditure_structure": [
+    "public wages and administration",
+    "social protection/transfers",
+    "health",
+    "education",
+    "defense/security",
+    "infrastructure/capital investment",
+    "subsidies",
+    "interest",
+    "grants/transfers to other government levels",
+    "other public services"
+  ],
+  "balance_sheet_layers": [
+    {
+      "id": "financial_assets",
+      "examples": [
+        "cash",
+        "deposits",
+        "loans",
+        "securities",
+        "equity stakes"
+      ]
+    },
+    {
+      "id": "nonfinancial_assets",
+      "examples": [
+        "land",
+        "buildings",
+        "infrastructure",
+        "equipment"
+      ],
+      "boundary": "Valuation and coverage can differ substantially across public accounts."
+    },
+    {
+      "id": "explicit_liabilities",
+      "examples": [
+        "bonds",
+        "loans",
+        "accounts payable",
+        "recognized pension liabilities where applicable"
+      ]
+    },
+    {
+      "id": "contingent_liabilities",
+      "examples": [
+        "guarantees",
+        "public-private partnership exposures",
+        "financial-sector support commitments"
+      ],
+      "boundary": "Contingent liabilities are not the same as current debt; trigger probability and legal terms matter."
+    },
+    {
+      "id": "public_enterprise_exposure",
+      "examples": [
+        "ownership stakes",
+        "guarantees",
+        "on-lending",
+        "dividend flows",
+        "capital injections"
+      ]
+    }
+  ],
+  "fiscal_capacity_vector": [
+    {
+      "id": "revenue_capacity",
+      "question": "How broad, stable and administratively collectible is the revenue base?"
+    },
+    {
+      "id": "borrowing_capacity",
+      "question": "At what maturities, currencies and costs can government fund itself under normal and stressed conditions?"
+    },
+    {
+      "id": "implementation_capacity",
+      "question": "Can approved spending be converted into delivered services/infrastructure?"
+    },
+    {
+      "id": "automatic_stabilization",
+      "question": "How do taxes/transfers respond to economic fluctuations without new legislation?"
+    },
+    {
+      "id": "fiscal_space",
+      "question": "What room exists for additional borrowing/spending given financing conditions, obligations, institutions and macroeconomic context?",
+      "boundary": "Fiscal space is context-dependent, not one universal threshold."
+    },
+    {
+      "id": "intergovernmental_capacity",
+      "question": "How are revenues and obligations distributed across central, regional and local governments?"
+    },
+    {
+      "id": "asset_capacity",
+      "question": "What public assets, enterprises or funds generate services, income or strategic capacity?"
+    },
+    {
+      "id": "shock_absorption",
+      "question": "How large a shock can be absorbed before major tax, spending, financing or institutional adjustment is required?"
+    }
+  ],
+  "debt_profile": [
+    "holder composition",
+    "currency composition",
+    "fixed vs floating rate",
+    "average maturity",
+    "redemption profile",
+    "domestic vs external law",
+    "indexation",
+    "market liquidity",
+    "central-bank/public-sector holdings where relevant",
+    "guaranteed vs direct debt"
+  ],
+  "analysis_sequence": [
+    "define government/public-sector perimeter",
+    "select stock date and flow period",
+    "map revenue and expenditure structure",
+    "map debt and liability profile",
+    "map assets and contingent obligations",
+    "measure financing and refinancing conditions",
+    "identify policy commitments and demographic/structural pressures",
+    "test shocks and substitutions",
+    "separate accounting capacity from real productive/administrative capacity",
+    "record uncertainty and revisions"
+  ],
+  "shock_cases": [
+    {
+      "id": "rate_shock",
+      "path": "higher refinancing costs → interest burden → budget adjustment or additional borrowing"
+    },
+    {
+      "id": "recession",
+      "path": "weaker tax base + higher automatic transfers → balance deterioration → financing response"
+    },
+    {
+      "id": "energy_or_import_shock",
+      "path": "price/support/production effects → household/company support or tax changes → fiscal exposure"
+    },
+    {
+      "id": "banking_support",
+      "path": "financial-system stress → guarantees/liquidity/capital support → contingent liability realization or asset acquisition"
+    },
+    {
+      "id": "aging_or_demographic_pressure",
+      "path": "population structure → pension/health/labour-base effects over long horizons"
+    },
+    {
+      "id": "security_investment",
+      "path": "capability target → procurement/infrastructure/personnel → multi-year commitments → industrial and fiscal interactions"
+    }
+  ],
+  "country_snapshot_contract": [
+    "jurisdiction",
+    "as_of_and_period",
+    "accounting_perimeter",
+    "currency",
+    "nominal_or_real",
+    "revenue",
+    "expenditure",
+    "primary_balance",
+    "overall_balance",
+    "gross_debt",
+    "net_debt_if_available",
+    "interest_cost",
+    "maturity_profile",
+    "major_assets",
+    "contingent_liabilities",
+    "subnational_position",
+    "sources",
+    "revision_vintage"
+  ],
+  "boundary_rules": [
+    "Government debt is not household debt; monetary sovereignty, currency, tax authority and institutional setting differ.",
+    "A high or low debt ratio alone does not determine sustainability.",
+    "Budget authorization is not identical to cash execution or delivered capability.",
+    "Project karmic/spiritual debt remains a separate symbolic ledger and must never be merged with public financial liabilities."
+  ],
+  "joins": [
+    "stock-flow-obligation-network-atlas",
+    "north-obligation-graph-schema",
+    "country-capability-dependency-atlas",
+    "politics-governance",
+    "infrastructure-capability",
+    "provenance-evidence"
+  ]
+}
