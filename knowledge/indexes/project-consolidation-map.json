@@ -1,7 +1,7 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.17.0",
+  "version": "1.18.0",
   "updated": "2026-09-19",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
@@ -441,6 +441,77 @@
           "domain-specific relation registries"
         ]
       }
+    ]
+  },
+  "room_depth_wave_2026_09_19": {
+    "status": "active substance deepening after authority convergence",
+    "principle": "Prefer concrete cases, measures, failure modes and worked lifecycle examples inside existing owners over new structural layers.",
+    "repairs": [
+      {
+        "id": "harvested-atlas-holdings-repair",
+        "result": "Seventeen harvested atlases were removed from accidental Core Identities featured placement and restored to their assigned Rooms.",
+        "guardrail": "scripts/validate_house_governance.py now rejects featured holdings whose canonical file assignment points to another Room."
+      }
+    ],
+    "deepened_rooms": [
+      {
+        "room_id": "internet-platforms",
+        "owners": [
+          "knowledge/culture/platform-mechanics-atlas.json",
+          "knowledge/culture/platform-governance-portability-atlas.json"
+        ],
+        "substance": [
+          "ActivityPub federation/interoperability",
+          "AT Protocol identity/account portability",
+          "Google Takeout archive export",
+          "YouTube moderation/appeal mechanics"
+        ],
+        "method_gain": "Separates interoperability, export, migration, identity continuity, social-graph continuity and governance."
+      },
+      {
+        "room_id": "information-ecology",
+        "owners": [
+          "knowledge/culture/information-ecology-mechanics-atlas.json",
+          "knowledge/culture/information-correction-memory-repair-atlas.json"
+        ],
+        "substance": [
+          "Crossref Crossmark linked correction/retraction status",
+          "MediaWiki revision history",
+          "federated copy lineage",
+          "platform appeal/reinstatement loops"
+        ],
+        "method_gain": "Treats correction as a propagation/retrieval problem and counts independent provenance roots rather than visible repetitions."
+      },
+      {
+        "room_id": "politics-governance",
+        "owner": "knowledge/politics/governance-institutions-policy-lifecycle-atlas.json",
+        "substance": [
+          "Danish Folketing legislative sequence",
+          "EU ordinary legislative procedure"
+        ],
+        "method_gain": "Adds neutral institutional-process comparison without political ranking."
+      },
+      {
+        "room_id": "memory-recovery",
+        "owners": [
+          "knowledge/indexes/memory-recovery-method-atlas.json",
+          "knowledge/indexes/memory-recovery-promotion-state-atlas.json"
+        ],
+        "substance": [
+          "research.json retirement",
+          "Great Book extraction path migration",
+          "Potatoverse staging retirement",
+          "PR #283 → #284 harvest"
+        ],
+        "method_gain": "Distinguishes path retirement, content retirement, promotion, provenance-only retention and semantic-vs-path convergence."
+      }
+    ],
+    "next_targets": [
+      "economy-finance: add concrete stock-flow/public-finance case studies and measurement examples",
+      "geography-countries: add concrete dependency/capability cases with dated sources",
+      "potato-biology: connect organism-cycle stages to empirical growth/storage cases without turning metaphor into biology",
+      "model-testing: convert more project analogies into explicit competing-model tests and negative cases",
+      "prune low-yield duplicate specialist atlases only after promoted laws and provenance are accounted for"
     ]
   }
 }
