@@ -17,6 +17,10 @@ assert.equal(scale.bandForZoom(3.5), 'region');
 assert.equal(scale.bandForZoom(4.3), 'country');
 assert.equal(scale.bandForZoom(6), 'subnational');
 assert.equal(scale.bandForZoom(8.2), 'local');
+assert.equal(scale.bandThreshold('world'), 0);
+assert.equal(scale.bandThreshold('country'), 4.2);
+assert.equal(scale.bandThreshold('subnational'), 5.8);
+assert.throws(() => scale.bandThreshold('missing'), /unknown scale band/i);
 
 assert.equal(scale.threshold('subdivisions', 'load'), 3.4);
 assert.equal(scale.threshold('subdivisions', 'render'), 3.4);
