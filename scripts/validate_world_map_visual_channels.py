@@ -23,6 +23,7 @@ def main() -> int:
     contract = load(CONTRACT, errors)
     registry = load(REGISTRY, errors)
     compositor = COMPOSITOR.read_text(encoding="utf-8", errors="replace") if COMPOSITOR.is_file() else ""
+    ui = (ROOT / "world-map" / "3d-ui.js").read_text(encoding="utf-8", errors="replace") if (ROOT / "world-map" / "3d-ui.js").is_file() else ""
 
     channels = contract.get("channels") or {}
     required = {"fill","pattern","outline","line","point","height","card","timeline","scene"}
@@ -49,6 +50,14 @@ def main() -> int:
             errors.append(f"current scalar {row.get('id')} must use fill visual channel")
         if row.get("kind") == "set" and row.get("availability") == "current" and row.get("visual_channel") != "pattern":
             errors.append(f"current set {row.get('id')} must use pattern visual channel")
+
+    for forbidden in (
+        "setPaintProperty('countries-fill','fill-color'",
+        "setPaintProperty('countries-extrude','fill-extrusion-color'",
+        "setPaintProperty('countries-line','line-color'",
+    ):
+        if forbidden in ui:
+            errors.append(f"legacy 3d-ui.js must not write canonical country visual channels: {forbidden}")
 
     for token in (
         "VISUAL_CHANNEL_URL",
