@@ -5,6 +5,9 @@
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Spatial overlays require the core atlas map.');
 const interaction = window.__potatoAtlasInteraction;
+const geoKernel = window.__potatoAtlasGeo || await import('./3d-geo-kernel.js');
+if (!window.__potatoAtlasGeo) window.__potatoAtlasGeo = geoKernel;
+const { antimeridianAwareBounds } = geoKernel;
 
 const MANIFEST_URL = '../data/world-map-spatial-overlays.json';
 const ACTIVE_PARAM = 'overlays';
@@ -269,30 +272,30 @@ function featuresAt(point) {
     };
   }).filter(Boolean).sort((a,b) => Z_ORDER.indexOf(b.epistemic_type) - Z_ORDER.indexOf(a.epistemic_type));
 }
-function boundsForFeature(feature) {
-  let minX=180,minY=90,maxX=-180,maxY=-90,ok=false;
-  const walk = value => {
-    if (!Array.isArray(value)) return;
-    if (typeof value[0] === 'number' && typeof value[1] === 'number') {
-      ok=true; minX=Math.min(minX,value[0]); minY=Math.min(minY,value[1]); maxX=Math.max(maxX,value[0]); maxY=Math.max(maxY,value[1]); return;
-    }
-    value.forEach(walk);
-  };
-  walk(feature?.geometry?.coordinates);
-  return ok ? [[minX,minY],[maxX,maxY]] : null;
+function boundsForFeature(feature, referenceLng = null) {
+  try {
+    const bounds = antimeridianAwareBounds(feature?.geometry, referenceLng);
+    return [[bounds.west,bounds.south],[bounds.east,bounds.north]];
+  } catch {
+    return null;
+  }
 }
 async function fit(id) {
   const row = entry(id);
   if (!row) return false;
   const owner = await loadOwner(row.geometry_owner);
   const fc = featureCollectionFor(row, owner);
-  let minX=180,minY=90,maxX=-180,maxY=-90,ok=false;
-  for (const feature of fc.features) {
-    const bounds=boundsForFeature(feature); if(!bounds) continue;
-    ok=true; minX=Math.min(minX,bounds[0][0]); minY=Math.min(minY,bounds[0][1]); maxX=Math.max(maxX,bounds[1][0]); maxY=Math.max(maxY,bounds[1][1]);
+  try {
+    const referenceLng = Number(map.getCenter?.()?.lng);
+    const bounds = antimeridianAwareBounds(
+      fc.features.map(feature => feature?.geometry).filter(Boolean),
+      Number.isFinite(referenceLng) ? referenceLng : null
+    );
+    map.fitBounds([[bounds.west,bounds.south],[bounds.east,bounds.north]], { padding:70, maxZoom:7, duration:650 });
+    return true;
+  } catch {
+    return false;
   }
-  if (ok) map.fitBounds([[minX,minY],[maxX,maxY]], { padding:70, maxZoom:7, duration:650 });
-  return ok;
 }
 async function restoreFromUrl() {
   const requested = (new URL(location.href).searchParams.get(ACTIVE_PARAM) || '').split(',').map(value => value.trim()).filter(Boolean);
