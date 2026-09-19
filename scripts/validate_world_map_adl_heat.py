@@ -119,6 +119,8 @@ def main() -> int:
         require(lifecycle, token, "world-map/3d-panel-lifecycle.js", errors)
     for token in ("bindMudBelowLayerControl","./3d-mud-below-us.js","__potatoAtlasMudBelow?.toggle"):
         require(lifecycle, token, "world-map/3d-panel-lifecycle.js", errors)
+    for token in ("hydrateEvidenceLayersFromUrl","evidenceLayer","projectLayer","mud-below-us"):
+        require(lifecycle, token, "world-map/3d-panel-lifecycle.js", errors)
     for token in ("project-symbolic-case","state-centroid","retainPartition('USA')","not an objective classification"):
         require(mud_js, token, "world-map/3d-mud-below-us.js", errors)
     if mud_data.get("type") != "FeatureCollection" or len(mud_data.get("features") or []) < 2:
