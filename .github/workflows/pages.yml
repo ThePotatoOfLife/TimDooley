@@ -131,6 +131,20 @@ jobs:
                   rest_path.unlink(missing_ok=True)
           PY
 
+      - name: Build production World Map Places
+        shell: bash
+        run: |
+          set -euo pipefail
+          tmpdir="$(mktemp -d)"
+          trap 'rm -rf "$tmpdir"' EXIT
+          if curl -fsSL --retry 3 --retry-delay 2             https://download.geonames.org/export/dump/cities5000.zip             -o "$tmpdir/cities5000.zip"; then
+            unzip -q "$tmpdir/cities5000.zip" -d "$tmpdir"
+            python scripts/build_world_places.py               --geonames "$tmpdir/cities5000.txt"               --capitals data/world-capitals.geo.json               --country-index data/countries/index.json               --output _site/data/world-places               --refresh-date "$(date -u +%F)"               --minimum-population 50000
+            python scripts/validate_world_places.py --data-only --data-dir _site/data/world-places
+          else
+            echo 'GeoNames production snapshot unavailable; bounded capital fallback remains enabled.'
+          fi
+
       - name: Build population and religion snapshot
         env:
           ATLAS_DEMOGRAPHY_OUT: _site/data/world-country-demography.json
