@@ -110,7 +110,7 @@ def main():
         "not a general hate score or crime score",
     ),errors)
     subdiv=require(SUBDIV,("forcedPartitions","retainPartition","releasePartition","reconcileActive"),errors)
-    render=require(RENDER,("'subnational-fill'","atlas-subdivision-line","subnational scalar/evidence fills"),errors)
+    render=require(RENDER,("'subnational-fill'","atlas-subdivision-line","Subnational scalar/evidence fills"),errors)
     require(MAP_STATE,("__potatoAtlasEvidenceLayers","evidenceLayer","adlYear","adlType"),errors)
     require(CONTEXT,("__potatoAtlasEvidenceLayers","potato-atlas-evidence-layer-change"),errors)
     require(PANEL,("Evidence Layers","./3d-evidence-layers.js"),errors)
