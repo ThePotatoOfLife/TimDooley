@@ -120,7 +120,7 @@ function renderPath(start, target, path) {
   const mode = currentMode();
   if (titleNode()) titleNode().textContent = `${nameFor(start)} → ${nameFor(target)}`;
   if (!path) {
-    node.innerHTML = `<div class="path-empty">No represented path from ${esc(nameFor(start))} to ${esc(nameFor(target))}${mode === 'all' ? '' : ` under the ${esc(mode)} filter`}. This means “not represented in this dataset,” not “no real-world relationship exists.”</div><div class="path-boundary">This is a shortest path in the represented graph under the active filter, not necessarily the shortest or strongest relationship in the real world.</div>`;
+    node.innerHTML = `<div class="path-empty">No represented path from ${esc(nameFor(start))} to ${esc(nameFor(target))}${mode === 'all' ? '' : ` under the ${esc(mode)} filter`}. This means “not represented in this dataset,” not “no real-world relationship exists.”</div><div class="path-boundary">This is a shortest path in the represented graph under the active filter, not necessarily the shortest or strongest relationship in the real world. Map lines are schematic relationship chords, not surveyed transport, cable, pipeline, border, or physical route geometry.</div>`;
     return;
   }
   const steps = path.codes.map((code, index) => `${index ? '<span class="path-arrow">→</span>' : ''}<button type="button" class="path-step" data-path-code="${esc(code)}">${esc(nameFor(code))}</button>`).join('');
