@@ -1,6 +1,6 @@
 {
-  "version": "1.3.0",
-  "updated": "2026-09-18",
+  "version": "1.4.0",
+  "updated": "2026-09-19",
   "authority": "house-data-holdings",
   "principle": "Data holdings are grouped datasets, ledgers, registries or contracts with one primary Room owner. Secondary Rooms may consume them without becoming co-owners. Runtime/render/config artifacts may remain unbundled when they are implementation rather than knowledge.",
   "bundles": [
@@ -33,7 +33,7 @@
       ],
       "kind": "governance-registry",
       "purpose": "House registries, topology, coverage, manifests, routing and repository-maintenance contracts.",
-      "file_count": 47,
+      "file_count": 49,
       "source_files": [
         "data/house/architectural-vocabulary.json",
         "data/house/collections.json",
@@ -81,7 +81,9 @@
         "data/house/providence-pillars-esoteric-structure.json",
         "data/house/history-canon-revision-protocol.json",
         "data/house/works-fruit-contract.json",
-        "data/house/local-center-interface-patterns.json"
+        "data/house/local-center-interface-patterns.json",
+        "data/house/legacy-modern-public-integration-contract.json",
+        "data/house/specialist-subviews.json"
       ],
       "featured_files": [
         "data/house/project-synthesis.json",
@@ -93,7 +95,9 @@
         "data/house/navigation-manifest.json",
         "data/house/room-dossiers.json",
         "data/house/concept-topology.json",
-        "data/house/holdings.json"
+        "data/house/holdings.json",
+        "data/house/legacy-modern-public-integration-contract.json",
+        "data/house/specialist-subviews.json"
       ],
       "historical_donors": [
         "data/root-navigation.json"
@@ -1374,11 +1378,11 @@
     }
   ],
   "summary": {
-    "total_data_files": 543,
-    "bundled_data_files": 537,
+    "total_data_files": 545,
+    "bundled_data_files": 539,
     "unbundled_data_files": 6,
     "bundle_count": 25,
-    "total_files": 553
+    "total_files": 555
   },
   "unbundled_paths": [
     "data/bulk-data-reservoirs.json",

@@ -1,6 +1,6 @@
 {
-  "version": "4.0.0",
-  "updated": "2026-09-18",
+  "version": "4.1.0",
+  "updated": "2026-09-19",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
   "principle": "Every substantive knowledge file has at most one primary Room owner. Cross-Room meaning travels through interfaces, collections and references rather than duplicate ownership. Curated navigation/reader/story/corporium material is classified separately.",
@@ -11,7 +11,7 @@
       "title": "Core Identities & Roles",
       "dwelling_id": "potatoverse-canon",
       "purpose": "Own the project-internal definitions and role relations around Potato of Life, Tim, Father, Son, Spirit, Door, Axis and related canonical identities.",
-      "primary_file_count": 9,
+      "primary_file_count": 13,
       "featured_holdings": [
         {
           "path": "knowledge/core/potato-of-life-deep-structure.json",
@@ -60,6 +60,36 @@
           "id": "tim-identity-ontology",
           "kind": "room holding",
           "basis": "core-topic"
+        },
+        {
+          "path": "knowledge/indexes/provenance-chain-of-custody-atlas.json",
+          "id": "provenance-chain-of-custody-atlas",
+          "kind": "claim-to-source chain-of-custody and corroboration atlas",
+          "basis": "room-deepening"
+        },
+        {
+          "path": "knowledge/science/model-discrimination-calibration-atlas.json",
+          "id": "model-discrimination-calibration-atlas",
+          "kind": "model comparison, calibration and falsification atlas",
+          "basis": "room-deepening"
+        },
+        {
+          "path": "knowledge/traditions/sacred-geometry-method-and-invariants-atlas.json",
+          "id": "sacred-geometry-method-and-invariants-atlas",
+          "kind": "exact geometry and historical-symbolic layer method",
+          "basis": "room-deepening"
+        },
+        {
+          "path": "knowledge/body/whole-body-regulation-coupling-atlas.json",
+          "id": "whole-body-regulation-coupling-atlas",
+          "kind": "whole-organism regulatory coupling and feedback atlas",
+          "basis": "room-deepening"
+        },
+        {
+          "path": "knowledge/body/symbolic-body-crosswalk-method-atlas.json",
+          "id": "symbolic-body-crosswalk-method-atlas",
+          "kind": "typed anatomy-symbol comparison method",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -6258,6 +6288,31 @@
       "path": "data/house/foundation-first-reproduction-wave-001.json",
       "primary_owner_room_id": "house-architecture",
       "basis": "foundation-population-wave-016"
+    },
+    {
+      "path": "knowledge/indexes/provenance-chain-of-custody-atlas.json",
+      "primary_owner_room_id": "provenance-evidence",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/science/model-discrimination-calibration-atlas.json",
+      "primary_owner_room_id": "model-testing",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/traditions/sacred-geometry-method-and-invariants-atlas.json",
+      "primary_owner_room_id": "esoteric-sacred-geometry",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/body/whole-body-regulation-coupling-atlas.json",
+      "primary_owner_room_id": "whole-body",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/body/symbolic-body-crosswalk-method-atlas.json",
+      "primary_owner_room_id": "symbolic-body-comparison",
+      "basis": "room-deepening"
     }
   ],
   "curated_unowned_paths": [
@@ -6396,8 +6451,8 @@
     "knowledge/story/story-registry.json"
   ],
   "summary": {
-    "scoped_files": 883,
-    "primary_owned_files": 750,
+    "scoped_files": 952,
+    "primary_owned_files": 819,
     "curated_or_navigation_files": 133,
     "rooms": 38,
     "rooms_with_zero_primary_files": []
