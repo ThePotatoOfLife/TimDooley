@@ -138,12 +138,15 @@ def main() -> int:
     require_any(active_view, ("status: 'unknown'", "status:'unknown'"), "world-map/3d-active-view.js", errors)
 
     require(bootstrap, "./3d-active-view.js", "world-map/3d-bootstrap.js", errors)
-    require(bootstrap, "loadAfterPaint('Country Presentation', './3d-country-presentation.js')", "world-map/3d-bootstrap.js", errors)
-    require(bootstrap, "loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js')", "world-map/3d-bootstrap.js", errors)
-    require(bootstrap, "loadAfterPaint('Panel lifecycle', './3d-panel-lifecycle.js')", "world-map/3d-bootstrap.js", errors)
+    require(bootstrap, "['Country Presentation', './3d-country-presentation.js']", "world-map/3d-bootstrap.js", errors)
+    require(bootstrap, "['Country Hover Presentation', './3d-country-hover-presentation.js']", "world-map/3d-bootstrap.js", errors)
+    require(bootstrap, "['Panel lifecycle', './3d-panel-lifecycle.js']", "world-map/3d-bootstrap.js", errors)
     require(bootstrap, "declareDormant('Progressive UI', './3d-ui.js'", "world-map/3d-bootstrap.js", errors)
-    reject(bootstrap, "loadAfterPaint('Progressive UI', './3d-ui.js')", "world-map/3d-bootstrap.js", errors)
+    reject(bootstrap, "['Progressive UI', './3d-ui.js']", "world-map/3d-bootstrap.js", errors)
     require(bootstrap, "specialistLazyLoads", "world-map/3d-bootstrap.js", errors)
+    require(bootstrap, "loadBootStage('control-plane'", "world-map/3d-bootstrap.js", errors)
+    require(bootstrap, "loadDeferredCore", "world-map/3d-bootstrap.js", errors)
+    require(bootstrap, "nextIdle(1200)", "world-map/3d-bootstrap.js", errors)
     require(bootstrap, "potato-atlas-working-selection-change", "world-map/3d-bootstrap.js", errors)
     reject(bootstrap, "map.once('click', promoteInspectionOnce);", "world-map/3d-bootstrap.js", errors)
 
@@ -151,6 +154,7 @@ def main() -> int:
     # three bounded tabs. Legacy Map color / Map view copies are intentionally gone.
     for token in (
         "__potatoAtlasCountryPresentation",
+        "function scheduleRender",
         "atlas-country-current-answer",
         'data-country-tab="overview"',
         'data-country-tab="context"',
