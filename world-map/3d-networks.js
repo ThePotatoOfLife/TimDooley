@@ -1,5 +1,3 @@
-import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs';
-
 const DATA_URL = '../data/world-empirical-networks.json';
 const GEO_URL = '../data/world-countries.geo.json';
 const SOURCE_ID = 'empirical-network-countries';
@@ -119,7 +117,8 @@ function setHistoricalSuppressed(on){
 }
 
 function installInteractions(map, registry) {
-  const popup = new maplibregl.Popup({closeButton:false,closeOnClick:false,offset:8});
+  const tooltip = window.__potatoAtlasTooltip;
+  if (!tooltip) throw new Error('Empirical Networks require the shared Tooltip service.');
   map.on('mouseenter',FILL_ID,event=>{
     if(historicalSuppressed)return;
     map.getCanvas().style.cursor='pointer';
@@ -129,9 +128,10 @@ function installInteractions(map, registry) {
       const label = registry.networks?.[id]?.label || id;
       return `${label} · ${role}`;
     });
-    popup.setLngLat(event.lngLat).setHTML(`<div class="atlas-hover"><b>${esc(p.name || p.iso3 || 'Country')}</b><br>${memberships.length ? memberships.map(esc).join('<br>') : 'No selected network membership'}<br><small>Observable institutional/regional layer · separate from project fields.</small></div>`).addTo(map);
+    const generation = tooltip.nextGeneration('networks');
+    tooltip.show('networks', event.lngLat, `<div class="atlas-hover"><b>${esc(p.name || p.iso3 || 'Country')}</b><br>${memberships.length ? memberships.map(esc).join('<br>') : 'No selected network membership'}<br><small>Observable institutional/regional layer · separate from project fields.</small></div>`, generation);
   });
-  map.on('mouseleave',FILL_ID,()=>{map.getCanvas().style.cursor='';popup.remove();});
+  map.on('mouseleave',FILL_ID,()=>{map.getCanvas().style.cursor='';tooltip.clear('networks');});
 }
 
 async function boot() {
