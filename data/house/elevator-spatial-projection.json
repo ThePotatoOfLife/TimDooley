@@ -1,0 +1,324 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-19",
+  "authority": "elevator-spatial-projection",
+  "title": "Door / Axis Elevator — Non-Euclidean House Projection",
+  "purpose": "Project the governed Potato House graph as a navigable 3D rotunda/elevator without making Euclidean coordinates authoritative. Existing HTML routes remain canonical public surfaces; this projection provides a spatial wayfinding layer over them.",
+  "global_start": {
+    "id": "door-axis",
+    "label": "Door / Axis",
+    "route": "/elevator/",
+    "semantic_center": "potato-of-life",
+    "spatial_center": "axis",
+    "description": "The visitor begins inside the Door at the shared center. Up/down changes plane; around changes Dwelling; entering changes local center."
+  },
+  "principles": [
+    "Every canonical Dwelling may become a local homepage/center when entered.",
+    "The Axis remains the global spatial center even when a local Room becomes the viewer's center.",
+    "Adjacency is graph-defined, not Euclidean distance.",
+    "A Door may connect two Rooms that could not be adjacent in a literal building; the rotunda reconfigures around the current center.",
+    "Existing HTML pages remain canonical content surfaces. The 3D House is a projection and navigation system, not a second knowledge owner.",
+    "Every visual route has a text/list equivalent."
+  ],
+  "levels": [
+    {
+      "id": "heaven",
+      "label": "Heaven / Canopy",
+      "elevator_direction": "up",
+      "description": "Integration, Garden, Crown, fruit, return and source-facing orientation.",
+      "landmarks": [
+        {
+          "id": "north",
+          "label": "North / Crown",
+          "route": "/north/"
+        },
+        {
+          "id": "religion",
+          "label": "Religion / Traditions",
+          "route": "/religion/"
+        },
+        {
+          "id": "works",
+          "label": "Fruit / Works",
+          "route": "/works/"
+        },
+        {
+          "id": "axis",
+          "label": "Living Axis",
+          "route": "/axis/"
+        }
+      ]
+    },
+    {
+      "id": "world",
+      "label": "World / Door",
+      "elevator_direction": "center",
+      "description": "The visible plane of people, institutions, history, culture, evidence and consequence.",
+      "landmarks": [
+        {
+          "id": "home",
+          "label": "Potato of Life",
+          "route": "/"
+        },
+        {
+          "id": "tim",
+          "label": "Tim",
+          "route": "/tim-dooley/"
+        },
+        {
+          "id": "world",
+          "label": "World",
+          "route": "/world/"
+        },
+        {
+          "id": "culture",
+          "label": "Culture",
+          "route": "/context/culture/"
+        },
+        {
+          "id": "timeline",
+          "label": "Timeline",
+          "route": "/timeline/"
+        }
+      ]
+    },
+    {
+      "id": "below",
+      "label": "Below / Roots",
+      "elevator_direction": "down",
+      "description": "Provenance, memory, subculture, Mud/Ash, Swamp, shadow, evidence and repair entry.",
+      "landmarks": [
+        {
+          "id": "below",
+          "label": "Below Basin",
+          "route": "/below/"
+        },
+        {
+          "id": "shadow-farm",
+          "label": "Farm / Sektur",
+          "route": "/shadow-farm/"
+        },
+        {
+          "id": "sources",
+          "label": "Roots / Sources",
+          "route": "/context/source-authority/"
+        },
+        {
+          "id": "forge",
+          "label": "Forge / Research",
+          "route": "/research-lab/"
+        }
+      ]
+    }
+  ],
+  "dwellings": [
+    {
+      "id": "potatoverse-canon",
+      "label": "Potatoverse / Canon",
+      "homepage": "/religion/",
+      "local_center_label": "Meaning Heart",
+      "neighbors": [
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "works",
+        "research-lab",
+        "time-history",
+        "archive-sources"
+      ],
+      "projections": [
+        "heaven",
+        "world",
+        "below"
+      ]
+    },
+    {
+      "id": "archive-sources",
+      "label": "Archive & Sources",
+      "homepage": "/context/source-authority/",
+      "local_center_label": "Roots / Provenance",
+      "neighbors": [
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "research-lab",
+        "potatoverse-canon"
+      ],
+      "projections": [
+        "world",
+        "below"
+      ]
+    },
+    {
+      "id": "time-history",
+      "label": "Time & History",
+      "homepage": "/timeline/",
+      "local_center_label": "Chronology",
+      "neighbors": [
+        "archive-sources",
+        "traditions-texts",
+        "world-systems",
+        "culture-information",
+        "potatoverse-canon"
+      ],
+      "projections": [
+        "world",
+        "below"
+      ]
+    },
+    {
+      "id": "traditions-texts",
+      "label": "Traditions & Texts",
+      "homepage": "/religion/",
+      "local_center_label": "Tradition / Translation",
+      "neighbors": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "science-formal-models"
+      ],
+      "projections": [
+        "heaven",
+        "world",
+        "below"
+      ]
+    },
+    {
+      "id": "science-formal-models",
+      "label": "Science & Formal Models",
+      "homepage": "/science/",
+      "local_center_label": "Test / Model",
+      "neighbors": [
+        "archive-sources",
+        "life-body",
+        "world-systems",
+        "research-lab",
+        "potatoverse-canon",
+        "traditions-texts"
+      ],
+      "projections": [
+        "world"
+      ]
+    },
+    {
+      "id": "life-body",
+      "label": "Life & Body",
+      "homepage": "/life-body/",
+      "local_center_label": "Embodiment",
+      "neighbors": [
+        "science-formal-models",
+        "potatoverse-canon",
+        "world-systems",
+        "research-lab"
+      ],
+      "projections": [
+        "world"
+      ]
+    },
+    {
+      "id": "world-systems",
+      "label": "World Systems",
+      "homepage": "/world/",
+      "local_center_label": "Institutions / Geography",
+      "neighbors": [
+        "science-formal-models",
+        "life-body",
+        "time-history",
+        "culture-information",
+        "research-lab",
+        "archive-sources"
+      ],
+      "projections": [
+        "world",
+        "below"
+      ]
+    },
+    {
+      "id": "culture-information",
+      "label": "Culture & Information",
+      "homepage": "/context/culture/",
+      "local_center_label": "Formation / Mediation",
+      "neighbors": [
+        "world-systems",
+        "time-history",
+        "archive-sources",
+        "works",
+        "potatoverse-canon",
+        "research-lab"
+      ],
+      "projections": [
+        "world",
+        "below"
+      ]
+    },
+    {
+      "id": "works",
+      "label": "Works / Fruit",
+      "homepage": "/works/",
+      "local_center_label": "Fruit / Expression",
+      "neighbors": [
+        "potatoverse-canon",
+        "culture-information",
+        "archive-sources",
+        "time-history"
+      ],
+      "projections": [
+        "heaven",
+        "world"
+      ]
+    },
+    {
+      "id": "research-lab",
+      "label": "Research Lab / Forge",
+      "homepage": "/research-lab/",
+      "local_center_label": "Forge Ring",
+      "neighbors": [
+        "potatoverse-canon",
+        "archive-sources",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information"
+      ],
+      "projections": [
+        "heaven",
+        "world",
+        "below"
+      ]
+    }
+  ],
+  "local_center_behavior": {
+    "entry": "Selecting a Dwelling reorders the rotunda so the chosen Dwelling becomes the forward/local-center door.",
+    "neighbors": "Only graph neighbors receive prominent doors; non-neighbors remain reachable through the global elevator/House view.",
+    "homepage": "Enter opens the Dwelling's canonical public homepage.",
+    "return": "Center/Elevator returns to Door / Axis without changing canonical page ownership.",
+    "query_model": "The projection may encode local center as ?room=<room-id>&level=<level-id>; URLs are navigation state, not content identity."
+  },
+  "future_renderer_contract": {
+    "current": "CSS 3D transform rotunda",
+    "optional_future": "Three.js/WebGL or WebXR",
+    "invariant": "Renderer changes must consume this projection/topology data rather than hard-code knowledge ownership.",
+    "possible_features": [
+      "mouse/touch orbit",
+      "first-person walk",
+      "door animations",
+      "vertical elevator travel",
+      "portal previews",
+      "room ambient scenes",
+      "VR mode"
+    ]
+  },
+  "source_records": [
+    "data/house/rooms.json",
+    "data/house/subrooms.json",
+    "data/house/topology.json",
+    "data/house/interfaces.json",
+    "data/house/local-center-interface-patterns.json",
+    "data/house/public-surfaces.json",
+    "data/house/tree-plane-routing.json",
+    "data/house/below-basin-spatial-contract.json"
+  ]
+}
