@@ -1,0 +1,376 @@
+{
+  "id": "culture-sektur-platform-media-political-ecology",
+  "version": "1.0.0",
+  "updated": "2026-09-19",
+  "status": "canonical empirical + project-analytical ecology",
+  "purpose": "Explain how internet subcultures, attention economies, archives, media, politics, classifiers, law enforcement, infrastructure and money can interact over time without presuming one hidden organization.",
+  "epistemic_firewall": [
+    "Shared users, memes, donors, targets or audiences do not prove common command.",
+    "A platform is not identical to every community hosted on it.",
+    "A classification by SPLC, ADL, government, media or a forum is an attributed classification event, not an intrinsic property.",
+    "An indictment is an allegation, not a conviction.",
+    "A death associated in reporting with harassment is not automatically an adjudicated causal finding.",
+    "Farmer, Dog, Mud Dweller, Archon, Farm, Sektur, Swamp and Moloch are project analytical/mythic terms unless narrower factual conduct is separately established.",
+    "Terms such as trafficker, groomer, abuser or criminal require evidence for the specific conduct and are never generic synonyms for exploitation."
+  ],
+  "tim_thesis": {
+    "summary": "The project treats culture as a reproduction system. Platforms create places; repeated attention creates roles; archives create memory; money/status can reward repetition; media translates events into stories; politics and institutions can adopt or react to those stories; residue can then become input for the next cycle.",
+    "chain": "platform/seed -> encounter -> subculture -> role/status -> archive -> attention -> money/status -> media translation -> political/institutional translation -> consequence -> memory -> recurrence OR repair",
+    "farm": "Farm is the attention-production process: classify -> observe -> capture -> interpret -> archive -> redistribute -> renew observation.",
+    "sektur": "Sektur is social territory: recurring people, rivals, audiences, creators, lore, archives and roles. Historical Da Sektur remains a specific livestream-drama milieu before the project generalizes the term.",
+    "swamp": "Swamp is the wider environment: platforms, media, markets, politics, law, watchdogs, infrastructure and unresolved incentives. It is not a secret organization.",
+    "mud": "Mud is durable residue: old allegations, clips, labels, sanctions, legal records, reputational stories and archived conflict. Mud can preserve evidence or preserve distortion."
+  },
+  "why_target_ecologies_persist": {
+    "summary": "Persistence usually needs reproduction, not a central mastermind.",
+    "mechanisms": [
+      {
+        "id": "distributed-labor",
+        "mechanism": "Different participants perform tiny tasks—watching, clipping, searching, posting, archiving, commenting, translating, identifying, moderating—so no single person bears the cost of maintaining the whole narrative."
+      },
+      {
+        "id": "archive-memory",
+        "mechanism": "Persistent threads, wikis, mirrors, screenshots and search indexes lower the cost of restarting attention years later."
+      },
+      {
+        "id": "continuous-narrative-escalation",
+        "mechanism": "Research on 231 Kiwi Farms threads found network users added narrative elements in at least 80% of threads; narrative continuation can keep targeted harassment alive, and removal requests can become new narrative material.",
+        "source": "https://par.nsf.gov/servlets/purl/10565774"
+      },
+      {
+        "id": "status-reward",
+        "mechanism": "Insider knowledge, speed, access, technical skill, successful provocation, discovery and memorable jokes can become prestige within a scene even without direct payment."
+      },
+      {
+        "id": "attention-reward",
+        "mechanism": "Reaction itself can be the yield. A new post, response, appearance, court filing or attempted correction creates another observable event."
+      },
+      {
+        "id": "money-conversion",
+        "mechanism": "At larger layers attention can be monetized through ads, subscriptions, passes, donations, memberships, sponsorships, merchandise or political fundraising. Not every participant is paid, but the surrounding system can still assign economic value to attention."
+      },
+      {
+        "id": "role-inversion",
+        "mechanism": "Targets become commentators; commentators become targets; detractors become creators; archives become news sources. This prevents the ecology from depending on one stable center."
+      },
+      {
+        "id": "migration-resilience",
+        "mechanism": "When a provider, host, CDN or platform acts, communities may migrate to new infrastructure. Cloudflare's 2022 Kiwi Farms block explicitly noted the site might move to other providers and return."
+      },
+      {
+        "id": "legal-thresholds",
+        "mechanism": "Cruel, obsessive or invasive conduct is not automatically one legally actionable offense. Federal cyberstalking law requires specified intent plus a course of conduct causing fear of serious injury or substantial emotional distress; other claims depend on threats, privacy, defamation, copyright, state law and jurisdiction.",
+        "source": "https://www.law.cornell.edu/uscode/text/18/2261A"
+      },
+      {
+        "id": "intermediary-liability",
+        "mechanism": "U.S. law has generally provided online services significant protection from liability for third-party content under Section 230, while preserving liability for their own content/conduct and other exceptions. This can separate responsibility for user behavior from responsibility of the infrastructure.",
+        "source": "https://www.everycrsreport.com/reports/R46751.html"
+      },
+      {
+        "id": "visibility-accountability-gap",
+        "mechanism": "A harmful dynamic can be publicly visible yet difficult to stop because evidence, jurisdiction, legal elements, platform rules, infrastructure ownership and institutional authority are distributed across different actors."
+      }
+    ],
+    "chris_chan_case_note": "The Chris Chan/CWCki lineage is useful precisely because it demonstrates temporal persistence: documentation that begins around one highly visible person can become wiki memory, forum culture, a reusable target template and then a broader multi-target ecology. The project should describe documented actions and source provenance rather than treating every observer as one coordinated stalker."
+  },
+  "platform_genealogy": [
+    {
+      "id": "4chan",
+      "opened": "2003",
+      "founder": "Christopher Poole",
+      "role": "anonymous imageboard seed",
+      "affordances": [
+        "anonymity",
+        "ephemerality",
+        "board-local norms",
+        "meme production"
+      ],
+      "money": [
+        "advertising",
+        "4chan Pass"
+      ],
+      "current_observable": "4chan sells a Pass for $30/year or $60/3 years; the site's FAQ describes CDN/colocated infrastructure and large traffic.",
+      "sources": [
+        "https://www.4chan.org/pass",
+        "https://4chan.org/faq"
+      ]
+    },
+    {
+      "id": "reddit",
+      "opened": "2005",
+      "founders": [
+        "Steve Huffman",
+        "Alexis Ohanian"
+      ],
+      "role": "community-of-communities platform",
+      "affordances": [
+        "subreddits",
+        "voting",
+        "persistent threads",
+        "moderation",
+        "search"
+      ],
+      "money": [
+        "advertising",
+        "other revenue"
+      ],
+      "current_observable": "Reddit reported $2.203B revenue for 2025, including $2.1B advertising revenue, with 121.4M daily active uniques in Q4.",
+      "sources": [
+        "https://investor.redditinc.com/news-events/news-releases/news-details/2026/Reddit-Reports-Fourth-Quarter-and-Full-Year-2025-Results-Announces-1-Billion-Share-Repurchase-Program/"
+      ]
+    },
+    {
+      "id": "8chan-8kun",
+      "opened": "2013",
+      "founder": "Fredrick Brennan",
+      "later_operator": "Jim Watkins",
+      "role": "migration/free-speech-maximalist board ecology",
+      "affordances": [
+        "user-created boards",
+        "anonymity",
+        "migration from stricter moderation"
+      ],
+      "harm_context": "In 2019 attackers used 8chan to distribute/link manifestos around Christchurch, Poway and El Paso. Record this as platform use/distribution, not monocausal explanation.",
+      "sources": [
+        "https://www.theguardian.com/technology/2019/aug/06/8chan-owner-statement-jim-watkins",
+        "https://www.theguardian.com/technology/2019/aug/04/mass-shootings-el-paso-texas-dayton-ohio-8chan-far-right-website"
+      ]
+    },
+    {
+      "id": "kiwi-farms",
+      "opened": "2013",
+      "founder": "Joshua Moon",
+      "role": "persistent target-thread/archive ecology",
+      "genealogy": "CWCki/CWCki Forums focused on Chris Chan before the forum broadened and became Kiwi Farms.",
+      "persistence_signal": "A 2024 research study of 231 threads found sustained collaborative narrative escalation; an Open Measures summary reports more than 25% of targeted threads received replies for longer than 12 months.",
+      "infrastructure_event": "Cloudflare blocked Kiwi Farms in September 2022 after saying threats had escalated to an immediate threat to human life; it also said the site could move providers and return.",
+      "harm_boundary": "Major reporting has associated at least three suicides with people targeted by the community; preserve person-by-person causal status rather than turning that into a rhetorical body count.",
+      "sources": [
+        "https://blog.cloudflare.com/kiwifarms-blocked/",
+        "https://par.nsf.gov/servlets/purl/10565774",
+        "https://www.washingtonpost.com/technology/2022/09/03/cloudflare-drops-kiwifarms/"
+      ]
+    }
+  ],
+  "role_ecology": [
+    {
+      "term": "Cow / lolcow",
+      "function": "visible subject around whom repeatable attention organizes",
+      "boundary": "role in an attention relation, never intrinsic human worth"
+    },
+    {
+      "term": "Farmer",
+      "function": "cultivates attention by tracking, clipping, archiving, investigating, provoking, interpreting or packaging",
+      "boundary": "describe actual conduct before applying project metaphor"
+    },
+    {
+      "term": "Dog",
+      "function": "pursuit/reaction role—defend, attack, monitor, expose, challenge, follow or amplify",
+      "boundary": "not proof of service to a hidden master"
+    },
+    {
+      "term": "Mud Dweller",
+      "function": "project term for activity that repeatedly lives inside accumulated conflict residue and inherited enemy narratives",
+      "boundary": "mythic/analytical, not diagnosis"
+    },
+    {
+      "term": "Archon",
+      "function": "project symbolic gatekeeper/authority node",
+      "boundary": "may be compared to moderator, classifier, broker or institutional gate only when function is documented"
+    }
+  ],
+  "money_and_budget_layers": {
+    "rule": "Organization-wide revenue or budget does not prove spending on a particular target, ideology or case. Record restricted program budgets separately when available.",
+    "examples": [
+      {
+        "entity": "Reddit",
+        "period": "2025",
+        "amount": "$2.203B revenue; $2.1B advertising",
+        "meaning": "illustrates how community attention becomes platform-scale economic inventory",
+        "source": "https://investor.redditinc.com/news-events/news-releases/news-details/2026/Reddit-Reports-Fourth-Quarter-and-Full-Year-2025-Results-Announces-1-Billion-Share-Repurchase-Program/"
+      },
+      {
+        "entity": "SPLC",
+        "period": "FY ending Oct 2024, filing processed 2026",
+        "amount": "$129.1M revenue; $129.0M expenses; $786.8M net assets",
+        "meaning": "organization-wide nonprofit scale; not a hate-group-program budget",
+        "source": "https://projects.propublica.org/nonprofits/organizations/630598743"
+      },
+      {
+        "entity": "ADL",
+        "period": "FY ending Jun 2024, filing processed 2026",
+        "amount": "$162.9M revenue; $129.8M expenses; $44.0M net assets",
+        "meaning": "organization-wide nonprofit scale; not a Center on Extremism budget",
+        "source": "https://projects.propublica.org/nonprofits/organizations/131818723"
+      },
+      {
+        "entity": "ADL Foundation",
+        "period": "FY ending Jun 2024",
+        "amount": "$30.8M revenue; $20.7M expenses; $159.6M net assets",
+        "meaning": "separate affiliated foundation; do not merge finances silently",
+        "source": "https://projects.propublica.org/nonprofits/organizations/132887439"
+      },
+      {
+        "entity": "FBI",
+        "period": "FY 2026 budget request",
+        "amount": "$10.1186B requested; 33,262 positions",
+        "meaning": "agency-wide federal budget, not a hate-crime or SPLC-specific budget",
+        "source": "https://www.justice.gov/media/1403736/dl"
+      }
+    ],
+    "flow_questions": [
+      "Who receives money because attention persists?",
+      "Who pays for hosting/CDN/payment processing?",
+      "Which creators monetize reactions?",
+      "Which nonprofits raise donations around threat/classification narratives?",
+      "Which political committees raise/spend around cultural conflict?",
+      "Which costs are unpaid volunteer labor rather than budgeted activity?"
+    ]
+  },
+  "media_translation": {
+    "layers": [
+      {
+        "id": "primary",
+        "meaning": "original post, stream, filing, speech, video, dataset"
+      },
+      {
+        "id": "forum-archive",
+        "meaning": "thread/wiki/archive converts event into persistent searchable memory"
+      },
+      {
+        "id": "reaction-entertainment",
+        "meaning": "streamers, internet bloodsports, commentary and satire convert events into performance and audience"
+      },
+      {
+        "id": "journalism",
+        "meaning": "professional reporting selects, verifies, contextualizes and republishes"
+      },
+      {
+        "id": "watchdog-classifier",
+        "meaning": "SPLC, ADL and similar organizations turn observations into reports, categories, maps and public claims"
+      },
+      {
+        "id": "political",
+        "meaning": "campaigns, movements, officials and advocates turn cultural frames into mobilization, fundraising, policy or law"
+      },
+      {
+        "id": "state",
+        "meaning": "police, FBI, courts and regulators enter only under their own authority and evidentiary/legal standards"
+      }
+    ],
+    "fake_media_rule": "Store 'fake media' as an attributed accusation about a specific report or claim. Record the disputed proposition, source chain, correction and evidence; never encode an outlet as intrinsically fake."
+  },
+  "politics_and_memes": [
+    {
+      "id": "maga",
+      "type": "political movement",
+      "role": "example of campaign slogan -> identity -> social movement -> influencer/media ecosystem",
+      "boundary": "not synonymous with 4chan, trolling or extremism"
+    },
+    {
+      "id": "own-the-libs",
+      "type": "adversarial rhetorical style",
+      "role": "reaction can become success metric: provoking the opponent itself produces status/content",
+      "boundary": "study as a style in parts of conservative culture, not the essence of all conservatives"
+    },
+    {
+      "id": "drain-the-swamp",
+      "type": "campaign slogan",
+      "origin": "Trump used the phrase repeatedly in October 2016 as anti-corruption/anti-Washington rhetoric and described adopting it after crowd response.",
+      "project_comparison": "Trump's slogan and Tim's Swamp share anti-system imagery but refer to different constructs.",
+      "source": "https://rollcall.com/factbase/trump/transcript/donald-trump-speech-las-vegas-nv-october-30-2016"
+    },
+    {
+      "id": "count-binface",
+      "type": "satirical political persona",
+      "role": "counterexample showing meme/persona culture crossing into formal elections through humor rather than harassment",
+      "source": "https://countbinface.com/past-campaigns"
+    },
+    {
+      "id": "christcuck",
+      "type": "offensive subcultural slur",
+      "role": "boundary language combining religious identity with the 'cuck' insult to frame perceived weakness/betrayal; treat as language, not a group"
+    }
+  ],
+  "classifier_and_state_interfaces": [
+    {
+      "id": "SPLC",
+      "type": "private nonprofit classifier/watchdog",
+      "method": "SPLC says it uses publications, citizen reports, law enforcement, field sources, web postings and news reports; its hate-group category does not require criminal conduct.",
+      "budget_note": "organization-wide FY2024 scale recorded separately above",
+      "current_2026_case": "DOJ indicted SPLC in April 2026 and later added charges/defendant in August over alleged concealed use of donated funds and fictitious accounts connected to paid informants. DOJ says these are allegations; SPLC pleaded not guilty and argued political retaliation.",
+      "sources": [
+        "https://www.splcenter.org/resources/reports/methodology-how-hate-groups-are-identified-and-categorized/",
+        "https://www.justice.gov/opa/pr/federal-grand-jury-charges-southern-poverty-law-center-wire-fraud-false-statements-and",
+        "https://www.justice.gov/usao-mdal/pr/second-superseding-indictment-adds-defendant-and-charges-southern-poverty-law-center",
+        "https://www.splcenter.org/presscenter/motion-vindictive-prosecution-department-justice/"
+      ]
+    },
+    {
+      "id": "ADL",
+      "type": "private nonprofit classifier/watchdog",
+      "method": "ADL says its Center on Extremism uses open-source intelligence and compiles incident/symbol datasets including the H.E.A.T. Map from news, government documents, victim reports, extremist sources and its own investigations.",
+      "boundary": "incident map, symbol database and organization-level classification are different data objects.",
+      "sources": [
+        "https://www.adl.org/research-centers/center-on-extremism",
+        "https://www.adl.org/resources/tools-to-track-hate/heat-map"
+      ]
+    },
+    {
+      "id": "FBI",
+      "type": "federal law-enforcement agency",
+      "role": "FBI investigates federal hate crimes/civil-rights violations and collects UCR hate-crime data. The FBI itself emphasizes that hate alone is not a crime; there must be a criminal offense plus bias motivation.",
+      "budget_note": "FY2026 agency-wide request recorded separately above",
+      "splc_role": "DOJ says the FBI investigated the 2026 SPLC financial case with IRS-CI.",
+      "sources": [
+        "https://www.fbi.gov/investigate/civil-rights/hate-crimes",
+        "https://www.justice.gov/opa/pr/federal-grand-jury-charges-southern-poverty-law-center-wire-fraud-false-statements-and"
+      ]
+    }
+  ],
+  "accountability_gap": {
+    "question": "Why can something look obviously abusive to ordinary readers yet persist in public?",
+    "answer_parts": [
+      "Moral wrong, platform-rule violation, tort, crime and human-rights concern are not identical legal categories.",
+      "Anonymous/distributed participation makes attribution expensive.",
+      "A years-long pattern can consist of thousands of individually small acts spread across people and jurisdictions.",
+      "The archive preserves material even after original actors leave.",
+      "Intermediaries may have legal protection for third-party speech while still having their own moderation rules.",
+      "Law enforcement needs statutory elements and evidence, not merely public ugliness.",
+      "Infrastructure providers can intervene faster than courts, but deplatforming may cause migration rather than disappearance.",
+      "Targets may face a paradox: responding, correcting or requesting removal can create new attention."
+    ]
+  },
+  "darvo": {
+    "definition": "Deny, Attack, Reverse Victim and Offender.",
+    "project_use": "Use as a testable response-pattern hypothesis when a challenged actor denies conduct, attacks the accuser and recasts themselves as the harmed party.",
+    "boundary": "A denial is not automatically DARVO and DARVO language is not proof the underlying allegation is true.",
+    "research": [
+      "https://pubmed.ncbi.nlm.nih.gov/37154429/"
+    ]
+  },
+  "case_protocol": [
+    "Origin — when, by whom and for what initial purpose did the scene/platform begin?",
+    "Affordance — what behavior does the technology make cheap or rewarding?",
+    "Role — who watches, archives, reacts, moderates, classifies, funds, reports or becomes targeted?",
+    "Money — what revenue, donations, subscriptions, salaries, political spending or infrastructure payments are actually documented?",
+    "Memory — which archives let old material reactivate?",
+    "Escalation — what new event or narrative element renews attention?",
+    "Media — who transforms raw events into entertainment, journalism, advocacy or political framing?",
+    "Institution — which classifier, employer, platform, host, police agency, FBI office, court or regulator enters?",
+    "Legal status — allegation, platform rule, civil claim, charge, conviction, official finding or unresolved?",
+    "Harm — what happened to the person, and what causal level is actually supported?",
+    "Repair — what correction, exit, de-escalation, record repair or incentive change reduced recurrence?"
+  ],
+  "next_research": [
+    "Build person-by-person human-consequence cases instead of one death count.",
+    "Build a sourced CWCki -> CWCki Forums -> Kiwi Farms chronology with dated ownership/infrastructure changes.",
+    "Build Internet Bloodsports / Killstream / Da Sektur chronology and money model.",
+    "Map reaction-channel monetization by documented platform revenue tools rather than assumed earnings.",
+    "Build classifier correction ledgers for SPLC and ADL.",
+    "Build current Ofcom/Online Safety Act case as cross-border platform-governance example.",
+    "Build neutral MAGA cultural dossier separating campaign, grassroots identity, influencer economy, party organization and anonymous-board overlap.",
+    "Add legal matrix: cyberstalking, true threats, swatting, doxxing/privacy, defamation, copyright, Section 230 and cross-border jurisdiction."
+  ]
+}
