@@ -90,10 +90,11 @@ function labelForState(st){
 function currentState(type='space'){return {level,room:local,inner,label:labelForState({level,room:local,inner}),type}}
 function sameState(a,b){return a&&b&&a.level===b.level&&(a.room||null)===(b.room||null)&&(a.inner||null)===(b.inner||null)&&a.type===b.type}
 function saveJourney(){try{localStorage.setItem(JOURNEY_KEY,JSON.stringify(journey.slice(-48)))}catch(e){}}
-function recordJourney(type='space'){
+function recordJourney(type='space',labelOverride=null){
  if(suppressJourney)return;
- const st=currentState(type),last=journey[journey.length-1];
- if(!sameState(last,st)){journey.push(st);journey=journey.slice(-48);saveJourney();}
+ const st=currentState(type);if(labelOverride)st.label=labelOverride;
+ const last=journey[journey.length-1];
+ if(!sameState(last,st)||last?.label!==st.label){journey.push(st);journey=journey.slice(-48);saveJourney();}
 }
 function restoreJourney(st){suppressJourney=true;level=st.level||'world';local=st.room||null;inner=st.inner||null;yaw=0;render();suppressJourney=false}
 function renderJourney(){
@@ -150,7 +151,7 @@ function renderDoors(){
    d.style.setProperty('--angle',((360/n)*i)+'deg');
    const a=document.createElement('a');a.href=I.homepage;
    a.innerHTML='<small>'+ (selected?'LOCAL CENTER':wormhole?'WORMHOLE DOOR':I.kind==='inner'?'INNER ROOM':'DWELLING') +'</small><strong>'+I.label+'</strong><span>'+I.subtitle+'</span>';
-   a.addEventListener('mouseenter',()=>{copy.innerHTML='<b>'+I.label+'</b><span>'+I.subtitle+' · open the readable room, or make this the local spatial center.</span>'});a.addEventListener('click',()=>{recordJourney('read');renderJourney()});
+   a.addEventListener('mouseenter',()=>{copy.innerHTML='<b>'+I.label+'</b><span>'+I.subtitle+' · open the readable room, or make this the local spatial center.</span>'});a.addEventListener('click',()=>{recordJourney('read','Read: '+I.label);renderJourney()});
    d.appendChild(a);
    const hit=document.createElement('button');hit.type='button';hit.textContent='center';hit.title='Make '+I.label+' the local center';hit.style.cssText='position:absolute;left:50%;bottom:-28px;transform:translateX(-50%);font:700 8px var(--site-font-sans);letter-spacing:.06em;text-transform:uppercase;background:rgba(6,8,6,.85);color:var(--site-muted);border:1px solid var(--site-line);border-radius:999px;padding:4px 7px;cursor:pointer';hit.onclick=e=>{e.preventDefault();setLocal(I)};d.appendChild(hit);
    rot.appendChild(d);
@@ -159,7 +160,7 @@ function renderDoors(){
 }
 function renderSign(){
  const L=data.levels.find(x=>x.id===level)||data.levels[1];sign.innerHTML='<b>'+L.label+'</b><span>'+L.description+'</span>';
- portals.innerHTML=(!local&&!inner?(L.landmarks||[]):[]).map(x=>'<a href="'+routeFor(x.route)+'">'+x.label+'</a>').join('');
+ portals.innerHTML=(!local&&!inner?(L.landmarks||[]):[]).map(x=>'<a href="'+routeFor(x.route)+'" data-portal-label="'+x.label.replace(/\"/g,'&quot;')+'">'+x.label+'</a>').join('');portals.querySelectorAll('a[data-portal-label]').forEach(a=>a.addEventListener('click',()=>{recordJourney('portal','Portal: '+a.dataset.portalLabel);renderJourney()}));
  if(inner){
    const S=subById[inner],P=roomById[S?.parent_room_id];innerBadge.hidden=false;innerBadge.textContent='inside '+(P?.label||'Dwelling')+' · nested room';
    copy.innerHTML='<b>'+S.title+'</b><span>'+S.purpose+' This nested Room is now locally central; its registered adjacent Rooms surround you.</span>';
