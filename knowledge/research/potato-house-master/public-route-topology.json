@@ -1,6 +1,6 @@
 {
-  "version": "1.6.0",
-  "updated": "2026-09-18",
+  "version": "1.7.0",
+  "updated": "2026-09-19",
   "purpose": "Route-topology bridge for active public surfaces; navigation/migration classification only, not substantive knowledge ownership. House, Paths and Living Axis are structural projections over the canonical Rooms, not additional fact owners.",
   "room_registry": "data/house/rooms.json",
   "public_surface_registry": "data/house/public-surfaces.json",
@@ -523,6 +523,27 @@
       "surface_id": "paths",
       "surface_type": "guide",
       "canonical_route": "/paths/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "elevator",
+      "surface_type": "guide",
+      "canonical_route": "/elevator/",
       "primary_hub_id": null,
       "room_ids": [
         "potatoverse-canon",
