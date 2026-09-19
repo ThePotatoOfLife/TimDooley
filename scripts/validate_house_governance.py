@@ -31,6 +31,8 @@ PROVIDENCE_STRUCTURE=ROOT/'data/house/providence-pillars-esoteric-structure.json
 LAYER_TERRAIN_ATLAS=ROOT/'data/house/layer-terrain-regime-atlas.json'
 PLACEMENT_MATRIX=ROOT/'data/house/placement-matrix.json'
 SUBROOMS=ROOT/'data/house/subrooms.json'
+HOLDINGS=ROOT/'data/house/holdings.json'
+SPECIALIST_SUBVIEWS=ROOT/'data/house/specialist-subviews.json'
 CONCEPT_TOPOLOGY=ROOT/'data/house/concept-topology.json'; CONCEPT_TOPOLOGY_SCHEMA=ROOT/'schemas/house-concept-topology.schema.json'
 TOPOLOGY_FIXTURE=ROOT/'data/house/topology-golden-fixture.json'
 TOPOLOGY_CONTEXT_JS=ROOT/'app/topology-context.js'
@@ -99,7 +101,7 @@ HOME_SPINE=(
     'href="philosophy/"',
     'href="science/"',
     'href="world/"',
-    'Seed</b><i>→</i><b>Foundation</b><i>→</i><b>Root</b><i>→</i><b>Tree</b><i>→</i><b>Fruit</b><i>→</i><b>Memory</b><i>→</i><b>Return</b>',
+    'Seed</b><i>→</i><b>Foundation</b><i>→</i><b>Reproduction</b><i>→</i><b>Branching</b><i>→</i><b>Fruit</b><i>→</i><b>Memory</b><i>→</i><b>Refoundation / Return</b>',
     'href="timeline/"',
     'href="works/"',
     'href="context/source-authority/"',
@@ -229,6 +231,34 @@ def validate_surfaces(errors,rooms):
     validate_works_reader(errors); validate_home_corridor(errors); validate_builder_authority(errors)
     return p
 
+
+def validate_specialist_subviews(errors,surfaces):
+    data=load(SPECIALIST_SUBVIEWS,errors)
+    if not data: return
+    surface_ids={x.get('id') for x in surfaces.get('surfaces',[]) if isinstance(x,dict) and x.get('id')}
+    subrooms=load(SUBROOMS,errors)
+    room_ids={x.get('id') for x in subrooms.get('subrooms',[]) if isinstance(x,dict) and x.get('id')}
+    ids=[]; routes=[]
+    for row in data.get('records',[]):
+        if not isinstance(row,dict):
+            errors.append('specialist subview record must be object'); continue
+        sid=row.get('id'); route=row.get('route'); parent=row.get('parent_surface_id')
+        ids.append(sid); routes.append(route)
+        if not sid or not isinstance(sid,str): errors.append('specialist subview missing id')
+        if not route or not str(route).startswith('/'): errors.append(f'specialist subview {sid} invalid route')
+        if parent not in surface_ids: errors.append(f'specialist subview {sid} unknown parent surface {parent}')
+        if row.get('classification') not in {'living-specialist','historical-source','generated-view','compatibility','duplicate-candidate'}:
+            errors.append(f'specialist subview {sid} invalid classification')
+        for rid in row.get('room_ids',[]):
+            if rid not in room_ids: errors.append(f'specialist subview {sid} unknown nested Room {rid}')
+        source=ROOT/str(route).strip('/')/'index.html' if str(route).endswith('/') else ROOT/str(route).lstrip('/')
+        if not source.exists(): errors.append(f'specialist subview {sid} missing source route {route}')
+        for owner in row.get('current_owner_refs',[]):
+            if not (ROOT/owner).exists(): errors.append(f'specialist subview {sid} missing current owner ref {owner}')
+    if len(ids)!=len(set(ids)): errors.append('specialist subview ids must be unique')
+    if len(routes)!=len(set(routes)): errors.append('specialist subview routes must be unique')
+    if set(routes) & {x.get('canonical_route') for x in surfaces.get('surfaces',[]) if isinstance(x,dict)}:
+        errors.append('specialist subview route must not duplicate a main public surface route')
 
 def validate_concept_topology(errors,rooms,surfaces):
     data=load(CONCEPT_TOPOLOGY,errors); sch=load(CONCEPT_TOPOLOGY_SCHEMA,errors)
@@ -524,6 +554,32 @@ def validate_seed_spiral_routing(errors):
     if data.get('ring',{}).get('vertical_sign')!='zero': errors.append('Ring must remain zero axial displacement')
 
 
+def validate_holdings_alignment(errors):
+    data=load(HOLDINGS,errors)
+    if not data: return
+    assignments={x.get('path'):x.get('primary_owner_room_id') for x in data.get('file_assignments',[]) if isinstance(x,dict) and x.get('path')}
+    room_ids={x.get('room_id') for x in data.get('holdings',[]) if isinstance(x,dict) and x.get('room_id')}
+    seen_featured={}
+    for room in data.get('holdings',[]):
+        if not isinstance(room,dict): continue
+        rid=room.get('room_id')
+        if rid not in room_ids: errors.append(f'holdings row missing valid room_id: {rid}')
+        featured=room.get('featured_holdings',[]) or []
+        for row in featured:
+            if not isinstance(row,dict) or not row.get('path'):
+                errors.append(f'Room {rid} contains invalid featured holding'); continue
+            path=row.get('path')
+            owner=assignments.get(path)
+            if owner and owner!=rid:
+                errors.append(f'featured holding {path} appears in {rid} but canonical assignment is {owner}')
+            if path in seen_featured and seen_featured[path]!=rid:
+                errors.append(f'featured holding {path} appears in multiple Rooms: {seen_featured[path]}, {rid}')
+            seen_featured[path]=rid
+    for path,rid in assignments.items():
+        if rid not in room_ids:
+            errors.append(f'file assignment {path} references unknown Room {rid}')
+
+
 def validate_navigation_consolidation(errors):
     manifest=load(NAVIGATION_MANIFEST,errors); atlas=load(RELIGIOUS_BRANCH_ATLAS,errors)
     if not manifest or not atlas: return
@@ -627,8 +683,7 @@ def validate_placement_matrix(errors):
     if data.get('output_contract',{}).get('unresolved_destination')!='research-lab/open-questions': errors.append('unresolved placements must route to Research Lab/Open Questions')
 
 
-def validate_project_center(errors)
-    validate_crosscutting_lenses(errors):
+def validate_project_center(errors):
     data=load(PROJECT_CENTER,errors)
     if not data: return
     centers=data.get('center_distinctions',{})

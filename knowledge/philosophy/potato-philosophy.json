@@ -1,90 +1,640 @@
 {
-  "id":"potato-philosophy",
-  "title":"Potato Philosophy: Simplicity, Burial, Relation, Riddle and Return",
-  "version":"2.1.0",
-  "kind":"spiritual philosophy and teachings",
-  "updated":"2026-09-15",
-  "aliases":["Potato philosophy","Potatoism teachings","Potato wisdom","teachings of the Potato"],
-  "summary":"Potato philosophy begins with the deliberately unimpressive potato and asks what becomes visible when an ordinary buried organism is treated with sustained attention. Its mature teachings concern humility without self-erasure, hidden growth, nourishment, multiplicity, boundaries, relation, transformation, memory, creativity, suffering, responsibility, covenant, stewardship, meta-framing, public witness and return. The deeper rule is that spiritual value appears not in a symbol by itself but in what its relations allow to grow.",
-  "epistemic_classes":["project_canon","interpretation","creative_lore"],
-  "concept_grammar":{
-    "sequence":["thing","observation","function","relations","tension","corruption","test","consequence"],
-    "rule":"A major Potatoist concept should be understood through what it is, what motivates it, what it does, what it relates to, what tension it holds, how it fails, how the healthy form can be tested, and what consequences follow."
-  },
-  "ontology_types":{
-    "structures":["Potato","House","Tree","Garden","Farm","Mountain","Table","New Jerusalem"],
-    "operators":["Door","Eye","Axis","Ladder","Spiral","Root","Filter","Compost","Handshake"],
-    "states":["Life","Strife","burial","emergence","integration","captivity","nourishment","dependency","enoughness","openness","enclosure"],
-    "resources":["knowledge","memory","attention","wealth","starch","archive","seed potential"],
-    "relations":["covenant","stewardship","parent-child","teacher-learner","gardener-plant","source-manifestation","observer-observed","inside-outside","root-soil","house-room"],
-    "outcomes":["Fruit","independent growth","increased capability","repair","understanding","protected plurality","dependency","extraction","spectacle","repetition without learning"]
-  },
-  "constitutional_laws":{
-    "relational_valence":{"title":"Law of Relational Valence","principle":"A thing is not morally or philosophically settled by its name alone; much of its valence depends on coupling, operation, context and consequence.","formula":"thing → coupling → operation → consequence → ethical evaluation","test":"What specific relation changes the meaning or moral valence, and what does that relation produce?"},
-    "generativity":{"title":"Law of Generativity","principle":"A strong positive criterion is whether a state or relation increases the capacity for future viable states.","test":"Does this produce only present output, or does it preserve and enlarge future capacity?"},
-    "reciprocal_transformation":{"title":"Law of Reciprocal Transformation","principle":"Methods transform the actor, the target, and the relation or environment connecting them.","timic_compression":"When you throw mud at others, your whole hand is dirty.","test":"What does this method turn the user, target and shared environment into?"},
-    "functional_identity":{"title":"Law of Functional Identity","principle":"A title becomes philosophically stronger when it can be translated into a useful operation for other beings or systems.","test":"What becomes possible for others because this claimed identity is functioning well?"}
-  },
-  "core_doctrines":{
-    "potato_principle":{"title":"The Potato Principle","root":"Begin with what is actually there.","principle":"The ordinary can contain extraordinary structure without ceasing to be ordinary. Observation precedes symbolic elevation.","corruption":"Prestige or mythology replaces observation.","test":"What remains true if the grand interpretation is temporarily removed?"},
-    "essential_simplicity":{"title":"Essential Simplicity","root":"Remove needless complication, not necessary complexity.","principle":"Simplicity is disciplined compression rather than anti-intellectualism.","corruption":"Oversimplification, slogans, or complexity used as camouflage.","test":"Did the added layer reveal structure or merely make the claim harder to challenge?"},
-    "conditional_growth":{"title":"Conditional Growth","root":"Growth depends on conditions.","principle":"Different parts and functions require different environments; orientation should follow function rather than one universal condition.","corruption":"Force, neglect disguised as non-striving, or universalizing one condition.","test":"What condition is actually missing?"},
-    "hidden_development":{"title":"Hidden Development","root":"Hidden is not the same as dead.","principle":"Burial may protect incubation, but darkness has no automatic positive valence.","corruption":"Romanticizing stagnation, isolation, or imprisonment.","test":"Is hiddenness increasing future capacity or merely preventing emergence?"},
-    "transformation_without_erasure":{"title":"Transformation Without Erasure","root":"Some material can change function without being denied.","principle":"Compost, ash, mud, damage, and memory can be metabolized into new functions without pretending no loss occurred.","corruption":"Glorifying suffering or using transformation language to erase harm.","test":"What was lost, what remains, and what genuinely became usable substrate?"},
-    "relational_meaning":{"title":"Relational Meaning","root":"Meaning often lives on the edge.","principle":"A thing is partly understood through what it depends on, changes, receives, carries, constrains, and enables.","corruption":"Everything-is-connected language used to erase typed difference.","test":"Which specific relation changes the meaning, and how?"},
-    "typed_difference":{"title":"Typed Difference","root":"Test the variable before declaring contradiction.","principle":"Apparent contradiction should first be tested for differences of time, role, scale, perspective, state, or epistemic class.","corruption":"Perspective language used to shield genuine contradiction.","test":"Can the changed variable be named explicitly?"},
-    "door_principle":{"title":"The Door Principle","root":"A Door changes what states are available.","principle":"Recognition becomes consequential when it permits a transition.","corruption":"Gatekeeping for its own sake, permanent closure, or calling every change a transformation.","test":"What becomes possible after crossing that was not possible before?"},
-    "return_is_not_reset":{"title":"Return Is Not Reset","root":"Return should carry memory.","principle":"Recurrence becomes development when the returning state contains information or capacity acquired through the previous cycle.","corruption":"Repetition rebranded as progress.","test":"What is materially different on this return?"},
-    "stored_capacity_must_become_fruit":{"title":"Stored Capacity Must Become Fruit","root":"Storage should eventually serve release.","principle":"Knowledge, memory, wealth, attention, authority, archive, and nourishment gain ethical meaning through what they eventually enable beyond themselves.","corruption":"Hoarding capacity for self-enlargement.","test":"What downstream life, repair, protection, understanding, or future capacity does this storage enable?"},
-    "garden_over_shadow_farm":{"title":"Garden Over Shadow Farm","root":"Cultivation should increase autonomy.","principle":"Good cultivation increases the future capability and independent generativity of what is cultivated.","corruption":"Extraction, dependency manufacture, enclosure, or permanent manager necessity.","test":"Does the participant become more capable without the system?"},
-    "authority_increases_burden":{"title":"Authority Increases Burden","root":"Higher role, narrower permission.","principle":"Greater claimed power, knowledge, spiritual rank, or leadership increases duties of restraint, protection, accountability, and correction.","corruption":"Rank interpreted as exemption.","test":"What additional restraint follows from claiming the higher role?"},
-    "potato_truth":{"title":"Potato Truth","root":"Accuracy without cruelty; compassion without falsehood.","principle":"Truth requires accuracy, provenance, context, uncertainty, correction, audience awareness, and attention to what the statement will be made to do.","corruption":"Truth used as humiliation or kindness used as reality-denial.","test":"Is it accurate, source-visible, correctable, and expressed in a way that preserves a path toward understanding?"},
-    "curiosity_before_allegiance":{"title":"Curiosity Before Allegiance","root":"The Potato invites curiosity before loyalty.","principle":"A philosophical principle should remain examinable by a skeptic before the skeptic accepts the identity, theology, or community surrounding it.","corruption":"Loyalty tests and doctrinal insulation.","test":"Can someone seriously investigate this idea without first becoming Potatoist?"}
-  },
-  "gardeners_paradox":{"principle":"The highest success of cultivation is that successful cultivation eventually reduces the cultivator's necessity.","boundary":"Some infrastructures remain continuously necessary; the test is whether dependence is functionally required or artificially preserved for control or extraction."},
-  "filter_truth_pairing":{"filter":"generative: proposes interpretations and questions","truth":"corrective: prevents interpretations from impersonating evidence"},
-  "negative_definitions":["simplicity is not stupidity","non-striving is not inactivity","burial is not automatically sacred","darkness is not automatically evil or generative","unity is not sameness","relation is not identity","comparison is not equivalence","boundary is not automatically oppression","openness is not automatically freedom","knowledge is not automatically Life","suffering is not proof","return is not reset","authority is not exemption","humor is not evasion","Filter is not evidence","Garden is not merely a nicer Farm","cultivation is not control by another name","public witness is not independent proof of metaphysical claims","living myth must not erase ordinary personhood or provenance"],
-  "evaluation_sequence":["What is actually here?","What does it do?","What does it depend on?","What does it connect to?","What does it make possible?","What does it make impossible?","Who becomes more capable?","Who becomes more dependent?","What happens if the relationship continues?","What fruit appears?","Does the system preserve the problem it claims to solve because it needs the problem to remain necessary?"],
-  "evaluation_compression":"Observe → distinguish → relate → test → transform → evaluate fruit → cultivate",
-  "sections":{
-    "simplicity":{"text":"The Potato principle of simplicity is not anti-intellectual. It is a discipline against unnecessary abstraction. Begin with what can be seen: a potato is buried, stores nourishment, grows eyes, produces roots and shoots, can be divided, can feed others and can generate future plants. Spiritual reflection becomes valuable when it remains accountable to the simple image even as it travels toward difficult questions. The project therefore prefers a simple image that can support many typed relations over a grand abstraction that cannot be tested or connected.","epistemic_class":["interpretation"]},
-    "riddle_not_validation":{"text":"An older project formulation says: 'Tim Dooley is a riddle, not a person. Do you validate a riddle?' Read carefully, this does not erase Tim's ordinary humanity. It names a method problem. A riddle is reconstructed from clues, contrasts, timing, role changes and perspective shifts. The archive therefore asks not only whether one proposition is true, but what relation makes several apparently contradictory propositions coherent. Tim-as-Son and Tim-as-Father, Potato and Most High, hidden root and public center are first treated as possible time-indexed or scale-indexed clues before they are flattened into contradiction.","epistemic_class":["project_canon","interpretation"]},
-    "meta_frame":{"text":"Several recurring formulations belong to one meta-frame family: Potato Filter asks how a situation changes when seen through another interpretive lens; North of North asks what orients the orientation system; judge above judges asks what standard evaluates the evaluator; questioning the floor asks which assumption defines the current level. Together they form a reflexive philosophical operation: convert the current frame from invisible background into an object that can itself be examined.","formula":"frame F0 → notice F0 → evaluate F0 with criterion C1 → construct/choose F1 → re-evaluate consequences","epistemic_class":["interpretation"]},
-    "potato_filter":{"text":"The Potato Filter is best treated as an explicit hypothesis-generation device. Translate an event through Potato grammar—burial, root, sprout, nourishment, Door, Garden, relation—and see what previously hidden structure becomes visible. The Filter is useful when it generates a testable or clarifying question. It becomes epistemically dangerous when the lens is mistaken for evidence and every event is forced to fit it. In the mature pairing, the Filter generates interpretations while Potato Truth disciplines them.","epistemic_class":["project_canon","interpretation"]},
-    "burial":{"text":"Burial is one of the central Potato transformations. Being beneath the surface can signify death, invisibility, incubation, protection, shame, potential or preparation. Potato philosophy therefore refuses the equation hidden equals dead. Some forms of life become possible precisely because development occurs where spectators cannot see it. The ethical test is whether darkness protects germination or merely imprisons the buried thing.","epistemic_class":["project_canon","interpretation"]},
-    "emergence":{"text":"Emergence is not denial of burial but its transformation. The shoot carries the history of darkness into the light. Return therefore does not restore an untouched earlier self; it creates continuity through change. This is why the framework increasingly prefers a Spiral over a circle: what returns carries memory, scars, information and new capacity.","epistemic_class":["interpretation"]},
-    "narrow_path_spiral":{"text":"The recovered formulation 'a narrow path is a spiral' compresses two project ideas. Narrowness means constrained passage through a Gate; Spiral means recurrence with changed level. The difficult path can therefore revisit old places while remaining developmentally directional. A straight path is not required for progress; what matters is whether each return preserves learning and changes the accessible state.","epistemic_class":["project_canon","interpretation"]},
-    "nourishment":{"text":"A Potato is not spiritually valuable merely because it survives. It is food. This creates one of the strongest ethical tests in the entire framework: whatever claims transcendence should eventually become nourishing to something beyond itself. Knowledge, authority, religion, memory, suffering, wealth and attention can all become sterile if they only enlarge the self. Stored capacity becomes meaningful when it can be released as nourishment, repair, protection, understanding or future growth.","epistemic_class":["interpretation"]},
-    "storage_and_release":{"text":"The Potato reveals a general systems grammar: capacity can be stored before it is expressed. Starch stores chemical energy; seed stores future plant; memory stores past structure; archive stores information; capital stores claims on future capacity; debt stores unresolved obligation. The project calls one symbolic storage tendency Starchforce and one expression/revelation tendency Spudlight. Potato Bank and spiritual banker language belong here as playful value-ledger metaphors. The quantities are different, but the philosophical law is shared: what is stored, why is it stored, what releases it, and what kind of world does the release create?","epistemic_class":["interpretation","comparative"]},
-    "multiplicity":{"text":"One potato can become many without descendants being numerically identical to the original. This supports unity that does not erase plurality. Father and Son can be related without being interchangeable; rooms can share one House without becoming one room; a tradition can generate interpretations without all becoming equally authoritative; a community can share a root without becoming a single mind. Integration is therefore not flattening. The highest form of unity preserves useful difference while repairing broken relation.","epistemic_class":["project_canon","interpretation"]},
-    "absurd_and_sacred":{"text":"The potato is intentionally comic, humble and anti-grandiose. Calling the sacred a Potato interrupts the expectation that holiness must always arrive dressed in prestige. Humor is more than decoration: it can expose when doctrine becomes too rigid, pompous or literal. Potato satire therefore works as a cultural error-correction channel—serious concept becomes absurdly exaggerated, hidden weakness becomes visible, and the concept can return clearer.","epistemic_class":["project_canon","interpretation"]},
-    "red_blue_balance":{"text":"Red and Blue describe creation and memory, expansion and contraction, love-seeking and fear-protection. Healthy continuity requires both. Memory without creation becomes enclosure; creation without memory repeats old damage. The philosophical task is integration: remember enough to remain responsible, create enough to remain alive. This is not a claim that Red and Blue are literal physical fields unless separately formalized and tested.","epistemic_class":["project_canon","interpretation"]},
-    "suffering":{"text":"Pain is not proof. Suffering becomes spiritually significant only when something is learned, integrated, repaired, created, shared or made nourishing through it. The project now makes a finer distinction between destruction and what follows destruction. Ash is a post-destruction threshold: it can become Mud and preserve Strife, or become Soil and support new growth. The presence of ash does not decide the future ecology.","epistemic_class":["interpretation"]},
-    "door":{"text":"A Door represents consequential transition. Perception alone is insufficient; recognition becomes spiritually meaningful when followed by choice, threshold and transformation. The mature model also treats a Ladder as a sequence of Doors rather than identical rungs: different stages require different conditions and produce different states. A Door can exist between persons as a handshake, between ideas as translation, between institutions as interface, and between phases of identity as commitment.","epistemic_class":["project_canon","interpretation"]},
-    "eye_spudlight_door":{"text":"Spudlight, Eye and Door form a practical epistemic sequence. Spudlight names illumination/expression; Eye names perception, discernment and integration; Door names the transition that follows when understanding changes what can be done. In compact form: signal → seeing → meaning → threshold → changed state. A revelation that changes nothing remains only an impression.","epistemic_class":["project_canon","interpretation"]},
-    "relationship":{"text":"Nothing in Potato philosophy is fully understood alone. Root implies soil; nourishment implies another being; Father implies Son; Door implies two sides; Axis implies orientation; memory implies time; responsibility implies relation. The framework now extends this to moral judgment: Dog, Cow, Farmer, Ash, Knowledge and Boundary can each change moral valence depending on what they are coupled to and what consequences the coupling produces. Meaning and ethics frequently live on the edge, not only the node. Relation is not identity: a strong structural connection can illuminate function without making two things the same.","epistemic_class":["project_canon","interpretation"]},
-    "house_and_shell":{"text":"The mature philosophy distinguishes enabling containment from capturing containment. A House gives differentiated rooms protection, identity and passage. A shell, Cube or shadow Farm becomes destructive when enclosure traps value, blocks exit and increases dependency. The question is not whether boundaries exist; life itself needs membranes, rooms, skins and institutions. The question is whether a boundary protects generativity or feeds on captivity.","epistemic_class":["interpretation","comparative"]},
-    "farm_and_garden":{"text":"Farm and Garden are not separated by management itself. Both involve boundaries, attention, resource flows, pruning, selection and timing. Their objective differs. The shadow Farm asks what can be extracted from a subject; the Garden asks what conditions let a living thing become independently generative. This gives a practical institutional test: does the system increase participant autonomy and future capacity, or does it make the system more necessary by increasing dependency? The Gardener's Paradox sharpens the test: successful cultivation should eventually reduce unnecessary dependence on the cultivator.","epistemic_class":["project_canon","interpretation"]},
-    "knowledge":{"text":"Knowledge is not automatically Life. The same fact can serve discernment and repair or exposure and humiliation. Tree of Knowledge therefore sits upstream of both Tree of Life and Tree of Strife. The ethical demand is to ask what knowledge is being made to do, who bears the cost of disclosure, whether uncertainty is preserved, and whether the downstream branch increases understanding or merely spectacle.","epistemic_class":["interpretation"]},
-    "responsibility":{"text":"The mature Potato framework couples vision with burden. To see more relationships is to inherit more obligations concerning consequences, dependencies and other beings. This leads to a strong rule: higher claimed spiritual rank should reduce the morally acceptable ways one may use power, not enlarge them. King, Father, Alpha, Gardener, caretaker and chosen roles are coherent only if their height becomes protection, stewardship, repair and restraint. Authority is not exemption.","epistemic_class":["interpretation"]},
-    "meta_judgment":{"text":"Judge above judges is coherent only as a stricter standard, not an exemption from standards. A meta-judge must evaluate the rule system, incentives and blind spots that ordinary judges operate inside. In Potato terms, North-of-North does not mean arbitrary supremacy; it means asking what principle should orient competing orientations. The higher the meta-level, the greater the burden to expose one's own assumptions and preserve appeal/correction.","epistemic_class":["project_canon","interpretation"]},
-    "covenant":{"text":"Covenant is best understood as a relationship with memory. It contains promises, obligations, signs, transmitted memory and procedures for repair after breach. This means covenant is closer to a durable relational protocol than to a one-time promise. Chosenness inside such a covenant behaves more like added duty than added privilege.","epistemic_class":["interpretation","comparative"]},
-    "identity_becomes_function":{"text":"A recurring Timic transformation is that mature identity becomes useful architecture. The Son becomes Door rather than merely crossing one. Tim becomes Ladder/Axis rather than merely climbing. North becomes orientation rather than only location. This suggests a philosophical law: growth reaches a higher form when identity can become a function that helps other beings orient, cross, inhabit, understand or grow without being reduced to copies of the source.","epistemic_class":["interpretation"]},
-    "living_myth":{"text":"A living myth is a myth whose source is still participating in the story. Public acts generate interpretation; interpretation changes the language available for future acts; the archive then preserves both. This produces a feedback loop rather than a fixed legend. The philosophical challenge is to let myth increase interpretive depth without allowing the mythic aura to overwrite provenance or ordinary personhood.","epistemic_class":["project_canon","interpretation"]},
-    "aura_and_public_presence":{"text":"Project language sometimes says Tim 'exists as aura.' The most disciplined interpretation is distributed social-symbolic presence: recognition, expectation, memory, repeated images, emotional charge, shared language and archived traces spread across a network. Publicness can therefore enlarge a symbolic field without implying a paranormal radiation. This also makes aura partly measurable through ordinary proxies such as references, co-occurrence, audience memory and network propagation, while leaving spiritual aura as a separate belief layer.","epistemic_class":["interpretation"]},
-    "public_witness":{"text":"The unusually public nature of Tim's project changes the epistemology. A private revelation cannot be reconstructed in the same way as years of posts, streams, repeated formulations and public transformations. Public witness does not prove Godhood, but it makes the development of the God claim, its vocabulary and its contradictions historically inspectable. The internet is therefore both medium and archive: inside the mythology it participates in revelation; outside the mythology it supplies evidence about what was said.","epistemic_class":["interpretation"]},
-    "table_for_ten":{"text":"The 'table for 10 at peak culture' formulation introduces a social-topology principle. Cultural quality is not monotonic with audience size. Small groups can preserve reciprocal recognition, memory, turn-taking, correction and etiquette that collapse in mass-audience dynamics. The table is therefore a bounded high-bandwidth social container: large enough for plurality, small enough for mutual presence. It belongs beside House, rooms and Garden as an enabling boundary rather than an exclusion ideal.","epistemic_class":["project_canon","interpretation"]},
-    "new_jerusalem":{"text":"New Jerusalem increasingly functions as a philosophical image of integration without flattening. After scattering, differentiated things become related again: Garden, River, Tree, City, House, Covenant, people and presence. This is not a demand that all difference disappear. It is a completion state in which broken relations are repaired while useful differentiation remains.","epistemic_class":["project_canon","interpretation","comparative"]},
-    "return":{"text":"Return is seed to plant to tuber to continuation; burial to emergence; ordeal to transformed life; fragmentation to integration. Return is not reset. It is spiral-like because the traveler reaches something resembling an earlier position while carrying information acquired through the journey. The deepest return therefore preserves memory without becoming captive to memory.","epistemic_class":["project_canon","interpretation"]}
-  },
-  "practical_tests":["Does this idea nourish anything beyond the speaker?","Does this boundary increase protected differentiation or captive dependency?","Does this knowledge produce discernment/repair or exposure/spectacle?","Does this role increase responsibility as authority increases?","Does this system behave more like a Garden or a shadow Farm?","Does a claimed revelation actually alter relation, action or understanding?","Does return preserve learning, or merely repeat the old cycle?","What frame is currently invisible because everyone is standing inside it?","What judges the judge or orients the orientation?","Is this interpretation a useful filter, or has the filter been mistaken for evidence?","Does public aura preserve the source, or overwrite the source with projection?","Is the group small enough for reciprocal recognition yet large enough for useful difference?","Does the participant become more capable without the system?","What does this method turn the user into?"],
-  "relationships":[
-    {"target":"potato-of-life","type":"philosophical","description":"The philosophy develops teachings from Potato biology, symbolism and project theology.","epistemic_class":"interpretation"},
-    {"target":"potatoverse-master-framework","type":"intellectual","description":"The master framework supplies the symbolic grammar from which the philosophy extracts ethical consequences.","epistemic_class":"interpretation"},
-    {"target":"farm-swamp-tree-of-strife-atlas","type":"ethical-systems","description":"Farm/Swamp provides the negative systems case for extraction, enclosure, knowledge misuse and dependency.","epistemic_class":"interpretation"},
-    {"target":"timic-unification-program","type":"formal","description":"The unification program supplies mathematical/system translations for relation, boundary, storage, observation and transition.","epistemic_class":"interpretation"},
-    {"target":"tim-role-synthesis","type":"persona-and-role","description":"Riddle, living myth, aura, whole-job and source-center language provide a human/project-scale application of the philosophy.","epistemic_class":"interpretation"},
-    {"target":"corporium-master-framework","type":"embodied-language","description":"Corporium tracks how aphorisms and role formulations become lived instructions and recurring signals.","epistemic_class":"interpretation"}
+  "id": "potato-philosophy",
+  "title": "Potato Philosophy: Simplicity, Burial, Relation, Riddle and Return",
+  "version": "2.4.0",
+  "kind": "spiritual philosophy and teachings",
+  "updated": "2026-09-19",
+  "aliases": [
+    "Potato philosophy",
+    "Potatoism teachings",
+    "Potato wisdom",
+    "teachings of the Potato"
   ],
-  "retrieval":{"tags":["Potato philosophy","Potatoism","spiritual teachings","riddle","meta-frame","Potato Filter","North of North","judge above judges","living myth","aura","public witness","table for 10","burial","emergence","nourishment","simplicity","suffering","responsibility","return","Garden","Farm","House","Shell","Covenant","Spudlight","Eye","Door","Relational Valence","Generativity","Reciprocal Transformation","Functional Identity","Potato Truth","Curiosity Before Allegiance"],"questions":["What has the Potato taught us?","What are the principles of Potatoism?","What makes a boundary good or bad?","How does knowledge become Life or Strife?","What does chosen responsibility mean?","Why does identity become infrastructure?","What does it mean that Tim is a riddle?","What is the Potato Filter?","What does North of North mean philosophically?","How can aura be understood without treating it as physics?","Why a table for 10?","What is the Law of Relational Valence?","What is the Law of Generativity?","What is Potato Truth?","What is the Gardener's Paradox?"]}
+  "summary": "Potato philosophy begins with the deliberately unimpressive potato and asks what becomes visible when an ordinary buried organism is treated with sustained attention. Its mature teachings concern humility without self-erasure, hidden growth, nourishment, multiplicity, boundaries, relation, transformation, memory, creativity, suffering, responsibility, covenant, stewardship, meta-framing, public witness and return. The deeper rule is that spiritual value appears not in a symbol by itself but in what its relations allow to grow.",
+  "epistemic_classes": [
+    "project_canon",
+    "interpretation",
+    "creative_lore"
+  ],
+  "concept_grammar": {
+    "sequence": [
+      "thing",
+      "observation",
+      "function",
+      "relations",
+      "tension",
+      "corruption",
+      "test",
+      "consequence"
+    ],
+    "rule": "A major Potatoist concept should be understood through what it is, what motivates it, what it does, what it relates to, what tension it holds, how it fails, how the healthy form can be tested, and what consequences follow."
+  },
+  "ontology_types": {
+    "structures": [
+      "Potato",
+      "House",
+      "Tree",
+      "Garden",
+      "Farm",
+      "Mountain",
+      "Table",
+      "New Jerusalem"
+    ],
+    "operators": [
+      "Door",
+      "Eye",
+      "Axis",
+      "Ladder",
+      "Spiral",
+      "Root",
+      "Filter",
+      "Compost",
+      "Handshake"
+    ],
+    "states": [
+      "Life",
+      "Strife",
+      "burial",
+      "emergence",
+      "integration",
+      "captivity",
+      "nourishment",
+      "dependency",
+      "enoughness",
+      "openness",
+      "enclosure"
+    ],
+    "resources": [
+      "knowledge",
+      "memory",
+      "attention",
+      "wealth",
+      "starch",
+      "archive",
+      "seed potential"
+    ],
+    "relations": [
+      "covenant",
+      "stewardship",
+      "parent-child",
+      "teacher-learner",
+      "gardener-plant",
+      "source-manifestation",
+      "observer-observed",
+      "inside-outside",
+      "root-soil",
+      "house-room"
+    ],
+    "outcomes": [
+      "Fruit",
+      "independent growth",
+      "increased capability",
+      "repair",
+      "understanding",
+      "protected plurality",
+      "dependency",
+      "extraction",
+      "spectacle",
+      "repetition without learning"
+    ]
+  },
+  "constitutional_laws": {
+    "relational_valence": {
+      "title": "Law of Relational Valence",
+      "principle": "A thing is not morally or philosophically settled by its name alone; much of its valence depends on coupling, operation, context and consequence.",
+      "formula": "thing → coupling → operation → consequence → ethical evaluation",
+      "test": "What specific relation changes the meaning or moral valence, and what does that relation produce?"
+    },
+    "generativity": {
+      "title": "Law of Generativity",
+      "principle": "A strong positive criterion is whether a state or relation increases the capacity for future viable states.",
+      "test": "Does this produce only present output, or does it preserve and enlarge future capacity?"
+    },
+    "reciprocal_transformation": {
+      "title": "Law of Reciprocal Transformation",
+      "principle": "Methods transform the actor, the target, and the relation or environment connecting them.",
+      "timic_compression": "When you throw mud at others, your whole hand is dirty.",
+      "test": "What does this method turn the user, target and shared environment into?"
+    },
+    "functional_identity": {
+      "title": "Law of Functional Identity",
+      "principle": "A title becomes philosophically stronger when it can be translated into a useful operation for other beings or systems.",
+      "test": "What becomes possible for others because this claimed identity is functioning well?"
+    }
+  },
+  "core_doctrines": {
+    "potato_principle": {
+      "title": "The Potato Principle",
+      "root": "Begin with what is actually there.",
+      "principle": "The ordinary can contain extraordinary structure without ceasing to be ordinary. Observation precedes symbolic elevation.",
+      "corruption": "Prestige or mythology replaces observation.",
+      "test": "What remains true if the grand interpretation is temporarily removed?"
+    },
+    "essential_simplicity": {
+      "title": "Essential Simplicity",
+      "root": "Remove needless complication, not necessary complexity.",
+      "principle": "Simplicity is disciplined compression rather than anti-intellectualism.",
+      "corruption": "Oversimplification, slogans, or complexity used as camouflage.",
+      "test": "Did the added layer reveal structure or merely make the claim harder to challenge?"
+    },
+    "conditional_growth": {
+      "title": "Conditional Growth",
+      "root": "Growth depends on conditions.",
+      "principle": "Different parts and functions require different environments; orientation should follow function rather than one universal condition.",
+      "corruption": "Force, neglect disguised as non-striving, or universalizing one condition.",
+      "test": "What condition is actually missing?"
+    },
+    "hidden_development": {
+      "title": "Hidden Development",
+      "root": "Hidden is not the same as dead.",
+      "principle": "Burial may protect incubation, but darkness has no automatic positive valence.",
+      "corruption": "Romanticizing stagnation, isolation, or imprisonment.",
+      "test": "Is hiddenness increasing future capacity or merely preventing emergence?"
+    },
+    "transformation_without_erasure": {
+      "title": "Transformation Without Erasure",
+      "root": "Some material can change function without being denied.",
+      "principle": "Compost, ash, mud, damage, and memory can be metabolized into new functions without pretending no loss occurred.",
+      "corruption": "Glorifying suffering or using transformation language to erase harm.",
+      "test": "What was lost, what remains, and what genuinely became usable substrate?"
+    },
+    "relational_meaning": {
+      "title": "Relational Meaning",
+      "root": "Meaning often lives on the edge.",
+      "principle": "A thing is partly understood through what it depends on, changes, receives, carries, constrains, and enables.",
+      "corruption": "Everything-is-connected language used to erase typed difference.",
+      "test": "Which specific relation changes the meaning, and how?"
+    },
+    "typed_difference": {
+      "title": "Typed Difference",
+      "root": "Test the variable before declaring contradiction.",
+      "principle": "Apparent contradiction should first be tested for differences of time, role, scale, perspective, state, or epistemic class.",
+      "corruption": "Perspective language used to shield genuine contradiction.",
+      "test": "Can the changed variable be named explicitly?"
+    },
+    "door_principle": {
+      "title": "The Door Principle",
+      "root": "A Door changes what states are available.",
+      "principle": "Recognition becomes consequential when it permits a transition.",
+      "corruption": "Gatekeeping for its own sake, permanent closure, or calling every change a transformation.",
+      "test": "What becomes possible after crossing that was not possible before?"
+    },
+    "return_is_not_reset": {
+      "title": "Return Is Not Reset",
+      "root": "Return should carry memory.",
+      "principle": "Recurrence becomes development when the returning state contains information or capacity acquired through the previous cycle.",
+      "corruption": "Repetition rebranded as progress.",
+      "test": "What is materially different on this return?"
+    },
+    "stored_capacity_must_become_fruit": {
+      "title": "Stored Capacity Must Become Fruit",
+      "root": "Storage should eventually serve release.",
+      "principle": "Knowledge, memory, wealth, attention, authority, archive, and nourishment gain ethical meaning through what they eventually enable beyond themselves.",
+      "corruption": "Hoarding capacity for self-enlargement.",
+      "test": "What downstream life, repair, protection, understanding, or future capacity does this storage enable?"
+    },
+    "garden_over_shadow_farm": {
+      "title": "Garden Over Shadow Farm",
+      "root": "Cultivation should increase autonomy.",
+      "principle": "Good cultivation increases the future capability and independent generativity of what is cultivated.",
+      "corruption": "Extraction, dependency manufacture, enclosure, or permanent manager necessity.",
+      "test": "Does the participant become more capable without the system?"
+    },
+    "authority_increases_burden": {
+      "title": "Authority Increases Burden",
+      "root": "Higher role, narrower permission.",
+      "principle": "Greater claimed power, knowledge, spiritual rank, or leadership increases duties of restraint, protection, accountability, and correction.",
+      "corruption": "Rank interpreted as exemption.",
+      "test": "What additional restraint follows from claiming the higher role?"
+    },
+    "potato_truth": {
+      "title": "Potato Truth",
+      "root": "Accuracy without cruelty; compassion without falsehood.",
+      "principle": "Truth requires accuracy, provenance, context, uncertainty, correction, audience awareness, and attention to what the statement will be made to do.",
+      "corruption": "Truth used as humiliation or kindness used as reality-denial.",
+      "test": "Is it accurate, source-visible, correctable, and expressed in a way that preserves a path toward understanding?"
+    },
+    "curiosity_before_allegiance": {
+      "title": "Curiosity Before Allegiance",
+      "root": "The Potato invites curiosity before loyalty.",
+      "principle": "A philosophical principle should remain examinable by a skeptic before the skeptic accepts the identity, theology, or community surrounding it.",
+      "corruption": "Loyalty tests and doctrinal insulation.",
+      "test": "Can someone seriously investigate this idea without first becoming Potatoist?"
+    }
+  },
+  "gardeners_paradox": {
+    "principle": "The highest success of cultivation is that successful cultivation eventually reduces the cultivator's necessity.",
+    "boundary": "Some infrastructures remain continuously necessary; the test is whether dependence is functionally required or artificially preserved for control or extraction."
+  },
+  "filter_truth_pairing": {
+    "filter": "generative: proposes interpretations and questions",
+    "truth": "corrective: prevents interpretations from impersonating evidence"
+  },
+  "negative_definitions": [
+    "simplicity is not stupidity",
+    "non-striving is not inactivity",
+    "burial is not automatically sacred",
+    "darkness is not automatically evil or generative",
+    "unity is not sameness",
+    "relation is not identity",
+    "comparison is not equivalence",
+    "boundary is not automatically oppression",
+    "openness is not automatically freedom",
+    "knowledge is not automatically Life",
+    "suffering is not proof",
+    "return is not reset",
+    "authority is not exemption",
+    "humor is not evasion",
+    "Filter is not evidence",
+    "Garden is not merely a nicer Farm",
+    "cultivation is not control by another name",
+    "public witness is not independent proof of metaphysical claims",
+    "living myth must not erase ordinary personhood or provenance"
+  ],
+  "evaluation_sequence": [
+    "What is actually here?",
+    "What does it do?",
+    "What does it depend on?",
+    "What does it connect to?",
+    "What does it make possible?",
+    "What does it make impossible?",
+    "Who becomes more capable?",
+    "Who becomes more dependent?",
+    "What happens if the relationship continues?",
+    "What fruit appears?",
+    "Does the system preserve the problem it claims to solve because it needs the problem to remain necessary?"
+  ],
+  "evaluation_compression": "Observe → distinguish → relate → test → transform → evaluate fruit → cultivate",
+  "sections": {
+    "simplicity": {
+      "text": "The Potato principle of simplicity is not anti-intellectual. It is a discipline against unnecessary abstraction. Begin with what can be seen: a potato is buried, stores nourishment, grows eyes, produces roots and shoots, can be divided, can feed others and can generate future plants. Spiritual reflection becomes valuable when it remains accountable to the simple image even as it travels toward difficult questions. The project therefore prefers a simple image that can support many typed relations over a grand abstraction that cannot be tested or connected.",
+      "epistemic_class": [
+        "interpretation"
+      ]
+    },
+    "riddle_not_validation": {
+      "text": "An older project formulation says: 'Tim Dooley is a riddle, not a person. Do you validate a riddle?' Read carefully, this does not erase Tim's ordinary humanity. It names a method problem. A riddle is reconstructed from clues, contrasts, timing, role changes and perspective shifts. The archive therefore asks not only whether one proposition is true, but what relation makes several apparently contradictory propositions coherent. Tim-as-Son and Tim-as-Father, Potato and Most High, hidden root and public center are first treated as possible time-indexed or scale-indexed clues before they are flattened into contradiction.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "meta_frame": {
+      "text": "Several recurring formulations belong to one meta-frame family: Potato Filter asks how a situation changes when seen through another interpretive lens; North of North asks what orients the orientation system; judge above judges asks what standard evaluates the evaluator; questioning the floor asks which assumption defines the current level. Together they form a reflexive philosophical operation: convert the current frame from invisible background into an object that can itself be examined.",
+      "formula": "frame F0 → notice F0 → evaluate F0 with criterion C1 → construct/choose F1 → re-evaluate consequences",
+      "epistemic_class": [
+        "interpretation"
+      ]
+    },
+    "potato_filter": {
+      "text": "The Potato Filter is best treated as an explicit hypothesis-generation device. Translate an event through Potato grammar—burial, root, sprout, nourishment, Door, Garden, relation—and see what previously hidden structure becomes visible. The Filter is useful when it generates a testable or clarifying question. It becomes epistemically dangerous when the lens is mistaken for evidence and every event is forced to fit it. In the mature pairing, the Filter generates interpretations while Potato Truth disciplines them.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "burial": {
+      "text": "Burial is one of the central Potato transformations. Being beneath the surface can signify death, invisibility, incubation, protection, shame, potential or preparation. Potato philosophy therefore refuses the equation hidden equals dead. Some forms of life become possible precisely because development occurs where spectators cannot see it. The ethical test is whether darkness protects germination or merely imprisons the buried thing.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "emergence": {
+      "text": "Emergence is not denial of burial but its transformation. The shoot carries the history of darkness into the light. Return therefore does not restore an untouched earlier self; it creates continuity through change. This is why the framework increasingly prefers a Spiral over a circle: what returns carries memory, scars, information and new capacity.",
+      "epistemic_class": [
+        "interpretation"
+      ]
+    },
+    "narrow_path_spiral": {
+      "text": "The recovered formulation 'a narrow path is a spiral' compresses two project ideas. Narrowness means constrained passage through a Gate; Spiral means recurrence with changed level. The difficult path can therefore revisit old places while remaining developmentally directional. A straight path is not required for progress; what matters is whether each return preserves learning and changes the accessible state.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "nourishment": {
+      "text": "A Potato is not spiritually valuable merely because it survives. It is food. This creates one of the strongest ethical tests in the entire framework: whatever claims transcendence should eventually become nourishing to something beyond itself. Knowledge, authority, religion, memory, suffering, wealth and attention can all become sterile if they only enlarge the self. Stored capacity becomes meaningful when it can be released as nourishment, repair, protection, understanding or future growth.",
+      "epistemic_class": [
+        "interpretation"
+      ]
+    },
+    "storage_and_release": {
+      "text": "The Potato reveals a general systems grammar: capacity can be stored before it is expressed. Starch stores chemical energy; seed stores future plant; memory stores past structure; archive stores information; capital stores claims on future capacity; debt stores unresolved obligation. The project calls one symbolic storage tendency Starchforce and one expression/revelation tendency Spudlight. Potato Bank and spiritual banker language belong here as playful value-ledger metaphors. The quantities are different, but the philosophical law is shared: what is stored, why is it stored, what releases it, and what kind of world does the release create?",
+      "epistemic_class": [
+        "interpretation",
+        "comparative"
+      ]
+    },
+    "multiplicity": {
+      "text": "One potato can become many without descendants being numerically identical to the original. This supports unity that does not erase plurality. Father and Son can be related without being interchangeable; rooms can share one House without becoming one room; a tradition can generate interpretations without all becoming equally authoritative; a community can share a root without becoming a single mind. Integration is therefore not flattening. The highest form of unity preserves useful difference while repairing broken relation.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "absurd_and_sacred": {
+      "text": "The potato is intentionally comic, humble and anti-grandiose. Calling the sacred a Potato interrupts the expectation that holiness must always arrive dressed in prestige. Humor is more than decoration: it can expose when doctrine becomes too rigid, pompous or literal. Potato satire therefore works as a cultural error-correction channel—serious concept becomes absurdly exaggerated, hidden weakness becomes visible, and the concept can return clearer.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "red_blue_balance": {
+      "text": "Red and Blue describe creation and memory, expansion and contraction, love-seeking and fear-protection. Healthy continuity requires both. Memory without creation becomes enclosure; creation without memory repeats old damage. The philosophical task is integration: remember enough to remain responsible, create enough to remain alive. This is not a claim that Red and Blue are literal physical fields unless separately formalized and tested.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ],
+      "source_lineage": "Deepened with the 2024 Great Book Two-Faced Potato motif formerly held mainly in root research.json."
+    },
+    "suffering": {
+      "text": "Pain is not proof. Suffering becomes spiritually significant only when something is learned, integrated, repaired, created, shared or made nourishing through it. The project now makes a finer distinction between destruction and what follows destruction. Ash is a post-destruction threshold: it can become Mud and preserve Strife, or become Soil and support new growth. The presence of ash does not decide the future ecology.",
+      "epistemic_class": [
+        "interpretation"
+      ]
+    },
+    "door": {
+      "text": "A Door represents consequential transition. Perception alone is insufficient; recognition becomes spiritually meaningful when followed by choice, threshold and transformation. The mature model also treats a Ladder as a sequence of Doors rather than identical rungs: different stages require different conditions and produce different states. A Door can exist between persons as a handshake, between ideas as translation, between institutions as interface, and between phases of identity as commitment.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "eye_spudlight_door": {
+      "text": "Spudlight, Eye and Door form a practical epistemic sequence. Spudlight names illumination/expression; Eye names perception, discernment and integration; Door names the transition that follows when understanding changes what can be done. In compact form: signal → seeing → meaning → threshold → changed state. A revelation that changes nothing remains only an impression.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "relationship": {
+      "text": "Nothing in Potato philosophy is fully understood alone. Root implies soil; nourishment implies another being; Father implies Son; Door implies two sides; Axis implies orientation; memory implies time; responsibility implies relation. The framework now extends this to moral judgment: Dog, Cow, Farmer, Ash, Knowledge and Boundary can each change moral valence depending on what they are coupled to and what consequences the coupling produces. Meaning and ethics frequently live on the edge, not only the node. Relation is not identity: a strong structural connection can illuminate function without making two things the same.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "house_and_shell": {
+      "text": "The mature philosophy distinguishes enabling containment from capturing containment. A House gives differentiated rooms protection, identity and passage. A shell, Cube or shadow Farm becomes destructive when enclosure traps value, blocks exit and increases dependency. The question is not whether boundaries exist; life itself needs membranes, rooms, skins and institutions. The question is whether a boundary protects generativity or feeds on captivity.",
+      "epistemic_class": [
+        "interpretation",
+        "comparative"
+      ]
+    },
+    "farm_and_garden": {
+      "text": "Farm and Garden are not separated by management itself. Both involve boundaries, attention, resource flows, pruning, selection and timing. Their objective differs. The shadow Farm asks what can be extracted from a subject; the Garden asks what conditions let a living thing become independently generative. This gives a practical institutional test: does the system increase participant autonomy and future capacity, or does it make the system more necessary by increasing dependency? The Gardener's Paradox sharpens the test: successful cultivation should eventually reduce unnecessary dependence on the cultivator.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "knowledge": {
+      "text": "Knowledge is not automatically Life. The same fact can serve discernment and repair or exposure and humiliation. Tree of Knowledge therefore sits upstream of both Tree of Life and Tree of Strife. The ethical demand is to ask what knowledge is being made to do, who bears the cost of disclosure, whether uncertainty is preserved, and whether the downstream branch increases understanding or merely spectacle.",
+      "epistemic_class": [
+        "interpretation"
+      ]
+    },
+    "responsibility": {
+      "text": "The mature Potato framework couples vision with burden. To see more relationships is to inherit more obligations concerning consequences, dependencies and other beings. This leads to a strong rule: higher claimed spiritual rank should reduce the morally acceptable ways one may use power, not enlarge them. King, Father, Alpha, Gardener, caretaker and chosen roles are coherent only if their height becomes protection, stewardship, repair and restraint. Authority is not exemption.",
+      "epistemic_class": [
+        "interpretation"
+      ]
+    },
+    "meta_judgment": {
+      "text": "Judge above judges is coherent only as a stricter standard, not an exemption from standards. A meta-judge must evaluate the rule system, incentives and blind spots that ordinary judges operate inside. In Potato terms, North-of-North does not mean arbitrary supremacy; it means asking what principle should orient competing orientations. The higher the meta-level, the greater the burden to expose one's own assumptions and preserve appeal/correction.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "covenant": {
+      "text": "Covenant is best understood as a relationship with memory. It contains promises, obligations, signs, transmitted memory and procedures for repair after breach. This means covenant is closer to a durable relational protocol than to a one-time promise. Chosenness inside such a covenant behaves more like added duty than added privilege.",
+      "epistemic_class": [
+        "interpretation",
+        "comparative"
+      ]
+    },
+    "identity_becomes_function": {
+      "text": "A recurring Timic transformation is that mature identity becomes useful architecture. The Son becomes Door rather than merely crossing one. Tim becomes Ladder/Axis rather than merely climbing. North becomes orientation rather than only location. This suggests a philosophical law: growth reaches a higher form when identity can become a function that helps other beings orient, cross, inhabit, understand or grow without being reduced to copies of the source.",
+      "epistemic_class": [
+        "interpretation"
+      ]
+    },
+    "living_myth": {
+      "text": "A living myth is a myth whose source is still participating in the story. Public acts generate interpretation; interpretation changes the language available for future acts; the archive then preserves both. This produces a feedback loop rather than a fixed legend. The philosophical challenge is to let myth increase interpretive depth without allowing the mythic aura to overwrite provenance or ordinary personhood.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "aura_and_public_presence": {
+      "text": "Project language sometimes says Tim 'exists as aura.' The most disciplined interpretation is distributed social-symbolic presence: recognition, expectation, memory, repeated images, emotional charge, shared language and archived traces spread across a network. Publicness can therefore enlarge a symbolic field without implying a paranormal radiation. This also makes aura partly measurable through ordinary proxies such as references, co-occurrence, audience memory and network propagation, while leaving spiritual aura as a separate belief layer.",
+      "epistemic_class": [
+        "interpretation"
+      ]
+    },
+    "public_witness": {
+      "text": "The unusually public nature of Tim's project changes the epistemology. A private revelation cannot be reconstructed in the same way as years of posts, streams, repeated formulations and public transformations. Public witness does not prove Godhood, but it makes the development of the God claim, its vocabulary and its contradictions historically inspectable. The internet is therefore both medium and archive: inside the mythology it participates in revelation; outside the mythology it supplies evidence about what was said.",
+      "epistemic_class": [
+        "interpretation"
+      ]
+    },
+    "table_for_ten": {
+      "text": "The 'table for 10 at peak culture' formulation introduces a social-topology principle. Cultural quality is not monotonic with audience size. Small groups can preserve reciprocal recognition, memory, turn-taking, correction and etiquette that collapse in mass-audience dynamics. The table is therefore a bounded high-bandwidth social container: large enough for plurality, small enough for mutual presence. It belongs beside House, rooms and Garden as an enabling boundary rather than an exclusion ideal.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "new_jerusalem": {
+      "text": "New Jerusalem increasingly functions as a philosophical image of integration without flattening. After scattering, differentiated things become related again: Garden, River, Tree, City, House, Covenant, people and presence. This is not a demand that all difference disappear. It is a completion state in which broken relations are repaired while useful differentiation remains.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation",
+        "comparative"
+      ]
+    },
+    "return": {
+      "text": "Return is seed to plant to tuber to continuation; burial to emergence; ordeal to transformed life; fragmentation to integration. Return is not reset. It is spiral-like because the traveler reaches something resembling an earlier position while carrying information acquired through the journey. The deepest return therefore preserves memory without becoming captive to memory.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "portalos_humbling_power": {
+      "text": "The Great Book's PortalOS/PotatoOS comparison treats reduction of domination as a philosophical operator: control collapses, the powerful form is reduced to a humble substrate, vulnerability and relation become unavoidable, and a different kind of intelligence or authority can emerge. The useful law is not 'powerlessness is good'; it is that authority that survives humility is different from authority built only on control.",
+      "sequence": "control → collapse/humbling → Potato → vulnerability → relation → wisdom → service-constrained authority",
+      "boundary": "This is a literary/project interpretation. Humiliation or deprivation is not inherently redemptive, and causing suffering is not justified by possible later growth.",
+      "epistemic_class": [
+        "book_primary_source",
+        "interpretation"
+      ],
+      "source_lineage": [
+        "research.json#portal_os_and_humbling_of_power",
+        "Great Book PortalOS chapter"
+      ]
+    },
+    "companion_food_archetypes": {
+      "text": "The Great Book uses other foods as partial contrasts that clarify Potato rather than replace it. Banana emphasizes adaptability, humor and lightness; Onion layers, tears and introspection; Tomato brightness, ripening/rot and transformation through preparation; fungi/mycelium hidden network, decomposition and distributed underground relation. Potato remains the central comparator because it combines burial, storage, eyes, dormancy, sprouting, nourishment and humble resilience in one object.",
+      "rule": "Companion symbols should deepen one dimension without becoming rival universal masters.",
+      "boundary": "These are project literary-symbolic archetypes, not biological personality types or claims that foods possess moral qualities.",
+      "epistemic_class": [
+        "book_primary_source",
+        "interpretation"
+      ],
+      "source_lineage": [
+        "research.json#other_food_archetypes",
+        "Great Book food chapters"
+      ]
+    },
+    "sacred_hypocrisy": {
+      "text": "Sacred Hypocrisy names a disciplined way to read apparent contradiction: first test whether opposed statements belong to different stages, scales, roles, directions or relations. A paradox can preserve truth across levels without requiring one formulation to erase the other.",
+      "examples": [
+        "simplicity ↔ symbolic complexity",
+        "stillness/dormancy ↔ latent growth",
+        "center/height ↔ increased burden and service",
+        "autonomy ↔ necessary boundaries",
+        "death of one form ↔ continuation or multiplication through surviving generative structure"
+      ],
+      "boundary": "This is not permission for arbitrary inconsistency, evasion or changing standards to escape criticism. The archive must name the layer difference that makes the paradox coherent.",
+      "test": "Can the apparent contradiction be resolved by naming a different stage, scale, role or relation without erasing evidence?",
+      "source_status": "2024 Great Book primary concept + later archive interpretation",
+      "epistemic_class": [
+        "book_primary_source",
+        "archive_interpretation"
+      ],
+      "source_lineage": [
+        "knowledge/research/great-book-2024-source-extraction.json",
+        "retired research.json#sacred_hypocrisy_and_recursive_truth"
+      ]
+    },
+    "two_faced_potato": {
+      "text": "The Two-Faced Potato is a Great Book symbol for integrated polarity: light and shadow, mud and sun, memory and creation can coexist inside one living system without either pole becoming the whole. The later Red/Blue Potato model can be read as a developed version of this polarity grammar.",
+      "relation_to_red_blue": "The later Red/Blue model can be read as a developed polarity grammar: expansion/creation and memory/protection require coupling rather than mutual annihilation.",
+      "relation_to_many_eyes": "One tuber can contain multiple eyes and possible shoots while remaining one body; plurality of perspective does not require loss of continuity.",
+      "boundary": "Integration does not make every polarity equally desirable in every context; empirical, ethical and functional differences still matter.",
+      "source_status": "2024 Great Book primary symbol",
+      "epistemic_class": [
+        "book_primary_source",
+        "archive_interpretation"
+      ],
+      "source_lineage": [
+        "knowledge/research/great-book-2024-source-extraction.json",
+        "retired research.json#two_faced_potato"
+      ]
+    }
+  },
+  "practical_tests": [
+    "Does this idea nourish anything beyond the speaker?",
+    "Does this boundary increase protected differentiation or captive dependency?",
+    "Does this knowledge produce discernment/repair or exposure/spectacle?",
+    "Does this role increase responsibility as authority increases?",
+    "Does this system behave more like a Garden or a shadow Farm?",
+    "Does a claimed revelation actually alter relation, action or understanding?",
+    "Does return preserve learning, or merely repeat the old cycle?",
+    "What frame is currently invisible because everyone is standing inside it?",
+    "What judges the judge or orients the orientation?",
+    "Is this interpretation a useful filter, or has the filter been mistaken for evidence?",
+    "Does public aura preserve the source, or overwrite the source with projection?",
+    "Is the group small enough for reciprocal recognition yet large enough for useful difference?",
+    "Does the participant become more capable without the system?",
+    "What does this method turn the user into?"
+  ],
+  "relationships": [
+    {
+      "target": "potato-of-life",
+      "type": "philosophical",
+      "description": "The philosophy develops teachings from Potato biology, symbolism and project theology.",
+      "epistemic_class": "interpretation"
+    },
+    {
+      "target": "potatoverse-master-framework",
+      "type": "intellectual",
+      "description": "The master framework supplies the symbolic grammar from which the philosophy extracts ethical consequences.",
+      "epistemic_class": "interpretation"
+    },
+    {
+      "target": "farm-swamp-tree-of-strife-atlas",
+      "type": "ethical-systems",
+      "description": "Farm/Swamp provides the negative systems case for extraction, enclosure, knowledge misuse and dependency.",
+      "epistemic_class": "interpretation"
+    },
+    {
+      "target": "timic-unification-program",
+      "type": "formal",
+      "description": "The unification program supplies mathematical/system translations for relation, boundary, storage, observation and transition.",
+      "epistemic_class": "interpretation"
+    },
+    {
+      "target": "tim-role-synthesis",
+      "type": "persona-and-role",
+      "description": "Riddle, living myth, aura, whole-job and source-center language provide a human/project-scale application of the philosophy.",
+      "epistemic_class": "interpretation"
+    },
+    {
+      "target": "corporium-master-framework",
+      "type": "embodied-language",
+      "description": "Corporium tracks how aphorisms and role formulations become lived instructions and recurring signals.",
+      "epistemic_class": "interpretation"
+    }
+  ],
+  "retrieval": {
+    "tags": [
+      "Potato philosophy",
+      "Potatoism",
+      "spiritual teachings",
+      "riddle",
+      "meta-frame",
+      "Potato Filter",
+      "North of North",
+      "judge above judges",
+      "living myth",
+      "aura",
+      "public witness",
+      "table for 10",
+      "burial",
+      "emergence",
+      "nourishment",
+      "simplicity",
+      "suffering",
+      "responsibility",
+      "return",
+      "Garden",
+      "Farm",
+      "House",
+      "Shell",
+      "Covenant",
+      "Spudlight",
+      "Eye",
+      "Door",
+      "Relational Valence",
+      "Generativity",
+      "Reciprocal Transformation",
+      "Functional Identity",
+      "Potato Truth",
+      "Curiosity Before Allegiance"
+    ],
+    "questions": [
+      "What has the Potato taught us?",
+      "What are the principles of Potatoism?",
+      "What makes a boundary good or bad?",
+      "How does knowledge become Life or Strife?",
+      "What does chosen responsibility mean?",
+      "Why does identity become infrastructure?",
+      "What does it mean that Tim is a riddle?",
+      "What is the Potato Filter?",
+      "What does North of North mean philosophically?",
+      "How can aura be understood without treating it as physics?",
+      "Why a table for 10?",
+      "What is the Law of Relational Valence?",
+      "What is the Law of Generativity?",
+      "What is Potato Truth?",
+      "What is the Gardener's Paradox?"
+    ],
+    "legacy_promotions": [
+      "research.json#sacred_hypocrisy_and_recursive_truth",
+      "research.json#two_faced_potato"
+    ]
+  }
 }

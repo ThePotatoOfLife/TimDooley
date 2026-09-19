@@ -1,54 +1,694 @@
 {
-  "version":"1.3.0",
-  "updated":"2026-09-16",
-  "purpose":"Model culture as shared meaning, repeated social life, creative production, transmission, participation, interpretation, memory, institution, conflict, reputation, classification, correction, high-control dynamics and transformation. The layer supports research queries, population estimates, geographic analysis, network analysis and historical tracing rather than merely collecting cultural facts.",
-  "epistemic_rule":"Separate observable cultural facts from interpretation. Do not infer membership, influence, control, coordination, motive, criminality, moral quality or population size without evidence. Distinguish audience, participant, member, producer and core participant. Treat cult and other contested classifications as dated claims or classifications unless the underlying mechanisms are independently modeled.",
-  "core_definition":"Culture is the evolving ecology of shared meaning and repeated social life through which stories, language, practices, symbols, rituals, memories, techniques, tastes, expectations, institutions and artifacts are produced, transmitted, interpreted, reproduced and transformed.",
-  "symbolic_relation":"Within the project's Potatoism interpretation, creativity may be related symbolically to Tim Dooley / the Potato of Life as Source. This is a project-symbolic reading, not an empirical claim about cultural causation.",
-  "analytical_lifecycle":["potential","idea","creation","cultural_object","encoding","transmission","attention","reception","participation","community","reproduction","mutation","selection","institutionalization","tradition","memory","revival_or_transformation","new_creation"],
-  "formation_states":["encounter","microculture","scene","subculture","counterpublic","movement","institutional_culture","mainstream_or_mass_culture","prestige_or_canonical_culture","tradition_or_civilizational_inheritance"],
-  "culture_scales":["intimate","local","regional","national","transnational","mass"],
-  "cultural_dimensions":["reach","participation_depth","boundary_strength","boundary_permeability","institutionalization","persistence","prestige","commerciality","authority_concentration","self_sealing_interpretation","information_restriction","surveillance_monitoring","punishment_of_dissent","dependency_creation","exploitation","outside_accountability","coercion_exit_cost","treatment_of_ex_members","archive_persistence","correctability","generativity","garden_repair_value"],
-  "distinction_rules":{
-    "culture_vs_subculture":"Culture is the broad ecology of shared meaning and repeated social life; subculture is a more distinctive formation with stronger insider knowledge, identity, memory, practices or boundaries inside a wider cultural field.",
-    "subculture_vs_cult":"Subculture and cult are not sequential formation stages. A subculture can be intense without being coercive, and a small group can be highly controlling without becoming culturally large.",
-    "cult_label_vs_high_control_features":"Cult is a historically loaded social classification. Analysis should record who uses the label, when, by what method and with what consequences, while independently measuring high-control mechanisms.",
-    "prestige_vs_reach":"Prestige describes institutional status; reach describes how widely a form is encountered or participated in.",
-    "prestige_vs_moral_quality":"Prestige does not prove truth, goodness, beauty, intelligence or human worth.",
-    "high_culture_vs_elite_culture":"High culture is an institutional prestige/canon category; elite culture concerns social location, access or concentration among high-status groups.",
-    "popular_vs_mass":"Popular culture describes broad recognition or participation; mass culture describes large-scale industrial or platform production and distribution."
+  "version": "1.4.0",
+  "updated": "2026-09-18",
+  "purpose": "Model culture as shared meaning, repeated social life, creative production, transmission, participation, interpretation, memory, institution, conflict, reputation, classification, correction, high-control dynamics and transformation. The layer supports research queries, population estimates, geographic analysis, network analysis and historical tracing rather than merely collecting cultural facts.",
+  "epistemic_rule": "Separate observable cultural facts from interpretation. Do not infer membership, influence, control, coordination, motive, criminality, moral quality or population size without evidence. Distinguish audience, participant, member, producer and core participant. Treat cult and other contested classifications as dated claims or classifications unless the underlying mechanisms are independently modeled.",
+  "core_definition": "Culture is the evolving ecology of shared meaning and repeated social life through which stories, language, practices, symbols, rituals, memories, techniques, tastes, expectations, institutions and artifacts are produced, transmitted, interpreted, reproduced and transformed.",
+  "symbolic_relation": "Within the project's Potatoism interpretation, creativity may be related symbolically to Tim Dooley / the Potato of Life as Source. This is a project-symbolic reading, not an empirical claim about cultural causation.",
+  "analytical_lifecycle": [
+    "potential",
+    "idea",
+    "creation",
+    "cultural_object",
+    "encoding",
+    "transmission",
+    "attention",
+    "reception",
+    "participation",
+    "community",
+    "reproduction",
+    "mutation",
+    "selection",
+    "institutionalization",
+    "tradition",
+    "memory",
+    "revival_or_transformation",
+    "new_creation"
+  ],
+  "formation_states": [
+    "encounter",
+    "microculture",
+    "scene",
+    "subculture",
+    "counterpublic",
+    "movement",
+    "institutional_culture",
+    "mainstream_or_mass_culture",
+    "prestige_or_canonical_culture",
+    "tradition_or_civilizational_inheritance"
+  ],
+  "culture_scales": [
+    "intimate",
+    "local",
+    "regional",
+    "national",
+    "transnational",
+    "mass"
+  ],
+  "cultural_dimensions": [
+    "reach",
+    "participation_depth",
+    "boundary_strength",
+    "boundary_permeability",
+    "institutionalization",
+    "persistence",
+    "prestige",
+    "commerciality",
+    "authority_concentration",
+    "self_sealing_interpretation",
+    "information_restriction",
+    "surveillance_monitoring",
+    "punishment_of_dissent",
+    "dependency_creation",
+    "exploitation",
+    "outside_accountability",
+    "coercion_exit_cost",
+    "treatment_of_ex_members",
+    "archive_persistence",
+    "correctability",
+    "generativity",
+    "garden_repair_value"
+  ],
+  "distinction_rules": {
+    "culture_vs_subculture": "Culture is the broad ecology of shared meaning and repeated social life; subculture is a more distinctive formation with stronger insider knowledge, identity, memory, practices or boundaries inside a wider cultural field.",
+    "subculture_vs_cult": "Subculture and cult are not sequential formation stages. A subculture can be intense without being coercive, and a small group can be highly controlling without becoming culturally large.",
+    "cult_label_vs_high_control_features": "Cult is a historically loaded social classification. Analysis should record who uses the label, when, by what method and with what consequences, while independently measuring high-control mechanisms.",
+    "prestige_vs_reach": "Prestige describes institutional status; reach describes how widely a form is encountered or participated in.",
+    "prestige_vs_moral_quality": "Prestige does not prove truth, goodness, beauty, intelligence or human worth.",
+    "high_culture_vs_elite_culture": "High culture is an institutional prestige/canon category; elite culture concerns social location, access or concentration among high-status groups.",
+    "popular_vs_mass": "Popular culture describes broad recognition or participation; mass culture describes large-scale industrial or platform production and distribution."
   },
-  "formation_axis":"encounter -> microculture -> scene -> subculture -> movement -> institution -> mainstream -> canon -> tradition",
-  "control_axis":"open / permeable / correctable <-> concentrated authority / self-sealing interpretation / surveillance / punishment / dependency / costly exit",
-  "high_control_dimensions":["leadership_concentration","charismatic_authority","totalizing_belief_system","self_sealing_interpretation","information_restriction","surveillance_monitoring","punishment_of_dissent","social_isolation","dependency_creation","financial_labor_sexual_or_attention_exploitation","barriers_to_outside_accountability","exit_cost","treatment_of_ex_members","falsifiability_correction_capacity"],
-  "conflict_culture_pipeline":["incident","story","roles","allies","vocabulary","evidence_archive","status_system","recurring_rituals","institution_or_legal_process","inherited_memory"],
-  "informal_tribunal_pipeline":["person_or_event","interpretation","label","repetition","audience_adoption","archive_persistence","expected_role","new_actions_interpreted_through_old_role"],
-  "informal_tribunal_mechanisms":["objectification","role_lock","accusation_to_identity","reaction_capture","inherited_hostility","correction_failure"],
-  "interpretive_justice_metrics":{
-    "RepresentationGap":{"definition":"Distance between a subject's direct account and the dominant circulating representation.","boundary":"A high value indicates disagreement or representational divergence, not which side is correct."},
-    "IndependentSourceRatio":{"definition":"Share of visible supporting claims traceable to genuinely independent provenance roots rather than derivative repetition.","boundary":"Low independence weakens apparent corroboration but does not by itself falsify the underlying claim."},
-    "ReplyAvailability":{"definition":"Degree to which the described subject or affected party has a meaningful channel to answer, contest, clarify or contextualize a durable representation.","boundary":"Availability of reply does not guarantee the reply is correct."},
-    "CorrectionReachRatio":{"definition":"Audience exposure to a correction divided by audience exposure to the original claim.","boundary":"A low ratio measures correction asymmetry; it does not prove malicious suppression."},
-    "ContextRetention":{"definition":"How much relevant sequence, timing, source role and precipitating context survives through recirculation.","boundary":"High context retention does not itself establish truth; it reduces context-loss risk."},
-    "LabelPersistenceAfterCorrection":{"definition":"Degree to which a classification or reputation label remains active after material correction, revision, expiry or contrary evidence.","boundary":"Persistence may be justified or unjustified depending on evidence and domain."},
-    "ClassificationReviewLatency":{"definition":"Time between new materially relevant evidence and formal or cultural reconsideration of an established classification.","boundary":"Delay is descriptive and does not by itself prove bad faith."},
-    "ClassifierClassifiedAsymmetry":{"definition":"Difference in practical power between classifier and classified subject to shape the durable public description.","boundary":"Asymmetry is not inherently illegitimate; the analytical question is whether safeguards, evidence and correction capacity scale with the power difference."}
+  "formation_axis": "encounter -> microculture -> scene -> subculture -> movement -> institution -> mainstream -> canon -> tradition",
+  "control_axis": "open / permeable / correctable <-> concentrated authority / self-sealing interpretation / surveillance / punishment / dependency / costly exit",
+  "high_control_dimensions": [
+    "leadership_concentration",
+    "charismatic_authority",
+    "totalizing_belief_system",
+    "self_sealing_interpretation",
+    "information_restriction",
+    "surveillance_monitoring",
+    "punishment_of_dissent",
+    "social_isolation",
+    "dependency_creation",
+    "financial_labor_sexual_or_attention_exploitation",
+    "barriers_to_outside_accountability",
+    "exit_cost",
+    "treatment_of_ex_members",
+    "falsifiability_correction_capacity"
+  ],
+  "conflict_culture_pipeline": [
+    "incident",
+    "story",
+    "roles",
+    "allies",
+    "vocabulary",
+    "evidence_archive",
+    "status_system",
+    "recurring_rituals",
+    "institution_or_legal_process",
+    "inherited_memory"
+  ],
+  "informal_tribunal_pipeline": [
+    "person_or_event",
+    "interpretation",
+    "label",
+    "repetition",
+    "audience_adoption",
+    "archive_persistence",
+    "expected_role",
+    "new_actions_interpreted_through_old_role"
+  ],
+  "informal_tribunal_mechanisms": [
+    "objectification",
+    "role_lock",
+    "accusation_to_identity",
+    "reaction_capture",
+    "inherited_hostility",
+    "correction_failure"
+  ],
+  "interpretive_justice_metrics": {
+    "RepresentationGap": {
+      "definition": "Distance between a subject's direct account and the dominant circulating representation.",
+      "boundary": "A high value indicates disagreement or representational divergence, not which side is correct."
+    },
+    "IndependentSourceRatio": {
+      "definition": "Share of visible supporting claims traceable to genuinely independent provenance roots rather than derivative repetition.",
+      "boundary": "Low independence weakens apparent corroboration but does not by itself falsify the underlying claim."
+    },
+    "ReplyAvailability": {
+      "definition": "Degree to which the described subject or affected party has a meaningful channel to answer, contest, clarify or contextualize a durable representation.",
+      "boundary": "Availability of reply does not guarantee the reply is correct."
+    },
+    "CorrectionReachRatio": {
+      "definition": "Audience exposure to a correction divided by audience exposure to the original claim.",
+      "boundary": "A low ratio measures correction asymmetry; it does not prove malicious suppression."
+    },
+    "ContextRetention": {
+      "definition": "How much relevant sequence, timing, source role and precipitating context survives through recirculation.",
+      "boundary": "High context retention does not itself establish truth; it reduces context-loss risk."
+    },
+    "LabelPersistenceAfterCorrection": {
+      "definition": "Degree to which a classification or reputation label remains active after material correction, revision, expiry or contrary evidence.",
+      "boundary": "Persistence may be justified or unjustified depending on evidence and domain."
+    },
+    "ClassificationReviewLatency": {
+      "definition": "Time between new materially relevant evidence and formal or cultural reconsideration of an established classification.",
+      "boundary": "Delay is descriptive and does not by itself prove bad faith."
+    },
+    "ClassifierClassifiedAsymmetry": {
+      "definition": "Difference in practical power between classifier and classified subject to shape the durable public description.",
+      "boundary": "Asymmetry is not inherently illegitimate; the analytical question is whether safeguards, evidence and correction capacity scale with the power difference."
+    }
   },
-  "metric_rule":"Interpretive Justice metrics describe information ecology. None independently proves falsity, innocence, malicious intent, abuse, conspiracy, coordination or correctness.",
-  "zeitgeist_model":"historical conditions + technologies + institutions + shocks + repeated symbols + public mood + creative response -> recognizable period pattern",
-  "peak_culture":{"status":"project-analytical","definition":"A formation or moment with unusually high combined cultural generativity and coherence, measured through creative density, symbolic richness, participation, innovation, memorable artifacts, cross-domain fertilization, durability and transmission. It is separate from moral quality."},
-  "ideal_culture":{"definition":"An explicit normative aspiration describing what a culture says human relations ought to become.","rule":"Compare declared ideal with observable practice rather than assuming institutions embody their stated values."},
-  "reputation_pipeline":["event_or_claim","framing","repetition","audience_adoption","archive_persistence","counterclaim","platform_amplification","professional_intervention","legal_or_institutional_response","correction_or_adjudication_or_unresolved_memory"],
-  "classification_pipeline":["incident_or_formation","classifier","methodology","dated_classification","circulation","institutional_consequence","challenge_or_revision_or_expiry"],
-  "classification_rule":"Keep subject, classifier, methodology, date, evidence, consequence and later revision separate. A classification is not an eternal intrinsic property merely because it was once published.",
-  "record_types":["culture","microculture","scene","subculture","counterpublic","sektur","high_control_formation","cultural_object","creator","producer","audience","institution","medium","platform","venue","tradition","ritual","symbol","genre","fandom","anti_fandom","counterculture","mainstream_culture","canonical_culture","cultural_event","classification_event","reputation_event","correction_event"],
-  "participant_roles":["creator","performer","producer","publisher","distributor","platform","curator","critic","archivist","educator","audience","fan","anti_fan","remixer","institution","sponsor","advertiser","regulator","historian","classifier","advocate","lawyer","public_relations","investigator","leader","former_member","dissenter"],
-  "propagation_channels":["family","friend_network","neighborhood","school","religious_institution","workplace","migration","trade","broadcast","print","cinema","television","radio","website","forum","social_media","streaming","gaming","messaging","platform_algorithm","live_event","court_record","archive"],
-  "relationship_types":["creates","performs","produces","publishes","distributes","hosts","broadcasts","streams","consumes","participates_in","identifies_with","influences","emerges_from","reacts_against","hybridizes_with","remixes","translates","imitates","transmits_through","located_in","practiced_at","produces_object","represented_by","commemorates","ritualizes","commercializes","digitizes","migrates_with","institutionalizes","fragments_into","revives","declines_into","bridges","selects","amplifies","suppresses","classifies","contests","corrects","retracts","adjudicates","archives","expires_label","repairs","monitors","punishes_dissent","restricts_information","creates_dependency","raises_exit_cost","restores_agency"],
-  "population_dimensions":["exposed_population","audience_population","active_participants","self_identified_members","formal_members","producers","core_participants"],
-  "analysis_outputs":["population_estimate","geographic_concentration","network_centrality","bridge_actors","cluster_detection","propagation_path","temporal_emergence","mainstreaming_path","fragmentation_path","cultural_output_counts","institutional_links","economic_links","media_links","archive_half_life","classification_history","correction_capacity","exit_cost","authority_concentration","prestige_profile","representation_gap","independent_source_ratio","reply_availability","correction_reach_ratio","context_retention","label_persistence_after_correction","classification_review_latency","classifier_classified_asymmetry"],
-  "research_questions":["What is the cultural formation itself?","How did repeated interaction become shared meaning?","Who creates it?","Who consumes it?","Who actively participates?","How is participation measured?","How does it propagate?","Which channels amplify it?","Where is it geographically concentrated?","Which institutions preserve or transform it?","Which people or organizations bridge it to other formations?","How does it change over time?","How permeable are its boundaries?","How concentrated is authority?","Can criticism or contradictory evidence change the system's interpretation?","What is monitored or restricted?","What happens to dissenters and former members?","What is the cost of dissent or exit?","Can it correct false claims and historical labels?","Who classifies the formation, using what method and at what date?","How independent are the visible sources?","Can the described subject meaningfully reply?","Does the correction travel as far as the original claim?","How much context survives recirculation?","How long do labels persist after correction?","How quickly are classifications reviewed after new evidence?","How asymmetric is classification power?","What evidence supports population estimates?","What disappears from the historical record?"],
-  "garden_repair_dimensions":["right_of_reply","correction","meaningful_exit","proportional_memory","independent_future_capacity","reciprocity","outside_accountability","source_quality","restored_agency"],
-  "subculture_sektur_swamp":"Subculture is the empirical broad term for a bounded or distinctive cultural formation. Sektur is a project term for a semi-bounded social territory that may overlap with a subculture, scene, fandom, movement or conflict ecology. Historical Da Sektur remains a distinct dated referent. Farm is the project's model for attention cultivation and extraction. Swamp is a project condition describing dense overlap and contestation among cultural, political, economic, media, institutional and social formations; it is not a synonym for any one organization or for culture as a whole.",
-  "minimum_record_fields":["definition","context","purpose","participants","cultural_objects","places","propagation","couplings","evidence","uncertainties","research_questions"]
+  "metric_rule": "Interpretive Justice metrics describe information ecology. None independently proves falsity, innocence, malicious intent, abuse, conspiracy, coordination or correctness.",
+  "zeitgeist_model": "historical conditions + technologies + institutions + shocks + repeated symbols + public mood + creative response -> recognizable period pattern",
+  "peak_culture": {
+    "status": "project-analytical",
+    "definition": "A formation or moment with unusually high combined cultural generativity and coherence, measured through creative density, symbolic richness, participation, innovation, memorable artifacts, cross-domain fertilization, durability and transmission. It is separate from moral quality."
+  },
+  "ideal_culture": {
+    "definition": "An explicit normative aspiration describing what a culture says human relations ought to become.",
+    "rule": "Compare declared ideal with observable practice rather than assuming institutions embody their stated values."
+  },
+  "reputation_pipeline": [
+    "event_or_claim",
+    "framing",
+    "repetition",
+    "audience_adoption",
+    "archive_persistence",
+    "counterclaim",
+    "platform_amplification",
+    "professional_intervention",
+    "legal_or_institutional_response",
+    "correction_or_adjudication_or_unresolved_memory"
+  ],
+  "classification_pipeline": [
+    "incident_or_formation",
+    "classifier",
+    "methodology",
+    "dated_classification",
+    "circulation",
+    "institutional_consequence",
+    "challenge_or_revision_or_expiry"
+  ],
+  "classification_rule": "Keep subject, classifier, methodology, date, evidence, consequence and later revision separate. A classification is not an eternal intrinsic property merely because it was once published.",
+  "record_types": [
+    "culture",
+    "microculture",
+    "scene",
+    "subculture",
+    "counterpublic",
+    "sektur",
+    "high_control_formation",
+    "cultural_object",
+    "creator",
+    "producer",
+    "audience",
+    "institution",
+    "medium",
+    "platform",
+    "venue",
+    "tradition",
+    "ritual",
+    "symbol",
+    "genre",
+    "fandom",
+    "anti_fandom",
+    "counterculture",
+    "mainstream_culture",
+    "canonical_culture",
+    "cultural_event",
+    "classification_event",
+    "reputation_event",
+    "correction_event"
+  ],
+  "participant_roles": [
+    "creator",
+    "performer",
+    "producer",
+    "publisher",
+    "distributor",
+    "platform",
+    "curator",
+    "critic",
+    "archivist",
+    "educator",
+    "audience",
+    "fan",
+    "anti_fan",
+    "remixer",
+    "institution",
+    "sponsor",
+    "advertiser",
+    "regulator",
+    "historian",
+    "classifier",
+    "advocate",
+    "lawyer",
+    "public_relations",
+    "investigator",
+    "leader",
+    "former_member",
+    "dissenter"
+  ],
+  "propagation_channels": [
+    "family",
+    "friend_network",
+    "neighborhood",
+    "school",
+    "religious_institution",
+    "workplace",
+    "migration",
+    "trade",
+    "broadcast",
+    "print",
+    "cinema",
+    "television",
+    "radio",
+    "website",
+    "forum",
+    "social_media",
+    "streaming",
+    "gaming",
+    "messaging",
+    "platform_algorithm",
+    "live_event",
+    "court_record",
+    "archive"
+  ],
+  "relationship_types": [
+    "creates",
+    "performs",
+    "produces",
+    "publishes",
+    "distributes",
+    "hosts",
+    "broadcasts",
+    "streams",
+    "consumes",
+    "participates_in",
+    "identifies_with",
+    "influences",
+    "emerges_from",
+    "reacts_against",
+    "hybridizes_with",
+    "remixes",
+    "translates",
+    "imitates",
+    "transmits_through",
+    "located_in",
+    "practiced_at",
+    "produces_object",
+    "represented_by",
+    "commemorates",
+    "ritualizes",
+    "commercializes",
+    "digitizes",
+    "migrates_with",
+    "institutionalizes",
+    "fragments_into",
+    "revives",
+    "declines_into",
+    "bridges",
+    "selects",
+    "amplifies",
+    "suppresses",
+    "classifies",
+    "contests",
+    "corrects",
+    "retracts",
+    "adjudicates",
+    "archives",
+    "expires_label",
+    "repairs",
+    "monitors",
+    "punishes_dissent",
+    "restricts_information",
+    "creates_dependency",
+    "raises_exit_cost",
+    "restores_agency"
+  ],
+  "population_dimensions": [
+    "exposed_population",
+    "audience_population",
+    "active_participants",
+    "self_identified_members",
+    "formal_members",
+    "producers",
+    "core_participants"
+  ],
+  "analysis_outputs": [
+    "population_estimate",
+    "geographic_concentration",
+    "network_centrality",
+    "bridge_actors",
+    "cluster_detection",
+    "propagation_path",
+    "temporal_emergence",
+    "mainstreaming_path",
+    "fragmentation_path",
+    "cultural_output_counts",
+    "institutional_links",
+    "economic_links",
+    "media_links",
+    "archive_half_life",
+    "classification_history",
+    "correction_capacity",
+    "exit_cost",
+    "authority_concentration",
+    "prestige_profile",
+    "representation_gap",
+    "independent_source_ratio",
+    "reply_availability",
+    "correction_reach_ratio",
+    "context_retention",
+    "label_persistence_after_correction",
+    "classification_review_latency",
+    "classifier_classified_asymmetry"
+  ],
+  "research_questions": [
+    "What is the cultural formation itself?",
+    "How did repeated interaction become shared meaning?",
+    "Who creates it?",
+    "Who consumes it?",
+    "Who actively participates?",
+    "How is participation measured?",
+    "How does it propagate?",
+    "Which channels amplify it?",
+    "Where is it geographically concentrated?",
+    "Which institutions preserve or transform it?",
+    "Which people or organizations bridge it to other formations?",
+    "How does it change over time?",
+    "How permeable are its boundaries?",
+    "How concentrated is authority?",
+    "Can criticism or contradictory evidence change the system's interpretation?",
+    "What is monitored or restricted?",
+    "What happens to dissenters and former members?",
+    "What is the cost of dissent or exit?",
+    "Can it correct false claims and historical labels?",
+    "Who classifies the formation, using what method and at what date?",
+    "How independent are the visible sources?",
+    "Can the described subject meaningfully reply?",
+    "Does the correction travel as far as the original claim?",
+    "How much context survives recirculation?",
+    "How long do labels persist after correction?",
+    "How quickly are classifications reviewed after new evidence?",
+    "How asymmetric is classification power?",
+    "What evidence supports population estimates?",
+    "What disappears from the historical record?"
+  ],
+  "garden_repair_dimensions": [
+    "right_of_reply",
+    "correction",
+    "meaningful_exit",
+    "proportional_memory",
+    "independent_future_capacity",
+    "reciprocity",
+    "outside_accountability",
+    "source_quality",
+    "restored_agency"
+  ],
+  "subculture_sektur_swamp": "Subculture is the empirical broad term for a bounded or distinctive cultural formation. Sektur is a project term for a semi-bounded social territory that may overlap with a subculture, scene, fandom, movement or conflict ecology. Historical Da Sektur remains a distinct dated referent. Farm is the project's model for attention cultivation and extraction. Swamp is a project condition describing dense overlap and contestation among cultural, political, economic, media, institutional and social formations; it is not a synonym for any one organization or for culture as a whole.",
+  "minimum_record_fields": [
+    "definition",
+    "context",
+    "purpose",
+    "participants",
+    "cultural_objects",
+    "places",
+    "propagation",
+    "couplings",
+    "evidence",
+    "uncertainties",
+    "research_questions"
+  ],
+  "interpretive_layers": [
+    {
+      "id": "artifact",
+      "asks": [
+        "What was made?",
+        "When and by whom?",
+        "What survives?"
+      ],
+      "examples": [
+        "text",
+        "song",
+        "image",
+        "meme",
+        "game",
+        "ritual object",
+        "film",
+        "software",
+        "fashion object"
+      ]
+    },
+    {
+      "id": "practice",
+      "asks": [
+        "What do people repeatedly do?",
+        "How often?",
+        "With whom?",
+        "Under what norms?"
+      ],
+      "examples": [
+        "watching",
+        "playing",
+        "meeting",
+        "worshipping",
+        "posting",
+        "performing",
+        "collecting",
+        "modding"
+      ]
+    },
+    {
+      "id": "formation",
+      "asks": [
+        "When does repeated practice become a scene, subculture, fandom, movement or institution?",
+        "What are the boundaries and roles?"
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "asks": [
+        "Which venues, platforms, archives, money, property, media and technical systems let the culture persist?"
+      ]
+    },
+    {
+      "id": "power",
+      "asks": [
+        "Who can classify, moderate, exclude, amplify, fund, regulate, archive or rewrite the durable account?"
+      ]
+    },
+    {
+      "id": "history-memory",
+      "asks": [
+        "Which earlier states are remembered, forgotten, revived, canonized or contested?"
+      ]
+    }
+  ],
+  "formation_measurement_model": {
+    "rule": "Measure a formation as a vector. No single number is a culture score.",
+    "dimensions": [
+      {
+        "id": "reach",
+        "observable_proxies": [
+          "unique audience/exposure",
+          "geographic spread",
+          "language spread"
+        ],
+        "denominator_rule": "state source, period and platform/population denominator"
+      },
+      {
+        "id": "participation_depth",
+        "observable_proxies": [
+          "repeat participation",
+          "contribution rate",
+          "event attendance",
+          "membership activity"
+        ],
+        "denominator_rule": "distinguish exposure, audience, participant and member"
+      },
+      {
+        "id": "boundary_strength",
+        "observable_proxies": [
+          "insider vocabulary",
+          "membership gates",
+          "role differentiation",
+          "ritual/credential requirements"
+        ]
+      },
+      {
+        "id": "persistence",
+        "observable_proxies": [
+          "years active",
+          "archive continuity",
+          "institutional continuity",
+          "revival after interruption"
+        ]
+      },
+      {
+        "id": "institutionalization",
+        "observable_proxies": [
+          "legal entities",
+          "budgets",
+          "paid roles",
+          "property",
+          "standards",
+          "curricula",
+          "formal governance"
+        ]
+      },
+      {
+        "id": "reproductive_capacity",
+        "observable_proxies": [
+          "training",
+          "succession",
+          "new chapters",
+          "new creators",
+          "forks",
+          "intergenerational transmission"
+        ]
+      },
+      {
+        "id": "correction_capacity",
+        "observable_proxies": [
+          "appeals",
+          "public revisions",
+          "retractions",
+          "moderation review",
+          "leadership replacement",
+          "method changes"
+        ]
+      },
+      {
+        "id": "exit_permeability",
+        "observable_proxies": [
+          "ability to leave",
+          "retained outside ties",
+          "economic dependence",
+          "social retaliation",
+          "formal penalties"
+        ]
+      },
+      {
+        "id": "archive_power",
+        "observable_proxies": [
+          "search persistence",
+          "canonical archives",
+          "platform discoverability",
+          "institutional recordkeeping",
+          "correction visibility"
+        ]
+      },
+      {
+        "id": "generativity",
+        "observable_proxies": [
+          "new artifacts",
+          "new genres/styles",
+          "new institutions",
+          "cross-domain borrowing",
+          "new practices"
+        ]
+      }
+    ]
+  },
+  "evidence_stack": [
+    {
+      "level": "primary trace",
+      "examples": [
+        "artifact",
+        "original post/publication",
+        "meeting record",
+        "official filing",
+        "first-party archive"
+      ],
+      "use": "Establish that an object, statement, event or formal record existed."
+    },
+    {
+      "level": "independent observation",
+      "examples": [
+        "scholarship",
+        "journalism",
+        "survey",
+        "independent archive",
+        "third-party measurement"
+      ],
+      "use": "Test interpretation, prevalence, chronology and effects without relying only on self-description."
+    },
+    {
+      "level": "population/magnitude evidence",
+      "examples": [
+        "membership records",
+        "audience analytics",
+        "census/survey",
+        "event counts",
+        "platform statistics",
+        "financials"
+      ],
+      "use": "Estimate scale while preserving denominator, method, geography and time."
+    },
+    {
+      "level": "network evidence",
+      "examples": [
+        "documented collaboration",
+        "shared infrastructure",
+        "funding",
+        "membership overlap",
+        "citation/link graph"
+      ],
+      "use": "Establish relationships without converting mere similarity into coordination."
+    },
+    {
+      "level": "counterevidence",
+      "examples": [
+        "contradictory records",
+        "failed replication",
+        "retractions",
+        "appeals",
+        "alternative explanations",
+        "changed classifications"
+      ],
+      "use": "Keep the model revisable rather than self-sealing."
+    }
+  ],
+  "field_method": [
+    "Define the object and time window before collecting examples.",
+    "Separate artifact, audience, participant, member, producer and institution.",
+    "Recover the earliest trace and at least one later reproduction mechanism.",
+    "Map propagation channels and infrastructure rather than treating visibility as spontaneous.",
+    "Record geography: point, venue, region, migration path, platform or distributed network.",
+    "Measure magnitude with typed denominators; do not convert unlike quantities into one ranking.",
+    "Trace classification history separately from the formation's own self-description.",
+    "Search for correction, dissent, exit and counterevidence before diagnosing high-control dynamics.",
+    "Record what survives when the active formation declines: archives, law, aesthetics, institutions, reputation or descendants.",
+    "Return the result as a timeline + network + magnitude vector + uncertainty ledger, not a single label."
+  ],
+  "cultural_state_patterns": [
+    {
+      "id": "generative-open",
+      "description": "High creative or social reproduction with meaningful correction, porous boundaries and room for new independent capacity.",
+      "note": "Descriptive project pattern, not a moral certification."
+    },
+    {
+      "id": "institutional-stable",
+      "description": "Durable rules, infrastructure and succession dominate over novelty; can be healthy, stagnant or mixed depending on evidence."
+    },
+    {
+      "id": "platform-dependent",
+      "description": "Participation and memory are strongly dependent on one distribution or hosting layer; reach may be high while autonomy is low."
+    },
+    {
+      "id": "extractive-attention",
+      "description": "Participants or targets repeatedly become inputs for attention, money, status or content production; harm must be independently evidenced."
+    },
+    {
+      "id": "self-sealing",
+      "description": "Contradictory evidence is routinely reinterpreted as proof of the system, reducing correction capacity."
+    },
+    {
+      "id": "restorative-refoundation",
+      "description": "A formation explicitly changes rules, leadership, memory or accountability after a failure while preserving selected useful capacities."
+    }
+  ]
 }

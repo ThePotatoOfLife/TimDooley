@@ -1,8 +1,12 @@
-# Kingdom Atlas — Relationship Architecture
+# Kingdom Atlas — Relationship Reader
 
-The Kingdom Atlas is the master relationship vocabulary for the project. Its basic unit is not a country, person or institution. It is the **relationship between nodes**.
+**Lifecycle status:** historical/reader relationship guide; not the repository-wide relationship control plane.
 
-## The 14 relationship families
+**Current authority:** the current relationship-first population model lives in `knowledge/core/inhabited-house-society-ontology.json`; project-symbolic graph identity/edges use `data/potatoism-concept-registry.json` + `data/potatoism-relationships.json`; domain-specific registries own their own empirical relations. This document preserves the early 14-family explanatory vocabulary and yields to typed current owners when they differ.
+
+The Kingdom Atlas is a readable relationship vocabulary for the project. Its basic unit is not a country, person or institution. It is the **relationship between nodes**.
+
+## The historical 14-family reader vocabulary
 
 ### 1. Genealogical
 Parent, child, ancestry, descent, succession, lineage and family.
@@ -100,6 +104,6 @@ This is intentionally stored in a different evidence class from the France/EU ch
 
 ## The Atlas question
 
-The centre of the Atlas is not a single institution. It is the recurring civilizational problem of how human systems organize power, resources, meaning, responsibility, knowledge and life across time.
+The centre of this reader is not a single institution. It is the recurring civilizational problem of how human systems organize power, resources, meaning, responsibility, knowledge and life across time.
 
 The long-term ambition is to make the Atlas traversable: choose a node, see its relationships, filter by relationship family, filter by evidence class, move through time, and follow the consequences outward.

@@ -1,8 +1,8 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.2.0",
-  "updated": "2026-09-15",
+  "version": "1.19.0",
+  "updated": "2026-09-19",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
   "repository_observation": "The project already has a strong retrieval-first architecture, but rapid research waves have produced several specialist files whose relationship to canonical owners is not always obvious. Consolidation should therefore prioritize ownership clarity and promotion rules before deleting substantive material.",
@@ -54,7 +54,9 @@
     "evidence_owner": "Owns source-level material, provenance, contradictions or verification.",
     "recovery_stratum": "Preserves mined conversation material or historical development; should be promoted upward but not silently deleted when provenance matters.",
     "reader_projection": "Explains canonical material for humans; should link to owners instead of becoming a second canon.",
-    "temporary_wave": "Research staging file that should eventually be promoted, summarized and retired once no unique provenance is lost."
+    "temporary_wave": "Research staging file that should eventually be promoted, summarized and retired once no unique provenance is lost.",
+    "historical_donor": "Older synthesis/architecture preserved for provenance or unique material after current authority has moved elsewhere.",
+    "compatibility_projection": "Derived or transitional structure retained because validators/readers still consume it; must not become a second authority and should eventually be generated from its canonical source."
   },
   "recent_shadow_karma_classification": {
     "canonical_or_primary": [
@@ -116,6 +118,11 @@
       "zone": "root-level legacy files",
       "risk": "Older master documents at repository root may look more canonical than the newer knowledge/ architecture.",
       "cleanup": "Treat root-level legacy research as historical/source material unless canonical ownership maps explicitly promote it. Do not delete substantive material until its unique content is audited."
+    },
+    {
+      "zone": "public route registry/topology duplication",
+      "risk": "public-surfaces.json owns route identity while public-route-topology.json repeats route/type/Room fields and can drift.",
+      "cleanup": "Keep topology as a compatibility projection for now; converge toward deterministic generation from public-surfaces.json so route identity is authored once."
     }
   ],
   "safe_cleanup_targets": [
@@ -133,12 +140,421 @@
     "Specialist atlases with genuinely distinct mechanisms or schemas"
   ],
   "next_merge_sequence": [
-    "1. Reconcile public route authority, archive branch navigation and frontend projection so every current canonical owner is reachable without competing routing masters.",
-    "2. Build a machine-readable promotion-status field for conversation/biblical/research wave files.",
-    "3. Audit root-level legacy master files against knowledge/ owners and mark legacy/canonical status explicitly.",
-    "4. Audit generated assets and obsolete UI references before deletion.",
-    "5. Run integrity/build checks after structural changes.",
-    "6. Only then begin deleting fully absorbed temporary files."
+    "1. Audit remaining master/framework/synthesis files and mark each as canonical owner, specialist atlas, reader projection or historical donor.",
+    "2. Finish migrating any unique legacy Potatoism deep-layer material into concept dossiers/specialist owners, then shrink/archive donor files.",
+    "3. Audit orphaned legacy builders/validators tied to retired presentation contracts.",
+    "4. Audit root-level legacy source strata and generated assets for safe archival/deletion.",
+    "5. Deepen the highest-value Rooms with sourced cases, measurements, counterexamples and revision history rather than adding structural layers.",
+    "6. Delete only after source lineage, references and CI are clean."
   ],
-  "success_test": "A newcomer should be able to start at a House route, descend through manifest archive branches to one canonical owner for a concept, reach specialist/source layers, and return without encountering contradictory competing masters whose roles are unexplained."
+  "success_test": "A newcomer should be able to start at a House route, descend through manifest archive branches to one canonical owner for a concept, reach specialist/source layers, and return without encountering contradictory competing masters whose roles are unexplained.",
+  "current_convergence_wave": {
+    "branch": "research/deepen-p0-operators-2026-09-18",
+    "principle": "Consolidate authority before deleting history.",
+    "retired_or_demoted": [
+      {
+        "path": "docs/ROOT-NAVIGATION-ARCHITECTURE.md",
+        "role": "historical_donor",
+        "successor": [
+          "data/house/public-surfaces.json",
+          "data/house/topology.json",
+          "manifest.json"
+        ]
+      },
+      {
+        "path": "data/root-navigation.json",
+        "role": "historical_donor",
+        "successor": [
+          "data/house/public-surfaces.json",
+          "data/house/topology.json",
+          "data/house/navigation-manifest.json",
+          "manifest.json"
+        ]
+      },
+      {
+        "path": "docs/MASTER-ARCHITECTURE.md",
+        "role": "historical_donor",
+        "successor": [
+          "docs/POTATO-HOUSE-CONSTITUTION.md",
+          "data/house/project-synthesis.json",
+          "data/house/topology.json"
+        ]
+      },
+      {
+        "path": "data/potatoism-deep-layers.json",
+        "role": "superseded_retained",
+        "successor": [
+          "data/potatoism-concept-registry.json",
+          "data/potatoism-dossiers.json",
+          "knowledge/* specialist owners"
+        ]
+      },
+      {
+        "path": "data/potatoism-deep-architecture.json",
+        "role": "historical_donor",
+        "successor": [
+          "knowledge/core/potato-of-life-deep-structure.json",
+          "knowledge/core/deep-element-definition-atlas.json",
+          "specialist Door/Tree/Spirit owners"
+        ]
+      }
+    ],
+    "active_migrations": [
+      "Potatoism browser loading now begins from registry + dossiers + canon rather than legacy deep-layers.",
+      "House data holdings no longer advertise legacy deep files or root-navigation as active owners.",
+      "project-workflow navigation authority now points to House public surfaces/topology/manifest rather than root-navigation.",
+      "Life/Body now opts into the shared concept-topology context instead of remaining an isolated reader.",
+      "public-route-topology is retained only as a compatibility/topology projection while multiple validators still consume it.",
+      "Foundation validation now derives canonical record waves from data/house/foundation-integration-contract.json rather than hard-coding wave 001 + wave 002.",
+      "House reader now loads Foundation wave 003 so Home, House and Foundation Timeline describe the same 52-Foundation corpus.",
+      "Timeline product naming is being normalized away from the retired chronology product label while retaining chronology as a legitimate conceptual/analytical term.",
+      "Country atlas House holdings now exclude retired September 7 batch-stage files.",
+      "Order of Nine Angles keeps one canonical extremism/network entity ID; religious-adjacent research now uses a namespaced contextual projection with canonical_entity_id back-reference.",
+      "FAQ canonical ownership no longer depends on root research.json; current specialist owners now carry those concepts.",
+      "Root legacy research artifacts now declare their own lifecycle/authority status instead of relying on filename semantics.",
+      "knowledge.json stale 'still live' metadata removed; its retirement is now consistently documented.",
+      "Potato Biology now has one canonical factual owner: knowledge/science/potato-biology-ecology-development-canon.json.",
+      "knowledge/biology/potato-growth-principles.json is now explicitly the practice-facing projection rather than a second biology authority.",
+      "Alternative Potato research staging material was externally re-sourced, promoted, then retired with blob provenance.",
+      "POTATOVERSE-DEEP-RESEARCH.md remains only as a readable historical donor and no longer points to live staging JSON.",
+      "Research frontier House holdings no longer count retired alternative/deep Potatoverse staging files.",
+      "Root research.json unique concepts are being drained into specialist owners before retirement; Center-as-reactor, Sacred Hypocrisy, Two-Faced Potato, comparison-adapter, generative-overlap, identity invariance, Crow transition, Third Temple living architecture and Merkaba choice have now been promoted.",
+      "All research.json sections now have successor owners; its 15 open questions moved into data/research-frontier.json and the root donor is closed for new research.",
+      "Great Book 2024 extraction now lives under knowledge/research/great-book-2024-source-extraction.json; live consumers were rewired from the retired root book-research.json path.",
+      "Law of Positional Meaning now lives in symbolic-relational-synthesis; later reinterpretation is modeled as graph growth in Timic dynamics.",
+      "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md is intentionally retained only as early-life roadmap provenance; canonical event ownership remains in data/timeline-events.json.",
+      "public-route-topology is now deterministically generated from data/house/public-surfaces.json and CI checks projection drift; route identity is authored once.",
+      "docs/POTATOVERSE.md is now explicitly a human-readable reader projection rather than a canonical control plane.",
+      "Symbol Atlas now reads from canonical concept/symbol owners instead of calling itself the canonical vocabulary.",
+      "Kingdom Atlas now preserves its historical 14-family relationship vocabulary as a reader while current typed relationship ownership lives in Inhabited House and domain registries."
+    ],
+    "next_retirement_candidates": [
+      {
+        "path": "root-level legacy master/research files",
+        "target_state": "historical source strata",
+        "condition": "complete unique-content and live-reference audit before pruning"
+      }
+    ],
+    "completed_retirements": [
+      {
+        "path": "scripts/validate_root_navigation.py",
+        "action": "deleted",
+        "reason": "orphaned validator enforced retired WORLD/AXIS-only public-root contract; historical provenance remains in data/root-navigation.json and docs/ROOT-NAVIGATION-ARCHITECTURE.md"
+      },
+      {
+        "path": "data/country-enrichment-batch-2026-09-07-*.json",
+        "action": "deleted",
+        "reason": "retired generated enrichment migration layer; canonical country records and consolidated projections retain current data"
+      },
+      {
+        "path": "data/country-nodes-batch-2026-09-07-*.json",
+        "action": "deleted",
+        "reason": "retired generated node migration layer; data/country-nodes.json remains the consolidated graph projection"
+      },
+      {
+        "path": "data/potatoverse-alternative-directions.json",
+        "action": "deleted",
+        "reason": "30-finding research staging layer absorbed into canonical potato science/human-ecology owners"
+      },
+      {
+        "path": "data/potatoverse-alternative-links.json",
+        "action": "deleted",
+        "reason": "self-contained adXX staging graph retired with its source layer; durable relations preserved in canonical synthesis rather than promoting a parallel node taxonomy"
+      },
+      {
+        "path": "data/potatoverse-deep-research.json",
+        "action": "deleted",
+        "reason": "36-finding drXX staging corpus fully self-contained and absorbed by current core/science/timeline/traditions owners"
+      },
+      {
+        "path": "data/potatoverse-deep-links.json",
+        "action": "deleted",
+        "reason": "28-edge drXX staging graph retired with source layer; no live consumer or canonical endpoint dependency remained"
+      },
+      {
+        "path": "POTATOVERSE-DEEP-RESEARCH.md",
+        "action": "deleted",
+        "reason": "readable historical donor fully diffed; unique content promoted to current core/science/timeline/traditions owners; blob preserved in legacy registry"
+      },
+      {
+        "path": "POTATOVERSE-ALTERNATIVE-RESEARCH.md",
+        "action": "deleted",
+        "reason": "readable historical donor fully diffed and externally re-sourced; durable biology/human-ecology content promoted; blob preserved in legacy registry"
+      },
+      {
+        "path": "research.json",
+        "action": "delete root copy",
+        "reason": "all substantive sections promoted/routed, open questions moved to current frontier, live dependencies drained",
+        "last_live_blob": "353678889ad4b46890319c812951ae494cf1e791"
+      },
+      {
+        "path": "2026-master-framework.json",
+        "action": "delete root copy",
+        "reason": "formula consumers and live source lists rewired to current specialist owners; historical value preserved by blob",
+        "last_live_blob": "796c32f54109fafb611c83838b45ac5b3f56a43a"
+      },
+      {
+        "path": "book-research.json",
+        "action": "delete root copy after relocation",
+        "reason": "full extraction retained intact under knowledge/research and every live consumer rewired",
+        "successor": "knowledge/research/great-book-2024-source-extraction.json",
+        "last_live_blob": "9168248304e821b4af092c5c5f9c506b7db51fb1"
+      },
+      {
+        "path": "book-research.json",
+        "action": "root path retired after relocation",
+        "successor": "knowledge/research/great-book-2024-source-extraction.json",
+        "reason": "cross-domain Great Book extraction remains valuable, but root location falsely implied global authority"
+      },
+      {
+        "path": "relational-objects.json",
+        "action": "deleted",
+        "reason": "orphaned root theory absorbed into canonical positional-meaning and temporal-reinterpretation owners",
+        "last_live_blob": "806538c82dcda0d00128f8841cfc7ca704ac5298"
+      },
+      {
+        "path": "knowledge/research/potato-house-master/public-route-topology.json",
+        "action": "converted to generated compatibility projection",
+        "reason": "route identity, canonical route, surface type and Room membership now derive deterministically from data/house/public-surfaces.json; CI checks drift"
+      },
+      {
+        "path": "docs/POTATOVERSE.md",
+        "action": "demoted to reader projection",
+        "reason": "human-readable introductory narrative retained while canonical concept and House authority are explicitly delegated to machine owners"
+      }
+    ],
+    "root_source_strata": {
+      "research.json": {
+        "state": "retired",
+        "role": "former mixed Great Book/comparative research donor",
+        "authority": "none",
+        "provenance": "archive/legacy/README.md + blob 353678889ad4b46890319c812951ae494cf1e791"
+      },
+      "book-research.json": {
+        "state": "root-path-retired",
+        "role": "former root Great Book extraction path",
+        "authority": "none at root",
+        "successor": "knowledge/research/great-book-2024-source-extraction.json",
+        "provenance": "archive/legacy/README.md + blob 9168248304e821b4af092c5c5f9c506b7db51fb1"
+      },
+      "2026-master-framework.json": {
+        "state": "retired",
+        "role": "former 2026 conversation-developed synthesis",
+        "authority": "none",
+        "provenance": "archive/legacy/README.md + blob 796c32f54109fafb611c83838b45ac5b3f56a43a"
+      },
+      "POTATOVERSE-DEEP-RESEARCH.md": {
+        "state": "historical-donor",
+        "role": "readable research stratum",
+        "authority": "non-canonical",
+        "next": "unique-content diff"
+      },
+      "POTATOVERSE-ALTERNATIVE-RESEARCH.md": {
+        "state": "historical-donor",
+        "role": "readable research stratum",
+        "authority": "non-canonical",
+        "next": "unique-content diff"
+      },
+      "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md": {
+        "state": "retained-source-stratum",
+        "role": "readable timeline/provenance",
+        "authority": "not canonical event owner",
+        "next": "retain until timeline-source consumers can route directly to promoted evidence"
+      },
+      "knowledge.json": {
+        "state": "retired",
+        "role": "former all-in-one master",
+        "authority": "none",
+        "next": "historical recovery via recorded blob only"
+      }
+    },
+    "pr283_harvest": {
+      "source_pr": 283,
+      "target_pr": 284,
+      "status": "path-complete; provenance retained pending final content-level audit",
+      "completed_on": "2026-09-19",
+      "result": "All file paths changed by PR #283 are now represented in the forward convergence branch. Unique method atlases, public-integration contracts, specialist-subview placement, Room ownership, reader deepening and Below observatory material were promoted into PR #284 without restoring retired parallel authorities.",
+      "substantive_domains_promoted": [
+        "memory recovery and promotion states",
+        "provenance chain of custody",
+        "platform mechanics, governance and portability",
+        "information ecology, correction and memory repair",
+        "literal potato organism development",
+        "whole-body regulation and symbolic-body comparison",
+        "model discrimination, calibration and falsification",
+        "economy stock-flow-obligation networks and public finance",
+        "governance institutions and policy lifecycle",
+        "geography, country capability and dependency",
+        "sacred geometry method and invariants"
+      ],
+      "retirement_rule": "Do not close/delete the source PR solely from path coverage; retain it until a final content-level comparison confirms no unique formulation or provenance remains."
+    }
+  },
+  "reader_projection_classification": {
+    "status": "first high-confusion document wave complete",
+    "rule": "Broad human-readable documents may summarize or teach canonical material, but filenames/titles such as master, framework or atlas do not grant ownership.",
+    "records": [
+      {
+        "path": "docs/POTATOVERSE.md",
+        "role": "reader_projection",
+        "current_authority": [
+          "data/potatoism-concept-registry.json",
+          "data/potatoism-dossiers.json",
+          "knowledge/core/potatoverse-master-framework.json",
+          "data/house/*"
+        ]
+      },
+      {
+        "path": "docs/MASTER-FRAME.md",
+        "role": "reader_projection",
+        "current_authority": [
+          "knowledge/core/root-system.json",
+          "knowledge/core/potatoverse-master-framework.json",
+          "data/house/*"
+        ]
+      },
+      {
+        "path": "docs/MASTER-ARCHITECTURE.md",
+        "role": "historical_donor",
+        "current_authority": [
+          "docs/POTATO-HOUSE-CONSTITUTION.md",
+          "data/house/project-synthesis.json",
+          "data/house/topology.json",
+          "data/house/holdings.json"
+        ]
+      },
+      {
+        "path": "docs/SYMBOL-ATLAS.md",
+        "role": "reader_projection",
+        "current_authority": [
+          "data/potatoism-concept-registry.json",
+          "data/potatoism-dossiers.json",
+          "knowledge/core/symbolic-relational-synthesis.json"
+        ]
+      },
+      {
+        "path": "docs/KINGDOM-ATLAS.md",
+        "role": "historical_reader_projection",
+        "current_authority": [
+          "knowledge/core/inhabited-house-society-ontology.json",
+          "data/potatoism-relationships.json",
+          "domain-specific relation registries"
+        ]
+      }
+    ]
+  },
+  "room_depth_wave_2026_09_19": {
+    "status": "active substance deepening after authority convergence",
+    "principle": "Prefer concrete cases, measures, failure modes and worked lifecycle examples inside existing owners over new structural layers.",
+    "repairs": [
+      {
+        "id": "harvested-atlas-holdings-repair",
+        "result": "Seventeen harvested atlases were removed from accidental Core Identities featured placement and restored to their assigned Rooms.",
+        "guardrail": "scripts/validate_house_governance.py now rejects featured holdings whose canonical file assignment points to another Room."
+      }
+    ],
+    "deepened_rooms": [
+      {
+        "room_id": "internet-platforms",
+        "owners": [
+          "knowledge/culture/platform-mechanics-atlas.json",
+          "knowledge/culture/platform-governance-portability-atlas.json"
+        ],
+        "substance": [
+          "ActivityPub federation/interoperability",
+          "AT Protocol identity/account portability",
+          "Google Takeout archive export",
+          "YouTube moderation/appeal mechanics"
+        ],
+        "method_gain": "Separates interoperability, export, migration, identity continuity, social-graph continuity and governance."
+      },
+      {
+        "room_id": "information-ecology",
+        "owners": [
+          "knowledge/culture/information-ecology-mechanics-atlas.json",
+          "knowledge/culture/information-correction-memory-repair-atlas.json"
+        ],
+        "substance": [
+          "Crossref Crossmark linked correction/retraction status",
+          "MediaWiki revision history",
+          "federated copy lineage",
+          "platform appeal/reinstatement loops"
+        ],
+        "method_gain": "Treats correction as a propagation/retrieval problem and counts independent provenance roots rather than visible repetitions."
+      },
+      {
+        "room_id": "politics-governance",
+        "owner": "knowledge/politics/governance-institutions-policy-lifecycle-atlas.json",
+        "substance": [
+          "Danish Folketing legislative sequence",
+          "EU ordinary legislative procedure"
+        ],
+        "method_gain": "Adds neutral institutional-process comparison without political ranking."
+      },
+      {
+        "room_id": "memory-recovery",
+        "owners": [
+          "knowledge/indexes/memory-recovery-method-atlas.json",
+          "knowledge/indexes/memory-recovery-promotion-state-atlas.json"
+        ],
+        "substance": [
+          "research.json retirement",
+          "Great Book extraction path migration",
+          "Potatoverse staging retirement",
+          "PR #283 → #284 harvest"
+        ],
+        "method_gain": "Distinguishes path retirement, content retirement, promotion, provenance-only retention and semantic-vs-path convergence."
+      }
+    ],
+    "next_targets": [
+      "economy-finance: add concrete stock-flow/public-finance case studies and measurement examples",
+      "geography-countries: add concrete dependency/capability cases with dated sources",
+      "potato-biology: connect organism-cycle stages to empirical growth/storage cases without turning metaphor into biology",
+      "model-testing: convert more project analogies into explicit competing-model tests and negative cases",
+      "prune low-yield duplicate specialist atlases only after promoted laws and provenance are accounted for"
+    ]
+  },
+  "reader_population_pattern": {
+    "id": "local-concrete-grounding",
+    "status": "implemented first on Culture reader",
+    "problem": "A page can contain extensive framework language while requiring the reader to travel too far before encountering named objects, measurable flows, dated events or worked mechanisms.",
+    "rule": "Do not solve thin actuality by hand-pasting more prose into the page. Keep concrete records in canonical owners/source ledgers and project compact case blocks beside the abstract section they explain.",
+    "sequence": [
+      "abstract concept or mechanism",
+      "2–6 contrastive concrete cases immediately nearby",
+      "source/evidence links visible in the local block",
+      "deep canonical field later on the page",
+      "specialist/deep reader for full records"
+    ],
+    "quality_tests": [
+      "Every major mechanism should answer 'what is an actual example?' without forcing a long scroll.",
+      "Cases must be contrastive enough to prevent one example from becoming the definition.",
+      "Numbers, dates, legal status, institutional role and uncertainty should appear when the concept naturally depends on them.",
+      "Reader projections must not become new data owners.",
+      "A page should expose counterexamples and non-pathological cases when studying failure/control dynamics.",
+      "Repeated cases are acceptable only when they perform a different analytical job at each location."
+    ],
+    "culture_implementation": {
+      "owner": "knowledge/culture/concrete-culture-field-atlas.json",
+      "source_ledger": "knowledge/culture/concrete-culture-source-ledger.json",
+      "projector": "scripts/project_public_culture_field.py",
+      "validator": "scripts/test_concrete_culture_field.py",
+      "built_validator": "scripts/validate_public_navigation.py",
+      "local_groundings": [
+        "formation-in-practice",
+        "recognizability-in-practice",
+        "control-in-practice",
+        "tribunal-role-lock-in-practice",
+        "classification-in-practice",
+        "infrastructure-in-practice"
+      ]
+    },
+    "next_candidate_pages": [
+      "economy/index.html — connect stock/flow/debt/fiscal concepts to named budgets, balance sheets, instruments and dated cases",
+      "world-systems/index.html — connect dependency/capability language to real infrastructure and cross-border chains",
+      "science/index.html — connect formal operators to actual tests, measurements, failed models and discriminating observations",
+      "religion/index.html — connect comparative categories to primary texts, institutions, dates and distinct historical traditions",
+      "below/index.html — connect intelligence/shadow categories to evidence-typed public cases and explicit non-equivalence"
+    ]
+  }
 }

@@ -17,15 +17,14 @@ EXPECTED_PRIMARY = [
     "world/",
 ]
 
-REQUIRED_HOME_ROOM_LINKS = {
-    "context/culture/": "Culture",
-    "history/": "History",
-    "politics/": "Politics",
-    "law/": "Law",
-    "economy/": "Economy",
-    "world-systems/": "World Systems",
+REQUIRED_HOME_SPINE_LINKS = {
+    "potato-of-life/": "Center",
+    "house/": "House",
+    "rooms/": "Rooms",
+    "explore/": "Views",
+    "timeline/": "Timeline",
+    "works/": "Works",
     "context/source-authority/": "Sources",
-    "rooms/": "All Rooms",
 }
 
 REQUIRED_SURFACES = {
@@ -96,7 +95,7 @@ def load_json(relative: str):
 
 
 def primary_hrefs(home: str) -> list[str]:
-    match = re.search(r'<nav\s+class=["\']sections["\'][^>]*>(.*?)</nav>', home, flags=re.I | re.S)
+    match = re.search(r'<nav\s+class=["\']public-doors["\'][^>]*>(.*?)</nav>', home, flags=re.I | re.S)
     if not match:
         return []
     return re.findall(r'href=["\']([^"\']+)["\']', match.group(1), flags=re.I)
@@ -116,14 +115,11 @@ def main() -> int:
     if primary != EXPECTED_PRIMARY:
         errors.append(f"homepage primary Doors drifted: expected {EXPECTED_PRIMARY!r}; got {primary!r}")
 
-    if "Explore the Dwellings &amp; Rooms" not in home and "Explore the Dwellings & Rooms" not in home:
-        errors.append("homepage missing distinct 'Explore the Dwellings & Rooms' corridor")
-    for href, label in REQUIRED_HOME_ROOM_LINKS.items():
+    if 'class="project-spine"' not in home:
+        errors.append("homepage missing current Center → House → Rooms → Views spine")
+    for href, label in REQUIRED_HOME_SPINE_LINKS.items():
         if f'href="{href}"' not in home and f"href='{href}'" not in home:
-            errors.append(f"homepage Rooms corridor missing route {href} ({label})")
-    corridor = re.search(r'<section\s+class=["\']rooms-corridor["\'][^>]*>(.*?)</section>', home, flags=re.I | re.S)
-    if not corridor or "cult" not in corridor.group(1).lower():
-        errors.append("homepage Rooms corridor must name cult/high-control culture explicitly")
+            errors.append(f"homepage current spine/views missing route {href} ({label})")
 
     page_text: dict[str, str] = {}
     for relative, (surface_id, label) in ROOM_PAGE_CONTRACTS.items():

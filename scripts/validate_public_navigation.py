@@ -45,6 +45,21 @@ CANONICAL_READER_SURFACES = {
     "context/source-authority/index.html": "sources",
 }
 
+CULTURE_GROUNDING_MARKERS = (
+    'data-culture-grounding="formation-in-practice"',
+    'data-culture-grounding="recognizability-in-practice"',
+    'data-culture-grounding="control-in-practice"',
+    'data-culture-grounding="tribunal-role-lock-in-practice"',
+    'data-culture-grounding="classification-in-practice"',
+    'data-culture-grounding="infrastructure-in-practice"',
+    "Formation in practice — what the sequence looks like in the world",
+    "How recognizable culture looks in actual cases",
+    "Control in practice — mechanisms, not labels",
+    "Tribunal and role-lock in practice",
+    "Classification and institutional action in practice",
+    "Infrastructure in practice — who stores memory and who controls the Door",
+)
+
 CULTURE_FIELD_MARKERS = (
     'data-culture-field="concrete-culture-field"',
     "Who is actually here?",
@@ -158,6 +173,9 @@ def main() -> int:
         errors.append("missing Culture reader for concrete field projection")
     else:
         culture_text = culture_path.read_text(encoding="utf-8", errors="replace")
+        for marker in CULTURE_GROUNDING_MARKERS:
+            if marker not in culture_text:
+                errors.append(f"Culture reader missing local concrete grounding: {marker}")
         for marker in CULTURE_FIELD_MARKERS:
             if marker not in culture_text:
                 errors.append(f"Culture reader missing concrete field marker: {marker}")

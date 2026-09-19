@@ -1,6 +1,6 @@
 {
-  "version": "4.0.0",
-  "updated": "2026-09-18",
+  "version": "4.3.0",
+  "updated": "2026-09-19",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
   "principle": "Every substantive knowledge file has at most one primary Room owner. Cross-Room meaning travels through interfaces, collections and references rather than duplicate ownership. Curated navigation/reader/story/corporium material is classified separately.",
@@ -292,7 +292,7 @@
       "title": "Provenance & Evidence",
       "dwelling_id": "archive-sources",
       "purpose": "Own source lineage, evidence class, source authority, extraction lineage and routes back from synthesis to artifacts.",
-      "primary_file_count": 4,
+      "primary_file_count": 5,
       "featured_holdings": [
         {
           "path": "knowledge/indexes/context-graph.json",
@@ -317,6 +317,12 @@
           "id": "archive-epistemics",
           "kind": "archive evidence doctrine",
           "basis": "exact-owner"
+        },
+        {
+          "path": "knowledge/indexes/provenance-chain-of-custody-atlas.json",
+          "id": "provenance-chain-of-custody-atlas",
+          "kind": "claim-to-source chain-of-custody and corroboration atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -338,13 +344,25 @@
       "title": "Memory & Recovery",
       "dwelling_id": "archive-sources",
       "purpose": "Recover prior conversations, files, historical strata and forgotten project material while preserving source/time boundaries.",
-      "primary_file_count": 1,
+      "primary_file_count": 3,
       "featured_holdings": [
         {
           "path": "knowledge/indexes/conversation-recovery-inventory.json",
           "id": "conversation-recovery-inventory",
           "kind": "room holding",
           "basis": "exact-owner"
+        },
+        {
+          "path": "knowledge/indexes/memory-recovery-method-atlas.json",
+          "id": "memory-recovery-method-atlas",
+          "kind": "recovery method and temporal-strata atlas",
+          "basis": "room-deepening"
+        },
+        {
+          "path": "knowledge/indexes/memory-recovery-promotion-state-atlas.json",
+          "id": "memory-recovery-promotion-state-atlas",
+          "kind": "recovery-to-canon promotion state machine",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -780,7 +798,7 @@
       "title": "Esoteric & Sacred Geometry",
       "dwelling_id": "traditions-texts",
       "purpose": "Handle historical/esoteric geometry, mandorla, Vesica, cosmological diagrams and source-led comparison.",
-      "primary_file_count": 4,
+      "primary_file_count": 5,
       "featured_holdings": [
         {
           "path": "knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json",
@@ -805,6 +823,12 @@
           "id": "providence-pyramid-pillars-atlas",
           "kind": "historical-symbolic comparative atlas",
           "basis": "curated-symbol-architecture"
+        },
+        {
+          "path": "knowledge/traditions/sacred-geometry-method-and-invariants-atlas.json",
+          "id": "sacred-geometry-method-and-invariants-atlas",
+          "kind": "exact geometry and historical-symbolic layer method",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1098,7 +1122,7 @@
       "title": "Testing & Falsifiability",
       "dwelling_id": "science-formal-models",
       "purpose": "Own tests, observables, falsifiers, uncertainty, calibration and scientific red-team protocols.",
-      "primary_file_count": 5,
+      "primary_file_count": 6,
       "featured_holdings": [
         {
           "path": "knowledge/science/model-testing-protocol.json",
@@ -1129,6 +1153,12 @@
           "id": "science-theory-rigor-completion-matrix-2026-09-11",
           "kind": "room holding",
           "basis": "science-topic"
+        },
+        {
+          "path": "knowledge/science/model-discrimination-calibration-atlas.json",
+          "id": "model-discrimination-calibration-atlas",
+          "kind": "model comparison, calibration and falsification atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1149,25 +1179,31 @@
       "title": "Potato Biology",
       "dwelling_id": "life-body",
       "purpose": "Own literal potato anatomy, tuber biology, growth, dormancy, propagation, storage and environmental constraints.",
-      "primary_file_count": 3,
+      "primary_file_count": 4,
       "featured_holdings": [
-        {
-          "path": "knowledge/biology/potato-growth-principles.json",
-          "id": "potato-growth-principles",
-          "kind": "room holding",
-          "basis": "exact-owner"
-        },
         {
           "path": "knowledge/science/potato-biology-ecology-development-canon.json",
           "id": "potato-biology-ecology-development-canon",
-          "kind": "room holding",
-          "basis": "exact-owner"
+          "kind": "canonical science owner",
+          "basis": "canonical-owner"
+        },
+        {
+          "path": "knowledge/biology/potato-growth-principles.json",
+          "id": "potato-growth-principles",
+          "kind": "practice-facing projection",
+          "basis": "derived-projection"
         },
         {
           "path": "knowledge/timeline/potato-angels-eye-sprout-development-ledger.json",
           "id": "potato-angels-eye-sprout-development-ledger",
-          "kind": "room holding",
-          "basis": "exact-owner"
+          "kind": "development/attestation ledger",
+          "basis": "timeline-owner"
+        },
+        {
+          "path": "knowledge/biology/potato-organism-cycle-atlas.json",
+          "id": "potato-organism-cycle-atlas",
+          "kind": "literal potato organism and developmental-cycle atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1248,7 +1284,7 @@
       "title": "Whole-body Physiology",
       "dwelling_id": "life-body",
       "purpose": "Own body-system integration across nervous, autonomic, cardiovascular, respiratory, gut, immune and fluid interfaces.",
-      "primary_file_count": 4,
+      "primary_file_count": 5,
       "featured_holdings": [
         {
           "path": "knowledge/body/body-science-context-atlas.json",
@@ -1273,6 +1309,12 @@
           "id": "index",
           "kind": "room holding",
           "basis": "body-remainder"
+        },
+        {
+          "path": "knowledge/body/whole-body-regulation-coupling-atlas.json",
+          "id": "whole-body-regulation-coupling-atlas",
+          "kind": "whole-organism regulatory coupling and feedback atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1293,7 +1335,7 @@
       "title": "Symbolic Body Crosswalk",
       "dwelling_id": "life-body",
       "purpose": "Own explicitly comparative mappings between project symbols and anatomy while preserving the empirical/symbolic firewall.",
-      "primary_file_count": 3,
+      "primary_file_count": 4,
       "featured_holdings": [
         {
           "path": "knowledge/body/body-symbolism-map.json",
@@ -1312,6 +1354,12 @@
           "id": "tim-neurobiology-relational-reconciliation",
           "kind": "room holding",
           "basis": "body-topic"
+        },
+        {
+          "path": "knowledge/body/symbolic-body-crosswalk-method-atlas.json",
+          "id": "symbolic-body-crosswalk-method-atlas",
+          "kind": "typed anatomy-symbol comparison method",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1334,13 +1382,19 @@
       "title": "Politics & Governance",
       "dwelling_id": "world-systems",
       "purpose": "Own documented political positions, governance structures, institutions and geopolitical relations as world-system material.",
-      "primary_file_count": 1,
+      "primary_file_count": 2,
       "featured_holdings": [
         {
           "path": "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
           "id": "tim-dooley-politics-geopolitics-compendium",
           "kind": "room holding",
           "basis": "politics-family"
+        },
+        {
+          "path": "knowledge/politics/governance-institutions-policy-lifecycle-atlas.json",
+          "id": "governance-institutions-policy-lifecycle-atlas",
+          "kind": "neutral governance institutions and policy-lifecycle atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1428,7 +1482,7 @@
       "title": "Economy & Finance",
       "dwelling_id": "world-systems",
       "purpose": "Own observable finance, debt, banking, trade, ownership, production, labour and economic flows.",
-      "primary_file_count": 3,
+      "primary_file_count": 5,
       "featured_holdings": [
         {
           "path": "knowledge/economics/gold-indexed-sovereign-bond-model.json",
@@ -1447,6 +1501,18 @@
           "id": "tim-dooley-inflation-ledger",
           "kind": "room holding",
           "basis": "economics-family"
+        },
+        {
+          "path": "knowledge/economics/public-finance-fiscal-capacity-atlas.json",
+          "id": "public-finance-fiscal-capacity-atlas",
+          "kind": "government balance-sheet and fiscal-capacity atlas",
+          "basis": "room-deepening"
+        },
+        {
+          "path": "knowledge/economics/stock-flow-obligation-network-atlas.json",
+          "id": "stock-flow-obligation-network-atlas",
+          "kind": "stock-flow-balance-sheet and obligation network grammar",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1536,7 +1602,7 @@
       "title": "Geography & Countries",
       "dwelling_id": "world-systems",
       "purpose": "Own countries, territories, geographic identity, boundaries and country-level relational context.",
-      "primary_file_count": 4,
+      "primary_file_count": 6,
       "featured_holdings": [
         {
           "path": "knowledge/geopolitics/greater-israel-covenant-land-tikkun-atlas.json",
@@ -1561,6 +1627,18 @@
           "id": "operation-rising-lion-tim-window-2025",
           "kind": "room holding",
           "basis": "geopolitics-family"
+        },
+        {
+          "path": "knowledge/world/country-capability-dependency-atlas.json",
+          "id": "country-capability-dependency-atlas",
+          "kind": "country capability dependency and complementarity atlas",
+          "basis": "room-deepening"
+        },
+        {
+          "path": "knowledge/world/geography-place-state-boundary-atlas.json",
+          "id": "geography-place-state-boundary-atlas",
+          "kind": "neutral geographic object and boundary atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1580,13 +1658,25 @@
       "title": "Internet & Platforms",
       "dwelling_id": "culture-information",
       "purpose": "Own platforms, online spaces, public digital behavior, media formats and platform-specific context.",
-      "primary_file_count": 1,
+      "primary_file_count": 3,
       "featured_holdings": [
         {
           "path": "knowledge/culture/digital-witness-livestream-liturgy.json",
           "id": "digital-witness-livestream-liturgy",
           "kind": "room holding",
           "basis": "culture-topic"
+        },
+        {
+          "path": "knowledge/culture/platform-governance-portability-atlas.json",
+          "id": "platform-governance-portability-atlas",
+          "kind": "platform governance dependency and portability atlas",
+          "basis": "room-deepening"
+        },
+        {
+          "path": "knowledge/culture/platform-mechanics-atlas.json",
+          "id": "platform-mechanics-atlas",
+          "kind": "platform mediation and mechanics atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1674,13 +1764,25 @@
       "title": "Information Ecology & Memory",
       "dwelling_id": "culture-information",
       "purpose": "Own attention, information flow, repetition, memory, forgetting, transmission and public-discourse ecology.",
-      "primary_file_count": 1,
+      "primary_file_count": 3,
       "featured_holdings": [
         {
           "path": "knowledge/world/digital-memory-forgetting-restoration-atlas.json",
           "id": "digital-memory-forgetting-restoration-atlas",
           "kind": "room holding",
           "basis": "exact-owner"
+        },
+        {
+          "path": "knowledge/culture/information-correction-memory-repair-atlas.json",
+          "id": "information-correction-memory-repair-atlas",
+          "kind": "correction propagation and memory repair atlas",
+          "basis": "room-deepening"
+        },
+        {
+          "path": "knowledge/culture/information-ecology-mechanics-atlas.json",
+          "id": "information-ecology-mechanics-atlas",
+          "kind": "attention, memory and correction mechanics atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -6258,6 +6360,91 @@
       "path": "data/house/foundation-first-reproduction-wave-001.json",
       "primary_owner_room_id": "house-architecture",
       "basis": "foundation-population-wave-016"
+    },
+    {
+      "path": "knowledge/indexes/provenance-chain-of-custody-atlas.json",
+      "primary_owner_room_id": "provenance-evidence",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/science/model-discrimination-calibration-atlas.json",
+      "primary_owner_room_id": "model-testing",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/traditions/sacred-geometry-method-and-invariants-atlas.json",
+      "primary_owner_room_id": "esoteric-sacred-geometry",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/body/whole-body-regulation-coupling-atlas.json",
+      "primary_owner_room_id": "whole-body",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/body/symbolic-body-crosswalk-method-atlas.json",
+      "primary_owner_room_id": "symbolic-body-comparison",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/biology/potato-organism-cycle-atlas.json",
+      "primary_owner_room_id": "potato-biology",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/culture/information-correction-memory-repair-atlas.json",
+      "primary_owner_room_id": "information-ecology",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/culture/information-ecology-mechanics-atlas.json",
+      "primary_owner_room_id": "information-ecology",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/culture/platform-governance-portability-atlas.json",
+      "primary_owner_room_id": "internet-platforms",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/culture/platform-mechanics-atlas.json",
+      "primary_owner_room_id": "internet-platforms",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/economics/public-finance-fiscal-capacity-atlas.json",
+      "primary_owner_room_id": "economy-finance",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/economics/stock-flow-obligation-network-atlas.json",
+      "primary_owner_room_id": "economy-finance",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/indexes/memory-recovery-method-atlas.json",
+      "primary_owner_room_id": "memory-recovery",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/indexes/memory-recovery-promotion-state-atlas.json",
+      "primary_owner_room_id": "memory-recovery",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/politics/governance-institutions-policy-lifecycle-atlas.json",
+      "primary_owner_room_id": "politics-governance",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/world/country-capability-dependency-atlas.json",
+      "primary_owner_room_id": "geography-countries",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/world/geography-place-state-boundary-atlas.json",
+      "primary_owner_room_id": "geography-countries",
+      "basis": "room-deepening"
     }
   ],
   "curated_unowned_paths": [
@@ -6396,8 +6583,8 @@
     "knowledge/story/story-registry.json"
   ],
   "summary": {
-    "scoped_files": 883,
-    "primary_owned_files": 750,
+    "scoped_files": 964,
+    "primary_owned_files": 831,
     "curated_or_navigation_files": 133,
     "rooms": 38,
     "rooms_with_zero_primary_files": []

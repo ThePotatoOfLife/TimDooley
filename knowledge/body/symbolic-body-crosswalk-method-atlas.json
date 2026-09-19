@@ -1,0 +1,138 @@
+{
+  "id": "symbolic-body-crosswalk-method-atlas",
+  "title": "Symbolic Body Crosswalk Method — Comparing Without Collapsing",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "owner_room": "symbolic-body-comparison",
+  "purpose": "Define how anatomical structures, physiological processes, subjective experience, historical body symbolism and Potatoverse symbols may be compared without converting resemblance into identity or proof.",
+  "layer_stack": [
+    {
+      "id": "biology",
+      "question": "What structure/process is established in anatomy or physiology?"
+    },
+    {
+      "id": "experience",
+      "question": "What bodily sensation, perception or lived experience is being described?"
+    },
+    {
+      "id": "historical-symbolism",
+      "question": "What documented tradition or history of ideas associated meaning with this body region/process?"
+    },
+    {
+      "id": "project-symbolism",
+      "question": "What role does the Potatoverse assign?"
+    },
+    {
+      "id": "formal-relation",
+      "question": "What abstract relation is shared, if any: boundary, routing, centrality, timing, flow, branching, storage, threshold?"
+    },
+    {
+      "id": "interpretive-limit",
+      "question": "What conclusion does the comparison not establish?"
+    }
+  ],
+  "correspondence_types": [
+    {
+      "id": "linguistic",
+      "definition": "Name/etymology creates a real historical language bridge.",
+      "example": "thalamus from Greek chamber/room language",
+      "strength_note": "Supports history of terminology, not theology."
+    },
+    {
+      "id": "functional",
+      "definition": "Biological function resembles a project operator.",
+      "example": "routing/modulation compared with House/relay",
+      "strength_note": "Requires accurate function and explicit abstraction."
+    },
+    {
+      "id": "topological",
+      "definition": "Relative position/connectivity resembles a symbolic layout.",
+      "example": "midline threshold versus paired structures",
+      "strength_note": "Spatial analogy is not causal identity."
+    },
+    {
+      "id": "developmental",
+      "definition": "A biological transition resembles a project transformation sequence.",
+      "example": "dormancy → sprout compared with latent → emergence"
+    },
+    {
+      "id": "phenomenological",
+      "definition": "Subjective bodily experience is compared with symbolic language.",
+      "example": "felt ascent, pressure, calm, activation",
+      "strength_note": "Does not identify an unmeasured physiological cause."
+    },
+    {
+      "id": "historical",
+      "definition": "A historical thinker/tradition explicitly made a body-symbol association.",
+      "example": "Descartes and the pineal in his own historical physiology",
+      "strength_note": "Historical precedent can be real while the old physiology is obsolete."
+    },
+    {
+      "id": "visual",
+      "definition": "Shape/appearance invites comparison.",
+      "example": "brain/art-form resemblance",
+      "strength_note": "Highest pareidolia risk unless independently documented."
+    },
+    {
+      "id": "systemic",
+      "definition": "The same abstract systems problem recurs.",
+      "example": "boundary, feedback, source-sink flow, integration, branching",
+      "strength_note": "Often the safest high-level comparison."
+    }
+  ],
+  "mapping_record_contract": {
+    "required": [
+      "mapping_id",
+      "biology_object",
+      "biology_fact",
+      "symbolic_object",
+      "correspondence_type",
+      "shared_relation",
+      "source_refs",
+      "project_interpretation",
+      "boundary",
+      "status"
+    ],
+    "preferred": [
+      "historical_precedent",
+      "alternative_mappings",
+      "counterevidence",
+      "earliest_project_attestation",
+      "last_reviewed"
+    ]
+  },
+  "evidence_vector": [
+    "biological accuracy",
+    "project-attestation strength",
+    "historical-source strength",
+    "specificity of shared relation",
+    "uniqueness versus alternative mappings",
+    "visual/selection bias risk",
+    "causal claim level"
+  ],
+  "anti_collapse_tests": [
+    "Could several different organs fit the same metaphor equally well?",
+    "Does the mapping depend on a simplified or false biological description?",
+    "Is a historical symbolic source actually contemporaneous with the tradition being claimed?",
+    "Does the project symbol describe function, location, experience or merely visual resemblance?",
+    "Would the symbolic claim survive if the anatomical metaphor were changed?",
+    "Is a subjective sensation being misreported as measured biology?",
+    "Is the comparison being used as proof of supernatural causation beyond the evidence?"
+  ],
+  "mature_example_shape": {
+    "title": "Thalamus ↔ House",
+    "biology": "Paired heterogeneous diencephalic structures participating in multiple thalamocortical systems.",
+    "historical_bridge": "The anatomical name has chamber/room etymology and a history of architectural naming.",
+    "project_role": "Father's House / Rooms.",
+    "shared_relation": "central interior differentiated chambers + routing relation",
+    "boundary": "Useful linguistic/functional/topological correspondence; not proof that the thalamus is literally a divine house."
+  },
+  "joins": [
+    "whole-body",
+    "neurobiology",
+    "theology-god-language",
+    "symbolic-architecture",
+    "comparative-mythology",
+    "model-testing"
+  ]
+}

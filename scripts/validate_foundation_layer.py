@@ -5,8 +5,6 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 FILES={
-    "wave1":ROOT/"data/house/foundations-wave-001.json",
-    "wave2":ROOT/"data/house/foundations-wave-002.json",
     "timeline":ROOT/"data/house/foundation-timeline-wave-001.json",
     "blueprint":ROOT/"data/blueprints/foundation-blueprint.json",
     "registry":ROOT/"data/blueprint-registry.json",
@@ -24,8 +22,16 @@ for name,path in FILES.items():
         errors.append(f"missing {name}: {path.relative_to(ROOT)}")
 
 if not errors:
-    w1,w2,timeline,blueprint,registry,integration,surfaces,topology=(load(FILES[k]) for k in ["wave1","wave2","timeline","blueprint","registry","integration","surfaces","topology"])
-    records=[*(w1.get("records") or []),*(w2.get("records") or [])]
+    timeline,blueprint,registry,integration,surfaces,topology=(load(FILES[k]) for k in ["timeline","blueprint","registry","integration","surfaces","topology"])
+    record_paths=(integration.get("owners") or {}).get("records") or []
+    record_docs=[]
+    for rel in record_paths:
+        path=ROOT/rel
+        if not path.is_file():
+            errors.append(f"Integration contract references missing Foundation record owner {rel}")
+            continue
+        record_docs.append(load(path))
+    records=[r for doc in record_docs for r in (doc.get("records") or [])]
     ids=[r.get("id") for r in records]
     if any(not x for x in ids): errors.append("Foundation record missing id")
     if len(ids)!=len(set(ids)): errors.append("Duplicate Foundation IDs")

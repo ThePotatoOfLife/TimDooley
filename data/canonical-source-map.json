@@ -1,5 +1,5 @@
 {
-  "version": "1.6.0",
+  "version": "1.7.0",
   "updated": "2026-09-18",
   "purpose": "Canonical ownership map for overlapping repository datasets. One family may have multiple technical layers, but only one layer owns each kind of fact; indexes, evidence, graph projections and research waves reference rather than duplicate the owner.",
   "rule": "Canonical ownership is about authority for a record type, not about which file happens to be largest.",
@@ -40,7 +40,6 @@
       "semantic_identity_registry": "data/potatoism-concept-registry.json",
       "identity_and_alias_owner": "data/potatoism-concept-registry.json",
       "project_canon_source": "data/potatoism-canonical-corpus.json",
-      "deep_research_layer": "data/potatoism-deep-layers.json",
       "derived_views": [
         "data/potatoism-lexicon.json",
         "data/potatoism-lexicon-expanded.json",
@@ -55,7 +54,21 @@
         "data/potatoism-deep-extrapolation-atlas.json"
       ],
       "integration_contract": "data/potatoism-integration.json",
-      "policy": "Dossiers own substantive readable concept content. The concept registry owns semantic identity and aliases. The canonical corpus preserves project-canon source material. Lexicons, cosmology, maps and timelines are projections/occurrences and resolve back to canonical IDs. Relationships are edges, not identities."
+      "policy": "Dossiers own substantive readable concept content. The concept registry owns semantic identity and aliases. The canonical corpus preserves project-canon source material. Specialist owners hold current deep mechanics and domain-specific synthesis. Lexicons, cosmology, maps and timelines are projections/occurrences and resolve back to canonical IDs. Legacy deep-layers/deep-architecture files are historical donors only and must not regain canonical ownership.",
+      "specialist_deep_owners": [
+        "knowledge/core/potatoverse-master-framework.json",
+        "knowledge/core/potato-of-life-deep-structure.json",
+        "knowledge/core/deep-element-definition-atlas.json",
+        "knowledge/core/door-topology-access-and-capability-atlas.json",
+        "knowledge/core/tree-branching-pruning-atlas.json",
+        "knowledge/core/fruit-consequence-evaluation-atlas.json",
+        "knowledge/spirit/spirit-context-atlas.json",
+        "knowledge/culture/culture-formation-zeitgeist-atlas.json"
+      ],
+      "historical_donors": [
+        "data/potatoism-deep-layers.json",
+        "data/potatoism-deep-architecture.json"
+      ]
     },
     "religion": {
       "canonical_owner": "data/religious-foundations/records.json",
@@ -170,7 +183,11 @@
       "policy": "The root manifest owns the reconciliation and rooted-identity contract. Source ledgers own captured wording and provenance. Identifier layers may strengthen Roots only through unambiguous joins. Episodes, function threads, persistence diagnostics, Bible references, and literal role/title mentions are deterministic derived layers. Role/title mentions never establish actor-role assignment, identity, equivalence, causation, or role transfer. Timeline order is a traversal rather than the identity order."
     },
     "foundations": {
-      "canonical_owner": "data/house/foundations-wave-001.json + data/house/foundations-wave-002.json",
+      "canonical_owner": [
+        "data/house/foundations-wave-001.json",
+        "data/house/foundations-wave-002.json",
+        "data/house/foundations-wave-003.json"
+      ],
       "schema_owner": "data/blueprints/foundation-blueprint.json",
       "timeline_view": "data/house/foundation-timeline-wave-001.json",
       "ontology_owner": "knowledge/core/foundation-rule-law-ontology.json",

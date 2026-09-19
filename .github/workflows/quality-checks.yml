@@ -49,6 +49,7 @@ jobs:
 
       - name: Validate Potato House governance
         run: |
+          python scripts/build_public_route_topology.py --check
           python scripts/validate_house_governance.py
           python scripts/validate_house_topology.py
           python scripts/validate_house_subrooms.py

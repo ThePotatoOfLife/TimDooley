@@ -1,0 +1,240 @@
+{
+  "id": "platform-governance-portability-atlas",
+  "title": "Platform Governance, Portability & Dependency Atlas",
+  "version": "1.1.0",
+  "updated": "2026-09-19",
+  "owner_room": "internet-platforms",
+  "purpose": "Study online platforms as governance and dependency systems: who sets rules, how visibility and moderation operate, what users can carry elsewhere, and where creators or communities become structurally dependent.",
+  "governance_layers": [
+    {
+      "id": "terms_and_rules",
+      "questions": [
+        "What conduct/content rules exist?",
+        "Which rules are public?",
+        "How often do they change?"
+      ]
+    },
+    {
+      "id": "enforcement",
+      "questions": [
+        "Object removal, reach reduction, account restriction, demonetization, age/geographic gating or other measures?",
+        "Automated, human or mixed?"
+      ]
+    },
+    {
+      "id": "appeal",
+      "questions": [
+        "Can a user challenge a decision?",
+        "Is there a reason code, evidence, timeline and independent review?"
+      ]
+    },
+    {
+      "id": "ranking",
+      "questions": [
+        "Which distribution systems matter: following, search, recommendation, trending, notifications?",
+        "Which criteria are known, inferred or opaque?"
+      ]
+    },
+    {
+      "id": "monetization",
+      "questions": [
+        "Who controls payouts, advertising eligibility, subscriptions, donations, commerce or sponsorship tools?"
+      ]
+    },
+    {
+      "id": "data_and_identity",
+      "questions": [
+        "Can users retrieve content, metadata, contact graph, subscribers/followers, account history or moderation history?"
+      ]
+    },
+    {
+      "id": "interoperability",
+      "questions": [
+        "Can identity, audience, content or social graph move across services?",
+        "Are open protocols/APIs available?"
+      ]
+    },
+    {
+      "id": "archive_and_memory",
+      "questions": [
+        "What survives deletion?",
+        "What is searchable?",
+        "What correction/update linkage exists?"
+      ]
+    },
+    {
+      "id": "external_accountability",
+      "questions": [
+        "Which courts, regulators, auditors, researchers or public reporting systems can inspect the platform?"
+      ]
+    }
+  ],
+  "dependency_vector": [
+    {
+      "id": "audience_dependency",
+      "measure": "share of reachable audience concentrated on one platform"
+    },
+    {
+      "id": "revenue_dependency",
+      "measure": "share of creator/community income dependent on one platform"
+    },
+    {
+      "id": "identity_dependency",
+      "measure": "degree to which reputation/account identity cannot be moved"
+    },
+    {
+      "id": "archive_dependency",
+      "measure": "degree to which history/content disappears if the service closes or access is lost"
+    },
+    {
+      "id": "distribution_dependency",
+      "measure": "share of discovery controlled by platform-owned ranking"
+    },
+    {
+      "id": "tooling_dependency",
+      "measure": "dependence on platform-specific production, community or moderation tools"
+    },
+    {
+      "id": "social_graph_portability",
+      "measure": "ability to export/reconstruct follower, subscription or community relationships"
+    },
+    {
+      "id": "multi_homing",
+      "measure": "ability to participate or publish across multiple platforms without prohibitive cost"
+    }
+  ],
+  "moderation_case_contract": [
+    "platform",
+    "object_or_account",
+    "rule_invoked",
+    "action",
+    "date",
+    "notice/reason",
+    "evidence_available",
+    "appeal_available",
+    "appeal_outcome",
+    "restoration_or_revision",
+    "geographic_scope",
+    "source"
+  ],
+  "migration_case_contract": [
+    "community_or_creator",
+    "origin_platform",
+    "destination_platforms",
+    "trigger",
+    "what_moved",
+    "what_could_not_move",
+    "audience_retained",
+    "archive_retained",
+    "governance_change",
+    "costs",
+    "outcome"
+  ],
+  "resilience_patterns": [
+    "multi-homing reduces single-platform failure risk",
+    "portable archives preserve memory even when reach is lost",
+    "open protocols can reduce identity/audience lock-in but do not automatically solve moderation or abuse",
+    "creator-owned mailing lists/domains/archives can preserve direct reach",
+    "platform dependence can be high even when formal exit is technically easy"
+  ],
+  "boundary_rules": [
+    "Removal or reduced reach is not automatically censorship in the legal sense; jurisdiction and actor matter.",
+    "Opaque ranking does not prove intentional suppression of a particular person or viewpoint.",
+    "High engagement does not prove algorithmic favoritism without stronger evidence.",
+    "Platform migration can change governance, incentives and community composition at the same time."
+  ],
+  "joins": [
+    "platform-mechanics-atlas",
+    "information-ecology",
+    "subculture-group-formation",
+    "provenance-evidence",
+    "law-justice"
+  ],
+  "concrete_cases": [
+    {
+      "id": "activitypub-federation",
+      "system": "ActivityPub",
+      "case_type": "protocol interoperability / federation",
+      "observed_mechanism": "W3C ActivityPub defines client-to-server and federated server-to-server social networking APIs using ActivityStreams 2.0, allowing independently implemented services to exchange social objects and notifications.",
+      "portability_dimensions": {
+        "identity": "not guaranteed by ActivityPub alone",
+        "content": "federated delivery supported",
+        "social_graph": "interoperable following/federation patterns depend on implementation",
+        "provider_exit": "not equivalent to seamless account migration"
+      },
+      "research_value": "Separates interoperability from true account portability: services can communicate without guaranteeing that one user's identity, history and graph migrate intact between providers.",
+      "boundary": "Federation reduces some platform isolation but does not by itself solve moderation, abuse, archival continuity, discoverability or provider-switching costs.",
+      "sources": [
+        "https://www.w3.org/TR/activitypub/",
+        "https://www.w3.org/news/2018/activitypub-is-now-a-w3c-recommendation/"
+      ]
+    },
+    {
+      "id": "atproto-account-portability",
+      "system": "AT Protocol",
+      "case_type": "identity + repository portability",
+      "observed_mechanism": "AT Protocol uses persistent decentralized identifiers and signed repositories so identity can remain stable while the hosting Personal Data Server changes; official documentation describes account migration to a new PDS.",
+      "portability_dimensions": {
+        "identity": "designed to remain stable across services/providers",
+        "content": "signed repository designed to move with account",
+        "social_graph": "protocol design explicitly aims to preserve graph across provider change",
+        "provider_exit": "migration supported; recovery/migration mechanics can evolve"
+      },
+      "research_value": "A stronger portability case than simple export because the design tries to preserve live identity and social continuity, not only hand the user a static archive.",
+      "boundary": "Official migration guidance notes that specific migration mechanisms are not themselves a fixed formal protocol surface and may evolve.",
+      "sources": [
+        "https://atproto.com/guides/identity",
+        "https://atproto.com/guides/account-migration",
+        "https://atproto.com/guides/overview"
+      ]
+    },
+    {
+      "id": "google-takeout-export",
+      "system": "Google Takeout",
+      "case_type": "data export / archive portability",
+      "observed_mechanism": "Google lets users create downloadable archives across products including Gmail, Drive/Docs, Calendar, Photos, YouTube videos and account activity.",
+      "portability_dimensions": {
+        "identity": "export does not transfer live Google identity",
+        "content": "many user-held records can be exported",
+        "social_graph": "varies by product and export",
+        "provider_exit": "archive helps preservation/transfer but does not guarantee destination-service reconstruction"
+      },
+      "research_value": "Shows the difference between data portability as export and service portability as continuity of identity, graph, ranking history, moderation state and audience access.",
+      "boundary": "Downloading data does not itself delete the source copy, and an export being available does not mean another platform can fully reconstruct the originating service state.",
+      "sources": [
+        "https://support.google.com/accounts/answer/3024190"
+      ]
+    },
+    {
+      "id": "youtube-enforcement-appeals",
+      "system": "YouTube",
+      "case_type": "moderation governance / appeal",
+      "observed_mechanism": "YouTube documents warnings, strikes, removals, restrictions and creator appeals. Its transparency documentation says appeals and reinstatements are included in Community Guidelines enforcement reporting, while some restriction types are not included in that report.",
+      "portability_dimensions": {
+        "identity": "platform-owned channel identity",
+        "content": "removed/restricted content may become unavailable on-platform",
+        "social_graph": "subscriber graph remains platform-dependent",
+        "provider_exit": "appeal concerns enforcement inside YouTube, not migration"
+      },
+      "research_value": "Provides a concrete case for measuring notice, sanction type, appeal availability, reversal/reinstatement and transparency-report scope.",
+      "boundary": "An appeal is a review mechanism but not independent external adjudication; reporting coverage must be checked before using platform transparency totals as a complete enforcement census.",
+      "sources": [
+        "https://support.google.com/transparencyreport/answer/9209072",
+        "https://support.google.com/youtube/answer/185111",
+        "https://support.google.com/transparencyreport/answer/9198203"
+      ]
+    }
+  ],
+  "comparison_dimensions": [
+    "live identity portability",
+    "content/data exportability",
+    "social graph continuity",
+    "cross-service interoperability",
+    "archive continuity",
+    "moderation-state portability",
+    "appeal/reversal mechanism",
+    "external accountability",
+    "destination reconstruction cost"
+  ],
+  "case_method": "For each platform/protocol, distinguish interoperability, export, migration, identity continuity and audience continuity. Do not use the word portability without naming which object actually moves."
+}

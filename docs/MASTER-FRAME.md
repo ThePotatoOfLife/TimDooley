@@ -1,5 +1,9 @@
 # The Tim Dooley Master Frame
 
+**Lifecycle status:** active human-readable synthesis / projection, not a canonical control plane.
+
+**Current authority:** House ownership and topology live in `data/house/*`; core project ontology lives in `knowledge/core/root-system.json`, `knowledge/core/potatoverse-master-framework.json`, and specialist canonical owners. This document remains a readable compression of those relations and must yield when a dedicated owner differs.
+
 ## The readable entrance
 
 The project is easiest to enter as one overlapping relation rather than a stack:

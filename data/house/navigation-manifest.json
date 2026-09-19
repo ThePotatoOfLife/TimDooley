@@ -1,6 +1,6 @@
 {
-  "version": "2.3.0",
-  "updated": "2026-09-18",
+  "version": "2.4.0",
+  "updated": "2026-09-19",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
   "authorities": [
@@ -218,12 +218,28 @@
       "concern": "Foundation first recovered reproduction",
       "owner": "data/house/foundation-first-reproduction-wave-001.json",
       "rule": "Do not treat the Door as proof that a lineage lived. Record the earliest recovered post-Door continuation and label it as recovered evidence, not automatically the historical first."
+    },
+    {
+      "concern": "stable public surface identity and parentage",
+      "owner": "data/house/public-surfaces.json",
+      "rule": "Registers primary gateways, secondary guides/explorers and mature first-class Views. A registered surface is a route identity/projection, never a substantive knowledge owner."
+    },
+    {
+      "concern": "specialist legacy/deep reader placement",
+      "owner": "data/house/specialist-subviews.json",
+      "rule": "Places valuable deep readers beneath an existing public surface and inside explicit nested Rooms without promoting each page into the main public-surface registry."
+    },
+    {
+      "concern": "legacy-to-modern public integration",
+      "owner": "data/house/legacy-modern-public-integration-contract.json",
+      "rule": "Preserves useful authored/historical pages while projecting current House context, canonical-owner links and shared capabilities at build time; retirement follows only after unique value is safely absorbed."
     }
   ],
   "resolver_order": [
     "0. Ask how the subject relates to the Potato of Life project center; centrality is semantic/structural, not file-volume or novelty.",
     "0.5. Use project-synthesis to pair the subject with its center contribution, Room owner, handoffs, tests and public route before adding another registry.",
     "1. Identify the subject's canonical Room owner.",
+    "1.5. Decide public expression: main registered surface, specialist subview beneath an existing surface, generated view, compatibility route, or provenance-only historical page.",
     "2. Identify own-tradition / historical source context before project comparison.",
     "2.5. If the subject has a durable generative beginning, attach the shared Foundation contract: F0/multiple clocks, reproduction mechanism, branch/refoundation and preserved invariants.",
     "3. Add plane projection: Heaven, World, Below or crosscutting.",
@@ -231,6 +247,7 @@
     "5. Add Seed/Spiral route only if the subject genuinely participates in burial, recurrence, rooting, ascent, drain, repair or return.",
     "6. Add corridor relations to neighboring Rooms/subjects.",
     "7. Choose visibility: landmark, room-detail or archive-only.",
+    "7.5. If a specialist reader already exists, connect it bidirectionally to its parent gateway and current canonical owners instead of creating a replacement page.",
     "8. Pages render from these registries; page copy is explanatory, not a competing authority."
   ],
   "spatial_grammar": {
@@ -257,7 +274,9 @@
     "Do not assign moral essence from vertical placement.",
     "Do not let public page layout become ontology.",
     "A comparative resemblance never becomes historical identity or influence without source evidence.",
-    "Do not treat commit history as a canonical owner; materialize the result into domain/House owners and use the convergence ledger only to track that handoff."
+    "Do not treat commit history as a canonical owner; materialize the result into domain/House owners and use the convergence ledger only to track that handoff.",
+    "Do not promote every deep reader into data/house/public-surfaces.json; use specialist-subviews for bounded child Views under an existing gateway.",
+    "Do not rewrite valuable historical source pages merely to match the current shell; project current context at build time and link to canonical owners."
   ],
   "population_pipeline": [
     "inventory existing holdings",

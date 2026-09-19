@@ -35,11 +35,102 @@ WORLD_MACHINE_ROUTES = {
     "North Axis / North Programme": BASE + "north/",
     "World Systems": BASE + "world-systems/",
 }
+HOUSE_BRIDGE_EXCLUDED = {"home", "potato-of-life", "house", "rooms", "explore", "world-map", "questions", "index-a-z"}
+
 SITE_DISCOVERY_SCHEMA_RE = re.compile(
     r'<script\b[^>]*id=["\']site-discovery-schema["\'][^>]*>(.*?)</script>',
     re.I | re.S,
 )
 
+
+def canonical_route_to_rel(route: str) -> str:
+    raw = str(route or "/")
+    if raw == "/":
+        return "index.html"
+    clean = raw.strip("/")
+    return f"{clean}/index.html" if raw.endswith("/") else clean
+
+
+def validate_house_bridges(errors: list[str]) -> None:
+    registry_path = ROOT / "data" / "house" / "public-surfaces.json"
+    if not registry_path.exists():
+        errors.append("missing House public-surface registry for bridge validation")
+        return
+    try:
+        registry = json.loads(registry_path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        errors.append(f"invalid House public-surface registry: {exc}")
+        return
+    for surface in registry.get("surfaces", []):
+        if not isinstance(surface, dict) or surface.get("status") != "active":
+            continue
+        sid = surface.get("id")
+        if sid in HOUSE_BRIDGE_EXCLUDED:
+            continue
+        rel = canonical_route_to_rel(surface.get("canonical_route", "/"))
+        path = SITE / rel
+        if not path.exists():
+            errors.append(f"registered House surface missing built page for bridge: {sid} -> {rel}")
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        marker = f'data-house-bridge="{sid}"'
+        if marker not in text:
+            errors.append(f"{rel} missing shared House bridge marker {marker}")
+        if text.count(marker) != 1:
+            errors.append(f"{rel} must contain exactly one House bridge marker for {sid}")
+        if "See all Dwellings &amp; Rooms" not in text:
+            errors.append(f"{rel} House bridge missing Rooms return path")
+
+
+def validate_specialist_subview_projection(errors: list[str]) -> None:
+    registry_path = ROOT / "data" / "house" / "specialist-subviews.json"
+    surfaces_path = ROOT / "data" / "house" / "public-surfaces.json"
+    if not registry_path.exists():
+        errors.append("missing specialist subview registry")
+        return
+    try:
+        registry = json.loads(registry_path.read_text(encoding="utf-8"))
+        surfaces = json.loads(surfaces_path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        errors.append(f"invalid specialist subview projection inputs: {exc}")
+        return
+    surface_by = {x.get("id"): x for x in surfaces.get("surfaces", []) if isinstance(x, dict) and x.get("id")}
+    by_parent: dict[str, int] = {}
+    for row in registry.get("records", []):
+        if not isinstance(row, dict):
+            continue
+        sid = row.get("id")
+        parent_id = row.get("parent_surface_id")
+        route = row.get("route", "/")
+        rel = canonical_route_to_rel(route)
+        path = SITE / rel
+        if not path.exists():
+            errors.append(f"specialist subview missing built route: {sid} -> {rel}")
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        marker = f'data-house-subview="{sid}"'
+        if marker not in text:
+            errors.append(f"{rel} missing specialist House marker {marker}")
+        if text.count(marker) != 1:
+            errors.append(f"{rel} must contain exactly one specialist House marker for {sid}")
+        if "Current owners:" not in text:
+            errors.append(f"{rel} specialist bridge missing current-owner links")
+        by_parent[parent_id] = by_parent.get(parent_id, 0) + 1
+    for parent_id, expected_count in by_parent.items():
+        parent = surface_by.get(parent_id)
+        if not parent:
+            continue
+        rel = canonical_route_to_rel(parent.get("canonical_route", "/"))
+        path = SITE / rel
+        if not path.exists():
+            errors.append(f"specialist parent surface missing built page: {parent_id}")
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        marker = f'data-specialist-subviews="{parent_id}"'
+        if marker not in text:
+            errors.append(f"{rel} missing specialist-subview family projection")
+        if text.count('class="specialist-subviews__card"') < expected_count:
+            errors.append(f"{rel} specialist-subview projection exposes fewer than {expected_count} registered child readers")
 
 def read(rel: str, errors: list[str]) -> str:
     path = SITE / rel
@@ -137,6 +228,7 @@ def main() -> int:
             "north/index.html",
             "world-systems/index.html",
             "shadow-farm/index.html",
+            "below/index.html",
             "world-map/index.html",
             "world-map/3d.html",
             "sitemap.xml",
@@ -147,15 +239,15 @@ def main() -> int:
                 errors.append(f"missing required site file: {rel}")
 
         index = read("index.html", errors)
-        require(index, ("POTATO", "Main sections"), "index.html", errors)
+        require(index, ("POTATO", "One project, one visible spine", 'class="project-spine"', 'class="public-doors"', 'id="cross-cutting-views"'), "index.html", errors)
         for href in CANONICAL_HOME_LINKS:
             if f'href="{href}"' not in index:
                 errors.append(f"index.html missing canonical reader entrance: {href}")
         forbid(index, ('id="rootbtn"', 'id="branches"', 'id="reader"', "app/app.js", "explore/#root", "<iframe"), "index.html", errors)
 
-        primary_nav = re.search(r'<nav class="sections"[^>]*>(.*?)</nav>', index, flags=re.I | re.S)
+        primary_nav = re.search(r'<nav class="public-doors"[^>]*>(.*?)</nav>', index, flags=re.I | re.S)
         if not primary_nav:
-            errors.append("index.html missing canonical sections navigation")
+            errors.append("index.html missing canonical public Doors navigation")
         else:
             hrefs = re.findall(r'href="([^"]+)"', primary_nav.group(1))
             if tuple(hrefs) != CANONICAL_HOME_LINKS:
@@ -285,6 +377,9 @@ def main() -> int:
                     continue
                 if not target.exists() and not deploy_generated(target):
                     bad.append(f"{html_path.relative_to(SITE)} -> {raw}")
+        validate_house_bridges(errors)
+        validate_specialist_subview_projection(errors)
+
         if bad:
             errors.append(f"broken local references in built site: {len(bad)}; examples: {bad[:8]}")
         if not pages:

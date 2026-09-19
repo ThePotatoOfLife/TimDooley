@@ -1,7 +1,7 @@
 {
   "id": "below-intelligence-shadow-observatory",
   "title": "Below Intelligence & Shadow Observatory — Roots, Hidden Systems, Threat Networks and Repair",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-18",
   "status": "binding cross-domain lower-plane synthesis",
   "purpose": "Populate the Below Platform with concrete intelligence-bearing systems while separating lawful secrecy, ordinary privacy, contested classification and documented illicit harm. The observatory studies what is difficult to see and how hidden structures reproduce; it is not a universal suspicion engine.",
@@ -453,6 +453,227 @@
     {
       "stage": "repair-return",
       "test": "What oversight, exit, disruption, adjudication, reform, support or public knowledge can safely return upward?"
+    }
+  ],
+  "case_bundle_contract": {
+    "purpose": "Make each Below case inspectable without collapsing allegation, relationship, access restriction, legal status and interpretation into one label.",
+    "required_fields": [
+      "case_id",
+      "subject_entities",
+      "time_window",
+      "geography_or_virtual_scope",
+      "claims",
+      "documented_relationships",
+      "source_roots",
+      "source_independence",
+      "access_visibility_state",
+      "evidentiary_status",
+      "legal_or_designation_status",
+      "counterevidence_and_disputes",
+      "documented_harms_or_protections",
+      "affected_people_or_victim_safeguards",
+      "reproduction_mechanisms",
+      "money_resource_or_infrastructure_links_when_supported",
+      "uncertainties",
+      "repair_disruption_or_closure_outcome",
+      "last_reviewed"
+    ],
+    "minimum_publication_rule": "A public case summary must identify provenance, time, status and uncertainty well enough that a reader can distinguish documented fact from claim and project interpretation."
+  },
+  "mechanism_families": [
+    {
+      "id": "concealment-opacity",
+      "question": "What relevant information, ownership, coordination or conduct is difficult to observe, and why?",
+      "indicators": [
+        "layered ownership",
+        "restricted records",
+        "pseudonymity",
+        "jurisdictional fragmentation",
+        "off-platform coordination"
+      ],
+      "boundary": "Opacity is a research condition, not proof of illegality."
+    },
+    {
+      "id": "recruitment-socialization",
+      "question": "How are new participants found, screened, initiated, trained or normalized into the system?",
+      "indicators": [
+        "referral",
+        "ideological socialization",
+        "credentialing",
+        "apprenticeship",
+        "targeted recruitment"
+      ],
+      "boundary": "Recruitment is ordinary in lawful organizations; coercion/deception must be separately evidenced."
+    },
+    {
+      "id": "dependency-control",
+      "question": "What material, social, informational or identity dependencies make participation difficult to change?",
+      "indicators": [
+        "economic dependency",
+        "social isolation",
+        "information restriction",
+        "role lock",
+        "threats or punishment where documented"
+      ]
+    },
+    {
+      "id": "extraction",
+      "question": "What is repeatedly taken or converted into value?",
+      "indicators": [
+        "money",
+        "labor",
+        "attention",
+        "data",
+        "sexual exploitation",
+        "status",
+        "property"
+      ],
+      "boundary": "Exchange and extraction are not synonyms; consent, law, bargaining power and documented harm matter."
+    },
+    {
+      "id": "resource-flow-concealment",
+      "question": "How do money, assets or other resources move, and where does transparency fail?",
+      "indicators": [
+        "intermediaries",
+        "shell structures",
+        "cash-heavy flows",
+        "cross-border chains",
+        "professional facilitation"
+      ],
+      "boundary": "Complex finance is not itself laundering; legal findings and transaction evidence control classification."
+    },
+    {
+      "id": "narrative-legitimation",
+      "question": "Which stories, ideologies, reputational claims or classifications sustain participation or suppress correction?",
+      "indicators": [
+        "enemy construction",
+        "hero/victim scripts",
+        "status narratives",
+        "repetition",
+        "self-sealing explanations"
+      ]
+    },
+    {
+      "id": "enforcement-intimidation",
+      "question": "How are rules maintained and what happens to dissent, defection or noncompliance?",
+      "indicators": [
+        "ordinary sanctions",
+        "platform exclusion",
+        "economic retaliation",
+        "threats",
+        "violence where documented"
+      ],
+      "boundary": "Keep lawful governance, abusive coercion and criminal violence in separate evidence classes."
+    },
+    {
+      "id": "institutional-protection-failure",
+      "question": "Which oversight, safeguarding, moderation, regulatory or legal interfaces failed, were captured, or lacked capacity?",
+      "indicators": [
+        "ignored complaints",
+        "conflicted oversight",
+        "jurisdiction gaps",
+        "weak audit trails",
+        "repeated safeguard failure"
+      ]
+    },
+    {
+      "id": "succession-branching",
+      "question": "How does the system survive disruption, leadership loss, bans, prosecutions or reputational collapse?",
+      "indicators": [
+        "successor groups",
+        "rebranding",
+        "migration",
+        "new leadership",
+        "distributed cells",
+        "platform moves"
+      ],
+      "boundary": "A successor relationship requires evidence of inherited people, assets, doctrine, infrastructure or capacity."
+    }
+  ],
+  "relationship_types": [
+    "owns_or_controls",
+    "funds",
+    "contracts_with",
+    "supplies",
+    "hosts_or_platforms",
+    "recruits_from",
+    "shares_members_or_personnel",
+    "shares_infrastructure",
+    "communicates_with",
+    "targets_or_exploits",
+    "investigates",
+    "regulates",
+    "classifies_or_designates",
+    "prosecutes_or_adjudicates",
+    "supports_exit_or_repair",
+    "succeeds_or_branches_from"
+  ],
+  "relationship_rule": "Every relationship edge should preserve direction, date/range, geography, source root, evidence status and whether the link is direct, inferred or merely alleged. Association is not guilt.",
+  "victim_and_subject_safeguards": [
+    "Do not publish identifying details of victims, minors or private people merely because they appear in an evidence trail.",
+    "Separate a person's presence in a network from a claim that they committed misconduct.",
+    "Do not turn victim testimony into spectacle; preserve consent, relevance and minimization.",
+    "Record correction, dismissal, acquittal, reversal, expiry and credible counterevidence with the same persistence as adverse claims.",
+    "When a claim cannot be responsibly resolved, preserve the uncertainty instead of filling it with narrative confidence."
+  ],
+  "research_outputs": [
+    {
+      "id": "provenance-tree",
+      "output": "source roots, derivative repetitions, archive copies and independence relationships"
+    },
+    {
+      "id": "case-timeline",
+      "output": "events, claims, investigations, legal actions, corrections and status changes in dated order"
+    },
+    {
+      "id": "relationship-graph",
+      "output": "typed, directed, sourced entity relationships with confidence/status"
+    },
+    {
+      "id": "resource-map",
+      "output": "money, infrastructure, platforms, property, labor or other sustaining resources where documented"
+    },
+    {
+      "id": "reproduction-map",
+      "output": "recruitment, training, enforcement, succession, branching, migration or rebranding mechanisms"
+    },
+    {
+      "id": "counterevidence-ledger",
+      "output": "disputes, contradictions, failed links, dismissals, changed findings and alternative explanations"
+    },
+    {
+      "id": "repair-map",
+      "output": "oversight, safeguarding, exit support, adjudication, disruption, restitution, reform and public-learning outcomes"
+    }
+  ],
+  "repair_ladder": [
+    {
+      "stage": "clarify",
+      "aim": "Correct entity identity, chronology, jurisdiction, provenance and claim wording."
+    },
+    {
+      "stage": "protect",
+      "aim": "Reduce immediate exposure or harm through safeguarding, privacy, support, moderation or security measures as appropriate."
+    },
+    {
+      "stage": "enable-exit",
+      "aim": "Increase the practical ability of affected people to leave, appeal, dissent or seek independent help."
+    },
+    {
+      "stage": "investigate-adjudicate",
+      "aim": "Use competent investigative, regulatory or judicial processes where facts and jurisdiction warrant them."
+    },
+    {
+      "stage": "disrupt",
+      "aim": "Interrupt harmful resource, recruitment, infrastructure or coordination mechanisms using lawful measures."
+    },
+    {
+      "stage": "repair",
+      "aim": "Pursue restitution, correction, treatment, restoration, accountability or institutional change appropriate to the documented harm."
+    },
+    {
+      "stage": "learn-return",
+      "aim": "Return verified public knowledge upward so safeguards improve without preserving rumor as permanent guilt."
     }
   ]
 }

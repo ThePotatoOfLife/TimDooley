@@ -1,125 +1,774 @@
 {
-  "version":"1.1.0",
-  "updated":"2026-09-07",
-  "blueprint":"data/blueprints/religious-adjacent-master.json",
-  "specialized_blueprints":["data/blueprints/occult-order-master.json"],
-  "purpose":"Third deep-expansion pass covering the next eight adjacent records with populated historical, organizational, textual, geographic, relational and evidence layers.",
-  "records":[
+  "version": "1.1.0",
+  "updated": "2026-09-07",
+  "blueprint": "data/blueprints/religious-adjacent-master.json",
+  "specialized_blueprints": [
+    "data/blueprints/occult-order-master.json"
+  ],
+  "purpose": "Third deep-expansion pass covering the next eight adjacent records with populated historical, organizational, textual, geographic, relational and evidence layers.",
+  "records": [
     {
-      "id":"oto",
-      "identity":{"name":"Ordo Templi Orientis","category":"initiatory_esoteric_order","period":"early 20th century onward","geographic_core":"German-speaking Europe, Britain, North America and later international branches","languages":["German","English"]},
-      "formation":{"foundational_figures":["Carl Kellner","Theodor Reuss","Heinrich Tränker and other early collaborators"],"historical_field":"Masonic and Rosicrucian revival, Theosophy, European occultism and Lebensreform milieus","masonic_context":"Early OTO developed from Masonic-derived rites; its claims of Masonic regularity and succession were contested.","crowley_period":"Aleister Crowley became central after his contact with Reuss and reorganized OTO around Thelema."},
-      "worldview":{"framework":"Syncretic esotericism combining initiatory symbolism, Thelema, Hermetic and Masonic forms and ritual magic.","thelemic_layer":"Under Crowley, OTO became a principal organizational vehicle for Thelema.","initiation":"Degrees frame progressive participation in the order's esoteric system."},
-      "practice":{"initiation":"Graded initiation and lodge-based instruction.","gnostic_mass":"The Gnostic Mass became a major public-facing ritual expression of Thelemic OTO practice.","study":"Members encounter ritual, philosophical and magical instruction appropriate to degree.","integrity":"Sexual-magic material is recorded historically and non-operationally."},
-      "texts":{"central":["Liber AL vel Legis","Liber XV / The Gnostic Mass","OTO instructional and constitutional materials"],"historical_documents":["Reuss correspondence and charters","Crowley correspondence","degree documents"],"textual_status":"Organizational and initiatory corpus rather than one closed scripture."},
-      "people":{"key_figures":["Theodor Reuss","Aleister Crowley","Wilfred Talbot Smith","Karl Germer","Charles Stansfeld Jones"],"succession":"Post-Reuss and post-Crowley leadership generated competing claims and later lineages."},
-      "organization":{"structure":"Graded initiatory order with lodges, camps and affiliated bodies.","governance":"Supreme leadership changed over time; succession is historically complex.","internationality":"Branches developed in Europe, North America and elsewhere."},
-      "geography":{"centers":["Germany","Austria","Switzerland","United Kingdom","Vancouver","Detroit","California"],"evidence":"Charters, correspondence, membership records and lodge histories."},
-      "society":{"culture":"Important twentieth-century carrier of Crowleyan Thelema and Western occultism.","public_private":"Much activity is initiatory/private while selected rituals and publications are public."},
-      "relationships":{"influenced_by":["Freemasonry","Rosicrucianism","Theosophy","Golden Dawn milieu"],"closely_related_to":["Thelema","A∴A∴","Ecclesia Gnostica Catholica"]},
-      "evidence":{"confidence":"high for organizational history, major figures and documents; lower for disputed early lineage and succession","sources":[{"title":"The Unknown God: W. T. Smith and the Thelemites","publisher":"Oxford University Press","year":2024},{"title":"The Foundations of Re-Enchantment","publisher":"Oxford University Press","year":2025}],"contested":["Masonic legitimacy of early claims","exact timeline of some reorganizations","post-Crowley succession"]}
+      "id": "oto",
+      "identity": {
+        "name": "Ordo Templi Orientis",
+        "category": "initiatory_esoteric_order",
+        "period": "early 20th century onward",
+        "geographic_core": "German-speaking Europe, Britain, North America and later international branches",
+        "languages": [
+          "German",
+          "English"
+        ]
+      },
+      "formation": {
+        "foundational_figures": [
+          "Carl Kellner",
+          "Theodor Reuss",
+          "Heinrich Tränker and other early collaborators"
+        ],
+        "historical_field": "Masonic and Rosicrucian revival, Theosophy, European occultism and Lebensreform milieus",
+        "masonic_context": "Early OTO developed from Masonic-derived rites; its claims of Masonic regularity and succession were contested.",
+        "crowley_period": "Aleister Crowley became central after his contact with Reuss and reorganized OTO around Thelema."
+      },
+      "worldview": {
+        "framework": "Syncretic esotericism combining initiatory symbolism, Thelema, Hermetic and Masonic forms and ritual magic.",
+        "thelemic_layer": "Under Crowley, OTO became a principal organizational vehicle for Thelema.",
+        "initiation": "Degrees frame progressive participation in the order's esoteric system."
+      },
+      "practice": {
+        "initiation": "Graded initiation and lodge-based instruction.",
+        "gnostic_mass": "The Gnostic Mass became a major public-facing ritual expression of Thelemic OTO practice.",
+        "study": "Members encounter ritual, philosophical and magical instruction appropriate to degree.",
+        "integrity": "Sexual-magic material is recorded historically and non-operationally."
+      },
+      "texts": {
+        "central": [
+          "Liber AL vel Legis",
+          "Liber XV / The Gnostic Mass",
+          "OTO instructional and constitutional materials"
+        ],
+        "historical_documents": [
+          "Reuss correspondence and charters",
+          "Crowley correspondence",
+          "degree documents"
+        ],
+        "textual_status": "Organizational and initiatory corpus rather than one closed scripture."
+      },
+      "people": {
+        "key_figures": [
+          "Theodor Reuss",
+          "Aleister Crowley",
+          "Wilfred Talbot Smith",
+          "Karl Germer",
+          "Charles Stansfeld Jones"
+        ],
+        "succession": "Post-Reuss and post-Crowley leadership generated competing claims and later lineages."
+      },
+      "organization": {
+        "structure": "Graded initiatory order with lodges, camps and affiliated bodies.",
+        "governance": "Supreme leadership changed over time; succession is historically complex.",
+        "internationality": "Branches developed in Europe, North America and elsewhere."
+      },
+      "geography": {
+        "centers": [
+          "Germany",
+          "Austria",
+          "Switzerland",
+          "United Kingdom",
+          "Vancouver",
+          "Detroit",
+          "California"
+        ],
+        "evidence": "Charters, correspondence, membership records and lodge histories."
+      },
+      "society": {
+        "culture": "Important twentieth-century carrier of Crowleyan Thelema and Western occultism.",
+        "public_private": "Much activity is initiatory/private while selected rituals and publications are public."
+      },
+      "relationships": {
+        "influenced_by": [
+          "Freemasonry",
+          "Rosicrucianism",
+          "Theosophy",
+          "Golden Dawn milieu"
+        ],
+        "closely_related_to": [
+          "Thelema",
+          "A∴A∴",
+          "Ecclesia Gnostica Catholica"
+        ]
+      },
+      "evidence": {
+        "confidence": "high for organizational history, major figures and documents; lower for disputed early lineage and succession",
+        "sources": [
+          {
+            "title": "The Unknown God: W. T. Smith and the Thelemites",
+            "publisher": "Oxford University Press",
+            "year": 2024
+          },
+          {
+            "title": "The Foundations of Re-Enchantment",
+            "publisher": "Oxford University Press",
+            "year": 2025
+          }
+        ],
+        "contested": [
+          "Masonic legitimacy of early claims",
+          "exact timeline of some reorganizations",
+          "post-Crowley succession"
+        ]
+      }
     },
     {
-      "id":"anthroposophy",
-      "identity":{"name":"Anthroposophy","category":"esoteric_spiritual_movement","period":"early 20th century onward","geographic_core":"Central Europe, Switzerland and global networks","founder":"Rudolf Steiner"},
-      "formation":{"precursor":"Steiner emerged from the German Theosophical milieu and led its German Section before breaking with the Society.","formation":"Anthroposophy developed as Steiner's distinct spiritual-scientific movement in the early twentieth century.","institutionalization":"The Anthroposophical Society and Goetheanum became principal centers."},
-      "worldview":{"core":"Spiritual knowledge is presented as a disciplined investigation of human beings, nature and cosmic evolution.","human_model":"Steiner described physical, soul and spiritual dimensions and stages of consciousness.","christology":"Christ has a central role in Steiner's esoteric interpretation of human and cosmic evolution.","reincarnation":"Reincarnation and karma are major doctrines."},
-      "practice":{"meditation":"Meditative exercises for attention and spiritual perception.","education":"Waldorf education applies selected anthroposophical developmental ideas.","agriculture":"Steiner's 1924 Agriculture Course became the basis of biodynamic agriculture.","arts":"Eurythmy, architecture, visual arts and speech work developed in the movement."},
-      "texts":{"major":["Occult Science","Knowledge of the Higher Worlds","The Philosophy of Freedom","Steiner's lecture corpus","Agriculture Course"],"status":"Books and extensive lecture corpus form the principal textual record.","interpretation":"Texts combine philosophy, esoteric revelation, biography and practical institutional guidance."},
-      "people":{"founder":"Rudolf Steiner","important_associates":["Marie Steiner-von Sivers","Ita Wegman","Emil Molt"]},
-      "organization":{"society":"Anthroposophical Society","center":"Goetheanum in Dornach, Switzerland","applications":["Waldorf education","biodynamic agriculture","anthroposophical arts","anthroposophical medicine"]},
-      "geography":{"core":["Germany","Switzerland","Austria"],"global":"Anthroposophical institutions developed across Europe and globally."},
-      "society":{"environment":"Biodynamic agriculture influenced environmental history.","education":"Waldorf schools became its most visible institutional application.","medicine":"Anthroposophical medicine is a distinct historical current; empirical claims require independent evaluation."},
-      "relationships":{"emerged_from":["Theosophical Society","European occult revival"],"related_to":["Goethean science","Lebensreform","Christian esotericism"]},
-      "evidence":{"confidence":"high for biography, organizations, publications and institutional history","sources":[{"title":"Eco-Alchemy: Anthroposophy and the History and Future of Environmentalism","publisher":"University of California Press","year":2017},{"title":"The Foundations of Re-Enchantment","publisher":"Oxford University Press","year":2025}],"integrity":"Institutional history is not treated as validation of supernatural or medical claims."}
+      "id": "anthroposophy",
+      "identity": {
+        "name": "Anthroposophy",
+        "category": "esoteric_spiritual_movement",
+        "period": "early 20th century onward",
+        "geographic_core": "Central Europe, Switzerland and global networks",
+        "founder": "Rudolf Steiner"
+      },
+      "formation": {
+        "precursor": "Steiner emerged from the German Theosophical milieu and led its German Section before breaking with the Society.",
+        "formation": "Anthroposophy developed as Steiner's distinct spiritual-scientific movement in the early twentieth century.",
+        "institutionalization": "The Anthroposophical Society and Goetheanum became principal centers."
+      },
+      "worldview": {
+        "core": "Spiritual knowledge is presented as a disciplined investigation of human beings, nature and cosmic evolution.",
+        "human_model": "Steiner described physical, soul and spiritual dimensions and stages of consciousness.",
+        "christology": "Christ has a central role in Steiner's esoteric interpretation of human and cosmic evolution.",
+        "reincarnation": "Reincarnation and karma are major doctrines."
+      },
+      "practice": {
+        "meditation": "Meditative exercises for attention and spiritual perception.",
+        "education": "Waldorf education applies selected anthroposophical developmental ideas.",
+        "agriculture": "Steiner's 1924 Agriculture Course became the basis of biodynamic agriculture.",
+        "arts": "Eurythmy, architecture, visual arts and speech work developed in the movement."
+      },
+      "texts": {
+        "major": [
+          "Occult Science",
+          "Knowledge of the Higher Worlds",
+          "The Philosophy of Freedom",
+          "Steiner's lecture corpus",
+          "Agriculture Course"
+        ],
+        "status": "Books and extensive lecture corpus form the principal textual record.",
+        "interpretation": "Texts combine philosophy, esoteric revelation, biography and practical institutional guidance."
+      },
+      "people": {
+        "founder": "Rudolf Steiner",
+        "important_associates": [
+          "Marie Steiner-von Sivers",
+          "Ita Wegman",
+          "Emil Molt"
+        ]
+      },
+      "organization": {
+        "society": "Anthroposophical Society",
+        "center": "Goetheanum in Dornach, Switzerland",
+        "applications": [
+          "Waldorf education",
+          "biodynamic agriculture",
+          "anthroposophical arts",
+          "anthroposophical medicine"
+        ]
+      },
+      "geography": {
+        "core": [
+          "Germany",
+          "Switzerland",
+          "Austria"
+        ],
+        "global": "Anthroposophical institutions developed across Europe and globally."
+      },
+      "society": {
+        "environment": "Biodynamic agriculture influenced environmental history.",
+        "education": "Waldorf schools became its most visible institutional application.",
+        "medicine": "Anthroposophical medicine is a distinct historical current; empirical claims require independent evaluation."
+      },
+      "relationships": {
+        "emerged_from": [
+          "Theosophical Society",
+          "European occult revival"
+        ],
+        "related_to": [
+          "Goethean science",
+          "Lebensreform",
+          "Christian esotericism"
+        ]
+      },
+      "evidence": {
+        "confidence": "high for biography, organizations, publications and institutional history",
+        "sources": [
+          {
+            "title": "Eco-Alchemy: Anthroposophy and the History and Future of Environmentalism",
+            "publisher": "University of California Press",
+            "year": 2017
+          },
+          {
+            "title": "The Foundations of Re-Enchantment",
+            "publisher": "Oxford University Press",
+            "year": 2025
+          }
+        ],
+        "integrity": "Institutional history is not treated as validation of supernatural or medical claims."
+      }
     },
     {
-      "id":"church-of-satan",
-      "identity":{"name":"Church of Satan","category":"modern Satanism","period":"1966 onward","geographic_core":"United States, especially San Francisco","founder":"Anton Szandor LaVey"},
-      "formation":{"foundation":"LaVey established the Church of Satan in San Francisco in 1966.","historical_field":"1960s counterculture, secularization, Western occult revival and literary Satanic symbolism.","precursors":["fin-de-siècle Satanic literature","Western occultism"],"codification":"The Satanic Bible appeared in 1969."},
-      "worldview":{"theology":"LaVeyan Satanism is generally described as non-theistic or atheistic.","satan_symbol":"Satan functions primarily as a symbol of individualism, self-assertion, natural desire and opposition to conventional morality.","ethics":"Personal responsibility, self-preservation and individual liberty are emphasized.","anti_religion":"Critiques conventional Christian morality and perceived religious repression."},
-      "practice":{"ritual":"Ritual is framed largely as psychodrama and symbolic magic rather than literal Satan worship.","organization":"Formal titles, clergy structures and membership arrangements have existed and changed over time."},
-      "texts":{"major":["The Satanic Bible","The Satanic Rituals","The Satanic Witch"],"status":"Primary texts for LaVeyan self-description."},
-      "people":{"founder":"Anton Szandor LaVey"},
-      "organization":{"form":"Religious organization with clergy/titular structures and affiliated activity.","schism":"Michael Aquino and others departed in 1975 and formed the Temple of Set.","identity_boundary":"Distinct from The Satanic Temple and theistic Satanisms."},
-      "geography":{"origin":"San Francisco","expansion":"National and international reach through books, media and correspondence."},
-      "society":{"counterculture":"Prominent countercultural religion of the late 1960s and 1970s.","media":"Media attention strongly shaped public perceptions.","moral_panic":"Later Satanic Panic claims must be separated from documented organizational history."},
-      "relationships":{"schism":["Temple of Set"],"comparative":["The Satanic Temple","Process Church","theistic Satanism"]},
-      "evidence":{"confidence":"high for founding, texts and organizational history","sources":[{"title":"Children of Lucifer: The Origins of Modern Religious Satanism","publisher":"Oxford University Press","year":2016},{"title":"The Age of Satanism: Anton LaVey and the Church of Satan","publisher":"Oxford University Press","year":2015}],"integrity":"Self-identification, scholarship and hostile accusations remain separate."}
+      "id": "church-of-satan",
+      "identity": {
+        "name": "Church of Satan",
+        "category": "modern Satanism",
+        "period": "1966 onward",
+        "geographic_core": "United States, especially San Francisco",
+        "founder": "Anton Szandor LaVey"
+      },
+      "formation": {
+        "foundation": "LaVey established the Church of Satan in San Francisco in 1966.",
+        "historical_field": "1960s counterculture, secularization, Western occult revival and literary Satanic symbolism.",
+        "precursors": [
+          "fin-de-siècle Satanic literature",
+          "Western occultism"
+        ],
+        "codification": "The Satanic Bible appeared in 1969."
+      },
+      "worldview": {
+        "theology": "LaVeyan Satanism is generally described as non-theistic or atheistic.",
+        "satan_symbol": "Satan functions primarily as a symbol of individualism, self-assertion, natural desire and opposition to conventional morality.",
+        "ethics": "Personal responsibility, self-preservation and individual liberty are emphasized.",
+        "anti_religion": "Critiques conventional Christian morality and perceived religious repression."
+      },
+      "practice": {
+        "ritual": "Ritual is framed largely as psychodrama and symbolic magic rather than literal Satan worship.",
+        "organization": "Formal titles, clergy structures and membership arrangements have existed and changed over time."
+      },
+      "texts": {
+        "major": [
+          "The Satanic Bible",
+          "The Satanic Rituals",
+          "The Satanic Witch"
+        ],
+        "status": "Primary texts for LaVeyan self-description."
+      },
+      "people": {
+        "founder": "Anton Szandor LaVey"
+      },
+      "organization": {
+        "form": "Religious organization with clergy/titular structures and affiliated activity.",
+        "schism": "Michael Aquino and others departed in 1975 and formed the Temple of Set.",
+        "identity_boundary": "Distinct from The Satanic Temple and theistic Satanisms."
+      },
+      "geography": {
+        "origin": "San Francisco",
+        "expansion": "National and international reach through books, media and correspondence."
+      },
+      "society": {
+        "counterculture": "Prominent countercultural religion of the late 1960s and 1970s.",
+        "media": "Media attention strongly shaped public perceptions.",
+        "moral_panic": "Later Satanic Panic claims must be separated from documented organizational history."
+      },
+      "relationships": {
+        "schism": [
+          "Temple of Set"
+        ],
+        "comparative": [
+          "The Satanic Temple",
+          "Process Church",
+          "theistic Satanism"
+        ]
+      },
+      "evidence": {
+        "confidence": "high for founding, texts and organizational history",
+        "sources": [
+          {
+            "title": "Children of Lucifer: The Origins of Modern Religious Satanism",
+            "publisher": "Oxford University Press",
+            "year": 2016
+          },
+          {
+            "title": "The Age of Satanism: Anton LaVey and the Church of Satan",
+            "publisher": "Oxford University Press",
+            "year": 2015
+          }
+        ],
+        "integrity": "Self-identification, scholarship and hostile accusations remain separate."
+      }
     },
     {
-      "id":"satanic-temple",
-      "identity":{"name":"The Satanic Temple","category":"modern Satanism / religious-liberty movement","period":"2010s onward","geographic_core":"United States with international supporters","public_figures":["Lucien Greaves","Malcolm Jarry"]},
-      "formation":{"emergence":"The movement emerged in the early 2010s in the United States through public campaigns and media activity.","historical_field":"Secularism, religious pluralism, church-state law, internet culture and modern Satanic identity.","distinction":"Organizationally and doctrinally distinct from the Church of Satan."},
-      "worldview":{"theology":"Generally non-theistic and symbolic rather than belief in a literal Satan.","ethical_framework":"The Seven Fundamental Tenets emphasize compassion, reason, bodily autonomy, personal freedom and proportional justice.","satan_symbol":"Satan is presented as a symbol of rebellion against arbitrary authority and defense of autonomy."},
-      "practice":{"rituals":"Ceremonies and rituals can function as religious or symbolic expression.","activism":"Religious-liberty, bodily-autonomy and church-state campaigns are central.","community":"Chapters and online networks provide community structures."},
-      "texts":{"primary":["Seven Fundamental Tenets","organizational statements","Lucien Greaves essays and interviews"],"interpretive_source":"Greaves's 2017 comparison with the Church of Satan is a primary self-representational source."},
-      "people":{"public_spokesperson":"Lucien Greaves","cofounder":"Malcolm Jarry"},
-      "organization":{"form":"Contemporary religious organization with chapters, membership structures and public advocacy.","public_strategy":"Legal and media campaigns test practical religious-pluralism principles."},
-      "geography":{"origin":"United States","reach":"International online and organizational presence."},
-      "society":{"law":"Religious-liberty disputes are important to public activity.","media":"Internet campaigns drive visibility.","pluralism":"Useful case study of minority religion operating through equal-treatment principles."},
-      "relationships":{"contrasts_with":["Church of Satan"],"historical_field":["modern Satanism","secular humanism","religious pluralism"]},
-      "evidence":{"confidence":"high for public activity, texts and campaigns","sources":[{"title":"Lucien Greaves, 'Church of Satan vs. Satanic Temple'","publisher":"Oxford University Press","year":2023}],"integrity":"Self-description is separated from external political characterization."}
+      "id": "satanic-temple",
+      "identity": {
+        "name": "The Satanic Temple",
+        "category": "modern Satanism / religious-liberty movement",
+        "period": "2010s onward",
+        "geographic_core": "United States with international supporters",
+        "public_figures": [
+          "Lucien Greaves",
+          "Malcolm Jarry"
+        ]
+      },
+      "formation": {
+        "emergence": "The movement emerged in the early 2010s in the United States through public campaigns and media activity.",
+        "historical_field": "Secularism, religious pluralism, church-state law, internet culture and modern Satanic identity.",
+        "distinction": "Organizationally and doctrinally distinct from the Church of Satan."
+      },
+      "worldview": {
+        "theology": "Generally non-theistic and symbolic rather than belief in a literal Satan.",
+        "ethical_framework": "The Seven Fundamental Tenets emphasize compassion, reason, bodily autonomy, personal freedom and proportional justice.",
+        "satan_symbol": "Satan is presented as a symbol of rebellion against arbitrary authority and defense of autonomy."
+      },
+      "practice": {
+        "rituals": "Ceremonies and rituals can function as religious or symbolic expression.",
+        "activism": "Religious-liberty, bodily-autonomy and church-state campaigns are central.",
+        "community": "Chapters and online networks provide community structures."
+      },
+      "texts": {
+        "primary": [
+          "Seven Fundamental Tenets",
+          "organizational statements",
+          "Lucien Greaves essays and interviews"
+        ],
+        "interpretive_source": "Greaves's 2017 comparison with the Church of Satan is a primary self-representational source."
+      },
+      "people": {
+        "public_spokesperson": "Lucien Greaves",
+        "cofounder": "Malcolm Jarry"
+      },
+      "organization": {
+        "form": "Contemporary religious organization with chapters, membership structures and public advocacy.",
+        "public_strategy": "Legal and media campaigns test practical religious-pluralism principles."
+      },
+      "geography": {
+        "origin": "United States",
+        "reach": "International online and organizational presence."
+      },
+      "society": {
+        "law": "Religious-liberty disputes are important to public activity.",
+        "media": "Internet campaigns drive visibility.",
+        "pluralism": "Useful case study of minority religion operating through equal-treatment principles."
+      },
+      "relationships": {
+        "contrasts_with": [
+          "Church of Satan"
+        ],
+        "historical_field": [
+          "modern Satanism",
+          "secular humanism",
+          "religious pluralism"
+        ]
+      },
+      "evidence": {
+        "confidence": "high for public activity, texts and campaigns",
+        "sources": [
+          {
+            "title": "Lucien Greaves, 'Church of Satan vs. Satanic Temple'",
+            "publisher": "Oxford University Press",
+            "year": 2023
+          }
+        ],
+        "integrity": "Self-description is separated from external political characterization."
+      }
     },
     {
-      "id":"temple-of-set",
-      "identity":{"name":"Temple of Set","category":"left-hand-path esoteric religion","period":"1975 onward","geographic_core":"United States with international initiatory network","founder":"Michael A. Aquino"},
-      "formation":{"origin":"Formed in 1975 following Aquino's break with the Church of Satan.","historical_field":"Post-LaVeyan Satanism, Western esotericism and Egyptian religious symbolism.","doctrinal_shift":"Aquino developed a Set-centered theology distinct from LaVeyan symbolic Satanism."},
-      "worldview":{"central_principle":"Set is understood as a metaphysical and initiatory principle associated with individual consciousness and self-becoming.","xeper":"Xeper is a central Setian concept of becoming or self-development.","individuality":"The tradition emphasizes development of the individual self.","egyptian_connection":"Modern Setian theology invokes Set but is not treated as unchanged ancient Egyptian religion."},
-      "practice":{"initiation":"Graded initiatory work and individual study.","magic":"Ritual and magical practices are framed as transformative work.","pylons":"Pylons function as organizational and initiatory groupings."},
-      "texts":{"central":["The Book of Coming Forth by Night","Temple of Set writings and degree material"],"status":"Primary evidence for Setian self-understanding; revelation claims are not independent empirical proof."},
-      "people":{"founder":"Michael A. Aquino"},
-      "organization":{"structure":"Priesthood, Council of Nine, pylons and graded initiatory degrees.","membership":"Selective initiatory participation rather than mass membership."},
-      "geography":{"origin":"United States","network":"International membership developed through local and correspondence structures."},
-      "society":{"classification":"Studied variously as Satanism, post-Satanism or Left-Hand Path religion.","reception":"Important example of modern reinterpretation of an ancient deity without assuming institutional continuity."},
-      "relationships":{"schism_from":["Church of Satan"],"related_to":["modern Satanism","Egyptian Set traditions","Western ceremonial magic"]},
-      "evidence":{"confidence":"high for 1975 formation, Aquino's role and surviving texts","sources":[{"title":"Michael Aquino, The Book of Coming Forth by Night (1975)","publisher":"Primary internal text"},{"title":"Satanism: A Reader, chapter on Michael Aquino","publisher":"Oxford University Press","year":2023}],"integrity":"Ancient Set and modern Setian religion are connected by symbolic reference, not assumed continuity."}
+      "id": "temple-of-set",
+      "identity": {
+        "name": "Temple of Set",
+        "category": "left-hand-path esoteric religion",
+        "period": "1975 onward",
+        "geographic_core": "United States with international initiatory network",
+        "founder": "Michael A. Aquino"
+      },
+      "formation": {
+        "origin": "Formed in 1975 following Aquino's break with the Church of Satan.",
+        "historical_field": "Post-LaVeyan Satanism, Western esotericism and Egyptian religious symbolism.",
+        "doctrinal_shift": "Aquino developed a Set-centered theology distinct from LaVeyan symbolic Satanism."
+      },
+      "worldview": {
+        "central_principle": "Set is understood as a metaphysical and initiatory principle associated with individual consciousness and self-becoming.",
+        "xeper": "Xeper is a central Setian concept of becoming or self-development.",
+        "individuality": "The tradition emphasizes development of the individual self.",
+        "egyptian_connection": "Modern Setian theology invokes Set but is not treated as unchanged ancient Egyptian religion."
+      },
+      "practice": {
+        "initiation": "Graded initiatory work and individual study.",
+        "magic": "Ritual and magical practices are framed as transformative work.",
+        "pylons": "Pylons function as organizational and initiatory groupings."
+      },
+      "texts": {
+        "central": [
+          "The Book of Coming Forth by Night",
+          "Temple of Set writings and degree material"
+        ],
+        "status": "Primary evidence for Setian self-understanding; revelation claims are not independent empirical proof."
+      },
+      "people": {
+        "founder": "Michael A. Aquino"
+      },
+      "organization": {
+        "structure": "Priesthood, Council of Nine, pylons and graded initiatory degrees.",
+        "membership": "Selective initiatory participation rather than mass membership."
+      },
+      "geography": {
+        "origin": "United States",
+        "network": "International membership developed through local and correspondence structures."
+      },
+      "society": {
+        "classification": "Studied variously as Satanism, post-Satanism or Left-Hand Path religion.",
+        "reception": "Important example of modern reinterpretation of an ancient deity without assuming institutional continuity."
+      },
+      "relationships": {
+        "schism_from": [
+          "Church of Satan"
+        ],
+        "related_to": [
+          "modern Satanism",
+          "Egyptian Set traditions",
+          "Western ceremonial magic"
+        ]
+      },
+      "evidence": {
+        "confidence": "high for 1975 formation, Aquino's role and surviving texts",
+        "sources": [
+          {
+            "title": "Michael Aquino, The Book of Coming Forth by Night (1975)",
+            "publisher": "Primary internal text"
+          },
+          {
+            "title": "Satanism: A Reader, chapter on Michael Aquino",
+            "publisher": "Oxford University Press",
+            "year": 2023
+          }
+        ],
+        "integrity": "Ancient Set and modern Setian religion are connected by symbolic reference, not assumed continuity."
+      }
     },
     {
-      "id":"order-of-nine-angles",
-      "identity":{"name":"Order of Nine Angles","category":"extremist occult network / Satanic current","period":"late 20th century onward","geographic_core":"United Kingdom and transnational online networks","attributed_founder":"Associated with the pseudonym Anton Long; origins and authorship are contested."},
-      "formation":{"historical_field":"British occult milieu, Satanism, National Socialist and radical political esotericism.","origin_claims":"Claims of ancient lineage are not independently established historical fact.","development":"The movement circulated through texts, small cells and later online dissemination."},
-      "worldview":{"framework":"The Sinister Tradition combines occult self-transformation, radical transgression and political-esoteric themes.","political_overlap":"Scholarship documents intersections involving National Socialist and radical political milieus.","integrity":"Extremist dimensions are documented as research subjects, not endorsed."},
-      "practice":{"structure":"Texts describe initiatory stages, but operational instructions for harmful or extremist activity are intentionally not reproduced.","textual_dissemination":"The movement relies heavily on internally circulated manuals and mythic-historical narratives."},
-      "texts":{"major":["Naos","The Black Book of Satan","ONA instructional corpus"],"status":"Primary evidence for self-description; texts do not prove claimed ancient lineage."},
-      "people":{"key_associations":["Anton Long","David Myatt"],"authorship_problem":"Pseudonymous identities complicate attribution."},
-      "organization":{"form":"Loose occult network with cells, pseudonymous authorship and decentralized dissemination.","centralization":"No transparent conventional hierarchy is established.","membership":"Reliable membership estimates are difficult because of deliberate opacity."},
-      "geography":{"early_context":"Britain","later_reach":"International online circulation."},
-      "society":{"extremism":"Important to research on intersections between occultism and extremist politics.","documented_associations":"Academic work documents extremist political associations involving figures connected with the movement.","media":"Internet dissemination expanded access to ONA material."},
-      "relationships":{"related_to":["modern Satanism","post-Satanism","political esotericism"],"documented_intersections":["National Socialist milieus","radical Islamist milieus involving associated figures"]},
-      "evidence":{"confidence":"high for existence of ONA texts and ideological corpus; moderate for early organizational history","sources":[{"title":"The Order of the Nine Angles, The Black Book of Satan (1984)","publisher":"Oxford University Press","year":2023},{"title":"Secret Identities in the Sinister Tradition","publisher":"Oxford University Press","year":2012}],"integrity":"No recruitment, romanticization or operationalization of extremist material."}
+      "id": "order-of-nine-angles-religious-context",
+      "identity": {
+        "name": "Order of Nine Angles",
+        "category": "extremist occult network / Satanic current",
+        "period": "late 20th century onward",
+        "geographic_core": "United Kingdom and transnational online networks",
+        "attributed_founder": "Associated with the pseudonym Anton Long; origins and authorship are contested."
+      },
+      "formation": {
+        "historical_field": "British occult milieu, Satanism, National Socialist and radical political esotericism.",
+        "origin_claims": "Claims of ancient lineage are not independently established historical fact.",
+        "development": "The movement circulated through texts, small cells and later online dissemination."
+      },
+      "worldview": {
+        "framework": "The Sinister Tradition combines occult self-transformation, radical transgression and political-esoteric themes.",
+        "political_overlap": "Scholarship documents intersections involving National Socialist and radical political milieus.",
+        "integrity": "Extremist dimensions are documented as research subjects, not endorsed."
+      },
+      "practice": {
+        "structure": "Texts describe initiatory stages, but operational instructions for harmful or extremist activity are intentionally not reproduced.",
+        "textual_dissemination": "The movement relies heavily on internally circulated manuals and mythic-historical narratives."
+      },
+      "texts": {
+        "major": [
+          "Naos",
+          "The Black Book of Satan",
+          "ONA instructional corpus"
+        ],
+        "status": "Primary evidence for self-description; texts do not prove claimed ancient lineage."
+      },
+      "people": {
+        "key_associations": [
+          "Anton Long",
+          "David Myatt"
+        ],
+        "authorship_problem": "Pseudonymous identities complicate attribution."
+      },
+      "organization": {
+        "form": "Loose occult network with cells, pseudonymous authorship and decentralized dissemination.",
+        "centralization": "No transparent conventional hierarchy is established.",
+        "membership": "Reliable membership estimates are difficult because of deliberate opacity."
+      },
+      "geography": {
+        "early_context": "Britain",
+        "later_reach": "International online circulation."
+      },
+      "society": {
+        "extremism": "Important to research on intersections between occultism and extremist politics.",
+        "documented_associations": "Academic work documents extremist political associations involving figures connected with the movement.",
+        "media": "Internet dissemination expanded access to ONA material."
+      },
+      "relationships": {
+        "related_to": [
+          "modern Satanism",
+          "post-Satanism",
+          "political esotericism"
+        ],
+        "documented_intersections": [
+          "National Socialist milieus",
+          "radical Islamist milieus involving associated figures"
+        ]
+      },
+      "evidence": {
+        "confidence": "high for existence of ONA texts and ideological corpus; moderate for early organizational history",
+        "sources": [
+          {
+            "title": "The Order of the Nine Angles, The Black Book of Satan (1984)",
+            "publisher": "Oxford University Press",
+            "year": 2023
+          },
+          {
+            "title": "Secret Identities in the Sinister Tradition",
+            "publisher": "Oxford University Press",
+            "year": 2012
+          }
+        ],
+        "integrity": "No recruitment, romanticization or operationalization of extremist material."
+      },
+      "canonical_entity_id": "order-of-nine-angles"
     },
     {
-      "id":"process-church",
-      "identity":{"name":"Process Church of the Final Judgment","category":"new religious movement / apocalyptic esoteric religion","period":"1960s–1970s","geographic_core":"United Kingdom and United States, especially California","founders":["Robert de Grimston","Mary Anne de Grimston"]},
-      "formation":{"origin":"The movement developed from the de Grimstons' earlier Scientology-linked background before becoming an independent religious movement.","historical_field":"1960s counterculture, occult revival, apocalyptic Christianity and Satanic symbolism.","expansion":"Centers and communities were established in several locations, especially in the United States."},
-      "worldview":{"deities":["Jehovah","Christ","Lucifer","Satan"],"core_theology":"The Process Church developed a distinctive theology presenting apparently opposed divine figures within a larger cosmic unity.","apocalypse":"Apocalyptic transformation and reconciliation of opposites were major themes."},
-      "practice":{"community":"Members participated in communal religious life and centers.","worship":"Ritual and devotional practices drew on Christian and Satanic imagery.","publications":"Magazines and pamphlets were important vehicles of doctrine and recruitment."},
-      "texts":{"major":["The Gods on War","The Gods and Their People","Process Church publications and magazines"],"status":"Published texts provide direct evidence for theology and public self-presentation."},
-      "people":{"founders":["Robert de Grimston","Mary Anne de Grimston"],"leadership":"The de Grimstons were central to doctrinal development."},
-      "organization":{"form":"Communal religious movement with centers in several countries.","transformation":"The organization underwent substantial changes during the 1970s rather than continuing unchanged."},
-      "geography":{"origin":"United Kingdom","major_centers":["London","Los Angeles and other California locations"],"expansion":"International for a limited period."},
-      "society":{"counterculture":"Associated with 1960s and 1970s alternative religion and counterculture.","conspiracy":"Later conspiracy narratives exaggerated links to unrelated criminal events and must not replace documentary evidence.","media":"Its unusual theology attracted substantial media attention."},
-      "relationships":{"background":["Scientology milieu","Western esotericism","apocalyptic Christianity"],"related_to":["modern Satanism","new religious movements","counterculture"]},
-      "evidence":{"confidence":"high for existence, founders, publications and major theology","sources":[{"title":"The Process Church of the Final Judgement, 'The Gods on War' and 'The Gods and Their People'","publisher":"Oxford University Press","year":2023}],"integrity":"Documented history remains separate from later conspiracy narratives."}
+      "id": "process-church",
+      "identity": {
+        "name": "Process Church of the Final Judgment",
+        "category": "new religious movement / apocalyptic esoteric religion",
+        "period": "1960s–1970s",
+        "geographic_core": "United Kingdom and United States, especially California",
+        "founders": [
+          "Robert de Grimston",
+          "Mary Anne de Grimston"
+        ]
+      },
+      "formation": {
+        "origin": "The movement developed from the de Grimstons' earlier Scientology-linked background before becoming an independent religious movement.",
+        "historical_field": "1960s counterculture, occult revival, apocalyptic Christianity and Satanic symbolism.",
+        "expansion": "Centers and communities were established in several locations, especially in the United States."
+      },
+      "worldview": {
+        "deities": [
+          "Jehovah",
+          "Christ",
+          "Lucifer",
+          "Satan"
+        ],
+        "core_theology": "The Process Church developed a distinctive theology presenting apparently opposed divine figures within a larger cosmic unity.",
+        "apocalypse": "Apocalyptic transformation and reconciliation of opposites were major themes."
+      },
+      "practice": {
+        "community": "Members participated in communal religious life and centers.",
+        "worship": "Ritual and devotional practices drew on Christian and Satanic imagery.",
+        "publications": "Magazines and pamphlets were important vehicles of doctrine and recruitment."
+      },
+      "texts": {
+        "major": [
+          "The Gods on War",
+          "The Gods and Their People",
+          "Process Church publications and magazines"
+        ],
+        "status": "Published texts provide direct evidence for theology and public self-presentation."
+      },
+      "people": {
+        "founders": [
+          "Robert de Grimston",
+          "Mary Anne de Grimston"
+        ],
+        "leadership": "The de Grimstons were central to doctrinal development."
+      },
+      "organization": {
+        "form": "Communal religious movement with centers in several countries.",
+        "transformation": "The organization underwent substantial changes during the 1970s rather than continuing unchanged."
+      },
+      "geography": {
+        "origin": "United Kingdom",
+        "major_centers": [
+          "London",
+          "Los Angeles and other California locations"
+        ],
+        "expansion": "International for a limited period."
+      },
+      "society": {
+        "counterculture": "Associated with 1960s and 1970s alternative religion and counterculture.",
+        "conspiracy": "Later conspiracy narratives exaggerated links to unrelated criminal events and must not replace documentary evidence.",
+        "media": "Its unusual theology attracted substantial media attention."
+      },
+      "relationships": {
+        "background": [
+          "Scientology milieu",
+          "Western esotericism",
+          "apocalyptic Christianity"
+        ],
+        "related_to": [
+          "modern Satanism",
+          "new religious movements",
+          "counterculture"
+        ]
+      },
+      "evidence": {
+        "confidence": "high for existence, founders, publications and major theology",
+        "sources": [
+          {
+            "title": "The Process Church of the Final Judgement, 'The Gods on War' and 'The Gods and Their People'",
+            "publisher": "Oxford University Press",
+            "year": 2023
+          }
+        ],
+        "integrity": "Documented history remains separate from later conspiracy narratives."
+      }
     },
     {
-      "id":"anti-religious-materialism",
-      "identity":{"name":"Militant Anti-Religious / State-Attempted Secularization Movements","category":"anti_religion_political_worldview","period":"late 18th–20th centuries, with major revolutionary and state campaigns in the 20th century","geographic_core":"France, Soviet Union and other states pursuing aggressive secularization","languages":["French","Russian","and local languages of affected states"]},
-      "formation":{"historical_field":"Enlightenment criticism of clerical power, materialism, revolutionary politics, Marxism-Leninism and state-building.","important_cases":["French Revolutionary dechristianization","Soviet anti-religious campaigns","Albanian state atheism","Cultural Revolution-era attacks on religious institutions"],"distinction":"Anti-religion, atheism, secularism and anti-clericalism are distinct categories and must not be collapsed."},
-      "worldview":{"core_concepts":["materialism","atheism","anti-clericalism","scientific naturalism","secular state"],"problem":"Religion could be interpreted by some movements as an obstacle to revolutionary transformation, scientific education or political modernization.","goal":"Goals ranged from limiting clerical power and separating church from state to attempting to eliminate religious institutions or belief.","afterlife":"Materialist currents generally rejected supernatural afterlife claims, but revolutionary states could replace religious structures with civic rituals and ideological education.","ethics":"Ethical systems varied: utilitarian, republican, socialist, Marxist and humanist forms all occurred."},
-      "practice":{"state_campaigns":["propaganda","secular education","confiscation of religious property","closure or repurposing of religious buildings","restrictions on clergy and religious associations"],"replacement_rituals":["Revolutionary Cults of Reason and Supreme Being in France","Soviet civic and political ceremonies"],"integrity":"These were political and social programs, not one coherent religion with a universal ritual system."},
-      "texts":{"major_ideological_sources":["Enlightenment critiques of clerical authority","Marxist and Marxist-Leninist writings","revolutionary decrees and constitutions","anti-religious propaganda journals"],"primary_institutional_sources":["French revolutionary legislation","Soviet decrees","League of Militant Godless publications"],"textual_status":"Heterogeneous ideological and administrative corpus rather than one canon."},
-      "people":{"intellectual_figures":["Voltaire","Diderot","d'Holbach","Marx","Engels","Lenin"],"state_actors":"Different revolutionary governments and party organizations implemented anti-religious programs in different ways.","critics":"Religious leaders, believers and later historians documented resistance, accommodation and consequences."},
-      "organization":{"membership_model":"Political parties, civic associations, propaganda leagues and state institutions rather than a single religious membership body.","offices":"Government ministries, party committees and propaganda organizations often administered campaigns.","recruitment":"Education and political mobilization were major recruitment mechanisms.","public_or_private":"Primarily public and state-directed, though individual unbelief remained distinct from state policy."},
-      "geography":{"key_cases":["France","Russia/Soviet Union","Albania","China"],"sites":"Former churches, monasteries, museums, archives and propaganda institutions preserve evidence of changing state-religion relations."},
-      "society":{"state_relation":"The defining feature was an attempt to restructure the legal and institutional relationship between state and religion.","law":"Laws could nationalize property, restrict worship, remove religious education or change recognition of religious institutions.","politics":"Anti-religious policy was often embedded in wider revolutionary or authoritarian projects.","education":"Schools became important sites of secular or atheist education.","media":"Newspapers, posters, books, radio and public lectures were used for propaganda.","resistance":"Believers and local officials sometimes resisted, adapted or selectively implemented state directives."},
-      "relationships":{"contrasts_with":["Theosophical Society","Anthroposophy","traditional religions","modern Satanism"],"historical_relation":["secularization","anti-clericalism","Marxist-Leninist atheism","state-building"],"internal_variation":"French republican anticlericalism, Soviet militant atheism and Chinese Cultural Revolution policies must be studied as separate cases."},
-      "interpretation":{"community_self_description":"Varied by movement and period; some described their goal as emancipation from clerical domination rather than elimination of personal religion.","scholarly_description":"Best treated as a family of political and secularizing projects rather than a single anti-religion.","outsider_polemics":"Both anti-religious and religious polemics can exaggerate uniformity or intentionality.","modern_reconstruction":"Comparative analysis should preserve country, regime and time period."},
-      "evidence":{"confidence":"high for documented legislation, organizations and campaigns; variable for motives and effects at local level","sources":[{"title":"The Philosophes and Religion: Intellectual Origins of the Dechristianization Movement in the French Revolution","publisher":"Cambridge University Press","year":1971},{"title":"The French Revolution and religion to 1794","publisher":"Cambridge University Press","year":2006},{"title":"Commissars in Red Cassocks: Former Priests in the League of the Militant Godless","publisher":"Cambridge University Press","year":1995},{"title":"Fear no evil: schools and religion in Soviet Russia, 1917–1941","publisher":"Cambridge University Press","year":1992}],"contested":["relative weight of Enlightenment ideas versus wartime and political motives in French dechristianization","local variation in Soviet anti-religious implementation","comparability of different state secularization projects"]},
-      "integrity":{"historical_fact_vs_later_legend":"Use legislation, archival records and contemporary publications.","self_description_vs_external_label":"Distinguish atheism, secularism, anti-clericalism and anti-religion.","ancient_cult_vs_modern_revival":"Not applicable; this is a modern political family.","symbolic_similarity_vs_historical_influence":"Do not infer ideological influence from generic secular language alone.","secret_claim_vs_documented_evidence":"State campaigns should be reconstructed from documentary evidence, not conspiracy narratives."}
+      "id": "anti-religious-materialism",
+      "identity": {
+        "name": "Militant Anti-Religious / State-Attempted Secularization Movements",
+        "category": "anti_religion_political_worldview",
+        "period": "late 18th–20th centuries, with major revolutionary and state campaigns in the 20th century",
+        "geographic_core": "France, Soviet Union and other states pursuing aggressive secularization",
+        "languages": [
+          "French",
+          "Russian",
+          "and local languages of affected states"
+        ]
+      },
+      "formation": {
+        "historical_field": "Enlightenment criticism of clerical power, materialism, revolutionary politics, Marxism-Leninism and state-building.",
+        "important_cases": [
+          "French Revolutionary dechristianization",
+          "Soviet anti-religious campaigns",
+          "Albanian state atheism",
+          "Cultural Revolution-era attacks on religious institutions"
+        ],
+        "distinction": "Anti-religion, atheism, secularism and anti-clericalism are distinct categories and must not be collapsed."
+      },
+      "worldview": {
+        "core_concepts": [
+          "materialism",
+          "atheism",
+          "anti-clericalism",
+          "scientific naturalism",
+          "secular state"
+        ],
+        "problem": "Religion could be interpreted by some movements as an obstacle to revolutionary transformation, scientific education or political modernization.",
+        "goal": "Goals ranged from limiting clerical power and separating church from state to attempting to eliminate religious institutions or belief.",
+        "afterlife": "Materialist currents generally rejected supernatural afterlife claims, but revolutionary states could replace religious structures with civic rituals and ideological education.",
+        "ethics": "Ethical systems varied: utilitarian, republican, socialist, Marxist and humanist forms all occurred."
+      },
+      "practice": {
+        "state_campaigns": [
+          "propaganda",
+          "secular education",
+          "confiscation of religious property",
+          "closure or repurposing of religious buildings",
+          "restrictions on clergy and religious associations"
+        ],
+        "replacement_rituals": [
+          "Revolutionary Cults of Reason and Supreme Being in France",
+          "Soviet civic and political ceremonies"
+        ],
+        "integrity": "These were political and social programs, not one coherent religion with a universal ritual system."
+      },
+      "texts": {
+        "major_ideological_sources": [
+          "Enlightenment critiques of clerical authority",
+          "Marxist and Marxist-Leninist writings",
+          "revolutionary decrees and constitutions",
+          "anti-religious propaganda journals"
+        ],
+        "primary_institutional_sources": [
+          "French revolutionary legislation",
+          "Soviet decrees",
+          "League of Militant Godless publications"
+        ],
+        "textual_status": "Heterogeneous ideological and administrative corpus rather than one canon."
+      },
+      "people": {
+        "intellectual_figures": [
+          "Voltaire",
+          "Diderot",
+          "d'Holbach",
+          "Marx",
+          "Engels",
+          "Lenin"
+        ],
+        "state_actors": "Different revolutionary governments and party organizations implemented anti-religious programs in different ways.",
+        "critics": "Religious leaders, believers and later historians documented resistance, accommodation and consequences."
+      },
+      "organization": {
+        "membership_model": "Political parties, civic associations, propaganda leagues and state institutions rather than a single religious membership body.",
+        "offices": "Government ministries, party committees and propaganda organizations often administered campaigns.",
+        "recruitment": "Education and political mobilization were major recruitment mechanisms.",
+        "public_or_private": "Primarily public and state-directed, though individual unbelief remained distinct from state policy."
+      },
+      "geography": {
+        "key_cases": [
+          "France",
+          "Russia/Soviet Union",
+          "Albania",
+          "China"
+        ],
+        "sites": "Former churches, monasteries, museums, archives and propaganda institutions preserve evidence of changing state-religion relations."
+      },
+      "society": {
+        "state_relation": "The defining feature was an attempt to restructure the legal and institutional relationship between state and religion.",
+        "law": "Laws could nationalize property, restrict worship, remove religious education or change recognition of religious institutions.",
+        "politics": "Anti-religious policy was often embedded in wider revolutionary or authoritarian projects.",
+        "education": "Schools became important sites of secular or atheist education.",
+        "media": "Newspapers, posters, books, radio and public lectures were used for propaganda.",
+        "resistance": "Believers and local officials sometimes resisted, adapted or selectively implemented state directives."
+      },
+      "relationships": {
+        "contrasts_with": [
+          "Theosophical Society",
+          "Anthroposophy",
+          "traditional religions",
+          "modern Satanism"
+        ],
+        "historical_relation": [
+          "secularization",
+          "anti-clericalism",
+          "Marxist-Leninist atheism",
+          "state-building"
+        ],
+        "internal_variation": "French republican anticlericalism, Soviet militant atheism and Chinese Cultural Revolution policies must be studied as separate cases."
+      },
+      "interpretation": {
+        "community_self_description": "Varied by movement and period; some described their goal as emancipation from clerical domination rather than elimination of personal religion.",
+        "scholarly_description": "Best treated as a family of political and secularizing projects rather than a single anti-religion.",
+        "outsider_polemics": "Both anti-religious and religious polemics can exaggerate uniformity or intentionality.",
+        "modern_reconstruction": "Comparative analysis should preserve country, regime and time period."
+      },
+      "evidence": {
+        "confidence": "high for documented legislation, organizations and campaigns; variable for motives and effects at local level",
+        "sources": [
+          {
+            "title": "The Philosophes and Religion: Intellectual Origins of the Dechristianization Movement in the French Revolution",
+            "publisher": "Cambridge University Press",
+            "year": 1971
+          },
+          {
+            "title": "The French Revolution and religion to 1794",
+            "publisher": "Cambridge University Press",
+            "year": 2006
+          },
+          {
+            "title": "Commissars in Red Cassocks: Former Priests in the League of the Militant Godless",
+            "publisher": "Cambridge University Press",
+            "year": 1995
+          },
+          {
+            "title": "Fear no evil: schools and religion in Soviet Russia, 1917–1941",
+            "publisher": "Cambridge University Press",
+            "year": 1992
+          }
+        ],
+        "contested": [
+          "relative weight of Enlightenment ideas versus wartime and political motives in French dechristianization",
+          "local variation in Soviet anti-religious implementation",
+          "comparability of different state secularization projects"
+        ]
+      },
+      "integrity": {
+        "historical_fact_vs_later_legend": "Use legislation, archival records and contemporary publications.",
+        "self_description_vs_external_label": "Distinguish atheism, secularism, anti-clericalism and anti-religion.",
+        "ancient_cult_vs_modern_revival": "Not applicable; this is a modern political family.",
+        "symbolic_similarity_vs_historical_influence": "Do not infer ideological influence from generic secular language alone.",
+        "secret_claim_vs_documented_evidence": "State campaigns should be reconstructed from documentary evidence, not conspiracy narratives."
+      }
     }
   ],
-  "sources_note":"The third expansion uses academic research and primary institutional materials where available; disputed theological, lineage and political claims are explicitly separated from historical evidence.",
-  "integrity":"No placeholders are used. The eight records are distinct canonical expansions; Theosophical Society is intentionally not duplicated here because it is already expanded in deep-expansions-2.json."
+  "sources_note": "The third expansion uses academic research and primary institutional materials where available; disputed theological, lineage and political claims are explicitly separated from historical evidence.",
+  "integrity": "No placeholders are used. The eight records are distinct canonical expansions; Theosophical Society is intentionally not duplicated here because it is already expanded in deep-expansions-2.json."
 }

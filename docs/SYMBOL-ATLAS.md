@@ -1,6 +1,10 @@
-# Symbol Atlas
+# Symbol Atlas — Reader Projection
 
-The Symbol Atlas is the canonical vocabulary of the Potatoverse. A symbol is not merely a definition. It is a node with meaning, visual structure, philosophical function, aliases and relationships.
+**Lifecycle status:** active human-readable symbol guide / reader projection; not the canonical identity registry.
+
+**Current authority:** recurring Potatoism concept identity lives in `data/potatoism-concept-registry.json`; long-form concept depth lives in `data/potatoism-dossiers.json` and specialist owners; cross-symbol structural relations live in `knowledge/core/symbolic-relational-synthesis.json`. This document explains that material for humans and must yield when a current owner differs.
+
+The Symbol Atlas is a readable vocabulary of the Potatoverse. A symbol is not merely a definition. It is a node with meaning, visual structure, philosophical function, aliases and relationships.
 
 ## Potato of Life
 
@@ -130,7 +134,7 @@ They are complementary archetypes, not a simple good/evil pair. The useful quest
 
 The framework sometimes uses 1D/2D/3D/4D/5D and the thalamus/pineal-gland vocabulary as metaphorical mappings. These are **not scientific claims**. They are interpretive language for describing levels, interfaces and subjective experience.
 
-## Canon rule
+## Reader maintenance rule
 
 When a new symbol appears, add:
 
@@ -142,4 +146,4 @@ When a new symbol appears, add:
 6. Evidence class — normally mythological or creative
 7. Open questions
 
-The atlas is therefore designed to become a network, not a dictionary.
+New durable identities should be added to the canonical concept registry first; this guide may then explain them. The reader is therefore designed to reflect the network, not become a competing dictionary.

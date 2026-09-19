@@ -168,7 +168,11 @@
     "Dependency": "degree to which continued access requires controlling intermediary",
     "Repairability": "availability of correction/appeal/re-entry path",
     "FalseDoorRisk": "probability perceived exit returns agent to same or worse attractor",
-    "CapabilityFit": "match between granted authority and actual task requirements"
+    "CapabilityFit": "match between granted authority and actual task requirements",
+    "LiminalDwellTime": "elapsed time between separation from the prior state and recognized incorporation into the next state",
+    "RecognitionGap": "difference between nominal crossing and actual rights/capabilities/social recognition in the AFTER state",
+    "GuardAuditability": "degree to which gate conditions, controller, evidence and denial reasons can be independently inspected",
+    "ExitOptionQuality": "availability, safety and practical cost of reversal, appeal or departure from the transitional regime"
   },
   "new_epiphanies": [
     "Door is not an object; Door is a conditional relation between states.",
@@ -201,6 +205,21 @@
       "topic": "access control and least privilege",
       "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/800-171r3/NIST.SP.800-171r3.html",
       "class": "official_standard"
+    },
+    {
+      "topic": "formal state transitions and guards",
+      "url": "https://www.w3.org/TR/scxml/",
+      "class": "W3C_recommendation"
+    },
+    {
+      "topic": "rites of passage — separation, liminality, incorporation",
+      "url": "https://eprints.whiterose.ac.uk/id/eprint/79955/",
+      "class": "scholarly_reference"
+    },
+    {
+      "topic": "Turner — liminality and communitas",
+      "url": "https://ea.fflch.usp.br/en/node/38",
+      "class": "university_anthropology_reference"
     }
   ],
   "connections": [
@@ -266,6 +285,45 @@
       "https://www.encyclopedia.com/medicine/anatomy-and-physiology/anatomy-and-physiology/rites-passage",
       "https://www.encyclopedia.com/social-sciences-and-law/anthropology-and-archaeology/customs-and-artifacts/liminality"
     ],
-    "boundary": "van Gennep/Turner-style rites-of-passage analysis is an anthropological comparator; it does not make every technical/social threshold a sacred ritual."
+    "boundary": "van Gennep/Turner-style rites-of-passage analysis is an anthropological comparator; it does not make every technical/social threshold a sacred ritual.",
+    "research_detail": {
+      "van_gennep": "Rites-of-passage scholarship conventionally distinguishes separation from a prior status, a liminal or in-between phase, and incorporation/reaggregation into a socially recognized new status.",
+      "turner": "Turner deepened the liminal phase as a temporarily ambiguous position outside ordinary status structure and developed communitas for bonds that can arise among participants sharing such a condition.",
+      "operational_consequence": "A Door model is incomplete if it records departure but not recognition of the new state. A long transition should therefore be measured separately from successful incorporation.",
+      "permanent_liminality_warning": "Treat 'permanent liminality' as an analytic failure mode only when evidence shows prolonged in-between status, unclear rights/obligations, unresolved recognition, or dependency on transition gatekeepers. Do not use it as a label for ordinary uncertainty."
+    }
+  },
+  "state_machine_crosswalk": {
+    "research_basis": "W3C SCXML provides a formal event-based state-machine vocabulary: active source state, event-triggered transition, optional Boolean guard condition, target state, nested/compound states, and executable actions on exit, during transition and on entry.",
+    "project_translation": {
+      "source_state": "BEFORE — the actual state/status before passage",
+      "event_or_trigger": "what makes transition evaluation begin",
+      "guard_condition": "the admissibility rule; must be inspectable when possible",
+      "controller": "who or what evaluates the guard",
+      "exit_actions": "what is relinquished, closed, detached or recorded before passage",
+      "transition_actions": "what happens during passage itself",
+      "entry_actions": "what rights, context, resources or obligations instantiate the AFTER state",
+      "target_state": "AFTER — a named state distinct from merely 'not BEFORE'",
+      "history_or_rollback": "what prior state/configuration can be restored if reversal is legitimate"
+    },
+    "minimum_observables": [
+      "source_state",
+      "target_state",
+      "trigger",
+      "guard_condition",
+      "guard_controller",
+      "denial_reason",
+      "exit_actions",
+      "entry_actions",
+      "reversibility",
+      "appeal_or_review",
+      "time_entered_transition",
+      "time_incorporated",
+      "provenance"
+    ],
+    "nested_state_lesson": "SCXML compound states show why a deep Door need not imply mystical depth: a transition can enter a state that itself contains substates. Project 'Deep Door' can therefore be represented explicitly as nested state space rather than an endless poetic sequence.",
+    "history_lesson": "SCXML history states preserve a prior configuration for later re-entry. The useful project analogue is not literal software identity but an explicit record of which legitimate prior status may be restored and what cannot be undone.",
+    "source": "https://www.w3.org/TR/scxml/",
+    "boundary": "This is a formal-systems comparator. Social, legal, ritual and theological passages have normative meanings that a state machine alone cannot supply."
   }
 }

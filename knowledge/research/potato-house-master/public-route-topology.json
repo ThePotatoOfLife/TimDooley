@@ -1,9 +1,15 @@
 {
   "version": "1.6.0",
   "updated": "2026-09-18",
+  "status": "derived compatibility projection",
+  "authority": "derived-public-route-topology-projection",
+  "canonical_source": "data/house/public-surfaces.json",
+  "lifecycle_status": "compatibility-projection",
   "purpose": "Route-topology bridge for active public surfaces; navigation/migration classification only, not substantive knowledge ownership. House, Paths and Living Axis are structural projections over the canonical Rooms, not additional fact owners.",
   "room_registry": "data/house/rooms.json",
   "public_surface_registry": "data/house/public-surfaces.json",
+  "generation_rule": "Route identity, canonical route, surface type and primary Room membership derive from data/house/public-surfaces.json. This file may retain only compatibility/topology representation; it must not independently redefine public route identity.",
+  "retirement_target": "Remain generated while legacy consumers require this shape, then remove consumers and retire this file.",
   "records": [
     {
       "surface_id": "home",
@@ -16,6 +22,21 @@
       "compatibility_routes": [
         "/learn/"
       ]
+    },
+    {
+      "surface_id": "potato-of-life",
+      "surface_type": "guide",
+      "canonical_route": "/potato-of-life/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "potatoverse-canon",
+        "life-body",
+        "traditions-texts",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
     },
     {
       "surface_id": "tim",
@@ -403,6 +424,36 @@
       "compatibility_routes": []
     },
     {
+      "surface_id": "below",
+      "surface_type": "guide",
+      "canonical_route": "/below/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "archive-sources",
+        "world-systems",
+        "culture-information",
+        "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "shadow-farm",
+      "surface_type": "guide",
+      "canonical_route": "/shadow-farm/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "culture-information",
+        "archive-sources",
+        "world-systems",
+        "traditions-texts"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
       "surface_id": "rooms",
       "surface_type": "guide",
       "canonical_route": "/rooms/",
@@ -483,6 +534,20 @@
         "culture-information",
         "works",
         "research-lab"
+      ],
+      "specialist_view": true,
+      "migration_status": "current",
+      "compatibility_routes": []
+    },
+    {
+      "surface_id": "spirit",
+      "surface_type": "guide",
+      "canonical_route": "/potato-of-life/spirit/",
+      "primary_hub_id": null,
+      "room_ids": [
+        "potatoverse-canon",
+        "life-body",
+        "traditions-texts"
       ],
       "specialist_view": true,
       "migration_status": "current",

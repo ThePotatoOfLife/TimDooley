@@ -1,5 +1,5 @@
 {
-  "version": "1.8.0",
+  "version": "1.9.0",
   "updated": "2026-09-18",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
@@ -561,6 +561,46 @@
       "visibility": "specialist",
       "primary_navigation": false,
       "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "below",
+      "route": "/below/",
+      "canonical_route": "/below/",
+      "surface_type": "guide",
+      "title": "Below Observatory",
+      "primary_parent": "house",
+      "primary_room_ids": [
+        "archive-sources",
+        "world-systems",
+        "culture-information",
+        "research-lab"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "shadow-farm",
+      "route": "/shadow-farm/",
+      "canonical_route": "/shadow-farm/",
+      "surface_type": "guide",
+      "title": "Farm & Trees of Strife",
+      "primary_parent": "culture",
+      "primary_room_ids": [
+        "culture-information",
+        "archive-sources",
+        "world-systems",
+        "traditions-texts"
+      ],
+      "status": "active",
+      "visibility": "specialist",
+      "primary_navigation": false,
+      "is_view": true,
       "knowledge_owner": false,
       "legacy_routes": []
     },

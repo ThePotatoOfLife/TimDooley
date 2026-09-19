@@ -1,5 +1,9 @@
 # The Potato Layers
 
+**Lifecycle status:** active explanatory projection.
+
+This page explains the physical Potato ↔ Potato of Life ↔ Potatoism distinction for readers. Canonical concept identity belongs to `data/potatoism-concept-registry.json`; readable dossier depth belongs to `data/potatoism-dossiers.json`; scientific/biological and specialist symbolic mechanics remain with their dedicated owners.
+
 The project now separates three things that must remain linked but must not be collapsed:
 
 1. **Potato** — the physical object and everything that can be studied about it materially.

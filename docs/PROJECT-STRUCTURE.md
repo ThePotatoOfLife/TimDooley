@@ -86,6 +86,21 @@ Do not force all dimensions into one folder hierarchy.
 | Creative works | `knowledge/culture/creative-systems-archive.json` | Suno music archive and distinct creative corpora; `/works/` is the curated reader projection |
 | Provenance / epistemics | `knowledge/indexes/source-index.json` | archive epistemics, inference ledger, conversation recovery inventories |
 
+
+## Lifecycle and phase-out states
+
+Canonicalization is now also a lifecycle. Files do not remain equally authoritative forever merely because they once carried a broad title.
+
+- **Canonical owner** — current durable definition/data owner for a subject.
+- **Active projection** — reader, navigation or analytical view over canonical owners.
+- **Historical donor** — older synthesis retained for provenance or still-unique material after authority moved elsewhere.
+- **Superseded retained** — temporarily preserved while unique material and live consumers are migrated.
+- **Archive candidate** — no remaining live ownership function; eligible for archival/removal after reference and provenance checks.
+
+The machine-readable convergence/retirement map lives in `data/house/project-synthesis.json#convergence_and_retirement`; project-wide merge status and next candidates live in `knowledge/indexes/project-consolidation-map.json`.
+
+The phase-out rule is **promote unique value → migrate consumers → validate → reduce/archive → delete**. Never reverse that order.
+
 ## Consolidation rules
 
 ### Keep
@@ -118,15 +133,9 @@ If a legacy research document is useful as historical provenance but duplicates 
 
 These remain intentionally because they still have live provenance references or unique material:
 
-- `research.json`
-- `book-research.json`
-- `2026-master-framework.json`
-- `knowledge.json`
-- `POTATOVERSE-DEEP-RESEARCH.md`
-- `POTATOVERSE-ALTERNATIVE-RESEARCH.md`
 - `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md`
 
-They are **source strata, not canonical navigation owners**.
+They are **legacy/source strata, not canonical navigation owners**. Their roles are not identical: the Great Book extraction now lives at `knowledge/research/great-book-2024-source-extraction.json`, while the life/myth timeline remains a root source/provenance bridge; `2026-master-framework.json` has been retired after consumer migration; its final blob remains in `archive/legacy/README.md`. `research.json` has now been retired after section migration and question promotion; its final blob is recorded in `archive/legacy/README.md`. The two former POTATOVERSE readable research donors have been retired after unique-content promotion and are recoverable through `archive/legacy/README.md`.
 
 Do not delete them merely because a newer owner exists. First migrate live references and unique content; then either archive them as concise provenance artifacts or remove them when genuinely redundant.
 

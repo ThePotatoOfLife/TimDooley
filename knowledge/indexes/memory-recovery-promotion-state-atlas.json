@@ -1,0 +1,203 @@
+{
+  "id": "memory-recovery-promotion-state-atlas",
+  "title": "Memory Recovery Promotion States — From Buried Trace to Canonical Use",
+  "version": "1.1.0",
+  "updated": "2026-09-19",
+  "owner_room": "memory-recovery",
+  "purpose": "Define the states through which recovered conversations, screenshots, files, recollections and archive fragments can move before they are reused by canonical owners.",
+  "states": [
+    {
+      "id": "discovered",
+      "meaning": "A potentially relevant trace has been located but not authenticated or contextualized.",
+      "required": [
+        "locator",
+        "discovery_date",
+        "discoverer",
+        "source_type"
+      ]
+    },
+    {
+      "id": "authenticated",
+      "meaning": "The trace is identified strongly enough to know what object/account/file it is.",
+      "required": [
+        "identity_basis",
+        "integrity_notes",
+        "version_or_hash_if_available"
+      ]
+    },
+    {
+      "id": "dated",
+      "meaning": "The strongest defensible date or range is recorded with precision and basis.",
+      "required": [
+        "date_or_range",
+        "precision",
+        "basis"
+      ]
+    },
+    {
+      "id": "contextualized",
+      "meaning": "Enough surrounding material survives to understand what the trace was responding to or doing.",
+      "required": [
+        "context_window",
+        "participants_or_document_context",
+        "known_missing_context"
+      ]
+    },
+    {
+      "id": "typed",
+      "meaning": "Direct wording, paraphrase, recollection, reconstruction and later interpretation are separated.",
+      "required": [
+        "claim_types",
+        "exactness"
+      ]
+    },
+    {
+      "id": "compared",
+      "meaning": "Earlier/later sources, contradictions and developmental changes have been checked.",
+      "required": [
+        "supporting_traces",
+        "contradictions",
+        "later_canon_relation"
+      ]
+    },
+    {
+      "id": "candidate_for_promotion",
+      "meaning": "The trace materially deepens an existing canonical owner or timeline without needing a new owner.",
+      "required": [
+        "target_owner",
+        "proposed_change",
+        "uncertainty"
+      ]
+    },
+    {
+      "id": "promoted",
+      "meaning": "The canonical owner has been updated while provenance and prior state remain traceable.",
+      "required": [
+        "target_owner",
+        "promotion_commit_or_record",
+        "promoted_fields",
+        "date"
+      ]
+    },
+    {
+      "id": "provenance_only",
+      "meaning": "Unique source value remains, but substantive content has already been absorbed elsewhere.",
+      "required": [
+        "absorbed_by",
+        "preservation_reason"
+      ]
+    },
+    {
+      "id": "rejected_or_deferred",
+      "meaning": "Insufficient authenticity, excessive ambiguity, duplication or lack of relevance blocks promotion.",
+      "required": [
+        "reason",
+        "review_again_if"
+      ]
+    }
+  ],
+  "promotion_tests": [
+    "Does this add a new fact, earlier attestation, clearer wording, stronger date, contradiction, mechanism or relationship?",
+    "Is there already a canonical owner that should absorb it?",
+    "Would promotion accidentally turn later interpretation into earlier wording?",
+    "Are quotations exact enough to publish as quotes?",
+    "Does the trace add independent provenance or merely repeat an existing root?",
+    "What becomes less certain if this trace conflicts with current canon?",
+    "Can the archive preserve the old state after revision?"
+  ],
+  "recovery_batch_contract": {
+    "required": [
+      "batch_id",
+      "scope",
+      "source_surfaces",
+      "date_window",
+      "items_found",
+      "items_promoted",
+      "items_provenance_only",
+      "items_deferred",
+      "source_gaps_exposed",
+      "canonical_owners_changed"
+    ],
+    "success_rule": "A recovery batch is successful when it improves source precision or developmental understanding, not when it maximizes the number of promoted items."
+  },
+  "contradiction_outcomes": [
+    {
+      "id": "development",
+      "use_when": "Both statements are well sourced but belong to different periods or roles."
+    },
+    {
+      "id": "source-preference",
+      "use_when": "One wording/date rests on materially stronger contemporaneous evidence."
+    },
+    {
+      "id": "scope-split",
+      "use_when": "Apparently conflicting claims refer to different domains, actors or meanings."
+    },
+    {
+      "id": "unresolved",
+      "use_when": "Evidence does not decide responsibly."
+    },
+    {
+      "id": "correction",
+      "use_when": "A later source explicitly retracts or corrects an earlier statement."
+    }
+  ],
+  "joins": [
+    "conversation-recovery-inventory",
+    "memory-recovery-method-atlas",
+    "developmental-genealogy",
+    "provenance-chain-of-custody-atlas",
+    "source-index"
+  ],
+  "worked_state_examples": [
+    {
+      "id": "research-json-complete-promotion",
+      "object": "research.json",
+      "final_state": "provenance_only",
+      "state_trace": [
+        "authenticated",
+        "contextualized",
+        "typed",
+        "compared",
+        "candidate_for_promotion",
+        "promoted",
+        "provenance_only"
+      ],
+      "evidence": "Every substantive section received a successor owner; open questions moved to data/research-frontier.json; final live blob recorded in archive/legacy/README.md.",
+      "caution": "A final blob records provenance but does not make the retired file an active owner."
+    },
+    {
+      "id": "book-research-path-only-retirement",
+      "object": "book-research.json",
+      "final_state": "promoted",
+      "state_trace": [
+        "authenticated",
+        "compared",
+        "candidate_for_promotion",
+        "promoted"
+      ],
+      "evidence": "Content remains active as knowledge/research/great-book-2024-source-extraction.json while only the root path was retired.",
+      "caution": "Do not label this content deleted or provenance-only; the extraction remains a live source owner."
+    },
+    {
+      "id": "pr283-functional-convergence",
+      "object": "PR #283",
+      "final_state": "candidate_for_provenance_only",
+      "state_trace": [
+        "authenticated",
+        "compared",
+        "candidate_for_promotion",
+        "promoted"
+      ],
+      "evidence": "Changed-path audit reached zero paths unique to PR #283 after harvesting into PR #284.",
+      "caution": "Do not advance to provenance_only/closed solely from path coverage; content-level wording/history audit remains."
+    }
+  ],
+  "state_transition_guards": [
+    "promoted → provenance_only requires proof that no live ownership duty remains",
+    "path retirement does not imply content retirement",
+    "zero changed-path uniqueness is not equivalent to zero semantic uniqueness",
+    "rejected_or_deferred should preserve a review trigger rather than become silent discard",
+    "contradiction can promote into developmental genealogy without choosing one timeless winner"
+  ]
+}

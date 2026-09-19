@@ -107,8 +107,8 @@ def main():
         errors.append('project synthesis Foundation Room population drifted')
 
     home=HOME.read_text(encoding='utf-8',errors='replace')
-    for marker in ('id="foundation-rooms"',"fetch('data/house/foundation-room-atlas.json')",'Door · Place · House · Today','Foundation Rooms'):
-        if marker not in home: errors.append(f'Home missing Foundation Room marker: {marker}')
+    for marker in ('id="foundation-rooms"',"fetch('data/house/foundation-room-atlas.json')",'A Foundation is a place in the House, with an origin in the World and a state today','Its Door records when and where it first crossed into an operating form','Its House coordinates tell you which Room/circle owns it','Its Today face shows what still exists now','Foundation Rooms'):
+        if marker not in home: errors.append(f'Home missing Foundation Room contract marker: {marker}')
 
     timeline=TIMELINE.read_text(encoding='utf-8',errors='replace')
     for marker in ('id="foundation-rooms"',"foundation-room-atlas.json",'foundationRoomCatalog','Map-ready origin','Quantified Today'):

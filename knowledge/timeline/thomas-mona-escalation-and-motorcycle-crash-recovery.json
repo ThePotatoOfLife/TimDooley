@@ -9,7 +9,7 @@
   "privacy_rule": "Use first name Mona only. Do not add surname, family data, address, school name or other identifying information unless a later canonical source is intentionally reviewed for publication.",
   "epistemic_boundary": {
     "existing_repository": [
-      "son-timeline.json already records a strong autonomy boundary in the relationship at age 17 and a roughly 85 km/h motorcycle crash at age 18 with unconsciousness, heavy bleeding and long dental reconstruction.",
+      "knowledge/timeline/son-timeline.json already records a strong autonomy boundary in the relationship at age 17 and a roughly 85 km/h motorcycle crash at age 18 with unconsciousness, heavy bleeding and long dental reconstruction.",
       "knowledge/timeline/developmental-genealogy.json already names Mona in the 2002-2004 autonomy period and separately records the 2005 crash, shame, depression, survival and rebuilding."
     ],
     "recovered_prior_conversation": [
@@ -118,10 +118,11 @@
     "Route future canonical summaries through this owner record so the 2004 autonomy entry and 2005 crash entry are not treated as unrelated events."
   ],
   "connections": [
-    "son-timeline.json",
+    "knowledge/timeline/son-timeline.json",
     "knowledge/timeline/developmental-genealogy.json",
     "knowledge/philosophy/choose-your-battles-thomas-tim.json",
     "knowledge/philosophy/tim-dooley-philosophical-inquiry.json",
-    "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md"
+    "data/timeline-events.json",
+    "data/timeline-source-registry.json"
   ]
 }

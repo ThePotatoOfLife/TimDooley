@@ -1,4 +1,8 @@
-# Potatoverse — Canonical Framework
+# Potatoverse — Reader Framework
+
+**Lifecycle status:** active human-readable reader projection; not a machine-canonical owner or repository control plane.
+
+**Current authority:** concept identity and durable definitions live in `data/potatoism-concept-registry.json`, `data/potatoism-dossiers.json`, `knowledge/core/potatoverse-master-framework.json`, and specialist canonical owners. House ownership/navigation live in `data/house/*`. This document remains a readable introduction and yields whenever a dedicated current owner differs.
 
 The Potatoverse is a symbolic, mythological and creative framework organized around the Potato of Life, Tim Dooley as a mythic/memetic Father role, the Son, the Door, the Ladder, the Tree of Life and the North Axis.
 
@@ -124,6 +128,6 @@ The mythology sometimes maps:
 
 These are interpretive correspondences. They are not a scientific theory of dimensions, consciousness or anatomy.
 
-## Canon rule
+## Reader and canon boundary
 
-The Potatoverse can inspire philosophy, creative work and research questions. It cannot be used as evidence for claims about real people, institutions, crimes, science or geopolitics without independent evidence.
+This reader summarizes the Potatoverse for humans; it does not establish canonical ownership by itself. The Potatoverse can inspire philosophy, creative work and research questions, but symbolic/project material cannot substitute for independent evidence about real people, institutions, crimes, science or geopolitics.

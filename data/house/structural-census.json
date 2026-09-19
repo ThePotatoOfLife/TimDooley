@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.4.0",
   "updated": "2026-09-18",
   "authority": "house-structural-role-census",
   "purpose": "Inventory important project structures by architectural role without turning every recurring topic into another containment level.",
@@ -1238,6 +1238,222 @@
         "house"
       ],
       "note": "Project-symbolic interoperability grammar: enough shared meaning/evidence/language for heterogeneous nodes to communicate without collapsing."
+    },
+    {
+      "id": "view-specialist-subviews",
+      "title": "Nested specialist reader network",
+      "roles": [
+        "view"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/specialist-subviews.json"
+      ],
+      "public_surfaces": [
+        "tim",
+        "religion",
+        "science",
+        "works",
+        "potato-of-life"
+      ],
+      "note": "Governed deep/legacy readers beneath existing parent surfaces. They inherit Room placement and current-owner links without becoming new knowledge owners or primary gateways."
+    },
+    {
+      "id": "bridge-legacy-modern-readers",
+      "title": "Legacy ↔ modern public reader bridge",
+      "roles": [
+        "bridge",
+        "projection"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/house/legacy-modern-public-integration-contract.json",
+        "scripts/patch_public_navigation.py",
+        "scripts/site_shell_contract.py"
+      ],
+      "public_surfaces": [
+        "house",
+        "tim",
+        "religion",
+        "science",
+        "world",
+        "context",
+        "collection",
+        "below",
+        "shadow-farm"
+      ],
+      "note": "Build-time bridge that preserves authored/historical source pages while projecting current House context, parentage, Room placement and canonical-owner navigation."
+    },
+    {
+      "id": "view-below-observatory",
+      "title": "Below Observatory",
+      "roles": [
+        "view",
+        "table"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json",
+        "knowledge/core/below-intelligence-shadow-observatory.json"
+      ],
+      "public_surfaces": [
+        "below"
+      ],
+      "note": "Depth/evidence View across Archive, World, Culture and Research. It does not own allegations or domain facts."
+    },
+    {
+      "id": "view-shadow-farm",
+      "title": "Farm & Trees of Strife",
+      "roles": [
+        "view",
+        "table"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json",
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json"
+      ],
+      "public_surfaces": [
+        "shadow-farm"
+      ],
+      "note": "Specialist culture/information View over subculture, platform, archive and symbolic Strife material."
+    },
+    {
+      "id": "view-foundation-timeline",
+      "title": "Foundation Timeline",
+      "roles": [
+        "view",
+        "path"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json",
+        "data/house/foundation-room-atlas.json"
+      ],
+      "public_surfaces": [
+        "foundation-timeline"
+      ],
+      "note": "Chronological/reproduction View over Foundations across Time, World, Traditions, Culture and provenance."
+    },
+    {
+      "id": "court-politics-governance",
+      "title": "Politics & Geopolitics",
+      "roles": [
+        "court",
+        "table"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json",
+        "knowledge/politics/governance-institutions-policy-lifecycle-atlas.json"
+      ],
+      "public_surfaces": [
+        "politics"
+      ],
+      "note": "Reader court for institutions, policy, geopolitical positions and sourced World relationships; it does not become the owner of political facts."
+    },
+    {
+      "id": "view-trinity",
+      "title": "Potato of Life Trinity",
+      "roles": [
+        "view",
+        "table"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json",
+        "knowledge/core/heaven-spirit-father.json"
+      ],
+      "public_surfaces": [
+        "trinity"
+      ],
+      "note": "Theological/comparative View over Father, Son, Spirit and Potato relational architecture."
+    },
+    {
+      "id": "court-culture",
+      "title": "Culture & Subculture",
+      "roles": [
+        "court",
+        "table"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json",
+        "data/culture-ontology.json"
+      ],
+      "public_surfaces": [
+        "culture"
+      ],
+      "note": "Reader court joining artifacts, practices, formations, infrastructure, power and memory while canonical Culture Rooms retain ownership."
+    },
+    {
+      "id": "view-law",
+      "title": "Law & Justice",
+      "roles": [
+        "view",
+        "table"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json",
+        "data/blueprints/law-regulation-blueprint.json"
+      ],
+      "public_surfaces": [
+        "law"
+      ],
+      "note": "Legal/institutional View over World, provenance, culture and research; legal source identity remains separate from project interpretation."
+    },
+    {
+      "id": "view-economy",
+      "title": "Economy & Finance",
+      "roles": [
+        "view",
+        "table"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json",
+        "knowledge/economics/stock-flow-obligation-network-atlas.json"
+      ],
+      "public_surfaces": [
+        "economy"
+      ],
+      "note": "Economic View over balance sheets, flows, obligations, public finance and dependencies."
+    },
+    {
+      "id": "view-spirit",
+      "title": "Spirit — Living Relation",
+      "roles": [
+        "view",
+        "bridge"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json",
+        "knowledge/spirit/spirit-context-atlas.json",
+        "knowledge/core/heaven-spirit-father.json"
+      ],
+      "public_surfaces": [
+        "spirit"
+      ],
+      "note": "Center-native relational View connecting theology, body comparison and systems language without creating a separate Spirit Room."
+    },
+    {
+      "id": "court-life-body",
+      "title": "Life & Body",
+      "roles": [
+        "court",
+        "bridge"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json",
+        "knowledge/body/body-system-master-atlas.json"
+      ],
+      "public_surfaces": [
+        "life-body"
+      ],
+      "note": "Organism/embodiment court joining literal biology, neurobiology, whole-body physiology and symbolic comparison through explicit evidence boundaries."
     }
   ],
   "unresolved_candidates": [

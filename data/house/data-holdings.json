@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.4.0",
+  "updated": "2026-09-19",
   "authority": "house-data-holdings",
   "principle": "Data holdings are grouped datasets, ledgers, registries or contracts with one primary Room owner. Secondary Rooms may consume them without becoming co-owners. Runtime/render/config artifacts may remain unbundled when they are implementation rather than knowledge.",
   "bundles": [
@@ -18,7 +18,6 @@
         "data/backend-coverage-map.json",
         "data/repository-spine.json",
         "data/repository-scale.json",
-        "data/root-navigation.json",
         "data/project-workflow.json",
         "data/atlas-checklist.json",
         "data/atlas-entity-trace-contract.json",
@@ -34,7 +33,7 @@
       ],
       "kind": "governance-registry",
       "purpose": "House registries, topology, coverage, manifests, routing and repository-maintenance contracts.",
-      "file_count": 48,
+      "file_count": 49,
       "source_files": [
         "data/house/architectural-vocabulary.json",
         "data/house/collections.json",
@@ -55,7 +54,6 @@
         "data/backend-coverage-map.json",
         "data/repository-spine.json",
         "data/repository-scale.json",
-        "data/root-navigation.json",
         "data/project-workflow.json",
         "data/atlas-checklist.json",
         "data/atlas-entity-trace-contract.json",
@@ -83,7 +81,9 @@
         "data/house/providence-pillars-esoteric-structure.json",
         "data/house/history-canon-revision-protocol.json",
         "data/house/works-fruit-contract.json",
-        "data/house/local-center-interface-patterns.json"
+        "data/house/local-center-interface-patterns.json",
+        "data/house/legacy-modern-public-integration-contract.json",
+        "data/house/specialist-subviews.json"
       ],
       "featured_files": [
         "data/house/project-synthesis.json",
@@ -95,7 +95,12 @@
         "data/house/navigation-manifest.json",
         "data/house/room-dossiers.json",
         "data/house/concept-topology.json",
-        "data/house/holdings.json"
+        "data/house/holdings.json",
+        "data/house/legacy-modern-public-integration-contract.json",
+        "data/house/specialist-subviews.json"
+      ],
+      "historical_donors": [
+        "data/root-navigation.json"
       ]
     },
     {
@@ -250,8 +255,6 @@
         "data/potatoism-cosmology.json",
         "data/potatoism-celestial-layer.json",
         "data/potatoism-planetary-cosmology.json",
-        "data/potatoism-deep-architecture.json",
-        "data/potatoism-deep-layers.json",
         "data/potatoism-deep-extrapolation-atlas.json",
         "data/spiritual-architecture.json",
         "data/tim-dooley-cosmology.json",
@@ -259,14 +262,12 @@
         "data/potatoism-vesica-coupling-atlas.json"
       ],
       "kind": "project-cosmology",
-      "purpose": "Internal cosmology and deep symbolic architecture, explicitly separate from empirical physical cosmology.",
-      "file_count": 10,
+      "purpose": "Internal cosmology and symbolic architecture routed through current specialist owners; early all-in-one deep files are retained only as historical donors.",
+      "file_count": 8,
       "source_files": [
         "data/potatoism-cosmology.json",
         "data/potatoism-celestial-layer.json",
         "data/potatoism-planetary-cosmology.json",
-        "data/potatoism-deep-architecture.json",
-        "data/potatoism-deep-layers.json",
         "data/potatoism-deep-extrapolation-atlas.json",
         "data/spiritual-architecture.json",
         "data/tim-dooley-cosmology.json",
@@ -277,11 +278,21 @@
         "data/potatoism-cosmology.json",
         "data/potatoism-celestial-layer.json",
         "data/potatoism-planetary-cosmology.json",
-        "data/potatoism-deep-architecture.json",
-        "data/potatoism-deep-layers.json",
         "data/potatoism-deep-extrapolation-atlas.json",
         "data/spiritual-architecture.json",
         "data/tim-dooley-cosmology.json"
+      ],
+      "historical_donors": [
+        "data/potatoism-deep-architecture.json",
+        "data/potatoism-deep-layers.json"
+      ],
+      "canonical_depth_routes": [
+        "knowledge/core/potatoverse-master-framework.json",
+        "knowledge/core/potato-of-life-deep-structure.json",
+        "knowledge/core/deep-element-definition-atlas.json",
+        "knowledge/core/door-topology-access-and-capability-atlas.json",
+        "knowledge/core/tree-branching-pruning-atlas.json",
+        "knowledge/spirit/spirit-context-atlas.json"
       ]
     },
     {
@@ -587,24 +598,6 @@
         "data/world-map-spatial-measurements.json",
         "data/world-map-spatial-overlays.json",
         "data/world-africa-regional-systems.json",
-        "data/country-enrichment-batch-2026-09-07-02.json",
-        "data/country-enrichment-batch-2026-09-07-03.json",
-        "data/country-enrichment-batch-2026-09-07-04.json",
-        "data/country-enrichment-batch-2026-09-07-05.json",
-        "data/country-enrichment-batch-2026-09-07-06.json",
-        "data/country-enrichment-batch-2026-09-07-07.json",
-        "data/country-enrichment-batch-2026-09-07-08.json",
-        "data/country-enrichment-batch-2026-09-07-09.json",
-        "data/country-enrichment-batch-2026-09-07-10.json",
-        "data/country-nodes-batch-2026-09-07-02.json",
-        "data/country-nodes-batch-2026-09-07-03.json",
-        "data/country-nodes-batch-2026-09-07-04.json",
-        "data/country-nodes-batch-2026-09-07-05.json",
-        "data/country-nodes-batch-2026-09-07-06.json",
-        "data/country-nodes-batch-2026-09-07-07.json",
-        "data/country-nodes-batch-2026-09-07-08.json",
-        "data/country-nodes-batch-2026-09-07-09.json",
-        "data/country-nodes-batch-2026-09-07-10.json",
         "data/world-map-entities.json",
         "data/world-map-gateways.json",
         "data/world-map-physical-layers.json",
@@ -613,8 +606,8 @@
         "data/world-map-system-intelligence-registry.json"
       ],
       "kind": "geographic-dataset",
-      "purpose": "Ordinary geography, country entities, subdivisions, enrichment batches and measured spatial context.",
-      "file_count": 235,
+      "purpose": "Canonical country records, consolidated country graph/atlas projections and geographic/spatial support data. September 7 batch-stage enrichment/node files are retired migration inputs and are not active holdings.",
+      "file_count": 217,
       "source_files": [
         "data/countries/afghanistan.json",
         "data/countries/albania.json",
@@ -827,24 +820,6 @@
         "data/world-map-spatial-measurements.json",
         "data/world-map-spatial-overlays.json",
         "data/world-africa-regional-systems.json",
-        "data/country-enrichment-batch-2026-09-07-02.json",
-        "data/country-enrichment-batch-2026-09-07-03.json",
-        "data/country-enrichment-batch-2026-09-07-04.json",
-        "data/country-enrichment-batch-2026-09-07-05.json",
-        "data/country-enrichment-batch-2026-09-07-06.json",
-        "data/country-enrichment-batch-2026-09-07-07.json",
-        "data/country-enrichment-batch-2026-09-07-08.json",
-        "data/country-enrichment-batch-2026-09-07-09.json",
-        "data/country-enrichment-batch-2026-09-07-10.json",
-        "data/country-nodes-batch-2026-09-07-02.json",
-        "data/country-nodes-batch-2026-09-07-03.json",
-        "data/country-nodes-batch-2026-09-07-04.json",
-        "data/country-nodes-batch-2026-09-07-05.json",
-        "data/country-nodes-batch-2026-09-07-06.json",
-        "data/country-nodes-batch-2026-09-07-07.json",
-        "data/country-nodes-batch-2026-09-07-08.json",
-        "data/country-nodes-batch-2026-09-07-09.json",
-        "data/country-nodes-batch-2026-09-07-10.json",
         "data/world-map-entities.json",
         "data/world-map-gateways.json",
         "data/world-map-physical-layers.json",
@@ -861,6 +836,10 @@
         "data/countries/antigua-and-barbuda.json",
         "data/countries/argentina.json",
         "data/countries/armenia.json"
+      ],
+      "retired_inputs": [
+        "data/country-enrichment-batch-*.json",
+        "data/country-nodes-batch-*.json"
       ]
     },
     {
@@ -1288,15 +1267,11 @@
         "data/atlas-multiplication-registry.json",
         "data/expansion-registry.json",
         "data/expansions/",
-        "data/potatoism-research-expansion.json",
-        "data/potatoverse-alternative-directions.json",
-        "data/potatoverse-alternative-links.json",
-        "data/potatoverse-deep-links.json",
-        "data/potatoverse-deep-research.json"
+        "data/potatoism-research-expansion.json"
       ],
       "kind": "research-frontier-data",
       "purpose": "Open questions, expansion waves, alternative directions, research roadmaps and frontier state.",
-      "file_count": 28,
+      "file_count": 24,
       "source_files": [
         "data/research-frontier.json",
         "data/research.json",
@@ -1321,11 +1296,7 @@
         "data/expansions/trajectory-topology-standard-model-spin-wave-013.json",
         "data/expansions/wave-009.json",
         "data/expansions/worldview-politics-culture-movement-field-wave-020.json",
-        "data/potatoism-research-expansion.json",
-        "data/potatoverse-alternative-directions.json",
-        "data/potatoverse-alternative-links.json",
-        "data/potatoverse-deep-links.json",
-        "data/potatoverse-deep-research.json"
+        "data/potatoism-research-expansion.json"
       ],
       "featured_files": [
         "data/research-frontier.json",
@@ -1336,6 +1307,12 @@
         "data/potato-research-roadmap.json",
         "data/atlas-expansion-matrix.json",
         "data/atlas-multiplication-registry.json"
+      ],
+      "retired_inputs": [
+        "data/potatoverse-alternative-directions.json",
+        "data/potatoverse-alternative-links.json",
+        "data/potatoverse-deep-research.json",
+        "data/potatoverse-deep-links.json"
       ]
     },
     {
@@ -1401,11 +1378,11 @@
     }
   ],
   "summary": {
-    "total_data_files": 543,
-    "bundled_data_files": 537,
+    "total_data_files": 545,
+    "bundled_data_files": 539,
     "unbundled_data_files": 6,
     "bundle_count": 25,
-    "total_files": 553
+    "total_files": 555
   },
   "unbundled_paths": [
     "data/bulk-data-reservoirs.json",

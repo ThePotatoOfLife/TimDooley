@@ -108,24 +108,33 @@ def main() -> int:
     north = read("north/index.html", errors)
     world = read("world-map/index.html", errors)
 
-    # Home: exactly five primary doors, each carrying two questions.
+    # Home: current teaching architecture is Center → House → Rooms → Views,
+    # followed by exactly five public subject Doors and separate cross-cutting Views.
     require(home, 'data-reader-surface="home"', "index.html", errors)
     require(home, 'class="project-purpose"', "index.html", errors)
-    require(home, 'class="secondary-threads"', "index.html", errors)
-    nav = re.search(r'<nav class="sections"[^>]*>(.*?)</nav>', home, flags=re.I | re.S)
+    require(home, 'class="project-spine"', "index.html", errors)
+    require(home, 'id="learn-the-structure"', "index.html", errors)
+    require(home, 'class="public-doors"', "index.html", errors)
+    require(home, 'id="cross-cutting-views"', "index.html", errors)
+    require(home, 'class="archive-links"', "index.html", errors)
+    spine = re.search(r'<nav class="project-spine"[^>]*>(.*?)</nav>', home, flags=re.I | re.S)
+    if not spine:
+        errors.append("index.html missing current project spine")
+    else:
+        for href in ("potato-of-life/", "house/", "rooms/", "explore/"):
+            if f'href="{href}"' not in spine.group(1) and f"href='{href}'" not in spine.group(1):
+                errors.append(f"homepage project spine missing {href}")
+    nav = re.search(r'<nav class="public-doors"[^>]*>(.*?)</nav>', home, flags=re.I | re.S)
     if not nav:
-        errors.append("index.html missing canonical sections navigation")
+        errors.append("index.html missing canonical public Doors navigation")
     else:
         hrefs = re.findall(r'href=["\']([^"\']+)["\']', nav.group(1))
         expected = [href for href, _ in PRIMARY]
         if hrefs != expected:
-            errors.append(f"homepage primary navigation must contain exactly five doors in order; found {hrefs}")
+            errors.append(f"homepage public Doors must contain exactly five routes in order; found {hrefs}")
         for href, label in PRIMARY:
-            match = re.search(rf'<a\b[^>]*href=["\']{re.escape(href)}["\'][^>]*>(.*?)</a>', nav.group(1), flags=re.I | re.S)
-            if not match:
-                errors.append(f"homepage missing primary door {label}")
-            elif question_count(match.group(1)) < 2:
-                errors.append(f"homepage door {label} must preview at least two natural questions")
+            if not re.search(rf'<a\b[^>]*href=["\']{re.escape(href)}["\']', nav.group(1), flags=re.I | re.S):
+                errors.append(f"homepage missing public Door {label}")
     footer = re.search(r'<footer\b[^>]*>(.*?)</footer>', home, flags=re.I | re.S)
     if footer and 'timeline/' in footer.group(1).lower():
         errors.append("homepage footer must not treat Timeline as utility navigation")

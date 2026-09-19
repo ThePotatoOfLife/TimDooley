@@ -12,6 +12,7 @@ LEDGER_PATH = ROOT / "knowledge" / "culture" / "concrete-culture-source-ledger.j
 SITE_CULTURE = ROOT / "_site" / "context" / "culture" / "index.html"
 ANCHOR = "<h2>Culture is multidimensional</h2>"
 FIELD_MARKER = 'data-culture-field="concrete-culture-field"'
+GROUNDING_MARKER_PREFIX = 'data-culture-grounding="'
 
 
 def _load_json(path: Path) -> dict:
@@ -127,6 +128,95 @@ def _pathway_card(record: dict, sources: dict[str, dict]) -> str:
         + _source_links(record.get("source_refs", []), sources)
         + '</article>'
     )
+
+
+def _find_record(atlas: dict, object_type: str, object_id: str) -> dict:
+    collection_map = {
+        "formation": "formations",
+        "human_case": "human_cases",
+        "event": "events",
+        "flow": "flows",
+        "relationship": "relationships",
+        "pathway": "pathways",
+    }
+    collection = collection_map.get(object_type)
+    if not collection:
+        return {}
+    for record in atlas.get(collection, []):
+        if isinstance(record, dict) and record.get("id") == object_id:
+            return record
+    return {}
+
+
+def _grounding_card(card: dict, atlas: dict, sources: dict[str, dict]) -> str:
+    record = _find_record(atlas, card.get("object_type", ""), card.get("object_id", ""))
+    if not record:
+        return ""
+    label = card.get("label") or record.get("name") or record.get("display_name") or record.get("id")
+    body = [
+        '<article class="card culture-grounding-card">',
+        f'<strong>{_esc(label)}</strong>',
+        f'<p>{_esc(card.get("point", ""))}</p>',
+    ]
+    fields = card.get("fields", [])
+    if isinstance(fields, list):
+        for field in fields:
+            value = record.get(field)
+            if not value:
+                continue
+            if isinstance(value, dict):
+                value = " · ".join(f"{key}: {val}" for key, val in value.items())
+            elif isinstance(value, list):
+                value = " · ".join(str(item) for item in value)
+            field_label = str(field).replace("_", " ").title()
+            body.append(f'<p class="mini"><strong>{_esc(field_label)}:</strong> {_esc(value)}</p>')
+    if card.get("object_type") == "human_case":
+        path = record.get("network_path", [])
+        if isinstance(path, list) and path:
+            body.append('<div class="chain">' + " → ".join(_esc(step) for step in path) + '</div>')
+    elif card.get("object_type") == "pathway":
+        steps = record.get("steps", [])
+        if isinstance(steps, list) and steps:
+            body.append('<div class="chain">' + " → ".join(_esc(step) for step in steps) + '</div>')
+    body.append(_source_links(record.get("source_refs", []), sources))
+    body.append('</article>')
+    return "".join(body)
+
+
+def render_topic_grounding(grounding: dict, atlas: dict, sources: dict[str, dict]) -> str:
+    gid = grounding.get("id", "topic")
+    cards = "".join(
+        _grounding_card(card, atlas, sources)
+        for card in grounding.get("cards", [])
+        if isinstance(card, dict)
+    )
+    return (
+        f'<section data-culture-grounding="{_esc(gid)}" class="culture-grounding">'
+        f'<h2>{_esc(grounding.get("title", "Concrete cases"))}</h2>'
+        f'<p>{_esc(grounding.get("summary", ""))}</p>'
+        f'<div class="cards">{cards}</div>'
+        '</section>'
+    )
+
+
+def inject_topic_groundings(page_html: str, atlas: dict, sources: dict[str, dict]) -> str:
+    updated = page_html
+    for grounding in atlas.get("topic_groundings", []):
+        if not isinstance(grounding, dict):
+            continue
+        gid = grounding.get("id")
+        anchor_title = grounding.get("anchor_before")
+        if not gid or not anchor_title:
+            continue
+        marker = f'data-culture-grounding="{gid}"'
+        if marker in updated:
+            continue
+        anchor = f"<h2>{anchor_title}</h2>"
+        if anchor not in updated:
+            raise SystemExit(f"Culture grounding anchor missing: {anchor_title}")
+        rendered = render_topic_grounding(grounding, atlas, sources)
+        updated = updated.replace(anchor, rendered + anchor, 1)
+    return updated
 
 
 def render_concrete_culture_field(atlas: dict, sources: dict[str, dict]) -> str:
@@ -265,7 +355,8 @@ def project_culture_field() -> None:
     sources = load_sources()
     page = SITE_CULTURE.read_text(encoding="utf-8", errors="replace")
     rendered = render_concrete_culture_field(atlas, sources)
-    updated = inject_concrete_culture_field(page, rendered)
+    updated = inject_topic_groundings(page, atlas, sources)
+    updated = inject_concrete_culture_field(updated, rendered)
     if updated != page:
         SITE_CULTURE.write_text(updated, encoding="utf-8")
 

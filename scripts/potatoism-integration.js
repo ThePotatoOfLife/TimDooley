@@ -2,7 +2,9 @@
 export async function loadPotatoismLayers(base = '.') {
   const files = {
     integration: 'data/potatoism-integration.json',
-    deep: 'data/potatoism-deep-layers.json',
+    registry: 'data/potatoism-concept-registry.json',
+    dossiers: 'data/potatoism-dossiers.json',
+    canon: 'data/potatoism-canonical-corpus.json',
     glossary: 'data/potatoism-glossary.json',
     observations: 'data/potatoism-public-observations.json',
     events: 'data/potatoism-event-and-relation-atlas.json',

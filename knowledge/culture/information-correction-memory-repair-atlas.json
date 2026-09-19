@@ -1,0 +1,208 @@
+{
+  "id": "information-correction-memory-repair-atlas",
+  "title": "Information Correction, Memory Repair & Revision Atlas",
+  "version": "1.1.0",
+  "updated": "2026-09-19",
+  "owner_room": "information-ecology",
+  "purpose": "Model how an information ecosystem discovers error, propagates correction, links revisions to old records and restores context without erasing history.",
+  "correction_pipeline": [
+    "error_or_dispute_detected",
+    "claim_and_source_identified",
+    "evidence_compared",
+    "correction_or_status_change_authored",
+    "original_record_linked",
+    "downstream_derivatives_notified_or_updated_where_possible",
+    "search_and_archive_visibility_checked",
+    "later_recurrence_monitored"
+  ],
+  "correction_types": [
+    {
+      "id": "factual-correction",
+      "meaning": "A stated fact is changed because stronger evidence shows it was wrong."
+    },
+    {
+      "id": "precision-upgrade",
+      "meaning": "Date, amount, identity, wording or scope becomes more exact without reversing the core claim."
+    },
+    {
+      "id": "context-restoration",
+      "meaning": "The original fragment remains accurate but missing context materially changes interpretation."
+    },
+    {
+      "id": "status-change",
+      "meaning": "An allegation, investigation, case, designation or scientific claim changes procedural/evidentiary status."
+    },
+    {
+      "id": "interpretive-revision",
+      "meaning": "The facts remain but the archive's synthesis changes."
+    },
+    {
+      "id": "retraction_or_withdrawal",
+      "meaning": "A source/owner withdraws a claim or analysis."
+    },
+    {
+      "id": "supersession",
+      "meaning": "A newer record replaces an older operational version while preserving historical lineage."
+    }
+  ],
+  "repair_metrics": [
+    {
+      "id": "correction_latency",
+      "definition": "Time from credible error detection to published correction."
+    },
+    {
+      "id": "linkage_rate",
+      "definition": "Share of old public records that visibly link to the correction/revision."
+    },
+    {
+      "id": "audience_overlap",
+      "definition": "Estimated overlap between people exposed to the original and correction."
+    },
+    {
+      "id": "retrieval_parity",
+      "definition": "Whether search/retrieval surfaces expose correction about as readily as the original."
+    },
+    {
+      "id": "archive_integrity",
+      "definition": "Whether both original and corrected states remain reconstructable."
+    },
+    {
+      "id": "derivative_update_rate",
+      "definition": "How many downstream copies/summaries are revised or annotated."
+    },
+    {
+      "id": "recurrence_rate",
+      "definition": "How often the obsolete claim continues appearing after correction."
+    }
+  ],
+  "memory_states": [
+    {
+      "id": "live-current",
+      "meaning": "Current best-supported representation."
+    },
+    {
+      "id": "historical-valid",
+      "meaning": "Accurate description of an earlier state that is no longer current."
+    },
+    {
+      "id": "historical-corrected",
+      "meaning": "Preserved earlier claim known to be wrong/incomplete, clearly annotated."
+    },
+    {
+      "id": "contested",
+      "meaning": "Meaningful dispute remains unresolved."
+    },
+    {
+      "id": "superseded",
+      "meaning": "Operationally replaced by a newer representation."
+    },
+    {
+      "id": "orphaned",
+      "meaning": "Record persists without adequate provenance/context linkage."
+    }
+  ],
+  "repair_design_rules": [
+    "Never delete history merely to make the current version look consistent.",
+    "Corrections should travel through the same discovery surfaces as adverse/original claims where feasible.",
+    "Search results and summaries should prefer current status while exposing historical state.",
+    "A corrected label should not persist indefinitely as unqualified identity.",
+    "Archive annotations should distinguish source correction from project reinterpretation.",
+    "Disputed claims should retain the dispute rather than be silently normalized into certainty."
+  ],
+  "joins": [
+    "information-ecology-mechanics-atlas",
+    "provenance-chain-of-custody-atlas",
+    "memory-recovery",
+    "internet-platforms",
+    "archive-epistemics",
+    "interpretive-justice"
+  ],
+  "concrete_cases": [
+    {
+      "id": "mediawiki-revision-history",
+      "system": "MediaWiki",
+      "case_type": "versioned memory / reversible public history",
+      "mechanism": "Each edit creates a revision with identifiers, timestamps and metadata; users can inspect specific versions and compare revisions. Page moves preserve revision history.",
+      "repair_properties": [
+        "historical states remain addressable",
+        "current and prior versions can be compared",
+        "reverts create a new state rather than pretending the prior state never existed",
+        "visibility controls can restrict some deleted revision content"
+      ],
+      "maps_to_metrics": [
+        "archive_integrity",
+        "linkage_rate",
+        "retrieval_parity"
+      ],
+      "lesson": "A correction-friendly archive separates current truth/status from recoverable historical state.",
+      "sources": [
+        "https://www.mediawiki.org/wiki/Manual:Revision",
+        "https://www.mediawiki.org/wiki/Help:History"
+      ]
+    },
+    {
+      "id": "crossmark-linked-update",
+      "system": "Crossref Crossmark",
+      "case_type": "correction/retraction linkage in scholarly records",
+      "mechanism": "Publishers can register editorially significant corrections, retractions and other updates as linked records; Crossmark exposes current status and update metadata to readers, including from PDFs when implemented.",
+      "repair_properties": [
+        "original publication remains identifiable",
+        "update/retraction receives its own persistent record",
+        "metadata links the updating record to the affected record",
+        "current status can be exposed at retrieval time"
+      ],
+      "maps_to_metrics": [
+        "linkage_rate",
+        "archive_integrity",
+        "retrieval_parity",
+        "correction_latency"
+      ],
+      "lesson": "Memory repair can preserve the original while making changed status machine-readable and discoverable.",
+      "sources": [
+        "https://www.crossref.org/services/crossmark/",
+        "https://www.crossref.org/documentation/register-maintain-records/maintaining-your-metadata/registering-updates/",
+        "https://www.crossref.org/documentation/principles-practices/best-practices/versioning"
+      ]
+    },
+    {
+      "id": "youtube-appeal-reinstatement",
+      "system": "YouTube",
+      "case_type": "platform status correction / moderation reversal",
+      "mechanism": "Creators are notified of many Community Guidelines removals/restrictions and can appeal; YouTube states an appeal triggers re-review and can result in an upheld or reversed decision, with appeals and reinstatements represented in its enforcement reporting.",
+      "repair_properties": [
+        "adverse platform status can be challenged",
+        "decision can be reversed",
+        "creator receives a follow-up result",
+        "reporting can expose aggregate appeals/reinstatements"
+      ],
+      "maps_to_metrics": [
+        "correction_latency",
+        "recurrence_rate",
+        "archive_integrity"
+      ],
+      "lesson": "A platform correction system needs both reversal mechanics and visibility of the corrected status; an appeal channel alone does not guarantee retrieval parity for everyone who saw the original action.",
+      "sources": [
+        "https://support.google.com/transparencyreport/answer/9209072",
+        "https://support.google.com/youtube/answer/185111"
+      ]
+    }
+  ],
+  "design_patterns": [
+    {
+      "id": "append-not-overwrite",
+      "rule": "For materially significant changes, preserve the prior state and add a linked new state rather than silently overwriting history."
+    },
+    {
+      "id": "bidirectional-status-linkage",
+      "rule": "A correction/retraction should be discoverable from the original record and the update should identify exactly what it changes."
+    },
+    {
+      "id": "current-first-history-visible",
+      "rule": "Default retrieval should expose current status while keeping historical state reconstructable."
+    },
+    {
+      "id": "same-channel-repair",
+      "rule": "Where feasible, corrections should propagate through the same discovery surfaces that carried the original claim or sanction."
+    }
+  ]
+}
