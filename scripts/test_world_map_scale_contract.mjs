@@ -6,6 +6,8 @@ const contract = JSON.parse(fs.readFileSync(new URL('../data/world-map-scale-con
 const scale = createScaleRuntime(contract);
 const lifecycle = fs.readFileSync(new URL('../world-map/3d-panel-lifecycle.js', import.meta.url), 'utf8');
 const app = fs.readFileSync(new URL('../world-map/3d-app.js', import.meta.url), 'utf8');
+const water = fs.readFileSync(new URL('../world-map/3d-physical-water.js', import.meta.url), 'utf8');
+const hydrology = fs.readFileSync(new URL('../world-map/3d-physical-hydrology.js', import.meta.url), 'utf8');
 
 assert.equal(scale.bandForZoom(0), 'world');
 assert.equal(scale.bandForZoom(2.6), 'macro-region');
@@ -27,6 +29,8 @@ assert.equal(scale.threshold('country-hubs', 'label'), 4.0);
 assert.equal(scale.threshold('semantic-interior', 'render'), 3.6);
 assert.equal(scale.threshold('semantic-interior', 'label'), 4.6);
 assert.equal(scale.threshold('country-relations', 'render'), 2.0);
+assert.equal(scale.threshold('physical-water-detail', 'render'), 3.4);
+assert.equal(scale.threshold('hydrology', 'load'), 4.0);
 
 // Raw lookup reports the mathematical band without memory.
 assert.equal(scale.bandForZoom(4.21), 'country');
@@ -68,5 +72,9 @@ for (const token of [
 for (const legacy of ['minzoom:3.2','minzoom:3.6','minzoom:4.6','map.getZoom()<3.2']) {
   assert.ok(!app.includes(legacy), `core renderer must not retain raw browsing threshold: ${legacy}`);
 }
+assert.ok(water.includes("scaleRuntime.threshold('physical-water-detail', 'render')"));
+assert.ok(!water.includes('const DETAIL_ZOOM = 3.4'));
+assert.ok(hydrology.includes("scaleRuntime.threshold('hydrology', 'load')"));
+assert.ok(!hydrology.includes('const MIN_ZOOM = 4'));
 
 console.log('WORLD MAP SCALE CONTRACT REGRESSION PASSED');
