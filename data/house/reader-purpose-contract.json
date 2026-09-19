@@ -1,0 +1,220 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-19",
+  "authority": "house-reader-purpose-contract",
+  "purpose": "Give every public page a higher-order job inside one discovery-and-repair system. Pages are not topic bins; each should transform abstract subject matter into inspectable relations, evidence, consequences and usable next capability without becoming a second canonical data owner.",
+  "master_thesis": "The House exists to make consequential relationships visible enough to understand, test and improve. Each reader page should reduce abstraction, preserve provenance and leave the reader with more independent capability than they had on entry.",
+  "reader_journey": [
+    {
+      "id": "orient",
+      "question": "What is this domain, and what is not being claimed?",
+      "required_output": [
+        "scope",
+        "boundary",
+        "current owner/routes"
+      ]
+    },
+    {
+      "id": "populate",
+      "question": "Who or what is actually here?",
+      "required_output": [
+        "named entities, cases, artifacts, events or records",
+        "time/place/status where relevant"
+      ]
+    },
+    {
+      "id": "relate",
+      "question": "How are the things connected?",
+      "required_output": [
+        "typed relations",
+        "direction",
+        "counterparties",
+        "dependency/control/ownership distinctions where relevant"
+      ]
+    },
+    {
+      "id": "flow",
+      "question": "What actually moves through the system?",
+      "required_output": [
+        "money, goods, energy, information, people, authority, attention, care, risk or other domain-appropriate flows",
+        "units/periods where measurable"
+      ]
+    },
+    {
+      "id": "genealogy",
+      "question": "How did this state come to exist and change?",
+      "required_output": [
+        "sequence",
+        "formation history",
+        "version/change points",
+        "earlier and later states"
+      ]
+    },
+    {
+      "id": "evidence",
+      "question": "How do we know, and what would change our mind?",
+      "required_output": [
+        "source/provenance",
+        "claim status",
+        "counterevidence or uncertainty",
+        "revision path"
+      ]
+    },
+    {
+      "id": "mechanism",
+      "question": "What process explains the observed relation or outcome?",
+      "required_output": [
+        "mechanism",
+        "constraints",
+        "feedback/failure modes",
+        "competing explanation where useful"
+      ]
+    },
+    {
+      "id": "consequence",
+      "question": "What changes downstream?",
+      "required_output": [
+        "beneficiaries/affected parties",
+        "intended and unintended effects",
+        "persistence/externalities",
+        "Fruit test"
+      ]
+    },
+    {
+      "id": "capability",
+      "question": "What can a reader, institution or system now do better because this page exists?",
+      "required_output": [
+        "decision aid, test, comparison, repair path, preservation path, research question or reusable blueprint",
+        "next Door"
+      ]
+    }
+  ],
+  "project_law": "A page is not mature merely because it names many concepts. It becomes mature when a reader can traverse from definition to concrete object, from object to relation, from relation to evidence and mechanism, and from mechanism to consequence or useful capability.",
+  "population_rule": "Abstract sections should receive nearby concrete groundings from canonical owners. Prefer 2–6 contrastive cases over long unsourced prose. Concrete does not mean more cards; it means inspectable objects, dates, quantities, relations, mechanisms and sources.",
+  "repair_rule": "Repair is not mandatory advocacy. It can mean correction, stronger measurement, better provenance, clearer boundaries, redundancy, portability, preserved memory, reduced dependency, restored agency, safer procedure or a better test. The domain determines the appropriate form.",
+  "rare_value_rule": "Prominence should go to relations or mechanisms that ordinary browsing leaves fragmented: surprising bridges, hidden dependencies, contradictions, change over time, disconfirming cases, or practical consequences.",
+  "page_missions": [
+    {
+      "surface": "potato-of-life",
+      "mission": "Integrate the whole project into reusable operators and tests.",
+      "unique_question": "What general pattern can travel across domains without erasing domain differences?",
+      "fruit": "portable interpretive and analytical tools"
+    },
+    {
+      "surface": "house",
+      "mission": "Orient the reader through ownership, Rooms, routes and lifecycle.",
+      "unique_question": "Where does this knowledge belong, who owns it, and where should the reader go next?",
+      "fruit": "navigable knowledge custody"
+    },
+    {
+      "surface": "culture",
+      "mission": "Show how repeated interaction becomes shared meaning, roles, memory, infrastructure, control or correction.",
+      "unique_question": "How does a social formation reproduce itself, and what keeps or changes its inherited frame?",
+      "fruit": "better interpretation of communities, narratives, platforms and social memory"
+    },
+    {
+      "surface": "economy",
+      "mission": "Show how resources, claims, ownership, obligations, prices and productive capability move through linked balance sheets and networks.",
+      "unique_question": "Who owes, owns, funds, supplies, depends on or bears risk from whom—and on what time scale?",
+      "fruit": "clearer financial/system tradeoffs and dependency visibility"
+    },
+    {
+      "surface": "world-systems",
+      "mission": "Show how countries, institutions, infrastructure and dependencies combine into real capability or vulnerability.",
+      "unique_question": "What capability exists because relationships exist, and what breaks when a dependency fails?",
+      "fruit": "system-level resilience and intervention maps"
+    },
+    {
+      "surface": "world-map",
+      "mission": "Make relational world knowledge spatially inspectable.",
+      "unique_question": "Where are the actors, assets, routes, chokepoints and cross-border relations?",
+      "fruit": "geographic situational awareness"
+    },
+    {
+      "surface": "politics",
+      "mission": "Show how collective choices become proposals, authority, negotiation, implementation and review.",
+      "unique_question": "Which institution can actually decide or change what, through which procedure?",
+      "fruit": "procedural civic understanding without political ranking"
+    },
+    {
+      "surface": "law",
+      "mission": "Translate disputes and obligations into jurisdiction, rights, duties, procedure, evidence status and enforceable outcomes.",
+      "unique_question": "What is legally established, alleged, permitted, required or unresolved—and by which authority?",
+      "fruit": "less category error between accusation, policy, law and adjudication"
+    },
+    {
+      "surface": "science",
+      "mission": "Turn analogies and models into discriminating tests.",
+      "unique_question": "What observation would distinguish competing explanations or show that a model fails?",
+      "fruit": "testable knowledge and negative controls"
+    },
+    {
+      "surface": "religion",
+      "mission": "Compare traditions through their own texts, histories, institutions and practices before project-level interpretation.",
+      "unique_question": "What does this tradition actually say/do historically, and where does comparison stop?",
+      "fruit": "comparative understanding without false identity"
+    },
+    {
+      "surface": "history",
+      "mission": "Preserve sequence, change, inheritance and context.",
+      "unique_question": "How did the present state develop, and what changed along the way?",
+      "fruit": "genealogy instead of backdated final narratives"
+    },
+    {
+      "surface": "timeline",
+      "mission": "Anchor claims and transitions to dates and ordered events.",
+      "unique_question": "What happened when, and what was known or said before versus after?",
+      "fruit": "temporal discipline"
+    },
+    {
+      "surface": "sources",
+      "mission": "Make every important synthesis traversable back to evidence.",
+      "unique_question": "What is the source lineage, evidentiary class, contradiction and uncertainty?",
+      "fruit": "trust through inspectable provenance"
+    },
+    {
+      "surface": "below",
+      "mission": "Surface hidden, fragmented, adversarial or difficult-to-see systems without treating suspicion as proof.",
+      "unique_question": "What signal exists below ordinary visibility, and is it ready to rise into public knowledge?",
+      "fruit": "evidence-aware intelligence transformed through Forge rather than raw accusation"
+    },
+    {
+      "surface": "life-body",
+      "mission": "Show how living systems develop, regulate, adapt, fail and repair while separating biology from metaphor.",
+      "unique_question": "What real organism/process is changing, through what mechanism, and with what measurable function?",
+      "fruit": "embodied development and repair models"
+    },
+    {
+      "surface": "works",
+      "mission": "Turn integrated knowledge into artifacts others can experience, evaluate or reuse.",
+      "unique_question": "What does the project actually make, for whom, and what future capacity does it create?",
+      "fruit": "observable public consequence"
+    },
+    {
+      "surface": "research-lab",
+      "mission": "Hold uncertainty open long enough to test, connect and refine it.",
+      "unique_question": "What is still unknown, what is the next discriminating question, and what bridge might be worth testing?",
+      "fruit": "rare-value discovery and falsifiable next work"
+    }
+  ],
+  "local_page_contract": {
+    "minimum_questions": [
+      "What is actually here?",
+      "How does it work?",
+      "How do we know?",
+      "Why does it matter?",
+      "What changes next?"
+    ],
+    "maturity_test": "A reader should be able to leave the page with at least one corrected distinction, one concrete case they can inspect, one relation/mechanism they understand, and one next action/question/source path."
+  },
+  "anti_patterns": [
+    "topic noun followed by another topic noun with no concrete object",
+    "large taxonomies with no cases, measurements or source paths",
+    "facts with no explanation of why the relation matters",
+    "repair language without an observable problem or affected capability",
+    "recommendations that outrun evidence",
+    "symbolic analogy presented as empirical mechanism",
+    "reader prose silently becoming canonical data ownership",
+    "more detail that does not increase understanding, testability or agency"
+  ]
+}
