@@ -1,6 +1,6 @@
 {
   "id": "world-map-scale-contract",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-19",
   "status": "active-runtime-contract",
   "purpose": "Centralize World Map camera-scale vocabulary and capability thresholds so data loading, rendering, labels and interaction do not invent independent zoom semantics.",
@@ -62,6 +62,18 @@
       "render": 2,
       "label": 2,
       "interact": 2
+    },
+    "physical-water-detail": {
+      "load": 3.4,
+      "render": 3.4,
+      "label": 3.4,
+      "interact": 3.4
+    },
+    "hydrology": {
+      "load": 4,
+      "render": 4,
+      "label": 4,
+      "interact": 4
     }
   },
   "semantics": {
@@ -70,5 +82,5 @@
     "label": "Text labels may become visible.",
     "interact": "A feature may become a hover/click target."
   },
-  "migration_note": "Subdivision and detailed-place thresholds remain centralized; core country hubs, semantic interior navigation and country relationship visibility now also consume this contract. Remaining physical/fallback-capital thresholds are tracked for later migration."
+  "migration_note": "Core browsing, Places, subdivisions, Physical Water detail handoff and Hydrology activation now consume this contract. Remaining fallback-capital, Demography/Gateway label, and physical source-resolution limits are tracked separately."
 }
