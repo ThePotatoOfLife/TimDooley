@@ -43,7 +43,7 @@ def main() -> int:
     else:
         text = HYDRO.read_text(encoding="utf-8", errors="replace")
         for token in (
-            "MIN_ZOOM = 4",
+            "scaleRuntime.threshold('hydrology', 'load')",
             "Hydrobasins/FeatureServer/2/query",
             "Optimized_Hyrdo/FeatureServer/0/query",
             "geometryType=esriGeometryEnvelope",
