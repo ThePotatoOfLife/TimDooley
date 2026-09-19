@@ -74,8 +74,8 @@ def main() -> int:
     hover_index = bootstrap.find("await import(versionedModule('./3d-hover.js'))")
     if capture_index < 0 or hover_index < 0 or capture_index >= hover_index:
         errors.append("bootstrap must arm core interaction capture before the renderer boots")
-    router_index = bootstrap.find("loadAfterPaint('Interaction Router', './3d-interaction-router.js')")
-    country_index = bootstrap.find("loadAfterPaint('Country selection', './3d-country-selection.js')")
+    router_index = bootstrap.find("['Interaction Router', './3d-interaction-router.js']")
+    country_index = bootstrap.find("['Country selection', './3d-country-selection.js']")
     if router_index < 0 or country_index < 0 or router_index >= country_index:
         errors.append("bootstrap must load Interaction Router before canonical country selection")
 
