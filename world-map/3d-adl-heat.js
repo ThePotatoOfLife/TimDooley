@@ -146,7 +146,7 @@ function renderControls() {
       <option value="all">All incident types</option>
       ${types.map(type => `<option value="${esc(type)}"${type===selectedType?' selected':''}>${esc(type)}</option>`).join('')}
     </select>
-    <div class="boundary"><b>${fmt(filtered.features.length)} records shown</b><br>${esc(sourceStatusText())}<br>Counts are records in this ADL-derived snapshot, not a state hate/crime score.</div>
+    <div class="boundary"><b>${fmt(filtered.features.length)} records shown</b><br>${esc(sourceStatusText())}<br>Counts are records in this ADL-derived snapshot, not a general hate score or crime score.</div>
     <button type="button" data-adl-source>Source / methodology</button>`;
   surface.querySelector('[data-adl-year]')?.addEventListener('change', event => {
     selectedYear = event.target.value || 'all';
