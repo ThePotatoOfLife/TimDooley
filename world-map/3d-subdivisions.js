@@ -33,6 +33,7 @@ let pendingDeepLinkId = selectedId;
 let eventsBound = false;
 let useClock = 0;
 let activePartitions = [];
+const forcedPartitions = new Set();
 let activeBytes = 0;
 let runtimeBudget = { ...DEFAULT_RUNTIME_BUDGET };
 let cacheHits = 0;
@@ -215,6 +216,7 @@ function enforceCacheBudget(index, extraProtected = []) {
   const pendingPartition = partitionForId(index, pendingDeepLinkId);
   if (selectedPartition) protectedIds.add(selectedPartition);
   if (pendingPartition) protectedIds.add(pendingPartition);
+  for (const partition of forcedPartitions) protectedIds.add(partition);
   for (const partition of extraProtected) if (partition) protectedIds.add(partition);
 
   let bytes = cacheBytes();
@@ -368,10 +370,11 @@ function relevantCandidates(index) {
   return partitionEntries(index)
     .map(([partition, descriptor]) => {
       const bounds = descriptorBounds(partition, descriptor);
-      let priority = 2;
-      if (partition === pendingPartition) priority = 0;
-      else if (partition === selectedPartition) priority = 1;
-      if (priority === 2 && !viewportOverlaps(bounds)) return null;
+      let priority = 3;
+      if (forcedPartitions.has(partition)) priority = 0;
+      else if (partition === pendingPartition) priority = 1;
+      else if (partition === selectedPartition) priority = 2;
+      if (priority === 3 && !viewportOverlaps(bounds)) return null;
       return { partition, descriptor, priority, distance:distanceToMapCenterKm(bounds) };
     })
     .filter(Boolean)
@@ -465,6 +468,27 @@ window.__potatoAtlasSubdivisions = {
   },
   get selected() { return selectedId; },
   loadedPartitions() { return [...cache.keys()]; },
+  async retainPartition(partition) {
+    const key = String(partition || '').toUpperCase();
+    const index = await subdivisionIndex();
+    if (!index?.partitions?.[key]) return false;
+    forcedPartitions.add(key);
+    try {
+      await loadPartition(key);
+      await reconcileActive(index);
+      return true;
+    } catch (error) {
+      forcedPartitions.delete(key);
+      throw error;
+    }
+  },
+  async releasePartition(partition) {
+    const key = String(partition || '').toUpperCase();
+    forcedPartitions.delete(key);
+    const index = await subdivisionIndex();
+    await reconcileActive(index);
+    return true;
+  },
   async refresh() {
     const index = await subdivisionIndex();
     return reconcileActive(index);
@@ -475,6 +499,7 @@ window.__potatoAtlasSubdivisions = {
       renderedPartitions:[...activePartitions],
       renderedBytes:activeBytes,
       cachedPartitions:[...cache.keys()],
+      forcedPartitions:[...forcedPartitions],
       cacheBytes:cacheBytes(),
       cacheHits,
       cacheMisses,
