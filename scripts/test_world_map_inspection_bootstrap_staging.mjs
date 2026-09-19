@@ -17,6 +17,7 @@ for (const marker of [
   "await loadSpecialist('Impact Actions', './3d-impact-actions.js')",
   'await loadInspectionBasics();',
   'await loadInspectionContext();',
+  'await nextIdle(1200);',
   'await loadInspectionDeep();',
 ]) assert.ok(bootstrap.includes(marker), `inspection bootstrap missing marker: ${marker}`);
 
@@ -25,8 +26,8 @@ const promoteEnd = bootstrap.indexOf('let inspectionPromoted = false;', promoteS
 assert.ok(promoteStart >= 0 && promoteEnd > promoteStart, 'missing promoteInspection body');
 const promote = bootstrap.slice(promoteStart, promoteEnd);
 assert.ok(
-  /await loadInspectionBasics\(\);[\s\S]*await nextPaint\(\);[\s\S]*await loadInspectionContext\(\);[\s\S]*await nextPaint\(\);[\s\S]*await loadInspectionDeep\(\);/.test(promote),
-  'inspection promotion must yield a paint between basics, context and deep stages',
+  /await loadInspectionBasics\(\);[\s\S]*await nextPaint\(\);[\s\S]*await loadInspectionContext\(\);[\s\S]*await nextIdle\(1200\);[\s\S]*await loadInspectionDeep\(\);/.test(promote),
+  'inspection promotion must yield a paint before context and idle time before deep specialists',
 );
 
 console.log('WORLD MAP INSPECTION BOOTSTRAP STAGING REGRESSION PASSED');
