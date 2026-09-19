@@ -62,7 +62,17 @@ def normalize_place(row: dict[str, str], iso2_to_iso3: dict[str, str], refresh_d
     except (TypeError, ValueError):
         raw_population = 0
     population = raw_population if raw_population > 0 else None
-    aliases = [value.strip() for value in str(row.get("alternatenames") or "").split(",") if value.strip()]
+    aliases = []
+    seen_aliases: set[str] = set()
+    for value in str(row.get("alternatenames") or "").split(","):
+        alias = value.strip()
+        key = alias.casefold()
+        if not alias or key in seen_aliases:
+            continue
+        seen_aliases.add(key)
+        aliases.append(alias)
+        if len(aliases) >= 16:
+            break
     feature_code = str(row.get("feature_code") or "")
     national = feature_code == "PPLC"
     capital_status = "national" if national else ("admin" if feature_code.startswith("PPLA") else "none")
@@ -246,11 +256,21 @@ def write_geojson(path: Path, features: list[dict]) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
 
 
-def build_outputs(features: list[dict], out_dir: Path, refresh_date: str, selected: set[str] | None = None) -> None:
+def build_outputs(
+    features: list[dict],
+    out_dir: Path,
+    refresh_date: str,
+    selected: set[str] | None = None,
+    minimum_population: int = 0,
+) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     generated_features = [
         feature for feature in features
-        if not selected or feature["properties"]["country_iso3"] in selected
+        if (not selected or feature["properties"]["country_iso3"] in selected)
+        and (
+            feature["properties"].get("is_national_capital")
+            or int(feature["properties"].get("population") or 0) >= minimum_population
+        )
     ]
     major = choose_global_major(generated_features)
     major_path = out_dir / "global-major.geo.json"
@@ -270,6 +290,11 @@ def build_outputs(features: list[dict], out_dir: Path, refresh_date: str, select
     index = {
         "schema_version": "1.1.0",
         "source": "GeoNames cities5000",
+        "selection": {
+            "minimum_population": minimum_population,
+            "national_capitals_always_included": True,
+            "max_aliases_per_place": 16,
+        },
         "license": "CC BY 4.0",
         "attribution": "GeoNames",
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -321,6 +346,7 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--refresh-date")
     parser.add_argument("--countries", default="")
+    parser.add_argument("--minimum-population", type=int, default=0)
     args = parser.parse_args()
 
     geonames_path, capitals_path, country_index_path, refresh_date = resolve_inputs(args, parser)
@@ -336,7 +362,7 @@ def main() -> None:
     capitals = json.loads(capitals_path.read_text(encoding="utf-8"))
     merge_capitals(features, capitals, refresh_date)
     selected = {value.strip().upper() for value in args.countries.split(",") if value.strip()} or None
-    build_outputs(features, args.output, refresh_date, selected)
+    build_outputs(features, args.output, refresh_date, selected, max(0, int(args.minimum_population or 0)))
 
 
 if __name__ == "__main__":
