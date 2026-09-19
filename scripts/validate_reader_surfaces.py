@@ -108,24 +108,26 @@ def main() -> int:
     north = read("north/index.html", errors)
     world = read("world-map/index.html", errors)
 
-    # Home: exactly five primary doors, each carrying two questions.
+    # Home: five canonical public Doors plus the current learning/Rooms/cross-cutting structure.
     require(home, 'data-reader-surface="home"', "index.html", errors)
     require(home, 'class="project-purpose"', "index.html", errors)
-    require(home, 'class="secondary-threads"', "index.html", errors)
-    nav = re.search(r'<nav class="sections"[^>]*>(.*?)</nav>', home, flags=re.I | re.S)
+    require(home, 'aria-label="Homepage learning path"', "index.html", errors)
+    require(home, 'class="rooms-corridor home-section"', "index.html", errors)
+    require(home, 'id="cross-cutting-views"', "index.html", errors)
+    nav = re.search(r'<nav\b[^>]*class=["\'][^"\']*\bpublic-doors\b[^"\']*["\'][^>]*>(.*?)</nav>', home, flags=re.I | re.S)
     if not nav:
-        errors.append("index.html missing canonical sections navigation")
+        errors.append("index.html missing canonical public Doors navigation")
     else:
         hrefs = re.findall(r'href=["\']([^"\']+)["\']', nav.group(1))
         expected = [href for href, _ in PRIMARY]
         if hrefs != expected:
-            errors.append(f"homepage primary navigation must contain exactly five doors in order; found {hrefs}")
+            errors.append(f"homepage primary navigation must contain exactly five Doors in order; found {hrefs}")
         for href, label in PRIMARY:
             match = re.search(rf'<a\b[^>]*href=["\']{re.escape(href)}["\'][^>]*>(.*?)</a>', nav.group(1), flags=re.I | re.S)
             if not match:
-                errors.append(f"homepage missing primary door {label}")
-            elif question_count(match.group(1)) < 2:
-                errors.append(f"homepage door {label} must preview at least two natural questions")
+                errors.append(f"homepage missing primary Door {label}")
+            elif label.lower() not in re.sub(r'<[^>]+>', ' ', match.group(1)).lower():
+                errors.append(f"homepage Door {href} must identify itself as {label}")
     footer = re.search(r'<footer\b[^>]*>(.*?)</footer>', home, flags=re.I | re.S)
     if footer and 'timeline/' in footer.group(1).lower():
         errors.append("homepage footer must not treat Timeline as utility navigation")
