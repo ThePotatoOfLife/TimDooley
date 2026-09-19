@@ -1,0 +1,62 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "version": "1.0.0",
+    "updated": "2026-09-19",
+    "purpose": "Broad project-symbolic U.S. case anchors for the Below/Farm corpus. These are not objective classifications of people.",
+    "coordinate_policy": "state-centroid-only",
+    "epistemic_type": "project_interpretive"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_id": "below-us-chris-chan-v1",
+        "overlay_id": "project.below.us-cases",
+        "label": "Chris Chan / CWCki case · Virginia anchor",
+        "epistemic_type": "project_interpretive",
+        "confidence": "broad-context",
+        "source_ids": [
+          "project-below-persistent-target-case",
+          "project-farm-ecosystem-research"
+        ],
+        "source_date": "2026-09-19",
+        "geometry_version": "v1",
+        "measurement_policy": "state_centroid_context_only",
+        "status_note": "Project case-study anchor at the Virginia state centroid. It does not classify the person as a literal Mud Dweller and does not identify a home or current location."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6569,
+          37.4316
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_id": "below-us-cyraxx-v1",
+        "overlay_id": "project.below.us-cases",
+        "label": "Cyraxx / reaction-loop case · Ohio anchor",
+        "epistemic_type": "project_interpretive",
+        "confidence": "broad-context",
+        "source_ids": [
+          "great-book-mud-dwellers-chapter",
+          "project-farm-ecosystem-research"
+        ],
+        "source_date": "2026-09-19",
+        "geometry_version": "v1",
+        "measurement_policy": "state_centroid_context_only",
+        "status_note": "Tim/project Mud / Farm terminology preserved as attribution. The marker is the Ohio state centroid, not a residence or current location."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.9071,
+          40.4173
+        ]
+      }
+    }
+  ]
+}

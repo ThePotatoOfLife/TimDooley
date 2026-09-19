@@ -1,0 +1,210 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-19",
+  "id": "world-map-layer-surfaces",
+  "purpose": "Control-plane inventory for how World Map information planes integrate without collapsing unlike semantics.",
+  "persistent_planes": [
+    {
+      "id": "analytical-country",
+      "label": "Analytical",
+      "controller": "window.__potatoAtlasLayers + window.__potatoAtlasCompositor",
+      "manifest": "data/world-map-layer-registry.json",
+      "url_state": [
+        "layers",
+        "query"
+      ],
+      "channels": [
+        "fill",
+        "pattern"
+      ],
+      "rules": [
+        "one scalar fill at a time",
+        "multiple set patterns",
+        "selection never owns fill"
+      ]
+    },
+    {
+      "id": "physical-world",
+      "label": "Physical",
+      "controller": "window.__potatoAtlasPhysicalLayers",
+      "manifest": "data/world-map-physical-layers.json",
+      "url_state": [
+        "physical"
+      ],
+      "channels": [
+        "physical-surface",
+        "physical-water",
+        "physical-line"
+      ],
+      "rules": [
+        "lazy provider-backed modules",
+        "stackable",
+        "opacity belongs to Physical runtime"
+      ]
+    },
+    {
+      "id": "geography-overlays",
+      "label": "Geography",
+      "controller": "window.__potatoAtlasSpatialOverlays",
+      "manifest": "data/world-map-spatial-overlays.json",
+      "url_state": [
+        "overlays",
+        "boundaryView"
+      ],
+      "channels": [
+        "overlay-fill-line",
+        "overlay-line",
+        "point"
+      ],
+      "rules": [
+        "epistemic type always visible",
+        "overlap never implies equivalence",
+        "project-symbolic geography remains attributed"
+      ]
+    },
+    {
+      "id": "evidence",
+      "label": "Evidence",
+      "controller": "window.__potatoAtlasEvidenceLayers",
+      "manifest": "data/world-map-evidence-layers.json",
+      "url_state": [
+        "evidenceLayer",
+        "adlYear",
+        "adlType"
+      ],
+      "channels": [
+        "subnational-fill",
+        "point",
+        "card"
+      ],
+      "rules": [
+        "source classification remains attributed",
+        "snapshot vintage visible",
+        "no generic hate/crime score"
+      ]
+    }
+  ],
+  "contextual_planes": [
+    {
+      "id": "base-geography",
+      "owners": [
+        "world-map/3d-app.js",
+        "world-map/3d-places.js",
+        "world-map/3d-subdivisions.js"
+      ],
+      "channels": [
+        "fill",
+        "outline",
+        "point",
+        "label"
+      ],
+      "activation": "always / scale / selection"
+    },
+    {
+      "id": "relationships",
+      "owners": [
+        "world-map/3d-country-selection.js",
+        "world-map/3d-chain-explorer.js",
+        "world-map/3d-impact-trace.js"
+      ],
+      "channels": [
+        "line",
+        "outline"
+      ],
+      "activation": "selection or investigation"
+    },
+    {
+      "id": "infrastructure",
+      "owners": [
+        "world-map/3d-infrastructure.js"
+      ],
+      "channels": [
+        "point",
+        "card"
+      ],
+      "activation": "entity/gateway/chain context"
+    },
+    {
+      "id": "axis-navigation",
+      "owners": [
+        "world-map/3d-axis.js",
+        "world-map/3d-axis-depth.js",
+        "world-map/3d-axis-operators.js"
+      ],
+      "channels": [
+        "geography-context",
+        "scene",
+        "card"
+      ],
+      "activation": "explicit Axis action"
+    },
+    {
+      "id": "investigation",
+      "owners": [
+        "world-map/3d-evidence.js",
+        "world-map/3d-pathfinder.js",
+        "world-map/3d-entity-trace.js"
+      ],
+      "channels": [
+        "card",
+        "line",
+        "scene"
+      ],
+      "activation": "explicit investigation"
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "time",
+      "owner": "window.__potatoAtlasTime",
+      "url_state": [
+        "timeMode",
+        "time",
+        "time2"
+      ],
+      "rule": "Time changes valid/known state; it is not a paint layer."
+    },
+    {
+      "id": "scale",
+      "owner": "window.__potatoAtlasScale",
+      "rule": "Zoom controls disclosure/loading; it is not ontology."
+    },
+    {
+      "id": "projection",
+      "owner": "window.__potatoAtlasProjection",
+      "url_state": [
+        "projection"
+      ],
+      "rule": "Projection changes rendering only."
+    }
+  ],
+  "render_order": [
+    "physical-surface",
+    "country analytical fill/pattern",
+    "physical-water",
+    "physical-line",
+    "geography-context",
+    "subnational evidence fill",
+    "country/subdivision outlines",
+    "context-network points",
+    "selection-emphasis",
+    "labels"
+  ],
+  "legacy_compatibility": [
+    {
+      "module": "world-map/3d-fields.js",
+      "status": "dormant compatibility",
+      "replacement": "axis.* entries in analytical registry"
+    },
+    {
+      "module": "world-map/3d-networks.js",
+      "status": "dormant compatibility",
+      "replacement": "group.* registry entries + relation/context systems"
+    },
+    {
+      "module": "world-map/3d-lenses.js",
+      "status": "dormant compatibility",
+      "replacement": "registry/compositor"
+    }
+  ]
+}

@@ -86,6 +86,8 @@ function ensureGatewayLayers() {
       paint:{ 'text-color':'#e3ddc8','text-halo-color':'#111817','text-halo-width':1.2 },
     });
   }
+  window.__potatoAtlasRenderStack?.register?.(POINT_LAYER, { slot:'context-network', priority:40, owner:'system-intelligence:gateways' });
+  window.__potatoAtlasRenderStack?.register?.(LABEL_LAYER, { slot:'context-network', priority:41, owner:'system-intelligence:gateways' });
 }
 
 async function updateGatewayPoints(code) {

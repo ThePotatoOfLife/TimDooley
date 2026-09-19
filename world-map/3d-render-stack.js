@@ -14,6 +14,7 @@ const SLOT_ORDER = Object.freeze([
   'physical-water',
   'physical-line',
   'geography-context',
+  'subnational-fill',
   'context-network',
   'selection-emphasis',
 ]);
@@ -103,6 +104,16 @@ function reconcile(reason = 'manual') {
     ...sorted('context-network'),
   ].map(entry => entry.layerId);
   moveRegion(middle, firstExisting(['countries-line', 'country-hubs', 'country-labels']), moved, snapshot);
+
+  // Subnational scalar/evidence fills sit above the country surface but below
+  // canonical subdivision boundaries. This keeps state/province aggregation
+  // legible without stealing the outline channel from geographic structure.
+  moveRegion(
+    sorted('subnational-fill').map(entry => entry.layerId),
+    firstExisting(['atlas-subdivision-line', 'countries-line', 'country-hubs', 'country-labels']),
+    moved,
+    snapshot
+  );
 
   moveRegion(sorted('selection-emphasis').map(entry => entry.layerId), firstExisting(['country-hubs', 'country-labels']), moved, snapshot);
 

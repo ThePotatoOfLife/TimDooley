@@ -29,6 +29,9 @@ function ensureLayer() {
       'line-blur':0.3,
     },
   }, before);
+  window.__potatoAtlasRenderStack?.register?.(LAYER_ID, {
+    slot:'selection-emphasis', priority:30, owner:'investigation:chain'
+  });
 }
 
 function persist() {
