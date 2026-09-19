@@ -41,6 +41,9 @@ jobs:
       - name: Validate ADL H.E.A.T. World Map evidence layer
         run: python scripts/validate_world_map_adl_heat.py
 
+      - name: Validate World Map layer integration
+        run: python scripts/validate_world_map_layer_integration.py
+
       - name: Validate archive runtime hardening
         run: python scripts/validate_archive_runtime_hardening.py
 
