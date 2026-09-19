@@ -42,6 +42,7 @@ jobs:
         run: |
           python scripts/validate_world_map_ui_layout.py
           python scripts/validate_world_map_context_visibility.py
+          python scripts/validate_world_map_visual_channels.py
           node scripts/test_world_map_display_system_contract.mjs
           node scripts/test_world_map_pinned_context_contract.mjs
           node scripts/test_world_map_inspection_bootstrap_staging.mjs
