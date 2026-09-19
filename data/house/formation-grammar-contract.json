@@ -1,0 +1,147 @@
+{
+  "id": "formation-grammar-contract",
+  "title": "Formation Grammar — From Interaction to Durable Social Form",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "canonical cross-domain social formation contract",
+  "purpose": "Unify Culture formation, Foundation reproduction and Below/high-control reproduction analysis without turning structural similarity into moral equivalence.",
+  "master_rule": "Describe how a social form reproduces before judging what it produces. Entry, norms, authority, resources, correction, succession and exit are structural variables; harm, benefit, legality and truth require separate evidence.",
+  "sequence": [
+    "encounter / entry",
+    "repeated interaction",
+    "shared practice",
+    "norm",
+    "identity / role",
+    "memory / archive",
+    "organization / institution",
+    "reproduction",
+    "branching / succession",
+    "revision / refoundation / decline"
+  ],
+  "fields": [
+    {
+      "id": "entry",
+      "question": "How does a person/unit become involved?",
+      "examples": [
+        "voluntary participation",
+        "membership",
+        "employment",
+        "appointment",
+        "initiation",
+        "state accession",
+        "technical contribution"
+      ]
+    },
+    {
+      "id": "identity",
+      "question": "What makes participants recognize a shared role or belonging?"
+    },
+    {
+      "id": "shared_practice",
+      "question": "What repeated actions make the formation real rather than merely declared?"
+    },
+    {
+      "id": "norms_rules",
+      "question": "What rules, norms, procedures or standards coordinate behavior?"
+    },
+    {
+      "id": "communication",
+      "question": "How are information, interpretation and decisions circulated?"
+    },
+    {
+      "id": "resources",
+      "question": "What money, infrastructure, labor, property, data or volunteer effort sustains the form?"
+    },
+    {
+      "id": "authority",
+      "question": "Where can binding decisions be made, and how concentrated or distributed is that authority?"
+    },
+    {
+      "id": "correction",
+      "question": "How can error, changed conditions or internal criticism alter the system?"
+    },
+    {
+      "id": "enforcement",
+      "question": "What happens when rules are violated? Separate ordinary governance from coercive control."
+    },
+    {
+      "id": "memory",
+      "question": "What archives, stories, records, rituals or precedent make the formation persist through time?"
+    },
+    {
+      "id": "succession",
+      "question": "How do new people/units learn, inherit or obtain the capacity to continue the role?"
+    },
+    {
+      "id": "exit_appeal",
+      "question": "Can participants leave, appeal, dissent, fork, replace leadership or otherwise reduce dependency?"
+    },
+    {
+      "id": "branching",
+      "question": "How do new groups, chapters, projects, denominations, offices, forks or implementations emerge?"
+    },
+    {
+      "id": "external_accountability",
+      "question": "Which outside laws, publics, funders, courts, peers, audits or counterparties can constrain the formation?"
+    },
+    {
+      "id": "externalities",
+      "question": "Who bears effects outside the membership or declared mission?"
+    },
+    {
+      "id": "refoundation",
+      "question": "What changes when the old form no longer works but some memory/rules survive?"
+    }
+  ],
+  "independent_axes": [
+    {
+      "id": "cohesion",
+      "meaning": "strength of shared identity/practice; high cohesion is not inherently harmful"
+    },
+    {
+      "id": "authority_concentration",
+      "meaning": "how much binding authority is concentrated in a person, office or small group"
+    },
+    {
+      "id": "dependency",
+      "meaning": "how much participants depend on the formation for material, social, informational or identity needs"
+    },
+    {
+      "id": "exit_cost",
+      "meaning": "practical social/material/legal cost of leaving; not identical to formal permission"
+    },
+    {
+      "id": "correction_openness",
+      "meaning": "capacity for criticism, review, reversal and learning"
+    },
+    {
+      "id": "information_permeability",
+      "meaning": "how information crosses internal/external boundaries; confidentiality can be legitimate"
+    },
+    {
+      "id": "resource_concentration",
+      "meaning": "how centralized the material base is"
+    },
+    {
+      "id": "succession_rigidity",
+      "meaning": "how replaceable leaders/roles are and how succession is governed"
+    },
+    {
+      "id": "external_accountability",
+      "meaning": "strength and independence of outside review"
+    }
+  ],
+  "route_bridge": {
+    "garden_candidate": "Correction, reciprocity, meaningful exit, distributed future capacity and accountable boundaries are observable.",
+    "strife_candidate": "Role lock, enemy production, dependency, blocked correction, archive warfare or punitive exit become self-reproducing.",
+    "mixed": "Many durable institutions contain both generative and capture-prone mechanisms at once.",
+    "evidence_rule": "Route labels apply to episodes/mechanisms, never as permanent identities for a whole culture, religion, institution or group."
+  },
+  "joins": {
+    "culture": "data/house/living-project-map.json",
+    "foundations": "data/house/foundation-room-atlas.json",
+    "below": "knowledge/core/below-intelligence-shadow-observatory.json",
+    "entity_dossiers": "data/house/entity-dossiers-wave-001.json",
+    "public_reader": "context/culture/"
+  }
+}

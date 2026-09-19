@@ -1,7 +1,7 @@
 {
   "id": "axis-flow-contract",
-  "version": "1.2.1",
-  "updated": "2026-09-11",
+  "version": "2.0.0",
+  "updated": "2026-09-18",
   "status": "active project-symbolic flow contract",
   "purpose": "Define the bidirectional flow grammar of the D1-D11 Axis so the Atlas can place residue, obligations, recurrence, repair, growth, transmission and integration consistently without confusing project symbolism with empirical physics.",
   "boundary": "D1-D11 polarity is project-symbolic and analytical. Lower/upper, hell/heaven, magnetism, light and karmic flow are not physical altitude, measurable spiritual force or scientific electromagnetism. Empirical money, energy, goods, people, data and legal obligations keep their own units, sources and direction and must never be numerically merged with symbolic/karmic quantities.",
@@ -34,15 +34,46 @@
   },
   "flow_domains": {
     "empirical": {
-      "examples": ["money", "goods", "energy", "people", "data", "water", "traffic", "ownership/control", "legal obligation", "contractual obligation"],
+      "examples": [
+        "money",
+        "goods",
+        "energy",
+        "people",
+        "data",
+        "water",
+        "traffic",
+        "ownership/control",
+        "legal obligation",
+        "contractual obligation"
+      ],
       "rule": "Retain direction, quantity, compatible units, time and source. These flows may be projected through Axis operators but remain empirical records."
     },
     "social_relational": {
-      "examples": ["care", "attention", "trust", "duty", "promise", "reciprocity", "repair", "status", "dependence"],
+      "examples": [
+        "care",
+        "attention",
+        "trust",
+        "duty",
+        "promise",
+        "reciprocity",
+        "repair",
+        "status",
+        "dependence"
+      ],
       "rule": "Represent as typed relations with evidence and uncertainty. Do not assign pseudo-physical units unless a real operational metric exists."
     },
     "project_symbolic": {
-      "examples": ["karmic debt", "positive karma", "spiritual attraction/repulsion", "light", "ash", "seed of life", "seed of death", "Swamp", "Garden"],
+      "examples": [
+        "karmic debt",
+        "positive karma",
+        "spiritual attraction/repulsion",
+        "light",
+        "ash",
+        "seed of life",
+        "seed of death",
+        "Swamp",
+        "Garden"
+      ],
       "rule": "Keep in project_interpretation or explicitly project-canon records. Symbolic amounts and polarity may not overwrite or sum with financial/legal quantities."
     }
   },
@@ -88,17 +119,265 @@
     "soil": "processed residue that becomes usable context, memory or capacity rather than recurring contamination"
   },
   "dimensions": {
-    "1": {"label":"Deep Lower Plane","polarity":"deep-descent","flow_behavior":"sink / closure / near-zero viable circulation","inflow":["compounded unresolved loops","blocked exits","terminal fragmentation"],"outflow":["only through recovered exit, truth-test, boundary, accountability or repair pathway"],"symbols":["hell","dust","closed depth"],"risk":"treating a temporary or disputed relation as permanently terminal"},
-    "2": {"label":"Swamp / Disintegration","polarity":"downward-attractor","flow_behavior":"stagnation + circulation without productive outlet","inflow":["Mud","attention","status incentives","archives","unresolved obligation"],"outflow":["more recurrence unless exit/provenance/repair channels open"],"symbols":["Swamp","slurry","orbit","roots of strife","subculture feedback"],"risk":"using Swamp as a moral label for a population instead of a relation/system-state"},
-    "3": {"label":"Roots of Ash","polarity":"stored-depth","flow_behavior":"sedimentation / memory / rooting / potential fork","inflow":["events","records","grief","ancestry","residue","obligations"],"outflow":["soil/context upward","Mud/reactivation downward"],"symbols":["roots","ash","burial","seed","memory"],"risk":"assuming stored history automatically determines present causation"},
-    "4": {"label":"Earth / World Map","polarity":"observable-anchor","flow_behavior":"observe / locate / exchange / measure","inflow":["real resources","people","money","information","law","history"],"outflow":["typed observable relations and consequences"],"symbols":["Earth","world","trunk/plane"],"risk":"allowing symbolic polarity to masquerade as empirical geography"},
-    "5": {"label":"North Door / First Heaven","polarity":"junction","flow_behavior":"gate / classify / route / release / defer","inflow":["D4 facts","claims","debts","choices","repair opportunities","seeds"],"outflow":["upward route","downward route","return to D4","blocked/deferred passage"],"symbols":["Door","needle","gate","Ladder mouth"],"risk":"treating a symbolic threshold as automatic judgment"},
-    "6": {"label":"Spiral Ladder","polarity":"ascending-transformation","flow_behavior":"recurrence with changed state / reorientation","inflow":["crossed thresholds","experience","memory","repair work"],"outflow":["changed perspective","capability","ordered ascent/descent","delta"],"symbols":["spiral","ladder","winding stair"],"risk":"confusing mere repetition with development"},
-    "7": {"label":"Tree of Life","polarity":"generative-ascent","flow_behavior":"branch / nourish / fruit / reseed","inflow":["integrated experience","seed","knowledge","repair","capacity"],"outflow":["new branches","fruit","autonomous capability","future seed"],"symbols":["Tree of Life","sprout","branch","fruit","green growth"],"risk":"assuming every increase or expansion is healthy fruit"},
-    "8": {"label":"Garden / Rooms","polarity":"integrated-plurality","flow_behavior":"compose / circulate / cultivate among differentiated rooms","inflow":["autonomous branches","institutions","roles","shared infrastructure"],"outflow":["coexistence","interoperability","protected passage","cultivation"],"symbols":["Garden","House","Rooms","culture"],"risk":"forced unity that destroys differentiation or agency"},
-    "9": {"label":"Angels / Seeds of Light","polarity":"transmission-ascent","flow_behavior":"relay / illuminate / translate / mediate","inflow":["messages","knowledge","orientation","standards","seeds/light"],"outflow":["faithful transmission","distributed knowledge","guided passage"],"symbols":["light","angel/messenger","seed of light","Spirit/flow"],"risk":"distortion, proxy capture or claiming supernatural transmission as measured fact"},
-    "10": {"label":"Heaven / Crown","polarity":"integrated-summit","flow_behavior":"compress / evaluate / orient / descend as service","inflow":["many lower perspectives","fruit","knowledge","responsibility"],"outflow":["protection","service","law","strategy","useful return to D4"],"symbols":["heaven","crown","mountain","peak","enlightenment"],"risk":"summit/status without accountable return"},
-    "11": {"label":"North of North","polarity":"source-facing-meta","flow_behavior":"select criteria / unify orientation / test invariants","inflow":["candidate values","whole-system outcomes","competing orientations"],"outflow":["criteria that must descend through D10 service into D4 consequences"],"symbols":["North of North","source","unity","direction","summit reference"],"risk":"using meta-orientation to escape empirical testing or claim political authority"}
+    "1": {
+      "label": "Deep Lower Plane",
+      "polarity": "deep-descent",
+      "flow_behavior": "sink / closure / near-zero viable circulation",
+      "inflow": [
+        "compounded unresolved loops",
+        "blocked exits",
+        "terminal fragmentation"
+      ],
+      "outflow": [
+        "only through recovered exit, truth-test, boundary, accountability or repair pathway"
+      ],
+      "symbols": [
+        "hell",
+        "dust",
+        "closed depth"
+      ],
+      "risk": "treating a temporary or disputed relation as permanently terminal"
+    },
+    "2": {
+      "label": "Swamp / Disintegration",
+      "polarity": "downward-attractor",
+      "flow_behavior": "stagnation + circulation without productive outlet",
+      "inflow": [
+        "Mud",
+        "attention",
+        "status incentives",
+        "archives",
+        "unresolved obligation"
+      ],
+      "outflow": [
+        "more recurrence unless exit/provenance/repair channels open"
+      ],
+      "symbols": [
+        "Swamp",
+        "slurry",
+        "orbit",
+        "roots of strife",
+        "subculture feedback"
+      ],
+      "risk": "using Swamp as a moral label for a population instead of a relation/system-state"
+    },
+    "3": {
+      "label": "Roots of Ash",
+      "polarity": "stored-depth",
+      "flow_behavior": "sedimentation / memory / rooting / potential fork",
+      "inflow": [
+        "events",
+        "records",
+        "grief",
+        "ancestry",
+        "residue",
+        "obligations"
+      ],
+      "outflow": [
+        "soil/context upward",
+        "Mud/reactivation downward"
+      ],
+      "symbols": [
+        "roots",
+        "ash",
+        "burial",
+        "seed",
+        "memory"
+      ],
+      "risk": "assuming stored history automatically determines present causation"
+    },
+    "4": {
+      "label": "Earth / World Map",
+      "polarity": "observable-anchor",
+      "flow_behavior": "observe / locate / exchange / measure",
+      "inflow": [
+        "real resources",
+        "people",
+        "money",
+        "information",
+        "law",
+        "history"
+      ],
+      "outflow": [
+        "typed observable relations and consequences"
+      ],
+      "symbols": [
+        "Earth",
+        "world",
+        "trunk/plane"
+      ],
+      "risk": "allowing symbolic polarity to masquerade as empirical geography"
+    },
+    "5": {
+      "label": "North Door / First Heaven",
+      "polarity": "junction",
+      "flow_behavior": "gate / classify / route / release / defer",
+      "inflow": [
+        "D4 facts",
+        "claims",
+        "debts",
+        "choices",
+        "repair opportunities",
+        "seeds"
+      ],
+      "outflow": [
+        "upward route",
+        "downward route",
+        "return to D4",
+        "blocked/deferred passage"
+      ],
+      "symbols": [
+        "Door",
+        "needle",
+        "gate",
+        "Ladder mouth"
+      ],
+      "risk": "treating a symbolic threshold as automatic judgment"
+    },
+    "6": {
+      "label": "Spiral Ladder",
+      "polarity": "ascending-transformation",
+      "flow_behavior": "recurrence with changed state / reorientation",
+      "inflow": [
+        "crossed thresholds",
+        "experience",
+        "memory",
+        "repair work"
+      ],
+      "outflow": [
+        "changed perspective",
+        "capability",
+        "ordered ascent/descent",
+        "delta"
+      ],
+      "symbols": [
+        "spiral",
+        "ladder",
+        "winding stair"
+      ],
+      "risk": "confusing mere repetition with development"
+    },
+    "7": {
+      "label": "Tree of Life",
+      "polarity": "generative-ascent",
+      "flow_behavior": "branch / nourish / fruit / reseed",
+      "inflow": [
+        "integrated experience",
+        "seed",
+        "knowledge",
+        "repair",
+        "capacity"
+      ],
+      "outflow": [
+        "new branches",
+        "fruit",
+        "autonomous capability",
+        "future seed"
+      ],
+      "symbols": [
+        "Tree of Life",
+        "sprout",
+        "branch",
+        "fruit",
+        "green growth"
+      ],
+      "risk": "assuming every increase or expansion is healthy fruit"
+    },
+    "8": {
+      "label": "Garden / Rooms",
+      "polarity": "integrated-plurality",
+      "flow_behavior": "compose / circulate / cultivate among differentiated rooms",
+      "inflow": [
+        "autonomous branches",
+        "institutions",
+        "roles",
+        "shared infrastructure"
+      ],
+      "outflow": [
+        "coexistence",
+        "interoperability",
+        "protected passage",
+        "cultivation"
+      ],
+      "symbols": [
+        "Garden",
+        "House",
+        "Rooms",
+        "culture"
+      ],
+      "risk": "forced unity that destroys differentiation or agency"
+    },
+    "9": {
+      "label": "Angels / Seeds of Light",
+      "polarity": "transmission-ascent",
+      "flow_behavior": "relay / illuminate / translate / mediate",
+      "inflow": [
+        "messages",
+        "knowledge",
+        "orientation",
+        "standards",
+        "seeds/light"
+      ],
+      "outflow": [
+        "faithful transmission",
+        "distributed knowledge",
+        "guided passage"
+      ],
+      "symbols": [
+        "light",
+        "angel/messenger",
+        "seed of light",
+        "Spirit/flow"
+      ],
+      "risk": "distortion, proxy capture or claiming supernatural transmission as measured fact"
+    },
+    "10": {
+      "label": "Heaven / Crown",
+      "polarity": "integrated-summit",
+      "flow_behavior": "compress / evaluate / orient / descend as service",
+      "inflow": [
+        "many lower perspectives",
+        "fruit",
+        "knowledge",
+        "responsibility"
+      ],
+      "outflow": [
+        "protection",
+        "service",
+        "law",
+        "strategy",
+        "useful return to D4"
+      ],
+      "symbols": [
+        "heaven",
+        "crown",
+        "mountain",
+        "peak",
+        "enlightenment"
+      ],
+      "risk": "summit/status without accountable return"
+    },
+    "11": {
+      "label": "North of North",
+      "polarity": "source-facing-meta",
+      "flow_behavior": "select criteria / unify orientation / test invariants",
+      "inflow": [
+        "candidate values",
+        "whole-system outcomes",
+        "competing orientations"
+      ],
+      "outflow": [
+        "criteria that must descend through D10 service into D4 consequences"
+      ],
+      "symbols": [
+        "North of North",
+        "source",
+        "unity",
+        "direction",
+        "summit reference"
+      ],
+      "risk": "using meta-orientation to escape empirical testing or claim political authority"
+    }
   },
   "placement_rules": [
     "Keep real subcultures/platforms/communities on D4 as empirical nodes; D2 applies only to evidenced/project-interpreted feedback, capture and recurrence dynamics.",
@@ -108,5 +387,860 @@
     "Use D7-D10 only when downstream generativity, composition, transmission or integration can be shown; do not promote content upward merely because it sounds spiritual.",
     "Every D10/D11 interpretation should retain a navigation path back to D4 evidence and consequences."
   ],
-  "connections": ["data/axis-depths.json","data/axis-operators.json","data/axis-formal-lenses.json","data/relational-edge-state.schema.json","data/atlas-projection-contract.json","knowledge/core/swamp-mud-mountain-debt-relational-model.json","knowledge/world/farm-swamp-tree-of-strife-atlas.json","knowledge/research/axis-d1-d11-spiritual-scaffold-2026-09-10.md"]
+  "connections": [
+    "data/axis-depths.json",
+    "data/axis-operators.json",
+    "data/axis-formal-lenses.json",
+    "data/relational-edge-state.schema.json",
+    "data/atlas-projection-contract.json",
+    "knowledge/core/swamp-mud-mountain-debt-relational-model.json",
+    "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+    "knowledge/research/axis-d1-d11-spiritual-scaffold-2026-09-10.md"
+  ],
+  "transition_model": {
+    "status": "canonical project-symbolic state-transition grammar",
+    "principle": "A state is not a D-level. D1-D11 names transformation regimes; states name the current relational condition. The same state may be inspected across more than one level, and movement is conditional rather than automatic.",
+    "state_classes": {
+      "observed": {
+        "label": "Observed relation",
+        "preferred_dimensions": [
+          4
+        ],
+        "description": "A relation, event, obligation or pattern located in the empirical world with sourceable facts and consequences.",
+        "questions": [
+          "What happened?",
+          "Where and when?",
+          "Which endpoints are involved?",
+          "What is observed versus interpreted?"
+        ]
+      },
+      "residue": {
+        "label": "Residue / Ash",
+        "preferred_dimensions": [
+          3
+        ],
+        "description": "What remains after an event: memory, records, grief, obligation, provenance, causal hypotheses and stored consequence.",
+        "questions": [
+          "What remains?",
+          "What evidence persists?",
+          "What is cause, context or merely adjacency?"
+        ]
+      },
+      "unresolved": {
+        "label": "Unresolved activation",
+        "preferred_dimensions": [
+          3,
+          2
+        ],
+        "description": "Residue repeatedly reactivated without sufficient classification, closure or changed relation.",
+        "questions": [
+          "What keeps reactivating this?",
+          "What is still unclassified, unacknowledged or unsettled?"
+        ]
+      },
+      "capture": {
+        "label": "Capture / Swamp loop",
+        "preferred_dimensions": [
+          2
+        ],
+        "description": "A self-reproducing relation in which attention, identity, incentives or obligations increasingly depend on the loop continuing.",
+        "questions": [
+          "Can participants exit?",
+          "Does interaction reproduce the same system?",
+          "Is agency shrinking?"
+        ]
+      },
+      "closure": {
+        "label": "Closed depth",
+        "preferred_dimensions": [
+          1
+        ],
+        "description": "Near-zero viable circulation: blocked exits, totalized identity, terminal symbolic separation or compounded disintegration.",
+        "questions": [
+          "Is any truthful exit still available?",
+          "Can a boundary, accountability or repair path be recovered?"
+        ]
+      },
+      "threshold": {
+        "label": "Door / choice",
+        "preferred_dimensions": [
+          5
+        ],
+        "description": "A regime-changing junction where recognition, responsibility, release, refusal, repair or another real choice can alter the relation.",
+        "questions": [
+          "What must change for this not to be repetition?",
+          "Who has agency?",
+          "What condition counts as passage?"
+        ]
+      },
+      "transformed_recurrence": {
+        "label": "Changed recurrence",
+        "preferred_dimensions": [
+          6
+        ],
+        "description": "The same thematic material returns, but the relation has acquired new capability, perspective, boundary or orientation.",
+        "questions": [
+          "What is actually different this time?",
+          "What capability or boundary now exists that did not before?"
+        ]
+      },
+      "living_root": {
+        "label": "Living Root",
+        "preferred_dimensions": [
+          3,
+          6,
+          7
+        ],
+        "description": "Memory and consequence retained without requiring continued conflict; the past becomes usable nourishment rather than compulsory repetition.",
+        "questions": [
+          "Can the history remain visible without controlling the future?",
+          "What does it nourish now?"
+        ]
+      },
+      "generative": {
+        "label": "Generative branch / fruit",
+        "preferred_dimensions": [
+          7
+        ],
+        "description": "Integrated material produces independent capacity, reciprocal nourishment, future seed or useful work beyond the original center.",
+        "questions": [
+          "Does this make other nodes more capable?",
+          "Can value continue without permanent dependence?"
+        ]
+      },
+      "habitation": {
+        "label": "Garden / Rooms",
+        "preferred_dimensions": [
+          8
+        ],
+        "description": "Multiple differentiated branches coexist with protected boundaries, passage and cultivation.",
+        "questions": [
+          "Can distinct nodes remain distinct?",
+          "Can they cooperate without capture or forced sameness?"
+        ]
+      },
+      "transmission": {
+        "label": "Faithful transmission",
+        "preferred_dimensions": [
+          9
+        ],
+        "description": "Knowledge, message, seed or orientation is relayed while preserving source context and recipient agency.",
+        "questions": [
+          "What was preserved?",
+          "What was distorted?",
+          "Can the recipient verify or refuse?"
+        ]
+      },
+      "integration": {
+        "label": "Crown / accountable integration",
+        "preferred_dimensions": [
+          10
+        ],
+        "description": "Many lower perspectives are compressed into judgment, strategy, protection or service while retaining a route back to evidence.",
+        "questions": [
+          "What was lost in compression?",
+          "What responsibility follows from greater vantage?"
+        ]
+      },
+      "orientation": {
+        "label": "North of North / criteria",
+        "preferred_dimensions": [
+          11
+        ],
+        "description": "Criteria by which competing orientations are themselves tested: truth, life, coherence, repair, responsibility and service.",
+        "questions": [
+          "What standard evaluates the standard?",
+          "Can the criterion descend into observable consequences?"
+        ]
+      },
+      "return": {
+        "label": "Return to the Plane",
+        "preferred_dimensions": [
+          4
+        ],
+        "description": "Integrated insight returns as service, law, protection, infrastructure, cultivation, knowledge or another observable consequence.",
+        "questions": [
+          "What changed on D4?",
+          "Who gained capacity, safety, clarity or agency?",
+          "What remains unverified?"
+        ]
+      }
+    },
+    "transitions": [
+      {
+        "id": "t01",
+        "from": "observed",
+        "to": "residue",
+        "operator": "record / remember / attribute provenance",
+        "condition": "the event leaves material, documentary, relational or historical consequence",
+        "route": "neutral"
+      },
+      {
+        "id": "t02",
+        "from": "residue",
+        "to": "unresolved",
+        "operator": "reactivate without sufficient integration",
+        "condition": "stored consequence repeatedly returns without closure or usable context",
+        "route": "strife-risk"
+      },
+      {
+        "id": "t03",
+        "from": "unresolved",
+        "to": "capture",
+        "operator": "repeat + amplify + harden roles",
+        "condition": "incentives, identity or attention increasingly depend on recurrence",
+        "route": "strife"
+      },
+      {
+        "id": "t04",
+        "from": "capture",
+        "to": "closure",
+        "operator": "block exit / totalize identity",
+        "condition": "revision, reciprocity and viable future capacity approach zero",
+        "route": "strife"
+      },
+      {
+        "id": "t05",
+        "from": "residue",
+        "to": "threshold",
+        "operator": "classify + acknowledge + choose",
+        "condition": "provenance is usable enough to support agency and a real regime-changing choice",
+        "route": "repair"
+      },
+      {
+        "id": "t06",
+        "from": "unresolved",
+        "to": "threshold",
+        "operator": "surface root cause + recover agency",
+        "condition": "the loop can be named without freezing participants into the loop",
+        "route": "repair"
+      },
+      {
+        "id": "t07",
+        "from": "capture",
+        "to": "threshold",
+        "operator": "protected exit + truth-test + boundary",
+        "condition": "a viable exit or repair channel is recovered",
+        "route": "repair"
+      },
+      {
+        "id": "t08",
+        "from": "closure",
+        "to": "threshold",
+        "operator": "recover minimal viable passage",
+        "condition": "at least one truthful exit, boundary, accountability mechanism or repair path becomes possible",
+        "route": "repair"
+      },
+      {
+        "id": "t09",
+        "from": "threshold",
+        "to": "transformed_recurrence",
+        "operator": "cross / release / repair / commit",
+        "condition": "the relation demonstrably changes rather than merely renames the same loop",
+        "route": "life"
+      },
+      {
+        "id": "t10",
+        "from": "threshold",
+        "to": "unresolved",
+        "operator": "defer / deny / fail passage",
+        "condition": "no changed relation is established",
+        "route": "strife-risk"
+      },
+      {
+        "id": "t11",
+        "from": "transformed_recurrence",
+        "to": "living_root",
+        "operator": "retain memory without compulsory reenactment",
+        "condition": "history remains accessible while agency and future capacity increase",
+        "route": "life"
+      },
+      {
+        "id": "t12",
+        "from": "living_root",
+        "to": "generative",
+        "operator": "nourish / branch / fruit",
+        "condition": "retained experience produces independent capability or reciprocal value",
+        "route": "life"
+      },
+      {
+        "id": "t13",
+        "from": "generative",
+        "to": "habitation",
+        "operator": "compose differentiated branches",
+        "condition": "multiple autonomous capacities can coexist with protected passage and boundaries",
+        "route": "life"
+      },
+      {
+        "id": "t14",
+        "from": "habitation",
+        "to": "transmission",
+        "operator": "relay / teach / seed",
+        "condition": "knowledge or capacity can travel without coercive dependence or destructive distortion",
+        "route": "life"
+      },
+      {
+        "id": "t15",
+        "from": "transmission",
+        "to": "integration",
+        "operator": "compare / evaluate / compress",
+        "condition": "many perspectives can be integrated while preserving provenance and uncertainty",
+        "route": "life"
+      },
+      {
+        "id": "t16",
+        "from": "integration",
+        "to": "orientation",
+        "operator": "test criteria / choose governing standard",
+        "condition": "the integrated view can articulate what standards it uses and why",
+        "route": "life"
+      },
+      {
+        "id": "t17",
+        "from": "orientation",
+        "to": "return",
+        "operator": "descend as service",
+        "condition": "criteria become observable protection, repair, cultivation, law, knowledge or infrastructure",
+        "route": "return"
+      },
+      {
+        "id": "t18",
+        "from": "integration",
+        "to": "return",
+        "operator": "apply accountable judgment",
+        "condition": "summit perspective produces useful D4 consequences rather than status alone",
+        "route": "return"
+      },
+      {
+        "id": "t19",
+        "from": "return",
+        "to": "observed",
+        "operator": "measure consequences",
+        "condition": "returned action creates new observable facts, outcomes and feedback",
+        "route": "cycle"
+      },
+      {
+        "id": "t20",
+        "from": "living_root",
+        "to": "unresolved",
+        "operator": "reactivate without context",
+        "condition": "memory becomes compulsory reenactment or enemy-dependent identity",
+        "route": "strife-risk"
+      },
+      {
+        "id": "t21",
+        "from": "generative",
+        "to": "capture",
+        "operator": "centralize / make dependents",
+        "condition": "growth requires permanent dependence, enemy production, humiliation or extraction",
+        "route": "strife-risk"
+      }
+    ],
+    "route_families": {
+      "life": [
+        "threshold",
+        "transformed_recurrence",
+        "living_root",
+        "generative",
+        "habitation",
+        "transmission",
+        "integration",
+        "orientation",
+        "return",
+        "observed"
+      ],
+      "strife": [
+        "residue",
+        "unresolved",
+        "capture",
+        "closure"
+      ],
+      "repair": [
+        "residue",
+        "unresolved",
+        "capture",
+        "closure",
+        "threshold",
+        "transformed_recurrence",
+        "living_root"
+      ],
+      "return": [
+        "orientation",
+        "integration",
+        "return",
+        "observed"
+      ]
+    },
+    "trace_rule": "The public UI may show possible next states, but it must not infer which transition is true for a real person, community or event without evidence. It is a reasoning scaffold, not an automatic moral classifier.",
+    "movement_tests": [
+      "What evidence establishes the current state?",
+      "What transformation operator is actually occurring?",
+      "What condition would have to become true for the proposed next state?",
+      "Does agency increase or decrease?",
+      "Does the transition preserve provenance?",
+      "Does the relation become more generative or more dependent on repetition?",
+      "If it moves upward, what observable return to D4 would count as evidence of useful integration?"
+    ],
+    "concept_traces": {
+      "plane": {
+        "label": "Plane",
+        "kind": "domain",
+        "primary_state": "observed",
+        "function": "Where relations become observable as bodies, events, institutions, geography, evidence and consequence.",
+        "question": "What is actually happening in the world, and what can be sourced?"
+      },
+      "cross": {
+        "label": "Cross",
+        "kind": "operator",
+        "primary_state": "observed",
+        "function": "Plane × Axis: the operation that makes outward relation, downward root and upward integration simultaneously readable.",
+        "question": "Which direction is this relation taking, and what would change its direction?"
+      },
+      "knowledge": {
+        "label": "Knowledge / distinction",
+        "kind": "fork",
+        "primary_state": "residue",
+        "function": "Distinction makes memory, judgment, responsibility and choice possible; it can feed integration or unresolved repetition.",
+        "question": "What has become known, and is that knowledge becoming usable context or recurrent activation?"
+      },
+      "roots-of-ash": {
+        "label": "Roots of Ash",
+        "kind": "root-state",
+        "primary_state": "residue",
+        "function": "Stored consequence after rupture, burning, exhaustion or severance.",
+        "question": "Does the residue become evidence and soil, or does it keep being reactivated as Mud?"
+      },
+      "roots-of-strife": {
+        "label": "Roots of Strife",
+        "kind": "root-state",
+        "primary_state": "unresolved",
+        "function": "Buried material that keeps reproducing conflict, dependency, capture or fragmentation.",
+        "question": "What unresolved relation is being reproduced rather than metabolized?"
+      },
+      "tree-of-strife": {
+        "label": "Tree of Strife",
+        "kind": "reproductive-pattern",
+        "primary_state": "capture",
+        "function": "A living system whose branches depend on unresolved conflict continuing.",
+        "question": "What must remain unresolved for this system to keep reproducing itself?"
+      },
+      "wide-road": {
+        "label": "Wide Road",
+        "kind": "operator",
+        "primary_state": "unresolved",
+        "function": "The dispersive route where repetition becomes easier than a narrow regime-changing crossing.",
+        "question": "What makes continued repetition easier than transformation here?"
+      },
+      "swamp": {
+        "label": "Swamp",
+        "kind": "system-state",
+        "primary_state": "capture",
+        "function": "Accumulated entanglement, stagnant circulation and self-reproducing conflict ecology.",
+        "question": "Where are exit, agency, provenance or productive outflow blocked?"
+      },
+      "door": {
+        "label": "Door",
+        "kind": "threshold",
+        "primary_state": "threshold",
+        "function": "The regime-changing junction where a relation can be released, repaired, refused, transformed or routed.",
+        "question": "What concrete condition would prove this crossing changed the relation?"
+      },
+      "spiral": {
+        "label": "Spiral",
+        "kind": "trajectory",
+        "primary_state": "transformed_recurrence",
+        "function": "Return to related material at a changed level rather than a closed loop at the same level.",
+        "question": "What is actually different on this recurrence?"
+      },
+      "ladder": {
+        "label": "Ladder",
+        "kind": "path",
+        "primary_state": "transformed_recurrence",
+        "function": "Ordered passage through thresholds; the experiential route of changed recurrence along the Axis.",
+        "question": "Which threshold has been crossed, and what capability exists afterward?"
+      },
+      "living-root": {
+        "label": "Living Root",
+        "kind": "root-state",
+        "primary_state": "living_root",
+        "function": "Memory and consequence preserved without compulsory reenactment; the past becomes nourishment.",
+        "question": "Can the history stay visible without controlling the future?"
+      },
+      "tree-of-life": {
+        "label": "Tree of Life",
+        "kind": "reproductive-pattern",
+        "primary_state": "generative",
+        "function": "Integrated experience becomes branch, fruit, reciprocal nourishment and future seed.",
+        "question": "Does the structure make other nodes more capable without permanent dependence?"
+      },
+      "garden": {
+        "label": "Garden / Rooms",
+        "kind": "habitation",
+        "primary_state": "habitation",
+        "function": "Differentiated branches coexist with boundaries, passage, cultivation and room to remain distinct.",
+        "question": "Can plurality remain connected without capture or flattening?"
+      },
+      "rooms": {
+        "label": "Rooms",
+        "kind": "habitation",
+        "primary_state": "habitation",
+        "function": "Protected differentiated spaces inside a larger relational whole.",
+        "question": "Can each room keep identity, boundary and passage while contributing to the whole?"
+      },
+      "heaven": {
+        "label": "Heaven",
+        "kind": "integration-domain",
+        "primary_state": "integration",
+        "function": "Upper project-symbolic field of integrated perspective, evaluation, clarity and responsibility.",
+        "question": "What responsibility follows from the wider view, and how does it return to D4?"
+      },
+      "crown": {
+        "label": "Crown",
+        "kind": "integration-state",
+        "primary_state": "integration",
+        "function": "Summit compression of many perspectives into accountable judgment, orientation and service.",
+        "question": "What information was compressed, and what useful return follows?"
+      },
+      "north": {
+        "label": "North / North of North",
+        "kind": "orientation",
+        "primary_state": "orientation",
+        "function": "Source-facing criterion selection: deciding what deserves to count as orienting truth, life, repair, responsibility and service.",
+        "question": "By what standard is the standard itself judged?"
+      },
+      "gardener": {
+        "label": "Gardener",
+        "kind": "return-role",
+        "primary_state": "return",
+        "function": "Cultivation, protection, pruning, soil repair and practical return of integrated orientation to the Plane.",
+        "question": "What becomes more capable, nourished, protected or repairable in the world?"
+      },
+      "repair": {
+        "label": "Repair",
+        "kind": "route",
+        "primary_state": "threshold",
+        "function": "The return route that turns residue into provenance, recovers agency, crosses a threshold and restores generativity.",
+        "question": "What has to become true for repetition to become changed relation?"
+      },
+      "fruit": {
+        "label": "Fruit",
+        "kind": "output",
+        "primary_state": "return",
+        "function": "Manifest result by which a claimed integration can be evaluated in the inhabited world.",
+        "question": "What observable capacity, nourishment, truth, repair or service was actually produced?"
+      },
+      "mud": {
+        "label": "Mud",
+        "kind": "mixed condition",
+        "primary_state": "unresolved",
+        "function": "Mixed unresolved material and actual conditions before sufficient distinction.",
+        "question": "What is mixed together here that must be separated, sourced or understood before it can grow?"
+      },
+      "burial": {
+        "label": "Burial",
+        "kind": "lifecycle stage",
+        "primary_state": "residue",
+        "function": "Hidden or protected placement below visible expression; may hold loss, storage, incubation or potential.",
+        "question": "Is this disappearance, preservation, incubation, or unresolved burial—and what evidence distinguishes them?"
+      },
+      "eye": {
+        "label": "Eye",
+        "kind": "perception / aperture",
+        "primary_state": "observed",
+        "function": "Perception, discernment and the local opening from which a viable future can be noticed.",
+        "question": "What becomes visible here that was not visible before?"
+      },
+      "sprout": {
+        "label": "Sprout",
+        "kind": "activation",
+        "primary_state": "transformed_recurrence",
+        "function": "Activated early growth moving stored capability toward visible expression.",
+        "question": "What direction has become active, and what support does it need before branching?"
+      },
+      "seed": {
+        "label": "Seed",
+        "kind": "compressed generative pattern",
+        "primary_state": "return",
+        "function": "Transferable learning or capability compressed enough to begin another cycle without permanent dependence.",
+        "question": "Can the useful pattern reproduce without copying the whole original center?"
+      },
+      "return": {
+        "label": "Return",
+        "kind": "cycle operator",
+        "primary_state": "return",
+        "function": "Re-entry carrying retained memory and changed capability rather than reset.",
+        "question": "What is different on return, and what becomes observable now?"
+      },
+      "soil": {
+        "label": "Soil",
+        "kind": "context",
+        "primary_state": "living_root",
+        "function": "The enabling or constraining environment around growth.",
+        "question": "Which condition is missing, supportive, toxic or overloaded?"
+      },
+      "forge": {
+        "label": "Forge",
+        "kind": "system regime",
+        "primary_state": "transformed_recurrence",
+        "function": "Bounded pressure deliberately converted into transferable capability.",
+        "question": "Will the capacity survive after the conflict or pressure is gone?"
+      },
+      "dormancy": {
+        "label": "Dormancy",
+        "kind": "lifecycle regime",
+        "primary_state": "residue",
+        "function": "Viable regulated non-expression rather than absence or death.",
+        "question": "What would distinguish healthy latency from blocked growth or decay?"
+      },
+      "wound": {
+        "label": "Wound",
+        "kind": "damage state",
+        "primary_state": "unresolved",
+        "function": "Broken continuity that calls for containment, truth and restoration.",
+        "question": "What function or boundary was damaged, and what would repair restore?"
+      },
+      "mature": {
+        "label": "Mature",
+        "kind": "capability state",
+        "primary_state": "generative",
+        "function": "Stable developed capability that can persist outside the pressure or center that produced it.",
+        "question": "Can this function autonomously while remaining open to correction?"
+      },
+      "ash": {
+        "label": "Ash",
+        "kind": "residue",
+        "primary_state": "residue",
+        "function": "Residue after rupture, destruction or exhausted form; potential Archive, Mud, Forge input or Soil.",
+        "question": "What should be preserved, metabolized, repaired or released?"
+      },
+      "mountain": {
+        "label": "Mountain",
+        "kind": "integration operator",
+        "primary_state": "integration",
+        "function": "Continuous compression of many relations toward a broader perspective.",
+        "question": "What detail is being compressed, what must be preserved, and what useful return follows?"
+      },
+      "ring": {
+        "label": "Ring",
+        "kind": "trajectory",
+        "primary_state": "unresolved",
+        "function": "Recurrence with little or no net change in capability or understanding.",
+        "question": "What keeps returning unchanged, and what Door would turn repetition into a Spiral?"
+      }
+    },
+    "concept_trace_rule": "Concept traces are entry points into relation states, not claims that a symbol is permanently identical with one state. Operators such as Cross, Wide Road and Repair describe movement; roles such as Gardener describe a return function; domains such as Plane and Heaven describe context.",
+    "concept_groups": [
+      {
+        "id": "conditions",
+        "label": "Conditions & latency",
+        "concepts": [
+          "mud",
+          "burial",
+          "dormancy",
+          "eye",
+          "sprout",
+          "soil"
+        ]
+      },
+      {
+        "id": "world",
+        "label": "World & fork",
+        "concepts": [
+          "plane",
+          "cross",
+          "knowledge",
+          "ring"
+        ]
+      },
+      {
+        "id": "roots",
+        "label": "Roots & Strife",
+        "concepts": [
+          "ash",
+          "roots-of-ash",
+          "roots-of-strife",
+          "tree-of-strife",
+          "wide-road",
+          "swamp"
+        ]
+      },
+      {
+        "id": "crossing",
+        "label": "Threshold & change",
+        "concepts": [
+          "door",
+          "wound",
+          "repair",
+          "forge",
+          "spiral",
+          "ladder",
+          "living-root"
+        ]
+      },
+      {
+        "id": "growth",
+        "label": "Growth & habitation",
+        "concepts": [
+          "tree-of-life",
+          "garden",
+          "rooms",
+          "mature",
+          "fruit",
+          "seed"
+        ]
+      },
+      {
+        "id": "return",
+        "label": "Integration & return",
+        "concepts": [
+          "mountain",
+          "heaven",
+          "crown",
+          "north",
+          "gardener",
+          "return"
+        ]
+      }
+    ],
+    "house_concept_map": {
+      "plane": "plane",
+      "cross": "cross",
+      "door": "door",
+      "spiral": "spiral",
+      "ladder": "ladder",
+      "living-root": "root",
+      "tree-of-life": "tree",
+      "garden": "garden",
+      "fruit": "fruit",
+      "eye": "eye",
+      "seed": "seed",
+      "mountain": "mountain",
+      "swamp": "swamp"
+    },
+    "house_concept_rule": "When an Axis trace maps to a House concept, identity/function boundaries are owned by data/house/concept-topology.json. Axis may add state-transition meaning but may not redefine the mapped House operator."
+  },
+  "lifecycle_projection": {
+    "authority": "knowledge/practice/potato-path.json",
+    "status": "canonical practice projection layered onto the Axis; not a replacement for D1-D11",
+    "sequence": [
+      "Mud",
+      "Burial",
+      "Eye",
+      "Root",
+      "Sprout",
+      "Plane",
+      "Door",
+      "Ladder / Mountain",
+      "Tree",
+      "Fruit",
+      "Seed",
+      "Return"
+    ],
+    "meaning": {
+      "Mud": "Start from actual mixed conditions.",
+      "Burial": "Hidden development, protection, loss or incubation before visible expression.",
+      "Eye": "Notice and discern a viable possibility or opening.",
+      "Root": "Build support and understand history, dependencies and constraints.",
+      "Sprout": "Activate a direction into visible growth.",
+      "Plane": "Name the operative frame and observable consequences.",
+      "Door": "Identify the condition whose crossing genuinely changes available futures.",
+      "Ladder / Mountain": "Use Ladder for discrete thresholds and Mountain for continuous integration.",
+      "Tree": "Differentiate and branch without severing continuity.",
+      "Fruit": "Test what the growth gives back.",
+      "Seed": "Compress transferable learning or capacity.",
+      "Return": "Begin another cycle carrying memory and changed capability."
+    },
+    "rule": "The lifecycle can intersect D-levels more than once. It is a developmental path, not a metaphysical altitude scale."
+  },
+  "regime_model": {
+    "status": "orthogonal House-state vocabulary derived from the permanent House constitution and Potato Practice Path",
+    "principle": "Regimes describe the condition of a system or relation and can occur at different D-levels. They must not be confused with identity or location.",
+    "regimes": {
+      "Garden": {
+        "concept": "garden",
+        "meaning": "Viable conditions increase autonomy, correction, nourishment and future capability.",
+        "test": "Can life grow more independently while boundaries and passage remain healthy?"
+      },
+      "Forge": {
+        "concept": "forge",
+        "meaning": "Bounded pressure is deliberately converted into capability.",
+        "test": "Does the capability survive after the pressure is removed?"
+      },
+      "Swamp": {
+        "concept": "swamp",
+        "meaning": "Unresolved entanglement, opacity, feedback and blocked exit reproduce the problem.",
+        "test": "Does interaction keep regenerating the same capture ecology?"
+      },
+      "Dormancy": {
+        "concept": "dormancy",
+        "meaning": "Viable capability is present but not currently expressed.",
+        "test": "Is this latent but viable, or actually blocked/decaying?"
+      },
+      "Wound": {
+        "concept": "wound",
+        "meaning": "Continuity has been damaged and requires protection or repair.",
+        "test": "What was damaged, and what boundary or function must be restored?"
+      },
+      "Repair": {
+        "concept": "repair",
+        "meaning": "Active restoration of truth, agency, boundary, function or relation.",
+        "test": "What concrete capacity is restored or made safer?"
+      },
+      "Mature": {
+        "concept": "mature",
+        "meaning": "Capability is stable enough to function without dependence on the originating pressure or center.",
+        "test": "Can it continue autonomously and remain revisable?"
+      },
+      "Ash": {
+        "concept": "ash",
+        "meaning": "Residue after breakdown or exhausted form.",
+        "test": "Does the residue become Archive, Mud, Forge input or Soil?"
+      },
+      "Mud": {
+        "concept": "mud",
+        "meaning": "Mixed unresolved material that may still be sorted, metabolized or rooted.",
+        "test": "What is mixed together that needs distinction before action?"
+      },
+      "Soil": {
+        "concept": "soil",
+        "meaning": "Enabling context and conditions surrounding growth.",
+        "test": "Which condition is missing, toxic, protective or nourishing?"
+      }
+    }
+  },
+  "tree_ecology": {
+    "law": "Tree of Knowledge is the fork; Tree of Life and Tree of Strife are reproductive outcomes through one House rather than separate universes.",
+    "life_route": [
+      "knowledge",
+      "door",
+      "repair",
+      "living-root",
+      "tree-of-life",
+      "garden",
+      "fruit",
+      "seed",
+      "return"
+    ],
+    "strife_route": [
+      "knowledge",
+      "roots-of-ash",
+      "roots-of-strife",
+      "tree-of-strife",
+      "wide-road",
+      "swamp"
+    ],
+    "religious_projection": {
+      "upper": "Angelologies, divine figures, heavens, sacred mountains and celestial-order traditions may be compared here when their own sources support those roles.",
+      "crossing": "Messengers, mediators, embodiment, ritual, institutions and historical religion often cross the World Plane / Door.",
+      "lower": "Underworld, death/descent, demonology, adversarial, chthonic, esoteric and shadow traditions may be studied here without being collapsed into evil or into each other.",
+      "boundary": "Entity placement is by historically grounded role/reception plus explicit project comparison. No plane assigns moral essence to a person, religion, ethnicity, culture or deity."
+    },
+    "qliphoth_boundary": "Qliphoth/Qelipot may be used as a source-led comparative model of shells/husks/enclosure where historically appropriate; it must not become a label for disliked people or groups."
+  },
+  "seed_spiral_routing": {
+    "authority": "data/house/seed-spiral-routing.json",
+    "seed_pivot": "C_S / Son-center / lower Door tip",
+    "distinction": "Downward sign can mean rooting, Strife/Drain, or fruitful return; upward sign can mean sprouting/integration but must pass Fruit/return tests.",
+    "ring": "zero net displacement recurrence"
+  }
 }

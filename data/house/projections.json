@@ -1,0 +1,117 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "house-integrated-plurality-projections",
+  "principle": "House is the canonical ownership/composition architecture. Temple, Body, Tree/Vine and City are alternate lossy Views over differentiated plurality. They may illuminate the same underlying Rooms without becoming new owners.",
+  "source_owner": "knowledge/theology/integrated-plurality-house-tree-body-city-atlas.json",
+  "projections": [
+    {
+      "id": "house-view",
+      "label": "House",
+      "question": "Where does each differentiated domain belong and how can it remain itself inside a whole?",
+      "one": "House",
+      "many": "Dwellings → Rooms → Chambers",
+      "emphasis": [
+        "belonging",
+        "containment",
+        "boundary",
+        "passage",
+        "ownership"
+      ],
+      "project_mapping": "Canonical ownership architecture.",
+      "guard": "Resident, Room, builder, Father, Son and owner roles remain distinct."
+    },
+    {
+      "id": "temple-view",
+      "label": "Temple / Sanctuary",
+      "question": "How is presence approached, mediated, protected and shared?",
+      "one": "presence / sanctuary order",
+      "many": "courts, gates, services, stones, priestly/functions",
+      "emphasis": [
+        "presence",
+        "access",
+        "mediation",
+        "service",
+        "consecrated boundary"
+      ],
+      "project_mapping": "Use for evidence/sacred-access/privacy-sensitive flows and theological comparison; not as filing ownership.",
+      "guard": "Protected access must not become evidence hiding or unquestionable authority."
+    },
+    {
+      "id": "body-view",
+      "label": "Body",
+      "question": "Which functions depend on one another, and what happens if one fails?",
+      "one": "coordinated organism",
+      "many": "members, organs, systems, roles",
+      "emphasis": [
+        "function",
+        "mutual dependence",
+        "health",
+        "signal",
+        "failure propagation"
+      ],
+      "project_mapping": "Useful for cross-Room functional dependencies and Life & Body analogies.",
+      "guard": "No member becomes every member because all belong to one body."
+    },
+    {
+      "id": "tree-vine-view",
+      "label": "Tree / Vine",
+      "question": "How does shared continuity differentiate into branches, fruit and future seed?",
+      "one": "root/trunk/vine continuity",
+      "many": "branches, leaves, fruit, seed",
+      "emphasis": [
+        "genealogy",
+        "growth",
+        "differentiation",
+        "fruit",
+        "transmission"
+      ],
+      "project_mapping": "Use for lifecycle, generativity and knowledge growth.",
+      "guard": "Organic dependence is not a justification for permanent human dependency."
+    },
+    {
+      "id": "city-view",
+      "label": "City / New Jerusalem",
+      "question": "How can many Dwellings and institutions share infrastructure, gates and public order at scale?",
+      "one": "city/common order",
+      "many": "dwellings, gates, roads, institutions, citizens, networks",
+      "emphasis": [
+        "federation",
+        "infrastructure",
+        "public access",
+        "polycentricity",
+        "shared protocols"
+      ],
+      "project_mapping": "Use for network civilization, World Systems and multi-House federation.",
+      "guard": "City unity must preserve citizens/nodes and legal/empirical distinctions; theological image is not political sovereignty."
+    }
+  ],
+  "transformations": [
+    {
+      "from": "house-view",
+      "to": "temple-view",
+      "meaning": "same plurality re-read through presence and access"
+    },
+    {
+      "from": "house-view",
+      "to": "body-view",
+      "meaning": "same plurality re-read through function and mutual dependence"
+    },
+    {
+      "from": "house-view",
+      "to": "tree-vine-view",
+      "meaning": "same plurality re-read through growth and differentiation"
+    },
+    {
+      "from": "house-view",
+      "to": "city-view",
+      "meaning": "same plurality re-read at civic/network scale"
+    },
+    {
+      "from": "tree-vine-view",
+      "to": "city-view",
+      "meaning": "organic generativity becomes federated infrastructure when branches must coordinate at scale"
+    }
+  ],
+  "noncollapse_rule": "A projection may highlight relations omitted by another projection, but no projection may silently replace Room ownership, provenance, evidence class, historical source meaning or the other projections."
+}

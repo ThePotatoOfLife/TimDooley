@@ -37,14 +37,14 @@
       "controller": "__potatoAtlasPhysicalWater",
       "source": {
         "provider": "Natural Earth",
-        "dataset": "1:110m world overview + 1:50m regional-detail coastline, lakes, rivers and lake centerlines",
+        "dataset": "Seam-safe generated ocean base + Natural Earth 1:110m world overview and 1:50m regional-detail coastline, lakes, rivers and lake centerlines",
         "version": "pinned commit ca96624a56bd078437bca8184e78163e5039ad19",
         "attribution": "Made with Natural Earth · public domain"
       },
       "default_opacity": 0.72,
       "min_zoom": 0,
       "max_zoom": 9,
-      "status_note": "Scale-adaptive cartographic water context: 1:110m at world scale and lazily loaded 1:50m detail at regional zoom. It is not a legal boundary or drainage-basin authority layer."
+      "status_note": "Ocean color uses a small seam-safe globe mesh beneath canonical country geometry so no world-spanning polygon crosses the antimeridian or closes over a pole. Natural Earth supplies 1:110m overview and lazily loaded 1:50m regional coastline, lake and river detail. This is cartographic context, not a legal boundary or drainage-basin authority layer."
     },
     {
       "id": "physical.water.hydrology",

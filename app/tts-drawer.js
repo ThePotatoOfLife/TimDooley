@@ -28,6 +28,13 @@
 
   function buildReadingText(payload,id){return resolveSection(payload,id)?.text||'';}
 
+  function playbackPayloadChanged(previous,next,sectionId){
+    const before=normalizePayload(previous||{});
+    const after=normalizePayload(next||{});
+    if(before.id!==after.id)return true;
+    return buildReadingText(before,sectionId)!==buildReadingText(after,sectionId);
+  }
+
   function renderFocusedText(text,range){
     const value=String(text??'');
     const start=clamp(Number(range?.start)||0,0,value.length);
@@ -119,23 +126,41 @@
     return domRange;
   }
 
+  function centerDomRange(win,doc,domRange){
+    const rect=domRange?.getBoundingClientRect?.();
+    if(!rect)return false;
+    const viewportHeight=Number(win?.innerHeight||doc?.documentElement?.clientHeight)||0;
+    if(!viewportHeight||typeof win?.scrollTo!=='function')return false;
+    const currentScroll=Number(win?.scrollY??win?.pageYOffset)||0;
+    const wordCenter=(Number(rect.top)||0)+((Number(rect.height)||0)/2);
+    const delta=wordCenter-(viewportHeight/2);
+    const top=Math.max(0,currentScroll+delta);
+    win.scrollTo({top,behavior:'auto'});
+    return true;
+  }
+
   function createPageHighlighter(options={}){
     const doc=options.document||root?.document;
     const win=doc?.defaultView||root;
     const highlights=win?.CSS?.highlights;
     const HighlightCtor=win?.Highlight||root?.Highlight;
     const name=options.name||'potato-tts-word';
+    const settingsKey=options.settingsKey||'potato-tts-settings';
     let cachedContainer=null,cachedExclude='',cachedMap=null;
     function clear(){highlights?.delete?.(name)}
     function invalidate(){cachedContainer=null;cachedExclude='';cachedMap=null;clear()}
-    function highlight(container,range,excludeSelector=''){
-      if(!container||!highlights||typeof HighlightCtor!=='function')return false;
+    function persistedFollow(){
+      try{return JSON.parse(win?.localStorage?.getItem?.(settingsKey)||'{}').followReading===true}catch{return false}
+    }
+    function highlight(container,range,excludeSelector='',follow){
+      if(!container)return false;
       if(container!==cachedContainer||excludeSelector!==cachedExclude||!cachedMap){
         cachedContainer=container;cachedExclude=excludeSelector;cachedMap=buildNormalizedTextMap(container,excludeSelector);
       }
       const domRange=rangeFromTextMap(cachedMap,range,doc);
       if(!domRange){clear();return false}
-      highlights.set(name,new HighlightCtor(domRange));
+      if(highlights&&typeof HighlightCtor==='function')highlights.set(name,new HighlightCtor(domRange));
+      if(typeof follow==='boolean'?follow:persistedFollow())centerDomRange(win,doc,domRange);
       return true;
     }
     return {highlight,clear,invalidate,get text(){return cachedMap?.text||''}};
@@ -206,6 +231,7 @@
     if(typeof document==='undefined')return null;
     const target=options.target;
     const getPayload=typeof options.getPayload==='function'?options.getPayload:()=>options.payload;
+    const prepareSection=typeof options.prepareSection==='function'?options.prepareSection:null;
     if(!target)throw new Error('PotatoTTSDrawer.mount requires a target element.');
 
     const speechOk=Boolean(root?.speechSynthesis&&root?.SpeechSynthesisUtterance&&root?.PotatoTTS?.TTSEngine);
@@ -221,6 +247,9 @@
     let voices=[];
     let selectedVoice=null;
     let engine=null;
+    let preparing=false;
+    let startRequest=0;
+    let preparationController=null;
 
     const host=el('section','ptts-drawer');host.dataset.state=state;
     const closed=el('button','ptts-trigger','🔊 Listen');closed.type='button';closed.setAttribute('aria-expanded','false');
@@ -234,15 +263,24 @@
     const volume=el('input','ptts-volume');volume.type='range';volume.min='0';volume.max='1';volume.step='.05';volume.setAttribute('aria-label','Volume');
     const speed=el('select','ptts-select ptts-speed');speed.setAttribute('aria-label','Speed');
     [['0.75×','.75'],['0.9×','.9'],['1.0×','1'],['1.1×','1.1'],['1.25×','1.25'],['1.5×','1.5'],['1.75×','1.75'],['2.0×','2']].forEach(([label,value])=>{const o=new Option(label,value);if(value==='1')o.selected=true;speed.add(o)});
+    const follow=button('Follow reading','🎯');follow.setAttribute('aria-pressed','false');
     const expand=button('Expand reading view','▣');
     const status=el('span','ptts-status');status.setAttribute('aria-live','polite');
-    rail.append(collapse,play,pause,stop,scope,voice,mute,volume,speed,status,expand);
+    rail.append(collapse,play,pause,stop,scope,voice,mute,volume,speed,status,follow,expand);
     const viewport=el('div','ptts-viewport');viewport.hidden=true;viewport.setAttribute('aria-live','off');
     const label=el('div','ptts-label');const reading=el('div','ptts-reading');viewport.append(label,reading);
     panel.append(rail,viewport);host.append(closed,panel);target.append(host);
 
     const saved=readSettings();volume.value=String(Number.isFinite(Number(saved.volume))?clamp(Number(saved.volume),0,1):1);speed.value=saved.speed||'1';
+    let followReading=saved.followReading===true;
     let lastVolume=Number(volume.value)||1;
+
+    function updateFollowButton(){
+      follow.setAttribute('aria-pressed',String(followReading));
+      follow.setAttribute('aria-label',followReading?'Stop following reading':'Follow reading');
+      follow.title=followReading?'Stop following reading':'Follow reading';
+      host.dataset.follow=followReading?'true':'false';
+    }
 
     function setState(next){
       state=next;host.dataset.state=state;
@@ -258,7 +296,7 @@
     function refreshVoices(){
       if(!speechOk)return;
       voices=[...root.speechSynthesis.getVoices()];
-      const wanted=root.PotatoTTS.chooseVoice(voices,saved.voice);
+      const wanted=root.PotatoTTS.chooseVoice(voices,readSettings().voice);
       voice.replaceChildren();voices.forEach((v,i)=>voice.add(new Option(`${v.name} · ${v.lang}`,String(i))));
       selectedVoice=wanted||voices[0]||null;voice.value=String(Math.max(0,voices.indexOf(selectedVoice)));
     }
@@ -268,9 +306,16 @@
     function showWord(range){
       if(state!=='expanded')return;
       const parts=renderFocusedText(activeText,range);reading.replaceChildren(document.createTextNode(parts.before),el('mark','ptts-word',parts.active),document.createTextNode(parts.after));
-      const mark=reading.querySelector('.ptts-word');mark?.scrollIntoView?.({block:'nearest',inline:'nearest'});
     }
-    function updateButtons(){const s=engine?.state||'idle';pause.disabled=!['speaking','paused'].includes(s);stop.disabled=s==='idle';pause.textContent=s==='paused'?'▶':'Ⅱ';status.textContent=s==='speaking'?'reading':s==='paused'?'paused':'';host.dataset.speech=s;}
+    function updateButtons(){
+      const s=engine?.state||'idle';
+      play.disabled=!speechOk||preparing;
+      pause.disabled=!speechOk||preparing||!['speaking','paused'].includes(s);
+      stop.disabled=!speechOk||(s==='idle'&&!preparing);
+      pause.textContent=s==='paused'?'▶':'Ⅱ';
+      status.textContent=!speechOk?'speech unavailable':preparing?'loading text…':s==='speaking'?'reading':s==='paused'?'paused':'';
+      host.dataset.speech=preparing?'preparing':s;
+    }
 
     if(speechOk){
       engine=new root.PotatoTTS.TTSEngine({synth:root.speechSynthesis,Utterance:root.SpeechSynthesisUtterance,onEvent:event=>{
@@ -278,19 +323,50 @@
         if(event.type==='chunkstart'&&state==='expanded'&&!currentWord)showPlain(activeText);
         if(['complete','stop','error'].includes(event.type)){currentWord=null;if(state==='expanded')showPlain(activeText)}
         updateButtons();
-        options.onEvent?.({...event,sectionId});
+        options.onEvent?.({...event,sectionId,followReading});
       }});
       refreshVoices();root.speechSynthesis.addEventListener?.('voiceschanged',refreshVoices);
     }else{
       [play,pause,stop,voice,volume,speed,mute].forEach(node=>node.disabled=true);status.textContent='speech unavailable';
     }
 
-    function start(){
+    function cancelPendingStart(){
+      startRequest+=1;
+      preparationController?.abort?.();
+      preparationController=null;
+      if(preparing){preparing=false;updateButtons()}
+    }
+    async function start(){
+      const request=++startRequest;
+      if(prepareSection){
+        preparing=true;
+        preparationController=typeof AbortController==='function'?new AbortController():null;
+        const controller=preparationController;
+        updateButtons();
+        try{
+          const next=await prepareSection(sectionId,{signal:controller?.signal});
+          if(request!==startRequest)return;
+          if(next)payload=normalizePayload(next);
+        }catch(error){
+          if(error?.name==='AbortError')return;
+          if(request===startRequest){
+            preparing=false;
+            status.textContent='could not load text';host.dataset.speech='error';
+            options.onEvent?.({type:'error',error,sectionId,followReading});
+          }
+          return;
+        }finally{
+          if(preparationController===controller)preparationController=null;
+          if(request===startRequest&&preparing){preparing=false;updateButtons()}
+        }
+      }
+      if(request!==startRequest)return;
       payload=normalizePayload(getPayload()||payload);updateScope();activeText=buildReadingText(payload,sectionId);if(!activeText)return;currentWord=null;showPlain(activeText);engine?.start(activeText,currentOptions());if(state==='closed')setState('open');
     }
     function restartLive(){if(engine?.state!=='speaking')return;const at=currentWord?.start||engine.cursor||0;engine.start(activeText,{...currentOptions(),startAt:at});}
     function setPayload(next){
-      const normalized=normalizePayload(next||{});const changed=normalized.id!==payload.id;
+      const normalized=normalizePayload(next||{});
+      const changed=playbackPayloadChanged(payload,normalized,sectionId);
       payload=normalized;updateScope();
       if(changed&&engine&&engine.state!=='idle')engine.stop();
       activeText=buildReadingText(payload,sectionId);if(state==='expanded')showPlain(activeText);
@@ -300,24 +376,31 @@
       if(payload.sections.some(section=>section.id===id))sectionId=id;
       updateScope();
       setState('open');
-      start();
+      void start();
     }
 
     closed.addEventListener('click',()=>{setPayload(getPayload()||payload);setState('open')});
-    collapse.addEventListener('click',()=>{engine?.stop();setState('closed')});
+    collapse.addEventListener('click',()=>{cancelPendingStart();engine?.stop();setState('closed')});
     expand.addEventListener('click',()=>{setState(state==='expanded'?'open':'expanded');activeText=buildReadingText(payload,sectionId);showPlain(activeText)});
-    play.addEventListener('click',()=>{if(engine?.state==='paused')engine.resume();else start()});
+    play.addEventListener('click',()=>{if(engine?.state==='paused')engine.resume();else void start()});
     pause.addEventListener('click',()=>{if(engine?.state==='paused')engine.resume();else engine?.pause()});
-    stop.addEventListener('click',()=>engine?.stop());
-    scope.addEventListener('change',()=>{sectionId=scope.value;activeText=buildReadingText(payload,sectionId);engine?.stop();showPlain(activeText);label.textContent=[payload.label,resolveSection(payload,sectionId)?.label].filter(Boolean).join(' · ')});
+    stop.addEventListener('click',()=>{cancelPendingStart();engine?.stop()});
+    scope.addEventListener('change',()=>{cancelPendingStart();sectionId=scope.value;activeText=buildReadingText(payload,sectionId);engine?.stop();showPlain(activeText);label.textContent=[payload.label,resolveSection(payload,sectionId)?.label].filter(Boolean).join(' · ')});
     voice.addEventListener('change',()=>{selectedVoice=voices[Number(voice.value)]||null;writeSettings({voice:root.PotatoTTS.voiceIdentity(selectedVoice)});restartLive()});
     speed.addEventListener('change',()=>{writeSettings({speed:speed.value});restartLive()});
     volume.addEventListener('input',()=>{const v=Number(volume.value);if(v>0)lastVolume=v;mute.textContent=v===0?'🔇':v<.5?'🔉':'🔊';writeSettings({volume:v});restartLive()});
     mute.addEventListener('click',()=>{if(Number(volume.value)>0){lastVolume=Number(volume.value);volume.value='0'}else volume.value=String(lastVolume||1);volume.dispatchEvent(new Event('input'))});
+    follow.addEventListener('click',()=>{
+      followReading=!followReading;
+      updateFollowButton();
+      writeSettings({followReading});
+      if(currentWord)showWord(currentWord);
+      options.onEvent?.({type:'followchange',state:engine?.state||'idle',sectionId,followReading,absoluteWord:currentWord});
+    });
 
-    updateScope();updateButtons();
-    return {element:host,setPayload,getPayload:()=>payload,playSection,open:()=>setState('open'),expand:()=>setState('expanded'),close:()=>setState('closed'),stop:()=>engine?.stop(),engine};
+    updateScope();updateFollowButton();updateButtons();
+    return {element:host,setPayload,getPayload:()=>payload,playSection,open:()=>setState('open'),expand:()=>setState('expanded'),close:()=>{cancelPendingStart();engine?.stop();setState('closed')},stop:()=>{cancelPendingStart();engine?.stop()},isFollowing:()=>followReading,engine};
   }
 
-  return {normalizePayload,resolveSection,buildReadingText,renderFocusedText,buildNormalizedTextMap,createPageHighlighter,mountSelectionAction,mount};
+  return {normalizePayload,resolveSection,buildReadingText,playbackPayloadChanged,renderFocusedText,buildNormalizedTextMap,centerDomRange,createPageHighlighter,mountSelectionAction,mount};
 });

@@ -1,0 +1,2169 @@
+{
+  "version": "1.6.0",
+  "updated": "2026-09-18",
+  "authority": "religious-symbolic-branch-atlas",
+  "purpose": "Populate the Potato House with religious, mythic, angelic, demonic, underworld, esoteric and sacred-architecture subjects already present in the repository while preserving own-tradition meaning before comparison.",
+  "epistemic_rule": "Every node is first a subject in its own historical/textual tradition or a clearly marked Potatoverse operator. Plane, Tree and Potatoverse mappings are navigation/comparative projections, not proof of literal identity, supernatural truth or historical transmission.",
+  "visibility_levels": [
+    "landmark",
+    "room-detail",
+    "archive-only"
+  ],
+  "branches": [
+    {
+      "id": "celestial-mediation",
+      "label": "Celestial Mediation & Transmission",
+      "direction": "ne",
+      "primary_room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "other-traditions"
+      ],
+      "description": "Messengers, celestial intermediaries, ascent/descent, transmission and Spirit-like mediation.",
+      "center_anchor_ids": [
+        "spirit",
+        "axis",
+        "door",
+        "ladder"
+      ]
+    },
+    {
+      "id": "divine-figures",
+      "label": "Gods, Divine Figures & Sacred Order",
+      "direction": "ne",
+      "primary_room_ids": [
+        "comparative-mythology",
+        "bible-christianity",
+        "other-traditions"
+      ],
+      "description": "Divine figures and sacred-order concepts kept rooted in their own traditions before structural comparison.",
+      "center_anchor_ids": [
+        "house",
+        "mountain",
+        "eye"
+      ]
+    },
+    {
+      "id": "underworld-adversarial",
+      "label": "Adversarial, Demonological & Shadow Reception",
+      "direction": "ne",
+      "primary_room_ids": [
+        "comparative-mythology",
+        "bible-christianity",
+        "esoteric-sacred-geometry"
+      ],
+      "description": "Adversarial figures, demonologies, hostile receptions, enclosure/capture symbols and shadow-system comparisons. Neutral death realms move to Death / Underworld / Passage.",
+      "center_anchor_ids": [
+        "tree-of-strife",
+        "swamp",
+        "shadow"
+      ]
+    },
+    {
+      "id": "esoteric-tree",
+      "label": "Esoteric Trees, Shells & Initiation",
+      "direction": "ne",
+      "primary_room_ids": [
+        "esoteric-sacred-geometry",
+        "comparative-mythology"
+      ],
+      "description": "Kabbalistic, esoteric, mandorla, initiation and shell/repair comparators.",
+      "center_anchor_ids": [
+        "tree",
+        "door",
+        "axis",
+        "shadow"
+      ]
+    },
+    {
+      "id": "sacred-architecture",
+      "label": "Sacred Architecture, Mountain & World Tree",
+      "direction": "ne",
+      "primary_room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "esoteric-sacred-geometry",
+        "symbolic-architecture"
+      ],
+      "description": "World trees, ladders, mountains, temples, cities and threshold architecture.",
+      "center_anchor_ids": [
+        "house",
+        "mountain",
+        "door",
+        "axis"
+      ]
+    },
+    {
+      "id": "potato-route-operators",
+      "label": "Potato Route Operators",
+      "direction": "n",
+      "primary_room_ids": [
+        "symbolic-architecture",
+        "theology-god-language"
+      ],
+      "description": "Project-owned operators used to route comparative material through Seed, Root, Tree, Spiral, Garden and Swamp.",
+      "center_anchor_ids": [
+        "potato-of-life",
+        "door",
+        "axis",
+        "seed",
+        "root",
+        "tree",
+        "spiral",
+        "fruit"
+      ]
+    },
+    {
+      "id": "death-passage",
+      "label": "Death, Underworld, Judgment & Passage",
+      "direction": "ne",
+      "primary_room_ids": [
+        "comparative-mythology",
+        "bible-christianity",
+        "other-traditions"
+      ],
+      "description": "Realms of the dead, death journeys, judgment thresholds, boundary waters and intermediate states kept distinct from demonology.",
+      "center_anchor_ids": [
+        "seed",
+        "root",
+        "door",
+        "spiral"
+      ]
+    },
+    {
+      "id": "garden-waters",
+      "label": "Gardens, Waters & Guarded Return",
+      "direction": "ne",
+      "primary_room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "description": "Paradise/garden regimes, source waters, guarded thresholds, Trees and return/distribution motifs.",
+      "center_anchor_ids": [
+        "garden",
+        "tree-of-life",
+        "door",
+        "fruit",
+        "seed"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "angels-messengers",
+      "label": "Angels / Messengers",
+      "kind": "tradition-family",
+      "branch_id": "celestial-mediation",
+      "tradition": "Biblical/Jewish/Christian and wider angelological traditions",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "life-branches",
+        "trunk"
+      ],
+      "route_affinity": [
+        "transmission",
+        "ladder",
+        "return"
+      ],
+      "source_files": [
+        "knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json",
+        "knowledge/traditions/biblical-angel-eye-sprout-atlas.json"
+      ],
+      "visibility": "landmark",
+      "note": "Messenger/relay functions are strongest; historical angelologies remain tradition-specific.",
+      "boundary": "Do not use 'angel' as a generic factual label for admired people.",
+      "layer_category": "inhabitant"
+    },
+    {
+      "id": "valkyries",
+      "label": "Valkyries",
+      "kind": "mythic-figure-family",
+      "branch_id": "celestial-mediation",
+      "tradition": "Old Norse literary/religious traditions",
+      "room_ids": [
+        "comparative-mythology"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk",
+        "roots"
+      ],
+      "route_affinity": [
+        "death-selection",
+        "mediation",
+        "ascent-descent"
+      ],
+      "source_files": [
+        "knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Useful bridge for battle-death selection and movement toward Odin/Valhalla while remaining distinct from biblical angels.",
+      "boundary": "Comparative bridge only; Valkyries are not angels."
+    },
+    {
+      "id": "spirit-breath-flow",
+      "label": "Spirit / Breath / Flow",
+      "kind": "cross-tradition-concept",
+      "branch_id": "celestial-mediation",
+      "tradition": "Potatoverse plus comparative breath/spirit/process traditions",
+      "room_ids": [
+        "theology-god-language",
+        "other-traditions",
+        "symbolic-body-comparison"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "axis",
+        "trunk",
+        "canopy"
+      ],
+      "route_affinity": [
+        "flow",
+        "mediation",
+        "return"
+      ],
+      "source_files": [
+        "knowledge/spirit/spirit-context-atlas.json",
+        "knowledge/theology/potato-of-life-trinity.json"
+      ],
+      "visibility": "landmark",
+      "note": "Cross-plane continuity/mediation; biological and spiritual flows remain separately typed.",
+      "boundary": "Symbolic flow is not empirical proof of a physical spiritual fluid.",
+      "layer_category": "inhabitant"
+    },
+    {
+      "id": "jacobs-ladder",
+      "label": "Jacob's Ladder",
+      "kind": "sacred-text-motif",
+      "branch_id": "celestial-mediation",
+      "tradition": "Genesis/Jewish and Christian reception",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology"
+      ],
+      "planes": [
+        "world-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "trunk",
+        "canopy"
+      ],
+      "route_affinity": [
+        "ladder",
+        "ascent-descent",
+        "door"
+      ],
+      "source_files": [
+        "knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json",
+        "knowledge/traditions/babel-stone-ladder-spiral-two-architectures-atlas.json"
+      ],
+      "visibility": "landmark",
+      "note": "Strong comparator for bidirectional messenger movement and ordered thresholds.",
+      "boundary": "Potatoverse D-levels are not the authentic map of Jacob's dream."
+    },
+    {
+      "id": "jesus",
+      "label": "Jesus",
+      "kind": "historical-religious-figure",
+      "branch_id": "divine-figures",
+      "tradition": "First-century Jewish context and Christian textual/theological traditions",
+      "room_ids": [
+        "bible-christianity",
+        "developmental-genealogy",
+        "theology-god-language"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk",
+        "roots"
+      ],
+      "route_affinity": [
+        "door",
+        "death-burial",
+        "return"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-mythology-map.json",
+        "knowledge/theology/potato-of-life-trinity.json"
+      ],
+      "visibility": "landmark",
+      "note": "Historical/textual Jesus, later Christology and Potatoverse Son/Door comparison remain separate layers.",
+      "boundary": "Potatoverse correspondence does not rewrite historical Christianity."
+    },
+    {
+      "id": "odin",
+      "label": "Odin",
+      "kind": "mythic-divine-figure",
+      "branch_id": "divine-figures",
+      "tradition": "Old Norse/Germanic traditions",
+      "room_ids": [
+        "comparative-mythology"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk",
+        "roots"
+      ],
+      "route_affinity": [
+        "wisdom",
+        "tree",
+        "sacrifice",
+        "death",
+        "hidden-knowledge"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-mythology-map.json",
+        "knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json"
+      ],
+      "visibility": "landmark",
+      "note": "Crosses sovereignty/wisdom, poetry/magic, war/death and world-tree material.",
+      "boundary": "Structural comparison with the Potato Axis does not imply identity."
+    },
+    {
+      "id": "thor",
+      "label": "Thor",
+      "kind": "mythic-divine-figure",
+      "branch_id": "divine-figures",
+      "tradition": "Old Norse/Germanic traditions",
+      "room_ids": [
+        "comparative-mythology"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk"
+      ],
+      "route_affinity": [
+        "storm",
+        "protection"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-mythology-map.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Sky/storm/protection comparator kept distinct from other thunder deities.",
+      "boundary": "Motif comparison is not historical identity."
+    },
+    {
+      "id": "atlas-titan",
+      "label": "Atlas",
+      "kind": "mythic-divine-figure",
+      "branch_id": "divine-figures",
+      "tradition": "Greek mythic traditions",
+      "room_ids": [
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "axis",
+        "canopy",
+        "trunk"
+      ],
+      "route_affinity": [
+        "support",
+        "heaven-earth-bearing"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-mythology-map.json"
+      ],
+      "visibility": "room-detail",
+      "note": "High-value structural comparator for bearing/support and heaven-earth separation around an Axis.",
+      "boundary": "Atlas is a comparator, not a Potatoverse identity."
+    },
+    {
+      "id": "maat",
+      "label": "Ma'at / Maat",
+      "kind": "divine-concept-figure",
+      "branch_id": "divine-figures",
+      "tradition": "Ancient Egyptian religion",
+      "room_ids": [
+        "comparative-mythology",
+        "law-justice"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk",
+        "roots"
+      ],
+      "route_affinity": [
+        "judgment",
+        "balance",
+        "door"
+      ],
+      "source_files": [
+        "knowledge/traditions/adversarial-underworld-judgment-atlas.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Comparator for truth, balance, judgment and right relation.",
+      "boundary": "Not a Tim/Potatoverse identity claim."
+    },
+    {
+      "id": "axomamma",
+      "label": "Axomamma / Potato Mother",
+      "kind": "divine-figure",
+      "branch_id": "divine-figures",
+      "tradition": "Andean/Inca potato-related sacred traditions",
+      "room_ids": [
+        "other-traditions",
+        "potato-biology",
+        "comparative-mythology"
+      ],
+      "planes": [
+        "world-plane",
+        "heaven-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "life-branches",
+        "canopy"
+      ],
+      "route_affinity": [
+        "soil",
+        "fertility",
+        "harvest",
+        "seed"
+      ],
+      "source_files": [
+        "knowledge/traditions/adversarial-underworld-judgment-atlas.json"
+      ],
+      "visibility": "room-detail",
+      "note": "High-value external comparator for potato, soil, fertility, nourishment and cultivation.",
+      "boundary": "Comparator rather than direct Potatoverse identity."
+    },
+    {
+      "id": "tammuz",
+      "label": "Tammuz / Dumuzi",
+      "kind": "divine-figure",
+      "branch_id": "divine-figures",
+      "tradition": "Ancient Mesopotamian traditions and later reception",
+      "room_ids": [
+        "comparative-mythology",
+        "other-traditions"
+      ],
+      "planes": [
+        "world-plane",
+        "below-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk",
+        "life-branches"
+      ],
+      "route_affinity": [
+        "death-descent",
+        "seasonal-return",
+        "seed"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-mythology-map.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Useful for death/descent/return and agricultural renewal motifs.",
+      "boundary": "Project Son/Tammuz comparisons remain comparisons."
+    },
+    {
+      "id": "baal",
+      "label": "Baal",
+      "kind": "divine-figure",
+      "branch_id": "divine-figures",
+      "tradition": "West Semitic/Canaanite traditions with later polemical/demonological receptions",
+      "room_ids": [
+        "comparative-mythology",
+        "developmental-genealogy"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk",
+        "roots"
+      ],
+      "route_affinity": [
+        "storm",
+        "kingship",
+        "reception-genealogy"
+      ],
+      "source_files": [
+        "knowledge/traditions/adversarial-underworld-judgment-atlas.json",
+        "knowledge/traditions/comparative-mythology-map.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Own-tradition deity layer must be distinguished from later hostile receptions.",
+      "boundary": "Later demonization must not be backdated into the older tradition."
+    },
+    {
+      "id": "hall-two-truths",
+      "label": "Hall of the Two Truths",
+      "kind": "underworld-judgment-complex",
+      "branch_id": "death-passage",
+      "tradition": "Ancient Egyptian funerary religion",
+      "room_ids": [
+        "comparative-mythology",
+        "law-justice"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk"
+      ],
+      "route_affinity": [
+        "judgment",
+        "door",
+        "death-passage"
+      ],
+      "source_files": [
+        "knowledge/traditions/adversarial-underworld-judgment-atlas.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Strong comparator for death, weighing, judgment and passage through a threshold.",
+      "boundary": "Comparative architecture, not proof of a shared afterlife map."
+    },
+    {
+      "id": "satan-adversary",
+      "label": "Satan / Adversary",
+      "kind": "adversarial-tradition",
+      "branch_id": "underworld-adversarial",
+      "tradition": "Biblical/Christian and later adversarial traditions",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "strife-branches",
+        "trunk"
+      ],
+      "route_affinity": [
+        "adversary",
+        "accusation",
+        "strife"
+      ],
+      "source_files": [
+        "knowledge/traditions/adversarial-underworld-judgment-atlas.json"
+      ],
+      "visibility": "landmark",
+      "note": "Adversarial/accusatory traditions are tracked separately from modern Satanisms.",
+      "boundary": "Do not map real people to literal Satan/demon identities."
+    },
+    {
+      "id": "lucifer-reception",
+      "label": "Lucifer Reception",
+      "kind": "reception-genealogy",
+      "branch_id": "underworld-adversarial",
+      "tradition": "Latin/biblical translation and later Christian/literary/occult receptions",
+      "room_ids": [
+        "bible-christianity",
+        "developmental-genealogy",
+        "comparative-mythology"
+      ],
+      "planes": [
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "trunk",
+        "roots",
+        "strife-branches"
+      ],
+      "route_affinity": [
+        "light",
+        "fall",
+        "reception"
+      ],
+      "source_files": [
+        "knowledge/traditions/adversarial-underworld-judgment-atlas.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Track source text, translation and later devil/fallen-light traditions as dated layers.",
+      "boundary": "Do not collapse all uses of lucifer/light-bringer into one later demonological meaning."
+    },
+    {
+      "id": "leviathan",
+      "label": "Leviathan",
+      "kind": "adversarial-mythic-figure",
+      "branch_id": "underworld-adversarial",
+      "tradition": "Biblical and later comparative traditions",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "strife-branches"
+      ],
+      "route_affinity": [
+        "stagnation",
+        "anti-spiral",
+        "enclosure"
+      ],
+      "source_files": [
+        "knowledge/traditions/adversarial-underworld-judgment-atlas.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Project shadow comparator for accumulated power/stagnation without transformation.",
+      "boundary": "Project functional use remains distinct from biblical textual meaning."
+    },
+    {
+      "id": "archons",
+      "label": "Archons",
+      "kind": "religious-system-figure-family",
+      "branch_id": "underworld-adversarial",
+      "tradition": "Gnostic/late-antique systems and later reception",
+      "room_ids": [
+        "other-traditions",
+        "comparative-mythology",
+        "information-ecology"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "strife-branches",
+        "trunk"
+      ],
+      "route_affinity": [
+        "intermediary-control",
+        "shell",
+        "proxy"
+      ],
+      "source_files": [
+        "knowledge/traditions/adversarial-underworld-judgment-atlas.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Useful systems comparator for intermediary rulers/enclosure and distorted mediation.",
+      "boundary": "Do not use Archon as a factual label for institutions or people without tradition-specific context."
+    },
+    {
+      "id": "moloch",
+      "label": "Moloch / Molech",
+      "kind": "ancient-term-and-modern-metaphor",
+      "branch_id": "underworld-adversarial",
+      "tradition": "Ancient biblical/cultic scholarship plus modern systems metaphor",
+      "room_ids": [
+        "bible-christianity",
+        "systems-dynamics",
+        "subculture-group-formation"
+      ],
+      "planes": [
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "strife-branches",
+        "trunk"
+      ],
+      "route_affinity": [
+        "sacrifice",
+        "coordination-failure",
+        "seed-consumption"
+      ],
+      "source_files": [
+        "knowledge/traditions/adversarial-underworld-judgment-atlas.json",
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Ancient term and modern coordination-failure metaphor are separate layers.",
+      "boundary": "Modern Moloch metaphor is not the same thing as the ancient cultic question."
+    },
+    {
+      "id": "demonology",
+      "label": "Demonologies",
+      "kind": "tradition-family",
+      "branch_id": "underworld-adversarial",
+      "tradition": "Multiple religious and esoteric traditions",
+      "room_ids": [
+        "comparative-mythology",
+        "bible-christianity",
+        "esoteric-sacred-geometry"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "strife-branches",
+        "trunk"
+      ],
+      "route_affinity": [
+        "adversarial",
+        "capture",
+        "distortion"
+      ],
+      "source_files": [
+        "knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json",
+        "knowledge/traditions/adversarial-underworld-judgment-atlas.json"
+      ],
+      "visibility": "landmark",
+      "note": "Own-tradition demonologies first; project functional demon model is a second layer.",
+      "boundary": "Never infer literal demonic identity from disliked behavior or group membership.",
+      "layer_category": "inhabitant"
+    },
+    {
+      "id": "qliphoth",
+      "label": "Qliphoth / Qelipot",
+      "kind": "esoteric-tradition-complex",
+      "branch_id": "esoteric-tree",
+      "tradition": "Jewish Kabbalistic and later esoteric receptions",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "comparative-mythology"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "strife-branches"
+      ],
+      "route_affinity": [
+        "shell",
+        "broken-vessel",
+        "repair"
+      ],
+      "source_files": [
+        "knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json",
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Shell/husk and trapped-spark/tikkun material is a strong structural comparator for enclosure and repair.",
+      "boundary": "Do not label people, religions or populations as literal Qliphoth."
+    },
+    {
+      "id": "sefirot-tree",
+      "label": "Sefirot / Tree of Life traditions",
+      "kind": "esoteric-tradition-complex",
+      "branch_id": "esoteric-tree",
+      "tradition": "Jewish Kabbalistic traditions and later reception",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "comparative-mythology"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "life-branches",
+        "trunk"
+      ],
+      "route_affinity": [
+        "emanation",
+        "tree",
+        "integration"
+      ],
+      "source_files": [
+        "knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json"
+      ],
+      "visibility": "room-detail",
+      "note": "External Tree-of-Life tradition is kept distinct from the Potatoverse Tree of Life while allowing typed comparison.",
+      "boundary": "Do not present Potatoverse routing as authentic Kabbalistic doctrine."
+    },
+    {
+      "id": "western-esoteric",
+      "label": "Western Esoteric / Initiatory Traditions",
+      "kind": "tradition-family",
+      "branch_id": "esoteric-tree",
+      "tradition": "Multiple historical Western esoteric currents",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "developmental-genealogy"
+      ],
+      "planes": [
+        "world-plane",
+        "below-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk",
+        "canopy"
+      ],
+      "route_affinity": [
+        "initiation",
+        "threshold",
+        "ascent-descent"
+      ],
+      "source_files": [
+        "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Historical schools and symbols may span hidden/initiation, embodied practice and ascent cosmology.",
+      "boundary": "Esoteric does not mean demonic, harmful or high-control."
+    },
+    {
+      "id": "yggdrasil-world-tree",
+      "label": "Yggdrasil / World Tree",
+      "kind": "world-tree-tradition",
+      "branch_id": "sacred-architecture",
+      "tradition": "Old Norse literary/mythic traditions",
+      "room_ids": [
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk",
+        "canopy"
+      ],
+      "route_affinity": [
+        "world-tree",
+        "axis"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-mythology-map.json",
+        "knowledge/traditions/selected-cosmography-structural-exemplars.json"
+      ],
+      "visibility": "landmark",
+      "note": "High-value comparator for a tree connecting differentiated realms/levels.",
+      "boundary": "Yggdrasil and the Potato Tree are not historically identical.",
+      "layer_category": "organism",
+      "structural_lesson": "World Tree as maintained, inhabited and damageable ecology; roots can hold wisdom, nourishment and threat, while the whole requires renewal.",
+      "depth_status": "selected-deep-exemplar"
+    },
+    {
+      "id": "new-jerusalem",
+      "label": "New Jerusalem / Heavenly City",
+      "kind": "sacred-architecture-motif",
+      "branch_id": "sacred-architecture",
+      "tradition": "Christian biblical/apocalyptic traditions",
+      "room_ids": [
+        "bible-christianity",
+        "symbolic-architecture"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk"
+      ],
+      "route_affinity": [
+        "city",
+        "house",
+        "descent-return"
+      ],
+      "source_files": [
+        "knowledge/traditions/biblical-heavenly-pattern-temple-city-atlas.json",
+        "knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Important counter-flow motif: heavenly pattern/city can descend toward World rather than all movement being upward.",
+      "boundary": "Project House/City comparison remains comparative."
+    },
+    {
+      "id": "sacred-mountain-temple",
+      "label": "Sacred Mountain / Temple Pattern",
+      "kind": "sacred-architecture-family",
+      "branch_id": "sacred-architecture",
+      "tradition": "Biblical and cross-tradition sacred-mountain/temple material",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk"
+      ],
+      "route_affinity": [
+        "mountain",
+        "pattern",
+        "descent-return"
+      ],
+      "source_files": [
+        "knowledge/traditions/biblical-heavenly-pattern-temple-city-atlas.json",
+        "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json"
+      ],
+      "visibility": "landmark",
+      "note": "Supports Mountain as integration/perspective and pattern-to-world translation.",
+      "boundary": "Height does not automatically imply truth or holiness.",
+      "layer_category": "terrain"
+    },
+    {
+      "id": "mandorla-vesica",
+      "label": "Mandorla / Vesica Threshold",
+      "kind": "sacred-geometry-motif",
+      "branch_id": "sacred-architecture",
+      "tradition": "Christian art/geometry plus wider esoteric reception",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "math-geometry",
+        "symbolic-architecture"
+      ],
+      "planes": [
+        "world-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "trunk"
+      ],
+      "route_affinity": [
+        "door",
+        "overlap",
+        "threshold"
+      ],
+      "source_files": [
+        "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
+        "data/house/concept-topology.json"
+      ],
+      "visibility": "landmark",
+      "note": "Strong visual/structural comparator for overlap and threshold; exact Potato geometry remains separately defined.",
+      "boundary": "Historical mandorla use does not prove Potatoverse theology.",
+      "layer_category": "threshold"
+    },
+    {
+      "id": "tree-of-knowledge",
+      "label": "Tree of Knowledge",
+      "kind": "potatoverse-operator",
+      "branch_id": "potato-route-operators",
+      "tradition": "Potatoverse project grammar with biblical/comparative neighbors",
+      "room_ids": [
+        "symbolic-architecture",
+        "bible-christianity"
+      ],
+      "planes": [
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "trunk",
+        "roots"
+      ],
+      "route_affinity": [
+        "fork",
+        "life",
+        "strife",
+        "repair"
+      ],
+      "source_files": [
+        "knowledge/core/root-system.json",
+        "data/house/tree-plane-routing.json"
+      ],
+      "visibility": "landmark",
+      "note": "Knowledge/distinction is upstream of both Life and Strife.",
+      "boundary": "Knowledge is not equivalent to Strife.",
+      "layer_category": "organism"
+    },
+    {
+      "id": "tree-of-life-project",
+      "label": "Tree of Life — project route",
+      "kind": "potatoverse-operator",
+      "branch_id": "potato-route-operators",
+      "tradition": "Potatoverse project grammar",
+      "room_ids": [
+        "symbolic-architecture",
+        "practice-ethics"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk",
+        "life-branches",
+        "canopy"
+      ],
+      "route_affinity": [
+        "life",
+        "return"
+      ],
+      "source_files": [
+        "data/house/tree-plane-routing.json",
+        "knowledge/core/root-system.json"
+      ],
+      "visibility": "landmark",
+      "note": "Living Root → Door/Ladder → Tree → Garden → Fruit → Seed → return.",
+      "boundary": "Project Tree of Life remains distinct from external traditions with the same name.",
+      "layer_category": "organism"
+    },
+    {
+      "id": "roots-of-ash",
+      "label": "Roots of Ash",
+      "kind": "potatoverse-root-state",
+      "branch_id": "potato-route-operators",
+      "tradition": "Potatoverse project grammar",
+      "room_ids": [
+        "symbolic-architecture",
+        "developmental-genealogy",
+        "memory-recovery"
+      ],
+      "planes": [
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "strife-branches"
+      ],
+      "route_affinity": [
+        "strife",
+        "repair"
+      ],
+      "source_files": [
+        "data/house/tree-plane-routing.json",
+        "data/house/seed-spiral-routing.json",
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json"
+      ],
+      "visibility": "landmark",
+      "note": "Post-destruction residue that may feed Strife when unresolved or become Soil through repair.",
+      "boundary": "Ash is not permanently Strife.",
+      "layer_category": "material-state"
+    },
+    {
+      "id": "tree-of-strife-project",
+      "label": "Tree of Strife",
+      "kind": "potatoverse-operator",
+      "branch_id": "potato-route-operators",
+      "tradition": "Potatoverse project grammar",
+      "room_ids": [
+        "symbolic-architecture",
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "strife-branches",
+        "trunk"
+      ],
+      "route_affinity": [
+        "strife",
+        "wide-road",
+        "swamp"
+      ],
+      "source_files": [
+        "data/house/tree-plane-routing.json",
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json"
+      ],
+      "visibility": "landmark",
+      "note": "Unresolved roots reproduce visible conflict/capture patterns and tend toward Wide Road/Swamp unless repair intervenes.",
+      "boundary": "Strife describes reproduced relational dynamics, not a class of people.",
+      "layer_category": "organism"
+    },
+    {
+      "id": "seed-of-death",
+      "label": "Seed of Death",
+      "kind": "potatoverse-seed-state",
+      "branch_id": "potato-route-operators",
+      "tradition": "Potatoverse project grammar",
+      "room_ids": [
+        "symbolic-architecture",
+        "theology-god-language"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots"
+      ],
+      "route_affinity": [
+        "seed-junction",
+        "burial",
+        "rooting",
+        "strife"
+      ],
+      "source_files": [
+        "data/house/seed-spiral-routing.json",
+        "knowledge/core/root-system.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Compressed/surrendered/buried generative potential at C_S that may decay, sleep, root or sprout.",
+      "boundary": "Seed of Death is not automatically annihilation or Strife.",
+      "layer_category": "material-state"
+    },
+    {
+      "id": "seed-of-life",
+      "label": "Seed of Life",
+      "kind": "potatoverse-seed-state",
+      "branch_id": "potato-route-operators",
+      "tradition": "Potatoverse project grammar",
+      "room_ids": [
+        "symbolic-architecture",
+        "practice-ethics"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "life-branches"
+      ],
+      "route_affinity": [
+        "seed-junction",
+        "rooting",
+        "sprouting",
+        "return"
+      ],
+      "source_files": [
+        "data/house/seed-spiral-routing.json",
+        "knowledge/core/root-system.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Viable generative potential after/through burial; becomes Living Root, sprout and future Fruit.",
+      "boundary": "Seed of Life does not begin in Heaven; it becomes viable at the root/seed pivot.",
+      "layer_category": "material-state"
+    },
+    {
+      "id": "spiral-ladder-project",
+      "label": "Spiral Ladder",
+      "kind": "potatoverse-operator",
+      "branch_id": "potato-route-operators",
+      "tradition": "Potatoverse project grammar with mathematical and biblical comparators",
+      "room_ids": [
+        "symbolic-architecture",
+        "systems-dynamics",
+        "math-geometry"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "axis",
+        "trunk",
+        "canopy"
+      ],
+      "route_affinity": [
+        "rooting",
+        "drain",
+        "sprouting",
+        "repair",
+        "return"
+      ],
+      "source_files": [
+        "data/house/seed-spiral-routing.json",
+        "knowledge/science/recurrence-orbit-spiral-dynamics-atlas.json"
+      ],
+      "visibility": "landmark",
+      "note": "Spiral means recurrence with non-zero displacement; direction and outcome classify the route.",
+      "boundary": "Narrative repetition alone is not enough to call something a Spiral.",
+      "layer_category": "route"
+    },
+    {
+      "id": "eye-of-providence",
+      "label": "Eye of Providence",
+      "kind": "historical-symbol-and-reception",
+      "branch_id": "sacred-architecture",
+      "tradition": "Christian/European providential imagery; United States Great Seal; later esoteric/Masonic receptions",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "bible-christianity",
+        "developmental-genealogy"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk"
+      ],
+      "route_affinity": [
+        "eye",
+        "evaluation",
+        "providence"
+      ],
+      "source_files": [
+        "knowledge/traditions/providence-pyramid-pillars-atlas.json"
+      ],
+      "visibility": "landmark",
+      "note": "Historically documented providential/oversight symbol; useful for Eye as discernment/evaluation above or across structure.",
+      "boundary": "Eye imagery does not by itself prove surveillance, secret control or organizational membership.",
+      "layer_category": "perceptual-layer"
+    },
+    {
+      "id": "great-seal-pyramid",
+      "label": "Great Seal Unfinished Pyramid",
+      "kind": "historical-symbol",
+      "branch_id": "sacred-architecture",
+      "tradition": "United States Great Seal reverse, adopted 1782",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "developmental-genealogy"
+      ],
+      "planes": [
+        "world-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "trunk",
+        "canopy"
+      ],
+      "route_affinity": [
+        "mountain",
+        "integration",
+        "foundation"
+      ],
+      "source_files": [
+        "knowledge/traditions/providence-pyramid-pillars-atlas.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Thirteen-course unfinished pyramid with 1776 at the base; strong structural comparator for foundation → layered integration → unfinished summit.",
+      "boundary": "The Potato/Mountain reading is comparative; the seal has its own documented civic meaning.",
+      "layer_category": "terrain"
+    },
+    {
+      "id": "jachin-boaz",
+      "label": "Jachin & Boaz",
+      "kind": "biblical-threshold-symbol",
+      "branch_id": "sacred-architecture",
+      "tradition": "1 Kings 7 Temple pillars; later Masonic reception",
+      "room_ids": [
+        "bible-christianity",
+        "esoteric-sacred-geometry",
+        "symbolic-architecture"
+      ],
+      "planes": [
+        "world-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "trunk"
+      ],
+      "route_affinity": [
+        "door",
+        "threshold",
+        "support"
+      ],
+      "source_files": [
+        "knowledge/traditions/providence-pyramid-pillars-atlas.json",
+        "knowledge/traditions/biblical-heavenly-pattern-temple-city-atlas.json"
+      ],
+      "visibility": "landmark",
+      "note": "Two named pillars flank the Temple entrance; useful comparator for differentiated supports stabilizing a legitimate Door.",
+      "boundary": "Later Masonic meanings are a reception layer, not the original biblical meaning.",
+      "layer_category": "threshold"
+    },
+    {
+      "id": "year-1776-provenance",
+      "label": "1776 / MDCCLXXVI",
+      "kind": "chronology-provenance-node",
+      "branch_id": "sacred-architecture",
+      "tradition": "United States founding chronology; separate coincidence with Bavarian Illuminati founding year",
+      "room_ids": [
+        "developmental-genealogy",
+        "provenance-evidence",
+        "esoteric-sacred-geometry"
+      ],
+      "planes": [
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk"
+      ],
+      "route_affinity": [
+        "provenance",
+        "foundation-date"
+      ],
+      "source_files": [
+        "knowledge/traditions/providence-pyramid-pillars-atlas.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Useful model for putting exact founding dates/source provenance at the base of later symbolic architecture.",
+      "boundary": "Shared year is not evidence of causal connection or secret coordination.",
+      "layer_category": "material-state"
+    },
+    {
+      "id": "duat",
+      "label": "Duat",
+      "kind": "underworld-cosmography",
+      "branch_id": "death-passage",
+      "tradition": "Ancient Egyptian",
+      "room_ids": [
+        "comparative-mythology"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk"
+      ],
+      "route_affinity": [
+        "death-passage",
+        "renewal",
+        "return"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-001.json",
+        "knowledge/traditions/adversarial-underworld-judgment-atlas.json",
+        "knowledge/traditions/selected-cosmography-structural-exemplars.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "Netherworld passage traversed in death/solar renewal traditions; strong example that Below need not mean punishment.",
+      "boundary": "Do not equate Duat with Hell or the Potatoverse Swamp.",
+      "structural_lesson": "Underworld as staged/timed passage through gates, hazards and transformation culminating in renewal rather than one static lower place.",
+      "depth_status": "selected-deep-exemplar"
+    },
+    {
+      "id": "sheol",
+      "label": "Sheol",
+      "kind": "underworld-cosmography",
+      "branch_id": "death-passage",
+      "tradition": "Hebrew Bible / ancient Israelite tradition",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots"
+      ],
+      "route_affinity": [
+        "death",
+        "descent",
+        "reception-genealogy"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-001.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "Ancient Hebrew realm of the dead; important for distinguishing later Hades/hell reception from earlier biblical usage.",
+      "boundary": "Sheol is not simply later punitive Hell."
+    },
+    {
+      "id": "hades-realm",
+      "label": "Hades — Realm of the Dead",
+      "kind": "underworld-cosmography",
+      "branch_id": "death-passage",
+      "tradition": "Ancient Greek and later Greek-language biblical reception",
+      "room_ids": [
+        "comparative-mythology",
+        "bible-christianity",
+        "developmental-genealogy"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk"
+      ],
+      "route_affinity": [
+        "death",
+        "descent",
+        "reception-genealogy"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-001.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "Greek realm/deity complex and later translation/reception node.",
+      "boundary": "Do not merge Greek Hades, Hebrew Sheol, Gehenna and later Hell into one undifferentiated realm."
+    },
+    {
+      "id": "hel-realm",
+      "label": "Hel — Realm & Ruler",
+      "kind": "underworld-cosmography",
+      "branch_id": "death-passage",
+      "tradition": "Old Norse / Germanic traditions",
+      "room_ids": [
+        "comparative-mythology"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots"
+      ],
+      "route_affinity": [
+        "death",
+        "descent"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-001.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "Norse realm/ruler pair within a differentiated afterlife system.",
+      "boundary": "Hel is not a generic punitive Hell."
+    },
+    {
+      "id": "valhalla",
+      "label": "Valhalla",
+      "kind": "sacred-hall-afterlife-regime",
+      "branch_id": "death-passage",
+      "tradition": "Old Norse traditions",
+      "room_ids": [
+        "comparative-mythology"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk"
+      ],
+      "route_affinity": [
+        "death-selection",
+        "hall",
+        "warrior-afterlife"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-001.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "regime",
+      "note": "Odin's hall for selected slain warriors; useful as a differentiated destination rather than generic Heaven.",
+      "boundary": "Valhalla is not synonymous with the Norse afterlife as a whole."
+    },
+    {
+      "id": "mount-meru",
+      "label": "Mount Meru / Sumeru",
+      "kind": "cosmic-mountain",
+      "branch_id": "sacred-architecture",
+      "tradition": "Buddhist and Hindu cosmographic traditions",
+      "room_ids": [
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk"
+      ],
+      "route_affinity": [
+        "cosmic-center",
+        "mountain",
+        "cardinal-order"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-001.json",
+        "knowledge/traditions/selected-cosmography-structural-exemplars.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "Central cosmic mountain in several South Asian cosmographies; valuable comparator for center, cardinal order and layered worlds.",
+      "boundary": "Do not identify Meru with the Potato Mountain or Axis.",
+      "structural_lesson": "Cosmic center as cardinal/concentric world-order, not merely a summit or personal ascent symbol.",
+      "depth_status": "selected-deep-exemplar"
+    },
+    {
+      "id": "labyrinth",
+      "label": "Labyrinth",
+      "kind": "route-threshold-complex",
+      "branch_id": "sacred-architecture",
+      "tradition": "Greek/Cretan mythic and later symbolic reception",
+      "room_ids": [
+        "comparative-mythology",
+        "esoteric-sacred-geometry"
+      ],
+      "planes": [
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "trunk",
+        "roots"
+      ],
+      "route_affinity": [
+        "hidden-center",
+        "thread",
+        "return",
+        "exit"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-001.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "threshold",
+      "note": "Winding path/hidden-center comparator useful for disorientation, thread, return and exit.",
+      "boundary": "Labyrinth is a route/threshold structure, not another underworld floor."
+    },
+    {
+      "id": "caduceus",
+      "label": "Caduceus",
+      "kind": "messenger-staff-symbol",
+      "branch_id": "celestial-mediation",
+      "tradition": "Ancient Greek/Roman Hermes/Mercury reception",
+      "room_ids": [
+        "comparative-mythology",
+        "esoteric-sacred-geometry"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk",
+        "roots"
+      ],
+      "route_affinity": [
+        "messenger",
+        "psychopomp",
+        "mediation",
+        "staff"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-001.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "threshold",
+      "note": "Hermes' herald staff and later intertwined-serpent symbol; useful for mediation and psychopomp movement between realms.",
+      "boundary": "Do not equate caduceus, kundalini, DNA, Axis or medical symbolism into one universal code."
+    },
+    {
+      "id": "eden-gan-eden",
+      "label": "Eden / Gan Eden",
+      "kind": "garden-paradise-complex",
+      "branch_id": "garden-waters",
+      "tradition": "Genesis / Jewish and Christian reception",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "planes": [
+        "world-plane",
+        "heaven-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk",
+        "life-branches",
+        "canopy"
+      ],
+      "route_affinity": [
+        "garden",
+        "choice",
+        "exile",
+        "guarded-return"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+      ],
+      "visibility": "landmark",
+      "layer_category": "regime",
+      "note": "Protected, watered garden with Trees, choice, expulsion and guarded access; a strong comparator for Garden as generative regime rather than simply Heaven.",
+      "boundary": "Project Garden is a comparative operator, not identical with the biblical Eden."
+    },
+    {
+      "id": "eden-four-rivers",
+      "label": "Four Rivers of Eden",
+      "kind": "sacred-water-source-complex",
+      "branch_id": "garden-waters",
+      "tradition": "Genesis 2 reception",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "life-branches",
+        "trunk"
+      ],
+      "route_affinity": [
+        "source",
+        "distribution",
+        "return"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "One garden-watering river divides into four branches: source becomes outward distribution.",
+      "boundary": "Do not identify the Eden rivers with one universal mystical river or physical project flow."
+    },
+    {
+      "id": "eden-cherubim-gate",
+      "label": "Cherubim at Eden's Gate",
+      "kind": "guarded-threshold-motif",
+      "branch_id": "garden-waters",
+      "tradition": "Genesis 3 / later angelological reception",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "planes": [
+        "world-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "trunk",
+        "life-branches"
+      ],
+      "route_affinity": [
+        "gate",
+        "guard",
+        "tree-of-life",
+        "return"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "threshold",
+      "note": "Guarded way to the Tree of Life after expulsion; useful for admissibility and protected access.",
+      "boundary": "Guarded access is not the same as permanent closure or a generic angelic hierarchy."
+    },
+    {
+      "id": "gehenna",
+      "label": "Gehenna / Gehinnom",
+      "kind": "historical-place-and-judgment-reception",
+      "branch_id": "death-passage",
+      "tradition": "Hebrew/Jewish and Christian reception",
+      "room_ids": [
+        "bible-christianity",
+        "developmental-genealogy",
+        "comparative-mythology"
+      ],
+      "planes": [
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "trunk",
+        "roots"
+      ],
+      "route_affinity": [
+        "historical-place",
+        "judgment",
+        "punishment",
+        "reception-genealogy"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "Historical Valley of Hinnom acquires later judgment/punishment meanings; strong provenance-to-reception node.",
+      "boundary": "Do not collapse Gehenna, Sheol, Hades, Hel and later Hell into one original concept."
+    },
+    {
+      "id": "styx",
+      "label": "Styx — River & Oath",
+      "kind": "underworld-boundary-water",
+      "branch_id": "death-passage",
+      "tradition": "Ancient Greek",
+      "room_ids": [
+        "comparative-mythology",
+        "law-justice"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk"
+      ],
+      "route_affinity": [
+        "boundary-water",
+        "oath",
+        "death-realm"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "Underworld river and divine oath-water; demonstrates that water can carry legal/relational force as well as geography.",
+      "boundary": "Styx is not a generic River of Death and should not be equated with every sacred river."
+    },
+    {
+      "id": "bardo",
+      "label": "Bardo",
+      "kind": "intermediate-state-tradition",
+      "branch_id": "death-passage",
+      "tradition": "Tibetan Buddhist traditions",
+      "room_ids": [
+        "other-traditions",
+        "comparative-mythology"
+      ],
+      "planes": [
+        "world-plane",
+        "below-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "trunk",
+        "roots",
+        "canopy"
+      ],
+      "route_affinity": [
+        "transition",
+        "death-rebirth",
+        "liberation"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json",
+        "knowledge/traditions/selected-cosmography-structural-exemplars.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "route",
+      "note": "Intermediate/transitional state tradition, especially between death and rebirth; useful precisely because it is a transition system rather than a fixed underworld place.",
+      "boundary": "Potatoverse Door/Spiral comparisons must not be presented as Tibetan Buddhist doctrine.",
+      "structural_lesson": "Intermediate state as transition-condition rather than fixed geography; useful for Door/liminality distinctions.",
+      "depth_status": "selected-deep-exemplar"
+    },
+    {
+      "id": "olympus-realm",
+      "label": "Olympus — Mountain & Divine Palace",
+      "kind": "divine-mountain-realm",
+      "branch_id": "sacred-architecture",
+      "tradition": "Ancient Greek",
+      "room_ids": [
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk"
+      ],
+      "route_affinity": [
+        "mountain",
+        "divine-house",
+        "council",
+        "gate"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "terrain",
+      "note": "Mountain-home and palace/acropolis complex of the Olympian gods; combines Mountain, House and divine-order functions.",
+      "boundary": "Olympus is not a generic Heaven or the Potato Mountain."
+    },
+    {
+      "id": "zeus",
+      "label": "Zeus",
+      "kind": "mythic-divine-figure",
+      "branch_id": "divine-figures",
+      "tradition": "Ancient Greek",
+      "room_ids": [
+        "comparative-mythology"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk"
+      ],
+      "route_affinity": [
+        "sky",
+        "thunder",
+        "kingship",
+        "oath",
+        "divine-order"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "inhabitant",
+      "note": "Olympian ruler tied to sky/thunder, kingship and oath/order traditions; connected to Olympus and Styx oath structures.",
+      "boundary": "Do not collapse Zeus with other sky/storm deities or Potatoverse Father language."
+    },
+    {
+      "id": "uraeus-wadjet",
+      "label": "Uraeus / Wadjet Cobra",
+      "kind": "royal-protective-serpent-symbol",
+      "branch_id": "divine-figures",
+      "tradition": "Ancient Egyptian",
+      "room_ids": [
+        "comparative-mythology",
+        "esoteric-sacred-geometry"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk"
+      ],
+      "route_affinity": [
+        "royalty",
+        "protection",
+        "crown",
+        "serpent"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-cosmography-population-wave-002.json"
+      ],
+      "visibility": "room-detail",
+      "layer_category": "inhabitant",
+      "note": "Royal cobra symbol associated with Wadjet and protective sovereignty; useful counterexample to serpent=evil flattening.",
+      "boundary": "Do not generalize Egyptian royal cobra symbolism to all serpents or to kundalini/dragon traditions."
+    }
+  ],
+  "corridors": [
+    {
+      "from": "angels-messengers",
+      "to": "jacobs-ladder",
+      "type": "mediated-by",
+      "note": "Messenger movement is naturally routed through ladder/threshold motifs."
+    },
+    {
+      "from": "valkyries",
+      "to": "odin",
+      "type": "tradition-relation",
+      "note": "Norse death-selection/movement belongs to Odin/Valhalla traditions rather than biblical angelology."
+    },
+    {
+      "from": "odin",
+      "to": "yggdrasil-world-tree",
+      "type": "tradition-relation",
+      "note": "Odin/tree material supplies a strong Norse world-tree corridor."
+    },
+    {
+      "from": "maat",
+      "to": "hall-two-truths",
+      "type": "judgment-relation",
+      "note": "Truth/order and funerary judgment meet at a threshold complex."
+    },
+    {
+      "from": "axomamma",
+      "to": "seed-of-life",
+      "type": "comparative-motif",
+      "note": "Potato/fertility/nourishment motifs may illuminate project Seed/Garden themes without identity claims."
+    },
+    {
+      "from": "tammuz",
+      "to": "seed-of-death",
+      "type": "comparative-motif",
+      "note": "Death/descent/return agriculture motifs neighbor the project burial/seed route."
+    },
+    {
+      "from": "qliphoth",
+      "to": "roots-of-ash",
+      "type": "comparative-motif",
+      "note": "Broken-vessel/shell material can be compared with residue/enclosure only as explicitly labeled comparison."
+    },
+    {
+      "from": "qliphoth",
+      "to": "tree-of-strife-project",
+      "type": "comparative-motif",
+      "note": "Shell/capture functions neighbor Strife where enclosure blocks reintegration."
+    },
+    {
+      "from": "sefirot-tree",
+      "to": "tree-of-life-project",
+      "type": "comparative-motif",
+      "note": "Two Tree-of-Life systems remain distinct while structural comparison is permitted."
+    },
+    {
+      "from": "demonology",
+      "to": "tree-of-strife-project",
+      "type": "functional-comparison",
+      "note": "Project demon-function models can be compared with capture/distortion only after tradition-specific demonology."
+    },
+    {
+      "from": "archons",
+      "to": "tree-of-strife-project",
+      "type": "systems-comparison",
+      "note": "Intermediary control/enclosure can be analyzed as a Strife-like mechanism without literalizing Archons."
+    },
+    {
+      "from": "moloch",
+      "to": "tree-of-strife-project",
+      "type": "systems-comparison",
+      "note": "Seed/future-consuming coordination failure is a strong anti-Garden comparator."
+    },
+    {
+      "from": "new-jerusalem",
+      "to": "tree-of-life-project",
+      "type": "sacred-architecture-comparison",
+      "note": "City/Garden/Tree/return motifs can be read together without collapsing traditions."
+    },
+    {
+      "from": "mandorla-vesica",
+      "to": "spiral-ladder-project",
+      "type": "threshold-to-route",
+      "note": "Door geometry provides the threshold through which a route acquires changed state."
+    },
+    {
+      "from": "tree-of-knowledge",
+      "to": "tree-of-life-project",
+      "type": "forks-to",
+      "note": "Integrated knowledge may become Life."
+    },
+    {
+      "from": "tree-of-knowledge",
+      "to": "tree-of-strife-project",
+      "type": "forks-to",
+      "note": "Unresolved knowledge may become Strife."
+    },
+    {
+      "from": "roots-of-ash",
+      "to": "tree-of-strife-project",
+      "type": "feeds-when-unresolved",
+      "note": "Ash becomes Strife only when unresolved reproduction continues."
+    },
+    {
+      "from": "roots-of-ash",
+      "to": "tree-of-life-project",
+      "type": "repairable-into",
+      "note": "Evidence, acknowledgment and repair can metabolize Ash into Living Root/Soil."
+    },
+    {
+      "from": "seed-of-death",
+      "to": "seed-of-life",
+      "type": "can-transform-into",
+      "note": "The two seeds may be sequential states of one generative potential."
+    },
+    {
+      "from": "seed-of-life",
+      "to": "spiral-ladder-project",
+      "type": "enters-route",
+      "note": "Viable root/sprout potential enters the upward Life spiral."
+    },
+    {
+      "from": "jachin-boaz",
+      "to": "mandorla-vesica",
+      "type": "threshold-comparison",
+      "note": "Twin supports and overlap/threshold imagery both clarify passage into a differentiated interior without being historically identical."
+    },
+    {
+      "from": "eye-of-providence",
+      "to": "sacred-mountain-temple",
+      "type": "evaluation-over-structure",
+      "note": "Eye/evaluation can remain distinct from Mountain/status, preventing summit from being equated with truth."
+    },
+    {
+      "from": "great-seal-pyramid",
+      "to": "sacred-mountain-temple",
+      "type": "integration-comparison",
+      "note": "Layered pyramid compression is a useful comparator for Mountain/integration."
+    },
+    {
+      "from": "year-1776-provenance",
+      "to": "great-seal-pyramid",
+      "type": "inscribed-foundation",
+      "note": "The date at the base models visible chronology/provenance beneath later structure."
+    },
+    {
+      "from": "odin",
+      "to": "valhalla",
+      "type": "tradition-relation",
+      "note": "Valhalla belongs to Odin's afterlife complex."
+    },
+    {
+      "from": "valkyries",
+      "to": "valhalla",
+      "type": "tradition-relation",
+      "note": "Valkyries participate in selection/movement of slain warriors toward Valhalla traditions."
+    },
+    {
+      "from": "yggdrasil-world-tree",
+      "to": "hel-realm",
+      "type": "realm-connection",
+      "note": "Norse world-tree cosmography provides a route context for differentiated realms including Hel-related material."
+    },
+    {
+      "from": "duat",
+      "to": "hall-two-truths",
+      "type": "passage-to-judgment",
+      "note": "Egyptian underworld passage and judgment architecture belong to the same funerary cosmographic complex."
+    },
+    {
+      "from": "sheol",
+      "to": "hades-realm",
+      "type": "translation-reception",
+      "note": "Greek biblical translation/reception often maps Sheol vocabulary into Hades, while meanings remain historically distinct."
+    },
+    {
+      "from": "mount-meru",
+      "to": "sacred-mountain-temple",
+      "type": "cosmic-mountain-comparison",
+      "note": "Meru and biblical sacred mountains may be compared by center/orientation function without historical identity."
+    },
+    {
+      "from": "labyrinth",
+      "to": "mandorla-vesica",
+      "type": "threshold-comparison",
+      "note": "Both can model passage and bounded transition, but one is route complexity and the other overlap geometry."
+    },
+    {
+      "from": "caduceus",
+      "to": "angels-messengers",
+      "type": "messenger-comparison",
+      "note": "Messenger/psychopomp functions can be compared while Hermes and angelic traditions remain distinct."
+    },
+    {
+      "from": "eden-gan-eden",
+      "to": "tree-of-life-project",
+      "type": "comparative-motif",
+      "note": "Eden's Tree of Life is a source-tradition neighbor of the project Tree of Life, not the same system."
+    },
+    {
+      "from": "eden-gan-eden",
+      "to": "tree-of-knowledge",
+      "type": "source-neighbor",
+      "note": "Genesis places the Trees of Life and Knowledge within the garden complex; project routing remains separately defined."
+    },
+    {
+      "from": "eden-gan-eden",
+      "to": "eden-four-rivers",
+      "type": "source-to-distribution",
+      "note": "The garden's water source becomes outward river distribution."
+    },
+    {
+      "from": "eden-gan-eden",
+      "to": "eden-cherubim-gate",
+      "type": "guarded-return",
+      "note": "Expulsion is followed by guarded access to the way of the Tree of Life."
+    },
+    {
+      "from": "eden-cherubim-gate",
+      "to": "angels-messengers",
+      "type": "tradition-relation",
+      "note": "Cherubim belong to biblical celestial-being traditions but should retain their own textual roles."
+    },
+    {
+      "from": "gehenna",
+      "to": "moloch",
+      "type": "historical-reception-neighbor",
+      "note": "Valley-of-Hinnom traditions intersect biblical condemnation of child-sacrifice practices associated with Molech/Moloch."
+    },
+    {
+      "from": "gehenna",
+      "to": "sheol",
+      "type": "distinguished-from",
+      "note": "Later judgment/punishment Gehenna must remain distinct from older Sheol death-realm language."
+    },
+    {
+      "from": "styx",
+      "to": "hades-realm",
+      "type": "realm-relation",
+      "note": "Styx belongs to Greek underworld geography and Hades-related traditions."
+    },
+    {
+      "from": "styx",
+      "to": "zeus",
+      "type": "oath-relation",
+      "note": "Classical traditions make Styx the binding oath-water of the gods including Zeus."
+    },
+    {
+      "from": "olympus-realm",
+      "to": "zeus",
+      "type": "inhabited-by",
+      "note": "Olympus is the divine mountain/palace complex associated with Zeus and the Olympian gods."
+    },
+    {
+      "from": "uraeus-wadjet",
+      "to": "maat",
+      "type": "royal-order-neighbor",
+      "note": "Royal/protective cobra imagery and Ma'at both inhabit Egyptian kingship/order complexes while remaining distinct."
+    },
+    {
+      "from": "bardo",
+      "to": "spiral-ladder-project",
+      "type": "transition-comparison",
+      "note": "Both concern transitions through states, but Bardo is a Tibetan Buddhist doctrinal/practice framework and the Spiral Ladder is a project operator."
+    }
+  ],
+  "layer_grammar_authority": "data/house/layer-terrain-regime-atlas.json",
+  "center_out_rule": "Comparative branches exist to illuminate, challenge or contextualize project-native nodes. They do not define the Potato of Life from the outside.",
+  "selection_rule": "Comparative nodes become deep exemplars only when they teach a structural function not already represented; otherwise remain room-detail/archive population."
+}

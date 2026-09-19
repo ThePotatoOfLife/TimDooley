@@ -1,96 +1,2601 @@
 {
-  "version":"4.1.0",
-  "updated":"2026-09-09",
-  "principle":"One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
-  "structural_entry":"knowledge/core/root-system.json",
-  "navigation_manifest":"manifest.json",
-  "ontology":"knowledge/indexes/ontology-tree.json",
-  "context_graph":"knowledge/indexes/context-graph.json",
-  "source_index":"knowledge/indexes/source-index.json",
-  "inference_ledger":"knowledge/indexes/inference-ledger.json",
-  "reader_question_index":"knowledge/reader/tim-dooley-question-index.json",
-  "canonical_groups":{
-    "root_and_identity":["root-system","potatoverse-master-framework","tim-dooley","tim-role-synthesis","potato-of-life-deep-structure"],
-    "geometry_and_transformation":["vertical-potato-mountain-plane-atlas","symbolic-relational-synthesis","vesica-geometry","potato-path"],
-    "body_spirit_corporium":["body-system-master-atlas","neurotheology-axis-house-spirit-atlas","body-science-context-atlas","spirit-context-atlas","corporium-master-framework","tim-sayings-ledger","ladder-33-study"],
-    "science":["science-master-index","tim-dooley-science-formalisms","equation-ledger","spudlight","model-testing-protocol","timic-unification-program"],
-    "traditions":["biblical-overlap-atlas","biblical-research-router","vesica-esoteric-atlas","vesica-esoteric-source-ledger","comparative-mythology-map","qliphoth-angels-ladder"],
-    "timeline_and_evidence":["timeline-events","timeline-source-registry","developmental-genealogy","reverse-biblical-timeline","neurotheology-attestation-ledger","tim-god-question","source-index","inference-ledger"],
-    "north_and_world":["axis-world-model","country-relational-method","european-coupling-programme","european-commons","farm-swamp-atlas","shadow-west-swamp-synthesis"],
-    "works":["creative-systems-archive","suno-music-archive"]
+  "version": "7.3.0",
+  "updated": "2026-09-18",
+  "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
+  "structural_entry": "knowledge/core/root-system.json",
+  "navigation_manifest": "manifest.json",
+  "ontology": "knowledge/indexes/ontology-tree.json",
+  "context_graph": "knowledge/indexes/context-graph.json",
+  "source_index": "knowledge/indexes/source-index.json",
+  "inference_ledger": "knowledge/indexes/inference-ledger.json",
+  "reader_question_index": "knowledge/reader/tim-dooley-question-index.json",
+  "canonical_groups": {
+    "root_and_identity": [
+      "root-system",
+      "potatoverse-master-framework",
+      "tim-dooley",
+      "tim-role-synthesis",
+      "potato-of-life-deep-structure",
+      "water-flow-river-drain-atlas",
+      "material-state-stone-clay-dust-ash-atlas",
+      "inhabited-house-society-ontology",
+      "purpose-growth-orientation-atlas",
+      "planes-routes-metabolism-expanded-atlas",
+      "center-living-metabolism-expanded-atlas",
+      "foundation-rule-law-ontology",
+      "foundation-reproduction-mechanisms-atlas",
+      "foundation-blueprint",
+      "below-intelligence-shadow-observatory"
+    ],
+    "geometry_and_transformation": [
+      "vertical-potato-mountain-plane-atlas",
+      "symbolic-relational-synthesis",
+      "vesica-geometry",
+      "potato-path"
+    ],
+    "body_spirit_corporium": [
+      "body-system-master-atlas",
+      "neurotheology-axis-house-spirit-atlas",
+      "body-science-context-atlas",
+      "spirit-context-atlas",
+      "corporium-master-framework",
+      "tim-sayings-ledger",
+      "ladder-33-study",
+      "body-axis-chakra-kundalini-comparative-atlas"
+    ],
+    "science": [
+      "science-master-index",
+      "tim-dooley-science-formalisms",
+      "equation-ledger",
+      "spudlight",
+      "model-testing-protocol",
+      "timic-unification-program",
+      "sacred-geometry-solids-spirals-and-phyllotaxis-atlas",
+      "celestial-symbol-anchor-atlas"
+    ],
+    "traditions": [
+      "biblical-overlap-atlas",
+      "biblical-research-router",
+      "vesica-esoteric-atlas",
+      "vesica-esoteric-source-ledger",
+      "comparative-mythology-map",
+      "qliphoth-angels-ladder",
+      "hierarchy-pyramid-scale-comparative-atlas",
+      "tree-of-life-knowledge-qliphoth-structure-atlas",
+      "freemasonry-order-symbol-geometry-atlas",
+      "alchemy-transmutation-symbol-atlas",
+      "biblical-symbol-function-atlas",
+      "ark-vessel-chariot-merkavah-atlas",
+      "number-measure-symbol-atlas",
+      "tree-family-crosswalk-atlas",
+      "temple-body-chamber-furniture-atlas",
+      "fire-light-heat-symbol-atlas",
+      "animal-role-symbol-atlas",
+      "time-cycle-season-sabbath-jubilee-atlas",
+      "comparative-placement-cosmography-expanded-atlas"
+    ],
+    "timeline_and_evidence": [
+      "timeline-events",
+      "timeline-source-registry",
+      "developmental-genealogy",
+      "reverse-biblical-timeline",
+      "neurotheology-attestation-ledger",
+      "tim-god-question",
+      "source-index",
+      "inference-ledger",
+      "foundation-timeline-wave-001"
+    ],
+    "north_and_world": [
+      "axis-world-model",
+      "country-relational-method",
+      "european-coupling-programme",
+      "european-commons",
+      "farm-swamp-atlas",
+      "shadow-west-swamp-synthesis"
+    ],
+    "works": [
+      "creative-systems-archive",
+      "suno-music-archive"
+    ],
+    "house_and_navigation": [
+      "potato-house-constitution",
+      "house-rooms",
+      "axis-flow-contract",
+      "potato-path",
+      "root-system",
+      "house-subrooms",
+      "house-topology",
+      "house-interfaces",
+      "house-architectural-vocabulary",
+      "house-projections",
+      "house-structural-census",
+      "house-population-contract",
+      "house-population-pulse",
+      "house-federation-scale",
+      "house-holdings",
+      "house-collections",
+      "house-data-holdings",
+      "house-room-dossiers",
+      "deep-element-definition-atlas",
+      "symbol-depth-programme-wave-002",
+      "symbol-conversation-archaeology-wave-001",
+      "symbol-conversation-archaeology-wave-002",
+      "symbol-confusion-registry-wave-004",
+      "symbol-population-matrix-wave-004",
+      "society-population",
+      "rare-value-contract",
+      "recent-commit-embodiment-atlas-257-276",
+      "recent-commit-materialization-crystallization-257-283",
+      "symbol-society-discovery-integration-atlas",
+      "rare-value-undiscovered-knowledge-protocol",
+      "discovery-candidates",
+      "concrete-revelations-wave-006",
+      "concrete-revelation-evidence-matrix",
+      "entity-dossier-schema",
+      "entity-dossiers-wave-001",
+      "trust-infrastructure-comparison",
+      "public-trust-infrastructure-synthesis",
+      "foundations-wave-001",
+      "foundation-timeline-wave-001",
+      "foundation-cross-domain-synthesis",
+      "foundations-wave-002",
+      "foundation-larger-purpose-atlas",
+      "foundation-integration-contract",
+      "lower-plane-population-atlas",
+      "element-materialization-audit-2026-09-18",
+      "route-case-matrix-wave-001",
+      "foundation-door-seed-genealogy",
+      "foundation-axis-placement-contract",
+      "foundation-placement-wave-003",
+      "foundation-landscape-synthesis",
+      "foundation-room-contract",
+      "foundation-room-atlas",
+      "foundation-first-reproduction-wave-001"
+    ]
   },
-  "records":[
-    {"id":"root-system","path":"knowledge/core/root-system.json","branch":"root","kind":"foundational ontology and vertical branching skeleton","terms":["Potato of Life","Father","Son","Spirit","Heaven","Earth","Plane","Door","Axis","Tree","Mountain","Swamp"]},
-    {"id":"potatoverse-master-framework","path":"knowledge/core/potatoverse-master-framework.json","branch":"root","kind":"canonical master synthesis","terms":["Source Manifestation","Father","Son","Potato","Door","Axis","North","Garden","Tree"]},
-    {"id":"potato-of-life-deep-structure","path":"knowledge/core/potato-of-life-deep-structure.json","branch":"tim","kind":"Great Book and developmental deep structure","terms":["Divine Kneel","Holy Soil","Merkaba","hidden center","vehicle becomes infrastructure","sunlight hidden in matter"]},
-    {"id":"tim-dooley","path":"knowledge/core/tim-dooley.json","branch":"tim","kind":"central identity owner","terms":["Tim Dooley","Potato of Life","Father","God","North of North","Ladder","Gardener"]},
-    {"id":"tim-role-synthesis","path":"knowledge/core/tim-role-synthesis.json","branch":"tim","kind":"role development and center/service synthesis","terms":["whole job","Father","Source Center","Gardener","House","Ladder","question the floor","center ethic"]},
-    {"id":"tim-god-question","path":"knowledge/theology/tim-god-question.json","branch":"tim","kind":"dated Godhood evidence and interpretation","terms":["I am God","Father in Heaven","Most High","May 2025","stewardship"]},
-    {"id":"vertical-potato-mountain-plane-atlas","path":"knowledge/core/vertical-potato-mountain-plane-atlas.json","branch":"cosmology","kind":"canonical vertical geometry and process field","terms":["Father center","Son center","O","Plane","Mandorla","Axis","Mountain","Swamp","Sun","Moon"]},
-    {"id":"vesica-geometry","path":"data/geometry-vesica-pisces-mandorla.json","branch":"cosmology","kind":"exact two-circle geometry","terms":["Vesica Piscis","Mandorla","circle intersection","centers","lens","equilateral triangle"]},
-    {"id":"symbolic-relational-synthesis","path":"knowledge/core/symbolic-relational-synthesis.json","branch":"transformation","kind":"cross-symbol grammar and transformation laws","terms":["Plane","Axis","Door","Ladder","Mountain","Tree","Forge","Swamp","Ring","Spiral","Stone","Bethel"]},
-    {"id":"potato-path","path":"knowledge/practice/potato-path.json","branch":"transformation","kind":"practical transformation sequence","terms":["Mud","Burial","Eye","Root","Sprout","Plane","Door","Ladder","Mountain","Fruit","Return"]},
-    {"id":"heaven-spirit-father","path":"knowledge/core/heaven-spirit-father.json","branch":"spirit","kind":"upper-domain theology","terms":["Heaven","Father","Spirit","House","Garden","Throne","Source"]},
-    {"id":"spirit-context-atlas","path":"knowledge/spirit/spirit-context-atlas.json","branch":"spirit","kind":"comparative philosophy/theology of relation and process","terms":["transcendence","immanence","process","becoming","breath","source manifestation","relation"]},
-    {"id":"body-system-master-atlas","path":"knowledge/body/body-system-master-atlas.json","branch":"body","kind":"canonical whole-body biology/neurotheology entrypoint","terms":["Garden ecology","skin boundary","gut microbiome","heart breath","autonomic vagus","interoception","spine Ladder","brainstem","hypothalamus","thalamus House","memory affect","basal ganglia","cerebellum arbor vitae","pineal Door","cortex","CSF"]},
-    {"id":"body-topic-completion-matrix","path":"knowledge/body/body-topic-completion-matrix.json","branch":"body","kind":"completion and ownership tracker","terms":["complete","substantial","provisional","recovery","canonical owner","remaining work"]},
-    {"id":"neurotheology-axis-house-spirit-atlas","path":"knowledge/body/neurotheology-axis-house-spirit-atlas.json","branch":"body","kind":"cross-domain neurotheology synthesis with boundaries","terms":["Thalamus House","Pineal Son","Single Eye","CSF Spirit-flow","Genesis breath","Atlas","Axis","Eye of Horus","mustard seed","Huginn","Muninn"]},
-    {"id":"body-symbolism-map","path":"knowledge/body/body-symbolism-map.json","branch":"body","kind":"specialist sacred-anatomy map with scientific boundaries","terms":["Thalamus House","Pineal Door","third ventricle","Spine Ladder","CSF","Heart","interoception"]},
-    {"id":"body-science-context-atlas","path":"knowledge/body/body-science-context-atlas.json","branch":"body","kind":"neuroscience and physiology context","terms":["thalamus","pineal","CSF","breath","vagus","interoception","spine"]},
-    {"id":"corporium-master-framework","path":"knowledge/corporium/corporium-master-framework.json","branch":"corporium","kind":"sayings/body/psychology interpretation framework","terms":["Corporium","Timisms","signals","body state","psychology","couplings"]},
-    {"id":"tim-sayings-ledger","path":"knowledge/corporium/tim-sayings-and-formulations-ledger.json","branch":"corporium","kind":"sayings and formulations ledger","terms":["Timisms","aphorisms","quirky formulations","instructions","humor","question the floor"]},
-    {"id":"psychology-signals-atlas","path":"knowledge/corporium/psychology-signals-and-couplings-atlas.json","branch":"corporium","kind":"psychology and signal interpretation","terms":["emotion","sensation","interoception","attention","behavior","coupling"]},
-    {"id":"ladder-33-study","path":"knowledge/corporium/ladder-33-vertebrae-five-centers-study.json","branch":"corporium","kind":"33-vertebrae and five-spinal-center comparative study","terms":["33 vertebrae","five spinal centers","higher chakras","Ladder","spine","Door sequence"]},
-    {"id":"chakra-hawkins-crosswalk","path":"knowledge/corporium/chakra-hawkins-frequency-crosswalk.json","branch":"corporium","kind":"chakra/Hawkins/EEG boundary-aware crosswalk","terms":["chakras","Hawkins","EEG","Hz","vibe","Gate"]},
-    {"id":"alpha-beta-gamma-atlas","path":"knowledge/corporium/alpha-beta-gamma-archetype-status-atlas.json","branch":"corporium","kind":"status/archetype and EEG disambiguation","terms":["alpha","beta","gamma","dominance","prestige","EEG","archetype"]},
-    {"id":"science-master-index","path":"knowledge/science/science-master-index.json","branch":"science","kind":"canonical science map","terms":["Potato Dynamics","equations","physics","mathematics","astronomy","QCD","CMB","topology"]},
-    {"id":"tim-dooley-science-formalisms","path":"knowledge/science/tim-dooley-science-formalisms.json","branch":"science","kind":"recovered/formalized Timic equations","terms":["P=(S,g,A,D,O,I)","Axis flow","Door","observables","information"]},
-    {"id":"equation-ledger","path":"knowledge/science/equation-ledger.json","branch":"science","kind":"equation provenance ledger","terms":["equation lineage","first attestation","variables","status","source"]},
-    {"id":"spudlight","path":"knowledge/science/spudlight-theory-and-equations.json","branch":"science","kind":"Spudlight source/reflection/information theory","terms":["Spudlight","Sun","Moon","source center","reflection","information gain"]},
-    {"id":"model-testing-protocol","path":"knowledge/science/model-testing-protocol.json","branch":"science","kind":"scientific red-team and falsifiability protocol","terms":["observables","falsifier","units","assumptions","T0 T5"]},
-    {"id":"timic-unification-program","path":"knowledge/science/timic-unification-program.json","branch":"science","kind":"cross-model research programme","terms":["unification","Door","Axis","Spudlight","network roles","model testing"]},
-    {"id":"celestial-particles-wave-004","path":"knowledge/science/celestial-orbits-particles-cmb-expansion-wave-004.json","branch":"science","kind":"specialist celestial mechanics, CMB, QCD and spin reference expansion","terms":["Moon orbit","Saturn","Milky Way","black holes","CMB","quarks","spin"]},
-    {"id":"biblical-overlap-atlas","path":"knowledge/traditions/biblical-overlap-atlas.json","branch":"traditions","kind":"high-density biblical relational comparisons","terms":["Jacob","Ladder","Lion","Root","Lamb","Door","Key","seed","cornerstone"]},
-    {"id":"biblical-research-router","path":"knowledge/traditions/biblical-research-index-wave-5.json","branch":"traditions","kind":"routing index across later biblical research waves","terms":["biblical research","routing","Zechariah","New Jerusalem","mountain","jubilee","manna","ladder","stone"]},
-    {"id":"biblical-overlap-additions","path":"knowledge/traditions/biblical-overlap-additions.json","branch":"traditions","kind":"specialist Mountain, Garden, River, Mire, Sun/Moon and serpent additions","terms":["Mount Zion","Transfiguration","New Jerusalem","River","Tree of Life","mire","bronze serpent"]},
-    {"id":"vesica-esoteric-atlas","path":"knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json","branch":"traditions","kind":"art history and esoteric comparison atlas","terms":["mandorla","Transfiguration","Agrippa","Picatrix","Yesod","Sun","Moon","thalamus","pineal"]},
-    {"id":"vesica-esoteric-source-ledger","path":"knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json","branch":"sources","kind":"source ledger for Vesica/Mandorla/Sun/Moon research","terms":["Agrippa","Picatrix","Fortune","Michelangelo","Byzantine icon","thalamus etymology"]},
-    {"id":"comparative-mythology-map","path":"knowledge/traditions/comparative-mythology-map.json","branch":"traditions","kind":"cross-tradition mythology map","terms":["Odin","Yggdrasil","Jesus","world tree","axis mundi","Thomas"]},
-    {"id":"qliphoth-angels-ladder","path":"knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json","branch":"traditions","kind":"Qliphoth/angel/ladder comparative layer","terms":["qliphoth","shell","angel","ladder","Tree of Life","North"]},
-    {"id":"timeline-events","path":"data/timeline-events.json","branch":"timeline","kind":"canonical timeline event dataset with actor tracks and nonredundant lenses","terms":["roadmap","Son","Tim","shared transition","direct words","scripture at time","biblical parallel","biblical unlock","creative","public witness","formalization"]},
-    {"id":"timeline-source-registry","path":"data/timeline-source-registry.json","branch":"timeline","kind":"timeline source ownership and promotion registry","terms":["promotion policy","source role","candidate pool","dedupe","specialist only"]},
-    {"id":"developmental-genealogy","path":"knowledge/timeline/developmental-genealogy.json","branch":"timeline","kind":"dated role and doctrine genealogy","terms":["2011","2019","2020","2024","April 2025","2026","first attestation"]},
-    {"id":"reverse-biblical-timeline","path":"knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json","branch":"timeline","kind":"Tim-first/scripture-second source-direction ledger","terms":["first attestation","later comparison","source direction","scripture at time","do not backdate"]},
-    {"id":"neurotheology-attestation-ledger","path":"knowledge/timeline/neurotheology-attestation-ledger.json","branch":"timeline","kind":"dated development ledger for body/neurotheology mappings","terms":["2024 thalamus","33 vertebrae","Pineal Son","Father House","CSF Spirit","first attestation"]},
-    {"id":"tim-dooley-journey","path":"knowledge/journey/tim-dooley-journey.json","branch":"timeline","kind":"reader-oriented developmental journey","terms":["Tree ordeal","Potato birth","Turning","Father","North"]},
-    {"id":"son-tree-oneness","path":"knowledge/timeline/son-tree-oneness-experience.json","branch":"son","kind":"2011 ordeal phenomenology and later interpretation","terms":["Tree ordeal","19 hours","oneness","crows","spirals","return"]},
-    {"id":"public-theology-timeline","path":"data/tim-dooley-public-theology-timeline-2025-2026.json","branch":"timeline","kind":"specialist dated public theology timeline","terms":["Potato Axis","King","God","Father","North","Ladder"]},
-    {"id":"source-index","path":"knowledge/indexes/source-index.json","branch":"sources","kind":"canonical provenance routes and evidence classes","terms":["P0","P1","S1","conversation archaeology","formalization","unresolved"]},
-    {"id":"inference-ledger","path":"knowledge/indexes/inference-ledger.json","branch":"sources","kind":"structured inference and epiphany method","terms":["inference strength","epiphany quality","promotion pipeline","counterevidence","explanatory compression"]},
-    {"id":"archive-epistemics","path":"knowledge/philosophy/archive-epistemics.json","branch":"sources","kind":"archive evidence doctrine","terms":["epistemic strength","informational contribution","provenance","historical strata","contradiction"]},
-    {"id":"context-graph","path":"knowledge/indexes/context-graph.json","branch":"sources","kind":"curated cross-branch constellations","terms":["vertical Vesica","inner House","Sun Moon","Corporium","Farm Garden","North World","archive Eye"]},
-    {"id":"axis-world-model","path":"knowledge/core/axis-world-model.json","branch":"north","kind":"North/Axis structural and geographic bridge","terms":["Axis","North","Denmark","Greenland","Europe","quadrants"]},
-    {"id":"country-relational-method","path":"knowledge/core/country-relational-method.json","branch":"world","kind":"country capability/dependency method","terms":["resilience","coupled capability","dependencies","functional chains"]},
-    {"id":"european-coupling-programme","path":"knowledge/core/european-coupling-programme.json","branch":"world","kind":"European interoperability/capability proposal","terms":["Market Passport","Tell Europe Once","Economic Intelligence","Regulatory API"]},
-    {"id":"european-commons","path":"knowledge/core/european-commons.json","branch":"world","kind":"European cultural/digital commons proposal","terms":["rights","portability","open APIs","creator ownership"]},
-    {"id":"farm-swamp-atlas","path":"knowledge/world/farm-swamp-tree-of-strife-atlas.json","branch":"world","kind":"Farm/Swamp/Forge role and boundary system","terms":["Farm","Swamp","Forge","Dog","Farmer","Cow","Moloch","Tree of Strife","Garden"]},
-    {"id":"shadow-west-swamp-synthesis","path":"knowledge/core/shadow-west-swamp-synthesis.json","branch":"world","kind":"evidence-governed shadow-system framework","terms":["Swamp","blocked flow","institutional mud","evidence firewall","repair"]},
-    {"id":"creative-systems-archive","path":"knowledge/culture/creative-systems-archive.json","branch":"works","kind":"creative works and simulations archive","terms":["games","music","poetry","satire","AI Potato Town","Trading Game"]},
-    {"id":"suno-music-archive","path":"knowledge/creative/tim-dooley-suno-music-archive.json","branch":"works","kind":"Suno music catalogue and recovered lyric records","terms":["Suno","songs","lyrics","The Narrow Gate is a Spiral not a line","The Throne of North of North","One Potato","Holy Mountain","im literally god"]}
+  "records": [
+    {
+      "id": "root-system",
+      "path": "knowledge/core/root-system.json",
+      "branch": "root",
+      "kind": "foundational ontology and vertical branching skeleton",
+      "terms": [
+        "Potato of Life",
+        "Father",
+        "Son",
+        "Spirit",
+        "Heaven",
+        "Earth",
+        "Plane",
+        "Door",
+        "Axis",
+        "Tree",
+        "Mountain",
+        "Swamp"
+      ]
+    },
+    {
+      "id": "project-synthesis",
+      "path": "data/house/project-synthesis.json",
+      "branch": "root",
+      "kind": "whole-project synthesis binding commit waves, center operators, living systems, Room contributions, tests and handoffs",
+      "terms": [
+        "Project Center",
+        "Rooms",
+        "Pairings",
+        "Living Project",
+        "Door Test",
+        "Spiral Test",
+        "Fruit Test",
+        "Garden Test",
+        "Handoffs",
+        "Development Waves"
+      ]
+    },
+    {
+      "id": "knowledge-fork-discernment-atlas",
+      "path": "knowledge/core/knowledge-fork-discernment-atlas.json",
+      "branch": "root",
+      "kind": "knowledge provenance discernment Life/Strife routing operator",
+      "terms": [
+        "Knowledge",
+        "Discernment",
+        "Provenance",
+        "Life",
+        "Strife",
+        "Withholding"
+      ]
+    },
+    {
+      "id": "tree-branching-pruning-atlas",
+      "path": "knowledge/core/tree-branching-pruning-atlas.json",
+      "branch": "root",
+      "kind": "regulated Tree branching pruning and plasticity operator",
+      "terms": [
+        "Tree",
+        "Branching",
+        "Pruning",
+        "Dormant Bud",
+        "Plasticity",
+        "Resource Cost"
+      ]
+    },
+    {
+      "id": "fruit-consequence-evaluation-atlas",
+      "path": "knowledge/core/fruit-consequence-evaluation-atlas.json",
+      "branch": "root",
+      "kind": "domain-aware consequence evaluation operator",
+      "terms": [
+        "Fruit",
+        "Consequence",
+        "Externality",
+        "Future Seed",
+        "Output",
+        "Evaluation"
+      ]
+    },
+    {
+      "id": "repair-forge-protocol",
+      "path": "knowledge/core/repair-forge-protocol.json",
+      "branch": "root",
+      "kind": "harm accountability correction reintegration and Forge protocol",
+      "terms": [
+        "Repair",
+        "Forge",
+        "Accountability",
+        "Reintegration",
+        "Release",
+        "Harm"
+      ]
+    },
+    {
+      "id": "garden-regime-mechanics",
+      "path": "knowledge/core/garden-regime-mechanics.json",
+      "branch": "root",
+      "kind": "generative regime and resilience operator",
+      "terms": [
+        "Garden",
+        "Resilience",
+        "Diversity",
+        "Feedback",
+        "Exit",
+        "Future Seed"
+      ]
+    },
+    {
+      "id": "shadow-integration-overlay",
+      "path": "knowledge/core/shadow-integration-overlay.json",
+      "branch": "root",
+      "kind": "cross-plane occlusion projection and integration operator",
+      "terms": [
+        "Shadow",
+        "Projection",
+        "Positive Shadow",
+        "Institutional Shadow",
+        "Model Shadow",
+        "Integration"
+      ]
+    },
+    {
+      "id": "potatoverse-master-framework",
+      "path": "knowledge/core/potatoverse-master-framework.json",
+      "branch": "root",
+      "kind": "canonical master synthesis",
+      "terms": [
+        "Source Manifestation",
+        "Father",
+        "Son",
+        "Potato",
+        "Door",
+        "Axis",
+        "North",
+        "Garden",
+        "Tree"
+      ]
+    },
+    {
+      "id": "potato-of-life-deep-structure",
+      "path": "knowledge/core/potato-of-life-deep-structure.json",
+      "branch": "tim",
+      "kind": "Great Book and developmental deep structure",
+      "terms": [
+        "Divine Kneel",
+        "Holy Soil",
+        "Merkaba",
+        "hidden center",
+        "vehicle becomes infrastructure",
+        "sunlight hidden in matter"
+      ]
+    },
+    {
+      "id": "tim-dooley",
+      "path": "knowledge/core/tim-dooley.json",
+      "branch": "tim",
+      "kind": "central identity owner",
+      "terms": [
+        "Tim Dooley",
+        "Potato of Life",
+        "Father",
+        "God",
+        "North of North",
+        "Ladder",
+        "Gardener"
+      ]
+    },
+    {
+      "id": "tim-role-synthesis",
+      "path": "knowledge/core/tim-role-synthesis.json",
+      "branch": "tim",
+      "kind": "role development and center/service synthesis",
+      "terms": [
+        "whole job",
+        "Father",
+        "Source Center",
+        "Gardener",
+        "House",
+        "Ladder",
+        "question the floor",
+        "center ethic"
+      ]
+    },
+    {
+      "id": "tim-god-question",
+      "path": "knowledge/theology/tim-god-question.json",
+      "branch": "tim",
+      "kind": "dated Godhood evidence and interpretation",
+      "terms": [
+        "I am God",
+        "Father in Heaven",
+        "Most High",
+        "May 2025",
+        "stewardship"
+      ]
+    },
+    {
+      "id": "vertical-potato-mountain-plane-atlas",
+      "path": "knowledge/core/vertical-potato-mountain-plane-atlas.json",
+      "branch": "cosmology",
+      "kind": "canonical vertical geometry and process field",
+      "terms": [
+        "Father center",
+        "Son center",
+        "O",
+        "Plane",
+        "Mandorla",
+        "Axis",
+        "Mountain",
+        "Swamp",
+        "Sun",
+        "Moon"
+      ]
+    },
+    {
+      "id": "vesica-geometry",
+      "path": "data/geometry-vesica-pisces-mandorla.json",
+      "branch": "cosmology",
+      "kind": "exact two-circle geometry",
+      "terms": [
+        "Vesica Piscis",
+        "Mandorla",
+        "circle intersection",
+        "centers",
+        "lens",
+        "equilateral triangle"
+      ]
+    },
+    {
+      "id": "symbolic-relational-synthesis",
+      "path": "knowledge/core/symbolic-relational-synthesis.json",
+      "branch": "transformation",
+      "kind": "cross-symbol grammar and transformation laws",
+      "terms": [
+        "Plane",
+        "Axis",
+        "Door",
+        "Ladder",
+        "Mountain",
+        "Tree",
+        "Forge",
+        "Swamp",
+        "Ring",
+        "Spiral",
+        "Stone",
+        "Bethel"
+      ]
+    },
+    {
+      "id": "potato-path",
+      "path": "knowledge/practice/potato-path.json",
+      "branch": "transformation",
+      "kind": "practical transformation sequence",
+      "terms": [
+        "Mud",
+        "Burial",
+        "Eye",
+        "Root",
+        "Sprout",
+        "Plane",
+        "Door",
+        "Ladder",
+        "Mountain",
+        "Fruit",
+        "Return"
+      ]
+    },
+    {
+      "id": "heaven-spirit-father",
+      "path": "knowledge/core/heaven-spirit-father.json",
+      "branch": "spirit",
+      "kind": "upper-domain theology",
+      "terms": [
+        "Heaven",
+        "Father",
+        "Spirit",
+        "House",
+        "Garden",
+        "Throne",
+        "Source"
+      ]
+    },
+    {
+      "id": "spirit-context-atlas",
+      "path": "knowledge/spirit/spirit-context-atlas.json",
+      "branch": "spirit",
+      "kind": "comparative philosophy/theology of relation and process",
+      "terms": [
+        "transcendence",
+        "immanence",
+        "process",
+        "becoming",
+        "breath",
+        "source manifestation",
+        "relation"
+      ]
+    },
+    {
+      "id": "body-system-master-atlas",
+      "path": "knowledge/body/body-system-master-atlas.json",
+      "branch": "body",
+      "kind": "canonical whole-body biology/neurotheology entrypoint",
+      "terms": [
+        "Garden ecology",
+        "skin boundary",
+        "gut microbiome",
+        "heart breath",
+        "autonomic vagus",
+        "interoception",
+        "spine Ladder",
+        "brainstem",
+        "hypothalamus",
+        "thalamus House",
+        "memory affect",
+        "basal ganglia",
+        "cerebellum arbor vitae",
+        "pineal Door",
+        "cortex",
+        "CSF"
+      ]
+    },
+    {
+      "id": "body-topic-completion-matrix",
+      "path": "knowledge/body/body-topic-completion-matrix.json",
+      "branch": "body",
+      "kind": "completion and ownership tracker",
+      "terms": [
+        "complete",
+        "substantial",
+        "provisional",
+        "recovery",
+        "canonical owner",
+        "remaining work"
+      ]
+    },
+    {
+      "id": "neurotheology-axis-house-spirit-atlas",
+      "path": "knowledge/body/neurotheology-axis-house-spirit-atlas.json",
+      "branch": "body",
+      "kind": "cross-domain neurotheology synthesis with boundaries",
+      "terms": [
+        "Thalamus House",
+        "Pineal Son",
+        "Single Eye",
+        "CSF Spirit-flow",
+        "Genesis breath",
+        "Atlas",
+        "Axis",
+        "Eye of Horus",
+        "mustard seed",
+        "Huginn",
+        "Muninn"
+      ]
+    },
+    {
+      "id": "body-symbolism-map",
+      "path": "knowledge/body/body-symbolism-map.json",
+      "branch": "body",
+      "kind": "specialist sacred-anatomy map with scientific boundaries",
+      "terms": [
+        "Thalamus House",
+        "Pineal Door",
+        "third ventricle",
+        "Spine Ladder",
+        "CSF",
+        "Heart",
+        "interoception"
+      ]
+    },
+    {
+      "id": "body-science-context-atlas",
+      "path": "knowledge/body/body-science-context-atlas.json",
+      "branch": "body",
+      "kind": "neuroscience and physiology context",
+      "terms": [
+        "thalamus",
+        "pineal",
+        "CSF",
+        "breath",
+        "vagus",
+        "interoception",
+        "spine"
+      ]
+    },
+    {
+      "id": "corporium-master-framework",
+      "path": "knowledge/corporium/corporium-master-framework.json",
+      "branch": "corporium",
+      "kind": "sayings/body/psychology interpretation framework",
+      "terms": [
+        "Corporium",
+        "Timisms",
+        "signals",
+        "body state",
+        "psychology",
+        "couplings"
+      ]
+    },
+    {
+      "id": "tim-sayings-ledger",
+      "path": "knowledge/corporium/tim-sayings-and-formulations-ledger.json",
+      "branch": "corporium",
+      "kind": "sayings and formulations ledger",
+      "terms": [
+        "Timisms",
+        "aphorisms",
+        "quirky formulations",
+        "instructions",
+        "humor",
+        "question the floor"
+      ]
+    },
+    {
+      "id": "psychology-signals-atlas",
+      "path": "knowledge/corporium/psychology-signals-and-couplings-atlas.json",
+      "branch": "corporium",
+      "kind": "psychology and signal interpretation",
+      "terms": [
+        "emotion",
+        "sensation",
+        "interoception",
+        "attention",
+        "behavior",
+        "coupling"
+      ]
+    },
+    {
+      "id": "ladder-33-study",
+      "path": "knowledge/corporium/ladder-33-vertebrae-five-centers-study.json",
+      "branch": "corporium",
+      "kind": "33-vertebrae and five-spinal-center comparative study",
+      "terms": [
+        "33 vertebrae",
+        "five spinal centers",
+        "higher chakras",
+        "Ladder",
+        "spine",
+        "Door sequence"
+      ]
+    },
+    {
+      "id": "chakra-hawkins-crosswalk",
+      "path": "knowledge/corporium/chakra-hawkins-frequency-crosswalk.json",
+      "branch": "corporium",
+      "kind": "chakra/Hawkins/EEG boundary-aware crosswalk",
+      "terms": [
+        "chakras",
+        "Hawkins",
+        "EEG",
+        "Hz",
+        "vibe",
+        "Gate"
+      ]
+    },
+    {
+      "id": "alpha-beta-gamma-atlas",
+      "path": "knowledge/corporium/alpha-beta-gamma-archetype-status-atlas.json",
+      "branch": "corporium",
+      "kind": "status/archetype and EEG disambiguation",
+      "terms": [
+        "alpha",
+        "beta",
+        "gamma",
+        "dominance",
+        "prestige",
+        "EEG",
+        "archetype"
+      ]
+    },
+    {
+      "id": "science-master-index",
+      "path": "knowledge/science/science-master-index.json",
+      "branch": "science",
+      "kind": "canonical science map",
+      "terms": [
+        "Potato Dynamics",
+        "equations",
+        "physics",
+        "mathematics",
+        "astronomy",
+        "QCD",
+        "CMB",
+        "topology"
+      ]
+    },
+    {
+      "id": "tim-dooley-science-formalisms",
+      "path": "knowledge/science/tim-dooley-science-formalisms.json",
+      "branch": "science",
+      "kind": "recovered/formalized Timic equations",
+      "terms": [
+        "P=(S,g,A,D,O,I)",
+        "Axis flow",
+        "Door",
+        "observables",
+        "information"
+      ]
+    },
+    {
+      "id": "equation-ledger",
+      "path": "knowledge/science/equation-ledger.json",
+      "branch": "science",
+      "kind": "equation provenance ledger",
+      "terms": [
+        "equation lineage",
+        "first attestation",
+        "variables",
+        "status",
+        "source"
+      ]
+    },
+    {
+      "id": "spudlight",
+      "path": "knowledge/science/spudlight-theory-and-equations.json",
+      "branch": "science",
+      "kind": "Spudlight source/reflection/information theory",
+      "terms": [
+        "Spudlight",
+        "Sun",
+        "Moon",
+        "source center",
+        "reflection",
+        "information gain"
+      ]
+    },
+    {
+      "id": "model-testing-protocol",
+      "path": "knowledge/science/model-testing-protocol.json",
+      "branch": "science",
+      "kind": "scientific red-team and falsifiability protocol",
+      "terms": [
+        "observables",
+        "falsifier",
+        "units",
+        "assumptions",
+        "T0 T5"
+      ]
+    },
+    {
+      "id": "timic-unification-program",
+      "path": "knowledge/science/timic-unification-program.json",
+      "branch": "science",
+      "kind": "cross-model research programme",
+      "terms": [
+        "unification",
+        "Door",
+        "Axis",
+        "Spudlight",
+        "network roles",
+        "model testing"
+      ]
+    },
+    {
+      "id": "celestial-particles-wave-004",
+      "path": "knowledge/science/celestial-orbits-particles-cmb-expansion-wave-004.json",
+      "branch": "science",
+      "kind": "specialist celestial mechanics, CMB, QCD and spin reference expansion",
+      "terms": [
+        "Moon orbit",
+        "Saturn",
+        "Milky Way",
+        "black holes",
+        "CMB",
+        "quarks",
+        "spin"
+      ]
+    },
+    {
+      "id": "biblical-overlap-atlas",
+      "path": "knowledge/traditions/biblical-overlap-atlas.json",
+      "branch": "traditions",
+      "kind": "high-density biblical relational comparisons",
+      "terms": [
+        "Jacob",
+        "Ladder",
+        "Lion",
+        "Root",
+        "Lamb",
+        "Door",
+        "Key",
+        "seed",
+        "cornerstone"
+      ]
+    },
+    {
+      "id": "biblical-research-router",
+      "path": "knowledge/traditions/biblical-research-index-wave-5.json",
+      "branch": "traditions",
+      "kind": "routing index across later biblical research waves",
+      "terms": [
+        "biblical research",
+        "routing",
+        "Zechariah",
+        "New Jerusalem",
+        "mountain",
+        "jubilee",
+        "manna",
+        "ladder",
+        "stone"
+      ]
+    },
+    {
+      "id": "biblical-overlap-additions",
+      "path": "knowledge/traditions/biblical-overlap-additions.json",
+      "branch": "traditions",
+      "kind": "specialist Mountain, Garden, River, Mire, Sun/Moon and serpent additions",
+      "terms": [
+        "Mount Zion",
+        "Transfiguration",
+        "New Jerusalem",
+        "River",
+        "Tree of Life",
+        "mire",
+        "bronze serpent"
+      ]
+    },
+    {
+      "id": "vesica-esoteric-atlas",
+      "path": "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
+      "branch": "traditions",
+      "kind": "art history and esoteric comparison atlas",
+      "terms": [
+        "mandorla",
+        "Transfiguration",
+        "Agrippa",
+        "Picatrix",
+        "Yesod",
+        "Sun",
+        "Moon",
+        "thalamus",
+        "pineal"
+      ]
+    },
+    {
+      "id": "vesica-esoteric-source-ledger",
+      "path": "knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json",
+      "branch": "sources",
+      "kind": "source ledger for Vesica/Mandorla/Sun/Moon research",
+      "terms": [
+        "Agrippa",
+        "Picatrix",
+        "Fortune",
+        "Michelangelo",
+        "Byzantine icon",
+        "thalamus etymology"
+      ]
+    },
+    {
+      "id": "comparative-mythology-map",
+      "path": "knowledge/traditions/comparative-mythology-map.json",
+      "branch": "traditions",
+      "kind": "cross-tradition mythology map",
+      "terms": [
+        "Odin",
+        "Yggdrasil",
+        "Jesus",
+        "world tree",
+        "axis mundi",
+        "Thomas"
+      ]
+    },
+    {
+      "id": "qliphoth-angels-ladder",
+      "path": "knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json",
+      "branch": "traditions",
+      "kind": "Qliphoth/angel/ladder comparative layer",
+      "terms": [
+        "qliphoth",
+        "shell",
+        "angel",
+        "ladder",
+        "Tree of Life",
+        "North"
+      ]
+    },
+    {
+      "id": "timeline-events",
+      "path": "data/timeline-events.json",
+      "branch": "timeline",
+      "kind": "canonical timeline event dataset with actor tracks and nonredundant lenses",
+      "terms": [
+        "roadmap",
+        "Son",
+        "Tim",
+        "shared transition",
+        "direct words",
+        "scripture at time",
+        "biblical parallel",
+        "biblical unlock",
+        "creative",
+        "public witness",
+        "formalization"
+      ]
+    },
+    {
+      "id": "timeline-source-registry",
+      "path": "data/timeline-source-registry.json",
+      "branch": "timeline",
+      "kind": "timeline source ownership and promotion registry",
+      "terms": [
+        "promotion policy",
+        "source role",
+        "candidate pool",
+        "dedupe",
+        "specialist only"
+      ]
+    },
+    {
+      "id": "developmental-genealogy",
+      "path": "knowledge/timeline/developmental-genealogy.json",
+      "branch": "timeline",
+      "kind": "dated role and doctrine genealogy",
+      "terms": [
+        "2011",
+        "2019",
+        "2020",
+        "2024",
+        "April 2025",
+        "2026",
+        "first attestation"
+      ]
+    },
+    {
+      "id": "reverse-biblical-timeline",
+      "path": "knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json",
+      "branch": "timeline",
+      "kind": "Tim-first/scripture-second source-direction ledger",
+      "terms": [
+        "first attestation",
+        "later comparison",
+        "source direction",
+        "scripture at time",
+        "do not backdate"
+      ]
+    },
+    {
+      "id": "neurotheology-attestation-ledger",
+      "path": "knowledge/timeline/neurotheology-attestation-ledger.json",
+      "branch": "timeline",
+      "kind": "dated development ledger for body/neurotheology mappings",
+      "terms": [
+        "2024 thalamus",
+        "33 vertebrae",
+        "Pineal Son",
+        "Father House",
+        "CSF Spirit",
+        "first attestation"
+      ]
+    },
+    {
+      "id": "tim-dooley-journey",
+      "path": "knowledge/journey/tim-dooley-journey.json",
+      "branch": "timeline",
+      "kind": "reader-oriented developmental journey",
+      "terms": [
+        "Tree ordeal",
+        "Potato birth",
+        "Turning",
+        "Father",
+        "North"
+      ]
+    },
+    {
+      "id": "son-tree-oneness",
+      "path": "knowledge/timeline/son-tree-oneness-experience.json",
+      "branch": "son",
+      "kind": "2011 ordeal phenomenology and later interpretation",
+      "terms": [
+        "Tree ordeal",
+        "19 hours",
+        "oneness",
+        "crows",
+        "spirals",
+        "return"
+      ]
+    },
+    {
+      "id": "public-theology-timeline",
+      "path": "data/tim-dooley-public-theology-timeline-2025-2026.json",
+      "branch": "timeline",
+      "kind": "specialist dated public theology timeline",
+      "terms": [
+        "Potato Axis",
+        "King",
+        "God",
+        "Father",
+        "North",
+        "Ladder"
+      ]
+    },
+    {
+      "id": "source-index",
+      "path": "knowledge/indexes/source-index.json",
+      "branch": "sources",
+      "kind": "canonical provenance routes and evidence classes",
+      "terms": [
+        "P0",
+        "P1",
+        "S1",
+        "conversation archaeology",
+        "formalization",
+        "unresolved"
+      ]
+    },
+    {
+      "id": "inference-ledger",
+      "path": "knowledge/indexes/inference-ledger.json",
+      "branch": "sources",
+      "kind": "structured inference and epiphany method",
+      "terms": [
+        "inference strength",
+        "epiphany quality",
+        "promotion pipeline",
+        "counterevidence",
+        "explanatory compression"
+      ]
+    },
+    {
+      "id": "archive-epistemics",
+      "path": "knowledge/philosophy/archive-epistemics.json",
+      "branch": "sources",
+      "kind": "archive evidence doctrine",
+      "terms": [
+        "epistemic strength",
+        "informational contribution",
+        "provenance",
+        "historical strata",
+        "contradiction"
+      ]
+    },
+    {
+      "id": "context-graph",
+      "path": "knowledge/indexes/context-graph.json",
+      "branch": "sources",
+      "kind": "curated cross-branch constellations",
+      "terms": [
+        "vertical Vesica",
+        "inner House",
+        "Sun Moon",
+        "Corporium",
+        "Farm Garden",
+        "North World",
+        "archive Eye"
+      ]
+    },
+    {
+      "id": "axis-world-model",
+      "path": "knowledge/core/axis-world-model.json",
+      "branch": "north",
+      "kind": "North/Axis structural and geographic bridge",
+      "terms": [
+        "Axis",
+        "North",
+        "Denmark",
+        "Greenland",
+        "Europe",
+        "quadrants"
+      ]
+    },
+    {
+      "id": "country-relational-method",
+      "path": "knowledge/core/country-relational-method.json",
+      "branch": "world",
+      "kind": "country capability/dependency method",
+      "terms": [
+        "resilience",
+        "coupled capability",
+        "dependencies",
+        "functional chains"
+      ]
+    },
+    {
+      "id": "european-coupling-programme",
+      "path": "knowledge/core/european-coupling-programme.json",
+      "branch": "world",
+      "kind": "European interoperability/capability proposal",
+      "terms": [
+        "Market Passport",
+        "Tell Europe Once",
+        "Economic Intelligence",
+        "Regulatory API"
+      ]
+    },
+    {
+      "id": "european-commons",
+      "path": "knowledge/core/european-commons.json",
+      "branch": "world",
+      "kind": "European cultural/digital commons proposal",
+      "terms": [
+        "rights",
+        "portability",
+        "open APIs",
+        "creator ownership"
+      ]
+    },
+    {
+      "id": "farm-swamp-atlas",
+      "path": "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+      "branch": "world",
+      "kind": "Farm/Swamp/Forge role and boundary system",
+      "terms": [
+        "Farm",
+        "Swamp",
+        "Forge",
+        "Dog",
+        "Farmer",
+        "Cow",
+        "Moloch",
+        "Tree of Strife",
+        "Garden"
+      ]
+    },
+    {
+      "id": "shadow-west-swamp-synthesis",
+      "path": "knowledge/core/shadow-west-swamp-synthesis.json",
+      "branch": "world",
+      "kind": "evidence-governed shadow-system framework",
+      "terms": [
+        "Swamp",
+        "blocked flow",
+        "institutional mud",
+        "evidence firewall",
+        "repair"
+      ]
+    },
+    {
+      "id": "creative-systems-archive",
+      "path": "knowledge/culture/creative-systems-archive.json",
+      "branch": "works",
+      "kind": "creative works and simulations archive",
+      "terms": [
+        "games",
+        "music",
+        "poetry",
+        "satire",
+        "AI Potato Town",
+        "Trading Game"
+      ]
+    },
+    {
+      "id": "suno-music-archive",
+      "path": "knowledge/creative/tim-dooley-suno-music-archive.json",
+      "branch": "works",
+      "kind": "Suno music catalogue and recovered lyric records",
+      "terms": [
+        "Suno",
+        "songs",
+        "lyrics",
+        "The Narrow Gate is a Spiral not a line",
+        "The Throne of North of North",
+        "One Potato",
+        "Holy Mountain",
+        "im literally god"
+      ]
+    },
+    {
+      "id": "potato-house-constitution",
+      "path": "docs/POTATO-HOUSE-CONSTITUTION.md",
+      "branch": "root",
+      "kind": "permanent House architecture constitution",
+      "terms": [
+        "House",
+        "Room",
+        "Plane",
+        "Root",
+        "Road",
+        "Door",
+        "Ladder",
+        "Mountain",
+        "Tree",
+        "Garden",
+        "Forge",
+        "Swamp",
+        "View",
+        "Path",
+        "state",
+        "provenance"
+      ]
+    },
+    {
+      "id": "house-rooms",
+      "path": "data/house/rooms.json",
+      "branch": "root",
+      "kind": "canonical bounded-context Room registry",
+      "terms": [
+        "Potatoverse Canon",
+        "Archive Sources",
+        "Time History",
+        "Traditions Texts",
+        "Science Formal Models",
+        "Life Body",
+        "World Systems",
+        "Culture Information",
+        "Works",
+        "Research Lab"
+      ]
+    },
+    {
+      "id": "axis-flow-contract",
+      "path": "data/axis-flow-contract.json",
+      "branch": "transformation",
+      "kind": "canonical state-transition, lifecycle and regime grammar",
+      "terms": [
+        "Observed",
+        "Residue",
+        "Capture",
+        "Door",
+        "Living Root",
+        "Generative",
+        "Garden",
+        "Forge",
+        "Swamp",
+        "Dormancy",
+        "Wound",
+        "Repair",
+        "Mature",
+        "Ash",
+        "Mud",
+        "Soil",
+        "Return"
+      ]
+    },
+    {
+      "id": "house-subrooms",
+      "path": "data/house/subrooms.json",
+      "branch": "root",
+      "kind": "nested bounded-context registry beneath the ten canonical top-level Dwellings",
+      "terms": [
+        "nested Room",
+        "subcontext",
+        "delegated scope",
+        "adjacency",
+        "topology profile",
+        "interface",
+        "House directions",
+        "Dwelling",
+        "public scale"
+      ]
+    },
+    {
+      "id": "house-topology",
+      "path": "data/house/topology.json",
+      "branch": "root",
+      "kind": "multi-axis House topology and visual embedding contract",
+      "terms": [
+        "House topology",
+        "WITHIN",
+        "HERE",
+        "UP",
+        "DOWN",
+        "OUT",
+        "ACROSS",
+        "THROUGH",
+        "STATE",
+        "crosscutting axes",
+        "corridor",
+        "embedding"
+      ]
+    },
+    {
+      "id": "house-interfaces",
+      "path": "data/house/interfaces.json",
+      "branch": "root",
+      "kind": "guarded cross-Room interface registry",
+      "terms": [
+        "Room Door",
+        "interface",
+        "translation",
+        "guard",
+        "preserved invariant",
+        "formalization",
+        "comparison",
+        "promotion",
+        "epistemic firewall"
+      ]
+    },
+    {
+      "id": "house-architectural-vocabulary",
+      "path": "data/house/architectural-vocabulary.json",
+      "branch": "root",
+      "kind": "biblical-informed functional vocabulary for House scale, access, support, stewardship, participation, storage and portable architecture",
+      "terms": [
+        "House",
+        "Dwelling",
+        "Mansion",
+        "Room",
+        "Chamber",
+        "Court",
+        "Gate",
+        "Door",
+        "Sanctuary",
+        "Foundation",
+        "Cornerstone",
+        "Pillar",
+        "Temple",
+        "City",
+        "Body",
+        "Field",
+        "Vineyard",
+        "Garden",
+        "Treasury",
+        "Archive",
+        "Tabernacle"
+      ]
+    },
+    {
+      "id": "house-projections",
+      "path": "data/house/projections.json",
+      "branch": "root",
+      "kind": "alternate integrated-plurality projection registry",
+      "terms": [
+        "House View",
+        "Temple View",
+        "Body View",
+        "Tree Vine View",
+        "City View",
+        "integrated plurality",
+        "noncollapse"
+      ]
+    },
+    {
+      "id": "house-structural-census",
+      "path": "data/house/structural-census.json",
+      "branch": "root",
+      "kind": "multi-role census of Fields, Vineyards, Paths, Views, Courts, Gates, Archives, Treasuries, Foundations, States and other House structures",
+      "terms": [
+        "Field",
+        "Vineyard",
+        "Programme",
+        "Path",
+        "View",
+        "Court",
+        "Table",
+        "Gate",
+        "Door",
+        "Archive",
+        "Treasury",
+        "Foundation",
+        "Pillar",
+        "State",
+        "Tabernacle",
+        "Vessel"
+      ]
+    },
+    {
+      "id": "house-population-contract",
+      "path": "data/house/population-contract.json",
+      "branch": "root",
+      "kind": "population, inheritance and promotion contract for House structures",
+      "terms": [
+        "population",
+        "inheritance",
+        "promotion",
+        "owner",
+        "source",
+        "public surface",
+        "structural role",
+        "Chamber reserve"
+      ]
+    },
+    {
+      "id": "house-population-pulse",
+      "path": "data/house/population-pulse.json",
+      "branch": "root",
+      "kind": "maintenance diagnostic for Room rooting, interfaces and public exposure",
+      "terms": [
+        "population pulse",
+        "sparse roots",
+        "guarded interface",
+        "public exposure",
+        "maintenance diagnostic"
+      ]
+    },
+    {
+      "id": "house-federation-scale",
+      "path": "data/house/federation-scale.json",
+      "branch": "root",
+      "kind": "higher-order and cross-House federation grammar",
+      "terms": [
+        "Household",
+        "House",
+        "City",
+        "Commons",
+        "Network",
+        "Assembly",
+        "Council",
+        "Kingdom",
+        "Realm",
+        "Civilization",
+        "Garden-City",
+        "federation"
+      ]
+    },
+    {
+      "id": "house-holdings",
+      "path": "data/house/holdings.json",
+      "branch": "root",
+      "kind": "file-level primary ownership and featured holdings for all nested Rooms",
+      "terms": [
+        "holdings",
+        "primary owner",
+        "Room contents",
+        "featured holding",
+        "unique ownership"
+      ]
+    },
+    {
+      "id": "house-collections",
+      "path": "data/house/collections.json",
+      "branch": "root",
+      "kind": "cross-Room curated collections that assemble holdings without transferring ownership",
+      "terms": [
+        "Corporium",
+        "Story",
+        "Reader dossiers",
+        "Guides",
+        "Indexes",
+        "collection",
+        "curation"
+      ]
+    },
+    {
+      "id": "house-data-holdings",
+      "path": "data/house/data-holdings.json",
+      "branch": "root",
+      "kind": "Room-owned grouped datasets, ledgers, registries and contracts",
+      "terms": [
+        "data holdings",
+        "dataset bundle",
+        "ledger",
+        "registry",
+        "contract",
+        "primary Room owner",
+        "backend data"
+      ]
+    },
+    {
+      "id": "house-room-dossiers",
+      "path": "data/house/room-dossiers.json",
+      "branch": "root",
+      "kind": "reader and maintainer dossiers composing each Room's holdings, datasets, passages, collections and public surfaces",
+      "terms": [
+        "Room dossier",
+        "entrance",
+        "featured holdings",
+        "data holdings",
+        "passages",
+        "collections",
+        "next work"
+      ]
+    },
+    {
+      "id": "deep-element-definition-atlas",
+      "path": "knowledge/core/deep-element-definition-atlas.json",
+      "branch": "root",
+      "kind": "binding deep definition grammar for major project operators and comparative structures",
+      "terms": [
+        "Definition Atlas",
+        "Potato of Life",
+        "Door",
+        "Axis",
+        "Tree",
+        "Garden",
+        "Swamp",
+        "Mountain",
+        "Pyramid",
+        "Maslow",
+        "Hawkins",
+        "Qliphoth",
+        "Freemasonry",
+        "Sacred Geometry"
+      ]
+    },
+    {
+      "id": "hierarchy-pyramid-scale-comparative-atlas",
+      "path": "knowledge/traditions/hierarchy-pyramid-scale-comparative-atlas.json",
+      "branch": "traditions",
+      "kind": "comparative atlas separating pyramid hierarchy ladder and scale systems",
+      "terms": [
+        "Great Seal",
+        "Illuminati",
+        "Maslow",
+        "Hawkins",
+        "Pyramid",
+        "Ladder",
+        "Scale"
+      ]
+    },
+    {
+      "id": "tree-of-life-knowledge-qliphoth-structure-atlas",
+      "path": "knowledge/traditions/tree-of-life-knowledge-qliphoth-structure-atlas.json",
+      "branch": "traditions",
+      "kind": "historically layered Tree of Life Knowledge and Qliphoth structural atlas",
+      "terms": [
+        "Tree of Life",
+        "Tree of Knowledge",
+        "Sefirot",
+        "Qliphoth",
+        "Qelippot",
+        "Kabbalah",
+        "Hermetic Qabalah"
+      ]
+    },
+    {
+      "id": "freemasonry-order-symbol-geometry-atlas",
+      "path": "knowledge/traditions/freemasonry-order-symbol-geometry-atlas.json",
+      "branch": "traditions",
+      "kind": "Freemasonry degree body symbol and geometry atlas",
+      "terms": [
+        "Freemasonry",
+        "Craft Masonry",
+        "Scottish Rite",
+        "York Rite",
+        "Jachin",
+        "Boaz",
+        "Square and Compasses",
+        "Temple"
+      ]
+    },
+    {
+      "id": "symbol-conversation-archaeology-wave-001",
+      "path": "knowledge/research/symbol-conversation-archaeology-wave-001.json",
+      "branch": "research",
+      "kind": "conversation archaeology preserving raw symbolic formulations and genealogy",
+      "terms": [
+        "Conversation Archaeology",
+        "Alchemy",
+        "Swamp",
+        "Mountain",
+        "Door",
+        "Throne",
+        "Footstool",
+        "Merkaba",
+        "Spiral"
+      ]
+    },
+    {
+      "id": "alchemy-transmutation-symbol-atlas",
+      "path": "knowledge/traditions/alchemy-transmutation-symbol-atlas.json",
+      "branch": "traditions",
+      "kind": "historical alchemy and project transmutation atlas",
+      "terms": [
+        "Alchemy",
+        "Philosopher's Stone",
+        "Nigredo",
+        "Albedo",
+        "Citrinitas",
+        "Rubedo",
+        "Forge",
+        "Vessel"
+      ]
+    },
+    {
+      "id": "body-axis-chakra-kundalini-comparative-atlas",
+      "path": "knowledge/body/body-axis-chakra-kundalini-comparative-atlas.json",
+      "branch": "body",
+      "kind": "historical chakra kundalini and body-axis comparison atlas",
+      "terms": [
+        "Chakra",
+        "Kundalini",
+        "Sushumna",
+        "Spine",
+        "Axis",
+        "Pineal",
+        "Thalamus",
+        "CSF"
+      ]
+    },
+    {
+      "id": "sacred-geometry-solids-spirals-and-phyllotaxis-atlas",
+      "path": "knowledge/science/sacred-geometry-solids-spirals-and-phyllotaxis-atlas.json",
+      "branch": "science",
+      "kind": "exact geometry biological pattern and sacred-symbol boundary atlas",
+      "terms": [
+        "Platonic Solids",
+        "Dodecahedron",
+        "Cube",
+        "Fibonacci",
+        "Golden Ratio",
+        "Phyllotaxis",
+        "Merkaba",
+        "Vesica"
+      ]
+    },
+    {
+      "id": "biblical-symbol-function-atlas",
+      "path": "knowledge/traditions/biblical-symbol-function-atlas.json",
+      "branch": "traditions",
+      "kind": "scriptural symbol-function atlas",
+      "terms": [
+        "Throne",
+        "Footstool",
+        "Ark",
+        "River",
+        "Serpent",
+        "Stone",
+        "Shepherd",
+        "Lion",
+        "Lamb",
+        "Red Heifer"
+      ]
+    },
+    {
+      "id": "symbol-depth-programme-wave-002",
+      "path": "knowledge/research/symbol-depth-programme-wave-002.json",
+      "branch": "research",
+      "kind": "research-to-commit programme for symbol deepening",
+      "terms": [
+        "Symbol Depth",
+        "Commit Topics",
+        "Conversation",
+        "Scholarship",
+        "Canon"
+      ]
+    },
+    {
+      "id": "symbol-conversation-archaeology-wave-002",
+      "path": "knowledge/research/symbol-conversation-archaeology-wave-002.json",
+      "branch": "research",
+      "kind": "conversation archaeology for water vessel number celestial and tree symbols",
+      "terms": [
+        "Conversation Archaeology",
+        "River",
+        "Ark",
+        "144",
+        "Polaris",
+        "Yggdrasil"
+      ]
+    },
+    {
+      "id": "water-flow-river-drain-atlas",
+      "path": "knowledge/core/water-flow-river-drain-atlas.json",
+      "branch": "root",
+      "kind": "flow ontology separating river well fountain swamp and drain",
+      "terms": [
+        "Water",
+        "River",
+        "Well",
+        "Fountain",
+        "Swamp",
+        "Drain",
+        "Ezekiel 47",
+        "Revelation 22"
+      ]
+    },
+    {
+      "id": "ark-vessel-chariot-merkavah-atlas",
+      "path": "knowledge/traditions/ark-vessel-chariot-merkavah-atlas.json",
+      "branch": "traditions",
+      "kind": "carrier architecture atlas for ark vessel ship chariot and Merkavah",
+      "terms": [
+        "Noah's Ark",
+        "Ark of Covenant",
+        "Vessel",
+        "Ship",
+        "Chariot",
+        "Merkavah"
+      ]
+    },
+    {
+      "id": "number-measure-symbol-atlas",
+      "path": "knowledge/traditions/number-measure-symbol-atlas.json",
+      "branch": "traditions",
+      "kind": "typed number and measure atlas",
+      "terms": [
+        "3",
+        "7",
+        "10",
+        "12",
+        "33",
+        "40",
+        "42",
+        "666",
+        "144",
+        "144000"
+      ]
+    },
+    {
+      "id": "celestial-symbol-anchor-atlas",
+      "path": "knowledge/science/celestial-symbol-anchor-atlas.json",
+      "branch": "science",
+      "kind": "astronomy and symbolic anchor separation atlas",
+      "terms": [
+        "North",
+        "Polaris",
+        "Sirius",
+        "Regulus",
+        "Sun",
+        "Moon",
+        "Saturn",
+        "Sagittarius A*"
+      ]
+    },
+    {
+      "id": "tree-family-crosswalk-atlas",
+      "path": "knowledge/traditions/tree-family-crosswalk-atlas.json",
+      "branch": "traditions",
+      "kind": "comparative sacred tree function atlas",
+      "terms": [
+        "Tree of Life",
+        "Tree of Knowledge",
+        "Kabbalah",
+        "Yggdrasil",
+        "Bodhi",
+        "Vine",
+        "Mustard Seed",
+        "Root of Jesse"
+      ]
+    },
+    {
+      "id": "symbol-confusion-registry-wave-004",
+      "path": "knowledge/research/symbol-confusion-registry-wave-004.json",
+      "branch": "research",
+      "kind": "disambiguation registry for resolved confusions productive tensions and open knots",
+      "terms": [
+        "Confusion Registry",
+        "House Temple Body",
+        "Fire Light",
+        "Stone Clay",
+        "Animal Roles",
+        "Cycle Spiral"
+      ]
+    },
+    {
+      "id": "temple-body-chamber-furniture-atlas",
+      "path": "knowledge/traditions/temple-body-chamber-furniture-atlas.json",
+      "branch": "traditions",
+      "kind": "deep sacred architecture grammar",
+      "terms": [
+        "House",
+        "Temple",
+        "Body",
+        "Chamber",
+        "Throne",
+        "Seat",
+        "Table",
+        "Footstool",
+        "Altar",
+        "Lamp"
+      ]
+    },
+    {
+      "id": "material-state-stone-clay-dust-ash-atlas",
+      "path": "knowledge/core/material-state-stone-clay-dust-ash-atlas.json",
+      "branch": "root",
+      "kind": "material-state transformation atlas",
+      "terms": [
+        "Stone",
+        "Rock",
+        "Cornerstone",
+        "Clay",
+        "Dust",
+        "Ash",
+        "Mud",
+        "Soil"
+      ]
+    },
+    {
+      "id": "fire-light-heat-symbol-atlas",
+      "path": "knowledge/traditions/fire-light-heat-symbol-atlas.json",
+      "branch": "traditions",
+      "kind": "energy visibility and theophany distinction atlas",
+      "terms": [
+        "Fire",
+        "Heat",
+        "Flame",
+        "Light",
+        "Lamp",
+        "Glory",
+        "Sun",
+        "Spudlight"
+      ]
+    },
+    {
+      "id": "animal-role-symbol-atlas",
+      "path": "knowledge/traditions/animal-role-symbol-atlas.json",
+      "branch": "traditions",
+      "kind": "source-specific animal role atlas",
+      "terms": [
+        "Lion",
+        "Lamb",
+        "Shepherd",
+        "Ox",
+        "Cow",
+        "Red Heifer",
+        "Goat",
+        "Serpent",
+        "Eagle",
+        "Dog"
+      ]
+    },
+    {
+      "id": "time-cycle-season-sabbath-jubilee-atlas",
+      "path": "knowledge/traditions/time-cycle-season-sabbath-jubilee-atlas.json",
+      "branch": "traditions",
+      "kind": "temporal recurrence rest and release atlas",
+      "terms": [
+        "Cycle",
+        "Ring",
+        "Spiral",
+        "Season",
+        "Sabbath",
+        "Jubilee",
+        "Epoch"
+      ]
+    },
+    {
+      "id": "symbol-population-matrix-wave-004",
+      "path": "data/house/symbol-population-matrix-wave-004.json",
+      "branch": "house",
+      "kind": "symbol family maturity and build-readiness census",
+      "terms": [
+        "Population Matrix",
+        "Buildable",
+        "Fruiting",
+        "Architecture",
+        "Growth",
+        "Celestial",
+        "Numbers"
+      ]
+    },
+    {
+      "id": "inhabited-house-society-ontology",
+      "path": "knowledge/core/inhabited-house-society-ontology.json",
+      "branch": "root",
+      "kind": "population ontology connecting Spirit Mind Body to concrete society",
+      "terms": [
+        "Inhabited House",
+        "Spirit Mind Body",
+        "Society",
+        "Institutions",
+        "Governments",
+        "Banks",
+        "Companies",
+        "NGOs",
+        "Families",
+        "Infrastructure"
+      ]
+    },
+    {
+      "id": "society-population",
+      "path": "data/house/society-population.json",
+      "branch": "house",
+      "kind": "public society population projection and verified institutional anchors",
+      "terms": [
+        "Society Population",
+        "UN",
+        "EU",
+        "WHO",
+        "IMF",
+        "BIS",
+        "CERN",
+        "ICRC",
+        "Companies",
+        "Banks"
+      ]
+    },
+    {
+      "id": "purpose-growth-orientation-atlas",
+      "path": "knowledge/core/purpose-growth-orientation-atlas.json",
+      "branch": "root",
+      "kind": "purpose growth and agency framework",
+      "terms": [
+        "Purpose",
+        "Meaning",
+        "Coherence",
+        "Mattering",
+        "Autonomy",
+        "Competence",
+        "Relatedness",
+        "Capability",
+        "Fruit"
+      ]
+    },
+    {
+      "id": "rare-value-undiscovered-knowledge-protocol",
+      "path": "knowledge/research/rare-value-undiscovered-knowledge-protocol.json",
+      "branch": "research",
+      "kind": "undiscovered public knowledge and bridge-discovery protocol",
+      "terms": [
+        "Rare Value",
+        "Undiscovered Public Knowledge",
+        "Literature Based Discovery",
+        "A B C",
+        "Bridge",
+        "Discovery"
+      ]
+    },
+    {
+      "id": "recent-commit-embodiment-atlas-257-276",
+      "path": "knowledge/research/recent-commit-embodiment-atlas-257-276.json",
+      "branch": "research",
+      "kind": "retrospective embodiment audit for the twenty recent carving commits",
+      "terms": [
+        "Commit 257",
+        "Commit 276",
+        "Embodiment",
+        "Underfed",
+        "Latent Job",
+        "Discovery"
+      ]
+    },
+    {
+      "id": "planes-routes-metabolism-expanded-atlas",
+      "path": "knowledge/core/planes-routes-metabolism-expanded-atlas.json",
+      "branch": "root",
+      "kind": "operational deepening of planes compass Tree Seed and Spiral",
+      "terms": [
+        "Heaven",
+        "World",
+        "Below",
+        "Compass",
+        "Tree",
+        "Seed",
+        "Death",
+        "Spiral",
+        "Return"
+      ]
+    },
+    {
+      "id": "comparative-placement-cosmography-expanded-atlas",
+      "path": "knowledge/traditions/comparative-placement-cosmography-expanded-atlas.json",
+      "branch": "traditions",
+      "kind": "existential-problem indexed comparative cosmography atlas",
+      "terms": [
+        "Cosmography",
+        "Death",
+        "Knowledge",
+        "Judgment",
+        "Purification",
+        "Belonging",
+        "Transformation",
+        "Ecology"
+      ]
+    },
+    {
+      "id": "center-living-metabolism-expanded-atlas",
+      "path": "knowledge/core/center-living-metabolism-expanded-atlas.json",
+      "branch": "root",
+      "kind": "center lenses Spirit Mind Body History Culture and repair integration",
+      "terms": [
+        "Center",
+        "Spirit",
+        "Mind",
+        "Body",
+        "History",
+        "Culture",
+        "Garden",
+        "Repair",
+        "Revision",
+        "Fruit"
+      ]
+    },
+    {
+      "id": "symbol-society-discovery-integration-atlas",
+      "path": "knowledge/research/symbol-society-discovery-integration-atlas.json",
+      "branch": "research",
+      "kind": "integration of typed symbols with society and discovery",
+      "terms": [
+        "Symbols",
+        "Society",
+        "Threshold",
+        "Flow",
+        "Carrier",
+        "Institution",
+        "Discovery",
+        "Literature Based Discovery"
+      ]
+    },
+    {
+      "id": "discovery-candidates",
+      "path": "data/house/discovery-candidates.json",
+      "branch": "house",
+      "kind": "seed source-grounded rare-value discovery candidates",
+      "terms": [
+        "Garden Capability",
+        "Mission Drift",
+        "Epistemic Vigilance",
+        "Discovery Candidate"
+      ]
+    },
+    {
+      "id": "rare-value-contract",
+      "path": "data/house/rare-value-contract.json",
+      "branch": "house",
+      "kind": "public value promotion contract from reference to discovery",
+      "terms": [
+        "Reference",
+        "Context",
+        "Connection",
+        "Synthesis",
+        "Discovery Candidate"
+      ]
+    },
+    {
+      "id": "concrete-revelations-wave-006",
+      "path": "knowledge/research/concrete-revelations-wave-006.json",
+      "branch": "research",
+      "kind": "cross-domain concrete revelation atlas connecting project operators to established mechanisms",
+      "terms": [
+        "Concrete Revelations",
+        "Modularity",
+        "Capability",
+        "Resilience",
+        "Missing Data",
+        "Goodhart",
+        "Brokerage",
+        "Polycentricity",
+        "Path Dependence",
+        "Culture",
+        "LBD",
+        "Purpose"
+      ]
+    },
+    {
+      "id": "concrete-revelation-evidence-matrix",
+      "path": "data/house/concrete-revelation-evidence-matrix.json",
+      "branch": "house",
+      "kind": "evidence maturity matrix for revelation claims",
+      "terms": [
+        "Evidence Matrix",
+        "E1",
+        "E2",
+        "E3",
+        "Discovery Candidate",
+        "Synthesis"
+      ]
+    },
+    {
+      "id": "entity-dossier-schema",
+      "path": "data/house/entity-dossier-schema.json",
+      "branch": "house",
+      "kind": "canonical dossier contract for real-world entities",
+      "terms": [
+        "Entity Dossier",
+        "Spirit Mind Body",
+        "Operators",
+        "Fruit",
+        "Shadow",
+        "Discovery Questions"
+      ]
+    },
+    {
+      "id": "entity-dossiers-wave-001",
+      "path": "data/house/entity-dossiers-wave-001.json",
+      "branch": "house",
+      "kind": "first crystallized source-grounded institutional dossiers",
+      "terms": [
+        "Danmarks Nationalbank",
+        "Wikimedia Foundation",
+        "CERN",
+        "ICRC",
+        "Trust Infrastructure"
+      ]
+    },
+    {
+      "id": "trust-infrastructure-comparison",
+      "path": "data/house/trust-infrastructure-comparison.json",
+      "branch": "house",
+      "kind": "cross-dossier trust architecture comparison matrix",
+      "terms": [
+        "Trust",
+        "Door",
+        "Eye",
+        "Fruit",
+        "Shadow",
+        "Capability",
+        "Mission Drift"
+      ]
+    },
+    {
+      "id": "public-trust-infrastructure-synthesis",
+      "path": "knowledge/research/public-trust-infrastructure-synthesis.json",
+      "branch": "research",
+      "kind": "cross-domain synthesis comparing money knowledge science and humanitarian trust",
+      "terms": [
+        "Public Trust Infrastructure",
+        "Money",
+        "Knowledge",
+        "Science",
+        "Humanitarian Access",
+        "Spirit Mind Body"
+      ]
+    },
+    {
+      "id": "foundation-rule-law-ontology",
+      "path": "knowledge/core/foundation-rule-law-ontology.json",
+      "branch": "root",
+      "kind": "cross-domain foundation rules laws and multi-clock origin ontology",
+      "terms": [
+        "Foundation",
+        "Seed",
+        "Center",
+        "Plane",
+        "Platform",
+        "Law",
+        "Rule",
+        "Charter",
+        "Treaty",
+        "Constitution",
+        "Refoundation"
+      ]
+    },
+    {
+      "id": "foundations-wave-001",
+      "path": "data/house/foundations-wave-001.json",
+      "branch": "house",
+      "kind": "first populated cross-domain foundation records",
+      "terms": [
+        "Denmark Constitution",
+        "US Constitution",
+        "UN Charter",
+        "EU Treaties",
+        "Christianity",
+        "Judaism",
+        "Islam",
+        "Buddhism",
+        "Stoicism",
+        "University of Copenhagen",
+        "CERN",
+        "W3C",
+        "Maersk",
+        "ASML",
+        "Novo Nordisk",
+        "Potatoism"
+      ]
+    },
+    {
+      "id": "foundation-timeline-wave-001",
+      "path": "data/house/foundation-timeline-wave-001.json",
+      "branch": "house",
+      "kind": "cross-domain timeline of seed authorization operation consolidation and refoundation",
+      "terms": [
+        "Foundation Timeline",
+        "F0",
+        "Entry into force",
+        "First operation",
+        "Refoundation"
+      ]
+    },
+    {
+      "id": "foundation-cross-domain-synthesis",
+      "path": "knowledge/research/foundation-cross-domain-synthesis.json",
+      "branch": "research",
+      "kind": "cross-domain synthesis of foundation mechanics and civilizational beginnings",
+      "terms": [
+        "Multiple Births",
+        "Foundation as Platform",
+        "Refoundation",
+        "Anti-amnesia",
+        "Branching"
+      ]
+    },
+    {
+      "id": "foundation-reproduction-mechanisms-atlas",
+      "path": "knowledge/core/foundation-reproduction-mechanisms-atlas.json",
+      "branch": "root",
+      "kind": "cross-domain atlas of how foundations reproduce themselves",
+      "terms": [
+        "Foundation",
+        "Reproduction",
+        "Constitution",
+        "Rule",
+        "Canon",
+        "Pedagogy",
+        "Protocol",
+        "Manifesto",
+        "Lineage"
+      ]
+    },
+    {
+      "id": "foundations-wave-002",
+      "path": "data/house/foundations-wave-002.json",
+      "branch": "house",
+      "kind": "second foundation population wave covering monastic rules protocols cooperatives science and art movements",
+      "terms": [
+        "Rule of Saint Benedict",
+        "TCP/IP",
+        "Unicode",
+        "Rochdale",
+        "Newtonian Mechanics",
+        "Futurism"
+      ]
+    },
+    {
+      "id": "foundation-larger-purpose-atlas",
+      "path": "knowledge/research/foundation-larger-purpose-atlas.json",
+      "branch": "research",
+      "kind": "larger-purpose synthesis for foundation genealogy debugging mission integrity and reproduction",
+      "terms": [
+        "Foundation Purpose",
+        "Genealogy",
+        "Debugging",
+        "Mission Integrity",
+        "Refoundation",
+        "Reproduction"
+      ]
+    },
+    {
+      "id": "foundation-blueprint",
+      "path": "data/blueprints/foundation-blueprint.json",
+      "branch": "root",
+      "kind": "shared cross-domain Foundation schema",
+      "terms": [
+        "Foundation Blueprint",
+        "F0",
+        "Refoundation",
+        "Reproduction",
+        "Succession",
+        "Supersession"
+      ]
+    },
+    {
+      "id": "foundation-integration-contract",
+      "path": "data/house/foundation-integration-contract.json",
+      "branch": "house",
+      "kind": "whole-project Foundation integration and anti-duplication contract",
+      "terms": [
+        "Foundation Integration",
+        "Graph",
+        "Blueprint",
+        "Rooms",
+        "Timeline",
+        "Domains"
+      ]
+    },
+    {
+      "id": "below-intelligence-shadow-observatory",
+      "path": "knowledge/core/below-intelligence-shadow-observatory.json",
+      "branch": "root",
+      "kind": "lower-plane intelligence shadow and hidden-systems synthesis",
+      "terms": [
+        "Below",
+        "Intelligence",
+        "Shadow",
+        "Swamp",
+        "Forge",
+        "Organized Crime",
+        "Trafficking",
+        "Extremism"
+      ]
+    },
+    {
+      "id": "lower-plane-population-atlas",
+      "path": "data/house/lower-plane-population-atlas.json",
+      "branch": "house",
+      "kind": "concrete Below Platform population view",
+      "terms": [
+        "Intelligence Desk",
+        "Organized Crime",
+        "Trafficking",
+        "Illicit Markets",
+        "Extremism",
+        "High Control",
+        "Digital Underground",
+        "Forge"
+      ]
+    },
+    {
+      "id": "recent-commit-materialization-crystallization-257-283",
+      "path": "knowledge/research/recent-commit-materialization-crystallization-257-283.json",
+      "branch": "research",
+      "kind": "binding convergence ledger materializing and crystallizing commits 257 through 283 into canonical owners, interfaces, population and validation",
+      "terms": [
+        "Materialization",
+        "Crystallization",
+        "Commit 257",
+        "Commit 283",
+        "Convergence",
+        "Canonical Owner",
+        "Population",
+        "Validation",
+        "Project Spine"
+      ]
+    },
+    {
+      "id": "element-materialization-audit-2026-09-18",
+      "path": "knowledge/research/element-materialization-audit-2026-09-18.json",
+      "branch": "research",
+      "kind": "project-wide audit of strong definitions versus missing real-world instrumentation",
+      "terms": [
+        "Materialization Audit",
+        "Instrumentation",
+        "Scale",
+        "Reproduction",
+        "Visibility",
+        "Longitudinal Change",
+        "Entity Dossiers"
+      ]
+    },
+    {
+      "id": "route-case-matrix-wave-001",
+      "path": "data/house/route-case-matrix-wave-001.json",
+      "branch": "house",
+      "kind": "evidence-aware route instrumentation comparing Life Strife Repair Return with mechanism contrasts and concrete case tests",
+      "terms": [
+        "Life Route",
+        "Strife Route",
+        "Repair Route",
+        "Return Route",
+        "State Transition",
+        "Falsifier",
+        "World Return",
+        "Same Root Different Route"
+      ]
+    },
+    {
+      "id": "foundation-door-seed-genealogy",
+      "path": "data/house/foundation-door-seed-genealogy.json",
+      "branch": "house",
+      "kind": "cross-domain Foundation genealogy mapping Seed of Death Seed of Life Door clocks place reproduction fall and refoundation",
+      "terms": [
+        "Seed of Death",
+        "Seed of Life",
+        "Door",
+        "Foundation",
+        "Time",
+        "Place",
+        "Refoundation",
+        "Fall",
+        "Reproduction"
+      ]
+    },
+    {
+      "id": "foundation-axis-placement-contract",
+      "path": "data/house/foundation-axis-placement-contract.json",
+      "branch": "house",
+      "kind": "canonical Foundation stage placement across Rooms fields plane and Axis",
+      "terms": [
+        "Foundation Placement",
+        "Axis",
+        "Plane",
+        "Door",
+        "Root",
+        "Sprout",
+        "Return"
+      ]
+    },
+    {
+      "id": "foundation-placement-wave-003",
+      "path": "data/house/foundation-placement-wave-003.json",
+      "branch": "house",
+      "kind": "placement population for expanded Foundation wave 003",
+      "terms": [
+        "Foundation Wave 003",
+        "Current Status",
+        "Room Placement",
+        "Field Projection"
+      ]
+    },
+    {
+      "id": "foundation-landscape-synthesis",
+      "path": "data/house/foundation-landscape-synthesis.json",
+      "branch": "house",
+      "kind": "cross-domain synthesis of Foundation pressure Door reproduction continuity and return trajectories",
+      "terms": [
+        "Foundation Landscape",
+        "Pressure",
+        "Door",
+        "Reproduction",
+        "Continuity",
+        "Return",
+        "Trajectory Archetype"
+      ]
+    },
+    {
+      "id": "foundation-room-contract",
+      "path": "data/house/foundation-room-contract.json",
+      "branch": "house",
+      "kind": "canonical Foundation Room reader contract joining origin Door House placement Today and genealogy",
+      "terms": [
+        "Foundation Room",
+        "Origin Door",
+        "Today Snapshot",
+        "Earth Map",
+        "House Map"
+      ]
+    },
+    {
+      "id": "foundation-room-atlas",
+      "path": "data/house/foundation-room-atlas.json",
+      "branch": "house",
+      "kind": "52-Foundation tangible Room atlas with map-ready origins and dated current snapshots",
+      "terms": [
+        "Foundation Room Atlas",
+        "Door Place",
+        "Current Snapshot",
+        "Magnitude Facets",
+        "Map Ready"
+      ]
+    },
+    {
+      "id": "foundation-first-reproduction-wave-001",
+      "path": "data/house/foundation-first-reproduction-wave-001.json",
+      "branch": "house",
+      "kind": "52-Foundation earliest recovered post-Door reproduction evidence ledger",
+      "terms": [
+        "First Reproduction",
+        "Successor",
+        "Branch",
+        "Continuation",
+        "Living Lineage",
+        "Foundation Room"
+      ]
+    }
   ],
-  "retrieval_routes":[
-    {"question":"Who is Tim Dooley?","records":["tim-dooley","tim-role-synthesis","tim-god-question","developmental-genealogy"]},
-    {"question":"How does the vertical Potato geometry work?","records":["vertical-potato-mountain-plane-atlas","vesica-geometry","root-system","symbolic-relational-synthesis"]},
-    {"question":"How do Father, Son, Spirit, House and Door relate?","records":["potatoverse-master-framework","heaven-spirit-father","body-system-master-atlas","neurotheology-axis-house-spirit-atlas"]},
-    {"question":"What is Spudlight and how do Sun and Moon fit?","records":["spudlight","vertical-potato-mountain-plane-atlas","vesica-esoteric-atlas"]},
-    {"question":"What is Corporium?","records":["corporium-master-framework","tim-sayings-ledger","psychology-signals-atlas","ladder-33-study"]},
-    {"question":"How are body/chakra/neurotheology claims separated from science?","records":["body-system-master-atlas","body-topic-completion-matrix","body-science-context-atlas","chakra-hawkins-crosswalk","model-testing-protocol"]},
-    {"question":"What are the strongest biblical and esoteric parallels?","records":["biblical-overlap-atlas","biblical-research-router","vesica-esoteric-atlas","vesica-esoteric-source-ledger"]},
-    {"question":"What is the canonical timeline and where did an idea first appear?","records":["timeline-events","timeline-source-registry","reverse-biblical-timeline","neurotheology-attestation-ledger","developmental-genealogy"]},
-    {"question":"How are new revelations or epiphanies handled?","records":["inference-ledger","archive-epistemics","context-graph"]},
-    {"question":"How does North connect to the observable world?","records":["axis-world-model","country-relational-method","european-coupling-programme","source-index"]},
-    {"question":"How do Farm, Garden, Swamp and Forge differ?","records":["farm-swamp-atlas","symbolic-relational-synthesis","shadow-west-swamp-synthesis","inference-ledger"]},
-    {"question":"Where is Tim's music and creative work?","records":["suno-music-archive","creative-systems-archive"]}
+  "retrieval_routes": [
+    {
+      "question": "Who is Tim Dooley?",
+      "records": [
+        "tim-dooley",
+        "tim-role-synthesis",
+        "tim-god-question",
+        "developmental-genealogy"
+      ]
+    },
+    {
+      "question": "How does the vertical Potato geometry work?",
+      "records": [
+        "vertical-potato-mountain-plane-atlas",
+        "vesica-geometry",
+        "root-system",
+        "symbolic-relational-synthesis"
+      ]
+    },
+    {
+      "question": "How do Father, Son, Spirit, House and Door relate?",
+      "records": [
+        "potatoverse-master-framework",
+        "heaven-spirit-father",
+        "body-system-master-atlas",
+        "neurotheology-axis-house-spirit-atlas"
+      ]
+    },
+    {
+      "question": "What is Spudlight and how do Sun and Moon fit?",
+      "records": [
+        "spudlight",
+        "vertical-potato-mountain-plane-atlas",
+        "vesica-esoteric-atlas"
+      ]
+    },
+    {
+      "question": "What is Corporium?",
+      "records": [
+        "corporium-master-framework",
+        "tim-sayings-ledger",
+        "psychology-signals-atlas",
+        "ladder-33-study"
+      ]
+    },
+    {
+      "question": "How are body/chakra/neurotheology claims separated from science?",
+      "records": [
+        "body-system-master-atlas",
+        "body-topic-completion-matrix",
+        "body-science-context-atlas",
+        "chakra-hawkins-crosswalk",
+        "model-testing-protocol"
+      ]
+    },
+    {
+      "question": "What are the strongest biblical and esoteric parallels?",
+      "records": [
+        "biblical-overlap-atlas",
+        "biblical-research-router",
+        "vesica-esoteric-atlas",
+        "vesica-esoteric-source-ledger"
+      ]
+    },
+    {
+      "question": "What is the canonical timeline and where did an idea first appear?",
+      "records": [
+        "timeline-events",
+        "timeline-source-registry",
+        "reverse-biblical-timeline",
+        "neurotheology-attestation-ledger",
+        "developmental-genealogy"
+      ]
+    },
+    {
+      "question": "How are new revelations or epiphanies handled?",
+      "records": [
+        "inference-ledger",
+        "archive-epistemics",
+        "context-graph"
+      ]
+    },
+    {
+      "question": "How does North connect to the observable world?",
+      "records": [
+        "axis-world-model",
+        "country-relational-method",
+        "european-coupling-programme",
+        "source-index"
+      ]
+    },
+    {
+      "question": "How do Farm, Garden, Swamp and Forge differ?",
+      "records": [
+        "farm-swamp-atlas",
+        "symbolic-relational-synthesis",
+        "shadow-west-swamp-synthesis",
+        "inference-ledger"
+      ]
+    },
+    {
+      "question": "Where is Tim's music and creative work?",
+      "records": [
+        "suno-music-archive",
+        "creative-systems-archive"
+      ]
+    },
+    {
+      "question": "How does the Potato House fit together?",
+      "records": [
+        "potato-house-constitution",
+        "house-rooms",
+        "root-system",
+        "axis-flow-contract"
+      ]
+    },
+    {
+      "question": "What is a Room, View, Path or Door?",
+      "records": [
+        "potato-house-constitution",
+        "house-rooms",
+        "axis-flow-contract"
+      ]
+    },
+    {
+      "question": "How does the Potato lifecycle work from Mud to Return?",
+      "records": [
+        "potato-path",
+        "axis-flow-contract",
+        "symbolic-relational-synthesis",
+        "root-system"
+      ]
+    },
+    {
+      "question": "How do Garden, Forge, Swamp, Dormancy, Wound and Repair differ?",
+      "records": [
+        "axis-flow-contract",
+        "potato-path",
+        "farm-swamp-atlas",
+        "root-system"
+      ]
+    },
+    {
+      "question": "How are Dwellings and nested Rooms positioned in the House?",
+      "records": [
+        "potato-house-constitution",
+        "house-rooms",
+        "house-subrooms",
+        "house-topology",
+        "axis-flow-contract"
+      ]
+    },
+    {
+      "question": "What changes when one Room connects to another?",
+      "records": [
+        "house-interfaces",
+        "house-subrooms",
+        "house-topology",
+        "potato-house-constitution"
+      ]
+    },
+    {
+      "question": "Are the ten top-level contexts Rooms or Mansions?",
+      "records": [
+        "house-architectural-vocabulary",
+        "potato-house-constitution",
+        "house-rooms",
+        "house-subrooms"
+      ]
+    },
+    {
+      "question": "How do House, Temple, Body, Tree and City differ?",
+      "records": [
+        "house-projections",
+        "house-architectural-vocabulary",
+        "potato-house-constitution",
+        "house-topology"
+      ]
+    },
+    {
+      "question": "What kind of structure is this if it is not a Room?",
+      "records": [
+        "house-structural-census",
+        "house-population-contract",
+        "house-architectural-vocabulary",
+        "potato-house-constitution"
+      ]
+    },
+    {
+      "question": "Which parts of the House are structurally thin?",
+      "records": [
+        "house-population-pulse",
+        "house-subrooms",
+        "house-interfaces",
+        "house-structural-census"
+      ]
+    },
+    {
+      "question": "What exists above or between one House?",
+      "records": [
+        "house-federation-scale",
+        "house-topology",
+        "house-projections",
+        "house-architectural-vocabulary",
+        "new-jerusalem-network-civilization-atlas"
+      ]
+    },
+    {
+      "question": "What actually lives in each Room?",
+      "records": [
+        "house-holdings",
+        "house-collections",
+        "house-subrooms",
+        "house-interfaces"
+      ]
+    },
+    {
+      "question": "Which datasets and ledgers belong to each Room?",
+      "records": [
+        "house-data-holdings",
+        "house-holdings",
+        "house-subrooms",
+        "house-collections"
+      ]
+    },
+    {
+      "question": "How do I enter and understand a specific Room?",
+      "records": [
+        "house-room-dossiers",
+        "house-holdings",
+        "house-data-holdings",
+        "house-interfaces",
+        "house-collections"
+      ]
+    }
   ],
-  "legacy_rule":"Root-level legacy research files remain source strata only while they carry unique material or live references. They must never compete with these canonical owners in navigation. See archive/legacy/README.md."
+  "legacy_rule": "Root-level legacy research files remain source strata only while they carry unique material or live references. They must never compete with these canonical owners in navigation. See archive/legacy/README.md."
 }

@@ -30,6 +30,11 @@ REQUIRED_HOME_ROOM_LINKS = {
 
 REQUIRED_SURFACES = {
     "rooms": "/rooms/",
+    "house": "/house/",
+    "life-body": "/life-body/",
+    "research-lab": "/research-lab/",
+    "paths": "/paths/",
+    "axis": "/axis/",
     "history": "/history/",
     "law": "/law/",
     "economy": "/economy/",
@@ -55,6 +60,10 @@ ROOM_PAGE_CONTRACTS = {
 }
 
 EXPECTED_PUBLIC_ROOMS = {
+    "house": "house/",
+    "life_body": "life-body/",
+    "research_lab": "research-lab/",
+    "axis": "axis/",
     "culture": "context/culture/",
     "history": "history/",
     "politics": "politics/",
@@ -107,8 +116,8 @@ def main() -> int:
     if primary != EXPECTED_PRIMARY:
         errors.append(f"homepage primary Doors drifted: expected {EXPECTED_PRIMARY!r}; got {primary!r}")
 
-    if "Explore the Rooms" not in home:
-        errors.append("homepage missing distinct 'Explore the Rooms' corridor")
+    if "Explore the Dwellings &amp; Rooms" not in home and "Explore the Dwellings & Rooms" not in home:
+        errors.append("homepage missing distinct 'Explore the Dwellings & Rooms' corridor")
     for href, label in REQUIRED_HOME_ROOM_LINKS.items():
         if f'href="{href}"' not in home and f"href='{href}'" not in home:
             errors.append(f"homepage Rooms corridor missing route {href} ({label})")

@@ -1,0 +1,92 @@
+{
+  "version": "1.3.0",
+  "updated": "2026-09-18",
+  "authority": "foundation-integration-contract",
+  "purpose": "One integration map for Foundation across ontology, domain schemas, graph, Rooms, Timeline, archive and public readers.",
+  "owners": {
+    "ontology": "knowledge/core/foundation-rule-law-ontology.json",
+    "reproduction": "knowledge/core/foundation-reproduction-mechanisms-atlas.json",
+    "schema": "data/blueprints/foundation-blueprint.json",
+    "records": [
+      "data/house/foundations-wave-001.json",
+      "data/house/foundations-wave-002.json",
+      "data/house/foundations-wave-003.json"
+    ],
+    "timeline": "data/house/foundation-timeline-wave-001.json",
+    "canonical_map": "data/canonical-source-map.json",
+    "graph_bridge": "data/global-graph-bridge.json",
+    "seed_genealogy": "data/house/foundation-door-seed-genealogy.json",
+    "axis_placement_contract": "data/house/foundation-axis-placement-contract.json",
+    "placement_wave_003": "data/house/foundation-placement-wave-003.json",
+    "room_contract": "data/house/foundation-room-contract.json",
+    "room_atlas": "data/house/foundation-room-atlas.json",
+    "first_reproduction": "data/house/foundation-first-reproduction-wave-001.json"
+  },
+  "domain_inheritance": {
+    "country": "data/countries-blueprint.json",
+    "governance": "data/blueprints/governance-state-blueprint.json",
+    "law": "data/blueprints/law-regulation-blueprint.json",
+    "education": "data/blueprints/education-system-blueprint.json",
+    "technology": "data/blueprints/technology-system-blueprint.json",
+    "research": "data/blueprints/research-knowledge-blueprint.json",
+    "culture": "data/blueprints/culture-subculture-blueprint.json",
+    "ownership": "data/blueprints/ownership-control-blueprint.json",
+    "religion": "data/blueprints/religious-foundation-blueprint.json"
+  },
+  "graph_relations": [
+    "founded-by",
+    "constituted-by",
+    "authorized-by",
+    "emerges-from",
+    "reproduces-through",
+    "refounded-by",
+    "branches-from",
+    "supersedes",
+    "preserves-invariant"
+  ],
+  "room_lenses": [
+    "canon-identities",
+    "symbolic-architecture",
+    "chronology-events",
+    "developmental-genealogy",
+    "other-traditions",
+    "politics-governance",
+    "law-justice",
+    "economy-finance",
+    "geography-countries",
+    "internet-platforms",
+    "subculture-group-formation",
+    "research-programmes",
+    "experiments-formalization",
+    "house-architecture"
+  ],
+  "public_routes": {
+    "house": "house/#foundations",
+    "foundation_timeline": "timeline/foundations/",
+    "general_timeline": "timeline/",
+    "foundation_rooms": "timeline/foundations/#foundation-rooms"
+  },
+  "query_examples": [
+    "Which current institutions have been refounded more than once?",
+    "Show systems where authorization and first operation were separated by years.",
+    "Which foundations reproduce primarily through pedagogy rather than law?",
+    "Which current rules descend from a superseded foundation?",
+    "Which branches claim continuity with the same F0 but use different reproduction mechanisms?",
+    "Where did a technical protocol create a new operating Plane?",
+    "Which Foundations are still active today, and which survive only through successor institutions, diaspora or transferable Seed?",
+    "Which Foundations crossed the Door through migration, publication, protocol switch, incorporation, first meeting or merger?",
+    "Show the same Foundation as root, Door, sprout, branch and return rather than assigning it one vertical location.",
+    "Show Foundation Rooms by origin Door place and current continuity.",
+    "Which Foundation Rooms have map-ready physical origins and which are distributed or virtual?",
+    "Show today's typed reach without collapsing incomparable measures into one ranking.",
+    "Which Foundation Rooms have a dated first recovered reproduction event, and which still only have undated structural descendants?"
+  ],
+  "anti_duplication": [
+    "Domain records retain substantive identity and current facts.",
+    "Foundation records own generative chronology/reproduction, not the whole entity.",
+    "Timeline events are projections of foundation clocks, not new canonical foundation records.",
+    "Graph edges reference Foundation records; they do not duplicate their clock payloads.",
+    "Religious foundation records remain the canonical substantive religious-formation owners and can link to cross-domain Foundation records.",
+    "The Foundation Room atlas is a reader projection joining origin, House placement and current snapshot; it does not replace domain records or genealogy owners."
+  ]
+}

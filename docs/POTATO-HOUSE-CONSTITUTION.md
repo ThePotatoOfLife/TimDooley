@@ -148,19 +148,22 @@ Examples:
 
 The Potato vocabulary has precise architectural meanings. These meanings are functional; they do not imply that religious, biological and software systems are literally identical.
 
-### House / Room / Box — containment
+### House / Field / Room / Box — containment
 
-- **House** — the compositional whole.
+- **House** — the compositional whole. In Potato topology the whole may be represented as a union of overlapping fields rather than one rectilinear shell.
+- **Field** — a complete relational/domain region that can overlap another field without losing its own identity.
 - **Room** — a bounded context with local vocabulary, evidence rules, schemas, validators, interfaces and public tasks.
-- **Box** — any nested boundary/context within a Room or object.
+- **Box** — any nested semantic boundary/context within a Room or object. Box does not imply literal square/cube geometry.
 
-Containment never implies truth rank.
+Containment never implies truth rank or geometric moral valence. Frontend cards and rectangles are presentation devices, not claims that the House itself is cubical.
 
-### Plane — operative frame
+### Plane / Cross — operative section and orientation event
 
-The **Plane** is the context/frame currently active for a View or task: scientific, historical, legal, project-canon, a date/release, a geographic map, a public-reader surface, etc.
+The **Plane** is the context/frame currently active for a View or task: scientific, historical, legal, project-canon, a date/release, a geographic map, a public-reader surface, etc. In the Potato geometry it is also modeled as the widest horizontal section through the shared Door/overlap.
 
-Plane is not a folder.
+The **Cross** is Plane × Axis: the point/event at which the operative horizontal frame and vertical source↔manifestation orientation become simultaneously legible. Cross is not a separate container or floor.
+
+Plane is not a folder. Cross is not a Room.
 
 ### Roots / Soil / Archive — foundation and depth
 
@@ -176,8 +179,9 @@ A **Road** is a typed lateral relation/flow: comparison, influence, ownership, t
 
 Roads are never generic untyped adjacency.
 
-### Door / Path / Ladder — passage
+### Door / Path / Ladder — passage and overlap
 
+- **Relational Door** — the shared/intersection region produced when complete domains genuinely overlap.
 - **Navigation Door** — a user-visible transition between information spaces.
 - **Strong Door / Transition** — a guarded durable change of state/context.
 - **Path** — an ordered traversal through Subjects/Contexts/Views.
@@ -222,6 +226,27 @@ Literal potato biology constrains these metaphors:
 - **Mud** — mixed unresolved material that may still be metabolized.
 
 Identity and function/state remain separate.
+
+---
+
+## 5A. Potato two-field topology
+
+The symbolic House uses one durable convergence rule:
+
+**Potato House = Source Field ∪ Manifestation Field**  
+**Door = Source Field ∩ Manifestation Field**
+
+The upper/source-facing field carries Father/House/Heaven/Garden orientation. The lower/manifestation-facing field carries Son/Earth/body/world/soil/work orientation. Their overlap is the Door. The Plane cuts through the Door's widest middle and the Axis passes through both field centers; their intersection is Cross.
+
+This topology prevents the public architecture from turning Plane, Cross, Door, Ladder and Heaven into an elevator of unrelated floors.
+
+It also prevents a false moral dualism:
+
+- manifestation/Earth is not inherently Shell/Cube/evil;
+- source/Heaven is not inherently House/good merely by position;
+- House/Garden and Shell/Cube are **functional boundary regimes** determined by circulation, selective permeability, autonomy, repair, objective and consequence.
+
+The canonical public **Dwelling/Mansion** scale may project the ten top-level owners as abiding domains inside the House, but it does not add another fact-owning primitive between House and Room.
 
 ---
 
@@ -296,6 +321,34 @@ Every Room must declare:
 - migration/deprecation policy.
 
 A Room can contain nested Boxes/subcontexts. Nested containment does not create new canon automatically.
+
+### House scale law
+
+The House uses a four-step containment vocabulary for public architectural projection:
+
+1. **House** — the compositional whole.
+2. **Dwelling / Mansion** — a major abiding domain inside the House; this is the preferred public architectural projection of the ten canonical top-level Rooms. “Mansion” is retained as the older English bridge to John 14:2, while “Dwelling” is the neutral structural term.
+3. **Room** — a delegated bounded subcontext inside a Dwelling.
+4. **Chamber** — an optional smaller specialist or protected cell inside a Room, created only when a genuine local boundary/task distinction exists.
+
+This scale vocabulary does not change fact ownership: the ten canonical top-level bounded contexts remain the constitutional owners. It changes how the public House metaphor is expressed. **Dwelling/Mansion is therefore a reader-facing projection label over those owners, not a new universal durable primitive or an additional ownership layer.**
+
+Other biblical/project images—Temple, City, Body, Garden, Vineyard, Court, Gate, Foundation, Treasury and so on—must retain their own structural functions and may not be used as interchangeable synonyms for Room.
+
+### Nested Room law
+
+A **nested Room** is a bounded subcontext inside one of the ten canonical top-level Rooms. It may have its own vocabulary, specialist task, local interfaces, public Views and validators when those distinctions improve clarity or failure containment.
+
+Nested Rooms obey these laws:
+
+- they inherit fact-family ownership from their canonical parent Room unless an explicit constitutional revision creates a new top-level owner;
+- they may specialize scope but may not create shadow canon for material already owned elsewhere;
+- they may connect laterally to nested Rooms under other parents through typed interfaces;
+- their durable topological position is relational: parent containment, House band, primary House directions, cross-cutting roles, typed adjacency and interfaces;
+- a screen coordinate, diagram position, URL path or visual cluster is a replaceable View and never determines ontology;
+- if a candidate subcontext lacks distinct semantics, tasks or boundary rules, model it as a Path, View, Programme, Collection or topic instead of a nested Room.
+
+The canonical nested-Room registry is `data/house/subrooms.json`; its relational embedding contract is `data/house/topology.json`; guarded cross-Room passages are owned by `data/house/interfaces.json`.
 
 ---
 
@@ -477,3 +530,55 @@ Large-scale site/content population begins only after:
 - old and new ownership can coexist during migration without duplicate canon.
 
 After this gate, population proceeds Room by Room, Blueprint by Blueprint, while the public site is generated from the same House model.
+
+The canonical architectural vocabulary is `data/house/architectural-vocabulary.json`.
+
+### Integrated plurality projection law
+
+**House** remains the canonical ownership/composition architecture. **Temple/Sanctuary, Body, Tree/Vine and City** are alternate Views over differentiated plurality. They answer different structural questions—presence/access, functional interdependence, growth/genealogy and civic federation—and may not silently replace Room ownership, provenance, historical source meaning or one another. The canonical projection registry is `data/house/projections.json`.
+
+### Structural role census law
+
+Knowledge ownership and structural role are orthogonal. The House therefore maintains a census of real project structures that may be classified as **Field, Vineyard/Programme, Road, Path, View, Court, Table, Bridge, Gate, Door, Archive, Treasury, Foundation, Pillar, Protocol, State, Projection, Tabernacle or Vessel** without creating another owner or containment tier.
+
+The census is descriptive and multi-role: one project structure may legitimately carry several roles. A **Bridge** creates usable capability across an existing separation without merging its endpoints; a **Protocol** supplies shared grammar/rules for interoperability without making heterogeneous nodes identical. A View never becomes a fact owner merely because it is prominent; a Programme consumes Room-owned facts; an Archive owns provenance rather than every derived interpretation; a Treasury stores reusable capacity rather than provenance; and a State describes condition rather than identity.
+
+**Chamber remains reserved.** No active Chamber registry exists until a concrete case passes a stricter admission test based on protected/specialist boundary, task autonomy, and clear maintenance benefit. Corpus density alone is insufficient.
+
+The canonical role census is `data/house/structural-census.json`; population and promotion rules are owned by `data/house/population-contract.json`; structural-population diagnostics live in `data/house/population-pulse.json`.
+
+### Federation-scale law
+
+The House is not treated as the only scale of organization. The project distinguishes **Household, House, City, Commons, Network, Assembly/Council, Kingdom/Realm, Civilization and Garden-City** as higher-order or cross-House forms.
+
+These forms are **not one strict ladder**. Household concerns participants; House concerns bounded composition; City concerns federation and shared infrastructure; Commons concerns shared capability; Network concerns relation topology; Assembly concerns deliberation; Kingdom/Realm concerns normative or theological orientation; Civilization concerns long-duration emergence; Garden-City is a regime/test of civic coordination and generativity.
+
+No federation-scale form transfers ownership automatically. Houses, institutions and participants retain identity unless an explicit real-world legal relation says otherwise. Project-symbolic Kingdom/Realm language does not confer civil sovereignty, jurisdiction, state authority or ownership over persons.
+
+The canonical federation-scale registry is `data/house/federation-scale.json`.
+
+
+### Public legibility law
+
+Internal structural richness must not become mandatory reader vocabulary.
+
+The default public entrance uses progressive disclosure:
+
+1. **Enter** — five primary public Doors and ordinary subject language.
+2. **Orient** — House, ten Dwellings, Living Axis, Paths and source/evidence routes.
+3. **Study** — nested Rooms, topology, projections, federation-scale forms, structural census, guarded interfaces and maintenance diagnostics.
+
+The deeper layers remain canonical and searchable, but they are not all given equal visual weight on first contact. A public page should prefer the smallest vocabulary sufficient for the reader's task. Maintenance structures such as population pulse, census, interface registries and migration/governance details belong behind an explicit deeper-reading choice unless they are the user's actual task.
+
+This law changes presentation, not knowledge ownership or ontology.
+
+
+### Holdings and collections law
+
+A **holding** is substantive project material with one primary nested-Room owner. Cross-Room relevance does not create duplicate ownership; it is expressed through guarded interfaces, typed relations, citations, Views or collections.
+
+A **collection** assembles holdings from several owners for reading, interpretation, recovery, comparison or navigation. Corporium, Story, Reader dossiers, project Guides and routing Indexes are canonical examples of collections rather than additional Rooms.
+
+Every active nested Room should expose at least one substantive holding. A broad directory may be used as a classification pool, but it must not make every Room that references the directory a co-owner of every file beneath it.
+
+The canonical file-level ownership ledger is `data/house/holdings.json`; curated cross-Room collections are registered in `data/house/collections.json`. Grouped backend datasets, ledgers, registries and contracts are owned through `data/house/data-holdings.json`; runtime/render/config files may remain deliberately unbundled when they are implementation rather than knowledge. Room dossiers compose these registries into reader-facing entrances through `data/house/room-dossiers.json`; dossiers summarize but never replace their underlying owners.

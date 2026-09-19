@@ -95,7 +95,6 @@ queueMicrotask(async () => {
   await window.__potatoAtlasLoadModule?.('Render Stack', './3d-render-stack.js');
   await window.__potatoAtlasLoadModule?.('Map State', './3d-map-state.js');
   await window.__potatoAtlasLoadModule?.('Context Visibility', './3d-context-visibility.js');
-  await window.__potatoAtlasLoadModule?.('Context Status', './3d-context-status.js');
   await window.__potatoAtlasLoadModule?.('Pinned Context', './3d-pinned-context.js');
   const placesLoaded = await window.__potatoAtlasLoadModule?.('Places', './3d-places.js');
   if (!placesLoaded) {
@@ -167,3 +166,21 @@ queueMicrotask(() => {
   maybeLoadSubdivisions();
   map?.on('zoomend', maybeLoadSubdivisions);
 });
+
+function bindAdlHeatLayerControl() {
+  const button = document.getElementById('adlHeatLayer');
+  if (!button || button.dataset.bound === 'true') return;
+  button.dataset.bound = 'true';
+  button.addEventListener('click', async () => {
+    button.disabled = true;
+    try {
+      await window.__potatoAtlasLoadModule?.('ADL H.E.A.T.', './3d-adl-heat.js');
+      await window.__potatoAtlasAdlHeat?.toggle?.();
+    } catch (error) {
+      console.warn('ADL H.E.A.T. layer unavailable:', error);
+    } finally {
+      button.disabled = false;
+    }
+  });
+}
+queueMicrotask(bindAdlHeatLayerControl);

@@ -1,0 +1,155 @@
+{
+  "version": "1.3.0",
+  "updated": "2026-09-18",
+  "authority": "house-population-contract",
+  "purpose": "Define how the House is populated from existing canonical registries and repository material without multiplying owners.",
+  "sources_of_truth": {
+    "dwellings": "data/house/rooms.json",
+    "rooms": "data/house/subrooms.json",
+    "guarded_doors": "data/house/interfaces.json",
+    "public_views_and_gates": "data/house/public-surfaces.json",
+    "fields": "data/research-frontier.json",
+    "states": "data/axis-flow-contract.json",
+    "projections": "data/house/projections.json",
+    "vocabulary": "data/house/architectural-vocabulary.json",
+    "structural_census": "data/house/structural-census.json",
+    "population_pulse": "data/house/population-pulse.json"
+  },
+  "rules": [
+    {
+      "role": "dwelling",
+      "derive": "directly from the ten canonical top-level Room registry entries",
+      "promotion": "constitutional only"
+    },
+    {
+      "role": "room",
+      "derive": "explicit nested Room registry entry passing bounded-context admission rules",
+      "promotion": "governance review"
+    },
+    {
+      "role": "chamber",
+      "derive": "explicit only; never inferred from file count, term frequency or corpus density",
+      "promotion": "stricter specialist/protection review; currently disabled"
+    },
+    {
+      "role": "field",
+      "derive": "open frontier/problem domains with porous boundaries and unresolved targets",
+      "promotion": "may later seed a Room or Vineyard, but not automatically"
+    },
+    {
+      "role": "vineyard",
+      "derive": "named programme with mission, workstreams, stewarded inputs/outputs and review",
+      "promotion": "does not become fact owner"
+    },
+    {
+      "role": "road",
+      "derive": "typed lateral relation/corridor among stable spaces or subjects that does not itself change state",
+      "promotion": "relation only; if crossing changes state/context, model a Door instead"
+    },
+    {
+      "role": "path",
+      "derive": "ordered task traversal over existing owners",
+      "promotion": "high-value repeated paths may gain a public guide/View, never duplicate owners"
+    },
+    {
+      "role": "view",
+      "derive": "public surface or generated representation over canonical material",
+      "promotion": "replaceable; must retain routes to owners"
+    },
+    {
+      "role": "court",
+      "derive": "shared approach/navigation surface serving multiple destinations",
+      "promotion": "navigation role only"
+    },
+    {
+      "role": "table",
+      "derive": "comparison/review surface preserving source/participant identities",
+      "promotion": "representation role only"
+    },
+    {
+      "role": "bridge",
+      "derive": "durable connection that creates capability across an existing separation",
+      "promotion": "connective role only; must preserve both endpoints and state what new traversal/exchange becomes possible"
+    },
+    {
+      "role": "gate",
+      "derive": "primary perimeter gateway into broad public domain",
+      "promotion": "must not be confused with canonical ownership"
+    },
+    {
+      "role": "door",
+      "derive": "guarded interface or state/context transition with explicit invariants",
+      "promotion": "requires guard, transition semantics and reversibility/review status"
+    },
+    {
+      "role": "archive",
+      "derive": "records/source-memory systems with provenance responsibilities",
+      "promotion": "owns provenance only"
+    },
+    {
+      "role": "treasury",
+      "derive": "reusable capability store such as blueprints/seeds/templates",
+      "promotion": "storage role does not imply claim authority"
+    },
+    {
+      "role": "foundation",
+      "derive": "stable generative reference/platform with typed foundation clocks, load-bearing rules and an explicit reproduction mechanism",
+      "promotion": "high-cost governed change; mature Foundation records must state F0, what becomes possible, how continuity reproduces, and how refoundation/supersession is tracked"
+    },
+    {
+      "role": "pillar",
+      "derive": "cross-cutting invariant/service used across several Dwellings",
+      "promotion": "must not absorb participating Room ownership"
+    },
+    {
+      "role": "protocol",
+      "derive": "shared grammar/rules for interoperable meaning, evidence, data, standards or passage among heterogeneous nodes",
+      "promotion": "coordination grammar only; must not become a hidden owner or compulsory monopoly"
+    },
+    {
+      "role": "state",
+      "derive": "regime/lifecycle condition from canonical flow model",
+      "promotion": "never treated as identity/container by default"
+    },
+    {
+      "role": "projection",
+      "derive": "declared lossy view over the same differentiated system",
+      "promotion": "must state what it emphasizes and what it loses"
+    },
+    {
+      "role": "tabernacle",
+      "derive": "provisional architecture/design workspace pending review",
+      "promotion": "either promote into durable owner/contract or retire"
+    },
+    {
+      "role": "vessel",
+      "derive": "curated portable collection preserving member identity",
+      "promotion": "collection membership never transfers ownership"
+    }
+  ],
+  "inheritance": [
+    "Every instance keeps routes to its canonical owner(s) and provenance.",
+    "Structural roles may stack: e.g. Bible Comparison is both View and Table; House guide is both View and Court.",
+    "A new role classification never changes claim truth status by itself.",
+    "Containment and role are separate: a Room can host a Field, emit a View, participate in a Vineyard and expose a Door.",
+    "Promotion moves responsibility into the correct owner but preserves research/source history.",
+    "Roads and Doors are distinct: a Road connects laterally; a Door changes state/context under a guard.",
+    "Population-pulse diagnostics may guide maintenance but never determine truth, prestige or ownership.",
+    "A Bridge creates capability across separation; it does not erase the separation or merge endpoint ownership.",
+    "A Protocol coordinates heterogeneous nodes through shared grammar; it must preserve local identity and transparent revision/appeal where applicable.",
+    "A Foundation is distinct from Root and Seed: Roots may predate it; a Seed becomes Foundation only when a durable reference/platform and reproduction mechanism exist."
+  ],
+  "health_checks": [
+    "Can a visitor tell whether the thing owns facts or merely presents/routes them?",
+    "Can every View/Path/Programme return to canonical owners and evidence?",
+    "Do Fields remain open rather than masquerading as settled structure?",
+    "Do Programmes/Vineyards state mission, inputs, outputs and review?",
+    "Do Doors state what changes and what remains invariant?",
+    "Are Archive and Treasury kept distinct?",
+    "Are States kept distinct from identities and containers?",
+    "Is any candidate being promoted solely because there is a lot of content about it?",
+    "Are important adjacencies represented as typed Roads or guarded Doors rather than generic proximity?",
+    "Does the population pulse reveal missing roots/interfaces without being mistaken for a quality score?",
+    "For anything labeled Foundation, can a later generation reinstantiate the system from its rules/practices/roles/standards without personal access to the founder?"
+  ]
+}

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Door / Axis Elevator — Potato of Life</title>
+<meta name="description" content="A spatial navigator for the Potato House. Stand at the Door/Axis, move between Heaven, World and Below, and enter each Dwelling as a local center.">
+<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/elevator/">
+<link rel="stylesheet" href="../app/site-system.css?v=20260914a">
+<style>
+:root{--door-w:min(210px,32vw);--door-h:min(300px,44vw)}
+*{box-sizing:border-box}.elevator-page{min-height:100vh;overflow-x:hidden}.elevator-wrap{max-width:1220px;margin:auto;padding:22px 18px 70px}
+.elevator-nav{display:flex;gap:10px;flex-wrap:wrap;font-size:11px;margin-bottom:18px}.elevator-nav a{color:var(--site-muted);text-decoration:none}
+.elevator-head{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:end;margin-bottom:18px}.elevator-head h1{font:400 clamp(42px,7vw,88px)/.9 var(--site-font-serif);letter-spacing:-.05em;margin:4px 0 10px}.elevator-head p{max-width:760px;color:var(--site-muted)}
+.level-controls{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.level-controls button,.local-controls button{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:7px 10px;font:700 9px var(--site-font-sans);letter-spacing:.07em;text-transform:uppercase;cursor:pointer}.level-controls button[aria-pressed="true"],.level-controls button:hover,.local-controls button:hover{color:var(--site-green);border-color:#61745b;background:#101710}
+.viewport{position:relative;height:min(74vh,760px);min-height:560px;border:1px solid var(--site-line);border-radius:24px;overflow:hidden;background:
+radial-gradient(circle at 50% 56%,rgba(151,179,129,.08),transparent 18%),
+linear-gradient(to bottom,rgba(12,16,12,.96),rgba(5,8,6,.995))}
+.viewport:before{content:"";position:absolute;inset:0;background:repeating-radial-gradient(ellipse at 50% 70%,transparent 0 62px,rgba(255,255,255,.025) 63px 64px);pointer-events:none}
+.scene{position:absolute;inset:0;perspective:1100px;perspective-origin:50% 44%}
+.rotunda{position:absolute;left:50%;top:49%;width:0;height:0;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.75,.15,1)}
+.door{position:absolute;width:var(--door-w);height:var(--door-h);margin-left:calc(var(--door-w)/-2);margin-top:calc(var(--door-h)/-2);transform-style:preserve-3d;transform:rotateY(var(--angle)) translateZ(min(31vw,360px)) rotateY(calc(var(--angle) * -1));transition:opacity .35s,filter .35s,transform .8s}
+.door a{position:absolute;inset:0;border:1px solid #53634f;border-radius:100px 100px 10px 10px;background:linear-gradient(180deg,rgba(31,39,31,.96),rgba(10,13,10,.98));color:#e7eadf;text-decoration:none;display:flex;flex-direction:column;justify-content:flex-end;padding:20px 18px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.02),0 18px 60px rgba(0,0,0,.28)}
+.door a:before{content:"";position:absolute;top:50%;right:14px;width:7px;height:7px;border-radius:50%;background:#9aaa83;box-shadow:0 0 12px rgba(157,184,130,.5)}
+.door small{display:block;color:var(--site-green);font:800 8px var(--site-font-sans);letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}.door strong{font:400 23px/1.02 var(--site-font-serif);color:var(--site-gold)}.door span{font-size:9px;color:var(--site-muted);margin-top:6px;line-height:1.35}
+.door.is-dim{opacity:.16;filter:grayscale(.7)}.door.is-local a{border-color:#849879;box-shadow:0 0 42px rgba(151,179,129,.12),inset 0 0 0 1px rgba(255,255,255,.03)}
+.axis-car{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:170px;height:170px;border:1px solid var(--site-line);border-radius:50%;background:radial-gradient(circle,rgba(28,38,28,.95),rgba(7,10,8,.99) 72%);display:flex;align-items:center;justify-content:center;text-align:center;z-index:4;box-shadow:0 0 50px rgba(0,0,0,.4)}
+.axis-car b{font:400 25px/1 var(--site-font-serif);display:block;color:var(--site-gold)}.axis-car span{font-size:8px;color:var(--site-muted);display:block;margin-top:7px;letter-spacing:.09em;text-transform:uppercase}
+.floor-disc{position:absolute;left:50%;top:68%;width:min(72vw,780px);height:min(25vw,240px);border:1px solid rgba(110,124,105,.25);border-radius:50%;transform:translate(-50%,-50%) rotateX(70deg);background:radial-gradient(circle,rgba(118,145,107,.07),rgba(0,0,0,.02) 62%,rgba(0,0,0,.45));pointer-events:none}
+.level-sign{position:absolute;left:22px;top:20px;border-left:2px solid var(--site-green);padding-left:10px;z-index:5}.level-sign b{display:block;font:400 22px var(--site-font-serif);color:var(--site-gold)}.level-sign span{font-size:9px;color:var(--site-muted);max-width:300px;display:block;line-height:1.4;margin-top:3px}
+.elevator-shaft{position:absolute;right:22px;top:50%;transform:translateY(-50%);display:grid;gap:8px;z-index:5}.elevator-shaft button{width:42px;height:42px;border:1px solid var(--site-line);border-radius:50%;background:rgba(5,8,6,.85);color:var(--site-muted);cursor:pointer}.elevator-shaft button.active,.elevator-shaft button:hover{color:var(--site-green);border-color:#62765b}
+.local-panel{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;border:1px solid var(--site-line);border-top:0;padding:15px 18px;border-radius:0 0 18px 18px;margin-top:-1px}.local-copy b{font:400 20px var(--site-font-serif);color:var(--site-gold)}.local-copy span{display:block;color:var(--site-muted);font-size:10px;margin-top:4px}.local-controls{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.explain-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:28px}.explain-grid article{border-top:1px solid var(--site-line);padding-top:12px}.explain-grid b{display:block;font:400 19px var(--site-font-serif);color:var(--site-gold)}.explain-grid span{display:block;color:var(--site-muted);font-size:10px;margin-top:4px;line-height:1.45}
+.text-fallback{margin-top:24px}.text-fallback summary{cursor:pointer;color:var(--site-muted)}.text-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin-top:12px}.text-grid a{border:1px solid var(--site-line);padding:10px;text-decoration:none;color:inherit}.text-grid strong{display:block;color:var(--site-gold)}.text-grid small{color:var(--site-muted)}
+
+.level-portals{position:absolute;left:22px;bottom:20px;z-index:6;display:flex;flex-wrap:wrap;gap:6px;max-width:min(70%,620px)}
+.level-portals a{border:1px solid var(--site-line);background:rgba(5,8,6,.82);border-radius:999px;padding:6px 9px;color:var(--site-muted);text-decoration:none;font-size:8px;letter-spacing:.04em;text-transform:uppercase}
+.level-portals a:hover{color:var(--site-green);border-color:#62765b}
+
+.depth-crumbs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px;font-size:9px;color:var(--site-muted)}
+.depth-crumbs button{appearance:none;border:0;background:none;color:inherit;padding:0;cursor:pointer;text-decoration:underline;text-decoration-color:var(--site-line)}
+.depth-crumbs button:hover{color:var(--site-green)}
+.inner-badge{position:absolute;left:50%;top:14%;transform:translateX(-50%);z-index:6;border:1px solid var(--site-line);background:rgba(5,8,6,.82);border-radius:999px;padding:6px 10px;font-size:8px;letter-spacing:.07em;text-transform:uppercase;color:var(--site-muted)}
+.door.is-inner a{border-color:#6f6252;background:linear-gradient(180deg,rgba(42,35,27,.96),rgba(12,11,9,.98))}
+.door.is-inner small{color:#c0a77c}
+
+.door.is-wormhole a{border-color:#6f5d82;background:radial-gradient(circle at 50% 20%,rgba(90,68,110,.22),transparent 34%),linear-gradient(180deg,rgba(31,27,38,.97),rgba(10,9,13,.99))}
+.door.is-wormhole small{color:#c6acd8}.door.is-wormhole a:after{content:"cross-dwelling";position:absolute;top:12px;left:50%;transform:translateX(-50%);font:700 7px var(--site-font-sans);letter-spacing:.09em;text-transform:uppercase;color:#9c86ad}
+
+.journey{margin:14px 0 0;border:1px solid var(--site-line);border-radius:14px;padding:10px 12px;background:rgba(255,255,255,.015)}
+.journey-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:8px}.journey-head b{font:400 17px var(--site-font-serif);color:var(--site-gold)}.journey-actions{display:flex;gap:6px;flex-wrap:wrap}.journey-actions button{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:5px 8px;font-size:8px;cursor:pointer}
+.journey-track{display:flex;gap:0;align-items:center;overflow-x:auto;padding-bottom:2px;scrollbar-width:thin}.journey-bead{display:flex;align-items:center;white-space:nowrap}.journey-bead:after{content:"—";color:var(--site-faint);margin:0 5px}.journey-bead:last-child:after{display:none}.journey-bead button{appearance:none;border:1px solid var(--site-line);background:rgba(5,8,6,.6);color:var(--site-muted);border-radius:999px;padding:5px 8px;font-size:8px;cursor:pointer}.journey-bead.current button{color:var(--site-green);border-color:#61745b}.journey-bead.read button{border-style:dashed}
+@media(max-width:780px){.elevator-head{grid-template-columns:1fr}.level-controls{justify-content:flex-start}.viewport{min-height:520px}.door{--door-w:145px;--door-h:220px}.door{transform:rotateY(var(--angle)) translateZ(210px) rotateY(calc(var(--angle)*-1))}.door strong{font-size:17px}.door span{display:none}.axis-car{width:125px;height:125px}.floor-disc{width:92vw}.local-panel{grid-template-columns:1fr}.local-controls{justify-content:flex-start}.explain-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.rotunda,.door{transition:none}}
+</style>
+</head>
+<body><main class="elevator-page"><div class="elevator-wrap">
+<nav class="elevator-nav"><a href="../">← Home</a><a href="../house/">House</a><a href="../rooms/">Rooms</a><a href="../below/">Below Basin</a><a href="../axis/">Axis</a></nav>
+<header class="elevator-head"><div><p class="eyebrow">Door · Axis · Elevator · Local Centers</p><h1>THE HOUSE<br>FROM THE CENTER</h1><p>Stand at the Door. Move up or down through the same Axis, or turn toward a Dwelling. Entering a room makes that room your local center; its neighboring doors recompose around you. The geometry is relational, not literal Euclidean architecture.</p></div><div class="level-controls" id="levelControls" aria-label="Elevator stops"></div></header>
+<div class="depth-crumbs" id="depthCrumbs" aria-label="Spatial breadcrumb"></div><section class="journey" aria-label="Journey thread"><div class="journey-head"><b>Your thread through the House</b><div class="journey-actions"><button type="button" id="journeyBack">Back through thread</button><button type="button" id="journeyClear">Clear thread</button></div></div><div class="journey-track" id="journeyTrack"></div></section><section class="viewport" aria-label="Spatial Potato House navigator">
+<div class="level-sign" id="levelSign"></div><div class="inner-badge" id="innerBadge" hidden></div><div class="level-portals" id="levelPortals" aria-label="Level portals"></div>
+<div class="elevator-shaft" id="shaft" aria-label="Vertical elevator controls"></div>
+<div class="scene"><div class="floor-disc"></div><div class="rotunda" id="rotunda"></div><div class="axis-car" id="axisCar"><div><b>DOOR<br>/ AXIS</b><span>global spatial center</span></div></div></div>
+</section>
+<div class="local-panel"><div class="local-copy" id="localCopy"><b>Door / Axis</b><span>You are at the global center. Select a Dwelling to make it the local center.</span></div><div class="local-controls"><button type="button" id="centerBtn">Return to center</button><button type="button" id="rotateLeft">Turn left</button><button type="button" id="rotateRight">Turn right</button></div></div>
+<section class="explain-grid"><article><b>Every Room is a homepage</b><span>The room's normal HTML page remains its actual public home. The elevator is a spatial doorway into it, not a replacement copy.</span></article><article><b>Non-Euclidean by graph</b><span>Adjacency comes from the House graph. When you enter a room, its meaningful neighbors can surround you even if a literal building could not place them all there.</span></article><article><b>One Axis, many local centers</b><span>The Door/Axis remains the global center, but each Dwelling can become locally central for the duration of that context.</span></article></section>
+<details class="text-fallback"><summary>Text navigation / accessible room list</summary><div class="text-grid" id="textGrid"></div></details>
+</div></main>
+<script>
+(async()=>{
+const root=(p)=>'..'+p;
+const [eRes,sRes,pRes]=await Promise.all([
+ fetch('../data/house/elevator-spatial-projection.json'),
+ fetch('../data/house/subrooms.json'),
+ fetch('../data/house/public-surfaces.json')
+]);
+if(!eRes.ok||!sRes.ok||!pRes.ok)return;
+const data=await eRes.json(), subData=await sRes.json(), surfaceData=await pRes.json();
+const rot=document.getElementById('rotunda'),lc=document.getElementById('levelControls'),shaft=document.getElementById('shaft'),sign=document.getElementById('levelSign'),portals=document.getElementById('levelPortals'),copy=document.getElementById('localCopy'),textGrid=document.getElementById('textGrid'),crumbs=document.getElementById('depthCrumbs'),innerBadge=document.getElementById('innerBadge'),journeyTrack=document.getElementById('journeyTrack');
+const params=new URLSearchParams(location.search);
+let level=params.get('level')||'world', local=params.get('room')||null, inner=params.get('inner')||null, yaw=0;
+const JOURNEY_KEY='potato-house-journey-v1';
+let suppressJourney=false;
+function readJourney(){try{return JSON.parse(localStorage.getItem(JOURNEY_KEY)||'[]')}catch(e){return []}}
+let journey=readJourney();
+function labelForState(st){
+ if(st.inner&&subById[st.inner])return subById[st.inner].title;
+ if(st.room&&roomById[st.room])return roomById[st.room].label;
+ const L=data.levels.find(x=>x.id===st.level);return (L?.label||'Door / Axis');
+}
+function currentState(type='space'){return {level,room:local,inner,label:labelForState({level,room:local,inner}),type}}
+function sameState(a,b){return a&&b&&a.level===b.level&&(a.room||null)===(b.room||null)&&(a.inner||null)===(b.inner||null)&&a.type===b.type}
+function saveJourney(){try{localStorage.setItem(JOURNEY_KEY,JSON.stringify(journey.slice(-48)))}catch(e){}}
+function recordJourney(type='space',labelOverride=null){
+ if(suppressJourney)return;
+ const st=currentState(type);if(labelOverride)st.label=labelOverride;
+ const last=journey[journey.length-1];
+ if(!sameState(last,st)||last?.label!==st.label){journey.push(st);journey=journey.slice(-48);saveJourney();}
+}
+function restoreJourney(st){suppressJourney=true;level=st.level||'world';local=st.room||null;inner=st.inner||null;yaw=0;render();suppressJourney=false}
+function renderJourney(){
+ journeyTrack.innerHTML='';
+ const cur=currentState('space');
+ journey.forEach((st,i)=>{const wrap=document.createElement('span');wrap.className='journey-bead'+(sameState(st,cur)?' current':'')+(st.type==='read'?' read':'');const b=document.createElement('button');b.type='button';b.textContent=st.label||labelForState(st);b.title=st.type==='read'?'Readable-room exit':'Return to this spatial center';b.onclick=()=>restoreJourney(st);wrap.appendChild(b);journeyTrack.appendChild(wrap)});
+ journeyTrack.scrollLeft=journeyTrack.scrollWidth;
+}
+const roomById=Object.fromEntries(data.dwellings.map(x=>[x.id,x]));
+const subById=Object.fromEntries(subData.subrooms.map(x=>[x.id,x]));
+const surfaceById=Object.fromEntries(surfaceData.surfaces.map(x=>[x.id,x]));
+function routeFor(r){return root(r)}
+const dedicatedInnerHomes=new Set(['subculture-group-formation','internet-platforms','information-ecology','provenance-evidence','law-justice','politics-governance']);
+function subPublicRoute(S){
+ if(dedicatedInnerHomes.has(S.id))return root('/rooms/inside/'+S.id+'/');
+ for(const id of (S.public_surface_ids||[])){const x=surfaceById[id];if(x?.canonical_route)return root(x.canonical_route)}
+ const parent=roomById[S.parent_room_id];return root(parent?.homepage||'/rooms/')+'#subroom-'+S.id;
+}
+function writeUrl(){const q=new URLSearchParams();if(local)q.set('room',local);if(inner)q.set('inner',inner);if(level!=='world')q.set('level',level);history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:''))}
+function renderLevels(){
+ lc.innerHTML='';shaft.innerHTML='';
+ data.levels.forEach(L=>{
+   const b=document.createElement('button');b.type='button';b.textContent=L.label;b.dataset.level=L.id;b.setAttribute('aria-pressed',String(L.id===level));b.onclick=()=>{level=L.id;local=null;inner=null;yaw=0;render();recordJourney();renderJourney();};lc.appendChild(b);
+   const s=document.createElement('button');s.type='button';s.textContent=L.id==='heaven'?'↑':L.id==='below'?'↓':'•';s.title=L.label;s.className=L.id===level?'active':'';s.onclick=()=>{level=L.id;local=null;inner=null;yaw=0;render();recordJourney();renderJourney();};shaft.appendChild(s);
+ });
+}
+function visibleItems(){
+ if(inner){
+   const S=subById[inner]; if(!S)return [];
+   const ids=[S.id,...(S.adjacent_subroom_ids||[])];
+   return ids.map(id=>subById[id]).filter(Boolean).map(x=>({kind:'inner',id:x.id,label:x.title,subtitle:x.local_role||'nested room',homepage:subPublicRoute(x),obj:x}));
+ }
+ if(local){
+   const R=roomById[local]; if(!R)return [];
+   const children=subData.subrooms.filter(s=>s.parent_room_id===local);
+   const primary={kind:'dwelling',id:R.id,label:R.label,subtitle:R.local_center_label,homepage:root(R.homepage),obj:R};
+   const childItems=children.map(x=>({kind:'inner',id:x.id,label:x.title,subtitle:x.local_role||'nested room',homepage:subPublicRoute(x),obj:x}));
+   return [primary,...childItems];
+ }
+ return data.dwellings.filter(r=>r.projections.includes(level)).map(R=>({kind:'dwelling',id:R.id,label:R.label,subtitle:R.local_center_label,homepage:root(R.homepage),obj:R}));
+}
+function setLocal(item){
+ if(item.kind==='dwelling'){local=item.id;inner=null;}
+ else {local=item.obj.parent_room_id;inner=item.id;}
+ yaw=0;render();recordJourney();renderJourney();
+}
+function renderDoors(){
+ rot.innerHTML=''; const items=visibleItems(); const n=Math.max(items.length,1);
+ items.forEach((I,i)=>{
+   const selected=(I.kind==='inner'&&inner===I.id)||(I.kind==='dwelling'&&!inner&&local===I.id);
+   const activeParent=inner?(subById[inner]?.parent_room_id):local;
+   const wormhole=I.kind==='inner'&&activeParent&&I.obj.parent_room_id!==activeParent;
+   const d=document.createElement('div');d.className='door'+(selected?' is-local':'')+(I.kind==='inner'?' is-inner':'')+(wormhole?' is-wormhole':'');d.dataset.id=I.id;
+   d.style.setProperty('--angle',((360/n)*i)+'deg');
+   const a=document.createElement('a');a.href=I.homepage;
+   a.innerHTML='<small>'+ (selected?'LOCAL CENTER':wormhole?'WORMHOLE DOOR':I.kind==='inner'?'INNER ROOM':'DWELLING') +'</small><strong>'+I.label+'</strong><span>'+I.subtitle+'</span>';
+   a.addEventListener('mouseenter',()=>{copy.innerHTML='<b>'+I.label+'</b><span>'+I.subtitle+' · open the readable room, or make this the local spatial center.</span>'});a.addEventListener('click',()=>{recordJourney('read','Read: '+I.label);renderJourney()});
+   d.appendChild(a);
+   const hit=document.createElement('button');hit.type='button';hit.textContent='center';hit.title='Make '+I.label+' the local center';hit.style.cssText='position:absolute;left:50%;bottom:-28px;transform:translateX(-50%);font:700 8px var(--site-font-sans);letter-spacing:.06em;text-transform:uppercase;background:rgba(6,8,6,.85);color:var(--site-muted);border:1px solid var(--site-line);border-radius:999px;padding:4px 7px;cursor:pointer';hit.onclick=e=>{e.preventDefault();setLocal(I)};d.appendChild(hit);
+   rot.appendChild(d);
+ });
+ rot.style.transform='rotateY('+yaw+'deg)';
+}
+function renderSign(){
+ const L=data.levels.find(x=>x.id===level)||data.levels[1];sign.innerHTML='<b>'+L.label+'</b><span>'+L.description+'</span>';
+ portals.innerHTML=(!local&&!inner?(L.landmarks||[]):[]).map(x=>'<a href="'+routeFor(x.route)+'" data-portal-label="'+x.label.replace(/\"/g,'&quot;')+'">'+x.label+'</a>').join('');portals.querySelectorAll('a[data-portal-label]').forEach(a=>a.addEventListener('click',()=>{recordJourney('portal','Portal: '+a.dataset.portalLabel);renderJourney()}));
+ if(inner){
+   const S=subById[inner],P=roomById[S?.parent_room_id];innerBadge.hidden=false;innerBadge.textContent='inside '+(P?.label||'Dwelling')+' · nested room';
+   copy.innerHTML='<b>'+S.title+'</b><span>'+S.purpose+' This nested Room is now locally central; its registered adjacent Rooms surround you.</span>';
+ }else if(local){
+   const R=roomById[local];innerBadge.hidden=false;innerBadge.textContent='inside '+R.label;
+   copy.innerHTML='<b>'+R.label+'</b><span>'+R.local_center_label+' · the Dwelling is locally central. Its nested Rooms now surround it.</span>';
+ }else{
+   innerBadge.hidden=true;copy.innerHTML='<b>Door / Axis</b><span>You are at the global center on the '+L.label+' stop. Select a Dwelling to enter its local interior.</span>';
+ }
+}
+function renderCrumbs(){
+ crumbs.innerHTML='';
+ const make=(label,fn,current=false)=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.disabled=current;b.onclick=fn;crumbs.appendChild(b)};
+ make('Door / Axis',()=>{local=null;inner=null;yaw=0;render();recordJourney();renderJourney()},!local&&!inner);
+ if(local){const R=roomById[local];make(R.label,()=>{inner=null;yaw=0;render();recordJourney();renderJourney()},!!local&&!inner)}
+ if(inner){const S=subById[inner];make(S.title,()=>{},true)}
+}
+function renderText(){
+ textGrid.innerHTML='';
+ if(inner){
+   const S=subById[inner];const ids=[S.id,...(S.adjacent_subroom_ids||[])];
+   ids.map(id=>subById[id]).filter(Boolean).forEach(x=>{const a=document.createElement('a');a.href=subPublicRoute(x);a.innerHTML='<strong>'+x.title+'</strong><small>'+x.local_role+'</small>';textGrid.appendChild(a)});return;
+ }
+ if(local){
+   subData.subrooms.filter(s=>s.parent_room_id===local).forEach(x=>{const a=document.createElement('a');a.href=subPublicRoute(x);a.innerHTML='<strong>'+x.title+'</strong><small>'+x.local_role+'</small>';textGrid.appendChild(a)});return;
+ }
+ data.dwellings.forEach(R=>{const a=document.createElement('a');a.href=root(R.homepage);a.innerHTML='<strong>'+R.label+'</strong><small>'+R.local_center_label+'</small>';textGrid.appendChild(a)});
+}
+function render(){renderLevels();renderDoors();renderSign();renderCrumbs();renderText();writeUrl();renderJourney()}
+document.getElementById('centerBtn').onclick=()=>{if(inner){inner=null}else if(local){local=null}else{level='world'}yaw=0;render();recordJourney();renderJourney()};
+document.getElementById('rotateLeft').onclick=()=>{yaw-=35;rot.style.transform='rotateY('+yaw+'deg)'};
+document.getElementById('rotateRight').onclick=()=>{yaw+=35;rot.style.transform='rotateY('+yaw+'deg)'};
+document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){yaw-=35;rot.style.transform='rotateY('+yaw+'deg)'}if(e.key==='ArrowRight'){yaw+=35;rot.style.transform='rotateY('+yaw+'deg)'}if(e.key==='ArrowUp'){level='heaven';local=null;inner=null;yaw=0;render();recordJourney();renderJourney()}if(e.key==='ArrowDown'){level='below';local=null;inner=null;yaw=0;render();recordJourney();renderJourney()}if(e.key==='Escape'){if(inner)inner=null;else local=null;yaw=0;render();recordJourney();renderJourney()}});
+document.getElementById('journeyBack').onclick=()=>{if(journey.length<2)return;journey.pop();saveJourney();const st=journey[journey.length-1];restoreJourney(st);renderJourney()};
+document.getElementById('journeyClear').onclick=()=>{journey=[];saveJourney();recordJourney();renderJourney()};
+render();recordJourney();renderJourney();
+})();
+</script>
+</body></html>

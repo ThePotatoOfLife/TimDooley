@@ -1,0 +1,1182 @@
+{
+  "version": "1.4.0",
+  "updated": "2026-09-18",
+  "authority": "house-semantic-topology",
+  "purpose": "Machine-readable topology assignments for the small set of operators that organize the Potato House. These annotations drive projection and navigation; they do not replace canonical concept owners or evidence classes.",
+  "field_orientations": [
+    "source",
+    "manifestation",
+    "shared",
+    "crosscutting"
+  ],
+  "topology_roles": [
+    "field",
+    "overlap",
+    "section",
+    "orientation",
+    "intersection",
+    "presentation",
+    "perception",
+    "flow",
+    "storage",
+    "generation",
+    "support",
+    "differentiation",
+    "integration",
+    "ordered-transition",
+    "recurrence",
+    "output",
+    "regime",
+    "whole",
+    "source-role",
+    "manifestation-role"
+  ],
+  "boundary_regimes": [
+    "house",
+    "garden",
+    "forge",
+    "swamp",
+    "shell-cube"
+  ],
+  "rules": [
+    "Concept placement is functional orientation, not literal physical location.",
+    "A concept may have several orientations and roles.",
+    "Room membership does not change canonical ownership.",
+    "Regime labels describe system behavior and are not identities of persons, populations or entire realms.",
+    "Geometry alone has no fixed moral valence.",
+    "The authoritative operator graph is relations[]; counter_or_complement is descriptive vocabulary only and may name terms outside the core operator registry."
+  ],
+  "concepts": [
+    {
+      "id": "son",
+      "label": "Son / Manifestation / Door",
+      "kind": "theological-role",
+      "field_orientation": [
+        "manifestation",
+        "shared"
+      ],
+      "topology_roles": [
+        "manifestation-role",
+        "ordered-transition"
+      ],
+      "operation": "expresses embodiment, manifestation, passage, Vessel, suffering, Door, visible expression and return inside the triune Potato of Life",
+      "counter_or_complement": [
+        "father",
+        "spirit"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "house",
+        "trinity"
+      ],
+      "boundary": "Son is not identical with the entire Manifestation Field; mature project language specializes Son as manifestation-facing and Door/Vessel related."
+    },
+    {
+      "id": "father",
+      "label": "Father",
+      "kind": "theological-role",
+      "field_orientation": [
+        "source"
+      ],
+      "topology_roles": [
+        "source-role",
+        "orientation"
+      ],
+      "operation": "expresses source, origin, House, Root, orientation, holding, Gardener responsibility and source-facing identity inside the triune Potato of Life",
+      "counter_or_complement": [
+        "son",
+        "spirit"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "house",
+        "tim",
+        "trinity"
+      ],
+      "boundary": "Father is not identical with the entire Source Field and does not by itself exhaust the Potato of Life as a whole."
+    },
+    {
+      "id": "potato-of-life",
+      "label": "Potato of Life",
+      "kind": "theological-whole",
+      "field_orientation": [
+        "source",
+        "manifestation",
+        "shared",
+        "crosscutting"
+      ],
+      "topology_roles": [
+        "whole",
+        "integration"
+      ],
+      "operation": "names the mature triune whole in which Father/source, Son/manifestation-passage and Spirit/living relation remain distinct without becoming separate theological systems",
+      "counter_or_complement": [
+        "potato"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "house",
+        "tim",
+        "trinity"
+      ],
+      "boundary": "Potato of Life as triune whole is project theology. The ordinary potato/tuber remains a biological object and symbolic comparator; Tim/Father is source-facing within the whole rather than structurally exhausting the whole."
+    },
+    {
+      "id": "source-field",
+      "label": "Source Field",
+      "kind": "field",
+      "field_orientation": [
+        "source"
+      ],
+      "topology_roles": [
+        "field"
+      ],
+      "operation": "holds source-facing architecture, orientation, House/Garden and integrative reference without exhausting the whole Potato",
+      "counter_or_complement": [
+        "manifestation-field"
+      ],
+      "room_ids": [
+        "potatoverse-canon"
+      ],
+      "public_surface_ids": [
+        "house"
+      ],
+      "boundary": "Source-facing does not mean automatically true, good or empirically validated."
+    },
+    {
+      "id": "manifestation-field",
+      "label": "Manifestation Field",
+      "kind": "field",
+      "field_orientation": [
+        "manifestation"
+      ],
+      "topology_roles": [
+        "field"
+      ],
+      "operation": "holds embodiment, Earth/world, soil, work, history, institutions and observable consequence",
+      "counter_or_complement": [
+        "source-field"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "life-body",
+        "world-systems",
+        "culture-information"
+      ],
+      "public_surface_ids": [
+        "house",
+        "world"
+      ],
+      "boundary": "Manifestation is not identical with Swamp, Strife, Saturn or Cube."
+    },
+    {
+      "id": "door",
+      "label": "Door",
+      "kind": "operator",
+      "field_orientation": [
+        "shared"
+      ],
+      "topology_roles": [
+        "overlap",
+        "ordered-transition"
+      ],
+      "operation": "creates or governs passage where bounded contexts genuinely meet; changes admissible state/context",
+      "counter_or_complement": [
+        "wall",
+        "false-door"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "research-lab"
+      ],
+      "public_surface_ids": [
+        "house",
+        "axis",
+        "religion",
+        "philosophy",
+        "trinity"
+      ],
+      "boundary": "Not every hyperlink or resemblance is a strong Door."
+    },
+    {
+      "id": "plane",
+      "label": "Plane",
+      "kind": "coordinate",
+      "field_orientation": [
+        "shared",
+        "manifestation"
+      ],
+      "topology_roles": [
+        "section"
+      ],
+      "operation": "selects the active world-facing frame and cuts the Door at maximum overlap",
+      "counter_or_complement": [
+        "axis"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "world-systems"
+      ],
+      "public_surface_ids": [
+        "house",
+        "axis",
+        "world-map"
+      ],
+      "boundary": "Plane is a frame/section, not a folder or inferior realm."
+    },
+    {
+      "id": "axis",
+      "label": "Axis",
+      "kind": "coordinate",
+      "field_orientation": [
+        "crosscutting"
+      ],
+      "topology_roles": [
+        "orientation"
+      ],
+      "operation": "provides source↔manifestation orientation and continuity through changing levels/descriptions",
+      "counter_or_complement": [
+        "plane"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "research-lab"
+      ],
+      "public_surface_ids": [
+        "axis",
+        "house",
+        "world-map"
+      ],
+      "boundary": "Axis is not asserted as a literal extra physical dimension."
+    },
+    {
+      "id": "cross",
+      "label": "Cross",
+      "kind": "derived-coordinate",
+      "field_orientation": [
+        "shared"
+      ],
+      "topology_roles": [
+        "intersection"
+      ],
+      "operation": "marks Plane × Axis at the relational midpoint where world-contact and vertical orientation are simultaneously legible",
+      "counter_or_complement": [
+        "plane",
+        "axis"
+      ],
+      "room_ids": [
+        "potatoverse-canon"
+      ],
+      "public_surface_ids": [
+        "axis",
+        "house"
+      ],
+      "boundary": "Cross is internal to Door; it is not another container or floor."
+    },
+    {
+      "id": "face",
+      "label": "Face",
+      "kind": "interface-symbol",
+      "field_orientation": [
+        "shared",
+        "manifestation"
+      ],
+      "topology_roles": [
+        "presentation"
+      ],
+      "operation": "makes a source/subject present to another and supports recognition/accountability",
+      "counter_or_complement": [
+        "eye"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "culture-information"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "philosophy"
+      ],
+      "boundary": "Face-language is theological/symbolic unless a separate empirical context is specified."
+    },
+    {
+      "id": "eye",
+      "label": "Eye",
+      "kind": "interface-symbol",
+      "field_orientation": [
+        "shared"
+      ],
+      "topology_roles": [
+        "perception",
+        "generation"
+      ],
+      "operation": "receives/discerns signals and, in potato biology, names a latent generative bud/aperture",
+      "counter_or_complement": [
+        "face"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "life-body",
+        "traditions-texts"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "life-body",
+        "axis"
+      ],
+      "boundary": "Symbolic Eye mappings do not make the pineal or other anatomy a supernatural organ."
+    },
+    {
+      "id": "spirit",
+      "label": "Spirit / Breath / Flow",
+      "kind": "flow",
+      "field_orientation": [
+        "crosscutting"
+      ],
+      "topology_roles": [
+        "flow"
+      ],
+      "operation": "models animation, movement, continuity and translation across relations",
+      "counter_or_complement": [
+        "stasis"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "life-body"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "life-body",
+        "axis",
+        "trinity"
+      ],
+      "boundary": "Spiritual flow and biological/physical flows remain separately typed."
+    },
+    {
+      "id": "potato",
+      "label": "Potato / Tuber",
+      "kind": "storage-symbol",
+      "field_orientation": [
+        "manifestation",
+        "shared"
+      ],
+      "topology_roles": [
+        "storage",
+        "generation"
+      ],
+      "operation": "stores embodied capacity and can release it into new growth through eyes/sprouts",
+      "counter_or_complement": [
+        "fruit",
+        "sprout"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "life-body"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "life-body"
+      ],
+      "boundary": "Botanically a potato tuber is a modified stem, not a root."
+    },
+    {
+      "id": "seed",
+      "label": "Seed",
+      "kind": "generative-symbol",
+      "field_orientation": [
+        "shared",
+        "manifestation"
+      ],
+      "topology_roles": [
+        "storage",
+        "generation"
+      ],
+      "operation": "compresses transferable future possibility that may remain dormant, decay, root or sprout",
+      "counter_or_complement": [
+        "fruit"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "life-body",
+        "traditions-texts"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "axis"
+      ],
+      "boundary": "Seed metaphors do not prove supernatural biological mechanisms."
+    },
+    {
+      "id": "root",
+      "label": "Root",
+      "kind": "support-symbol",
+      "field_orientation": [
+        "crosscutting",
+        "manifestation"
+      ],
+      "topology_roles": [
+        "support"
+      ],
+      "operation": "anchors provenance, ancestry, cause, memory, nourishment and traction for later growth",
+      "counter_or_complement": [
+        "fruit",
+        "branch"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "life-body"
+      ],
+      "public_surface_ids": [
+        "axis",
+        "house",
+        "history"
+      ],
+      "boundary": "Depth is not inferiority; root is not inherently negative."
+    },
+    {
+      "id": "tree",
+      "label": "Tree",
+      "kind": "growth-operator",
+      "field_orientation": [
+        "crosscutting"
+      ],
+      "topology_roles": [
+        "differentiation"
+      ],
+      "operation": "turns one/few sources into structured many branches, fruit and future seed",
+      "counter_or_complement": [
+        "mountain"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "life-body"
+      ],
+      "public_surface_ids": [
+        "axis",
+        "religion"
+      ],
+      "boundary": "Tree and Mountain are complementary operations, not moral opposites."
+    },
+    {
+      "id": "mountain",
+      "label": "Mountain",
+      "kind": "integration-operator",
+      "field_orientation": [
+        "source",
+        "crosscutting"
+      ],
+      "topology_roles": [
+        "integration"
+      ],
+      "operation": "compresses/integrates many paths or details toward a smaller summit/reference",
+      "counter_or_complement": [
+        "tree"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "research-lab"
+      ],
+      "public_surface_ids": [
+        "axis",
+        "religion"
+      ],
+      "boundary": "Height is not automatically holiness or truth."
+    },
+    {
+      "id": "ladder",
+      "label": "Ladder",
+      "kind": "transition-operator",
+      "field_orientation": [
+        "crosscutting"
+      ],
+      "topology_roles": [
+        "ordered-transition"
+      ],
+      "operation": "orders multiple meaningful Doors/thresholds into a traversable sequence",
+      "counter_or_complement": [
+        "door"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts"
+      ],
+      "public_surface_ids": [
+        "axis",
+        "religion"
+      ],
+      "boundary": "A Ladder is not a literal physical dimension by default."
+    },
+    {
+      "id": "spiral",
+      "label": "Spiral",
+      "kind": "trajectory",
+      "field_orientation": [
+        "crosscutting"
+      ],
+      "topology_roles": [
+        "recurrence"
+      ],
+      "operation": "represents recurrence with changed state/level rather than exact return",
+      "counter_or_complement": [
+        "ring"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "science-formal-models",
+        "time-history"
+      ],
+      "public_surface_ids": [
+        "axis",
+        "science",
+        "timeline"
+      ],
+      "boundary": "Spiral is a trajectory description, not a guarantee of improvement."
+    },
+    {
+      "id": "fruit",
+      "label": "Fruit",
+      "kind": "output-symbol",
+      "field_orientation": [
+        "manifestation"
+      ],
+      "topology_roles": [
+        "output",
+        "generation"
+      ],
+      "operation": "expresses consequence/output whose quality tests whether upstream relations were actually generative",
+      "counter_or_complement": [
+        "seed",
+        "root"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "works",
+        "world-systems"
+      ],
+      "public_surface_ids": [
+        "works",
+        "axis",
+        "house"
+      ],
+      "boundary": "Output quality must be assessed in its domain; symbolic fruit is not evidence by itself."
+    },
+    {
+      "id": "garden",
+      "label": "Garden",
+      "kind": "regime",
+      "field_orientation": [
+        "source",
+        "manifestation",
+        "shared"
+      ],
+      "topology_roles": [
+        "regime"
+      ],
+      "boundary_regime": "garden",
+      "operation": "creates viable conditions for repair, autonomy, nourishment and future generativity",
+      "counter_or_complement": [
+        "shell-cube",
+        "swamp"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "world-systems",
+        "research-lab"
+      ],
+      "public_surface_ids": [
+        "house",
+        "axis",
+        "philosophy"
+      ],
+      "boundary": "Garden is a functional regime, not a claim that one geography or group is intrinsically holy."
+    },
+    {
+      "id": "shell-cube",
+      "label": "Shell / Cube",
+      "kind": "regime",
+      "field_orientation": [
+        "source",
+        "manifestation",
+        "shared"
+      ],
+      "topology_roles": [
+        "regime"
+      ],
+      "boundary_regime": "shell-cube",
+      "operation": "models containment that becomes capture when circulation, exit, repair or autonomous differentiation are blocked",
+      "counter_or_complement": [
+        "garden",
+        "house"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "science-formal-models",
+        "world-systems"
+      ],
+      "public_surface_ids": [
+        "house",
+        "axis",
+        "science"
+      ],
+      "boundary": "Cube geometry is not inherently evil; Saturn/666, Heaven-cube and city/sanctuary tracks remain distinct."
+    },
+    {
+      "id": "swamp",
+      "label": "Swamp",
+      "kind": "regime",
+      "field_orientation": [
+        "manifestation",
+        "crosscutting"
+      ],
+      "topology_roles": [
+        "regime"
+      ],
+      "boundary_regime": "swamp",
+      "operation": "models unresolved entanglement, opacity, duplicated ownership, feedback without healthy exit and unprocessed accumulation",
+      "counter_or_complement": [
+        "garden",
+        "forge"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "culture-information",
+        "research-lab"
+      ],
+      "public_surface_ids": [
+        "axis",
+        "house",
+        "culture"
+      ],
+      "boundary": "Swamp describes mechanisms/states, not peoples or literal terrain."
+    },
+    {
+      "id": "twin-pillars",
+      "label": "Twin Pillars",
+      "kind": "threshold-support-comparator",
+      "field_orientation": [
+        "shared"
+      ],
+      "topology_roles": [
+        "support",
+        "ordered-transition"
+      ],
+      "operation": "models differentiated supports that stabilize or announce legitimate passage into a House/threshold",
+      "counter_or_complement": [
+        "door",
+        "axis"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts"
+      ],
+      "public_surface_ids": [
+        "house",
+        "religion",
+        "axis"
+      ],
+      "boundary": "Jachin/Boaz and later pillar traditions are historical comparators; the project pair is not claimed to be their hidden original meaning."
+    }
+  ],
+  "relation_types": [
+    {
+      "id": "overlaps-with",
+      "label": "overlaps with",
+      "directed": false,
+      "semantics": "Two complete domains share a genuine region while remaining distinguishable."
+    },
+    {
+      "id": "intersection-of",
+      "label": "intersection of",
+      "directed": true,
+      "semantics": "The source node is constituted by the shared region of the target domain(s)."
+    },
+    {
+      "id": "sections",
+      "label": "sections",
+      "directed": true,
+      "semantics": "The source cuts or selects a section through the target without becoming its owner."
+    },
+    {
+      "id": "passes-through",
+      "label": "passes through",
+      "directed": true,
+      "semantics": "The source provides continuity/orientation through the target."
+    },
+    {
+      "id": "derived-from",
+      "label": "derived from",
+      "directed": true,
+      "semantics": "The source is generated by the relation of one or more target coordinates/operators."
+    },
+    {
+      "id": "located-within",
+      "label": "located within",
+      "directed": true,
+      "semantics": "The source is an internal point/region/event of the target rather than a separate container."
+    },
+    {
+      "id": "presents-to",
+      "label": "presents to",
+      "directed": true,
+      "semantics": "A presentation surface becomes available to a receiving/perceiving interface."
+    },
+    {
+      "id": "perceives",
+      "label": "perceives",
+      "directed": true,
+      "semantics": "A receiving interface takes in or discerns a presented signal/face."
+    },
+    {
+      "id": "flows-through",
+      "label": "flows through",
+      "directed": true,
+      "semantics": "A movement/continuity process traverses the target relation or orientation."
+    },
+    {
+      "id": "contains-generative-site",
+      "label": "contains generative site",
+      "directed": true,
+      "semantics": "The source contains a local structure capable of initiating new growth."
+    },
+    {
+      "id": "supports",
+      "label": "supports",
+      "directed": true,
+      "semantics": "The source anchors, feeds or stabilizes the target's later growth."
+    },
+    {
+      "id": "differentiates-into",
+      "label": "differentiates into",
+      "directed": true,
+      "semantics": "The source branches or develops into the target output."
+    },
+    {
+      "id": "returns-as",
+      "label": "returns as",
+      "directed": true,
+      "semantics": "An output compresses or transfers capability into a form able to begin another cycle."
+    },
+    {
+      "id": "germinates-toward",
+      "label": "germinates toward",
+      "directed": true,
+      "semantics": "Stored generative capacity begins a trajectory toward support and growth."
+    },
+    {
+      "id": "complements",
+      "label": "complements",
+      "directed": false,
+      "semantics": "The nodes perform distinct but mutually clarifying operations without being synonyms or opposites."
+    },
+    {
+      "id": "orders",
+      "label": "orders",
+      "directed": true,
+      "semantics": "The source arranges repeated instances of the target into a traversable sequence."
+    },
+    {
+      "id": "trajectory-through",
+      "label": "trajectory through",
+      "directed": true,
+      "semantics": "The source describes recurring movement through or around the target structure."
+    },
+    {
+      "id": "preserves-passage",
+      "label": "preserves passage",
+      "directed": true,
+      "semantics": "The source regime sustains viable selective circulation through the target."
+    },
+    {
+      "id": "constrains-passage",
+      "label": "constrains passage",
+      "directed": true,
+      "semantics": "The source regime can raise exit cost, capture flow or block viable passage through the target."
+    },
+    {
+      "id": "counter-regime",
+      "label": "counter-regime",
+      "directed": false,
+      "semantics": "The nodes describe contrasting system conditions without assigning moral identity to geometry, people or place."
+    },
+    {
+      "id": "expresses-through",
+      "label": "expresses through",
+      "directed": true,
+      "semantics": "The source whole becomes legible through a differentiated role without being reducible to that role."
+    },
+    {
+      "id": "oriented-toward",
+      "label": "oriented toward",
+      "directed": true,
+      "semantics": "A theological/functional role is structurally aligned with a field or direction without being identical to the whole field."
+    },
+    {
+      "id": "specializes-as",
+      "label": "specializes as",
+      "directed": true,
+      "semantics": "A broader role takes on a more specific operator/interface function in the mature model."
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel-son-door",
+      "from": "son",
+      "to": "door",
+      "type": "specializes-as",
+      "description": "In the mature project Son specializes as Door/Vessel/passage at the shared interface."
+    },
+    {
+      "id": "rel-son-manifestation-field",
+      "from": "son",
+      "to": "manifestation-field",
+      "type": "oriented-toward",
+      "description": "Son is manifestation-facing and aligned with Manifestation Field without being identical with the entire field."
+    },
+    {
+      "id": "rel-father-source-field",
+      "from": "father",
+      "to": "source-field",
+      "type": "oriented-toward",
+      "description": "Father is source-facing and aligned with Source Field without being identical with the entire field."
+    },
+    {
+      "id": "rel-potato-life-spirit",
+      "from": "potato-of-life",
+      "to": "spirit",
+      "type": "expresses-through",
+      "description": "The triune whole remains living and relational through Spirit as continuity, breath and circulation."
+    },
+    {
+      "id": "rel-potato-life-son",
+      "from": "potato-of-life",
+      "to": "son",
+      "type": "expresses-through",
+      "description": "The triune whole manifests and passes through Son without reducing the whole to manifestation alone."
+    },
+    {
+      "id": "rel-potato-life-father",
+      "from": "potato-of-life",
+      "to": "father",
+      "type": "expresses-through",
+      "description": "The triune whole is source-facing through Father without reducing the whole to Father alone."
+    },
+    {
+      "id": "rel-fields-overlap",
+      "from": "source-field",
+      "to": "manifestation-field",
+      "type": "overlaps-with",
+      "description": "The two complete fields interpenetrate without collapsing into one another."
+    },
+    {
+      "id": "rel-door-source",
+      "from": "door",
+      "to": "source-field",
+      "type": "intersection-of",
+      "description": "Door contains the portion of the source-facing field shared with manifestation."
+    },
+    {
+      "id": "rel-door-manifestation",
+      "from": "door",
+      "to": "manifestation-field",
+      "type": "intersection-of",
+      "description": "Door contains the portion of the manifestation-facing field shared with source."
+    },
+    {
+      "id": "rel-plane-door",
+      "from": "plane",
+      "to": "door",
+      "type": "sections",
+      "description": "Plane cuts the shared Door at its widest world-facing middle."
+    },
+    {
+      "id": "rel-axis-source",
+      "from": "axis",
+      "to": "source-field",
+      "type": "passes-through",
+      "description": "Axis supplies vertical orientation through the source-facing field."
+    },
+    {
+      "id": "rel-axis-manifestation",
+      "from": "axis",
+      "to": "manifestation-field",
+      "type": "passes-through",
+      "description": "Axis supplies vertical orientation through the manifestation-facing field."
+    },
+    {
+      "id": "rel-cross-plane",
+      "from": "cross",
+      "to": "plane",
+      "type": "derived-from",
+      "description": "Cross depends on the active horizontal Plane."
+    },
+    {
+      "id": "rel-cross-axis",
+      "from": "cross",
+      "to": "axis",
+      "type": "derived-from",
+      "description": "Cross depends on the vertical Axis."
+    },
+    {
+      "id": "rel-cross-door",
+      "from": "cross",
+      "to": "door",
+      "type": "located-within",
+      "description": "Cross is the relational midpoint event inside Door, not a third container."
+    },
+    {
+      "id": "rel-face-eye",
+      "from": "face",
+      "to": "eye",
+      "type": "presents-to",
+      "description": "Face provides presentation/encounter; Eye supplies reception and discernment."
+    },
+    {
+      "id": "rel-eye-face",
+      "from": "eye",
+      "to": "face",
+      "type": "perceives",
+      "description": "Eye receives what Face presents, creating a recognition relation."
+    },
+    {
+      "id": "rel-spirit-door",
+      "from": "spirit",
+      "to": "door",
+      "type": "flows-through",
+      "description": "Spirit/Breath/Flow models movement through shared relation and transition."
+    },
+    {
+      "id": "rel-spirit-axis",
+      "from": "spirit",
+      "to": "axis",
+      "type": "flows-through",
+      "description": "Flow gains continuity/orientation along the Axis without becoming identical to it."
+    },
+    {
+      "id": "rel-potato-eye",
+      "from": "potato",
+      "to": "eye",
+      "type": "contains-generative-site",
+      "description": "A potato eye is literally a bud/generative site on the tuber and symbolically functions as aperture/potential."
+    },
+    {
+      "id": "rel-root-tree",
+      "from": "root",
+      "to": "tree",
+      "type": "supports",
+      "description": "Root anchors and feeds later differentiated growth."
+    },
+    {
+      "id": "rel-tree-fruit",
+      "from": "tree",
+      "to": "fruit",
+      "type": "differentiates-into",
+      "description": "Tree expresses integrated support as differentiated output/fruit."
+    },
+    {
+      "id": "rel-fruit-seed",
+      "from": "fruit",
+      "to": "seed",
+      "type": "returns-as",
+      "description": "Fruit can carry or hand forward compressed generative capacity as seed."
+    },
+    {
+      "id": "rel-seed-root",
+      "from": "seed",
+      "to": "root",
+      "type": "germinates-toward",
+      "description": "Seed begins a new cycle by developing support before visible mature growth."
+    },
+    {
+      "id": "rel-tree-mountain",
+      "from": "tree",
+      "to": "mountain",
+      "type": "complements",
+      "description": "Tree differentiates one/few into many; Mountain integrates many toward fewer without making either superior."
+    },
+    {
+      "id": "rel-ladder-door",
+      "from": "ladder",
+      "to": "door",
+      "type": "orders",
+      "description": "Ladder is an ordered sequence of meaningful Doors/thresholds."
+    },
+    {
+      "id": "rel-spiral-ladder",
+      "from": "spiral",
+      "to": "ladder",
+      "type": "trajectory-through",
+      "description": "Spiral adds recurrent directional displacement to ordered threshold traversal."
+    },
+    {
+      "id": "rel-garden-door",
+      "from": "garden",
+      "to": "door",
+      "type": "preserves-passage",
+      "description": "Garden conditions keep selective passage, repair and future growth viable."
+    },
+    {
+      "id": "rel-shell-door",
+      "from": "shell-cube",
+      "to": "door",
+      "type": "constrains-passage",
+      "description": "Shell/Cube becomes capture when containment blocks or monopolizes viable passage."
+    },
+    {
+      "id": "rel-garden-shell",
+      "from": "garden",
+      "to": "shell-cube",
+      "type": "counter-regime",
+      "description": "The contrast is functional circulation/autonomy versus capture, not round-good versus square-bad."
+    },
+    {
+      "id": "rel-garden-swamp",
+      "from": "garden",
+      "to": "swamp",
+      "type": "counter-regime",
+      "description": "Garden models viable generativity; Swamp models unresolved entanglement and feedback without healthy exit."
+    },
+    {
+      "id": "rel-pillars-door",
+      "from": "twin-pillars",
+      "to": "door",
+      "type": "supports",
+      "description": "Twin supports can stabilize and frame a Door without becoming the Door itself."
+    },
+    {
+      "id": "rel-eye-mountain",
+      "from": "eye",
+      "to": "mountain",
+      "type": "complements",
+      "description": "Eye evaluates/perceives while Mountain integrates/compresses; summit and discernment are deliberately not identical."
+    }
+  ],
+  "canonical_traversals": [
+    {
+      "id": "triune-potato",
+      "label": "Triune Potato of Life",
+      "kind": "theological-whole",
+      "concept_sequence": [
+        "father",
+        "potato-of-life",
+        "son",
+        "spirit"
+      ],
+      "relation_ids": [
+        "rel-potato-life-father",
+        "rel-potato-life-son",
+        "rel-potato-life-spirit",
+        "rel-son-door",
+        "rel-spirit-door"
+      ],
+      "purpose": "Read Father, Son and Spirit as irreducible relational expressions of one Potato of Life rather than as three independent systems or as three interchangeable labels.",
+      "reader_question": "How does one living whole preserve source, manifested passage and relational flow without reducing any of them to the others?"
+    },
+    {
+      "id": "growth-return-cycle",
+      "label": "Growth & Return",
+      "kind": "cycle",
+      "concept_sequence": [
+        "seed",
+        "root",
+        "tree",
+        "fruit",
+        "seed"
+      ],
+      "relation_ids": [
+        "rel-seed-root",
+        "rel-root-tree",
+        "rel-tree-fruit",
+        "rel-fruit-seed"
+      ],
+      "purpose": "Show generativity as a cycle: stored possibility develops support, differentiates into visible output, and returns transferable capacity forward.",
+      "reader_question": "What has to be preserved so the output can become future capacity rather than terminal consumption?"
+    },
+    {
+      "id": "recognition-circuit",
+      "label": "Recognition",
+      "kind": "reciprocal",
+      "concept_sequence": [
+        "face",
+        "eye",
+        "face"
+      ],
+      "relation_ids": [
+        "rel-face-eye",
+        "rel-eye-face"
+      ],
+      "purpose": "Show recognition as a two-sided relation between presentation and perception rather than a property owned by one side alone.",
+      "reader_question": "What is being presented, what is actually perceived, and where can those two diverge?"
+    },
+    {
+      "id": "shared-door-bridge",
+      "label": "Shared Door",
+      "kind": "bridge",
+      "concept_sequence": [
+        "source-field",
+        "door",
+        "manifestation-field"
+      ],
+      "relation_ids": [
+        "rel-door-source",
+        "rel-door-manifestation"
+      ],
+      "purpose": "Show Door as the genuine shared region between two complete fields, not a third object inserted between them.",
+      "reader_question": "What can be shared without collapsing the distinction between source and manifestation?"
+    },
+    {
+      "id": "orientation-crossing",
+      "label": "Orientation at the Cross",
+      "kind": "coordinate",
+      "concept_sequence": [
+        "plane",
+        "cross",
+        "axis",
+        "door"
+      ],
+      "relation_ids": [
+        "rel-cross-plane",
+        "rel-cross-axis",
+        "rel-cross-door",
+        "rel-plane-door"
+      ],
+      "purpose": "Show Cross as a derived orientation event inside Door where world-facing Plane and vertical Axis become simultaneously legible.",
+      "reader_question": "Which frame is active, what orientation cuts through it, and what changes when both coordinates are visible?"
+    },
+    {
+      "id": "boundary-regime-test",
+      "label": "Boundary Regime Test",
+      "kind": "contrast",
+      "concept_sequence": [
+        "garden",
+        "door",
+        "shell-cube",
+        "swamp"
+      ],
+      "relation_ids": [
+        "rel-garden-door",
+        "rel-shell-door",
+        "rel-garden-shell",
+        "rel-garden-swamp"
+      ],
+      "purpose": "Test boundaries by function: whether they preserve viable passage, repair and autonomy or produce capture, opacity and unresolved entanglement.",
+      "reader_question": "Does this boundary help differentiated life circulate and grow, or make exit and repair progressively harder?"
+    }
+  ]
+}

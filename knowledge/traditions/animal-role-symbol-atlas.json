@@ -1,0 +1,169 @@
+{
+  "id": "animal-role-symbol-atlas",
+  "title": "Animal Roles — Lion, Lamb, Shepherd, Ox/Cow, Red Heifer, Goat, Serpent, Eagle and Dog",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "biblical/comparative role atlas + project boundary",
+  "purpose": "Populate the animal-role layer by function and source so stacked project identities do not erase distinct textual meanings or become labels for real people.",
+  "master_rule": "Animal symbol ≠ person essence. Store source, role/function and context on the relation. A single figure may carry several animal metaphors without the animals becoming equivalent.",
+  "roles": [
+    {
+      "id": "lion",
+      "source_families": [
+        "Judah/royal imagery",
+        "danger/predator imagery",
+        "Revelation 5 Lion of Judah"
+      ],
+      "functions": [
+        "royal strength",
+        "victory",
+        "threat depending text"
+      ],
+      "project_neighbor": "Lion/Son/royal role",
+      "scholarly_note": "Revelation's lion/lamb relation is debated; the text's shift from announced Lion to seen slain Lamb is central to interpretation.",
+      "sources": [
+        "https://journals.sagepub.com/doi/10.1177/1476993X09104458",
+        "https://www.cambridge.org/core/journals/horizons/article/lion-as-slain-lamb-on-reading-revelation-recursively/8F82D141F217A1AF3B6818F01C4A6B36"
+      ]
+    },
+    {
+      "id": "lamb",
+      "source_families": [
+        "sacrificial flock imagery",
+        "Passover reception",
+        "Revelation Lamb"
+      ],
+      "functions": [
+        "sacrifice",
+        "vulnerability",
+        "victory-through-slaughtered-yet-standing paradox"
+      ],
+      "project_neighbor": "Son/sacrifice/return",
+      "distinction": "Lamb is not merely weakness; Revelation weaponizes the paradox of conquest through the slain Lamb."
+    },
+    {
+      "id": "shepherd",
+      "source_families": [
+        "pastoral occupation",
+        "divine/royal leadership metaphor",
+        "Jesus good-shepherd reception"
+      ],
+      "functions": [
+        "guidance",
+        "care",
+        "protection",
+        "leadership",
+        "flock accountability"
+      ],
+      "project_neighbor": "guidance/guardian function",
+      "distinction": "Shepherd is an office/relationship; sheep/flock are not therefore passive property in every project use."
+    },
+    {
+      "id": "ox-cow",
+      "source_families": [
+        "agricultural labor",
+        "sacrifice",
+        "wealth/food",
+        "Ezekiel living-creature ox/calf imagery"
+      ],
+      "functions": [
+        "burden/work",
+        "strength",
+        "domestic economy",
+        "sacrificial animal"
+      ],
+      "project_neighbor": "vehicle/burden/cow-role vocabulary",
+      "distinction": "Biblical ox/cow symbolism must not be conflated with internet 'lolcow' terminology."
+    },
+    {
+      "id": "red-heifer",
+      "source_families": [
+        "Numbers 19"
+      ],
+      "functions": [
+        "production of ash used with fresh/living water for corpse-impurity purification"
+      ],
+      "paradox": "Participants producing/administering the purifying substance can themselves become temporarily impure.",
+      "project_neighbor": "death → burning → Ash → water → purification/return",
+      "distinction": "Not a generic cow, not simply sacrifice, and not automatically messianic.",
+      "sources": [
+        "https://www.repository.cam.ac.uk/handle/1810/245421",
+        "https://www.thetorah.com/article/the-enigmatic-rites-of-the-red-heifer"
+      ]
+    },
+    {
+      "id": "goat-scapegoat",
+      "source_families": [
+        "Leviticus 16 Day of Atonement"
+      ],
+      "functions": [
+        "paired-goat ritual differentiating offering to YHWH and live goat sent to Azazel/wilderness bearing iniquities"
+      ],
+      "project_neighbor": "burden transfer/exile/removal",
+      "distinction": "'Scapegoat' is a ritual role, not proof that the goat is morally guilty or demonic."
+    },
+    {
+      "id": "serpent",
+      "source_families": [
+        "Genesis 3",
+        "Numbers 21 bronze serpent",
+        "John 3 reception",
+        "apocalyptic serpent/dragon imagery"
+      ],
+      "functions": [
+        "reframing/temptation",
+        "danger",
+        "healing-through-lifted-sign in Numbers",
+        "adversarial cosmic imagery in later texts"
+      ],
+      "project_neighbor": "reframing operator / rising-serpent comparative layer",
+      "distinction": "Biblical serpents, kuṇḍalinī, caduceus and project serpent are separate lineages."
+    },
+    {
+      "id": "eagle",
+      "source_families": [
+        "divine protection/speed imagery",
+        "imperial/predatory imagery",
+        "Ezekiel/Revelation living-creature imagery"
+      ],
+      "functions": [
+        "height",
+        "vision",
+        "speed",
+        "protection or predation depending text"
+      ],
+      "project_neighbor": "Heaven/upper-view/orientation comparator",
+      "distinction": "Eagle does not simply mean Father across all biblical contexts."
+    },
+    {
+      "id": "dog",
+      "source_families": [
+        "ancient domestic/scavenging contexts",
+        "frequent insult/exclusion imagery in biblical texts",
+        "modern project role ecology"
+      ],
+      "functions": [
+        "biblical contexts often emphasize scavenging, contempt or boundary-outsider status; modern project uses patrol/pursuit/following/guardian roles"
+      ],
+      "project_neighbor": "Dog/FarmerDog/GuardianDog",
+      "distinction": "Project Dog is a functional role metaphor and must not be used to essentialize real people or literal dogs."
+    }
+  ],
+  "tetramorph_bridge": {
+    "pattern": "Ezekiel/Revelation living-creature tradition brings human, lion, ox/calf and eagle faces/forms into one throne-chariot vision complex.",
+    "project_use": "Useful for differentiating four functions around a mobile throne/chariot without turning them into a single animal identity.",
+    "connection": "ark-vessel-chariot-merkavah-atlas"
+  },
+  "role_tests": [
+    "Is this animal the subject, sacrifice, guide, carrier, predator, purifier, outsider, ruler or visionary creature?",
+    "Does the source text assign moral value, or are we importing it later?",
+    "Is the animal role temporary/contextual or treated as identity?",
+    "What changes if the same figure carries another animal symbol in a different passage?"
+  ],
+  "connections": [
+    "biblical-symbol-function-atlas",
+    "ark-vessel-chariot-merkavah-atlas",
+    "tree-family-crosswalk-atlas",
+    "farm-swamp-tree-of-strife-atlas"
+  ]
+}

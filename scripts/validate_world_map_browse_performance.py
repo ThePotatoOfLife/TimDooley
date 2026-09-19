@@ -138,6 +138,8 @@ def main() -> int:
     require_any(active_view, ("status: 'unknown'", "status:'unknown'"), "world-map/3d-active-view.js", errors)
 
     require(bootstrap, "./3d-active-view.js", "world-map/3d-bootstrap.js", errors)
+    require(bootstrap, "loadAfterPaint('Country Presentation', './3d-country-presentation.js')", "world-map/3d-bootstrap.js", errors)
+    require(bootstrap, "loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js')", "world-map/3d-bootstrap.js", errors)
     require(bootstrap, "loadAfterPaint('Panel lifecycle', './3d-panel-lifecycle.js')", "world-map/3d-bootstrap.js", errors)
     require(bootstrap, "declareDormant('Progressive UI', './3d-ui.js'", "world-map/3d-bootstrap.js", errors)
     reject(bootstrap, "loadAfterPaint('Progressive UI', './3d-ui.js')", "world-map/3d-bootstrap.js", errors)
@@ -145,22 +147,33 @@ def main() -> int:
     require(bootstrap, "potato-atlas-working-selection-change", "world-map/3d-bootstrap.js", errors)
     reject(bootstrap, "map.once('click', promoteInspectionOnce);", "world-map/3d-bootstrap.js", errors)
 
+    # The selected-country card now has one normalized Current Map answer and
+    # three bounded tabs. Legacy Map color / Map view copies are intentionally gone.
     for token in (
-        "Map color",
-        "Map view",
+        "__potatoAtlasCountryPresentation",
+        "atlas-country-current-answer",
+        'data-country-tab="overview"',
+        'data-country-tab="context"',
+        'data-country-tab="connections"',
+        "populationPrimary",
         "data-atlas-pin",
         "data-atlas-statistics",
         "potato-atlas-country-card-rendered",
     ):
         require(card, token, "world-map/3d-country-card.js", errors)
+    reject(card, "<small>Map color", "world-map/3d-country-card.js", errors)
+    reject(card, "<small>Map view", "world-map/3d-country-card.js", errors)
 
     require(pulse, "potato-atlas-inspector-rendered", "world-map/3d-country-pulse.js", errors)
     require(pulse, "&quot;'", "world-map/3d-country-pulse.js", errors)
+    require(pulse, "Inspector depth", "world-map/3d-country-pulse.js", errors)
+    reject(pulse, "activeMapViewHtml(view)", "world-map/3d-country-pulse.js", errors)
+    reject(pulse, "Current map color", "world-map/3d-country-pulse.js", errors)
     render_start = pulse.find("async function render")
     render_lock = pulse.find("rendering = true;", render_start)
-    view_await = pulse.find("const view = await", render_start)
-    if render_start < 0 or render_lock < 0 or view_await < 0 or render_lock > view_await:
-        errors.append("world-map/3d-country-pulse.js must acquire the render lock before awaiting active-view context")
+    deep_data_await = pulse.find("await Promise.all([getRecord(code),demography()])", render_start)
+    if render_start < 0 or render_lock < 0 or deep_data_await < 0 or render_lock > deep_data_await:
+        errors.append("world-map/3d-country-pulse.js must acquire the render lock before awaiting deep-inspector country data")
 
     require_any(bar, ("Color:", "<span>Color</span>"), "world-map/3d-world-bar.js", errors)
     require(bar, "Pinned", "world-map/3d-world-bar.js", errors)
@@ -172,9 +185,9 @@ def main() -> int:
     reject(bridge, "map.setFeatureState", "world-map/3d-scalar-runtime-bridge.js", errors)
     reject(bridge, "map.setPaintProperty", "world-map/3d-scalar-runtime-bridge.js", errors)
 
-    # Country hover now consumes the one shared transient-tooltip service. Rapid
-    # mouse movement must not let older async completions move/reopen it, and one
-    # country lookup is reused while the pointer moves within the same country.
+    # The legacy hover module remains the early/degraded owner until the shared
+    # Interaction Router is ready. The dedicated country-hover presentation then
+    # replaces its country registration while capital/place fallbacks remain intact.
     for token in (
         "countryHoverKey", "countryHoverEvent", "countryHoverHtml",
         "tooltip.nextGeneration('country')", "tooltip.show('country'",
@@ -195,8 +208,6 @@ def main() -> int:
     ):
         require(tooltip, token, "world-map/3d-tooltip.js", errors)
 
-    # The early boot guard is retained as a compatibility boundary for remaining
-    # Axis/Fields/Networks popup owners until every transient hover surface migrates.
     for token in (
         "potato-atlas-pointer-dragging",
         "POINTER_DRAG_THRESHOLD_PX",
@@ -205,20 +216,13 @@ def main() -> int:
     ):
         require(boot_guard, token, "world-map/3d-boot-guard.js", errors)
 
-    # Eye and the compact country card are both top-left map surfaces. Evidence
-    # owns that corner while open instead of stacking two dark panels together.
     for token in ("function suspendCountryCard", "function restoreCountryCard", "potato-atlas-country-card-rendered"):
         require(evidence, token, "world-map/3d-evidence.js", errors)
 
-    # Progressive UI consumes lifecycle events and may style map colors, but it
-    # no longer owns another DOM observer or country surface opacity.
     require(ui, "potato-atlas-panel-rendered", "world-map/3d-ui.js", errors)
     reject(ui, "new MutationObserver(", "world-map/3d-ui.js", errors)
     reject(ui, "setPaintProperty('countries-fill','fill-opacity'", "world-map/3d-ui.js", errors)
 
-    # Subdivision browsing must stay bounded as country coverage expands. A
-    # fixed shared source/layer stack prevents style/listener growth from being
-    # proportional to the number of country partitions visited in a session.
     for token in (
         "atlas-subdivisions-active",
         "atlas-subdivision-hit",
@@ -231,8 +235,6 @@ def main() -> int:
     for token in ("SOURCE_PREFIX", "LINE_PREFIX", "HIT_PREFIX", "LABEL_PREFIX"):
         reject(subdivisions, token, "world-map/3d-subdivisions.js", errors)
 
-    # A tiny always-loaded lifecycle module owns the active legacy/core panel
-    # observer. Every other 3d module must consume lifecycle events instead.
     for token in ("function panelLifecycleKey", "potato-atlas-panel-rendered", "panelLifecycleRenders"):
         require(panel_lifecycle, token, "world-map/3d-panel-lifecycle.js", errors)
     if panel_lifecycle.count("new MutationObserver(") != 1:
@@ -266,7 +268,7 @@ def main() -> int:
         return 1
 
     print("WORLD MAP BROWSE/PERFORMANCE VALIDATION PASSED")
-    print("Browse + Pins · shared transient country/capital tooltip · drag-safe compatibility guard · fallback-only capitals · exclusive top-left overlays · single panel observer · single surface-opacity owner · bounded subdivisions/Places · staged lazy specialist stack")
+    print("Browse + Pins · normalized Current Map answer · minimal shared-tooltip hover · drag-safe compatibility guard · exclusive top-left overlays · single panel observer · bounded subdivisions/Places · staged lazy specialist stack")
     return 0
 
 

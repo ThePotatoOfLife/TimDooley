@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thepotatooflife.github.io/TimDooley/schemas/house-structural-census.schema.json",
+  "title": "Potato House Structural Role Census",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "updated",
+    "authority",
+    "purpose",
+    "governing_rule",
+    "chamber_status",
+    "role_types",
+    "instances",
+    "unresolved_candidates"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "updated": {
+      "type": "string"
+    },
+    "authority": {
+      "const": "house-structural-role-census"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "governing_rule": {
+      "type": "string"
+    },
+    "chamber_status": {
+      "type": "object"
+    },
+    "role_types": {
+      "type": "array",
+      "minItems": 10,
+      "items": {
+        "type": "object"
+      }
+    },
+    "instances": {
+      "type": "array",
+      "minItems": 20,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "roles",
+          "status",
+          "sources",
+          "public_surfaces",
+          "note"
+        ]
+      }
+    },
+    "unresolved_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

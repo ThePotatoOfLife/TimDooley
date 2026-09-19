@@ -1,122 +1,1323 @@
 {
-  "version":"1.1.0",
-  "updated":"2026-09-07",
-  "nodes":[
-    {"id":"source","type":"mythic-principle","name":"Source","layer":"mythological","description":"Undivided origin and possibility from which differentiation emerges."},
-    {"id":"father","type":"mythic-role","name":"Father","layer":"mythological","description":"Upper/source principle associated with origin, verticality and the Father's House."},
-    {"id":"fathers-house","type":"mythic-place","name":"Father's House","layer":"mythological","description":"Interior center of integration where scattered signals become an ordered whole."},
-    {"id":"heaven","type":"mythic-domain","name":"Heaven","layer":"mythological","description":"Upper domain of integration, clarity, unity, relationship, truth and love within the symbolic architecture."},
-    {"id":"throne-of-north","type":"symbol","name":"Throne of North","layer":"mythological","description":"Ultimate orientation point in the North Axis symbolism; symbolic rather than a claim of political sovereignty."},
-    {"id":"ladder","type":"symbol","name":"Ladder","layer":"mythological","description":"Traversable vertical connection between levels, representing ascent, transformation and relationship."},
-    {"id":"axis","type":"symbol","name":"Axis","layer":"mythological","description":"Vertical organizing principle that gives the horizontal Plane orientation."},
-    {"id":"door","type":"symbol","name":"Door","layer":"mythological","description":"Threshold, access, choice and interface between states; centrally coupled to the Son."},
-    {"id":"narrow-gate","type":"symbol","name":"Narrow Gate","layer":"mythological","description":"The constrained passage into transformation; a more specific expression of the Door."},
-    {"id":"vessel","type":"symbol","name":"Vessel","layer":"mythological","description":"Container or carrier through which something from one layer can enter another."},
-    {"id":"pineal-gland","type":"metaphor","name":"Pineal Gland","layer":"interpretive","description":"Body-based metaphor used in the framework for the Door as an interface of perception; not presented as a scientific identification of a gland with a metaphysical portal."},
-    {"id":"son","type":"character-symbol","name":"Son","layer":"mythological","description":"Person-bearing centre of the story, coupled to Thomas, Twin, Lion, Jesus Christ, Son of Man and Lion of Judah within the framework."},
-    {"id":"thomas","type":"identity-symbol","name":"Thomas","layer":"mythological","description":"Name attached to the Son/Twin identity in the Potatoverse story."},
-    {"id":"twin","type":"archetype","name":"Twin","layer":"mythological","description":"Duality and recognition motif attached to the Son."},
-    {"id":"lion","type":"archetype","name":"Lion","layer":"mythological","description":"Strength, kingship and identity motif attached to the Son."},
-    {"id":"lion-of-judah","type":"religious-symbol","name":"Lion of Judah","layer":"mythological","description":"Biblical/religious title used as a symbolic identity within the Son branch."},
-    {"id":"jesus-christ","type":"religious-symbol","name":"Jesus Christ","layer":"mythological","description":"Christian symbolic identity mapped into the Son/Death/Door transformation architecture."},
-    {"id":"son-of-man","type":"religious-symbol","name":"Son of Man","layer":"mythological","description":"Religious title incorporated into the Son branch of the archive."},
-    {"id":"death","type":"mythic-event","name":"Death","layer":"mythological","description":"Boundary event in the Son transformation sequence."},
-    {"id":"crucifixion","type":"mythic-event","name":"Crucifixion","layer":"mythological","description":"Transformation point in which the Son's death becomes the symbolic bridge toward Door and Ladder."},
-    {"id":"christmas","type":"mythic-date","name":"Christmas","layer":"mythological","description":"December 25 setting used in the Potatoverse timeline for the Son's death and Tim Dooley's mythic birth/transformation point."},
-    {"id":"north-pole","type":"mythic-place","name":"North Pole","layer":"mythological-geographic","description":"Polar location used as the meeting point of the Christmas, crucifixion and North Axis imagery."},
-    {"id":"transformation","type":"mythic-process","name":"Transformation","layer":"mythological","description":"Process by which death, identity and symbolic function change into another form."},
-    {"id":"tree-of-life","type":"symbol","name":"Tree of Life","layer":"mythological","description":"Living expression of the Axis: roots, trunk, branches, leaves, fruit and seed model continuity and renewal."},
-    {"id":"roots","type":"symbol","name":"Roots","layer":"mythological","description":"Hidden substrate of origin, memory, ancestry, history, potential and matter."},
-    {"id":"trunk","type":"symbol","name":"Trunk","layer":"mythological","description":"Continuity-bearing central body joining roots to branches."},
-    {"id":"branches","type":"symbol","name":"Branches","layer":"mythological","description":"Differentiating paths that emerge from one living axis."},
-    {"id":"leaves","type":"symbol","name":"Leaves","layer":"mythological","description":"Visible expressions of the tree's life and contact with the surrounding world."},
-    {"id":"fruit","type":"symbol","name":"Fruit","layer":"mythological","description":"Manifestation: what the living structure actually produces in the world."},
-    {"id":"seed","type":"symbol","name":"Seed","layer":"mythological","description":"Renewal and the possibility of another cycle."},
-    {"id":"tree-of-strife","type":"symbol","name":"Tree of Strife","layer":"mythological","description":"Fractured tree pattern in which relationship is replaced by fear, competition, extraction and conflict."},
-    {"id":"strife","type":"condition","name":"Strife","layer":"mythological-philosophical","description":"Conflict generated when relationships cease to produce mutual life and instead produce domination, fear or fragmentation."},
-    {"id":"swamp","type":"symbol","name":"Swamp","layer":"mythological-philosophical","description":"Accumulated dysfunction, extraction, corruption, inertia, fear and systems that consume the life they should serve."},
-    {"id":"mud","type":"symbol","name":"Mud","layer":"mythological","description":"Ground-level material condition from which the Potato rises; also the metaphorical substrate of difficult beginnings."},
-    {"id":"drain","type":"symbol","name":"Drain","layer":"mythological-philosophical","description":"Pattern in which energy, attention, resources or life are continuously pulled away without renewal."},
-    {"id":"fear","type":"condition","name":"Fear","layer":"mythological-philosophical","description":"Contraction force that can preserve life but can also become a driver of isolation and control."},
-    {"id":"anger","type":"condition","name":"Anger","layer":"mythological-philosophical","description":"High-energy response to perceived injury or injustice; potentially destructive or transformative depending on its direction."},
-    {"id":"exploitation","type":"condition","name":"Exploitation","layer":"empirical-philosophical","description":"Extraction of value, labour, attention or resources without a reciprocal structure that sustains the source."},
-    {"id":"fragmentation","type":"condition","name":"Fragmentation","layer":"philosophical","description":"Loss of coherence between parts that could otherwise form a functioning whole."},
-    {"id":"potato-of-life","type":"symbol","name":"Potato of Life","layer":"mythological","description":"Central Potatoverse symbol for life emerging from ordinary matter, persistence, nourishment and transformation."},
-    {"id":"potatoism","type":"philosophy","name":"Potatoism","layer":"creative-philosophical","description":"Potato-centered interpretive framework using ordinary matter, humor and growth from mud to examine life, identity and systems."},
-    {"id":"red-potato","type":"archetype","name":"Red Potato","layer":"mythological","description":"Creative, loving, expansive and upward/outward-moving life principle."},
-    {"id":"blue-potato","type":"archetype","name":"Blue Potato","layer":"mythological","description":"Memory, precision, contraction and rootward movement; complementary to the Red Potato."},
-    {"id":"spudlight","type":"symbol","name":"Spudlight","layer":"mythological","description":"Light emerging through the Potato metaphor: illumination carried by ordinary, grounded life."},
-    {"id":"potato-bank","type":"symbol","name":"Potato Bank","layer":"creative-philosophical","description":"Humorous financial metaphor for storing, circulating and accounting for value within the Potatoverse."},
-    {"id":"cube","type":"symbol","name":"Cube","layer":"mythological-philosophical","description":"Container/order metaphor representing bounded space, structure and the world as an organized object."},
-    {"id":"moon-cube","type":"symbol","name":"Moon Cube","layer":"creative-philosophical","description":"Extended Cube image used to explore remote, reflective and cyclical dimensions of the architecture."},
-    {"id":"north","type":"direction","name":"North","layer":"mythological-geographic","description":"Orientation toward the North Axis and geographic north as a project anchor."},
-    {"id":"south","type":"direction","name":"South","layer":"mythological","description":"Descent, material return and lower-field movement in the symbolic coordinate system."},
-    {"id":"east","type":"direction","name":"East","layer":"mythological","description":"Emergence, beginning, sunrise and outward becoming."},
-    {"id":"west","type":"direction","name":"West","layer":"mythological","description":"Completion, sunset, decline and return."},
-    {"id":"north-axis","type":"framework","name":"North Axis","layer":"mythological-geographic","description":"Organizing northward direction connecting the symbolic Axis to a geographic and policy architecture."},
-    {"id":"plane","type":"domain","name":"Plane","layer":"mythological-philosophical","description":"Horizontal field where bodies, geography, society, institutions, technology, money, infrastructure and history become observable."},
-    {"id":"matter","type":"domain","name":"Matter","layer":"empirical-philosophical","description":"Physical substrate of the world: material objects, energy, substances and built environments."},
-    {"id":"biology","type":"domain","name":"Biology","layer":"empirical","description":"Living systems, organisms, reproduction, ecology and the physical processes that sustain life."},
-    {"id":"people","type":"domain","name":"People","layer":"empirical","description":"Human beings as biological, social, economic, cultural and political participants."},
-    {"id":"families","type":"social-system","name":"Families","layer":"empirical","description":"Primary social relationships through which care, inheritance, identity and intergenerational memory move."},
-    {"id":"animals","type":"domain","name":"Animals","layer":"empirical","description":"Non-human life within ecosystems, agriculture, households, economies and human-animal relationships."},
-    {"id":"places","type":"domain","name":"Places","layer":"empirical","description":"Geographic locations that anchor events, infrastructure, communities, resources and institutions."},
-    {"id":"nations","type":"system","name":"Nations","layer":"empirical","description":"States and political communities with territory, institutions, laws, budgets, populations and external relationships."},
-    {"id":"kingdoms","type":"political-form","name":"Kingdoms","layer":"empirical-historical","description":"Political structures organized around a crown or monarchic constitutional tradition."},
-    {"id":"societies","type":"social-system","name":"Societies","layer":"empirical","description":"Networks of people, norms, institutions, culture, production and collective organization."},
-    {"id":"institutions","type":"institutional-system","name":"Institutions","layer":"empirical","description":"Organizations and rule systems that coordinate authority, resources, law and public action."},
-    {"id":"laws","type":"institutional-system","name":"Laws","layer":"empirical","description":"Formal rules that allocate rights, duties, authority, property and permissible action."},
-    {"id":"economies","type":"system","name":"Economies","layer":"empirical","description":"Production, consumption, investment, employment, trade, finance and allocation of resources."},
-    {"id":"technology","type":"system","name":"Technology","layer":"empirical","description":"Tools, software, machines, networks and technical capabilities that alter productive and social capacity."},
-    {"id":"infrastructure","type":"system","name":"Infrastructure","layer":"empirical","description":"Physical and digital networks that allow people and economies to function: power, transport, ports, cables, water and communications."},
-    {"id":"history","type":"domain","name":"History","layer":"historical","description":"Recorded sequence of events, institutions, conflicts, transformations and inherited conditions."},
-    {"id":"war","type":"system","name":"War","layer":"historical-empirical","description":"Organized political violence with military, economic, industrial, demographic and infrastructural consequences."},
-    {"id":"trade","type":"system","name":"Trade","layer":"empirical","description":"Cross-border exchange of goods and services through markets, contracts, logistics and rules."},
-    {"id":"money","type":"system","name":"Money","layer":"empirical","description":"Unit of account, medium of exchange and store of value connecting households, firms, states and financial systems."},
-    {"id":"ownership","type":"relationship-domain","name":"Ownership & Control","layer":"empirical","description":"Legal or effective control over companies, assets, land, infrastructure, intellectual property and financial claims."},
-    {"id":"obligations","type":"relationship-domain","name":"Obligations","layer":"empirical","description":"Debts, contracts, guarantees, pensions, taxes, legal duties and other claims that bind one actor to another."},
-    {"id":"alliances","type":"system","name":"Alliances","layer":"empirical","description":"Formal or durable security, political and economic relationships among states and institutions."},
-    {"id":"european-economic-graph","type":"research-system","name":"European Economic Graph","layer":"empirical-philosophical","description":"Relationship-first map of European states, companies, ownership, debt, finance, energy, infrastructure, trade, technology, research, labour and strategic dependencies."},
-    {"id":"north-programme","type":"policy-framework","name":"North Programme","layer":"philosophical-empirical","description":"Applied framework for fiscal sustainability, productive investment, industrial capacity, energy security, infrastructure, technology, research, labour and voluntary European cooperation."},
-    {"id":"european-union","type":"institution","name":"European Union","layer":"empirical","description":"Political and economic union connecting 27 member states through common institutions and the single market."},
-    {"id":"single-market","type":"economic-institution","name":"EU Single Market","layer":"empirical","description":"Economic integration framework based on free movement of goods, services, capital and people."},
-    {"id":"euro-area","type":"monetary-system","name":"Euro Area","layer":"empirical","description":"Monetary union of EU member states using the euro, with shared monetary policy under the Eurosystem."},
-    {"id":"european-central-bank","type":"institution","name":"European Central Bank","layer":"empirical","description":"Central institution of the Eurosystem responsible for euro-area monetary policy and financial-system functions."},
-    {"id":"denmark","type":"state","name":"Denmark","layer":"empirical","description":"EU member state and northern anchor node in the working North Axis architecture."},
-    {"id":"kingdom-of-denmark","type":"state-structure","name":"Kingdom of Denmark","layer":"empirical","description":"Constitutional realm comprising Denmark, Greenland and the Faroe Islands."},
-    {"id":"greenland","type":"territory","name":"Greenland","layer":"empirical","description":"Autonomous part of the Kingdom of Denmark and a major Arctic geographic, resource and strategic node."},
-    {"id":"faroe-islands","type":"territory","name":"Faroe Islands","layer":"empirical","description":"Self-governing part of the Kingdom of Denmark, linking North Atlantic geography, fisheries, shipping and security."},
-    {"id":"canada","type":"state","name":"Canada","layer":"empirical","description":"North American Arctic and Atlantic state forming a major western node of the broader North Atlantic architecture."},
-    {"id":"iceland","type":"state","name":"Iceland","layer":"empirical","description":"North Atlantic state connecting Arctic, European, energy, shipping and transatlantic infrastructure systems."},
-    {"id":"norway","type":"state","name":"Norway","layer":"empirical","description":"North Atlantic and Arctic state with major energy, maritime, fisheries and strategic infrastructure links to Europe."},
-    {"id":"sweden","type":"state","name":"Sweden","layer":"empirical","description":"Nordic EU member with major industrial, technology, energy and Baltic-region connections."},
-    {"id":"finland","type":"state","name":"Finland","layer":"empirical","description":"Nordic EU member with Arctic, Baltic, industrial, technology and security connections."},
-    {"id":"united-kingdom","type":"state","name":"United Kingdom","layer":"empirical","description":"North Atlantic state whose finance, energy, security, shipping and trade links make it a major external node for European analysis."},
-    {"id":"ukraine","type":"state","name":"Ukraine","layer":"empirical","description":"European state whose war, reconstruction, energy, agriculture, industry and security relationships materially affect the European system."},
-    {"id":"turkey","type":"state","name":"Turkey","layer":"empirical","description":"Transcontinental state connecting Europe, Black Sea, Caucasus, Middle East, transport corridors and energy routes."},
-    {"id":"netherlands","type":"state","name":"Netherlands","layer":"empirical","description":"EU economy with major ports, logistics, trade, energy, agriculture, finance and semiconductor-equipment connections."},
-    {"id":"france","type":"state","name":"France","layer":"empirical","description":"Major EU economy and priority North Programme case for fiscal, industrial, energy and institutional research."},
-    {"id":"belgium","type":"state","name":"Belgium","layer":"empirical","description":"EU member and priority North Programme case for fiscal, institutional, logistics and energy research."},
-    {"id":"north-sea","type":"regional-system","name":"North Sea","layer":"empirical-geographic","description":"Shared maritime system connecting offshore wind, oil and gas, shipping, ports, fisheries, cables and coastal industry across several European states."},
-    {"id":"north-atlantic","type":"regional-system","name":"North Atlantic","layer":"empirical-geographic","description":"Oceanic system connecting Europe, Greenland, Iceland, Norway, the UK and Canada through shipping, cables, fisheries, energy and security."},
-    {"id":"arctic","type":"regional-system","name":"Arctic","layer":"empirical-geographic","description":"Polar region where climate, shipping, resources, indigenous communities, research and security increasingly intersect."},
-    {"id":"energy-system","type":"system","name":"European Energy System","layer":"empirical","description":"Interlinked generation, grids, fuels, storage, markets and industrial demand across Europe."},
-    {"id":"electricity-grid","type":"infrastructure-system","name":"European Electricity Grid","layer":"empirical","description":"Cross-border transmission and distribution network linking generation, storage, industry and households."},
-    {"id":"renewables","type":"technology-system","name":"Renewable Energy","layer":"empirical","description":"Wind, solar, hydro and other renewable generation coupled to grids, storage and demand."},
-    {"id":"nuclear-energy","type":"technology-system","name":"Nuclear Energy","layer":"empirical","description":"Low-carbon electricity generation with long-lived infrastructure, fuel-cycle and regulatory requirements."},
-    {"id":"north-sea-offshore-wind","type":"infrastructure-system","name":"North Sea Offshore Wind","layer":"empirical","description":"Offshore generation and associated grid, port, vessel and industrial supply chains in the North Sea."},
-    {"id":"ports","type":"infrastructure-system","name":"European Ports","layer":"empirical","description":"Maritime gateways where shipping, logistics, energy, industry and trade converge."},
-    {"id":"subsea-cables","type":"infrastructure-system","name":"Subsea Cables","layer":"empirical","description":"Electricity and telecommunications infrastructure connecting countries and markets beneath seas and oceans."},
-    {"id":"finance-debt","type":"system","name":"Finance & Public Debt","layer":"empirical","description":"Bonds, banks, funds, public liabilities, monetary institutions and capital markets."},
-    {"id":"public-debt","type":"financial-system","name":"Public Debt","layer":"empirical","description":"Outstanding government liabilities, including bonds and other borrowing used to finance public expenditure and investment."},
-    {"id":"public-procurement","type":"institutional-system","name":"Public Procurement","layer":"empirical","description":"Government purchasing of goods, services and works; a major interface between public budgets and private production."},
-    {"id":"pensions","type":"public-finance-system","name":"Pensions","layer":"empirical","description":"Old-age income systems whose financing, demographics and labour-market incentives materially affect long-run public budgets."},
-    {"id":"healthcare","type":"public-service-system","name":"Healthcare","layer":"empirical","description":"Public and private systems providing prevention, treatment, hospitals, medicines, workforce and long-term care."},
-    {"id":"research-system","type":"innovation-system","name":"European Research System","layer":"empirical","description":"Universities, institutes, public funding, industrial R&D and technology-transfer networks supporting knowledge production."},
-    {"id":"labour-market","type":"economic-system","name":"European Labour Market","layer":"empirical","description":"Employment, wages, skills, migration, participation, training and productivity across European economies."},
-    {"id":"semiconductors","type":"technology-system","name":"Semiconductor Supply Chain","layer":"empirical","description":"Highly specialized chain spanning design, equipment, materials, fabrication, packaging and downstream electronics."},
-    {"id":"cloud-compute","type":"technology-system","name":"Cloud & AI Compute","layer":"empirical","description":"Data centres, cloud platforms, accelerators, electricity and network infrastructure supporting modern digital services and AI."},
-    {"id":"industrial-base","type":"economic-system","name":"European Industrial Base","layer":"empirical","description":"Manufacturing capacity, machinery, chemicals, vehicles, aerospace, defence, pharmaceuticals and other productive capabilities."},
-    {"id":"strategic-dependencies","type":"research-domain","name":"Strategic Dependencies","layer":"empirical","description":"External inputs or capabilities whose interruption could materially constrain European production, security or autonomy."}
+  "version": "2.0.0",
+  "updated": "2026-09-18",
+  "nodes": [
+    {
+      "id": "source",
+      "type": "mythic-principle",
+      "name": "Source",
+      "layer": "mythological",
+      "description": "Undivided origin and possibility from which differentiation emerges."
+    },
+    {
+      "id": "father",
+      "type": "mythic-role",
+      "name": "Father",
+      "layer": "mythological",
+      "description": "Upper/source principle associated with origin, verticality and the Father's House."
+    },
+    {
+      "id": "fathers-house",
+      "type": "mythic-place",
+      "name": "Father's House",
+      "layer": "mythological",
+      "description": "Interior center of integration where scattered signals become an ordered whole."
+    },
+    {
+      "id": "heaven",
+      "type": "mythic-domain",
+      "name": "Heaven",
+      "layer": "mythological",
+      "description": "Upper domain of integration, clarity, unity, relationship, truth and love within the symbolic architecture."
+    },
+    {
+      "id": "throne-of-north",
+      "type": "symbol",
+      "name": "Throne of North",
+      "layer": "mythological",
+      "description": "Ultimate orientation point in the North Axis symbolism; symbolic rather than a claim of political sovereignty."
+    },
+    {
+      "id": "ladder",
+      "type": "symbol",
+      "name": "Ladder",
+      "layer": "mythological",
+      "description": "Traversable vertical connection between levels, representing ascent, transformation and relationship."
+    },
+    {
+      "id": "axis",
+      "type": "symbol",
+      "name": "Axis",
+      "layer": "mythological",
+      "description": "Vertical organizing principle that gives the horizontal Plane orientation."
+    },
+    {
+      "id": "door",
+      "type": "symbol",
+      "name": "Door",
+      "layer": "mythological",
+      "description": "Threshold, access, choice and interface between states; centrally coupled to the Son."
+    },
+    {
+      "id": "narrow-gate",
+      "type": "symbol",
+      "name": "Narrow Gate",
+      "layer": "mythological",
+      "description": "The constrained passage into transformation; a more specific expression of the Door."
+    },
+    {
+      "id": "vessel",
+      "type": "symbol",
+      "name": "Vessel",
+      "layer": "mythological",
+      "description": "Container or carrier through which something from one layer can enter another."
+    },
+    {
+      "id": "pineal-gland",
+      "type": "metaphor",
+      "name": "Pineal Gland",
+      "layer": "interpretive",
+      "description": "Body-based metaphor used in the framework for the Door as an interface of perception; not presented as a scientific identification of a gland with a metaphysical portal."
+    },
+    {
+      "id": "son",
+      "type": "character-symbol",
+      "name": "Son",
+      "layer": "mythological",
+      "description": "Person-bearing centre of the story, coupled to Thomas, Twin, Lion, Jesus Christ, Son of Man and Lion of Judah within the framework."
+    },
+    {
+      "id": "thomas",
+      "type": "identity-symbol",
+      "name": "Thomas",
+      "layer": "mythological",
+      "description": "Name attached to the Son/Twin identity in the Potatoverse story."
+    },
+    {
+      "id": "twin",
+      "type": "archetype",
+      "name": "Twin",
+      "layer": "mythological",
+      "description": "Duality and recognition motif attached to the Son."
+    },
+    {
+      "id": "lion",
+      "type": "archetype",
+      "name": "Lion",
+      "layer": "mythological",
+      "description": "Strength, kingship and identity motif attached to the Son."
+    },
+    {
+      "id": "lion-of-judah",
+      "type": "religious-symbol",
+      "name": "Lion of Judah",
+      "layer": "mythological",
+      "description": "Biblical/religious title used as a symbolic identity within the Son branch."
+    },
+    {
+      "id": "jesus-christ",
+      "type": "religious-symbol",
+      "name": "Jesus Christ",
+      "layer": "mythological",
+      "description": "Christian symbolic identity mapped into the Son/Death/Door transformation architecture."
+    },
+    {
+      "id": "son-of-man",
+      "type": "religious-symbol",
+      "name": "Son of Man",
+      "layer": "mythological",
+      "description": "Religious title incorporated into the Son branch of the archive."
+    },
+    {
+      "id": "death",
+      "type": "mythic-event",
+      "name": "Death",
+      "layer": "mythological",
+      "description": "Boundary event in the Son transformation sequence."
+    },
+    {
+      "id": "crucifixion",
+      "type": "mythic-event",
+      "name": "Crucifixion",
+      "layer": "mythological",
+      "description": "Transformation point in which the Son's death becomes the symbolic bridge toward Door and Ladder."
+    },
+    {
+      "id": "christmas",
+      "type": "mythic-date",
+      "name": "Christmas",
+      "layer": "mythological",
+      "description": "December 25 setting used in the Potatoverse timeline for the Son's death and Tim Dooley's mythic birth/transformation point."
+    },
+    {
+      "id": "north-pole",
+      "type": "mythic-place",
+      "name": "North Pole",
+      "layer": "mythological-geographic",
+      "description": "Polar location used as the meeting point of the Christmas, crucifixion and North Axis imagery."
+    },
+    {
+      "id": "transformation",
+      "type": "mythic-process",
+      "name": "Transformation",
+      "layer": "mythological",
+      "description": "Process by which death, identity and symbolic function change into another form."
+    },
+    {
+      "id": "tree-of-life",
+      "type": "symbol",
+      "name": "Tree of Life",
+      "layer": "mythological",
+      "description": "Living expression of the Axis: roots, trunk, branches, leaves, fruit and seed model continuity and renewal."
+    },
+    {
+      "id": "roots",
+      "type": "symbol",
+      "name": "Roots",
+      "layer": "mythological",
+      "description": "Hidden substrate of origin, memory, ancestry, history, potential and matter."
+    },
+    {
+      "id": "trunk",
+      "type": "symbol",
+      "name": "Trunk",
+      "layer": "mythological",
+      "description": "Continuity-bearing central body joining roots to branches."
+    },
+    {
+      "id": "branches",
+      "type": "symbol",
+      "name": "Branches",
+      "layer": "mythological",
+      "description": "Differentiating paths that emerge from one living axis."
+    },
+    {
+      "id": "leaves",
+      "type": "symbol",
+      "name": "Leaves",
+      "layer": "mythological",
+      "description": "Visible expressions of the tree's life and contact with the surrounding world."
+    },
+    {
+      "id": "fruit",
+      "type": "symbol",
+      "name": "Fruit",
+      "layer": "mythological",
+      "description": "Manifestation: what the living structure actually produces in the world."
+    },
+    {
+      "id": "seed",
+      "type": "symbol",
+      "name": "Seed",
+      "layer": "mythological",
+      "description": "Renewal and the possibility of another cycle."
+    },
+    {
+      "id": "tree-of-strife",
+      "type": "symbol",
+      "name": "Tree of Strife",
+      "layer": "mythological",
+      "description": "Fractured tree pattern in which relationship is replaced by fear, competition, extraction and conflict."
+    },
+    {
+      "id": "strife",
+      "type": "condition",
+      "name": "Strife",
+      "layer": "mythological-philosophical",
+      "description": "Conflict generated when relationships cease to produce mutual life and instead produce domination, fear or fragmentation."
+    },
+    {
+      "id": "swamp",
+      "type": "symbol",
+      "name": "Swamp",
+      "layer": "mythological-philosophical",
+      "description": "Accumulated dysfunction, extraction, corruption, inertia, fear and systems that consume the life they should serve."
+    },
+    {
+      "id": "mud",
+      "type": "symbol",
+      "name": "Mud",
+      "layer": "mythological",
+      "description": "Ground-level material condition from which the Potato rises; also the metaphorical substrate of difficult beginnings."
+    },
+    {
+      "id": "drain",
+      "type": "symbol",
+      "name": "Drain",
+      "layer": "mythological-philosophical",
+      "description": "Pattern in which energy, attention, resources or life are continuously pulled away without renewal."
+    },
+    {
+      "id": "fear",
+      "type": "condition",
+      "name": "Fear",
+      "layer": "mythological-philosophical",
+      "description": "Contraction force that can preserve life but can also become a driver of isolation and control."
+    },
+    {
+      "id": "anger",
+      "type": "condition",
+      "name": "Anger",
+      "layer": "mythological-philosophical",
+      "description": "High-energy response to perceived injury or injustice; potentially destructive or transformative depending on its direction."
+    },
+    {
+      "id": "exploitation",
+      "type": "condition",
+      "name": "Exploitation",
+      "layer": "empirical-philosophical",
+      "description": "Extraction of value, labour, attention or resources without a reciprocal structure that sustains the source."
+    },
+    {
+      "id": "fragmentation",
+      "type": "condition",
+      "name": "Fragmentation",
+      "layer": "philosophical",
+      "description": "Loss of coherence between parts that could otherwise form a functioning whole."
+    },
+    {
+      "id": "potato-of-life",
+      "type": "symbol",
+      "name": "Potato of Life",
+      "layer": "mythological",
+      "description": "Central Potatoverse symbol for life emerging from ordinary matter, persistence, nourishment and transformation."
+    },
+    {
+      "id": "potatoism",
+      "type": "philosophy",
+      "name": "Potatoism",
+      "layer": "creative-philosophical",
+      "description": "Potato-centered interpretive framework using ordinary matter, humor and growth from mud to examine life, identity and systems."
+    },
+    {
+      "id": "red-potato",
+      "type": "archetype",
+      "name": "Red Potato",
+      "layer": "mythological",
+      "description": "Creative, loving, expansive and upward/outward-moving life principle."
+    },
+    {
+      "id": "blue-potato",
+      "type": "archetype",
+      "name": "Blue Potato",
+      "layer": "mythological",
+      "description": "Memory, precision, contraction and rootward movement; complementary to the Red Potato."
+    },
+    {
+      "id": "spudlight",
+      "type": "symbol",
+      "name": "Spudlight",
+      "layer": "mythological",
+      "description": "Light emerging through the Potato metaphor: illumination carried by ordinary, grounded life."
+    },
+    {
+      "id": "potato-bank",
+      "type": "symbol",
+      "name": "Potato Bank",
+      "layer": "creative-philosophical",
+      "description": "Humorous financial metaphor for storing, circulating and accounting for value within the Potatoverse."
+    },
+    {
+      "id": "cube",
+      "type": "symbol",
+      "name": "Cube",
+      "layer": "mythological-philosophical",
+      "description": "Container/order metaphor representing bounded space, structure and the world as an organized object."
+    },
+    {
+      "id": "moon-cube",
+      "type": "symbol",
+      "name": "Moon Cube",
+      "layer": "creative-philosophical",
+      "description": "Extended Cube image used to explore remote, reflective and cyclical dimensions of the architecture."
+    },
+    {
+      "id": "north",
+      "type": "direction",
+      "name": "North",
+      "layer": "mythological-geographic",
+      "description": "Orientation toward the North Axis and geographic north as a project anchor."
+    },
+    {
+      "id": "south",
+      "type": "direction",
+      "name": "South",
+      "layer": "mythological",
+      "description": "Descent, material return and lower-field movement in the symbolic coordinate system."
+    },
+    {
+      "id": "east",
+      "type": "direction",
+      "name": "East",
+      "layer": "mythological",
+      "description": "Emergence, beginning, sunrise and outward becoming."
+    },
+    {
+      "id": "west",
+      "type": "direction",
+      "name": "West",
+      "layer": "mythological",
+      "description": "Completion, sunset, decline and return."
+    },
+    {
+      "id": "north-axis",
+      "type": "framework",
+      "name": "North Axis",
+      "layer": "mythological-geographic",
+      "description": "Organizing northward direction connecting the symbolic Axis to a geographic and policy architecture."
+    },
+    {
+      "id": "plane",
+      "type": "domain",
+      "name": "Plane",
+      "layer": "mythological-philosophical",
+      "description": "Horizontal field where bodies, geography, society, institutions, technology, money, infrastructure and history become observable."
+    },
+    {
+      "id": "matter",
+      "type": "domain",
+      "name": "Matter",
+      "layer": "empirical-philosophical",
+      "description": "Physical substrate of the world: material objects, energy, substances and built environments."
+    },
+    {
+      "id": "biology",
+      "type": "domain",
+      "name": "Biology",
+      "layer": "empirical",
+      "description": "Living systems, organisms, reproduction, ecology and the physical processes that sustain life."
+    },
+    {
+      "id": "people",
+      "type": "domain",
+      "name": "People",
+      "layer": "empirical",
+      "description": "Human beings as biological, social, economic, cultural and political participants."
+    },
+    {
+      "id": "families",
+      "type": "social-system",
+      "name": "Families",
+      "layer": "empirical",
+      "description": "Primary social relationships through which care, inheritance, identity and intergenerational memory move."
+    },
+    {
+      "id": "animals",
+      "type": "domain",
+      "name": "Animals",
+      "layer": "empirical",
+      "description": "Non-human life within ecosystems, agriculture, households, economies and human-animal relationships."
+    },
+    {
+      "id": "places",
+      "type": "domain",
+      "name": "Places",
+      "layer": "empirical",
+      "description": "Geographic locations that anchor events, infrastructure, communities, resources and institutions."
+    },
+    {
+      "id": "nations",
+      "type": "system",
+      "name": "Nations",
+      "layer": "empirical",
+      "description": "States and political communities with territory, institutions, laws, budgets, populations and external relationships."
+    },
+    {
+      "id": "kingdoms",
+      "type": "political-form",
+      "name": "Kingdoms",
+      "layer": "empirical-historical",
+      "description": "Political structures organized around a crown or monarchic constitutional tradition."
+    },
+    {
+      "id": "societies",
+      "type": "social-system",
+      "name": "Societies",
+      "layer": "empirical",
+      "description": "Networks of people, norms, institutions, culture, production and collective organization."
+    },
+    {
+      "id": "institutions",
+      "type": "institutional-system",
+      "name": "Institutions",
+      "layer": "empirical",
+      "description": "Organizations and rule systems that coordinate authority, resources, law and public action."
+    },
+    {
+      "id": "laws",
+      "type": "institutional-system",
+      "name": "Laws",
+      "layer": "empirical",
+      "description": "Formal rules that allocate rights, duties, authority, property and permissible action."
+    },
+    {
+      "id": "economies",
+      "type": "system",
+      "name": "Economies",
+      "layer": "empirical",
+      "description": "Production, consumption, investment, employment, trade, finance and allocation of resources."
+    },
+    {
+      "id": "technology",
+      "type": "system",
+      "name": "Technology",
+      "layer": "empirical",
+      "description": "Tools, software, machines, networks and technical capabilities that alter productive and social capacity."
+    },
+    {
+      "id": "infrastructure",
+      "type": "system",
+      "name": "Infrastructure",
+      "layer": "empirical",
+      "description": "Physical and digital networks that allow people and economies to function: power, transport, ports, cables, water and communications."
+    },
+    {
+      "id": "history",
+      "type": "domain",
+      "name": "History",
+      "layer": "historical",
+      "description": "Recorded sequence of events, institutions, conflicts, transformations and inherited conditions."
+    },
+    {
+      "id": "war",
+      "type": "system",
+      "name": "War",
+      "layer": "historical-empirical",
+      "description": "Organized political violence with military, economic, industrial, demographic and infrastructural consequences."
+    },
+    {
+      "id": "trade",
+      "type": "system",
+      "name": "Trade",
+      "layer": "empirical",
+      "description": "Cross-border exchange of goods and services through markets, contracts, logistics and rules."
+    },
+    {
+      "id": "money",
+      "type": "system",
+      "name": "Money",
+      "layer": "empirical",
+      "description": "Unit of account, medium of exchange and store of value connecting households, firms, states and financial systems."
+    },
+    {
+      "id": "ownership",
+      "type": "relationship-domain",
+      "name": "Ownership & Control",
+      "layer": "empirical",
+      "description": "Legal or effective control over companies, assets, land, infrastructure, intellectual property and financial claims."
+    },
+    {
+      "id": "obligations",
+      "type": "relationship-domain",
+      "name": "Obligations",
+      "layer": "empirical",
+      "description": "Debts, contracts, guarantees, pensions, taxes, legal duties and other claims that bind one actor to another."
+    },
+    {
+      "id": "alliances",
+      "type": "system",
+      "name": "Alliances",
+      "layer": "empirical",
+      "description": "Formal or durable security, political and economic relationships among states and institutions."
+    },
+    {
+      "id": "european-economic-graph",
+      "type": "research-system",
+      "name": "European Economic Graph",
+      "layer": "empirical-philosophical",
+      "description": "Relationship-first map of European states, companies, ownership, debt, finance, energy, infrastructure, trade, technology, research, labour and strategic dependencies."
+    },
+    {
+      "id": "north-programme",
+      "type": "policy-framework",
+      "name": "North Programme",
+      "layer": "philosophical-empirical",
+      "description": "Applied framework for fiscal sustainability, productive investment, industrial capacity, energy security, infrastructure, technology, research, labour and voluntary European cooperation."
+    },
+    {
+      "id": "european-union",
+      "type": "institution",
+      "name": "European Union",
+      "layer": "empirical",
+      "description": "Political and economic union connecting 27 member states through common institutions and the single market."
+    },
+    {
+      "id": "single-market",
+      "type": "economic-institution",
+      "name": "EU Single Market",
+      "layer": "empirical",
+      "description": "Economic integration framework based on free movement of goods, services, capital and people."
+    },
+    {
+      "id": "euro-area",
+      "type": "monetary-system",
+      "name": "Euro Area",
+      "layer": "empirical",
+      "description": "Monetary union of EU member states using the euro, with shared monetary policy under the Eurosystem."
+    },
+    {
+      "id": "european-central-bank",
+      "type": "institution",
+      "name": "European Central Bank",
+      "layer": "empirical",
+      "description": "Central institution of the Eurosystem responsible for euro-area monetary policy and financial-system functions."
+    },
+    {
+      "id": "denmark",
+      "type": "state",
+      "name": "Denmark",
+      "layer": "empirical",
+      "description": "EU member state and northern anchor node in the working North Axis architecture."
+    },
+    {
+      "id": "kingdom-of-denmark",
+      "type": "state-structure",
+      "name": "Kingdom of Denmark",
+      "layer": "empirical",
+      "description": "Constitutional realm comprising Denmark, Greenland and the Faroe Islands."
+    },
+    {
+      "id": "greenland",
+      "type": "territory",
+      "name": "Greenland",
+      "layer": "empirical",
+      "description": "Autonomous part of the Kingdom of Denmark and a major Arctic geographic, resource and strategic node."
+    },
+    {
+      "id": "faroe-islands",
+      "type": "territory",
+      "name": "Faroe Islands",
+      "layer": "empirical",
+      "description": "Self-governing part of the Kingdom of Denmark, linking North Atlantic geography, fisheries, shipping and security."
+    },
+    {
+      "id": "canada",
+      "type": "state",
+      "name": "Canada",
+      "layer": "empirical",
+      "description": "North American Arctic and Atlantic state forming a major western node of the broader North Atlantic architecture."
+    },
+    {
+      "id": "iceland",
+      "type": "state",
+      "name": "Iceland",
+      "layer": "empirical",
+      "description": "North Atlantic state connecting Arctic, European, energy, shipping and transatlantic infrastructure systems."
+    },
+    {
+      "id": "norway",
+      "type": "state",
+      "name": "Norway",
+      "layer": "empirical",
+      "description": "North Atlantic and Arctic state with major energy, maritime, fisheries and strategic infrastructure links to Europe."
+    },
+    {
+      "id": "sweden",
+      "type": "state",
+      "name": "Sweden",
+      "layer": "empirical",
+      "description": "Nordic EU member with major industrial, technology, energy and Baltic-region connections."
+    },
+    {
+      "id": "finland",
+      "type": "state",
+      "name": "Finland",
+      "layer": "empirical",
+      "description": "Nordic EU member with Arctic, Baltic, industrial, technology and security connections."
+    },
+    {
+      "id": "united-kingdom",
+      "type": "state",
+      "name": "United Kingdom",
+      "layer": "empirical",
+      "description": "North Atlantic state whose finance, energy, security, shipping and trade links make it a major external node for European analysis."
+    },
+    {
+      "id": "ukraine",
+      "type": "state",
+      "name": "Ukraine",
+      "layer": "empirical",
+      "description": "European state whose war, reconstruction, energy, agriculture, industry and security relationships materially affect the European system."
+    },
+    {
+      "id": "turkey",
+      "type": "state",
+      "name": "Turkey",
+      "layer": "empirical",
+      "description": "Transcontinental state connecting Europe, Black Sea, Caucasus, Middle East, transport corridors and energy routes."
+    },
+    {
+      "id": "netherlands",
+      "type": "state",
+      "name": "Netherlands",
+      "layer": "empirical",
+      "description": "EU economy with major ports, logistics, trade, energy, agriculture, finance and semiconductor-equipment connections."
+    },
+    {
+      "id": "france",
+      "type": "state",
+      "name": "France",
+      "layer": "empirical",
+      "description": "Major EU economy and priority North Programme case for fiscal, industrial, energy and institutional research."
+    },
+    {
+      "id": "belgium",
+      "type": "state",
+      "name": "Belgium",
+      "layer": "empirical",
+      "description": "EU member and priority North Programme case for fiscal, institutional, logistics and energy research."
+    },
+    {
+      "id": "north-sea",
+      "type": "regional-system",
+      "name": "North Sea",
+      "layer": "empirical-geographic",
+      "description": "Shared maritime system connecting offshore wind, oil and gas, shipping, ports, fisheries, cables and coastal industry across several European states."
+    },
+    {
+      "id": "north-atlantic",
+      "type": "regional-system",
+      "name": "North Atlantic",
+      "layer": "empirical-geographic",
+      "description": "Oceanic system connecting Europe, Greenland, Iceland, Norway, the UK and Canada through shipping, cables, fisheries, energy and security."
+    },
+    {
+      "id": "arctic",
+      "type": "regional-system",
+      "name": "Arctic",
+      "layer": "empirical-geographic",
+      "description": "Polar region where climate, shipping, resources, indigenous communities, research and security increasingly intersect."
+    },
+    {
+      "id": "energy-system",
+      "type": "system",
+      "name": "European Energy System",
+      "layer": "empirical",
+      "description": "Interlinked generation, grids, fuels, storage, markets and industrial demand across Europe."
+    },
+    {
+      "id": "electricity-grid",
+      "type": "infrastructure-system",
+      "name": "European Electricity Grid",
+      "layer": "empirical",
+      "description": "Cross-border transmission and distribution network linking generation, storage, industry and households."
+    },
+    {
+      "id": "renewables",
+      "type": "technology-system",
+      "name": "Renewable Energy",
+      "layer": "empirical",
+      "description": "Wind, solar, hydro and other renewable generation coupled to grids, storage and demand."
+    },
+    {
+      "id": "nuclear-energy",
+      "type": "technology-system",
+      "name": "Nuclear Energy",
+      "layer": "empirical",
+      "description": "Low-carbon electricity generation with long-lived infrastructure, fuel-cycle and regulatory requirements."
+    },
+    {
+      "id": "north-sea-offshore-wind",
+      "type": "infrastructure-system",
+      "name": "North Sea Offshore Wind",
+      "layer": "empirical",
+      "description": "Offshore generation and associated grid, port, vessel and industrial supply chains in the North Sea."
+    },
+    {
+      "id": "ports",
+      "type": "infrastructure-system",
+      "name": "European Ports",
+      "layer": "empirical",
+      "description": "Maritime gateways where shipping, logistics, energy, industry and trade converge."
+    },
+    {
+      "id": "subsea-cables",
+      "type": "infrastructure-system",
+      "name": "Subsea Cables",
+      "layer": "empirical",
+      "description": "Electricity and telecommunications infrastructure connecting countries and markets beneath seas and oceans."
+    },
+    {
+      "id": "finance-debt",
+      "type": "system",
+      "name": "Finance & Public Debt",
+      "layer": "empirical",
+      "description": "Bonds, banks, funds, public liabilities, monetary institutions and capital markets."
+    },
+    {
+      "id": "public-debt",
+      "type": "financial-system",
+      "name": "Public Debt",
+      "layer": "empirical",
+      "description": "Outstanding government liabilities, including bonds and other borrowing used to finance public expenditure and investment."
+    },
+    {
+      "id": "public-procurement",
+      "type": "institutional-system",
+      "name": "Public Procurement",
+      "layer": "empirical",
+      "description": "Government purchasing of goods, services and works; a major interface between public budgets and private production."
+    },
+    {
+      "id": "pensions",
+      "type": "public-finance-system",
+      "name": "Pensions",
+      "layer": "empirical",
+      "description": "Old-age income systems whose financing, demographics and labour-market incentives materially affect long-run public budgets."
+    },
+    {
+      "id": "healthcare",
+      "type": "public-service-system",
+      "name": "Healthcare",
+      "layer": "empirical",
+      "description": "Public and private systems providing prevention, treatment, hospitals, medicines, workforce and long-term care."
+    },
+    {
+      "id": "research-system",
+      "type": "innovation-system",
+      "name": "European Research System",
+      "layer": "empirical",
+      "description": "Universities, institutes, public funding, industrial R&D and technology-transfer networks supporting knowledge production."
+    },
+    {
+      "id": "labour-market",
+      "type": "economic-system",
+      "name": "European Labour Market",
+      "layer": "empirical",
+      "description": "Employment, wages, skills, migration, participation, training and productivity across European economies."
+    },
+    {
+      "id": "semiconductors",
+      "type": "technology-system",
+      "name": "Semiconductor Supply Chain",
+      "layer": "empirical",
+      "description": "Highly specialized chain spanning design, equipment, materials, fabrication, packaging and downstream electronics."
+    },
+    {
+      "id": "cloud-compute",
+      "type": "technology-system",
+      "name": "Cloud & AI Compute",
+      "layer": "empirical",
+      "description": "Data centres, cloud platforms, accelerators, electricity and network infrastructure supporting modern digital services and AI."
+    },
+    {
+      "id": "industrial-base",
+      "type": "economic-system",
+      "name": "European Industrial Base",
+      "layer": "empirical",
+      "description": "Manufacturing capacity, machinery, chemicals, vehicles, aerospace, defence, pharmaceuticals and other productive capabilities."
+    },
+    {
+      "id": "strategic-dependencies",
+      "type": "research-domain",
+      "name": "Strategic Dependencies",
+      "layer": "empirical",
+      "description": "External inputs or capabilities whose interruption could materially constrain European production, security or autonomy."
+    },
+    {
+      "id": "cross",
+      "type": "symbolic-operation",
+      "name": "Cross",
+      "layer": "mythological-philosophical",
+      "description": "Intersection of Plane and Axis: the point where the horizontal world becomes vertically readable as root/consequence below and integration/source-facing orientation above."
+    },
+    {
+      "id": "knowledge",
+      "type": "symbolic-process",
+      "name": "Knowledge / Distinction",
+      "layer": "mythological-philosophical",
+      "description": "The differentiating act that creates distinction, memory, judgment, responsibility and choice; upstream of both Life and Strife rather than identical with either."
+    },
+    {
+      "id": "roots-of-strife",
+      "type": "symbolic-root-state",
+      "name": "Roots of Strife",
+      "layer": "mythological-philosophical",
+      "description": "Unresolved buried material that reproduces conflict, dependency, capture or fragmentation rather than nourishing future growth."
+    },
+    {
+      "id": "roots-of-ash",
+      "type": "symbolic-root-state",
+      "name": "Roots of Ash",
+      "layer": "mythological-philosophical",
+      "description": "Residue after destruction, severance, exhaustion or burning; a stored consequence that may remain inert or be metabolized into soil for later growth."
+    },
+    {
+      "id": "living-root",
+      "type": "symbolic-root-state",
+      "name": "Living Root",
+      "layer": "mythological-philosophical",
+      "description": "Memory, history and consequence held in a relation capable of nourishing present continuity and future growth."
+    },
+    {
+      "id": "wide-road",
+      "type": "symbolic-pathway",
+      "name": "Wide Road",
+      "layer": "mythological-philosophical",
+      "description": "Outward/downward dispersive pathway in which repetition and widening become easier than integrative transformation; an operator/path rather than a D-level."
+    },
+    {
+      "id": "repair",
+      "type": "relational-process",
+      "name": "Repair",
+      "layer": "philosophical",
+      "description": "Return pathway that surfaces buried causes, distinguishes them, crosses a threshold, changes recurrence and converts residue into greater capacity for truthful or generative relation."
+    },
+    {
+      "id": "gardener",
+      "type": "mythic-role",
+      "name": "Gardener",
+      "layer": "mythological-philosophical",
+      "description": "Mature stewardship role: cultivate conditions for growth, protect, prune obstruction, repair soil and return integrated orientation to the Plane."
+    },
+    {
+      "id": "tim-dooley",
+      "type": "person-project-subject",
+      "name": "Tim Dooley",
+      "layer": "autobiographical-project",
+      "description": "Central project subject and authorial/public identity whose biography, self-description, works and mythic roles are tracked separately from external verification."
+    },
+    {
+      "id": "spiritual-domain",
+      "type": "symbolic-domain",
+      "name": "Spiritual Domain",
+      "layer": "mythological-philosophical",
+      "description": "Project-symbolic upper/integrative domain used to group Father, Spirit, Heaven, Axis and related functions; not a literal physical location."
+    },
+    {
+      "id": "dao-de-jing",
+      "type": "text-tradition",
+      "name": "Dao De Jing",
+      "layer": "historical-textual",
+      "description": "Classical Daoist text used only as a comparative textual neighbor for Source, Way, vessel and non-coercive order motifs."
+    },
+    {
+      "id": "poetic-edda",
+      "type": "text-tradition",
+      "name": "Poetic Edda",
+      "layer": "historical-textual",
+      "description": "Old Norse poetic corpus used comparatively for world-tree, roots, wells and cosmological structure."
+    },
+    {
+      "id": "messianic-traditions",
+      "type": "tradition-cluster",
+      "name": "Messianic Traditions",
+      "layer": "historical-religious",
+      "description": "Jewish, Christian and other messianic traditions studied comparatively without collapsing them into the Potatoverse."
+    },
+    {
+      "id": "christian-bible",
+      "type": "text-corpus",
+      "name": "Christian Bible",
+      "layer": "historical-textual",
+      "description": "Canonical Christian scriptures used as a primary textual context for Jesus, Son of Man, Door, Ladder and related comparative studies."
+    },
+    {
+      "id": "torah-tanakh",
+      "type": "text-corpus",
+      "name": "Torah / Tanakh",
+      "layer": "historical-textual",
+      "description": "Hebrew Bible textual world used for Lion of Judah, Jacob's ladder, Eden, wisdom, kingship and other comparative motifs."
+    },
+    {
+      "id": "acts-of-thomas",
+      "type": "text-tradition",
+      "name": "Acts of Thomas",
+      "layer": "historical-textual",
+      "description": "Early Christian apocryphal Thomas tradition used as historical/comparative context for Judas Thomas."
+    },
+    {
+      "id": "gospel-of-thomas",
+      "type": "text-tradition",
+      "name": "Gospel of Thomas",
+      "layer": "historical-textual",
+      "description": "Sayings gospel associated with Didymus Judas Thomas, used as a comparative textual source rather than proof of Potatoverse identity claims."
+    },
+    {
+      "id": "north-pole-christmas-myth",
+      "type": "mythic-cluster",
+      "name": "North Pole Christmas Myth",
+      "layer": "mythological",
+      "description": "Project-specific cluster joining Christmas, North Pole, death/transformation and mythic birth motifs."
+    },
+    {
+      "id": "potatoverse-epistemology",
+      "type": "framework",
+      "name": "Potatoverse Epistemology",
+      "layer": "philosophical",
+      "description": "Framework for separating project canon, self-description, historical evidence, comparison, interpretation and inference."
+    },
+    {
+      "id": "research",
+      "type": "process-domain",
+      "name": "Research",
+      "layer": "empirical-philosophical",
+      "description": "Open process of evidence gathering, comparison, modeling, testing, revision and source criticism across the project."
+    },
+    {
+      "id": "son-transformation-cycle",
+      "type": "mythic-process",
+      "name": "Son Transformation Cycle",
+      "layer": "mythological",
+      "description": "Project sequence coupling ordeal, death, burial, Door, Ladder, return and renewed function on the Son side of the mythology."
+    },
+    {
+      "id": "thomas-son-study",
+      "type": "research-topic",
+      "name": "Thomas / Son Study",
+      "layer": "comparative-research",
+      "description": "Comparative study of the project Son/Thomas mapping against canonical and non-canonical Thomas traditions."
+    },
+    {
+      "id": "thomas-textual-corpus",
+      "type": "research-corpus",
+      "name": "Thomas Textual Corpus",
+      "layer": "historical-textual",
+      "description": "Grouped textual material relevant to Thomas traditions, including canonical and apocryphal sources, kept distinct by source and date."
+    },
+    {
+      "id": "garden",
+      "type": "mythic-place-system",
+      "name": "Garden",
+      "layer": "mythological-philosophical",
+      "description": "Cultivated field of differentiated life where multiple branches can grow with nourishment, boundaries, passage and stewardship rather than forced sameness."
+    },
+    {
+      "id": "rooms",
+      "type": "structural-metaphor",
+      "name": "Rooms",
+      "layer": "mythological-philosophical",
+      "description": "Differentiated habitable spaces within a larger House/Garden architecture; plurality with relation, boundary and passage."
+    },
+    {
+      "id": "mountain",
+      "type": "symbol",
+      "name": "Mountain",
+      "layer": "mythological-philosophical",
+      "description": "Continuous-gradient image of ascent and integration: broad lower field compressing toward higher perspective, distinct from the Ladder's discrete thresholds."
+    },
+    {
+      "id": "spiral",
+      "type": "symbolic-trajectory",
+      "name": "Spiral",
+      "layer": "mythological-philosophical",
+      "description": "Recurrence with level-change: a return to related material in a changed state rather than a closed loop repeating at the same level."
+    },
+    {
+      "id": "crown",
+      "type": "symbolic-state",
+      "name": "Crown",
+      "layer": "mythological-philosophical",
+      "description": "Integrated summit perspective where many lower relations are evaluated together and are required to return as accountable service."
+    },
+    {
+      "id": "burial",
+      "type": "symbolic-lifecycle-stage",
+      "name": "Burial",
+      "layer": "mythological-philosophical",
+      "description": "Hidden or protected placement below visible expression; may indicate loss, incubation, storage or the precondition for later emergence depending on context."
+    },
+    {
+      "id": "eye",
+      "type": "symbolic-operator",
+      "name": "Eye",
+      "layer": "mythological-philosophical",
+      "description": "Perception, discernment and a latent generative aperture: the point at which a viable possibility can be noticed, evaluated and potentially activated."
+    },
+    {
+      "id": "sprout",
+      "type": "symbolic-lifecycle-stage",
+      "name": "Sprout",
+      "layer": "mythological-philosophical",
+      "description": "Activated visible growth trajectory emerging from stored capability or a latent eye; early direction before mature branching."
+    },
+    {
+      "id": "return",
+      "type": "relational-process",
+      "name": "Return",
+      "layer": "philosophical",
+      "description": "Re-entry into the Plane or a prior thematic position carrying retained memory and changed capability; return is recurrence with a delta rather than reset."
+    },
+    {
+      "id": "soil",
+      "type": "context-metaphor",
+      "name": "Soil",
+      "layer": "mythological-philosophical",
+      "description": "Surrounding enabling conditions—resources, relationships, history, context and support—that can permit or constrain viable growth."
+    },
+    {
+      "id": "forge",
+      "type": "system-regime",
+      "name": "Forge",
+      "layer": "mythological-philosophical",
+      "description": "Bounded pressure intentionally transformed into transferable capability; successful only when the resulting capacity can survive after the pressure ends."
+    },
+    {
+      "id": "dormancy",
+      "type": "lifecycle-state",
+      "name": "Dormancy",
+      "layer": "biological-comparative",
+      "description": "Viable regulated non-expression used biologically and symbolically for latent capability that is not currently growing visibly; not equivalent to death or failure."
+    },
+    {
+      "id": "wound",
+      "type": "lifecycle-state",
+      "name": "Wound",
+      "layer": "philosophical-comparative",
+      "description": "Damage or broken continuity requiring protection, containment and repair before ordinary growth can safely resume."
+    },
+    {
+      "id": "mature",
+      "type": "lifecycle-state",
+      "name": "Mature",
+      "layer": "philosophical",
+      "description": "Stable developed capability able to function without depending on the conditions that originally produced it."
+    },
+    {
+      "id": "ash",
+      "type": "symbolic-residue",
+      "name": "Ash",
+      "layer": "mythological-philosophical",
+      "description": "Residue after rupture, destruction, burning or exhausted form; may remain inert, become Mud, enter a Forge, be archived, or become Soil."
+    },
+    {
+      "id": "ring",
+      "type": "symbolic-trajectory",
+      "name": "Ring",
+      "layer": "mythological-philosophical",
+      "description": "Recurrence with approximately zero net change in capability or understanding; contrasted with Spiral as return carrying retained change."
+    },
+    {
+      "id": "house",
+      "type": "architectural-archetype",
+      "name": "House",
+      "layer": "mythological-philosophical",
+      "description": "Compositional whole preserving differentiated Dwellings/Rooms, boundaries, inhabitants and passage; the preferred ownership metaphor for the Potato House."
+    },
+    {
+      "id": "dwelling",
+      "type": "architectural-scale",
+      "name": "Dwelling",
+      "layer": "mythological-philosophical",
+      "description": "Major abiding domain inside a House; neutral structural term used to project the ten canonical top-level bounded contexts."
+    },
+    {
+      "id": "mansions",
+      "type": "translation-archetype",
+      "name": "Mansions / Dwelling Places",
+      "layer": "historical-textual-comparative",
+      "description": "Older English John 14:2 bridge for monai; retained as symbolic vocabulary while distinguished from modern luxury-house meaning and literal afterlife geography."
+    },
+    {
+      "id": "chamber",
+      "type": "architectural-scale",
+      "name": "Chamber",
+      "layer": "mythological-philosophical",
+      "description": "Optional smaller specialist/protected cell inside a Room when a stable local task or boundary warrants it."
+    },
+    {
+      "id": "court",
+      "type": "access-archetype",
+      "name": "Court / Courtyard",
+      "layer": "mythological-philosophical",
+      "description": "Shared approach/common space serving several inner destinations before a more selective threshold."
+    },
+    {
+      "id": "gate",
+      "type": "access-archetype",
+      "name": "Gate",
+      "layer": "mythological-philosophical",
+      "description": "Perimeter access regime controlling entry into a larger domain, city, garden or compound; broader than a local Door."
+    },
+    {
+      "id": "foundation",
+      "type": "generative-support-archetype",
+      "name": "Foundation",
+      "layer": "mythological-philosophical",
+      "description": "Stable generative reference/platform: a Seed that has become durable enough to define identity, enable later action, reproduce through rules/practice/lineage/protocol, and remain addressable through revision or refoundation.",
+      "functions": [
+        "seeded-zero-point",
+        "center/reference",
+        "platform/plane",
+        "archive-coordinate",
+        "reproduction-origin",
+        "branch-origin"
+      ]
+    },
+    {
+      "id": "cornerstone",
+      "type": "support-archetype",
+      "name": "Cornerstone",
+      "layer": "mythological-philosophical",
+      "description": "Alignment/reference element whose placement constrains the geometry of a larger structure; distinct from every other stone or builder role."
+    },
+    {
+      "id": "pillar",
+      "type": "support-archetype",
+      "name": "Pillar",
+      "layer": "mythological-philosophical",
+      "description": "Repeated vertical support that carries load while preserving open differentiated space around it."
+    },
+    {
+      "id": "temple",
+      "type": "integrated-plurality-view",
+      "name": "Temple",
+      "layer": "mythological-theological",
+      "description": "Presence/access architecture joining foundation, building, sanctuary, service and dwelling; an alternate View, not a synonym for House ownership."
+    },
+    {
+      "id": "sanctuary",
+      "type": "access-archetype",
+      "name": "Sanctuary",
+      "layer": "mythological-theological",
+      "description": "Protected presence space with stronger access conditions than ordinary habitation."
+    },
+    {
+      "id": "city",
+      "type": "integrated-plurality-view",
+      "name": "City",
+      "layer": "mythological-philosophical",
+      "description": "Federated plurality at civic scale: many dwellings, gates, roads, institutions and participants sharing infrastructure."
+    },
+    {
+      "id": "body",
+      "type": "integrated-plurality-view",
+      "name": "Body",
+      "layer": "mythological-philosophical",
+      "description": "One coordinated organism composed of differentiated members/functions; emphasizes mutual dependence and functional specialization."
+    },
+    {
+      "id": "vine",
+      "type": "growth-archetype",
+      "name": "Vine",
+      "layer": "mythological-theological",
+      "description": "Living continuity supporting differentiated branches and fruit; an organic participation grammar distinct from House/City/Body."
+    },
+    {
+      "id": "vineyard",
+      "type": "stewardship-archetype",
+      "name": "Vineyard",
+      "layer": "mythological-philosophical",
+      "description": "Bounded productive field whose health is evaluated by fruit and treatment of entrusted life."
+    },
+    {
+      "id": "treasury",
+      "type": "storage-archetype",
+      "name": "Treasury / Storehouse",
+      "layer": "mythological-philosophical",
+      "description": "Stored future capacity/resources retained for later use; distinct from Archive/provenance."
+    },
+    {
+      "id": "archive",
+      "type": "memory-archetype",
+      "name": "Archive",
+      "layer": "philosophical-information",
+      "description": "Preserved records and provenance enabling reconstruction, correction and historical continuity."
+    },
+    {
+      "id": "river",
+      "type": "flow-archetype",
+      "name": "River / Stream",
+      "layer": "mythological-philosophical",
+      "description": "Flow distributing life, resources, information or capability through a larger structure."
+    },
+    {
+      "id": "well",
+      "type": "source-access-archetype",
+      "name": "Well / Spring",
+      "layer": "mythological-philosophical",
+      "description": "Local access point to a deeper or replenishing source."
+    },
+    {
+      "id": "table",
+      "type": "participation-archetype",
+      "name": "Table",
+      "layer": "mythological-philosophical",
+      "description": "Shared place of participation, deliberation, exchange or distribution without collapsing distinct participants."
+    },
+    {
+      "id": "tabernacle",
+      "type": "portable-architecture",
+      "name": "Tent / Tabernacle",
+      "layer": "historical-textual-comparative",
+      "description": "Portable/provisional dwelling or presence architecture; useful project analogue for prototypes and migration layers before permanent promotion."
+    },
+    {
+      "id": "throne",
+      "type": "orientation-archetype",
+      "name": "Throne / Seat",
+      "layer": "mythological-theological",
+      "description": "Orientation, judgment and responsibility point rather than a container; legitimacy is tested by accountable service and return."
+    },
+    {
+      "id": "household",
+      "type": "federation-scale-form",
+      "name": "Household",
+      "layer": "philosophical-social",
+      "description": "Participant ecology inhabiting or maintaining a House; distinct from the architecture and from universal ownership."
+    },
+    {
+      "id": "commons",
+      "type": "federation-scale-form",
+      "name": "Commons",
+      "layer": "philosophical-world",
+      "description": "Shared capability/resource layer governed among multiple autonomous participants without requiring one participant to own the whole."
+    },
+    {
+      "id": "network",
+      "type": "federation-scale-form",
+      "name": "Network",
+      "layer": "philosophical-systems",
+      "description": "Relation topology among autonomous nodes whose joint capabilities arise from roads, protocols, flows and dependencies."
+    },
+    {
+      "id": "assembly",
+      "type": "federation-scale-form",
+      "name": "Assembly / Council",
+      "layer": "philosophical-institutional",
+      "description": "Deliberative gathering for review, decision or coordination among distinct participants or representatives."
+    },
+    {
+      "id": "kingdom-realm",
+      "type": "federation-scale-form",
+      "name": "Kingdom / Realm",
+      "layer": "mythological-theological",
+      "description": "Normative or orientational scope of value, responsibility and order; project-symbolic use does not create civil sovereignty or legal jurisdiction."
+    },
+    {
+      "id": "civilization",
+      "type": "federation-scale-form",
+      "name": "Civilization",
+      "layer": "historical-systems",
+      "description": "Long-duration emergent pattern formed by cities, networks, commons, institutions, infrastructures, memory and culture across generations."
+    },
+    {
+      "id": "garden-city",
+      "type": "federation-scale-regime",
+      "name": "Garden-City",
+      "layer": "mythological-philosophical",
+      "description": "City/federation regime combining dense coordination with regeneration, repairability and peripheral autonomy; project comparative model, not a literal identification of a modern polity with New Jerusalem."
+    },
+    {
+      "id": "bridge",
+      "type": "connection-archetype",
+      "name": "Bridge",
+      "layer": "philosophical-systems",
+      "description": "Connection that creates usable capability across an existing separation while preserving endpoint identity."
+    },
+    {
+      "id": "protocol",
+      "type": "coordination-archetype",
+      "name": "Protocol",
+      "layer": "philosophical-systems",
+      "description": "Shared grammar or rules enabling heterogeneous nodes to interoperate without becoming identical or transferring ownership."
+    },
+    {
+      "id": "road",
+      "type": "connection-archetype",
+      "name": "Road / Corridor",
+      "layer": "philosophical-systems",
+      "description": "Traversable typed lateral relation connecting stable spaces or subjects without necessarily changing state, ownership or evidence regime."
+    }
   ]
 }

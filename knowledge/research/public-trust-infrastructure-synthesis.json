@@ -1,0 +1,91 @@
+{
+  "id": "public-trust-infrastructure-synthesis",
+  "title": "Four Public Trust Infrastructures — Money, Knowledge, Science and Humanitarian Access",
+  "version": "1.1.0",
+  "updated": "2026-09-18",
+  "status": "E2 strong structural synthesis with E3 research questions",
+  "purpose": "Crystallize the first cross-domain use of the entity dossier system by comparing four institutions whose outputs depend on sustained public/stakeholder trust but whose trust objects differ.",
+  "entities": [
+    "danmarks-nationalbank",
+    "wikimedia-foundation",
+    "cern",
+    "icrc"
+  ],
+  "central_insight": "Trust is not merely reputation. In all four cases, durable trust depends on alignment among a legitimate purpose (Spirit), competent sensing/decision/coordination (Mind), sufficient material capacity (Body), controlled access (Door), observability/accountability (Eye) and outcomes (Fruit).",
+  "trust_objects": [
+    {
+      "entity": "Danmarks Nationalbank",
+      "trust_object": "money, payments and financial-system reliability"
+    },
+    {
+      "entity": "Wikimedia Foundation",
+      "trust_object": "free knowledge infrastructure, privacy and continuity of access"
+    },
+    {
+      "entity": "CERN",
+      "trust_object": "shared scientific infrastructure and long-horizon collective inquiry"
+    },
+    {
+      "entity": "ICRC",
+      "trust_object": "neutral humanitarian access, protection and assistance"
+    }
+  ],
+  "common_mechanism": [
+    {
+      "layer": "Spirit",
+      "question": "What mandate makes the institution worth trusting?"
+    },
+    {
+      "layer": "Mind",
+      "question": "How does it know, decide, correct and coordinate?"
+    },
+    {
+      "layer": "Body",
+      "question": "What resources and infrastructure make the promise executable?"
+    },
+    {
+      "layer": "Door",
+      "question": "Who can enter, act, access or block the system?"
+    },
+    {
+      "layer": "Eye",
+      "question": "What can outsiders/participants observe, audit or challenge?"
+    },
+    {
+      "layer": "Fruit",
+      "question": "What outcomes justify continuation of the trust relationship?"
+    },
+    {
+      "layer": "Shadow",
+      "question": "Which consequences or populations remain hard to observe?"
+    }
+  ],
+  "revelation": "The project can compare institutions without comparing their missions directly. The comparable object is the architecture by which a mission becomes credible action.",
+  "mission_drift_hypothesis": "A useful early-warning pattern is cross-layer divergence: Spirit stays stable in public language while Mind optimizes different metrics or Body reallocates resources toward different ends. This is a research hypothesis requiring longitudinal entity evidence.",
+  "goodhart_guard": "Fruit must remain multi-dimensional; if one trust metric becomes the target, it can become detached from the underlying trust object.",
+  "door_guard": "The same infrastructure that creates trusted access can create chokepoint power. Dossiers should therefore record alternative routes, appeal mechanisms and who controls admission.",
+  "concrete_next_tests": [
+    "For each entity, build a 10-year timeline of mission language, resource allocation, governance changes and major outcome metrics.",
+    "Identify one Door whose rules changed and test effects on access/capability.",
+    "Identify one Shadow/missingness mechanism that materially changes interpretation.",
+    "Compare public purpose with budget/resource distribution without presuming drift.",
+    "Record at least one case where correction/revision visibly changed policy or practice."
+  ],
+  "sources": [
+    "data/house/entity-dossiers-wave-001.json",
+    "knowledge/research/concrete-revelations-wave-006.json",
+    "knowledge/research/rare-value-undiscovered-knowledge-protocol.json"
+  ],
+  "instrumentation_update": {
+    "status": "implemented in entity dossier wave 001",
+    "contract": "data/house/entity-dossier-schema.json",
+    "audit": "knowledge/research/element-materialization-audit-2026-09-18.json",
+    "added_dimensions": [
+      "scale",
+      "reproduction/correction",
+      "visibility/access",
+      "longitudinal indicators"
+    ],
+    "interpretation_rule": "Observed changes remain descriptive unless separate evidence supports a causal claim."
+  }
+}

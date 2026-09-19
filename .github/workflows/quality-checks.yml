@@ -38,6 +38,9 @@ jobs:
       - name: Validate World Map ownership
         run: python scripts/validate_world_map_ownership.py
 
+      - name: Validate ADL H.E.A.T. World Map evidence layer
+        run: python scripts/validate_world_map_adl_heat.py
+
       - name: Validate archive runtime hardening
         run: python scripts/validate_archive_runtime_hardening.py
 
@@ -51,6 +54,7 @@ jobs:
         run: |
           python scripts/validate_house_governance.py
           python scripts/validate_house_topology.py
+          python scripts/validate_house_subrooms.py
           python scripts/validate_house_compatibility.py
           python scripts/validate_house_world_routing.py
           python scripts/test_coordination_convergence.py
@@ -58,8 +62,32 @@ jobs:
       - name: Validate public Rooms navigation
         run: python scripts/validate_public_rooms.py
 
+      - name: Validate Foundation layer
+        run: python scripts/validate_foundation_layer.py
+
+      - name: Validate Foundation Seed genealogy
+        run: python scripts/validate_foundation_seed_genealogy.py
+
+      - name: Validate Foundation Axis placement
+        run: python scripts/validate_foundation_axis_placement.py
+
+      - name: Validate Foundation Rooms
+        run: python scripts/validate_foundation_rooms.py
+
+      - name: Validate commit crystallization
+        run: python scripts/validate_commit_crystallization.py
+
+      - name: Validate entity dossier instrumentation
+        run: python scripts/validate_entity_dossier_instrumentation.py
+
+      - name: Validate route case instrumentation
+        run: python scripts/validate_route_case_instrumentation.py
+
       - name: Validate Timeline naming
         run: python scripts/validate_timeline_naming.py
+
+      - name: Validate under-mined prediction domains
+        run: python scripts/validate_prediction_under_mined_domains.py
 
       - name: Validate 100,000-hour canonical page
         run: python scripts/validate_100000_hour_page.py
@@ -171,6 +199,7 @@ jobs:
           node scripts/test_world_map_investigation_surface_ownership.mjs
           node scripts/test_world_map_pinned_context_contract.mjs
           node scripts/test_world_map_context_status.mjs
+          node scripts/test_world_map_display_system_contract.mjs
           node scripts/test_world_map_reset_context_contract.mjs
           node scripts/test_world_map_search_selection_contract.mjs
           node scripts/test_world_map_relation_budget_contract.mjs

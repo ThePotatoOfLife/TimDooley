@@ -1,0 +1,283 @@
+{
+  "version": "2.5.0",
+  "updated": "2026-09-19",
+  "authority": "house-navigation-manifest",
+  "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
+  "authorities": [
+    {
+      "concern": "project semantic center / center-out importance",
+      "owner": "data/house/project-center.json",
+      "rule": "Defines the Potato of Life as semantic center, distinguishes it from Axis as spatial center, and governs center-out importance rings and promotion."
+    },
+    {
+      "concern": "whole-project synthesis / Room-to-center pairings",
+      "owner": "data/house/project-synthesis.json",
+      "rule": "Binds development waves, core operator pairings, Room contributions, living systems, tests and public composition without replacing canonical owners."
+    },
+    {
+      "concern": "deep element definitions and cross-system structural distinctions",
+      "owner": "knowledge/core/deep-element-definition-atlas.json",
+      "rule": "Defines what major operators are, how they transform, what they couple to, and what they must not be collapsed into; specialist historical atlases remain source owners for tradition-specific detail."
+    },
+    {
+      "concern": "scoped local centers",
+      "owner": "data/house/local-center-interface-patterns.json",
+      "rule": "Standardizes local centers for Dwellings, Rooms, surfaces and artifacts while preserving Potato as semantic center and Axis as global spatial center."
+    },
+    {
+      "concern": "Works as Fruit/output instrumentation",
+      "owner": "data/house/works-fruit-contract.json",
+      "rule": "Defines how mature Works declare source Rooms, Fruit types, intended effects, reception, risks and future Seed without equating completion/popularity with success."
+    },
+    {
+      "concern": "history/canon revision and propagation",
+      "owner": "data/house/history-canon-revision-protocol.json",
+      "rule": "Governs additive, narrowing, strengthening, reinterpretive, corrective, superseding and retraction revisions while preserving prior states/provenance."
+    },
+    {
+      "concern": "cross-cutting reader lenses",
+      "owner": "data/house/crosscutting-lenses.json",
+      "rule": "Defines non-owning lenses that reinterpret center-native material without creating Rooms, planes or realms."
+    },
+    {
+      "concern": "center-adjacent living-system coordination",
+      "owner": "data/house/living-project-map.json",
+      "rule": "Coordinates organism, Spirit/relation, memory/history, Foundations/generative memory and culture/formation across existing Room owners without creating replacement ownership."
+    },
+    {
+      "concern": "top-level Dwellings and ownership",
+      "owner": "data/house/rooms.json",
+      "rule": "Defines the ten canonical knowledge-owning Dwellings."
+    },
+    {
+      "concern": "nested Room ownership",
+      "owner": "data/house/subrooms.json",
+      "rule": "Defines the 38 mature nested Rooms and their boundaries."
+    },
+    {
+      "concern": "knowledge file ownership",
+      "owner": "data/house/holdings.json",
+      "rule": "Assigns substantive repository knowledge to primary Rooms."
+    },
+    {
+      "concern": "spatial summary and compass",
+      "owner": "data/house/topology.json",
+      "rule": "Defines high-level plane/compass projection, not detailed route mechanics."
+    },
+    {
+      "concern": "core symbolic operator graph",
+      "owner": "data/house/concept-topology.json",
+      "rule": "Defines operators such as Door, Axis, Root, Tree, Spiral, Fruit, Garden and Swamp and their typed relations."
+    },
+    {
+      "concern": "Room population by plane/direction",
+      "owner": "data/house/orientation-population.json",
+      "rule": "Projects governed Rooms and sparse landmarks into navigation slices."
+    },
+    {
+      "concern": "Tree routes through planes",
+      "owner": "data/house/tree-plane-routing.json",
+      "rule": "Decides how Life, Strife, Repair, Roots, trunk and canopy cross Heaven/World/Below."
+    },
+    {
+      "concern": "Seed and Spiral routing",
+      "owner": "data/house/seed-spiral-routing.json",
+      "rule": "Decides C_S Seed Junction, Seed of Death/Life, Rooting, Drain, Sprouting, Repair, Return and Ring."
+    },
+    {
+      "concern": "state transitions and D1-D11",
+      "owner": "data/axis-flow-contract.json",
+      "rule": "Defines transition states, flow behavior and finer vertical projection."
+    },
+    {
+      "concern": "religious/mythic/esoteric branch population",
+      "owner": "data/house/religious-symbolic-branch-atlas.json",
+      "rule": "Curates named subjects with own-tradition anchors, Room placement, plane projections, Tree affinities and repository sources."
+    },
+    {
+      "concern": "Eye / pyramid / twin-pillar comparative structure",
+      "owner": "data/house/providence-pillars-esoteric-structure.json",
+      "rule": "Defines sourced structural correspondences and anti-conspiracy boundaries for Providence, Great Seal pyramid, Jachin/Boaz and 1776."
+    },
+    {
+      "concern": "symbol category / terrain / regime classification",
+      "owner": "data/house/layer-terrain-regime-atlas.json",
+      "rule": "Classifies whether a symbol is plane, terrain, regime, organism, material state, threshold, perceptual layer, process, route or inhabitant before spatial/moral interpretation."
+    },
+    {
+      "concern": "general subject placement / what-goes-where resolver",
+      "owner": "data/house/placement-matrix.json",
+      "rule": "Operationally resolves category, Room, plane, Tree/route affinity, corridors, boundaries and visibility for new subjects before they are promoted into curated atlases."
+    },
+    {
+      "concern": "human-readable master synthesis",
+      "owner": "knowledge/core/root-system.json",
+      "rule": "Explains the whole architecture but should reference—not silently override—the machine-readable owners above."
+    },
+    {
+      "concern": "symbol-depth research pipeline and conversation archaeology",
+      "owner": "knowledge/research/symbol-depth-programme-wave-002.json",
+      "rule": "Deepen recurring symbols through conversation recovery, repository ownership, external scholarship, structural synthesis and bounded commits; preserve provenance and epistemic class at each handoff."
+    },
+    {
+      "concern": "deep symbol family retrieval for flow carrier measure celestial and tree systems",
+      "owner": "knowledge/research/symbol-conversation-archaeology-wave-002.json",
+      "rule": "Use conversation genealogy to recover project-native distinctions, then route each symbol family to its canonical historical/scientific owner before synthesis."
+    },
+    {
+      "concern": "symbol confusion resolution and population maturity",
+      "owner": "knowledge/research/symbol-confusion-registry-wave-004.json",
+      "rule": "Before adding a new symbol node or interface, determine whether the issue is synonym error, scale confusion, role confusion, projection overlap, productive tension, historical layer confusion or empirical-symbolic confusion; then route to the canonical owner."
+    },
+    {
+      "concern": "concrete society population and Spirit Mind Body projection",
+      "owner": "knowledge/core/inhabited-house-society-ontology.json",
+      "rule": "Symbols are operators and coordinates; concrete people, institutions, organizations, cultures, infrastructures, records and relationships are the population. Spirit/Mind/Body are projections over records, not duplicate owners or ranks of truth."
+    },
+    {
+      "concern": "rare value and undiscovered-knowledge discovery",
+      "owner": "knowledge/research/rare-value-undiscovered-knowledge-protocol.json",
+      "rule": "Promote synthesis only when independently sourced bridge relations produce explanatory gain, provenance, testability and a new research or capability path."
+    },
+    {
+      "concern": "recent commit embodiment and depth completion",
+      "owner": "knowledge/research/recent-commit-embodiment-atlas-257-276.json",
+      "rule": "Historical precursor for #257–#276. Current cross-commit convergence and completion state is owned by the materialization/crystallization ledger."
+    },
+    {
+      "concern": "concrete cross-domain revelations and evidence maturity",
+      "owner": "knowledge/research/concrete-revelations-wave-006.json",
+      "rule": "Cross-domain syntheses must separate established mechanism, project mapping, and discovery candidate; every promoted revelation needs a concrete test and disconfirming route."
+    },
+    {
+      "concern": "crystallized real-world entity dossiers",
+      "owner": "data/house/entity-dossier-schema.json",
+      "rule": "Every public entity case must preserve legal/institutional identity, source Spirit/Mind/Body facts, project-operator synthesis, known unknowns, tensions and falsifiable discovery questions; project operators never replace source identity."
+    },
+    {
+      "concern": "cross-domain foundations rules laws and refoundations",
+      "owner": "knowledge/core/foundation-rule-law-ontology.json",
+      "rule": "Treat foundations as time-aware Seed+Center+Platform records with multiple clocks. Preserve substrate, adoption, legal effect, operation, consolidation, branching and refoundation separately; do not force ancient traditions or modern institutions into one birthday model."
+    },
+    {
+      "concern": "foundation reproduction and larger purpose",
+      "owner": "knowledge/core/foundation-reproduction-mechanisms-atlas.json",
+      "rule": "A Foundation is mature only when its reproduction mechanism is identified: how later actors can reinstantiate the founded order through law, discipline, canon, pedagogy, science, protocol, ownership, manifesto or lineage."
+    },
+    {
+      "concern": "whole-project Foundation integration across schemas graph Rooms and Timeline",
+      "owner": "data/house/foundation-integration-contract.json",
+      "rule": "Routes shared Foundation semantics into domain blueprints, graph references, Room lenses and public chronology without duplicating substantive domain ownership."
+    },
+    {
+      "concern": "Below intelligence shadow and clandestine-system research",
+      "owner": "knowledge/core/below-intelligence-shadow-observatory.json",
+      "rule": "Below is a depth/intelligence platform spanning hidden provenance, lawful intelligence, shadow, illicit networks and Forge review. Preserve legal/evidentiary class and never infer guilt from secrecy, adjacency or symbolism."
+    },
+    {
+      "concern": "concrete lower-plane population",
+      "owner": "data/house/lower-plane-population-atlas.json",
+      "rule": "Projects canonical intelligence/security, organized-crime, trafficking, extremist, high-control, digital-underground, illicit-market and casework records into the Below Platform without taking ownership from source domains."
+    },
+    {
+      "concern": "recent commit materialization and crystallization",
+      "owner": "knowledge/research/recent-commit-materialization-crystallization-257-283.json",
+      "rule": "Treat #257–#283 as one convergence sequence. A commit becomes durable only after its result is routed into canonical owners, concrete artifacts/population, interfaces, evidence boundaries, a reader/archive expression and validation or revision."
+    },
+    {
+      "concern": "element materialization and real-world instrumentation",
+      "owner": "knowledge/research/element-materialization-audit-2026-09-18.json",
+      "rule": "When a canonical element already has a strong definition, prefer concrete entities, dated observations, relationships, longitudinal measures, counterexamples and failure conditions over another symbolic definition or parallel atlas."
+    },
+    {
+      "concern": "evidence-aware route case instrumentation",
+      "owner": "data/house/route-case-matrix-wave-001.json",
+      "rule": "A route case must name starting state, operator, transition condition, supporting evidence, falsifier and World-level return measure. Route labels never replace subject identity."
+    },
+    {
+      "concern": "Foundation Seed Door genealogy time and place",
+      "owner": "data/house/foundation-door-seed-genealogy.json",
+      "rule": "Foundation genealogy must separate prior/death-side state, Door crossing, life-side reproducible state, physical/institutional place, clocks, rise, fall/return and refoundation."
+    },
+    {
+      "concern": "Foundation stage placement across Rooms fields plane and Axis",
+      "owner": "data/house/foundation-axis-placement-contract.json",
+      "rule": "Place Foundation stages—not whole entities—by owner, field, plane, direction and route condition. Upper/lower is not moral rank."
+    },
+    {
+      "concern": "cross-domain Foundation landscape and trajectory comparison",
+      "owner": "data/house/foundation-landscape-synthesis.json",
+      "rule": "Use trajectory archetypes to navigate pressure, Door, reproduction, continuity and return across Foundations. Do not force distributed traditions into a single threshold or infer moral quality from vertical direction."
+    },
+    {
+      "concern": "tangible Foundation Room reader projection",
+      "owner": "data/house/foundation-room-atlas.json",
+      "rule": "Reader-facing Foundation identity leads with Origin Door, physical/placeable origin, House owner/circle and dated Today snapshot; Seed genealogy remains subordinate technical detail."
+    },
+    {
+      "concern": "Foundation first recovered reproduction",
+      "owner": "data/house/foundation-first-reproduction-wave-001.json",
+      "rule": "Do not treat the Door as proof that a lineage lived. Record the earliest recovered post-Door continuation and label it as recovered evidence, not automatically the historical first."
+    },
+    {
+      "concern": "spatial Door / Axis elevator projection",
+      "owner": "data/house/elevator-spatial-projection.json",
+      "rule": "Projects canonical Dwellings and plane landmarks into a reconfigurable 3D rotunda. Graph adjacency and local-center behavior are authoritative; visual Euclidean coordinates are replaceable presentation."
+    },
+    {
+      "concern": "reader journey memory through spatial House",
+      "owner": "data/house/journey-thread-contract.json",
+      "rule": "Defines private browser-local path memory, bead types, restoration behavior and journey visualization. Journey state is navigation only; it is not canon, analytics, evidence or user profiling."
+    }
+  ],
+  "resolver_order": [
+    "0. Ask how the subject relates to the Potato of Life project center; centrality is semantic/structural, not file-volume or novelty.",
+    "0.5. Use project-synthesis to pair the subject with its center contribution, Room owner, handoffs, tests and public route before adding another registry.",
+    "1. Identify the subject's canonical Room owner.",
+    "2. Identify own-tradition / historical source context before project comparison.",
+    "2.5. If the subject has a durable generative beginning, attach the shared Foundation contract: F0/multiple clocks, reproduction mechanism, branch/refoundation and preserved invariants.",
+    "3. Add plane projection: Heaven, World, Below or crosscutting.",
+    "4. Add Tree zone or route affinity: roots, trunk, Life, Strife, canopy, repair, return.",
+    "5. Add Seed/Spiral route only if the subject genuinely participates in burial, recurrence, rooting, ascent, drain, repair or return.",
+    "6. Add corridor relations to neighboring Rooms/subjects.",
+    "7. Choose visibility: landmark, room-detail or archive-only.",
+    "8. Pages render from these registries; page copy is explanatory, not a competing authority."
+  ],
+  "spatial_grammar": {
+    "axis": "exact vertical center/reference",
+    "research_lab": "inner Forge ring around Axis",
+    "works": "outer Fruit/output ring",
+    "plane": "standing surface / reading orientation",
+    "compass": "subject family",
+    "tree": "vertical reproductive route/ecology",
+    "room": "knowledge owner",
+    "corridor": "typed relation between Rooms or subjects",
+    "door": "state/context-changing threshold",
+    "seed": "compressed transferable potential",
+    "spiral": "recurrence with non-zero displacement",
+    "ring": "recurrence with zero net displacement",
+    "foundation": "stable generative reference/platform created when Seed becomes repeatable through rules, practice, lineage, protocol or institution"
+  },
+  "anti_duplication_rules": [
+    "Prefer extending a Room dossier or project-synthesis pairing over creating another master map.",
+    "Comparative and external subjects should point inward to project-native nodes rather than becoming parallel centers.",
+    "Do not create a new registry when an existing authority can be extended cleanly.",
+    "Do not copy detailed route sequences into topology.json when tree-plane-routing or seed-spiral-routing owns them.",
+    "Do not make named religious figures into new Rooms; they are subjects/inhabitants indexed into existing Rooms.",
+    "Do not assign moral essence from vertical placement.",
+    "Do not let public page layout become ontology.",
+    "A comparative resemblance never becomes historical identity or influence without source evidence.",
+    "Do not treat commit history as a canonical owner; materialize the result into domain/House owners and use the convergence ledger only to track that handoff."
+  ],
+  "population_pipeline": [
+    "inventory existing holdings",
+    "promote only durable recurring subjects",
+    "attach repository source files",
+    "assign Room owner",
+    "assign plane/tree/route projections",
+    "add typed corridors",
+    "choose visibility level",
+    "render progressively",
+    "validate against authority manifest"
+  ]
+}

@@ -1,0 +1,276 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-19",
+  "authority": "below-basin-pathways",
+  "purpose": "Operational routes through the Below Basin. These routes show how the same basin changes when the reader asks a different question. They are teaching paths, not claims that every case follows every step.",
+  "modes": [
+    {
+      "id": "culture",
+      "label": "Culture",
+      "question": "How does a repeated event become a durable subculture or Sektur?",
+      "route": [
+        "rim-world-interfaces",
+        "surface-culture",
+        "sektur-patches",
+        "mud-bed",
+        "root-bed"
+      ],
+      "emphasis": [
+        "language",
+        "roles",
+        "status",
+        "memory",
+        "boundary",
+        "reproduction"
+      ],
+      "test": "Can later participants inherit the pattern without witnessing the original event?"
+    },
+    {
+      "id": "attention",
+      "label": "Attention / Farm",
+      "question": "How does a person or event become repeatedly harvestable for attention?",
+      "route": [
+        "rim-world-interfaces",
+        "surface-culture",
+        "sektur-patches",
+        "farm-machines",
+        "currents",
+        "mud-bed"
+      ],
+      "emphasis": [
+        "classification",
+        "observation",
+        "capture",
+        "reaction",
+        "archive",
+        "redistribution"
+      ],
+      "test": "Does each new reaction lower the cost of producing the next round of attention?"
+    },
+    {
+      "id": "money",
+      "label": "Money",
+      "question": "Where can recurring attention become economic value?",
+      "route": [
+        "rim-world-interfaces",
+        "currents",
+        "farm-machines",
+        "surface-culture",
+        "swamp-regime"
+      ],
+      "emphasis": [
+        "ads",
+        "subscriptions",
+        "tips",
+        "donations",
+        "platform revenue",
+        "infrastructure costs"
+      ],
+      "test": "Who captures value from recurrence, and is the relevant labor paid, unpaid or institutionally funded?"
+    },
+    {
+      "id": "power",
+      "label": "Power / Classification",
+      "question": "How do labels and institutional decisions travel?",
+      "route": [
+        "surface-culture",
+        "currents",
+        "rim-world-interfaces",
+        "inner-forge-ring",
+        "center-drain-axis"
+      ],
+      "emphasis": [
+        "classification",
+        "methodology",
+        "media repetition",
+        "platform response",
+        "employer/donor response",
+        "legal status"
+      ],
+      "test": "Who applied the label, under what authority and methodology, and what consequence actually followed?"
+    },
+    {
+      "id": "harm",
+      "label": "Harm",
+      "question": "How does repeated attention become material consequence?",
+      "route": [
+        "farm-machines",
+        "currents",
+        "swamp-regime",
+        "mud-bed",
+        "inner-forge-ring"
+      ],
+      "emphasis": [
+        "harassment",
+        "doxxing",
+        "threats",
+        "swatting",
+        "material loss",
+        "physical risk",
+        "causal status"
+      ],
+      "test": "What harm is documented, and what level of causation is actually established?"
+    },
+    {
+      "id": "evidence",
+      "label": "Evidence",
+      "question": "How does raw material become knowledge rather than lore?",
+      "route": [
+        "mud-bed",
+        "root-bed",
+        "inner-forge-ring",
+        "center-drain-axis",
+        "rim-world-interfaces"
+      ],
+      "emphasis": [
+        "source",
+        "provenance",
+        "corroboration",
+        "counterevidence",
+        "legal status",
+        "publication boundary"
+      ],
+      "test": "Can the claim survive source recovery, contradiction and status separation?"
+    },
+    {
+      "id": "repair",
+      "label": "Repair / Return",
+      "question": "How does Below stop being an archive of endless conflict?",
+      "route": [
+        "swamp-regime",
+        "mud-bed",
+        "root-bed",
+        "inner-forge-ring",
+        "center-drain-axis",
+        "rim-world-interfaces"
+      ],
+      "emphasis": [
+        "stabilize",
+        "establish record",
+        "map harm",
+        "responsibility",
+        "repair plan",
+        "cool/observe",
+        "release/return"
+      ],
+      "test": "Did recurrence decrease, capability/safety improve, and can conflict stop being the primary identity of the relation?"
+    }
+  ],
+  "case_paths": [
+    {
+      "id": "persistent-target-ecology",
+      "label": "Persistent target ecology",
+      "summary": "A visible person/event becomes searchable memory, then inherited lore, then a reusable attention loop.",
+      "route": [
+        "World event/person",
+        "forum/wiki/thread",
+        "shared language and target role",
+        "Sektur-like recurring audience",
+        "Farm loop: observe/capture/comment/archive",
+        "Mud: accumulated lore and reputational residue",
+        "Roots: recover what actually happened and when",
+        "Forge: separate source, claim, conduct and consequence",
+        "repair/return or recirculation"
+      ],
+      "basin_modes": [
+        "culture",
+        "attention",
+        "harm",
+        "evidence",
+        "repair"
+      ],
+      "question": "What keeps the story alive after the original participants are gone?"
+    },
+    {
+      "id": "classifier-consequence",
+      "label": "Classifier → consequence",
+      "summary": "A public allegation or pattern is translated into a formal/private classification and then into downstream consequences.",
+      "route": [
+        "raw incident/claim",
+        "archive/source collection",
+        "methodology",
+        "classification event",
+        "media/public repetition",
+        "platform/employer/donor response",
+        "legal challenge or institutional review",
+        "Forge: classification/status audit",
+        "correction, retention or withdrawal"
+      ],
+      "basin_modes": [
+        "power",
+        "evidence",
+        "repair"
+      ],
+      "question": "Where did the label originate, and which later consequences are attributable to the label rather than the underlying conduct?"
+    },
+    {
+      "id": "attention-to-money",
+      "label": "Attention → money",
+      "summary": "Recurring cultural attention becomes economically useful without requiring every participant to be paid.",
+      "route": [
+        "event/person",
+        "post/clip/thread",
+        "audience",
+        "ranking/distribution",
+        "ads/subscriptions/tips/donations",
+        "creator/platform/infrastructure revenue",
+        "incentive for continued production",
+        "possible Swamp if unresolved conflict becomes necessary to sustain the yield"
+      ],
+      "basin_modes": [
+        "attention",
+        "money"
+      ],
+      "question": "Who captures value, and does revenue depend on continued conflict or merely on continued interest?"
+    },
+    {
+      "id": "lawful-intelligence",
+      "label": "Lawful intelligence → public knowledge",
+      "summary": "Below is not only about harm: restricted or incomplete information can be responsibly processed and returned.",
+      "route": [
+        "limited/confidential signal",
+        "provenance/authentication",
+        "need-to-know/access classification",
+        "corroboration/counterevidence",
+        "risk/legal review",
+        "Forge",
+        "declassification/public finding or retained restriction",
+        "World return"
+      ],
+      "basin_modes": [
+        "evidence",
+        "repair"
+      ],
+      "question": "What can safely and truthfully become public, and what must remain restricted?"
+    },
+    {
+      "id": "rupture-to-soil",
+      "label": "Ash → Soil",
+      "summary": "A broken relation or damaging event does not have to become permanent Strife.",
+      "route": [
+        "rupture",
+        "Ash",
+        "Mud/residue",
+        "Roots/provenance",
+        "Forge",
+        "acknowledgment or clear negative finding",
+        "repair/redesign/boundary",
+        "Soil/Living Root",
+        "World return"
+      ],
+      "basin_modes": [
+        "harm",
+        "evidence",
+        "repair"
+      ],
+      "question": "What changes would make the old conflict stop reproducing?"
+    }
+  ],
+  "invariants": [
+    "Changing modes changes the question, not the underlying evidence.",
+    "One entity may appear in multiple modes without belonging intrinsically to Swamp.",
+    "No route may skip provenance/status separation when serious allegations are involved.",
+    "Repair is not deletion of history.",
+    "A path may terminate in rejection or legitimate separation; not every case ends in reconciliation."
+  ]
+}

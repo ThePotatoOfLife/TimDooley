@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Potato House — How the Project Fits Together</title>
+<meta name="description" content="The Potato House is the structural guide to the Potato of Life project: Rooms, Plane, Roots, Roads, Doors, Tree, Mountain, states, evidence and public views.">
+<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/house/"><link rel="alternate" type="application/json" href="../data/house/concept-topology.json" title="Potato House concept topology">
+<link rel="stylesheet" href="../app/site-system.css?v=20260914a">
+<style>
+.depth-switcher{display:flex;gap:7px;flex-wrap:wrap;margin:20px 0 6px}.depth-switcher button{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:7px 11px;font:700 9px var(--site-font-sans);letter-spacing:.07em;text-transform:uppercase;cursor:pointer}.depth-switcher button[aria-pressed="true"],.depth-switcher button:hover{color:var(--site-green);border-color:#647b5d;background:#101710}.depth-explain{font-size:12px;color:var(--site-muted);margin:0 0 12px}.house-depth-overview [data-depth="structure"],.house-depth-overview [data-depth="research"]{display:none}.house-depth-structure [data-depth="research"]{display:none}.house-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px}.house-card{border:1px solid var(--site-line);border-radius:12px;padding:18px;background:var(--site-panel)}.house-card strong{display:block;font:400 23px/1.1 var(--site-font-serif);color:var(--site-gold);margin-bottom:7px}.house-card span{color:var(--site-muted);font-size:13px}.grammar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}.grammar article{border-top:1px solid var(--site-line);padding-top:12px}.grammar b{display:block;font:400 20px var(--site-font-serif)}.grammar small{color:var(--site-muted);display:block;margin-top:4px}.corridor{display:flex;gap:9px 13px;flex-wrap:wrap;margin-top:18px}.corridor a{color:var(--site-muted);text-decoration:none;border-bottom:1px solid var(--site-line)}.corridor a:hover{color:var(--site-green)}.boundary{color:var(--site-muted);font-size:12px}.house-law{font:400 22px/1.55 var(--site-font-serif);border-left:2px solid var(--site-green);padding-left:16px;color:#dce4d8}.page-section{padding:30px 0}.topology-note{color:var(--site-muted);font-size:13px;max-width:850px}.band-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}.band{border:1px solid var(--site-line);border-radius:12px;padding:15px}.band strong{display:block;font:400 20px var(--site-font-serif);color:var(--site-gold)}.band span{display:block;color:var(--site-muted);font-size:11px;margin-top:5px}.topology-lenses{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 4px}.topology-lens{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:6px 9px;font:700 9px var(--site-font-sans);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}.topology-lens[aria-pressed="true"],.topology-lens:hover{color:var(--site-green);border-color:#647b5d;background:#101710}.topology-readout{font-size:11px;color:var(--site-muted);margin:8px 0 0}.holdings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}.holding-card{border:1px solid var(--site-line);border-radius:12px;padding:14px;background:var(--site-panel)}.holding-card strong{display:block;font:400 18px var(--site-font-serif);color:var(--site-gold)}.holding-card em{display:block;color:var(--site-green);font-style:normal;font-size:9px;text-transform:uppercase;letter-spacing:.07em;margin:4px 0 7px}.holding-card ul{margin:7px 0 0;padding-left:16px}.holding-card li{color:var(--site-muted);font-size:11px;line-height:1.45;margin:2px 0}.holding-card small{display:block;color:var(--site-muted);font-size:10px;margin-top:7px}.collection-strip{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.collection-strip span{border:1px solid var(--site-line);border-radius:999px;padding:6px 9px;color:var(--site-muted);font-size:10px}.subroom-groups{display:grid;gap:18px;margin-top:22px}.subroom-group{border-top:1px solid var(--site-line);padding-top:14px}.subroom-group h3{font:400 22px var(--site-font-serif);margin:0 0 8px}.subroom-list{display:flex;flex-wrap:wrap;gap:6px}.subroom-list a,.subroom-list span{border:1px solid var(--site-line);border-radius:999px;padding:6px 9px;color:var(--site-muted);text-decoration:none;font-size:10px}.subroom-list a:hover{color:var(--site-green);border-color:#5f7558}.federation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}.federation-card{border:1px solid var(--site-line);border-radius:12px;padding:15px;background:var(--site-panel)}.federation-card strong{display:block;font:400 20px var(--site-font-serif);color:var(--site-gold)}.federation-card em{display:block;color:var(--site-green);font-style:normal;font-size:9px;text-transform:uppercase;letter-spacing:.07em;margin:3px 0 7px}.federation-card span{display:block;color:var(--site-muted);font-size:12px;line-height:1.45}.federation-card small{display:block;color:var(--site-muted);font-size:10px;margin-top:8px}.pulse-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:14px 0}.pulse-cell{border:1px solid var(--site-line);border-radius:10px;padding:12px;background:var(--site-panel)}.pulse-cell b{display:block;font:400 24px var(--site-font-serif);color:var(--site-gold)}.pulse-cell span{display:block;color:var(--site-muted);font-size:10px;margin-top:3px}.pulse-note{font-size:11px;color:var(--site-muted)}.census-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0}.census-tab{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:6px 9px;font:700 9px var(--site-font-sans);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}.census-tab[aria-pressed="true"],.census-tab:hover{color:var(--site-green);border-color:#647b5d;background:#101710}.census-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px}.census-card{border:1px solid var(--site-line);border-radius:10px;padding:13px;background:var(--site-panel)}.census-card strong{display:block;font:400 17px var(--site-font-serif)}.census-card em{display:block;color:var(--site-green);font-style:normal;font-size:9px;text-transform:uppercase;letter-spacing:.08em;margin:3px 0}.census-card small{display:block;color:var(--site-muted);line-height:1.4}.projection-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0}.projection-tab{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:7px 10px;font:700 9px var(--site-font-sans);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}.projection-tab[aria-pressed="true"],.projection-tab:hover{color:var(--site-green);border-color:#647b5d;background:#101710}.projection-panel{border:1px solid var(--site-line);border-radius:12px;padding:17px;background:var(--site-panel);margin-top:10px}.projection-panel h3{font:400 26px var(--site-font-serif);margin:0 0 7px}.projection-panel p{color:var(--site-muted);margin:6px 0}.projection-panel .projection-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:13px}.projection-panel .projection-meta div{border-top:1px solid var(--site-line);padding-top:9px}.projection-panel b{display:block;font:400 16px var(--site-font-serif);color:var(--site-gold)}.interface-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:18px}.interface-card{border:1px solid var(--site-line);border-radius:10px;padding:13px}.interface-card strong{display:block;font:400 16px var(--site-font-serif)}.interface-card em{display:block;color:var(--site-green);font-style:normal;font-size:9px;text-transform:uppercase;letter-spacing:.08em;margin:4px 0}.interface-card small{display:block;color:var(--site-muted);line-height:1.4}.corridor-list{display:grid;gap:8px;margin-top:18px}.corridor-row{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;border-top:1px solid var(--site-line);padding-top:9px}.corridor-row b{font:400 15px var(--site-font-serif)}.corridor-row em{font-style:normal;color:var(--site-green);font-size:10px}.room-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:16px}.room-list a{border:1px solid var(--site-line);border-radius:10px;padding:13px;text-decoration:none;color:inherit}.room-list strong{display:block;font:400 18px var(--site-font-serif)}.room-list span{display:block;color:var(--site-muted);font-size:11px;margin-top:4px}@media(max-width:760px){.house-grid,.grammar,.room-list,.band-grid,.interface-list,.projection-panel .projection-meta,.census-grid,.pulse-grid,.federation-grid,.holdings-grid{grid-template-columns:1fr}.corridor-row{grid-template-columns:1fr}.corridor-row em{display:none}}
+.potato-model{margin:26px 0 6px;border:1px solid var(--site-line);border-radius:16px;padding:20px;background:radial-gradient(circle at 50% 45%,rgba(184,220,130,.05),transparent 48%),var(--site-panel)}.potato-model-grid{display:grid;grid-template-columns:minmax(260px,.9fr) 1.1fr;gap:28px;align-items:center}.potato-figure{position:relative;width:min(100%,420px);aspect-ratio:1/1.15;margin:auto}.field-orb{position:absolute;left:12%;width:76%;aspect-ratio:1;border:1px solid #596656;border-radius:50%;background:rgba(255,255,255,.015)}.field-orb--source{top:2%;box-shadow:0 0 40px rgba(216,181,107,.05) inset}.field-orb--manifest{bottom:2%;box-shadow:0 0 40px rgba(184,220,130,.035) inset}.field-label{position:absolute;left:50%;transform:translateX(-50%);z-index:3;text-align:center;width:82%;font-size:11px;color:var(--site-muted)}.field-label b{display:block;font:400 20px var(--site-font-serif);color:var(--site-gold)}.field-label--source{top:11%}.field-label--manifest{bottom:11%}.door-lens{position:absolute;left:25%;top:29%;width:50%;height:42%;border:1px solid var(--site-green);border-radius:50% / 58%;background:rgba(184,220,130,.055);z-index:2;display:grid;place-items:center;text-align:center}.door-lens strong{font:400 24px var(--site-font-serif);color:var(--site-green)}.door-lens small{display:block;color:var(--site-muted);margin-top:3px}.model-axis{position:absolute;left:50%;top:5%;bottom:5%;width:1px;background:linear-gradient(transparent,#758270 12%,#758270 88%,transparent);z-index:4}.model-plane{position:absolute;left:8%;right:8%;top:50%;height:1px;background:#758270;z-index:4}.model-cross{position:absolute;left:50%;top:50%;width:12px;height:12px;border:1px solid var(--site-gold);border-radius:50%;transform:translate(-50%,-50%);background:var(--site-bg);z-index:5}.model-caption h3{font:400 30px/1.05 var(--site-font-serif);margin:0 0 10px}.model-caption p{color:#cbd1c8;max-width:650px}.model-rules{display:grid;gap:8px;margin-top:15px}.model-rules div{border-top:1px solid var(--site-line);padding-top:9px}.model-rules b{color:var(--site-gold);font:400 16px var(--site-font-serif)}.model-rules span{color:var(--site-muted);font-size:12px}.operator-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:18px}.operator-card{appearance:none;width:100%;text-align:left;border:1px solid var(--site-line);border-radius:10px;padding:12px;background:transparent;color:inherit;cursor:pointer}.operator-card b{display:block;font:400 17px var(--site-font-serif)}.operator-card small{display:block;color:var(--site-muted);margin-top:4px;line-height:1.4}.operator-card:hover,.operator-card[aria-pressed="true"]{border-color:#647b5d;background:#101710}.operator-card[aria-pressed="true"] b{color:var(--site-green)}.operator-relations{margin-top:12px;border:1px solid var(--site-line);border-radius:12px;padding:15px;background:var(--site-panel)}.operator-relations h3{font:400 23px/1.1 var(--site-font-serif);margin:0 0 6px}.operator-relations>p{color:var(--site-muted);font-size:12px;margin:0 0 12px}.relation-list{display:grid;gap:7px}.relation-row{display:grid;grid-template-columns:minmax(110px,.35fr) minmax(120px,.4fr) 1fr;gap:10px;border-top:1px solid var(--site-line);padding-top:8px;font-size:11px}.relation-row:first-child{border-top:0;padding-top:0}.relation-row b{font:400 14px var(--site-font-serif);color:var(--site-gold)}.relation-row em{font-style:normal;color:var(--site-green);text-transform:uppercase;font-size:9px;letter-spacing:.06em}.relation-row span{color:var(--site-muted);line-height:1.4}@media(max-width:760px){.potato-model-grid{grid-template-columns:1fr}.operator-grid{grid-template-columns:1fr 1fr}.relation-row{grid-template-columns:1fr;gap:3px}}
+
+.society-intro{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:start;margin-top:18px}
+.triune-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.triune-card,.society-family,.society-anchor{border:1px solid var(--site-line);border-radius:12px;padding:14px;background:var(--site-panel)}
+.triune-card strong{display:block;font:400 21px var(--site-font-serif);color:var(--site-gold);margin-bottom:6px}
+.triune-card p,.society-family p,.society-anchor p{color:var(--site-muted);font-size:11px;line-height:1.48;margin:5px 0}
+.triune-card small{display:block;color:#cbd1c8;line-height:1.45}
+.society-rule{font:400 20px/1.5 var(--site-font-serif);border-left:2px solid var(--site-green);padding-left:14px;color:#dce4d8}
+.society-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:15px 0 10px}
+.society-tab{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:6px 9px;font:700 9px var(--site-font-sans);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.society-tab[aria-pressed="true"],.society-tab:hover{color:var(--site-green);border-color:#647b5d;background:#101710}
+.society-family-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.society-family strong{display:block;font:400 17px var(--site-font-serif)}
+.society-family em{display:block;color:var(--site-green);font-style:normal;font-size:9px;text-transform:uppercase;letter-spacing:.06em;margin:4px 0 6px}
+.society-family small{display:block;color:var(--site-muted);line-height:1.42}
+.anchor-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:12px}
+.society-anchor strong{display:block;font:400 18px var(--site-font-serif);color:var(--site-gold)}
+.society-anchor em{display:block;color:var(--site-green);font-style:normal;font-size:9px;text-transform:uppercase;letter-spacing:.06em;margin:4px 0}
+.anchor-lenses{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:9px}
+.anchor-lenses span{border-top:1px solid var(--site-line);padding-top:6px;color:var(--site-muted);font-size:10px;line-height:1.35}
+.anchor-lenses b{display:block;color:#dce4d8;font:400 12px var(--site-font-serif)}
+.society-anchor a{display:inline-block;margin-top:9px;color:var(--site-muted);font-size:10px;text-decoration:none;border-bottom:1px solid var(--site-line)}
+.society-anchor a:hover{color:var(--site-green)}
+.population-note{color:var(--site-muted);font-size:11px;margin-top:10px}
+@media(max-width:900px){.society-intro{grid-template-columns:1fr}.triune-grid,.society-family-grid,.anchor-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.triune-grid,.society-family-grid,.anchor-grid,.anchor-lenses{grid-template-columns:1fr}}
+
+
+.purpose-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:14px}
+.purpose-card,.value-card{border:1px solid var(--site-line);border-radius:12px;padding:14px;background:var(--site-panel)}
+.purpose-card strong,.value-card strong{display:block;font:400 18px var(--site-font-serif);color:var(--site-gold);margin-bottom:5px}
+.purpose-card p,.value-card p{color:var(--site-muted);font-size:11px;line-height:1.45;margin:4px 0}
+.value-ladder{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:14px}
+.value-card em{display:block;color:var(--site-green);font-style:normal;font-size:9px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.discovery-law{font:400 20px/1.55 var(--site-font-serif);border-left:2px solid var(--site-gold);padding-left:15px;color:#dce4d8}
+.bridge-strip{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:9px;align-items:center;margin-top:14px;border:1px solid var(--site-line);border-radius:12px;padding:14px;background:var(--site-panel)}
+.bridge-strip b{font:400 17px var(--site-font-serif);color:var(--site-gold)}
+.bridge-strip span{color:var(--site-muted);font-size:11px}
+.bridge-strip i{font-style:normal;color:var(--site-green)}
+@media(max-width:900px){.purpose-grid{grid-template-columns:1fr 1fr}.value-ladder{grid-template-columns:1fr 1fr 1fr}.bridge-strip{grid-template-columns:1fr}.bridge-strip i{display:none}}
+@media(max-width:620px){.purpose-grid,.value-ladder{grid-template-columns:1fr}}
+
+
+.case-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}
+.case-tab{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:7px 10px;font:700 9px var(--site-font-sans);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.case-tab[aria-pressed="true"],.case-tab:hover{color:var(--site-green);border-color:#647b5d;background:#101710}
+.case-panel{border:1px solid var(--site-line);border-radius:14px;padding:18px;background:var(--site-panel)}
+.case-panel h3{font:400 28px/1.05 var(--site-font-serif);margin:0}
+.case-kicker{color:var(--site-green);font-size:9px;text-transform:uppercase;letter-spacing:.08em;margin:5px 0 10px}
+.case-triad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:14px 0}
+.case-triad article,.case-operator,.case-question{border-top:1px solid var(--site-line);padding-top:9px}
+.case-triad b,.case-operator b,.case-question b{display:block;font:400 15px var(--site-font-serif);color:var(--site-gold)}
+.case-triad span,.case-operator span,.case-question span{display:block;color:var(--site-muted);font-size:11px;line-height:1.45;margin-top:3px}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+.case-operators,.case-questions{display:grid;gap:8px}
+.case-instrument-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:14px}.case-instrument{border:1px solid var(--site-line);border-radius:10px;padding:12px;background:var(--site-panel)}.case-instrument b{display:block;font:400 16px var(--site-font-serif);color:var(--site-gold);margin-bottom:5px}.case-instrument span{display:block;color:var(--site-muted);font-size:11px;line-height:1.45}.case-longitudinal{display:grid;gap:8px;margin-top:14px}.case-longitudinal article{border-top:1px solid var(--site-line);padding-top:8px}.case-longitudinal b{display:block;font:400 15px var(--site-font-serif)}.case-longitudinal small{display:block;color:var(--site-muted);line-height:1.45;margin-top:3px}.case-longitudinal em{font-style:normal;color:var(--site-green);font-size:10px}.case-observations{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}.case-observations span{border:1px solid var(--site-line);border-radius:999px;padding:4px 7px;color:#cbd1c8;font-size:9px}@media(max-width:760px){.case-instrument-grid{grid-template-columns:1fr}}
+.case-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.case-meta span{border:1px solid var(--site-line);border-radius:999px;padding:5px 8px;color:var(--site-muted);font-size:9px}
+@media(max-width:760px){.case-triad,.case-grid{grid-template-columns:1fr}}
+
+
+.foundation-strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin:14px 0}
+.foundation-step{border:1px solid var(--site-line);border-radius:10px;padding:10px;background:var(--site-panel)}
+.foundation-step b{display:block;font:400 14px var(--site-font-serif);color:var(--site-gold)}
+.foundation-step span{display:block;color:var(--site-muted);font-size:9px;line-height:1.35;margin-top:3px}
+.foundation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:12px}
+.foundation-card{border:1px solid var(--site-line);border-radius:12px;padding:14px;background:var(--site-panel)}
+.foundation-card strong{display:block;font:400 18px var(--site-font-serif);color:var(--site-gold)}
+.foundation-card em{display:block;color:var(--site-green);font-style:normal;font-size:9px;text-transform:uppercase;letter-spacing:.06em;margin:4px 0}
+.foundation-card p{color:var(--site-muted);font-size:11px;line-height:1.45;margin:5px 0}
+.foundation-rule{font:400 20px/1.5 var(--site-font-serif);border-left:2px solid var(--site-green);padding-left:14px;color:#dce4d8}
+@media(max-width:900px){.foundation-strip{grid-template-columns:repeat(3,1fr)}.foundation-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.foundation-strip,.foundation-grid{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body class="house-depth-overview"><main class="page page--reading">
+<p class="topology-note"><a href="../elevator/">Enter the House from the Door / Axis Elevator →</a></p><nav class="page-nav"><a href="../">← Home</a><a href="../rooms/">Rooms</a><a href="../rooms/#planes">Three Planes</a><a href="../axis/">Living Axis</a><a href="../explore/">Explore</a></nav>
+<header class="page-header"><p class="eyebrow">The larger structure</p><h1>POTATO<br>HOUSE</h1><p class="summary">The House is the project’s organizing model. Start with the overview; deeper structure is optional. The Living Axis explains transformation, while the House explains belonging, relation, provenance and public views.</p><div class="depth-switcher" id="houseDepthSwitcher" aria-label="House reading depth"><button type="button" data-house-depth="overview" aria-pressed="true">Overview</button><button type="button" data-house-depth="structure" aria-pressed="false">Structure</button><button type="button" data-house-depth="research" aria-pressed="false">Research</button></div><p class="depth-explain" id="houseDepthExplain">Overview shows the minimum structure needed to understand the House.</p></header>
+<section class="page-section" id="project-center"><p class="eyebrow">Project center</p><h2>The Potato of Life is the semantic center</h2><p class="house-law">One Potato of Life; three irreducible relations—Father/source, Son/manifestation-and-passage, Spirit/living continuity—expressed through two overlapping fields, one shared Door, one Axis, and a living Seed → Root → Tree → Fruit → Return cycle.</p><p class="topology-note"><strong>Semantic center:</strong> Potato of Life. <strong>Spatial center:</strong> Axis. <strong>Relational midpoint:</strong> Cross at O inside the Door. <strong>Source center:</strong> C<sub>F</sub>. <strong>Seed / manifestation center:</strong> C<sub>S</sub>. These are different kinds of center and should not be collapsed.</p><div class="band-grid"><div class="band"><strong>0 · Nucleus</strong><span>Potato of Life · Father · Son · Spirit</span></div><div class="band"><strong>1 · Core structure</strong><span>Source Field · Manifestation Field · Door · Axis · Plane · Cross · House</span></div><div class="band"><strong>2 · Living metabolism</strong><span>Seed · Root · Spiral · Knowledge · Life · Strife · Garden · Swamp · Fruit · Repair</span></div><div class="band"><strong>3 · Project domains</strong><span>Rooms own the actual work: canon, archive, time, traditions, science, body, world, culture, works and research.</span></div><div class="band"><strong>4 · Comparative mirrors</strong><span>Religions, gods, mythologies, esoteric systems and external models illuminate the center from outside.</span></div><div class="band"><strong>5 · Deep archive</strong><span>Sources, chronology, recovered records, specialist atlases and detailed disputes.</span></div></div><p class="boundary">Centrality is not determined by how many files or symbols a topic has. Comparative material must point inward to a project question or operator; otherwise it remains deep research.</p><div class="corridor"><a href="../potato-of-life/">Read the Potato center →</a><a href="../axis/">Follow the living metabolism</a><a href="../rooms/">Enter project domains</a></div></section>
+
+<section class="page-section"><p class="house-law">The House is the compositional whole. Rooms own bounded kinds of knowledge. The Plane is the frame currently in use. Roots carry provenance and support. Roads connect laterally. Doors change state. Trees differentiate. Mountains integrate. States describe whether a system is Garden, Forge, Swamp, Dormant, Wounded, Repairing or Mature.</p></section>
+<section class="potato-model" id="potato-model" aria-labelledby="potato-model-title">
+<div class="potato-model-grid">
+<div class="potato-figure" role="img" aria-label="Two overlapping fields form one Potato House. Their shared lens is the Door. A horizontal Plane and vertical Axis cross at the relational center inside the Door.">
+<div class="field-orb field-orb--source"></div><div class="field-orb field-orb--manifest"></div>
+<div class="field-label field-label--source"><b>Source field</b>Father · House · Heaven · Garden</div>
+<div class="field-label field-label--manifest"><b>Manifestation field</b>Son · Earth · body · world</div>
+<div class="door-lens"><div><strong>Door</strong><small>shared overlap</small></div></div>
+<div class="model-axis" aria-hidden="true"></div><div class="model-plane" aria-hidden="true"></div><div class="model-cross" aria-hidden="true"></div>
+</div>
+<div class="model-caption"><p class="eyebrow">Canonical topology</p><h3 id="potato-model-title">One House, two fields, one shared Door</h3>
+<p>The Potato is not a stack of floors. Geometrically, Source and Manifestation remain complete while genuinely overlapping; their shared region is Door. Theologically, the whole is triune: Father is source-facing, Son is manifestation/passage-facing, and Spirit is living continuity through the relation. Plane cuts through the overlap; Axis passes through both centers; Cross is Plane × Axis at the relational midpoint.</p>
+<div class="model-rules"><div><b>Two fields do not mean only two theological terms.</b> <span>Fields are geometry; Father, Son and Spirit are theological roles/relations; Potato of Life is the whole.</span></div><div><b>Plane and Cross are inside the Door.</b> <span>They are coordinates of the overlap, not places you must travel through first.</span></div>
+<div><b>Dwellings are public scale projections.</b> <span>The ten canonical owners can be read as major abiding domains without creating another fact-owning backend layer.</span></div>
+<div><b>House and Shell are regimes.</b> <span>Healthy containment preserves circulation, repair and autonomy; capture is not defined by shape or vertical position.</span></div></div>
+</div></div></section>
+
+
+
+
+
+<section class="page-section" id="foundations">
+<p class="eyebrow">Foundations</p>
+<h2>What keeps beginning again?</h2>
+<p class="foundation-rule">A Foundation is more than an origin date. It is a Seed that becomes a Center, a Platform, and a preserved reference state from which later generations can reproduce, amend, branch, or refound the system.</p>
+<div class="foundation-strip">
+<article class="foundation-step"><b>Substrate</b><span>What existed before the foundation.</span></article>
+<article class="foundation-step"><b>Seed</b><span>The generative idea, covenant, rule, design or initiative.</span></article>
+<article class="foundation-step"><b>F₀</b><span>The first stable recoverable reference state.</span></article>
+<article class="foundation-step"><b>Operation</b><span>When the founded thing actually begins acting.</span></article>
+<article class="foundation-step"><b>Refoundation</b><span>A later change that alters the operating plane while preserving some continuity.</span></article>
+<article class="foundation-step"><b>Branches</b><span>Descendant institutions, schools, practices, protocols or interpretations.</span></article>
+</div>
+<p class="topology-note">The crucial question is not only <em>when did this begin?</em> but <strong>how does another generation become it again?</strong> Constitutions reproduce through offices and amendment; monasteries through disciplined practice; science through methods and instruments; protocols through interoperable implementations; cooperatives through ownership rules; movements through manifestos, works and schools.</p>
+<div class="foundation-grid" id="foundationExamples"><p class="boundary">Loading foundation examples…</p></div>
+<div class="corridor"><a href="../timeline/">Timeline</a><a href="../world/">World</a><a href="../religion/">Traditions</a><a href="../philosophy/">Philosophy</a></div>
+</section>
+
+<section class="page-section" id="crystallized-cases">
+<p class="eyebrow">Crystallized cases</p>
+<h2>Run the House against reality</h2>
+<p class="topology-note">These are not examples of institutions “being” Potato symbols. Each dossier keeps the entity's own identity and sources, then asks whether project operators reveal a real mechanism worth testing.</p>
+<div class="case-tabs" id="entityCaseTabs"></div>
+<div class="case-panel" id="entityCasePanel"><p class="boundary">Loading crystallized dossiers…</p></div>
+</section>
+
+<section class="page-section" id="purpose-discovery">
+<p class="eyebrow">Purpose & discovery</p>
+<h2>What is this knowledge for?</h2>
+<p class="discovery-law">The House should not reward accumulation for its own sake. Its highest-value work is to help a reader make sense of life, choose direction, grow real capability, understand consequences, and discover connections that ordinary browsing leaves fragmented.</p>
+<p class="topology-note">Purpose is not assigned by the archive. The project can help a person examine whether a life-direction is coherent, genuinely chosen, relationally meaningful, materially possible and fruitful.</p>
+<div class="purpose-grid">
+<article class="purpose-card"><strong>Coherence</strong><p>Does the story of my life and world make enough sense to orient within?</p></article>
+<article class="purpose-card"><strong>Direction</strong><p>What future actually organizes my choices rather than merely occupying my attention?</p></article>
+<article class="purpose-card"><strong>Mattering</strong><p>Why is this worth caring about, and who or what becomes more alive through it?</p></article>
+<article class="purpose-card"><strong>Agency</strong><p>Is the direction genuinely endorsed, or mostly borrowed, coerced, rewarded or feared?</p></article>
+<article class="purpose-card"><strong>Competence</strong><p>Am I becoming increasingly capable of doing what the purpose requires?</p></article>
+<article class="purpose-card"><strong>Relatedness</strong><p>Does it deepen honest relationship without making identity depend on control or enemies?</p></article>
+<article class="purpose-card"><strong>Capability</strong><p>Do material, bodily, legal and social conditions actually let this purpose become action?</p></article>
+<article class="purpose-card"><strong>Fruit</strong><p>What consequences appear downstream, including costs that the story would rather ignore?</p></article>
+</div>
+
+<p class="eyebrow" style="margin-top:28px">Rare value</p>
+<h3>From facts to discoveries</h3>
+<p class="topology-note">The project now treats ordinary facts as necessary but insufficient. A connection becomes rare value when independently sourced fragments form a defensible bridge that explains something new, opens a research path, or changes how a real problem can be understood.</p>
+<div class="bridge-strip" aria-label="Literature-based discovery pattern">
+<b>A · known field</b><i>→</i><span>B · independently supported bridge mechanism</span><i>→</i><b>C · distant field</b>
+</div>
+<div class="value-ladder">
+<article class="value-card"><em>1</em><strong>Reference</strong><p>Accurate fact needed for orientation.</p></article>
+<article class="value-card"><em>2</em><strong>Context</strong><p>Facts arranged so position and history become understandable.</p></article>
+<article class="value-card"><em>3</em><strong>Connection</strong><p>Typed relationship with evidence and direction.</p></article>
+<article class="value-card"><em>4</em><strong>Synthesis</strong><p>Several independent relations explain a larger mechanism.</p></article>
+<article class="value-card"><em>5</em><strong>Discovery candidate</strong><p>A non-obvious bridge that generates a new testable question or capability.</p></article>
+</div>
+<p class="boundary">Shared numbers, shapes or poetic resemblance are not enough. A discovery candidate must expose its bridge, sources, alternatives, uncertainty and what would weaken it.</p>
+<div class="corridor"><a href="../research-lab/">Research Lab</a><a href="../questions/">Open questions</a><a href="../context/source-authority/">Source authority</a></div>
+</section>
+
+<section class="page-section" id="inhabited-house">
+<p class="eyebrow">The inhabited House</p>
+<h2>The structure is not the subject. The world is.</h2>
+<div class="society-intro">
+<div>
+<p class="society-rule">Door, Tree, River, Mountain, Garden, Swamp, House and Forge are the grammar. The population is society itself: people, families, governments, nations, companies, banks, religions, universities, NGOs, media, technologies, infrastructures, cultures, philosophies, economies, ecosystems and the relations among them.</p>
+<p class="topology-note">Every concrete entity can be read through three coupled lenses. <strong>Spirit</strong> asks what gives it meaning, legitimacy or purpose. <strong>Mind</strong> asks how it knows, decides, remembers and coordinates. <strong>Body</strong> asks what materially embodies it: people, assets, territory, infrastructure, labour, money and resources.</p>
+</div>
+<div class="triune-grid" id="societyTriune"><p class="boundary">Loading Spirit / Mind / Body population lenses…</p></div>
+</div>
+<div class="corridor"><a href="../world/">World</a><a href="../world-map/">Map</a><a href="../economy/">Economy</a><a href="../religion/">Traditions</a><a href="../context/culture/">Culture</a><a href="../life-body/">Life &amp; Body</a></div>
+
+<div data-depth="structure">
+<p class="eyebrow" style="margin-top:28px">Society population</p>
+<h3>What actually lives in the Rooms</h3>
+<p class="topology-note">These are population families, not new top-level Rooms. Each family names real kinds of things the House should know about, and the relationships that make them consequential.</p>
+<div class="society-tabs" id="societyTabs"></div>
+<div class="society-family-grid" id="societyFamilies"><p class="boundary">Loading society families…</p></div>
+
+<p class="eyebrow" style="margin-top:28px">Concrete anchors</p>
+<h3>Named institutions inside the model</h3>
+<p class="topology-note">These are verified seed examples showing how the same institution has a Spirit, Mind and Body without becoming three separate entities. The long-term World Atlas should expand this through canonical entity records and typed edges.</p>
+<div class="anchor-grid" id="societyAnchors"><p class="boundary">Loading concrete institutions…</p></div>
+<p class="population-note">Population is intentionally incomplete. The page should reveal the pattern; the World Atlas should carry the scale.</p>
+</div>
+</section>
+
+<section class="page-section" id="placement-matrix"><p class="eyebrow">Population engine</p><h2>What goes where?</h2><p class="topology-note">New material now follows a fixed placement order: <strong>own tradition / primary source → dated reception → category → Room owner → plane projection → Tree/route affinity → comparative corridor → Potatoverse interpretation → visibility</strong>. If a subject cannot be placed without inventing meaning, it stays in Research Lab / Open Questions.</p><div class="corridor"><a href="../rooms/#placement-browser">Browse the placement atlas →</a><a href="../data/house/placement-matrix.json">Open placement rules</a><a href="../religion/#branch-atlas">Browse populated traditions</a></div></section>
+
+<section class="page-section" id="layer-grammar"><p class="eyebrow">Layer grammar</p><h2>First ask what kind of thing it is</h2><p class="topology-note">The House now separates <strong>planes</strong>, <strong>terrain</strong>, <strong>regimes</strong>, <strong>organisms</strong>, <strong>materials</strong>, <strong>thresholds</strong>, <strong>perceptual layers</strong>, <strong>processes</strong> and <strong>routes</strong>. This prevents Below, Swamp, Shadow, Tree of Strife, Mountain, Pyramid and Eye from becoming one vertical good/bad ladder.</p><div class="band-grid"><div class="band"><strong>Terrain</strong><span>Mountain, Pyramid, Swamp: environments or integration/entanglement fields.</span></div><div class="band"><strong>Regime</strong><span>Garden, House, Shell: rules of cultivation, containment, passage and capture.</span></div><div class="band"><strong>Organism</strong><span>Roots, Tree of Knowledge, Tree of Life, Tree of Strife.</span></div><div class="band"><strong>Material</strong><span>Ash, Mud, Soil, Seed: states that can be processed into different futures.</span></div><div class="band"><strong>Perception</strong><span>Eye evaluates; Shadow occludes or withholds integration. Neither is a floor.</span></div><div class="band"><strong>Process / Route</strong><span>Forge transforms; Spiral/Ladder/Drain/Return describe movement through states.</span></div></div><p class="boundary">Literal ecosystems and external traditions keep their own meanings. The project's symbolic Swamp is not a claim that real swamps are degraded, and shared Axis/Mountain/Tree/Pillar functions do not make traditions historically identical.</p><div class="corridor"><a href="../data/house/layer-terrain-regime-atlas.json">Open the layer atlas →</a><a href="../rooms/#orientation">Browse spatially</a><a href="../religion/#branch-atlas">Browse symbolic populations</a></div></section>
+
+<section class="page-section" id="pillars-eye-pyramid"><p class="eyebrow">Historical symbol architecture</p><h2>Pillars, Pyramid and Eye</h2><p class="topology-note">A sourced comparative layer now adds three useful structures without treating them as secret proof: <strong>Jachin &amp; Boaz</strong> clarify a Door held by differentiated supports; the <strong>unfinished Great Seal pyramid</strong> clarifies Mountain as layered integration that may remain incomplete; the <strong>Eye of Providence</strong> clarifies perception/evaluation as something distinct from hierarchy or summit status.</p><div class="band-grid"><div class="band"><strong>Twin Pillars</strong><span>Establishment / stability + strength / capacity → supported threshold → House.</span></div><div class="band"><strong>Pyramid / Mountain</strong><span>Broad base → layered compression → narrow but unfinished summit.</span></div><div class="band"><strong>Eye</strong><span>Perception · discernment · integration · evaluation. Eye is not synonymous with Pyramid power.</span></div><div class="band"><strong>1776 at the base</strong><span>A provenance lesson: put dates and sources visibly beneath later interpretation; coincidence is not causation.</span></div></div><div class="corridor"><a href="../religion/#branch-atlas">Browse these symbols in the atlas →</a><a href="../data/house/providence-pillars-esoteric-structure.json">Open structural contract</a></div></section>
+
+<section class="page-section" id="navigation-authority"><p class="eyebrow">Consolidation</p><h2>One authority for each decision</h2><p class="topology-note">The House now has an explicit navigation manifest: Rooms decide ownership; holdings decide file custody; topology decides the high-level spatial projection; Tree-plane routing decides vertical organisms; Seed-Spiral routing decides generative/degenerative recurrence; the branch atlas curates named religious and mythic subjects. Pages explain these registries instead of silently becoming new authorities.</p><div class="corridor"><a href="../data/house/navigation-manifest.json">Navigation manifest →</a><a href="../religion/#branch-atlas">Populated branch atlas</a><a href="../rooms/#orientation">Spatial navigator</a></div></section>
+
+<section class="page-section" id="seed-junction"><p class="eyebrow">Generative pivot</p><h2>Seed Junction at the lower Door tip</h2><p class="topology-note"><strong>C<sub>S</sub></strong>—Son-center and the lower tip of the shared Door—is the strongest place for the Seed-of-Death / Seed-of-Life transition. Burial there is a pivot, not a final destination: the seed may remain dormant, decay, root downward, or sprout upward. D5 is the navigational Door stage laid over the same topology rather than a competing geometric location.</p><div class="corridor"><a href="../axis/#seed-spirals">Trace the spiral routes →</a><a href="../axis/?concept=burial#trace">Burial</a><a href="../axis/?concept=living-root#trace">Living Root</a><a href="../axis/?concept=spiral#trace">Spiral</a></div></section>
+
+<section class="page-section" id="tree-plane-routing"><p class="eyebrow">Routing contract</p><h2>Tree-plane routing</h2><p class="topology-note">The spatial grammar is now explicit: <strong>planes are standing surfaces</strong>; <strong>Trees are vertical organisms/routes</strong>; <strong>Rooms own subjects</strong>; <strong>corridors connect Rooms</strong>; <strong>Door changes state</strong>; <strong>Axis keeps orientation stable</strong>. The exact center is Axis; Research Lab is the Forge ring around it; Works/Fruit remains the output edge.</p><div class="corridor"><a href="../axis/#routing">See what leads where →</a><a href="../rooms/#orientation">Stand on a plane</a><a href="../religion/#religious-tree">Religious foundations</a></div></section>
+
+<section class="page-section" id="orientation-population"><p class="eyebrow">Population strategy</p><h2>Let the archive fill the House before adding decoration</h2><p class="topology-note">The spatial system is populated from governed material already in the repository. All 38 nested Rooms inherit a compass direction, one or more planes and one or more Tree zones; their owned holdings then travel with them. A small landmark layer supplies wayfinding subjects such as Tree of Life, Tree of Strife, angels/messengers, demons/adversarial figures, underworld/descent, gods/divine figures, esoteric schools and a handful of named figure indexes.</p><div class="band-grid"><div class="band"><strong>Landmark</strong><span>May appear directly on the compass or spatial navigation.</span></div><div class="band"><strong>Room detail</strong><span>Appears only after a plane/direction or Room is selected.</span></div><div class="band"><strong>Archive only</strong><span>Searchable and relationally placed but deliberately omitted from default navigation.</span></div><div class="band"><strong>Population rule</strong><span>Ownership stays in Rooms; spatial placement only helps readers find and compare material.</span></div></div><div class="corridor"><a href="../rooms/#orientation">Browse the populated compass →</a><a href="../religion/#religious-tree">Religious Tree foundations</a><a href="#nested-rooms">All nested Rooms</a></div></section>
+
+<section class="page-section" id="tree-ecology"><p class="eyebrow">Living knowledge structure</p><h2>One Tree, two reproductive branches</h2><p class="topology-note">The House does not need a separate cosmology for every religious or symbolic subject. <strong>Tree of Knowledge</strong> is the fork: what becomes known can be metabolized toward <strong>Tree of Life</strong>—living root, Garden, fruit and return—or can remain unresolved and reproduce <strong>Tree of Strife</strong>—ash, capture, Wide Road and Swamp. The same archive can therefore show religious foundations, historical reception, angels, demons, gods, spirits and esoteric schools without flattening them into one ontology.</p><div class="band-grid"><div class="band"><strong>Roots</strong><span>Sources · memory · burial · ancestry · hidden context · underworld/descent traditions</span></div><div class="band"><strong>Trunk / Plane / Door</strong><span>Embodiment · ritual · institutions · history · public reception · mediation</span></div><div class="band"><strong>Life branches</strong><span>Garden · angels/messengers where historically grounded · sacred mountains · divine figures · fruit · seed</span></div><div class="band"><strong>Strife branches</strong><span>Demonologies · adversarial traditions · polemics · shells/Qliphoth comparisons · capture · Swamp</span></div><div class="band"><strong>Canopy</strong><span>Heaven · Crown · North · celestial-order comparisons · integration · return</span></div><div class="band"><strong>Reading rule</strong><span>Own tradition → reception history → comparative motif → Potatoverse interpretation</span></div></div><p class="boundary"><b>Akashic Tree:</b> useful as an archive metaphor—roots are provenance, trunk is present synthesis, branches are Rooms, leaves are questions/interfaces, fruit is Works, seeds are transferable patterns. It is not presented as evidence for a literal supernatural Akashic Record.</p></section>
+
+<section class="page-section" id="three-planes"><p class="eyebrow">Navigation projection</p><h2>Plane × direction × depth</h2><p class="topology-note"><strong>Plane</strong> answers where you are standing: Heaven, World or Below. <strong>Direction</strong> answers which kind of question you face: Canon, Traditions, Science, Life, World Systems, Culture, History or Sources. <strong>Depth</strong> answers how specialized you have gone: Research Lab holds unresolved material at the center; Doors lead into Dwellings and nested Rooms; Works/Fruit gathers output at the outer edge.</p><p class="topology-note">The same eight directions stay fixed on all three planes. That is the key simplification: changing height does not scramble the House.</p><div class="corridor"><a href="../rooms/#orientation">Use the cardinal navigator →</a><a href="../rooms/?plane=heaven&dir=ne#orientation">Heaven / Traditions</a><a href="../rooms/?plane=world&dir=s#orientation">World / Systems</a><a href="../rooms/?plane=below&dir=sw#orientation">Below / Culture</a></div><h2 style="margin-top:28px">Three planes to stand on</h2><p class="topology-note">The House geometry still has two overlapping fields. Separately, navigation can project the same Tree onto three circular standing platforms: <strong>Heaven Plane</strong> for integration, Garden, North and return; the existing <strong>World Plane</strong> for visible embodied and public reality; and <strong>Below Plane</strong> for roots, provenance, residue, shadow, subculture and Strife. A Room may appear on more than one plane because these are views through the House, not new owners.</p><div class="corridor"><a href="../rooms/#planes">Stand on the three circles →</a><a href="../axis/?path=life#paths">Trace the Life path</a><a href="../axis/?path=strife#paths">Trace the Strife path</a></div></section>
+
+<section class="page-section" data-depth="structure"><p class="eyebrow">Eight questions</p><h2>The project can be located from more than one direction</h2><div class="grammar">
+<article><b>Within · Room / House</b><small>Where does this belong, and who owns the meaning?</small></article>
+<article><b>Here · Plane</b><small>Which frame, scale, time, jurisdiction or evidence context is active?</small></article>
+<article><b>Up · North / Mountain</b><small>What broader integration or orientation does this point toward?</small></article>
+<article><b>Down · Roots / Soil / Archive</b><small>What supports, precedes, causes, evidences or feeds it?</small></article>
+<article><b>Out · Tree / Fruit / Seed</b><small>What grows, differentiates, results or becomes transferable?</small></article>
+<article><b>Across · Road / Relation</b><small>What is connected laterally, and what kind of relation is it?</small></article>
+<article><b>Through · Door / Ladder</b><small>How does this relation change state or context?</small></article>
+<article><b>State · Garden / Forge / Swamp</b><small>What condition is the system in right now?</small></article>
+</div></section>
+
+<section class="page-section"><p class="eyebrow">The ten Dwellings</p><h2>Large abiding domains inside the House</h2><p class="topology-note">Publicly, the ten canonical top-level bounded contexts are best read as <strong>Dwellings</strong>—historically bridged by the older English “mansions” of John 14:2. Each Dwelling contains several nested Rooms. This is a project architecture analogy, not a claim that the biblical verse enumerates these domains.</p><div class="room-list">
+<a href="../religion/"><strong>Potatoverse / Canon</strong><span>Project canon, mythology, roles and mature symbolic synthesis.</span></a>
+<a href="../context/source-authority/"><strong>Archive & Sources</strong><span>Evidence classes, provenance, captures and source lineage.</span></a>
+<a href="../history/"><strong>Time & History</strong><span>Occurrences, chronology, attestation and later interpretation.</span></a>
+<a href="../traditions/bible/"><strong>Traditions & Texts</strong><span>Texts, traditions, comparison and historical religious context.</span></a>
+<a href="../science/"><strong>Science & Formal Models</strong><span>Models, tests, mathematics and scientific boundaries.</span></a>
+<a href="../life-body/"><strong>Life & Body</strong><span>Biology, anatomy, physiology and symbolic-body boundaries.</span></a>
+<a href="../world-systems/"><strong>World Systems</strong><span>Countries, institutions, infrastructure, economy and real-world relations.</span></a>
+<a href="../context/culture/"><strong>Culture & Information</strong><span>Media, subculture, public discourse and information ecology.</span></a>
+<a href="../works/"><strong>Works</strong><span>Writing, music, visual work, performance and creative artifacts.</span></a>
+<a href="../research-lab/"><strong>Research Lab</strong><span>Open questions, hypotheses, unresolved synthesis and promotion gates.</span></a>
+</div></section>
+
+<section class="page-section" id="federation-scale" data-depth="research"><p class="eyebrow">Beyond one House</p><h2>Federation without flattening</h2><p class="topology-note">The House is not the largest possible form. Larger structures can emerge around it without becoming one rigid ladder. Household describes participants; City federation; Commons shared capability; Network connectivity; Assembly deliberation; Realm orientation; Civilization long-duration emergence.</p><div class="federation-grid" id="houseFederationGrid"><p class="boundary">Loading federation-scale forms…</p></div><p class="boundary">Project-symbolic Kingdom/Realm language is not civil sovereignty, legal jurisdiction or state authority. Real political and legal questions remain owned by World Systems.</p></section>
+
+<section class="page-section" id="population-pulse" data-depth="research"><p class="eyebrow">Population pulse</p><h2>Where the House still needs connective tissue</h2><p class="topology-note">This is a maintenance diagnostic, not a ranking of importance or truth. It counts whether nested Rooms have durable roots, guarded interfaces and public exposure.</p><div class="pulse-grid" id="housePopulationPulse"><p class="boundary">Loading population pulse…</p></div><p class="pulse-note">A low count can be perfectly healthy. The pulse only highlights missing connective tissue before we create more architecture.</p></section>
+
+<section class="page-section" id="census" data-depth="research"><p class="eyebrow">Structural census</p><h2>Not everything important is a Room</h2><p class="topology-note">The House now classifies mature project structures by role as well as ownership. A Programme can be a Vineyard, a public surface can be a View or Court, and an Archive can preserve provenance without owning every interpretation. Chambers remain intentionally unregistered.</p><div class="census-tabs" id="houseCensusTabs" aria-label="Filter House census by structural role"></div><p class="topology-readout" id="houseCensusReadout">Loading project structures…</p><div class="census-grid" id="houseCensusGrid"></div></section>
+
+<section class="page-section" id="projections" data-depth="structure"><p class="eyebrow">One structure, several biblical views</p><h2>House is the owner; the other images are projections</h2><p class="topology-note">The same differentiated system can be viewed through different biblical grammars without becoming five different ontologies. Choose a lens below.</p><div class="projection-tabs" id="houseProjectionTabs"></div><div class="projection-panel" id="houseProjectionPanel"><p class="boundary">Loading projection grammar…</p></div></section>
+
+<section class="page-section" id="archetypes" data-depth="structure"><p class="eyebrow">Architectural archetypes</p><h2>Different biblical images solve different structural problems</h2><div class="house-grid">
+<div class="house-card"><strong>House → Dwelling → Room → Chamber</strong><span>Scale and containment: whole composition, major abiding domain, bounded functional context, specialist inner cell.</span></div>
+<div class="house-card"><strong>Court → Gate → Door → Sanctuary</strong><span>Access and circulation: approach space, perimeter admission, local state-change threshold, protected presence space.</span></div>
+<div class="house-card"><strong>Foundation → Cornerstone → Pillar → Roof</strong><span>Support and alignment: invariants, orientation constraints, repeated load-bearing principles and upper integration.</span></div>
+<div class="house-card"><strong>Field → Vineyard → Garden → Tree</strong><span>Work and stewardship: open problem-space, bounded productive mission, healthy cultivation regime and generative differentiation.</span></div>
+<div class="house-card"><strong>Body / Temple / City</strong><span>Alternative one-and-many grammars: functional coordination, presence/access architecture and civic federation. They are related Views, not synonyms for House.</span></div>
+<div class="house-card"><strong>Archive / Treasury / River / Well / Table</strong><span>Memory, stored capability, flow, retrieval and shared participation. Their functions differ even when they interact.</span></div>
+<div class="house-card"><strong>Tent / Tabernacle</strong><span>Portable or provisional architecture: prototype, migration layer or research structure before it earns permanent constitutional status.</span></div>
+<div class="house-card"><strong>Throne / Seat</strong><span>Orientation and responsibility point, not a container. Its legitimacy is tested by what it returns as service.</span></div>
+</div><p class="boundary">These terms are governed by <code>data/house/architectural-vocabulary.json</code>. Biblical images retain their own textual meanings; the House uses them comparatively and functionally.</p></section>
+
+<section class="page-section" data-depth="structure"><p class="eyebrow">Not Rooms</p><h2>Views, Guides and Programmes</h2><div class="house-grid">
+<div class="house-card"><strong>Paths</strong><span>Task-oriented traversals through several Rooms: practice, journey, evidence, research, repair and programmes.</span></div><div class="house-card"><strong>Living Axis</strong><span>Transformation/THROUGH grammar. It tells you how relations can change state.</span></div>
+<div class="house-card"><strong>World Map</strong><span>A geographic View over world-system knowledge; it never owns the geography.</span></div>
+<div class="house-card"><strong>Timeline</strong><span>A chronological View over events and changing interpretations.</span></div>
+<div class="house-card"><strong>North</strong><span>An orientation and cross-Room programme/guide, not a separate factual universe.</span></div>
+<div class="house-card"><strong>Bible comparison</strong><span>A specialist Traditions View joining project motifs to sourced textual material.</span></div>
+<div class="house-card"><strong>Explore / Search</strong><span>Temporary corridors through permanent Rooms and records.</span></div>
+</div><nav class="corridor"><a href="../paths/">Paths</a><a href="../axis/">Living Axis</a><a href="../world-map/">World Map</a><a href="../timeline/">Timeline</a><a href="../north/">North</a><a href="../traditions/bible/">Bible</a><a href="../explore/">Explore</a></nav></section>
+
+<section class="page-section" id="topology" data-depth="structure"><p class="eyebrow">Room topology</p><h2>Not a hallway — a typed, multi-axis House</h2><p class="topology-note">The hypercube intuition is useful because several independent directions can be active at once, but the House does not force every Room into one literal 4D box. Containment, evidence, time, transformation, world application and expression are separate relations. A Room can therefore be adjacent in one sense and distant in another.</p><div class="band-grid">
+<div class="band"><strong>Meaning heart</strong><span>Potatoverse / Canon — project meaning, identity and symbolic architecture.</span></div>
+<div class="band"><strong>Orthogonal axes</strong><span>Archive &amp; Sources · Time &amp; History · Research Lab run through many other Rooms as provenance, chronology and frontier/promotion.</span></div>
+<div class="band"><strong>Translation belt</strong><span>Traditions &amp; Texts · Science &amp; Formal Models · Life &amp; Body translate, compare, formalize and embody.</span></div>
+<div class="band"><strong>World-facing belt</strong><span>World Systems · Culture &amp; Information carry structures into institutions, places, media and social systems.</span></div>
+<div class="band"><strong>Fruit / expression</strong><span>Works is where ideas become authored artifacts without those artifacts automatically becoming doctrine or evidence.</span></div>
+</div><p class="topology-note" style="margin-top:14px">Living Axis crosses the whole House as the <strong>THROUGH</strong> coordinate. It changes state; it does not own the Rooms it traverses.</p></section>
+
+<section class="page-section" id="operators" data-depth="structure"><p class="eyebrow">Core operators</p><h2>What the House actually does</h2><p class="topology-note">The topology stays deliberately small. Operators can cross several Dwellings and Rooms without becoming new owners themselves. Select one to inspect the typed relations that connect it to the rest of the House.</p><div class="operator-grid" id="houseOperators"><p class="boundary">Loading core topology operators…</p></div><div class="operator-relations" id="houseOperatorRelations" aria-live="polite"><h3>Relation-first topology</h3><p>Select an operator above. The House will show canonical incoming and outgoing relations rather than a generic list of “related” symbols.</p></div></section>
+
+<section class="page-section" id="holdings" data-depth="structure"><p class="eyebrow">Room holdings</p><h2>What actually lives in the Rooms</h2><p class="topology-note">Every substantive file now has at most one primary Room owner. Cross-Room meaning travels through interfaces and collections rather than duplicate ownership.</p><div class="holdings-grid" id="houseHoldingsGrid"><p class="boundary">Loading Room holdings…</p></div><p class="topology-note">Cross-Room collections:</p><div class="collection-strip" id="houseCollectionStrip"></div></section>
+
+<section class="page-section" id="nested-rooms" data-depth="structure"><p class="eyebrow">Nested Rooms</p><h2>Internal chambers beneath the ten load-bearing Rooms</h2><div class="topology-lenses" id="houseTopologyLenses" aria-label="Filter nested Rooms by House direction"><button class="topology-lens" type="button" data-coordinate="all" aria-pressed="true">All</button><button class="topology-lens" type="button" data-coordinate="within" aria-pressed="false">Within</button><button class="topology-lens" type="button" data-coordinate="here" aria-pressed="false">Here</button><button class="topology-lens" type="button" data-coordinate="up" aria-pressed="false">Up</button><button class="topology-lens" type="button" data-coordinate="down" aria-pressed="false">Down</button><button class="topology-lens" type="button" data-coordinate="out" aria-pressed="false">Out</button><button class="topology-lens" type="button" data-coordinate="across" aria-pressed="false">Across</button><button class="topology-lens" type="button" data-coordinate="through" aria-pressed="false">Through</button><button class="topology-lens" type="button" data-coordinate="state" aria-pressed="false">State</button></div><p class="topology-readout" id="houseTopologyReadout">Showing all nested Rooms. These are relational lenses, not physical coordinates.</p><div class="subroom-groups" id="houseSubrooms"><p class="boundary">Loading nested Room topology…</p></div></section>
+
+<section class="page-section" id="room-doors" data-depth="research"><p class="eyebrow">Room Doors</p><h2>Guarded interfaces between internal Rooms</h2><p class="topology-note">Adjacency alone is not enough. These Doors say what changes during a crossing, what must remain invariant, and which boundary prevents one Room from swallowing the meaning of another.</p><div class="interface-list" id="houseInterfaces"><p class="boundary">Loading Room interfaces…</p></div></section>
+
+<section class="page-section" id="corridors" data-depth="research"><p class="eyebrow">Strong corridors</p><h2>Where the House actually connects</h2><div class="corridor-list" id="houseCorridors"><p class="boundary">Loading typed corridors…</p></div></section>
+
+<section class="page-section"><p class="eyebrow">The lifecycle</p><h2>What the Axis had been missing</h2><p>The project’s practice path starts earlier than Plane and continues beyond Fruit. Mud, Burial, Eye, Root and Sprout explain latent development before visible world-facing action; Fruit, Seed and Return explain how growth becomes transferable and cyclical rather than merely “ascending.”</p><p class="house-law">Mud → Burial → Eye → Root → Sprout → Plane → Door → Ladder / Mountain → Tree → Fruit → Seed → Return</p><p class="boundary">This lifecycle is a practical/developmental projection, not a literal cosmic staircase. It can intersect the same D-level more than once.</p></section>
+
+<section class="page-section"><p class="eyebrow">Boundary</p><p class="boundary">The House vocabulary is a project architecture for organizing knowledge and symbolic interpretation. It does not make symbolic placement into evidence rank, political authority, scientific truth or moral worth. The public site remains a projection of the underlying House rather than the owner of it.</p></section>
+</main><script>
+(()=>{
+  const body=document.body,root=document.getElementById('houseDepthSwitcher'),explain=document.getElementById('houseDepthExplain');
+  if(!root)return;
+  const copy={
+    overview:'Overview shows the minimum structure needed to understand the House.',
+    structure:'Structure reveals the topology, projections, operators and nested Rooms.',
+    research:'Research reveals the full maintenance layer: federation, census, interfaces and population diagnostics.'
+  };
+  function setHouseDepth(depth){
+    body.classList.remove('house-depth-overview','house-depth-structure','house-depth-research');
+    body.classList.add('house-depth-'+depth);
+    root.querySelectorAll('[data-house-depth]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.houseDepth===depth)));
+    if(explain)explain.textContent=copy[depth]||copy.overview;
+    try{localStorage.setItem('potato-house-depth',depth)}catch(e){}
+  }
+  root.addEventListener('click',e=>{const b=e.target.closest('[data-house-depth]');if(b)setHouseDepth(b.dataset.houseDepth)});
+  let initial='overview';
+  try{const saved=localStorage.getItem('potato-house-depth');if(['overview','structure','research'].includes(saved))initial=saved}catch(e){}
+  setHouseDepth(initial);
+})();
+</script>
+<script>
+(async()=>{
+  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  try{
+    const [subRes,topoRes,intRes,projRes,conceptRes,holdRes,collRes,dataHoldRes,dossierRes,societyRes,entityRes,foundationRes,foundation2Res]=await Promise.all([fetch('../data/house/subrooms.json'),fetch('../data/house/topology.json'),fetch('../data/house/interfaces.json'),fetch('../data/house/projections.json'),fetch('../data/house/concept-topology.json'),fetch('../data/house/holdings.json'),fetch('../data/house/collections.json'),fetch('../data/house/data-holdings.json'),fetch('../data/house/room-dossiers.json'),fetch('../data/house/society-population.json'),fetch('../data/house/entity-dossiers-wave-001.json'),fetch('../data/house/foundations-wave-001.json'),fetch('../data/house/foundations-wave-002.json')]);
+    if(!subRes.ok||!topoRes.ok||!intRes.ok||!projRes.ok||!conceptRes.ok||!holdRes.ok||!collRes.ok||!dataHoldRes.ok||!dossierRes.ok||!societyRes.ok||!entityRes.ok||!foundationRes.ok||!foundation2Res.ok)throw new Error('House topology unavailable');
+    const sub=await subRes.json(),topo=await topoRes.json(),interfaces=await intRes.json(),projections=await projRes.json(),concepts=await conceptRes.json(),holdings=await holdRes.json(),collections=await collRes.json(),dataHoldings=await dataHoldRes.json(),dossiers=await dossierRes.json(),society=await societyRes.json(),entityDossiers=await entityRes.json(),foundation1=await foundationRes.json(),foundation2=await foundation2Res.json();
+    const groups=document.getElementById('houseSubrooms'),corridors=document.getElementById('houseCorridors'),interfaceRoot=document.getElementById('houseInterfaces'),projectionTabs=document.getElementById('houseProjectionTabs'),projectionPanel=document.getElementById('houseProjectionPanel'),operatorRoot=document.getElementById('houseOperators'),operatorRelations=document.getElementById('houseOperatorRelations'),holdingsRoot=document.getElementById('houseHoldingsGrid'),collectionStrip=document.getElementById('houseCollectionStrip');
+
+
+
+    const foundationRoot=document.getElementById('foundationExamples');
+    if(foundationRoot){
+      const combined=[...(foundation1.records||[]),...(foundation2.records||[])];
+      const picks=['potatoism-foundation','eu-treaty-foundation','christianity-foundation','university-copenhagen-foundation','tcp-ip-internet-foundation','unicode-foundation','rochdale-cooperative-foundation','rule-of-saint-benedict','newtonian-mechanics-foundation'];
+      foundationRoot.innerHTML=picks.map(id=>combined.find(x=>x.id===id)).filter(Boolean).map(x=>{
+        const first=(x.clocks||[])[0],repro=x.reproduction_mechanism||((x.foundation_rules||x.load_bearing_rules||[]).slice(0,3).join(' · '));
+        return '<article class="foundation-card"><strong>'+esc(x.name)+'</strong><em>'+esc(x.domain)+'</em><p>'+esc(x.why_foundational)+'</p><p><b>First clock:</b> '+esc(first?.date_or_range||'')+' · '+esc(first?.label||'')+'</p><p><b>Reproduces through:</b> '+esc(repro||'')+'</p></article>';
+      }).join('');
+    }
+
+    const entityTabs=document.getElementById('entityCaseTabs'),entityPanel=document.getElementById('entityCasePanel');
+    if(entityTabs&&entityPanel){
+      const rows=entityDossiers.dossiers||[];
+      entityTabs.innerHTML=rows.map((x,i)=>'<button class="case-tab" type="button" data-case-id="'+esc(x.id)+'" aria-pressed="'+String(i===0)+'">'+esc(x.identity?.name||x.id)+'</button>').join('');
+      function renderEntityCase(id){
+        const x=rows.find(r=>r.id===id)||rows[0];if(!x)return;
+        entityTabs.querySelectorAll('[data-case-id]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.caseId===x.id)));
+        const op=(x.operators||[]).map(o=>'<div class="case-operator"><b>'+esc(o.operator)+'</b><span>'+esc(o.why)+'</span><span><strong>Test:</strong> '+esc(o.test)+'</span></div>').join('');
+        const qs=(x.discovery_questions||[]).map(q=>'<div class="case-question"><b>Research question</b><span>'+esc(q)+'</span></div>').join('');
+        const tensions=(x.tensions||[]).map(t=>'<span>'+esc(t.text)+'</span>').join('');
+        const longitudinal=(x.longitudinal_indicators||[]).map(m=>'<article><b>'+esc(m.id.replaceAll('-',' '))+'</b><div class="case-observations">'+(m.observations||[]).map(o=>'<span>'+esc(o.period)+' · '+esc(o.value)+' '+esc(m.unit)+'</span>').join('')+'</div><small><em>'+esc(m.descriptive_change||'')+'</em> · '+esc(m.reading||'')+'</small><small><b>Limit:</b> '+esc(m.limit||'')+'</small></article>').join('');
+        entityPanel.innerHTML='<h3>'+esc(x.identity?.name||x.id)+'</h3><div class="case-kicker">'+esc(x.identity?.kind||'entity')+' · '+esc(x.identity?.jurisdiction_or_scope||'')+'</div><div class="case-triad"><article><b>Spirit</b><span>'+esc(x.spirit?.documented_mission||'')+'</span></article><article><b>Mind</b><span>'+esc(x.mind?.decision_system||'')+'</span></article><article><b>Body</b><span>'+esc(x.body?.operational_capacity||'')+'</span></article></div><div class="case-instrument-grid"><article class="case-instrument"><b>Scale</b><span>'+esc(x.scale_profile?.operating_scale||'')+'</span><span><strong>Dependencies:</strong> '+esc((x.scale_profile?.key_dependencies||[]).join(' · '))+'</span></article><article class="case-instrument"><b>Reproduction & correction</b><span>'+esc((x.reproduction_and_correction?.reproduction_mechanisms||[]).slice(0,4).join(' · '))+'</span><span><strong>Observed change:</strong> '+esc(x.reproduction_and_correction?.observed_change||'')+'</span></article><article class="case-instrument"><b>Visibility & access</b><span>'+esc(x.visibility_and_access?.public_observability||'')+'</span><span><strong>Guard:</strong> '+esc(x.visibility_and_access?.status_guard||'')+'</span></article><article class="case-instrument"><b>Scope boundary</b><span>'+esc(x.scale_profile?.scope_boundary||'')+'</span><span><strong>Missingness:</strong> '+esc(x.visibility_and_access?.structural_missingness||'')+'</span></article></div><div class="case-longitudinal"><p class="eyebrow">Observed change over time</p>'+longitudinal+'</div><div class="case-grid"><div><p class="eyebrow">Operators that survive contact with evidence</p><div class="case-operators">'+op+'</div></div><div><p class="eyebrow">Shadow & discovery</p><p class="boundary"><b>Known unknowns:</b> '+esc((x.shadow?.known_unknowns||[]).join(' · '))+'</p><div class="case-questions">'+qs+'</div></div></div><div class="case-meta">'+tensions+'</div>';
+      }
+      entityTabs.addEventListener('click',e=>{const b=e.target.closest('[data-case-id]');if(b)renderEntityCase(b.dataset.caseId)});
+      renderEntityCase(rows[0]?.id);
+    }
+
+    const triuneRoot=document.getElementById('societyTriune'),societyTabs=document.getElementById('societyTabs'),societyFamilies=document.getElementById('societyFamilies'),societyAnchors=document.getElementById('societyAnchors');
+    if(triuneRoot){
+      triuneRoot.innerHTML=(society.triune_lenses||[]).map(x=>'<article class="triune-card"><strong>'+esc(x.label)+'</strong><small>'+esc(x.question)+'</small><p>'+esc((x.contains||[]).join(' · '))+'</p><p><b>Guard:</b> '+esc(x.caution)+'</p></article>').join('');
+    }
+    if(societyTabs&&societyFamilies){
+      const families=society.population_families||[];
+      const ids=['all',...families.map(x=>x.id)];
+      societyTabs.innerHTML=ids.map((id,i)=>'<button class="society-tab" type="button" data-society-family="'+esc(id)+'" aria-pressed="'+String(i===0)+'">'+esc(id==='all'?'All society':families.find(x=>x.id===id)?.label||id)+'</button>').join('');
+      function renderSocietyFamilies(id='all'){
+        const rows=families.filter(x=>id==='all'||x.id===id);
+        societyFamilies.innerHTML=rows.map(x=>'<article class="society-family"><strong>'+esc(x.label)+'</strong><em>'+esc((x.primary_rooms||[]).join(' · '))+'</em><p>'+esc((x.examples||[]).join(' · '))+'</p><small><b>Relations:</b> '+esc((x.relations||[]).join(' · '))+'</small></article>').join('');
+        societyTabs.querySelectorAll('[data-society-family]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.societyFamily===id)));
+      }
+      societyTabs.addEventListener('click',e=>{const b=e.target.closest('[data-society-family]');if(b)renderSocietyFamilies(b.dataset.societyFamily)});
+      renderSocietyFamilies();
+    }
+    if(societyAnchors){
+      societyAnchors.innerHTML=(society.anchors||[]).map(x=>'<article class="society-anchor"><strong>'+esc(x.name)+'</strong><em>'+esc(x.kind)+'</em><p>'+esc(x.summary)+'</p><div class="anchor-lenses"><span><b>Spirit</b>'+esc(x.spirit)+'</span><span><b>Mind</b>'+esc(x.mind)+'</span><span><b>Body</b>'+esc(x.body)+'</span></div><p><b>Relations:</b> '+esc((x.relations||[]).join(' · '))+'</p><a href="'+esc(x.source?.url||'#')+'" rel="noopener noreferrer">Source · '+esc(x.source?.label||'official')+'</a></article>').join('');
+    }
+
+    const parentOrder=['potatoverse-canon','archive-sources','time-history','traditions-texts','science-formal-models','life-body','world-systems','culture-information','works','research-lab'];
+    const parentLabels={
+      'potatoverse-canon':'Potatoverse / Canon','archive-sources':'Archive & Sources','time-history':'Time & History',
+      'traditions-texts':'Traditions & Texts','science-formal-models':'Science & Formal Models','life-body':'Life & Body',
+      'world-systems':'World Systems','culture-information':'Culture & Information','works':'Works','research-lab':'Research Lab'
+    };
+    const surfaceHref=id=>({
+      tim:'../tim-dooley/',religion:'../religion/',philosophy:'../philosophy/',science:'../science/',world:'../world/',
+      axis:'../axis/',house:'../house/',paths:'../paths/',sources:'../context/source-authority/',timeline:'../timeline/',
+      history:'../history/',story:'../tim-dooley/story/',bible:'../traditions/bible/',explore:'../explore/',context:'../context/',
+      'life-body':'../life-body/','research-lab':'../research-lab/',politics:'../politics/',law:'../law/',economy:'../economy/',
+      'world-systems':'../world-systems/','world-map':'../world-map/',north:'../north/',culture:'../context/culture/',works:'../works/',questions:'../questions/'
+    }[id]||null);
+    const allRows=sub.subrooms||[];
+    function renderRooms(coord='all'){
+      groups.innerHTML=parentOrder.map(pid=>{
+        const rows=allRows.filter(x=>x.parent_room_id===pid&&(coord==='all'||(x.topology_profile?.primary_coordinates||[]).includes(coord)));
+        if(!rows.length)return '';
+        const chips=rows.map(x=>{
+          const sid=(x.public_surface_ids||[]).find(surfaceHref),href=sid&&surfaceHref(sid);
+          const profile=x.topology_profile||{};
+          const tip=x.purpose+' · '+(profile.primary_coordinates||[]).join(' / ')+' · '+(profile.interface_kinds||[]).join(', ');
+          return href?'<a href="'+esc(href)+'" title="'+esc(tip)+'">'+esc(x.title)+'</a>':'<span title="'+esc(tip)+'">'+esc(x.title)+'</span>';
+        }).join('');
+        return '<div class="subroom-group"><h3>'+esc(parentLabels[pid]||pid)+'</h3><div class="subroom-list">'+chips+'</div></div>';
+      }).join('');
+      const count=allRows.filter(x=>coord==='all'||(x.topology_profile?.primary_coordinates||[]).includes(coord)).length;
+      const readout=document.getElementById('houseTopologyReadout');
+      if(readout)readout.textContent=coord==='all'?'Showing all '+count+' nested Rooms. These are relational lenses, not physical coordinates.':'Showing '+count+' nested Rooms whose topology profile uses '+coord.toUpperCase()+'. Ownership and identity do not move when the lens changes.';
+      document.querySelectorAll('#houseTopologyLenses [data-coordinate]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.coordinate===coord)));
+    }
+    renderRooms();
+    document.getElementById('houseTopologyLenses')?.addEventListener('click',e=>{const b=e.target.closest('[data-coordinate]');if(b)renderRooms(b.dataset.coordinate)});
+    if(holdingsRoot){
+      const rows=holdings.holdings||[];
+      const dossierMap=new Map((dossiers.dossiers||[]).map(x=>[x.room_id,x]));
+      const bundlesByRoom=new Map();(dataHoldings.bundles||[]).forEach(b=>{if(!bundlesByRoom.has(b.primary_room_id))bundlesByRoom.set(b.primary_room_id,[]);bundlesByRoom.get(b.primary_room_id).push(b)});
+      holdingsRoot.innerHTML=rows.map(x=>{const bundles=bundlesByRoom.get(x.room_id)||[];const dataFiles=bundles.reduce((n,b)=>n+(b.file_count||0),0);const d=dossierMap.get(x.room_id),p=d?.center_pairing||{};const bundleLine=bundles.length?'<small><b>Datasets:</b> '+esc(bundles.map(b=>b.title).join(' · '))+'</small>':'';const passageLine=d?.passages?.length?'<small><b>Passages:</b> '+esc(d.passages.slice(0,3).map(p=>p.type+' → '+p.other_room_id).join(' · '))+'</small>':'';const collectionLine=d?.collections?.length?'<small><b>Collections:</b> '+esc(d.collections.map(c=>c.title).join(' · '))+'</small>':'';const centerLine=p.contribution?'<small><b>Center contribution:</b> '+esc(p.contribution)+'</small>':'';const testLine=p.shared_tests?.length?'<small><b>Tests:</b> '+esc(p.shared_tests.join(' · '))+'</small>':'';const handoffLine=p.hands_to?.length?'<small><b>Hands mature work to:</b> '+esc(p.hands_to.join(' · '))+'</small>':'';return '<article class="holding-card"><strong>'+esc(x.title)+'</strong><em>'+esc(x.primary_file_count)+' knowledge · '+esc(dataFiles)+' data files</em><small>'+esc(d?.entrance||x.purpose)+'</small>'+centerLine+'<ul>'+((x.featured_holdings||[]).slice(0,4).map(h=>'<li>'+esc(h.id||h.path)+'</li>').join('')||'<li>No featured holding selected yet.</li>')+'</ul>'+testLine+handoffLine+bundleLine+passageLine+collectionLine+'</article>'}).join('');
+      if(collectionStrip)collectionStrip.innerHTML=(collections.collections||[]).map(x=>'<span title="'+esc(x.boundary)+'">'+esc(x.title)+' · '+esc(x.source_file_count)+' files</span>').join('');
+    }
+    if(federationRoot){
+      federationRoot.innerHTML=(federation.forms||[]).map(x=>'<div class="federation-card"><strong>'+esc(x.label)+'</strong><em>'+esc(x.structural_kind)+'</em><span>'+esc(x.question)+'</span><small>'+esc(x.relation_to_house)+'</small></div>').join('');
+    }
+    if(pulseRoot){
+      const s=pulse.summary||{};
+      const cells=[['Nested Rooms',s.nested_rooms],['No guarded interface',s.no_guarded_interface],['Sparse roots',s.sparse_roots],['No public surface',s.no_public_surface],['Adjacent but unguarded',s.adjacent_but_unguarded]];
+      pulseRoot.innerHTML=cells.map(x=>'<div class="pulse-cell"><b>'+esc(x[1]??0)+'</b><span>'+esc(x[0])+'</span></div>').join('');
+    }
+    if(censusTabs&&censusGrid){
+      const roleRows=census.role_types||[], instances=census.instances||[];
+      const preferred=['field','vineyard','road','path','view','court','table','bridge','gate','door','archive','treasury','foundation','pillar','protocol','state','projection','tabernacle','vessel'];
+      const roles=['all',...preferred.filter(id=>roleRows.some(r=>r.id===id))];
+      censusTabs.innerHTML=roles.map((id,i)=>'<button class="census-tab" type="button" data-census-role="'+esc(id)+'" aria-pressed="'+String(i===0)+'">'+esc(id==='all'?'All roles':id)+'</button>').join('');
+      function renderCensus(role='all'){
+        const rows=instances.filter(x=>role==='all'||(x.roles||[]).includes(role));
+        censusGrid.innerHTML=rows.map(x=>'<div class="census-card"><strong>'+esc(x.title)+'</strong><em>'+esc((x.roles||[]).join(' · '))+'</em><small>'+esc(x.note||'')+'</small></div>').join('');
+        if(censusReadout)censusReadout.textContent=(role==='all'?'Showing all ':('Showing '+role.toUpperCase()+' · '))+rows.length+' registered structures. Structural role does not change knowledge ownership.';
+        censusTabs.querySelectorAll('[data-census-role]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.censusRole===role)));
+      }
+      censusTabs.addEventListener('click',e=>{const b=e.target.closest('[data-census-role]');if(b)renderCensus(b.dataset.censusRole)});
+      renderCensus();
+    }
+    if(projectionTabs&&projectionPanel){
+      const rows=projections.projections||[];
+      projectionTabs.innerHTML=rows.map((x,i)=>'<button class="projection-tab" type="button" data-projection="'+esc(x.id)+'" aria-pressed="'+String(i===0)+'">'+esc(x.label)+'</button>').join('');
+      function renderProjection(id){
+        const p=rows.find(x=>x.id===id)||rows[0];if(!p)return;
+        projectionTabs.querySelectorAll('[data-projection]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.projection===p.id)));
+        projectionPanel.innerHTML='<h3>'+esc(p.label)+'</h3><p>'+esc(p.question)+'</p><div class="projection-meta"><div><b>One</b><span>'+esc(p.one)+'</span></div><div><b>Many</b><span>'+esc(p.many)+'</span></div><div><b>Emphasis</b><span>'+esc((p.emphasis||[]).join(' · '))+'</span></div><div><b>Project use</b><span>'+esc(p.project_mapping)+'</span></div></div><p><b>Guard</b> '+esc(p.guard)+'</p>';
+      }
+      projectionTabs.addEventListener('click',e=>{const b=e.target.closest('[data-projection]');if(b)renderProjection(b.dataset.projection)});
+      renderProjection(rows[0]?.id);
+    }
+    if(operatorRoot){
+      const preferred=['potato-of-life','father','son','spirit','door','plane','axis','cross','eye','face','potato','seed','root','tree','mountain','ladder','spiral','fruit','garden','shell-cube','swamp'];
+      const byConcept=Object.fromEntries((concepts.concepts||[]).map(x=>[x.id,x]));
+      const typeLabels=Object.fromEntries((concepts.relation_types||[]).map(x=>[x.id,x.label]));
+      operatorRoot.innerHTML=preferred.filter(id=>byConcept[id]).map(id=>{const x=byConcept[id];return '<button class="operator-card" type="button" data-operator="'+esc(id)+'" aria-controls="houseOperatorRelations" aria-pressed="false"><b>'+esc(x.label)+'</b><small>'+esc(x.operation)+'</small></button>';}).join('');
+      function renderOperator(id,updateUrl=true){
+        const x=byConcept[id];if(!x||!operatorRelations)return;
+        operatorRoot.querySelectorAll('[data-operator]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.operator===id)));
+        const rows=(concepts.relations||[]).filter(r=>r.from===id||r.to===id);
+        const rendered=rows.map(r=>{
+          const outgoing=r.from===id,target=outgoing?r.to:r.from,other=byConcept[target]?.label||target;
+          const direction=outgoing?'→ '+other:'← '+other;
+          return '<div class="relation-row"><b>'+esc(direction)+'</b><em>'+esc(typeLabels[r.type]||r.type)+'</em><span>'+esc(r.description)+'</span></div>';
+        }).join('');
+        operatorRelations.innerHTML='<h3>'+esc(x.label)+'</h3><p>'+esc(x.operation)+' · <b>Boundary:</b> '+esc(x.boundary)+'</p><div class="relation-list">'+(rendered||'<span class="boundary">No typed operator relations are registered yet.</span>')+'</div>';
+        if(updateUrl){const u=new URL(location.href);u.searchParams.set('operator',id);history.replaceState(null,'',u);}
+      }
+      operatorRoot.addEventListener('click',e=>{const b=e.target.closest('[data-operator]');if(b)renderOperator(b.dataset.operator)});
+      const requestedOperator=new URL(location.href).searchParams.get('operator');
+      renderOperator(byConcept[requestedOperator]?requestedOperator:'door',false);
+    }
+    if(interfaceRoot)interfaceRoot.innerHTML=(interfaces.interfaces||[]).map(x=>'<div class="interface-card"><strong>'+esc(x.from)+' → '+esc(x.to)+'</strong><em>'+esc(x.type)+'</em><small>'+esc(x.changes)+'</small><small><b>Guard:</b> '+esc(x.guard)+'</small></div>').join('');
+    corridors.innerHTML=(topo.strong_corridors||[]).map(x=>'<div class="corridor-row"><b>'+esc(parentLabels[x.from]||x.from)+'</b><em>'+esc(x.type)+'</em><b>'+esc(parentLabels[x.to]||x.to)+'</b></div>').join('');
+  }catch(e){
+    document.getElementById('houseSubrooms').innerHTML='<p class="boundary">Nested Room data could not be loaded. The ten canonical Dwellings above remain the stable top-level structure.</p>';
+    document.getElementById('houseCorridors').innerHTML='';
+  }
+})();
+</script></body></html>

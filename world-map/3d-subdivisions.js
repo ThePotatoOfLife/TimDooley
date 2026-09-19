@@ -465,6 +465,10 @@ window.__potatoAtlasSubdivisions = {
   },
   get selected() { return selectedId; },
   loadedPartitions() { return [...cache.keys()]; },
+  async refresh() {
+    const index = await subdivisionIndex();
+    return reconcileActive(index);
+  },
   status() {
     return {
       selected:selectedId,

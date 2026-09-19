@@ -1,0 +1,326 @@
+{
+  "version": "1.1.0",
+  "updated": "2026-09-19",
+  "authority": "below-basin-spatial-contract",
+  "title": "Below Basin / Subterrain Vessel — Spatial Contract",
+  "purpose": "Define the round lower Potato platform as one coherent navigational vessel that can host subculture, Sektur, Farm, Swamp, Mud, Ash, Roots, intelligence, media, money, classifiers, law, harm and Forge processing without turning unlike concepts into synonyms.",
+  "master_image": "A shallow circular pot, pool or trough beneath the World plane. Material enters around the rim, circulates across the surface, gathers into semi-bounded territories and extraction loops, mixes with institutional currents, settles into Mud/Ash, roots into provenance, and can be pulled through the central Drain/Root Junction into Forge processing and eventual return.",
+  "category_rule": "Visual placement shows relation and process, not moral rank. Below is a standing view; Swamp is a regime/terrain condition; Sektur is social territory; Farm is a production process; Mud/Ash/Soil are material states; Roots are provenance organisms; Forge is transformation process; Drain/Spiral are routes; Axis is the exact center coordinate.",
+  "geometry": {
+    "shape": "circular shallow basin / flat pot / trough",
+    "orientation": "viewed from slightly above as a round platform",
+    "center": "Axis / Root Junction",
+    "radial_story": "World-facing rim -> culture/subculture surface -> Sektur territories and Farm loops -> Swamp entanglement currents -> Mud/Ash sediment -> Root memory -> Drain/Forge processing -> Return",
+    "depth_story": "What sinks is not automatically worse. Sinking means becoming residue, evidence, provenance or unresolved material. What rises is not automatically true. Material rises only through verification/repair or clearly labelled uncertainty."
+  },
+  "zones": [
+    {
+      "id": "rim-world-interfaces",
+      "label": "Rim / World Interfaces",
+      "kind": "boundary/interface",
+      "visual": "outer lip with inlet gates",
+      "contains": [
+        "platforms",
+        "media",
+        "economy",
+        "politics",
+        "law",
+        "watchdogs/classifiers",
+        "infrastructure providers",
+        "public institutions",
+        "culture"
+      ],
+      "function": "Where visible World events, claims, money, people and institutions enter or leave the Below view.",
+      "examples": [
+        "4chan",
+        "Reddit",
+        "8chan/8kun",
+        "Kiwi Farms",
+        "livestream media",
+        "journalism",
+        "MAGA",
+        "SPLC",
+        "ADL",
+        "FBI",
+        "courts",
+        "hosts/CDNs"
+      ],
+      "boundary": "Presence on the rim means interface relevance, not guilt or Swamp membership."
+    },
+    {
+      "id": "surface-culture",
+      "label": "Surface Water / Culture",
+      "kind": "circulation layer",
+      "visual": "broad shallow water across most of basin",
+      "contains": [
+        "memes",
+        "language",
+        "stories",
+        "rituals",
+        "roles",
+        "identity",
+        "attention",
+        "public discourse"
+      ],
+      "function": "Shared meanings circulate and encounter one another here."
+    },
+    {
+      "id": "sektur-patches",
+      "label": "Sektur Patches",
+      "kind": "social territory",
+      "visual": "semi-bounded islands/pools floating in the basin",
+      "contains": [
+        "scenes",
+        "fandoms",
+        "anti-fandoms",
+        "livestream milieus",
+        "conflict communities",
+        "archive communities",
+        "political subcultures"
+      ],
+      "function": "Semi-bounded territories where recurring roles, lore, status, allies, rivals and attention relations become self-reproducing.",
+      "historical_anchor": "Da Sektur remains a dated livestream/internet-bloodsports referent; the project generalization is broader."
+    },
+    {
+      "id": "farm-machines",
+      "label": "Farm Loops",
+      "kind": "production process",
+      "visual": "looping wheels/tracks crossing one or more Sektur patches",
+      "contains": [
+        "classification",
+        "observation",
+        "capture",
+        "clipping",
+        "archiving",
+        "commentary",
+        "redistribution",
+        "monetization/status"
+      ],
+      "function": "Converts events or people into repeatable attention yield.",
+      "rule": "A Farm can operate across a Sektur, outside it, or across multiple platforms; it is not a place."
+    },
+    {
+      "id": "currents",
+      "label": "Currents",
+      "kind": "flow",
+      "visual": "arrows/channels through basin",
+      "contains": [
+        "attention",
+        "money",
+        "status",
+        "media framing",
+        "recommendation",
+        "political translation",
+        "classification",
+        "legal consequence"
+      ],
+      "function": "Move material between social, commercial, political and institutional zones.",
+      "named_currents": [
+        "attention current",
+        "money current",
+        "media current",
+        "classification current",
+        "political current",
+        "legal/state current",
+        "infrastructure current"
+      ]
+    },
+    {
+      "id": "swamp-regime",
+      "label": "Swamp",
+      "kind": "terrain/regime",
+      "visual": "darkened stagnant/entangled region where currents overlap and slow",
+      "function": "Condition in which opacity, unresolved residue, extraction, role-lock, jurisdictional fragmentation and blocked correction become self-reinforcing.",
+      "test": "Does the system require unresolved conflict, opacity or recurrence in order to keep reproducing?",
+      "not_equal_to": [
+        "Below",
+        "all culture",
+        "government",
+        "media",
+        "politics",
+        "one conspiracy",
+        "literal wetland"
+      ]
+    },
+    {
+      "id": "mud-bed",
+      "label": "Mud",
+      "kind": "material state",
+      "visual": "sediment coating the basin floor",
+      "contains": [
+        "old allegations",
+        "clips",
+        "labels",
+        "reputational residue",
+        "unresolved evidence",
+        "conflict memory",
+        "sanctions",
+        "fragments"
+      ],
+      "function": "What accumulates and can either feed repeated Strife or be processed into evidence/Soil.",
+      "not_equal_to": [
+        "Swamp",
+        "evil",
+        "falsehood"
+      ]
+    },
+    {
+      "id": "ash-deposits",
+      "label": "Ash",
+      "kind": "material state",
+      "visual": "localized deposits from rupture/burning/collapse",
+      "contains": [
+        "grief",
+        "broken relation",
+        "collapsed identity",
+        "post-conflict residue",
+        "destroyed institutions",
+        "unresolved rupture"
+      ],
+      "function": "Post-rupture residue that can move toward Mud/Strife or Soil/Life."
+    },
+    {
+      "id": "root-bed",
+      "label": "Roots / Provenance",
+      "kind": "organism/provenance network",
+      "visual": "root network visible beneath translucent basin floor",
+      "contains": [
+        "source lineage",
+        "history",
+        "ancestry",
+        "prior entities",
+        "old records",
+        "dependency chains",
+        "buried context"
+      ],
+      "function": "Preserves where material came from and what supports it.",
+      "rule": "Roots are not Strife by default."
+    },
+    {
+      "id": "inner-forge-ring",
+      "label": "Forge Ring",
+      "kind": "transformation process projected spatially",
+      "visual": "bright inner annulus around central drain",
+      "contains": [
+        "provenance checks",
+        "corroboration",
+        "counterevidence",
+        "status separation",
+        "mechanism analysis",
+        "harm mapping",
+        "repair design",
+        "rejection"
+      ],
+      "function": "Concentrates and transforms material before it can be promoted, repaired, rejected or returned.",
+      "outputs": [
+        "verified knowledge",
+        "bounded uncertainty",
+        "legal/status clarity",
+        "correction",
+        "repair",
+        "tool/model",
+        "rejection",
+        "Soil/Living Root"
+      ]
+    },
+    {
+      "id": "center-drain-axis",
+      "label": "Drain / Root Junction / Axis",
+      "kind": "route + coordinate",
+      "visual": "small central opening at exact center",
+      "function": "Routes material out of stagnant recurrence and into bounded processing; can also symbolize destructive drain/Strife when material loops downward without verification or repair.",
+      "rule": "The Axis is the center coordinate. Drain is a route. Forge is the process around/through it."
+    }
+  ],
+  "inhabitants_and_roles": [
+    {
+      "id": "cow",
+      "placement": "within/near Farm loops",
+      "meaning": "subject made repeatedly harvestable by an attention ecology",
+      "boundary": "role, not intrinsic worth"
+    },
+    {
+      "id": "farmer",
+      "placement": "at Farm machinery/harvest points",
+      "meaning": "cultivation/processing role: watches, archives, clips, interprets, provokes or packages",
+      "boundary": "actual conduct must be described"
+    },
+    {
+      "id": "dog",
+      "placement": "moving along pursuit currents",
+      "meaning": "reaction/pursuit role: attack, defend, expose, monitor, follow, amplify",
+      "boundary": "not proof of hidden service"
+    },
+    {
+      "id": "mud-dweller",
+      "placement": "within recurring Mud/Swamp zones",
+      "meaning": "project metaphor for activity repeatedly sustained by accumulated conflict residue",
+      "boundary": "not diagnosis or factual essence"
+    },
+    {
+      "id": "classifier",
+      "placement": "rim/current interface",
+      "meaning": "applies a category under a methodology; may be private, academic or governmental",
+      "boundary": "classification != conviction"
+    },
+    {
+      "id": "investigator",
+      "placement": "rim-to-Forge corridor",
+      "meaning": "collects and tests evidence under institutional or research rules",
+      "boundary": "investigation != guilt"
+    },
+    {
+      "id": "target-victim-affected-person",
+      "placement": "where consequence actually occurs, not as scenery",
+      "meaning": "person affected by attention, harassment, exploitation, classification or institutional response",
+      "boundary": "never reduced to symbolic fuel"
+    }
+  ],
+  "story_sequence": [
+    "1. Something happens in the World.",
+    "2. Platforms and communities notice it at the Rim.",
+    "3. Culture gives it language, symbols and roles.",
+    "4. A Sektur may form when the relations become durable and semi-bounded.",
+    "5. Farm loops may turn the event/person into repeatable attention.",
+    "6. Media, money, status, classifiers, politics and law create currents through the basin.",
+    "7. If correction works, material can leave quickly; if not, residue accumulates as Mud/Ash.",
+    "8. When opacity, extraction and blocked accountability reinforce one another, the local condition becomes Swamp-like.",
+    "9. Roots preserve provenance beneath the visible conflict.",
+    "10. The central Forge separates source, claim, status, mechanism and consequence.",
+    "11. Outputs may be rejected, documented, adjudicated, repaired, turned into Soil/Living Root or safely returned to the World.",
+    "12. Unrepaired material can recirculate and seed another Tree of Strife."
+  ],
+  "linked_records": [
+    "knowledge/core/below-intelligence-shadow-observatory.json",
+    "data/house/lower-plane-population-atlas.json",
+    "data/house/layer-terrain-regime-atlas.json",
+    "data/house/tree-plane-routing.json",
+    "knowledge/core/repair-forge-protocol.json",
+    "knowledge/world/culture-sektur-platform-media-political-ecology.json",
+    "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+    "knowledge/world/farm-sektur-attention-extraction-ecology.json",
+    "data/house/below-basin-pathways.json",
+    "data/house/below-basin-dynamics.json"
+  ],
+  "progressive_disclosure": {
+    "level_1_overview": "One circular basin showing Rim, Culture surface, Sektur, Farm, Swamp, Mud/Ash, Roots, Forge and Axis/Drain. Goal: grasp the story in under a minute.",
+    "level_2_modes": "Switch Culture, Attention, Money, Power, Harm, Evidence and Repair views. Goal: understand one mechanism without redrawing the whole model.",
+    "level_3_cases": "Open a node/case dossier with dates, entities, source lineage, money, classifications, legal/evidence status, consequences, counterevidence and repair state. Goal: inspect claims without relying on the metaphor.",
+    "rule": "Do not place every entity label permanently on the basin. The basin shows system roles; case drawers/pages hold entity density."
+  },
+  "interaction_contract": {
+    "hover_or_focus": "Show short function + category + why it is in this zone.",
+    "click": "Open relevant deep reader or case view.",
+    "mode_switch": "Highlight route-relevant nodes and dim unrelated nodes without hiding them completely.",
+    "case_select": "Overlay one case path through the same basin, with each transition exposing its evidence reason.",
+    "accessibility": "All meaning must be available in text; color/position cannot be the only carrier of category or status."
+  },
+  "future_visual_layers": [
+    "animated current lines for attention/money/media/classification/legal flows",
+    "sediment density for unresolved Mud/Ash accumulation",
+    "root branches for provenance depth",
+    "Forge output fan for verified/narrowed/rejected/repaired/unresolved",
+    "time scrubber for showing how a case moved between zones",
+    "case comparison mode for two ecologies without merging them"
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "seed-spiral-routing",
+  "purpose": "Define where Seed of Death, Seed of Life, rooting, sprouting, ascent, descent, Ring, Drain and fruitful Return begin and go inside the Potato of Life without reducing vertical direction to moral value.",
+  "master_rule": "Spiral means recurrence with non-zero axial displacement. Direction alone does not determine Life or Strife; the route is classified by what the displacement does to memory, agency, relation, growth and return.",
+  "geometry": {
+    "seed_pivot": {
+      "id": "C_S",
+      "coordinate": "(0,-r/2)",
+      "label": "Son-center / lower Door tip / Seed Junction",
+      "role": "strongest geometric locus for the Seed-of-Death ↔ Seed-of-Life transition",
+      "rule": "Grain/Potato is compressed here through burial/death/embodiment and can remain dormant, decay, root, or sprout. C_S is a pivot, not the deepest point."
+    },
+    "relational_midpoint": {
+      "id": "O",
+      "coordinate": "(0,0)",
+      "label": "Plane / Cross midpoint",
+      "role": "world-facing crossing where the vertical trajectory becomes publicly legible in embodiment, choice and consequence"
+    },
+    "upper_door_pole": {
+      "id": "C_F",
+      "coordinate": "(0,+r/2)",
+      "label": "Father-center / upper Door tip",
+      "role": "source-facing Door pole; transition toward upper integration/canopy without being the outermost Heaven pole"
+    },
+    "lower_outer_pole": {
+      "id": "E_bottom",
+      "coordinate": "(0,-3r/2)",
+      "label": "lower outer pole",
+      "role": "deepest geometric boundary of the lower field; grave/Drain/deep-root symbolism may extend toward it but C_S is not identical with it"
+    }
+  },
+  "projection_boundary": "C_S is the exact geometric seed pivot in the two-field Vesica. D3-D6 are reader/navigation stages projected over that geometry. D5 names Door as a navigational junction; it does not relocate the geometric lower Door tip.",
+  "seed_states": [
+    {
+      "id": "seed-of-death",
+      "label": "Seed of Death",
+      "anchor": "C_S",
+      "state": "compressed / surrendered / buried potential",
+      "arrives_from": [
+        "World Plane consequence",
+        "Fruit/Seed returned for planting",
+        "Son/grain death-burial imagery"
+      ],
+      "can_become": [
+        "dormant-seed",
+        "decayed-seed",
+        "living-root",
+        "root-of-ash",
+        "sprout"
+      ],
+      "meaning": "A form enters death, burial, compression or surrender so stored possibility can change state. It is not automatically annihilation or Strife."
+    },
+    {
+      "id": "dormant-seed",
+      "label": "Dormant Seed",
+      "anchor": "C_S / Below",
+      "state": "preserved potential with no current visible displacement",
+      "trajectory": "Ring or pause rather than active Spiral",
+      "can_become": [
+        "seed-of-life",
+        "decayed-seed",
+        "root-of-ash"
+      ],
+      "meaning": "Potential remains stored. Dormancy is neither failure nor ascent until a new transition occurs."
+    },
+    {
+      "id": "seed-of-life",
+      "label": "Seed of Life",
+      "anchor": "C_S ↔ Living Root",
+      "state": "viable generative potential after or through burial",
+      "arrives_from": [
+        "seed-of-death through viable passage",
+        "Fruit/Seed return",
+        "Repair converting Ash/Residue into Soil"
+      ],
+      "can_become": [
+        "living-root",
+        "sprout",
+        "tree-of-life"
+      ],
+      "meaning": "The same or recovered seed becomes capable of rooting, sprouting and future fruit. It does not begin in Heaven; it becomes legible at the burial/root pivot."
+    },
+    {
+      "id": "fruit-seed",
+      "label": "Fruit-bearing Future Seed",
+      "anchor": "Heaven/upper branch → World return",
+      "state": "compressed transferable capacity produced by mature growth",
+      "arrives_from": [
+        "Fruit",
+        "Works",
+        "Garden",
+        "transmission"
+      ],
+      "can_become": [
+        "World service",
+        "planting",
+        "seed-of-death at C_S",
+        "new cycle"
+      ],
+      "meaning": "Life produces seed again. A mature cycle therefore descends with seed/service rather than remaining permanently above."
+    }
+  ],
+  "spiral_routes": [
+    {
+      "id": "rooting-spiral",
+      "label": "Rooting Spiral",
+      "vertical_sign": "negative",
+      "valence": "generative descent",
+      "starts_at": "C_S / Seed Junction",
+      "passes_through": [
+        "Below Plane",
+        "D3 root/soil zone"
+      ],
+      "ends_at": "Living Root / viable Soil",
+      "operator": "bury → anchor → absorb context → preserve memory → prepare growth",
+      "test": "Does descent increase grounded capacity and future sprouting without locking the seed into compulsory repetition?",
+      "warning": "Negative displacement is not Strife by itself."
+    },
+    {
+      "id": "drain-spiral",
+      "label": "Strife / Drain Spiral",
+      "vertical_sign": "negative",
+      "valence": "degenerative descent",
+      "starts_at": "World Plane unresolved knowledge/event or C_S burial that fails to metabolize",
+      "passes_through": [
+        "Roots of Ash",
+        "Roots of Strife",
+        "Tree of Strife shadow roots",
+        "Wide Road",
+        "D2 Swamp"
+      ],
+      "ends_at": "D1 deep closure / Drain attractor unless repair opens",
+      "operator": "unresolved activation → widening recurrence → capture → dispersion → blocked exit",
+      "test": "Does each recurrence reduce agency, provenance, correction or viable exit while requiring the conflict to continue?",
+      "warning": "This is the downward Spiral associated with Strife; it must not be confused with ordinary rooting, burial, incarnation or archival depth."
+    },
+    {
+      "id": "sprouting-spiral",
+      "label": "Sprouting / Life Spiral",
+      "vertical_sign": "positive",
+      "valence": "generative ascent",
+      "starts_at": "Living Root / Seed of Life below or at C_S",
+      "passes_through": [
+        "C_S Seed Junction",
+        "Door",
+        "World Plane / O",
+        "D5 Door projection",
+        "D6 Spiral Ladder"
+      ],
+      "resolves_into": [
+        "D7 Tree of Life",
+        "D8 Garden/Rooms",
+        "D9 transmission",
+        "D10 Crown",
+        "D11 North of North"
+      ],
+      "operator": "rooted memory → sprout → changed recurrence → integration → branching → fruit",
+      "test": "Does ascent produce greater capability, differentiation without severance, and fruit that can return to the World?",
+      "warning": "Upward motion without fruit/return is not sufficient evidence of Life."
+    },
+    {
+      "id": "repair-spiral",
+      "label": "Repair Spiral",
+      "vertical_sign": "reversal from negative to positive",
+      "valence": "transformative recovery",
+      "starts_at": "Ash / Swamp / Root of Strife",
+      "passes_through": [
+        "evidence",
+        "provenance",
+        "root cause",
+        "acknowledgment",
+        "Door",
+        "Living Root",
+        "Spiral Ladder"
+      ],
+      "ends_at": "Tree of Life / Garden / repaired World return",
+      "operator": "surface → distinguish → acknowledge → cross → metabolize → regrow",
+      "test": "Does the old material remain remembered without remaining compulsory?",
+      "warning": "Repair does not erase provenance; it changes what the provenance is allowed to reproduce."
+    },
+    {
+      "id": "return-spiral",
+      "label": "Fruit / Return Spiral",
+      "vertical_sign": "negative",
+      "valence": "generative return",
+      "starts_at": "Garden / Fruit / Crown / integrated upper branch",
+      "passes_through": [
+        "Seed / transmission",
+        "Heaven Plane",
+        "Door/Axis",
+        "World Plane"
+      ],
+      "may_continue_to": [
+        "C_S planting",
+        "Below Plane rooting",
+        "new cycle"
+      ],
+      "ends_at": "service / cultivation / observable World consequence or renewed planting",
+      "operator": "compress insight → descend → distribute → serve → plant",
+      "test": "Does upper integration become something usable, protective, nourishing or independently generative below?",
+      "warning": "Descent from Heaven is not fall/Strife when it is accountable return."
+    }
+  ],
+  "ring": {
+    "label": "Ring",
+    "vertical_sign": "zero",
+    "meaning": "Recurrence without meaningful net level change.",
+    "placements": [
+      "any plane",
+      "orbit around an unresolved center",
+      "practice/rehearsal when intentionally stable"
+    ],
+    "relation_to_spiral": "A Ring becomes a Spiral only when recurrence acquires actual displacement in state, capability, integration, rooting or disintegration.",
+    "danger": "Do not call elapsed time, repetition, or circular motion a Spiral when nothing governing the relation has changed."
+  },
+  "complete_cycles": {
+    "life_cycle": "Fruit/Seed above → return to World → C_S Seed of Death/burial → Rooting Spiral → Living Root/Seed of Life → Sprouting Spiral → Door/Ladder → Tree of Life → Garden → Fruit → future Seed",
+    "strife_cycle": "World event/knowledge → unresolved burial/residue → Roots of Ash → Drain Spiral → Roots/Tree of Strife → Wide Road → Swamp → repeated activation back into World unless repair interrupts",
+    "repair_cycle": "Strife/Ash → evidence/provenance → acknowledgment → Door → Living Root → Sprouting Spiral → Life/Garden → Fruit → repaired World return"
+  },
+  "placement_laws": [
+    "Seed of Death and Seed of Life are states/transitions of generative potential, not necessarily two unrelated physical seeds.",
+    "C_S is the Seed Junction because it is both Son-center and exact lower tip of the shared Door in the canonical Vesica geometry.",
+    "C_S is not the deepest point; rooting, grave, Swamp and Drain can extend below it toward the lower field.",
+    "A downward Spiral can be rooting, Strife, or return depending operator and outcome.",
+    "An upward Spiral can be Life or merely status/ascent imagery; Life requires branching, fruit and accountable return.",
+    "Root is not Strife. Ash is not permanently Strife. Burial is not annihilation. Heaven is not permanent escape from return.",
+    "Ring and Spiral must remain distinct: zero net transformation versus recurrence with changed level/state."
+  ]
+}

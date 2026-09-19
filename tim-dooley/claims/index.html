@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tim Dooley — Claims, Roles, Jobs & Capabilities Atlas</title>
+<meta name="description" content="A maximal source-separated atlas of Tim Dooley declarations, titles, jobs, roles, capabilities, ownership claims and symbolic offices.">
+<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/tim-dooley/claims/">
+<link rel="stylesheet" href="../../app/site-system.css?v=20260914a">
+<style>
+.page{max-width:1220px}.lead{max-width:920px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:24px 0}.stat{border:1px solid var(--site-line);border-radius:11px;padding:14px}.stat strong{display:block;font:400 30px var(--site-font-serif);color:var(--site-gold)}.stat span{color:var(--site-muted);font-size:11px}.controls{display:flex;gap:7px;flex-wrap:wrap;margin:20px 0}.filter{border:1px solid var(--site-line);border-radius:999px;background:transparent;color:var(--site-muted);padding:6px 9px;cursor:pointer}.filter[aria-pressed="true"]{color:var(--site-green);border-color:#647b5d}.search{width:min(100%,520px);border:1px solid var(--site-line);background:var(--site-panel);color:inherit;border-radius:10px;padding:11px 12px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.claim{border:1px solid var(--site-line);border-radius:12px;padding:14px;background:var(--site-panel)}.claim blockquote{font:400 18px/1.4 var(--site-font-serif);margin:0;color:#e8e3d4}.meta{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}.meta span{border:1px solid var(--site-line);border-radius:999px;padding:4px 6px;color:var(--site-muted);font-size:8px}.claim small{display:block;color:var(--site-faint);margin-top:8px;line-height:1.4}.section{margin-top:48px}.jobs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.job{border:1px solid var(--site-line);border-radius:11px;padding:13px}.job strong{display:block;font:400 18px var(--site-font-serif);color:var(--site-green)}.job span,.job small{display:block;color:var(--site-muted);font-size:10px;margin-top:4px}.rolecloud{display:flex;flex-wrap:wrap;gap:6px}.rolecloud span{border:1px solid var(--site-line);border-radius:999px;padding:6px 8px;color:#c9d1c5;font-size:10px}.boundary{border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line);padding:12px 0;color:var(--site-muted);font-size:11px;margin:18px 0}.readout{color:var(--site-muted);font-size:11px;margin:10px 0 14px}@media(max-width:800px){.stats,.jobs{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}}@media(max-width:500px){.stats,.jobs{grid-template-columns:1fr}}</style>
+</head><body><main class="page page--reading">
+<nav class="page-nav"><a href="../">← Tim Dooley</a><a href="../public-witness/">Public witness</a><a href="../ontology/">Ontology</a><a href="../../timeline/">Timeline</a></nav>
+<header class="page-header"><p class="eyebrow">Maximal statement archaeology</p><h1>WHAT TIM<br>SAYS HE IS</h1><p class="summary lead">A deliberately maximal inventory of Tim Dooley declarations: identities, titles, offices, jobs, roles, functions, capabilities, ownership/rule claims, figure-identifications and small one-off formulations. Variants remain separate when wording, date or source class changes.</p></header>
+<p class="boundary"><strong>Reading rule:</strong> recording a claim documents that it exists in the Tim/Potatoverse corpus. It does not independently verify supernatural, medical, legal, financial, scientific, political or ownership claims. Conversation-memory items remain recovery targets until a locatable primary source is found.</p>
+<div class="stats" id="stats"></div>
+<section><h2>Source declarations</h2><input class="search" id="search" type="search" placeholder="Search: ladder, God in the Machine, gardener, bank, Denmark…"><div class="controls" id="filters"></div><p class="readout" id="readout"></p><div class="grid" id="claims"></div></section>
+<section class="section"><h2>Literal jobs & lived work</h2><p>These are kept separate from spiritual offices and symbolic identities.</p><div class="jobs" id="jobs"></div></section>
+<section class="section"><h2>Direct / project self-roles</h2><div class="rolecloud" id="selfRoles"></div></section>
+<section class="section"><h2>Archive functional syntheses</h2><p>These describe recurring functions in the project; they are not automatically direct quotations.</p><div class="rolecloud" id="synthRoles"></div></section>
+</main>
+<script>
+(async()=>{
+ const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ const r=await fetch('../../knowledge/corporium/tim-dooley-maximal-claims-roles-capabilities-atlas.json'); if(!r.ok)return;
+ const d=await r.json(), rows=d.declarations||[], inv=d.job_role_inventory||{};
+ document.getElementById('stats').innerHTML=[
+  ['Declarations',d.statistics?.source_declaration_records],['Distinct wordings',d.statistics?.unique_normalized_wordings],['Literal jobs',inv.literal_biographical?.length||0],['Self roles',inv.direct_or_project_self_roles?.length||0]
+ ].map(x=>'<div class="stat"><strong>'+esc(x[1])+'</strong><span>'+esc(x[0])+'</span></div>').join('');
+ const families=[...new Set(rows.flatMap(x=>x.families||[]))].sort(); let fam='all',q='';
+ const filters=document.getElementById('filters'),claims=document.getElementById('claims'),readout=document.getElementById('readout');
+ filters.innerHTML='<button class="filter" data-fam="all" aria-pressed="true">All</button>'+families.map(x=>'<button class="filter" data-fam="'+esc(x)+'" aria-pressed="false">'+esc(x.replaceAll('-',' '))+'</button>').join('');
+ function render(){
+  const shown=rows.filter(x=>(fam==='all'||(x.families||[]).includes(fam))&&(!q||[x.wording,x.date_or_period,x.source_class,(x.domains||[]).join(' ')].join(' ').toLowerCase().includes(q)));
+  readout.textContent=shown.length+' of '+rows.length+' declaration records visible';
+  claims.innerHTML=shown.map(x=>'<article class="claim"><blockquote>“'+esc(x.wording)+'”</blockquote><div class="meta"><span>'+esc(x.date_or_period||'undated')+'</span><span>'+esc(x.source_class)+'</span>'+(x.families||[]).map(v=>'<span>'+esc(v)+'</span>').join('')+'</div>'+(x.note?'<small>'+esc(x.note)+'</small>':'')+'</article>').join('');
+  filters.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.fam===fam)));
+ }
+ filters.addEventListener('click',e=>{const b=e.target.closest('[data-fam]');if(!b)return;fam=b.dataset.fam;render()});
+ document.getElementById('search').addEventListener('input',e=>{q=e.target.value.trim().toLowerCase();render()});
+ document.getElementById('jobs').innerHTML=(inv.literal_biographical||[]).map(x=>'<article class="job"><strong>'+esc(x.role)+'</strong><span>'+esc(x.period||'')+'</span><small>'+esc(x.status||'')+(x.note?' · '+esc(x.note):'')+'</small></article>').join('');
+ document.getElementById('selfRoles').innerHTML=(inv.direct_or_project_self_roles||[]).map(x=>'<span>'+esc(x)+'</span>').join('');
+ document.getElementById('synthRoles').innerHTML=(inv.archive_functional_syntheses||[]).map(x=>'<span>'+esc(x)+'</span>').join('');
+ render();
+})().catch(()=>{});
+</script></body></html>

@@ -1,0 +1,193 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "house-federation-scale",
+  "purpose": "Define structures above, around and between one House without flattening them into a single containment ladder.",
+  "sources": [
+    "knowledge/core/new-jerusalem-network-civilization-atlas.json",
+    "knowledge/core/european-commons.json",
+    "docs/KINGDOM-ATLAS.md",
+    "knowledge/theology/integrated-plurality-house-tree-body-city-atlas.json",
+    "data/house/architectural-vocabulary.json"
+  ],
+  "core_rule": "House remains the bounded ownership/composition model. Federation-scale forms describe participation, coordination, shared capability, interoperability or normative orientation across Houses and other autonomous nodes.",
+  "nonlinearity": "Household, House, City, Commons, Network, Assembly, Kingdom/Realm and Civilization are not one strict size ladder. They answer different structural questions and may overlap.",
+  "forms": [
+    {
+      "id": "household",
+      "label": "Household",
+      "question": "Who inhabits, maintains or participates in a House?",
+      "structural_kind": "participant ecology",
+      "contains_or_relates": "persons, agents, roles, caretakers, guests, maintainers",
+      "project_use": "Distinguish inhabitants/participants from Rooms and architecture itself.",
+      "relation_to_house": "inhabits / maintains / belongs-within",
+      "guard": "Membership in a Household does not imply ownership of every Room, identity with the House, or authority over all inhabitants."
+    },
+    {
+      "id": "house",
+      "label": "House",
+      "question": "How are differentiated bounded contexts composed into one governed whole?",
+      "structural_kind": "bounded composition",
+      "contains_or_relates": "Dwellings, Rooms, Roads, Doors, Foundations, Archives, Views",
+      "project_use": "Canonical ownership/composition architecture.",
+      "relation_to_house": "self",
+      "guard": "House unity does not erase the independence, source status or boundaries of its internal parts."
+    },
+    {
+      "id": "city",
+      "label": "City",
+      "question": "How do many Houses, institutions and participants share roads, gates, law, infrastructure and public space?",
+      "structural_kind": "federation",
+      "contains_or_relates": "Houses, institutions, gates, roads, commons, public infrastructure, participants",
+      "project_use": "Higher-order federation/network view; New Jerusalem comparison lives here as theology/comparative symbolism.",
+      "relation_to_house": "federates multiple Houses and institutions",
+      "guard": "City federation does not turn every House into one owner or erase legal/empirical distinctions among real institutions."
+    },
+    {
+      "id": "commons",
+      "label": "Commons",
+      "question": "What shared capability can many autonomous participants use and govern without one participant owning the whole?",
+      "structural_kind": "shared capability layer",
+      "contains_or_relates": "protocols, public resources, standards, shared data, cultural infrastructure, common services",
+      "project_use": "European Commons and reusable shared infrastructure patterns.",
+      "relation_to_house": "spans multiple Houses/Rooms/nodes",
+      "guard": "Shared access does not imply unbounded access, no governance, or centralized ownership."
+    },
+    {
+      "id": "network",
+      "label": "Network",
+      "question": "Which relations make autonomous nodes more capable together than apart?",
+      "structural_kind": "relation topology",
+      "contains_or_relates": "nodes, roads, bridges, protocols, flows, dependencies",
+      "project_use": "Relationship-first graph, interoperable systems and network-civilization layer.",
+      "relation_to_house": "connects Houses, Rooms, institutions and participants laterally",
+      "guard": "Connectivity is not hierarchy, ownership or truth rank."
+    },
+    {
+      "id": "assembly",
+      "label": "Assembly / Council",
+      "question": "Where do distinct participants deliberate, decide, review or coordinate together?",
+      "structural_kind": "deliberative gathering",
+      "contains_or_relates": "participants, representatives, evidence, proposals, decisions",
+      "project_use": "Large-scale Table/Court for cross-House review, governance or coordination.",
+      "relation_to_house": "convenes inhabitants or representatives across Houses/Rooms",
+      "guard": "Assembly is an event/process surface; it does not permanently absorb the identity or ownership of those represented."
+    },
+    {
+      "id": "kingdom-realm",
+      "label": "Kingdom / Realm",
+      "question": "What order, value-horizon or scope of responsibility is being oriented around a source, purpose or rule?",
+      "structural_kind": "normative-orientational scope",
+      "contains_or_relates": "values, responsibilities, roles, standards, narratives of rule/order",
+      "project_use": "Biblical/project theology and Kingdom Atlas vocabulary for order and relation; can coexist with House/City views.",
+      "relation_to_house": "orients or evaluates Houses/City relations rather than containing them by default",
+      "guard": "Project-symbolic or theological Kingdom language does not create civil sovereignty, legal jurisdiction, state authority or ownership over persons."
+    },
+    {
+      "id": "civilization",
+      "label": "Civilization",
+      "question": "What durable pattern emerges when cities, networks, commons, institutions, memory and culture interact across generations?",
+      "structural_kind": "long-duration emergent system",
+      "contains_or_relates": "cities, institutions, networks, cultures, infrastructures, archives, norms, technologies",
+      "project_use": "Large-scale synthesis for network civilization, world-system history and Garden-City development.",
+      "relation_to_house": "emerges from many Houses/cities/networks over time",
+      "guard": "Civilizational synthesis is a high-level model; it must retain routes back to specific historical, institutional and empirical owners."
+    },
+    {
+      "id": "garden-city",
+      "label": "Garden-City",
+      "question": "Can dense coordination increase autonomous life, repair and future capacity rather than suppress it?",
+      "structural_kind": "city regime / projection",
+      "contains_or_relates": "Garden state + City federation",
+      "project_use": "New Jerusalem systems/theology synthesis: cultivated complexity, repaired interoperability, generative infrastructure.",
+      "relation_to_house": "evaluates the condition of a City/federation, not a new owner",
+      "guard": "Garden-City is a project comparative model, not a claim that any modern polity literally is New Jerusalem."
+    }
+  ],
+  "scale_relations": [
+    {
+      "from": "household",
+      "relationship": "inhabits",
+      "to": "house"
+    },
+    {
+      "from": "house",
+      "relationship": "may-federate-into",
+      "to": "city"
+    },
+    {
+      "from": "commons",
+      "relationship": "spans",
+      "to": "house"
+    },
+    {
+      "from": "commons",
+      "relationship": "supports",
+      "to": "city"
+    },
+    {
+      "from": "network",
+      "relationship": "connects",
+      "to": "house"
+    },
+    {
+      "from": "network",
+      "relationship": "connects",
+      "to": "city"
+    },
+    {
+      "from": "assembly",
+      "relationship": "coordinates-across",
+      "to": "house"
+    },
+    {
+      "from": "kingdom-realm",
+      "relationship": "orients",
+      "to": "house"
+    },
+    {
+      "from": "kingdom-realm",
+      "relationship": "orients",
+      "to": "city"
+    },
+    {
+      "from": "city",
+      "relationship": "participates-in",
+      "to": "civilization"
+    },
+    {
+      "from": "network",
+      "relationship": "participates-in",
+      "to": "civilization"
+    },
+    {
+      "from": "commons",
+      "relationship": "participates-in",
+      "to": "civilization"
+    },
+    {
+      "from": "garden-city",
+      "relationship": "is-regime-of",
+      "to": "city"
+    }
+  ],
+  "transition_laws": [
+    "House → City is federation, not simple containment: Houses retain identity while shared infrastructure and protocols emerge.",
+    "House/City ↔ Commons is resource/protocol participation, not ownership transfer.",
+    "House/City ↔ Network is relation topology, not administrative hierarchy.",
+    "Assembly/Council is a temporary or repeated coordination surface, not a permanent super-Room.",
+    "Kingdom/Realm describes orientation, responsibility or normative order; legal sovereignty belongs to World Systems and law/politics owners.",
+    "Civilization is emergent and historical; it cannot be inferred from symbolic architecture alone.",
+    "Garden-City describes a regime/test of a City: coordination + regeneration + peripheral autonomy + repairability."
+  ],
+  "federation_tests": [
+    "Do participating Houses/nodes remain identifiable and locally capable?",
+    "Are roads/protocols transparent and revisable?",
+    "Can participants enter, exit, appeal or route around failure where appropriate?",
+    "Does shared infrastructure increase rather than consume peripheral capability?",
+    "Are provenance, law, evidence and historical context preserved across scale?",
+    "Can failure be localized and repaired without collapsing the whole network?",
+    "Does central orientation create service/capability around itself rather than permanent dependency?"
+  ],
+  "public_boundary": "This registry is project architecture. Biblical City/Kingdom/New Jerusalem language, modern governance, and empirical political entities remain separately typed."
+}

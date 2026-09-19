@@ -1,49 +1,426 @@
 {
   "id": "tim-dooley-politics-geopolitics-compendium",
   "title": "Tim Dooley — Politics & Geopolitics Compendium",
-  "version": "1.0.1",
-  "updated": "2026-09-15",
+  "version": "1.1.0",
+  "updated": "2026-09-19",
   "kind": "reader-facing political statement synthesis and provenance ledger",
   "method": {
     "principle": "Separate what Tim explicitly says from accepted formulations, policy proposals, programme design, thought experiments, predictions, research leads, moral judgments, satire, mythology and archive inference.",
-    "mode_enum": ["explicit_position","accepted_formulation","policy_proposal","programme_design","governance_thought_experiment","political_question","empirical_hypothesis","geopolitical_prediction","research_lead","moral_judgment","satire","mythic_symbolism","conceptual_model","biographical_context","uncertain"]
+    "mode_enum": [
+      "explicit_position",
+      "accepted_formulation",
+      "policy_proposal",
+      "programme_design",
+      "governance_thought_experiment",
+      "political_question",
+      "empirical_hypothesis",
+      "geopolitical_prediction",
+      "research_lead",
+      "moral_judgment",
+      "satire",
+      "mythic_symbolism",
+      "conceptual_model",
+      "biographical_context",
+      "uncertain"
+    ]
   },
   "entries": [
-    {"date":"~2015","topic":"Drug policy / civil liberty","mode":"explicit_position","stance":"support","confidence":"high","summary":"Cannabis advocacy and later explicit opposition to criminalizing or penalizing drug use; preference for harm differentiation, prevention, rehabilitation and nonjudgmental discussion rather than moral panic.","notes":"Do not generalize this into an unrestricted all-drug legalisation doctrine; Tim differentiates psychedelics/mind-expanding drugs from heroin, fentanyl, heavy narcotics and sedatives."},
-    {"date":"~2016","topic":"Law, imprisonment and property rights","mode":"biographical_context","stance":"context","confidence":"medium","summary":"Personal imprisonment and property-rights conflicts become part of the political background and later suspicion of coercive systems.","notes":"The archive should not infer a complete criminal-justice philosophy from biography alone."},
-    {"date":"2026-02-13","topic":"Democracy, coordination and AI","mode":"governance_thought_experiment","stance":"explore","confidence":"high","summary":"Prefers democracy / hearing the people or the ‘heart of humanity’; explores AI as an arbiter or coordinator for roles, tasks, hiring and management while preserving individual freedom and human direction.","notes":"Capitalism versus socialism remained unresolved in this exchange."},
-    {"date":"2026-03-18","topic":"North Axis / Europe / Canada / America","mode":"geopolitical_prediction","stance":"mixed","confidence":"high","summary":"North Axis centered on Tim with Europe, Greenland, Denmark and Canada; America described as a young or adolescent power that may need humility and could become a more regional West-sector power if transatlantic relations are recalibrated. The strongest predictive interpretation is relational/topological: Europe/Canada/North may cohere more strongly while America becomes a more separate western pole.","notes":"This mixes diagnosis, prediction and symbolic programme language. It is not a treaty map. Canada-EU SAFE and Canada-Denmark-Greenland defence cooperation were already formalizing by 14 February, and Greenland/U.S. tension was already public. Route detailed prediction scoring to knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json."},
-    {"date":"2026-03-18","topic":"Israel / Palestine / Iran / Turkey","mode":"moral_judgment","stance":"critical","confidence":"medium","summary":"Israel–Palestine framed morally and symbolically through Cain/Abel language; concern that Israeli policy could deepen war with Iran and possibly Turkey while US Middle East influence declines.","notes":"Prediction and symbolic framing are not the same thing as a desired war policy or a final-state settlement plan."},
-    {"date":"2026-04-02","topic":"United States / Europe separation","mode":"geopolitical_prediction","stance":"forecast","confidence":"high","summary":"Tim explicitly described a model 'where the north axis and the west go together, and the united states seperates off from europe'.","quote":"where the north axis and the west go together, and the united states seperates off from europe","notes":"Best read as a directional forecast about alliance topology, not as a prediction that NATO formally dissolves. Later 2026 troop-retrenchment and Greenland/Arctic developments moved materially in this direction."},
-    {"date":"2026-04-03","topic":"U.S. troop retrenchment from Europe","mode":"geopolitical_prediction","stance":"forecast","confidence":"high","summary":"Tim suspected the United States might retract soldiers from Europe.","quote":"we suspect america might retract soliders","notes":"Trump publicly entertained troop withdrawals from Italy/Spain 27 days later on April 30. Reuters then reported an actual U.S. pullback from Eastern Europe on July 16, 104 days later. This is the sharpest testable military sub-call within the North-Axis prediction cluster."},
-    {"date":"2026-05-01","topic":"US hegemony and reciprocity","mode":"explicit_position","stance":"conditional_support","confidence":"high","summary":"US global privileges—dollar hegemony, trade centrality and imperial/security advantages—are paired with obligations such as maritime security. If America withdraws from those obligations, it should accept becoming a nation among nations rather than expecting one-way benefits.","quote":"When the troops come home, America becomes a nation among nations.","notes":"Not simply anti-American: the core argument is reciprocal obligation. This comes after April 30 withdrawal talk and therefore is not pre-event evidence for that event."},
-    {"date":"2026-05-05","topic":"European digital sovereignty","mode":"programme_design","stance":"support","confidence":"high","summary":"Advocates a sovereign/federated European cloud, compute and data architecture: interoperable national systems, permissioned encrypted exchange, different civil/government/security layers, and multi-vendor alternatives to dependence on Palantir-like platforms.","notes":"Tim explicitly separated his mythic/public persona from the serious European architecture and said he had no formal authority over nations."},
-    {"date":"2026-05-20—22","topic":"Shadow power / Epstein / intelligence / NGOs / media","mode":"research_lead","stance":"investigate","confidence":"high","summary":"Calls for tracing money, boards, intelligence links, surveillance contracting, NGOs, media influence, lobbying, smear systems and institutional self-protection around Epstein and adjacent power networks.","notes":"Research agenda, not proof that adjacent institutions form one coordinated conspiracy. The project standard is to graph sourced relationships and preserve uncertainty."},
-    {"date":"2026-05-29","topic":"Public transport","mode":"accepted_formulation","stance":"support","confidence":"medium","summary":"Public transport can be free at point of use when mobility is socially fundamental, while implementation should avoid thoughtlessly destroying viable private providers.","notes":"Useful mixed-economy example: public financing does not automatically require a monopoly provider."},
-    {"date":"2026-06-02","topic":"State size and public capacity","mode":"explicit_position","stance":"support","confidence":"high","summary":"Government should be relatively efficient and no larger than justified, while still supporting welfare, healthcare, education, equality, infrastructure, defense, technology, industry and energy security.","notes":"The recurring distinction is not simply big versus small government but capable versus wasteful government."},
-    {"date":"2026-06-02","topic":"Fiscal responsibility","mode":"explicit_position","stance":"support","confidence":"high","summary":"Favors debt repayment, eventual surplus and disciplined use of public money alongside strategic investment.","notes":"Later programme-specific debt targets should not be back-projected as timeless doctrine unless directly adopted."},
-    {"date":"2026-06-02","topic":"Denmark / civic culture","mode":"explicit_position","stance":"support","confidence":"high","summary":"Describes Denmark as essentially a communal project: social cohesion and reciprocal responsibility are strengths, even while Denmark can be too much of a ‘we’ society and not enough of a ‘me’ society.","quote":"I believe Denmark essentially is a communal project ... people have a sense of responsibility towards each other.","notes":"The tension between individuality and cohesion is part of the position, not a contradiction to erase."},
-    {"date":"2026-06-02","topic":"Civil liberties","mode":"explicit_position","stance":"support","confidence":"medium","summary":"Values broad liberty around drugs, alcohol, guns and speech while coupling liberty to responsibility, accountability, protection of children/families and social coherence.","notes":"Exact gun-control and speech-regulation regimes remain unresolved."},
-    {"date":"2026-06-02","topic":"Immigration / deportation / citizenship","mode":"explicit_position","stance":"conditional","confidence":"high","summary":"Civic and conduct-based rather than ethnic: noncitizens who commit violent crime, espionage, scams/fraud or serious anti-social conduct may be deportable where lawful; citizenship and whether a person has a lawful destination matter.","notes":"Rejects collective ethnic blame. No complete asylum/quota doctrine recovered."},
-    {"date":"2026-06-24","topic":"Political identity","mode":"explicit_position","stance":"self_description","confidence":"high","summary":"Calls himself ‘radically centered’: taking useful elements from left and right rather than treating either camp as a complete moral or economic system.","quote":"Radically centered.","notes":"Later archive labels such as Nordic civic developmentalism are synthesis labels, not necessarily Tim's own chosen name."},
-    {"date":"2026-06-24","topic":"Political economy","mode":"explicit_position","stance":"mixed_economy","confidence":"high","summary":"Supports efficient spending, sovereignty, freedom, personal responsibility, education, healthcare, welfare, wealth creation, and a mixture of capitalist and communal mechanisms—explicitly not a doctrinaire socialism.","notes":"Outcome/function is preferred over ideological purity."},
-    {"date":"2026-06-24","topic":"Extremism and political ethics","mode":"explicit_position","stance":"oppose","confidence":"high","summary":"Anti-dehumanization, anti-authoritarian, anti-trafficking, anti-nihilism, anti-bullying, anti-corruption and anti-fascist while rejecting automatic identification with Antifa. Ideologies are judged by whether they produce domination, radicalization and impunity.","notes":"Criticism of Zionism or Nazism is framed as criticism of political ideology/radicalization, not ethnicity or religion."},
-    {"date":"2026-07-19","topic":"North Axis geography","mode":"programme_design","stance":"support","confidence":"high","summary":"Restates a broad North field approximately ‘Canada to Turkey minus England’: Canada, Greenland, Iceland, Nordics, much of Europe, Ukraine and Turkey; Russia excluded at that stage, England pending, Mesopotamia possibly later, Australia shared.","notes":"Symbolic/programmatic geography, not a claim that these countries formally joined an alliance."},
-    {"date":"2026-08-22","topic":"North Programme sovereignty","mode":"programme_design","stance":"support","confidence":"high","summary":"North Programme develops fiscal, procurement, industry, energy, supply-chain, capital-market, Arctic and strategic-independence work. Alignment is offered voluntarily and existing nations remain sovereign.","notes":"Distinguish practical programme from sacred North / mythic kingship."},
-    {"date":"2026-08-22","topic":"Energy resilience","mode":"explicit_position","stance":"support","confidence":"high","summary":"Supports more European/northern gas drilling where economically, legally and environmentally viable in order to improve supply stability.","notes":"Later also supports wind, green energy and nuclear; the through-line is resilience rather than a single-fuel ideology."},
-    {"date":"2026-08-27","topic":"Public services and labour","mode":"explicit_position","stance":"support","confidence":"high","summary":"Supports public schools, hospitals/healthcare, unions, public prisons and a social safety net while also accepting markets, private property, entrepreneurship and contribution/work expectations.","notes":"Rejects simplistic unconditional ‘free gibs’; prefers targeted benefits with social/productive return."},
-    {"date":"2026-08-27","topic":"Civic developmentalism","mode":"accepted_formulation","stance":"support","confidence":"high","summary":"Accepts a Radical Center synthesis combining capitalism, welfare, education, healthcare, infrastructure, technology, European capability and democratic order with anti-corruption and anti-extremism.","notes":"‘Civic developmentalism’ is an archive synthesis label."},
-    {"date":"2026-09-02","topic":"European strategic autonomy","mode":"programme_design","stance":"support","confidence":"high","summary":"Wants a stronger northern/European pole with more distance from US dependence: greater European defense, technology, production, automation, AI/compute, drones, energy abundance and financial/industrial capacity.","notes":"Strategic autonomy is not synonymous with isolation from the United States."},
-    {"date":"2026-09-02","topic":"US defense / institutions / domestic rebuild","mode":"policy_proposal","stance":"restructure","confidence":"high","summary":"Proposes radically re-evaluating US defense and other spending, reducing redundancy, reconsidering CIA/Pentagon/FBI structures peacefully, rebuilding selected domestic production, and redirecting capacity toward health, wealth, education, housing, energy and human outcomes.","notes":"Some numerical budget examples were hypothetical/ambiguous and are intentionally not normalized here."},
-    {"date":"2026-09-02","topic":"Reverse Jenga audit","mode":"policy_proposal","stance":"support","confidence":"high","summary":"Audit each public entity, programme, NGO, company or branch for measurable value; simplify, merge, repurpose, pause or remove structures sequentially rather than demolishing them ideologically and assuming replacements will work.","notes":"VAT and billionaire taxation were described as options on the table, not fixed universal doctrine."},
-    {"date":"2026-09-02","topic":"Energy mix","mode":"explicit_position","stance":"support","confidence":"high","summary":"Supports more northern European gas, less dependence on US LNG, expansion of wind/green energy and nuclear, stronger grids/electricity and energy surplus.","notes":"Pragmatic portfolio approach centered on resilience and productive capacity."},
-    {"date":"2026-09-07","topic":"Four-axis political/world model","mode":"conceptual_model","stance":"explore","confidence":"medium","summary":"Uses NORTH/WEST/EAST/SOUTH as a relational map for political-economic systems and currencies rather than a simple nation list; Russia sits in East ‘for now’ while North remains a European/northern field.","notes":"Model mixes descriptive geopolitics with symbolic architecture and must be labeled accordingly."},
-    {"date":"2026-09-12","topic":"Lobbying / cults / controlled opposition / Palantir / AIPAC / Israel365 / Figtree / Turning Point / Hollywood","mode":"research_lead","stance":"investigate","confidence":"high","summary":"Requests broad relational research into political funding, lobbying, religious-political networks, data/surveillance contractors, cultic dynamics, controlled-opposition hypotheses, media/Hollywood and victim networks.","notes":"Investigation interest is not evidence that the named actors are centrally coordinated. Each relationship requires sourcing, directionality, dates and confidence."}
+    {
+      "date": "~2015",
+      "topic": "Drug policy / civil liberty",
+      "mode": "explicit_position",
+      "stance": "support",
+      "confidence": "high",
+      "summary": "Cannabis advocacy and later explicit opposition to criminalizing or penalizing drug use; preference for harm differentiation, prevention, rehabilitation and nonjudgmental discussion rather than moral panic.",
+      "notes": "Do not generalize this into an unrestricted all-drug legalisation doctrine; Tim differentiates psychedelics/mind-expanding drugs from heroin, fentanyl, heavy narcotics and sedatives."
+    },
+    {
+      "date": "~2016",
+      "topic": "Law, imprisonment and property rights",
+      "mode": "biographical_context",
+      "stance": "context",
+      "confidence": "medium",
+      "summary": "Personal imprisonment and property-rights conflicts become part of the political background and later suspicion of coercive systems.",
+      "notes": "The archive should not infer a complete criminal-justice philosophy from biography alone."
+    },
+    {
+      "date": "2026-01-15",
+      "topic": "Greenland / sovereignty / U.S. pressure",
+      "mode": "explicit_position",
+      "stance": "oppose_coercion",
+      "confidence": "high",
+      "summary": "Frames Greenland and Danish sovereignty as non-negotiable under external pressure: strategic engagement may be discussed, but sovereignty, country and soil are not simply transferable objects.",
+      "quote": "we are defending our soverreignty, our existence, our coutnry, our soil, our souls.",
+      "notes": "This was a sovereignty boundary, not yet a detailed bargain over U.S. access, bases or minerals. European and Canadian defence of Greenlandic/Danish sovereignty was already public context."
+    },
+    {
+      "date": "2026-01-21",
+      "topic": "North / protection and growth",
+      "mode": "programme_design",
+      "stance": "support",
+      "confidence": "high",
+      "summary": "Pairs Greenland, Denmark and the Nordics with a new 'Axis of Protection and Growth', showing that the North idea was already political-economic as well as symbolic before the mature March North topology.",
+      "quote": "And We Support This New Axis of Protection and Growth.",
+      "notes": "Keep sacred/identity North separate from empirical policy. Prediction scoring belongs in the fulfilled-predictions ledger."
+    },
+    {
+      "date": "2026-01-26",
+      "topic": "Carney / North-centered future order",
+      "mode": "mythic_symbolism",
+      "stance": "explore",
+      "confidence": "high",
+      "summary": "In a story/revelation request, imagines a future order around the North Pole Axis led by Canadian PM Mark Carney.",
+      "quote": "a new wiorld order arose, led by canadian pm mark carney.",
+      "notes": "This is politically revealing about Tim's imagined North leadership structure but remains revelation/story form rather than an ordinary policy endorsement or empirical forecast."
+    },
+    {
+      "date": "2026-02-13",
+      "topic": "Democracy, coordination and AI",
+      "mode": "governance_thought_experiment",
+      "stance": "explore",
+      "confidence": "high",
+      "summary": "Prefers democracy / hearing the people or the ‘heart of humanity’; explores AI as an arbiter or coordinator for roles, tasks, hiring and management while preserving individual freedom and human direction.",
+      "notes": "Capitalism versus socialism remained unresolved in this exchange."
+    },
+    {
+      "date": "2026-02-14",
+      "topic": "European defence burden sharing",
+      "mode": "geopolitical_prediction",
+      "stance": "support_direction",
+      "confidence": "high",
+      "summary": "Argues that greater EU defence spending could initially cost America but later permit lower U.S. spending and shift more of the security burden toward Europe.",
+      "quote": "If EU spends more in defense, America loses out at first, but would be able to decrease spending in the coming future, and so the security and defense burden can be shifted",
+      "notes": "The same sentence also mentions phasing out the petrodollar; that remains a separate open proposition. Some U.S. NATO-position cuts were already public, so this is best read as causal extension and policy preference rather than hidden-information foresight."
+    },
+    {
+      "date": "2026-02-16",
+      "topic": "Turkey / corridors / European alignment",
+      "mode": "conceptual_model",
+      "stance": "explore",
+      "confidence": "medium",
+      "summary": "Treats geopolitical choices as 'roads': energy corridors, pipelines, trade routes and capital flows can pull Europe toward Turkey and change Israel's relative strategic position.",
+      "quote": "there are not multiple choices, because each choice is a road",
+      "notes": "This is a structural/corridor model, not a final alliance doctrine and not a desire for conflict."
+    },
+    {
+      "date": "2026-02-18—19",
+      "topic": "AI governance / institutional memory",
+      "mode": "programme_design",
+      "stance": "support",
+      "confidence": "high",
+      "summary": "Develops an AI/information architecture based on reusable 'muscle memory', preservation of raw material, failure memory, multi-resolution knowledge and separation between workflow/controller agents and creative/personality layers.",
+      "quote": "this should be muscle memory",
+      "notes": "Politically relevant because the later European digital-sovereignty programme treats AI as institutional capability: memory, auditability, interoperable layers and reusable public knowledge rather than a disposable chatbot interface."
+    },
+    {
+      "date": "2026-03-18",
+      "topic": "North Axis / Europe / Canada / America",
+      "mode": "geopolitical_prediction",
+      "stance": "mixed",
+      "confidence": "high",
+      "summary": "North Axis centered on Tim with Europe, Greenland, Denmark and Canada; America described as a young or adolescent power that may need humility and could become a more regional West-sector power if transatlantic relations are recalibrated. The strongest predictive interpretation is relational/topological: Europe/Canada/North may cohere more strongly while America becomes a more separate western pole.",
+      "notes": "This mixes diagnosis, prediction and symbolic programme language. It is not a treaty map. Canada-EU SAFE and Canada-Denmark-Greenland defence cooperation were already formalizing by 14 February, and Greenland/U.S. tension was already public. Route detailed prediction scoring to knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json."
+    },
+    {
+      "date": "2026-03-18",
+      "topic": "Israel / Palestine / Iran / Turkey",
+      "mode": "moral_judgment",
+      "stance": "critical",
+      "confidence": "medium",
+      "summary": "Israel–Palestine framed morally and symbolically through Cain/Abel language; concern that Israeli policy could deepen war with Iran and possibly Turkey while US Middle East influence declines.",
+      "notes": "Prediction and symbolic framing are not the same thing as a desired war policy or a final-state settlement plan."
+    },
+    {
+      "date": "2026-03-31",
+      "topic": "U.S. debt / bond refinancing horizon",
+      "mode": "geopolitical_prediction",
+      "stance": "warning",
+      "confidence": "medium",
+      "summary": "Identifies an approximately $10T U.S. refinancing/bond-market problem and corrects the relevant horizon from years to roughly five or six months.",
+      "quote": "we arent years from this… 5 to 6 months from this",
+      "notes": "The exact terminal event remains under-specified and the refinancing wall was publicly knowable. This belongs politically as evidence that fiscal/financial-system fragility was part of Tim's America critique, not as a settled macroeconomic doctrine."
+    },
+    {
+      "date": "2026-04-02",
+      "topic": "United States / Europe separation",
+      "mode": "geopolitical_prediction",
+      "stance": "forecast",
+      "confidence": "high",
+      "summary": "Tim explicitly described a model 'where the north axis and the west go together, and the united states seperates off from europe'.",
+      "quote": "where the north axis and the west go together, and the united states seperates off from europe",
+      "notes": "Best read as a directional forecast about alliance topology, not as a prediction that NATO formally dissolves. Later 2026 troop-retrenchment and Greenland/Arctic developments moved materially in this direction."
+    },
+    {
+      "date": "2026-04-03",
+      "topic": "U.S. troop retrenchment from Europe",
+      "mode": "geopolitical_prediction",
+      "stance": "forecast",
+      "confidence": "high",
+      "summary": "Tim suspected the United States might retract soldiers from Europe.",
+      "quote": "we suspect america might retract soliders",
+      "notes": "Trump publicly entertained troop withdrawals from Italy/Spain 27 days later on April 30. Reuters then reported an actual U.S. pullback from Eastern Europe on July 16, 104 days later. This is the sharpest testable military sub-call within the North-Axis prediction cluster."
+    },
+    {
+      "date": "2026-05-01",
+      "topic": "US hegemony and reciprocity",
+      "mode": "explicit_position",
+      "stance": "conditional_support",
+      "confidence": "high",
+      "summary": "US global privileges—dollar hegemony, trade centrality and imperial/security advantages—are paired with obligations such as maritime security. If America withdraws from those obligations, it should accept becoming a nation among nations rather than expecting one-way benefits.",
+      "quote": "When the troops come home, America becomes a nation among nations.",
+      "notes": "Not simply anti-American: the core argument is reciprocal obligation. This comes after April 30 withdrawal talk and therefore is not pre-event evidence for that event."
+    },
+    {
+      "date": "2026-05-05",
+      "topic": "European digital sovereignty",
+      "mode": "programme_design",
+      "stance": "support",
+      "confidence": "high",
+      "summary": "Advocates a sovereign/federated European cloud, compute and data architecture: interoperable national systems, permissioned encrypted exchange, different civil/government/security layers, and multi-vendor alternatives to dependence on Palantir-like platforms.",
+      "notes": "Tim explicitly separated his mythic/public persona from the serious European architecture and said he had no formal authority over nations."
+    },
+    {
+      "date": "2026-05-20—22",
+      "topic": "Shadow power / Epstein / intelligence / NGOs / media",
+      "mode": "research_lead",
+      "stance": "investigate",
+      "confidence": "high",
+      "summary": "Calls for tracing money, boards, intelligence links, surveillance contracting, NGOs, media influence, lobbying, smear systems and institutional self-protection around Epstein and adjacent power networks.",
+      "notes": "Research agenda, not proof that adjacent institutions form one coordinated conspiracy. The project standard is to graph sourced relationships and preserve uncertainty."
+    },
+    {
+      "date": "2026-05-29",
+      "topic": "Public transport",
+      "mode": "accepted_formulation",
+      "stance": "support",
+      "confidence": "medium",
+      "summary": "Public transport can be free at point of use when mobility is socially fundamental, while implementation should avoid thoughtlessly destroying viable private providers.",
+      "notes": "Useful mixed-economy example: public financing does not automatically require a monopoly provider."
+    },
+    {
+      "date": "2026-06-02",
+      "topic": "State size and public capacity",
+      "mode": "explicit_position",
+      "stance": "support",
+      "confidence": "high",
+      "summary": "Government should be relatively efficient and no larger than justified, while still supporting welfare, healthcare, education, equality, infrastructure, defense, technology, industry and energy security.",
+      "notes": "The recurring distinction is not simply big versus small government but capable versus wasteful government."
+    },
+    {
+      "date": "2026-06-02",
+      "topic": "Fiscal responsibility",
+      "mode": "explicit_position",
+      "stance": "support",
+      "confidence": "high",
+      "summary": "Favors debt repayment, eventual surplus and disciplined use of public money alongside strategic investment.",
+      "notes": "Later programme-specific debt targets should not be back-projected as timeless doctrine unless directly adopted."
+    },
+    {
+      "date": "2026-06-02",
+      "topic": "Denmark / civic culture",
+      "mode": "explicit_position",
+      "stance": "support",
+      "confidence": "high",
+      "summary": "Describes Denmark as essentially a communal project: social cohesion and reciprocal responsibility are strengths, even while Denmark can be too much of a ‘we’ society and not enough of a ‘me’ society.",
+      "quote": "I believe Denmark essentially is a communal project ... people have a sense of responsibility towards each other.",
+      "notes": "The tension between individuality and cohesion is part of the position, not a contradiction to erase."
+    },
+    {
+      "date": "2026-06-02",
+      "topic": "Civil liberties",
+      "mode": "explicit_position",
+      "stance": "support",
+      "confidence": "medium",
+      "summary": "Values broad liberty around drugs, alcohol, guns and speech while coupling liberty to responsibility, accountability, protection of children/families and social coherence.",
+      "notes": "Exact gun-control and speech-regulation regimes remain unresolved."
+    },
+    {
+      "date": "2026-06-02",
+      "topic": "Immigration / deportation / citizenship",
+      "mode": "explicit_position",
+      "stance": "conditional",
+      "confidence": "high",
+      "summary": "Civic and conduct-based rather than ethnic: noncitizens who commit violent crime, espionage, scams/fraud or serious anti-social conduct may be deportable where lawful; citizenship and whether a person has a lawful destination matter.",
+      "notes": "Rejects collective ethnic blame. No complete asylum/quota doctrine recovered."
+    },
+    {
+      "date": "2026-06-24",
+      "topic": "Political identity",
+      "mode": "explicit_position",
+      "stance": "self_description",
+      "confidence": "high",
+      "summary": "Calls himself ‘radically centered’: taking useful elements from left and right rather than treating either camp as a complete moral or economic system.",
+      "quote": "Radically centered.",
+      "notes": "Later archive labels such as Nordic civic developmentalism are synthesis labels, not necessarily Tim's own chosen name."
+    },
+    {
+      "date": "2026-06-24",
+      "topic": "Political economy",
+      "mode": "explicit_position",
+      "stance": "mixed_economy",
+      "confidence": "high",
+      "summary": "Supports efficient spending, sovereignty, freedom, personal responsibility, education, healthcare, welfare, wealth creation, and a mixture of capitalist and communal mechanisms—explicitly not a doctrinaire socialism.",
+      "notes": "Outcome/function is preferred over ideological purity."
+    },
+    {
+      "date": "2026-06-24",
+      "topic": "Extremism and political ethics",
+      "mode": "explicit_position",
+      "stance": "oppose",
+      "confidence": "high",
+      "summary": "Anti-dehumanization, anti-authoritarian, anti-trafficking, anti-nihilism, anti-bullying, anti-corruption and anti-fascist while rejecting automatic identification with Antifa. Ideologies are judged by whether they produce domination, radicalization and impunity.",
+      "notes": "Criticism of Zionism or Nazism is framed as criticism of political ideology/radicalization, not ethnicity or religion."
+    },
+    {
+      "date": "2026-07-19",
+      "topic": "North Axis geography",
+      "mode": "programme_design",
+      "stance": "support",
+      "confidence": "high",
+      "summary": "Restates a broad North field approximately ‘Canada to Turkey minus England’: Canada, Greenland, Iceland, Nordics, much of Europe, Ukraine and Turkey; Russia excluded at that stage, England pending, Mesopotamia possibly later, Australia shared.",
+      "notes": "Symbolic/programmatic geography, not a claim that these countries formally joined an alliance."
+    },
+    {
+      "date": "2026-08-22",
+      "topic": "North Programme sovereignty",
+      "mode": "programme_design",
+      "stance": "support",
+      "confidence": "high",
+      "summary": "North Programme develops fiscal, procurement, industry, energy, supply-chain, capital-market, Arctic and strategic-independence work. Alignment is offered voluntarily and existing nations remain sovereign.",
+      "notes": "Distinguish practical programme from sacred North / mythic kingship."
+    },
+    {
+      "date": "2026-08-22",
+      "topic": "Energy resilience",
+      "mode": "explicit_position",
+      "stance": "support",
+      "confidence": "high",
+      "summary": "Supports more European/northern gas drilling where economically, legally and environmentally viable in order to improve supply stability.",
+      "notes": "Later also supports wind, green energy and nuclear; the through-line is resilience rather than a single-fuel ideology."
+    },
+    {
+      "date": "2026-08-27",
+      "topic": "Public services and labour",
+      "mode": "explicit_position",
+      "stance": "support",
+      "confidence": "high",
+      "summary": "Supports public schools, hospitals/healthcare, unions, public prisons and a social safety net while also accepting markets, private property, entrepreneurship and contribution/work expectations.",
+      "notes": "Rejects simplistic unconditional ‘free gibs’; prefers targeted benefits with social/productive return."
+    },
+    {
+      "date": "2026-08-27",
+      "topic": "Civic developmentalism",
+      "mode": "accepted_formulation",
+      "stance": "support",
+      "confidence": "high",
+      "summary": "Accepts a Radical Center synthesis combining capitalism, welfare, education, healthcare, infrastructure, technology, European capability and democratic order with anti-corruption and anti-extremism.",
+      "notes": "‘Civic developmentalism’ is an archive synthesis label."
+    },
+    {
+      "date": "2026-09-02",
+      "topic": "European strategic autonomy",
+      "mode": "programme_design",
+      "stance": "support",
+      "confidence": "high",
+      "summary": "Wants a stronger northern/European pole with more distance from US dependence: greater European defense, technology, production, automation, AI/compute, drones, energy abundance and financial/industrial capacity.",
+      "notes": "Strategic autonomy is not synonymous with isolation from the United States."
+    },
+    {
+      "date": "2026-09-02",
+      "topic": "US defense / institutions / domestic rebuild",
+      "mode": "policy_proposal",
+      "stance": "restructure",
+      "confidence": "high",
+      "summary": "Proposes radically re-evaluating US defense and other spending, reducing redundancy, reconsidering CIA/Pentagon/FBI structures peacefully, rebuilding selected domestic production, and redirecting capacity toward health, wealth, education, housing, energy and human outcomes.",
+      "notes": "Some numerical budget examples were hypothetical/ambiguous and are intentionally not normalized here."
+    },
+    {
+      "date": "2026-09-02",
+      "topic": "Reverse Jenga audit",
+      "mode": "policy_proposal",
+      "stance": "support",
+      "confidence": "high",
+      "summary": "Audit each public entity, programme, NGO, company or branch for measurable value; simplify, merge, repurpose, pause or remove structures sequentially rather than demolishing them ideologically and assuming replacements will work.",
+      "notes": "VAT and billionaire taxation were described as options on the table, not fixed universal doctrine."
+    },
+    {
+      "date": "2026-09-02",
+      "topic": "Energy mix",
+      "mode": "explicit_position",
+      "stance": "support",
+      "confidence": "high",
+      "summary": "Supports more northern European gas, less dependence on US LNG, expansion of wind/green energy and nuclear, stronger grids/electricity and energy surplus.",
+      "notes": "Pragmatic portfolio approach centered on resilience and productive capacity."
+    },
+    {
+      "date": "2026-09-07",
+      "topic": "Four-axis political/world model",
+      "mode": "conceptual_model",
+      "stance": "explore",
+      "confidence": "medium",
+      "summary": "Uses NORTH/WEST/EAST/SOUTH as a relational map for political-economic systems and currencies rather than a simple nation list; Russia sits in East ‘for now’ while North remains a European/northern field.",
+      "notes": "Model mixes descriptive geopolitics with symbolic architecture and must be labeled accordingly."
+    },
+    {
+      "date": "2026-09-12",
+      "topic": "Lobbying / cults / controlled opposition / Palantir / AIPAC / Israel365 / Figtree / Turning Point / Hollywood",
+      "mode": "research_lead",
+      "stance": "investigate",
+      "confidence": "high",
+      "summary": "Requests broad relational research into political funding, lobbying, religious-political networks, data/surveillance contractors, cultic dynamics, controlled-opposition hypotheses, media/Hollywood and victim networks.",
+      "notes": "Investigation interest is not evidence that the named actors are centrally coordinated. Each relationship requires sourcing, directionality, dates and confidence."
+    }
   ],
   "synthesis": {
     "chosen_label": "radically centered",
-    "archive_synthesis_labels": ["Nordic civic developmentalism","radical pragmatic center","sovereignty-preserving strategic autonomy"],
-    "core": "Substantial freedom plus responsibility; markets and private property alongside public healthcare, education, infrastructure and a social floor; a state no larger than justified but capable enough to build strategic capacity; fiscal discipline; sovereign nations that cooperate deeply; European strategic autonomy; power constrained by legitimacy, reciprocity, transparency and outcomes rather than ideology."
+    "user_originated_secondary_label": "conservative leftist / radical center",
+    "archive_synthesis_labels": [
+      "Nordic civic developmentalism",
+      "radical pragmatic center",
+      "sovereignty-preserving strategic autonomy",
+      "productive freedom"
+    ],
+    "core": "Substantial freedom plus responsibility; markets and private property alongside public healthcare, education, infrastructure and a social floor; fiscal discipline without reflexive austerity; a state no larger than justified but capable enough to build strategic capacity; sovereign nations that cooperate deeply; European strategic autonomy; strong defence constrained by legitimacy; technology and AI used for capability while resisting structural dependency; power constrained by reciprocity, transparency and measurable outcomes rather than ideological branding.",
+    "defining_tensions": [
+      "left social commitments + conservative fiscal temperament",
+      "markets/private property + public services/social floor",
+      "individual liberty + civic responsibility",
+      "national sovereignty + deep European/North coupling",
+      "defence capability + anti-domination",
+      "AI/technology acceleration + digital/data sovereignty",
+      "institutional skepticism + demand for capable public institutions",
+      "Nordic communal responsibility + protection of individuality"
+    ],
+    "alignment_owner": "knowledge/politics/tim-dooley-political-alignment-map.json"
   },
-  "unresolved": ["abortion","detailed LGBTQ/trans law","death penalty","exact gun-control regime","universal basic income as current doctrine","exact minimum wage","rent control","complete tax code","whether wealth tax is universal doctrine","electoral system","monarchy/direct democracy/constitutional design","central-bank mandate","universal euro adoption","crypto doctrine","NATO abolition or expansion","Ukraine final territorial settlement","Russia sanctions end-state","nuclear weapons doctrine","China/Taiwan comprehensive doctrine","one-state/two-state Israel-Palestine settlement","Jerusalem/borders/return/Gaza governance","asylum quotas","net-zero/fossil phaseout deadline","comprehensive nuclear-energy doctrine"]
+  "unresolved": [
+    "abortion",
+    "detailed LGBTQ/trans law",
+    "death penalty",
+    "exact gun-control regime",
+    "universal basic income as current doctrine",
+    "exact minimum wage",
+    "rent control",
+    "complete tax code",
+    "whether wealth tax is universal doctrine",
+    "electoral system",
+    "monarchy/direct democracy/constitutional design",
+    "central-bank mandate",
+    "universal euro adoption",
+    "crypto doctrine",
+    "NATO abolition or expansion",
+    "Ukraine final territorial settlement",
+    "Russia sanctions end-state",
+    "nuclear weapons doctrine",
+    "China/Taiwan comprehensive doctrine",
+    "one-state/two-state Israel-Palestine settlement",
+    "Jerusalem/borders/return/Gaza governance",
+    "asylum quotas",
+    "net-zero/fossil phaseout deadline",
+    "comprehensive nuclear-energy doctrine"
+  ],
+  "connections": [
+    "knowledge/politics/tim-dooley-political-alignment-map.json",
+    "knowledge/timeline/prediction-epiphany-causal-genealogy-2026.json"
+  ]
 }

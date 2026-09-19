@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "rare-value-contract",
+  "purpose": "Define what deserves prominent public space in the Potato House after basic correctness has been satisfied.",
+  "principle": "Population is necessary but insufficient. Prominent material should help the reader see a consequential relation, mechanism, tension, genealogy or possibility that ordinary browsing would likely leave fragmented.",
+  "public_value_levels": [
+    {
+      "id": "reference",
+      "label": "Reference",
+      "definition": "Accurate general fact needed for orientation.",
+      "public_use": "Short supporting context; rarely the destination."
+    },
+    {
+      "id": "context",
+      "label": "Context",
+      "definition": "Multiple facts organized so the reader understands where an entity sits.",
+      "public_use": "Dossier/background layer."
+    },
+    {
+      "id": "connection",
+      "label": "Connection",
+      "definition": "Typed relation between facts/entities with provenance.",
+      "public_use": "Graph/path layer."
+    },
+    {
+      "id": "synthesis",
+      "label": "Synthesis",
+      "definition": "Several independently sourced relations combined into a larger explanatory model.",
+      "public_use": "Core explanatory content."
+    },
+    {
+      "id": "discovery",
+      "label": "Discovery candidate",
+      "definition": "A defensible non-obvious bridge or negative-space finding that generates a new question, hypothesis or route.",
+      "public_use": "Highlighted only with explicit inference status and test."
+    }
+  ],
+  "promotion_questions": [
+    "What can the reader understand here that one source alone does not reveal?",
+    "Which two or more domains are being joined, and by what mechanism?",
+    "Why does the connection matter for purpose, capability, institutions, history or the Potato framework?",
+    "What would falsify or weaken it?",
+    "Can the reader reach the source fragments?",
+    "Does it create a next question, experiment, comparison or decision?"
+  ],
+  "page_rule": "The House page may show reference examples, but its richest panels should prioritize synthesis and discovery over catalog volume."
+}

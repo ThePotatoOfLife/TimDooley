@@ -135,6 +135,7 @@ try {
   await loadAfterPaint('Interaction Router', './3d-interaction-router.js');
   await loadAfterPaint('Inspector Router', './3d-inspector-router.js');
   await loadAfterPaint('Inspector URL', './3d-inspector-url.js');
+  await loadAfterPaint('Inspector Visibility', './3d-inspector-visibility.js');
   await loadAfterPaint('Country selection', './3d-country-selection.js');
   await loadAfterPaint('Panel lifecycle', './3d-panel-lifecycle.js');
   await loadAfterPaint('Layer Registry', './3d-layer-registry.js');
@@ -143,6 +144,8 @@ try {
   await loadAfterPaint('Spatial Overlay UI', './3d-spatial-overlay-ui.js');
   await loadAfterPaint('Entity Runtime', './3d-entity-runtime.js');
   await loadAfterPaint('Active View', './3d-active-view.js');
+  await loadAfterPaint('Country Presentation', './3d-country-presentation.js');
+  await loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js');
   await loadAfterPaint('World Bar', './3d-world-bar.js');
   await loadAfterPaint('Country Card', './3d-country-card.js');
   await loadAfterPaint('Scalar Runtime Bridge', './3d-scalar-runtime-bridge.js');

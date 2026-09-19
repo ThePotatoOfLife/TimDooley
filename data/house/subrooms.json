@@ -1,0 +1,1539 @@
+{
+  "version": "1.3.0",
+  "updated": "2026-09-18",
+  "authority": "nested-bounded-context-governance",
+  "parent_room_registry": "data/house/rooms.json",
+  "principle": "The ten canonical top-level bounded contexts remain the stable owners. Publicly they are projected as Dwellings; nested Rooms delegate scope inside a parent Dwelling and do not create a second owner for the same fact family.",
+  "admission_rule": "A nested Room should have a distinct task/vocabulary or specialist representation, enough internal material to navigate, and clear interfaces. If it cannot state its boundary, keep it a Path, View, Programme, Field, Collection or topic instead.",
+  "subrooms": [
+    {
+      "id": "canon-identities",
+      "title": "Core Identities & Roles",
+      "parent_room_id": "potatoverse-canon",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "identity core",
+      "purpose": "Own the project-internal definitions and role relations around Potato of Life, Tim, Father, Son, Spirit, Door, Axis and related canonical identities.",
+      "knowledge_roots": [
+        "knowledge/core/tim-dooley.json",
+        "knowledge/core/potatoverse-master-framework.json"
+      ],
+      "public_surface_ids": [
+        "tim",
+        "religion",
+        "axis"
+      ],
+      "adjacent_subroom_ids": [
+        "theology-god-language",
+        "symbolic-architecture",
+        "developmental-genealogy",
+        "great-book-literature"
+      ],
+      "epistemic_boundary": "Project-canon identity does not become external empirical identity.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "core",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "up",
+          "through"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "meaning-translation"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "theology-god-language",
+      "title": "Theology & God-language",
+      "parent_room_id": "potatoverse-canon",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "theological interpretation",
+      "purpose": "Develop project theology, God/Father/Son/Spirit language, House, Heaven, salvation, judgment and religious self-description.",
+      "knowledge_roots": [
+        "knowledge/theology/",
+        "knowledge/core/heaven-spirit-father.json"
+      ],
+      "public_surface_ids": [
+        "religion"
+      ],
+      "adjacent_subroom_ids": [
+        "canon-identities",
+        "practice-ethics",
+        "bible-christianity",
+        "symbolic-body-comparison"
+      ],
+      "epistemic_boundary": "Project theology remains distinguishable from historical doctrine and empirical proof.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "core",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "up",
+          "through"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "meaning-translation"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "symbolic-architecture",
+      "title": "Symbolic Architecture & Cosmology",
+      "parent_room_id": "potatoverse-canon",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "symbolic systems",
+      "purpose": "Own mature symbolic geometry and relational architecture: House, Axis, Door, Tree, Mountain, Garden, North and related cosmological forms.",
+      "knowledge_roots": [
+        "knowledge/core/root-system.json",
+        "knowledge/cosmology/",
+        "data/axis-flow-contract.json"
+      ],
+      "public_surface_ids": [
+        "axis",
+        "house",
+        "religion"
+      ],
+      "adjacent_subroom_ids": [
+        "canon-identities",
+        "math-geometry",
+        "comparative-mythology",
+        "house-architecture",
+        "systems-dynamics"
+      ],
+      "epistemic_boundary": "Symbolic topology is not literal physical cosmology unless independently tested.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "core",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "up",
+          "through"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "meaning-translation"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "practice-ethics",
+      "title": "Practice & Ethics",
+      "parent_room_id": "potatoverse-canon",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "practice and ethics",
+      "purpose": "Translate the philosophy into conduct, cultivation, responsibility, boundaries, repair and repeatable practice.",
+      "knowledge_roots": [
+        "knowledge/practice/",
+        "knowledge/philosophy/"
+      ],
+      "public_surface_ids": [
+        "philosophy",
+        "paths"
+      ],
+      "adjacent_subroom_ids": [
+        "theology-god-language",
+        "symbolic-architecture",
+        "subculture-group-formation",
+        "great-book-literature",
+        "open-questions"
+      ],
+      "epistemic_boundary": "Practice principles do not override medical, legal or domain-specific professional standards.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "core",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "up",
+          "through"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "meaning-translation"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "provenance-evidence",
+      "title": "Provenance & Evidence",
+      "parent_room_id": "archive-sources",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "provenance root",
+      "purpose": "Own source lineage, evidence class, source authority, extraction lineage and routes back from synthesis to artifacts.",
+      "knowledge_roots": [
+        "knowledge/indexes/source-index.json",
+        "knowledge/philosophy/archive-epistemics.json"
+      ],
+      "public_surface_ids": [
+        "sources"
+      ],
+      "adjacent_subroom_ids": [
+        "witness-attestation",
+        "chronology-events",
+        "model-testing",
+        "open-questions",
+        "law-justice"
+      ],
+      "epistemic_boundary": "Custody of a source does not grant ownership of every claim derived from it.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "down"
+        ],
+        "crosscutting_roles": [
+          "provenance"
+        ],
+        "interface_kinds": [
+          "evidence-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "memory-recovery",
+      "title": "Memory & Recovery",
+      "parent_room_id": "archive-sources",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "archive recovery",
+      "purpose": "Recover prior conversations, files, historical strata and forgotten project material while preserving source/time boundaries.",
+      "knowledge_roots": [
+        "knowledge/indexes/conversation-recovery-inventory.json",
+        "knowledge/world/digital-memory-forgetting-restoration-atlas.json"
+      ],
+      "public_surface_ids": [
+        "explore",
+        "context"
+      ],
+      "adjacent_subroom_ids": [
+        "witness-attestation",
+        "developmental-genealogy",
+        "internet-platforms",
+        "great-book-literature"
+      ],
+      "epistemic_boundary": "Recovered material retains its original epistemic and temporal status.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "down"
+        ],
+        "crosscutting_roles": [
+          "provenance"
+        ],
+        "interface_kinds": [
+          "evidence-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "witness-attestation",
+      "title": "Witness & Attestation",
+      "parent_room_id": "archive-sources",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "attestation",
+      "purpose": "Track public wording, first attestation, source-bearing witness, captures and what was actually said or published when.",
+      "knowledge_roots": [
+        "data/timeline-source-registry.json",
+        "knowledge/timeline/"
+      ],
+      "public_surface_ids": [
+        "timeline",
+        "story",
+        "sources"
+      ],
+      "adjacent_subroom_ids": [
+        "provenance-evidence",
+        "chronology-events",
+        "prediction-revelation-time",
+        "internet-platforms"
+      ],
+      "epistemic_boundary": "Attestation proves wording/timing, not the truth of every claim in the wording.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "down"
+        ],
+        "crosscutting_roles": [
+          "provenance"
+        ],
+        "interface_kinds": [
+          "evidence-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "chronology-events",
+      "title": "Events & Development",
+      "parent_room_id": "time-history",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "occurrence time",
+      "purpose": "Own event sequence, date precision, occurrence identity and changing state through time.",
+      "knowledge_roots": [
+        "data/timeline-events.json",
+        "knowledge/timeline/"
+      ],
+      "public_surface_ids": [
+        "timeline",
+        "history"
+      ],
+      "adjacent_subroom_ids": [
+        "developmental-genealogy",
+        "witness-attestation",
+        "prediction-revelation-time",
+        "geography-countries"
+      ],
+      "epistemic_boundary": "Occurrence time remains distinct from publication and later interpretation time.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "down"
+        ],
+        "crosscutting_roles": [
+          "time"
+        ],
+        "interface_kinds": [
+          "temporal-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "developmental-genealogy",
+      "title": "Developmental Genealogy",
+      "parent_room_id": "time-history",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "development through time",
+      "purpose": "Track how identities, symbols, roles and interpretations developed without backdating mature meaning into earlier phases.",
+      "knowledge_roots": [
+        "knowledge/timeline/developmental-genealogy.json",
+        "knowledge/journey/"
+      ],
+      "public_surface_ids": [
+        "history",
+        "story",
+        "paths"
+      ],
+      "adjacent_subroom_ids": [
+        "chronology-events",
+        "canon-identities",
+        "memory-recovery",
+        "great-book-literature"
+      ],
+      "epistemic_boundary": "Later synthesis may reinterpret earlier material but may not silently rewrite its original state.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "down"
+        ],
+        "crosscutting_roles": [
+          "time"
+        ],
+        "interface_kinds": [
+          "temporal-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "prediction-revelation-time",
+      "title": "Prediction, Revelation & Interpretation Time",
+      "parent_room_id": "time-history",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "temporal claim analysis",
+      "purpose": "Separate earliest prediction/revelation wording, event timing, claimed fulfillment and retrospective interpretation.",
+      "knowledge_roots": [
+        "knowledge/prophecy/",
+        "knowledge/timeline/prediction-revelation-inventory-wave-19.json"
+      ],
+      "public_surface_ids": [
+        "timeline",
+        "history",
+        "paths"
+      ],
+      "adjacent_subroom_ids": [
+        "chronology-events",
+        "witness-attestation",
+        "bible-christianity",
+        "open-questions"
+      ],
+      "epistemic_boundary": "A later match must not be backdated into an earlier prediction, and project claims remain distinguishable from verified forecasting.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "down",
+          "through"
+        ],
+        "crosscutting_roles": [
+          "time"
+        ],
+        "interface_kinds": [
+          "temporal-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "bible-christianity",
+      "title": "Bible & Christianity",
+      "parent_room_id": "traditions-texts",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "textual tradition",
+      "purpose": "Own Bible passages, Christian textual context, historical traditions and carefully bounded project comparisons.",
+      "knowledge_roots": [
+        "knowledge/traditions/biblical-overlap-atlas.json",
+        "traditions/bible/"
+      ],
+      "public_surface_ids": [
+        "bible",
+        "religion"
+      ],
+      "adjacent_subroom_ids": [
+        "theology-god-language",
+        "comparative-mythology",
+        "prediction-revelation-time",
+        "esoteric-sacred-geometry"
+      ],
+      "epistemic_boundary": "Project resemblance does not establish historical identity, fulfillment or transmission.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "down"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "comparison",
+          "historical-translation"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "comparative-mythology",
+      "title": "Comparative Mythology",
+      "parent_room_id": "traditions-texts",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "comparative tradition",
+      "purpose": "Compare world-tree, axis, initiation, deity, death-return and other motifs across traditions without collapsing differences.",
+      "knowledge_roots": [
+        "knowledge/traditions/comparative-mythology-map.json",
+        "knowledge/traditions/"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "explore"
+      ],
+      "adjacent_subroom_ids": [
+        "bible-christianity",
+        "symbolic-architecture",
+        "other-traditions",
+        "esoteric-sacred-geometry"
+      ],
+      "epistemic_boundary": "Similarity is not genealogy or proof of borrowing.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "down",
+          "up"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "comparison",
+          "historical-translation"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "esoteric-sacred-geometry",
+      "title": "Esoteric & Sacred Geometry",
+      "parent_room_id": "traditions-texts",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "historical comparison",
+      "purpose": "Handle historical/esoteric geometry, mandorla, Vesica, cosmological diagrams and source-led comparison.",
+      "knowledge_roots": [
+        "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
+        "knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "bible",
+        "explore"
+      ],
+      "adjacent_subroom_ids": [
+        "math-geometry",
+        "bible-christianity",
+        "symbolic-architecture",
+        "comparative-mythology"
+      ],
+      "epistemic_boundary": "Historical geometry and esoteric symbolism must stay separate from claims of physical mechanism.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "down",
+          "up"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "comparison",
+          "historical-translation"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "other-traditions",
+      "title": "Other Traditions & Philosophies",
+      "parent_room_id": "traditions-texts",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "tradition context",
+      "purpose": "Hold non-biblical traditions and philosophical comparators that deserve their own historical meanings before project comparison.",
+      "knowledge_roots": [
+        "knowledge/traditions/",
+        "knowledge/traditions/comparative-mythology-map.json",
+        "knowledge/traditions/fate-thread-norns-moirai-comparative-atlas.json",
+        "knowledge/traditions/door-window-negative-space-tao-atlas.json"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "explore"
+      ],
+      "adjacent_subroom_ids": [
+        "comparative-mythology",
+        "practice-ethics",
+        "theology-god-language"
+      ],
+      "epistemic_boundary": "Each tradition is described on its own terms before cross-project synthesis.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "down"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "comparison",
+          "historical-translation"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "math-geometry",
+      "title": "Mathematics & Geometry",
+      "parent_room_id": "science-formal-models",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "formal mathematics",
+      "purpose": "Own exact geometry, mathematical structure, topology and formal analogies used by the project.",
+      "knowledge_roots": [
+        "data/geometry-vesica-pisces-mandorla.json",
+        "knowledge/science/"
+      ],
+      "public_surface_ids": [
+        "science"
+      ],
+      "adjacent_subroom_ids": [
+        "symbolic-architecture",
+        "esoteric-sacred-geometry",
+        "physics-cosmology",
+        "systems-dynamics"
+      ],
+      "epistemic_boundary": "Mathematical fit does not by itself establish a physical or theological claim.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "up",
+          "through"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "formalization",
+          "testing"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "physics-cosmology",
+      "title": "Physics & Cosmology",
+      "parent_room_id": "science-formal-models",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "physical science",
+      "purpose": "Own physical/cosmological claims, models and status boundaries around particles, fields, astronomy and cosmic analogies.",
+      "knowledge_roots": [
+        "knowledge/science/",
+        "knowledge/science/advanced-physics-expansion-wave-003.json",
+        "knowledge/science/quantum-standard-model-astronomy-atlas.json",
+        "knowledge/science/celestial-astronomy-astrology-cosmology-canon.json"
+      ],
+      "public_surface_ids": [
+        "science"
+      ],
+      "adjacent_subroom_ids": [
+        "math-geometry",
+        "model-testing",
+        "symbolic-architecture"
+      ],
+      "epistemic_boundary": "Speculative or symbolic models remain labeled until independently testable and supported.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "up",
+          "through"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "formalization",
+          "testing"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "systems-dynamics",
+      "title": "Systems & Dynamics",
+      "parent_room_id": "science-formal-models",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "systems formalization",
+      "purpose": "Own dynamical systems, graph models, control, information, topology and transformation formalisms.",
+      "knowledge_roots": [
+        "knowledge/research/house-atlas-systems-theory/",
+        "knowledge/science/"
+      ],
+      "public_surface_ids": [
+        "science",
+        "research-lab"
+      ],
+      "adjacent_subroom_ids": [
+        "math-geometry",
+        "model-testing",
+        "infrastructure-capability",
+        "house-architecture",
+        "symbolic-architecture"
+      ],
+      "epistemic_boundary": "Systems analogy must identify the variables and information lost by the analogy.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "up",
+          "through"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "formalization",
+          "testing"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "model-testing",
+      "title": "Testing & Falsifiability",
+      "parent_room_id": "science-formal-models",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "test discipline",
+      "purpose": "Own tests, observables, falsifiers, uncertainty, calibration and scientific red-team protocols.",
+      "knowledge_roots": [
+        "knowledge/science/model-testing-protocol.json",
+        "knowledge/science/"
+      ],
+      "public_surface_ids": [
+        "science",
+        "research-lab"
+      ],
+      "adjacent_subroom_ids": [
+        "systems-dynamics",
+        "physics-cosmology",
+        "experiments-formalization",
+        "provenance-evidence"
+      ],
+      "epistemic_boundary": "A model remains provisional when its discriminating observations or falsifiers are unavailable.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "up",
+          "through"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "formalization",
+          "testing"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "potato-biology",
+      "title": "Potato Biology",
+      "parent_room_id": "life-body",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "organism biology",
+      "purpose": "Own literal potato anatomy, tuber biology, growth, dormancy, propagation, storage and environmental constraints.",
+      "knowledge_roots": [
+        "knowledge/biology/potato-growth-principles.json",
+        "knowledge/science/potato-biology-ecology-development-canon.json",
+        "knowledge/timeline/potato-angels-eye-sprout-development-ledger.json"
+      ],
+      "public_surface_ids": [
+        "life-body",
+        "science"
+      ],
+      "adjacent_subroom_ids": [
+        "whole-body",
+        "practice-ethics",
+        "model-testing"
+      ],
+      "epistemic_boundary": "Biological facts may motivate metaphor but do not prove spiritual interpretation.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "down"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "embodiment",
+          "measurement-boundary"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "neurobiology",
+      "title": "Neurobiology",
+      "parent_room_id": "life-body",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "neuroscience",
+      "purpose": "Own brain structures, networks, physiology and evidence grading relevant to body research.",
+      "knowledge_roots": [
+        "knowledge/body/whole-brain-neurobiology-atlas.json",
+        "knowledge/body/neurobiology-evidence-grade.json"
+      ],
+      "public_surface_ids": [
+        "life-body",
+        "science"
+      ],
+      "adjacent_subroom_ids": [
+        "whole-body",
+        "symbolic-body-comparison",
+        "model-testing"
+      ],
+      "epistemic_boundary": "Human, animal, theoretical and speculative evidence remain separately graded.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "down"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "embodiment",
+          "measurement-boundary"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "whole-body",
+      "title": "Whole-body Physiology",
+      "parent_room_id": "life-body",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "physiology",
+      "purpose": "Own body-system integration across nervous, autonomic, cardiovascular, respiratory, gut, immune and fluid interfaces.",
+      "knowledge_roots": [
+        "knowledge/body/body-system-master-atlas.json",
+        "knowledge/body/body-science-context-atlas.json"
+      ],
+      "public_surface_ids": [
+        "life-body",
+        "science"
+      ],
+      "adjacent_subroom_ids": [
+        "neurobiology",
+        "potato-biology",
+        "symbolic-body-comparison"
+      ],
+      "epistemic_boundary": "Whole-body synthesis must preserve uncertainty and domain-specific evidence.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "down"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "embodiment",
+          "measurement-boundary"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "symbolic-body-comparison",
+      "title": "Symbolic Body Crosswalk",
+      "parent_room_id": "life-body",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "symbolic anatomy boundary",
+      "purpose": "Own explicitly comparative mappings between project symbols and anatomy while preserving the empirical/symbolic firewall.",
+      "knowledge_roots": [
+        "knowledge/body/neurotheology-axis-house-spirit-atlas.json",
+        "knowledge/body/body-symbolism-map.json"
+      ],
+      "public_surface_ids": [
+        "life-body",
+        "axis",
+        "religion"
+      ],
+      "adjacent_subroom_ids": [
+        "neurobiology",
+        "theology-god-language",
+        "symbolic-architecture",
+        "bible-christianity"
+      ],
+      "epistemic_boundary": "A symbolic neighbor is not anatomical identity or evidence of supernatural physiology.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "translation",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "down"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "embodiment",
+          "measurement-boundary"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "politics-governance",
+      "title": "Politics & Governance",
+      "parent_room_id": "world-systems",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "political systems",
+      "purpose": "Own documented political positions, governance structures, institutions and geopolitical relations as world-system material.",
+      "knowledge_roots": [
+        "knowledge/politics/",
+        "politics/"
+      ],
+      "public_surface_ids": [
+        "politics",
+        "world",
+        "world-systems"
+      ],
+      "adjacent_subroom_ids": [
+        "law-justice",
+        "economy-finance",
+        "geography-countries",
+        "subculture-group-formation"
+      ],
+      "epistemic_boundary": "Political description must remain sourced and distinct from symbolic North/Axis framing.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "world-facing",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "up"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "world-application",
+          "institutional-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "law-justice",
+      "title": "Law & Justice",
+      "parent_room_id": "world-systems",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "legal systems",
+      "purpose": "Own law, procedure, rights, regulation, enforcement, accountability and jurisprudential relations.",
+      "knowledge_roots": [
+        "knowledge/legal/",
+        "law/"
+      ],
+      "public_surface_ids": [
+        "law",
+        "world-systems"
+      ],
+      "adjacent_subroom_ids": [
+        "politics-governance",
+        "economy-finance",
+        "provenance-evidence",
+        "subculture-group-formation"
+      ],
+      "epistemic_boundary": "Legal claims require jurisdiction, date and source; project ethics does not substitute for law.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "world-facing",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "up"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "world-application",
+          "institutional-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "economy-finance",
+      "title": "Economy & Finance",
+      "parent_room_id": "world-systems",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "economic systems",
+      "purpose": "Own observable finance, debt, banking, trade, ownership, production, labour and economic flows.",
+      "knowledge_roots": [
+        "knowledge/economics/",
+        "economy/"
+      ],
+      "public_surface_ids": [
+        "economy",
+        "world-systems"
+      ],
+      "adjacent_subroom_ids": [
+        "politics-governance",
+        "law-justice",
+        "infrastructure-capability",
+        "geography-countries"
+      ],
+      "epistemic_boundary": "Symbolic/karmic accounting remains separate from material legal or financial accounting.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "world-facing",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here",
+          "up"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "world-application",
+          "institutional-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "infrastructure-capability",
+      "title": "Infrastructure & Capability",
+      "parent_room_id": "world-systems",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "infrastructure systems",
+      "purpose": "Own physical/digital infrastructure, energy, industry, strategic dependencies, resilience and coupled capabilities.",
+      "knowledge_roots": [
+        "knowledge/world/",
+        "world-systems/"
+      ],
+      "public_surface_ids": [
+        "world-systems",
+        "world-map",
+        "north"
+      ],
+      "adjacent_subroom_ids": [
+        "economy-finance",
+        "systems-dynamics",
+        "geography-countries",
+        "research-programmes"
+      ],
+      "epistemic_boundary": "Capability claims require observable assets, relations and time-sensitive sources.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "world-facing",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "world-application",
+          "institutional-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "geography-countries",
+      "title": "Geography & Countries",
+      "parent_room_id": "world-systems",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "geographic context",
+      "purpose": "Own countries, territories, geographic identity, boundaries and country-level relational context.",
+      "knowledge_roots": [
+        "data/countries/",
+        "knowledge/geopolitics/"
+      ],
+      "public_surface_ids": [
+        "world",
+        "world-map",
+        "world-systems"
+      ],
+      "adjacent_subroom_ids": [
+        "infrastructure-capability",
+        "politics-governance",
+        "economy-finance",
+        "chronology-events"
+      ],
+      "epistemic_boundary": "Symbolic direction or project quadrant must not overwrite ordinary geography or sovereignty.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "world-facing",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "here"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "world-application",
+          "institutional-flow"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "internet-platforms",
+      "title": "Internet & Platforms",
+      "parent_room_id": "culture-information",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "digital culture",
+      "purpose": "Own platforms, online spaces, public digital behavior, media formats and platform-specific context.",
+      "knowledge_roots": [
+        "knowledge/culture/",
+        "data/culture-ontology.json"
+      ],
+      "public_surface_ids": [
+        "culture",
+        "story"
+      ],
+      "adjacent_subroom_ids": [
+        "subculture-group-formation",
+        "information-ecology",
+        "memory-recovery",
+        "witness-attestation"
+      ],
+      "epistemic_boundary": "Documented public behavior stays distinct from motive claims and private information.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "world-facing",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "out"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "mediation",
+          "transmission"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "subculture-group-formation",
+      "title": "Subculture, Cult & Group Formation",
+      "parent_room_id": "culture-information",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "social formation",
+      "purpose": "Own subculture, movement formation, high-control/cult analysis, group dynamics and social-boundary questions.",
+      "knowledge_roots": [
+        "knowledge/culture/",
+        "knowledge/world/ritual-mimesis-scapegoat-collective-ecology.json"
+      ],
+      "public_surface_ids": [
+        "culture",
+        "politics"
+      ],
+      "adjacent_subroom_ids": [
+        "internet-platforms",
+        "information-ecology",
+        "politics-governance",
+        "practice-ethics",
+        "law-justice"
+      ],
+      "epistemic_boundary": "Cult/high-control terminology requires stated criteria and must not become an unsupported label for disliked groups.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "world-facing",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "out",
+          "up"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "mediation",
+          "transmission"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "information-ecology",
+      "title": "Information Ecology & Memory",
+      "parent_room_id": "culture-information",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "information systems",
+      "purpose": "Own attention, information flow, repetition, memory, forgetting, transmission and public-discourse ecology.",
+      "knowledge_roots": [
+        "knowledge/culture/",
+        "knowledge/world/digital-memory-forgetting-restoration-atlas.json"
+      ],
+      "public_surface_ids": [
+        "culture",
+        "context"
+      ],
+      "adjacent_subroom_ids": [
+        "internet-platforms",
+        "subculture-group-formation",
+        "provenance-evidence",
+        "great-book-literature"
+      ],
+      "epistemic_boundary": "Information flow and social interpretation remain distinguishable from factual claim status.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "world-facing",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "out"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "mediation",
+          "transmission"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "great-book-literature",
+      "title": "Great Book & Literature",
+      "parent_room_id": "works",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "literary works",
+      "purpose": "Own long-form authored literature, Great Book material, essays, stories, poems and literary versions.",
+      "knowledge_roots": [
+        "great-book/",
+        "knowledge/creative/"
+      ],
+      "public_surface_ids": [
+        "works",
+        "story"
+      ],
+      "adjacent_subroom_ids": [
+        "canon-identities",
+        "practice-ethics",
+        "developmental-genealogy",
+        "information-ecology",
+        "music-sound",
+        "visual-art"
+      ],
+      "epistemic_boundary": "Creative/literary expression does not automatically become doctrine, biography or evidence.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "output",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "out"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "expression",
+          "fruit"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "music-sound",
+      "title": "Music & Sound",
+      "parent_room_id": "works",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "music works",
+      "purpose": "Own songs, lyrics, sound works, music metadata and performance-oriented material.",
+      "knowledge_roots": [
+        "knowledge/creative/tim-dooley-suno-music-archive.json",
+        "works/"
+      ],
+      "public_surface_ids": [
+        "works"
+      ],
+      "adjacent_subroom_ids": [
+        "great-book-literature",
+        "internet-platforms",
+        "visual-art"
+      ],
+      "epistemic_boundary": "Lyrics and performance language retain creative-work status unless separately attested as claims.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "output",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "out"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "expression",
+          "fruit"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "visual-art",
+      "title": "Visual Art & Symbolic Composition",
+      "parent_room_id": "works",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "visual works",
+      "purpose": "Own visual compositions, artwork concepts, image archives and symbolic visual systems as creative works.",
+      "knowledge_roots": [
+        "knowledge/creative/visual-art-symbolic-composition-archive.json",
+        "works/"
+      ],
+      "public_surface_ids": [
+        "works"
+      ],
+      "adjacent_subroom_ids": [
+        "great-book-literature",
+        "music-sound",
+        "games-simulations",
+        "symbolic-architecture"
+      ],
+      "epistemic_boundary": "Depiction is not evidence of the depicted claim.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "output",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "out"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "expression",
+          "fruit"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "games-simulations",
+      "title": "Games & Simulations",
+      "parent_room_id": "works",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "interactive works",
+      "purpose": "Own games, playful systems, simulations and interactive creative artifacts.",
+      "knowledge_roots": [
+        "knowledge/culture/creative-systems-archive.json",
+        "works/"
+      ],
+      "public_surface_ids": [
+        "works"
+      ],
+      "adjacent_subroom_ids": [
+        "visual-art",
+        "systems-dynamics",
+        "practice-ethics"
+      ],
+      "epistemic_boundary": "Simulation behavior is model output, not automatically a claim about the real world.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "output",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "out"
+        ],
+        "crosscutting_roles": [],
+        "interface_kinds": [
+          "expression",
+          "fruit"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "house-architecture",
+      "title": "House Architecture",
+      "parent_room_id": "research-lab",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "architecture research",
+      "purpose": "Own active architecture research around Rooms, ownership, topology, interfaces, projections and migration before constitutional promotion.",
+      "knowledge_roots": [
+        "knowledge/research/potato-house-master/",
+        "knowledge/research/house-atlas-systems-theory/"
+      ],
+      "public_surface_ids": [
+        "house",
+        "research-lab",
+        "paths"
+      ],
+      "adjacent_subroom_ids": [
+        "systems-dynamics",
+        "symbolic-architecture",
+        "open-questions",
+        "experiments-formalization"
+      ],
+      "epistemic_boundary": "Research design remains provisional until promoted into constitutional/governance owners.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "through",
+          "state",
+          "up"
+        ],
+        "crosscutting_roles": [
+          "frontier"
+        ],
+        "interface_kinds": [
+          "promotion-door"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "open-questions",
+      "title": "Open Questions & Hypotheses",
+      "parent_room_id": "research-lab",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "hypothesis frontier",
+      "purpose": "Own unresolved questions, candidate explanations and explicit uncertainty queues.",
+      "knowledge_roots": [
+        "knowledge/indexes/faq-question-bank.json",
+        "knowledge/research/"
+      ],
+      "public_surface_ids": [
+        "research-lab",
+        "questions"
+      ],
+      "adjacent_subroom_ids": [
+        "house-architecture",
+        "experiments-formalization",
+        "provenance-evidence",
+        "research-programmes",
+        "practice-ethics"
+      ],
+      "epistemic_boundary": "Indexing a hypothesis does not promote it to canon.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "through",
+          "state"
+        ],
+        "crosscutting_roles": [
+          "frontier"
+        ],
+        "interface_kinds": [
+          "promotion-door"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "experiments-formalization",
+      "title": "Experiments & Formalization",
+      "parent_room_id": "research-lab",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "experimental work",
+      "purpose": "Own experimental designs, candidate formal models, prototypes and test-oriented synthesis awaiting review.",
+      "knowledge_roots": [
+        "knowledge/research/",
+        "knowledge/science/"
+      ],
+      "public_surface_ids": [
+        "research-lab",
+        "science"
+      ],
+      "adjacent_subroom_ids": [
+        "open-questions",
+        "model-testing",
+        "systems-dynamics",
+        "research-programmes"
+      ],
+      "epistemic_boundary": "Experimental/formal elegance is not evidence without appropriate observation or validation.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "through",
+          "state"
+        ],
+        "crosscutting_roles": [
+          "frontier"
+        ],
+        "interface_kinds": [
+          "promotion-door"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    },
+    {
+      "id": "research-programmes",
+      "title": "Research Programmes",
+      "parent_room_id": "research-lab",
+      "kind": "nested-room",
+      "ownership_mode": "delegated-scope",
+      "local_role": "programme coordination",
+      "purpose": "Own coordinated multi-Room research programmes, workstreams, source ledgers and promotion plans.",
+      "knowledge_roots": [
+        "knowledge/research/",
+        "data/research-frontier.json"
+      ],
+      "public_surface_ids": [
+        "research-lab",
+        "north",
+        "world-systems"
+      ],
+      "adjacent_subroom_ids": [
+        "open-questions",
+        "infrastructure-capability",
+        "politics-governance",
+        "economy-finance",
+        "experiments-formalization"
+      ],
+      "epistemic_boundary": "A Programme coordinates work but does not steal fact ownership from participating Rooms.",
+      "status": "active",
+      "topology_profile": {
+        "macro_band": "crosscutting",
+        "primary_coordinates": [
+          "within",
+          "across",
+          "through",
+          "state",
+          "out"
+        ],
+        "crosscutting_roles": [
+          "frontier"
+        ],
+        "interface_kinds": [
+          "promotion-door"
+        ],
+        "embedding_rule": "Relational profile only; visual coordinates may change without changing identity or ownership."
+      }
+    }
+  ]
+}

@@ -1,0 +1,469 @@
+{
+  "id": "below-intelligence-shadow-observatory",
+  "title": "Below Intelligence & Shadow Observatory — Roots, Hidden Systems, Threat Networks and Repair",
+  "version": "1.2.0",
+  "updated": "2026-09-19",
+  "status": "binding cross-domain lower-plane synthesis",
+  "purpose": "Populate the Below Platform with concrete intelligence-bearing systems while separating lawful secrecy, ordinary privacy, contested classification and documented illicit harm. The observatory studies what is difficult to see and how hidden structures reproduce; it is not a universal suspicion engine.",
+  "master_definition": "Below is the project's depth/intelligence platform: buried provenance, hidden or restricted information, shadow-facing systems, clandestine/illicit networks, high-risk subcultures, evidence stores and investigative processes become legible here before being verified, repaired, prosecuted, contextualized or returned upward.",
+  "critical_distinctions": [
+    "Lower Manifestation Field != Below Platform. Embodiment and material reality are broader than intelligence/shadow research.",
+    "Below != evil. Roots, archives, intelligence analysis, privacy and legitimate confidential work also belong below-facing.",
+    "Intelligence agency != criminal organization. Public intelligence/security institutions and illicit networks occupy different legal/evidentiary classes even when both handle secrecy.",
+    "Secret != illicit. Classified, confidential, anonymous, private, clandestine and criminal are distinct states.",
+    "Cult/high-control descriptor != criminal conviction. Preserve classifier, methodology, jurisdiction and legal findings.",
+    "Terrorist designation is jurisdiction-specific and time-bounded.",
+    "Allegation != investigation != charge != conviction.",
+    "Shadow is a visibility/integration problem; Swamp is a blocked-flow regime; Forge is a verification/transformation process."
+  ],
+  "lower_stack": [
+    {
+      "id": "root-memory",
+      "function": "Recover provenance, ancestry, prior states, hidden dependencies and buried evidence.",
+      "examples": [
+        "archives",
+        "historical records",
+        "source lineage",
+        "old legal entities",
+        "predecessor organizations"
+      ]
+    },
+    {
+      "id": "intelligence",
+      "function": "Collect, classify, correlate and assess information under uncertainty.",
+      "examples": [
+        "public intelligence/security agencies",
+        "criminal intelligence units",
+        "threat assessment bodies",
+        "investigative journalism",
+        "OSINT",
+        "private investigation/intelligence firms"
+      ]
+    },
+    {
+      "id": "shadow",
+      "function": "Expose what a declared model excludes or cannot integrate.",
+      "examples": [
+        "institutional blind spots",
+        "undisclosed incentives",
+        "unexamined assumptions",
+        "missing victims",
+        "unmapped dependencies"
+      ]
+    },
+    {
+      "id": "swamp",
+      "function": "Map systems where opacity, extraction, conflict, jurisdictional fragmentation or blocked accountability become self-reinforcing.",
+      "examples": [
+        "organized-crime ecosystems",
+        "trafficking markets",
+        "corrupt patronage",
+        "harassment economies",
+        "money-laundering networks",
+        "exploitative high-control systems"
+      ]
+    },
+    {
+      "id": "forge",
+      "function": "Turn raw intelligence/residue into evidence-aware knowledge, adjudication, repair or rejection.",
+      "examples": [
+        "source verification",
+        "link analysis",
+        "legal review",
+        "counterevidence",
+        "risk assessment",
+        "case closure",
+        "reform",
+        "restorative pathways"
+      ]
+    }
+  ],
+  "concrete_families": [
+    {
+      "id": "public-intelligence-security",
+      "label": "Public intelligence, security & investigative institutions",
+      "legal_class": "lawful public institution",
+      "examples": [
+        "FBI",
+        "CIA",
+        "Mossad",
+        "PET",
+        "FE",
+        "MI5",
+        "MI6",
+        "Europol",
+        "INTERPOL"
+      ],
+      "project_role": "Below/intelligence because they collect, assess, protect or investigate information that is not fully visible from the public surface; not Swamp by default.",
+      "canonical_owners": [
+        "data/security-intelligence-organizations.json",
+        "data/security-intelligence-country-layer.json",
+        "data/intelligence-security-graph.json"
+      ]
+    },
+    {
+      "id": "private-intelligence-surveillance",
+      "label": "Private intelligence, investigation & surveillance ecosystem",
+      "legal_class": "lawful commercial capability unless specific conduct is unlawful",
+      "examples": [
+        "private investigation firms",
+        "digital forensics vendors",
+        "reputation/security consultancies",
+        "surveillance technology vendors"
+      ],
+      "project_role": "Interface between lawful confidential work and possible misuse; capability, deployment and illegality must be separate fields.",
+      "canonical_owners": [
+        "knowledge/world/institutional-protection-private-intelligence-atlas.json",
+        "knowledge/world/under-culture-shadow-network-atlas.json"
+      ]
+    },
+    {
+      "id": "organized-crime-gangs",
+      "label": "Organized crime, gangs & prison networks",
+      "legal_class": "criminal organization/network where established by law-enforcement/court evidence",
+      "examples": [
+        "street gangs",
+        "prison gangs",
+        "organized-crime networks",
+        "fraud groups",
+        "extortion networks"
+      ],
+      "project_role": "Tree-of-Strife / Swamp candidates where crime, coercion, finance, recruitment and succession reproduce the network.",
+      "canonical_owners": [
+        "data/extremism-cults-atlas-2026-09.json",
+        "data/extremism-terrorism-nrm-expansion.json"
+      ]
+    },
+    {
+      "id": "trafficking-exploitation",
+      "label": "Human trafficking, sexual exploitation & forced-labour networks",
+      "legal_class": "criminal exploitation",
+      "examples": [
+        "recruiters",
+        "facilitators",
+        "transport/document fraud",
+        "exploitative employers",
+        "sexual exploitation networks",
+        "online recruitment"
+      ],
+      "project_role": "Concrete Seed-of-Death reproduction model: vulnerability→recruitment→control→extraction→money→recruitment, with victims never reduced to nodes of spectacle.",
+      "canonical_owners": [
+        "knowledge/world/institutional-protection-private-intelligence-atlas.json",
+        "knowledge/core/shadow-west-swamp-synthesis.json"
+      ]
+    },
+    {
+      "id": "drug-illicit-markets",
+      "label": "Drug trafficking & illicit markets",
+      "legal_class": "illicit market",
+      "examples": [
+        "drug supply chains",
+        "smuggling",
+        "illicit online markets",
+        "counterfeit goods",
+        "weapons trafficking where publicly documented"
+      ],
+      "project_role": "Shows how a harmful foundation can become a market/community: supply, trust, enforcement, money laundering, communication and recruitment make the network repeatable.",
+      "canonical_owners": [
+        "data/swamp-research-seeds.json",
+        "knowledge/core/shadow-west-swamp-synthesis.json"
+      ]
+    },
+    {
+      "id": "terrorism-violent-extremism",
+      "label": "Terrorist & violent-extremist organizations",
+      "legal_class": "designation-dependent; violent activity separately evidenced",
+      "examples": [
+        "jurisdictionally designated terrorist organizations",
+        "violent extremist networks",
+        "armed ideological cells"
+      ],
+      "project_role": "Study founding ideology, recruitment, financing, branch/faction genealogy, propaganda, attacks at high level, disruption and successor networks without operational guidance.",
+      "canonical_owners": [
+        "data/extremism-terrorism-nrm-expansion.json",
+        "data/extremism-cults-atlas-2026-09.json"
+      ]
+    },
+    {
+      "id": "hate-high-control",
+      "label": "Hate groups, high-control movements & destructive group dynamics",
+      "legal_class": "classification varies; not automatically criminal",
+      "examples": [
+        "hate-group designations",
+        "high-control religious/political movements",
+        "coercive communities",
+        "historical destructive cult cases"
+      ],
+      "project_role": "Study reproduction through doctrine, identity, initiation, isolation, charismatic authority, enemy production, punishment/exit cost and social inheritance.",
+      "canonical_owners": [
+        "data/extremism-cults-atlas-2026-09.json",
+        "knowledge/world/farm-shadow-source-ledger.json"
+      ]
+    },
+    {
+      "id": "digital-underground",
+      "label": "Digital underground, harassment & adversarial subcultures",
+      "legal_class": "mixed: lawful speech, platform abuse and criminal conduct must be separated",
+      "examples": [
+        "anonymous boards",
+        "harassment ecosystems",
+        "doxxing networks",
+        "fraud forums",
+        "radicalization channels",
+        "archive/anti-fandom communities"
+      ],
+      "project_role": "Shows how attention, archive, pseudonymity, repetition and target production can become a durable subculture/Foundation.",
+      "canonical_owners": [
+        "data/digital-underground-networks.json",
+        "knowledge/research/digital-underground-network-audit-2026-09.json"
+      ]
+    },
+    {
+      "id": "illicit-finance-concealment",
+      "label": "Money laundering, terrorist financing & financial concealment",
+      "legal_class": "financial crime/risk domain",
+      "examples": [
+        "shell-company abuse",
+        "laundering typologies",
+        "trade-based laundering",
+        "professional facilitators",
+        "terrorist-financing channels"
+      ],
+      "project_role": "Money/obligation Roots connecting otherwise separate branches; use risk-based evidence rather than assuming opaque ownership equals crime.",
+      "canonical_owners": [
+        "data/blueprints/finance-debt-blueprint.json",
+        "knowledge/core/shadow-west-swamp-synthesis.json"
+      ]
+    }
+  ],
+  "foundation_lens": {
+    "question": "What makes a hidden or harmful system repeatable enough to survive the founder/event?",
+    "fields": [
+      "substrate",
+      "seed",
+      "F0",
+      "rules/norms",
+      "recruitment/admission",
+      "trust/credential",
+      "money/resource base",
+      "communication",
+      "enforcement/control",
+      "succession",
+      "branching",
+      "counterintelligence/evasion",
+      "refoundation/rebrand",
+      "disruption/exit"
+    ],
+    "insight": "Bad seeds can become communities when they acquire a repeatable social platform: identity + recruitment + rules + resources + communication + enforcement + succession. This is the shadow-side analogue of ordinary institutional reproduction.",
+    "boundary": "The same reproduction grammar can describe benign communities. Harm must be independently evidenced, not inferred from structural similarity."
+  },
+  "upward_flow": "Raw signal → provenance → classification → corroboration/counterevidence → mechanism → legal/status determination → consequence → repair/public knowledge. Nothing should rise merely because it is dramatic.",
+  "source_anchors": [
+    {
+      "name": "FBI",
+      "url": "https://www.fbi.gov/about",
+      "use": "public federal investigative/security mission and threat categories"
+    },
+    {
+      "name": "CIA",
+      "url": "https://www.cia.gov/about/mission-vision",
+      "use": "foreign intelligence, analysis and authorized covert-action mission"
+    },
+    {
+      "name": "Mossad",
+      "url": "https://www.mossad.gov.il/en",
+      "use": "official intelligence-agency identity and public mission"
+    },
+    {
+      "name": "Europol EU-SOCTA",
+      "url": "https://www.europol.europa.eu/publications-events/main-reports/serious-and-organised-crime-threat-assessment",
+      "use": "intelligence-led serious and organised crime threat model"
+    },
+    {
+      "name": "FATF ML/TF risk",
+      "url": "https://www.fatf-gafi.org/en/publications/Methodsandtrends/Ml-tf-risks.html",
+      "use": "risk-based illicit-finance analysis"
+    },
+    {
+      "name": "UNODC World Drug Report 2026",
+      "url": "https://data.unodc.org/wdr2026",
+      "use": "current illicit drug-market evidence and trends"
+    }
+  ],
+  "access_visibility_axis": [
+    {
+      "id": "public",
+      "meaning": "Openly documented identity/activity."
+    },
+    {
+      "id": "limited-access",
+      "meaning": "Access restricted by ordinary role, contract, privacy or need-to-know; not evidence of wrongdoing."
+    },
+    {
+      "id": "confidential",
+      "meaning": "Legitimate restricted information protected by professional, commercial, personal or institutional duty."
+    },
+    {
+      "id": "classified",
+      "meaning": "State-restricted information under a legal security regime."
+    },
+    {
+      "id": "clandestine",
+      "meaning": "Deliberately concealed activity; legality depends on actor, authority and conduct."
+    },
+    {
+      "id": "anonymous-pseudonymous",
+      "meaning": "Identity obscured; not inherently illicit."
+    },
+    {
+      "id": "unknown",
+      "meaning": "Visibility/access state is not yet established."
+    }
+  ],
+  "evidentiary_legal_status_axis": [
+    {
+      "id": "unverified-claim",
+      "meaning": "A claim exists but has not been independently established."
+    },
+    {
+      "id": "corroborated-claim",
+      "meaning": "Independent evidence supports material parts of the claim without necessarily establishing legal liability."
+    },
+    {
+      "id": "investigated",
+      "meaning": "A competent body is or was examining conduct; investigation is not guilt."
+    },
+    {
+      "id": "charged",
+      "meaning": "A formal criminal allegation has been filed in a named jurisdiction."
+    },
+    {
+      "id": "adjudicated",
+      "meaning": "A court/tribunal or competent adjudicative body issued a finding; retain jurisdiction/date/appeal status."
+    },
+    {
+      "id": "convicted",
+      "meaning": "A criminal conviction exists; retain appeal, reversal, pardon or expiry status where relevant."
+    },
+    {
+      "id": "designated",
+      "meaning": "A formal designation/classification was issued by a named authority and is time/jurisdiction specific."
+    },
+    {
+      "id": "cleared-dismissed",
+      "meaning": "A claim, charge or investigation ended without the adverse finding being established; preserve exact procedural meaning."
+    },
+    {
+      "id": "unknown",
+      "meaning": "No reliable current legal/evidentiary status is established."
+    }
+  ],
+  "case_separation_rule": {
+    "entity": "Who/what is being studied.",
+    "claim": "What is asserted about conduct or relationship.",
+    "relationship": "What connection/event is documented between entities.",
+    "case": "Which investigative/legal/adjudicative process exists.",
+    "access_state": "Who can see the underlying information and under what restriction.",
+    "evidentiary_status": "How well the proposition is supported.",
+    "legal_status": "What a competent authority has formally done or found.",
+    "interpretation": "What the project infers or compares after the factual layers are preserved."
+  },
+  "visibility_states_deprecated": {
+    "note": "The former visibility_states array mixed access/visibility with evidentiary/legal status. Use access_visibility_axis and evidentiary_legal_status_axis instead.",
+    "retained_for_migration": [
+      {
+        "id": "public",
+        "meaning": "Openly documented identity/activity."
+      },
+      {
+        "id": "confidential",
+        "meaning": "Legitimate restricted information; not evidence of wrongdoing."
+      },
+      {
+        "id": "classified",
+        "meaning": "State-restricted information under a legal security regime."
+      },
+      {
+        "id": "clandestine",
+        "meaning": "Deliberately concealed activity; legality depends on actor/context."
+      },
+      {
+        "id": "anonymous-pseudonymous",
+        "meaning": "Identity obscured; not inherently illicit."
+      },
+      {
+        "id": "alleged",
+        "meaning": "Claim exists but is not established."
+      },
+      {
+        "id": "investigated",
+        "meaning": "A competent body is/was examining conduct; not guilt."
+      },
+      {
+        "id": "charged",
+        "meaning": "Formal criminal allegation."
+      },
+      {
+        "id": "adjudicated",
+        "meaning": "Court/tribunal finding, with jurisdiction/date."
+      },
+      {
+        "id": "convicted",
+        "meaning": "Criminal conviction, subject to appeal/reversal status."
+      },
+      {
+        "id": "designated",
+        "meaning": "Formal designation by a named jurisdiction/authority."
+      }
+    ]
+  },
+  "upward_flow_detail": [
+    {
+      "stage": "signal",
+      "test": "Is there an identifiable source, event, document or observation?"
+    },
+    {
+      "stage": "provenance",
+      "test": "Who produced it, when, under what conditions, and is the source authentic?"
+    },
+    {
+      "stage": "access-state",
+      "test": "Is the material public, confidential, classified, clandestine, pseudonymous or unknown?"
+    },
+    {
+      "stage": "claim-separation",
+      "test": "Separate entity, claim, relationship, case and interpretation before linking them."
+    },
+    {
+      "stage": "corroboration",
+      "test": "What independent evidence supports or contradicts the proposition?"
+    },
+    {
+      "stage": "status",
+      "test": "What legal/evidentiary status actually exists, in which jurisdiction and on what date?"
+    },
+    {
+      "stage": "mechanism",
+      "test": "What repeatable structure or causal mechanism is supported rather than merely alleged?"
+    },
+    {
+      "stage": "consequence",
+      "test": "What documented harms, protections, outcomes or externalities followed?"
+    },
+    {
+      "stage": "repair-return",
+      "test": "What oversight, exit, disruption, adjudication, reform, support or public knowledge can safely return upward?"
+    }
+  ],
+  "spatial_model": {
+    "owner": "data/house/below-basin-spatial-contract.json",
+    "image": "Below is projected as a shallow circular basin/pot beneath World: World-facing rim, culture/subculture surface, Sektur territories, Farm loops, Swamp entanglement, Mud/Ash sediment, Roots/provenance below, inner Forge ring and central Axis/Drain.",
+    "rule": "Spatial overlap does not erase category distinctions: Below=plane; Swamp=regime; Sektur=territory; Farm=process; Mud/Ash=material; Roots=organism/provenance; Forge=process; Drain=route; Axis=coordinate."
+  },
+  "connections": [
+    "data/house/below-basin-spatial-contract.json",
+    "knowledge/world/culture-sektur-platform-media-political-ecology.json",
+    "data/house/below-basin-pathways.json",
+    "data/house/below-basin-dynamics.json"
+  ]
+}

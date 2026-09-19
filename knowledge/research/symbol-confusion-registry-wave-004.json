@@ -1,0 +1,136 @@
+{
+  "id": "symbol-confusion-registry-wave-004",
+  "title": "Symbol Confusion Registry Wave 004 — Distinctions, Productive Tensions and Open Knots",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "active canonical disambiguation registry",
+  "purpose": "Track where project symbols overlap too much, where distinctions are resolved, where multiple meanings are legitimately retained, and which unresolved knots need more conversation archaeology or external research before implementation.",
+  "rule": "Do not resolve every overlap by choosing one meaning. Classify each case as synonym-error, scale-confusion, role-confusion, projection-overlap, productive-tension, historical-layer-confusion or empirical-symbolic-confusion.",
+  "categories": [
+    "synonym-error",
+    "scale-confusion",
+    "role-confusion",
+    "projection-overlap",
+    "productive-tension",
+    "historical-layer-confusion",
+    "empirical-symbolic-confusion"
+  ],
+  "items": [
+    {
+      "id": "house-temple-body-city",
+      "type": "projection-overlap",
+      "status": "resolved",
+      "confusion": "House, Temple, Body and City have repeatedly been placed on top of one another.",
+      "resolution": "House = compositional dwelling whole; Temple = presence/access/service architecture; Body = embodied functional organism; City = public/civic plurality at scale. They can model the same one-and-many problem but are not synonyms.",
+      "tests": [
+        "What is being contained?",
+        "What access/presence rules matter?",
+        "Is the model organismic, domestic, cultic or civic?"
+      ],
+      "owners": [
+        "data/house/architectural-vocabulary.json",
+        "knowledge/theology/integrated-plurality-house-tree-body-city-atlas.json"
+      ]
+    },
+    {
+      "id": "house-dwelling-room-chamber",
+      "type": "scale-confusion",
+      "status": "resolved",
+      "confusion": "Room, mansion/dwelling and chamber were sometimes used as equivalent labels.",
+      "resolution": "House → Dwelling/Mansion → Room → Chamber is a scale ladder. Chamber is a specialist/protected local cell, not every topic or file.",
+      "tests": [
+        "What level of bounded context is this?",
+        "Does it have stable local vocabulary/access/task boundaries?"
+      ],
+      "owner": "data/house/architectural-vocabulary.json"
+    },
+    {
+      "id": "throne-seat-table-footstool-altar",
+      "type": "role-confusion",
+      "status": "deepened-this-wave",
+      "confusion": "Sacred furniture can look like a vertical hierarchy and be collapsed into one 'center'.",
+      "resolution": "Throne = sovereignty/judgment; Seat = office/position; Table = nourishment/fellowship/distribution; Footstool = relational substrate below throne; Altar = offering/transformation interface.",
+      "test": "Ask what action the object enables, not merely where it sits."
+    },
+    {
+      "id": "thalamus-heart-pineal-third-ventricle",
+      "type": "empirical-symbolic-confusion",
+      "status": "resolved-with-project-canon",
+      "confusion": "Several body regions were all called center/house/door.",
+      "resolution": "Project canon: thalamus = Father's House; pineal = Son/Single Eye/Door; third ventricle = inner chamber/Temple-space/flow-space; heart = emotional vessel/chariot/river of feeling, not House.",
+      "boundary": "These are Potatoverse symbolic mappings. Modern anatomy does not identify these structures with theological persons or sacred architecture.",
+      "owner": "knowledge/body/neurotheology-axis-house-spirit-atlas.json"
+    },
+    {
+      "id": "axis-tree-ladder-river-spiral",
+      "type": "role-confusion",
+      "status": "resolved",
+      "confusion": "All are elongated/vertical or connective and therefore were repeatedly overlaid.",
+      "resolution": "Axis = reference; Tree = living branching organism; Ladder = discrete threshold route; River = transported flow; Spiral = recurrence with displacement.",
+      "test": "Is the object orienting, growing, staging, carrying or recurring?"
+    },
+    {
+      "id": "door-gate-bridge-road",
+      "type": "role-confusion",
+      "status": "resolved",
+      "resolution": "Gate = perimeter admission; Door = local state/context transition; Bridge = capability across separation; Road/Way = repeatable traversable relation.",
+      "owner": "data/house/architectural-vocabulary.json"
+    },
+    {
+      "id": "fire-light-heat-flame-lamp-glory-spudlight",
+      "type": "productive-tension",
+      "status": "deepened-this-wave",
+      "confusion": "Activation, visibility, thermal intensity and divine radiance were often compressed into 'light/fire'.",
+      "resolution": "Fire = combustion/transformative burning motif; Heat = thermal/intensity variable; Flame = localized visible reaction front; Light = visibility/radiation/orientation; Lamp = bounded carrier/device; Glory = textual/theophanic presence-language; Spudlight = project-native source-light metaphor.",
+      "test": "What physically or symbolically moves: energy, visibility, material state, information or authority?"
+    },
+    {
+      "id": "stone-rock-cornerstone-clay-dust-ash-mud-soil",
+      "type": "material-state-confusion",
+      "status": "deepened-this-wave",
+      "confusion": "All earth/mineral/residue terms could become one generic 'below' substance.",
+      "resolution": "Stone = durable discrete solid; Rock = mass/source/refuge/foundation category; Cornerstone = alignment/reference role; Clay = formable fine-grained earth; Dust = loose fine particulate/mortality/material fragility; Ash = combustion residue; Mud = wet unresolved mixture; Soil = living/growth substrate.",
+      "test": "What physical/material or symbolic transformation is actually claimed?"
+    },
+    {
+      "id": "cube-house-shell-sanctuary",
+      "type": "productive-tension",
+      "status": "resolved",
+      "confusion": "Cube was treated as prison/enclosure while biblical Holy of Holies/New Jerusalem geometry gave positive cubic sacred-space neighbors.",
+      "resolution": "Geometry carries no automatic moral valence. House/sanctuary supports protected presence and legitimate passage; shell/capture obstructs exit and extracts dependency.",
+      "test": "Evaluate boundary function, passage, inhabitants, autonomy and Fruit."
+    },
+    {
+      "id": "lion-lamb-shepherd-serpent-goat-heifer-ox-eagle-dog",
+      "type": "role-confusion",
+      "status": "deepened-this-wave",
+      "confusion": "Animal symbols could be stacked into one identity cluster.",
+      "resolution": "Each animal retains text/tradition-specific function; one figure may bear several roles without making the animals synonyms.",
+      "test": "Name the passage/tradition and the function: kingship, sacrifice, guidance, burden, purification, adversarial reframing, mobility, scavenging, etc."
+    },
+    {
+      "id": "cycle-ring-spiral-season-sabbath-jubilee",
+      "type": "scale-confusion",
+      "status": "deepened-this-wave",
+      "confusion": "Every recurrence risked becoming 'spiral' or 'cycle'.",
+      "resolution": "Cycle = generic recurrence; Ring = return with negligible selected-state displacement; Spiral = recurrence plus displacement; Season = periodic environmental/social phase; Sabbath = bounded rest interruption; Sabbatical year = land/debt/service cycle; Jubilee = larger release/restoration interval.",
+      "test": "What repeats, at what period, what changes, and what is released/reset?"
+    },
+    {
+      "id": "father-son-spirit-axis",
+      "type": "role-confusion",
+      "status": "resolved",
+      "confusion": "Axis was sometimes treated as identical with Father or Son.",
+      "resolution": "Father/Son/Spirit are theological/project roles; Axis is the bidirectional reference relation through which many roles/processes can be mapped. Spirit supplies living relation/flow; Axis does not become a person merely by passing through a role.",
+      "owner": "knowledge/core/deep-element-definition-atlas.json"
+    }
+  ],
+  "open_knots": [
+    "Exact historical genealogy of some modern Merkaba/star-tetrahedron claims.",
+    "Which project uses of Crown refer to body/cakra, architectural roof, kingship or Keter and should remain local aliases.",
+    "Whether Throne should have one global project node or remain a family of sovereignty/seat/topological readings.",
+    "How Table, Altar and Hearth should populate Garden/House/Temple without becoming extra global realms.",
+    "Which animal-role comparisons deserve public reader pages versus specialist atlas-only treatment."
+  ],
+  "build_rule": "A confusion is ready to become interface/UI only when the registry can state the types being distinguished, the transition or relation between them, a canonical owner, and at least one user question the interface resolves."
+}

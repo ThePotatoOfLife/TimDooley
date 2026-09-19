@@ -52,6 +52,54 @@
     });
   }
 
+  function createCurrentPlaybackGuard(apply){
+    let active=false;
+    let pending=null;
+    const select=item=>{
+      pending=null;
+      apply(item);
+      return true;
+    };
+    return {
+      offer(item){
+        if(active){pending=item;return false}
+        return select(item);
+      },
+      select,
+      setActive(next){
+        const wasActive=active;
+        active=Boolean(next);
+        if(wasActive&&!active&&pending){
+          const item=pending;
+          pending=null;
+          apply(item);
+        }
+        return active;
+      },
+      clear(){active=false;pending=null},
+      get active(){return active},
+    };
+  }
+
+  async function requestContentPreparation(container,sectionId,EventCtor=root?.CustomEvent,options={}){
+    if(!container||typeof container.dispatchEvent!=='function'||typeof EventCtor!=='function')return false;
+    const pending=[];
+    const event=new EventCtor('potato:tts-prepare',{
+      bubbles:false,
+      detail:{
+        sectionId,
+        signal:options.signal,
+        waitUntil(task){
+          if(task&&typeof task.then==='function')pending.push(Promise.resolve(task));
+        },
+      },
+    });
+    container.dispatchEvent(event);
+    if(!pending.length)return false;
+    await Promise.all(pending);
+    return true;
+  }
+
   function configFromElement(host,doc){
     if(!host||!doc)return null;
     const data=host.dataset||{};
@@ -83,6 +131,7 @@
     let currentItem=null;
     let drawer=null;
     let selectionAction=null;
+    let preparing=false;
     const pageHighlighter=Drawer.createPageHighlighter?.({document:doc})||{highlight:()=>false,clear:()=>{},invalidate:()=>{}};
     const getItems=()=>itemSelector?[...container.querySelectorAll(itemSelector)]:[];
     const firstItem=()=>getItems()[0]||null;
@@ -105,25 +154,50 @@
       clearReadingActive();
       if(active&&currentItem?.classList)currentItem.classList.add('ptts-reading-active');
     };
-    const chooseCurrent=item=>{
+    const applyCurrent=item=>{
       setReadingActive(false);
       pageHighlighter.invalidate();
       if(item&&container.contains(item))currentItem=item;
       refresh();
     };
+    const currentGuard=createCurrentPlaybackGuard(applyCurrent);
+    const chooseCurrent=item=>currentGuard.select(item);
+    const highlightEvent=event=>{
+      if(!event.absoluteWord)return;
+      const target=event.sectionId==='current'?currentItem:event.sectionId==='all'?container:null;
+      if(target)pageHighlighter.highlight(target,event.absoluteWord,config.excludeSelector||'',event.followReading);
+      else pageHighlighter.clear();
+    };
+    const prepareForPlayback=async(sectionId,options={})=>{
+      preparing=true;
+      try{
+        await requestContentPreparation(container,sectionId,doc.defaultView?.CustomEvent||root?.CustomEvent,options);
+      }finally{
+        preparing=false;
+        pageHighlighter.invalidate();
+        if(currentItem&&!container.contains(currentItem)){setReadingActive(false);currentItem=null}
+        ensureListenButtons();
+      }
+      const next=source();
+      drawer?.setPayload?.(next);
+      return next;
+    };
 
     drawer=Drawer.mount({
       target:host,
       getPayload:source,
+      prepareSection:prepareForPlayback,
       settingsKey:config.settingsKey||'potato-tts-settings',
       onEvent:event=>{
+        if(event.type==='start')currentGuard.setActive(event.sectionId==='current');
         if(event.sectionId==='current'&&['chunkstart','boundary'].includes(event.type))setReadingActive(true);
-        if(event.type==='boundary'&&event.absoluteWord){
-          const target=event.sectionId==='current'?currentItem:event.sectionId==='all'?container:null;
-          if(target)pageHighlighter.highlight(target,event.absoluteWord,config.excludeSelector||'');
-          else pageHighlighter.clear();
+        if(event.type==='boundary'&&event.absoluteWord)highlightEvent(event);
+        if(event.type==='followchange'&&event.absoluteWord)highlightEvent(event);
+        if(['complete','stop','error'].includes(event.type)){
+          currentGuard.setActive(false);
+          setReadingActive(false);
+          pageHighlighter.clear();
         }
-        if(['complete','stop','error'].includes(event.type)){setReadingActive(false);pageHighlighter.clear()}
       },
     });
     if(!drawer)return null;
@@ -157,14 +231,20 @@
       const item=event.target?.closest?.(itemSelector);
       if(item&&container.contains(item))chooseCurrent(item);
     };
+    const onCurrent=event=>{
+      const item=event.detail?.item;
+      if(itemSelector&&item&&container.contains(item)&&item.matches?.(itemSelector)&&item!==currentItem)currentGuard.offer(item);
+    };
     container.addEventListener('click',onActivate);
     container.addEventListener('focusin',onActivate);
+    container.addEventListener('potato:tts-current',onCurrent);
 
     const Observer=config.MutationObserver||root?.MutationObserver;
     const observer=Observer?new Observer(records=>{
       if(mutationsAreInside(records,host))return;
       pageHighlighter.invalidate();
-      if(currentItem&&!container.contains(currentItem)){setReadingActive(false);currentItem=null}
+      if(preparing)return;
+      if(currentItem&&!container.contains(currentItem)){setReadingActive(false);currentItem=null;currentGuard.clear()}
       ensureListenButtons();
       refresh();
     }):null;
@@ -186,7 +266,9 @@
         observer?.disconnect();
         container.removeEventListener('click',onActivate);
         container.removeEventListener('focusin',onActivate);
+        container.removeEventListener('potato:tts-current',onCurrent);
         selectionAction?.destroy?.();
+        currentGuard.clear();
         pageHighlighter.clear();
         clearReadingActive();
         drawer.stop?.();
@@ -215,5 +297,5 @@
     root.document.readyState==='loading'?root.document.addEventListener('DOMContentLoaded',start,{once:true}):start();
   }
 
-  return {cleanText,buildLongformPayload,selectionInside,readableText,mutationsAreInside,configFromElement,mount,autoMount};
+  return {cleanText,buildLongformPayload,selectionInside,readableText,mutationsAreInside,createCurrentPlaybackGuard,requestContentPreparation,configFromElement,mount,autoMount};
 });

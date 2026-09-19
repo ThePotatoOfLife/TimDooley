@@ -1,0 +1,84 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "title": "Trust Infrastructure Comparison Matrix",
+  "status": "cross-dossier synthesis; observations and project syntheses separated",
+  "dimensions": [
+    "trust_object",
+    "legitimacy_basis",
+    "decision_architecture",
+    "material_capacity",
+    "principal_doors",
+    "principal_eye",
+    "principal_fruit",
+    "principal_shadow",
+    "mission_drift_risk",
+    "goodhart_risk",
+    "capability_question"
+  ],
+  "rows": [
+    {
+      "entity": "danmarks-nationalbank",
+      "trust_object": "monetary value, payment reliability and financial-system stability",
+      "legitimacy_basis": "statute, independence and public monetary mandate",
+      "decision_architecture": "centralized expert central-bank governance with statutory independence",
+      "material_capacity": "balance sheet, market operations, payment/settlement functions, data and oversight capability",
+      "principal_doors": "settlement/access rules, monetary-policy transmission, institutional eligibility",
+      "principal_eye": "financial-system analysis, statistics and infrastructure oversight",
+      "principal_fruit": "price/payment/system stability and reliable monetary infrastructure",
+      "principal_shadow": "counterfactual crises avoided and causal attribution of preventive oversight",
+      "mission_drift_risk": "synthesis question: whether internal metrics/incentives ever detach from statutory mandate",
+      "goodhart_risk": "using one stability or profit indicator as proxy for the whole mandate",
+      "capability_question": "Does the institution increase the wider system's ability to transact and absorb shocks without creating hidden dependency?"
+    },
+    {
+      "entity": "wikimedia-foundation",
+      "trust_object": "free, durable and accessible knowledge infrastructure",
+      "legitimacy_basis": "nonprofit mission plus volunteer/community participation and public openness norms",
+      "decision_architecture": "central Foundation governance coupled to decentralized volunteer editorial governance",
+      "material_capacity": "software, servers, legal/privacy support, staff, grants and fundraising",
+      "principal_doors": "account permissions, community editorial processes, legal requests, technical APIs/access",
+      "principal_eye": "public edit histories, transparency reporting, community review and governance records",
+      "principal_fruit": "accessible free knowledge plus contributor/community capacity",
+      "principal_shadow": "representation gaps, contributor health, AI-mediated consumption and distributed governance effects",
+      "mission_drift_risk": "central infrastructure growth could theoretically outpace or crowd community capability; requires evidence, not assumption",
+      "goodhart_risk": "traffic, article count or fundraising becoming substitutes for knowledge quality and community health",
+      "capability_question": "Does central support leave communities more able to govern, create and preserve knowledge independently?"
+    },
+    {
+      "entity": "cern",
+      "trust_object": "shared long-horizon scientific inquiry and infrastructure",
+      "legitimacy_basis": "intergovernmental convention, Member State governance and scientific community norms",
+      "decision_architecture": "Council/committee governance plus expert experiment and programme structures",
+      "material_capacity": "accelerators, detectors, computing, laboratories, engineering and international funding",
+      "principal_doors": "membership, experiment participation, facility access, programme approval",
+      "principal_eye": "scientific review, Council oversight, strategy processes, experiment publication and replication",
+      "principal_fruit": "knowledge, technical capability, trained people and scientific option value",
+      "principal_shadow": "future discovery value, long-horizon opportunity cost and distribution of spillovers",
+      "mission_drift_risk": "large infrastructure programmes may create path dependence; whether this distorts scientific priorities is an empirical question",
+      "goodhart_risk": "near-term publication/discovery metrics obscuring infrastructure, training and option value",
+      "capability_question": "Does shared infrastructure expand the scientific capability of the broader community rather than only centralizing it?"
+    },
+    {
+      "entity": "icrc",
+      "trust_object": "neutral humanitarian access, protection and assistance",
+      "legitimacy_basis": "humanitarian principles, international humanitarian law role and field practice",
+      "decision_architecture": "Assembly/Directorate governance plus field assessment, negotiation and legal expertise",
+      "material_capacity": "field offices, logistics, medical/water systems, staff, tracing and donor funding",
+      "principal_doors": "negotiated access to people, places and parties in conflict",
+      "principal_eye": "field observation, accountability/evaluation, protection data and annual reporting",
+      "principal_fruit": "protection, access, health, water, tracing and restored capability",
+      "principal_shadow": "non-random access gaps, confidentiality, denied areas and counterfactual prevention effects",
+      "mission_drift_risk": "funding concentration and operational constraints create a question about independence; no causal drift claim without evidence",
+      "goodhart_risk": "counting assistance outputs while missing access quality, dignity, local capability or unserved populations",
+      "capability_question": "When does relief restore durable local capability rather than only immediate survival?"
+    }
+  ],
+  "comparative_revelations": [
+    "Trust architectures differ in what they ask people to rely on, but all require alignment of mandate, decision quality and executable capacity.",
+    "Door design is central in all four cases: settlement, editing/legal access, scientific participation and humanitarian access determine who can use or influence the system.",
+    "Shadow differs by domain: prevention counterfactuals, distributed community data, unknown scientific futures and conflict-access missingness are four distinct missingness mechanisms.",
+    "Fruit cannot be compared as one KPI across sectors; each requires purpose-specific outcome bundles plus externality/capability checks.",
+    "A useful general integrity test is Spirit↔Mind↔Body alignment over time, but any claim of drift must remain entity-specific and evidence-based."
+  ]
+}
