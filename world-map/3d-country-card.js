@@ -13,6 +13,8 @@ const RELATION_LABELS = { all:'All context', money:'Money', systems:'Systems', i
 let index = null;
 let renderedCode = null;
 let renderVersion = 0;
+let renderScheduled = false;
+let pendingRenderCode = null;
 let activeTab = 'overview';
 const records = new Map();
 
@@ -280,17 +282,38 @@ async function render(code = selection.current?.activeCode || selection.current?
   window.dispatchEvent(new CustomEvent('potato-atlas-country-card-rendered', { detail:{ code, version, pinned, answer:shared.answer } }));
 }
 
+function scheduleRender(code = selection.current?.activeCode || selection.current?.code || '') {
+  pendingRenderCode = String(code || '').toUpperCase();
+  const diagnostics = window.__potatoAtlasDiagnostics;
+  if (renderScheduled) {
+    if (diagnostics) diagnostics.countryCardRenderCoalesced = (diagnostics.countryCardRenderCoalesced || 0) + 1;
+    return;
+  }
+  renderScheduled = true;
+  if (diagnostics) diagnostics.countryCardRenderSchedules = (diagnostics.countryCardRenderSchedules || 0) + 1;
+  requestAnimationFrame(() => {
+    renderScheduled = false;
+    const nextCode = pendingRenderCode;
+    pendingRenderCode = null;
+    void render(nextCode);
+  });
+}
+
 install();
-window.addEventListener('potato-atlas-working-selection-change', event => render(event?.detail?.activeCode || event?.detail?.code));
-window.addEventListener('potato-atlas-pin-change', () => { if (renderedCode) render(renderedCode); });
-window.addEventListener('potato-atlas-active-view-change', event => { const code = event?.detail?.code; if (!code || code === renderedCode) render(renderedCode); });
-window.addEventListener('potato-atlas-query-change', () => { if (renderedCode) render(renderedCode); });
-window.addEventListener('potato-atlas-relation-mode-change', () => { if (renderedCode) render(renderedCode); });
+window.addEventListener('potato-atlas-working-selection-change', event => scheduleRender(event?.detail?.activeCode || event?.detail?.code || ''));
+window.addEventListener('potato-atlas-pin-change', () => { if (renderedCode) scheduleRender(renderedCode); });
+window.addEventListener('potato-atlas-active-view-change', event => {
+  const code = event?.detail?.code;
+  if (!code || code === renderedCode || code === pendingRenderCode) scheduleRender(code || renderedCode || '');
+});
+window.addEventListener('potato-atlas-query-change', () => { if (renderedCode) scheduleRender(renderedCode); });
+window.addEventListener('potato-atlas-relation-mode-change', () => { if (renderedCode) scheduleRender(renderedCode); });
 window.addEventListener('potato-atlas-entity-trace-change', syncTraceAction);
-if (selection.current?.selected) render(selection.current.activeCode || selection.current.code);
+if (selection.current?.selected) scheduleRender(selection.current.activeCode || selection.current.code);
 
 window.__potatoAtlasCountryCard = {
   render,
+  scheduleRender,
   comparisonRows,
   connectionRows,
   contextualRows,
