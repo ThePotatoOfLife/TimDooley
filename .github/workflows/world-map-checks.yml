@@ -55,5 +55,8 @@ jobs:
           python scripts/validate_world_map_visual_channels.py
           node scripts/test_world_map_visual_channels.mjs
 
+      - name: Validate World Map Places pipeline
+        run: python scripts/validate_world_places_fixture_pipeline.py
+
       - name: Audit World Map runtime architecture
         run: python scripts/audit_world_map.py
