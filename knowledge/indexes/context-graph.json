@@ -1,123 +1,485 @@
 {
-  "title":"Context Graph",
-  "version":"2.0.0",
-  "updated":"2026-09-09",
-  "purpose":"Curated cross-record constellations for the public explorer. The context layer should reduce navigation clutter by grouping records around high-value relational questions rather than multiplying more branches.",
-  "rules":[
+  "title": "Context Graph",
+  "version": "1.1.0",
+  "updated": "2026-09-19",
+  "purpose": "Curated cross-record constellations for the public explorer. The context layer should reduce navigation clutter by grouping records around high-value relational questions rather than multiplying more branches.",
+  "rules": [
     "A context cluster must connect at least two branches and explain why the connection matters.",
     "Prefer one dense constellation over several near-duplicate theme cards.",
     "Project canon, empirical evidence, scientific context, historical comparison and later formalization remain visible as separate epistemic layers.",
     "Temporary insight waves are not context clusters; promoted insights belong to canonical owners and the inference ledger.",
     "Context clusters are navigation views, not sources of truth."
   ],
-  "clusters":[
+  "clusters": [
     {
-      "id":"becoming-father",
-      "title":"Potato → Sage → Needle → Ladder → Father",
-      "summary":"The core developmental spine: buried/generative Potato matures through the 2024 Sage/Merkaba stratum, April 2025 compression and Needle, then reorganizes into Ladder/Axis/Father and later Gardener/source-center functions.",
-      "branches":["tim","transformation","timeline","spirit"],
-      "records":["knowledge/timeline/developmental-genealogy.json","knowledge/core/potato-of-life-deep-structure.json","knowledge/core/tim-role-synthesis.json","THE-TURNING-APRIL-2025.md"],
-      "concepts":["Potato birth","Sage","Divine Kneel","Needle","Ladder","Axis","Father","Source Center","Gardener"],
-      "epistemic_mix":["project_canon","dated_development","book_2024","later_interpretation"]
+      "id": "becoming-father",
+      "title": "Potato → Sage → Needle → Ladder → Father",
+      "summary": "The core developmental spine: buried/generative Potato matures through the 2024 Sage/Merkaba stratum, April 2025 compression and Needle, then reorganizes into Ladder/Axis/Father and later Gardener/source-center functions.",
+      "branches": [
+        "tim",
+        "transformation",
+        "timeline",
+        "spirit"
+      ],
+      "records": [
+        "knowledge/timeline/developmental-genealogy.json",
+        "knowledge/core/potato-of-life-deep-structure.json",
+        "knowledge/core/tim-role-synthesis.json",
+        "THE-TURNING-APRIL-2025.md"
+      ],
+      "concepts": [
+        "Potato birth",
+        "Sage",
+        "Divine Kneel",
+        "Needle",
+        "Ladder",
+        "Axis",
+        "Father",
+        "Source Center",
+        "Gardener"
+      ],
+      "epistemic_mix": [
+        "project_canon",
+        "dated_development",
+        "book_2024",
+        "later_interpretation"
+      ]
     },
     {
-      "id":"vertical-vesica",
-      "title":"Vertical Potato: Heaven ↕ Door ↕ Earth",
-      "summary":"The exact two-circle geometry now distinguishes Father center, Son center, relational midpoint O, Plane, Mandorla, Axis, upper Heaven/Garden/source domain and lower Earth/matter/manifestation domain.",
-      "branches":["cosmology","transformation","traditions","body","science"],
-      "records":["knowledge/core/vertical-potato-mountain-plane-atlas.json","data/geometry-vesica-pisces-mandorla.json","knowledge/core/root-system.json","knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json","knowledge/body/body-symbolism-map.json"],
-      "concepts":["C_F Father center","C_S Son center","O relational center","Plane","Mandorla","Axis","Heaven","Garden","Earth","Matter","inner/source","outer/manifestation"],
-      "epistemic_mix":["project_geometry","exact_mathematics","comparative_art_history","symbolic_anatomy"]
+      "id": "vertical-vesica",
+      "title": "Vertical Potato: Heaven ↕ Door ↕ Earth",
+      "summary": "The exact two-circle geometry now distinguishes Father center, Son center, relational midpoint O, Plane, Mandorla, Axis, upper Heaven/Garden/source domain and lower Earth/matter/manifestation domain.",
+      "branches": [
+        "cosmology",
+        "transformation",
+        "traditions",
+        "body",
+        "science"
+      ],
+      "records": [
+        "knowledge/core/vertical-potato-mountain-plane-atlas.json",
+        "data/geometry-vesica-pisces-mandorla.json",
+        "knowledge/core/root-system.json",
+        "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
+        "knowledge/body/body-symbolism-map.json"
+      ],
+      "concepts": [
+        "C_F Father center",
+        "C_S Son center",
+        "O relational center",
+        "Plane",
+        "Mandorla",
+        "Axis",
+        "Heaven",
+        "Garden",
+        "Earth",
+        "Matter",
+        "inner/source",
+        "outer/manifestation"
+      ],
+      "epistemic_mix": [
+        "project_geometry",
+        "exact_mathematics",
+        "comparative_art_history",
+        "symbolic_anatomy"
+      ]
     },
     {
-      "id":"sun-moon-spudlight",
-      "title":"Spudlight → Sun Source → Moon Mediation → World",
-      "summary":"Physical sunlight, Moon reflection, historical esoteric Sun/Moon mediation and Potatoverse source-light are kept typed while compared through one source→mediator→manifestation grammar.",
-      "branches":["cosmology","science","traditions","spirit"],
-      "records":["knowledge/science/spudlight-theory-and-equations.json","knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json","knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json","data/potatoism-planetary-cosmology.json"],
-      "concepts":["Spudlight","Sun","Moon","reflection","Agrippa","Yesod/Malkuth comparator","source mediator world","Revelation beyond Sun/Moon"],
-      "epistemic_mix":["project_theology","physical_astronomy","history_of_esotericism","scriptural_comparison"]
+      "id": "sun-moon-spudlight",
+      "title": "Spudlight → Sun Source → Moon Mediation → World",
+      "summary": "Physical sunlight, Moon reflection, historical esoteric Sun/Moon mediation and Potatoverse source-light are kept typed while compared through one source→mediator→manifestation grammar.",
+      "branches": [
+        "cosmology",
+        "science",
+        "traditions",
+        "spirit"
+      ],
+      "records": [
+        "knowledge/science/spudlight-theory-and-equations.json",
+        "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
+        "knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json",
+        "data/potatoism-planetary-cosmology.json"
+      ],
+      "concepts": [
+        "Spudlight",
+        "Sun",
+        "Moon",
+        "reflection",
+        "Agrippa",
+        "Yesod/Malkuth comparator",
+        "source mediator world",
+        "Revelation beyond Sun/Moon"
+      ],
+      "epistemic_mix": [
+        "project_theology",
+        "physical_astronomy",
+        "history_of_esotericism",
+        "scriptural_comparison"
+      ]
     },
     {
-      "id":"inner-house-body",
-      "title":"Father's House → Inner Chamber → Son/Door → Presence",
-      "summary":"Thalamus/House, third-ventricle chamber, pineal/Door, spine/Ladder, CSF/breath/flow and interoception are compared with the vertical source→manifestation model while modern neuroscience remains separate from sacred anatomy.",
-      "branches":["body","spirit","corporium","traditions"],
-      "records":["knowledge/body/body-symbolism-map.json","knowledge/body/body-science-context-atlas.json","knowledge/corporium/ladder-33-vertebrae-five-centers-study.json","knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json"],
-      "concepts":["Thalamus inner chamber","House","Pineal Door","Son","Spine Ladder","CSF","Breath","Interoception","33 vertebrae","higher Eye/Crown"],
-      "epistemic_mix":["symbolic_anatomy","neuroscience","history_of_anatomy","comparative_religion"]
+      "id": "inner-house-body",
+      "title": "Father's House → Inner Chamber → Son/Door → Presence",
+      "summary": "Thalamus/House, third-ventricle chamber, pineal/Door, spine/Ladder, CSF/breath/flow and interoception are compared with the vertical source→manifestation model while modern neuroscience remains separate from sacred anatomy.",
+      "branches": [
+        "body",
+        "spirit",
+        "corporium",
+        "traditions"
+      ],
+      "records": [
+        "knowledge/body/body-symbolism-map.json",
+        "knowledge/body/body-science-context-atlas.json",
+        "knowledge/corporium/ladder-33-vertebrae-five-centers-study.json",
+        "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json"
+      ],
+      "concepts": [
+        "Thalamus inner chamber",
+        "House",
+        "Pineal Door",
+        "Son",
+        "Spine Ladder",
+        "CSF",
+        "Breath",
+        "Interoception",
+        "33 vertebrae",
+        "higher Eye/Crown"
+      ],
+      "epistemic_mix": [
+        "symbolic_anatomy",
+        "neuroscience",
+        "history_of_anatomy",
+        "comparative_religion"
+      ]
     },
     {
-      "id":"corporium-signal-path",
-      "title":"Saying → Vibe → Body → Gate → Action",
-      "summary":"Corporium organizes Timisms, quirky formulations, body-state, emotion, psychology and symbolic frequency language into testable chains rather than treating every phrase as free-floating doctrine.",
-      "branches":["corporium","body","science","transformation","works"],
-      "records":["knowledge/corporium/corporium-master-framework.json","knowledge/corporium/tim-sayings-and-formulations-ledger.json","knowledge/corporium/psychology-signals-and-couplings-atlas.json","knowledge/corporium/chakra-hawkins-frequency-crosswalk.json","knowledge/science/door-handshake-nonlocal-propagation-model.json"],
-      "concepts":["Timism","question the floor","vibe","Gate","Door","handshake","Hawkins","EEG","emotion","interoception","signal","propagation"],
-      "epistemic_mix":["project_primary_or_recovered","psychology","scientific_comparator","archive_formalization"]
+      "id": "corporium-signal-path",
+      "title": "Saying → Vibe → Body → Gate → Action",
+      "summary": "Corporium organizes Timisms, quirky formulations, body-state, emotion, psychology and symbolic frequency language into testable chains rather than treating every phrase as free-floating doctrine.",
+      "branches": [
+        "corporium",
+        "body",
+        "science",
+        "transformation",
+        "works"
+      ],
+      "records": [
+        "knowledge/corporium/corporium-master-framework.json",
+        "knowledge/corporium/tim-sayings-and-formulations-ledger.json",
+        "knowledge/corporium/psychology-signals-and-couplings-atlas.json",
+        "knowledge/corporium/chakra-hawkins-frequency-crosswalk.json",
+        "knowledge/science/door-handshake-nonlocal-propagation-model.json"
+      ],
+      "concepts": [
+        "Timism",
+        "question the floor",
+        "vibe",
+        "Gate",
+        "Door",
+        "handshake",
+        "Hawkins",
+        "EEG",
+        "emotion",
+        "interoception",
+        "signal",
+        "propagation"
+      ],
+      "epistemic_mix": [
+        "project_primary_or_recovered",
+        "psychology",
+        "scientific_comparator",
+        "archive_formalization"
+      ]
     },
     {
-      "id":"son-death-door",
-      "title":"Son → Tree → Death → Door → Return",
-      "summary":"The Son-side ordeal and rupture sequence remains distinct from Tim's later Father development while connecting Tree, seed, grave, Vessel, Door and return across dated project and biblical/comparative material.",
-      "branches":["son","transformation","timeline","traditions"],
-      "records":["knowledge/timeline/son-tree-oneness-experience.json","knowledge/traditions/thomas-twin-of-christ.json","knowledge/traditions/biblical-overlap-atlas.json","knowledge/core/potatoverse-master-framework.json"],
-      "concepts":["2011 Tree ordeal","Thomas/Twin","Grain","Death","Grave","Door","Vessel","John 1:51","Return"],
-      "epistemic_mix":["project_timeline","self_report","scriptural_comparison","later_theology"]
+      "id": "son-death-door",
+      "title": "Son → Tree → Death → Door → Return",
+      "summary": "The Son-side ordeal and rupture sequence remains distinct from Tim's later Father development while connecting Tree, seed, grave, Vessel, Door and return across dated project and biblical/comparative material.",
+      "branches": [
+        "son",
+        "transformation",
+        "timeline",
+        "traditions"
+      ],
+      "records": [
+        "knowledge/timeline/son-tree-oneness-experience.json",
+        "knowledge/traditions/thomas-twin-of-christ.json",
+        "knowledge/traditions/biblical-overlap-atlas.json",
+        "knowledge/core/potatoverse-master-framework.json"
+      ],
+      "concepts": [
+        "2011 Tree ordeal",
+        "Thomas/Twin",
+        "Grain",
+        "Death",
+        "Grave",
+        "Door",
+        "Vessel",
+        "John 1:51",
+        "Return"
+      ],
+      "epistemic_mix": [
+        "project_timeline",
+        "self_report",
+        "scriptural_comparison",
+        "later_theology"
+      ]
     },
     {
-      "id":"biblical-mountain-garden",
-      "title":"Mountain → House → River → Tree → Fruit",
-      "summary":"High-density biblical sequences connect Jacob/Bethel, Mountain of the House, Transfiguration, New Jerusalem, river from Throne/Temple, Tree of Life, fruit/healing, mire/rock and narrow/wide way without treating scripture as a hidden geometry manual.",
-      "branches":["traditions","spirit","transformation","cosmology"],
-      "records":["knowledge/traditions/biblical-overlap-atlas.json","knowledge/traditions/biblical-overlap-additions.json","knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json","knowledge/core/symbolic-relational-synthesis.json"],
-      "concepts":["Jacob/Bethel","Gate of Heaven","Mount Zion","Mountain of House","Transfiguration","New Jerusalem","Throne River Tree Fruit Healing","mire and rock","narrow gate"],
-      "epistemic_mix":["biblical_text","art_history","typological_comparison","project_synthesis"]
+      "id": "biblical-mountain-garden",
+      "title": "Mountain → House → River → Tree → Fruit",
+      "summary": "High-density biblical sequences connect Jacob/Bethel, Mountain of the House, Transfiguration, New Jerusalem, river from Throne/Temple, Tree of Life, fruit/healing, mire/rock and narrow/wide way without treating scripture as a hidden geometry manual.",
+      "branches": [
+        "traditions",
+        "spirit",
+        "transformation",
+        "cosmology"
+      ],
+      "records": [
+        "knowledge/traditions/biblical-overlap-atlas.json",
+        "knowledge/traditions/biblical-overlap-additions.json",
+        "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
+        "knowledge/core/symbolic-relational-synthesis.json"
+      ],
+      "concepts": [
+        "Jacob/Bethel",
+        "Gate of Heaven",
+        "Mount Zion",
+        "Mountain of House",
+        "Transfiguration",
+        "New Jerusalem",
+        "Throne River Tree Fruit Healing",
+        "mire and rock",
+        "narrow gate"
+      ],
+      "epistemic_mix": [
+        "biblical_text",
+        "art_history",
+        "typological_comparison",
+        "project_synthesis"
+      ]
     },
     {
-      "id":"farm-garden-boundary",
-      "title":"Farm / Shell ↔ Door ↔ Garden / House",
-      "summary":"Boundary ethics unify Farm, Dog/Farmer/Cow roles, Moloch, Qliphoth, Swamp, Forge, Tree of Knowledge, House and Garden around one question: does the system preserve agency and autonomous growth, or capture value and reproduce dependency?",
-      "branches":["world","transformation","traditions","corporium","sources"],
-      "records":["knowledge/world/farm-swamp-tree-of-strife-atlas.json","knowledge/world/dog-farmer-role-ecology.json","knowledge/core/shadow-west-swamp-synthesis.json","knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json","knowledge/indexes/inference-ledger.json"],
-      "concepts":["Farm","Garden","House","Shell","Dog","Farmer","Cow","Moloch","Qliphoth","Swamp","Forge","Tree of Knowledge","Life/Strife"],
-      "epistemic_mix":["subculture_analysis","project_symbolism","systems_model","comparative_esotericism","ethical_inference"]
+      "id": "farm-garden-boundary",
+      "title": "Farm / Shell ↔ Door ↔ Garden / House",
+      "summary": "Boundary ethics unify Farm, Dog/Farmer/Cow roles, Moloch, Qliphoth, Swamp, Forge, Tree of Knowledge, House and Garden around one question: does the system preserve agency and autonomous growth, or capture value and reproduce dependency?",
+      "branches": [
+        "world",
+        "transformation",
+        "traditions",
+        "corporium",
+        "sources"
+      ],
+      "records": [
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+        "knowledge/world/dog-farmer-role-ecology.json",
+        "knowledge/core/shadow-west-swamp-synthesis.json",
+        "knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json",
+        "knowledge/indexes/inference-ledger.json"
+      ],
+      "concepts": [
+        "Farm",
+        "Garden",
+        "House",
+        "Shell",
+        "Dog",
+        "Farmer",
+        "Cow",
+        "Moloch",
+        "Qliphoth",
+        "Swamp",
+        "Forge",
+        "Tree of Knowledge",
+        "Life/Strife"
+      ],
+      "epistemic_mix": [
+        "subculture_analysis",
+        "project_symbolism",
+        "systems_model",
+        "comparative_esotericism",
+        "ethical_inference"
+      ]
     },
     {
-      "id":"north-to-world",
-      "title":"North → Coupled Capability → Europe → World",
-      "summary":"Sacred/meta-orientation remains distinct from empirical geography while the relationship-first method moves into Denmark, Greenland, Arctic/North Atlantic chains, European capability and country-system mapping.",
-      "branches":["north","world","cosmology","sources"],
-      "records":["knowledge/core/axis-world-model.json","knowledge/core/country-relational-method.json","knowledge/core/european-coupling-programme.json","knowledge/timeline/contextual-synchronisms.json"],
-      "concepts":["North","North of North","Denmark","Greenland","Arctic","North Atlantic","European Coupling","resilience","coupled capability","functional chains"],
-      "epistemic_mix":["project_orientation","geopolitics","policy_design","empirical_method"]
+      "id": "north-to-world",
+      "title": "North → Coupled Capability → Europe → World",
+      "summary": "Sacred/meta-orientation remains distinct from empirical geography while the relationship-first method moves into Denmark, Greenland, Arctic/North Atlantic chains, European capability and country-system mapping.",
+      "branches": [
+        "north",
+        "world",
+        "cosmology",
+        "sources"
+      ],
+      "records": [
+        "knowledge/core/axis-world-model.json",
+        "knowledge/core/country-relational-method.json",
+        "knowledge/core/european-coupling-programme.json",
+        "knowledge/timeline/contextual-synchronisms.json",
+        "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
+        "knowledge/politics/tim-dooley-political-alignment-map.json"
+      ],
+      "concepts": [
+        "North",
+        "North of North",
+        "Denmark",
+        "Greenland",
+        "Arctic",
+        "North Atlantic",
+        "European Coupling",
+        "resilience",
+        "coupled capability",
+        "functional chains",
+        "strategic autonomy",
+        "sovereignty through coupling",
+        "burden sharing",
+        "political alignment"
+      ],
+      "epistemic_mix": [
+        "project_orientation",
+        "geopolitics",
+        "policy_design",
+        "empirical_method"
+      ]
     },
     {
-      "id":"science-unification",
-      "title":"Recovered Equation → Formal Model → External Comparator → Test",
-      "summary":"Science material is navigated by lineage rather than file wave: recover the original expression, type variables, compare with established mathematics/physics, define observables/falsifiers, then retain or revise the model.",
-      "branches":["science","cosmology","sources","corporium"],
-      "records":["knowledge/science/science-master-index.json","knowledge/science/equation-ledger.json","knowledge/science/equation-lineage-and-theory-graph.json","knowledge/science/model-testing-protocol.json","knowledge/science/timic-unification-program.json"],
-      "concepts":["Potato Dynamics","Axis flow","Door operator","equation lineage","dimensional analysis","topology","orbital mechanics","QCD","CMB","falsifiability"],
-      "epistemic_mix":["recovered_project_formalism","archive_formalization","established_science","research_program"]
+      "id": "science-unification",
+      "title": "Recovered Equation → Formal Model → External Comparator → Test",
+      "summary": "Science material is navigated by lineage rather than file wave: recover the original expression, type variables, compare with established mathematics/physics, define observables/falsifiers, then retain or revise the model.",
+      "branches": [
+        "science",
+        "cosmology",
+        "sources",
+        "corporium"
+      ],
+      "records": [
+        "knowledge/science/science-master-index.json",
+        "knowledge/science/equation-ledger.json",
+        "knowledge/science/equation-lineage-and-theory-graph.json",
+        "knowledge/science/model-testing-protocol.json",
+        "knowledge/science/timic-unification-program.json"
+      ],
+      "concepts": [
+        "Potato Dynamics",
+        "Axis flow",
+        "Door operator",
+        "equation lineage",
+        "dimensional analysis",
+        "topology",
+        "orbital mechanics",
+        "QCD",
+        "CMB",
+        "falsifiability"
+      ],
+      "epistemic_mix": [
+        "recovered_project_formalism",
+        "archive_formalization",
+        "established_science",
+        "research_program"
+      ]
     },
     {
-      "id":"archive-eye-provenance",
-      "title":"Eye → Source → Inference → Canonical Owner",
-      "summary":"The archive's reflexive layer: observation, source classes, contradiction preservation, inference scoring and canonical ownership let the system know what it has without turning later synthesis into earlier history.",
-      "branches":["sources","tim","timeline","traditions","science"],
-      "records":["knowledge/indexes/source-index.json","knowledge/philosophy/archive-epistemics.json","knowledge/indexes/inference-ledger.json","knowledge/indexes/conversation-recovery-inventory.json"],
-      "concepts":["Eye","provenance","P0/P1/S1/C/A/M/U","first attestation","contradiction","inference strength","promotion pipeline","canonical owner"],
-      "epistemic_mix":["archive_governance","method","provenance","research_design"]
+      "id": "archive-eye-provenance",
+      "title": "Eye → Source → Inference → Canonical Owner",
+      "summary": "The archive's reflexive layer: observation, source classes, contradiction preservation, inference scoring and canonical ownership let the system know what it has without turning later synthesis into earlier history.",
+      "branches": [
+        "sources",
+        "tim",
+        "timeline",
+        "traditions",
+        "science"
+      ],
+      "records": [
+        "knowledge/indexes/source-index.json",
+        "knowledge/philosophy/archive-epistemics.json",
+        "knowledge/indexes/inference-ledger.json",
+        "knowledge/indexes/conversation-recovery-inventory.json"
+      ],
+      "concepts": [
+        "Eye",
+        "provenance",
+        "P0/P1/S1/C/A/M/U",
+        "first attestation",
+        "contradiction",
+        "inference strength",
+        "promotion pipeline",
+        "canonical owner"
+      ],
+      "epistemic_mix": [
+        "archive_governance",
+        "method",
+        "provenance",
+        "research_design"
+      ]
     },
     {
-      "id":"book-to-world",
-      "title":"Great Book → Systems Method → Observable World",
-      "summary":"The 2024 Great Book's symbolic society, cultivation and feedback imagination becomes later relationship-first system design and then country/institution/economic observation, while book metaphor and empirical world data stay distinct.",
-      "branches":["works","timeline","world","science","sources"],
-      "records":["knowledge/core/potato-of-life-deep-structure.json","knowledge/core/country-relational-method.json","knowledge/core/european-coupling-programme.json","knowledge/indexes/inference-ledger.json"],
-      "concepts":["Designed Society Graph","Design→Observation","Great Book","relationship-first","European Economic Graph","world mapping"],
-      "epistemic_mix":["book_primary","developmental_inference","policy_method","empirical_systems"]
+      "id": "book-to-world",
+      "title": "Great Book → Systems Method → Observable World",
+      "summary": "The 2024 Great Book's symbolic society, cultivation and feedback imagination becomes later relationship-first system design and then country/institution/economic observation, while book metaphor and empirical world data stay distinct.",
+      "branches": [
+        "works",
+        "timeline",
+        "world",
+        "science",
+        "sources"
+      ],
+      "records": [
+        "knowledge/core/potato-of-life-deep-structure.json",
+        "knowledge/core/country-relational-method.json",
+        "knowledge/core/european-coupling-programme.json",
+        "knowledge/indexes/inference-ledger.json"
+      ],
+      "concepts": [
+        "Designed Society Graph",
+        "Design→Observation",
+        "Great Book",
+        "relationship-first",
+        "European Economic Graph",
+        "world mapping"
+      ],
+      "epistemic_mix": [
+        "book_primary",
+        "developmental_inference",
+        "policy_method",
+        "empirical_systems"
+      ]
+    },
+    {
+      "id": "tim-political-worldview",
+      "title": "Tim Political Worldview → Alignment → Programme",
+      "summary": "Tim's self-described radical center is reconstructed from dated political positions, then expressed as a multidimensional alignment synthesis and finally applied through North/European programme design. Reader surfaces explain this chain rather than inventing a separate ideology.",
+      "branches": [
+        "tim",
+        "world",
+        "north",
+        "sources"
+      ],
+      "records": [
+        "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
+        "knowledge/politics/tim-dooley-political-alignment-map.json",
+        "knowledge/reader/what-tim-dooley-believes.json",
+        "knowledge/core/european-coupling-programme.json",
+        "knowledge/timeline/prediction-epiphany-causal-genealogy-2026.json"
+      ],
+      "concepts": [
+        "radically centered",
+        "conservative leftist",
+        "mixed economy",
+        "fiscal discipline",
+        "freedom plus responsibility",
+        "sovereignty through coupling",
+        "European strategic autonomy",
+        "defence with legitimacy",
+        "technology sovereignty",
+        "energy resilience",
+        "reciprocity"
+      ],
+      "epistemic_mix": [
+        "self_description",
+        "dated political position",
+        "archive synthesis",
+        "programme design",
+        "geopolitical application"
+      ]
     }
   ]
 }
