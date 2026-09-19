@@ -1,8 +1,8 @@
 {
   "id": "model-discrimination-calibration-atlas",
   "title": "Model Discrimination & Calibration Atlas — What Would Make One Explanation Better Than Another?",
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.1.0",
+  "updated": "2026-09-19",
   "owner_room": "model-testing",
   "purpose": "Move project testing beyond 'can mathematics be attached?' toward discriminating predictions, calibration, uncertainty, negative controls, competing models and explicit failure conditions.",
   "claim_ladder": [
@@ -133,5 +133,88 @@
     "provenance-evidence",
     "potato-biology",
     "research-programmes"
+  ],
+  "worked_test_cards": [
+    {
+      "id": "spiral-vs-circle-trajectory",
+      "claim": "An observed trajectory is better described as a spiral than as a closed circular/ring recurrence.",
+      "domain": "geometry / time-series trajectory",
+      "observables": [
+        "position or phase coordinate over repeated cycles",
+        "candidate non-returning coordinate",
+        "measurement uncertainty"
+      ],
+      "baseline_models": [
+        "closed circle/ring with recurrence and approximately zero net change in the chosen state coordinate",
+        "generic periodic trajectory with noise"
+      ],
+      "project_model": "recurrence plus systematic change in at least one declared coordinate",
+      "discriminating_observation": "After one or more nominal cycles, the system returns near the prior angular/phase position while a pre-declared state coordinate changes beyond uncertainty in a consistent direction or structured sequence.",
+      "failure_condition": "If the alleged non-returning coordinate shows no reproducible change beyond noise, or arbitrary coordinate choice is required after seeing the data, the spiral claim is not supported over the simpler recurrence model.",
+      "negative_control": "Fit the same analysis to a known periodic/closed process and verify that the method does not manufacture directional change.",
+      "lesson": "Visual resemblance to a spiral is insufficient; the extra coordinate must be measured and pre-specified."
+    },
+    {
+      "id": "garden-vs-dependency-support",
+      "claim": "A support system behaves more like the project Garden model when it increases durable distributed capability rather than preserving dependence on the central supporter.",
+      "domain": "institutional / network intervention",
+      "observables": [
+        "participant capability before/after support",
+        "exit/portability",
+        "performance after support withdrawal",
+        "centrality/dependency measures",
+        "externalities"
+      ],
+      "baseline_models": [
+        "resource transfer with no durable capability gain",
+        "centralized service model where outcomes collapse when support is removed"
+      ],
+      "project_model": "support that increases local competence, options, resilience and continued function after central support declines",
+      "discriminating_observation": "Participants retain or improve function, choice and resilience after support is reduced, with lower dependence on the central node than before intervention.",
+      "failure_condition": "Outputs improve only while the center remains indispensable, or capability/exit options do not improve despite resource transfer.",
+      "negative_control": "Compare with a matched intervention that delivers similar short-term resources but no capacity-building component.",
+      "lesson": "Good intentions and short-term outputs do not establish Garden-like generativity; downstream autonomous capacity is the test."
+    },
+    {
+      "id": "source-corroboration-vs-copying",
+      "claim": "Multiple visible references constitute independent corroboration only when their evidence roots are materially independent.",
+      "domain": "provenance / information ecology",
+      "observables": [
+        "source lineage",
+        "publication/reposting graph",
+        "shared witnesses/documents",
+        "timing",
+        "independent access"
+      ],
+      "baseline_models": [
+        "N visible pages = N confirmations",
+        "single-origin story copied through many outlets"
+      ],
+      "project_model": "corroboration strength follows independent evidence roots rather than visible repetition count",
+      "discriminating_observation": "When references are collapsed by shared upstream source, effective independent-source count falls; claims with genuinely independent roots should retain support after deduplication.",
+      "failure_condition": "If deduplication does not improve error detection or prediction of later corrections, the proposed independence model adds little value.",
+      "negative_control": "Use a deliberately syndicated/press-release-derived story where many outlets are known to share one origin.",
+      "lesson": "A large archive can still contain only one witness."
+    },
+    {
+      "id": "symbolic-mapping-uniqueness",
+      "claim": "A symbolic mapping is structurally informative only if it fits declared constraints better than plausible alternative mappings generated without hindsight.",
+      "domain": "comparative symbolism / pattern matching",
+      "observables": [
+        "declared mapping rules",
+        "number of admissible alternatives",
+        "fit criteria",
+        "out-of-sample motifs/cases"
+      ],
+      "baseline_models": [
+        "free post-hoc matching",
+        "random or permutation mappings preserving simple frequencies"
+      ],
+      "project_model": "pre-declared relation set that predicts additional mappings or exclusions with fewer arbitrary choices",
+      "discriminating_observation": "The chosen mapping outperforms permutation/alternative mappings on pre-declared criteria and predicts new cases that were not used to construct it.",
+      "failure_condition": "Many alternative mappings score similarly, or the fit depends on changing rules after inspecting each case.",
+      "negative_control": "Generate shuffled label assignments and quantify how often comparably persuasive correspondences appear.",
+      "lesson": "Meaningful symbolism can remain philosophically valuable even when uniqueness testing fails; failure only limits empirical/formal claims."
+    }
   ]
 }
