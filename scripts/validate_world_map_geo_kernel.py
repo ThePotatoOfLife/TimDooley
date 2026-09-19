@@ -26,6 +26,8 @@ def main() -> int:
         "minimalLongitudeInterval",
         "antimeridianAwareBounds",
         "haversineDistanceKm",
+        "destinationPointKm",
+        "wrappedSegmentCoordinates",
         "EARTH_MEAN_RADIUS_KM = 6371.0088",
         "window.__potatoAtlasGeo",
     ):
@@ -51,6 +53,8 @@ def main() -> int:
     print("- antimeridian-aware minimum bounds")
     print("- reference-relative longitude unwrapping")
     print("- mean-Earth haversine distance")
+    print("- geodesic destination-point packing")
+    print("- short wrapped segments across the antimeridian")
     print(f"Errors: {len(errors)}")
     if errors:
         print("WORLD MAP GEO KERNEL VALIDATION FAILED")
