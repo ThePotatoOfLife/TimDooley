@@ -1,8 +1,8 @@
 {
   "id": "stock-flow-obligation-network-atlas",
   "title": "Economy & Finance Stock–Flow–Obligation Network Atlas",
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.1.0",
+  "updated": "2026-09-19",
   "owner_room": "economy-finance",
   "purpose": "Represent observable economic systems as linked balance sheets, flows, contracts, ownership/control, prices, production and dependencies rather than isolated headline numbers.",
   "master_distinctions": [
@@ -257,5 +257,38 @@
     "politics-governance",
     "provenance-evidence",
     "foundation-room-atlas"
+  ],
+  "worked_cases": [
+    {
+      "id": "eurosystem-consolidation",
+      "title": "Consolidation changes what a balance sheet means",
+      "object": "Eurosystem consolidated balance sheet",
+      "observation": "The Eurosystem annual consolidated balance sheet nets intra-Eurosystem positions while showing positions vis-à-vis third parties.",
+      "distinction": "consolidated system balance sheet != simple sum of unconsolidated member balance sheets",
+      "lesson": "Internal claims can disappear on consolidation even though they remain real for individual entities. Always ask what perimeter and eliminations produced the reported total.",
+      "source": "knowledge/economics/economy-concrete-source-ledger.json:ecb-eurosystem-balance-sheet-2025"
+    },
+    {
+      "id": "svb-liquidity-rate-risk",
+      "title": "A bank can hold assets and still fail from liquidity, rate risk and concentrated funding",
+      "object": "Silicon Valley Bank 2023 failure",
+      "observation": "The Federal Reserve review identified governance and risk-management weaknesses, high uninsured-deposit concentration, interest-rate exposure and a rapid run as central elements of the failure.",
+      "system_chain": [
+        "asset duration/rate sensitivity",
+        "concentrated deposit funding",
+        "rates rise / asset value pressure",
+        "liquidity need",
+        "asset restructuring/loss signal",
+        "deposit run",
+        "failure/intervention"
+      ],
+      "distinctions": [
+        "liquidity != solvency",
+        "book/face value != market value",
+        "funding concentration matters alongside asset quality"
+      ],
+      "lesson": "A balance sheet cannot be read from total assets and liabilities alone; timing, market valuation, funding stability and behavioral response matter.",
+      "source": "knowledge/economics/economy-concrete-source-ledger.json:fed-svb-review-2023"
+    }
   ]
 }
