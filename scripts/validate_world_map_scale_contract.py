@@ -67,6 +67,7 @@ def main() -> int:
     for token in (
         "function createScaleRuntime",
         "function bandForZoom",
+        "function bandThreshold",
         "function transition",
         "function capabilityActive",
         "function threshold",
