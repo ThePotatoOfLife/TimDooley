@@ -17,6 +17,7 @@ const UNKNOWN = '#303938';
 const PATTERN_LAYER = 'atlas-composition-fill';
 const PATTERN_NONE = 'atlas-pattern-none';
 const QUERY_LAYER = 'atlas-query-outline';
+const PATTERN_HEIGHT_POLICY = 'prefer-pattern-flatten-height';
 
 let world = null;
 let demography = null;
@@ -305,7 +306,9 @@ async function enforceVisualCompatibility(entries) {
   const setEntries = entries.filter(entry => entry.kind === 'set');
   const contract = await visualChannels().catch(() => null);
   const rule = contract?.compatibility?.['pattern+height'] || null;
-  const incompatible = setEntries.length > 0 && rule?.status === 'incompatible-current-renderer';
+  const incompatible = setEntries.length > 0
+    && rule?.status === 'incompatible-current-renderer'
+    && rule?.policy === PATTERN_HEIGHT_POLICY;
   const previousDisabled = height.disabled;
   height.disabled = incompatible;
   if (incompatible) {
