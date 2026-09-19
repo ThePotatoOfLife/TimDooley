@@ -60,7 +60,7 @@ These capabilities are established enough to build on:
 - [x] Normalize longitudes and wrapped world-copy identity.
 - [x] Make bounds/fit calculations antimeridian-aware.
 - [ ] Replace degree-squared partition prioritization where physical/geographic distance is intended.
-- [ ] Define schematic-vs-physical route geometry semantics.
+- [x] Define schematic-vs-physical route geometry semantics for relationship chords and symbolic interior links; surveyed physical routes remain a separate future data type.
 - [x] Add dateline/globe/Mercator regressions for the shared kernel.
 
 ### B. Scale safety
