@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MANIFEST=ROOT/"knowledge/cia/manifest.json"; CABINET=ROOT/"rooms/potatoverse-canon/beings/cia/index.html"
 VIEWER=ROOT/"rooms/potatoverse-canon/beings/cia/file/index.html"; COLLECTIONS=ROOT/"data/house/collections.json"
-ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; DEBT_EVIDENCE=ROOT/"knowledge/cia/debt-evidence-ledger.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
+ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; DEBT_EVIDENCE=ROOT/"knowledge/cia/debt-evidence-ledger.json"; POSTURE=ROOT/"knowledge/cia/account-posture-index.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
 ROUTE="rooms/potatoverse-canon/beings/cia/"
 def fail(m): print("FAIL:",m); raise SystemExit(1)
 def main():
@@ -66,6 +66,27 @@ def main():
  if "project_adjustment_susd" not in bank_js: fail("Mud Bank runtime must honor priced per-event adjustments")
  dossier_js=(ROOT/"app/cia-dossier.js").read_text(encoding="utf-8",errors="replace")
  if "evidence_tier" not in dossier_js or "debt_evidence_id" not in dossier_js: fail("CIA dossier account reader must expose debit provenance")
+ if not POSTURE.is_file(): fail("CIA account posture index missing")
+ posture=json.loads(POSTURE.read_text(encoding="utf-8"))
+ posture_rows={x.get("id"):x for x in posture.get("accounts",[])}
+ if set(posture_rows)!=set(ids): fail("CIA account posture coverage drift")
+ generic=bank.get("event_weights") or {}
+ for c in chars:
+  cid=c["id"]; cd=json.loads((ROOT/c["path"]).read_text(encoding="utf-8"))
+  entries=((cd.get("symbolic_account") or {}).get("entries") or [])
+  vals=[]
+  for e in entries:
+   explicit=e.get("project_adjustment_susd")
+   if isinstance(explicit,(int,float)): vals.append(float(explicit))
+   elif isinstance(generic.get(e.get("type")),(int,float)): vals.append(float(generic[e.get("type")]))
+  gross_credit=round(sum(x for x in vals if x>0),6); gross_debit=round(sum(x for x in vals if x<0),6); net=round(sum(vals),6)
+  intel=((cd.get("cia_record") or {}).get("debt_and_repair") or {}).get("records") or []
+  unpriced=sum(1 for x in intel if x.get("pricing_status")=="unpriced")
+  row=posture_rows[cid]
+  if abs(float(row.get("gross_credit_susd",0))-gross_credit)>1e-9: fail(f"posture gross credit drift for {cid}")
+  if abs(float(row.get("gross_debit_susd",0))-gross_debit)>1e-9: fail(f"posture gross debit drift for {cid}")
+  if abs(float(row.get("net_event_susd",0))-net)>1e-9: fail(f"posture net drift for {cid}: {row.get('net_event_susd')} != {net}")
+  if int(row.get("unpriced_negative_candidates",0))!=unpriced: fail(f"posture unpriced candidate drift for {cid}")
  for cid in ["txt","port-monkey","marty-biz"]:
   cd=json.loads((ROOT/f"knowledge/cia/characters/{cid}.json").read_text(encoding="utf-8"))
   refs={x.get("debt_evidence_id") for x in ((cd.get("symbolic_account") or {}).get("entries") or []) if x.get("type")=="project-debit"}
