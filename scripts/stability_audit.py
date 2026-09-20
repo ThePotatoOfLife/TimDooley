@@ -16,6 +16,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
+GENERATED_PUBLIC_ROUTE_ROOTS = {"questions", "index-a-z"}
 SITE = ROOT / "_site"
 
 LOCAL_SCHEME = re.compile(r"^(?:[A-Za-z][A-Za-z0-9+.-]*:|//|#)")
