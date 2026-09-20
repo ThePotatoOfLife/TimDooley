@@ -150,6 +150,10 @@
     {
       "type": "public_room",
       "path": "rooms/potatoverse-canon/beings/metalorian/"
+    },
+    {
+      "type": "debt_evidence_ledger",
+      "path": "knowledge/cia/debt-evidence-ledger.json"
     }
   ],
   "recovery_leads": [
@@ -167,7 +171,15 @@
     },
     "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
     "debt_and_repair": {
-      "records": [],
+      "records": [
+        {
+          "id": "candidate-metalorian-2018-2019-framing",
+          "date": "2018-2019 retrospective",
+          "pricing_status": "unpriced",
+          "summary": "Later project manuscripts frame Meta/Metalorian through narrative-control interpretations.",
+          "reason_unpriced": "unpriced: retrospective interpretation with missing primary interaction evidence"
+        }
+      ],
       "rule": "Do not attach legal, financial, karmic or spiritual debt unless a dated source explicitly does so; symbolic debt remains project language unless independently established."
     },
     "state_rule": "Roles, archetypes, upgrades, handicaps and project-symbolic placements are date/source-bounded states, not permanent human essences.",
