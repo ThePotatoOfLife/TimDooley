@@ -18,7 +18,7 @@ UI = ROOT / "world-map" / "3d-ui.js"
 SELECTION_UI = ROOT / "world-map" / "3d-selection-ui.js"
 SELECTION = ROOT / "world-map" / "3d-country-selection.js"
 PULSE = ROOT / "world-map" / "3d-country-pulse.js"
-LENSES = ROOT / "world-map" / "3d-lenses.js"
+RETIRED_LENS = ROOT / "world-map" / "3d-lenses.js"
 TIME = ROOT / "world-map" / "3d-time.js"
 FIELDS = ROOT / "world-map" / "3d-fields.js"
 NETWORKS = ROOT / "world-map" / "3d-networks.js"
@@ -62,7 +62,7 @@ def main() -> int:
     errors: list[str] = []
     warnings: list[str] = []
 
-    required = (HTML, APP, HOVER, BOOTSTRAP, EVIDENCE, SELECTION, PULSE, LENSES, TIME, FIELDS, NETWORKS, RUNTIME, WORLD, COUNTRIES)
+    required = (HTML, APP, HOVER, BOOTSTRAP, EVIDENCE, SELECTION, PULSE, TIME, FIELDS, NETWORKS, RUNTIME, WORLD, COUNTRIES)
     for path in required:
         if not path.exists():
             errors.append(f"missing required atlas file: {path.relative_to(ROOT)}")
@@ -80,7 +80,6 @@ def main() -> int:
     selection_ui = SELECTION_UI.read_text(encoding="utf-8", errors="replace")
     selection = SELECTION.read_text(encoding="utf-8", errors="replace")
     pulse = PULSE.read_text(encoding="utf-8", errors="replace")
-    lenses = LENSES.read_text(encoding="utf-8", errors="replace")
     time_js = TIME.read_text(encoding="utf-8", errors="replace")
     fields = FIELDS.read_text(encoding="utf-8", errors="replace")
     networks = NETWORKS.read_text(encoding="utf-8", errors="replace")
@@ -92,7 +91,6 @@ def main() -> int:
     fail_if_missing(bootstrap,("ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v')","function versionedModule","await import(versionedModule('./3d-hover.js'))","waitForCore","countries-fill","window.__potatoAtlasReady","Path finder","Demography","Country selection","Country Pulse","declareDormant('Evidence'","declareDormant('Time'","declareDormant('Axis depth'","declareDormant('Axis operators'","declareDormant('North Axis'","potato-atlas-interactive","__potatoAtlasDiagnostics","deploymentVersion"),"world-map/3d-bootstrap.js",errors)
     fail_if_missing(selection,("pinnedCodes","activeCode","function togglePinnedCountry","function pinCountry","function unpinCountry","function automaticRelationData","urlState.patch('selection-inspector'","selection-chip","data-country-code","clearAll","__potatoAtlasSelection","automaticRelationBudget","DEFAULT_AUTO_RELATION_BUDGET"),"world-map/3d-country-selection.js",errors)
     fail_if_missing(pulse,("Country Pulse","GDP per capita","Inflation","Unemployment","__potatoAtlasCountryPulse","More statistics"),"world-map/3d-country-pulse.js",errors)
-    fail_if_missing(lenses,("__potatoAtlasLenses","LEGACY_TO_LAYER","layers.activate(layerId)","compositor.render()","potato-atlas-lens-change","compatibility:true","urlState.claim('legacy-lens'"),"world-map/3d-lenses.js",errors)
     fail_if_missing(time_js,("atlas-time-contract.json","north-axis-membership-history.json","timeMode","changed_between","canonicalUrlState.patch('time'","atlas-time-change","unknownDatePolicy","No exact dated project-field snapshot is safe to apply automatically","Current project Fields and empirical Networks are not automatically rewritten as historical layers","__potatoAtlasInspectorVisibility?.setOpen","__potatoAtlasTime"),"world-map/3d-time.js",errors)
     fail_if_missing(fields,("historicalSuppressed","atlas-time-change","setHistoricalSuppressed","Current project-field snapshot hidden in historical mode"),"world-map/3d-fields.js",errors)
     fail_if_missing(networks,("historicalSuppressed","atlas-time-change","setHistoricalSuppressed","Current network snapshot hidden in historical mode"),"world-map/3d-networks.js",errors)
@@ -104,6 +102,10 @@ def main() -> int:
         errors.append("Eye refresh regressed to click-dependent timeout synchronization")
     if "new MutationObserver(" in evidence:
         errors.append("Eye must consume the canonical panel lifecycle instead of creating a DOM observer")
+    if RETIRED_LENS.exists():
+        errors.append("retired Lens compatibility adapter must stay deleted")
+    if "'./3d-lenses.js'" in bootstrap:
+        errors.append("retired Lens compatibility adapter must not return to bootstrap")
     if "'./3d-ui.js'" in bootstrap or "'./3d-selection-ui.js'" in bootstrap:
         errors.append("retired Progressive/Selection UI must not return to the live bootstrap registry")
     if "declareDormant('Fields'" in bootstrap or "declareDormant('Networks'" in bootstrap:
@@ -119,7 +121,7 @@ def main() -> int:
     if "await import('./3d-app.js')" in hover:
         errors.append("hover regressed to an unversioned app-core import; deployment cache isolation would be incomplete")
 
-    for text,label in ((app,"3d-app.js"),(hover,"3d-hover.js"),(bootstrap,"3d-bootstrap.js"),(evidence,"3d-evidence.js"),(selection,"3d-country-selection.js"),(pulse,"3d-country-pulse.js"),(lenses,"3d-lenses.js"),(time_js,"3d-time.js"),(fields,"3d-fields.js"),(networks,"3d-networks.js")):
+    for text,label in ((app,"3d-app.js"),(hover,"3d-hover.js"),(bootstrap,"3d-bootstrap.js"),(evidence,"3d-evidence.js"),(selection,"3d-country-selection.js"),(pulse,"3d-country-pulse.js"),(time_js,"3d-time.js"),(fields,"3d-fields.js"),(networks,"3d-networks.js")):
         check_js_syntax(text,label,warnings,errors)
 
     if runtime.get("status") != "active renderer contract": errors.append("world-map-3d-runtime must be marked as the active renderer contract")
@@ -175,7 +177,7 @@ def main() -> int:
     print(f"Curated relation types: {len(relation_types)}")
     print(f"Referenced country/territory codes: {len(referenced)}")
     print("Trace contract: breadth-first · 1–3 hops · cycle guarded · capped")
-    print("UI contract: map-first · working selection · Country Pulse · canonical analytical layers · legacy Lens compatibility adapter · automatic relations")
+    print("UI contract: map-first · working selection · Country Pulse · canonical analytical layers · Layer Registry/Compositor ownership · automatic relations")
     print("Time contract: Current / As-of / Compare-dates · URL persisted · current-only overlays suppressed historically")
     print("Eye-Time contract: observation years are checked against requested historical view")
     print("Boot contract: local snapshot · core-first · advanced overlays dormant until requested · deployment-versioned module chain")
