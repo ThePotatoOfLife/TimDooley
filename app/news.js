@@ -56,6 +56,23 @@ function coverageClusters(rows,maxClusters=6,maxItems=4){const groups=[];for(con
 async function getConfig(){const r=await fetch(DEFAULT_CONFIG,{headers:{Accept:'application/json'}});if(!r.ok)throw new Error('Could not load news source contract');return r.json()}
 function sourceState(host,id,state){const el=$('[data-provider="'+id+'"]',host);if(el)el.dataset.state=state}
 async function providerLoad(host,id,query,timespan,force,horizon,config,category){sourceState(host,id,'loading');try{let rows=[];if(id==='gdelt')rows=await loadGdelt(query,timespan,force);else if(id==='publisher-rss')rows=await loadPublisherRss(config,category,force);else if(id==='hacker-news')rows=await loadHn(force);else if(id==='spaceflight-news')rows=await loadSpace(force);rows=trimToHorizon(rows,horizon);sourceState(host,id,'ok');return rows}catch(err){sourceState(host,id,'error');return[]}}
+function nearDuplicate(a,b){
+ const A=tokens(a.title),B=tokens(b.title);if(A.size<3||B.size<3)return false;
+ const o=overlap(A,B);return o.common>=4&&o.score>=.48;
+}
+function latestRiverRows(rows,limit){
+ const out=[];
+ for(const row of rows){if(out.some(prev=>nearDuplicate(prev,row)))continue;out.push(row);if(out.length>=limit)break}
+ return out;
+}
+function leadRows(rows){
+ if(!rows.length)return[];
+ const recentCutoff=Date.now()-12*60*60*1000;
+ const readable=rows.find(r=>clean(r.summary).length>=90&&stamp(r.published)>=recentCutoff);
+ const first=readable||rows[0];
+ const second=rows.find(r=>r!==first&&!nearDuplicate(first,r))||rows.find(r=>r!==first);
+ return [first,second].filter(Boolean);
+}
 function storyCard(r,lead=false){
  const text=clean(r.summary).slice(0,lead?700:620);
  const expandable=text.length>(lead?320:230);
@@ -66,7 +83,7 @@ function storyCard(r,lead=false){
  const compact=!text&&!lead;
  return'<article class="news-story'+(lead?' news-story--lead':'')+(compact?' news-story--compact':'')+'">'+image+'<div class="news-story-kicker"><span>'+esc(r.provider)+'</span><i></i><span>'+esc(kind)+'</span></div>'+(lead?'<h2>':'<h3>')+esc(r.title)+(lead?'</h2>':'</h3>')+summary+'<div class="news-story-footer"><span>'+esc(r.source||'source')+'</span>'+country+'<span>'+esc(relativeTime(r.published))+'</span><a href="'+esc(r.url)+'" target="_blank" rel="noopener noreferrer">Full report ↗</a></div></article>';
 }
-function renderLatest(host,rows,maxFeed){const lead=$('[data-news-lead]',host),feed=$('[data-news-list]',host);if(!rows.length){if(lead)lead.innerHTML='';if(feed)feed.innerHTML='<div class="news-empty">No live items reached the browser for this query and time window. Try a broader lens, longer window, or refresh.</div>';return}if(lead)lead.innerHTML=storyCard(rows[0],true)+(rows[1]?storyCard(rows[1],false):'');if(feed)feed.innerHTML=rows.slice(2,maxFeed).map(r=>storyCard(r)).join('')}
+function renderLatest(host,rows,maxFeed){const lead=$('[data-news-lead]',host),feed=$('[data-news-list]',host);if(!rows.length){if(lead)lead.innerHTML='';if(feed)feed.innerHTML='<div class="news-empty">No live items reached the browser for this query and time window. Try a broader lens, longer window, or refresh.</div>';return}const river=latestRiverRows(rows,maxFeed),leads=leadRows(river),leadSet=new Set(leads);if(lead)lead.innerHTML=leads.map((r,i)=>storyCard(r,i===0)).join('');if(feed)feed.innerHTML=river.filter(r=>!leadSet.has(r)).map(r=>storyCard(r)).join('')}
 function renderClusters(host,clusters){const el=$('[data-news-clusters]',host);if(!el)return;el.innerHTML=clusters.length?clusters.map((g,i)=>'<article class="news-cluster"><div class="news-cluster-head"><div><div class="news-cluster-meta">Repeated coverage · cluster '+(i+1)+'</div><h3>'+esc(g.title)+'</h3></div><div class="news-cluster-count">'+g.domains+'<small>source domains</small></div></div><div class="news-cluster-links">'+g.items.map(r=>'<a class="news-cluster-link" href="'+esc(r.url)+'" target="_blank" rel="noopener noreferrer"><span>'+esc(r.source||r.provider)+'</span><b>'+esc(r.title)+'</b><em>'+esc(relativeTime(r.published))+'</em></a>').join('')+'</div></article>').join(''):'<div class="news-empty">No repeated-coverage clusters cleared the current overlap rule in this sample. That does not mean the underlying events are unimportant or unreported.</div>'}
 function providerDescription(id){return id==='gdelt'?'Broad publisher discovery via GDELT':id==='publisher-rss'?'Publisher-supplied RSS excerpts and metadata':id==='hacker-news'?'Community technology link stream':id==='spaceflight-news'?'Specialist space reporting index':id}
 function providerContract(config,id){return(config.providers||[]).find(row=>row.id===id)||{}}
