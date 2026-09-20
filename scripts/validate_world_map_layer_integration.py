@@ -97,6 +97,9 @@ def main():
         errors.append("Below U.S. case geometry must retain at least two broad context anchors")
     if (below.get("metadata") or {}).get("coordinate_policy")!="state-centroid-only":
         errors.append("Below U.S. case geometry must remain state-centroid-only")
+    below_state_ids={str((feature.get("properties") or {}).get("subdivision_id") or "") for feature in below.get("features") or []}
+    if not {"US-VA","US-OH"} <= below_state_ids:
+        errors.append("canonical Below state ids must include US-VA and US-OH")
     for feature in below.get("features") or []:
         props=feature.get("properties") or {}
         if props.get("epistemic_type")!="project_interpretive":
@@ -116,13 +119,13 @@ def main():
         "slot:'subnational-fill'","slot:'context-network'","State shading = filtered record count",
         "not a general hate score or crime score",
     ),errors)
-    subdiv=require(SUBDIV,("forcedPartitions","forcedPartitionOwners","retentionOwners","retainPartition","releasePartition","reconcileActive","potato-atlas-subdivisions-source-change","contextLineZoom"),errors)
+    subdiv=require(SUBDIV,("forcedPartitions","forcedPartitionOwners","retentionOwners","retainPartition","releasePartition","reconcileActive","potato-atlas-subdivisions-source-change","contextLineZoom","__potatoAtlasSpatialOverlays?.activate?.('project.below.us-cases')"),errors)
     render=require(RENDER,("'subnational-fill'","atlas-subdivision-line","Subnational scalar/evidence fills"),errors)
     require(MAP_STATE,("__potatoAtlasEvidenceLayers","evidenceLayer","adlYear","adlType"),errors)
     require(CONTEXT,("__potatoAtlasEvidenceLayers","potato-atlas-evidence-layer-change"),errors)
-    require(PANEL,("Evidence Layers","./3d-evidence-layers.js"),errors)
+    require(PANEL,("Evidence Layers","./3d-evidence-layers.js","./3d-spatial-overlays.js","__potatoAtlasSpatialOverlays?.toggle?.('project.below.us-cases')","__potatoAtlasSpatialOverlays?.activate?.('project.below.us-cases')"),errors)
     require(WORLD_BAR,("project.below.us-cases","Below · U.S. cases"),errors)
-    require(SPATIAL_UI,("project.below","Below / Farm project cases","project.below.us-cases"),errors)
+    require(SPATIAL_UI,("project.below","Below / Farm project cases","project.below.us-cases","registerBelowSubdivisionProvider","registerEvidenceProvider('spatial:project.below.us-cases'"),errors)
     require(GATEWAYS,("__potatoAtlasRenderStack","slot:'context-network'","system-intelligence:gateways"),errors)
     require(CHAINS,("__potatoAtlasRenderStack","slot:'selection-emphasis'","investigation:chain"),errors)
     require(IMPACT,("__potatoAtlasRenderStack","slot:'selection-emphasis'","investigation:impact"),errors)
