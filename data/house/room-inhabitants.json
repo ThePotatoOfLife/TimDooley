@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.4.0",
   "updated": "2026-09-20",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
@@ -65,7 +65,94 @@
       "route": "/shadow-farm/",
       "summary": "Persistent target-thread and archive ecology useful for studying long-duration attention, inherited lore, collaborative narrative escalation and infrastructure resilience.",
       "status_note": "Do not convert reporting associations, community conduct or civil allegations into broader criminal conclusions without case-specific evidence.",
-      "evidence_note": "Track target-by-target conduct, chronology, infrastructure, monetization, legal status and causal level separately."
+      "evidence_note": "Track target-by-target conduct, chronology, infrastructure, monetization, legal status and causal level separately.",
+      "facets": {
+        "identity": {
+          "scope": "persistent target-thread/archive ecology",
+          "boundary": "Case ecology used to study recurrence, archive memory, attention extraction and infrastructure resilience without treating all participants as one coordinated actor."
+        },
+        "timeline": [
+          {
+            "date": "2013",
+            "event": "Forum lineage broadens beyond Chris Chan-focused CWCki/CWCki Forums into Kiwi Farms.",
+            "status": "historical platform genealogy"
+          },
+          {
+            "date": "2022-09",
+            "event": "Cloudflare blocks Kiwi Farms after citing escalating threats and an immediate threat to human life.",
+            "status": "infrastructure governance event"
+          }
+        ],
+        "sources": [
+          {
+            "source_ref": "knowledge/world/culture-sektur-platform-media-political-ecology.json",
+            "role": "canonical project synthesis",
+            "evidence_class": "synthesis"
+          },
+          {
+            "source_ref": "knowledge/world/moloch-milk-farm-genealogy-atlas.json",
+            "role": "genealogy context",
+            "evidence_class": "project research"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "genealogy",
+            "target_id_or_label": "CWCki / CWCki Forums",
+            "direction": "incoming",
+            "status": "historical lineage",
+            "boundary": "Lineage does not imply every later participant inherited identical conduct."
+          },
+          {
+            "type": "infrastructure",
+            "target_id_or_label": "hosting / CDN / registrar ecosystem",
+            "direction": "outgoing",
+            "status": "dependency",
+            "boundary": "Infrastructure dependency is not editorial control."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "attention",
+            "input": "target events and archived material",
+            "mechanism": "watching, posting, clipping, commentary, narrative continuation",
+            "output": "renewed attention and archive growth",
+            "measurement_or_limit": "Not every contribution is monetized or centrally coordinated."
+          }
+        ],
+        "status": [
+          {
+            "label": "project role",
+            "value": "Farm/Sektur case ecology",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Analytical project mapping, not legal classification."
+          }
+        ],
+        "consequences": [
+          {
+            "effect": "Long-duration narrative persistence around targets and reusable archive memory.",
+            "evidence_class": "research/journalistic association",
+            "scope": "platform ecology",
+            "limit": "Target-specific causation requires separate evidence."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which concrete revenue and infrastructure dependencies most strongly affect persistence over time?",
+            "why_it_matters": "Separates volunteer attention from commercial/system incentives.",
+            "needed_evidence": "payment, hosting, traffic and ownership records"
+          }
+        ],
+        "repair": [
+          {
+            "problem": "Self-reinforcing recurrence around a target.",
+            "mechanism": "provenance recovery + boundary enforcement + incentive change + viable exit",
+            "success_condition": "Attention can decline without requiring a new conflict event.",
+            "failure_condition": "Correction itself becomes fuel for renewed targeting."
+          }
+        ]
+      }
     },
     {
       "id": "concept-sektur",
@@ -132,7 +219,69 @@
       "route": "/shadow-farm/",
       "summary": "Private nonprofit watchdog/classifier whose outputs can enter media, employer, donor and political consequence chains.",
       "status_note": "SPLC classification is not a criminal judgment; current litigation or prosecution concerning the organization does not automatically invalidate every historical classification.",
-      "evidence_note": "Store classification date, methodology, wording, correction history and downstream use separately."
+      "evidence_note": "Store classification date, methodology, wording, correction history and downstream use separately.",
+      "facets": {
+        "identity": {
+          "scope": "private nonprofit watchdog/classifier interface",
+          "boundary": "Classification output is not a criminal judgment."
+        },
+        "timeline": [
+          {
+            "date": "2026-04",
+            "event": "DOJ announced federal charges against SPLC concerning alleged financial misconduct.",
+            "status": "allegation/charge"
+          },
+          {
+            "date": "2026-08",
+            "event": "Superseding indictment added defendant/charges.",
+            "status": "ongoing legal process"
+          }
+        ],
+        "sources": [
+          {
+            "source_ref": "knowledge/world/culture-sektur-platform-media-political-ecology.json",
+            "role": "classifier/state interface synthesis",
+            "evidence_class": "synthesis"
+          },
+          {
+            "source_ref": "https://www.splcenter.org/resources/reports/methodology-how-hate-groups-are-identified-and-categorized/",
+            "role": "classification methodology",
+            "evidence_class": "primary organizational source"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "classification",
+            "target_id_or_label": "organizations/groups it designates",
+            "direction": "outgoing",
+            "status": "methodology-bound",
+            "boundary": "Designation is attributed to SPLC and does not require criminal conduct."
+          },
+          {
+            "type": "legal-process",
+            "target_id_or_label": "DOJ / federal court",
+            "direction": "incoming",
+            "status": "charged/contested",
+            "boundary": "Charges are allegations, not convictions."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "information",
+            "input": "publications, reports, web material, field sources",
+            "mechanism": "research and classification methodology",
+            "output": "reports, designations and public claims",
+            "measurement_or_limit": "Methodology and correction history should travel with outputs."
+          }
+        ],
+        "questions": [
+          {
+            "question": "How often are classifications later narrowed, removed, corrected or litigated?",
+            "why_it_matters": "Measures classifier correction capacity.",
+            "needed_evidence": "dated correction/redesignation ledger"
+          }
+        ]
+      }
     },
     {
       "id": "classifier-adl",
@@ -146,7 +295,50 @@
       "route": "/shadow-farm/",
       "summary": "Private watchdog/classifier whose extremism research, incident datasets and symbol resources influence public and institutional understanding.",
       "status_note": "Incident mapping, symbol classification and organization classification are distinct data types.",
-      "evidence_note": "Carry methodology and counting rules with every classification or incident claim."
+      "evidence_note": "Carry methodology and counting rules with every classification or incident claim.",
+      "facets": {
+        "identity": {
+          "scope": "private watchdog/classifier and incident-data interface",
+          "boundary": "Incident mapping, symbol databases and group classifications are separate outputs."
+        },
+        "sources": [
+          {
+            "source_ref": "https://www.adl.org/research-centers/center-on-extremism",
+            "role": "organizational methodology/context",
+            "evidence_class": "primary organizational source"
+          },
+          {
+            "source_ref": "https://www.adl.org/resources/tools-to-track-hate/heat-map",
+            "role": "incident map",
+            "evidence_class": "primary organizational source"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "classification",
+            "target_id_or_label": "incident/symbol/extremism records",
+            "direction": "outgoing",
+            "status": "methodology-bound",
+            "boundary": "Dataset inclusion is not a criminal finding."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "information",
+            "input": "news, government documents, victim reports, extremist sources, internal investigations",
+            "mechanism": "collection and classification",
+            "output": "incident maps, reports, symbol resources",
+            "measurement_or_limit": "Different products have different counting rules."
+          }
+        ],
+        "questions": [
+          {
+            "question": "What correction and revision mechanisms exist across incident, symbol and organization datasets?",
+            "why_it_matters": "Separates durable evidence from stale classification.",
+            "needed_evidence": "change logs and methodology revisions"
+          }
+        ]
+      }
     },
     {
       "id": "state-fbi",
@@ -159,7 +351,45 @@
       "route": "/shadow-farm/",
       "summary": "Federal law-enforcement interface for criminal investigation, civil-rights enforcement and hate-crime data collection.",
       "status_note": "The FBI investigates crimes under statutory authority; being discussed by or reported to the FBI is not proof of guilt.",
-      "evidence_note": "Separate complaint, investigation, charge, conviction and aggregate statistics."
+      "evidence_note": "Separate complaint, investigation, charge, conviction and aggregate statistics.",
+      "facets": {
+        "identity": {
+          "scope": "U.S. federal law-enforcement interface",
+          "boundary": "Investigation or reporting to the FBI is not proof of guilt."
+        },
+        "sources": [
+          {
+            "source_ref": "https://www.fbi.gov/investigate/civil-rights/hate-crimes",
+            "role": "hate-crime role",
+            "evidence_class": "official source"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "law-enforcement",
+            "target_id_or_label": "federal criminal/civil-rights cases",
+            "direction": "outgoing",
+            "status": "statutory authority",
+            "boundary": "Authority and elements vary by offense."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "information",
+            "input": "complaints, evidence, referrals, UCR submissions",
+            "mechanism": "investigation and data collection",
+            "output": "cases, referrals, statistics",
+            "measurement_or_limit": "Complaint, investigation, charge and conviction are distinct statuses."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which federal statutes and evidentiary thresholds govern the specific online conduct being studied?",
+            "why_it_matters": "Prevents substituting moral concern for legal conclusion.",
+            "needed_evidence": "statute, jurisdiction, case facts"
+          }
+        ]
+      }
     },
     {
       "id": "artifact-source-ledger",
@@ -214,7 +444,48 @@
       "route": "/traditions/bible/",
       "summary": "Reader-facing biblical corpus and comparison surface for stories, roles, symbols, actions, books and timeline relations.",
       "status_note": "Scripture, historical interpretation and project comparison remain separate evidence classes.",
-      "evidence_note": "Comparison should begin from the biblical text and preserve source context before project mapping."
+      "evidence_note": "Comparison should begin from the biblical text and preserve source context before project mapping.",
+      "facets": {
+        "identity": {
+          "scope": "reader-facing biblical corpus/comparison system",
+          "boundary": "Scripture, historical interpretation and project comparison remain distinct."
+        },
+        "sources": [
+          {
+            "source_ref": "traditions/bible/index.html",
+            "role": "public reader",
+            "evidence_class": "project surface"
+          },
+          {
+            "source_ref": "data/potatoism-canonical-corpus.json",
+            "role": "project comparison corpus",
+            "evidence_class": "project canon"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "textual-comparison",
+            "target_id_or_label": "Thomas / Didymus tradition",
+            "direction": "bidirectional",
+            "status": "documented comparison",
+            "boundary": "Later tradition is not retroactively canonical."
+          },
+          {
+            "type": "project-comparison",
+            "target_id_or_label": "Potatoverse symbols/operators",
+            "direction": "outgoing",
+            "status": "interpretive",
+            "boundary": "Comparison does not establish identity or prophecy."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which comparisons remain strongest when every verse is read in full literary and historical context?",
+            "why_it_matters": "Tests robustness against keyword matching.",
+            "needed_evidence": "contextual exegesis and source chronology"
+          }
+        ]
+      }
     },
     {
       "id": "text-thomas",
@@ -270,7 +541,50 @@
       "route": "/world-map/",
       "summary": "Spatial public surface for countries, states, institutions, routes and world-system layers.",
       "status_note": "Map placement is a visualization of registered data or project alignment, not proof of political control or causal influence.",
-      "evidence_note": "Each map layer should expose source, date, scope and classification method."
+      "evidence_note": "Each map layer should expose source, date, scope and classification method.",
+      "facets": {
+        "identity": {
+          "scope": "spatial explorer for countries, states, institutions and project layers",
+          "boundary": "Map placement visualizes registered data or project alignment; it does not prove control."
+        },
+        "sources": [
+          {
+            "source_ref": "world-map/index.html",
+            "role": "public map surface",
+            "evidence_class": "project surface"
+          },
+          {
+            "source_ref": "data/countries/index.json",
+            "role": "country registry",
+            "evidence_class": "repository data"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "geography",
+            "target_id_or_label": "country/state/place records",
+            "direction": "outgoing",
+            "status": "registered spatial projection",
+            "boundary": "Political/project overlays require their own source/status."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "information",
+            "input": "country data, layer registries, classifiers",
+            "mechanism": "spatial projection",
+            "output": "interactive map layers",
+            "measurement_or_limit": "Map visibility is not causal importance."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which layers are still labels without concrete sourced objects beneath them?",
+            "why_it_matters": "Directs materialization work.",
+            "needed_evidence": "layer-to-entity coverage audit"
+          }
+        ]
+      }
     },
     {
       "id": "timeline-foundations",
@@ -298,7 +612,48 @@
       "route": "/timeline/",
       "summary": "Timeline ledger for recording what was said first, when later outcomes occurred, and how closely a later event matches the earlier statement.",
       "status_note": "A later match is not automatically proof of prophecy, causation or statistical significance.",
-      "evidence_note": "Preserve original wording, timestamp, outcome source, lead time and match strength."
+      "evidence_note": "Preserve original wording, timestamp, outcome source, lead time and match strength.",
+      "facets": {
+        "identity": {
+          "scope": "chronology/evidence ledger for earlier statements and later outcomes",
+          "boundary": "Temporal match is not automatically prophecy or statistical significance."
+        },
+        "timeline": [
+          {
+            "date": "before outcome",
+            "event": "Original prediction/statement must be preserved in original wording and timestamp.",
+            "status": "required prior record"
+          },
+          {
+            "date": "after outcome",
+            "event": "Outcome evidence is compared against the earlier claim.",
+            "status": "retrospective evaluation"
+          }
+        ],
+        "sources": [
+          {
+            "source_ref": "timeline/index.html",
+            "role": "public chronology",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "temporal-comparison",
+            "target_id_or_label": "later observed outcomes",
+            "direction": "outgoing",
+            "status": "match evaluation",
+            "boundary": "Do not rewrite the prediction after the outcome."
+          }
+        ],
+        "questions": [
+          {
+            "question": "What baseline rate of similarly broad predictions would match by chance?",
+            "why_it_matters": "Needed to assess impressiveness rather than only count hits.",
+            "needed_evidence": "complete prediction denominator and scoring rule"
+          }
+        ]
+      }
     },
     {
       "id": "work-great-book",
@@ -312,7 +667,44 @@
       "route": "/great-book/",
       "summary": "Long-form literary and mythic work that gathers project narrative, theology, symbolism, history and creative interpretation.",
       "status_note": "Literary canon and external historical fact are distinct layers.",
-      "evidence_note": "Trace claims back to source-bearing records when the book moves beyond literary interpretation."
+      "evidence_note": "Trace claims back to source-bearing records when the book moves beyond literary interpretation.",
+      "facets": {
+        "identity": {
+          "scope": "long-form literary/mythic work",
+          "boundary": "Literary canon and external historical fact are distinct."
+        },
+        "sources": [
+          {
+            "source_ref": "great-book/index.html",
+            "role": "public work",
+            "evidence_class": "primary project artifact"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "synthesis",
+            "target_id_or_label": "Potatoverse canon/history/symbolism",
+            "direction": "incoming",
+            "status": "creative synthesis",
+            "boundary": "Narrative inclusion does not independently verify source claims."
+          }
+        ],
+        "consequences": [
+          {
+            "effect": "Compresses project mythology, symbolism and biography into a readable narrative artifact.",
+            "evidence_class": "project output",
+            "scope": "creative work",
+            "limit": "Reception/effect requires separate observation."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which chapters most need inline provenance back to primary timelines, texts or research owners?",
+            "why_it_matters": "Prevents literary retelling from becoming accidental evidence.",
+            "needed_evidence": "chapter-to-source audit"
+          }
+        ]
+      }
     },
     {
       "id": "work-music",
@@ -382,7 +774,50 @@
       "route": "/elevator/",
       "summary": "Recursive spatial projection of the House: global Axis, vertical planes, Dwellings, nested Rooms, wormhole Doors and local recentering.",
       "status_note": "The Elevator is a navigation projection over the graph, not a claim that the repository occupies literal impossible physical geometry.",
-      "evidence_note": "Its topology must derive from governed Room/adjacency registries rather than visual convenience."
+      "evidence_note": "Its topology must derive from governed Room/adjacency registries rather than visual convenience.",
+      "facets": {
+        "identity": {
+          "scope": "recursive spatial navigator over the House graph",
+          "boundary": "Non-Euclidean behavior is graph/topological, not a literal physical claim."
+        },
+        "sources": [
+          {
+            "source_ref": "data/house/elevator-spatial-projection.json",
+            "role": "spatial projection contract",
+            "evidence_class": "canonical architecture"
+          },
+          {
+            "source_ref": "data/house/non-euclidean-room-grammar.json",
+            "role": "door/wormhole grammar",
+            "evidence_class": "canonical architecture"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "navigation",
+            "target_id_or_label": "Dwellings / nested Rooms / inhabitants",
+            "direction": "outgoing",
+            "status": "registry-driven",
+            "boundary": "Visual proximity follows registered adjacency."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "reader-navigation",
+            "input": "current Room/object context",
+            "mechanism": "recenter, elevator stop, wormhole, object focus",
+            "output": "new local center and journey bead",
+            "measurement_or_limit": "Navigation behavior, not knowledge ownership."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which spatial transitions most improve comprehension compared with conventional navigation?",
+            "why_it_matters": "Determines whether 3D complexity earns its cost.",
+            "needed_evidence": "usage/usability testing"
+          }
+        ]
+      }
     },
     {
       "id": "architecture-below-basin",
@@ -396,7 +831,50 @@
       "route": "/below/#basin",
       "summary": "Round lower-plane vessel projecting Culture, Sektur, Farm, Swamp, Mud/Ash, Roots, Forge and Axis/Drain into one operational spatial model.",
       "status_note": "Spatial overlap does not collapse categories: Swamp remains a regime, Farm a process, Mud a material state and Forge a process.",
-      "evidence_note": "Motion between zones follows the Basin dynamics contract rather than moral or aesthetic assignment."
+      "evidence_note": "Motion between zones follows the Basin dynamics contract rather than moral or aesthetic assignment.",
+      "facets": {
+        "identity": {
+          "scope": "round lower-plane operational projection",
+          "boundary": "Below is a view; Swamp, Farm, Mud, Roots and Forge remain different categories."
+        },
+        "sources": [
+          {
+            "source_ref": "data/house/below-basin-spatial-contract.json",
+            "role": "spatial contract",
+            "evidence_class": "canonical architecture"
+          },
+          {
+            "source_ref": "data/house/below-basin-dynamics.json",
+            "role": "motion rules",
+            "evidence_class": "canonical architecture"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "contains-projection",
+            "target_id_or_label": "Swamp / Sektur / Farm / Mud / Roots / Forge",
+            "direction": "outgoing",
+            "status": "spatial projection",
+            "boundary": "Containment in the drawing does not imply ontological equivalence."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "information/attention/status",
+            "input": "World events and claims",
+            "mechanism": "culture, archive, classification, evidence and repair routes",
+            "output": "recirculation, rejection, repair or World return",
+            "measurement_or_limit": "Qualitative systems model unless separately operationalized."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Can case overlays demonstrate the motion laws without visually moralizing depth?",
+            "why_it_matters": "Tests whether the metaphor remains analytically disciplined.",
+            "needed_evidence": "case overlays and user comprehension testing"
+          }
+        ]
+      }
     },
     {
       "id": "architecture-journey-thread",
