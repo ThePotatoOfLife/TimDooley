@@ -18,7 +18,7 @@ function welfare(start){
 function bandFor(id){return (activity?.records||[]).find(x=>x.id===id)?.band||'historical'}
 function currentIds(){return new Set((currentDesk?.items||[]).map(x=>x.id))}
 function buildAccount(meta,d){
- const start=d.cia_record?.presence?.first_recorded||'',w=welfare(start),adj=eventAdjustment(d.symbolic_account?.entries||[]);
+ const start=d.symbolic_account?.welfare_start_override||d.cia_record?.presence?.first_recorded||'',w=welfare(start),adj=eventAdjustment(d.symbolic_account?.entries||[]);
  return{id:meta.id,name:meta.name||d.display_name||meta.id,start,band:bandFor(meta.id),welfare:w.value,exact:w.exact,adjustment:adj.total,balance:w.value+adj.total,events:(d.symbolic_account?.entries||[]),status:d.symbolic_account?.status||'unassessed'};
 }
 function render(){
