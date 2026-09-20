@@ -15,6 +15,7 @@ let index = null;
 let renderedCode = null;
 let renderVersion = 0;
 let subdivisionIndexPromise = null;
+let retainedRegionPartition = null;
 let activeTab = 'overview';
 const records = new Map();
 
@@ -73,6 +74,17 @@ async function subdivisionDescriptor(code) {
   const index = await subdivisionIndex();
   return index?.partitions?.[String(code || '').toUpperCase()] || null;
 }
+async function releaseRegions() {
+  if (!retainedRegionPartition) return false;
+  const partition = retainedRegionPartition;
+  retainedRegionPartition = null;
+  try {
+    return Boolean(await window.__potatoAtlasSubdivisions?.releasePartition?.(partition, 'country-card'));
+  } catch (error) {
+    console.warn('Country-card subdivision lease release unavailable:', error);
+    return false;
+  }
+}
 async function showRegions(code) {
   const descriptor = await subdivisionDescriptor(code);
   if (!descriptor) return false;
@@ -82,7 +94,12 @@ async function showRegions(code) {
   }
   const api = window.__potatoAtlasSubdivisions;
   if (!api?.retainPartition) return false;
-  await api.retainPartition(code, 'country-card');
+  const next = String(code || '').toUpperCase();
+  if (retainedRegionPartition && retainedRegionPartition !== next) await releaseRegions();
+  if (retainedRegionPartition !== next) {
+    await api.retainPartition(next, 'country-card');
+    retainedRegionPartition = next;
+  }
   await api.refresh?.();
   return true;
 }
@@ -257,6 +274,7 @@ async function render(code = selection.current?.activeCode || selection.current?
   const card = document.getElementById('atlasCountryCard');
   if (!card) return;
   const version = ++renderVersion;
+  if (retainedRegionPartition && retainedRegionPartition !== code) await releaseRegions();
   if (!/^[A-Z]{3}$/.test(code)) { renderedCode = null; card.hidden = true; card.innerHTML = ''; return; }
   renderedCode = code;
   const [record, shared, subdivision] = await Promise.all([countryRecord(code), presentation.forCountry(code), subdivisionDescriptor(code)]);
@@ -305,7 +323,10 @@ async function render(code = selection.current?.activeCode || selection.current?
     <div class="atlas-country-actions">${regionActionHtml}<button type="button" data-atlas-statistics>Statistics</button><button type="button" data-country-action="details">More data</button><button type="button" data-country-action="entity-trace">Trace</button><button type="button" data-country-action="path">Path</button><button type="button" data-country-action="impact">Impact</button></div>
     <div class="atlas-country-source">${refreshed ? `Country record · ${esc(refreshed)}` : 'Country record'} · missing values remain unavailable</div>`;
   card.hidden = false;
-  card.querySelector('.atlas-country-close')?.addEventListener('click', () => { card.hidden = true; });
+  card.querySelector('.atlas-country-close')?.addEventListener('click', () => {
+    card.hidden = true;
+    void releaseRegions();
+  });
   activateTab(activeTab);
   syncTraceAction();
   if (window.__potatoAtlasDiagnostics) window.__potatoAtlasDiagnostics.countryCardRenders = (window.__potatoAtlasDiagnostics.countryCardRenders || 0) + 1;
@@ -328,5 +349,9 @@ window.__potatoAtlasCountryCard = {
   contextualRows,
   axisContext,
   activateTab,
-  close() { const card = document.getElementById('atlasCountryCard'); if (card) card.hidden = true; },
+  close() {
+    const card = document.getElementById('atlasCountryCard');
+    if (card) card.hidden = true;
+    void releaseRegions();
+  },
 };
