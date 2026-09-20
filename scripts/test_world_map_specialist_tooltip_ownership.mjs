@@ -22,9 +22,11 @@ for (const [label, source, owner] of [
   assert.ok(source.includes(`tooltip.invalidate('${owner}-leave')`), `${label} must invalidate on leave`);
 }
 
-for (const [label, source] of [['Fields', fields], ['Networks', networks]]) {
-  assert.ok(source.includes("map.on('mousemove',FILL_ID"), `${label} must update hover as the feature changes inside the fill layer`);
+for (const [label, source, owner] of [['Fields', fields, 'project-fields'], ['Networks', networks, 'empirical-networks']]) {
+  assert.ok(source.includes(`interaction.register('${owner}'`), `${label} must route hover through the shared Interaction Router`);
+  assert.ok(source.includes('onHover:(event,feature)=>'), `${label} must update hover as the routed feature changes`);
   assert.ok(source.includes('activeHoverKey'), `${label} must track semantic hover identity to avoid generation churn`);
+  assert.ok(!source.includes("map.on('mousemove',FILL_ID"), `${label} must not regain a direct fill-layer mousemove listener`);
 }
 
 console.log('WORLD MAP SPECIALIST TOOLTIP OWNERSHIP REGRESSION PASSED');
