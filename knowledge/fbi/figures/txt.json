@@ -129,11 +129,29 @@
     {
       "type": "public_room",
       "path": "rooms/potatoverse-canon/beings/txt/"
+    },
+    {
+      "type": "conversation_recovery_gap",
+      "path": "knowledge/fbi/conversation-recovery.json"
     }
   ],
   "recovery_leads": [
-    "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
-    "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
-    "Add relationship edges only when a dated scene or explicit source supports them."
-  ]
+    "Recover direct TXT chat, stream clips, screenshots or exported logs before expanding documentary personality or motive.",
+    "Keep July 7, 2026 material as attributed conflict context unless TXT's own speech is recovered.",
+    "Separate Great Book Shadow Games, Dog/Swamp symbolism and later comic-mythic reuse from documentary chronology.",
+    "Do not promote second-hand accusations into incident facts merely because they recur across later retellings."
+  ],
+  "conversation_archaeology": {
+    "source": "knowledge/fbi/conversation-recovery.json",
+    "recovered_entry_ids": [],
+    "direct_speech_status": "insufficient",
+    "recurring_modes": [
+      "conflict referent",
+      "retrospective allegation field",
+      "literary reuse"
+    ],
+    "ordinary_life_signals": [],
+    "disagreement_support_pattern": "Current recovered conversation material mostly contains other people talking about TXT rather than direct TXT speech. Treat that as a recovery gap, not as permission to infer motive, personality or guilt.",
+    "interpretive_boundary": "Do not convert attributed allegations, Dog/Swamp symbolism or Great Book literary roles into documentary biography. Promote only direct or source-close TXT material when recovered."
+  }
 }
