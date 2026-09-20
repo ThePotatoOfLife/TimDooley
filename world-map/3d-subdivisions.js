@@ -124,6 +124,7 @@ function retentionOwners() {
 let activeBytes = 0;
 let labelZoomBase = null;
 let nameZoomBase = null;
+let localNameZoomBase = null;
 let runtimeBudget = { ...DEFAULT_RUNTIME_BUDGET };
 let cacheHits = 0;
 let cacheMisses = 0;
@@ -603,6 +604,7 @@ function labelPresentation() {
     globe,
     labelZoom:Number(labelZoomBase || 0) + delay,
     nameZoom:Number(nameZoomBase || 0) + delay,
+    localNameZoom:Number(localNameZoomBase || 0) + delay,
   };
 }
 function syncSelectedLabel(id = selectedId) {
@@ -614,7 +616,17 @@ function syncLabelPresentation() {
   if (!map.getLayer(LABEL_ID) || labelZoomBase == null || nameZoomBase == null) return false;
   const policy = labelPresentation();
   map.setLayerZoomRange?.(LABEL_ID, policy.labelZoom, 24);
-  map.setLayoutProperty?.(LABEL_ID, 'text-field', ['step',['zoom'],['get','code'],policy.nameZoom,['get','name']]);
+  map.setLayoutProperty?.(LABEL_ID, 'text-field', [
+    'step',['zoom'],
+    ['get','code'],
+    policy.nameZoom,['get','name'],
+    policy.localNameZoom,[
+      'case',
+      ['all',['has','local_name'],['!=',['get','local_name'],['get','name']]],
+      ['concat',['get','name'],'\n',['get','local_name']],
+      ['get','name']
+    ]
+  ]);
   return true;
 }
 async function scaleRuntime() {
@@ -631,7 +643,9 @@ async function installSharedLayers() {
   let contextLineZoom = renderZoom;
   try { contextLineZoom = Math.min(renderZoom, scale.bandThreshold('macro-region')); } catch {}
   const nameZoom = scale.bandThreshold('subnational');
+  const localNameZoom = scale.bandThreshold('local');
   nameZoomBase = nameZoom;
+  localNameZoomBase = localNameZoom;
   if (!map.getSource(SOURCE_ID)) {
     map.addSource(SOURCE_ID, { type:'geojson', data:{type:'FeatureCollection',features:[]}, promoteId:'id' });
   }
@@ -665,7 +679,12 @@ async function installSharedLayers() {
       id:SELECTED_LABEL_ID,type:'symbol',source:SOURCE_ID,minzoom:renderZoom,
       filter:['==',['get','id'],'__none__'],
       layout:{
-        'text-field':['coalesce',['get','name'],['get','code']],
+        'text-field':[
+          'case',
+          ['all',['has','local_name'],['!=',['get','local_name'],['get','name']]],
+          ['concat',['coalesce',['get','name'],['get','code']],'\n',['get','local_name']],
+          ['coalesce',['get','name'],['get','code']]
+        ],
         'text-size':['interpolate',['linear'],['zoom'],renderZoom,10,7,13],
         'text-max-width':10,'text-allow-overlap':true,'text-ignore-placement':true
       },
