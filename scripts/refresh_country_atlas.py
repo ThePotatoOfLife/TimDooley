@@ -97,6 +97,7 @@ def get_json(url: str):
 
 def world_bank(fields):
     result = {field: {} for field in fields}
+    degraded = {}
     for field in fields:
         indicator = INDICATORS[field]
         page = 1
@@ -109,9 +110,21 @@ def world_bank(fields):
                 f"{urllib.parse.quote(indicator, safe='')}?{query}"
             )
             if not isinstance(payload, list) or len(payload) < 2 or not isinstance(payload[1], list):
-                raise RuntimeError(f"World Bank returned malformed payload for {indicator}")
+                degraded[field] = f"malformed payload for {indicator}"
+                print(
+                    f"World Bank indicator {indicator} degraded: malformed payload; "
+                    "preserving prior canonical observations.",
+                    file=sys.stderr,
+                )
+                break
             if isinstance(payload[0], dict) and payload[0].get("message"):
-                raise RuntimeError(f"World Bank rejected {indicator}: {payload[0]['message']}")
+                degraded[field] = f"World Bank rejected {indicator}: {payload[0]['message']}"
+                print(
+                    f"World Bank indicator {indicator} degraded: {payload[0]['message']}; "
+                    "preserving prior canonical observations.",
+                    file=sys.stderr,
+                )
+                break
             for row in payload[1]:
                 iso = str(row.get("countryiso3code") or "").upper()
                 value = row.get("value")
@@ -130,7 +143,7 @@ def world_bank(fields):
             if page >= pages:
                 break
             page += 1
-    return result
+    return result, degraded
 
 
 def load(path):
@@ -151,11 +164,13 @@ def main():
         raise RuntimeError("Canonical country index has duplicate or missing identities")
 
     by_field = {field: {} for field in INDICATORS}
+    degraded_indicators = {}
     requests = 0
     for group in GROUPS:
-        result = world_bank(group)
+        result, degraded = world_bank(group)
         for field, values in result.items():
             by_field[field].update(values)
+        degraded_indicators.update(degraded)
         requests += len(group)
 
     coverage = {field: len(by_field[field]) for field in INDICATORS}
@@ -228,6 +243,7 @@ def main():
                 "observations_written": observations_written,
                 "bulk_indicator_requests": requests,
                 "coverage": coverage,
+                "degraded_indicators": degraded_indicators,
                 "source": "world-bank",
             },
             ensure_ascii=False,
