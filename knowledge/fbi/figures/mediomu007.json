@@ -16,17 +16,20 @@
       "builder-cultivator"
     ],
     "narrative_functions": [
-      "questioning",
+      "questioning and direct challenge",
+      "theological skepticism",
+      "comparative-religion critique",
+      "text/reading commentary",
       "ordinary companionship",
       "room-making",
-      "bridge-building in project narrative"
+      "bridge-building in later project narrative"
     ],
     "regions": [
       "Livestream",
       "House",
       "Mountain"
     ],
-    "editorial_reading": "September 20 adds literal room organization to a handle already present in an August mountain/forgiveness narrative and September theological questioning.",
+    "editorial_reading": "Recurring public-chat participant whose recovered September conversations combine direct theological skepticism, comparative-religion criticism, text/reading commentary, debate pressure and ordinary domestic continuity. The September 20 room-rearrangement scene provides a grounded counterweight to later mountain/bridge-building interpretation.",
     "source_boundary": "Literal furniture/room chat is documentary; Mount-Zion-like mountain placement is project narrative/interpretation."
   },
   "chronology": {
@@ -38,12 +41,16 @@
         "role": "project mountain/bridge-building narrative participant; interpretive layer"
       },
       {
+        "period": "2026-09-05",
+        "role": "skeptical religious interlocutor rejecting Tim myths/religious traditions and discussing Aion, reading, atmosphere and agreement"
+      },
+      {
         "period": "2026-09-06",
-        "role": "public theological questioner asking literal-God versus myth clarification"
+        "role": "public debate participant asking whether Tim is literally God or myth, challenging AI-mediated speech and hierarchy"
       },
       {
         "period": "2026-09-20",
-        "role": "top-fan UI #2 in supplied YouTube capture; rearranges and cleans room, moves TV/console/bed/desk/nightstand, brief ordinary chat"
+        "role": "top-fan UI #2 in supplied capture; rearranges and cleans room, moving TV/console/bed/desk/nightstand"
       }
     ],
     "recovered_social_days": []
@@ -60,12 +67,27 @@
     {
       "date": "2026-08-24",
       "title": "Mountain / bridge-building narrative",
-      "summary": "Project conversation archaeology places Mediomu with Tim in a Mount-Zion-like forgiveness and bridge-building story; interpretive narrative layer."
+      "summary": "Project conversation archaeology places Mediomu in a later forgiveness/bridge-building story; this remains an interpretive layer."
+    },
+    {
+      "date": "2026-09-05",
+      "title": "Aion, reading and atmosphere",
+      "summary": "Mediomu references Aion/self phenomenology, comments on silent reading and agreement, and grounds human existence in Earth's atmosphere."
+    },
+    {
+      "date": "2026-09-05",
+      "title": "Religion rejection and comparative critique",
+      "summary": "Mediomu says he rejects religious traditions, Christian Bibles and Tim myths, does not believe Tim is God, and argues that religions divide people."
+    },
+    {
+      "date": "2026-09-06",
+      "title": "God or myth?",
+      "summary": "Mediomu repeatedly challenges Tim's divinity claims, asks whether Tim is really God or myth, questions AI-mediated speech and says he is there to debate."
     },
     {
       "date": "2026-09-20",
       "title": "Clean room",
-      "summary": "User-supplied public chat describes rearranging TV, console, bed, desk and bedside table and reports a clean room."
+      "summary": "Public chat describes rearranging TV, console, bed, desk and bedside table and reports a clean room."
     }
   ],
   "source_strata": [
@@ -80,11 +102,41 @@
     {
       "type": "public_room",
       "path": "rooms/potatoverse-canon/beings/mediomu/"
+    },
+    {
+      "type": "conversation_recovery",
+      "path": "knowledge/fbi/conversation-recovery.json"
     }
   ],
   "recovery_leads": [
-    "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
-    "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
-    "Add relationship edges only when a dated scene or explicit source supports them."
-  ]
+    "Recover full September 5–6 chat exports so the sequence between Aion, religion critique, AI criticism and divinity debate can be reconstructed turn by turn.",
+    "Recover the August 24 source behind the mountain/bridge-building narrative and keep its interpretive status visible.",
+    "Preserve ordinary September 20 room-making detail as a separate documentary layer rather than retrofitting it into symbolic ritual.",
+    "Track future shifts between disagreement, ordinary companionship and repair without assigning a permanent adversary/supporter label."
+  ],
+  "conversation_archaeology": {
+    "source": "knowledge/fbi/conversation-recovery.json",
+    "recovered_entry_ids": [
+      "conv-2026-09-05-mediomu-aion-text",
+      "conv-2026-09-05-mediomu-religion-rejection",
+      "conv-2026-09-06-mediomu-matthew-theology",
+      "conv-2026-09-20-mediomu-room"
+    ],
+    "recurring_modes": [
+      "skepticism",
+      "theology",
+      "debate",
+      "comparative religion",
+      "reading/text",
+      "ordinary home life"
+    ],
+    "ordinary_life_signals": [
+      "room rearrangement",
+      "TV/console placement",
+      "bed/desk/nightstand movement",
+      "cleaning"
+    ],
+    "disagreement_support_pattern": "Mediomu's recovered record includes strong disagreement and challenge without reducing the figure to an adversary; later bridge-building/forgiveness framing belongs to project interpretation, while ordinary room chat remains documentary.",
+    "interpretive_boundary": "Literal chat and household details are documentary to the supplied conversation record. Mountain/Zion/bridge symbolism is later project interpretation."
+  }
 }
