@@ -1,6 +1,6 @@
 {
-  "version": "1.2.0",
-  "updated": "2026-09-18",
+  "version": "1.3.0",
+  "updated": "2026-09-20",
   "authority": "house-structural-role-census",
   "purpose": "Inventory important project structures by architectural role without turning every recurring topic into another containment level.",
   "governing_rule": "Structural role and knowledge ownership are orthogonal. A thing may be a View, Court, Programme/Vineyard, Gate or Archive while its facts continue to belong to canonical Dwellings/Rooms.",
@@ -147,6 +147,24 @@
       "question": "What carries a selected collection through a transition?",
       "test": "Portable curated bundle preserving member identity.",
       "ownership_effect": "none; collection semantics only"
+    },
+    {
+      "id": "plane-section",
+      "question": "What frame-relative section makes the current state legible without becoming a new realm?",
+      "test": "Declares scale/time/representation and exposes lateral/current relations while remaining a projection of larger owners.",
+      "ownership_effect": "none; section/view only"
+    },
+    {
+      "id": "trajectory",
+      "question": "What ordered path through states is being followed over time?",
+      "test": "Has states/crossings/order and can distinguish recurrence-with-change from exact cycle.",
+      "ownership_effect": "none; temporal relation only"
+    },
+    {
+      "id": "rim",
+      "question": "What selective boundary preserves identity while regulating passage?",
+      "test": "Names permeability/guard/repair rules rather than merely drawing a border.",
+      "ownership_effect": "none; boundary relation only"
     }
   ],
   "instances": [
@@ -1238,6 +1256,56 @@
         "house"
       ],
       "note": "Project-symbolic interoperability grammar: enough shared meaning/evidence/language for heterogeneous nodes to communicate without collapsing."
+    },
+    {
+      "id": "world-plane-section",
+      "title": "World / operative Plane",
+      "roles": [
+        "plane-section"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/house/plane-crossing-contract.json",
+        "data/house/topology.json"
+      ],
+      "public_surfaces": [
+        "potato-of-life",
+        "axis"
+      ],
+      "note": "Frame-relative section through the two-field geometry; not a third realm."
+    },
+    {
+      "id": "potato-trajectory",
+      "title": "Ladder / Spiral trajectory",
+      "roles": [
+        "trajectory"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/house/seed-spiral-routing.json",
+        "data/house/plane-crossing-contract.json"
+      ],
+      "public_surfaces": [
+        "axis",
+        "timeline"
+      ],
+      "note": "Ordered recurrence across changing states; sampled on Plane where useful."
+    },
+    {
+      "id": "field-rims",
+      "title": "Source / Manifestation / Door rims",
+      "roles": [
+        "rim"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/house/topology.json",
+        "knowledge/research/circle-field-research-synthesis-2026-09-20.json"
+      ],
+      "public_surfaces": [
+        "potato-of-life"
+      ],
+      "note": "Selective boundaries supporting guardianship, rules, consent and legitimate passage."
     }
   ],
   "unresolved_candidates": [
