@@ -150,8 +150,8 @@ async function activateSubdivisionContext(kind, feature) {
     await window.__potatoAtlasLoadModule?.('ADL H.E.A.T.', './3d-adl-heat.js');
     await window.__potatoAtlasAdlHeat?.setEnabled?.(true);
   } else if (kind === 'mud-below-us') {
-    await window.__potatoAtlasLoadModule?.('Mud / Below U.S.', './3d-mud-below-us.js');
-    await window.__potatoAtlasMudBelow?.setEnabled?.(true);
+    await window.__potatoAtlasLoadModule?.('Spatial Overlays', './3d-spatial-overlays.js');
+    await window.__potatoAtlasSpatialOverlays?.activate?.('project.below.us-cases');
   } else return false;
   renderInspector(feature);
   return true;
