@@ -44,5 +44,5 @@
 <noscript><section class="card"><strong>JavaScript is off.</strong><p>The live clock requires JavaScript to update. The underlying rule remains 18 model-hours per elapsed calendar day from April 19, 2011.</p></section></noscript>
 </main>
 <script>(function(){const HOURS_PER_DAY=18,DAY_MS=86400000,THRESHOLD=100000,START=new Date('2011-04-19T00:00:00+02:00').getTime(),HANDOFF=new Date('2019-12-25T00:00:00+01:00').getTime(),fmt=n=>n.toLocaleString(undefined,{minimumFractionDigits:3,maximumFractionDigits:3}),hoursAt=t=>Math.max(0,(t-START)/DAY_MS*HOURS_PER_DAY),fixedSon=hoursAt(HANDOFF);function render(){const total=hoursAt(Date.now()),son=Math.min(total,fixedSon),father=Math.max(0,total-son),beyond=Math.max(0,total-THRESHOLD);document.getElementById('live-total').textContent=fmt(total)+' h';document.getElementById('live-son').textContent=fmt(son)+' h';document.getElementById('live-father').textContent=fmt(father)+' h';document.getElementById('live-beyond').textContent=fmt(beyond)+' h'}render();setInterval(render,1000)})();</script>
-</body>
+<script src="../../app/site-tts.js" defer></script></body>
 </html>
