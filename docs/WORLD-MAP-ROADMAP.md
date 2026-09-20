@@ -104,7 +104,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The curr
 
 ### 2026-09-21 re-audit priorities
 
-- [ ] Retire dormant `3d-fields.js` / `3d-networks.js` only after registry/time/tooltip parity is proven and validators stop treating them as required runtime files.
+- [~] Retire dormant `3d-fields.js` / `3d-networks.js`: live symbolic operators have been migrated off their retired controls; canonical registry parity and validator cleanup are in progress.
 - [ ] Expand subdivision + bounded Places depth beyond the current five promoted countries (USA, CAN, DNK, UKR, RUS) through the generic importer/partition contract.
 - [ ] Replace the GeoNames mirror seed with a reviewed fresh canonical build; preserve source date, build date and upstream freshness separately.
 - [ ] Promote at least one reviewed delayed/historical conflict snapshot with source bundle, date semantics and explicit not-live boundary before exposing Conflict as current functionality.
