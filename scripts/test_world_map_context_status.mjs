@@ -22,5 +22,10 @@ assert.ok(
   worldBar.includes('select a country'),
   'relationship context without an active subject must explicitly orient the user to select a country',
 );
+assert.ok(worldBar.includes("context.setAttribute('role','status')"), 'successor Current Map View must be a status region');
+assert.ok(worldBar.includes("context.setAttribute('aria-live','polite')"), 'successor Current Map View must announce canonical changes politely');
+assert.ok(worldBar.includes("context.setAttribute('aria-atomic','true')"), 'successor Current Map View must announce a coherent atomic status');
+assert.ok(worldBar.includes("let lastContextMarkup = ''"), 'successor status must track the last rendered announcement');
+assert.ok(worldBar.includes("if (markup !== lastContextMarkup)"), 'successor status must not rewrite identical live-region content');
 
 console.log('World Map retired context-status ownership contract passed');
