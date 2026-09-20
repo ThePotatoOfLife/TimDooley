@@ -114,7 +114,7 @@ function conversationsHtml(){
    '<div class="timeline">'+(list.length?list.map(x=>{
      const raw=arr(x.raw_fragments);
      const details=arr(x.ordinary_details);
-     return '<article class="event"><time>'+esc(x.date)+'</time><h3>'+esc(x.id.replace(/^conv-[^-]+-[^-]+-/,'').replaceAll('-',' '))+'</h3>'+
+     return '<article class="event"><time>'+esc(x.date)+'</time><h3>'+esc(x.title||x.id)+'</h3>'+
        '<p><b>Modes:</b> '+esc(arr(x.modes).join(' / '))+'</p>'+
        (raw.length?'<ul>'+raw.map(v=>'<li>'+esc(v)+'</li>').join('')+'</ul>':'')+
        (details.length?'<p class="mono"><b>Ordinary detail:</b> '+details.map(esc).join(' · ')+'</p>':'')+
