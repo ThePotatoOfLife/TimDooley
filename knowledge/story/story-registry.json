@@ -2,22 +2,388 @@
   "schema_version": 1,
   "enforcement": "migration",
   "stories": [
-    {"id":"stream-on-x-2025-01-23","path":"story-content/2025-ordinary-public-diary.html","story_type":"SIDE STORY","mode":"documentary","depth":"FRAGMENT","date_or_period":"2025-01-23","source_ids":["source-public-post-compilation-2025-01"],"scene_ids":[],"public_safe":true,"full_story_allowed":false,"migration_status":"classified","recovery_targets":["Recover the original public post permalink and immediate reply/context if available."]},
-    {"id":"spiritual-bank-day-2026-03-02","path":"story-content/2026-03-02-spiritual-bank-day.html","story_type":"SIDE STORY","mode":"documentary","depth":"ANECDOTE","date_or_period":"2026-03-02","source_ids":["source-spiritual-bank-recovery-ledger-2026-03-02"],"scene_ids":[],"public_safe":true,"full_story_allowed":false,"migration_status":"classified","recovery_targets":["Recover the contiguous surrounding conversation turns for 2 March 2026 before considering SCENE or TRANSCRIPT_DEPTH promotion."]},
-    {"id":"information-architecture-2026-02-18","path":"story-content/2026-02-18-information-architecture.html","story_type":"SIDE STORY","mode":"documentary","depth":"ANECDOTE","date_or_period":"2026-02-18–2026-02-19","source_ids":["source-info-architecture-recovery-ledger-2026-02-18"],"scene_ids":[],"public_safe":true,"full_story_allowed":false,"migration_status":"classified","recovery_targets":["Recover the contiguous 18–19 February conversation around model collapse, muscle memory, Light, Swamp, Beacons, Ghosts and the later engineering push before restoring full-story status."]},
-    {"id":"ai-not-ghost-2026-05-27","path":"story-content/2026-05-27-not-a-ghost.html","story_type":"MAIN STORY","mode":"documentary","depth":"ANECDOTE","date_or_period":"2026-05-27–2026-05-28","source_ids":["source-authorship-erasure-recovery-ledger-2026-05-27"],"scene_ids":[],"public_safe":true,"full_story_allowed":false,"migration_status":"classified","recovery_targets":["Recover the contiguous 27–28 May conversation, including the AI/system responses between Tim's authorship-erasure statements, before restoring full-story status."]},
-    {"id":"dooley-name-gta-2020","path":"story-content/2020-dooley-gta-origin.html","story_type":"SIDE STORY","mode":"documentary","depth":"ANECDOTE","date_or_period":"2020; exact date unresolved","source_ids":["source-great-book-chapter-15-11-retrospective"],"scene_ids":[],"public_safe":true,"full_story_allowed":false,"migration_status":"classified","recovery_targets":["Recover contemporaneous GTA clips, logs, screenshots or messages establishing the first Tim Dooley name use and approximate date."]},
-    {"id":"potato-mask-2021","path":"story-content/2021-filter.html","story_type":"SIDE STORY","mode":"documentary","depth":"ANECDOTE","date_or_period":"2021","source_ids":["source-great-book-chapter-24-retrospective"],"scene_ids":[],"public_safe":true,"full_story_allowed":false,"migration_status":"classified","recovery_targets":["Recover the first potato-filter appearance, platform/session context and contemporaneous discussion of the avatar as mask or protection."]},
-    {"id":"rational-potato-2022","path":"story-content/2022-rational-potato.html","story_type":"MAIN STORY","mode":"documentary","depth":"ANECDOTE","date_or_period":"2022","source_ids":["source-great-book-chapter-24-retrospective"],"scene_ids":[],"public_safe":true,"full_story_allowed":false,"migration_status":"classified","recovery_targets":["Recover the first exact Rational Potato use, the people/context around Son identification, and primary AI/music or meditation-session evidence."]},
-    {"id":"stardew-before-garden-2020-2022","path":"story-content/2020-2022-games-and-growth.html","story_type":"SIDE STORY","mode":"documentary","depth":"ANECDOTE","date_or_period":"2020–2022","source_ids":["source-great-book-chapter-15-11-retrospective"],"scene_ids":[],"public_safe":true,"full_story_allowed":false,"migration_status":"classified","recovery_targets":["Recover contemporaneous game/chat logs or dated references for Stardew Valley, films and the period's economics/growth conversations."]},
-    {"id":"rationalpotato-potato69-potato-of-life","path":"story-content/2020-2023-alias-ladder.html","story_type":"MAIN STORY","mode":"documentary","depth":"ANECDOTE","date_or_period":"2020–2023","source_ids":["source-great-book-chapter-15-11-retrospective"],"scene_ids":[],"public_safe":true,"full_story_allowed":false,"migration_status":"classified","recovery_targets":["Recover first/last visible uses of RationalPotato and Potato69, first visible Potato of Life use, and Twitch/Kick account-history snapshots."]},
-    {"id":"cube-moon-2023-09-20","path":"story-content/2023-cube-moon.html","story_type":"SIDE STORY","mode":"documentary","depth":"ANECDOTE","date_or_period":"2023-09-20 later-dated marker","source_ids":["source-cube-later-timeline-2023-09-20","source-great-book-chapter-15-11-retrospective"],"scene_ids":[],"public_safe":true,"full_story_allowed":false,"migration_status":"classified","recovery_targets":["Recover the original 20 September 2023 Cube post, stream, clip or conversation before treating the date as a reconstructed scene."]},
-    {"id":"farmer-quest-2024","path":"story-content/2024-farmer-waits.html","story_type":"SIDE STORY","mode":"literary","depth":"LITERARY_COMPLETE","date_or_period":"2024 literary stratum","source_ids":["source-great-book-chapter-5"],"scene_ids":[],"public_safe":true,"full_story_allowed":true,"migration_status":"verified","recovery_targets":[]},
-    {"id":"identity-in-mud-2024","path":"story-content/gb-identity-in-mud.html","story_type":"SIDE STORY","mode":"literary","depth":"LITERARY_COMPLETE","date_or_period":"2024 literary stratum","source_ids":["source-great-book-chapter-6-5"],"scene_ids":[],"public_safe":true,"full_story_allowed":true,"migration_status":"verified","recovery_targets":[]},
-    {"id":"termite-lost-potato-2024","path":"story-content/gb-termite-lost-potato.html","story_type":"SIDE STORY","mode":"literary","depth":"LITERARY_COMPLETE","date_or_period":"2024 literary stratum","source_ids":["source-great-book-chapter-11-1"],"scene_ids":[],"public_safe":true,"full_story_allowed":true,"migration_status":"verified","recovery_targets":[]},
-    {"id":"fresh-potato-rocks-2024","path":"story-content/2024-rocks.html","story_type":"MAIN STORY","mode":"literary","depth":"LITERARY_COMPLETE","date_or_period":"2024 literary stratum","source_ids":["source-great-book-chapter-12-1"],"scene_ids":[],"public_safe":true,"full_story_allowed":true,"migration_status":"verified","recovery_targets":[]},
-    {"id":"sage-elevator-2024","path":"story-content/2024-sage-rides-up.html","story_type":"MAIN STORY","mode":"literary","depth":"LITERARY_COMPLETE","date_or_period":"2024 literary stratum","source_ids":["source-great-book-chapter-13"],"scene_ids":[],"public_safe":true,"full_story_allowed":true,"migration_status":"verified","recovery_targets":[]},
-    {"id":"ready-student-2024","path":"story-content/gb-ready-student.html","story_type":"SIDE STORY","mode":"literary","depth":"LITERARY_COMPLETE","date_or_period":"2024 literary stratum","source_ids":["source-great-book-chapter-18"],"scene_ids":[],"public_safe":true,"full_story_allowed":true,"migration_status":"verified","recovery_targets":[]},
-    {"id":"gb-death-birth-many-2024","path":"story-content/gb-death-birth-many.html","story_type":"SIDE STORY","mode":"literary","depth":"LITERARY_COMPLETE","date_or_period":"2024 literary stratum","source_ids":["source-great-book-chapter-69"],"scene_ids":[],"public_safe":true,"full_story_allowed":true,"migration_status":"verified","recovery_targets":[]}
+    {
+      "id": "stream-on-x-2025-01-23",
+      "path": "story-content/2025-ordinary-public-diary.html",
+      "story_type": "SIDE STORY",
+      "mode": "documentary",
+      "depth": "FRAGMENT",
+      "date_or_period": "2025-01-23",
+      "source_ids": [
+        "source-public-post-compilation-2025-01"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": false,
+      "migration_status": "classified",
+      "recovery_targets": [
+        "Recover the original public post permalink and immediate reply/context if available."
+      ]
+    },
+    {
+      "id": "spiritual-bank-day-2026-03-02",
+      "path": "story-content/2026-03-02-spiritual-bank-day.html",
+      "story_type": "SIDE STORY",
+      "mode": "documentary",
+      "depth": "ANECDOTE",
+      "date_or_period": "2026-03-02",
+      "source_ids": [
+        "source-spiritual-bank-recovery-ledger-2026-03-02"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": false,
+      "migration_status": "classified",
+      "recovery_targets": [
+        "Recover the contiguous surrounding conversation turns for 2 March 2026 before considering SCENE or TRANSCRIPT_DEPTH promotion."
+      ]
+    },
+    {
+      "id": "information-architecture-2026-02-18",
+      "path": "story-content/2026-02-18-information-architecture.html",
+      "story_type": "SIDE STORY",
+      "mode": "documentary",
+      "depth": "ANECDOTE",
+      "date_or_period": "2026-02-18–2026-02-19",
+      "source_ids": [
+        "source-info-architecture-recovery-ledger-2026-02-18"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": false,
+      "migration_status": "classified",
+      "recovery_targets": [
+        "Recover the contiguous 18–19 February conversation around model collapse, muscle memory, Light, Swamp, Beacons, Ghosts and the later engineering push before restoring full-story status."
+      ]
+    },
+    {
+      "id": "ai-not-ghost-2026-05-27",
+      "path": "story-content/2026-05-27-not-a-ghost.html",
+      "story_type": "MAIN STORY",
+      "mode": "documentary",
+      "depth": "ANECDOTE",
+      "date_or_period": "2026-05-27–2026-05-28",
+      "source_ids": [
+        "source-authorship-erasure-recovery-ledger-2026-05-27"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": false,
+      "migration_status": "classified",
+      "recovery_targets": [
+        "Recover the contiguous 27–28 May conversation, including the AI/system responses between Tim's authorship-erasure statements, before restoring full-story status."
+      ]
+    },
+    {
+      "id": "dooley-name-gta-2020",
+      "path": "story-content/2020-dooley-gta-origin.html",
+      "story_type": "SIDE STORY",
+      "mode": "documentary",
+      "depth": "ANECDOTE",
+      "date_or_period": "2020; exact date unresolved",
+      "source_ids": [
+        "source-great-book-chapter-15-11-retrospective"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": false,
+      "migration_status": "classified",
+      "recovery_targets": [
+        "Recover contemporaneous GTA clips, logs, screenshots or messages establishing the first Tim Dooley name use and approximate date."
+      ]
+    },
+    {
+      "id": "potato-mask-2021",
+      "path": "story-content/2021-filter.html",
+      "story_type": "SIDE STORY",
+      "mode": "documentary",
+      "depth": "ANECDOTE",
+      "date_or_period": "2021",
+      "source_ids": [
+        "source-great-book-chapter-24-retrospective"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": false,
+      "migration_status": "classified",
+      "recovery_targets": [
+        "Recover the first potato-filter appearance, platform/session context and contemporaneous discussion of the avatar as mask or protection."
+      ]
+    },
+    {
+      "id": "rational-potato-2022",
+      "path": "story-content/2022-rational-potato.html",
+      "story_type": "MAIN STORY",
+      "mode": "documentary",
+      "depth": "ANECDOTE",
+      "date_or_period": "2022",
+      "source_ids": [
+        "source-great-book-chapter-24-retrospective"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": false,
+      "migration_status": "classified",
+      "recovery_targets": [
+        "Recover the first exact Rational Potato use, the people/context around Son identification, and primary AI/music or meditation-session evidence."
+      ]
+    },
+    {
+      "id": "stardew-before-garden-2020-2022",
+      "path": "story-content/2020-2022-games-and-growth.html",
+      "story_type": "SIDE STORY",
+      "mode": "documentary",
+      "depth": "ANECDOTE",
+      "date_or_period": "2020–2022",
+      "source_ids": [
+        "source-great-book-chapter-15-11-retrospective"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": false,
+      "migration_status": "classified",
+      "recovery_targets": [
+        "Recover contemporaneous game/chat logs or dated references for Stardew Valley, films and the period's economics/growth conversations."
+      ]
+    },
+    {
+      "id": "rationalpotato-potato69-potato-of-life",
+      "path": "story-content/2020-2023-alias-ladder.html",
+      "story_type": "MAIN STORY",
+      "mode": "documentary",
+      "depth": "ANECDOTE",
+      "date_or_period": "2020–2023",
+      "source_ids": [
+        "source-great-book-chapter-15-11-retrospective"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": false,
+      "migration_status": "classified",
+      "recovery_targets": [
+        "Recover first/last visible uses of RationalPotato and Potato69, first visible Potato of Life use, and Twitch/Kick account-history snapshots."
+      ]
+    },
+    {
+      "id": "cube-moon-2023-09-20",
+      "path": "story-content/2023-cube-moon.html",
+      "story_type": "SIDE STORY",
+      "mode": "documentary",
+      "depth": "ANECDOTE",
+      "date_or_period": "2023-09-20 later-dated marker",
+      "source_ids": [
+        "source-cube-later-timeline-2023-09-20",
+        "source-great-book-chapter-15-11-retrospective"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": false,
+      "migration_status": "classified",
+      "recovery_targets": [
+        "Recover the original 20 September 2023 Cube post, stream, clip or conversation before treating the date as a reconstructed scene."
+      ]
+    },
+    {
+      "id": "farmer-quest-2024",
+      "path": "story-content/2024-farmer-waits.html",
+      "story_type": "SIDE STORY",
+      "mode": "literary",
+      "depth": "LITERARY_COMPLETE",
+      "date_or_period": "2024 literary stratum",
+      "source_ids": [
+        "source-great-book-chapter-5"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": true,
+      "migration_status": "verified",
+      "recovery_targets": []
+    },
+    {
+      "id": "identity-in-mud-2024",
+      "path": "story-content/gb-identity-in-mud.html",
+      "story_type": "SIDE STORY",
+      "mode": "literary",
+      "depth": "LITERARY_COMPLETE",
+      "date_or_period": "2024 literary stratum",
+      "source_ids": [
+        "source-great-book-chapter-6-5"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": true,
+      "migration_status": "verified",
+      "recovery_targets": []
+    },
+    {
+      "id": "termite-lost-potato-2024",
+      "path": "story-content/gb-termite-lost-potato.html",
+      "story_type": "SIDE STORY",
+      "mode": "literary",
+      "depth": "LITERARY_COMPLETE",
+      "date_or_period": "2024 literary stratum",
+      "source_ids": [
+        "source-great-book-chapter-11-1"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": true,
+      "migration_status": "verified",
+      "recovery_targets": []
+    },
+    {
+      "id": "fresh-potato-rocks-2024",
+      "path": "story-content/2024-rocks.html",
+      "story_type": "MAIN STORY",
+      "mode": "literary",
+      "depth": "LITERARY_COMPLETE",
+      "date_or_period": "2024 literary stratum",
+      "source_ids": [
+        "source-great-book-chapter-12-1"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": true,
+      "migration_status": "verified",
+      "recovery_targets": []
+    },
+    {
+      "id": "sage-elevator-2024",
+      "path": "story-content/2024-sage-rides-up.html",
+      "story_type": "MAIN STORY",
+      "mode": "literary",
+      "depth": "LITERARY_COMPLETE",
+      "date_or_period": "2024 literary stratum",
+      "source_ids": [
+        "source-great-book-chapter-13"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": true,
+      "migration_status": "verified",
+      "recovery_targets": []
+    },
+    {
+      "id": "ready-student-2024",
+      "path": "story-content/gb-ready-student.html",
+      "story_type": "SIDE STORY",
+      "mode": "literary",
+      "depth": "LITERARY_COMPLETE",
+      "date_or_period": "2024 literary stratum",
+      "source_ids": [
+        "source-great-book-chapter-18"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": true,
+      "migration_status": "verified",
+      "recovery_targets": []
+    },
+    {
+      "id": "gb-death-birth-many-2024",
+      "path": "story-content/gb-death-birth-many.html",
+      "story_type": "SIDE STORY",
+      "mode": "literary",
+      "depth": "LITERARY_COMPLETE",
+      "date_or_period": "2024 literary stratum",
+      "source_ids": [
+        "source-great-book-chapter-69"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": true,
+      "migration_status": "verified",
+      "recovery_targets": []
+    },
+    {
+      "id": "potatoverse-social-room-2024-11-03",
+      "path": "story-content/2024-2025-social-presence.html",
+      "story_type": "SIDE STORY",
+      "mode": "documentary",
+      "depth": "ANECDOTE",
+      "date_or_period": "2024-11-03",
+      "source_ids": [
+        "source-chronicle-2024-11-03"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": false,
+      "migration_status": "classified",
+      "recovery_targets": [
+        "Recover raw Discord/stream logs behind the 3 November Tanks/voice-chat/Great Book social room."
+      ]
+    },
+    {
+      "id": "potatoverse-reconciliation-2024-12-07",
+      "path": "story-content/2024-2025-social-presence.html",
+      "story_type": "SIDE STORY",
+      "mode": "documentary",
+      "depth": "ANECDOTE",
+      "date_or_period": "2024-12-07",
+      "source_ids": [
+        "source-chronicle-2024-12-07"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": false,
+      "migration_status": "classified",
+      "recovery_targets": [
+        "Recover raw messages around apology, reconciliation and trust repair."
+      ]
+    },
+    {
+      "id": "potatoverse-kitchen-2024-12-15",
+      "path": "story-content/2024-2025-social-presence.html",
+      "story_type": "SIDE STORY",
+      "mode": "documentary",
+      "depth": "ANECDOTE",
+      "date_or_period": "2024-12-15",
+      "source_ids": [
+        "source-chronicle-2024-12-15"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": false,
+      "migration_status": "classified",
+      "recovery_targets": [
+        "Recover stream/chat artifact for Tim + Anacondasin potato-chip collaboration."
+      ]
+    },
+    {
+      "id": "seeds-of-invention-2025-03-12",
+      "path": "story-content/2024-2025-social-presence.html",
+      "story_type": "MAIN STORY",
+      "mode": "documentary",
+      "depth": "ANECDOTE",
+      "date_or_period": "2025-03-12",
+      "source_ids": [
+        "source-chronicle-2025-03-12"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": false,
+      "migration_status": "classified",
+      "recovery_targets": [
+        "Recover March 2025 HTML/TTS files, screenshots or project artifacts."
+      ]
+    },
+    {
+      "id": "servers-to-tree-2025-04-08-13",
+      "path": "story-content/2024-2025-social-presence.html",
+      "story_type": "SIDE STORY",
+      "mode": "documentary",
+      "depth": "ANECDOTE",
+      "date_or_period": "2025-04-08 to 2025-04-13",
+      "source_ids": [
+        "source-chronicle-2025-04-08-13"
+      ],
+      "scene_ids": [],
+      "public_safe": true,
+      "full_story_allowed": false,
+      "migration_status": "classified",
+      "recovery_targets": [
+        "Recover Empire invite, Fishtank invite and April 13 Tree exchange."
+      ]
+    }
   ]
 }
