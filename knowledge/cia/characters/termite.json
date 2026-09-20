@@ -1,7 +1,7 @@
 {
   "id": "termite",
   "display_name": "Termite",
-  "bureau": "FBI — Figures, Bonds & Incidents",
+  "bureau": "CIA — Characters, Incidents & Associations",
   "entity_class": "mixed-person-literary",
   "aliases": [
     "termitesmoothie",
@@ -195,5 +195,25 @@
     "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
     "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
     "Add relationship edges only when a dated scene or explicit source supports them."
-  ]
+  ],
+  "cia_record": {
+    "authority": "canonical",
+    "record_type": "character-dossier",
+    "presence": {
+      "first_recorded": "2024-11-03",
+      "last_recorded": "2025-02-20",
+      "rule": "First/last currently recovered dated evidence in this dossier; not lifetime endpoints."
+    },
+    "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
+    "debt_and_repair": {
+      "records": [],
+      "rule": "Do not attach legal, financial, karmic or spiritual debt unless a dated source explicitly does so; symbolic debt remains project language unless independently established."
+    },
+    "state_rule": "Roles, archetypes, upgrades, handicaps and project-symbolic placements are date/source-bounded states, not permanent human essences.",
+    "open_loops": [
+      "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
+      "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
+      "Add relationship edges only when a dated scene or explicit source supports them."
+    ]
+  }
 }
