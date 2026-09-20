@@ -1,0 +1,274 @@
+{
+  "id": "project-formal-grammar",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "status": "canonical cross-project mathematical typing and correspondence contract",
+  "source_thesis": "docs/11D-M-THEORY-QUANTUM-DOOR-THESIS.md",
+  "structured_source": "knowledge/science/11d-m-theory-quantum-door-thesis.json",
+  "purpose": "Provide one reusable formal grammar for House, Axis, Life & Body, Science, Research Lab, World/Map and symbolic architecture without turning symbolic objects into physical identities.",
+  "governing_rules": [
+    "Objects keep canonical ownership; the grammar adds types, not duplicate facts.",
+    "A scientific comparator never upgrades a project symbol into empirical physics by resemblance alone.",
+    "Every use of dimension, Door, Axis, Spiral, Eye, Room, House, Root, Tree, Seed, Ladder, Flow or Fruit should declare which formal type is meant when ambiguity matters.",
+    "Visible pages may simplify labels, but backend records should preserve source type, target type, preserved structure, mismatch and evidence status.",
+    "Physical claims must satisfy units, dynamics, known-limit, parameter, observable, uncertainty and falsifier contracts."
+  ],
+  "dimension_types": {
+    "P": {
+      "label": "project/symbolic grade",
+      "example": "D5 Door in the Axis scaffold"
+    },
+    "S": {
+      "label": "spacetime dimension",
+      "example": "11D Lorentzian M-theory/supergravity background"
+    },
+    "C": {
+      "label": "compact/internal dimension",
+      "example": "7D internal compactification sector"
+    },
+    "E": {
+      "label": "effective/spectral dimension",
+      "example": "scale-dependent operational dimension"
+    },
+    "H": {
+      "label": "Hilbert-space dimension",
+      "example": "quantum state-space dimension"
+    },
+    "Q": {
+      "label": "configuration/state-space dimension",
+      "example": "dimension of a model state manifold"
+    },
+    "M": {
+      "label": "moduli-space dimension",
+      "example": "number of independent vacuum/geometric moduli"
+    },
+    "F": {
+      "label": "fractal/information dimension",
+      "example": "only when an explicit estimator is declared"
+    }
+  },
+  "morphism_types": {
+    "coarse_graining": "many-to-one reduction that generally loses distinctions",
+    "effective_reduction": "high-energy/full theory to regime-valid lower-energy description",
+    "emergence": "approximately closed higher-level dynamics C∘Phi_t≈Psi_t∘C",
+    "duality": "equivalent re-description that may preserve full physical information",
+    "projection": "declared map to a reduced representation",
+    "embedding": "map placing one representation/state space inside another",
+    "observation": "state/model to measured data",
+    "inference": "data to constraints/posterior over candidate models",
+    "recovery": "attempted inverse/reconstruction after a lossy/restricted map",
+    "formalization": "project relation to explicit mathematics with mismatch retained"
+  },
+  "typed_objects": {
+    "Door": {
+      "schema": "D=(D_G,D_E,D_Y,D_Q,D_U,D_O,D_R)",
+      "components": {
+        "D_G": "geometric interface/boundary/fibration",
+        "D_E": "energy/scale or EFT threshold",
+        "D_Y": "dynamical transition/bifurcation",
+        "D_Q": "quantum/information channel",
+        "D_U": "duality/equivalence map",
+        "D_O": "observational quotient/access boundary",
+        "D_R": "recovery/reconstruction map"
+      }
+    },
+    "Axis": {
+      "schema": "A=(A_geom,A_dyn,A_sym,A_RG,A_order)",
+      "components": {
+        "A_geom": "distinguished geometric direction/vector field",
+        "A_dyn": "dynamical generator/flow",
+        "A_sym": "symmetry generator",
+        "A_RG": "resolution/renormalization flow",
+        "A_order": "project ordering/orientation coordinate"
+      }
+    },
+    "Spiral": {
+      "schema": "S=(S_helix,S_return,S_RG,S_hol,S_phase)",
+      "components": {
+        "S_helix": "geometric recurrence with displacement",
+        "S_return": "Poincare/return map",
+        "S_RG": "scale recurrence/limit cycle",
+        "S_hol": "holonomy around a closed path",
+        "S_phase": "Berry/Wilson-like accumulated phase"
+      }
+    },
+    "House": {
+      "schema": "H=(X,∂X,A_global)",
+      "meaning": "ambient domain/global architecture with boundary and shared structure"
+    },
+    "Room": {
+      "schema": "R_i=(X_i,A_i,iota_i)",
+      "meaning": "bounded subsystem/sector/chart with relation or inclusion into House"
+    },
+    "Eye": {
+      "schema": "E=(A_acc,{E_y},p(y|rho),R_infer)",
+      "meaning": "accessible observables + measurement + inference"
+    },
+    "Root": {
+      "schema": "R_root=(G_dep,S_source,preceq)",
+      "meaning": "dependency/provenance graph + source data + partial order"
+    },
+    "Tree": {
+      "schema": "T=(V,E,lambda)",
+      "meaning": "branching graph/network with labels and transition rules"
+    },
+    "Seed": {
+      "schema": "Z=(theta_0,G,mu_0)",
+      "meaning": "initial/generative data + rule + initial state/measure"
+    },
+    "Ladder": {
+      "schema": "L=(X0->X1->...->Xn)",
+      "meaning": "chain of typed maps/scales/representations"
+    },
+    "Fruit": {
+      "schema": "F=(O_eff,Y,p(Y|theta))",
+      "meaning": "effective output/observable family"
+    },
+    "Flow": {
+      "schema": "J or Phi_t depending domain",
+      "meaning": "typed current, transport or dynamical evolution; units/domain required"
+    }
+  },
+  "correspondence_contract": {
+    "schema": "A=(S,T,F,I,B,P,Falsifier)",
+    "fields": {
+      "S": "source/project object",
+      "T": "scientific/mathematical target comparator",
+      "F": "proposed mapping",
+      "I": "preserved structures/invariants",
+      "B": "boundary/mismatch; what the mapping does not preserve",
+      "P": "prediction/useful consequence if promoted physically",
+      "Falsifier": "failure condition for the physical interpretation"
+    }
+  },
+  "correspondence_maturity": {
+    "C0": "poetic resemblance",
+    "C1": "structural analogy",
+    "C2": "typed mathematical map",
+    "C3": "derived physical embedding",
+    "C4": "distinctive quantitative prediction",
+    "C5": "empirical support"
+  },
+  "epistemic_scale": {
+    "E0": "symbol/project metaphor",
+    "E1": "mathematical definition",
+    "E2": "established external mathematics/physics",
+    "E3": "structural comparator with explicit mismatch",
+    "E4": "speculative physical model with calculable consequences",
+    "E5": "model constrained against evidence",
+    "E6": "distinctive empirically supported result"
+  },
+  "verification_contract": [
+    "define state/domain and variables",
+    "declare units/dimensional types",
+    "declare action/equations/transition law where physical dynamics are claimed",
+    "declare assumptions and boundary/initial conditions",
+    "show established limiting/correspondence case",
+    "count free versus derived/fitted parameters",
+    "declare observable and measurement model",
+    "propagate uncertainty",
+    "state local falsifier/failure condition",
+    "record source/provenance and evidence class"
+  ],
+  "integration_targets": {
+    "House": {
+      "priority": "very-high",
+      "owners": [
+        "data/house/concept-topology.json",
+        "data/house/interfaces.json",
+        "data/house/projections.json",
+        "data/house/subrooms.json"
+      ],
+      "use": [
+        "Treat Rooms as typed objects and guarded interfaces as morphisms.",
+        "Upgrade interface records with preserved invariants, lost structure, reversibility and epistemic status.",
+        "Use category composition to validate multi-Room traversals."
+      ]
+    },
+    "Axis": {
+      "priority": "very-high",
+      "owners": [
+        "data/axis-flow-contract.json",
+        "data/axis-depths.json",
+        "data/axis-operators.json",
+        "axis/index.html"
+      ],
+      "use": [
+        "Type Axis as ordering, dynamical, symmetry or RG comparator rather than one overloaded object.",
+        "Type Door and Spiral behaviors explicitly.",
+        "Keep D1-D11 under dimension type P unless a separate physical model is invoked."
+      ]
+    },
+    "LifeBody": {
+      "priority": "very-high",
+      "owners": [
+        "data/house/body-relational-overlay.json",
+        "life-body/index.html",
+        "knowledge/body/brain-room-deep-atlas.json",
+        "knowledge/body/vertebral-33-room-atlas.json"
+      ],
+      "use": [
+        "Use Room as navigation/subsystem type rather than anatomical box identity.",
+        "Use Eye as measurement/access comparator, not mystical anatomy.",
+        "Use interfaces/boundaries, flow, connectivity and observation operators while keeping biological ownership empirical."
+      ]
+    },
+    "ResearchLab": {
+      "priority": "very-high",
+      "owners": [
+        "data/house/interfaces.json",
+        "knowledge/science/timic-science-implementation-lab.json",
+        "knowledge/science/science-model-registry.json"
+      ],
+      "use": [
+        "Adopt C0-C5 correspondence maturity and E0-E6 epistemic status.",
+        "Require the verification contract before promotion through research Doors.",
+        "Use local falsifiers instead of one all-or-nothing project verdict."
+      ]
+    },
+    "Science": {
+      "priority": "high",
+      "owners": [
+        "knowledge/science/science-master-index.json",
+        "science/index.html",
+        "knowledge/science/science-model-registry.json"
+      ],
+      "use": [
+        "Use typed dimension and morphism labels across all dimensional/quantum models.",
+        "Make the 11D thesis a formal-method reference rather than a physics template imposed on unrelated sciences."
+      ]
+    },
+    "WorldMap": {
+      "priority": "medium-high",
+      "owners": [
+        "world-map/3d-axis-depth.js",
+        "world-map/3d-axis.js",
+        "data/axis-depths.json"
+      ],
+      "use": [
+        "Mark D-levels explicitly as P-type project dimensions.",
+        "Treat map layers as projections/views over D4 empirical geography, not physical elevation.",
+        "Use observational/projection language for overlays and aggregations."
+      ]
+    },
+    "ReligionPhilosophy": {
+      "priority": "medium",
+      "owners": [
+        "religion/index.html",
+        "philosophy/index.html",
+        "data/house/concept-topology.json"
+      ],
+      "use": [
+        "Use correspondence contracts to compare theology/symbolism with mathematics or science without identity claims.",
+        "Preserve historical doctrine, project theology and empirical science as separate owners."
+      ]
+    }
+  },
+  "deliberate_non_applications": [
+    "Do not turn every symbolic Room into a physical manifold or fiber bundle.",
+    "Do not assign M2/M5, G2, quantum-channel or holographic identities to religious figures or body structures.",
+    "Do not replace project narrative with mathematical notation on reader-facing pages unless it clarifies a real ambiguity.",
+    "Do not treat C0/C1 analogy as evidence for C3 physical embedding.",
+    "Do not use the formal grammar to create new claims where the underlying project record is sparse."
+  ]
+}
