@@ -151,6 +151,13 @@
 **Guard:** the generic subdivision validator checks feature count, IDs, provenance, unknown-population semantics, the Crimea/Sevastopol representation note, runtime byte budgets and multi-country loader behavior.  
 **Next:** add Russia through the same contract once a compact reproducible ADM1 geometry source is pinned; model war/control snapshots separately as dated conflict-context overlays.
 
+### WM-029 · Conflict-context geography lacks a dated snapshot contract — P2
+**Status:** fixed / governed on branch `world-map-conflict-snapshot-contract-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** the Spatial Overlay system reserved a conflict family, but it did not yet define the minimum time/source/meaning metadata needed to show historical or delayed control/front-line context without contaminating administrative geography.  
+**Resolution:** `data/world-map-conflict-snapshot-contract.json` defines allowed snapshot meanings, required observation/publication fields, source attribution, confidence, explicit not-live semantics, Time-dimension ownership and administrative-independence rules. The live `conflict.context` manifest row points to this contract and remains planned/dormant with no geometry.  
+**Guard:** `scripts/validate_world_map_conflict_snapshots.py` requires the conflict family to remain dormant until reviewed geometry exists, binds snapshots to the canonical Time owner, rejects activation without source/not-live/administrative-independence guarantees, and preserves the explicit no-live-tactical-tracking boundary.  
+**Next:** ingest reviewed delayed/historical source snapshots as separate geometry owners; compare exact snapshots through Time without interpolating invented front lines.
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
