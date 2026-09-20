@@ -219,6 +219,12 @@ function installRenderedLayers(row, fc) {
   rendered.set(row.id, { sourceId, layerIds });
   if (!syncInteractionRegistration()) bindFallbackInteraction(layerIds);
 }
+async function featureCollection(id) {
+  const row = entry(id);
+  if (!row || row.availability !== 'current') return null;
+  const owner = await loadOwner(row.geometry_owner);
+  return featureCollectionFor(row, owner);
+}
 async function ensureRendered(id) {
   const row = entry(id);
   if (!row || row.availability !== 'current') return false;
@@ -379,6 +385,7 @@ window.__potatoAtlasSpatialOverlays = {
   reset,
   fit,
   featuresAt,
+  featureCollection,
 };
 
 export { ready };
