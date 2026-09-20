@@ -36,6 +36,12 @@ def main()->int:
         "function labelPresentation()",
         "function syncSelectedLabel(",
         "function syncLabelPresentation()",
+        "localNameZoomBase",
+        "scale.bandThreshold('local')",
+        "policy.localNameZoom",
+        "['has','local_name']",
+        "['concat',['get','name'],'\\n',['get','local_name']]",
+        "['concat',['coalesce',['get','name'],['get','code']],'\\n',['get','local_name']]",
         "'text-allow-overlap':true",
         "window.addEventListener?.('resize', syncLabelPresentation)",
         "window.addEventListener?.('potato-atlas-projection-change', syncLabelPresentation)",
@@ -45,6 +51,8 @@ def main()->int:
         errors.append("narrow-screen label policy must adjust presentation zoom without changing shared capability thresholds")
     if "syncSelectedLabel(selectedId)" not in runtime or "syncSelectedLabel(null)" not in runtime:
         errors.append("selected-label filter must follow select and clear lifecycle")
+    if "['concat',['coalesce',['get','name'],['get','code']],'\\n',['get','local_name']]" not in runtime:
+        errors.append("selected label must preserve local name when available")
 
     node=shutil.which("node")
     if not node:
@@ -59,7 +67,7 @@ def main()->int:
         print("WORLD MAP SUBDIVISION READABILITY FAILED")
         for e in errors: print("-",e)
         return 1
-    print("WORLD MAP SUBDIVISION READABILITY PASSED: AK/HI/DC present, narrow/globe labels deferred, selected label guaranteed.")
+    print("WORLD MAP SUBDIVISION READABILITY PASSED: AK/HI/DC present, narrow/globe labels deferred, close-zoom local names enabled, selected label guaranteed.")
     return 0
 
 if __name__=="__main__":
