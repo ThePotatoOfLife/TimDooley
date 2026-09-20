@@ -5,6 +5,11 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('ADL H.E.A.T. layer requires the core map.');
+if (!window.__potatoAtlasScale?.ready) await import('./3d-scale.js');
+const scale = await window.__potatoAtlasScale?.ready;
+if (!scale?.threshold || !scale?.capabilityActive) throw new Error('ADL H.E.A.T. requires the shared World Map Scale runtime.');
+const pointRenderZoom = scale.threshold('adl-heat-points', 'render');
+const pointInteractZoom = scale.threshold('adl-heat-points', 'interact');
 
 const DATA_URL = '../data/world-incidents/adl-heat/incidents.geo.json';
 const SUMMARY_URL = '../data/world-incidents/adl-heat/state-summary.json';
@@ -262,16 +267,16 @@ function installLayers() {
     paint:{'fill-color':stateColorExpression(),'fill-opacity':1}
   }, before);
   if (!map.getLayer(POINT_LAYER)) map.addLayer({
-    id:POINT_LAYER,type:'circle',source:POINT_SOURCE,minzoom:4.2,
+    id:POINT_LAYER,type:'circle',source:POINT_SOURCE,minzoom:pointRenderZoom,
     paint:{
-      'circle-radius':['interpolate',['linear'],['zoom'],4.2,2.8,7,5.5,10,8],
+      'circle-radius':['interpolate',['linear'],['zoom'],pointRenderZoom,2.8,7,5.5,10,8],
       'circle-color':'#e0bd78','circle-opacity':0.76,
       'circle-stroke-color':'#101616','circle-stroke-width':1
     }
   });
   if (!map.getLayer(POINT_HIT)) map.addLayer({
-    id:POINT_HIT,type:'circle',source:POINT_SOURCE,minzoom:4.2,
-    paint:{'circle-radius':['interpolate',['linear'],['zoom'],4.2,8,8,12],'circle-opacity':0.001}
+    id:POINT_HIT,type:'circle',source:POINT_SOURCE,minzoom:pointInteractZoom,
+    paint:{'circle-radius':['interpolate',['linear'],['zoom'],pointInteractZoom,8,8,12],'circle-opacity':0.001}
   });
   window.__potatoAtlasRenderStack?.register?.(STATE_LAYER, {
     slot:'subnational-fill', priority:20, owner:'evidence:adl-heat'
@@ -282,7 +287,7 @@ function installLayers() {
   if (interaction?.register) {
     interaction.register('adl-heat-incidents', {
       layers:[POINT_HIT], objectType:'evidence-record', clickPriority:85, hoverPriority:85,
-      enabled:()=>enabled,
+      enabled:()=>enabled && scale.capabilityActive('adl-heat-points', 'interact', map.getZoom()),
       onClick:(event, feature)=>renderIncident(feature)
     });
     interaction.register('adl-heat-states', {
