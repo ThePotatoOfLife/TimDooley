@@ -161,7 +161,7 @@ def main() -> int:
     if top_bar_audit:
         for token in (
             "frequent direct action", "independent map dimension", "global navigation/reset",
-            "Relations — merged into **Analyze**", "N/W/E/S remain a grouped control",
+            "**Relations** — merged into **Analyze**", "N/W/E/S remain a grouped control",
             "No drastic redesign is warranted",
         ):
             if token not in top_bar_audit:
