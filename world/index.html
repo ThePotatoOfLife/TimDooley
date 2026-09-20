@@ -9,6 +9,13 @@
 <link rel="stylesheet" href="../app/site-system.css?v=20260914a">
 <style>
 .world-page{line-height:1.6}.family{gap:10px 14px;font-size:13px}.page-header .note{color:var(--site-muted);max-width:800px;font-size:13px;margin:12px 0 0}.routes{border-top:1px solid var(--site-line)}.routes a{display:grid;grid-template-columns:minmax(180px,.38fr) 1fr;gap:24px;padding:24px 2px;border-bottom:1px solid var(--site-line);text-decoration:none;color:inherit}.routes strong{font:400 clamp(28px,4vw,42px)/1.05 var(--site-font-serif)}.routes span{color:#c8cfc4;padding-top:4px}.routes a:hover strong{color:var(--site-green)}.paths{margin-top:34px;padding-top:22px;border-top:1px solid var(--site-line)}.paths h2{font:400 28px var(--site-font-serif);color:var(--site-gold);margin:0 0 14px}.path-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.path-grid a{border:1px solid var(--site-line);border-radius:10px;padding:14px;text-decoration:none;color:inherit}.path-grid strong{display:block;color:var(--site-green);margin-bottom:5px}.path-grid span{font-size:13px;color:var(--site-muted)}.deep{display:flex;gap:16px;flex-wrap:wrap;margin-top:28px;font-size:13px}.deep a{color:var(--site-muted)}@media(max-width:700px){.routes a{grid-template-columns:1fr;gap:6px}}
+.world-purpose{margin:36px 0;padding:28px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
+.world-purpose h2{font:400 clamp(30px,4vw,44px)/1.06 var(--site-font-serif);color:var(--site-gold);margin:4px 0 10px}
+.world-purpose>.lead{font:400 20px/1.55 var(--site-font-serif);color:#cbd1c8;max-width:860px}
+.world-cases{border-top:1px solid var(--site-line);margin-top:18px}.world-case{display:grid;grid-template-columns:170px minmax(0,1fr);gap:24px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.055)}
+.world-case h3{font:400 22px/1.1 var(--site-font-serif);color:var(--site-gold);margin:0 0 6px}.world-case .question{color:var(--site-green);font-size:11px}.world-case p{margin:0 0 8px;color:#cbd1c8}.world-case a{color:var(--site-green);font-size:11px}
+.world-loop{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:16px}.world-loop span{border:1px solid var(--site-line);border-radius:999px;padding:6px 9px;color:var(--site-muted);font-size:10px}.world-loop i{font-style:normal;color:var(--site-green)}
+@media(max-width:700px){.world-case{grid-template-columns:1fr;gap:4px}}
 </style>
 </head>
 <body><main class="page page--standard world-page" data-reader-surface="world">
@@ -18,6 +25,28 @@
 <p class="summary lead">One relational backend, several ways to look at it. Choose the lens that matches the question instead of forcing every world-facing subject onto a map.</p>
 <p class="note">Observed facts, sourced relationships, programme design, political interpretation, legal argument and project-symbolic material remain distinct even when the same countries or institutions appear across several lenses.</p>
 </header>
+<section class="world-purpose" id="purpose">
+<p class="eyebrow">Why the World room exists</p>
+<h2>The world is where the project has to survive contact with things that do not belong to it</h2>
+<p class="lead">A symbolic model can become internally elegant while learning almost nothing about reality. The World room is the correction. Countries, institutions, laws, budgets, grids, companies, trade routes, media systems and cultures have their own histories and constraints. They do not become Potato symbols merely because the project can draw a relation to them.</p>
+<p>The purpose of World is therefore not to make one giant map. It is to ask a harder question: <strong>what actually constrains action?</strong> Geography constrains movement. Law constrains authority. Finance constrains timing and scale. Infrastructure constrains what can physically happen. Institutions constrain who can decide. Culture constrains what people can recognize or coordinate around. History constrains what relationships already carry.</p>
+<div class="world-loop"><span>place</span><i>→</i><span>institution</span><i>→</i><span>rule</span><i>→</i><span>resource</span><i>→</i><span>infrastructure</span><i>→</i><span>decision</span><i>→</i><span>consequence</span><i>→</i><span>history</span></div>
+
+<div class="world-cases">
+<article class="world-case"><div><h3>A country is more than a pin</h3><p class="question">What makes state capacity real?</p></div><div><p>A country can be located on a map, but the map cannot tell you whether its institutions can collect revenue, enforce law, maintain infrastructure, coordinate emergency response, educate people or sustain strategic projects. Geography gives the body; governance and capability explain what the body can do.</p><a href="../world-map/">Start with geography →</a> · <a href="../world-systems/">Then inspect systems →</a></div></article>
+
+<article class="world-case"><div><h3>A law is more than a policy preference</h3><p class="question">Who has authority, through which procedure?</p></div><div><p>A proposal, executive statement, statute, court ruling, agency rule and enforcement practice are different things. The Law room exists so political desire cannot silently become legal reality in the archive.</p><a href="../law/">Law & Justice →</a> · <a href="../politics/">Politics →</a></div></article>
+
+<article class="world-case"><div><h3>Money is stored possibility with constraints</h3><p class="question">What can actually be financed, by whom, and for how long?</p></div><div><p>Debt, tax, ownership, interest, production and trade are not decorative economic indicators. They determine which options remain open, which costs are postponed, who absorbs risk and what kinds of infrastructure can be maintained or built.</p><a href="../economy/">Economy & Finance →</a> · <a href="../world-systems/">System dependencies →</a></div></article>
+
+<article class="world-case"><div><h3>Infrastructure is politics made physical</h3><p class="question">What stops working if one node disappears?</p></div><div><p>Ports, grids, pipelines, roads, data centers, payment rails and communications networks turn decisions into durable capability. Their importance becomes clearest through dependencies: a system may look geographically large while depending on a small number of bottlenecks.</p><a href="../world-systems/">Infrastructure & capability →</a> · <a href="../world-map/">Spatial view →</a></div></article>
+
+<article class="world-case"><div><h3>Culture changes what systems can coordinate</h3><p class="question">What do people believe is legitimate, normal or possible?</p></div><div><p>Institutions do not operate in a vacuum. Media, symbols, subcultures, public memory and social trust affect whether rules are understood, resisted, copied or ignored. Culture is not a substitute for material analysis; it is one of the environments in which material systems operate.</p><a href="../context/culture/">Culture & Information →</a></div></article>
+
+<article class="world-case"><div><h3>North is a test of boundary discipline</h3><p class="question">What is symbolic, what is geographic, and what is programme design?</p></div><div><p>The project uses North in several registers. The World room keeps them apart: literal northern geography, observable institutional relationships, Tim's political/geopolitical interpretations, and the symbolic role of North as orientation. A useful synthesis preserves all four without pretending they are the same evidence class.</p><a href="../north/">North →</a> · <a href="../context/source-authority/">Evidence boundaries →</a></div></article>
+</div>
+</section>
+
 <section class="routes" aria-label="World lenses">
 <a href="../world-map/"><strong>World Map</strong><span>Countries, geography, measurable relationships, memberships, spatial assets, flows, dependencies, comparison and time.</span></a>
 <a href="../politics/"><strong>Politics &amp; Geopolitics</strong><span>Political statements, proposals, governance questions, international relations and geopolitical context.</span></a>
