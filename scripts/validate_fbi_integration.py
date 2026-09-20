@@ -93,6 +93,13 @@ def main() -> int:
     if fbi.get("public_route") != EXPECTED_ROUTE:
         fail(f"FBI House collection needs public_route={EXPECTED_ROUTE!r}")
 
+    actual_fbi_files = sum(1 for p in (ROOT / "knowledge/fbi").rglob("*") if p.is_file())
+    if fbi.get("source_file_count") != actual_fbi_files:
+        fail(
+            f"House FBI source_file_count={fbi.get('source_file_count')} "
+            f"but knowledge/fbi contains {actual_fbi_files} files"
+        )
+
     surfaces = manifest.get("public_surfaces") or {}
     if surfaces.get("cabinet") != EXPECTED_ROUTE:
         fail("manifest public_surfaces.cabinet does not match canonical FBI route")
