@@ -1,6 +1,9 @@
 // Whole-map semantic state coordinator.
 // Orchestrates public subsystem APIs only; camera and projection are preserved.
 
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+
 const map = window.__potatoAtlasMap;
 
 function snapshot() {
@@ -28,19 +31,18 @@ function snapshot() {
   };
 }
 
-function clearUrlState(keys) {
-  const url = new URL(location.href);
-  let changed = false;
-  for (const key of keys) {
-    if (!url.searchParams.has(key)) continue;
-    url.searchParams.delete(key);
-    changed = true;
-  }
-  if (changed) history.replaceState({}, '', url);
+function clearOwnedUrlState(owner, keys) {
+  urlState.claim(owner, keys);
+  urlState.patch(owner, { remove:keys });
 }
 
 function clearUnloadedTimeUrlState() {
-  clearUrlState(['timeMode','time','time2','timeDate','timeDate2']);
+  clearOwnedUrlState('time', ['timeMode','time','time2']);
+  const url = new URL(location.href);
+  if (url.searchParams.has('timeDate') || url.searchParams.has('timeDate2')) {
+    urlState.claim('time-legacy', ['timeDate','timeDate2']);
+    urlState.patch('time-legacy', { remove:['timeDate','timeDate2'] });
+  }
 }
 
 async function runStep(name, fn, cleared, failed) {
@@ -66,15 +68,15 @@ async function reset() {
   await runStep('geography', async () => window.__potatoAtlasSpatialOverlays?.reset?.(), cleared, failed);
   await runStep('evidence', async () => {
     if (window.__potatoAtlasEvidenceLayers?.reset) await window.__potatoAtlasEvidenceLayers.reset();
-    else clearUrlState(['evidenceLayer','adlYear','adlType']);
+    else { clearOwnedUrlState('evidence-layers', ['evidenceLayer']); clearOwnedUrlState('adl-heat-filters', ['adlYear','adlType']); }
   }, cleared, failed);
   await runStep('places', async () => {
     if (window.__potatoAtlasPlaces?.clear) window.__potatoAtlasPlaces.clear();
-    else clearUrlState(['place']);
+    else clearOwnedUrlState('selection-inspector', ['place']);
   }, cleared, failed);
   await runStep('subdivision', async () => {
     if (window.__potatoAtlasSubdivisions?.clear) window.__potatoAtlasSubdivisions.clear();
-    else clearUrlState(['subdivision']);
+    else clearOwnedUrlState('selection-inspector', ['subdivision']);
   }, cleared, failed);
   await runStep('selection', async () => window.__potatoAtlasSelection?.clearAll?.({keepView:true}), cleared, failed);
   await runStep('relations', async () => window.__potatoAtlasSelection?.setRelationMode?.('all'), cleared, failed);
