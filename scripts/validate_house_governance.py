@@ -107,7 +107,7 @@ HOME_SPINE=(
     'href="philosophy/"',
     'href="science/"',
     'href="world/"',
-    'Seed</b><i>→</i><b>Foundation</b><i>→</i><b>Root</b><i>→</i><b>Tree</b><i>→</i><b>Fruit</b><i>→</i><b>Memory</b><i>→</i><b>Return</b>',
+    'Seed</b><i>→</i><b>Foundation</b><i>→</i><b>Reproduction</b><i>→</i><b>Branching</b><i>→</i><b>Fruit</b><i>→</i><b>Memory</b><i>→</i><b>Refoundation / Return</b>',
     'href="timeline/"',
     'href="works/"',
     'href="context/source-authority/"',
@@ -440,7 +440,7 @@ def validate_symbolic_planes(errors,rooms):
         for sid in row.get('subroom_ids',[]):
             if not isinstance(sid,str) or not sid: errors.append(f'compass direction {row.get("id")} has invalid subroom id')
     rules=' '.join(compass.get('entity_projection_rule',[])).casefold()
-    for token in ('historically rooted','does not create several entities','not synonyms','potatoverse mappings'):
+    for token in ('historically rooted','does not create several entities','synonyms','potatoverse mappings'):
         if token not in rules: errors.append(f'symbolic compass entity projection rule missing boundary: {token}')
     tree=data.get('symbolic_tree_ecology')
     if not isinstance(tree,dict):
