@@ -65,9 +65,9 @@
 **Next:** remove only after direct/degraded standalone paths have canonical Router boot and tests.
 
 ### WM-010 · Mobile occlusion / keyboard / focus-return audit incomplete — P2
-**Status:** open.  
-**Risks:** controls can overlap, menus can lose focus, inspector transitions can strand keyboard users.  
-**Next:** add keyboard navigation, focus return, small-viewport occlusion and modal/menu regressions.
+**Status:** substantially fixed; broader scenario coverage remains.  
+**Completed:** shared Accessibility owner synchronizes menu ARIA state, Escape closes the active menu and returns focus to its summary, Inspector Router captures/restores focus across typed inspector transitions, and keyboard regressions enforce the core contract.  
+**Remaining:** broaden scenario coverage for overlapping menus/very small viewports and continue checking legacy compatibility surfaces for focus traps.
 
 ### WM-011 · Reduced-motion behavior incomplete — P2
 **Status:** fixed for known user-visible camera consumers on main (2026-09-20).  
@@ -75,14 +75,14 @@
 **Guard:** validator rejects raw `map.easeTo(` / `map.fitBounds(` calls in governed camera consumers outside the Motion owner.
 
 ### WM-012 · Color-only semantics remain possible — P2
-**Status:** open.  
-**Risk:** analytical/evidence differences may rely too heavily on hue.  
-**Next:** add textual/shape/pattern redundancy and accessibility checks.
+**Status:** fixed for canonical analytical country layers (2026-09-20).  
+**Resolution:** scalar layers use color plus exact numeric/value text; set layers use pattern plus explicit membership text; layer controls expose type/state through accessible labels and the visual-channel validator enforces these redundancies.  
+**Remaining:** apply the same review standard to future Evidence/Physical renderers before promotion.
 
 ### WM-013 · Active-view accessibility summary incomplete — P2
-**Status:** partially fixed.  
-**Completed:** Context Status is a polite live region and reports selected/preview country, population, active analytical answer, investigation mode, scale band, pins and time.  
-**Remaining:** explicitly summarize active Physical / Geography / Evidence layer identities and verify announcement noise/ordering.
+**Status:** substantially fixed.  
+**Completed:** Context Status is a polite live region and reports selected/preview country, population, active analytical answer, investigation mode, scale band, pins, time, plus active Physical / Geography / Evidence layer identities.  
+**Remaining:** monitor announcement noise/ordering as more specialist layers are added.
 
 ### WM-014 · Route-geometry behavioral coverage incomplete — P2
 **Status:** open.  
@@ -93,9 +93,9 @@
 **Next:** explicit degraded-boot test matrix: no Router, no Inspector, delayed optional modules, style reload during interaction.
 
 ### WM-016 · State/subdivision national-context readability — P2
-**Status:** partially fixed.  
-**Current:** borders can appear earlier without early hit targets; labels still use canonical label threshold.  
-**Next:** validate Alaska/Hawaii/DC, globe mode, dense Northeast labels and low-width screens.
+**Status:** substantially fixed.  
+**Completed:** canonical USA partition is validator-checked at 50 states + DC including Alaska, Hawaii and DC; narrow-screen labels defer to reduce clutter; the selected subdivision gets a guaranteed overlap-tolerant label; resize behavior and bounded-runtime regressions are enforced.  
+**Remaining:** continue visual review in globe mode and dense Northeast cases as style/scale behavior evolves.
 
 ### WM-017 · Evidence-layer source refresh contract should be generic — P2
 **Status:** fixed on main (2026-09-20).  
