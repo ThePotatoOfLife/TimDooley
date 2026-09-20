@@ -8,6 +8,11 @@ const registry = JSON.parse(fs.readFileSync(new URL('data/world-map-layer-regist
 
 assert.equal(contract.compatibility['pattern+height'].status, 'incompatible-current-renderer');
 assert.equal(contract.compatibility['pattern+height'].policy, 'prefer-pattern-flatten-height');
+assert.equal(contract.country_surface_owners['countries-fill.fill-color'], 'world-map/3d-compositor.js');
+assert.equal(contract.country_surface_owners['countries-extrude.fill-extrusion-color'], 'world-map/3d-compositor.js');
+assert.equal(contract.country_surface_owners['countries-line.line-color'], 'world-map/3d-country-selection.js');
+assert.equal(contract.country_surface_owners['countries-line.line-width'], 'world-map/3d-country-selection.js');
+assert.equal(contract.country_surface_owners['countries-fill.fill-opacity'], 'world-map/3d-physical-layers.js');
 assert.ok(compositor.includes('async function enforceVisualCompatibility(entries)'));
 assert.ok(compositor.includes("height.value = 'flat'"));
 assert.ok(compositor.includes('height.disabled = incompatible'));
