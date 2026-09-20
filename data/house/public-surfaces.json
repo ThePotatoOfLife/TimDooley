@@ -1,5 +1,5 @@
 {
-  "version": "2.2.0",
+  "version": "2.3.0",
   "updated": "2026-09-20",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
@@ -16,7 +16,8 @@
     "sources",
     "questions",
     "index-a-z",
-    "house"
+    "house",
+    "news"
   ],
   "surfaces": [
     {
@@ -154,6 +155,26 @@
       "visibility": "primary",
       "primary_navigation": true,
       "is_view": false,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "news",
+      "route": "/news/",
+      "canonical_route": "/news/",
+      "surface_type": "explorer",
+      "title": "Current World News",
+      "primary_parent": "home",
+      "primary_room_ids": [
+        "world-systems",
+        "culture-information",
+        "archive-sources",
+        "time-history"
+      ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
       "knowledge_owner": false,
       "legacy_routes": []
     },

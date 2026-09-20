@@ -1,5 +1,5 @@
 {
-  "version": "4.3.0",
+  "version": "4.4.0",
   "updated": "2026-09-20",
   "authority": "house-navigation-manifest",
   "purpose": "Resolve which existing owner governs each structural concern so new work deepens the right place instead of creating parallel masters. This manifest is an index over authorities, not another ontology, navigation hierarchy or presentation plan.",
@@ -353,6 +353,11 @@
       "concern": "whole-archive record discovery",
       "owner": "scripts/build_discovery.py",
       "rule": "A–Z and machine retrieval include questions, every core canonical record and governed Body objects; Explore record search consumes the generated cross-root registry."
+    },
+    {
+      "concern": "live external news / Current World source and provenance contract",
+      "owner": "data/news/sources.json",
+      "rule": "News is a non-owning current-events projection near Home and House. External API metadata must retain provider and publisher provenance; feed presence is not verification or project endorsement, and default ordering remains mechanical newest-first rather than political or ideological ranking."
     }
   ],
   "resolver_order": [

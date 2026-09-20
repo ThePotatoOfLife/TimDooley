@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Current World — Live News | The Potato of Life</title>
+<meta name="description" content="A live, source-linked current-events view beside the Potato House, using free public news and community APIs with transparent provenance and newest-first ordering.">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/news/">
+<link rel="stylesheet" href="../app/site-system.css?v=20260914a">
+<link rel="stylesheet" href="../app/news.css?v=20260920a">
+<link rel="stylesheet" href="../app/tts-drawer.css?v=20260915">
+</head>
+<body>
+<main class="page page--standard news-page" data-reader-surface="news" data-news-feed>
+<nav class="page-nav" aria-label="News navigation"><a href="../">← Home</a><a href="../house/">House</a><a href="../world/">World</a><a href="../world-map/">World Map</a><a href="../timeline/">Timeline</a><a href="../context/source-authority/">Sources</a></nav>
+<header class="news-header">
+<div><p class="eyebrow">Current world · external live feeds</p><h1>NEWS</h1></div>
+<div class="news-header-copy"><strong>A window beside the House.</strong> This page pulls recent article metadata from free public APIs and sends you to the original publisher for the story. It is intentionally a live projection rather than project canon.
+<p class="news-boundary">Items are ordered by publication time, not by a Potato-of-Life political or ideological score. Appearance here does not mean endorsement or verification.</p></div>
+</header>
+
+<section class="news-method" id="news-reading-rule" aria-labelledby="news-reading-rule-title">
+<div><p class="eyebrow">A moving window, not another archive</p><h2 id="news-reading-rule-title">Read the world without confusing the feed with the House</h2></div>
+<div class="news-header-copy"><p>The House stores and connects durable project knowledge; this surface does something different. It shows what outside publishers and public link streams are reporting now, then leaves the evidentiary work with the original source. A headline can become relevant to World, History, Science, Culture or the Map, but it does not enter those Rooms automatically.</p><p>Use the categories as viewing lenses rather than verdicts. “Politics” asks the external index for political reporting; “Science” and “Space” broaden toward specialist sources; “Technology” includes the Hacker News community stream. Search is sent to GDELT only. In every case, publication time and provenance stay visible so a reader can move from headline to source before drawing conclusions.</p></div>
+</section>
+
+<div id="news-tts" data-tts-longform data-tts-root=".news-page" data-tts-id="current-world-news" data-tts-label="Current World News" data-tts-all-label="Whole news reader" data-tts-current-label="Current story" data-tts-selection-label="Selection" data-tts-item=".news-story,.news-method article" data-tts-exclude="#news-tts,.page-nav,.news-controls,.news-status,.news-footlinks"></div>
+
+<section class="news-controls" aria-label="News feed controls">
+<div class="news-control-row">
+<div class="news-tabs" data-news-tabs>
+<button class="news-tab" type="button" data-news-category="all" aria-pressed="true">All</button>
+<button class="news-tab" type="button" data-news-category="world" aria-pressed="false">World</button>
+<button class="news-tab" type="button" data-news-category="europe" aria-pressed="false">Europe</button>
+<button class="news-tab" type="button" data-news-category="politics" aria-pressed="false">Politics</button>
+<button class="news-tab" type="button" data-news-category="science" aria-pressed="false">Science</button>
+<button class="news-tab" type="button" data-news-category="technology" aria-pressed="false">Technology</button>
+<button class="news-tab" type="button" data-news-category="space" aria-pressed="false">Space</button>
+<button class="news-tab" type="button" data-news-category="climate" aria-pressed="false">Climate</button>
+<button class="news-tab" type="button" data-news-category="culture" aria-pressed="false">Culture</button>
+</div>
+<button class="news-refresh" type="button" data-news-refresh>Refresh feeds</button>
+</div>
+<form class="news-search" role="search"><input type="search" data-news-search aria-label="Search current news" placeholder="Search the current GDELT news index…"><button type="submit">Search news</button></form>
+</section>
+
+<div class="news-status" aria-live="polite">
+<strong data-news-count>Loading…</strong><span data-news-updated></span>
+<span class="news-provider-status" data-provider="gdelt" data-state="loading"><span>GDELT</span></span>
+<span class="news-provider-status" data-provider="hacker-news" data-state="loading"><span>Hacker News</span></span>
+<span class="news-provider-status" data-provider="spaceflight-news" data-state="loading"><span>Spaceflight</span></span>
+</div>
+
+<section class="news-lead" data-news-lead aria-label="Newest stories"></section>
+<section class="news-feed" data-news-list aria-label="More current stories"><div class="news-empty">Loading public feeds…</div></section>
+
+<section class="news-method" aria-labelledby="news-method-title">
+<div><p class="eyebrow">How this window works</p><h2 id="news-method-title">Live outside information, with boundaries intact</h2></div>
+<div>
+<div class="news-method-grid">
+<article><b>GDELT</b><span>Broad news discovery across publishers and languages. The linked publisher, not this page, owns the underlying report.</span></article>
+<article><b>Hacker News</b><span>A community-submitted technology link stream. It is labeled as community material rather than presented as independent reporting.</span></article>
+<article><b>Spaceflight News</b><span>A specialist aggregator for space and aerospace reporting, retaining the original outlet link.</span></article>
+<article><b>Mechanical ordering</b><span>The shared feed is sorted newest-first after URL de-duplication. There is no project-authored partisan ranking or winner selection.</span></article>
+<article><b>Failure isolation</b><span>If one provider is unavailable, the others can still render. Provider state is shown above the feed rather than hiding a failed source.</span></article>
+<article><b>Small local cache</b><span>Public feed results are cached in this browser for ten minutes to reduce repeat requests. The news component does not store personal data.</span></article>
+</div>
+<nav class="news-footlinks" aria-label="News source and project links"><a href="../data/news/sources.json">Source contract</a><a href="https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/">GDELT documentation</a><a href="https://github.com/HackerNews/API">Hacker News API</a><a href="https://api.spaceflightnewsapi.net/v4/docs/">Spaceflight News API</a><a href="../context/source-authority/">Project evidence policy</a><a href="../house/">Back to the House</a></nav>
+</div>
+</section>
+</main>
+<script src="../app/news.js?v=20260920a" data-news-config="../data/news/sources.json"></script>
+<script src="../app/tts-reader.js"></script><script src="../app/tts-drawer.js"></script><script src="../app/longform-tts-adapter.js"></script>
+<script src="../app/house-journey.js"></script>
+</body></html>
