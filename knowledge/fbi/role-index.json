@@ -3,13 +3,13 @@
   "title": "CIA Role Index — Symbolic Roles, Archetypes & Created-Being Classes",
   "version": "1.0.0",
   "updated": "2026-09-20",
-  "rule": "Search results are source-bounded. A match means a role appears in a particular Tim/project stratum, not that the person permanently is that role. Current Tim canon also supports dated role inheritance: Dog ⇒ Mud Dweller ⇒ Tree-of-Strife relation.",
+  "rule": "Search results are source-bounded. A match means a role appears in a particular Tim/project stratum, not that the person permanently is that role.",
   "roles": [
     {
       "id": "dog",
       "label": "Dog",
       "family": "symbolic-role",
-      "definition": "Boundary/tracking/pursuit role; can split toward Guardian Dog or Farm Dog. In current Tim canon, a Dog was a Mud Dweller first.",
+      "definition": "Boundary/tracking/pursuit role. In Tim's current canon, a Dog is a later state of a Mud Dweller; therefore a dated Dog assignment inherits Mud-Dweller + Tree-of-Strife relation for that same project layer. Dog can still split toward Guardian Dog, Farm Dog, Farmer, Footstool or exit the role.",
       "owner": "knowledge/world/mud-dweller-dog-footstool-role-ecology.json",
       "matches": [
         {
@@ -45,7 +45,11 @@
           "note": "Scene-bound Dog/stumbling-block/Footstool judgment. Does not erase donor, guardian or companion phases."
         }
       ],
-      "inheritance_rule": "For the same dated Tim/project layer, every Dog inherits Mud-Dweller status; every Mud Dweller inherits Tree-of-Strife relation. This is taxonomy inheritance, not a second independent observation."
+      "inheritance_rule": "For the same dated Tim/project layer, every Dog inherits Mud-Dweller status; every Mud Dweller inherits Tree-of-Strife relation. This is taxonomy inheritance, not a second independent observation.",
+      "inheritance": [
+        "Mud Dweller",
+        "Tree-of-Strife relation"
+      ]
     },
     {
       "id": "guardian-dog",
@@ -85,7 +89,7 @@
       "id": "footstool",
       "label": "Footstool",
       "family": "symbolic-position",
-      "definition": "Lower/supporting project-topology state containing an unfound Door; not a statement of human worth.",
+      "definition": "Lower/supporting project-topology state containing an unfound Door; common Tim sequence is Dweller → Mud Dweller → Dog → Footstool. Not a statement of human worth.",
       "owner": "knowledge/world/mud-dweller-dog-footstool-role-ecology.json",
       "matches": [
         {
@@ -119,7 +123,7 @@
       "id": "mud-dweller",
       "label": "Mud Dweller",
       "family": "symbolic-state",
-      "definition": "One who has made unresolved Mud into a dwelling; in current Tim canon, a Mud Dweller has eaten from the Tree of Strife symbolically. Explicitly reversible.",
+      "definition": "One who has made unresolved Mud into a dwelling; in Tim's canon this includes having eaten from the Tree of Strife symbolically. The state is explicitly reversible.",
       "owner": "knowledge/world/mud-dweller-dog-footstool-role-ecology.json",
       "matches": [
         {
@@ -155,7 +159,10 @@
           "note": "Inherited from a dated Dog assignment under current Tim taxonomy; Tree-of-Strife relation is likewise inherited for that layer. Not a permanent identity."
         }
       ],
-      "inheritance_rule": "Direct Mud-Dweller assignments and Dog-inherited Mud-Dweller states must be distinguished."
+      "inheritance_rule": "Direct Mud-Dweller assignments and Dog-inherited Mud-Dweller states must be distinguished.",
+      "inheritance": [
+        "Tree-of-Strife relation"
+      ]
     },
     {
       "id": "potato",
