@@ -8,7 +8,8 @@ ROOT=Path(__file__).resolve().parents[1]
 SUB=ROOT/"world-map/3d-subdivisions.js"
 PLACES=ROOT/"world-map/3d-places.js"
 GEO=ROOT/"world-map/3d-geo-kernel.js"
-MUD=ROOT/"world-map/3d-mud-below-us.js"
+SPATIAL_UI=ROOT/"world-map/3d-spatial-overlay-ui.js"
+BELOW_SPATIAL=ROOT/"data/world-map-spatial/below-us-cases.geojson"
 INDEX=ROOT/"data/world-places/index.json"
 DNK_PLACES=ROOT/"data/world-places/countries/DNK.geo.json"
 DNK_REGIONS=ROOT/"data/world-subdivisions/DNK.geo.json"
@@ -42,7 +43,7 @@ def contains(point, geom):
 
 def main()->int:
     errors=[]
-    for p in (SUB,PLACES,GEO,MUD,INDEX,DNK_PLACES,DNK_REGIONS):
+    for p in (SUB,PLACES,GEO,SPATIAL_UI,BELOW_SPATIAL,INDEX,DNK_PLACES,DNK_REGIONS):
         if not p.is_file(): errors.append(f"missing {p.relative_to(ROOT)}")
     if errors:
         print("WORLD MAP SUBDIVISION INTELLIGENCE FAILED")
@@ -52,7 +53,8 @@ def main()->int:
     sub=SUB.read_text(encoding="utf-8",errors="replace")
     places=PLACES.read_text(encoding="utf-8",errors="replace")
     geo=GEO.read_text(encoding="utf-8",errors="replace")
-    mud=MUD.read_text(encoding="utf-8",errors="replace")
+    spatial_ui=SPATIAL_UI.read_text(encoding="utf-8",errors="replace")
+    below_spatial=json.loads(BELOW_SPATIAL.read_text(encoding="utf-8"))
     for token in (
         "populationDensity(", "data-subdivision-places", "hydrateSubdivisionPlaces(",
         "Cities and towns", "subdivisionEvidenceHtml(", "Population source:",
@@ -62,8 +64,11 @@ def main()->int:
         if token not in places: errors.append(f"Places subdivision query missing {token!r}")
     if "pointInGeometry" not in geo:
         errors.append("Geo kernel missing pointInGeometry")
-    for token in ("registerSubdivisionEvidence(", "registerEvidenceProvider?.('mud-below-us'", "casesForSubdivision(", "project case anchor"):
-        if token not in mud: errors.append(f"Mud/Below subdivision projection missing {token!r}")
+    for token in ("BELOW_OVERLAY_ID", "belowRowsForSubdivision(", "registerBelowSubdivisionProvider(", "registerEvidenceProvider('spatial:project.below.us-cases'", "project case anchor"):
+        if token not in spatial_ui: errors.append(f"canonical Below subdivision projection missing {token!r}")
+    below_ids={str((feature.get("properties") or {}).get("subdivision_id") or "") for feature in below_spatial.get("features",[])}
+    if not {"US-VA","US-OH"} <= below_ids:
+        errors.append("canonical Below spatial anchors must retain US-VA / US-OH subdivision projection ids")
 
     index=json.loads(INDEX.read_text(encoding="utf-8"))
     for iso3 in ("USA","DNK","CAN"):
@@ -93,7 +98,7 @@ def main()->int:
 
     node=shutil.which("node")
     if node:
-        for p in (SUB,PLACES,GEO,MUD):
+        for p in (SUB,PLACES,GEO,SPATIAL_UI):
             result=subprocess.run([node,"--check",str(p)],cwd=ROOT,text=True,capture_output=True,check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {p.relative_to(ROOT)}: "+(result.stderr.strip() or result.stdout.strip()))
