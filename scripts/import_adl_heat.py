@@ -113,7 +113,8 @@ def main() -> int:
     state_rows: dict[str, dict] = {
         f"US-{code}": {
             "id": f"US-{code}", "code": code, "name": name, "total": 0,
-            "by_year": Counter(), "by_type": Counter(), "by_ideology": Counter(),
+            "by_year": Counter(), "by_type": Counter(), "by_type_token": Counter(),
+            "by_year_type_token": defaultdict(Counter), "by_ideology": Counter(),
         }
         for code, name in STATE_NAMES.items()
     }
@@ -139,6 +140,11 @@ def main() -> int:
             if year:
                 summary["by_year"][str(year)] += 1
             summary["by_type"][incident_type] += 1
+            type_tokens = [token.strip() for token in incident_type.split(";") if token.strip()]
+            for token in type_tokens:
+                summary["by_type_token"][token] += 1
+                if year:
+                    summary["by_year_type_token"][str(year)][token] += 1
             summary["by_ideology"][ideology] += 1
 
         lat = float_or_none(row_value(row, columns, "latitude"))
@@ -175,6 +181,11 @@ def main() -> int:
     for row in state_rows.values():
         row["by_year"] = dict(sorted(row["by_year"].items()))
         row["by_type"] = dict(sorted(row["by_type"].items()))
+        row["by_type_token"] = dict(sorted(row["by_type_token"].items()))
+        row["by_year_type_token"] = {
+            year: dict(sorted(counter.items()))
+            for year, counter in sorted(row["by_year_type_token"].items())
+        }
         row["by_ideology"] = dict(sorted(row["by_ideology"].items()))
 
     dated = sorted(
@@ -211,6 +222,7 @@ def main() -> int:
             "display_semantics": "Counts represent records in this ADL H.E.A.T. export. They are not a general hate score, crime rate, population-normalized risk measure, or characterization of a state or its residents.",
             "overlap_rule": "One source record is counted once in total counts even when its incident-type field contains multiple semicolon-delimited labels.",
             "missing_geometry": "Records without trustworthy coordinates remain in state aggregation when a state can be resolved, but are omitted from the point layer.",
+            "state_filtering": "State shading/filter totals use geometry-independent state aggregates, including state-known records that lack point geometry.",
             "source_boundary": "ADL classifications are presented as ADL classifications with source and snapshot status visible.",
         },
         "refresh": {
