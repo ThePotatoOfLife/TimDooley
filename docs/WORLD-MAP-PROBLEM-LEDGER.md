@@ -136,10 +136,11 @@
 **Guard:** `validate_world_map_subdivision_evidence_projection.py` requires the generic provider/search bridge and explicitly rejects ADL hard-coding in unified search.
 
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
-**Status:** UI/currentness boundary fixed; external data refresh remains open.  
-**Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence menu declares `historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary.  
-**Guard:** ADL validation requires `snapshotFreshness()`, a persistent `data-adl-freshness` control warning and the explicit phrase that this is not current monthly ADL coverage.  
-**Remaining:** replace the historical seed with a reviewed official CSV export when available; keep ADL/FBI methodologies separate.
+**Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
+**Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
+**Refresh pipeline:** `scripts/import_adl_heat.py` accepts only an explicitly confirmed official export, hashes the input, validates exact/retrieval-date sanity, duplicate source IDs and coordinate bounds, preserves unsupported/missing-geometry diagnostics, and writes reproducible metadata/GeoJSON/state summaries. Its end-to-end regression uses a temporary output directory and fails closed on malformed/future/duplicate inputs.  
+**Guard:** ADL validation runs the importer regression, requires source verification metadata, `snapshotFreshness()`, persistent `data-adl-freshness` UI and the explicit boundary that the committed seed is not current monthly ADL coverage.  
+**Remaining:** obtain a reviewed current official H.E.A.T. raw-data export, import it through the guarded pipeline, review the generated diff, then replace the historical seed. Keep ADL/FBI methodologies separate.
 
 ### WM-018/019 · Physical provider status + request reliability — P1/P2
 **Status:** fixed / governed on main (2026-09-20).  
