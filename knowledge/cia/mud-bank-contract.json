@@ -51,7 +51,7 @@
     "growth": 6,
     "entanglement": 0
   },
-  "balance_formula": "welfare accrued + sum(explicit weighted event entries). Aggregate labels, archetypes, popularity, loyalty, inactivity and unsourced allegations have weight 0.",
+  "balance_formula": "Dooley Welfare accrued + explicit positive event weights + evidence-discounted project-debit adjustments. Per-event project_adjustment_susd overrides the generic project-debit fallback. Aggregate labels, archetypes, popularity, loyalty, inactivity and unsourced allegations have weight 0.",
   "confidence": {
     "exact_date": "normal accrual",
     "year_or_period_only": "show provisional start; do not invent day-level precision",
@@ -64,5 +64,34 @@
     "Positive welfare is universal story-participation credit, not proof of virtue.",
     "The trillion-scale Mud Economy totals remain Tim/project claims and are not mathematically distributed across character accounts.",
     "Growth may add a small positive project adjustment only when a dated source explicitly records growth; symbolic entanglement alone is zero-weight."
-  ]
+  ],
+  "debit_pricing": {
+    "rule": "Price only distinct dated conduct events. Labels, roles, inferred motives, mere disagreement, co-presence, popularity and unsourced allegations are zero-weight.",
+    "categories": {
+      "destructive-act": -12,
+      "breach-of-trust": -8,
+      "repeated-harmful-narrative": -5,
+      "verified-deception": -8,
+      "targeted-harassment-boundary": -8,
+      "theft-fraud-cheating": -10,
+      "coercive-social-leverage": -8,
+      "reciprocal-conflict": -2
+    },
+    "evidence_multipliers": {
+      "primary-direct": 1,
+      "contemporaneous-recovered": 0.8,
+      "project-authored-canon": 0.55,
+      "chronicle-retelling": 0.45,
+      "retrospective-interpretation": 0
+    },
+    "repetition_multipliers": [
+      1,
+      1.2,
+      1.4,
+      1.5
+    ],
+    "repetition_rule": "Occurrence index advances only for a separate dated event in the same conduct family. The fourth and later confirmed occurrences stay capped at 1.5x.",
+    "double_count_rule": "One underlying incident receives one priced category even when several descriptions could apply. Secondary interpretations may be logged unpriced.",
+    "dispute_rule": "A disputed or reciprocal conflict remains zero-weight unless the archive has enough evidence for a concrete priced act."
+  }
 }
