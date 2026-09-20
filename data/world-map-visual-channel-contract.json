@@ -1,7 +1,7 @@
 {
   "id": "world-map-visual-channel-contract",
-  "version": "1.0.0",
-  "updated": "2026-09-19",
+  "version": "1.1.0",
+  "updated": "2026-09-20",
   "status": "active",
   "channels": {
     "fill": "One scalar country surface at a time.",
@@ -46,6 +46,16 @@
     "Only one scalar owns country color at a time.",
     "Only one scalar owns country height at a time.",
     "A schematic relationship line must declare geometry meaning and must not imply a surveyed physical route.",
-    "Unsupported channel combinations degrade to the more information-preserving representation rather than silently misrendering."
-  ]
+    "Unsupported channel combinations degrade to the more information-preserving representation rather than silently misrendering.",
+    "Progressive UI is a compatibility presentation surface and must not write canonical country paint channels."
+  ],
+  "country_surface_owners": {
+    "countries-fill.fill-color": "world-map/3d-compositor.js",
+    "countries-extrude.fill-extrusion-color": "world-map/3d-compositor.js",
+    "countries-line.line-color": "world-map/3d-country-selection.js",
+    "countries-line.line-width": "world-map/3d-country-selection.js",
+    "countries-fill.fill-opacity": "world-map/3d-physical-layers.js",
+    "countries-extrude.fill-extrusion-height": "world-map/3d-app.js",
+    "countries-fill/countries-extrude.visibility": "world-map/3d-app.js"
+  }
 }

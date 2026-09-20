@@ -24,6 +24,8 @@ def main() -> int:
     registry = load(REGISTRY, errors)
     compositor = COMPOSITOR.read_text(encoding="utf-8", errors="replace") if COMPOSITOR.is_file() else ""
     ui = (ROOT / "world-map" / "3d-ui.js").read_text(encoding="utf-8", errors="replace") if (ROOT / "world-map" / "3d-ui.js").is_file() else ""
+    selection = (ROOT / "world-map" / "3d-country-selection.js").read_text(encoding="utf-8", errors="replace") if (ROOT / "world-map" / "3d-country-selection.js").is_file() else ""
+    physical = (ROOT / "world-map" / "3d-physical-layers.js").read_text(encoding="utf-8", errors="replace") if (ROOT / "world-map" / "3d-physical-layers.js").is_file() else ""
 
     channels = contract.get("channels") or {}
     required = {"fill","pattern","outline","line","point","height","card","timeline","scene"}
@@ -51,13 +53,35 @@ def main() -> int:
         if row.get("kind") == "set" and row.get("availability") == "current" and row.get("visual_channel") != "pattern":
             errors.append(f"current set {row.get('id')} must use pattern visual channel")
 
+    expected_owners = {
+        "countries-fill.fill-color": "world-map/3d-compositor.js",
+        "countries-extrude.fill-extrusion-color": "world-map/3d-compositor.js",
+        "countries-line.line-color": "world-map/3d-country-selection.js",
+        "countries-line.line-width": "world-map/3d-country-selection.js",
+        "countries-fill.fill-opacity": "world-map/3d-physical-layers.js",
+        "countries-extrude.fill-extrusion-height": "world-map/3d-app.js",
+        "countries-fill/countries-extrude.visibility": "world-map/3d-app.js",
+    }
+    if contract.get("country_surface_owners") != expected_owners:
+        errors.append("country surface owner map must preserve one canonical owner per visual channel")
+
     for forbidden in (
         "setPaintProperty('countries-fill','fill-color'",
         "setPaintProperty('countries-extrude','fill-extrusion-color'",
         "setPaintProperty('countries-line','line-color'",
+        "setPaintProperty('countries-line','line-width'",
+        "setPaintProperty('countries-fill','fill-opacity'",
     ):
         if forbidden in ui:
             errors.append(f"legacy 3d-ui.js must not write canonical country visual channels: {forbidden}")
+
+    if "setBaseFill" not in compositor or "countries-fill" not in compositor or "countries-extrude" not in compositor:
+        errors.append("compositor must retain canonical country fill/extrusion color ownership")
+    for marker in ("setPaintProperty('countries-line', 'line-color'", "setPaintProperty('countries-line', 'line-width'"):
+        if marker not in selection:
+            errors.append(f"country selection must retain canonical outline ownership: {marker}")
+    if "setPaintProperty('countries-fill', 'fill-opacity'" not in physical:
+        errors.append("Physical World must retain canonical country fill-opacity ownership")
 
     for token in (
         "VISUAL_CHANNEL_URL",

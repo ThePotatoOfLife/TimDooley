@@ -42,10 +42,11 @@
 **Next:** inventory every raw threshold and classify: capability / cartographic interpolation / camera intent / test fixture.
 
 ### WM-006 · Country visual-channel ownership not fully closed — P1/P2
-**Status:** open.  
+**Status:** partially fixed (2026-09-20).  
 **Risk:** country fill/pattern/outline/height writers can override each other or restore in the wrong order.  
-**Owner:** compositor + render stack + architecture audit.  
-**Next:** build explicit compatibility matrix and assign one owner per channel/state combination.
+**Owner:** compositor + country selection + Physical World + core extrusion controller.  
+**Completed:** explicit owner map added; Progressive UI no longer writes canonical country fill/extrusion/outline paint.  
+**Next:** migrate or retire the dormant legacy Lens repaint path, then audit remaining variable/dynamic paint writers.
 
 ### WM-007 · Duplicate style/lifecycle writers remain — P2
 **Status:** open.  
