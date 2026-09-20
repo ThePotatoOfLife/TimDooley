@@ -1,7 +1,7 @@
 (()=>{'use strict';
 const BASE='/TimDooley/';
 const esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
-let manifest,activity,currentDesk,contract,accounts=[],scope='all';
+let manifest,activity,currentDesk,contract,accounts=[],scope='all';const selected=new URLSearchParams(location.search).get('character')||'';
 async function get(path){const r=await fetch(BASE+path);if(!r.ok)throw new Error(path);return r.json()}
 function exactDate(s){return /^\d{4}-\d{2}-\d{2}$/.test(String(s||''))?new Date(String(s)+'T00:00:00Z'):null}
 function money(n){return '$'+Number(n||0).toLocaleString(undefined,{minimumFractionDigits:4,maximumFractionDigits:4})}
@@ -52,6 +52,6 @@ function setScope(x){scope=x;document.getElementById('bankAll').classList.toggle
  [manifest,activity,currentDesk,contract]=await Promise.all([get('knowledge/cia/manifest.json'),get('knowledge/cia/activity-index.json'),get('knowledge/cia/current-desk.json'),get('knowledge/cia/mud-bank-contract.json')]);
  const ds=await Promise.all((manifest.characters||[]).map(async m=>[m,await get(m.path)]));
  accounts=ds.map(([m,d])=>buildAccount(m,d)).sort((a,b)=>{const ca=currentIds(),ac=ca.has(a.id)?0:1,bc=ca.has(b.id)?0:1;return ac-bc||b.balance-a.balance||a.name.localeCompare(b.name)});
- render();document.getElementById('bankSearch').addEventListener('input',render);document.getElementById('bankAll').onclick=()=>setScope('all');document.getElementById('bankCurrent').onclick=()=>setScope('current');setInterval(tick,1000);
+ if(selected){document.getElementById('bankSearch').value=selected;}render();document.getElementById('bankSearch').addEventListener('input',render);document.getElementById('bankAll').onclick=()=>setScope('all');document.getElementById('bankCurrent').onclick=()=>setScope('current');setInterval(tick,1000);
 })().catch(e=>{document.getElementById('accounts').innerHTML='<p>The symbolic bank could not open all ledgers. CIA dossiers remain available individually.</p>';});
 })();
