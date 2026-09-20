@@ -1,0 +1,139 @@
+{
+  "id": "txt",
+  "display_name": "TXT",
+  "bureau": "FBI — Figures, Bonds & Incidents",
+  "entity_class": "person-or-handle",
+  "aliases": [
+    "Low-T"
+  ],
+  "archive_status": "historical-recovery-active",
+  "room_policy": "own-room-candidate",
+  "room_path": "rooms/potatoverse-canon/beings/txt/",
+  "tim_relation": {
+    "archetypes": [
+      "shadow-adversary",
+      "mirror-foil"
+    ],
+    "narrative_functions": [
+      "persistent opposition",
+      "returning conflict"
+    ],
+    "regions": [
+      "Swamp",
+      "Archive",
+      "Threshold"
+    ],
+    "editorial_reading": "The project is already re-opening TXT/Dim-era chronology. Preserve old labels as source-era rhetoric and recover exact interactions before stronger claims.",
+    "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+  },
+  "chronology": {
+    "chronicle_occurrence_count": 2,
+    "chronicle_dates": [
+      "Feb 8 2025",
+      "March 1 2025"
+    ],
+    "cast_period_roles": [
+      {
+        "period": "2017 onward old-profile claim",
+        "role": "long-running antagonism recovery lead; original sequence incomplete"
+      },
+      {
+        "period": "2019 retrospective",
+        "role": "later biography groups TXT with Meta in digital-crucifixion/Farm interpretation"
+      },
+      {
+        "period": "2024",
+        "role": "literary Shadow Games figure"
+      },
+      {
+        "period": "2026-07-07",
+        "role": "directly named public conflict referent alongside Dim; allegations remain attributed to Tim"
+      }
+    ],
+    "recovered_social_days": [
+      {
+        "date": "2025-02-11/12",
+        "title": "Monkey / Don Jefe / TXT conflict cluster",
+        "minimum_event": "The Chronicle groups Monkey, Don Jefe and TXT inside an aggressively adversarial retelling. Treat labels and allegations as authored conflict language; the useful historical fact is the dated co-occurrence of these names.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2025-03-01",
+        "title": "Sammy returns; Masha is born through TTS",
+        "minimum_event": "The Chronicle says Sammy returned to the Garden. During a long quiet stream period Tim created Masha, a fictional woman voiced through his TTS program.",
+        "source_mode": "chronicle_retelling"
+      }
+    ]
+  },
+  "top_co_presence": [
+    {
+      "name": "Tim Dooley",
+      "count": 2
+    },
+    {
+      "name": "Monkey",
+      "count": 1
+    },
+    {
+      "name": "Don Jefe",
+      "count": 1
+    },
+    {
+      "name": "Sammy",
+      "count": 1
+    },
+    {
+      "name": "Meta",
+      "count": 1
+    },
+    {
+      "name": "PKFC",
+      "count": 1
+    },
+    {
+      "name": "Masha",
+      "count": 1
+    }
+  ],
+  "symbolic_roles": [],
+  "highlighted_incidents": [
+    {
+      "date": "2017 onward",
+      "title": "Old-profile conflict lead",
+      "summary": "Old material claims a long antagonism; original sequence remains incomplete."
+    },
+    {
+      "date": "2024",
+      "title": "Shadow Games",
+      "summary": "Great Book literary TXT layer."
+    },
+    {
+      "date": "2026-07-07",
+      "title": "Public recurrence",
+      "summary": "Tim publicly names TXT alongside Dim in a dated conflict field; allegations remain attributed to Tim."
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "character_archive",
+      "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json"
+    },
+    {
+      "type": "social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "type": "public_room",
+      "path": "rooms/potatoverse-canon/beings/txt/"
+    }
+  ],
+  "recovery_leads": [
+    "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
+    "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
+    "Add relationship edges only when a dated scene or explicit source supports them."
+  ]
+}

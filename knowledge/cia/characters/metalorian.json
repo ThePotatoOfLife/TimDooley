@@ -1,0 +1,160 @@
+{
+  "id": "metalorian",
+  "display_name": "Metalorian",
+  "bureau": "FBI — Figures, Bonds & Incidents",
+  "entity_class": "person-or-handle",
+  "aliases": [
+    "Meta",
+    "Joe"
+  ],
+  "archive_status": "historical-current-unknown",
+  "room_policy": "archive-only",
+  "room_path": "rooms/potatoverse-canon/beings/metalorian/",
+  "tim_relation": {
+    "archetypes": [
+      "shadow-adversary",
+      "mirror-foil"
+    ],
+    "narrative_functions": [
+      "control conflict",
+      "recurring opposition"
+    ],
+    "regions": [
+      "Swamp",
+      "Archive"
+    ],
+    "editorial_reading": "Old profile contains serious allegations and diagnostic language; archive them only as attributed source claims pending exact evidence.",
+    "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+  },
+  "chronology": {
+    "chronicle_occurrence_count": 11,
+    "chronicle_dates": [
+      "November 4, 2024",
+      "November 7, 2024",
+      "November 17, 2024",
+      "November 28, 2024",
+      "December 15, 2024",
+      "Feb 8 2025",
+      "Feb 26 2025",
+      "March 1 2025",
+      "March 12, 2025"
+    ],
+    "cast_period_roles": [
+      {
+        "period": "around 2017",
+        "role": "retrospective warning/adversarial lead; primary interaction and warning wording still need recovery"
+      },
+      {
+        "period": "2018-2019 retrospective",
+        "role": "later manuscripts use Meta in narrative-control/framing interpretations, sometimes alongside TXT"
+      },
+      {
+        "period": "2023 later meaning",
+        "role": "later Great Book timeline places Metalorian suffering near Cube/karmic interpretation; not same-day evidence"
+      }
+    ],
+    "recovered_social_days": [
+      {
+        "date": "2025-02-08",
+        "title": "Community counts enter the Chronicle",
+        "minimum_event": "The Chronicle claims 38 potatoes, nearly 200 dwellers and a recent stream of roughly 100 viewers. Preserve these as Chronicle-reported counts pending platform/server verification.",
+        "source_mode": "chronicle_reported_counts"
+      },
+      {
+        "date": "2025-02-27",
+        "title": "Three conflict calls",
+        "minimum_event": "The Chronicle organizes three separate social conflicts/calls on one day. It calls them 'rituals'; that is the author's interpretation, while the bounded calls and named participants are the recoverable historical targets.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2025-03-01",
+        "title": "Sammy returns; Masha is born through TTS",
+        "minimum_event": "The Chronicle says Sammy returned to the Garden. During a long quiet stream period Tim created Masha, a fictional woman voiced through his TTS program.",
+        "source_mode": "chronicle_retelling"
+      }
+    ]
+  },
+  "top_co_presence": [
+    {
+      "name": "Tim Dooley",
+      "count": 3
+    },
+    {
+      "name": "Sammy",
+      "count": 2
+    },
+    {
+      "name": "Supersusi87",
+      "count": 1
+    },
+    {
+      "name": "Ansja",
+      "count": 1
+    },
+    {
+      "name": "Carrie",
+      "count": 1
+    },
+    {
+      "name": "Mondo Cane",
+      "count": 1
+    },
+    {
+      "name": "Tachy",
+      "count": 1
+    },
+    {
+      "name": "Raven",
+      "count": 1
+    },
+    {
+      "name": "TXT",
+      "count": 1
+    },
+    {
+      "name": "PKFC",
+      "count": 1
+    }
+  ],
+  "symbolic_roles": [],
+  "highlighted_incidents": [
+    {
+      "date": "around 2017",
+      "title": "Warning/adversarial recovery lead",
+      "summary": "Later biography remembers warning/conflict material, but original interaction and wording are still missing."
+    },
+    {
+      "date": "2018-2019 retrospective",
+      "title": "Meta-framing",
+      "summary": "Old manuscripts use Meta/Metalorian in narrative-control interpretations; these remain authored allegations absent primary artifacts."
+    },
+    {
+      "date": "2023 later meaning",
+      "title": "Karmic/Cube interpretation",
+      "summary": "Later project timeline places Metalorian suffering near Cube symbolism; retrospective correspondence only."
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "character_archive",
+      "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json"
+    },
+    {
+      "type": "social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "type": "public_room",
+      "path": "rooms/potatoverse-canon/beings/metalorian/"
+    }
+  ],
+  "recovery_leads": [
+    "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
+    "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
+    "Add relationship edges only when a dated scene or explicit source supports them."
+  ]
+}
