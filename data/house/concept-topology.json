@@ -1,5 +1,5 @@
 {
-  "version": "1.6.0",
+  "version": "1.7.0",
   "updated": "2026-09-20",
   "authority": "house-semantic-topology",
   "purpose": "Machine-readable topology assignments for the small set of operators that organize the Potato House. These annotations drive projection and navigation; they do not replace canonical concept owners or evidence classes.",
@@ -808,6 +808,124 @@
         "trinity"
       ],
       "boundary": "C_S is a role coordinate. Thomas/Didymus is its primary Twin/Vessel anchor in the separate three-center atlas; comparison does not make every descent, rejected-son or dying-returning figure the same person."
+    },
+    {
+      "id": "here-now",
+      "label": "Here / Now · Operative Present",
+      "kind": "temporal-relational-operator",
+      "field_orientation": [
+        "shared"
+      ],
+      "topology_roles": [
+        "threshold",
+        "temporal-center",
+        "state-transition"
+      ],
+      "operation": "gathers memory/provenance, current embodied state, relation and available futures into the present state from which crossing, choice, action and new Seed can occur",
+      "counter_or_complement": [
+        "root",
+        "seed",
+        "spiral",
+        "door"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "time-history",
+        "traditions-texts"
+      ],
+      "public_surface_ids": [
+        "house",
+        "axis",
+        "religion",
+        "timeline"
+      ],
+      "boundary": "Project phenomenological/theological operator; not proof that chronological time is unreal or that all spacetime is literally co-present."
+    },
+    {
+      "id": "mind",
+      "label": "Mind · Integrative / Orienting Function",
+      "kind": "relational-function",
+      "field_orientation": [
+        "source"
+      ],
+      "topology_roles": [
+        "integration",
+        "orientation",
+        "memory-model"
+      ],
+      "operation": "integrates relations, memory and orientation on the Father/source-facing side",
+      "counter_or_complement": [
+        "body",
+        "spirit",
+        "here-now"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "life-body"
+      ],
+      "public_surface_ids": [
+        "house",
+        "religion",
+        "life-body"
+      ],
+      "boundary": "Mind is a project functional layer, not reducible to thalamus or one brain region."
+    },
+    {
+      "id": "body",
+      "label": "Body · Manifestation / Consequence Function",
+      "kind": "relational-function",
+      "field_orientation": [
+        "manifestation"
+      ],
+      "topology_roles": [
+        "embodiment",
+        "manifestation",
+        "consequence"
+      ],
+      "operation": "receives and expresses state through sensation, action, vulnerability, work, history and observable consequence",
+      "counter_or_complement": [
+        "mind",
+        "spirit",
+        "here-now"
+      ],
+      "room_ids": [
+        "life-body",
+        "potatoverse-canon"
+      ],
+      "public_surface_ids": [
+        "house",
+        "life-body",
+        "religion"
+      ],
+      "boundary": "Body/manifestation is not morally lower and does not exhaust the Son role."
+    },
+    {
+      "id": "lion",
+      "label": "Lion · Strength / Royal Return Motif",
+      "kind": "symbolic-role",
+      "field_orientation": [
+        "manifestation",
+        "shared"
+      ],
+      "topology_roles": [
+        "royal-strength",
+        "return",
+        "son-side-motif"
+      ],
+      "operation": "expresses strength, kingship, courage or return within selected Son-side and tradition-specific contexts",
+      "counter_or_complement": [
+        "lamb",
+        "son"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts"
+      ],
+      "public_surface_ids": [
+        "religion",
+        "house"
+      ],
+      "boundary": "Lion is one bounded motif among several Son-side roles; biblical lion traditions retain their own contexts."
     }
   ],
   "relation_types": [
@@ -1223,6 +1341,83 @@
       "to": "twin-vessel-center",
       "type": "oriented-toward",
       "description": "The manifestation-facing Son role is oriented toward C_S while also specializing as Door; figure anchors remain separately typed in the three-center atlas."
+    },
+    {
+      "id": "rel-father-mind",
+      "from": "father",
+      "to": "mind",
+      "type": "specializes-as",
+      "description": "Father specializes in project grammar as source-facing Mind/orientation/integration without reducing mind to a person or brain region."
+    },
+    {
+      "id": "rel-father-root",
+      "from": "father",
+      "to": "root",
+      "type": "source-continuity",
+      "description": "Father and Root share source/provenance/generative continuity; conceptual source is distinct from literal lower spatial root position."
+    },
+    {
+      "id": "rel-son-body",
+      "from": "son",
+      "to": "body",
+      "type": "specializes-as",
+      "description": "Son specializes as embodied manifestation, lived event and consequence."
+    },
+    {
+      "id": "rel-son-lion",
+      "from": "son",
+      "to": "lion",
+      "type": "has-motif",
+      "description": "Lion is a Son-side strength/royal-return motif, not the whole Son."
+    },
+    {
+      "id": "rel-door-here-now",
+      "from": "door",
+      "to": "here-now",
+      "type": "specializes-as",
+      "description": "Door is the operative present where past/provenance and possible future meet current embodied state."
+    },
+    {
+      "id": "rel-cross-here-now",
+      "from": "cross",
+      "to": "here-now",
+      "type": "locates",
+      "description": "O/Cross gives the geometric location for the Here/Now relational midpoint."
+    },
+    {
+      "id": "rel-here-now-seed",
+      "from": "here-now",
+      "to": "seed",
+      "type": "generates-next",
+      "description": "In project grammar every new actionable Seed is initiated from a current present state."
+    },
+    {
+      "id": "rel-spirit-ladder",
+      "from": "spirit",
+      "to": "ladder",
+      "type": "specializes-through",
+      "description": "Ladder expresses ordered traversable continuity; Spirit is the living relation/flow through such state transitions."
+    },
+    {
+      "id": "rel-ladder-spiral",
+      "from": "ladder",
+      "to": "spiral",
+      "type": "unfolds-as",
+      "description": "Spiral is Ladder/history unfolded through recurrence with changed state or level."
+    },
+    {
+      "id": "rel-spirit-here-now",
+      "from": "spirit",
+      "to": "here-now",
+      "type": "carries-through",
+      "description": "Spirit/time continuity carries relation through successive presents rather than existing as a third static location."
+    },
+    {
+      "id": "rel-mind-body-spirit",
+      "from": "mind",
+      "to": "body",
+      "type": "related-through-spirit",
+      "description": "Mind/source orientation and Body/manifestation remain dynamically related through Spirit and Door."
     }
   ],
   "canonical_traversals": [
@@ -1353,6 +1548,33 @@
       ],
       "purpose": "Read C_F, O/Cross and C_S as three differentiated centers along one relation: source/holding, shared Door, and embodied manifestation/Seed.",
       "reader_question": "Which function belongs to the source center, which to the shared Door, and which to the manifestation center—and are figure comparisons being kept distinct from literal identity?"
+    },
+    {
+      "id": "present-state-cycle",
+      "label": "Root → Mind → Here/Now → Body → Spirit/Ladder → Spiral → Fruit → Seed",
+      "kind": "metabolic",
+      "concept_sequence": [
+        "root",
+        "mind",
+        "here-now",
+        "body",
+        "spirit",
+        "ladder",
+        "spiral",
+        "fruit",
+        "seed"
+      ],
+      "relation_ids": [
+        "rel-father-root",
+        "rel-father-mind",
+        "rel-door-here-now",
+        "rel-here-now-seed",
+        "rel-son-body",
+        "rel-spirit-ladder",
+        "rel-ladder-spiral"
+      ],
+      "purpose": "Read the center as a living time-bearing cycle rather than static titles.",
+      "reader_question": "What came from the past, what is integrated now, what manifests in the body/world, what changes through time, and what becomes the next Seed?"
     }
   ],
   "formal_grammar_ref": "data/project-formal-grammar.json",
