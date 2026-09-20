@@ -128,6 +128,16 @@ function contextParts(context) {
   const time = timeLabel(context.time);
   if (time) parts.push(time);
   if (context.question?.relationMode && context.question.relationMode !== 'all') parts.push(context.question.relationMode);
+  const layerGroups = [
+    ['Physical', context.layers?.physical || []],
+    ['Geography', context.layers?.geography || []],
+    ['Evidence', context.layers?.evidence || []],
+  ];
+  for (const [label, ids] of layerGroups) {
+    if (!ids.length) continue;
+    const compact = ids.slice(0, 2).map(id => String(id).split('.').at(-1).replaceAll('-', ' '));
+    parts.push(`${label} · ${compact.join(', ')}${ids.length > 2 ? ` +${ids.length - 2}` : ''}`);
+  }
   return parts;
 }
 
@@ -190,6 +200,11 @@ async function render() {
       time:context?.time?.mode || 'current',
       subject:details ? { kind:details.kind, code:details.code } : null,
       selectedReference:details ? selectedReference(details)?.code || null : null,
+      activeLayers:{
+        physical:[...(context?.layers?.physical || [])],
+        geography:[...(context?.layers?.geography || [])],
+        evidence:[...(context?.layers?.evidence || [])],
+      },
     };
   }
 }
