@@ -1,3 +1,6 @@
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('symbolic-operators', ['op']);
 if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
 const motion = window.__potatoAtlasMotion;
 const FORMAL_URL = '../data/axis-formal-lenses.json';
@@ -44,7 +47,7 @@ function setSelect(id,value){
 }
 function ensureActive(id){ const el=document.getElementById(id); if(el && !el.classList.contains('active')) el.click(); }
 function setDimension(d,options){ window.__potatoAxisDepth?.setDimension?.(d,options); }
-function setOpParam(name){ const url=new URL(location.href); if(name==='earth') url.searchParams.delete('op'); else url.searchParams.set('op',name); history.replaceState(null,'',url); }
+function setOpParam(name){ urlState.patch('symbolic-operators',{set:{op:name==='earth'?null:name}}); }
 
 function renderOperatorPanel(formal,depths,name,map,extra=''){
   const action=ACTIONS[name]; if(!action||!panel()) return;
