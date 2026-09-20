@@ -13,7 +13,8 @@ MANIFEST = ROOT / "knowledge/fbi/manifest.json"
 CABINET = ROOT / "rooms/potatoverse-canon/beings/fbi/index.html"
 FILE_VIEWER = ROOT / "rooms/potatoverse-canon/beings/fbi/file/index.html"
 COLLECTIONS = ROOT / "data/house/collections.json"
-EXPECTED_ROUTE = "rooms/potatoverse-canon/beings/fbi/"
+EXPECTED_ROUTE = "rooms/potatoverse-canon/beings/cia/"
+LEGACY_ROUTE = "rooms/potatoverse-canon/beings/fbi/"
 
 
 def fail(message: str) -> None:
@@ -92,6 +93,9 @@ def main() -> int:
         'data-panel="conversations"',
         'data-panel="patterns"',
         'data-panel="knowledge"',
+        'data-panel="witness"',
+        "function witnessHtml()",
+        "Tim’s character reading",
         "function conversationsHtml()",
         "function patternsHtml()",
         "Archive coverage",
@@ -145,7 +149,23 @@ def main() -> int:
 
     surfaces = manifest.get("public_surfaces") or {}
     if surfaces.get("cabinet") != EXPECTED_ROUTE:
-        fail("manifest public_surfaces.cabinet does not match canonical FBI route")
+        fail("manifest public_surfaces.cabinet does not match canonical CIA route")
+    public_identity = manifest.get("public_identity") or {}
+    if public_identity.get("canonical_route") != EXPECTED_ROUTE:
+        fail("CIA canonical route is not registered")
+    if public_identity.get("legacy_route") != LEGACY_ROUTE:
+        fail("legacy FBI compatibility route is not registered")
+
+    tim_witness_required = {
+        "dim", "txt", "matthew-mtclassic", "mediomu007", "termite", "rahu",
+        "marty-biz", "metalorian", "bigtech", "optimistique", "ledgeview", "pondo", "kale"
+    }
+    for fid in tim_witness_required:
+        dossier = json.loads((ROOT / f"knowledge/fbi/figures/{fid}.json").read_text(encoding="utf-8"))
+        witness = dossier.get("tim_witness") or {}
+        for key in ("character_reading", "fruit", "karma", "placement", "symbols", "repair_path", "boundary"):
+            if not witness.get(key):
+                fail(f"{fid} Tim-witness layer missing {key}")
 
     summary = manifest.get("coverage_summary") or {}
     if summary.get("total_figures") != len(figures):
