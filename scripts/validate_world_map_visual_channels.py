@@ -26,6 +26,7 @@ def main() -> int:
     ui = (ROOT / "world-map" / "3d-ui.js").read_text(encoding="utf-8", errors="replace") if (ROOT / "world-map" / "3d-ui.js").is_file() else ""
     selection = (ROOT / "world-map" / "3d-country-selection.js").read_text(encoding="utf-8", errors="replace") if (ROOT / "world-map" / "3d-country-selection.js").is_file() else ""
     physical = (ROOT / "world-map" / "3d-physical-layers.js").read_text(encoding="utf-8", errors="replace") if (ROOT / "world-map" / "3d-physical-layers.js").is_file() else ""
+    world_bar = (ROOT / "world-map" / "3d-world-bar.js").read_text(encoding="utf-8", errors="replace") if (ROOT / "world-map" / "3d-world-bar.js").is_file() else ""
 
     channels = contract.get("channels") or {}
     required = {"fill","pattern","outline","line","point","height","card","timeline","scene"}
@@ -82,6 +83,9 @@ def main() -> int:
             errors.append(f"country selection must retain canonical outline ownership: {marker}")
     if "setPaintProperty('countries-fill', 'fill-opacity'" not in physical:
         errors.append("Physical World must retain canonical country fill-opacity ownership")
+    for token in ("Color fill + exact value text", "Pattern + membership text", "aria-pressed", "aria-label"):
+        if token not in world_bar:
+            errors.append(f"World Bar missing non-color/accessibility redundancy marker: {token}")
 
     for token in (
         "VISUAL_CHANNEL_URL",
