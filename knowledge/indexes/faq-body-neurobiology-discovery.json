@@ -1,6 +1,6 @@
 {
   "id": "faq-body-neurobiology-discovery",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "purpose": "Natural-language discovery routes into the Life & Body atlas, with science/symbolism boundaries kept explicit.",
   "entries": [
@@ -456,6 +456,85 @@
       "epistemic_class": [
         "project_architecture",
         "anatomy_boundary"
+      ]
+    },
+    {
+      "id": "how-does-brain-develop-from-neural-tube",
+      "question": "How does the neural tube become the adult brain and spinal cord?",
+      "short_answer": "The neural tube regionalizes into forebrain, midbrain, hindbrain and spinal cord. Rostral vesicles subdivide further, progenitor cells generate neurons and glia, neurons migrate and extend axons, and circuits are refined by activity, pruning and myelination. Adult anatomy is therefore a developmental transformation of one continuous embryonic CNS tube.",
+      "entities": [
+        "Neural tube",
+        "Prosencephalon",
+        "Mesencephalon",
+        "Rhombencephalon",
+        "Radial glia"
+      ],
+      "aliases": [
+        "brain embryology",
+        "neural tube adult brain"
+      ],
+      "search_terms": [
+        "neural tube brain vesicles",
+        "how brain develops"
+      ],
+      "canonical_owners": [
+        "knowledge/body/neural-development-lineage-atlas.json"
+      ],
+      "epistemic_class": [
+        "developmental_neurobiology"
+      ]
+    },
+    {
+      "id": "what-is-neurovascular-unit",
+      "question": "What is the neurovascular unit and why is the blood-brain barrier a living boundary?",
+      "short_answer": "The neurovascular unit includes vascular endothelial cells, pericytes, astrocytes, neurons, microglia and extracellular matrix. These components coordinate barrier properties, metabolism, blood flow and inflammatory responses. The BBB is therefore maintained by an interacting cellular system rather than one passive wall.",
+      "entities": [
+        "Neurovascular unit",
+        "Blood-brain barrier",
+        "Astrocytes",
+        "Pericytes",
+        "Microglia"
+      ],
+      "aliases": [
+        "BBB living wall",
+        "brain barrier cells"
+      ],
+      "search_terms": [
+        "neurovascular unit function",
+        "BBB cell types"
+      ],
+      "canonical_owners": [
+        "knowledge/body/glia-neurovascular-barrier-atlas.json"
+      ],
+      "epistemic_class": [
+        "neurobiology"
+      ]
+    },
+    {
+      "id": "what-are-cortical-layers-cell-types",
+      "question": "What are cortical layers and why are broad brain regions not enough?",
+      "short_answer": "Neocortex is organized into layers with different input/output tendencies and many molecular cell classes. Recent human spatial and single-cell atlases show strong laminar and regional cell-type structure, so labels such as 'frontal cortex' or even a named area are only one level of description.",
+      "entities": [
+        "Cortical layers",
+        "Cell types",
+        "Spatial transcriptomics",
+        "Glutamatergic neurons",
+        "GABAergic interneurons"
+      ],
+      "aliases": [
+        "cortical layers I VI",
+        "brain cell atlas"
+      ],
+      "search_terms": [
+        "human cortex cell types",
+        "cortical layers functions"
+      ],
+      "canonical_owners": [
+        "knowledge/body/cortical-celltype-parcellation-atlas.json"
+      ],
+      "epistemic_class": [
+        "neuroscience",
+        "cell_atlas"
       ]
     }
   ]
