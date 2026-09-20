@@ -8,11 +8,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 APP = ROOT / "app" / "app.js"
 PAGES = ROOT / ".github" / "workflows" / "pages.yml"
+QUALITY = ROOT / ".github" / "workflows" / "quality-checks.yml"
 
 
 def main() -> int:
     app = APP.read_text(encoding="utf-8")
     pages = PAGES.read_text(encoding="utf-8")
+    quality = QUALITY.read_text(encoding="utf-8")
     errors: list[str] = []
 
     if "canonical-record-registry.json" not in app:
@@ -28,8 +30,12 @@ def main() -> int:
     if show_record < 0 or known_guard < 0 or fetch_call < 0 or known_guard > fetch_call:
         errors.append("showRecord must reject unknown hash paths before fetching the requested resource")
 
-    if "python scripts/build_canonical_record_registry.py" not in pages:
-        errors.append("Pages deployment does not generate the canonical record registry before build_site.py")
+    registry_build = quality.find("python scripts/build_canonical_record_registry.py")
+    site_build = quality.find("python scripts/build_site.py")
+    if registry_build < 0 or site_build < 0 or registry_build > site_build:
+        errors.append("Quality workflow must generate the canonical record registry before build_site.py")
+    if "validated-pages-site" not in quality or "validated-pages-site" not in pages:
+        errors.append("Explore projection must travel inside the validated Pages artifact")
 
     if errors:
         print("Explore projection validation FAILED")
