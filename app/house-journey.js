@@ -105,6 +105,56 @@
     }catch(e){}
   }
 
+
+  async function installRoomKnowledge(){
+    const match=location.pathname.match(/\/rooms\/inside\/([^/]+)\//);
+    if(!match)return;
+    const roomId=decodeURIComponent(match[1]);
+    try{
+      const [subRes,holdRes,ifRes]=await Promise.all([
+        fetch(base+'data/house/subrooms.json'),
+        fetch(base+'data/house/holdings.json'),
+        fetch(base+'data/house/interfaces.json')
+      ]);
+      if(!subRes.ok||!holdRes.ok||!ifRes.ok)return;
+      const subData=await subRes.json(), holdData=await holdRes.json(), ifData=await ifRes.json();
+      const room=(subData.subrooms||[]).find(x=>x.id===roomId);
+      const holding=(holdData.holdings||[]).find(x=>x.room_id===roomId);
+      if(!room||!holding)return;
+
+      if(!document.getElementById('room-live-knowledge-style')){
+        const st=document.createElement('style');st.id='room-live-knowledge-style';st.textContent=`
+          .room-live-knowledge{margin:34px 0}.room-live-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:9px;margin-top:14px}
+          .room-live-card{border:1px solid var(--site-line,#303830);padding:12px;color:inherit;text-decoration:none;display:block}
+          .room-live-card:hover{border-color:#61745b}.room-live-card strong{display:block;color:var(--site-gold,#d5ba74);font:400 17px var(--site-font-serif,serif)}
+          .room-live-card small{display:block;color:var(--site-muted,#9ba59a);font-size:8px;line-height:1.4;margin-top:5px}
+          .room-live-routes{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.room-live-routes a{border:1px solid var(--site-line,#303830);border-radius:999px;padding:5px 8px;text-decoration:none;color:var(--site-muted,#9ba59a);font-size:8px}
+          .room-live-routes a:hover{color:var(--site-green,#9eb58d);border-color:#61745b}.room-live-meta{color:var(--site-muted,#9ba59a);font-size:9px;margin-top:7px}
+        `;document.head.appendChild(st);
+      }
+
+      const main=document.querySelector('main');if(!main)return;
+      const section=document.createElement('section');section.className='room-live-knowledge';
+      const featured=(holding.featured_holdings||[]).slice(0,18);
+      const cards=featured.map(x=>{
+        const href=base+'explore/#record='+encodeURIComponent(x.path||x.id||'');
+        return '<a class="room-live-card" href="'+href+'"><strong>'+esc((x.id||x.path||'record').replace(/-/g,' '))+'</strong><small>'+esc(x.kind||'canonical holding')+'<br>'+esc(x.path||'')+'</small></a>';
+      }).join('');
+      const neighbors=(room.adjacent_subroom_ids||[]).map(id=>{
+        const target=(subData.subrooms||[]).find(x=>x.id===id);
+        return target?'<a href="'+base+'rooms/inside/'+encodeURIComponent(id)+'/">'+esc(target.title||id)+'</a>':'';
+      }).join('');
+      const interfaceIds=new Set((ifData.interfaces||[]).filter(x=>x.from===roomId||x.to===roomId).map(x=>x.id));
+      section.innerHTML='<p class="eyebrow">Live Room registry</p><h2>Knowledge held here now</h2>'
+        +'<p class="boundary">This panel is generated from the current House registries, so it stays current even when the static Room shell predates newer atlases or corridors.</p>'
+        +'<div class="room-live-meta">'+esc(String(holding.primary_file_count||featured.length))+' primary holdings · '+esc(String(interfaceIds.size))+' governed interfaces</div>'
+        +'<div class="room-live-grid">'+cards+'</div>'
+        +(neighbors?'<p class="eyebrow" style="margin-top:20px">Current governed routes</p><div class="room-live-routes">'+neighbors+'</div>':'');
+      main.appendChild(section);
+    }catch(e){}
+  }
+
   installRibbon();
   installInhabitants();
+  installRoomKnowledge();
 })();
