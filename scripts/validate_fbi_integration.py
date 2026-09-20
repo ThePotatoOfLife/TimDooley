@@ -106,6 +106,7 @@ def main() -> int:
         "Karmic debt / obligation",
         "Inherited symbolic states",
         "Episode attributes",
+        "Upgrades / handicaps",
     ):
         if token not in viewer:
             fail(f"generic dossier viewer lost rich dossier projection token {token!r}")
@@ -155,6 +156,17 @@ def main() -> int:
     individual_rule = (((taxonomy.get("debt_model") or {}).get("individual_rule")) or "")
     if "unless Tim explicitly assigned" not in individual_rule:
         fail("CIA taxonomy must forbid invented per-person karmic debt amounts")
+
+    modifiers = taxonomy.get("state_modifiers") or {}
+    if not (modifiers.get("upgrades") and modifiers.get("handicaps")):
+        fail("CIA taxonomy must define both upgrades and handicaps")
+    if "perpetual_lying" not in (taxonomy.get("attribute_inference_rules") or {}):
+        fail("CIA taxonomy lost guarded inference rule for perpetual lying")
+    enhancements = json.loads((ROOT / "knowledge/fbi/enhancements-index.json").read_text(encoding="utf-8"))
+    if "state_modifier_model" not in enhancements:
+        fail("CIA enhancements index is not linked to the state-modifier taxonomy")
+    if "do not create numeric karmic debt" not in str(enhancements.get("debt_rule") or ""):
+        fail("CIA enhancements index must forbid debt inference from modifiers")
 
     conversation_index = (manifest.get("indexes") or {}).get("conversations")
     if conversation_index != "knowledge/fbi/conversation-recovery.json":
