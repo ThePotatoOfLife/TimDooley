@@ -1,0 +1,136 @@
+{
+  "id": "highly-regarded",
+  "display_name": "Highly Regarded",
+  "bureau": "FBI — Figures, Bonds & Incidents",
+  "depth_tier": "working-file",
+  "depth_note": "Recurring figure with enough dated presence for a working dossier; raw-source recovery can still deepen it.",
+  "entity_class": "person-or-handle",
+  "aliases": [
+    "HRH"
+  ],
+  "archive_status": "historical-current-unknown",
+  "room_policy": "cluster",
+  "room_path": null,
+  "tim_relation": {
+    "archetypes": [
+      "seeker-student",
+      "patron-supporter",
+      "bard-jester"
+    ],
+    "narrative_functions": [
+      "encouragement",
+      "hype",
+      "potato-in-training"
+    ],
+    "regions": [
+      "Saloon",
+      "Garden"
+    ],
+    "editorial_reading": "Chronicle repeatedly frames him as enthusiastic, supportive and potato-in-training.",
+    "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+  },
+  "chronology": {
+    "chronicle_occurrence_count": 18,
+    "chronicle_dates": [
+      "November 3 2024",
+      "November 4, 2024",
+      "November 5, 2024",
+      "November 6, 2024",
+      "November 6, 2024",
+      "November 9, 2024",
+      "November 19, 2024",
+      "Nov 20 2024"
+    ],
+    "cast_period_roles": [],
+    "recovered_social_days": [
+      {
+        "date": "2024-11-03",
+        "title": "Tanks, pipe, coffee and the first dense social snapshot",
+        "minimum_event": "Tim spends the day around Tanks/voice-chat social life while the Great Book is actively discussed. Optimistique urges him back into play, Rahu/Tdog supply religious interpretation, and Termite marks group camaraderie.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2024-11-05",
+        "title": "Ordinary voice-chat ecology",
+        "minimum_event": "A mixed day of Tanks, voice chat, humor, business/life discussion and critique. The Chronicle preserves Marty as present in ordinary social activity rather than only later conflict mythology.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2024-11-19",
+        "title": "Garden conflict becomes a named day",
+        "minimum_event": "The Chronicle labels the day 'The Garden Betrayed' and concentrates conflict around the community boundary. Treat allegations in this entry as authored interpretation until raw logs are recovered.",
+        "source_mode": "chronicle_retelling"
+      }
+    ]
+  },
+  "top_co_presence": [
+    {
+      "name": "Tim Dooley",
+      "count": 3
+    },
+    {
+      "name": "Marty",
+      "count": 3
+    },
+    {
+      "name": "Port Monkey",
+      "count": 3
+    },
+    {
+      "name": "Optimistique",
+      "count": 2
+    },
+    {
+      "name": "Ledgeview",
+      "count": 2
+    },
+    {
+      "name": "Kale",
+      "count": 2
+    },
+    {
+      "name": "Mr. E",
+      "count": 1
+    },
+    {
+      "name": "Klunty",
+      "count": 1
+    }
+  ],
+  "symbolic_roles": [],
+  "highlighted_incidents": [
+    {
+      "date": "2024-11-03",
+      "title": "Tanks, pipe, coffee and the first dense social snapshot",
+      "summary": "Tim spends the day around Tanks/voice-chat social life while the Great Book is actively discussed. Optimistique urges him back into play, Rahu/Tdog supply religious interpretation, and Termite marks group camaraderie.",
+      "source_mode": "chronicle_retelling"
+    },
+    {
+      "date": "2024-11-05",
+      "title": "Ordinary voice-chat ecology",
+      "summary": "A mixed day of Tanks, voice chat, humor, business/life discussion and critique. The Chronicle preserves Marty as present in ordinary social activity rather than only later conflict mythology.",
+      "source_mode": "chronicle_retelling"
+    },
+    {
+      "date": "2024-11-19",
+      "title": "Garden conflict becomes a named day",
+      "summary": "The Chronicle labels the day 'The Garden Betrayed' and concentrates conflict around the community boundary. Treat allegations in this entry as authored interpretation until raw logs are recovered.",
+      "source_mode": "chronicle_retelling"
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "character_archive",
+      "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "dated_social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    }
+  ],
+  "recovery_leads": [
+    "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
+    "Separate direct speech from Chronicle paraphrase and later project interpretation.",
+    "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+  ]
+}
