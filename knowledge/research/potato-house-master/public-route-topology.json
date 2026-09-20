@@ -1,7 +1,7 @@
 {
-  "version": "1.9.1",
+  "version": "2.0.0",
   "updated": "2026-09-20",
-  "purpose": "Route-topology bridge for active public surfaces; navigation/migration classification only, not substantive knowledge ownership. House, Paths and Living Axis are structural projections over the canonical Rooms, not additional fact owners.",
+  "purpose": "Legacy checked snapshot of route topology. It is no longer an independent control plane: current route/type/Room/hub topology is deterministically derived from data/house/public-surfaces.json by scripts/house_public_surfaces.py. Preserve this file for research history and compatibility, not for new authoring decisions.",
   "room_registry": "data/house/rooms.json",
   "public_surface_registry": "data/house/public-surfaces.json",
   "records": [
@@ -600,5 +600,12 @@
       "migration_status": "current",
       "compatibility_routes": []
     }
-  ]
+  ],
+  "status": "derived compatibility projection",
+  "derivation": {
+    "authority": "data/house/public-surfaces.json",
+    "resolver": "scripts/house_public_surfaces.py::derived_route_topology_records",
+    "maintenance_rule": "Do not hand-edit this file to change route identity, visibility or Room membership. Change public-surfaces.json; consumers must derive current topology from that authority.",
+    "status": "compatibility-snapshot"
+  }
 }
