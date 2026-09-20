@@ -62,8 +62,12 @@ def main():
    mult=reps[min(idx-1,len(reps)-1)]
    expected=round(float(categories[e["category"]])*float(tiers[e["evidence_tier"]])*float(mult),6)
    if abs(float(e["project_adjustment_susd"])-expected)>1e-9: fail(f"debt pricing formula drift for {e.get('id')}: {e.get('project_adjustment_susd')} != {expected}")
+ bank_page=(ROOT/"rooms/potatoverse-canon/beings/cia/bank/index.html").read_text(encoding="utf-8",errors="replace")
+ if 'id="systemDomains"' not in bank_page: fail("World Spiritual Bank must expose system liability domain container")
  bank_js=(ROOT/"app/mud-bank.js").read_text(encoding="utf-8",errors="replace")
  if "project_adjustment_susd" not in bank_js: fail("Mud Bank runtime must honor priced per-event adjustments")
+ for token in ["account-posture-index.json","system-liability-ledger.json","gross_credit_susd","unpriced_negative_candidates","systemDomains"]:
+  if token not in bank_js: fail(f"World Spiritual Bank runtime missing {token}")
  dossier_js=(ROOT/"app/cia-dossier.js").read_text(encoding="utf-8",errors="replace")
  if "evidence_tier" not in dossier_js or "debt_evidence_id" not in dossier_js: fail("CIA dossier account reader must expose debit provenance")
  if not SPIRITUAL_BANK.is_file(): fail("North Root spiritual-bank architecture missing")
