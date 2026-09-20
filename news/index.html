@@ -7,7 +7,7 @@
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/news/">
 <link rel="stylesheet" href="../app/site-system.css?v=20260914a">
-<link rel="stylesheet" href="../app/news.css?v=20260920e">
+<link rel="stylesheet" href="../app/news.css?v=20260920f">
 <link rel="stylesheet" href="../app/tts-drawer.css?v=20260915">
 </head>
 <body>
@@ -31,7 +31,7 @@
 
 <section class="news-audio-reader" aria-labelledby="news-audio-title">
 <div class="news-audio-copy"><p class="eyebrow">Audio bulletin</p><h2 id="news-audio-title">Read the news, not the interface</h2><p>The main reader speaks only the loaded chronological story stream: headline plus any publisher-supplied excerpt or specialist summary. Navigation, filters, timestamps, source links, methodology and the rest of the page stay silent.</p></div>
-<div id="news-tts" data-tts-longform data-tts-root="#news-reading-stream" data-tts-id="current-world-news-only" data-tts-label="Current World News" data-tts-trigger-label="Read all news" data-tts-all-label="All news" data-tts-current-label="This story" data-tts-selection-label="Selection" data-tts-item=".news-story" data-tts-exclude=".news-story-kicker,.news-story-footer,.news-story-image,.news-empty"></div>
+<div id="news-tts" data-tts-longform data-tts-root="#news-reading-stream" data-tts-id="current-world-news-only" data-tts-label="Current World News" data-tts-trigger-label="Read all news" data-tts-all-label="All news" data-tts-current-label="This story" data-tts-selection-label="Selection" data-tts-item=".news-story" data-tts-exclude=".news-story-kicker,.news-story-footer,.news-story-image,.news-story-expand,.news-empty"></div>
 </section>
 
 <section class="news-console" aria-label="Current World controls">
@@ -93,6 +93,7 @@
 <div class="news-pulse-head"><div><p class="eyebrow">Sample pulse</p><h2 id="news-pulse-title">What came back from the current window?</h2></div><p>This is observability, not a scorecard. Counts describe the returned sample only; provider coverage and API limits differ.</p></div>
 <div class="news-pulse-grid" data-news-pulse>
 <div class="news-pulse-cell"><b>—</b><span>items returned</span></div>
+<div class="news-pulse-cell"><b>—</b><span>readable here</span></div>
 <div class="news-pulse-cell"><b>—</b><span>source domains</span></div>
 <div class="news-pulse-cell"><b>—</b><span>active providers</span></div>
 <div class="news-pulse-cell"><b>—</b><span>repeated clusters</span></div>
@@ -143,7 +144,7 @@
 </div>
 </section>
 </main>
-<script src="../app/news.js?v=20260920e" data-news-config="../data/news/sources.json"></script>
+<script src="../app/news.js?v=20260920f" data-news-config="../data/news/sources.json"></script>
 <script src="../app/tts-reader.js"></script><script src="../app/tts-drawer.js"></script><script src="../app/longform-tts-adapter.js"></script>
 <script src="../app/house-journey.js"></script>
 </body></html>
