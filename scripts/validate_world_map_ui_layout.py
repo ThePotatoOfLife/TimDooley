@@ -79,10 +79,12 @@ def main() -> int:
         for token in (
             "world-map-physical-layers.json", "load_policy", "on_demand",
             "potato-atlas-physical-change", "__potatoAtlasPhysicalLayers", "atlasPhysicalMenu",
-            "data-physical-layer", "aria-pressed", "searchParams.set('physical'", "Physical world",
+            "data-physical-layer", "aria-pressed", "urlState.claim('physical-layers'", "urlState.patch('physical-layers'", "Physical world",
         ):
             if token not in text:
                 errors.append(f"Physical runtime missing {token}")
+        if "history.replaceState" in text:
+            errors.append("Physical runtime must route URL writes through canonical 3d-url-state.js")
         if "3d-physical-terrain.js" in text and "ensureModule" not in text:
             errors.append("Physical runtime may reference Terrain only through the on-demand module path")
 
