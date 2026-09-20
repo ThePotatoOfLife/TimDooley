@@ -126,6 +126,7 @@ def main() -> int:
         "retainPartition('USA', 'adl-heat')","releasePartition?.('USA', 'adl-heat')",
         "clickPriority:85","renderStateInspector","renderIncident","aggregateStateCount",
         "__potatoAtlasSubdivisions.select","openStateEvidence","parent_iso3","stateEvidence(id)",
+        "registerSubdivisionEvidence","registerEvidenceProvider",
     ):
         require(js, token, "world-map/3d-adl-heat.js", errors)
     if "searchParams.set('evidenceLayer'" in js or "searchParams.delete('evidenceLayer'" in js:
