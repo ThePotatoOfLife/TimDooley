@@ -149,6 +149,7 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 ### Public reader visibility & population audit — 2026-09-20
 
 - [x] Add a **Current World** live-news surface beside Home/House using zero-key GDELT, Hacker News and Spaceflight News feeds, with newest-first ordering, original-source links, provider failure isolation, provenance boundaries and TTS.
+- [x] Deepen **Current World** into a multi-view reader: topic × lens × time-window URL state, sample observability, repeated-headline coverage clusters, provider lanes, stronger reading boundaries, refreshed Home preview and a dedicated CI contract.
 
 - [x] Remove duplicated five-Door presentation on Home: keep the stronger numbered Door rows and fold the question-led copy into them.
 - [x] Simplify Home top navigation so public entrances are not mixed with archive utilities.

@@ -150,6 +150,8 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
             "python scripts/validate_body_discovery.py",
             "python scripts/validate_potatoism_philosophy_projection.py",
             "python scripts/validate_public_projection.py",
+            "python scripts/validate_news_surface.py",
+            "node --check app/news.js",
             "python scripts/validate_discovery_projection.py",
             "python scripts/validate_generated_navigation.py",
             "python scripts/validate_explore_projection.py",
