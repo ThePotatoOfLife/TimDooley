@@ -35,6 +35,7 @@ globalThis.fetch = async url => {
     return { ok:true, json:async()=>({partitions:{
       USA:{search_records:[{id:'US-CA',name:'California',code:'CA',subdivision_type:'state',parent_iso3:'USA',parent_name:'United States'}]},
       DNK:{search_records:[{id:'DK-1083',name:'Region Syddanmark',code:'1083',subdivision_type:'region',parent_iso3:'DNK',parent_name:'Denmark'}]},
+      RUS:{search_records:[{id:'RU-MOSCOW',name:'Moscow',local_name:'Город Москва',code:'MOSCOW',subdivision_type:'federal city',parent_iso3:'RUS',parent_name:'Russia'}]},
     }}) };
   }
   throw new Error(`unexpected fetch ${text}`);
@@ -47,6 +48,10 @@ assert.equal(dkResults[0]?.id, 'DK-1083', 'Danish region should be searchable fr
 assert.equal(dkResults[0]?.type, 'Region');
 assert.equal(dkResults[0]?.country, 'DNK');
 assert.equal(dkResults[0]?.parentName, 'Denmark');
+
+const localResults = await window.__potatoAtlasSearch.search('Москва', {limit:10});
+assert.equal(localResults[0]?.id, 'RU-MOSCOW', 'local-language subdivision names should be searchable');
+assert.equal(localResults[0]?.country, 'RUS');
 
 const caResults = await window.__potatoAtlasSearch.search('CA', {limit:10});
 assert.equal(caResults[0]?.id, 'US-CA', 'subdivision code should be searchable');

@@ -85,11 +85,13 @@ function subdivisionResult(row, query) {
   const id = String(row.id || '');
   const name = row.name || id;
   const code = String(row.code || '');
+  const localName = String(row.local_name || '');
   const aliases = Array.isArray(row.aliases) ? row.aliases : [];
   const best = Math.min(
     scoreName(name, query),
     scoreName(code, query),
     scoreName(id, query),
+    scoreName(localName, query),
     ...aliases.map(alias => scoreName(alias, query))
   );
   if (best >= 99) return null;
@@ -167,7 +169,7 @@ async function submit(query) {
   const results = await search(query, {limit:12});
   if (!results.length) return false;
   const needle = normalize(query);
-  const exact = results.find(result => scoreName(result.name, needle) === 0 || normalize(result.id) === needle || normalize(result.row?.code) === needle);
+  const exact = results.find(result => scoreName(result.name, needle) === 0 || scoreName(result.row?.local_name, needle) === 0 || normalize(result.id) === needle || normalize(result.row?.code) === needle);
   return focus(exact || results[0]);
 }
 
