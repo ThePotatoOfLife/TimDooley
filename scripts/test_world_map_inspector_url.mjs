@@ -48,6 +48,13 @@ assert.equal(
   ]),
   'spatial-overlay:father.mesopotamia-core'
 );
+assert.equal(
+  encodeInspectorPath([
+    {type:'axis', id:'north-axis', owner:'axis'},
+    {type:'axis-depth', id:'D7', owner:'axis-depth', parent:{type:'axis',id:'north-axis'}},
+  ]),
+  'axis:north-axis/axis-depth:D7'
+);
 
 const legacy = new URL('https://example.test/world-map/?country=DNK&subdivision=DK-83&place=place%3Ahaderslev');
 assert.equal(deriveInspectorPathFromUrl(legacy), encoded);
