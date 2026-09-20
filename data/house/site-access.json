@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updated": "2026-09-20",
+  "updated": "2026-09-21",
   "authority": "fast-access-curation",
   "purpose": "Curated high-value quick-access doors and aliases for the universal site dock. Public-surface and House-object registries remain the broad generated search index.",
   "rules": [
@@ -11,35 +11,419 @@
     "Global access belongs here; page-owned navigation stays local."
   ],
   "groups": {
-    "go_now": ["news", "world-map", "tim", "house", "rooms"],
-    "find": ["people-cases", "index-a-z", "timeline", "sources", "explore"],
-    "direct_doors": ["cia", "fbi", "economy", "tts", "claims", "public-witness", "science", "religion", "hours"]
+    "go_now": [
+      "news",
+      "world-map",
+      "tim",
+      "house",
+      "rooms"
+    ],
+    "find": [
+      "people-cases",
+      "index-a-z",
+      "timeline",
+      "sources",
+      "explore"
+    ],
+    "direct_doors": [
+      "cia-character-archive",
+      "mud-bank",
+      "intelligence-cia",
+      "economy",
+      "tts",
+      "claims",
+      "public-witness",
+      "science",
+      "religion",
+      "hours"
+    ]
   },
   "entries": [
-    {"id":"home","label":"Home","route":"/","kind":"start","note":"Project entrance","aliases":["start","homepage"]},
-    {"id":"news","label":"Current World","route":"/news/","kind":"world","note":"Live news","aliases":["news","headlines","current","current world news","today","political news","economic news"]},
-    {"id":"world-map","label":"World Map","route":"/world-map/","kind":"world","note":"Interactive atlas","aliases":["map","countries","atlas","geography"]},
-    {"id":"tim","label":"Tim Dooley","route":"/tim-dooley/","kind":"project","note":"Main portrait","aliases":["tim","father","potato","tim dooley"]},
-    {"id":"potato-of-life","label":"Potato of Life","route":"/potato-of-life/","kind":"project","note":"Semantic center","aliases":["potato","center","canon"]},
-    {"id":"house","label":"House","route":"/house/","kind":"project","note":"How the project fits together","aliases":["house","architecture","structure","potato house"]},
-    {"id":"rooms","label":"Rooms","route":"/rooms/","kind":"project","note":"Knowledge owners","aliases":["rooms","dwellings","knowledge rooms"]},
-    {"id":"people-cases","label":"People & Cases","route":"/rooms/objects/","kind":"find","note":"Search House inhabitants","aliases":["people","cases","objects","entities","inhabitants","find","search"]},
-    {"id":"index-a-z","label":"A–Z","route":"/index-a-z/","kind":"find","note":"Known-term lookup","aliases":["index","terms","glossary","a-z","az","find"]},
-    {"id":"timeline","label":"Timeline","route":"/timeline/","kind":"find","note":"Events and chronology","aliases":["history","dates","chronology","events"]},
-    {"id":"sources","label":"Sources","route":"/context/source-authority/","kind":"find","note":"Evidence and provenance","aliases":["evidence","source","sources","provenance","citations"]},
-    {"id":"explore","label":"Explore","route":"/explore/","kind":"find","note":"Relationship explorer","aliases":["archive","relationships","deep archive"]},
-    {"id":"science","label":"Science","route":"/science/","kind":"project","note":"Models, evidence, falsifiers","aliases":["science","physics","biology","research","models"]},
-    {"id":"religion","label":"Religion","route":"/religion/","kind":"project","note":"Theology and comparisons","aliases":["religion","bible","trinity","tradition","theology"]},
-    {"id":"philosophy","label":"Philosophy","route":"/philosophy/","kind":"project","note":"Spiral reader and concepts","aliases":["philosophy","spiral","ideas"]},
-    {"id":"world","label":"World","route":"/world/","kind":"world","note":"Countries and real systems","aliases":["world","countries","systems","institutions"]},
-    {"id":"economy","label":"Economy & Finance","route":"/economy/","kind":"world","note":"Debt, banking, ownership","aliases":["economy","finance","debt","debts","bond","bonds","obligation","obligations","banking","banks","fed","federal reserve","federal reserve system","ecb","european central bank","eurosystem","central bank","central banks"]},
-    {"id":"politics","label":"Politics","route":"/politics/","kind":"world","note":"Politics and geopolitics","aliases":["politics","geopolitics","government"]},
-    {"id":"cia","label":"CIA / Intelligence","route":"/shadow-farm/#intelligence-desk","kind":"direct","note":"Intelligence Desk","aliases":["cia","central intelligence agency","intelligence","intelligence desk","security"]},
-    {"id":"fbi","label":"FBI — Figures, Bonds & Incidents","route":"/rooms/potatoverse-canon/beings/fbi/","kind":"direct","note":"Character dossier bureau","aliases":["fbi","figures bonds incidents","characters","dossiers","bonds","incidents"]},
-    {"id":"tts","label":"Read Aloud / TTS","route":"/tools/tts/","kind":"direct","note":"Text-to-speech tools and reader controls","aliases":["tts","text to speech","text-to-speech","read aloud","reader","listen","speech"]},
-    {"id":"claims","label":"Claims & Statements","route":"/tim-dooley/claims/","kind":"direct","note":"Claims and attributed statements","aliases":["claims","claim","statements","statement","said","says","assertions"]},
-    {"id":"public-witness","label":"Public Witness","route":"/tim-dooley/public-witness/","kind":"direct","note":"Public record and witness material","aliases":["public witness","public record","witness","record","livestream record","public presence"]},
-    {"id":"hours","label":"100,000 Hours","route":"/tim-dooley/100000-hours/","kind":"direct","note":"Public-presence model","aliases":["100000 hours","100,000 hours","streaming","livestream","hours"]},
-    {"id":"below","label":"Below / Farm / Sektur","route":"/shadow-farm/","kind":"direct","note":"Lower-system deep reader","aliases":["below","farm","sektur","swamp","culture"]}
+    {
+      "id": "home",
+      "label": "Home",
+      "route": "/",
+      "kind": "start",
+      "note": "Project entrance",
+      "aliases": [
+        "start",
+        "homepage"
+      ]
+    },
+    {
+      "id": "news",
+      "label": "Current World",
+      "route": "/news/",
+      "kind": "world",
+      "note": "Live news",
+      "aliases": [
+        "news",
+        "headlines",
+        "current",
+        "current world news",
+        "today",
+        "political news",
+        "economic news"
+      ]
+    },
+    {
+      "id": "world-map",
+      "label": "World Map",
+      "route": "/world-map/",
+      "kind": "world",
+      "note": "Interactive atlas",
+      "aliases": [
+        "map",
+        "countries",
+        "atlas",
+        "geography"
+      ]
+    },
+    {
+      "id": "tim",
+      "label": "Tim Dooley",
+      "route": "/tim-dooley/",
+      "kind": "project",
+      "note": "Main portrait",
+      "aliases": [
+        "tim",
+        "father",
+        "potato",
+        "tim dooley"
+      ]
+    },
+    {
+      "id": "potato-of-life",
+      "label": "Potato of Life",
+      "route": "/potato-of-life/",
+      "kind": "project",
+      "note": "Semantic center",
+      "aliases": [
+        "potato",
+        "center",
+        "canon"
+      ]
+    },
+    {
+      "id": "house",
+      "label": "House",
+      "route": "/house/",
+      "kind": "project",
+      "note": "How the project fits together",
+      "aliases": [
+        "house",
+        "architecture",
+        "structure",
+        "potato house"
+      ]
+    },
+    {
+      "id": "rooms",
+      "label": "Rooms",
+      "route": "/rooms/",
+      "kind": "project",
+      "note": "Knowledge owners",
+      "aliases": [
+        "rooms",
+        "dwellings",
+        "knowledge rooms"
+      ]
+    },
+    {
+      "id": "people-cases",
+      "label": "People & Cases",
+      "route": "/rooms/objects/",
+      "kind": "find",
+      "note": "Search House inhabitants",
+      "aliases": [
+        "people",
+        "cases",
+        "objects",
+        "entities",
+        "inhabitants",
+        "find",
+        "search"
+      ]
+    },
+    {
+      "id": "index-a-z",
+      "label": "A–Z",
+      "route": "/index-a-z/",
+      "kind": "find",
+      "note": "Known-term lookup",
+      "aliases": [
+        "index",
+        "terms",
+        "glossary",
+        "a-z",
+        "az",
+        "find"
+      ]
+    },
+    {
+      "id": "timeline",
+      "label": "Timeline",
+      "route": "/timeline/",
+      "kind": "find",
+      "note": "Events and chronology",
+      "aliases": [
+        "history",
+        "dates",
+        "chronology",
+        "events"
+      ]
+    },
+    {
+      "id": "sources",
+      "label": "Sources",
+      "route": "/context/source-authority/",
+      "kind": "find",
+      "note": "Evidence and provenance",
+      "aliases": [
+        "evidence",
+        "source",
+        "sources",
+        "provenance",
+        "citations"
+      ]
+    },
+    {
+      "id": "explore",
+      "label": "Explore",
+      "route": "/explore/",
+      "kind": "find",
+      "note": "Relationship explorer",
+      "aliases": [
+        "archive",
+        "relationships",
+        "deep archive"
+      ]
+    },
+    {
+      "id": "science",
+      "label": "Science",
+      "route": "/science/",
+      "kind": "project",
+      "note": "Models, evidence, falsifiers",
+      "aliases": [
+        "science",
+        "physics",
+        "biology",
+        "research",
+        "models"
+      ]
+    },
+    {
+      "id": "religion",
+      "label": "Religion",
+      "route": "/religion/",
+      "kind": "project",
+      "note": "Theology and comparisons",
+      "aliases": [
+        "religion",
+        "bible",
+        "trinity",
+        "tradition",
+        "theology"
+      ]
+    },
+    {
+      "id": "philosophy",
+      "label": "Philosophy",
+      "route": "/philosophy/",
+      "kind": "project",
+      "note": "Spiral reader and concepts",
+      "aliases": [
+        "philosophy",
+        "spiral",
+        "ideas"
+      ]
+    },
+    {
+      "id": "world",
+      "label": "World",
+      "route": "/world/",
+      "kind": "world",
+      "note": "Countries and real systems",
+      "aliases": [
+        "world",
+        "countries",
+        "systems",
+        "institutions"
+      ]
+    },
+    {
+      "id": "economy",
+      "label": "Economy & Finance",
+      "route": "/economy/",
+      "kind": "world",
+      "note": "Debt, banking, ownership",
+      "aliases": [
+        "economy",
+        "finance",
+        "debt",
+        "debts",
+        "bond",
+        "bonds",
+        "obligation",
+        "obligations",
+        "banking",
+        "banks",
+        "fed",
+        "federal reserve",
+        "federal reserve system",
+        "ecb",
+        "european central bank",
+        "eurosystem",
+        "central bank",
+        "central banks"
+      ]
+    },
+    {
+      "id": "politics",
+      "label": "Politics",
+      "route": "/politics/",
+      "kind": "world",
+      "note": "Politics and geopolitics",
+      "aliases": [
+        "politics",
+        "geopolitics",
+        "government"
+      ]
+    },
+    {
+      "id": "tts",
+      "label": "Read Aloud / TTS",
+      "route": "/tools/tts/",
+      "kind": "direct",
+      "note": "Text-to-speech tools and reader controls",
+      "aliases": [
+        "tts",
+        "text to speech",
+        "text-to-speech",
+        "read aloud",
+        "reader",
+        "listen",
+        "speech"
+      ]
+    },
+    {
+      "id": "claims",
+      "label": "Claims & Statements",
+      "route": "/tim-dooley/claims/",
+      "kind": "direct",
+      "note": "Claims and attributed statements",
+      "aliases": [
+        "claims",
+        "claim",
+        "statements",
+        "statement",
+        "said",
+        "says",
+        "assertions"
+      ]
+    },
+    {
+      "id": "public-witness",
+      "label": "Public Witness",
+      "route": "/tim-dooley/public-witness/",
+      "kind": "direct",
+      "note": "Public record and witness material",
+      "aliases": [
+        "public witness",
+        "public record",
+        "witness",
+        "record",
+        "livestream record",
+        "public presence"
+      ]
+    },
+    {
+      "id": "hours",
+      "label": "100,000 Hours",
+      "route": "/tim-dooley/100000-hours/",
+      "kind": "direct",
+      "note": "Public-presence model",
+      "aliases": [
+        "100000 hours",
+        "100,000 hours",
+        "streaming",
+        "livestream",
+        "hours"
+      ]
+    },
+    {
+      "id": "below",
+      "label": "Below / Farm / Sektur",
+      "route": "/shadow-farm/",
+      "kind": "direct",
+      "note": "Lower-system deep reader",
+      "aliases": [
+        "below",
+        "farm",
+        "sektur",
+        "swamp",
+        "culture"
+      ]
+    },
+    {
+      "id": "cia-character-archive",
+      "label": "CIA — Characters, Incidents & Associations",
+      "route": "/rooms/potatoverse-canon/beings/cia/",
+      "kind": "direct",
+      "note": "Canonical Potatoverse dossier bureau",
+      "aliases": [
+        "cia",
+        "characters incidents associations",
+        "character archive",
+        "dossiers",
+        "character dossiers",
+        "incidents",
+        "associations"
+      ]
+    },
+    {
+      "id": "mud-bank",
+      "label": "Mud Bank / Dooley Welfare",
+      "route": "/rooms/potatoverse-canon/beings/cia/bank/",
+      "kind": "direct",
+      "note": "Live fictional CIA balance sheets",
+      "aliases": [
+        "mud bank",
+        "dooley welfare",
+        "karma bank",
+        "karmic bank",
+        "balance sheet",
+        "accounts",
+        "sUSD"
+      ]
+    },
+    {
+      "id": "intelligence-cia",
+      "label": "Central Intelligence Agency / Intelligence Desk",
+      "route": "/shadow-farm/#intelligence-desk",
+      "kind": "direct",
+      "note": "Real-world intelligence research desk",
+      "aliases": [
+        "central intelligence agency",
+        "us cia",
+        "intelligence agency",
+        "intelligence desk",
+        "security intelligence"
+      ]
+    },
+    {
+      "id": "fbi-legacy",
+      "label": "FBI — retired character-bureau predecessor",
+      "route": "/rooms/potatoverse-canon/beings/fbi/",
+      "kind": "direct",
+      "note": "Read-only migration history",
+      "aliases": [
+        "fbi",
+        "figures bonds incidents",
+        "retired fbi",
+        "old character bureau"
+      ]
+    }
   ]
 }
