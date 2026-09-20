@@ -153,3 +153,15 @@ The ledger can grow indefinitely. When a new story is found, give it a date/wind
 - **18 Mar → 8 Apr → 11 Apr → 13 Apr 2025** — replacement 144Hz screen → Empire invite → Fishtank invite → Tree return. This is now a concrete social/technical bridge into the April Turning.
 
 Canonical backend owners: `knowledge/story/social-presence-ledger-2024-2025.json` and `knowledge/story/turning-corridor-chronicle-recovery-2025.json`.
+
+
+## FBI — Figures, Bonds & Incidents
+
+The character archaeology now has a persistent bureau at `knowledge/fbi/` and `rooms/potatoverse-canon/beings/fbi/`.
+
+- **Figures** — 20 deep dossiers currently cover Marty, Sammy, Port Monkey, Ledgeview, Rage, Juice, Tachy, Kale, Pondo, Anacondasin, Literally, Optimistique, Termite, Rahu, Matthew/MTClassic, Mediomu007, BigTech, Capy, TXT and Metalorian.
+- **Bonds** — source-derived co-presence and hand-carved relationship threads preserve changing relations instead of one timeless ally/enemy label.
+- **Incidents** — dated scenes that materially change knowledge of a figure, bond, role, boundary or creative artifact.
+- **Boundary** — FBI here means Figures, Bonds & Incidents. It is a Potatoverse archive acronym, not a real law-enforcement/intelligence agency.
+
+The bureau is Tim-centered because this repository is centered on Tim Dooley, but character files must also preserve each figure's ordinary life, independent traits, relationships with others and source ambiguity.
