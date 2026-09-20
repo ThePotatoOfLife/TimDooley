@@ -24,7 +24,6 @@ TOOLTIP_LIFECYCLE_TEST = ROOT / "scripts" / "test_world_map_tooltip_lifecycle.mj
 POINTER_DRAG_ARTIFACT_TEST = ROOT / "scripts" / "test_world_map_pointer_drag_artifacts.mjs"
 CAPITAL_OWNERSHIP_TEST = ROOT / "scripts" / "test_world_map_capital_ownership.mjs"
 OVERLAY_OVERLAP_TEST = ROOT / "scripts" / "test_world_map_overlay_overlap.mjs"
-UI = ROOT / "world-map" / "3d-ui.js"
 DEMOGRAPHY = ROOT / "world-map" / "3d-demography.js"
 DIMENSIONS = ROOT / "world-map" / "3d-country-dimensions.js"
 EVIDENCE = ROOT / "world-map" / "3d-evidence.js"
@@ -108,7 +107,6 @@ def main() -> int:
     subdivisions = read(SUBDIVISIONS, errors)
     hover = read(HOVER, errors)
     tooltip = read(TOOLTIP, errors)
-    ui = read(UI, errors)
     demography = read(DEMOGRAPHY, errors)
     dimensions = read(DIMENSIONS, errors)
     evidence = read(EVIDENCE, errors)
@@ -223,9 +221,9 @@ def main() -> int:
     for token in ("function suspendCountryCard", "function restoreCountryCard", "potato-atlas-country-card-rendered"):
         require(evidence, token, "world-map/3d-evidence.js", errors)
 
-    require(ui, "potato-atlas-panel-rendered", "world-map/3d-ui.js", errors)
-    reject(ui, "new MutationObserver(", "world-map/3d-ui.js", errors)
-    reject(ui, "setPaintProperty('countries-fill','fill-opacity'", "world-map/3d-ui.js", errors)
+    for retired in (ROOT / "world-map" / "3d-ui.js", ROOT / "world-map" / "3d-selection-ui.js"):
+        if retired.exists():
+            errors.append(f"retired compatibility UI must stay deleted: {retired.relative_to(ROOT)}")
 
     for token in (
         "atlas-subdivisions-active",
@@ -257,7 +255,7 @@ def main() -> int:
             continue
         reject(read(path, errors), "new MutationObserver(", str(path.relative_to(ROOT)), errors)
 
-    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, BOOT_GUARD, BOOTSTRAP_STAGING_TEST, PANEL_LIFECYCLE, SUBDIVISIONS, HOVER, TOOLTIP, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
+    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, BOOT_GUARD, BOOTSTRAP_STAGING_TEST, PANEL_LIFECYCLE, SUBDIVISIONS, HOVER, TOOLTIP, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
     run_node_regression(TOOLTIP_LIFECYCLE_TEST, errors, "World Map tooltip lifecycle regression")
     run_node_regression(HOVER_ARTIFACT_TEST, errors, "World Map hover artifact regression")
     run_node_regression(POINTER_DRAG_ARTIFACT_TEST, errors, "World Map pointer drag artifact regression")
