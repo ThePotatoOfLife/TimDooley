@@ -214,7 +214,7 @@ The House depth programme explicitly says to prefer population, instrumentation,
 - [x] Add formal correspondence contracts to major body cross-layer objects.
 - [x] Expose correspondence maturity in Body Lens and Research Lab.
 - [x] Add CI validation for formal-grammar references so future records cannot silently invent incompatible Door/Axis/dimension types.
-- [ ] Add projection-loss / reconstructability metadata to selected World Map and House aggregate views.
+- [~] Add projection-loss / reconstructability metadata to selected World Map and House aggregate views. **World Map wave complete on branch:** Active View now discloses preserved/omitted information and source-linked reconstructability for scalar, set, relation and comparison views; House aggregate views remain.
 - [ ] Extend the Eye/measurement formalism into sensory/attention reader surfaces where it improves explanation.
 
 ## Growth compass — current high-value frontiers
