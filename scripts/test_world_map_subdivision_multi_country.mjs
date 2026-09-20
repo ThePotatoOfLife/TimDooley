@@ -81,6 +81,7 @@ globalThis.fetch = async url => {
       json:async()=>({ partitions:{
         USA:{ path:'USA.geo.json', id_prefix:'US-', viewport_bounds:{west:-179.5,east:-65,south:17,north:72.5} },
         DNK:{ path:'DNK.geo.json', id_prefix:'DK-', viewport_bounds:{west:7.5,east:15.3,south:54.4,north:57.9} },
+        CAN:{ path:'CAN.geo.json', id_prefix:'CA-', viewport_bounds:{west:-141.1,east:-52.5,south:41.6,north:83.2} },
       } }),
     };
   }
@@ -89,6 +90,13 @@ globalThis.fetch = async url => {
   }
   if (text.includes('world-subdivisions/USA.geo.json')) {
     return { ok:true, json:async()=>({ type:'FeatureCollection', features:[] }) };
+  }
+  if (text.includes('world-subdivisions/CAN.geo.json')) {
+    return { ok:true, json:async()=>({ type:'FeatureCollection', features:[{
+      type:'Feature',
+      properties:{id:'CA-ON',name:'Ontario',code:'ON',subdivision_type:'province',parent_iso3:'CAN',parent_name:'Canada'},
+      geometry:{type:'Polygon',coordinates:[[[-95,42],[-74,42],[-74,57],[-95,57],[-95,42]]]},
+    }] }) };
   }
   throw new Error(`unexpected fetch ${text}`);
 };
@@ -102,5 +110,9 @@ assert.equal(typeof moveend, 'function');
 await moveend();
 assert.equal(fitCount, 1, 'moveend after DK deep-link selection must not refit');
 assert.equal(window.__potatoAtlasSubdivisions.selected, 'DK-1083');
+
+const canadaLoaded = await window.__potatoAtlasSubdivisions.loadPartition('CAN');
+assert.equal(canadaLoaded.data.features[0].properties.id, 'CA-ON');
+assert.ok(fetched.some(url => url.includes('world-subdivisions/CAN.geo.json')), 'Canada partition must resolve through the generic loader');
 
 console.log('WORLD MAP MULTI-COUNTRY SUBDIVISION REGRESSION PASSED');
