@@ -130,9 +130,9 @@ Priority order: **P0 release breakage → P1 structural drift/duplication → P2
 ### P2 — maintainability and duplication
 
 - [ ] Reduce hand-maintained asset-version duplication for shared components (for example the same spiral CSS/JS version string repeated across four reader pages).
-- [ ] Move repeated nested-Room presentation CSS into shared assets once the Room-shell audit identifies the common invariant subset.
+- [x] Move repeated nested-Room presentation CSS into shared assets. All 38 registered interiors now share `app/room-interior.css`, including local-center, adjacency, boundary and action-control rules.
 - [ ] Continue cross-file duplicate auditing and merge only true duplicate definitions; preserve primary evidence, historical snapshots with provenance value and additive research.
-- [ ] Review old `data/expansions/*wave*/*round*` records against their current canonical owners and House holdings; keep distinct research, absorb repeated definitions.
+- [ ] Review old `data/expansions/*wave*/*round*` records against their current canonical owners and House holdings. **Registry reconciliation complete:** all 14 JSON expansion files are now classified and validator-enforced. `wave-009.json` is a promotion backlog (54/55 seed ids are not in `data/nodes.json`), `lexicon-wave-009.json` is a migration candidate (177/179 aliases are absent from the narrow public discovery-alias registry), wave 012 remains actively cited research, and wave 018 remains a broad research reservoir. Next: classify the 54 seed ids by strongest canonical owner and design the correct backend/node alias owner before migrating vocabulary.
 - [ ] Continue stale branch/PR salvage already listed below, but treat branch age as an audit signal rather than a merge requirement.
 
 ### P3 — depth after integrity
