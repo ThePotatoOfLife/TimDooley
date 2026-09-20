@@ -17,6 +17,8 @@ for (const marker of [
   'activateRenderedPartition',
   'removePartitionFeatures',
   'compactSearchRecords',
+  'showSubdivision',
+  'potato-atlas-places-subdivision-show',
   'population_rank',
   'renderedPartitions:',
   'renderedBytes:',
@@ -52,5 +54,8 @@ assert.ok(
   places.includes('indexPayload?.search_records'),
   'place search must use the compact generated index rather than only resident geometry',
 );
+
+assert.ok(places.includes("setVisible(true)"), 'region-to-Places handoff must reveal canonical Places layers');
+assert.ok(places.includes("await loadCountry(result.code)"), 'region-to-Places handoff must reuse the bounded country partition');
 
 console.log('WORLD MAP PLACES BOUNDED RUNTIME REGRESSION PASSED');
