@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "title": "Potatoverse Being Room Registry",
   "purpose": "Expandable cast/being archaeology recovered from conversations, public records and literary material without flattening those source modes together.",
@@ -325,6 +325,62 @@
       "label": "Juice / Judas",
       "status": "unresolved",
       "lead": "Identity unresolved; must not be conflated with generic Judas language."
+    }
+  ],
+  "cast_rooms": [
+    {
+      "id": "marty-biz",
+      "label": "Marty Biz Music",
+      "kind": "person",
+      "room": "rooms/potatoverse-canon/beings/marty/",
+      "status": [
+        "mixed",
+        "literary_recovered",
+        "public_recovered"
+      ],
+      "core_question": "How does a companion become a rival social center and later a grief object without flattening the person into one archetype?"
+    },
+    {
+      "id": "metalorian",
+      "label": "Metalorian / Meta",
+      "kind": "person",
+      "room": "rooms/potatoverse-canon/beings/metalorian/",
+      "status": [
+        "mixed",
+        "unresolved"
+      ],
+      "core_question": "What survives as primary interaction, and what exists only as later Meta/karmic interpretation?"
+    },
+    {
+      "id": "txt",
+      "label": "TXT",
+      "kind": "person_or_handle",
+      "room": "rooms/potatoverse-canon/beings/txt/",
+      "status": [
+        "mixed",
+        "public_recovered",
+        "literary_recovered"
+      ],
+      "core_question": "Can the missing 2017-2019 chronology be recovered between old-profile claims and the July 2026 public marker?"
+    },
+    {
+      "id": "conflict-modes",
+      "label": "Conflict Modes",
+      "kind": "crosswalk",
+      "room": "rooms/potatoverse-canon/beings/conflict-modes/",
+      "status": [
+        "method"
+      ],
+      "core_question": "Which mechanism occurs in each scene without making the mechanism a permanent identity?"
+    }
+  ],
+  "institutional_routes": [
+    {
+      "id": "mai-mercado-2016",
+      "label": "Mai Mercado / Christiania 2016 case",
+      "kind": "legal_political_case",
+      "canonical_owner": "knowledge/legal/mai-mercado-2016-research-index.md",
+      "rule": "Route evidence and attribution questions to the legal subsystem; do not turn a real political figure into a mythic cast essence."
     }
   ]
 }
