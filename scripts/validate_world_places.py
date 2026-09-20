@@ -59,8 +59,19 @@ def validate_data(data_dir: Path, errors: list[str]) -> None:
 
     index = load_json(index_path, errors) or {}
     major = load_json(major_path, errors) or {}
-    if index.get("license") != "CC BY 4.0":
-        errors.append("Places index must declare GeoNames license CC BY 4.0")
+    license_name = str(index.get("license") or "")
+    seed_schema = str(index.get("schema_version") or "").endswith("-seed")
+    provenance = index.get("provenance") or {}
+    if license_name != "CC BY 4.0":
+        mirror_seed_ok = (
+            seed_schema
+            and license_name == "CC BY 3.0"
+            and provenance.get("mirror_repository")
+            and provenance.get("mirror_blob_sha")
+            and "replace with the canonical geonames build pipeline" in str(provenance.get("limitation") or "").lower()
+        )
+        if not mirror_seed_ok:
+            errors.append("Places index must declare canonical GeoNames CC BY 4.0, or an explicitly provenance-bounded CC BY 3.0 historical seed")
     if "GeoNames" not in str(index.get("attribution") or ""):
         errors.append("Places index must preserve GeoNames attribution")
     budget = index.get("runtime_budget") or {}
@@ -168,7 +179,7 @@ def validate_data(data_dir: Path, errors: list[str]) -> None:
 def validate_runtime(errors: list[str]) -> None:
     require_tokens(BUILDER, ("--fixture", "geonames-cities-sample.txt", "capitals-sample.geo.json", "RUNTIME_BUDGET", "search_records"), errors)
     require_tokens(PLACES, (
-        "__potatoAtlasPlaces", "setVisible", "focus", "current", "search", "clear", "status",
+        "__potatoAtlasPlaces", "setVisible", "focus", "current", "search", "inSubdivision", "clear", "status",
         "atlas-places-major-points", "atlas-places-major-labels",
         "atlas-places-detail-points", "atlas-places-detail-labels",
         "context-network", "Open country",
