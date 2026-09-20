@@ -1,0 +1,3357 @@
+{
+  "version": "2.0.0",
+  "updated": "2026-09-20",
+  "title": "Potatoverse Character Archive — Role × Time × Source",
+  "purpose": "Preserve the full long-tail cast without forcing every person/handle into a permanent role or a dedicated Room.",
+  "source_manifest": [
+    {
+      "name": "Characters1.odt",
+      "source_class": "old character-profile manuscript",
+      "use": "aliases, old role labels, relationships, proposed story functions",
+      "warning": "Contains speculative psychology, hostile rhetoric, unverified allegations and future-arc guesses. These are never promoted as facts without source recovery."
+    },
+    {
+      "name": "Characters.rtf",
+      "source_class": "older/expanded character-profile manuscript",
+      "use": "parallel/expanded profile archaeology",
+      "warning": "Treat as historical authored interpretation, not a clinical or legal record."
+    },
+    {
+      "name": "Chronicles of The Potato of Life.txt / .rtf",
+      "source_class": "dated literary/diary chronicle",
+      "use": "date-window appearances, scene roles, social texture, changing functions",
+      "warning": "Narrative retelling may paraphrase or mythologize original chat; it is not automatically verbatim documentary evidence."
+    },
+    {
+      "name": "Tims Biography.docx / Tims Biography Full.odt",
+      "source_class": "retrospective biography/manuscript",
+      "use": "broader period context and role transitions",
+      "warning": "Retrospective mythic interpretation must remain distinct from independently corroborated biography."
+    }
+  ],
+  "governing_rules": [
+    "Person is not archetype. An archetype is a role performed in one or more scenes.",
+    "A role can change over time; old labels do not become permanent identity.",
+    "A missing current trace means current presence unknown, not dead, gone, hostile or reconciled.",
+    "Deceased status is recorded only where separately established in the project; afterlife placement is not inferred.",
+    "Old psychological diagnoses, threat scores and motive claims are downgraded to historical source characterization unless supported by direct evidence.",
+    "Aliases remain candidate links when identity equivalence is uncertain.",
+    "Dedicated Rooms are scarce. Most figures live here or in role constellations until repeated independent material justifies a Room.",
+    "The myth may preserve a seed, function or memory even when the person no longer participates."
+  ],
+  "room_policy": {
+    "own-room-existing": "Already has a dedicated being/cast room.",
+    "own-room-candidate": "Enough recurring structure to justify a future long-form dossier/room if source recovery continues.",
+    "cluster": "Belongs in an archetype constellation and can later graduate.",
+    "archive-only": "Keep searchable with chronology and source notes; do not create frontend architecture yet."
+  },
+  "archetype_catalog": {
+    "gardener-sage": {
+      "label": "Gardener / Sage",
+      "function": "Cultivates people, ideas, rooms or soil; teaches by tending rather than merely commanding."
+    },
+    "witness-observer": {
+      "label": "Witness / Observer",
+      "function": "Notices, questions, remembers or reflects a scene back to the group."
+    },
+    "chronicler-archivist": {
+      "label": "Chronicler / Archivist",
+      "function": "Preserves moments, clips, histories, maps or lore so events survive beyond the immediate room."
+    },
+    "bard-jester": {
+      "label": "Bard / Jester",
+      "function": "Uses humor, hype, poetry, absurdity or performance to change the emotional weather."
+    },
+    "guardian-defender": {
+      "label": "Guardian / Defender",
+      "function": "Protects a person, boundary, principle or community from attack or confusion."
+    },
+    "healer-companion": {
+      "label": "Healer / Companion",
+      "function": "Creates reassurance, belonging, practical care or emotional stabilization."
+    },
+    "skeptic-contrarian": {
+      "label": "Skeptic / Contrarian",
+      "function": "Tests claims, introduces friction or forces the group to articulate what it believes."
+    },
+    "trickster-catalyst": {
+      "label": "Trickster / Catalyst",
+      "function": "Destabilizes the scene, exposes assumptions or accelerates change through disruption."
+    },
+    "wanderer-threshold": {
+      "label": "Wanderer / Threshold Walker",
+      "function": "Moves between groups, loyalties, rooms or worldviews; often reveals the boundary by crossing it."
+    },
+    "mystic-interpreter": {
+      "label": "Mystic / Interpreter",
+      "function": "Reads events through religion, symbolism, myth, metaphysics or hidden-pattern language."
+    },
+    "builder-cultivator": {
+      "label": "Builder / Cultivator",
+      "function": "Makes tangible things, supports infrastructure, grows food/art/community or maintains a shared space."
+    },
+    "artisan-maker": {
+      "label": "Artisan / Maker",
+      "function": "Turns experience into art, craft, music, food, objects or other durable fruit."
+    },
+    "historian-memory": {
+      "label": "Historian / Memory Keeper",
+      "function": "Carries older context, nostalgia or continuity across generations of the community."
+    },
+    "herald-messenger": {
+      "label": "Herald / Messenger",
+      "function": "Announces, preaches, relays or amplifies a message into another part of the network."
+    },
+    "mirror-foil": {
+      "label": "Mirror / Foil",
+      "function": "Defines another character by contrast; may expose tension around control, authenticity, faith or status."
+    },
+    "sovereign-warrior": {
+      "label": "Sovereign / Warrior",
+      "function": "Occupies a commanding or combative social role while carrying themes of loyalty, survival or rule."
+    },
+    "patron-supporter": {
+      "label": "Patron / Supporter",
+      "function": "Provides encouragement, resources, donations or simple social reinforcement."
+    },
+    "shadow-adversary": {
+      "label": "Shadow / Adversary",
+      "function": "Old-source narrative role for opposition, conflict or threat. This is a story function, not a permanent moral or psychological diagnosis."
+    },
+    "seeker-student": {
+      "label": "Seeker / Student",
+      "function": "Learns through questions, doubt, experiments or movement from one interpretation toward another."
+    },
+    "center-axis": {
+      "label": "Center / Axis",
+      "function": "A scene-organizing figure around whom relationships, interpretations or conflicts are arranged."
+    }
+  },
+  "characters": [
+    {
+      "id": "tim-dooley",
+      "name": "Tim Dooley",
+      "aliases": [
+        "p o t a t o"
+      ],
+      "entity_class": "person",
+      "archive_status": "active",
+      "room_policy": "own-room-existing",
+      "archetypes": [
+        "center-axis",
+        "gardener-sage",
+        "chronicler-archivist"
+      ],
+      "narrative_functions": [
+        "cultivation",
+        "simplification",
+        "story-making",
+        "boundary-setting"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "House",
+        "Axis",
+        "Archive"
+      ],
+      "seed_or_trace": "growth / cultivation",
+      "editorial_reading": "Current project center; old profiles call him Sage, Gardener and Cosmic Farmer.",
+      "chronicle_occurrence": {
+        "count": 76,
+        "dates": [
+          "undated",
+          "November 3 2024",
+          "November 4, 2024",
+          "November 5, 2024",
+          "November 6, 2024",
+          "November 6, 2024",
+          "November 9, 2024",
+          "November 10, 2024",
+          "November 11, 2024",
+          "November 14, 2024",
+          "November 17, 2024",
+          "November 19, 2024",
+          "Nov 20 2024",
+          "November 21, 2024",
+          "November 24, 2024",
+          "November 26, 2024",
+          "November 28, 2024",
+          "December 4, 2024",
+          "December 7, 2024",
+          "December 15, 2024",
+          "December 18, 2024",
+          "December 20, 2024",
+          "December 21 2024",
+          "January 10 2025",
+          "Feb 8 2025",
+          "Feb 26 2025",
+          "March 12, 2025"
+        ],
+        "by_date": [
+          {
+            "date": "undated",
+            "count": 2
+          },
+          {
+            "date": "November 3 2024",
+            "count": 3
+          },
+          {
+            "date": "November 4, 2024",
+            "count": 5
+          },
+          {
+            "date": "November 5, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 6, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 6, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 9, 2024",
+            "count": 4
+          },
+          {
+            "date": "November 10, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 11, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 14, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 17, 2024",
+            "count": 3
+          },
+          {
+            "date": "November 19, 2024",
+            "count": 3
+          },
+          {
+            "date": "Nov 20 2024",
+            "count": 3
+          },
+          {
+            "date": "November 21, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 24, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 26, 2024",
+            "count": 4
+          },
+          {
+            "date": "November 28, 2024",
+            "count": 6
+          },
+          {
+            "date": "December 4, 2024",
+            "count": 6
+          },
+          {
+            "date": "December 7, 2024",
+            "count": 3
+          },
+          {
+            "date": "December 15, 2024",
+            "count": 2
+          },
+          {
+            "date": "December 18, 2024",
+            "count": 1
+          },
+          {
+            "date": "December 20, 2024",
+            "count": 3
+          },
+          {
+            "date": "December 21 2024",
+            "count": 2
+          },
+          {
+            "date": "January 10 2025",
+            "count": 9
+          },
+          {
+            "date": "Feb 8 2025",
+            "count": 1
+          },
+          {
+            "date": "Feb 26 2025",
+            "count": 2
+          },
+          {
+            "date": "March 12, 2025",
+            "count": 3
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "marty-biz",
+      "name": "Marty Biz Music",
+      "aliases": [
+        "Marty",
+        "martymusicbiz"
+      ],
+      "entity_class": "person",
+      "archive_status": "deceased-2025",
+      "room_policy": "own-room-candidate",
+      "archetypes": [
+        "trickster-catalyst",
+        "mirror-foil",
+        "wanderer-threshold"
+      ],
+      "narrative_functions": [
+        "catalysis",
+        "social gravity",
+        "conflict",
+        "companionship"
+      ],
+      "narrative_regions": [
+        "Plane",
+        "Saloon",
+        "Swamp",
+        "Memory"
+      ],
+      "seed_or_trace": "catalysis / unresolved companionship",
+      "editorial_reading": "One of the densest old Chronicle presences. Preserve companion, antagonist and catalyst phases rather than one fixed label.",
+      "chronicle_occurrence": {
+        "count": 133,
+        "dates": [
+          "November 3 2024",
+          "November 5, 2024",
+          "November 6, 2024",
+          "November 6, 2024",
+          "November 7, 2024",
+          "November 7, 2024",
+          "November 9, 2024",
+          "November 10, 2024",
+          "November 11, 2024",
+          "November 14, 2024",
+          "November 19, 2024",
+          "Nov 20 2024",
+          "November 24, 2024",
+          "November 26, 2024",
+          "November 28, 2024",
+          "December 4, 2024",
+          "December 7, 2024",
+          "December 15, 2024",
+          "December 20, 2024",
+          "December 21 2024",
+          "January 10 2025",
+          "Feb 8 2025"
+        ],
+        "by_date": [
+          {
+            "date": "November 3 2024",
+            "count": 4
+          },
+          {
+            "date": "November 5, 2024",
+            "count": 3
+          },
+          {
+            "date": "November 6, 2024",
+            "count": 3
+          },
+          {
+            "date": "November 6, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 7, 2024",
+            "count": 3
+          },
+          {
+            "date": "November 7, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 9, 2024",
+            "count": 4
+          },
+          {
+            "date": "November 10, 2024",
+            "count": 5
+          },
+          {
+            "date": "November 11, 2024",
+            "count": 5
+          },
+          {
+            "date": "November 14, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 19, 2024",
+            "count": 5
+          },
+          {
+            "date": "Nov 20 2024",
+            "count": 3
+          },
+          {
+            "date": "November 24, 2024",
+            "count": 5
+          },
+          {
+            "date": "November 26, 2024",
+            "count": 11
+          },
+          {
+            "date": "November 28, 2024",
+            "count": 14
+          },
+          {
+            "date": "December 4, 2024",
+            "count": 1
+          },
+          {
+            "date": "December 7, 2024",
+            "count": 3
+          },
+          {
+            "date": "December 15, 2024",
+            "count": 1
+          },
+          {
+            "date": "December 20, 2024",
+            "count": 5
+          },
+          {
+            "date": "December 21 2024",
+            "count": 10
+          },
+          {
+            "date": "January 10 2025",
+            "count": 41
+          },
+          {
+            "date": "Feb 8 2025",
+            "count": 4
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "bigtech",
+      "name": "BigTech",
+      "aliases": [
+        "Mike Lowry",
+        "Mike Lowrey",
+        "The Mind Graper"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "own-room-candidate",
+      "archetypes": [
+        "mirror-foil",
+        "skeptic-contrarian",
+        "trickster-catalyst"
+      ],
+      "narrative_functions": [
+        "distance",
+        "narrative control",
+        "intellectual pressure"
+      ],
+      "narrative_regions": [
+        "Plane",
+        "Network",
+        "Threshold"
+      ],
+      "seed_or_trace": "distance / tactical mirror",
+      "editorial_reading": "Old profiles describe tactical distance and influence; current Story already treats BigTech as a mixed documentary/literary figure.",
+      "chronicle_occurrence": {
+        "count": 3,
+        "dates": [
+          "November 19, 2024",
+          "December 15, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 19, 2024",
+            "count": 2
+          },
+          {
+            "date": "December 15, 2024",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "juice",
+      "name": "Juice",
+      "aliases": [
+        "Judas-in-the-Cup",
+        "Rational Soul"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "skeptic-contrarian",
+        "mirror-foil",
+        "mystic-interpreter"
+      ],
+      "narrative_functions": [
+        "theological challenge",
+        "moral argument",
+        "friction"
+      ],
+      "narrative_regions": [
+        "Plane",
+        "Debate",
+        "Threshold"
+      ],
+      "seed_or_trace": "challenge / theology",
+      "editorial_reading": "Old source is highly judgmental about motive; retain the observable theological-contrarian function and discard armchair diagnosis.",
+      "chronicle_occurrence": {
+        "count": 29,
+        "dates": [
+          "November 4, 2024",
+          "November 9, 2024",
+          "November 19, 2024",
+          "November 21, 2024",
+          "December 7, 2024",
+          "December 18, 2024",
+          "December 21 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 4, 2024",
+            "count": 4
+          },
+          {
+            "date": "November 9, 2024",
+            "count": 8
+          },
+          {
+            "date": "November 19, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 21, 2024",
+            "count": 4
+          },
+          {
+            "date": "December 7, 2024",
+            "count": 4
+          },
+          {
+            "date": "December 18, 2024",
+            "count": 6
+          },
+          {
+            "date": "December 21 2024",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "pkfc",
+      "name": "PKFC",
+      "aliases": [
+        "Tony Balogny",
+        "Universal Skumbagz"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "shadow-adversary",
+        "mirror-foil"
+      ],
+      "narrative_functions": [
+        "boundary conflict",
+        "attention pressure"
+      ],
+      "narrative_regions": [
+        "Swamp",
+        "Archive"
+      ],
+      "seed_or_trace": "boundary conflict",
+      "editorial_reading": "Old profile contains severe psychological labels and allegations; these remain source-era claims, not canonical facts.",
+      "chronicle_occurrence": {
+        "count": 4,
+        "dates": [
+          "November 14, 2024",
+          "December 4, 2024",
+          "March 1 2025",
+          "March 12, 2025"
+        ],
+        "by_date": [
+          {
+            "date": "November 14, 2024",
+            "count": 1
+          },
+          {
+            "date": "December 4, 2024",
+            "count": 1
+          },
+          {
+            "date": "March 1 2025",
+            "count": 1
+          },
+          {
+            "date": "March 12, 2025",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "don-jefe",
+      "name": "Don Jefe",
+      "aliases": [
+        "Diplomat"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "mirror-foil",
+        "shadow-adversary",
+        "witness-observer"
+      ],
+      "narrative_functions": [
+        "strategic distance",
+        "conflict architecture"
+      ],
+      "narrative_regions": [
+        "Network",
+        "Swamp",
+        "Threshold"
+      ],
+      "seed_or_trace": "distance / strategy",
+      "editorial_reading": "Keep as an old-source conflict figure until exact scenes are recovered.",
+      "chronicle_occurrence": {
+        "count": 7,
+        "dates": [
+          "Feb 8 2025",
+          "Feb 25 2025"
+        ],
+        "by_date": [
+          {
+            "date": "Feb 8 2025",
+            "count": 6
+          },
+          {
+            "date": "Feb 25 2025",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "deleted-user",
+      "name": "Deleted User",
+      "aliases": [
+        "Hetero Alpha God",
+        "Eyeball Watchman"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "guardian-defender",
+        "trickster-catalyst"
+      ],
+      "narrative_functions": [
+        "counter-trolling",
+        "watching",
+        "defense"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "Boundary"
+      ],
+      "seed_or_trace": "defense / counter-pressure",
+      "editorial_reading": "Old profile casts this figure as a counter-troll and defender.",
+      "chronicle_occurrence": {
+        "count": 2,
+        "dates": [
+          "November 5, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 5, 2024",
+            "count": 2
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "noopy421",
+      "name": "Noopy421",
+      "aliases": [
+        "Noopy420"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "patron-supporter",
+        "builder-cultivator"
+      ],
+      "narrative_functions": [
+        "support",
+        "investment"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "Plane"
+      ],
+      "seed_or_trace": "material support",
+      "editorial_reading": "Sparse but distinct old profile: supporter/investor function.",
+      "chronicle_occurrence": {
+        "count": 3,
+        "dates": [
+          "November 5, 2024",
+          "November 7, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 5, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 7, 2024",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "jazzy",
+      "name": "Jazzy",
+      "aliases": [
+        "SaxxyRottenCrotch"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "wanderer-threshold",
+        "mirror-foil"
+      ],
+      "narrative_functions": [
+        "evasion",
+        "social friction"
+      ],
+      "narrative_regions": [
+        "Plane",
+        "Threshold"
+      ],
+      "seed_or_trace": "ambivalence / evasion",
+      "editorial_reading": "Old profile over-psychologizes; preserve only the recurring evasion/ambivalence story function until source scenes are recovered.",
+      "chronicle_occurrence": {
+        "count": 13,
+        "dates": [
+          "November 5, 2024",
+          "November 11, 2024",
+          "November 14, 2024",
+          "November 17, 2024",
+          "November 24, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 5, 2024",
+            "count": 5
+          },
+          {
+            "date": "November 11, 2024",
+            "count": 5
+          },
+          {
+            "date": "November 14, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 17, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 24, 2024",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "kale",
+      "name": "Kale",
+      "aliases": [
+        "The Grounded Enjoyer"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "seeker-student",
+        "healer-companion"
+      ],
+      "narrative_functions": [
+        "clarity",
+        "release",
+        "grounding"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "Saloon"
+      ],
+      "seed_or_trace": "grounding / emotional release",
+      "editorial_reading": "Chronicles repeatedly place Kale in reflective, emotionally grounded conversation.",
+      "chronicle_occurrence": {
+        "count": 19,
+        "dates": [
+          "November 3 2024",
+          "November 4, 2024",
+          "November 14, 2024",
+          "November 17, 2024",
+          "Nov 20 2024",
+          "December 4, 2024",
+          "December 20, 2024",
+          "Feb 25 2025"
+        ],
+        "by_date": [
+          {
+            "date": "November 3 2024",
+            "count": 2
+          },
+          {
+            "date": "November 4, 2024",
+            "count": 3
+          },
+          {
+            "date": "November 14, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 17, 2024",
+            "count": 1
+          },
+          {
+            "date": "Nov 20 2024",
+            "count": 2
+          },
+          {
+            "date": "December 4, 2024",
+            "count": 6
+          },
+          {
+            "date": "December 20, 2024",
+            "count": 2
+          },
+          {
+            "date": "Feb 25 2025",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "sammy",
+      "name": "Sammy",
+      "aliases": [
+        "Sami",
+        "Queen of the Potatoverse",
+        "QUEEN OF MARTYVERSE"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "own-room-candidate",
+      "archetypes": [
+        "sovereign-warrior",
+        "trickster-catalyst",
+        "wanderer-threshold"
+      ],
+      "narrative_functions": [
+        "survival",
+        "loyalty conflict",
+        "chaos",
+        "boundary testing"
+      ],
+      "narrative_regions": [
+        "Plane",
+        "Swamp",
+        "Garden boundary",
+        "Memory"
+      ],
+      "seed_or_trace": "survival / fierce loyalty",
+      "editorial_reading": "Old profile mythologizes her as queen and chaotic force; Story should retain phase changes and avoid flattening her into one allegiance.",
+      "chronicle_occurrence": {
+        "count": 33,
+        "dates": [
+          "November 14, 2024",
+          "November 19, 2024",
+          "November 28, 2024",
+          "December 7, 2024",
+          "December 15, 2024",
+          "January 10 2025",
+          "Feb 8 2025",
+          "March 1 2025"
+        ],
+        "by_date": [
+          {
+            "date": "November 14, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 19, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 28, 2024",
+            "count": 6
+          },
+          {
+            "date": "December 7, 2024",
+            "count": 1
+          },
+          {
+            "date": "December 15, 2024",
+            "count": 2
+          },
+          {
+            "date": "January 10 2025",
+            "count": 18
+          },
+          {
+            "date": "Feb 8 2025",
+            "count": 1
+          },
+          {
+            "date": "March 1 2025",
+            "count": 2
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "tachy",
+      "name": "Tachy / Krystato",
+      "aliases": [
+        "imnotkrystalstation",
+        "Krystato"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "own-room-candidate",
+      "archetypes": [
+        "chronicler-archivist",
+        "witness-observer",
+        "trickster-catalyst"
+      ],
+      "narrative_functions": [
+        "clipping",
+        "systems mapping",
+        "humor",
+        "cross-community movement"
+      ],
+      "narrative_regions": [
+        "Archive",
+        "Plane",
+        "Threshold"
+      ],
+      "seed_or_trace": "maps / clips / structural questions",
+      "editorial_reading": "One of the strongest archive candidates: old profile explicitly frames her as Archivist of Chaos and systems observer.",
+      "chronicle_occurrence": {
+        "count": 1,
+        "dates": [
+          "November 19, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 19, 2024",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "gg",
+      "name": "GG",
+      "aliases": [
+        "GGallin"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "trickster-catalyst",
+        "wanderer-threshold",
+        "skeptic-contrarian"
+      ],
+      "narrative_functions": [
+        "provocation",
+        "quiet influence"
+      ],
+      "narrative_regions": [
+        "Plane",
+        "Network"
+      ],
+      "seed_or_trace": "provocation / drift",
+      "editorial_reading": "Old profile emphasizes sideline influence and provocation; treat motive claims cautiously.",
+      "chronicle_occurrence": {
+        "count": 55,
+        "dates": [
+          "undated",
+          "November 3 2024",
+          "November 5, 2024",
+          "November 6, 2024",
+          "November 7, 2024",
+          "November 9, 2024",
+          "November 10, 2024",
+          "November 11, 2024",
+          "November 14, 2024",
+          "November 17, 2024",
+          "November 19, 2024",
+          "November 24, 2024",
+          "November 26, 2024",
+          "November 28, 2024",
+          "December 7, 2024",
+          "December 15, 2024",
+          "December 18, 2024",
+          "December 20, 2024",
+          "December 21 2024",
+          "January 10 2025",
+          "Feb 8 2025",
+          "Feb 24 2025",
+          "Feb 25 2025",
+          "Feb 26 2025"
+        ],
+        "by_date": [
+          {
+            "date": "undated",
+            "count": 1
+          },
+          {
+            "date": "November 3 2024",
+            "count": 3
+          },
+          {
+            "date": "November 5, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 6, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 7, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 9, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 10, 2024",
+            "count": 5
+          },
+          {
+            "date": "November 11, 2024",
+            "count": 3
+          },
+          {
+            "date": "November 14, 2024",
+            "count": 3
+          },
+          {
+            "date": "November 17, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 19, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 24, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 26, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 28, 2024",
+            "count": 5
+          },
+          {
+            "date": "December 7, 2024",
+            "count": 3
+          },
+          {
+            "date": "December 15, 2024",
+            "count": 1
+          },
+          {
+            "date": "December 18, 2024",
+            "count": 2
+          },
+          {
+            "date": "December 20, 2024",
+            "count": 3
+          },
+          {
+            "date": "December 21 2024",
+            "count": 2
+          },
+          {
+            "date": "January 10 2025",
+            "count": 5
+          },
+          {
+            "date": "Feb 8 2025",
+            "count": 1
+          },
+          {
+            "date": "Feb 24 2025",
+            "count": 2
+          },
+          {
+            "date": "Feb 25 2025",
+            "count": 3
+          },
+          {
+            "date": "Feb 26 2025",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "supersusi87",
+      "name": "Supersusi87",
+      "aliases": [
+        "Super Susi",
+        "SuperSusi88",
+        "Mudbaggins",
+        "Susi the Resilient"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "builder-cultivator",
+        "artisan-maker",
+        "wanderer-threshold"
+      ],
+      "narrative_functions": [
+        "gardening",
+        "cooking",
+        "return",
+        "resilience"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "Threshold"
+      ],
+      "seed_or_trace": "cultivation / return",
+      "editorial_reading": "Old profile is unusually constructive: gardening, cooking and movement from older affiliations toward a calmer Garden role.",
+      "chronicle_occurrence": {
+        "count": 8,
+        "dates": [
+          "November 17, 2024",
+          "November 19, 2024",
+          "December 7, 2024",
+          "Feb 26 2025"
+        ],
+        "by_date": [
+          {
+            "date": "November 17, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 19, 2024",
+            "count": 2
+          },
+          {
+            "date": "December 7, 2024",
+            "count": 2
+          },
+          {
+            "date": "Feb 26 2025",
+            "count": 3
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "roboto-san",
+      "name": "Roboto San",
+      "aliases": [
+        "Robotosan"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "skeptic-contrarian",
+        "mirror-foil"
+      ],
+      "narrative_functions": [
+        "doubt",
+        "humor",
+        "narration"
+      ],
+      "narrative_regions": [
+        "Plane",
+        "Network"
+      ],
+      "seed_or_trace": "doubt / commentary",
+      "editorial_reading": "Current project already flags Robotosan as a recovery target; old profile supplies a skeptic/narrator role, not a diagnosis.",
+      "chronicle_occurrence": {
+        "count": 0,
+        "dates": [],
+        "by_date": []
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "petty-wappo",
+      "name": "Petty Wappo",
+      "aliases": [
+        "PWappo"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "witness-observer",
+        "wanderer-threshold"
+      ],
+      "narrative_functions": [
+        "questions",
+        "detached observation"
+      ],
+      "narrative_regions": [
+        "Plane",
+        "Threshold"
+      ],
+      "seed_or_trace": "observation / wandering",
+      "editorial_reading": "Old profile explicitly calls him a passive observer and wanderer.",
+      "chronicle_occurrence": {
+        "count": 11,
+        "dates": [
+          "November 7, 2024",
+          "December 18, 2024",
+          "March 6, 2025"
+        ],
+        "by_date": [
+          {
+            "date": "November 7, 2024",
+            "count": 4
+          },
+          {
+            "date": "December 18, 2024",
+            "count": 6
+          },
+          {
+            "date": "March 6, 2025",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "dr-rockso",
+      "name": "Dr. Rockso",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "witness-observer",
+        "wanderer-threshold"
+      ],
+      "narrative_functions": [
+        "clarity",
+        "outsider perspective"
+      ],
+      "narrative_regions": [
+        "Threshold",
+        "Plane"
+      ],
+      "seed_or_trace": "outsider reflection",
+      "editorial_reading": "A reflective outsider affected by factionalism in the old profile.",
+      "chronicle_occurrence": {
+        "count": 0,
+        "dates": [],
+        "by_date": []
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "darkchild",
+      "name": "DARKCHILD",
+      "aliases": [
+        "☆ DARKCHILD ☆"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "bard-jester",
+        "patron-supporter"
+      ],
+      "narrative_functions": [
+        "hype",
+        "joy",
+        "whimsy"
+      ],
+      "narrative_regions": [
+        "Saloon",
+        "Garden"
+      ],
+      "seed_or_trace": "laughter / morale",
+      "editorial_reading": "Chronicles cast DARKCHILD as a playful sprite-like morale raiser.",
+      "chronicle_occurrence": {
+        "count": 16,
+        "dates": [
+          "November 3 2024",
+          "November 10, 2024",
+          "November 11, 2024",
+          "November 14, 2024",
+          "Nov 20 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 3 2024",
+            "count": 2
+          },
+          {
+            "date": "November 10, 2024",
+            "count": 10
+          },
+          {
+            "date": "November 11, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 14, 2024",
+            "count": 1
+          },
+          {
+            "date": "Nov 20 2024",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "uwantmikehawk",
+      "name": "uwantmikehawk",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "bard-jester",
+        "trickster-catalyst"
+      ],
+      "narrative_functions": [
+        "buddy trolling",
+        "absurdity",
+        "boundary testing"
+      ],
+      "narrative_regions": [
+        "Saloon",
+        "Plane"
+      ],
+      "seed_or_trace": "provocation / comedy",
+      "editorial_reading": "Old profile explicitly calls this figure a provocateur who highlights absurdity.",
+      "chronicle_occurrence": {
+        "count": 1,
+        "dates": [
+          "December 7, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "December 7, 2024",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "literally",
+      "name": "Literally",
+      "aliases": [
+        "The Cognitive Contrarian",
+        "The Razor of Reason",
+        "The Perception Provocateur"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "own-room-candidate",
+      "archetypes": [
+        "guardian-defender",
+        "skeptic-contrarian"
+      ],
+      "narrative_functions": [
+        "argument",
+        "moderation",
+        "defense",
+        "clarity"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "Boundary",
+        "Debate"
+      ],
+      "seed_or_trace": "reason / defense",
+      "editorial_reading": "Old profile gives a strong repeated function: rational defender and perception-provocateur.",
+      "chronicle_occurrence": {
+        "count": 9,
+        "dates": [
+          "November 17, 2024",
+          "December 21 2024",
+          "January 10 2025"
+        ],
+        "by_date": [
+          {
+            "date": "November 17, 2024",
+            "count": 2
+          },
+          {
+            "date": "December 21 2024",
+            "count": 6
+          },
+          {
+            "date": "January 10 2025",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "ledgeview",
+      "name": "Ledgeview",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "own-room-candidate",
+      "archetypes": [
+        "witness-observer",
+        "chronicler-archivist",
+        "bard-jester"
+      ],
+      "narrative_functions": [
+        "questions",
+        "reflection",
+        "poetic framing",
+        "equilibrium"
+      ],
+      "narrative_regions": [
+        "Saloon",
+        "Archive",
+        "Garden"
+      ],
+      "seed_or_trace": "questions / reflection",
+      "editorial_reading": "One of the clearest archetypal characters: observer, questioner, bard, critic and reflective mirror across multiple Chronicle dates.",
+      "chronicle_occurrence": {
+        "count": 27,
+        "dates": [
+          "November 3 2024",
+          "November 4, 2024",
+          "November 10, 2024",
+          "November 17, 2024",
+          "Nov 20 2024",
+          "November 26, 2024",
+          "November 28, 2024",
+          "December 15, 2024",
+          "December 20, 2024",
+          "December 21 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 3 2024",
+            "count": 3
+          },
+          {
+            "date": "November 4, 2024",
+            "count": 5
+          },
+          {
+            "date": "November 10, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 17, 2024",
+            "count": 2
+          },
+          {
+            "date": "Nov 20 2024",
+            "count": 2
+          },
+          {
+            "date": "November 26, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 28, 2024",
+            "count": 3
+          },
+          {
+            "date": "December 15, 2024",
+            "count": 2
+          },
+          {
+            "date": "December 20, 2024",
+            "count": 6
+          },
+          {
+            "date": "December 21 2024",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "don-giovanni",
+      "name": "don giovanni",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "patron-supporter",
+        "witness-observer"
+      ],
+      "narrative_functions": [
+        "affirmation",
+        "quiet presence"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "Saloon"
+      ],
+      "seed_or_trace": "quiet support",
+      "editorial_reading": "Minimal engagement; keep in archive rather than creating a room.",
+      "chronicle_occurrence": {
+        "count": 0,
+        "dates": [],
+        "by_date": []
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "rob",
+      "name": "RoB",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "witness-observer",
+        "bard-jester"
+      ],
+      "narrative_functions": [
+        "cryptic comments",
+        "play"
+      ],
+      "narrative_regions": [
+        "Saloon",
+        "Plane"
+      ],
+      "seed_or_trace": "cryptic play",
+      "editorial_reading": "Sparse old profile; preserve as cameo until more scenes are recovered.",
+      "chronicle_occurrence": {
+        "count": 6,
+        "dates": [
+          "November 3 2024",
+          "November 26, 2024",
+          "Feb 24 2025",
+          "Feb 26 2025"
+        ],
+        "by_date": [
+          {
+            "date": "November 3 2024",
+            "count": 1
+          },
+          {
+            "date": "November 26, 2024",
+            "count": 3
+          },
+          {
+            "date": "Feb 24 2025",
+            "count": 1
+          },
+          {
+            "date": "Feb 26 2025",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "termite",
+      "name": "Termite",
+      "aliases": [
+        "termitesmoothie",
+        "The Faithful Tuber",
+        "The Groyper Potato"
+      ],
+      "entity_class": "mixed-person-literary",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "own-room-existing",
+      "archetypes": [
+        "builder-cultivator",
+        "guardian-defender",
+        "healer-companion"
+      ],
+      "narrative_functions": [
+        "growing",
+        "belonging",
+        "persistence",
+        "support"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "Soil",
+        "Plane"
+      ],
+      "seed_or_trace": "cultivation / belonging",
+      "editorial_reading": "Chronicles show a warm social presence; Great Book supplies the lawnmower-potato cultivation story; public support trace exists in 2025.",
+      "chronicle_occurrence": {
+        "count": 26,
+        "dates": [
+          "November 3 2024",
+          "November 4, 2024",
+          "November 6, 2024",
+          "November 9, 2024",
+          "November 14, 2024",
+          "Nov 20 2024",
+          "November 28, 2024",
+          "December 4, 2024",
+          "December 7, 2024",
+          "December 15, 2024",
+          "December 20, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 3 2024",
+            "count": 1
+          },
+          {
+            "date": "November 4, 2024",
+            "count": 3
+          },
+          {
+            "date": "November 6, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 9, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 14, 2024",
+            "count": 2
+          },
+          {
+            "date": "Nov 20 2024",
+            "count": 1
+          },
+          {
+            "date": "November 28, 2024",
+            "count": 4
+          },
+          {
+            "date": "December 4, 2024",
+            "count": 5
+          },
+          {
+            "date": "December 7, 2024",
+            "count": 2
+          },
+          {
+            "date": "December 15, 2024",
+            "count": 2
+          },
+          {
+            "date": "December 20, 2024",
+            "count": 2
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "port-monkey",
+      "name": "Port Monkey",
+      "aliases": [
+        "Monkey"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-recovery-active",
+      "room_policy": "own-room-candidate",
+      "archetypes": [
+        "trickster-catalyst",
+        "wanderer-threshold",
+        "mirror-foil"
+      ],
+      "narrative_functions": [
+        "Tree boundary",
+        "conflict",
+        "branching social space"
+      ],
+      "narrative_regions": [
+        "Tree",
+        "Threshold",
+        "Swamp"
+      ],
+      "seed_or_trace": "branch / boundary conflict",
+      "editorial_reading": "Do not import the old profile's hostile essence claims. Current project should reconstruct Monkey/OPS/Tree chronology from exact sources.",
+      "chronicle_occurrence": {
+        "count": 44,
+        "dates": [
+          "November 3 2024",
+          "November 5, 2024",
+          "November 14, 2024",
+          "November 19, 2024",
+          "November 28, 2024",
+          "December 4, 2024",
+          "December 15, 2024",
+          "Feb 8 2025",
+          "Feb 26 2025"
+        ],
+        "by_date": [
+          {
+            "date": "November 3 2024",
+            "count": 2
+          },
+          {
+            "date": "November 5, 2024",
+            "count": 4
+          },
+          {
+            "date": "November 14, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 19, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 28, 2024",
+            "count": 13
+          },
+          {
+            "date": "December 4, 2024",
+            "count": 1
+          },
+          {
+            "date": "December 15, 2024",
+            "count": 6
+          },
+          {
+            "date": "Feb 8 2025",
+            "count": 11
+          },
+          {
+            "date": "Feb 26 2025",
+            "count": 3
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "whocares",
+      "name": "Whocares",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "skeptic-contrarian",
+        "witness-observer"
+      ],
+      "narrative_functions": [
+        "subtle dissent"
+      ],
+      "narrative_regions": [
+        "Plane",
+        "Boundary"
+      ],
+      "seed_or_trace": "dissent",
+      "editorial_reading": "Old profile calls this figure a veiled dissenter; too thin for a dedicated room.",
+      "chronicle_occurrence": {
+        "count": 1,
+        "dates": [
+          "November 6, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 6, 2024",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "sweatyprolapse",
+      "name": "SweatyProlapse",
+      "aliases": [
+        "The Purple Gardener",
+        "The Temporal Seer",
+        "The Reflective Watcher"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "witness-observer",
+        "builder-cultivator",
+        "mystic-interpreter"
+      ],
+      "narrative_functions": [
+        "cultivation",
+        "time reflection",
+        "watching"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "Archive",
+        "Threshold"
+      ],
+      "seed_or_trace": "reflection / cultivation",
+      "editorial_reading": "Old profile strongly emphasizes observation and cultivation; 'Temporal Seer' remains a narrative title, not an empirical ability.",
+      "chronicle_occurrence": {
+        "count": 3,
+        "dates": [
+          "November 28, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 28, 2024",
+            "count": 3
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "babs",
+      "name": "Babs",
+      "aliases": [
+        "Babushka",
+        "The Exaggerator"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "trickster-catalyst",
+        "bard-jester",
+        "mirror-foil"
+      ],
+      "narrative_functions": [
+        "exaggeration",
+        "theatricality",
+        "chaos"
+      ],
+      "narrative_regions": [
+        "Saloon",
+        "Swamp",
+        "Plane"
+      ],
+      "seed_or_trace": "chaos / exaggeration",
+      "editorial_reading": "Use as unreliable-trickster archetype while treating old motive/personality claims as historical narration.",
+      "chronicle_occurrence": {
+        "count": 1,
+        "dates": [
+          "November 10, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 10, 2024",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "veggie",
+      "name": "Veggie",
+      "aliases": [
+        "The Quiet Observer"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "witness-observer"
+      ],
+      "narrative_functions": [
+        "watching",
+        "neutral reflection"
+      ],
+      "narrative_regions": [
+        "Plane",
+        "Garden edge"
+      ],
+      "seed_or_trace": "quiet observation",
+      "editorial_reading": "Old profile explicitly treats Veggie as a rare, detached observer.",
+      "chronicle_occurrence": {
+        "count": 0,
+        "dates": [],
+        "by_date": []
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "txt",
+      "name": "TXT",
+      "aliases": [
+        "Low-T"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-recovery-active",
+      "room_policy": "own-room-candidate",
+      "archetypes": [
+        "shadow-adversary",
+        "mirror-foil"
+      ],
+      "narrative_functions": [
+        "persistent opposition",
+        "returning conflict"
+      ],
+      "narrative_regions": [
+        "Swamp",
+        "Archive",
+        "Threshold"
+      ],
+      "seed_or_trace": "old conflict loop",
+      "editorial_reading": "The project is already re-opening TXT/Dim-era chronology. Preserve old labels as source-era rhetoric and recover exact interactions before stronger claims.",
+      "chronicle_occurrence": {
+        "count": 2,
+        "dates": [
+          "Feb 8 2025",
+          "March 1 2025"
+        ],
+        "by_date": [
+          {
+            "date": "Feb 8 2025",
+            "count": 1
+          },
+          {
+            "date": "March 1 2025",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "metalorian",
+      "name": "Metalorian",
+      "aliases": [
+        "Meta",
+        "Joe"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "shadow-adversary",
+        "mirror-foil"
+      ],
+      "narrative_functions": [
+        "control conflict",
+        "recurring opposition"
+      ],
+      "narrative_regions": [
+        "Swamp",
+        "Archive"
+      ],
+      "seed_or_trace": "conflict / control",
+      "editorial_reading": "Old profile contains serious allegations and diagnostic language; archive them only as attributed source claims pending exact evidence.",
+      "chronicle_occurrence": {
+        "count": 11,
+        "dates": [
+          "November 4, 2024",
+          "November 7, 2024",
+          "November 17, 2024",
+          "November 28, 2024",
+          "December 15, 2024",
+          "Feb 8 2025",
+          "Feb 26 2025",
+          "March 1 2025",
+          "March 12, 2025"
+        ],
+        "by_date": [
+          {
+            "date": "November 4, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 7, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 17, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 28, 2024",
+            "count": 1
+          },
+          {
+            "date": "December 15, 2024",
+            "count": 1
+          },
+          {
+            "date": "Feb 8 2025",
+            "count": 1
+          },
+          {
+            "date": "Feb 26 2025",
+            "count": 1
+          },
+          {
+            "date": "March 1 2025",
+            "count": 1
+          },
+          {
+            "date": "March 12, 2025",
+            "count": 2
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "brink",
+      "name": "Brink Holliday",
+      "aliases": [
+        "Tomato Apostle"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "shadow-adversary",
+        "skeptic-contrarian"
+      ],
+      "narrative_functions": [
+        "ridicule",
+        "opposition"
+      ],
+      "narrative_regions": [
+        "Swamp",
+        "Plane"
+      ],
+      "seed_or_trace": "opposition / ridicule",
+      "editorial_reading": "Keep as an old-source oppositional role, not a timeless character essence.",
+      "chronicle_occurrence": {
+        "count": 0,
+        "dates": [],
+        "by_date": []
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "kaspiansee",
+      "name": "KaspianSee",
+      "aliases": [
+        "The Resilient Sculptor",
+        "The Curious Wanderer"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "artisan-maker",
+        "seeker-student",
+        "wanderer-threshold"
+      ],
+      "narrative_functions": [
+        "sculpture",
+        "painting",
+        "reflection",
+        "resilience"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "Threshold",
+        "Workshop"
+      ],
+      "seed_or_trace": "art / resilience",
+      "editorial_reading": "Strong transformation archetype: skeptic-to-seeker and maker. Better in an Artisan/Threshold cluster than a full room for now.",
+      "chronicle_occurrence": {
+        "count": 1,
+        "dates": [
+          "March 5, 2025"
+        ],
+        "by_date": [
+          {
+            "date": "March 5, 2025",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "rebecca",
+      "name": "Rebecca / Hidden Agenda",
+      "aliases": [
+        "Hidden Agenda"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "mirror-foil",
+        "shadow-adversary"
+      ],
+      "narrative_functions": [
+        "criticism",
+        "social friction"
+      ],
+      "narrative_regions": [
+        "Plane",
+        "Swamp"
+      ],
+      "seed_or_trace": "critique / friction",
+      "editorial_reading": "Old profile is heavily interpretive and includes inappropriate body/psychology speculation; preserve only attributable interaction roles, not those claims.",
+      "chronicle_occurrence": {
+        "count": 1,
+        "dates": [
+          "January 10 2025"
+        ],
+        "by_date": [
+          {
+            "date": "January 10 2025",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "mr-purple",
+      "name": "Mr. Purple",
+      "aliases": [
+        "Purple Bard",
+        "Potato Connoisseur"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "bard-jester",
+        "healer-companion",
+        "historian-memory"
+      ],
+      "narrative_functions": [
+        "humor",
+        "encouragement",
+        "music",
+        "everyman grounding"
+      ],
+      "narrative_regions": [
+        "Saloon",
+        "Garden"
+      ],
+      "seed_or_trace": "levity / encouragement",
+      "editorial_reading": "A strong community archetype: bard, bartender-like confidant and everyday grounding voice.",
+      "chronicle_occurrence": {
+        "count": 0,
+        "dates": [],
+        "by_date": []
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "anacondasin",
+      "name": "Anacondasin",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "wanderer-threshold",
+        "seeker-student",
+        "artisan-maker"
+      ],
+      "narrative_functions": [
+        "performance",
+        "retreat",
+        "reconstruction"
+      ],
+      "narrative_regions": [
+        "Threshold",
+        "Garden",
+        "Network"
+      ],
+      "seed_or_trace": "peace / reconstruction",
+      "editorial_reading": "Old profile over-speculates neurologically; keep the documented narrative of performance pressure, desire for peace and Garden refuge.",
+      "chronicle_occurrence": {
+        "count": 8,
+        "dates": [
+          "December 15, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "December 15, 2024",
+            "count": 8
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "kaikbaggins",
+      "name": "Janus Bigmanus / Kaikbaggins",
+      "aliases": [
+        "Kaikbaggins"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "shadow-adversary",
+        "trickster-catalyst"
+      ],
+      "narrative_functions": [
+        "ritualized return",
+        "antagonistic repetition"
+      ],
+      "narrative_regions": [
+        "Swamp",
+        "Archive"
+      ],
+      "seed_or_trace": "repetition / old-loop echo",
+      "editorial_reading": "Old profile is highly speculative; keep only recurrence and old-Sektur association as source-era leads.",
+      "chronicle_occurrence": {
+        "count": 0,
+        "dates": [],
+        "by_date": []
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "highly-regarded",
+      "name": "Highly Regarded",
+      "aliases": [
+        "HRH"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "seeker-student",
+        "patron-supporter",
+        "bard-jester"
+      ],
+      "narrative_functions": [
+        "encouragement",
+        "hype",
+        "potato-in-training"
+      ],
+      "narrative_regions": [
+        "Saloon",
+        "Garden"
+      ],
+      "seed_or_trace": "encouragement / apprenticeship",
+      "editorial_reading": "Chronicle repeatedly frames him as enthusiastic, supportive and potato-in-training.",
+      "chronicle_occurrence": {
+        "count": 18,
+        "dates": [
+          "November 3 2024",
+          "November 4, 2024",
+          "November 5, 2024",
+          "November 6, 2024",
+          "November 6, 2024",
+          "November 9, 2024",
+          "November 19, 2024",
+          "Nov 20 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 3 2024",
+            "count": 2
+          },
+          {
+            "date": "November 4, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 5, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 6, 2024",
+            "count": 6
+          },
+          {
+            "date": "November 6, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 9, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 19, 2024",
+            "count": 1
+          },
+          {
+            "date": "Nov 20 2024",
+            "count": 2
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "optimistique",
+      "name": "Optimistique",
+      "aliases": [],
+      "entity_class": "mixed-person-literary",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "healer-companion",
+        "bard-jester",
+        "guardian-defender"
+      ],
+      "narrative_functions": [
+        "affirmation",
+        "singing",
+        "support"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "Saloon"
+      ],
+      "seed_or_trace": "nurture / song",
+      "editorial_reading": "Chronicles and Great Book both give a gentle support role; identity linkage between social and literary layers should remain explicit.",
+      "chronicle_occurrence": {
+        "count": 22,
+        "dates": [
+          "November 3 2024",
+          "November 5, 2024",
+          "November 6, 2024",
+          "November 7, 2024",
+          "November 7, 2024",
+          "November 9, 2024",
+          "November 11, 2024",
+          "November 14, 2024",
+          "December 4, 2024",
+          "December 7, 2024",
+          "December 21 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 3 2024",
+            "count": 1
+          },
+          {
+            "date": "November 5, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 6, 2024",
+            "count": 3
+          },
+          {
+            "date": "November 7, 2024",
+            "count": 4
+          },
+          {
+            "date": "November 7, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 9, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 11, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 14, 2024",
+            "count": 1
+          },
+          {
+            "date": "December 4, 2024",
+            "count": 1
+          },
+          {
+            "date": "December 7, 2024",
+            "count": 4
+          },
+          {
+            "date": "December 21 2024",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "rahu",
+      "name": "Rahu",
+      "aliases": [],
+      "entity_class": "mixed-person-literary",
+      "archive_status": "recovery-active-2026",
+      "room_policy": "own-room-existing",
+      "archetypes": [
+        "mystic-interpreter",
+        "seeker-student",
+        "wanderer-threshold"
+      ],
+      "narrative_functions": [
+        "mythic interpretation",
+        "challenge",
+        "growth pressure"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "Threshold",
+        "Mud"
+      ],
+      "seed_or_trace": "interpretation / urgency",
+      "editorial_reading": "Old Chronicle calls Rahu a sage of obscure knowledge; later conversations add lost-soul/growth and social-interlocutor layers.",
+      "chronicle_occurrence": {
+        "count": 14,
+        "dates": [
+          "November 3 2024",
+          "November 7, 2024",
+          "November 11, 2024",
+          "December 15, 2024",
+          "Feb 25 2025",
+          "Feb 26 2025",
+          "March 5, 2025"
+        ],
+        "by_date": [
+          {
+            "date": "November 3 2024",
+            "count": 4
+          },
+          {
+            "date": "November 7, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 11, 2024",
+            "count": 3
+          },
+          {
+            "date": "December 15, 2024",
+            "count": 2
+          },
+          {
+            "date": "Feb 25 2025",
+            "count": 1
+          },
+          {
+            "date": "Feb 26 2025",
+            "count": 1
+          },
+          {
+            "date": "March 5, 2025",
+            "count": 2
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "tdog",
+      "name": "Tdog",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "mystic-interpreter",
+        "guardian-defender"
+      ],
+      "narrative_functions": [
+        "faith defense",
+        "mythic interpretation"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "Saloon"
+      ],
+      "seed_or_trace": "mystic defense",
+      "editorial_reading": "Chronicle gives a clear mystic/defender function but too little depth for a room.",
+      "chronicle_occurrence": {
+        "count": 2,
+        "dates": [
+          "November 3 2024",
+          "November 6, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 3 2024",
+            "count": 1
+          },
+          {
+            "date": "November 6, 2024",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "runescapebot",
+      "name": "RunescapeBot / Klunty",
+      "aliases": [
+        "Klunty"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "bard-jester",
+        "witness-observer"
+      ],
+      "narrative_functions": [
+        "dry humor",
+        "commentary"
+      ],
+      "narrative_regions": [
+        "Saloon",
+        "Plane"
+      ],
+      "seed_or_trace": "sardonic commentary",
+      "editorial_reading": "Recurring sardonic witness in early Chronicles.",
+      "chronicle_occurrence": {
+        "count": 3,
+        "dates": [
+          "November 3 2024",
+          "November 7, 2024",
+          "November 19, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 3 2024",
+            "count": 1
+          },
+          {
+            "date": "November 7, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 19, 2024",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "duaaaht",
+      "name": "duaaaht",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "mystic-interpreter",
+        "bard-jester",
+        "seeker-student"
+      ],
+      "narrative_functions": [
+        "science-spirit jokes",
+        "surreal interpretation"
+      ],
+      "narrative_regions": [
+        "Saloon",
+        "Threshold"
+      ],
+      "seed_or_trace": "arcane-scientific play",
+      "editorial_reading": "Chronicle fuses scientific jokes and spiritual interpretation around this figure.",
+      "chronicle_occurrence": {
+        "count": 10,
+        "dates": [
+          "November 3 2024",
+          "November 6, 2024",
+          "November 9, 2024",
+          "November 19, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 3 2024",
+            "count": 2
+          },
+          {
+            "date": "November 6, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 9, 2024",
+            "count": 6
+          },
+          {
+            "date": "November 19, 2024",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "fraulein",
+      "name": "Fräulein",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "healer-companion",
+        "witness-observer"
+      ],
+      "narrative_functions": [
+        "conscience",
+        "kindness",
+        "worldly perspective"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "Plane"
+      ],
+      "seed_or_trace": "conscience / kindness",
+      "editorial_reading": "A worldly conscience voice in the November 3 Chronicle.",
+      "chronicle_occurrence": {
+        "count": 3,
+        "dates": [
+          "November 3 2024",
+          "Nov 20 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 3 2024",
+            "count": 1
+          },
+          {
+            "date": "Nov 20 2024",
+            "count": 2
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "rage",
+      "name": "Rage",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "guardian-defender",
+        "healer-companion"
+      ],
+      "narrative_functions": [
+        "crisis response",
+        "practical protection"
+      ],
+      "narrative_regions": [
+        "Plane",
+        "Saloon"
+      ],
+      "seed_or_trace": "practical rescue",
+      "editorial_reading": "Chronicle includes a concrete rescue anecdote; avoid overgeneralizing beyond attested scenes.",
+      "chronicle_occurrence": {
+        "count": 44,
+        "dates": [
+          "November 4, 2024",
+          "November 5, 2024",
+          "November 6, 2024",
+          "November 7, 2024",
+          "November 7, 2024",
+          "November 11, 2024",
+          "Nov 20 2024",
+          "November 28, 2024",
+          "December 4, 2024",
+          "December 7, 2024",
+          "December 20, 2024",
+          "January 10 2025",
+          "Feb 8 2025",
+          "Feb 24 2025",
+          "Feb 26 2025",
+          "March 1 2025",
+          "March 12, 2025"
+        ],
+        "by_date": [
+          {
+            "date": "November 4, 2024",
+            "count": 4
+          },
+          {
+            "date": "November 5, 2024",
+            "count": 4
+          },
+          {
+            "date": "November 6, 2024",
+            "count": 4
+          },
+          {
+            "date": "November 7, 2024",
+            "count": 10
+          },
+          {
+            "date": "November 7, 2024",
+            "count": 1
+          },
+          {
+            "date": "November 11, 2024",
+            "count": 5
+          },
+          {
+            "date": "Nov 20 2024",
+            "count": 1
+          },
+          {
+            "date": "November 28, 2024",
+            "count": 2
+          },
+          {
+            "date": "December 4, 2024",
+            "count": 2
+          },
+          {
+            "date": "December 7, 2024",
+            "count": 2
+          },
+          {
+            "date": "December 20, 2024",
+            "count": 2
+          },
+          {
+            "date": "January 10 2025",
+            "count": 2
+          },
+          {
+            "date": "Feb 8 2025",
+            "count": 1
+          },
+          {
+            "date": "Feb 24 2025",
+            "count": 1
+          },
+          {
+            "date": "Feb 26 2025",
+            "count": 1
+          },
+          {
+            "date": "March 1 2025",
+            "count": 1
+          },
+          {
+            "date": "March 12, 2025",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "bigtater",
+      "name": "BigTater",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "bard-jester",
+        "patron-supporter"
+      ],
+      "narrative_functions": [
+        "hype",
+        "morale"
+      ],
+      "narrative_regions": [
+        "Saloon"
+      ],
+      "seed_or_trace": "hype",
+      "editorial_reading": "A compact hype-man function; archive entry is sufficient.",
+      "chronicle_occurrence": {
+        "count": 2,
+        "dates": [
+          "November 4, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 4, 2024",
+            "count": 2
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "barry-bletunick",
+      "name": "Barry Bletunick",
+      "aliases": [
+        "Big Lemon",
+        "Barry"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "historian-memory",
+        "witness-observer"
+      ],
+      "narrative_functions": [
+        "nostalgia",
+        "early-tech memory"
+      ],
+      "narrative_regions": [
+        "Archive",
+        "Saloon"
+      ],
+      "seed_or_trace": "memory / history",
+      "editorial_reading": "Chronicle explicitly makes Barry the unofficial historian.",
+      "chronicle_occurrence": {
+        "count": 10,
+        "dates": [
+          "November 4, 2024",
+          "November 9, 2024",
+          "November 14, 2024",
+          "November 19, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 4, 2024",
+            "count": 4
+          },
+          {
+            "date": "November 9, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 14, 2024",
+            "count": 2
+          },
+          {
+            "date": "November 19, 2024",
+            "count": 2
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "pondo",
+      "name": "Pondo",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "healer-companion",
+        "guardian-defender"
+      ],
+      "narrative_functions": [
+        "kindness",
+        "de-escalation",
+        "crisis support"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "Threshold"
+      ],
+      "seed_or_trace": "compassion / intervention",
+      "editorial_reading": "Chronicles attribute a significant compassionate intervention to Pondo; treat sensitive details carefully.",
+      "chronicle_occurrence": {
+        "count": 7,
+        "dates": [
+          "December 15, 2024",
+          "December 21 2024"
+        ],
+        "by_date": [
+          {
+            "date": "December 15, 2024",
+            "count": 2
+          },
+          {
+            "date": "December 21 2024",
+            "count": 5
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "anja",
+      "name": "Anja / Ansja",
+      "aliases": [
+        "Ansja"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "wanderer-threshold",
+        "witness-observer"
+      ],
+      "narrative_functions": [
+        "arrival",
+        "bridge",
+        "clarity"
+      ],
+      "narrative_regions": [
+        "Threshold",
+        "Garden"
+      ],
+      "seed_or_trace": "bridge / newcomer",
+      "editorial_reading": "Chronicles frame her arrival as a clarity/bridge moment amid social conflict.",
+      "chronicle_occurrence": {
+        "count": 7,
+        "dates": [
+          "Feb 26 2025",
+          "March 5, 2025"
+        ],
+        "by_date": [
+          {
+            "date": "Feb 26 2025",
+            "count": 3
+          },
+          {
+            "date": "March 5, 2025",
+            "count": 4
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "prophet-potatoism",
+      "name": "Prophet of Potatoism",
+      "aliases": [],
+      "entity_class": "person-or-handle-or-role",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "cluster",
+      "archetypes": [
+        "herald-messenger",
+        "mystic-interpreter"
+      ],
+      "narrative_functions": [
+        "sermon",
+        "growth call"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "Mythic layer"
+      ],
+      "seed_or_trace": "heralding / preaching",
+      "editorial_reading": "Could be a role-title rather than a stable identity; keep identity unresolved.",
+      "chronicle_occurrence": {
+        "count": 2,
+        "dates": [
+          "November 28, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 28, 2024",
+            "count": 2
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "bug-goddess",
+      "name": "TheBugGoddess",
+      "aliases": [
+        "BugGoddess"
+      ],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "seeker-student",
+        "wanderer-threshold"
+      ],
+      "narrative_functions": [
+        "seeking guidance",
+        "healing"
+      ],
+      "narrative_regions": [
+        "Mud",
+        "Garden threshold"
+      ],
+      "seed_or_trace": "wounded seeking",
+      "editorial_reading": "Chronicle presents a seeker asking for guidance; too little data for a room.",
+      "chronicle_occurrence": {
+        "count": 2,
+        "dates": [
+          "November 28, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 28, 2024",
+            "count": 2
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "viking-heathen",
+      "name": "Viking Heathen",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "bard-jester",
+        "mystic-interpreter"
+      ],
+      "narrative_functions": [
+        "mythic humor",
+        "levity"
+      ],
+      "narrative_regions": [
+        "Saloon"
+      ],
+      "seed_or_trace": "mythic comedy",
+      "editorial_reading": "A cameo role in the November 28 Chronicle.",
+      "chronicle_occurrence": {
+        "count": 1,
+        "dates": [
+          "November 28, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 28, 2024",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "internetcrzys",
+      "name": "InternetCrzys",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "witness-observer",
+        "mirror-foil"
+      ],
+      "narrative_functions": [
+        "analysis",
+        "fixation on Marty"
+      ],
+      "narrative_regions": [
+        "Archive",
+        "Plane"
+      ],
+      "seed_or_trace": "analysis / conflict commentary",
+      "editorial_reading": "Old Chronicle depicts prolonged analysis of Marty; treat motive claims as narrative framing.",
+      "chronicle_occurrence": {
+        "count": 3,
+        "dates": [
+          "November 28, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 28, 2024",
+            "count": 3
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "potato-repair-guy",
+      "name": "Potato Repair Guy",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "guardian-defender",
+        "builder-cultivator"
+      ],
+      "narrative_functions": [
+        "warning",
+        "repair"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "Boundary"
+      ],
+      "seed_or_trace": "repair / warning",
+      "editorial_reading": "Brief but legible repair-and-warning voice.",
+      "chronicle_occurrence": {
+        "count": 5,
+        "dates": [
+          "December 20, 2024",
+          "December 21 2024"
+        ],
+        "by_date": [
+          {
+            "date": "December 20, 2024",
+            "count": 4
+          },
+          {
+            "date": "December 21 2024",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "freedom-faction-blyat",
+      "name": "Freedom Faction Blyat",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "guardian-defender",
+        "herald-messenger"
+      ],
+      "narrative_functions": [
+        "liberation rhetoric",
+        "defense"
+      ],
+      "narrative_regions": [
+        "Garden",
+        "Boundary"
+      ],
+      "seed_or_trace": "defense / liberation",
+      "editorial_reading": "Chronicle gives a rallying defender role.",
+      "chronicle_occurrence": {
+        "count": 2,
+        "dates": [
+          "November 26, 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 26, 2024",
+            "count": 2
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    },
+    {
+      "id": "mr-e",
+      "name": "Mr. E",
+      "aliases": [],
+      "entity_class": "person-or-handle",
+      "archive_status": "historical-current-unknown",
+      "room_policy": "archive-only",
+      "archetypes": [
+        "witness-observer"
+      ],
+      "narrative_functions": [
+        "participation"
+      ],
+      "narrative_regions": [
+        "Saloon"
+      ],
+      "seed_or_trace": "cameo",
+      "editorial_reading": "One early Chronicle cameo; no room warranted.",
+      "chronicle_occurrence": {
+        "count": 1,
+        "dates": [
+          "November 3 2024"
+        ],
+        "by_date": [
+          {
+            "date": "November 3 2024",
+            "count": 1
+          }
+        ]
+      },
+      "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+    }
+  ],
+  "overlap_and_alias_questions": [
+    "Port Monkey / Monkey: likely same social thread in project usage, but keep exact source labels per scene.",
+    "Tachy / Krystato / imnotkrystalstation: strong alias cluster; Moonshine Brian should remain a separate unresolved link unless exact source confirms identity.",
+    "Supersusi87 / SuperSusi88 / Mudbaggins: spelling and alias variants require exact-source reconciliation.",
+    "BigTech / Mike Lowry / Mike Lowrey: project aliases exist; preserve spelling variants.",
+    "Rahu and Termite each have social/person-handle and literary-character layers; do not silently collapse them.",
+    "Prophet of Potatoism may be a performed role-title rather than one stable individual."
+  ],
+  "high_value_room_candidates": [
+    "marty-biz",
+    "tachy",
+    "ledgeview",
+    "sammy",
+    "bigtech",
+    "literally",
+    "port-monkey",
+    "txt"
+  ],
+  "constellation_candidates": {
+    "witnesses-and-observers": [
+      "ledgeview",
+      "petty-wappo",
+      "dr-rockso",
+      "veggie",
+      "barry-bletunick",
+      "sweatyprolapse",
+      "runescapebot"
+    ],
+    "gardeners-and-makers": [
+      "termite",
+      "supersusi87",
+      "kaspiansee",
+      "mr-purple",
+      "potato-repair-guy"
+    ],
+    "guardians-and-companions": [
+      "literally",
+      "optimistique",
+      "pondo",
+      "tdog",
+      "rage",
+      "deleted-user",
+      "freedom-faction-blyat"
+    ],
+    "mystics-and-interpreters": [
+      "rahu",
+      "tdog",
+      "duaaaht",
+      "prophet-potatoism",
+      "sweatyprolapse"
+    ],
+    "tricksters-and-catalysts": [
+      "marty-biz",
+      "babs",
+      "gg",
+      "uwantmikehawk",
+      "darkchild"
+    ],
+    "skeptics-and-foils": [
+      "juice",
+      "bigtech",
+      "roboto-san",
+      "whocares",
+      "jazzy"
+    ],
+    "threshold-walkers": [
+      "tachy",
+      "sammy",
+      "kaspiansee",
+      "anacondasin",
+      "petty-wappo",
+      "anja"
+    ],
+    "old-shadow-conflict-records": [
+      "txt",
+      "metalorian",
+      "brink",
+      "rebecca",
+      "pkfc",
+      "kaikbaggins",
+      "don-jefe"
+    ]
+  },
+  "preservation_note": "This registry absorbs useful structure from the old uploads without copying their most speculative certainty into current canon."
+}
