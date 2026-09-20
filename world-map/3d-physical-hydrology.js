@@ -13,6 +13,9 @@ if (!geoKernel?.normalizeLongitude) throw new Error('Hydrology requires the shar
 if (!window.__potatoAtlasStyleLifecycle) await import('./3d-style-lifecycle.js');
 const styleLifecycle = window.__potatoAtlasStyleLifecycle;
 if (!styleLifecycle) throw new Error('World Map Style Lifecycle unavailable.');
+if (!window.__potatoAtlasRequestBudget) await import('./3d-request-budget.js');
+const requestBudget = window.__potatoAtlasRequestBudget;
+if (!requestBudget?.run) throw new Error('Hydrology requires the shared request budget.');
 
 const PHYSICAL_ID = 'physical.water.hydrology';
 const MIN_ZOOM = scale.threshold('physical-hydrology', 'load');
@@ -76,7 +79,13 @@ function setOpacity(value) {
 function getOpacity() { return opacity; }
 function reportStatus(phase, message) {
   window.dispatchEvent(new CustomEvent('potato-atlas-physical-layer-status', {
-    detail:{ id:PHYSICAL_ID, phase, message }
+    detail:{
+      id:PHYSICAL_ID,
+      provider:'HydroSHEDS · HydroBASINS / HydroRIVERS',
+      phase,
+      message,
+      retryable:phase !== 'zoom-needed',
+    }
   }));
 }
 
@@ -202,12 +211,14 @@ function queryUrl(service, where, fields, envelope) {
   return `${service}?where=${encodeURIComponent(where)}&outFields=${encodeURIComponent(fields)}&geometry=${encodeURIComponent(envelope)}${COMMON_QUERY}`;
 }
 async function fetchGeoJSON(url, signal) {
-  const response = await fetch(url, { signal, cache:'no-store' });
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
-  const data = await response.json();
-  if (data?.error) throw new Error(data.error.message || 'ArcGIS query failed');
-  if (data?.type !== 'FeatureCollection' || !Array.isArray(data.features)) throw new Error('Unexpected GeoJSON response');
-  return data;
+  return requestBudget.run(`hydrology:${url}`, async sharedSignal => {
+    const response = await fetch(url, { signal:sharedSignal, cache:'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    if (data?.error) throw new Error(data.error.message || 'ArcGIS query failed');
+    if (data?.type !== 'FeatureCollection' || !Array.isArray(data.features)) throw new Error('Unexpected GeoJSON response');
+    return data;
+  }, { signal, cacheMs:30_000 });
 }
 
 async function refreshViewport() {
