@@ -1,0 +1,86 @@
+{
+  "id": "character-symbolic-role-assignments",
+  "title": "Character × Symbolic Role Assignment Ledger",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "purpose": "Record scene-bounded symbolic labels without turning them into permanent character identity.",
+  "assignment_rule": "Every named assignment must carry date/window, role, source mode and scope. No entry implies the role applies outside that scope.",
+  "entries": [
+    {
+      "subject_id": "rahu",
+      "date": "2024-12-15",
+      "role_id": "tomato",
+      "variant": "tomato-villain",
+      "scope": "comic/public-Chronicle scene",
+      "source_mode": "Chronicle retelling",
+      "status": "scene-bound",
+      "note": "Rahu adopts/plays a tomato-villain role during potato-chip stream material; not a permanent Rahu ontology."
+    },
+    {
+      "subject_id": "rahu",
+      "date": "2026-03-01",
+      "role_id": "dweller",
+      "variant": "Mud Dweller / lost-soul story",
+      "scope": "conversation story",
+      "source_mode": "conversation-recovered project narrative",
+      "status": "scene-bound",
+      "note": "Used to explore whether tiny growth still matters; role is explicitly developmental/reversible."
+    },
+    {
+      "subject_id": "brink",
+      "date": "historical / exact date unresolved",
+      "role_id": "tomato",
+      "variant": "Tomato Apostle",
+      "scope": "old character-profile alias",
+      "source_mode": "old-source characterization",
+      "status": "alias-only",
+      "note": "Preserve as historical authored label; do not infer permanent belief or moral status."
+    },
+    {
+      "subject_id": "marty-biz",
+      "date": "late 2024 literary strata",
+      "role_id": "tomato",
+      "variant": "Marty-orbit Tomatoes",
+      "scope": "Great Book collective around Marty's literary domain",
+      "source_mode": "literary",
+      "status": "relation-not-identity",
+      "note": "Tomatoes describe a literary follower/counterculture collective in some scenes, not Marty himself or every real associate."
+    },
+    {
+      "subject_id": "termite",
+      "date": "2024",
+      "role_id": "potato",
+      "variant": "cultivation/growth adjacency",
+      "scope": "Great Book literary story",
+      "source_mode": "literary",
+      "status": "symbolic adjacency",
+      "note": "Termite cultivates/replants potato; his stable archetype is Builder/Cultivator rather than a literal Potato species claim."
+    },
+    {
+      "subject_id": "matthew-mtclassic",
+      "date": "2026-08",
+      "role_id": "guardian",
+      "variant": "moderation adviser",
+      "scope": "public/recovered chat scene",
+      "source_mode": "conversation-recovered",
+      "status": "archetype-only",
+      "note": "Guardian is scene-function. It does not turn real Matthew into Angel/Potato Angel/Dog."
+    },
+    {
+      "subject_id": "mediomu007",
+      "date": "2026-09-20",
+      "role_id": "builder-cultivator",
+      "variant": "room-maker",
+      "scope": "public YouTube chat",
+      "source_mode": "user-supplied public capture",
+      "status": "archetype-only",
+      "note": "Literal room rearrangement supports Builder/Cultivator function; no mystical House assignment is implied."
+    }
+  ],
+  "unassigned_by_design": [
+    "Do not assign Dog/Farmer/Mud Dweller to named real people merely because hostile project prose uses those words elsewhere.",
+    "Do not assign Potato identity to a supporter merely because they participate in Potatoverse chat.",
+    "Do not assign Angel traits to real Matthew because a created Matthew-the-Potato character exists.",
+    "Do not assign Tomato identity to every participant in a scene where Potato-vs-Tomato jokes occur."
+  ]
+}
