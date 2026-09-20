@@ -1,3 +1,7 @@
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('selection-inspector', ['selected','pins','country','relation','compare']);
+
 // Browse-first country controller for the World Relational Atlas.
 //
 // Ordinary clicks inspect one active country at a time. Retained multi-country
@@ -98,13 +102,14 @@ function snapshot(reason = 'read') {
 }
 
 function updateUrl() {
-  const url = new URL(location.href);
-  url.searchParams.delete('selected');
-  if (pinnedCodes.length) url.searchParams.set('pins', pinnedCodes.join(',')); else url.searchParams.delete('pins');
-  if (activeCode) url.searchParams.set('country', activeCode); else url.searchParams.delete('country');
-  if (relationMode !== 'all') url.searchParams.set('relation', relationMode); else url.searchParams.delete('relation');
-  if (!document.getElementById('compare')?.classList.contains('active')) url.searchParams.delete('compare');
-  history.replaceState({}, '', url);
+  const set = {
+    selected:null,
+    pins:pinnedCodes.length ? pinnedCodes.join(',') : null,
+    country:activeCode || null,
+    relation:relationMode !== 'all' ? relationMode : null,
+  };
+  if (!document.getElementById('compare')?.classList.contains('active')) set.compare = null;
+  urlState.patch('selection-inspector', { set });
 }
 
 function applySelectionStates() {
