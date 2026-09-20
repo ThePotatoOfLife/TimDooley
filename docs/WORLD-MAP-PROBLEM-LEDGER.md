@@ -287,11 +287,11 @@
 **Completion:** at least one conflict dataset can be inspected and time-selected end-to-end while administrative geography remains untouched.
 
 ### WM-049 · Region/globe/mobile behavior lacks broad end-to-end scenario coverage — P2
-**Status:** verified verification gap (2026-09-21).  
+**Status:** in progress on branch `world-map-combined-region-scenario-20260921`.  
 **Evidence:** current regressions cover antimeridian, overlap, tooltip and inspector transitions, but there is no single behavioral suite covering globe + narrow viewport + dense regional labels + detached territories + region→Places transitions.  
 **Risk:** individually-correct systems can still occlude, over-label or lose selection when combined in real browsing.  
-**TODO:** add browser-level scenarios for at least narrow phone width, globe projection, dense subdivision cluster, detached/non-contiguous geography, region toggle, local labels and mapped-place reveal.  
-**Completion:** these scenarios run in the World Map quality group with deterministic assertions on visibility, selection, focus and bounded layer/source counts.
+**Progress:** added a combined runtime-contract regression for narrow viewport + globe projection + subdivision selection + region→Places handoff. Subdivision status now exposes the effective label policy so the test can verify that ambient labels are delayed in narrow/globe mode while the selected-region label remains available from the shared render threshold. The test also guards the Places handoff against clearing regional selection and requires bounded partition reuse.  
+**Remaining:** add a true browser-level visual scenario for dense labels, detached/non-contiguous geography and focus/occlusion behavior before closing the item.
 
 ### WM-050 · Architecture auditor findings are not first-class ledger work items — P2
 **Status:** verified observability gap (2026-09-21).  

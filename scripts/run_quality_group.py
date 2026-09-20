@@ -150,6 +150,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
             "node scripts/test_world_map_search_selection_contract.mjs",
             "node scripts/test_world_map_subdivision_search.mjs",
             "node scripts/test_world_map_region_doorway_focus.mjs",
+            "node scripts/test_world_map_combined_region_scenario.mjs",
             "node scripts/test_world_map_relation_budget_contract.mjs",
             "python scripts/validate_world_map_runtime_telemetry.py",
             "node scripts/test_world_map_context_ci_contract.mjs",

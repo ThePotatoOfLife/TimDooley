@@ -108,7 +108,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The curr
 - [ ] Expand subdivision + bounded Places depth beyond the current five promoted countries (USA, CAN, DNK, UKR, RUS) through the generic importer/partition contract.
 - [ ] Replace the GeoNames mirror seed with a reviewed fresh canonical build; preserve source date, build date and upstream freshness separately.
 - [ ] Promote at least one reviewed delayed/historical conflict snapshot with source bundle, date semantics and explicit not-live boundary before exposing Conflict as current functionality.
-- [ ] Add behavioral viewport scenarios for globe mode, narrow screens, dense regional labels, Alaska/Hawaii/DC-like detached geography and region→Places handoff.
+- [~] Add behavioral viewport scenarios for globe mode, narrow screens, dense regional labels, detached geography and region→Places handoff. A combined narrow+globe+region+Places contract regression is now in progress; browser-level occlusion/detached-geography proof remains.
 - [ ] Map architecture-auditor finding codes to ledger IDs, owner and severity so CI output becomes an actionable queue instead of a parallel diagnosis.
 - [ ] Add regional-statistics enrichment as an optional sourced layer; keep geometry-first partitions useful when population/area/density remain unknown.
 - [ ] Continue design-token convergence beyond z-index into shared surface/background/border/radius/spacing tokens without flattening semantic distinctions.
