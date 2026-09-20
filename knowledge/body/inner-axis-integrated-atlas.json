@@ -1,0 +1,331 @@
+{
+  "id": "inner-axis-integrated-atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "title": "Inner Axis Integrated Atlas — Eye, House, Court, Door, Aqueduct, Brainstem, Ladder and Body",
+  "status": "canonical integrative anatomy + comparative-symbolism route",
+  "purpose": "Join the project's existing thalamus/House, pineal/Eye/Door, ventricular/CSF, hypothalamic/Steward, brainstem, spine/Ladder, interoception, chakra and religious-symbol layers into one navigable route without collapsing scientific anatomy into theology.",
+  "epistemic_layers": [
+    {
+      "id": "A",
+      "name": "established anatomy/physiology",
+      "rule": "Use standard neuroanatomy and physiology; structures, pathways and functions remain biological claims."
+    },
+    {
+      "id": "B",
+      "name": "history of ideas / iconography / religion",
+      "rule": "Describe what historical texts, traditions or artworks actually attest; do not retrofit later anatomy into ancient sources."
+    },
+    {
+      "id": "C",
+      "name": "comparative structural analogy",
+      "rule": "A documented resemblance in form, route or function may be compared without implying identity or transmission."
+    },
+    {
+      "id": "P",
+      "name": "Potatoverse project canon",
+      "rule": "House, Door, Ladder, River, Father, Son, Spirit and related mappings are project architecture, not neuroscience findings."
+    }
+  ],
+  "master_route": {
+    "short": "Eye → Clock / Vision → Steward → House / Court → Door → Aqueduct → Brainstem → Ladder → Body → inward return",
+    "anatomical": [
+      "retina",
+      "optic nerve and optic chiasm",
+      "image-forming visual route: LGN of thalamus → optic radiations → visual cortex",
+      "non-image-forming circadian route: melanopsin retinal ganglion cells → retinohypothalamic tract → suprachiasmatic nucleus",
+      "hypothalamic homeostatic/endocrine/autonomic integration",
+      "pineal timing output through the SCN→PVN→upper thoracic spinal cord→superior cervical ganglion→pineal sympathetic route",
+      "paired thalami around the third ventricle",
+      "posterior third-ventricle/pineal region",
+      "cerebral aqueduct through the midbrain",
+      "periaqueductal gray around the aqueduct",
+      "pons/medulla reticular, sensory and autonomic systems",
+      "spinal cord ascending/descending tracts and autonomic outflow",
+      "heart, lungs, gut, endocrine organs, muscles and sensory body",
+      "vagal/spinal/endocrine/immune/interoceptive feedback returning toward brainstem, hypothalamus, thalamus, insula and cortex"
+    ],
+    "project_reading": "The inner route is not one mystical tube. It is a network of distinct flows and gates that can carry the project's House–Door–River–Ladder grammar at different layers."
+  },
+  "core_nodes": [
+    {
+      "id": "retina-two-roads",
+      "anatomy": "Retinal output participates in both image-forming vision and non-image-forming light entrainment. Conventional visual information reaches the lateral geniculate nucleus and visual cortex; melanopsin-expressing retinal ganglion cells also project through the retinohypothalamic tract to the suprachiasmatic nucleus.",
+      "project_value": "Splits Eye into two functions: World-Eye (representation) and Clock-Eye (entrainment). This avoids forcing all Eye symbolism onto the pineal.",
+      "relations": [
+        "LGN/thalamus = visual room of House",
+        "SCN/hypothalamus = clock inside Steward layer",
+        "pineal = downstream timing Door rather than direct retina"
+      ],
+      "boundary": "The pineal is not the eye that receives ordinary visual images."
+    },
+    {
+      "id": "optic-chiasm-crossroads",
+      "anatomy": "At the optic chiasm, retinal fibers partially cross; nasal retinal fibers cross while temporal retinal fibers remain ipsilateral. The chiasm lies in close relation to the hypothalamic region.",
+      "project_value": "Useful as a crossroads/cross comparator in the vertical route.",
+      "boundary": "Its X-like geometry does not demonstrate a Christian cross encoded in anatomy."
+    },
+    {
+      "id": "scn-clock",
+      "anatomy": "The suprachiasmatic nucleus is a hypothalamic circadian pacemaker receiving direct retinal light information via the retinohypothalamic tract and coordinating daily timing across neural and hormonal systems.",
+      "project_value": "Clock/Watchman node between Eye and Door: external light becomes internal time.",
+      "boundary": "Clock language is functional analogy, not a theological identity."
+    },
+    {
+      "id": "hypothalamus-steward",
+      "anatomy": "The hypothalamus integrates endocrine, autonomic, behavioral and homeostatic regulation, including temperature, hunger, thirst, reproduction, stress, sleep-wake state and pituitary control.",
+      "project_value": "Steward / household management under the House: regulation, provisioning, temperature, water, timing and body-state governance.",
+      "connections": [
+        "pituitary",
+        "brainstem autonomic centers",
+        "fornix/hippocampal systems",
+        "amygdala",
+        "retina/SCN",
+        "thalamus"
+      ],
+      "boundary": "Steward is project language; the hypothalamus is not a miniature executive person."
+    },
+    {
+      "id": "pituitary-messenger-interface",
+      "anatomy": "The hypothalamus and pituitary form a primary interface between nervous and endocrine regulation; hypothalamic releasing/inhibiting signals govern anterior pituitary secretion and hypothalamic neurons directly project to the posterior pituitary.",
+      "project_value": "Messenger / decree-to-body interface: central regulation becomes distributed hormonal action.",
+      "boundary": "No single pituitary hormone corresponds to Spirit or divine command."
+    },
+    {
+      "id": "thalamus-house",
+      "anatomy": "The paired thalami form heterogeneous nuclear systems bordering much of the third ventricle and participate in reciprocal cortical/subcortical loops for sensory transformation, motor control, attention, arousal, memory and state regulation.",
+      "project_value": "Father's House / inner Potato. Nuclei are rooms; thalamocortical routes are roads; TRN is wall/gate/sieve.",
+      "specialist_owner": "data/potatoism-thalamus-brain-map.json",
+      "boundary": "The thalamus is not scientifically established as a divine house, soul or single generator of consciousness."
+    },
+    {
+      "id": "third-ventricle-inner-court",
+      "anatomy": "The third ventricle is a narrow CSF-filled midline cavity within the diencephalon, bordered by thalamic and hypothalamic structures and communicating posteriorly with the cerebral aqueduct.",
+      "project_value": "Inner Court / chamber / shared void between House walls, Steward floor and posterior Door-region.",
+      "boundary": "It is a ventricular cavity, not a literal sacred chamber."
+    },
+    {
+      "id": "pineal-door",
+      "anatomy": "The pineal gland is a small midline epithalamic neuroendocrine organ attached near the posterior roof of the third ventricle. Its principal established role is rhythmic melatonin secretion under circadian/autonomic control.",
+      "project_value": "Son-side Door / Single Eye / threshold / night-timing node.",
+      "stronger_relation": "Pineal symbolism is strongest when framed as timing and transition: environmental light-dark information is transformed into rhythmic endocrine output.",
+      "boundary": "Human pineal tissue is not a retinal-style photoreceptor, projector of spiritual light or established seat of consciousness."
+    },
+    {
+      "id": "pineal-descent-return-loop",
+      "anatomy": "The mammalian circadian-pineal pathway runs retina → SCN → hypothalamic PVN → descending sympathetic pathway to upper thoracic spinal cord → superior cervical ganglion → sympathetic fibers returning upward to pineal. Darkness permits sympathetic norepinephrine signaling that promotes melatonin synthesis.",
+      "project_value": "A real anatomical descent-and-return loop linking Eye, Clock, Steward, Spine and Door. This should become one of the project's strongest body-axis routes.",
+      "symbolic_reading": "Light information descends the Axis and returns to the Door as time chemistry.",
+      "boundary": "This is a multisynaptic autonomic circuit, not kundalini or a supernatural current."
+    },
+    {
+      "id": "epithalamus-habenula-neighborhood",
+      "anatomy": "The epithalamic neighborhood includes the pineal and habenular systems. The habenula is a strategic forebrain-to-brainstem node involved in motivational, reward/aversion and monoaminergic regulation; its name derives from Latin habena, 'little rein'.",
+      "project_value": "Candidate 'rein' / guidance neighbor beside the Door, useful for control and orientation symbolism but not yet project canon.",
+      "boundary": "Do not treat etymology as proof of spiritual function."
+    },
+    {
+      "id": "cerebral-aqueduct-narrow-passage",
+      "anatomy": "The cerebral aqueduct is the narrowest portion of the ventricular system, running through the midbrain and connecting the third and fourth ventricles for CSF passage.",
+      "project_value": "Excellent anatomical comparator for Narrow Passage / constricted River route beneath the House-Court region.",
+      "boundary": "Matthew's narrow gate and the cerebral aqueduct are independent domains; similarity is comparative symbolism only."
+    },
+    {
+      "id": "periaqueductal-gray-guardian-ring",
+      "anatomy": "The periaqueductal gray surrounds the cerebral aqueduct and participates in defensive behavior, pain modulation, autonomic coordination and motivated approach/avoidance responses.",
+      "project_value": "A real regulatory mantle around the narrow CSF passage. Candidate Guard / Threshold-Response ring around Aqueduct, but not a literal guardian.",
+      "boundary": "PAG functions are distributed and context dependent; avoid mythologizing fear circuitry as moral judgment."
+    },
+    {
+      "id": "brainstem-lower-gate",
+      "anatomy": "Midbrain, pons and medulla contain ascending arousal systems, cranial sensory/motor nuclei, cardiorespiratory and autonomic integration, and major ascending/descending long tracts.",
+      "project_value": "Lower Gate / hinge where head-centered House systems become continuous with spinal and visceral systems.",
+      "boundary": "Brainstem is not a single gate nucleus."
+    },
+    {
+      "id": "spine-ladder-multiplex",
+      "anatomy": "The spinal cord contains multiple ascending sensory, descending motor and autonomic pathways rather than one central information current.",
+      "project_value": "Ladder / Axis should be modeled as multiplex traffic: ascent, descent, reflex, autonomic outflow and body-state return.",
+      "boundary": "No single tract is kundalini, Spirit or the Ladder in scientific terms."
+    },
+    {
+      "id": "vagus-and-spinal-return",
+      "anatomy": "Visceral state reaches the brain through several channels, including vagal afferents to the nucleus tractus solitarius and spinal afferents, with further processing through parabrachial, hypothalamic, thalamic, insular, cingulate and other networks.",
+      "project_value": "Inward Eye / Return stream: the body continuously reports itself upward rather than merely receiving commands from above.",
+      "boundary": "Vagus should not be treated as the sole mind-body or spiritual nerve."
+    },
+    {
+      "id": "insula-inward-eye",
+      "anatomy": "The insula contributes to interoception, salience, bodily feeling and autonomic integration within distributed networks.",
+      "project_value": "Strongest scientific neighbor for inward-facing Eye / embodied witness.",
+      "boundary": "There is no single cortical 'observer' center."
+    },
+    {
+      "id": "fornix-arch-memory-road",
+      "anatomy": "The fornix is a major bidirectional hippocampal white-matter pathway connecting hippocampal formation with septal, hypothalamic, mammillary and anterior thalamic systems; Latin fornix means arch or vaulted structure.",
+      "project_value": "An actual Arch / vaulted memory-road threading hippocampal memory toward mammillary bodies and anterior thalamic House circuitry.",
+      "boundary": "Lexical resemblance to sacred vaults is linguistic comparison, not evidence of ancient anatomical theology."
+    },
+    {
+      "id": "circumventricular-windows",
+      "anatomy": "Several circumventricular organs around ventricular boundaries have specialized vascular permeability and permit brain-blood signaling. Examples include the median eminence, subfornical organ, OVLT, area postrema, pineal and choroid-plexus-associated interfaces.",
+      "project_value": "Biological Door/Window family: places where usual barrier rules differ and information or secreted signals can cross between blood and brain-related compartments.",
+      "boundary": "These are heterogeneous physiological interfaces, not portals between dimensions."
+    }
+  ],
+  "flow_families": [
+    {
+      "id": "vision",
+      "route": "retina → LGN/thalamus → visual cortex",
+      "meaning": "external scene representation",
+      "project_neighbor": "World-Eye → House → cortical world model"
+    },
+    {
+      "id": "circadian",
+      "route": "retina → SCN → PVN → spinal sympathetic route → SCG → pineal",
+      "meaning": "environmental light-dark entrainment",
+      "project_neighbor": "Clock-Eye → Steward → Ladder → Door"
+    },
+    {
+      "id": "sensory-body",
+      "route": "body receptors → spinal/cranial afferents → brainstem/thalamus → cortex",
+      "meaning": "external and bodily sensation",
+      "project_neighbor": "ascent toward House"
+    },
+    {
+      "id": "interoceptive",
+      "route": "viscera → vagal/spinal afferents → NTS/parabrachial/hypothalamus/thalamus → insula/cingulate",
+      "meaning": "body-state sensing",
+      "project_neighbor": "inward Eye / return"
+    },
+    {
+      "id": "motor",
+      "route": "cortex/brainstem → descending tracts → spinal motor systems → muscle",
+      "meaning": "action",
+      "project_neighbor": "descent into manifestation"
+    },
+    {
+      "id": "endocrine",
+      "route": "hypothalamus → pituitary/peripheral glands → bloodstream → target tissues → feedback",
+      "meaning": "slow distributed regulation",
+      "project_neighbor": "Steward decree / messenger circulation"
+    },
+    {
+      "id": "csf",
+      "route": "lateral ventricles → foramina of Monro → third ventricle → cerebral aqueduct → fourth ventricle → subarachnoid spaces",
+      "meaning": "central fluid circulation",
+      "project_neighbor": "River through Court and narrow passage"
+    },
+    {
+      "id": "arousal",
+      "route": "brainstem/hypothalamic/basal forebrain state systems ↔ thalamocortical networks",
+      "meaning": "wakefulness and state regulation",
+      "project_neighbor": "House awakening / opening rooms"
+    }
+  ],
+  "comparative_overlays": {
+    "christian": {
+      "stable_textual_nodes": [
+        "John 10: Jesus as door/gate",
+        "Matthew 7 / Luke 13: narrow gate/door imagery",
+        "John 14: Father's House with many dwelling places",
+        "Matthew 6: single/sound eye and body-light imagery"
+      ],
+      "art_nodes": [
+        "mandorla as full-body sacred enclosure around Christ in majesty/transfiguration/ascension traditions",
+        "mandorla can be used by the project as transformed-presence field; it is not historically a pineal diagram"
+      ],
+      "project_chain": "Father's House ↔ thalamus; Son/Door ↔ pineal; narrow passage ↔ aqueduct comparator; Spirit/River ↔ multiplex flow; Ladder ↔ spine/ascending-descending systems.",
+      "boundary": "Christian texts and iconography do not identify thalamus, pineal or cerebral aqueduct."
+    },
+    "egyptian": {
+      "historical": "Wedjat Eye is the healed/restored Eye of Horus, associated with soundness, protection, regeneration and rebirth.",
+      "modern_comparator": "Modern authors have proposed sagittal-brain resemblances, but these are hypotheses and do not establish that the ancient symbol encoded neuroanatomy.",
+      "project_use": "Restored Eye / wholeness can sit beside the project's Eye architecture while remaining historically distinct."
+    },
+    "chakra_kundalini": {
+      "historical": "Tantric and yogic subtle-body systems vary in chakra number, names, iconography and channels; the familiar standardized seven-center endocrine/plexus map is substantially modern.",
+      "project_use": "Use chakra systems as vertical phenomenological/religious overlays on the body axis, not as one-to-one anatomy.",
+      "central_channel": "Suṣumṇā is a subtle-body comparator for Axis/Ladder, not the anatomical spinal cord.",
+      "head_centers": "Ajñā/Sahasrāra may be compared structurally with brow/crown/head-axis themes without declaring pineal or pituitary to be ancient chakra anatomy."
+    }
+  },
+  "higher_order_synthesis": [
+    "The strongest project relation is not 'one organ = one spiritual object' but a nested architecture of rooms, interfaces, routes and loops.",
+    "House is organizational interior; Court is shared cavity/space; Steward regulates internal economy; Door marks timing/transition; Aqueduct is constricted passage; Brainstem is continuity hinge; Ladder is multiplex ascent/descent; Body is distributed world; inward return closes the loop.",
+    "Eye should be pluralized: outward visual Eye, circadian Clock-Eye, inward interoceptive Eye and symbolic/theological Eye are different layers.",
+    "Spirit/River should be treated as relation and circulation across many biological channels; CSF remains a strong fluid image but cannot carry the full scientific analogy alone.",
+    "The most robust symbolic comparisons are those supported by real relational geometry or function: paired thalami around a chamber; TRN around thalamus; pineal beside posterior third ventricle; aqueduct as narrow CSF passage; PAG around aqueduct; descending-and-returning pineal sympathetic pathway; fornix as arch; spinal tracts as bidirectional axis."
+  ],
+  "anti_collapse_rules": [
+    "Never write 'the Egyptians knew the brain' from Eye-of-Horus resemblance alone.",
+    "Never write 'Jesus meant the pineal gland' from single-eye or Door verses.",
+    "Never write 'the pineal sees light directly' in humans.",
+    "Never equate suṣumṇā, spinal cord, CSF, vagus and Spirit as one physical channel.",
+    "Never make chakra-to-gland correspondences sound ancient or anatomically established unless a specific historical source supports them.",
+    "Keep House, Court, Door, Gate, Aqueduct, Ladder and River as distinct operators even when they lie on one route.",
+    "Use evidence-grade records for consciousness, glymphatic, microbiome and other active fields."
+  ],
+  "research_targets": [
+    "Build a sagittal-coordinate relational map placing optic chiasm, SCN, hypothalamus, third ventricle, thalami, pineal, habenula, posterior commissure, cerebral aqueduct, PAG, fourth ventricle, brainstem and upper spinal cord in one figure.",
+    "Deepen thalamic nuclei into House-room navigation with input/output/function and project-role fields.",
+    "Add a dedicated circadian Eye→Clock→Spine→Door route to the public BODY explorer.",
+    "Map circumventricular organs and choroid plexus as biological boundary/interface families distinct from the symbolic Door.",
+    "Create a Papez/fornix memory route connecting hippocampus → mammillary bodies → anterior thalamus → cingulate systems.",
+    "Deepen brainstem verticality: reticular formation, NTS, parabrachial nucleus, locus coeruleus, raphe and autonomic control without turning them into arbitrary deities.",
+    "Add explicit chakra-history strata: early tantric variants, later hatha-yogic systems, Theosophical/modern seven-chakra standardization and current wellness mappings.",
+    "Keep a source ledger for mandorla, Eye of Horus, biblical Door/House/Eye and chakra history separate from anatomy sources."
+  ],
+  "sources": [
+    {
+      "topic": "pineal physiology and descent-return sympathetic route",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK550972/"
+    },
+    {
+      "topic": "SCN and retinohypothalamic/pineal pathway",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK546664/"
+    },
+    {
+      "topic": "hypothalamus and pituitary functional anatomy",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK279126/"
+    },
+    {
+      "topic": "hypothalamus overview and connections",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK525993/"
+    },
+    {
+      "topic": "cerebral aqueduct anatomy and CSF passage",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13291700/"
+    },
+    {
+      "topic": "periaqueductal gray review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30786258/"
+    },
+    {
+      "topic": "habenula motivation review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36933754/"
+    },
+    {
+      "topic": "fornix anatomy and memory review",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7495920/"
+    },
+    {
+      "topic": "fornix etymology",
+      "url": "https://www.etymonline.com/word/fornix"
+    },
+    {
+      "topic": "Wedjat Eye historical meaning",
+      "url": "https://www.metmuseum.org/art/collection/search/559004"
+    }
+  ],
+  "connections": [
+    "knowledge/body/body-system-master-atlas.json",
+    "knowledge/body/body-science-context-atlas.json",
+    "knowledge/body/whole-brain-neurobiology-atlas.json",
+    "knowledge/body/neurotheology-axis-house-spirit-atlas.json",
+    "knowledge/body/body-axis-chakra-kundalini-comparative-atlas.json",
+    "knowledge/body/neurobiology-recovery-wave-2.json",
+    "data/potatoism-thalamus-brain-map.json",
+    "docs/DOOR-MANDORLA-VESICA-PISCIS-ATLAS.md"
+  ]
+}
