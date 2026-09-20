@@ -1,5 +1,5 @@
 {
-  "version": "1.7.0",
+  "version": "1.8.0",
   "updated": "2026-09-20",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
@@ -2145,6 +2145,67 @@
           }
         ]
       }
+    },
+    {
+      "id": "role-dog",
+      "label": "Dog role",
+      "kind": "project-role",
+      "room_ids": [
+        "canon-identities",
+        "practice-ethics",
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/religion/#three-center-system",
+      "summary": "Contextual boundary/response role spanning pursuit, guarding, signaling, companion/free-agent behavior, pack/hive coordination and source/proxy orientation.",
+      "status_note": "Dog is a project role, not a fixed identity or diagnosis of a person.",
+      "evidence_note": "Use dated behavior/relation and named source context; recovered stories show Dog can change state.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "role-footstool",
+      "label": "Footstool role",
+      "kind": "project-role",
+      "room_ids": [
+        "symbolic-architecture",
+        "theology-god-language",
+        "practice-ethics"
+      ],
+      "route": "/axis/",
+      "summary": "Support/positional role beneath Seat/Throne, with distinct cosmic, cultic, conquest and project-microcosm meanings; project stories also treat Footstool as a tiny world with an unfound Door and as transformed support.",
+      "status_note": "Lower position never means lower intrinsic human worth.",
+      "evidence_note": "Specify which footstool mode and textual/project source is active.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "role-cow",
+      "label": "Cow role family",
+      "kind": "project-role-family",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/religion/#three-center-system",
+      "summary": "Typed Cow family covering ordinary cow, ox, nourisher, cash cow, lolcow, Holy Cow, Red Heifer, Golden Calf, Cow-target and project cosmological variants.",
+      "status_note": "Cow variants are not interchangeable and never define a person's intrinsic worth.",
+      "evidence_note": "Record subtype, source tradition or subculture, relation, date and whether the role is current or historical.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "role-lolcow",
+      "label": "Lolcow / harvest-target role",
+      "kind": "project-role",
+      "room_ids": [
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/shadow-farm/",
+      "summary": "Internet attention-extraction role in which a person is treated as repeatedly harvestable for reaction, amusement, archive material or status.",
+      "status_note": "Lolcow is an attributed/subcultural role label, not an objective essence; the archive must preserve exit and declassification.",
+      "evidence_note": "Track who applies the label, what behavior/attention loop supports it, how long it persists, and whether correction or role exit is recognized.",
+      "maturity": "case-ready"
     }
   ],
   "source_records": [
