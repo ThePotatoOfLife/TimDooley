@@ -52,6 +52,10 @@ def main() -> int:
             errors.append("World Map must not hide the Home link inside a fifth collapsible More menu")
         if not re.search(r'<a[^>]+class=["\'][^"\']*top-home[^"\']*["\'][^>]+href=["\']\.\./["\']', html, re.I):
             errors.append("World Map top navigation must expose Home as a direct link")
+        compact_html = re.sub(r"\s+", "", html)
+        for token in (".top{display:flex;gap:5px", "min-height:46px", ".topinput{width:170px", ".quick-actions{display:flex;gap:4px"):
+            if token not in compact_html:
+                errors.append(f"top header must preserve compact density marker: {token}")
 
     if public_patch:
         for token in (
@@ -133,17 +137,22 @@ def main() -> int:
         for token in ("#atlasWorldBar #viewMenu #globe", "#atlasWorldBar #traceMenu #relations"):
             if token not in world_bar:
                 errors.append(f"unified header must suppress legacy duplicate control: {token}")
-        for token in ("data-relation-mode", "setRelationMode", "Money", "Systems", "Institutions"):
+        for token in ("installAnalyzeRelations", "syncAnalyzeRelations", "data-relation-mode", "setRelationMode", "Money", "Systems", "Institutions"):
             if token not in world_bar:
-                errors.append(f"ordinary Relations menu must provide actionable connection filters: {token}")
+                errors.append(f"Analyze menu must own actionable connection filters: {token}")
+        if "['groups','Groups'],['religion','Religion'],['stats','Stats'],['relations','Relations']" in world_bar:
+            errors.append("Relations must not return as a separate top-level registry menu")
+        for token in ("atlas-axis-cluster", "Project axis lenses", "width:26px", "atlas-compact-icon"):
+            if token not in world_bar:
+                errors.append(f"compact World Bar density contract missing marker: {token}")
         if " · ${count}" in world_bar or "summary.textContent = count ?" in world_bar:
             errors.append("Groups, Religion and Stats menu labels must remain static when selections change")
         if "Relations · ${relationLabel(mode)}" in world_bar or "summary.textContent = mode === 'all' ? 'Relations'" in world_bar:
-            errors.append("Relations menu label must remain static when its filter changes")
+            errors.append("retired standalone Relations menu label logic must not return")
         if "#atlasWorldResult{min-width:72px;max-width:92px" in compact:
             errors.append("World Map result summary must not use a variable-width footprint")
-        if "#atlasWorldResult{width:92px;flex:0 0 92px" not in world_bar:
-            errors.append("World Map result summary must reserve one fixed header width")
+        if "#atlasWorldResult{width:82px;flex:0 0 82px" not in world_bar:
+            errors.append("World Map result summary must reserve the compact fixed header width")
         if '<span>Active</span>' in world_bar:
             errors.append("Current Map View must remain global and never display selected-country identity")
 
