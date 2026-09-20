@@ -4,11 +4,9 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Deserts / xeric requires the core map.');
-if (!window.__potatoAtlasStyleLifecycle) {
-  const { createStyleLifecycle } = await import('./3d-style-lifecycle.js');
-  window.__potatoAtlasStyleLifecycle = createStyleLifecycle(map);
-}
+if (!window.__potatoAtlasStyleLifecycle) await import('./3d-style-lifecycle.js');
 const styleLifecycle = window.__potatoAtlasStyleLifecycle;
+if (!styleLifecycle) throw new Error('World Map Style Lifecycle unavailable.');
 
 const SOURCE_ID = 'atlas-physical-deserts-xeric';
 const FILL_ID = 'atlas-physical-deserts-xeric-fill';
