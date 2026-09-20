@@ -186,8 +186,13 @@ function renderInspector(feature) {
     <div class="stat-grid">
       <div><span>Population</span><b>${fmt(population.value)}</b><small>${esc(population.period || '—')}</small></div>
       <div><span>Area</span><b>${fmt(p.area_km2)} km²</b><small>land + water</small></div>
+      <div><span>Density</span><b>${density == null ? '—' : `${fmt(density)} / km²`}</b><small>population ÷ area</small></div>
+      <div><span>Region type</span><b>${esc(p.subdivision_type || 'Subdivision')}</b><small>${esc(p.code || p.id || '')}</small></div>
     </div>
-    ${population.source ? `<p class="muted">Source: ${esc(population.source)}</p>` : ''}
+    ${population.source ? `<p class="muted">Population source: ${esc(population.source)}</p>` : ''}
+    ${p.geometry_source ? `<p class="muted">Boundary source: ${esc(p.geometry_source)}</p>` : ''}
+    <h2>Cities and places</h2>
+    <div data-subdivision-places><p class="muted">Loading mapped places inside this region…</p></div>
     ${subdivisionEvidenceHtml(p.id)}
     <div class="panel-actions">
       <button type="button" data-subdivision-open-country>Open country</button>
