@@ -142,6 +142,22 @@ def main() -> int:
         if "explore/" not in text:
             errors.append(f"{relative} must route to Explore/deep archive")
 
+    nested_root = ROOT / "rooms" / "inside"
+    if not nested_root.is_dir():
+        errors.append("missing nested Rooms directory: rooms/inside")
+    else:
+        for page in sorted(nested_root.glob("*/index.html")):
+            text = page.read_text(encoding="utf-8", errors="replace")
+            rel = page.relative_to(ROOT).as_posix()
+            match = re.search(r'<meta\\s+name=["\\']description["\\']\\s+content=["\\']([^"\\']+)["\\'][^>]*>', text, flags=re.I)
+            if not match:
+                errors.append(f"{rel} missing meta description")
+            elif len(match.group(1).strip()) < 40:
+                errors.append(f"{rel} meta description is too weak")
+            summary = re.search(r'<p\\s+class=["\\']summary["\\'][^>]*>(.*?)</p>', text, flags=re.I | re.S)
+            if not summary or len(re.sub(r"<[^>]+>", " ", summary.group(1)).strip()) < 40:
+                errors.append(f"{rel} missing substantive Room summary")
+
     rooms_text = page_text.get("rooms/index.html", "")
     if "cult" not in rooms_text.lower() or "high-control" not in rooms_text.lower():
         errors.append("Rooms directory must expose cult/high-control analysis by name")
