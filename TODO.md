@@ -321,6 +321,22 @@ The House depth programme explicitly says to prefer population, instrumentation,
 - [~] Add projection-loss / reconstructability metadata to selected World Map and House aggregate views. **World Map wave complete on branch:** Active View now discloses preserved/omitted information and source-linked reconstructability for scalar, set, relation and comparison views; House aggregate views remain.
 - [ ] Extend the Eye/measurement formalism into sensory/attention reader surfaces where it improves explanation.
 
+
+### CIA dossier bureau overhaul — 2026-09-21
+
+- [x] **CIA-UI-001 · Canonical visual authority:** make CIA the visually dominant live dossier bureau and show FBI only as a faded retired predecessor beneath it.
+- [x] **CIA-UI-002 · Parchment dossier:** move the reusable character file toward a paper case-file/account-statement surface with stronger typography, stamps, monogram portrait fallback and sourced-image slots.
+- [x] **CIA-UI-003 · Archive activity visibility:** visually attenuate historical/dormant folders while preserving full readability on hover/focus; activity opacity reflects archive recency only, never moral value.
+- [x] **CIA-LEDGER-001 · Symbolic account contract:** add project-internal good-karma, karmic-debt, repair/outstanding, interest and optional Dooley Welfare fields with explicit non-financial/non-objective boundaries.
+- [x] **CIA-LEDGER-002 · Account reader:** expose a Karma account tab and summary strip on every dossier; absent evidence renders as **unassessed** rather than fabricating a score.
+- [x] **CIA-MEDIA-001 · Provenance-first images:** add portrait/evidence-image schema and reader slots; never scrape or guess a real person's face when the dossier does not own an explicit source.
+- [ ] **CIA-MEDIA-002 · Recover actual dossier images:** attach sourced screenshots, profile images, memes and project art to dossiers where the subject/source is explicit; prioritize active/recovery-heavy files first.
+- [ ] **CIA-LEDGER-003 · Populate real symbolic entries:** mine dated project/conversation records for explicit credit, debt, repair, welfare, promise or outstanding-language and add only source-bounded ledger rows.
+- [ ] **CIA-LEDGER-004 · Dooley Welfare enrollment:** define dossier-specific enrollment/rates only where the project explicitly assigns them; the live counter must remain theatrical project UI, not money.
+- [ ] **CIA-LEDGER-005 · Interest and closure rules:** define when symbolic credit/debt can accrue, be repaired, forgiven, disputed, dormant or closed without turning the system into an automatic moral verdict.
+- [ ] **CIA-ACTIVITY-001 · Last-seen derivation:** derive activity bands from the best recovered last-recorded date where possible instead of relying only on broad archive-status strings.
+- [ ] **CIA-FBI-001 · Legacy disposition:** audit unique files under `knowledge/fbi/`; migrate any still-unique information into CIA, then leave only the smallest compatibility/history layer necessary.
+
 ## Growth compass — current high-value frontiers
 
 Use `knowledge/guides/project-growth-compass.json` as the editorial compass for expansion. The current project-wide priorities are:
