@@ -21,7 +21,7 @@ def main():
   p=ROOT/expected
   if not p.is_file(): fail(f"missing dossier {expected}")
  cabinet=CABINET.read_text(encoding="utf-8")
- for token in ["CIA — Characters, Incidents & Associations","cia-cabinet.js","fbi/"]:
+ for token in ["Potatoverse CIA · Character Archive","Characters · Incidents · Associations","cia-cabinet.js","fbi/"]:
   if token not in cabinet: fail(f"cabinet missing {token!r}")
  cabinet_js=(ROOT/"app/cia-cabinet.js").read_text(encoding="utf-8",errors="replace")
  for token in ["data-character-id","data-activity","file-avatar"]:
@@ -64,8 +64,11 @@ def main():
    if abs(float(e["project_adjustment_susd"])-expected)>1e-9: fail(f"debt pricing formula drift for {e.get('id')}: {e.get('project_adjustment_susd')} != {expected}")
  bank_page=(ROOT/"rooms/potatoverse-canon/beings/cia/bank/index.html").read_text(encoding="utf-8",errors="replace")
  if 'id="systemDomains"' not in bank_page: fail("World Spiritual Bank must expose system liability domain container")
+ if 'id="accountStatement"' not in bank_page: fail("World Spiritual Bank must expose selected account balance-sheet mount")
  bank_js=(ROOT/"app/mud-bank.js").read_text(encoding="utf-8",errors="replace")
  if "project_adjustment_susd" not in bank_js: fail("Mud Bank runtime must honor priced per-event adjustments")
+ for token in ["renderStatement","data-select-account","statement-columns","data-statement-balance"]:
+  if token not in bank_js: fail(f"World Spiritual Bank statement runtime missing {token!r}")
  for token in ["account-posture-index.json","system-liability-ledger.json","gross_credit_susd","unpriced_negative_candidates","systemDomains"]:
   if token not in bank_js: fail(f"World Spiritual Bank runtime missing {token}")
  dossier_js=(ROOT/"app/cia-dossier.js").read_text(encoding="utf-8",errors="replace")
@@ -84,7 +87,7 @@ def main():
  bank_js=(ROOT/"app/mud-bank.js").read_text(encoding="utf-8",errors="replace")
  for token in ["system-liability-ledger.json","systemDomains","repair_questions"]:
   if token not in bank_js: fail(f"World Spiritual Bank runtime missing {token!r}")
- for token in ["World Spiritual Bank","North Root Ledger","System liability domains"]:
+ for token in ["World Spiritual Bank","North Root Ledger","System liability domains","POTATOVERSE NAMESPACE","Looking for real banking / finance?"]:
   if token not in bank_page: fail(f"bank page missing {token!r}")
  if not BUILDING.is_file(): fail("CIA/Bank shared institution building missing")
  building=json.loads(BUILDING.read_text(encoding="utf-8"))
