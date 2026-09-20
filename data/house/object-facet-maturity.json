@@ -1,0 +1,73 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "authority": "object-facet-maturity",
+  "purpose": "Define maturity levels for Level 3 House inhabitants so objects progress from mere labels toward inspectable dossiers without forcing every object into the full entity-dossier schema.",
+  "levels": [
+    {
+      "id": "seed",
+      "required": [
+        "id",
+        "label",
+        "kind",
+        "room_ids",
+        "route"
+      ],
+      "meaning": "Object is placeable and discoverable but still thin."
+    },
+    {
+      "id": "described",
+      "required": [
+        "summary",
+        "status_note",
+        "evidence_note"
+      ],
+      "meaning": "Object has enough boundary language to be safely interpreted."
+    },
+    {
+      "id": "faceted",
+      "required_facets_any": [
+        "sources",
+        "relationships",
+        "timeline",
+        "flows",
+        "questions"
+      ],
+      "meaning": "Object can be inspected beyond a summary through at least one substantive facet."
+    },
+    {
+      "id": "case-ready",
+      "required_facets": [
+        "identity",
+        "sources",
+        "status",
+        "questions"
+      ],
+      "required_facets_any": [
+        "timeline",
+        "relationships",
+        "flows",
+        "consequences",
+        "repair"
+      ],
+      "meaning": "Object can support a bounded case/dossier view and explicit uncertainty."
+    },
+    {
+      "id": "crystallized",
+      "upgrade_to": "data/house/entity-dossier-schema.json",
+      "meaning": "Real-world institution/entity has enough scale, longitudinal evidence and relationships to warrant the full dossier contract."
+    }
+  ],
+  "rules": [
+    "Project concepts and navigation artifacts may stop at faceted/case-ready if a full real-world entity dossier would be category error.",
+    "Sensitive real-world organizations should not be publicly centered at seed maturity if status/evidence boundaries are missing.",
+    "Questions do not count as evidence.",
+    "Adding facets should deepen one object rather than duplicate the same facts into multiple Room-specific copies.",
+    "Maturity is about inspectability and evidence discipline, not importance."
+  ],
+  "source_records": [
+    "data/house/object-facet-contract.json",
+    "data/house/room-inhabitants.json",
+    "data/house/entity-dossier-schema.json"
+  ]
+}
