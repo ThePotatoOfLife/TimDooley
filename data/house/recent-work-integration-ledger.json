@@ -60,6 +60,7 @@
       ],
       "validation": [
         "scripts/validate_house_harmony.py",
+        "scripts/validate_site_access.py",
         "scripts/validate_house_inhabitant_routes.py"
       ],
       "status": "integrated",
@@ -195,7 +196,7 @@
         "/rooms/potatoverse-canon/beings/cia/"
       ],
       "house_object_ids": [
-        "fbi-character-bureau"
+        "cia-character-bureau"
       ],
       "validation": [
         "scripts/validate_cia_integration.py",
@@ -205,10 +206,11 @@
     },
     {
       "id": "navigation-consolidation",
-      "title": "Project navigation consolidation / compass",
+      "title": "Project navigation consolidation / Quick Access",
       "canonical_owners": [
         "data/house/public-surfaces.json",
-        "app/project-compass.js",
+        "data/house/site-access.json",
+        "app/site-access.js",
         "docs/PROJECT-NAVIGATION-FOCUS-TODO-2026-09-20.md"
       ],
       "room_ids": [],
