@@ -1,0 +1,254 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "authority": "recent-work-integration-ledger",
+  "purpose": "Track substantial recent work through canonical ownership, House placement, public exposure and validation so researched material does not remain half-integrated.",
+  "rule": "A substantial workstream is integrated when it has a durable canonical owner, appropriate Room/Dwelling placement, a reader/discovery route where warranted, and a regression or validation path. Not every dataset needs a new public page or House inhabitant.",
+  "workstreams": [
+    {
+      "id": "current-world-news",
+      "title": "Current World live news",
+      "canonical_owners": [
+        "data/news/sources.json",
+        "app/news.js"
+      ],
+      "room_ids": [
+        "politics-governance",
+        "economy-finance",
+        "geography-countries",
+        "information-ecology",
+        "chronology-events",
+        "provenance-evidence"
+      ],
+      "public_surface_ids": [
+        "news",
+        "world"
+      ],
+      "routes": [
+        "/news/",
+        "/world/"
+      ],
+      "validation": [
+        "scripts/validate_news_surface.py"
+      ],
+      "status": "integrated",
+      "note": "News is a non-owning current-events View beneath World; feeder Rooms project into it without transferring factual ownership."
+    },
+    {
+      "id": "cia-intelligence-layer",
+      "title": "CIA / public intelligence institutions",
+      "canonical_owners": [
+        "data/security-intelligence-organizations.json",
+        "data/intelligence-security-graph.json",
+        "knowledge/core/below-intelligence-shadow-observatory.json"
+      ],
+      "room_ids": [
+        "politics-governance",
+        "law-justice",
+        "provenance-evidence"
+      ],
+      "public_surface_ids": [
+        "politics",
+        "law",
+        "sources"
+      ],
+      "routes": [
+        "/shadow-farm/#intelligence-desk"
+      ],
+      "house_object_ids": [
+        "state-cia"
+      ],
+      "validation": [
+        "scripts/validate_house_harmony.py",
+        "scripts/validate_house_inhabitant_routes.py"
+      ],
+      "status": "integrated",
+      "note": "CIA is a typed real institution; Below placement reflects intelligence/restricted-information work, not a criminal classification."
+    },
+    {
+      "id": "central-bank-obligation-foundations",
+      "title": "Fed / ECB / debt and obligation foundations",
+      "canonical_owners": [
+        "knowledge/economics/north-obligation-graph-schema.json",
+        "knowledge/economics/stock-flow-obligation-network-atlas.json"
+      ],
+      "room_ids": [
+        "economy-finance",
+        "politics-governance",
+        "infrastructure-capability",
+        "research-programmes"
+      ],
+      "public_surface_ids": [
+        "economy",
+        "world-systems",
+        "north"
+      ],
+      "routes": [
+        "/economy/",
+        "/world-systems/",
+        "/north/"
+      ],
+      "house_object_ids": [
+        "institution-federal-reserve",
+        "institution-ecb",
+        "model-north-obligation-graph"
+      ],
+      "validation": [
+        "scripts/validate_house_harmony.py",
+        "scripts/validate_house_inhabitant_routes.py"
+      ],
+      "status": "foundation-integrated",
+      "next": [
+        "Add typed material edges among central banks, treasuries, sovereign securities, reserves, banking systems and payment rails."
+      ]
+    },
+    {
+      "id": "world-map-quality-programme",
+      "title": "World Map architecture and subdivision work",
+      "canonical_owners": [
+        "docs/WORLD-MAP-PROBLEM-LEDGER.md",
+        "data/world-map-scale-contract.json"
+      ],
+      "room_ids": [
+        "geography-countries",
+        "infrastructure-capability",
+        "politics-governance"
+      ],
+      "public_surface_ids": [
+        "world-map",
+        "world"
+      ],
+      "routes": [
+        "/world-map/",
+        "/world/"
+      ],
+      "validation": [
+        "scripts/run_quality_group.py"
+      ],
+      "status": "integrated-with-active-queue",
+      "note": "Map remains a specialist World View; canonical factual ownership stays in source/domain datasets."
+    },
+    {
+      "id": "tim-public-duration",
+      "title": "Tim 100,000 Hours / public witness",
+      "canonical_owners": [
+        "knowledge/timeline/100000-hour-counting-models.json",
+        "knowledge/timeline/100000-hour-adjustment-ledger.json"
+      ],
+      "room_ids": [
+        "chronology-events",
+        "witness-attestation",
+        "memory-recovery"
+      ],
+      "public_surface_ids": [
+        "tim",
+        "timeline"
+      ],
+      "routes": [
+        "/tim-dooley/100000-hours/",
+        "/tim-dooley/public-witness/"
+      ],
+      "validation": [
+        "scripts/validate_100000_hour_page.py"
+      ],
+      "status": "integrated"
+    },
+    {
+      "id": "tts-reader-system",
+      "title": "TTS reader system",
+      "canonical_owners": [
+        "app/site-tts.js",
+        "app/tts-drawer.js",
+        "app/longform-tts-adapter.js"
+      ],
+      "room_ids": [],
+      "public_surface_ids": [],
+      "routes": [
+        "/tools/tts/"
+      ],
+      "validation": [
+        "scripts/site_shell_contract.py"
+      ],
+      "status": "infrastructure",
+      "note": "TTS is a site capability rather than House knowledge; page integrations should exclude controls/navigation from speech."
+    },
+    {
+      "id": "potatoverse-fbi-bureau",
+      "title": "Figures, Bonds & Incidents character bureau",
+      "canonical_owners": [
+        "knowledge/fbi/manifest.json"
+      ],
+      "room_ids": [
+        "memory-recovery",
+        "provenance-evidence",
+        "witness-attestation",
+        "canon-identities",
+        "developmental-genealogy",
+        "subculture-group-formation"
+      ],
+      "public_surface_ids": [
+        "tim",
+        "timeline",
+        "culture"
+      ],
+      "routes": [
+        "/rooms/potatoverse-canon/beings/fbi/"
+      ],
+      "house_object_ids": [
+        "fbi-character-bureau"
+      ],
+      "validation": [
+        "scripts/validate_fbi_integration.py",
+        "scripts/validate_house_inhabitant_routes.py"
+      ],
+      "status": "integrated"
+    },
+    {
+      "id": "navigation-consolidation",
+      "title": "Project navigation consolidation / compass",
+      "canonical_owners": [
+        "data/house/public-surfaces.json",
+        "app/project-compass.js",
+        "docs/PROJECT-NAVIGATION-FOCUS-TODO-2026-09-20.md"
+      ],
+      "room_ids": [],
+      "public_surface_ids": [
+        "house"
+      ],
+      "routes": [
+        "/house/"
+      ],
+      "validation": [
+        "scripts/validate_house_harmony.py"
+      ],
+      "status": "active-refinement",
+      "note": "Visible / semi-visible / invisible hierarchy is being applied page by page rather than by adding another global menu."
+    },
+    {
+      "id": "science-body-deepening",
+      "title": "Science / Life & Body deepening",
+      "canonical_owners": [
+        "knowledge/science/science-master-index.json",
+        "knowledge/body/body-system-master-atlas.json"
+      ],
+      "room_ids": [
+        "physics-cosmology",
+        "model-testing",
+        "neurobiology",
+        "symbolic-body-comparison"
+      ],
+      "public_surface_ids": [
+        "science",
+        "life-body"
+      ],
+      "routes": [
+        "/science/",
+        "/life-body/"
+      ],
+      "validation": [
+        "scripts/validate_body_discovery.py"
+      ],
+      "status": "integrated"
+    }
+  ]
+}

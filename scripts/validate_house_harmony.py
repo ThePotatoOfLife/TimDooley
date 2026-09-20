@@ -19,13 +19,15 @@ def main():
     dossiers=load("data/house/room-dossiers.json").get("dossiers",[])
     inhabitants=load("data/house/room-inhabitants.json").get("inhabitants",[])
     surfaces=load("data/house/public-surfaces.json").get("surfaces",[])
-    health=load("data/house/spatial-house-health-2026-09-20.json")
+    health=load("data/house/spatial-house-health.json")
 
     room_ids={x.get("id") for x in rooms if isinstance(x,dict)}
     sub_ids={x.get("id") for x in subs if isinstance(x,dict)}
     surface_ids={x.get("id") for x in surfaces if isinstance(x,dict)}
     holding_ids={x.get("room_id") for x in holdings if isinstance(x,dict)}
     dossier_ids={x.get("room_id") for x in dossiers if isinstance(x,dict)}
+    holding_by={x.get("room_id"):x for x in holdings if isinstance(x,dict)}
+    dossier_by={x.get("room_id"):x for x in dossiers if isinstance(x,dict)}
 
     if len(room_ids)!=10:
         errors.append(f"expected 10 canonical Dwellings, found {len(room_ids)}")
@@ -67,6 +69,18 @@ def main():
             errors.append(f"{rid} has no Room dossier")
         if rid not in inhabitant_room_ids:
             errors.append(f"{rid} has no registered inhabitant/case/object")
+        if rid in holding_by and rid in dossier_by:
+            sub_surfaces=sorted(row.get("public_surface_ids",[]))
+            holding_surfaces=sorted(holding_by[rid].get("public_surface_ids",[]))
+            dossier_surfaces=sorted(
+                x.get("id") for x in dossier_by[rid].get("public_surfaces",[])
+                if isinstance(x,dict) and x.get("id")
+            )
+            if sub_surfaces!=holding_surfaces or sub_surfaces!=dossier_surfaces:
+                errors.append(
+                    f"{rid} public-surface projection drift: "
+                    f"subroom={sub_surfaces} holdings={holding_surfaces} dossier={dossier_surfaces}"
+                )
 
     for edge in interfaces:
         if not isinstance(edge,dict):
@@ -77,6 +91,19 @@ def main():
             errors.append(f"interface {edge.get('id')} is missing guard/preserved invariants")
 
     by_surface={x.get("id"):x for x in surfaces if isinstance(x,dict)}
+    for sid,row in by_surface.items():
+        seen=set()
+        cur=sid
+        while cur:
+            if cur in seen:
+                errors.append(f"public-surface parent cycle detected from {sid}: {cur}")
+                break
+            seen.add(cur)
+            parent=(by_surface.get(cur) or {}).get("primary_parent")
+            if parent==cur:
+                errors.append(f"public surface {cur} cannot parent itself")
+                break
+            cur=parent
     for s in surfaces:
         if not isinstance(s,dict):
             continue

@@ -22,7 +22,7 @@ html=read("news/index.html")
 js=read("app/news.js")
 css=read("app/news.css")
 home=read("index.html")
-house=read("house/index.html")
+world=read("world/index.html")
 
 try:
     cfg=json.loads(read("data/news/sources.json"))
@@ -140,7 +140,7 @@ for token in (
 
 for token in ('data-news-mode="preview"','publisher-rss','app/news.js?v=20260920i','app/news.css?v=20260920i'):
     require(home,token,"index.html")
-require(house,'href="../news/">Current World</a>',"house/index.html")
+require(world,'href="../news/"',"world/index.html")
 
 providers={row.get("id") for row in cfg.get("providers",[]) if isinstance(row,dict)}
 if providers != {"gdelt","publisher-rss","hacker-news","spaceflight-news"}:
@@ -191,6 +191,7 @@ try:
         if row.get("knowledge_owner") is not False: errors.append("news must remain a non-owning public view")
         if row.get("is_view") is not True: errors.append("news must remain typed as a view")
         if row.get("canonical_route")!="/news/": errors.append("news canonical route drift")
+        if row.get("primary_parent")!="world": errors.append("news must remain owned by the World public hierarchy")
 except Exception as exc:
     errors.append(f"could not validate public surface registry: {exc}")
 

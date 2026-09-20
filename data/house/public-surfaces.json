@@ -1,5 +1,5 @@
 {
-  "version": "2.3.0",
+  "version": "2.5.0",
   "updated": "2026-09-20",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
@@ -163,8 +163,8 @@
       "route": "/news/",
       "canonical_route": "/news/",
       "surface_type": "explorer",
-      "title": "Current World News",
-      "primary_parent": "home",
+      "title": "Current World",
+      "primary_parent": "world",
       "primary_room_ids": [
         "world-systems",
         "culture-information",
@@ -467,7 +467,7 @@
       "canonical_route": "/axis/",
       "surface_type": "guide",
       "title": "Living Axis",
-      "primary_parent": "home",
+      "primary_parent": "house",
       "primary_room_ids": [
         "potatoverse-canon",
         "traditions-texts",
@@ -569,7 +569,7 @@
       "canonical_route": "/context/culture/",
       "surface_type": "guide",
       "title": "Culture & Subculture",
-      "primary_parent": "home",
+      "primary_parent": "world",
       "primary_room_ids": [
         "culture-information",
         "archive-sources",
@@ -614,7 +614,7 @@
       "canonical_route": "/history/",
       "surface_type": "guide",
       "title": "History & Time",
-      "primary_parent": "home",
+      "primary_parent": "timeline",
       "primary_room_ids": [
         "time-history",
         "archive-sources",
@@ -738,7 +738,7 @@
       "canonical_route": "/research-lab/",
       "surface_type": "guide",
       "title": "Research Lab",
-      "primary_parent": "home",
+      "primary_parent": "house",
       "primary_room_ids": [
         "research-lab",
         "archive-sources",

@@ -1,5 +1,5 @@
 {
-  "version": "4.2.0",
+  "version": "1.8.0",
   "updated": "2026-09-20",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
@@ -344,7 +344,8 @@
         }
       ],
       "public_surface_ids": [
-        "sources"
+        "sources",
+        "news"
       ],
       "interface_ids": [
         "if-provenance-witness",
@@ -514,7 +515,8 @@
       ],
       "public_surface_ids": [
         "timeline",
-        "history"
+        "history",
+        "news"
       ],
       "interface_ids": [
         "if-witness-time",
@@ -1452,7 +1454,8 @@
       "public_surface_ids": [
         "politics",
         "world",
-        "world-systems"
+        "world-systems",
+        "news"
       ],
       "interface_ids": [
         "if-politics-law",
@@ -1557,7 +1560,8 @@
       ],
       "public_surface_ids": [
         "economy",
-        "world-systems"
+        "world-systems",
+        "news"
       ],
       "interface_ids": [
         "if-politics-economy",
@@ -1672,7 +1676,8 @@
       "public_surface_ids": [
         "world",
         "world-map",
-        "world-systems"
+        "world-systems",
+        "news"
       ],
       "interface_ids": [
         "if-geography-world"
@@ -1791,7 +1796,8 @@
       ],
       "public_surface_ids": [
         "culture",
-        "context"
+        "context",
+        "news"
       ],
       "interface_ids": [
         "if-platform-info",
