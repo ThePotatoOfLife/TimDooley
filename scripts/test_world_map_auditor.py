@@ -147,6 +147,19 @@ const node = document.createElement('div'); node.id = 'atlasThing';
             contract={"schema_version":"1.0","owners":{"source:countries":["world-map/missing.js"]},"shared":{"source:unused":{"modules":["world-map/3d-a.js","world-map/3d-b.js"],"rationale":"stale"}}}; proc,report=run_auditor(root,contract); self.assertEqual(proc.returncode,1)
             codes={(f["code"],f["severity"]) for f in report["findings"]}; self.assertIn(("declared-owner-module-missing","error"),codes); self.assertIn(("stale-contract-entry","warning"),codes)
 
+
+    def test_findings_include_problem_queue_ids(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            write_module(root,"3d-a.js","map.addSource('dup',{});")
+            write_module(root,"3d-b.js","map.addSource('dup',{});")
+            proc,report=run_auditor(root)
+            self.assertEqual(proc.returncode,1)
+            finding=next(f for f in report["findings"] if f["code"]=="duplicate-source-owner")
+            self.assertEqual(finding.get("queue_id"),"WM-006")
+            self.assertIn("Render Stack",finding.get("owner",""))
+            self.assertIn("WM-006",proc.stdout)
+
     def test_report_order_is_deterministic_ignoring_generated_at(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp); write_module(root,"3d-b.js","map.addSource('b',{});"); write_module(root,"3d-a.js","map.addSource('a',{});")
