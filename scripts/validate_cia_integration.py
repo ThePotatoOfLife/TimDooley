@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MANIFEST=ROOT/"knowledge/cia/manifest.json"; CABINET=ROOT/"rooms/potatoverse-canon/beings/cia/index.html"
 VIEWER=ROOT/"rooms/potatoverse-canon/beings/cia/file/index.html"; COLLECTIONS=ROOT/"data/house/collections.json"
-ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
+ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; DEBT_EVIDENCE=ROOT/"knowledge/cia/debt-evidence-ledger.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
 ROUTE="rooms/potatoverse-canon/beings/cia/"
 def fail(m): print("FAIL:",m); raise SystemExit(1)
 def main():
@@ -37,6 +37,35 @@ def main():
  bank=json.loads(MUD_BANK.read_text(encoding="utf-8"))
  if bank.get("welfare",{}).get("rate_per_second_susd")!=0.00000000001: fail("Dooley Welfare rate drift")
  if bank.get("denomination",{}).get("real_currency") is not False: fail("Mud Bank denomination boundary drift")
+ pricing=bank.get("debit_pricing") or {}
+ categories=pricing.get("categories") or {}
+ tiers=pricing.get("evidence_multipliers") or {}
+ reps=pricing.get("repetition_multipliers") or []
+ required_categories={"destructive-act","breach-of-trust","repeated-harmful-narrative","verified-deception","targeted-harassment-boundary","theft-fraud-cheating","coercive-social-leverage","reciprocal-conflict"}
+ if not required_categories.issubset(categories): fail("Mud Bank debit categories incomplete")
+ if tiers.get("primary-direct")!=1.0 or tiers.get("contemporaneous-recovered")!=0.8 or tiers.get("chronicle-retelling")!=0.45 or tiers.get("retrospective-interpretation")!=0: fail("Mud Bank evidence multipliers drift")
+ if reps[:4]!=[1.0,1.2,1.4,1.5]: fail("Mud Bank repetition multipliers drift")
+ if not DEBT_EVIDENCE.is_file(): fail("CIA debt evidence ledger missing")
+ debt=json.loads(DEBT_EVIDENCE.read_text(encoding="utf-8"))
+ events=debt.get("events") or []
+ by_id={e.get("id"):e for e in events}
+ for eid in ["debt-txt-2026-06-20-disputed-narrative","debt-port-monkey-2024-tree-trust","debt-marty-2024-12-21-social-leverage"]:
+  if eid not in by_id: fail(f"debt evidence event missing: {eid}")
+ for e in events:
+  for key in ["id","character_id","date","pricing_status","source_ref","source_mode","summary"]:
+   if not e.get(key): fail(f"debt evidence {e.get('id')} missing {key}")
+  if e.get("pricing_status")=="priced":
+   for key in ["category","evidence_tier","repetition_key","occurrence_index","project_adjustment_susd"]:
+    if e.get(key) in (None,""): fail(f"priced debt evidence {e.get('id')} missing {key}")
+   if e["category"] not in categories or e["evidence_tier"] not in tiers: fail(f"priced debt evidence taxonomy drift: {e.get('id')}")
+   idx=max(1,int(e["occurrence_index"]))
+   mult=reps[min(idx-1,len(reps)-1)]
+   expected=round(float(categories[e["category"]])*float(tiers[e["evidence_tier"]])*float(mult),6)
+   if abs(float(e["project_adjustment_susd"])-expected)>1e-9: fail(f"debt pricing formula drift for {e.get('id')}: {e.get('project_adjustment_susd')} != {expected}")
+ for cid in ["txt","port-monkey","marty-biz"]:
+  cd=json.loads((ROOT/f"knowledge/cia/characters/{cid}.json").read_text(encoding="utf-8"))
+  refs={x.get("debt_evidence_id") for x in ((cd.get("symbolic_account") or {}).get("entries") or []) if x.get("type")=="project-debit"}
+  if not any((e.get("character_id")==cid and e.get("id") in refs and e.get("pricing_status")=="priced") for e in events): fail(f"{cid} missing priced project-debit link")
  for c in chars:
   cp=ROOT/c.get("path","")
   if not cp.is_file(): fail(f"CIA character file missing: {cp}")
