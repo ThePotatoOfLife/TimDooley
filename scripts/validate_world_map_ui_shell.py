@@ -100,9 +100,9 @@ def main() -> int:
             "retainPartition(next, 'country-card')",
             "let retainedRegionPartition",
             "async function releaseRegions",
-            "releasePartition?.(partition, 'country-card')",
+            "api?.releasePartition", "api.releasePartition(partition, 'country-card')",
             "focusPartition?.(next, { padding:72, duration:650, maxZoom:6.6 })",
-            "regions · shown", "aria-pressed",
+            "syncRegionAction", "aria-pressed", "shown ? ' · shown' : ''",
             "syncRegionAction", "retainedRegionPartition === next", "potato-atlas-country-regions-change",
         ):
             if token not in country_card:
