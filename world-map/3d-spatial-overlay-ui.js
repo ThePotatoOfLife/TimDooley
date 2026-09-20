@@ -14,6 +14,8 @@ const panel = document.querySelector('#panel');
 const layersMenu = document.querySelector('#layersMenu .menu-pop');
 const analyzeMenu = document.querySelector('#traceMenu .menu-pop');
 const MEASUREMENTS_URL = '../data/world-map-spatial-measurements.json';
+const BELOW_OVERLAY_ID = 'project.below.us-cases';
+let belowFeatures = [];
 const GROUP_ORDER = [
   'sacred.father-land',
   'sacred.chosen-children-land',
@@ -123,6 +125,58 @@ style.textContent = `
 .atlas-spatial-overlap .spatial-measurement small{display:block;color:#aab4aa;margin-top:3px;line-height:1.3}
 `;
 document.head.appendChild(style);
+
+
+function belowFeatureView(feature) {
+  const p = feature?.properties || {};
+  const row = spatial.get(BELOW_OVERLAY_ID);
+  let sourceIds = p.source_ids;
+  if (!Array.isArray(sourceIds)) sourceIds = row?.source_ids || [];
+  return {
+    overlay_id:BELOW_OVERLAY_ID,
+    overlay:row,
+    feature_id:p.feature_id || feature?.id || '',
+    label:p.label || row?.label || BELOW_OVERLAY_ID,
+    epistemic_type:p.epistemic_type || row?.epistemic_type || 'project_interpretive',
+    confidence:p.confidence || row?.confidence || 'unknown',
+    status_note:p.status_note || row?.status_note || '',
+    geometry_version:p.geometry_version || null,
+    measurement_policy:p.measurement_policy || null,
+    source_ids:sourceIds,
+  };
+}
+function belowRowsForSubdivision(id) {
+  const key = String(id || '');
+  return belowFeatures.filter(feature => String(feature?.properties?.subdivision_id || '') === key);
+}
+function registerBelowSubdivisionProvider() {
+  const api = window.__potatoAtlasSubdivisions;
+  if (!api?.registerEvidenceProvider) return false;
+  return api.registerEvidenceProvider('spatial:project.below.us-cases', {
+    summary(id) {
+      if (!spatial.isActive(BELOW_OVERLAY_ID)) return null;
+      const rows = belowRowsForSubdivision(id);
+      if (!rows.length) return null;
+      return {
+        active:true,
+        eyebrow:'Active project context · Below / Farm',
+        primary:rows.length,
+        summary:`project case anchor${rows.length === 1 ? '' : 's'} associated with this state.`,
+        boundary:'Project-symbolic case anchors only; not a census, resident classification, home address or current-location claim.',
+        actionLabel:'Open Below / Farm cases',
+      };
+    },
+    open(id) {
+      const rows = belowRowsForSubdivision(id).map(belowFeatureView);
+      if (rows.length) openInspector(rows);
+    },
+  });
+}
+async function hydrateBelowSubdivisionProvider() {
+  const fc = await spatial.featureCollection?.(BELOW_OVERLAY_ID);
+  belowFeatures = fc?.features || [];
+  registerBelowSubdivisionProvider();
+}
 
 function persistBoundaryView(value) {
   urlState.patch('spatial-overlay-ui', {
@@ -258,5 +312,14 @@ window.addEventListener('potato-atlas-spatial-overlay-change', event => {
   renderControls();
 });
 
-spatial.ready.then(renderControls);
-window.__potatoAtlasSpatialOverlayUI = { render:renderControls, inspect:openInspector, measurements:measurementPromise };
+spatial.ready.then(async () => {
+  await hydrateBelowSubdivisionProvider().catch(error => console.warn('Below subdivision context unavailable:', error));
+  renderControls();
+});
+window.addEventListener('potato-atlas-subdivisions-ready', registerBelowSubdivisionProvider);
+window.__potatoAtlasSpatialOverlayUI = {
+  render:renderControls,
+  inspect:openInspector,
+  measurements:measurementPromise,
+  registerBelowSubdivisionProvider,
+};
