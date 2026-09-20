@@ -62,6 +62,9 @@ jobs:
           python scripts/validate_house_world_routing.py
           python scripts/test_coordination_convergence.py
 
+      - name: Validate shared formal grammar
+        run: python scripts/validate_project_formal_grammar.py
+
       - name: Validate public Rooms navigation
         run: python scripts/validate_public_rooms.py
 
