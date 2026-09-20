@@ -12,7 +12,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
+KNOWLEDGE = ROOT / "knowledge"
 OUT = DATA / "canonical-record-registry.json"
+SCAN_ROOTS = (DATA, KNOWLEDGE)
 SKIP = {"canonical-record-registry.json", "depth-audit-live.json", "repository-index.json"}
 ID_KEYS = ("id", "slug", "key", "term", "iso3", "country_id")
 NAME_KEYS = ("name", "display_name", "proper_name", "title", "label", "term")
@@ -48,7 +50,8 @@ def walk(value, path, source, rows):
 def main():
     rows = []
     json_errors = []
-    for path in sorted(DATA.rglob("*.json")):
+    paths = sorted(path for scan_root in SCAN_ROOTS for path in scan_root.rglob("*.json"))
+    for path in paths:
         if path.name in SKIP:
             continue
         source = path.relative_to(ROOT).as_posix()
@@ -74,12 +77,12 @@ def main():
     result = {
         "version": "2.0.0",
         "updated": "2026-09-08",
-        "purpose": "Generated inventory of record-like IDs across data files; it exposes source/path duplication without deciding canonical ownership automatically.",
+        "purpose": "Generated inventory of record-like IDs across data/ and knowledge/; it exposes source/path duplication without deciding canonical ownership automatically.",
         "policy": {
             "canonical_decisions_live_in": "data/canonical-source-map.json",
             "duplicates_require_review": True,
             "generated": True,
-            "discovery_contract": "Aligned with repository-index.py ID/name heuristics"
+            "discovery_contract": "Aligned with repository-index.py ID/name heuristics across both substantive JSON roots"
         },
         "record_count": len(rows),
         "unique_id_count": len(by_id),
