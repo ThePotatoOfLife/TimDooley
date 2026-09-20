@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updated": "2026-09-19",
+  "updated": "2026-09-20",
   "id": "world-map-layer-surfaces",
   "purpose": "Control-plane inventory for how World Map information planes integrate without collapsing unlike semantics.",
   "persistent_planes": [
@@ -59,7 +59,8 @@
       "rules": [
         "epistemic type always visible",
         "overlap never implies equivalence",
-        "project-symbolic geography remains attributed"
+        "project-symbolic geography remains attributed",
+        "dated conflict snapshots remain independent from administrative geography"
       ]
     },
     {
