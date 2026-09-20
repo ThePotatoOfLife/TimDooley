@@ -16,6 +16,12 @@
     }catch(_){return '/'}
   };
   const current=routePath();
+  const institutionContext=current.startsWith('/rooms/potatoverse-canon/beings/cia/');
+  const institutionZone=current.startsWith('/rooms/potatoverse-canon/beings/cia/bank/')?'bank':
+    current.startsWith('/rooms/potatoverse-canon/beings/cia/file/')?'dossier':
+    current.startsWith('/rooms/potatoverse-canon/beings/cia/associations/')?'associations':
+    current.startsWith('/rooms/potatoverse-canon/beings/cia/incidents/')?'incidents':
+    institutionContext?'archive':'';
   const fallbackEntries=[
     {id:'home',label:'Home',route:'/',kind:'start',note:'Project entrance',aliases:['start','homepage']},
     {id:'news',label:'Current World',route:'/news/',kind:'world',note:'Live news',aliases:['news','headlines','current','today']},
@@ -42,6 +48,7 @@
   ];
   let curatedEntries=[...fallbackEntries];
   let accessGroups={
+    landmarks:['cia-character-archive','mud-bank'],
     go_now:['news','world-map','tim','house','rooms'],
     find:['people-cases','index-a-z','timeline','sources','explore'],
     direct_doors:['cia-character-archive','mud-bank','intelligence-cia','economy','tts','claims','public-witness','science','religion','hours']
@@ -51,12 +58,17 @@
   wrapper.setAttribute('data-no-tts','');
   wrapper.setAttribute('aria-label','Site quick access');
   const pageTitle=(document.querySelector('h1')?.textContent||document.title||'Current page').replace(/\s+/g,' ').trim();
-  wrapper.innerHTML='<nav class="site-access-dock" aria-label="Quick access">'+
+  const institutionShortcuts=institutionContext?'<nav class="site-access-local-shortcuts" aria-label="Character Archive building shortcuts">'+
+    '<span>You are in '+esc(institutionZone||'the building')+'</span>'+
+    '<a'+(institutionZone==='archive'?' aria-current="page"':'')+' href="'+esc(href('/rooms/potatoverse-canon/beings/cia/'))+'">Archive</a>'+
+    '<a'+(institutionZone==='bank'?' aria-current="page"':'')+' href="'+esc(href('/rooms/potatoverse-canon/beings/cia/bank/'))+'">Bank</a>'+
+    '</nav>':'';
+  wrapper.innerHTML=institutionShortcuts+'<nav class="site-access-dock" aria-label="Quick access">'+
     '<a data-site-access-route="/" href="'+esc(href('/'))+'">Home</a>'+
     '<a class="site-access-news" data-site-access-route="/news/" href="'+esc(href('/news/'))+'">News</a>'+
     '<a data-site-access-route="/world-map/" href="'+esc(href('/world-map/'))+'">Map</a>'+
     '<button type="button" data-site-access-find aria-expanded="false">Find</button>'+
-    '<button type="button" data-site-access-menu aria-expanded="false">Menu</button>'+
+    '<button type="button" data-site-access-menu aria-expanded="false">Places</button>'+
     '</nav>'+
     '<section class="site-access-panel" data-site-access-panel hidden aria-label="Site menu">'+
       '<div class="site-access-head"><div><small>Quick access · you are in</small><strong>'+esc(pageTitle)+'</strong></div><button class="site-access-close" type="button" aria-label="Close quick access">×</button></div>'+
@@ -139,15 +151,23 @@
     }catch(_){}
   };
   const group=(title,entries)=>'<div class="site-access-group"><span>'+esc(title)+'</span><div class="site-access-links">'+entries.map(e=>'<a href="'+esc(href(e.route))+'"><b>'+esc(e.label)+'</b>'+(e.scope?'<i class="site-access-scope">'+esc(e.scope)+'</i>':'')+'<small>'+esc(e.note||'')+'</small></a>').join('')+'</div></div>';
+  const landmarkCards=entries=>'<section class="site-access-landmarks" aria-label="Project landmarks"><div class="site-access-landmark-head"><b>Project landmarks</b><small>Go by name. You do not need to remember the House hierarchy.</small></div><div class="site-access-landmark-grid">'+entries.map(e=>{
+    const kind=e.id==='mud-bank'?'BANK':'FILES';
+    const short=e.id==='mud-bank'?'Spiritual Bank':'Character Archive';
+    return '<a class="site-access-landmark" href="'+esc(href(e.route))+'"><em>'+kind+'</em><span><b>'+short+'</b><small>'+esc(e.note||'')+'</small></span><i>→</i></a>';
+  }).join('')+'</div></section>';
   const renderDefault=async()=>{
     await loadIndex();
     content.className='site-access-groups';
     const byId=id=>curatedEntries.find(e=>e.id===id);
     const rows=ids=>(ids||[]).map(byId).filter(Boolean);
     content.innerHTML=
+      landmarkCards(rows(accessGroups.landmarks||['cia-character-archive','mud-bank']))+
+      '<div class="site-access-group-grid">'+
       group('Go now',rows(accessGroups.go_now))+
       group('Find',rows(accessGroups.find))+
-      group('Direct doors',rows(accessGroups.direct_doors));
+      group('More places',rows((accessGroups.direct_doors||[]).filter(id=>!(accessGroups.landmarks||[]).includes(id))))+
+      '</div>';
   };
   const renderSearch=async()=>{
     const q=input.value.trim().toLowerCase();
