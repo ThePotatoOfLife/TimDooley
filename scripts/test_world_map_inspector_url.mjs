@@ -35,6 +35,19 @@ assert.deepEqual(
   decodeInspectorPath('country:USA/subdivision:US-CA/evidence:adl-heat%3AUS-CA').at(-1).parent,
   {type:'subdivision', id:'US-CA'}
 );
+assert.equal(
+  encodeInspectorPath([
+    {type:'country', id:'USA', owner:'country'},
+    {type:'project-case', id:'mud:1', owner:'mud-below-us', parent:{type:'country',id:'USA'}},
+  ]),
+  'country:USA/project-case:mud%3A1'
+);
+assert.equal(
+  encodeInspectorPath([
+    {type:'spatial-overlay', id:'father.mesopotamia-core', owner:'spatial-overlay-ui'},
+  ]),
+  'spatial-overlay:father.mesopotamia-core'
+);
 
 const legacy = new URL('https://example.test/world-map/?country=DNK&subdivision=DK-83&place=place%3Ahaderslev');
 assert.equal(deriveInspectorPathFromUrl(legacy), encoded);
