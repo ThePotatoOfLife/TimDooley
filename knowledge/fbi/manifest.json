@@ -661,7 +661,7 @@
     "conversations": "knowledge/fbi/conversation-recovery.json"
   },
   "public_surfaces": {
-    "cabinet": "rooms/potatoverse-canon/beings/fbi/",
+    "cabinet": "rooms/potatoverse-canon/beings/cia/",
     "file_viewer": "rooms/potatoverse-canon/beings/fbi/file/",
     "bonds": "rooms/potatoverse-canon/beings/fbi/bonds/",
     "incidents": "rooms/potatoverse-canon/beings/fbi/incidents/"
@@ -686,7 +686,8 @@
     "non_affiliation": "Not the U.S. Central Intelligence Agency or any real intelligence/law-enforcement organization.",
     "legacy_storage_namespace": "knowledge/fbi/",
     "legacy_route": "rooms/potatoverse-canon/beings/fbi/",
-    "migration_rule": "Public terminology may say CIA while legacy FBI-named storage/routes remain compatible until a dedicated path migration is validated."
+    "migration_rule": "Public terminology may say CIA while legacy FBI-named storage/routes remain compatible until a dedicated path migration is validated.",
+    "canonical_route": "rooms/potatoverse-canon/beings/cia/"
   },
   "knowledge_scope": {
     "entities": [
@@ -722,5 +723,22 @@
       "What ordinary-life details prevent over-mythologizing the person?",
       "What evidence is missing and what should be recovered next?"
     ]
+  },
+  "dossier_schema": {
+    "tim_witness": {
+      "purpose": "Preserve Tim/project witness about character, fruit, karma, Potato-of-Life placement, symbols, witnessed effects and possible transformation without presenting that witness as independent clinical/legal fact.",
+      "fields": [
+        "character_reading",
+        "fruit",
+        "karma",
+        "placement",
+        "roles",
+        "witnessed_effects",
+        "symbols",
+        "repair_path",
+        "boundary"
+      ],
+      "attribution_rule": "All Tim-witness judgments remain explicitly attributed to Tim/project interpretation and may vary by date/scene."
+    }
   }
 }
