@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 KERNEL = ROOT / "world-map" / "3d-geo-kernel.js"
 TEST = ROOT / "scripts" / "test_world_map_geo_kernel.mjs"
 PROJECTION_TEST = ROOT / "scripts" / "test_world_map_projection_contract.mjs"
+CORE_FIT_WRAP_TEST = ROOT / "scripts" / "test_world_map_core_fit_wrap.mjs"
 
 
 def main() -> int:
@@ -42,6 +43,7 @@ def main() -> int:
         for test_path, label in (
             (TEST, "geospatial-kernel"),
             (PROJECTION_TEST, "projection/wrapped-identity"),
+            (CORE_FIT_WRAP_TEST, "core country/compare wrap-safe fit"),
         ):
             if not test_path.exists():
                 errors.append(f"missing {test_path.relative_to(ROOT)}")
