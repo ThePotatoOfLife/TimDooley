@@ -175,6 +175,33 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 - [ ] Audit generated question/topic/context/record pages for meaningful TTS sectioning, not just script presence.
 - [ ] Run an exact-head final Pages build after the current navigation/content/TTS wave and fix any source-vs-generated route drift it exposes.
 
+### ACCESS / navigation recovery — 2026-09-20
+
+The current problem is not lack of information. It is **retrieval cost**: important destinations exist but can require remembering hierarchy, scrolling, or crossing several intermediate pages. The access rule is now: **global access floats outside article flow; local navigation stays local; thick text begins quickly.**
+
+#### P0/P1 — immediate access
+- [x] **ACCESS-001 · Universal quick dock:** add a fixed, compact Home · News · Map · Find · Menu dock that does not consume article-flow height.
+- [x] **ACCESS-002 · Direct Current World:** keep News visible in the dock and expose Current World in World's first-screen local navigation.
+- [x] **ACCESS-003 · Direct intelligence access:** expose CIA / Intelligence as a one-menu-click direct door to the Intelligence Desk and make it searchable by CIA / Central Intelligence Agency / intelligence.
+- [x] **ACCESS-004 · Search House objects:** quick Find loads public surfaces plus House inhabitants/cases so named objects can be reached without knowing their Room.
+- [x] **ACCESS-005 · Remove competing global compass:** stop injecting the older Project Compass so the quick dock is the one global navigation layer.
+- [x] **ACCESS-006 · Reduce Home pre-content navigation:** shrink Home's local top navigation to four relevant entrances; global access belongs to the dock.
+- [x] **ACCESS-007 · Pages regression gate:** validate that Home, Tim, World, News, House, Rooms, Science, Religion, Shadow Farm and World Map all receive the dock in the built artifact.
+- [ ] **ACCESS-008 · Mobile collision audit:** verify the fixed dock never covers essential bottom controls, map inspectors, TTS controls or important form actions at narrow widths; add per-surface offsets only when demonstrated.
+- [ ] **ACCESS-009 · Keyboard/focus audit:** test Menu/Find open, Escape close, focus return and search-result traversal across desktop/mobile.
+- [ ] **ACCESS-010 · Search synonym pass:** expand high-value aliases for CIA/FBI, Fed/Federal Reserve, ECB/Eurosystem, TTS/read aloud, News/Current World, House/Rooms, claims/statements, public witness/public record, debt/bonds/obligations.
+- [ ] **ACCESS-011 · Deep-object result quality:** rank exact object names above generic surface aliases and show the owning Room/context in quick search results.
+- [ ] **ACCESS-012 · No-hierarchy-required test:** pick 25 common intents (News, CIA, FBI bureau, debt, Bible, Tim claims, 100,000 Hours, map, sources, TTS, Rooms, economy, North, Below, etc.) and require each to be reachable in ≤2 interactions from an arbitrary normal reader page.
+- [ ] **ACCESS-013 · Specialist local-nav budget:** review every mature reader's first navigation row and keep only page-owned routes; remove global links duplicated by the dock.
+- [ ] **ACCESS-014 · Home hierarchy compression:** ensure the homepage introduces material before architecture and does not repeat the same destination in several consecutive navigation layers.
+- [ ] **ACCESS-015 · Map access integration:** keep the dock available on World Map without competing with World Bar / Inspector / mobile controls.
+- [ ] **ACCESS-016 · News access integration:** News should open directly into stories; filters/methodology stay secondary and the global dock must not displace headline content.
+- [ ] **ACCESS-017 · House access integration:** House should explain structure, while quick Find handles named-entity retrieval; avoid turning House itself into the universal menu.
+- [ ] **ACCESS-018 · Direct-door governance:** maintain a small curated direct-door list for things people repeatedly seek (CIA, FBI bureau, Economy, 100,000 Hours), rather than promoting every specialist page into permanent global navigation.
+- [ ] **ACCESS-019 · Fast-access source-of-truth:** move quick-dock curated routes/aliases into a small JSON contract if the list grows beyond what is reasonable to maintain in JS; keep public-surfaces + inhabitants as the broader generated index.
+- [ ] **ACCESS-020 · Live-deploy visibility:** after exact-head quality/deploy succeeds, verify the public Pages artifact actually contains the dock and Current World first-screen link before closing this access-recovery wave.
+
+
 ### Fresh repository sweep — 2026-09-20
 
 #### P1 — structural drift / integration
