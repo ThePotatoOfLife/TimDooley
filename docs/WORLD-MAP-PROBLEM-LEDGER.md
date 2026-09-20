@@ -98,9 +98,9 @@
 **Next:** validate Alaska/Hawaii/DC, globe mode, dense Northeast labels and low-width screens.
 
 ### WM-017 · Evidence-layer source refresh contract should be generic — P2
-**Status:** open.  
-**Observation:** ADL now listens to subdivision-source lifecycle directly.  
-**Next:** consider a generic source-refresh hook/adapter contract so future evidence fills do not reinvent repaint logic.
+**Status:** fixed on main (2026-09-20).  
+**Cause:** ADL owned direct subdivision custom-event and MapLibre sourcedata listeners.  
+**Resolution:** the subdivision runtime now owns one source-refresh observer contract; ADL registers through it, and future evidence fills can reuse the same lifecycle hook without owning geography refresh listeners.
 
 ### WM-018 · Provider-failure UX is inconsistent across Physical layers — P2
 **Status:** open.  
