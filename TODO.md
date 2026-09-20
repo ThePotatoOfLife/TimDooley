@@ -123,11 +123,11 @@ Priority order: **P0 release breakage → P1 structural drift/duplication → P2
 
 Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution ledger: `docs/WORLD-MAP-PROBLEM-LEDGER.md`.
 
-- [ ] **WM-021 · URL state ownership:** replace 20+ direct `history.replaceState` writers with one namespaced/transactional URL State owner; migrate incrementally and forbid new direct writers.
-- [ ] **WM-022 · Inspector convergence:** migrate ADL, Axis, Axis Depth, Mud/Below and Spatial Overlay UI onto typed Inspector Router nodes so panel, back/history, focus and `inspect=` state cannot disagree.
+- [ ] **WM-021 · URL state ownership:** canonical URL State now owns analytical layers, Physical/Geography/Evidence, ADL filters, Axis, legacy Lens/Fields/Networks, Path, functional chains, Impact, compositor query mode, symbolic operators, Projection and Time. CI rejects direct writers in migrated modules. Remaining convergence is the coupled selection/Inspector compatibility family (`country`, `pins`, `compare`, relation/depth, `inspect`, subdivision/place mirrors) plus map-reset fallback cleanup.
+- [x] **WM-022 · Inspector convergence:** ADL, Axis, Axis Depth, Mud/Below and Spatial Overlay UI now use typed Inspector Router nodes; the Inspector validator covers semantic history, URL hierarchy and migrated consumers.
 - [x] **WM-023 · Interaction boot-order safety:** Spatial Overlays and Country Selection now promote removable degraded listeners to the shared Router when `potato-atlas-interaction-ready` arrives; validator/regression coverage enforces teardown.
 - [x] **WM-011 · Complete Motion ownership:** capital focus and Spatial Overlay fit now use the shared Motion owner; reduced-motion validation rejects raw governed camera calls.
-- [ ] **WM-005 · Scale classification:** classify every raw zoom/minzoom threshold as capability / cartographic interpolation / camera intent / fixture; move only capability thresholds into shared Scale contract.
+- [x] **WM-005 · Scale classification:** behavioral gates are centralized in `world-map-scale-contract.json`; remaining zoom/minzoom values are classified as cartographic interpolation, camera intent or fixtures in `data/world-map-scale-classification.json`. The core HUD now derives its six bands from the shared Scale runtime and CI enforces the classification.
 - [ ] **WM-010/012/013/016 · Accessibility/mobile:** focus return, keyboard/menu scenarios, non-color redundancy, active layer announcements, Alaska/Hawaii/DC + dense Northeast + narrow-screen subdivision readability.
 - [ ] **WM-018/019 · Physical reliability:** common provider status schema plus one shared request/concurrency budget with abort/de-dupe/cache telemetry.
 - [ ] **WM-024 · Subdivision evidence projection:** expose generic evidence-provider badges/count context in subdivision search/inspector surfaces without hard-coding ADL.
