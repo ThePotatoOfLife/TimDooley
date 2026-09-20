@@ -1,7 +1,7 @@
 {
   "id": "operator-ownership-registry",
   "title": "Operator Ownership Registry — One Definition, Many Views",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "status": "canonical routing and consolidation registry",
   "purpose": "Consolidate the repository's recurring Potato operators by assigning one durable definition/contract owner, then routing specialist atlases, research comparisons, archaeology/provenance and public views underneath that owner. Prevent filename proliferation from becoming ontology proliferation.",
@@ -289,6 +289,21 @@
             "science/axis-11d-sun-spiral/index.html"
           ],
           "merge_rule": "Spiral means recurrence with meaningful state change. Golden/Fibonacci/helix/vortex models are specific specialist forms, not the definition."
+        },
+        {
+          "id": "bidirectional-spiral-field",
+          "canonical_definition_owner": "data/house/bidirectional-spiral-field.json",
+          "canonical_contract_owner": "data/house/bidirectional-spiral-field.json",
+          "specialist_owners": [
+            "data/house/seed-spiral-routing.json",
+            "knowledge/science/recurrence-orbit-spiral-dynamics-atlas.json",
+            "knowledge/core/vertical-potato-mountain-plane-atlas.json"
+          ],
+          "public_views": [
+            "axis/index.html",
+            "potato-of-life/index.html"
+          ],
+          "merge_rule": "Owns O-centered paired widening trajectory/section geometry. Spiral route meaning, dynamics benchmarks and terrain interpretation remain specialist-owned."
         }
       ]
     },
