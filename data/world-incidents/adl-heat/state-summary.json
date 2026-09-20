@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "record_type": "adl-heat-state-summary",
   "dataset_id": "adl-heat",
   "snapshot_status": "historical-seed",
@@ -46,6 +46,25 @@
       "by_ideology": {
         "Right Wing (White Supremacist)": 3,
         "Right Wing (Anti-Government)": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 4,
+        "Extremist/Police Shootout": 1
+      },
+      "by_year_type_token": {
+        "2011": {
+          "Extremist Murder": 1
+        },
+        "2012": {
+          "Extremist Murder": 1
+        },
+        "2018": {
+          "Extremist Murder": 1
+        },
+        "2020": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1
+        }
       }
     },
     "US-AK": {
@@ -61,6 +80,14 @@
       },
       "by_ideology": {
         "Right Wing (White Supremacist)": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 1
+      },
+      "by_year_type_token": {
+        "2017": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-AZ": {
@@ -85,6 +112,34 @@
         "Right Wing (White Supremacist)": 10,
         "Right Wing (Anti-Government)": 2,
         "Right Wing (Other)": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 13,
+        "Terrorist Plot/Attack": 1
+      },
+      "by_year_type_token": {
+        "2008": {
+          "Extremist Murder": 3
+        },
+        "2009": {
+          "Extremist Murder": 3,
+          "Terrorist Plot/Attack": 1
+        },
+        "2010": {
+          "Extremist Murder": 1
+        },
+        "2012": {
+          "Extremist Murder": 2
+        },
+        "2014": {
+          "Extremist Murder": 1
+        },
+        "2015": {
+          "Extremist Murder": 1
+        },
+        "2019": {
+          "Extremist Murder": 2
+        }
       }
     },
     "US-AR": {
@@ -109,6 +164,34 @@
         "Right Wing (White Supremacist)": 5,
         "Right Wing (Anti-Government)": 1,
         "Islamist": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 7,
+        "Extremist/Police Shootout": 2,
+        "Terrorist Plot/Attack": 1
+      },
+      "by_year_type_token": {
+        "2006": {
+          "Extremist Murder": 2,
+          "Extremist/Police Shootout": 1
+        },
+        "2009": {
+          "Extremist Murder": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2010": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1
+        },
+        "2012": {
+          "Extremist Murder": 1
+        },
+        "2014": {
+          "Extremist Murder": 1
+        },
+        "2015": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-CA": {
@@ -146,6 +229,69 @@
         "Right Wing (Anti-Government)": 4,
         "Left Wing": 1,
         "Islamist": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 49,
+        "Extremist/Police Shootout": 5,
+        "Terrorist Plot/Attack": 5,
+        "Antisemitic Incident:Assault": 1
+      },
+      "by_year_type_token": {
+        "2008": {
+          "Extremist Murder": 4
+        },
+        "2009": {
+          "Extremist Murder": 5
+        },
+        "2010": {
+          "Extremist Murder": 1
+        },
+        "2011": {
+          "Extremist Murder": 2
+        },
+        "2012": {
+          "Extremist Murder": 1
+        },
+        "2013": {
+          "Extremist Murder": 8,
+          "Extremist/Police Shootout": 2,
+          "Terrorist Plot/Attack": 1
+        },
+        "2014": {
+          "Extremist Murder": 4,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2015": {
+          "Extremist Murder": 4,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2016": {
+          "Extremist Murder": 4
+        },
+        "2017": {
+          "Extremist Murder": 2
+        },
+        "2018": {
+          "Extremist Murder": 4
+        },
+        "2019": {
+          "Antisemitic Incident:Assault": 1,
+          "Extremist Murder": 2,
+          "Terrorist Plot/Attack": 1
+        },
+        "2020": {
+          "Extremist Murder": 4,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2021": {
+          "Extremist Murder": 2
+        },
+        "2022": {
+          "Extremist Murder": 2
+        }
       }
     },
     "US-CO": {
@@ -175,6 +321,44 @@
         "Right Wing (Other)": 2,
         "Right Wing (Anti-Government)": 1,
         "Islamist": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 10,
+        "Extremist/Police Shootout": 2,
+        "Terrorist Plot/Attack": 2
+      },
+      "by_year_type_token": {
+        "2009": {
+          "Extremist Murder": 1
+        },
+        "2011": {
+          "Extremist Murder": 1
+        },
+        "2013": {
+          "Extremist Murder": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2015": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2017": {
+          "Extremist Murder": 2
+        },
+        "2018": {
+          "Extremist Murder": 1
+        },
+        "2019": {
+          "Extremist Murder": 1
+        },
+        "2021": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1
+        },
+        "2022": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-CT": {
@@ -190,6 +374,14 @@
       },
       "by_ideology": {
         "Right Wing (Anti-Government)": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 1
+      },
+      "by_year_type_token": {
+        "2020": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-DE": {
@@ -199,7 +391,9 @@
       "total": 0,
       "by_year": {},
       "by_type": {},
-      "by_ideology": {}
+      "by_ideology": {},
+      "by_type_token": {},
+      "by_year_type_token": {}
     },
     "US-DC": {
       "id": "US-DC",
@@ -217,6 +411,21 @@
       "by_ideology": {
         "Other": 1,
         "Right Wing (White Supremacist)": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 2,
+        "Extremist/Police Shootout": 1,
+        "Terrorist Plot/Attack": 1
+      },
+      "by_year_type_token": {
+        "2009": {
+          "Extremist Murder": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2021": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1
+        }
       }
     },
     "US-FL": {
@@ -248,6 +457,51 @@
         "Right Wing (White Supremacist)": 11,
         "Islamist": 3,
         "Right Wing (Other)": 2
+      },
+      "by_type_token": {
+        "Extremist Murder": 21,
+        "Extremist/Police Shootout": 5,
+        "Terrorist Plot/Attack": 4
+      },
+      "by_year_type_token": {
+        "2009": {
+          "Extremist Murder": 1
+        },
+        "2010": {
+          "Extremist Murder": 3
+        },
+        "2012": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1
+        },
+        "2013": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1
+        },
+        "2016": {
+          "Extremist Murder": 2,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2017": {
+          "Extremist Murder": 3
+        },
+        "2018": {
+          "Extremist Murder": 4,
+          "Terrorist Plot/Attack": 2
+        },
+        "2019": {
+          "Extremist Murder": 2,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2020": {
+          "Extremist Murder": 1
+        },
+        "2021": {
+          "Extremist Murder": 3,
+          "Extremist/Police Shootout": 1
+        }
       }
     },
     "US-GA": {
@@ -270,6 +524,31 @@
       "by_ideology": {
         "Right Wing (Anti-Government)": 5,
         "Right Wing (White Supremacist)": 3
+      },
+      "by_type_token": {
+        "Extremist Murder": 8,
+        "Extremist/Police Shootout": 2,
+        "Terrorist Plot/Attack": 1
+      },
+      "by_year_type_token": {
+        "2011": {
+          "Extremist Murder": 3,
+          "Terrorist Plot/Attack": 1
+        },
+        "2017": {
+          "Extremist Murder": 1
+        },
+        "2018": {
+          "Extremist Murder": 2,
+          "Extremist/Police Shootout": 1
+        },
+        "2020": {
+          "Extremist Murder": 1
+        },
+        "2021": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1
+        }
       }
     },
     "US-HI": {
@@ -279,7 +558,9 @@
       "total": 0,
       "by_year": {},
       "by_type": {},
-      "by_ideology": {}
+      "by_ideology": {},
+      "by_type_token": {},
+      "by_year_type_token": {}
     },
     "US-ID": {
       "id": "US-ID",
@@ -288,7 +569,9 @@
       "total": 0,
       "by_year": {},
       "by_type": {},
-      "by_ideology": {}
+      "by_ideology": {},
+      "by_type_token": {},
+      "by_year_type_token": {}
     },
     "US-IL": {
       "id": "US-IL",
@@ -305,6 +588,17 @@
       "by_ideology": {
         "Right Wing (Other)": 1,
         "Right Wing (White Supremacist)": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 2
+      },
+      "by_year_type_token": {
+        "2020": {
+          "Extremist Murder": 1
+        },
+        "2022": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-IN": {
@@ -326,6 +620,29 @@
       "by_ideology": {
         "Right Wing (White Supremacist)": 7,
         "Right Wing (Anti-Government)": 2
+      },
+      "by_type_token": {
+        "Extremist Murder": 9
+      },
+      "by_year_type_token": {
+        "2012": {
+          "Extremist Murder": 1
+        },
+        "2014": {
+          "Extremist Murder": 2
+        },
+        "2016": {
+          "Extremist Murder": 2
+        },
+        "2017": {
+          "Extremist Murder": 2
+        },
+        "2019": {
+          "Extremist Murder": 1
+        },
+        "2021": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-IA": {
@@ -341,6 +658,14 @@
       },
       "by_ideology": {
         "Right Wing (Anti-Government)": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 1
+      },
+      "by_year_type_token": {
+        "2012": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-KS": {
@@ -360,6 +685,23 @@
       "by_ideology": {
         "Right Wing (White Supremacist)": 2,
         "Right Wing (Other)": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 3,
+        "Terrorist Plot/Attack": 2
+      },
+      "by_year_type_token": {
+        "2009": {
+          "Extremist Murder": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2014": {
+          "Extremist Murder": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2018": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-KY": {
@@ -377,6 +719,17 @@
       "by_ideology": {
         "Right Wing (White Supremacist)": 2,
         "Right Wing (Anti-Government)": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 3
+      },
+      "by_year_type_token": {
+        "2013": {
+          "Extremist Murder": 1
+        },
+        "2015": {
+          "Extremist Murder": 2
+        }
       }
     },
     "US-LA": {
@@ -402,6 +755,37 @@
         "Right Wing (White Supremacist)": 6,
         "Left Wing": 1,
         "Right Wing (Anti-Government)": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 8,
+        "Extremist/Police Shootout": 3,
+        "Terrorist Plot/Attack": 3
+      },
+      "by_year_type_token": {
+        "2007": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1
+        },
+        "2008": {
+          "Extremist Murder": 1
+        },
+        "2015": {
+          "Extremist Murder": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2016": {
+          "Extremist Murder": 2,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2017": {
+          "Extremist Murder": 2
+        },
+        "2023": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        }
       }
     },
     "US-ME": {
@@ -417,6 +801,14 @@
       },
       "by_ideology": {
         "Right Wing (White Supremacist)": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 1
+      },
+      "by_year_type_token": {
+        "2011": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-MD": {
@@ -434,6 +826,17 @@
       "by_ideology": {
         "Right Wing (Other)": 1,
         "Right Wing (White Supremacist)": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 2
+      },
+      "by_year_type_token": {
+        "2016": {
+          "Extremist Murder": 1
+        },
+        "2021": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-MA": {
@@ -455,6 +858,34 @@
       "by_ideology": {
         "Right Wing (White Supremacist)": 5,
         "Islamist": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 6,
+        "Extremist/Police Shootout": 3,
+        "Terrorist Plot/Attack": 3
+      },
+      "by_year_type_token": {
+        "2005": {
+          "Extremist Murder": 1
+        },
+        "2009": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2011": {
+          "Extremist Murder": 1
+        },
+        "2013": {
+          "Extremist Murder": 2,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2021": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        }
       }
     },
     "US-MI": {
@@ -478,6 +909,31 @@
         "Right Wing (Other)": 1,
         "Right Wing (White Supremacist)": 2,
         "Right Wing (Anti-Government)": 3
+      },
+      "by_type_token": {
+        "Extremist Murder": 6,
+        "Extremist/Police Shootout": 1
+      },
+      "by_year_type_token": {
+        "2014": {
+          "Extremist Murder": 1
+        },
+        "2018": {
+          "Extremist Murder": 1
+        },
+        "2019": {
+          "Extremist Murder": 1
+        },
+        "2020": {
+          "Extremist Murder": 1
+        },
+        "2021": {
+          "Extremist Murder": 1
+        },
+        "2022": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1
+        }
       }
     },
     "US-MN": {
@@ -493,6 +949,14 @@
       },
       "by_ideology": {
         "Right Wing (Anti-Government)": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 1
+      },
+      "by_year_type_token": {
+        "2015": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-MS": {
@@ -509,6 +973,17 @@
       },
       "by_ideology": {
         "Right Wing (White Supremacist)": 3
+      },
+      "by_type_token": {
+        "Extremist Murder": 3
+      },
+      "by_year_type_token": {
+        "2010": {
+          "Extremist Murder": 2
+        },
+        "2013": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-MO": {
@@ -528,6 +1003,26 @@
       },
       "by_ideology": {
         "Right Wing (White Supremacist)": 5
+      },
+      "by_type_token": {
+        "Extremist Murder": 5
+      },
+      "by_year_type_token": {
+        "2008": {
+          "Extremist Murder": 1
+        },
+        "2015": {
+          "Extremist Murder": 1
+        },
+        "2017": {
+          "Extremist Murder": 1
+        },
+        "2019": {
+          "Extremist Murder": 1
+        },
+        "2021": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-MT": {
@@ -546,6 +1041,21 @@
       "by_ideology": {
         "Right Wing (Anti-Government)": 2,
         "Right Wing (White Supremacist)": 2
+      },
+      "by_type_token": {
+        "Extremist Murder": 4,
+        "Extremist/Police Shootout": 1,
+        "Terrorist Plot/Attack": 1
+      },
+      "by_year_type_token": {
+        "2015": {
+          "Extremist Murder": 3
+        },
+        "2017": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        }
       }
     },
     "US-NE": {
@@ -555,7 +1065,9 @@
       "total": 0,
       "by_year": {},
       "by_type": {},
-      "by_ideology": {}
+      "by_ideology": {},
+      "by_type_token": {},
+      "by_year_type_token": {}
     },
     "US-NV": {
       "id": "US-NV",
@@ -578,6 +1090,34 @@
       "by_ideology": {
         "Right Wing (Anti-Government)": 2,
         "Right Wing (White Supremacist)": 5
+      },
+      "by_type_token": {
+        "Extremist Murder": 7,
+        "Extremist/Police Shootout": 2,
+        "Terrorist Plot/Attack": 1
+      },
+      "by_year_type_token": {
+        "2010": {
+          "Extremist Murder": 1
+        },
+        "2013": {
+          "Extremist Murder": 1
+        },
+        "2014": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2016": {
+          "Extremist Murder": 2
+        },
+        "2019": {
+          "Extremist Murder": 1
+        },
+        "2020": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1
+        }
       }
     },
     "US-NH": {
@@ -594,6 +1134,17 @@
       },
       "by_ideology": {
         "Right Wing (White Supremacist)": 2
+      },
+      "by_type_token": {
+        "Extremist Murder": 2
+      },
+      "by_year_type_token": {
+        "2010": {
+          "Extremist Murder": 1
+        },
+        "2019": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-NJ": {
@@ -617,6 +1168,32 @@
         "Right Wing (Other)": 1,
         "Other": 1,
         "Islamist": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 5,
+        "Antisemitic Incident:Assault": 1,
+        "Extremist/Police Shootout": 1,
+        "Terrorist Plot/Attack": 1
+      },
+      "by_year_type_token": {
+        "2005": {
+          "Extremist Murder": 1
+        },
+        "2014": {
+          "Extremist Murder": 1
+        },
+        "2019": {
+          "Antisemitic Incident:Assault": 1,
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2020": {
+          "Extremist Murder": 1
+        },
+        "2021": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-NM": {
@@ -636,6 +1213,26 @@
       },
       "by_ideology": {
         "Right Wing (White Supremacist)": 5
+      },
+      "by_type_token": {
+        "Extremist Murder": 5
+      },
+      "by_year_type_token": {
+        "2009": {
+          "Extremist Murder": 1
+        },
+        "2010": {
+          "Extremist Murder": 1
+        },
+        "2012": {
+          "Extremist Murder": 1
+        },
+        "2017": {
+          "Extremist Murder": 1
+        },
+        "2021": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-NY": {
@@ -664,6 +1261,41 @@
         "Right Wing (Other)": 1,
         "Islamist": 1,
         "Left Wing": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 13,
+        "Terrorist Plot/Attack": 3
+      },
+      "by_year_type_token": {
+        "2008": {
+          "Extremist Murder": 2
+        },
+        "2009": {
+          "Extremist Murder": 1
+        },
+        "2011": {
+          "Extremist Murder": 1
+        },
+        "2014": {
+          "Extremist Murder": 2
+        },
+        "2015": {
+          "Extremist Murder": 1
+        },
+        "2017": {
+          "Extremist Murder": 2,
+          "Terrorist Plot/Attack": 2
+        },
+        "2019": {
+          "Extremist Murder": 1
+        },
+        "2021": {
+          "Extremist Murder": 1
+        },
+        "2022": {
+          "Extremist Murder": 2,
+          "Terrorist Plot/Attack": 1
+        }
       }
     },
     "US-NC": {
@@ -681,6 +1313,20 @@
       },
       "by_ideology": {
         "Right Wing (White Supremacist)": 3
+      },
+      "by_type_token": {
+        "Extremist Murder": 3
+      },
+      "by_year_type_token": {
+        "2012": {
+          "Extremist Murder": 1
+        },
+        "2015": {
+          "Extremist Murder": 1
+        },
+        "2016": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-ND": {
@@ -697,6 +1343,17 @@
       },
       "by_ideology": {
         "Right Wing (White Supremacist)": 2
+      },
+      "by_type_token": {
+        "Extremist Murder": 2
+      },
+      "by_year_type_token": {
+        "2011": {
+          "Extremist Murder": 1
+        },
+        "2012": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-OH": {
@@ -713,6 +1370,17 @@
       },
       "by_ideology": {
         "Right Wing (White Supremacist)": 2
+      },
+      "by_type_token": {
+        "Extremist Murder": 2
+      },
+      "by_year_type_token": {
+        "2019": {
+          "Extremist Murder": 1
+        },
+        "2020": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-OK": {
@@ -739,6 +1407,43 @@
       "by_ideology": {
         "Right Wing (White Supremacist)": 13,
         "Right Wing (Anti-Government)": 2
+      },
+      "by_type_token": {
+        "Extremist Murder": 15,
+        "Extremist/Police Shootout": 1
+      },
+      "by_year_type_token": {
+        "2010": {
+          "Extremist Murder": 1
+        },
+        "2011": {
+          "Extremist Murder": 1
+        },
+        "2012": {
+          "Extremist Murder": 1
+        },
+        "2013": {
+          "Extremist Murder": 1
+        },
+        "2015": {
+          "Extremist Murder": 2
+        },
+        "2017": {
+          "Extremist Murder": 2
+        },
+        "2019": {
+          "Extremist Murder": 1
+        },
+        "2020": {
+          "Extremist Murder": 1
+        },
+        "2021": {
+          "Extremist Murder": 3,
+          "Extremist/Police Shootout": 1
+        },
+        "2022": {
+          "Extremist Murder": 2
+        }
       }
     },
     "US-OR": {
@@ -765,6 +1470,37 @@
         "Left Wing": 1,
         "Right Wing (White Supremacist)": 5,
         "Right Wing (Anti-Government)": 2
+      },
+      "by_type_token": {
+        "Extremist Murder": 10,
+        "Terrorist Plot/Attack": 1
+      },
+      "by_year_type_token": {
+        "2008": {
+          "Extremist Murder": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2012": {
+          "Extremist Murder": 2
+        },
+        "2014": {
+          "Extremist Murder": 1
+        },
+        "2016": {
+          "Extremist Murder": 2
+        },
+        "2017": {
+          "Extremist Murder": 1
+        },
+        "2020": {
+          "Extremist Murder": 1
+        },
+        "2022": {
+          "Extremist Murder": 1
+        },
+        "2023": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-PA": {
@@ -790,6 +1526,39 @@
         "Right Wing (Anti-Government)": 5,
         "Right Wing (White Supremacist)": 6,
         "Right Wing (Other)": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 12,
+        "Antisemitic Incident:Assault": 1,
+        "Extremist/Police Shootout": 2,
+        "Terrorist Plot/Attack": 1
+      },
+      "by_year_type_token": {
+        "2009": {
+          "Extremist Murder": 2,
+          "Extremist/Police Shootout": 1
+        },
+        "2010": {
+          "Extremist Murder": 3
+        },
+        "2012": {
+          "Extremist Murder": 1
+        },
+        "2014": {
+          "Extremist Murder": 1
+        },
+        "2015": {
+          "Extremist Murder": 2
+        },
+        "2018": {
+          "Antisemitic Incident:Assault": 1,
+          "Extremist Murder": 2,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2020": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-RI": {
@@ -799,7 +1568,9 @@
       "total": 0,
       "by_year": {},
       "by_type": {},
-      "by_ideology": {}
+      "by_ideology": {},
+      "by_type_token": {},
+      "by_year_type_token": {}
     },
     "US-SC": {
       "id": "US-SC",
@@ -820,6 +1591,25 @@
         "Right Wing (Other)": 1,
         "Right Wing (Anti-Government)": 1,
         "Right Wing (White Supremacist)": 2
+      },
+      "by_type_token": {
+        "Extremist Murder": 4,
+        "Terrorist Plot/Attack": 1
+      },
+      "by_year_type_token": {
+        "2013": {
+          "Extremist Murder": 1
+        },
+        "2015": {
+          "Extremist Murder": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2018": {
+          "Extremist Murder": 1
+        },
+        "2020": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-SD": {
@@ -829,7 +1619,9 @@
       "total": 0,
       "by_year": {},
       "by_type": {},
-      "by_ideology": {}
+      "by_ideology": {},
+      "by_type_token": {},
+      "by_year_type_token": {}
     },
     "US-TN": {
       "id": "US-TN",
@@ -855,6 +1647,37 @@
         "Right Wing (Anti-Government)": 2,
         "Islamist": 1,
         "Right Wing (Other)": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 11,
+        "Extremist/Police Shootout": 1,
+        "Terrorist Plot/Attack": 3
+      },
+      "by_year_type_token": {
+        "2009": {
+          "Extremist Murder": 1
+        },
+        "2011": {
+          "Extremist Murder": 2
+        },
+        "2013": {
+          "Extremist Murder": 1
+        },
+        "2015": {
+          "Extremist Murder": 3,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 2
+        },
+        "2018": {
+          "Extremist Murder": 2
+        },
+        "2020": {
+          "Extremist Murder": 1
+        },
+        "2023": {
+          "Extremist Murder": 1,
+          "Terrorist Plot/Attack": 1
+        }
       }
     },
     "US-TX": {
@@ -891,6 +1714,66 @@
         "Right Wing (Other)": 1,
         "Left Wing": 2,
         "Right Wing (Anti-Government)": 2
+      },
+      "by_type_token": {
+        "Extremist Murder": 42,
+        "Extremist/Police Shootout": 4,
+        "Terrorist Plot/Attack": 5,
+        "Antisemitic Incident:Assault": 1
+      },
+      "by_year_type_token": {
+        "2007": {
+          "Extremist Murder": 1
+        },
+        "2008": {
+          "Extremist Murder": 9
+        },
+        "2009": {
+          "Extremist Murder": 4,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2010": {
+          "Extremist Murder": 2,
+          "Terrorist Plot/Attack": 1
+        },
+        "2011": {
+          "Extremist Murder": 2
+        },
+        "2012": {
+          "Extremist Murder": 3
+        },
+        "2014": {
+          "Extremist Murder": 5
+        },
+        "2015": {
+          "Extremist Murder": 3
+        },
+        "2016": {
+          "Extremist Murder": 2,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2017": {
+          "Extremist Murder": 4,
+          "Extremist/Police Shootout": 1
+        },
+        "2018": {
+          "Extremist Murder": 1
+        },
+        "2019": {
+          "Extremist Murder": 3,
+          "Terrorist Plot/Attack": 1
+        },
+        "2020": {
+          "Antisemitic Incident:Assault": 1,
+          "Extremist Murder": 1
+        },
+        "2021": {
+          "Extremist Murder": 2,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        }
       }
     },
     "US-UT": {
@@ -912,6 +1795,28 @@
       "by_ideology": {
         "Right Wing (White Supremacist)": 5,
         "Right Wing (Anti-Government)": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 6,
+        "Extremist/Police Shootout": 1
+      },
+      "by_year_type_token": {
+        "2011": {
+          "Extremist Murder": 2
+        },
+        "2012": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1
+        },
+        "2013": {
+          "Extremist Murder": 1
+        },
+        "2017": {
+          "Extremist Murder": 1
+        },
+        "2020": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-VT": {
@@ -921,7 +1826,9 @@
       "total": 0,
       "by_year": {},
       "by_type": {},
-      "by_ideology": {}
+      "by_ideology": {},
+      "by_type_token": {},
+      "by_year_type_token": {}
     },
     "US-VA": {
       "id": "US-VA",
@@ -939,6 +1846,23 @@
       },
       "by_ideology": {
         "Right Wing (White Supremacist)": 6
+      },
+      "by_type_token": {
+        "Extremist Murder": 6
+      },
+      "by_year_type_token": {
+        "2015": {
+          "Extremist Murder": 2
+        },
+        "2017": {
+          "Extremist Murder": 2
+        },
+        "2018": {
+          "Extremist Murder": 1
+        },
+        "2019": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-WA": {
@@ -967,6 +1891,42 @@
         "Right Wing (Anti-Government)": 2,
         "Islamist": 2,
         "Left Wing": 1
+      },
+      "by_type_token": {
+        "Extremist Murder": 14,
+        "Extremist/Police Shootout": 1,
+        "Terrorist Plot/Attack": 1
+      },
+      "by_year_type_token": {
+        "2009": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2011": {
+          "Extremist Murder": 1
+        },
+        "2013": {
+          "Extremist Murder": 2
+        },
+        "2014": {
+          "Extremist Murder": 3
+        },
+        "2015": {
+          "Extremist Murder": 2
+        },
+        "2016": {
+          "Extremist Murder": 1
+        },
+        "2017": {
+          "Extremist Murder": 1
+        },
+        "2018": {
+          "Extremist Murder": 1
+        },
+        "2019": {
+          "Extremist Murder": 2
+        }
       }
     },
     "US-WV": {
@@ -984,6 +1944,17 @@
       "by_ideology": {
         "Right Wing (White Supremacist)": 1,
         "Right Wing (Anti-Government)": 2
+      },
+      "by_type_token": {
+        "Extremist Murder": 3
+      },
+      "by_year_type_token": {
+        "2016": {
+          "Extremist Murder": 2
+        },
+        "2021": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-WI": {
@@ -1003,6 +1974,25 @@
       },
       "by_ideology": {
         "Right Wing (White Supremacist)": 3
+      },
+      "by_type_token": {
+        "Extremist Murder": 3,
+        "Extremist/Police Shootout": 2,
+        "Terrorist Plot/Attack": 1
+      },
+      "by_year_type_token": {
+        "2012": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1,
+          "Terrorist Plot/Attack": 1
+        },
+        "2015": {
+          "Extremist Murder": 1,
+          "Extremist/Police Shootout": 1
+        },
+        "2022": {
+          "Extremist Murder": 1
+        }
       }
     },
     "US-WY": {
@@ -1012,7 +2002,10 @@
       "total": 0,
       "by_year": {},
       "by_type": {},
-      "by_ideology": {}
+      "by_ideology": {},
+      "by_type_token": {},
+      "by_year_type_token": {}
     }
-  }
+  },
+  "filter_aggregate_contract": "State totals can be filtered by year and incident-type token without depending on point geometry; this historical seed is fully geocoded, while future official imports may include state-known records without point geometry."
 }
