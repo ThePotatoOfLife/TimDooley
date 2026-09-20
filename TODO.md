@@ -152,7 +152,7 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 - [x] Simplify Home top navigation so public entrances are not mixed with archive utilities.
 - [x] Align `data/house/public-surfaces.json` with the new visibility hierarchy: House remains global; Rooms/Paths/Elevator become House-owned specialist routes; Context becomes Sources-owned; Inhabitants remains Rooms-owned.
 - [x] Correct source-time web auditing so generated `/records/<id>/` readers are recognized as build products rather than broken source links.
-- [ ] Add an explicit built-site assertion that every registered `room-inhabitants.json` route under `/records/` resolves after `build_site.py`; use the registry rather than a hard-coded sample.
+- [x] Add an explicit built-site assertion that every registered `room-inhabitants.json` route under `/records/` resolves after `build_site.py`; `validate_generated_navigation.py` now derives the full route set from the registry.
 - [ ] Continue visible-page density auditing after each major content wave: prefer concrete cases/mechanisms over another navigation card when a page is already route-heavy.
 - [ ] Review the remaining homepage House corridor and cross-cutting-view blocks after user testing; merge any pair whose reader job is no longer meaningfully distinct.
 - [ ] Audit generated question/topic/context/record pages for meaningful TTS sectioning, not just script presence.
