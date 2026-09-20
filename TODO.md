@@ -119,6 +119,23 @@ Priority order: **P0 release breakage → P1 structural drift/duplication → P2
 
 ### P1 — structural debt now demonstrated
 
+### World Map quality programme — critic audit 2026-09-20
+
+Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution ledger: `docs/WORLD-MAP-PROBLEM-LEDGER.md`.
+
+- [ ] **WM-021 · URL state ownership:** replace 20+ direct `history.replaceState` writers with one namespaced/transactional URL State owner; migrate incrementally and forbid new direct writers.
+- [ ] **WM-022 · Inspector convergence:** migrate ADL, Axis, Axis Depth, Mud/Below and Spatial Overlay UI onto typed Inspector Router nodes so panel, back/history, focus and `inspect=` state cannot disagree.
+- [ ] **WM-023 · Interaction boot-order safety:** ensure Router ownership cannot be permanently bypassed when Spatial Overlays/Country Selection load before the Router; degraded listeners must be removable/promotable.
+- [ ] **WM-011 · Complete Motion ownership:** remove remaining raw user-visible camera calls in Hover capital focus and Spatial Overlay fit; validator must reject raw camera calls outside Motion owner.
+- [ ] **WM-005 · Scale classification:** classify every raw zoom/minzoom threshold as capability / cartographic interpolation / camera intent / fixture; move only capability thresholds into shared Scale contract.
+- [ ] **WM-010/012/013/016 · Accessibility/mobile:** focus return, keyboard/menu scenarios, non-color redundancy, active layer announcements, Alaska/Hawaii/DC + dense Northeast + narrow-screen subdivision readability.
+- [ ] **WM-018/019 · Physical reliability:** common provider status schema plus one shared request/concurrency budget with abort/de-dupe/cache telemetry.
+- [ ] **WM-024 · Subdivision evidence projection:** expose generic evidence-provider badges/count context in subdivision search/inspector surfaces without hard-coding ADL.
+- [ ] **WM-025 · ADL freshness:** keep historical snapshot age/status persistently visible and replace the historical 335-record seed with a reviewed official export when available.
+- [ ] **Compatibility retirement:** prove parity then retire `3d-ui.js`, `3d-selection-ui.js`, old Lens/Fields/Networks ownership and remaining direct/degraded interaction fallbacks one surface at a time.
+- [ ] **Audit→queue bridge:** map recurring architecture-auditor finding codes to World Map ledger IDs, owners and severities so CI points directly to remediation.
+
+
 - [x] CI/check architecture consolidation: split the former ~100-step linear quality job into bounded Core/House/Atlas, World Map, Content/Research/Bible and Public Build jobs with one aggregate `validate` result; gate Pages deployment on a successful `main` quality run so deployment no longer duplicates the entire validation suite. This keeps failure logs small and prevents one early error from hiding unrelated checks.
 
 - [x] Add a dedicated regression test for the bidirectional spiral contract. `scripts/test_bidirectional_spiral_field.py` now checks Σ0/±1…4, section/Room boundary rules, canonical source wiring, selection/fallback runtime markers, public mounts and House/Below focus sections; both quality and Pages workflows run it.
