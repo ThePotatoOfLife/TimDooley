@@ -1,3 +1,7 @@
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('project-fields', ['field']);
+
 import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs';
 import { getOrCreateTooltipService } from './3d-tooltip.js';
 
@@ -69,7 +73,7 @@ function applyView(map,cfg,view,{writeUrl=true}={}){
     map.setPaintProperty(FILL_ID,'fill-color',viewColor(view,cfg));map.setPaintProperty(LINE_ID,'line-color',viewColor(view,cfg));map.setPaintProperty(FILL_ID,'fill-opacity',viewOpacity(view));
   }
   syncLegendVisibility();
-  if(writeUrl){const url=new URL(location.href);if(view===DEFAULT_VIEW)url.searchParams.delete('field');else url.searchParams.set('field',view);history.replaceState(null,'',url);}
+  if(writeUrl) urlState.patch('project-fields', { set:{ field:view===DEFAULT_VIEW ? null : view } });
 }
 function installLegend(cfg){
   if(document.getElementById('axisFieldLegend'))return;
