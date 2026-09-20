@@ -1,7 +1,7 @@
 {
   "id": "metalorian",
   "display_name": "Metalorian",
-  "bureau": "FBI — Figures, Bonds & Incidents",
+  "bureau": "CIA — Characters, Incidents & Associations",
   "entity_class": "person-or-handle",
   "aliases": [
     "Meta",
@@ -156,5 +156,77 @@
     "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
     "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
     "Add relationship edges only when a dated scene or explicit source supports them."
-  ]
+  ],
+  "tim_witness": {
+    "frame": "Tim/project witness",
+    "character_reading": "Tim's later archive places Metalorian/Meta on the shadow side of narrative control, warning, framing and opposition. However, the file is retrospective-heavy: the original 2017 interaction and exact warning wording are missing, so Tim's symbolic judgment is stronger than the surviving primary evidence.",
+    "fruit": {
+      "direction": "negative-leaning / low-confidence primary basis",
+      "labels": [
+        "meta-framing",
+        "opposition",
+        "narrative pressure",
+        "warning",
+        "conflict"
+      ],
+      "reading": "In Tim's later interpretation, Meta produces pressure, framing conflict and entanglement rather than visible growth. Because primary interaction evidence is sparse, this remains an attributed project judgment."
+    },
+    "karma": {
+      "direction": "negative-leaning / retrospective",
+      "quantified": false,
+      "reading": "Tim/project material later places Metalorian suffering near karmic/Cube interpretation, but the archive explicitly treats this as retrospective correspondence, not proof of karmic causation."
+    },
+    "placement": {
+      "primary": [
+        "Swamp / shadow side",
+        "Archive / retrospective layer"
+      ],
+      "secondary": [
+        "Cube / enclosure interpretation",
+        "Meta-framing threshold"
+      ],
+      "reading": "The strongest placement is symbolic: shadow/meta-framing rather than Garden/generative growth. Exact historical placement remains uncertain because the early source is missing."
+    },
+    "roles": [
+      {
+        "date": "around 2017",
+        "role": "warning / adversarial lead",
+        "status": "retrospective Tim memory",
+        "note": "Original interaction and exact wording still need recovery."
+      },
+      {
+        "date": "2018-2019 retrospective",
+        "role": "meta-framing / narrative-control figure",
+        "status": "old manuscript interpretation",
+        "note": "Serious motive/control claims remain attributed."
+      },
+      {
+        "date": "2023 later interpretation",
+        "role": "Cube / karmic correspondence",
+        "status": "project interpretation",
+        "note": "Not same-day evidence and not causal proof."
+      }
+    ],
+    "witnessed_effects": [
+      "narrative pressure",
+      "opposition",
+      "meta-framing",
+      "later karmic/Cube symbolism"
+    ],
+    "symbols": [
+      "Meta",
+      "Shadow",
+      "Cube",
+      "Archive",
+      "Swamp",
+      "Mirror"
+    ],
+    "repair_path": [
+      "recover earliest primary interaction",
+      "separate warning from later myth",
+      "restore proposition-level provenance",
+      "avoid treating later suffering as proof of karmic causation"
+    ],
+    "boundary": "Metalorian is a high-interpretation, low-primary-source file. Tim's witness is preserved, but motive, diagnosis, wrongdoing and karmic causation are not independently established."
+  }
 }
