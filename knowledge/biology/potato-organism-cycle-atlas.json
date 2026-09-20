@@ -2,7 +2,7 @@
   "id": "potato-organism-cycle-atlas",
   "title": "Potato Organism Cycle Atlas — Tuber, Eye, Sprout, Root, Stolons, Storage and Return",
   "version": "1.0.0",
-  "updated": "2026-09-18",
+  "updated": "2026-09-20",
   "owner_room": "potato-biology",
   "purpose": "Give the Potato of Life project a rigorous literal organism underneath its metaphors by treating the potato as a developmental and storage system with distinct organs, stages, resource flows and environmental constraints.",
   "biological_identity": {
@@ -182,11 +182,18 @@
     }
   ],
   "research_program": [
+    "Trace each major life-cycle transition back to the relevant genotype/haplotype/regulatory layer in potato-genetics-genomics-atlas rather than treating phenotype as genetics-free.",
     "Represent the organism as a typed graph: organ, developmental stage, resource flow and environmental constraint.",
     "Separate morphology from metaphor in all public pages.",
     "Use measurable plant variables when testing storage/release or growth analogies.",
     "Connect dormancy/sprouting to the Foundation grammar as a biological example of latent capacity becoming active reproduction.",
     "Add pathology, soil ecology, cultivar variation and agricultural history as distinct later branches rather than mixing them into one generic potato."
   ],
-  "source_policy": "This atlas synthesizes the Room's existing biological holdings; specific quantitative claims should be attached to primary agricultural/botanical sources before publication."
+  "source_policy": "This atlas synthesizes the Room's existing biological holdings; specific quantitative claims should be attached to primary agricultural/botanical sources before publication.",
+  "genetic_substrate": {
+    "canonical_owner": "potato-genetics-genomics-atlas",
+    "common_tetraploid_model": "12 chromosome groups × 4 homologous haplotypes = 48 nuclear chromosomes (2n=4x=48), with cultivar-specific sequence and structural differences among homologs.",
+    "organism_rule": "Every developmental stage in this atlas is genotype-conditioned: dormancy, sprouting, maturity, tuberization, starch metabolism, defense and source-sink behavior emerge from distributed gene/regulatory networks interacting with environment.",
+    "extra_genomes": "Chloroplast and mitochondrial genomes are separate from the nuclear 12×4 system and must be included in a complete genetic model."
+  }
 }
