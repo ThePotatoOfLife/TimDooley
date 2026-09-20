@@ -229,7 +229,7 @@ function knowledgeHtml(){
 }
 function bondsHtml(){
  const list=bondMatches(current).sort((a,b)=>b.count-a.count);
- return '<div class="block"><h2>Source-derived co-presence</h2><p class="muted">Co-presence does not itself prove friendship, alliance, motive or conflict.</p>'+(list.length?list.map(e=>{const other=e.a===current?e.b:e.a;return '<article class="event"><h3>'+esc(other)+' <span class="mono">×'+esc(e.count)+'</span></h3><p>'+esc(arr(e.contexts).slice(0,4).join(' · '))+'</p><small>'+esc(arr(e.dates).join(', '))+'</small></article>'}).join(''):'<p class="empty">No co-presence edges in current network.</p>')+'</div>';
+ return '<div class="block"><h2>Source-derived co-presence</h2><p class="muted">Co-presence does not itself prove friendship, alliance, motive or conflict. Relational flow appears only where dated scenes support a Tim/project reading.</p>'+(list.length?list.map(e=>{const other=e.a===current?e.b:e.a;const flow=e.flow||{};return '<article class="event"><h3>'+esc(other)+' <span class="mono">×'+esc(e.count)+'</span></h3><p>'+esc(arr(e.contexts).slice(0,4).join(' · '))+'</p>'+(arr(flow.types).length?'<div class="role-list">'+arr(flow.types).map(x=>'<span class="role">'+esc(x)+'</span>').join('')+'</div><p>'+esc(flow.reading||'')+'</p><p class="muted">'+esc(flow.boundary||'')+'</p>':'')+'<small>'+esc(arr(e.dates).join(', '))+'</small></article>'}).join(''):'<p class="empty">No co-presence edges in current network.</p>')+'</div>';
 }
 function storiesHtml(){
  const list=storyMatches(current); const inc=incidentMatches(current);
