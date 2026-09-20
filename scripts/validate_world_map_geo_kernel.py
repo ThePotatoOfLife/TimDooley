@@ -35,6 +35,7 @@ def main() -> int:
         "unwrapLongitude",
         "minimalLongitudeInterval",
         "antimeridianAwareBounds",
+        "pointInGeometry",
         "haversineDistanceKm",
         "EARTH_MEAN_RADIUS_KM = 6371.0088",
         "window.__potatoAtlasGeo",
@@ -66,6 +67,7 @@ def main() -> int:
     print("- canonical longitude normalization")
     print("- shortest wrapped longitude deltas")
     print("- antimeridian-aware minimum bounds")
+    print("- point-in-polygon / multipolygon containment")
     print("- reference-relative longitude unwrapping")
     print("- mean-Earth haversine distance")
     print(f"Errors: {len(errors)}")
