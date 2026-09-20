@@ -64,7 +64,7 @@ body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transpa
 <section class="panel" id="roles"></section>
 <section class="panel" id="enhancements"></section>
 <section class="panel" id="sources"></section>
-<div class="footer-actions"><button id="shuffleBottom" type="button">Shuffle another file</button><a id="rawLink" href="#">Open raw dossier</a><a href="../">Back to cabinet</a></div>
+<div class="footer-actions"><button id="shuffleBottom" type="button">Shuffle another file</button><a href="../">Back to cabinet</a><a href="../../../time-history/">Time &amp; History</a><a href="../../../culture-information/">Culture &amp; Information</a><a href="../../../archive-sources/">Archive &amp; Sources</a></div>
 </article>
 </main>
 <script>
@@ -234,7 +234,6 @@ function render(){
  document.getElementById('roles').innerHTML=rolesHtml();
  document.getElementById('enhancements').innerHTML=enhancementsHtml();
  document.getElementById('sources').innerHTML=sourcesHtml();
- document.getElementById('rawLink').href=route('knowledge/fbi/figures/'+current+'.json');
 }
 async function load(id){
  current=id; history.replaceState(null,'','?figure='+encodeURIComponent(id));
