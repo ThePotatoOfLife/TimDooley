@@ -126,6 +126,7 @@ maplibregl.Map.prototype.addControl = function (...args) {
 };
 
 await import(versionedModule('./3d-geo-kernel.js'));
+await import(versionedModule('./3d-motion.js'));
 try { await import(versionedModule('./3d-app.js')); }
 finally { maplibregl.Map.prototype.addControl = originalAddControl; }
 
