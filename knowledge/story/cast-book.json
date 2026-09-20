@@ -39,18 +39,30 @@
       "class": "person",
       "aliases": [
         "Marty",
-        "Drift King"
+        "Drift King",
+        "Chance & Taylor",
+        "Top Scholar"
       ],
       "period_roles": [
         {
-          "period": "2024",
-          "role": "recurring Great Book/project-side figure and conversation lead"
+          "period": "2024 early/mid",
+          "role": "recurring companion/social-room figure in Chronicle and later Great Book/project material"
         },
         {
-          "period": "2025",
-          "role": "grief and memory thread after his death"
+          "period": "late 2024",
+          "role": "increasingly separate/rival social center; Chronicle attributes disruptive incidents and Garden-collapse to Marty/circle, kept as source-attributed claims"
+        },
+        {
+          "period": "early 2025",
+          "role": "death changes conflict thread into grief/memory; exact date remains under source review"
+        },
+        {
+          "period": "post-death",
+          "role": "Goodbye Marty creative artifact preserves grief rather than a purely adversarial legacy"
         }
-      ]
+      ],
+      "room_path": "rooms/potatoverse-canon/beings/marty/",
+      "identity_note": "Person is not archetype. Old hostile profiles are historical source-characterization, not permanent fact."
     },
     {
       "id": "sammy",
@@ -132,10 +144,24 @@
       "class": "person",
       "period_roles": [
         {
-          "period": "retrospective",
-          "role": "recurring challenge/suffering reference; exact chronology needs recovery"
+          "period": "around 2017",
+          "role": "retrospective warning/adversarial lead; primary interaction and warning wording still need recovery"
+        },
+        {
+          "period": "2018-2019 retrospective",
+          "role": "later manuscripts use Meta in narrative-control/framing interpretations, sometimes alongside TXT"
+        },
+        {
+          "period": "2023 later meaning",
+          "role": "later Great Book timeline places Metalorian suffering near Cube/karmic interpretation; not same-day evidence"
         }
-      ]
+      ],
+      "aliases": [
+        "Meta",
+        "Joe"
+      ],
+      "room_path": "rooms/potatoverse-canon/beings/metalorian/",
+      "identity_note": "Alias continuity and allegations require source-level confirmation. Later illness/misfortune is not evidence of causation or fulfilled prophecy."
     },
     {
       "id": "monkey",
@@ -682,6 +708,31 @@
       ],
       "room_path": "rooms/potatoverse-canon/beings/termite/",
       "identity_note": "Mixed literary/public name; no clean conversation-side Termite scene recovered yet."
+    },
+    {
+      "id": "txt",
+      "name": "TXT",
+      "class": "person",
+      "room_path": "rooms/potatoverse-canon/beings/txt/",
+      "period_roles": [
+        {
+          "period": "2017 onward old-profile claim",
+          "role": "long-running antagonism recovery lead; original sequence incomplete"
+        },
+        {
+          "period": "2019 retrospective",
+          "role": "later biography groups TXT with Meta in digital-crucifixion/Farm interpretation"
+        },
+        {
+          "period": "2024",
+          "role": "literary Shadow Games figure"
+        },
+        {
+          "period": "2026-07-07",
+          "role": "directly named public conflict referent alongside Dim; allegations remain attributed to Tim"
+        }
+      ],
+      "identity_note": "Keep person/handle, literary character and later retrospective role separate until the source chain joins them."
     }
   ],
   "character_archive": "knowledge/story/character-archive-v2.json",
