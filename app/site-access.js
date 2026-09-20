@@ -29,7 +29,7 @@
     {id:'sources',label:'Sources',route:'/context/source-authority/',kind:'find',note:'Evidence and provenance',aliases:['evidence','source','provenance']},
     {id:'explore',label:'Explore',route:'/explore/',kind:'find',note:'Relationship explorer',aliases:['archive','relationships']},
     {id:'cia-character-archive',label:'CIA — Characters, Incidents & Associations',route:'/rooms/potatoverse-canon/beings/cia/',kind:'direct',note:'Canonical Potatoverse dossier bureau',aliases:['cia','characters incidents associations','character archive','dossiers']},
-    {id:'mud-bank',label:'Mud Bank / Dooley Welfare',route:'/rooms/potatoverse-canon/beings/cia/bank/',kind:'direct',note:'Live fictional CIA balance sheets',aliases:['mud bank','dooley welfare','karma bank','balance sheet']},
+    {id:'mud-bank',label:'World Spiritual Bank / Mud Bank',route:'/rooms/potatoverse-canon/beings/cia/bank/',kind:'direct',note:'North Root Ledger · live fictional CIA balances',aliases:['mud bank','dooley welfare','karma bank','balance sheet']},
     {id:'intelligence-cia',label:'Central Intelligence Agency / Intelligence Desk',route:'/shadow-farm/#intelligence-desk',kind:'direct',note:'Real-world intelligence research desk',aliases:['central intelligence agency','us cia','intelligence desk']},
     {id:'fbi-legacy',label:'FBI — retired character-bureau predecessor',route:'/rooms/potatoverse-canon/beings/fbi/',kind:'direct',note:'Read-only migration history',aliases:['fbi','figures bonds incidents']},
     {id:'economy',label:'Economy & Finance',route:'/economy/',kind:'world',note:'Debt, banking, ownership',aliases:['economy','finance','debt','bonds','fed','federal reserve','ecb','eurosystem']},
