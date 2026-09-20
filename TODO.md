@@ -152,7 +152,7 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 - [x] Confirm there are no orphaned nested Rooms: every Room has 3–6 registered adjacencies and at least one public surface.
 - [x] Preserve the distinction between broad adjacency and guarded interfaces; related Rooms do not automatically become state-changing Doors.
 - [x] Populate the four previously uninhabited Rooms with existing connective project objects: Esoteric & Sacred Geometry, Physics & Cosmology, Economy & Finance, and Research Programmes.
-- [x] Refresh the spatial House health snapshot to the live 56-object registry and current maturity counts.
+- [x] Refresh the spatial House health snapshot to the live 59-object registry and current maturity counts.
 - [x] Add `scripts/validate_house_harmony.py` and run it inside the Core · House · Atlas quality group so parent/Room/object/projection drift fails CI.
 - [x] Consolidate obvious specialist public parents: Axis → House, Culture → World, History → Timeline, Research Lab → House, Current World News → World.
 - [x] Verify the archive manifest remains a pathway/branch projection rather than a competing ownership layer; House/navigation authority stays canonical for public structure.
