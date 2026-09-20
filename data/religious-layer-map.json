@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.1.0",
   "updated": "2026-09-20",
   "purpose": "Canonical coupling map for the religious knowledge system. It makes explicit which backend layers exist, what each layer contains, and how the unified index exposes them.",
   "frontend_hubs": {
@@ -36,6 +36,41 @@
         "events",
         "adjacent",
         "evidence"
+      ]
+    },
+    {
+      "id": "foundation-lineages",
+      "file": "data/religious-foundation-lineages.json",
+      "kind": "historical-genealogy",
+      "route": "explore/#record=<path>",
+      "purpose": "Dated trunks, schisms, reforms, denominations, schools and cross-cutting currents with typed parent-child relationships.",
+      "next_layers": [
+        "foundation-timeline",
+        "foundation-geography",
+        "foundation-research",
+        "global-relationships"
+      ]
+    },
+    {
+      "id": "foundation-timeline",
+      "file": "data/religious-foundation-timeline.json",
+      "kind": "chronological-projection",
+      "route": "timeline/foundations/",
+      "purpose": "Flattened dated lineage nodes for timeline/spiral projection; ranges remain ranges.",
+      "next_layers": [
+        "foundation-lineages",
+        "foundation-geography"
+      ]
+    },
+    {
+      "id": "foundation-geography",
+      "file": "data/religious-foundation-geography.json",
+      "kind": "historical-geography-projection",
+      "route": "world-map/",
+      "purpose": "Historical origin anchors and distributed-origin policy for later map/diffusion rendering.",
+      "next_layers": [
+        "foundation-lineages",
+        "world-religion-layer"
       ]
     },
     {
@@ -198,7 +233,10 @@
     "Canonical texts are source entities, not interchangeable with traditions themselves.",
     "People, places, states, institutions and events belong to their own canonical domains and are linked rather than duplicated inside religious records.",
     "Missing research is recorded as missing rather than replaced with fabricated values.",
-    "Project-defined Potatoism records remain explicitly distinct from empirical historical claims."
+    "Project-defined Potatoism records remain explicitly distinct from empirical historical claims.",
+    "Religious child branches must carry a typed historical relation such as split, differentiation, reform, institutionalization, legal-school or mystical-current; do not treat every child as a schism.",
+    "Foundation seed clocks and formation windows are separate fields; a conventional marker such as 1054, 632 or 70 CE must not overwrite a longer historical formation process.",
+    "Historical origin geography and current demographic geography are separate projections."
   ],
   "route_policy": "Religion is the explanatory reader; Explore resolves deep backend records by canonical path. Legacy index.html#node routing is retired."
 }
