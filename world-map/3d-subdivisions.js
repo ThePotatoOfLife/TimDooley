@@ -167,6 +167,31 @@ function placePopulationLabel(feature) {
   const value = Number(feature?.properties?.population);
   return Number.isFinite(value) && value > 0 ? fmt(value) : 'population unknown';
 }
+function subdivisionPopulationView(properties = {}) {
+  const population = properties.population || {};
+  const value = Number(population.value);
+  const known = Number.isFinite(value) && value > 0;
+  return {
+    known,
+    value:known ? fmt(value) : 'Unknown',
+    period:known ? String(population.period || 'period unknown') : 'not supplied in this partition',
+    source:population.source || '',
+  };
+}
+function subdivisionAreaView(properties = {}) {
+  const value = Number(properties.area_km2);
+  return Number.isFinite(value) && value > 0 ? { known:true, value:`${fmt(value)} km²` } : { known:false, value:'Unknown' };
+}
+function subdivisionProvenanceHtml(properties = {}) {
+  const rows = [];
+  if (properties.geometry_source) rows.push(`<div><span>Boundary source</span><b>${esc(properties.geometry_source)}</b></div>`);
+  const sourceRef = properties.geometry_source_ref || properties.geometry_source_repository || properties.geometry_source_url || '';
+  if (sourceRef) rows.push(`<div><span>Source reference</span><b>${esc(sourceRef)}</b></div>`);
+  const vintage = properties.geometry_source_vintage || properties.geometry_vintage || '';
+  if (vintage) rows.push(`<div><span>Boundary vintage</span><b>${esc(vintage)}</b></div>`);
+  if (properties.local_name && properties.local_name !== properties.name) rows.push(`<div><span>Local name</span><b>${esc(properties.local_name)}</b></div>`);
+  return rows.length ? `<div class="card subdivision-provenance"><div class="eyebrow">Boundary & provenance</div>${rows.join('')}</div>` : '';
+}
 async function hydrateSubdivisionPlaces(feature) {
   const host = document.querySelector('[data-subdivision-places]');
   if (!host || !feature) return false;
@@ -206,21 +231,24 @@ function renderInspector(feature) {
   const panel = document.getElementById('panel');
   if (!panel || !feature) return;
   const p = feature.properties || {};
-  const population = p.population || {};
+  const population = subdivisionPopulationView(p);
+  const area = subdivisionAreaView(p);
   const density = populationDensity(p);
   const code = countryCode(p);
+  const representationNote = String(p.representation_note || '').trim();
   panel.innerHTML = `
     <div class="eyebrow">Subdivision</div>
     <h1>${esc(p.name || p.id || 'Subdivision')}</h1>
     <p class="muted">${esc(p.subdivision_type || 'Subdivision')} · ${esc(p.code || p.id || '')} · ${esc(p.country_name || p.parent_name || code)}</p>
     <div class="stat-grid">
-      <div><span>Population</span><b>${fmt(population.value)}</b><small>${esc(population.period || '—')}</small></div>
-      <div><span>Area</span><b>${fmt(p.area_km2)} km²</b><small>land + water</small></div>
-      <div><span>Density</span><b>${density == null ? '—' : `${fmt(density)} / km²`}</b><small>population ÷ area</small></div>
+      <div><span>Population</span><b>${esc(population.value)}</b><small>${esc(population.period)}</small></div>
+      <div><span>Area</span><b>${esc(area.value)}</b><small>${area.known ? 'stored source area' : 'not supplied in this partition'}</small></div>
+      <div><span>Density</span><b>${density == null ? 'Unknown' : `${fmt(density)} / km²`}</b><small>${density == null ? 'requires population + area' : 'population ÷ area'}</small></div>
       <div><span>Region type</span><b>${esc(p.subdivision_type || 'Subdivision')}</b><small>${esc(p.code || p.id || '')}</small></div>
     </div>
-    ${population.source ? `<p class="muted">Population source: ${esc(population.source)}</p>` : ''}
-    ${p.geometry_source ? `<p class="muted">Boundary source: ${esc(p.geometry_source)}</p>` : ''}
+    ${population.source ? `<p class="muted">Population source: ${esc(population.source)}</p>` : `<p class="muted">Population is unknown in this geometry-first partition; unknown is not zero.</p>`}
+    ${subdivisionProvenanceHtml(p)}
+    ${representationNote ? `<div class="boundary"><b>Representation note.</b> ${esc(representationNote)}</div>` : ''}
     <h2>Cities and places</h2>
     <div data-subdivision-places><p class="muted">Loading mapped places inside this region…</p></div>
     <h2>Evidence & project context</h2>
