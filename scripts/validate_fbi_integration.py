@@ -167,7 +167,11 @@ def main() -> int:
 
     tim_witness_required = {
         "dim", "txt", "matthew-mtclassic", "mediomu007", "termite", "rahu",
-        "marty-biz", "metalorian", "bigtech", "optimistique", "ledgeview", "pondo", "kale"
+        "marty-biz", "metalorian", "bigtech", "optimistique", "ledgeview", "pondo", "kale",
+        "highly-regarded", "darkchild", "jazzy", "barry-bletunick", "duaaaht",
+        "supersusi87", "anja", "port-monkey", "sammy", "juice", "rage", "tachy",
+        "literally", "anacondasin", "potato-repair-guy", "pkfc", "don-jefe",
+        "petty-wappo", "gg"
     }
     for fid in tim_witness_required:
         dossier = json.loads((ROOT / f"knowledge/fbi/figures/{fid}.json").read_text(encoding="utf-8"))
