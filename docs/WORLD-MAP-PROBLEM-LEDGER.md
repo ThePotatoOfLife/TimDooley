@@ -294,11 +294,11 @@
 **Completion:** these scenarios run in the World Map quality group with deterministic assertions on visibility, selection, focus and bounded layer/source counts.
 
 ### WM-050 · Architecture auditor findings are not first-class ledger work items — P2
-**Status:** verified observability gap (2026-09-21).  
+**Status:** fixed on branch `world-map-auditor-queue-guard-current-20260921`, pending exact-head CI.  
 **Evidence:** the architecture auditor inventories ownership hazards, but recurring finding types do not consistently resolve to ledger ID, canonical owner and severity in CI output.  
 **Risk:** diagnosis and execution queues can drift; the same issue may be rediscovered without a stable remediation identity.  
-**TODO:** add a finding-code mapping contract (finding code → ledger ID → owner → severity/status) and include it in quality-group summaries.  
-**Completion:** every promoted auditor finding either maps to an existing ledger item or is explicitly marked informational/ignored with rationale.
+**Resolution:** current auditor finding codes already map to ledger ID + canonical owner through `QUEUE_MAP`, and severity is part of each emitted finding. The auditor now counts actionable findings missing a queue mapping and fails when that count is non-zero; regression coverage proves emitted actionable findings carry both queue ID and owner.  
+**Completion guard:** future warning/error findings must be mapped before the architecture audit can pass.
 
 ### WM-051 · Geometry-first regional statistics remain uneven — P3
 **Status:** verified functionality-depth gap (2026-09-21).  
