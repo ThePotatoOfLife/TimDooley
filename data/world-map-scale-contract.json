@@ -61,6 +61,10 @@
     },
     "hydrology-rivers-detailed": {
       "load": 8.2
+    },
+    "adl-heat-points": {
+      "render": 4.2,
+      "interact": 4.2
     }
   },
   "semantics": {
@@ -69,5 +73,5 @@
     "label": "Text labels may become visible.",
     "interact": "A feature may become a hover/click target."
   },
-  "migration_note": "Places, subdivisions, physical-water detail, hydrology activation and hydrology river-density request gates now share this contract. Camera-preservation math may read current zoom but must not invent capability thresholds."
+  "migration_note": "Places detail, subdivisions, and ADL incident points consume shared scale ownership; visual interpolation stops remain feature-specific unless they define a semantic capability gate."
 }
