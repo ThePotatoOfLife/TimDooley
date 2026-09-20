@@ -144,6 +144,13 @@
 **Guard:** `scripts/validate_world_map_view_projections.py` enforces the contract, runtime markers and reader disclosure through the World Map quality group.  
 **Rule retained:** a choropleth, set, relation filter or comparison is a lossy View, never a substitute for the canonical country/relationship/source owner.
 
+### WM-027 · Ukraine first-order region partition — P2
+**Status:** implemented on branch `world-map-ukraine-regions-2026-09-20`, pending exact-head CI confirmation.  
+**Resolution:** Ukraine now enters through the canonical generic subdivision registry as a bounded geometry-first partition with 26 source-represented first-order features, stable `UA-*` IDs, local + English names, generic search records, and no invented population values.  
+**Epistemic boundary:** the partition is administrative reference geometry only. It is not a current occupation, control, sovereignty, or front-line layer. The source transform combines Sevastopol into the Crimea geometry; that transformation is preserved as explicit source metadata rather than adopted as a project claim.  
+**Guard:** the generic subdivision validator checks feature count, IDs, provenance, unknown-population semantics, the Crimea/Sevastopol representation note, runtime byte budgets and multi-country loader behavior.  
+**Next:** add Russia through the same contract once a compact reproducible ADM1 geometry source is pinned; model war/control snapshots separately as dated conflict-context overlays.
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  

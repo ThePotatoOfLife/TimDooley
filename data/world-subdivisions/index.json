@@ -1,6 +1,6 @@
 {
-  "version": "1.5.0",
-  "generated_at": "2026-09-20T12:48:00+02:00",
+  "version": "1.6.0",
+  "generated_at": "2026-09-20",
   "record_type": "world-subdivision-partition-index",
   "runtime_budget": {
     "partition_max_bytes": 1500000,
@@ -617,6 +617,263 @@
           "subdivision_type": "territory",
           "parent_iso3": "CAN",
           "parent_name": "Canada"
+        }
+      ]
+    },
+    "UKR": {
+      "path": "UKR.geo.json",
+      "bytes": 739807,
+      "feature_count": 26,
+      "admin_level": 1,
+      "status": "implemented-geometry-first",
+      "source": "UN OCHA Ukraine administrative boundaries; simplified/dissolved derivative in matthewjohnsobolev/sirens",
+      "source_repository": "matthewjohnsobolev/sirens",
+      "source_sha": "14b444dda5ecb221fb765ec89ae364a201e719d8",
+      "geometry_vintage_status": "source-vintage-not-asserted",
+      "population_status": "unknown-not-zero",
+      "id_prefix": "UA-",
+      "parent_name": "Ukraine",
+      "representation_note": "Administrative reference only; not a current occupation/control/front-line layer. Source transform combines Sevastopol with Crimea geometry.",
+      "viewport_bounds": {
+        "west": 22,
+        "east": 40.3,
+        "south": 44,
+        "north": 52.5
+      },
+      "search_records": [
+        {
+          "id": "UA-71",
+          "name": "Cherkasy Oblast",
+          "local_name": "Черкаська область",
+          "code": "71",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-74",
+          "name": "Chernihiv Oblast",
+          "local_name": "Чернігівська область",
+          "code": "74",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-73",
+          "name": "Chernivtsi Oblast",
+          "local_name": "Чернівецька область",
+          "code": "73",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-01",
+          "name": "Crimea",
+          "local_name": "Крим",
+          "code": "01",
+          "subdivision_type": "autonomous republic / source-combined Sevastopol geometry",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-12",
+          "name": "Dnipropetrovsk Oblast",
+          "local_name": "Дніпропетровська область",
+          "code": "12",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-14",
+          "name": "Donetsk Oblast",
+          "local_name": "Донецька область",
+          "code": "14",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-26",
+          "name": "Ivano-Frankivsk Oblast",
+          "local_name": "Івано-Франківська область",
+          "code": "26",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-63",
+          "name": "Kharkiv Oblast",
+          "local_name": "Харківська область",
+          "code": "63",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-65",
+          "name": "Kherson Oblast",
+          "local_name": "Херсонська область",
+          "code": "65",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-68",
+          "name": "Khmelnytskyi Oblast",
+          "local_name": "Хмельницька область",
+          "code": "68",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-35",
+          "name": "Kirovohrad Oblast",
+          "local_name": "Кіровоградська область",
+          "code": "35",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-80",
+          "name": "Kyiv",
+          "local_name": "м. Київ",
+          "code": "80",
+          "subdivision_type": "special-status city",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-32",
+          "name": "Kyiv Oblast",
+          "local_name": "Київська область",
+          "code": "32",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-44",
+          "name": "Luhansk Oblast",
+          "local_name": "Луганська область",
+          "code": "44",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-46",
+          "name": "Lviv Oblast",
+          "local_name": "Львівська область",
+          "code": "46",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-48",
+          "name": "Mykolaiv Oblast",
+          "local_name": "Миколаївська область",
+          "code": "48",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-51",
+          "name": "Odesa Oblast",
+          "local_name": "Одеська область",
+          "code": "51",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-53",
+          "name": "Poltava Oblast",
+          "local_name": "Полтавська область",
+          "code": "53",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-56",
+          "name": "Rivne Oblast",
+          "local_name": "Рівненська область",
+          "code": "56",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-59",
+          "name": "Sumy Oblast",
+          "local_name": "Сумська область",
+          "code": "59",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-61",
+          "name": "Ternopil Oblast",
+          "local_name": "Тернопільська область",
+          "code": "61",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-05",
+          "name": "Vinnytsia Oblast",
+          "local_name": "Вінницька область",
+          "code": "05",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-07",
+          "name": "Volyn Oblast",
+          "local_name": "Волинська область",
+          "code": "07",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-21",
+          "name": "Zakarpattia Oblast",
+          "local_name": "Закарпатська область",
+          "code": "21",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-23",
+          "name": "Zaporizhzhia Oblast",
+          "local_name": "Запорізька область",
+          "code": "23",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-18",
+          "name": "Zhytomyr Oblast",
+          "local_name": "Житомирська область",
+          "code": "18",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
         }
       ]
     }
