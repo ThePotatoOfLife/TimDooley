@@ -198,6 +198,14 @@
 **Resolution:** the Regions action now toggles the country-card partition lease on/off, updates `aria-pressed` and the “regions · shown” state from the actual retained partition, emits a bounded regions-change event, and only clears local lease state after the release path returns without error.  
 **Guard:** UI-shell validation requires the toggle branch, shared action-state helper and region-state event.
 
+### WM-037 · World Map top bar is functionally sound but visually over-weighted — P2
+**Status:** fixed / governed on branch `world-map-topbar-density-audit-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** the unified header correctly consolidated many old surfaces, but every persistent control retained near-equal visual weight. N/W/E/S behaved like four full toolbar actions, icon-only projection/reset controls used ordinary button width, and relation-context filters duplicated the Analyze relationship surface as a separate top-level Relations menu.  
+**Resolution:** relation-context filters now live inside Analyze; N/W/E/S render as one compact four-button axis group with full accessible names; projection/reset use compact icon widths; registry buttons lose a small amount of height/padding; Search/Compare/Inspect/Home spacing is tightened; and the fixed result slot is reduced while remaining width-stable.  
+**Justification rule:** a persistent top-level control must be either a frequent direct action, a distinct map dimension, or global navigation/reset. Deeper or overlapping capability belongs inside the relevant menu.  
+**Guard:** UI-shell validation rejects a standalone Relations registry family, requires compact axis/icon markers, compact fixed result width and compact first-paint header geometry.  
+**Rule retained:** this is density reduction, not capability removal or a new toolbar design.
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
