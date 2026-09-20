@@ -4,7 +4,7 @@
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas Places require the core map.');
 function interactionRouter() { return window.__potatoAtlasInteraction; }
-const inspector = window.__potatoAtlasInspector;
+function inspectorRouter() { return window.__potatoAtlasInspector; }
 if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
 const motion = window.__potatoAtlasMotion;
 
@@ -238,6 +238,7 @@ function countryBaseline(code) {
   };
 }
 function placeParent(code) {
+  const inspector = inspectorRouter();
   const current = inspector?.current?.();
   if (current?.type === 'subdivision') return { type:'subdivision', id:current.id };
   if (current?.type === 'place' && current.parent?.type === 'subdivision') return { ...current.parent };
@@ -269,6 +270,7 @@ function renderInspector(feature) {
     const code = String(p.country_iso3 || '').toUpperCase();
     if (!code) return;
     clear({ restore:false });
+    const inspector = inspectorRouter();
     if (inspector?.reset) inspector.reset(countryBaseline(code));
     else if (window.goCountry) window.goCountry(code);
   });
@@ -277,6 +279,7 @@ function renderInspector(feature) {
 }
 function openInspector(feature) {
   if (!feature) return false;
+  const inspector = inspectorRouter();
   const p = feature.properties || {};
   const code = String(p.country_iso3 || '').toUpperCase();
   if (!inspector?.open || !code) {
