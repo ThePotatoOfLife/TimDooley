@@ -178,6 +178,8 @@ jobs:
         run: exit 1
       - name: Validate built site shell
         run: python scripts/validate_site_shell.py
+      - name: Validate TTS coverage
+        run: python scripts/validate_tts_coverage.py
       - name: Upload site-shell diagnostics
         if: always()
         uses: actions/upload-artifact@v4
