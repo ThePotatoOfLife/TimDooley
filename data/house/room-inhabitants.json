@@ -1,0 +1,170 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "authority": "room-inhabitant-registry",
+  "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
+  "rules": [
+    "Rooms are bounded contexts; inhabitants are contents viewed from that context.",
+    "An inhabitant may appear in more than one Room as a projection when different questions are being asked.",
+    "Repeated appearance does not create duplicate factual ownership.",
+    "Sensitive labels remain typed as project term, attributed classification, legal status, or documented entity role.",
+    "Entering an inhabitant centers the case informationally while the containing Room remains architecturally visible."
+  ],
+  "inhabitants": [
+    {
+      "id": "platform-4chan",
+      "label": "4chan",
+      "kind": "platform",
+      "room_ids": [
+        "internet-platforms",
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/context/culture/#a-concrete-internet-subculture-genealogy"
+    },
+    {
+      "id": "platform-reddit",
+      "label": "Reddit",
+      "kind": "platform",
+      "room_ids": [
+        "internet-platforms",
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/context/culture/#a-concrete-internet-subculture-genealogy"
+    },
+    {
+      "id": "platform-8chan",
+      "label": "8chan / 8kun",
+      "kind": "platform",
+      "room_ids": [
+        "internet-platforms",
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/context/culture/#a-concrete-internet-subculture-genealogy"
+    },
+    {
+      "id": "ecology-kiwi-farms",
+      "label": "Kiwi Farms / persistent target ecology",
+      "kind": "case-ecology",
+      "room_ids": [
+        "subculture-group-formation",
+        "internet-platforms",
+        "information-ecology"
+      ],
+      "route": "/shadow-farm/"
+    },
+    {
+      "id": "concept-sektur",
+      "label": "Sektur",
+      "kind": "project-concept",
+      "room_ids": [
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/shadow-farm/"
+    },
+    {
+      "id": "concept-farm",
+      "label": "Farm / attention loop",
+      "kind": "project-concept",
+      "room_ids": [
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/shadow-farm/"
+    },
+    {
+      "id": "concept-swamp",
+      "label": "Swamp regime",
+      "kind": "project-concept",
+      "room_ids": [
+        "subculture-group-formation",
+        "information-ecology",
+        "law-justice"
+      ],
+      "route": "/below/#swamp"
+    },
+    {
+      "id": "concept-darvo",
+      "label": "DARVO response pattern",
+      "kind": "analysis-pattern",
+      "room_ids": [
+        "subculture-group-formation",
+        "law-justice"
+      ],
+      "route": "/shadow-farm/"
+    },
+    {
+      "id": "classifier-splc",
+      "label": "SPLC classification interface",
+      "kind": "classifier-interface",
+      "room_ids": [
+        "subculture-group-formation",
+        "law-justice",
+        "provenance-evidence"
+      ],
+      "route": "/shadow-farm/"
+    },
+    {
+      "id": "classifier-adl",
+      "label": "ADL classification interface",
+      "kind": "classifier-interface",
+      "room_ids": [
+        "subculture-group-formation",
+        "law-justice",
+        "provenance-evidence"
+      ],
+      "route": "/shadow-farm/"
+    },
+    {
+      "id": "state-fbi",
+      "label": "FBI / federal law-enforcement interface",
+      "kind": "state-interface",
+      "room_ids": [
+        "law-justice",
+        "provenance-evidence"
+      ],
+      "route": "/shadow-farm/"
+    },
+    {
+      "id": "artifact-source-ledger",
+      "label": "Source ledger",
+      "kind": "evidence-object",
+      "room_ids": [
+        "provenance-evidence",
+        "model-testing"
+      ],
+      "route": "/context/source-authority/"
+    },
+    {
+      "id": "artifact-timeline",
+      "label": "Chronology / attestation chain",
+      "kind": "evidence-object",
+      "room_ids": [
+        "provenance-evidence",
+        "witness-attestation",
+        "chronology-events"
+      ],
+      "route": "/timeline/"
+    },
+    {
+      "id": "process-forge",
+      "label": "Forge review",
+      "kind": "process",
+      "room_ids": [
+        "provenance-evidence",
+        "model-testing",
+        "open-questions"
+      ],
+      "route": "/research-lab/"
+    }
+  ],
+  "source_records": [
+    "data/house/subrooms.json",
+    "knowledge/world/culture-sektur-platform-media-political-ecology.json",
+    "data/house/below-basin-spatial-contract.json",
+    "data/house/non-euclidean-room-grammar.json"
+  ]
+}
