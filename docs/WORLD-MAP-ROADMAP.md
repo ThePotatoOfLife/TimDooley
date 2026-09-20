@@ -104,7 +104,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The curr
 
 ### 2026-09-21 re-audit priorities
 
-- [~] Retire dormant `3d-fields.js` / `3d-networks.js`: live symbolic operators have been migrated off their retired controls; canonical registry parity and validator cleanup are in progress.
+- [x] Retire dormant `3d-fields.js` / `3d-networks.js`: live symbolic operators now use Layer Registry state; obsolete render/control modules are deleted while underlying datasets remain available for future registry expansion.
 - [ ] Expand subdivision + bounded Places depth beyond the current five promoted countries (USA, CAN, DNK, UKR, RUS) through the generic importer/partition contract.
 - [ ] Replace the GeoNames mirror seed with a reviewed fresh canonical build; preserve source date, build date and upstream freshness separately.
 - [ ] Promote at least one reviewed delayed/historical conflict snapshot with source bundle, date semantics and explicit not-live boundary before exposing Conflict as current functionality.
@@ -122,7 +122,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The curr
 - [x] Reduce top-bar density without redesigning the map: consolidate relation-context filters into Analyze, group N/W/E/S as compact axis lenses, shrink icon controls and tighten fixed Search/Compare/Inspect spacing.
 
 - [x] Add a complete symmetric visual-channel compatibility matrix, with explicit composition/separation semantics and governed conditional fallback for pattern + height.
-- [~] Audit every writer of country fill/pattern/outline/height. Persistent planes are now explicit and specialist Gateways/Chains/Impact/Demography/Axis renderers register with the shared Render Stack; legacy dormant Fields/Networks remain compatibility debt.
+- [x] Audit every writer of country fill/pattern/outline/height. Persistent planes are explicit; specialist renderers register with the shared Render Stack; dormant Fields/Networks compatibility writers are retired.
 - [x] Centralize style-generation restoration for Render Stack and migrated physical layers.
 - [x] Drain direct duplicate Style Lifecycle ownership; remaining visual-channel compatibility debt is tracked independently rather than as duplicate `styledata` ownership.
 - [ ] Consolidate global UI design tokens, z-index bands and common surfaces.
