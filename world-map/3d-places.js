@@ -1,6 +1,10 @@
 // Scale-aware Places runtime for the World Relational Atlas.
 // Owns place data, rendering, selection, bounded country detail and place inspection.
 
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('selection-inspector', ['place']);
+
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas Places require the core map.');
 const interaction = window.__potatoAtlasInteraction;
@@ -225,10 +229,7 @@ function convergeLegacyCapitals() {
   return true;
 }
 function syncUrl(id) {
-  const url = new URL(location.href);
-  if (id) url.searchParams.set('place', id);
-  else url.searchParams.delete('place');
-  history.replaceState({}, '', url);
+  urlState.patch('selection-inspector', { set:{ place:id || null } });
 }
 function countryBaseline(code) {
   const id = String(code || '').toUpperCase();
