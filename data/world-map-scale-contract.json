@@ -7,12 +7,30 @@
   "rule": "Zoom is camera scale only. It does not redefine ontology, Axis depth, graph distance, time, evidence strength or epistemic class.",
   "hysteresis": 0.12,
   "bands": [
-    { "id": "world", "min_zoom": 0 },
-    { "id": "macro-region", "min_zoom": 2.5 },
-    { "id": "region", "min_zoom": 3.4 },
-    { "id": "country", "min_zoom": 4.2 },
-    { "id": "subnational", "min_zoom": 5.8 },
-    { "id": "local", "min_zoom": 8.0 }
+    {
+      "id": "world",
+      "min_zoom": 0
+    },
+    {
+      "id": "macro-region",
+      "min_zoom": 2.5
+    },
+    {
+      "id": "region",
+      "min_zoom": 3.4
+    },
+    {
+      "id": "country",
+      "min_zoom": 4.2
+    },
+    {
+      "id": "subnational",
+      "min_zoom": 5.8
+    },
+    {
+      "id": "local",
+      "min_zoom": 8
+    }
   ],
   "capabilities": {
     "subdivisions": {
@@ -24,7 +42,11 @@
     "places-detail": {
       "load": 4.2,
       "render": 4.2,
-      "label": 5.0,
+      "label": 5,
+      "interact": 4.2
+    },
+    "adl-heat-points": {
+      "render": 4.2,
       "interact": 4.2
     }
   },
@@ -34,5 +56,5 @@
     "label": "Text labels may become visible.",
     "interact": "A feature may become a hover/click target."
   },
-  "migration_note": "Initial values preserve the existing subdivision and detailed-place thresholds. Central ownership and hysteresis are the behavior change; visual redesign is deferred."
+  "migration_note": "Places detail, subdivisions, and ADL incident points now consume shared scale ownership; visual interpolation stops remain feature-specific unless they define a semantic capability gate."
 }
