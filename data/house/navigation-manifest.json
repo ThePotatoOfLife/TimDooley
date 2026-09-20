@@ -1,5 +1,5 @@
 {
-  "version": "4.1.0",
+  "version": "4.2.0",
   "updated": "2026-09-20",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -13,6 +13,11 @@
       "concern": "operator family classification / Door Cross Spiral Tree Swamp",
       "owner": "data/house/operator-family-manifest.json",
       "rule": "Classifies high-frequency operator files into definition/contract, specialist, research, archaeology, benchmark and reader/story roles. A filename containing an operator never grants canonical ownership."
+    },
+    {
+      "concern": "bidirectional O-centered spiral field / ring layers / Mountain Swamp overlays",
+      "owner": "data/house/bidirectional-spiral-field.json",
+      "rule": "Owns the shared double-spiral geometry, layer/ring family, chirality and terrain-overlay boundaries. Exact logarithmic geometry, shifted O-origin project geometry and Vesica geometry must remain distinguished."
     },
     {
       "concern": "Door Cross Plane Spiral lifecycle",
