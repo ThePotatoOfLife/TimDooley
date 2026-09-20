@@ -151,6 +151,13 @@
 **Guard:** the generic subdivision validator checks feature count, IDs, provenance, unknown-population semantics, the Crimea/Sevastopol representation note, runtime byte budgets and multi-country loader behavior.  
 **Next:** add Russia through the same contract once a compact reproducible ADM1 geometry source is pinned; model war/control snapshots separately as dated conflict-context overlays.
 
+### WM-028 · ADM1 ingestion remains manual and country-specific — P2
+**Status:** fixed / governed on branch `world-map-adm1-importer-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** the renderer and partition registry were generic, but adding another first-order country partition still required manual canonicalization of IDs, provenance, unknown-population semantics, byte accounting and search records.  
+**Resolution:** `scripts/import_world_adm1.py` now normalizes a reviewed local GeoJSON into the canonical geometry-first partition schema plus a review-only descriptor sidecar. It never downloads sources or silently mutates the live registry. Operators must explicitly map name/code/type fields and supply source label/ref/vintage, representation note, expected count and optional viewport.  
+**Guards:** importer fails closed on duplicate IDs, missing names/codes, non-polygon geometry, feature-count drift and hard byte-budget overflow; it SHA-256 fingerprints the exact source bytes, preserves unknown population as `unknown-not-zero`, and emits geometry-free search records. `test_world_map_adm1_importer.py` runs in the World Map quality group.  
+**Rule retained:** acquisition, normalization and registry promotion remain separate review steps; external geometry does not become authoritative merely because it can be normalized.
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
