@@ -69,7 +69,7 @@ def main() -> int:
             "upsertRegistration", "uiLayoutRefreshes", "atlasUILeftStatus",
             "atlasWorldContext", "atlasTimeState", "axisFieldLegend", "axisOperatorHud", "axisDepthNavigator", "axisCompactToggle",
             "main-inspector", "world-context", "time-state", "axis-field-legend", "axis-operator-hud", "axis-compact",
-            "atlas-axis-inspector-nav", "@media(max-width:900px)",
+            "atlas-axis-inspector-nav", "@media(max-width:900px)", "body:has(#atlasWorldBar details[open])", "body:has(.top details.menu[open])",
         ):
             if token not in text:
                 errors.append(f"UI layout coordinator missing {token}")
