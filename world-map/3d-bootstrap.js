@@ -147,6 +147,7 @@ try {
   await loadAfterPaint('Country Presentation', './3d-country-presentation.js');
   await loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js');
   await loadAfterPaint('World Bar', './3d-world-bar.js');
+  await loadAfterPaint('Accessibility Status', './3d-accessibility-status.js');
   await loadAfterPaint('Country Card', './3d-country-card.js');
   await loadAfterPaint('Scalar Runtime Bridge', './3d-scalar-runtime-bridge.js');
   await loadAfterPaint('Investigation Surface', './3d-investigation-surface.js');
