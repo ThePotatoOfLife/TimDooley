@@ -40,10 +40,10 @@
 **Rule retained:** visual interpolation and camera framing remain local unless they begin governing data/loading/interaction behavior.
 
 ### WM-006 · Country visual-channel ownership not fully closed — P1/P2
-**Status:** substantially fixed; exact-head proof still preferred (2026-09-20).  
-**Resolution:** Compositor owns country fill/extrusion color, Country Selection owns outlines, Physical World owns country fill opacity, and the core extrusion controller owns height/visibility. Progressive UI is retired from normal boot. Legacy Lens URLs/API calls now translate into Layer Registry state and no longer repaint country surfaces directly.  
-**Guard:** visual-channel validation rejects canonical country paint writes from legacy UI/Lens compatibility modules and enforces one owner per channel.  
-**Remaining:** continue auditing dynamic/indirect paint writers as new renderers are promoted.
+**Status:** fixed / governed on main (2026-09-20), pending exact-head CI confirmation.  
+**Resolution:** Compositor owns country fill/extrusion color, Country Selection owns outlines, Physical World owns country fill opacity, and the core extrusion controller owns height/visibility. Progressive UI is retired from normal boot. Legacy Lens URLs/API calls now translate into Layer Registry state only; the Lens compatibility adapter owns no country paint, feature-state, legend or control surface.  
+**Guard:** visual-channel validation rejects canonical country paint writes from legacy UI/Lens compatibility modules and enforces one owner per channel. Lens ownership regression rejects return of the retired legend/control renderer.  
+**Rule retained:** any newly promoted renderer that wants a canonical country channel must declare ownership instead of writing around the compositor.
 
 ### WM-007 · Duplicate style/lifecycle writers remain — P2
 **Status:** fixed for direct Style Lifecycle ownership on main (2026-09-20).  
@@ -81,14 +81,14 @@
 **Remaining:** monitor announcement noise/ordering as more specialist layers are added.
 
 ### WM-014 · Route-geometry behavioral coverage incomplete — P2
-**Status:** substantially fixed.  
-**Completed:** relationship chords and symbolic interior routes use the shared wrap-safe longitude kernel; regressions cover dateline crossings in eastern and western world copies; route features carry explicit `geometry_meaning`; stored spatial-overlay lines remain stored/reference geometry rather than being silently converted into schematic chords. Shared Interaction Router tests cover click/hover priority.  
-**Remaining:** add behavioral coverage for any future surveyed physical-route renderer and continue globe-mode visual review.
+**Status:** fixed for current route families / governed on main (2026-09-20), pending exact-head CI confirmation.  
+**Resolution:** relationship chords and symbolic interior routes use the shared wrap-safe longitude kernel; regressions cover dateline crossings in eastern and western world copies; route features carry explicit `geometry_meaning`; stored spatial-overlay lines remain stored/reference geometry rather than being silently converted into schematic chords. Shared Interaction Router tests cover click/hover priority.  
+**Future rule:** any surveyed physical-route renderer must preserve source geometry and add its own behavioral test rather than reusing schematic chord semantics.
 
 ### WM-015 · Legacy interaction fallback scenarios under-tested — P2
-**Status:** substantially fixed; specialist degraded surfaces remain.  
-**Completed:** Country Selection, Spatial Overlays, Places and Subdivisions resolve Router ownership dynamically and promote from bounded fallbacks. Places/Subdivisions also resolve Inspector ownership dynamically and participate in the shared Style Lifecycle so sources/layers/interaction ownership recover after style generations.  
-**Remaining:** inspect ADL, Mud/Below, Spatial Overlay UI and Axis specialist consumers for the same delayed-Inspector/style-generation guarantees.
+**Status:** fixed / governed on main (2026-09-20), pending exact-head CI confirmation.  
+**Resolution:** Country Selection, Spatial Overlays, Places and Subdivisions resolve Router ownership dynamically and promote from bounded fallbacks. Places, Subdivisions, ADL, Mud/Below, Spatial Overlay UI, Axis and Axis Depth resolve Inspector availability dynamically while retaining direct panel fallbacks. Places, Subdivisions and Spatial Overlays restore sources/layers/interaction ownership through the shared Style Lifecycle after style generations.  
+**Guard:** dedicated degraded-Inspector regression rejects module-boot Inspector caching and verifies fallback + typed promotion; interaction and Style Lifecycle validators cover Router and style-generation recovery.
 
 ### WM-016 · State/subdivision national-context readability — P2
 **Status:** substantially fixed.  
