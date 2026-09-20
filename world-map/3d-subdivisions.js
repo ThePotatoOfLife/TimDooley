@@ -95,6 +95,18 @@ function countryBaseline(code) {
     restore:() => { if (id && window.goCountry) window.goCountry(id); },
   };
 }
+function subdivisionEvidenceHtml(id) {
+  const adl = window.__potatoAtlasAdlHeat;
+  const row = adl?.stateEvidence?.(id);
+  if (!row?.enabled) return '';
+  return `
+    <div class="card subdivision-evidence-card">
+      <div class="eyebrow">Active evidence · ADL H.E.A.T.</div>
+      <p><b>${fmt(row.filteredCount)}</b> records under active ADL filters · <b>${fmt(row.snapshotTotal)}</b> in snapshot.</p>
+      <p class="muted">Evidence is source-attributed and not a population-normalized score or characterization of residents.</p>
+      <button type="button" data-subdivision-adl-evidence>Open ADL evidence</button>
+    </div>`;
+}
 function renderInspector(feature) {
   const panel = document.getElementById('panel');
   if (!panel || !feature) return;
@@ -110,10 +122,14 @@ function renderInspector(feature) {
       <div><span>Area</span><b>${fmt(p.area_km2)} km²</b><small>land + water</small></div>
     </div>
     ${population.source ? `<p class="muted">Source: ${esc(population.source)}</p>` : ''}
+    ${subdivisionEvidenceHtml(p.id)}
     <div class="panel-actions">
       <button type="button" data-subdivision-open-country>Open country</button>
       <button type="button" data-subdivision-close>Close subdivision</button>
     </div>`;
+  panel.querySelector('[data-subdivision-adl-evidence]')?.addEventListener('click', () => {
+    window.__potatoAtlasAdlHeat?.renderStateInspector?.(p.id);
+  });
   panel.querySelector('[data-subdivision-open-country]')?.addEventListener('click', () => {
     window.__potatoAtlasSubdivisions?.clear?.({ restore:false });
     if (inspector?.reset) inspector.reset(countryBaseline(code));
