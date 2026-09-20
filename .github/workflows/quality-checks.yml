@@ -40,6 +40,7 @@ jobs:
           name: quality-core
           path: |
             quality-report-core.json
+            quality-inventory.json
             .quality-logs/core/
           if-no-files-found: warn
           retention-days: 7
