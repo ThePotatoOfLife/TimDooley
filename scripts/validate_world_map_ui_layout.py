@@ -10,6 +10,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 LAYOUT = ROOT / "world-map" / "3d-ui-layout.js"
+INDEX = ROOT / "world-map" / "index.html"
+WORLD_BAR = ROOT / "world-map" / "3d-world-bar.js"
 LAYOUT_COALESCING_TEST = ROOT / "scripts" / "test_world_map_ui_layout_coalescing.mjs"
 UI_OWNERSHIP_TEST = ROOT / "scripts" / "test_world_map_ui_ownership.mjs"
 LENS_LAYOUT_TEST = ROOT / "scripts" / "test_world_map_lens_layout_ownership.mjs"
@@ -54,7 +56,7 @@ def run_node(path: Path, errors: list[str], label: str) -> None:
 
 def main() -> int:
     errors: list[str] = []
-    for path in (LAYOUT, LAYOUT_COALESCING_TEST, UI_OWNERSHIP_TEST, LENS_LAYOUT_TEST, REMAINING_FLOATER_TEST, FLOATER_INVENTORY_TEST, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, RENDER_STACK_VALIDATOR, MAP_STATE_VALIDATOR, WATER_VALIDATOR, SURFACE_FOCUS_VALIDATOR, LAND_COVER_VALIDATOR, DESERTS_VALIDATOR, HYDROLOGY_VALIDATOR, PLACES_VALIDATOR, PLACES_PIPELINE_VALIDATOR):
+    for path in (INDEX, WORLD_BAR, LAYOUT, LAYOUT_COALESCING_TEST, UI_OWNERSHIP_TEST, LENS_LAYOUT_TEST, REMAINING_FLOATER_TEST, FLOATER_INVENTORY_TEST, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, RENDER_STACK_VALIDATOR, MAP_STATE_VALIDATOR, WATER_VALIDATOR, SURFACE_FOCUS_VALIDATOR, LAND_COVER_VALIDATOR, DESERTS_VALIDATOR, HYDROLOGY_VALIDATOR, PLACES_VALIDATOR, PLACES_PIPELINE_VALIDATOR):
         if not path.exists():
             errors.append(f"missing required World Map architecture file: {path.relative_to(ROOT)}")
 
@@ -73,6 +75,23 @@ def main() -> int:
         ):
             if token not in text:
                 errors.append(f"UI layout coordinator missing {token}")
+
+    if INDEX.exists():
+        shell = INDEX.read_text(encoding="utf-8", errors="replace")
+        for token in (
+            "--atlas-z-tint:1", "--atlas-z-decoration:2", "--atlas-z-axis:3",
+            "--atlas-z-map-control:4", "--atlas-z-selection:6", "--atlas-z-context:7",
+            "--atlas-z-overlay:8", "--atlas-z-header:10", "--atlas-z-menu:30",
+            "z-index:var(--atlas-z-header,10)", "z-index:var(--atlas-z-menu,30)",
+            "z-index:var(--atlas-z-map-control,4)",
+        ):
+            if token not in shell:
+                errors.append(f"World Map shell missing semantic layering token/use: {token}")
+    if WORLD_BAR.exists():
+        text = WORLD_BAR.read_text(encoding="utf-8", errors="replace")
+        for token in ("z-index:var(--atlas-z-menu,30)", "z-index:var(--atlas-z-context,7)"):
+            if token not in text:
+                errors.append(f"World Bar missing semantic layering token use: {token}")
 
     if PHYSICAL.exists():
         text = PHYSICAL.read_text(encoding="utf-8", errors="replace")
