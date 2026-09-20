@@ -7,6 +7,9 @@ if (!map) throw new Error('Spatial overlays require the core atlas map.');
 if (!window.__potatoAtlasGeo) await import('./3d-geo-kernel.js');
 const geoKernel = window.__potatoAtlasGeo;
 if (!geoKernel?.antimeridianAwareBounds) throw new Error('Spatial overlays require the shared geospatial kernel.');
+if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
+const motion = window.__potatoAtlasMotion;
+if (!motion?.fitBounds) throw new Error('Spatial overlays require the shared Motion policy.');
 const interaction = window.__potatoAtlasInteraction;
 
 const MANIFEST_URL = '../data/world-map-spatial-overlays.json';
@@ -289,7 +292,7 @@ async function fit(id) {
   } catch {
     return false;
   }
-  map.fitBounds([[bounds.west,bounds.south],[bounds.east,bounds.north]], { padding:70, maxZoom:7, duration:650 });
+  motion.fitBounds(map, [[bounds.west,bounds.south],[bounds.east,bounds.north]], { padding:70, maxZoom:7, duration:650 });
   return true;
 }
 async function restoreFromUrl() {
