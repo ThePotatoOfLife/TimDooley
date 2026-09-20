@@ -46,6 +46,15 @@ for (const forbidden of ['Capital:', 'Area:', 'Currency:', 'Government', 'Member
 
 assert.ok(!worldBar.includes('<span>Active</span>'), 'Current Map View must not expose selected-country identity');
 assert.ok(worldBar.includes('select a country'), 'relationship context without a subject needs an explicit orientation state');
+for (const token of [
+  "context.setAttribute('role','status')",
+  "context.setAttribute('aria-live','polite')",
+  '<span>Physical</span>',
+  '<span>Geography</span>',
+  '<span>Evidence</span>',
+  'potato-atlas-evidence-layer-change',
+  'potato-atlas-physical-layer-change',
+]) assert.ok(worldBar.includes(token), `Current Map View accessibility summary missing ${token}`);
 
 for (const tab of ['overview','context','connections']) {
   assert.ok(card.includes(`data-country-tab="${tab}"`), `Country Card missing ${tab} tab`);
