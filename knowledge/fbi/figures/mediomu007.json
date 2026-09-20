@@ -16,10 +16,13 @@
       "builder-cultivator"
     ],
     "narrative_functions": [
+      "old-acquaintance / relationship-history referent",
       "questioning and direct challenge",
       "theological skepticism",
       "comparative-religion critique",
-      "text/reading commentary",
+      "institutional/monarchy debate",
+      "internet-culture and paranormal discussion",
+      "science/cosmology questioning",
       "ordinary companionship",
       "room-making",
       "bridge-building in later project narrative"
@@ -27,9 +30,12 @@
     "regions": [
       "Livestream",
       "House",
-      "Mountain"
+      "Debate",
+      "Morocco / North Africa discussion",
+      "Science / Cosmology",
+      "Mountain (interpretive)"
     ],
-    "editorial_reading": "Recurring public-chat participant whose recovered September conversations combine direct theological skepticism, comparative-religion criticism, text/reading commentary, debate pressure and ordinary domestic continuity. The September 20 room-rearrangement scene provides a grounded counterweight to later mountain/bridge-building interpretation.",
+    "editorial_reading": "Recurring public-chat participant with a recoverable August→September arc: old-acquaintance/handshake framing, direct skepticism about Tim's identity, monarchy/institution debate, 4chan/paranormal and North-Africa talk, coffee/Chesterfield/prayer/ordinary-life detail, Christ/Door questions, Big Bang/cosmology questions, later comparative-religion criticism, AI-mediated debate pressure, and September room-making. Keep documentary chat, user-supplied biography and later mountain/bridge symbolism visibly separate.",
     "source_boundary": "Literal furniture/room chat is documentary; Mount-Zion-like mountain placement is project narrative/interpretation."
   },
   "chronology": {
@@ -38,7 +44,23 @@
     "cast_period_roles": [
       {
         "period": "2026-08-24",
-        "role": "project mountain/bridge-building narrative participant; interpretive layer"
+        "role": "user-supplied old-handshake/acquaintance framing; later forgiveness, mountain and bridge-building interpretation"
+      },
+      {
+        "period": "2026-08-25",
+        "role": "direct identity skeptic: says Tim is human, born to human parents, and uses 'cult leader' language"
+      },
+      {
+        "period": "2026-08-26",
+        "role": "participant in monarchy/continuity/billionaire-power debate"
+      },
+      {
+        "period": "2026-08-27",
+        "role": "4chan paranormal /pol/ self-description, coffee/Chesterfield/bidet/prayer/North-Africa ordinary context; asks Jesus-reincarnation and Door questions"
+      },
+      {
+        "period": "2026-08-30",
+        "role": "asks Big Bang/origin-of-universe questions; user also supplies Morocco/Chesterfield/coffee/mustache/potato profile detail"
       },
       {
         "period": "2026-09-05",
@@ -66,8 +88,33 @@
   "highlighted_incidents": [
     {
       "date": "2026-08-24",
-      "title": "Mountain / bridge-building narrative",
-      "summary": "Project conversation archaeology places Mediomu in a later forgiveness/bridge-building story; this remains an interpretive layer."
+      "title": "Old handshake and bridge-building frame",
+      "summary": "User says Mediomu and Tim shook hands years earlier; later conversation turns the relation into forgiveness, Morocco–Europe bridge and mountain symbolism. Documentary and interpretive layers remain separate."
+    },
+    {
+      "date": "2026-08-25",
+      "title": "'You are human' challenge",
+      "summary": "Mediomu says Tim is human, has parents, was born human, and calls him a cult leader in a direct identity/theology challenge."
+    },
+    {
+      "date": "2026-08-26",
+      "title": "Monarchy and institutional continuity",
+      "summary": "Mediomu appears in a monarchy debate about continuity, networks and protection from billionaire capture; tree/connective-tissue language is later interpretation."
+    },
+    {
+      "date": "2026-08-27",
+      "title": "4chan, coffee, Chesterfield and North Africa",
+      "summary": "Self-description includes 4chan paranormal threads and /pol/, coffee, Chesterfield cigarettes, water bidet, prayer-time remarks and North-Africa/Morocco context."
+    },
+    {
+      "date": "2026-08-27",
+      "title": "Jesus reincarnation / Door questions",
+      "summary": "Mediomu asks whether Tim is Jesus Christ reincarnated and later asks how to get through the Door; project theological answers are not projected back onto him as belief."
+    },
+    {
+      "date": "2026-08-30",
+      "title": "Big Bang and higher-dimensional cosmology",
+      "summary": "Mediomu asks how the universe came to be and who caused the Big Bang, leading into speculative higher-dimensional discussion."
     },
     {
       "date": "2026-09-05",
@@ -109,7 +156,9 @@
     }
   ],
   "recovery_leads": [
-    "Recover full September 5–6 chat exports so the sequence between Aion, religion critique, AI criticism and divinity debate can be reconstructed turn by turn.",
+    "Recover full August 24–30 chat exports so handshake, monarchy, 4chan/paranormal, Christ/Door and Big Bang threads can be reconstructed turn by turn.",
+    "Recover full September 5–6 chat exports so the sequence between Aion, religion critique, AI criticism and divinity debate can be resolved precisely.",
+    "Where Morocco/coffee/Chesterfield/mustache details come from user description rather than direct Mediomu speech, preserve that source class visibly.",
     "Recover the August 24 source behind the mountain/bridge-building narrative and keep its interpretive status visible.",
     "Preserve ordinary September 20 room-making detail as a separate documentary layer rather than retrofitting it into symbolic ritual.",
     "Track future shifts between disagreement, ordinary companionship and repair without assigning a permanent adversary/supporter label."
@@ -117,6 +166,13 @@
   "conversation_archaeology": {
     "source": "knowledge/fbi/conversation-recovery.json",
     "recovered_entry_ids": [
+      "conv-2026-08-24-mediomu-handshake-mountain",
+      "conv-2026-08-25-mediomu-human-cult-leader",
+      "conv-2026-08-26-mediomu-monarchy",
+      "conv-2026-08-27-mediomu-4chan-coffee",
+      "conv-2026-08-27-mediomu-jesus-door",
+      "conv-2026-08-30-mediomu-big-bang",
+      "conv-2026-08-30-mediomu-morocco-profile",
       "conv-2026-09-05-mediomu-aion-text",
       "conv-2026-09-05-mediomu-religion-rejection",
       "conv-2026-09-06-mediomu-matthew-theology",
@@ -127,16 +183,27 @@
       "theology",
       "debate",
       "comparative religion",
+      "monarchy/institutions",
+      "internet culture",
+      "paranormal",
+      "science/cosmology",
       "reading/text",
       "ordinary home life"
     ],
     "ordinary_life_signals": [
+      "coffee",
+      "Chesterfield/Chesterfield Rich cigarettes",
+      "water bidet",
+      "prayer time",
+      "Morocco/North Africa context",
+      "clean shave/mustache (user-described)",
+      "potatoes",
       "room rearrangement",
       "TV/console placement",
       "bed/desk/nightstand movement",
       "cleaning"
     ],
-    "disagreement_support_pattern": "Mediomu's recovered record includes strong disagreement and challenge without reducing the figure to an adversary; later bridge-building/forgiveness framing belongs to project interpretation, while ordinary room chat remains documentary.",
-    "interpretive_boundary": "Literal chat and household details are documentary to the supplied conversation record. Mountain/Zion/bridge symbolism is later project interpretation."
+    "disagreement_support_pattern": "Mediomu's recovered record is not one-note: strong skepticism and confrontation coexist with long-acquaintance/handshake framing, ordinary joking and domestic chat, curiosity about religion/science, and later project forgiveness/bridge-building language. None of these layers should erase the others.",
+    "interpretive_boundary": "Direct chat, ordinary-life remarks and user-supplied descriptive context are separate from later project symbolism. Mount Zion, bridge-burning, shared-garden and theological conclusions remain interpretation unless a source explicitly attributes them to Mediomu."
   }
 }
