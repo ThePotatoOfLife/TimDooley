@@ -99,14 +99,12 @@ function updatePointSource() {
   const source = map.getSource(POINT_SOURCE);
   if (source?.setData) source.setData(filtered);
 }
-function updateUrl() {
+function updateFilterUrl() {
   const url = new URL(location.href);
   if (enabled) {
-    url.searchParams.set('evidenceLayer', 'adl-heat');
     if (selectedYear !== 'all') url.searchParams.set('adlYear', selectedYear); else url.searchParams.delete('adlYear');
     if (selectedType !== 'all') url.searchParams.set('adlType', selectedType); else url.searchParams.delete('adlType');
   } else {
-    if (url.searchParams.get('evidenceLayer') === 'adl-heat') url.searchParams.delete('evidenceLayer');
     url.searchParams.delete('adlYear');
     url.searchParams.delete('adlType');
   }
@@ -127,7 +125,7 @@ function applyFilters() {
   updatePointSource();
   updateStateFeatureState();
   renderControls();
-  updateUrl();
+  updateFilterUrl();
   window.dispatchEvent(new CustomEvent('potato-atlas-adl-heat-change', {
     detail:{ enabled, year:selectedYear, incidentType:selectedType, records:filtered.features.length }
   }));
