@@ -1,6 +1,6 @@
 {
-  "version": "1.6.0",
-  "updated": "2026-09-18",
+  "version": "1.7.0",
+  "updated": "2026-09-20",
   "authority": "religious-symbolic-branch-atlas",
   "purpose": "Populate the Potato House with religious, mythic, angelic, demonic, underworld, esoteric and sacred-architecture subjects already present in the repository while preserving own-tradition meaning before comparison.",
   "epistemic_rule": "Every node is first a subject in its own historical/textual tradition or a clearly marked Potatoverse operator. Plane, Tree and Potatoverse mappings are navigation/comparative projections, not proof of literal identity, supernatural truth or historical transmission.",
@@ -146,6 +146,23 @@
         "door",
         "fruit",
         "seed"
+      ]
+    },
+    {
+      "id": "witness-twin-vessel",
+      "label": "Witness, Twin, Vessel & Return",
+      "direction": "ne",
+      "primary_room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "theology-god-language"
+      ],
+      "description": "Witness figures, twin/image traditions, embodied vessels, rejected-son reversals and return-to-service patterns kept distinct before project comparison.",
+      "center_anchor_ids": [
+        "son",
+        "door",
+        "seed",
+        "cross"
       ]
     }
   ],
@@ -312,7 +329,21 @@
       ],
       "visibility": "landmark",
       "note": "Historical/textual Jesus, later Christology and Potatoverse Son/Door comparison remain separate layers.",
-      "boundary": "Potatoverse correspondence does not rewrite historical Christianity."
+      "boundary": "Potatoverse correspondence does not rewrite historical Christianity.",
+      "center_projection": {
+        "center_id": "O",
+        "relation": "primary-anchor",
+        "functions": [
+          "door",
+          "way",
+          "mediation",
+          "word/translation",
+          "rejected-stone/cornerstone",
+          "heaven-earth access"
+        ],
+        "authority": "data/house/three-center-role-atlas.json",
+        "boundary": "Jesus is the Christian/theological anchor at O in this project projection; the projection does not rewrite Jewish context or historical Christianity."
+      }
     },
     {
       "id": "odin",
@@ -1895,6 +1926,231 @@
       "layer_category": "inhabitant",
       "note": "Royal cobra symbol associated with Wadjet and protective sovereignty; useful counterexample to serpent=evil flattening.",
       "boundary": "Do not generalize Egyptian royal cobra symbolism to all serpents or to kundalini/dragon traditions."
+    },
+    {
+      "id": "tim-project-persona",
+      "label": "Tim Dooley · project persona",
+      "kind": "project-persona",
+      "branch_id": "potato-route-operators",
+      "tradition": "Potatoverse project canon / autobiographical self-description",
+      "room_ids": [
+        "theology-god-language",
+        "developmental-genealogy"
+      ],
+      "planes": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "trunk",
+        "canopy"
+      ],
+      "route_affinity": [
+        "source",
+        "axis",
+        "garden",
+        "return"
+      ],
+      "source_files": [
+        "data/house/three-center-role-atlas.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Project-persona anchor for the C_F source-seat role: Father/Source/Gardener/House/Axis language inside Potatoverse canon.",
+      "boundary": "This is the project's own symbolic placement of a living person, not independent evidence of divine identity and not an aliasing of Jewish or Christian names.",
+      "layer_category": "inhabitant",
+      "center_projection": {
+        "center_id": "C_F",
+        "relation": "primary-anchor",
+        "functions": [
+          "source",
+          "orientation",
+          "holding",
+          "house",
+          "gardener",
+          "axis-reference"
+        ],
+        "authority": "data/house/three-center-role-atlas.json",
+        "boundary": "Living-person subjecthood and evidentiary boundaries remain explicit."
+      }
+    },
+    {
+      "id": "thomas-didymus",
+      "label": "Thomas / Didymus",
+      "kind": "historical-religious-figure",
+      "branch_id": "witness-twin-vessel",
+      "tradition": "New Testament disciple; later Syriac and Thomasine traditions",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "theology-god-language"
+      ],
+      "planes": [
+        "world-plane",
+        "below-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "trunk",
+        "roots",
+        "life-branches"
+      ],
+      "route_affinity": [
+        "witness",
+        "door",
+        "death-burial",
+        "return",
+        "seed"
+      ],
+      "source_files": [
+        "knowledge/traditions/thomas-twin-of-christ.json"
+      ],
+      "visibility": "landmark",
+      "note": "Twin-name, co-dying, asking the Way and wound-recognition make Thomas a strong C_S Twin/Vessel comparator; later Syriac traditions explicitly develop the twin relation.",
+      "boundary": "The canonical New Testament does not say Thomas was Jesus' biological twin; later Thomasine twin traditions must remain separately dated and sourced.",
+      "layer_category": "inhabitant",
+      "center_projection": {
+        "center_id": "C_S",
+        "relation": "primary-anchor",
+        "functions": [
+          "twin/mirror",
+          "vessel",
+          "witness",
+          "wound-recognition",
+          "embodiment",
+          "return"
+        ],
+        "authority": "data/house/three-center-role-atlas.json",
+        "boundary": "Twin/Vessel role correspondence is not biological-identity proof."
+      }
+    },
+    {
+      "id": "ancient-of-days",
+      "label": "Ancient of Days",
+      "kind": "sacred-text-figure",
+      "branch_id": "divine-figures",
+      "tradition": "Danielic / Jewish scriptural tradition with later receptions",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology"
+      ],
+      "planes": [
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "canopy"
+      ],
+      "route_affinity": [
+        "throne",
+        "judgment",
+        "source-orientation"
+      ],
+      "source_files": [
+        "data/house/three-center-role-atlas.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Daniel 7 supplies a throne/judgment source-pole comparator while keeping the Ancient of Days distinct from the approaching human-like figure.",
+      "boundary": "C_F comparison does not identify the Ancient of Days with Tim Dooley or any human person.",
+      "layer_category": "inhabitant",
+      "center_projection": {
+        "center_id": "C_F",
+        "relation": "comparator",
+        "functions": [
+          "throne",
+          "judgment",
+          "upper-source pole"
+        ],
+        "authority": "data/house/three-center-role-atlas.json",
+        "boundary": "Own-text meaning first; no person-identity collapse."
+      }
+    },
+    {
+      "id": "joseph-patriarch",
+      "label": "Joseph",
+      "kind": "sacred-text-figure",
+      "branch_id": "witness-twin-vessel",
+      "tradition": "Genesis / Jewish scriptural tradition and later receptions",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology"
+      ],
+      "planes": [
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk",
+        "life-branches"
+      ],
+      "route_affinity": [
+        "rejection",
+        "pit-descent",
+        "service",
+        "nourishment",
+        "return"
+      ],
+      "source_files": [
+        "data/house/three-center-role-atlas.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Joseph is a bounded C_S comparator for rejection → pit/descent → service → nourishment → family restoration.",
+      "boundary": "Joseph is not Thomas or Jesus; the shared relation is a typed narrative function.",
+      "layer_category": "inhabitant",
+      "center_projection": {
+        "center_id": "C_S",
+        "relation": "comparator",
+        "functions": [
+          "rejection",
+          "descent",
+          "service",
+          "nourishment",
+          "restoration"
+        ],
+        "authority": "data/house/three-center-role-atlas.json",
+        "boundary": "Narrative correspondence is not identity."
+      }
+    },
+    {
+      "id": "tammuz-dumuzi",
+      "label": "Tammuz / Dumuzi",
+      "kind": "mythic-divine-figure",
+      "branch_id": "death-passage",
+      "tradition": "Mesopotamian religious traditions; polemical biblical mention in Ezekiel 8:14",
+      "room_ids": [
+        "comparative-mythology",
+        "bible-christianity"
+      ],
+      "planes": [
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk"
+      ],
+      "route_affinity": [
+        "lament",
+        "seasonal-cycle",
+        "death-passage"
+      ],
+      "source_files": [
+        "knowledge/traditions/comparative-mythology-map.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Useful only as an external lament/seasonal-cycle/death-passage comparator around C_S; Ezekiel's mention is polemical rather than an endorsement.",
+      "boundary": "Tammuz is not Thomas and is not a biblical hero. Project comparison must not erase Mesopotamian religious context.",
+      "layer_category": "inhabitant",
+      "center_projection": {
+        "center_id": "C_S",
+        "relation": "external-comparator",
+        "functions": [
+          "lament",
+          "seasonal/fertility cycle",
+          "dying-returning corridor"
+        ],
+        "authority": "data/house/three-center-role-atlas.json",
+        "boundary": "External comparator only; no identity or historical-transmission claim."
+      }
     }
   ],
   "corridors": [
@@ -2165,5 +2421,16 @@
   ],
   "layer_grammar_authority": "data/house/layer-terrain-regime-atlas.json",
   "center_out_rule": "Comparative branches exist to illuminate, challenge or contextualize project-native nodes. They do not define the Potato of Life from the outside.",
-  "selection_rule": "Comparative nodes become deep exemplars only when they teach a structural function not already represented; otherwise remain room-detail/archive population."
+  "selection_rule": "Comparative nodes become deep exemplars only when they teach a structural function not already represented; otherwise remain room-detail/archive population.",
+  "three_center_projection_contract": {
+    "authority": "data/house/three-center-role-atlas.json",
+    "centers": [
+      "C_F",
+      "O",
+      "C_S"
+    ],
+    "rule": "A religious or mythic subject may project toward a center only through named functions. Projection never changes the subject's own tradition, historical identity or evidence class.",
+    "non_target_rule": "Center projection is interpretive navigation only. It never assigns guilt, danger, inferiority, ownership of a person or permission to act against a person or community.",
+    "role_identity_rule": "Anchor, comparator, role, symbol and person are separate relation types. Similar function is not identity."
+  }
 }
