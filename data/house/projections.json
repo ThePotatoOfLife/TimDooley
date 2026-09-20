@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.1.0",
+  "updated": "2026-09-20",
   "authority": "house-integrated-plurality-projections",
   "principle": "House is the canonical ownership/composition architecture. Temple, Body, Tree/Vine and City are alternate lossy Views over differentiated plurality. They may illuminate the same underlying Rooms without becoming new owners.",
   "source_owner": "knowledge/theology/integrated-plurality-house-tree-body-city-atlas.json",
@@ -84,6 +84,22 @@
       ],
       "project_mapping": "Use for network civilization, World Systems and multi-House federation.",
       "guard": "City unity must preserve citizens/nodes and legal/empirical distinctions; theological image is not political sovereignty."
+    },
+    {
+      "id": "plane-view",
+      "label": "Plane / Section",
+      "question": "What becomes visible when the larger system is cut/read at one declared frame, scale and time?",
+      "one": "active section/frame",
+      "many": "current actors, relations, institutions, constraints, choices and observable consequences",
+      "emphasis": [
+        "cross-section",
+        "frame",
+        "current relation",
+        "lateral context",
+        "recurrence measurement"
+      ],
+      "project_mapping": "World-facing section through the two-field Potato; O is Axis∩Plane, not the whole Plane.",
+      "guard": "Plane is a lossy View, not a realm, owner, universal Now or entire World."
     }
   ],
   "transformations": [
@@ -111,6 +127,11 @@
       "from": "tree-vine-view",
       "to": "city-view",
       "meaning": "organic generativity becomes federated infrastructure when branches must coordinate at scale"
+    },
+    {
+      "from": "house-view",
+      "to": "plane-view",
+      "meaning": "same owned structure re-read as a frame-relative current section"
     }
   ],
   "noncollapse_rule": "A projection may highlight relations omitted by another projection, but no projection may silently replace Room ownership, provenance, evidence class, historical source meaning or the other projections."
