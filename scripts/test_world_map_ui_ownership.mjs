@@ -19,11 +19,15 @@ assert.ok(
   ui.includes("window.addEventListener('potato-atlas-panel-rendered'"),
   'Progressive UI must consume the canonical panel-render event',
 );
-assert.ok(
-  !ui.includes("setPaintProperty('countries-fill','fill-opacity'") &&
-  !ui.includes('setPaintProperty("countries-fill","fill-opacity"'),
-  'Progressive UI must not compete with Physical World for countries-fill opacity',
-);
+for (const forbidden of [
+  "setPaintProperty('countries-fill','fill-color'",
+  "setPaintProperty('countries-extrude','fill-extrusion-color'",
+  "setPaintProperty('countries-line','line-color'",
+  "setPaintProperty('countries-line','line-width'",
+  "setPaintProperty('countries-fill','fill-opacity'",
+]) {
+  assert.ok(!ui.includes(forbidden), `Progressive UI must not write canonical country channel: ${forbidden}`);
+}
 assert.ok(
   physical.includes("setPaintProperty('countries-fill', 'fill-opacity'") ||
   physical.includes("setPaintProperty('countries-fill','fill-opacity'") ||
