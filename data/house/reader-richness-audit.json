@@ -1,0 +1,622 @@
+{
+  "id": "reader-richness-audit",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "purpose": "Measure whether reader-facing HTML surfaces feel inhabited rather than merely navigational, and drive a systematic enrichment programme.",
+  "thesis": "The project is not poor in knowledge; it is poor where backend knowledge fails to project into the page. Richness means useful density, not card count.",
+  "quality_contract": {
+    "minimum_experience": [
+      "orientation: what this page is and why it matters",
+      "substance: at least one concrete explanation rather than category labels alone",
+      "specificity: named objects, dates, mechanisms, works, cases, evidence or claims owned by the page",
+      "development: what changes over time or across states",
+      "boundary: what the page does not establish",
+      "depth: routes into actual canonical holdings or sources",
+      "continuity: links that feel like conceptual continuation rather than a generic footer"
+    ],
+    "preferred_editorial_forms": [
+      "continuous prose",
+      "dated narrative",
+      "annotated examples",
+      "short declarative runs",
+      "case/object lists",
+      "source doors",
+      "questions with substantive answers",
+      "tables only where comparison genuinely benefits"
+    ],
+    "anti_patterns": [
+      "title + one-sentence summary + adjacent-room cards",
+      "repeated In scope for this bounded context labels",
+      "large grids where every card has equal visual weight",
+      "generic definitions that could belong to any website",
+      "link directories with no explanation of why a reader should care",
+      "backend richness that never reaches the public surface"
+    ]
+  },
+  "thresholds": {
+    "critical_under_bytes": 2500,
+    "thin_under_bytes": 9000,
+    "note": "Byte size is only a screening signal. Redirects, loaders and deliberate micro-pages may be correctly small; qualitative review decides enrichment."
+  },
+  "scan": {
+    "eligible_pages": 122,
+    "critical_pages": 25,
+    "thin_pages": 49,
+    "medium_pages": 28,
+    "rich_pages": 20
+  },
+  "first_priority": [
+    {
+      "path": "rooms/inside/economy-finance/index.html",
+      "size_bytes": 1896,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/experiments-formalization/index.html",
+      "size_bytes": 2022,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/games-simulations/index.html",
+      "size_bytes": 1757,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/geography-countries/index.html",
+      "size_bytes": 1950,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/great-book-literature/index.html",
+      "size_bytes": 2289,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/house-architecture/index.html",
+      "size_bytes": 2078,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/information-ecology/index.html",
+      "size_bytes": 2152,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/infrastructure-capability/index.html",
+      "size_bytes": 2018,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/internet-platforms/index.html",
+      "size_bytes": 2123,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/law-justice/index.html",
+      "size_bytes": 2071,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/music-sound/index.html",
+      "size_bytes": 1731,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/neurobiology/index.html",
+      "size_bytes": 1732,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/open-questions/index.html",
+      "size_bytes": 2051,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/politics-governance/index.html",
+      "size_bytes": 2095,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/research-programmes/index.html",
+      "size_bytes": 2136,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/subculture-group-formation/index.html",
+      "size_bytes": 2329,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/symbolic-body-comparison/index.html",
+      "size_bytes": 2056,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/visual-art/index.html",
+      "size_bytes": 1893,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/whole-body/index.html",
+      "size_bytes": 1744,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/bible-christianity/index.html",
+      "size_bytes": 3020,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/canon-identities/index.html",
+      "size_bytes": 3102,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/comparative-mythology/index.html",
+      "size_bytes": 2972,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/developmental-genealogy/index.html",
+      "size_bytes": 3014,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/esoteric-sacred-geometry/index.html",
+      "size_bytes": 3078,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/math-geometry/index.html",
+      "size_bytes": 2904,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/memory-recovery/index.html",
+      "size_bytes": 3037,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/model-testing/index.html",
+      "size_bytes": 2938,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/other-traditions/index.html",
+      "size_bytes": 3215,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/physics-cosmology/index.html",
+      "size_bytes": 3144,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/practice-ethics/index.html",
+      "size_bytes": 3127,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/prediction-revelation-time/index.html",
+      "size_bytes": 3127,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/provenance-evidence/index.html",
+      "size_bytes": 3102,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/symbolic-architecture/index.html",
+      "size_bytes": 3390,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/systems-dynamics/index.html",
+      "size_bytes": 3107,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/theology-god-language/index.html",
+      "size_bytes": 2975,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/timeline-events/index.html",
+      "size_bytes": 2819,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/witness-attestation/index.html",
+      "size_bytes": 3038,
+      "kind": "nested-room"
+    }
+  ],
+  "all_critical": [
+    {
+      "path": "chronology/index.html",
+      "size_bytes": 510,
+      "kind": "chronology"
+    },
+    {
+      "path": "great-book.html",
+      "size_bytes": 338,
+      "kind": "great-book.html"
+    },
+    {
+      "path": "learn/index.html",
+      "size_bytes": 466,
+      "kind": "learn"
+    },
+    {
+      "path": "religion/jesus-tim/index.html",
+      "size_bytes": 494,
+      "kind": "religion"
+    },
+    {
+      "path": "rooms/inside/economy-finance/index.html",
+      "size_bytes": 1896,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/experiments-formalization/index.html",
+      "size_bytes": 2022,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/games-simulations/index.html",
+      "size_bytes": 1757,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/geography-countries/index.html",
+      "size_bytes": 1950,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/great-book-literature/index.html",
+      "size_bytes": 2289,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/house-architecture/index.html",
+      "size_bytes": 2078,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/information-ecology/index.html",
+      "size_bytes": 2152,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/infrastructure-capability/index.html",
+      "size_bytes": 2018,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/internet-platforms/index.html",
+      "size_bytes": 2123,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/law-justice/index.html",
+      "size_bytes": 2071,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/music-sound/index.html",
+      "size_bytes": 1731,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/neurobiology/index.html",
+      "size_bytes": 1732,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/open-questions/index.html",
+      "size_bytes": 2051,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/politics-governance/index.html",
+      "size_bytes": 2095,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/research-programmes/index.html",
+      "size_bytes": 2136,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/subculture-group-formation/index.html",
+      "size_bytes": 2329,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/symbolic-body-comparison/index.html",
+      "size_bytes": 2056,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/visual-art/index.html",
+      "size_bytes": 1893,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/whole-body/index.html",
+      "size_bytes": 1744,
+      "kind": "nested-room"
+    },
+    {
+      "path": "tim-dooley/100000-hours/live-model.html",
+      "size_bytes": 542,
+      "kind": "tim-dooley"
+    },
+    {
+      "path": "world-map/3d.html",
+      "size_bytes": 482,
+      "kind": "world-map"
+    }
+  ],
+  "all_thin": [
+    {
+      "path": "explore/index.html",
+      "size_bytes": 7331,
+      "kind": "explore"
+    },
+    {
+      "path": "great-book/front-matter.html",
+      "size_bytes": 4913,
+      "kind": "great-book"
+    },
+    {
+      "path": "history/index.html",
+      "size_bytes": 8954,
+      "kind": "history"
+    },
+    {
+      "path": "israel-mesopotamia/index.html",
+      "size_bytes": 8903,
+      "kind": "israel-mesopotamia"
+    },
+    {
+      "path": "politics/index.html",
+      "size_bytes": 6570,
+      "kind": "politics"
+    },
+    {
+      "path": "politics/parts/part-02.html",
+      "size_bytes": 8602,
+      "kind": "politics"
+    },
+    {
+      "path": "politics/parts/part-03.html",
+      "size_bytes": 7171,
+      "kind": "politics"
+    },
+    {
+      "path": "politics/parts/part-04.html",
+      "size_bytes": 5664,
+      "kind": "politics"
+    },
+    {
+      "path": "potatoism/grow/index.html",
+      "size_bytes": 7219,
+      "kind": "potatoism"
+    },
+    {
+      "path": "rooms/archive-sources/index.html",
+      "size_bytes": 5697,
+      "kind": "rooms"
+    },
+    {
+      "path": "rooms/culture-information/index.html",
+      "size_bytes": 5486,
+      "kind": "rooms"
+    },
+    {
+      "path": "rooms/inside/bible-christianity/index.html",
+      "size_bytes": 3020,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/canon-identities/index.html",
+      "size_bytes": 3102,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/comparative-mythology/index.html",
+      "size_bytes": 2972,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/developmental-genealogy/index.html",
+      "size_bytes": 3014,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/esoteric-sacred-geometry/index.html",
+      "size_bytes": 3078,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/math-geometry/index.html",
+      "size_bytes": 2904,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/memory-recovery/index.html",
+      "size_bytes": 3037,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/model-testing/index.html",
+      "size_bytes": 2938,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/other-traditions/index.html",
+      "size_bytes": 3215,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/physics-cosmology/index.html",
+      "size_bytes": 3144,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/practice-ethics/index.html",
+      "size_bytes": 3127,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/prediction-revelation-time/index.html",
+      "size_bytes": 3127,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/provenance-evidence/index.html",
+      "size_bytes": 3102,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/symbolic-architecture/index.html",
+      "size_bytes": 3390,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/systems-dynamics/index.html",
+      "size_bytes": 3107,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/theology-god-language/index.html",
+      "size_bytes": 2975,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/timeline-events/index.html",
+      "size_bytes": 2819,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/inside/witness-attestation/index.html",
+      "size_bytes": 3038,
+      "kind": "nested-room"
+    },
+    {
+      "path": "rooms/life-body/index.html",
+      "size_bytes": 5372,
+      "kind": "rooms"
+    },
+    {
+      "path": "rooms/objects/index.html",
+      "size_bytes": 4968,
+      "kind": "rooms"
+    },
+    {
+      "path": "rooms/potatoverse-canon/index.html",
+      "size_bytes": 5762,
+      "kind": "rooms"
+    },
+    {
+      "path": "rooms/research-lab/index.html",
+      "size_bytes": 5768,
+      "kind": "rooms"
+    },
+    {
+      "path": "rooms/science-formal-models/index.html",
+      "size_bytes": 5698,
+      "kind": "rooms"
+    },
+    {
+      "path": "rooms/time-history/index.html",
+      "size_bytes": 5368,
+      "kind": "rooms"
+    },
+    {
+      "path": "rooms/traditions-texts/index.html",
+      "size_bytes": 5576,
+      "kind": "rooms"
+    },
+    {
+      "path": "rooms/works/index.html",
+      "size_bytes": 5358,
+      "kind": "rooms"
+    },
+    {
+      "path": "rooms/world-systems/index.html",
+      "size_bytes": 5942,
+      "kind": "rooms"
+    },
+    {
+      "path": "science/celestial-particles/index.html",
+      "size_bytes": 5406,
+      "kind": "science"
+    },
+    {
+      "path": "science/quantum/index.html",
+      "size_bytes": 4900,
+      "kind": "science"
+    },
+    {
+      "path": "science/research-map/index.html",
+      "size_bytes": 7224,
+      "kind": "science"
+    },
+    {
+      "path": "science/spudlight/index.html",
+      "size_bytes": 5703,
+      "kind": "science"
+    },
+    {
+      "path": "science/vibe-gates/index.html",
+      "size_bytes": 6032,
+      "kind": "science"
+    },
+    {
+      "path": "tim-dooley/biblical-case/index.html",
+      "size_bytes": 7388,
+      "kind": "tim-dooley"
+    },
+    {
+      "path": "tim-dooley/claims/index.html",
+      "size_bytes": 8204,
+      "kind": "tim-dooley"
+    },
+    {
+      "path": "tim-dooley/ontology/index.html",
+      "size_bytes": 8737,
+      "kind": "tim-dooley"
+    },
+    {
+      "path": "tim-dooley/story/raw/index.html",
+      "size_bytes": 7129,
+      "kind": "tim-dooley"
+    },
+    {
+      "path": "timeline/index.html",
+      "size_bytes": 4762,
+      "kind": "timeline"
+    },
+    {
+      "path": "world-map/3d-core.html",
+      "size_bytes": 4574,
+      "kind": "world-map"
+    }
+  ],
+  "system_fix": {
+    "commit": "6ac028b95c77bb4e6b206785c0328cba324831af",
+    "file": "app/house-journey.js",
+    "effect": "Nested Rooms now project dossier purpose, belongs-here scope, canonical holdings, governed interfaces, receives/hands-to routes, unfinished work and public surfaces directly into the room.",
+    "limitation": "Shared projection fixes starvation but not voice. High-value Rooms still benefit from authored Tim/project-specific essays and examples."
+  },
+  "enrichment_strategy": [
+    "Phase 1: guarantee automatic dossier-driven substance in every nested Room.",
+    "Phase 2: author bespoke opening essays for the highest-traffic/highest-concept Rooms.",
+    "Phase 3: turn featured holdings into human-readable extracts and object/case spotlights rather than filename-only lists.",
+    "Phase 4: enrich parent Dwellings and hubs with narrative synthesis instead of scope-card repetition.",
+    "Phase 5: use validators to prevent enriched pages regressing into shells."
+  ]
+}
