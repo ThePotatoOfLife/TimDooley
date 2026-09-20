@@ -71,7 +71,7 @@ def main():
         if holding_by[room].get("primary_file_count",0)<3: fail(f"{room} holdings unexpectedly thin")
 
     page=(ROOT/"life-body/index.html").read_text(encoding="utf-8")
-    for needle in ("vertebral-33-room-atlas.json","brain-room-deep-atlas.json","id=\"cellular-depth\""):
+    for needle in ("vertebral-33-room-atlas.json","brain-room-deep-atlas.json","id=\"cellular-depth\"","id=\"bodyFinder\"","body-relational-overlay.json"):
         if needle not in page: fail(f"Life & Body public page missing {needle}")
 
     app=(ROOT/"app/app.js").read_text(encoding="utf-8")
