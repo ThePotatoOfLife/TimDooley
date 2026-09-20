@@ -15,13 +15,16 @@ APP = ROOT / "world-map" / "3d-app.js"
 HANDOFF = ROOT / "world-map" / "3d-core-interaction-handoff.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
 COUNTRY = ROOT / "world-map" / "3d-country-selection.js"
+GATEWAYS = ROOT / "world-map" / "3d-gateways.js"
+INFRASTRUCTURE = ROOT / "world-map" / "3d-infrastructure.js"
+IMPACT_ACTIONS = ROOT / "world-map" / "3d-impact-actions.js"
 TEST = ROOT / "scripts" / "test_world_map_interaction_router.mjs"
 COMPAT_TEST = ROOT / "scripts" / "test_world_map_interaction_compatibility.mjs"
 
 
 def main() -> int:
     errors: list[str] = []
-    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, BOOTSTRAP, APP, HANDOFF, HOVER, COUNTRY, TEST, COMPAT_TEST):
+    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, BOOTSTRAP, APP, HANDOFF, HOVER, COUNTRY, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS, TEST, COMPAT_TEST):
         if not path.exists():
             errors.append(f"missing interaction-router file: {path.relative_to(ROOT)}")
     if errors:
@@ -38,6 +41,9 @@ def main() -> int:
     handoff = HANDOFF.read_text(encoding="utf-8", errors="replace")
     hover = HOVER.read_text(encoding="utf-8", errors="replace")
     country = COUNTRY.read_text(encoding="utf-8", errors="replace")
+    gateways = GATEWAYS.read_text(encoding="utf-8", errors="replace")
+    infrastructure = INFRASTRUCTURE.read_text(encoding="utf-8", errors="replace")
+    impact_actions = IMPACT_ACTIONS.read_text(encoding="utf-8", errors="replace")
 
     for token in (
         "function createInteractionRouter",
@@ -115,11 +121,34 @@ def main() -> int:
         if token not in hover:
             errors.append(f"hover/capital router migration missing marker: {token}")
 
+    for token in (
+        "const interaction = window.__potatoAtlasInteraction",
+        "interaction.register('system-gateways'",
+        "objectType:'gateway'",
+        "clickPriority:75",
+        "Degraded/direct-module fallback only",
+    ):
+        if token not in gateways:
+            errors.append(f"Gateway interaction migration missing marker: {token}")
+    for token in (
+        "const interaction = window.__potatoAtlasInteraction",
+        "interaction.register('infrastructure-context'",
+        "objectType:'infrastructure'",
+        "clickPriority:74",
+        "Degraded/direct-module fallback only",
+    ):
+        if token not in infrastructure:
+            errors.append(f"Infrastructure interaction migration missing marker: {token}")
+    if "map.getLayer('atlas-context-gateways-points')) map.on('click'" in impact_actions:
+        errors.append("Impact Actions must not own a second direct Gateway map click")
+    if "potato-atlas-gateway-change" not in impact_actions or "injectGatewayAction(id)" not in impact_actions:
+        errors.append("Impact Actions must derive Gateway side effects from the semantic gateway-change event")
+
     node = shutil.which("node")
     if not node:
         errors.append("node executable unavailable; cannot run interaction-router regression")
     else:
-        for path in (ROUTER, SUBDIVISIONS, APP, HANDOFF, HOVER, COUNTRY):
+        for path in (ROUTER, SUBDIVISIONS, APP, HANDOFF, HOVER, COUNTRY, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS):
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
@@ -135,7 +164,7 @@ def main() -> int:
     print("- disabled registrations cannot win")
     print("- pre-core capture hands direct click listeners to the shared router")
     print("- canonical 3d-app renderer remains in-place and unchanged")
-    print("- country and legacy-capital interaction owned by the router on normal boots")
+    print("- country, capital, Gateway and Infrastructure interaction owned by the router on normal boots")
     print("- compatibility event claim retained only for degraded direct-handler fallback")
     print(f"Errors: {len(errors)}")
     if errors:
