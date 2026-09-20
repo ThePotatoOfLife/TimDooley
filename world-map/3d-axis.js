@@ -1,4 +1,5 @@
 import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs';
+import { getOrCreateTooltipService } from './3d-tooltip.js';
 
 // North / Axis threshold overlay for the 3D World Relational Atlas.
 // This is a project-symbolic rendering attached to real northern geography;
@@ -108,15 +109,16 @@ function installAxisToggle(map) {
 }
 
 function installAxisInteractions(map) {
-  const popup = new maplibregl.Popup({ closeButton:false, closeOnClick:false, offset:10 });
+  const tooltip = getOrCreateTooltipService(map, { PopupClass:maplibregl.Popup, eventTarget:window, offset:10 });
   const enter = event => {
     map.getCanvas().style.cursor = 'pointer';
     const feature = event.features?.[0];
     if (!feature) return;
     const p = feature.properties || {};
-    popup.setLngLat(event.lngLat).setHTML(`<div class="atlas-hover"><b>${p.name || 'North / Axis'}</b><br><span>${p.subtitle || ''}</span><br><small>Project-symbolic atlas layer · D5 threshold, not a nation, border, territory, or physical dimension</small></div>`).addTo(map);
+    const generation = tooltip.nextGeneration('axis');
+    tooltip.show('axis', event.lngLat, `<div class="atlas-hover"><b>${p.name || 'North / Axis'}</b><br><span>${p.subtitle || ''}</span><br><small>Project-symbolic atlas layer · D5 threshold, not a nation, border, territory, or physical dimension</small></div>`, generation);
   };
-  const leave = () => { map.getCanvas().style.cursor=''; popup.remove(); };
+  const leave = () => { map.getCanvas().style.cursor=''; tooltip.invalidate('axis-leave'); };
   [AXIS_FILL,AXIS_LINE,AXIS_GATE].forEach(layer => { map.on('mouseenter',layer,enter); map.on('mouseleave',layer,leave); });
 
   const openGate = () => {
