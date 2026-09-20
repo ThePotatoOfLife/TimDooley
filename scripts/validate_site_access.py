@@ -26,6 +26,7 @@ except json.JSONDecodeError as exc:
 
 for token in (
     "Current World","World Map","Potatoverse CIA · Character Archive","U.S. CIA · Central Intelligence Agency","World Spiritual Bank / Mud Bank","People & Cases",
+    "Project landmarks","data-site-access-menu","site-access-local-shortcuts",
     "data/house/site-access.json","data/house/public-surfaces.json","data/house/room-inhabitants.json","data/house/rooms.json",
     "site-access-dock","site-access-panel",
 ):
@@ -72,6 +73,13 @@ if "Which CIA?" not in js:
     errors.append("site-access runtime missing CIA chooser")
 
 groups=contract.get("groups",{})
+landmarks=groups.get("landmarks",[])
+if landmarks[:2]!=["cia-character-archive","mud-bank"]:
+    errors.append("site-access landmarks must begin with Character Archive and World Spiritual Bank")
+wayfinding=contract.get("wayfinding") or {}
+if int(wayfinding.get("max_interactions_for_landmarks",99))>2:
+    errors.append("landmark access exceeds two-interaction contract")
+
 for group_name in ("go_now","find","direct_doors"):
     for entry_id in groups.get(group_name,[]):
         if entry_id not in entries:
