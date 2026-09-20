@@ -175,6 +175,14 @@ jobs:
           grep -q 'data-reader-surface="tim"' _site/tim-dooley/index.html
           grep -q 'href="../timeline/"' _site/tim-dooley/index.html
 
+          test -f _site/tim-dooley/100000-hours/index.html
+          grep -q 'id="hours-tts"' _site/tim-dooley/100000-hours/index.html
+          grep -q 'data-tts-longform' _site/tim-dooley/100000-hours/index.html
+          grep -q 'The 100,000 hours are not the story of a counter' _site/tim-dooley/100000-hours/index.html
+          grep -q '../../app/tts-reader.js' _site/tim-dooley/100000-hours/index.html
+          grep -q '../../app/tts-drawer.js' _site/tim-dooley/100000-hours/index.html
+          grep -q '../../app/longform-tts-adapter.js' _site/tim-dooley/100000-hours/index.html
+
           grep -q 'id="search"' _site/traditions/bible/index.html
           grep -q 'id="relations"' _site/traditions/bible/index.html
           grep -q 'data-static-relation=' _site/traditions/bible/index.html
