@@ -1,6 +1,6 @@
 {
   "id": "neurotheology-routing-index",
-  "version": "2.9.0",
+  "version": "3.0.0",
   "updated": "2026-09-20",
   "title": "Neurotheology / Body–Symbol Routing Index",
   "purpose": "Keep empirical neurobiology, whole-body biology, evidence quality, Potatoverse symbolism, Tim-specific formulations, systems formalization, timeline and religious/mythic comparison coordinated without duplicate owners or metaphor-to-anatomy collapse.",
@@ -418,6 +418,47 @@
         "cerebellar outputs",
         "CVOs",
         "vascular roads"
+      ]
+    },
+    {
+      "priority": 5,
+      "topic": "developmental origin / neural tube / lineage",
+      "owner": "knowledge/body/neural-development-lineage-atlas.json",
+      "use_for": [
+        "neural tube",
+        "forebrain/midbrain/hindbrain",
+        "telencephalon/diencephalon",
+        "radial glia",
+        "neural crest",
+        "inside-out cortex"
+      ]
+    },
+    {
+      "priority": 5,
+      "topic": "glia / barriers / neurovascular ecology",
+      "owner": "knowledge/body/glia-neurovascular-barrier-atlas.json",
+      "use_for": [
+        "astrocytes",
+        "oligodendrocytes",
+        "microglia",
+        "BBB",
+        "blood-CSF barrier",
+        "pericytes",
+        "ependymal cells",
+        "neurovascular unit"
+      ]
+    },
+    {
+      "priority": 5,
+      "topic": "cortical microstructure / cell types / parcellations",
+      "owner": "knowledge/body/cortical-celltype-parcellation-atlas.json",
+      "use_for": [
+        "layers I-VI",
+        "projection classes",
+        "interneurons",
+        "spatial transcriptomics",
+        "Brodmann",
+        "multimodal parcellation"
       ]
     }
   ],
