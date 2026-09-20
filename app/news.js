@@ -92,8 +92,8 @@ function renderPreview(host,rows,limit){const grid=$('[data-news-preview-grid]',
 function setView(host,view){$$('[data-news-view]',host).forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.newsView===view)));$$('[data-news-view-panel]',host).forEach(p=>p.classList.toggle('is-active',p.dataset.newsViewPanel===view))}
 function mergeQueries(a,b){if(a&&b)return'('+a+') AND ('+b+')';return a||b||'(international OR world)'}
 async function bootFull(host,config){
- const tabs=$('[data-news-tabs]',host),lenses=$('[data-news-lenses]',host),horizons=$('[data-news-horizons]',host),input=$('[data-news-search]',host),form=$('form.news-search',host),refresh=$('[data-news-refresh]',host),queryText=$('[data-news-active-query]',host);
- const params=new URLSearchParams(location.search);let category=params.get('category')||host.dataset.newsCategory||'all';let lens=params.get('lens')||'';let horizon=params.get('window')||'24h';let custom=clean(params.get('q')||'');let view=params.get('view')||'latest';let force=false;
+ const tabs=$('[data-news-tabs]',host),lenses=$('[data-news-lenses]',host),horizons=$('[data-news-horizons]',host),input=$('[data-news-search]',host),form=$('form.news-search',host),refresh=$('[data-news-refresh]',host),readableToggle=$('[data-news-readable]',host),queryText=$('[data-news-active-query]',host);
+ const params=new URLSearchParams(location.search);let category=params.get('category')||host.dataset.newsCategory||'all';let lens=params.get('lens')||'';let horizon=params.get('window')||'24h';let custom=clean(params.get('q')||'');let view=params.get('view')||'latest';let readable=params.get('readable')==='1';let force=false;
  if(!(config.categories||[]).some(x=>x.id===category))category='all';
  if(lens&&!(config.lenses||[]).some(x=>x.id===lens))lens='';
  if(!(config.horizons||[]).some(x=>x.id===horizon))horizon='24h';
@@ -101,14 +101,14 @@ async function bootFull(host,config){
  if(custom){category='all';lens=''}
  function catRow(){return(config.categories||[]).find(x=>x.id===category)||(config.categories||[])[0]||{}}
  function lensRow(){return(config.lenses||[]).find(x=>x.id===lens)||null}
- function press(){$$('[data-news-category]',tabs).forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.newsCategory===category)));$$('[data-news-lens]',lenses).forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.newsLens===lens)));$$('[data-news-horizon]',horizons).forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.newsHorizon===horizon)));setView(host,view)}
- function persist(){const p=new URLSearchParams();if(custom)p.set('q',custom);else if(category!=='all')p.set('category',category);if(lens)p.set('lens',lens);if(horizon!=='24h')p.set('window',horizon);if(view!=='latest')p.set('view',view);history.replaceState(null,'',p.toString()?'?'+p.toString():location.pathname)}
+ function press(){$('[data-news-category]',tabs).forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.newsCategory===category)));$('[data-news-lens]',lenses).forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.newsLens===lens)));$('[data-news-horizon]',horizons).forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.newsHorizon===horizon)));if(readableToggle)readableToggle.setAttribute('aria-pressed',String(readable));setView(host,view)}
+ function persist(){const p=new URLSearchParams();if(custom)p.set('q',custom);else if(category!=='all')p.set('category',category);if(lens)p.set('lens',lens);if(horizon!=='24h')p.set('window',horizon);if(view!=='latest')p.set('view',view);if(readable)p.set('readable','1');history.replaceState(null,'',p.toString()?'?'+p.toString():location.pathname)}
  async function run(){
    const cat=catRow(),lr=lensRow(),q=custom||mergeQueries(cat.gdelt_query,lr?.gdelt_query),providers=custom?['gdelt']:[...new Set([...(cat.providers||['gdelt']),...(lr?.providers||[])])],ms=horizonMs(config,horizon),timespan=horizonSpan(config,horizon);
    $$('[data-provider]',host).forEach(el=>el.dataset.state=providers.includes(el.dataset.provider)?'loading':'idle');
-   if(queryText)queryText.textContent=(custom?'Search: “'+custom+'”':[(cat.label||'All'),lr?.label].filter(Boolean).join(' · '))+' · '+horizonLabel(config,horizon);
+   if(queryText)queryText.textContent=(custom?'Search: “'+custom+'”':[(cat.label||'All'),lr?.label].filter(Boolean).join(' · '))+' · '+horizonLabel(config,horizon)+(readable?' · readable here only':'');
    const groups=await Promise.all(providers.map(id=>providerLoad(host,id,q,timespan,force,ms,config,category)));force=false;
-   const rows=dedupe(groups.flat()),clusters=coverageClusters(rows,config.presentation?.max_clusters||6,config.presentation?.max_cluster_items||4);
+   const allRows=dedupe(groups.flat()),rows=readable?allRows.filter(r=>clean(r.summary).length>0):allRows,clusters=coverageClusters(rows,config.presentation?.max_clusters||6,config.presentation?.max_cluster_items||4);
    const count=$('[data-news-count]',host),updated=$('[data-news-updated]',host);if(count)count.textContent=rows.length+' items';if(updated)updated.textContent='refreshed '+new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
    renderLatest(host,rows,config.presentation?.max_feed||36);renderBriefing(host,rows,providers);renderClusters(host,clusters);renderSourceLanes(host,rows,providers,config.presentation?.source_lane_items||5);renderPulse(host,rows,clusters,providers);
  }
@@ -118,6 +118,7 @@ async function bootFull(host,config){
  $$('[data-news-view]',host).forEach(b=>b.addEventListener('click',()=>{view=b.dataset.newsView;press();persist()}));
  form?.addEventListener('submit',e=>{e.preventDefault();custom=clean(input.value);if(!custom)return;category='all';lens='';press();persist();run()});
  refresh?.addEventListener('click',()=>{force=true;run()});
+ readableToggle?.addEventListener('click',()=>{readable=!readable;press();persist();run()});
  if(input&&custom)input.value=custom;press();await run();
 }
 async function bootPreview(host,config){const cat=(config.categories||[]).find(x=>x.id===(host.dataset.newsCategory||'all'))||(config.categories||[])[0]||{};const providers=(host.dataset.newsProviders||'').split(',').map(x=>x.trim()).filter(Boolean);const ids=providers.length?providers:(cat.providers||['gdelt']);const groups=await Promise.all(ids.map(id=>providerLoad(host,id,cat.gdelt_query,'24h',false,86400000,config,cat.id||'all')));renderPreview(host,dedupe(groups.flat()),Math.max(1,Math.min(6,Number(host.dataset.newsLimit)||3)))}
