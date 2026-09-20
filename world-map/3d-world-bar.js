@@ -156,6 +156,9 @@
     const node = document.getElementById('atlasWorldContext');
     if (!node) return;
     const currentEntries = layers.active().map(id => layers.get(id)).filter(Boolean);
+    const physicalIds = window.__potatoAtlasPhysicalLayers?.active?.() || [];
+    const geographyIds = window.__potatoAtlasSpatialOverlays?.active?.() || [];
+    const evidenceIds = window.__potatoAtlasEvidenceLayers?.active?.() || [];
     const scalar = view?.scalar || currentEntries.find(entry => entry.kind === 'scalar') || null;
     const sets = view?.sets || currentEntries.filter(entry => entry.kind === 'set');
     const currentSelection = window.__potatoAtlasSelection?.current || {};
@@ -163,7 +166,7 @@
     const pinned = currentSelection.pinnedCodes || currentSelection.selectedCodes || [];
     const relationMode = view?.relationMode || window.__potatoAtlasSelection?.getRelationMode?.() || 'all';
     const currentTime = view?.timeState || timeState;
-    if (!currentEntries.length && !pinned.length && relationMode === 'all' && (!currentTime || currentTime.mode === 'current')) {
+    if (!currentEntries.length && !physicalIds.length && !geographyIds.length && !evidenceIds.length && !pinned.length && relationMode === 'all' && (!currentTime || currentTime.mode === 'current')) {
       node.hidden = true; node.innerHTML = ''; return;
     }
     const lines = [];
@@ -196,6 +199,10 @@
       const relation = relationLabel(relationMode);
       lines.push(`<div><span>Connections</span><b>${esc(activeCode ? relation : `${relation} · select a country`)}</b></div>`);
     }
+    const compactIds = ids => ids.slice(0, 2).map(id => String(id).split('.').at(-1).replaceAll('-', ' ')).join(' · ') + (ids.length > 2 ? ` +${ids.length - 2}` : '');
+    if (physicalIds.length) lines.push(`<div><span>Physical</span><b>${esc(compactIds(physicalIds))}</b></div>`);
+    if (geographyIds.length) lines.push(`<div><span>Geography</span><b>${esc(compactIds(geographyIds))}</b></div>`);
+    if (evidenceIds.length) lines.push(`<div><span>Evidence</span><b>${esc(compactIds(evidenceIds))}</b></div>`);
     lines.push(`<div><span>Projection</span><b>${projection === 'globe' ? 'Globe' : 'Flat'}</b></div>`);
     if (currentTime) lines.push(`<div><span>Time</span><b>${esc(timeLabel(currentTime))}</b></div>`);
     node.innerHTML = `<small>Current map view</small>${lines.join('')}`;
@@ -254,7 +261,7 @@
     const result=document.createElement('span'); result.id='atlasWorldResult'; result.hidden=true; bar.appendChild(result);
     const reset=document.createElement('button'); reset.id='atlasWorldReset'; reset.type='button'; reset.textContent='×'; reset.title='Reset map layers and investigation state'; reset.setAttribute('aria-label','Reset map layers and investigation state'); reset.addEventListener('click',()=>window.__potatoAtlasCompositor?.reset?.()); bar.appendChild(reset);
     host.appendChild(bar);
-    const mapHost=document.querySelector('.mapwrap'); if (mapHost && !document.getElementById('atlasWorldContext')) { const context=document.createElement('aside'); context.id='atlasWorldContext'; context.hidden=true; context.setAttribute('aria-label','Current map view'); mapHost.appendChild(context); }
+    const mapHost=document.querySelector('.mapwrap'); if (mapHost && !document.getElementById('atlasWorldContext')) { const context=document.createElement('aside'); context.id='atlasWorldContext'; context.hidden=true; context.setAttribute('aria-label','Current map view'); context.setAttribute('role','status'); context.setAttribute('aria-live','polite'); context.setAttribute('aria-atomic','true'); mapHost.appendChild(context); }
     applyProjection(); syncMenus();
   }
 
@@ -265,7 +272,9 @@
   window.addEventListener('potato-atlas-working-selection-change', () => window.__potatoAtlasActiveView?.refresh?.('selection'));
   window.addEventListener('potato-atlas-pin-change', () => window.__potatoAtlasActiveView?.refresh?.('pins'));
   window.addEventListener('potato-atlas-relation-mode-change', syncMenus);
-  window.addEventListener('potato-atlas-spatial-overlay-change', () => syncGeographyMenu());
+  window.addEventListener('potato-atlas-spatial-overlay-change', () => { syncGeographyMenu(); renderContext(); });
+  window.addEventListener('potato-atlas-evidence-layer-change', () => renderContext());
+  window.addEventListener('potato-atlas-physical-layer-change', () => renderContext());
   window.addEventListener('potato-atlas-active-view-change', event => { activeView=event.detail||null; renderSummary(activeView); renderContext(activeView); });
   window.addEventListener('atlas-time-change', event => { timeState=event.detail||null; renderContext(); window.__potatoAtlasActiveView?.refresh?.('time'); });
   window.addEventListener('potato-atlas-projection-change', renderContext);
