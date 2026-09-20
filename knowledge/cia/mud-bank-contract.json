@@ -1,0 +1,64 @@
+{
+  "id": "mud-bank-dooley-welfare-v1",
+  "title": "Mud Bank / Dooley Welfare — Symbolic Accounting Contract",
+  "updated": "2026-09-21",
+  "status": "project-internal fictional accounting",
+  "purpose": "Provide a readable sub-ledger beneath the Potatoverse Mud Economy / karmic-bank metaphor. CIA character accounts show continuous welfare plus sourced event adjustments without pretending to be real finance or objective morality.",
+  "system_context": {
+    "mud_economy_sources": [
+      "knowledge/timeline/karma-causing-events-and-inputs-ledger.json",
+      "knowledge/core/debt-depth-ascent-rubble-synthesis.json",
+      "data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json"
+    ],
+    "note": "The repository already contains Tim's project claims about a hidden spiritual bank / Mud economy and trillion-scale symbolic balances. Character accounts are small project sub-ledgers, not allocations of the trillion-scale total."
+  },
+  "denomination": {
+    "display_name": "symbolic USD-equivalent",
+    "code": "sUSD",
+    "real_currency": false,
+    "exchangeable": false,
+    "redeemable": false,
+    "legal_value": false,
+    "note": "Dollar formatting is a metaphorical display convention only."
+  },
+  "welfare": {
+    "name": "Dooley Welfare",
+    "rate_per_second_susd": 0.000001,
+    "rate_per_day_susd": 0.0864,
+    "rate_per_year_365d_susd": 31.536,
+    "accrual": "continuous from the dossier's best recovered story-entry date and continues after inactivity, closure or death",
+    "default_enabled": true,
+    "stop_conditions": [
+      "explicit archive correction showing the person/handle never entered the story",
+      "dossier merge proving duplicate identity"
+    ],
+    "does_not_stop_for": [
+      "inactivity",
+      "dormancy",
+      "death",
+      "closed archive status"
+    ]
+  },
+  "event_weights": {
+    "project-credit": 25,
+    "yield": 12,
+    "repair-attempt": 8,
+    "achievement": 0,
+    "project-debit": -20,
+    "dispute": 0,
+    "welfare": "continuous"
+  },
+  "balance_formula": "welfare accrued + sum(explicit weighted event entries). Aggregate labels, archetypes, popularity, loyalty, inactivity and unsourced allegations have weight 0.",
+  "confidence": {
+    "exact_date": "normal accrual",
+    "year_or_period_only": "show provisional start; do not invent day-level precision",
+    "unresolved_identity": "show account but flag identity/start uncertainty"
+  },
+  "boundaries": [
+    "No account is real money, credit, debt, compensation, wages, benefits or an entitlement.",
+    "No balance is an objective measure of morality, human worth, guilt, innocence, diagnosis or legal responsibility.",
+    "Negative movement requires an explicit source-bounded project-debit event; disagreement, criticism, inactivity or a symbolic Dog/Mud role does not automatically create debt.",
+    "Positive welfare is universal story-participation credit, not proof of virtue.",
+    "The trillion-scale Mud Economy totals remain Tim/project claims and are not mathematically distributed across character accounts."
+  ]
+}
