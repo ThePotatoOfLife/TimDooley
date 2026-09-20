@@ -1,5 +1,5 @@
 {
-  "version": "1.9.0",
+  "version": "2.0.0",
   "updated": "2026-09-20",
   "authority": "house-semantic-topology",
   "purpose": "Machine-readable topology assignments for the small set of operators that organize the Potato House. These annotations drive projection and navigation; they do not replace canonical concept owners or evidence classes.",
@@ -30,7 +30,21 @@
     "whole",
     "source-role",
     "manifestation-role",
-    "typed-center"
+    "typed-center",
+    "frame",
+    "measurement-surface",
+    "threshold",
+    "temporal-center",
+    "state-transition",
+    "memory-model",
+    "embodiment",
+    "manifestation",
+    "consequence",
+    "royal-strength",
+    "return",
+    "son-side-motif",
+    "visual-projection",
+    "transition-candidate"
   ],
   "boundary_regimes": [
     "house",
@@ -1125,6 +1139,84 @@
       "label": "specializes as",
       "directed": true,
       "semantics": "A broader role takes on a more specific operator/interface function in the mature model."
+    },
+    {
+      "id": "source-continuity",
+      "label": "source continuity",
+      "directed": true,
+      "semantics": "Source/support continuity persists across changing states."
+    },
+    {
+      "id": "has-motif",
+      "label": "has motif",
+      "directed": true,
+      "semantics": "A role carries a named motif without being identical to it."
+    },
+    {
+      "id": "locates",
+      "label": "locates",
+      "directed": true,
+      "semantics": "The source locates or anchors the target relation."
+    },
+    {
+      "id": "generates-next",
+      "label": "generates next",
+      "directed": true,
+      "semantics": "The source current state can generate the next transferable state/capacity."
+    },
+    {
+      "id": "specializes-through",
+      "label": "specializes through",
+      "directed": true,
+      "semantics": "The source is expressed through a more specific route/operator."
+    },
+    {
+      "id": "unfolds-as",
+      "label": "unfolds as",
+      "directed": true,
+      "semantics": "The source ordered structure becomes legible as the target temporal/spatial pattern."
+    },
+    {
+      "id": "carries-through",
+      "label": "carries through",
+      "directed": true,
+      "semantics": "The source preserves continuity through successive states."
+    },
+    {
+      "id": "related-through-spirit",
+      "label": "related through spirit",
+      "directed": true,
+      "semantics": "The relation is mediated by Spirit/flow without identity collapse."
+    },
+    {
+      "id": "contains-projection-of",
+      "label": "contains projection of",
+      "directed": true,
+      "semantics": "A visual projection includes a rendered aspect of the target."
+    },
+    {
+      "id": "contains-lateral-line-in",
+      "label": "contains lateral line in",
+      "directed": true,
+      "semantics": "A projection includes a lateral line lying in the target section/frame."
+    },
+    {
+      "id": "intersects",
+      "label": "intersects",
+      "directed": true,
+      "semantics": "A trajectory/event intersects the target section or region."
+    },
+    {
+      "id": "may-satisfy",
+      "label": "may satisfy",
+      "directed": true,
+      "semantics": "The source event may satisfy the target's transition conditions."
+    },
+    {
+      "id": "sampled-on",
+      "label": "sampled on",
+      "directed": true,
+      "semantics": "The source trajectory/dynamics is sampled on the target section."
     }
   ],
   "relations": [
@@ -1665,7 +1757,8 @@
         "rel-here-now-seed",
         "rel-son-body",
         "rel-spirit-ladder",
-        "rel-ladder-spiral"
+        "rel-ladder-spiral",
+        "rel-fruit-seed"
       ],
       "purpose": "Read the center as a living time-bearing cycle rather than static titles.",
       "reader_question": "What came from the past, what is integrated now, what manifests in the body/world, what changes through time, and what becomes the next Seed?"
