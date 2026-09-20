@@ -1,0 +1,1640 @@
+{
+  "id": "religious-foundation-lineages",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "status": "canonical historical genealogy + timeline/map projection contract",
+  "purpose": "Represent major religious traditions as dated, branching historical lineages. Nodes can be trunks, schisms, reforms, schools, mystical currents or institutional crystallizations. The structure is designed for timeline, spiral and map projection without pretending every tradition has one exact birthday.",
+  "epistemic_rule": "Traditional/sacred origin claims, historical reconstruction, institutional dates and project visualization coordinates remain distinct. A genealogy edge describes historical relation, not theological truth, superiority, legitimacy or identity.",
+  "date_policy": {
+    "exact_date": "Use only for well-attested formal events such as a charter, council, declaration or organizational meeting.",
+    "marker_year": "A conventional or high-information branch marker inside a longer process; never silently treated as the whole origin.",
+    "formation_window": "Preferred for gradual crystallization, diffuse movements and retrospective denominational identities.",
+    "deep_origin": "Use broad ranges where evidence does not justify a narrow date.",
+    "bce_encoding": "Negative astronomical-style integers are used only for sorting/projection; display labels retain BCE/CE notation and do not introduce a historical year zero."
+  },
+  "node_types": {
+    "trunk": "Large lineage/family with substantial historical continuity.",
+    "phase": "Major historical state of a lineage before or after a transformation.",
+    "communion": "Family of churches sharing communion or doctrinal/institutional identity.",
+    "denomination": "Differentiated institutional tradition within a larger family.",
+    "school": "Legal, philosophical or interpretive school; not automatically a separate religion.",
+    "reform_movement": "Movement seeking change inside or from an inherited tradition.",
+    "schism_lineage": "Lineage differentiated by a rupture or contested succession.",
+    "mystical_current": "Cross-cutting current that may exist in several branches.",
+    "monastic_lineage": "Transmission lineage centered on monastic institutions/practice.",
+    "sister_lineage": "Related lineage with shared ancestry but not safely represented as a child."
+  },
+  "edge_types": {
+    "develops_from": "Gradual historical development with continuity.",
+    "differentiates_from": "Identity becomes distinguishable over time without one clean break.",
+    "splits_from": "A rupture produces durable differentiated communities.",
+    "reforms_within": "Movement begins as reform of an inherited tradition.",
+    "institutionalizes_from": "A diffuse current becomes a durable institution or denomination.",
+    "legal_school_within": "Juristic school inside a broader religious family.",
+    "mystical_current_within": "Mystical/devotional current crossing ordinary institutional branches.",
+    "communion_member": "Ancient/local church participating in a later communion; not implied to have been founded when the communion divided.",
+    "sister_to": "Related but not parent-child.",
+    "predecessor_to": "Immediate historical predecessor whose identity is not simply retained."
+  },
+  "spiral_projection_contract": {
+    "thesis": "Foundation nodes unfold outward from historical time. They are not dimensions and radial distance never represents spiritual height, truth, value, age-prestige or authority.",
+    "radial_variable": "seed_year or formation-window midpoint in a selected historical epoch transform",
+    "angular_variable": "layout only: family and sibling separation; angle has no doctrinal ranking",
+    "branch_curve": "child trajectory begins at its parent/ancestor branch marker and receives its own later radial trajectory",
+    "multi_parent_rule": "Syncretic or mixed-origin nodes may connect to more than one predecessor; do not force a false single-parent tree.",
+    "uncertainty_render": "Wide/uncertain dates render as arcs or fuzzy bands rather than exact points.",
+    "event_vs_foundation": "Councils, destructions, migrations and succession crises may be branch events without being independent religious foundations.",
+    "map_link": "Every node may carry an origin_place or distributed_origin for geographic projection. Present-day demographic geography remains a separate dated layer."
+  },
+  "families": [
+    {
+      "id": "judaism-lineage",
+      "name": "Israelite / Jewish lineages",
+      "root_ids": [
+        "israelite-religion"
+      ],
+      "trunk_id": "rabbinic-judaism",
+      "nodes": [
+        {
+          "id": "israelite-religion",
+          "name": "Israelite/Judahite religious formation",
+          "node_type": "phase",
+          "seed_clock": {
+            "year_start": -1200,
+            "year_end": -586,
+            "date_or_range": "Iron Age, c. 1200–586 BCE",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "ancient Israel and Judah",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "cambridge_rabbinic"
+          ],
+          "notes": "Deep substrate rather than a single founded religion."
+        },
+        {
+          "id": "post-exilic-judaism",
+          "name": "Post-exilic / Persian-period Judaism",
+          "node_type": "phase",
+          "seed_clock": {
+            "year_start": -539,
+            "year_end": -332,
+            "date_or_range": "Persian period, 539–332 BCE",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "Yehud / Jerusalem and diaspora",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "israelite-religion"
+          ],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "cambridge_rabbinic"
+          ],
+          "notes": "Torah/scriptural authority and portable communal forms become increasingly central."
+        },
+        {
+          "id": "second-temple-judaism",
+          "name": "Second Temple Jewish field",
+          "node_type": "phase",
+          "seed_clock": {
+            "year_start": -516,
+            "year_end": 70,
+            "date_or_range": "Second Temple period, c. 516 BCE–70 CE",
+            "precision": "range",
+            "status": "historical-period"
+          },
+          "origin": {
+            "place": "Jerusalem and wider Jewish diaspora",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "post-exilic-judaism"
+          ],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "cambridge_rabbinic"
+          ],
+          "notes": "A plural religious field, not one denomination."
+        },
+        {
+          "id": "rabbinic-judaism",
+          "name": "Rabbinic Judaism",
+          "node_type": "trunk",
+          "seed_clock": {
+            "year_start": 70,
+            "year_end": 600,
+            "date_or_range": "70–c. 600 CE formative rabbinic period",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "Judea/Galilee and Babylonia",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "second-temple-judaism"
+          ],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "cambridge_rabbinic",
+            "cambridge_mishnah",
+            "oxford_rabbinic"
+          ],
+          "notes": "Do not model Pharisees as a proven one-step parent. Mishnah c. 200; rabbinization is gradual and much later."
+        },
+        {
+          "id": "karaite-judaism",
+          "name": "Karaite Judaism",
+          "node_type": "schism_lineage",
+          "seed_clock": {
+            "year_start": 750,
+            "year_end": 900,
+            "date_or_range": "8th–9th centuries CE",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "Baghdad and wider Middle East",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "rabbinic-judaism"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [
+            "oxford_karaite"
+          ],
+          "notes": "Scripture-centered non-rabbinic Jewish movement; Anan ben David is important but sole-founder narratives should remain qualified."
+        },
+        {
+          "id": "kabbalistic-current",
+          "name": "Medieval Kabbalistic currents",
+          "node_type": "mystical_current",
+          "seed_clock": {
+            "year_start": 1150,
+            "year_end": 1300,
+            "date_or_range": "12th–13th centuries CE",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "southern France / Iberia and wider Jewish networks",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "rabbinic-judaism"
+          ],
+          "relation_to_parent": "mystical_current_within",
+          "sources": [],
+          "notes": "Cross-cutting mystical traditions, not a denomination."
+        },
+        {
+          "id": "hasidic-judaism",
+          "name": "Hasidic Judaism",
+          "node_type": "reform_movement",
+          "seed_clock": {
+            "year_start": 1740,
+            "year_end": 1770,
+            "date_or_range": "mid-18th century CE",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "Podolia and eastern European Jewish communities",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "rabbinic-judaism"
+          ],
+          "relation_to_parent": "reforms_within",
+          "sources": [
+            "jewish_modern_movements"
+          ],
+          "notes": "Baal Shem Tov-associated revival; later diversified into dynastic/group lineages."
+        },
+        {
+          "id": "reform-judaism",
+          "name": "Reform / Liberal Judaism",
+          "node_type": "reform_movement",
+          "seed_clock": {
+            "year_start": 1817,
+            "year_end": 1818,
+            "date_or_range": "1817 association; 1818 permanent Hamburg temple",
+            "precision": "range",
+            "status": "documented-marker"
+          },
+          "origin": {
+            "place": "Hamburg, Germany",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "rabbinic-judaism"
+          ],
+          "relation_to_parent": "reforms_within",
+          "sources": [
+            "hamburg_reform"
+          ],
+          "notes": "Modern movement has earlier precursors; Hamburg gives a strong institutional seed marker, not the sole intellectual origin."
+        },
+        {
+          "id": "orthodox-judaism-modern",
+          "name": "Orthodox Judaism as modern denominational identity",
+          "node_type": "denomination",
+          "seed_clock": {
+            "year_start": 1818,
+            "year_end": 1870,
+            "date_or_range": "19th-century differentiation",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "Central and Eastern Europe",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "rabbinic-judaism"
+          ],
+          "relation_to_parent": "institutionalizes_from",
+          "sources": [
+            "jewish_modern_movements"
+          ],
+          "notes": "Traditional halakhic practice is far older; 'Orthodox' becomes a modern denominational identity partly through response to Reform/modernity."
+        },
+        {
+          "id": "conservative-masorti-judaism",
+          "name": "Conservative / Masorti Judaism",
+          "node_type": "denomination",
+          "seed_clock": {
+            "year_start": 1886,
+            "year_end": 1902,
+            "date_or_range": "1886 institutional seed; movement crystallizes later",
+            "precision": "range",
+            "status": "documented+formation"
+          },
+          "origin": {
+            "place": "New York, United States",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "rabbinic-judaism"
+          ],
+          "relation_to_parent": "institutionalizes_from",
+          "sources": [
+            "jts_history"
+          ],
+          "notes": "JTS was founded in 1886 and became a central institutional engine; intellectual precursors include nineteenth-century Positive-Historical Judaism."
+        },
+        {
+          "id": "samaritan-israelite-tradition",
+          "name": "Samaritan Israelite tradition",
+          "node_type": "sister_lineage",
+          "seed_clock": {
+            "year_start": -500,
+            "year_end": 200,
+            "date_or_range": "ancient Israelite/Samaritan differentiation, broad window",
+            "precision": "range",
+            "status": "high-uncertainty"
+          },
+          "origin": {
+            "place": "Samaria",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "israelite-religion"
+          ],
+          "relation_to_parent": "sister_to",
+          "sources": [],
+          "notes": "Do not render Samaritanism as a denomination born from rabbinic Judaism."
+        }
+      ],
+      "integrity": [
+        "Judaism has multiple valid clocks; no single seed year represents the whole tradition.",
+        "Second Temple sects, rabbinic Judaism, Karaism, medieval mysticism and modern denominations must stay historically distinct.",
+        "Modern Orthodox/Reform/Conservative labels must not be projected unchanged into antiquity."
+      ]
+    },
+    {
+      "id": "christianity-lineage",
+      "name": "Christian lineages",
+      "root_ids": [
+        "early-christianity"
+      ],
+      "trunk_id": "early-christianity",
+      "nodes": [
+        {
+          "id": "early-christianity",
+          "name": "Early Christianity / Jesus movement",
+          "node_type": "trunk",
+          "seed_clock": {
+            "year_start": 30,
+            "year_end": 100,
+            "date_or_range": "c. 30–100 CE",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "Judea/Galilee → eastern Mediterranean",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "second-temple-judaism"
+          ],
+          "relation_to_parent": "develops_from",
+          "sources": [],
+          "notes": "Historically emerges within the Second Temple Jewish world and rapidly becomes translocal."
+        },
+        {
+          "id": "nicene-christianity",
+          "name": "Nicene Christian consolidation",
+          "node_type": "phase",
+          "seed_clock": {
+            "year_start": 325,
+            "year_end": 381,
+            "date_or_range": "325–381 CE",
+            "precision": "range",
+            "status": "council-markers"
+          },
+          "origin": {
+            "place": "Nicaea / Constantinople and Roman imperial church networks",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "early-christianity"
+          ],
+          "relation_to_parent": "institutionalizes_from",
+          "sources": [
+            "oca_chalcedon"
+          ],
+          "notes": "Council markers are doctrinal consolidation events, not the birth of all churches receiving them."
+        },
+        {
+          "id": "church-of-east-lineage",
+          "name": "Church of the East lineage",
+          "node_type": "communion",
+          "seed_clock": {
+            "year_start": 431,
+            "year_end": 500,
+            "date_or_range": "5th-century differentiation, especially after Ephesus 431",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "Mesopotamia / Persian Empire",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "early-christianity"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [],
+          "notes": "Ancient Mesopotamian Christianity predates 431; the council is a differentiation marker, not an origin from nothing."
+        },
+        {
+          "id": "chalcedonian-christianity",
+          "name": "Chalcedonian Christian family",
+          "node_type": "phase",
+          "seed_clock": {
+            "year_start": 451,
+            "year_end": 500,
+            "date_or_range": "451 CE and following decades",
+            "precision": "range",
+            "status": "council+formation"
+          },
+          "origin": {
+            "place": "Chalcedon / Roman Empire",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "nicene-christianity"
+          ],
+          "relation_to_parent": "institutionalizes_from",
+          "sources": [
+            "oca_chalcedon"
+          ],
+          "notes": "Receives the Chalcedonian definition."
+        },
+        {
+          "id": "oriental-orthodox-family",
+          "name": "Oriental Orthodox / non-Chalcedonian communion family",
+          "node_type": "communion",
+          "seed_clock": {
+            "year_start": 451,
+            "year_end": 600,
+            "date_or_range": "451 CE and following centuries",
+            "precision": "range",
+            "status": "branch-window"
+          },
+          "origin": {
+            "place": "Egypt, Syria, Armenia and connected regions",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "nicene-christianity"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [
+            "oca_chalcedon"
+          ],
+          "notes": "Constituent churches have pre-451 roots; 451 marks enduring non-reception of Chalcedon, not their creation ex nihilo."
+        },
+        {
+          "id": "latin-western-christianity",
+          "name": "Latin Western Christian tradition",
+          "node_type": "phase",
+          "seed_clock": {
+            "year_start": 500,
+            "year_end": 1054,
+            "date_or_range": "late antiquity–11th century",
+            "precision": "range",
+            "status": "long-formation"
+          },
+          "origin": {
+            "place": "Rome and Latin western Europe",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "chalcedonian-christianity"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [
+            "oca_schism"
+          ],
+          "notes": "Gradual linguistic, political, canonical and ecclesiological differentiation."
+        },
+        {
+          "id": "greek-eastern-christianity",
+          "name": "Greek/Eastern Chalcedonian tradition",
+          "node_type": "phase",
+          "seed_clock": {
+            "year_start": 500,
+            "year_end": 1054,
+            "date_or_range": "late antiquity–11th century",
+            "precision": "range",
+            "status": "long-formation"
+          },
+          "origin": {
+            "place": "Constantinople and eastern Roman/Byzantine world",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "chalcedonian-christianity"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [
+            "oca_schism"
+          ],
+          "notes": "Gradual differentiation; includes multiple patriarchates/churches, not one ethnicity."
+        },
+        {
+          "id": "roman-catholic-postschism",
+          "name": "Roman Catholic Church, post-schism Western trajectory",
+          "node_type": "communion",
+          "seed_clock": {
+            "year_start": 1054,
+            "year_end": 1204,
+            "date_or_range": "1054 symbolic rupture; 1204 major hardening",
+            "precision": "range",
+            "status": "marker+long-process"
+          },
+          "origin": {
+            "place": "Rome / Latin West",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "latin-western-christianity",
+            "greek-eastern-christianity"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [
+            "oca_schism"
+          ],
+          "notes": "Do not present 1054 as the date the Roman Church itself first existed."
+        },
+        {
+          "id": "eastern-orthodox-postschism",
+          "name": "Eastern Orthodox communion, post-schism trajectory",
+          "node_type": "communion",
+          "seed_clock": {
+            "year_start": 1054,
+            "year_end": 1204,
+            "date_or_range": "1054 symbolic rupture; 1204 major hardening",
+            "precision": "range",
+            "status": "marker+long-process"
+          },
+          "origin": {
+            "place": "Constantinople and eastern patriarchates",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "greek-eastern-christianity",
+            "latin-western-christianity"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [
+            "oca_schism"
+          ],
+          "notes": "1054 is a conventional marker in a centuries-long separation; 1204 further hardened it."
+        },
+        {
+          "id": "protestant-reformation",
+          "name": "Protestant Reformation family",
+          "node_type": "reform_movement",
+          "seed_clock": {
+            "year_start": 1517,
+            "year_end": 1529,
+            "date_or_range": "1517–1529 CE",
+            "precision": "range",
+            "status": "documented-markers"
+          },
+          "origin": {
+            "place": "Wittenberg and multiple European reform centers",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "roman-catholic-postschism"
+          ],
+          "relation_to_parent": "reforms_within",
+          "sources": [
+            "loc_luther"
+          ],
+          "notes": "Not one denomination; multiple Reformation streams emerged independently/interactively."
+        },
+        {
+          "id": "lutheran-tradition",
+          "name": "Lutheran tradition",
+          "node_type": "denomination",
+          "seed_clock": {
+            "year_start": 1517,
+            "year_end": 1530,
+            "date_or_range": "1517 seed; Augsburg Confession 1530",
+            "precision": "range",
+            "status": "documented-markers"
+          },
+          "origin": {
+            "place": "Wittenberg / Augsburg, Holy Roman Empire",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "protestant-reformation"
+          ],
+          "relation_to_parent": "institutionalizes_from",
+          "sources": [
+            "loc_luther",
+            "lcms_augsburg"
+          ],
+          "notes": "1530 is a strong confessional consolidation marker."
+        },
+        {
+          "id": "reformed-tradition",
+          "name": "Reformed tradition",
+          "node_type": "denomination",
+          "seed_clock": {
+            "year_start": 1520,
+            "year_end": 1540,
+            "date_or_range": "1520s–1540s CE",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "Zürich, Geneva and Swiss/Reformed networks",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "protestant-reformation"
+          ],
+          "relation_to_parent": "institutionalizes_from",
+          "sources": [],
+          "notes": "Zwinglian and Calvinian trajectories should not be flattened into one founder/date."
+        },
+        {
+          "id": "anglican-tradition",
+          "name": "Church of England / Anglican trajectory",
+          "node_type": "denomination",
+          "seed_clock": {
+            "year_start": 1534,
+            "year_end": 1559,
+            "date_or_range": "1534 break with Rome; 1559 settlement",
+            "precision": "range",
+            "status": "documented-markers"
+          },
+          "origin": {
+            "place": "England",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "latin-western-christianity",
+            "protestant-reformation"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [
+            "uk_anglican"
+          ],
+          "notes": "Has both institutional continuity with medieval English Christianity and Reformation-era doctrinal/liturgical transformation."
+        },
+        {
+          "id": "anabaptist-traditions",
+          "name": "Anabaptist traditions",
+          "node_type": "reform_movement",
+          "seed_clock": {
+            "year_start": 1525,
+            "year_end": 1527,
+            "date_or_range": "21 Jan 1525 Zürich baptisms; 1527 Schleitheim consolidation marker",
+            "precision": "range",
+            "status": "documented-markers"
+          },
+          "origin": {
+            "place": "Zürich / Swiss-German regions",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "protestant-reformation"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [
+            "gameo_anabaptist"
+          ],
+          "notes": "Multiple Radical Reformation streams; Zürich Brethren are a high-information institutional seed."
+        },
+        {
+          "id": "methodist-traditions",
+          "name": "Methodist traditions",
+          "node_type": "reform_movement",
+          "seed_clock": {
+            "year_start": 1729,
+            "year_end": 1740,
+            "date_or_range": "1729 Holy Club; 1730s–1740s movement formation",
+            "precision": "range",
+            "status": "documented+formation"
+          },
+          "origin": {
+            "place": "Oxford / Britain",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "anglican-tradition"
+          ],
+          "relation_to_parent": "reforms_within",
+          "sources": [
+            "methodist_history"
+          ],
+          "notes": "Begins as an Anglican revival movement; later Methodist denominations institutionalize separately."
+        },
+        {
+          "id": "adventist-traditions",
+          "name": "Adventist traditions",
+          "node_type": "reform_movement",
+          "seed_clock": {
+            "year_start": 1830,
+            "year_end": 1863,
+            "date_or_range": "1830s–1840s Millerite field; SDA organized 1863",
+            "precision": "range",
+            "status": "formation+documented"
+          },
+          "origin": {
+            "place": "United States",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "protestant-reformation"
+          ],
+          "relation_to_parent": "institutionalizes_from",
+          "sources": [
+            "adventist_history"
+          ],
+          "notes": "Adventism is broader than Seventh-day Adventism; 1863 is the SDA organizational date."
+        },
+        {
+          "id": "pentecostalism",
+          "name": "Pentecostal movement",
+          "node_type": "reform_movement",
+          "seed_clock": {
+            "year_start": 1901,
+            "year_end": 1906,
+            "date_or_range": "1901 Topeka; 1906 Azusa Street expansion",
+            "precision": "range",
+            "status": "documented-markers"
+          },
+          "origin": {
+            "place": "Topeka, Kansas / Los Angeles, California",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "protestant-reformation",
+            "methodist-traditions"
+          ],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "pew_pentecostal"
+          ],
+          "notes": "Heavily shaped by Holiness currents; later becomes globally diverse and cross-denominational."
+        },
+        {
+          "id": "evangelical-current",
+          "name": "Evangelical movement/current",
+          "node_type": "reform_movement",
+          "seed_clock": {
+            "year_start": 1730,
+            "year_end": 1800,
+            "date_or_range": "18th-century revival/Great Awakening era",
+            "precision": "range",
+            "status": "broad-formation"
+          },
+          "origin": {
+            "place": "Britain and North America",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "protestant-reformation"
+          ],
+          "relation_to_parent": "mystical_current_within",
+          "sources": [],
+          "notes": "Cross-denominational movement rather than a single church; later evangelical identities diversify substantially."
+        }
+      ],
+      "integrity": [
+        "Council dates are doctrinal/institutional markers, not magical creation dates.",
+        "Oriental Orthodox and Church of the East churches have roots older than the councils associated with later differentiation.",
+        "1054 must render as a symbolic branch marker inside a longer East-West process, with 1204 as another major hardening event.",
+        "Protestantism is a family of reform trajectories, not one church.",
+        "Evangelicalism, Pentecostalism and some renewal movements may cross denominational boundaries."
+      ]
+    },
+    {
+      "id": "islam-lineage",
+      "name": "Islamic lineages",
+      "root_ids": [
+        "early-islam"
+      ],
+      "trunk_id": "early-islam",
+      "nodes": [
+        {
+          "id": "early-islam",
+          "name": "Early Islam / Qur'anic community",
+          "node_type": "trunk",
+          "seed_clock": {
+            "year_start": 610,
+            "year_end": 632,
+            "date_or_range": "c. 610–632 CE",
+            "precision": "range",
+            "status": "traditional+historical-window"
+          },
+          "origin": {
+            "place": "Mecca → Medina, Hijaz",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [],
+          "relation_to_parent": "develops_from",
+          "sources": [],
+          "notes": "622 Hijra is a particularly strong community/institutional clock inside this formation."
+        },
+        {
+          "id": "sunni-formation",
+          "name": "Sunni Islam, formative majority tradition",
+          "node_type": "communion",
+          "seed_clock": {
+            "year_start": 632,
+            "year_end": 900,
+            "date_or_range": "7th–9th centuries CE",
+            "precision": "range",
+            "status": "long-formation"
+          },
+          "origin": {
+            "place": "Medina, Damascus, Baghdad and wider caliphal networks",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "early-islam"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [
+            "cambridge_madhhab"
+          ],
+          "notes": "Do not represent Sunni Islam as fully formed on the day of Muhammad's death; later hadith, law and theology crystallize over centuries."
+        },
+        {
+          "id": "shia-formation",
+          "name": "Shiʿi / Alid-imamate traditions",
+          "node_type": "schism_lineage",
+          "seed_clock": {
+            "year_start": 632,
+            "year_end": 680,
+            "date_or_range": "632 succession dispute; 680 Karbala as major formative marker",
+            "precision": "range",
+            "status": "marker+formation"
+          },
+          "origin": {
+            "place": "Medina / Kufa / Karbala and wider networks",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "early-islam"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [
+            "iranica_occultation"
+          ],
+          "notes": "Shiʿi identity and doctrine develop through several succession crises and imamate lineages."
+        },
+        {
+          "id": "kharijite-muhakkima",
+          "name": "Kharijite / Muhakkima early current",
+          "node_type": "schism_lineage",
+          "seed_clock": {
+            "year_start": 657,
+            "year_end": 658,
+            "date_or_range": "657 Siffin arbitration secession; 658 Nahrawan",
+            "precision": "range",
+            "status": "documented-historical"
+          },
+          "origin": {
+            "place": "Siffin / Iraq",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "early-islam"
+          ],
+          "relation_to_parent": "splits_from",
+          "sources": [
+            "iranica_kharijite"
+          ],
+          "notes": "Early third trajectory distinct from both later Sunni and Shiʿi authority structures."
+        },
+        {
+          "id": "ibadi-islam",
+          "name": "Ibadi Islam",
+          "node_type": "communion",
+          "seed_clock": {
+            "year_start": 680,
+            "year_end": 750,
+            "date_or_range": "late 7th–early 8th century formation",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "Basra → Oman / North Africa",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "kharijite-muhakkima"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [
+            "oxford_ibadi"
+          ],
+          "notes": "Historical scholarship relates Ibadism to early Muhakkima/Kharijite fields; Ibadis developed distinct self-understanding and jurisprudence, so avoid using 'Kharijite' as a simplistic present-day label."
+        },
+        {
+          "id": "hanafi-school",
+          "name": "Hanafi legal school",
+          "node_type": "school",
+          "seed_clock": {
+            "year_start": 750,
+            "year_end": 900,
+            "date_or_range": "late 8th–10th-century madhhab formation",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "Kufa / Baghdad and wider eastern networks",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "sunni-formation"
+          ],
+          "relation_to_parent": "legal_school_within",
+          "sources": [
+            "cambridge_madhhab"
+          ],
+          "notes": "Named for Abu Hanifa (d. 767); school formation continues through students and later jurists."
+        },
+        {
+          "id": "maliki-school",
+          "name": "Maliki legal school",
+          "node_type": "school",
+          "seed_clock": {
+            "year_start": 760,
+            "year_end": 900,
+            "date_or_range": "late 8th–10th-century madhhab formation",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "Medina → North Africa / al-Andalus",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "sunni-formation"
+          ],
+          "relation_to_parent": "legal_school_within",
+          "sources": [
+            "cambridge_madhhab"
+          ],
+          "notes": "Named for Malik b. Anas (d. 795); regional institutionalization continues later."
+        },
+        {
+          "id": "shafii-school",
+          "name": "Shafiʿi legal school",
+          "node_type": "school",
+          "seed_clock": {
+            "year_start": 800,
+            "year_end": 950,
+            "date_or_range": "9th–10th-century madhhab formation",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "Egypt / Iraq and wider networks",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "sunni-formation"
+          ],
+          "relation_to_parent": "legal_school_within",
+          "sources": [
+            "cambridge_madhhab"
+          ],
+          "notes": "Named for al-Shafiʿi (d. 820); later jurists consolidate the school."
+        },
+        {
+          "id": "hanbali-school",
+          "name": "Hanbali legal school",
+          "node_type": "school",
+          "seed_clock": {
+            "year_start": 820,
+            "year_end": 950,
+            "date_or_range": "9th–10th-century madhhab formation",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "Baghdad",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "sunni-formation"
+          ],
+          "relation_to_parent": "legal_school_within",
+          "sources": [
+            "cambridge_madhhab"
+          ],
+          "notes": "Named for Ahmad ibn Hanbal (d. 855); later jurists institutionalize the madhhab."
+        },
+        {
+          "id": "zaydi-shia",
+          "name": "Zaydi Shiʿism",
+          "node_type": "schism_lineage",
+          "seed_clock": {
+            "year_start": 740,
+            "year_end": 800,
+            "date_or_range": "740 CE revolt of Zayd and subsequent lineage formation",
+            "precision": "range",
+            "status": "historical-marker+formation"
+          },
+          "origin": {
+            "place": "Kufa → Caspian/Yemen in later expansion",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "shia-formation"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [],
+          "notes": "Use 740 as a major marker, not a claim that all Zaydi doctrine/institutions appeared instantly."
+        },
+        {
+          "id": "ismaili-shia",
+          "name": "Ismaili Shiʿism",
+          "node_type": "schism_lineage",
+          "seed_clock": {
+            "year_start": 765,
+            "year_end": 900,
+            "date_or_range": "post-765 succession differentiation; organized daʿwa by 9th century",
+            "precision": "range",
+            "status": "formation-window"
+          },
+          "origin": {
+            "place": "Iraq / Iran / wider missionary networks",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "shia-formation"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [
+            "iis_ismaili"
+          ],
+          "notes": "Linked to succession after Jaʿfar al-Sadiq (d. 765); later Fatimid and missionary institutions transform the movement."
+        },
+        {
+          "id": "twelver-shia",
+          "name": "Twelver / Imami Shiʿism",
+          "node_type": "schism_lineage",
+          "seed_clock": {
+            "year_start": 874,
+            "year_end": 941,
+            "date_or_range": "874–941 Minor Occultation; 941 Greater Occultation marker",
+            "precision": "range",
+            "status": "documented-traditional+historical"
+          },
+          "origin": {
+            "place": "Samarra / Baghdad and wider Imami networks",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "shia-formation"
+          ],
+          "relation_to_parent": "institutionalizes_from",
+          "sources": [
+            "iranica_occultation"
+          ],
+          "notes": "Occultation crisis strongly shapes Twelver theological/institutional crystallization; earlier Imami lineage predates 874."
+        },
+        {
+          "id": "nizari-ismaili",
+          "name": "Nizari Ismaili lineage",
+          "node_type": "schism_lineage",
+          "seed_clock": {
+            "year_start": 1094,
+            "year_end": 1100,
+            "date_or_range": "1094 succession split",
+            "precision": "range",
+            "status": "documented-marker"
+          },
+          "origin": {
+            "place": "Cairo / wider Ismaili daʿwa networks",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "ismaili-shia"
+          ],
+          "relation_to_parent": "splits_from",
+          "sources": [
+            "iis_ismaili"
+          ],
+          "notes": "Emerges from the 1094 Nizar/Mustaʿli succession split."
+        },
+        {
+          "id": "mustali-ismaili",
+          "name": "Mustaʿli Ismaili lineage",
+          "node_type": "schism_lineage",
+          "seed_clock": {
+            "year_start": 1094,
+            "year_end": 1100,
+            "date_or_range": "1094 succession split",
+            "precision": "range",
+            "status": "documented-marker"
+          },
+          "origin": {
+            "place": "Cairo → Yemen / western India in later developments",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "ismaili-shia"
+          ],
+          "relation_to_parent": "splits_from",
+          "sources": [
+            "iis_ismaili"
+          ],
+          "notes": "Later Tayyibi and other developments require their own children."
+        },
+        {
+          "id": "sufi-currents",
+          "name": "Sufi / tasawwuf currents",
+          "node_type": "mystical_current",
+          "seed_clock": {
+            "year_start": 700,
+            "year_end": 1000,
+            "date_or_range": "8th–10th-century ascetic/mystical formation",
+            "precision": "range",
+            "status": "broad-formation"
+          },
+          "origin": {
+            "place": "distributed across early Islamic centers",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "early-islam"
+          ],
+          "relation_to_parent": "mystical_current_within",
+          "sources": [],
+          "notes": "Cross-cuts Sunni and Shiʿi histories; later tariqas/orders should be modeled as descendant institutional lineages, not as a third Sunni/Shia denomination."
+        }
+      ],
+      "integrity": [
+        "632 is a succession rupture, not a complete one-day birth of Sunni and Shia identities.",
+        "Legal madhhabs are schools within Sunni Islam, not separate religions.",
+        "Ibadism needs its own historical/self-identity treatment rather than being flattened into a generic modern Kharijite label.",
+        "Sufism is a cross-cutting mystical current with later orders, not a single denomination.",
+        "Twelver 874/941 and Ismaili 765/1094 dates are crystallization/succession markers inside older Shiʿi histories."
+      ]
+    },
+    {
+      "id": "buddhism-lineage",
+      "name": "Buddhist lineages",
+      "root_ids": [
+        "early-buddhism"
+      ],
+      "trunk_id": "early-buddhism",
+      "nodes": [
+        {
+          "id": "early-buddhism",
+          "name": "Early Buddhist sangha",
+          "node_type": "trunk",
+          "seed_clock": {
+            "year_start": -500,
+            "year_end": -350,
+            "date_or_range": "5th–4th centuries BCE, approximate",
+            "precision": "range",
+            "status": "high-uncertainty"
+          },
+          "origin": {
+            "place": "north India",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "oxford_srilanka"
+          ],
+          "notes": "Historical Buddha chronology is debated; avoid one exact birthday."
+        },
+        {
+          "id": "sri-lankan-theravada-lineage",
+          "name": "Sri Lankan Theravada-associated monastic lineage",
+          "node_type": "monastic_lineage",
+          "seed_clock": {
+            "year_start": -250,
+            "year_end": -200,
+            "date_or_range": "3rd century BCE transmission to Sri Lanka",
+            "precision": "range",
+            "status": "traditional+archaeological-context"
+          },
+          "origin": {
+            "place": "Anuradhapura / Sri Lanka",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "early-buddhism"
+          ],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "oxford_srilanka"
+          ],
+          "notes": "Theravada as a modern umbrella should not be projected unchanged onto all ancient communities."
+        },
+        {
+          "id": "mahayana-buddhism",
+          "name": "Mahayana movements",
+          "node_type": "reform_movement",
+          "seed_clock": {
+            "year_start": -100,
+            "year_end": 200,
+            "date_or_range": "c. 1st century BCE–2nd century CE emergence",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "India, distributed monastic environments",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "early-buddhism"
+          ],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "oxford_mahayana"
+          ],
+          "notes": "Early Mahayana likely involved loose currents within existing monasteries, not an immediate separate church."
+        },
+        {
+          "id": "vajrayana-buddhism",
+          "name": "Vajrayana / tantric Buddhist traditions",
+          "node_type": "reform_movement",
+          "seed_clock": {
+            "year_start": 500,
+            "year_end": 800,
+            "date_or_range": "c. 6th–8th centuries CE",
+            "precision": "range",
+            "status": "broad-formation"
+          },
+          "origin": {
+            "place": "South Asia → Tibet/Himalaya and wider Asia",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "mahayana-buddhism"
+          ],
+          "relation_to_parent": "develops_from",
+          "sources": [],
+          "notes": "Multiple tantric textual and practice lineages; no single founder."
+        }
+      ],
+      "integrity": [
+        "Do not force early Buddhist schools into a simple surviving-denomination tree.",
+        "Mahayana and Vajrayana are broad movement families with overlapping institutions and texts."
+      ]
+    },
+    {
+      "id": "hindu-lineage",
+      "name": "Hindu/Vedic-derived traditions",
+      "root_ids": [
+        "vedic-religious-field"
+      ],
+      "trunk_id": "hindu-traditions",
+      "nodes": [
+        {
+          "id": "vedic-religious-field",
+          "name": "Vedic religious field",
+          "node_type": "phase",
+          "seed_clock": {
+            "year_start": -1500,
+            "year_end": -500,
+            "date_or_range": "2nd–1st millennium BCE",
+            "precision": "range",
+            "status": "very-broad-range"
+          },
+          "origin": {
+            "place": "South Asia",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [],
+          "relation_to_parent": "develops_from",
+          "sources": [],
+          "notes": "Deep substrate; not identical to later Hinduism."
+        },
+        {
+          "id": "hindu-traditions",
+          "name": "Hindu traditions / long formation",
+          "node_type": "trunk",
+          "seed_clock": {
+            "year_start": -500,
+            "year_end": 500,
+            "date_or_range": "late Vedic, epic, Puranic and devotional formation, broad window",
+            "precision": "range",
+            "status": "long-formation"
+          },
+          "origin": {
+            "place": "South Asia, distributed",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "vedic-religious-field"
+          ],
+          "relation_to_parent": "develops_from",
+          "sources": [],
+          "notes": "No single founder or seed date; 'Hinduism' is a later umbrella for many interacting traditions."
+        },
+        {
+          "id": "vaishnava-traditions",
+          "name": "Vaishnava traditions",
+          "node_type": "communion",
+          "seed_clock": {
+            "year_start": -300,
+            "year_end": 500,
+            "date_or_range": "late centuries BCE–early centuries CE crystallization",
+            "precision": "range",
+            "status": "broad-formation"
+          },
+          "origin": {
+            "place": "South Asia, distributed",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "hindu-traditions"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [],
+          "notes": "Includes multiple Vishnu/Krishna/Rama devotional and theological lineages."
+        },
+        {
+          "id": "shaiva-traditions",
+          "name": "Shaiva traditions",
+          "node_type": "communion",
+          "seed_clock": {
+            "year_start": -200,
+            "year_end": 500,
+            "date_or_range": "late centuries BCE–early centuries CE crystallization",
+            "precision": "range",
+            "status": "broad-formation"
+          },
+          "origin": {
+            "place": "South Asia, distributed",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "hindu-traditions"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [],
+          "notes": "Vedic Rudra background and multiple later Shaiva sectarian/philosophical systems."
+        },
+        {
+          "id": "shakta-traditions",
+          "name": "Shakta traditions",
+          "node_type": "communion",
+          "seed_clock": {
+            "year_start": 300,
+            "year_end": 700,
+            "date_or_range": "c. 4th–7th centuries CE major textual/sectarian crystallization",
+            "precision": "range",
+            "status": "broad-formation"
+          },
+          "origin": {
+            "place": "South Asia, distributed",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "hindu-traditions"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [],
+          "notes": "Goddess worship is older than this window; this marks stronger sectarian/textual crystallization, not first goddess devotion."
+        }
+      ],
+      "integrity": [
+        "No single founder/birthday for Hinduism.",
+        "Vaishnava, Shaiva and Shakta traditions are internally plural and overlap regionally and philosophically."
+      ]
+    },
+    {
+      "id": "jain-lineage",
+      "name": "Jain lineages",
+      "root_ids": [
+        "jain-early-community"
+      ],
+      "trunk_id": "jain-early-community",
+      "nodes": [
+        {
+          "id": "jain-early-community",
+          "name": "Jain / Jina tradition, Mahavira-associated historical formation",
+          "node_type": "trunk",
+          "seed_clock": {
+            "year_start": -600,
+            "year_end": -400,
+            "date_or_range": "6th–5th centuries BCE, approximate",
+            "precision": "range",
+            "status": "high-uncertainty"
+          },
+          "origin": {
+            "place": "north India",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [],
+          "relation_to_parent": "develops_from",
+          "sources": [],
+          "notes": "Jain tradition remembers earlier Tirthankaras; historical reconstruction should preserve that sacred chronology separately."
+        },
+        {
+          "id": "svetambara-jain",
+          "name": "Śvetāmbara Jain tradition",
+          "node_type": "denomination",
+          "seed_clock": {
+            "year_start": 1,
+            "year_end": 500,
+            "date_or_range": "early centuries CE → late-5th-century textual stabilization",
+            "precision": "range",
+            "status": "long-differentiation"
+          },
+          "origin": {
+            "place": "western/northern India",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "jain-early-community"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [
+            "soas_jain"
+          ],
+          "notes": "The split with Digambara is not securely reducible to one exact year."
+        },
+        {
+          "id": "digambara-jain",
+          "name": "Digambara Jain tradition",
+          "node_type": "denomination",
+          "seed_clock": {
+            "year_start": 1,
+            "year_end": 500,
+            "date_or_range": "early centuries CE → late-5th-century differentiation",
+            "precision": "range",
+            "status": "long-differentiation"
+          },
+          "origin": {
+            "place": "central/southern/northern India",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "jain-early-community"
+          ],
+          "relation_to_parent": "differentiates_from",
+          "sources": [
+            "soas_jain"
+          ],
+          "notes": "Later sectarian narratives of one dramatic split are historically difficult; use gradual differentiation."
+        }
+      ],
+      "integrity": [
+        "Do not use a single traditional schism year as settled history; scholarship emphasizes gradual differentiation."
+      ]
+    },
+    {
+      "id": "other-major-lineages",
+      "name": "Other major foundation anchors — first pass",
+      "root_ids": [
+        "sikh-tradition",
+        "babi-movement",
+        "zoroastrian-tradition"
+      ],
+      "nodes": [
+        {
+          "id": "sikh-tradition",
+          "name": "Sikh tradition",
+          "node_type": "trunk",
+          "seed_clock": {
+            "year_start": 1469,
+            "year_end": 1539,
+            "date_or_range": "Guru Nanak lifetime, 1469–1539",
+            "precision": "range",
+            "status": "documented-biographical-window"
+          },
+          "origin": {
+            "place": "Punjab",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [],
+          "relation_to_parent": "develops_from",
+          "sources": [],
+          "notes": "Community and institutions develop through successive Gurus."
+        },
+        {
+          "id": "khalsa",
+          "name": "Khalsa",
+          "node_type": "reform_movement",
+          "seed_clock": {
+            "year_start": 1699,
+            "year_end": 1699,
+            "date_or_range": "1699 Vaisakhi inauguration",
+            "precision": "marker-year",
+            "status": "traditional+well-attested"
+          },
+          "origin": {
+            "place": "Anandpur Sahib, Punjab",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "sikh-tradition"
+          ],
+          "relation_to_parent": "institutionalizes_from",
+          "sources": [],
+          "notes": "A major refoundation/disciplinary community marker within Sikh history."
+        },
+        {
+          "id": "babi-movement",
+          "name": "Bábí movement",
+          "node_type": "trunk",
+          "seed_clock": {
+            "year_start": 1844,
+            "year_end": 1844,
+            "date_or_range": "1844 declaration",
+            "precision": "marker-year",
+            "status": "documented-traditional"
+          },
+          "origin": {
+            "place": "Shiraz, Persia (Iran)",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "bahai_history"
+          ],
+          "notes": "Immediate predecessor field of the Baháʼí Faith."
+        },
+        {
+          "id": "bahai-faith-lineage",
+          "name": "Baháʼí Faith",
+          "node_type": "trunk",
+          "seed_clock": {
+            "year_start": 1863,
+            "year_end": 1863,
+            "date_or_range": "1863 Riḍván declaration",
+            "precision": "marker-year",
+            "status": "documented-traditional"
+          },
+          "origin": {
+            "place": "Baghdad, Ottoman Iraq",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "babi-movement"
+          ],
+          "relation_to_parent": "predecessor_to",
+          "sources": [
+            "bahai_ridvan"
+          ],
+          "notes": "Baháʼí identity increasingly replaces Bábí after the 1863 declaration."
+        },
+        {
+          "id": "zoroastrian-tradition",
+          "name": "Zoroastrian tradition / Zarathustra-associated reform",
+          "node_type": "trunk",
+          "seed_clock": {
+            "year_start": -1300,
+            "year_end": -550,
+            "date_or_range": "plausible scholarly range c. 13th–6th century BCE; many favor around 1000 BCE",
+            "precision": "range",
+            "status": "high-uncertainty"
+          },
+          "origin": {
+            "place": "eastern Iranian / Central Asian region, uncertain",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "iranica_zoroaster"
+          ],
+          "notes": "Must render as a wide uncertainty band; exact date and place remain debated."
+        }
+      ],
+      "integrity": [
+        "This section is intentionally incomplete; future waves should deepen Sikh sub-lineages, Baháʼí administrative clocks, Chinese traditions, Shinto, Yoruba/Ifa and indigenous traditions without forcing them into Abrahamic branching logic."
+      ]
+    }
+  ],
+  "source_registry": {
+    "cambridge_rabbinic": "https://www.cambridge.org/core/books/cambridge-history-of-judaism/3F4F0A32983FC0DCDB414553888DC394",
+    "cambridge_mishnah": "https://www.cambridge.org/core/books/abs/cambridge-history-of-judaism/mishnah/82329DB516085375FA61D3C7F42CA902",
+    "oxford_rabbinic": "https://academic.oup.com/reference/62341/reference-article-abstract/554102926",
+    "oxford_karaite": "https://academic.oup.com/book/3559/chapter-abstract/144827238",
+    "hamburg_reform": "https://www.shmh.de/1817-landmarks-the-new-israelite-temple-association/",
+    "jts_history": "https://www.jtsa.edu/overview-of-jts/",
+    "jewish_modern_movements": "https://www.myjewishlearning.com/article/orthodox-conservative-and-reconstructionist-judaism/",
+    "oca_chalcedon": "https://www.oca.org/orthodoxy/the-orthodox-faith/church-history/fifth-century/the-fourth-ecumenical-council",
+    "oca_schism": "https://www.oca.org/orthodoxy/the-orthodox-faith/church-history/eleventh-century/the-great-schism",
+    "loc_luther": "https://www.loc.gov/resource/gdcwdl.wdl_07497/",
+    "lcms_augsburg": "https://resources.lcms.org/history/sources-of-the-augsburg-confession/",
+    "uk_anglican": "https://www.parliament.uk/about/living-heritage/transformingsociety/private-lives/religion/overview/reformation/",
+    "gameo_anabaptist": "https://gameo.org/index.php?title=Switzerland",
+    "methodist_history": "https://www.methodist.org.uk/about/history/",
+    "pew_pentecostal": "https://www.pewresearch.org/religion/2006/04/12/the-new-face-of-global-christianity-the-emergence-of-progressive-pentecostalism/",
+    "adventist_history": "https://adventist.org/identity/history",
+    "iranica_kharijite": "https://www.iranicaonline.org/articles/kharijites-in-persia/",
+    "oxford_ibadi": "https://academic.oup.com/book/11314",
+    "cambridge_madhhab": "https://www.cambridge.org/core/journals/comparative-studies-in-society-and-history/article/second-formation-of-islamic-law-the-postmongol-context-of-the-ottoman-adoption-of-a-school-of-law/0EF5DA8A84DB77EBE18684EADDE9E4FE",
+    "iranica_occultation": "https://www.iranicaonline.org/articles/gayba/",
+    "iis_ismaili": "https://www.iis.ac.uk/media/pj4bhekc/ismaili-studies_medieval-antecedents-and-modern-developments.pdf",
+    "oxford_mahayana": "https://academic.oup.com/reference/62340/reference-article-abstract/554140598",
+    "oxford_srilanka": "https://academic.oup.com/reference/62340/reference-article-abstract/554134764",
+    "soas_jain": "https://jainastudies.soas.ac.uk/ijjs/ijjs-2202-2026.pdf",
+    "bahai_history": "https://news.bahai.org/media-information/brief-history",
+    "bahai_ridvan": "https://www.bahai.org/documents/bic-opi/bahaullah-his-life-and-work",
+    "iranica_zoroaster": "https://www.iranicaonline.org/articles/zoroastrianism-i-historical-review/",
+    "pew_global_2020": "https://www.pewresearch.org/religion/2025/06/09/how-the-global-religious-landscape-changed-from-2010-to-2020/"
+  },
+  "cross_family_connections": [
+    {
+      "source": "second-temple-judaism",
+      "target": "early-christianity",
+      "type": "historical_emergence_within_field",
+      "note": "Christianity historically emerges from the Second Temple Jewish environment while becoming a distinct tradition."
+    },
+    {
+      "source": "early-christianity",
+      "target": "early-islam",
+      "type": "preexisting_religious_environment",
+      "note": "Christian communities/textual traditions formed part of the late antique environment encountered by early Islam; this is context, not a parent-child edge."
+    },
+    {
+      "source": "rabbinic-judaism",
+      "target": "early-islam",
+      "type": "preexisting_religious_environment",
+      "note": "Jewish communities/traditions formed part of Arabia and the broader late-antique Near Eastern context; do not render Islam as simply a branch of Judaism."
+    },
+    {
+      "source": "shia-formation",
+      "target": "babi-movement",
+      "type": "historical_religious_substrate",
+      "note": "The Bábí movement arose within a Twelver Shiʿi Persian context but became a distinct new religious movement."
+    }
+  ],
+  "future_research_queue": [
+    "Christianity: deepen Baptist, Presbyterian, Congregational, Quaker, Restorationist/Latter-day Saint, African-initiated, independent and Oriental Orthodox constituent church histories.",
+    "Islam: deepen Sufi tariqas, Tayyibi/Daudi Bohra lineages, Ahmadiyya, Salafi reform currents, regional institutions and theological schools without treating all as equivalent node types.",
+    "Judaism: add Reconstructionist, Renewal, Haredi/Modern Orthodox, Sephardi/Mizrahi institutional histories and Kabbalistic schools with carefully dated formation windows.",
+    "Buddhism: add early schools, Chan/Zen, Pure Land, Tibetan schools and modern reform lineages.",
+    "Hindu traditions: expand sampradayas, Vedanta schools, bhakti movements, Tantra and regional temple lineages without inventing one universal branch tree.",
+    "Map indigenous and diasporic traditions using distributed-origin polygons/routes where a point seed would be misleading.",
+    "Attach canonical texts, councils, teachers, institutions and sacred places as separate typed nodes rather than stuffing them into tradition identity.",
+    "Add branch-by-branch geography through dated diffusion events, not current-country coloring projected backward in time."
+  ]
+}
