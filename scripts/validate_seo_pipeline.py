@@ -178,7 +178,7 @@ def main() -> int:
     )
 
     require(machine_audit,('"site-index.json"','"sitemap-index.xml"','"religion/index.html"','"philosophy/index.html"','"world-map/index.html"',"OAI-SearchBot","noindex URLs must not appear in sitemaps","canonical URL must match the page for indexable pages"),"check_machine_discoverability.py",errors)
-    require(enrich,("only touches descriptions shorter than 40 characters","if len(current) >= 40","first substantial paragraph","dedupe_question_intents","dedupe_result = dedupe_question_intents()","apply_entity_intent_seo","result = apply_entity_intent_seo()"),"enrich_weak_descriptions.py",errors)
+    require(enrich,("repairs missing descriptions and descriptions shorter than 40","if len(current) >= 40","first substantial paragraph","<meta name=\"description\"","dedupe_question_intents","dedupe_result = dedupe_question_intents()","apply_entity_intent_seo","result = apply_entity_intent_seo()"),"enrich_weak_descriptions.py",errors)
 
     for owner, text in (("quality-checks.yml", quality), ("pages.yml", pages)):
         require(text,("python scripts/enrich_weak_descriptions.py","python scripts/optimize_seo.py","fetch-depth: 0","seo-report.json"),owner,errors)
