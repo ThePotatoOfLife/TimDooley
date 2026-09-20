@@ -665,9 +665,9 @@
   },
   "public_surfaces": {
     "cabinet": "rooms/potatoverse-canon/beings/cia/",
-    "file_viewer": "rooms/potatoverse-canon/beings/fbi/file/",
-    "bonds": "rooms/potatoverse-canon/beings/fbi/bonds/",
-    "incidents": "rooms/potatoverse-canon/beings/fbi/incidents/"
+    "file_viewer": "rooms/potatoverse-canon/beings/cia/file/",
+    "bonds": "rooms/potatoverse-canon/beings/cia/bonds/",
+    "incidents": "rooms/potatoverse-canon/beings/cia/incidents/"
   },
   "coverage_tiers": {
     "case-file": "Multiple dated/source/story connections; mature enough for deep browsing.",
@@ -738,10 +738,19 @@
         "roles",
         "witnessed_effects",
         "symbols",
+        "debt_relation",
+        "inherited_states",
+        "episode_attributes",
+        "state_modifiers",
         "repair_path",
+        "sayings",
         "boundary"
       ],
       "attribution_rule": "All Tim-witness judgments remain explicitly attributed to Tim/project interpretation and may vary by date/scene."
+    },
+    "state_history": {
+      "purpose": "Explain how Tim/project classification changes over time by interleaving roles, inherited symbolic states, debt-associated episodes, repair credit and upgrades/handicaps.",
+      "rule": "State history is descriptive and source-bounded; it is not a score, diagnosis, or claim that later states erase earlier ones."
     }
   },
   "editorial_priority": [
