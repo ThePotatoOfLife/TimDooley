@@ -1,5 +1,5 @@
 {
-  "version": "2.2.0",
+  "version": "2.3.0",
   "updated": "2026-09-20",
   "authority": "house-topology",
   "room_registry": "data/house/rooms.json",
@@ -311,6 +311,18 @@
     {
       "id": "cross-point-sign-event-distinction",
       "law": "Distinguish O/Cross-point, Cross-sign and crossing event. O is Axis∩Plane; the sign is a visual projection; crossing is a trajectory event."
+    },
+    {
+      "id": "spiral-field-supplements-vesica",
+      "law": "The bidirectional spiral field is a trajectory/section overlay centered on O. It supplements rather than replaces the canonical two-field Vesica geometry."
+    },
+    {
+      "id": "radial-width-not-moral-rank",
+      "law": "Spiral radius models selected scope/amplitude/horizon. Larger or smaller radius, chirality and signed Axis position do not determine moral value or truth."
+    },
+    {
+      "id": "mountain-swamp-are-overlays",
+      "law": "Mountain, Garden, Tree, Swamp, Drain and Root are typed overlays/routes/regimes within the field; none is identical to an upper/lower spiral curve."
     }
   ],
   "embedding_contract": {
@@ -462,6 +474,19 @@
       "door_plane_section": "disk radius sqrt(3)r/2",
       "surface_intersection": "ring x²+y²=3r²/4 at z=0",
       "insight": "The 2D left/right Vesica intersections generalize to a full interface ring in 3D."
+    },
+    "bidirectional_spiral_field": {
+      "owner": "data/house/bidirectional-spiral-field.json",
+      "role": "continuous O-centered trajectory/section overlay across both relational fields",
+      "coordinates": {
+        "axial": "z",
+        "radial": "rho",
+        "angular": "theta"
+      },
+      "waist": "O at the active Plane/waist section",
+      "upper": "+z branch may widen in relational horizon while Mountain separately encodes integration/convergence",
+      "lower": "-z branch may widen in depth/entanglement horizon while Swamp/Drain remain distinct regime/attractor overlays",
+      "rule": "Field supplements the Vesica; it does not replace Source Field, Manifestation Field, Door or Plane."
     }
   },
   "federation_scale_registry": "data/house/federation-scale.json",
