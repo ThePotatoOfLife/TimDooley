@@ -8,6 +8,9 @@ urlState.claim('spatial-overlays', ['overlays']);
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Spatial overlays require the core atlas map.');
+if (!window.__potatoAtlasStyleLifecycle) await import('./3d-style-lifecycle.js');
+const styleLifecycle = window.__potatoAtlasStyleLifecycle;
+if (!styleLifecycle) throw new Error('Spatial overlays require the shared Style Lifecycle.');
 if (!window.__potatoAtlasGeo) await import('./3d-geo-kernel.js');
 const geoKernel = window.__potatoAtlasGeo;
 if (!geoKernel?.antimeridianAwareBounds) throw new Error('Spatial overlays require the shared geospatial kernel.');
@@ -312,6 +315,31 @@ async function fit(id) {
   motion.fitBounds(map, [[bounds.west,bounds.south],[bounds.east,bounds.north]], { padding:70, maxZoom:7, duration:650 });
   return true;
 }
+async function restoreAfterStyleGeneration() {
+  const previouslyRendered = [...rendered.keys()];
+  rendered.clear();
+  try {
+    for (const id of previouslyRendered) {
+      const row = entry(id);
+      if (!row || row.availability !== 'current') continue;
+      const owner = await loadOwner(row.geometry_owner);
+      const fc = featureCollectionFor(row, owner);
+      if (!fc.features.length) continue;
+      installRenderedLayers(row, fc);
+      setVisibility(id, activeIds.has(id));
+    }
+    syncInteractionRegistration();
+    emit('style-generation-restore', { restored:previouslyRendered.filter(id => rendered.has(id)) });
+  } catch (error) {
+    console.warn('Spatial overlay style-generation restore unavailable:', error);
+  }
+}
+
+styleLifecycle.register('spatial-overlays', {
+  priority:58,
+  restore:() => { queueMicrotask(restoreAfterStyleGeneration); },
+});
+
 async function restoreFromUrl() {
   const requested = (new URL(location.href).searchParams.get(ACTIVE_PARAM) || '').split(',').map(value => value.trim()).filter(Boolean);
   for (const id of requested) await activate(id, { silent:true });
