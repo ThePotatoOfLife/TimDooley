@@ -14,8 +14,9 @@ for (const token of [
 }
 
 assert.ok(!adl.includes('source:POINT_SOURCE,minzoom:4.2'), 'ADL point layers must not own raw 4.2 minzoom');
-const incidentStart = adl.indexOf("interaction.register('adl-heat-incidents'");
-const incidentEnd = adl.indexOf("interaction.register('adl-heat-states'", incidentStart);
+const incidentStart = adl.indexOf("interactionRouter()?.register('adl-heat-incidents'");
+const incidentEnd = adl.indexOf("interactionRouter()?.register('adl-heat-states'", incidentStart);
+assert.ok(incidentStart >= 0 && incidentEnd > incidentStart, 'ADL incident Router registration block must remain discoverable');
 const incidentBlock = adl.slice(incidentStart, incidentEnd);
 assert.ok(incidentBlock.includes("scale.capabilityActive('adl-heat-points', 'interact'"), 'ADL incident interaction must respect canonical scale capability');
 assert.ok(!incidentBlock.includes("enabled:()=>enabled,"), 'ADL incident interaction must not fall back to layer-enabled state alone');
