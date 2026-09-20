@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 KERNEL = ROOT / "world-map" / "3d-geo-kernel.js"
 TEST = ROOT / "scripts" / "test_world_map_geo_kernel.mjs"
 CORE_FIT_WRAP_TEST = ROOT / "scripts" / "test_world_map_core_fit_wrap.mjs"
+SPATIAL_OVERLAY_WRAP_TEST = ROOT / "scripts" / "test_world_map_spatial_overlay_wrap_fit.mjs"
 
 
 def main() -> int:
@@ -40,6 +41,7 @@ def main() -> int:
         for test_path, label in (
             (TEST, "geospatial-kernel"),
             (CORE_FIT_WRAP_TEST, "core country/compare wrap-safe fit"),
+            (SPATIAL_OVERLAY_WRAP_TEST, "spatial overlay wrap-safe fit"),
         ):
             if not test_path.exists():
                 errors.append(f"missing {test_path.relative_to(ROOT)}")
