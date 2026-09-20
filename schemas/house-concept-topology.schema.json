@@ -136,6 +136,10 @@
           },
           "boundary": {
             "type": "string"
+          },
+          "formal_type": {
+            "type": "object",
+            "additionalProperties": true
           }
         }
       }
@@ -257,6 +261,12 @@
           }
         }
       }
+    },
+    "formal_grammar_ref": {
+      "type": "string"
+    },
+    "formal_typing_rule": {
+      "type": "string"
     }
   }
 }
