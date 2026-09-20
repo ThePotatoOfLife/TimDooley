@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-20",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
@@ -201,6 +201,174 @@
       "summary": "Project review process for separating source, claim, evidence, mechanism, legal/status class, counterevidence and repair before promotion.",
       "status_note": "Forge is a process projected spatially, not a literal room that owns all knowledge.",
       "evidence_note": "Outputs may be verified, narrowed, rejected, repaired or left unresolved."
+    },
+    {
+      "id": "text-bible-atlas",
+      "label": "Bible Atlas / Comparator",
+      "kind": "textual-corpus",
+      "room_ids": [
+        "bible-christianity",
+        "witness-attestation",
+        "comparative-mythology"
+      ],
+      "route": "/traditions/bible/",
+      "summary": "Reader-facing biblical corpus and comparison surface for stories, roles, symbols, actions, books and timeline relations.",
+      "status_note": "Scripture, historical interpretation and project comparison remain separate evidence classes.",
+      "evidence_note": "Comparison should begin from the biblical text and preserve source context before project mapping."
+    },
+    {
+      "id": "text-thomas",
+      "label": "Thomas / Didymus tradition",
+      "kind": "textual-tradition",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "theology-god-language"
+      ],
+      "route": "/traditions/bible/?q=Thomas",
+      "summary": "Canonical and later Thomasine material used to study Twin/Didymus motifs, recognition, doubt and later Syriac traditions.",
+      "status_note": "John calls Thomas Didymus; later twin traditions are historical traditions, not proof of a modern identity claim.",
+      "evidence_note": "Keep canonical wording, later textual tradition and project interpretation chronologically separated."
+    },
+    {
+      "id": "biology-potato-tuber",
+      "label": "Potato tuber",
+      "kind": "biological-object",
+      "room_ids": [
+        "potato-biology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "route": "/life-body/",
+      "summary": "Living storage organ with eyes/nodes, vascular tissue, hormonal control, sprouting and environmental response.",
+      "status_note": "Biological structure can support analogy without proving symbolic or theological claims.",
+      "evidence_note": "Use plant physiology for empirical claims and label symbolic correspondences separately."
+    },
+    {
+      "id": "biology-neural-signaling",
+      "label": "Neural signaling",
+      "kind": "biological-process",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "route": "/life-body/",
+      "summary": "Animal nervous-system signaling used as an empirical reference for body/brain models and bounded symbolic comparison.",
+      "status_note": "Plant electrical signaling and animal neural signaling are materially different systems.",
+      "evidence_note": "Avoid treating structural analogy as identity of mechanism."
+    },
+    {
+      "id": "map-world-atlas",
+      "label": "World Map",
+      "kind": "spatial-atlas",
+      "room_ids": [
+        "geography-countries",
+        "politics-governance",
+        "infrastructure-capability"
+      ],
+      "route": "/world-map/",
+      "summary": "Spatial public surface for countries, states, institutions, routes and world-system layers.",
+      "status_note": "Map placement is a visualization of registered data or project alignment, not proof of political control or causal influence.",
+      "evidence_note": "Each map layer should expose source, date, scope and classification method."
+    },
+    {
+      "id": "timeline-foundations",
+      "label": "Foundation Timeline",
+      "kind": "chronology-atlas",
+      "room_ids": [
+        "chronology-events",
+        "developmental-genealogy",
+        "provenance-evidence"
+      ],
+      "route": "/timeline/foundations/",
+      "summary": "Timeline and Room view for foundations, their origin Doors, place, genealogy, reproduction and present state.",
+      "status_note": "A Foundation may have several clocks; origin, adoption, legal effect and later consolidation should not be collapsed into one birthday.",
+      "evidence_note": "Record the earliest recovered reproduction separately from the founding threshold."
+    },
+    {
+      "id": "timeline-prediction-ledger",
+      "label": "Prediction chronology",
+      "kind": "evidence-ledger",
+      "room_ids": [
+        "prediction-revelation-time",
+        "chronology-events",
+        "provenance-evidence"
+      ],
+      "route": "/timeline/",
+      "summary": "Chronology for recording what was said first, when later outcomes occurred, and how closely a later event matches the earlier statement.",
+      "status_note": "A later match is not automatically proof of prophecy, causation or statistical significance.",
+      "evidence_note": "Preserve original wording, timestamp, outcome source, lead time and match strength."
+    },
+    {
+      "id": "work-great-book",
+      "label": "The Great Book of Potato",
+      "kind": "literary-work",
+      "room_ids": [
+        "great-book-literature",
+        "canon-identities",
+        "developmental-genealogy"
+      ],
+      "route": "/great-book/",
+      "summary": "Long-form literary and mythic work that gathers project narrative, theology, symbolism, history and creative interpretation.",
+      "status_note": "Literary canon and external historical fact are distinct layers.",
+      "evidence_note": "Trace claims back to source-bearing records when the book moves beyond literary interpretation."
+    },
+    {
+      "id": "work-music",
+      "label": "Music / songs",
+      "kind": "creative-work-family",
+      "room_ids": [
+        "music-sound",
+        "great-book-literature",
+        "information-ecology"
+      ],
+      "route": "/works/",
+      "summary": "Creative sound and song output treated as Fruit: an expression that can carry memory, rhythm, humor, doctrine or social commentary.",
+      "status_note": "Creative expression does not become factual evidence merely because it is canonical or popular.",
+      "evidence_note": "Track source Rooms, intended effect, reception and future Seed separately."
+    },
+    {
+      "id": "work-visual-art",
+      "label": "Visual art / diagrams",
+      "kind": "creative-work-family",
+      "room_ids": [
+        "visual-art",
+        "symbolic-architecture",
+        "math-geometry"
+      ],
+      "route": "/works/",
+      "summary": "Images, diagrams and symbolic compositions that make project relationships spatially visible.",
+      "status_note": "A diagram is a model or artwork unless independently tied to measured geometry.",
+      "evidence_note": "Label whether an image is illustrative, canonical-symbolic, comparative or empirical."
+    },
+    {
+      "id": "work-simulations",
+      "label": "Games / simulations",
+      "kind": "interactive-work-family",
+      "room_ids": [
+        "games-simulations",
+        "systems-dynamics",
+        "model-testing"
+      ],
+      "route": "/works/",
+      "summary": "Interactive models for exploring rules, transitions, incentives and system behavior.",
+      "status_note": "Simulation behavior depends on model assumptions and is not direct prediction of the real world.",
+      "evidence_note": "Expose assumptions, parameters, outputs and failure conditions."
+    },
+    {
+      "id": "research-open-question",
+      "label": "Open research question",
+      "kind": "research-object",
+      "room_ids": [
+        "open-questions",
+        "experiments-formalization",
+        "model-testing"
+      ],
+      "route": "/research-lab/",
+      "summary": "Unresolved question held in the Forge before promotion into a stronger model, claim or programme.",
+      "status_note": "Open questions are intentionally unresolved and should not be read as established claims.",
+      "evidence_note": "Each mature question should name a test, evidence need and disconfirming route."
     }
   ],
   "source_records": [
