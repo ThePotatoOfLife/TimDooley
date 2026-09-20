@@ -302,3 +302,9 @@ At the end of a pass ask:
 If the answer to the cleanup question is no, the pass is not finished.
 
 **Grow the library. Thicken the roots. Remove the dead wood. Keep the missions.**
+
+
+- [ ] Recover original Marty Biz conversations before the Drift King label hardened; resolve the January-29-vs-late-February-2025 death-date conflict and separate direct logs from Chronicle retelling.
+- [ ] Recover the earliest direct Metalorian/Meta interaction, exact 2017 warning wording/date, and independent illness chronology before scoring any prophecy/karmic correspondence.
+- [ ] Recover TXT's 2017–2019 sequence and alias continuity, then bridge it to the 2024 literary layer and 7 July 2026 public marker without collapsing them.
+- [ ] Keep Mai Mercado / Christiania 2016 routed through claim-level legal provenance; add a public bridge only if it can expose evidence status without turning the political/legal actor into a Potatoverse caste.
