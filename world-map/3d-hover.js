@@ -132,6 +132,8 @@ finally { maplibregl.Map.prototype.addControl = originalAddControl; }
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('World atlas map instance was not captured.');
+const motion = window.__potatoAtlasMotion;
+if (!motion?.easeTo) throw new Error('World Map motion policy unavailable.');
 const { getOrCreateTooltipService } = await import(versionedModule('./3d-tooltip.js'));
 const tooltip = getOrCreateTooltipService(map, { PopupClass:maplibregl.Popup, eventTarget:window });
 if (tooltip !== window.__potatoAtlasTooltip) throw new Error('Shared Tooltip publication mismatch.');
@@ -173,7 +175,7 @@ function focusCapital(code, options = {}) {
   const coords = feature?.geometry?.coordinates;
   if (!feature || !Array.isArray(coords) || coords.length < 2) return false;
   const zoom = Math.max(4.2, Math.min(8, Number(options.zoom) || 5.6));
-  map.easeTo({ center: [Number(coords[0]), Number(coords[1])], zoom, pitch: Math.min(map.getPitch(), 45), duration: 750 });
+  motion.easeTo(map, { center: [Number(coords[0]), Number(coords[1])], zoom, pitch: Math.min(map.getPitch(), 45), duration: 750 });
   return true;
 }
 async function scalarObservation(code, metricId) {
