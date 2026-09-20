@@ -161,6 +161,7 @@ jobs:
         run: python scripts/validate_world_map_infrastructure_integration.py
 
       - name: Validate canonical World Map runtime
+        if: ${{ always() }}
         run: python scripts/validate_world_map_source.py
 
       - name: Test World Map architecture auditor

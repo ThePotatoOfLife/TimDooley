@@ -9,6 +9,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 KERNEL = ROOT / "world-map" / "3d-geo-kernel.js"
 TEST = ROOT / "scripts" / "test_world_map_geo_kernel.mjs"
+CORE_FIT_WRAP_TEST = ROOT / "scripts" / "test_world_map_core_fit_wrap.mjs"
 
 
 def main() -> int:
@@ -35,15 +36,20 @@ def main() -> int:
     node = shutil.which("node")
     if not node:
         errors.append("node executable unavailable; cannot run geospatial-kernel regression")
-    elif not TEST.exists():
-        errors.append("missing scripts/test_world_map_geo_kernel.mjs")
     else:
-        result = subprocess.run(
-            [node, str(TEST)], cwd=ROOT, text=True, capture_output=True, check=False
-        )
-        if result.returncode:
-            detail = (result.stderr or result.stdout).strip()
-            errors.append(f"geospatial-kernel regression failed: {detail}")
+        for test_path, label in (
+            (TEST, "geospatial-kernel"),
+            (CORE_FIT_WRAP_TEST, "core country/compare wrap-safe fit"),
+        ):
+            if not test_path.exists():
+                errors.append(f"missing {test_path.relative_to(ROOT)}")
+                continue
+            result = subprocess.run(
+                [node, str(test_path)], cwd=ROOT, text=True, capture_output=True, check=False
+            )
+            if result.returncode:
+                detail = (result.stderr or result.stdout).strip()
+                errors.append(f"{label} regression failed: {detail}")
 
     print("World Map geospatial kernel:")
     print("- canonical longitude normalization")
