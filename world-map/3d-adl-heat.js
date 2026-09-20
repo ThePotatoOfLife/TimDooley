@@ -3,6 +3,10 @@
 // incident point source for locality-level evidence. Source semantics remain
 // explicit: these are ADL-derived records, not a generic hate/crime score.
 
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('adl-heat-filters', ['adlYear','adlType']);
+
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('ADL H.E.A.T. layer requires the core map.');
 if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
@@ -114,15 +118,12 @@ function updatePointSource() {
   if (source?.setData) source.setData(filtered);
 }
 function updateFilterUrl() {
-  const url = new URL(location.href);
-  if (enabled) {
-    if (selectedYear !== 'all') url.searchParams.set('adlYear', selectedYear); else url.searchParams.delete('adlYear');
-    if (selectedType !== 'all') url.searchParams.set('adlType', selectedType); else url.searchParams.delete('adlType');
-  } else {
-    url.searchParams.delete('adlYear');
-    url.searchParams.delete('adlType');
-  }
-  history.replaceState({}, '', url);
+  urlState.patch('adl-heat-filters', {
+    set:{
+      adlYear:enabled && selectedYear !== 'all' ? selectedYear : null,
+      adlType:enabled && selectedType !== 'all' ? selectedType : null,
+    },
+  });
 }
 function setLayerVisibility(show) {
   const visibility = show ? 'visible' : 'none';
