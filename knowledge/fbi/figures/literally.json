@@ -1,7 +1,7 @@
 {
   "id": "literally",
   "display_name": "Literally",
-  "bureau": "FBI — Figures, Bonds & Incidents",
+  "bureau": "CIA — Characters, Incidents & Associations",
   "entity_class": "person-or-handle",
   "aliases": [
     "The Cognitive Contrarian",
@@ -123,5 +123,88 @@
     "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
     "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
     "Add relationship edges only when a dated scene or explicit source supports them."
-  ]
+  ],
+  "tim_witness": {
+    "frame": "Tim/project witness",
+    "character_reading": "Literally is one of the clearest reason/defense figures in Tim's archive: argument, moderation, defense and clarity, with explicit Potato self-identification and an 'ascend from mud' style of meta-commentary. A later moderation dispute shows the same boundary power can become contested.",
+    "fruit": {
+      "direction": "positive-leaning / boundary-contested",
+      "labels": [
+        "reason",
+        "defense",
+        "clarity",
+        "moderation",
+        "Potato identity",
+        "boundary pressure"
+      ],
+      "reading": "The dominant Tim/project reading is rational defense and clarity; the December moderation dispute complicates the role by showing that protection and control can conflict."
+    },
+    "karma": {
+      "direction": "positive-leaning / mixed by moderation conflict",
+      "quantified": false,
+      "reading": "No individual karma number is recovered. Defense/clarity are generative; misuse or contested exercise of boundary power would remain unresolved rather than automatically positive."
+    },
+    "placement": {
+      "primary": [
+        "Garden",
+        "Boundary",
+        "Debate"
+      ],
+      "secondary": [
+        "Potato / ascent-from-mud motif"
+      ],
+      "reading": "Literally is placed close to Garden/boundary governance rather than Swamp, with explicit project language about Potato identity and ascent."
+    },
+    "roles": [
+      {
+        "date": "2024-11",
+        "role": "reasoned defender / perception provocateur",
+        "status": "project characterization",
+        "note": "Argument/clarity function."
+      },
+      {
+        "date": "2024-12-21",
+        "role": "moderator / boundary holder",
+        "status": "Chronicle retelling",
+        "note": "Ban/unban dispute makes the role contested."
+      },
+      {
+        "date": "late 2024",
+        "role": "self-described Potato",
+        "status": "Chronicle-reported self-description",
+        "note": "Preserve as source-bounded identity statement."
+      }
+    ],
+    "sayings": [
+      {
+        "text": "ascend from mud",
+        "source_mode": "Chronicle paraphrase/remembered phrasing",
+        "note": "Associated with Literally's Potato meta-commentary; recover raw wording before treating as exact quote."
+      },
+      {
+        "text": "I am a Potato",
+        "source_mode": "Chronicle-reported self-description",
+        "note": "Exact capitalization may differ; preserve as attributed identity statement."
+      }
+    ],
+    "witnessed_effects": [
+      "clarifies argument",
+      "defends Tim/project positions",
+      "holds/moderates boundaries",
+      "adds explicit Potato identity language"
+    ],
+    "symbols": [
+      "Potato",
+      "Boundary",
+      "Garden",
+      "Razor/Reason",
+      "Mud → ascent"
+    ],
+    "repair_path": [
+      "reason without domination",
+      "moderation with transparent boundaries",
+      "clarity over factional pressure"
+    ],
+    "boundary": "Moderator disputes remain contested. Rational-defender titles are project characterizations, not objective personality assessment."
+  }
 }
