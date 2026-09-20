@@ -14,6 +14,7 @@ BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 APP = ROOT / "world-map" / "3d-app.js"
 HANDOFF = ROOT / "world-map" / "3d-core-interaction-handoff.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
+PLACES = ROOT / "world-map" / "3d-places.js"
 COUNTRY = ROOT / "world-map" / "3d-country-selection.js"
 SPATIAL = ROOT / "world-map" / "3d-spatial-overlays.js"
 GATEWAYS = ROOT / "world-map" / "3d-gateways.js"
@@ -25,7 +26,7 @@ COMPAT_TEST = ROOT / "scripts" / "test_world_map_interaction_compatibility.mjs"
 
 def main() -> int:
     errors: list[str] = []
-    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, BOOTSTRAP, APP, HANDOFF, HOVER, COUNTRY, SPATIAL, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS, TEST, COMPAT_TEST):
+    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, BOOTSTRAP, APP, HANDOFF, HOVER, PLACES, COUNTRY, SPATIAL, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS, TEST, COMPAT_TEST):
         if not path.exists():
             errors.append(f"missing interaction-router file: {path.relative_to(ROOT)}")
     if errors:
@@ -41,6 +42,7 @@ def main() -> int:
     app = APP.read_text(encoding="utf-8", errors="replace")
     handoff = HANDOFF.read_text(encoding="utf-8", errors="replace")
     hover = HOVER.read_text(encoding="utf-8", errors="replace")
+    places = PLACES.read_text(encoding="utf-8", errors="replace")
     country = COUNTRY.read_text(encoding="utf-8", errors="replace")
     spatial = SPATIAL.read_text(encoding="utf-8", errors="replace")
     gateways = GATEWAYS.read_text(encoding="utf-8", errors="replace")
@@ -66,12 +68,15 @@ def main() -> int:
         errors.append("panel lifecycle must retain the shared Interaction Router preload")
 
     for token in (
-        "const interaction = window.__potatoAtlasInteraction",
-        "if (interaction?.register)",
+        "function interactionRouter()",
+        "function unbindSharedLayerFallback()",
+        "function syncSharedLayerInteraction()",
         "interaction.register('subdivisions'",
         "objectType:'subdivision'",
         "clickPriority:60",
         "hoverPriority:60",
+        "potato-atlas-interaction-ready",
+        "map.off('click', HIT_ID, fallbackSharedHandlers.onClick)",
     ):
         if token not in subdivisions:
             errors.append(f"subdivision interaction migration missing marker: {token}")
@@ -121,6 +126,19 @@ def main() -> int:
 
     for token in (
         "function interactionRouter()",
+        "function unbindFallbackLayerEvents()",
+        "interaction.register('places'",
+        "objectType:'place'",
+        "clickPriority:80",
+        "hoverPriority:80",
+        "potato-atlas-interaction-ready",
+        "map.off('click', layerId, handlers.onClick)",
+    ):
+        if token not in places:
+            errors.append(f"Places interaction promotion missing marker: {token}")
+
+    for token in (
+        "function interactionRouter()",
         "function unbindFallbackInteraction()",
         "potato-atlas-interaction-ready",
         "interaction.register('spatial-overlays'",
@@ -164,7 +182,7 @@ def main() -> int:
     if not node:
         errors.append("node executable unavailable; cannot run interaction-router regression")
     else:
-        for path in (ROUTER, SUBDIVISIONS, APP, HANDOFF, HOVER, COUNTRY, SPATIAL, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS):
+        for path in (ROUTER, SUBDIVISIONS, APP, HANDOFF, HOVER, PLACES, COUNTRY, SPATIAL, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS):
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
