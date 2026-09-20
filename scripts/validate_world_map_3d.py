@@ -88,7 +88,7 @@ def main() -> int:
     world = load_json(WORLD, errors)
     countries = load_json(COUNTRIES, errors)
 
-    fail_if_missing(html, ('id="map"','id="panel"','id="status"','id="search"','id="country-list"','id="height"','id="compare"','id="interior"','id="relations"','id="relationType"','id="traceDepth"','id="fit"','id="tilt"','id="globe"','id="world"','id="layersMenu"','id="traceMenu"','id="timeMenu"','id="viewMenu"','id="panelToggle"','id="focusMode"','id="timeMode"','id="timeDate"','id="timeDate2"','id="atlasTimeState"','class="app panel-collapsed"','src="./3d-hover.js"','src="./3d-pathfinder.js"','src="./3d-evidence.js"','src="./3d-time.js"','src="./3d-ui.js"',"Geography, graph topology, project hierarchy and time are separate coordinates"),"world-map/3d.html",errors)
+    fail_if_missing(html, ('id="map"','id="panel"','id="status"','id="search"','id="country-list"','id="height"','id="compare"','id="interior"','id="relations"','id="relationType"','id="traceDepth"','id="fit"','id="tilt"','id="globe"','id="world"','id="layersMenu"','id="traceMenu"','id="timeMenu"','id="viewMenu"','id="panelToggle"','id="focusMode"','id="timeMode"','id="timeDate"','id="timeDate2"','id="atlasTimeState"','class="app panel-collapsed"','src="./3d-hover.js"','src="./3d-pathfinder.js"','src="./3d-evidence.js"','src="./3d-time.js"',"Geography, graph topology, project hierarchy and time are separate coordinates"),"world-map/3d.html",errors)
     fail_if_missing(bootstrap,("ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v')","function versionedModule","await import(versionedModule('./3d-hover.js'))","waitForCore","countries-fill","window.__potatoAtlasReady","Path finder","Demography","Country selection","Country Pulse","declareDormant('Evidence'","declareDormant('Fields'","declareDormant('Networks'","declareDormant('Time'","declareDormant('Axis depth'","declareDormant('Axis operators'","declareDormant('North Axis'","potato-atlas-interactive","__potatoAtlasDiagnostics","deploymentVersion"),"world-map/3d-bootstrap.js",errors)
     fail_if_missing(selection,("pinnedCodes","activeCode","function togglePinnedCountry","function pinCountry","function unpinCountry","function automaticRelationData","urlState.patch('selection-inspector'","selection-chip","data-country-code","clearAll","__potatoAtlasSelection","automaticRelationBudget","DEFAULT_AUTO_RELATION_BUDGET"),"world-map/3d-country-selection.js",errors)
     fail_if_missing(pulse,("Country Pulse","GDP per capita","Inflation","Unemployment","__potatoAtlasCountryPulse","More statistics"),"world-map/3d-country-pulse.js",errors)
@@ -135,7 +135,10 @@ def main() -> int:
     architecture=runtime.get("renderer_architecture",{})
     if "3d-evidence.js" not in str(architecture.get("evidence","")): errors.append("runtime renderer architecture does not assign ownership to Eye")
     if "3d-time.js" not in str(architecture.get("time","")): errors.append("runtime renderer architecture does not assign ownership to Time")
-    if "3d-ui.js" not in str(architecture.get("interface_controller","")): errors.append("runtime renderer architecture does not assign ownership to progressive UI")
+    interface_owner=str(architecture.get("interface_controller",""))
+    for owner in ("3d-inspector-visibility.js","3d-ui-layout.js","3d-world-bar.js","3d-inspector-router.js"):
+        if owner not in interface_owner:
+            errors.append(f"runtime renderer architecture interface controller is missing canonical owner {owner}")
 
     country_rows=countries.get("countries",[]);canonical_codes={row.get("iso3") for row in country_rows if row.get("iso3")}
     if len(canonical_codes)!=195: errors.append(f"expected 195 canonical country ISO3 codes; found {len(canonical_codes)}")
