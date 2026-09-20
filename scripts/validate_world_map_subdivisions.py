@@ -57,13 +57,16 @@ def main() -> int:
                 errors.append(f"subdivision builder missing marker: {token}")
         for token in (
             "world-subdivisions/index.json", "USA.geo.json", "atlas-subdivision",
-            "searchParams.get('subdivision')", "searchParams.set('subdivision'", "searchParams.delete('subdivision')",
+            "urlState.claim('selection-inspector'", "urlState.patch('selection-inspector'", "searchParams.get('subdivision')",
             "potato-atlas-subdivision-select", "pendingDeepLinkId",
             "id_prefix", "viewport_bounds", "partitionForId",
             "window.__potatoAtlasGeo", "unwrappedInterval", "distanceToMapCenterKm", "haversineDistanceKm",
         ):
             if token not in module:
                 errors.append(f"subdivision module missing marker: {token}")
+        if "history.replaceState" in module:
+            errors.append("subdivision module must route URL writes through canonical 3d-url-state.js")
+
         for token in (
             "normalizeLongitude", "shortestLongitudeDelta", "unwrapLongitude",
             "minimalLongitudeInterval", "antimeridianAwareBounds", "haversineDistanceKm",
