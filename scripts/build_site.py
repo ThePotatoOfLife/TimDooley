@@ -8,9 +8,11 @@ client-side JavaScript.
 """
 from __future__ import annotations
 
+import hashlib
 import html
 import json
 import os
+import re
 import shutil
 from pathlib import Path
 
@@ -41,6 +43,42 @@ def copy_tree() -> None:
             shutil.copytree(src, OUT / src.name, ignore=shutil.ignore_patterns(*EXCLUDE))
         else:
             shutil.copy2(src, OUT / src.name)
+
+
+
+SHARED_ASSETS = (
+    "app/room-interior.css",
+    "app/bidirectional-spiral-field.css",
+    "app/bidirectional-spiral-field.js",
+)
+
+
+def fingerprint_shared_assets() -> dict[str, str]:
+    """Rewrite deployed shared-asset query strings from actual file content.
+
+    Source HTML stays human-readable and usable without a build step. The Pages
+    artifact receives deterministic content hashes, eliminating hand-maintained
+    cache-version drift across many static pages.
+    """
+    versions: dict[str, str] = {}
+    for rel in SHARED_ASSETS:
+        asset = OUT / rel
+        if not asset.exists():
+            continue
+        digest = hashlib.sha256(asset.read_bytes()).hexdigest()[:12]
+        versions[rel] = digest
+        basename = Path(rel).name
+        pattern = re.compile(rf"({re.escape(basename)})(?:\\?v=[^\"'<>\\s]+)?")
+        replacement = rf"\\1?v={digest}"
+        changed = 0
+        for page in OUT.rglob("*.html"):
+            text = page.read_text(encoding="utf-8", errors="replace")
+            updated, count = pattern.subn(replacement, text)
+            if count:
+                page.write_text(updated, encoding="utf-8")
+                changed += count
+        print(f"Fingerprint {rel}: {digest} · {changed} references")
+    return versions
 
 
 def load_json(path: Path, default=None):
@@ -313,6 +351,7 @@ def build() -> None:
     if missing:
         raise SystemExit(f"Required manifest-driven archive files are missing from _site: {missing}")
     patch_entity_metadata()
+    asset_versions = fingerprint_shared_assets()
     manifest = load_json(ROOT / "manifest.json", {}) or {}
     core_index = load_json(ROOT / "knowledge" / "indexes" / "core-index.json", {}) or {}
     contexts = load_json(ROOT / "knowledge" / "indexes" / "context-graph.json", {}) or {}
@@ -328,7 +367,7 @@ def build() -> None:
         raise SystemExit("No HTML pages were built into _site")
     metric_coverage = {key: value.get("coverage", 0) for key, value in build_world_map_runtime.get("metrics", {}).items()}
     coverage_entities = len(build_world_map_coverage.get("entities", {}))
-    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters', []))} context clusters, five-door-aware generated navigation, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, World Map metric coverage {metric_coverage}, coverage ledger for {coverage_entities} map entities, and the complete repository knowledge/data tree.")
+    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters', []))} context clusters, five-door-aware generated navigation, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, shared asset fingerprints {asset_versions}, World Map metric coverage {metric_coverage}, coverage ledger for {coverage_entities} map entities, and the complete repository knowledge/data tree.")
 
 
 if __name__ == "__main__":
