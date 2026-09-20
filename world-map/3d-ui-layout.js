@@ -17,10 +17,10 @@ function ensureStyle() {
   style.id = 'atlasUILayoutStyle';
   style.textContent = `
     body.atlas-registry-ui .hud,body.atlas-registry-ui .camera{display:none!important}
-    #atlasUILeftStatus{position:absolute;left:10px;bottom:10px;z-index:7;display:flex;flex-direction:column-reverse;align-items:flex-start;gap:6px;width:min(300px,calc(100% - 20px));pointer-events:none}
+    #atlasUILeftStatus{position:absolute;left:10px;bottom:10px;z-index:var(--atlas-z-context,7);display:flex;flex-direction:column-reverse;align-items:flex-start;gap:6px;width:min(300px,calc(100% - 20px));pointer-events:none}
     #atlasUILeftStatus>*{position:static!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;margin:0!important;max-width:100%;pointer-events:auto}
     #atlasUILeftStatus>*[data-layout-suppressed="1"]{display:none!important}
-    #atlasUIBottomContext{position:absolute;left:50%;bottom:10px;z-index:8;transform:translateX(-50%);display:flex;align-items:flex-end;justify-content:center;width:min(760px,calc(100% - 360px));max-width:calc(100% - 24px);pointer-events:none}
+    #atlasUIBottomContext{position:absolute;left:50%;bottom:10px;z-index:var(--atlas-z-overlay,8);transform:translateX(-50%);display:flex;align-items:flex-end;justify-content:center;width:min(760px,calc(100% - 360px));max-width:calc(100% - 24px);pointer-events:none}
     #atlasUIBottomContext>*{position:static!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;max-width:100%;pointer-events:auto}
     #atlasUILeftStatus #atlasWorldContext{width:min(290px,100%)!important}
     #atlasUILeftStatus #atlasTimeState{width:auto!important}
