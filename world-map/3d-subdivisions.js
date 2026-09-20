@@ -439,7 +439,7 @@ function bindSharedLayerEvents() {
   fallbackSharedHandlers = { onEnter, onLeave, onClick };
   eventsBound = true;
 }
-window.addEventListener('potato-atlas-interaction-ready', () => syncSharedLayerInteraction());
+window.addEventListener?.('potato-atlas-interaction-ready', () => syncSharedLayerInteraction());
 
 function viewportWidth() {
   return Number(window.innerWidth || document.documentElement?.clientWidth || 1024);
