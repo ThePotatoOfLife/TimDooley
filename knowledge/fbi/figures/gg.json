@@ -1,7 +1,7 @@
 {
   "id": "gg",
   "display_name": "GG",
-  "bureau": "FBI — Figures, Bonds & Incidents",
+  "bureau": "CIA — Characters, Incidents & Associations",
   "depth_tier": "working-file",
   "depth_note": "Recurring figure with enough dated presence for a working dossier; raw-source recovery can still deepen it.",
   "entity_class": "person-or-handle",
@@ -69,8 +69,69 @@
     }
   ],
   "recovery_leads": [
-    "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
-    "Separate direct speech from Chronicle paraphrase and later project interpretation.",
-    "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
-  ]
+    "Reconstruct the 55 Chronicle occurrences into bounded dated scenes rather than treating mention count as character evidence.",
+    "Recover raw/closer chat or stream artifacts behind the highest-density dates: 2024-11-10, 2024-11-28 and 2025-01-10.",
+    "Determine whether old 'provocation / quiet influence' language is repeatedly scene-supported or merely inherited profile prose.",
+    "Do not assign Garden/Swamp/karma placement until scene-level evidence supports it."
+  ],
+  "tim_witness": {
+    "frame": "Tim/project witness",
+    "character_reading": "GG is a high-frequency but low-resolution file: 55 Chronicle occurrences across more than twenty dated entries, while the currently recovered character layer only supports a provisional reading of provocation, drift and quiet influence. The frequency proves recurring presence in the archive, not a stable motive or moral character.",
+    "fruit": {
+      "direction": "unresolved",
+      "labels": [
+        "recurring presence",
+        "provocation",
+        "drift",
+        "quiet influence"
+      ],
+      "reading": "There is not enough bounded scene recovery yet to decide whether GG's overall fruit was generative, harmful, noisy or mixed. The older project profile leans toward provocation, but CIA should not promote that into a stronger verdict until the dated appearances are reconstructed."
+    },
+    "karma": {
+      "direction": "unresolved / insufficient bounded evidence",
+      "quantified": false,
+      "reading": "No individual karma balance is recovered, and raw mention count is not a karma measure."
+    },
+    "placement": {
+      "primary": [
+        "Plane",
+        "Network"
+      ],
+      "secondary": [
+        "Threshold / drift"
+      ],
+      "reading": "Plane/Network reflects the old project archive's current regional placement. Garden/Swamp/Tree/Heaven placement remains unresolved until scene-level recovery supports it."
+    },
+    "roles": [
+      {
+        "date": "2024-11 to 2025-02",
+        "role": "recurring social/network presence",
+        "status": "Chronicle occurrence census",
+        "note": "55 occurrences across more than twenty dated entries; scenes still need reconstruction."
+      },
+      {
+        "date": "old profile layer",
+        "role": "trickster-catalyst / wanderer / skeptic",
+        "status": "project characterization",
+        "note": "Provocation and quiet influence are provisional old-source readings rather than established motives."
+      }
+    ],
+    "witnessed_effects": [
+      "recurring presence across the social archive",
+      "provocation/drift in old project characterization",
+      "possible quiet network influence requiring scene recovery"
+    ],
+    "symbols": [
+      "Network",
+      "Plane",
+      "Drift",
+      "Threshold"
+    ],
+    "repair_path": [
+      "recover dated scenes before moral promotion",
+      "separate recurring presence from inferred motive",
+      "identify whether provocation produced insight, growth, noise or harm in each scene"
+    ],
+    "boundary": "GG is deliberately left morally unresolved. High frequency is evidence of archival importance, not evidence of guilt, virtue, motive or karmic direction."
+  }
 }
