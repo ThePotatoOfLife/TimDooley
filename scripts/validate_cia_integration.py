@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MANIFEST=ROOT/"knowledge/cia/manifest.json"; CABINET=ROOT/"rooms/potatoverse-canon/beings/cia/index.html"
 VIEWER=ROOT/"rooms/potatoverse-canon/beings/cia/file/index.html"; COLLECTIONS=ROOT/"data/house/collections.json"
-ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
+ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
 ROUTE="rooms/potatoverse-canon/beings/cia/"
 def fail(m): print("FAIL:",m); raise SystemExit(1)
 def main():
@@ -40,6 +40,10 @@ def main():
   meaning=cd.get("meaning") or {}
   for key in ["why_this_file_matters","known","interpretive","unknown","relationship_arc","confidence_note"]:
    if not meaning.get(key): fail(f"CIA meaning spine missing {key} for {c.get('id')}")
+ if not CURRENT.is_file(): fail("CIA current desk missing")
+ current=json.loads(CURRENT.read_text(encoding="utf-8"))
+ current_ids={x.get("id") for x in current.get("items",[])}
+ if not {"dim","txt","matthew-mtclassic","mediomu007","tim-dooley"}.issubset(current_ids): fail("CIA current desk missing core current files")
  if not ACTIVITY.is_file(): fail("CIA activity index missing")
  activity=json.loads(ACTIVITY.read_text(encoding="utf-8"))
  if len(activity.get("records",[]))!=len(chars): fail("CIA activity index coverage drift")
