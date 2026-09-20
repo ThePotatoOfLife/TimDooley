@@ -1,8 +1,8 @@
 {
   "id": "recent-commit-materialization-crystallization-257-283",
   "title": "Recent Commit Materialization & Crystallization Ledger — #257 through #283",
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.1.0",
+  "updated": "2026-09-20",
   "status": "binding convergence ledger",
   "purpose": "Merge the Sep 18 build sequence into one durable project state. A commit is not treated as finished merely because code or data exists: its result must be owned, connected, populated enough to be usable, bounded by evidence/status rules, exposed through an appropriate reader or archive surface, and protected by validation or revision rules.",
   "predecessor": "knowledge/research/recent-commit-embodiment-atlas-257-276.json",
@@ -15,7 +15,8 @@
   "definitions": {
     "materialization": "A carved concept becomes a usable project object: it has a canonical owner, concrete artifacts or population, typed interfaces/handoffs and a place in the House.",
     "crystallization": "A materialized object becomes durable project law or a durable bounded research object: invariants, evidence boundaries, public/archive expression, anti-duplication rules, validation and revision paths are explicit.",
-    "completion_boundary": "Crystallized does not mean exhaustively researched. Open population, longitudinal evidence, case growth and falsification work may remain."
+    "completion_boundary": "Crystallized does not mean exhaustively researched. Open population, longitudinal evidence, case growth and falsification work may remain.",
+    "public_materialization": "For a public-facing subject, route existence is insufficient: the reader surface must contain concrete authored or carefully curated substance that teaches the subject without requiring repository archaeology."
   },
   "crystallization_gate": [
     "canonical owner is explicit",
@@ -23,6 +24,7 @@
     "interfaces or handoffs to neighboring systems are explicit",
     "evidence/status boundary is explicit where claims or real entities are involved",
     "reader surface or archive route exists",
+    "reader-facing material is substantively inhabited when the object is meant for public study; navigation or generic projection alone does not satisfy public materialization",
     "anti-duplication and revision path are known",
     "validation or a concrete test protects the result from silent drift"
   ],
@@ -596,5 +598,11 @@
     "attach measurable reproduction/exit/correction variables to community and institutional formation cases",
     "prune or merge low-yield duplicate atlases after their unique information has been absorbed by stronger owners"
   ],
-  "revision_rule": "When a later commit changes one of these crystals, update the canonical owner first, then this ledger, then affected readers/validators. Do not let commit history become a parallel ontology."
+  "revision_rule": "When a later commit changes one of these crystals, update the canonical owner first, then this ledger, then affected readers/validators. Do not let commit history become a parallel ontology.",
+  "substance_first_extension": {
+    "owner": "data/house/substance-first-projection-contract.json",
+    "principle": "Spend the archive on the public page while retaining source truth and relations in canonical owners.",
+    "invisible_binding": "Build-time machine-readable bindings may connect public sections to owners, Rooms, relations and evidence classes without constraining visible rhetoric.",
+    "revision": "Backend changes may trigger review; authored public prose changes deliberately, not by silent regeneration."
+  }
 }
