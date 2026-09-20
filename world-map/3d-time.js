@@ -1,4 +1,7 @@
 import { normalizeTimeState, describeTimeWindow } from './3d-time-policy.js';
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const canonicalUrlState = window.__potatoAtlasUrlState;
+canonicalUrlState.claim('time', ['timeMode','time','time2']);
 
 const CONTRACT_URL='../data/atlas-time-contract.json';
 const NORTH_HISTORY_URL='../data/north-axis-membership-history.json';
@@ -23,15 +26,13 @@ function urlState(){
 }
 function setUrl(input){
   const state=normalizeTimeState(input);
-  const u=new URL(location.href);
-  if(state.mode==='current'){
-    u.searchParams.delete('timeMode');u.searchParams.delete('time');u.searchParams.delete('time2');
-  }else{
-    u.searchParams.set('timeMode',state.mode);
-    state.time?u.searchParams.set('time',state.time):u.searchParams.delete('time');
-    state.mode==='changed_between'&&state.time2?u.searchParams.set('time2',state.time2):u.searchParams.delete('time2');
-  }
-  history.replaceState(null,'',u);
+  canonicalUrlState.patch('time',{
+    set:{
+      timeMode:state.mode==='current'?null:state.mode,
+      time:state.mode==='current'||!state.time?null:state.time,
+      time2:state.mode==='changed_between'&&state.time2?state.time2:null,
+    },
+  });
   return state;
 }
 function exactNorthSnapshot(dateString){
