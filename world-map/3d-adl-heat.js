@@ -57,12 +57,17 @@ function activeFeatures() {
     return yearOk && typeOk;
   });
 }
+function aggregateStateCount(row) {
+  if (!row) return 0;
+  if (selectedYear === 'all' && selectedType === 'all') return Number(row.total) || 0;
+  if (selectedYear !== 'all' && selectedType === 'all') return Number(row.by_year?.[String(selectedYear)]) || 0;
+  if (selectedYear === 'all' && selectedType !== 'all') return Number(row.by_type_token?.[selectedType]) || 0;
+  return Number(row.by_year_type_token?.[String(selectedYear)]?.[selectedType]) || 0;
+}
 function recomputeStateValues() {
   stateValues = new Map();
-  for (const feature of filtered.features || []) {
-    const id = feature?.properties?.subdivision_id;
-    if (!id) continue;
-    stateValues.set(id, (stateValues.get(id) || 0) + 1);
+  for (const [id, row] of Object.entries(summary?.states || {})) {
+    stateValues.set(id, aggregateStateCount(row));
   }
 }
 function maxCount() {
@@ -225,18 +230,28 @@ function renderIncident(feature) {
       <button type="button" data-adl-state>Open ${esc(p.state_name || p.state || 'state')}</button>
       <button type="button" data-adl-source>Dataset methodology</button>
     </div>`;
-  panel.querySelector('[data-adl-state]')?.addEventListener('click', () => renderStateInspector(p.subdivision_id));
+  panel.querySelector('[data-adl-state]')?.addEventListener('click', () => openStateEvidence(p.subdivision_id));
   panel.querySelector('[data-adl-source]')?.addEventListener('click', renderDatasetInspector);
   window.__potatoAtlasPanelLifecycle?.publish?.();
 }
 function topEntries(obj = {}, limit = 6) {
   return Object.entries(obj).sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0])).slice(0,limit);
 }
+async function openStateEvidence(id, options={}) {
+  if (!id) return false;
+  if (window.__potatoAtlasSubdivisions?.select) {
+    try { await window.__potatoAtlasSubdivisions.select(id, { fit:options.fit !== false }); }
+    catch (error) { console.warn(`ADL state selection unavailable: ${id}`, error); }
+  }
+  renderStateInspector(id);
+  return true;
+}
 function renderStateInspector(id) {
   const row = summary?.states?.[id] || null;
   const panel = document.getElementById('panel');
   if (!panel || !row) return;
   const visible = filtered.features.filter(f => f?.properties?.subdivision_id === id);
+  const filteredCount = aggregateStateCount(row);
   const byType = {};
   const byYear = {};
   for (const feature of visible) {
@@ -247,9 +262,9 @@ function renderStateInspector(id) {
   panel.innerHTML = `
     <div class="eyebrow">Subdivision evidence · ADL H.E.A.T.</div>
     <h1>${esc(row.name)}</h1>
-    <p class="muted">${fmt(visible.length)} records under the active filters · ${fmt(row.total)} in the full committed snapshot</p>
+    <p class="muted">${fmt(filteredCount)} records under the active filters · ${fmt(row.total)} in the full committed snapshot</p>
     <div class="grid">
-      <div class="metric"><span>Filtered records</span><b>${fmt(visible.length)}</b></div>
+      <div class="metric"><span>Filtered records</span><b>${fmt(filteredCount)}</b></div>
       <div class="metric"><span>Snapshot total</span><b>${fmt(row.total)}</b></div>
     </div>
     <h2>Incident-type fields</h2>
@@ -295,7 +310,7 @@ function installLayers() {
     interaction.register('adl-heat-states', {
       layers:[STATE_LAYER], objectType:'subdivision-evidence', clickPriority:65, hoverPriority:20,
       enabled:()=>enabled,
-      onClick:(event, feature)=>renderStateInspector(String(feature?.properties?.id || feature?.id || ''))
+      onClick:(event, feature)=>openStateEvidence(String(feature?.properties?.id || feature?.id || ''), { fit:false })
     });
   }
   setLayerVisibility(false);
