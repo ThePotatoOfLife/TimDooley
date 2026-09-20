@@ -173,6 +173,7 @@ function bindAdlHeatLayerControl() {
   const button = document.getElementById('adlHeatLayer');
   if (!button || button.dataset.bound === 'true') return;
   button.dataset.bound = 'true';
+  button.setAttribute('aria-pressed', 'false');
   button.addEventListener('click', async () => {
     button.disabled = true;
     try {
@@ -187,6 +188,13 @@ function bindAdlHeatLayerControl() {
 }
 queueMicrotask(bindAdlHeatLayerControl);
 
+function syncMudBelowLayerControl() {
+  const button = document.getElementById('mudBelowLayer');
+  if (!button) return;
+  const active = window.__potatoAtlasSpatialOverlays?.isActive?.('project.below.us-cases') === true;
+  button.classList.toggle('active', active);
+  button.setAttribute('aria-pressed', active ? 'true' : 'false');
+}
 function bindMudBelowLayerControl() {
   const button = document.getElementById('mudBelowLayer');
   if (!button || button.dataset.bound === 'true') return;
@@ -196,6 +204,7 @@ function bindMudBelowLayerControl() {
     try {
       await window.__potatoAtlasLoadModule?.('Spatial Overlays', './3d-spatial-overlays.js');
       await window.__potatoAtlasSpatialOverlays?.toggle?.('project.below.us-cases');
+      syncMudBelowLayerControl();
     } catch (error) {
       console.warn('Below U.S. spatial overlay unavailable:', error);
     } finally {
@@ -204,6 +213,7 @@ function bindMudBelowLayerControl() {
   });
 }
 queueMicrotask(bindMudBelowLayerControl);
+window.addEventListener('potato-atlas-spatial-overlay-change', syncMudBelowLayerControl);
 
 function hydrateEvidenceLayersFromUrl() {
   const params = new URL(location.href).searchParams;
