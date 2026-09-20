@@ -9,8 +9,8 @@ const motion = window.__potatoAtlasMotion;
 if (!window.__potatoAtlasGeo) await import('./3d-geo-kernel.js');
 const geo = window.__potatoAtlasGeo;
 if (!geo) throw new Error('Atlas subdivisions require the shared geospatial kernel.');
-const interaction = window.__potatoAtlasInteraction;
-const inspector = window.__potatoAtlasInspector;
+function interactionRouter() { return window.__potatoAtlasInteraction; }
+function inspectorRouter() { return window.__potatoAtlasInspector; }
 
 const INDEX_URL = '../data/world-subdivisions/index.json';
 const USA_PARTITION_FALLBACK = 'USA.geo.json';
@@ -33,7 +33,7 @@ let selectedId = new URL(location.href).searchParams.get('subdivision') || null;
 // Camera intent from a deep link is one-shot. Persistent selection must not be
 // replayed on every moveend or fitBounds can recurse forever.
 let pendingDeepLinkId = selectedId;
-let eventsBound = false;
+let subdivisionFallbackHandlers = null;
 let useClock = 0;
 let activePartitions = [];
 const forcedPartitions = new Set();
@@ -152,6 +152,7 @@ function renderInspector(feature) {
 }
 function openInspector(feature) {
   if (!feature) return false;
+  const inspector = inspectorRouter();
   const p = feature.properties || {};
   const code = countryCode(p);
   if (!inspector?.open || !code) {
@@ -341,9 +342,34 @@ async function handleSharedLayerClick(event) {
     console.warn(`Subdivision selection unavailable: ${id}`, error);
   }
 }
-function bindSharedLayerEvents() {
-  if (eventsBound) return;
+function bindSubdivisionFallback() {
+  if (subdivisionFallbackHandlers) return false;
+  // Degraded/direct-module fallback for tests and partial boots. Normal app boots
+  // preload the Interaction Router, and readiness promotes this temporary path.
+  const enter = () => { map.getCanvas().style.cursor = 'pointer'; };
+  const leave = () => { map.getCanvas().style.cursor = ''; };
+  const click = event => {
+    if (event?.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
+    return handleSharedLayerClick(event);
+  };
+  map.on('mouseenter', HIT_ID, enter);
+  map.on('mouseleave', HIT_ID, leave);
+  map.on('click', HIT_ID, click);
+  subdivisionFallbackHandlers = { enter, leave, click };
+  return true;
+}
+function unbindSubdivisionFallback() {
+  if (!subdivisionFallbackHandlers) return false;
+  map.off('mouseenter', HIT_ID, subdivisionFallbackHandlers.enter);
+  map.off('mouseleave', HIT_ID, subdivisionFallbackHandlers.leave);
+  map.off('click', HIT_ID, subdivisionFallbackHandlers.click);
+  subdivisionFallbackHandlers = null;
+  map.getCanvas().style.cursor = '';
+  return true;
+}
+function bindSharedLayerEvents(interaction = interactionRouter()) {
   if (interaction?.register) {
+    unbindSubdivisionFallback();
     interaction.register('subdivisions', {
       layers:[HIT_ID],
       objectType:'subdivision',
@@ -351,18 +377,14 @@ function bindSharedLayerEvents() {
       hoverPriority:60,
       onClick:(event, feature) => handleSharedLayerClick({ ...event, features:[feature] }),
     });
-  } else {
-    // Degraded/direct-module fallback for tests and partial boots. Normal app boots
-    // preload the Interaction Router, so production click ownership is centralized.
-    map.on('mouseenter', HIT_ID, () => { map.getCanvas().style.cursor = 'pointer'; });
-    map.on('mouseleave', HIT_ID, () => { map.getCanvas().style.cursor = ''; });
-    map.on('click', HIT_ID, event => {
-      if (event?.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
-      return handleSharedLayerClick(event);
-    });
+    return true;
   }
-  eventsBound = true;
+  bindSubdivisionFallback();
+  return false;
 }
+window.addEventListener('potato-atlas-interaction-ready', event => {
+  if (map.getLayer(HIT_ID)) bindSharedLayerEvents(event?.detail?.interaction || interactionRouter());
+});
 async function scaleRuntime() {
   const scale = await window.__potatoAtlasScale?.ready;
   if (!scale?.threshold || !scale?.bandThreshold) throw new Error('World Map Scale runtime unavailable to subdivisions.');

@@ -4,7 +4,7 @@
 const map = window.__potatoAtlasMap;
 const runtime = window.__potatoAtlasDataRuntime;
 const selection = window.__potatoAtlasSelection;
-const interaction = window.__potatoAtlasInteraction;
+function interactionRouter() { return window.__potatoAtlasInteraction; }
 if (!map || !runtime || !selection) throw new Error('Infrastructure context requires map, runtime and selection APIs.');
 await runtime.ready;
 
@@ -193,7 +193,34 @@ async function openInfrastructureFeature(_event, feature) {
   if (asset) await showPopup(asset, feature.geometry.coordinates);
 }
 
-if (interaction?.register) {
+let infrastructureFallbackHandlers = null;
+function bindInfrastructureFallback() {
+  if (infrastructureFallbackHandlers) return false;
+  // Degraded/direct-module fallback only. It is removed when Router readiness arrives.
+  const enter = () => { map.getCanvas().style.cursor = 'pointer'; };
+  const leave = () => { map.getCanvas().style.cursor = ''; };
+  const click = event => openInfrastructureFeature(event, event.features?.[0]);
+  map.on('mouseenter', POINT_LAYER, enter);
+  map.on('mouseleave', POINT_LAYER, leave);
+  map.on('click', POINT_LAYER, click);
+  infrastructureFallbackHandlers = { enter, leave, click };
+  return true;
+}
+function unbindInfrastructureFallback() {
+  if (!infrastructureFallbackHandlers) return false;
+  map.off('mouseenter', POINT_LAYER, infrastructureFallbackHandlers.enter);
+  map.off('mouseleave', POINT_LAYER, infrastructureFallbackHandlers.leave);
+  map.off('click', POINT_LAYER, infrastructureFallbackHandlers.click);
+  infrastructureFallbackHandlers = null;
+  map.getCanvas().style.cursor = '';
+  return true;
+}
+function syncInfrastructureInteraction(interaction = interactionRouter()) {
+  if (!interaction?.register) {
+    bindInfrastructureFallback();
+    return false;
+  }
+  unbindInfrastructureFallback();
   interaction.register('infrastructure-context', {
     layers:[POINT_LAYER],
     objectType:'infrastructure',
@@ -202,12 +229,12 @@ if (interaction?.register) {
     cursor:'pointer',
     onClick:openInfrastructureFeature,
   });
-} else {
-  // Degraded/direct-module fallback only. Normal app boots are Router-owned.
-  map.on('mouseenter', POINT_LAYER, () => { map.getCanvas().style.cursor = 'pointer'; });
-  map.on('mouseleave', POINT_LAYER, () => { map.getCanvas().style.cursor = ''; });
-  map.on('click', POINT_LAYER, event => openInfrastructureFeature(event, event.features?.[0]));
+  return true;
 }
+syncInfrastructureInteraction();
+window.addEventListener('potato-atlas-interaction-ready', event => {
+  syncInfrastructureInteraction(event?.detail?.interaction || interactionRouter());
+});
 
 window.addEventListener('potato-atlas-country-card-rendered', event => {
   const code = String(event?.detail?.code || currentEntityCode()).toUpperCase();

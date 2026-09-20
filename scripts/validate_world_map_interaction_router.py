@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ROUTER = ROOT / "world-map" / "3d-interaction-router.js"
 LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
+PLACES = ROOT / "world-map" / "3d-places.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 APP = ROOT / "world-map" / "3d-app.js"
 HANDOFF = ROOT / "world-map" / "3d-core-interaction-handoff.js"
@@ -25,7 +26,7 @@ COMPAT_TEST = ROOT / "scripts" / "test_world_map_interaction_compatibility.mjs"
 
 def main() -> int:
     errors: list[str] = []
-    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, BOOTSTRAP, APP, HANDOFF, HOVER, COUNTRY, SPATIAL, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS, TEST, COMPAT_TEST):
+    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, PLACES, BOOTSTRAP, APP, HANDOFF, HOVER, COUNTRY, SPATIAL, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS, TEST, COMPAT_TEST):
         if not path.exists():
             errors.append(f"missing interaction-router file: {path.relative_to(ROOT)}")
     if errors:
@@ -37,6 +38,7 @@ def main() -> int:
     router = ROUTER.read_text(encoding="utf-8", errors="replace")
     lifecycle = LIFECYCLE.read_text(encoding="utf-8", errors="replace")
     subdivisions = SUBDIVISIONS.read_text(encoding="utf-8", errors="replace")
+    places = PLACES.read_text(encoding="utf-8", errors="replace")
     bootstrap = BOOTSTRAP.read_text(encoding="utf-8", errors="replace")
     app = APP.read_text(encoding="utf-8", errors="replace")
     handoff = HANDOFF.read_text(encoding="utf-8", errors="replace")
@@ -66,17 +68,34 @@ def main() -> int:
         errors.append("panel lifecycle must retain the shared Interaction Router preload")
 
     for token in (
-        "const interaction = window.__potatoAtlasInteraction",
-        "if (interaction?.register)",
+        "function interactionRouter()",
+        "function bindSubdivisionFallback()",
+        "function unbindSubdivisionFallback()",
         "interaction.register('subdivisions'",
         "objectType:'subdivision'",
         "clickPriority:60",
         "hoverPriority:60",
+        "potato-atlas-interaction-ready",
+        "map.off('click', HIT_ID, subdivisionFallbackHandlers.click)",
+        "function inspectorRouter()",
+        "const inspector = inspectorRouter();",
     ):
         if token not in subdivisions:
-            errors.append(f"subdivision interaction migration missing marker: {token}")
+            errors.append(f"subdivision interaction promotion missing marker: {token}")
     if "Degraded/direct-module fallback" not in subdivisions:
         errors.append("subdivision legacy listener must be explicitly documented as degraded fallback")
+
+    for token in (
+        "function interactionRouter()",
+        "function unbindFallbackLayerEvents()",
+        "interaction.register('places'",
+        "potato-atlas-interaction-ready",
+        "map.off('click', layerId, handlers.click)",
+        "function inspectorRouter()",
+        "const inspector = inspectorRouter();",
+    ):
+        if token not in places:
+            errors.append(f"Places interaction promotion missing marker: {token}")
 
     capture_index = bootstrap.find("await import(versionedModule('./3d-core-interaction-handoff.js'))")
     hover_index = bootstrap.find("await import(versionedModule('./3d-hover.js'))")
@@ -138,23 +157,33 @@ def main() -> int:
             errors.append(f"hover/capital router migration missing marker: {token}")
 
     for token in (
-        "const interaction = window.__potatoAtlasInteraction",
+        "function interactionRouter()",
+        "function bindGatewayFallback()",
+        "function unbindGatewayFallback()",
+        "function syncGatewayInteraction(",
         "interaction.register('system-gateways'",
         "objectType:'gateway'",
         "clickPriority:75",
+        "potato-atlas-interaction-ready",
+        "map.off('click', POINT_LAYER, gatewayFallbackHandlers.click)",
         "Degraded/direct-module fallback only",
     ):
         if token not in gateways:
-            errors.append(f"Gateway interaction migration missing marker: {token}")
+            errors.append(f"Gateway interaction promotion missing marker: {token}")
     for token in (
-        "const interaction = window.__potatoAtlasInteraction",
+        "function interactionRouter()",
+        "function bindInfrastructureFallback()",
+        "function unbindInfrastructureFallback()",
+        "function syncInfrastructureInteraction(",
         "interaction.register('infrastructure-context'",
         "objectType:'infrastructure'",
         "clickPriority:74",
+        "potato-atlas-interaction-ready",
+        "map.off('click', POINT_LAYER, infrastructureFallbackHandlers.click)",
         "Degraded/direct-module fallback only",
     ):
         if token not in infrastructure:
-            errors.append(f"Infrastructure interaction migration missing marker: {token}")
+            errors.append(f"Infrastructure interaction promotion missing marker: {token}")
     if "map.getLayer('atlas-context-gateways-points')) map.on('click'" in impact_actions:
         errors.append("Impact Actions must not own a second direct Gateway map click")
     if "potato-atlas-gateway-change" not in impact_actions or "injectGatewayAction(id)" not in impact_actions:
@@ -164,7 +193,7 @@ def main() -> int:
     if not node:
         errors.append("node executable unavailable; cannot run interaction-router regression")
     else:
-        for path in (ROUTER, SUBDIVISIONS, APP, HANDOFF, HOVER, COUNTRY, SPATIAL, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS):
+        for path in (ROUTER, SUBDIVISIONS, PLACES, APP, HANDOFF, HOVER, COUNTRY, SPATIAL, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS):
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
@@ -180,7 +209,7 @@ def main() -> int:
     print("- disabled registrations cannot win")
     print("- pre-core capture hands direct click listeners to the shared router")
     print("- canonical 3d-app renderer remains in-place and unchanged")
-    print("- country, spatial overlay, capital, Gateway and Infrastructure interaction owned by the router on normal boots")
+    print("- country, spatial overlay, capital, Places, subdivisions, Gateway and Infrastructure interaction owned by the router on normal boots")
     print("- degraded direct-handler fallbacks are removable and promote to Router ownership when readiness arrives")
     print(f"Errors: {len(errors)}")
     if errors:

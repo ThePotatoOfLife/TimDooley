@@ -3,8 +3,8 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas Places require the core map.');
-const interaction = window.__potatoAtlasInteraction;
-const inspector = window.__potatoAtlasInspector;
+function interactionRouter() { return window.__potatoAtlasInteraction; }
+function inspectorRouter() { return window.__potatoAtlasInspector; }
 if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
 const motion = window.__potatoAtlasMotion;
 
@@ -238,6 +238,7 @@ function countryBaseline(code) {
   };
 }
 function placeParent(code) {
+  const inspector = inspectorRouter();
   const current = inspector?.current?.();
   if (current?.type === 'subdivision') return { type:'subdivision', id:current.id };
   if (current?.type === 'place' && current.parent?.type === 'subdivision') return { ...current.parent };
@@ -269,6 +270,7 @@ function renderInspector(feature) {
     const code = String(p.country_iso3 || '').toUpperCase();
     if (!code) return;
     clear({ restore:false });
+    const inspector = inspectorRouter();
     if (inspector?.reset) inspector.reset(countryBaseline(code));
     else if (window.goCountry) window.goCountry(code);
   });
@@ -277,6 +279,7 @@ function renderInspector(feature) {
 }
 function openInspector(feature) {
   if (!feature) return false;
+  const inspector = inspectorRouter();
   const p = feature.properties || {};
   const code = String(p.country_iso3 || '').toUpperCase();
   if (!inspector?.open || !code) {
@@ -377,8 +380,19 @@ async function installLayers() {
   bindLayerEvents();
 }
 
-function syncInteractionRegistration() {
+const fallbackPlaceHandlers = new Map();
+function unbindFallbackLayerEvents() {
+  for (const [layerId, handlers] of fallbackPlaceHandlers) {
+    map.off('mouseenter', layerId, handlers.enter);
+    map.off('mouseleave', layerId, handlers.leave);
+    map.off('click', layerId, handlers.click);
+  }
+  fallbackPlaceHandlers.clear();
+  map.getCanvas().style.cursor = '';
+}
+function syncInteractionRegistration(interaction = interactionRouter()) {
   if (!interaction?.register) return false;
+  unbindFallbackLayerEvents();
   interaction.register('places', {
     layers:[MAJOR_POINTS, DETAIL_POINTS],
     objectType:'place',
@@ -396,24 +410,31 @@ function syncInteractionRegistration() {
 function bindFallbackLayerEvents() {
   // Degraded/direct-module fallback when the shared Interaction Router is unavailable.
   for (const layerId of [MAJOR_POINTS, DETAIL_POINTS]) {
-    map.on('mouseenter', layerId, () => { map.getCanvas().style.cursor = 'pointer'; });
-    map.on('mouseleave', layerId, () => { map.getCanvas().style.cursor = ''; });
-    map.on('click', layerId, event => {
+    if (fallbackPlaceHandlers.has(layerId)) continue;
+    const enter = () => { map.getCanvas().style.cursor = 'pointer'; };
+    const leave = () => { map.getCanvas().style.cursor = ''; };
+    const click = event => {
       const feature = event.features?.[0];
       if (!feature) return;
       if (event.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
       const id = feature.properties?.id;
       if (id) focus(id, {feature, fit:false});
-    });
+    };
+    map.on('mouseenter', layerId, enter);
+    map.on('mouseleave', layerId, leave);
+    map.on('click', layerId, click);
+    fallbackPlaceHandlers.set(layerId, { enter, leave, click });
   }
+  return true;
 }
-let eventsBound = false;
-function bindLayerEvents() {
-  if (eventsBound) return;
-  eventsBound = true;
-  if (syncInteractionRegistration()) return;
+function bindLayerEvents(interaction = interactionRouter()) {
+  if (syncInteractionRegistration(interaction)) return true;
   bindFallbackLayerEvents();
+  return false;
 }
+window.addEventListener('potato-atlas-interaction-ready', event => {
+  bindLayerEvents(event?.detail?.interaction || interactionRouter());
+});
 
 async function loadIndex() {
   if (indexPayload) return indexPayload;

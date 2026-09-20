@@ -89,8 +89,9 @@
 **Scope:** physical routes vs relationship chords vs symbolic routes; globe/dateline behavior; selection/hover priority.
 
 ### WM-015 · Legacy interaction fallback scenarios under-tested — P2
-**Status:** open.  
-**Next:** explicit degraded-boot test matrix: no Router, no Inspector, delayed optional modules, style reload during interaction.
+**Status:** partially fixed (2026-09-20).  
+**Completed:** late-Router promotion now converges Gateways, Infrastructure, Places and Subdivisions from removable direct fallbacks into canonical Router ownership; Places/Subdivisions also resolve the Inspector dynamically so late Inspector availability restores typed navigation. Validators require dynamic lookup, explicit unbind and readiness promotion.  
+**Remaining matrix:** Router replacement/reload, delayed specialist modules after a style generation, and style reload during active interaction.
 
 ### WM-016 · State/subdivision national-context readability — P2
 **Status:** partially fixed.  
