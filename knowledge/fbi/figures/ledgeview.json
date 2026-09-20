@@ -1,7 +1,7 @@
 {
   "id": "ledgeview",
   "display_name": "Ledgeview",
-  "bureau": "FBI — Figures, Bonds & Incidents",
+  "bureau": "CIA — Characters, Incidents & Associations",
   "entity_class": "person-or-handle",
   "aliases": [],
   "archive_status": "historical-current-unknown",
@@ -157,5 +157,63 @@
     "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
     "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
     "Add relationship edges only when a scene/source supports them."
-  ]
+  ],
+  "tim_witness": {
+    "frame": "Tim/project witness",
+    "character_reading": "Tim/project material places Ledgeview as witness, observer, chronicler and bard: someone who reflects, questions and adds cultural/aesthetic framing rather than primarily driving conflict.",
+    "fruit": {
+      "direction": "positive-leaning / reflective",
+      "labels": [
+        "reflection",
+        "memory",
+        "questions",
+        "aesthetic contribution",
+        "equilibrium"
+      ],
+      "reading": "The visible fruit is mostly interpretive and connective: making sense, remembering, questioning and adding perspective."
+    },
+    "karma": {
+      "direction": "positive-leaning / unquantified",
+      "quantified": false,
+      "reading": "No explicit karma balance is recovered. Tim's framework would place reflective truth-seeking, memory and constructive contribution on the generative side when they reduce confusion rather than reproduce noise."
+    },
+    "placement": {
+      "primary": [
+        "Archive",
+        "Saloon",
+        "Garden"
+      ],
+      "secondary": [
+        "Witness position near the Plane"
+      ],
+      "reading": "Ledgeview is best placed near Archive/Garden interfaces: witness-memory and reflective social participation."
+    },
+    "roles": [
+      {
+        "date": "late 2024",
+        "role": "witness-observer / bard",
+        "status": "Chronicle/project archetype",
+        "note": "Recurring philosophical, poetic, culinary, music and design contributions."
+      }
+    ],
+    "witnessed_effects": [
+      "asks questions",
+      "preserves memory",
+      "adds reflective distance",
+      "contributes design/music/cultural texture"
+    ],
+    "symbols": [
+      "Witness",
+      "Archive",
+      "Bard",
+      "Mirror",
+      "Garden",
+      "Saloon"
+    ],
+    "repair_path": [
+      "keep witnessing tied to truth/provenance",
+      "turn observation into useful memory rather than passive spectatorship"
+    ],
+    "boundary": "Observer/bard placement is Tim/project interpretation of repeated scenes, not a fixed personality diagnosis."
+  }
 }
