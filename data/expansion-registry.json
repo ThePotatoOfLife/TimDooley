@@ -1,1 +1,141 @@
-{"version":"1.1.0","updated":"2026-09-07","purpose":"Registry for additive research waves. Expansion files are deep research layers; promotion into the canonical node registry is a separate operation.","canonical_invariants":["data/tree.json order is immutable","data/frame.json defines evidence classes","missing canonical records must fail loudly","metaphor is not evidence"],"blueprint_layer":"data/blueprint-registry.json","waves":[{"id":"wave-010","file":"data/expansions/sector-depth-round-010.json","status":"verified-present","domain":"European sectors"},{"id":"wave-011","file":"data/expansions/religious-foundations-wave-011.json","status":"verified-present","domain":"comparative religion"},{"id":"qliphoth-research","file":"docs/QLIPHOTH-TREE-OF-STRIFE.md","status":"verified-present","domain":"Kabbalah, Qliphoth, Tree of Strife"},{"id":"wave-013","file":"data/expansions/trajectory-topology-standard-model-spin-wave-013.json","status":"verified-present","domain":"trajectory, topology, Standard Model, spin"},{"id":"wave-014","file":"data/expansions/angel-demon-topology-wave-014.json","status":"verified-present","domain":"angelology, demonology, intermediary topology"},{"id":"physics-deep-dive","file":"docs/TRAJECTORY-TOPOLOGY-STANDARD-MODEL-SPIN-DEEP-DIVE.md","status":"verified-present","domain":"physics synthesis"},{"id":"wave-015","file":"data/expansions/standard-model-representation-matrix-wave-015.json","status":"verified-present","domain":"exact gauge representations and anomaly checks"},{"id":"wave-019","file":"data/expansions/christianity-bible-denominations-wave-019.json","status":"verified-present","domain":"Christianity, Bible, denominations, theology, practice, demographics"},{"id":"bible-source-web","file":"data/sources/bible-world-english-bible.json","status":"verified-present","domain":"public-domain World English Bible source material"},{"id":"wave-020","file":"data/expansions/worldview-politics-culture-movement-field-wave-020.json","status":"verified-present","domain":"worldviews, religion, politics, culture, subculture, movements and multi-layer field architecture"},{"id":"wave-021","file":"data/expansions/global-field-deep-carving-wave-021.json","status":"verified-present","domain":"global ontology, systems, evidence, temporal/spatial layers, cross-domain couplings and real-data anchors"},{"id":"carving-round-022","file":"data/expansions/carving-round-022.json","status":"verified-present","domain":"resolution carving: country, company, energy, infrastructure, religion, politics, culture, science, finance, history, information"},{"id":"blueprint-seed-carving-wave-023","file":"data/expansions/blueprint-seed-carving-wave-023.json","status":"verified-present","domain":"concrete records populated beneath reusable blueprints"}],"promotion_rule":"A concept may first live in an expansion. Promote it into data/nodes.json only after its definition, evidence class, source status and graph role are clear.","relationship_rule":"Expansion relationships must distinguish historical, observed, mathematical, comparative and project-interpretive edges.","validation_targets":["reference integrity","duplicate IDs","orphaned expansion relationships","source coverage","epistemic-status coverage","canonical-child coverage","temporal coverage","spatial coverage","cross-domain coupling coverage","blueprint inheritance coverage"]}
+{
+  "version": "1.2.0",
+  "updated": "2026-09-20",
+  "purpose": "Registry for additive research waves. Expansion files are deep research layers; promotion into the canonical node registry is a separate operation.",
+  "canonical_invariants": [
+    "data/tree.json order is immutable",
+    "data/frame.json defines evidence classes",
+    "missing canonical records must fail loudly",
+    "metaphor is not evidence"
+  ],
+  "blueprint_layer": "data/blueprint-registry.json",
+  "waves": [
+    {
+      "id": "wave-010",
+      "file": "data/expansions/sector-depth-round-010.json",
+      "status": "verified-present",
+      "domain": "European sectors"
+    },
+    {
+      "id": "wave-011",
+      "file": "data/expansions/religious-foundations-wave-011.json",
+      "status": "verified-present",
+      "domain": "comparative religion"
+    },
+    {
+      "id": "qliphoth-research",
+      "file": "docs/QLIPHOTH-TREE-OF-STRIFE.md",
+      "status": "verified-present",
+      "domain": "Kabbalah, Qliphoth, Tree of Strife"
+    },
+    {
+      "id": "wave-013",
+      "file": "data/expansions/trajectory-topology-standard-model-spin-wave-013.json",
+      "status": "verified-present",
+      "domain": "trajectory, topology, Standard Model, spin"
+    },
+    {
+      "id": "wave-014",
+      "file": "data/expansions/angel-demon-topology-wave-014.json",
+      "status": "verified-present",
+      "domain": "angelology, demonology, intermediary topology"
+    },
+    {
+      "id": "physics-deep-dive",
+      "file": "docs/TRAJECTORY-TOPOLOGY-STANDARD-MODEL-SPIN-DEEP-DIVE.md",
+      "status": "verified-present",
+      "domain": "physics synthesis"
+    },
+    {
+      "id": "wave-015",
+      "file": "data/expansions/standard-model-representation-matrix-wave-015.json",
+      "status": "verified-present",
+      "domain": "exact gauge representations and anomaly checks"
+    },
+    {
+      "id": "wave-019",
+      "file": "data/expansions/christianity-bible-denominations-wave-019.json",
+      "status": "verified-present",
+      "domain": "Christianity, Bible, denominations, theology, practice, demographics"
+    },
+    {
+      "id": "bible-source-web",
+      "file": "data/sources/bible-world-english-bible.json",
+      "status": "verified-present",
+      "domain": "public-domain World English Bible source material"
+    },
+    {
+      "id": "wave-020",
+      "file": "data/expansions/worldview-politics-culture-movement-field-wave-020.json",
+      "status": "verified-present",
+      "domain": "worldviews, religion, politics, culture, subculture, movements and multi-layer field architecture"
+    },
+    {
+      "id": "wave-021",
+      "file": "data/expansions/global-field-deep-carving-wave-021.json",
+      "status": "verified-present",
+      "domain": "global ontology, systems, evidence, temporal/spatial layers, cross-domain couplings and real-data anchors"
+    },
+    {
+      "id": "carving-round-022",
+      "file": "data/expansions/carving-round-022.json",
+      "status": "verified-present",
+      "domain": "resolution carving: country, company, energy, infrastructure, religion, politics, culture, science, finance, history, information"
+    },
+    {
+      "id": "blueprint-seed-carving-wave-023",
+      "file": "data/expansions/blueprint-seed-carving-wave-023.json",
+      "status": "verified-present",
+      "domain": "concrete records populated beneath reusable blueprints"
+    },
+    {
+      "id": "wave-009-seed",
+      "file": "data/expansions/wave-009.json",
+      "status": "superseded-seed-retained",
+      "domain": "early World/Plane node expansion",
+      "disposition": "Historical expansion seed. No current direct references found; retain until canonical-node parity/archive migration is verified."
+    },
+    {
+      "id": "wave-009-lexicon",
+      "file": "data/expansions/lexicon-wave-009.json",
+      "status": "migration-candidate",
+      "domain": "aliases and discovery vocabulary",
+      "disposition": "Useful alias vocabulary, but long-term ownership should move to canonical discovery/alias registries rather than remain an expansion wave."
+    },
+    {
+      "id": "wave-012",
+      "file": "data/expansions/angels-demons-trajectory-topology-spin-wave-012.json",
+      "status": "active-referenced-research",
+      "domain": "angelology, demonology, trajectory, topology, Standard Model and spin",
+      "disposition": "Retain as research source; current Science records still cite this wave."
+    },
+    {
+      "id": "wave-018",
+      "file": "data/expansions/cross-domain-depth-wave-018.json",
+      "status": "research-reservoir",
+      "domain": "cross-domain information, intelligence, finance, law, infrastructure and world-system depth",
+      "disposition": "Broad research reservoir; promote durable domain-specific material into canonical owners before any archive/prune decision."
+    }
+  ],
+  "promotion_rule": "A concept may first live in an expansion. Promote it into data/nodes.json only after its definition, evidence class, source status and graph role are clear.",
+  "relationship_rule": "Expansion relationships must distinguish historical, observed, mathematical, comparative and project-interpretive edges.",
+  "validation_targets": [
+    "reference integrity",
+    "duplicate IDs",
+    "orphaned expansion relationships",
+    "source coverage",
+    "epistemic-status coverage",
+    "canonical-child coverage",
+    "temporal coverage",
+    "spatial coverage",
+    "cross-domain coupling coverage",
+    "blueprint inheritance coverage"
+  ],
+  "maintenance_rule": "Every file under data/expansions/ must appear here or be explicitly excluded by path policy. Status must distinguish active referenced research, research reservoir, migration candidate, superseded seed and promoted/archived material; filename age alone is not a deletion reason.",
+  "directory_inventory": {
+    "path": "data/expansions/",
+    "json_file_count": 14,
+    "registered_json_file_count": 14,
+    "as_of": "2026-09-20"
+  }
+}
