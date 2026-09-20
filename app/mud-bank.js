@@ -7,7 +7,10 @@ function exactDate(s){return /^\d{4}-\d{2}-\d{2}$/.test(String(s||''))?new Date(
 function money(n){return '$'+Number(n||0).toLocaleString(undefined,{minimumFractionDigits:4,maximumFractionDigits:4})}
 function eventAdjustment(entries){
  const weights=contract?.event_weights||{};let total=0,credits=0,debits=0,repairs=0;
- for(const e of entries||[]){const w=weights[e.type];if(typeof w==='number'){total+=w;if(w>0)credits++;if(w<0)debits++;if(e.type==='repair-attempt')repairs++;}}
+ for(const e of entries||[]){
+  const explicit=Number(e.project_adjustment_susd),fallback=weights[e.type],w=Number.isFinite(explicit)?explicit:fallback;
+  if(typeof w==='number'&&Number.isFinite(w)){total+=w;if(w>0)credits++;if(w<0)debits++;if(e.type==='repair-attempt')repairs++;}
+ }
  return{total,credits,debits,repairs};
 }
 function welfare(start){
