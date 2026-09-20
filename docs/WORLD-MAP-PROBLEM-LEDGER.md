@@ -252,11 +252,11 @@
 
 
 ### WM-044 · Published quality audit is stale against current main — P2
-**Status:** verified open governance defect (2026-09-21).  
+**Status:** fixed on branch `world-map-audit-backlog-20260921`; pending exact-head CI.  
 **Evidence:** the 2026-09-20 audit still reports decentralized URL ownership, Inspector bypass, raw Motion bypass, fragmented provider budgeting and live Progressive/Selection/Lens compatibility even though those areas were subsequently migrated or retired.  
 **Risk:** engineers can spend time “fixing” already-resolved defects while real current gaps remain under-described.  
-**TODO:** publish a current audit snapshot from the same commit as the ledger, mark superseded findings explicitly, and add an audit date/base SHA.  
-**Completion:** audit, ledger and roadmap agree on current ownership and no high-severity finding describes code already removed from main.
+**Resolution:** published `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-21.md` with base-main SHA and current ownership findings; the 2026-09-20 audit is explicitly marked superseded while remaining available as historical diagnosis.  
+**Completion guard:** audit, ledger and roadmap must agree on current ownership and no high-severity current audit finding may describe code already removed from main.
 
 ### WM-045 · Dormant Fields / Networks compatibility modules remain in source — P2
 **Status:** verified retirement candidate (2026-09-21), not yet safe to delete.  
