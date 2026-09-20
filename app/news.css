@@ -12,7 +12,17 @@
 .news-corridors{display:flex;gap:7px 13px;flex-wrap:wrap;margin-top:15px}
 .news-corridors a{color:var(--site-muted);font-size:10px;text-decoration:none;border-bottom:1px solid #394138}
 .news-corridors a:hover{color:var(--site-green)}
-.news-console{position:sticky;top:7px;z-index:20;border:1px solid var(--site-line);border-radius:15px;background:rgba(9,12,9,.95);backdrop-filter:blur(15px);padding:12px;margin:0 0 11px;box-shadow:0 12px 28px rgba(0,0,0,.17)}
+.news-filter-drawer{border:1px solid var(--site-line);border-radius:14px;background:var(--site-panel);margin:0 0 14px;overflow:hidden}
+.news-filter-drawer>summary{list-style:none;display:flex;justify-content:space-between;gap:18px;align-items:center;padding:11px 13px;cursor:pointer}
+.news-filter-drawer>summary::-webkit-details-marker{display:none}
+.news-filter-drawer>summary span:first-child{display:flex;gap:8px;align-items:baseline;min-width:0}
+.news-filter-drawer>summary b{font:400 16px var(--site-font-serif);color:#dbe1d7}
+.news-filter-drawer>summary small{font-size:8px;color:var(--site-faint)}
+.news-filter-drawer>summary:after{content:"＋";color:var(--site-green);font-size:16px;line-height:1}
+.news-filter-drawer[open]>summary:after{content:"−"}
+.news-filter-drawer[open]>summary{border-bottom:1px solid var(--site-line)}
+.news-filter-drawer .news-active-query{padding:0;margin-left:auto;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:48%}
+.news-console{border:0;border-radius:0;background:transparent;padding:12px;margin:0;box-shadow:none}
 .news-console-block{display:grid;grid-template-columns:118px minmax(0,1fr);gap:11px;align-items:start;padding:7px 0;border-top:1px solid rgba(255,255,255,.045)}
 .news-console-block:first-child{border-top:0;padding-top:0}
 .news-console-label span{display:block;color:#d6ddd2;font:400 14px var(--site-font-serif)}
@@ -140,6 +150,6 @@
 .news-preview-item span{color:var(--site-faint);font-size:8px;margin-top:auto}
 .news-preview-more{display:inline-block;margin-top:10px;color:#bdc7b8;font-size:10px;text-decoration:none;border-bottom:1px solid #343b33}
 @media(max-width:900px){.news-header,.news-orientation,.news-pulse-head,.news-section-intro,.news-method,.news-audio-reader{grid-template-columns:1fr}.news-source-lanes{grid-template-columns:1fr 1fr}.news-pulse-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:720px){.news-console{position:static}.news-console-block,.news-console-time{grid-template-columns:1fr}.news-console-label{display:flex;gap:7px;align-items:baseline}.news-refresh{justify-self:start}.news-view-switch{grid-template-columns:1fr 1fr}.news-lead{grid-template-columns:1fr}.news-feed{grid-template-columns:1fr}.news-source-lanes{grid-template-columns:1fr}.news-method-grid{grid-template-columns:1fr 1fr}.news-preview-grid{grid-template-columns:1fr}.news-cluster-link{grid-template-columns:1fr;gap:3px}.news-cluster-link em{display:none}.news-feed-contract{grid-template-columns:1fr}}
+@media(max-width:720px){.news-filter-drawer>summary{align-items:flex-start;flex-direction:column}.news-filter-drawer .news-active-query{max-width:100%;margin-left:0;text-align:left}.news-console{position:static}.news-console-block,.news-console-time{grid-template-columns:1fr}.news-console-label{display:flex;gap:7px;align-items:baseline}.news-refresh{justify-self:start}.news-view-switch{grid-template-columns:1fr 1fr}.news-lead{grid-template-columns:1fr}.news-feed{grid-template-columns:1fr}.news-source-lanes{grid-template-columns:1fr}.news-method-grid{grid-template-columns:1fr 1fr}.news-preview-grid{grid-template-columns:1fr}.news-cluster-link{grid-template-columns:1fr;gap:3px}.news-cluster-link em{display:none}.news-feed-contract{grid-template-columns:1fr}}
 @media(max-width:520px){.news-pulse-grid{grid-template-columns:1fr 1fr}.news-method-grid{grid-template-columns:1fr}.news-story{min-height:0}.news-search{grid-template-columns:1fr}.news-search button{width:max-content}}
 @media(prefers-reduced-motion:reduce){.news-story,.news-tab,.news-lens,.news-horizon,.news-refresh{transition:none}}
