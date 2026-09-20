@@ -150,7 +150,8 @@ function installAxisInteractions(map) {
   };
 
   const register = () => {
-        if (!interaction?.register) return false;
+    const interaction = window.__potatoAtlasInteraction;
+    if (!interaction?.register) return false;
     interaction.register('axis-threshold', {
       layers:[AXIS_FILL,AXIS_LINE,AXIS_GATE],
       objectType:'axis-threshold',
