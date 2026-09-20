@@ -133,6 +133,7 @@ try {
   const map = await waitForCore();
   await nextPaint();
   await loadAfterPaint('Interaction Router', './3d-interaction-router.js');
+  await loadAfterPaint('URL State', './3d-url-state.js');
   await loadAfterPaint('Inspector Router', './3d-inspector-router.js');
   await loadAfterPaint('Inspector URL', './3d-inspector-url.js');
   await loadAfterPaint('Inspector Visibility', './3d-inspector-visibility.js');
