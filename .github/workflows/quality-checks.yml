@@ -89,6 +89,10 @@ jobs:
       - name: Validate route case instrumentation
         run: python scripts/validate_route_case_instrumentation.py
 
+      - name: Validate Works Fruit instrumentation
+        run: python scripts/validate_works_fruit_instrumentation.py
+
+
       - name: Validate Timeline naming
         run: python scripts/validate_timeline_naming.py
 
