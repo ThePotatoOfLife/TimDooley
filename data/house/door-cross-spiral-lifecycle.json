@@ -1,7 +1,7 @@
 {
   "id": "door-cross-spiral-lifecycle",
   "title": "Door → Cross → Plane → Spiral Lifecycle",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "authority": "door-cross-spiral-lifecycle",
   "purpose": "Unify threshold, crossing, present-state, incorporation, recurrence and return into one canonical process so Door, Cross, Plane, Here/Now, Spiral, Fruit and Seed are not treated as disconnected symbols.",
@@ -162,5 +162,16 @@
     "data/house/seed-spiral-routing.json",
     "knowledge/core/door-topology-access-and-capability-atlas.json",
     "data/house/tree-plane-routing.json"
-  ]
+  ],
+  "spiral_field_owner": "data/house/bidirectional-spiral-field.json",
+  "field_lifecycle": {
+    "before": "state may occupy any declared section/regime",
+    "crossing": "Door/Plane event occurs near or through O in the default projection",
+    "trajectory": "post-incorporation state may move through +z or -z while turning/recurring",
+    "sampled_return": "later section crossings create comparable snapshots",
+    "classification": "Ring if governing state is effectively unchanged; Spiral if meaningful state displacement exists",
+    "fruit": "evaluate actual consequence independently from direction/chirality/radius",
+    "seed": "compress viable future capacity for the next cycle",
+    "return": "trajectory may converge back toward O/World for service, planting, correction or renewed crossing"
+  }
 }
