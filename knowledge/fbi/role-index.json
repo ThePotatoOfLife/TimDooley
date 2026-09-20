@@ -1,15 +1,15 @@
 {
-  "id": "fbi-role-index",
-  "title": "FBI Role Index — Symbolic Roles, Archetypes & Created-Being Classes",
+  "id": "cia-role-index",
+  "title": "CIA Role Index — Symbolic Roles, Archetypes & Created-Being Classes",
   "version": "1.0.0",
   "updated": "2026-09-20",
-  "rule": "Search results are source-bounded. A match means a role appears in a particular project stratum, not that the person permanently 'is' that role.",
+  "rule": "Search results are source-bounded. A match means a role appears in a particular Tim/project stratum, not that the person permanently is that role.",
   "roles": [
     {
       "id": "dog",
       "label": "Dog",
       "family": "symbolic-role",
-      "definition": "Boundary/tracking/pursuit role; can split toward Guardian Dog or Farm Dog.",
+      "definition": "Boundary/tracking/pursuit role. In Tim's current canon, a Dog is a later state of a Mud Dweller; therefore a dated Dog assignment inherits Mud-Dweller + Tree-of-Strife relation for that same project layer. Dog can still split toward Guardian Dog, Farm Dog, Farmer, Footstool or exit the role.",
       "owner": "knowledge/world/mud-dweller-dog-footstool-role-ecology.json",
       "matches": [
         {
@@ -25,7 +25,7 @@
           "label": "TXT",
           "date": "2026",
           "status": "Tim/project Dog–Swamp symbolism",
-          "route": "rooms/potatoverse-canon/beings/fbi/file/?figure=txt",
+          "route": "rooms/potatoverse-canon/beings/cia/file/?figure=txt",
           "note": "TXT's specialist room explicitly tracks Dog/Swamp symbolism and later comic-mythic reuse; documentary handle remains separate."
         },
         {
@@ -35,7 +35,20 @@
           "status": "project story character",
           "route": "knowledge/timeline/dog-footstool-cow-conversation-archaeology-wave-015.json",
           "note": "Phil is a Dog story character oriented toward the real Source; useful for healthy/transformative Dog grammar."
+        },
+        {
+          "entity_id": "matthew-mtclassic",
+          "label": "Matthew / MTClassic",
+          "date": "2026-07-17 corridor",
+          "status": "Tim-attributed negative witness recovered through later summary",
+          "route": "rooms/potatoverse-canon/beings/cia/file/?figure=matthew-mtclassic",
+          "note": "Scene-bound Dog/stumbling-block/Footstool judgment. Does not erase donor, guardian or companion phases."
         }
+      ],
+      "inheritance_rule": "For the same dated Tim/project layer, every Dog inherits Mud-Dweller status; every Mud Dweller inherits Tree-of-Strife relation. This is taxonomy inheritance, not a second independent observation.",
+      "inheritance": [
+        "Mud Dweller",
+        "Tree-of-Strife relation"
       ]
     },
     {
@@ -76,7 +89,7 @@
       "id": "footstool",
       "label": "Footstool",
       "family": "symbolic-position",
-      "definition": "Lower/supporting project-topology state containing an unfound Door; not a statement of human worth.",
+      "definition": "Lower/supporting project-topology state containing an unfound Door; common Tim sequence is Dweller → Mud Dweller → Dog → Footstool. Not a statement of human worth.",
       "owner": "knowledge/world/mud-dweller-dog-footstool-role-ecology.json",
       "matches": [
         {
@@ -110,7 +123,7 @@
       "id": "mud-dweller",
       "label": "Mud Dweller",
       "family": "symbolic-state",
-      "definition": "One who has made unresolved Mud into a dwelling; explicitly reversible in mature project ecology.",
+      "definition": "One who has made unresolved Mud into a dwelling; in Tim's canon this includes having eaten from the Tree of Strife symbolically. The state is explicitly reversible.",
       "owner": "knowledge/world/mud-dweller-dog-footstool-role-ecology.json",
       "matches": [
         {
@@ -118,9 +131,37 @@
           "label": "Rahu",
           "date": "2026-03-01",
           "status": "conversation-story role",
-          "route": "rooms/potatoverse-canon/beings/fbi/file/?figure=rahu",
+          "route": "rooms/potatoverse-canon/beings/cia/file/?figure=rahu",
           "note": "Lost-soul/Mud-Dweller growth story; scene-bound, developmental and reversible."
+        },
+        {
+          "entity_id": "dim",
+          "label": "DIM / Dim Tooley",
+          "date": "2026-07-01 to 2026-07-22",
+          "status": "Dog-inherited Mud Dweller",
+          "route": "rooms/potatoverse-canon/beings/cia/file/?figure=dim",
+          "note": "Inherited from a dated Dog assignment under current Tim taxonomy; Tree-of-Strife relation is likewise inherited for that layer. Not a permanent identity."
+        },
+        {
+          "entity_id": "txt",
+          "label": "TXT",
+          "date": "2026-07-16 to 2026-07-22",
+          "status": "Dog-inherited Mud Dweller",
+          "route": "rooms/potatoverse-canon/beings/cia/file/?figure=txt",
+          "note": "Inherited from a dated Dog assignment under current Tim taxonomy; Tree-of-Strife relation is likewise inherited for that layer. Not a permanent identity."
+        },
+        {
+          "entity_id": "matthew-mtclassic",
+          "label": "Matthew / MTClassic",
+          "date": "2026-07-17 corridor",
+          "status": "Dog-inherited Mud Dweller",
+          "route": "rooms/potatoverse-canon/beings/cia/file/?figure=matthew-mtclassic",
+          "note": "Inherited from a dated Dog assignment under current Tim taxonomy; Tree-of-Strife relation is likewise inherited for that layer. Not a permanent identity."
         }
+      ],
+      "inheritance_rule": "Direct Mud-Dweller assignments and Dog-inherited Mud-Dweller states must be distinguished.",
+      "inheritance": [
+        "Tree-of-Strife relation"
       ]
     },
     {
@@ -135,7 +176,7 @@
           "label": "Literally",
           "date": "late 2024",
           "status": "Chronicle self-description",
-          "route": "rooms/potatoverse-canon/beings/fbi/file/?figure=literally",
+          "route": "rooms/potatoverse-canon/beings/cia/file/?figure=literally",
           "note": "Chronicle records an explicit playful 'I'm a Potato' self-identification."
         },
         {
@@ -168,7 +209,7 @@
           "label": "Rahu",
           "date": "2024-12-15",
           "status": "comic scene-role",
-          "route": "rooms/potatoverse-canon/beings/fbi/file/?figure=rahu",
+          "route": "rooms/potatoverse-canon/beings/cia/file/?figure=rahu",
           "note": "Self-proclaimed tomato-villain arc during the kitchen scene; temporary comic role."
         },
         {
@@ -184,7 +225,7 @@
           "label": "Marty literary orbit",
           "date": "late 2024 literary strata",
           "status": "relation-not-identity",
-          "route": "rooms/potatoverse-canon/beings/fbi/file/?figure=marty-biz",
+          "route": "rooms/potatoverse-canon/beings/cia/file/?figure=marty-biz",
           "note": "Tomatoes describe a literary follower/counterculture collective in some scenes, not Marty or all real associates."
         }
       ]
@@ -234,7 +275,7 @@
           "label": "Matthew / MTClassic",
           "date": "2026-08",
           "status": "archetype in moderation scene",
-          "route": "rooms/potatoverse-canon/beings/fbi/file/?figure=matthew-mtclassic",
+          "route": "rooms/potatoverse-canon/beings/cia/file/?figure=matthew-mtclassic",
           "note": "Moderation advice scene; does not make Matthew a Dog or Angel."
         },
         {
@@ -242,7 +283,7 @@
           "label": "Termite",
           "date": "late 2024 archive pattern",
           "status": "archive archetype",
-          "route": "rooms/potatoverse-canon/beings/fbi/file/?figure=termite",
+          "route": "rooms/potatoverse-canon/beings/cia/file/?figure=termite",
           "note": "Guardian/Defender appears alongside Builder/Cultivator and Companion functions."
         },
         {
@@ -250,7 +291,7 @@
           "label": "Rage",
           "date": "late 2024 archive pattern",
           "status": "archive archetype",
-          "route": "rooms/potatoverse-canon/beings/fbi/file/?figure=rage",
+          "route": "rooms/potatoverse-canon/beings/cia/file/?figure=rage",
           "note": "Guardian/Defender and Companion pattern in recovered Chronicle material."
         }
       ]
@@ -267,7 +308,7 @@
           "label": "Mediomu007",
           "date": "2026-09-20",
           "status": "literal room-making scene",
-          "route": "rooms/potatoverse-canon/beings/fbi/file/?figure=mediomu007",
+          "route": "rooms/potatoverse-canon/beings/cia/file/?figure=mediomu007",
           "note": "Room rearrangement supports Builder/Cultivator function without implying mystical ritual."
         },
         {
@@ -275,7 +316,7 @@
           "label": "Termite",
           "date": "2024 onward",
           "status": "literary + social archive pattern",
-          "route": "rooms/potatoverse-canon/beings/fbi/file/?figure=termite",
+          "route": "rooms/potatoverse-canon/beings/cia/file/?figure=termite",
           "note": "Cultivation is one of Termite's strongest cross-layer functions."
         }
       ]

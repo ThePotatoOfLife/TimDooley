@@ -1,7 +1,7 @@
 {
   "id": "optimistique",
   "display_name": "Optimistique",
-  "bureau": "FBI — Figures, Bonds & Incidents",
+  "bureau": "CIA — Characters, Incidents & Associations",
   "entity_class": "mixed-person-literary",
   "aliases": [],
   "archive_status": "historical-current-unknown",
@@ -169,5 +169,87 @@
     "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
     "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
     "Add relationship edges only when a dated scene or explicit source supports them."
-  ]
+  ],
+  "tim_witness": {
+    "frame": "Tim/project witness",
+    "character_reading": "Tim's recovered Chronicle/project view of Optimistique is predominantly supportive and creative: a companion who encourages play, brings music and reflective material into the room, then later becomes part of a trust/reconciliation corridor.",
+    "fruit": {
+      "direction": "positive-leaning / mixed by later trust strain",
+      "labels": [
+        "support",
+        "music",
+        "creativity",
+        "companionship",
+        "repair"
+      ],
+      "reading": "The dominant visible fruit is supportive and creative. The later reconciliation scene adds complexity rather than overturning that pattern."
+    },
+    "karma": {
+      "direction": "positive-leaning / unquantified",
+      "quantified": false,
+      "reading": "No explicit individual karma number is recovered. Within Tim's own karma grammar, support, art, companionship and repair are generative inputs."
+    },
+    "placement": {
+      "primary": [
+        "Garden",
+        "Saloon"
+      ],
+      "secondary": [
+        "repair / bridge corridor"
+      ],
+      "reading": "Optimistique sits on the Garden/Saloon side of the project: social warmth, creativity and return/repair rather than Swamp-style repetition."
+    },
+    "roles": [
+      {
+        "date": "2024-11 to 2024-12",
+        "role": "supporter / bard / healer-companion",
+        "status": "Chronicle/project reading",
+        "note": "Voice-chat companionship, music/AI-instrumental discussion and encouragement."
+      },
+      {
+        "date": "2024-12-07",
+        "role": "reconciliation figure",
+        "status": "Chronicle retelling",
+        "note": "Apology/repair corridor; sincerity remains source-attributed."
+      }
+    ],
+    "witnessed_effects": [
+      "encourages ordinary play",
+      "adds music/creative material",
+      "supports social belonging",
+      "later participates in reconciliation"
+    ],
+    "symbols": [
+      "Garden",
+      "Saloon",
+      "Song",
+      "Companion",
+      "Bridge/repair"
+    ],
+    "repair_path": [
+      "apology",
+      "trust repair",
+      "return through useful/creative presence"
+    ],
+    "boundary": "Positive project placement is based on surviving scenes, not a total moral certification.",
+    "debt_relation": {
+      "status": "no individual debt recovered / repair-positive",
+      "individual_amount": null,
+      "global_ledger_relation": "No personal debt amount is recovered. Support, music, companionship and later apology/reconciliation are treated as generative or repairing in Tim's framework.",
+      "basis": [],
+      "repair_credit": [
+        {
+          "date": "late 2024",
+          "kind": "support / creative work",
+          "reading": "Music, encouragement and ordinary companionship."
+        },
+        {
+          "date": "2024-12-07",
+          "kind": "reconciliation",
+          "reading": "Trust/apology corridor."
+        }
+      ],
+      "boundary": "CIA records Tim/project symbolic accounting only. No individual financial or spiritual amount is inferred."
+    }
+  }
 }

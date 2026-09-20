@@ -237,6 +237,19 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 - [ ] **ENH-010 · Visible / semi-visible / invisible contract:** encode the current editorial rule into documentation/validation so public-primary, contextual specialist and backend-only layers remain intentionally distinct.
 
 
+### Integration conditions sweep — 2026-09-20
+
+Goal: improve movement and hierarchy across the public project without redesigning it or adding another navigation system.
+
+- [x] **Quiet secondary UI:** collapse the persistent House journey ribbon by default so content remains primary; keep the thread one click away.
+- [x] **Hide backend custody detail:** nested-Room readers show human titles/kinds first; raw repository paths moved to hover/title context and inventory counts moved behind an Archive depth disclosure.
+- [x] **CIA canonicalization:** `/rooms/potatoverse-canon/beings/cia/` is the public character archive; old `/fbi/` routes remain compatibility/source history rather than competing primary surfaces.
+- [x] **Legacy person-page demotion:** preserved unique scene summaries on old `/fbi/<person>/` pages, marked them noindex/non-canonical, and linked each into the richer CIA folder.
+- [x] **Meaningful cross-Room doors:** CIA now connects selectively to Time & History, Culture & Information, Archive & Sources and Beings & Cast; the dossier footer uses these as context doors instead of raw-backend shortcuts.
+- [x] **Reader-over-backend rule:** raw JSON shortcuts and visible path/count clutter were demoted; Beings recovery/backend rules are now optional disclosures while archival pages still expose provenance when that is their job.
+- [x] **Route regression:** CIA validation now targets canonical `/cia/` surfaces, requires the legacy `/fbi/` compatibility doorway, and protects Tim-witness dossier structure.
+- [ ] **Density follow-up:** after this sweep, rescan high-level public surfaces for places where another card/link should instead become one stronger paragraph, scene, example or case.
+
 ### P2 — maintainability and duplication
 
 - [ ] Reduce hand-maintained asset-version duplication for shared components (for example the same spiral CSS/JS version string repeated across four reader pages).

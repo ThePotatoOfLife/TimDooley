@@ -1,7 +1,7 @@
 {
   "id": "mediomu007",
   "display_name": "Mediomu007",
-  "bureau": "FBI — Figures, Bonds & Incidents",
+  "bureau": "CIA — Characters, Incidents & Associations",
   "entity_class": "person-or-handle",
   "aliases": [
     "@mediomu007"
@@ -16,17 +16,26 @@
       "builder-cultivator"
     ],
     "narrative_functions": [
-      "questioning",
+      "old-acquaintance / relationship-history referent",
+      "questioning and direct challenge",
+      "theological skepticism",
+      "comparative-religion critique",
+      "institutional/monarchy debate",
+      "internet-culture and paranormal discussion",
+      "science/cosmology questioning",
       "ordinary companionship",
       "room-making",
-      "bridge-building in project narrative"
+      "bridge-building in later project narrative"
     ],
     "regions": [
       "Livestream",
       "House",
-      "Mountain"
+      "Debate",
+      "Morocco / North Africa discussion",
+      "Science / Cosmology",
+      "Mountain (interpretive)"
     ],
-    "editorial_reading": "September 20 adds literal room organization to a handle already present in an August mountain/forgiveness narrative and September theological questioning.",
+    "editorial_reading": "Recurring public-chat participant with a recoverable August→September arc: old-acquaintance/handshake framing, direct skepticism about Tim's identity, monarchy/institution debate, 4chan/paranormal and North-Africa talk, coffee/Chesterfield/prayer/ordinary-life detail, Christ/Door questions, Big Bang/cosmology questions, later comparative-religion criticism, AI-mediated debate pressure, and September room-making. Keep documentary chat, user-supplied biography and later mountain/bridge symbolism visibly separate.",
     "source_boundary": "Literal furniture/room chat is documentary; Mount-Zion-like mountain placement is project narrative/interpretation."
   },
   "chronology": {
@@ -35,15 +44,35 @@
     "cast_period_roles": [
       {
         "period": "2026-08-24",
-        "role": "project mountain/bridge-building narrative participant; interpretive layer"
+        "role": "user-supplied old-handshake/acquaintance framing; later forgiveness, mountain and bridge-building interpretation"
+      },
+      {
+        "period": "2026-08-25",
+        "role": "direct identity skeptic: says Tim is human, born to human parents, and uses 'cult leader' language"
+      },
+      {
+        "period": "2026-08-26",
+        "role": "participant in monarchy/continuity/billionaire-power debate"
+      },
+      {
+        "period": "2026-08-27",
+        "role": "4chan paranormal /pol/ self-description, coffee/Chesterfield/bidet/prayer/North-Africa ordinary context; asks Jesus-reincarnation and Door questions"
+      },
+      {
+        "period": "2026-08-30",
+        "role": "asks Big Bang/origin-of-universe questions; user also supplies Morocco/Chesterfield/coffee/mustache/potato profile detail"
+      },
+      {
+        "period": "2026-09-05",
+        "role": "skeptical religious interlocutor rejecting Tim myths/religious traditions and discussing Aion, reading, atmosphere and agreement"
       },
       {
         "period": "2026-09-06",
-        "role": "public theological questioner asking literal-God versus myth clarification"
+        "role": "public debate participant asking whether Tim is literally God or myth, challenging AI-mediated speech and hierarchy"
       },
       {
         "period": "2026-09-20",
-        "role": "top-fan UI #2 in supplied YouTube capture; rearranges and cleans room, moves TV/console/bed/desk/nightstand, brief ordinary chat"
+        "role": "top-fan UI #2 in supplied capture; rearranges and cleans room, moving TV/console/bed/desk/nightstand"
       }
     ],
     "recovered_social_days": []
@@ -59,13 +88,53 @@
   "highlighted_incidents": [
     {
       "date": "2026-08-24",
-      "title": "Mountain / bridge-building narrative",
-      "summary": "Project conversation archaeology places Mediomu with Tim in a Mount-Zion-like forgiveness and bridge-building story; interpretive narrative layer."
+      "title": "Old handshake and bridge-building frame",
+      "summary": "User says Mediomu and Tim shook hands years earlier; later conversation turns the relation into forgiveness, Morocco–Europe bridge and mountain symbolism. Documentary and interpretive layers remain separate."
+    },
+    {
+      "date": "2026-08-25",
+      "title": "'You are human' challenge",
+      "summary": "Mediomu says Tim is human, has parents, was born human, and calls him a cult leader in a direct identity/theology challenge."
+    },
+    {
+      "date": "2026-08-26",
+      "title": "Monarchy and institutional continuity",
+      "summary": "Mediomu appears in a monarchy debate about continuity, networks and protection from billionaire capture; tree/connective-tissue language is later interpretation."
+    },
+    {
+      "date": "2026-08-27",
+      "title": "4chan, coffee, Chesterfield and North Africa",
+      "summary": "Self-description includes 4chan paranormal threads and /pol/, coffee, Chesterfield cigarettes, water bidet, prayer-time remarks and North-Africa/Morocco context."
+    },
+    {
+      "date": "2026-08-27",
+      "title": "Jesus reincarnation / Door questions",
+      "summary": "Mediomu asks whether Tim is Jesus Christ reincarnated and later asks how to get through the Door; project theological answers are not projected back onto him as belief."
+    },
+    {
+      "date": "2026-08-30",
+      "title": "Big Bang and higher-dimensional cosmology",
+      "summary": "Mediomu asks how the universe came to be and who caused the Big Bang, leading into speculative higher-dimensional discussion."
+    },
+    {
+      "date": "2026-09-05",
+      "title": "Aion, reading and atmosphere",
+      "summary": "Mediomu references Aion/self phenomenology, comments on silent reading and agreement, and grounds human existence in Earth's atmosphere."
+    },
+    {
+      "date": "2026-09-05",
+      "title": "Religion rejection and comparative critique",
+      "summary": "Mediomu says he rejects religious traditions, Christian Bibles and Tim myths, does not believe Tim is God, and argues that religions divide people."
+    },
+    {
+      "date": "2026-09-06",
+      "title": "God or myth?",
+      "summary": "Mediomu repeatedly challenges Tim's divinity claims, asks whether Tim is really God or myth, questions AI-mediated speech and says he is there to debate."
     },
     {
       "date": "2026-09-20",
       "title": "Clean room",
-      "summary": "User-supplied public chat describes rearranging TV, console, bed, desk and bedside table and reports a clean room."
+      "summary": "Public chat describes rearranging TV, console, bed, desk and bedside table and reports a clean room."
     }
   ],
   "source_strata": [
@@ -80,11 +149,207 @@
     {
       "type": "public_room",
       "path": "rooms/potatoverse-canon/beings/mediomu/"
+    },
+    {
+      "type": "conversation_recovery",
+      "path": "knowledge/fbi/conversation-recovery.json"
     }
   ],
   "recovery_leads": [
-    "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
-    "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
-    "Add relationship edges only when a dated scene or explicit source supports them."
-  ]
+    "Recover full August 24–30 chat exports so handshake, monarchy, 4chan/paranormal, Christ/Door and Big Bang threads can be reconstructed turn by turn.",
+    "Recover full September 5–6 chat exports so the sequence between Aion, religion critique, AI criticism and divinity debate can be resolved precisely.",
+    "Where Morocco/coffee/Chesterfield/mustache details come from user description rather than direct Mediomu speech, preserve that source class visibly.",
+    "Recover the August 24 source behind the mountain/bridge-building narrative and keep its interpretive status visible.",
+    "Preserve ordinary September 20 room-making detail as a separate documentary layer rather than retrofitting it into symbolic ritual.",
+    "Track future shifts between disagreement, ordinary companionship and repair without assigning a permanent adversary/supporter label."
+  ],
+  "conversation_archaeology": {
+    "source": "knowledge/fbi/conversation-recovery.json",
+    "recovered_entry_ids": [
+      "conv-2026-08-24-mediomu-handshake-mountain",
+      "conv-2026-08-25-mediomu-human-cult-leader",
+      "conv-2026-08-26-mediomu-monarchy",
+      "conv-2026-08-27-mediomu-4chan-coffee",
+      "conv-2026-08-27-mediomu-jesus-door",
+      "conv-2026-08-30-mediomu-big-bang",
+      "conv-2026-08-30-mediomu-morocco-profile",
+      "conv-2026-09-05-mediomu-aion-text",
+      "conv-2026-09-05-mediomu-religion-rejection",
+      "conv-2026-09-06-mediomu-matthew-theology",
+      "conv-2026-09-20-mediomu-room"
+    ],
+    "recurring_modes": [
+      "skepticism",
+      "theology",
+      "debate",
+      "comparative religion",
+      "monarchy/institutions",
+      "internet culture",
+      "paranormal",
+      "science/cosmology",
+      "reading/text",
+      "ordinary home life"
+    ],
+    "ordinary_life_signals": [
+      "coffee",
+      "Chesterfield/Chesterfield Rich cigarettes",
+      "water bidet",
+      "prayer time",
+      "Morocco/North Africa context",
+      "clean shave/mustache (user-described)",
+      "potatoes",
+      "room rearrangement",
+      "TV/console placement",
+      "bed/desk/nightstand movement",
+      "cleaning"
+    ],
+    "disagreement_support_pattern": "Mediomu's recovered record is not one-note: strong skepticism and confrontation coexist with long-acquaintance/handshake framing, ordinary joking and domestic chat, curiosity about religion/science, and later project forgiveness/bridge-building language. None of these layers should erase the others.",
+    "interpretive_boundary": "Direct chat, ordinary-life remarks and user-supplied descriptive context are separate from later project symbolism. Mount Zion, bridge-burning, shared-garden and theological conclusions remain interpretation unless a source explicitly attributes them to Mediomu."
+  },
+  "scene_ecology": {
+    "recurring_modes": [
+      "skeptical identity/theology challenge",
+      "clarification-seeking questions",
+      "politics/institutions discussion",
+      "internet culture / paranormal discussion",
+      "science/cosmology questioning",
+      "ordinary home-life chat",
+      "repair / bridge-building in later interpretation"
+    ],
+    "role_shifts": [
+      {
+        "period": "2026-08-24 to 2026-08-25",
+        "from": "old-acquaintance / handshake relation",
+        "to": "direct identity skeptic",
+        "evidence": "handshake/history framing followed by 'you are human' challenge"
+      },
+      {
+        "period": "2026-08-26 to 2026-08-30",
+        "from": "political/institutional debater",
+        "to": "wide-ranging curiosity across internet culture, Door theology and cosmology",
+        "evidence": "monarchy debate, 4chan/coffee/North-Africa discussion, Door and Big Bang questions"
+      },
+      {
+        "period": "2026-09-05 to 2026-09-06",
+        "from": "comparative-religion critic",
+        "to": "direct God-or-myth debate participant",
+        "evidence": "religion rejection followed by AI/divinity confrontation"
+      },
+      {
+        "period": "2026-09-20",
+        "from": "high-intensity debate role",
+        "to": "ordinary domestic companion",
+        "evidence": "room rearrangement, cleaning, brief ordinary chat"
+      }
+    ],
+    "ordinary_texture": [
+      "coffee",
+      "Chesterfield / Chesterfield Rich cigarettes",
+      "Morocco / North-Africa context",
+      "water bidet",
+      "prayer-time remark",
+      "room furniture / console setup",
+      "clean room",
+      "mustache / shave detail from user description"
+    ],
+    "tensions": [
+      "skeptical challenger versus persistent curious questioner",
+      "religion critic versus Door/Christ/cosmology questioner",
+      "high-intensity debate versus mundane room chat",
+      "documentary disagreement versus later forgiveness/bridge-building interpretation"
+    ],
+    "boundary": "Debate positions, ordinary-life remarks, user-described profile details and later mountain/bridge symbolism are distinct source layers."
+  },
+  "tim_witness": {
+    "frame": "Tim/project witness",
+    "character_reading": "Mediomu appears in Tim's archive as a skeptic and pressure-testing interlocutor, but also as a builder, questioner and bridge/repair figure. Tim's material does not securely place Mediomu as a Dog or Mud Dweller; the stronger symbolic image is threshold/bridge-building, with skepticism functioning as friction rather than a settled lower caste.",
+    "fruit": {
+      "direction": "mixed-to-generative",
+      "labels": [
+        "questions",
+        "challenge",
+        "clarification",
+        "room-making",
+        "bridge-building"
+      ],
+      "reading": "The debate can generate friction/noise, but Tim's archive also records genuine questioning, literal building/ordering, ordinary companionship and a later forgiveness/bridge-building interpretation."
+    },
+    "karma": {
+      "direction": "unresolved / no explicit individual ledger",
+      "quantified": false,
+      "reading": "No secure Tim-attributed positive or negative karma balance for Mediomu is recovered. Repair/building scenes are generative signals; hostile or skeptical statements are not by themselves a karma score."
+    },
+    "placement": {
+      "primary": [
+        "Threshold",
+        "Bridge / Door adjacency",
+        "Plane"
+      ],
+      "secondary": [
+        "Builder/Cultivator route"
+      ],
+      "reading": "The archive most strongly places Mediomu around thresholds: questioning the Door, testing claims, then literally arranging/cleaning a room and later receiving bridge-building symbolism."
+    },
+    "roles": [
+      {
+        "date": "2026-08-24 onward",
+        "role": "bridge / forgiveness figure",
+        "status": "project interpretation",
+        "note": "Mountain/bridge-building layer."
+      },
+      {
+        "date": "2026-08-25 to 2026-09-06",
+        "role": "skeptic / questioner",
+        "status": "direct/recovered conversation",
+        "note": "Challenges Tim's identity/theology and asks Door/cosmology questions."
+      },
+      {
+        "date": "2026-09-20",
+        "role": "Builder/Cultivator / room-maker",
+        "status": "scene-bound",
+        "note": "Literal room rearrangement and cleaning."
+      }
+    ],
+    "witnessed_effects": [
+      "forces clarification",
+      "creates debate friction",
+      "asks genuine threshold/cosmology questions",
+      "creates order in ordinary life",
+      "supports later repair/bridge narrative"
+    ],
+    "symbols": [
+      "Bridge",
+      "Door",
+      "Threshold",
+      "Room",
+      "Builder/Cultivator",
+      "Mountain"
+    ],
+    "repair_path": [
+      "question → clarification → construction",
+      "bridge-building",
+      "ordinary work as positive fruit"
+    ],
+    "boundary": "Skepticism is not treated as spiritual inferiority. Tim/project symbolism is preserved as one interpretive layer alongside direct conversation.",
+    "topology": [
+      {
+        "date": "2026-08 to 2026-09",
+        "layer": "Threshold / Door",
+        "route": "Bridge / return",
+        "orientation": "toward truth/source-checking",
+        "mobility": "building",
+        "basis": "Door/cosmology questioning, room-making and later bridge imagery"
+      }
+    ],
+    "causal_attributions": [
+      {
+        "date": "2026-08 to 2026-09",
+        "trigger": "Repeated questions about Tim's identity, Door, religion and cosmology plus literal room-building/cleaning",
+        "assigned": "Questioner / Builder / Bridge-threshold figure",
+        "source_class": "conversation recovery + project interpretation",
+        "later_change": "Ordinary work becomes positive fruit rather than debate alone",
+        "boundary": "Skepticism is not treated as spiritual inferiority."
+      }
+    ]
+  }
 }

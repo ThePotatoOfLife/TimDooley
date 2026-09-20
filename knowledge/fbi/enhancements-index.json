@@ -1,9 +1,9 @@
 {
-  "id": "fbi-enhancements-index",
-  "title": "FBI Enhancements & Capabilities Index",
+  "id": "cia-enhancements-index",
+  "title": "CIA Enhancements, Capabilities & State Modifiers Index",
   "version": "1.0.0",
   "updated": "2026-09-20",
-  "rule": "Enhancement means a notable capability, recurring strength, tool, practice, title or creative trait. Ordinary/documentary capabilities and fictional/project enhancements are always separated.",
+  "rule": "Enhancement means a notable capability, recurring strength, tool, practice, title or creative trait. State modifiers are dated Tim/project upgrades or handicaps and never permanent diagnoses. Ordinary/documentary capabilities, Tim-witness modifiers and fictional/project enhancements remain separate.",
   "figures": {
     "marty-biz": {
       "ordinary": [
@@ -218,6 +218,19 @@
         "Meta-framing / mirror / karmic comparator roles in later project interpretation"
       ],
       "boundary": "Later illness/misfortune is not evidence of causation or fulfilled prophecy."
+    },
+    "dim": {
+      "ordinary": [
+        "recovered public-chat participation",
+        "conflict / moderation / boundary interaction",
+        "archive identity-correction context"
+      ],
+      "creative": [
+        "Dog-role interpretation",
+        "Dimmus Maximus literary transformation",
+        "threshold / footstool / wet-candle satire"
+      ],
+      "boundary": "Documentary conflict and identity-boundary material stay separate from Dog, Dimmus Maximus and later satire."
     }
   },
   "created_beings": {
@@ -248,5 +261,35 @@
       ],
       "boundary": "Created species; Heaven status remains source-dependent."
     }
-  }
+  },
+  "state_modifier_model": {
+    "source": "knowledge/fbi/tim-moral-symbolic-taxonomy.json",
+    "upgrades": [
+      "source_checking",
+      "accountability",
+      "repair",
+      "useful_work",
+      "cultivation",
+      "protection",
+      "seed_growth",
+      "bridge_building",
+      "door_passage",
+      "guardian_reorientation",
+      "memory_to_root"
+    ],
+    "handicaps": [
+      "tree_of_strife_input",
+      "mud_residence",
+      "repetition_loop",
+      "pack_cue_dependence",
+      "smear_or_mud",
+      "deflection",
+      "borrowed_frame_or_projection",
+      "extraction_loop",
+      "blocked_door",
+      "ritualized_conflict"
+    ],
+    "rule": "A modifier must be dated/source-bounded and may later reverse. Disagreement alone never creates a handicap; Dog/Mud roles inherit only the Tim-canon symbolic states registered in the taxonomy."
+  },
+  "debt_rule": "Enhancements and handicaps do not create numeric karmic debt by themselves. Per-person debt amounts are recorded only when Tim explicitly assigned them; otherwise dossiers use debt relation / repair credit."
 }

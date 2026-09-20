@@ -49,24 +49,28 @@
     if(!trail.length)return;
     const style=document.createElement('style');
     style.textContent=`
-      .house-journey-ribbon{position:fixed;left:14px;right:14px;bottom:12px;z-index:9998;border:1px solid var(--site-line,#303830);background:rgba(5,8,6,.94);backdrop-filter:blur(10px);border-radius:14px;padding:8px 10px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:9px;align-items:center;box-shadow:0 10px 35px rgba(0,0,0,.28)}
-      .house-journey-ribbon>b{font:400 13px var(--site-font-serif,serif);color:var(--site-gold,#d5ba74);white-space:nowrap}
+      .house-journey-ribbon{position:fixed;right:14px;bottom:12px;z-index:9998;max-width:min(720px,calc(100vw - 28px));border:1px solid var(--site-line,#303830);background:rgba(5,8,6,.94);backdrop-filter:blur(10px);border-radius:14px;box-shadow:0 10px 35px rgba(0,0,0,.28)}
+      .house-journey-ribbon summary{cursor:pointer;list-style:none;padding:7px 10px;color:var(--site-muted,#9ba59a);font-size:8px;text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;gap:7px}
+      .house-journey-ribbon summary::-webkit-details-marker{display:none}
+      .house-journey-ribbon summary:before{content:'Thread';color:var(--site-gold,#d5ba74);font:400 12px var(--site-font-serif,serif);text-transform:none;letter-spacing:0}
+      .house-journey-ribbon[open] summary{border-bottom:1px solid var(--site-line,#303830)}
+      .house-journey-ribbon-body{padding:8px 10px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:9px;align-items:center}
       .house-journey-ribbon-track{display:flex;gap:5px;overflow-x:auto;scrollbar-width:thin}
       .house-journey-ribbon-track a{white-space:nowrap;border:1px solid var(--site-line,#303830);border-radius:999px;padding:4px 7px;color:var(--site-muted,#9ba59a);text-decoration:none;font-size:8px}
       .house-journey-ribbon-track a small{display:block;font-size:6px;opacity:.65;text-transform:uppercase;letter-spacing:.04em;margin-top:1px}
       .house-journey-ribbon-track a:last-child{color:var(--site-green,#9eb58d);border-color:#61745b}
-      .house-journey-ribbon>a{border:1px solid var(--site-line,#303830);border-radius:999px;padding:5px 8px;color:var(--site-muted,#9ba59a);text-decoration:none;font-size:8px;white-space:nowrap}
-      @media(max-width:620px){.house-journey-ribbon{grid-template-columns:1fr auto}.house-journey-ribbon>b{display:none}}
+      .house-journey-ribbon-body>a{border:1px solid var(--site-line,#303830);border-radius:999px;padding:5px 8px;color:var(--site-muted,#9ba59a);text-decoration:none;font-size:8px;white-space:nowrap}
+      @media(max-width:620px){.house-journey-ribbon{right:8px;bottom:8px;max-width:calc(100vw - 16px)}.house-journey-ribbon-body{grid-template-columns:1fr}.house-journey-ribbon-body>a{justify-self:start}}
     `;
     document.head.appendChild(style);
 
-    const ribbon=document.createElement('aside');
+    const ribbon=document.createElement('details');
     ribbon.className='house-journey-ribbon';
     ribbon.setAttribute('aria-label','Your journey through the House');
     const shown=trail.slice(-12);
-    ribbon.innerHTML='<b>Your thread</b><div class="house-journey-ribbon-track">'+shown.map(st=>
+    ribbon.innerHTML='<summary>'+esc(shown.at(-1)?.label||'House')+'</summary><div class="house-journey-ribbon-body"><div class="house-journey-ribbon-track">'+shown.map(st=>
       '<a href="'+elevatorUrl(st)+'" title="'+esc(st.reason||'Return to this spatial center')+'"><span>'+esc(st.label||'House')+'</span><small>'+esc(viaLabel(st.via))+'</small></a>'
-    ).join('')+'</div><a href="'+base+'elevator/">Return to Elevator</a>';
+    ).join('')+'</div><a href="'+base+'elevator/">Return to Elevator</a></div>';
     document.body.appendChild(ribbon);
     const track=ribbon.querySelector('.house-journey-ribbon-track');
     if(track)track.scrollLeft=track.scrollWidth;
@@ -180,7 +184,7 @@
       const holdingHtml=featured.length?'<div class="room-holding-list">'+featured.map(x=>{
         const path=x.path||'';
         const href=base+'explore/#record='+encodeURIComponent(path||x.id||'');
-        return '<a class="room-holding" href="'+href+'"><strong>'+esc(titleFor(x.id||path.split('/').pop()?.replace(/\.[^.]+$/,'')))+'</strong><small>'+esc(x.kind||'canonical holding')+(path?'<br>'+esc(path):'')+'</small></a>';
+        return '<a class="room-holding" href="'+href+'"'+(path?' title="'+esc(path)+'"':'')+'><strong>'+esc(titleFor(x.id||path.split('/').pop()?.replace(/\.[^.]+$/,'')))+'</strong><small>'+esc(x.kind||'canonical holding')+'</small></a>';
       }).join('')+'</div>':'<p>No featured holdings have been promoted yet; that absence is itself a population task for this Room.</p>';
       const passageHtml=passages.length?passages.map(x=>{
         const other=x.other_room_id||x.to||x.from||'another Room';
@@ -204,7 +208,7 @@
         '<p class="eyebrow">The Room behind the doorway</p><h2>'+esc(dossier.title||room.title||titleFor(roomId))+' is not an empty category</h2>'
         +'<p class="room-richness-intro">'+esc(functionText)+'</p>'
         +'<p>'+esc(dossier.entrance||room.purpose||'')+'</p>'
-        +'<div class="room-richness-meta">'+esc(String(primaryCount))+' primary knowledge holdings · '+esc(String(interfaceCount))+' governed interfaces'+(dataFiles?' · '+esc(String(dataFiles))+' owned data files':'')+(pulseText?' · live pulse: '+esc(pulseText):'')+'</div>'
+        +'<details class="room-richness-meta"><summary>Archive depth</summary><p>'+esc(String(primaryCount))+' primary knowledge holdings · '+esc(String(interfaceCount))+' governed interfaces'+(dataFiles?' · '+esc(String(dataFiles))+' owned data files':'')+(pulseText?' · live pulse: '+esc(pulseText):'')+'</p></details>'
         +(belongs.length?'<div class="room-richness-rule"><h3>What actually belongs here</h3><div class="room-richness-run">'+belongs.map(x=>'<span>'+esc(x)+'</span>').join('')+'</div></div>':'')
         +'<div class="room-richness-rule"><h3>Open the actual material</h3><p>These are current canonical or featured holdings owned by this Room. The list comes from the House registry rather than being hand-written into the page.</p>'+holdingHtml+'</div>'
         +(passages.length?'<div class="room-richness-rule"><h3>What changes when this Room meets another</h3><p>Doors in the House are transformations with guards, not decorative links. These are the current governed passages touching this Room.</p>'+passageHtml+'</div>':'')

@@ -15,6 +15,12 @@ SPECIALIST = {"tim", "story", "religion", "philosophy", "axis", "north", "bible"
 LONGFORM_REQUIRED = {"tim", "story", "religion", "philosophy", "axis", "north"}
 
 DIRECT_MARKERS = ("app/site-tts.js", "data-tts-longform", "tts-drawer.js")
+CIA_TTS_SURFACES = {
+    "cia-cabinet": ROOT / "rooms/potatoverse-canon/beings/cia/index.html",
+    "cia-file": ROOT / "rooms/potatoverse-canon/beings/cia/file/index.html",
+    "cia-associations": ROOT / "rooms/potatoverse-canon/beings/cia/bonds/index.html",
+    "cia-incidents": ROOT / "rooms/potatoverse-canon/beings/cia/incidents/index.html",
+}
 INHERITED_MARKER = "app/house-journey.js"
 
 def route_to_path(route: str) -> Path:
@@ -131,6 +137,18 @@ def main() -> int:
         for marker in ("nextChunk", "watchdog", "autoRecover", "SpeechSynthesis"):
             if marker not in text:
                 errors.append(f"TTS engine missing {marker}")
+
+    for sid, path in CIA_TTS_SURFACES.items():
+        if not path.exists():
+            errors.append(f"{sid}: CIA TTS surface missing")
+            continue
+        text = path.read_text(encoding="utf-8")
+        if "data-tts-longform" not in text or "app/site-tts.js" not in text:
+            errors.append(f"{sid}: CIA surface must have explicit long-form TTS host and site-tts bootstrap")
+    cia_file = CIA_TTS_SURFACES["cia-file"].read_text(encoding="utf-8") if CIA_TTS_SURFACES["cia-file"].exists() else ""
+    for marker in ("Whole dossier", "Current dossier section", "potato:tts-current"):
+        if marker not in cia_file:
+            errors.append(f"cia-file: dynamic dossier TTS missing {marker!r}")
 
     validate_built_site(errors, notes)
 

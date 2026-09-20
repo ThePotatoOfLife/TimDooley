@@ -1,7 +1,7 @@
 {
   "id": "sammy",
   "display_name": "Sammy",
-  "bureau": "FBI — Figures, Bonds & Incidents",
+  "bureau": "CIA — Characters, Incidents & Associations",
   "entity_class": "person-or-handle",
   "aliases": [
     "Sami",
@@ -199,5 +199,143 @@
     "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
     "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
     "Add relationship edges only when a scene/source supports them."
-  ]
+  ],
+  "tim_witness": {
+    "frame": "Tim/project witness",
+    "character_reading": "Sammy's Tim-witness file is phase-heavy: ordinary crew member and loyalty figure, then boundary-testing/chaos language, later grief-adjacent presence around Marty, followed by a reported return to the Garden. Tim/project titles such as Queen of the Potatoverse or Queen of Martyverse belong to specific phases rather than permanent rank.",
+    "fruit": {
+      "direction": "mixed / return-capable",
+      "labels": [
+        "loyalty",
+        "companionship",
+        "chaos",
+        "boundary testing",
+        "grief",
+        "return"
+      ],
+      "reading": "Sammy's archive contains both ordinary companionship/loyalty and conflict/chaos. The March 2025 return-to-Garden scene is important because it prevents the conflict phase from becoming the whole judgment."
+    },
+    "karma": {
+      "direction": "mixed / unresolved",
+      "quantified": false,
+      "reading": "No individual karma number is recovered. Loyalty, companionship and return are generative signals; conflict, boundary pressure and unresolved grief are negative or unfinished residue in Tim's framework."
+    },
+    "placement": {
+      "primary": [
+        "Plane",
+        "Garden boundary",
+        "Memory"
+      ],
+      "secondary": [
+        "Swamp-facing conflict phase",
+        "return to Garden"
+      ],
+      "reading": "Sammy moves between social Plane, boundary/conflict, grief-memory and later Garden return rather than occupying one permanent moral region."
+    },
+    "roles": [
+      {
+        "date": "2024-11",
+        "role": "loyal companion / ordinary crew member",
+        "status": "Chronicle retelling",
+        "note": "Discord/Tanks social presence with Tim and others."
+      },
+      {
+        "date": "late 2024",
+        "role": "queen / chaos / boundary-testing figure",
+        "status": "project-era characterization",
+        "note": "Queen language is mythic/social title, not objective rank."
+      },
+      {
+        "date": "2025-02",
+        "role": "grief-adjacent witness",
+        "status": "Chronicle retelling",
+        "note": "Appears in the immediate narrative aftermath of Marty's death."
+      },
+      {
+        "date": "2025-03-01",
+        "role": "returning Garden figure",
+        "status": "Chronicle retelling",
+        "note": "Chronicle explicitly says Sammy returned to the Garden."
+      }
+    ],
+    "witnessed_effects": [
+      "companionship",
+      "fierce loyalty",
+      "boundary testing",
+      "social volatility",
+      "grief/memory",
+      "return"
+    ],
+    "symbols": [
+      "Queen",
+      "Garden boundary",
+      "Memory",
+      "Return",
+      "Warrior/Survivor"
+    ],
+    "repair_path": [
+      "return to Garden",
+      "loyalty disciplined by boundaries",
+      "grief transformed into memory rather than repeated conflict"
+    ],
+    "boundary": "Queen/chaos language is Tim/project mythologizing. Sensitive grief and relationship claims remain source-attributed.",
+    "debt_relation": {
+      "status": "mixed / loyalty-conflict-return",
+      "individual_amount": null,
+      "global_ledger_relation": "No personal debt amount is recovered. Loyalty/companionship and later Garden return count as generative signals; boundary-testing, chaos and unresolved conflict remain negative residue in Tim's framework.",
+      "basis": [
+        {
+          "date": "late 2024",
+          "kind": "boundary conflict residue",
+          "source_class": "project/Chronicle framing",
+          "reading": "Queen/chaos/boundary-testing phase."
+        }
+      ],
+      "repair_credit": [
+        {
+          "date": "2024-11",
+          "kind": "companionship / loyalty",
+          "reading": "Ordinary crew and social presence."
+        },
+        {
+          "date": "2025-03-01",
+          "kind": "return",
+          "reading": "Chronicle explicitly says Sammy returned to the Garden."
+        }
+      ],
+      "boundary": "No numeric karmic balance. Project titles and phases are symbolic, not permanent moral rank."
+    },
+    "episode_attributes": [
+      {
+        "date": "late 2024",
+        "attribute": "boundary testing / social volatility",
+        "status": "project characterization",
+        "evidence": "Queen/chaos phase in Chronicle/project material."
+      },
+      {
+        "date": "2025-03-01",
+        "attribute": "return / reintegration",
+        "status": "Chronicle retelling",
+        "evidence": "Return to Garden."
+      }
+    ],
+    "state_modifiers": [
+      {
+        "date": "late 2024",
+        "kind": "handicap",
+        "modifier": "repetition_loop",
+        "status": "project relation reading",
+        "evidence": "Conflict/chaos repeats around group boundaries.",
+        "counterform": "bridge_building"
+      },
+      {
+        "date": "2025-03-01",
+        "kind": "upgrade",
+        "modifier": "door_passage",
+        "status": "Chronicle return motif",
+        "evidence": "Return to Garden functions as movement out of the conflict phase.",
+        "counterform": null
+      }
+    ]
+  }
 }

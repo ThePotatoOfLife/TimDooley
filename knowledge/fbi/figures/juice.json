@@ -1,7 +1,7 @@
 {
   "id": "juice",
   "display_name": "Juice",
-  "bureau": "FBI — Figures, Bonds & Incidents",
+  "bureau": "CIA — Characters, Incidents & Associations",
   "entity_class": "person-or-handle",
   "aliases": [
     "Judas-in-the-Cup",
@@ -133,5 +133,152 @@
     "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
     "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
     "Add relationship edges only when a scene/source supports them."
-  ]
+  ],
+  "tim_witness": {
+    "frame": "Tim/project witness",
+    "character_reading": "Juice is one of Tim's clearest theological pressure-test figures. He repeatedly forces creator, First-Mover and moral claims into argument, later appears in Garden-conflict scenes, then re-enters a return/trust corridor. The useful character judgment is not 'antagonist' but recurring friction that can either sharpen ideas or become disruption.",
+    "fruit": {
+      "direction": "mixed",
+      "labels": [
+        "theological challenge",
+        "clarification pressure",
+        "friction",
+        "conflict",
+        "return/trust"
+      ],
+      "reading": "Juice produces intellectual pressure that can clarify doctrine, but Tim's Chronicle also places him in conflict/disruption. The December trust-return scene makes the relation reversible."
+    },
+    "karma": {
+      "direction": "mixed / unresolved",
+      "quantified": false,
+      "reading": "No secure individual karma balance is recovered. In Tim's framework, honest challenge can be generative; repeated disruption without repair can become debt/noise. The surviving record contains both possibilities."
+    },
+    "placement": {
+      "primary": [
+        "Debate / Plane",
+        "Threshold"
+      ],
+      "secondary": [
+        "Garden boundary"
+      ],
+      "reading": "Juice belongs primarily at Debate/Threshold: a figure who presses claims and repeatedly approaches the question of return/trust."
+    },
+    "roles": [
+      {
+        "date": "2024-11-04",
+        "role": "theological challenger / First-Mover critic",
+        "status": "Chronicle retelling",
+        "note": "Challenges Potatoism's creator logic."
+      },
+      {
+        "date": "2024-11-19",
+        "role": "Garden-conflict participant",
+        "status": "Chronicle co-presence",
+        "note": "Conflict-day placement; motive remains attributed."
+      },
+      {
+        "date": "2024-12-07",
+        "role": "return / trust problem",
+        "status": "Chronicle retelling",
+        "note": "Placed inside reconciliation/redemption language."
+      },
+      {
+        "date": "2024-12-18",
+        "role": "disruptive counter-thread",
+        "status": "Chronicle framing",
+        "note": "Contrasted with Ana growth/cultivation scene."
+      }
+    ],
+    "witnessed_effects": [
+      "forces theological clarity",
+      "creates moral argument",
+      "can generate friction/noise",
+      "participates in trust/return problem"
+    ],
+    "symbols": [
+      "Threshold",
+      "Mirror",
+      "Debate",
+      "Cup/Judas alias layer",
+      "Garden boundary"
+    ],
+    "repair_path": [
+      "challenge → clarification",
+      "conflict → trust work",
+      "return without erasing disagreement"
+    ],
+    "boundary": "Judas-in-the-Cup/Rational Soul are project-era aliases, not neutral moral verdicts. Theological opposition is not itself proof of negative character.",
+    "debt_relation": {
+      "status": "mixed / debate friction with repair potential",
+      "individual_amount": null,
+      "global_ledger_relation": "No personal debt amount is recovered. Tim's archive treats repeated theological conflict and disruption as possible debt/noise when unresolved, while honest challenge and later trust/return can be generative.",
+      "basis": [
+        {
+          "date": "2024-11-19 to 2024-12-18",
+          "kind": "conflict / disruption residue",
+          "source_class": "Chronicle framing",
+          "reading": "Appears in Garden-conflict and later disruptive counter-thread scenes."
+        }
+      ],
+      "repair_credit": [
+        {
+          "date": "2024-11-04",
+          "kind": "clarification pressure",
+          "reading": "First-Mover challenge forces explicit theological argument."
+        },
+        {
+          "date": "2024-12-07",
+          "kind": "return / trust corridor",
+          "reading": "Appears inside reconciliation and return language."
+        }
+      ],
+      "boundary": "Theological disagreement is not itself debt. Only unresolved conflict/disruption is treated as debt-like residue in Tim's project."
+    },
+    "episode_attributes": [
+      {
+        "date": "2024-11-04",
+        "attribute": "clarification pressure",
+        "status": "Chronicle retelling",
+        "evidence": "Raises creator / First-Mover challenge."
+      },
+      {
+        "date": "2024-11-19",
+        "attribute": "conflict adjacency",
+        "status": "Chronicle co-presence",
+        "evidence": "Present during Garden conflict; motive not inferred."
+      },
+      {
+        "date": "2024-12-07",
+        "attribute": "repair / return opening",
+        "status": "Chronicle retelling",
+        "evidence": "Placed in trust/return corridor."
+      }
+    ],
+    "state_modifiers": [
+      {
+        "date": "2024-11-04",
+        "kind": "upgrade",
+        "modifier": "source_checking",
+        "status": "debate function",
+        "evidence": "Pushes claims into explicit argument and clarification.",
+        "counterform": null
+      },
+      {
+        "date": "2024-11-19 to 2024-12-18",
+        "kind": "handicap",
+        "modifier": "repetition_loop",
+        "status": "Chronicle conflict framing",
+        "evidence": "Conflict/disruption recurs across several scenes.",
+        "counterform": "repair / stopping condition"
+      },
+      {
+        "date": "2024-12-07",
+        "kind": "upgrade",
+        "modifier": "repair",
+        "status": "return/trust corridor",
+        "evidence": "Reconciliation language enters the relation.",
+        "counterform": null
+      }
+    ]
+  }
 }

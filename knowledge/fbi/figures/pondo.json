@@ -1,7 +1,7 @@
 {
   "id": "pondo",
   "display_name": "Pondo",
-  "bureau": "FBI — Figures, Bonds & Incidents",
+  "bureau": "CIA — Characters, Incidents & Associations",
   "entity_class": "person-or-handle",
   "aliases": [],
   "archive_status": "historical-current-unknown",
@@ -111,5 +111,73 @@
     "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
     "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
     "Add relationship edges only when a scene/source supports them."
-  ]
+  ],
+  "tim_witness": {
+    "frame": "Tim/project witness",
+    "character_reading": "Tim's surviving project material remembers Pondo mainly through care, de-escalation and a compassionate intervention. The file is sparse but the available fruit is unusually clear: stabilizing rather than extracting or escalating.",
+    "fruit": {
+      "direction": "positive / care-oriented",
+      "labels": [
+        "care",
+        "de-escalation",
+        "support",
+        "protection"
+      ],
+      "reading": "The dominant Tim-witness signal is compassionate intervention and practical support."
+    },
+    "karma": {
+      "direction": "positive-leaning / unquantified",
+      "quantified": false,
+      "reading": "No individual karma figure is recovered. In Tim's framework, protection, care and de-escalation are generative forms of fruit."
+    },
+    "placement": {
+      "primary": [
+        "Garden",
+        "Threshold"
+      ],
+      "secondary": [
+        "guardian / healer route"
+      ],
+      "reading": "Pondo belongs near the Garden/Threshold side: someone whose role is to help prevent a person or situation from falling further into harm."
+    },
+    "roles": [
+      {
+        "date": "2024-12-21",
+        "role": "care / intervention figure",
+        "status": "Chronicle-reported",
+        "note": "Sensitive crisis context; details remain deliberately minimal."
+      }
+    ],
+    "witnessed_effects": [
+      "de-escalation",
+      "practical care",
+      "support during a sensitive moment"
+    ],
+    "symbols": [
+      "Guardian",
+      "Healer",
+      "Garden",
+      "Threshold"
+    ],
+    "repair_path": [
+      "care",
+      "de-escalation",
+      "keep sensitive support practical rather than spectacular"
+    ],
+    "boundary": "This placement comes from a small number of scenes. Do not extrapolate beyond the documented support role or sensationalize the crisis.",
+    "debt_relation": {
+      "status": "no individual debt recovered / care credit",
+      "individual_amount": null,
+      "global_ledger_relation": "No personal debt is recovered. The strongest Tim-witness material is de-escalation and compassionate support.",
+      "basis": [],
+      "repair_credit": [
+        {
+          "date": "2024-12-21",
+          "kind": "care / protection",
+          "reading": "Chronicle-reported support in a sensitive community moment."
+        }
+      ],
+      "boundary": "CIA records Tim/project symbolic accounting only. No individual financial or spiritual amount is inferred."
+    }
+  }
 }

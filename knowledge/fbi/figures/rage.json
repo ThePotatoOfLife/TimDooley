@@ -1,7 +1,7 @@
 {
   "id": "rage",
   "display_name": "Rage",
-  "bureau": "FBI — Figures, Bonds & Incidents",
+  "bureau": "CIA — Characters, Incidents & Associations",
   "entity_class": "person-or-handle",
   "aliases": [],
   "archive_status": "historical-current-unknown",
@@ -143,5 +143,80 @@
     "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
     "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
     "Add relationship edges only when a scene/source supports them."
-  ]
+  ],
+  "tim_witness": {
+    "frame": "Tim/project witness",
+    "character_reading": "Rage's surviving Tim-witness material is unusually practical and ordinary: cooking, gym, games, music, humor and a remembered emergency-response story. The project therefore places Rage more naturally as defender/companion than as a myth-heavy figure.",
+    "fruit": {
+      "direction": "positive / practical",
+      "labels": [
+        "protection",
+        "companionship",
+        "routine",
+        "humor",
+        "practical action"
+      ],
+      "reading": "The dominant visible fruit is practical support and ordinary group life rather than symbolic conflict."
+    },
+    "karma": {
+      "direction": "positive-leaning / unquantified",
+      "quantified": false,
+      "reading": "No explicit karma balance is recovered. Tim's framework treats protection, practical help and sustaining ordinary life as generative."
+    },
+    "placement": {
+      "primary": [
+        "Saloon",
+        "Plane"
+      ],
+      "secondary": [
+        "guardian/protection route"
+      ],
+      "reading": "Rage belongs near ordinary social space with a guardian/protective function rather than a strongly mythologized Garden/Swamp placement."
+    },
+    "roles": [
+      {
+        "date": "2024-11",
+        "role": "companion / ordinary social presence",
+        "status": "Chronicle retelling",
+        "note": "Games, cooking/gym talk, humor and music."
+      },
+      {
+        "date": "2024-11",
+        "role": "practical rescuer / guardian",
+        "status": "Chronicle-reported anecdote",
+        "note": "Remembered story of acting quickly when girlfriend's cat choked; closer source still preferred."
+      }
+    ],
+    "witnessed_effects": [
+      "practical help",
+      "protective action",
+      "ordinary companionship",
+      "social steadiness"
+    ],
+    "symbols": [
+      "Guardian",
+      "Saloon",
+      "Companion",
+      "Practical rescue"
+    ],
+    "repair_path": [
+      "keep protection concrete",
+      "support through action rather than status"
+    ],
+    "boundary": "The rescue anecdote is Chronicle testimony, not independently verified. Guardian is a scene-function, not permanent caste.",
+    "debt_relation": {
+      "status": "no individual debt recovered / protection credit",
+      "individual_amount": null,
+      "global_ledger_relation": "No personal debt is recovered. Practical protection, companionship and ordinary support are the dominant recovered signals.",
+      "basis": [],
+      "repair_credit": [
+        {
+          "date": "late 2024",
+          "kind": "protection / practical help",
+          "reading": "Chronicle-reported rescue/support function."
+        }
+      ],
+      "boundary": "CIA records Tim/project symbolic accounting only. No individual financial or spiritual amount is inferred."
+    }
+  }
 }
