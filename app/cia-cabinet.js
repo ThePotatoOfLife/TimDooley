@@ -26,7 +26,7 @@ function renderCabinet(){
   const count=Number(f.chronicle_occurrence_count||0),countLabel=count+' Chronicle occurrence'+(count===1?'':'s');
   const detail=aliases.slice(0,3).join(' · ')||[f.archive_status,f.depth_tier].filter(Boolean).join(' · ')||'dossier';
   const activityTitle=[activity[1],activity[2]?('last recovered '+activity[2]):'',activity[3]].filter(Boolean).join(' · ');
-  return '<a class="file" data-activity="'+activity[0]+'" data-character-id="'+esc(f.id)+'" data-search="'+esc(characterSearch(f))+'" title="'+esc(activityTitle)+'" href="'+dossierHref(f.id)+'"><span class="activity-label">'+esc(activity[1])+'</span><span class="count">'+esc(countLabel)+'</span><b>'+esc(f.name||f.id)+'</b><small>'+esc(detail)+'</small><div class="tags">'+tags.map(x=>'<span class="tag">'+esc(x)+'</span>').join('')+'</div></a>';
+  return '<a class="file" data-activity="'+activity[0]+'" data-character-id="'+esc(f.id)+'" data-search="'+esc(characterSearch(f))+'" title="'+esc(activityTitle)+'" href="'+dossierHref(f.id)+'"><span class="activity-label">'+esc(activity[1])+'</span><span class="count">'+esc(countLabel)+'</span><span class="file-avatar" aria-hidden="true">'+esc(initials(f.name||f.id))+'</span><b>'+esc(f.name||f.id)+'</b><small>'+esc(detail)+'</small><div class="tags">'+tags.map(x=>'<span class="tag">'+esc(x)+'</span>').join('')+'</div></a>';
  }).join('');
  document.getElementById('status').textContent=figs.length+' dossiers loaded · dimmed folders indicate archive recency, not moral value';
 }
