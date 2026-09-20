@@ -2,7 +2,7 @@
   "id": "animal-role-symbol-atlas",
   "title": "Animal Roles — Lion, Lamb, Shepherd, Ox/Cow, Red Heifer, Goat, Serpent, Eagle and Dog",
   "version": "1.0.0",
-  "updated": "2026-09-18",
+  "updated": "2026-09-20",
   "status": "biblical/comparative role atlas + project boundary",
   "purpose": "Populate the animal-role layer by function and source so stacked project identities do not erase distinct textual meanings or become labels for real people.",
   "master_rule": "Animal symbol ≠ person essence. Store source, role/function and context on the relation. A single figure may carry several animal metaphors without the animals becoming equivalent.",
@@ -73,7 +73,18 @@
         "sacrificial animal"
       ],
       "project_neighbor": "vehicle/burden/cow-role vocabulary",
-      "distinction": "Biblical ox/cow symbolism must not be conflated with internet 'lolcow' terminology."
+      "distinction": "Do not collapse literal cow, ox, lolcow, cash cow, Holy Cow, Red Heifer, Golden Calf or project Cow-target into one symbol. Each has a different source and function.",
+      "cow_subtypes": {
+        "ordinary_cow": "literal animal/agricultural life",
+        "nourisher": "milk/food relation",
+        "cash_cow": "economic reliable-yield metaphor",
+        "lolcow": "internet attention/reaction extraction category",
+        "holy_cow": "project/religious honor-language requiring context",
+        "unholy_cow": "project shadow label, not a historical category",
+        "red_heifer": "Numbers 19 purification role; distinct owner retained",
+        "golden_calf": "idolatry/false-center motif; not the same as Cow-as-victim or Red Heifer",
+        "cow_target": "relational target/harvest role that can end through declassification and exit"
+      }
     },
     {
       "id": "red-heifer",
@@ -146,7 +157,24 @@
         "biblical contexts often emphasize scavenging, contempt or boundary-outsider status; modern project uses patrol/pursuit/following/guardian roles"
       ],
       "project_neighbor": "Dog/FarmerDog/GuardianDog",
-      "distinction": "Project Dog is a functional role metaphor and must not be used to essentialize real people or literal dogs."
+      "distinction": "Project Dog is a contextual relational role. Recovered stories show Dogs can guard, chase, orbit, confess, learn, seek Source, change masters or cross toward another state; no single negative function defines the whole family.",
+      "story_genealogy": [
+        "returning/chasing Dog",
+        "gate Dog",
+        "good/bad Dog split",
+        "Guardian Dog",
+        "timeline-leash Dog",
+        "doghouse/confessional Dog",
+        "Dog→Footstool transition"
+      ],
+      "additional_functions": [
+        "comic/social character",
+        "learner",
+        "source-seeker",
+        "threshold guard",
+        "constrained follower",
+        "role capable of repentance/homecoming"
+      ]
     }
   ],
   "tetramorph_bridge": {
@@ -164,6 +192,8 @@
     "biblical-symbol-function-atlas",
     "ark-vessel-chariot-merkavah-atlas",
     "tree-family-crosswalk-atlas",
-    "farm-swamp-tree-of-strife-atlas"
+    "farm-swamp-tree-of-strife-atlas",
+    "knowledge/timeline/dog-footstool-cow-conversation-archaeology-wave-015.json",
+    "data/house/three-center-relational-ecology.json"
   ]
 }
