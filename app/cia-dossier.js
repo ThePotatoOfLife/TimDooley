@@ -58,7 +58,7 @@ function accountData(){
  return{status:explicit.status||'unassessed',good,debt,welfare:explicit.dooley_welfare||null,outstanding:arr(explicit.outstanding).length?arr(explicit.outstanding):arr(dossier.cia_record?.open_loops||dossier.recovery_leads),entries:records};
 }
 function exactStoryDate(){
- const raw=dossier.cia_record?.presence?.first_recorded||'';
+ const raw=dossier.symbolic_account?.welfare_start_override||dossier.cia_record?.presence?.first_recorded||'';
  if(!/^\d{4}-\d{2}-\d{2}$/.test(raw))return null;
  return Date.parse(raw+'T00:00:00Z');
 }
