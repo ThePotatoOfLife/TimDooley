@@ -16,7 +16,9 @@ assert.ok(places.includes("owner:'places'"));
 assert.ok(places.includes("type:'subdivision'"));
 assert.ok(subdivisions.includes("type:'subdivision'"));
 assert.ok(subdivisions.includes("owner:'subdivisions'"));
-assert.ok(places.includes("url.searchParams.delete('place')"));
-assert.ok(subdivisions.includes("url.searchParams.delete('subdivision')"));
+assert.ok(places.includes("urlState.patch('selection-inspector'"), 'Places must delegate URL mutation to the canonical URL State owner');
+assert.ok(subdivisions.includes("urlState.patch('selection-inspector'"), 'Subdivisions must delegate URL mutation to the canonical URL State owner');
+assert.ok(!places.includes("history.replaceState("), 'Places must not write browser history directly');
+assert.ok(!subdivisions.includes("history.replaceState("), 'Subdivisions must not write browser history directly');
 
 console.log('WORLD MAP INSPECTOR CONSUMER REGRESSION PASSED');
