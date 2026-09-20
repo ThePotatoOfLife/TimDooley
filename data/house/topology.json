@@ -1,5 +1,5 @@
 {
-  "version": "2.1.0",
+  "version": "2.2.0",
   "updated": "2026-09-20",
   "authority": "house-topology",
   "room_registry": "data/house/rooms.json",
@@ -303,6 +303,14 @@
     {
       "id": "overlap-can-have-emergent-roles",
       "law": "The Door/overlap may contain relational functions that exist because both fields meet; do not force every overlap role back into one parent field."
+    },
+    {
+      "id": "plane-is-section-not-realm",
+      "law": "Plane is a frame-relative section of the larger two-field system. It must not be equated with the lower field, World as a whole, or a universal physical present."
+    },
+    {
+      "id": "cross-point-sign-event-distinction",
+      "law": "Distinguish O/Cross-point, Cross-sign and crossing event. O is Axis∩Plane; the sign is a visual projection; crossing is a trajectory event."
     }
   ],
   "embedding_contract": {
@@ -390,14 +398,35 @@
       "meaning": "Active shared interface / ecotone where source-facing and manifestation-facing states become mutually available for translation, attention, decision, crossing, witness, covenant, reconciliation and Seed activation."
     },
     "plane": {
-      "meaning": "Operative/world-facing section through the widest middle of the shared Door."
+      "meaning": "A frame-relative section/hypersurface through the larger relation. In the canonical 2D drawing it is y=0; in the 3D lift it is z=0 and cuts the Door as a disk.",
+      "functions": [
+        "current world-facing frame",
+        "lateral relation field",
+        "measurement/return surface",
+        "current-state carrier",
+        "cross-section"
+      ],
+      "frame_requirements": [
+        "scale",
+        "time/period",
+        "representation",
+        "audience/jurisdiction when relevant"
+      ],
+      "not": [
+        "realm",
+        "knowledge owner",
+        "entire lower field",
+        "universal physical Now"
+      ]
     },
     "axis": {
       "meaning": "Source↔manifestation orientation through both field centers."
     },
     "cross": {
-      "expression": "Cross = Plane ∩ Axis",
-      "meaning": "Relational midpoint/event inside Door; not a Room, container or separate floor."
+      "cross_point": "O = Axis ∩ Plane",
+      "cross_sign": "Axis ∪ L where L is a chosen lateral line through O inside Plane",
+      "crossing_event": "a trajectory intersects Plane and/or satisfies Door transition conditions",
+      "meaning": "Keep point, sign and event distinct. The coordinate Cross is not automatically identical to the Christian Cross."
     },
     "boundary_regimes": {
       "house_garden": "protect differentiation + legitimate passage + return + repair + autonomous future growth",
@@ -423,6 +452,16 @@
       "descent_rooting": "healthy investigation, grief, memory, provenance or planting",
       "descent_fragmentation": "capture, compulsion, opacity or disintegration",
       "return_service": "upper integration returns as care, art, repair, teaching, nourishment or Seed"
+    },
+    "three_d_lift": {
+      "sphere_centers": [
+        "(0,0,+r/2)",
+        "(0,0,-r/2)"
+      ],
+      "plane": "z=0",
+      "door_plane_section": "disk radius sqrt(3)r/2",
+      "surface_intersection": "ring x²+y²=3r²/4 at z=0",
+      "insight": "The 2D left/right Vesica intersections generalize to a full interface ring in 3D."
     }
   },
   "federation_scale_registry": "data/house/federation-scale.json",
