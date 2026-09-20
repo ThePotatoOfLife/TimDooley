@@ -1,5 +1,5 @@
 {
-  "version": "3.9.0",
+  "version": "4.0.0",
   "updated": "2026-09-20",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -18,6 +18,11 @@
       "concern": "Door Cross Plane Spiral lifecycle",
       "owner": "data/house/door-cross-spiral-lifecycle.json",
       "rule": "Owns the full transition lifecycle from prior state through rim/guard, crossing, Here/Now, incorporation, Plane snapshot, recurrence classification, Fruit, Seed and return."
+    },
+    {
+      "concern": "Tree family typing / generic Life Knowledge Strife world-tree archive and UI trees",
+      "owner": "data/house/tree-family-contract.json",
+      "rule": "Owns Tree-family type distinctions and naming rules. Generic Tree branching, tradition-specific Trees, project Strife, archive trees and UI trees must remain explicitly typed."
     },
     {
       "concern": "Swamp regime/state semantics",
