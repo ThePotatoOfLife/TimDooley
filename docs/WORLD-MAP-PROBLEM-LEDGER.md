@@ -227,6 +227,14 @@
 **Rule retained:** regional depth and place depth share the canonical Places owner and same-origin bounded partitions; no second city renderer or unbounded global dataset is introduced.
 
 
+### WM-039 · Visual-channel compatibility contract is incomplete — P2
+**Status:** fixed / governed on branch `world-map-visual-matrix-20260920`, pending exact-head CI confirmation.  
+**Cause:** the visual-channel contract declared canonical channels and several important pair policies, but it did not provide a complete machine-checkable matrix. That left future combinations vulnerable to ad-hoc assumptions even though country-surface ownership was already centralized.  
+**Resolution:** the contract now contains a complete symmetric 9×9 compatibility matrix covering fill, pattern, outline, line, point, height, card, timeline and scene. Matrix values distinguish same-channel ownership, direct composition, conditional composition and deliberately separate presentation spaces. The current renderer’s only conditional pair, pattern + height, remains bound to the information-preserving `prefer-pattern-flatten-height` fallback.  
+**Guard:** `scripts/validate_world_map_visual_channels.py` now requires complete rows, symmetry, valid matrix values, self diagonals and the canonical pattern + height fallback.  
+**Rule retained:** the matrix describes whether channels may coexist; it does not grant paint ownership. Canonical owners remain declared separately in `country_surface_owners`.
+
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
