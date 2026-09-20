@@ -32,6 +32,7 @@ except Exception as exc:
 
 for token in (
     'data-news-view="latest"',
+    'data-news-view="briefing"',
     'data-news-view="clusters"',
     'data-news-view="sources"',
     'data-news-horizon="24h"',
@@ -39,6 +40,8 @@ for token in (
     'data-news-pulse',
     'data-news-clusters',
     'data-news-source-lanes',
+    'data-news-briefing',
+    'source-balanced rotation',
     '../world-map/',
     'Repeated coverage',
     'not a truth, consensus, importance or endorsement score',
@@ -56,6 +59,8 @@ for token in (
     "async function loadPublisherRss",
     "publisher-excerpt",
     "Full report ↗",
+    "function sourceBalancedBriefing",
+    "function renderBriefing",
     "function renderPulse",
     "function renderClusters",
     "function renderSourceLanes",
@@ -68,6 +73,8 @@ for token in (
 
 for token in (
     ".news-pulse-grid",
+    ".news-briefing",
+    ".news-briefing-item",
     ".news-view-switch",
     ".news-clusters",
     ".news-source-lanes",
