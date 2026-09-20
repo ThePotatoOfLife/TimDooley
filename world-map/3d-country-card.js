@@ -101,6 +101,7 @@ async function showRegions(code) {
     retainedRegionPartition = next;
   }
   await api.refresh?.();
+  await api.focusPartition?.(next, { padding:72, duration:650, maxZoom:6.6 });
   return true;
 }
 
