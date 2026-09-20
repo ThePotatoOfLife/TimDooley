@@ -8,7 +8,8 @@
     "Use canonical reader-facing labels; aliases absorb alternate names and abbreviations.",
     "Do not duplicate the entire site hierarchy here.",
     "Exact named objects should outrank generic hubs during search.",
-    "Global access belongs here; page-owned navigation stays local."
+    "Global access belongs here; page-owned navigation stays local.",
+    "Never use bare CIA as a global destination label: disambiguate Potatoverse CIA · Character Archive from U.S. CIA · Central Intelligence Agency before navigation."
   ],
   "groups": {
     "go_now": [
@@ -368,26 +369,28 @@
     },
     {
       "id": "cia-character-archive",
-      "label": "CIA — Characters, Incidents & Associations",
+      "label": "Potatoverse CIA · Character Archive",
       "route": "/rooms/potatoverse-canon/beings/cia/",
       "kind": "direct",
-      "note": "Canonical Potatoverse dossier bureau",
+      "note": "Characters, Incidents & Associations · authored project archive",
       "aliases": [
-        "cia",
+        "potatoverse cia",
+        "character cia",
         "characters incidents associations",
         "character archive",
         "dossiers",
         "character dossiers",
         "incidents",
         "associations"
-      ]
+      ],
+      "scope": "POTATOVERSE"
     },
     {
       "id": "mud-bank",
       "label": "World Spiritual Bank / Mud Bank",
       "route": "/rooms/potatoverse-canon/beings/cia/bank/",
       "kind": "direct",
-      "note": "North Root Ledger · CIA sub-accounts · Dooley Welfare · system liability domains",
+      "note": "Fictional North Root Ledger · Character Archive sub-accounts",
       "aliases": [
         "mud bank",
         "dooley welfare",
@@ -400,21 +403,25 @@
         "north root ledger",
         "shadow mud loosh bank",
         "system liability ledger"
-      ]
+      ],
+      "scope": "POTATOVERSE"
     },
     {
       "id": "intelligence-cia",
-      "label": "Central Intelligence Agency / Intelligence Desk",
+      "label": "U.S. CIA · Central Intelligence Agency",
       "route": "/shadow-farm/#intelligence-desk",
       "kind": "direct",
-      "note": "Real-world intelligence research desk",
+      "note": "Real-world U.S. foreign-intelligence institution · Intelligence Desk",
       "aliases": [
-        "central intelligence agency",
         "us cia",
+        "u.s. cia",
+        "central intelligence agency",
+        "real cia",
         "intelligence agency",
         "intelligence desk",
         "security intelligence"
-      ]
+      ],
+      "scope": "REAL WORLD"
     },
     {
       "id": "fbi-legacy",
@@ -429,5 +436,18 @@
         "old character bureau"
       ]
     }
-  ]
+  ],
+  "disambiguation": {
+    "cia": {
+      "query": [
+        "cia"
+      ],
+      "prompt": "Which CIA?",
+      "options": [
+        "cia-character-archive",
+        "intelligence-cia"
+      ],
+      "rule": "A bare CIA lookup must present both namespaces; do not auto-route."
+    }
+  }
 }
