@@ -216,13 +216,10 @@ function renderDatasetPanel() {
 }
 function renderDatasetInspector() {
   if (!inspector?.open) { renderDatasetPanel(); return true; }
-  const current = inspector.current?.();
-  if (!current) {
-    inspector.setBaseline({
-      type:'country', id:'USA', owner:'country-selection',
-      restore:() => window.goCountry?.('USA'),
-    });
-  }
+  inspector.setBaseline({
+    type:'country', id:'USA', owner:'country-selection',
+    restore:() => window.goCountry?.('USA'),
+  });
   inspector.open({
     type:'evidence',
     id:'adl-heat',
