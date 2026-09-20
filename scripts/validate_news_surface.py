@@ -98,6 +98,11 @@ for token in (
     "allRows.filter(r=>clean(r.summary).length>0)",
     "baseProviders.filter(id=>id!=='publisher-rss')",
     "function renderPulse",
+    "function nearDuplicate",
+    "function latestRiverRows",
+    "function leadRows",
+    "$('[data-news-view]',host).forEach",
+    "$('[data-news-view-panel]',host).forEach",
     "news-story--compact",
     "view!=='latest')more.open=true",
     "data-news-expand",
@@ -115,6 +120,11 @@ for token in (
     "CACHE_TTL=10*60*1000",
 ):
     require(js,token,"app/news.js")
+
+if "$('[data-news-view]',host).forEach" in js:
+    errors.append("More views buttons must use a node-list selector, not a single-element selector")
+if "$('[data-news-view-panel]',host).forEach" in js:
+    errors.append("More views panels must use a node-list selector, not a single-element selector")
 
 for token in (
     ".news-header--simple",
