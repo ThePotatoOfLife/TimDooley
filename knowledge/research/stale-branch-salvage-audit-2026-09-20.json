@@ -44,14 +44,17 @@
       "branch": "science-quality-pass-003",
       "ahead_by": 25,
       "behind_by": 1733,
-      "disposition": "mostly absorbed; one clear salvage candidate",
+      "disposition": "semantic gate salvaged / PR mostly superseded",
       "evidence": [
         "field-of-life-reaction-diffusion-descendant is identical on main",
         "spudlight plant carbon benchmark is on main",
         "gold-indexed sovereign bond model is on main",
-        "scripts/audit_science_quality.py is not currently on main"
+        "scripts/audit_science_quality.py is not currently on main",
+        "scripts/audit_science_quality.py and its regression tests were selectively ported to current main",
+        "current build_science_catalog now blocks generated fallback abstracts from qualifying thin records",
+        "current validate_science_portal now invokes the semantic audit"
       ],
-      "next": "port or retire the semantic science auditor after testing it against the current science corpus and current validation architecture"
+      "next": "Verify the normal current-main CI chain; then close PR #137 if no other unique branch-only files remain valuable."
     },
     {
       "pr": 129,
@@ -155,8 +158,8 @@
       "task": "Reconcile open PR #184 and close it if remaining branch-only files are all superseded or salvaged."
     },
     {
-      "priority": "high",
-      "task": "Test scripts/audit_science_quality.py from stale PR #137 against current main; port only if it adds checks not already covered."
+      "priority": "completed",
+      "task": "COMPLETED: selectively salvaged the semantic Science auditor, tests, fallback filter and portal integration onto current main."
     },
     {
       "priority": "high",
