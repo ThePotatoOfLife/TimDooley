@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MANIFEST=ROOT/"knowledge/cia/manifest.json"; CABINET=ROOT/"rooms/potatoverse-canon/beings/cia/index.html"
 VIEWER=ROOT/"rooms/potatoverse-canon/beings/cia/file/index.html"; COLLECTIONS=ROOT/"data/house/collections.json"
-ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
+ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
 ROUTE="rooms/potatoverse-canon/beings/cia/"
 def fail(m): print("FAIL:",m); raise SystemExit(1)
 def main():
@@ -31,8 +31,12 @@ def main():
   if p not in viewer: fail(f"viewer missing {p}")
  if not ACCOUNT.is_file(): fail("CIA symbolic account contract missing")
  account=json.loads(ACCOUNT.read_text(encoding="utf-8"))
- if account.get("welfare_rule",{}).get("enabled_by_default") is not False: fail("Dooley welfare must default off")
+ if account.get("welfare_rule",{}).get("enabled_by_default") is not True: fail("Dooley welfare must default on")
  if "not money" not in str(account.get("boundary","")).lower(): fail("symbolic account boundary missing")
+ if not MUD_BANK.is_file(): fail("Mud Bank contract missing")
+ bank=json.loads(MUD_BANK.read_text(encoding="utf-8"))
+ if bank.get("welfare",{}).get("rate_per_second_susd")!=0.00000000001: fail("Dooley Welfare rate drift")
+ if bank.get("denomination",{}).get("real_currency") is not False: fail("Mud Bank denomination boundary drift")
  for c in chars:
   cp=ROOT/c.get("path","")
   if not cp.is_file(): fail(f"CIA character file missing: {cp}")
