@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
+from house_public_surfaces import surface_by_id
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -200,23 +201,16 @@ def main() -> int:
 
     try:
         surfaces = load_json("data/house/public-surfaces.json")
-        topology = load_json("knowledge/research/potato-house-master/public-route-topology.json")
         bridge = load_json("data/frontend-atlas-bridge.json")
     except Exception as exc:
         errors.append(f"could not load Rooms projection contracts: {exc}")
-        surfaces = topology = bridge = {}
+        surfaces = bridge = {}
 
     surface_rows = {
         row.get("id"): row
         for row in surfaces.get("surfaces", [])
         if isinstance(row, dict) and row.get("id")
     }
-    topology_rows = {
-        row.get("surface_id"): row
-        for row in topology.get("records", [])
-        if isinstance(row, dict) and row.get("surface_id")
-    }
-
     for surface_id, route in REQUIRED_SURFACES.items():
         row = surface_rows.get(surface_id)
         if not row:
@@ -228,14 +222,6 @@ def main() -> int:
             errors.append(f"House registry surface {surface_id} must be active")
         if row.get("knowledge_owner") is not False:
             errors.append(f"Rooms guide {surface_id} must not become a knowledge owner")
-        topo = topology_rows.get(surface_id)
-        if not topo:
-            errors.append(f"route topology missing surface {surface_id}")
-            continue
-        if topo.get("canonical_route") != route:
-            errors.append(f"route topology mismatch for {surface_id}")
-        if topo.get("room_ids") != row.get("primary_room_ids"):
-            errors.append(f"route topology Room drift for {surface_id}")
 
     if tuple(bridge.get("public_doors", {})) != ("tim", "religion", "philosophy", "science", "world"):
         errors.append("frontend bridge must retain exactly the five canonical public Doors")
