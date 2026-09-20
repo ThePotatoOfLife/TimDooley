@@ -131,9 +131,8 @@ finally { maplibregl.Map.prototype.addControl = originalAddControl; }
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('World atlas map instance was not captured.');
-const { createTooltipService } = await import(versionedModule('./3d-tooltip.js'));
-const tooltip = window.__potatoAtlasTooltip || createTooltipService(map, { PopupClass:maplibregl.Popup, eventTarget:window });
-window.__potatoAtlasTooltip = tooltip;
+const { getOrCreateTooltipService } = await import(versionedModule('./3d-tooltip.js'));
+const tooltip = getOrCreateTooltipService(map, { PopupClass:maplibregl.Popup, eventTarget:window });
 
 try {
   const response = await fetchJsonResponse(COUNTRY_FACTS_URL);
