@@ -243,6 +243,14 @@
 **Rule retained:** retire only compatibility code whose unique behavior has a tested canonical owner; this change does not remove core country selection, inspector, layer or panel capability.
 
 
+### WM-043 · Canonical runtime validator secretly routes through legacy 3d.html — P2
+**Status:** fixed / governed on branch `world-map-canonical-validator-routing-20260920`, pending exact-head CI confirmation.  
+**Cause:** `validate_world_map_3d.py` still declared `world-map/3d.html` as its HTML owner even though that file is a noindex compatibility redirect. `validate_world_map_source.py` silently overwrote the validator constant at runtime so CI checked `world-map/index.html` anyway, leaving source-of-truth ownership contradictory. The wrapper also retained an obsolete monkey-patch for relation-budget markers already present in the canonical validator.  
+**Resolution:** the canonical renderer validator now points directly at `world-map/index.html`; its reader-facing labels use the canonical route; the source aggregator no longer mutates `validator.HTML` or replaces `validator.fail_if_missing`.  
+**Guard:** World Map ownership continues to require `3d.html` to remain a noindex redirect while the renderer validator independently requires the real application shell.  
+**Rule retained:** compatibility redirects may be validated as redirects, but they must never masquerade as the implementation owner.
+
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
