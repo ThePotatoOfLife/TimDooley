@@ -1,5 +1,5 @@
 {
-  "version": "2.1.0",
+  "version": "2.2.0",
   "updated": "2026-09-20",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
@@ -799,5 +799,34 @@
       "knowledge_owner": false,
       "legacy_routes": []
     }
-  ]
+  ],
+  "visibility_policy": {
+    "visible": {
+      "surface_visibility": [
+        "primary",
+        "secondary"
+      ],
+      "meaning": "Reader-facing surfaces that may be exposed directly from Home or global navigation. Primary is the five gateway layer plus Home; secondary is optional global orientation/discovery.",
+      "navigation_rule": "Visible does not mean equal prominence. Primary navigation remains exactly the five canonical gateways; secondary surfaces may appear in compact utility/orientation corridors."
+    },
+    "semi_visible": {
+      "surface_visibility": [
+        "specialist"
+      ],
+      "meaning": "Contextual reader surfaces reached from a parent subject, an inline conceptual door, search, A–Z or a specialist task rather than default global navigation.",
+      "navigation_rule": "Do not promote specialist surfaces onto Home merely because they exist or contain a lot of material. Promote only when the reader's current question calls for them."
+    },
+    "compatibility": {
+      "surface_visibility": [
+        "compatibility"
+      ],
+      "meaning": "Migration/redirect surfaces preserved for continuity but excluded from normal reader navigation.",
+      "navigation_rule": "Compatibility is not a discovery tier."
+    },
+    "invisible": {
+      "represented_by": "absence from public-surfaces.json or backend_only in projection contracts",
+      "meaning": "Canonical backend owners, research records and machine/support artifacts with no independent public-surface obligation.",
+      "navigation_rule": "Invisible material may support visible prose through bindings and discovery, but should not become a page merely because a file exists."
+    }
+  }
 }
