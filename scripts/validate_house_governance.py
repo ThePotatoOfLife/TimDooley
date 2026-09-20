@@ -934,7 +934,7 @@ def validate_bidirectional_spiral_field(errors):
                 errors.append(f'missing spiral public surface: {page.relative_to(ROOT)}')
                 continue
             text=page.read_text(encoding='utf-8',errors='replace')
-            for marker in ('data-bidirectional-spiral-field','bidirectional-spiral-field.js','bidirectional-spiral-field.css','bidirectional-spiral-field.json'):
+            for marker in ('data-bidirectional-spiral-field','<script src="../app/bidirectional-spiral-field.js','bidirectional-spiral-field.css','bidirectional-spiral-field.json'):
                 if marker not in text:
                     errors.append(f'{page.relative_to(ROOT)} missing spiral field marker: {marker}')
 
