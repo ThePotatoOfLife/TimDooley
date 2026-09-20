@@ -71,6 +71,21 @@
       "identity_questions",
       "missing_middle",
       "exact_source_needed"
+    ],
+    "media": [
+      "portrait",
+      "evidence_images",
+      "caption",
+      "source_ref"
+    ],
+    "symbolic_account": [
+      "status",
+      "good_karma",
+      "karmic_debt",
+      "dooley_welfare",
+      "interest",
+      "outstanding",
+      "entries"
     ]
   },
   "rules": [
@@ -79,6 +94,12 @@
     "Project-symbolic debt, karmic debt and spiritual accounting are not legal or financial liabilities unless independently established.",
     "Association is typed: co-presence is weaker than direct interaction, and direct interaction is weaker than an explicit relationship claim.",
     "Keep user-supplied alias clues separate from independently recovered aliases.",
-    "A role can change; retain old and new states with dates instead of overwriting history."
-  ]
+    "A role can change; retain old and new states with dates instead of overwriting history.",
+    "Visual activity fading reflects archive recency/status only, never moral value or human worth.",
+    "A Dooley Welfare counter may run only when a dossier explicitly enables it with a start date and rate; it is display-only project fiction, not money.",
+    "Portraits/evidence images require an explicit dossier-owned source reference; never guess a real person's identity from an unsourced image."
+  ],
+  "contracts": {
+    "symbolic_account": "knowledge/cia/symbolic-account-contract.json"
+  }
 }
