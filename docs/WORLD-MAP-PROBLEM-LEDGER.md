@@ -76,9 +76,9 @@
 **Remaining:** apply the same review standard to future Evidence/Physical renderers before promotion.
 
 ### WM-013 · Active-view accessibility summary incomplete — P2
-**Status:** substantially fixed.  
-**Completed:** Context Status is a polite live region and reports selected/preview country, population, active analytical answer, investigation mode, scale band, pins, time, plus active Physical / Geography / Evidence layer identities.  
-**Remaining:** monitor announcement noise/ordering as more specialist layers are added.
+**Status:** fixed / superseded by current presentation architecture on main (2026-09-20), pending exact-head CI confirmation.  
+**Resolution:** the mixed hover/selection Context Status surface is intentionally retired from Panel Lifecycle. Global analytical state now lives in World Bar's `atlasWorldContext`, a polite atomic status region covering active analytical, Physical, Geography, Evidence, projection, relation and time context; selected-country detail belongs to Country Card/Presentation instead of the global status surface. Identical context markup is not rewritten, reducing repeated live-region announcements.  
+**Guard:** context-status regression requires the old mixed surface to stay unloaded and verifies the accessible World Bar successor plus duplicate-announcement suppression.
 
 ### WM-014 · Route-geometry behavioral coverage incomplete — P2
 **Status:** fixed for current route families / governed on main (2026-09-20), pending exact-head CI confirmation.  
