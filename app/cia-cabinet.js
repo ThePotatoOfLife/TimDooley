@@ -4,6 +4,7 @@ const esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&g
 let manifest,roleIndex,enhancements;let activeRole='all';
 async function get(path){const r=await fetch(BASE+path);if(!r.ok)throw new Error(path);return r.json()}
 function dossierHref(id){return 'file/?character='+encodeURIComponent(id)}
+function initials(name){return String(name||'?').split(/\s+|\//).filter(Boolean).slice(0,2).map(x=>x[0]?.toUpperCase()||'').join('')||'?'}
 function roleFor(id){const out=[];for(const role of roleIndex?.roles||[])if((role.matches||[]).some(x=>x.entity_id===id))out.push(role.label);return out}
 function activityBand(f){
  const s=String(f.archive_status||'').toLowerCase();
