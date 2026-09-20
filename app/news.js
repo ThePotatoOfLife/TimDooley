@@ -40,7 +40,9 @@ async function loadPublisherRss(config,category,force){
    if(data.status&&data.status!=='ok')throw new Error(data.message||('RSS adapter '+data.status));
    return(data.items||[]).map(item=>normalizePublisherRss(item,feed,maxChars)).filter(Boolean);
  },force)));
- return settled.filter(x=>x.status==='fulfilled').flatMap(x=>x.value);
+ const successful=settled.filter(x=>x.status==='fulfilled');
+ if(feeds.length&&successful.length===0)throw new Error('All publisher RSS feeds failed');
+ return successful.flatMap(x=>x.value);
 }
 function normalizeSpace(a){const url=safeUrl(a.url);if(!url||!a.title)return null;return{id:'space:'+String(a.id||url),title:clean(a.title),url,source:clean(a.news_site)||domain(url),provider:'Spaceflight News',providerId:'spaceflight-news',published:a.published_at||a.updated_at||'',summary:clean(a.summary||''),kind:'publisher'}}
 async function loadSpace(force){return cached('space',async()=>{const data=await fetchJson('https://api.spaceflightnewsapi.net/v4/articles/?limit=32&ordering=-published_at');return(data.results||[]).map(normalizeSpace).filter(Boolean)},force)}
