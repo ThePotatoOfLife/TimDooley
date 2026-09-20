@@ -34,6 +34,7 @@
         <button type="button" data-chirality aria-pressed="true">Mirrored chirality</button>
       </div>
       <div class="spiral-field-stage"></div>
+      <div class="spiral-section-reader" data-section-reader aria-live="polite"><div class="spiral-section-tabs" data-section-tabs></div><article class="spiral-section-card" data-section-card><strong>Loading section ecology…</strong><span>The geometry remains usable while the canonical section descriptions load.</span></article></div>
       <p class="spiral-field-note">Axis = vertical orientation · Plane = waist section · radius = modeled scope/amplitude · angle = recurrence/phase. Mountain, Garden, Swamp and Drain are overlays, not the spiral itself. Direction, radius and handedness do not set moral value.</p>`;
     root.replaceChildren(wrap);
     const stage=wrap.querySelector('.spiral-field-stage');
@@ -61,8 +62,9 @@
       const ry=12+18*frac;
       const dy=n*stepY;
       for(const sign of [1,-1]){
-        rings.append(el('ellipse',{cx:380,cy:340-sign*dy,rx,ry,class:'sf-ring'}));
-        rings.append(el('text',{x:380+rx+8,y:344-sign*dy,class:'sf-ring-label'},`Σ${sign>0?'+':'-'}${n}`));
+        const sectionKey=`${sign>0?'+':'-'}${n}`;
+        rings.append(el('ellipse',{cx:380,cy:340-sign*dy,rx,ry,class:'sf-ring','data-section':sectionKey}));
+        rings.append(el('text',{x:380+rx+8,y:344-sign*dy,class:'sf-ring-label','data-section':sectionKey},`Σ${sectionKey}`));
       }
     }
     svg.append(rings);
@@ -75,8 +77,8 @@
     const geom=el('g',{'data-layer':'geometry'});
     geom.append(el('line',{x1:380,y1:38,x2:380,y2:642,class:'sf-axis'}));
     geom.append(el('line',{x1:82,y1:340,x2:678,y2:340,class:'sf-plane'}));
-    geom.append(el('circle',{cx:380,cy:340,r:7,class:'sf-origin'}));
-    geom.append(el('text',{x:394,y:328,class:'sf-origin-label'},'O · Here / Door'));
+    geom.append(el('circle',{cx:380,cy:340,r:7,class:'sf-origin','data-section':'0'}));
+    geom.append(el('text',{x:394,y:328,class:'sf-origin-label','data-section':'0'},'O · Here / Door'));
     geom.append(el('text',{x:392,y:58,class:'sf-axis-label'},'+Axis'));
     geom.append(el('text',{x:392,y:638,class:'sf-axis-label'},'−Axis'));
     geom.append(el('text',{x:92,y:330,class:'sf-plane-label'},'Σ₀ · Plane'));
@@ -101,6 +103,45 @@
       chirality=mirrored?1:-1; btn.setAttribute('aria-pressed',String(!mirrored));
       btn.textContent=mirrored?'Same chirality':'Mirrored chirality'; redraw();
     });
+    const sectionReader=wrap.querySelector('[data-section-reader]');
+    const sectionTabs=wrap.querySelector('[data-section-tabs]');
+    const sectionCard=wrap.querySelector('[data-section-card]');
+    const focusKey=root.dataset.focusSection||'0';
+    const selectSection=(section)=>{
+      if(!section)return;
+      sectionTabs.querySelectorAll('button').forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.section===section.key)));
+      svg.querySelectorAll('[data-section]').forEach(node=>node.classList.toggle('is-selected',node.getAttribute('data-section')===section.key));
+      const overlays=(section.overlays||[]).join(' · ');
+      const questions=(section.route_questions||[]).map(q=>'<li>'+q+'</li>').join('');
+      sectionCard.innerHTML='<em>'+section.label+'</em><strong>'+section.title+'</strong><span>'+section.role+'</span>'+
+        (overlays?'<small><b>Overlays:</b> '+overlays+'</small>':'')+
+        (questions?'<ul>'+questions+'</ul>':'')+
+        (section.room_projection?'<small><b>Room projection:</b> '+section.room_projection+'</small>':'')+
+        (section.boundary?'<small><b>Boundary:</b> '+section.boundary+'</small>':'');
+    };
+    const renderSections=(ecology)=>{
+      const sections=[ecology.center,...(ecology.upper||[]).slice().reverse(),...(ecology.lower||[])].filter(Boolean);
+      sectionTabs.replaceChildren();
+      sections.forEach(section=>{
+        const btn=document.createElement('button');
+        btn.type='button'; btn.dataset.section=section.key; btn.textContent=section.label.split(' · ')[0];
+        btn.setAttribute('aria-pressed','false');
+        btn.addEventListener('click',()=>selectSection(section));
+        sectionTabs.append(btn);
+      });
+      selectSection(sections.find(s=>s.key===focusKey)||ecology.center||sections[0]);
+    };
+    fetch(root.dataset.spiralSource||'../data/house/bidirectional-spiral-field.json')
+      .then(r=>{if(!r.ok)throw new Error('spiral field '+r.status);return r.json();})
+      .then(data=>{
+        if(data.section_ecology)renderSections(data.section_ecology);
+        else throw new Error('section ecology missing');
+      })
+      .catch(()=>{
+        sectionReader.classList.add('is-fallback');
+        sectionTabs.remove();
+        sectionCard.innerHTML='<strong>Section ecology unavailable</strong><span>The Axis, Plane, rings and terrain remain the canonical visual. Open the spiral-field contract for the typed section meanings.</span>';
+      });
   }
   document.querySelectorAll('[data-bidirectional-spiral-field]').forEach(mount);
 })();
