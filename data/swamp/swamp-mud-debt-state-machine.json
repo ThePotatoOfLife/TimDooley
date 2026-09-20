@@ -1,8 +1,8 @@
 {
   "id": "swamp-mud-debt-state-machine",
   "title": "Swamp–Mud–Debt State Machine",
-  "version": "1.0.0",
-  "updated": "2026-09-10",
+  "version": "1.1.0",
+  "updated": "2026-09-20",
   "status": "canonical process-model extension",
   "purpose": "Give the Swamp/Mud/Karma branch a precise process model: distinguish residue, environment, obligation, compression and exit rather than treating all lower-world terms as synonyms.",
   "epistemic_rule": "This is Potatoverse/project systems vocabulary. Real-world allegations, debts, liabilities and harms remain case-specific and evidence-bound.",
@@ -30,7 +30,9 @@
     "Swamp is not automatically Mountain: Swamp mixes unresolved material; Mountain integrates differentiated material.",
     "Mountain is not inherently good: compressed burden can become domination, rigidity or judgment without service.",
     "Mud is not inherently evil: processed residue can become Soil.",
-    "Repair does not require every conflict to escalate into a Mountain first."
+    "Repair does not require every conflict to escalate into a Mountain first.",
+    "Swamp is a regime/state and therefore must carry a time/currentness dimension.",
+    "A person, platform, institution or archive may participate in a Swamp regime without being identical to 'the Swamp'."
   ],
   "core_relational_law": "Resolve residue before it becomes structure.",
   "mountain_swamp_duality": {
@@ -81,5 +83,27 @@
     "knowledge/core/karma-double-entry-transformation-system.json",
     "knowledge/core/karma-closure-reduction-and-settlement-model.json",
     "knowledge/core/shadow-ledger-entanglement-axis.json"
-  ]
+  ],
+  "canonical_swamp_contract": "data/house/swamp-regime-contract.json",
+  "state_machine_extension": {
+    "states": [
+      "trace",
+      "Mud",
+      "pre-swamp",
+      "Swamp",
+      "deep-swamp",
+      "draining",
+      "recovered"
+    ],
+    "transition_drivers": [
+      "recurrence",
+      "provenance clarity",
+      "correction permeability",
+      "exit cost",
+      "extraction dependence",
+      "role lock",
+      "repair capacity"
+    ],
+    "rule": "This file owns Mud/Debt/Mountain process transitions; generic Swamp regime semantics are inherited from data/house/swamp-regime-contract.json."
+  }
 }
