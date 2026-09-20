@@ -235,6 +235,14 @@
 **Rule retained:** the matrix describes whether channels may coexist; it does not grant paint ownership. Canonical owners remain declared separately in `country_surface_owners`.
 
 
+### WM-041 · Dead Lens compatibility adapter remains in runtime source — P3
+**Status:** fixed / governed on branch `world-map-retire-legacy-lenses-20260920`, pending exact-head CI confirmation.  
+**Cause:** the old Lens module had already been removed from bootstrap and reduced to a compatibility translator, but the source file remained beside canonical runtime modules. Because it was never loaded, its promised legacy URL translation was not an actual supported runtime path and the file primarily preserved architectural ambiguity.  
+**Resolution:** `3d-lenses.js` is deleted. Analytical state is owned by Layer Registry, Compositor and their URL/state owners; no paint, legend or control behavior is removed from the normal map.  
+**Guard:** visual-channel validation now requires the retired Lens adapter to remain absent.  
+**Rule retained:** legacy query compatibility is only claimed when an actual loaded canonical owner implements it; dead adapters are not documentation.
+
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
