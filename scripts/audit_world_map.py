@@ -45,6 +45,8 @@ def scan_module(path,repo_root):
             key=km.group(1); out.append(record("feature_state_write",f"feature-state:{m.group(1)}:{key}",module,"setFeatureState",line_for(source,m.start()),source=m.group(1),key=key))
     for pat in (re.compile(r"\b(?:renderStack|stack)\.register\(\s*['\"]([^'\"]+)['\"]\s*,\s*['\"]([^'\"]+)['\"]"),re.compile(r"\b(?:renderStack|stack)\.register\(\s*['\"]([^'\"]+)['\"]\s*,\s*\{[\s\S]{0,250}?\bslot\s*:\s*['\"]([^'\"]+)['\"]")):
         for m in pat.finditer(source): out.append(record("render_stack",f"render-stack:{m.group(1)}",module,"register",line_for(source,m.start()),layer=m.group(1),slot=m.group(2)))
+    for m in re.finditer(r"\bstyleLifecycle\.register\(\s*['\"]([^'\"]+)['\"]",source):
+        owner=m.group(1); out.append(record("style_participant",f"style-participant:{owner}",module,"register",line_for(source,m.start()),owner=owner))
     for i,m in enumerate(re.finditer(r"new\s+maplibregl\.Popup\s*\(",source),1):
         event=_nearest_map_event(source,m.start()); ctx=source[max(0,m.start()-1200):min(len(source),m.end()+2200)]; out.append(record("popup",f"popup:{module}:{i}",module,"Popup",line_for(source,m.start()),transient=event in HOVER_EVENTS,trigger_event=event,has_hover_class="atlas-hover" in ctx))
     return sorted(out,key=lambda r:(r["module"],r["line"],r["kind"],r["resource"]))
@@ -86,15 +88,33 @@ def analyze(records,contract,existing_modules):
             if not matched: findings.append(finding("stale-contract-entry","warning","render_ownership",f"Contract {section} entry no longer matches live inventory: {rid}",[rid],remediation="Remove or narrow the stale contract entry."))
     for row in records:
         if row["kind"]=="popup" and row["details"].get("transient") and not row["details"].get("has_hover_class"): findings.append(finding("transient-popup-class-missing","error","popup_interaction",f"Transient hover popup is not marked with .atlas-hover in {row['module']}",[row["resource"]],[row["module"]],"Add the canonical atlas-hover marker or classify the popup as persistent/click-owned."))
-    style_rows=[r for r in records if r["kind"]=="style_restore"]; style_modules=sorted({r["module"] for r in style_rows}); cfg=contract.get("style_restoration") or {}; allowed=cfg.get("allowed_modules") if isinstance(cfg,dict) else None
-    if isinstance(allowed,dict):
-        for mod in style_modules:
-            row=next(r for r in style_rows if r["module"]==mod)
-            if mod not in allowed: findings.append(finding("unapproved-style-restorer","warning","style_lifecycle",f"Style restoration participant is not declared in the contract: {mod}",[row["resource"]],[mod],"Document the intentional restorer or converge it into an approved lifecycle owner."))
-            elif not row["details"].get("deferred"): findings.append(finding("style-restorer-undeferred","warning","style_lifecycle",f"Approved style restorer is not deferred: {mod}",[row["resource"]],[mod],"Defer restoration so style mutation settles before resource recreation."))
-            elif mod!="world-map/3d-render-stack.js" and not row["details"].get("guarded"): findings.append(finding("style-restorer-unguarded","warning","style_lifecycle",f"Approved physical style restorer lacks a reentrancy guard: {mod}",[row["resource"]],[mod],"Add a restoration guard."))
-        for mod in sorted(set(allowed)-set(style_modules)): findings.append(finding("stale-style-restorer-contract","warning","style_lifecycle",f"Approved style restorer no longer participates in styledata: {mod}",[f"style-restore:{mod}"],[mod],"Remove the stale contract entry."))
-    elif len(style_modules)>1: findings.append(finding("multiple-style-restorers","warning","style_lifecycle",f"{len(style_modules)} modules independently participate in styledata restoration.",[f"style-restore:{m}" for m in style_modules],style_modules,"Keep restoration idempotent and coordinated."))
+    style_rows=[r for r in records if r["kind"]=="style_restore"]
+    style_modules=sorted({r["module"] for r in style_rows})
+    participant_rows=[r for r in records if r["kind"]=="style_participant"]
+    cfg=contract.get("style_restoration") or {}
+    owner_module=cfg.get("owner_module") if isinstance(cfg,dict) else None
+    participants=cfg.get("participants") if isinstance(cfg,dict) else None
+    if owner_module:
+        if owner_module not in existing_modules:
+            findings.append(finding("style-owner-module-missing","error","style_lifecycle",f"Declared Style Lifecycle owner is absent: {owner_module}",[f"style-restore:{owner_module}"],[owner_module],"Update the owner declaration or restore the canonical lifecycle module."))
+        unexpected=[mod for mod in style_modules if mod!=owner_module]
+        if unexpected:
+            findings.append(finding("unapproved-style-restorer","warning","style_lifecycle",f"Direct styledata ownership remains outside the canonical Style Lifecycle: {', '.join(unexpected)}",[f"style-restore:{m}" for m in unexpected],unexpected,"Register restore work with the central Style Lifecycle instead of binding styledata directly."))
+        if owner_module not in style_modules:
+            findings.append(finding("style-owner-listener-missing","error","style_lifecycle",f"Canonical Style Lifecycle owner does not bind styledata: {owner_module}",[f"style-restore:{owner_module}"],[owner_module],"Restore the one canonical styledata listener."))
+        else:
+            row=next(r for r in style_rows if r["module"]==owner_module)
+            if not row["details"].get("deferred"):
+                findings.append(finding("style-owner-undeferred","warning","style_lifecycle",f"Canonical Style Lifecycle owner is not deferred: {owner_module}",[row["resource"]],[owner_module],"Schedule restoration after style mutation settles."))
+        if isinstance(participants,dict):
+            observed={(r["module"],r["details"].get("owner")) for r in participant_rows}
+            expected={(mod,owner) for mod,owner in participants.items()}
+            for mod,participant_owner in sorted(observed-expected):
+                findings.append(finding("unapproved-style-participant","warning","style_lifecycle",f"Style Lifecycle registration is not declared: {participant_owner} in {mod}",[f"style-participant:{participant_owner}"],[mod],"Declare the participant or remove the stale registration."))
+            for mod,participant_owner in sorted(expected-observed):
+                findings.append(finding("stale-style-participant-contract","warning","style_lifecycle",f"Declared Style Lifecycle participant is not registered: {participant_owner} in {mod}",[f"style-participant:{participant_owner}"],[mod],"Update the contract or restore the participant registration."))
+    elif len(style_modules)>1:
+        findings.append(finding("multiple-style-restorers","warning","style_lifecycle",f"{len(style_modules)} modules independently participate in styledata restoration.",[f"style-restore:{m}" for m in style_modules],style_modules,"Keep restoration idempotent and coordinated."))
     allowed_slots=set(contract.get("render_stack_slots") or DEFAULT_RENDER_STACK_SLOTS)
     for row in records:
         if row["kind"]=="render_stack" and row["details"].get("slot") not in allowed_slots: findings.append(finding("unknown-render-stack-slot","error","render_ownership",f"Unknown render-stack slot {row['details'].get('slot')!r} in {row['module']}",[row["resource"]],[row["module"]],"Use a canonical slot or extend the contract deliberately."))
