@@ -1,6 +1,6 @@
 {
   "id": "body-index",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "updated": "2026-09-20",
   "title": "BODY / Neurobiology Canonical Index",
   "status": "canonical navigation index for knowledge/body",
@@ -126,6 +126,24 @@
       "name": "Granular brain rooms",
       "path": "knowledge/body/brain-room-deep-atlas.json",
       "use_for": "sub-lobe cortical territories, hippocampal/amygdala nuclei, basal ganglia, hypothalamus, thalamus, brainstem, cerebellum, interfaces and vascular supply"
+    },
+    {
+      "step": 21,
+      "name": "Neural development & lineage",
+      "path": "knowledge/body/neural-development-lineage-atlas.json",
+      "use_for": "neural tube, brain vesicles, radial glia, migration, neural crest, developmental origin of adult rooms"
+    },
+    {
+      "step": 22,
+      "name": "Glia / neurovascular / living boundaries",
+      "path": "knowledge/body/glia-neurovascular-barrier-atlas.json",
+      "use_for": "astrocytes, oligodendrocytes, microglia, BBB, blood-CSF barrier, pericytes and neurovascular unit"
+    },
+    {
+      "step": 23,
+      "name": "Cortical cell types & parcellations",
+      "path": "knowledge/body/cortical-celltype-parcellation-atlas.json",
+      "use_for": "cortical layers, projection classes, interneuron families, transcriptomics and competing parcellation systems"
     }
   ],
   "specialist_owners": [
@@ -188,6 +206,18 @@
     {
       "topic": "granular brain rooms",
       "path": "knowledge/body/brain-room-deep-atlas.json"
+    },
+    {
+      "topic": "neural development / embryology / lineage",
+      "path": "knowledge/body/neural-development-lineage-atlas.json"
+    },
+    {
+      "topic": "glia / BBB / neurovascular unit",
+      "path": "knowledge/body/glia-neurovascular-barrier-atlas.json"
+    },
+    {
+      "topic": "cortical layers / cell types / parcellations",
+      "path": "knowledge/body/cortical-celltype-parcellation-atlas.json"
     }
   ],
   "canonical_symbol_relations": [
