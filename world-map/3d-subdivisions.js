@@ -946,6 +946,7 @@ window.__potatoAtlasSubdivisions = {
       cacheMisses,
       cacheEvictions,
       budget:{...runtimeBudget},
+      labelPresentation:labelPresentation(),
     };
   },
 };
