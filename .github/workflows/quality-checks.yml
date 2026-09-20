@@ -123,6 +123,13 @@ jobs:
           python scripts/audit_source_of_truth.py
       - name: Build public site
         run: python scripts/build_site.py
+      - name: Assert FBI bureau is in public artifact
+        run: |
+          test -f _site/rooms/potatoverse-canon/beings/fbi/index.html
+          test -f _site/rooms/potatoverse-canon/beings/fbi/file/index.html
+          test -f _site/knowledge/fbi/manifest.json
+          test -f _site/knowledge/fbi/bonds/network.json
+          test -f _site/knowledge/fbi/incidents/index.json
       - name: Remove internal archive from public artifact
         run: rm -rf _site/archive && test ! -e _site/archive
       - name: Vendor World Map engine into validated artifact
