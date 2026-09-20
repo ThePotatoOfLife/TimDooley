@@ -15,6 +15,7 @@ APP = ROOT / "world-map" / "3d-app.js"
 HANDOFF = ROOT / "world-map" / "3d-core-interaction-handoff.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
 COUNTRY = ROOT / "world-map" / "3d-country-selection.js"
+SPATIAL = ROOT / "world-map" / "3d-spatial-overlays.js"
 GATEWAYS = ROOT / "world-map" / "3d-gateways.js"
 INFRASTRUCTURE = ROOT / "world-map" / "3d-infrastructure.js"
 IMPACT_ACTIONS = ROOT / "world-map" / "3d-impact-actions.js"
@@ -24,7 +25,7 @@ COMPAT_TEST = ROOT / "scripts" / "test_world_map_interaction_compatibility.mjs"
 
 def main() -> int:
     errors: list[str] = []
-    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, BOOTSTRAP, APP, HANDOFF, HOVER, COUNTRY, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS, TEST, COMPAT_TEST):
+    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, BOOTSTRAP, APP, HANDOFF, HOVER, COUNTRY, SPATIAL, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS, TEST, COMPAT_TEST):
         if not path.exists():
             errors.append(f"missing interaction-router file: {path.relative_to(ROOT)}")
     if errors:
@@ -41,6 +42,7 @@ def main() -> int:
     handoff = HANDOFF.read_text(encoding="utf-8", errors="replace")
     hover = HOVER.read_text(encoding="utf-8", errors="replace")
     country = COUNTRY.read_text(encoding="utf-8", errors="replace")
+    spatial = SPATIAL.read_text(encoding="utf-8", errors="replace")
     gateways = GATEWAYS.read_text(encoding="utf-8", errors="replace")
     infrastructure = INFRASTRUCTURE.read_text(encoding="utf-8", errors="replace")
     impact_actions = IMPACT_ACTIONS.read_text(encoding="utf-8", errors="replace")
@@ -102,16 +104,30 @@ def main() -> int:
             errors.append(f"core interaction handoff missing marker: {token}")
 
     for token in (
-        "const interaction = window.__potatoAtlasInteraction",
+        "function interactionRouter()",
         "interaction.unregister('core-country-fallback')",
         "interaction.register('countries'",
         "objectType:'country'",
         "clickPriority:10",
+        "function uninstallClickInterception()",
+        "potato-atlas-interaction-ready",
     ):
         if token not in country:
             errors.append(f"country selection router migration missing marker: {token}")
     if "installClickInterception();" not in country:
         errors.append("country selection degraded fallback must still install the direct click interception path")
+    if "map.off('click', layer, interceptPolygonClick)" not in country:
+        errors.append("country selection fallback must be removable when Router ownership becomes available")
+
+    for token in (
+        "function interactionRouter()",
+        "function unbindFallbackInteraction()",
+        "potato-atlas-interaction-ready",
+        "interaction.register('spatial-overlays'",
+        "map.off('click', id, handlers.onClick)",
+    ):
+        if token not in spatial:
+            errors.append(f"spatial overlay Router promotion missing marker: {token}")
 
     for token in (
         "interaction.register('country-hover'",
@@ -148,7 +164,7 @@ def main() -> int:
     if not node:
         errors.append("node executable unavailable; cannot run interaction-router regression")
     else:
-        for path in (ROUTER, SUBDIVISIONS, APP, HANDOFF, HOVER, COUNTRY, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS):
+        for path in (ROUTER, SUBDIVISIONS, APP, HANDOFF, HOVER, COUNTRY, SPATIAL, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS):
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
@@ -164,8 +180,8 @@ def main() -> int:
     print("- disabled registrations cannot win")
     print("- pre-core capture hands direct click listeners to the shared router")
     print("- canonical 3d-app renderer remains in-place and unchanged")
-    print("- country, capital, Gateway and Infrastructure interaction owned by the router on normal boots")
-    print("- compatibility event claim retained only for degraded direct-handler fallback")
+    print("- country, spatial overlay, capital, Gateway and Infrastructure interaction owned by the router on normal boots")
+    print("- degraded direct-handler fallbacks are removable and promote to Router ownership when readiness arrives")
     print(f"Errors: {len(errors)}")
     if errors:
         print("WORLD MAP INTERACTION ROUTER VALIDATION FAILED")
