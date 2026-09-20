@@ -28,6 +28,29 @@ def route_to_path(route: str) -> Path:
 def covered(text: str) -> bool:
     return any(marker in text for marker in DIRECT_MARKERS) or INHERITED_MARKER in text
 
+def validate_built_site(errors: list[str], notes: list[str]) -> None:
+    out = ROOT / "_site"
+    if not out.exists():
+        notes.append("_site not present; built-site TTS audit skipped")
+        return
+    quiet_prefixes = ("world-map/", "rooms/objects/", "index-a-z/", "tools/tts/")
+    checked = 0
+    for path in out.rglob("*.html"):
+        rel = path.relative_to(out).as_posix()
+        text = path.read_text(encoding="utf-8", errors="replace")
+        if not ("<html" in text.lower() and "<main" in text.lower()):
+            continue
+        if rel.startswith(quiet_prefixes):
+            continue
+        checked += 1
+        if not (
+            "site-tts.js" in text
+            or "data-tts-longform" in text
+            or "tts-drawer.js" in text
+        ):
+            errors.append(f"built page missing TTS coverage: {rel}")
+    notes.append(f"built-site TTS documents checked: {checked}")
+
 def main() -> int:
     errors: list[str] = []
     notes: list[str] = []
@@ -108,6 +131,8 @@ def main() -> int:
         for marker in ("nextChunk", "watchdog", "autoRecover", "SpeechSynthesis"):
             if marker not in text:
                 errors.append(f"TTS engine missing {marker}")
+
+    validate_built_site(errors, notes)
 
     print(f"checked {len(active)} active public surfaces")
     for note in notes:
