@@ -27,6 +27,13 @@ assert.equal(scale.threshold('places-detail', 'load'), 4.2);
 assert.equal(scale.threshold('places-detail', 'render'), 4.2);
 assert.equal(scale.threshold('places-detail', 'label'), 5.0);
 assert.equal(scale.threshold('places-detail', 'interact'), 4.2);
+assert.equal(scale.threshold('physical-water-detail', 'load'), 3.4);
+assert.equal(scale.threshold('physical-water-detail', 'render'), 3.4);
+assert.equal(scale.threshold('physical-hydrology', 'load'), 4.0);
+assert.equal(scale.threshold('physical-hydrology', 'render'), 4.0);
+assert.equal(scale.threshold('hydrology-rivers-medium', 'load'), 5.2);
+assert.equal(scale.threshold('hydrology-rivers-fine', 'load'), 6.7);
+assert.equal(scale.threshold('hydrology-rivers-detailed', 'load'), 8.2);
 
 // Raw lookup reports the mathematical band without memory.
 assert.equal(scale.bandForZoom(4.21), 'country');
