@@ -6,7 +6,6 @@ const layout = read('3d-ui-layout.js');
 const ui = read('3d-ui.js');
 const axisDepth = read('3d-axis-depth.js');
 const selection = read('3d-country-selection.js');
-const lenses = read('3d-lenses.js');
 const pathfinder = read('3d-pathfinder.js');
 const chain = read('3d-chain-explorer.js');
 const impact = read('3d-impact-trace.js');
@@ -27,7 +26,7 @@ assert.ok(layout.includes('body.atlas-registry-ui .hud') && layout.includes('bod
 assert.ok(ui.includes("id:'axis-compact', zone:'canvas-control'"), 'Axis compact control must register as a canvas control');
 
 // Persistent informational surfaces belong to the shared status stack.
-for (const marker of ['world-context','time-state','lens-legend','axis-field-legend','axis-operator-hud']) {
+for (const marker of ['world-context','time-state','axis-field-legend','axis-operator-hud']) {
   assert.ok(layout.includes(marker), `layout inventory missing persistent surface ${marker}`);
 }
 assert.ok(layout.includes('#atlasUILeftStatus>*{position:static!important'), 'shared status host must neutralize child absolute positioning');
