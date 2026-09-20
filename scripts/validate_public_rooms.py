@@ -158,16 +158,23 @@ def main() -> int:
             if not summary or len(re.sub(r"<[^>]+>", " ", summary.group(1)).strip()) < 40:
                 errors.append(f"{rel} missing substantive Room summary")
 
-    migrated_shell_rooms=["economy-finance","experiments-formalization","games-simulations","geography-countries","great-book-literature","house-architecture","information-ecology","infrastructure-capability","internet-platforms","law-justice","music-sound","neurobiology","open-questions","politics-governance","potato-biology","research-programmes","subculture-group-formation","symbolic-body-comparison","visual-art","whole-body"]
-    for slug in migrated_shell_rooms:
+    interiors=load_json("data/house/room-interiors.json")
+    for row in interiors.get("interiors", []):
+        if not isinstance(row, dict):
+            continue
+        route=row.get("route","")
+        slug=route.strip("/").split("/")[-1] if route else ""
+        if not slug:
+            errors.append(f"Room interior missing route slug: {row.get('subroom_id')}")
+            continue
         page=ROOT/"rooms"/"inside"/slug/"index.html"
         if not page.exists():
-            errors.append(f"missing migrated Room shell page: {slug}")
+            errors.append(f"missing nested Room shell page: {slug}")
             continue
         text=page.read_text(encoding="utf-8",errors="replace")
         if 'app/room-interior.css' not in text:
             errors.append(f"{slug} must use shared room-interior.css")
-        if re.search(r"<style>[\\s\\S]*?(?:\\.inner-home|\\.inner-center|\\.adj-grid)[\\s\\S]*?</style>", text, flags=re.I):
+        if re.search(r"<style>[\\s\\S]*?(?:\\.inner-home|\\.inner-center|\\.adj-grid|\\.actions)[\\s\\S]*?</style>", text, flags=re.I):
             errors.append(f"{slug} reintroduced duplicated Room shell CSS")
 
     rooms_text = page_text.get("rooms/index.html", "")
