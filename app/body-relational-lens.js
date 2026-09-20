@@ -5,6 +5,11 @@
   const esc=v=>String(v??'').replace(/[&<>"]/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));
   const wanted=(script.dataset.bodyObjects||'').split(',').map(x=>x.trim()).filter(Boolean);
   const mountSel=script.dataset.bodyMount||'[data-body-lens]';
+  const projectUrl=(route)=>{
+    const value=String(route||'/life-body/');
+    if(/^https?:\/\//i.test(value))return value;
+    return new URL('../'+value.replace(/^\/+/,''),script.src).href;
+  };
   fetch(src).then(r=>r.ok?r.json():Promise.reject()).then(data=>{
     const mount=document.querySelector(mountSel);if(!mount)return;
     const rows=(data.objects||[]).filter(x=>!wanted.length||wanted.includes(x.id));
