@@ -44,6 +44,7 @@ body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transpa
 <button class="tab active" data-panel="overview">Overview</button>
 <button class="tab" data-panel="timeline">Timeline</button>
 <button class="tab" data-panel="conversations">Conversations</button>
+<button class="tab" data-panel="patterns">Patterns</button>
 <button class="tab" data-panel="bonds">Bonds</button>
 <button class="tab" data-panel="stories">Stories</button>
 <button class="tab" data-panel="roles">Roles</button>
@@ -53,6 +54,7 @@ body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transpa
 <section class="panel active" id="overview"></section>
 <section class="panel" id="timeline"></section>
 <section class="panel" id="conversations"></section>
+<section class="panel" id="patterns"></section>
 <section class="panel" id="bonds"></section>
 <section class="panel" id="stories"></section>
 <section class="panel" id="roles"></section>
@@ -133,6 +135,22 @@ function conversationsHtml(){
        '<p class="muted">'+esc(x.interpretive_boundary||'')+'</p></article>';
    }).join(''):'<p class="empty">No recovered conversation entries indexed for this figure yet.</p>')+'</div>';
 }
+function patternsHtml(){
+ const s=dossier.scene_ecology||{};
+ const ca=dossier.conversation_archaeology||{};
+ const recurring=arr(s.recurring_modes).length?arr(s.recurring_modes):arr(ca.recurring_modes);
+ const shifts=arr(s.role_shifts);
+ const ordinary=arr(s.ordinary_texture).length?arr(s.ordinary_texture):arr(ca.ordinary_life_signals);
+ const tensions=arr(s.tensions);
+ const pattern=ca.disagreement_support_pattern||'';
+ const boundary=s.boundary||ca.interpretive_boundary||dossier.tim_relation?.source_boundary||'';
+ return '<div class="two"><div><div class="block"><h2>Recurring modes</h2>'+(recurring.length?'<div class="role-list">'+recurring.map(x=>'<span class="role">'+esc(x)+'</span>').join('')+'</div>':'<p class="empty">No recurring modes indexed yet.</p>')+'</div>'+
+ '<div class="block"><h2>Role changes</h2>'+(shifts.length?shifts.map(x=>'<article class="event"><time>'+esc(x.period||'')+'</time><h3>'+esc(x.from||'')+' → '+esc(x.to||'')+'</h3><p>'+esc(x.evidence||'')+'</p></article>').join(''):'<p class="empty">No explicit role-shift sequence indexed yet.</p>')+'</div></div>'+
+ '<div><div class="block"><h2>Ordinary texture</h2>'+(ordinary.length?'<ul>'+ordinary.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'<p class="empty">No ordinary-life texture indexed yet.</p>')+'</div>'+
+ '<div class="block"><h2>Tensions / counter-patterns</h2>'+(tensions.length?'<ul>'+tensions.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':(pattern?'<p>'+esc(pattern)+'</p>':'<p class="empty">No tension pattern indexed yet.</p>'))+'</div></div></div>'+
+ (pattern&&tensions.length?'<div class="block"><h2>Relationship pattern</h2><p>'+esc(pattern)+'</p></div>':'')+
+ '<p class="stamp">INTERPRETIVE BOUNDARY</p><p>'+esc(boundary)+'</p>';
+}
 function bondsHtml(){
  const list=bondMatches(current).sort((a,b)=>b.count-a.count);
  return '<div class="block"><h2>Source-derived co-presence</h2><p class="muted">Co-presence does not itself prove friendship, alliance, motive or conflict.</p>'+(list.length?list.map(e=>{const other=e.a===current?e.b:e.a;return '<article class="event"><h3>'+esc(other)+' <span class="mono">×'+esc(e.count)+'</span></h3><p>'+esc(arr(e.contexts).slice(0,4).join(' · '))+'</p><small>'+esc(arr(e.dates).join(', '))+'</small></article>'}).join(''):'<p class="empty">No co-presence edges in current network.</p>')+'</div>';
@@ -167,6 +185,7 @@ function render(){
  document.getElementById('overview').innerHTML=overviewHtml();
  document.getElementById('timeline').innerHTML=timelineHtml();
  document.getElementById('conversations').innerHTML=conversationsHtml();
+ document.getElementById('patterns').innerHTML=patternsHtml();
  document.getElementById('bonds').innerHTML=bondsHtml();
  document.getElementById('stories').innerHTML=storiesHtml();
  document.getElementById('roles').innerHTML=rolesHtml();
