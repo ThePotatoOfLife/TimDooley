@@ -29,20 +29,6 @@
         "world-map/3d-country-selection.js"
       ],
       "rationale": "The core renderer retains compare compatibility while the browse-first selection controller clears or preserves compare state during working-selection persistence."
-    },
-    "url:lens": {
-      "modules": [
-        "world-map/3d-layer-registry.js",
-        "world-map/3d-lenses.js"
-      ],
-      "rationale": "The composable layer registry migrates and clears the legacy Lens URL state while the dormant compatibility Lens module retains the old writer."
-    },
-    "url:lensOption": {
-      "modules": [
-        "world-map/3d-layer-registry.js",
-        "world-map/3d-lenses.js"
-      ],
-      "rationale": "The composable layer registry migrates and clears the legacy Lens option while the dormant compatibility Lens module retains the old writer."
     }
   },
   "style_restoration": {
