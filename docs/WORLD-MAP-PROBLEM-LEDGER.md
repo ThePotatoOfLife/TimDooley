@@ -192,6 +192,12 @@
 **Resolution:** subdivisions now reuse the shared Tooltip Service and Interaction Router for region-name/local-name/type/country previews, with semantic hover-key reuse and leave invalidation. The degraded direct-listener fallback mirrors the same tooltip behavior without constructing a private popup.  
 **Guard:** specialist-tooltip regression now requires shared subdivision tooltip ownership, routed hover, leave invalidation, degraded fallback parity and zero private Popup construction.
 
+### WM-035 · Subdivision local names are searchable but invisible on-map — P2
+**Status:** fixed / governed on branch `world-map-local-region-labels-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** Ukraine/Russia/Denmark partitions retain local names and unified search can match them, but ambient subdivision labels always projected only code/English name.  
+**Resolution:** generic subdivision labels now use the shared scale vocabulary: code at early regional scale, canonical name at subnational scale, and canonical + local name at the shared local scale when the names differ. Narrow-screen and globe density delays apply to the local-name threshold too.  
+**Guard:** subdivision readability validation requires local-scale ownership, local-name presence/inequality guards and the bilingual label expression.
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
