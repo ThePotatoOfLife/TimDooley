@@ -39,6 +39,7 @@ let activePartitions = [];
 const forcedPartitions = new Set();
 const forcedPartitionOwners = new Map();
 const evidenceProviders = new Map();
+const sourceRefreshObservers = new Map();
 
 function retentionOwner(owner = 'anonymous') {
   const token = String(owner || '').trim();
@@ -256,6 +257,18 @@ function touch(state) {
 function cacheBytes() {
   return [...cache.values()].reduce((sum, state) => sum + state.bytes, 0);
 }
+function notifySourceRefresh(reason='update') {
+  const detail = {
+    reason,
+    sourceId:SOURCE_ID,
+    renderedPartitions:[...activePartitions],
+  };
+  for (const [observerId, callback] of sourceRefreshObservers.entries()) {
+    try { callback(detail); }
+    catch (error) { console.warn(`Subdivision source refresh observer failed: ${observerId}`, error); }
+  }
+  window.dispatchEvent(new CustomEvent('potato-atlas-subdivisions-source-change', { detail }));
+}
 function syncDiagnostics() {
   const diagnostics = window.__potatoAtlasDiagnostics;
   if (!diagnostics) return;
@@ -392,6 +405,9 @@ async function installSharedLayers() {
   }
   bindSharedLayerEvents();
 }
+map.on('sourcedata', event => {
+  if (event?.sourceId === SOURCE_ID && event?.isSourceLoaded) notifySourceRefresh('sourcedata');
+});
 async function loadPartition(partition) {
   if (cache.has(partition)) {
     cacheHits += 1;
@@ -473,9 +489,7 @@ async function reconcileActive(index) {
   else if (source) source.data = merged;
   activePartitions = selected.map(entry => entry.partition);
   activeBytes = bytes;
-  window.dispatchEvent(new CustomEvent('potato-atlas-subdivisions-source-change', {
-    detail:{ renderedPartitions:[...activePartitions], featureCount:merged.features.length }
-  }));
+  notifySourceRefresh('setData');
   enforceCacheBudget(index);
   syncDiagnostics();
   return activePartitions;
@@ -561,6 +575,16 @@ window.__potatoAtlasSubdivisions = {
     const index = await subdivisionIndex();
     return reconcileActive(index);
   },
+  registerSourceRefreshObserver(id, callback) {
+    const key = String(id || '').trim();
+    if (!key || typeof callback !== 'function') return false;
+    sourceRefreshObservers.set(key, callback);
+    return true;
+  },
+  unregisterSourceRefreshObserver(id) {
+    return sourceRefreshObservers.delete(String(id || '').trim());
+  },
+  sourceRefreshObservers() { return [...sourceRefreshObservers.keys()].sort(); },
   registerEvidenceProvider(id, provider) {
     const key = String(id || '').trim();
     if (!key || !provider?.summary) return false;
