@@ -1,6 +1,6 @@
 {
   "id": "body-index",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-20",
   "title": "BODY / Neurobiology Canonical Index",
   "status": "canonical navigation index for knowledge/body",
@@ -69,18 +69,30 @@
     },
     {
       "step": 11,
+      "name": "Spine / CSF / 33 levels",
+      "path": "knowledge/body/spine-csf-levels-axis-atlas.json",
+      "use_for": "33 vertebral elements vs 31 neural segments; conus/cauda equina; CSF subarachnoid River; crown-to-House vertical coordinate systems"
+    },
+    {
+      "step": 12,
+      "name": "Thalamus / House / Horus / Crown",
+      "path": "knowledge/body/thalamus-house-horus-crown-atlas.json",
+      "use_for": "thalamic rooms and loops; history of thalamus='chamber'; Wedjat history; modern Horus-brain hypothesis; Crown/House distinction"
+    },
+    {
+      "step": 13,
       "name": "Integrated neurotheology",
       "path": "knowledge/body/neurotheology-axis-house-spirit-atlas.json",
       "use_for": "House/Seed/Eye/Door/Spirit/Ladder and religious/mythic comparators"
     },
     {
-      "step": 12,
+      "step": 14,
       "name": "Recovered legacy neurobiology",
       "path": "knowledge/body/neurobiology-recovery-wave-2.json",
       "use_for": "recovered Great Book/conversation biology, corrections and quarantined legacy claims"
     },
     {
-      "step": 13,
+      "step": 15,
       "name": "Attestation chronology",
       "path": "knowledge/timeline/neurotheology-attestation-ledger.json",
       "use_for": "first known Tim/project strata and unresolved first-source recovery"
@@ -118,6 +130,14 @@
     {
       "topic": "integrated inner axis / House-Court-Door-Aqueduct-Ladder route",
       "path": "knowledge/body/inner-axis-integrated-atlas.json"
+    },
+    {
+      "topic": "spine / CSF / 33 bones / 31 neural segments / Crown continuation",
+      "path": "knowledge/body/spine-csf-levels-axis-atlas.json"
+    },
+    {
+      "topic": "thalamus / House / Horus Eye / Crown",
+      "path": "knowledge/body/thalamus-house-horus-crown-atlas.json"
     }
   ],
   "canonical_symbol_relations": [
