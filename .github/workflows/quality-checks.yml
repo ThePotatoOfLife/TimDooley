@@ -31,51 +31,18 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.x'
-      - name: Repository and runtime basics
-        run: |
-          python scripts/validate_repo_hygiene.py
-          python scripts/test_bidirectional_spiral_field.py
-          python scripts/validate_archive_runtime_hardening.py
-          python scripts/validate_country_refresh_reliability.py
-          python scripts/validate_seo_pipeline.py
-      - name: House governance and topology
-        run: |
-          python scripts/validate_house_governance.py
-          python scripts/validate_house_topology.py
-          python scripts/validate_house_subrooms.py
-          python scripts/validate_house_compatibility.py
-          python scripts/validate_house_world_routing.py
-          python scripts/test_coordination_convergence.py
-          python scripts/validate_project_formal_grammar.py
-          python scripts/validate_public_rooms.py
-      - name: Foundation and instrumentation
-        run: |
-          python scripts/validate_foundation_layer.py
-          python scripts/validate_foundation_seed_genealogy.py
-          python scripts/validate_foundation_axis_placement.py
-          python scripts/validate_foundation_rooms.py
-          python scripts/validate_commit_crystallization.py
-          python scripts/validate_entity_dossier_instrumentation.py
-          python scripts/validate_route_case_instrumentation.py
-          python scripts/validate_works_fruit_instrumentation.py
-      - name: Timeline and story integrity
-        run: |
-          python scripts/validate_timeline_naming.py
-          python scripts/validate_prediction_under_mined_domains.py
-          python scripts/validate_100000_hour_page.py
-          python scripts/validate_story_archive.py
-          python scripts/audit_story_source_closeness.py
-      - name: Atlas and architecture contracts
-        run: |
-          python scripts/validate_blueprints.py
-          python scripts/stability_audit.py
-          python scripts/validate_atlas.py
-          python scripts/validate_atlas_view_contracts.py
-          python scripts/validate_atlas_math_calibration.py
-          python scripts/validate_repository_spine.py
-          python scripts/validate_architecture_layers.py
-          python scripts/validate_content_integrity.py
-          python scripts/check_css_namespace_collisions.py
+      - name: Run Core · House · Atlas quality group
+        run: python scripts/run_quality_group.py core
+      - name: Upload Core · House · Atlas diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-core
+          path: |
+            quality-report-core.json
+            .quality-logs/core/
+          if-no-files-found: warn
+          retention-days: 7
 
   world_map:
     name: World Map
@@ -90,73 +57,18 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.x'
-      - name: Ownership, evidence and layer integration
-        run: |
-          python scripts/validate_world_map_ownership.py
-          python scripts/validate_world_map_adl_heat.py
-          python scripts/validate_world_map_layer_integration.py
-          python scripts/validate_world_map_data_runtime.py
-          python scripts/validate_world_axis_systems.py
-          python scripts/validate_world_map_system_intelligence.py
-      - name: Chains, entities and coverage
-        run: |
-          python scripts/validate_world_map_chain_explorer.py
-          python scripts/validate_world_map_entity_africa_repair.py
-          python scripts/validate_world_map_impact_trace.py
-          python scripts/build_world_map_coverage.py
-          python scripts/validate_world_map_coverage.py
-          python scripts/validate_world_map_infrastructure.py
-          python scripts/validate_world_map_infrastructure_integration.py
-      - name: Canonical runtime and auditor tests
-        run: |
-          python scripts/validate_world_map_source.py
-          python scripts/test_world_map_auditor.py
-      - name: Audit World Map runtime architecture
-        id: world_map_audit
-        continue-on-error: true
-        run: python scripts/audit_world_map.py
-      - name: Upload World Map audit report
+      - name: Run World Map quality group
+        run: python scripts/run_quality_group.py world_map
+      - name: Upload World Map diagnostics
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: world-map-audit-report
-          path: world-map-audit-report.json
+          name: quality-world-map
+          path: |
+            quality-report-world_map.json
+            .quality-logs/world_map/
           if-no-files-found: warn
           retention-days: 7
-      - name: Enforce World Map audit gate
-        if: steps.world_map_audit.outcome == 'failure'
-        run: exit 1
-      - name: UI, geometry and investigation
-        run: |
-          python scripts/validate_world_map_ui_layout.py
-          python scripts/validate_world_map_spatial_overlays.py
-          python scripts/validate_world_map_palestine.py
-          python scripts/validate_world_map_pathfinder_source.py
-          python scripts/validate_world_map_investigation_utility.py
-          python scripts/validate_world_map_entity_trace.py
-      - name: Context control plane
-        run: |
-          python scripts/validate_world_map_context_visibility.py
-          node scripts/test_world_map_context_policy.mjs
-          node scripts/test_world_map_ui_surface_budget.mjs
-          node scripts/test_world_map_time_policy.mjs
-          node scripts/test_world_map_investigation_contract.mjs
-          node scripts/test_world_map_investigation_surface_ownership.mjs
-          node scripts/test_world_map_pinned_context_contract.mjs
-          node scripts/test_world_map_context_status.mjs
-          node scripts/test_world_map_display_system_contract.mjs
-          node scripts/test_world_map_inspection_bootstrap_staging.mjs
-          node scripts/test_world_map_inspector_visibility.mjs
-          node scripts/test_world_map_motion_compositor.mjs
-          node scripts/test_world_map_route_geometry_semantics.mjs
-          python scripts/validate_world_map_visual_channels.py
-          node scripts/test_world_map_visual_channels.mjs
-          python scripts/validate_world_places_fixture_pipeline.py
-          node scripts/test_world_map_reset_context_contract.mjs
-          node scripts/test_world_map_search_selection_contract.mjs
-          node scripts/test_world_map_relation_budget_contract.mjs
-          python scripts/validate_world_map_runtime_telemetry.py
-          node scripts/test_world_map_context_ci_contract.mjs
 
   content:
     name: Content · Research · Bible
@@ -171,36 +83,18 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.x'
-      - name: Reader and projection contracts
-        run: |
-          python scripts/validate_reader_surfaces.py
-          python scripts/validate_body_discovery.py
-          python scripts/validate_potatoism_philosophy_projection.py
-          python scripts/validate_public_projection.py
-          python scripts/validate_discovery_projection.py
-          python scripts/validate_generated_navigation.py
-          python scripts/validate_explore_projection.py
-      - name: Religion, Potatoism and expansions
-        run: |
-          python scripts/validate_religious_adjacent.py
-          python scripts/validate_religious_layer_map.py
-          python scripts/validate_potatoism.py
-          python scripts/validate_expansion_layers.py
-          python scripts/check_faq_backend.py
-          python scripts/check_biblical_syncretism_field.py
-      - name: Bible corpus and reader
-        run: |
-          python scripts/validate_bible_layer_manifest.py
-          python scripts/test_bible_corpus.py
-          python scripts/test_bible_comparator_coverage.py
-          python scripts/check_biblical_scenes.py
-          python scripts/build_bible_comparator_quality.py
-          python scripts/validate_bible_reader.py
-      - name: Ownership and coverage audits
-        run: |
-          python scripts/audit_backend_coverage.py
-          python scripts/audit_atlas_links.py
-          python scripts/audit_web.py
+      - name: Run Content · Research · Bible quality group
+        run: python scripts/run_quality_group.py content
+      - name: Upload Content · Research · Bible diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-content
+          path: |
+            quality-report-content.json
+            .quality-logs/content/
+          if-no-files-found: warn
+          retention-days: 7
 
   build:
     name: Public build · SEO · Science
