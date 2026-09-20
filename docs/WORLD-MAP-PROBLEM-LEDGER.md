@@ -158,6 +158,13 @@
 **Guards:** importer fails closed on duplicate IDs, missing names/codes, non-polygon geometry, feature-count drift and hard byte-budget overflow; it SHA-256 fingerprints the exact source bytes, preserves unknown population as `unknown-not-zero`, and emits geometry-free search records. `test_world_map_adm1_importer.py` runs in the World Map quality group.  
 **Rule retained:** acquisition, normalization and registry promotion remain separate review steps; external geometry does not become authoritative merely because it can be normalized.
 
+### WM-029 · Conflict-context geography lacks a dated snapshot contract — P2
+**Status:** fixed / governed on branch `world-map-conflict-snapshot-contract-rebased-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** the Spatial Overlay system reserved a conflict family, but it did not yet define the minimum time/source/meaning metadata needed to show historical or delayed control/front-line context without contaminating administrative geography.  
+**Resolution:** `data/world-map-conflict-snapshot-contract.json` defines allowed snapshot meanings, required observation/publication fields, source attribution, confidence, explicit not-live semantics, Time-dimension ownership and administrative-independence rules. The live `conflict.context` manifest row points to this contract and remains planned/dormant with no geometry.  
+**Guard:** `scripts/validate_world_map_conflict_snapshots.py` requires the conflict family to remain dormant until reviewed geometry exists, binds snapshots to the canonical Time owner, rejects activation without source/not-live/administrative-independence guarantees, and preserves the explicit no-live-tactical-tracking boundary.  
+**Next:** ingest reviewed delayed/historical source snapshots as separate geometry owners; compare exact snapshots through Time without interpolating invented front lines.
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
