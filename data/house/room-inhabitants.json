@@ -2373,6 +2373,66 @@
           }
         ]
       }
+    },
+    {
+      "id": "fbi-character-bureau",
+      "label": "FBI — Figures, Bonds & Incidents",
+      "kind": "character-dossier-bureau",
+      "room_ids": [
+        "canon-identities",
+        "memory-recovery",
+        "developmental-genealogy",
+        "subculture-group-formation"
+      ],
+      "route": "/rooms/potatoverse-canon/beings/fbi/",
+      "summary": "Tim-centered character dossier system connecting recurring figures to aliases, chronology, conversations, Story, archetypes, symbolic roles, relationships and dated incidents.",
+      "status_note": "Potatoverse archival acronym; not affiliated with a real agency.",
+      "evidence_note": "Dossiers keep Chronicle, public chat, conversation recovery, literature and later synthesis as distinct source strata.",
+      "maturity": "case-ready",
+      "facets": {
+        "sources": [
+          {
+            "source_ref": "knowledge/fbi/manifest.json",
+            "role": "bureau manifest",
+            "evidence_class": "project archive synthesis"
+          },
+          {
+            "source_ref": "knowledge/fbi/bonds/network.json",
+            "role": "relationship/co-presence network",
+            "evidence_class": "source-derived network"
+          },
+          {
+            "source_ref": "knowledge/fbi/incidents/index.json",
+            "role": "dated incident index",
+            "evidence_class": "source-bounded event index"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "contains",
+            "target_id_or_label": "20 deep figure dossiers",
+            "direction": "outgoing",
+            "status": "active",
+            "boundary": "Dossier inclusion is archival relevance, not suspicion or wrongdoing."
+          },
+          {
+            "type": "interfaces-with",
+            "target_id_or_label": "Cast Ecology / Story / Memory / Time",
+            "direction": "outgoing",
+            "status": "active",
+            "boundary": "No subsystem silently overrides source status."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "character-recovery",
+            "input": "conversation / Chronicle / public chat / literature",
+            "mechanism": "identify → date → relate → classify source → link Story/Room → record unresolved",
+            "output": "persistent figure dossier",
+            "measurement_or_limit": "No motive or permanent identity inferred from co-presence alone."
+          }
+        ]
+      }
     }
   ],
   "source_records": [
