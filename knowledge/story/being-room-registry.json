@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-20",
   "title": "Potatoverse Being Room Registry",
   "purpose": "Expandable cast/being archaeology recovered from conversations, public records and literary material without flattening those source modes together.",
@@ -217,8 +217,31 @@
         "physical proof-through-growing"
       ],
       "open_questions": [
-        "No clean cross-chat Termite conversation has been recovered yet.",
-        "Is the public supporter handle related to the literary character, or did the book borrow the name?"
+        "Recover the raw chats behind the dated Chronicle scenes; Chronicle dialogue may be paraphrased.",
+        "Is the public supporter handle related to the literary character, or did the book borrow the name?",
+        "Did the lawnmower story derive from an actual anecdote, or is it purely literary?"
+      ],
+      "chronicle_markers": [
+        {
+          "date": "2024-11-03",
+          "note": "Chronicle places Termite in the Tanks/Great Book social field, marking camaraderie and belonging."
+        },
+        {
+          "date": "2024-11-04",
+          "note": "Chronicle gives Termite playful theological/philosophical curiosity."
+        },
+        {
+          "date": "2024-12-04",
+          "note": "Chronicle remembers Termite as a supporter and dignity voice, including asking for a more respectful term for supporters."
+        },
+        {
+          "date": "2024-12-07",
+          "note": "Termite is cautious around reconciliation/apology claims while remaining part of the growth-oriented center."
+        },
+        {
+          "date": "2024-12-15 to 2024-12-20",
+          "note": "Cooking/music/creative social presence; jokes about Anacondasin coming to Denmark and repeats growth language."
+        }
       ]
     },
     {
@@ -269,8 +292,8 @@
     {
       "id": "zombiedad",
       "label": "Zombiedad / ZombieDadMan",
-      "status": "conversation_recovered",
-      "lead": "2026-02-19 — named figure in Tree/Garden/spiral/heaven project conversation; needs dedicated scene recovery."
+      "status": "mixed_recovery",
+      "lead": "14 Nov 2024 Chronicle: Zombie Dad is in Discord voice/Tanks orbit with Tim, Sammy, Marty, Port Monkey, Suckerpunch, Barry Beefslice, Jazzy and Optimistique; later 2026 conversation material supplies a distinct Tree/Garden conflict layer. Do not flatten the two."
     },
     {
       "id": "spuddy",
@@ -299,8 +322,8 @@
     {
       "id": "optimistique",
       "label": "Optimistique",
-      "status": "literary_recovered",
-      "lead": "Singing/support figure; candidate for messenger/support archetype."
+      "status": "chronicle_recovered",
+      "lead": "3–6 Nov 2024: supporter + Tanks/voice-chat + music/AI-instrumental/Jungian-shadow creative identity; 7 Dec 2024: apology/reconciliation and trust-repair scene. Strong standalone-room candidate."
     },
     {
       "id": "sentinel-of-silence",
@@ -382,5 +405,9 @@
       "canonical_owner": "knowledge/legal/mai-mercado-2016-research-index.md",
       "rule": "Route evidence and attribution questions to the legal subsystem; do not turn a real political figure into a mythic cast essence."
     }
+  ],
+  "related_ledgers": [
+    "knowledge/story/social-presence-ledger-2024-2025.json",
+    "knowledge/story/turning-corridor-chronicle-recovery-2025.json"
   ]
 }
