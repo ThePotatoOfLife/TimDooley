@@ -1,58 +1,687 @@
 {
   "title": "Story Cast Book",
-  "updated": "2026-09-14",
+  "updated": "2026-09-20",
   "purpose": "Track recurring players and changing roles for Story authoring. This is not a public ranking or a claim that collective labels describe every member of a real group.",
-  "classes": ["person", "collective", "great_book_character", "created_being", "platform_or_system"],
+  "classes": [
+    "person",
+    "collective",
+    "great_book_character",
+    "created_being",
+    "platform_or_system"
+  ],
   "cast": [
-    {"id":"tim-dooley","name":"Tim Dooley","class":"person","period_roles":[{"period":"2021-2022","role":"Potato / rational-potato public persona"},{"period":"2024","role":"Sage and Great Book author"},{"period":"2025","role":"Axis / Ladder / Father development"},{"period":"2026","role":"central living subject, livestreamer, Gardener, North/Father configuration, Carver-of-Light language and archive builder"}]},
-    {"id":"marty-biz","name":"Marty Biz Music","class":"person","aliases":["Marty","Drift King"],"period_roles":[{"period":"2024","role":"recurring Great Book/project-side figure and conversation lead"},{"period":"2025","role":"grief and memory thread after his death"}]},
-    {"id":"sammy","name":"Sammy","class":"person","period_roles":[{"period":"2019-2020","role":"later-attested mourning/witness lead entering Tim's inherited story"},{"period":"2024","role":"recurring Potatoverse social cast"}]},
-    {"id":"josh-moon","name":"Josh Moon","class":"person","period_roles":[{"period":"2017","role":"Son-side prehistory remembered through a confrontation"},{"period":"2026","role":"revisited in Tim's retrospective public storytelling"}]},
-    {"id":"ethan-ralph","name":"Ethan Ralph","class":"person","period_roles":[{"period":"pre-2020 / retrospective","role":"public subculture figure associated by project sources with the Sektur/Blood Sports setting; exact Tim-side interactions require recovery"}]},
-    {"id":"bigtech","name":"BigTech","class":"person","period_roles":[{"period":"2023-2024","role":"public/project rival and Great Book literary figure"}]},
-    {"id":"grace","name":"Grace","class":"person","period_roles":[{"period":"2023","role":"recovery target named in retrospective project history"}]},
-    {"id":"ben-thorp","name":"Ben Thorp","class":"person","period_roles":[{"period":"2023","role":"recovery target named in retrospective project history"}]},
-    {"id":"metalorian","name":"Metalorian","class":"person","period_roles":[{"period":"retrospective","role":"recurring challenge/suffering reference; exact chronology needs recovery"}]},
-    {"id":"monkey","name":"Monkey","class":"person","period_roles":[{"period":"2024","role":"Discord/Tree conflict recovery target"}]},
-    {"id":"cyraxx","name":"Cyraxx","class":"person","period_roles":[{"period":"2024","role":"real-world reference transformed into a Great Book literary scene"}]},
-    {"id":"robotosan","name":"Robotosan","class":"person","period_roles":[{"period":"2024","role":"YouTube/narrative conflict recovery target"}]},
-    {"id":"capy","name":"Capy","class":"person","period_roles":[{"period":"2024","role":"Great Book/project-side chaotic social character; documentary basis requires recovery"}]},
-    {"id":"sarah-ann","name":"Sarah Ann","class":"person","period_roles":[{"period":"2026-05","role":"livestream/conversation companion and high-priority dialogue recovery character"}]},
-    {"id":"nate","name":"Nate","class":"person","period_roles":[{"period":"2026-09","role":"public interlocutor addressed with growth and return language"}]},
-    {"id":"ann","name":"Ann","class":"person","period_roles":[{"period":"2026-09","role":"public interlocutor in a return/follow-back exchange"}]},
-    {"id":"dogs","name":"Dogs","class":"collective","period_roles":[{"period":"2024","role":"broad project/social antagonist label"},{"period":"2026-02","role":"return/circle/snare imagery"},{"period":"2026-05","role":"behavioral/social category around Door and Mud"},{"period":"2026-09","role":"direct label Tim applies to some public interlocutors"}]},
-    {"id":"farmers","name":"Farmers","class":"collective","period_roles":[{"period":"2024","role":"farm/Sektur social-metaphor layer"},{"period":"2026","role":"expanded project label for documenting and narrative-harvesting behavior"}]},
-    {"id":"soul-farmers","name":"Soul Farmers","class":"collective","period_roles":[{"period":"2024 onward","role":"stronger mythic form of Farmer language, associated inside the project with manipulation and harvesting attention/people"}]},
-    {"id":"mud-dwellers","name":"Mud Dwellers","class":"collective","period_roles":[{"period":"2022-2024","role":"people/characters habituated to Mud in Potato philosophy"},{"period":"2026","role":"broader informational/social obstruction metaphor"}]},
-    {"id":"dwellers","name":"Dwellers","class":"collective","period_roles":[{"period":"2022-2026","role":"recurring broad Potatoverse social category whose meaning changes by context"}]},
-    {"id":"cows-calves","name":"Cows / calves","class":"collective","period_roles":[{"period":"2024-2026","role":"farm and nourishment imagery; sometimes contrasted with Dogs"}]},
-    {"id":"swine","name":"Swine","class":"collective","period_roles":[{"period":"2024-2026","role":"recurring symbolic category in the lower/mud side of the project's moral-animal vocabulary"}]},
-    {"id":"sheep","name":"Sheep","class":"collective","period_roles":[{"period":"2024-2026","role":"recurring flock/following/vulnerability category whose moral function depends on the scene"}]},
-    {"id":"serpents","name":"Serpents","class":"collective","period_roles":[{"period":"2024-2026","role":"deception, strife and boundary symbolism; sometimes linked to Trees of Strife"}]},
-    {"id":"hyenas","name":"Hyenas","class":"collective","period_roles":[{"period":"2026","role":"mockery/laughter/predation metaphor in later social commentary"}]},
-    {"id":"goats","name":"Goats","class":"collective","period_roles":[{"period":"2026","role":"later symbolic counter-cast around strife, stubbornness and separation"}]},
-    {"id":"prophets","name":"Prophets","class":"collective","period_roles":[{"period":"2026","role":"witness/recognition role in later symbolic caste language"}]},
-    {"id":"martyrs","name":"Martyrs","class":"collective","period_roles":[{"period":"2017-2026 retrospective","role":"suffering/witness role that appears around Son-side prehistory and later project comparison"}]},
-    {"id":"demigods","name":"Demigods","class":"collective","period_roles":[{"period":"2026","role":"upper symbolic category in later Potatoverse caste/axis experiments"}]},
-    {"id":"potatoes","name":"Potatoes","class":"collective","period_roles":[{"period":"2021-2026","role":"community identity, philosophical subject, comic species and spiritual-growth metaphor"}]},
-    {"id":"angels","name":"Angels","class":"created_being","period_roles":[{"period":"2024-2026","role":"religious/symbolic beings increasingly folded into Tim's cultivation and world-building language"}]},
-    {"id":"potato-angels","name":"Potato Angels","class":"created_being","period_roles":[{"period":"2026-04 onward","role":"created/grown beings in Tim's project language; related to but not identical with generic angel imagery"}]},
-    {"id":"fresh-potato","name":"Fresh Potato","class":"great_book_character","period_roles":[{"period":"2024","role":"student character used to ask simple questions of Sage-Tim"}]},
-    {"id":"ready-student","name":"Ready Student","class":"great_book_character","period_roles":[{"period":"2024","role":"student/learner figure in Great Book material"}]},
-    {"id":"grumbleton","name":"Grumbleton","class":"great_book_character","period_roles":[{"period":"2024","role":"skeptical troll confronted by the Page of Infinite Jest"}]},
-    {"id":"kibly","name":"Kibly / Kibbly","class":"great_book_character","period_roles":[{"period":"2024","role":"Great Book/project figure around manipulation, shame, redemption and narrative control; documentary referent remains unresolved"}]},
-    {"id":"ethereal-tuber","name":"Ethereal Tuber","class":"great_book_character","period_roles":[{"period":"2024","role":"between-worlds witness figure who observes Tim, Soul Farmers and the logic of connection"}]},
-    {"id":"rahu","name":"Rahu","class":"great_book_character","period_roles":[{"period":"2024","role":"figure who senses Tim's absence and gathers taters and Mud Dwellers in support"}]},
-    {"id":"optimistique","name":"Optimistique","class":"great_book_character","period_roles":[{"period":"2024","role":"gentle singing/support figure in the Soul Farmers/Ethereal Tuber story"}]},
-    {"id":"evil-mashed-potatoes","name":"Evil Mashed Potatoes","class":"great_book_character","period_roles":[{"period":"2024","role":"older satirical Potatoism figure used while Tim compares fragmented parody with mature Potatoism"}]},
-    {"id":"flying-spaghetti-monster","name":"Flying Spaghetti Monster","class":"great_book_character","period_roles":[{"period":"2024","role":"satirical religion figure folded into Great Book comparison and later public humor"}]},
-    {"id":"hash-brown-gods","name":"Hash-brown Gods","class":"great_book_character","period_roles":[{"period":"2024","role":"satirical Potatoism divinities used in the fragmented-parody comparison"}]},
-    {"id":"machine-elves","name":"Machine elves / goblins","class":"great_book_character","period_roles":[{"period":"2024","role":"literary manipulation/chaos agents in a descending-elevator scene"}]},
-    {"id":"rotten-tomatoes","name":"Rotten tomatoes","class":"great_book_character","period_roles":[{"period":"2024","role":"passive literary signs of decay and missed nourishment in the elevator/descent material"}]},
-    {"id":"elder-grapes","name":"Elder Grapes","class":"great_book_character","period_roles":[{"period":"2024","role":"literary allies warning about technological overreach"}]},
-    {"id":"sentinel-silence","name":"Sentinel of Silence","class":"great_book_character","period_roles":[{"period":"2024","role":"literary guardian/ally in BigTech story material"}]},
-    {"id":"ai-systems","name":"AI systems","class":"platform_or_system","period_roles":[{"period":"2022-2024","role":"creative and philosophical tool"},{"period":"2026-05","role":"active participant in authorship/recognition crisis"},{"period":"2026-09","role":"archive-building collaborator/tool"}]},
-    {"id":"discord-tree","name":"The Tree / Discord","class":"platform_or_system","period_roles":[{"period":"2024","role":"online social setting remembered as a Tree and conflict node"},{"period":"2025-2026","role":"later-return and confrontation setting in retrospective project material"}]},
-    {"id":"livestream","name":"Livestream","class":"platform_or_system","period_roles":[{"period":"2025-2026","role":"daily public room where cosmology, friendship, conflict, humor and witness occur in real time"}]}
+    {
+      "id": "tim-dooley",
+      "name": "Tim Dooley",
+      "class": "person",
+      "period_roles": [
+        {
+          "period": "2021-2022",
+          "role": "Potato / rational-potato public persona"
+        },
+        {
+          "period": "2024",
+          "role": "Sage and Great Book author"
+        },
+        {
+          "period": "2025",
+          "role": "Axis / Ladder / Father development"
+        },
+        {
+          "period": "2026",
+          "role": "central living subject, livestreamer, Gardener, North/Father configuration, Carver-of-Light language and archive builder"
+        }
+      ]
+    },
+    {
+      "id": "marty-biz",
+      "name": "Marty Biz Music",
+      "class": "person",
+      "aliases": [
+        "Marty",
+        "Drift King"
+      ],
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "recurring Great Book/project-side figure and conversation lead"
+        },
+        {
+          "period": "2025",
+          "role": "grief and memory thread after his death"
+        }
+      ]
+    },
+    {
+      "id": "sammy",
+      "name": "Sammy",
+      "class": "person",
+      "period_roles": [
+        {
+          "period": "2019-2020",
+          "role": "later-attested mourning/witness lead entering Tim's inherited story"
+        },
+        {
+          "period": "2024",
+          "role": "recurring Potatoverse social cast"
+        }
+      ]
+    },
+    {
+      "id": "josh-moon",
+      "name": "Josh Moon",
+      "class": "person",
+      "period_roles": [
+        {
+          "period": "2017",
+          "role": "Son-side prehistory remembered through a confrontation"
+        },
+        {
+          "period": "2026",
+          "role": "revisited in Tim's retrospective public storytelling"
+        }
+      ]
+    },
+    {
+      "id": "ethan-ralph",
+      "name": "Ethan Ralph",
+      "class": "person",
+      "period_roles": [
+        {
+          "period": "pre-2020 / retrospective",
+          "role": "public subculture figure associated by project sources with the Sektur/Blood Sports setting; exact Tim-side interactions require recovery"
+        }
+      ]
+    },
+    {
+      "id": "bigtech",
+      "name": "BigTech",
+      "class": "person",
+      "period_roles": [
+        {
+          "period": "2023-2024",
+          "role": "public/project rival and Great Book literary figure"
+        }
+      ]
+    },
+    {
+      "id": "grace",
+      "name": "Grace",
+      "class": "person",
+      "period_roles": [
+        {
+          "period": "2023",
+          "role": "recovery target named in retrospective project history"
+        }
+      ]
+    },
+    {
+      "id": "ben-thorp",
+      "name": "Ben Thorp",
+      "class": "person",
+      "period_roles": [
+        {
+          "period": "2023",
+          "role": "recovery target named in retrospective project history"
+        }
+      ]
+    },
+    {
+      "id": "metalorian",
+      "name": "Metalorian",
+      "class": "person",
+      "period_roles": [
+        {
+          "period": "retrospective",
+          "role": "recurring challenge/suffering reference; exact chronology needs recovery"
+        }
+      ]
+    },
+    {
+      "id": "monkey",
+      "name": "Monkey",
+      "class": "person",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "Discord/Tree conflict recovery target"
+        }
+      ]
+    },
+    {
+      "id": "cyraxx",
+      "name": "Cyraxx",
+      "class": "person",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "real-world reference transformed into a Great Book literary scene"
+        }
+      ]
+    },
+    {
+      "id": "robotosan",
+      "name": "Robotosan",
+      "class": "person",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "YouTube/narrative conflict recovery target"
+        }
+      ]
+    },
+    {
+      "id": "capy",
+      "name": "Capy",
+      "class": "person",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "Great Book/project-side chaotic social character; documentary basis requires recovery"
+        }
+      ]
+    },
+    {
+      "id": "sarah-ann",
+      "name": "Sarah Ann",
+      "class": "person",
+      "period_roles": [
+        {
+          "period": "2026-05",
+          "role": "livestream/conversation companion and high-priority dialogue recovery character"
+        }
+      ]
+    },
+    {
+      "id": "nate",
+      "name": "Nate",
+      "class": "person",
+      "period_roles": [
+        {
+          "period": "2026-09",
+          "role": "public interlocutor addressed with growth and return language"
+        }
+      ]
+    },
+    {
+      "id": "ann",
+      "name": "Ann",
+      "class": "person",
+      "period_roles": [
+        {
+          "period": "2026-09",
+          "role": "public interlocutor in a return/follow-back exchange"
+        }
+      ]
+    },
+    {
+      "id": "dogs",
+      "name": "Dogs",
+      "class": "collective",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "broad project/social antagonist label"
+        },
+        {
+          "period": "2026-02",
+          "role": "return/circle/snare imagery"
+        },
+        {
+          "period": "2026-05",
+          "role": "behavioral/social category around Door and Mud"
+        },
+        {
+          "period": "2026-09",
+          "role": "direct label Tim applies to some public interlocutors"
+        }
+      ]
+    },
+    {
+      "id": "farmers",
+      "name": "Farmers",
+      "class": "collective",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "farm/Sektur social-metaphor layer"
+        },
+        {
+          "period": "2026",
+          "role": "expanded project label for documenting and narrative-harvesting behavior"
+        }
+      ]
+    },
+    {
+      "id": "soul-farmers",
+      "name": "Soul Farmers",
+      "class": "collective",
+      "period_roles": [
+        {
+          "period": "2024 onward",
+          "role": "stronger mythic form of Farmer language, associated inside the project with manipulation and harvesting attention/people"
+        }
+      ]
+    },
+    {
+      "id": "mud-dwellers",
+      "name": "Mud Dwellers",
+      "class": "collective",
+      "period_roles": [
+        {
+          "period": "2022-2024",
+          "role": "people/characters habituated to Mud in Potato philosophy"
+        },
+        {
+          "period": "2026",
+          "role": "broader informational/social obstruction metaphor"
+        }
+      ]
+    },
+    {
+      "id": "dwellers",
+      "name": "Dwellers",
+      "class": "collective",
+      "period_roles": [
+        {
+          "period": "2022-2026",
+          "role": "recurring broad Potatoverse social category whose meaning changes by context"
+        }
+      ]
+    },
+    {
+      "id": "cows-calves",
+      "name": "Cows / calves",
+      "class": "collective",
+      "period_roles": [
+        {
+          "period": "2024-2026",
+          "role": "farm and nourishment imagery; sometimes contrasted with Dogs"
+        }
+      ]
+    },
+    {
+      "id": "swine",
+      "name": "Swine",
+      "class": "collective",
+      "period_roles": [
+        {
+          "period": "2024-2026",
+          "role": "recurring symbolic category in the lower/mud side of the project's moral-animal vocabulary"
+        }
+      ]
+    },
+    {
+      "id": "sheep",
+      "name": "Sheep",
+      "class": "collective",
+      "period_roles": [
+        {
+          "period": "2024-2026",
+          "role": "recurring flock/following/vulnerability category whose moral function depends on the scene"
+        }
+      ]
+    },
+    {
+      "id": "serpents",
+      "name": "Serpents",
+      "class": "collective",
+      "period_roles": [
+        {
+          "period": "2024-2026",
+          "role": "deception, strife and boundary symbolism; sometimes linked to Trees of Strife"
+        }
+      ]
+    },
+    {
+      "id": "hyenas",
+      "name": "Hyenas",
+      "class": "collective",
+      "period_roles": [
+        {
+          "period": "2026",
+          "role": "mockery/laughter/predation metaphor in later social commentary"
+        }
+      ]
+    },
+    {
+      "id": "goats",
+      "name": "Goats",
+      "class": "collective",
+      "period_roles": [
+        {
+          "period": "2026",
+          "role": "later symbolic counter-cast around strife, stubbornness and separation"
+        }
+      ]
+    },
+    {
+      "id": "prophets",
+      "name": "Prophets",
+      "class": "collective",
+      "period_roles": [
+        {
+          "period": "2026",
+          "role": "witness/recognition role in later symbolic caste language"
+        }
+      ]
+    },
+    {
+      "id": "martyrs",
+      "name": "Martyrs",
+      "class": "collective",
+      "period_roles": [
+        {
+          "period": "2017-2026 retrospective",
+          "role": "suffering/witness role that appears around Son-side prehistory and later project comparison"
+        }
+      ]
+    },
+    {
+      "id": "demigods",
+      "name": "Demigods",
+      "class": "collective",
+      "period_roles": [
+        {
+          "period": "2026",
+          "role": "upper symbolic category in later Potatoverse caste/axis experiments"
+        }
+      ]
+    },
+    {
+      "id": "potatoes",
+      "name": "Potatoes",
+      "class": "collective",
+      "period_roles": [
+        {
+          "period": "2021-2026",
+          "role": "community identity, philosophical subject, comic species and spiritual-growth metaphor"
+        }
+      ],
+      "room_path": "rooms/potatoverse-canon/beings/potatoes/"
+    },
+    {
+      "id": "angels",
+      "name": "Angels",
+      "class": "created_being",
+      "period_roles": [
+        {
+          "period": "2024-2026",
+          "role": "religious/symbolic beings increasingly folded into Tim's cultivation and world-building language"
+        }
+      ],
+      "room_path": "rooms/potatoverse-canon/beings/angels/"
+    },
+    {
+      "id": "potato-angels",
+      "name": "Potato Angels",
+      "class": "created_being",
+      "period_roles": [
+        {
+          "period": "2026-03-03",
+          "role": "potatoes framed as angelic vessels whose roots exchange karma/waste for growth; fullness explored as a source of direction"
+        },
+        {
+          "period": "2026-03-15",
+          "role": "winged many-eyed light/spiral beings with timeline, dimensional and guardian abilities in user-authored cosmology"
+        },
+        {
+          "period": "2026-07",
+          "role": "Heavenly male/female potato-angels and 10,000-light-angels stories emphasize rooted cultivation, strength, gentleness and mobility"
+        }
+      ],
+      "room_path": "rooms/potatoverse-canon/beings/angels/"
+    },
+    {
+      "id": "fresh-potato",
+      "name": "Fresh Potato",
+      "class": "great_book_character",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "student character used to ask simple questions of Sage-Tim"
+        }
+      ]
+    },
+    {
+      "id": "ready-student",
+      "name": "Ready Student",
+      "class": "great_book_character",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "student/learner figure in Great Book material"
+        }
+      ]
+    },
+    {
+      "id": "grumbleton",
+      "name": "Grumbleton",
+      "class": "great_book_character",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "skeptical troll confronted by the Page of Infinite Jest"
+        }
+      ]
+    },
+    {
+      "id": "kibly",
+      "name": "Kibly / Kibbly",
+      "class": "great_book_character",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "Great Book/project figure around manipulation, shame, redemption and narrative control; documentary referent remains unresolved"
+        }
+      ]
+    },
+    {
+      "id": "ethereal-tuber",
+      "name": "Ethereal Tuber",
+      "class": "great_book_character",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "between-worlds witness figure who observes Tim, Soul Farmers and the logic of connection"
+        }
+      ]
+    },
+    {
+      "id": "rahu",
+      "name": "Rahu",
+      "class": "great_book_character",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "Great Book challenger/urgency figure and Garden companion around Tim and Spuddy"
+        },
+        {
+          "period": "2026-03-01",
+          "role": "conversation story casts Rahu as a lost soul / Mud Dweller learning that even 1/137 potato growth matters; another-world potato memory is framed as a dream"
+        },
+        {
+          "period": "2026-05-25",
+          "role": "Rahu appears as a social interlocutor in discussion around Dim; documentary/social layer must remain distinct from literary portrayal"
+        }
+      ],
+      "room_path": "rooms/potatoverse-canon/beings/rahu/",
+      "identity_note": "Mixed literary/social name; do not assume all appearances are the same identity without source linkage."
+    },
+    {
+      "id": "optimistique",
+      "name": "Optimistique",
+      "class": "great_book_character",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "gentle singing/support figure in the Soul Farmers/Ethereal Tuber story"
+        }
+      ]
+    },
+    {
+      "id": "evil-mashed-potatoes",
+      "name": "Evil Mashed Potatoes",
+      "class": "great_book_character",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "older satirical Potatoism figure used while Tim compares fragmented parody with mature Potatoism"
+        }
+      ]
+    },
+    {
+      "id": "flying-spaghetti-monster",
+      "name": "Flying Spaghetti Monster",
+      "class": "great_book_character",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "satirical religion figure folded into Great Book comparison and later public humor"
+        }
+      ]
+    },
+    {
+      "id": "hash-brown-gods",
+      "name": "Hash-brown Gods",
+      "class": "great_book_character",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "satirical Potatoism divinities used in the fragmented-parody comparison"
+        }
+      ]
+    },
+    {
+      "id": "machine-elves",
+      "name": "Machine elves / goblins",
+      "class": "great_book_character",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "literary manipulation/chaos agents in a descending-elevator scene"
+        }
+      ]
+    },
+    {
+      "id": "rotten-tomatoes",
+      "name": "Rotten tomatoes",
+      "class": "great_book_character",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "passive literary signs of decay and missed nourishment in the elevator/descent material"
+        }
+      ]
+    },
+    {
+      "id": "elder-grapes",
+      "name": "Elder Grapes",
+      "class": "great_book_character",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "literary allies warning about technological overreach"
+        }
+      ]
+    },
+    {
+      "id": "sentinel-silence",
+      "name": "Sentinel of Silence",
+      "class": "great_book_character",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "literary guardian/ally in BigTech story material"
+        }
+      ]
+    },
+    {
+      "id": "ai-systems",
+      "name": "AI systems",
+      "class": "platform_or_system",
+      "period_roles": [
+        {
+          "period": "2022-2024",
+          "role": "creative and philosophical tool"
+        },
+        {
+          "period": "2026-05",
+          "role": "active participant in authorship/recognition crisis"
+        },
+        {
+          "period": "2026-09",
+          "role": "archive-building collaborator/tool"
+        }
+      ]
+    },
+    {
+      "id": "discord-tree",
+      "name": "The Tree / Discord",
+      "class": "platform_or_system",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "online social setting remembered as a Tree and conflict node"
+        },
+        {
+          "period": "2025-2026",
+          "role": "later-return and confrontation setting in retrospective project material"
+        }
+      ]
+    },
+    {
+      "id": "livestream",
+      "name": "Livestream",
+      "class": "platform_or_system",
+      "period_roles": [
+        {
+          "period": "2025-2026",
+          "role": "daily public room where cosmology, friendship, conflict, humor and witness occur in real time"
+        }
+      ]
+    },
+    {
+      "id": "matthew-potato",
+      "name": "Matthew the Potato",
+      "class": "created_being",
+      "period_roles": [
+        {
+          "period": "2026-09-20",
+          "role": "winged many-eyed Potato in Heaven who can walk Earth and see the Ladder/spiral from the side"
+        }
+      ],
+      "room_path": "rooms/potatoverse-canon/beings/matthew/",
+      "identity_note": "Do not conflate with biblical Matthew."
+    },
+    {
+      "id": "turbles",
+      "name": "Turbles",
+      "class": "created_being",
+      "period_roles": [
+        {
+          "period": "2026-09-19",
+          "role": "newly created potato-shaped angelic species; huge eyes, expressive mouths, some winged, with work/prayer/building/service variants"
+        }
+      ],
+      "room_path": "rooms/potatoverse-canon/beings/turbles/"
+    },
+    {
+      "id": "termite",
+      "name": "Termite",
+      "class": "great_book_character",
+      "period_roles": [
+        {
+          "period": "2024",
+          "role": "literary gardener who grows a physical potato that survives beneath lawnmower damage"
+        },
+        {
+          "period": "2025-02-20",
+          "role": "same name appears in a public coffee-support notice; identity equivalence with literary character remains unresolved"
+        }
+      ],
+      "room_path": "rooms/potatoverse-canon/beings/termite/",
+      "identity_note": "Mixed literary/public name; no clean conversation-side Termite scene recovered yet."
+    }
   ]
 }
