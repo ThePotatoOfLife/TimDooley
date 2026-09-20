@@ -35,8 +35,10 @@ const scaleRuntime = Object.freeze({
     return value;
   },
   bandThreshold(band) {
-    if (band !== 'subnational') throw new Error(`unexpected scale band ${band}`);
-    return 5.8;
+    const values = { subnational:5.8, local:8 };
+    const value = values[band];
+    if (!Number.isFinite(value)) throw new Error(`unexpected scale band ${band}`);
+    return value;
   },
   capabilityActive(capability, phase, zoom) {
     return Number(zoom) >= this.threshold(capability, phase);
