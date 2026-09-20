@@ -254,6 +254,8 @@ jobs:
           assert f'./3d-boot-guard.js?v={version}' in page
           assert f'src="./3d-bootstrap.js?v={version}"' in page
           PY
+      - name: Finalize universal TTS projection
+        run: python scripts/patch_public_navigation.py
       - name: Validate built site shell
         run: python scripts/validate_site_shell.py
       - name: Validate TTS coverage
