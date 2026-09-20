@@ -23,7 +23,7 @@ def main()->int:
     access=ACCESS.read_text(encoding="utf-8",errors="replace")
     inspector=INSPECTOR.read_text(encoding="utf-8",errors="replace")
     lifecycle=LIFECYCLE.read_text(encoding="utf-8",errors="replace")
-    for token in ("function closeMenu(","function syncMenuAria(","event.key !== 'Escape'","aria-expanded","summary.focus","__potatoAtlasAccessibility"):
+    for token in ("function mapMenus(","function closeMenu(","function syncMenuAria(","event.key !== 'Escape'","for (const other of mapMenus())","restoreFocus:false","aria-expanded","summary.focus","__potatoAtlasAccessibility"):
         if token not in access: errors.append(f"Accessibility owner missing {token!r}")
     for token in ("function captureFocusTarget(","function focusInspectorHeading(","function restoreFocus(","returnFocus","closed?.returnFocus"):
         if token not in inspector: errors.append(f"Inspector focus contract missing {token!r}")
