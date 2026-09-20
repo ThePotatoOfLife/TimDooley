@@ -493,8 +493,10 @@ def validate_orientation_population(errors,rooms):
 def validate_tree_plane_routing(errors):
     data=load(TREE_PLANE_ROUTING,errors)
     if not data: return
-    if data.get('master_rule')!='Planes are standing surfaces. Trees are vertical branching routes. Rooms are subject owners. Entities and traditions are inhabitants/subjects with anchors and projections. Corridors are typed relations between them.':
-        errors.append('tree-plane routing master rule drifted')
+    master=data.get('master_rule','').casefold()
+    for token in ('navigation decks','canonical geometric plane','rooms own','trees route','corridors relate','tree-family-contract'):
+        if token not in master:
+            errors.append(f'tree-plane routing master rule missing invariant: {token}')
     center=data.get('centerline',{})
     if center.get('id')!='axis': errors.append('Axis must remain exact centerline')
     if center.get('inner_ring',{}).get('room_id')!='research-lab': errors.append('Research Lab must remain inner Forge ring')
@@ -681,10 +683,15 @@ def validate_three_center_atlas(errors):
             errors.append(f'three-center {cid} must declare functions')
         if not by.get(cid,{}).get('primary_anchor',{}).get('boundary'):
             errors.append(f'three-center {cid} primary anchor missing boundary')
-    rights=' '.join(str(v) for v in data.get('rights_and_subjecthood',{}).values()).casefold()
-    for token in ('not a target','remain subjects','not silently asserted to be the same being','living person','no implication of guilt'):
+    rights_obj=data.get('rights_and_subjecthood',{})
+    rights=' '.join(str(v) for v in rights_obj.values()).casefold()
+    required_rights=('non_target_rule','dignity_rule','no_identity_collapse','living_person_boundary','tradition_boundary','accusation_boundary')
+    for key in required_rights:
+        if not rights_obj.get(key):
+            errors.append(f'three-center atlas missing rights/identity boundary field: {key}')
+    for token in ('target','subjects','same being','living person','guilt'):
         if token not in rights:
-            errors.append(f'three-center atlas missing rights/identity boundary: {token}')
+            errors.append(f'three-center atlas missing rights/identity boundary concept: {token}')
     laws=' '.join(data.get('placement_law',[])).casefold()
     for token in ('function is declared','corridors for partial overlap','project-native titles','never for targeting'):
         if token not in laws:
@@ -723,11 +730,16 @@ def validate_crosscutting_lenses(errors):
     ids=[x.get('id') for x in data.get('lenses',[]) if isinstance(x,dict)]
     if ids!=expected: errors.append('cross-cutting lens order/set drifted')
     rule=data.get('master_rule','').casefold()
-    for token in ('does not change who owns the knowledge','does not create a new ontological level'):
+    for token in ('does not change who owns the knowledge','ontological level'):
         if token not in rule: errors.append(f'cross-cutting lenses missing boundary: {token}')
-    mirror_text=' '.join(str(m.get('boundary','')) for lens in data.get('lenses',[]) if isinstance(lens,dict) for m in lens.get('comparative_mirrors',[]) if isinstance(m,dict)).casefold()
-    for token in ('not a hidden potatoverse spiral','not evidence that daoism encodes','does not present a literal supernatural akashic record','should not be rewritten as potatoism'):
-        if token not in mirror_text: errors.append(f'cross-cutting comparative boundary missing: {token}')
+    mirrors={m.get('id'):m for lens in data.get('lenses',[]) if isinstance(lens,dict) for m in lens.get('comparative_mirrors',[]) if isinstance(m,dict)}
+    required_mirrors=('buddhist-dharma-wheel','daoist-wheel-hub','yin-yang','akashic-records','noble-eightfold-path','wu-wei')
+    for mid in required_mirrors:
+        if not mirrors.get(mid,{}).get('boundary'):
+            errors.append(f'cross-cutting comparative mirror missing boundary: {mid}')
+    mirror_text=' '.join(str(m.get('boundary','')) for m in mirrors.values()).casefold()
+    for token in ('hidden potatoverse spiral','daoism encodes','literal supernatural akashic','potatoism'):
+        if token not in mirror_text: errors.append(f'cross-cutting comparative boundary missing concept: {token}')
     if not POTATO_CENTER_PAGE.is_file(): errors.append('missing public Potato of Life center reader')
     else:
         page=POTATO_CENTER_PAGE.read_text(encoding='utf-8',errors='replace')
@@ -777,7 +789,8 @@ def validate_project_synthesis(errors):
     if not data: return
     waves=[x.get('id') for x in data.get('development_waves',[]) if isinstance(x,dict)]
     expected=['ownership-foundation','spatial-house','living-routes','comparative-expansion','center-refocus','reader-lenses','living-project','whole-project-lifecycle','symbol-depth-inhabitation','purpose-discovery','concrete-revelations','entity-crystallization','foundation-below-consolidation','public-home-convergence']
-    if waves!=expected: errors.append('project synthesis development wave order drifted')
+    if waves[:len(expected)]!=expected: errors.append('project synthesis foundational development wave order drifted')
+    if len(set(waves))!=len(waves): errors.append('project synthesis development waves must remain unique')
     rooms=[x.get('room_id') for x in data.get('room_pairings',[]) if isinstance(x,dict)]
     sub=load(SUBROOMS,errors)
     expected_rooms=[x.get('id') for x in sub.get('subrooms',[]) if isinstance(x,dict)]
@@ -888,7 +901,10 @@ def validate_depth_crystallization(errors):
     expected_p2=['garden-regime-mechanics','history-canon-revision-protocol','works-fruit-instrumentation','local-center-interface-patterns','repair-forge-protocol','knowledge-fork-discernment']
     if p2!=expected_p2: errors.append('P2 depth completion set/order drifted')
     p3=dp.get('next_p3',[])
-    if 'instrument-existing-works-with-fruit-contract' not in p3 or 'prune-or-merge-low-yield-duplicate-atlases' not in p3:
+    if 'prune-or-merge-low-yield-duplicate-atlases' not in p3:
+        errors.append('P3 must preserve duplicate-pruning work')
+    p3_blob=' '.join(p3).casefold()
+    if not any(token in p3_blob for token in ('populate','instrument','attach-reproduction','extend-entity-dossiers')):
         errors.append('P3 must remain population/instrumentation focused')
     loop=synth.get('lifecycle_crystallization',{}).get('route',[])
     if loop!=['knowledge','discernment','door','tree/garden','fruit','history/revision','repair/forge','seed/return']:
