@@ -17,6 +17,41 @@ const geo = window.__potatoAtlasGeo;
 if (!geo) throw new Error('Atlas subdivisions require the shared geospatial kernel.');
 function interactionRouter() { return window.__potatoAtlasInteraction; }
 function inspectorRouter() { return window.__potatoAtlasInspector; }
+let subdivisionTooltipPromise = null;
+let subdivisionHoverKey = '';
+let subdivisionHoverGeneration = null;
+async function subdivisionTooltip() {
+  if (window.__potatoAtlasTooltip) return window.__potatoAtlasTooltip;
+  if (!window.maplibregl?.Popup) return null;
+  if (!subdivisionTooltipPromise) {
+    subdivisionTooltipPromise = import('./3d-tooltip.js')
+      .then(module => module.getOrCreateTooltipService(map, { PopupClass:window.maplibregl.Popup, eventTarget:window, offset:10 }))
+      .catch(() => null);
+  }
+  return subdivisionTooltipPromise;
+}
+function subdivisionHoverHtml(feature) {
+  const p = feature?.properties || {};
+  const local = p.local_name && p.local_name !== p.name ? `<div class="muted">${esc(p.local_name)}</div>` : '';
+  return `<div class="atlas-hover"><b>${esc(p.name || p.id || 'Region')}</b>${local}<div>${esc(p.subdivision_type || 'Subdivision')} · ${esc(p.parent_name || p.country_name || countryCode(p))}</div><small>Click to inspect region</small></div>`;
+}
+async function showSubdivisionHover(event, feature) {
+  if (!feature) return;
+  const tooltip = await subdivisionTooltip();
+  if (!tooltip) return;
+  const key = String(feature?.properties?.id || feature?.id || '');
+  if (!key) return;
+  if (key !== subdivisionHoverKey) {
+    subdivisionHoverKey = key;
+    subdivisionHoverGeneration = tooltip.nextGeneration('subdivision');
+  }
+  tooltip.show('subdivision', event.lngLat, subdivisionHoverHtml(feature), subdivisionHoverGeneration);
+}
+function clearSubdivisionHover() {
+  subdivisionHoverKey = '';
+  subdivisionHoverGeneration = null;
+  window.__potatoAtlasTooltip?.invalidate?.('subdivision-leave');
+}
 
 const INDEX_URL = '../data/world-subdivisions/index.json';
 const USA_PARTITION_FALLBACK = 'USA.geo.json';
@@ -511,6 +546,7 @@ async function handleSharedLayerClick(event) {
 function unbindSharedLayerFallback() {
   if (!fallbackSharedHandlers) return;
   try { map.off('mouseenter', HIT_ID, fallbackSharedHandlers.onEnter); } catch {}
+  try { map.off('mousemove', HIT_ID, fallbackSharedHandlers.onMove); } catch {}
   try { map.off('mouseleave', HIT_ID, fallbackSharedHandlers.onLeave); } catch {}
   try { map.off('click', HIT_ID, fallbackSharedHandlers.onClick); } catch {}
   fallbackSharedHandlers = null;
@@ -526,6 +562,8 @@ function syncSharedLayerInteraction() {
     hoverPriority:60,
     enabled:()=>!sharedScale || sharedScale.capabilityActive('subdivisions', 'interact', map.getZoom()),
     onClick:(event, feature) => handleSharedLayerClick({ ...event, features:[feature] }),
+    onHover:(event, feature) => { void showSubdivisionHover(event, feature); },
+    onLeave:() => clearSubdivisionHover(),
   });
   return true;
 }
@@ -535,15 +573,17 @@ function bindSharedLayerEvents() {
   // Degraded/direct-module fallback for tests and partial boots. Promote live
   // to Interaction Router ownership when the shared Router announces readiness.
   const onEnter = () => { map.getCanvas().style.cursor = 'pointer'; };
-  const onLeave = () => { map.getCanvas().style.cursor = ''; };
+  const onMove = event => { const feature = event.features?.[0]; if (feature) void showSubdivisionHover(event, feature); };
+  const onLeave = () => { map.getCanvas().style.cursor = ''; clearSubdivisionHover(); };
   const onClick = event => {
     if (event?.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
     return handleSharedLayerClick(event);
   };
   map.on('mouseenter', HIT_ID, onEnter);
+  map.on('mousemove', HIT_ID, onMove);
   map.on('mouseleave', HIT_ID, onLeave);
   map.on('click', HIT_ID, onClick);
-  fallbackSharedHandlers = { onEnter, onLeave, onClick };
+  fallbackSharedHandlers = { onEnter, onMove, onLeave, onClick };
   eventsBound = true;
 }
 window.addEventListener?.('potato-atlas-interaction-ready', () => syncSharedLayerInteraction());

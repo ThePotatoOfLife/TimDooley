@@ -186,6 +186,12 @@
 **Guard:** a behavioral regression covers Russia’s 19°E→170°W descriptor, proves unwrapping to 190°E, and requires a visible-scale floor; UI-shell validation requires the country-card handoff marker.  
 **Rule retained:** feature entry points may request focus, but camera semantics and subdivision scale thresholds stay with shared owners.
 
+### WM-033 · Selectable subdivisions have no transient hover identity — P2
+**Status:** fixed / governed on branch `world-map-subdivision-hover-preview-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** subdivision interaction registered hover priority but only implemented click behavior, so dense regional browsing lacked fast identity feedback before opening the Inspector.  
+**Resolution:** subdivisions now reuse the shared Tooltip Service and Interaction Router for region-name/local-name/type/country previews, with semantic hover-key reuse and leave invalidation. The degraded direct-listener fallback mirrors the same tooltip behavior without constructing a private popup.  
+**Guard:** specialist-tooltip regression now requires shared subdivision tooltip ownership, routed hover, leave invalidation, degraded fallback parity and zero private Popup construction.
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
