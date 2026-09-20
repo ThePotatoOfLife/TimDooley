@@ -16,11 +16,15 @@ PHYSICAL = {
     "physical-land-cover": ROOT / "world-map" / "3d-physical-land-cover.js",
     "physical-hydrology": ROOT / "world-map" / "3d-physical-hydrology.js",
 }
+GEOGRAPHY = {
+    "places": ROOT / "world-map" / "3d-places.js",
+    "subdivisions": ROOT / "world-map" / "3d-subdivisions.js",
+}
 
 
 def main() -> int:
     errors: list[str] = []
-    for path in (LIFECYCLE, RENDER_STACK, TEST, *PHYSICAL.values()):
+    for path in (LIFECYCLE, RENDER_STACK, TEST, *PHYSICAL.values(), *GEOGRAPHY.values()):
         if not path.exists():
             errors.append(f"missing style-lifecycle file: {path.relative_to(ROOT)}")
     if errors:
@@ -72,6 +76,18 @@ def main() -> int:
         if "window.__potatoAtlasStyleLifecycle =" in source:
             errors.append(f"{path.relative_to(ROOT)} must consume, not publish, the Style Lifecycle singleton")
 
+    for owner, path in GEOGRAPHY.items():
+        source = path.read_text(encoding="utf-8", errors="replace")
+        for token in (
+            "if (!window.__potatoAtlasStyleLifecycle) await import('./3d-style-lifecycle.js')",
+            f"styleLifecycle?.register?.('{owner}'",
+            "async function restoreAfterStyleGeneration()",
+        ):
+            if token not in source:
+                errors.append(f"{path.relative_to(ROOT)} style-generation recovery missing marker: {token}")
+        if "map.on('styledata'" in source:
+            errors.append(f"{path.relative_to(ROOT)} must restore through Style Lifecycle, not own styledata directly")
+
     active_style_listeners = []
     for path in sorted((ROOT / "world-map").glob("3d-*.js")):
         source = path.read_text(encoding="utf-8", errors="replace")
@@ -84,7 +100,7 @@ def main() -> int:
     if not node:
         errors.append("node executable unavailable; cannot verify style lifecycle")
     else:
-        for path in (LIFECYCLE, RENDER_STACK, *PHYSICAL.values()):
+        for path in (LIFECYCLE, RENDER_STACK, *PHYSICAL.values(), *GEOGRAPHY.values()):
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
@@ -98,6 +114,7 @@ def main() -> int:
     print("- serializable generation/registration diagnostics")
     print("- Render Stack restoration migrated")
     print("- Deserts, Water, Land Cover and Hydrology restoration migrated")
+    print("- Places and Subdivisions restore sources, layers and interaction ownership after style generations")
     print(f"Errors: {len(errors)}")
     if errors:
         print("WORLD MAP STYLE LIFECYCLE VALIDATION FAILED")
