@@ -101,6 +101,16 @@ function createTooltipService(map, options = {}) {
   return Object.freeze({ nextGeneration, show, invalidate, clear, state });
 }
 
-if (typeof window !== 'undefined') window.__potatoAtlasCreateTooltipService = createTooltipService;
+function getOrCreateTooltipService(map, options = {}) {
+  if (typeof window !== 'undefined' && window.__potatoAtlasTooltip) return window.__potatoAtlasTooltip;
+  const service = createTooltipService(map, options);
+  if (typeof window !== 'undefined') window.__potatoAtlasTooltip = service;
+  return service;
+}
 
-export { createTooltipService };
+if (typeof window !== 'undefined') {
+  window.__potatoAtlasCreateTooltipService = createTooltipService;
+  window.__potatoAtlasGetOrCreateTooltipService = getOrCreateTooltipService;
+}
+
+export { createTooltipService, getOrCreateTooltipService };
