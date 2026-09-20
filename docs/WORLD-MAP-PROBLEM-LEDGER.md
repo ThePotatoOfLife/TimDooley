@@ -131,11 +131,10 @@
 **Solution:** migrate each specialist surface to typed inspector nodes; raw panel writes occur only inside the active node's render callback.
 
 ### WM-023 · Degraded interaction fallback can become permanent by boot order — P1
-**Status:** open.  
-**Evidence:** Spatial Overlays and Country Selection capture `window.__potatoAtlasInteraction` once at module initialization; if unavailable, direct MapLibre listeners are installed and never promoted later.  
-**Risk:** normal app behavior becomes load-order dependent; direct listeners can coexist with Router ownership.  
-**Owner target:** Interaction Router + module loader.  
-**Solution:** await/resolve Router for normal application boot, or register removable degraded listeners that are explicitly torn down when Router readiness is announced; add delayed-Router regression.
+**Status:** fixed on main (2026-09-20).  
+**Cause:** Spatial Overlays and Country Selection captured the Router once and could leave direct listeners installed forever.  
+**Resolution:** both resolve Router ownership dynamically, listen for `potato-atlas-interaction-ready`, remove degraded listeners with `map.off`, and promote to canonical Router registrations.  
+**Guard:** interaction validator/regression requires the ready listener and teardown markers.
 
 ### WM-024 · Canonical subdivision evidence integration lacks generic search/badge projection — P2
 **Status:** open.  
