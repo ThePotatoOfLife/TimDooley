@@ -46,6 +46,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
         ]),
         ("Foundation layer", [
             "python scripts/validate_foundation_layer.py",
+            "python scripts/validate_religious_foundation_lineages.py",
             "python scripts/validate_foundation_seed_genealogy.py",
             "python scripts/validate_foundation_axis_placement.py",
             "python scripts/validate_foundation_rooms.py",
@@ -65,6 +66,8 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
         ]),
         ("Atlas and architecture", [
             "python scripts/validate_blueprints.py",
+            "python scripts/build_repository_index.py",
+            "python scripts/build_root_navigation_index.py",
             "python scripts/stability_audit.py",
             "python scripts/validate_atlas.py",
             "python scripts/validate_atlas_view_contracts.py",
@@ -139,6 +142,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
     "content": [
         ("Reader and projection contracts", [
             "python scripts/validate_reader_surfaces.py",
+            "python scripts/validate_reader_richness.py",
             "python scripts/validate_body_discovery.py",
             "python scripts/validate_potatoism_philosophy_projection.py",
             "python scripts/validate_public_projection.py",
