@@ -33,6 +33,13 @@ def main():
  account=json.loads(ACCOUNT.read_text(encoding="utf-8"))
  if account.get("welfare_rule",{}).get("enabled_by_default") is not False: fail("Dooley welfare must default off")
  if "not money" not in str(account.get("boundary","")).lower(): fail("symbolic account boundary missing")
+ for c in chars:
+  cp=ROOT/c.get("path","")
+  if not cp.is_file(): fail(f"CIA character file missing: {cp}")
+  cd=json.loads(cp.read_text(encoding="utf-8"))
+  meaning=cd.get("meaning") or {}
+  for key in ["why_this_file_matters","known","interpretive","unknown","relationship_arc","confidence_note"]:
+   if not meaning.get(key): fail(f"CIA meaning spine missing {key} for {c.get('id')}")
  if not ACTIVITY.is_file(): fail("CIA activity index missing")
  activity=json.loads(ACTIVITY.read_text(encoding="utf-8"))
  if len(activity.get("records",[]))!=len(chars): fail("CIA activity index coverage drift")
