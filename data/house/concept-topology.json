@@ -1,5 +1,5 @@
 {
-  "version": "1.7.0",
+  "version": "1.8.0",
   "updated": "2026-09-20",
   "authority": "house-semantic-topology",
   "purpose": "Machine-readable topology assignments for the small set of operators that organize the Potato House. These annotations drive projection and navigation; they do not replace canonical concept owners or evidence classes.",
@@ -228,9 +228,11 @@
         "manifestation"
       ],
       "topology_roles": [
-        "section"
+        "section",
+        "frame",
+        "measurement-surface"
       ],
-      "operation": "selects the active world-facing frame and cuts the Door at maximum overlap",
+      "operation": "selects a frame-relative world-facing section, exposes lateral relations, and provides a surface on which trajectory crossings/recurrences can be compared",
       "counter_or_complement": [
         "axis"
       ],
@@ -243,7 +245,7 @@
         "axis",
         "world-map"
       ],
-      "boundary": "Plane is a frame/section, not a folder or inferior realm."
+      "boundary": "Plane is a section/frame, not a realm, folder, inferior world, or universal physical present."
     },
     {
       "id": "axis",
@@ -279,7 +281,7 @@
     },
     {
       "id": "cross",
-      "label": "Cross",
+      "label": "Cross-point O",
       "kind": "derived-coordinate",
       "field_orientation": [
         "shared"
@@ -287,7 +289,7 @@
       "topology_roles": [
         "intersection"
       ],
-      "operation": "marks Plane × Axis at the relational midpoint where world-contact and vertical orientation are simultaneously legible",
+      "operation": "marks O = Axis ∩ Plane, the point where vertical orientation and the active frame are simultaneously legible",
       "counter_or_complement": [
         "plane",
         "axis"
@@ -299,7 +301,7 @@
         "axis",
         "house"
       ],
-      "boundary": "Cross is internal to Door; it is not another container or floor."
+      "boundary": "Cross-point O is not the entire Cross sign, Door, or Plane; Christian Cross meanings remain tradition-specific."
     },
     {
       "id": "face",
@@ -926,6 +928,63 @@
         "house"
       ],
       "boundary": "Lion is one bounded motif among several Son-side roles; biblical lion traditions retain their own contexts."
+    },
+    {
+      "id": "cross-sign",
+      "label": "Cross Sign / Axis + Lateral",
+      "kind": "derived-projection",
+      "field_orientation": [
+        "shared"
+      ],
+      "topology_roles": [
+        "visual-projection",
+        "orientation"
+      ],
+      "operation": "renders the vertical Axis together with a chosen lateral line inside Plane through O",
+      "counter_or_complement": [
+        "cross",
+        "plane",
+        "axis"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts"
+      ],
+      "public_surface_ids": [
+        "axis",
+        "house",
+        "religion"
+      ],
+      "boundary": "Coordinate Cross-sign is a project visual/formal object; it does not explain the historical origin or theology of the Christian cross."
+    },
+    {
+      "id": "crossing-event",
+      "label": "Crossing Event",
+      "kind": "event",
+      "field_orientation": [
+        "shared"
+      ],
+      "topology_roles": [
+        "intersection",
+        "transition-candidate"
+      ],
+      "operation": "records a trajectory intersecting the active Plane and, when Door guards are satisfied, changing state/context",
+      "counter_or_complement": [
+        "door",
+        "plane",
+        "spiral"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "time-history",
+        "research-lab"
+      ],
+      "public_surface_ids": [
+        "axis",
+        "timeline",
+        "house"
+      ],
+      "boundary": "Not every Plane crossing is a strong Door transition."
     }
   ],
   "relation_types": [
@@ -1418,6 +1477,41 @@
       "to": "body",
       "type": "related-through-spirit",
       "description": "Mind/source orientation and Body/manifestation remain dynamically related through Spirit and Door."
+    },
+    {
+      "id": "rel-cross-sign-axis",
+      "from": "cross-sign",
+      "to": "axis",
+      "type": "contains-projection-of",
+      "description": "Cross-sign includes a visualized segment of the Axis."
+    },
+    {
+      "id": "rel-cross-sign-plane",
+      "from": "cross-sign",
+      "to": "plane",
+      "type": "contains-lateral-line-in",
+      "description": "Cross-sign includes one chosen lateral line lying in the active Plane."
+    },
+    {
+      "id": "rel-crossing-plane",
+      "from": "crossing-event",
+      "to": "plane",
+      "type": "intersects",
+      "description": "Crossing event is registered when trajectory intersects the active Plane."
+    },
+    {
+      "id": "rel-crossing-door",
+      "from": "crossing-event",
+      "to": "door",
+      "type": "may-satisfy",
+      "description": "A Plane crossing becomes a strong Door transition only when declared transition guards/state changes are satisfied."
+    },
+    {
+      "id": "rel-spiral-plane",
+      "from": "spiral",
+      "to": "plane",
+      "type": "sampled-on",
+      "description": "Repeated Plane crossings can be compared to determine recurrence with or without meaningful state change."
     }
   ],
   "canonical_traversals": [
