@@ -1,6 +1,6 @@
 {
   "id": "body-index",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "updated": "2026-09-20",
   "title": "BODY / Neurobiology Canonical Index",
   "status": "canonical navigation index for knowledge/body",
@@ -102,6 +102,30 @@
       "name": "Attestation chronology",
       "path": "knowledge/timeline/neurotheology-attestation-ledger.json",
       "use_for": "first known Tim/project strata and unresolved first-source recovery"
+    },
+    {
+      "step": 17,
+      "name": "33 vertebral rooms",
+      "path": "knowledge/body/vertebral-33-room-atlas.json",
+      "use_for": "C1→Co4 individual rooms with bone/canal/root/CSF/vascular/project coordinates"
+    },
+    {
+      "step": 18,
+      "name": "Spinal cord microcircuits",
+      "path": "knowledge/body/spinal-cord-microcircuit-atlas.json",
+      "use_for": "Rexed laminae, autonomic columns, motor pools, ascending/descending tracts and local loops"
+    },
+    {
+      "step": 19,
+      "name": "Cranial & brainstem rooms",
+      "path": "knowledge/body/cranial-brainstem-room-atlas.json",
+      "use_for": "cranial nerves/nuclei, functional columns, sleep/wake rooms and vital-state loops"
+    },
+    {
+      "step": 20,
+      "name": "Granular brain rooms",
+      "path": "knowledge/body/brain-room-deep-atlas.json",
+      "use_for": "sub-lobe cortical territories, hippocampal/amygdala nuclei, basal ganglia, hypothalamus, thalamus, brainstem, cerebellum, interfaces and vascular supply"
     }
   ],
   "specialist_owners": [
@@ -148,6 +172,22 @@
     {
       "topic": "axis biology / autonomic side-chains / orientation / living boundaries",
       "path": "knowledge/body/axis-orientation-autonomic-interface-atlas.json"
+    },
+    {
+      "topic": "all 33 vertebral rooms",
+      "path": "knowledge/body/vertebral-33-room-atlas.json"
+    },
+    {
+      "topic": "spinal cord laminae / columns / tracts",
+      "path": "knowledge/body/spinal-cord-microcircuit-atlas.json"
+    },
+    {
+      "topic": "cranial nerves / brainstem / sleep-arousal",
+      "path": "knowledge/body/cranial-brainstem-room-atlas.json"
+    },
+    {
+      "topic": "granular brain rooms",
+      "path": "knowledge/body/brain-room-deep-atlas.json"
     }
   ],
   "canonical_symbol_relations": [
