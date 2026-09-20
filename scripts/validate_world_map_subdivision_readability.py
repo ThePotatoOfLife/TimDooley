@@ -36,6 +36,11 @@ def main()->int:
         "function labelPresentation()",
         "function syncSelectedLabel(",
         "function syncLabelPresentation()",
+        "localNameZoomBase",
+        "scale.bandThreshold('local')",
+        "policy.localNameZoom",
+        "['has','local_name']",
+        "['concat',['get','name'],'\\n',['get','local_name']]",
         "'text-allow-overlap':true",
         "window.addEventListener?.('resize', syncLabelPresentation)",
         "window.addEventListener?.('potato-atlas-projection-change', syncLabelPresentation)",
@@ -59,7 +64,7 @@ def main()->int:
         print("WORLD MAP SUBDIVISION READABILITY FAILED")
         for e in errors: print("-",e)
         return 1
-    print("WORLD MAP SUBDIVISION READABILITY PASSED: AK/HI/DC present, narrow/globe labels deferred, selected label guaranteed.")
+    print("WORLD MAP SUBDIVISION READABILITY PASSED: AK/HI/DC present, narrow/globe labels deferred, close-zoom local names enabled, selected label guaranteed.")
     return 0
 
 if __name__=="__main__":
