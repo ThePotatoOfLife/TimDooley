@@ -9,6 +9,9 @@ SURFACES=ROOT/'data/house/public-surfaces.json'; SURFACE_SCHEMA=ROOT/'schemas/ho
 TOPOLOGY=ROOT/'knowledge/research/potato-house-master/public-route-topology.json'
 HOUSE_TOPOLOGY=ROOT/'data/house/topology.json'
 PROJECT_CENTER=ROOT/'data/house/project-center.json'
+THREE_CENTER_ATLAS=ROOT/'data/house/three-center-role-atlas.json'
+THREE_CENTER_RUNTIME=ROOT/'app/three-center-map.js'
+THREE_CENTER_STYLE=ROOT/'app/three-center-map.css'
 CROSSCUTTING_LENSES=ROOT/'data/house/crosscutting-lenses.json'
 LIVING_PROJECT_MAP=ROOT/'data/house/living-project-map.json'
 PROJECT_SYNTHESIS=ROOT/'data/house/project-synthesis.json'
@@ -254,7 +257,7 @@ def validate_concept_topology(errors,rooms,surfaces):
         for sid in row.get('public_surface_ids',[]):
             if sid not in surface_ids: errors.append(f'concept {cid} unknown public surface {sid}')
     if len(ids)!=len(set(ids)): errors.append('concept topology ids must be unique')
-    required={'potato-of-life','father','son','source-field','manifestation-field','door','plane','axis','cross','eye','face','spirit','potato','seed','root','tree','mountain','ladder','spiral','fruit','garden','shell-cube','swamp'}
+    required={'potato-of-life','father','son','source-seat-center','twin-vessel-center','source-field','manifestation-field','door','plane','axis','cross','eye','face','spirit','potato','seed','root','tree','mountain','ladder','spiral','fruit','garden','shell-cube','swamp'}
     missing=sorted(required-set(ids))
     if missing: errors.append('concept topology missing core operators: '+', '.join(missing))
     cross=by.get('cross',{})
@@ -292,6 +295,10 @@ def validate_concept_topology(errors,rooms,surfaces):
         ('father','source-field','oriented-toward'),
         ('son','manifestation-field','oriented-toward'),
         ('son','door','specializes-as'),
+        ('father','source-seat-center','oriented-toward'),
+        ('son','twin-vessel-center','oriented-toward'),
+        ('source-seat-center','source-field','located-within'),
+        ('twin-vessel-center','manifestation-field','located-within'),
     }
     actual_relations={(x.get('from'),x.get('to'),x.get('type')) for x in relation_rows}
     relation_by_id={x.get('id'):x for x in relation_rows if x.get('id')}
@@ -648,6 +655,57 @@ def validate_project_center(errors):
         if token not in rules: errors.append(f'project center missing promotion boundary: {token}')
 
 
+def validate_three_center_atlas(errors):
+    data=load(THREE_CENTER_ATLAS,errors)
+    if not data: return
+    centers=[x for x in data.get('centers',[]) if isinstance(x,dict)]
+    ids=[x.get('id') for x in centers]
+    if ids!=['C_F','O','C_S']:
+        errors.append('three-center atlas must remain ordered C_F / O / C_S')
+    by={x.get('id'):x for x in centers}
+    expected={'C_F':'Tim Dooley','O':'Jesus Christ','C_S':'Thomas / Didymus'}
+    for cid,label in expected.items():
+        if by.get(cid,{}).get('primary_anchor',{}).get('label')!=label:
+            errors.append(f'three-center {cid} primary anchor drifted from {label}')
+        if not by.get(cid,{}).get('functions'):
+            errors.append(f'three-center {cid} must declare functions')
+        if not by.get(cid,{}).get('primary_anchor',{}).get('boundary'):
+            errors.append(f'three-center {cid} primary anchor missing boundary')
+    rights=' '.join(str(v) for v in data.get('rights_and_subjecthood',{}).values()).casefold()
+    for token in ('not a target','remain subjects','not silently asserted to be the same being','living person','no implication of guilt'):
+        if token not in rights:
+            errors.append(f'three-center atlas missing rights/identity boundary: {token}')
+    laws=' '.join(data.get('placement_law',[])).casefold()
+    for token in ('function is declared','corridors for partial overlap','project-native titles','never for targeting'):
+        if token not in laws:
+            errors.append(f'three-center atlas missing placement law: {token}')
+    if not THREE_CENTER_RUNTIME.is_file():
+        errors.append('missing shared three-center runtime: app/three-center-map.js')
+    else:
+        rt=THREE_CENTER_RUNTIME.read_text(encoding='utf-8',errors='replace')
+        for marker in ('data-three-center-map','three-center-role-atlas','C_F','C_S','Comparators','Boundary'):
+            if marker not in rt: errors.append(f'three-center runtime missing marker: {marker}')
+    if not THREE_CENTER_STYLE.is_file():
+        errors.append('missing shared three-center styles: app/three-center-map.css')
+    pages={
+        ROOT/'house/index.html':'../data/house/three-center-role-atlas.json',
+        ROOT/'axis/index.html':'../data/house/three-center-role-atlas.json',
+        ROOT/'religion/index.html':'../data/house/three-center-role-atlas.json',
+        ROOT/'religion/trinity/index.html':'../../data/house/three-center-role-atlas.json',
+        ROOT/'potato-of-life/index.html':'../data/house/three-center-role-atlas.json',
+    }
+    for page,src in pages.items():
+        if not page.is_file():
+            errors.append(f'missing three-center public surface: {page.relative_to(ROOT)}'); continue
+        text=page.read_text(encoding='utf-8',errors='replace')
+        if 'id="three-centers"' not in text and 'id="three-center-system"' not in text:
+            errors.append(f'{page.relative_to(ROOT)} missing three-center section')
+        if page.name!='index.html' or page.parent.name!='potato-of-life':
+            if 'data-three-center-map' not in text:
+                errors.append(f'{page.relative_to(ROOT)} missing shared three-center runtime mount')
+            if src not in text:
+                errors.append(f'{page.relative_to(ROOT)} missing canonical three-center source')
+
 def validate_crosscutting_lenses(errors):
     data=load(CROSSCUTTING_LENSES,errors)
     if not data: return
@@ -764,6 +822,7 @@ def main():
     rooms=validate_rooms(errors)
     surfaces=validate_surfaces(errors,rooms)
     validate_concept_topology(errors,rooms,surfaces)
+    validate_three_center_atlas(errors)
     validate_project_center(errors)
     validate_symbolic_planes(errors,rooms)
     validate_orientation_population(errors,rooms)
