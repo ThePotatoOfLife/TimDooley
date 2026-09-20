@@ -1,6 +1,6 @@
 {
-  "version": "1.9.0",
-  "updated": "2026-09-19",
+  "version": "2.0.0",
+  "updated": "2026-09-20",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
   "primary_gateway_ids": [
@@ -780,6 +780,21 @@
         "works",
         "research-lab"
       ],
+      "status": "active",
+      "visibility": "secondary",
+      "primary_navigation": false,
+      "is_view": true,
+      "knowledge_owner": false,
+      "legacy_routes": []
+    },
+    {
+      "id": "inhabitants",
+      "route": "/rooms/objects/",
+      "canonical_route": "/rooms/objects/",
+      "surface_type": "explorer",
+      "title": "House Inhabitants & Cases",
+      "primary_parent": "rooms",
+      "primary_room_ids": [],
       "status": "active",
       "visibility": "secondary",
       "primary_navigation": false,
