@@ -10,11 +10,9 @@ if (!scale?.threshold) throw new Error('Hydrology requires the shared Scale runt
 if (!window.__potatoAtlasGeo) await import('./3d-geo-kernel.js');
 const geoKernel = window.__potatoAtlasGeo;
 if (!geoKernel?.normalizeLongitude) throw new Error('Hydrology requires the shared geospatial kernel.');
-if (!window.__potatoAtlasStyleLifecycle) {
-  const { createStyleLifecycle } = await import('./3d-style-lifecycle.js');
-  window.__potatoAtlasStyleLifecycle = createStyleLifecycle(map);
-}
+if (!window.__potatoAtlasStyleLifecycle) await import('./3d-style-lifecycle.js');
 const styleLifecycle = window.__potatoAtlasStyleLifecycle;
+if (!styleLifecycle) throw new Error('World Map Style Lifecycle unavailable.');
 
 const PHYSICAL_ID = 'physical.water.hydrology';
 const MIN_ZOOM = scale.threshold('physical-hydrology', 'load');
