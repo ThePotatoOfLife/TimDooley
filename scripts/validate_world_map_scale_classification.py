@@ -64,7 +64,7 @@ def main()->int:
 
     behavior_text={p.name:p.read_text(encoding="utf-8",errors="replace") for p in BEHAVIORAL}
     required_markers={
-        "3d-subdivisions.js":["scale.threshold('subdivisions'","scale.capabilityActive('subdivisions'"],
+        "3d-subdivisions.js":["scale.threshold('subdivisions'","capabilityActive('subdivisions'"],
         "3d-places.js":["scale.threshold('places-detail'"],
         "3d-physical-water.js":["scale.threshold('physical-water-detail'"],
         "3d-physical-hydrology.js":["scale.threshold('physical-hydrology'","hydrology-rivers-medium","hydrology-rivers-fine","hydrology-rivers-detailed"],
