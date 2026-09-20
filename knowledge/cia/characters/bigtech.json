@@ -51,6 +51,11 @@
       "date": "2024 literary",
       "title": "Amplifier / rival figure",
       "summary": "Great Book casts BigTech as an amplifier/rival in Hawk Tuah mythology; propagation claims remain literary unless independently sourced."
+    },
+    {
+      "date": "2023 retrospective",
+      "title": "Pre-literary BigTech",
+      "summary": "Later Tim chronology names BigTech among people encountered during the 2023 transition toward Potato of Life; original interaction record remains missing."
     }
   ],
   "source_strata": [
@@ -61,6 +66,10 @@
     {
       "type": "cast_book",
       "path": "knowledge/story/cast-book.json"
+    },
+    {
+      "type": "story_gap_map",
+      "path": "knowledge/story/TIM-2020-2024-GAP-MAP.md"
     }
   ],
   "recovery_leads": [
@@ -72,8 +81,8 @@
     "authority": "canonical",
     "record_type": "character-dossier",
     "presence": {
-      "first_recorded": null,
-      "last_recorded": null,
+      "first_recorded": "2023 retrospective",
+      "last_recorded": "2024-12-15",
       "rule": "First/last currently recovered dated evidence in this dossier; not lifetime endpoints."
     },
     "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
@@ -87,5 +96,33 @@
       "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
       "Add relationship edges only when a dated scene or explicit source supports them."
     ]
+  },
+  "meaning": {
+    "why_this_file_matters": "BigTech is a high-priority separation problem: retrospective chronology places a real/social figure in 2023–24, while the Great Book later turns BigTech into a much larger literary rival/amplifier.",
+    "known": [
+      "Retrospective project chronology names BigTech in the 2023 period.",
+      "The Great Book has a substantial BigTech literary layer, including Hawk Tuah amplification and Cybersoil/technology-titan material.",
+      "The original documentary interaction sequence is still missing."
+    ],
+    "interpretive": [
+      "Mirror/contrarian/catalyst roles mostly describe later profile and literary usage.",
+      "The scale of BigTech's literary role should not be mistaken for documentary source depth."
+    ],
+    "unknown": [
+      "Original platform, dates and conversations behind documentary BigTech remain unrecovered.",
+      "Claims about cultural propagation in the Great Book are literary unless independently sourced."
+    ],
+    "relationship_arc": "retrospective real/social figure → rivalry/foil memory → major literary amplifier",
+    "confidence_note": "High confidence in literary text and retrospective naming; low confidence in original documentary chronology."
+  },
+  "symbolic_account": {
+    "status": "unassessed",
+    "good_karma": "unassessed",
+    "karmic_debt": "unassessed",
+    "dooley_welfare": {
+      "enabled": false
+    },
+    "outstanding": [],
+    "entries": []
   }
 }
