@@ -144,6 +144,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
             "node scripts/test_world_map_route_geometry_semantics.mjs",
             "python scripts/validate_world_map_visual_channels.py",
             "node scripts/test_world_map_visual_channels.mjs",
+            "node scripts/test_world_map_symbolic_operator_registry.mjs",
             "python scripts/validate_world_places_fixture_pipeline.py",
             "node scripts/test_world_map_reset_context_contract.mjs",
             "node scripts/test_world_map_search_selection_contract.mjs",
