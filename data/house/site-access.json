@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-21",
   "authority": "fast-access-curation",
   "purpose": "Curated high-value quick-access doors and aliases for the universal site dock. Public-surface and House-object registries remain the broad generated search index.",
@@ -9,7 +9,9 @@
     "Do not duplicate the entire site hierarchy here.",
     "Exact named objects should outrank generic hubs during search.",
     "Global access belongs here; page-owned navigation stays local.",
-    "Never use bare CIA as a global destination label: disambiguate Potatoverse CIA · Character Archive from U.S. CIA · Central Intelligence Agency before navigation."
+    "Never use bare CIA as a global destination label: disambiguate Potatoverse CIA · Character Archive from U.S. CIA · Central Intelligence Agency before navigation.",
+    "Readers must not need to understand House/Dwelling hierarchy to reach repeatedly sought project landmarks.",
+    "Character Archive and World Spiritual Bank are global landmarks: expose them by name in Places and preserve a direct Archive ↔ Bank switcher inside their shared building."
   ],
   "groups": {
     "go_now": [
@@ -37,6 +39,10 @@
       "science",
       "religion",
       "hours"
+    ],
+    "landmarks": [
+      "cia-character-archive",
+      "mud-bank"
     ]
   },
   "entries": [
@@ -448,6 +454,22 @@
         "intelligence-cia"
       ],
       "rule": "A bare CIA lookup must present both namespaces; do not auto-route."
+    }
+  },
+  "wayfinding": {
+    "principle": "name-first before hierarchy",
+    "max_interactions_for_landmarks": 2,
+    "landmarks": [
+      "cia-character-archive",
+      "mud-bank"
+    ],
+    "institution_context": {
+      "prefix": "/rooms/potatoverse-canon/beings/cia/",
+      "shortcuts": [
+        "cia-character-archive",
+        "mud-bank"
+      ],
+      "rule": "While reading any Character Archive / Bank page, persistent local shortcuts remain available even after the shared building header scrolls away."
     }
   }
 }

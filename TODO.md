@@ -199,6 +199,10 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [ ] **ACCESS-017 · House access integration:** House should explain structure, while quick Find handles named-entity retrieval; avoid turning House itself into the universal menu.
 - [x] **ACCESS-018 · Direct-door governance:** the fast-access contract now owns a deliberately small direct-door list for repeatedly sought destinations rather than promoting every specialist page globally.
 - [x] **ACCESS-019 · Fast-access source-of-truth:** `data/house/site-access.json` now owns curated routes, groups and aliases; public surfaces + House inhabitants remain the broader generated search index, with a degraded JS fallback only for fetch failure.
+- [x] **ACCESS-021 · CIA/Bank landmark rescue:** promote Potatoverse Character Archive and World Spiritual Bank above the House hierarchy in the universal access panel; rename vague global “Menu” to “Places” so readers can navigate by destination name rather than architecture.
+- [x] **ACCESS-022 · Long-scroll institution reorientation:** while anywhere inside the Character Archive / World Spiritual Bank building, keep a tiny fixed Archive ↔ Bank switcher visible after the building header scrolls away.
+- [~] **ACCESS-023 · Name-first wayfinding audit:** extend the landmark rule to other repeatedly sought destinations demonstrated by user confusion. Do not turn every specialist page into a global shortcut; require evidence that hierarchy/scrolling is causing retrieval failure.
+- [ ] **ACCESS-024 · Long-reader reorientation audit:** inspect mature long pages for cases where users can scroll far enough to lose page identity or the meaningful next exit; prefer a compact persistent locator/back-to-owner cue over more first-screen navigation.
 - [ ] **ACCESS-020 · Live-deploy visibility:** after exact-head quality/deploy succeeds, verify the public Pages artifact actually contains the dock and Current World first-screen link before closing this access-recovery wave.
 
 
