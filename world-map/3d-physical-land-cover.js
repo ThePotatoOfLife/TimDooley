@@ -8,6 +8,7 @@ if (!window.__potatoAtlasStyleLifecycle) await import('./3d-style-lifecycle.js')
 const styleLifecycle = window.__potatoAtlasStyleLifecycle;
 if (!styleLifecycle) throw new Error('World Map Style Lifecycle unavailable.');
 
+const PHYSICAL_ID = 'physical.land-cover';
 const SOURCE_ID = 'atlas-land-cover-worldcover-2021';
 const LAYER_ID = 'atlas-land-cover-worldcover-2021-raster';
 const LEGEND_ID = 'atlasLandCoverLegend';
@@ -32,6 +33,12 @@ const CLASSES = [
 let enabled = false;
 let restoring = false;
 let opacity = 0.58;
+
+function reportStatus(phase, message) {
+  window.dispatchEvent(new CustomEvent('potato-atlas-physical-layer-status', {
+    detail:{ id:PHYSICAL_ID, provider:'ESA WorldCover', phase, message, retryable:true }
+  }));
+}
 
 function registerLayer() {
   window.__potatoAtlasRenderStack?.register?.(LAYER_ID, {
@@ -127,6 +134,7 @@ function setLegendVisible(visible) {
 
 async function enable() {
   if (enabled && map.getLayer(LAYER_ID)) return true;
+  reportStatus('loading', 'Loading ESA WorldCover tiles');
   try {
     ensureSource();
     ensureLayer();
@@ -134,11 +142,13 @@ async function enable() {
     map.setLayoutProperty(LAYER_ID, 'visibility', 'visible');
     enabled = true;
     setLegendVisible(true);
+    reportStatus('active', 'ESA WorldCover 2021 active');
     return true;
   } catch (error) {
     console.warn('ESA WorldCover land-cover layer unavailable; ordinary map remains active.', error);
     enabled = false;
     setLegendVisible(false);
+    reportStatus('error', error?.message || 'ESA WorldCover unavailable');
     return false;
   }
 }
@@ -147,6 +157,7 @@ async function disable() {
   if (map.getLayer(LAYER_ID)) map.setLayoutProperty(LAYER_ID, 'visibility', 'none');
   enabled = false;
   setLegendVisible(false);
+  reportStatus('idle', 'Land cover off');
   return true;
 }
 
@@ -166,6 +177,7 @@ styleLifecycle.register('physical-land-cover', {
         setLegendVisible(true);
       } catch (error) {
         console.warn('ESA WorldCover layer could not restore after style change.', error);
+        reportStatus('partial', error?.message || 'Land-cover restore incomplete');
       } finally {
         restoring = false;
       }
