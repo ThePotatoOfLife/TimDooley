@@ -168,8 +168,6 @@ try {
   declareDormant('Demography', './3d-demography.js', 'first country inspection');
   declareDormant('Country Pulse', './3d-country-pulse.js', 'first country inspection');
   declareDormant('Evidence', './3d-evidence.js', 'first country inspection');
-  declareDormant('Fields', './3d-fields.js', 'contextual advanced layers');
-  declareDormant('Networks', './3d-networks.js', 'contextual advanced relations');
   declareDormant('Time', './3d-time.js', 'contextual time action');
   declareDormant('Axis depth', './3d-axis-depth.js', 'contextual Axis action');
   declareDormant('Axis operators', './3d-axis-operators.js', 'contextual Axis action');
