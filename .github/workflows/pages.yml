@@ -1,8 +1,6 @@
 name: Deploy Potato of Life
 
 on:
-  push:
-    branches: [main]
   workflow_run:
     workflows: ["Repository quality checks"]
     types: [completed]
@@ -17,12 +15,12 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 concurrency:
-  group: pages-${{ github.event_name }}-${{ github.event.workflow_run.head_sha || github.sha }}
+  group: pages-${{ github.event.workflow_run.head_sha || github.sha }}
   cancel-in-progress: false
 
 jobs:
   deploy:
-    if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main') }}
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main') }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
