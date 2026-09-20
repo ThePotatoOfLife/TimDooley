@@ -99,6 +99,13 @@
     entries.sort((a, b) => a.date.localeCompare(b.date) || a.index - b.index);
     stream.replaceChildren(...entries.map(item => item.entry));
     status.textContent = `${entries.length} restored stories in this branch build · more recovered stories are inserted automatically into their dates.`;
+    const landOnHash = () => {
+      const id = decodeURIComponent(location.hash.slice(1));
+      if (!id) return;
+      requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({block:'start'}));
+    };
+    landOnHash();
+    window.addEventListener('hashchange', landOnHash);
   }).catch(error => {
     status.classList.add('stream-error');
     status.textContent = 'The story stream could not be assembled: ' + error.message;
