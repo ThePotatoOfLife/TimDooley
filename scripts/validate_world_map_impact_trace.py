@@ -150,7 +150,8 @@ def validate_browser() -> None:
         "Known alternatives",
         "Context",
         "searchParams.get('impact')",
-        "searchParams.set('impact'",
+        "urlState.claim('impact-trace', ['impact'])",
+        "urlState.patch('impact-trace'",
         "represented dependencies, not a forecast",
     )
     for marker in required:
