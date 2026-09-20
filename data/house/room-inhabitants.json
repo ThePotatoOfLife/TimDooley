@@ -1,5 +1,5 @@
 {
-  "version": "1.8.0",
+  "version": "1.9.0",
   "updated": "2026-09-20",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
@@ -2435,6 +2435,68 @@
           }
         ]
       }
+    },
+    {
+      "id": "concept-vesica-mandorla-comparison",
+      "label": "Vesica Piscis / Mandorla comparison field",
+      "kind": "comparative-symbol-system",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "math-geometry",
+        "symbolic-architecture"
+      ],
+      "route": "/traditions/vesica/",
+      "summary": "Source-led comparison object connecting exact Vesica geometry, Christian mandorla art and later esoteric Sun/Moon or cosmological readings without collapsing those evidence classes.",
+      "status_note": "Exact geometry, art history, esoteric interpretation and Potatoverse symbolism remain separate layers even when they share a diagram.",
+      "evidence_note": "Use the Vesica/Mandorla source ledger and distinguish historical attestation from later project comparison.",
+      "maturity": "described"
+    },
+    {
+      "id": "model-physics-cosmology-family",
+      "label": "Physics & cosmology model family",
+      "kind": "research-model-family",
+      "room_ids": [
+        "physics-cosmology",
+        "model-testing",
+        "experiments-formalization"
+      ],
+      "route": "/science/",
+      "summary": "Project research family containing quantum, field, celestial-coordinate, dark-sector and cosmological analogies that must pass from metaphor through explicit model assumptions before any empirical claim is made.",
+      "status_note": "A mathematical or symbolic resemblance is not evidence that nature implements the proposed mechanism.",
+      "evidence_note": "Track equations, assumptions, testable discriminators, source physics and current evidence status separately.",
+      "maturity": "described"
+    },
+    {
+      "id": "model-north-obligation-graph",
+      "label": "North obligation / debt graph",
+      "kind": "economic-system-model",
+      "room_ids": [
+        "economy-finance",
+        "politics-governance",
+        "infrastructure-capability",
+        "research-programmes"
+      ],
+      "route": "/economy/",
+      "summary": "Material obligation model for tracing debt, bonds, currency, institutions, ownership, fiscal capacity and cross-border financial dependencies as typed economic relations.",
+      "status_note": "Material legal/financial obligations remain separate from symbolic or karmic debt language.",
+      "evidence_note": "Every edge should carry instrument, issuer/holder or counterparty, jurisdiction, date, amount/status and source where available.",
+      "maturity": "described"
+    },
+    {
+      "id": "programme-house-consolidation",
+      "label": "House consolidation & integration programme",
+      "kind": "research-programme",
+      "room_ids": [
+        "research-programmes",
+        "house-architecture",
+        "open-questions",
+        "experiments-formalization"
+      ],
+      "route": "/research-lab/",
+      "summary": "Project-wide programme for turning accumulated files, Rooms, interfaces and public surfaces into fewer clearer owners, stronger handoffs, explicit evidence boundaries and reader-facing routes.",
+      "status_note": "A coordination programme may connect many Rooms but never becomes the factual owner of their subject matter.",
+      "evidence_note": "Use ownership registries, health audits, validators and concrete before/after route or duplication findings rather than generic cleanup claims.",
+      "maturity": "described"
     }
   ],
   "source_records": [
