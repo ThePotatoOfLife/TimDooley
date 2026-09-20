@@ -18,16 +18,18 @@
     ],
     "narrative_functions": [
       "ordinary chat continuity",
-      "gaming progress",
-      "moderation advice",
-      "theological dialogue"
+      "gaming progress and explanation",
+      "moderation advice and boundary defense",
+      "theological dialogue and playful alignment",
+      "conflict/trolling participation",
+      "stream continuity"
     ],
     "regions": [
       "Livestream",
       "Games",
       "Debate"
     ],
-    "editorial_reading": "Recurring real chat participant. September 20 adds unusually useful mundane continuity through controller, sleep and Elden Ring progress. Keep separate from creative Matthew-the-Potato mythology.",
+    "editorial_reading": "Recurring public-chat participant with recoverable continuity from May through September 2026: conflict/moderation scenes, explicit support, Potato/theology banter, Danish-stream presence, Elden Ring mechanics and ordinary gaming life. September 20 adds controller, sleep/site-interest and Senessax persistence. Keep this documentary handle strictly separate from creative Matthew-the-Potato mythology.",
     "source_boundary": "Public chat supports handle, speech and scene role. Creative supernatural traits are not biography."
   },
   "chronology": {
@@ -35,12 +37,40 @@
     "chronicle_dates": [],
     "cast_period_roles": [
       {
-        "period": "2026-08",
-        "role": "recurring public chat participant; Elden Ring/gaming continuity, moderation advice and theological discussion"
+        "period": "2026-05-24",
+        "role": "public chat participant in Dim/Ley conflict; challenges fixation and monitoring behavior"
+      },
+      {
+        "period": "2026-06-06",
+        "role": "server participant; explicitly says he is there because he wants to be and donates $15 during conflict"
+      },
+      {
+        "period": "2026-06-10",
+        "role": "playful Potato/theology supporter; 'potato is right' and 110-IQ joke"
+      },
+      {
+        "period": "2026-06-21",
+        "role": "participant in prolonged trolling/moderation loop with ban calls, insults, Bible/accountability and archive disputes"
+      },
+      {
+        "period": "2026-08-13",
+        "role": "moderation adviser supporting boundaries while deferring to Tim's lead"
+      },
+      {
+        "period": "2026-08-17",
+        "role": "recurring Danish-language public-chat participant amid criticism, defense and microphone/feedback discussion"
+      },
+      {
+        "period": "2026-08-20",
+        "role": "Elden Ring explainer discussing item collection, plants, upgrades, DLC and leveling"
+      },
+      {
+        "period": "2026-09-06",
+        "role": "theological participant; reported 'we are gods' and a Tim/Father–Matthew/Potato–Spirit framing"
       },
       {
         "period": "2026-09-20",
-        "role": "top-fan UI #1 in supplied YouTube capture; new controller, gaming-deprivation jokes, site interest and Ancient Dragon Senessax victory after 20+ attempts"
+        "role": "top-fan UI #1 in supplied capture; new controller, gaming-deprivation jokes, site interest and Senessax victory after 20+ attempts"
       }
     ],
     "recovered_social_days": []
@@ -55,14 +85,44 @@
   ],
   "highlighted_incidents": [
     {
-      "date": "2026-08",
-      "title": "Moderation and gaming continuity",
-      "summary": "Recurring chat participant appears as gamer, moderation adviser and theological interlocutor in separate scenes."
+      "date": "2026-05-24",
+      "title": "Dim / Ley confrontation",
+      "summary": "Matthew challenges Dim's fixation and monitoring behavior in a conflict-heavy public chat; allegations remain attributed speech."
+    },
+    {
+      "date": "2026-06-06",
+      "title": "Server choice and $15 donation",
+      "summary": "Matthew says he is in the server because he wants to be and makes a $15 donation while the argument continues."
+    },
+    {
+      "date": "2026-06-10",
+      "title": "Potato theology banter",
+      "summary": "Matthew says 'potato is right', jokes about needing 110 IQ to understand the Potato of Life, and continues with playful near-agreement language."
+    },
+    {
+      "date": "2026-06-21",
+      "title": "Trolling / moderation loop",
+      "summary": "Extended public-chat antagonism includes ban requests, insults, Bible/accountability taunts and archive/lying disputes."
+    },
+    {
+      "date": "2026-08-13",
+      "title": "Moderation and boundary advice",
+      "summary": "Matthew argues persistent trolls should be banned, says they have caused harm, and adds that he will take Tim's lead."
+    },
+    {
+      "date": "2026-08-20",
+      "title": "Elden Ring mechanics",
+      "summary": "Ordinary gaming conversation covers collectible plants, item gathering, weapon upgrades, DLC and slow leveling."
+    },
+    {
+      "date": "2026-09-06",
+      "title": "Trinity-like chat framing",
+      "summary": "In a theology exchange involving Mediomu, Matthew is reported saying 'we are gods' and using a Tim/Father–Matthew/Potato–Spirit framing; treated as attributed chat, not biography."
     },
     {
       "date": "2026-09-20",
       "title": "Controller and Senessax",
-      "summary": "User-supplied public chat shows new controller, jokes about one day without games, site interest, and Ancient Dragon Senessax defeated after 20+ attempts."
+      "summary": "Public chat shows a new controller, jokes about one day without games, site interest, and Ancient Dragon Senessax defeated after 20+ attempts."
     }
   ],
   "source_strata": [
@@ -77,11 +137,48 @@
     {
       "type": "public_room",
       "path": "rooms/potatoverse-canon/beings/matthew-mtclassic/"
+    },
+    {
+      "type": "conversation_recovery",
+      "path": "knowledge/fbi/conversation-recovery.json"
     }
   ],
   "recovery_leads": [
-    "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
-    "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
-    "Add relationship edges only when a dated scene or explicit source supports them."
-  ]
+    "Recover screenshots/exported chat logs for the May 24, June 6, June 10 and June 21 scenes so exact wording can replace conversation-memory summaries.",
+    "Recover timestamped August 13/17/20 stream logs to distinguish moderation, ordinary chat and game discussion at finer resolution.",
+    "Keep Matthew / @mtclassic3 separate from Matthew the Potato created-being canon.",
+    "Add relationship edges only where dated co-presence is recoverable; do not infer friendship, loyalty or motive from support language alone."
+  ],
+  "conversation_archaeology": {
+    "source": "knowledge/fbi/conversation-recovery.json",
+    "recovered_entry_ids": [
+      "conv-2026-05-24-matthew-dim-ley",
+      "conv-2026-06-06-matthew-server-donation",
+      "conv-2026-06-10-matthew-potato-theology",
+      "conv-2026-06-21-matthew-trolling-loop",
+      "conv-2026-08-13-matthew-moderation-boundary",
+      "conv-2026-08-17-matthew-danish-stream",
+      "conv-2026-08-20-matthew-elden-ring",
+      "conv-2026-09-06-mediomu-matthew-theology",
+      "conv-2026-09-20-matthew-controller-senessax"
+    ],
+    "recurring_modes": [
+      "gaming",
+      "moderation",
+      "boundary defense",
+      "theology",
+      "humor",
+      "public-chat continuity",
+      "conflict"
+    ],
+    "ordinary_life_signals": [
+      "controller purchase/use",
+      "Elden Ring progression",
+      "sleep/waking",
+      "audio audibility",
+      "site browsing interest"
+    ],
+    "disagreement_support_pattern": "Matthew can be supportive of Tim/Potato while also operating as an independent chat participant; support scenes and trolling scenes should not be collapsed into a permanent archetype.",
+    "interpretive_boundary": "Conversation archaeology records attributed speech and scene function. Creative wings/many-eyes/Heaven traits belong to Matthew the Potato, not @mtclassic3."
+  }
 }
