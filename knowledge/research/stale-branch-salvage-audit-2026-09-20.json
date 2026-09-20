@@ -1,0 +1,196 @@
+{
+  "id": "stale-branch-salvage-audit-2026-09-20",
+  "updated": "2026-09-20",
+  "status": "active maintenance and salvage audit",
+  "baseline_main": {
+    "sha": "32644f1038ed3a9c8535d27528b900327ee4bee7",
+    "note": "Main head observed during the audit; repository is highly active, so ahead/behind counts are a dated snapshot."
+  },
+  "purpose": "Separate genuinely missing work from stale branch noise, prevent wholesale merges of branches far behind main, and route unique value into current canonical owners.",
+  "rules": [
+    "Never merge a heavily stale branch wholesale when current main has independently changed the same architecture.",
+    "Compare file-by-file and salvage unique information into current canonical owners.",
+    "If branch content is already identical or superseded on main, classify the branch/PR as superseded rather than recreating it.",
+    "Missing old files are not automatically missing knowledge; search for stronger current owners first.",
+    "Run current-main validation after each salvage slice."
+  ],
+  "open_prs": [
+    {
+      "pr": 184,
+      "branch": "feature/evidence-root",
+      "ahead_by": 154,
+      "behind_by": 1271,
+      "disposition": "superseded-container / targeted verification",
+      "evidence": [
+        "data/evidence/public-statement-root-manifest.json is byte-identical on branch and main",
+        "the canonical Evidence Root assets are present on main"
+      ],
+      "next": "verify any remaining branch-only files with current owners, then close rather than merge wholesale"
+    },
+    {
+      "pr": 142,
+      "branch": "story-evidence-migration-wave4-20260914",
+      "ahead_by": 9,
+      "behind_by": 1736,
+      "disposition": "manual story reconciliation",
+      "evidence": [
+        "current main story-depth-audit has independently diverged and covers a larger/different registry state",
+        "wholesale merge would overwrite newer story architecture"
+      ],
+      "next": "compare the 16 intended pre-2020 reclassifications against current story registry/source records and port only still-missing evidence labels"
+    },
+    {
+      "pr": 137,
+      "branch": "science-quality-pass-003",
+      "ahead_by": 25,
+      "behind_by": 1733,
+      "disposition": "mostly absorbed; one clear salvage candidate",
+      "evidence": [
+        "field-of-life-reaction-diffusion-descendant is identical on main",
+        "spudlight plant carbon benchmark is on main",
+        "gold-indexed sovereign bond model is on main",
+        "scripts/audit_science_quality.py is not currently on main"
+      ],
+      "next": "port or retire the semantic science auditor after testing it against the current science corpus and current validation architecture"
+    },
+    {
+      "pr": 129,
+      "branch": "chore/focused-hygiene-2026-09-14",
+      "ahead_by": 14,
+      "behind_by": 1978,
+      "disposition": "targeted salvage only",
+      "evidence": [
+        "app/archive-lookup.js is branch-only",
+        "route/public projection architecture has changed substantially since the branch base"
+      ],
+      "next": "evaluate archive-lookup.js against current Explore/canonical-record discovery before porting; do not copy old route metadata wholesale"
+    }
+  ],
+  "recent_branches": [
+    {
+      "branch": "feat/adl-heat-world-map-20260919",
+      "ahead_by": 0,
+      "behind_by": 339,
+      "disposition": "fully behind; no salvage required from branch head"
+    },
+    {
+      "branch": "integrate/world-map-layer-stack-20260919",
+      "ahead_by": 0,
+      "behind_by": 217,
+      "disposition": "fully behind; no salvage required from branch head"
+    },
+    {
+      "branch": "css-unification-home-first",
+      "ahead_by": 0,
+      "behind_by": 2086,
+      "disposition": "fully behind; historical only"
+    },
+    {
+      "branch": "chore/public-surface-authority-wave-20260919-v2",
+      "ahead_by": 22,
+      "behind_by": 363,
+      "disposition": "manual current-authority comparison",
+      "next": "compare its public-surface metadata with current House authority; salvage only routes still absent after Sep-20 convergence"
+    },
+    {
+      "branch": "fix/adl-world-map-live-20260919",
+      "ahead_by": 37,
+      "behind_by": 308,
+      "disposition": "map-specific salvage candidate",
+      "next": "evaluate branch-only US Mud/Below layer and ADL live integration against current map render/interaction contracts before any port"
+    },
+    {
+      "branch": "fix/map-live-integration-20260919",
+      "ahead_by": 52,
+      "behind_by": 216,
+      "disposition": "partial salvage candidate",
+      "next": "compare branch-only nested Room pages and map integration with the newer Sep-20 live Room holdings/discovery commits; likely many parts are superseded"
+    },
+    {
+      "branch": "atlas-composable-registry",
+      "ahead_by": 30,
+      "behind_by": 2870,
+      "disposition": "historical design source, not merge candidate",
+      "evidence": [
+        "current main already contains newer 3d-compositor.js, 3d-layer-registry.js and 3d-world-bar.js"
+      ],
+      "next": "salvage only any still-unique registry semantics after comparing with current runtime ownership"
+    },
+    {
+      "branch": "content/deepen-formation-culture-below-20260918",
+      "ahead_by": 76,
+      "behind_by": 402,
+      "disposition": "knowledge salvage audit",
+      "evidence": [
+        "branch-only potato-organism-cycle atlas overlaps current potato biology canon",
+        "branch-only symbolic body crosswalk overlaps current body relational overlay",
+        "branch-only whole-body regulation atlas overlaps newer body-system owners",
+        "branch-only specialist-subviews may be superseded by current live nested Room discovery"
+      ],
+      "next": "merge unique fields into stronger current owners; avoid recreating duplicate atlases"
+    },
+    {
+      "branch": "feat/full-project-synthesis-pairings-20260918",
+      "ahead_by": 22,
+      "behind_by": 536,
+      "disposition": "substantially absorbed",
+      "evidence": [
+        "fruit, shadow, tree and selected cosmography artifacts already exist on main",
+        "project-synthesis exists on main and has continued evolving"
+      ],
+      "next": "use branch only as historical source if a current owner is missing a unique field"
+    }
+  ],
+  "newly_identified_todos": [
+    {
+      "priority": "critical",
+      "task": "Refresh project-synthesis with Sep-20 formal-grammar, body-discovery and live-Room integration waves."
+    },
+    {
+      "priority": "critical",
+      "task": "Keep a dated stale-branch salvage ledger and stop rediscovering already absorbed branches."
+    },
+    {
+      "priority": "high",
+      "task": "Reconcile open PR #184 and close it if remaining branch-only files are all superseded or salvaged."
+    },
+    {
+      "priority": "high",
+      "task": "Test scripts/audit_science_quality.py from stale PR #137 against current main; port only if it adds checks not already covered."
+    },
+    {
+      "priority": "high",
+      "task": "Reconcile Story PR #142 at the record level; do not replace current story-depth-audit wholesale."
+    },
+    {
+      "priority": "high",
+      "task": "Compare PR #129 archive lookup resolver with current Explore/A-Z/live Room discovery and either port a minimal resolver or retire it."
+    },
+    {
+      "priority": "high",
+      "task": "Continue P3 work: Works Fruit instrumentation, real canon revision, Shadow overlays, longitudinal formation measures, entity dossier population and duplicate-atlas pruning."
+    },
+    {
+      "priority": "medium-high",
+      "task": "Audit Sep-19 public-surface authority v2 deltas against current House public-route authority."
+    },
+    {
+      "priority": "medium-high",
+      "task": "Audit branch-only formation/body assets and merge unique information into existing canonical owners rather than recreate duplicate files."
+    },
+    {
+      "priority": "medium",
+      "task": "Audit branch-only US Mud/Below map layer separately under current map interaction/evidence contracts."
+    },
+    {
+      "priority": "critical",
+      "task": "Run/confirm the complete current-main quality/build/Pages chain on the final maintenance integration head."
+    }
+  ],
+  "current_main_ci_observation": {
+    "commit": "32644f1038ed3a9c8535d27528b900327ee4bee7",
+    "combined_status_entries": 0,
+    "pull_request_workflow_runs_visible": 0,
+    "interpretation": "No status entries or PR-triggered workflow runs were returned for this direct main commit; this is not evidence that the full quality chain passed."
+  }
+}
