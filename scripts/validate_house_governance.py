@@ -33,6 +33,9 @@ DOOR_CROSS_LIFECYCLE=ROOT/'data/house/door-cross-spiral-lifecycle.json'
 PLANE_CROSSING=ROOT/'data/house/plane-crossing-contract.json'
 TREE_FAMILY=ROOT/'data/house/tree-family-contract.json'
 ROOT_SEED=ROOT/'data/house/root-seed-temporal-contract.json'
+SPIRAL_FIELD=ROOT/'data/house/bidirectional-spiral-field.json'
+SPIRAL_RUNTIME=ROOT/'app/bidirectional-spiral-field.js'
+SPIRAL_STYLE=ROOT/'app/bidirectional-spiral-field.css'
 NAVIGATION_MANIFEST=ROOT/'data/house/navigation-manifest.json'
 RELIGIOUS_BRANCH_ATLAS=ROOT/'data/house/religious-symbolic-branch-atlas.json'
 PROVIDENCE_STRUCTURE=ROOT/'data/house/providence-pillars-esoteric-structure.json'
@@ -887,6 +890,44 @@ def validate_tree_root_seed_contracts(errors):
             if token not in fire:
                 errors.append(f'Root Seed contract missing temporal firewall: {token}')
 
+def validate_bidirectional_spiral_field(errors):
+    field=load(SPIRAL_FIELD,errors)
+    if field:
+        inv=' '.join(field.get('invariants',[])).casefold()
+        for token in ('o is the waist','supplements the vesica','chirality','exact logarithmic'):
+            if token not in inv:
+                errors.append(f'bidirectional spiral field missing invariant: {token}')
+        coords=field.get('coordinates',{})
+        if coords.get('waist')!='O=(rho=0,z=0)':
+            errors.append('bidirectional spiral field waist drifted')
+        exact=field.get('exact_logarithmic_pair',{})
+        shifted=field.get('origin_inclusive_project_pair',{})
+        if 'phi' not in exact.get('golden_parameter',''):
+            errors.append('bidirectional spiral field missing golden exact parameter')
+        if 'R(0)=0' not in ' '.join(shifted.get('properties',[])):
+            errors.append('origin-inclusive spiral must preserve R(0)=0')
+        terrain=field.get('terrain_overlays',{})
+        for key in ('mountain','garden','tree','swamp','drain','root'):
+            if key not in terrain:
+                errors.append(f'bidirectional spiral field missing terrain overlay: {key}')
+        if not SPIRAL_RUNTIME.is_file():
+            errors.append('missing shared bidirectional spiral runtime')
+        else:
+            rt=SPIRAL_RUNTIME.read_text(encoding='utf-8',errors='replace')
+            for marker in ('data-bidirectional-spiral-field','Mirrored chirality','MOUNTAIN','SWAMP'):
+                if marker not in rt:
+                    errors.append(f'bidirectional spiral runtime missing marker: {marker}')
+        if not SPIRAL_STYLE.is_file():
+            errors.append('missing shared bidirectional spiral styles')
+        for page in (ROOT/'axis/index.html',ROOT/'potato-of-life/index.html'):
+            if not page.is_file():
+                errors.append(f'missing spiral public surface: {page.relative_to(ROOT)}')
+                continue
+            text=page.read_text(encoding='utf-8',errors='replace')
+            for marker in ('data-bidirectional-spiral-field','bidirectional-spiral-field.js','bidirectional-spiral-field.css','bidirectional-spiral-field.json'):
+                if marker not in text:
+                    errors.append(f'{page.relative_to(ROOT)} missing spiral field marker: {marker}')
+
 def validate_depth_crystallization(errors):
     required_paths=[SHADOW_OVERLAY,GARDEN_REGIME,REPAIR_FORGE,FRUIT_ATLAS,TREE_BRANCHING,KNOWLEDGE_FORK,HISTORY_REVISION,WORKS_FRUIT,LOCAL_CENTERS]
     for p in required_paths:
@@ -926,6 +967,9 @@ def main():
     validate_layer_terrain_atlas(errors)
     validate_placement_matrix(errors)
     validate_project_synthesis(errors)
+    validate_swamp_and_transition_contracts(errors)
+    validate_tree_root_seed_contracts(errors)
+    validate_bidirectional_spiral_field(errors)
     validate_depth_crystallization(errors)
     if errors:
         print('POTATO HOUSE GOVERNANCE VALIDATION FAILED')
