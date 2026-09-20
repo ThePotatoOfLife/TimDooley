@@ -1,9 +1,9 @@
 {
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.1.0",
+  "updated": "2026-09-20",
   "authority": "tree-plane-routing",
   "purpose": "Define how the three horizontal navigation planes, the vertical Axis/Tree structures, and religious/comparative subjects intersect so the Potato House can answer where something belongs and what it leads to.",
-  "master_rule": "Planes are standing surfaces. Trees are vertical branching routes. Rooms are subject owners. Entities and traditions are inhabitants/subjects with anchors and projections. Corridors are typed relations between them.",
+  "master_rule": "This file coordinates three navigation decks/projections around the Axis and vertical Tree routes. The canonical geometric Plane is separately defined by data/house/plane-crossing-contract.json. Rooms own subjects; decks project them; Trees route vertically; corridors relate them.",
   "centerline": {
     "id": "axis",
     "label": "Axis",
@@ -16,7 +16,7 @@
       },
       "world-plane": {
         "label": "Door / Cross Junction",
-        "meaning": "The visible threshold where source/manifestation, evidence, embodiment and choice meet."
+        "meaning": "Door/Cross junction as represented on the World navigation deck; the exact geometric O remains Axis∩active Plane under the Plane contract."
       },
       "below-plane": {
         "label": "Root Junction",
@@ -73,7 +73,9 @@
         "truth",
         "empirical proof",
         "all religion"
-      ]
+      ],
+      "kind": "navigation-deck/projection",
+      "canonical_plane_relation": "A symbolic navigation projection at another vertical/depth emphasis; not the canonical Plane operator."
     },
     {
       "id": "world-plane",
@@ -114,7 +116,9 @@
         "mere materialism",
         "inferiority",
         "secular-only"
-      ]
+      ],
+      "kind": "navigation-deck/projection",
+      "canonical_plane_relation": "Often aligned with the active World-facing Plane for reader navigation, but not identical to the mathematical/frame operator."
     },
     {
       "id": "below-plane",
@@ -163,7 +167,9 @@
         "damnation",
         "all occultism",
         "all subculture"
-      ]
+      ],
+      "kind": "navigation-deck/projection",
+      "canonical_plane_relation": "A symbolic navigation projection at another vertical/depth emphasis; not the canonical Plane operator."
     }
   ],
   "vertical_organisms": [
@@ -443,5 +449,15 @@
     "axis": "What keeps vertical orientation stable?",
     "research_ring": "What remains uncertain or provisional?",
     "fruit_ring": "What has been produced and returned?"
+  },
+  "naming_boundary": {
+    "canonical_plane": "data/house/plane-crossing-contract.json defines Plane as a frame-relative section/hypersurface through the larger system.",
+    "navigation_planes": "The labels Heaven Plane, World Plane and Below Plane in this file are navigation decks/projections, not three instances of the canonical geometric Plane operator.",
+    "preferred_reader_terms": {
+      "heaven-plane": "Heaven Deck / upper navigation projection",
+      "world-plane": "World Deck / current-world navigation projection",
+      "below-plane": "Below Deck / depth navigation projection"
+    },
+    "rule": "Keep stable IDs for compatibility, but public/explanatory text should distinguish navigation deck from geometric Plane whenever ambiguity matters."
   }
 }
