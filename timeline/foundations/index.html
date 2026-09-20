@@ -68,8 +68,8 @@
 <script>
 (async()=>{
  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const [r,g,p,fr,rl]=await Promise.all([fetch('../../data/house/foundation-timeline-wave-001.json'),fetch('../../data/house/foundation-door-seed-genealogy.json'),fetch('../../data/house/foundation-placement-wave-003.json'),fetch('../../data/house/foundation-room-atlas.json'),fetch('../../data/religious-foundation-timeline.json')]);if(!r.ok||!g.ok||!p.ok||!fr.ok||!rl.ok)return;
- const data=await r.json(),genealogy=await g.json(),placement=await p.json(),foundationRooms=await fr.json(),religiousLineage=await rl.json(),events=data.events||[],seedRows=genealogy.records||[],placementBy=Object.fromEntries((placement.records||[]).map(x=>[x.foundation_id,x]));
+ const [r,g,p,fr,rl,re]=await Promise.all([fetch('../../data/house/foundation-timeline-wave-001.json'),fetch('../../data/house/foundation-door-seed-genealogy.json'),fetch('../../data/house/foundation-placement-wave-003.json'),fetch('../../data/house/foundation-room-atlas.json'),fetch('../../data/religious-foundation-timeline.json'),fetch('../../data/religious-foundation-events.json')]);if(!r.ok||!g.ok||!p.ok||!fr.ok||!rl.ok||!re.ok)return;
+ const data=await r.json(),genealogy=await g.json(),placement=await p.json(),foundationRooms=await fr.json(),religiousLineage=await rl.json(),religiousEvents=await re.json(),events=data.events||[],seedRows=genealogy.records||[],placementBy=Object.fromEntries((placement.records||[]).map(x=>[x.foundation_id,x]));
  const filters=document.getElementById('foundationFilters'),root=document.getElementById('foundationTimeline'),readout=document.getElementById('foundationReadout');
  const domains=[...new Set(events.map(x=>x.domain).filter(Boolean))].sort();
  const types=[...new Set(events.map(x=>x.event_type).filter(Boolean))];
@@ -89,14 +89,14 @@
 
 
  const lineageFilters=document.getElementById('religiousLineageFilters'),lineageGrid=document.getElementById('religiousLineageGrid'),lineageReadout=document.getElementById('religiousLineageReadout');
- const lineageEvents=religiousLineage.events||[],lineageFamilies=[...new Set(lineageEvents.map(x=>x.family_id).filter(Boolean))];
+ const lineageEvents=religiousLineage.events||[],notableReligiousEvents=(religiousEvents.events||[]).filter(x=>x.merge_priority==='major'),lineageFamilies=[...new Set(lineageEvents.map(x=>x.family_id).filter(Boolean))];
  let lineageFamily='all';
  lineageFilters.innerHTML='<button class="lineage-filter" data-lineage-family="all" aria-pressed="true">All religious lineages</button>'+lineageFamilies.map(x=>'<button class="lineage-filter" data-lineage-family="'+esc(x)+'" aria-pressed="false">'+esc(x.replaceAll('-lineage','').replaceAll('-',' '))+'</button>').join('');
  const formatHistoricalYear=y=>!Number.isFinite(y)?'undated':y<0?Math.abs(y)+' BCE':y+' CE';
  function renderReligiousLineages(){
    const rows=lineageEvents.filter(x=>lineageFamily==='all'||x.family_id===lineageFamily);
    lineageGrid.innerHTML=rows.map(x=>'<article class="religion-lineage-card"><h3>'+esc(x.name)+'</h3><em>'+esc(x.node_type)+' · '+esc(x.family_id.replaceAll('-lineage','').replaceAll('-',' '))+'</em><p><b>'+esc(x.date_or_range||formatHistoricalYear(x.year_start))+'</b></p><p>'+esc(x.place||'distributed/uncertain')+'</p><div class="lineage-path"><p><b>Relation:</b> '+esc((x.relation_to_parent||'root').replaceAll('_',' '))+(x.parent_ids?.length?' ← '+esc(x.parent_ids.join(', ')):'')+'</p></div><small>'+esc(x.precision||'')+' · '+esc(x.status||'')+(x.notes?' · '+esc(x.notes):'')+'</small></article>').join('');
-   lineageReadout.textContent=rows.length+' dated religious lineage nodes · '+(lineageFamily==='all'?'all families':lineageFamily.replaceAll('-lineage','').replaceAll('-',' '));
+   lineageReadout.textContent=rows.length+' dated religious lineage nodes · '+notableReligiousEvents.length+' major anchored events · '+(lineageFamily==='all'?'all families':lineageFamily.replaceAll('-lineage','').replaceAll('-',' '));
    lineageFilters.querySelectorAll('[data-lineage-family]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lineageFamily===lineageFamily)));
  }
  lineageFilters.addEventListener('click',e=>{const b=e.target.closest('[data-lineage-family]');if(!b)return;lineageFamily=b.dataset.lineageFamily;renderReligiousLineages()});
