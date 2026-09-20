@@ -7,17 +7,18 @@ ROOT=Path(__file__).resolve().parents[1]
 LINEAGES=ROOT/"data/religious-foundation-lineages.json"
 TIMELINE=ROOT/"data/religious-foundation-timeline.json"
 GEOGRAPHY=ROOT/"data/religious-foundation-geography.json"
+EVENTS=ROOT/"data/religious-foundation-events.json"
 
 def load(path:Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 errors=[]
-for p in (LINEAGES,TIMELINE,GEOGRAPHY):
+for p in (LINEAGES,TIMELINE,GEOGRAPHY,EVENTS):
     if not p.is_file():
         errors.append(f"missing {p.relative_to(ROOT)}")
 
 if not errors:
-    a,t,g=map(load,(LINEAGES,TIMELINE,GEOGRAPHY))
+    a,t,g,e=map(load,(LINEAGES,TIMELINE,GEOGRAPHY,EVENTS))
     node_types=set((a.get("node_types") or {}).keys())
     edge_types=set((a.get("edge_types") or {}).keys())
     source_ids=set((a.get("source_registry") or {}).keys())
@@ -66,6 +67,11 @@ if not errors:
     if len(tids)!=len(set(tids)): errors.append("duplicate node_id in religious foundation timeline")
     if set(tids)!=set(nodes):
         errors.append(f"timeline node set drift: missing={sorted(set(nodes)-set(tids))[:10]} extra={sorted(set(tids)-set(nodes))[:10]}")
+    known_events={x.get("id") for x in e.get("events") or []}
+    for nid,n in nodes.items():
+        for ev in n.get("event_anchors") or []:
+            if ev.get("event_id") not in known_events:
+                errors.append(f"{nid}: unknown event anchor {ev.get('event_id')}")
     gav=g.get("anchors") or []
     gids=[e.get("node_id") for e in gav]
     if len(gids)!=len(set(gids)): errors.append("duplicate node_id in religious foundation geography")
