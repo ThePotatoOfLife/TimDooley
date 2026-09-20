@@ -24,8 +24,23 @@
       ],
       "epistemic_boundary": "Project-canon identity does not become external empirical identity.",
       "knowledge_holdings": {
-        "primary_file_count": 9,
+        "primary_file_count": 11,
         "featured": [
+          {
+            "id": "fbi-incidents",
+            "path": "knowledge/fbi/incidents/index.json",
+            "kind": "dated character incident index"
+          },
+          {
+            "id": "fbi-bonds",
+            "path": "knowledge/fbi/bonds/network.json",
+            "kind": "figure relationship / co-presence network"
+          },
+          {
+            "id": "fbi-manifest",
+            "path": "knowledge/fbi/manifest.json",
+            "kind": "character dossier bureau manifest"
+          },
           {
             "id": "character-archive-v2",
             "path": "knowledge/story/character-archive-v2.json",
