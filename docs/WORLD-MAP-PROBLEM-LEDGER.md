@@ -172,6 +172,13 @@
 **Guard:** the canonical subdivision validator requires the richer inspector helpers and explicit unknown/provenance/representation language.  
 **Rule retained:** missing statistics are never inferred from geometry, and source-specific boundary transforms remain visible to the reader.
 
+### WM-031 · Russia regional partition needs a neutral base-geography contract — P2
+**Status:** implemented on branch `world-map-russia-regions-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** available Russia regional sources may bundle disputed Ukrainian territories and unrelated political/demographic attributes into the same GeoJSON, which would silently turn a base administrative partition into a geopolitical claim surface.  
+**Resolution:** the canonical Russia partition contains 83 source-derived federal-subject geometries only. Crimea, Sevastopol, Donetsk, Luhansk, Zaporizhzhia and Kherson are excluded from Russia base geography and remain eligible only for separately typed disputed/conflict overlays. All source election/demographic attributes are stripped; only geometry, names, region type and provenance remain. UN General Assembly resolutions A/RES/68/262 and A/RES/ES-11/4 are recorded as the territorial-integrity references for the exclusion rule.  
+**Guard:** subdivision validation enforces 83 unique `RU-*` features, exact federal-subject type counts, the six-feature exclusion set, source scope, source SHA, no imported population/political fields, byte budget and generic loader compatibility.  
+**Rule retained:** base geography represents the ordinary administrative partition; disputed territory and dated control belong to independent epistemically typed overlays.
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
