@@ -14,7 +14,7 @@ if (!window.__potatoAtlasGeo) await import('./3d-geo-kernel.js');
 const geo = window.__potatoAtlasGeo;
 if (!geo) throw new Error('Atlas subdivisions require the shared geospatial kernel.');
 function interactionRouter() { return window.__potatoAtlasInteraction; }
-const inspector = window.__potatoAtlasInspector;
+function inspectorRouter() { return window.__potatoAtlasInspector; }
 
 const INDEX_URL = '../data/world-subdivisions/index.json';
 const USA_PARTITION_FALLBACK = 'USA.geo.json';
@@ -242,6 +242,7 @@ function renderInspector(feature) {
   });
   panel.querySelector('[data-subdivision-open-country]')?.addEventListener('click', () => {
     window.__potatoAtlasSubdivisions?.clear?.({ restore:false });
+    const inspector = inspectorRouter();
     if (inspector?.reset) inspector.reset(countryBaseline(code));
     else if (code && window.goCountry) window.goCountry(code);
   });
@@ -257,6 +258,7 @@ function openInspector(feature) {
   if (!feature) return false;
   const p = feature.properties || {};
   const code = countryCode(p);
+  const inspector = inspectorRouter();
   if (!inspector?.open || !code) {
     renderInspector(feature);
     return true;
@@ -702,6 +704,7 @@ window.__potatoAtlasSubdivisions = {
     syncUrl(null);
     syncSelectedLabel(null);
     if (options.restore !== false) {
+      const inspector = inspectorRouter();
       if (inspector?.current?.()?.type === 'subdivision') inspector.back();
       else if (code && window.goCountry) window.goCountry(code);
     }
