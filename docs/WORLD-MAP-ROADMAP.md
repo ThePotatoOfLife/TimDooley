@@ -125,7 +125,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The curr
 - [x] Audit every writer of country fill/pattern/outline/height. Persistent planes are explicit; specialist renderers register with the shared Render Stack; dormant Fields/Networks compatibility writers are retired.
 - [x] Centralize style-generation restoration for Render Stack and migrated physical layers.
 - [x] Drain direct duplicate Style Lifecycle ownership; remaining visual-channel compatibility debt is tracked independently rather than as duplicate `styledata` ownership.
-- [ ] Consolidate global UI design tokens, z-index bands and common surfaces.
+- [~] Consolidate global UI design tokens, z-index bands and common surfaces. Semantic stacking bands are being reconstructed on current main; shared surface/background/border/radius/spacing tokens remain.
 - [~] Make top-level controls increasingly question-oriented: the visible World Bar now converges Analytical / Physical / Geography / Evidence with Compare / Analyze / Time / View; further wording simplification can continue without adding another control surface.
 - [x] Audit current shared surfaces for mobile occlusion, keyboard access, focus return, color-only semantics and reduced motion; keep the audit requirement on every newly promoted surface.
 - [x] Add concise accessible active-view summaries through the World Bar context/status owner, with duplicate-announcement suppression.
