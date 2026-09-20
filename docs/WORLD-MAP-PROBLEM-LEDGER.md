@@ -186,6 +186,12 @@
 **Guard:** a behavioral regression covers Russia’s 19°E→170°W descriptor, proves unwrapping to 190°E, and requires a visible-scale floor; UI-shell validation requires the country-card handoff marker.  
 **Rule retained:** feature entry points may request focus, but camera semantics and subdivision scale thresholds stay with shared owners.
 
+### WM-034 · Regions doorway active state is one-way / optimistic — P2
+**Status:** fixed / governed on branch `world-map-regions-toggle-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** once a country-card partition was retained, clicking the active Regions control only refocused it; the same control could not release the lease. Local retained state was also cleared before release completed.  
+**Resolution:** the Regions action now toggles the country-card partition lease on/off, updates `aria-pressed` and the “regions · shown” state from the actual retained partition, emits a bounded regions-change event, and only clears local lease state after the release path returns without error.  
+**Guard:** UI-shell validation requires the toggle branch, shared action-state helper and region-state event.
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
