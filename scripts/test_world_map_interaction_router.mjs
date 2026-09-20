@@ -98,6 +98,9 @@ const app = fs.readFileSync(new URL('../world-map/3d-app.js', import.meta.url), 
 const handoff = fs.readFileSync(new URL('../world-map/3d-core-interaction-handoff.js', import.meta.url), 'utf8');
 const hover = fs.readFileSync(new URL('../world-map/3d-hover.js', import.meta.url), 'utf8');
 const countrySelection = fs.readFileSync(new URL('../world-map/3d-country-selection.js', import.meta.url), 'utf8');
+const gateways = fs.readFileSync(new URL('../world-map/3d-gateways.js', import.meta.url), 'utf8');
+const infrastructure = fs.readFileSync(new URL('../world-map/3d-infrastructure.js', import.meta.url), 'utf8');
+const impactActions = fs.readFileSync(new URL('../world-map/3d-impact-actions.js', import.meta.url), 'utf8');
 const routerSource = fs.readFileSync(new URL('../world-map/3d-interaction-router.js', import.meta.url), 'utf8');
 
 assert.ok(lifecycle.includes("__potatoAtlasLoadModule?.('Interaction Router', './3d-interaction-router.js')"), 'panel lifecycle must retain the shared Interaction Router preload for standalone/degraded boots');
@@ -141,5 +144,22 @@ for (const marker of [
   "interaction.register('legacy-capitals'",
   'Degraded/direct-module fallback',
 ]) assert.ok(hover.includes(marker), `hover/capital router migration missing marker: ${marker}`);
+
+for (const marker of [
+  "interaction.register('system-gateways'",
+  "objectType:'gateway'",
+  'clickPriority:75',
+  'Degraded/direct-module fallback only',
+]) assert.ok(gateways.includes(marker), `Gateway Router migration missing marker: ${marker}`);
+
+for (const marker of [
+  "interaction.register('infrastructure-context'",
+  "objectType:'infrastructure'",
+  'clickPriority:74',
+  'Degraded/direct-module fallback only',
+]) assert.ok(infrastructure.includes(marker), `Infrastructure Router migration missing marker: ${marker}`);
+
+assert.ok(!impactActions.includes("map.getLayer('atlas-context-gateways-points')) map.on('click'"), 'Impact Actions must not attach a second Gateway click listener');
+assert.ok(impactActions.includes("window.addEventListener('potato-atlas-gateway-change'"), 'Impact Actions must respond to semantic Gateway state');
 
 console.log('WORLD MAP INTERACTION ROUTER REGRESSION PASSED');
