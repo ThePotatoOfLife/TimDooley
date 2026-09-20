@@ -12,12 +12,13 @@ urlState.claim('selection-inspector', ['selected','pins','country','relation','c
 // This controller reads selected= during restore, but writes pins= going forward.
 
 const map = window.__potatoAtlasMap;
+const geoKernel = window.__potatoAtlasGeo;
 const baseSelection = window.__potatoAtlasSelection;
 const baseGoCountry = window.goCountry;
 const baseClearCountry = window.clearCountrySelection;
 function interactionRouter() { return window.__potatoAtlasInteraction; }
 
-if (!map || typeof baseGoCountry !== 'function' || !baseSelection) {
+if (!map || !geoKernel?.shortestWrappedLine || typeof baseGoCountry !== 'function' || !baseSelection) {
   throw new Error('Country selection controller requires the core atlas selection API.');
 }
 
@@ -182,7 +183,8 @@ function automaticRelationData(codes = activeCode ? [activeCode, ...pinnedCodes.
   for (const { edge, root } of chosen) {
     const a = by3[edge.a]?.latlng, b = by3[edge.b]?.latlng;
     if (!Array.isArray(a) || a.length !== 2 || !Array.isArray(b) || b.length !== 2) continue;
-    features.push({ type:'Feature', properties:{a:edge.a,b:edge.b,root,mode:'auto',relationMode,depth:1,types:(edge.types||[]).join(' · '),layer:edge.layer||'',geometry_meaning:'relationship_chord',raw:JSON.stringify(edge)}, geometry:{type:'LineString',coordinates:[[a[1],a[0]],[b[1],b[0]]]}});
+    const coordinates=geoKernel.shortestWrappedLine([a[1],a[0]],[b[1],b[0]],Number(map.getCenter()?.lng));
+    features.push({ type:'Feature', properties:{a:edge.a,b:edge.b,root,mode:'auto',relationMode,depth:1,types:(edge.types||[]).join(' · '),layer:edge.layer||'',geometry_meaning:'relationship_chord',raw:JSON.stringify(edge)}, geometry:{type:'LineString',coordinates}});
   }
   return { type:'FeatureCollection', features };
 }
