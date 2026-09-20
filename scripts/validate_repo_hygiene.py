@@ -17,6 +17,19 @@ FORBIDDEN_TEMPORARY = {
     ".github/workflows/timeline-naming-migration.yml",
     "scripts/migrate_chronology_to_timeline.py",
 }
+FORBIDDEN_GENERATED_PATTERNS = (
+    "_site",
+    ".quality-logs",
+    "__pycache__",
+    ".pytest_cache",
+)
+FORBIDDEN_GENERATED_GLOBS = (
+    "quality-report-*.json",
+    "site-shell-report.txt",
+    "machine-discoverability-report.json",
+    "world-map-audit-report.json",
+    "quality-inventory.json",
+)
 
 
 def main() -> int:
@@ -33,6 +46,15 @@ def main() -> int:
     for rel in sorted(FORBIDDEN_TEMPORARY):
         if (ROOT / rel).exists():
             errors.append(f"temporary migration debris remains: {rel}")
+
+    for rel in FORBIDDEN_GENERATED_PATTERNS:
+        path=ROOT/rel
+        if path.exists():
+            errors.append(f"generated build/CI directory must not be committed: {rel}")
+    for pattern in FORBIDDEN_GENERATED_GLOBS:
+        for path in ROOT.glob(pattern):
+            if path.exists():
+                errors.append(f"generated build/CI report must not be committed: {path.relative_to(ROOT)}")
 
     legacy = ROOT / "chronology" / "index.html"
     if not legacy.exists():
