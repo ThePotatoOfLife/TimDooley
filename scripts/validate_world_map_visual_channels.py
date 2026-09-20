@@ -23,7 +23,7 @@ def main() -> int:
     contract = load(CONTRACT, errors)
     registry = load(REGISTRY, errors)
     compositor = COMPOSITOR.read_text(encoding="utf-8", errors="replace") if COMPOSITOR.is_file() else ""
-    ui = (ROOT / "world-map" / "3d-ui.js").read_text(encoding="utf-8", errors="replace") if (ROOT / "world-map" / "3d-ui.js").is_file() else ""
+    retired_ui = ROOT / "world-map" / "3d-ui.js"
     selection = (ROOT / "world-map" / "3d-country-selection.js").read_text(encoding="utf-8", errors="replace") if (ROOT / "world-map" / "3d-country-selection.js").is_file() else ""
     physical = (ROOT / "world-map" / "3d-physical-layers.js").read_text(encoding="utf-8", errors="replace") if (ROOT / "world-map" / "3d-physical-layers.js").is_file() else ""
     world_bar = (ROOT / "world-map" / "3d-world-bar.js").read_text(encoding="utf-8", errors="replace") if (ROOT / "world-map" / "3d-world-bar.js").is_file() else ""
@@ -93,15 +93,8 @@ def main() -> int:
     if contract.get("country_surface_owners") != expected_owners:
         errors.append("country surface owner map must preserve one canonical owner per visual channel")
 
-    for forbidden in (
-        "setPaintProperty('countries-fill','fill-color'",
-        "setPaintProperty('countries-extrude','fill-extrusion-color'",
-        "setPaintProperty('countries-line','line-color'",
-        "setPaintProperty('countries-line','line-width'",
-        "setPaintProperty('countries-fill','fill-opacity'",
-    ):
-        if forbidden in ui:
-            errors.append(f"legacy 3d-ui.js must not write canonical country visual channels: {forbidden}")
+    if retired_ui.exists():
+        errors.append("retired 3d-ui.js must stay deleted; canonical country and presentation owners supersede it")
 
     if "setBaseFill" not in compositor or "countries-fill" not in compositor or "countries-extrude" not in compositor:
         errors.append("compositor must retain canonical country fill/extrusion color ownership")
