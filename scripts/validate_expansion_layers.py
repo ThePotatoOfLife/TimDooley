@@ -65,7 +65,7 @@ if set(registry_files)!=set(disk_files):
     if stale: errors.append(f"expansion-registry: registered files missing on disk: {stale}")
 allowed_status={
     "verified-present","active-referenced-research","research-reservoir",
-    "migration-candidate","superseded-seed-retained","promoted","archived"
+    "migration-candidate","promotion-backlog","superseded-seed-retained","promoted","archived"
 }
 for row in registry_rows:
     path=row.get("file","")
