@@ -329,7 +329,8 @@ async function installSharedLayers() {
   const scale = await scaleRuntime();
   const renderZoom = scale.threshold('subdivisions', 'render');
   const labelZoom = scale.threshold('subdivisions', 'label');
-  const contextLineZoom = Math.min(renderZoom, scale.bandThreshold('macro-region'));
+  let contextLineZoom = renderZoom;
+  try { contextLineZoom = Math.min(renderZoom, scale.bandThreshold('macro-region')); } catch {}
   const nameZoom = scale.bandThreshold('subnational');
   if (!map.getSource(SOURCE_ID)) {
     map.addSource(SOURCE_ID, { type:'geojson', data:{type:'FeatureCollection',features:[]}, promoteId:'id' });
