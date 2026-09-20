@@ -1,0 +1,166 @@
+{
+  "id": "door-cross-spiral-lifecycle",
+  "title": "Door → Cross → Plane → Spiral Lifecycle",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "authority": "door-cross-spiral-lifecycle",
+  "purpose": "Unify threshold, crossing, present-state, incorporation, recurrence and return into one canonical process so Door, Cross, Plane, Here/Now, Spiral, Fruit and Seed are not treated as disconnected symbols.",
+  "owners": {
+    "door": "knowledge/core/deep-element-definition-atlas.json",
+    "crossing": "data/house/plane-crossing-contract.json",
+    "present": "data/house/center-relational-ontology.json",
+    "spiral": "data/house/seed-spiral-routing.json",
+    "tree_garden": "data/house/tree-plane-routing.json"
+  },
+  "lifecycle": [
+    {
+      "step": 1,
+      "id": "before",
+      "operator": "state",
+      "meaning": "stable or at least identifiable prior state/context"
+    },
+    {
+      "step": 2,
+      "id": "approach-rim",
+      "operator": "rim/gate",
+      "meaning": "boundary becomes relevant; permissions, evidence, consent, capability or conditions are tested"
+    },
+    {
+      "step": 3,
+      "id": "separation",
+      "operator": "door-precondition",
+      "meaning": "old attachments/status/assumptions are loosened or distinguished"
+    },
+    {
+      "step": 4,
+      "id": "liminal",
+      "operator": "door",
+      "meaning": "between-state where old and new contexts overlap and the outcome is not yet incorporated"
+    },
+    {
+      "step": 5,
+      "id": "crossing",
+      "operator": "crossing-event",
+      "meaning": "trajectory intersects the active Plane and/or satisfies the Door guard"
+    },
+    {
+      "step": 6,
+      "id": "here-now",
+      "operator": "O / Here",
+      "meaning": "current state is gathered at the operative present; past provenance and future options are distinguished"
+    },
+    {
+      "step": 7,
+      "id": "incorporation",
+      "operator": "door-after",
+      "meaning": "new state becomes socially, technically, bodily or narratively real"
+    },
+    {
+      "step": 8,
+      "id": "plane-snapshot",
+      "operator": "Plane",
+      "meaning": "record the resulting current frame/state for later comparison"
+    },
+    {
+      "step": 9,
+      "id": "trajectory",
+      "operator": "Ladder/Spirit/Axis",
+      "meaning": "state continues through ordered relation/time"
+    },
+    {
+      "step": 10,
+      "id": "return-crossing",
+      "operator": "Plane return",
+      "meaning": "trajectory later crosses a comparable section/frame"
+    },
+    {
+      "step": 11,
+      "id": "recurrence-classification",
+      "operator": "Ring/Spiral",
+      "meaning": "compare governing state: unchanged recurrence = Ring; meaningful changed recurrence = Spiral"
+    },
+    {
+      "step": 12,
+      "id": "fruit",
+      "operator": "Fruit",
+      "meaning": "evaluate downstream consequence/capability rather than celebrating crossing itself"
+    },
+    {
+      "step": 13,
+      "id": "seed",
+      "operator": "Seed",
+      "meaning": "compress viable future pattern/capacity from the changed present"
+    },
+    {
+      "step": 14,
+      "id": "return",
+      "operator": "service/planting",
+      "meaning": "upper/integrated material returns to World/body/context and begins another cycle"
+    }
+  ],
+  "strong_transition_requirements": [
+    "named BEFORE and AFTER states",
+    "active Plane/frame declared",
+    "direction and guard/admissibility conditions declared",
+    "agent/context and relevant consent/credential/evidence stated",
+    "incorporation rule stated",
+    "reversibility, appeal or exit stated when meaningful",
+    "post-crossing consequence/fruit evaluated",
+    "later return crossing compared if Spiral/Ring language is used"
+  ],
+  "distinctions": [
+    "Crossing a Plane does not automatically mean passing a strong Door.",
+    "Door can exist without immediate crossing.",
+    "O/Here is the present-state gathering point, not the whole Plane.",
+    "Incorporation is separate from crossing; an unrecognized new state may remain liminal.",
+    "Spiral is diagnosed from comparable returns, not from one crossing.",
+    "Fruit judges downstream consequence; Seed carries future capacity.",
+    "Return is part of the lifecycle; ascent without return is incomplete in project grammar."
+  ],
+  "failure_modes": [
+    {
+      "id": "false-door",
+      "meaning": "apparent passage returns to same or worse governing regime"
+    },
+    {
+      "id": "permanent-liminality",
+      "meaning": "transition never resolves and dependency on the threshold becomes the new state"
+    },
+    {
+      "id": "unincorporated-crossing",
+      "meaning": "event occurs but rights/status/context never update"
+    },
+    {
+      "id": "ring-misnamed-spiral",
+      "meaning": "repetition is celebrated as development without measurable state change"
+    },
+    {
+      "id": "spiral-without-fruit",
+      "meaning": "state changes but downstream consequence produces no durable capability/repair/generativity"
+    },
+    {
+      "id": "seed-without-ground",
+      "meaning": "future pattern is asserted without present conditions capable of supporting it"
+    }
+  ],
+  "application_domains": [
+    "religious/ritual transition",
+    "role/classification change",
+    "court/legal status",
+    "citizenship/admission",
+    "research promotion",
+    "archive correction/declassification",
+    "learning",
+    "therapy/repair",
+    "institutional reform",
+    "game progression",
+    "body/world symbolic transition"
+  ],
+  "connections": [
+    "data/house/plane-crossing-contract.json",
+    "data/house/center-relational-ontology.json",
+    "data/house/seed-spiral-routing.json",
+    "knowledge/core/door-topology-access-and-capability-atlas.json",
+    "data/house/tree-plane-routing.json"
+  ]
+}
