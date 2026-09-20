@@ -11,11 +11,12 @@ TOOLTIP = ROOT / "world-map" / "3d-tooltip.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
 TEST = ROOT / "scripts" / "test_world_map_tooltip_lifecycle.mjs"
 HOVER_TEST = ROOT / "scripts" / "test_world_map_hover_artifacts.mjs"
+SPECIALIST_TEST = ROOT / "scripts" / "test_world_map_specialist_tooltip_ownership.mjs"
 
 
 def main() -> int:
     errors: list[str] = []
-    for path in (TOOLTIP, HOVER, TEST, HOVER_TEST):
+    for path in (TOOLTIP, HOVER, TEST, HOVER_TEST, SPECIALIST_TEST):
         if not path.exists():
             errors.append(f"missing tooltip file: {path.relative_to(ROOT)}")
     if errors:
@@ -67,7 +68,7 @@ def main() -> int:
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
-        for path, label in ((TEST, "tooltip lifecycle"), (HOVER_TEST, "hover ownership/race")):
+        for path, label in ((TEST, "tooltip lifecycle"), (HOVER_TEST, "hover ownership/race"), (SPECIALIST_TEST, "specialist tooltip ownership")):
             result = subprocess.run([node, str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"{label} regression failed: " + (result.stderr.strip() or result.stdout.strip()))
@@ -76,8 +77,8 @@ def main() -> int:
     print("- one shared transient popup owner")
     print("- generation-based stale async suppression")
     print("- drag / zoom / rotate / pitch / projection invalidation")
-    print("- country and fallback-capital hover migrated")
-    print("- boot-guard compatibility remains for unmigrated hover modules")
+    print("- country, fallback-capital, Axis, Fields and Networks hover migrated")
+    print("- persistent click popups remain separate from transient tooltip ownership")
     print(f"Errors: {len(errors)}")
     if errors:
         print("WORLD MAP TOOLTIP VALIDATION FAILED")
