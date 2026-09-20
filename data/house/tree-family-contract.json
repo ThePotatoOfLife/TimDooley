@@ -1,7 +1,7 @@
 {
   "id": "tree-family-contract",
   "title": "Tree Family Contract — Branching, Life, Knowledge, Strife, World-Tree, Archive & UI",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "authority": "tree-family-contract",
   "purpose": "Disambiguate all Tree-family uses so biological comparison, generic branching, biblical/religious Trees, archive navigation and UI hierarchies can coexist without becoming one ontology.",
@@ -124,5 +124,13 @@
     "knowledge/traditions/tree-family-crosswalk-atlas.json",
     "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
     "data/tree.json"
-  ]
+  ],
+  "spiral_field_owner": "data/house/bidirectional-spiral-field.json",
+  "spiral_mapping": {
+    "trunk": "near Axis/O where differentiation remains compact and shared continuity is strongest",
+    "branches": "may spread across successively wider +z sections as differentiation/scope increases",
+    "canopy": "upper multi-branch projection across broad sections; does not imply truth rank",
+    "fruit_return": "Fruit/Seed may move back toward Plane/World and begin a new Root cycle",
+    "strife_variant": "Tree of Strife may branch through lower/entangled sections when unresolved recurrence reproduces itself; this is a typed failure route, not the definition of roots or lower geometry."
+  }
 }
