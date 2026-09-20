@@ -1,0 +1,175 @@
+{
+  "id": "rahu",
+  "display_name": "Rahu",
+  "bureau": "FBI — Figures, Bonds & Incidents",
+  "entity_class": "mixed-person-literary",
+  "aliases": [],
+  "archive_status": "recovery-active-2026",
+  "room_policy": "own-room-existing",
+  "room_path": "rooms/potatoverse-canon/beings/rahu/",
+  "tim_relation": {
+    "archetypes": [
+      "mystic-interpreter",
+      "seeker-student",
+      "wanderer-threshold"
+    ],
+    "narrative_functions": [
+      "mythic interpretation",
+      "challenge",
+      "growth pressure"
+    ],
+    "regions": [
+      "Garden",
+      "Threshold",
+      "Mud"
+    ],
+    "editorial_reading": "Old Chronicle calls Rahu a sage of obscure knowledge; later conversations add lost-soul/growth and social-interlocutor layers.",
+    "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+  },
+  "chronology": {
+    "chronicle_occurrence_count": 14,
+    "chronicle_dates": [
+      "November 3 2024",
+      "November 7, 2024",
+      "November 11, 2024",
+      "December 15, 2024",
+      "Feb 25 2025",
+      "Feb 26 2025",
+      "March 5, 2025"
+    ],
+    "cast_period_roles": [
+      {
+        "period": "2024",
+        "role": "Great Book challenger/urgency figure and Garden companion around Tim and Spuddy"
+      },
+      {
+        "period": "2026-03-01",
+        "role": "conversation story casts Rahu as a lost soul / Mud Dweller learning that even 1/137 potato growth matters; another-world potato memory is framed as a dream"
+      },
+      {
+        "period": "2026-05-25",
+        "role": "Rahu appears as a social interlocutor in discussion around Dim; documentary/social layer must remain distinct from literary portrayal"
+      }
+    ],
+    "recovered_social_days": [
+      {
+        "date": "2024-11-03",
+        "title": "Tanks, pipe, coffee and the first dense social snapshot",
+        "minimum_event": "Tim spends the day around Tanks/voice-chat social life while the Great Book is actively discussed. Optimistique urges him back into play, Rahu/Tdog supply religious interpretation, and Termite marks group camaraderie.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2024-12-15",
+        "title": "Cooking stream and the Potato–Tomato joke war",
+        "minimum_event": "Tim and Anacondasin make potato chips in a collaborative stream. Termite jokes about flying her to Denmark; Rahu adopts a tomato-villain role; a parallel access dispute concerns Tree/Garden boundaries.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2025-02-26",
+        "title": "47 potatoes / 162 dwellers",
+        "minimum_event": "The Chronicle records 47 potatoes and 162 dwellers. These are useful dated community-size claims but still need Discord/platform verification.",
+        "source_mode": "chronicle_reported_counts"
+      },
+      {
+        "date": "2025-03-05",
+        "title": "HTML Great Book and new social roles",
+        "minimum_event": "The Chronicle reports 52 potatoes and 167 dwellers; says the Great Book HTML transformation had begun the previous day; Kira/Kaspiansee become counselors, Raven is named Princess, and Rahu is appointed admin.",
+        "source_mode": "chronicle_retelling"
+      }
+    ]
+  },
+  "top_co_presence": [
+    {
+      "name": "Tim Dooley",
+      "count": 4
+    },
+    {
+      "name": "Port Monkey",
+      "count": 2
+    },
+    {
+      "name": "Termite",
+      "count": 2
+    },
+    {
+      "name": "Ledgeview",
+      "count": 2
+    },
+    {
+      "name": "Raven",
+      "count": 2
+    },
+    {
+      "name": "Marty",
+      "count": 1
+    },
+    {
+      "name": "Mr. E",
+      "count": 1
+    },
+    {
+      "name": "Klunty",
+      "count": 1
+    },
+    {
+      "name": "Optimistique",
+      "count": 1
+    },
+    {
+      "name": "Tdog",
+      "count": 1
+    }
+  ],
+  "symbolic_roles": [
+    {
+      "role": "tomato-villain",
+      "date": "2024-12-15",
+      "scope": "comic Chronicle scene"
+    },
+    {
+      "role": "Mud Dweller / lost soul",
+      "date": "2026-03-01",
+      "scope": "conversation story"
+    }
+  ],
+  "highlighted_incidents": [
+    {
+      "date": "2024-12-15",
+      "title": "Tomato villain",
+      "summary": "During the potato-chip stream, Rahu takes a comic tomato-villain role; scene performance, not permanent identity."
+    },
+    {
+      "date": "2026-03-01",
+      "title": "1/137 growth",
+      "summary": "Conversation archaeology gives a lost-soul / dream-potato story where tiny growth still matters; project narrative layer."
+    },
+    {
+      "date": "2026-05-25",
+      "title": "Social interlocutor",
+      "summary": "Later conversation places Rahu in a documentary/social discussion layer separate from Great Book Rahu."
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "character_archive",
+      "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json"
+    },
+    {
+      "type": "social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "type": "public_room",
+      "path": "rooms/potatoverse-canon/beings/rahu/"
+    }
+  ],
+  "recovery_leads": [
+    "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
+    "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
+    "Add relationship edges only when a dated scene or explicit source supports them."
+  ]
+}
