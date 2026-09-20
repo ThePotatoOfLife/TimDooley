@@ -95,5 +95,59 @@
     "repetition_rule": "Occurrence index advances only for a separate dated event in the same conduct family. The fourth and later confirmed occurrences stay capped at 1.5x.",
     "double_count_rule": "One underlying incident receives one priced category even when several descriptions could apply. Secondary interpretations may be logged unpriced.",
     "dispute_rule": "A disputed or reciprocal conflict remains zero-weight unless the archive has enough evidence for a concrete priced act."
+  },
+  "interest_and_closure": {
+    "principle": "History stays; posture can change. The system records later repair without deleting the dated entry that created the obligation.",
+    "interest": {
+      "default": "none",
+      "automatic_compounding": false,
+      "rule": "No symbolic credit or debt compounds merely because time passes. Time-based accrual applies only to universal Dooley Welfare.",
+      "allowed_only_when": "A dated project source explicitly defines a continuing consequence or a future contract names a bounded, evidence-backed accrual rule.",
+      "inactive_accounts": "No penalty, decay or debt interest for inactivity, dormancy, death or archival closure."
+    },
+    "dispute": {
+      "status": "open-dispute",
+      "pricing": "zero unless a concrete act independently passes the debit evidence threshold",
+      "effect": "A dispute can remain visible indefinitely without forcing a negative balance."
+    },
+    "repair": {
+      "statuses": [
+        "repair-attempted",
+        "partially-repaired",
+        "repaired"
+      ],
+      "rule": "Repair is a new dated event. It can add positive adjustment or change account posture, but it never erases the earlier source record.",
+      "evidence": "Prefer restitution, correction, apology, truth clarification, restored access/exit, completed obligation or other specifically documented repair."
+    },
+    "forgiveness": {
+      "statuses": [
+        "forgiven-project",
+        "released"
+      ],
+      "rule": "Forgiveness stops an unresolved project obligation from being treated as currently outstanding; the historical debit remains in the ledger with its later release event.",
+      "authority": "Only explicit project/canon wording or a documented settlement/repair may mark an obligation forgiven or released."
+    },
+    "dormancy": {
+      "status": "dormant",
+      "rule": "Dormancy is an archive activity state, not a financial or moral penalty. Welfare continues; no new debit/credit arises without a dated event."
+    },
+    "closure": {
+      "statuses": [
+        "closed-resolved",
+        "closed-unresolved",
+        "merged-duplicate"
+      ],
+      "closed_resolved": "No currently outstanding project obligation remains; historical rows stay readable and welfare continues unless the identity is proven duplicate/nonparticipant.",
+      "closed_unresolved": "Archive activity ends while one or more questions/obligations remain unresolved; no new penalty or interest is added merely because closure occurred.",
+      "merged_duplicate": "Merge into the surviving identity/account after provenance review; this is one of the only conditions that can stop a duplicate welfare stream."
+    },
+    "posture_rule": "Posture summarizes the currently supported ledger state; it is not a permanent character label and must be recomputable from dated events.",
+    "prohibited": [
+      "automatic debt interest",
+      "automatic punishment for inactivity",
+      "retroactive deletion of historical evidence after repair",
+      "forgiveness inferred from silence or elapsed time",
+      "closure treated as proof of guilt, innocence or moral worth"
+    ]
   }
 }
