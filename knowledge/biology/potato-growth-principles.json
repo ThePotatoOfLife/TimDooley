@@ -86,7 +86,7 @@
     "Which parts of a system need light/exposure and which need protection or incubation?",
     "Which delays indicate healthy dormancy and which indicate genuinely poor conditions for growth?"
   ],
-  "boundary": "Biological properties can inspire metaphor but do not demonstrate spiritual, psychological, political or cosmological claims.",
+  "boundary": "This file is the compact summary only. Deep claims about ancestry, genotype, molecular signalling, anatomy, microbiome, pathology and storage must route to their canonical biology owners.",
   "source_records": [
     "docs/POTATO-LAYERS.md",
     "POTATOVERSE-DEEP-RESEARCH.md",
@@ -110,5 +110,15 @@
     "canonical_owner": "knowledge/biology/potato-genetics-genomics-atlas.json",
     "rule": "Practice-facing growth principles summarize phenotype; chromosome architecture, haplotype-specific variation, allele dosage, inheritance, pangenome and organellar DNA are owned by the genetics atlas.",
     "shorthand": "For common cultivated autotetraploids: 12 chromosome groups × 4 homologs = 48 nuclear chromosomes, but the four homologs are differentiated haplotypes rather than four identical copies."
+  },
+  "deep_biology_routes": {
+    "index": "knowledge/biology/index.json",
+    "genealogy": "knowledge/biology/potato-biological-genealogy.json",
+    "genetics": "knowledge/biology/potato-genetics-genomics-atlas.json",
+    "molecular": "knowledge/biology/potato-molecular-development-and-signalling.json",
+    "anatomy_ecology": "knowledge/biology/potato-anatomy-metabolism-ecology.json",
+    "life_cycle": "knowledge/biology/potato-life-cycle-state-machine.json",
+    "pathology_storage": "knowledge/biology/potato-pathology-immunity-storage.json",
+    "lexicon": "knowledge/biology/potato-biological-lexicon.json"
   }
 }
