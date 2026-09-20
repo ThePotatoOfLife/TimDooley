@@ -13,7 +13,7 @@ const motion = window.__potatoAtlasMotion;
 if (!window.__potatoAtlasGeo) await import('./3d-geo-kernel.js');
 const geo = window.__potatoAtlasGeo;
 if (!geo) throw new Error('Atlas subdivisions require the shared geospatial kernel.');
-const interaction = window.__potatoAtlasInteraction;
+function interactionRouter() { return window.__potatoAtlasInteraction; }
 const inspector = window.__potatoAtlasInspector;
 
 const INDEX_URL = '../data/world-subdivisions/index.json';
@@ -41,6 +41,7 @@ let selectedId = new URL(location.href).searchParams.get('subdivision') || null;
 // replayed on every moveend or fitBounds can recurse forever.
 let pendingDeepLinkId = selectedId;
 let eventsBound = false;
+let fallbackSharedHandlers = null;
 let useClock = 0;
 let activePartitions = [];
 const forcedPartitions = new Set();
@@ -399,28 +400,45 @@ async function handleSharedLayerClick(event) {
     console.warn(`Subdivision selection unavailable: ${id}`, error);
   }
 }
+function unbindSharedLayerFallback() {
+  if (!fallbackSharedHandlers) return;
+  try { map.off('mouseenter', HIT_ID, fallbackSharedHandlers.onEnter); } catch {}
+  try { map.off('mouseleave', HIT_ID, fallbackSharedHandlers.onLeave); } catch {}
+  try { map.off('click', HIT_ID, fallbackSharedHandlers.onClick); } catch {}
+  fallbackSharedHandlers = null;
+}
+function syncSharedLayerInteraction() {
+  const interaction = interactionRouter();
+  if (!interaction?.register) return false;
+  unbindSharedLayerFallback();
+  interaction.register('subdivisions', {
+    layers:[HIT_ID],
+    objectType:'subdivision',
+    clickPriority:60,
+    hoverPriority:60,
+    onClick:(event, feature) => handleSharedLayerClick({ ...event, features:[feature] }),
+  });
+  return true;
+}
 function bindSharedLayerEvents() {
+  if (syncSharedLayerInteraction()) { eventsBound = true; return; }
   if (eventsBound) return;
-  if (interaction?.register) {
-    interaction.register('subdivisions', {
-      layers:[HIT_ID],
-      objectType:'subdivision',
-      clickPriority:60,
-      hoverPriority:60,
-      onClick:(event, feature) => handleSharedLayerClick({ ...event, features:[feature] }),
-    });
-  } else {
-    // Degraded/direct-module fallback for tests and partial boots. Normal app boots
-    // preload the Interaction Router, so production click ownership is centralized.
-    map.on('mouseenter', HIT_ID, () => { map.getCanvas().style.cursor = 'pointer'; });
-    map.on('mouseleave', HIT_ID, () => { map.getCanvas().style.cursor = ''; });
-    map.on('click', HIT_ID, event => {
-      if (event?.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
-      return handleSharedLayerClick(event);
-    });
-  }
+  // Degraded/direct-module fallback for tests and partial boots. Promote live
+  // to Interaction Router ownership when the shared Router announces readiness.
+  const onEnter = () => { map.getCanvas().style.cursor = 'pointer'; };
+  const onLeave = () => { map.getCanvas().style.cursor = ''; };
+  const onClick = event => {
+    if (event?.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
+    return handleSharedLayerClick(event);
+  };
+  map.on('mouseenter', HIT_ID, onEnter);
+  map.on('mouseleave', HIT_ID, onLeave);
+  map.on('click', HIT_ID, onClick);
+  fallbackSharedHandlers = { onEnter, onLeave, onClick };
   eventsBound = true;
 }
+window.addEventListener('potato-atlas-interaction-ready', () => syncSharedLayerInteraction());
+
 function viewportWidth() {
   return Number(window.innerWidth || document.documentElement?.clientWidth || 1024);
 }
