@@ -34,9 +34,10 @@ body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transpa
 </style>
 </head>
 <body>
-<main class="case-shell" data-tts-longform>
+<main class="case-shell" id="cia-dossier-shell">
 <div class="case-top"><div><a href="../">← Filing cabinet</a> <a href="../../">Beings &amp; Cast</a> <a href="../bonds/">Bonds</a> <a href="../incidents/">Incidents</a></div><div><button id="shuffleTop" type="button">Shuffle file</button></div></div>
 <span class="folder-tab">CIA · Character File</span>
+<div id="cia-file-tts" data-tts-longform data-tts-root="#sheet" data-tts-id="cia-character-file" data-tts-label="Listen to this CIA dossier" data-tts-all-label="Whole dossier" data-tts-current-label="Current dossier section" data-tts-selection-label="Selection" data-tts-item=".panel" data-tts-exclude=".tabs,.footer-actions,.badges,.mug"></div>
 <article class="file-sheet" id="sheet">
 <div class="file-header"><div><div class="file-id" id="fileId">Loading dossier…</div><h1 id="name">Loading…</h1><p id="summary">Retrieving file from cabinet.</p></div><div class="mug" id="mug">NO PHOTO<br>ARCHIVE FILE</div></div>
 <div class="badges" id="badges"></div>
@@ -259,7 +260,10 @@ function shuffle(){
 }
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
- b.classList.add('active');document.getElementById(b.dataset.panel).classList.add('active');
+ b.classList.add('active');
+ const panel=document.getElementById(b.dataset.panel);
+ panel.classList.add('active');
+ document.getElementById('sheet')?.dispatchEvent(new CustomEvent('potato:tts-current',{detail:{item:panel}}));
 }));
 document.getElementById('shuffleTop').onclick=shuffle;document.getElementById('shuffleBottom').onclick=shuffle;
 (async()=>{[manifest,roles,stories,bonds,incidents,enhancements,conversationRecovery,timTaxonomy]=await Promise.all([
@@ -268,5 +272,6 @@ document.getElementById('shuffleTop').onclick=shuffle;document.getElementById('s
  get('knowledge/fbi/conversation-recovery.json'),get('knowledge/fbi/tim-moral-symbolic-taxonomy.json')
 ]);await load(current)})().catch(e=>{document.getElementById('summary').textContent='The cabinet could not load one of its indexes.'});
 </script>
+<script src="../../../../../app/site-tts.js" defer></script>
 <script src="../../../../../app/house-journey.js"></script>
 </body></html>
