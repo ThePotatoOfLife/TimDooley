@@ -55,6 +55,8 @@ def main() -> int:
             errors.append(f"Render Stack style-lifecycle migration missing marker: {token}")
     if "map.on('styledata'" in render_stack:
         errors.append("Render Stack must not own a direct styledata listener after migration")
+    if "window.__potatoAtlasStyleLifecycle =" in render_stack:
+        errors.append("Render Stack must consume, not publish, the Style Lifecycle singleton")
 
     for owner, path in PHYSICAL.items():
         source = path.read_text(encoding="utf-8", errors="replace")
@@ -67,6 +69,8 @@ def main() -> int:
                 errors.append(f"{path.relative_to(ROOT)} style-lifecycle migration missing marker: {token}")
         if "map.on('styledata'" in source:
             errors.append(f"{path.relative_to(ROOT)} must not own a direct styledata listener")
+        if "window.__potatoAtlasStyleLifecycle =" in source:
+            errors.append(f"{path.relative_to(ROOT)} must consume, not publish, the Style Lifecycle singleton")
 
     active_style_listeners = []
     for path in sorted((ROOT / "world-map").glob("3d-*.js")):
