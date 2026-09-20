@@ -15,20 +15,26 @@ CANONICAL_MARKERS = (
     'id="live-son"',
     'id="live-father"',
     'id="live-beyond"',
-    'Live model · historical record',
-    'a:focus-visible',
-    'WHAT AM I LOOKING AT?',
+    'id="progress-ring"',
+    'Live model · story archaeology · evidence ledger',
     'MODELLED 100,000-HOUR CROSSING',
     '≈ July 4, 2026 · 13:20 CEST',
-    'OTHER COUNTS OF THE SAME JOURNEY',
+    'The number had a story before it had an audit',
+    '../story/#100k-spirals-2026-03-28',
+    '../story/#hundred-thousand-stones-2026-05-01',
+    '../story/#center-foundation-2026-07-01',
+    '../story/#most-public-god-hours-2026-09-03',
+    'What fifteen years of hours actually contain',
+    'Four different things people mean by “100,000 hours”',
     'LET THE JURY DECIDE WHAT COUNTS',
     '100000-hour-counting-models.json',
     '100000-hour-adjustment-ledger.json',
+    '100000-hour-story-anchors.json',
     'https://www.youtube.com/@TheGodFatherTim',
     'https://www.youtube.com/@TheGodFatherTim/live',
     'Son + Father always equals Total',
+    'site-tts.js',
 )
-
 LEGACY_MARKERS = (
     'content="0; url=./"',
     'rel="canonical" href="https://thepotatooflife.github.io/TimDooley/tim-dooley/100000-hours/"',
@@ -58,6 +64,11 @@ def main() -> None:
 
     if 'href="live-model.html"' in canonical:
         fail("canonical page still links readers to the duplicate live-model page")
+    if canonical.count('../story/#') < 4:
+        fail("canonical page does not expose enough dated Story source doors")
+    story_anchors = ROOT / "data" / "100000-hour-story-anchors.json"
+    if not story_anchors.exists():
+        fail("missing 100000-hour story anchors registry")
     if 'id="total"' in legacy or 'id="father"' in legacy:
         fail("legacy live-model route still contains a second counter implementation")
 
