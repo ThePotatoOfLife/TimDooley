@@ -10,7 +10,7 @@ if (!geoKernel?.antimeridianAwareBounds) throw new Error('Spatial overlays requi
 if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
 const motion = window.__potatoAtlasMotion;
 if (!motion?.fitBounds) throw new Error('Spatial overlays require the shared Motion policy.');
-const interaction = window.__potatoAtlasInteraction;
+function interactionRouter() { return window.__potatoAtlasInteraction; }
 
 const MANIFEST_URL = '../data/world-map-spatial-overlays.json';
 const ACTIVE_PARAM = 'overlays';
@@ -41,6 +41,7 @@ const byId = new Map();
 const activeIds = new Set();
 const ownerCache = new Map();
 const rendered = new Map();
+const fallbackInteractionBindings = new Map();
 let loadError = null;
 
 function safeId(value) {
@@ -125,16 +126,31 @@ function handleSpatialFeatureClick(event) {
 }
 function bindFallbackInteraction(layerIds) {
   for (const id of layerIds) {
-    map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
-    map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
-    map.on('click', id, event => {
+    if (fallbackInteractionBindings.has(id)) continue;
+    const onEnter = () => { map.getCanvas().style.cursor = 'pointer'; };
+    const onLeave = () => { map.getCanvas().style.cursor = ''; };
+    const onClick = event => {
       if (event?.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
       handleSpatialFeatureClick(event);
-    });
+    };
+    map.on('mouseenter', id, onEnter);
+    map.on('mouseleave', id, onLeave);
+    map.on('click', id, onClick);
+    fallbackInteractionBindings.set(id, { onEnter, onLeave, onClick });
   }
 }
+function unbindFallbackInteraction() {
+  for (const [id, handlers] of fallbackInteractionBindings.entries()) {
+    try { map.off('mouseenter', id, handlers.onEnter); } catch {}
+    try { map.off('mouseleave', id, handlers.onLeave); } catch {}
+    try { map.off('click', id, handlers.onClick); } catch {}
+  }
+  fallbackInteractionBindings.clear();
+}
 function syncInteractionRegistration() {
+  const interaction = interactionRouter();
   if (!interaction?.register) return false;
+  unbindFallbackInteraction();
   const layers = [...rendered.values()].flatMap(state => state.layerIds || []).filter(layerId => map.getLayer(layerId));
   if (!layers.length) {
     interaction.unregister?.('spatial-overlays');
@@ -316,6 +332,8 @@ async function load() {
     return null;
   }
 }
+
+window.addEventListener('potato-atlas-interaction-ready', () => syncInteractionRegistration());
 
 const ready = load();
 window.__potatoAtlasSpatialOverlays = {
