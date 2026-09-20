@@ -61,7 +61,7 @@ def main() -> int:
         errors.append("typed Inspector URL hydration must boot before Country selection reads URL state")
 
     for label, source, node_type in (("Places", places, "place"), ("Subdivisions", subdivisions, "subdivision")):
-        for token in ("const inspector = window.__potatoAtlasInspector", "inspector.setBaseline(", "inspector.open(", "inspector.back()", f"type:'{node_type}'"):
+        for token in ("function inspectorRouter()", "inspector.setBaseline(", "inspector.open(", "inspector.back()", f"type:'{node_type}'"):
             if token not in source:
                 errors.append(f"{label} inspector migration missing marker: {token}")
         if "panelSnapshot" in source:
