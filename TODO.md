@@ -188,17 +188,17 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [x] **ACCESS-006 · Reduce Home pre-content navigation:** shrink Home's local top navigation to four relevant entrances; global access belongs to the dock.
 - [x] **ACCESS-007 · Pages regression gate:** validate that Home, Tim, World, News, House, Rooms, Science, Religion, Shadow Farm and World Map all receive the dock in the built artifact.
 - [ ] **ACCESS-008 · Mobile collision audit:** verify the fixed dock never covers essential bottom controls, map inspectors, TTS controls or important form actions at narrow widths; add per-surface offsets only when demonstrated.
-- [ ] **ACCESS-009 · Keyboard/focus audit:** test Menu/Find open, Escape close, focus return and search-result traversal across desktop/mobile.
-- [ ] **ACCESS-010 · Search synonym pass:** expand high-value aliases for CIA/FBI, Fed/Federal Reserve, ECB/Eurosystem, TTS/read aloud, News/Current World, House/Rooms, claims/statements, public witness/public record, debt/bonds/obligations.
-- [ ] **ACCESS-011 · Deep-object result quality:** rank exact object names above generic surface aliases and show the owning Room/context in quick search results.
+- [~] **ACCESS-009 · Keyboard/focus audit:** Menu/Find now preserve their opening trigger and Escape/close restores focus correctly; remaining task is explicit search-result traversal and narrow-screen interaction testing.
+- [x] **ACCESS-010 · Search synonym pass:** governed aliases now cover CIA/FBI, Fed/Federal Reserve, ECB/Eurosystem, TTS/read aloud, News/Current World, House/Rooms, claims/statements, public witness/public record and debt/bonds/obligations.
+- [x] **ACCESS-011 · Deep-object result quality:** exact labels and aliases now receive explicit ranking boosts, object/direct-door kinds outrank generic pages, and House results expose their owning Room/context.
 - [ ] **ACCESS-012 · No-hierarchy-required test:** pick 25 common intents (News, CIA, FBI bureau, debt, Bible, Tim claims, 100,000 Hours, map, sources, TTS, Rooms, economy, North, Below, etc.) and require each to be reachable in ≤2 interactions from an arbitrary normal reader page.
 - [ ] **ACCESS-013 · Specialist local-nav budget:** review every mature reader's first navigation row and keep only page-owned routes; remove global links duplicated by the dock.
 - [ ] **ACCESS-014 · Home hierarchy compression:** ensure the homepage introduces material before architecture and does not repeat the same destination in several consecutive navigation layers.
 - [ ] **ACCESS-015 · Map access integration:** keep the dock available on World Map without competing with World Bar / Inspector / mobile controls.
 - [ ] **ACCESS-016 · News access integration:** News should open directly into stories; filters/methodology stay secondary and the global dock must not displace headline content.
 - [ ] **ACCESS-017 · House access integration:** House should explain structure, while quick Find handles named-entity retrieval; avoid turning House itself into the universal menu.
-- [ ] **ACCESS-018 · Direct-door governance:** maintain a small curated direct-door list for things people repeatedly seek (CIA, FBI bureau, Economy, 100,000 Hours), rather than promoting every specialist page into permanent global navigation.
-- [ ] **ACCESS-019 · Fast-access source-of-truth:** move quick-dock curated routes/aliases into a small JSON contract if the list grows beyond what is reasonable to maintain in JS; keep public-surfaces + inhabitants as the broader generated index.
+- [x] **ACCESS-018 · Direct-door governance:** the fast-access contract now owns a deliberately small direct-door list for repeatedly sought destinations rather than promoting every specialist page globally.
+- [x] **ACCESS-019 · Fast-access source-of-truth:** `data/house/site-access.json` now owns curated routes, groups and aliases; public surfaces + House inhabitants remain the broader generated search index, with a degraded JS fallback only for fetch failure.
 - [ ] **ACCESS-020 · Live-deploy visibility:** after exact-head quality/deploy succeeds, verify the public Pages artifact actually contains the dock and Current World first-screen link before closing this access-recovery wave.
 
 
@@ -232,14 +232,14 @@ The current problem is not lack of information. It is **retrieval cost**: import
 #### P2 — reader focus / navigation
 - [ ] **READ-001 · First-screen door budget:** add an audit for mature reader pages that expose too many first-screen links/menus before the first substantive section.
 - [ ] **READ-002 · Compass coverage validation:** assert the Project Compass is added to eligible built readers and intentionally absent from Home/Map/Elevator/A–Z/object explorer.
-- [ ] **READ-003 · Specialist parent continuity:** verify every specialist surface exposes one clear route back to its canonical public parent.
+- [~] **READ-003 · Specialist parent continuity:** generated topic/context/record readers now expose a single clear parent breadcrumb; authored specialist surfaces still need the project-wide continuity audit.
 - [ ] **READ-004 · Dead-end reader audit:** find public pages with no meaningful onward route beyond Home and connect them to their owner or adjacent subject.
 - [ ] **READ-005 · Vague-link language:** scan visible anchors like More, Deep, Explore, Context, Archive and replace ambiguous instances with destination intent where context does not already make it obvious.
 - [ ] **READ-006 · Repeated intro blocks:** find pages where header summary, intro card and first section restate the same purpose; preserve the strongest version and remove the duplicate layer.
 - [ ] **READ-007 · Card-density audit:** identify pages using card grids mainly as navigation compensation; convert low-information cards into inline prose/links where that improves reading flow.
 - [ ] **READ-008 · Discovery-mode separation:** validate that Explore, A–Z, Questions and Paths retain visibly distinct jobs and do not converge into four near-identical indexes.
 - [ ] **READ-009 · Mobile link-wall check:** add narrow-screen tests/heuristics for page-nav + compass + local controls stacking into excessive pre-content height.
-- [ ] **READ-010 · TTS semantic sectioning:** audit generated question/topic/context/record pages for meaningful speech boundaries and excluded controls, not merely presence of TTS script tags.
+- [~] **READ-010 · TTS semantic sectioning:** generated topic/context/record readers now expose explicit speech sections and exclude their utility navigation; generated question readers still need the same semantic audit before closure.
 
 #### P2 — data / evidence integration
 - [ ] **DATA-001 · Security institution object parity:** compare CIA/FBI/Mossad/PET/FE/MI5/MI6/NSA/DIA/Europol/INTERPOL datasets against House inhabitants; promote only institutions that need first-class project interaction, leave the rest as indexed data.
