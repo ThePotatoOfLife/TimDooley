@@ -239,7 +239,8 @@ function hubData(code, record) {
     const coord=[lon+dx,Math.max(-82,Math.min(82,lat+dy))];
     const label=`${group.label} · ${group.modules.length}`;
     pts.push({type:'Feature',properties:{id:group.id,label,plane:'group',code,count:group.modules.length},geometry:{type:'Point',coordinates:coord}});
-    lines.push({type:'Feature',properties:{id:group.id,code,geometry_meaning:'symbolic_route'},geometry:{type:'LineString',coordinates:[[lon,lat],coord]}});
+    const routeCoordinates=geoKernel.shortestWrappedLine([lon,lat],coord,Number(map.getCenter()?.lng));
+    lines.push({type:'Feature',properties:{id:group.id,code,geometry_meaning:'symbolic_route'},geometry:{type:'LineString',coordinates:routeCoordinates}});
   });
   return {points:{type:'FeatureCollection',features:pts},lines:{type:'FeatureCollection',features:lines}};
 }
