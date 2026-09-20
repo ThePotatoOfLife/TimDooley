@@ -130,6 +130,15 @@ def merge_capitals(features: list[dict], capitals: dict, refresh_date: str) -> l
                 found = min(candidates, key=lambda feature: coordinate_distance(feature["geometry"]["coordinates"], coords))
         if found:
             found_props = found["properties"]
+            canonical_name = str(props.get("name") or "").strip()
+            source_name = str(found_props.get("name") or "").strip()
+            if canonical_name and source_name and normalized_name(canonical_name) != normalized_name(source_name):
+                aliases = [str(value) for value in (found_props.get("aliases") or []) if str(value).strip()]
+                if source_name not in aliases:
+                    aliases.append(source_name)
+                found_props["aliases"] = aliases
+                found_props["name"] = canonical_name
+                found_props["ascii_name"] = canonical_name
             found_props["is_national_capital"] = True
             found_props["capital_status"] = "national"
             found_props["importance_tier"] = min(int(found_props.get("importance_tier") or 4), 2)
