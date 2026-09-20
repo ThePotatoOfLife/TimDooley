@@ -4,8 +4,9 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas subdivisions require the core map.');
-const geo = window.__potatoAtlasGeo || await import('./3d-geo-kernel.js');
-if (!window.__potatoAtlasGeo) window.__potatoAtlasGeo = geo;
+if (!window.__potatoAtlasGeo) await import('./3d-geo-kernel.js');
+const geo = window.__potatoAtlasGeo;
+if (!geo) throw new Error('Atlas subdivisions require the shared geospatial kernel.');
 const interaction = window.__potatoAtlasInteraction;
 const inspector = window.__potatoAtlasInspector;
 
