@@ -217,6 +217,7 @@ jobs:
           node scripts/test_world_map_inspection_bootstrap_staging.mjs
           node scripts/test_world_map_inspector_visibility.mjs
           node scripts/test_world_map_motion_compositor.mjs
+          node scripts/test_world_map_reduced_motion.mjs
           node scripts/test_world_map_route_geometry_semantics.mjs
           python scripts/validate_world_map_visual_channels.py
           node scripts/test_world_map_visual_channels.mjs
