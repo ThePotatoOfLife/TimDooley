@@ -7,7 +7,7 @@
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/news/">
 <link rel="stylesheet" href="../app/site-system.css?v=20260914a">
-<link rel="stylesheet" href="../app/news.css?v=20260920g">
+<link rel="stylesheet" href="../app/news.css?v=20260920h">
 <link rel="stylesheet" href="../app/tts-drawer.css?v=20260915">
 </head>
 <body>
@@ -34,52 +34,12 @@
 <div id="news-tts" data-tts-longform data-tts-root="#news-reading-stream" data-tts-id="current-world-news-only" data-tts-label="Current World News" data-tts-trigger-label="Read all news" data-tts-all-label="All news" data-tts-current-label="This story" data-tts-selection-label="Selection" data-tts-item=".news-story" data-tts-exclude=".news-story-kicker,.news-story-footer,.news-story-image,.news-story-expand,.news-empty"></div>
 </section>
 
+<details class="news-filter-drawer">
+<summary><span><b>Refine coverage</b><small>topic · place/system · time · search</small></span><span class="news-active-query" data-news-active-query>Broad current-world sample · 24 hours</span></summary>
 <section class="news-console" aria-label="Current World controls">
-<div class="news-console-block">
-<div class="news-console-label"><span>Topic</span><small>what kind of coverage</small></div>
-<div class="news-tabs" data-news-tabs>
-<button class="news-tab" type="button" data-news-category="all" aria-pressed="true">All</button>
-<button class="news-tab" type="button" data-news-category="world" aria-pressed="false">World</button>
-<button class="news-tab" type="button" data-news-category="politics" aria-pressed="false">Politics</button>
-<button class="news-tab" type="button" data-news-category="economy" aria-pressed="false">Economy</button>
-<button class="news-tab" type="button" data-news-category="science" aria-pressed="false">Science</button>
-<button class="news-tab" type="button" data-news-category="technology" aria-pressed="false">Technology</button>
-<button class="news-tab" type="button" data-news-category="space" aria-pressed="false">Space</button>
-<button class="news-tab" type="button" data-news-category="climate" aria-pressed="false">Climate</button>
-<button class="news-tab" type="button" data-news-category="culture" aria-pressed="false">Culture</button>
-</div>
-</div>
-<div class="news-console-block">
-<div class="news-console-label"><span>Lens</span><small>where / which system</small></div>
-<div class="news-lenses" data-news-lenses>
-<button class="news-lens" type="button" data-news-lens="" aria-pressed="true">No extra lens</button>
-<button class="news-lens" type="button" data-news-lens="north-arctic" aria-pressed="false">North &amp; Arctic</button>
-<button class="news-lens" type="button" data-news-lens="europe" aria-pressed="false">Europe</button>
-<button class="news-lens" type="button" data-news-lens="ukraine-russia" aria-pressed="false">Ukraine / Russia</button>
-<button class="news-lens" type="button" data-news-lens="middle-east" aria-pressed="false">Middle East</button>
-<button class="news-lens" type="button" data-news-lens="americas" aria-pressed="false">Americas</button>
-<button class="news-lens" type="button" data-news-lens="asia-pacific" aria-pressed="false">Asia-Pacific</button>
-<button class="news-lens" type="button" data-news-lens="africa" aria-pressed="false">Africa</button>
-<button class="news-lens" type="button" data-news-lens="economy-energy" aria-pressed="false">Economy &amp; Energy</button>
-<button class="news-lens" type="button" data-news-lens="security" aria-pressed="false">Security</button>
-<button class="news-lens" type="button" data-news-lens="science-tech" aria-pressed="false">Science &amp; Tech</button>
-</div>
-</div>
-<div class="news-console-block news-console-time">
-<div class="news-console-label"><span>Window</span><small>publication horizon</small></div>
-<div class="news-horizons" data-news-horizons>
-<button class="news-horizon" type="button" data-news-horizon="3h" aria-pressed="false">3h</button>
-<button class="news-horizon" type="button" data-news-horizon="12h" aria-pressed="false">12h</button>
-<button class="news-horizon" type="button" data-news-horizon="24h" aria-pressed="true">24h</button>
-<button class="news-horizon" type="button" data-news-horizon="3d" aria-pressed="false">3d</button>
-<button class="news-horizon" type="button" data-news-horizon="7d" aria-pressed="false">7d</button>
-</div>
-<button class="news-refresh" type="button" data-news-refresh>Refresh</button>
-</div>
-<form class="news-search" role="search"><input type="search" data-news-search aria-label="Search current news" placeholder="Search the current GDELT news index…"><button type="submit">Search current coverage</button></form>
-<div class="news-display-filters"><button type="button" class="news-readable-toggle" data-news-readable aria-pressed="false"><b>Readable here only</b><span>hide headline-only discovery cards</span></button></div>
-<div class="news-active-query" data-news-active-query>Broad current-world sample · 24 hours</div>
+
 </section>
+</details>
 
 <div class="news-status" aria-live="polite">
 <strong data-news-count>Loading…</strong><span data-news-updated></span>
@@ -144,7 +104,7 @@
 </div>
 </section>
 </main>
-<script src="../app/news.js?v=20260920g" data-news-config="../data/news/sources.json"></script>
+<script src="../app/news.js?v=20260920h" data-news-config="../data/news/sources.json"></script>
 <script src="../app/tts-reader.js"></script><script src="../app/tts-drawer.js"></script><script src="../app/longform-tts-adapter.js"></script>
 <script src="../app/house-journey.js"></script>
 </body></html>
