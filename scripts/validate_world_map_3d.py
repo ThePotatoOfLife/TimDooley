@@ -62,7 +62,7 @@ def main() -> int:
     errors: list[str] = []
     warnings: list[str] = []
 
-    required = (HTML, APP, HOVER, BOOTSTRAP, EVIDENCE, UI, SELECTION_UI, SELECTION, PULSE, LENSES, TIME, FIELDS, NETWORKS, RUNTIME, WORLD, COUNTRIES)
+    required = (HTML, APP, HOVER, BOOTSTRAP, EVIDENCE, SELECTION, PULSE, LENSES, TIME, FIELDS, NETWORKS, RUNTIME, WORLD, COUNTRIES)
     for path in required:
         if not path.exists():
             errors.append(f"missing required atlas file: {path.relative_to(ROOT)}")
@@ -89,13 +89,11 @@ def main() -> int:
     countries = load_json(COUNTRIES, errors)
 
     fail_if_missing(html, ('id="map"','id="panel"','id="status"','id="search"','id="country-list"','id="height"','id="compare"','id="interior"','id="relations"','id="relationType"','id="traceDepth"','id="fit"','id="tilt"','id="globe"','id="world"','id="layersMenu"','id="traceMenu"','id="timeMenu"','id="viewMenu"','id="panelToggle"','id="focusMode"','id="timeMode"','id="timeDate"','id="timeDate2"','id="atlasTimeState"','class="app panel-collapsed"','src="./3d-hover.js"','src="./3d-pathfinder.js"','src="./3d-evidence.js"','src="./3d-time.js"','src="./3d-ui.js"',"Geography, graph topology, project hierarchy and time are separate coordinates"),"world-map/3d.html",errors)
-    fail_if_missing(bootstrap,("ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v')","function versionedModule","await import(versionedModule('./3d-hover.js'))","waitForCore","countries-fill","window.__potatoAtlasReady","Path finder","Demography","Progressive UI","Country selection","Country Pulse","Lenses","declareDormant('Evidence'","declareDormant('Fields'","declareDormant('Networks'","declareDormant('Time'","declareDormant('Axis depth'","declareDormant('Axis operators'","declareDormant('North Axis'","potato-atlas-interactive","__potatoAtlasDiagnostics","deploymentVersion"),"world-map/3d-bootstrap.js",errors)
-    fail_if_missing(selection_ui,("atlasSelectionDock","__potatoAtlasLayerRegistry","potato-atlas-selection-change","Module orbit · advanced","Connections","clearCountrySelection"),"world-map/3d-selection-ui.js",errors)
-    fail_if_missing(selection,("selectedCodes","activeCode","function toggleCountrySelection","function automaticRelationData","searchParams.set('selected'","selection-chip","data-country-code","clearAll","__potatoAtlasSelection","AUTO_EDGES_ACTIVE","AUTO_EDGES_OTHER","AUTO_EDGES_TOTAL"),"world-map/3d-country-selection.js",errors)
+    fail_if_missing(bootstrap,("ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v')","function versionedModule","await import(versionedModule('./3d-hover.js'))","waitForCore","countries-fill","window.__potatoAtlasReady","Path finder","Demography","Country selection","Country Pulse","declareDormant('Evidence'","declareDormant('Fields'","declareDormant('Networks'","declareDormant('Time'","declareDormant('Axis depth'","declareDormant('Axis operators'","declareDormant('North Axis'","potato-atlas-interactive","__potatoAtlasDiagnostics","deploymentVersion"),"world-map/3d-bootstrap.js",errors)
+    fail_if_missing(selection,("pinnedCodes","activeCode","function togglePinnedCountry","function pinCountry","function unpinCountry","function automaticRelationData","urlState.patch('selection-inspector'","selection-chip","data-country-code","clearAll","__potatoAtlasSelection","automaticRelationBudget","DEFAULT_AUTO_RELATION_BUDGET"),"world-map/3d-country-selection.js",errors)
     fail_if_missing(pulse,("Country Pulse","GDP per capita","Inflation","Unemployment","__potatoAtlasCountryPulse","More statistics"),"world-map/3d-country-pulse.js",errors)
     fail_if_missing(lenses,("__potatoAtlasLenses","Alignment / Axis","Alliances","Religion","potato-atlas-lens-change","Project interpretation","NATO","BRICS","Unaffiliated"),"world-map/3d-lenses.js",errors)
-    fail_if_missing(ui,("function setPanel","function setFocus","panel-collapsed","ui-focus","atlas:panel-open","atlas:focus-mode","axisFieldView","empiricalNetworkView","axisDepthNavigator","axisCompactToggle","potato-atlas-panel-rendered","potato-atlas-module-ready","__potatoAtlasAttachBasemap","__potatoAtlasUI"),"world-map/3d-ui.js",errors)
-    fail_if_missing(time_js,("atlas-time-contract.json","north-axis-membership-history.json","timeMode","changed_between","canonicalUrlState.patch('time'","atlas-time-change","unknownDatePolicy","No exact dated project-field snapshot is safe to apply automatically","Current project Fields and empirical Networks are not automatically rewritten as historical layers","__potatoAtlasTime"),"world-map/3d-time.js",errors)
+    fail_if_missing(time_js,("atlas-time-contract.json","north-axis-membership-history.json","timeMode","changed_between","canonicalUrlState.patch('time'","atlas-time-change","unknownDatePolicy","No exact dated project-field snapshot is safe to apply automatically","Current project Fields and empirical Networks are not automatically rewritten as historical layers","__potatoAtlasInspectorVisibility?.setOpen","__potatoAtlasTime"),"world-map/3d-time.js",errors)
     fail_if_missing(fields,("historicalSuppressed","atlas-time-change","setHistoricalSuppressed","Current project-field snapshot hidden in historical mode"),"world-map/3d-fields.js",errors)
     fail_if_missing(networks,("historicalSuppressed","atlas-time-change","setHistoricalSuppressed","Current network snapshot hidden in historical mode"),"world-map/3d-networks.js",errors)
     fail_if_missing(app,("function relationEdgesFor","function edgeKey","function traceGraph","function traceRelationData","function traceHubData","function updateSpatial","function geometryBounds","function fitCodes","function toggleCompareCountry","function deselectCountry","function selectFeature","__potatoAtlasSelection","potato-atlas-selection-change","function renderCompare","function traceRows","window.openModule","window.goCountry","window.fitTrace","window.fitCompare","window.leaveCompare","TRACE_MAX_DEPTH = 3","TRACE_MAX_NODES","TRACE_MAX_EDGES","new Map([[root, 0]])","queue.shift()","visited.has(other)","__potatoAtlasUrlState","urlState.patch('selection-inspector'","compareCodes","relationType","traceDepth","trace-hubs","semantic-hubs","semantic-links","compare-hubs","relations","maplibre-gl@6.9.0","OpenStreetMap contributors","Atlas data failed to load","Breadth-first traversal","A relation line describes a typed connection","Project-canon material is separate from empirical country data","documented physical/public finance"),"world-map/3d-app.js",errors)
@@ -106,22 +104,20 @@ def main() -> int:
         errors.append("Eye refresh regressed to click-dependent timeout synchronization")
     if "new MutationObserver(" in evidence:
         errors.append("Eye must consume the canonical panel lifecycle instead of creating a DOM observer")
-    if "new MutationObserver(" in ui:
-        errors.append("Progressive UI must consume the canonical panel lifecycle instead of creating a second DOM observer")
-    if "setPaintProperty('countries-fill','fill-opacity'" in ui or 'setPaintProperty("countries-fill","fill-opacity"' in ui:
-        errors.append("Progressive UI must not compete with Physical World for country fill opacity")
+    if "'./3d-ui.js'" in bootstrap or "'./3d-selection-ui.js'" in bootstrap:
+        errors.append("retired Progressive/Selection UI must not return to the live bootstrap registry")
+    if 'src="./3d-ui.js"' in html or 'src="./3d-selection-ui.js"' in html:
+        errors.append("retired Progressive/Selection UI must not return to public source markers")
+    if "__potatoAtlasUI" in time_js:
+        errors.append("Time must use canonical Inspector Visibility rather than legacy __potatoAtlasUI")
     if "query.wikidata.org" in hover:
         errors.append("3D hover regressed to a live Wikidata SPARQL dependency; capital context must use the deploy snapshot")
-    if "observe(document.body" in ui:
-        errors.append("progressive UI regressed to a body-wide MutationObserver that can self-trigger during summary updates")
-    if "setTimeout(settleLateControls" in ui:
-        errors.append("progressive UI regressed to startup polling for dormant controls")
     if "await import('./3d-hover.js')" in bootstrap:
         errors.append("bootstrap regressed to an unversioned core module import; deployment cache isolation would be incomplete")
     if "await import('./3d-app.js')" in hover:
         errors.append("hover regressed to an unversioned app-core import; deployment cache isolation would be incomplete")
 
-    for text,label in ((app,"3d-app.js"),(hover,"3d-hover.js"),(bootstrap,"3d-bootstrap.js"),(evidence,"3d-evidence.js"),(ui,"3d-ui.js"),(selection_ui,"3d-selection-ui.js"),(selection,"3d-country-selection.js"),(pulse,"3d-country-pulse.js"),(lenses,"3d-lenses.js"),(time_js,"3d-time.js"),(fields,"3d-fields.js"),(networks,"3d-networks.js")):
+    for text,label in ((app,"3d-app.js"),(hover,"3d-hover.js"),(bootstrap,"3d-bootstrap.js"),(evidence,"3d-evidence.js"),(selection,"3d-country-selection.js"),(pulse,"3d-country-pulse.js"),(lenses,"3d-lenses.js"),(time_js,"3d-time.js"),(fields,"3d-fields.js"),(networks,"3d-networks.js")):
         check_js_syntax(text,label,warnings,errors)
 
     if runtime.get("status") != "active renderer contract": errors.append("world-map-3d-runtime must be marked as the active renderer contract")
