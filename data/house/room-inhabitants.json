@@ -2433,6 +2433,75 @@
           }
         ]
       }
+    },
+    {
+      "id": "collection-fbi-figures-bonds-incidents",
+      "label": "FBI — Figures, Bonds & Incidents",
+      "kind": "character-dossier-collection",
+      "room_ids": [
+        "memory-recovery",
+        "provenance-evidence",
+        "witness-attestation",
+        "canon-identities",
+        "developmental-genealogy",
+        "subculture-group-formation"
+      ],
+      "route": "/rooms/potatoverse-canon/beings/fbi/",
+      "summary": "Potatoverse filing bureau connecting recurring figures to dated appearances, relationships, incidents, stories, symbolic roles, source strata and unresolved recovery leads.",
+      "status_note": "FBI means Figures, Bonds & Incidents. It is a project archive metaphor, not the U.S. Federal Bureau of Investigation.",
+      "evidence_note": "Named claims stay source-bounded; literary/project roles, public chat, Chronicle retelling and documentary evidence remain distinguishable.",
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "cross-Room character dossier collection",
+          "boundary": "Retrieval layer; does not replace canonical person, history, source or story owners."
+        },
+        "sources": [
+          {
+            "source_ref": "knowledge/fbi/manifest.json",
+            "role": "bureau manifest",
+            "evidence_class": "project index"
+          },
+          {
+            "source_ref": "knowledge/fbi/figures/",
+            "role": "per-figure dossiers",
+            "evidence_class": "mixed-source dossier layer"
+          },
+          {
+            "source_ref": "knowledge/fbi/bonds/network.json",
+            "role": "relationship network",
+            "evidence_class": "source-bounded synthesis"
+          },
+          {
+            "source_ref": "knowledge/fbi/incidents/index.json",
+            "role": "incident index",
+            "evidence_class": "dated project index"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "routes-to",
+            "target_id_or_label": "Beings & Cast",
+            "direction": "outgoing",
+            "status": "reader interface",
+            "boundary": "Character-facing view."
+          },
+          {
+            "type": "routes-to",
+            "target_id_or_label": "Memory & Recovery",
+            "direction": "outgoing",
+            "status": "source recovery interface",
+            "boundary": "Recovery state preserved."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which recurring figures still lack enough dated/source-bounded material for a deep file?",
+            "why_it_matters": "Sets the next mining queue.",
+            "needed_evidence": "chat logs, Chronicle dates, story scenes, public posts, conversation recovery"
+          }
+        ]
+      }
     }
   ],
   "source_records": [
