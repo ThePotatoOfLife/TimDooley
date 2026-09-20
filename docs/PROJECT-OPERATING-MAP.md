@@ -66,7 +66,7 @@ Owns which public surfaces exist, which are primary, and what their canonical ro
 Authority starts with:
 - `docs/POTATO-HOUSE-CONSTITUTION.md`
 - `data/house/public-surfaces.json`
-- `knowledge/research/potato-house-master/public-route-topology.json` as the checked topology projection
+- `scripts/house_public_surfaces.py` as the deterministic route/topology resolver; the old `public-route-topology.json` is compatibility/history only
 
 `manifest.json` does **not** own top-level public route identity. It owns archive branch/pathway relationships and deep Explore semantics.
 
@@ -246,7 +246,7 @@ Prefer one durable owner plus specialist evidence over parallel masters.
 4. Check chronology and provenance.
 5. Check existing relationships before inventing new edges.
 6. Prefer deepening over proliferation.
-7. Keep presentation thin and question-led.
+7. Keep presentation substance-first and reader-led: explain the thing itself before exposing architecture; use questions where they improve inquiry.
 8. For public routing, change House authority first and derive projections from it.
 9. Write or update a validator for structural/runtime changes when practical.
 10. Run the relevant validators and full integration gate on the exact final head.
@@ -277,7 +277,7 @@ For World Map work, also read the current World Map design/implementation specs 
 
 The strongest maintenance moves are:
 - close temporary and superseded PRs once their unique work is absorbed;
-- keep `public-surfaces.json`, public-route topology, frontend bridge, discovery builders and current orientation docs convergent;
+- keep `public-surfaces.json` authoritative; derive topology/visibility projections from it and treat frontend bridge route caches as compatibility data;
 - remove redundant presentation and dormant UI only after dependency checks;
 - retire generated batch/state files after promotion;
 - strengthen canonical-owner reachability;
