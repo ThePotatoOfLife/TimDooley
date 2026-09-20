@@ -13,6 +13,7 @@ MANIFEST = ROOT / "data" / "world-map-physical-layers.json"
 HYDRO = ROOT / "world-map" / "3d-physical-hydrology.js"
 RUNTIME = ROOT / "world-map" / "3d-physical-layers.js"
 DEDUPE = ROOT / "scripts" / "validate_world_map_hydrology_dedupe.py"
+WRAP_TEST = ROOT / "scripts" / "test_world_map_hydrology_wrap.mjs"
 
 
 def main() -> int:
@@ -77,6 +78,16 @@ def main() -> int:
             errors.append("hydrology request-dedupe contract failed: " + (result.stdout.strip() or result.stderr.strip()))
     else:
         errors.append("missing hydrology request-dedupe validator")
+
+    node = shutil.which("node")
+    if not node:
+        errors.append("node executable unavailable; cannot run hydrology wrap regression")
+    elif not WRAP_TEST.exists():
+        errors.append("missing hydrology wrap regression")
+    else:
+        result = subprocess.run([node, str(WRAP_TEST)], cwd=ROOT, capture_output=True, text=True)
+        if result.returncode:
+            errors.append("hydrology wrap contract failed: " + (result.stderr.strip() or result.stdout.strip()))
 
     if RUNTIME.exists() and "__potatoAtlasHydrology" not in RUNTIME.read_text(encoding="utf-8", errors="replace"):
         errors.append("physical runtime missing hydrology controller marker")
