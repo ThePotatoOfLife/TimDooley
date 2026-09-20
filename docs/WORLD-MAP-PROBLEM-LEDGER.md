@@ -54,10 +54,9 @@
 **Remaining visual-channel conflicts:** tracked separately under WM-006/WM-008 rather than reopening style lifecycle ownership.
 
 ### WM-008 · Legacy UI ownership remains split — P2
-**Status:** open.  
-**Candidates:** `3d-ui.js`, `3d-selection-ui.js`, old Lens ownership.  
-**Risk:** duplicate controls/state synchronization and hidden compatibility behavior.  
-**Next:** prove parity against World Bar / selection / compositor, then retire one surface at a time.
+**Status:** fixed for normal boot on main (2026-09-20).  
+**Resolution:** Progressive UI (`3d-ui.js`) and Selection UI (`3d-selection-ui.js`) are rejected from the live bootstrap; World Bar, Country Selection, Compositor, UI Layout and Panel Lifecycle own their former responsibilities. Legacy `3d-lenses.js` remains as source compatibility/reference code but is no longer registered as a live dormant bootstrap module.  
+**Guard:** core/browse/inspector validators reject reintroduction of Progressive/Selection UI into normal boot; visual-channel validation prevents legacy UI paint ownership from returning.
 
 ### WM-009 · Interaction compatibility marker still exists — P3 until degraded paths retire
 **Status:** bounded compatibility debt.  
@@ -89,8 +88,9 @@
 **Scope:** physical routes vs relationship chords vs symbolic routes; globe/dateline behavior; selection/hover priority.
 
 ### WM-015 · Legacy interaction fallback scenarios under-tested — P2
-**Status:** open.  
-**Next:** explicit degraded-boot test matrix: no Router, no Inspector, delayed optional modules, style reload during interaction.
+**Status:** substantially fixed; style-reload/deep degraded scenarios remain.  
+**Completed:** Country Selection, Spatial Overlays, Places and Subdivisions resolve Router ownership dynamically, retain bounded direct fallbacks for partial boots, listen for Router readiness, tear down fallback listeners, and promote live to canonical Router ownership.  
+**Remaining:** explicit style-reload-during-interaction and no-Inspector behavioral scenarios for specialist surfaces.
 
 ### WM-016 · State/subdivision national-context readability — P2
 **Status:** substantially fixed.  
@@ -103,13 +103,10 @@
 **Resolution:** the subdivision runtime now owns one source-refresh observer contract; ADL registers through it, and future evidence fills can reuse the same lifecycle hook without owning geography refresh listeners.
 
 ### WM-018 · Provider-failure UX is inconsistent across Physical layers — P2
-**Status:** open.  
-**Next:** common status/error/degraded-state contract for Terrain, Water, Hydrology, Land Cover and Aridity.
+**Status:** fixed; see combined WM-018/019 reliability resolution below.
 
 ### WM-019 · Physical layer request budgeting lacks one shared network budget — P2
-**Status:** open.  
-**Risk:** multiple physical providers can be enabled together and independently issue expensive requests.  
-**Next:** global bounded request/concurrency budget and telemetry.
+**Status:** fixed for explicit provider fetches; see combined WM-018/019 reliability resolution below.
 
 ### WM-020 · Architecture audit should emit actionable queue IDs — P3
 **Status:** open.  
@@ -130,8 +127,8 @@
 
 ### WM-023 · Degraded interaction fallback can become permanent by boot order — P1
 **Status:** fixed on main (2026-09-20).  
-**Cause:** Spatial Overlays and Country Selection captured the Router once and could leave direct listeners installed forever.  
-**Resolution:** both resolve Router ownership dynamically, listen for `potato-atlas-interaction-ready`, remove degraded listeners with `map.off`, and promote to canonical Router registrations.  
+**Cause:** Spatial Overlays, Country Selection, Places and Subdivisions could capture Router availability too early and leave direct listeners installed forever.  
+**Resolution:** all four resolve Router ownership dynamically, listen for `potato-atlas-interaction-ready`, remove degraded listeners with `map.off`, and promote to canonical Router registrations.  
 **Guard:** interaction validator/regression requires the ready listener and teardown markers.
 
 ### WM-024 · Canonical subdivision evidence integration lacks generic search/badge projection — P2
