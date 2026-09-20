@@ -3,40 +3,69 @@
   "owners": {},
   "shared": {
     "api:__potatoAtlasSelection": {
-      "modules": ["world-map/3d-app.js", "world-map/3d-country-selection.js"],
+      "modules": [
+        "world-map/3d-app.js",
+        "world-map/3d-country-selection.js"
+      ],
       "rationale": "Country selection deliberately wraps and replaces the core selection API while retaining compatibility for downstream modules."
     },
     "api:__potatoAtlasCapitals": {
-      "modules": ["world-map/3d-hover.js", "world-map/3d-places.js"],
+      "modules": [
+        "world-map/3d-hover.js",
+        "world-map/3d-places.js"
+      ],
       "rationale": "Places owns capitals when production place data is healthy; hover provides the bounded fallback capitals API otherwise."
     },
     "url:country": {
-      "modules": ["world-map/3d-app.js", "world-map/3d-country-selection.js"],
+      "modules": [
+        "world-map/3d-app.js",
+        "world-map/3d-country-selection.js"
+      ],
       "rationale": "The core renderer remains the low-level country URL writer while the browse-first selection controller wraps it and persists the canonical working selection."
     },
     "url:compare": {
-      "modules": ["world-map/3d-app.js", "world-map/3d-country-selection.js"],
+      "modules": [
+        "world-map/3d-app.js",
+        "world-map/3d-country-selection.js"
+      ],
       "rationale": "The core renderer retains compare compatibility while the browse-first selection controller clears or preserves compare state during working-selection persistence."
     },
     "url:lens": {
-      "modules": ["world-map/3d-layer-registry.js", "world-map/3d-lenses.js"],
+      "modules": [
+        "world-map/3d-layer-registry.js",
+        "world-map/3d-lenses.js"
+      ],
       "rationale": "The composable layer registry migrates and clears the legacy Lens URL state while the dormant compatibility Lens module retains the old writer."
     },
     "url:lensOption": {
-      "modules": ["world-map/3d-layer-registry.js", "world-map/3d-lenses.js"],
+      "modules": [
+        "world-map/3d-layer-registry.js",
+        "world-map/3d-lenses.js"
+      ],
       "rationale": "The composable layer registry migrates and clears the legacy Lens option while the dormant compatibility Lens module retains the old writer."
     }
   },
   "style_restoration": {
-    "allowed_modules": {
-      "world-map/3d-render-stack.js": "Canonical semantic z-order reconciliation after style changes; deferred and idempotent through its schedule() microtask.",
-      "world-map/3d-physical-water.js": "Restores optional Natural Earth water resources only while Water is enabled, with restoring guard and microtask deferral.",
-      "world-map/3d-physical-land-cover.js": "Restores the optional ESA WorldCover source/layer only while enabled, with restoring guard and microtask deferral.",
-      "world-map/3d-physical-deserts.js": "Restores the optional desert/xeric context only while enabled, with restoring guard and microtask deferral.",
-      "world-map/3d-physical-hydrology.js": "Restores bounded hydrology sources/layers only while enabled, with restoring guard and microtask deferral."
-    }
+    "owner_module": "world-map/3d-style-lifecycle.js",
+    "participants": {
+      "world-map/3d-render-stack.js": "render-stack",
+      "world-map/3d-physical-water.js": "physical-water",
+      "world-map/3d-physical-land-cover.js": "physical-land-cover",
+      "world-map/3d-physical-deserts.js": "physical-deserts",
+      "world-map/3d-physical-hydrology.js": "physical-hydrology"
+    },
+    "rationale": "One central styledata listener schedules deterministic restore callbacks; participants register restore work instead of binding styledata directly."
   },
-  "conventions": {"transient_popup_class": "atlas-hover"},
+  "conventions": {
+    "transient_popup_class": "atlas-hover"
+  },
   "ignore": {},
-  "render_stack_slots": ["physical-surface", "physical-water", "physical-line", "geography-context", "context-network", "selection-emphasis"]
+  "render_stack_slots": [
+    "physical-surface",
+    "physical-water",
+    "physical-line",
+    "geography-context",
+    "context-network",
+    "selection-emphasis"
+  ]
 }
