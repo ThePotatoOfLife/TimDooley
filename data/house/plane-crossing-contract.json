@@ -1,7 +1,7 @@
 {
   "id": "plane-crossing-contract",
   "title": "Plane / Cross / Crossing Contract",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "authority": "plane-crossing-contract",
   "purpose": "Canonical machine-readable distinction between Plane, Axis, O/Cross-point, Cross-sign, Door and crossing events.",
@@ -69,7 +69,7 @@
     "crossing_event": {
       "id": "crossing-event",
       "type": "event",
-      "operation": "record Gamma(t*) intersecting Plane and/or satisfying Door transition conditions",
+      "operation": "record Gamma(t*) intersecting Plane and distinguish weak section crossing from strong Door transition; later lifecycle stages determine incorporation and recurrence.",
       "required_fields": [
         "time_or_order",
         "incoming_state",
@@ -142,5 +142,6 @@
     "Repeated Plane crossings are evidence for recurrence only after comparable variables are declared.",
     "The lower field is not the Plane; the Plane is a world-facing section through the larger two-field relation."
   ],
-  "research_owner": "knowledge/research/plane-crossing-research-synthesis-2026-09-20.json"
+  "research_owner": "knowledge/research/plane-crossing-research-synthesis-2026-09-20.json",
+  "lifecycle_owner": "data/house/door-cross-spiral-lifecycle.json"
 }
