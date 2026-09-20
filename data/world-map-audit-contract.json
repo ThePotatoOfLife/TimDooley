@@ -52,7 +52,9 @@
       "world-map/3d-physical-water.js": "physical-water",
       "world-map/3d-physical-land-cover.js": "physical-land-cover",
       "world-map/3d-physical-deserts.js": "physical-deserts",
-      "world-map/3d-physical-hydrology.js": "physical-hydrology"
+      "world-map/3d-physical-hydrology.js": "physical-hydrology",
+      "world-map/3d-places.js": "places",
+      "world-map/3d-subdivisions.js": "subdivisions"
     },
     "rationale": "One central styledata listener schedules deterministic restore callbacks; participants register restore work instead of binding styledata directly."
   },
