@@ -109,7 +109,9 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. Work pro
 - [x] Centralize style-generation restoration for Render Stack and migrated physical layers.
 - [ ] Drain remaining duplicate style/lifecycle writers discovered by the architecture auditor.
 - [ ] Consolidate global UI design tokens, z-index bands and common surfaces.
-- [~] Make top-level controls increasingly question-oriented: the visible World Bar now converges Analytical / Physical / Geography / Evidence with Compare / Relations / Time / View; further wording simplification can continue without adding another control surface.
+- [~] Make top-level controls increasingly question-oriented: the visible World Bar now converges Analytical / Physical / Geography / Evidence with Compare / Analyze / Time / View; further wording simplification can continue without adding another control surface.
+- [x] Reduce top-bar density without redesigning the map: consolidate relation-context filters into Analyze, group N/W/E/S as compact axis lenses, shrink icon controls and tighten fixed Search/Compare/Inspect spacing.
+- [ ] Re-audit top-bar density after future control additions; any new persistent control must justify itself as a frequent direct action, distinct map dimension, or global navigation/reset function.
 - [ ] Audit mobile occlusion, keyboard access, focus return, color-only semantics and reduced motion.
 - [ ] Add concise accessible active-view summaries.
 
