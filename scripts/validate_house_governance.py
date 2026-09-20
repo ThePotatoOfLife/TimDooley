@@ -2,11 +2,11 @@
 from __future__ import annotations
 import json,re
 from pathlib import Path
+from house_public_surfaces import derived_route_topology_records
 
 ROOT=Path(__file__).resolve().parents[1]
 ROOMS=ROOT/'data/house/rooms.json'; ROOM_SCHEMA=ROOT/'schemas/house-room-registry.schema.json'
 SURFACES=ROOT/'data/house/public-surfaces.json'; SURFACE_SCHEMA=ROOT/'schemas/house-public-surface-registry.schema.json'
-TOPOLOGY=ROOT/'knowledge/research/potato-house-master/public-route-topology.json'
 HOUSE_TOPOLOGY=ROOT/'data/house/topology.json'
 PROJECT_CENTER=ROOT/'data/house/project-center.json'
 THREE_CENTER_ATLAS=ROOT/'data/house/three-center-role-atlas.json'
@@ -199,7 +199,7 @@ def validate_builder_authority(errors):
             errors.append(f'{path.name} must not maintain independent primary route table')
 
 def validate_surfaces(errors,rooms):
-    p=load(SURFACES,errors); s=load(SURFACE_SCHEMA,errors); topology=load(TOPOLOGY,errors)
+    p=load(SURFACES,errors); s=load(SURFACE_SCHEMA,errors)
     if p and s: schema(p,s,'public_surfaces',errors)
     rows=p.get('surfaces',[]); by={x.get('id'):x for x in rows if isinstance(x,dict) and x.get('id')}
     if tuple(p.get('primary_gateway_ids',[]))!=GATEWAYS: errors.append('primary_gateway_ids invalid')
@@ -225,18 +225,16 @@ def validate_surfaces(errors,rooms):
         for route in row.get('legacy_routes',[]):
             if route in seen or route in legacy: errors.append(f'legacy route collision {route}')
             legacy[route]=sid
-    topology_rows=topology.get('records',[])
-    topology_by={x.get('surface_id'):x for x in topology_rows if isinstance(x,dict) and x.get('surface_id')}
-    if len(topology_by)!=len(topology_rows): errors.append('topology contains duplicate or invalid surface_id records')
+    derived=derived_route_topology_records(ROOT)
+    derived_by={x.get('surface_id'):x for x in derived if isinstance(x,dict) and x.get('surface_id')}
     active_ids={sid for sid,row in by.items() if row.get('status')=='active'}
-    missing_topology=sorted(active_ids-set(topology_by)); extra_topology=sorted(set(topology_by)-active_ids)
-    if missing_topology: errors.append('active public surfaces missing topology: '+', '.join(missing_topology))
-    if extra_topology: errors.append('topology contains non-active/unknown surfaces: '+', '.join(extra_topology))
-    for sid in sorted(active_ids & set(topology_by)):
-        row=by[sid]; topo=topology_by[sid]
-        if topo.get('canonical_route')!=row.get('canonical_route'): errors.append(f'{sid} topology route drift')
-        if topo.get('surface_type')!=row.get('surface_type'): errors.append(f'{sid} topology surface_type drift')
-        if topo.get('room_ids')!=row.get('primary_room_ids'): errors.append(f'{sid} topology Room drift')
+    if set(derived_by)!=active_ids:
+        errors.append('derived route topology does not cover exactly the active public surfaces')
+    for sid in sorted(active_ids & set(derived_by)):
+        row=by[sid]; topo=derived_by[sid]
+        if topo.get('canonical_route')!=row.get('canonical_route'): errors.append(f'{sid} derived topology route drift')
+        if topo.get('surface_type')!=row.get('surface_type'): errors.append(f'{sid} derived topology surface_type drift')
+        if topo.get('room_ids')!=row.get('primary_room_ids'): errors.append(f'{sid} derived topology Room drift')
     validate_works_reader(errors); validate_home_corridor(errors); validate_builder_authority(errors)
     return p
 
