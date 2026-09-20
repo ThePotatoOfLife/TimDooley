@@ -25,6 +25,70 @@ let data = { type:'FeatureCollection', features:[] };
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 
+function casesForSubdivision(id) {
+  const key = String(id || '');
+  return (data?.features || []).filter(feature => String(feature?.properties?.subdivision_id || '') === key);
+}
+function renderSubdivisionCasesPanel(id) {
+  const rows = casesForSubdivision(id);
+  const state = rows[0]?.properties?.state || id;
+  const panel = document.getElementById('panel');
+  if (!panel) return;
+  panel.innerHTML = `
+    <div class="eyebrow">Subdivision evidence · Mud / Below</div>
+    <h1>${esc(state)}</h1>
+    <p class="muted">${rows.length} project case anchor${rows.length===1?'':'s'} associated with this state in the current project-symbolic overlay.</p>
+    <div class="card">${rows.map(feature => {
+      const p = feature.properties || {};
+      return `<button type="button" class="relation-button" data-mud-case="${esc(feature.id || '')}">
+        <span><b>${esc(p.label || feature.id || 'Project case')}</b><small>${esc(p.map_role || 'Project case')}</small></span>
+        <span>Open</span>
+      </button>`;
+    }).join('') || '<span class="muted">No project case anchors for this state.</span>'}</div>
+    <div class="boundary">These are project-symbolic case anchors, not a census or an objective classification of a state or its residents. Coordinates are broad state centroids.</div>`;
+  panel.querySelectorAll?.('[data-mud-case]')?.forEach(button => {
+    button.addEventListener('click', () => {
+      const feature = (data.features || []).find(row => String(row.id || '') === button.dataset.mudCase);
+      if (feature) renderCase(feature);
+    });
+  });
+  window.__potatoAtlasPanelLifecycle?.publish?.();
+}
+function openSubdivisionCases(id) {
+  if (!inspector?.open) { renderSubdivisionCasesPanel(id); return true; }
+  const current = inspector.current?.();
+  if (current?.type !== 'subdivision' || current.id !== id) {
+    renderSubdivisionCasesPanel(id);
+    return true;
+  }
+  inspector.open({
+    type:'evidence',
+    id:`mud-below-us:${id}`,
+    owner:'mud-below-us',
+    parent:{ type:'subdivision', id },
+    render:() => renderSubdivisionCasesPanel(id),
+  });
+  return true;
+}
+function registerSubdivisionEvidence() {
+  return window.__potatoAtlasSubdivisions?.registerEvidenceProvider?.('mud-below-us', {
+    summary(id) {
+      if (!enabled) return null;
+      const rows = casesForSubdivision(id);
+      if (!rows.length) return null;
+      return {
+        active:true,
+        eyebrow:'Active project evidence · Mud / Below',
+        primary:rows.length,
+        summary:`project case anchor${rows.length===1?'':'s'} associated with this state.`,
+        boundary:'Project-symbolic case anchors only; not a census or objective classification of residents.',
+        actionLabel:'Open Mud / Below cases',
+      };
+    },
+    open(id) { openSubdivisionCases(id); },
+  }) || false;
+}
+
 function updateUrl() {
   const current = urlState.read('projectLayer');
   urlState.patch('mud-below', {
@@ -159,6 +223,7 @@ async function ensureSubdivisions() {
   }
   if (!window.__potatoAtlasSubdivisions) throw new Error('Subdivision runtime unavailable.');
   await window.__potatoAtlasSubdivisions.loadPartition('USA');
+  registerSubdivisionEvidence();
 }
 
 async function loadData() {
@@ -205,6 +270,8 @@ window.__potatoAtlasMudBelow = {
   toggle,
   setEnabled,
   renderCase,
+  openSubdivisionCases,
+  casesForSubdivision,
   status(){ return { enabled, loaded, records:data.features.length, metadata:data?.metadata || null }; }
 };
 
