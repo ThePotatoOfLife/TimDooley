@@ -18,7 +18,7 @@ The chapter specifically remembers the farming game as a place where growth, sus
 
 **Current strongest status:** dated public-post / donation compilation.
 
-The interval between Marty's late-February death and the April Turning is visibly active in the public archive:
+The interval between Marty's 29 January death and the April Turning is visibly active in the public archive:
 
 - 9 Mar — seven coffees from a supporter;
 - 23 Mar — another coffee notice;
@@ -38,7 +38,7 @@ The strongest full narrative begins before the screen breaks:
 
 - 2024 Great Book repeatedly develops burden, attachment, rejection/refinement, burial/emergence and ascent vocabulary;
 - January 2025 already has public Potato-of-Life / Great Book identity;
-- late February brings Marty's death;
+- 29 January brings Marty's death; the older late-February project placement is superseded;
 - March remains publicly active;
 - Turning archaeology preserves a broken-screen/help/betrayal memory and a separate `no`/refusal memory;
 - neither is presently sourced well enough to be made the sole cause;
