@@ -595,6 +595,16 @@ window.__potatoAtlasSubdivisions = {
     return evidenceProviders.delete(String(id || '').trim());
   },
   evidenceProviders() { return [...evidenceProviders.keys()].sort(); },
+  evidenceSummaries(id) {
+    return activeEvidenceRows(id).map(({providerId,row}) => ({
+      providerId,
+      eyebrow:String(row.eyebrow || 'Active evidence'),
+      primary:row.primary ?? null,
+      summary:String(row.summary || ''),
+      boundary:String(row.boundary || ''),
+      actionLabel:String(row.actionLabel || 'Open evidence'),
+    }));
+  },
   status() {
     return {
       selected:selectedId,
