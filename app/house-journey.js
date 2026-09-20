@@ -9,7 +9,30 @@
     const marker='/TimDooley/';
     const i=p.indexOf(marker);
     return i>=0?p.slice(0,i+marker.length):'/';
+  
+  // Level 3: inhabitants / cases inside nested Rooms.
+  (async()=>{
+    const m=location.pathname.match(/\/rooms\/inside\/([^/]+)\//);
+    if(!m)return;
+    const roomId=decodeURIComponent(m[1]);
+    try{
+      const res=await fetch(base+'data/house/room-inhabitants.json');
+      if(!res.ok)return;
+      const data=await res.json();
+      const rows=(data.inhabitants||[]).filter(x=>(x.room_ids||[]).includes(roomId));
+      if(!rows.length)return;
+      const main=document.querySelector('main');if(!main)return;
+      const section=document.createElement('section');
+      section.className='room-inhabitants-panel';
+      section.innerHTML='<p class="eyebrow">Inhabitants / cases</p><h2>What lives in this Room</h2><p class="boundary">These are objects viewed from this Room, not new Rooms and not new knowledge owners.</p><div class="room-inhabitant-grid">'+rows.map(x=>'<a class="room-inhabitant-card" href="'+base+x.route.replace(/^\//,'')+'"><strong>'+String(x.label).replace(/[&<>"]/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]))+'</strong><small>'+String(x.kind||'object').replace(/[&<>"]/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]))+'</small></a>').join('')+'</div>';
+      main.appendChild(section);
+      if(!document.getElementById('room-inhabitant-style')){
+        const st=document.createElement('style');st.id='room-inhabitant-style';st.textContent='.room-inhabitants-panel{margin:34px 0 90px}.room-inhabitant-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:9px;margin-top:14px}.room-inhabitant-card{border:1px solid var(--site-line,#303830);padding:12px;text-decoration:none;color:inherit}.room-inhabitant-card strong{display:block;color:var(--site-gold,#d5ba74);font:400 17px var(--site-font-serif,serif)}.room-inhabitant-card small{display:block;color:var(--site-muted,#9ba59a);margin-top:4px;text-transform:uppercase;letter-spacing:.05em;font-size:7px}';document.head.appendChild(st);
+      }
+    }catch(e){}
   })();
+
+})();
   const elevatorUrl=(st)=>{
     const q=new URLSearchParams();
     if(st.room)q.set('room',st.room);
