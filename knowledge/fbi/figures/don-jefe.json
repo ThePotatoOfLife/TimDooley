@@ -1,0 +1,86 @@
+{
+  "id": "don-jefe",
+  "display_name": "Don Jefe",
+  "bureau": "FBI — Figures, Bonds & Incidents",
+  "depth_tier": "working-file",
+  "depth_note": "Recurring figure with enough dated presence for a working dossier; raw-source recovery can still deepen it.",
+  "entity_class": "person-or-handle",
+  "aliases": [
+    "Diplomat"
+  ],
+  "archive_status": "historical-current-unknown",
+  "room_policy": "cluster",
+  "room_path": null,
+  "tim_relation": {
+    "archetypes": [
+      "mirror-foil",
+      "shadow-adversary",
+      "witness-observer"
+    ],
+    "narrative_functions": [
+      "strategic distance",
+      "conflict architecture"
+    ],
+    "regions": [
+      "Network",
+      "Swamp",
+      "Threshold"
+    ],
+    "editorial_reading": "Keep as an old-source conflict figure until exact scenes are recovered.",
+    "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+  },
+  "chronology": {
+    "chronicle_occurrence_count": 7,
+    "chronicle_dates": [
+      "Feb 8 2025",
+      "Feb 25 2025"
+    ],
+    "cast_period_roles": [],
+    "recovered_social_days": [
+      {
+        "date": "2025-02-11/12",
+        "title": "Monkey / Don Jefe / TXT conflict cluster",
+        "minimum_event": "The Chronicle groups Monkey, Don Jefe and TXT inside an aggressively adversarial retelling. Treat labels and allegations as authored conflict language; the useful historical fact is the dated co-occurrence of these names.",
+        "source_mode": "chronicle_retelling"
+      }
+    ]
+  },
+  "top_co_presence": [
+    {
+      "name": "Tim Dooley",
+      "count": 1
+    },
+    {
+      "name": "Monkey",
+      "count": 1
+    },
+    {
+      "name": "TXT",
+      "count": 1
+    }
+  ],
+  "symbolic_roles": [],
+  "highlighted_incidents": [
+    {
+      "date": "2025-02-11/12",
+      "title": "Monkey / Don Jefe / TXT conflict cluster",
+      "summary": "The Chronicle groups Monkey, Don Jefe and TXT inside an aggressively adversarial retelling. Treat labels and allegations as authored conflict language; the useful historical fact is the dated co-occurrence of these names.",
+      "source_mode": "chronicle_retelling"
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "character_archive",
+      "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "dated_social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    }
+  ],
+  "recovery_leads": [
+    "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
+    "Separate direct speech from Chronicle paraphrase and later project interpretation.",
+    "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+  ]
+}
