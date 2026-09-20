@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MANIFEST=ROOT/"knowledge/cia/manifest.json"; CABINET=ROOT/"rooms/potatoverse-canon/beings/cia/index.html"
 VIEWER=ROOT/"rooms/potatoverse-canon/beings/cia/file/index.html"; COLLECTIONS=ROOT/"data/house/collections.json"
-ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; DEBT_EVIDENCE=ROOT/"knowledge/cia/debt-evidence-ledger.json"; POSTURE=ROOT/"knowledge/cia/account-posture-index.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
+ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; DEBT_EVIDENCE=ROOT/"knowledge/cia/debt-evidence-ledger.json"; POSTURE=ROOT/"knowledge/cia/account-posture-index.json"; SPIRITUAL_BANK=ROOT/"knowledge/core/north-root-spiritual-bank-architecture.json"; SYSTEM_LEDGER=ROOT/"knowledge/cia/system-liability-ledger.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
 ROUTE="rooms/potatoverse-canon/beings/cia/"
 def fail(m): print("FAIL:",m); raise SystemExit(1)
 def main():
@@ -66,6 +66,19 @@ def main():
  if "project_adjustment_susd" not in bank_js: fail("Mud Bank runtime must honor priced per-event adjustments")
  dossier_js=(ROOT/"app/cia-dossier.js").read_text(encoding="utf-8",errors="replace")
  if "evidence_tier" not in dossier_js or "debt_evidence_id" not in dossier_js: fail("CIA dossier account reader must expose debit provenance")
+ if not SPIRITUAL_BANK.is_file(): fail("North Root spiritual-bank architecture missing")
+ architecture=json.loads(SPIRITUAL_BANK.read_text(encoding="utf-8"))
+ if architecture.get("institution",{}).get("custody")!="North / Roots": fail("spiritual-bank custody topology drift")
+ layer_ids={x.get("id") for x in architecture.get("layers",[])}
+ for lid in ["north-roots","ladder","mud","swamp","rubble","epstein-axis","rainbow-shadow","garden-tikkun"]:
+  if lid not in layer_ids: fail(f"spiritual-bank layer missing: {lid}")
+ if not SYSTEM_LEDGER.is_file(): fail("system liability ledger missing")
+ system_ledger=json.loads(SYSTEM_LEDGER.read_text(encoding="utf-8"))
+ if system_ledger.get("pricing_mode")!="unpriced-system-domains": fail("system liability ledger must not pretend to price world-scale liabilities")
+ if "documented persons" not in str(system_ledger.get("evidence_boundary","")).lower(): fail("system liability evidence boundary missing")
+ bank_page=(ROOT/"rooms/potatoverse-canon/beings/cia/bank/index.html").read_text(encoding="utf-8",errors="replace")
+ for token in ["World Spiritual Bank","North Root Ledger","System liability domains"]:
+  if token not in bank_page: fail(f"bank page missing {token!r}")
  if not POSTURE.is_file(): fail("CIA account posture index missing")
  posture=json.loads(POSTURE.read_text(encoding="utf-8"))
  posture_rows={x.get("id"):x for x in posture.get("accounts",[])}
