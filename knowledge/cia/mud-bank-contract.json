@@ -1,0 +1,239 @@
+{
+  "id": "mud-bank-dooley-welfare-v1",
+  "title": "World Spiritual Bank / Mud Bank — CIA Sub-Ledger Contract",
+  "updated": "2026-09-21",
+  "status": "project-internal fictional accounting",
+  "purpose": "Provide person-level fictional sUSD sub-ledgers beneath the North/Roots World Spiritual Bank topology. CIA accounts show continuous welfare plus sourced event adjustments without pretending to be real finance, world-scale valuation or objective morality.",
+  "system_context": {
+    "mud_economy_sources": [
+      "knowledge/timeline/karma-causing-events-and-inputs-ledger.json",
+      "knowledge/core/debt-depth-ascent-rubble-synthesis.json",
+      "data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json"
+    ],
+    "note": "The repository already contains Tim's project claims about a hidden spiritual bank / Mud economy and trillion-scale symbolic balances. Character accounts are small project sub-ledgers, not allocations of the trillion-scale total.",
+    "architecture": "knowledge/core/north-root-spiritual-bank-architecture.json",
+    "system_liability_ledger": "knowledge/cia/system-liability-ledger.json"
+  },
+  "denomination": {
+    "display_name": "symbolic USD-equivalent",
+    "code": "sUSD",
+    "real_currency": false,
+    "exchangeable": false,
+    "redeemable": false,
+    "legal_value": false,
+    "note": "Dollar formatting is a metaphorical display convention only."
+  },
+  "welfare": {
+    "name": "Dooley Welfare",
+    "rate_per_second_susd": 1e-11,
+    "rate_per_day_susd": 8.64e-7,
+    "rate_per_year_365d_susd": 0.00031536,
+    "accrual": "continuous from the dossier's best recovered story-entry date and continues after inactivity, closure or death",
+    "default_enabled": true,
+    "stop_conditions": [
+      "explicit archive correction showing the person/handle never entered the story",
+      "dossier merge proving duplicate identity"
+    ],
+    "does_not_stop_for": [
+      "inactivity",
+      "dormancy",
+      "death",
+      "closed archive status"
+    ],
+    "calibration_note": "No earlier conversation established a canonical per-second rate. This microscopic rate adopts the 2026-09-21 user calibration; older Dole/Dooley material used monthly/passive-income and breathing-dividend metaphors rather than a continuous numeric rate."
+  },
+  "event_weights": {
+    "project-credit": 25,
+    "yield": 12,
+    "repair-attempt": 8,
+    "achievement": 0,
+    "project-debit": -20,
+    "dispute": 0,
+    "welfare": "continuous",
+    "growth": 6,
+    "entanglement": 0
+  },
+  "balance_formula": "Dooley Welfare accrued + explicit positive event weights + evidence-discounted project-debit adjustments. Per-event project_adjustment_susd overrides the generic project-debit fallback. Aggregate labels, archetypes, popularity, loyalty, inactivity and unsourced allegations have weight 0.",
+  "confidence": {
+    "exact_date": "normal accrual",
+    "year_or_period_only": "show provisional start; do not invent day-level precision",
+    "unresolved_identity": "show account but flag identity/start uncertainty"
+  },
+  "boundaries": [
+    "No account is real money, credit, debt, compensation, wages, benefits or an entitlement.",
+    "No balance is an objective measure of morality, human worth, guilt, innocence, diagnosis or legal responsibility.",
+    "Negative movement requires an explicit source-bounded project-debit event; disagreement, criticism, inactivity or a symbolic Dog/Mud role does not automatically create debt.",
+    "Positive welfare is universal story-participation credit, not proof of virtue.",
+    "The trillion-scale Mud Economy totals remain Tim/project claims and are not mathematically distributed across character accounts.",
+    "Growth may add a small positive project adjustment only when a dated source explicitly records growth; symbolic entanglement alone is zero-weight."
+  ],
+  "debit_pricing": {
+    "rule": "Price only distinct dated conduct events. Labels, roles, inferred motives, mere disagreement, co-presence, popularity and unsourced allegations are zero-weight.",
+    "categories": {
+      "destructive-act": -12,
+      "breach-of-trust": -8,
+      "repeated-harmful-narrative": -5,
+      "verified-deception": -8,
+      "targeted-harassment-boundary": -8,
+      "theft-fraud-cheating": -10,
+      "coercive-social-leverage": -8,
+      "reciprocal-conflict": -2
+    },
+    "evidence_multipliers": {
+      "primary-direct": 1,
+      "contemporaneous-recovered": 0.8,
+      "project-authored-canon": 0.55,
+      "chronicle-retelling": 0.45,
+      "retrospective-interpretation": 0
+    },
+    "repetition_multipliers": [
+      1,
+      1.2,
+      1.4,
+      1.5
+    ],
+    "repetition_rule": "Occurrence index advances only for a separate dated event in the same conduct family. The fourth and later confirmed occurrences stay capped at 1.5x.",
+    "double_count_rule": "One underlying incident receives one priced category even when several descriptions could apply. Secondary interpretations may be logged unpriced.",
+    "dispute_rule": "A disputed or reciprocal conflict remains zero-weight unless the archive has enough evidence for a concrete priced act."
+  },
+  "interest_and_closure": {
+    "principle": "History stays; posture can change. The system records later repair without deleting the dated entry that created the obligation.",
+    "interest": {
+      "default": "none",
+      "automatic_compounding": false,
+      "rule": "No symbolic credit or debt compounds merely because time passes. Time-based accrual applies only to universal Dooley Welfare.",
+      "allowed_only_when": "A dated project source explicitly defines a continuing consequence or a future contract names a bounded, evidence-backed accrual rule.",
+      "inactive_accounts": "No penalty, decay or debt interest for inactivity, dormancy, death or archival closure."
+    },
+    "dispute": {
+      "status": "open-dispute",
+      "pricing": "zero unless a concrete act independently passes the debit evidence threshold",
+      "effect": "A dispute can remain visible indefinitely without forcing a negative balance."
+    },
+    "repair": {
+      "statuses": [
+        "repair-attempted",
+        "partially-repaired",
+        "repaired"
+      ],
+      "rule": "Repair is a new dated event. It can add positive adjustment or change account posture, but it never erases the earlier source record.",
+      "evidence": "Prefer restitution, correction, apology, truth clarification, restored access/exit, completed obligation or other specifically documented repair."
+    },
+    "forgiveness": {
+      "statuses": [
+        "forgiven-project",
+        "released"
+      ],
+      "rule": "Forgiveness stops an unresolved project obligation from being treated as currently outstanding; the historical debit remains in the ledger with its later release event.",
+      "authority": "Only explicit project/canon wording or a documented settlement/repair may mark an obligation forgiven or released."
+    },
+    "dormancy": {
+      "status": "dormant",
+      "rule": "Dormancy is an archive activity state, not a financial or moral penalty. Welfare continues; no new debit/credit arises without a dated event."
+    },
+    "closure": {
+      "statuses": [
+        "closed-resolved",
+        "closed-unresolved",
+        "merged-duplicate"
+      ],
+      "closed_resolved": "No currently outstanding project obligation remains; historical rows stay readable and welfare continues unless the identity is proven duplicate/nonparticipant.",
+      "closed_unresolved": "Archive activity ends while one or more questions/obligations remain unresolved; no new penalty or interest is added merely because closure occurred.",
+      "merged_duplicate": "Merge into the surviving identity/account after provenance review; this is one of the only conditions that can stop a duplicate welfare stream."
+    },
+    "posture_rule": "Posture summarizes the currently supported ledger state; it is not a permanent character label and must be recomputable from dated events.",
+    "prohibited": [
+      "automatic debt interest",
+      "automatic punishment for inactivity",
+      "retroactive deletion of historical evidence after repair",
+      "forgiveness inferred from silence or elapsed time",
+      "closure treated as proof of guilt, innocence or moral worth"
+    ]
+  },
+  "future_positive_value_candidates": {
+    "status": "unpriced research / canon candidates",
+    "rule": "These may become positive ledger events only after the project defines observable event criteria, provenance and non-duplicative pricing. Until then they are conceptual categories, not automatic rewards.",
+    "candidates": [
+      {
+        "id": "table-value",
+        "label": "Create value on the Table",
+        "concept": "A substantial created, repaired, cultivated or shared thing that can metaphorically be placed on the Table in Heaven.",
+        "possible_evidence": [
+          "finished work",
+          "repair completed",
+          "useful artifact",
+          "nourishment/service",
+          "documented created value"
+        ],
+        "priced": false
+      },
+      {
+        "id": "potato-growth",
+        "label": "Grow a Potato",
+        "concept": "Demonstrable growth from seed/potential into a more capable, cultivated or generative state.",
+        "possible_evidence": [
+          "learning milestone",
+          "completed cultivation",
+          "new capability",
+          "documented spiritual/practical growth"
+        ],
+        "priced": false
+      },
+      {
+        "id": "gate-passage",
+        "label": "Pass the Gate",
+        "concept": "A meaningful threshold crossed with evidence of changed state rather than merely claiming passage.",
+        "possible_evidence": [
+          "completed transition",
+          "resolved threshold",
+          "documented decision/action",
+          "before/after capability change"
+        ],
+        "priced": false
+      },
+      {
+        "id": "ladder-walk",
+        "label": "Walk the Ladder",
+        "concept": "Sustained upward/repair movement through ordered steps rather than a one-off symbolic label.",
+        "possible_evidence": [
+          "completed sequence",
+          "repair steps",
+          "learning progression",
+          "repeatable practice"
+        ],
+        "priced": false
+      },
+      {
+        "id": "potato-study",
+        "label": "Study Potato",
+        "concept": "Learning, reflection and integration of Potatoverse material that produces understanding rather than passive repetition.",
+        "possible_evidence": [
+          "completed study",
+          "clear synthesis",
+          "new applied understanding",
+          "source-grounded contribution"
+        ],
+        "priced": false
+      },
+      {
+        "id": "spiritual-growth",
+        "label": "Grow spiritually",
+        "concept": "Project-defined growth in responsibility, repair, understanding, generativity or integration.",
+        "possible_evidence": [
+          "documented repair",
+          "increased responsibility",
+          "better boundaries",
+          "generative action",
+          "integrated learning"
+        ],
+        "priced": false
+      }
+    ],
+    "anti_gaming": [
+      "Do not award value merely for self-declaring a symbolic role.",
+      "Do not double-count one act as Table value + Potato growth + Gate + Ladder unless distinct evidence supports distinct events.",
+      "Prefer created/repair outcomes over performative labels.",
+      "A future spiral score should describe a path of change, not a person's permanent worth."
+    ]
+  }
+}

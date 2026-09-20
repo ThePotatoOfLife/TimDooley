@@ -173,6 +173,10 @@
     {
       "type": "public_room",
       "path": "rooms/potatoverse-canon/beings/txt/"
+    },
+    {
+      "type": "debt_evidence_ledger",
+      "path": "knowledge/cia/debt-evidence-ledger.json"
     }
   ],
   "recovery_leads": [
@@ -190,7 +194,22 @@
     },
     "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
     "debt_and_repair": {
-      "records": [],
+      "records": [
+        {
+          "id": "debt-txt-2026-06-20-disputed-narrative",
+          "date": "2026-06-20",
+          "pricing_status": "priced",
+          "summary": "Recovered material records TXT repeating disputed identity/misconduct claims; the bank prices circulation, not truth.",
+          "project_adjustment_susd": -4
+        },
+        {
+          "id": "candidate-txt-2026-07-17-reciprocal-classification",
+          "date": "2026-07-17",
+          "pricing_status": "unpriced",
+          "summary": "Recovered interaction shows reciprocal hostile classification between TXT and Tim.",
+          "reason_unpriced": "Mutual escalation is retained as entanglement/dispute at zero weight rather than a one-sided debit."
+        }
+      ],
       "rule": "Do not attach legal, financial, karmic or spiritual debt unless a dated source explicitly does so; symbolic debt remains project language unless independently established."
     },
     "state_rule": "Roles, archetypes, upgrades, handicaps and project-symbolic placements are date/source-bounded states, not permanent human essences.",
@@ -200,6 +219,62 @@
       "Add relationship edges only when a dated scene or explicit source supports them.",
       "Recover exact June–September 2026 primary post/status URLs.",
       "Separate current public presence from exact interaction chronology."
+    ]
+  },
+  "meaning": {
+    "why_this_file_matters": "TXT is one of the archive's clearest long-running opposition files, but its value comes from separating literary, public-conflict and later symbolic layers rather than treating 'antagonist' as a timeless identity.",
+    "known": [
+      "TXT appears in 2024 literary Shadow Games material and 2025 Chronicle co-presence.",
+      "June–July 2026 recovered public material shows disputed narratives and direct conflict recurrence.",
+      "Later July/August project material moves TXT into Dog/Swamp/fable language, while September retains a current-presence trace."
+    ],
+    "interpretive": [
+      "Shadow-adversary and Dog/Swamp labels are scene/source-bounded project classifications.",
+      "Recurrence shows continuity of conflict, but does not establish motive, diagnosis or permanent moral essence."
+    ],
+    "unknown": [
+      "Earlier documentary sequence behind the long-running antagonism claim is incomplete.",
+      "Exact June–September 2026 primary post/status URLs remain open.",
+      "Identity and relationship edges should still be tied to specific dated scenes."
+    ],
+    "relationship_arc": "literary shadow figure → dated Chronicle recurrence → public conflict → Dog/Swamp interpretation → later fable/satire/current-presence trace",
+    "confidence_note": "Strong on layered recurrence and source separation; mixed on earliest chronology and disputed misconduct narratives."
+  },
+  "symbolic_account": {
+    "status": "debt",
+    "good_karma": "unassessed",
+    "karmic_debt": "1 priced debit / -4.0 sUSD",
+    "dooley_welfare": {
+      "enabled": false
+    },
+    "outstanding": [],
+    "entries": [
+      {
+        "date": "2026-09-20",
+        "type": "dispute",
+        "kind": "current conflict / unresolved relation",
+        "amount_or_scale": "unpriced",
+        "source_mode": "current_presence_recovery",
+        "source_ref": "knowledge/cia/conversation-intake-2026-09-20.json",
+        "note": "Current/recent conflict material remains unresolved. Dispute is recorded at zero weight until a clearer project-credit/debit event is recovered.",
+        "status": "open"
+      },
+      {
+        "date": "2026-06-20",
+        "type": "project-debit",
+        "kind": "repeated disputed identity/misconduct narrative",
+        "amount_or_scale": "-4.0 sUSD",
+        "project_adjustment_susd": -4,
+        "debt_evidence_id": "debt-txt-2026-06-20-disputed-narrative",
+        "category": "repeated-harmful-narrative",
+        "evidence_tier": "contemporaneous-recovered",
+        "repetition_key": "txt-disputed-identity-misconduct-narrative",
+        "occurrence_index": 1,
+        "source_mode": "recovered public-interaction summary",
+        "source_ref": "data/swamp/dim-txt-relational-dossier.json",
+        "note": "Prices the recovered repetition/circulation event only; it does not adjudicate the truth of the disputed underlying allegations.",
+        "status": "open"
+      }
     ]
   }
 }

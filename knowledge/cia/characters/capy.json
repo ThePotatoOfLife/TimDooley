@@ -3,9 +3,11 @@
   "display_name": "Capy",
   "bureau": "CIA — Characters, Incidents & Associations",
   "entity_class": "person",
-  "aliases": [],
-  "archive_status": null,
-  "room_policy": null,
+  "aliases": [
+    "Cappy"
+  ],
+  "archive_status": "literary-recovery-needed",
+  "room_policy": "archive-only",
   "room_path": null,
   "tim_relation": {
     "archetypes": [],
@@ -32,6 +34,11 @@
       "date": "2024 literary",
       "title": "Chaotic conduit",
       "summary": "Great Book casts Capy as a chaotic conduit interacting with Tim, BigTech and Sammy; documentary sequence still needs recovery."
+    },
+    {
+      "date": "2024 literary",
+      "title": "Sammy clash motif",
+      "summary": "Great Book describes clashes with Sammy; retain as literary relationship material until documentary evidence is recovered."
     }
   ],
   "source_strata": [
@@ -42,6 +49,10 @@
     {
       "type": "cast_book",
       "path": "knowledge/story/cast-book.json"
+    },
+    {
+      "type": "story_recovery_audit",
+      "path": "knowledge/story/reservoir/2026-09-14-wave-05-social-timeline.md"
     }
   ],
   "recovery_leads": [
@@ -53,8 +64,8 @@
     "authority": "canonical",
     "record_type": "character-dossier",
     "presence": {
-      "first_recorded": null,
-      "last_recorded": null,
+      "first_recorded": "2024 literary",
+      "last_recorded": "2024 literary",
       "rule": "First/last currently recovered dated evidence in this dossier; not lifetime endpoints."
     },
     "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
@@ -68,5 +79,32 @@
       "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
       "Add relationship edges only when a dated scene or explicit source supports them."
     ]
+  },
+  "meaning": {
+    "why_this_file_matters": "Capy is meaningful chiefly as a disciplined missing-evidence file: the literary character is vivid, but the archive has not recovered the documentary person/handle chronology underneath it.",
+    "known": [
+      "The Great Book casts Capy as a chaotic conduit around Tim, BigTech and Sammy.",
+      "Story recovery work explicitly says the documentary basis remains missing."
+    ],
+    "interpretive": [
+      "Chaotic conduit is a literary function, not a verified personality judgment.",
+      "The literary connections to BigTech and Sammy are recovery leads rather than proven documentary relationships."
+    ],
+    "unknown": [
+      "Original Capy/Cappy conversations, platform identity and dated documentary scenes are still unrecovered.",
+      "Whether the literary figure maps cleanly to one real handle/person is unresolved."
+    ],
+    "relationship_arc": "documentary layer missing → vivid Great Book character → active recovery target",
+    "confidence_note": "High confidence in literary text; intentionally low documentary confidence."
+  },
+  "symbolic_account": {
+    "status": "unassessed",
+    "good_karma": "unassessed",
+    "karmic_debt": "unassessed",
+    "dooley_welfare": {
+      "enabled": false
+    },
+    "outstanding": [],
+    "entries": []
   }
 }

@@ -43,7 +43,14 @@
         "role": "top-fan UI #1 in supplied YouTube capture; new controller, gaming-deprivation jokes, site interest and Ancient Dragon Senessax victory after 20+ attempts"
       }
     ],
-    "recovered_social_days": []
+    "recovered_social_days": [
+      {
+        "date": "2026-09-20",
+        "title": "A Controller, a Clean Room and a Dragon",
+        "minimum_event": "Public YouTube chat records Matthew with a new controller, ordinary gaming talk and an Ancient Dragon Senessax victory after more than twenty attempts; Mediomu is present in the same captured social scene.",
+        "source_mode": "public_chat_transcript"
+      }
+    ]
   },
   "top_co_presence": [],
   "symbolic_roles": [
@@ -77,6 +84,14 @@
     {
       "type": "public_room",
       "path": "rooms/potatoverse-canon/beings/matthew-mtclassic/"
+    },
+    {
+      "type": "2026_social_ledger",
+      "path": "knowledge/story/matthew-mtclassic-social-ledger-2026.json"
+    },
+    {
+      "type": "documentary_story_scene",
+      "path": "story-content/2026-09-20-matthew-mediomu.html#matthew-mediomu-ordinary-day-2026-09-20"
     }
   ],
   "recovery_leads": [
@@ -102,6 +117,54 @@
       "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
       "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
       "Add relationship edges only when a dated scene or explicit source supports them."
+    ]
+  },
+  "meaning": {
+    "why_this_file_matters": "Matthew is one of the clearest ordinary-life dossiers: gaming, moderation advice and theology coexist without needing mythic inflation.",
+    "known": [
+      "Public-chat material places Matthew as a recurring gamer and moderation adviser.",
+      "20 September 2026 material records a new controller and an Ancient Dragon Senessax victory after 20+ attempts.",
+      "The real Matthew record is explicitly separate from Matthew-the-Potato creative mythology."
+    ],
+    "interpretive": [
+      "Guardian/defender fits the moderation-advice scene; persistence fits the gaming record.",
+      "The mundane gaming continuity is valuable precisely because it anchors the archive in ordinary life."
+    ],
+    "unknown": [
+      "Earlier raw-chat dates behind the August 2026 summary remain to be recovered."
+    ],
+    "relationship_arc": "recurring chat participant → moderation adviser / theological interlocutor → mundane gaming continuity",
+    "confidence_note": "High for the September 20 public-chat capture; medium for earlier summarized scenes."
+  },
+  "symbolic_account": {
+    "status": "unassessed",
+    "good_karma": "event-ledger",
+    "karmic_debt": "unassessed",
+    "dooley_welfare": {
+      "enabled": false
+    },
+    "outstanding": [],
+    "entries": [
+      {
+        "date": "2026-08",
+        "type": "project-credit",
+        "kind": "moderation advice",
+        "amount_or_scale": "qualitative",
+        "source_mode": "public_chat_recovery",
+        "source_ref": "rooms/potatoverse-canon/beings/matthew-mtclassic/",
+        "note": "Recorded as practical moderation advice in the recurring chat relationship.",
+        "status": "recorded"
+      },
+      {
+        "date": "2026-09-20",
+        "type": "achievement",
+        "kind": "gaming persistence",
+        "amount_or_scale": "Ancient Dragon Senessax after 20+ attempts",
+        "source_mode": "user_supplied_public_chat_capture",
+        "source_ref": "rooms/potatoverse-canon/beings/matthew-mtclassic/",
+        "note": "Ordinary-life achievement retained for character texture; not moral credit.",
+        "status": "recorded"
+      }
     ]
   }
 }

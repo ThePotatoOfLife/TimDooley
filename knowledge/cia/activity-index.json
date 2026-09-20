@@ -1,0 +1,331 @@
+{
+  "id": "cia-activity-index-v1",
+  "updated": "2026-09-21",
+  "audit_date": "2026-09-21",
+  "purpose": "Drive dossier visual prominence from recovered recency/status without treating opacity as moral value.",
+  "rules": {
+    "active": "explicit active status or <=45 days since parseable last-recorded evidence",
+    "recovery": "explicit recovery-active status or <=210 days since parseable last-recorded evidence",
+    "historical": "older recovered evidence or unresolved-current historical file",
+    "dormant": "literary/index/recovery-needed file without current documentary evidence",
+    "closed": "deceased or explicitly closed archive state",
+    "boundary": "Opacity is archive recency only. It is not approval, relevance, guilt, worth, truth or moral score."
+  },
+  "records": [
+    {
+      "id": "anacondasin",
+      "status": "historical-current-unknown",
+      "first": "2024-12-15",
+      "last": "2024-12-18",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "anja",
+      "status": "historical-current-unknown",
+      "first": "2024-12-21",
+      "last": "2025-03-05",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "barry-bletunick",
+      "status": "historical-current-unknown",
+      "first": "2024-11-14",
+      "last": "2024-11-14",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "darkchild",
+      "status": "historical-current-unknown",
+      "first": "2024-11-03",
+      "last": "2024-11-03",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "don-jefe",
+      "status": "historical-current-unknown",
+      "first": "2025-02-11",
+      "last": "2025-02-11",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "literally",
+      "status": "historical-current-unknown",
+      "first": "2024-12-21",
+      "last": "2025-01-10",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "petty-wappo",
+      "status": "historical-current-unknown",
+      "first": "2024-12-18",
+      "last": "2024-12-18",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "pkfc",
+      "status": "historical-current-unknown",
+      "first": "2024-12-04",
+      "last": "2025-03-01",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "pondo",
+      "status": "historical-current-unknown",
+      "first": "2024-12-15",
+      "last": "2024-12-21",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "potato-repair-guy",
+      "status": "historical-current-unknown",
+      "first": "2024-12-20",
+      "last": "2024-12-20",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "supersusi87",
+      "status": "historical-current-unknown",
+      "first": "2024-12-07",
+      "last": "2025-02-27",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "tachy",
+      "status": "historical-current-unknown",
+      "first": "2024-12-04",
+      "last": "2025-03-12",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "highly-regarded",
+      "status": "historical-current-unknown",
+      "first": "2024-11-03",
+      "last": "2024-11-20",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "kale",
+      "status": "historical-current-unknown",
+      "first": "2024-11-03",
+      "last": "2025-02-25",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "juice",
+      "status": "historical-current-unknown",
+      "first": "2024-11-04",
+      "last": "2024-12-21",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "duaaaht",
+      "status": "historical-current-unknown",
+      "first": "2024-11-03",
+      "last": "2024-11-19",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "jazzy",
+      "status": "historical-current-unknown",
+      "first": "2024-11-05",
+      "last": "2024-11-24",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "gg",
+      "status": "historical-current-unknown",
+      "first": "2024-11-03",
+      "last": "2026-03-04",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "bigtech",
+      "status": "historical-current-unknown",
+      "first": "2023 retrospective",
+      "last": "2024-12-15",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "capy",
+      "status": "literary-recovery-needed",
+      "first": "2024 literary",
+      "last": "2024 literary",
+      "band": "dormant",
+      "opacity": 0.72,
+      "reason": "literary-only / documentary recovery needed"
+    },
+    {
+      "id": "dim",
+      "status": "recovery-active-2026",
+      "first": "2026-07-07",
+      "last": "2026-09-10",
+      "band": "active",
+      "opacity": 1,
+      "reason": "explicit active status"
+    },
+    {
+      "id": "ledgeview",
+      "status": "historical-current-unknown",
+      "first": "2024-11-03",
+      "last": "2024-12-21",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "marty-biz",
+      "status": "deceased-2025",
+      "first": "2024-11-03",
+      "last": "2025-02-01",
+      "band": "closed",
+      "opacity": 0.76,
+      "reason": "closed/deceased archive state"
+    },
+    {
+      "id": "matthew-mtclassic",
+      "status": "active-2026",
+      "first": "2026-09-20",
+      "last": "2026-09-20",
+      "band": "active",
+      "opacity": 1,
+      "reason": "explicit active status"
+    },
+    {
+      "id": "mediomu007",
+      "status": "active-2026",
+      "first": "2026-08-24",
+      "last": "2026-09-20",
+      "band": "active",
+      "opacity": 1,
+      "reason": "explicit active status"
+    },
+    {
+      "id": "metalorian",
+      "status": "historical-current-unknown",
+      "first": "2025-02-08",
+      "last": "2025-03-01",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "optimistique",
+      "status": "historical-current-unknown",
+      "first": "2024-11-03",
+      "last": "2024-12-21",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "port-monkey",
+      "status": "historical-recovery-active",
+      "first": "2024-11-03",
+      "last": "2026-03-04",
+      "band": "recovery",
+      "opacity": 0.94,
+      "reason": "explicit recovery-active status"
+    },
+    {
+      "id": "rage",
+      "status": "historical-current-unknown",
+      "first": "2024-11-04",
+      "last": "2025-03-12",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "rahu",
+      "status": "recovery-active-2026",
+      "first": "2024-11-03",
+      "last": "2026-05-25",
+      "band": "active",
+      "opacity": 1,
+      "reason": "explicit active status"
+    },
+    {
+      "id": "rob",
+      "status": "historical-current-unknown",
+      "first": "2024-11-03",
+      "last": "2025-02-26",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "sammy",
+      "status": "historical-current-unknown",
+      "first": "2024-11-03",
+      "last": "2025-03-01",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "termite",
+      "status": "historical-current-unknown",
+      "first": "2024-11-03",
+      "last": "2025-02-20",
+      "band": "historical",
+      "opacity": 0.82,
+      "reason": "last recovered evidence is outside the current/recovery window"
+    },
+    {
+      "id": "tim-dooley",
+      "status": "active",
+      "first": "archive-wide / civil and project chronology",
+      "last": "active-2026",
+      "band": "active",
+      "opacity": 1,
+      "reason": "explicit active status"
+    },
+    {
+      "id": "txt",
+      "status": "historical-recovery-active",
+      "first": "2025-02-11",
+      "last": "2026-09-20",
+      "band": "recovery",
+      "opacity": 0.94,
+      "reason": "explicit recovery-active status"
+    }
+  ]
+}

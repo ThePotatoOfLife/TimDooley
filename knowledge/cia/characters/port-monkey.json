@@ -178,6 +178,10 @@
     {
       "type": "conversation_recovery",
       "path": "knowledge/cia/conversation-intake-2026-09-20.json"
+    },
+    {
+      "type": "debt_evidence_ledger",
+      "path": "knowledge/cia/debt-evidence-ledger.json"
     }
   ],
   "recovery_leads": [
@@ -195,7 +199,15 @@
     },
     "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
     "debt_and_repair": {
-      "records": [],
+      "records": [
+        {
+          "id": "debt-port-monkey-2024-tree-trust",
+          "date": "2024",
+          "pricing_status": "priced",
+          "summary": "Project-authored Great Book event: corrupt Tree / trust used to attempt destruction. Later 2026 repair remains separately credited.",
+          "project_adjustment_susd": -6.6
+        }
+      ],
       "rule": "Do not attach legal, financial, karmic or spiritual debt unless a dated source explicitly does so; symbolic debt remains project language unless independently established."
     },
     "state_rule": "Roles, archetypes, upgrades, handicaps and project-symbolic placements are date/source-bounded states, not permanent human essences.",
@@ -205,6 +217,61 @@
       "Add relationship edges only when a scene/source supports them.",
       "Recover the raw 4 March 2026 exchange behind the seed/GG/stewardship material.",
       "Determine whether the proposed GG grievance/healing meeting actually occurred and what changed afterward."
+    ]
+  },
+  "meaning": {
+    "why_this_file_matters": "Port Monkey is one of the best change-over-time files: the same archive contains ordinary companionship, Tree/community fragmentation, later conflict clustering, and a 2026 seed/stewardship/repair possibility.",
+    "known": [
+      "Port Monkey appears in ordinary November 2024 gaming/voice-chat scenes.",
+      "Chronicle places Monkey/Tree material inside the December 2024 community-fragmentation corridor.",
+      "4 March 2026 recovery adds seed-growth language and a report of a proposed grievance/healing meeting."
+    ],
+    "interpretive": [
+      "Trickster/mirror/threshold roles describe different phases, not a timeless essence.",
+      "The 2026 seed/stewardship material can be read as a repair trajectory, but completed reconciliation is not established."
+    ],
+    "unknown": [
+      "Identity continuity between every 'Monkey' and 'Port Monkey' occurrence requires scene-level checking.",
+      "Whether the reported grievance/healing meeting happened and changed anything remains open."
+    ],
+    "relationship_arc": "ordinary companion → branching Tree/boundary conflict → adversarial cluster → seed/stewardship and possible repair",
+    "confidence_note": "High on dated recurrence; medium on identity continuity across all Monkey labels; open on reconciliation outcome."
+  },
+  "symbolic_account": {
+    "status": "repair-active",
+    "good_karma": "event-ledger",
+    "karmic_debt": "1 priced debit / -6.6 sUSD",
+    "dooley_welfare": {
+      "enabled": false
+    },
+    "outstanding": [],
+    "entries": [
+      {
+        "date": "2026-03-04",
+        "type": "repair-attempt",
+        "kind": "seed / grievance-healing proposal",
+        "amount_or_scale": "qualitative",
+        "source_mode": "conversation_recovery",
+        "source_ref": "knowledge/cia/conversation-intake-2026-09-20.json",
+        "note": "Recovered material reports seed-growth language and a proposed grievance/healing meeting; no completed reconciliation inferred.",
+        "status": "open"
+      },
+      {
+        "date": "2024",
+        "type": "project-debit",
+        "kind": "project-authored destructive trust event",
+        "amount_or_scale": "-6.6 sUSD",
+        "project_adjustment_susd": -6.6,
+        "debt_evidence_id": "debt-port-monkey-2024-tree-trust",
+        "category": "destructive-act",
+        "evidence_tier": "project-authored-canon",
+        "repetition_key": "port-monkey-tree-destructive-trust-event",
+        "occurrence_index": 1,
+        "source_mode": "Great Book / project-authored chronology",
+        "source_ref": "great-book/chapters/073--chapter-24--tim-dooley-the-sage-the-potato-of-life.html",
+        "note": "The Great Book says Monkey planted a corrupt Discord tree using trust to attempt destruction. Priced once as project-authored canon; breach-of-trust is not double-charged.",
+        "status": "recorded"
+      }
     ]
   }
 }

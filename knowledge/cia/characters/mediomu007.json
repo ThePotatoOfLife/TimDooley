@@ -46,7 +46,14 @@
         "role": "top-fan UI #2 in supplied YouTube capture; rearranges and cleans room, moves TV/console/bed/desk/nightstand, brief ordinary chat"
       }
     ],
-    "recovered_social_days": []
+    "recovered_social_days": [
+      {
+        "date": "2026-09-20",
+        "title": "A Controller, a Clean Room and a Dragon",
+        "minimum_event": "Public YouTube chat records Mediomu reporting a rearranged and cleaned room while Matthew is present with controller/Elden Ring continuity in the same captured social scene.",
+        "source_mode": "public_chat_transcript"
+      }
+    ]
   },
   "top_co_presence": [],
   "symbolic_roles": [
@@ -80,6 +87,14 @@
     {
       "type": "public_room",
       "path": "rooms/potatoverse-canon/beings/mediomu/"
+    },
+    {
+      "type": "2026_social_ledger",
+      "path": "knowledge/story/mediomu007-social-ledger-2026.json"
+    },
+    {
+      "type": "documentary_story_scene",
+      "path": "story-content/2026-09-20-matthew-mediomu.html#matthew-mediomu-ordinary-day-2026-09-20"
     }
   ],
   "recovery_leads": [
@@ -105,6 +120,53 @@
       "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
       "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
       "Add relationship edges only when a dated scene or explicit source supports them."
+    ]
+  },
+  "meaning": {
+    "why_this_file_matters": "Mediomu connects a project-level bridge-building/forgiveness story to very ordinary room-making and theological questioning, making the separation between symbolic and documentary layers easy to see.",
+    "known": [
+      "24 August 2026 material contains a mountain/bridge-building forgiveness narrative.",
+      "6 September 2026 material records a theological question about literal God versus myth.",
+      "20 September 2026 public chat records rearranging and cleaning a room."
+    ],
+    "interpretive": [
+      "Builder/cultivator works both literally and symbolically, but the two layers should stay visibly distinct."
+    ],
+    "unknown": [
+      "The exact primary transcript for the August bridge-building narrative should be recovered."
+    ],
+    "relationship_arc": "project bridge-builder → theological questioner → literal room-builder / ordinary companion",
+    "confidence_note": "High on September 20 public-chat details; medium on August interpretive narrative."
+  },
+  "symbolic_account": {
+    "status": "unassessed",
+    "good_karma": "event-ledger",
+    "karmic_debt": "unassessed",
+    "dooley_welfare": {
+      "enabled": false
+    },
+    "outstanding": [],
+    "entries": [
+      {
+        "date": "2026-08-24",
+        "type": "repair-attempt",
+        "kind": "bridge-building / forgiveness narrative",
+        "amount_or_scale": "project-symbolic",
+        "source_mode": "conversation_archaeology",
+        "source_ref": "rooms/potatoverse-canon/beings/mediomu/",
+        "note": "Project narrative frames Mediomu inside forgiveness and bridge-building; interpretive layer.",
+        "status": "recorded"
+      },
+      {
+        "date": "2026-09-20",
+        "type": "yield",
+        "kind": "room-making",
+        "amount_or_scale": "clean/rearranged room",
+        "source_mode": "user_supplied_public_chat_capture",
+        "source_ref": "rooms/potatoverse-canon/beings/mediomu/",
+        "note": "Rearranged TV, console, bed, desk and nightstand; ordinary-life constructive yield.",
+        "status": "recorded"
+      }
     ]
   }
 }

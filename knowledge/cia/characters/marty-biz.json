@@ -188,7 +188,23 @@
       "scope": "Great Book collective around Marty; not Marty essence"
     }
   ],
-  "highlighted_incidents": [],
+  "highlighted_incidents": [
+    {
+      "date": "2024-11-05",
+      "title": "Ordinary companionship before mythology",
+      "summary": "Chronicle preserves Marty in ordinary gaming/voice-chat/social activity, which prevents the later conflict label from swallowing the earlier relationship."
+    },
+    {
+      "date": "2025-01-29",
+      "title": "Externally corrected death date",
+      "summary": "Funeral-home obituary fixes the death date at 29 January 2025; later project chronology should route through this correction."
+    },
+    {
+      "date": "post-2025-01-29",
+      "title": "Conflict becomes grief and memory",
+      "summary": "Post-death project material includes grief/memory artifacts, so the archive preserves more than an adversarial legacy."
+    }
+  ],
   "source_strata": [
     {
       "type": "character_archive",
@@ -205,6 +221,10 @@
     {
       "type": "public_room",
       "path": "rooms/potatoverse-canon/beings/marty/"
+    },
+    {
+      "type": "debt_evidence_ledger",
+      "path": "knowledge/cia/debt-evidence-ledger.json"
     }
   ],
   "recovery_leads": [
@@ -222,7 +242,22 @@
     },
     "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
     "debt_and_repair": {
-      "records": [],
+      "records": [
+        {
+          "id": "debt-marty-2024-12-21-social-leverage",
+          "date": "2024-12-21",
+          "pricing_status": "priced",
+          "summary": "Chronicle-retelling debit for asserted social leverage; discounted for evidence tier.",
+          "project_adjustment_susd": -3.6
+        },
+        {
+          "id": "candidate-marty-2024-11-19-garden-betrayed",
+          "date": "2024-11-19",
+          "pricing_status": "unpriced",
+          "summary": "Chronicle labels the day 'The Garden Betrayed' and centers conflict around the community boundary.",
+          "reason_unpriced": "Authored interpretation pending raw logs; no distinct concrete act isolated strongly enough to price."
+        }
+      ],
       "rule": "Do not attach legal, financial, karmic or spiritual debt unless a dated source explicitly does so; symbolic debt remains project language unless independently established."
     },
     "state_rule": "Roles, archetypes, upgrades, handicaps and project-symbolic placements are date/source-bounded states, not permanent human essences.",
@@ -230,6 +265,52 @@
       "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
       "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
       "Add relationship edges only when a scene/source supports them."
+    ]
+  },
+  "meaning": {
+    "why_this_file_matters": "Marty is one of the archive's most consequential relationship files because the record changes phase repeatedly: ordinary companion, separate social gravity, conflict mythology, death, then grief and memory.",
+    "known": [
+      "Marty is one of the densest names in the late-2024 Chronicle/social record.",
+      "An external obituary fixes the death date at 29 January 2025.",
+      "A February 2025 Chronicle corridor processes the death, but many detailed claims inside that retelling still need closer sourcing."
+    ],
+    "interpretive": [
+      "Drift King, catalyst, rival and related symbolic labels belong to project/Chronicle interpretation rather than neutral biography.",
+      "The file is strongest when it preserves companionship, conflict and grief together instead of choosing one permanent moral label."
+    ],
+    "unknown": [
+      "Original Marty–Tim conversations before later labels hardened remain incomplete.",
+      "Detailed claims about the final hours and relationship motives require closer primary evidence.",
+      "The immediate grief corridor still needs fuller source recovery."
+    ],
+    "relationship_arc": "ordinary companion / creative-social presence → separate social center and conflict → death → grief, memory and posthumous project interpretation",
+    "confidence_note": "High confidence in dense dated presence and the externally corrected death date; mixed confidence in conflict motives and final-hours narratives."
+  },
+  "symbolic_account": {
+    "status": "closed",
+    "good_karma": "unassessed",
+    "karmic_debt": "1 priced debit / -3.6 sUSD",
+    "dooley_welfare": {
+      "enabled": false
+    },
+    "outstanding": [],
+    "entries": [
+      {
+        "date": "2024-12-21",
+        "type": "project-debit",
+        "kind": "coercive/social leverage in boundary dispute",
+        "amount_or_scale": "-3.6 sUSD",
+        "project_adjustment_susd": -3.6,
+        "debt_evidence_id": "debt-marty-2024-12-21-social-leverage",
+        "category": "coercive-social-leverage",
+        "evidence_tier": "chronicle-retelling",
+        "repetition_key": "marty-social-leverage",
+        "occurrence_index": 1,
+        "source_mode": "Chronicle retelling",
+        "source_ref": "knowledge/cia/characters/marty-biz.json",
+        "note": "Low-confidence debit from the Chronicle wording that Marty introduced Anja while asserting social leverage; raw conversation remains unrecovered.",
+        "status": "recorded"
+      }
     ]
   }
 }

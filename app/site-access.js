@@ -28,8 +28,10 @@
     {id:'timeline',label:'Timeline',route:'/timeline/',kind:'find',note:'Events and chronology',aliases:['history','dates','chronology']},
     {id:'sources',label:'Sources',route:'/context/source-authority/',kind:'find',note:'Evidence and provenance',aliases:['evidence','source','provenance']},
     {id:'explore',label:'Explore',route:'/explore/',kind:'find',note:'Relationship explorer',aliases:['archive','relationships']},
-    {id:'cia',label:'CIA / Intelligence',route:'/shadow-farm/#intelligence-desk',kind:'direct',note:'Intelligence Desk',aliases:['cia','central intelligence agency','intelligence']},
-    {id:'fbi',label:'FBI — Figures, Bonds & Incidents',route:'/rooms/potatoverse-canon/beings/fbi/',kind:'direct',note:'Character dossier bureau',aliases:['fbi','figures','bonds','incidents']},
+    {id:'cia-character-archive',label:'Potatoverse CIA · Character Archive',route:'/rooms/potatoverse-canon/beings/cia/',kind:'direct',scope:'POTATOVERSE',note:'Characters, Incidents & Associations · authored project archive',aliases:['potatoverse cia','character cia','characters incidents associations','character archive','dossiers']},
+    {id:'mud-bank',label:'World Spiritual Bank / Mud Bank',route:'/rooms/potatoverse-canon/beings/cia/bank/',kind:'direct',scope:'POTATOVERSE',note:'Fictional North Root Ledger · Character Archive sub-accounts',aliases:['mud bank','dooley welfare','karma bank','balance sheet']},
+    {id:'intelligence-cia',label:'U.S. CIA · Central Intelligence Agency',route:'/shadow-farm/#intelligence-desk',kind:'direct',scope:'REAL WORLD',note:'U.S. foreign-intelligence institution · Intelligence Desk',aliases:['us cia','u.s. cia','central intelligence agency','real cia','intelligence desk']},
+    {id:'fbi-legacy',label:'FBI — retired character-bureau predecessor',route:'/rooms/potatoverse-canon/beings/fbi/',kind:'direct',note:'Read-only migration history',aliases:['fbi','figures bonds incidents']},
     {id:'economy',label:'Economy & Finance',route:'/economy/',kind:'world',note:'Debt, banking, ownership',aliases:['economy','finance','debt','bonds','fed','federal reserve','ecb','eurosystem']},
     {id:'tts',label:'Read Aloud / TTS',route:'/tools/tts/',kind:'direct',note:'Text-to-speech tools and reader controls',aliases:['tts','text to speech','read aloud','listen']},
     {id:'claims',label:'Claims & Statements',route:'/tim-dooley/claims/',kind:'direct',note:'Claims and attributed statements',aliases:['claims','statements','assertions']},
@@ -42,7 +44,7 @@
   let accessGroups={
     go_now:['news','world-map','tim','house','rooms'],
     find:['people-cases','index-a-z','timeline','sources','explore'],
-    direct_doors:['cia','fbi','economy','tts','claims','public-witness','science','religion','hours']
+    direct_doors:['cia-character-archive','mud-bank','intelligence-cia','economy','tts','claims','public-witness','science','religion','hours']
   };
   const wrapper=document.createElement('div');
   wrapper.className='site-access';
@@ -58,7 +60,7 @@
     '</nav>'+
     '<section class="site-access-panel" data-site-access-panel hidden aria-label="Site menu">'+
       '<div class="site-access-head"><div><small>Quick access · you are in</small><strong>'+esc(pageTitle)+'</strong></div><button class="site-access-close" type="button" aria-label="Close quick access">×</button></div>'+
-      '<form class="site-access-search" role="search"><input type="search" autocomplete="off" placeholder="Find CIA, Tim, debt, Bible, a Room…" aria-label="Find in the project"><button type="submit">Find</button></form>'+
+      '<form class="site-access-search" role="search"><input type="search" autocomplete="off" placeholder="Find Character Archive, U.S. CIA, Tim, debt, a Room…" aria-label="Find in the project"><button type="submit">Find</button></form>'+
       '<div data-site-access-content></div>'+
     '</section>';
   document.body.appendChild(wrapper);
@@ -136,7 +138,7 @@
       index=unique(index);
     }catch(_){}
   };
-  const group=(title,entries)=>'<div class="site-access-group"><span>'+esc(title)+'</span><div class="site-access-links">'+entries.map(e=>'<a href="'+esc(href(e.route))+'"><b>'+esc(e.label)+'</b><small>'+esc(e.note||'')+'</small></a>').join('')+'</div></div>';
+  const group=(title,entries)=>'<div class="site-access-group"><span>'+esc(title)+'</span><div class="site-access-links">'+entries.map(e=>'<a href="'+esc(href(e.route))+'"><b>'+esc(e.label)+'</b>'+(e.scope?'<i class="site-access-scope">'+esc(e.scope)+'</i>':'')+'<small>'+esc(e.note||'')+'</small></a>').join('')+'</div></div>';
   const renderDefault=async()=>{
     await loadIndex();
     content.className='site-access-groups';
@@ -151,6 +153,13 @@
     const q=input.value.trim().toLowerCase();
     if(!q){await renderDefault();return}
     await loadIndex();
+    if(q==='cia'){
+      const ids=['cia-character-archive','intelligence-cia'];
+      const rows=ids.map(id=>curatedEntries.find(e=>e.id===id)).filter(Boolean);
+      content.className='site-access-results site-access-disambiguation';
+      content.innerHTML='<div class="site-access-choice-head"><b>Which CIA?</b><small>Same acronym, different namespace. Choose before entering.</small></div>'+rows.map(e=>'<a class="site-access-result" href="'+esc(href(e.route))+'"><span><b>'+esc(e.label)+'</b><small>'+esc(e.note||'')+'</small></span><em>'+esc(e.scope||e.kind||'result')+'</em></a>').join('');
+      return;
+    }
     const terms=q.split(/\s+/).filter(Boolean);
     const rows=index.map(e=>{
       const hay=key(e),label=e.label.toLowerCase(),aliases=aliasText(e).toLowerCase();let score=0;

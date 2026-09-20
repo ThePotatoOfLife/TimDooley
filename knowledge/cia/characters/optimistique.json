@@ -189,5 +189,54 @@
       "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
       "Add relationship edges only when a dated scene or explicit source supports them."
     ]
+  },
+  "meaning": {
+    "why_this_file_matters": "Optimistique has a complete mini-arc rather than a flat role label: ordinary companionship, creative work, absence/tension, then an attempted reconciliation.",
+    "known": [
+      "Chronicle places Optimistique in voice chat, Tanks play and Great Book discussion.",
+      "A 6 November 2024 scene records music/AI-instrumental and Jungian-shadow creativity.",
+      "A 7 December 2024 Chronicle scene records an apology/reconciliation attempt."
+    ],
+    "interpretive": [
+      "Healer/companion and bard roles describe scene-functions, not permanent character essence.",
+      "The reconciliation scene matters because it shows change over time rather than a fixed social label."
+    ],
+    "unknown": [
+      "Raw chat wording behind the apology and creative exchanges is still missing.",
+      "Whether reconciliation was accepted or durable remains unclear."
+    ],
+    "relationship_arc": "ordinary companion → creative collaborator → absence/friction → reconciliation attempt",
+    "confidence_note": "High confidence in Chronicle chronology; lower confidence in motives and exact dialogue."
+  },
+  "symbolic_account": {
+    "status": "unassessed",
+    "good_karma": "event-ledger",
+    "karmic_debt": "unassessed",
+    "dooley_welfare": {
+      "enabled": false
+    },
+    "outstanding": [],
+    "entries": [
+      {
+        "date": "2024-11-06",
+        "type": "yield",
+        "kind": "creative contribution",
+        "amount_or_scale": "music / AI-instrumental thread",
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "note": "Creative discussion around music, AI-generated instrumentals and shadow-work themes.",
+        "status": "recorded"
+      },
+      {
+        "date": "2024-12-07",
+        "type": "repair-attempt",
+        "kind": "reconciliation attempt",
+        "amount_or_scale": "qualitative",
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "note": "Chronicle records an apology / reconciliation attempt; acceptance and durability remain unresolved.",
+        "status": "open"
+      }
+    ]
   }
 }

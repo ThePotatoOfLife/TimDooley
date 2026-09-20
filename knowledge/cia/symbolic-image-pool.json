@@ -1,0 +1,98 @@
+{
+  "id": "cia-symbolic-image-pool-v1",
+  "title": "CIA Symbolic Proxy Image Pool",
+  "updated": "2026-09-21",
+  "purpose": "Small remote image registry for humorous symbolic dossier imagery without storing large binaries in the repository.",
+  "boundary": "Every image is a symbolic proxy for a project role/object. It is not a portrait, likeness, identity claim or evidence that the pictured object/person is the dossier subject.",
+  "storage": "remote-url-only",
+  "provider": "Wikimedia Commons",
+  "selection_rule": "Dossiers may deterministically borrow up to three images whose role_terms match source-bounded role labels or symbolic-role text. The same dossier should resolve to the same primary proxy until its role set changes.",
+  "images": [
+    {
+      "id": "symbol-dog",
+      "label": "Dog",
+      "role_terms": [
+        "dog",
+        "guardian-dog"
+      ],
+      "image_url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Photo_of_a_standing_dog.jpg?width=720",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Photo_of_a_standing_dog.jpg",
+      "author": "ContaDeletada2906",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "caption": "Symbolic proxy: standing dog. Not a likeness of the dossier subject."
+    },
+    {
+      "id": "symbol-footstool",
+      "label": "Footstool",
+      "role_terms": [
+        "footstool",
+        "stool"
+      ],
+      "image_url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Wooden_stool.jpg?width=720",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Wooden_stool.jpg",
+      "author": "Sashatrk",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "caption": "Symbolic proxy: wooden stool / footstool. Not a likeness of the dossier subject."
+    },
+    {
+      "id": "symbol-mud",
+      "label": "Mud / Soil Clod",
+      "role_terms": [
+        "mud",
+        "mud-dweller",
+        "dweller"
+      ],
+      "image_url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/SoilClod.jpg?width=720",
+      "source_page": "https://commons.wikimedia.org/wiki/File:SoilClod.jpg",
+      "author": "Mclund",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "caption": "Symbolic proxy: clod of soil / mud. Not a likeness of the dossier subject."
+    },
+    {
+      "id": "symbol-potato",
+      "label": "Potato",
+      "role_terms": [
+        "potato",
+        "tuber",
+        "spud"
+      ],
+      "image_url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Potatoes.jpg?width=720",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Potatoes.jpg",
+      "author": "USDA / U.S. federal government",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Potatoes.jpg",
+      "caption": "Symbolic proxy: potatoes. Not a likeness of the dossier subject."
+    },
+    {
+      "id": "symbol-tomato",
+      "label": "Tomato",
+      "role_terms": [
+        "tomato"
+      ],
+      "image_url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Tomato_(1).jpg?width=720",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Tomato_(1).jpg",
+      "author": "National Cancer Institute / Renee Comet",
+      "license": "Public domain (U.S. federal government work)",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Tomato_(1).jpg",
+      "caption": "Symbolic proxy: red tomato. Not a likeness of the dossier subject."
+    },
+    {
+      "id": "symbol-angel",
+      "label": "Angel",
+      "role_terms": [
+        "angel",
+        "guardian",
+        "messenger"
+      ],
+      "image_url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Angel_statue_golden.jpg?width=720",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Angel_statue_golden.jpg",
+      "author": "BJGunnaban",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "caption": "Symbolic proxy: angel statue. Not a likeness of the dossier subject."
+    }
+  ]
+}

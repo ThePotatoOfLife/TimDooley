@@ -131,5 +131,42 @@
       "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
       "Add relationship edges only when a scene/source supports them."
     ]
+  },
+  "meaning": {
+    "why_this_file_matters": "Pondo is a compact care/intervention dossier: ordinary kitchen-social presence is followed by a Chronicle-attributed urgent compassionate intervention, giving the healer/guardian role a concrete source-bounded anchor.",
+    "known": [
+      "15 December 2024 places Pondo in the collaborative kitchen/social scene.",
+      "21 December 2024 Chronicle material credits Pondo with urgent support to a distressed community member.",
+      "Sensitive details are intentionally minimized in the dossier."
+    ],
+    "interpretive": [
+      "Healer/guardian fits the attributed intervention but should remain episode-bound."
+    ],
+    "unknown": [
+      "Closer primary evidence behind the crisis intervention is not recovered and should only be sought if needed without exposing unnecessary sensitive detail."
+    ],
+    "relationship_arc": "ordinary companion / observer → compassionate crisis intervention",
+    "confidence_note": "Strong Chronicle attribution; sensitive underlying details intentionally minimized."
+  },
+  "symbolic_account": {
+    "status": "unassessed",
+    "good_karma": "event-ledger",
+    "karmic_debt": "unassessed",
+    "dooley_welfare": {
+      "enabled": false
+    },
+    "outstanding": [],
+    "entries": [
+      {
+        "date": "2024-12-21",
+        "type": "project-credit",
+        "kind": "urgent compassionate support",
+        "amount_or_scale": "qualitative",
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "note": "Chronicle credits Pondo with urgent support to a distressed community member; sensitive details intentionally omitted.",
+        "status": "recorded"
+      }
+    ]
   }
 }

@@ -1,0 +1,90 @@
+{
+  "id": "cia-dossier-depth-audit-2026-09-21",
+  "title": "CIA Dossier Depth Audit",
+  "updated": "2026-09-21",
+  "total_dossiers": 35,
+  "meaning_enriched_count": 35,
+  "meaning_remaining_count": 0,
+  "maturity_definition": {
+    "meaning_spine": "Explains why the file matters, known material, interpretation, unknowns, relationship arc and confidence.",
+    "event_ledger": "Records sourced project events instead of automatic moral scoring.",
+    "presence_bounds": "Uses recovered first/last evidence windows when available.",
+    "source_boundary": "Keeps documentary, Chronicle, literary, project-symbolic and later synthesis layers distinct."
+  },
+  "enriched": [
+    "tim-dooley",
+    "marty-biz",
+    "sammy",
+    "port-monkey",
+    "metalorian",
+    "ledgeview",
+    "termite",
+    "optimistique",
+    "rahu",
+    "rage",
+    "matthew-mtclassic",
+    "mediomu007",
+    "bigtech",
+    "capy",
+    "rob",
+    "dim",
+    "txt",
+    "highly-regarded",
+    "kale",
+    "juice",
+    "duaaaht",
+    "jazzy",
+    "gg",
+    "anja",
+    "tachy",
+    "supersusi87",
+    "literally",
+    "pondo",
+    "anacondasin",
+    "darkchild",
+    "barry-bletunick",
+    "potato-repair-guy",
+    "don-jefe",
+    "petty-wappo",
+    "pkfc"
+  ],
+  "next_population_wave": {
+    "priority": "recent/current/recovery-active only",
+    "ids": [
+      "dim",
+      "txt",
+      "matthew-mtclassic",
+      "mediomu007",
+      "rahu",
+      "port-monkey",
+      "gg",
+      "tim-dooley"
+    ],
+    "reason": "All canonical files now have baseline meaning structure. Deeper mining should concentrate on active/recovery files or files with new evidence; historical dormant files remain maintenance-only unless new sources arrive."
+  },
+  "later_population_wave": {
+    "ids": [
+      "anja",
+      "tachy",
+      "supersusi87",
+      "literally",
+      "pondo",
+      "anacondasin",
+      "darkchild",
+      "barry-bletunick",
+      "potato-repair-guy",
+      "don-jefe",
+      "petty-wappo",
+      "pkfc"
+    ],
+    "reason": "Working/index files should be deepened only where chronology, source boundaries or recovery questions materially improve."
+  },
+  "population_rules": [
+    "Do not use byte size as a proxy for meaning.",
+    "A thin file may be complete if its strongest truth is that source material is missing.",
+    "Prefer dated scenes, phase changes, explicit unknowns and relationship arcs over trait accumulation.",
+    "Do not promote serious allegations from retrospective/profile prose without closer evidence.",
+    "Do not create symbolic debt or credit merely to make the account visually interesting.",
+    "After baseline coverage is complete, do not spend recovery time on dormant historical files unless new evidence or current relevance appears."
+  ]
+}

@@ -38,11 +38,26 @@
   },
   "top_co_presence": [],
   "symbolic_roles": [],
-  "highlighted_incidents": [],
+  "highlighted_incidents": [
+    {
+      "date": "2024-11-03",
+      "title": "First recovered Chronicle window",
+      "summary": "RoB is present in the dated archive; scene-level detail still needs extraction."
+    },
+    {
+      "date": "2025-02-26",
+      "title": "Latest recovered Chronicle window",
+      "summary": "RoB remains present in late-February Chronicle material; direct context remains a recovery target."
+    }
+  ],
   "source_strata": [
     {
       "type": "character_archive",
       "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "dated_social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json"
     }
   ],
   "recovery_leads": [
@@ -54,8 +69,8 @@
     "authority": "canonical",
     "record_type": "character-dossier",
     "presence": {
-      "first_recorded": null,
-      "last_recorded": null,
+      "first_recorded": "2024-11-03",
+      "last_recorded": "2025-02-26",
       "rule": "First/last currently recovered dated evidence in this dossier; not lifetime endpoints."
     },
     "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
@@ -69,5 +84,31 @@
       "Separate direct speech from Chronicle paraphrase and later project interpretation.",
       "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
     ]
+  },
+  "meaning": {
+    "why_this_file_matters": "RoB is a deliberately sparse dossier: four dated Chronicle windows prove recurrence, but there is not yet enough scene-level recovery to justify a richer personality story.",
+    "known": [
+      "RoB is indexed on 3 November and 26 November 2024, then 24 and 26 February 2025.",
+      "The old archive characterizes the recurring function as cryptic comments and play."
+    ],
+    "interpretive": [
+      "Witness/observer and bard/jester are provisional archive roles derived from sparse material."
+    ],
+    "unknown": [
+      "The actual scene content behind the four dates is largely unrecovered.",
+      "Associations and direct quotes should not be inferred merely from recurrence."
+    ],
+    "relationship_arc": "recurring cameo across four dated windows; detailed arc not yet recovered",
+    "confidence_note": "High confidence in recurrence dates; low confidence in richer interpretation."
+  },
+  "symbolic_account": {
+    "status": "unassessed",
+    "good_karma": "unassessed",
+    "karmic_debt": "unassessed",
+    "dooley_welfare": {
+      "enabled": false
+    },
+    "outstanding": [],
+    "entries": []
   }
 }

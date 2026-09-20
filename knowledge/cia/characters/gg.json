@@ -82,6 +82,10 @@
     {
       "type": "conversation_recovery",
       "path": "knowledge/cia/conversation-intake-2026-09-20.json"
+    },
+    {
+      "type": "debt_evidence_ledger",
+      "path": "knowledge/cia/debt-evidence-ledger.json"
     }
   ],
   "recovery_leads": [
@@ -99,7 +103,15 @@
     },
     "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
     "debt_and_repair": {
-      "records": [],
+      "records": [
+        {
+          "id": "candidate-gg-grievance-field",
+          "date": "2024-2026",
+          "pricing_status": "unpriced",
+          "summary": "Dense grievance/conflict recurrence exists, but no concrete priced harmful act is currently isolated; later healing proposal is separately credited.",
+          "reason_unpriced": "unpriced: recurrence and role labels are insufficient"
+        }
+      ],
       "rule": "Do not attach legal, financial, karmic or spiritual debt unless a dated source explicitly does so; symbolic debt remains project language unless independently established."
     },
     "state_rule": "Roles, archetypes, upgrades, handicaps and project-symbolic placements are date/source-bounded states, not permanent human essences.",
@@ -109,6 +121,46 @@
       "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve.",
       "Recover raw 4 March 2026 source for the grievance/healing proposal.",
       "Establish whether the proposed meeting occurred, who attended, and whether any durable repair followed."
+    ]
+  },
+  "meaning": {
+    "why_this_file_matters": "GG is a dense recurrence file with a valuable late counterweight: a long Chronicle presence that could be reduced to provocation, plus a March 2026 reported grievance/healing proposal that introduces possible repair.",
+    "known": [
+      "GG appears across a large number of Chronicle dates from late 2024 into February 2025.",
+      "4 March 2026 recovery reports, via Port Monkey, that GG discussed a grievance/healing meeting aimed at moving on.",
+      "The archive does not currently establish that the meeting happened or resolved anything."
+    ],
+    "interpretive": [
+      "Trickster/contrarian roles capture some archive functions but should not erase the later repair lead.",
+      "A proposed healing meeting is meaningful even without treating it as completed reconciliation."
+    ],
+    "unknown": [
+      "Raw March 4 source should be recovered.",
+      "Attendance, occurrence and outcome of the proposed meeting are unknown.",
+      "The many Chronicle appearances still need selective scene-level extraction."
+    ],
+    "relationship_arc": "dense recurring provocateur/contrarian presence → prolonged grievance field → reported healing/repair proposal",
+    "confidence_note": "High on recurrence density and the existence of the reported proposal; open on outcome."
+  },
+  "symbolic_account": {
+    "status": "unassessed",
+    "good_karma": "event-ledger",
+    "karmic_debt": "unassessed",
+    "dooley_welfare": {
+      "enabled": false
+    },
+    "outstanding": [],
+    "entries": [
+      {
+        "date": "2026-03-04",
+        "type": "repair-attempt",
+        "kind": "reported grievance/healing proposal",
+        "amount_or_scale": "qualitative",
+        "source_mode": "conversation_recovery_via_port_monkey",
+        "source_ref": "knowledge/cia/conversation-intake-2026-09-20.json",
+        "note": "Reported discussion of a meeting intended to address grievances and move on; completion unresolved.",
+        "status": "open"
+      }
     ]
   }
 }

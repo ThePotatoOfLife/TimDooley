@@ -1,0 +1,362 @@
+{
+  "id": "cia-account-posture-index-v1",
+  "title": "CIA Mud Bank — Account Posture Index",
+  "updated": "2026-09-21",
+  "coverage": 35,
+  "denomination": "fictional sUSD-equivalent",
+  "rule": "This index compares explicit event-ledger adjustments only. Live Dooley Welfare is added separately in the Mud Bank UI and is too small to materially reorder current event balances.",
+  "boundary": "This is a source-bounded Potatoverse bookkeeping view, not a factual ranking of morality, guilt, trustworthiness, criminality or human worth.",
+  "ordering_note": "Rows are sorted by net explicit event adjustment for bank readability. Zero does not mean morally neutral; it usually means no responsible price has been established.",
+  "accounts": [
+    {
+      "id": "termite",
+      "name": "Termite",
+      "gross_credit_susd": 50,
+      "gross_debit_susd": 0,
+      "net_event_susd": 50,
+      "posture": "constructive-positive",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "matthew-mtclassic",
+      "name": "Matthew / MTClassic",
+      "gross_credit_susd": 25,
+      "gross_debit_susd": 0,
+      "net_event_susd": 25,
+      "posture": "constructive-positive",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "pondo",
+      "name": "Pondo",
+      "gross_credit_susd": 25,
+      "gross_debit_susd": 0,
+      "net_event_susd": 25,
+      "posture": "constructive-positive",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "rage",
+      "name": "Rage",
+      "gross_credit_susd": 25,
+      "gross_debit_susd": 0,
+      "net_event_susd": 25,
+      "posture": "constructive-positive",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "mediomu007",
+      "name": "Mediomu007",
+      "gross_credit_susd": 20,
+      "gross_debit_susd": 0,
+      "net_event_susd": 20,
+      "posture": "constructive-positive / repair",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "optimistique",
+      "name": "Optimistique",
+      "gross_credit_susd": 20,
+      "gross_debit_susd": 0,
+      "net_event_susd": 20,
+      "posture": "constructive-positive / repair",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "anacondasin",
+      "name": "Anacondasin",
+      "gross_credit_susd": 12,
+      "gross_debit_susd": 0,
+      "net_event_susd": 12,
+      "posture": "constructive-positive",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "kale",
+      "name": "Kale",
+      "gross_credit_susd": 12,
+      "gross_debit_susd": 0,
+      "net_event_susd": 12,
+      "posture": "constructive-positive",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "ledgeview",
+      "name": "Ledgeview",
+      "gross_credit_susd": 12,
+      "gross_debit_susd": 0,
+      "net_event_susd": 12,
+      "posture": "constructive-positive",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "potato-repair-guy",
+      "name": "Potato Repair Guy",
+      "gross_credit_susd": 12,
+      "gross_debit_susd": 0,
+      "net_event_susd": 12,
+      "posture": "constructive-positive",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "tim-dooley",
+      "name": "Tim Dooley",
+      "gross_credit_susd": 12,
+      "gross_debit_susd": 0,
+      "net_event_susd": 12,
+      "posture": "constructive-positive / treasury-root",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "gg",
+      "name": "GG",
+      "gross_credit_susd": 8,
+      "gross_debit_susd": 0,
+      "net_event_susd": 8,
+      "posture": "repair-positive / unresolved grievance",
+      "unpriced_negative_candidates": 1,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "rahu",
+      "name": "Rahu",
+      "gross_credit_susd": 6,
+      "gross_debit_susd": 0,
+      "net_event_susd": 6,
+      "posture": "growth-positive",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "port-monkey",
+      "name": "Port Monkey",
+      "gross_credit_susd": 8,
+      "gross_debit_susd": -6.6,
+      "net_event_susd": 1.4,
+      "posture": "mixed / repair-active",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "anja",
+      "name": "Anja / Ansja",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "welfare-only / unassessed",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "barry-bletunick",
+      "name": "Barry Bletunick",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "welfare-only / unassessed",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "bigtech",
+      "name": "BigTech",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "welfare-only / literary-heavy",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "capy",
+      "name": "Capy",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "provisional / literary-only",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "darkchild",
+      "name": "DARKCHILD",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "welfare-only / unassessed",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "dim",
+      "name": "DIM / Dim Tooley",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "unpriced dispute",
+      "unpriced_negative_candidates": 1,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "don-jefe",
+      "name": "Don Jefe",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "welfare-only / unresolved history",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "duaaaht",
+      "name": "duaaaht",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "welfare-only / unassessed",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "highly-regarded",
+      "name": "Highly Regarded",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "welfare-only / unassessed",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "jazzy",
+      "name": "Jazzy",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "welfare-only / unassessed",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "juice",
+      "name": "Juice",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "welfare-only / unresolved history",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "literally",
+      "name": "Literally",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "welfare-only / unassessed",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "metalorian",
+      "name": "Metalorian",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "unpriced retrospective claims",
+      "unpriced_negative_candidates": 1,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "petty-wappo",
+      "name": "Petty Wappo",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "welfare-only / unassessed",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "pkfc",
+      "name": "PKFC",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "welfare-only / sparse evidence",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "rob",
+      "name": "RoB",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "welfare-only / sparse evidence",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "sammy",
+      "name": "Sammy",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "welfare-only / unassessed",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "supersusi87",
+      "name": "Supersusi87",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "welfare-only / unassessed",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "tachy",
+      "name": "Tachy / Krystato",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "welfare-only / unassessed",
+      "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "marty-biz",
+      "name": "Marty Biz Music",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": -3.6,
+      "net_event_susd": -3.6,
+      "posture": "debit-supported / closed",
+      "unpriced_negative_candidates": 1,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "txt",
+      "name": "TXT",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": -4,
+      "net_event_susd": -4,
+      "posture": "debit-supported / disputed relation",
+      "unpriced_negative_candidates": 1,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    }
+  ]
+}
