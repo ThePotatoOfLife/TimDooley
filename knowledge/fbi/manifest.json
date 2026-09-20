@@ -661,7 +661,8 @@
     "stories": "knowledge/fbi/story-links.json",
     "enhancements": "knowledge/fbi/enhancements-index.json",
     "conversations": "knowledge/fbi/conversation-recovery.json",
-    "tim_moral_symbolic_taxonomy": "knowledge/fbi/tim-moral-symbolic-taxonomy.json"
+    "tim_moral_symbolic_taxonomy": "knowledge/fbi/tim-moral-symbolic-taxonomy.json",
+    "presence": "knowledge/fbi/presence-index.json"
   },
   "public_surfaces": {
     "cabinet": "rooms/potatoverse-canon/beings/cia/",
@@ -714,7 +715,8 @@
       "Story links",
       "source provenance",
       "uncertainty",
-      "recovery leads"
+      "recovery leads",
+      "first/last recorded presence"
     ],
     "answerable_questions": [
       "Who is this figure in the archive?",
@@ -727,7 +729,10 @@
       "What evidence is missing and what should be recovered next?",
       "Why did Tim/project assign this role or placement in that dated scene?",
       "What decision, word, action or repeated pattern caused a debt/handicap relation?",
-      "What later event supplied repair credit or changed the state?"
+      "What later event supplied repair credit or changed the state?",
+      "When is this figure first recorded in the current archive?",
+      "When is this figure last recorded in the current archive?",
+      "What are the largest recovered gaps and later returns?"
     ]
   },
   "dossier_schema": {
