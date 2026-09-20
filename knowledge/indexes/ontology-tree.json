@@ -1,5 +1,5 @@
 {
-  "version": "5.3.0",
+  "version": "5.4.0",
   "title": "Potato of Life Canonical Ontology Tree",
   "root": "potato-of-life",
   "rule": "The ontology is a relational index over the permanent Potato House. House/Room/View/Path, Axis/lifecycle and evidence/provenance are distinct structures that may overlap without becoming one hierarchy.",
@@ -137,6 +137,7 @@
         "formalization": {
           "meaning": "explicit relational and mathematical models used to clarify the system without claiming scientific validation",
           "children": [
+            "project-formal-grammar",
             "timic-dynamics",
             "potato-dynamics",
             "state-space",
@@ -504,5 +505,6 @@
     "house-room-dossiers": "data/house/room-dossiers.json"
   },
   "promotion_rule": "Terms in this ontology are navigational concepts, not automatic files. Promote a term into its own canonical record only when its definition, development, relationships, teachings, evidence or literature can no longer be represented clearly inside its parent record.",
-  "updated": "2026-09-18"
+  "updated": "2026-09-18",
+  "formal_grammar": "data/project-formal-grammar.json"
 }
