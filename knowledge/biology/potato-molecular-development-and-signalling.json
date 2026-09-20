@@ -1,0 +1,178 @@
+{
+  "id": "potato-molecular-development-and-signalling",
+  "title": "Potato Molecular Development & Signalling — From Chromatin to Tuberization",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "owner_room": "potato-biology",
+  "status": "canonical molecular/developmental layer",
+  "purpose": "Connect genotype to developmental transitions through chromatin, RNA, protein signalling, hormones, sugar transport and metabolic reprogramming.",
+  "layers": [
+    {
+      "layer": "chromatin/epigenetics",
+      "mechanisms": [
+        "DNA methylation",
+        "histone modification",
+        "Polycomb/Trithorax regulation"
+      ],
+      "developmental_role": "modulates expression competence of tuberization, stress and developmental genes"
+    },
+    {
+      "layer": "epitranscriptome",
+      "mechanisms": [
+        "mRNA m6A and other RNA-level regulation"
+      ],
+      "developmental_role": "emerging regulatory layer in tuberization and environmental response"
+    },
+    {
+      "layer": "mobile RNA/protein signals",
+      "mechanisms": [
+        "StSP6A movement",
+        "StBEL5-associated long-distance signalling",
+        "small RNAs/phasiRNAs"
+      ],
+      "developmental_role": "coordinates source leaves with stolon developmental fate"
+    },
+    {
+      "layer": "hormones",
+      "mechanisms": [
+        "gibberellins",
+        "cytokinins",
+        "auxin",
+        "ABA",
+        "ethylene",
+        "strigolactones",
+        "jasmonates",
+        "salicylic acid",
+        "brassinosteroids"
+      ],
+      "developmental_role": "stage-specific interacting network rather than isolated switches"
+    },
+    {
+      "layer": "sugar signalling/transport",
+      "mechanisms": [
+        "sucrose status",
+        "SWEET/SUT transport",
+        "plasmodesmata",
+        "invertases"
+      ],
+      "developmental_role": "couples carbon availability to sink establishment and tuber growth"
+    },
+    {
+      "layer": "metabolic reprogramming",
+      "mechanisms": [
+        "starch biosynthesis",
+        "respiration",
+        "amino-acid and lipid metabolism",
+        "secondary metabolism"
+      ],
+      "developmental_role": "builds the storage phenotype after developmental commitment"
+    }
+  ],
+  "tuberization_network": {
+    "upstream_inputs": [
+      "photoperiod/daylength",
+      "temperature",
+      "sucrose/carbon status",
+      "developmental age",
+      "hormonal status"
+    ],
+    "key_nodes": [
+      "StCDF1",
+      "StCO1/2",
+      "StSP5G",
+      "StSP6A",
+      "StBEL5",
+      "StSWEET11/11b",
+      "gibberellin metabolic/signalling genes"
+    ],
+    "transport_switch": "At tuber onset, carbon unloading shifts from a predominantly apoplastic mode in elongating stolons toward symplastic unloading in the developing tuber.",
+    "StSP6A_sugar_link": "StSP6A can interact with StSWEET11-family transport activity, suppressing sucrose efflux to the apoplast and favoring symplastic allocation into tuber sink tissue.",
+    "chromatin_context": "Histone regulators including Polycomb-associated factors have been implicated in potato tuberization gene regulation.",
+    "modern_extension": "Recent reviews integrate epigenetic, epitranscriptomic, metabolic and mechanoperception/rhizosphere inputs into the classical photoperiod model."
+  },
+  "hormone_logic": {
+    "gibberellin": "Generally promotes elongation and tends to antagonize tuber initiation/expansion when elevated in stolon contexts.",
+    "cytokinin": "Participates in cell division, bud/sprout regulation and tuber development; effects depend on stage and concentration.",
+    "auxin": "Supports tuber initiation/growth and interacts with gibberellin and strigolactone pathways.",
+    "ABA": "Important in dormancy/stress networks and interacts with other hormones rather than acting alone.",
+    "ethylene": "Influences sprouting, stress and storage physiology; effect is context- and treatment-dependent.",
+    "strigolactone": "Participates in branching and below-ground developmental signalling, including crosstalk relevant to tuberization.",
+    "JA_SA": "Important defense/stress signals that also cross-talk with growth and source-sink programs."
+  },
+  "dormancy_and_sprouting": {
+    "controls": [
+      "cell-cycle status",
+      "hormone metabolism",
+      "ROS/antioxidant balance",
+      "sugar availability",
+      "epigenetic regulation",
+      "apical dominance"
+    ],
+    "redox": "Controlled ROS accumulation, including hydrogen peroxide signalling, participates in dormancy release/sprouting, balanced by antioxidant systems such as SOD and catalase.",
+    "key_rule": "Dormancy termination is a systems transition, not a single-molecule timer."
+  },
+  "starch_network": {
+    "compartments": [
+      "cytosol",
+      "amyloplast",
+      "vacuole during sugar storage/remodeling"
+    ],
+    "pathways": [
+      "sucrose cleavage",
+      "ADP-glucose formation",
+      "starch synthases",
+      "branching/debranching",
+      "phosphorylation/degradation",
+      "amylases"
+    ],
+    "cold_storage": "Cold can increase starch-to-sugar conversion; vacuolar invertase strongly contributes to glucose/fructose accumulation in cold-induced sweetening.",
+    "quality_link": "Starch composition and reducing-sugar accumulation affect texture, processing color and acrylamide precursor chemistry."
+  },
+  "omics_model": {
+    "genome": "what can be encoded",
+    "epigenome": "what is accessible/regulatorily marked",
+    "transcriptome": "what RNAs are produced",
+    "translatome_proteome": "what protein machinery is made",
+    "metabolome": "what small molecules and flux states result",
+    "phenome": "observable developmental, anatomical and agronomic outcomes",
+    "integration_rule": "A causal claim should state which layer was measured; correlation across layers is not automatically mechanism."
+  },
+  "sources": [
+    {
+      "title": "Unraveling the Intertwined Networks of Potato Tuberization: From Epitranscriptomic Signaling to Metabolic Reprogramming",
+      "year": 2026,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42653154/"
+    },
+    {
+      "title": "The molecular coordination of tuberization: Current status and future directions",
+      "year": 2024,
+      "url": "https://www.sciencedirect.com/science/article/pii/S1369526624001468"
+    },
+    {
+      "title": "Phytohormones: plant switchers in developmental and growth stages in potato",
+      "year": 2021,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8211815/"
+    },
+    {
+      "title": "A coordinated switch in sucrose and callose metabolism enables enhanced symplastic unloading in potato tubers",
+      "year": 2024,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11058582/"
+    },
+    {
+      "title": "Physiological and molecular mechanisms associated with potato tuber dormancy",
+      "year": 2024,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11480654/"
+    },
+    {
+      "title": "Understanding starch biosynthesis in potatoes for metabolic engineering to improve starch quality",
+      "year": 2024,
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39245484/"
+    }
+  ],
+  "connections": [
+    "potato-genetics-genomics-atlas",
+    "potato-life-cycle-state-machine",
+    "potato-anatomy-metabolism-ecology",
+    "potato-pathology-immunity-storage"
+  ]
+}
