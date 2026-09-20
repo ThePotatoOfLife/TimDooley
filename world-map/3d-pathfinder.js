@@ -3,6 +3,7 @@ if (!selection) throw new Error('Path requires current selection API.');
 const surface = window.__potatoAtlasInvestigationSurface;
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+const ROUTE_GEOMETRY_BOUNDARY = 'Map lines are schematic relationship chords, not surveyed transport, cable, pipeline, border, or physical route geometry.';
 let worldCfg = null;
 let currentPath = null;
 
@@ -120,7 +121,7 @@ function renderPath(start, target, path) {
   const mode = currentMode();
   if (titleNode()) titleNode().textContent = `${nameFor(start)} → ${nameFor(target)}`;
   if (!path) {
-    node.innerHTML = `<div class="path-empty">No represented path from ${esc(nameFor(start))} to ${esc(nameFor(target))}${mode === 'all' ? '' : ` under the ${esc(mode)} filter`}. This means “not represented in this dataset,” not “no real-world relationship exists.”</div><div class="path-boundary">This is a shortest path in the represented graph under the active filter, not necessarily the shortest or strongest relationship in the real world.</div>`;
+    node.innerHTML = `<div class="path-empty">No represented path from ${esc(nameFor(start))} to ${esc(nameFor(target))}${mode === 'all' ? '' : ` under the ${esc(mode)} filter`}. This means “not represented in this dataset,” not “no real-world relationship exists.”</div><div class="path-boundary">This is a shortest path in the represented graph under the active filter, not necessarily the shortest or strongest relationship in the real world. ${esc(ROUTE_GEOMETRY_BOUNDARY)}</div>`;
     return;
   }
   const steps = path.codes.map((code, index) => `${index ? '<span class="path-arrow">→</span>' : ''}<button type="button" class="path-step" data-path-code="${esc(code)}">${esc(nameFor(code))}</button>`).join('');
