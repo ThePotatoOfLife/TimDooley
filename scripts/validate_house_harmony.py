@@ -19,7 +19,7 @@ def main():
     dossiers=load("data/house/room-dossiers.json").get("dossiers",[])
     inhabitants=load("data/house/room-inhabitants.json").get("inhabitants",[])
     surfaces=load("data/house/public-surfaces.json").get("surfaces",[])
-    health=load("data/house/spatial-house-health-2026-09-20.json")
+    health=load("data/house/spatial-house-health.json")
 
     room_ids={x.get("id") for x in rooms if isinstance(x,dict)}
     sub_ids={x.get("id") for x in subs if isinstance(x,dict)}
