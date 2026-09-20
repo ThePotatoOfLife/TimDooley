@@ -245,6 +245,7 @@ async function hydrateSubdivisionPlaces(feature) {
   const rows = result.places || [];
   host.innerHTML = rows.length ? `
     <p class="muted"><b>${fmt(result.total)} mapped places</b> fall inside this subdivision · showing ${fmt(rows.length)} by population · source: ${esc(result.source || 'Places')}${result.datasetRefreshDate ? ` · refreshed ${esc(result.datasetRefreshDate)}` : ''}</p>
+    <div class="actions"><button type="button" data-subdivision-show-places aria-pressed="false">Show mapped places on map</button></div>
     <div class="card">${rows.map(place => {
       const p = place.properties || {};
       return `<button type="button" class="relation-button" data-subdivision-place="${esc(p.id || '')}">
@@ -253,6 +254,19 @@ async function hydrateSubdivisionPlaces(feature) {
       </button>`;
     }).join('')}</div>`
     : '<p class="muted">No mapped places in the current place snapshot fall inside this subdivision.</p>';
+  host.querySelector('[data-subdivision-show-places]')?.addEventListener('click', async event => {
+    const button = event.currentTarget;
+    button.disabled = true;
+    try {
+      const shown = await window.__potatoAtlasPlaces?.showSubdivision?.(feature, {limit:50});
+      if (shown?.shown) {
+        button.setAttribute('aria-pressed', 'true');
+        button.textContent = 'Mapped places shown';
+      }
+    } finally {
+      button.disabled = false;
+    }
+  });
   host.querySelectorAll?.('[data-subdivision-place]')?.forEach(button => {
     button.addEventListener('click', async () => {
       const placeId = button.dataset.subdivisionPlace;
