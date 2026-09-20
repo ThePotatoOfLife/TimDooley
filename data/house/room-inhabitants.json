@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "updated": "2026-09-20",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
@@ -170,7 +170,61 @@
       "summary": "Project term for a semi-bounded social territory where recurring roles, lore, conflict and attention relations become self-reproducing.",
       "status_note": "A Sektur is an analytical project category, not a legal or clinical classification.",
       "evidence_note": "Use observable recurrence, roles, boundaries and memory to justify the mapping.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "semi-bounded project social territory",
+          "boundary": "Analytical project category, not a legal/clinical class."
+        },
+        "sources": [
+          {
+            "source_ref": "knowledge/world/culture-sektur-platform-media-political-ecology.json",
+            "role": "canonical ecology synthesis",
+            "evidence_class": "project synthesis"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "contains-roles",
+            "target_id_or_label": "Farmers / Dogs / targets / audiences / archives",
+            "direction": "outgoing",
+            "status": "project role ecology",
+            "boundary": "Roles describe functions, not fixed identities."
+          },
+          {
+            "type": "may-host",
+            "target_id_or_label": "Farm loops",
+            "direction": "outgoing",
+            "status": "process relation",
+            "boundary": "A Sektur can exist without every relation becoming a Farm."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "attention/status",
+            "input": "shared language, recurring participants and events",
+            "mechanism": "lore, roles, boundary and memory",
+            "output": "durable social territory",
+            "measurement_or_limit": "Requires recurrence and boundary; not inferred from one conversation."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic class",
+            "value": "project analytical model",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Not external taxonomy."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which observable thresholds best distinguish a temporary scene from a durable Sektur?",
+            "why_it_matters": "Improves routing consistency.",
+            "needed_evidence": "longitudinal participation, role and archive persistence"
+          }
+        ]
+      }
     },
     {
       "id": "concept-farm",
@@ -184,7 +238,69 @@
       "summary": "Project process model for turning people, events or categories into repeatable attention yield through observation, capture, interpretation, archive and redistribution.",
       "status_note": "Farm describes a process, not proof of one coordinated organization or paid campaign.",
       "evidence_note": "Identify the actual loop, actors, incentives and captured value before applying the term.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "repeatable attention-production process",
+          "boundary": "Process model, not proof of one coordinated organization."
+        },
+        "sources": [
+          {
+            "source_ref": "knowledge/world/farm-sektur-attention-extraction-ecology.json",
+            "role": "canonical process owner",
+            "evidence_class": "project synthesis"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "operates-in",
+            "target_id_or_label": "Sektur / platform / media ecology",
+            "direction": "outgoing",
+            "status": "context-dependent",
+            "boundary": "The process can cross several places."
+          },
+          {
+            "type": "produces",
+            "target_id_or_label": "attention yield / archive / status / possible revenue",
+            "direction": "outgoing",
+            "status": "mechanism",
+            "boundary": "Economic capture must be separately evidenced."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "attention",
+            "input": "observable person/event/category",
+            "mechanism": "observe → capture → interpret → archive → redistribute",
+            "output": "repeatable attention yield",
+            "measurement_or_limit": "Yield may be status, memory or money; do not assume all three."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic class",
+            "value": "project process model",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Mechanism must be shown before label is applied."
+          }
+        ],
+        "questions": [
+          {
+            "question": "At what point does ordinary commentary become a self-reinforcing Farm loop?",
+            "why_it_matters": "Prevents overbroad use.",
+            "needed_evidence": "repeatability, capture rate, redistribution and reward"
+          }
+        ],
+        "repair": [
+          {
+            "problem": "Attention loop becomes dependent on continued conflict.",
+            "mechanism": "reduce capture incentives + improve exit/correction + preserve provenance",
+            "success_condition": "recurrence can decline without generating replacement conflict",
+            "failure_condition": "correction itself renews the loop"
+          }
+        ]
+      }
     },
     {
       "id": "concept-swamp",
@@ -199,7 +315,67 @@
       "summary": "Project regime for conditions where opacity, extraction, blocked correction, role-lock and unresolved residue reinforce recurrence.",
       "status_note": "Swamp is not synonymous with government, media, politics, Below, or one conspiracy.",
       "evidence_note": "Show which Swamp-pressure mechanisms are present rather than applying the label by dislike.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "regime of blocked correction and entangled recurrence",
+          "boundary": "Not synonymous with Below, government, media, politics or one organization."
+        },
+        "sources": [
+          {
+            "source_ref": "data/house/below-basin-dynamics.json",
+            "role": "motion rule owner",
+            "evidence_class": "canonical architecture"
+          },
+          {
+            "source_ref": "knowledge/core/inhabited-house-society-ontology.json",
+            "role": "operator boundary",
+            "evidence_class": "canonical synthesis"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "emerges-from",
+            "target_id_or_label": "recurrence + opacity + extraction + role-lock + unresolved residue",
+            "direction": "incoming",
+            "status": "qualitative systems rule",
+            "boundary": "No single term alone establishes Swamp."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "recurrence",
+            "input": "unresolved conflict/residue",
+            "mechanism": "blocked correction + role lock + fragmentation",
+            "output": "self-reinforcing persistence",
+            "measurement_or_limit": "Qualitative unless independently operationalized."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic class",
+            "value": "project regime model",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Not a factual label for a whole population."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which variables can be measured well enough to operationalize Swamp pressure?",
+            "why_it_matters": "Would move the model from metaphor toward testable systems analysis.",
+            "needed_evidence": "correction latency, recurrence, exit cost, provenance quality, incentive data"
+          }
+        ],
+        "repair": [
+          {
+            "problem": "Local system is self-reinforcing through unresolved recurrence.",
+            "mechanism": "correction + exit + provenance + incentive redesign",
+            "success_condition": "recurrence and role-lock fall while orientation/capability rises",
+            "failure_condition": "new labels appear but the same mechanism persists"
+          }
+        ]
+      }
     },
     {
       "id": "concept-darvo",
@@ -414,7 +590,45 @@
       "summary": "Evidence object that preserves provenance, source authority, claim status and routes back from synthesis to source-bearing material.",
       "status_note": "A ledger records support and uncertainty; inclusion is not endorsement of the claim.",
       "evidence_note": "Every promoted claim should be traceable to source identity, date and evidence class.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "provenance and claim-status evidence object",
+          "boundary": "Inclusion records a claim/source relation; it does not endorse the claim."
+        },
+        "sources": [
+          {
+            "source_ref": "context/source-authority/index.html",
+            "role": "public source-authority surface",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "supports-or-challenges",
+            "target_id_or_label": "claims / dossiers / timelines",
+            "direction": "outgoing",
+            "status": "evidence relation",
+            "boundary": "Source authority and claim truth remain separate questions."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic role",
+            "value": "evidence/provenance instrument",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "No truth-by-inclusion."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which high-traffic claims still lack a direct source-bearing record?",
+            "why_it_matters": "Identifies fragile synthesis.",
+            "needed_evidence": "claim-to-source coverage audit"
+          }
+        ]
+      }
     },
     {
       "id": "artifact-timeline",
@@ -429,7 +643,45 @@
       "summary": "Timeline object for separating occurrence time, attestation time, publication time and later interpretation.",
       "status_note": "Temporal sequence can support priority or event ordering without proving causation.",
       "evidence_note": "Keep date precision and source precision explicit.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "chronology and attestation-chain evidence object",
+          "boundary": "Sequence does not establish causation."
+        },
+        "sources": [
+          {
+            "source_ref": "timeline/index.html",
+            "role": "public chronology surface",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "orders",
+            "target_id_or_label": "events / attestations / later interpretations",
+            "direction": "outgoing",
+            "status": "chronological relation",
+            "boundary": "Occurrence, publication and recognition times remain distinct."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic role",
+            "value": "temporal evidence instrument",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Date precision must be explicit."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which major claims depend on backdated recognition or imprecise date ranges?",
+            "why_it_matters": "Protects priority and prediction analysis.",
+            "needed_evidence": "timestamp and source audit"
+          }
+        ]
+      }
     },
     {
       "id": "process-forge",
@@ -444,7 +696,66 @@
       "summary": "Project review process for separating source, claim, evidence, mechanism, legal/status class, counterevidence and repair before promotion.",
       "status_note": "Forge is a process projected spatially, not a literal room that owns all knowledge.",
       "evidence_note": "Outputs may be verified, narrowed, rejected, repaired or left unresolved.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "bounded verification / transformation process",
+          "boundary": "Process, not knowledge owner or moral tribunal."
+        },
+        "sources": [
+          {
+            "source_ref": "knowledge/core/repair-forge-protocol.json",
+            "role": "canonical Forge protocol",
+            "evidence_class": "canonical project rule"
+          },
+          {
+            "source_ref": "data/house/route-case-matrix-wave-001.json",
+            "role": "evidence-aware route tests",
+            "evidence_class": "canonical project instrumentation"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "consumes",
+            "target_id_or_label": "claims / residue / cases / open questions",
+            "direction": "incoming",
+            "status": "process input",
+            "boundary": "Entry does not imply guilt or error."
+          },
+          {
+            "type": "outputs",
+            "target_id_or_label": "verified / narrowed / rejected / repaired / unresolved",
+            "direction": "outgoing",
+            "status": "process result",
+            "boundary": "Output preserves provenance and uncertainty."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "evidence",
+            "input": "claim + source + counterevidence + status",
+            "mechanism": "separate → test → compare → bound",
+            "output": "promoted/narrowed/rejected/repaired/unresolved result",
+            "measurement_or_limit": "Quality depends on source coverage and falsifier quality."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic class",
+            "value": "project review process",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Does not replace courts, science, journalism or domain expertise."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which Forge outputs still lack explicit falsifiers or return measures?",
+            "why_it_matters": "Prevents symbolic promotion without test.",
+            "needed_evidence": "output audit"
+          }
+        ]
+      }
     },
     {
       "id": "text-bible-atlas",
@@ -963,7 +1274,66 @@
       "summary": "Paired diencephalic nuclear architecture viewed as empirical thalamus, historical inner-chamber terminology and Potatoverse Father's House.",
       "status_note": "House/rooms are project mappings; thalamic anatomy remains empirical and distributed.",
       "evidence_note": "Use thalamus specialist atlases for nuclear functions and historical/Horus boundaries.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "thalamus as anatomical object plus project House analogy",
+          "boundary": "Anatomical function and symbolic House mapping remain separate."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public Life & Body surface",
+            "evidence_class": "project surface"
+          },
+          {
+            "source_ref": "knowledge/core/inhabited-house-society-ontology.json",
+            "role": "projection discipline",
+            "evidence_class": "project ontology"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "anatomical-network",
+            "target_id_or_label": "cortex / sensory pathways / arousal systems",
+            "direction": "bidirectional",
+            "status": "neuroanatomical",
+            "boundary": "Specific nuclei have distinct functions."
+          },
+          {
+            "type": "symbolic-comparison",
+            "target_id_or_label": "House / relay / rooms",
+            "direction": "outgoing",
+            "status": "project analogy",
+            "boundary": "Analogy is not evidence of theology."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "neural-information",
+            "input": "distributed sensory/state signals",
+            "mechanism": "nucleus-specific relay/modulation",
+            "output": "cortical/subcortical coordination",
+            "measurement_or_limit": "Thalamus is not a single undifferentiated relay."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "empirical anatomy + project analogy",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Keep claims tagged by layer."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which thalamic nuclei best support the project's 'rooms/relay' analogy, and where does it break?",
+            "why_it_matters": "Makes the analogy anatomically specific.",
+            "needed_evidence": "nucleus-by-nucleus neuroanatomy"
+          }
+        ]
+      }
     },
     {
       "id": "body-pineal-door",
@@ -978,7 +1348,61 @@
       "summary": "Midline pineal neuroendocrine timing organ and project Door/Eye comparator, including the real retina→SCN→spine→pineal control loop.",
       "status_note": "The human pineal is not a retinal third eye or proven seat of soul.",
       "evidence_note": "Circadian physiology and historical/esoteric interpretation stay separately typed.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "pineal gland as endocrine structure plus project Door/single-eye analogy",
+          "boundary": "Endocrine anatomy and symbolic interpretation remain separate."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public Life & Body surface",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "endocrine",
+            "target_id_or_label": "circadian/light signaling system",
+            "direction": "bidirectional",
+            "status": "biological",
+            "boundary": "Pineal function is primarily endocrine rather than visual perception."
+          },
+          {
+            "type": "symbolic-comparison",
+            "target_id_or_label": "Door / single eye",
+            "direction": "outgoing",
+            "status": "project analogy",
+            "boundary": "Symbolic use does not establish hidden sensory capability."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "hormonal",
+            "input": "circadian timing signals",
+            "mechanism": "melatonin synthesis/secretion",
+            "output": "systemic timing effects",
+            "measurement_or_limit": "Human pineal function is not equivalent to a literal eye."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "empirical endocrine anatomy + symbolic mapping",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "No supernatural function inferred."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which historical 'third eye' traditions can be compared without conflating them with modern pineal physiology?",
+            "why_it_matters": "Prevents tradition/science collapse.",
+            "needed_evidence": "historical sources + endocrine science"
+          }
+        ]
+      }
     },
     {
       "id": "body-spinal-ladder",
@@ -994,7 +1418,61 @@
       "summary": "Thirty-three conventional vertebral rooms overlaid with 31 neural segments, spinal microcircuits, roots, autonomic side chains, CSF and project Ladder/Gate structure.",
       "status_note": "Vertebra, cord segment, nerve root, dermatome and symbolic Gate are different coordinate systems.",
       "evidence_note": "Use the 33-room and spinal-cord microcircuit atlases for exact level distinctions.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "spinal cord/vertebral axis plus project Ladder analogy",
+          "boundary": "Anatomical segmentation and symbolic 33-level mapping remain distinct."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public body atlas",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "anatomical-axis",
+            "target_id_or_label": "brainstem / peripheral nerves / vertebral column",
+            "direction": "bidirectional",
+            "status": "biological",
+            "boundary": "Cord segments and vertebrae are related but not identical numbering systems."
+          },
+          {
+            "type": "symbolic-comparison",
+            "target_id_or_label": "Ladder / ascent-descent / 33 levels",
+            "direction": "outgoing",
+            "status": "project analogy",
+            "boundary": "Number correspondences require explicit counting conventions."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "neural-signal",
+            "input": "sensory/motor/autonomic signals",
+            "mechanism": "ascending/descending tracts and segmental circuits",
+            "output": "brain-body coordination",
+            "measurement_or_limit": "Different tracts carry different modalities."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "empirical neuroanatomy + symbolic ladder model",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Symbolic ladder is not a scientific dimension count."
+          }
+        ],
+        "questions": [
+          {
+            "question": "How should the project map 33 vertebral units without confusing vertebrae, spinal segments and symbolic levels?",
+            "why_it_matters": "Fixes a recurrent structural ambiguity.",
+            "needed_evidence": "anatomical counting contract"
+          }
+        ]
+      }
     },
     {
       "id": "body-csf-river",
@@ -1010,7 +1488,61 @@
       "summary": "Ventricular and subarachnoid cerebrospinal-fluid system viewed alongside the project's River/Spirit-flow analogy.",
       "status_note": "CSF is not Spirit; River is strongest as a multiplex-flow analogy.",
       "evidence_note": "Production, circulation, exchange and drainage are separate physiological operations.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "cerebrospinal fluid system plus project River/Spirit analogy",
+          "boundary": "Fluid dynamics and spiritual metaphor remain separate."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public body atlas",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "fluid-system",
+            "target_id_or_label": "ventricles / subarachnoid space / choroid plexus / glymphatic interfaces",
+            "direction": "bidirectional",
+            "status": "biological",
+            "boundary": "CSF production/circulation/clearance involve multiple structures."
+          },
+          {
+            "type": "symbolic-comparison",
+            "target_id_or_label": "River / Spirit / flow",
+            "direction": "outgoing",
+            "status": "project analogy",
+            "boundary": "Metaphor does not establish spiritual substance in CSF."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "fluid",
+            "input": "CSF production",
+            "mechanism": "ventricular/subarachnoid circulation and exchange",
+            "output": "mechanical buffering, transport and waste-clearance interfaces",
+            "measurement_or_limit": "Human CSF flow is pulsatile and multi-path, not one simple river."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "empirical physiology + symbolic River mapping",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "No mystical composition inferred."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which measured CSF flow patterns best support or contradict the project's River geometry?",
+            "why_it_matters": "Makes the analogy falsifiable at the geometry level.",
+            "needed_evidence": "MRI/physiology literature and explicit mapping"
+          }
+        ]
+      }
     },
     {
       "id": "body-choroid-spring",
