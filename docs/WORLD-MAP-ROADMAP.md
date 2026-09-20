@@ -128,6 +128,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. Work pro
 - [~] Add Russia through the same partition contract from a compact pinned ADM1 source. Generic reviewed-local ADM1 normalization is now implemented; source acquisition/review and Russia-specific representation checks remain.
 - [x] Normalize future ADM1 sources through one fail-closed importer that emits canonical partitions + descriptor sidecars without mutating the live registry.
 - [ ] Add further country partitions only after provenance, byte budget, search records and national-context readability pass the same validator.
+- [x] Make the generic subdivision inspector expose unknown-vs-known statistics, local names, boundary provenance/vintage and source-specific representation notes.
 - [ ] Keep dated occupation/control/front-line states in a separate conflict-context overlay family; never rewrite administrative partitions into live war geometry.
 
 ## NEXT — VERIFICATION + OBSERVABILITY
