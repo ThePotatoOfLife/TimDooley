@@ -4,6 +4,9 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Hydrology requires the core map.');
+if (!window.__potatoAtlasGeo) await import('./3d-geo-kernel.js');
+const geoKernel = window.__potatoAtlasGeo;
+if (!geoKernel?.normalizeLongitude) throw new Error('Hydrology requires the shared geospatial kernel.');
 if (!window.__potatoAtlasStyleLifecycle) {
   const { createStyleLifecycle } = await import('./3d-style-lifecycle.js');
   window.__potatoAtlasStyleLifecycle = createStyleLifecycle(map);
@@ -128,17 +131,61 @@ function riverThreshold() {
   if (zoom < 8.2) return 500;
   return 150;
 }
-function viewportEnvelope() {
-  const bounds = map.getBounds();
-  const west = Math.max(-180, bounds.getWest());
-  const east = Math.min(180, bounds.getEast());
-  const south = Math.max(-85, bounds.getSouth());
-  const north = Math.min(85, bounds.getNorth());
-  if (!(east > west && north > south)) return null;
-  return `${west},${south},${east},${north}`;
+function canonicalLongitudeEnvelopes(west, east, south, north) {
+  const rawWest = Number(west);
+  const rawEast = Number(east);
+  const clampedSouth = Math.max(-85, Number(south));
+  const clampedNorth = Math.min(85, Number(north));
+  if (![rawWest, rawEast, clampedSouth, clampedNorth].every(Number.isFinite) || !(clampedNorth > clampedSouth)) return [];
+
+  let span = rawEast - rawWest;
+  while (span <= 0) span += 360;
+  if (span >= 360) return [`-180,${clampedSouth},180,${clampedNorth}`];
+
+  const canonicalWest = geoKernel.normalizeLongitude(rawWest);
+  const unwrappedEast = canonicalWest + span;
+  if (unwrappedEast <= 180) {
+    return [`${canonicalWest},${clampedSouth},${unwrappedEast},${clampedNorth}`];
+  }
+
+  const canonicalEast = geoKernel.normalizeLongitude(unwrappedEast);
+  return [
+    `${canonicalWest},${clampedSouth},180,${clampedNorth}`,
+    `-180,${clampedSouth},${canonicalEast},${clampedNorth}`,
+  ];
 }
-function hydrologyRequestKey(envelope, threshold, zoom) {
-  const rounded = String(envelope || '').split(',').map(value => Number(value).toFixed(2)).join(',');
+function viewportEnvelopes() {
+  const bounds = map.getBounds();
+  return canonicalLongitudeEnvelopes(bounds.getWest(), bounds.getEast(), bounds.getSouth(), bounds.getNorth());
+}
+function mergeFeatureCollections(collections, identityKeys = []) {
+  const seen = new Set();
+  const features = [];
+  for (const collection of collections || []) {
+    for (const feature of collection?.features || []) {
+      let identity = '';
+      for (const key of identityKeys) {
+        const value = feature?.properties?.[key];
+        if (value != null && value !== '') {
+          identity = `${key}:${value}`;
+          break;
+        }
+      }
+      if (!identity && feature?.id != null) identity = `id:${feature.id}`;
+      if (!identity) identity = JSON.stringify([feature?.geometry || null, feature?.properties || null]);
+      if (seen.has(identity)) continue;
+      seen.add(identity);
+      features.push(feature);
+    }
+  }
+  return { type:'FeatureCollection', features };
+}
+function hydrologyRequestKey(envelopes, threshold, zoom) {
+  const values = Array.isArray(envelopes) ? envelopes : [envelopes];
+  const rounded = values
+    .filter(Boolean)
+    .map(envelope => String(envelope).split(',').map(value => Number(value).toFixed(2)).join(','))
+    .join(';');
   const regime = zoom < 5.2 ? 'regional' : zoom < 6.7 ? 'subregional' : zoom < 8.2 ? 'local' : 'detailed';
   return `${regime}|${threshold}|${rounded}`;
 }
@@ -170,15 +217,15 @@ async function refreshViewport() {
     reportStatus('zoom-needed', 'Zoom in to regional scale');
     return;
   }
-  const envelope = viewportEnvelope();
-  if (!envelope) {
-    setStatus('Hydrology · viewport crosses unsupported wrap');
-    reportStatus('error', 'Viewport crosses unsupported wrap');
+  const envelopes = viewportEnvelopes();
+  if (!envelopes.length) {
+    setStatus('Hydrology · invalid viewport');
+    reportStatus('error', 'Invalid viewport');
     return;
   }
 
   const threshold = riverThreshold();
-  const requestKey = hydrologyRequestKey(envelope, threshold, zoom);
+  const requestKey = hydrologyRequestKey(envelopes, threshold, zoom);
   if (shouldSkipHydrologyRequest(requestKey)) {
     const d = diagnostics();
     if (d) d.hydrologyDeduplicatedRefreshes += 1;
@@ -198,34 +245,44 @@ async function refreshViewport() {
   setStatus(`Hydrology · ${loadingMessage.toLowerCase()}`);
   reportStatus('loading', loadingMessage);
 
-  const basinUrl = queryUrl(BASIN_SERVICE, '1=1', '*', envelope);
-  const riverUrl = queryUrl(RIVER_SERVICE, `catch_skm>=${threshold}`, 'hyriv_id,main_riv,length_km,catch_skm,dis_av_cms,ord_stra', envelope);
-  const [basins, rivers] = await Promise.allSettled([
-    fetchGeoJSON(basinUrl, controller.signal),
-    fetchGeoJSON(riverUrl, controller.signal),
+  const basinRequests = envelopes.map(envelope =>
+    fetchGeoJSON(queryUrl(BASIN_SERVICE, '1=1', '*', envelope), controller.signal)
+  );
+  const riverRequests = envelopes.map(envelope =>
+    fetchGeoJSON(
+      queryUrl(RIVER_SERVICE, `catch_skm>=${threshold}`, 'hyriv_id,main_riv,length_km,catch_skm,dis_av_cms,ord_stra', envelope),
+      controller.signal
+    )
+  );
+  const [basinResults, riverResults] = await Promise.all([
+    Promise.allSettled(basinRequests),
+    Promise.allSettled(riverRequests),
   ]);
   if (serial !== requestSerial || !enabled) return;
 
-  let failures = 0;
-  if (basins.status === 'fulfilled') {
-    lastBasins = basins.value;
+  const basinCollections = basinResults.filter(result => result.status === 'fulfilled').map(result => result.value);
+  const riverCollections = riverResults.filter(result => result.status === 'fulfilled').map(result => result.value);
+  const basinFailures = basinResults.filter(result => result.status === 'rejected' && result.reason?.name !== 'AbortError');
+  const riverFailures = riverResults.filter(result => result.status === 'rejected' && result.reason?.name !== 'AbortError');
+  const failures = basinFailures.length + riverFailures.length;
+
+  if (basinCollections.length) {
+    lastBasins = mergeFeatureCollections(basinCollections, ['HYBAS_ID', 'hybas_id', 'OBJECTID']);
     map.getSource(BASIN_SOURCE)?.setData(lastBasins);
-  } else if (basins.reason?.name !== 'AbortError') {
-    failures += 1;
-    console.warn('HydroBASINS regional query unavailable:', basins.reason);
+  } else if (basinFailures.length) {
+    console.warn('HydroBASINS regional query unavailable:', basinFailures[0].reason);
   }
-  if (rivers.status === 'fulfilled') {
-    lastRivers = rivers.value;
+  if (riverCollections.length) {
+    lastRivers = mergeFeatureCollections(riverCollections, ['hyriv_id', 'HYRIV_ID', 'OBJECTID']);
     map.getSource(RIVER_SOURCE)?.setData(lastRivers);
-  } else if (rivers.reason?.name !== 'AbortError') {
-    failures += 1;
-    console.warn('HydroRIVERS regional query unavailable:', rivers.reason);
+  } else if (riverFailures.length) {
+    console.warn('HydroRIVERS regional query unavailable:', riverFailures[0].reason);
   }
 
   if (serial === requestSerial) {
     activeRequestKey = null;
     controller = null;
-    if (failures < 2 || lastBasins.features.length || lastRivers.features.length) completedRequestKey = requestKey;
+    if (basinCollections.length || riverCollections.length) completedRequestKey = requestKey;
   }
 
   setVisibility('visible');
