@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "updated": "2026-09-19",
+  "version": "1.1.0",
+  "updated": "2026-09-20",
   "authority": "non-euclidean-room-grammar",
   "title": "Recursive Room / Wormhole Door Grammar",
   "purpose": "Define how the Potato House behaves when every Dwelling and nested Room may become locally central while preserving one global Axis and canonical ownership.",
@@ -53,7 +53,7 @@
   "reconfiguration": {
     "on_enter_dwelling": "Show nested Rooms prominently; keep parent exit and global Elevator available.",
     "on_enter_nested_room": "Show registered adjacent nested Rooms around the viewer. Same-parent neighbors appear as local doors; cross-parent neighbors appear as wormholes.",
-    "on_enter_case": "Keep Room as architectural container while centering the selected case/object informationally.",
+    "on_enter_case": "Keep the nested Room and its Doors architecturally visible; move the selected inhabitant onto the center table. Expose type, active Room lens, alternate Room lenses, readable route, evidence boundary and return-to-Room action.",
     "on_escape": "Nested Room -> Dwelling -> Door/Axis -> World default."
   },
   "orientation_invariants": [
@@ -67,6 +67,12 @@
     "data/house/subrooms.json",
     "data/house/interfaces.json",
     "data/house/local-center-interface-patterns.json",
-    "data/house/topology.json"
-  ]
+    "data/house/topology.json",
+    "data/house/object-focus-contract.json"
+  ],
+  "object_focus": {
+    "authority": "data/house/object-focus-contract.json",
+    "rule": "Level 3 contents may become informational centers but never architectural or ownership centers.",
+    "lens_switch": "The same object may move between registered Room projections without duplicating the object."
+  }
 }
