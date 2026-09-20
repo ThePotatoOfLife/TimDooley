@@ -97,9 +97,11 @@
     "A role can change; retain old and new states with dates instead of overwriting history.",
     "Visual activity fading reflects archive recency/status only, never moral value or human worth.",
     "A Dooley Welfare counter may run only when a dossier explicitly enables it with a start date and rate; it is display-only project fiction, not money.",
-    "Portraits/evidence images require an explicit dossier-owned source reference; never guess a real person's identity from an unsourced image."
+    "Portraits/evidence images require an explicit dossier-owned source reference; never guess a real person's identity from an unsourced image.",
+    "Shared symbolic proxy images must be labeled as non-likeness role illustrations and may not be presented as portraits or documentary evidence."
   ],
   "contracts": {
-    "symbolic_account": "knowledge/cia/symbolic-account-contract.json"
+    "symbolic_account": "knowledge/cia/symbolic-account-contract.json",
+    "symbolic_images": "knowledge/cia/symbolic-image-pool.json"
   }
 }
