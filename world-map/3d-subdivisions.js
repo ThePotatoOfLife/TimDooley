@@ -2,6 +2,10 @@
 // Uses same-origin country partitions, one bounded shared rendering surface,
 // and the canonical right inspector (#panel).
 
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('selection-inspector', ['subdivision']);
+
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas subdivisions require the core map.');
 if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
@@ -310,10 +314,7 @@ function enforceCacheBudget(index, extraProtected = []) {
   syncDiagnostics();
 }
 function syncUrl(id) {
-  const url = new URL(location.href);
-  if (id) url.searchParams.set('subdivision', id);
-  else url.searchParams.delete('subdivision');
-  history.replaceState({}, '', url);
+  urlState.patch('selection-inspector', { set:{ subdivision:id || null } });
 }
 function selectSubdivision(partition, feature, options = {}) {
   if (!feature) return false;
