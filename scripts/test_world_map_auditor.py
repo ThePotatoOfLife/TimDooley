@@ -160,6 +160,18 @@ const node = document.createElement('div'); node.id = 'atlasThing';
             self.assertIn("Render Stack",finding.get("owner",""))
             self.assertIn("WM-006",proc.stdout)
 
+    def test_actionable_findings_must_have_queue_mapping(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            write_module(root,"3d-a.js","map.addSource('dup',{});")
+            write_module(root,"3d-b.js","map.addSource('dup',{});")
+            proc,report=run_auditor(root)
+            self.assertEqual(proc.returncode,1)
+            actionable=[f for f in report["findings"] if f["severity"] in {"error","warning"}]
+            self.assertTrue(actionable)
+            self.assertTrue(all(f.get("queue_id") and f.get("owner") for f in actionable))
+            self.assertEqual(report["summary"].get("unmapped_actionable"),0)
+
     def test_report_order_is_deterministic_ignoring_generated_at(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp); write_module(root,"3d-b.js","map.addSource('b',{});"); write_module(root,"3d-a.js","map.addSource('a',{});")
