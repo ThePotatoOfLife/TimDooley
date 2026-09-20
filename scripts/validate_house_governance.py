@@ -910,6 +910,16 @@ def validate_bidirectional_spiral_field(errors):
         for key in ('mountain','garden','tree','swamp','drain','root'):
             if key not in terrain:
                 errors.append(f'bidirectional spiral field missing terrain overlay: {key}')
+        ecology=field.get('section_ecology',{})
+        sections=[ecology.get('center',{})]+ecology.get('upper',[])+ecology.get('lower',[])
+        section_keys={x.get('key') for x in sections if isinstance(x,dict)}
+        for key in ('0','+1','+2','+3','+4','-1','-2','-3','-4'):
+            if key not in section_keys:
+                errors.append(f'section ecology missing sampled key: {key}')
+        if 'not stacked realms' not in ecology.get('rule','').casefold():
+            errors.append('section ecology must preserve sampled-section-not-realm rule')
+        if 'movable analytical cuts' not in ecology.get('room_mapping_rule','').casefold():
+            errors.append('section ecology must preserve movable Room projection rule')
         if not SPIRAL_RUNTIME.is_file():
             errors.append('missing shared bidirectional spiral runtime')
         else:
@@ -919,7 +929,7 @@ def validate_bidirectional_spiral_field(errors):
                     errors.append(f'bidirectional spiral runtime missing marker: {marker}')
         if not SPIRAL_STYLE.is_file():
             errors.append('missing shared bidirectional spiral styles')
-        for page in (ROOT/'axis/index.html',ROOT/'potato-of-life/index.html'):
+        for page in (ROOT/'axis/index.html',ROOT/'potato-of-life/index.html',ROOT/'house/index.html',ROOT/'below/index.html'):
             if not page.is_file():
                 errors.append(f'missing spiral public surface: {page.relative_to(ROOT)}')
                 continue
