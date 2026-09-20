@@ -45,7 +45,9 @@ CANONICAL_MARKERS = (
     "The point was not always to make something.",
     "A spiral is only different from a circle if something changes on the next pass.",
     "livestream-duration-and-100000-hour-threshold.json",
-    'site-tts.js',
+    'tts-reader.js',
+    'tts-drawer.js',
+    'longform-tts-adapter.js',
 )
 LEGACY_MARKERS = (
     'content="0; url=./"',
@@ -78,6 +80,8 @@ def main() -> None:
         fail("canonical page still links readers to the duplicate live-model page")
     if canonical.count('../story/#') < 4:
         fail("canonical page does not expose enough dated Story source doors")
+    if 'site-tts.js' not in canonical and not all(marker in canonical for marker in ('tts-reader.js','tts-drawer.js','longform-tts-adapter.js')):
+        fail("canonical page must load either shared site TTS or the self-contained TTS stack")
     story_anchors = ROOT / "data" / "100000-hour-story-anchors.json"
     if not story_anchors.exists():
         fail("missing 100000-hour story anchors registry")
