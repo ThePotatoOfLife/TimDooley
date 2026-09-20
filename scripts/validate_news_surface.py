@@ -32,6 +32,13 @@ except Exception as exc:
     errors.append(f"invalid data/news/sources.json: {exc}")
 
 for token in (
+    'class="news-filter-drawer"',
+    '<b>Refine coverage</b>',
+    'data-news-tabs',
+    'data-news-lenses',
+    'data-news-horizons',
+    'data-news-search',
+    'data-news-readable',
     'data-news-view="latest"',
     'data-news-view="briefing"',
     'data-news-view="clusters"',
@@ -93,6 +100,8 @@ if re.search(r"(?<!\$)\$\('\[data-news-horizon\]',horizons\)\.forEach", js):
     errors.append("News horizon controls must use $() node-list selection, not $() single-element selection")
 
 for token in (
+    ".news-filter-drawer",
+    ".news-filter-drawer>summary",
     ".news-pulse-grid",
     ".news-briefing",
     ".news-briefing-item",
@@ -112,7 +121,7 @@ for token in (
 ):
     require(css,token,"app/news.css")
 
-for token in ('data-news-mode="preview"','publisher-rss','app/news.js?v=20260920g','app/news.css?v=20260920g'):
+for token in ('data-news-mode="preview"','publisher-rss','app/news.js?v=20260920h','app/news.css?v=20260920h'):
     require(home,token,"index.html")
 require(house,'href="../news/">Current World</a>',"house/index.html")
 
