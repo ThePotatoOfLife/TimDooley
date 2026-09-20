@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "checked": "2026-09-20",
   "authority": "spatial-house-health",
   "scope": "recursive spatial House",
@@ -7,7 +7,12 @@
     "dwellings": 10,
     "nested_rooms": 38,
     "nested_room_interiors": 38,
-    "inhabitants": 31
+    "inhabitants": 45,
+    "inhabitant_maturity": {
+      "described": 15,
+      "case-ready": 21,
+      "faceted": 9
+    }
   },
   "checks": {
     "all_nested_rooms_have_valid_parent": true,
@@ -16,15 +21,25 @@
     "all_nested_room_interior_routes_exist": true,
     "journey_contract_registered": true,
     "object_focus_contract_registered": true,
-    "inhabitant_registry_registered": true
+    "object_facet_contract_registered": true,
+    "object_facet_maturity_registered": true,
+    "inhabitant_registry_registered": true,
+    "inhabitant_explorer_registry_driven": true
   },
+  "current_frontier": [
+    "Raise remaining described inhabitants toward faceted or case-ready maturity.",
+    "Upgrade mature real-world institutions to the full entity-dossier schema when evidence depth warrants it.",
+    "Add richer source IDs and dated observations rather than expanding symbolic prose.",
+    "Keep Room ownership, spatial projection, object focus and factual identity separate."
+  ],
   "invariants": [
     "Dwelling ownership remains separate from navigation projection.",
     "Nested Room interiors are homes/views, not duplicate knowledge owners.",
     "Cross-Dwelling wormholes require registered adjacency.",
     "Level 3 objects remain inhabitants even when centered.",
     "Journey memory remains browser-local navigation state.",
-    "Readable HTML routes remain available alongside spatial navigation."
+    "Readable HTML routes remain available alongside spatial navigation.",
+    "Facet maturity measures inspectability, not importance or truth."
   ],
   "source_records": [
     "data/house/rooms.json",
@@ -33,6 +48,8 @@
     "data/house/room-inhabitants.json",
     "data/house/non-euclidean-room-grammar.json",
     "data/house/journey-thread-contract.json",
-    "data/house/object-focus-contract.json"
+    "data/house/object-focus-contract.json",
+    "data/house/object-facet-contract.json",
+    "data/house/object-facet-maturity.json"
   ]
 }
