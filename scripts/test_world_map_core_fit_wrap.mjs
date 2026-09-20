@@ -11,7 +11,7 @@ assert.ok(hover.includes(appBoot), 'core boot must still load 3d-app.js through 
 assert.ok(hover.indexOf(geoBoot) < hover.indexOf(appBoot), 'geo kernel must be ready before core app deep-link fitting');
 
 assert.ok(app.includes('window.__potatoAtlasGeo'), 'core app must consume the shared geo kernel');
-assert.ok(app.includes('geo.antimeridianAwareBounds'), 'core fitting must use antimeridian-aware bounds');
+assert.ok(app.includes('geoKernel.antimeridianAwareBounds'), 'core fitting must use antimeridian-aware bounds');
 assert.ok(app.includes('map.getCenter()?.lng'), 'core fitting should anchor wrapped bounds near the current world copy');
 
 assert.ok(!app.includes('let minX=180,minY=90,maxX=-180,maxY=-90'), 'naïve single-country longitude min/max must be retired');
