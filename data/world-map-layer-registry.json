@@ -1,7 +1,7 @@
 {
   "id": "world-atlas-layer-registry",
-  "version": "1.5.0",
-  "updated": "2026-09-20",
+  "version": "1.6.0",
+  "updated": "2026-09-21",
   "status": "active-browser-registry",
   "purpose": "Browser-facing presentation registry for the World Relational Atlas. Canonical values remain owned by referenced source files; this registry declares how available and planned knowledge participates in the map/query engine.",
   "principles": [
@@ -1546,6 +1546,95 @@
       "source_path": "dataset_semantics.ids",
       "spatiality": "mixed",
       "notes": "Security-level international debt aggregates by issuer/currency/maturity; does not identify holders."
+    },
+    {
+      "id": "finance.multilateral-lenders",
+      "label": "Multilateral lenders",
+      "family": "finance",
+      "kind": "point-network",
+      "visual_channel": "point",
+      "epistemic_type": "observed",
+      "map_priority": "advanced",
+      "queryable": true,
+      "availability": "planned",
+      "source_owner": "data/world-financial-institution-topology.json",
+      "source_path": "layers.official-liquidity-and-multilateral-finance",
+      "spatiality": "mixed",
+      "notes": "Separate shareholder capital, institution borrowing and downstream lending/guarantees."
+    },
+    {
+      "id": "finance.market-infrastructure",
+      "label": "Financial infrastructure",
+      "family": "finance",
+      "kind": "point-network",
+      "visual_channel": "point",
+      "epistemic_type": "observed",
+      "map_priority": "advanced",
+      "queryable": true,
+      "availability": "planned",
+      "source_owner": "data/world-financial-institution-topology.json",
+      "source_path": "layers.market-infrastructure",
+      "spatiality": "mixed",
+      "notes": "Messaging, payments, FX settlement, clearing, custody and securities settlement are distinct functions."
+    },
+    {
+      "id": "finance.regulatory-standards",
+      "label": "Financial rules & supervision",
+      "family": "finance",
+      "kind": "institution-set",
+      "visual_channel": "card",
+      "epistemic_type": "observed",
+      "map_priority": "advanced",
+      "queryable": true,
+      "availability": "planned",
+      "source_owner": "data/world-financial-institution-topology.json",
+      "source_path": "layers.rules-supervision-resolution",
+      "spatiality": "nonspatial"
+    },
+    {
+      "id": "finance.institutional-investors",
+      "label": "Institutional investors",
+      "family": "finance",
+      "kind": "point-network",
+      "visual_channel": "point",
+      "epistemic_type": "observed",
+      "map_priority": "advanced",
+      "queryable": true,
+      "availability": "planned",
+      "source_owner": "data/world-financial-institution-topology.json",
+      "source_path": "layers.large-nonbank-capital-pools",
+      "spatiality": "mixed",
+      "notes": "Named holder nodes require published holdings; sector-class observations remain distinct from named institutions."
+    },
+    {
+      "id": "relation.portfolio-holdings",
+      "label": "Portfolio holdings",
+      "family": "relations",
+      "kind": "flow",
+      "visual_channel": "line",
+      "epistemic_type": "observed",
+      "map_priority": "advanced",
+      "queryable": false,
+      "availability": "planned",
+      "source_owner": "data/world-financial-institution-topology.json",
+      "source_path": "layers.holder-side-data",
+      "spatiality": "relation",
+      "notes": "Country-to-country holder-side securities positions from IMF PIP/CPIS or equivalent official holdings data."
+    },
+    {
+      "id": "relation.multilateral-finance",
+      "label": "Multilateral finance",
+      "family": "relations",
+      "kind": "flow",
+      "visual_channel": "line",
+      "epistemic_type": "observed",
+      "map_priority": "advanced",
+      "queryable": false,
+      "availability": "planned",
+      "source_owner": "data/world-financial-institution-topology.json",
+      "source_path": "layers.official-liquidity-and-multilateral-finance",
+      "spatiality": "relation",
+      "notes": "Keep member capital, bond funding, loans, grants and guarantees as separate directed edges."
     }
   ],
   "relation_families": [
@@ -1646,6 +1735,33 @@
         "member_of_monetary_system",
         "sets_monetary_policy_for"
       ]
+    },
+    {
+      "id": "portfolio-holdings",
+      "verbs": [
+        "holds_security",
+        "portfolio_asset_of"
+      ]
+    },
+    {
+      "id": "multilateral-finance",
+      "verbs": [
+        "subscribes_capital_to",
+        "issues_debt",
+        "lends_to",
+        "guarantees",
+        "grants_to"
+      ]
+    },
+    {
+      "id": "market-infrastructure",
+      "verbs": [
+        "messages_via",
+        "settles_through",
+        "clears_through",
+        "custodies_for",
+        "identified_by_lei"
+      ]
     }
   ],
   "source_contracts": {
@@ -1662,6 +1778,7 @@
     "placement": "data/map-layer-placement-matrix.json",
     "world_finance_foundation": "data/world-financial-system-foundation.json",
     "finance_debt_blueprint": "data/blueprints/finance-debt-blueprint.json",
-    "bis_banking_bonds": "data/bis-banking-bond-data.json"
+    "bis_banking_bonds": "data/bis-banking-bond-data.json",
+    "financial_institution_topology": "data/world-financial-institution-topology.json"
   }
 }
