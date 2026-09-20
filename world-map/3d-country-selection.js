@@ -176,7 +176,7 @@ function automaticRelationData(codes = activeCode ? [activeCode, ...pinnedCodes.
   for (const { edge, root } of chosen) {
     const a = by3[edge.a]?.latlng, b = by3[edge.b]?.latlng;
     if (!Array.isArray(a) || a.length !== 2 || !Array.isArray(b) || b.length !== 2) continue;
-    features.push({ type:'Feature', properties:{a:edge.a,b:edge.b,root,mode:'auto',relationMode,depth:1,types:(edge.types||[]).join(' · '),layer:edge.layer||'',raw:JSON.stringify(edge)}, geometry:{type:'LineString',coordinates:[[a[1],a[0]],[b[1],b[0]]]}});
+    features.push({ type:'Feature', properties:{a:edge.a,b:edge.b,root,mode:'auto',relationMode,depth:1,types:(edge.types||[]).join(' · '),layer:edge.layer||'',geometry_meaning:'relationship_chord',raw:JSON.stringify(edge)}, geometry:{type:'LineString',coordinates:[[a[1],a[0]],[b[1],b[0]]]}});
   }
   return { type:'FeatureCollection', features };
 }
