@@ -206,6 +206,19 @@ def main() -> int:
         return 2
 
     group = sys.argv[1]
+    # Repository hygiene must inspect the checkout before this runner creates its
+    # own generated diagnostics directory. Otherwise the validator flags the
+    # quality runner's fresh .quality-logs directory as if it were committed.
+    preflight_hygiene = None
+    if group == "core":
+        preflight = subprocess.run(
+            ["python", "scripts/validate_repo_hygiene.py"],
+            cwd=ROOT, text=True, capture_output=True, check=False,
+        )
+        preflight_hygiene = {
+            "return_code": preflight.returncode,
+            "output": (preflight.stdout or "") + (preflight.stderr or ""),
+        }
     group_dir = LOG_ROOT / group
     group_dir.mkdir(parents=True, exist_ok=True)
     results: list[dict] = []
@@ -217,13 +230,18 @@ def main() -> int:
         check_started = time.time()
         return_code = 0
         with log_path.open("w", encoding="utf-8") as log_handle:
-            for command in commands:
-                log_handle.write(f"$ {command}\n")
-                log_handle.flush()
-                rc = run_command(command, log_handle)
-                if rc != 0:
-                    return_code = rc
-                    break
+            if group == "core" and name == "Repository hygiene" and preflight_hygiene is not None:
+                log_handle.write("$ python scripts/validate_repo_hygiene.py  # preflight before .quality-logs creation\n")
+                log_handle.write(preflight_hygiene["output"])
+                return_code = int(preflight_hygiene["return_code"])
+            else:
+                for command in commands:
+                    log_handle.write(f"$ {command}\n")
+                    log_handle.flush()
+                    rc = run_command(command, log_handle)
+                    if rc != 0:
+                        return_code = rc
+                        break
         duration = round(time.time() - check_started, 2)
         status = "PASS" if return_code == 0 else "FAIL"
         results.append({
