@@ -20,6 +20,7 @@ COLLECTIONS=ROOT/'data/house/collections.json'
 DATA_HOLDINGS=ROOT/'data/house/data-holdings.json'
 ROOM_DOSSIERS=ROOT/'data/house/room-dossiers.json'
 SURFACES=ROOT/'data/house/public-surfaces.json'
+ROOM_INTERIORS=ROOT/'data/house/room-interiors.json'
 
 def load(path):
     return json.loads(path.read_text(encoding='utf-8'))
@@ -27,7 +28,7 @@ def load(path):
 def main():
     errors=[]
     try:
-        rooms=load(ROOMS); sub=load(SUBROOMS); topo=load(TOPOLOGY); interfaces=load(INTERFACES); vocab=load(VOCAB); projections=load(PROJECTIONS); census=load(STRUCTURAL_CENSUS); population=load(POPULATION); pulse=load(POPULATION_PULSE); federation=load(FEDERATION_SCALE); holdings=load(HOLDINGS); collections=load(COLLECTIONS); data_holdings=load(DATA_HOLDINGS); dossiers=load(ROOM_DOSSIERS); surfaces=load(SURFACES); schema=load(SCHEMA)
+        rooms=load(ROOMS); sub=load(SUBROOMS); topo=load(TOPOLOGY); interfaces=load(INTERFACES); vocab=load(VOCAB); projections=load(PROJECTIONS); census=load(STRUCTURAL_CENSUS); population=load(POPULATION); pulse=load(POPULATION_PULSE); federation=load(FEDERATION_SCALE); holdings=load(HOLDINGS); collections=load(COLLECTIONS); data_holdings=load(DATA_HOLDINGS); dossiers=load(ROOM_DOSSIERS); surfaces=load(SURFACES); schema=load(SCHEMA); interiors=load(ROOM_INTERIORS)
     except Exception as exc:
         print('HOUSE SUBROOM VALIDATION FAILED')
         print('-',exc)
@@ -38,6 +39,22 @@ def main():
     ids=[x.get('id') for x in rows]
     if len(ids)!=len(set(ids)): errors.append('duplicate nested Room IDs')
     if len(rows)<20: errors.append('nested Room registry is unexpectedly small')
+    interior_rows=[x for x in interiors.get('interiors',[]) if isinstance(x,dict)]
+    if len(interior_rows)!=len(rows): errors.append('Room interior registry must cover every nested Room')
+    if {x.get('subroom_id') for x in interior_rows}!={x.get('id') for x in rows}: errors.append('Room interior registry IDs drifted')
+    aliases=interiors.get('route_aliases',{})
+    for interior in interior_rows:
+        rid=interior.get('subroom_id')
+        route=interior.get('route','')
+        slug=route.strip('/').split('/')[-1] if route else ''
+        if rid==slug:
+            if interior.get('route_alias_status')=='intentional': errors.append(f'{rid} declares unnecessary route alias')
+            continue
+        alias=aliases.get(rid)
+        if not isinstance(alias,dict): errors.append(f'{rid} public route differs from internal id without route_aliases contract')
+        else:
+            if alias.get('route')!=route or alias.get('route_slug')!=slug: errors.append(f'{rid} route alias contract drift')
+            if interior.get('route_slug')!=slug or interior.get('route_alias_status')!='intentional': errors.append(f'{rid} interior alias metadata drift')
     surface_ids={x.get('id') for x in surfaces.get('surfaces',[]) if isinstance(x,dict)}
 
     for row in rows:
