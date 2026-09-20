@@ -454,7 +454,7 @@
           const direction=outgoing?'→ '+other:'← '+other;
           return '<div class="relation-row"><b>'+esc(direction)+'</b><em>'+esc(typeLabels[r.type]||r.type)+'</em><span>'+esc(r.description)+'</span></div>';
         }).join('');
-        operatorRelations.innerHTML='<h3>'+esc(x.label)+'</h3><p>'+esc(x.operation)+' · <b>Boundary:</b> '+esc(x.boundary)+'</p><div class="relation-list">'+(rendered||'<span class="boundary">No typed operator relations are registered yet.</span>')+'</div>';
+        const formal=x.formal_type?'<p class="boundary"><b>Formal type:</b> '+esc(x.formal_type.template)+' · '+esc(x.formal_type.schema||'')+(x.formal_type.primary_project_component?' · '+esc(x.formal_type.primary_project_component):'')+'</p>':'';operatorRelations.innerHTML='<h3>'+esc(x.label)+'</h3><p>'+esc(x.operation)+' · <b>Boundary:</b> '+esc(x.boundary)+'</p>'+formal+'<div class="relation-list">'+(rendered||'<span class="boundary">No typed operator relations are registered yet.</span>')+'</div>';
         if(updateUrl){const u=new URL(location.href);u.searchParams.set('operator',id);history.replaceState(null,'',u);}
       }
       operatorRoot.addEventListener('click',e=>{const b=e.target.closest('[data-operator]');if(b)renderOperator(b.dataset.operator)});
