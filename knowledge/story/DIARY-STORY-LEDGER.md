@@ -155,13 +155,15 @@ The ledger can grow indefinitely. When a new story is found, give it a date/wind
 Canonical backend owners: `knowledge/story/social-presence-ledger-2024-2025.json` and `knowledge/story/turning-corridor-chronicle-recovery-2025.json`.
 
 
-## FBI — Figures, Bonds & Incidents
+## CIA — Characters, Incidents & Associations
 
-The character archaeology now has a persistent bureau at `knowledge/fbi/` and `rooms/potatoverse-canon/beings/fbi/`.
+The character archaeology now has a persistent bureau at `knowledge/cia/` and `rooms/potatoverse-canon/beings/cia/`.
 
 - **Figures** — 20 deep dossiers currently cover Marty, Sammy, Port Monkey, Ledgeview, Rage, Juice, Tachy, Kale, Pondo, Anacondasin, Literally, Optimistique, Termite, Rahu, Matthew/MTClassic, Mediomu007, BigTech, Capy, TXT and Metalorian.
 - **Bonds** — source-derived co-presence and hand-carved relationship threads preserve changing relations instead of one timeless ally/enemy label.
 - **Incidents** — dated scenes that materially change knowledge of a figure, bond, role, boundary or creative artifact.
-- **Boundary** — FBI here means Figures, Bonds & Incidents. It is a Potatoverse archive acronym, not a real law-enforcement/intelligence agency.
+- **Boundary** — FBI here means Characters, Incidents & Associations. It is a Potatoverse archive acronym, not a real law-enforcement/intelligence agency.
 
 The bureau is Tim-centered because this repository is centered on Tim Dooley, but character files must also preserve each figure's ordinary life, independent traits, relationships with others and source ambiguity.
+
+- **20 Sep 2026 — CIA archive migration:** `CIA — Characters, Incidents & Associations` becomes the canonical character archive. `knowledge/fbi/` and `/beings/fbi/` are legacy compatibility surfaces only. Recent/semi-recent conversation intake now tracks Dim/TXT and other recovery leads without collapsing source strata.

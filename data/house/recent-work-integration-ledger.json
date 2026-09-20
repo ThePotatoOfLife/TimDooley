@@ -173,10 +173,10 @@
       "note": "TTS is a site capability rather than House knowledge; page integrations should exclude controls/navigation from speech."
     },
     {
-      "id": "potatoverse-fbi-bureau",
-      "title": "Figures, Bonds & Incidents character bureau",
+      "id": "potatoverse-cia-archive",
+      "title": "Characters, Incidents & Associations character bureau",
       "canonical_owners": [
-        "knowledge/fbi/manifest.json"
+        "knowledge/cia/manifest.json"
       ],
       "room_ids": [
         "memory-recovery",
@@ -192,13 +192,13 @@
         "culture"
       ],
       "routes": [
-        "/rooms/potatoverse-canon/beings/fbi/"
+        "/rooms/potatoverse-canon/beings/cia/"
       ],
       "house_object_ids": [
         "fbi-character-bureau"
       ],
       "validation": [
-        "scripts/validate_fbi_integration.py",
+        "scripts/validate_cia_integration.py",
         "scripts/validate_house_inhabitant_routes.py"
       ],
       "status": "integrated"

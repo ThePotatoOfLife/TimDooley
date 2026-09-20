@@ -112,11 +112,11 @@
       "source_file_count": 91
     },
     {
-      "id": "figures-bonds-incidents",
-      "title": "Figures, Bonds & Incidents",
+      "id": "characters-incidents-associations",
+      "title": "CIA — Characters, Incidents & Associations",
       "kind": "character-dossier / recovery collection",
       "source_prefixes": [
-        "knowledge/fbi/"
+        "knowledge/cia/"
       ],
       "public_surface_ids": [
         "story",
@@ -131,8 +131,11 @@
         "subculture-group-formation"
       ],
       "boundary": "The FBI collection assembles figures, relationships, incidents, chronology and source strata for retrieval. It is a Potatoverse archive collection, not the real FBI, not law enforcement, and not a replacement for each subject's canonical owner.",
-      "source_file_count": 40,
-      "public_route": "rooms/potatoverse-canon/beings/fbi/"
+      "source_file_count": 42,
+      "public_route": "rooms/potatoverse-canon/beings/cia/",
+      "name": "CIA — Characters, Incidents & Associations",
+      "source_root": "knowledge/cia/",
+      "status_note": "Canonical Potatoverse character archive. Legacy FBI routes are compatibility-only."
     }
   ]
 }

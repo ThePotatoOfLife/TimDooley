@@ -28,17 +28,17 @@
         "featured": [
           {
             "id": "fbi-incidents",
-            "path": "knowledge/fbi/incidents/index.json",
+            "path": "knowledge/cia/incidents/index.json",
             "kind": "dated character incident index"
           },
           {
             "id": "fbi-bonds",
-            "path": "knowledge/fbi/bonds/network.json",
+            "path": "knowledge/cia/associations/network.json",
             "kind": "figure relationship / co-presence network"
           },
           {
-            "id": "fbi-manifest",
-            "path": "knowledge/fbi/manifest.json",
+            "id": "cia-manifest",
+            "path": "knowledge/cia/manifest.json",
             "kind": "character dossier bureau manifest"
           },
           {
@@ -1001,8 +1001,8 @@
           "boundary": "Indexes route toward owners, sources and unresolved work; index membership is not itself truth or ownership."
         },
         {
-          "id": "figures-bonds-incidents",
-          "title": "Figures, Bonds & Incidents",
+          "id": "characters-incidents-associations",
+          "title": "Characters, Incidents & Associations",
           "kind": "character-dossier / recovery collection",
           "boundary": "Assembles character evidence and relations without becoming a substitute canonical owner."
         }
@@ -1174,8 +1174,8 @@
           "boundary": "Indexes route toward owners, sources and unresolved work; index membership is not itself truth or ownership."
         },
         {
-          "id": "figures-bonds-incidents",
-          "title": "Figures, Bonds & Incidents",
+          "id": "characters-incidents-associations",
+          "title": "Characters, Incidents & Associations",
           "kind": "character-dossier / recovery collection",
           "boundary": "Assembles character evidence and relations without becoming a substitute canonical owner."
         }
