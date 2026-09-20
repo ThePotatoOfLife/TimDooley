@@ -1,0 +1,107 @@
+{
+  "id": "cia-mud-bank-snapshot-2026-09-21",
+  "title": "CIA Mud Bank — Current Desk Balance Snapshot",
+  "as_of": "2026-09-21T00:00:00Z",
+  "denomination": "fictional sUSD-equivalent",
+  "welfare_rate_per_second": 1e-11,
+  "method": "Welfare from exact/override story-entry dates plus explicit event weights from knowledge/cia/mud-bank-contract.json. Dispute/entanglement alone is zero-weight.",
+  "boundary": "Approximate project accounting only; not money, compensation, objective morality, legal debt, guilt, creditworthiness or human worth.",
+  "accounts": [
+    {
+      "id": "dim",
+      "welfare_as_of": 0.000065664,
+      "event_adjustment": 0,
+      "approx_balance": 0.000065664,
+      "posture": "mixed/disputed",
+      "basis": [
+        "open zero-weight public conflict/relation dispute"
+      ],
+      "note": "No sourced debit or credit assigned yet."
+    },
+    {
+      "id": "txt",
+      "welfare_as_of": 0.000507168,
+      "event_adjustment": 0,
+      "approx_balance": 0.000507168,
+      "posture": "mixed/disputed",
+      "basis": [
+        "open zero-weight current conflict/relation dispute"
+      ],
+      "note": "No sourced debit or credit assigned yet."
+    },
+    {
+      "id": "matthew-mtclassic",
+      "welfare_as_of": 8.64e-7,
+      "event_adjustment": 25,
+      "approx_balance": 25.000000864,
+      "posture": "constructive-positive",
+      "basis": [
+        "project-credit: moderation advice +25",
+        "achievement: gaming persistence 0"
+      ],
+      "note": "Achievement retained as texture rather than moral credit."
+    },
+    {
+      "id": "mediomu007",
+      "welfare_as_of": 0.000024192,
+      "event_adjustment": 20,
+      "approx_balance": 20.000024192,
+      "posture": "constructive-positive / repair-active",
+      "basis": [
+        "repair-attempt +8",
+        "yield: room-making +12"
+      ],
+      "note": "Bridge-building remains interpretive; ordinary room-making is documentary."
+    },
+    {
+      "id": "rahu",
+      "welfare_as_of": 0.000593568,
+      "event_adjustment": 6,
+      "approx_balance": 6.000593568,
+      "posture": "growth-positive",
+      "basis": [
+        "growth: 1/137 symbolic growth +6"
+      ],
+      "note": "Growth is a project-symbolic event, not an objective measure."
+    },
+    {
+      "id": "port-monkey",
+      "welfare_as_of": 0.000593568,
+      "event_adjustment": 8,
+      "approx_balance": 8.000593568,
+      "posture": "repair-in-progress",
+      "basis": [
+        "repair-attempt: seed / grievance-healing proposal +8"
+      ],
+      "note": "No completed reconciliation inferred."
+    },
+    {
+      "id": "gg",
+      "welfare_as_of": 0.000593568,
+      "event_adjustment": 8,
+      "approx_balance": 8.000593568,
+      "posture": "repair-in-progress",
+      "basis": [
+        "repair-attempt: reported grievance/healing proposal +8"
+      ],
+      "note": "Proposal is reported through recovered material; outcome unresolved."
+    },
+    {
+      "id": "tim-dooley",
+      "welfare_as_of": 0.001810944,
+      "event_adjustment": 12,
+      "approx_balance": 12.001810944,
+      "posture": "treasury/operator / constructive-positive",
+      "basis": [
+        "welfare start override: 2020-12-25",
+        "+12 yield: stewardship/building doctrine"
+      ],
+      "note": "Tim's account is the archive operator/root and is not directly comparable to ordinary character sub-ledgers."
+    }
+  ],
+  "interpretation_rules": [
+    "positive balance means the weighted project ledger currently contains constructive/repair/growth entries; it does not mean a person is morally good.",
+    "mixed/disputed means conflict exists but evidence is not strong enough to price as debit or credit.",
+    "negative posture requires at least one explicit source-bounded project-debit event; none of the current-desk accounts receives one in this snapshot."
+  ]
+}
