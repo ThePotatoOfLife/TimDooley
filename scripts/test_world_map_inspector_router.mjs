@@ -50,4 +50,29 @@ assert.equal(typeof serial.stack[0].render, 'undefined');
 router.setBaseline({ type:'country', id:'SWE', owner:'country', restore:() => calls.push(['country','SWE']) });
 assert.deepEqual(router.state().stack.map(row => `${row.type}:${row.id}`), ['country:SWE']);
 
+// Keyboard/focus contract: opening a child inspector focuses its heading;
+// backing out restores the control that invoked the child.
+const trigger = { isConnected:true, focused:false, focus(){ this.focused=true; } };
+const heading = {
+  isConnected:true, focused:false, attrs:new Map(),
+  focus(){ this.focused=true; },
+  hasAttribute(name){ return this.attrs.has(name); },
+  setAttribute(name,value){ this.attrs.set(name,value); },
+};
+const panel = { querySelector(){ return heading; } };
+global.document = {
+  activeElement:trigger,
+  body:{},
+  documentElement:{},
+  getElementById(id){ return id === 'panel' ? panel : null; },
+};
+const focusRouter = createInspectorRouter({emit:()=>{}});
+focusRouter.setBaseline({type:'country',id:'DNK',owner:'country',restore:()=>{}});
+focusRouter.open({type:'subdivision',id:'DK-83',owner:'subdivisions',parent:{type:'country',id:'DNK'},render:()=>{}});
+await Promise.resolve();
+assert.equal(heading.focused,true,'opening a child inspector should focus the rendered heading');
+focusRouter.back();
+await Promise.resolve();
+assert.equal(trigger.focused,true,'Inspector Back should restore the invoking control');
+
 console.log('WORLD MAP INSPECTOR ROUTER REGRESSION PASSED');
