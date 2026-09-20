@@ -1,7 +1,7 @@
 {
   "id": "fbi-incidents-index",
   "title": "FBI Incidents — Dated Character Events",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-20",
   "incident_rule": "An incident is a dated or bounded scene that materially changes knowledge of a figure, bond, role, boundary, or project artifact. It is not synonymous with wrongdoing.",
   "incidents": [
@@ -621,6 +621,156 @@
         "room-making"
       ],
       "source": "story-content/2026-09-20-matthew-mediomu.html"
+    },
+    {
+      "id": "inc-conv-2026-06-06-matthew-server-donation",
+      "date": "2026-06-06",
+      "title": "Matthew chooses the server and donates $15",
+      "figures": [
+        "matthew-mtclassic",
+        "tim-dooley"
+      ],
+      "type": [
+        "conversation-recovery",
+        "support",
+        "platform",
+        "money"
+      ],
+      "source": "knowledge/fbi/conversation-recovery.json",
+      "source_mode": "conversation_recovery",
+      "summary": "Recovered chat has Matthew saying he is in the server because he wants to be and making a $15 donation while conflict with Dim continues.",
+      "boundary": "Attributed conversation record; motives and relationship status are not inferred from the donation."
+    },
+    {
+      "id": "inc-conv-2026-06-10-matthew-potato-theology",
+      "date": "2026-06-10",
+      "title": "Matthew's Potato theology banter",
+      "figures": [
+        "matthew-mtclassic",
+        "tim-dooley"
+      ],
+      "type": [
+        "conversation-recovery",
+        "theology",
+        "humor"
+      ],
+      "source": "knowledge/fbi/conversation-recovery.json",
+      "source_mode": "conversation_recovery",
+      "summary": "Matthew says 'potato is right', jokes about needing 110 IQ to understand the Potato of Life, and continues with playful near-agreement language.",
+      "boundary": "Scene-bound public-chat speech; not a permanent religious classification."
+    },
+    {
+      "id": "inc-conv-2026-08-13-matthew-moderation",
+      "date": "2026-08-13",
+      "title": "Matthew gives moderation and boundary advice",
+      "figures": [
+        "matthew-mtclassic",
+        "tim-dooley"
+      ],
+      "type": [
+        "conversation-recovery",
+        "moderation",
+        "boundary"
+      ],
+      "source": "knowledge/fbi/conversation-recovery.json",
+      "source_mode": "conversation_recovery",
+      "summary": "Matthew argues persistent trolls should be banned, says they have caused harm, and says he will take Tim's lead.",
+      "boundary": "Supports a defender/moderation function in this scene only."
+    },
+    {
+      "id": "inc-conv-2026-08-20-matthew-elden-ring",
+      "date": "2026-08-20",
+      "title": "Matthew explains Elden Ring mechanics",
+      "figures": [
+        "matthew-mtclassic",
+        "tim-dooley"
+      ],
+      "type": [
+        "conversation-recovery",
+        "ordinary-presence",
+        "game"
+      ],
+      "source": "knowledge/fbi/conversation-recovery.json",
+      "source_mode": "conversation_recovery",
+      "summary": "Conversation covers collectible plants, item collection, weapon upgrades, DLC and slow leveling.",
+      "boundary": "Ordinary gaming continuity; no symbolic interpretation required."
+    },
+    {
+      "id": "inc-conv-2026-09-05-mediomu-religion",
+      "date": "2026-09-05",
+      "title": "Mediomu rejects religious traditions and Tim myths",
+      "figures": [
+        "mediomu007",
+        "tim-dooley"
+      ],
+      "type": [
+        "conversation-recovery",
+        "theology",
+        "skepticism",
+        "comparative-religion"
+      ],
+      "source": "knowledge/fbi/conversation-recovery.json",
+      "source_mode": "conversation_recovery",
+      "summary": "Mediomu says he rejects religious traditions, Christian Bibles and Tim myths, does not believe Tim is God, and argues that religions divide people.",
+      "boundary": "Documents expressed disagreement in that conversation, not a permanent worldview."
+    },
+    {
+      "id": "inc-conv-2026-09-06-mediomu-matthew-theology",
+      "date": "2026-09-06",
+      "title": "God or myth? Mediomu challenges; Matthew answers",
+      "figures": [
+        "mediomu007",
+        "matthew-mtclassic",
+        "tim-dooley"
+      ],
+      "type": [
+        "conversation-recovery",
+        "theology",
+        "debate",
+        "boundary"
+      ],
+      "source": "knowledge/fbi/conversation-recovery.json",
+      "source_mode": "conversation_recovery",
+      "summary": "Mediomu challenges Tim's divinity claims and AI-mediated speech while Matthew is reported using 'we are gods' and a Trinity-like framing.",
+      "boundary": "Attributed chat positions; none of the theological claims are independently established by the incident record."
+    },
+    {
+      "id": "inc-conv-2026-09-20-matthew-controller",
+      "date": "2026-09-20",
+      "title": "Matthew's controller and Senessax victory",
+      "figures": [
+        "matthew-mtclassic",
+        "tim-dooley"
+      ],
+      "type": [
+        "conversation-recovery",
+        "ordinary-presence",
+        "game",
+        "humor"
+      ],
+      "source": "knowledge/fbi/conversation-recovery.json",
+      "source_mode": "conversation_recovery",
+      "summary": "Matthew reports a new controller, jokes about one day without games, plans to inspect the site and says he defeated Ancient Dragon Senessax after 20+ attempts.",
+      "boundary": "Dragon-slayer language is literal game banter, not a supernatural claim."
+    },
+    {
+      "id": "inc-conv-2026-09-20-mediomu-room",
+      "date": "2026-09-20",
+      "title": "Mediomu rearranges and cleans his room",
+      "figures": [
+        "mediomu007",
+        "tim-dooley"
+      ],
+      "type": [
+        "conversation-recovery",
+        "ordinary-presence",
+        "home",
+        "room-making"
+      ],
+      "source": "knowledge/fbi/conversation-recovery.json",
+      "source_mode": "conversation_recovery",
+      "summary": "Mediomu describes moving the TV, console, bed, desk and nightstand and reports a clean room.",
+      "boundary": "Literal household detail; Builder/Cultivator symbolism is a separate project interpretation."
     }
   ],
   "coverage_note": "Incident means a bounded dated event, not wrongdoing. Chronicle social-presence days are indexed as recovery incidents."
