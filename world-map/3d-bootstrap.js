@@ -163,7 +163,6 @@ try {
   declareDormant('Infrastructure Context', './3d-infrastructure.js', 'first country inspection');
   declareDormant('Impact Trace', './3d-impact-trace.js', 'first country inspection or explicit Impact action');
   declareDormant('Impact Actions', './3d-impact-actions.js', 'first country inspection');
-  declareDormant('Lenses', './3d-lenses.js', 'legacy compatibility');
   declareDormant('Path finder', './3d-pathfinder.js', 'contextual investigation');
   declareDormant('Entity Trace', './3d-entity-trace.js', 'country-card contextual action');
   declareDormant('Demography', './3d-demography.js', 'first country inspection');
