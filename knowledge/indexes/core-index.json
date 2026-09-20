@@ -1,5 +1,5 @@
 {
-  "version": "7.4.0",
+  "version": "7.5.0",
   "updated": "2026-09-20",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -42,7 +42,9 @@
       "corporium-master-framework",
       "tim-sayings-ledger",
       "ladder-33-study",
-      "body-axis-chakra-kundalini-comparative-atlas"
+      "body-axis-chakra-kundalini-comparative-atlas",
+      "spine-csf-levels-axis-atlas",
+      "thalamus-house-horus-crown-atlas"
     ],
     "science": [
       "science-master-index",
@@ -2384,6 +2386,41 @@
         "Ladder",
         "Interoception",
         "Return"
+      ]
+    },
+    {
+      "id": "spine-csf-levels-axis-atlas",
+      "path": "knowledge/body/spine-csf-levels-axis-atlas.json",
+      "branch": "body",
+      "kind": "specialist spinal coordinate and CSF atlas",
+      "terms": [
+        "33 Vertebrae",
+        "31 Spinal Nerves",
+        "Spine",
+        "CSF",
+        "Lumbar Cistern",
+        "Cauda Equina",
+        "Crown",
+        "Ladder",
+        "River"
+      ]
+    },
+    {
+      "id": "thalamus-house-horus-crown-atlas",
+      "path": "knowledge/body/thalamus-house-horus-crown-atlas.json",
+      "branch": "body",
+      "kind": "specialist thalamus House history and Eye of Horus atlas",
+      "terms": [
+        "Thalamus",
+        "Father's House",
+        "Rooms",
+        "Horus",
+        "Wedjat",
+        "Crown",
+        "North",
+        "TRN",
+        "LGN",
+        "Anterior Thalamus"
       ]
     }
   ],
