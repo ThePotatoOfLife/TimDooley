@@ -157,7 +157,7 @@ Drain only after unique behavior is preserved and tested:
 
 - [x] `world-map/3d-ui.js` — retired after canonical World Bar / Panel Lifecycle / presentation owners replaced its normal-boot responsibilities.
 - [x] `world-map/3d-selection-ui.js` — retired after Country Selection / Layer Registry / Country Card replaced its compatibility surface.
-- [ ] old Lens ownership after registry/compositor parity
+- [x] old Lens ownership after registry/compositor parity — retired; canonical Layer Registry + Compositor own analytical state.
 - [ ] old Atlas naming/routing remnants
 - [ ] remaining duplicated style/lifecycle ownership not yet under Style Lifecycle
 - [ ] `__potatoAtlasOverlayHandled` after direct standalone/degraded interaction fallbacks are retired
