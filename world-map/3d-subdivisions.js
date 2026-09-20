@@ -4,6 +4,8 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas subdivisions require the core map.');
+if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
+const motion = window.__potatoAtlasMotion;
 if (!window.__potatoAtlasGeo) await import('./3d-geo-kernel.js');
 const geo = window.__potatoAtlasGeo;
 if (!geo) throw new Error('Atlas subdivisions require the shared geospatial kernel.');
@@ -280,7 +282,7 @@ function selectSubdivision(partition, feature, options = {}) {
   pendingDeepLinkId = null;
   syncUrl(selectedId);
   const bounds = subdivisionBounds(feature);
-  if (options.fit !== false && bounds) map.fitBounds(bounds, { padding:80, duration:650, maxZoom:7.4 });
+  if (options.fit !== false && bounds) motion.fitBounds(map, bounds, { padding:80, duration:650, maxZoom:7.4 });
   openInspector(feature);
   window.dispatchEvent(new CustomEvent('potato-atlas-subdivision-select', { detail:{ partition, id:selectedId, properties:p, feature } }));
   return true;
