@@ -1,5 +1,5 @@
 {
-  "version": "4.4.0",
+  "version": "4.5.0",
   "updated": "2026-09-20",
   "authority": "house-navigation-manifest",
   "purpose": "Resolve which existing owner governs each structural concern so new work deepens the right place instead of creating parallel masters. This manifest is an index over authorities, not another ontology, navigation hierarchy or presentation plan.",
@@ -330,9 +330,9 @@
       "rule": "Centers cases, entities, concepts and artifacts inside a nested Room without promoting them into architecture or changing ownership; alternate Room lenses remain projections of the same object."
     },
     {
-      "concern": "recursive spatial House integrity snapshot",
-      "owner": "data/house/spatial-house-health-2026-09-20.json",
-      "rule": "Records validated counts and referential-integrity state for Dwellings, nested Rooms, interiors, inhabitants, wormholes, journey memory and object focus as of the snapshot date."
+      "concern": "live recursive spatial House integrity",
+      "owner": "data/house/spatial-house-health.json",
+      "rule": "Owns the current validated counts and referential-integrity state for Dwellings, nested Rooms, interiors, inhabitants, wormholes, journey memory and object focus. Dated health files are historical snapshots only."
     },
     {
       "concern": "cross-project Life & Body object projection",
