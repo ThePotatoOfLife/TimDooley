@@ -91,9 +91,9 @@
 **Guard:** dedicated degraded-Inspector regression rejects module-boot Inspector caching and verifies fallback + typed promotion; interaction and Style Lifecycle validators cover Router and style-generation recovery.
 
 ### WM-016 · State/subdivision national-context readability — P2
-**Status:** substantially fixed.  
-**Completed:** canonical USA partition is validator-checked at 50 states + DC including Alaska, Hawaii and DC; narrow-screen labels defer to reduce clutter; the selected subdivision gets a guaranteed overlap-tolerant label; resize behavior and bounded-runtime regressions are enforced.  
-**Remaining:** continue visual review in globe mode and dense Northeast cases as style/scale behavior evolves.
+**Status:** fixed / governed for current subdivision coverage on main (2026-09-20), pending exact-head CI confirmation.  
+**Resolution:** canonical USA partition is validator-checked at 50 states + DC including Alaska, Hawaii and DC; generic labels defer on narrow screens and receive an additional modest delay in globe projection where surface compression increases crowding. The selected subdivision retains its own overlap-tolerant label at the normal render threshold, so the user's chosen state/region remains readable while ambient labels thin out. Projection and resize changes resynchronize the policy.  
+**Guard:** readability validator requires narrow/globe density controls, selected-label lifecycle, AK/HI/DC coverage and bounded subdivision runtime behavior.
 
 ### WM-017 · Evidence-layer source refresh contract should be generic — P2
 **Status:** fixed on main (2026-09-20).  
