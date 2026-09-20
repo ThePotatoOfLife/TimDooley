@@ -55,10 +55,12 @@
 **Resolution:** Progressive UI (`3d-ui.js`) and Selection UI (`3d-selection-ui.js`) are rejected from the live bootstrap; World Bar, Country Selection, Compositor, UI Layout and Panel Lifecycle own their former responsibilities. Legacy `3d-lenses.js` remains as source compatibility/reference code but is no longer registered as a live dormant bootstrap module.  
 **Guard:** core/browse/inspector validators reject reintroduction of Progressive/Selection UI into normal boot; visual-channel validation prevents legacy UI paint ownership from returning.
 
-### WM-009 · Interaction compatibility marker still exists — P3 until degraded paths retire
-**Status:** bounded compatibility debt.  
-**Owner:** Interaction Router.  
-**Next:** remove only after direct/degraded standalone paths have canonical Router boot and tests.
+### WM-009 · Interaction compatibility marker still exists — P3
+**Status:** intentional governed compatibility on main (2026-09-20).  
+**Owner:** Interaction Router + core fallback boundary.  
+**Resolution:** normal routed interaction claims handled pointer events inside the shared Router. The legacy `__potatoAtlasOverlayHandled` marker remains only for explicitly supported degraded/direct fallback handlers so the core country fallback cannot double-handle the same pointer event when the Router is unavailable.  
+**Guard:** `test_world_map_interaction_compatibility.mjs` fixes the allowed marker counts/modules and requires each specialist claim to remain inside its degraded fallback region.  
+**Retirement condition:** remove the marker only if degraded standalone interaction is removed entirely or gains a replacement canonical ownership signal; do not delete it merely for cleanup.
 
 ### WM-010 · Mobile occlusion / keyboard / focus-return audit incomplete — P2
 **Status:** fixed / governed for current shared surfaces on main (2026-09-20), pending exact-head CI confirmation.  
