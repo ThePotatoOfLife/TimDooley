@@ -198,6 +198,12 @@
 **Resolution:** the Regions action now toggles the country-card partition lease on/off, updates `aria-pressed` and the “regions · shown” state from the actual retained partition, emits a bounded regions-change event, and only clears local lease state after the release path returns without error.  
 **Guard:** UI-shell validation requires the toggle branch, shared action-state helper and region-state event.
 
+### WM-035 · Subdivision local names are searchable but invisible on-map — P2
+**Status:** fixed / governed on branch `world-map-local-region-labels-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** Ukraine/Russia/Denmark partitions retain local names and unified search can match them, but ambient subdivision labels always projected only code/English name.  
+**Resolution:** generic subdivision labels now use the shared scale vocabulary: code at early regional scale, canonical name at subnational scale, and canonical + local name at the shared local scale when the names differ. Narrow-screen and globe density delays apply to the local-name threshold too.  
+**Guard:** subdivision readability validation requires local-scale ownership, local-name presence/inequality guards and the bilingual label expression.
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
