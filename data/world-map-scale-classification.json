@@ -1,0 +1,237 @@
+{
+  "id": "world-map-scale-classification",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "status": "active architecture classification",
+  "authority": "data/world-map-scale-contract.json",
+  "purpose": "Classify World Map zoom numbers so shared behavioral capability gates are centralized while cartographic interpolation, camera intent and test fixtures remain local and explicit.",
+  "rule": "Only a zoom threshold that changes whether data may load, render, label or become interactive belongs in the shared Scale capability contract. Visual interpolation, camera framing and test fixtures must not be promoted into semantic capability ownership merely because they contain zoom numbers.",
+  "categories": {
+    "capability": {
+      "owner": "data/world-map-scale-contract.json",
+      "runtime": "world-map/3d-scale.js",
+      "examples": [
+        {
+          "module": "world-map/3d-subdivisions.js",
+          "capability": "subdivisions",
+          "phases": [
+            "load",
+            "render",
+            "label",
+            "interact"
+          ]
+        },
+        {
+          "module": "world-map/3d-places.js",
+          "capability": "places-detail",
+          "phases": [
+            "load",
+            "render",
+            "label",
+            "interact"
+          ]
+        },
+        {
+          "module": "world-map/3d-physical-water.js",
+          "capability": "physical-water-detail",
+          "phases": [
+            "load",
+            "render"
+          ]
+        },
+        {
+          "module": "world-map/3d-physical-hydrology.js",
+          "capability": "physical-hydrology + river detail regimes",
+          "phases": [
+            "load",
+            "render"
+          ]
+        },
+        {
+          "module": "world-map/3d-adl-heat.js",
+          "capability": "adl-heat-points",
+          "phases": [
+            "render",
+            "interact"
+          ]
+        },
+        {
+          "module": "world-map/3d-app.js",
+          "capability": "canonical camera-scale bands",
+          "phases": [
+            "HUD classification"
+          ],
+          "note": "HUD now consumes scale.bandForZoom rather than a private 3/5/7 band system."
+        }
+      ]
+    },
+    "cartographic_interpolation": {
+      "rule": "Local styling is allowed when the number changes symbol size, line width, opacity, label density or other visual interpolation without changing data availability or interaction ownership.",
+      "examples": [
+        {
+          "module": "world-map/3d-app.js",
+          "uses": [
+            "country-hubs minzoom 3.2",
+            "country-labels minzoom 4",
+            "semantic-hubs/links 3.6",
+            "semantic-labels 4.6",
+            "relations minzoom 2"
+          ],
+          "classification": "presentation visibility / density"
+        },
+        {
+          "module": "world-map/3d-places.js",
+          "uses": [
+            "major-place label minzoom 1.2",
+            "circle/text interpolation"
+          ],
+          "classification": "presentation"
+        },
+        {
+          "module": "world-map/3d-hover.js",
+          "uses": [
+            "capital label visibility/interpolation"
+          ],
+          "classification": "presentation"
+        },
+        {
+          "module": "world-map/3d-axis.js",
+          "uses": [
+            "Axis fill/gate interpolation and label minzoom"
+          ],
+          "classification": "symbolic presentation"
+        },
+        {
+          "module": "world-map/3d-mud-below-us.js",
+          "uses": [
+            "case point/text interpolation"
+          ],
+          "classification": "presentation"
+        },
+        {
+          "module": "world-map/3d-gateways.js",
+          "uses": [
+            "gateway point/label interpolation"
+          ],
+          "classification": "presentation"
+        },
+        {
+          "module": "world-map/3d-infrastructure.js",
+          "uses": [
+            "infrastructure point interpolation"
+          ],
+          "classification": "presentation"
+        },
+        {
+          "module": "world-map/3d-demography.js",
+          "uses": [
+            "population-label visibility/text interpolation"
+          ],
+          "classification": "presentation"
+        },
+        {
+          "module": "world-map/3d-fields.js",
+          "uses": [
+            "outline line-width interpolation"
+          ],
+          "classification": "presentation"
+        },
+        {
+          "module": "world-map/3d-networks.js",
+          "uses": [
+            "outline line-width interpolation"
+          ],
+          "classification": "presentation"
+        },
+        {
+          "module": "world-map/3d-chain-explorer.js",
+          "uses": [
+            "selection outline interpolation"
+          ],
+          "classification": "presentation"
+        },
+        {
+          "module": "world-map/3d-compositor.js",
+          "uses": [
+            "query outline interpolation"
+          ],
+          "classification": "presentation"
+        },
+        {
+          "module": "world-map/3d-country-selection.js",
+          "uses": [
+            "relation line-width interpolation"
+          ],
+          "classification": "presentation"
+        },
+        {
+          "module": "world-map/3d-physical-water.js",
+          "uses": [
+            "water/coastline line-width interpolation"
+          ],
+          "classification": "presentation; lifecycle gate remains shared"
+        },
+        {
+          "module": "world-map/3d-physical-hydrology.js",
+          "uses": [
+            "basin/river line-width interpolation"
+          ],
+          "classification": "presentation; request regime remains shared"
+        }
+      ]
+    },
+    "camera_intent": {
+      "rule": "Camera targets, maxZoom/minimum framing and fit thresholds remain with the interaction that owns the view. They must use the Motion owner but are not Scale capabilities.",
+      "examples": [
+        {
+          "module": "world-map/3d-places.js",
+          "uses": [
+            "place focus target around 6.2"
+          ],
+          "classification": "focus framing"
+        },
+        {
+          "module": "world-map/3d-subdivisions.js",
+          "uses": [
+            "fitBounds maxZoom 7.4"
+          ],
+          "classification": "focus framing"
+        },
+        {
+          "module": "world-map/3d-app.js",
+          "uses": [
+            "interior auto-fit below 3.2",
+            "fitCodes maxZoom/padding"
+          ],
+          "classification": "camera intent"
+        },
+        {
+          "module": "world-map/3d-symbolic-operators.js",
+          "uses": [
+            "D6/D10/D11 camera targets"
+          ],
+          "classification": "symbolic view framing"
+        }
+      ]
+    },
+    "fixture": {
+      "rule": "Thresholds in tests and fixtures may be literal numbers when they are intentionally testing contract behavior; they must not become runtime authorities.",
+      "examples": [
+        {
+          "module": "scripts/test_world_map_subdivision_bounded_runtime.mjs",
+          "classification": "test fixture"
+        },
+        {
+          "module": "scripts/test_world_map_adl_scale_ownership.mjs",
+          "classification": "contract regression"
+        }
+      ]
+    }
+  },
+  "anti_drift": [
+    "Do not add a new behavioral getZoom threshold without either using Scale capabilityActive/threshold/bandForZoom or adding a documented capability to the contract.",
+    "Do not move MapLibre paint interpolation stops into the shared contract unless they actually control data/loading/interaction behavior.",
+    "Do not interpret camera zoom as ontology, Axis depth, evidence strength or moral/spiritual level.",
+    "When a visual minzoom later becomes an interaction or data-load gate, promote that threshold into a named capability before coupling behavior to it."
+  ]
+}
