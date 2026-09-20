@@ -95,6 +95,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
             "python scripts/validate_world_map_accessibility.py",
             "python scripts/validate_world_map_subdivision_readability.py",
             "python scripts/validate_world_map_subdivisions.py",
+            "python scripts/test_world_map_adm1_importer.py",
             "python scripts/validate_world_map_data_runtime.py",
             "python scripts/validate_world_axis_systems.py",
             "python scripts/validate_world_map_system_intelligence.py",
