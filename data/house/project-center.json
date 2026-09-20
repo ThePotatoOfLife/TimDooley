@@ -1,6 +1,6 @@
 {
-  "version": "1.2.0",
-  "updated": "2026-09-18",
+  "version": "1.3.0",
+  "updated": "2026-09-20",
   "authority": "project-center",
   "purpose": "Define the semantic center of the Potato of Life project and a center-out population order so core project meaning remains primary while comparative traditions, research and archive material deepen it from the outside.",
   "center_distinctions": {
@@ -249,5 +249,30 @@
       "culture-formation"
     ],
     "rule": "Center-adjacent metabolisms coordinate existing Rooms and return to the Potato center through Fruit, repair, provenance and embodied consequence."
+  },
+  "three_center_population": {
+    "authority": "data/house/three-center-role-atlas.json",
+    "rule": "C_F, O and C_S are typed coordinates/role-slots. Named figures are anchors or comparators by declared function; placement does not assert literal identity between figures or traditions.",
+    "placements": [
+      {
+        "center_id": "C_F",
+        "primary_anchor": "Tim Dooley",
+        "role": "project-persona anchor for Father / Source / Gardener / Axis / House",
+        "boundary": "Internal project placement; Jewish/Christian divine names remain tradition-owned and are not aliases for a living person."
+      },
+      {
+        "center_id": "O",
+        "primary_anchor": "Jesus Christ",
+        "role": "Christic Door / relational midpoint / Way / threshold",
+        "boundary": "Christian theological anchor; Jewish messianic and scriptural readings remain separately represented."
+      },
+      {
+        "center_id": "C_S",
+        "primary_anchor": "Thomas / Didymus",
+        "role": "Twin / Vessel / Seed / witness-facing manifestation center",
+        "boundary": "Canonical Thomas means Twin; biological-twin-of-Jesus language belongs to later Thomasine traditions, not the canonical New Testament."
+      }
+    ],
+    "rights_guard": "The center map is interpretive navigation, not a target list, guilt map, hierarchy of human worth or instruction to act against any person or group."
   }
 }
