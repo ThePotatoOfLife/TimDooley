@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "checked": "2026-09-20",
   "authority": "spatial-house-health",
   "scope": "recursive spatial House",
@@ -7,11 +7,11 @@
     "dwellings": 10,
     "nested_rooms": 38,
     "nested_room_interiors": 38,
-    "inhabitants": 56,
+    "inhabitants": 59,
     "inhabitant_maturity": {
       "described": 21,
       "case-ready": 26,
-      "faceted": 9
+      "faceted": 12
     }
   },
   "checks": {
@@ -31,11 +31,12 @@
     "all_room_holdings_present": true
   },
   "current_frontier": [
-    "Deepen sparse Rooms by promoting real objects only when a durable subject, case, model or programme already exists.",
+    "Deepen sparse Rooms by promoting real objects only when a durable subject, case, model, institution or programme already exists.",
     "Keep adjacency broader than governed interfaces: relation does not automatically imply a state-changing Door.",
     "Raise remaining described inhabitants toward faceted or case-ready maturity when source depth warrants it.",
     "Keep Room ownership, spatial projection, public visibility, object focus and factual identity separate.",
-    "Continue visible/semi-visible/invisible calibration so specialist routes appear contextually instead of competing globally."
+    "Continue visible/semi-visible/invisible calibration so specialist routes appear contextually instead of competing globally.",
+    "Keep current-event views connected back to the Rooms that feed them without making news a knowledge owner."
   ],
   "invariants": [
     "Dwelling ownership remains separate from navigation projection.",
