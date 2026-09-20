@@ -123,12 +123,10 @@
 **Compatibility:** legacy `selected=` remains read-compatible but is cleared by the working-selection owner on writes.
 
 ### WM-022 · Specialist inspectors bypass typed Inspector Router — P1
-**Status:** largely fixed; final convergence audit remains.  
-**Completed:** Places, Subdivisions, ADL dataset/state/incident evidence, Mud/Below cases, Spatial Overlay inspection, Axis and Axis Depth now project through typed Inspector nodes. Their render callbacks may write panel HTML, but Inspector owns the semantic history node.  
-**Remaining:** scan any other specialist panels and ensure no non-Inspector surface can replace the main panel outside an active typed node.  
-**Risk:** visible panel, `inspect=` URL path, parent/back history and focus semantics can disagree.  
-**Owner target:** Inspector Router.  
-**Solution:** migrate each specialist surface to typed inspector nodes; raw panel writes occur only inside the active node's render callback.
+**Status:** fixed for known main-panel specialist surfaces on main (2026-09-20).  
+**Resolution:** Places, Subdivisions, ADL dataset/state/incident evidence, Mud/Below, Spatial Overlay inspection, Axis and Axis Depth all project through typed Inspector nodes. Raw panel HTML remains an implementation detail inside node render callbacks rather than owning semantic history.  
+**Accessibility:** Inspector open/back already focuses rendered headings and restores the invoking control.  
+**Guard:** Inspector URL and router validators cover the migrated node types and hierarchy.
 
 ### WM-023 · Degraded interaction fallback can become permanent by boot order — P1
 **Status:** fixed on main (2026-09-20).  
