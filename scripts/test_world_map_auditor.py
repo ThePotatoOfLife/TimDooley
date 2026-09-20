@@ -97,24 +97,39 @@ const node = document.createElement('div'); node.id = 'atlasThing';
             root=Path(tmp); write_module(root,"3d-a.js","let restoring=false; map.on('styledata',()=>queueMicrotask(restore));"); write_module(root,"3d-b.js","let restoring=false; map.on('styledata',()=>queueMicrotask(restore));")
             proc,report=run_auditor(root); self.assertEqual(proc.returncode,0,proc.stderr+proc.stdout); self.assertTrue(any(f["code"]=="multiple-style-restorers" for f in report["findings"]))
 
-    def test_approved_guarded_style_restorers_do_not_warn_as_collision(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            root=Path(tmp); write_module(root,"3d-a.js","let restoring=false; map.on('styledata',()=>{if(restoring)return;restoring=true;queueMicrotask(()=>{restore();restoring=false;});});"); write_module(root,"3d-b.js","let restoring=false; map.on('styledata',()=>{if(restoring)return;restoring=true;queueMicrotask(()=>{restore();restoring=false;});});")
-            contract={"schema_version":"1.0","style_restoration":{"allowed_modules":{"world-map/3d-a.js":"A","world-map/3d-b.js":"B"}}}; proc,report=run_auditor(root,contract); self.assertEqual(proc.returncode,0,proc.stderr+proc.stdout); self.assertFalse(any(f["code"]=="multiple-style-restorers" for f in report["findings"]))
-
-    def test_render_stack_scheduler_counts_as_deferred_restoration(self):
+    def test_central_style_owner_and_registered_participants_do_not_warn(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)
-            filler="\n".join(f"function helper{i}(){{ return {i}; }}" for i in range(80))
-            write_module(root,"3d-render-stack.js",f"let scheduled=false; function schedule(){{if(scheduled)return;scheduled=true;queueMicrotask(()=>{{scheduled=false;reconcile();}});}}\n{filler}\nmap.on('styledata',()=>schedule('styledata'));")
-            contract={"schema_version":"1.0","style_restoration":{"allowed_modules":{"world-map/3d-render-stack.js":"Canonical scheduler."}}}
+            write_module(root,"3d-style-lifecycle.js","function schedule(){queueMicrotask(restore);} map.on('styledata',()=>schedule('styledata'));")
+            write_module(root,"3d-a.js","styleLifecycle.register('a',{restore:()=>restoreA()});")
+            write_module(root,"3d-b.js","styleLifecycle.register('b',{restore:()=>restoreB()});")
+            contract={"schema_version":"1.0","style_restoration":{"owner_module":"world-map/3d-style-lifecycle.js","participants":{"world-map/3d-a.js":"a","world-map/3d-b.js":"b"}}}
             proc,report=run_auditor(root,contract); self.assertEqual(proc.returncode,0,proc.stderr+proc.stdout)
-            self.assertFalse(any(f["code"]=="style-restorer-undeferred" for f in report["findings"]))
+            codes={f["code"] for f in report["findings"]}
+            self.assertNotIn("unapproved-style-restorer",codes)
+            self.assertNotIn("stale-style-participant-contract",codes)
+            self.assertNotIn("unapproved-style-participant",codes)
 
-    def test_unapproved_style_restorer_warns(self):
+    def test_direct_styledata_listener_outside_central_owner_warns(self):
         with tempfile.TemporaryDirectory() as tmp:
-            root=Path(tmp); write_module(root,"3d-a.js","let restoring=false; map.on('styledata',()=>{if(restoring)return;restoring=true;queueMicrotask(()=>{restore();restoring=false;});});")
-            contract={"schema_version":"1.0","style_restoration":{"allowed_modules":{}}}; proc,report=run_auditor(root,contract); self.assertEqual(proc.returncode,0,proc.stderr+proc.stdout); self.assertTrue(any(f["code"]=="unapproved-style-restorer" for f in report["findings"]))
+            root=Path(tmp)
+            write_module(root,"3d-style-lifecycle.js","function schedule(){queueMicrotask(restore);} map.on('styledata',()=>schedule('styledata'));")
+            write_module(root,"3d-a.js","map.on('styledata',()=>queueMicrotask(restoreA));")
+            contract={"schema_version":"1.0","style_restoration":{"owner_module":"world-map/3d-style-lifecycle.js","participants":{}}}
+            proc,report=run_auditor(root,contract); self.assertEqual(proc.returncode,0,proc.stderr+proc.stdout)
+            self.assertTrue(any(f["code"]=="unapproved-style-restorer" for f in report["findings"]))
+
+    def test_style_participant_contract_detects_stale_and_unapproved_registration(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            write_module(root,"3d-style-lifecycle.js","function schedule(){queueMicrotask(restore);} map.on('styledata',()=>schedule('styledata'));")
+            write_module(root,"3d-a.js","styleLifecycle.register('actual',{restore:()=>restoreA()});")
+            write_module(root,"3d-b.js","const x=1;")
+            contract={"schema_version":"1.0","style_restoration":{"owner_module":"world-map/3d-style-lifecycle.js","participants":{"world-map/3d-b.js":"expected"}}}
+            proc,report=run_auditor(root,contract); self.assertEqual(proc.returncode,0,proc.stderr+proc.stdout)
+            codes={f["code"] for f in report["findings"]}
+            self.assertIn("unapproved-style-participant",codes)
+            self.assertIn("stale-style-participant-contract",codes)
 
     def test_module_version_url_is_not_browser_state(self):
         with tempfile.TemporaryDirectory() as tmp:
