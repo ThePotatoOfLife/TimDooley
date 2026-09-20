@@ -23,6 +23,28 @@ FORBIDDEN_GENERATED_PATTERNS = (
     "__pycache__",
     ".pytest_cache",
 )
+FORBIDDEN_RETIRED_PRESENTATION = {
+    "app/project-compass.js",
+    "app/project-compass.css",
+    "extremism.css",
+    "extremism-renderer.js",
+    "geometry.css",
+    "health.css",
+    "health.js",
+    "minimal.css",
+    "political-compass.css",
+    "portal.css",
+    "religious-layer-ui.js",
+    "religious-texts.js",
+    "simple.css",
+    "site.js",
+    "systems.js",
+    "taoism.js",
+    "timeline.css",
+    "timeline.js",
+    "torah.js",
+}
+
 FORBIDDEN_GENERATED_GLOBS = (
     "quality-report-*.json",
     "site-shell-report.txt",
@@ -46,6 +68,10 @@ def main() -> int:
     for rel in sorted(FORBIDDEN_TEMPORARY):
         if (ROOT / rel).exists():
             errors.append(f"temporary migration debris remains: {rel}")
+
+    for rel in sorted(FORBIDDEN_RETIRED_PRESENTATION):
+        if (ROOT / rel).exists():
+            errors.append(f"retired presentation asset returned: {rel}")
 
     for rel in FORBIDDEN_GENERATED_PATTERNS:
         path=ROOT/rel
