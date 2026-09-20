@@ -1,8 +1,8 @@
 {
-  "version": "4.2.0",
+  "version": "4.3.0",
   "updated": "2026-09-20",
   "authority": "house-navigation-manifest",
-  "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
+  "purpose": "Resolve which existing owner governs each structural concern so new work deepens the right place instead of creating parallel masters. This manifest is an index over authorities, not another ontology, navigation hierarchy or presentation plan.",
   "authorities": [
     {
       "concern": "operator ownership / consolidation routing",
@@ -404,5 +404,7 @@
     "choose visibility level",
     "render progressively",
     "validate against authority manifest"
-  ]
+  ],
+  "role": "resolver index, not a visibility or importance ranking",
+  "priority_rule": "Entry count, mention count and position in this manifest carry zero public-promotion weight. Public visibility comes only from data/house/public-surfaces.json; semantic centrality comes from data/house/project-center.json; evidence maturity comes from the owning domain."
 }
