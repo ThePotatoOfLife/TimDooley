@@ -108,7 +108,26 @@ function indexPush(map,key,value){
   map.get(key).push(value);
 }
 function isRegistrySourcePath(path){
-  return typeof path==='string'&&/^data\/[A-Za-z0-9._/-]+\.json$/i.test(path)&&!path.includes('..')&&!path.startsWith('/');
+  return typeof path==='string'&&/^(?:data|knowledge)\/[A-Za-z0-9._/-]+\.json$/i.test(path)&&!path.includes('..')&&!path.startsWith('/');
+}
+function preferredOccurrence(record){
+  const rows=(record?.occurrences||[]).filter(x=>isRegistrySourcePath(x.source));
+  return rows.find(x=>/^knowledge\/(?:body|core|science|traditions|theology|philosophy|world|corporium)\//i.test(x.source))||rows[0]||null;
+}
+function registrySearch(q){
+  const out=[];
+  for(const record of canonicalRecordRegistry.records||[]){
+    const occs=(record.occurrences||[]).filter(x=>isRegistrySourcePath(x.source));
+    const hay=[record.id,...occs.flatMap(x=>[x.name,x.source,x.record_role])].join(' ').toLowerCase();
+    if(!hay.includes(q))continue;
+    const occurrence=preferredOccurrence(record);if(!occurrence)continue;
+    out.push({id:record.id,name:occurrence.name||record.id,source:occurrence.source,occurrence_count:occs.length});
+    if(out.length>=60)break;
+  }
+  return out;
+}
+function registryResultCard(row){
+  return `<button class="record-link" data-record="${esc(row.source)}"><span class="recordtype">RECORD MATCH</span><strong>${esc(row.name)}</strong><code>${esc(row.source)}</code>${row.occurrence_count>1?`<small>${row.occurrence_count} indexed occurrences</small>`:''}</button>`;
 }
 function buildIndexes(){
   branchMap=new Map((manifest.branches||[]).map(b=>[b.id,b]));
@@ -221,8 +240,11 @@ function applySearch(raw){
   if(q.length<=2)return;
   cancelRecordLoad();
   const matches=(contextGraph.clusters||[]).filter(c=>[c.title,c.summary,...(c.concepts||[]),...(c.epistemic_mix||[])].join(' ').toLowerCase().includes(q));
+  const recordMatches=registrySearch(q);
   searching=true;viewType='search';
-  $('#reader').innerHTML=matches.length?`<div class="eyebrow">Context search</div><h2>Context matches</h2><p class="summary">Search reaches concepts and contextual constellations, not only branch titles.</p><div class="contexts">${matches.map(contextCard).join('')}</div>`:`<div class="eyebrow">Context search</div><h2>No context matches</h2><p class="summary">Try a broader term or choose a branch from the left navigation.</p>`;
+  const contextHTML=matches.length?`<div class="section"><h3>Context matches</h3><div class="contexts">${matches.map(contextCard).join('')}</div></div>`:'';
+  const recordHTML=recordMatches.length?`<div class="section"><h3>Record matches</h3>${recordMatches.map(registryResultCard).join('')}</div>`:'';
+  $('#reader').innerHTML=(matches.length||recordMatches.length)?`<div class="eyebrow">Archive search</div><h2>Contexts + records</h2><p class="summary">Search reaches branch vocabulary, contextual constellations and indexed records across both data/ and knowledge/.</p>${contextHTML}${recordHTML}`:`<div class="eyebrow">Archive search</div><h2>No matches</h2><p class="summary">Try a broader term or choose a branch from the left navigation.</p>`;
   emitNavigation('search',q);
 }
 function scheduleSearch(value){cancelAnimationFrame(searchFrame);searchFrame=requestAnimationFrame(()=>applySearch(value))}
