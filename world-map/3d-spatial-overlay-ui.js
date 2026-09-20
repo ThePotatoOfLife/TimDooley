@@ -1,3 +1,7 @@
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('spatial-overlay-ui', ['boundaryView']);
+
 // UI for independent sacred/textual/current spatial overlays.
 // Layers remains the advanced multi-overlay surface; Analyze gets a quick Geography picker.
 
@@ -121,10 +125,9 @@ style.textContent = `
 document.head.appendChild(style);
 
 function persistBoundaryView(value) {
-  const url = new URL(location.href);
-  if (value && value !== 'atlas') url.searchParams.set('boundaryView', value);
-  else url.searchParams.delete('boundaryView');
-  history.replaceState({},'',url);
+  urlState.patch('spatial-overlay-ui', {
+    set:{ boundaryView:value && value !== 'atlas' ? value : null },
+  });
   window.dispatchEvent(new CustomEvent('potato-atlas-boundary-view-change',{detail:{value}}));
 }
 
