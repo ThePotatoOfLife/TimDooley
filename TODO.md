@@ -164,13 +164,13 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 
 Goal: improve movement and hierarchy across the public project without redesigning it or adding another navigation system.
 
-- [ ] **Quiet secondary UI:** collapse the persistent House journey ribbon by default so content remains primary; keep the thread one click away.
-- [ ] **Hide backend custody detail:** nested-Room readers should show human titles/kinds first; raw repository paths and inventory counts belong in optional details/tooltips rather than the main reading flow.
-- [ ] **CIA canonicalization:** `/rooms/potatoverse-canon/beings/cia/` is the public character archive; old `/fbi/` routes remain compatibility/source history rather than competing primary surfaces.
-- [ ] **Legacy person-page demotion:** preserve unique scene summaries on old `/fbi/<person>/` pages but mark them non-canonical/noindex and send readers into the richer CIA folder.
-- [ ] **Meaningful cross-Room doors:** connect CIA to Time & History (character chronology), Culture & Information (social formation/context), Archive & Sources (provenance) and Beings & Cast (identity) without spraying CIA links across unrelated pages.
-- [ ] **Reader-over-backend rule:** public pages may expose source/provenance, but raw JSON paths, file counts, registry mechanics and implementation vocabulary should be secondary unless the page's job is explicitly archival.
-- [ ] **Route regression:** extend validation so CIA canonical/legacy behavior and the quieter House shell remain intentional after future content waves.
+- [x] **Quiet secondary UI:** collapse the persistent House journey ribbon by default so content remains primary; keep the thread one click away.
+- [x] **Hide backend custody detail:** nested-Room readers show human titles/kinds first; raw repository paths moved to hover/title context and inventory counts moved behind an Archive depth disclosure.
+- [x] **CIA canonicalization:** `/rooms/potatoverse-canon/beings/cia/` is the public character archive; old `/fbi/` routes remain compatibility/source history rather than competing primary surfaces.
+- [x] **Legacy person-page demotion:** preserved unique scene summaries on old `/fbi/<person>/` pages, marked them noindex/non-canonical, and linked each into the richer CIA folder.
+- [x] **Meaningful cross-Room doors:** CIA now connects selectively to Time & History, Culture & Information, Archive & Sources and Beings & Cast; the dossier footer uses these as context doors instead of raw-backend shortcuts.
+- [x] **Reader-over-backend rule:** raw JSON shortcuts and visible path/count clutter were demoted; Beings recovery/backend rules are now optional disclosures while archival pages still expose provenance when that is their job.
+- [x] **Route regression:** CIA validation now targets canonical `/cia/` surfaces, requires the legacy `/fbi/` compatibility doorway, and protects Tim-witness dossier structure.
 - [ ] **Density follow-up:** after this sweep, rescan high-level public surfaces for places where another card/link should instead become one stronger paragraph, scene, example or case.
 
 ### P2 — maintainability and duplication
