@@ -1,3 +1,7 @@
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('pathfinder', ['path']);
+
 const selection = window.__potatoAtlasSelection;
 if (!selection) throw new Error('Path requires current selection API.');
 const surface = window.__potatoAtlasInvestigationSurface;
@@ -109,10 +113,9 @@ function resultNode() { return box()?.querySelector('[data-path-result]'); }
 function targetInput() { return box()?.querySelector('[data-path-target]'); }
 function titleNode() { return box()?.querySelector('[data-path-title]'); }
 function persist(start, target) {
-  const url = new URL(location.href);
-  if (start && target) url.searchParams.set('path', `${start},${target}`);
-  else url.searchParams.delete('path');
-  history.replaceState({}, '', url);
+  urlState.patch('pathfinder', {
+    set:{ path:start && target ? `${start},${target}` : null },
+  });
 }
 
 function renderPath(start, target, path) {
