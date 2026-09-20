@@ -16,30 +16,34 @@
     }catch(_){return '/'}
   };
   const current=routePath();
-  const staticEntries=[
-    {label:'Home',route:'/',kind:'start',note:'Project entrance',aliases:'start homepage'},
-    {label:'Current World',route:'/news/',kind:'world',note:'Live news',aliases:'news headlines current today'},
-    {label:'World Map',route:'/world-map/',kind:'world',note:'Interactive atlas',aliases:'map countries atlas'},
-    {label:'Tim Dooley',route:'/tim-dooley/',kind:'project',note:'Main portrait',aliases:'tim father potato'},
-    {label:'Potato of Life',route:'/potato-of-life/',kind:'project',note:'Semantic center',aliases:'potato center canon'},
-    {label:'House',route:'/house/',kind:'project',note:'How the project fits together',aliases:'architecture structure'},
-    {label:'Rooms',route:'/rooms/',kind:'project',note:'Knowledge owners',aliases:'dwellings rooms'},
-    {label:'People & Cases',route:'/rooms/objects/',kind:'find',note:'Search House inhabitants',aliases:'people cases objects entities find search'},
-    {label:'A–Z',route:'/index-a-z/',kind:'find',note:'Known-term lookup',aliases:'index terms glossary find'},
-    {label:'Timeline',route:'/timeline/',kind:'find',note:'Events and chronology',aliases:'history dates chronology'},
-    {label:'Sources',route:'/context/source-authority/',kind:'find',note:'Evidence and provenance',aliases:'evidence source provenance'},
-    {label:'Explore',route:'/explore/',kind:'find',note:'Relationship explorer',aliases:'archive relationships'},
-    {label:'Science',route:'/science/',kind:'project',note:'Models, evidence, falsifiers',aliases:'physics biology research'},
-    {label:'Religion',route:'/religion/',kind:'project',note:'Theology and comparisons',aliases:'bible trinity tradition'},
-    {label:'Philosophy',route:'/philosophy/',kind:'project',note:'Spiral reader and concepts',aliases:'spiral ideas'},
-    {label:'World',route:'/world/',kind:'world',note:'Countries and real systems',aliases:'world countries systems'},
-    {label:'Economy & Finance',route:'/economy/',kind:'world',note:'Debt, banking, ownership',aliases:'economy finance debt fed ecb banks'},
-    {label:'Politics',route:'/politics/',kind:'world',note:'Politics and geopolitics',aliases:'politics geopolitics'},
-    {label:'CIA / Intelligence',route:'/shadow-farm/#intelligence-desk',kind:'direct',note:'Intelligence Desk',aliases:'cia central intelligence agency intelligence security'},
-    {label:'FBI — Figures, Bonds & Incidents',route:'/rooms/potatoverse-canon/beings/fbi/',kind:'direct',note:'Character dossier bureau',aliases:'fbi figures bonds incidents characters'},
-    {label:'100,000 Hours',route:'/tim-dooley/100000-hours/',kind:'direct',note:'Public-presence model',aliases:'100000 hours streaming livestream'},
-    {label:'Below / Farm / Sektur',route:'/shadow-farm/',kind:'direct',note:'Lower-system deep reader',aliases:'below farm sektur swamp culture'}
+  const fallbackEntries=[
+    {id:'home',label:'Home',route:'/',kind:'start',note:'Project entrance',aliases:['start','homepage']},
+    {id:'news',label:'Current World',route:'/news/',kind:'world',note:'Live news',aliases:['news','headlines','current','today']},
+    {id:'world-map',label:'World Map',route:'/world-map/',kind:'world',note:'Interactive atlas',aliases:['map','countries','atlas']},
+    {id:'tim',label:'Tim Dooley',route:'/tim-dooley/',kind:'project',note:'Main portrait',aliases:['tim','father','potato']},
+    {id:'house',label:'House',route:'/house/',kind:'project',note:'How the project fits together',aliases:['house','architecture','structure']},
+    {id:'rooms',label:'Rooms',route:'/rooms/',kind:'project',note:'Knowledge owners',aliases:['rooms','dwellings']},
+    {id:'people-cases',label:'People & Cases',route:'/rooms/objects/',kind:'find',note:'Search House inhabitants',aliases:['people','cases','objects','entities','find','search']},
+    {id:'index-a-z',label:'A–Z',route:'/index-a-z/',kind:'find',note:'Known-term lookup',aliases:['index','terms','glossary','find']},
+    {id:'timeline',label:'Timeline',route:'/timeline/',kind:'find',note:'Events and chronology',aliases:['history','dates','chronology']},
+    {id:'sources',label:'Sources',route:'/context/source-authority/',kind:'find',note:'Evidence and provenance',aliases:['evidence','source','provenance']},
+    {id:'explore',label:'Explore',route:'/explore/',kind:'find',note:'Relationship explorer',aliases:['archive','relationships']},
+    {id:'cia',label:'CIA / Intelligence',route:'/shadow-farm/#intelligence-desk',kind:'direct',note:'Intelligence Desk',aliases:['cia','central intelligence agency','intelligence']},
+    {id:'fbi',label:'FBI — Figures, Bonds & Incidents',route:'/rooms/potatoverse-canon/beings/fbi/',kind:'direct',note:'Character dossier bureau',aliases:['fbi','figures','bonds','incidents']},
+    {id:'economy',label:'Economy & Finance',route:'/economy/',kind:'world',note:'Debt, banking, ownership',aliases:['economy','finance','debt','bonds','fed','federal reserve','ecb','eurosystem']},
+    {id:'tts',label:'Read Aloud / TTS',route:'/tools/tts/',kind:'direct',note:'Text-to-speech tools and reader controls',aliases:['tts','text to speech','read aloud','listen']},
+    {id:'claims',label:'Claims & Statements',route:'/tim-dooley/claims/',kind:'direct',note:'Claims and attributed statements',aliases:['claims','statements','assertions']},
+    {id:'public-witness',label:'Public Witness',route:'/tim-dooley/public-witness/',kind:'direct',note:'Public record and witness material',aliases:['public witness','public record','witness']},
+    {id:'science',label:'Science',route:'/science/',kind:'project',note:'Models, evidence, falsifiers',aliases:['science','physics','biology','research']},
+    {id:'religion',label:'Religion',route:'/religion/',kind:'project',note:'Theology and comparisons',aliases:['religion','bible','trinity','theology']},
+    {id:'hours',label:'100,000 Hours',route:'/tim-dooley/100000-hours/',kind:'direct',note:'Public-presence model',aliases:['100000 hours','100,000 hours','streaming','livestream']}
   ];
+  let curatedEntries=[...fallbackEntries];
+  let accessGroups={
+    go_now:['news','world-map','tim','house','rooms'],
+    find:['people-cases','index-a-z','timeline','sources','explore'],
+    direct_doors:['cia','fbi','economy','tts','claims','public-witness','science','religion','hours']
+  };
   const wrapper=document.createElement('div');
   wrapper.className='site-access';
   wrapper.setAttribute('data-no-tts','');
@@ -68,8 +72,10 @@
     const r=a.getAttribute('data-site-access-route');
     if(r==='/'?current==='/':current.startsWith(r))a.setAttribute('aria-current','page');
   });
-  let loaded=false,index=[...staticEntries];
-  const key=e=>(e.label+' '+(e.aliases||'')+' '+(e.note||'')+' '+(e.kind||'')).toLowerCase();
+  let loaded=false,index=[...curatedEntries];
+  const aliasText=e=>Array.isArray(e.aliases)?e.aliases.join(' '):(e.aliases||'');
+  const key=e=>(e.label+' '+aliasText(e)+' '+(e.note||'')+' '+(e.kind||'')).toLowerCase();
+  const priority=e=>({object:5,'case-ready':5,direct:4,world:3,project:2,page:1,find:1,start:0}[e.kind]??1);
   const unique=rows=>{
     const seen=new Set();
     return rows.filter(x=>{
@@ -82,10 +88,19 @@
     if(loaded)return;
     loaded=true;
     try{
-      const [sr,ir]=await Promise.all([
+      const [cr,sr,ir]=await Promise.all([
+        fetch(href('/data/house/site-access.json')),
         fetch(href('/data/house/public-surfaces.json')),
         fetch(href('/data/house/room-inhabitants.json'))
       ]);
+      if(cr.ok){
+        const d=await cr.json();
+        if(Array.isArray(d.entries)&&d.entries.length){
+          curatedEntries=d.entries;
+          index=[...curatedEntries];
+        }
+        if(d.groups)accessGroups=d.groups;
+      }
       if(sr.ok){
         const d=await sr.json();
         for(const s of d.surfaces||[])if(s?.status==='active'&&s?.route)index.push({label:s.title||s.id,route:s.route,kind:'page',note:s.surface_type||'public surface',aliases:s.id});
@@ -100,10 +115,12 @@
   const group=(title,entries)=>'<div class="site-access-group"><span>'+esc(title)+'</span><div class="site-access-links">'+entries.map(e=>'<a href="'+esc(href(e.route))+'"><b>'+esc(e.label)+'</b><small>'+esc(e.note||'')+'</small></a>').join('')+'</div></div>';
   const renderDefault=()=>{
     content.className='site-access-groups';
+    const byId=id=>curatedEntries.find(e=>e.id===id);
+    const rows=ids=>(ids||[]).map(byId).filter(Boolean);
     content.innerHTML=
-      group('Go now',staticEntries.filter(e=>['Current World','World Map','Tim Dooley','House','Rooms'].includes(e.label)))+
-      group('Find',staticEntries.filter(e=>['People & Cases','A–Z','Timeline','Sources','Explore'].includes(e.label)))+
-      group('Direct doors',staticEntries.filter(e=>['CIA / Intelligence','Economy & Finance','Science','Religion','FBI — Figures, Bonds & Incidents','100,000 Hours'].includes(e.label)));
+      group('Go now',rows(accessGroups.go_now))+
+      group('Find',rows(accessGroups.find))+
+      group('Direct doors',rows(accessGroups.direct_doors));
   };
   const renderSearch=async()=>{
     const q=input.value.trim().toLowerCase();
@@ -111,10 +128,19 @@
     await loadIndex();
     const terms=q.split(/\s+/).filter(Boolean);
     const rows=index.map(e=>{
-      const hay=key(e);let score=0;
-      for(const t of terms){if(!hay.includes(t))return null;score+=e.label.toLowerCase().startsWith(t)?5:hay.includes(' '+t)?3:1}
+      const hay=key(e),label=e.label.toLowerCase(),aliases=aliasText(e).toLowerCase();let score=0;
+      for(const t of terms){
+        if(!hay.includes(t))return null;
+        if(label===t)score+=30;
+        else if(label.startsWith(t))score+=16;
+        else if(aliases.split(/\s+/).includes(t))score+=12;
+        else if(aliases.includes(t))score+=7;
+        else if(hay.includes(' '+t))score+=4;
+        else score+=1;
+      }
+      score+=priority(e);
       return {e,score};
-    }).filter(Boolean).sort((a,b)=>b.score-a.score||a.e.label.localeCompare(b.e.label)).slice(0,12).map(x=>x.e);
+    }).filter(Boolean).sort((a,b)=>b.score-a.score||priority(b.e)-priority(a.e)||a.e.label.localeCompare(b.e.label)).slice(0,12).map(x=>x.e);
     content.className='site-access-results';
     content.innerHTML=rows.length?rows.map(e=>'<a class="site-access-result" href="'+esc(href(e.route))+'"><span><b>'+esc(e.label)+'</b><small>'+esc(e.note||'')+'</small></span><em>'+esc(e.kind||'result')+'</em></a>').join(''):'<div class="site-access-empty">No quick result. Try a broader word or open A–Z / Explore.</div>';
   };
