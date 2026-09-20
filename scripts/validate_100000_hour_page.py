@@ -33,6 +33,12 @@ CANONICAL_MARKERS = (
     'https://www.youtube.com/@TheGodFatherTim',
     'https://www.youtube.com/@TheGodFatherTim/live',
     'Son + Father always equals Total',
+    "What the number is celebrating",
+    "Scale check.",
+    "What kind of expertise can a life on camera produce?",
+    "So why hasn't everybody heard of Tim Dooley?",
+    "100000-hour-public-benchmarks.json",
+    "The counter should keep sending you away from the counter.",
     'site-tts.js',
 )
 LEGACY_MARKERS = (
