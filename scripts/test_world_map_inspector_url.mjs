@@ -16,6 +16,25 @@ assert.deepEqual(decodeInspectorPath(encoded).map(node => ({type:node.type,id:no
 assert.deepEqual(decodeInspectorPath('country:DNK/place:gn%3A123').at(-1).parent, {type:'country',id:'DNK'});
 assert.deepEqual(decodeInspectorPath('place:gn%3A123'), [{type:'place',id:'gn:123',parent:null}]);
 assert.deepEqual(decodeInspectorPath('country:DNK/bogus:x'), []);
+assert.equal(
+  encodeInspectorPath([
+    {type:'country', id:'USA', owner:'country'},
+    {type:'subdivision', id:'US-CA', owner:'subdivisions', parent:{type:'country',id:'USA'}},
+    {type:'evidence', id:'adl-heat:US-CA', owner:'adl-heat', parent:{type:'subdivision',id:'US-CA'}},
+  ]),
+  'country:USA/subdivision:US-CA/evidence:adl-heat%3AUS-CA'
+);
+assert.equal(
+  encodeInspectorPath([
+    {type:'country', id:'USA', owner:'country'},
+    {type:'evidence-record', id:'adl:record:1', owner:'adl-heat', parent:{type:'country',id:'USA'}},
+  ]),
+  'country:USA/evidence-record:adl%3Arecord%3A1'
+);
+assert.deepEqual(
+  decodeInspectorPath('country:USA/subdivision:US-CA/evidence:adl-heat%3AUS-CA').at(-1).parent,
+  {type:'subdivision', id:'US-CA'}
+);
 
 const legacy = new URL('https://example.test/world-map/?country=DNK&subdivision=DK-83&place=place%3Ahaderslev');
 assert.equal(deriveInspectorPathFromUrl(legacy), encoded);
