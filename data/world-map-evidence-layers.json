@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updated": "2026-09-19",
+  "updated": "2026-09-20",
   "id": "world-map-evidence-layers",
   "purpose": "High-level evidence datasets that require specialist filtering or aggregation while remaining first-class World Map controls. Canonical records stay in their source datasets; this manifest owns discovery/loading metadata only.",
   "rules": [
@@ -25,7 +25,11 @@
       "geography": "United States · state aggregation + geocoded records",
       "source_owner": "Anti-Defamation League (ADL), Center on Extremism",
       "snapshot_owner": "data/world-incidents/adl-heat/metadata.json",
-      "status_note": "Committed data is explicitly versioned by snapshot status; current renderer must never imply the historical seed is ADL's latest monthly export."
+      "status_note": "Committed data is explicitly versioned by snapshot status; current renderer must never imply the historical seed is ADL's latest monthly export.",
+      "data_status": "historical-snapshot",
+      "data_through": "2023-10-11",
+      "freshness_owner": "data/world-incidents/adl-heat/metadata.json",
+      "freshness_policy": "The Evidence menu and active ADL surfaces must visibly distinguish this historical snapshot from current monthly ADL coverage."
     },
     {
       "id": "fbi-hate-crime",
