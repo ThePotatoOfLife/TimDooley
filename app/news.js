@@ -66,6 +66,27 @@ function renderLatest(host,rows,maxFeed){const lead=$('[data-news-lead]',host),f
 function renderClusters(host,clusters){const el=$('[data-news-clusters]',host);if(!el)return;el.innerHTML=clusters.length?clusters.map((g,i)=>'<article class="news-cluster"><div class="news-cluster-head"><div><div class="news-cluster-meta">Repeated coverage · cluster '+(i+1)+'</div><h3>'+esc(g.title)+'</h3></div><div class="news-cluster-count">'+g.domains+'<small>source domains</small></div></div><div class="news-cluster-links">'+g.items.map(r=>'<a class="news-cluster-link" href="'+esc(r.url)+'" target="_blank" rel="noopener noreferrer"><span>'+esc(r.source||r.provider)+'</span><b>'+esc(r.title)+'</b><em>'+esc(relativeTime(r.published))+'</em></a>').join('')+'</div></article>').join(''):'<div class="news-empty">No repeated-coverage clusters cleared the current overlap rule in this sample. That does not mean the underlying events are unimportant or unreported.</div>'}
 function providerDescription(id){return id==='gdelt'?'Broad publisher discovery via GDELT':id==='publisher-rss'?'Publisher-supplied RSS excerpts and metadata':id==='hacker-news'?'Community technology link stream':id==='spaceflight-news'?'Specialist space reporting index':id}
 function renderSourceLanes(host,rows,providers,limit){const el=$('[data-news-source-lanes]',host);if(!el)return;el.innerHTML=providers.map(id=>{const items=rows.filter(r=>r.providerId===id).slice(0,limit);const name=items[0]?.provider||(id==='spaceflight-news'?'Spaceflight News':id==='hacker-news'?'Hacker News':id==='publisher-rss'?'Publisher RSS':'GDELT');return'<article class="news-source-lane"><div class="news-source-lane-head"><b>'+esc(name)+'</b><span>'+esc(providerDescription(id))+' · '+items.length+' shown</span></div>'+(items.length?items.map(r=>'<a class="news-source-item" href="'+esc(r.url)+'" target="_blank" rel="noopener noreferrer"><b>'+esc(r.title)+'</b><span>'+esc(r.source)+' · '+esc(relativeTime(r.published))+'</span></a>').join(''):'<div class="news-empty">No items from this provider in the active view.</div>')+'</article>'}).join('')}
+function sourceBalancedBriefing(rows,providers,limit=12){
+ const queues=new Map(providers.map(id=>[id,rows.filter(r=>r.providerId===id)]));
+ const seenSources=new Set(),out=[];let progress=true;
+ while(out.length<limit&&progress){
+   progress=false;
+   for(const id of providers){
+     const queue=queues.get(id)||[];if(!queue.length)continue;
+     let index=queue.findIndex(r=>!seenSources.has((r.source||'').toLowerCase()));
+     if(index<0)index=0;
+     const [row]=queue.splice(index,1);if(!row)continue;
+     out.push(row);if(row.source)seenSources.add(row.source.toLowerCase());progress=true;
+     if(out.length>=limit)break;
+   }
+ }
+ return out;
+}
+function renderBriefing(host,rows,providers){
+ const el=$('[data-news-briefing]',host);if(!el)return;
+ const items=sourceBalancedBriefing(rows,providers,12);
+ el.innerHTML=items.length?items.map((r,i)=>'<article class="news-briefing-item"><div class="news-briefing-index">'+String(i+1).padStart(2,'0')+'</div><div><div class="news-story-kicker"><span>'+esc(r.provider)+'</span><i></i><span>'+esc(r.source||'source')+'</span></div><h3>'+esc(r.title)+'</h3>'+(r.summary?'<p>'+esc(r.summary.slice(0,300))+(r.summary.length>300?'…':'')+'</p>':'')+'<div class="news-story-footer"><span>'+esc(relativeTime(r.published))+'</span><a href="'+esc(r.url)+'" target="_blank" rel="noopener noreferrer">Full report ↗</a></div></div></article>').join(''):'<div class="news-empty">No stories are available for a briefing in this sample.</div>';
+}
 function renderPulse(host,rows,clusters,providers){const pulse=$('[data-news-pulse]',host);if(!pulse)return;const domains=new Set(rows.map(r=>r.source).filter(Boolean));const active=new Set(rows.map(r=>r.providerId).filter(Boolean));const newest=rows.length?relativeTime(rows[0].published):'—';const vals=[[rows.length,'items returned'],[domains.size,'source domains'],[active.size+'/'+providers.length,'active providers'],[clusters.length,'repeated clusters'],[newest,'newest item age']];pulse.innerHTML=vals.map(v=>'<div class="news-pulse-cell"><b>'+esc(v[0])+'</b><span>'+esc(v[1])+'</span></div>').join('')}
 function renderPreview(host,rows,limit){const grid=$('[data-news-preview-grid]',host);if(!grid)return;const take=rows.slice(0,limit);grid.innerHTML=take.length?take.map(r=>'<a class="news-preview-item" href="'+esc(r.url)+'" target="_blank" rel="noopener noreferrer"><small>'+esc(r.provider)+' · '+esc(r.source)+'</small><b>'+esc(r.title)+'</b><span>'+esc(relativeTime(r.published))+'</span></a>').join(''):'<div class="news-empty">Live preview unavailable. The full News page can retry each source independently.</div>'}
 function setView(host,view){$$('[data-news-view]',host).forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.newsView===view)));$$('[data-news-view-panel]',host).forEach(p=>p.classList.toggle('is-active',p.dataset.newsViewPanel===view))}
@@ -76,7 +97,7 @@ async function bootFull(host,config){
  if(!(config.categories||[]).some(x=>x.id===category))category='all';
  if(lens&&!(config.lenses||[]).some(x=>x.id===lens))lens='';
  if(!(config.horizons||[]).some(x=>x.id===horizon))horizon='24h';
- if(!['latest','clusters','sources'].includes(view))view='latest';
+ if(!['latest','briefing','clusters','sources'].includes(view))view='latest';
  if(custom){category='all';lens=''}
  function catRow(){return(config.categories||[]).find(x=>x.id===category)||(config.categories||[])[0]||{}}
  function lensRow(){return(config.lenses||[]).find(x=>x.id===lens)||null}
@@ -89,7 +110,7 @@ async function bootFull(host,config){
    const groups=await Promise.all(providers.map(id=>providerLoad(host,id,q,timespan,force,ms,config,category)));force=false;
    const rows=dedupe(groups.flat()),clusters=coverageClusters(rows,config.presentation?.max_clusters||6,config.presentation?.max_cluster_items||4);
    const count=$('[data-news-count]',host),updated=$('[data-news-updated]',host);if(count)count.textContent=rows.length+' items';if(updated)updated.textContent='refreshed '+new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
-   renderLatest(host,rows,config.presentation?.max_feed||36);renderClusters(host,clusters);renderSourceLanes(host,rows,providers,config.presentation?.source_lane_items||5);renderPulse(host,rows,clusters,providers);
+   renderLatest(host,rows,config.presentation?.max_feed||36);renderBriefing(host,rows,providers);renderClusters(host,clusters);renderSourceLanes(host,rows,providers,config.presentation?.source_lane_items||5);renderPulse(host,rows,clusters,providers);
  }
  tabs?.addEventListener('click',e=>{const b=e.target.closest('[data-news-category]');if(!b)return;category=b.dataset.newsCategory;custom='';if(input)input.value='';press();persist();run()});
  lenses?.addEventListener('click',e=>{const b=e.target.closest('[data-news-lens]');if(!b)return;lens=b.dataset.newsLens||'';press();persist();run()});
