@@ -16,6 +16,7 @@
 .home-hero{display:grid;grid-template-columns:minmax(280px,.88fr) minmax(320px,1.12fr);gap:48px;align-items:end;padding:8px 0 42px}
 .home-hero h1{font:400 clamp(60px,10vw,116px)/.82 var(--site-font-serif);letter-spacing:-.065em;margin:0}
 .home-intro{padding-bottom:7px}.home-intro .eyebrow{margin-bottom:11px}.home-guide{display:flex;flex-wrap:wrap;gap:6px;margin:-18px 0 34px}.home-guide a{border:1px solid var(--site-line);border-radius:999px;padding:7px 10px;text-decoration:none;color:var(--site-muted);font-size:10px}.home-guide a:hover,.home-guide a:focus-visible{color:var(--site-green);border-color:#60715b}.home-guide b{font-weight:700;color:#cdd5c9;margin-right:4px}
+.sections{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin:14px 0}.sections>a{display:block;border:1px solid var(--site-line);border-radius:11px;padding:10px;text-decoration:none;color:inherit;background:var(--site-panel)}.sections strong{display:block;font:400 16px var(--site-font-serif);color:var(--site-gold);margin-bottom:5px}.sections .question-preview{display:block;color:var(--site-muted);font-size:8px;line-height:1.35;margin-top:3px}.secondary-threads{display:contents}@media(max-width:760px){.sections{grid-template-columns:1fr}}
 .project-purpose{max-width:760px;font:400 clamp(20px,2.25vw,24px)/1.48 var(--site-font-serif);color:#d8ddd4;margin:0}
 .evidence-note{max-width:760px;color:var(--site-muted);font-size:12px;line-height:1.55;margin:14px 0 0}.evidence-note a{color:#aeb9aa}
 .home-section{padding:32px 0;border-top:1px solid var(--site-line)}
@@ -262,6 +263,13 @@
 <a class="home-visual-card" href="history/"><img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Library_shelves.jpg?width=700" alt="Library shelves filled with bound periodicals" loading="lazy" decoding="async" referrerpolicy="no-referrer"><div><b>Memory needs an archive</b><span>Records let later readers distinguish occurrence, attestation, interpretation, correction and inherited narrative.</span><small>Lauren / LIS632-07S-LIP · public domain · Wikimedia Commons</small></div></a>
 </div>
 
+<nav class="sections" aria-label="Canonical question-led public doors">
+<a href="tim-dooley/"><strong>Tim Dooley</strong><span class="question-preview">Who is Tim Dooley?</span><span class="question-preview">How did his ideas and roles develop over time?</span></a>
+<a href="religion/"><strong>Religion</strong><span class="question-preview">What is Potatoism?</span><span class="question-preview">How does it compare with older religious traditions?</span></a>
+<a href="philosophy/"><strong>Philosophy</strong><span class="question-preview">What does the project mean by relation, growth and truth?</span><span class="question-preview">How are power, responsibility and ethics tested?</span></a>
+<a href="science/"><strong>Science</strong><span class="question-preview">What can actually be measured or falsified?</span><span class="question-preview">Where does symbolic comparison stop being scientific evidence?</span></a>
+<a href="world/"><strong>World</strong><span class="question-preview">How do countries, institutions and infrastructures connect?</span><span class="question-preview">What changes when the project is tested against real systems?</span></a>
+</nav>
 <nav class="public-doors" aria-label="Public entrances">
 <a class="public-door" href="tim-dooley/"><span class="door-no">01</span><strong>Tim Dooley</strong><span>Life, identity, development, chronology and public record.</span><span class="door-arrow">→</span></a>
 <a class="public-door" href="religion/"><span class="door-no">02</span><strong>Religion</strong><span>Potatoism, scripture, traditions, reception history and sacred symbols.</span><span class="door-arrow">→</span></a>
@@ -271,6 +279,7 @@
 </nav>
 </section>
 
+<div class="secondary-threads">
 <section class="home-section archive-band" id="cross-cutting-views" aria-labelledby="archive-title">
 <div><p class="eyebrow">Cross-cutting views</p><h2 id="archive-title">Use a view when the subject crosses Rooms</h2><p>These surfaces connect material without taking ownership away from the Rooms and records that actually hold it.</p></div>
 <nav class="archive-links" aria-label="Cross-cutting project views">
@@ -282,6 +291,7 @@
 <a href="context/source-authority/"><b>Sources &amp; Evidence</b><small>Provenance, evidence classes, authority and uncertainty.</small></a>
 </nav>
 </section>
+</div>
 </main>
 
 <footer class="home-footer"><a href="questions/">Questions</a><a href="index-a-z/">A–Z</a><a href="explore/">Explore</a><a href="context/source-authority/">Sources</a><a href="tools/tts/">TTS Reader</a></footer>
