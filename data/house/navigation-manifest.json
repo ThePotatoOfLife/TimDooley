@@ -1,5 +1,5 @@
 {
-  "version": "4.6.0",
+  "version": "4.7.0",
   "updated": "2026-09-20",
   "authority": "house-navigation-manifest",
   "purpose": "Resolve which existing owner governs each structural concern so new work deepens the right place instead of creating parallel masters. This manifest is an index over authorities, not another ontology, navigation hierarchy or presentation plan.",
@@ -358,6 +358,16 @@
       "concern": "live external news / Current World source and provenance contract",
       "owner": "data/news/sources.json",
       "rule": "Current World is a non-owning current-events projection owned publicly by World. External API metadata must retain provider and publisher provenance; feed presence is not verification or project endorsement, and default ordering remains mechanical newest-first rather than political or ideological ranking."
+    },
+    {
+      "concern": "nested Room public-surface projection sync",
+      "owner": "scripts/sync_room_public_surfaces.py",
+      "rule": "data/house/subrooms.json owns each nested Room's public_surface_ids. holdings.json and room-dossiers.json are projections and must be synchronized from that owner; CI check mode rejects manual drift."
+    },
+    {
+      "concern": "recent substantial work integration",
+      "owner": "data/house/recent-work-integration-ledger.json",
+      "rule": "Tracks substantial workstreams through canonical owners, Room placement, public exposure and validation. It is an integration audit, not a new knowledge owner or public hierarchy."
     }
   ],
   "resolver_order": [
