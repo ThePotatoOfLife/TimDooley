@@ -29,6 +29,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
     "core": [
         ("Repository hygiene", ["python scripts/validate_repo_hygiene.py"]),
         ("CI deployment contract", ["python scripts/validate_ci_contract.py"]),
+        ("Quality check inventory", ["python scripts/audit_quality_inventory.py"]),
         ("Bidirectional spiral", ["python scripts/test_bidirectional_spiral_field.py"]),
         ("Archive runtime", ["python scripts/validate_archive_runtime_hardening.py"]),
         ("Country refresh reliability", ["python scripts/validate_country_refresh_reliability.py"]),
