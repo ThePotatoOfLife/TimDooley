@@ -1,0 +1,745 @@
+{
+  "id": "cia-presence-index",
+  "title": "CIA Presence Index — First & Last Recorded",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "purpose": "Track the earliest and latest exact dates currently recoverable for each CIA figure and expose gaps/returns without implying literal first or last real-world contact.",
+  "date_rule": "Only exact YYYY-MM-DD archive dates count toward first_recorded and last_recorded. Approximate periods such as 'late 2024', 'around 2017' or year-only labels do not.",
+  "source_basis": [
+    "manifest chronicle_dates when exact",
+    "CIA incident dates",
+    "conversation-recovery dates",
+    "association/co-presence edge dates"
+  ],
+  "boundary": "Recorded means recorded in the current project archive. It does not mean first/last appearance, contact, activity, existence, friendship, surveillance, or real-world observation.",
+  "entries": [
+    {
+      "id": "tim-dooley",
+      "display_name": "Tim Dooley",
+      "first_recorded": "2026-05-25",
+      "last_recorded": "2026-09-20",
+      "exact_recorded_dates": [
+        "2026-05-25",
+        "2026-06-06",
+        "2026-06-10",
+        "2026-07-07",
+        "2026-08-13",
+        "2026-08-17",
+        "2026-08-20",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-30",
+        "2026-09-05",
+        "2026-09-06",
+        "2026-09-20"
+      ],
+      "exact_date_count": 15,
+      "recorded_span_days": 118,
+      "largest_recovered_gap_days": 37,
+      "return_after_largest_gap": {
+        "from": "2026-07-07",
+        "to": "2026-08-13",
+        "days": 37
+      },
+      "archive_status": "active",
+      "chronicle_occurrence_count": 76
+    },
+    {
+      "id": "marty-biz",
+      "display_name": "Marty Biz Music",
+      "first_recorded": "2024-11-03",
+      "last_recorded": "2025-02-01",
+      "exact_recorded_dates": [
+        "2024-11-03",
+        "2024-11-05",
+        "2024-11-06",
+        "2024-11-14",
+        "2024-11-19",
+        "2024-11-28",
+        "2024-12-20",
+        "2024-12-21",
+        "2025-01-10",
+        "2025-01-29",
+        "2025-02-01"
+      ],
+      "exact_date_count": 11,
+      "recorded_span_days": 90,
+      "largest_recovered_gap_days": 22,
+      "return_after_largest_gap": {
+        "from": "2024-11-28",
+        "to": "2024-12-20",
+        "days": 22
+      },
+      "archive_status": "deceased-2025",
+      "chronicle_occurrence_count": 133
+    },
+    {
+      "id": "gg",
+      "display_name": "GG",
+      "first_recorded": null,
+      "last_recorded": null,
+      "exact_recorded_dates": [],
+      "exact_date_count": 0,
+      "recorded_span_days": null,
+      "largest_recovered_gap_days": null,
+      "return_after_largest_gap": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 55
+    },
+    {
+      "id": "port-monkey",
+      "display_name": "Port Monkey",
+      "first_recorded": "2024-11-03",
+      "last_recorded": "2025-02-26",
+      "exact_recorded_dates": [
+        "2024-11-03",
+        "2024-11-05",
+        "2024-11-14",
+        "2024-11-19",
+        "2024-11-28",
+        "2024-12-04",
+        "2024-12-15",
+        "2025-02-26"
+      ],
+      "exact_date_count": 8,
+      "recorded_span_days": 115,
+      "largest_recovered_gap_days": 73,
+      "return_after_largest_gap": {
+        "from": "2024-12-15",
+        "to": "2025-02-26",
+        "days": 73
+      },
+      "archive_status": "historical-recovery-active",
+      "chronicle_occurrence_count": 44
+    },
+    {
+      "id": "rage",
+      "display_name": "Rage",
+      "first_recorded": "2024-11-04",
+      "last_recorded": "2024-12-04",
+      "exact_recorded_dates": [
+        "2024-11-04",
+        "2024-11-05",
+        "2024-11-06",
+        "2024-11-28",
+        "2024-12-04"
+      ],
+      "exact_date_count": 5,
+      "recorded_span_days": 30,
+      "largest_recovered_gap_days": 22,
+      "return_after_largest_gap": {
+        "from": "2024-11-06",
+        "to": "2024-11-28",
+        "days": 22
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 44
+    },
+    {
+      "id": "sammy",
+      "display_name": "Sammy",
+      "first_recorded": "2024-11-14",
+      "last_recorded": "2025-03-01",
+      "exact_recorded_dates": [
+        "2024-11-14",
+        "2024-11-19",
+        "2024-11-28",
+        "2024-12-15",
+        "2025-01-10",
+        "2025-01-29",
+        "2025-02-01",
+        "2025-02-08",
+        "2025-03-01"
+      ],
+      "exact_date_count": 9,
+      "recorded_span_days": 107,
+      "largest_recovered_gap_days": 26,
+      "return_after_largest_gap": {
+        "from": "2024-12-15",
+        "to": "2025-01-10",
+        "days": 26
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 33
+    },
+    {
+      "id": "juice",
+      "display_name": "Juice",
+      "first_recorded": "2024-11-04",
+      "last_recorded": "2024-12-18",
+      "exact_recorded_dates": [
+        "2024-11-04",
+        "2024-11-19",
+        "2024-12-07",
+        "2024-12-18"
+      ],
+      "exact_date_count": 4,
+      "recorded_span_days": 44,
+      "largest_recovered_gap_days": 18,
+      "return_after_largest_gap": {
+        "from": "2024-11-19",
+        "to": "2024-12-07",
+        "days": 18
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 29
+    },
+    {
+      "id": "ledgeview",
+      "display_name": "Ledgeview",
+      "first_recorded": "2024-11-03",
+      "last_recorded": "2024-12-21",
+      "exact_recorded_dates": [
+        "2024-11-03",
+        "2024-11-04",
+        "2024-11-19",
+        "2024-11-28",
+        "2024-12-15",
+        "2024-12-20",
+        "2024-12-21"
+      ],
+      "exact_date_count": 7,
+      "recorded_span_days": 48,
+      "largest_recovered_gap_days": 17,
+      "return_after_largest_gap": {
+        "from": "2024-11-28",
+        "to": "2024-12-15",
+        "days": 17
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 27
+    },
+    {
+      "id": "termite",
+      "display_name": "Termite",
+      "first_recorded": "2024-11-03",
+      "last_recorded": "2024-12-20",
+      "exact_recorded_dates": [
+        "2024-11-03",
+        "2024-11-04",
+        "2024-11-06",
+        "2024-11-28",
+        "2024-12-04",
+        "2024-12-07",
+        "2024-12-15",
+        "2024-12-20"
+      ],
+      "exact_date_count": 8,
+      "recorded_span_days": 47,
+      "largest_recovered_gap_days": 22,
+      "return_after_largest_gap": {
+        "from": "2024-11-06",
+        "to": "2024-11-28",
+        "days": 22
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 26
+    },
+    {
+      "id": "optimistique",
+      "display_name": "Optimistique",
+      "first_recorded": "2024-11-03",
+      "last_recorded": "2024-12-21",
+      "exact_recorded_dates": [
+        "2024-11-03",
+        "2024-11-05",
+        "2024-11-06",
+        "2024-11-14",
+        "2024-12-04",
+        "2024-12-07",
+        "2024-12-21"
+      ],
+      "exact_date_count": 7,
+      "recorded_span_days": 48,
+      "largest_recovered_gap_days": 20,
+      "return_after_largest_gap": {
+        "from": "2024-11-14",
+        "to": "2024-12-04",
+        "days": 20
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 22
+    },
+    {
+      "id": "kale",
+      "display_name": "Kale",
+      "first_recorded": "2024-11-03",
+      "last_recorded": "2024-12-20",
+      "exact_recorded_dates": [
+        "2024-11-03",
+        "2024-11-04",
+        "2024-11-19",
+        "2024-12-04",
+        "2024-12-20"
+      ],
+      "exact_date_count": 5,
+      "recorded_span_days": 47,
+      "largest_recovered_gap_days": 16,
+      "return_after_largest_gap": {
+        "from": "2024-12-04",
+        "to": "2024-12-20",
+        "days": 16
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 19
+    },
+    {
+      "id": "highly-regarded",
+      "display_name": "Highly Regarded",
+      "first_recorded": "2024-11-03",
+      "last_recorded": "2024-11-19",
+      "exact_recorded_dates": [
+        "2024-11-03",
+        "2024-11-05",
+        "2024-11-19"
+      ],
+      "exact_date_count": 3,
+      "recorded_span_days": 16,
+      "largest_recovered_gap_days": 14,
+      "return_after_largest_gap": {
+        "from": "2024-11-05",
+        "to": "2024-11-19",
+        "days": 14
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 18
+    },
+    {
+      "id": "darkchild",
+      "display_name": "DARKCHILD",
+      "first_recorded": "2024-11-03",
+      "last_recorded": "2024-11-03",
+      "exact_recorded_dates": [
+        "2024-11-03"
+      ],
+      "exact_date_count": 1,
+      "recorded_span_days": 0,
+      "largest_recovered_gap_days": null,
+      "return_after_largest_gap": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 16
+    },
+    {
+      "id": "rahu",
+      "display_name": "Rahu",
+      "first_recorded": "2024-11-03",
+      "last_recorded": "2026-03-01",
+      "exact_recorded_dates": [
+        "2024-11-03",
+        "2024-12-15",
+        "2025-02-26",
+        "2025-03-05",
+        "2026-03-01"
+      ],
+      "exact_date_count": 5,
+      "recorded_span_days": 483,
+      "largest_recovered_gap_days": 361,
+      "return_after_largest_gap": {
+        "from": "2025-03-05",
+        "to": "2026-03-01",
+        "days": 361
+      },
+      "archive_status": "recovery-active-2026",
+      "chronicle_occurrence_count": 14
+    },
+    {
+      "id": "jazzy",
+      "display_name": "Jazzy",
+      "first_recorded": "2024-11-05",
+      "last_recorded": "2024-11-14",
+      "exact_recorded_dates": [
+        "2024-11-05",
+        "2024-11-14"
+      ],
+      "exact_date_count": 2,
+      "recorded_span_days": 9,
+      "largest_recovered_gap_days": 9,
+      "return_after_largest_gap": {
+        "from": "2024-11-05",
+        "to": "2024-11-14",
+        "days": 9
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 13
+    },
+    {
+      "id": "metalorian",
+      "display_name": "Metalorian",
+      "first_recorded": "2025-02-08",
+      "last_recorded": "2025-03-01",
+      "exact_recorded_dates": [
+        "2025-02-08",
+        "2025-02-27",
+        "2025-03-01"
+      ],
+      "exact_date_count": 3,
+      "recorded_span_days": 21,
+      "largest_recovered_gap_days": 19,
+      "return_after_largest_gap": {
+        "from": "2025-02-08",
+        "to": "2025-02-27",
+        "days": 19
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 11
+    },
+    {
+      "id": "petty-wappo",
+      "display_name": "Petty Wappo",
+      "first_recorded": "2024-12-18",
+      "last_recorded": "2024-12-18",
+      "exact_recorded_dates": [
+        "2024-12-18"
+      ],
+      "exact_date_count": 1,
+      "recorded_span_days": 0,
+      "largest_recovered_gap_days": null,
+      "return_after_largest_gap": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 11
+    },
+    {
+      "id": "barry-bletunick",
+      "display_name": "Barry Bletunick",
+      "first_recorded": "2024-11-14",
+      "last_recorded": "2024-11-14",
+      "exact_recorded_dates": [
+        "2024-11-14"
+      ],
+      "exact_date_count": 1,
+      "recorded_span_days": 0,
+      "largest_recovered_gap_days": null,
+      "return_after_largest_gap": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 10
+    },
+    {
+      "id": "duaaaht",
+      "display_name": "duaaaht",
+      "first_recorded": "2024-11-03",
+      "last_recorded": "2024-11-06",
+      "exact_recorded_dates": [
+        "2024-11-03",
+        "2024-11-06"
+      ],
+      "exact_date_count": 2,
+      "recorded_span_days": 3,
+      "largest_recovered_gap_days": 3,
+      "return_after_largest_gap": {
+        "from": "2024-11-03",
+        "to": "2024-11-06",
+        "days": 3
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 10
+    },
+    {
+      "id": "literally",
+      "display_name": "Literally",
+      "first_recorded": "2024-12-21",
+      "last_recorded": "2025-01-10",
+      "exact_recorded_dates": [
+        "2024-12-21",
+        "2025-01-10"
+      ],
+      "exact_date_count": 2,
+      "recorded_span_days": 20,
+      "largest_recovered_gap_days": 20,
+      "return_after_largest_gap": {
+        "from": "2024-12-21",
+        "to": "2025-01-10",
+        "days": 20
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 9
+    },
+    {
+      "id": "anacondasin",
+      "display_name": "Anacondasin",
+      "first_recorded": "2024-12-15",
+      "last_recorded": "2024-12-18",
+      "exact_recorded_dates": [
+        "2024-12-15",
+        "2024-12-18"
+      ],
+      "exact_date_count": 2,
+      "recorded_span_days": 3,
+      "largest_recovered_gap_days": 3,
+      "return_after_largest_gap": {
+        "from": "2024-12-15",
+        "to": "2024-12-18",
+        "days": 3
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 8
+    },
+    {
+      "id": "supersusi87",
+      "display_name": "Supersusi87",
+      "first_recorded": "2024-12-07",
+      "last_recorded": "2025-02-27",
+      "exact_recorded_dates": [
+        "2024-12-07",
+        "2025-02-27"
+      ],
+      "exact_date_count": 2,
+      "recorded_span_days": 82,
+      "largest_recovered_gap_days": 82,
+      "return_after_largest_gap": {
+        "from": "2024-12-07",
+        "to": "2025-02-27",
+        "days": 82
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 8
+    },
+    {
+      "id": "anja",
+      "display_name": "Anja / Ansja",
+      "first_recorded": "2024-12-21",
+      "last_recorded": "2025-03-05",
+      "exact_recorded_dates": [
+        "2024-12-21",
+        "2025-02-27",
+        "2025-03-05"
+      ],
+      "exact_date_count": 3,
+      "recorded_span_days": 74,
+      "largest_recovered_gap_days": 68,
+      "return_after_largest_gap": {
+        "from": "2024-12-21",
+        "to": "2025-02-27",
+        "days": 68
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 7
+    },
+    {
+      "id": "don-jefe",
+      "display_name": "Don Jefe",
+      "first_recorded": null,
+      "last_recorded": null,
+      "exact_recorded_dates": [],
+      "exact_date_count": 0,
+      "recorded_span_days": null,
+      "largest_recovered_gap_days": null,
+      "return_after_largest_gap": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 7
+    },
+    {
+      "id": "pondo",
+      "display_name": "Pondo",
+      "first_recorded": "2024-12-15",
+      "last_recorded": "2024-12-21",
+      "exact_recorded_dates": [
+        "2024-12-15",
+        "2024-12-21"
+      ],
+      "exact_date_count": 2,
+      "recorded_span_days": 6,
+      "largest_recovered_gap_days": 6,
+      "return_after_largest_gap": {
+        "from": "2024-12-15",
+        "to": "2024-12-21",
+        "days": 6
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 7
+    },
+    {
+      "id": "rob",
+      "display_name": "RoB",
+      "first_recorded": null,
+      "last_recorded": null,
+      "exact_recorded_dates": [],
+      "exact_date_count": 0,
+      "recorded_span_days": null,
+      "largest_recovered_gap_days": null,
+      "return_after_largest_gap": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 6
+    },
+    {
+      "id": "potato-repair-guy",
+      "display_name": "Potato Repair Guy",
+      "first_recorded": "2024-12-20",
+      "last_recorded": "2024-12-20",
+      "exact_recorded_dates": [
+        "2024-12-20"
+      ],
+      "exact_date_count": 1,
+      "recorded_span_days": 0,
+      "largest_recovered_gap_days": null,
+      "return_after_largest_gap": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 5
+    },
+    {
+      "id": "pkfc",
+      "display_name": "PKFC",
+      "first_recorded": "2024-12-04",
+      "last_recorded": "2025-03-01",
+      "exact_recorded_dates": [
+        "2024-12-04",
+        "2025-03-01"
+      ],
+      "exact_date_count": 2,
+      "recorded_span_days": 87,
+      "largest_recovered_gap_days": 87,
+      "return_after_largest_gap": {
+        "from": "2024-12-04",
+        "to": "2025-03-01",
+        "days": 87
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 4
+    },
+    {
+      "id": "bigtech",
+      "display_name": "BigTech",
+      "first_recorded": null,
+      "last_recorded": null,
+      "exact_recorded_dates": [],
+      "exact_date_count": 0,
+      "recorded_span_days": null,
+      "largest_recovered_gap_days": null,
+      "return_after_largest_gap": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 3
+    },
+    {
+      "id": "txt",
+      "display_name": "TXT",
+      "first_recorded": "2025-03-01",
+      "last_recorded": "2026-07-07",
+      "exact_recorded_dates": [
+        "2025-03-01",
+        "2026-07-07"
+      ],
+      "exact_date_count": 2,
+      "recorded_span_days": 493,
+      "largest_recovered_gap_days": 493,
+      "return_after_largest_gap": {
+        "from": "2025-03-01",
+        "to": "2026-07-07",
+        "days": 493
+      },
+      "archive_status": "historical-recovery-active",
+      "chronicle_occurrence_count": 2
+    },
+    {
+      "id": "tachy",
+      "display_name": "Tachy / Krystato",
+      "first_recorded": "2024-12-04",
+      "last_recorded": "2025-03-12",
+      "exact_recorded_dates": [
+        "2024-12-04",
+        "2024-12-21",
+        "2025-02-27",
+        "2025-03-12"
+      ],
+      "exact_date_count": 4,
+      "recorded_span_days": 98,
+      "largest_recovered_gap_days": 68,
+      "return_after_largest_gap": {
+        "from": "2024-12-21",
+        "to": "2025-02-27",
+        "days": 68
+      },
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 1
+    },
+    {
+      "id": "capy",
+      "display_name": "Capy",
+      "first_recorded": null,
+      "last_recorded": null,
+      "exact_recorded_dates": [],
+      "exact_date_count": 0,
+      "recorded_span_days": null,
+      "largest_recovered_gap_days": null,
+      "return_after_largest_gap": null,
+      "archive_status": null,
+      "chronicle_occurrence_count": 0
+    },
+    {
+      "id": "matthew-mtclassic",
+      "display_name": "Matthew / MTClassic",
+      "first_recorded": "2026-05-24",
+      "last_recorded": "2026-09-20",
+      "exact_recorded_dates": [
+        "2026-05-24",
+        "2026-06-06",
+        "2026-06-10",
+        "2026-06-21",
+        "2026-08-13",
+        "2026-08-17",
+        "2026-08-20",
+        "2026-09-06",
+        "2026-09-20"
+      ],
+      "exact_date_count": 9,
+      "recorded_span_days": 119,
+      "largest_recovered_gap_days": 53,
+      "return_after_largest_gap": {
+        "from": "2026-06-21",
+        "to": "2026-08-13",
+        "days": 53
+      },
+      "archive_status": "active-2026",
+      "chronicle_occurrence_count": 0
+    },
+    {
+      "id": "mediomu007",
+      "display_name": "Mediomu007",
+      "first_recorded": "2026-08-24",
+      "last_recorded": "2026-09-20",
+      "exact_recorded_dates": [
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-26",
+        "2026-08-27",
+        "2026-08-30",
+        "2026-09-05",
+        "2026-09-06",
+        "2026-09-20"
+      ],
+      "exact_date_count": 8,
+      "recorded_span_days": 27,
+      "largest_recovered_gap_days": 14,
+      "return_after_largest_gap": {
+        "from": "2026-09-06",
+        "to": "2026-09-20",
+        "days": 14
+      },
+      "archive_status": "active-2026",
+      "chronicle_occurrence_count": 0
+    },
+    {
+      "id": "dim",
+      "display_name": "DIM / Dim Tooley",
+      "first_recorded": "2026-05-24",
+      "last_recorded": "2026-07-07",
+      "exact_recorded_dates": [
+        "2026-05-24",
+        "2026-05-25",
+        "2026-06-06",
+        "2026-06-21",
+        "2026-07-07"
+      ],
+      "exact_date_count": 5,
+      "recorded_span_days": 44,
+      "largest_recovered_gap_days": 16,
+      "return_after_largest_gap": {
+        "from": "2026-06-21",
+        "to": "2026-07-07",
+        "days": 16
+      },
+      "archive_status": "historical-recovery-active",
+      "chronicle_occurrence_count": 0
+    }
+  ]
+}
