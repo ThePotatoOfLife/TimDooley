@@ -16,11 +16,12 @@ LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 PLACES = ROOT / "world-map" / "3d-places.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
+ADL = ROOT / "world-map" / "3d-adl-heat.js"
 
 
 def main() -> int:
     errors: list[str] = []
-    for path in (ROUTER, URL_BRIDGE, TEST, URL_TEST, CONSUMER_TEST, LIFECYCLE, BOOTSTRAP, PLACES, SUBDIVISIONS):
+    for path in (ROUTER, URL_BRIDGE, TEST, URL_TEST, CONSUMER_TEST, LIFECYCLE, BOOTSTRAP, PLACES, SUBDIVISIONS, ADL):
         if not path.exists():
             errors.append(f"missing inspector-router file: {path.relative_to(ROOT)}")
     if errors:
@@ -35,6 +36,7 @@ def main() -> int:
     bootstrap = BOOTSTRAP.read_text(encoding="utf-8", errors="replace")
     places = PLACES.read_text(encoding="utf-8", errors="replace")
     subdivisions = SUBDIVISIONS.read_text(encoding="utf-8", errors="replace")
+    adl = ADL.read_text(encoding="utf-8", errors="replace")
     for token in ("function createInspectorRouter", "function setBaseline", "function open", "function back", "function current", "function state", "potato-atlas-inspector-change", "window.__potatoAtlasInspector"):
         if token not in router:
             errors.append(f"inspector router missing interface marker: {token}")
@@ -57,11 +59,23 @@ def main() -> int:
         if "panelSnapshot" in source:
             errors.append(f"{label} must not retain raw panelSnapshot state after inspector migration")
 
+    for token in (
+        "const inspector = window.__potatoAtlasInspector",
+        "type:'evidence'",
+        "type:'evidence-record'",
+        "owner:'adl-heat'",
+        "parent:{ type:'subdivision'",
+    ):
+        if token not in adl:
+            errors.append(f"ADL typed inspector migration missing marker: {token}")
+    if "['country','subdivision','place','evidence','evidence-record']" not in url_bridge:
+        errors.append("Inspector URL hierarchy must include typed evidence nodes")
+
     node = shutil.which("node")
     if not node:
         errors.append("node executable unavailable; cannot run inspector-router regressions")
     else:
-        for path in (ROUTER, URL_BRIDGE, PLACES, SUBDIVISIONS):
+        for path in (ROUTER, URL_BRIDGE, PLACES, SUBDIVISIONS, ADL):
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
@@ -75,7 +89,7 @@ def main() -> int:
     print("- deterministic parent restoration")
     print("- serializable state snapshots")
     print("- typed inspect= URL projection with legacy country/subdivision/place hydration")
-    print("- Places/subdivisions render live semantic parents instead of raw HTML snapshots")
+    print("- Places/subdivisions plus ADL evidence use typed semantic inspector nodes")
     print(f"Errors: {len(errors)}")
     if errors:
         print("WORLD MAP INSPECTOR ROUTER VALIDATION FAILED")
