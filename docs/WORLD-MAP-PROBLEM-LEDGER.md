@@ -24,16 +24,14 @@
 **Resolution:** source-change lifecycle + ADL repaint; load de-duplication; regression coverage.
 
 ### WM-003 · Physical Water owns a private 3.4 detail threshold — P2
-**Status:** in progress in this wave.  
-**Risk:** drift from canonical scale semantics; duplicated lifecycle thresholds.  
-**Owner:** Scale runtime.  
-**Resolution:** move threshold to `world-map-scale-contract.json`; Water consumes `physical-water-detail`.
+**Status:** fixed / governed on main (2026-09-20).  
+**Resolution:** `data/world-map-scale-contract.json` owns `physical-water-detail`; Water consumes the shared threshold and keeps only cartographic interpolation locally.  
+**Guard:** scale-classification validation requires the shared capability marker and rejects return of the old private behavioral gate.
 
 ### WM-004 · Hydrology owns private 4 / 5.2 / 6.7 / 8.2 thresholds — P2
-**Status:** in progress in this wave.  
-**Risk:** request density, cache identity and render activation can diverge.  
-**Owner:** Scale runtime + Hydrology.  
-**Resolution:** canonical capabilities + one `riverRegime()` owner shared by query threshold and request-key regime.
+**Status:** fixed / governed on main (2026-09-20).  
+**Resolution:** the Scale contract owns regional/medium/fine/detailed thresholds and Hydrology consumes them through one `riverRegime()` owner shared by provider filtering and request-key identity.  
+**Guard:** scale-classification validation checks every shared hydrology capability marker.
 
 ### WM-005 · Remaining raw zoom-magic inventory — P2
 **Status:** fixed / governed on main (2026-09-20).  
@@ -42,11 +40,10 @@
 **Rule retained:** visual interpolation and camera framing remain local unless they begin governing data/loading/interaction behavior.
 
 ### WM-006 · Country visual-channel ownership not fully closed — P1/P2
-**Status:** partially fixed (2026-09-20).  
-**Risk:** country fill/pattern/outline/height writers can override each other or restore in the wrong order.  
-**Owner:** compositor + country selection + Physical World + core extrusion controller.  
-**Completed:** explicit owner map added; Progressive UI no longer writes canonical country fill/extrusion/outline paint.  
-**Next:** migrate or retire the dormant legacy Lens repaint path, then audit remaining variable/dynamic paint writers.
+**Status:** substantially fixed; exact-head proof still preferred (2026-09-20).  
+**Resolution:** Compositor owns country fill/extrusion color, Country Selection owns outlines, Physical World owns country fill opacity, and the core extrusion controller owns height/visibility. Progressive UI is retired from normal boot. Legacy Lens URLs/API calls now translate into Layer Registry state and no longer repaint country surfaces directly.  
+**Guard:** visual-channel validation rejects canonical country paint writes from legacy UI/Lens compatibility modules and enforces one owner per channel.  
+**Remaining:** continue auditing dynamic/indirect paint writers as new renderers are promoted.
 
 ### WM-007 · Duplicate style/lifecycle writers remain — P2
 **Status:** fixed for direct Style Lifecycle ownership on main (2026-09-20).  
@@ -84,13 +81,14 @@
 **Remaining:** monitor announcement noise/ordering as more specialist layers are added.
 
 ### WM-014 · Route-geometry behavioral coverage incomplete — P2
-**Status:** open.  
-**Scope:** physical routes vs relationship chords vs symbolic routes; globe/dateline behavior; selection/hover priority.
+**Status:** substantially fixed.  
+**Completed:** relationship chords and symbolic interior routes use the shared wrap-safe longitude kernel; regressions cover dateline crossings in eastern and western world copies; route features carry explicit `geometry_meaning`; stored spatial-overlay lines remain stored/reference geometry rather than being silently converted into schematic chords. Shared Interaction Router tests cover click/hover priority.  
+**Remaining:** add behavioral coverage for any future surveyed physical-route renderer and continue globe-mode visual review.
 
 ### WM-015 · Legacy interaction fallback scenarios under-tested — P2
-**Status:** substantially fixed; style-reload/deep degraded scenarios remain.  
-**Completed:** Country Selection, Spatial Overlays, Places and Subdivisions resolve Router ownership dynamically, retain bounded direct fallbacks for partial boots, listen for Router readiness, tear down fallback listeners, and promote live to canonical Router ownership.  
-**Remaining:** explicit style-reload-during-interaction and no-Inspector behavioral scenarios for specialist surfaces.
+**Status:** substantially fixed; specialist degraded surfaces remain.  
+**Completed:** Country Selection, Spatial Overlays, Places and Subdivisions resolve Router ownership dynamically and promote from bounded fallbacks. Places/Subdivisions also resolve Inspector ownership dynamically and participate in the shared Style Lifecycle so sources/layers/interaction ownership recover after style generations.  
+**Remaining:** inspect ADL, Mud/Below, Spatial Overlay UI and Axis specialist consumers for the same delayed-Inspector/style-generation guarantees.
 
 ### WM-016 · State/subdivision national-context readability — P2
 **Status:** substantially fixed.  
