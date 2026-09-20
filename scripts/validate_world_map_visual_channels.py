@@ -27,6 +27,7 @@ def main() -> int:
     selection = (ROOT / "world-map" / "3d-country-selection.js").read_text(encoding="utf-8", errors="replace") if (ROOT / "world-map" / "3d-country-selection.js").is_file() else ""
     physical = (ROOT / "world-map" / "3d-physical-layers.js").read_text(encoding="utf-8", errors="replace") if (ROOT / "world-map" / "3d-physical-layers.js").is_file() else ""
     world_bar = (ROOT / "world-map" / "3d-world-bar.js").read_text(encoding="utf-8", errors="replace") if (ROOT / "world-map" / "3d-world-bar.js").is_file() else ""
+    lenses = (ROOT / "world-map" / "3d-lenses.js").read_text(encoding="utf-8", errors="replace") if (ROOT / "world-map" / "3d-lenses.js").is_file() else ""
 
     channels = contract.get("channels") or {}
     required = {"fill","pattern","outline","line","point","height","card","timeline","scene"}
@@ -78,6 +79,17 @@ def main() -> int:
 
     if "setBaseFill" not in compositor or "countries-fill" not in compositor or "countries-extrude" not in compositor:
         errors.append("compositor must retain canonical country fill/extrusion color ownership")
+    for forbidden in (
+        "setPaintProperty('countries-fill'",
+        "setPaintProperty('countries-extrude'",
+        "setPaintProperty('countries-line'",
+        "setFeatureState({ source: 'countries'",
+    ):
+        if forbidden in lenses:
+            errors.append(f"legacy Lens adapter must not regain canonical country render ownership: {forbidden}")
+    for token in ("LEGACY_TO_LAYER", "layers.activate(layerId)", "compositor.render()", "compatibility:true"):
+        if token not in lenses:
+            errors.append(f"legacy Lens adapter missing canonical translation marker: {token}")
     for marker in ("setPaintProperty('countries-line', 'line-color'", "setPaintProperty('countries-line', 'line-width'"):
         if marker not in selection:
             errors.append(f"country selection must retain canonical outline ownership: {marker}")
