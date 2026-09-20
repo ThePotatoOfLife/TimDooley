@@ -136,8 +136,10 @@ def main() -> int:
         require(js, token, "world-map/3d-adl-heat.js", errors)
     if "searchParams.set('evidenceLayer'" in js or "searchParams.delete('evidenceLayer'" in js:
         errors.append("ADL module must not own the top-level evidenceLayer URL parameter")
-    for token in ("function persist()", "searchParams.set('evidenceLayer'", "searchParams.delete('evidenceLayer'", "__potatoAtlasEvidenceLayers"):
+    for token in ("function persist()", "urlState.claim('evidence-layers'", "urlState.patch('evidence-layers'", "__potatoAtlasEvidenceLayers"):
         require(evidence_coordinator, token, "world-map/3d-evidence-layers.js", errors)
+    if "history.replaceState" in evidence_coordinator:
+        errors.append("Evidence coordinator must route URL writes through canonical 3d-url-state.js")
 
     for token in ("id=\"adlHeatLayer\"","ADL H.E.A.T. incidents","U.S. evidence","id=\"mudBelowLayer\"","Mud / Below cases","state centroids"):
         require(html, token, "world-map/index.html", errors)
