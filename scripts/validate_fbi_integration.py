@@ -107,6 +107,9 @@ def main() -> int:
         "Inherited symbolic states",
         "Episode attributes",
         "Upgrades / handicaps",
+        "Potato of Life coordinates",
+        "Why Tim assigned the state",
+        "State History",
     ):
         if token not in viewer:
             fail(f"generic dossier viewer lost rich dossier projection token {token!r}")
@@ -160,6 +163,15 @@ def main() -> int:
     modifiers = taxonomy.get("state_modifiers") or {}
     if not (modifiers.get("upgrades") and modifiers.get("handicaps")):
         fail("CIA taxonomy must define both upgrades and handicaps")
+
+    if not taxonomy.get("transition_model"):
+        fail("CIA taxonomy lost symbolic transition model")
+    if not taxonomy.get("potato_of_life_topology"):
+        fail("CIA taxonomy lost Potato of Life topology model")
+    if not taxonomy.get("causal_attribution_model"):
+        fail("CIA taxonomy lost causal attribution model")
+    if not taxonomy.get("next_state_model"):
+        fail("CIA taxonomy lost next-state model")
     if "perpetual_lying" not in (taxonomy.get("attribute_inference_rules") or {}):
         fail("CIA taxonomy lost guarded inference rule for perpetual lying")
     enhancements = json.loads((ROOT / "knowledge/fbi/enhancements-index.json").read_text(encoding="utf-8"))
