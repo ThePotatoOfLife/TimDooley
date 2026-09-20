@@ -1,0 +1,117 @@
+{
+  "id": "cia-debt-evidence-ledger-v1",
+  "title": "CIA Debt Evidence Ledger",
+  "updated": "2026-09-21",
+  "purpose": "Track source-bounded negative-account candidates separately from personality labels and symbolic roles. Only priced rows change Mud Bank balances.",
+  "boundary": "This is Potatoverse fictional accounting, not a finding of wrongdoing, guilt, liability, dishonesty, criminality or human worth. A priced row means only that the project archive contains enough source-bounded material to assign a fictional adjustment under its own published contract.",
+  "pricing_contract": "knowledge/cia/mud-bank-contract.json",
+  "rules": [
+    "Price acts, not people.",
+    "One underlying incident gets at most one priced negative category.",
+    "Distinct repetitions require distinct dated evidence.",
+    "Disputed claims, motive interpretations, symbolic Dog/Mud/Farmer labels and reciprocal conflict are not automatically debits.",
+    "A later repair entry does not erase a historical debit; both remain visible."
+  ],
+  "events": [
+    {
+      "id": "debt-txt-2026-06-20-disputed-narrative",
+      "character_id": "txt",
+      "date": "2026-06-20",
+      "pricing_status": "priced",
+      "category": "repeated-harmful-narrative",
+      "alternative_categories": [],
+      "evidence_tier": "contemporaneous-recovered",
+      "repetition_key": "txt-disputed-identity-misconduct-narrative",
+      "occurrence_index": 1,
+      "source_ref": "data/swamp/dim-txt-relational-dossier.json",
+      "source_mode": "recovered public-interaction summary",
+      "summary": "The relational dossier says recovered material shows TXT repeating disputed identity and misconduct claims about Tim. The ledger prices the repeated circulation event, not the truth or falsity of the underlying allegations.",
+      "project_adjustment_susd": -4,
+      "confidence_note": "Moderate. The project has a dated recovered-interaction summary, but exact primary post URLs remain a recovery target."
+    },
+    {
+      "id": "debt-port-monkey-2024-tree-trust",
+      "character_id": "port-monkey",
+      "date": "2024",
+      "pricing_status": "priced",
+      "category": "destructive-act",
+      "alternative_categories": [
+        "breach-of-trust"
+      ],
+      "evidence_tier": "project-authored-canon",
+      "repetition_key": "port-monkey-tree-destructive-trust-event",
+      "occurrence_index": 1,
+      "source_ref": "great-book/chapters/073--chapter-24--tim-dooley-the-sage-the-potato-of-life.html",
+      "source_mode": "Great Book / project-authored chronology",
+      "summary": "The Great Book says Monkey planted a corrupt Discord 'tree' during OPS, 'using trust to attempt destruction.' The project prices that authored destructive/breach-of-trust event once; the alternate category is not double-charged.",
+      "project_adjustment_susd": -6.6,
+      "confidence_note": "Project-canon confidence only. This is a Tim-authored narrative statement, not an independent finding about Port Monkey."
+    },
+    {
+      "id": "debt-marty-2024-12-21-social-leverage",
+      "character_id": "marty-biz",
+      "date": "2024-12-21",
+      "pricing_status": "priced",
+      "category": "coercive-social-leverage",
+      "alternative_categories": [],
+      "evidence_tier": "chronicle-retelling",
+      "repetition_key": "marty-social-leverage",
+      "occurrence_index": 1,
+      "source_ref": "knowledge/cia/characters/marty-biz.json",
+      "source_mode": "Chronicle retelling",
+      "summary": "The Chronicle says Marty introduced Anja while 'asserting social leverage' during a boundary/moderation dispute. The low-confidence pricing reflects the retelling tier rather than treating the motive as independently established.",
+      "project_adjustment_susd": -3.6,
+      "confidence_note": "Low-to-moderate. Dated Chronicle wording exists; raw conversation remains unrecovered."
+    },
+    {
+      "id": "candidate-marty-2024-11-19-garden-betrayed",
+      "character_id": "marty-biz",
+      "date": "2024-11-19",
+      "pricing_status": "unpriced",
+      "source_ref": "knowledge/cia/characters/marty-biz.json",
+      "source_mode": "Chronicle retelling",
+      "summary": "The Chronicle labels the day 'The Garden Betrayed' and concentrates conflict around the community boundary.",
+      "reason_unpriced": "The dossier itself warns that the allegations are authored interpretation pending raw logs. No distinct concrete act is isolated strongly enough to price."
+    },
+    {
+      "id": "candidate-dim-2026-07-07-conflict-day",
+      "character_id": "dim",
+      "date": "2026-07-07",
+      "pricing_status": "unpriced",
+      "source_ref": "data/swamp/dim-txt-relational-dossier.json",
+      "source_mode": "public-interaction recovery",
+      "summary": "DIM and TXT appear in the same dated public conflict field.",
+      "reason_unpriced": "Presence in a conflict and later symbolic interpretation do not isolate a concrete harmful act by DIM."
+    },
+    {
+      "id": "candidate-txt-2026-07-17-reciprocal-classification",
+      "character_id": "txt",
+      "date": "2026-07-17",
+      "pricing_status": "unpriced",
+      "source_ref": "data/swamp/dim-txt-relational-dossier.json",
+      "source_mode": "recovered reciprocal escalation",
+      "summary": "Recovered interaction shows reciprocal hostile classification between TXT and Tim.",
+      "reason_unpriced": "The source explicitly describes mutual escalation. It remains entanglement/dispute at zero weight rather than a one-sided debit."
+    },
+    {
+      "id": "candidate-metalorian-2018-2019-framing",
+      "character_id": "metalorian",
+      "date": "2018-2019 retrospective",
+      "pricing_status": "unpriced",
+      "source_ref": "knowledge/cia/characters/metalorian.json",
+      "source_mode": "retrospective project interpretation",
+      "summary": "Later manuscripts use Meta/Metalorian in narrative-control and framing interpretations.",
+      "reason_unpriced": "Primary interaction evidence is missing and the dossier itself classifies the serious claims as retrospective interpretation."
+    },
+    {
+      "id": "candidate-gg-grievance-field",
+      "character_id": "gg",
+      "date": "2024-2026",
+      "pricing_status": "unpriced",
+      "source_ref": "knowledge/cia/characters/gg.json",
+      "source_mode": "Chronicle recurrence + later conversation recovery",
+      "summary": "GG has dense recurrence in a grievance/conflict field and a later reported healing-meeting proposal.",
+      "reason_unpriced": "Recurrence and a contrarian/provocateur role do not identify a concrete priced harmful act. The later repair proposal is already recorded positively."
+    }
+  ]
+}
