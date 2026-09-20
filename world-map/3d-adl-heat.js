@@ -19,6 +19,8 @@ const interaction = window.__potatoAtlasInteraction;
 
 let enabled = false;
 let loaded = false;
+let loadPromise = null;
+let stateRefreshQueued = false;
 let metadata = null;
 let summary = null;
 let incidents = null;
@@ -61,24 +63,38 @@ function maxCount() {
 }
 function stateColorExpression() {
   const max = maxCount();
-  const mid = Math.max(1, Math.ceil(max / 3));
-  const high = Math.max(mid + 1, Math.ceil((max * 2) / 3));
+  const ratio = ['/', ['to-number', ['coalesce', ['feature-state', STATE_KEY], 0]], max];
   return [
-    'interpolate', ['linear'], ['coalesce', ['feature-state', STATE_KEY], 0],
+    'interpolate', ['linear'], ratio,
     0, 'rgba(194,120,120,0)',
-    1, 'rgba(194,120,120,0.18)',
-    mid, 'rgba(194,120,120,0.36)',
-    high, 'rgba(194,120,120,0.56)',
-    max, 'rgba(194,120,120,0.76)'
+    0.02, 'rgba(194,120,120,0.18)',
+    0.34, 'rgba(194,120,120,0.36)',
+    0.67, 'rgba(194,120,120,0.56)',
+    1, 'rgba(194,120,120,0.76)'
   ];
 }
 function updateStateFeatureState() {
+  let failures = 0;
   for (const code of Object.keys(summary?.states || {})) {
     const count = stateValues.get(code) || 0;
-    try { map.setFeatureState({ source:STATE_SOURCE, id:code }, { [STATE_KEY]:count }); } catch {}
+    try { map.setFeatureState({ source:STATE_SOURCE, id:code }, { [STATE_KEY]:count }); }
+    catch { failures += 1; }
   }
   if (map.getLayer(STATE_LAYER)) map.setPaintProperty(STATE_LAYER, 'fill-color', stateColorExpression());
+  if (failures && enabled) map.once?.('idle', scheduleStateFeatureState);
 }
+function scheduleStateFeatureState() {
+  if (!enabled || !loaded || stateRefreshQueued) return;
+  stateRefreshQueued = true;
+  queueMicrotask(() => {
+    stateRefreshQueued = false;
+    if (enabled) updateStateFeatureState();
+  });
+}
+window.addEventListener('potato-atlas-subdivisions-source-change', scheduleStateFeatureState);
+map.on('sourcedata', event => {
+  if (event?.sourceId === STATE_SOURCE && event?.isSourceLoaded) scheduleStateFeatureState();
+});
 function updatePointSource() {
   const source = map.getSource(POINT_SOURCE);
   if (source?.setData) source.setData(filtered);
@@ -288,25 +304,35 @@ async function ensureSubdivisions() {
   await window.__potatoAtlasSubdivisions.refresh?.();
 }
 async function loadData() {
-  if (loaded) return;
-  const [metaResponse, summaryResponse, incidentResponse] = await Promise.all([META_URL,SUMMARY_URL,DATA_URL].map(url=>fetch(url)));
-  for (const response of [metaResponse,summaryResponse,incidentResponse]) if (!response.ok) throw new Error(`ADL H.E.A.T. data unavailable (${response.status})`);
-  [metadata,summary,incidents] = await Promise.all([metaResponse.json(),summaryResponse.json(),incidentResponse.json()]);
-  const params = new URL(location.href).searchParams;
-  selectedYear = params.get('adlYear') || 'all';
-  selectedType = params.get('adlType') || 'all';
-  filtered = { type:'FeatureCollection', features:activeFeatures() };
-  recomputeStateValues();
-  await ensureSubdivisions();
-  installLayers();
-  loaded = true;
+  if (loaded) return true;
+  if (loadPromise) return loadPromise;
+  loadPromise = (async () => {
+    const [metaResponse, summaryResponse, incidentResponse] = await Promise.all([META_URL,SUMMARY_URL,DATA_URL].map(url=>fetch(url)));
+    for (const response of [metaResponse,summaryResponse,incidentResponse]) if (!response.ok) throw new Error(`ADL H.E.A.T. data unavailable (${response.status})`);
+    [metadata,summary,incidents] = await Promise.all([metaResponse.json(),summaryResponse.json(),incidentResponse.json()]);
+    const params = new URL(location.href).searchParams;
+    selectedYear = params.get('adlYear') || 'all';
+    selectedType = params.get('adlType') || 'all';
+    filtered = { type:'FeatureCollection', features:activeFeatures() };
+    recomputeStateValues();
+    await ensureSubdivisions();
+    installLayers();
+    loaded = true;
+    return true;
+  })();
+  try {
+    return await loadPromise;
+  } catch (error) {
+    loadPromise = null;
+    throw error;
+  }
 }
 async function setEnabled(next) {
   await loadData();
   const requested = Boolean(next);
   if (requested) {
     if (window.__potatoAtlasSubdivisions?.retainPartition) {
-      await window.__potatoAtlasSubdivisions.retainPartition('USA');
+      await window.__potatoAtlasSubdivisions.retainPartition('USA', 'adl-heat');
     } else {
       await window.__potatoAtlasSubdivisions?.refresh?.();
     }
@@ -320,7 +346,7 @@ async function setEnabled(next) {
       map.fitBounds([[-125,24],[-66,50]], { padding:60, duration:550, maxZoom:4.8 });
     } catch {}
   } else {
-    await window.__potatoAtlasSubdivisions?.releasePartition?.('USA');
+    await window.__potatoAtlasSubdivisions?.releasePartition?.('USA', 'adl-heat');
   }
   return enabled;
 }
