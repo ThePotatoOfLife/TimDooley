@@ -17,7 +17,8 @@
     "symbolic_account": "Optional project-internal karma/repair/welfare accounting. Defaults to unassessed and never becomes legal, financial, diagnostic or objective moral scoring.",
     "media": "Portraits and evidence images require dossier-owned source metadata; unsourced faces are not guessed or scraped.",
     "activity_visualization": "Current/recovery-active files are visually strongest; older/dormant files may fade slightly to show recency only, never moral value.",
-    "symbolic_images": "Role-matched remote Commons images may illustrate Dog, Footstool, Mud, Potato, Tomato, Angel and later symbols. They are explicitly non-likeness proxies and do not identify the dossier subject."
+    "symbolic_images": "Role-matched remote Commons images may illustrate Dog, Footstool, Mud, Potato, Tomato, Angel and later symbols. They are explicitly non-likeness proxies and do not identify the dossier subject.",
+    "population_priority": "Recent/current/recovery-active dossiers first. Historical dormant files are maintenance-only unless new evidence appears."
   },
   "folders": {
     "characters": "knowledge/cia/characters/",
@@ -685,8 +686,8 @@
     "case_files": 21,
     "working_files": 11,
     "index_cards": 1,
-    "meaning_enriched": 23,
-    "meaning_remaining": 12
+    "meaning_enriched": 35,
+    "meaning_remaining": 0
   },
   "namespace": "potatoverse-character-archive",
   "collision_rule": "Use “Central Intelligence Agency (U.S.)” for the real-world institution and keep it in the World/security institution layer. Bare “CIA” inside this archive means Characters, Incidents & Associations.",
