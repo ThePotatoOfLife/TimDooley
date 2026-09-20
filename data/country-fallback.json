@@ -1,13 +1,49 @@
 {
-  "version":"2.0.0",
-  "updated":"2026-09-08",
-  "purpose":"Country resilience contract for the unified index. Canonical country records are local and remain readable without optional live enrichment.",
-  "resolution_order":["data/countries/index.json","data/country-layer-manifest.json","data/country-nodes.json","data/indicator-catalog.json","data/evidence/observations.json"],
-  "public_route":"index.html#node=<country-id>",
-  "required_identity":["id","name"],
-  "required_display_fields":["identity","observations","relationships","history","research_queue","provenance"],
-  "missing_value_policy":"Render Unknown / Not yet sourced / Not applicable according to field state. Never convert missing data to zero.",
-  "live_fetch_policy":{"timeout_ms":5000,"retries":1,"failure_behavior":"continue with local repository data","error_label":"Live enrichment unavailable — repository data shown"},
-  "coupling_targets":["country","government","institutions","security","economy","finance","energy","infrastructure","technology","labour","beliefs","history","evidence"],
-  "acceptance":"Opening any canonical country ID through index.html must produce useful local content with network access disabled."
+  "version": "2.0.0",
+  "updated": "2026-09-20",
+  "purpose": "Country resilience contract for the unified index. Canonical country records are local and remain readable without optional live enrichment.",
+  "resolution_order": [
+    "data/countries/index.json",
+    "data/country-layer-manifest.json",
+    "data/country-nodes.json",
+    "data/indicator-catalog.json",
+    "data/evidence/observations.json"
+  ],
+  "public_route": "world-map/?country=<country-id>",
+  "required_identity": [
+    "id",
+    "name"
+  ],
+  "required_display_fields": [
+    "identity",
+    "observations",
+    "relationships",
+    "history",
+    "research_queue",
+    "provenance"
+  ],
+  "missing_value_policy": "Render Unknown / Not yet sourced / Not applicable according to field state. Never convert missing data to zero.",
+  "live_fetch_policy": {
+    "timeout_ms": 5000,
+    "retries": 1,
+    "failure_behavior": "continue with local repository data",
+    "error_label": "Live enrichment unavailable — repository data shown"
+  },
+  "coupling_targets": [
+    "country",
+    "government",
+    "institutions",
+    "security",
+    "economy",
+    "finance",
+    "energy",
+    "infrastructure",
+    "technology",
+    "labour",
+    "beliefs",
+    "history",
+    "evidence"
+  ],
+  "acceptance": "Opening any canonical country ID through index.html must produce useful local content with network access disabled.",
+  "route_note": "World Map preserves ?country= deep links; canonical country records remain local fallback data."
 }
