@@ -85,6 +85,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
     "world_map": [
         ("Ownership and evidence", [
             "python scripts/validate_world_finance_foundation.py",
+            "python scripts/validate_bis_financial_statistics.py",
             "python scripts/validate_world_map_ownership.py",
             "python scripts/validate_world_map_adl_heat.py",
             "python scripts/validate_world_map_layer_integration.py",
