@@ -262,7 +262,12 @@ def main() -> int:
         "official_source_url": "https://www.adl.org/resources/tools-to-track-hate/heat-map",
         "official_app_url": "https://www.adl.org/apps/heatmap/",
         "official_update_cadence": "monthly",
-        "official_access_note": "ADL states that H.E.A.T. Map users can download raw incident data as CSV.",
+        "official_source_verified": "2026-09-20",
+        "official_source_verified_claims": [
+            "H.E.A.T. Map is updated monthly.",
+            "The official H.E.A.T. Map provides access to downloadable raw incident data.",
+        ],
+        "official_access_note": "ADL states that H.E.A.T. Map users can access and download raw incident data. This project's refresh importer accepts a reviewed CSV export.",
         "snapshot": {
             "status": "official-export",
             "dataset": args.dataset_label,
