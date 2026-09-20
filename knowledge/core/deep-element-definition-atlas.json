@@ -1,8 +1,8 @@
 {
   "id": "deep-element-definition-atlas",
   "title": "Deep Element Definition Atlas — What Each Major Element Is, Does, Connects To and Is Not",
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.1.0",
+  "updated": "2026-09-20",
   "status": "binding project definition grammar",
   "purpose": "Provide one reusable deep contract for central Potato of Life operators and major comparative structures. Definitions specify ontology, topology, transformation logic, relations, boundaries and failure modes instead of relying on visual resemblance or poetic naming.",
   "definition_contract": [
@@ -183,40 +183,51 @@
     {
       "id": "plane",
       "kind": "standing-plane/section",
-      "identity": "Reader surface or cross-section from which relations are viewed.",
-      "function": "Provides lateral context and a common level.",
-      "topology": "Canonical world Plane is y=0 through O and Vesica widest points; three-plane navigation is a separate projection.",
+      "identity": "Frame-relative section/hypersurface through a larger relational system from which current relations can be viewed and trajectory crossings compared.",
+      "function": "Provides lateral/current context, declares an operative frame, and can act as a measurement/return surface.",
+      "topology": "Canonical 2D view uses y=0 through O; 3D lift uses a plane perpendicular to Axis that cuts Door as a disk. Higher-dimensional uses should be declared as section/hypersurface.",
       "neighbors": [
         "axis",
         "door",
         "world-plane",
-        "cross"
+        "cross",
+        "here-now",
+        "cross-sign",
+        "crossing-event",
+        "spiral"
       ],
       "distinctions": [
         "Plane != realm",
-        "Plane != morality"
+        "Plane != whole World",
+        "Plane != entire lower field",
+        "Plane != universal physical present"
       ],
-      "failure_mode": "A view is mistaken for the whole ontology.",
-      "test": "What does this section reveal and what does it suppress?",
+      "failure_mode": "A partial section is mistaken for the whole ontology or a frame-dependent present is treated as universal.",
+      "test": "Which scale, time/period, representation and audience/jurisdiction define this section, and what does it omit?",
       "epistemic_boundary": "geometry/navigation"
     },
     {
-      "id": "cross",
+      "id": "cross-point",
       "kind": "intersection/event-coordinate",
-      "identity": "Intersection of Axis and Plane at relational midpoint O.",
-      "function": "Marks simultaneous vertical and horizontal relation.",
-      "topology": "Internal to Door, not a third container.",
+      "identity": "Single derived point O where Axis intersects the active Plane.",
+      "function": "Locates where vertical orientation and current-frame relation are simultaneously legible.",
+      "topology": "O=Axis∩Plane inside Door.",
       "neighbors": [
         "axis",
         "plane",
-        "door"
+        "door",
+        "here-now",
+        "cross-sign",
+        "crossing-event"
       ],
       "distinctions": [
-        "Cross != separate realm",
-        "O != Father-center or Son-center"
+        "Cross-point != Cross-sign",
+        "Cross-point != crossing event",
+        "O != entire Door",
+        "O != entire present/world"
       ],
-      "failure_mode": "Intersection is inflated into ownership of all neighboring meanings.",
-      "test": "Does the point arise from two defined coordinates/relations?",
+      "failure_mode": "Point O absorbs meanings belonging to Door, Plane, Cross-sign or trajectory.",
+      "test": "Are Axis and Plane explicitly defined before O is invoked?",
       "epistemic_boundary": "project geometry"
     },
     {
@@ -889,6 +900,139 @@
       "failure_mode": "Coincidence is treated as proof of secret transmission.",
       "test": "Separate formal construction, historical attestation and later interpretation.",
       "epistemic_boundary": "mathematics + cultural history"
+    },
+    {
+      "id": "source-field",
+      "kind": "relational-field",
+      "identity": "Source-facing field specializing pattern, integration, orientation, memory-model and generative potential.",
+      "function": "Holds source-side processes without claiming that everything above is true/good or that source is one person.",
+      "topology": "One parent field of the two-field Potato projection; overlaps Manifestation Field to create Door.",
+      "neighbors": [
+        "manifestation-field",
+        "door",
+        "source-seat-center",
+        "house",
+        "garden",
+        "mind",
+        "root"
+      ],
+      "distinctions": [
+        "Source Field != Father",
+        "Source Field != Heaven in every tradition",
+        "upper != truth rank"
+      ],
+      "failure_mode": "Upper placement becomes moral caste or all source-side symbols are collapsed together.",
+      "test": "Is the active function primarily source/orientation/integration/potential rather than embodiment/consequence?",
+      "epistemic_boundary": "project topology"
+    },
+    {
+      "id": "manifestation-field",
+      "kind": "relational-field",
+      "identity": "Manifestation-facing field specializing embodiment, actuality, history, constraint and observable consequence.",
+      "function": "Makes relations concrete in Body, World, work, institutions and lived history.",
+      "topology": "Second parent field of the two-field Potato projection; overlaps Source Field to create Door.",
+      "neighbors": [
+        "source-field",
+        "door",
+        "twin-vessel-center",
+        "body",
+        "world",
+        "soil",
+        "history"
+      ],
+      "distinctions": [
+        "Manifestation Field != Below/Swamp",
+        "lower != evil",
+        "embodiment != inferiority"
+      ],
+      "failure_mode": "The whole lower circle is mistaken for Hell, Swamp or moral failure.",
+      "test": "Is the active function primarily embodiment/actuality/history/consequence?",
+      "epistemic_boundary": "project topology"
+    },
+    {
+      "id": "rim",
+      "kind": "selective-boundary",
+      "identity": "Boundary layer that preserves differentiated identity while governing legitimate passage, filtering, signaling and repair.",
+      "function": "Controls permeability without reducing boundary to wall/closure.",
+      "topology": "Occurs around fields, Rooms, bodies and Door apertures; may host guards, rules, membranes, consent/evidence thresholds.",
+      "neighbors": [
+        "door",
+        "guardian",
+        "house",
+        "shell-cube",
+        "plane"
+      ],
+      "distinctions": [
+        "Rim != Door",
+        "Rim != wall",
+        "guardian != rim itself"
+      ],
+      "failure_mode": "Boundary becomes sealed capture or unbounded permeability destroys identity.",
+      "test": "Does the boundary preserve integrity while retaining legitimate passage, correction and return?",
+      "epistemic_boundary": "project operator with biological/ecological comparators"
+    },
+    {
+      "id": "here-now",
+      "kind": "temporal-relational-operator",
+      "identity": "Operative present state centered at O in the active Plane.",
+      "function": "Gathers relevant provenance, embodied current state, relations and available futures into an actionable present.",
+      "topology": "Located at O for a chosen frame; narrower than Plane and distinct from universal physical simultaneity.",
+      "neighbors": [
+        "door",
+        "cross-point",
+        "plane",
+        "seed",
+        "memory",
+        "body",
+        "spirit"
+      ],
+      "distinctions": [
+        "Here/Now != whole Plane",
+        "Here/Now != proof all time is simultaneous",
+        "present state != archive"
+      ],
+      "failure_mode": "Past memory or future projection is mistaken for current state.",
+      "test": "What is actually current here, and what comes from memory or anticipation?",
+      "epistemic_boundary": "project phenomenology/theology"
+    },
+    {
+      "id": "cross-sign",
+      "kind": "derived-projection",
+      "identity": "Visible cross-form produced by the Axis plus a chosen lateral line through O inside Plane.",
+      "function": "Makes vertical and lateral relations visible in one projection.",
+      "topology": "CrossSign=Axis∪L, with L⊂Plane and O∈L.",
+      "neighbors": [
+        "axis",
+        "plane",
+        "cross-point"
+      ],
+      "distinctions": [
+        "Cross-sign != Cross-point",
+        "coordinate cross != historical Christian Cross"
+      ],
+      "failure_mode": "Visual resemblance is used to claim historical origin or total semantic identity.",
+      "test": "Are the projected lines and their meanings declared?",
+      "epistemic_boundary": "project geometry/comparative symbolism"
+    },
+    {
+      "id": "crossing-event",
+      "kind": "event/transition-candidate",
+      "identity": "A trajectory intersects the active Plane and may, if Door guards are satisfied, change state/context.",
+      "function": "Turns geometry into dated/ordered event records and permits recurrence comparison.",
+      "topology": "Gamma(t*)∈Plane; strong Door crossing additionally requires declared pre/post state and guard conditions.",
+      "neighbors": [
+        "plane",
+        "door",
+        "spiral",
+        "cross-point"
+      ],
+      "distinctions": [
+        "crossing != Cross-point",
+        "Plane crossing != strong Door by default"
+      ],
+      "failure_mode": "Any passage/appearance is declared transformative without a state change.",
+      "test": "What crossed, when, in which direction/frame, under what guard, and what state changed?",
+      "epistemic_boundary": "project formal operator"
     }
   ],
   "cross_system_relations": [
