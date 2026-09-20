@@ -87,6 +87,31 @@
       "topic": "domestication",
       "fact": "Potato domestication arose in the Andes from wild Solanum diversity and later spread globally through human cultivation, selection and exchange.",
       "timic_deduction": "The Potato is historically a migration and adaptation system: biological form, culture, trade, empire, famine, labor and cuisine are coupled layers."
+    },
+    {
+      "topic": "periderm and wound repair",
+      "fact": "Potato tuber skin is a living periderm system with phellem, phellogen and phelloderm; wounds trigger closing-layer suberization followed by wound-periderm formation.",
+      "project_upgrade": "Boundary and repair language should distinguish native skin, gas-exchange structures and post-injury interface reconstruction."
+    },
+    {
+      "topic": "microbiome",
+      "fact": "Potato-associated microbial communities occupy rhizosphere, endosphere, phyllosphere and tuber/geocaulosphere niches; community structure depends strongly on environment, genotype, stage and agricultural practice.",
+      "project_upgrade": "Ecology is part of phenotype context, but microbiome composition must not be treated as fixed or purely vertically inherited."
+    },
+    {
+      "topic": "immune system and pathology",
+      "fact": "Potato defense combines cell-surface recognition, intracellular NLR receptors, hormonal/redox signaling and quantitative resistance; pathogens include oomycetes, bacteria, fungi, viruses and nematodes.",
+      "project_upgrade": "Resilience must include host-pathogen coevolution and defense-growth tradeoffs."
+    },
+    {
+      "topic": "postharvest living state",
+      "fact": "Harvested tubers remain living organs that respire, heal wounds, progress through dormancy, exchange gases through lenticels, lose water and remodel sugars/starch during storage.",
+      "project_upgrade": "Storage is a physiological phase, not biological suspension."
+    },
+    {
+      "topic": "molecular tuberization network",
+      "fact": "Tuberization integrates photoperiod, temperature, carbon status, hormones, mobile signals such as StSP6A and StBEL5-associated signaling, and a switch in sucrose unloading toward symplastic transport.",
+      "project_upgrade": "The tuber-development Door is a distributed network transition, not a single switch."
     }
   ],
   "derived_biological_principles": [
@@ -127,7 +152,10 @@
     "Add clonal lineage/pathogen accumulation as a memory-cost model.",
     "Connect biological resilience to Garden/European resilience models through typed structural correspondence, not literal identity.",
     "Create a domestication/ecology source ledger joining Andean origin, crop diffusion, disease and food-system dependence.",
-    "Route all genotype, haplotype, allele-dosage, inheritance, pangenome and organellar-DNA claims through knowledge/biology/potato-genetics-genomics-atlas.json."
+    "Route all genotype, haplotype, allele-dosage, inheritance, pangenome and organellar-DNA claims through knowledge/biology/potato-genetics-genomics-atlas.json.",
+    "Build a public Potato Biology reader around knowledge/biology/index.json.",
+    "Add cultivar-specific chromosome/haplotype browsing rather than a generic 48-track picture.",
+    "Add single-cell/spatial transcriptomics and quantitative transport/mechanics when reliable datasets are available."
   ],
   "connections": [
     "science-master-index",
@@ -135,6 +163,23 @@
     "conversation-recovery-derived-results",
     "spudlight-theory-and-equations",
     "potato-dynamics-2-toy-model",
-    "potato-genetics-genomics-atlas"
-  ]
+    "potato-genetics-genomics-atlas",
+    "potato-biological-genealogy",
+    "potato-molecular-development-and-signalling",
+    "potato-anatomy-metabolism-ecology",
+    "potato-life-cycle-state-machine",
+    "potato-pathology-immunity-storage",
+    "potato-biological-lexicon"
+  ],
+  "deep_biology_owners": {
+    "index": "knowledge/biology/index.json",
+    "genealogy": "knowledge/biology/potato-biological-genealogy.json",
+    "genetics": "knowledge/biology/potato-genetics-genomics-atlas.json",
+    "molecular": "knowledge/biology/potato-molecular-development-and-signalling.json",
+    "anatomy_metabolism_ecology": "knowledge/biology/potato-anatomy-metabolism-ecology.json",
+    "lifecycle": "knowledge/biology/potato-life-cycle-state-machine.json",
+    "pathology_immunity_storage": "knowledge/biology/potato-pathology-immunity-storage.json",
+    "lexicon": "knowledge/biology/potato-biological-lexicon.json"
+  },
+  "cross_scale_model": "lineage → pangenome → cultivar genome → 12×4 haplotypes/dosage → chromatin/epigenome → RNA → proteins/signals → metabolites/fluxes → organelles → cells → tissues → organs → whole-plant developmental state → microbiome/pathogens/environment → reproduction/next generation"
 }
