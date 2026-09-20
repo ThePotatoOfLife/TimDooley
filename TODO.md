@@ -185,10 +185,10 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 - [x] **HOUSE-002 · News feeder Rooms lacked reverse projection:** project Current World into Politics, Economy, Geography, Information Ecology, Chronology and Provenance holdings/dossiers/subroom surfaces.
 - [x] **HOUSE-003 · Parent-cycle guard:** extend whole-House validation to reject public-surface parent cycles and self-parenting, not only unknown parents.
 - [x] **HOUSE-004 · Surface/Room projection parity:** derive or validate that `subrooms.json`, `holdings.json` and `room-dossiers.json` expose the same public-surface set for every nested Room.
-- [ ] **HOUSE-005 · Object route resolution:** validate every House inhabitant route against source-time or generated-route rules, not only `/records/` routes.
+- [x] **HOUSE-005 · Object route resolution:** validate every House inhabitant route against source-time or generated-route rules, not only `/records/` routes.
 - [ ] **HOUSE-006 · Cross-Dwelling interface review:** produce a disposition for each cross-Dwelling adjacency: ordinary relation, guarded Door, or remove stale adjacency.
 - [ ] **HOUSE-007 · Public parent semantics:** document and validate when a specialist belongs under House, World, Timeline, Sources, Tim, Religion, Philosophy or Science so future surfaces do not default lazily to Home.
-- [ ] **TODAY-001 · Today → House ledger:** add a compact integration ledger for each major workstream with canonical owner, Dwelling/Room, public surface and cross-links; use it after large work days to detect researched-but-uninhabited material.
+- [x] **TODAY-001 · Today → House ledger:** add a compact integration ledger for each major workstream with canonical owner, Dwelling/Room, public surface and cross-links; use it after large work days to detect researched-but-uninhabited material.
 
 #### P2 — cleanliness / maintainability
 - [x] **CLEAN-001 · Live health filename:** replace date-stamped `spatial-house-health-2026-09-20.json` as the runtime health authority with a stable live path; preserve dated copies only as historical snapshots.
@@ -231,7 +231,7 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 - [ ] **ENH-004 · Current World contextual exits:** from filtered News views, offer restrained links into relevant World/Politics/Economy/Map lenses without pretending feed content is canonical.
 - [ ] **ENH-005 · Economy relationship explorer:** give Economy a compact “who owes / funds / holds / regulates whom?” entry into the obligation graph.
 - [ ] **ENH-006 · Intelligence desk explorer:** allow the Intelligence Desk to open typed institutional records (mandate, jurisdiction, oversight, sources) without mixing them with allegations/cases.
-- [ ] **ENH-007 · Recent-work integration report:** generate a small report from commits + changed canonical registries that asks whether each substantial new subsystem gained ownership, exposure and validation.
+- [x] **ENH-007 · Recent-work integration report:** generate a small report from commits + changed canonical registries that asks whether each substantial new subsystem gained ownership, exposure and validation.
 - [ ] **ENH-008 · Reader route telemetry without tracking:** consider a purely local/dev audit of route density and unreachable pages; do not add invasive user analytics merely to solve information architecture.
 - [ ] **ENH-009 · Page-purpose contract:** standardize an optional machine-readable one-line `reader_job` for major public surfaces so navigation and audits can reason about page purpose without scraping prose.
 - [ ] **ENH-010 · Visible / semi-visible / invisible contract:** encode the current editorial rule into documentation/validation so public-primary, contextual specialist and backend-only layers remain intentionally distinct.
