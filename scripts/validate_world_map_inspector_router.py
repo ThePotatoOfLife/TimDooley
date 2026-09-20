@@ -68,7 +68,7 @@ def main() -> int:
             errors.append(f"{label} must not retain raw panelSnapshot state after inspector migration")
 
     for token in (
-        "const inspector = window.__potatoAtlasInspector",
+        "function inspectorRouter()",
         "type:'evidence'",
         "type:'evidence-record'",
         "owner:'adl-heat'",
@@ -83,7 +83,7 @@ def main() -> int:
         ("Mud/Below", mud, "project-case", "mud-below-us"),
         ("Spatial Overlay UI", spatial_ui, "spatial-overlay", "spatial-overlay-ui"),
     ):
-        for token in ("const inspector = window.__potatoAtlasInspector", "inspector.open(", f"type:'{node_type}'", f"owner:'{owner}'"):
+        for token in ("function inspectorRouter()", "inspectorRouter()?.open(", f"type:'{node_type}'", f"owner:'{owner}'"):
             if token not in source:
                 errors.append(f"{label} typed inspector migration missing marker: {token}")
 
@@ -91,7 +91,7 @@ def main() -> int:
         ("Axis", axis, "axis", "axis"),
         ("Axis Depth", axis_depth, "axis-depth", "axis-depth"),
     ):
-        for token in ("const inspector = window.__potatoAtlasInspector", "inspector.open(", f"type:'{node_type}'", f"owner:'{owner}'"):
+        for token in ("function inspectorRouter()", "inspectorRouter()?.open(", f"type:'{node_type}'", f"owner:'{owner}'"):
             if token not in source:
                 errors.append(f"{label} typed inspector migration missing marker: {token}")
     if "['country','subdivision','place','evidence','evidence-record','project-case','spatial-overlay','axis','axis-depth']" not in url_bridge:
