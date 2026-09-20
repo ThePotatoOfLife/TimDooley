@@ -119,7 +119,7 @@ Priority order: **P0 release breakage → P1 structural drift/duplication → P2
 
 ### P1 — structural debt now demonstrated
 
-- [ ] Add a dedicated regression test for the interactive bidirectional spiral contract: section keys Σ0/±1…4, canonical JSON fetch, selected-state behavior, and fallback behavior. Governance currently checks presence/structure but does not execute the reader interaction.
+- [x] Add a dedicated regression test for the bidirectional spiral contract. `scripts/test_bidirectional_spiral_field.py` now checks Σ0/±1…4, section/Room boundary rules, canonical source wiring, selection/fallback runtime markers, public mounts and House/Below focus sections; both quality and Pages workflows run it.
 - [ ] Consolidate the legacy country batch manifests after proving unique-field parity. **Phase 1 complete:** the 18 September 7 enrichment/node batch files are now classified as historical rollout manifests and removed from active House holdings; their provenance is preserved in `knowledge/research/country-rollout-manifest-disposition-2026-09-20.json`. A later archive-policy pass may move their paths, but should not delete them blindly.
 - [x] Refresh `data/full-text-coverage.json` against the current Bible corpus/build architecture and distinguish local full-text custody from source metadata, active readers and upstream/on-demand text. The remaining Bible task is explicit: vendor the complete public-domain WEB locally before calling it local full-text-ready.
 - [ ] Audit the 38 nested Room pages for shell consistency. Older Rooms duplicate inline `.inner-home/.inner-center/.adj-grid` CSS and omit some navigation/orientation affordances present in newer Rooms. Move stable shell rules into a shared stylesheet before doing cosmetic redesign.
