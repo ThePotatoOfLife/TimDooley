@@ -7,6 +7,7 @@ const urlState = window.__potatoAtlasUrlState;
 urlState.claim('selection-inspector', ['subdivision']);
 
 const map = window.__potatoAtlasMap;
+if (!window.__potatoAtlasStyleLifecycle) await import('./3d-style-lifecycle.js');
 const styleLifecycle = window.__potatoAtlasStyleLifecycle;
 if (!map) throw new Error('Atlas subdivisions require the core map.');
 if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
