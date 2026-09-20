@@ -139,12 +139,7 @@ const roomById=Object.fromEntries(data.dwellings.map(x=>[x.id,x]));
 const subById=Object.fromEntries(subData.subrooms.map(x=>[x.id,x]));
 const surfaceById=Object.fromEntries(surfaceData.surfaces.map(x=>[x.id,x]));
 function routeFor(r){return root(r)}
-const dedicatedInnerHomes=new Set(['subculture-group-formation','internet-platforms','information-ecology','provenance-evidence','law-justice','politics-governance']);
-function subPublicRoute(S){
- if(dedicatedInnerHomes.has(S.id))return root('/rooms/inside/'+S.id+'/');
- for(const id of (S.public_surface_ids||[])){const x=surfaceById[id];if(x?.canonical_route)return root(x.canonical_route)}
- const parent=roomById[S.parent_room_id];return root(parent?.homepage||'/rooms/')+'#subroom-'+S.id;
-}
+function subPublicRoute(S){return root('/rooms/inside/'+S.id+'/')}
 function writeUrl(){const q=new URLSearchParams();if(local)q.set('room',local);if(inner)q.set('inner',inner);if(level!=='world')q.set('level',level);history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:''))}
 function renderLevels(){
  lc.innerHTML='';shaft.innerHTML='';
