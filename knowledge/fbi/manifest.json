@@ -624,6 +624,24 @@
         "builder-cultivator"
       ],
       "depth_tier": "case-file"
+    },
+    {
+      "id": "dim",
+      "name": "DIM / Dim Tooley",
+      "aliases": [
+        "DIM",
+        "Dim Tooley",
+        "@DimTooley43"
+      ],
+      "path": "knowledge/fbi/figures/dim.json",
+      "room_path": "shadow-farm/dim/",
+      "archive_status": "historical-recovery-active",
+      "chronicle_occurrence_count": 0,
+      "archetypes": [
+        "mirror-foil",
+        "shadow-adversary"
+      ],
+      "depth_tier": "case-file"
     }
   ],
   "canonical_support": [
@@ -652,9 +670,9 @@
     "center-file": "Central archive subject; topology only, never a suspicion label."
   },
   "coverage_summary": {
-    "total_figures": 34,
+    "total_figures": 35,
     "center_files": 1,
-    "case_files": 21,
+    "case_files": 22,
     "working_files": 11,
     "index_cards": 1
   }
