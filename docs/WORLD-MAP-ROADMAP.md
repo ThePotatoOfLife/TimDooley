@@ -100,7 +100,7 @@ Current compatibility rule: normal application interaction is Router-owned and d
 
 ## CURRENT PROBLEM QUEUE
 
-The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. Work proceeds by shared-owner leverage rather than file count.
+The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The current diagnosis is `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-21.md`. Work proceeds by shared-owner leverage rather than file count.
 
 ### 2026-09-21 re-audit priorities
 
