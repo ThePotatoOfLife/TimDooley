@@ -48,6 +48,7 @@ def main() -> int:
 
     for token in (
         "await import(versionedModule('./3d-tooltip.js'))",
+        "getOrCreateTooltipService",
         "window.__potatoAtlasTooltip",
         "tooltip.nextGeneration('country')",
         "tooltip.show('country'",
@@ -59,6 +60,8 @@ def main() -> int:
             errors.append(f"hover runtime does not consume shared tooltip: {token}")
     if "const popup = new maplibregl.Popup" in hover:
         errors.append("hover runtime still constructs its own transient MapLibre popup")
+    if "window.__potatoAtlasTooltip =" in hover:
+        errors.append("hover runtime must consume, not publish, the Tooltip singleton")
 
     node = shutil.which("node")
     if not node:
