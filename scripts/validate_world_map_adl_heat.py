@@ -14,6 +14,7 @@ GEO = ROOT / "data/world-incidents/adl-heat/incidents.geo.json"
 MODULE = ROOT / "world-map/3d-adl-heat.js"
 HTML = ROOT / "world-map/index.html"
 LIFECYCLE = ROOT / "world-map/3d-panel-lifecycle.js"
+EVIDENCE_COORDINATOR = ROOT / "world-map/3d-evidence-layers.js"
 IMPORTER = ROOT / "scripts/import_adl_heat.py"
 MUD_MODULE = ROOT / "world-map/3d-mud-below-us.js"
 MUD_DATA = ROOT / "data/world-symbolic/us-mud-below-project-cases.geo.json"
@@ -37,7 +38,7 @@ def require(text: str, token: str, label: str, errors: list[str]) -> None:
 
 def main() -> int:
     errors: list[str] = []
-    for path in (META,SUMMARY,GEO,MODULE,HTML,LIFECYCLE,IMPORTER,MUD_MODULE,MUD_DATA):
+    for path in (META,SUMMARY,GEO,MODULE,HTML,LIFECYCLE,EVIDENCE_COORDINATOR,IMPORTER,MUD_MODULE,MUD_DATA):
         if not path.exists():
             errors.append(f"missing ADL H.E.A.T. artifact: {path.relative_to(ROOT)}")
     if errors:
@@ -50,6 +51,7 @@ def main() -> int:
     js = MODULE.read_text(encoding="utf-8")
     html = HTML.read_text(encoding="utf-8")
     lifecycle = LIFECYCLE.read_text(encoding="utf-8")
+    evidence_coordinator = EVIDENCE_COORDINATOR.read_text(encoding="utf-8")
     importer = IMPORTER.read_text(encoding="utf-8")
     mud_js = MUD_MODULE.read_text(encoding="utf-8")
     mud_data = load(MUD_DATA, errors)
@@ -107,12 +109,17 @@ def main() -> int:
     for token in (
         "atlas-subdivisions-active","adl-heat-state-fill","adl-heat-incident-points",
         "feature-state","ADL H.E.A.T. filters","not a general hate score or crime score",
-        "__potatoAtlasAdlHeat","evidenceLayer","adlYear","adlType",
+        "__potatoAtlasAdlHeat","updateFilterUrl","adlYear","adlType",
         "loadPromise","potato-atlas-subdivisions-source-change","scheduleStateFeatureState",
         "retainPartition('USA', 'adl-heat')","releasePartition?.('USA', 'adl-heat')",
         "clickPriority:85","renderStateInspector","renderIncident",
     ):
         require(js, token, "world-map/3d-adl-heat.js", errors)
+    if "searchParams.set('evidenceLayer'" in js or "searchParams.delete('evidenceLayer'" in js:
+        errors.append("ADL module must not own the top-level evidenceLayer URL parameter")
+    for token in ("function persist()", "searchParams.set('evidenceLayer'", "searchParams.delete('evidenceLayer'", "__potatoAtlasEvidenceLayers"):
+        require(evidence_coordinator, token, "world-map/3d-evidence-layers.js", errors)
+
     for token in ("id=\"adlHeatLayer\"","ADL H.E.A.T. incidents","U.S. evidence","id=\"mudBelowLayer\"","Mud / Below cases","state centroids"):
         require(html, token, "world-map/index.html", errors)
     for token in ("bindAdlHeatLayerControl","./3d-adl-heat.js","__potatoAtlasAdlHeat?.toggle","bindMudBelowLayerControl","./3d-mud-below-us.js","__potatoAtlasMudBelow?.toggle","hydrateEvidenceLayersFromUrl","projectLayer","mud-below-us"):
