@@ -5,6 +5,7 @@ import {
   unwrapLongitude,
   minimalLongitudeInterval,
   antimeridianAwareBounds,
+  pointInGeometry,
   haversineDistanceKm,
 } from '../world-map/3d-geo-kernel.js';
 
@@ -62,6 +63,22 @@ assert.throws(
   () => antimeridianAwareBounds([]),
   /coordinate/i,
 );
+
+const polygon = {
+  type:'Polygon',
+  coordinates:[[[-2,-2],[2,-2],[2,2],[-2,2],[-2,-2]], [[-0.5,-0.5],[0.5,-0.5],[0.5,0.5],[-0.5,0.5],[-0.5,-0.5]]],
+};
+assert.equal(pointInGeometry([1,1], polygon), true);
+assert.equal(pointInGeometry([0,0], polygon), false, 'polygon holes must exclude contained points');
+assert.equal(pointInGeometry([3,0], polygon), false);
+
+const wrappedPolygon = {
+  type:'Polygon',
+  coordinates:[[[179,-2],[-179,-2],[-179,2],[179,2],[179,-2]]],
+};
+assert.equal(pointInGeometry([179.5,0], wrappedPolygon), true);
+assert.equal(pointInGeometry([-179.5,0], wrappedPolygon), true);
+assert.equal(pointInGeometry([0,0], wrappedPolygon), false);
 
 const distance = haversineDistanceKm([179, 0], [-179, 0]);
 assert.ok(distance > 200 && distance < 225, `expected about 222 km across dateline, got ${distance}`);
