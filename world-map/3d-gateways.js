@@ -3,7 +3,7 @@
 const map = window.__potatoAtlasMap;
 const runtime = window.__potatoAtlasDataRuntime;
 const selection = window.__potatoAtlasSelection;
-const interaction = window.__potatoAtlasInteraction;
+function interactionRouter() { return window.__potatoAtlasInteraction; }
 if (!map || !runtime || !selection) throw new Error('System intelligence requires map, runtime and selection APIs.');
 await runtime.ready;
 
@@ -172,7 +172,34 @@ async function openGatewayFeature(_event, feature) {
   });
 }
 
-if (interaction?.register) {
+let gatewayFallbackHandlers = null;
+function bindGatewayFallback() {
+  if (gatewayFallbackHandlers) return false;
+  // Degraded/direct-module fallback only. It is removed when Router readiness arrives.
+  const enter = () => { map.getCanvas().style.cursor = 'pointer'; };
+  const leave = () => { map.getCanvas().style.cursor = ''; };
+  const click = event => openGatewayFeature(event, event.features?.[0]);
+  map.on('mouseenter', POINT_LAYER, enter);
+  map.on('mouseleave', POINT_LAYER, leave);
+  map.on('click', POINT_LAYER, click);
+  gatewayFallbackHandlers = { enter, leave, click };
+  return true;
+}
+function unbindGatewayFallback() {
+  if (!gatewayFallbackHandlers) return false;
+  map.off('mouseenter', POINT_LAYER, gatewayFallbackHandlers.enter);
+  map.off('mouseleave', POINT_LAYER, gatewayFallbackHandlers.leave);
+  map.off('click', POINT_LAYER, gatewayFallbackHandlers.click);
+  gatewayFallbackHandlers = null;
+  map.getCanvas().style.cursor = '';
+  return true;
+}
+function syncGatewayInteraction(interaction = interactionRouter()) {
+  if (!interaction?.register) {
+    bindGatewayFallback();
+    return false;
+  }
+  unbindGatewayFallback();
   interaction.register('system-gateways', {
     layers:[POINT_LAYER],
     objectType:'gateway',
@@ -181,12 +208,12 @@ if (interaction?.register) {
     cursor:'pointer',
     onClick:openGatewayFeature,
   });
-} else {
-  // Degraded/direct-module fallback only. Normal app boots are Router-owned.
-  map.on('mouseenter', POINT_LAYER, () => { map.getCanvas().style.cursor = 'pointer'; });
-  map.on('mouseleave', POINT_LAYER, () => { map.getCanvas().style.cursor = ''; });
-  map.on('click', POINT_LAYER, event => openGatewayFeature(event, event.features?.[0]));
+  return true;
 }
+syncGatewayInteraction();
+window.addEventListener('potato-atlas-interaction-ready', event => {
+  syncGatewayInteraction(event?.detail?.interaction || interactionRouter());
+});
 
 let injectionQueued = false;
 function queueInjection(code) {
