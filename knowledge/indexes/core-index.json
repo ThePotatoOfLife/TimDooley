@@ -162,7 +162,8 @@
       "foundation-landscape-synthesis",
       "foundation-room-contract",
       "foundation-room-atlas",
-      "foundation-first-reproduction-wave-001"
+      "foundation-first-reproduction-wave-001",
+      "project-formal-grammar"
     ]
   },
   "records": [
@@ -2580,6 +2581,28 @@
         "Spatial Transcriptomics",
         "Parcellation"
       ]
+    },
+    {
+      "id": "project-formal-grammar",
+      "path": "data/project-formal-grammar.json",
+      "branch": "root",
+      "kind": "canonical cross-project mathematical typing, correspondence and verification grammar",
+      "terms": [
+        "Dimension Types",
+        "Door",
+        "Axis",
+        "Spiral",
+        "House",
+        "Room",
+        "Eye",
+        "Root",
+        "Tree",
+        "Seed",
+        "Ladder",
+        "Fruit",
+        "Correspondence Contract",
+        "Epistemic Scale"
+      ]
     }
   ],
   "retrieval_routes": [
@@ -2818,5 +2841,6 @@
       ]
     }
   ],
-  "legacy_rule": "Root-level legacy research files remain source strata only while they carry unique material or live references. They must never compete with these canonical owners in navigation. See archive/legacy/README.md."
+  "legacy_rule": "Root-level legacy research files remain source strata only while they carry unique material or live references. They must never compete with these canonical owners in navigation. See archive/legacy/README.md.",
+  "formal_grammar": "data/project-formal-grammar.json"
 }
