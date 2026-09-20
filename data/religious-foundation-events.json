@@ -1,0 +1,2408 @@
+{
+  "id": "religious-foundation-events",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "status": "canonical event anchor registry for religious foundations",
+  "purpose": "Provide notable dates that can be merged into the Foundation Timeline, spiral and map. Events are anchored to foundation records and, where available, to deep lineage nodes.",
+  "event_kinds": {
+    "seed": "earliest recoverable community/teacher/movement clock",
+    "sacred_seed": "traditional revelation/origin clock preserved as such",
+    "deep_origin": "broad formative substrate window",
+    "rupture": "destruction, conflict or break that changes the operating field",
+    "succession_rupture": "authority succession crisis that generates later lineages",
+    "council": "doctrinal/ecclesial council",
+    "council_split": "council whose reception/non-reception becomes a durable lineage boundary",
+    "textual_consolidation": "major canon/redaction/textual stabilization",
+    "institutionalization": "repeatable organization/institution takes durable form",
+    "reform_seed": "high-information start marker for a reform trajectory",
+    "reform_movement": "gradual reform/revival formation",
+    "refoundation": "major reconstitution preserving some continuity",
+    "differentiation": "gradual emergence of distinct lineage identity",
+    "transmission": "geographic/cultural transfer",
+    "diffusion_acceleration": "event that rapidly multiplies geographic/social reach",
+    "state_institutionalization": "state patronage or official system-building",
+    "state_disestablishment": "loss of official/state institutional platform",
+    "school_marker": "teacher/death or community marker useful for later school genealogy but not equal to school birth"
+  },
+  "merge_contract": {
+    "default_include": [
+      "major"
+    ],
+    "optional_include": [
+      "secondary"
+    ],
+    "context_layer": [
+      "context"
+    ],
+    "rule": "A merged timeline may show multiple events for one foundation. Foundation births, ruptures, councils, canonization, reforms and diffusion are distinct clocks.",
+    "child_rule": "creates_or_crystallizes_child_ids tells the renderer when an event should visibly sprout one or more child trajectories.",
+    "branch_position": "A child branch attaches at the event date when that event is a high-confidence branch marker; otherwise it begins as a fuzzy formation band.",
+    "uncertainty": "Approximate/range dates remain bands; exact-looking points must not be synthesized from broad historical estimates."
+  },
+  "source_registry": {
+    "cambridge_talmud": "https://assets.cambridge.org/97811084/81366/frontmatter/9781108481366_frontmatter.pdf",
+    "cambridge_mishnah": "https://www.cambridge.org/core/books/abs/cambridge-history-of-judaism/mishnaic-hebrew-an-introductory-survey/B512422814F51DD9796F526919203B0B",
+    "cambridge_rabbinic_prayer": "https://www.cambridge.org/core/books/abs/cambridge-history-of-judaism/rabbinic-prayer-in-late-antiquity/5FE7BCF2B418068E7F7396668715730D",
+    "hamburg_reform": "https://www.shmh.de/1817-landmarks-the-new-israelite-temple-association/",
+    "jts": "https://www.jtsa.edu/overview-of-jts/",
+    "oca_councils": "https://www.oca.org/orthodoxy/the-orthodox-faith/doctrine-scripture/sources-of-christian-doctrine/the-councils",
+    "oca_chalcedon": "https://www.oca.org/orthodoxy/the-orthodox-faith/church-history/fifth-century/the-fourth-ecumenical-council",
+    "oca_schism": "https://www.oca.org/orthodoxy/the-orthodox-faith/church-history/eleventh-century/the-great-schism",
+    "parliament_reformation": "https://www.parliament.uk/about/living-heritage/transformingsociety/private-lives/religion/overview/reformation/",
+    "parliament_dates": "https://www.parliament.uk/about/living-heritage/transformingsociety/private-lives/religion/key-dates1/key-dates/",
+    "loc_luther": "https://www.loc.gov/resource/gdcwdl.wdl_07497/",
+    "methodist": "https://www.methodist.org.uk/for-churches/resources/articles/aldersgate-what-changed-for-the-wesleys/",
+    "pew_pentecostal": "https://www.pewresearch.org/religion/2006/04/12/the-new-face-of-global-christianity-the-emergence-of-progressive-pentecostalism/",
+    "iranica_chronology": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+    "iranica_occultation": "https://www.iranicaonline.org/articles/gayba/",
+    "iis_ismaili": "https://www.iis.ac.uk/media/pj4bhekc/ismaili-studies_medieval-antecedents-and-modern-developments.pdf",
+    "sgpc_gobind": "https://new.sgpc.net/ten-guru-sahibs/guru-gobind-singh-sahib/",
+    "sgpc_qila": "https://new.sgpc.net/historical-qilas/",
+    "bahai_bab": "https://bahaiworld.bahai.org/library/the-mission-of-the-bab/",
+    "bahai_ridvan": "https://reference.bahai.org/en/t/o/BNE/bne-32.html",
+    "bahai_aqdas": "https://reference.bahai.org/en/t/b/KA/ka-155.html",
+    "britannica_buddhism": "https://www.britannica.com/topic/Buddhism",
+    "britannica_ashoka": "https://www.britannica.com/biography/Ashoka",
+    "britannica_hinduism": "https://www.britannica.com/topic/Hinduism",
+    "britannica_jainism": "https://www.britannica.com/topic/Jainism",
+    "britannica_daoism": "https://www.britannica.com/topic/Daoism",
+    "britannica_confucianism": "https://www.britannica.com/topic/Confucianism",
+    "britannica_shinto": "https://www.britannica.com/topic/Shinto",
+    "iranica_zoroastrian": "https://www.iranicaonline.org/articles/zoroastrianism-i-historical-review/"
+  },
+  "events": [
+    {
+      "id": "jud-iron-age-emergence",
+      "family": "judaism",
+      "name": "Israelite/Judahite religious field emerges",
+      "date": {
+        "year_start": -1200,
+        "year_end": -586,
+        "display": "c. 1200–586 BCE",
+        "precision": "range"
+      },
+      "event_kind": "deep_origin",
+      "merge_priority": "major",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "israelite-religion"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "ancient Israel and Judah",
+      "source_id": "cambridge_talmud",
+      "source_url": "https://assets.cambridge.org/97811084/81366/frontmatter/9781108481366_frontmatter.pdf",
+      "note": "Broad substrate window, not a founded birthday."
+    },
+    {
+      "id": "jud-first-temple-destruction",
+      "family": "judaism",
+      "name": "Babylonian destruction of Jerusalem and First Temple",
+      "date": {
+        "year_start": -586,
+        "year_end": -586,
+        "display": "586 BCE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "rupture",
+      "merge_priority": "major",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "israelite-religion",
+        "post-exilic-judaism"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Jerusalem / Judah",
+      "source_id": "cambridge_talmud",
+      "source_url": "https://assets.cambridge.org/97811084/81366/frontmatter/9781108481366_frontmatter.pdf",
+      "note": "Major exile/Temple rupture; later post-exilic forms should attach after this clock."
+    },
+    {
+      "id": "jud-persian-return-field",
+      "family": "judaism",
+      "name": "Persian-period return and post-exilic reorganization",
+      "date": {
+        "year_start": -539,
+        "year_end": -332,
+        "display": "539–332 BCE",
+        "precision": "range"
+      },
+      "event_kind": "refoundation_window",
+      "merge_priority": "major",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "post-exilic-judaism"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Yehud / Jerusalem and diaspora",
+      "source_id": "cambridge_talmud",
+      "source_url": "https://assets.cambridge.org/97811084/81366/frontmatter/9781108481366_frontmatter.pdf",
+      "note": "Long reorganization window rather than one event."
+    },
+    {
+      "id": "jud-second-temple",
+      "family": "judaism",
+      "name": "Second Temple era begins",
+      "date": {
+        "year_start": -516,
+        "year_end": -516,
+        "display": "c. 516 BCE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "institutionalization",
+      "merge_priority": "major",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "second-temple-judaism"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Jerusalem",
+      "source_id": "cambridge_talmud",
+      "source_url": "https://assets.cambridge.org/97811084/81366/frontmatter/9781108481366_frontmatter.pdf",
+      "note": "Conventional Second Temple completion marker."
+    },
+    {
+      "id": "jud-maccabean-revolt",
+      "family": "judaism",
+      "name": "Maccabean revolt and Hasmonean transformation",
+      "date": {
+        "year_start": -166,
+        "year_end": -160,
+        "display": "166–160 BCE",
+        "precision": "range"
+      },
+      "event_kind": "rupture",
+      "merge_priority": "secondary",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "second-temple-judaism"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Judea",
+      "source_id": "cambridge_talmud",
+      "source_url": "https://assets.cambridge.org/97811084/81366/frontmatter/9781108481366_frontmatter.pdf",
+      "note": "Important political-religious transformation inside the Second Temple field."
+    },
+    {
+      "id": "jud-roman-intervention",
+      "family": "judaism",
+      "name": "Roman intervention in Judea",
+      "date": {
+        "year_start": -63,
+        "year_end": -63,
+        "display": "63 BCE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "political_context",
+      "merge_priority": "context",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "second-temple-judaism"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Jerusalem / Judea",
+      "source_id": "cambridge_talmud",
+      "source_url": "https://assets.cambridge.org/97811084/81366/frontmatter/9781108481366_frontmatter.pdf",
+      "note": ""
+    },
+    {
+      "id": "jud-second-temple-destruction",
+      "family": "judaism",
+      "name": "Second Temple destroyed",
+      "date": {
+        "year_start": 70,
+        "year_end": 70,
+        "display": "70 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "rupture",
+      "merge_priority": "major",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "second-temple-judaism",
+        "rabbinic-judaism"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Jerusalem",
+      "source_id": "cambridge_rabbinic_prayer",
+      "source_url": "https://www.cambridge.org/core/books/abs/cambridge-history-of-judaism/rabbinic-prayer-in-late-antiquity/5FE7BCF2B418068E7F7396668715730D",
+      "note": "Central rupture for post-Temple Jewish development."
+    },
+    {
+      "id": "jud-bar-kokhba",
+      "family": "judaism",
+      "name": "Bar Kokhba revolt and Roman suppression",
+      "date": {
+        "year_start": 132,
+        "year_end": 135,
+        "display": "132–135 CE",
+        "precision": "range"
+      },
+      "event_kind": "rupture",
+      "merge_priority": "secondary",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "rabbinic-judaism"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Judea",
+      "source_id": "cambridge_talmud",
+      "source_url": "https://assets.cambridge.org/97811084/81366/frontmatter/9781108481366_frontmatter.pdf",
+      "note": ""
+    },
+    {
+      "id": "jud-mishnah",
+      "family": "judaism",
+      "name": "Mishnah compilation/redaction",
+      "date": {
+        "year_start": 200,
+        "year_end": 200,
+        "display": "c. 200 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "textual_consolidation",
+      "merge_priority": "major",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "rabbinic-judaism"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Roman Palestine",
+      "source_id": "cambridge_mishnah",
+      "source_url": "https://www.cambridge.org/core/books/abs/cambridge-history-of-judaism/mishnaic-hebrew-an-introductory-survey/B512422814F51DD9796F526919203B0B",
+      "note": "Approximate redaction marker associated with Judah ha-Nasi."
+    },
+    {
+      "id": "jud-palestinian-talmud",
+      "family": "judaism",
+      "name": "Palestinian/Jerusalem Talmud formation closes",
+      "date": {
+        "year_start": 400,
+        "year_end": 425,
+        "display": "early 5th century CE",
+        "precision": "range"
+      },
+      "event_kind": "textual_consolidation",
+      "merge_priority": "secondary",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "rabbinic-judaism"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Land of Israel",
+      "source_id": "cambridge_mishnah",
+      "source_url": "https://www.cambridge.org/core/books/abs/cambridge-history-of-judaism/mishnaic-hebrew-an-introductory-survey/B512422814F51DD9796F526919203B0B",
+      "note": ""
+    },
+    {
+      "id": "jud-babylonian-talmud",
+      "family": "judaism",
+      "name": "Babylonian Talmud major redaction",
+      "date": {
+        "year_start": 500,
+        "year_end": 500,
+        "display": "c. 500 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "textual_consolidation",
+      "merge_priority": "major",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "rabbinic-judaism"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Babylonia",
+      "source_id": "cambridge_mishnah",
+      "source_url": "https://www.cambridge.org/core/books/abs/cambridge-history-of-judaism/mishnaic-hebrew-an-introductory-survey/B512422814F51DD9796F526919203B0B",
+      "note": ""
+    },
+    {
+      "id": "jud-karaite-formation",
+      "family": "judaism",
+      "name": "Karaite movement becomes historically distinct",
+      "date": {
+        "year_start": 750,
+        "year_end": 900,
+        "display": "8th–9th centuries CE",
+        "precision": "range"
+      },
+      "event_kind": "differentiation",
+      "merge_priority": "major",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "karaite-judaism"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "karaite-judaism"
+      ],
+      "place": "Baghdad and wider Middle East",
+      "source_id": "cambridge_talmud",
+      "source_url": "https://assets.cambridge.org/97811084/81366/frontmatter/9781108481366_frontmatter.pdf",
+      "note": "Use a formation window, not one founder-day."
+    },
+    {
+      "id": "jud-kabbalah-medieval",
+      "family": "judaism",
+      "name": "Medieval Kabbalistic currents crystallize",
+      "date": {
+        "year_start": 1150,
+        "year_end": 1300,
+        "display": "12th–13th centuries CE",
+        "precision": "range"
+      },
+      "event_kind": "mystical_consolidation",
+      "merge_priority": "secondary",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "kabbalistic-current"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "southern France / Iberia",
+      "source_id": "cambridge_talmud",
+      "source_url": "https://assets.cambridge.org/97811084/81366/frontmatter/9781108481366_frontmatter.pdf",
+      "note": ""
+    },
+    {
+      "id": "jud-spanish-expulsion",
+      "family": "judaism",
+      "name": "Expulsion from Spain reshapes Jewish diaspora networks",
+      "date": {
+        "year_start": 1492,
+        "year_end": 1492,
+        "display": "1492 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "migration_rupture",
+      "merge_priority": "major",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "rabbinic-judaism",
+        "kabbalistic-current"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Iberia → Mediterranean / Ottoman / North African worlds",
+      "source_id": "cambridge_talmud",
+      "source_url": "https://assets.cambridge.org/97811084/81366/frontmatter/9781108481366_frontmatter.pdf",
+      "note": "Diffusion/rupture anchor, not a new denomination."
+    },
+    {
+      "id": "jud-hasidic",
+      "family": "judaism",
+      "name": "Hasidic revival takes recognizable form",
+      "date": {
+        "year_start": 1740,
+        "year_end": 1770,
+        "display": "mid-18th century CE",
+        "precision": "range"
+      },
+      "event_kind": "reform_movement",
+      "merge_priority": "major",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "hasidic-judaism"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "hasidic-judaism"
+      ],
+      "place": "Podolia / eastern Europe",
+      "source_id": "cambridge_talmud",
+      "source_url": "https://assets.cambridge.org/97811084/81366/frontmatter/9781108481366_frontmatter.pdf",
+      "note": "Baal Shem Tov-associated formation window."
+    },
+    {
+      "id": "jud-reform-association",
+      "family": "judaism",
+      "name": "New Israelite Temple Association founded",
+      "date": {
+        "year_start": 1817,
+        "year_end": 1817,
+        "display": "1817 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "institutionalization",
+      "merge_priority": "major",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "reform-judaism"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "reform-judaism"
+      ],
+      "place": "Hamburg, Germany",
+      "source_id": "hamburg_reform",
+      "source_url": "https://www.shmh.de/1817-landmarks-the-new-israelite-temple-association/",
+      "note": "Strong institutional seed for modern Reform/Liberal Judaism."
+    },
+    {
+      "id": "jud-reform-temple",
+      "family": "judaism",
+      "name": "Hamburg reform temple opens",
+      "date": {
+        "year_start": 1818,
+        "year_end": 1818,
+        "display": "1818 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "institutionalization",
+      "merge_priority": "secondary",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "reform-judaism"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Hamburg, Germany",
+      "source_id": "hamburg_reform",
+      "source_url": "https://www.shmh.de/1817-landmarks-the-new-israelite-temple-association/",
+      "note": ""
+    },
+    {
+      "id": "jud-reform-prayerbook-dispute",
+      "family": "judaism",
+      "name": "Hamburg prayer-book dispute",
+      "date": {
+        "year_start": 1841,
+        "year_end": 1841,
+        "display": "1841 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "boundary_dispute",
+      "merge_priority": "secondary",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "reform-judaism",
+        "orthodox-judaism-modern"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Hamburg, Germany",
+      "source_id": "hamburg_reform",
+      "source_url": "https://www.shmh.de/1817-landmarks-the-new-israelite-temple-association/",
+      "note": "Useful marker of modern denominational differentiation."
+    },
+    {
+      "id": "jud-jts-founded",
+      "family": "judaism",
+      "name": "Jewish Theological Seminary founded",
+      "date": {
+        "year_start": 1886,
+        "year_end": 1886,
+        "display": "1886 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "institutionalization",
+      "merge_priority": "major",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "conservative-masorti-judaism"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "conservative-masorti-judaism"
+      ],
+      "place": "New York City, USA",
+      "source_id": "jts",
+      "source_url": "https://www.jtsa.edu/overview-of-jts/",
+      "note": "Major institutional anchor for Conservative Judaism."
+    },
+    {
+      "id": "chr-jesus-movement",
+      "family": "christianity",
+      "name": "Earliest Jesus movement",
+      "date": {
+        "year_start": 30,
+        "year_end": 40,
+        "display": "c. 30s CE",
+        "precision": "range"
+      },
+      "event_kind": "seed",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "early-christianity"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Judea / Galilee → Jerusalem",
+      "source_id": "oca_councils",
+      "source_url": "https://www.oca.org/orthodoxy/the-orthodox-faith/doctrine-scripture/sources-of-christian-doctrine/the-councils",
+      "note": "Approximate historical seed window; theological claims are separate."
+    },
+    {
+      "id": "chr-jerusalem-council",
+      "family": "christianity",
+      "name": "Jerusalem apostolic dispute/settlement",
+      "date": {
+        "year_start": 48,
+        "year_end": 50,
+        "display": "c. 48–50 CE",
+        "precision": "range"
+      },
+      "event_kind": "council",
+      "merge_priority": "secondary",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "early-christianity"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Jerusalem",
+      "source_id": "oca_councils",
+      "source_url": "https://www.oca.org/orthodoxy/the-orthodox-faith/doctrine-scripture/sources-of-christian-doctrine/the-councils",
+      "note": "Traditional/early Christian chronology marker; date approximate."
+    },
+    {
+      "id": "chr-edict-milan",
+      "family": "christianity",
+      "name": "Edict of Milan legalizes Christian worship in Roman Empire",
+      "date": {
+        "year_start": 313,
+        "year_end": 313,
+        "display": "313 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "state_legalization",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "early-christianity"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Roman Empire",
+      "source_id": "oca_councils",
+      "source_url": "https://www.oca.org/orthodoxy/the-orthodox-faith/doctrine-scripture/sources-of-christian-doctrine/the-councils",
+      "note": "Legal-status transformation, not Christianity's birth."
+    },
+    {
+      "id": "chr-nicaea",
+      "family": "christianity",
+      "name": "First Council of Nicaea",
+      "date": {
+        "year_start": 325,
+        "year_end": 325,
+        "display": "325 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "council",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "nicene-christianity"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "nicene-christianity"
+      ],
+      "place": "Nicaea",
+      "source_id": "oca_councils",
+      "source_url": "https://www.oca.org/orthodoxy/the-orthodox-faith/doctrine-scripture/sources-of-christian-doctrine/the-councils",
+      "note": "Creedal/doctrinal consolidation marker."
+    },
+    {
+      "id": "chr-constantinople-I",
+      "family": "christianity",
+      "name": "First Council of Constantinople",
+      "date": {
+        "year_start": 381,
+        "year_end": 381,
+        "display": "381 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "council",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "nicene-christianity"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Constantinople",
+      "source_id": "oca_councils",
+      "source_url": "https://www.oca.org/orthodoxy/the-orthodox-faith/doctrine-scripture/sources-of-christian-doctrine/the-councils",
+      "note": "Nicene-Constantinopolitan consolidation."
+    },
+    {
+      "id": "chr-ephesus",
+      "family": "christianity",
+      "name": "Council of Ephesus",
+      "date": {
+        "year_start": 431,
+        "year_end": 431,
+        "display": "431 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "council",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "nicene-christianity",
+        "church-of-east-lineage"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "church-of-east-lineage"
+      ],
+      "place": "Ephesus",
+      "source_id": "oca_councils",
+      "source_url": "https://www.oca.org/orthodoxy/the-orthodox-faith/doctrine-scripture/sources-of-christian-doctrine/the-councils",
+      "note": "Major Christological and ecclesial differentiation marker."
+    },
+    {
+      "id": "chr-chalcedon",
+      "family": "christianity",
+      "name": "Council of Chalcedon",
+      "date": {
+        "year_start": 451,
+        "year_end": 451,
+        "display": "451 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "council_split",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "chalcedonian-christianity",
+        "oriental-orthodox-family"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "chalcedonian-christianity",
+        "oriental-orthodox-family"
+      ],
+      "place": "Chalcedon",
+      "source_id": "oca_chalcedon",
+      "source_url": "https://www.oca.org/orthodoxy/the-orthodox-faith/church-history/fifth-century/the-fourth-ecumenical-council",
+      "note": "Major durable reception/non-reception branching marker."
+    },
+    {
+      "id": "chr-constantinople-II",
+      "family": "christianity",
+      "name": "Second Council of Constantinople",
+      "date": {
+        "year_start": 553,
+        "year_end": 553,
+        "display": "553 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "council",
+      "merge_priority": "secondary",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "chalcedonian-christianity"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Constantinople",
+      "source_id": "oca_councils",
+      "source_url": "https://www.oca.org/orthodoxy/the-orthodox-faith/doctrine-scripture/sources-of-christian-doctrine/the-councils",
+      "note": ""
+    },
+    {
+      "id": "chr-constantinople-III",
+      "family": "christianity",
+      "name": "Third Council of Constantinople",
+      "date": {
+        "year_start": 680,
+        "year_end": 681,
+        "display": "680–681 CE",
+        "precision": "range"
+      },
+      "event_kind": "council",
+      "merge_priority": "secondary",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "chalcedonian-christianity"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Constantinople",
+      "source_id": "oca_councils",
+      "source_url": "https://www.oca.org/orthodoxy/the-orthodox-faith/doctrine-scripture/sources-of-christian-doctrine/the-councils",
+      "note": ""
+    },
+    {
+      "id": "chr-nicaea-II",
+      "family": "christianity",
+      "name": "Second Council of Nicaea",
+      "date": {
+        "year_start": 787,
+        "year_end": 787,
+        "display": "787 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "council",
+      "merge_priority": "secondary",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "chalcedonian-christianity"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Nicaea",
+      "source_id": "oca_councils",
+      "source_url": "https://www.oca.org/orthodoxy/the-orthodox-faith/doctrine-scripture/sources-of-christian-doctrine/the-councils",
+      "note": "Icon-veneration settlement in churches that receive the council."
+    },
+    {
+      "id": "chr-east-west-schism-marker",
+      "family": "christianity",
+      "name": "East–West schism conventional rupture marker",
+      "date": {
+        "year_start": 1054,
+        "year_end": 1054,
+        "display": "1054 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "schism_marker",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "latin-western-christianity",
+        "greek-eastern-christianity",
+        "roman-catholic-postschism",
+        "eastern-orthodox-postschism"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "roman-catholic-postschism",
+        "eastern-orthodox-postschism"
+      ],
+      "place": "Rome / Constantinople",
+      "source_id": "oca_schism",
+      "source_url": "https://www.oca.org/orthodoxy/the-orthodox-faith/church-history/eleventh-century/the-great-schism",
+      "note": "Conventional marker inside a centuries-long separation."
+    },
+    {
+      "id": "chr-fourth-crusade",
+      "family": "christianity",
+      "name": "Sack of Constantinople hardens East–West rupture",
+      "date": {
+        "year_start": 1204,
+        "year_end": 1204,
+        "display": "1204 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "rupture",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "roman-catholic-postschism",
+        "eastern-orthodox-postschism"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Constantinople",
+      "source_id": "oca_schism",
+      "source_url": "https://www.oca.org/orthodoxy/the-orthodox-faith/church-history/eleventh-century/the-great-schism",
+      "note": ""
+    },
+    {
+      "id": "chr-luther-95",
+      "family": "christianity",
+      "name": "Luther's Ninety-Five Theses controversy",
+      "date": {
+        "year_start": 1517,
+        "year_end": 1517,
+        "display": "1517 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "reform_seed",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "protestant-reformation",
+        "lutheran-tradition"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "protestant-reformation",
+        "lutheran-tradition"
+      ],
+      "place": "Wittenberg",
+      "source_id": "loc_luther",
+      "source_url": "https://www.loc.gov/resource/gdcwdl.wdl_07497/",
+      "note": "Conventional Reformation seed marker, not the birth of all Protestantism."
+    },
+    {
+      "id": "chr-diet-worms",
+      "family": "christianity",
+      "name": "Diet of Worms",
+      "date": {
+        "year_start": 1521,
+        "year_end": 1521,
+        "display": "1521 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "boundary_dispute",
+      "merge_priority": "secondary",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "protestant-reformation",
+        "lutheran-tradition"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Worms",
+      "source_id": "loc_luther",
+      "source_url": "https://www.loc.gov/resource/gdcwdl.wdl_07497/",
+      "note": ""
+    },
+    {
+      "id": "chr-zurich-anabaptist",
+      "family": "christianity",
+      "name": "Zürich adult baptisms mark Swiss Brethren emergence",
+      "date": {
+        "year_start": 1525,
+        "year_end": 1525,
+        "display": "1525 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "reform_split",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "anabaptist-traditions"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "anabaptist-traditions"
+      ],
+      "place": "Zürich",
+      "source_id": "loc_luther",
+      "source_url": "https://www.loc.gov/resource/gdcwdl.wdl_07497/",
+      "note": "High-information Radical Reformation seed marker."
+    },
+    {
+      "id": "chr-augsburg-confession",
+      "family": "christianity",
+      "name": "Augsburg Confession presented",
+      "date": {
+        "year_start": 1530,
+        "year_end": 1530,
+        "display": "1530 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "confessional_consolidation",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "lutheran-tradition"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Augsburg",
+      "source_id": "loc_luther",
+      "source_url": "https://www.loc.gov/resource/gdcwdl.wdl_07497/",
+      "note": ""
+    },
+    {
+      "id": "chr-act-supremacy",
+      "family": "christianity",
+      "name": "English Act of Supremacy",
+      "date": {
+        "year_start": 1534,
+        "year_end": 1534,
+        "display": "1534 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "institutional_split",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "anglican-tradition"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "anglican-tradition"
+      ],
+      "place": "England",
+      "source_id": "parliament_reformation",
+      "source_url": "https://www.parliament.uk/about/living-heritage/transformingsociety/private-lives/religion/overview/reformation/",
+      "note": "Institutional break with papal jurisdiction; Anglican doctrinal settlement remains later."
+    },
+    {
+      "id": "chr-trent",
+      "family": "christianity",
+      "name": "Council of Trent",
+      "date": {
+        "year_start": 1545,
+        "year_end": 1563,
+        "display": "1545–1563 CE",
+        "precision": "range"
+      },
+      "event_kind": "council_reform",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "roman-catholic-postschism"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Trent / Bologna / Trent",
+      "source_id": "parliament_reformation",
+      "source_url": "https://www.parliament.uk/about/living-heritage/transformingsociety/private-lives/religion/overview/reformation/",
+      "note": "Catholic reform/confessional consolidation during Reformation era."
+    },
+    {
+      "id": "chr-elizabeth-settlement",
+      "family": "christianity",
+      "name": "Elizabethan religious settlement",
+      "date": {
+        "year_start": 1559,
+        "year_end": 1559,
+        "display": "1559 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "institutional_consolidation",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "anglican-tradition"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "England",
+      "source_id": "parliament_dates",
+      "source_url": "https://www.parliament.uk/about/living-heritage/transformingsociety/private-lives/religion/key-dates1/key-dates/",
+      "note": "Act of Supremacy and Act of Uniformity establish a durable Anglican settlement."
+    },
+    {
+      "id": "chr-methodist-oxford",
+      "family": "christianity",
+      "name": "Oxford Holy Club / first rise of Methodism",
+      "date": {
+        "year_start": 1729,
+        "year_end": 1729,
+        "display": "1729 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "reform_seed",
+      "merge_priority": "secondary",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "methodist-traditions"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Oxford",
+      "source_id": "methodist",
+      "source_url": "https://www.methodist.org.uk/for-churches/resources/articles/aldersgate-what-changed-for-the-wesleys/",
+      "note": ""
+    },
+    {
+      "id": "chr-aldersgate",
+      "family": "christianity",
+      "name": "John Wesley's Aldersgate experience",
+      "date": {
+        "year_start": 1738,
+        "year_end": 1738,
+        "display": "24 May 1738",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "revival_marker",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "methodist-traditions"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "methodist-traditions"
+      ],
+      "place": "London",
+      "source_id": "methodist",
+      "source_url": "https://www.methodist.org.uk/for-churches/resources/articles/aldersgate-what-changed-for-the-wesleys/",
+      "note": "Methodist tradition treats this as a major revival/formation clock, not its only beginning."
+    },
+    {
+      "id": "chr-millerite-field",
+      "family": "christianity",
+      "name": "Millerite/adventist expectation movement",
+      "date": {
+        "year_start": 1830,
+        "year_end": 1844,
+        "display": "1830s–1844 CE",
+        "precision": "range"
+      },
+      "event_kind": "reform_movement",
+      "merge_priority": "secondary",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "adventist-traditions"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "United States",
+      "source_id": "pew_pentecostal",
+      "source_url": "https://www.pewresearch.org/religion/2006/04/12/the-new-face-of-global-christianity-the-emergence-of-progressive-pentecostalism/",
+      "note": "Predecessor field for several Adventist bodies."
+    },
+    {
+      "id": "chr-sda-organization",
+      "family": "christianity",
+      "name": "Seventh-day Adventist Church organized",
+      "date": {
+        "year_start": 1863,
+        "year_end": 1863,
+        "display": "1863 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "institutionalization",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "adventist-traditions"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Battle Creek, Michigan, USA",
+      "source_id": "pew_pentecostal",
+      "source_url": "https://www.pewresearch.org/religion/2006/04/12/the-new-face-of-global-christianity-the-emergence-of-progressive-pentecostalism/",
+      "note": ""
+    },
+    {
+      "id": "chr-topeka",
+      "family": "christianity",
+      "name": "Topeka tongues episode becomes Pentecostal seed marker",
+      "date": {
+        "year_start": 1901,
+        "year_end": 1901,
+        "display": "1901 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "revival_marker",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "pentecostalism"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "pentecostalism"
+      ],
+      "place": "Topeka, Kansas, USA",
+      "source_id": "pew_pentecostal",
+      "source_url": "https://www.pewresearch.org/religion/2006/04/12/the-new-face-of-global-christianity-the-emergence-of-progressive-pentecostalism/",
+      "note": "Common scholarly starting marker for modern Pentecostalism."
+    },
+    {
+      "id": "chr-azusa",
+      "family": "christianity",
+      "name": "Azusa Street revival",
+      "date": {
+        "year_start": 1906,
+        "year_end": 1906,
+        "display": "1906 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "diffusion_acceleration",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "pentecostalism"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Los Angeles, California, USA",
+      "source_id": "pew_pentecostal",
+      "source_url": "https://www.pewresearch.org/religion/2006/04/12/the-new-face-of-global-christianity-the-emergence-of-progressive-pentecostalism/",
+      "note": "Major global diffusion/institutional multiplication event."
+    },
+    {
+      "id": "isl-first-revelation",
+      "family": "islam",
+      "name": "Beginning of Qur'anic revelation in Islamic tradition",
+      "date": {
+        "year_start": 610,
+        "year_end": 610,
+        "display": "c. 610 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "sacred_seed",
+      "merge_priority": "major",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "early-islam"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Mecca",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": "Traditional religious clock; distinguish from externally dated material evidence."
+    },
+    {
+      "id": "isl-hijra",
+      "family": "islam",
+      "name": "Hijra to Medina",
+      "date": {
+        "year_start": 622,
+        "year_end": 622,
+        "display": "622 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "migration_refoundation",
+      "merge_priority": "major",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "early-islam"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Mecca → Medina",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": "Strong historical community/institutional clock."
+    },
+    {
+      "id": "isl-mecca-return",
+      "family": "islam",
+      "name": "Muslim conquest/return to Mecca",
+      "date": {
+        "year_start": 630,
+        "year_end": 630,
+        "display": "630 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "political_religious_consolidation",
+      "merge_priority": "secondary",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "early-islam"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Mecca",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": ""
+    },
+    {
+      "id": "isl-succession-632",
+      "family": "islam",
+      "name": "Death of Muhammad and succession crisis",
+      "date": {
+        "year_start": 632,
+        "year_end": 632,
+        "display": "632 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "succession_rupture",
+      "merge_priority": "major",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "early-islam",
+        "sunni-formation",
+        "shia-formation"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "sunni-formation",
+        "shia-formation"
+      ],
+      "place": "Medina",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": "Branch-generating rupture; Sunni/Shiʿi identities crystallize later."
+    },
+    {
+      "id": "isl-ali-caliph",
+      "family": "islam",
+      "name": "ʿAli becomes caliph",
+      "date": {
+        "year_start": 656,
+        "year_end": 656,
+        "display": "656 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "succession_phase",
+      "merge_priority": "secondary",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "shia-formation",
+        "early-islam"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Medina / Kufa",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": ""
+    },
+    {
+      "id": "isl-siffin",
+      "family": "islam",
+      "name": "Battle of Siffin and arbitration",
+      "date": {
+        "year_start": 657,
+        "year_end": 657,
+        "display": "657 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "rupture",
+      "merge_priority": "major",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "shia-formation",
+        "kharijite-muhakkima"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "kharijite-muhakkima"
+      ],
+      "place": "Siffin / Syria-Iraq frontier",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": "Immediate background to secession of early Kharijite/Muhakkima groups."
+    },
+    {
+      "id": "isl-nahrawan",
+      "family": "islam",
+      "name": "Battle of Nahrawan",
+      "date": {
+        "year_start": 658,
+        "year_end": 658,
+        "display": "658 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "rupture",
+      "merge_priority": "secondary",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "kharijite-muhakkima"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Iraq",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": ""
+    },
+    {
+      "id": "isl-umayyad",
+      "family": "islam",
+      "name": "Umayyad caliphate begins",
+      "date": {
+        "year_start": 661,
+        "year_end": 661,
+        "display": "661 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "state_consolidation",
+      "merge_priority": "major",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "sunni-formation",
+        "shia-formation"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Damascus / caliphal realm",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": "State history affects but is not identical to later Sunni identity."
+    },
+    {
+      "id": "isl-karbala",
+      "family": "islam",
+      "name": "Battle of Karbala and death of Husayn",
+      "date": {
+        "year_start": 680,
+        "year_end": 680,
+        "display": "680 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "martyrdom_rupture",
+      "merge_priority": "major",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "shia-formation"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Karbala, Iraq",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": "Major formative memory and Shiʿi identity marker."
+    },
+    {
+      "id": "isl-ibadi-formation",
+      "family": "islam",
+      "name": "Ibadi tradition becomes distinct",
+      "date": {
+        "year_start": 680,
+        "year_end": 750,
+        "display": "late 7th–early 8th century",
+        "precision": "range"
+      },
+      "event_kind": "differentiation",
+      "merge_priority": "major",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "ibadi-islam"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "ibadi-islam"
+      ],
+      "place": "Basra → Oman / North Africa",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": "Formation window rather than one founder-date."
+    },
+    {
+      "id": "isl-zayd-revolt",
+      "family": "islam",
+      "name": "Revolt of Zayd ibn Ali",
+      "date": {
+        "year_start": 740,
+        "year_end": 740,
+        "display": "740 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "succession_revolt",
+      "merge_priority": "major",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "zaydi-shia"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "zaydi-shia"
+      ],
+      "place": "Kufa",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": "Major Zaydi lineage marker."
+    },
+    {
+      "id": "isl-abbasid",
+      "family": "islam",
+      "name": "Abbasid dynasty established",
+      "date": {
+        "year_start": 750,
+        "year_end": 750,
+        "display": "750 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "state_refoundation",
+      "merge_priority": "major",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "sunni-formation"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Iraq / Khorasan transition",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": ""
+    },
+    {
+      "id": "isl-abu-hanifa-death",
+      "family": "islam",
+      "name": "Death of Abu Hanifa; Hanafi school later consolidates through disciples",
+      "date": {
+        "year_start": 767,
+        "year_end": 767,
+        "display": "767 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "school_marker",
+      "merge_priority": "secondary",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "hanafi-school"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Kufa / Baghdad scholarly networks",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": "Founder-name marker, not complete school birth."
+    },
+    {
+      "id": "isl-jafar-death",
+      "family": "islam",
+      "name": "Death of Jaʿfar al-Sadiq and succession differentiation",
+      "date": {
+        "year_start": 765,
+        "year_end": 765,
+        "display": "765 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "succession_split",
+      "merge_priority": "major",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "shia-formation",
+        "ismaili-shia",
+        "twelver-shia"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "ismaili-shia",
+        "twelver-shia"
+      ],
+      "place": "Medina / wider Shiʿi networks",
+      "source_id": "iis_ismaili",
+      "source_url": "https://www.iis.ac.uk/media/pj4bhekc/ismaili-studies_medieval-antecedents-and-modern-developments.pdf",
+      "note": "Important Ismaili/Imami succession branch marker."
+    },
+    {
+      "id": "isl-malik-death",
+      "family": "islam",
+      "name": "Death of Malik ibn Anas; Maliki school later consolidates",
+      "date": {
+        "year_start": 795,
+        "year_end": 795,
+        "display": "795 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "school_marker",
+      "merge_priority": "secondary",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "maliki-school"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Medina",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": ""
+    },
+    {
+      "id": "isl-shafii-death",
+      "family": "islam",
+      "name": "Death of al-Shafiʿi; Shafiʿi school later consolidates",
+      "date": {
+        "year_start": 820,
+        "year_end": 820,
+        "display": "820 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "school_marker",
+      "merge_priority": "secondary",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "shafii-school"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Egypt / Iraq scholarly networks",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": ""
+    },
+    {
+      "id": "isl-ahmad-death",
+      "family": "islam",
+      "name": "Death of Ahmad ibn Hanbal; Hanbali school later consolidates",
+      "date": {
+        "year_start": 855,
+        "year_end": 855,
+        "display": "855 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "school_marker",
+      "merge_priority": "secondary",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "hanbali-school"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Baghdad",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": ""
+    },
+    {
+      "id": "isl-minor-occultation",
+      "family": "islam",
+      "name": "Twelver Minor Occultation begins",
+      "date": {
+        "year_start": 874,
+        "year_end": 874,
+        "display": "874 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "succession_theological_transition",
+      "merge_priority": "major",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "twelver-shia"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "twelver-shia"
+      ],
+      "place": "Samarra / Baghdad networks",
+      "source_id": "iranica_occultation",
+      "source_url": "https://www.iranicaonline.org/articles/gayba/",
+      "note": "Official Twelver chronology 874–941."
+    },
+    {
+      "id": "isl-fatimid",
+      "family": "islam",
+      "name": "Fatimid caliphate established",
+      "date": {
+        "year_start": 909,
+        "year_end": 909,
+        "display": "909 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "state_institutionalization",
+      "merge_priority": "major",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "ismaili-shia"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Ifriqiya / North Africa",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": "Major Ismaili institutional/state consolidation."
+    },
+    {
+      "id": "isl-major-occultation",
+      "family": "islam",
+      "name": "Twelver Greater Occultation begins",
+      "date": {
+        "year_start": 941,
+        "year_end": 941,
+        "display": "941 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "theological_institutional_transition",
+      "merge_priority": "major",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "twelver-shia"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Baghdad / wider Imami networks",
+      "source_id": "iranica_occultation",
+      "source_url": "https://www.iranicaonline.org/articles/gayba/",
+      "note": "Ends regular intermediary system in Twelver tradition."
+    },
+    {
+      "id": "isl-nizari-mustali",
+      "family": "islam",
+      "name": "Nizari–Mustaʿli Ismaili succession split",
+      "date": {
+        "year_start": 1094,
+        "year_end": 1094,
+        "display": "1094 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "succession_split",
+      "merge_priority": "major",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "nizari-ismaili",
+        "mustali-ismaili"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "nizari-ismaili",
+        "mustali-ismaili"
+      ],
+      "place": "Cairo and wider Ismaili networks",
+      "source_id": "iis_ismaili",
+      "source_url": "https://www.iis.ac.uk/media/pj4bhekc/ismaili-studies_medieval-antecedents-and-modern-developments.pdf",
+      "note": "Durable Ismaili branching marker."
+    },
+    {
+      "id": "isl-sufi-orders",
+      "family": "islam",
+      "name": "Sufi tariqa/order institutionalization accelerates",
+      "date": {
+        "year_start": 1100,
+        "year_end": 1300,
+        "display": "12th–13th centuries CE",
+        "precision": "range"
+      },
+      "event_kind": "institutionalization",
+      "merge_priority": "secondary",
+      "foundation_id": "islam-foundation",
+      "lineage_node_ids": [
+        "sufi-currents"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "distributed Islamic world",
+      "source_id": "iranica_chronology",
+      "source_url": "https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/",
+      "note": "Cross-cutting order formation, not a third sect beside Sunni and Shia."
+    },
+    {
+      "id": "bud-buddha-era",
+      "family": "buddhism",
+      "name": "Historical Buddha / early sangha approximate era",
+      "date": {
+        "year_start": -500,
+        "year_end": -350,
+        "display": "5th–4th centuries BCE",
+        "precision": "range"
+      },
+      "event_kind": "seed",
+      "merge_priority": "major",
+      "foundation_id": "buddhism-foundation",
+      "lineage_node_ids": [
+        "early-buddhism"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "north India",
+      "source_id": "britannica_buddhism",
+      "source_url": "https://www.britannica.com/topic/Buddhism",
+      "note": "Exact chronology debated."
+    },
+    {
+      "id": "bud-ashoka",
+      "family": "buddhism",
+      "name": "Ashokan patronage and imperial diffusion",
+      "date": {
+        "year_start": -268,
+        "year_end": -232,
+        "display": "reign c. 268–232 BCE",
+        "precision": "range"
+      },
+      "event_kind": "state_patronage_diffusion",
+      "merge_priority": "major",
+      "foundation_id": "buddhism-foundation",
+      "lineage_node_ids": [
+        "early-buddhism"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Mauryan Empire / South Asia",
+      "source_id": "britannica_ashoka",
+      "source_url": "https://www.britannica.com/biography/Ashoka",
+      "note": "Major diffusion and inscriptional anchor."
+    },
+    {
+      "id": "bud-srilanka",
+      "family": "buddhism",
+      "name": "Buddhist transmission established in Sri Lanka",
+      "date": {
+        "year_start": -250,
+        "year_end": -200,
+        "display": "3rd century BCE",
+        "precision": "range"
+      },
+      "event_kind": "transmission",
+      "merge_priority": "major",
+      "foundation_id": "buddhism-foundation",
+      "lineage_node_ids": [
+        "sri-lankan-theravada-lineage"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "sri-lankan-theravada-lineage"
+      ],
+      "place": "Sri Lanka",
+      "source_id": "britannica_buddhism",
+      "source_url": "https://www.britannica.com/topic/Buddhism",
+      "note": ""
+    },
+    {
+      "id": "bud-pali-canon-writing",
+      "family": "buddhism",
+      "name": "Pali canon committed to writing in Sri Lankan tradition",
+      "date": {
+        "year_start": -100,
+        "year_end": -1,
+        "display": "1st century BCE",
+        "precision": "range"
+      },
+      "event_kind": "textual_consolidation",
+      "merge_priority": "major",
+      "foundation_id": "buddhism-foundation",
+      "lineage_node_ids": [
+        "sri-lankan-theravada-lineage"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Sri Lanka",
+      "source_id": "britannica_buddhism",
+      "source_url": "https://www.britannica.com/topic/Buddhism",
+      "note": ""
+    },
+    {
+      "id": "bud-mahayana",
+      "family": "buddhism",
+      "name": "Mahayana currents/texts emerge",
+      "date": {
+        "year_start": -100,
+        "year_end": 200,
+        "display": "c. 1st century BCE–2nd century CE",
+        "precision": "range"
+      },
+      "event_kind": "movement_emergence",
+      "merge_priority": "major",
+      "foundation_id": "buddhism-foundation",
+      "lineage_node_ids": [
+        "mahayana-buddhism"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "mahayana-buddhism"
+      ],
+      "place": "India, distributed",
+      "source_id": "britannica_buddhism",
+      "source_url": "https://www.britannica.com/topic/Buddhism",
+      "note": "Loose currents within existing monastic environments at first."
+    },
+    {
+      "id": "bud-vajrayana",
+      "family": "buddhism",
+      "name": "Buddhist tantric/Vajrayana traditions crystallize",
+      "date": {
+        "year_start": 500,
+        "year_end": 800,
+        "display": "c. 6th–8th centuries CE",
+        "precision": "range"
+      },
+      "event_kind": "movement_emergence",
+      "merge_priority": "major",
+      "foundation_id": "buddhism-foundation",
+      "lineage_node_ids": [
+        "vajrayana-buddhism"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "vajrayana-buddhism"
+      ],
+      "place": "South Asia, later Tibet/Himalaya",
+      "source_id": "britannica_buddhism",
+      "source_url": "https://www.britannica.com/topic/Buddhism",
+      "note": "Broad formation window."
+    },
+    {
+      "id": "hin-vedic",
+      "family": "hinduism",
+      "name": "Vedic religious corpus and ritual field",
+      "date": {
+        "year_start": -1500,
+        "year_end": -500,
+        "display": "c. 1500–500 BCE",
+        "precision": "range"
+      },
+      "event_kind": "deep_origin",
+      "merge_priority": "major",
+      "foundation_id": "hindu-foundation",
+      "lineage_node_ids": [
+        "vedic-religious-field"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "South Asia, distributed",
+      "source_id": "britannica_hinduism",
+      "source_url": "https://www.britannica.com/topic/Hinduism",
+      "note": "Deep substrate, not identical with all later Hinduism."
+    },
+    {
+      "id": "hin-upanishadic",
+      "family": "hinduism",
+      "name": "Early Upanishadic philosophical transformations",
+      "date": {
+        "year_start": -800,
+        "year_end": -300,
+        "display": "c. 800–300 BCE",
+        "precision": "range"
+      },
+      "event_kind": "textual_philosophical_transition",
+      "merge_priority": "major",
+      "foundation_id": "hindu-foundation",
+      "lineage_node_ids": [
+        "hindu-traditions"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "South Asia, distributed",
+      "source_id": "britannica_hinduism",
+      "source_url": "https://www.britannica.com/topic/Hinduism",
+      "note": ""
+    },
+    {
+      "id": "hin-epic",
+      "family": "hinduism",
+      "name": "Epic traditions take shape",
+      "date": {
+        "year_start": -400,
+        "year_end": 400,
+        "display": "c. 400 BCE–400 CE",
+        "precision": "range"
+      },
+      "event_kind": "textual_consolidation",
+      "merge_priority": "major",
+      "foundation_id": "hindu-foundation",
+      "lineage_node_ids": [
+        "hindu-traditions"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "South Asia, distributed",
+      "source_id": "britannica_hinduism",
+      "source_url": "https://www.britannica.com/topic/Hinduism",
+      "note": "Ramayana/Mahabharata textual histories are long and layered."
+    },
+    {
+      "id": "hin-puranic",
+      "family": "hinduism",
+      "name": "Puranic/temple/devotional Hindu forms expand",
+      "date": {
+        "year_start": 300,
+        "year_end": 700,
+        "display": "c. 4th–7th centuries CE",
+        "precision": "range"
+      },
+      "event_kind": "institutional_devotional_consolidation",
+      "merge_priority": "major",
+      "foundation_id": "hindu-foundation",
+      "lineage_node_ids": [
+        "hindu-traditions",
+        "vaishnava-traditions",
+        "shaiva-traditions",
+        "shakta-traditions"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "South Asia, distributed",
+      "source_id": "britannica_hinduism",
+      "source_url": "https://www.britannica.com/topic/Hinduism",
+      "note": ""
+    },
+    {
+      "id": "hin-bhakti-south",
+      "family": "hinduism",
+      "name": "Tamil Shaiva and Vaishnava bhakti movements flourish",
+      "date": {
+        "year_start": 600,
+        "year_end": 900,
+        "display": "c. 7th–9th centuries CE",
+        "precision": "range"
+      },
+      "event_kind": "devotional_movement",
+      "merge_priority": "major",
+      "foundation_id": "hindu-foundation",
+      "lineage_node_ids": [
+        "vaishnava-traditions",
+        "shaiva-traditions"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Tamil South India",
+      "source_id": "britannica_hinduism",
+      "source_url": "https://www.britannica.com/topic/Hinduism",
+      "note": "Major devotional diffusion, not one single foundation."
+    },
+    {
+      "id": "hin-shakta-textual",
+      "family": "hinduism",
+      "name": "Shakta/Tantric textual and sectarian crystallization",
+      "date": {
+        "year_start": 400,
+        "year_end": 800,
+        "display": "c. 5th–8th centuries CE",
+        "precision": "range"
+      },
+      "event_kind": "movement_consolidation",
+      "merge_priority": "secondary",
+      "foundation_id": "hindu-foundation",
+      "lineage_node_ids": [
+        "shakta-traditions"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "shakta-traditions"
+      ],
+      "place": "South Asia, distributed",
+      "source_id": "britannica_hinduism",
+      "source_url": "https://www.britannica.com/topic/Hinduism",
+      "note": "Goddess traditions are older than this crystallization window."
+    },
+    {
+      "id": "jai-mahavira",
+      "family": "jainism",
+      "name": "Mahavira-associated historical Jain community",
+      "date": {
+        "year_start": -600,
+        "year_end": -400,
+        "display": "6th–5th centuries BCE",
+        "precision": "range"
+      },
+      "event_kind": "seed",
+      "merge_priority": "major",
+      "foundation_id": "jainism-foundation",
+      "lineage_node_ids": [
+        "jain-early-community"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "north India",
+      "source_id": "britannica_jainism",
+      "source_url": "https://www.britannica.com/topic/Jainism",
+      "note": "Traditional Tirthankara chronology extends much earlier."
+    },
+    {
+      "id": "jai-differentiation",
+      "family": "jainism",
+      "name": "Śvetāmbara–Digambara differentiation becomes durable",
+      "date": {
+        "year_start": 1,
+        "year_end": 500,
+        "display": "early centuries CE",
+        "precision": "range"
+      },
+      "event_kind": "differentiation",
+      "merge_priority": "major",
+      "foundation_id": "jainism-foundation",
+      "lineage_node_ids": [
+        "svetambara-jain",
+        "digambara-jain"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "svetambara-jain",
+        "digambara-jain"
+      ],
+      "place": "India, distributed",
+      "source_id": "britannica_jainism",
+      "source_url": "https://www.britannica.com/topic/Jainism",
+      "note": "Deliberately broad: one exact schism year is not secure."
+    },
+    {
+      "id": "sikh-nanak-era",
+      "family": "sikhism",
+      "name": "Guru Nanak teaching/community era",
+      "date": {
+        "year_start": 1490,
+        "year_end": 1539,
+        "display": "late 15th–early 16th century",
+        "precision": "range"
+      },
+      "event_kind": "seed",
+      "merge_priority": "major",
+      "foundation_id": "sikhism-foundation",
+      "lineage_node_ids": [
+        "sikh-tradition"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Punjab",
+      "source_id": "sgpc_gobind",
+      "source_url": "https://new.sgpc.net/ten-guru-sahibs/guru-gobind-singh-sahib/",
+      "note": "Formation through Guru Nanak's teaching and early community."
+    },
+    {
+      "id": "sikh-adi-granth",
+      "family": "sikhism",
+      "name": "Adi Granth compiled/installed",
+      "date": {
+        "year_start": 1604,
+        "year_end": 1604,
+        "display": "1604 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "textual_consolidation",
+      "merge_priority": "major",
+      "foundation_id": "sikhism-foundation",
+      "lineage_node_ids": [
+        "sikh-tradition"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Amritsar",
+      "source_id": "sgpc_gobind",
+      "source_url": "https://new.sgpc.net/ten-guru-sahibs/guru-gobind-singh-sahib/",
+      "note": "Major scriptural/institutional anchor."
+    },
+    {
+      "id": "sikh-arjan-martyrdom",
+      "family": "sikhism",
+      "name": "Martyrdom of Guru Arjan",
+      "date": {
+        "year_start": 1606,
+        "year_end": 1606,
+        "display": "1606 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "martyrdom_rupture",
+      "merge_priority": "major",
+      "foundation_id": "sikhism-foundation",
+      "lineage_node_ids": [
+        "sikh-tradition"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Lahore",
+      "source_id": "sgpc_gobind",
+      "source_url": "https://new.sgpc.net/ten-guru-sahibs/guru-gobind-singh-sahib/",
+      "note": "Major transformation in Sikh political/community history."
+    },
+    {
+      "id": "sikh-khalsa",
+      "family": "sikhism",
+      "name": "Khalsa inaugurated",
+      "date": {
+        "year_start": 1699,
+        "year_end": 1699,
+        "display": "30 March 1699 / Vaisakhi",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "refoundation",
+      "merge_priority": "major",
+      "foundation_id": "sikhism-foundation",
+      "lineage_node_ids": [
+        "khalsa"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "khalsa"
+      ],
+      "place": "Anandpur Sahib",
+      "source_id": "sgpc_gobind",
+      "source_url": "https://new.sgpc.net/ten-guru-sahibs/guru-gobind-singh-sahib/",
+      "note": "SGPC gives 30 March 1699 for the concrete institution of the Khalsa."
+    },
+    {
+      "id": "sikh-guru-granth",
+      "family": "sikhism",
+      "name": "Guru Granth Sahib affirmed as enduring Guru in Sikh tradition",
+      "date": {
+        "year_start": 1708,
+        "year_end": 1708,
+        "display": "1708 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "succession_transition",
+      "merge_priority": "major",
+      "foundation_id": "sikhism-foundation",
+      "lineage_node_ids": [
+        "sikh-tradition",
+        "khalsa"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Nanded",
+      "source_id": "sgpc_gobind",
+      "source_url": "https://new.sgpc.net/ten-guru-sahibs/guru-gobind-singh-sahib/",
+      "note": "Succession structure changes from personal Gurus to scripture/community order."
+    },
+    {
+      "id": "bah-bab-declaration",
+      "family": "bahai",
+      "name": "Declaration of the Báb",
+      "date": {
+        "year_start": 1844,
+        "year_end": 1844,
+        "display": "night of 22–23 May 1844",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "seed",
+      "merge_priority": "major",
+      "foundation_id": "bahai-foundation",
+      "lineage_node_ids": [
+        "babi-movement"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "babi-movement"
+      ],
+      "place": "Shiraz, Persia",
+      "source_id": "bahai_bab",
+      "source_url": "https://bahaiworld.bahai.org/library/the-mission-of-the-bab/",
+      "note": "Founding marker of the Bábí movement."
+    },
+    {
+      "id": "bah-bab-execution",
+      "family": "bahai",
+      "name": "Execution of the Báb",
+      "date": {
+        "year_start": 1850,
+        "year_end": 1850,
+        "display": "9 July 1850",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "martyrdom_rupture",
+      "merge_priority": "major",
+      "foundation_id": "bahai-foundation",
+      "lineage_node_ids": [
+        "babi-movement"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Tabriz, Persia",
+      "source_id": "bahai_bab",
+      "source_url": "https://bahaiworld.bahai.org/library/the-mission-of-the-bab/",
+      "note": ""
+    },
+    {
+      "id": "bah-ridvan",
+      "family": "bahai",
+      "name": "Bahá’u’lláh's Riḍván declaration",
+      "date": {
+        "year_start": 1863,
+        "year_end": 1863,
+        "display": "22 April–3 May 1863",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "refoundation_revelatory_marker",
+      "merge_priority": "major",
+      "foundation_id": "bahai-foundation",
+      "lineage_node_ids": [
+        "bahai-faith-lineage"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "bahai-faith-lineage"
+      ],
+      "place": "Baghdad, Ottoman Iraq",
+      "source_id": "bahai_ridvan",
+      "source_url": "https://reference.bahai.org/en/t/o/BNE/bne-32.html",
+      "note": "Strong Baháʼí emergence marker from the Bábí predecessor field."
+    },
+    {
+      "id": "bah-bahaullah-death",
+      "family": "bahai",
+      "name": "Death of Bahá’u’lláh and succession under covenant",
+      "date": {
+        "year_start": 1892,
+        "year_end": 1892,
+        "display": "1892 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "succession_transition",
+      "merge_priority": "secondary",
+      "foundation_id": "bahai-foundation",
+      "lineage_node_ids": [
+        "bahai-faith-lineage"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Acre / Haifa region",
+      "source_id": "bahai_aqdas",
+      "source_url": "https://reference.bahai.org/en/t/b/KA/ka-155.html",
+      "note": ""
+    },
+    {
+      "id": "bah-uhj",
+      "family": "bahai",
+      "name": "Universal House of Justice first elected",
+      "date": {
+        "year_start": 1963,
+        "year_end": 1963,
+        "display": "1963 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "institutional_consolidation",
+      "merge_priority": "major",
+      "foundation_id": "bahai-foundation",
+      "lineage_node_ids": [
+        "bahai-faith-lineage"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Haifa",
+      "source_id": "bahai_aqdas",
+      "source_url": "https://reference.bahai.org/en/t/b/KA/ka-155.html",
+      "note": "Global administrative consolidation."
+    },
+    {
+      "id": "zor-zarathustra",
+      "family": "zoroastrianism",
+      "name": "Zarathustra-associated reform/tradition",
+      "date": {
+        "year_start": -1300,
+        "year_end": -550,
+        "display": "broad plausible range c. 13th–6th century BCE",
+        "precision": "range"
+      },
+      "event_kind": "deep_origin",
+      "merge_priority": "major",
+      "foundation_id": "zoroastrianism-foundation",
+      "lineage_node_ids": [
+        "zoroastrian-tradition"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "eastern Iranian/Central Asian region, uncertain",
+      "source_id": "iranica_zoroastrian",
+      "source_url": "https://www.iranicaonline.org/articles/zoroastrianism-i-historical-review/",
+      "note": "Render as a wide uncertainty band."
+    },
+    {
+      "id": "zor-sasanian",
+      "family": "zoroastrianism",
+      "name": "Sasanian-era Zoroastrian institutional consolidation",
+      "date": {
+        "year_start": 224,
+        "year_end": 651,
+        "display": "224–651 CE",
+        "precision": "range"
+      },
+      "event_kind": "state_institutionalization",
+      "merge_priority": "major",
+      "foundation_id": "zoroastrianism-foundation",
+      "lineage_node_ids": [
+        "zoroastrian-tradition"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Sasanian Iran",
+      "source_id": "iranica_zoroastrian",
+      "source_url": "https://www.iranicaonline.org/articles/zoroastrianism-i-historical-review/",
+      "note": "Important consolidation phase, not origin."
+    },
+    {
+      "id": "dao-daodejing",
+      "family": "daoism",
+      "name": "Classical Daoist textual formation",
+      "date": {
+        "year_start": -400,
+        "year_end": -250,
+        "display": "4th–3rd centuries BCE",
+        "precision": "range"
+      },
+      "event_kind": "textual_seed",
+      "merge_priority": "major",
+      "foundation_id": "daoism-foundation",
+      "lineage_node_ids": [],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "China, distributed",
+      "source_id": "britannica_daoism",
+      "source_url": "https://www.britannica.com/topic/Daoism",
+      "note": "Textual/philosophical layer precedes organized religious Daoism."
+    },
+    {
+      "id": "dao-celestial-masters",
+      "family": "daoism",
+      "name": "Celestial Masters movement begins",
+      "date": {
+        "year_start": 142,
+        "year_end": 142,
+        "display": "142 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "institutionalization",
+      "merge_priority": "major",
+      "foundation_id": "daoism-foundation",
+      "lineage_node_ids": [],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Sichuan, China",
+      "source_id": "britannica_daoism",
+      "source_url": "https://www.britannica.com/topic/Daoism",
+      "note": "Strong organized religious Daoist foundation marker."
+    },
+    {
+      "id": "dao-shangqing",
+      "family": "daoism",
+      "name": "Shangqing revelations and lineage formation",
+      "date": {
+        "year_start": 364,
+        "year_end": 370,
+        "display": "364–370 CE",
+        "precision": "range"
+      },
+      "event_kind": "revelatory_lineage",
+      "merge_priority": "secondary",
+      "foundation_id": "daoism-foundation",
+      "lineage_node_ids": [],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Jiangnan, China",
+      "source_id": "britannica_daoism",
+      "source_url": "https://www.britannica.com/topic/Daoism",
+      "note": ""
+    },
+    {
+      "id": "dao-lingbao",
+      "family": "daoism",
+      "name": "Lingbao textual/ritual tradition crystallizes",
+      "date": {
+        "year_start": 397,
+        "year_end": 402,
+        "display": "late 4th–early 5th century CE",
+        "precision": "range"
+      },
+      "event_kind": "textual_ritual_consolidation",
+      "merge_priority": "secondary",
+      "foundation_id": "daoism-foundation",
+      "lineage_node_ids": [],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "China",
+      "source_id": "britannica_daoism",
+      "source_url": "https://www.britannica.com/topic/Daoism",
+      "note": ""
+    },
+    {
+      "id": "conf-confucius",
+      "family": "confucianism",
+      "name": "Confucius teaching era",
+      "date": {
+        "year_start": -551,
+        "year_end": -479,
+        "display": "551–479 BCE",
+        "precision": "range"
+      },
+      "event_kind": "seed",
+      "merge_priority": "major",
+      "foundation_id": "confucian-foundation",
+      "lineage_node_ids": [],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Lu, China",
+      "source_id": "britannica_confucianism",
+      "source_url": "https://www.britannica.com/topic/Confucianism",
+      "note": "Biographical anchor; later Confucian institutional history is much broader."
+    },
+    {
+      "id": "conf-han-canon",
+      "family": "confucianism",
+      "name": "Han state sponsorship of Confucian classics expands",
+      "date": {
+        "year_start": -136,
+        "year_end": -100,
+        "display": "from 136 BCE",
+        "precision": "range"
+      },
+      "event_kind": "state_institutionalization",
+      "merge_priority": "major",
+      "foundation_id": "confucian-foundation",
+      "lineage_node_ids": [],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Han China",
+      "source_id": "britannica_confucianism",
+      "source_url": "https://www.britannica.com/topic/Confucianism",
+      "note": ""
+    },
+    {
+      "id": "conf-neoconfucian",
+      "family": "confucianism",
+      "name": "Neo-Confucian synthesis develops",
+      "date": {
+        "year_start": 960,
+        "year_end": 1200,
+        "display": "10th–12th centuries CE",
+        "precision": "range"
+      },
+      "event_kind": "philosophical_refoundation",
+      "merge_priority": "major",
+      "foundation_id": "confucian-foundation",
+      "lineage_node_ids": [],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Song China",
+      "source_id": "britannica_confucianism",
+      "source_url": "https://www.britannica.com/topic/Confucianism",
+      "note": ""
+    },
+    {
+      "id": "shinto-kojiki",
+      "family": "shinto",
+      "name": "Kojiki compiled",
+      "date": {
+        "year_start": 712,
+        "year_end": 712,
+        "display": "712 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "textual_consolidation",
+      "merge_priority": "major",
+      "foundation_id": "shinto-foundation",
+      "lineage_node_ids": [],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Japan",
+      "source_id": "britannica_shinto",
+      "source_url": "https://www.britannica.com/topic/Shinto",
+      "note": "Early court textualization of kami/imperial mythic traditions."
+    },
+    {
+      "id": "shinto-nihon-shoki",
+      "family": "shinto",
+      "name": "Nihon Shoki compiled",
+      "date": {
+        "year_start": 720,
+        "year_end": 720,
+        "display": "720 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "textual_consolidation",
+      "merge_priority": "secondary",
+      "foundation_id": "shinto-foundation",
+      "lineage_node_ids": [],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Japan",
+      "source_id": "britannica_shinto",
+      "source_url": "https://www.britannica.com/topic/Shinto",
+      "note": ""
+    },
+    {
+      "id": "shinto-meiji",
+      "family": "shinto",
+      "name": "Meiji-era shrine/state reorganization",
+      "date": {
+        "year_start": 1868,
+        "year_end": 1871,
+        "display": "1868–1871 CE",
+        "precision": "range"
+      },
+      "event_kind": "state_refoundation",
+      "merge_priority": "major",
+      "foundation_id": "shinto-foundation",
+      "lineage_node_ids": [],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Japan",
+      "source_id": "britannica_shinto",
+      "source_url": "https://www.britannica.com/topic/Shinto",
+      "note": "Modern institutional reconfiguration; do not project it backward as ancient 'State Shinto'."
+    },
+    {
+      "id": "shinto-1945",
+      "family": "shinto",
+      "name": "Postwar separation from state sponsorship",
+      "date": {
+        "year_start": 1945,
+        "year_end": 1945,
+        "display": "1945 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "state_disestablishment",
+      "merge_priority": "major",
+      "foundation_id": "shinto-foundation",
+      "lineage_node_ids": [],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Japan",
+      "source_id": "britannica_shinto",
+      "source_url": "https://www.britannica.com/topic/Shinto",
+      "note": "Modern institutional rupture/refoundation."
+    }
+  ]
+}
