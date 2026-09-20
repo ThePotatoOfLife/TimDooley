@@ -1,5 +1,5 @@
 {
-  "version": "3.7.0",
+  "version": "3.8.0",
   "updated": "2026-09-20",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -8,6 +8,11 @@
       "concern": "operator ownership / consolidation routing",
       "owner": "data/house/operator-ownership-registry.json",
       "rule": "Before redefining high-frequency operators such as Plane, Axis, Door, Cross, Spiral, Tree, Root, Seed, Garden, Source Field or Manifestation Field, route through this registry to the canonical definition/contract owner and keep specialist files narrow."
+    },
+    {
+      "concern": "operator family classification / Door Cross Spiral Tree Swamp",
+      "owner": "data/house/operator-family-manifest.json",
+      "rule": "Classifies high-frequency operator files into definition/contract, specialist, research, archaeology, benchmark and reader/story roles. A filename containing an operator never grants canonical ownership."
     },
     {
       "concern": "project semantic center / center-out importance",
