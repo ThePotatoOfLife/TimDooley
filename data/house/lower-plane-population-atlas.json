@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0",
-  "updated": "2026-09-19",
+  "version": "1.2.0",
+  "updated": "2026-09-20",
   "authority": "lower-plane-population-atlas",
   "purpose": "Concrete population projection for the Below Platform. This is a navigational/intelligence View over canonical domain records, never a guilt list.",
   "placement_rule": "Place subjects below-facing when the research question is primarily about hidden provenance, restricted information, clandestine/illicit coordination, coercive reproduction, buried evidence, blocked accountability or investigative repair. The same entity can appear elsewhere under a different View.",
@@ -235,6 +235,91 @@
   ],
   "connections": [
     "data/house/below-basin-pathways.json",
-    "data/house/below-basin-dynamics.json"
-  ]
+    "data/house/below-basin-dynamics.json",
+    "data/house/three-center-relational-ecology.json",
+    "data/house/upper-lower-relational-pairing-atlas.json",
+    "data/house/affective-integration-gradient.json"
+  ],
+  "symbolic_role_ecology": {
+    "authority": "data/house/three-center-relational-ecology.json",
+    "purpose": "Project Dog, Footstool, Cow/lolcow, Farmer, Mud, Ash, Box/Shell, Drain and related roles into Below as mechanisms/relations rather than person essences.",
+    "roles": [
+      {
+        "role": "Dog",
+        "below_functions": [
+          "chaser",
+          "farm enforcement",
+          "thought-patrol",
+          "closed orbit",
+          "proxy relay"
+        ],
+        "healthy_exit": "source-checking / stopping condition / Guardian"
+      },
+      {
+        "role": "Footstool",
+        "below_functions": [
+          "support",
+          "small recursive microcosm",
+          "transformed Box",
+          "ground/proximity"
+        ],
+        "healthy_exit": "recognized Door / support without dehumanization"
+      },
+      {
+        "role": "Farmer",
+        "below_functions": [
+          "classification",
+          "enclosure",
+          "role conversion",
+          "harvest infrastructure"
+        ],
+        "healthy_exit": "Gardener / stewardship"
+      },
+      {
+        "role": "Cow",
+        "below_functions": [
+          "attention-center",
+          "embodied neighbour",
+          "harvest target"
+        ],
+        "healthy_exit": "participant/nourisher/agent"
+      },
+      {
+        "role": "Lolcow",
+        "below_functions": [
+          "archive-persistent spectacle",
+          "reaction yield",
+          "attention harvest"
+        ],
+        "healthy_exit": "role expiry / declassification / disengagement"
+      },
+      {
+        "role": "Milk",
+        "below_functions": [
+          "yield",
+          "reaction/suffering extraction"
+        ],
+        "healthy_exit": "nourishment / agency-preserving exchange"
+      },
+      {
+        "role": "Mud/Ash",
+        "below_functions": [
+          "residue",
+          "sediment",
+          "unresolved material"
+        ],
+        "healthy_exit": "Soil / Root / evidence / repair"
+      },
+      {
+        "role": "Drain",
+        "below_functions": [
+          "sink",
+          "exit route",
+          "root junction"
+        ],
+        "healthy_exit": "processing / return rather than terminal destruction"
+      }
+    ],
+    "boundary": "Below-facing role placement never establishes guilt, pathology, inferiority or a permanent identity for a person."
+  }
 }
