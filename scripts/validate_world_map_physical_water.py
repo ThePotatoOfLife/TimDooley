@@ -65,7 +65,7 @@ def main() -> int:
             "physical-water",
             "physical-line",
             "buffer: 0",
-            "DETAIL_ZOOM",
+            "scale.threshold('physical-water-detail', 'load')",
             "ensureDetailSources",
             "detailInstalled",
             "zoomend",
@@ -81,6 +81,8 @@ def main() -> int:
                 errors.append(f"physical water must not load globe-spanning Natural Earth ocean polygon: {forbidden}")
         if "map.getZoom() >= DETAIL_ZOOM" not in text:
             errors.append("physical water detail must be zoom-gated")
+        if "const DETAIL_ZOOM = 3.4" in text:
+            errors.append("physical water must not own a duplicate raw 3.4 detail threshold")
         detail_has_native_minzoom = "const minZoom = detail ? DETAIL_ZOOM : 0;" in text
         syncs_only_after_zoom = "map.on('zoomend'" in text and "map.on('zoom'," not in text
         if detail_has_native_minzoom and syncs_only_after_zoom:

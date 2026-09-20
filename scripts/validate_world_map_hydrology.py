@@ -44,7 +44,11 @@ def main() -> int:
     else:
         text = HYDRO.read_text(encoding="utf-8", errors="replace")
         for token in (
-            "MIN_ZOOM = 4",
+            "scale.threshold('physical-hydrology', 'load')",
+            "scale.threshold('hydrology-rivers-medium', 'load')",
+            "scale.threshold('hydrology-rivers-fine', 'load')",
+            "scale.threshold('hydrology-rivers-detailed', 'load')",
+            "riverRegime",
             "Hydrobasins/FeatureServer/2/query",
             "Optimized_Hyrdo/FeatureServer/0/query",
             "geometryType=esriGeometryEnvelope",
@@ -66,6 +70,9 @@ def main() -> int:
             errors.append("hydrology module must not poll or observe the DOM")
         if "map.getZoom() < MIN_ZOOM" not in text and "zoom < MIN_ZOOM" not in text:
             errors.append("hydrology requests must be blocked below regional zoom")
+        for legacy in ("const MIN_ZOOM = 4", "zoom < 5.2", "zoom < 6.7", "zoom < 8.2"):
+            if legacy in text:
+                errors.append(f"hydrology still owns duplicate raw scale threshold: {legacy}")
         node = shutil.which("node")
         if node:
             result = subprocess.run([node, "--check", str(HYDRO)], capture_output=True, text=True)

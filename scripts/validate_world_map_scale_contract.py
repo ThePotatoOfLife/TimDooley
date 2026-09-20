@@ -24,6 +24,11 @@ EXPECTED_BANDS = [
 EXPECTED_CAPABILITIES = {
     "subdivisions": {"load": 3.4, "render": 3.4, "label": 4.25, "interact": 3.4},
     "places-detail": {"load": 4.2, "render": 4.2, "label": 5.0, "interact": 4.2},
+    "physical-water-detail": {"load": 3.4, "render": 3.4},
+    "physical-hydrology": {"load": 4.0, "render": 4.0},
+    "hydrology-rivers-medium": {"load": 5.2},
+    "hydrology-rivers-fine": {"load": 6.7},
+    "hydrology-rivers-detailed": {"load": 8.2},
 }
 
 
@@ -96,7 +101,7 @@ def main() -> int:
     print("- bands: world → macro-region → region → country → subnational → local")
     print("- phases: load / render / label / interact")
     print("- hysteresis: 0.12 zoom")
-    print("- first consumers: Places detail + subdivisions promotion")
+    print("- consumers: Places · subdivisions · physical water detail · hydrology request density")
     print(f"Errors: {len(errors)}")
     if errors:
         print("WORLD MAP SCALE CONTRACT VALIDATION FAILED")

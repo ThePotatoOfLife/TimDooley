@@ -4,6 +4,9 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Hydrology requires the core map.');
+if (!window.__potatoAtlasScale) await import('./3d-scale.js');
+const scale = await window.__potatoAtlasScale?.ready;
+if (!scale?.threshold) throw new Error('Hydrology requires the shared Scale runtime.');
 if (!window.__potatoAtlasGeo) await import('./3d-geo-kernel.js');
 const geoKernel = window.__potatoAtlasGeo;
 if (!geoKernel?.normalizeLongitude) throw new Error('Hydrology requires the shared geospatial kernel.');
@@ -14,7 +17,10 @@ if (!window.__potatoAtlasStyleLifecycle) {
 const styleLifecycle = window.__potatoAtlasStyleLifecycle;
 
 const PHYSICAL_ID = 'physical.water.hydrology';
-const MIN_ZOOM = 4;
+const MIN_ZOOM = scale.threshold('physical-hydrology', 'load');
+const RIVER_MEDIUM_ZOOM = scale.threshold('hydrology-rivers-medium', 'load');
+const RIVER_FINE_ZOOM = scale.threshold('hydrology-rivers-fine', 'load');
+const RIVER_DETAILED_ZOOM = scale.threshold('hydrology-rivers-detailed', 'load');
 const DEFAULT_OPACITY = 0.72;
 const BASIN_SERVICE = 'https://services3.arcgis.com/AdYB7LvDmN7hzWUb/arcgis/rest/services/Hydrobasins/FeatureServer/2/query';
 const RIVER_SERVICE = 'https://maps.fsc.org/server/rest/services/hosted/Optimized_Hyrdo/FeatureServer/0/query';
@@ -124,12 +130,14 @@ function clearData() {
   map.getSource(BASIN_SOURCE)?.setData(lastBasins);
   map.getSource(RIVER_SOURCE)?.setData(lastRivers);
 }
-function riverThreshold() {
-  const zoom = map.getZoom();
-  if (zoom < 5.2) return 5000;
-  if (zoom < 6.7) return 1500;
-  if (zoom < 8.2) return 500;
-  return 150;
+function riverRegime(zoom = map.getZoom()) {
+  if (zoom < RIVER_MEDIUM_ZOOM) return { id:'regional', threshold:5000 };
+  if (zoom < RIVER_FINE_ZOOM) return { id:'subregional', threshold:1500 };
+  if (zoom < RIVER_DETAILED_ZOOM) return { id:'local', threshold:500 };
+  return { id:'detailed', threshold:150 };
+}
+function riverThreshold(zoom = map.getZoom()) {
+  return riverRegime(zoom).threshold;
 }
 function canonicalLongitudeEnvelopes(west, east, south, north) {
   const rawWest = Number(west);
@@ -186,7 +194,7 @@ function hydrologyRequestKey(envelopes, threshold, zoom) {
     .filter(Boolean)
     .map(envelope => String(envelope).split(',').map(value => Number(value).toFixed(2)).join(','))
     .join(';');
-  const regime = zoom < 5.2 ? 'regional' : zoom < 6.7 ? 'subregional' : zoom < 8.2 ? 'local' : 'detailed';
+  const regime = riverRegime(zoom).id;
   return `${regime}|${threshold}|${rounded}`;
 }
 function shouldSkipHydrologyRequest(requestKey) {
@@ -224,7 +232,7 @@ async function refreshViewport() {
     return;
   }
 
-  const threshold = riverThreshold();
+  const threshold = riverThreshold(zoom);
   const requestKey = hydrologyRequestKey(envelopes, threshold, zoom);
   if (shouldSkipHydrologyRequest(requestKey)) {
     const d = diagnostics();
