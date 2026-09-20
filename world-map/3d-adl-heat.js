@@ -103,10 +103,12 @@ function scheduleStateFeatureState() {
     if (enabled) updateStateFeatureState();
   });
 }
-window.addEventListener('potato-atlas-subdivisions-source-change', scheduleStateFeatureState);
-map.on('sourcedata', event => {
-  if (event?.sourceId === STATE_SOURCE && event?.isSourceLoaded) scheduleStateFeatureState();
-});
+function registerSubdivisionRefreshObserver() {
+  return window.__potatoAtlasSubdivisions?.registerSourceRefreshObserver?.(
+    'adl-heat',
+    () => scheduleStateFeatureState(),
+  ) || false;
+}
 function updatePointSource() {
   const source = map.getSource(POINT_SOURCE);
   if (source?.setData) source.setData(filtered);
@@ -340,6 +342,7 @@ async function ensureSubdivisions() {
   if (!window.__potatoAtlasSubdivisions) throw new Error('Subdivision runtime unavailable.');
   await window.__potatoAtlasSubdivisions.loadPartition('USA');
   registerSubdivisionEvidence();
+  registerSubdivisionRefreshObserver();
   await window.__potatoAtlasSubdivisions.refresh?.();
 }
 async function loadData() {
