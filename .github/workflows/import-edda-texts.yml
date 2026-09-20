@@ -10,12 +10,17 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: import-edda-texts
+  cancel-in-progress: true
+
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   import-edda:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -65,4 +70,11 @@ jobs:
             exit 0
           fi
           git commit -m 'Add raw searchable Norse Edda texts'
-          git push
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Push attempt ${attempt} lost a race; rebasing onto origin/main."
+            git fetch origin main
+            git rebase origin/main
+          done
+          echo 'Unable to push Edda texts after 3 attempts.'
+          exit 1
