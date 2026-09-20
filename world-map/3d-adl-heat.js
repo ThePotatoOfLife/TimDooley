@@ -151,6 +151,26 @@ function sourceStatusText() {
   const dates = [snap.exact_min_date, snap.exact_max_date].filter(Boolean).join(' → ');
   return `${snap.status || 'snapshot'} · ${snap.dataset || 'ADL H.E.A.T.'}${dates ? ` · ${dates}` : ''}`;
 }
+function snapshotFreshness() {
+  const snap = metadata?.snapshot || {};
+  const end = snap.exact_max_date || snap.date_end || '';
+  const status = String(snap.status || 'snapshot');
+  let ageDays = null;
+  if (end) {
+    const endDate = new Date(`${end}T00:00:00Z`);
+    if (!Number.isNaN(endDate.getTime())) ageDays = Math.max(0, Math.floor((Date.now() - endDate.getTime()) / 86400000));
+  }
+  const historical = status === 'historical-seed';
+  const age = Number.isFinite(ageDays) ? ` · ${ageDays.toLocaleString()} days since latest record` : '';
+  return {
+    historical,
+    end,
+    ageDays,
+    label: historical
+      ? `Historical snapshot · latest record ${end || 'unknown'}${age} · not current monthly ADL coverage`
+      : `${status} · through ${end || 'unknown date'}`,
+  };
+}
 function ensureControlSurface() {
   const button = document.getElementById('adlHeatLayer');
   if (!button) return null;
@@ -181,7 +201,7 @@ function renderControls() {
       <option value="all">All incident types</option>
       ${types.map(type => `<option value="${esc(type)}"${type===selectedType?' selected':''}>${esc(type)}</option>`).join('')}
     </select>
-    <div class="boundary"><b>${fmt(filtered.features.length)} records shown</b><br>${esc(sourceStatusText())}<br>Counts are records in this ADL-derived snapshot, not a general hate score or crime score.</div>
+    <div class="boundary" data-adl-freshness><b>${fmt(filtered.features.length)} records shown</b><br><strong>${esc(snapshotFreshness().label)}</strong><br>${esc(sourceStatusText())}<br>Counts are records in this ADL-derived snapshot, not a general hate score or crime score.</div>
     <div class="muted">State shading = filtered record count. Canonical state borders/labels remain above the shading. Gold dots = geocoded source records; zoom in for individual incidents.</div>
     <button type="button" data-adl-focus>Focus U.S.</button>
     <button type="button" data-adl-source>Source / methodology</button>`;
@@ -206,7 +226,7 @@ function renderDatasetPanel() {
     <div class="eyebrow">Evidence dataset · ADL H.E.A.T.</div>
     <h1>U.S. incident evidence layer</h1>
     <p class="muted">Source owner: ${esc(metadata?.source_organization || 'Anti-Defamation League')}</p>
-    <div class="card"><b>Snapshot</b><p>${esc(sourceStatusText())}</p><p>${fmt(snap.record_count)} source records · ${fmt(snap.geocoded_record_count)} geocoded</p></div>
+    <div class="card"><b>Snapshot</b><p><strong>${esc(snapshotFreshness().label)}</strong></p><p>${esc(sourceStatusText())}</p><p>${fmt(snap.record_count)} source records · ${fmt(snap.geocoded_record_count)} geocoded</p></div>
     <div class="boundary">${esc(metadata?.methodology?.display_semantics || '')}</div>
     <h2>Refresh contract</h2>
     <p>The renderer accepts the official ADL H.E.A.T. CSV through <code>${esc(metadata?.refresh?.importer || 'scripts/import_adl_heat.py')}</code>. The committed seed is historical and visibly labelled as such.</p>
@@ -307,7 +327,7 @@ function renderStatePanel(id) {
     <div class="card">${topEntries(byType).map(([name,count])=>`<div class="row"><b>${fmt(count)}</b> ${esc(name)}</div>`).join('') || '<span class="muted">No records under current filters.</span>'}</div>
     <h2>Years</h2>
     <div class="card">${topEntries(byYear,10).map(([year,count])=>`<div class="row"><b>${esc(year)}</b> · ${fmt(count)}</div>`).join('') || '<span class="muted">No dated records under current filters.</span>'}</div>
-    <div class="boundary">These counts describe records in an ADL dataset snapshot. They are not population-normalized and should not be read as a ranking of residents, state character, or total hate crime.</div>
+    <div class="boundary"><strong>${esc(snapshotFreshness().label)}</strong><br>These counts describe records in an ADL dataset snapshot. They are not population-normalized and should not be read as a ranking of residents, state character, or total hate crime.</div>
     <div class="actions"><button type="button" data-adl-source>Source / methodology</button></div>`;
   panel.querySelector('[data-adl-source]')?.addEventListener('click', renderDatasetInspector);
   window.__potatoAtlasPanelLifecycle?.publish?.();
@@ -380,7 +400,7 @@ function registerSubdivisionEvidence() {
         eyebrow:'Active evidence · ADL H.E.A.T.',
         primary:row.filteredCount,
         summary:`records under active filters · ${fmt(row.snapshotTotal)} in snapshot.`,
-        boundary:'Source-attributed evidence; not a population-normalized score or characterization of residents.',
+        boundary:`${snapshotFreshness().label}. Source-attributed evidence; not a population-normalized score or characterization of residents.`,
         actionLabel:'Open ADL evidence',
       };
     },
@@ -465,6 +485,7 @@ window.__potatoAtlasAdlHeat = {
       incidentType:selectedType,
       dataset:metadata?.snapshot?.dataset || metadata?.title || 'ADL H.E.A.T.',
       sourceStatus:metadata?.snapshot?.status || null,
+      freshness:snapshotFreshness(),
     };
   },
   status(){ return { enabled, loaded, year:selectedYear, incidentType:selectedType, records:filtered.features.length, snapshot:metadata?.snapshot || null }; }
