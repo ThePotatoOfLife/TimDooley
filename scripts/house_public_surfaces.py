@@ -66,6 +66,45 @@ def visibility_layer(row: dict) -> str:
     return "invisible"
 
 
+
+def derived_route_topology_records(root: Path) -> list[dict]:
+    """Derive route topology from the one public-surface authority.
+
+    This replaces hand-maintained duplication. Topology is a projection:
+    route/type/Rooms come from public-surfaces; primary hub is the nearest
+    active ancestor whose surface_type is 'hub'.
+    """
+    rows = surface_rows(root)
+    by_id = {row["id"]: row for row in rows}
+    records: list[dict] = []
+    for row in rows:
+        parent_id = row.get("primary_parent")
+        hub_id = None
+        seen: set[str] = set()
+        while parent_id and parent_id not in seen:
+            seen.add(parent_id)
+            parent = by_id.get(parent_id)
+            if not parent:
+                break
+            if parent.get("surface_type") == "hub":
+                hub_id = parent_id
+                break
+            parent_id = parent.get("primary_parent")
+        if row.get("surface_type") == "hub":
+            hub_id = row["id"]
+        records.append({
+            "surface_id": row["id"],
+            "surface_type": row.get("surface_type"),
+            "canonical_route": row.get("canonical_route") or row.get("route"),
+            "primary_hub_id": hub_id,
+            "room_ids": list(row.get("primary_room_ids") or []),
+            "specialist_view": row.get("surface_type") not in {"home", "hub"},
+            "migration_status": "current" if row.get("status") == "active" else row.get("status"),
+            "compatibility_routes": list(row.get("legacy_routes") or []),
+        })
+    return records
+
+
 def primary_gateway_rows(root: Path) -> list[dict]:
     data = load_public_surfaces(root)
     ids = tuple(data.get("primary_gateway_ids", []))
