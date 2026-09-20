@@ -413,9 +413,7 @@ function enforceCacheBudget(index, extraProtected = []) {
     bytes -= state.bytes;
     cacheEvictions += 1;
   }
-  styleLifecycle?.register?.('subdivisions', { priority:55, restore:() => { queueMicrotask(restoreAfterStyleGeneration); } });
-
-syncDiagnostics();
+  syncDiagnostics();
 }
 function syncUrl(id) {
   urlState.patch('selection-inspector', { set:{ subdivision:id || null } });
@@ -605,21 +603,7 @@ async function loadPartition(partition) {
     lastUsed:0,
   });
   cache.set(partition, state);
-  
-async function restoreAfterStyleGeneration() {
-  try {
-    await installSharedLayers();
-    const index = await subdivisionIndex();
-    await reconcileActive(index);
-    syncSelectedLabel();
-    syncLabelPresentation();
-    syncSharedLayerInteraction();
-  } catch (error) {
-    console.warn('Subdivision style-generation restore unavailable:', error);
-  }
-}
-
-await installSharedLayers();
+  await installSharedLayers();
   enforceCacheBudget(index, [partition]);
   return state;
 }
@@ -697,6 +681,23 @@ async function ensureRelevantPartitions() {
     console.warn(`Subdivision layer unavailable: ${deepLinkPartition}`, error);
   }
 }
+
+async function restoreAfterStyleGeneration() {
+  try {
+    await installSharedLayers();
+    const index = await subdivisionIndex();
+    await reconcileActive(index);
+    syncSelectedLabel();
+    syncLabelPresentation();
+    syncSharedLayerInteraction();
+  } catch (error) {
+    console.warn('Subdivision style-generation restore unavailable:', error);
+  }
+}
+styleLifecycle?.register?.('subdivisions', {
+  priority:55,
+  restore:() => { queueMicrotask(restoreAfterStyleGeneration); },
+});
 
 await installSharedLayers();
 map.on('moveend', ensureRelevantPartitions);
