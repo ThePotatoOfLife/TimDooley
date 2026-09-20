@@ -21,7 +21,9 @@
     "dooley_welfare": "Optional playful project allowance. If enabled, a display-only accrual may be calculated from an explicit start date and rate.",
     "interest": "Optional project-defined symbolic interest on a specific sourced entry; never silently compounded.",
     "outstanding": "Open repair conditions, promises, unresolved project obligations or recovery questions.",
-    "entries": "Dated ledger rows with type, amount_or_scale, source_mode, source_ref, note and status."
+    "entries": "Dated ledger rows with type, amount_or_scale, source_mode, source_ref, note and status.",
+    "debt_evidence_id": "Optional link into knowledge/cia/debt-evidence-ledger.json for priced or unpriced negative candidates.",
+    "project_adjustment_susd": "Evidence-discounted fictional sUSD adjustment calculated by the Mud Bank contract; never real debt."
   },
   "welfare_rule": {
     "enabled_by_default": true,
@@ -61,7 +63,10 @@
     "Prefer event entries over aggregate moral scores.",
     "Do not convert achievements, loyalty, popularity, inactivity or opposition into good/bad karma automatically.",
     "A repair attempt can be recorded without declaring the dispute resolved.",
-    "Aggregate good_karma/karmic_debt labels summarize explicit entries only; unassessed remains the default."
+    "Aggregate good_karma/karmic_debt labels summarize explicit entries only; unassessed remains the default.",
+    "A negative entry requires a distinct dated conduct event, an evidence tier, a conduct category and a linked debt-evidence record.",
+    "Repeated conduct is counted only when separate dated events are recovered; repetition multipliers cap at the governing Mud Bank limit.",
+    "Do not double-charge one incident merely because several negative descriptions could fit it."
   ],
   "contracts": {
     "mud_bank": "knowledge/cia/mud-bank-contract.json"
