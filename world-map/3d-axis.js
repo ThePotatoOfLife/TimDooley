@@ -5,7 +5,7 @@ const urlState = window.__potatoAtlasUrlState;
 urlState.claim('axis-overlay', ['axis']);
 if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
 const motion = window.__potatoAtlasMotion;
-const inspector = window.__potatoAtlasInspector;
+function inspectorRouter() { return window.__potatoAtlasInspector; }
 
 // North / Axis threshold overlay for the 3D World Relational Atlas.
 // This is a project-symbolic rendering attached to real northern geography;
@@ -119,14 +119,14 @@ function renderAxisGatePanel() {
   window.__potatoAtlasPanelLifecycle?.publish?.();
 }
 function openAxisGateInspector() {
-  if (!inspector?.open) { renderAxisGatePanel(); return true; }
-  const current = inspector.current?.();
+  if (!inspectorRouter()?.open) { renderAxisGatePanel(); return true; }
+  const current = inspectorRouter()?.current?.();
   if (!current) {
-    inspector.setBaseline({ type:'axis', id:'north-axis-gate', owner:'axis', render:renderAxisGatePanel });
+    inspectorRouter()?.setBaseline({ type:'axis', id:'north-axis-gate', owner:'axis', render:renderAxisGatePanel });
     renderAxisGatePanel();
     return true;
   }
-  inspector.open({
+  inspectorRouter()?.open({
     type:'axis',
     id:'north-axis-gate',
     owner:'axis',
@@ -150,8 +150,7 @@ function installAxisInteractions(map) {
   };
 
   const register = () => {
-    const interaction = window.__potatoAtlasInteraction;
-    if (!interaction?.register) return false;
+        if (!interaction?.register) return false;
     interaction.register('axis-threshold', {
       layers:[AXIS_FILL,AXIS_LINE,AXIS_GATE],
       objectType:'axis-threshold',
