@@ -36,10 +36,10 @@
 **Resolution:** canonical capabilities + one `riverRegime()` owner shared by query threshold and request-key regime.
 
 ### WM-005 · Remaining raw zoom-magic inventory — P2
-**Status:** open.  
-**Known candidates:** core HUD mode bands, capitals label thresholds, Axis camera thresholds, specialist layers.  
-**Rule:** distinguish capability thresholds from camera-preservation math before migrating.  
-**Next:** inventory every raw threshold and classify: capability / cartographic interpolation / camera intent / test fixture.
+**Status:** fixed / governed on main (2026-09-20).  
+**Resolution:** behavioral gates live in `data/world-map-scale-contract.json`; `data/world-map-scale-classification.json` classifies remaining values as capability, cartographic interpolation, camera intent or fixture. The core HUD no longer owns private 3/5/7 bands and consumes `scale.bandForZoom()`.  
+**Guard:** `scripts/validate_world_map_scale_classification.py` verifies the shared capability consumers and prevents the old HUD classifier from returning.  
+**Rule retained:** visual interpolation and camera framing remain local unless they begin governing data/loading/interaction behavior.
 
 ### WM-006 · Country visual-channel ownership not fully closed — P1/P2
 **Status:** partially fixed (2026-09-20).  
