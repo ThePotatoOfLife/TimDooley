@@ -171,20 +171,18 @@ function distanceToMapCenterKm(bounds) {
   }
   return geo.haversineDistanceKm(center, [Number(mapCenter.lng), Number(mapCenter.lat)]);
 }
-function recursiveBounds(node, box) {
-  if (!Array.isArray(node)) return box;
-  if (node.length >= 2 && typeof node[0] === 'number' && typeof node[1] === 'number') {
-    const [lon, lat] = node;
-    box[0] = Math.min(box[0], lon); box[1] = Math.min(box[1], lat);
-    box[2] = Math.max(box[2], lon); box[3] = Math.max(box[3], lat);
-    return box;
+function subdivisionBounds(feature) {
+  if (!feature?.geometry) return null;
+  const referenceLng = Number(map.getCenter()?.lng);
+  try {
+    const bounds = geo.antimeridianAwareBounds(
+      feature.geometry,
+      Number.isFinite(referenceLng) ? referenceLng : null,
+    );
+    return [[bounds.west,bounds.south],[bounds.east,bounds.north]];
+  } catch {
+    return null;
   }
-  for (const child of node) recursiveBounds(child, box);
-  return box;
-}
-function geometryBounds(feature) {
-  const box = recursiveBounds(feature?.geometry?.coordinates, [Infinity, Infinity, -Infinity, -Infinity]);
-  return box.every(Number.isFinite) ? [[box[0],box[1]],[box[2],box[3]]] : null;
 }
 function touch(state) {
   state.lastUsed = ++useClock;
@@ -245,7 +243,7 @@ function selectSubdivision(partition, feature, options = {}) {
   selectedId = p.id || null;
   pendingDeepLinkId = null;
   syncUrl(selectedId);
-  const bounds = geometryBounds(feature);
+  const bounds = subdivisionBounds(feature);
   if (options.fit !== false && bounds) map.fitBounds(bounds, { padding:80, duration:650, maxZoom:7.4 });
   openInspector(feature);
   window.dispatchEvent(new CustomEvent('potato-atlas-subdivision-select', { detail:{ partition, id:selectedId, properties:p, feature } }));
