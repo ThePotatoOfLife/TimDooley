@@ -6,6 +6,7 @@ const urlState = window.__potatoAtlasUrlState;
 urlState.claim('selection-inspector', ['place']);
 
 const map = window.__potatoAtlasMap;
+if (!window.__potatoAtlasStyleLifecycle) await import('./3d-style-lifecycle.js');
 const styleLifecycle = window.__potatoAtlasStyleLifecycle;
 if (!map) throw new Error('Atlas Places require the core map.');
 function interactionRouter() { return window.__potatoAtlasInteraction; }
