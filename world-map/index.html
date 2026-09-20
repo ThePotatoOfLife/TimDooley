@@ -18,6 +18,7 @@
 @media(max-width:1150px){:root{--panel-w:350px}.brand small{display:none}.brand b{font-size:16px}input{width:155px}}
 @media(max-width:900px){.top{overflow-x:auto}.brand{display:none}.layout,.app.panel-collapsed .layout{grid-template-columns:1fr;grid-template-rows:minmax(55vh,1fr) auto}.panel{border-left:0;border-top:1px solid var(--line);max-height:42vh}.app.panel-collapsed .panel{display:none}.camera{display:none}.menu-pop{position:fixed;right:10px;top:56px;max-height:70vh;overflow:auto}.top input{min-width:150px}#axisDepthNavigator{transform:scale(.78);transform-origin:top right}#axisOperatorHud{width:calc(100% - 156px)!important;max-width:290px}}
 html.potato-atlas-map-moving .mapwrap *{backdrop-filter:none!important;box-shadow:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){.layout,.panel,#axisFieldLegend,.mapwrap *{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body><div id="atlasApp" class="app panel-collapsed" data-reader-surface="world-map">
