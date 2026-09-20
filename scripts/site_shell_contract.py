@@ -147,7 +147,7 @@ def main() -> int:
                 errors.append(f"missing required site file: {rel}")
 
         index = read("index.html", errors)
-        require(index, ("POTATO", "Main sections"), "index.html", errors)
+        require(index, ("POTATO", 'class="sections"'), "index.html", errors)
         for href in CANONICAL_HOME_LINKS:
             if f'href="{href}"' not in index:
                 errors.append(f"index.html missing canonical reader entrance: {href}")
