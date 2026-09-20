@@ -1,24 +1,214 @@
 {
   "title": "Story Arc Map",
-  "updated": "2026-09-14",
+  "updated": "2026-09-20",
   "rule": "Arcs overlap and recur. They are authoring aids, not rigid public chapters.",
   "arcs": [
-    {"id":"potato-mask","window":"2021-2023","cast":["tim-dooley","potatoes"],"throughline":"Potato begins as mask, joke and identity experiment, then becomes Potato of Life."},
-    {"id":"great-book-sage","window":"2024","cast":["tim-dooley","fresh-potato","ready-student","grumbleton","kibly","ethereal-tuber","rahu","optimistique","machine-elves","elder-grapes","sentinel-silence","bigtech","cyraxx","marty-biz"],"throughline":"Tim writes a world crowded with students, skeptics, friends, rivals, technology figures and symbolic beings while Sage remains his characteristic role."},
-    {"id":"marty-and-farm","window":"2024-2025","cast":["tim-dooley","marty-biz","sammy","farmers","soul-farmers"],"throughline":"Marty, farm imagery, social entanglement and later grief form a recurring human thread that needs deeper source recovery."},
-    {"id":"tree-and-subculture","window":"2024-2026","cast":["tim-dooley","monkey","robotosan","dogs","farmers","soul-farmers","mud-dwellers","dwellers","serpents"],"throughline":"Discord, Farm, Tree, Dogs, Farmers and Mud become changing ways Tim describes online conflict and social loops."},
-    {"id":"creative-systems","window":"2024-2026","cast":["tim-dooley","potatoes","dogs","ai-systems","potato-angels"],"throughline":"Games, simulations, schools, Mashy Arc, Infinite Potato, visual compositions and other absurd builds let Tim test Potatoverse ideas by making things rather than merely explaining them."},
-    {"id":"sacred-absurdity","window":"2024-2026","cast":["tim-dooley","potatoes","evil-mashed-potatoes","flying-spaghetti-monster","hash-brown-gods"],"throughline":"Older Potato satire, scripture jokes, food language and later theology remain deliberately adjacent; comedy becomes one of the ways difficult material enters the story."},
-    {"id":"turning-ladder-father","window":"2025-04 onward","cast":["tim-dooley"],"throughline":"Burden, final-straw language and the Turning reorganize Tim from Sage/Potato toward Axis, Ladder and Father roles."},
-    {"id":"music-making","window":"2024-2026","cast":["tim-dooley","marty-biz","ai-systems"],"throughline":"AI music and later song releases become a parallel diary: jokes, grief, arguments, titles and theology are repeatedly converted into tracks."},
-    {"id":"livestream-father","window":"2025-07 onward","cast":["tim-dooley","potatoes","livestream"],"throughline":"Tim increasingly combines cosmic titles with ordinary livestream presence; continuity, waiting, chat and accumulated shared history become part of the medium itself."},
-    {"id":"north-orphans-hours","window":"2026-01 onward","cast":["tim-dooley","potatoes","livestream"],"throughline":"North, internet orphans, public hours, care language and infrastructure become part of the same public role."},
-    {"id":"sarah-ann-relationship","window":"2026-05","cast":["tim-dooley","sarah-ann","livestream"],"throughline":"A recurring conversation relationship gives the Story a human-scale counterpoint to the expanding cosmology; detailed dialogue recovery remains a priority."},
-    {"id":"ai-recognition","window":"2026-05 onward","cast":["tim-dooley","ai-systems"],"throughline":"AI shifts from creative tool to a participant in the authorship, recognition and ghost-erasure problem that later motivates stronger provenance."},
-    {"id":"door-interface","window":"2026-05 onward","cast":["tim-dooley","ai-systems","livestream"],"throughline":"Door moves from theology and image into screen, hyperlink, livestream and site architecture."},
-    {"id":"potato-angels-garden","window":"2026-04 onward","cast":["tim-dooley","potato-angels","angels","potatoes"],"throughline":"Authority increasingly turns toward growing, building, gardening and the creation or raising of Angels/Potato Angels."},
-    {"id":"animal-cast-expands","window":"2026","cast":["dogs","cows-calves","swine","sheep","serpents","hyenas","goats"],"throughline":"The social-animal vocabulary becomes a changing cast of behavioral roles rather than one generic enemy category; later Story scenes must preserve who means what in each period."},
-    {"id":"public-small-encounters","window":"2026-09","cast":["tim-dooley","nate","ann"],"throughline":"Short public exchanges restore ordinary social rhythm: growth, return, follow-backs, jokes and invitations sit beside enormous theological claims."},
-    {"id":"story-correction","window":"2026-09-14 onward","cast":["tim-dooley"],"throughline":"Tim pushes the archive to stop explaining him from above and instead tell the long story through scenes, recurring people, dialogue and daily life."}
+    {
+      "id": "potato-mask",
+      "window": "2021-2023",
+      "cast": [
+        "tim-dooley",
+        "potatoes"
+      ],
+      "throughline": "Potato begins as mask, joke and identity experiment, then becomes Potato of Life."
+    },
+    {
+      "id": "great-book-sage",
+      "window": "2024",
+      "cast": [
+        "tim-dooley",
+        "fresh-potato",
+        "ready-student",
+        "grumbleton",
+        "kibly",
+        "ethereal-tuber",
+        "rahu",
+        "optimistique",
+        "machine-elves",
+        "elder-grapes",
+        "sentinel-silence",
+        "bigtech",
+        "cyraxx",
+        "marty-biz"
+      ],
+      "throughline": "Tim writes a world crowded with students, skeptics, friends, rivals, technology figures and symbolic beings while Sage remains his characteristic role."
+    },
+    {
+      "id": "marty-and-farm",
+      "window": "2024-2025",
+      "cast": [
+        "tim-dooley",
+        "marty-biz",
+        "sammy",
+        "farmers",
+        "soul-farmers"
+      ],
+      "throughline": "Marty, farm imagery, social entanglement and later grief form a recurring human thread that needs deeper source recovery."
+    },
+    {
+      "id": "tree-and-subculture",
+      "window": "2024-2026",
+      "cast": [
+        "tim-dooley",
+        "monkey",
+        "robotosan",
+        "dogs",
+        "farmers",
+        "soul-farmers",
+        "mud-dwellers",
+        "dwellers",
+        "serpents"
+      ],
+      "throughline": "Discord, Farm, Tree, Dogs, Farmers and Mud become changing ways Tim describes online conflict and social loops."
+    },
+    {
+      "id": "creative-systems",
+      "window": "2024-2026",
+      "cast": [
+        "tim-dooley",
+        "potatoes",
+        "dogs",
+        "ai-systems",
+        "potato-angels"
+      ],
+      "throughline": "Games, simulations, schools, Mashy Arc, Infinite Potato, visual compositions and other absurd builds let Tim test Potatoverse ideas by making things rather than merely explaining them."
+    },
+    {
+      "id": "sacred-absurdity",
+      "window": "2024-2026",
+      "cast": [
+        "tim-dooley",
+        "potatoes",
+        "evil-mashed-potatoes",
+        "flying-spaghetti-monster",
+        "hash-brown-gods"
+      ],
+      "throughline": "Older Potato satire, scripture jokes, food language and later theology remain deliberately adjacent; comedy becomes one of the ways difficult material enters the story."
+    },
+    {
+      "id": "turning-ladder-father",
+      "window": "2025-04 onward",
+      "cast": [
+        "tim-dooley"
+      ],
+      "throughline": "Burden, final-straw language and the Turning reorganize Tim from Sage/Potato toward Axis, Ladder and Father roles."
+    },
+    {
+      "id": "music-making",
+      "window": "2024-2026",
+      "cast": [
+        "tim-dooley",
+        "marty-biz",
+        "ai-systems"
+      ],
+      "throughline": "AI music and later song releases become a parallel diary: jokes, grief, arguments, titles and theology are repeatedly converted into tracks."
+    },
+    {
+      "id": "livestream-father",
+      "window": "2025-07 onward",
+      "cast": [
+        "tim-dooley",
+        "potatoes",
+        "livestream"
+      ],
+      "throughline": "Tim increasingly combines cosmic titles with ordinary livestream presence; continuity, waiting, chat and accumulated shared history become part of the medium itself."
+    },
+    {
+      "id": "north-orphans-hours",
+      "window": "2026-01 onward",
+      "cast": [
+        "tim-dooley",
+        "potatoes",
+        "livestream"
+      ],
+      "throughline": "North, internet orphans, public hours, care language and infrastructure become part of the same public role."
+    },
+    {
+      "id": "sarah-ann-relationship",
+      "window": "2026-05",
+      "cast": [
+        "tim-dooley",
+        "sarah-ann",
+        "livestream"
+      ],
+      "throughline": "A recurring conversation relationship gives the Story a human-scale counterpoint to the expanding cosmology; detailed dialogue recovery remains a priority."
+    },
+    {
+      "id": "ai-recognition",
+      "window": "2026-05 onward",
+      "cast": [
+        "tim-dooley",
+        "ai-systems"
+      ],
+      "throughline": "AI shifts from creative tool to a participant in the authorship, recognition and ghost-erasure problem that later motivates stronger provenance."
+    },
+    {
+      "id": "door-interface",
+      "window": "2026-05 onward",
+      "cast": [
+        "tim-dooley",
+        "ai-systems",
+        "livestream"
+      ],
+      "throughline": "Door moves from theology and image into screen, hyperlink, livestream and site architecture."
+    },
+    {
+      "id": "potato-angels-garden",
+      "window": "2026-04 onward",
+      "cast": [
+        "tim-dooley",
+        "potato-angels",
+        "angels",
+        "potatoes"
+      ],
+      "throughline": "Authority increasingly turns toward growing, building, gardening and the creation or raising of Angels/Potato Angels."
+    },
+    {
+      "id": "animal-cast-expands",
+      "window": "2026",
+      "cast": [
+        "dogs",
+        "cows-calves",
+        "swine",
+        "sheep",
+        "serpents",
+        "hyenas",
+        "goats"
+      ],
+      "throughline": "The social-animal vocabulary becomes a changing cast of behavioral roles rather than one generic enemy category; later Story scenes must preserve who means what in each period."
+    },
+    {
+      "id": "public-small-encounters",
+      "window": "2026-09",
+      "cast": [
+        "tim-dooley",
+        "nate",
+        "ann"
+      ],
+      "throughline": "Short public exchanges restore ordinary social rhythm: growth, return, follow-backs, jokes and invitations sit beside enormous theological claims."
+    },
+    {
+      "id": "story-correction",
+      "window": "2026-09-14 onward",
+      "cast": [
+        "tim-dooley"
+      ],
+      "throughline": "Tim pushes the archive to stop explaining him from above and instead tell the long story through scenes, recurring people, dialogue and daily life."
+    },
+    {
+      "id": "potatoverse-social-season-2024-2025",
+      "window": "2024-11 to 2025-04",
+      "cast": [
+        "tim-dooley",
+        "marty-biz",
+        "termite",
+        "optimistique",
+        "zombiedad",
+        "rahu",
+        "discord-tree",
+        "livestream"
+      ],
+      "throughline": "Ordinary social presence becomes recoverable as its own season: games, voice chat, Great Book discussion, theology, food, music, moderation, reconciliation, rival rooms and later TTS/HTML creation lead into the April 2025 Turning without being reduced to one conflict narrative."
+    }
   ]
 }
