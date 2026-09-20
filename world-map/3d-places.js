@@ -11,6 +11,9 @@ const interaction = window.__potatoAtlasInteraction;
 const inspector = window.__potatoAtlasInspector;
 if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
 const motion = window.__potatoAtlasMotion;
+if (!window.__potatoAtlasGeo) await import('./3d-geo-kernel.js');
+const geo = window.__potatoAtlasGeo;
+if (!geo?.pointInGeometry) throw new Error('Places requires the shared geospatial containment kernel.');
 
 const DATA_ROOT = '../data/world-places/';
 const INDEX_URL = `${DATA_ROOT}index.json`;
@@ -591,6 +594,48 @@ function search(query, options = {}) {
       };
     });
 }
+async function inSubdivision(subdivisionFeature, options = {}) {
+  const geometry = subdivisionFeature?.geometry;
+  const properties = subdivisionFeature?.properties || {};
+  const code = String(properties.parent_iso3 || properties.country_iso3 || '').toUpperCase();
+  if (!geometry || !code) return { available:false, code, places:[], reason:'missing-subdivision-context' };
+  let state;
+  try {
+    state = await loadCountry(code);
+  } catch (error) {
+    return { available:false, code, places:[], reason:error?.message || 'country-place-partition-unavailable' };
+  }
+  if (!state?.descriptor?.path || !Array.isArray(state?.data?.features)) {
+    return { available:false, code, places:[], reason:'country-place-partition-not-built' };
+  }
+  const limit = Math.max(1, Math.min(50, Number(options.limit) || 12));
+  const places = state.data.features
+    .filter(feature => {
+      const coords = feature?.geometry?.coordinates;
+      return Array.isArray(coords) && coords.length >= 2 && geo.pointInGeometry(coords, geometry);
+    })
+    .sort((a,b) => {
+      const pa = Number(a?.properties?.population);
+      const pb = Number(b?.properties?.population);
+      const va = Number.isFinite(pa) ? pa : -1;
+      const vb = Number.isFinite(pb) ? pb : -1;
+      return vb - va
+        || String(a?.properties?.name || '').localeCompare(String(b?.properties?.name || ''));
+    })
+    .slice(0, limit);
+  return {
+    available:true,
+    code,
+    total:state.data.features.filter(feature => {
+      const coords = feature?.geometry?.coordinates;
+      return Array.isArray(coords) && coords.length >= 2 && geo.pointInGeometry(coords, geometry);
+    }).length,
+    places,
+    source:indexPayload?.source || 'GeoNames',
+    datasetRefreshDate:indexPayload?.dataset_refresh_date || null,
+  };
+}
+
 function status() {
   const renderedCodes = [...renderedPartitions.keys()];
   const cachedCodes = [...partitionCache.keys()];
@@ -640,6 +685,7 @@ window.__potatoAtlasPlaces = {
   focus,
   current,
   search,
+  inSubdivision,
   clear,
   status,
   loadCountry,
