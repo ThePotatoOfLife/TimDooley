@@ -1,5 +1,7 @@
 # Project-wide navigation and focus audit — 2026-09-20
 
+> **Current-state note:** the initial Project Compass implementation described below was superseded later on 2026-09-20 by the smaller universal Quick Access dock. The underlying orientation goals remain active, but Project Compass is retired and must not be reintroduced.
+
 ## Goal
 
 Make a very large archive feel smaller without deleting its depth.
@@ -15,9 +17,9 @@ The rule for this pass is therefore **less visible navigation, stronger orientat
 
 ## Site-wide priorities
 
-- [x] Add a compact project compass to ordinary reader pages. It should identify the current surface, its parent where known, the five canonical gateways, and the global discovery tools without replacing local navigation.
+- [x] Add shared orientation to ordinary reader pages. **Superseded implementation:** the first Project Compass was retired in favor of the smaller Quick Access dock plus page-owned parent/local navigation.
 - [ ] Make every mature reader page state its job in the first screen: one sentence answering “what is this page for?”
-- [ ] Keep exactly one dominant local reading path per page. Secondary links belong inline or in the compass, not in competing card grids.
+- [ ] Keep exactly one dominant local reading path per page. Secondary links belong inline or in Quick Access / the page-owned parent route, not in competing card grids.
 - [ ] Prefer parent → current → adjacent relationships over generic “more” links.
 - [ ] Treat Home, five gateways, Rooms/House, and discovery tools as different navigation layers. Do not let them compete visually.
 - [ ] Audit pages that expose more than seven first-screen links; reduce repeated links before adding anything new.
@@ -32,7 +34,7 @@ The rule for this pass is therefore **less visible navigation, stronger orientat
 - Keep the first screen about what the project is, not every capability it has.
 - Preserve the four-step spine: Center → Structure → Knowledge → Views.
 - Let “Current World” remain a window, not another primary branch.
-- Compress repeated archive/discovery links if they duplicate the new compass or footer routes.
+- Compress repeated archive/discovery links if they duplicate Quick Access or footer routes.
 
 ### Tim Dooley
 - Treat it as the main human/project portrait.
@@ -130,7 +132,7 @@ A page needs refinement when:
 
 ## Next implementation waves
 
-1. **Orientation coverage** — validate that ordinary public reader pages receive the shared compass and that mapped specialist surfaces resolve to a valid parent.
+1. **Orientation coverage** — validate that ordinary public reader pages receive Quick Access where eligible and that mapped specialist surfaces resolve to a valid parent.
 2. **First-screen focus** — audit the canonical hubs and remove duplicated or competing navigation from their opening viewport.
 3. **Specialist continuity** — audit World, Tim, Religion, Science, Below/Culture and Body descendants for parent/adjacent continuity.
 4. **Discovery separation** — refine Explore, A–Z, Questions and Paths so each has one unmistakable use case.
