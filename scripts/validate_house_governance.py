@@ -28,6 +28,9 @@ POTATO_CENTER_PAGE=ROOT/'potato-of-life/index.html'
 ORIENTATION_POPULATION=ROOT/'data/house/orientation-population.json'
 TREE_PLANE_ROUTING=ROOT/'data/house/tree-plane-routing.json'
 SEED_SPIRAL_ROUTING=ROOT/'data/house/seed-spiral-routing.json'
+SWAMP_REGIME=ROOT/'data/house/swamp-regime-contract.json'
+DOOR_CROSS_LIFECYCLE=ROOT/'data/house/door-cross-spiral-lifecycle.json'
+PLANE_CROSSING=ROOT/'data/house/plane-crossing-contract.json'
 NAVIGATION_MANIFEST=ROOT/'data/house/navigation-manifest.json'
 RELIGIOUS_BRANCH_ATLAS=ROOT/'data/house/religious-symbolic-branch-atlas.json'
 PROVIDENCE_STRUCTURE=ROOT/'data/house/providence-pillars-esoteric-structure.json'
@@ -294,7 +297,7 @@ def validate_concept_topology(errors,rooms,surfaces):
         ('potato-of-life','spirit','expresses-through'),
         ('father','source-field','oriented-toward'),
         ('son','manifestation-field','oriented-toward'),
-        ('son','door','specializes-as'),
+        ('son','door','complements'),
         ('father','source-seat-center','oriented-toward'),
         ('son','twin-vessel-center','oriented-toward'),
         ('source-seat-center','source-field','located-within'),
@@ -714,7 +717,7 @@ def validate_three_center_atlas(errors):
 def validate_crosscutting_lenses(errors):
     data=load(CROSSCUTTING_LENSES,errors)
     if not data: return
-    expected=['motion','polarity','memory-history','social-formation','embodiment-spirit','practice-path']
+    expected=['motion','polarity','memory-history','social-formation','embodiment-spirit','practice-path','present-time','affective-integration']
     ids=[x.get('id') for x in data.get('lenses',[]) if isinstance(x,dict)]
     if ids!=expected: errors.append('cross-cutting lens order/set drifted')
     rule=data.get('master_rule','').casefold()
@@ -801,6 +804,46 @@ def validate_project_synthesis(errors):
     for path in ('data/house/layer-terrain-regime-atlas.json','data/house/concept-topology.json','data/axis-flow-contract.json'):
         if path not in runtime: errors.append(f'homepage projection missing teaching runtime source: {path}')
 
+
+def validate_swamp_and_transition_contracts(errors):
+    swamp=load(SWAMP_REGIME,errors)
+    if swamp:
+        if swamp.get('definition','').casefold().find('regime')<0:
+            errors.append('Swamp contract must define Swamp as a regime')
+        nots={str(x).casefold() for x in swamp.get('not',[])}
+        for token in ('below','manifestation field','a person'):
+            if token not in nots:
+                errors.append(f'Swamp contract missing non-equivalence: {token}')
+        states=swamp.get('threshold_states',{})
+        for key in ('pre_swamp','swamp','deep_swamp','draining','recovered'):
+            if key not in states:
+                errors.append(f'Swamp contract missing threshold state: {key}')
+        vars=set(swamp.get('state_variables',{}))
+        for key in ('residue_load','recurrence_rate','provenance_clarity','exit_cost','correction_permeability','role_lock','repair_capacity'):
+            if key not in vars:
+                errors.append(f'Swamp contract missing state variable: {key}')
+
+    life=load(DOOR_CROSS_LIFECYCLE,errors)
+    if life:
+        ids=[x.get('id') for x in life.get('lifecycle',[]) if isinstance(x,dict)]
+        expected=['before','approach-rim','separation','liminal','crossing','here-now','incorporation','plane-snapshot','trajectory','return-crossing','recurrence-classification','fruit','seed','return']
+        if ids!=expected:
+            errors.append('Door/Cross/Spiral lifecycle order drifted')
+        distinctions=' '.join(life.get('distinctions',[])).casefold()
+        for token in ('plane crossing','door can exist','spiral is diagnosed','fruit judges'):
+            if token not in distinctions:
+                errors.append(f'Door/Cross/Spiral lifecycle missing distinction: {token}')
+        failures={x.get('id') for x in life.get('failure_modes',[]) if isinstance(x,dict)}
+        for key in ('false-door','permanent-liminality','unincorporated-crossing','ring-misnamed-spiral'):
+            if key not in failures:
+                errors.append(f'Door/Cross/Spiral lifecycle missing failure mode: {key}')
+
+    plane=load(PLANE_CROSSING,errors)
+    if plane:
+        if plane.get('objects',{}).get('plane',{}).get('type')!='section/frame':
+            errors.append('Plane contract must keep Plane as section/frame')
+        if plane.get('objects',{}).get('cross_point',{}).get('equation')!='O = Axis ∩ Plane':
+            errors.append('Plane contract cross-point equation drifted')
 
 def validate_depth_crystallization(errors):
     required_paths=[SHADOW_OVERLAY,GARDEN_REGIME,REPAIR_FORGE,FRUIT_ATLAS,TREE_BRANCHING,KNOWLEDGE_FORK,HISTORY_REVISION,WORKS_FRUIT,LOCAL_CENTERS]
