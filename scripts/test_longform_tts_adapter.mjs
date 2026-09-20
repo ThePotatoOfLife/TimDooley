@@ -32,13 +32,14 @@ assert.equal(adapter.mutationsAreInside([{target:readerChromeNode}],hostBoundary
 assert.equal(adapter.mutationsAreInside([{target:readerChromeNode},{target:contentNode}],hostBoundary),false,'real content mutations must still refresh the reader');
 assert.equal(adapter.mutationsAreInside([],hostBoundary),false,'empty mutation batches must not be treated as internal work');
 
-const fakeHost={dataset:{ttsRoot:'.journey',ttsId:'philosophy-journey',ttsLabel:'Potatoism Philosophy',ttsAllLabel:'Whole journey',ttsCurrentLabel:'Current movement',ttsSelectionLabel:'Selection',ttsItem:'.movement'}};
+const fakeHost={dataset:{ttsRoot:'.journey',ttsId:'philosophy-journey',ttsLabel:'Potatoism Philosophy',ttsTriggerLabel:'Read all news',ttsAllLabel:'Whole journey',ttsCurrentLabel:'Current movement',ttsSelectionLabel:'Selection',ttsItem:'.movement'}};
 const fakeRoot={id:'journey'};
 const fakeDoc={title:'Philosophy',querySelector(selector){return selector==='.journey'?fakeRoot:null;}};
 const declarative=adapter.configFromElement(fakeHost,fakeDoc);
 assert.equal(declarative.mount,fakeHost);
 assert.equal(declarative.root,fakeRoot);
 assert.equal(declarative.id,'philosophy-journey');
+assert.equal(declarative.triggerLabel,'Read all news');
 assert.equal(declarative.allLabel,'Whole journey');
 assert.equal(declarative.currentLabel,'Current movement');
 assert.equal(declarative.itemSelector,'.movement');
@@ -54,6 +55,7 @@ assert.equal(adapter.configFromElement(excludeHost,excludeDoc).excludeSelector,'
 const adapterSource=fs.readFileSync(new URL('../app/longform-tts-adapter.js', import.meta.url),'utf8');
 assert.ok(adapterSource.includes('target:host'), 'longform adapter must use drawer target API');
 assert.ok(adapterSource.includes('getPayload:source'), 'longform adapter must use drawer getPayload API');
+assert.ok(adapterSource.includes("triggerLabel:config.triggerLabel||''"), 'longform adapter must pass a declarative primary trigger label');
 assert.ok(adapterSource.includes('drawer?.setPayload?.(source())'), 'longform adapter must refresh with setPayload');
 assert.ok(!adapterSource.includes('updatePayload('), 'obsolete updatePayload API must not return');
 assert.ok(adapterSource.includes("className='ptts-inline-listen'"), 'readable items need explicit Listen buttons');
@@ -71,6 +73,9 @@ assert.ok(adapterSource.includes("event.sectionId==='current'?currentItem:event.
 assert.ok(adapterSource.includes('pageHighlighter.clear()'), 'longform page highlight must clear at speech end/context change');
 assert.ok(adapterSource.includes('mutationsAreInside(records,host)'), 'observer must ignore mutations caused by its own player host');
 assert.ok(!adapterSource.includes("doc.addEventListener('selectionchange',onSelection)"),'selection changes must not clone and rebuild the whole long-form payload eagerly');
+const drawerSource=fs.readFileSync(new URL('../app/tts-drawer.js', import.meta.url),'utf8');
+assert.ok(drawerSource.includes("const triggerLabel=clean(options.triggerLabel)||'Listen'"),'drawer must support a custom primary trigger label');
+assert.ok(drawerSource.includes("'🔊 '+triggerLabel"),'drawer trigger should visibly use the supplied label');
 
 function assertLongformPage(source,{name,host,css,reader,drawer,adapter:adapterSrc,root,item,allLabel,currentLabel,exclude}){
   for (const marker of [host,css,reader,drawer,adapterSrc,'data-tts-longform',root,item,allLabel,currentLabel,exclude].filter(Boolean)) {

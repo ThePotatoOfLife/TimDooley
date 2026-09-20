@@ -252,7 +252,8 @@
     let preparationController=null;
 
     const host=el('section','ptts-drawer');host.dataset.state=state;
-    const closed=el('button','ptts-trigger','🔊 Listen');closed.type='button';closed.setAttribute('aria-expanded','false');
+    const triggerLabel=clean(options.triggerLabel)||'Listen';
+    const closed=el('button','ptts-trigger','🔊 '+triggerLabel);closed.type='button';closed.setAttribute('aria-expanded','false');closed.setAttribute('aria-label',triggerLabel);
     const panel=el('div','ptts-panel');panel.hidden=true;
     const rail=el('div','ptts-rail');
     const collapse=button('Collapse reader','⌃');

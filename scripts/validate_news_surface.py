@@ -32,6 +32,7 @@ except Exception as exc:
 
 for token in (
     'data-news-view="latest"',
+    'data-news-view="briefing"',
     'data-news-view="clusters"',
     'data-news-view="sources"',
     'data-news-horizon="24h"',
@@ -39,15 +40,31 @@ for token in (
     'data-news-pulse',
     'data-news-clusters',
     'data-news-source-lanes',
+    'data-news-briefing',
+    'source-balanced rotation',
+    'data-news-readable',
+    'Readable here only',
     '../world-map/',
     'Repeated coverage',
     'not a truth, consensus, importance or endorsement score',
     'data-tts-longform',
+    'data-tts-root="#news-reading-stream"',
+    'data-tts-trigger-label="Read all news"',
+    'data-tts-exclude=".news-story-kicker,.news-story-footer,.news-story-image,.news-empty"',
+    'data-provider="publisher-rss"',
 ):
     require(html,token,"news/index.html")
 
 for token in (
     "function coverageClusters",
+    "function normalizePublisherRss",
+    "async function loadPublisherRss",
+    "publisher-excerpt",
+    "Full report ↗",
+    "function sourceBalancedBriefing",
+    "function renderBriefing",
+    "readable=params.get('readable')==='1'",
+    "allRows.filter(r=>clean(r.summary).length>0)",
     "function renderPulse",
     "function renderClusters",
     "function renderSourceLanes",
@@ -60,20 +77,34 @@ for token in (
 
 for token in (
     ".news-pulse-grid",
+    ".news-briefing",
+    ".news-briefing-item",
+    ".news-readable-toggle",
     ".news-view-switch",
     ".news-clusters",
     ".news-source-lanes",
     ".news-console",
+    ".news-audio-reader",
+    ".news-story-summary",
+    ".news-story-image",
 ):
     require(css,token,"app/news.css")
 
-for token in ('data-news-mode="preview"','app/news.js?v=20260920b','app/news.css?v=20260920b'):
+for token in ('data-news-mode="preview"','publisher-rss','app/news.js?v=20260920c','app/news.css?v=20260920c'):
     require(home,token,"index.html")
 require(house,'href="../news/">Current World</a>',"house/index.html")
 
 providers={row.get("id") for row in cfg.get("providers",[]) if isinstance(row,dict)}
-if providers != {"gdelt","hacker-news","spaceflight-news"}:
+if providers != {"gdelt","publisher-rss","hacker-news","spaceflight-news"}:
     errors.append(f"unexpected provider contract: {sorted(providers)}")
+feeds=cfg.get("publisher_feeds",[])
+if len(feeds) < 4:
+    errors.append("publisher RSS layer must declare at least four feeds")
+if not all(row.get("feed_url") and row.get("name") for row in feeds if isinstance(row,dict)):
+    errors.append("publisher RSS feeds require name and feed_url")
+if "full article bodies" not in str(next((row.get("boundary","") for row in cfg.get("providers",[]) if row.get("id")=="publisher-rss"),"")).lower():
+    errors.append("publisher RSS boundary must forbid full-article mirroring")
+
 horizons={row.get("id") for row in cfg.get("horizons",[]) if isinstance(row,dict)}
 if not {"3h","12h","24h","3d","7d"}.issubset(horizons):
     errors.append("news horizons must include 3h, 12h, 24h, 3d and 7d")
