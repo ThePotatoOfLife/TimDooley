@@ -1,5 +1,5 @@
 {
-  "version": "1.7.0",
+  "version": "1.8.0",
   "updated": "2026-09-20",
   "authority": "nested-bounded-context-governance",
   "parent_room_registry": "data/house/rooms.json",
@@ -182,7 +182,8 @@
         "knowledge/philosophy/archive-epistemics.json"
       ],
       "public_surface_ids": [
-        "sources"
+        "sources",
+        "news"
       ],
       "adjacent_subroom_ids": [
         "witness-attestation",
@@ -306,7 +307,8 @@
       ],
       "public_surface_ids": [
         "timeline",
-        "history"
+        "history",
+        "news"
       ],
       "adjacent_subroom_ids": [
         "developmental-genealogy",
@@ -936,7 +938,8 @@
       "public_surface_ids": [
         "politics",
         "world",
-        "world-systems"
+        "world-systems",
+        "news"
       ],
       "adjacent_subroom_ids": [
         "law-justice",
@@ -1016,7 +1019,8 @@
       ],
       "public_surface_ids": [
         "economy",
-        "world-systems"
+        "world-systems",
+        "news"
       ],
       "adjacent_subroom_ids": [
         "politics-governance",
@@ -1097,7 +1101,8 @@
       "public_surface_ids": [
         "world",
         "world-map",
-        "world-systems"
+        "world-systems",
+        "news"
       ],
       "adjacent_subroom_ids": [
         "infrastructure-capability",
@@ -1219,7 +1224,8 @@
       ],
       "public_surface_ids": [
         "culture",
-        "context"
+        "context",
+        "news"
       ],
       "adjacent_subroom_ids": [
         "internet-platforms",
