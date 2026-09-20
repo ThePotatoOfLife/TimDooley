@@ -1,6 +1,6 @@
 {
   "id": "world-financial-system-foundation",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "status": "active-foundation",
   "purpose": "Canonical seed layer for central banks, currencies, sovereign and supranational debt, reserve assets, settlement systems, creditor classes, cross-border claims and financial obligations. It is designed to answer who issues, who owes, who holds, in what currency, through which institution, at what date, and with what evidence.",
@@ -13,7 +13,9 @@
     "Separate a security funding leg from a downstream loan leg: an investor buying an ESM or EU bond is not automatically a direct creditor of the final programme beneficiary.",
     "Keep currency denomination distinct from economic exposure and from the nationality of creditor or debtor.",
     "Every numeric observation retains concept, unit, reference period, source and evidence status.",
-    "Missing counterparty detail is represented as unknown or an aggregate creditor class rather than guessed."
+    "Missing counterparty detail is represented as unknown or an aggregate creditor class rather than guessed.",
+    "BIS locational banking statistics are residence-based and unconsolidated; BIS consolidated banking statistics are nationality-based and consolidated. They are not additive views.",
+    "BIS international debt securities identify issuers and instrument structure but do not identify bond holders; holder endpoints require a holdings dataset."
   ],
   "relationship_model": {
     "edge_schema_required": [
@@ -34,7 +36,14 @@
       "holder_class",
       "residency_basis",
       "valuation_basis",
-      "notes"
+      "notes",
+      "reporting_country",
+      "parent_country",
+      "counterparty_country",
+      "counterparty_basis",
+      "issuer_residence",
+      "issuer_nationality",
+      "bis_series_key"
     ],
     "verbs": [
       "issues_currency",
@@ -929,10 +938,9 @@
     }
   },
   "research_queue": [
+    "Build the BIS LBS/CBS/DSS/IDS generated runtime described in data/bis-banking-bond-data.json.",
     "Add the remaining major and North-relevant central banks with primary-source institutional records, including the Central Bank of Iceland and Swiss National Bank.",
     "Build country-by-country sovereign issuer records and maturity/auction calendars without confusing funding flows with debt stocks.",
-    "Ingest BIS consolidated and locational banking statistics for cross-border bank claims and liabilities.",
-    "Ingest BIS debt-securities series by issuer residence, nationality, currency, maturity and rate type.",
     "Ingest Eurostat general-government debt by instrument and counterpart sector for EU comparability.",
     "Add ECB and national-central-bank securities holdings only where programmes and balance-sheet categories are source-resolvable.",
     "Add U.S. Treasury holder-sector and TIC country data with custody-versus-beneficial-owner disclosure.",
@@ -941,5 +949,6 @@
     "Add FX swap lines, standing liquidity arrangements, collateral frameworks and payment-system links as separate relationship types.",
     "Create a dated obligation graph that can answer issuer-to-creditor, creditor-to-issuer, currency exposure, maturity wall and refinancing questions.",
     "Only after comparable directed edges exist, expose money/debt flow arrows in the World Map relation renderer."
-  ]
+  ],
+  "bis_data_foundation": "data/bis-banking-bond-data.json"
 }
