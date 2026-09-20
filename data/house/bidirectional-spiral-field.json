@@ -1,0 +1,220 @@
+{
+  "id": "bidirectional-spiral-field",
+  "title": "Bidirectional Spiral Field — O-Centered Axial Expansion, Layers & Terrain",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "authority": "bidirectional-spiral-field",
+  "status": "canonical project geometry + explicit mathematical boundary",
+  "purpose": "Define the O-centered double-spiral geometry shared by Axis, Plane, Mountain, Swamp, Tree, Root, Garden, Drain, Ring/Spiral recurrence and layered state-space projections without replacing the canonical two-circle Vesica.",
+  "ownership": {
+    "canonical_geometry": "data/house/bidirectional-spiral-field.json",
+    "vesica_geometry": "data/geometry-vesica-pisces-mandorla.json",
+    "spiral_routes": "data/house/seed-spiral-routing.json",
+    "plane_crossing": "data/house/plane-crossing-contract.json",
+    "axis_flow": "data/axis-flow-contract.json",
+    "terrain": "knowledge/core/vertical-potato-mountain-plane-atlas.json",
+    "dynamics": "knowledge/science/recurrence-orbit-spiral-dynamics-atlas.json"
+  },
+  "invariants": [
+    "O is the waist/origin of the project double-spiral field.",
+    "Axis supplies signed axial coordinate z; Plane supplies a section/frame, with the canonical waist section Sigma_0 at z=0.",
+    "Upper and lower branches may widen with increasing |z| while remaining one O-centered field.",
+    "Radial widening measures modeled scope/amplitude/horizon, not moral value or truth rank.",
+    "Mountain, Swamp, Garden, Drain, Tree and Root are overlays/regimes/routes within the field, not synonyms for the spiral curves.",
+    "The bidirectional spiral field supplements the Vesica projection; it does not replace Source Field, Manifestation Field, Door or the two-circle construction.",
+    "Chirality is a projection/model parameter, not a good/evil axis.",
+    "Exact logarithmic/golden geometry and origin-inclusive project geometry must remain distinguished."
+  ],
+  "coordinates": {
+    "cylindrical": [
+      "rho",
+      "theta",
+      "z"
+    ],
+    "waist": "O=(rho=0,z=0)",
+    "axis": "rho=0",
+    "waist_plane": "Sigma_0: z=0",
+    "sign_convention": "+z source/integration-facing; -z manifestation/depth-facing in the default projection",
+    "firewall": "Signed z is directional only. Project route classification still depends on state change, agency, evidence, Fruit, exit and return."
+  },
+  "exact_logarithmic_pair": {
+    "golden_ratio": "phi=(1+sqrt(5))/2",
+    "golden_parameter": "b=2 ln(phi)/pi",
+    "upper": "gamma_+(t)=(r0 exp(bt) cos(t), r0 exp(bt) sin(t), +h t), t>=0",
+    "lower": "gamma_-(t)=(r0 exp(bt) cos(s t+delta), r0 exp(bt) sin(s t+delta), -h t), t>=0",
+    "chirality_parameter": "s=-1 gives mirrored handedness; s=+1 gives same handedness",
+    "quarter_turn_scale": "r(t+pi/2)=phi*r(t) when b=2 ln(phi)/pi",
+    "boundary": "Because r0 exp(bt)>0, exact logarithmic spirals do not pass through O; r0 is a finite center aperture/reference radius."
+  },
+  "origin_inclusive_project_pair": {
+    "radial_law": "R(t)=r0(exp(bt)-1)",
+    "upper": "Gamma_+(t)=(R(t) cos(t), R(t) sin(t), +h t)",
+    "lower": "Gamma_-(t)=(R(t) cos(s t+delta), R(t) sin(s t+delta), -h t)",
+    "properties": [
+      "R(0)=0",
+      "R(t)>=0 for t>=0",
+      "asymptotically exponential radial growth"
+    ],
+    "axial_form": "rho(z)=r0(exp(kappa*|z|)-1), with kappa=b/h when z=±h t",
+    "boundary": "This shifted radial law is a project construction inspired by logarithmic growth; it is not itself the exact logarithmic spiral."
+  },
+  "layer_family": {
+    "default_step": "Delta theta=pi/2",
+    "index": "n=0,1,2,...",
+    "times": "t_n=n*pi/2",
+    "exact_radii": "r_n=r0*phi^n",
+    "origin_inclusive_radii": "R_n=r0*(phi^n-1)",
+    "upper_levels": "z_n^+=+h*n*pi/2",
+    "lower_levels": "z_n^-=-h*n*pi/2",
+    "circular_sections": "C_n^± = {(rho,theta,z): rho=R_n, z=z_n^±}",
+    "disk_sections": "D_n^± = {(rho,theta,z): 0<=rho<=R_n, z=z_n^±}",
+    "meaning": "Discrete rings/disks are readable layer markers sampled from a continuous field; they are not additional realms."
+  },
+  "envelope": {
+    "radial_profile": "rho_max(z)=r0(exp(kappa*|z|)-1)",
+    "shape": "double-flared / hourglass / paired-horn envelope around Axis",
+    "waist": "rho_max(0)=0 in the origin-inclusive project view",
+    "optional_door_aperture": "For a nonzero waist aperture use rho_max(z)=a+r0(exp(kappa*|z|)-1), a>=0.",
+    "relation_to_vesica": "When rendered inside the canonical two-circle Potato, the envelope can be clipped or normalized to the Source/Manifestation fields; it is a state-space/development overlay, not a new outer cosmology."
+  },
+  "terrain_overlays": {
+    "mountain": {
+      "coordinate_role": "integration/convergence over +z",
+      "relation_to_radius": "Mountain can narrow toward a summit while spiral radius widens because they encode different variables: convergence/integration versus lateral scope/amplitude.",
+      "tests": [
+        "broader perspective",
+        "integration",
+        "compression of many paths into coherent criterion",
+        "returnable Fruit"
+      ],
+      "not": "the upper spiral itself"
+    },
+    "garden": {
+      "coordinate_role": "generative upper regime distributed across +z sections",
+      "relation_to_radius": "Wider upper sections can host more differentiated viable branches, Rooms, relations and Fruit.",
+      "not": "proof that larger radius is morally higher"
+    },
+    "tree": {
+      "coordinate_role": "organic branching route through the field",
+      "mapping": "trunk near O/Axis; branches spread across progressively wider upper sections; Fruit/Seed can return toward Plane/World.",
+      "not": "the envelope boundary"
+    },
+    "swamp": {
+      "coordinate_role": "entanglement/retention regime distributed across -z sections",
+      "relation_to_radius": "Wider lower sections can represent broader recurrence, coupling, unresolved residue and role entanglement.",
+      "not": "the lower spiral itself or all of Below"
+    },
+    "drain": {
+      "coordinate_role": "local inward/capture attractor inside lower field",
+      "relation_to_radius": "Drain can narrow even while the surrounding Swamp/spiral horizon widens; capture and scope are independent variables.",
+      "not": "all descent"
+    },
+    "root": {
+      "coordinate_role": "provenance/support network across -z and current-state interfaces",
+      "mapping": "roots may spread laterally through lower sections while retaining routes back to O/current structure.",
+      "not": "Strife by default"
+    }
+  },
+  "motion_modes": [
+    {
+      "id": "upper-expansion",
+      "sign": "+z",
+      "radial": "increasing",
+      "meaning": "widening scope/horizon during ascent/integration"
+    },
+    {
+      "id": "lower-expansion",
+      "sign": "-z",
+      "radial": "increasing",
+      "meaning": "widening depth/context, rooting or entanglement depending route"
+    },
+    {
+      "id": "upper-return",
+      "sign": "toward 0",
+      "radial": "often decreasing",
+      "meaning": "Fruit/knowledge returns toward a common Plane/World interface"
+    },
+    {
+      "id": "lower-return",
+      "sign": "toward 0",
+      "radial": "often decreasing",
+      "meaning": "provenance/root material is metabolized back into the operative present"
+    },
+    {
+      "id": "ring",
+      "sign": "fixed section",
+      "radial": "stable/repeating",
+      "meaning": "recurrence with negligible selected-state displacement"
+    },
+    {
+      "id": "spiral",
+      "sign": "changing section/state",
+      "radial": "variable",
+      "meaning": "recurrence with meaningful state displacement"
+    }
+  ],
+  "field_reading": {
+    "vertical": "z = source↔manifestation/depth orientation under the current projection",
+    "radial": "rho = modeled relational/state-space horizon, amplitude or differentiation scope",
+    "angular": "theta = recurrence/phase/turning",
+    "chirality": "sign of angular progression = handedness only",
+    "time": "t or crossing order = history parameter; not identical with z",
+    "state": "additional variables may coexist orthogonally; the field is a visualization of selected coordinates, not the total ontology"
+  },
+  "relation_to_plane": {
+    "canonical_plane": "Sigma_0 is the waist/current section in the default drawing.",
+    "movable_sections": "Other Sigma_z sections may be sampled for analysis; Plane remains frame-relative.",
+    "recurrence": "Comparable crossings can be sampled at the same section or across declared layer families.",
+    "cross_point": "O remains Axis∩Sigma_0.",
+    "cross_sign": "A lateral diameter of Sigma_0 plus Axis forms the project coordinate Cross-sign."
+  },
+  "relation_to_time_and_11d": {
+    "rule": "The double spiral can carry multiple typed state variables across successive sections without claiming that each visible ring is a literal physical dimension.",
+    "useful_mapping": [
+      "time/history order",
+      "developmental state",
+      "integration",
+      "provenance",
+      "capability",
+      "relation density",
+      "evidence maturity",
+      "regime"
+    ],
+    "firewall": "M-theory/11D physics remains a separate scientific comparator. This field is not evidence that human consciousness or Potatoverse theology is physically 11-dimensional."
+  },
+  "rendering_contract": {
+    "minimum_view": [
+      "Axis",
+      "O",
+      "Sigma_0",
+      "upper spiral",
+      "lower spiral",
+      "at least three sampled rings per side",
+      "Mountain overlay",
+      "Swamp overlay"
+    ],
+    "recommended_view": [
+      "Door/Vesica ghost outline",
+      "Tree/trunk/branch overlay",
+      "Root network",
+      "Garden band",
+      "Drain attractor",
+      "direction legend",
+      "exact-vs-project toggle"
+    ],
+    "accessibility": "Every visual must have text explaining z, rho, theta, Mountain/Swamp distinction and the non-moral direction firewall.",
+    "interaction": "A frontend may allow layer count, phi scaling, chirality, aperture and terrain overlays to be toggled without changing canonical ownership."
+  },
+  "connections": [
+    "data/house/topology.json",
+    "data/house/plane-crossing-contract.json",
+    "data/axis-flow-contract.json",
+    "data/house/seed-spiral-routing.json",
+    "data/house/tree-family-contract.json",
+    "data/house/swamp-regime-contract.json",
+    "data/house/root-seed-temporal-contract.json",
+    "data/house/door-cross-spiral-lifecycle.json",
+    "knowledge/core/vertical-potato-mountain-plane-atlas.json",
+    "knowledge/science/recurrence-orbit-spiral-dynamics-atlas.json"
+  ]
+}
