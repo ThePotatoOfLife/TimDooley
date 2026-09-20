@@ -119,8 +119,8 @@ A story remaining in this ledger but not yet rendered on the reader may be await
 The following names are active archaeology triggers. A trigger may recover its own story or reopen unrelated scenes around the same room, stream, server or season.
 
 - Tachy — Great Book hit exists around the Ladder/God-declaration retelling; recover underlying exchange.
-- TXT / tee-x-tee — Great Book and July 7, 2026 public-post hits exist; recover earlier documentary sequence.
-- Dim Tooley — July 7, 2026 public-post hit exists; search backward for first appearance and spelling variants.
+- TXT / tee-x-tee — now has a dedicated relation room and shared DIM/TXT dossier. Anchors: 2024 `TXT's Shadow Games`; 20 Jun 2026 disputed-narrative recurrence; 7–20 Jul 2026 public-conflict / Dog-Swamp development. Recover primary status URLs and earlier documentary sequence.
+- Dim Tooley — now has a dedicated relation room and shared DIM/TXT dossier. Strong anchor: 7 Jul 2026 shared public-conflict day; later Dimmus Maximus / dog-fable / threshold-satire strata are tracked separately. Search backward for first appearance, handle variants and primary status URLs.
 - Capy / Cappy — strong Great Book hits around BigTech and Sammy; documentary sequence still needs recovery.
 - Rahu — conversation archaeology now adds **1 Mar 2026** (lost-soul / dream-potato / 1/137 growth scene) and **25 May 2026** (social interlocutor layer). Keep these distinct from 2024 Great Book Rahu while testing continuity; `fence sitter` still needs exact-source recovery.
 - Moon420 — no clean exact-source hit yet.
