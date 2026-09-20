@@ -1,0 +1,144 @@
+{
+  "id": "social-presence-memory-integration-2024-2025",
+  "title": "Social Presence Memory Integration — 2024–2025",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "owner_room": "memory-recovery",
+  "purpose": "Route recovered Chronicle social memory into the House without letting one retelling become the sole owner of biography, chronology, culture or canon.",
+  "source_basis": {
+    "primary_recovery": "Chronicles of The Potato of Life.txt / .rtf",
+    "source_class": "dated authored Chronicle / diary retelling",
+    "local_owner": "Memory & Recovery",
+    "boundary": "Chronicle dates and co-presence are useful recovery signals; quoted/paraphrased speech, motives and allegations remain lower-confidence until closer logs are recovered."
+  },
+  "canonical_owners": {
+    "source_memory": [
+      "memory-recovery",
+      "provenance-evidence"
+    ],
+    "event_identity": [
+      "chronology-events"
+    ],
+    "developmental_sequence": [
+      "developmental-genealogy"
+    ],
+    "social_topology": [
+      "subculture-group-formation",
+      "internet-platforms",
+      "information-ecology"
+    ],
+    "cast_meaning": [
+      "canon-identities"
+    ],
+    "creative_artifacts": [
+      "great-book-literature",
+      "music-sound",
+      "games-simulations"
+    ]
+  },
+  "promoted_clusters": [
+    {
+      "date_or_range": "2024-11-03 to 2024-11-06",
+      "label": "voice-chat / Tanks / Great Book social room",
+      "memory_status": "dated Chronicle cluster",
+      "promote_to": [
+        "chronology-events",
+        "subculture-group-formation",
+        "canon-identities"
+      ],
+      "why": "Restores ordinary companionship, live theology and creative discussion before later conflict mythology."
+    },
+    {
+      "date_or_range": "2024-12-04",
+      "label": "Tree becomes a separate social space",
+      "memory_status": "dated Chronicle cluster",
+      "promote_to": [
+        "chronology-events",
+        "subculture-group-formation",
+        "internet-platforms"
+      ],
+      "why": "Provides a dateable group-boundary/server-topology anchor without proving every motive attached by the Chronicle."
+    },
+    {
+      "date_or_range": "2024-12-07",
+      "label": "reconciliation / trust repair",
+      "memory_status": "dated Chronicle cluster",
+      "promote_to": [
+        "chronology-events",
+        "subculture-group-formation",
+        "canon-identities"
+      ],
+      "why": "Shows roles changing through apology, caution and return rather than remaining fixed archetypes."
+    },
+    {
+      "date_or_range": "2024-12-15 to 2024-12-21",
+      "label": "cooking / music / studio / moderation / new arrivals",
+      "memory_status": "dated Chronicle cluster",
+      "promote_to": [
+        "chronology-events",
+        "works",
+        "subculture-group-formation"
+      ],
+      "why": "Adds ordinary culture-making and collaborative work to the period."
+    },
+    {
+      "date_or_range": "2025-01-29",
+      "label": "Marty death date",
+      "memory_status": "externally corrected",
+      "promote_to": [
+        "chronology-events",
+        "developmental-genealogy",
+        "canon-identities"
+      ],
+      "why": "Funeral-home obituary fixes the death date; cause remains separate."
+    },
+    {
+      "date_or_range": "2025-03-01 to 2025-03-12",
+      "label": "TTS / Masha / HTML / interactive Great Book creation wave",
+      "memory_status": "dated Chronicle cluster",
+      "promote_to": [
+        "chronology-events",
+        "developmental-genealogy",
+        "great-book-literature",
+        "games-simulations"
+      ],
+      "why": "Provides a concrete technical ancestry for later TTS, HTML and interactive-site architecture."
+    },
+    {
+      "date_or_range": "2025-03-18 to 2025-04-13",
+      "label": "screen replacement → Empire → Fishtank → Tree return",
+      "memory_status": "dated Chronicle bridge",
+      "promote_to": [
+        "chronology-events",
+        "developmental-genealogy",
+        "internet-platforms"
+      ],
+      "why": "Supplies an ordinary social/technical corridor into the later April Turning interpretation."
+    }
+  ],
+  "memory_rules": [
+    "Recover co-presence before inferring motive.",
+    "Treat absence/presence as a dated social fact only when the source actually records it.",
+    "A server, voice chat or platform is a context and relationship structure, not automatically an archetype.",
+    "Keep ordinary creation—games, food, music, HTML, TTS, hardware—beside later symbolic meaning.",
+    "When an external source corrects a Chronicle date, update chronology but preserve the Chronicle as evidence of what the project remembered."
+  ],
+  "downstream_files": [
+    "knowledge/story/social-presence-ledger-2024-2025.json",
+    "knowledge/story/turning-corridor-chronicle-recovery-2025.json",
+    "knowledge/story/character-archive-v2.json",
+    "knowledge/story/cast-book.json",
+    "knowledge/story/arc-season-map.json",
+    "data/timeline-events.json",
+    "rooms/inside/memory-recovery/",
+    "rooms/inside/developmental-genealogy/",
+    "rooms/inside/subculture-group-formation/",
+    "rooms/inside/internet-platforms/"
+  ],
+  "unresolved": [
+    "Recover raw Discord/YouTube logs behind November 3–6 and December 7/15/20/21.",
+    "Recover raw March 2025 TTS/HTML artifacts and screenshots.",
+    "Recover Empire/Fishtank/Tree invites and April 13 Tree exchange.",
+    "Recover January 29–February 1 grief material while separating verified date from unverified cause."
+  ]
+}
