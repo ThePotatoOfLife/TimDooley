@@ -77,6 +77,8 @@ def main() -> int:
         "hoverPriority:60",
         "potato-atlas-interaction-ready",
         "map.off('click', HIT_ID, subdivisionFallbackHandlers.click)",
+        "function inspectorRouter()",
+        "const inspector = inspectorRouter();",
     ):
         if token not in subdivisions:
             errors.append(f"subdivision interaction promotion missing marker: {token}")
@@ -89,6 +91,8 @@ def main() -> int:
         "interaction.register('places'",
         "potato-atlas-interaction-ready",
         "map.off('click', layerId, handlers.click)",
+        "function inspectorRouter()",
+        "const inspector = inspectorRouter();",
     ):
         if token not in places:
             errors.append(f"Places interaction promotion missing marker: {token}")
