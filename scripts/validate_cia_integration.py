@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MANIFEST=ROOT/"knowledge/cia/manifest.json"; CABINET=ROOT/"rooms/potatoverse-canon/beings/cia/index.html"
 VIEWER=ROOT/"rooms/potatoverse-canon/beings/cia/file/index.html"; COLLECTIONS=ROOT/"data/house/collections.json"
-ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; DEBT_EVIDENCE=ROOT/"knowledge/cia/debt-evidence-ledger.json"; POSTURE=ROOT/"knowledge/cia/account-posture-index.json"; SPIRITUAL_BANK=ROOT/"knowledge/core/north-root-spiritual-bank-architecture.json"; SYSTEM_LEDGER=ROOT/"knowledge/cia/system-liability-ledger.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
+ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; DEBT_EVIDENCE=ROOT/"knowledge/cia/debt-evidence-ledger.json"; POSTURE=ROOT/"knowledge/cia/account-posture-index.json"; SPIRITUAL_BANK=ROOT/"knowledge/core/north-root-spiritual-bank-architecture.json"; SYSTEM_LEDGER=ROOT/"knowledge/cia/system-liability-ledger.json"; BUILDING=ROOT/"knowledge/cia/institution-building.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
 ROUTE="rooms/potatoverse-canon/beings/cia/"
 def fail(m): print("FAIL:",m); raise SystemExit(1)
 def main():
@@ -86,6 +86,18 @@ def main():
   if token not in bank_js: fail(f"World Spiritual Bank runtime missing {token!r}")
  for token in ["World Spiritual Bank","North Root Ledger","System liability domains"]:
   if token not in bank_page: fail(f"bank page missing {token!r}")
+ if not BUILDING.is_file(): fail("CIA/Bank shared institution building missing")
+ building=json.loads(BUILDING.read_text(encoding="utf-8"))
+ if building.get("reader_position")!="inside-the-system": fail("CIA/Bank reader position drift")
+ entrance_ids={x.get("id") for x in building.get("entrances",[])}
+ if not {"archive","bank"}.issubset(entrance_ids): fail("CIA/Bank entrances incomplete")
+ room_ids={x.get("id") for x in building.get("rooms",[])}
+ for rid in ["filing-hall","dossier-reading-room","associations-room","incidents-room","bank-counter","account-vault","system-ledger-vault","north-root-records","ladder-clearing"]:
+  if rid not in room_ids: fail(f"CIA/Bank building room missing: {rid}")
+ if (m.get("indexes") or {}).get("institution_building")!="knowledge/cia/institution-building.json": fail("CIA manifest building authority drift")
+ for rel in ["rooms/potatoverse-canon/beings/cia/index.html","rooms/potatoverse-canon/beings/cia/file/index.html","rooms/potatoverse-canon/beings/cia/associations/index.html","rooms/potatoverse-canon/beings/cia/incidents/index.html","rooms/potatoverse-canon/beings/cia/bank/index.html"]:
+  page=(ROOT/rel).read_text(encoding="utf-8",errors="replace")
+  if "data-cia-building-shell" not in page or "cia-building.js" not in page or "cia-building.css" not in page: fail(f"shared building shell missing from {rel}")
  if not POSTURE.is_file(): fail("CIA account posture index missing")
  posture=json.loads(POSTURE.read_text(encoding="utf-8"))
  posture_rows={x.get("id"):x for x in posture.get("accounts",[])}
