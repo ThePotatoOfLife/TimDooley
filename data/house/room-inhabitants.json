@@ -176,7 +176,7 @@
     },
     {
       "id": "artifact-timeline",
-      "label": "Chronology / attestation chain",
+      "label": "Timeline / attestation chain",
       "kind": "evidence-object",
       "room_ids": [
         "provenance-evidence",
@@ -184,8 +184,8 @@
         "chronology-events"
       ],
       "route": "/timeline/",
-      "summary": "Chronology object for separating occurrence time, attestation time, publication time and later interpretation.",
-      "status_note": "Temporal sequence can support priority or chronology without proving causation.",
+      "summary": "Timeline object for separating occurrence time, attestation time, publication time and later interpretation.",
+      "status_note": "Temporal sequence can support priority or event ordering without proving causation.",
       "evidence_note": "Keep date precision and source precision explicit."
     },
     {
