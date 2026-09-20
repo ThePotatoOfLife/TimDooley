@@ -116,6 +116,15 @@ function pointInRing(point, ring) {
   const testLng = unwrapLongitude(lng, reference);
   const points = rawPoints.map(([x, y]) => [unwrapLongitude(x, reference), y]);
 
+  // A narrow ring that straddles ±180° must stay narrow. Ray casting by
+  // itself can misclassify a query on the opposite side of the globe because
+  // wrapped longitude coordinates are periodic. Reject points outside the
+  // ring's own minimum-width longitude frame before evaluating edge crossings.
+  const epsilon = 1e-9;
+  if (testLng < interval.west - epsilon || testLng > interval.east + epsilon) return false;
+  const ys = points.map(([, y]) => y);
+  if (lat < Math.min(...ys) - epsilon || lat > Math.max(...ys) + epsilon) return false;
+
   let inside = false;
   for (let i = 0, j = points.length - 1; i < points.length; j = i++) {
     const [xi, yi] = points[i];
