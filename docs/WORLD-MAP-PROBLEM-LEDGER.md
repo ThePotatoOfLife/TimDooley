@@ -117,11 +117,10 @@
 
 
 ### WM-021 · URL state ownership is fragmented — P1
-**Status:** partially fixed (Phase 1 on main, 2026-09-20).  
-**Completed:** canonical `3d-url-state.js` owner with parameter claims, collision detection, atomic patches and diagnostics. Analytical layers, Physical, Geography overlays, Evidence coordinator, ADL filters, Axis/Axis Depth, Mud/Below, boundary-view, Lens, Fields and Networks no longer own direct URL writes. A Lens/Analytical ownership collision discovered during migration was fixed by giving `layers` and `lens/lensOption` separate owners.  
-**Remaining:** country/pins/relation/compare, Inspector mirrors (`inspect`/country/subdivision/place), Time and several specialist trace/path/compositor parameters still own direct writes.  
-**Risk:** remaining mirrored/compatibility families can still race or preserve/delete each other incorrectly.  
-**Next:** define transaction groups for selection+Inspector and Time, then migrate legacy/specialist writers; validator forbids direct writes for each migrated family.
+**Status:** fixed / governed on main (2026-09-20).  
+**Resolution:** `3d-url-state.js` is the sole direct `history.replaceState` owner. Domain/specialist state and the formerly coupled selection/Inspector family now use shared parameter claims and atomic patches; Places, Subdivisions and map-reset fallbacks no longer bypass ownership.  
+**Guard:** `validate_world_map_url_state.py` scans every live `world-map/*.js` file and rejects direct history writers outside the canonical owner; URL regression covers shared-owner overlapping claims.  
+**Compatibility:** legacy `selected=` remains read-compatible but is cleared by the working-selection owner on writes.
 
 ### WM-022 · Specialist inspectors bypass typed Inspector Router — P1
 **Status:** largely fixed; final convergence audit remains.  
@@ -138,10 +137,9 @@
 **Guard:** interaction validator/regression requires the ready listener and teardown markers.
 
 ### WM-024 · Canonical subdivision evidence integration lacks generic search/badge projection — P2
-**Status:** open.  
-**Completed:** subdivisions now expose generic evidence-provider and source-refresh observer contracts; ADL is the first provider.  
-**Gap:** search/results and subdivision lists do not expose provider availability/count context, so evidence is discoverable mainly after selection.  
-**Solution:** generic provider badges/summaries in subdivision search/inspector surfaces without hard-coding ADL.
+**Status:** fixed / governed on main (2026-09-20).  
+**Resolution:** subdivision runtime exposes provider-agnostic `evidenceSummaries(id)`; inspector cards and unified subdivision search consume the generic summaries. Search displays active evidence count context without naming or depending on ADL.  
+**Guard:** `validate_world_map_subdivision_evidence_projection.py` requires the generic provider/search bridge and explicitly rejects ADL hard-coding in unified search.
 
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** open data-quality task.  
