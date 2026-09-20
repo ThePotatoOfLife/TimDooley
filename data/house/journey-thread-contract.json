@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-19",
   "authority": "house-journey-thread",
   "title": "House Journey Thread / Path Memory Contract",
@@ -33,7 +33,9 @@
     "room",
     "inner",
     "label",
-    "type"
+    "type",
+    "via",
+    "reason"
   ],
   "behavior": [
     "Consecutive duplicate states collapse into one bead.",
@@ -43,7 +45,10 @@
     "Opening a readable room may append a read bead pointing back to the spatial state from which it was opened.",
     "Back through thread restores the prior spatial state without creating a duplicate bead.",
     "Clicking an earlier bead returns to that recorded center without changing knowledge ownership.",
-    "Clear thread deletes only local navigation memory."
+    "Clear thread deletes only local navigation memory.",
+    "Each newly recorded spatial bead derives a transition type from the prior bead.",
+    "Journey UI may expose a short transition reason and replay the route step-by-step.",
+    "Replay never writes duplicate beads or changes canonical content."
   ],
   "semantic_rule": "The trail records the route the reader took, not the only valid route through the House.",
   "visual_rule": "Render the journey as a connected thread/chain of beads. Current position is emphasized; wormhole or read exits may receive distinct labels, but color must not be the only status signal.",
@@ -51,5 +56,44 @@
     "data/house/elevator-spatial-projection.json",
     "data/house/non-euclidean-room-grammar.json",
     "data/house/local-center-interface-patterns.json"
-  ]
+  ],
+  "transition_types": [
+    {
+      "id": "start",
+      "meaning": "Initial position in the remembered journey."
+    },
+    {
+      "id": "dwelling-door",
+      "meaning": "Door / Axis or another context recentered into a canonical Dwelling."
+    },
+    {
+      "id": "local-door",
+      "meaning": "Movement between a Dwelling and one of its nested Rooms, or between nested Rooms in the same Dwelling."
+    },
+    {
+      "id": "wormhole-door",
+      "meaning": "Direct registered passage between nested Rooms belonging to different Dwellings."
+    },
+    {
+      "id": "elevator",
+      "meaning": "Vertical movement between Heaven, World and Below projections."
+    },
+    {
+      "id": "portal",
+      "meaning": "Exit through a plane landmark such as Roots, Ash, Swamp or Forge."
+    },
+    {
+      "id": "read",
+      "meaning": "Exit from spatial navigation into a readable public surface."
+    },
+    {
+      "id": "return",
+      "meaning": "Movement outward toward parent Dwelling or Door / Axis."
+    }
+  ],
+  "narrative": {
+    "rule": "Every bead should be able to answer: where did I arrive, what kind of threshold did I cross, and why is this destination relevant from the prior center?",
+    "derived_reasoning": "Transition reasons are derived from registered Room purpose/local-role/adjacency and plane descriptions, not invented claims about causation.",
+    "replay": "The UI may replay remembered beads in sequence. Replay restores navigation states only; it must not generate new journey history."
+  }
 }
