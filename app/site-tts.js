@@ -20,6 +20,8 @@
     const script=doc.createElement('script');script.src=href;script.defer=true;script.onload=()=>resolve();script.onerror=()=>resolve();doc.head.appendChild(script);
   });
 
+  const QUIET_ROUTES=['/world-map/','/index-a-z/','/rooms/objects/','/tools/tts/'];
+
   const INTERACTIVE_EXCLUDE=[
     'nav','.page-nav','.nav','.topnav','.world-family','.deep','.links','.routes','.path-grid',
     'footer','.footer','form','button','select','input','textarea','canvas','svg','iframe',
@@ -93,6 +95,7 @@
   }
 
   async function boot(){
+    if(QUIET_ROUTES.some(route=>location.pathname.includes(route)))return;
     configureAutomaticHost();
     if(!doc.querySelector('[data-tts-longform]'))return;
     await loadCss(asset('tts-drawer.css'));
