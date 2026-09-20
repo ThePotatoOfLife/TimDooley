@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the 3D World Relational Atlas renderer and its runtime/data contracts."""
+"""Validate the canonical World Map renderer and its runtime/data contracts."""
 from __future__ import annotations
 
 import json
@@ -9,7 +9,7 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-HTML = ROOT / "world-map" / "3d.html"
+HTML = ROOT / "world-map" / "index.html"
 APP = ROOT / "world-map" / "3d-app.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
@@ -64,7 +64,7 @@ def main() -> int:
     required = (HTML, APP, HOVER, BOOTSTRAP, EVIDENCE, SELECTION, PULSE, LENSES, TIME, FIELDS, NETWORKS, RUNTIME, WORLD, COUNTRIES)
     for path in required:
         if not path.exists():
-            errors.append(f"missing required atlas file: {path.relative_to(ROOT)}")
+            errors.append(f"missing required World Map file: {path.relative_to(ROOT)}")
     if errors:
         for error in errors:
             print("ERROR:", error)
@@ -85,7 +85,7 @@ def main() -> int:
     world = load_json(WORLD, errors)
     countries = load_json(COUNTRIES, errors)
 
-    fail_if_missing(html, ('id="map"','id="panel"','id="status"','id="search"','id="country-list"','id="height"','id="compare"','id="interior"','id="relations"','id="relationType"','id="traceDepth"','id="fit"','id="tilt"','id="globe"','id="world"','id="layersMenu"','id="traceMenu"','id="timeMenu"','id="viewMenu"','id="panelToggle"','id="focusMode"','id="timeMode"','id="timeDate"','id="timeDate2"','id="atlasTimeState"','class="app panel-collapsed"','src="./3d-hover.js"','src="./3d-pathfinder.js"','src="./3d-evidence.js"','src="./3d-time.js"',"Geography, graph topology, project hierarchy and time are separate coordinates"),"world-map/3d.html",errors)
+    fail_if_missing(html, ('id="map"','id="panel"','id="status"','id="search"','id="country-list"','id="height"','id="compare"','id="interior"','id="relations"','id="relationType"','id="traceDepth"','id="fit"','id="tilt"','id="globe"','id="world"','id="layersMenu"','id="traceMenu"','id="timeMenu"','id="viewMenu"','id="panelToggle"','id="focusMode"','id="timeMode"','id="timeDate"','id="timeDate2"','id="atlasTimeState"','class="app panel-collapsed"','src="./3d-hover.js"','src="./3d-pathfinder.js"','src="./3d-evidence.js"','src="./3d-time.js"',"Geography, graph topology, project hierarchy and time are separate coordinates"),"world-map/index.html",errors)
     fail_if_missing(bootstrap,("ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v')","function versionedModule","await import(versionedModule('./3d-hover.js'))","waitForCore","countries-fill","window.__potatoAtlasReady","Path finder","Demography","Country selection","Country Pulse","declareDormant('Evidence'","declareDormant('Time'","declareDormant('Axis depth'","declareDormant('Axis operators'","declareDormant('North Axis'","potato-atlas-interactive","__potatoAtlasDiagnostics","deploymentVersion"),"world-map/3d-bootstrap.js",errors)
     fail_if_missing(selection,("pinnedCodes","activeCode","function togglePinnedCountry","function pinCountry","function unpinCountry","function automaticRelationData","urlState.patch('selection-inspector'","selection-chip","data-country-code","clearAll","__potatoAtlasSelection","automaticRelationBudget","DEFAULT_AUTO_RELATION_BUDGET"),"world-map/3d-country-selection.js",errors)
     fail_if_missing(pulse,("Country Pulse","GDP per capita","Inflation","Unemployment","__potatoAtlasCountryPulse","More statistics"),"world-map/3d-country-pulse.js",errors)
