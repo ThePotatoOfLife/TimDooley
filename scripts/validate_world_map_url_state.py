@@ -22,6 +22,13 @@ MIGRATED=(
     ROOT/"world-map/3d-lenses.js",
     ROOT/"world-map/3d-fields.js",
     ROOT/"world-map/3d-networks.js",
+    ROOT/"world-map/3d-pathfinder.js",
+    ROOT/"world-map/3d-chain-explorer.js",
+    ROOT/"world-map/3d-impact-trace.js",
+    ROOT/"world-map/3d-compositor.js",
+    ROOT/"world-map/3d-world-bar.js",
+    ROOT/"world-map/3d-symbolic-operators.js",
+    ROOT/"world-map/3d-time.js",
 )
 
 def main()->int:
@@ -63,7 +70,7 @@ def main()->int:
         print("WORLD MAP URL STATE VALIDATION FAILED")
         for error in errors: print("-",error)
         return 1
-    print("WORLD MAP URL STATE VALIDATION PASSED: phase-1 domain writers are centrally owned.")
+    print("WORLD MAP URL STATE VALIDATION PASSED: migrated domain and specialist writers are centrally owned.")
     return 0
 
 if __name__=="__main__":
