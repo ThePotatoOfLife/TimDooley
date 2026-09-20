@@ -1,0 +1,161 @@
+{
+  "id": "ledgeview",
+  "display_name": "Ledgeview",
+  "bureau": "FBI — Figures, Bonds & Incidents",
+  "entity_class": "person-or-handle",
+  "aliases": [],
+  "archive_status": "historical-current-unknown",
+  "room_policy": "own-room-candidate",
+  "room_path": null,
+  "tim_relation": {
+    "archetypes": [
+      "witness-observer",
+      "chronicler-archivist",
+      "bard-jester"
+    ],
+    "narrative_functions": [
+      "questions",
+      "reflection",
+      "poetic framing",
+      "equilibrium"
+    ],
+    "regions": [
+      "Saloon",
+      "Archive",
+      "Garden"
+    ],
+    "editorial_reading": "One of the clearest archetypal characters: observer, questioner, bard, critic and reflective mirror across multiple Chronicle dates.",
+    "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+  },
+  "chronology": {
+    "chronicle_occurrence_count": 27,
+    "chronicle_dates": [
+      "November 3 2024",
+      "November 4, 2024",
+      "November 10, 2024",
+      "November 17, 2024",
+      "Nov 20 2024",
+      "November 26, 2024",
+      "November 28, 2024",
+      "December 15, 2024",
+      "December 20, 2024",
+      "December 21 2024"
+    ],
+    "cast_period_roles": [],
+    "recovered_social_days": [
+      {
+        "date": "2024-11-03",
+        "title": "Tanks, pipe, coffee and the first dense social snapshot",
+        "minimum_event": "Tim spends the day around Tanks/voice-chat social life while the Great Book is actively discussed. Optimistique urges him back into play, Rahu/Tdog supply religious interpretation, and Termite marks group camaraderie.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2024-11-04",
+        "title": "Potatoism gets challenged from inside the room",
+        "minimum_event": "Juice challenges Potatoism with creator/First-Mover arguments; Kale answers with cyclic/interconnection language; Termite explores gods-creating-gods; Kibly contributes an epistemic box thought experiment.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2024-11-19",
+        "title": "Garden conflict becomes a named day",
+        "minimum_event": "The Chronicle labels the day 'The Garden Betrayed' and concentrates conflict around the community boundary. Treat allegations in this entry as authored interpretation until raw logs are recovered.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2024-11-28",
+        "title": "Marty, Monkey and Sammy occupy the same social field",
+        "minimum_event": "A dense Chronicle entry places the three major later threads—Marty, Monkey/Tree and Sammy—inside the same late-November social field.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2024-12-15",
+        "title": "Cooking stream and the Potato–Tomato joke war",
+        "minimum_event": "Tim and Anacondasin make potato chips in a collaborative stream. Termite jokes about flying her to Denmark; Rahu adopts a tomato-villain role; a parallel access dispute concerns Tree/Garden boundaries.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2024-12-20",
+        "title": "Cookbook, studio design and music memory",
+        "minimum_event": "Potato Repair Guy proposes a community potato cookbook; Ledgeview suggests studio-wall symmetry; Termite repeats growth language; Kale/Ledgeview remember or propose songs/performances.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2024-12-21",
+        "title": "Anja arrives inside a Marty-mediated boundary dispute",
+        "minimum_event": "Marty introduces Anja while asserting social leverage; moderation disputes intensify around Literally. The Chronicle also credits Pondo with providing urgent support to a distressed community member.",
+        "source_mode": "chronicle_retelling"
+      }
+    ]
+  },
+  "top_co_presence": [
+    {
+      "name": "Tim Dooley",
+      "count": 7
+    },
+    {
+      "name": "Marty",
+      "count": 5
+    },
+    {
+      "name": "Termite",
+      "count": 5
+    },
+    {
+      "name": "Port Monkey",
+      "count": 4
+    },
+    {
+      "name": "Kale",
+      "count": 4
+    },
+    {
+      "name": "Sammy",
+      "count": 3
+    },
+    {
+      "name": "Optimistique",
+      "count": 2
+    },
+    {
+      "name": "Rahu",
+      "count": 2
+    }
+  ],
+  "symbolic_roles": [],
+  "highlighted_incidents": [
+    {
+      "date": "2024-11-03",
+      "title": "Poetic observer",
+      "summary": "Chronicle characterizes Ledgeview as philosophical/poetic, using cultural references and reflective language."
+    },
+    {
+      "date": "2024-12-15",
+      "title": "Kitchen philosopher",
+      "summary": "Appears during the potato-chip stream with culinary commentary and offbeat references."
+    },
+    {
+      "date": "2024-12-20",
+      "title": "Studio and music memory",
+      "summary": "Social ledger places Ledgeview in studio-design/music discussion, reinforcing observer/chronicler/bard functions."
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "character_archive",
+      "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json"
+    },
+    {
+      "type": "dated_social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    }
+  ],
+  "recovery_leads": [
+    "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
+    "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
+    "Add relationship edges only when a scene/source supports them."
+  ]
+}
