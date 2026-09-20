@@ -8,6 +8,7 @@ if (!window.__potatoAtlasStyleLifecycle) await import('./3d-style-lifecycle.js')
 const styleLifecycle = window.__potatoAtlasStyleLifecycle;
 if (!styleLifecycle) throw new Error('World Map Style Lifecycle unavailable.');
 
+const PHYSICAL_ID = 'physical.aridity';
 const SOURCE_ID = 'atlas-physical-deserts-xeric';
 const FILL_ID = 'atlas-physical-deserts-xeric-fill';
 const LINE_ID = 'atlas-physical-deserts-xeric-line';
@@ -20,6 +21,12 @@ const BASE_LINE_OPACITY = 0.62;
 let enabled = false;
 let restoring = false;
 let opacity = 0.26;
+
+function reportStatus(phase, message) {
+  window.dispatchEvent(new CustomEvent('potato-atlas-physical-layer-status', {
+    detail:{ id:PHYSICAL_ID, provider:'The Nature Conservancy', phase, message, retryable:true }
+  }));
+}
 
 function registerLayers() {
   const stack = window.__potatoAtlasRenderStack;
@@ -86,15 +93,18 @@ function setVisibility(visibility) {
 
 async function enable() {
   if (enabled && map.getLayer(FILL_ID)) return true;
+  reportStatus('loading', 'Loading deserts/xeric ecoregions');
   try {
     ensureSource();
     ensureLayers();
     setVisibility('visible');
     enabled = true;
+    reportStatus('active', 'Deserts/xeric ecoregions active');
     return true;
   } catch (error) {
     console.warn('Ecological deserts/xeric layer unavailable; ordinary map remains active.', error);
     enabled = false;
+    reportStatus('error', error?.message || 'Deserts/xeric provider unavailable');
     return false;
   }
 }
@@ -102,6 +112,7 @@ async function enable() {
 async function disable() {
   setVisibility('none');
   enabled = false;
+  reportStatus('idle', 'Deserts/xeric off');
   return true;
 }
 
@@ -120,6 +131,7 @@ styleLifecycle.register('physical-deserts', {
         setVisibility('visible');
       } catch (error) {
         console.warn('Ecological deserts/xeric layer could not restore after style change.', error);
+        reportStatus('partial', error?.message || 'Deserts/xeric restore incomplete');
       } finally {
         restoring = false;
       }
