@@ -259,11 +259,11 @@
 **Completion guard:** audit, ledger and roadmap must agree on current ownership and no high-severity current audit finding may describe code already removed from main.
 
 ### WM-045 · Dormant Fields / Networks compatibility modules remain in source — P2
-**Status:** verified retirement candidate (2026-09-21), not yet safe to delete.  
+**Status:** fixed on branch `world-map-retire-fields-networks-20260921`, pending exact-head CI.  
 **Evidence:** `3d-fields.js` and `3d-networks.js` still contain their own control injection, URL/time/tooltip behavior and are referenced by validators/contracts, but current bootstrap contains no direct load/import path for either module.  
 **Risk:** dead source keeps duplicate ownership concepts alive and validators may accidentally preserve obsolete architecture.  
-**TODO:** build a parity table against Layer Registry, Compositor, relation/context systems, Time and Tooltip owners; migrate any unique surviving behavior; then retire both modules and rewrite tests around canonical owners.  
-**Completion:** neither module is required by runtime, data manifests or tests; no unique current functionality is lost; full repository CI passes.
+**Resolution:** parity review confirmed current bootstrap does not load either module; current Axis state is owned by `axis.*` registry entries and institutional membership by `group.*` registry entries plus relation/context systems. Ten of the twelve institutional choices exposed by the old Networks control already exist as canonical registry groups; Nordic/APEC remain source data rather than pretending dormant UI is live functionality. Symbolic Operators were migrated off `axisFieldView` / `empiricalNetworkView` before retirement. Both compatibility modules are deleted and validators/tests now guard their absence.  
+**Completion guard:** neither module may return to runtime, manifests or tests without explicit canonical promotion; underlying source datasets remain available for future reviewed registry expansion.
 
 ### WM-046 · Regional browsing is still limited to five promoted countries — P2
 **Status:** verified functionality gap (2026-09-21).  
