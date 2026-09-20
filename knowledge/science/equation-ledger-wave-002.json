@@ -31,7 +31,7 @@
     {
       "id":"iterated-growing-thought",
       "class":"archive-formalization",
-      "equation":"X_{n+1}=\mathcal{G}(X_n,E_n)",
+      "equation":"X_{n+1}=𝒢(X_n,E_n)",
       "meaning":"A completed thought/state becomes material for the next growth step under growth operator G and environment/context E_n.",
       "relation":"growing thought / recursive potato development"
     },
@@ -93,14 +93,14 @@
     {
       "id":"generic-field-action",
       "class":"external-math-comparator",
-      "equation":"S[φ]=∫d^dx\,\mathcal{L}(φ,∂φ)",
+      "equation":"S[φ]=∫d^dx 𝓛(φ,∂φ)",
       "meaning":"Minimum structural requirement for a genuine field theory: fields, action/Lagrangian, symmetries, dynamics and observables.",
       "timic_neighbor":"Field of Life / Starchforce red-team"
     },
     {
       "id":"euler-lagrange-field",
       "class":"external-math-comparator",
-      "equation":"∂\mathcal{L}/∂φ-∂_μ(∂\mathcal{L}/∂(∂_μφ))=0",
+      "equation":"∂𝓛/∂φ-∂_μ(∂𝓛/∂(∂_μφ))=0",
       "meaning":"Field equations follow by stationary action once a Lagrangian is specified."
     },
     {
@@ -126,7 +126,7 @@
     {
       "id":"maximum-entropy",
       "class":"external-math-comparator",
-      "equation":"maximize\;H[p]=-Σ_i p_i ln p_i\;subject\;to\;known\;constraints",
+      "equation":"maximize H[p]=-Σ_i p_i ln p_i subject to known constraints",
       "meaning":"Choose the least-committal probability distribution compatible with stated constraints; useful for evidence models when information is incomplete."
     },
     {
@@ -138,7 +138,7 @@
     {
       "id":"natural-gradient",
       "class":"external-math-comparator",
-      "equation":"dθ/dt=-η g(θ)^{-1}∇_θ\mathcal{L}",
+      "equation":"dθ/dt=-η g(θ)^{-1}∇_θ𝓛",
       "meaning":"Gradient flow corrected by the Fisher-information geometry of the model space.",
       "timic_neighbor":"Axis flow through information/description space"
     },
