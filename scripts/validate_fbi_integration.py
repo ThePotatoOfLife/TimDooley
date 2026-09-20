@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate FBI dossier manifest, public projection, and House routing."""
+"""Validate CIA character dossiers, public projection, legacy compatibility, and House routing."""
 
 from __future__ import annotations
 
@@ -10,9 +10,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "knowledge/fbi/manifest.json"
-CABINET = ROOT / "rooms/potatoverse-canon/beings/fbi/index.html"
-FILE_VIEWER = ROOT / "rooms/potatoverse-canon/beings/fbi/file/index.html"
+CABINET = ROOT / "rooms/potatoverse-canon/beings/cia/index.html"
+FILE_VIEWER = ROOT / "rooms/potatoverse-canon/beings/cia/file/index.html"
 COLLECTIONS = ROOT / "data/house/collections.json"
+LEGACY_CABINET = ROOT / "rooms/potatoverse-canon/beings/fbi/index.html"
+LEGACY_FILE_VIEWER = ROOT / "rooms/potatoverse-canon/beings/fbi/file/index.html"
 EXPECTED_ROUTE = "rooms/potatoverse-canon/beings/cia/"
 LEGACY_ROUTE = "rooms/potatoverse-canon/beings/fbi/"
 
@@ -109,12 +111,12 @@ def main() -> int:
     if not fbi:
         fail("House collections registry is missing figures-bonds-incidents")
     if fbi.get("public_route") != EXPECTED_ROUTE:
-        fail(f"FBI House collection needs public_route={EXPECTED_ROUTE!r}")
+        fail(f"CIA House collection needs public_route={EXPECTED_ROUTE!r}")
 
     actual_fbi_files = sum(1 for p in (ROOT / "knowledge/fbi").rglob("*") if p.is_file())
     if fbi.get("source_file_count") != actual_fbi_files:
         fail(
-            f"House FBI source_file_count={fbi.get('source_file_count')} "
+            f"House CIA source_file_count={fbi.get('source_file_count')} "
             f"but knowledge/fbi contains {actual_fbi_files} files"
         )
 
@@ -147,6 +149,13 @@ def main() -> int:
     if "knowledge/fbi/" not in str(public_identity.get("legacy_storage_namespace") or ""):
         fail("legacy FBI storage namespace must remain documented during compatibility migration")
 
+    legacy_cabinet = LEGACY_CABINET.read_text(encoding="utf-8")
+    if "../cia/" not in legacy_cabinet or "Compatibility route" not in legacy_cabinet:
+        fail("legacy /fbi/ cabinet must remain a compatibility doorway into CIA")
+    legacy_file = LEGACY_FILE_VIEWER.read_text(encoding="utf-8")
+    if "../../cia/file/" not in legacy_file or "noindex,follow" not in legacy_file:
+        fail("legacy FBI file viewer must redirect to CIA and remain noindex")
+
     surfaces = manifest.get("public_surfaces") or {}
     if surfaces.get("cabinet") != EXPECTED_ROUTE:
         fail("manifest public_surfaces.cabinet does not match canonical CIA route")
@@ -171,7 +180,7 @@ def main() -> int:
     if summary.get("total_figures") != len(figures):
         fail(f"coverage_summary.total_figures={summary.get('total_figures')} but manifest has {len(figures)} figures")
 
-    print(f"PASS: FBI integration · {len(figures)} manifest figures · all dossiers present · cabinet manifest-driven · House route wired")
+    print(f"PASS: CIA integration · {len(figures)} manifest figures · all dossiers present · CIA cabinet manifest-driven · legacy FBI routes bounded · House route wired")
     return 0
 
 
