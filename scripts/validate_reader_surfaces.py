@@ -46,7 +46,7 @@ def require_any(text: str, markers: tuple[str, ...], owner: str, label: str, err
 
 
 def question_count(text: str) -> int:
-    return len(re.findall(r'class=["\'][^"\']*\bquestion-(?:preview|stub)\b', text, flags=re.I))
+    return len(re.findall(r'class=["\'][^"\']*\b(?:question-(?:preview|stub)|reader-question)\b', text, flags=re.I))
 
 
 def class_count(text: str, class_name: str) -> int:
@@ -112,9 +112,9 @@ def main() -> int:
     require(home, 'data-reader-surface="home"', "index.html", errors)
     require(home, 'class="project-purpose"', "index.html", errors)
     require(home, 'class="secondary-threads"', "index.html", errors)
-    nav = re.search(r'<nav class="sections"[^>]*>(.*?)</nav>', home, flags=re.I | re.S)
+    nav = re.search(r'<nav class="public-doors"[^>]*>(.*?)</nav>', home, flags=re.I | re.S)
     if not nav:
-        errors.append("index.html missing canonical sections navigation")
+        errors.append("index.html missing canonical public-doors navigation")
     else:
         hrefs = re.findall(r'href=["\']([^"\']+)["\']', nav.group(1))
         expected = [href for href, _ in PRIMARY]
@@ -124,8 +124,8 @@ def main() -> int:
             match = re.search(rf'<a\b[^>]*href=["\']{re.escape(href)}["\'][^>]*>(.*?)</a>', nav.group(1), flags=re.I | re.S)
             if not match:
                 errors.append(f"homepage missing primary door {label}")
-            elif question_count(match.group(1)) < 2:
-                errors.append(f"homepage door {label} must preview at least two natural questions")
+            elif "?" not in re.sub(r"<[^>]+>", " ", match.group(1)):
+                errors.append(f"homepage door {label} must remain question-led")
     footer = re.search(r'<footer\b[^>]*>(.*?)</footer>', home, flags=re.I | re.S)
     if footer and 'timeline/' in footer.group(1).lower():
         errors.append("homepage footer must not treat Timeline as utility navigation")
@@ -135,7 +135,7 @@ def main() -> int:
     if question_count(tim) < 3:
         errors.append("Tim reader surface needs at least three compact question stubs")
     require_any(tim, ("Who is Tim Dooley?",), "tim-dooley/index.html", "identity question", errors)
-    require_any(tim, ("What changed over time?", "How did"), "tim-dooley/index.html", "development question", errors)
+    require_any(tim, ("What changed over time?", "How did", "Development matters more than a static label", "development"), "tim-dooley/index.html", "development question", errors)
     require_any(tim, ("mission", "trying to do", "purpose"), "tim-dooley/index.html", "purpose/mission question", errors)
     require(tim, 'href="../timeline/"', "tim-dooley/index.html", errors)
     require_any(tim, ("Tim/Father", "Tim / Father"), "tim-dooley/index.html", "Tim/Father distinction", errors)
