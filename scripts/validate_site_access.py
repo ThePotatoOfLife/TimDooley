@@ -26,7 +26,7 @@ except json.JSONDecodeError as exc:
 
 for token in (
     "Current World","World Map","CIA / Intelligence","People & Cases",
-    "data/house/site-access.json","data/house/public-surfaces.json","data/house/room-inhabitants.json",
+    "data/house/site-access.json","data/house/public-surfaces.json","data/house/room-inhabitants.json","data/house/rooms.json",
     "site-access-dock","site-access-panel",
 ):
     if token not in js and token not in css:
@@ -58,6 +58,10 @@ for group_name in ("go_now","find","direct_doors"):
     for entry_id in groups.get(group_name,[]):
         if entry_id not in entries:
             errors.append(f"site-access group {group_name} references unknown entry: {entry_id}")
+
+for token in ("label===t","priority(e)","site-access-context","await loadIndex()","returnFocus"):
+    if token not in js and token not in css:
+        errors.append(f"quick-access behavior missing regression marker: {token}")
 
 if "changed.update(patch_project_compass(OUT))" in patch:
     errors.append("legacy Project Compass must not be injected alongside the quick-access dock")
