@@ -1,0 +1,32 @@
+
+/* Tim portrait expansion: prose-first, no card wall */
+.tim-claim-dossier{max-width:860px}
+.tim-claim-dossier .claim-lead{font:400 22px/1.62 var(--site-font-serif);color:#e3e1d7}
+.claim-stream{font:400 17px/1.82 var(--site-font-serif);color:#d5d8d0;margin:18px 0 8px}
+.claim-bit{display:inline}
+.claim-bit::after{content:"  ·  ";color:#657063}
+.claim-bit:last-child::after{content:""}
+.claim-bit time{font:700 9px/1 var(--site-font-sans);letter-spacing:.07em;text-transform:uppercase;color:var(--site-faint);margin-right:4px;white-space:nowrap}
+.claim-bit q{quotes:"“" "”" "‘" "’"}
+.claim-bit q::before{content:open-quote;color:var(--site-gold)}
+.claim-bit q::after{content:close-quote;color:var(--site-gold)}
+.claim-stream-note{font-size:11px;color:var(--site-muted);margin:4px 0 0}
+.claim-stream-note strong{color:#cbd2c6}
+.tim-callout-line{font:400 clamp(24px,3.2vw,34px)/1.46 var(--site-font-serif);color:#ece8dc;margin:24px 0}
+.tim-callout-line em{font-style:normal;color:var(--site-green)}
+.tim-long-list{font:400 20px/1.75 var(--site-font-serif);color:#dddcd4}
+.tim-long-list strong{color:var(--site-green);font-weight:400}
+.tim-dossier-subsection{padding:26px 0 2px;border-top:1px solid rgba(255,255,255,.055)}
+.tim-dossier-subsection:first-of-type{border-top:0}
+.tim-dossier-subsection h3{margin-top:0}
+.tim-dossier-subsection p{max-width:840px}
+.tim-inline-index{font-size:13px;line-height:1.8;color:var(--site-muted);margin:14px 0}
+.tim-inline-index b{color:var(--site-green);font-weight:500}
+.tim-inline-index span::after{content:" · ";color:#596356}
+.tim-inline-index span:last-child::after{content:""}
+.claim-stat{font-size:11px;color:var(--site-faint);letter-spacing:.04em;text-transform:uppercase}
+@media(max-width:680px){
+  .claim-stream{font-size:16px;line-height:1.75}
+  .tim-callout-line{font-size:24px}
+  .tim-long-list{font-size:18px}
+}
