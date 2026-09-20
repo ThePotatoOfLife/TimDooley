@@ -221,6 +221,10 @@
     {
       "type": "public_room",
       "path": "rooms/potatoverse-canon/beings/marty/"
+    },
+    {
+      "type": "debt_evidence_ledger",
+      "path": "knowledge/cia/debt-evidence-ledger.json"
     }
   ],
   "recovery_leads": [
@@ -238,7 +242,15 @@
     },
     "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
     "debt_and_repair": {
-      "records": [],
+      "records": [
+        {
+          "id": "debt-marty-2024-12-21-social-leverage",
+          "date": "2024-12-21",
+          "pricing_status": "priced",
+          "summary": "Chronicle-retelling debit for asserted social leverage; discounted for evidence tier.",
+          "project_adjustment_susd": -3.6
+        }
+      ],
       "rule": "Do not attach legal, financial, karmic or spiritual debt unless a dated source explicitly does so; symbolic debt remains project language unless independently established."
     },
     "state_rule": "Roles, archetypes, upgrades, handicaps and project-symbolic placements are date/source-bounded states, not permanent human essences.",
@@ -268,13 +280,30 @@
     "confidence_note": "High confidence in dense dated presence and the externally corrected death date; mixed confidence in conflict motives and final-hours narratives."
   },
   "symbolic_account": {
-    "status": "unassessed",
+    "status": "closed",
     "good_karma": "unassessed",
-    "karmic_debt": "unassessed",
+    "karmic_debt": "1 priced debit / -3.6 sUSD",
     "dooley_welfare": {
       "enabled": false
     },
     "outstanding": [],
-    "entries": []
+    "entries": [
+      {
+        "date": "2024-12-21",
+        "type": "project-debit",
+        "kind": "coercive/social leverage in boundary dispute",
+        "amount_or_scale": "-3.6 sUSD",
+        "project_adjustment_susd": -3.6,
+        "debt_evidence_id": "debt-marty-2024-12-21-social-leverage",
+        "category": "coercive-social-leverage",
+        "evidence_tier": "chronicle-retelling",
+        "repetition_key": "marty-social-leverage",
+        "occurrence_index": 1,
+        "source_mode": "Chronicle retelling",
+        "source_ref": "knowledge/cia/characters/marty-biz.json",
+        "note": "Low-confidence debit from the Chronicle wording that Marty introduced Anja while asserting social leverage; raw conversation remains unrecovered.",
+        "status": "recorded"
+      }
+    ]
   }
 }
