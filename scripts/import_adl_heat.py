@@ -71,6 +71,17 @@ def parse_date(value: str) -> str:
             pass
     return raw
 
+def exact_date_or_none(value: str):
+    parsed = parse_date(value)
+    if not parsed:
+        return None
+    if not re.match(r"^\d{4}-\d{2}-\d{2}$", parsed):
+        return None
+    try:
+        return datetime.strptime(parsed, "%Y-%m-%d").date()
+    except ValueError:
+        return None
+
 def state_code(value: str) -> str:
     raw = str(value or "").strip()
     upper = raw.upper()
@@ -94,7 +105,19 @@ def main() -> int:
     parser.add_argument("csv_path", type=Path)
     parser.add_argument("--dataset-label", default="ADL H.E.A.T. records")
     parser.add_argument("--retrieved", default=datetime.now(timezone.utc).date().isoformat())
+    parser.add_argument("--out-dir", type=Path, default=OUT, help="Output directory; defaults to the canonical committed snapshot directory.")
+    parser.add_argument(
+        "--confirm-official-export",
+        action="store_true",
+        help="Required acknowledgement that the input file was downloaded from the official ADL H.E.A.T. Map export.",
+    )
     args = parser.parse_args()
+
+    if not args.confirm_official_export:
+        raise SystemExit("Refusing import without --confirm-official-export. Use only a reviewed download from the official ADL H.E.A.T. Map.")
+    retrieved_date = exact_date_or_none(args.retrieved)
+    if retrieved_date is None:
+        raise SystemExit("--retrieved must be an exact YYYY-MM-DD date")
 
     raw = args.csv_path.read_bytes()
     sha256 = hashlib.sha256(raw).hexdigest()
@@ -121,14 +144,28 @@ def main() -> int:
     source_rows = 0
     state_known_rows = 0
     missing_geometry = 0
+    unsupported_state_rows = 0
+    invalid_dates: list[tuple[int, str]] = []
+    invalid_coordinates: list[tuple[int, str, str]] = []
+    duplicate_source_ids: list[str] = []
+    seen_source_ids: set[str] = set()
 
     for ordinal, row in enumerate(reader, start=1):
         if not any(str(v or "").strip() for v in row.values()):
             continue
         source_rows += 1
-        state = state_code(row_value(row, columns, "state"))
-        date = parse_date(row_value(row, columns, "date"))
-        year = int(date[:4]) if re.match(r"^\d{4}-", date) else None
+        state_raw = row_value(row, columns, "state")
+        state = state_code(state_raw)
+        if state_raw and not state:
+            unsupported_state_rows += 1
+        raw_date = row_value(row, columns, "date")
+        date_obj = exact_date_or_none(raw_date)
+        if raw_date and date_obj is None:
+            invalid_dates.append((ordinal, raw_date))
+        date = date_obj.isoformat() if date_obj else ""
+        if date_obj and date_obj > retrieved_date:
+            invalid_dates.append((ordinal, raw_date))
+        year = date_obj.year if date_obj else None
         incident_type = row_value(row, columns, "type") or "Unknown"
         ideology = row_value(row, columns, "ideology") or "Unknown"
         subdivision = f"US-{state}" if state else ""
@@ -147,13 +184,22 @@ def main() -> int:
                     summary["by_year_type_token"][str(year)][token] += 1
             summary["by_ideology"][ideology] += 1
 
-        lat = float_or_none(row_value(row, columns, "latitude"))
-        lon = float_or_none(row_value(row, columns, "longitude"))
+        lat_raw = row_value(row, columns, "latitude")
+        lon_raw = row_value(row, columns, "longitude")
+        lat = float_or_none(lat_raw)
+        lon = float_or_none(lon_raw)
+        if (lat is not None and not -90 <= lat <= 90) or (lon is not None and not -180 <= lon <= 180):
+            invalid_coordinates.append((ordinal, lat_raw, lon_raw))
+            continue
         if lat is None or lon is None or not state:
             missing_geometry += 1
             continue
 
         source_id = row_value(row, columns, "id") or str(ordinal)
+        if source_id in seen_source_ids:
+            duplicate_source_ids.append(source_id)
+            continue
+        seen_source_ids.add(source_id)
         features.append({
             "type": "Feature",
             "id": f"adl-{source_id}",
@@ -177,6 +223,17 @@ def main() -> int:
             },
             "geometry": {"type": "Point", "coordinates": [lon, lat]},
         })
+
+    if source_rows == 0:
+        raise SystemExit("ADL export contains no data rows")
+    if invalid_dates:
+        examples = ", ".join(f"row {row}: {value!r}" for row, value in invalid_dates[:5])
+        raise SystemExit(f"Invalid ADL export dates or dates after retrieval date: {examples}")
+    if invalid_coordinates:
+        examples = ", ".join(f"row {row}: ({lat!r}, {lon!r})" for row, lat, lon in invalid_coordinates[:5])
+        raise SystemExit(f"Invalid ADL export coordinates: {examples}")
+    if duplicate_source_ids:
+        raise SystemExit("Duplicate ADL source IDs: " + ", ".join(sorted(set(duplicate_source_ids))[:10]))
 
     for row in state_rows.values():
         row["by_year"] = dict(sorted(row["by_year"].items()))
@@ -217,6 +274,19 @@ def main() -> int:
             "source_filename": args.csv_path.name,
             "source_sha256": sha256,
             "project_retrieved": args.retrieved,
+            "official_export_confirmed": True,
+        },
+        "import_diagnostics": {
+            "headers": headers,
+            "resolved_columns": columns,
+            "source_rows": source_rows,
+            "state_known_rows": state_known_rows,
+            "unsupported_state_rows": unsupported_state_rows,
+            "geocoded_rows": len(features),
+            "missing_geometry_rows": missing_geometry,
+            "invalid_date_rows": 0,
+            "invalid_coordinate_rows": 0,
+            "duplicate_source_ids": 0,
         },
         "methodology": {
             "display_semantics": "Counts represent records in this ADL H.E.A.T. export. They are not a general hate score, crime rate, population-normalized risk measure, or characterization of a state or its residents.",
@@ -257,10 +327,11 @@ def main() -> int:
         "features": features,
     }
 
-    OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "metadata.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
-    (OUT / "state-summary.json").write_text(json.dumps(summary_doc, indent=2) + "\n", encoding="utf-8")
-    (OUT / "incidents.geo.json").write_text(json.dumps(geo, indent=2) + "\n", encoding="utf-8")
+    out_dir = args.out_dir.resolve()
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / "metadata.json").write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
+    (out_dir / "state-summary.json").write_text(json.dumps(summary_doc, indent=2) + "\n", encoding="utf-8")
+    (out_dir / "incidents.geo.json").write_text(json.dumps(geo, indent=2) + "\n", encoding="utf-8")
     print(f"Imported {source_rows} rows · {len(features)} geocoded · {missing_geometry} without point geometry")
     print(f"Snapshot: {dated[0] if dated else 'undated'} → {dated[-1] if dated else 'undated'}")
     return 0
