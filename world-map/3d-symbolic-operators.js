@@ -26,6 +26,11 @@ const ACTIONS = {
 
 function panel(){ return document.getElementById('panel'); }
 function currentDimension(){ return window.__potatoAxisDepth?.getDimension?.() || Number(new URL(location.href).searchParams.get('axisD') || 4); }
+function activeRegistrySummary(prefix){
+  const layers=window.__potatoAtlasLayers;
+  const ids=layers?.active?.().filter(id=>String(id).startsWith(prefix)) || [];
+  return ids.length ? ids.map(id=>layers.get?.(id)?.label || id).join(' + ') : 'none';
+}
 function currentState(map){
   const center=map.getCenter();
   return {
@@ -34,9 +39,9 @@ function currentState(map){
     zoom:Number(map.getZoom().toFixed(2)),
     pitch:Number(map.getPitch().toFixed(1)),
     bearing:Number(map.getBearing().toFixed(1)),
-    field:document.getElementById('axisFieldView')?.value || 'n/a',
-    network:document.getElementById('empiricalNetworkView')?.value || 'n/a',
-    relation:document.getElementById('relationType')?.value || 'all',
+    field:activeRegistrySummary('axis.'),
+    network:activeRegistrySummary('group.'),
+    relation:window.__potatoAtlasSelection?.getRelationMode?.() || document.getElementById('relationType')?.value || 'all',
     traceDepth:document.getElementById('traceDepth')?.value || 'n/a'
   };
 }
@@ -44,6 +49,13 @@ function setSelect(id,value){
   const el=document.getElementById(id); if(!el) return false;
   const option=[...el.options].find(o=>o.value===value); if(!option) return false;
   el.value=value; el.dispatchEvent(new Event('change',{bubbles:true})); return true;
+}
+function activateRegistryLayers(ids){
+  const layers=window.__potatoAtlasLayers;
+  if(!layers?.activate) return false;
+  let changed=false;
+  for(const id of ids) changed=layers.activate(id) || changed;
+  return changed;
 }
 function ensureActive(id){ const el=document.getElementById(id); if(el && !el.classList.contains('active')) el.click(); }
 function setDimension(d,options){ window.__potatoAxisDepth?.setDimension?.(d,options); }
@@ -103,8 +115,8 @@ function applyOperator(name,formal,depths,map){
     extra='<div class="card"><b>Tree expansion</b><p class="muted">Relations and semantic interior handles are enabled and trace depth is widened. Tree should expand lineage, dependencies, consequences or capabilities from a selected real node rather than draw decorative branches.</p></div>';
   } else if(name==='garden'){
     setDimension(8);
-    setSelect('axisFieldView','all');
-    extra='<div class="card"><b>Garden composition</b><p class="muted">All project fields are made visible so overlaps and differentiated participation can be compared. A later viability layer can score whether arrangements preserve resilience and autonomous capacity under explicit constraints.</p></div>';
+    activateRegistryLayers(['axis.north','axis.west','axis.east','axis.south']);
+    extra='<div class="card"><b>Garden composition</b><p class="muted">All canonical project Axis lenses are activated through the Layer Registry so overlaps and differentiated participation can be compared. A later viability layer can score whether arrangements preserve resilience and autonomous capacity under explicit constraints.</p></div>';
   } else if(name==='relay'){
     setDimension(9);
     ensureActive('relations');

@@ -1,7 +1,7 @@
 {
   "id": "world-map-scale-classification",
   "version": "1.0.0",
-  "updated": "2026-09-20",
+  "updated": "2026-09-21",
   "status": "active architecture classification",
   "authority": "data/world-map-scale-contract.json",
   "purpose": "Classify World Map zoom numbers so shared behavioral capability gates are centralized while cartographic interpolation, camera intent and test fixtures remain local and explicit.",
@@ -126,20 +126,6 @@
           "module": "world-map/3d-demography.js",
           "uses": [
             "population-label visibility/text interpolation"
-          ],
-          "classification": "presentation"
-        },
-        {
-          "module": "world-map/3d-fields.js",
-          "uses": [
-            "outline line-width interpolation"
-          ],
-          "classification": "presentation"
-        },
-        {
-          "module": "world-map/3d-networks.js",
-          "uses": [
-            "outline line-width interpolation"
           ],
           "classification": "presentation"
         },
