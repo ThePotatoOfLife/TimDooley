@@ -128,7 +128,7 @@ function renderMenu() {
     const current=row.availability==='current';
     const on=isActive(row.id);
     const note=[row.epistemic_type,row.geography,row.source_owner,row.status_note].filter(Boolean).join(' · ');
-    return `<button type="button" class="atlas-world-option${on?' active':''}" data-evidence-layer="${esc(row.id)}" aria-pressed="${on?'true':'false'}" ${current?'':'disabled'} title="${esc(note)}"><span>${esc(row.label)}<small>${esc(row.epistemic_type || '')}${current?'':' · planned'}</small></span></button>`;
+    return `<button type="button" class="atlas-world-option${on?' active':''}" data-evidence-layer="${esc(row.id)}" aria-pressed="${on?'true':'false'}" ${current?'':'disabled'} title="${esc(note)}"><span>${esc(row.label)}<small>${esc([row.epistemic_type,row.data_status].filter(Boolean).join(' · '))}${current?'':' · planned'}</small></span></button>`;
   }).join('');
   pop.innerHTML=`<div class="atlas-world-static"><span>Evidence datasets</span><small>${activeIds.size ? `${activeIds.size} active` : 'source-classified · lazy'}</small></div>${rows || '<div class="atlas-world-empty">No evidence layers registered</div>'}<div class="atlas-world-static"><small>Evidence datasets preserve source methodology and snapshot vintage; they do not become generic scores.</small></div>`;
   details.classList.toggle('active',activeIds.size>0);
