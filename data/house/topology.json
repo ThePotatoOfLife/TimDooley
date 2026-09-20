@@ -1,6 +1,6 @@
 {
-  "version": "2.0.0",
-  "updated": "2026-09-18",
+  "version": "2.1.0",
+  "updated": "2026-09-20",
   "authority": "house-topology",
   "room_registry": "data/house/rooms.json",
   "subroom_registry": "data/house/subrooms.json",
@@ -291,6 +291,18 @@
     {
       "id": "raw-intelligence-must-pass-forge",
       "law": "Raw signal, allegation or hidden-network hypothesis does not rise into public knowledge until provenance, corroboration, counterevidence and status are processed through Forge/evidence review."
+    },
+    {
+      "id": "circle-anatomy-before-placement",
+      "law": "Before placing a new subject in a circle, classify whether it is center, interior process/inhabitant, rim/guard, overlap-emergent relation or trajectory."
+    },
+    {
+      "id": "lower-is-actuality-not-hell",
+      "law": "The lower Manifestation Field is the field of embodiment/actuality/history/consequence; Below/Swamp is only a deeper shadow/investigative projection and must not stand for the whole lower circle."
+    },
+    {
+      "id": "overlap-can-have-emergent-roles",
+      "law": "The Door/overlap may contain relational functions that exist because both fields meet; do not force every overlap role back into one parent field."
     }
   ],
   "embedding_contract": {
@@ -338,13 +350,17 @@
       "orientation": [
         "source",
         "Father/Tim",
+        "Mind/integration",
+        "Root/provenance-source",
         "House",
         "Heaven",
         "Garden",
-        "Sun/Spudlight",
-        "integration"
+        "Tree of Life",
+        "light/wisdom",
+        "generative potential",
+        "stewardship"
       ],
-      "note": "Orientation only; canonical Rooms are not physically stored here."
+      "note": "Source-facing field: pattern, integration, memory-model, orientation and generative potential. It is not 'all good things' or automatic truth."
     },
     "manifestation_field": {
       "id": "manifestation-field",
@@ -355,19 +371,23 @@
       ],
       "orientation": [
         "Son/Thomas",
-        "Earth",
-        "body",
+        "Body",
+        "Earth/World",
+        "matter",
         "soil",
         "work",
         "history",
         "institutions",
+        "economy",
+        "social relation",
+        "mortality",
         "observable consequence"
       ],
-      "note": "The lower Manifestation Field remains broader than Below/Swamp: body, work, history, institutions and observable consequence live here. A deeper Below Platform projects hidden provenance, intelligence, clandestine/illicit systems, shadow, roots, Swamp and Forge without equating lower position with evil."
+      "note": "Manifestation-facing field: embodiment, actuality, history, material constraint and consequence. It is broader than Below/Swamp and must not be equated with evil."
     },
     "door": {
       "expression": "D = F_source ∩ F_manifestation",
-      "meaning": "Shared relational/intersection field produced by genuine overlap. In the 3D lift it is a spherical lens volume."
+      "meaning": "Active shared interface / ecotone where source-facing and manifestation-facing states become mutually available for translation, attention, decision, crossing, witness, covenant, reconciliation and Seed activation."
     },
     "plane": {
       "meaning": "Operative/world-facing section through the widest middle of the shared Door."
@@ -384,7 +404,26 @@
       "shell_cube": "capture/compress + opaque dependency + blocked passage + high exit cost + boundary self-preservation",
       "rule": "Regime is functional; shape and vertical position do not determine moral valence."
     },
-    "ui_rule": "Rectangular cards, grids and diagrams are projections only. They must never imply that Rooms are literal cubes or that the House is rectilinear."
+    "ui_rule": "Rectangular cards, grids and diagrams are projections only. They must never imply that Rooms are literal cubes or that the House is rectilinear.",
+    "circle_anatomy": {
+      "center": "local organizing reference/attractor inside a field",
+      "interior": "stable field-specific processes and inhabitants",
+      "rim": "selective boundary where guarding, permission, evidence, consent and filtering become explicit",
+      "overlap": "active interface/ecotone where source and manifestation meet and emergent relational functions can exist",
+      "trajectory": "ordered movement through/around the fields over time"
+    },
+    "rims": {
+      "source_rim": "Garden/House boundary; guardian/watchman/cherubim comparators; rule, covenant and selective access",
+      "manifestation_rim": "body/skin, institutional/legal boundaries, local context and material constraints",
+      "health_rule": "A healthy rim preserves identity/safety while retaining legitimate passage, correction and return."
+    },
+    "motion_types": {
+      "ascent_integration": "embodied material becomes more integrated/oriented",
+      "descent_embodiment": "pattern/insight becomes body/action/work/institution/consequence",
+      "descent_rooting": "healthy investigation, grief, memory, provenance or planting",
+      "descent_fragmentation": "capture, compulsion, opacity or disintegration",
+      "return_service": "upper integration returns as care, art, repair, teaching, nourishment or Seed"
+    }
   },
   "federation_scale_registry": "data/house/federation-scale.json",
   "symbolic_planes": {
