@@ -195,5 +195,17 @@
     "common_tetraploid_model": "12 chromosome groups × 4 homologous haplotypes = 48 nuclear chromosomes (2n=4x=48), with cultivar-specific sequence and structural differences among homologs.",
     "organism_rule": "Every developmental stage in this atlas is genotype-conditioned: dormancy, sprouting, maturity, tuberization, starch metabolism, defense and source-sink behavior emerge from distributed gene/regulatory networks interacting with environment.",
     "extra_genomes": "Chloroplast and mitochondrial genomes are separate from the nuclear 12×4 system and must be included in a complete genetic model."
+  },
+  "canonical_deepening": {
+    "rule": "This atlas owns organism-scale cycle structure. Fine-grained molecular, genomic, anatomical, ecological and pathology claims route to the dedicated deep biology owners.",
+    "routes": [
+      "potato-biological-genealogy",
+      "potato-genetics-genomics-atlas",
+      "potato-molecular-development-and-signalling",
+      "potato-anatomy-metabolism-ecology",
+      "potato-life-cycle-state-machine",
+      "potato-pathology-immunity-storage",
+      "potato-biological-lexicon"
+    ]
   }
 }
