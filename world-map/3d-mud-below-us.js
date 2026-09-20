@@ -4,6 +4,8 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Mud / Below overlay requires the core map.');
+if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
+const motion = window.__potatoAtlasMotion;
 
 const DATA_URL = '../data/world-symbolic/us-mud-below-project-cases.geo.json';
 const SOURCE_ID = 'project-mud-below-us';
@@ -159,7 +161,7 @@ async function setEnabled(next) {
   setLayerVisibility(enabled);
   updateUrl();
   if (enabled) {
-    try { map.fitBounds([[-125,24],[-66,50]], { padding:60, duration:550, maxZoom:4.8 }); } catch {}
+    try { motion.fitBounds(map, [[-125,24],[-66,50]], { padding:60, duration:550, maxZoom:4.8 }); } catch {}
   } else {
     await window.__potatoAtlasSubdivisions?.releasePartition?.('USA', 'mud-below-us');
   }
