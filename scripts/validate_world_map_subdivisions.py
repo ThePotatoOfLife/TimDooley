@@ -17,6 +17,7 @@ LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 INDEX = ROOT / "data" / "world-subdivisions" / "index.json"
 USA = ROOT / "data" / "world-subdivisions" / "USA.geo.json"
 DNK = ROOT / "data" / "world-subdivisions" / "DNK.geo.json"
+CAN = ROOT / "data" / "world-subdivisions" / "CAN.geo.json"
 GEO_KERNEL_REGRESSION = ROOT / "scripts" / "test_world_map_geo_kernel.mjs"
 WRAP_MATH_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_wrap_math.mjs"
 FREEZE_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_freeze.mjs"
@@ -34,7 +35,7 @@ EXPECTED_RUNTIME_BUDGET = {
 def main() -> int:
     errors: list[str] = []
     required = (
-        BUILDER, MODULE, GEO_KERNEL, SCALE, SCALE_CONTRACT, LIFECYCLE, INDEX, USA, DNK,
+        BUILDER, MODULE, GEO_KERNEL, SCALE, SCALE_CONTRACT, LIFECYCLE, INDEX, USA, DNK, CAN,
         GEO_KERNEL_REGRESSION, WRAP_MATH_REGRESSION,
         FREEZE_REGRESSION, MULTI_COUNTRY_REGRESSION, BOUNDED_RUNTIME_REGRESSION,
     )
@@ -50,6 +51,7 @@ def main() -> int:
         index = json.loads(INDEX.read_text(encoding="utf-8"))
         usa = json.loads(USA.read_text(encoding="utf-8"))
         dnk = json.loads(DNK.read_text(encoding="utf-8"))
+        can = json.loads(CAN.read_text(encoding="utf-8"))
         for token in ("GENZ2025", "cb_2025_us_state_20m.zip", "NST-EST2025-ALLDATA.csv", "EXPECTED_US_UNITS = 51", "parse_state_kml", "federal district"):
             if token not in builder:
                 errors.append(f"subdivision builder missing marker: {token}")
@@ -154,6 +156,43 @@ def main() -> int:
             if isinstance(population, dict) and isinstance(population.get("value"), (int, float)):
                 errors.append(f"{props.get('id')}: Denmark population must not be invented in geometry-first snapshot")
 
+        can_descriptor = partitions.get("CAN", {})
+        if can_descriptor.get("feature_count") != 13:
+            errors.append("CAN subdivision index must declare 13 province/territory features")
+        if can_descriptor.get("id_prefix") != "CA-":
+            errors.append("CAN subdivision descriptor must declare CA- id_prefix")
+        if can_descriptor.get("parent_name") != "Canada" or not isinstance(can_descriptor.get("viewport_bounds"), dict):
+            errors.append("CAN subdivision descriptor must declare Canada parent and viewport bounds")
+        if can_descriptor.get("population_status") != "unknown-not-zero":
+            errors.append("CAN missing population must remain explicitly unknown-not-zero")
+        can_features = can.get("features", []) if can.get("type") == "FeatureCollection" else []
+        if len(can_features) != 13:
+            errors.append(f"CAN subdivision snapshot must contain 13 features; found {len(can_features)}")
+        can_ids = [str((feature.get("properties") or {}).get("id") or "") for feature in can_features]
+        if len(set(can_ids)) != 13 or not all(value.startswith("CA-") for value in can_ids):
+            errors.append("CAN subdivision ids must be 13 unique CA-* identifiers")
+        province_count = 0
+        territory_count = 0
+        for feature in can_features:
+            props = feature.get("properties") or {}
+            kind = props.get("subdivision_type")
+            if kind == "province":
+                province_count += 1
+            elif kind == "territory":
+                territory_count += 1
+            else:
+                errors.append(f"{props.get('id')}: Canadian subdivision must be typed province or territory")
+            if props.get("parent_iso3") != "CAN" or props.get("parent_name") != "Canada":
+                errors.append(f"{props.get('id')}: Canadian parent metadata drift")
+            population = props.get("population") or {}
+            if population.get("value") is not None:
+                errors.append(f"{props.get('id')}: Canada population must not be invented in geometry-first snapshot")
+            provenance = f"{props.get('geometry_source') or ''} {props.get('administrative_reference') or ''}"
+            if "Statistics Canada" not in provenance:
+                errors.append(f"{props.get('id')}: missing Statistics Canada administrative provenance")
+        if province_count != 10 or territory_count != 3:
+            errors.append(f"Canada subdivision typing must remain 10 provinces + 3 territories; found {province_count}+{territory_count}")
+
         node = shutil.which("node")
         if node:
             checked = subprocess.run([node, "--check", str(MODULE)], capture_output=True, text=True)
@@ -182,7 +221,7 @@ def main() -> int:
         for error in errors:
             print("-", error)
         return 1
-    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · Denmark 5/5 · wrap-safe geo kernel · shared scale ownership · budgets · freeze + multi-country + bounded-runtime regressions")
+    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · Denmark 5/5 · Canada 13/13 · wrap-safe geo kernel · shared scale ownership · budgets · freeze + multi-country + bounded-runtime regressions")
     return 0
 
 
