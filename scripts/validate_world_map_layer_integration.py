@@ -111,11 +111,12 @@ def main():
         "__potatoAtlasLoadModule","setEnabled","reset",
     ),errors)
     adl_js=require(ADL_JS,(
-        "incidentTypeTokens","flatMap","retainPartition('USA')","releasePartition?.('USA')",
+        "incidentTypeTokens","flatMap","retainPartition('USA', 'adl-heat')","releasePartition?.('USA', 'adl-heat')",
+        "potato-atlas-subdivisions-source-change","loadPromise",
         "slot:'subnational-fill'","slot:'context-network'","State shading = filtered record count",
         "not a general hate score or crime score",
     ),errors)
-    subdiv=require(SUBDIV,("forcedPartitions","retainPartition","releasePartition","reconcileActive"),errors)
+    subdiv=require(SUBDIV,("forcedPartitions","forcedPartitionOwners","retentionOwners","retainPartition","releasePartition","reconcileActive","potato-atlas-subdivisions-source-change","contextLineZoom"),errors)
     render=require(RENDER,("'subnational-fill'","atlas-subdivision-line","Subnational scalar/evidence fills"),errors)
     require(MAP_STATE,("__potatoAtlasEvidenceLayers","evidenceLayer","adlYear","adlType"),errors)
     require(CONTEXT,("__potatoAtlasEvidenceLayers","potato-atlas-evidence-layer-change"),errors)
