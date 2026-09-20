@@ -171,7 +171,7 @@ function traceRelationData(code) {
   for (const e of graph.edges) {
     const a = by3[e.a]?.latlng, b = by3[e.b]?.latlng;
     if (!a || !b) continue;
-    features.push({type:'Feature', properties:{a:e.a,b:e.b,types:(e.types||[]).join(' · '),layer:e.layer||'',depth:e.trace_level,raw:JSON.stringify(e)}, geometry:{type:'LineString',coordinates:[[a[1],a[0]],[b[1],b[0]]]}});
+    features.push({type:'Feature', properties:{a:e.a,b:e.b,types:(e.types||[]).join(' · '),layer:e.layer||'',depth:e.trace_level,geometry_meaning:'relationship_chord',raw:JSON.stringify(e)}, geometry:{type:'LineString',coordinates:[[a[1],a[0]],[b[1],b[0]]]}});
   }
   return {type:'FeatureCollection', features};
 }
@@ -224,7 +224,7 @@ function hubData(code, record) {
     const coord=[lon+dx,Math.max(-82,Math.min(82,lat+dy))];
     const label=`${group.label} · ${group.modules.length}`;
     pts.push({type:'Feature',properties:{id:group.id,label,plane:'group',code,count:group.modules.length},geometry:{type:'Point',coordinates:coord}});
-    lines.push({type:'Feature',properties:{id:group.id,code},geometry:{type:'LineString',coordinates:[[lon,lat],coord]}});
+    lines.push({type:'Feature',properties:{id:group.id,code,geometry_meaning:'symbolic_route'},geometry:{type:'LineString',coordinates:[[lon,lat],coord]}});
   });
   return {points:{type:'FeatureCollection',features:pts},lines:{type:'FeatureCollection',features:lines}};
 }
