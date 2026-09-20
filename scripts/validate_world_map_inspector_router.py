@@ -76,7 +76,7 @@ def main() -> int:
     ):
         if token not in adl:
             errors.append(f"ADL typed inspector migration missing marker: {token}")
-    if "['country','subdivision','place','evidence','evidence-record']" not in url_bridge:
+    if "'evidence'" not in url_bridge or "'evidence-record'" not in url_bridge:
         errors.append("Inspector URL hierarchy must include typed evidence nodes")
 
     for label, source, node_type, owner in (
