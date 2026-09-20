@@ -115,6 +115,7 @@ function conversationsHtml(){
      const raw=arr(x.raw_fragments);
      const details=arr(x.ordinary_details);
      return '<article class="event"><time>'+esc(x.date)+'</time><h3>'+esc(x.title||x.id)+'</h3>'+
+       '<p><b>Source class:</b> '+esc(x.source_class||'conversation recovery')+'</p>'+
        '<p><b>Modes:</b> '+esc(arr(x.modes).join(' / '))+'</p>'+
        (raw.length?'<ul>'+raw.map(v=>'<li>'+esc(v)+'</li>').join('')+'</ul>':'')+
        (details.length?'<p class="mono"><b>Ordinary detail:</b> '+details.map(esc).join(' · ')+'</p>':'')+
