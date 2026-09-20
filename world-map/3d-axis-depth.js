@@ -1,5 +1,10 @@
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('axis-depth', ['axisD']);
+
 if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
 const motion = window.__potatoAtlasMotion;
+const inspector = window.__potatoAtlasInspector;
 const DATA_URL = '../data/axis-depths.json';
 const ROOT_ID = 'axisDepthNavigator';
 const TINT_ID = 'axisDepthTint';
@@ -60,7 +65,7 @@ function directionLabel(current) {
   return 'Descending · broader / more dispersed';
 }
 
-function renderPanel(data, current) {
+function renderAxisDepthPanel(data, current) {
   const panel = document.getElementById('panel');
   if (!panel || !current) return;
   const above = levelByDimension(data, current.dimension + 1);
@@ -94,6 +99,27 @@ function renderPanel(data, current) {
   document.getElementById('axisDoor')?.addEventListener('click',()=>window.__potatoAxisDepth?.setDimension(5));
   document.getElementById('axisGuide')?.addEventListener('click',()=>{const path=current.dimension<4?'strife':current.dimension>5?'life':null;location.href='../axis/'+(path?'?path='+path+'#paths':'#gateway')});
   document.getElementById('axisFocusNorth')?.addEventListener('click',()=>window.__potatoAxisDepth?.focusNorth());
+  window.__potatoAtlasPanelLifecycle?.publish?.();
+}
+function openAxisDepthInspector(data, current) {
+  if (!current) return false;
+  if (!inspector?.open) { renderAxisDepthPanel(data,current); return true; }
+  const top = inspector.current?.();
+  if (!top) {
+    inspector.setBaseline({
+      type:'axis', id:'north-axis', owner:'axis-depth',
+      render:() => renderAxisDepthPanel(data,current),
+    });
+  }
+  const parent = inspector.current?.();
+  inspector.open({
+    type:'axis-depth',
+    id:`D${current.dimension}`,
+    owner:'axis-depth',
+    parent:parent ? { type:parent.type, id:parent.id } : { type:'axis', id:'north-axis' },
+    render:() => renderAxisDepthPanel(data,current),
+  });
+  return true;
 }
 
 function installNavigator(map, data) {
@@ -151,9 +177,7 @@ function installNavigator(map, data) {
     updateButtons(current.dimension);
     const style = tintFor(current.dimension);
     if (tint) { tint.style.background = style.background; tint.style.opacity = String(style.opacity); }
-    const url = new URL(location.href);
-    if (current.dimension === DEFAULT_DIMENSION) url.searchParams.delete('axisD'); else url.searchParams.set('axisD',String(current.dimension));
-    history.replaceState(null,'',url);
+    urlState.patch('axis-depth', { set:{ axisD:current.dimension === DEFAULT_DIMENSION ? null : String(current.dimension) } });
 
     if (!options.silentCamera) {
       const baseZoom = Math.max(map.getZoom(),2.35);
@@ -167,7 +191,7 @@ function installNavigator(map, data) {
         motion.easeTo(map,{center:[-36,73.4],zoom:Math.max(2.0,baseZoom-.12*depth),pitch:28-depth*7,bearing:-depth*16,duration:900});
       }
     }
-    renderPanel(data,current);
+    if (options.silentInspector) renderAxisDepthPanel(data,current); else openAxisDepthInspector(data,current);
     window.dispatchEvent(new CustomEvent('atlas-axis-dimension-change',{detail:{dimension:current.dimension,id:current.id,label:current.label,direction:current.direction,breadth:breadthFor(data,current.dimension)}}));
   }
 
@@ -175,7 +199,7 @@ function installNavigator(map, data) {
   window.__potatoAxisDepth = {data,setDimension,setLevel:setDimension,focusNorth,getDimension:()=>Number(new URL(location.href).searchParams.get('axisD')||DEFAULT_DIMENSION),getBreadth:()=>breadthFor(data,Number(new URL(location.href).searchParams.get('axisD')||DEFAULT_DIMENSION))};
   const legacy = new URL(location.href).searchParams.get('axisLevel');
   const requested = Number(new URL(location.href).searchParams.get('axisD') || (legacy !== null ? Number(legacy)+4 : DEFAULT_DIMENSION));
-  setDimension(levelByDimension(data,requested)?.dimension ?? DEFAULT_DIMENSION,{silentCamera:true});
+  setDimension(levelByDimension(data,requested)?.dimension ?? DEFAULT_DIMENSION,{silentCamera:true,silentInspector:true});
   window.addEventListener('atlas-axis-open',()=>{root.style.display='block';setDimension(5);focusNorth();});
 }
 
