@@ -1,6 +1,6 @@
 {
-  "version": "4.0.0",
-  "updated": "2026-09-19",
+  "version": "4.1.0",
+  "updated": "2026-09-20",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
   "principle": "Every substantive knowledge file has at most one primary Room owner. Cross-Room meaning travels through interfaces, collections and references rather than duplicate ownership. Curated navigation/reader/story/corporium material is classified separately.",
@@ -1186,7 +1186,7 @@
       "title": "Neurobiology",
       "dwelling_id": "life-body",
       "purpose": "Own brain structures, networks, physiology and evidence grading relevant to body research.",
-      "primary_file_count": 7,
+      "primary_file_count": 13,
       "featured_holdings": [
         {
           "path": "knowledge/body/brain-body-organ-axes-deepening-wave-3.json",
@@ -1229,6 +1229,42 @@
           "id": "whole-brain-neurobiology-deepening-wave-1",
           "kind": "room holding",
           "basis": "body-topic"
+        },
+        {
+          "path": "knowledge/body/brain-room-deep-atlas.json",
+          "id": "brain-room-deep-atlas",
+          "kind": "granular whole-brain room atlas",
+          "basis": "body-canonical-owner"
+        },
+        {
+          "path": "knowledge/body/cranial-brainstem-room-atlas.json",
+          "id": "cranial-brainstem-room-atlas",
+          "kind": "cranial nerve, brainstem and state-circuit atlas",
+          "basis": "body-canonical-owner"
+        },
+        {
+          "path": "knowledge/body/spinal-cord-microcircuit-atlas.json",
+          "id": "spinal-cord-microcircuit-atlas",
+          "kind": "spinal laminae, tracts and local-circuit atlas",
+          "basis": "body-canonical-owner"
+        },
+        {
+          "path": "knowledge/body/vertebral-33-room-atlas.json",
+          "id": "vertebral-33-room-atlas",
+          "kind": "33-room vertebral and neural-coordinate atlas",
+          "basis": "body-canonical-owner"
+        },
+        {
+          "path": "knowledge/body/neural-development-lineage-atlas.json",
+          "id": "neural-development-lineage-atlas",
+          "kind": "neural tube to adult-room developmental atlas",
+          "basis": "body-canonical-owner"
+        },
+        {
+          "path": "knowledge/body/cortical-celltype-parcellation-atlas.json",
+          "id": "cortical-celltype-parcellation-atlas",
+          "kind": "cortical layers, cell types and parcellation atlas",
+          "basis": "body-canonical-owner"
         }
       ],
       "public_surface_ids": [
@@ -1237,7 +1273,8 @@
       ],
       "interface_ids": [
         "if-symbolic-neuro",
-        "if-body-neuro"
+        "if-body-neuro",
+        "if-neuro-symbolic-architecture"
       ],
       "related_collection_ids": [],
       "boundary": "Human, animal, theoretical and speculative evidence remain separately graded.",
@@ -1248,7 +1285,7 @@
       "title": "Whole-body Physiology",
       "dwelling_id": "life-body",
       "purpose": "Own body-system integration across nervous, autonomic, cardiovascular, respiratory, gut, immune and fluid interfaces.",
-      "primary_file_count": 4,
+      "primary_file_count": 7,
       "featured_holdings": [
         {
           "path": "knowledge/body/body-science-context-atlas.json",
@@ -1273,6 +1310,24 @@
           "id": "index",
           "kind": "room holding",
           "basis": "body-remainder"
+        },
+        {
+          "path": "knowledge/body/axis-orientation-autonomic-interface-atlas.json",
+          "id": "axis-orientation-autonomic-interface-atlas",
+          "kind": "orientation, autonomic, meningeal and body-interface atlas",
+          "basis": "body-canonical-owner"
+        },
+        {
+          "path": "knowledge/body/spine-csf-levels-axis-atlas.json",
+          "id": "spine-csf-levels-axis-atlas",
+          "kind": "spine, roots, meninges and CSF-level atlas",
+          "basis": "body-canonical-owner"
+        },
+        {
+          "path": "knowledge/body/glia-neurovascular-barrier-atlas.json",
+          "id": "glia-neurovascular-barrier-atlas",
+          "kind": "glia, neurovascular unit and living-boundary atlas",
+          "basis": "body-canonical-owner"
         }
       ],
       "public_surface_ids": [
@@ -1293,7 +1348,7 @@
       "title": "Symbolic Body Crosswalk",
       "dwelling_id": "life-body",
       "purpose": "Own explicitly comparative mappings between project symbols and anatomy while preserving the empirical/symbolic firewall.",
-      "primary_file_count": 3,
+      "primary_file_count": 6,
       "featured_holdings": [
         {
           "path": "knowledge/body/body-symbolism-map.json",
@@ -1312,6 +1367,24 @@
           "id": "tim-neurobiology-relational-reconciliation",
           "kind": "room holding",
           "basis": "body-topic"
+        },
+        {
+          "path": "knowledge/body/inner-axis-integrated-atlas.json",
+          "id": "inner-axis-integrated-atlas",
+          "kind": "integrated House/Court/Door/Ladder comparative route",
+          "basis": "body-canonical-owner"
+        },
+        {
+          "path": "knowledge/body/thalamus-house-horus-crown-atlas.json",
+          "id": "thalamus-house-horus-crown-atlas",
+          "kind": "thalamus, Horus, Crown and House comparison atlas",
+          "basis": "body-canonical-owner"
+        },
+        {
+          "path": "knowledge/body/body-axis-chakra-kundalini-comparative-atlas.json",
+          "id": "body-axis-chakra-kundalini-comparative-atlas",
+          "kind": "chakra/kundalini and anatomy comparison atlas",
+          "basis": "body-canonical-owner"
         }
       ],
       "public_surface_ids": [
@@ -1321,7 +1394,10 @@
       ],
       "interface_ids": [
         "if-symbolic-neuro",
-        "if-body-theology"
+        "if-body-theology",
+        "if-symbolic-architecture-body",
+        "if-myth-body",
+        "if-traditions-body"
       ],
       "related_collection_ids": [
         "corporium"
