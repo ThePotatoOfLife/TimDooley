@@ -74,6 +74,16 @@ def main() -> int:
             if token not in text:
                 errors.append(f"UI layout coordinator missing {token}")
 
+    index = ROOT / "world-map" / "index.html"
+    if index.exists():
+        shell = index.read_text(encoding="utf-8", errors="replace")
+        for token in ("--atlas-z-tint:1","--atlas-z-decoration:2","--atlas-z-axis:3","--atlas-z-map-control:4","--atlas-z-selection:6","--atlas-z-context:7","--atlas-z-overlay:8","--atlas-z-header:10","--atlas-z-menu:30"):
+            if token not in shell:
+                errors.append(f"World Map shell missing semantic layering token {token}")
+        for token in ("z-index:var(--atlas-z-header,10)","z-index:var(--atlas-z-menu,30)","z-index:var(--atlas-z-map-control,4)"):
+            if token not in shell:
+                errors.append(f"World Map shell is not consuming semantic layering token {token}")
+
     if PHYSICAL.exists():
         text = PHYSICAL.read_text(encoding="utf-8", errors="replace")
         for token in (
