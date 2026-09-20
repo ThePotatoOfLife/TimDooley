@@ -67,8 +67,9 @@ def alias_page(question: str, canonical_url: str) -> str:
 <link rel="canonical" href="{safe_url}">
 <meta http-equiv="refresh" content="0; url={safe_url}">
 </head><body>
-<main><p>This question is indexed at <a href="{safe_url}">{safe_question}</a>.</p></main>
+<main data-tts-longform><p>This question is indexed at <a href="{safe_url}">{safe_question}</a>.</p></main>
 <script>location.replace({js_url})</script>
+<script src="https://thepotatooflife.github.io/TimDooley/app/site-tts.js" defer></script>
 </body></html>'''
 
 
