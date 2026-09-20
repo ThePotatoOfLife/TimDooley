@@ -150,7 +150,7 @@ async function setEnabled(next) {
   const requested = Boolean(next);
   if (requested) {
     if (window.__potatoAtlasSubdivisions?.retainPartition) {
-      await window.__potatoAtlasSubdivisions.retainPartition('USA');
+      await window.__potatoAtlasSubdivisions.retainPartition('USA', 'mud-below-us');
     } else {
       await window.__potatoAtlasSubdivisions?.refresh?.();
     }
@@ -161,8 +161,7 @@ async function setEnabled(next) {
   if (enabled) {
     try { map.fitBounds([[-125,24],[-66,50]], { padding:60, duration:550, maxZoom:4.8 }); } catch {}
   } else {
-    const adlEnabled = window.__potatoAtlasAdlHeat?.status?.()?.enabled;
-    if (!adlEnabled) await window.__potatoAtlasSubdivisions?.releasePartition?.('USA');
+    await window.__potatoAtlasSubdivisions?.releasePartition?.('USA', 'mud-below-us');
   }
   window.dispatchEvent(new CustomEvent('potato-atlas-mud-below-change', {
     detail:{ enabled, records:data.features.length, epistemicType:data?.metadata?.epistemic_type || 'project-interpretive' }
