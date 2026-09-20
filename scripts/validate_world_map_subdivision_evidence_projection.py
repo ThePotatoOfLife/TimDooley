@@ -20,7 +20,12 @@ def main()->int:
     sub=SUB.read_text(encoding="utf-8",errors="replace")
     search=SEARCH.read_text(encoding="utf-8",errors="replace")
     adl=ADL.read_text(encoding="utf-8",errors="replace")
-    for token in ("registerEvidenceProvider","evidenceSummaries(id)","subdivisionEvidenceHtml","data-subdivision-evidence-provider"):
+    for token in (
+        "registerEvidenceProvider","evidenceSummaries(id)","subdivisionEvidenceHtml","data-subdivision-evidence-provider",
+        "populationDensity(p)","data-subdivision-places","hydrateSubdivisionPlaces(feature)","inSubdivision",
+        "Evidence & project context","subdivisionContextActions","data-subdivision-context",
+        "Show ADL evidence","Show Mud / Below project cases",
+    ):
         if token not in sub: errors.append(f"subdivision runtime missing {token!r}")
     for token in ("evidenceSummaries?.(id)","result.evidence?.length","evidenceLabel"):
         if token not in search: errors.append(f"unified search missing generic evidence projection {token!r}")
