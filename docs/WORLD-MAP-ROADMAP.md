@@ -127,7 +127,8 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. Work pro
 - [x] Add Ukraine as a geometry-first first-order administrative partition with explicit source-representation caveats.
 - [ ] Add Russia through the same partition contract from a compact pinned ADM1 source.
 - [ ] Add further country partitions only after provenance, byte budget, search records and national-context readability pass the same validator.
-- [ ] Keep dated occupation/control/front-line states in a separate conflict-context overlay family; never rewrite administrative partitions into live war geometry.
+- [x] Define a separate dated conflict-snapshot contract for control/contested/historical-front/humanitarian/event-aggregate geometry.
+- [ ] Promote conflict snapshots only after reviewed geometry + source bundles exist; never rewrite administrative partitions into live war geometry.
 
 ## NEXT — VERIFICATION + OBSERVABILITY
 
