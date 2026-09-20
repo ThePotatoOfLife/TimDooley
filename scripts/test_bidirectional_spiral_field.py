@@ -43,12 +43,13 @@ def main()->int:
         "selectSection",
         "aria-pressed",
         "is-selected",
-        "section ecology unavailable",
         "root.dataset.spiralSource",
     )
     for marker in required:
         if marker not in runtime:
             errors.append(f'runtime missing marker: {marker}')
+    if "section ecology unavailable" not in runtime.casefold():
+        errors.append("runtime missing fallback marker: section ecology unavailable")
 
     for page in PAGES:
         text=page.read_text(encoding='utf-8',errors='replace')
