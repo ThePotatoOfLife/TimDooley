@@ -118,14 +118,15 @@
 
 ### WM-021 · URL state ownership is fragmented — P1
 **Status:** partially fixed (Phase 1 on main, 2026-09-20).  
-**Completed:** canonical `3d-url-state.js` owner with parameter claims, collision detection, atomic patches and diagnostics. Analytical layers, Physical, Geography overlays, Evidence coordinator and ADL filters no longer call `history.replaceState` directly.  
-**Remaining:** country/pins/relation/compare, Inspector mirrors (`inspect`/country/subdivision/place), Time, Axis/specialist state and legacy Lens/Fields/Networks still own direct writes.  
+**Completed:** canonical `3d-url-state.js` owner with parameter claims, collision detection, atomic patches and diagnostics. Analytical layers, Physical, Geography overlays, Evidence coordinator, ADL filters, Axis/Axis Depth, Mud/Below, boundary-view, Lens, Fields and Networks no longer own direct URL writes. A Lens/Analytical ownership collision discovered during migration was fixed by giving `layers` and `lens/lensOption` separate owners.  
+**Remaining:** country/pins/relation/compare, Inspector mirrors (`inspect`/country/subdivision/place), Time and several specialist trace/path/compositor parameters still own direct writes.  
 **Risk:** remaining mirrored/compatibility families can still race or preserve/delete each other incorrectly.  
 **Next:** define transaction groups for selection+Inspector and Time, then migrate legacy/specialist writers; validator forbids direct writes for each migrated family.
 
 ### WM-022 · Specialist inspectors bypass typed Inspector Router — P1
-**Status:** open.  
-**Evidence:** ADL, Axis, Axis Depth, Mud/Below and Spatial Overlay UI write `panel.innerHTML` directly; Places and Subdivisions already use typed Inspector nodes.  
+**Status:** largely fixed; final convergence audit remains.  
+**Completed:** Places, Subdivisions, ADL dataset/state/incident evidence, Mud/Below cases, Spatial Overlay inspection, Axis and Axis Depth now project through typed Inspector nodes. Their render callbacks may write panel HTML, but Inspector owns the semantic history node.  
+**Remaining:** scan any other specialist panels and ensure no non-Inspector surface can replace the main panel outside an active typed node.  
 **Risk:** visible panel, `inspect=` URL path, parent/back history and focus semantics can disagree.  
 **Owner target:** Inspector Router.  
 **Solution:** migrate each specialist surface to typed inspector nodes; raw panel writes occur only inside the active node's render callback.
