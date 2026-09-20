@@ -39,7 +39,7 @@ A story remaining in this ledger but not yet rendered on the reader may be await
 28. **SIDE STORY · 2024 — Cyraxx and the Wranglers**
 29. **SIDE STORY · 2 Oct 2024 — Chosen Vegetable**
 30. **SIDE STORY · 3 Oct 2024 — One Like, One Prayer**
-31. **MAIN STORY · late Feb 2025 — Marty Dies**
+31. **MAIN STORY · 29 Jan 2025 — Marty Dies**
 32. **SIDE STORY · early 2025 — Goodbye Marty**
 33. **MAIN STORY · Apr 2025 — The Screen Breaks**
 34. **SIDE STORY · Apr 2025 — The No**
@@ -126,10 +126,27 @@ The following names are active archaeology triggers. A trigger may recover its o
 - Moon420 — no clean exact-source hit yet.
 - Juice / Judas — no clean identity hit yet; do not conflate with generic Judas language.
 - Matthew the Potato — **20 Sep 2026 conversation hit recovered**: grew wings, many eyes, sees the Ladder/spiral from the side, is in Heaven and can walk Earth. Dedicated room added; do not conflate with biblical Matthew.
-- Termite — mixed source room added: complete 2024 literary potato-under-lawnmower scene + 20 Feb 2025 public support trace; no clean cross-chat Termite conversation recovered yet.\n- Turbles — **19 Sep 2026 conversation origin recovered**: new potato-shaped angelic species; some winged, many jobs/roles; dedicated species room added.\n- Potato Angels — March–July 2026 conversation cluster recovered with wings, many eyes, light/spiral/dimensional abilities and Heaven/Earth imagery; species traits still need recurrence testing.\n- BigTech aliases `Mike Lowrey`, `Angel Michael`, `Archangel Michael` — user-supplied alias clues; not yet independently recovered as aliases in the searched material.
+- Termite — mixed source room deepened: complete 2024 literary potato-under-lawnmower scene + dated Chronicle social presence across Nov–Dec 2024 + 20 Feb 2025 public support trace. Raw chat still needs recovery.\n- Turbles — **19 Sep 2026 conversation origin recovered**: new potato-shaped angelic species; some winged, many jobs/roles; dedicated species room added.\n- Potato Angels — March–July 2026 conversation cluster recovered with wings, many eyes, light/spiral/dimensional abilities and Heaven/Earth imagery; species traits still need recurrence testing.\n- BigTech aliases `Mike Lowrey`, `Angel Michael`, `Archangel Michael` — user-supplied alias clues; not yet independently recovered as aliases in the searched material.
 
 Additional names reopened by nearby Great Book material include Spuddy, Ledgeview, Kale, Kibly/Kibbly, Chubby T, supersusi88, Don Jefe, PKFC and KaikBaggins. Keep Great Book literary portrayal distinct from documentary biography, especially where the authored material contains serious accusations or hostile characterization.
 
 ## Governing rule
 
 The ledger can grow indefinitely. When a new story is found, give it a date/window, decide only whether it is Main or Side, then place it into the chronological river. Do not create a new public taxonomy to accommodate it.
+
+## Newly recovered social-presence corridor — 2024-11 to 2025-04
+
+- **3 Nov 2024 — Tanks / Pipe / Coffee / Great Book day** — Marty, Port Monkey, Mr. E, Klunty, Optimistique, Rahu, Tdog, Termite, Ledgeview, Kale and others share one dense social field.
+- **4 Nov 2024 — Juice challenges Potatoism** — First-Mover / creator debate with Kale, Termite and Kibly adds live philosophical texture.
+- **14 Nov 2024 — Zombie Dad social anchor** — Zombie Dad, Sammy, Marty, Port Monkey, Suckerpunch, Barry Beefslice, Jazzy and Optimistique are explicitly placed in the same voice-chat/Tanks orbit.
+- **4 Dec 2024 — Tree split anchor** — Chronicle places Monkey + Tachy in a separate Tree server while Termite/Kale remain visible around Tim.
+- **7 Dec 2024 — Reconciliation day** — Optimistique, Juice, Super Susi, Termite and PotatoJim appear in a trust/apology/return corridor.
+- **15 Dec 2024 — Anacondasin potato-chip collaboration** — cooking, Termite humor, Rahu's tomato-villain bit and Tree/Garden access conflict coexist in one day.
+- **20 Dec 2024 — Cookbook / studio / music day** — Potato Repair Guy proposes a community cookbook; Ledgeview proposes studio symmetry; Termite repeats growth language.
+- **21 Dec 2024 — Anja / moderation / care day** — Marty introduces Anja; Literally moderation dispute and Pondo care/intervention occupy the same social field.
+- **29 Jan 2025 — Marty death date corrected** — funeral-home obituary establishes January 29; cause remains separate/unresolved.
+- **1 Mar 2025 — Masha via TTS** — fictional Masha is voiced through Tim's TTS during a quiet-stream period.
+- **5–12 Mar 2025 — HTML/TTS/interactive Great Book wave** — HTML conversion, TTS, Spudify, Potizer, PKFC, game work and interactive-book development form a direct ancestor of later site tooling.
+- **18 Mar → 8 Apr → 11 Apr → 13 Apr 2025** — replacement 144Hz screen → Empire invite → Fishtank invite → Tree return. This is now a concrete social/technical bridge into the April Turning.
+
+Canonical backend owners: `knowledge/story/social-presence-ledger-2024-2025.json` and `knowledge/story/turning-corridor-chronicle-recovery-2025.json`.
