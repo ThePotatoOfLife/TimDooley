@@ -19,6 +19,7 @@ PHYSICAL = {
 GEOGRAPHY = {
     "places": ROOT / "world-map" / "3d-places.js",
     "subdivisions": ROOT / "world-map" / "3d-subdivisions.js",
+    "spatial-overlays": ROOT / "world-map" / "3d-spatial-overlays.js",
 }
 
 
