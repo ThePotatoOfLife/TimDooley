@@ -173,7 +173,7 @@ function distanceToMapCenterKm(bounds) {
 }
 function subdivisionBounds(feature) {
   if (!feature?.geometry) return null;
-  const referenceLng = Number(map.getCenter()?.lng);
+  const referenceLng = Number(map.getCenter?.()?.lng);
   try {
     const bounds = geo.antimeridianAwareBounds(
       feature.geometry,
