@@ -1,0 +1,63 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "authority": "live-news-source-contract",
+  "purpose": "Declare the external, non-owning current-events sources used by the public News surface. These feeds are reader views of third-party reporting and community links; they do not become project canon merely by appearing on the site.",
+  "surface": "/news/",
+  "sorting": {
+    "default": "published_at_desc",
+    "rule": "Newest first. No project-authored political, ideological or source-quality score is used to order stories."
+  },
+  "cache": {
+    "scope": "browser-local public feed cache only",
+    "ttl_minutes": 10,
+    "stores_personal_data": false
+  },
+  "providers": [
+    {
+      "id": "gdelt",
+      "name": "GDELT DOC 2.0",
+      "role": "Broad multilingual news discovery",
+      "access": "no API key",
+      "browser_access": "CORS-enabled",
+      "endpoint": "https://api.gdeltproject.org/api/v2/doc/doc",
+      "documentation": "https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/",
+      "provenance": "Article titles, publication times, source domains and links are supplied by GDELT's index of external publishers.",
+      "boundary": "GDELT is an index/discovery layer. The linked publisher remains the source for the article."
+    },
+    {
+      "id": "hacker-news",
+      "name": "Hacker News Firebase API",
+      "role": "Technology and computing link stream",
+      "access": "no API key",
+      "browser_access": "public JSON API",
+      "endpoint": "https://hacker-news.firebaseio.com/v0/",
+      "documentation": "https://github.com/HackerNews/API",
+      "provenance": "Titles, timestamps and outbound URLs are community-submitted Hacker News items.",
+      "boundary": "A Hacker News item is a community link, not independent journalistic verification."
+    },
+    {
+      "id": "spaceflight-news",
+      "name": "Spaceflight News API",
+      "role": "Space and aerospace reporting index",
+      "access": "no API key",
+      "browser_access": "public JSON API",
+      "endpoint": "https://api.spaceflightnewsapi.net/v4/articles/",
+      "documentation": "https://api.spaceflightnewsapi.net/v4/docs/",
+      "provenance": "The API aggregates article metadata from spaceflight publishers and links to the original story.",
+      "boundary": "The aggregator is a discovery layer; claims should be evaluated at the linked publisher."
+    }
+  ],
+  "categories": [
+    {"id":"all","label":"All","gdelt_query":"(international OR world OR Europe OR science OR technology OR climate)","providers":["gdelt","hacker-news","spaceflight-news"]},
+    {"id":"world","label":"World","gdelt_query":"(international OR world OR Europe OR Asia OR Africa OR Americas)","providers":["gdelt"]},
+    {"id":"europe","label":"Europe","gdelt_query":"(Europe OR European Union OR Ukraine OR Russia OR NATO)","providers":["gdelt"]},
+    {"id":"politics","label":"Politics","gdelt_query":"(election OR parliament OR government OR policy OR diplomacy)","providers":["gdelt"]},
+    {"id":"science","label":"Science","gdelt_query":"(science OR research OR discovery OR medicine OR climate)","providers":["gdelt","spaceflight-news"]},
+    {"id":"technology","label":"Technology","gdelt_query":"(technology OR artificial intelligence OR cybersecurity OR computing OR semiconductor)","providers":["gdelt","hacker-news"]},
+    {"id":"space","label":"Space","gdelt_query":"(space OR NASA OR ESA OR rocket OR satellite)","providers":["gdelt","spaceflight-news"]},
+    {"id":"climate","label":"Climate","gdelt_query":"(\"climate change\" OR energy OR environment OR emissions)","providers":["gdelt"]},
+    {"id":"culture","label":"Culture","gdelt_query":"(culture OR film OR music OR books OR art)","providers":["gdelt"]}
+  ],
+  "epistemic_boundary": "Presence in a live feed establishes only that an external source or community item was indexed. It does not establish the truth, importance or project endorsement of the underlying claim."
+}
