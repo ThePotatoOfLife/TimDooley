@@ -1,6 +1,6 @@
 # World Map Roadmap
 
-**Updated:** 2026-09-20  
+**Updated:** 2026-09-21  
 **Authority:** current live roadmap for the World Map / World Relational Atlas. The active defect queue is `docs/WORLD-MAP-PROBLEM-LEDGER.md`. Older `docs/superpowers/specs/` and `docs/superpowers/plans/` remain design history unless explicitly referenced here.
 
 ## Vision
@@ -100,7 +100,20 @@ Current compatibility rule: normal application interaction is Router-owned and d
 
 ## CURRENT PROBLEM QUEUE
 
-The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. Work proceeds by shared-owner leverage: scale → render/style → interaction → accessibility → provider reliability → compatibility retirement.
+The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. Work proceeds by shared-owner leverage rather than file count.
+
+### 2026-09-21 re-audit priorities
+
+- [ ] Retire dormant `3d-fields.js` / `3d-networks.js` only after registry/time/tooltip parity is proven and validators stop treating them as required runtime files.
+- [ ] Expand subdivision + bounded Places depth beyond the current five promoted countries (USA, CAN, DNK, UKR, RUS) through the generic importer/partition contract.
+- [ ] Replace the GeoNames mirror seed with a reviewed fresh canonical build; preserve source date, build date and upstream freshness separately.
+- [ ] Promote at least one reviewed delayed/historical conflict snapshot with source bundle, date semantics and explicit not-live boundary before exposing Conflict as current functionality.
+- [ ] Add behavioral viewport scenarios for globe mode, narrow screens, dense regional labels, Alaska/Hawaii/DC-like detached geography and region→Places handoff.
+- [ ] Map architecture-auditor finding codes to ledger IDs, owner and severity so CI output becomes an actionable queue instead of a parallel diagnosis.
+- [ ] Add regional-statistics enrichment as an optional sourced layer; keep geometry-first partitions useful when population/area/density remain unknown.
+- [ ] Continue design-token convergence beyond z-index into shared surface/background/border/radius/spacing tokens without flattening semantic distinctions.
+- [ ] Add a common freshness/status vocabulary for data-backed layers so historical, stale, delayed, current and unknown-vintage data read consistently in the UI.
+
 
 ## NEXT — RENDER + UI CONVERGENCE
 
