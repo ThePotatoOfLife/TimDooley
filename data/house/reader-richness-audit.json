@@ -1,6 +1,6 @@
 {
   "id": "reader-richness-audit",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "updated": "2026-09-20",
   "purpose": "Measure whether reader-facing HTML surfaces feel inhabited rather than merely navigational, and drive a systematic enrichment programme.",
   "thesis": "The project is not poor in knowledge; it is poor where backend knowledge fails to become authored public substance. Richness means useful density, concrete explanation and lived specificity—not card count, route count or schema exposure.",
@@ -153,5 +153,23 @@
       "focus": "Dwellings, Paths, Views, holdings, ownership, projection and substance-first architecture"
     }
   ],
-  "scan_note": "The scan counts are the baseline census that initiated the programme. Redirects/loaders and interface-heavy pages require qualitative review; authored waves are tracked separately rather than pretending byte size alone is completion."
+  "scan_note": "The scan counts are the baseline census that initiated the programme. Redirects/loaders and interface-heavy pages require qualitative review; authored waves are tracked separately rather than pretending byte size alone is completion.",
+  "third_authored_wave": [
+    {
+      "path": "rooms/inside/infrastructure-capability/index.html",
+      "focus": "asset-to-capability conversion, energy/logistics/digital dependencies, coupled capability, bottlenecks and resilience"
+    },
+    {
+      "path": "rooms/inside/geography-countries/index.html",
+      "focus": "honest spatial primitives, country method, sourced points/polygons/relations and strict separation of symbolic overlays from geography"
+    },
+    {
+      "path": "rooms/inside/experiments-formalization/index.html",
+      "focus": "variables, assumptions, operators, equation lineage, observables, negative results and experiment ladder"
+    },
+    {
+      "path": "rooms/inside/open-questions/index.html",
+      "focus": "recovery, distinction, model and contemplation statuses; hypothesis promotion rules and contradiction as research input"
+    }
+  ]
 }
