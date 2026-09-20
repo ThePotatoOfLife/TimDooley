@@ -38,8 +38,9 @@
 .news-audio-reader #news-tts{min-width:0}
 .news-audio-reader .ptts-trigger{width:100%;min-height:52px;font:700 12px var(--site-font-sans);letter-spacing:.04em;border-color:#60715b;background:#101710;color:var(--site-green)}
 .news-story-image{width:100%;aspect-ratio:16/8.5;object-fit:cover;border-radius:9px;margin:0 0 11px;background:#111}
-.news-story-summary{color:#c9d0c6!important;font-size:12px!important;line-height:1.58!important;margin:0 0 14px!important}
+.news-story-summary{color:#c9d0c6!important;font-size:12px!important;line-height:1.58!important;margin:0 0 8px!important;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden}.news-story--lead .news-story-summary{-webkit-line-clamp:5}.news-story.is-expanded .news-story-summary{display:block;-webkit-line-clamp:unset;overflow:visible}
 .news-story--lead .news-story-summary{font-size:13px!important;max-width:780px}
+.news-story-expand{appearance:none;align-self:flex-start;border:0;border-bottom:1px solid #3a4338;background:transparent;color:#aeb9aa;padding:1px 0 3px;margin:0 0 12px;font:600 8px var(--site-font-sans);letter-spacing:.045em;text-transform:uppercase;cursor:pointer}.news-story-expand:hover{color:var(--site-green);border-color:#60715b}
 .news-method-note{color:var(--site-muted);font-size:11px;line-height:1.55;margin:16px 0 0}
 .news-method-note strong{color:#d7ddd3;font-weight:500}
 .news-status{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin:9px 2px 19px;color:var(--site-muted);font-size:10px}
@@ -53,7 +54,7 @@
 .news-pulse{padding:8px 0 26px}
 .news-pulse-head{display:grid;grid-template-columns:minmax(220px,.75fr) minmax(0,1.25fr);gap:25px;align-items:end;margin-bottom:14px}
 .news-pulse-head>p,.news-section-intro>p{color:var(--site-muted);font-size:11px;line-height:1.5;margin:0}
-.news-pulse-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+.news-pulse-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}
 .news-pulse-cell{border:1px solid var(--site-line);border-radius:11px;padding:12px;background:var(--site-panel)}
 .news-pulse-cell b{display:block;font:400 clamp(22px,3vw,34px)/1 var(--site-font-serif);color:var(--site-gold)}
 .news-pulse-cell span{display:block;color:var(--site-muted);font-size:9px;line-height:1.35;margin-top:5px}
