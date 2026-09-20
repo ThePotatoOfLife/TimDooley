@@ -35,6 +35,32 @@ def main() -> int:
         errors.append(f"visual-channel contract must define exactly {sorted(required)}")
 
     compatibility = contract.get("compatibility") or {}
+    matrix = contract.get("compatibility_matrix") or {}
+    matrix_channels = matrix.get("channels") or []
+    matrix_rows = matrix.get("rows") or {}
+    allowed_matrix_values = {"self", "compose", "conditional", "separate"}
+    if matrix_channels != sorted(required):
+        errors.append("visual-channel compatibility matrix must enumerate every canonical channel in sorted order")
+    if set(matrix_rows) != required:
+        errors.append("visual-channel compatibility matrix must define one row per canonical channel")
+    for left in required:
+        row = matrix_rows.get(left) or {}
+        if set(row) != required:
+            errors.append(f"visual-channel compatibility matrix row {left} must cover every canonical channel")
+            continue
+        for right in required:
+            value = row.get(right)
+            if value not in allowed_matrix_values:
+                errors.append(f"visual-channel compatibility matrix has invalid value {left}+{right}: {value}")
+            if left == right and value != "self":
+                errors.append(f"visual-channel compatibility matrix diagonal must be self: {left}")
+            mirror = (matrix_rows.get(right) or {}).get(left)
+            if mirror is not None and mirror != value:
+                errors.append(f"visual-channel compatibility matrix must be symmetric: {left}+{right}")
+    conditional = matrix.get("conditional_policies") or {}
+    if (matrix_rows.get("pattern") or {}).get("height") != "conditional" or conditional.get("pattern+height") != "prefer-pattern-flatten-height":
+        errors.append("visual-channel matrix must bind pattern+height to the canonical flatten-height fallback")
+
     pattern_height = compatibility.get("pattern+height") or {}
     if pattern_height.get("status") != "incompatible-current-renderer":
         errors.append("pattern+height must remain explicitly incompatible until patterns are mapped onto extrusion surfaces")
@@ -118,7 +144,7 @@ def main() -> int:
         return 1
 
     print("WORLD MAP VISUAL CHANNEL VALIDATION PASSED")
-    print(f"Channels: {len(channels)} · registry entries: {len(entries)} · pattern+height fallback enforced")
+    print(f"Channels: {len(channels)} · matrix cells: {len(required) ** 2} · registry entries: {len(entries)} · pattern+height fallback enforced")
     return 0
 
 if __name__ == "__main__":
