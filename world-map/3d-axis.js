@@ -138,16 +138,6 @@ function openAxisGateInspector() {
 
 function installAxisInteractions(map) {
   const tooltip = getOrCreateTooltipService(map, { PopupClass:maplibregl.Popup, eventTarget:window, offset:10 });
-  const enter = event => {
-    map.getCanvas().style.cursor = 'pointer';
-    const feature = event.features?.[0];
-    if (!feature) return;
-    const p = feature.properties || {};
-    const generation = tooltip.nextGeneration('axis');
-    tooltip.show('axis', event.lngLat, `<div class="atlas-hover"><b>${p.name || 'North / Axis'}</b><br><span>${p.subtitle || ''}</span><br><small>Project-symbolic atlas layer · D5 threshold, not a nation, border, territory, or physical dimension</small></div>`, generation);
-  };
-  const leave = () => { map.getCanvas().style.cursor=''; tooltip.invalidate('axis-leave'); };
-  [AXIS_FILL,AXIS_LINE,AXIS_GATE].forEach(layer => { map.on('mouseenter',layer,enter); map.on('mouseleave',layer,leave); });
 
   const openGate = () => {
     motion.easeTo(map,{center:[ARC_CENTER_LON,79.7],zoom:Math.max(map.getZoom(),2.55),pitch:48,bearing:0,duration:1100});
@@ -158,8 +148,30 @@ function installAxisInteractions(map) {
     }
     openAxisGateInspector();
   };
-  map.on('click',AXIS_GATE,openGate);
-  map.on('click',AXIS_FILL,openGate);
+
+  const register = () => {
+    const interaction = window.__potatoAtlasInteraction;
+    if (!interaction?.register) return false;
+    interaction.register('axis-threshold', {
+      layers:[AXIS_FILL,AXIS_LINE,AXIS_GATE],
+      objectType:'axis-threshold',
+      clickPriority:78,
+      hoverPriority:78,
+      cursor:'pointer',
+      onClick:() => openGate(),
+      onHover:(event, feature) => {
+        const p = feature?.properties || {};
+        const generation = tooltip.nextGeneration('axis');
+        tooltip.show('axis', event.lngLat, `<div class="atlas-hover"><b>${p.name || 'North / Axis'}</b><br><span>${p.subtitle || ''}</span><br><small>Project-symbolic atlas layer · D5 threshold, not a nation, border, territory, or physical dimension</small></div>`, generation);
+      },
+      onLeave:() => tooltip.invalidate('axis-leave'),
+    });
+    return true;
+  };
+
+  if (!register()) {
+    window.addEventListener('potato-atlas-interaction-ready', register, { once:true });
+  }
 }
 
 async function bootAxis() {
