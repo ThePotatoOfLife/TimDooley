@@ -83,6 +83,26 @@ Replaceable projections of durable knowledge:
 - machine projections such as JSON-LD;
 - generated indexes.
 
+
+### Substance-first projection law
+
+Presentation / Fruit is replaceable as architecture, but **reader-facing substance is not disposable decoration**. When a subject has a public page, the page should teach the subject directly before asking the reader to navigate the knowledge system.
+
+The governing split is:
+
+- **Frontend freedom:** authored prose, examples, dated narrative, cases, mechanisms, quotations, comparisons and consequences may take whatever editorial form best explains the subject.
+- **Backend authority:** durable definitions, provenance, evidence state, typed relations, ownership and revision history remain with canonical owners.
+- **Quiet bonds:** public sections may carry machine-readable bindings to canonical owners, Rooms, relation types and evidence classes. These bonds support traceability and review without forcing governance language into visible prose.
+- **No schema-shaped writing requirement:** the House may validate that a page is connected and inhabited, but it must not require one card grid, paragraph template, exact word count or fixed rhetorical order.
+- **No silent overwrite:** a backend update may make a public synthesis stale and trigger review. It must not automatically replace authored prose.
+- **Bidirectional repair:** if frontend writing exposes an unresolved contradiction or owner gap, strengthen the backend owner; if backend evidence changes materially, revisit the prose.
+- **Public materialization:** a route, title and automatic dossier projection are a floor, not completion. Important public subjects should contain enough concrete substance that a reader can learn without opening raw JSON or repository governance.
+
+The binding owner is `data/house/substance-first-projection-contract.json`. Reader-quality enforcement belongs to `scripts/validate_reader_richness.py`; deployment-only semantic attachment belongs to `scripts/build_site.py`.
+
+This law resolves a deliberate tension in the House: **the website is a projection of durable knowledge, but a good projection is allowed to become a substantial work in its own right.** It may synthesize many owners into one readable passage without becoming a rival canonical owner.
+
+
 ### E. Memory / Ash-Archive
 
 Preserved prior states:
