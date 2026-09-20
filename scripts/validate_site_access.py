@@ -63,8 +63,12 @@ for token in ("label===t","priority(e)","site-access-context","await loadIndex()
     if token not in js and token not in css:
         errors.append(f"quick-access behavior missing regression marker: {token}")
 
-if "changed.update(patch_project_compass(OUT))" in patch:
-    errors.append("legacy Project Compass must not be injected alongside the quick-access dock")
+for token in ("inject_project_compass","patch_project_compass","project-compass.js","project-compass.css"):
+    if token in patch:
+        errors.append(f"retired Project Compass source remains in public navigation patch: {token}")
+for rel in ("app/project-compass.js","app/project-compass.css"):
+    if (ROOT/rel).exists():
+        errors.append(f"retired Project Compass asset returned: {rel}")
 
 if OUT.exists():
     required=[
