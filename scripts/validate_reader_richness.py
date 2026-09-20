@@ -9,10 +9,11 @@ AUDIT = ROOT / "data/house/reader-richness-audit.json"
 JOURNEY = ROOT / "app/house-journey.js"
 INTERIORS = ROOT / "data/house/room-interiors.json"
 SUBSTANCE = ROOT / "data/house/substance-first-projection-contract.json"
+BUILD = ROOT / "scripts/build_site.py"
 
 def main() -> int:
     errors=[]
-    for path in (AUDIT,JOURNEY,INTERIORS,SUBSTANCE):
+    for path in (AUDIT,JOURNEY,INTERIORS,SUBSTANCE,BUILD):
         if not path.is_file():
             errors.append(f"missing reader-richness owner: {path.relative_to(ROOT)}")
     if errors:
@@ -24,6 +25,7 @@ def main() -> int:
     journey=JOURNEY.read_text(encoding="utf-8",errors="replace")
     interiors=json.loads(INTERIORS.read_text(encoding="utf-8"))
     substance=json.loads(SUBSTANCE.read_text(encoding="utf-8"))
+    build=BUILD.read_text(encoding="utf-8",errors="replace")
 
     if audit.get("id")!="reader-richness-audit":
         errors.append("reader richness audit id changed or missing")
@@ -69,6 +71,10 @@ def main() -> int:
             for owner in anchor.get("owner_paths") or []:
                 if not (ROOT/owner).is_file():
                     errors.append(f"{rel} substance binding points to missing owner: {owner}")
+
+    for marker_text in ("def inject_substance_bindings()", "data-house-substance-bindings", 'data-substance-policy="substance-first"'):
+        if marker_text not in build:
+            errors.append(f"build lost substance-first binding hook: {marker_text}")
 
     registered=[]
     for row in interiors.get("interiors") or interiors.get("rooms") or []:
