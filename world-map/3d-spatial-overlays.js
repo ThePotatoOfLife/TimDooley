@@ -341,7 +341,7 @@ async function restoreAfterStyleGeneration() {
   }
 }
 
-styleLifecycle.register('spatial-overlays', {
+styleLifecycle?.register?.('spatial-overlays', {
   priority:58,
   restore:() => { queueMicrotask(restoreAfterStyleGeneration); },
 });
