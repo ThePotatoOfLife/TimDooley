@@ -20,7 +20,8 @@
     "Keep project canon, historical evidence, scientific evidence, comparison, interpretation, creative material and unresolved claims distinct.",
     "Do not count repeated derivative pages as independent corroboration.",
     "A symbolic or biblical parallel is not automatically historical transmission, prophecy fulfillment or empirical proof.",
-    "For body/neurobiology questions, start at Life & Body and knowledge/body/index.json; use the 33-room atlas for bony levels, brain-room-deep-atlas for granular brain territories, and body-relational-overlay only for cross-layer projections. Keep anatomy, historical tradition and project symbolism distinct."
+    "For body/neurobiology questions, start at Life & Body and knowledge/body/index.json; use the 33-room atlas for bony levels, brain-room-deep-atlas for granular brain territories, and body-relational-overlay only for cross-layer projections. Keep anatomy, historical tradition and project symbolism distinct.",
+    "For repository construction history, commit-volume questions, project development phases or 'how did the archive become this?', start with knowledge/timeline/github-project-construction-history-2026-09-20.json and then use /history/#repository-history as the human-readable projection."
   ],
   "machine_surfaces": {
     "llms": "https://thepotatooflife.github.io/TimDooley/llms.txt",
@@ -51,7 +52,8 @@
     "house_inhabitants": "https://thepotatooflife.github.io/TimDooley/data/house/room-inhabitants.json",
     "body_development": "https://thepotatooflife.github.io/TimDooley/records/neural-development-lineage-atlas/",
     "body_glia_barriers": "https://thepotatooflife.github.io/TimDooley/records/glia-neurovascular-barrier-atlas/",
-    "body_cortical_cells": "https://thepotatooflife.github.io/TimDooley/records/cortical-celltype-parcellation-atlas/"
+    "body_cortical_cells": "https://thepotatooflife.github.io/TimDooley/records/cortical-celltype-parcellation-atlas/",
+    "project_construction_history": "https://thepotatooflife.github.io/TimDooley/knowledge/timeline/github-project-construction-history-2026-09-20.json"
   },
   "primary_reader_urls": [
     {
@@ -125,6 +127,10 @@
     {
       "topic": "House Inhabitants / Objects",
       "url": "https://thepotatooflife.github.io/TimDooley/rooms/objects/"
+    },
+    {
+      "topic": "Repository construction history",
+      "url": "https://thepotatooflife.github.io/TimDooley/history/#repository-history"
     }
   ],
   "canonical_branches": [
