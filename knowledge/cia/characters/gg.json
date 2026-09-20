@@ -82,6 +82,10 @@
     {
       "type": "conversation_recovery",
       "path": "knowledge/cia/conversation-intake-2026-09-20.json"
+    },
+    {
+      "type": "debt_evidence_ledger",
+      "path": "knowledge/cia/debt-evidence-ledger.json"
     }
   ],
   "recovery_leads": [
@@ -99,7 +103,15 @@
     },
     "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
     "debt_and_repair": {
-      "records": [],
+      "records": [
+        {
+          "id": "candidate-gg-grievance-field",
+          "date": "2024-2026",
+          "pricing_status": "unpriced",
+          "summary": "Dense grievance/conflict recurrence exists, but no concrete priced harmful act is currently isolated; later healing proposal is separately credited.",
+          "reason_unpriced": "unpriced: recurrence and role labels are insufficient"
+        }
+      ],
       "rule": "Do not attach legal, financial, karmic or spiritual debt unless a dated source explicitly does so; symbolic debt remains project language unless independently established."
     },
     "state_rule": "Roles, archetypes, upgrades, handicaps and project-symbolic placements are date/source-bounded states, not permanent human essences.",
