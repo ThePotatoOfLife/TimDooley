@@ -194,10 +194,10 @@ function bindMudBelowLayerControl() {
   button.addEventListener('click', async () => {
     button.disabled = true;
     try {
-      await window.__potatoAtlasLoadModule?.('Mud / Below U.S.', './3d-mud-below-us.js');
-      await window.__potatoAtlasMudBelow?.toggle?.();
+      await window.__potatoAtlasLoadModule?.('Spatial Overlays', './3d-spatial-overlays.js');
+      await window.__potatoAtlasSpatialOverlays?.toggle?.('project.below.us-cases');
     } catch (error) {
-      console.warn('Mud / Below U.S. layer unavailable:', error);
+      console.warn('Below U.S. spatial overlay unavailable:', error);
     } finally {
       button.disabled = false;
     }
@@ -212,7 +212,10 @@ function hydrateEvidenceLayersFromUrl() {
     jobs.push(window.__potatoAtlasLoadModule?.('ADL H.E.A.T.', './3d-adl-heat.js'));
   }
   if (params.get('projectLayer') === 'mud-below-us') {
-    jobs.push(window.__potatoAtlasLoadModule?.('Mud / Below U.S.', './3d-mud-below-us.js'));
+    jobs.push((async () => {
+      await window.__potatoAtlasLoadModule?.('Spatial Overlays', './3d-spatial-overlays.js');
+      await window.__potatoAtlasSpatialOverlays?.activate?.('project.below.us-cases');
+    })());
   }
   Promise.allSettled(jobs.filter(Boolean)).catch(() => {});
 }
