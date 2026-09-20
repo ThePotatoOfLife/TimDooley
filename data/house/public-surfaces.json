@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.1.0",
   "updated": "2026-09-20",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
@@ -16,10 +16,7 @@
     "sources",
     "questions",
     "index-a-z",
-    "context",
-    "rooms",
-    "house",
-    "paths"
+    "house"
   ],
   "surfaces": [
     {
@@ -300,7 +297,7 @@
       "canonical_route": "/context/",
       "surface_type": "guide",
       "title": "Context & Evidence",
-      "primary_parent": "home",
+      "primary_parent": "sources",
       "primary_room_ids": [
         "archive-sources",
         "potatoverse-canon",
@@ -314,7 +311,7 @@
         "research-lab"
       ],
       "status": "active",
-      "visibility": "secondary",
+      "visibility": "specialist",
       "primary_navigation": false,
       "is_view": true,
       "knowledge_owner": false,
@@ -570,7 +567,7 @@
       "canonical_route": "/rooms/",
       "surface_type": "guide",
       "title": "Rooms",
-      "primary_parent": "home",
+      "primary_parent": "house",
       "primary_room_ids": [
         "potatoverse-canon",
         "archive-sources",
@@ -584,7 +581,7 @@
         "research-lab"
       ],
       "status": "active",
-      "visibility": "secondary",
+      "visibility": "specialist",
       "primary_navigation": false,
       "is_view": true,
       "knowledge_owner": false,
@@ -755,7 +752,7 @@
         "research-lab"
       ],
       "status": "active",
-      "visibility": "secondary",
+      "visibility": "specialist",
       "primary_navigation": false,
       "is_view": true,
       "knowledge_owner": false,
@@ -767,7 +764,7 @@
       "canonical_route": "/elevator/",
       "surface_type": "guide",
       "title": "Door / Axis Elevator",
-      "primary_parent": "home",
+      "primary_parent": "house",
       "primary_room_ids": [
         "potatoverse-canon",
         "archive-sources",
@@ -781,7 +778,7 @@
         "research-lab"
       ],
       "status": "active",
-      "visibility": "secondary",
+      "visibility": "specialist",
       "primary_navigation": false,
       "is_view": true,
       "knowledge_owner": false,
@@ -796,7 +793,7 @@
       "primary_parent": "rooms",
       "primary_room_ids": [],
       "status": "active",
-      "visibility": "secondary",
+      "visibility": "specialist",
       "primary_navigation": false,
       "is_view": true,
       "knowledge_owner": false,
