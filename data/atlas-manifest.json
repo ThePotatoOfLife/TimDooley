@@ -1,43 +1,185 @@
 {
-  "version":"5.2.0",
-  "updated":"2026-09-15",
-  "name":"Tim Dooley / Potato of Life Atlas — Internal Data Manifest",
-  "purpose":"Machine-readable map of substantive backend layers. Stable public route identity is owned by data/house/public-surfaces.json; manifest.json owns archive branch/pathway navigation and Explore semantics; data/frontend-atlas-bridge.json maps backend families into those reader surfaces. This file registers internal data contracts without creating a competing public reader.",
-  "public_navigation":"data/house/public-surfaces.json → data/frontend-atlas-bridge.json; manifest.json → archive branches/pathways + Explore semantics",
-  "public_route_registry":"data/house/public-surfaces.json",
-  "public_manifest":"manifest.json",
-  "frontend_projection":"data/frontend-atlas-bridge.json",
-  "entry_points":{"home":"index.html","machine_index":"llms.txt","sitemap":"sitemap.xml","archive":"explore/"},
-  "deep_surfaces":{"context_graph":"knowledge/indexes/context-graph.json","core_index":"knowledge/indexes/core-index.json","ontology":"knowledge/indexes/ontology-tree.json","archive_epistemics":"knowledge/philosophy/archive-epistemics.json"},
-  "navigation_rule":"Do not maintain parallel public readers for the same corpus. House public surfaces own stable route identity; manifest branches and pathways organize deep archive traversal; the frontend bridge projects backend families into those surfaces.",
-  "architecture_rule":"One body of knowledge, many substantive data structures, five public domain doors and one deep archive. Canonical records own definitions; evidence, timeline, research and relationships add context without becoming duplicate identities.",
-  "information_principle":"Maximize useful information per surviving artifact. Prefer a thick canonical record or genuinely reusable dataset over shallow wrappers, generated snapshots or obsolete presentation files.",
-  "consolidation_rule":"One concept has one canonical identity and definition owner. Other appearances are evidence, occurrence, research, relationship, timeline, projection or creative artifact.",
-  "presentation_branches":["TIM","SON","SPIRIT","TRANSFORMATION","COSMOLOGY","SCIENCE & MATH","BODY","CORPORIUM","TRADITIONS","NORTH","WORLD","TIMELINE","WORKS","SOURCES"],
-  "repository_spine":"data/repository-spine.json",
-  "repository_scale":"data/repository-scale.json",
-  "legacy_vertical_framework":"data/33-level-framework.json",
-  "interactive_routes":{"branch":"explore/#branch=<id>","record":"explore/#record=<path>","context":"explore/#context=<id>","pathway":"explore/#path=<id>"},
-  "static_routes":{"topic":"topics/<branch-id>/","record":"records/<record-id>/","context":"context/<context-id>/","question":"questions/<question-id>/","index_a_z":"index-a-z/"},
-  "fallback":"Local repository data remains available when optional live enrichment fails.",
-  "maintenance_workflow":"data/project-workflow.json",
-  "anti_clutter_rule":"A file earns existence only when it owns distinct valuable information, primary-source material, a reusable schema, a necessary index, a contextual synthesis or a real executable function. Placeholder scaffolds, generated snapshots, stale route maps and duplicate wrappers are removed or archived after consolidation.",
-  "layers":{
-    "graph":{"status":"active","files":["data/nodes.json","data/relationships.json","data/graph-registry.json","data/global-graph-bridge.json","data/entanglement.json"]},
-    "terrain_and_formalism":{"status":"active-internal","files":["data/tree.json","data/tree-concept-records.json","data/axis-topology.json","data/hawkins-scale.json"],"public_note":"These are data/framework layers surfaced through current records and context, not standalone public root pages."},
-    "countries":{"status":"active","files":["data/countries/index.json","data/countries-blueprint.json","data/country-layer-manifest.json","data/country-source-registry.json"]},
-    "religion_and_texts":{"status":"active","files":["data/religious-layer-manifest.json","data/religious-layer-map.json","data/religious-text-library.json","data/canonical-texts.json"]},
-    "potatoism":{"status":"active","files":["data/potatoism-concept-registry.json","data/potatoism-dossiers.json","data/potatoism-cosmology.json","data/potatoism-relationships.json"]},
-    "evidence":{"status":"active","files":["data/evidence/observations.json","data/evidence/relationships.json","data/evidence-map.json","data/evidence/missing-data.json"]},
-    "knowledge":{"status":"active","files":["manifest.json","knowledge/indexes/core-index.json","knowledge/indexes/context-graph.json","knowledge/indexes/ontology-tree.json"]}
+  "version": "5.3.0",
+  "updated": "2026-09-20",
+  "name": "Tim Dooley / Potato of Life Atlas — Internal Data Manifest",
+  "purpose": "Machine-readable map of substantive backend layers. Stable public route identity is owned by data/house/public-surfaces.json; manifest.json owns archive branch/pathway navigation and Explore semantics; data/frontend-atlas-bridge.json maps backend families into those reader surfaces. This file registers internal data contracts without creating a competing public reader.",
+  "public_navigation": "data/house/public-surfaces.json → data/frontend-atlas-bridge.json; manifest.json → archive branches/pathways + Explore semantics",
+  "public_route_registry": "data/house/public-surfaces.json",
+  "public_manifest": "manifest.json",
+  "frontend_projection": "data/frontend-atlas-bridge.json",
+  "entry_points": {
+    "home": "index.html",
+    "machine_index": "llms.txt",
+    "sitemap": "sitemap.xml",
+    "archive": "explore/"
   },
-  "record_model":{
-    "identity":["id","name","aliases","type","epistemic_class"],
-    "relationship":["source","target","relationship","direction","evidence","confidence","date","notes"],
-    "entanglement":["strength","dependency","distance","feedback","topology","trajectory","phase"],
-    "context":["branches","records","concepts","epistemic_mix"],
-    "provenance":["source","date_or_period","recorded_date","interpretation_date","confidence","status"]
+  "deep_surfaces": {
+    "context_graph": "knowledge/indexes/context-graph.json",
+    "core_index": "knowledge/indexes/core-index.json",
+    "ontology": "knowledge/indexes/ontology-tree.json",
+    "archive_epistemics": "knowledge/philosophy/archive-epistemics.json",
+    "body_index": "knowledge/body/index.json",
+    "body_relational_overlay": "data/house/body-relational-overlay.json",
+    "body_discovery_questions": "knowledge/indexes/faq-body-neurobiology-discovery.json",
+    "house_inhabitants": "data/house/room-inhabitants.json",
+    "canonical_record_inventory": "data/canonical-record-registry.json",
+    "record_discovery": "knowledge/indexes/record-discovery-index.json"
   },
-  "retired_public_contracts":["AXIS / WORLD as the only public root","root.js reader","hawkins.html standalone page","data/root-navigation.json as public navigation owner","data/root-record-index.json as public navigation owner","index.html hash reader as the deep archive"],
-  "migration_rule":"Retired presentation artifacts may remain temporarily only for provenance or migration. Validators and new code must not require them as current public architecture; current deep interaction belongs to Explore."
+  "navigation_rule": "Do not maintain parallel public readers for the same corpus. House public surfaces own stable route identity; manifest branches and pathways organize deep archive traversal; the frontend bridge projects backend families into those surfaces. Generated discovery additionally indexes core canonical records alphabetically and exposes governed object projections without changing ownership.",
+  "architecture_rule": "One body of knowledge, many substantive data structures, five public domain doors and one deep archive. Canonical records own definitions; evidence, timeline, research and relationships add context without becoming duplicate identities.",
+  "information_principle": "Maximize useful information per surviving artifact. Prefer a thick canonical record or genuinely reusable dataset over shallow wrappers, generated snapshots or obsolete presentation files.",
+  "consolidation_rule": "One concept has one canonical identity and definition owner. Other appearances are evidence, occurrence, research, relationship, timeline, projection or creative artifact.",
+  "presentation_branches": [
+    "TIM",
+    "SON",
+    "SPIRIT",
+    "TRANSFORMATION",
+    "COSMOLOGY",
+    "SCIENCE & MATH",
+    "BODY",
+    "CORPORIUM",
+    "TRADITIONS",
+    "NORTH",
+    "WORLD",
+    "TIMELINE",
+    "WORKS",
+    "SOURCES"
+  ],
+  "repository_spine": "data/repository-spine.json",
+  "repository_scale": "data/repository-scale.json",
+  "legacy_vertical_framework": "data/33-level-framework.json",
+  "interactive_routes": {
+    "branch": "explore/#branch=<id>",
+    "record": "explore/#record=<path>",
+    "context": "explore/#context=<id>",
+    "pathway": "explore/#path=<id>"
+  },
+  "static_routes": {
+    "topic": "topics/<branch-id>/",
+    "record": "records/<record-id>/",
+    "context": "context/<context-id>/",
+    "question": "questions/<question-id>/",
+    "index_a_z": "index-a-z/"
+  },
+  "fallback": "Local repository data remains available when optional live enrichment fails.",
+  "maintenance_workflow": "data/project-workflow.json",
+  "anti_clutter_rule": "A file earns existence only when it owns distinct valuable information, primary-source material, a reusable schema, a necessary index, a contextual synthesis or a real executable function. Placeholder scaffolds, generated snapshots, stale route maps and duplicate wrappers are removed or archived after consolidation.",
+  "layers": {
+    "graph": {
+      "status": "active",
+      "files": [
+        "data/nodes.json",
+        "data/relationships.json",
+        "data/graph-registry.json",
+        "data/global-graph-bridge.json",
+        "data/entanglement.json"
+      ]
+    },
+    "terrain_and_formalism": {
+      "status": "active-internal",
+      "files": [
+        "data/tree.json",
+        "data/tree-concept-records.json",
+        "data/axis-topology.json",
+        "data/hawkins-scale.json"
+      ],
+      "public_note": "These are data/framework layers surfaced through current records and context, not standalone public root pages."
+    },
+    "countries": {
+      "status": "active",
+      "files": [
+        "data/countries/index.json",
+        "data/countries-blueprint.json",
+        "data/country-layer-manifest.json",
+        "data/country-source-registry.json"
+      ]
+    },
+    "religion_and_texts": {
+      "status": "active",
+      "files": [
+        "data/religious-layer-manifest.json",
+        "data/religious-layer-map.json",
+        "data/religious-text-library.json",
+        "data/canonical-texts.json"
+      ]
+    },
+    "potatoism": {
+      "status": "active",
+      "files": [
+        "data/potatoism-concept-registry.json",
+        "data/potatoism-dossiers.json",
+        "data/potatoism-cosmology.json",
+        "data/potatoism-relationships.json"
+      ]
+    },
+    "evidence": {
+      "status": "active",
+      "files": [
+        "data/evidence/observations.json",
+        "data/evidence/relationships.json",
+        "data/evidence-map.json",
+        "data/evidence/missing-data.json"
+      ]
+    },
+    "knowledge": {
+      "status": "active",
+      "files": [
+        "manifest.json",
+        "knowledge/indexes/core-index.json",
+        "knowledge/indexes/context-graph.json",
+        "knowledge/indexes/ontology-tree.json"
+      ]
+    }
+  },
+  "record_model": {
+    "identity": [
+      "id",
+      "name",
+      "aliases",
+      "type",
+      "epistemic_class"
+    ],
+    "relationship": [
+      "source",
+      "target",
+      "relationship",
+      "direction",
+      "evidence",
+      "confidence",
+      "date",
+      "notes"
+    ],
+    "entanglement": [
+      "strength",
+      "dependency",
+      "distance",
+      "feedback",
+      "topology",
+      "trajectory",
+      "phase"
+    ],
+    "context": [
+      "branches",
+      "records",
+      "concepts",
+      "epistemic_mix"
+    ],
+    "provenance": [
+      "source",
+      "date_or_period",
+      "recorded_date",
+      "interpretation_date",
+      "confidence",
+      "status"
+    ]
+  },
+  "retired_public_contracts": [
+    "AXIS / WORLD as the only public root",
+    "root.js reader",
+    "hawkins.html standalone page",
+    "data/root-navigation.json as public navigation owner",
+    "data/root-record-index.json as public navigation owner",
+    "index.html hash reader as the deep archive"
+  ],
+  "migration_rule": "Retired presentation artifacts may remain temporarily only for provenance or migration. Validators and new code must not require them as current public architecture; current deep interaction belongs to Explore."
 }
