@@ -20,6 +20,10 @@ assert.ok(urlState);
 urlState.claim('analytical', ['layers','lens','lensOption']);
 urlState.claim('physical', ['physical']);
 urlState.claim('evidence', ['evidenceLayer']);
+urlState.claim('selection-inspector', ['country','pins']);
+urlState.claim('selection-inspector', ['country','subdivision','place','inspect']);
+assert.equal(urlState.snapshot().claims.country, 'selection-inspector');
+assert.equal(urlState.snapshot().claims.inspect, 'selection-inspector');
 assert.throws(() => urlState.claim('other', ['layers']), /already belongs/);
 
 urlState.patch('analytical', { set:{layers:'stat.population'}, remove:['lens','lensOption'] });
