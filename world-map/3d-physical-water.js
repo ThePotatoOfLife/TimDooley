@@ -7,11 +7,9 @@ if (!map) throw new Error('Physical Water requires the core map.');
 if (!window.__potatoAtlasScale) await import('./3d-scale.js');
 const scale = await window.__potatoAtlasScale?.ready;
 if (!scale?.threshold) throw new Error('Physical Water requires the shared Scale runtime.');
-if (!window.__potatoAtlasStyleLifecycle) {
-  const { createStyleLifecycle } = await import('./3d-style-lifecycle.js');
-  window.__potatoAtlasStyleLifecycle = createStyleLifecycle(map);
-}
+if (!window.__potatoAtlasStyleLifecycle) await import('./3d-style-lifecycle.js');
 const styleLifecycle = window.__potatoAtlasStyleLifecycle;
+if (!styleLifecycle) throw new Error('World Map Style Lifecycle unavailable.');
 
 const NE_SHA = 'ca96624a56bd078437bca8184e78163e5039ad19';
 const NE_BASE = `https://raw.githubusercontent.com/nvkelso/natural-earth-vector/${NE_SHA}/geojson`;
