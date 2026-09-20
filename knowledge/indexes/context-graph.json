@@ -1,7 +1,7 @@
 {
   "title": "Context Graph",
-  "version": "1.1.0",
-  "updated": "2026-09-19",
+  "version": "4.3.0",
+  "updated": "2026-09-20",
   "purpose": "Curated cross-record constellations for the public explorer. The context layer should reduce navigation clutter by grouping records around high-value relational questions rather than multiplying more branches.",
   "rules": [
     "A context cluster must connect at least two branches and explain why the connection matters.",
@@ -479,6 +479,184 @@
         "archive synthesis",
         "programme design",
         "geopolitical application"
+      ]
+    },
+    {
+      "id": "house-court-door-neuroaxis",
+      "title": "House → Inner Court → Door → Aqueduct → Brainstem",
+      "summary": "A navigable intracranial-to-axial route: thalamic House around the third-ventricle Court, pineal timing Door posteriorly, aqueduct/PAG threshold region, brainstem state and autonomic nuclei, then spinal continuation. Anatomy and Potatoverse architecture remain separately typed.",
+      "branches": [
+        "body",
+        "spirit",
+        "cosmology",
+        "traditions",
+        "science"
+      ],
+      "records": [
+        "knowledge/body/thalamus-house-horus-crown-atlas.json",
+        "knowledge/body/inner-axis-integrated-atlas.json",
+        "knowledge/body/brain-room-deep-atlas.json",
+        "knowledge/body/cranial-brainstem-room-atlas.json",
+        "data/house/body-relational-overlay.json"
+      ],
+      "concepts": [
+        "Thalamus / House",
+        "Third Ventricle / Inner Court",
+        "Pineal / Timing Door",
+        "Cerebral Aqueduct",
+        "PAG",
+        "Brainstem",
+        "Foramen Magnum",
+        "Spinal Cord"
+      ],
+      "epistemic_mix": [
+        "human_neuroanatomy",
+        "physiology",
+        "project_symbolism",
+        "comparative_religion"
+      ]
+    },
+    {
+      "id": "vertebral-ladder-multicoordinate",
+      "title": "33 Bony Rooms ↔ 31 Neural Levels ↔ Cord Segments ↔ Roots",
+      "summary": "The spinal Ladder is a multi-coordinate system: 33 conventional vertebral elements, 31 paired spinal nerves, shifting cord-segment positions, root exit rules, cauda equina, meningeal/CSF boundaries and symbolic Gates. The counts overlap spatially but are not interchangeable.",
+      "branches": [
+        "body",
+        "corporium",
+        "science",
+        "transformation",
+        "traditions"
+      ],
+      "records": [
+        "knowledge/body/vertebral-33-room-atlas.json",
+        "knowledge/body/spinal-cord-microcircuit-atlas.json",
+        "knowledge/body/spine-csf-levels-axis-atlas.json",
+        "knowledge/corporium/ladder-33-vertebrae-five-centers-study.json",
+        "knowledge/traditions/rod-staff-33-layered-crosswalk.json",
+        "data/33-level-framework.json"
+      ],
+      "concepts": [
+        "C1 Atlas",
+        "C2 Axis",
+        "C8 nerve",
+        "33 vertebrae",
+        "31 spinal nerves",
+        "Conus medullaris",
+        "Cauda equina",
+        "S2 dural termination",
+        "Rexed laminae",
+        "Five project Gates"
+      ],
+      "epistemic_mix": [
+        "anatomy",
+        "clinical_neuroanatomy",
+        "project_symbolism",
+        "number-symbol_comparison"
+      ]
+    },
+    {
+      "id": "body-flow-return-network",
+      "title": "Spring → River → Body → Return",
+      "summary": "The body's flow layer is multiplex rather than one mystical fluid: choroid plexus/CSF, blood and interstitial exchange, autonomic efference, vagal/spinal afference, endocrine and immune signaling, respiration and enteric processing form recurrent body↔brain loops.",
+      "branches": [
+        "body",
+        "spirit",
+        "science",
+        "corporium"
+      ],
+      "records": [
+        "knowledge/body/body-science-context-atlas.json",
+        "knowledge/body/axis-orientation-autonomic-interface-atlas.json",
+        "knowledge/body/cranial-brainstem-room-atlas.json",
+        "knowledge/body/brain-body-systems-deepening-wave-2.json",
+        "data/house/body-relational-overlay.json"
+      ],
+      "concepts": [
+        "Choroid Spring",
+        "CSF River",
+        "Meningeal Sheaths",
+        "Vagus Return",
+        "NTS",
+        "Sympathetic Trunks",
+        "Enteric Garden",
+        "Endocrine Signals",
+        "Immune Signals",
+        "Breath"
+      ],
+      "epistemic_mix": [
+        "physiology",
+        "systems_biology",
+        "neuroscience",
+        "project_flow_comparison"
+      ]
+    },
+    {
+      "id": "serpent-axis-comparative-field",
+      "title": "Hermes / Caduceus ↔ Kuṇḍalinī / Cakras ↔ Uraeus ↔ Body Axis",
+      "summary": "A mismatch-first comparison of historically distinct serpent/axis systems. Hermes/caduceus, South Asian subtle-body channels, Egyptian uraeus and modern autonomic/spinal comparisons can be viewed together only while preserving their separate origins and meanings.",
+      "branches": [
+        "traditions",
+        "body",
+        "corporium",
+        "transformation"
+      ],
+      "records": [
+        "knowledge/traditions/hermes-serpent-axis-comparative-atlas.json",
+        "knowledge/body/body-axis-chakra-kundalini-comparative-atlas.json",
+        "knowledge/body/axis-orientation-autonomic-interface-atlas.json",
+        "docs/HERMES-SERPENT-CHAKRA-AUTONOMIC-DEEP-DIVE.md"
+      ],
+      "concepts": [
+        "Hermes",
+        "Caduceus",
+        "Rod of Asclepius",
+        "Kuṇḍalinī",
+        "Cakra",
+        "Suṣumṇā",
+        "Iḍā",
+        "Piṅgalā",
+        "Uraeus",
+        "Sympathetic Trunks",
+        "Axis"
+      ],
+      "epistemic_mix": [
+        "history_of_religion",
+        "comparative_symbolism",
+        "anatomy",
+        "modern_reinterpretation"
+      ]
+    },
+    {
+      "id": "orientation-crown-house",
+      "title": "Gravity / Heading → Orientation Room → Crown / North Comparator",
+      "summary": "Vestibular sensing, head-direction networks, retrosplenial/entorhinal/hippocampal mapping and anterior thalamic circuitry provide the biological orientation layer. Crown/North is a Potatoverse comparison; neural heading is environmental and not known to detect sacred North.",
+      "branches": [
+        "body",
+        "cosmology",
+        "north",
+        "science"
+      ],
+      "records": [
+        "knowledge/body/axis-orientation-autonomic-interface-atlas.json",
+        "knowledge/body/brain-room-deep-atlas.json",
+        "knowledge/body/thalamus-house-horus-crown-atlas.json",
+        "data/house/body-relational-overlay.json"
+      ],
+      "concepts": [
+        "Vestibular system",
+        "Head-direction cells",
+        "Anterior thalamus",
+        "Retrosplenial cortex",
+        "Entorhinal cortex",
+        "Hippocampus",
+        "Orientation Room",
+        "Crown",
+        "North"
+      ],
+      "epistemic_mix": [
+        "neuroscience",
+        "navigation",
+        "project_symbolism"
       ]
     }
   ]
