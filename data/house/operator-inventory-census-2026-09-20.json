@@ -1,7 +1,7 @@
 {
   "id": "operator-inventory-census-2026-09-20",
   "title": "Core Operator Inventory Census — Consolidation Pressure and Next Work",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-20",
   "status": "repository inventory snapshot",
   "purpose": "Summarize high-frequency operator families and route future consolidation through canonical owners instead of creating additional generic masters.",
@@ -41,12 +41,12 @@
     {
       "id": "spiral",
       "path_hits": 22,
-      "canonical_contract": "data/house/seed-spiral-routing.json",
+      "canonical_contract": "data/house/bidirectional-spiral-field.json",
       "definition_owner": "knowledge/core/deep-element-definition-atlas.json",
       "pressure": "high",
-      "next_action": "Classify each spiral file as recurrence law, geometry, dynamics, archaeology, science benchmark or reader view.",
-      "consolidation_status": "partially-controlled",
-      "progress_note": "Return-map/Ring-vs-Spiral law is consolidated; specialist geometry/dynamics files still need metadata normalization."
+      "next_action": "Normalize older specialist headers to point to the canonical field/recurrence owners as they are edited; no new generic Spiral masters.",
+      "consolidation_status": "controlled",
+      "progress_note": "O-centered paired field, Plane return-map semantics and specialist geometry/dynamics ownership are now separated. Remaining work is metadata cleanup, not operator ambiguity."
     },
     {
       "id": "tree",
@@ -142,11 +142,11 @@
     }
   ],
   "immediate_merge_queue": [
-    "Spiral family: normalize specialist metadata so recurrence law, geometry, physics analogy, archaeology, benchmark and reader layers all point to canonical recurrence owners.",
-    "Public projection audit: continue converting old page-local definitions into owner links and typed reader explanations.",
-    "Legacy master audit: identify root-level or older files that still declare themselves canonical despite newer House/operator ownership.",
-    "Promotion-status system: mark research/conversation waves as unpromoted, partially promoted, absorbed/provenance-only, or still canonical-source-bearing.",
-    "Only after these are controlled, consider moving fully absorbed temporary/recovery files to archive."
+    "Public projection audit: continue converting page-local ontology into canonical owner links and shared runtimes.",
+    "Legacy master audit: identify older files that still declare generic canonical authority despite newer House/operator ownership.",
+    "Promotion-status system: mark recovery/research waves unpromoted, partially promoted, absorbed/provenance-only or still source-bearing.",
+    "Site build/CI audit: keep all public, scientific, SEO, map and House validators green after ontology expansion.",
+    "Only then consider moving fully absorbed temporary/recovery files to archive."
   ],
   "success_metrics": [
     "One obvious definition/contract owner for every high-frequency operator.",
