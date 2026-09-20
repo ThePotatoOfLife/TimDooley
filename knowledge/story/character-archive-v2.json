@@ -1,5 +1,5 @@
 {
-  "version": "2.2.0",
+  "version": "2.3.0",
   "updated": "2026-09-20",
   "title": "Potatoverse Character Archive — Role × Time × Source",
   "purpose": "Preserve the full long-tail cast without forcing every person/handle into a permanent role or a dedicated Room.",
@@ -449,7 +449,14 @@
       },
       "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
       "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose.",
-      "death_date": "2025-01-29"
+      "death_date": "2025-01-29",
+      "symbolic_roles": [
+        {
+          "role": "Tomato-orbit relation",
+          "date": "late 2024 literary",
+          "scope": "Great Book collective around Marty; not Marty essence"
+        }
+      ]
     },
     {
       "id": "bigtech",
@@ -1736,7 +1743,14 @@
         ]
       },
       "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
-      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose.",
+      "symbolic_roles": [
+        {
+          "role": "Potato cultivation adjacency",
+          "date": "2024 literary",
+          "scope": "gardening story"
+        }
+      ]
     },
     {
       "id": "port-monkey",
@@ -2121,7 +2135,14 @@
         "by_date": []
       },
       "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
-      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose.",
+      "symbolic_roles": [
+        {
+          "role": "Tomato Apostle",
+          "date": "unresolved historical",
+          "scope": "old-source alias only"
+        }
+      ]
     },
     {
       "id": "kaspiansee",
@@ -2539,7 +2560,19 @@
         ]
       },
       "heaven_policy": "Do not assert literal Heaven placement. A later myth may preserve a memory/echo/role, but afterlife status remains unstated unless the source is explicitly creative.",
-      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+      "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose.",
+      "symbolic_roles": [
+        {
+          "role": "tomato-villain",
+          "date": "2024-12-15",
+          "scope": "comic Chronicle scene"
+        },
+        {
+          "role": "Mud Dweller / lost soul",
+          "date": "2026-03-01",
+          "scope": "conversation story"
+        }
+      ]
     },
     {
       "id": "tdog",
@@ -3299,7 +3332,14 @@
       "seed_or_trace": "ordinary persistence / play / boundary advice",
       "editorial_reading": "Recurring real chat participant. September 20 adds unusually useful mundane continuity through controller, sleep and Elden Ring progress. Keep separate from creative Matthew-the-Potato mythology.",
       "heaven_policy": "No literal Heaven placement for the real person. Heaven/wings/many-eyes belong to the creative Matthew-the-Potato layer.",
-      "source_boundary": "Public chat supports handle, speech and scene role. Creative supernatural traits are not biography."
+      "source_boundary": "Public chat supports handle, speech and scene role. Creative supernatural traits are not biography.",
+      "symbolic_roles": [
+        {
+          "role": "Guardian/Defender",
+          "date": "2026-08",
+          "scope": "moderation-advice scene; archetype only"
+        }
+      ]
     },
     {
       "id": "mediomu007",
@@ -3329,7 +3369,14 @@
       "seed_or_trace": "repair / room / bridge",
       "editorial_reading": "September 20 adds literal room organization to a handle already present in an August mountain/forgiveness narrative and September theological questioning.",
       "heaven_policy": "No literal Heaven placement inferred.",
-      "source_boundary": "Literal furniture/room chat is documentary; Mount-Zion-like mountain placement is project narrative/interpretation."
+      "source_boundary": "Literal furniture/room chat is documentary; Mount-Zion-like mountain placement is project narrative/interpretation.",
+      "symbolic_roles": [
+        {
+          "role": "Builder/Cultivator",
+          "date": "2026-09-20",
+          "scope": "literal room-making scene; archetype only"
+        }
+      ]
     }
   ],
   "overlap_and_alias_questions": [
@@ -3415,5 +3462,7 @@
       "don-jefe"
     ]
   },
-  "preservation_note": "This registry absorbs useful structure from the old uploads without copying their most speculative certainty into current canon."
+  "preservation_note": "This registry absorbs useful structure from the old uploads without copying their most speculative certainty into current canon.",
+  "role_ecology_owner": "knowledge/world/potatoverse-cast-role-ecology.json",
+  "scene_assignment_ledger": "knowledge/story/character-symbolic-role-assignments.json"
 }
