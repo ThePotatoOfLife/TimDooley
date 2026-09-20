@@ -666,14 +666,14 @@
     },
     {
       "id": "imf-cofer-usd-share-2026q1",
-      "entity_id": "global-allocated-official-reserves",
+      "entity_id": "global-official-foreign-exchange-reserves",
       "concept_id": "official-reserve-assets",
       "value": 57.13,
       "unit": "percent",
       "reference_period": "2026Q1",
       "source_id": "imf-cofer-2026q1",
       "evidence_status": "sourced",
-      "notes": "COFER country submissions are confidential; this aggregate cannot identify a particular country's reserve portfolio."
+      "notes": "COFER publishes world reserve-currency aggregates. From 2025Q3, with revisions back to 2000Q1, the IMF eliminated the old unallocated-reserve category using an imputation method while preserving confidentiality of individual economy submissions; do not infer a particular country's portfolio."
     },
     {
       "id": "tic-japan-us-treasury-holdings-2026-07",
@@ -822,7 +822,8 @@
       "id": "imf-cofer-dataset",
       "publisher": "International Monetary Fund",
       "domain": "COFER dataset and confidentiality framework",
-      "url": "https://data.imf.org/Datasets/COFER"
+      "url": "https://data.imf.org/Datasets/COFER",
+      "caveat": "Individual economy data remain confidential. From 2025Q3, with revisions back to 2000Q1, COFER allocates 100 percent of reported/imputed world foreign-exchange reserves across currencies; the imputed share is separately disclosed."
     },
     {
       "id": "us-treasury-debt-to-penny",
