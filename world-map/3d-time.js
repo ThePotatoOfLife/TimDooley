@@ -93,7 +93,7 @@ function renderContext(input){
   const rangeInfo=state.mode==='changed_between'&&state.valid?`<div class="row"><b>Comparison window</b><br>${esc(state.label)}${Number.isFinite(state.days)?`<br><span class="muted">${state.days} days</span>`:''}</div>`:'';
   card.innerHTML=`<div class="eyebrow">Time · ${esc(modeLabel(state))}</div><h2 style="margin-top:5px">Historical investigation</h2><p class="muted">Time changes which state or evidence was valid or known. It does not change D-level, graph distance or geography.</p>${issueText(state)}${rangeInfo}${north}<div class="boundary">Current project Fields and empirical Networks are not automatically rewritten as historical layers. Unknown or approximate dates remain unknown/approximate rather than being forced into precise intervals.</div>`;
   panel.appendChild(card);
-  window.__potatoAtlasUI?.setPanel?.(true,{persist:false});
+  window.__potatoAtlasInspectorVisibility?.setOpen?.(true,{persist:false});
 }
 function dispatch(input){
   const state=describeTimeWindow(input);
