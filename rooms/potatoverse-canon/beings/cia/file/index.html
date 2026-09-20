@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FBI File — Potatoverse</title>
+<title>CIA File — Potatoverse</title>
 <meta name="description" content="Reusable Potatoverse dossier viewer for Characters, Incidents & Associations, with chronology, source strata, associations, roles, stories and recovery leads.">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/rooms/potatoverse-canon/beings/cia/file/">
 <link rel="stylesheet" href="../../../../../app/site-system.css?v=20260914a">
@@ -36,7 +36,7 @@ body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transpa
 <body>
 <main class="case-shell" data-tts-longform>
 <div class="case-top"><div><a href="../">← Filing cabinet</a> <a href="../../">Beings &amp; Cast</a> <a href="../associations/">Associations</a> <a href="../incidents/">Incidents</a></div><div><button id="shuffleTop" type="button">Shuffle file</button></div></div>
-<span class="folder-tab">FBI · Character File</span>
+<span class="folder-tab">CIA · Character File</span>
 <article class="file-sheet" id="sheet">
 <div class="file-header"><div><div class="file-id" id="fileId">Loading dossier…</div><h1 id="name">Loading…</h1><p id="summary">Retrieving file from cabinet.</p></div><div class="mug" id="mug">NO PHOTO<br>ARCHIVE FILE</div></div>
 <div class="badges" id="badges"></div>
@@ -77,7 +77,7 @@ function roleMatches(id){
  return out;
 }
 function incidentMatches(id){return arr(incidents?.incidents).filter(x=>arr(x.characters).includes(id))}
-function bondMatches(id){return arr(associations?.edges).filter(x=>x.a===id||x.b===id)}
+function associationMatches(id){return arr(associations?.associations).filter(x=>x.a===id||x.b===id)}
 function enhancementFor(id){return enhancements?.characters?.[id]||enhancements?.created_beings?.[id]||null}
 function storyMatches(id){return arr(stories?.characters?.[id])}
 function overviewHtml(){
@@ -95,12 +95,12 @@ function timelineHtml(){
  return '<div class="timeline">'+(uniq.length?uniq.map(x=>'<article class="event"><time>'+esc(x.date)+'</time><h3>'+esc(x.title)+'</h3><p>'+esc(x.summary||'')+'</p></article>').join(''):'<p class="empty">No dated events loaded.</p>')+'</div>';
 }
 function associationsHtml(){
- const list=bondMatches(current).sort((a,b)=>b.count-a.count);
+ const list=associationMatches(current).sort((a,b)=>b.count-a.count);
  return '<div class="block"><h2>Source-derived co-presence</h2><p class="muted">Co-presence does not itself prove friendship, alliance, motive or conflict.</p>'+(list.length?list.map(e=>{const other=e.a===current?e.b:e.a;return '<article class="event"><h3>'+esc(other)+' <span class="mono">×'+esc(e.count)+'</span></h3><p>'+esc(arr(e.contexts).slice(0,4).join(' · '))+'</p><small>'+esc(arr(e.dates).join(', '))+'</small></article>'}).join(''):'<p class="empty">No co-presence edges in current network.</p>')+'</div>';
 }
 function storiesHtml(){
  const list=storyMatches(current); const inc=incidentMatches(current);
- return '<div class="two"><div class="block"><h2>Story appearances</h2>'+(list.length?list.map(s=>'<a class="story-link" href="'+route(s.path)+'"><b>'+esc(s.title)+'</b><br><small>'+esc(s.mode||'')+'</small></a>').join(''):'<p class="empty">No explicit Story links indexed yet.</p>')+'</div><div class="block"><h2>Indexed incidents</h2>'+(inc.length?inc.map(x=>'<article class="event"><time>'+esc(x.date)+'</time><h3>'+esc(x.title)+'</h3><small>'+esc(arr(x.type).join(' / '))+'</small></article>').join(''):'<p class="empty">No FBI incident entries yet.</p>')+'</div></div>';
+ return '<div class="two"><div class="block"><h2>Story appearances</h2>'+(list.length?list.map(s=>'<a class="story-link" href="'+route(s.path)+'"><b>'+esc(s.title)+'</b><br><small>'+esc(s.mode||'')+'</small></a>').join(''):'<p class="empty">No explicit Story links indexed yet.</p>')+'</div><div class="block"><h2>Indexed incidents</h2>'+(inc.length?inc.map(x=>'<article class="event"><time>'+esc(x.date)+'</time><h3>'+esc(x.title)+'</h3><small>'+esc(arr(x.type).join(' / '))+'</small></article>').join(''):'<p class="empty">No CIA incident entries yet.</p>')+'</div></div>';
 }
 function rolesHtml(){
  const list=roleMatches(current);
@@ -118,7 +118,7 @@ function sourcesHtml(){
  return '<div class="two"><div class="block"><h2>Source strata</h2>'+(ss.length?ss.map(s=>'<a class="route-link" href="'+route(s.path)+'">'+esc(s.type)+' → '+esc(s.path)+'</a>').join(''):'<p class="empty">No source routes indexed.</p>')+'</div><div class="block"><h2>Open recovery leads</h2>'+(leads.length?'<ul>'+leads.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'<p class="empty">No current recovery leads.</p>')+'</div></div>';
 }
 function render(){
- document.title=(dossier.display_name||current)+' — FBI File';
+ document.title=(dossier.display_name||current)+' — CIA File';
  document.getElementById('fileId').textContent='FILE '+current.toUpperCase()+' · '+(dossier.entity_class||'ENTITY');
  document.getElementById('name').textContent=dossier.display_name||current;
  document.getElementById('summary').textContent=dossier.tim_relation?.editorial_reading||'Persistent Potatoverse dossier.';
@@ -138,7 +138,7 @@ async function load(id){
  current=id; history.replaceState(null,'','?character='+encodeURIComponent(id));
  try{dossier=await get('knowledge/cia/characters/'+id+'.json');render()}catch(e){
   document.getElementById('name').textContent='File not found';
-  document.getElementById('summary').textContent='This entity does not yet have a deep FBI JSON dossier.';
+  document.getElementById('summary').textContent='This entity does not yet have a deep CIA JSON dossier.';
  }
 }
 function shuffle(){
