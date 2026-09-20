@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Expand weak descriptions, deduplicate question intents, then apply semantic SEO.
 
-The first pass only touches descriptions shorter than 40 characters. It prefers
-the first substantial paragraph already present on the page and otherwise
-derives a plain, non-promotional description from the page title. Curated
-descriptions of reasonable length are left unchanged.
+The first pass repairs missing descriptions and descriptions shorter than 40
+characters. It prefers the first substantial paragraph already present on the
+page and otherwise derives a plain, non-promotional description from the page
+title. Curated descriptions of reasonable length are left unchanged.
 
 Next, exact duplicate human questions generated from different archive indexes
 are collapsed into one indexable answer plus noindex/follow aliases. Finally,
@@ -92,6 +92,10 @@ def replace_weak_description(text: str, page: Path) -> tuple[str, bool]:
         if new_tag == tag:
             new_tag = tag[:-1] + f' content="{html.escape(replacement, quote=True)}">'
         return text.replace(tag, new_tag, 1), True
+    replacement = generated_description(text, page)
+    tag = f'<meta name="description" content="{html.escape(replacement, quote=True)}">'
+    if re.search(r"</head>", text, re.I):
+        return re.sub(r"</head>", tag + "\n</head>", text, count=1, flags=re.I), True
     return text, False
 
 
