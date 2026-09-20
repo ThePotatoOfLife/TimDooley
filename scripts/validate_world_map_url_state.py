@@ -19,6 +19,9 @@ MIGRATED=(
     ROOT/"world-map/3d-axis-depth.js",
     ROOT/"world-map/3d-mud-below-us.js",
     ROOT/"world-map/3d-spatial-overlay-ui.js",
+    ROOT/"world-map/3d-lenses.js",
+    ROOT/"world-map/3d-fields.js",
+    ROOT/"world-map/3d-networks.js",
 )
 
 def main()->int:
