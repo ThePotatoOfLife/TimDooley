@@ -1,6 +1,6 @@
 {
   "version": "1.3.0",
-  "updated": "2026-09-18",
+  "updated": "2026-09-20",
   "authority": "house-population-contract",
   "purpose": "Define how the House is populated from existing canonical registries and repository material without multiplying owners.",
   "sources_of_truth": {
@@ -151,5 +151,6 @@
     "Are important adjacencies represented as typed Roads or guarded Doors rather than generic proximity?",
     "Does the population pulse reveal missing roots/interfaces without being mistaken for a quality score?",
     "For anything labeled Foundation, can a later generation reinstantiate the system from its rules/practices/roles/standards without personal access to the founder?"
-  ]
+  ],
+  "structural_census": "data/house/structural-census.json"
 }
