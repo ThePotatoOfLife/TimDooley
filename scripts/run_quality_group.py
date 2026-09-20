@@ -74,6 +74,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
             "python scripts/validate_atlas_math_calibration.py",
             "python scripts/validate_repository_spine.py",
             "python scripts/validate_architecture_layers.py",
+            "python scripts/build_story_depth_audit.py",
             "python scripts/validate_content_integrity.py",
             "python scripts/check_css_namespace_collisions.py",
         ]),
