@@ -63,8 +63,35 @@ def main() -> int:
     bridge = load_json("data/frontend-atlas-bridge.json")
     coverage = load_json("data/backend-coverage-map.json")
     atlas = load_json("data/atlas-manifest.json")
+    surfaces = load_json("data/house/public-surfaces.json")
 
     errors: list[str] = []
+
+    def norm_route(value: str) -> str:
+        value = str(value or "").strip()
+        if not value:
+            return "/"
+        if value.startswith("http://") or value.startswith("https://"):
+            return value
+        value = value.split("#", 1)[0].split("?", 1)[0]
+        if not value.startswith("/"):
+            value = "/" + value
+        if "." not in value.rsplit("/", 1)[-1] and not value.endswith("/"):
+            value += "/"
+        return value
+
+    authoritative_routes = {
+        norm_route(row.get("canonical_route") or row.get("route"))
+        for row in surfaces.get("surfaces", [])
+        if isinstance(row, dict) and (row.get("canonical_route") or row.get("route"))
+    }
+
+    def require_surface_route(label: str, route: str) -> None:
+        if not route or "{" in str(route):
+            return
+        normalized = norm_route(route)
+        if normalized not in authoritative_routes:
+            fail(f"{label} copies non-canonical public route {route!r}; public-surfaces.json is route authority", errors)
 
     public_doors = bridge.get("public_doors")
     if public_doors != EXPECTED_DOORS:
@@ -72,6 +99,27 @@ def main() -> int:
 
     if isinstance(public_doors, dict) and "world_map" in public_doors:
         fail("World Map must be a specialist route, not the fifth primary public door", errors)
+
+    for family_name in ("public_doors", "public_rooms", "global_secondary_surfaces"):
+        family = bridge.get(family_name, {})
+        if isinstance(family, dict):
+            for key, route in family.items():
+                require_surface_route(f"frontend bridge {family_name}.{key}", route)
+
+    for branch_id, item in bridge.get("branch_projection", {}).items():
+        if not isinstance(item, dict):
+            continue
+        for field in ("human_route", "global_route"):
+            if item.get(field):
+                require_surface_route(f"branch projection {branch_id}.{field}", item[field])
+
+    for family_id, item in bridge.get("backend_family_projection", {}).items():
+        if not isinstance(item, dict):
+            continue
+        for field in ("global_route", "deep_route"):
+            route = item.get(field)
+            if route and "#" not in str(route):
+                require_surface_route(f"backend family {family_id}.{field}", route)
 
     world_page = ROOT / "world" / "index.html"
     if not world_page.exists():
