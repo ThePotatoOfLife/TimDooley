@@ -88,6 +88,17 @@ def main() -> int:
         if path not in viewer:
             fail(f"generic dossier viewer no longer loads {path}")
 
+    for token in (
+        'data-panel="conversations"',
+        'data-panel="patterns"',
+        "function conversationsHtml()",
+        "function patternsHtml()",
+        "Archive coverage",
+        "Recovery pressure",
+    ):
+        if token not in viewer:
+            fail(f"generic dossier viewer lost rich dossier projection token {token!r}")
+
     collections = json.loads(COLLECTIONS.read_text(encoding="utf-8"))
     fbi = next((x for x in collections.get("collections", []) if x.get("id") == "figures-bonds-incidents"), None)
     if not fbi:
@@ -111,9 +122,15 @@ def main() -> int:
     conversation = json.loads(conversation_path.read_text(encoding="utf-8"))
     if not conversation.get("entries"):
         fail("conversation recovery index has no entries")
-    for fid in ("matthew-mtclassic", "mediomu007"):
+    for fid in ("matthew-mtclassic", "mediomu007", "dim"):
         if not any(fid in (row.get("figures") or []) for row in conversation.get("entries", [])):
             fail(f"conversation recovery has no entries for {fid}")
+
+    if "dim" not in ids:
+        fail("DIM must remain a first-class FBI manifest figure")
+    dim_path = ROOT / "knowledge/fbi/figures/dim.json"
+    if not dim_path.is_file():
+        fail("DIM dossier is missing")
 
     surfaces = manifest.get("public_surfaces") or {}
     if surfaces.get("cabinet") != EXPECTED_ROUTE:
