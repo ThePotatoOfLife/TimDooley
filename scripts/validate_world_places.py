@@ -17,6 +17,7 @@ SEARCH = ROOT / "world-map" / "3d-search.js"
 MAP_STATE = ROOT / "world-map" / "3d-map-state.js"
 PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
+SUBDIVISION_INDEX = ROOT / "data" / "world-subdivisions" / "index.json"
 SUBDIVISION_SEARCH_TEST = ROOT / "scripts" / "test_world_map_subdivision_search.mjs"
 LABEL_DENSITY_TEST = ROOT / "scripts" / "test_world_map_place_label_density.mjs"
 EXPECTED_RUNTIME_BUDGET = {
@@ -118,6 +119,12 @@ def validate_data(data_dir: Path, errors: list[str]) -> None:
             errors.append(f"global-major feature {place_id or i} has population without population_source")
 
     countries = index.get("countries") or {}
+    if SUBDIVISION_INDEX.exists() and data_dir == DEFAULT_DATA_DIR:
+        subdivision_index = load_json(SUBDIVISION_INDEX, errors) or {}
+        regional_countries = set((subdivision_index.get("partitions") or {}).keys())
+        missing_regional_places = sorted(regional_countries - set(countries.keys()))
+        if missing_regional_places:
+            errors.append("regional place coverage missing for subdivision countries: " + ", ".join(missing_regional_places))
     partition_ids: set[str] = set()
     for iso3, descriptor in countries.items():
         path = data_dir / str((descriptor or {}).get("path") or "")
