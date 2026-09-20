@@ -1,0 +1,149 @@
+{
+  "id": "dim",
+  "display_name": "DIM / Dim Tooley",
+  "bureau": "CIA — Characters, Incidents & Associations",
+  "entity_class": "person-or-handle",
+  "aliases": [
+    "Dim Tooley",
+    "@DimTooley43"
+  ],
+  "archive_status": "recovery-active-2026",
+  "room_policy": "own-room-existing",
+  "room_path": "shadow-farm/dim/",
+  "tim_relation": {
+    "archetypes": [
+      "mirror-foil",
+      "wanderer-threshold"
+    ],
+    "narrative_functions": [
+      "public conflict participant",
+      "relation-history node",
+      "later mythic transformation",
+      "repair/open-question foil"
+    ],
+    "regions": [
+      "Below",
+      "Swamp",
+      "Threshold",
+      "Story"
+    ],
+    "editorial_reading": "DIM is strongest as a relation-history dossier: a July 2026 documentary conflict anchor is followed by Tim's Dog/Genesis interpretation, Dimmus Maximus fiction, an outleveling fable and September threshold satire. These layers should remain separate.",
+    "source_boundary": "DIM / @DimTooley43 is treated as a separate interlocutor from Tim Dooley. Public interaction, Tim's interpretation, fiction, fable and satire are distinct evidence strata. Serious allegations remain attributed claims, not findings."
+  },
+  "chronology": {
+    "chronicle_occurrence_count": 0,
+    "chronicle_dates": [],
+    "cast_period_roles": [
+      {
+        "period": "2026-07-07",
+        "role": "strongest current documentary anchor: DIM and TXT appear in the same public conflict field"
+      },
+      {
+        "period": "2026-07-20",
+        "role": "Tim interprets DIM/TXT through Dog, serpent, forbidden-fruit and separation imagery; interpretive/theological layer"
+      },
+      {
+        "period": "2026-07-30",
+        "role": "Dimmus Maximus enters comic-cosmic Potatoverse fiction"
+      },
+      {
+        "period": "2026-08-02",
+        "role": "fable casts DIM as the serious, gem-oriented dog who eventually outlevels the caretaker; project-literary layer"
+      },
+      {
+        "period": "2026-09-10",
+        "role": "satirical threshold images include the three-day gate, hollow box/footstool and wet-candle motifs"
+      }
+    ],
+    "recovered_social_days": [
+      {
+        "date": "2026-07-07",
+        "title": "DIM and TXT enter the same conflict day",
+        "minimum_event": "Recovered material places DIM and TXT inside one public argument about following, neighbors, narrative transfer and Cow/Dog language. Claims made by either side remain attributed.",
+        "source_mode": "public-interaction recovery"
+      }
+    ]
+  },
+  "top_co_presence": [
+    {
+      "name": "TXT",
+      "count": 1
+    },
+    {
+      "name": "Tim Dooley",
+      "count": 1
+    }
+  ],
+  "symbolic_roles": [
+    {
+      "role": "Dog-like reactive function",
+      "date": "2026-07-20 to 2026-08-02",
+      "scope": "Tim interpretation + later fable; not permanent identity"
+    },
+    {
+      "role": "Dimmus Maximus",
+      "date": "2026-07-30",
+      "scope": "fictional transformation"
+    }
+  ],
+  "highlighted_incidents": [
+    {
+      "date": "2026-07-07",
+      "title": "Recoverable public anchor",
+      "summary": "DIM and TXT share a dated public conflict field; disputed claims remain attributed."
+    },
+    {
+      "date": "2026-08-02",
+      "title": "The dog who outlevels the caretaker",
+      "summary": "Fable explores dependence, cultivation and loss of control after the cultivated agent becomes stronger; literary layer."
+    },
+    {
+      "date": "2026-09-10",
+      "title": "Threshold satire",
+      "summary": "Three-day gate, hollow-box and wet-candle images are tracked as satire rather than biography."
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "relational_dossier",
+      "path": "data/swamp/dim-txt-relational-dossier.json"
+    },
+    {
+      "type": "public_relation_room",
+      "path": "shadow-farm/dim/"
+    },
+    {
+      "type": "story_source_records",
+      "path": "knowledge/story/source-records.json"
+    },
+    {
+      "type": "role_ecology",
+      "path": "knowledge/world/role-exit-labeling-reintegration-atlas.json"
+    }
+  ],
+  "recovery_leads": [
+    "Search backward for DIM's first appearance and handle variants.",
+    "Recover exact primary post/status URLs for the July 2026 documentary sequence.",
+    "Keep Dimmus Maximus fiction, Dog/Farmer analysis and September satire separate from public-interaction evidence."
+  ],
+  "cia_record": {
+    "authority": "canonical",
+    "record_type": "character-dossier",
+    "presence": {
+      "first_recorded": "2026-07-07",
+      "last_recorded": "2026-09-10",
+      "rule": "First/last currently recovered dated evidence in this dossier; not lifetime endpoints."
+    },
+    "association_rule": "DIM–TXT co-presence is documentary at the July 7 anchor; later joint appearances may be interpretive or fictional and must be typed separately.",
+    "debt_and_repair": {
+      "records": [],
+      "rule": "No legal, financial, karmic or spiritual debt is attached here without a dated source explicitly doing so."
+    },
+    "state_rule": "Dog/Farmer, Dimmus Maximus, threshold and satire labels are episode/layer states rather than permanent human essence.",
+    "open_loops": [
+      "Earlier first appearance",
+      "Primary July source URLs",
+      "Whether later repair/cooperation stories ever map to documentary interaction"
+    ]
+  }
+}
