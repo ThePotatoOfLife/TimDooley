@@ -2,6 +2,7 @@
 """Validate the Current World live-news projection and its House boundaries."""
 from __future__ import annotations
 import json
+import re
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -50,7 +51,7 @@ for token in (
     'data-tts-longform',
     'data-tts-root="#news-reading-stream"',
     'data-tts-trigger-label="Read all news"',
-    'data-tts-exclude=".news-story-kicker,.news-story-footer,.news-story-image,.news-empty"',
+    'data-tts-exclude=".news-story-kicker,.news-story-footer,.news-story-image,.news-story-expand,.news-empty"',
     'data-provider="publisher-rss"',
 ):
     require(html,token,"news/index.html")
@@ -65,7 +66,13 @@ for token in (
     "function renderBriefing",
     "readable=params.get('readable')==='1'",
     "allRows.filter(r=>clean(r.summary).length>0)",
+    "baseProviders.filter(id=>id!==\'publisher-rss\')",
     "function renderPulse",
+    "data-news-expand",
+    "Show full excerpt",
+    "querySelectorAll('[data-news-category]')",
+    "querySelectorAll('[data-news-lens]')",
+    "querySelectorAll('[data-news-horizon]')",
     "function renderClusters",
     "function renderSourceLanes",
     "function mergeQueries",
@@ -74,6 +81,14 @@ for token in (
     "CACHE_TTL=10*60*1000",
 ):
     require(js,token,"app/news.js")
+
+
+if re.search(r"(?<!\$)\$\('\[data-news-category\]',tabs\)\.forEach", js):
+    errors.append("News category controls must use $() node-list selection, not $() single-element selection")
+if re.search(r"(?<!\$)\$\('\[data-news-lens\]',lenses\)\.forEach", js):
+    errors.append("News lens controls must use $() node-list selection, not $() single-element selection")
+if re.search(r"(?<!\$)\$\('\[data-news-horizon\]',horizons\)\.forEach", js):
+    errors.append("News horizon controls must use $() node-list selection, not $() single-element selection")
 
 for token in (
     ".news-pulse-grid",
@@ -87,10 +102,12 @@ for token in (
     ".news-audio-reader",
     ".news-story-summary",
     ".news-story-image",
+    ".news-story-expand",
+    ".news-story.is-expanded .news-story-summary",
 ):
     require(css,token,"app/news.css")
 
-for token in ('data-news-mode="preview"','publisher-rss','app/news.js?v=20260920c','app/news.css?v=20260920c'):
+for token in ('data-news-mode="preview"','publisher-rss','app/news.js?v=20260920f','app/news.css?v=20260920f'):
     require(home,token,"index.html")
 require(house,'href="../news/">Current World</a>',"house/index.html")
 
