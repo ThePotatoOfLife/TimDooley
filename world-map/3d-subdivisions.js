@@ -22,6 +22,9 @@ const SOURCE_ID = 'atlas-subdivisions-active';
 const LINE_ID = 'atlas-subdivision-line';
 const HIT_ID = 'atlas-subdivision-hit';
 const LABEL_ID = 'atlas-subdivision-label';
+const SELECTED_LABEL_ID = 'atlas-subdivision-selected-label';
+const NARROW_SCREEN_MAX = 720;
+const NARROW_LABEL_DELAY = 0.85;
 const USA_BOUNDS_FALLBACK = { west:-179.5, east:-65, south:17, north:72.5 };
 const DEFAULT_RUNTIME_BUDGET = Object.freeze({
   partition_max_bytes:1500000,
@@ -79,6 +82,8 @@ function retentionOwners() {
 }
 
 let activeBytes = 0;
+let labelZoomBase = null;
+let nameZoomBase = null;
 let runtimeBudget = { ...DEFAULT_RUNTIME_BUDGET };
 let cacheHits = 0;
 let cacheMisses = 0;
@@ -322,6 +327,7 @@ function selectSubdivision(partition, feature, options = {}) {
   selectedId = p.id || null;
   pendingDeepLinkId = null;
   syncUrl(selectedId);
+  syncSelectedLabel(selectedId);
   const bounds = subdivisionBounds(feature);
   if (options.fit !== false && bounds) motion.fitBounds(map, bounds, { padding:80, duration:650, maxZoom:7.4 });
   openInspector(feature);
@@ -364,6 +370,29 @@ function bindSharedLayerEvents() {
   }
   eventsBound = true;
 }
+function viewportWidth() {
+  return Number(window.innerWidth || document.documentElement?.clientWidth || 1024);
+}
+function labelPresentation() {
+  const narrow = viewportWidth() <= NARROW_SCREEN_MAX;
+  return {
+    narrow,
+    labelZoom:Number(labelZoomBase || 0) + (narrow ? NARROW_LABEL_DELAY : 0),
+    nameZoom:Number(nameZoomBase || 0) + (narrow ? NARROW_LABEL_DELAY : 0),
+  };
+}
+function syncSelectedLabel(id = selectedId) {
+  if (!map.getLayer(SELECTED_LABEL_ID) || typeof map.setFilter !== 'function') return false;
+  map.setFilter(SELECTED_LABEL_ID, ['==', ['get','id'], id || '__none__']);
+  return true;
+}
+function syncLabelPresentation() {
+  if (!map.getLayer(LABEL_ID) || labelZoomBase == null || nameZoomBase == null) return false;
+  const policy = labelPresentation();
+  map.setLayerZoomRange?.(LABEL_ID, policy.labelZoom, 24);
+  map.setLayoutProperty?.(LABEL_ID, 'text-field', ['step',['zoom'],['get','code'],policy.nameZoom,['get','name']]);
+  return true;
+}
 async function scaleRuntime() {
   const scale = await window.__potatoAtlasScale?.ready;
   if (!scale?.threshold || !scale?.bandThreshold) throw new Error('World Map Scale runtime unavailable to subdivisions.');
@@ -373,9 +402,11 @@ async function installSharedLayers() {
   const scale = await scaleRuntime();
   const renderZoom = scale.threshold('subdivisions', 'render');
   const labelZoom = scale.threshold('subdivisions', 'label');
+  labelZoomBase = labelZoom;
   let contextLineZoom = renderZoom;
   try { contextLineZoom = Math.min(renderZoom, scale.bandThreshold('macro-region')); } catch {}
   const nameZoom = scale.bandThreshold('subnational');
+  nameZoomBase = nameZoom;
   if (!map.getSource(SOURCE_ID)) {
     map.addSource(SOURCE_ID, { type:'geojson', data:{type:'FeatureCollection',features:[]}, promoteId:'id' });
   }
@@ -404,6 +435,20 @@ async function installSharedLayers() {
       paint:{'text-color':'#d4ddd7','text-halo-color':'#0a0f0f','text-halo-width':1.1,'text-opacity':0.86}
     }, before);
   }
+  if (!map.getLayer(SELECTED_LABEL_ID)) {
+    map.addLayer({
+      id:SELECTED_LABEL_ID,type:'symbol',source:SOURCE_ID,minzoom:renderZoom,
+      filter:['==',['get','id'],'__none__'],
+      layout:{
+        'text-field':['coalesce',['get','name'],['get','code']],
+        'text-size':['interpolate',['linear'],['zoom'],renderZoom,10,7,13],
+        'text-max-width':10,'text-allow-overlap':true,'text-ignore-placement':true
+      },
+      paint:{'text-color':'#fff0ad','text-halo-color':'#080b0b','text-halo-width':1.5,'text-opacity':1}
+    }, before);
+  }
+  syncLabelPresentation();
+  syncSelectedLabel();
   bindSharedLayerEvents();
 }
 map.on('sourcedata', event => {
@@ -523,6 +568,7 @@ async function ensureRelevantPartitions() {
 
 await installSharedLayers();
 map.on('moveend', ensureRelevantPartitions);
+window.addEventListener?.('resize', syncLabelPresentation);
 await ensureRelevantPartitions();
 
 window.__potatoAtlasSubdivisions = {
@@ -541,6 +587,7 @@ window.__potatoAtlasSubdivisions = {
     selectedId = null;
     pendingDeepLinkId = null;
     syncUrl(null);
+    syncSelectedLabel(null);
     if (options.restore !== false) {
       if (inspector?.current?.()?.type === 'subdivision') inspector.back();
       else if (code && window.goCountry) window.goCountry(code);
