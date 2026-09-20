@@ -8,7 +8,7 @@ urlState.claim('selection-inspector', ['place']);
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas Places require the core map.');
 function interactionRouter() { return window.__potatoAtlasInteraction; }
-const inspector = window.__potatoAtlasInspector;
+function inspectorRouter() { return window.__potatoAtlasInspector; }
 if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
 const motion = window.__potatoAtlasMotion;
 if (!window.__potatoAtlasGeo) await import('./3d-geo-kernel.js');
@@ -243,7 +243,7 @@ function countryBaseline(code) {
   };
 }
 function placeParent(code) {
-  const current = inspector?.current?.();
+  const current = inspectorRouter()?.current?.();
   if (current?.type === 'subdivision') return { type:'subdivision', id:current.id };
   if (current?.type === 'place' && current.parent?.type === 'subdivision') return { ...current.parent };
   return { type:'country', id:String(code || '').toUpperCase() };
@@ -274,6 +274,7 @@ function renderInspector(feature) {
     const code = String(p.country_iso3 || '').toUpperCase();
     if (!code) return;
     clear({ restore:false });
+    const inspector = inspectorRouter();
     if (inspector?.reset) inspector.reset(countryBaseline(code));
     else if (window.goCountry) window.goCountry(code);
   });
@@ -284,6 +285,7 @@ function openInspector(feature) {
   if (!feature) return false;
   const p = feature.properties || {};
   const code = String(p.country_iso3 || '').toUpperCase();
+  const inspector = inspectorRouter();
   if (!inspector?.open || !code) {
     renderInspector(feature);
     return true;
@@ -558,6 +560,7 @@ function clear(options = {}) {
   selectedId = null;
   syncUrl(null);
   if (options.restore !== false) {
+    const inspector = inspectorRouter();
     if (inspector?.current?.()?.type === 'place') inspector.back();
     else if (code && window.goCountry) window.goCountry(code);
   }
