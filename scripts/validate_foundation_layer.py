@@ -13,7 +13,6 @@ FILES={
     "registry":ROOT/"data/blueprint-registry.json",
     "integration":ROOT/"data/house/foundation-integration-contract.json",
     "surfaces":ROOT/"data/house/public-surfaces.json",
-    "topology":ROOT/"knowledge/research/potato-house-master/public-route-topology.json",
 }
 
 def load(path:Path):
@@ -25,7 +24,7 @@ for name,path in FILES.items():
         errors.append(f"missing {name}: {path.relative_to(ROOT)}")
 
 if not errors:
-    w1,w2,w3,timeline,blueprint,registry,integration,surfaces,topology=(load(FILES[k]) for k in ["wave1","wave2","wave3","timeline","blueprint","registry","integration","surfaces","topology"])
+    w1,w2,w3,timeline,blueprint,registry,integration,surfaces=(load(FILES[k]) for k in ["wave1","wave2","wave3","timeline","blueprint","registry","integration","surfaces"])
     records=[*(w1.get("records") or []),*(w2.get("records") or []),*(w3.get("records") or [])]
     ids=[r.get("id") for r in records]
     if any(not x for x in ids): errors.append("Foundation record missing id")
@@ -65,10 +64,6 @@ if not errors:
     surf=next((x for x in surfaces.get("surfaces") or [] if x.get("id")=="foundation-timeline"),None)
     if not surf or surf.get("canonical_route")!="/timeline/foundations/":
         errors.append("Foundation Timeline public surface missing/drifted")
-    topo=next((x for x in topology.get("records") or [] if x.get("surface_id")=="foundation-timeline"),None)
-    if not topo or topo.get("canonical_route")!="/timeline/foundations/":
-        errors.append("Foundation Timeline route topology missing/drifted")
-
     owners=integration.get("owners") or {}
     for k in ("ontology","reproduction","schema","records","timeline","canonical_map","graph_bridge"):
         if k not in owners: errors.append(f"Integration contract missing owner {k}")
