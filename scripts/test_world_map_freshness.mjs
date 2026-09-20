@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+globalThis.window=globalThis;
+globalThis.CustomEvent=class CustomEvent{constructor(type,init={}){this.type=type;this.detail=init.detail;}};
+globalThis.dispatchEvent=()=>true;
+await import(new URL('../world-map/3d-data-freshness.js?test=1',import.meta.url));
+const f=window.__potatoAtlasFreshness;
+assert.equal(f.describe({data_status:'historical-snapshot',data_through:'2023-10-11'}).key,'historical');
+assert.equal(f.describe({data_status:'historical-snapshot'}).label,'Historical');
+assert.equal(f.describe({dataset_refresh_date:'mirror snapshot; exact upstream refresh unknown'}).key,'unknown-vintage');
+assert.equal(f.describe({freshness_status:'latest-available',reference_period:'2025'}).label,'Latest available');
+assert.equal(f.describe({freshness_status:'delayed'}).key,'delayed');
+assert.equal(f.describe({freshness_status:'planned'}).key,'planned');
+assert.equal(f.describe({generated_at:'2026-09-21'}).key,'unknown-vintage','local build date must not imply currentness');
+console.log('WORLD MAP FRESHNESS REGRESSION PASSED');
