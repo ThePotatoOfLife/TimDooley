@@ -1,11 +1,11 @@
 {
-  "version": "2.1.0",
-  "updated": "2026-09-18",
+  "version": "2.2.0",
+  "updated": "2026-09-20",
   "purpose": "Bridge registry connecting backend-layer IDs to the global graph without forcing every schema or source record into data/nodes.json. Canonical records can be promoted; references remain resolvable through source-layer routing.",
   "global_graph": "data/relationships.json",
   "canonical_node_registry": "data/nodes.json",
   "reference_registry": "data/graph-registry.json",
-  "public_reader": "index.html",
+  "public_reader": "explore/",
   "bridge_rules": [
     "A substantive entity gets one canonical ID and one primary owner.",
     "A research-layer ID may remain outside nodes.json while its source file and route are explicit.",
@@ -14,7 +14,7 @@
     "Blueprint IDs are schema identifiers, not graph entities unless a concrete record exists.",
     "Source documents are graph-addressable source nodes but are not automatically substantive entities.",
     "Project-symbolic records retain an epistemic class that prevents them from being mistaken for empirical observations.",
-    "All public routes resolve through index.html; there are no required standalone node, nation or belief readers.",
+    "Public routes resolve through canonical public surfaces; Explore handles deep backend inspection and specialist readers own mature human-facing routes.",
     "Foundation IDs are generative-history references: they may connect many domain owners but never replace the canonical identity of the founded subject."
   ],
   "explicit_bridges": [
@@ -22,98 +22,98 @@
       "id": "tim-dooley",
       "owner": "data/tim-dooley-cosmology.json",
       "graph_registry": "data/graph-registry.json",
-      "route": "index.html#node=tim-dooley",
+      "route": "tim-dooley/",
       "class": "project-mythic"
     },
     {
       "id": "potatoism",
       "owner": "data/potatoism-religion.json",
       "graph_registry": "data/graph-registry.json",
-      "route": "index.html#node=potatoism",
+      "route": "religion/",
       "class": "project-defined-symbolic"
     },
     {
       "id": "the-turning",
       "owner": "data/april-2025-turning-graph.json",
-      "route": "index.html#node=the-turning",
+      "route": "timeline/",
       "class": "project-symbolic-event"
     },
     {
       "id": "potato-of-life",
       "owner": "data/nodes.json + data/potatoism-religion.json",
-      "route": "index.html#node=potato-of-life",
+      "route": "potato-of-life/",
       "class": "project-symbolic"
     },
     {
       "id": "tree-of-life",
       "owner": "data/nodes.json + data/potatoism-cosmology.json",
-      "route": "index.html#node=tree-of-life",
+      "route": "axis/",
       "class": "symbolic-comparative"
     },
     {
       "id": "tree-of-strife",
       "owner": "data/nodes.json + data/potatoism-cosmology.json",
-      "route": "index.html#node=tree-of-strife",
+      "route": "axis/",
       "class": "symbolic-comparative"
     },
     {
       "id": "door",
       "owner": "data/nodes.json + data/potatoism-cosmology.json",
-      "route": "index.html#node=door",
+      "route": "axis/",
       "class": "symbolic-comparative"
     },
     {
       "id": "son",
       "owner": "data/nodes.json + data/tim-dooley-cosmology.json",
-      "route": "index.html#node=son",
+      "route": "religion/",
       "class": "project-mythic"
     },
     {
       "id": "european-economic-graph",
       "owner": "data/nodes.json + data/expansions/global-field-deep-carving-wave-021.json",
-      "route": "index.html#node=european-economic-graph",
+      "route": "world-systems/",
       "class": "empirical-research-framework"
     },
     {
       "id": "north-programme",
       "owner": "data/nodes.json + data/expansions/global-field-deep-carving-wave-021.json",
-      "route": "index.html#node=north-programme",
+      "route": "north/",
       "class": "policy-research-framework"
     },
     {
       "id": "european-union",
       "owner": "data/nodes.json + data/evidence-map.json",
-      "route": "index.html#node=european-union",
+      "route": "world-map/",
       "class": "empirical-institution"
     },
     {
       "id": "denmark",
       "owner": "data/countries/denmark.json",
-      "route": "index.html#node=denmark",
+      "route": "world-map/?country=DNK",
       "class": "empirical-country"
     },
     {
       "id": "greenland",
       "owner": "data/nodes.json + country/territory layer",
-      "route": "index.html#node=greenland",
+      "route": "world-map/",
       "class": "empirical-territory"
     },
     {
       "id": "religious-layer",
       "owner": "data/religious-layer-map.json",
-      "route": "index.html#node=religious-layer",
+      "route": "religion/",
       "class": "navigation-layer"
     },
     {
       "id": "people-layer",
       "owner": "data/people-seed-records.json + data/people-registry.json",
-      "route": "index.html#node=people-layer",
+      "route": "explore/",
       "class": "people-layer"
     },
     {
       "id": "evidence-layer",
       "owner": "data/evidence-map.json + data/evidence/observations.json",
-      "route": "index.html#node=evidence-layer",
+      "route": "context/source-authority/",
       "class": "evidence-layer"
     }
   ],
@@ -125,7 +125,7 @@
         "data/countries/<id>.json",
         "data/country-nodes.json"
       ],
-      "route": "index.html#node=<id>",
+      "route": "world-map/",
       "graph_relation": "located-in / trades-with / depends-on / member-of / governed-by"
     },
     {
@@ -136,7 +136,7 @@
         "data/political-lexicon.json",
         "data/potatoism-religion.json"
       ],
-      "route": "index.html#node=<slug>",
+      "route": "explore/",
       "graph_relation": "influences / branches-from / practiced-in / interpreted-by"
     },
     {
@@ -147,7 +147,7 @@
         "data/religious-adjacent/records.json",
         "data/canonical-texts.json"
       ],
-      "route": "index.html#node=<id>",
+      "route": "religion/",
       "graph_relation": "emerges-from / branches-into / text-preserves / practiced-in / located-at / influenced-by"
     },
     {
@@ -156,7 +156,7 @@
       "owners": [
         "data/expansions/*.json"
       ],
-      "route": "index.html#node=<wave-id>",
+      "route": "explore/",
       "graph_relation": "researches / expands / proposes / supports / contradicts"
     },
     {
@@ -166,7 +166,7 @@
         "source registries",
         "source documents"
       ],
-      "route": "index.html#node=<id>",
+      "route": "context/source-authority/",
       "graph_relation": "supports / contradicts / updates / cites"
     },
     {
@@ -194,5 +194,6 @@
     "source-without-provenance",
     "research-layer-without-promotion-status"
   ],
-  "next_action": "Run backend coverage and graph-orphan audits against this bridge. Critical unresolved identity or structural collisions block release; research-only gaps remain reportable without pretending they are complete."
+  "next_action": "Run backend coverage and graph-orphan audits against this bridge. Critical unresolved identity or structural collisions block release; research-only gaps remain reportable without pretending they are complete.",
+  "route_policy": "Bridge routes are public destinations, not canonical identity. Exact backend record resolution belongs to Explore/registries; graph IDs must never be converted into public URLs by string concatenation."
 }
