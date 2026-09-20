@@ -81,8 +81,8 @@
 **Next:** add textual/shape/pattern redundancy and accessibility checks.
 
 ### WM-013 · Active-view accessibility summary incomplete — P2
-**Status:** open.  
-**Next:** concise live region describing active analytical/physical/evidence/geography layers, selection, scale and time.
+**Status:** fixed (2026-09-20).  
+**Resolution:** a read-only polite/atomic live region summarizes selected country, analytical layers, Physical layers, Geography overlays, Evidence layers, relation mode, projection, time and named camera scale. It listens to canonical state-change events and does not poll or mutate map state.
 
 ### WM-014 · Route-geometry behavioral coverage incomplete — P2
 **Status:** open.  
