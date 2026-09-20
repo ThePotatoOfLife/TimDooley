@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-20",
   "authority": "seed-spiral-routing",
   "purpose": "Define where Seed of Death, Seed of Life, rooting, sprouting, ascent, descent, Ring, Drain and fruitful Return begin and go inside the Potato of Life without reducing vertical direction to moral value.",
@@ -231,9 +231,52 @@
     "Ring and Spiral must remain distinct: zero net transformation versus recurrence with changed level/state.",
     "Door crossing, incorporation, Plane snapshot and later recurrence comparison are separate stages; do not infer Spiral from one threshold event.",
     "Seed language should specify viability conditions rather than treating possibility as guaranteed future.",
-    "Root language should specify what present structure the provenance/support relation still anchors."
+    "Root language should specify what present structure the provenance/support relation still anchors.",
+    "A single O-centered double-spiral may widen in both +Axis and -Axis directions; radial widening describes scope/amplitude, not moral value.",
+    "Mountain/Swamp are regime/terrain overlays on the spiral field, not identical with the upper/lower spiral curves.",
+    "Exact logarithmic spiral and origin-inclusive shifted project spiral must remain mathematically distinguished."
   ],
   "transition_lifecycle": "data/house/door-cross-spiral-lifecycle.json",
   "root_seed_contract": "data/house/root-seed-temporal-contract.json",
-  "seed_junction_rule": "C_S remains the project Seed Junction, but Seed denotes present conditional capacity, not the future itself. Root denotes inherited/supporting provenance, not the past itself."
+  "seed_junction_rule": "C_S remains the project Seed Junction, but Seed denotes present conditional capacity, not the future itself. Root denotes inherited/supporting provenance, not the past itself.",
+  "bidirectional_axis_spiral": {
+    "status": "canonical project geometry with explicit mathematical boundary",
+    "insight": "O can be treated as the waist/origin of two conjugate spiral routes opening along +Axis and -Axis. Successive axial sections can be rendered as circles/rings whose radius increases with distance from O in both directions.",
+    "exact_logarithmic_model": {
+      "golden_ratio": "phi=(1+sqrt(5))/2",
+      "golden_shape_parameter": "b=2 ln(phi)/pi",
+      "upper": "gamma_+(t)=(r0 exp(bt) cos t, r0 exp(bt) sin t, +h t), t>=0",
+      "lower": "gamma_-(t)=(r0 exp(bt) cos(-t+delta), r0 exp(bt) sin(-t+delta), -h t), t>=0",
+      "quarter_turn_rule": "Every pi/2 of angular travel multiplies radius by phi.",
+      "center_boundary": "An exact logarithmic spiral never reaches radius zero; r0 is therefore a small Door/center aperture rather than literal O."
+    },
+    "origin_inclusive_project_model": {
+      "radius": "R(t)=r0(exp(bt)-1)",
+      "upper": "Gamma_+(t)=(R(t) cos t, R(t) sin t, +h t)",
+      "lower": "Gamma_-(t)=(R(t) cos(-t+delta), R(t) sin(-t+delta), -h t)",
+      "property": "R(0)=0, so both project spirals begin exactly at O and rapidly approach exponential/logarithmic growth away from the waist.",
+      "boundary": "This shifted curve is a project construction inspired by logarithmic growth; it is not itself the exact recovered logarithmic spiral."
+    },
+    "layered_circle_model": {
+      "section_times": "t_n=n*pi/2",
+      "exact_radii": "r_n=r0*phi^n",
+      "origin_inclusive_radii": "R_n=r0*(phi^n-1)",
+      "axial_levels": "z_n^+=+h*n*pi/2; z_n^-=-h*n*pi/2",
+      "circles": "C_n^±: z=z_n^± and x^2+y^2=R_n^2",
+      "meaning": "The circle stack makes the widening visible as nested axial layers. Connecting ring boundaries produces a double-horn/hourglass envelope around the Axis."
+    },
+    "chirality": {
+      "mirrored_default": "upper theta=+t, lower theta=-t+delta",
+      "meaning": "Opposite handedness gives the two lobes a mirror/conjugate relation while preserving one center and one Axis.",
+      "alternative": "Same handedness may be used when the narrative requires continuity of rotation across O; chirality is a projection parameter, not moral valence."
+    },
+    "terrain_relation": {
+      "ring_radius": "represents available relational/state-space horizon or recurrence amplitude at that axial section; it is not automatically literal geographic width.",
+      "upper_lobe": "Widening rings can represent increasing horizon, branching, Garden/Tree capacity and broader relation while Mountain separately measures convergence/integration toward high perspective.",
+      "lower_lobe": "Widening rings can represent growing entanglement, dispersion, accumulated recurrence or depth while Drain separately represents an inward/capture attractor.",
+      "mountain_duality": "Mountain and widening Spiral can coexist because they measure different coordinates: Mountain = integrative compression/convergence; Spiral radius = lateral scope/amplitude.",
+      "swamp_duality": "Swamp and Drain can coexist because Swamp = broad entangled regime; Drain = narrowing loss-of-agency attractor within it."
+    },
+    "moral_firewall": "Positive/negative z, large/small radius and clockwise/counter-clockwise chirality do not determine good/evil. Classification still depends on agency, provenance, correction, Fruit, exit and return."
+  }
 }
