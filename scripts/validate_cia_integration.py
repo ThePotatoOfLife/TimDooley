@@ -41,6 +41,10 @@ def main():
  cia_rows=[x for x in featured if str(x.get("path") or "").startswith("knowledge/cia/")]
  stale=[x.get("id") for x in cia_rows if str(x.get("id") or "").startswith("fbi-")]
  if stale: fail("House CIA holdings retain stale FBI ids: "+", ".join(stale))
+ inhabitants=json.loads((ROOT/"data/house/room-inhabitants.json").read_text(encoding="utf-8"))
+ bureau=next((x for x in inhabitants.get("inhabitants",[]) if x.get("route")=="/rooms/potatoverse-canon/beings/cia/"),None)
+ if not bureau or bureau.get("id")!="cia-character-bureau": fail("House CIA bureau object id drift")
+ if "FBI means" in str(bureau.get("status_note") or ""): fail("House CIA bureau retained stale FBI status note")
  expected={"knowledge/cia/incidents/index.json":"cia-incidents","knowledge/cia/associations/network.json":"cia-associations"}
  for path,expected_id in expected.items():
   row=next((x for x in cia_rows if x.get("path")==path),None)
