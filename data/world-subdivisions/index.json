@@ -879,7 +879,7 @@
     },
     "RUS": {
       "path": "RUS.geo.json",
-      "bytes": 960736,
+      "bytes": 961014,
       "feature_count": 83,
       "admin_level": 1,
       "status": "implemented-geometry-first",
@@ -904,7 +904,7 @@
       ],
       "viewport_bounds": {
         "west": 19,
-        "east": 190,
+        "east": -170,
         "south": 41,
         "north": 82
       },
@@ -1656,7 +1656,12 @@
           "parent_iso3": "RUS",
           "parent_name": "Russia"
         }
-      ]
+      ],
+      "boundary_reference_ids": [
+        "UN A/RES/68/262",
+        "UN A/RES/ES-11/4"
+      ],
+      "boundary_reference_note": "These UN General Assembly resolutions are the reference for keeping the six disputed Ukrainian source features out of Russia base geography; this partition does not encode live control."
     }
   }
 }
