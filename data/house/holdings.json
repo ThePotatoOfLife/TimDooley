@@ -1,5 +1,5 @@
 {
-  "version": "4.1.0",
+  "version": "4.2.0",
   "updated": "2026-09-20",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
@@ -202,6 +202,30 @@
           "id": "debt-depth-ascent-rubble-synthesis",
           "kind": "room holding",
           "basis": "core-remainder"
+        },
+        {
+          "path": "data/house/operator-ownership-registry.json",
+          "id": "operator-ownership-registry",
+          "kind": "canonical operator routing and consolidation registry",
+          "basis": "house-authority"
+        },
+        {
+          "path": "data/house/plane-crossing-contract.json",
+          "id": "plane-crossing-contract",
+          "kind": "Plane Axis Cross crossing contract",
+          "basis": "house-authority"
+        },
+        {
+          "path": "knowledge/research/circle-field-research-synthesis-2026-09-20.json",
+          "id": "circle-field-research-synthesis",
+          "kind": "research rationale for circle center/interior/rim/overlap/trajectory",
+          "basis": "research-specialist"
+        },
+        {
+          "path": "knowledge/research/plane-crossing-research-synthesis-2026-09-20.json",
+          "id": "plane-crossing-research-synthesis",
+          "kind": "research rationale for Plane/frame/crossing/return section",
+          "basis": "research-specialist"
         }
       ],
       "public_surface_ids": [
