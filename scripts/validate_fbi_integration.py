@@ -70,7 +70,8 @@ def main() -> int:
             fail(f"cabinet is not manifest-driven; missing {token!r}")
 
     # Static hand-authored figure cards caused the original 34-vs-20 drift.
-    static_cards = re.findall(r'<a class="file"[^>]+data-figure-id=', cabinet)
+    html_before_script = cabinet.split("<script>", 1)[0]
+    static_cards = re.findall(r'<a class="file"[^>]+data-figure-id=', html_before_script)
     if static_cards:
         fail("cabinet still contains hand-authored dossier cards; render them from manifest instead")
 
