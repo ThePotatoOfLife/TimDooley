@@ -1,3 +1,7 @@
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('physical-layers', ['physical']);
+
 // Lazy Physical World runtime + first-class World Bar mixer.
 // Manifest metadata loads with the core; expensive providers/modules do not.
 // Compatibility map: physical.terrain -> __potatoAtlasTerrain.
@@ -89,11 +93,8 @@ function syncCountrySurfaceTint() {
 }
 
 function persist() {
-  const url = new URL(location.href);
   const values = activeIds().sort();
-  if (values.length) url.searchParams.set('physical', values.join(','));
-  else url.searchParams.delete('physical');
-  history.replaceState({}, '', url);
+  urlState.patch('physical-layers', { set:{ physical:values.length ? values.join(',') : null } });
 }
 
 function emit(reason, id) {
