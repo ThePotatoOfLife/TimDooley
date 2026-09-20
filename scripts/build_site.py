@@ -342,10 +342,73 @@ def generate_machine_index(manifest, core_index, contexts):
     (OUT / "llms.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+
+def inject_substance_bindings() -> dict[str, int]:
+    """Attach quiet semantic bonds to authored public prose without rewriting it.
+
+    Canonical owners and relation metadata remain machine-readable support.
+    The visible HTML stays editorially authored and structurally free.
+    """
+    contract_path = ROOT / "data" / "house" / "substance-first-projection-contract.json"
+    contract = load_json(contract_path, {}) or {}
+    stats = {"registered": 0, "bound": 0, "anchors": 0}
+    for row in contract.get("pages", []):
+        rel = str(row.get("page") or "").strip()
+        if not rel:
+            continue
+        stats["registered"] += 1
+        target = OUT / rel
+        if not target.is_file():
+            continue
+        source = target.read_text(encoding="utf-8", errors="replace")
+        anchors = row.get("anchors") or []
+        binding = {
+            "policy": contract.get("id"),
+            "version": contract.get("version"),
+            "page": rel,
+            "route": row.get("route"),
+            "rooms": row.get("rooms") or [],
+            "anchors": anchors,
+        }
+        payload = json.dumps(binding, ensure_ascii=False).replace("</", "<\\/")
+        block = (
+            '<script type="application/json" data-house-substance-bindings>'
+            + payload
+            + "</script>"
+        )
+        if "data-house-substance-bindings" not in source:
+            if re.search(r"</body>", source, re.I):
+                source = re.sub(r"</body>", block + "\n</body>", source, count=1, flags=re.I)
+            else:
+                source += "\n" + block + "\n"
+        if 'data-substance-policy="substance-first"' not in source:
+            if re.search(r"<main\b", source, re.I):
+                source = re.sub(
+                    r"<main\b",
+                    '<main data-substance-policy="substance-first"',
+                    source,
+                    count=1,
+                    flags=re.I,
+                )
+            elif re.search(r"<body\b", source, re.I):
+                source = re.sub(
+                    r"<body\b",
+                    '<body data-substance-policy="substance-first"',
+                    source,
+                    count=1,
+                    flags=re.I,
+                )
+        target.write_text(source, encoding="utf-8")
+        stats["bound"] += 1
+        stats["anchors"] += len(anchors)
+    return stats
+
+
 def build() -> None:
     build_world_map_runtime = build_runtime_file(ROOT / "data" / "world-map-data-runtime.json")
     build_world_map_coverage = build_coverage_file(ROOT / "data" / "world-map-coverage-ledger.json")
     copy_tree()
+    substance_bindings = inject_substance_bindings()
     required = [OUT / "index.html", OUT / "manifest.json", OUT / "app" / "app.js", OUT / "app" / "style.css", OUT / "knowledge" / "core" / "potato-of-life.json", OUT / "knowledge" / "core" / "tim-dooley.json", OUT / "knowledge" / "core" / "tim-identity-ontology.json", OUT / "tim-dooley" / "index.html", OUT / "tim-dooley" / "ontology" / "index.html", OUT / "faq" / "index.html", OUT / "faq" / "all" / "god" / "index.html", OUT / "data" / "world-map-data-runtime.json", OUT / "data" / "world-map-coverage-ledger.json"]
     missing = [str(p.relative_to(OUT)) for p in required if not p.exists()]
     if missing:
@@ -367,7 +430,7 @@ def build() -> None:
         raise SystemExit("No HTML pages were built into _site")
     metric_coverage = {key: value.get("coverage", 0) for key, value in build_world_map_runtime.get("metrics", {}).items()}
     coverage_entities = len(build_world_map_coverage.get("entities", {}))
-    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters', []))} context clusters, five-door-aware generated navigation, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, shared asset fingerprints {asset_versions}, World Map metric coverage {metric_coverage}, coverage ledger for {coverage_entities} map entities, and the complete repository knowledge/data tree.")
+    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters', []))} context clusters, five-door-aware generated navigation, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, shared asset fingerprints {asset_versions}, World Map metric coverage {metric_coverage}, coverage ledger for {coverage_entities} map entities, and the complete repository knowledge/data tree; substance-first bindings ${substance_bindings}." )
 
 
 if __name__ == "__main__":
