@@ -25,9 +25,10 @@ body{background:linear-gradient(90deg,rgba(255,255,255,.015),transparent 20%,tra
 </style>
 </head>
 <body>
-<main class="page page--reading cia" data-tts-longform>
+<main class="page page--reading cia" id="cia-cabinet">
 <nav class="page-nav"><a href="../">← Beings &amp; Cast</a><a href="../../">Potatoverse / Canon</a><a href="../../../inside/canon-identities/">Core Identities</a><a href="../cast-ecology/">Cast Ecology</a></nav>
 <header class="page-header"><p class="eyebrow">Potatoverse dossier bureau</p><h1>CIA</h1><p class="summary">Characters, Incidents &amp; Associations — a searchable knowledge archive for people, handles and created figures, their conversations, relationships, role changes, evidence and unresolved questions.</p></header>
+<div id="cia-tts" data-tts-longform data-tts-root="#cia-cabinet" data-tts-id="cia-cabinet" data-tts-label="Listen to CIA" data-tts-all-label="CIA overview" data-tts-current-label="Current section" data-tts-selection-label="Selection" data-tts-item=".legend,.desks" data-tts-exclude=".page-nav,.controls,.rolebar,.role-results,.cabinet,.quickfiles"></div>
 <p class="lede">Pull a folder. Search a name. Ask for Dogs, Farmers, Mud Dwellers, Potatoes or Tomatoes. Shuffle until somebody unexpected lands on the desk. Each deep file opens as a dossier sheet with chronology, conversations, patterns, associations, Story appearances, roles, capabilities, source notes and research leads.</p>
 <p class="boundary"><strong>CIA here means Characters, Incidents &amp; Associations.</strong> It is a Potatoverse research/archive acronym, not the U.S. Central Intelligence Agency and not affiliated with any intelligence or law-enforcement service. It organizes source-bounded knowledge; it does not make official investigative findings.</p>
 <div class="quickfiles" aria-label="Featured files"><a href="file/?figure=marty-biz">Marty</a><a href="file/?figure=termite">Termite</a><a href="file/?figure=rahu">Rahu</a><a href="file/?figure=txt">TXT</a><a href="file/?figure=metalorian">Metalorian</a><a href="file/?figure=matthew-mtclassic">Matthew / MTClassic</a></div>
@@ -129,6 +130,7 @@ function shuffle(){
  document.getElementById('shuffle').onclick=shuffle;
 })().catch(e=>{document.getElementById('status').textContent='Cabinet filters could not initialize; the static dossier cards above remain usable.';});
 </script>
+<script src="../../../../app/site-tts.js" defer></script>
 <script src="../../../../app/house-journey.js"></script>
 </body>
 </html>
