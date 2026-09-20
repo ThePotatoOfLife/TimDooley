@@ -114,7 +114,13 @@ def main() -> int:
             raise AssertionError("unknown population semantics missing")
 
         # Count drift must fail closed.
-        run([*base_args[:-4], "--expected-count", "3", "--out-dir", str(tmp / "count-fail")], expect=1)
+        count_args = list(base_args)
+        expected_index = count_args.index("--expected-count") + 1
+        count_args[expected_index] = "3"
+        count_args[-1] = str(tmp / "count-fail")
+        count_proc = run(count_args, expect=1)
+        if "feature count drift" not in (count_proc.stdout + count_proc.stderr):
+            raise AssertionError("count-drift guard failed for the wrong reason")
 
         # Duplicate canonical IDs must fail closed.
         duplicate = json.loads(source_text)
