@@ -679,7 +679,12 @@ async function installSharedLayers() {
       id:SELECTED_LABEL_ID,type:'symbol',source:SOURCE_ID,minzoom:renderZoom,
       filter:['==',['get','id'],'__none__'],
       layout:{
-        'text-field':['coalesce',['get','name'],['get','code']],
+        'text-field':[
+          'case',
+          ['all',['has','local_name'],['!=',['get','local_name'],['get','name']]],
+          ['concat',['coalesce',['get','name'],['get','code']],'\n',['get','local_name']],
+          ['coalesce',['get','name'],['get','code']]
+        ],
         'text-size':['interpolate',['linear'],['zoom'],renderZoom,10,7,13],
         'text-max-width':10,'text-allow-overlap':true,'text-ignore-placement':true
       },
