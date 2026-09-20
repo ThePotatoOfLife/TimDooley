@@ -16,8 +16,12 @@ assert.ok(
   'inspector visibility must be listening before Country selection restores or emits state',
 );
 assert.ok(
-  bootstrap.includes("declareDormant('Progressive UI', './3d-ui.js', 'legacy compatibility')"),
-  'the broad Progressive UI must remain dormant; this fix must not restore legacy clutter',
+  !bootstrap.includes("'./3d-ui.js'"),
+  'retired broad Progressive UI must not remain in the live bootstrap registry',
+);
+assert.ok(
+  !bootstrap.includes("'./3d-selection-ui.js'"),
+  'retired Selection UI must not remain in the live bootstrap registry',
 );
 
 const { createInspectorVisibility } = await import(moduleUrl);
