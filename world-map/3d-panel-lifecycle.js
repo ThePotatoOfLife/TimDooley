@@ -92,6 +92,7 @@ queueMicrotask(async () => {
     console.warn('World Map control-plane foundation unavailable:', error);
   }
   await window.__potatoAtlasLoadModule?.('UI Layout', './3d-ui-layout.js');
+  await window.__potatoAtlasLoadModule?.('Accessibility', './3d-accessibility.js');
   await window.__potatoAtlasLoadModule?.('Render Stack', './3d-render-stack.js');
   await window.__potatoAtlasLoadModule?.('Map State', './3d-map-state.js');
   await window.__potatoAtlasLoadModule?.('Context Visibility', './3d-context-visibility.js');
