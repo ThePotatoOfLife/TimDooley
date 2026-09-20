@@ -1,5 +1,5 @@
 {
-  "version": "7.9.0",
+  "version": "8.0.0",
   "updated": "2026-09-20",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -173,7 +173,9 @@
       "affective-integration-gradient",
       "mind-body-spirit-time-axis",
       "circle-field-research-synthesis",
-      "plane-crossing-research-synthesis"
+      "plane-crossing-research-synthesis",
+      "operator-family-manifest",
+      "operator-inventory-census"
     ]
   },
   "records": [
@@ -2698,6 +2700,39 @@
         "Frame",
         "Poincare",
         "Spacetime Slice"
+      ]
+    },
+    {
+      "id": "operator-family-manifest",
+      "path": "data/house/operator-family-manifest.json",
+      "branch": "house",
+      "kind": "classification manifest for Door Cross Spiral Tree Swamp families",
+      "terms": [
+        "Door",
+        "Cross",
+        "Spiral",
+        "Tree",
+        "Swamp",
+        "Family",
+        "Specialist",
+        "Archaeology",
+        "Benchmark"
+      ]
+    },
+    {
+      "id": "operator-inventory-census",
+      "path": "data/house/operator-inventory-census-2026-09-20.json",
+      "branch": "house",
+      "kind": "repository operator fragmentation census and merge queue",
+      "terms": [
+        "Inventory",
+        "Axis",
+        "Door",
+        "Cross",
+        "Spiral",
+        "Tree",
+        "Swamp",
+        "Consolidation"
       ]
     }
   ],
