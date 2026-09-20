@@ -29,6 +29,7 @@
   let projection = new URL(location.href).searchParams.get('projection') === 'globe' ? 'globe' : 'flat';
   let activeView = window.__potatoAtlasActiveView?.current || null;
   let timeState = window.__potatoAtlasTime?.getState?.() || null;
+  let lastContextMarkup = '';
 
   function relationLabel(mode) {
     return RELATIONS.find(([id]) => id === mode)?.[1] || mode || 'All context';
@@ -167,7 +168,9 @@
     const relationMode = view?.relationMode || window.__potatoAtlasSelection?.getRelationMode?.() || 'all';
     const currentTime = view?.timeState || timeState;
     if (!currentEntries.length && !physicalIds.length && !geographyIds.length && !evidenceIds.length && !pinned.length && relationMode === 'all' && (!currentTime || currentTime.mode === 'current')) {
-      node.hidden = true; node.innerHTML = ''; return;
+      node.hidden = true;
+      if (lastContextMarkup) { node.innerHTML = ''; lastContextMarkup = ''; }
+      return;
     }
     const lines = [];
     if (scalar) {
@@ -207,7 +210,11 @@
     if (evidenceIds.length) lines.push(`<div><span>Evidence</span><b>${esc(compactIds(evidenceIds))}</b></div>`);
     lines.push(`<div><span>Projection</span><b>${projection === 'globe' ? 'Globe' : 'Flat'}</b></div>`);
     if (currentTime) lines.push(`<div><span>Time</span><b>${esc(timeLabel(currentTime))}</b></div>`);
-    node.innerHTML = `<small>Current map view</small>${lines.join('')}`;
+    const markup = `<small>Current map view</small>${lines.join('')}`;
+    if (markup !== lastContextMarkup) {
+      node.innerHTML = markup;
+      lastContextMarkup = markup;
+    }
     node.hidden = false;
   }
   function syncMenus() {
