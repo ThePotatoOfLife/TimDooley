@@ -1,8 +1,8 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.3.0",
-  "updated": "2026-09-19",
+  "version": "1.4.0",
+  "updated": "2026-09-20",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
   "repository_observation": "The project already has a strong retrieval-first architecture, but rapid research waves have produced several specialist files whose relationship to canonical owners is not always obvious. Consolidation should therefore prioritize ownership clarity and promotion rules before deleting substantive material.",
@@ -33,7 +33,11 @@
     "inference_epiphany_method": "knowledge/indexes/inference-ledger.json",
     "public_navigation": "data/house/public-surfaces.json",
     "archive_navigation": "manifest.json",
-    "frontend_projection": "data/frontend-atlas-bridge.json"
+    "frontend_projection": "data/frontend-atlas-bridge.json",
+    "operator_ownership": "data/house/operator-ownership-registry.json",
+    "circle_field_research": "knowledge/research/circle-field-research-synthesis-2026-09-20.json",
+    "plane_crossing": "data/house/plane-crossing-contract.json",
+    "center_relational_ontology": "data/house/center-relational-ontology.json"
   },
   "major_domain_owners": {
     "body": "knowledge/body/body-system-master-atlas.json",
@@ -81,6 +85,8 @@
     "rule": "These specialist files should remain because they add distinct process, timeline or application layers, but none should be treated as a replacement for root-system, symbolic-relational-synthesis or the primary Mud/Swamp owners."
   },
   "merge_rules": [
+    "For recurring symbolic operators, consult data/house/operator-ownership-registry.json before adding or redefining a concept.",
+    "Treat Plane/House/Body/Tree/City and similar renderings as charts/projections over owners; a view can be useful without becoming a competing ontology.",
     "Promote general laws upward; keep source-specific details downward.",
     "Do not duplicate exact Tim quotations into multiple synthesis files. Link to the quote or timeline owner instead.",
     "Do not duplicate numeric timelines outside the canonical timeline owner except as short summaries with explicit pointers.",
@@ -95,6 +101,11 @@
     "Politics uses one owner chain: dated positions belong in the politics/geopolitics compendium; multidimensional alignment belongs in the Tim political alignment map; reader pages and FAQs explain those owners without becoming parallel political canons."
   ],
   "duplicate_pressure_zones": [
+    {
+      "zone": "core operator definition drift",
+      "risk": "Axis, Door, Plane, Cross, Spiral, Tree and center language appear across many specialist files and can silently diverge.",
+      "cleanup": "Use operator-ownership-registry to designate definition/contract owners. Replace repeated generic definitions in specialists with owner links plus unique specialization when files are next edited."
+    },
     {
       "zone": "master/synthesis proliferation",
       "risk": "Several files can sound authoritative because they contain 'master', 'framework', 'synthesis' or 'atlas' in the title.",
@@ -141,6 +152,7 @@
     "Specialist atlases with genuinely distinct mechanisms or schemas"
   ],
   "next_merge_sequence": [
+    "0. Route all high-frequency core operators through data/house/operator-ownership-registry.json and update deep-element-definition-atlas before further generic symbol expansion.",
     "1. Reconcile public route authority, archive branch navigation and frontend projection so every current canonical owner is reachable without competing routing masters.",
     "2. Build a machine-readable promotion-status field for conversation/biblical/research wave files.",
     "3. Audit root-level legacy master files against knowledge/ owners and mark legacy/canonical status explicitly.",
