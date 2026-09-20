@@ -1,6 +1,6 @@
 {
   "id": "cia-world-spiritual-bank-building-v1",
-  "title": "CIA / World Spiritual Bank — Shared Institution",
+  "title": "Potatoverse CIA · Character Archive / World Spiritual Bank",
   "updated": "2026-09-21",
   "status": "Potatoverse interior architecture",
   "concept": "CIA — Characters, Incidents & Associations and the World Spiritual Bank are one project institution with different entrances. The archive entrance emphasizes people, scenes and relationships; the bank entrance emphasizes accounts, obligations, repair and system ledgers. Both read and write the same provenance spine.",
@@ -196,6 +196,7 @@
     "The same building metaphor must never imply affiliation with the real U.S. Central Intelligence Agency, a real bank, court or intelligence service."
   ],
   "boundaries": [
+    "The acronym CIA is namespace-sensitive: this building's CIA means Characters, Incidents & Associations; the real U.S. CIA belongs to the World/Intelligence layer.",
     "This is project architecture and narrative interface design, not a claim that a real CIA/bank hybrid institution exists.",
     "CIA here means Characters, Incidents & Associations.",
     "World Spiritual Bank and sUSD are fictional Potatoverse accounting devices.",
@@ -251,5 +252,12 @@
       "World Spiritual Bank is not real finance",
       "symbolic accounts do not become empirical world-system facts"
     ]
+  },
+  "short_name": "Character Archive & Bank",
+  "namespace": "potatoverse-authored",
+  "naming_rule": {
+    "outside_building": "Always say “Potatoverse CIA · Character Archive” and “U.S. CIA · Central Intelligence Agency”; never use bare CIA as a global destination.",
+    "inside_building": "After the user has crossed the clearly labeled Potatoverse threshold, CIA may be used as an interior shorthand for Characters, Incidents & Associations.",
+    "bank": "Prefer Character Archive accounts over CIA accounts on bank-facing copy when there is any chance of collision with the U.S. agency."
   }
 }
