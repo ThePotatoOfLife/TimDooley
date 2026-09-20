@@ -98,6 +98,7 @@ const app = fs.readFileSync(new URL('../world-map/3d-app.js', import.meta.url), 
 const handoff = fs.readFileSync(new URL('../world-map/3d-core-interaction-handoff.js', import.meta.url), 'utf8');
 const hover = fs.readFileSync(new URL('../world-map/3d-hover.js', import.meta.url), 'utf8');
 const countrySelection = fs.readFileSync(new URL('../world-map/3d-country-selection.js', import.meta.url), 'utf8');
+const spatialOverlays = fs.readFileSync(new URL('../world-map/3d-spatial-overlays.js', import.meta.url), 'utf8');
 const gateways = fs.readFileSync(new URL('../world-map/3d-gateways.js', import.meta.url), 'utf8');
 const infrastructure = fs.readFileSync(new URL('../world-map/3d-infrastructure.js', import.meta.url), 'utf8');
 const impactActions = fs.readFileSync(new URL('../world-map/3d-impact-actions.js', import.meta.url), 'utf8');
@@ -130,14 +131,25 @@ for (const marker of [
 ]) assert.ok(handoff.includes(marker), `core interaction handoff missing marker: ${marker}`);
 
 for (const marker of [
-  'const interaction = window.__potatoAtlasInteraction',
+  'function interactionRouter()',
   "interaction.unregister('core-country-fallback')",
   "interaction.register('countries'",
   "objectType:'country'",
   'clickPriority:10',
-]) assert.ok(countrySelection.includes(marker), `country selection router migration missing marker: ${marker}`);
+  'function uninstallClickInterception()',
+  "window.addEventListener('potato-atlas-interaction-ready', installCountryInteraction)",
+  "map.off('click', layer, interceptPolygonClick)",
+]) assert.ok(countrySelection.includes(marker), `country selection Router promotion missing marker: ${marker}`);
 assert.ok(countrySelection.includes('__potatoAtlasOverlayHandled = true'), 'country selection degraded fallback must still claim handled direct events');
 assert.ok(countrySelection.includes('installClickInterception();'), 'country selection degraded fallback must still install the direct click interception path');
+
+for (const marker of [
+  'function interactionRouter()',
+  'function unbindFallbackInteraction()',
+  "window.addEventListener('potato-atlas-interaction-ready', () => syncInteractionRegistration())",
+  "interaction.register('spatial-overlays'",
+  "map.off('click', id, handlers.onClick)",
+]) assert.ok(spatialOverlays.includes(marker), `spatial overlay Router promotion missing marker: ${marker}`);
 
 for (const marker of [
   "interaction.register('country-hover'",
