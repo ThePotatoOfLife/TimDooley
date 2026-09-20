@@ -147,6 +147,12 @@
 **Risk:** polished interaction can be mistaken for current monthly ADL coverage.  
 **Solution:** persistent stale/snapshot-age indicator, reviewed official CSV replacement when available, and keep ADL/FBI methodologies separate.
 
+### WM-018/019 · Physical provider status + request reliability — P1/P2
+**Status:** fixed / governed on main (2026-09-20).  
+**Resolution:** Terrain, Water, Hydrology, Land Cover and Aridity report a common `potato-atlas-physical-layer-status` schema into the Physical mixer, which records provider, phase, attempts, retryability, last success and last error. `3d-request-budget.js` owns explicit provider-request concurrency, in-flight de-duplication, abort handling, short-lived cache and telemetry; Hydrology is the first explicit-fetch consumer.  
+**Scope boundary:** MapLibre-managed raster/vector/tile source scheduling remains under MapLibre and is not wrapped in a second scheduler.  
+**Guard:** `validate_world_map_physical_provider_reliability.py` + `test_world_map_request_budget.mjs` run in the World Map quality group.
+
 ## Work order
 
 1. **State/control ownership wave** — WM-021/022/023.
