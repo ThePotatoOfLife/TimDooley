@@ -1,6 +1,6 @@
 # World Map Problem Ledger
 
-**Updated:** 2026-09-20  
+**Updated:** 2026-09-21  
 **Authority:** active defect / architecture queue for the World Map.  
 **Rule:** fix the highest-leverage shared owner first; do not patch the same symptom independently in multiple modules.
 
@@ -249,6 +249,78 @@
 **Resolution:** `3d-lenses.js` is deleted. Analytical state is owned by Layer Registry, Compositor and their URL/state owners; no paint, legend or control behavior is removed from the normal map.  
 **Guard:** runtime, URL-state, layout and visual-channel validators now require the Lens adapter to remain absent.  
 **Rule retained:** legacy query compatibility is only claimed when an actual loaded canonical owner implements it; dead adapters are not documentation.
+
+
+### WM-044 · Published quality audit is stale against current main — P2
+**Status:** fixed on branch `world-map-audit-backlog-20260921`; pending exact-head CI.  
+**Evidence:** the 2026-09-20 audit still reports decentralized URL ownership, Inspector bypass, raw Motion bypass, fragmented provider budgeting and live Progressive/Selection/Lens compatibility even though those areas were subsequently migrated or retired.  
+**Risk:** engineers can spend time “fixing” already-resolved defects while real current gaps remain under-described.  
+**Resolution:** published `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-21.md` with base-main SHA and current ownership findings; the 2026-09-20 audit is explicitly marked superseded while remaining available as historical diagnosis.  
+**Completion guard:** audit, ledger and roadmap must agree on current ownership and no high-severity current audit finding may describe code already removed from main.
+
+### WM-045 · Dormant Fields / Networks compatibility modules remain in source — P2
+**Status:** verified retirement candidate (2026-09-21), not yet safe to delete.  
+**Evidence:** `3d-fields.js` and `3d-networks.js` still contain their own control injection, URL/time/tooltip behavior and are referenced by validators/contracts, but current bootstrap contains no direct load/import path for either module.  
+**Risk:** dead source keeps duplicate ownership concepts alive and validators may accidentally preserve obsolete architecture.  
+**TODO:** build a parity table against Layer Registry, Compositor, relation/context systems, Time and Tooltip owners; migrate any unique surviving behavior; then retire both modules and rewrite tests around canonical owners.  
+**Completion:** neither module is required by runtime, data manifests or tests; no unique current functionality is lost; full repository CI passes.
+
+### WM-046 · Regional browsing is still limited to five promoted countries — P2
+**Status:** verified functionality gap (2026-09-21).  
+**Evidence:** `data/world-subdivisions/` currently contains USA, CAN, DNK, UKR and RUS partitions only.  
+**Risk:** the generic region engine looks global but most countries have no selectable first-order geography or region→Places path.  
+**TODO:** prioritize additional ADM1 countries using source quality, byte budget, reader value and place-depth readiness; promote only through the generic importer/validator.  
+**Completion:** expansion wave adds reviewed partitions without country-specific renderer code and every promoted country gets bounded Places/search coverage.
+
+### WM-047 · Places data freshness and country depth are seed-limited — P2
+**Status:** verified data/functionality gap (2026-09-21).  
+**Evidence:** `data/world-places/index.json` identifies a GeoNames `cities15000` mirror seed with unknown exact upstream refresh date; detailed partitions exist only for USA, DNK, CAN, UKR and RUS, with 95 global-major features.  
+**Risk:** technically polished place search can appear more current/global than its provenance supports.  
+**TODO:** add a reviewed canonical GeoNames build pipeline with explicit upstream date/retrieval date/build date, then expand detailed country partitions under existing byte/cache budgets.  
+**Completion:** exact freshness is known or explicitly unavailable per build, and country/place coverage expansion is reproducible from pinned input.
+
+### WM-048 · Conflict/history functionality is schema-only — P2
+**Status:** verified functionality gap (2026-09-21).  
+**Evidence:** `world-map-conflict-snapshot-contract.json` is `active-schema-dormant-data` and explicitly says no reviewed conflict snapshot geometry is committed yet.  
+**Risk:** the map advertises a conflict-context architecture without an actual dated historical/delayed snapshot to exercise Time, Inspector, source and render contracts together.  
+**TODO:** ingest one reviewed historical/delayed snapshot set with source bundle, observation period, geometry meaning, confidence and not-live boundary; validate exact-snapshot comparison without interpolating front lines.  
+**Completion:** at least one conflict dataset can be inspected and time-selected end-to-end while administrative geography remains untouched.
+
+### WM-049 · Region/globe/mobile behavior lacks broad end-to-end scenario coverage — P2
+**Status:** verified verification gap (2026-09-21).  
+**Evidence:** current regressions cover antimeridian, overlap, tooltip and inspector transitions, but there is no single behavioral suite covering globe + narrow viewport + dense regional labels + detached territories + region→Places transitions.  
+**Risk:** individually-correct systems can still occlude, over-label or lose selection when combined in real browsing.  
+**TODO:** add browser-level scenarios for at least narrow phone width, globe projection, dense subdivision cluster, detached/non-contiguous geography, region toggle, local labels and mapped-place reveal.  
+**Completion:** these scenarios run in the World Map quality group with deterministic assertions on visibility, selection, focus and bounded layer/source counts.
+
+### WM-050 · Architecture auditor findings are not first-class ledger work items — P2
+**Status:** verified observability gap (2026-09-21).  
+**Evidence:** the architecture auditor inventories ownership hazards, but recurring finding types do not consistently resolve to ledger ID, canonical owner and severity in CI output.  
+**Risk:** diagnosis and execution queues can drift; the same issue may be rediscovered without a stable remediation identity.  
+**TODO:** add a finding-code mapping contract (finding code → ledger ID → owner → severity/status) and include it in quality-group summaries.  
+**Completion:** every promoted auditor finding either maps to an existing ledger item or is explicitly marked informational/ignored with rationale.
+
+### WM-051 · Geometry-first regional statistics remain uneven — P3
+**Status:** verified functionality-depth gap (2026-09-21).  
+**Evidence:** newer partitions intentionally preserve unknown population/area/density instead of fabricating values; this is correct but leaves regional comparison depth uneven.  
+**Risk:** users can select a region but receive mostly identity/provenance while other regions expose richer statistics.  
+**TODO:** define an optional sourced ADM1 statistics enrichment contract independent from boundary geometry, including period/source/missingness and join confidence.  
+**Completion:** at least one geometry-first partition can accept sourced statistics without mutating or pretending they came from the boundary source.
+
+### WM-052 · Shared UI token convergence stops at layering — P3
+**Status:** verified architecture/polish gap (2026-09-21).  
+**Evidence:** semantic z-index bands are being centralized, but many map surfaces still repeat local background, border, radius, padding and shadow literals.  
+**Risk:** visual drift returns as new controls and inspectors are added, making density/mobile tuning harder.  
+**TODO:** introduce a small semantic surface token set for panel/menu/context/control states and migrate common surfaces gradually; avoid a giant generic design system.  
+**Completion:** common surfaces consume named tokens, while special semantic colors/encodings remain owned by their data/render domains.
+
+### WM-053 · Data freshness semantics are inconsistent across map families — P2
+**Status:** verified functionality/reader-trust gap (2026-09-21).  
+**Evidence:** ADL has an explicit historical-snapshot freshness model and Places records unknown upstream refresh, while other empirical/physical/relationship layers expose date/status in different forms or not at the same UI level.  
+**Risk:** “current”, “latest available”, “historical”, “delayed”, and “unknown vintage” can look equivalent to readers.  
+**TODO:** define one compact freshness/status vocabulary and projection into Current Map / Inspector context, without forcing unlike datasets into the same update cadence.  
+**Completion:** every reader-facing empirical dataset declares observation/reference period plus freshness status or explicit unknown-vintage state.
+
 
 
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
