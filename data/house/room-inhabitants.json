@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-20",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
@@ -369,6 +369,76 @@
       "summary": "Unresolved question held in the Forge before promotion into a stronger model, claim or programme.",
       "status_note": "Open questions are intentionally unresolved and should not be read as established claims.",
       "evidence_note": "Each mature question should name a test, evidence need and disconfirming route."
+    },
+    {
+      "id": "architecture-elevator",
+      "label": "Door / Axis Elevator",
+      "kind": "navigation-artifact",
+      "room_ids": [
+        "house-architecture",
+        "symbolic-architecture",
+        "systems-dynamics"
+      ],
+      "route": "/elevator/",
+      "summary": "Recursive spatial projection of the House: global Axis, vertical planes, Dwellings, nested Rooms, wormhole Doors and local recentering.",
+      "status_note": "The Elevator is a navigation projection over the graph, not a claim that the repository occupies literal impossible physical geometry.",
+      "evidence_note": "Its topology must derive from governed Room/adjacency registries rather than visual convenience."
+    },
+    {
+      "id": "architecture-below-basin",
+      "label": "Below Basin",
+      "kind": "navigation-artifact",
+      "room_ids": [
+        "house-architecture",
+        "systems-dynamics",
+        "information-ecology"
+      ],
+      "route": "/below/#basin",
+      "summary": "Round lower-plane vessel projecting Culture, Sektur, Farm, Swamp, Mud/Ash, Roots, Forge and Axis/Drain into one operational spatial model.",
+      "status_note": "Spatial overlap does not collapse categories: Swamp remains a regime, Farm a process, Mud a material state and Forge a process.",
+      "evidence_note": "Motion between zones follows the Basin dynamics contract rather than moral or aesthetic assignment."
+    },
+    {
+      "id": "architecture-journey-thread",
+      "label": "House journey thread",
+      "kind": "navigation-process",
+      "room_ids": [
+        "house-architecture",
+        "information-ecology",
+        "systems-dynamics"
+      ],
+      "route": "/elevator/",
+      "summary": "Browser-local path memory that records how a reader moved through Dwellings, Rooms, wormholes, portals, readable surfaces and object focus.",
+      "status_note": "Journey memory is private navigation state, not analytics, evidence or user profiling.",
+      "evidence_note": "Recorded path describes the reader's route, not the only valid conceptual route."
+    },
+    {
+      "id": "architecture-room-graph",
+      "label": "Room / wormhole graph",
+      "kind": "formal-model",
+      "room_ids": [
+        "house-architecture",
+        "math-geometry",
+        "systems-dynamics"
+      ],
+      "route": "/rooms/",
+      "summary": "Typed graph that lets bounded Rooms remain stable owners while registered adjacencies create local doors and cross-Dwelling wormholes.",
+      "status_note": "Graph adjacency means modeled relation, not physical proximity or causal control.",
+      "evidence_note": "Cross-Dwelling doors must come from registered topology/interfaces."
+    },
+    {
+      "id": "architecture-object-table",
+      "label": "Level 3 center table",
+      "kind": "navigation-artifact",
+      "room_ids": [
+        "house-architecture",
+        "information-ecology",
+        "model-testing"
+      ],
+      "route": "/rooms/objects/",
+      "summary": "Inspection surface that centers a case, platform, text, process or artifact while preserving its containing Room and alternate Room lenses.",
+      "status_note": "An object may become informationally central without becoming a Room, Dwelling or knowledge owner.",
+      "evidence_note": "Status and evidence boundaries travel with the object across every Room lens."
     }
   ],
   "source_records": [
