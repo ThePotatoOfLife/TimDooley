@@ -126,6 +126,7 @@ def main() -> int:
         if not path.is_file():
             errors.append(f"historically authored richness page missing: {row.get('path')}")
 
+    bound_pages={str(row.get("page") or "") for row in bindings}
     surface_rows=[row for row in surfaces.get("surfaces",[]) if isinstance(row,dict)]
     visible=[row for row in surface_rows if row.get("status")=="active" and row.get("visibility") in {"primary","secondary"}]
     for row in visible:
@@ -134,6 +135,14 @@ def main() -> int:
         page=ROOT/rel
         if not page.is_file():
             errors.append(f"visible public surface missing reader file: {row.get('id')} -> {rel}")
+            continue
+        # Visible surfaces need substance either through an explicit binding or enough
+        # authored page body to be more than a routing shell. This is deliberately
+        # qualitative/lightweight and does not impose one layout.
+        source=page.read_text(encoding="utf-8",errors="replace")
+        mass=len(plain_text(source))
+        if rel not in bound_pages and mass < 1800:
+            errors.append(f"visible substance coverage too weak: {row.get('id')} has {mass} plain-text characters and no substance binding")
 
     if errors:
         print("READER RICHNESS VALIDATION FAILED")
