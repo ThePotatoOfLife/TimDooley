@@ -1,6 +1,6 @@
 {
   "id": "reader-richness-audit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "purpose": "Measure whether reader-facing HTML surfaces feel inhabited rather than merely navigational, and drive a systematic enrichment programme.",
   "thesis": "The project is not poor in knowledge; it is poor where backend knowledge fails to project into the page. Richness means useful density, not card count.",
@@ -40,8 +40,8 @@
   },
   "scan": {
     "eligible_pages": 122,
-    "critical_pages": 25,
-    "thin_pages": 49,
+    "critical_pages": 20,
+    "thin_pages": 54,
     "medium_pages": 28,
     "rich_pages": 20
   },
@@ -618,5 +618,182 @@
     "Phase 3: turn featured holdings into human-readable extracts and object/case spotlights rather than filename-only lists.",
     "Phase 4: enrich parent Dwellings and hubs with narrative synthesis instead of scope-card repetition.",
     "Phase 5: use validators to prevent enriched pages regressing into shells."
+  ],
+  "first_authored_wave": [
+    {
+      "path": "rooms/inside/music-sound/index.html",
+      "commit": "f51055cfbfb551afa79df9b34b7c2226d4a5ecdd",
+      "focus": "creative voice, sound direction, lyric craft, sacred absurdity and music archive"
+    },
+    {
+      "path": "rooms/inside/neurobiology/index.html",
+      "commit": "d3afdd1cdd537a12b61e364e6dbb448054abeced",
+      "focus": "thalamus, pineal, CSF, spine coordinate systems and evidence boundaries"
+    },
+    {
+      "path": "rooms/inside/internet-platforms/index.html",
+      "commit": "1301dd735585934d4e8eeedc0342a27b4e936b9a",
+      "focus": "livestream duration, nontent, fame paradox, platform fragmentation and subculture"
+    },
+    {
+      "path": "rooms/inside/information-ecology/index.html",
+      "commit": "567a52eb85568a6d25803e2a1eb5e4cb5cecaeff",
+      "focus": "repetition, context decay, forgetting, virality, durability and archive intelligence"
+    },
+    {
+      "path": "rooms/inside/research-programmes/index.html",
+      "commit": "8bab35a2c7f67bdfe627820eafb5f5d5f935173e",
+      "focus": "programme formation, ownership, materialization, negative results and Forge discipline"
+    }
+  ],
+  "next_priority": [
+    {
+      "path": "rooms/inside/whole-body/index.html",
+      "size_bytes": 1744
+    },
+    {
+      "path": "rooms/inside/games-simulations/index.html",
+      "size_bytes": 1757
+    },
+    {
+      "path": "rooms/inside/visual-art/index.html",
+      "size_bytes": 1893
+    },
+    {
+      "path": "rooms/inside/economy-finance/index.html",
+      "size_bytes": 1896
+    },
+    {
+      "path": "rooms/inside/geography-countries/index.html",
+      "size_bytes": 1950
+    },
+    {
+      "path": "rooms/inside/infrastructure-capability/index.html",
+      "size_bytes": 2018
+    },
+    {
+      "path": "rooms/inside/experiments-formalization/index.html",
+      "size_bytes": 2022
+    },
+    {
+      "path": "rooms/inside/open-questions/index.html",
+      "size_bytes": 2051
+    },
+    {
+      "path": "rooms/inside/symbolic-body-comparison/index.html",
+      "size_bytes": 2056
+    },
+    {
+      "path": "rooms/inside/law-justice/index.html",
+      "size_bytes": 2071
+    },
+    {
+      "path": "rooms/inside/house-architecture/index.html",
+      "size_bytes": 2078
+    },
+    {
+      "path": "rooms/inside/politics-governance/index.html",
+      "size_bytes": 2095
+    },
+    {
+      "path": "rooms/inside/great-book-literature/index.html",
+      "size_bytes": 2289
+    },
+    {
+      "path": "rooms/inside/subculture-group-formation/index.html",
+      "size_bytes": 2329
+    },
+    {
+      "path": "rooms/inside/timeline-events/index.html",
+      "size_bytes": 2819
+    },
+    {
+      "path": "rooms/inside/math-geometry/index.html",
+      "size_bytes": 2904
+    },
+    {
+      "path": "rooms/inside/model-testing/index.html",
+      "size_bytes": 2938
+    },
+    {
+      "path": "rooms/inside/comparative-mythology/index.html",
+      "size_bytes": 2972
+    },
+    {
+      "path": "rooms/inside/theology-god-language/index.html",
+      "size_bytes": 2975
+    },
+    {
+      "path": "rooms/inside/developmental-genealogy/index.html",
+      "size_bytes": 3014
+    },
+    {
+      "path": "rooms/inside/bible-christianity/index.html",
+      "size_bytes": 3020
+    },
+    {
+      "path": "rooms/inside/memory-recovery/index.html",
+      "size_bytes": 3037
+    },
+    {
+      "path": "rooms/inside/witness-attestation/index.html",
+      "size_bytes": 3038
+    },
+    {
+      "path": "rooms/inside/esoteric-sacred-geometry/index.html",
+      "size_bytes": 3078
+    },
+    {
+      "path": "rooms/inside/canon-identities/index.html",
+      "size_bytes": 3102
+    },
+    {
+      "path": "rooms/inside/provenance-evidence/index.html",
+      "size_bytes": 3102
+    },
+    {
+      "path": "rooms/inside/systems-dynamics/index.html",
+      "size_bytes": 3107
+    },
+    {
+      "path": "rooms/inside/practice-ethics/index.html",
+      "size_bytes": 3127
+    },
+    {
+      "path": "rooms/inside/prediction-revelation-time/index.html",
+      "size_bytes": 3127
+    },
+    {
+      "path": "rooms/inside/physics-cosmology/index.html",
+      "size_bytes": 3144
+    },
+    {
+      "path": "rooms/inside/other-traditions/index.html",
+      "size_bytes": 3215
+    },
+    {
+      "path": "rooms/inside/symbolic-architecture/index.html",
+      "size_bytes": 3390
+    },
+    {
+      "path": "rooms/inside/music-sound/index.html",
+      "size_bytes": 4824
+    },
+    {
+      "path": "rooms/inside/information-ecology/index.html",
+      "size_bytes": 5152
+    },
+    {
+      "path": "rooms/inside/research-programmes/index.html",
+      "size_bytes": 5265
+    },
+    {
+      "path": "rooms/inside/internet-platforms/index.html",
+      "size_bytes": 5341
+    },
+    {
+      "path": "rooms/inside/neurobiology/index.html",
+      "size_bytes": 5476
+    }
   ]
 }
