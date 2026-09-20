@@ -53,7 +53,6 @@
     "application": "world-map/3d-app.js owns MapLibre initialization, canonical country loading, legacy Compare, recursive Trace, semantic modules, golden-angle navigation layout and core URL state",
     "working_selection": "world-map/3d-country-selection.js composes over the core active-country API to own persistent multi-country working selection, active-country state, selection-strip state and bounded automatic relationship context without creating a second renderer",
     "country_pulse": "world-map/3d-country-pulse.js owns the sourced active-country first-screen summary over canonical country records plus optional demography runtime data",
-    "lenses": "world-map/3d-lenses.js owns country fill semantics for one active Lens at a time while selection remains encoded independently through outlines",
     "hover_and_resilience": "world-map/3d-hover.js owns resilient data boot, country hover and capital-city overlays",
     "pathfinder": "world-map/3d-pathfinder.js owns shortest-known-path navigation without creating a second map renderer",
     "demography": "world-map/3d-demography.js owns sourced population/religion presentation",
@@ -61,7 +60,8 @@
     "time": "world-map/3d-time.js owns Current / As-of / Compare-dates view state, URL persistence, conservative unknown-date handling and atlas-time-change events",
     "interface_controller": "world-map/3d-inspector-router.js owns semantic inspector routing; world-map/3d-inspector-visibility.js owns inspector open/close state; world-map/3d-ui-layout.js owns screen-zone placement; world-map/3d-world-bar.js owns the primary global control/readout surface; world-map/3d-context-visibility.js derives presentation policy. Retired broad 3d-ui.js is not a live bootstrap owner.",
     "axis": "world-map/3d-axis.js plus operator modules expose project-symbolic vertical navigation without turning it into physical geography",
-    "reason_for_split": "Feature modules extend one renderer and shared public APIs rather than duplicating MapLibre state."
+    "reason_for_split": "Feature modules extend one renderer and shared public APIs rather than duplicating MapLibre state.",
+    "analytical_layers": "world-map/3d-layer-registry.js + world-map/3d-compositor.js own canonical analytical layer state/rendering; legacy Lens adapter retired"
   },
   "spatial_primitives": {
     "country_shell": "Polygon/MultiPolygon selection surface and spatial context, not the country's complete identity.",
@@ -363,7 +363,6 @@
     "world-map/3d-app.js",
     "world-map/3d-country-selection.js",
     "world-map/3d-country-pulse.js",
-    "world-map/3d-lenses.js",
     "world-map/3d-evidence.js",
     "world-map/3d-time.js",
     "world-map/3d-inspector-router.js",
