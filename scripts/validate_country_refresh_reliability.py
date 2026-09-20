@@ -70,6 +70,17 @@ def main() -> int:
     if not isinstance(base, (int, float)) or not 0 < base <= 10:
         errors.append(f"RETRY_BASE_SECONDS must be >0 and <=10; found {base!r}")
 
+    # Optional/secondary indicators may degrade independently; canonical prior
+    # observations remain usable while population/GDP still gate refresh quality.
+    degraded_markers = (
+        "degraded_indicators",
+        "preserving prior canonical observations",
+        "malformed payload",
+    )
+    for marker in degraded_markers:
+        if marker not in text:
+            errors.append(f"country refresh missing degraded-indicator safeguard: {marker}")
+
     # Existing fail-closed data-quality guard must remain intact.
     if "Refusing incomplete refresh" not in text:
         errors.append("country refresh lost incomplete-refresh safeguard")
@@ -83,7 +94,7 @@ def main() -> int:
         return 1
 
     print("COUNTRY REFRESH RELIABILITY VALIDATION PASSED")
-    print("Country acquisition: bounded retries · transient HTTP/network handling · fail-closed coverage guard")
+    print("Country acquisition: bounded retries · per-indicator degradation · prior-observation preservation · population/GDP fail-closed coverage gate")
     return 0
 
 
