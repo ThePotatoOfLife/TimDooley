@@ -1,0 +1,167 @@
+{
+  "id": "potato-pathology-immunity-storage",
+  "title": "Potato Pathology, Immunity & Storage Biology — Defense, Stress, Wounds and Postharvest Life",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "owner_room": "potato-biology",
+  "status": "canonical health/stress/postharvest layer",
+  "purpose": "Treat the potato as a living host and postharvest organ: immune recognition, pathogens, abiotic stress, wound repair, respiration, dormancy, sugar remodeling and clonal disease carryover.",
+  "immune_architecture": {
+    "surface_recognition": "Cell-surface pattern-recognition receptors detect pathogen-associated or damage-associated cues and initiate defense signalling.",
+    "intracellular_recognition": "NLR immune receptors can recognize pathogen effectors and activate strong defense responses.",
+    "late_blight": "Phytophthora infestans is an oomycete pathogen; many Rpi resistance genes have been discovered in wild Solanum relatives and used in breeding.",
+    "durability": "Single resistance genes can be defeated by pathogen evolution; pyramiding/stacking receptors and quantitative resistance can broaden or prolong resistance but does not guarantee permanence.",
+    "defense_cost": "Defense, growth and reproduction share resources and regulatory networks, so resistance is part of a trade-off system."
+  },
+  "pathogen_classes": [
+    {
+      "class": "oomycetes",
+      "examples": [
+        "Phytophthora infestans (late blight)"
+      ]
+    },
+    {
+      "class": "bacteria",
+      "examples": [
+        "soft-rot/blackleg-associated pectinolytic bacteria",
+        "Ralstonia solanacearum bacterial wilt in susceptible regions"
+      ]
+    },
+    {
+      "class": "fungi",
+      "examples": [
+        "dry rots and skin pathogens"
+      ]
+    },
+    {
+      "class": "viruses",
+      "examples": [
+        "Potato virus Y",
+        "Potato virus X",
+        "Potato leafroll virus"
+      ]
+    },
+    {
+      "class": "nematodes",
+      "examples": [
+        "potato cyst nematodes",
+        "root-knot nematodes"
+      ]
+    },
+    {
+      "class": "protists/soilborne agents",
+      "examples": [
+        "powdery scab agent Spongospora subterranea"
+      ]
+    },
+    {
+      "class": "physiological disorders",
+      "examples": [
+        "cold-induced sweetening",
+        "internal defects",
+        "greening",
+        "sprouting",
+        "dehydration/hypoxia"
+      ]
+    }
+  ],
+  "abiotic_stress_network": {
+    "stresses": [
+      "heat",
+      "drought",
+      "flooding/waterlogging",
+      "salinity",
+      "cold",
+      "nutrient imbalance",
+      "heavy metals"
+    ],
+    "early_signals": [
+      "Ca2+",
+      "ROS",
+      "nitric oxide",
+      "membrane/redox changes"
+    ],
+    "hormone_crosstalk": [
+      "ABA",
+      "ethylene",
+      "jasmonate",
+      "salicylate",
+      "auxin/gibberellin interactions"
+    ],
+    "outputs": [
+      "stomatal regulation",
+      "osmotic adjustment",
+      "antioxidant defenses",
+      "gene-expression change",
+      "growth reallocation",
+      "senescence"
+    ],
+    "systems_rule": "Combined stresses can produce responses not predictable by simply adding single-stress responses."
+  },
+  "postharvest_life": {
+    "respiration": "Harvested tubers remain metabolically active and respire.",
+    "lenticels": "Major routes for tuber gas exchange; morphology and distribution can change during storage and dormancy break.",
+    "water_loss": "Periderm limits dehydration while lenticels and wounds increase exchange pathways.",
+    "wound_response": "Suberized closing layers and wound periderm reduce water loss and pathogen ingress after injury.",
+    "dormancy": "A regulated physiological interval that progresses toward sprouting depending on genotype, age and storage environment.",
+    "cold_induced_sweetening": "Low-temperature storage can shift starch/sucrose metabolism toward reducing sugars, with vacuolar invertase a major control point.",
+    "food_quality": "Reducing sugars influence fry color and acrylamide formation during high-temperature processing."
+  },
+  "clonal_health": {
+    "seed_degeneration": "Vegetative propagation can carry viruses and other pathogens from one planting generation to the next.",
+    "clean_seed": "Meristem culture, indexing/testing, sanitation and certified seed systems are used to reduce pathogen load.",
+    "rule": "Clonal fidelity preserves both useful genotype and biological burdens unless health management interrupts transmission."
+  },
+  "glycoalkaloids": {
+    "main_compounds": [
+      "alpha-solanine",
+      "alpha-chaconine"
+    ],
+    "function": "Defense-related steroidal glycoalkaloids.",
+    "regulation": "GAME-family enzymes and associated transcriptional/regulatory networks control biosynthesis from cholesterol-derived precursors.",
+    "food_boundary": "Greening and glycoalkaloid accumulation are related stress/light responses but chlorophyll itself is not the toxin; excessive glycoalkaloids are the food-safety concern."
+  },
+  "multiomics_and_testing": {
+    "model": "genome/epigenome/transcriptome/proteome/metabolome + phenotype + pathogen/environment",
+    "2025_stress_work": "Potato studies now combine deep phenotyping and multi-omics to resolve responses to single and combined heat, drought and flooding stresses.",
+    "evidence_rule": "Separate resistance-gene presence from actual resistance phenotype, which depends on allele function, expression, pathogen genotype, environment and genetic background."
+  },
+  "sources": [
+    {
+      "title": "Modern Breeding Strategies and Tools for Durable Late Blight Resistance in Potato",
+      "year": 2024,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11207681/"
+    },
+    {
+      "title": "Resistance to biotic and abiotic stress in potato: the origin of the genes and corresponding molecular markers",
+      "year": 2024,
+      "url": "https://link.springer.com/article/10.1186/s42483-023-00222-9"
+    },
+    {
+      "title": "Integration of multi-omics data and deep phenotyping provides insights into responses to single and combined abiotic stress in potato",
+      "year": 2025,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12012603/"
+    },
+    {
+      "title": "Suppression of the Vacuolar Invertase Gene Prevents Cold-Induced Sweetening in Potato",
+      "year": 2010,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2948980/"
+    },
+    {
+      "title": "Molecular dissection of an intronic enhancer governing cold-induced expression of the vacuolar invertase gene in potato",
+      "year": 2024,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11062429/"
+    },
+    {
+      "title": "Morphological changes of lenticels and their role in gas exchange and sprouting physiology of potato tubers during postharvest storage",
+      "year": 2025,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12188445/"
+    }
+  ],
+  "connections": [
+    "potato-anatomy-metabolism-ecology",
+    "potato-molecular-development-and-signalling",
+    "potato-genetics-genomics-atlas",
+    "potato-biological-genealogy"
+  ]
+}
