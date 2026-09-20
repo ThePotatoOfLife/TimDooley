@@ -16,6 +16,7 @@ COMPOSITOR = ROOT / "world-map" / "3d-compositor.js"
 COUNTRY_CARD = ROOT / "world-map" / "3d-country-card.js"
 COUNTRY_SELECTION = ROOT / "world-map" / "3d-country-selection.js"
 PUBLIC_PATCH = ROOT / "scripts" / "patch_home_discovery.py"
+TOP_BAR_AUDIT = ROOT / "docs" / "WORLD-MAP-TOP-BAR-AUDIT.md"
 
 
 def read(path: Path, errors: list[str]) -> str:
@@ -36,6 +37,7 @@ def main() -> int:
     country_card = read(COUNTRY_CARD, errors)
     country_selection = read(COUNTRY_SELECTION, errors)
     public_patch = read(PUBLIC_PATCH, errors)
+    top_bar_audit = read(TOP_BAR_AUDIT, errors)
 
     if html:
         header_match = re.search(r'<header[^>]+class=["\'][^"\']*top[^"\']*["\'][^>]*>(.*?)</header>', html, re.I | re.S)
@@ -155,6 +157,15 @@ def main() -> int:
             errors.append("World Map result summary must reserve the compact fixed header width")
         if '<span>Active</span>' in world_bar:
             errors.append("Current Map View must remain global and never display selected-country identity")
+
+    if top_bar_audit:
+        for token in (
+            "frequent direct action", "independent map dimension", "global navigation/reset",
+            "Relations — merged into **Analyze**", "N/W/E/S remain a grouped control",
+            "No drastic redesign is warranted",
+        ):
+            if token not in top_bar_audit:
+                errors.append(f"top-bar justification audit missing contract marker: {token}")
 
     if active_view:
         for token in ("atlas-time-change", "timeState", "refreshSerial", "matchCount", "potato-atlas-active-view-change"):
