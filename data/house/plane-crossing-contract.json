@@ -1,7 +1,7 @@
 {
   "id": "plane-crossing-contract",
   "title": "Plane / Cross / Crossing Contract",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-20",
   "authority": "plane-crossing-contract",
   "purpose": "Canonical machine-readable distinction between Plane, Axis, O/Cross-point, Cross-sign, Door and crossing events.",
@@ -140,8 +140,16 @@
     "Cross-sign is a visual projection; cross-point is a geometric relation.",
     "Every Plane is frame-relative: scale/time/representation should be explicit.",
     "Repeated Plane crossings are evidence for recurrence only after comparable variables are declared.",
-    "The lower field is not the Plane; the Plane is a world-facing section through the larger two-field relation."
+    "The lower field is not the Plane; the Plane is a world-facing section through the larger two-field relation.",
+    "The canonical Plane may be one member of a sampled section family; multiple analysis sections do not create multiple World realms."
   ],
   "research_owner": "knowledge/research/plane-crossing-research-synthesis-2026-09-20.json",
-  "lifecycle_owner": "data/house/door-cross-spiral-lifecycle.json"
+  "lifecycle_owner": "data/house/door-cross-spiral-lifecycle.json",
+  "spiral_field_owner": "data/house/bidirectional-spiral-field.json",
+  "section_family": {
+    "waist": "Sigma_0: z=0 in the canonical 3D lift",
+    "movable": "Sigma_z sections may sample the double-spiral field at declared axial levels",
+    "ring_relation": "Sampled rings/disks are section markers, not additional realms.",
+    "recurrence": "Ring/Spiral comparison must declare which section(s) and state variables are comparable."
+  }
 }
