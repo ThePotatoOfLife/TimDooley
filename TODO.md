@@ -113,7 +113,7 @@ Current rules:
 - [x] Confirm that several apparently unmerged assets are already on `main` through later salvage/convergence work.
 - [ ] Reconcile open PR #184 (Evidence Root) and close it once remaining branch-only files are either superseded or selectively salvaged. Do **not** merge the 1,271-commits-behind branch wholesale.
 - [ ] Reconcile PR #142 Story evidence wave at record level against the newer current Story registry/audit; port only still-missing evidence labels.
-- [ ] Test the branch-only semantic Science auditor from PR #137 against current `main`; port it only if it adds checks not already owned by current Science validators.
+- [x] Salvage the branch-only semantic Science auditor from PR #137 onto current `main`, including regression tests, fallback-abstract filtering and portal-level semantic validation. Runtime confirmation now belongs to the normal CI chain.
 - [ ] Compare PR #129's branch-only `app/archive-lookup.js` with current Explore, A–Z, Room holdings and machine discovery; port a minimal resolver only if a live gap remains.
 - [ ] Audit Sep-19 public-surface authority v2 against current House route authority; salvage only routes/metadata still absent after Sep-20 convergence.
 - [ ] Audit the branch-only US Mud/Below map layer under current World Map interaction, provenance and evidence contracts before deciding whether it belongs on `main`.
@@ -123,7 +123,8 @@ Current rules:
 
 The House depth programme explicitly says to prefer population, instrumentation, longitudinal cases and pruning over another broad ontology wave. Continue:
 
-- [ ] instrument more existing Works with the Fruit contract;
+- [x] instrument the first eight existing Works with the Fruit contract (`data/house/works-fruit-wave-001.json`), including explicit unknown-reception states and CI validation;
+- [ ] continue Works/Fruit instrumentation with recovered/experimental works and the Great Book as a separately typed literature case;
 - [ ] run the first real canon revision end-to-end through the revision protocol;
 - [ ] propagate Shadow/Below overlays into Culture, History and Research where they add mechanism rather than imagery;
 - [ ] attach reproduction / exit / correction measures to more formation cases;
@@ -138,7 +139,7 @@ The House depth programme explicitly says to prefer population, instrumentation,
 - [x] Mark Axis D1–D11 explicitly as project dimensions `D^(P)`.
 - [x] Add formal correspondence contracts to major body cross-layer objects.
 - [x] Expose correspondence maturity in Body Lens and Research Lab.
-- [ ] Add schema/CI validation for formal-grammar references so future records cannot silently invent incompatible Door/Axis/dimension types.
+- [x] Add CI validation for formal-grammar references so future records cannot silently invent incompatible Door/Axis/dimension types.
 - [ ] Add projection-loss / reconstructability metadata to selected World Map and House aggregate views.
 - [ ] Extend the Eye/measurement formalism into sensory/attention reader surfaces where it improves explanation.
 
