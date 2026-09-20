@@ -132,6 +132,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. Work pro
 - [x] Make the country-card Regions doorway focus the retained partition into visible/interactable regional scale using subdivision-owned camera policy.
 - [x] Make the Regions doorway a real on/off control with lease-backed active state and explicit state-change events.
 - [x] Add shared transient hover previews for selectable regions, including local names and region type.
+- [x] Promote local subdivision names into close-zoom bilingual/local-name map labels without increasing early-scale density.
 - [x] Define a separate dated conflict-snapshot contract for control/contested/historical-front/humanitarian/event-aggregate geometry.
 - [ ] Promote conflict snapshots only after reviewed geometry + source bundles exist; never rewrite administrative partitions into live war geometry.
 
