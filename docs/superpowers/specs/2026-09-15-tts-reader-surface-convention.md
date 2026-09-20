@@ -93,7 +93,28 @@ Supported declarative attributes:
 
 The adapter observes asynchronous content changes, tracks the current item from click/focus, and exposes selected text when the selection belongs to the declared root.
 
+
+## 5. Universal prose bootstrap
+
+`app/site-tts.js` is the default TTS coverage layer for prose-oriented public pages that do not already declare a specialist reader.
+
+It:
+
+- reuses `tts-reader.js`, `tts-drawer.js` and `longform-tts-adapter.js`;
+- creates one contextual reader host for the page;
+- promotes meaningful top-level sections into the `Current section` scope;
+- excludes navigation, search, filters, maps, explorer controls, forms and other chrome from spoken text;
+- preserves selection reading, voice choice, speed, volume and follow-reading settings through the shared drawer;
+- does not replace explicit specialist adapters or explicit `data-tts-longform` contracts;
+- keeps control-heavy routes such as the World Map, A–Z and object explorers quiet at whole-page level so they can use selected-object reading instead of reading interface labels.
+
+House-connected surfaces inherit the bootstrap through `app/house-journey.js`. Other long prose pages may load `app/site-tts.js` directly.
+
+This means TTS is infrastructure rather than a feature every page has to remember to reimplement.
+
 ## Current integrations
+
+- Site-wide prose default — `app/site-tts.js`, inherited through `app/house-journey.js` or loaded directly.
 
 - `/tools/tts/` — full advanced reader.
 - `/traditions/bible/` — specialized context adapter for active comparisons.
