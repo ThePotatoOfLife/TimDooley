@@ -5,7 +5,7 @@ const source = fs.readFileSync(new URL('../world-map/3d-subdivisions.js', import
 
 for (const token of [
   'geo.antimeridianAwareBounds',
-  'map.getCenter()?.lng',
+  'map.getCenter?.()?.lng',
   'Number.isFinite(referenceLng)',
 ]) {
   assert.ok(source.includes(token), `subdivision fit missing wrap-safe marker: ${token}`);
