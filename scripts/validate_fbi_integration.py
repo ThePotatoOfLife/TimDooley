@@ -87,6 +87,7 @@ def main() -> int:
         "knowledge/fbi/incidents/index.json",
         "knowledge/fbi/enhancements-index.json",
         "knowledge/fbi/conversation-recovery.json",
+        "knowledge/fbi/tim-moral-symbolic-taxonomy.json",
     ]:
         if path not in viewer:
             fail(f"generic dossier viewer no longer loads {path}")
@@ -102,6 +103,9 @@ def main() -> int:
         "function patternsHtml()",
         "Archive coverage",
         "Recovery pressure",
+        "Karmic debt / obligation",
+        "Inherited symbolic states",
+        "Episode attributes",
     ):
         if token not in viewer:
             fail(f"generic dossier viewer lost rich dossier projection token {token!r}")
@@ -119,6 +123,23 @@ def main() -> int:
             f"House CIA source_file_count={fbi.get('source_file_count')} "
             f"but knowledge/fbi contains {actual_fbi_files} files"
         )
+
+    taxonomy_index = (manifest.get("indexes") or {}).get("tim_moral_symbolic_taxonomy")
+    if taxonomy_index != "knowledge/fbi/tim-moral-symbolic-taxonomy.json":
+        fail("manifest must register the CIA Tim moral-symbolic taxonomy")
+    taxonomy_path = ROOT / taxonomy_index
+    if not taxonomy_path.is_file():
+        fail("CIA Tim moral-symbolic taxonomy is missing")
+    taxonomy = json.loads(taxonomy_path.read_text(encoding="utf-8"))
+    dog_rule = (((taxonomy.get("core_role_inheritance") or {}).get("dog") or {}).get("user_canon_rule") or "")
+    if "Mud Dweller" not in dog_rule:
+        fail("CIA taxonomy lost Dog ⇒ Mud Dweller inheritance")
+    mud_rule = (((taxonomy.get("core_role_inheritance") or {}).get("mud_dweller") or {}).get("user_canon_rule") or "")
+    if "Tree of Strife" not in mud_rule:
+        fail("CIA taxonomy lost Mud Dweller ⇒ Tree of Strife inheritance")
+    individual_rule = (((taxonomy.get("debt_model") or {}).get("individual_rule")) or "")
+    if "unless Tim explicitly assigned" not in individual_rule:
+        fail("CIA taxonomy must forbid invented per-person karmic debt amounts")
 
     conversation_index = (manifest.get("indexes") or {}).get("conversations")
     if conversation_index != "knowledge/fbi/conversation-recovery.json":
@@ -179,6 +200,12 @@ def main() -> int:
         for key in ("character_reading", "fruit", "karma", "placement", "symbols", "repair_path", "boundary"):
             if not witness.get(key):
                 fail(f"{fid} Tim-witness layer missing {key}")
+
+        if fid in {"dim", "txt", "matthew-mtclassic", "rahu", "metalorian", "supersusi87", "anja", "tachy", "port-monkey"}:
+            if not witness.get("debt_relation"):
+                fail(f"{fid} mature CIA file is missing debt_relation")
+            if not witness.get("episode_attributes"):
+                fail(f"{fid} mature CIA file is missing episode_attributes")
 
     summary = manifest.get("coverage_summary") or {}
     if summary.get("total_figures") != len(figures):
