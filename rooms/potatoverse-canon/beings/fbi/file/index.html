@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FBI File — Potatoverse</title>
-<meta name="description" content="Reusable Potatoverse dossier viewer for Figures, Bonds & Incidents, with chronology, source strata, bonds, roles, stories and recovery leads.">
+<title>CIA File — Potatoverse</title>
+<meta name="description" content="Reusable Potatoverse CIA dossier viewer for Characters, Incidents & Associations, with chronology, conversations, patterns, knowledge, sources and recovery leads.">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/rooms/potatoverse-canon/beings/fbi/file/">
 <link rel="stylesheet" href="../../../../../app/site-system.css?v=20260914a">
 <style>
@@ -36,7 +36,7 @@ body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transpa
 <body>
 <main class="case-shell" data-tts-longform>
 <div class="case-top"><div><a href="../">← Filing cabinet</a> <a href="../../">Beings &amp; Cast</a> <a href="../bonds/">Bonds</a> <a href="../incidents/">Incidents</a></div><div><button id="shuffleTop" type="button">Shuffle file</button></div></div>
-<span class="folder-tab">FBI · Figure File</span>
+<span class="folder-tab">CIA · Character File</span>
 <article class="file-sheet" id="sheet">
 <div class="file-header"><div><div class="file-id" id="fileId">Loading dossier…</div><h1 id="name">Loading…</h1><p id="summary">Retrieving file from cabinet.</p></div><div class="mug" id="mug">NO PHOTO<br>ARCHIVE FILE</div></div>
 <div class="badges" id="badges"></div>
@@ -45,7 +45,8 @@ body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transpa
 <button class="tab" data-panel="timeline">Timeline</button>
 <button class="tab" data-panel="conversations">Conversations</button>
 <button class="tab" data-panel="patterns">Patterns</button>
-<button class="tab" data-panel="bonds">Bonds</button>
+<button class="tab" data-panel="knowledge">Knowledge</button>
+<button class="tab" data-panel="bonds">Associations</button>
 <button class="tab" data-panel="stories">Stories</button>
 <button class="tab" data-panel="roles">Roles</button>
 <button class="tab" data-panel="enhancements">Enhancements</button>
@@ -55,6 +56,7 @@ body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transpa
 <section class="panel" id="timeline"></section>
 <section class="panel" id="conversations"></section>
 <section class="panel" id="patterns"></section>
+<section class="panel" id="knowledge"></section>
 <section class="panel" id="bonds"></section>
 <section class="panel" id="stories"></section>
 <section class="panel" id="roles"></section>
@@ -151,6 +153,27 @@ function patternsHtml(){
  (pattern&&tensions.length?'<div class="block"><h2>Relationship pattern</h2><p>'+esc(pattern)+'</p></div>':'')+
  '<p class="stamp">INTERPRETIVE BOUNDARY</p><p>'+esc(boundary)+'</p>';
 }
+function knowledgeHtml(){
+ const tr=dossier.tim_relation||{};
+ const conv=conversationEntries(current);
+ const inc=incidentMatches(current);
+ const storiesList=storyMatches(current);
+ const modes=[...new Set(conv.flatMap(x=>arr(x.modes)))];
+ const contexts=[...new Set([...(arr(tr.regions)),...conv.flatMap(x=>arr(x.ordinary_details))])].filter(Boolean);
+ const sourceTypes=[...new Set(arr(dossier.source_strata).map(x=>x.type).filter(Boolean))];
+ const topics=[...new Set([
+   ...arr(tr.narrative_functions),
+   ...modes,
+   ...arr(dossier.scene_ecology?.recurring_modes),
+   ...arr(dossier.conversation_archaeology?.recurring_modes)
+ ].filter(Boolean))];
+ const questions=arr(dossier.recovery_leads);
+ return '<div class="two"><div><div class="block"><h2>Topics & recurring questions</h2>'+(topics.length?'<div class="role-list">'+topics.slice(0,24).map(x=>'<span class="role">'+esc(x)+'</span>').join('')+'</div>':'<p class="empty">No topic index yet.</p>')+'</div>'+
+ '<div class="block"><h2>Contexts & ordinary anchors</h2>'+(contexts.length?'<ul>'+contexts.slice(0,24).map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'<p class="empty">No context anchors yet.</p>')+'</div></div>'+
+ '<div><div class="block"><h2>Evidence mix</h2><p><b>'+esc(conv.length)+'</b> conversation scene'+(conv.length===1?'':'s')+' · <b>'+esc(inc.length)+'</b> incident'+(inc.length===1?'':'s')+' · <b>'+esc(storiesList.length)+'</b> Story link'+(storiesList.length===1?'':'s')+'</p>'+(sourceTypes.length?'<p><b>Source classes:</b> '+sourceTypes.map(esc).join(' · ')+'</p>':'')+'</div>'+
+ '<div class="block"><h2>Open questions</h2>'+(questions.length?'<ul>'+questions.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'<p class="empty">No open recovery questions recorded.</p>')+'</div></div></div>'+
+ '<p class="stamp">KNOWLEDGE BOUNDARY</p><p>These are archive-derived associations and research directions, not intelligence findings, diagnoses, legal conclusions or claims of complete biography.</p>';
+}
 function bondsHtml(){
  const list=bondMatches(current).sort((a,b)=>b.count-a.count);
  return '<div class="block"><h2>Source-derived co-presence</h2><p class="muted">Co-presence does not itself prove friendship, alliance, motive or conflict.</p>'+(list.length?list.map(e=>{const other=e.a===current?e.b:e.a;return '<article class="event"><h3>'+esc(other)+' <span class="mono">×'+esc(e.count)+'</span></h3><p>'+esc(arr(e.contexts).slice(0,4).join(' · '))+'</p><small>'+esc(arr(e.dates).join(', '))+'</small></article>'}).join(''):'<p class="empty">No co-presence edges in current network.</p>')+'</div>';
@@ -175,7 +198,7 @@ function sourcesHtml(){
  return '<div class="two"><div class="block"><h2>Source strata</h2>'+(ss.length?ss.map(s=>'<a class="route-link" href="'+route(s.path)+'">'+esc(s.type)+' → '+esc(s.path)+'</a>').join(''):'<p class="empty">No source routes indexed.</p>')+'</div><div class="block"><h2>Open recovery leads</h2>'+(leads.length?'<ul>'+leads.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'<p class="empty">No current recovery leads.</p>')+'</div></div>';
 }
 function render(){
- document.title=(dossier.display_name||current)+' — FBI File';
+ document.title=(dossier.display_name||current)+' — CIA File';
  document.getElementById('fileId').textContent='FILE '+current.toUpperCase()+' · '+(dossier.entity_class||'ENTITY');
  document.getElementById('name').textContent=dossier.display_name||current;
  document.getElementById('summary').textContent=dossier.tim_relation?.editorial_reading||'Persistent Potatoverse dossier.';
@@ -186,6 +209,7 @@ function render(){
  document.getElementById('timeline').innerHTML=timelineHtml();
  document.getElementById('conversations').innerHTML=conversationsHtml();
  document.getElementById('patterns').innerHTML=patternsHtml();
+ document.getElementById('knowledge').innerHTML=knowledgeHtml();
  document.getElementById('bonds').innerHTML=bondsHtml();
  document.getElementById('stories').innerHTML=storiesHtml();
  document.getElementById('roles').innerHTML=rolesHtml();
