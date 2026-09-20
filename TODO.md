@@ -146,6 +146,18 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 - [ ] Reconcile remaining public-route projections against House authority after the latest spiral/Below/World Map merges; route aliases should be generated or validated rather than hand-maintained.
 - [ ] Audit generated/state-like files by **reference and unique information**, not filename. The repository currently contains hundreds of `wave`, `batch`, `round`, `audit` and snapshot-named files; many are legitimate research records, while others are migration residue. Produce a keep/merge/archive/prune disposition before removal.
 
+### Public reader visibility & population audit — 2026-09-20
+
+- [x] Remove duplicated five-Door presentation on Home: keep the stronger numbered Door rows and fold the question-led copy into them.
+- [x] Simplify Home top navigation so public entrances are not mixed with archive utilities.
+- [x] Align `data/house/public-surfaces.json` with the new visibility hierarchy: House remains global; Rooms/Paths/Elevator become House-owned specialist routes; Context becomes Sources-owned; Inhabitants remains Rooms-owned.
+- [x] Correct source-time web auditing so generated `/records/<id>/` readers are recognized as build products rather than broken source links.
+- [ ] Add an explicit built-site assertion that every registered `room-inhabitants.json` route under `/records/` resolves after `build_site.py`; use the registry rather than a hard-coded sample.
+- [ ] Continue visible-page density auditing after each major content wave: prefer concrete cases/mechanisms over another navigation card when a page is already route-heavy.
+- [ ] Review the remaining homepage House corridor and cross-cutting-view blocks after user testing; merge any pair whose reader job is no longer meaningfully distinct.
+- [ ] Audit generated question/topic/context/record pages for meaningful TTS sectioning, not just script presence.
+- [ ] Run an exact-head final Pages build after the current navigation/content/TTS wave and fix any source-vs-generated route drift it exposes.
+
 ### P2 — maintainability and duplication
 
 - [ ] Reduce hand-maintained asset-version duplication for shared components (for example the same spiral CSS/JS version string repeated across four reader pages).
