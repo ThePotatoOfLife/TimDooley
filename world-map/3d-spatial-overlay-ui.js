@@ -6,7 +6,7 @@ urlState.claim('spatial-overlay-ui', ['boundaryView']);
 // Layers remains the advanced multi-overlay surface; Analyze gets a quick Geography picker.
 
 const spatial = window.__potatoAtlasSpatialOverlays;
-const inspector = window.__potatoAtlasInspector;
+function inspectorRouter() { return window.__potatoAtlasInspector; }
 if (!spatial) throw new Error('Spatial overlay UI requires the spatial overlay runtime.');
 
 const app = document.querySelector('#atlasApp');
@@ -233,17 +233,17 @@ async function openInspector(features) {
   if (!features?.length) return false;
   const ids = features.map(feature => String(feature.feature_id || feature.overlay_id || feature.label || '')).filter(Boolean).sort();
   const id = ids.join('+') || 'spatial-overlay';
-  if (!inspector?.open) { await renderSpatialPanel(features); return true; }
-  const current = inspector.current?.();
+  if (!inspectorRouter()?.open) { await renderSpatialPanel(features); return true; }
+  const current = inspectorRouter()?.current?.();
   if (!current) {
-    inspector.setBaseline({
+    inspectorRouter()?.setBaseline({
       type:'spatial-overlay', id, owner:'spatial-overlay-ui',
       render:() => renderSpatialPanel(features),
     });
     await renderSpatialPanel(features);
     return true;
   }
-  inspector.open({
+  inspectorRouter()?.open({
     type:'spatial-overlay',
     id,
     owner:'spatial-overlay-ui',
