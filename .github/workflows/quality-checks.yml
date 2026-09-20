@@ -67,6 +67,7 @@ jobs:
           path: |
             quality-report-world_map.json
             .quality-logs/world_map/
+            world-map-audit-report.json
           if-no-files-found: warn
           retention-days: 7
 
