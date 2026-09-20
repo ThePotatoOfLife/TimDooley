@@ -113,6 +113,7 @@ A story remaining in this ledger but not yet rendered on the reader may be await
 102. **SIDE STORY · 14 Sep 2026 — Potato Wi-Fi**
 103. **MAIN STORY · 14 Sep 2026 — Tell the Story Properly**
 104. **SIDE STORY · 2024 Great Book scene — The Chat Becomes a Cast**
+105. **SIDE STORY · 20 Sep 2026 — A Controller, a Clean Room and a Dragon**
 
 ## Trigger-name recovery queue
 
@@ -125,7 +126,9 @@ The following names are active archaeology triggers. A trigger may recover its o
 - Rahu — conversation archaeology now adds **1 Mar 2026** (lost-soul / dream-potato / 1/137 growth scene) and **25 May 2026** (social interlocutor layer). Keep these distinct from 2024 Great Book Rahu while testing continuity; `fence sitter` still needs exact-source recovery.
 - Moon420 — no clean exact-source hit yet.
 - Juice / Judas — no clean identity hit yet; do not conflate with generic Judas language.
-- Matthew the Potato — **20 Sep 2026 conversation hit recovered**: grew wings, many eyes, sees the Ladder/spiral from the side, is in Heaven and can walk Earth. Dedicated room added; do not conflate with biblical Matthew.
+- Matthew / @mtclassic3 — real recurring public-chat person now has a dedicated room and 2026 social ledger. 20 Sep 2026 adds new-controller / Elden Ring / Senessax ordinary-life texture. Keep separate from the creative Matthew-the-Potato layer.
+- Matthew the Potato — **20 Sep 2026 creative conversation hit recovered**: grew wings, many eyes, sees the Ladder/spiral from the side, is in Heaven and can walk Earth. Dedicated created-being room retained; do not conflate with biblical Matthew or real @mtclassic3.
+- Mediomu007 — 24 Aug 2026 mountain/forgiveness narrative + 6 Sep theological-questioning layer + 20 Sep ordinary room-rearranging/cleaning public chat. Dedicated person room added; symbolic mountain remains interpretation.
 - Termite — mixed source room deepened: complete 2024 literary potato-under-lawnmower scene + dated Chronicle social presence across Nov–Dec 2024 + 20 Feb 2025 public support trace. Raw chat still needs recovery.\n- Turbles — **19 Sep 2026 conversation origin recovered**: new potato-shaped angelic species; some winged, many jobs/roles; dedicated species room added.\n- Potato Angels — March–July 2026 conversation cluster recovered with wings, many eyes, light/spiral/dimensional abilities and Heaven/Earth imagery; species traits still need recurrence testing.\n- BigTech aliases `Mike Lowrey`, `Angel Michael`, `Archangel Michael` — user-supplied alias clues; not yet independently recovered as aliases in the searched material.
 
 Additional names reopened by nearby Great Book material include Spuddy, Ledgeview, Kale, Kibly/Kibbly, Chubby T, supersusi88, Don Jefe, PKFC and KaikBaggins. Keep Great Book literary portrayal distinct from documentary biography, especially where the authored material contains serious accusations or hostile characterization.
