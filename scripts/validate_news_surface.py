@@ -65,6 +65,7 @@ for token in (
     "function renderBriefing",
     "readable=params.get('readable')==='1'",
     "allRows.filter(r=>clean(r.summary).length>0)",
+    "baseProviders.filter(id=>id!==\'publisher-rss\')",
     "function renderPulse",
     "data-news-expand",
     "Show full excerpt",
