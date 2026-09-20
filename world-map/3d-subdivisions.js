@@ -7,6 +7,7 @@ const urlState = window.__potatoAtlasUrlState;
 urlState.claim('selection-inspector', ['subdivision']);
 
 const map = window.__potatoAtlasMap;
+const styleLifecycle = window.__potatoAtlasStyleLifecycle;
 if (!map) throw new Error('Atlas subdivisions require the core map.');
 if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
 const motion = window.__potatoAtlasMotion;
@@ -412,7 +413,9 @@ function enforceCacheBudget(index, extraProtected = []) {
     bytes -= state.bytes;
     cacheEvictions += 1;
   }
-  syncDiagnostics();
+  styleLifecycle?.register?.('subdivisions', { priority:55, restore:() => { queueMicrotask(restoreAfterStyleGeneration); } });
+
+syncDiagnostics();
 }
 function syncUrl(id) {
   urlState.patch('selection-inspector', { set:{ subdivision:id || null } });
@@ -602,7 +605,21 @@ async function loadPartition(partition) {
     lastUsed:0,
   });
   cache.set(partition, state);
-  await installSharedLayers();
+  
+async function restoreAfterStyleGeneration() {
+  try {
+    await installSharedLayers();
+    const index = await subdivisionIndex();
+    await reconcileActive(index);
+    syncSelectedLabel();
+    syncLabelPresentation();
+    syncSharedLayerInteraction();
+  } catch (error) {
+    console.warn('Subdivision style-generation restore unavailable:', error);
+  }
+}
+
+await installSharedLayers();
   enforceCacheBudget(index, [partition]);
   return state;
 }
