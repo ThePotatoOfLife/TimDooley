@@ -32,7 +32,9 @@ function ensureStyle() {
     @media(max-width:900px){
       #atlasUILeftStatus{left:8px;bottom:8px;width:min(250px,calc(100% - 16px));gap:4px}
       #atlasUIBottomContext{left:8px;right:8px;bottom:8px;transform:none;width:auto;max-width:none;justify-content:flex-start}
-      body:has(#atlasWorldBar details[open]) #atlasUILeftStatus{opacity:0;pointer-events:none}
+      body:has(#atlasWorldBar details[open]) #atlasUILeftStatus,body:has(.top details.menu[open]) #atlasUILeftStatus{opacity:0;pointer-events:none}
+      body:has(#atlasWorldBar details[open]) #atlasUIBottomContext,body:has(.top details.menu[open]) #atlasUIBottomContext{visibility:hidden;pointer-events:none}
+      body:has(#atlasWorldBar details[open]) .panel,body:has(.top details.menu[open]) .panel{visibility:hidden;pointer-events:none}
       .panel{top:auto!important;left:8px!important;right:8px!important;bottom:8px!important;width:auto!important;max-height:44vh!important}
       body:not(.panel-collapsed) #atlasUIBottomContext{bottom:calc(44vh + 16px)}
     }
