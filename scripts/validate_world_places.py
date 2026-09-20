@@ -184,7 +184,7 @@ def validate_runtime(errors: list[str]) -> None:
         "atlas-places-detail-points", "atlas-places-detail-labels",
         "context-network", "Open country",
         "convergeLegacyCapitals", "potato-atlas-capitals-ready",
-        "const inspector = window.__potatoAtlasInspector", "inspector.setBaseline(", "inspector.open(", "inspector.back()",
+        "function inspectorRouter()", "inspector.setBaseline(", "inspector.open(", "inspector.back()",
     ), errors)
     require_tokens(SEARCH, (
         "__potatoAtlasSearch", "Country", "Capital", "City", "Town", "typeRank", "compareResults",
