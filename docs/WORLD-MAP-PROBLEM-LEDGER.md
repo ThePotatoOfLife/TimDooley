@@ -198,6 +198,13 @@
 **Resolution:** the Regions action now toggles the country-card partition lease on/off, updates `aria-pressed` and the “regions · shown” state from the actual retained partition, emits a bounded regions-change event, and only clears local lease state after the release path returns without error.  
 **Guard:** UI-shell validation requires the toggle branch, shared action-state helper and region-state event.
 
+### WM-037 · Regional countries can exist without place depth — P2
+**Status:** fixed / governed on branch `world-map-ukr-rus-places-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** Ukraine and Russia had first-order subdivision partitions but no same-origin Places country partitions, so region inspectors could not reveal mapped cities/towns and unified place search had no detailed country geometry behind those regions.  
+**Resolution:** the exact pinned GeoNames cities15000 seed already used by the project now supplies 256 Ukraine places and 1,089 Russia places. Both stay below the canonical 2 MiB country-partition budget. The global-major layer is extended with their national capitals/large cities, compact search ranks are recomputed across all place-enabled countries, and the existing historical-seed provenance/refresh limitation remains explicit.  
+**Guard:** Places validation now requires every promoted subdivision country to have a place partition and requires each partition's national capital to survive into `global-major.geo.json`. Existing byte/search/provenance checks remain active.  
+**Rule retained:** regional depth and place depth share the canonical Places owner and same-origin bounded partitions; no second city renderer or unbounded global dataset is introduced.
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
