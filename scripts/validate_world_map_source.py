@@ -24,6 +24,7 @@ import validate_world_map_subdivisions as subdivisions
 import validate_world_map_search_race as search_race
 import validate_world_map_browse_performance as browse_performance
 import validate_world_map_map_state as map_state
+import validate_world_map_reduced_motion as reduced_motion
 
 validator.HTML = Path(__file__).resolve().parents[1] / "world-map" / "index.html"
 
@@ -120,6 +121,9 @@ if __name__ == "__main__":
     if status:
         raise SystemExit(status)
     status = map_state.main()
+    if status:
+        raise SystemExit(status)
+    status = reduced_motion.main()
     if status:
         raise SystemExit(status)
     raise SystemExit(browse_performance.main())
