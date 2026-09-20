@@ -91,9 +91,18 @@
     {
       "id": "wave-009-seed",
       "file": "data/expansions/wave-009.json",
-      "status": "superseded-seed-retained",
+      "status": "promotion-backlog",
       "domain": "early World/Plane node expansion",
-      "disposition": "Historical expansion seed. No current direct references found; retain until canonical-node parity/archive migration is verified."
+      "disposition": "Active historical seed with substantial unpromoted content: only 1 of 55 node ids is present in data/nodes.json as of 2026-09-20. Retain in active Research Frontier until canonical promotion or explicit replacement is complete.",
+      "promotion_audit": {
+        "canonical_registry": "data/nodes.json",
+        "seed_node_count": 55,
+        "currently_present": [
+          "families"
+        ],
+        "missing_count": 54,
+        "audit_path": "knowledge/research/wave-009-promotion-gap-2026-09-20.json"
+      }
     },
     {
       "id": "wave-009-lexicon",
