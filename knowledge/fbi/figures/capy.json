@@ -1,0 +1,52 @@
+{
+  "id": "capy",
+  "display_name": "Capy",
+  "bureau": "FBI — Figures, Bonds & Incidents",
+  "entity_class": "person",
+  "aliases": [],
+  "archive_status": null,
+  "room_policy": null,
+  "room_path": null,
+  "tim_relation": {
+    "archetypes": [],
+    "narrative_functions": [],
+    "regions": [],
+    "editorial_reading": null,
+    "source_boundary": null
+  },
+  "chronology": {
+    "chronicle_occurrence_count": 0,
+    "chronicle_dates": [],
+    "cast_period_roles": [
+      {
+        "period": "2024",
+        "role": "Great Book/project-side chaotic social character; documentary basis requires recovery"
+      }
+    ],
+    "recovered_social_days": []
+  },
+  "top_co_presence": [],
+  "symbolic_roles": [],
+  "highlighted_incidents": [
+    {
+      "date": "2024 literary",
+      "title": "Chaotic conduit",
+      "summary": "Great Book casts Capy as a chaotic conduit interacting with Tim, BigTech and Sammy; documentary sequence still needs recovery."
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "character_archive",
+      "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json"
+    }
+  ],
+  "recovery_leads": [
+    "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
+    "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
+    "Add relationship edges only when a dated scene or explicit source supports them."
+  ]
+}
