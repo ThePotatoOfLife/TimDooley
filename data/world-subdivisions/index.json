@@ -1,6 +1,6 @@
 {
-  "version": "1.4.0",
-  "generated_at": "2026-09-14T20:47:14.054376+00:00",
+  "version": "1.5.0",
+  "generated_at": "2026-09-20T12:48:00+02:00",
   "record_type": "world-subdivision-partition-index",
   "runtime_budget": {
     "partition_max_bytes": 1500000,
@@ -28,57 +28,414 @@
         "north": 72.5
       },
       "search_records": [
-        {"id":"US-AL","name":"Alabama","code":"AL","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-AK","name":"Alaska","code":"AK","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-AZ","name":"Arizona","code":"AZ","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-AR","name":"Arkansas","code":"AR","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-CA","name":"California","code":"CA","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-CO","name":"Colorado","code":"CO","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-CT","name":"Connecticut","code":"CT","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-DE","name":"Delaware","code":"DE","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-DC","name":"District of Columbia","code":"DC","subdivision_type":"federal district","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-FL","name":"Florida","code":"FL","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-GA","name":"Georgia","code":"GA","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-HI","name":"Hawaii","code":"HI","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-ID","name":"Idaho","code":"ID","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-IL","name":"Illinois","code":"IL","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-IN","name":"Indiana","code":"IN","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-IA","name":"Iowa","code":"IA","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-KS","name":"Kansas","code":"KS","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-KY","name":"Kentucky","code":"KY","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-LA","name":"Louisiana","code":"LA","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-ME","name":"Maine","code":"ME","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-MD","name":"Maryland","code":"MD","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-MA","name":"Massachusetts","code":"MA","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-MI","name":"Michigan","code":"MI","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-MN","name":"Minnesota","code":"MN","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-MS","name":"Mississippi","code":"MS","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-MO","name":"Missouri","code":"MO","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-MT","name":"Montana","code":"MT","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-NE","name":"Nebraska","code":"NE","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-NV","name":"Nevada","code":"NV","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-NH","name":"New Hampshire","code":"NH","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-NJ","name":"New Jersey","code":"NJ","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-NM","name":"New Mexico","code":"NM","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-NY","name":"New York","code":"NY","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-NC","name":"North Carolina","code":"NC","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-ND","name":"North Dakota","code":"ND","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-OH","name":"Ohio","code":"OH","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-OK","name":"Oklahoma","code":"OK","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-OR","name":"Oregon","code":"OR","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-PA","name":"Pennsylvania","code":"PA","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-RI","name":"Rhode Island","code":"RI","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-SC","name":"South Carolina","code":"SC","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-SD","name":"South Dakota","code":"SD","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-TN","name":"Tennessee","code":"TN","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-TX","name":"Texas","code":"TX","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-UT","name":"Utah","code":"UT","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-VT","name":"Vermont","code":"VT","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-VA","name":"Virginia","code":"VA","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-WA","name":"Washington","code":"WA","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-WV","name":"West Virginia","code":"WV","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-WI","name":"Wisconsin","code":"WI","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"},
-        {"id":"US-WY","name":"Wyoming","code":"WY","subdivision_type":"state","parent_iso3":"USA","parent_name":"United States of America"}
+        {
+          "id": "US-AL",
+          "name": "Alabama",
+          "code": "AL",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-AK",
+          "name": "Alaska",
+          "code": "AK",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-AZ",
+          "name": "Arizona",
+          "code": "AZ",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-AR",
+          "name": "Arkansas",
+          "code": "AR",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-CA",
+          "name": "California",
+          "code": "CA",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-CO",
+          "name": "Colorado",
+          "code": "CO",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-CT",
+          "name": "Connecticut",
+          "code": "CT",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-DE",
+          "name": "Delaware",
+          "code": "DE",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-DC",
+          "name": "District of Columbia",
+          "code": "DC",
+          "subdivision_type": "federal district",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-FL",
+          "name": "Florida",
+          "code": "FL",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-GA",
+          "name": "Georgia",
+          "code": "GA",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-HI",
+          "name": "Hawaii",
+          "code": "HI",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-ID",
+          "name": "Idaho",
+          "code": "ID",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-IL",
+          "name": "Illinois",
+          "code": "IL",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-IN",
+          "name": "Indiana",
+          "code": "IN",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-IA",
+          "name": "Iowa",
+          "code": "IA",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-KS",
+          "name": "Kansas",
+          "code": "KS",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-KY",
+          "name": "Kentucky",
+          "code": "KY",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-LA",
+          "name": "Louisiana",
+          "code": "LA",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-ME",
+          "name": "Maine",
+          "code": "ME",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-MD",
+          "name": "Maryland",
+          "code": "MD",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-MA",
+          "name": "Massachusetts",
+          "code": "MA",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-MI",
+          "name": "Michigan",
+          "code": "MI",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-MN",
+          "name": "Minnesota",
+          "code": "MN",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-MS",
+          "name": "Mississippi",
+          "code": "MS",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-MO",
+          "name": "Missouri",
+          "code": "MO",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-MT",
+          "name": "Montana",
+          "code": "MT",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-NE",
+          "name": "Nebraska",
+          "code": "NE",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-NV",
+          "name": "Nevada",
+          "code": "NV",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-NH",
+          "name": "New Hampshire",
+          "code": "NH",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-NJ",
+          "name": "New Jersey",
+          "code": "NJ",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-NM",
+          "name": "New Mexico",
+          "code": "NM",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-NY",
+          "name": "New York",
+          "code": "NY",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-NC",
+          "name": "North Carolina",
+          "code": "NC",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-ND",
+          "name": "North Dakota",
+          "code": "ND",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-OH",
+          "name": "Ohio",
+          "code": "OH",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-OK",
+          "name": "Oklahoma",
+          "code": "OK",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-OR",
+          "name": "Oregon",
+          "code": "OR",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-PA",
+          "name": "Pennsylvania",
+          "code": "PA",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-RI",
+          "name": "Rhode Island",
+          "code": "RI",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-SC",
+          "name": "South Carolina",
+          "code": "SC",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-SD",
+          "name": "South Dakota",
+          "code": "SD",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-TN",
+          "name": "Tennessee",
+          "code": "TN",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-TX",
+          "name": "Texas",
+          "code": "TX",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-UT",
+          "name": "Utah",
+          "code": "UT",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-VT",
+          "name": "Vermont",
+          "code": "VT",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-VA",
+          "name": "Virginia",
+          "code": "VA",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-WA",
+          "name": "Washington",
+          "code": "WA",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-WV",
+          "name": "West Virginia",
+          "code": "WV",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-WI",
+          "name": "Wisconsin",
+          "code": "WI",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        },
+        {
+          "id": "US-WY",
+          "name": "Wyoming",
+          "code": "WY",
+          "subdivision_type": "state",
+          "parent_iso3": "USA",
+          "parent_name": "United States of America"
+        }
       ]
     },
     "DNK": {
@@ -98,11 +455,169 @@
         "north": 57.9
       },
       "search_records": [
-        {"id":"DK-1084","name":"Region Hovedstaden","code":"1084","subdivision_type":"region","parent_iso3":"DNK","parent_name":"Denmark"},
-        {"id":"DK-1082","name":"Region Midtjylland","code":"1082","subdivision_type":"region","parent_iso3":"DNK","parent_name":"Denmark"},
-        {"id":"DK-1081","name":"Region Nordjylland","code":"1081","subdivision_type":"region","parent_iso3":"DNK","parent_name":"Denmark"},
-        {"id":"DK-1085","name":"Region Sjælland","code":"1085","subdivision_type":"region","parent_iso3":"DNK","parent_name":"Denmark"},
-        {"id":"DK-1083","name":"Region Syddanmark","code":"1083","subdivision_type":"region","parent_iso3":"DNK","parent_name":"Denmark"}
+        {
+          "id": "DK-1084",
+          "name": "Region Hovedstaden",
+          "code": "1084",
+          "subdivision_type": "region",
+          "parent_iso3": "DNK",
+          "parent_name": "Denmark"
+        },
+        {
+          "id": "DK-1082",
+          "name": "Region Midtjylland",
+          "code": "1082",
+          "subdivision_type": "region",
+          "parent_iso3": "DNK",
+          "parent_name": "Denmark"
+        },
+        {
+          "id": "DK-1081",
+          "name": "Region Nordjylland",
+          "code": "1081",
+          "subdivision_type": "region",
+          "parent_iso3": "DNK",
+          "parent_name": "Denmark"
+        },
+        {
+          "id": "DK-1085",
+          "name": "Region Sjælland",
+          "code": "1085",
+          "subdivision_type": "region",
+          "parent_iso3": "DNK",
+          "parent_name": "Denmark"
+        },
+        {
+          "id": "DK-1083",
+          "name": "Region Syddanmark",
+          "code": "1083",
+          "subdivision_type": "region",
+          "parent_iso3": "DNK",
+          "parent_name": "Denmark"
+        }
+      ]
+    },
+    "CAN": {
+      "path": "CAN.geo.json",
+      "bytes": 415297,
+      "feature_count": 13,
+      "admin_level": 1,
+      "status": "implemented-geometry-first",
+      "source": "Statistics Canada administrative reference; simplified display snapshot from chadbeebe/Canadian_Provinces",
+      "population_status": "unknown-not-zero",
+      "id_prefix": "CA-",
+      "parent_name": "Canada",
+      "viewport_bounds": {
+        "west": -141.1,
+        "east": -52.5,
+        "south": 41.6,
+        "north": 83.2
+      },
+      "search_records": [
+        {
+          "id": "CA-AB",
+          "name": "Alberta",
+          "code": "AB",
+          "subdivision_type": "province",
+          "parent_iso3": "CAN",
+          "parent_name": "Canada"
+        },
+        {
+          "id": "CA-BC",
+          "name": "British Columbia",
+          "code": "BC",
+          "subdivision_type": "province",
+          "parent_iso3": "CAN",
+          "parent_name": "Canada"
+        },
+        {
+          "id": "CA-MB",
+          "name": "Manitoba",
+          "code": "MB",
+          "subdivision_type": "province",
+          "parent_iso3": "CAN",
+          "parent_name": "Canada"
+        },
+        {
+          "id": "CA-NB",
+          "name": "New Brunswick",
+          "code": "NB",
+          "subdivision_type": "province",
+          "parent_iso3": "CAN",
+          "parent_name": "Canada"
+        },
+        {
+          "id": "CA-NL",
+          "name": "Newfoundland and Labrador",
+          "code": "NL",
+          "subdivision_type": "province",
+          "parent_iso3": "CAN",
+          "parent_name": "Canada"
+        },
+        {
+          "id": "CA-NT",
+          "name": "Northwest Territories",
+          "code": "NT",
+          "subdivision_type": "territory",
+          "parent_iso3": "CAN",
+          "parent_name": "Canada"
+        },
+        {
+          "id": "CA-NS",
+          "name": "Nova Scotia",
+          "code": "NS",
+          "subdivision_type": "province",
+          "parent_iso3": "CAN",
+          "parent_name": "Canada"
+        },
+        {
+          "id": "CA-NU",
+          "name": "Nunavut",
+          "code": "NU",
+          "subdivision_type": "territory",
+          "parent_iso3": "CAN",
+          "parent_name": "Canada"
+        },
+        {
+          "id": "CA-ON",
+          "name": "Ontario",
+          "code": "ON",
+          "subdivision_type": "province",
+          "parent_iso3": "CAN",
+          "parent_name": "Canada"
+        },
+        {
+          "id": "CA-PE",
+          "name": "Prince Edward Island",
+          "code": "PE",
+          "subdivision_type": "province",
+          "parent_iso3": "CAN",
+          "parent_name": "Canada"
+        },
+        {
+          "id": "CA-QC",
+          "name": "Quebec",
+          "code": "QC",
+          "subdivision_type": "province",
+          "parent_iso3": "CAN",
+          "parent_name": "Canada"
+        },
+        {
+          "id": "CA-SK",
+          "name": "Saskatchewan",
+          "code": "SK",
+          "subdivision_type": "province",
+          "parent_iso3": "CAN",
+          "parent_name": "Canada"
+        },
+        {
+          "id": "CA-YT",
+          "name": "Yukon",
+          "code": "YT",
+          "subdivision_type": "territory",
+          "parent_iso3": "CAN",
+          "parent_name": "Canada"
+        }
       ]
     }
   }
