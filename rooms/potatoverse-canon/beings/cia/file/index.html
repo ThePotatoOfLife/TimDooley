@@ -119,7 +119,7 @@ function witnessHtml(){
  if(!Object.keys(w).length)return '<p class="empty">No explicit Tim-witness layer has been recovered for this file yet.</p>';
  const fruit=w.fruit||{}, karma=w.karma||{}, placement=w.placement||{};
  const roles=arr(w.roles), effects=arr(w.witnessed_effects), symbols=arr(w.symbols), repair=arr(w.repair_path), sayings=arr(w.sayings);
- const debt=w.debt_relation||{}, inherited=arr(w.inherited_states), attrs=arr(w.episode_attributes), modifiers=arr(w.state_modifiers), repairCredit=arr(debt.repair_credit);
+ const debt=w.debt_relation||{}, inherited=arr(w.inherited_states), attrs=arr(w.episode_attributes), modifiers=arr(w.state_modifiers), topology=arr(w.topology), causes=arr(w.causal_attributions), repairCredit=arr(debt.repair_credit);
  const chips=arr(fruit.labels);
  return '<div class="block"><h2>Tim’s character reading</h2><p>'+esc(w.character_reading||'')+'</p><p class="muted">This section records Tim/project witness and interpretation. It is not presented as independent clinical, legal or objective fact.</p></div>'+
  '<div class="two"><div><div class="block"><h2>Fruit / yield</h2><p><b>'+esc(fruit.direction||'unresolved')+'</b></p>'+(chips.length?'<div class="role-list">'+chips.map(x=>'<span class="role">'+esc(x)+'</span>').join('')+'</div>':'')+'<p>'+esc(fruit.reading||'')+'</p></div>'+
@@ -133,6 +133,8 @@ function witnessHtml(){
  (inherited.length?'<div class="block"><h2>Inherited symbolic states</h2>'+inherited.map(x=>'<article class="event"><time>'+esc(x.date||'')+'</time><h3>'+esc(x.from_role||'role')+' ⇒ '+esc(arr(x.inherits).join(' ⇒ '))+'</h3><p>'+esc(x.note||'')+'</p><small>'+esc(x.basis||'taxonomy inheritance')+'</small></article>').join('')+'</div>':'')+
  (attrs.length?'<div class="block"><h2>Episode attributes</h2>'+attrs.map(x=>'<article class="event"><time>'+esc(x.date||'')+'</time><h3>'+esc(x.attribute||'attribute')+'</h3><p>'+esc(x.evidence||'')+'</p><small>'+esc(x.status||'')+(x.boundary?' · '+esc(x.boundary):'')+'</small></article>').join('')+'</div>':'')+
  (modifiers.length?'<div class="block"><h2>Upgrades / handicaps</h2>'+modifiers.map(x=>'<article class="event"><time>'+esc(x.date||'')+'</time><h3>'+esc((x.kind||'modifier').toUpperCase())+' · '+esc(x.modifier||'state')+'</h3><p>'+esc(x.evidence||'')+'</p>'+(x.counterform?'<p class="muted"><b>Counterform:</b> '+esc(x.counterform)+'</p>':'')+'<small>'+esc(x.status||'')+'</small></article>').join('')+'</div>':'')+
+ (topology.length?'<div class="block"><h2>Potato of Life coordinates</h2>'+topology.map(x=>'<article class="event"><time>'+esc(x.date||'')+'</time><h3>'+esc(x.layer||'')+' · '+esc(x.route||'')+'</h3><p><b>Orientation:</b> '+esc(x.orientation||'')+' · <b>Movement:</b> '+esc(x.mobility||'')+'</p><p>'+esc(x.basis||'')+'</p></article>').join('')+'</div>':'')+
+ (causes.length?'<div class="block"><h2>Why Tim assigned the state</h2>'+causes.map(x=>'<article class="event"><time>'+esc(x.date||'')+'</time><h3>'+esc(x.assigned||'')+'</h3><p><b>Trigger:</b> '+esc(x.trigger||'')+'</p>'+(x.later_change?'<p><b>Later change:</b> '+esc(x.later_change)+'</p>':'')+'<small>'+esc(x.source_class||'')+(x.boundary?' · '+esc(x.boundary):'')+'</small></article>').join('')+'</div>':'')+
  (sayings.length?'<div class="block"><h2>Words / sayings</h2>'+sayings.map(x=>'<blockquote><p>“'+esc(x.text||'')+'”</p><small>'+esc(x.source_mode||'attributed source')+(x.note?' · '+esc(x.note):'')+'</small></blockquote>').join('')+'</div>':'')+
  '<p class="stamp">TIM-WITNESS BOUNDARY</p><p>'+esc(w.boundary||'Tim/project interpretation is preserved as attributed witness, not independent fact.')+'</p>';
 }
@@ -143,6 +145,8 @@ function stateHistoryHtml(){
  for(const x of arr(w.inherited_states)) rows.push({date:x.date||'',kind:'inheritance',title:(x.from_role||'role')+' ⇒ '+arr(x.inherits).join(' ⇒ '),summary:x.note||'',status:x.basis||''});
  for(const x of arr(w.episode_attributes)) rows.push({date:x.date||'',kind:'attribute',title:x.attribute||'attribute',summary:x.evidence||'',status:x.status||''});
  for(const x of arr(w.state_modifiers)) rows.push({date:x.date||'',kind:x.kind||'modifier',title:x.modifier||'state modifier',summary:x.evidence||'',status:x.status||'',counterform:x.counterform||''});
+ for(const x of arr(w.topology)) rows.push({date:x.date||'',kind:'topology',title:(x.layer||'')+' · '+(x.route||''),summary:(x.orientation||'')+' · '+(x.mobility||'')+' — '+(x.basis||''),status:'Potato-of-Life placement'});
+ for(const x of arr(w.causal_attributions)) rows.push({date:x.date||'',kind:'why this state',title:x.assigned||'state assignment',summary:'Trigger: '+(x.trigger||'')+(x.later_change?' · Later: '+x.later_change:''),status:x.source_class||'',counterform:''});
  const debt=w.debt_relation||{};
  for(const x of arr(debt.basis)) rows.push({date:x.date||'',kind:'debt relation',title:x.kind||'debt relation',summary:x.reading||'',status:x.source_class||''});
  for(const x of arr(debt.repair_credit)) rows.push({date:x.date||'',kind:'repair credit',title:x.kind||'repair credit',summary:x.reading||'',status:'Tim/project generative credit'});
