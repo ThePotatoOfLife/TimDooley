@@ -1,0 +1,364 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "authority": "nested-room-interior-registry",
+  "purpose": "Bind every registered nested Room to a stable spatial-home route without changing its canonical knowledge ownership.",
+  "route_pattern": "/rooms/inside/<subroom-id>/",
+  "count": 38,
+  "rules": [
+    "Every active nested Room receives one spatial interior route.",
+    "Interior routes are navigation/home projections, not new knowledge owners.",
+    "Parent Dwelling identity remains visible.",
+    "Registered adjacent nested Rooms become local doors or cross-Dwelling wormhole doors.",
+    "Readable public surfaces remain available separately from the spatial interior."
+  ],
+  "interiors": [
+    {
+      "subroom_id": "canon-identities",
+      "title": "Core Identities & Roles",
+      "parent_room_id": "potatoverse-canon",
+      "route": "/rooms/inside/canon-identities/",
+      "status": "active",
+      "local_role": "identity core",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "theology-god-language",
+      "title": "Theology & God-language",
+      "parent_room_id": "potatoverse-canon",
+      "route": "/rooms/inside/theology-god-language/",
+      "status": "active",
+      "local_role": "theological interpretation",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "symbolic-architecture",
+      "title": "Symbolic Architecture & Cosmology",
+      "parent_room_id": "potatoverse-canon",
+      "route": "/rooms/inside/symbolic-architecture/",
+      "status": "active",
+      "local_role": "symbolic systems",
+      "adjacency_count": 5
+    },
+    {
+      "subroom_id": "practice-ethics",
+      "title": "Practice & Ethics",
+      "parent_room_id": "potatoverse-canon",
+      "route": "/rooms/inside/practice-ethics/",
+      "status": "active",
+      "local_role": "practice and ethics",
+      "adjacency_count": 5
+    },
+    {
+      "subroom_id": "provenance-evidence",
+      "title": "Provenance & Evidence",
+      "parent_room_id": "archive-sources",
+      "route": "/rooms/inside/provenance-evidence/",
+      "status": "active",
+      "local_role": "provenance root",
+      "adjacency_count": 5
+    },
+    {
+      "subroom_id": "memory-recovery",
+      "title": "Memory & Recovery",
+      "parent_room_id": "archive-sources",
+      "route": "/rooms/inside/memory-recovery/",
+      "status": "active",
+      "local_role": "archive recovery",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "witness-attestation",
+      "title": "Witness & Attestation",
+      "parent_room_id": "archive-sources",
+      "route": "/rooms/inside/witness-attestation/",
+      "status": "active",
+      "local_role": "attestation",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "chronology-events",
+      "title": "Events & Development",
+      "parent_room_id": "time-history",
+      "route": "/rooms/inside/chronology-events/",
+      "status": "active",
+      "local_role": "occurrence time",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "developmental-genealogy",
+      "title": "Developmental Genealogy",
+      "parent_room_id": "time-history",
+      "route": "/rooms/inside/developmental-genealogy/",
+      "status": "active",
+      "local_role": "development through time",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "prediction-revelation-time",
+      "title": "Prediction, Revelation & Interpretation Time",
+      "parent_room_id": "time-history",
+      "route": "/rooms/inside/prediction-revelation-time/",
+      "status": "active",
+      "local_role": "temporal claim analysis",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "bible-christianity",
+      "title": "Bible & Christianity",
+      "parent_room_id": "traditions-texts",
+      "route": "/rooms/inside/bible-christianity/",
+      "status": "active",
+      "local_role": "textual tradition",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "comparative-mythology",
+      "title": "Comparative Mythology",
+      "parent_room_id": "traditions-texts",
+      "route": "/rooms/inside/comparative-mythology/",
+      "status": "active",
+      "local_role": "comparative tradition",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "esoteric-sacred-geometry",
+      "title": "Esoteric & Sacred Geometry",
+      "parent_room_id": "traditions-texts",
+      "route": "/rooms/inside/esoteric-sacred-geometry/",
+      "status": "active",
+      "local_role": "historical comparison",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "other-traditions",
+      "title": "Other Traditions & Philosophies",
+      "parent_room_id": "traditions-texts",
+      "route": "/rooms/inside/other-traditions/",
+      "status": "active",
+      "local_role": "tradition context",
+      "adjacency_count": 3
+    },
+    {
+      "subroom_id": "math-geometry",
+      "title": "Mathematics & Geometry",
+      "parent_room_id": "science-formal-models",
+      "route": "/rooms/inside/math-geometry/",
+      "status": "active",
+      "local_role": "formal mathematics",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "physics-cosmology",
+      "title": "Physics & Cosmology",
+      "parent_room_id": "science-formal-models",
+      "route": "/rooms/inside/physics-cosmology/",
+      "status": "active",
+      "local_role": "physical science",
+      "adjacency_count": 3
+    },
+    {
+      "subroom_id": "systems-dynamics",
+      "title": "Systems & Dynamics",
+      "parent_room_id": "science-formal-models",
+      "route": "/rooms/inside/systems-dynamics/",
+      "status": "active",
+      "local_role": "systems formalization",
+      "adjacency_count": 5
+    },
+    {
+      "subroom_id": "model-testing",
+      "title": "Testing & Falsifiability",
+      "parent_room_id": "science-formal-models",
+      "route": "/rooms/inside/model-testing/",
+      "status": "active",
+      "local_role": "test discipline",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "potato-biology",
+      "title": "Potato Biology",
+      "parent_room_id": "life-body",
+      "route": "/rooms/inside/potato-biology/",
+      "status": "active",
+      "local_role": "organism biology",
+      "adjacency_count": 3
+    },
+    {
+      "subroom_id": "neurobiology",
+      "title": "Neurobiology",
+      "parent_room_id": "life-body",
+      "route": "/rooms/inside/neurobiology/",
+      "status": "active",
+      "local_role": "neuroscience",
+      "adjacency_count": 3
+    },
+    {
+      "subroom_id": "whole-body",
+      "title": "Whole-body Physiology",
+      "parent_room_id": "life-body",
+      "route": "/rooms/inside/whole-body/",
+      "status": "active",
+      "local_role": "physiology",
+      "adjacency_count": 3
+    },
+    {
+      "subroom_id": "symbolic-body-comparison",
+      "title": "Symbolic Body Crosswalk",
+      "parent_room_id": "life-body",
+      "route": "/rooms/inside/symbolic-body-comparison/",
+      "status": "active",
+      "local_role": "symbolic anatomy boundary",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "politics-governance",
+      "title": "Politics & Governance",
+      "parent_room_id": "world-systems",
+      "route": "/rooms/inside/politics-governance/",
+      "status": "active",
+      "local_role": "political systems",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "law-justice",
+      "title": "Law & Justice",
+      "parent_room_id": "world-systems",
+      "route": "/rooms/inside/law-justice/",
+      "status": "active",
+      "local_role": "legal systems",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "economy-finance",
+      "title": "Economy & Finance",
+      "parent_room_id": "world-systems",
+      "route": "/rooms/inside/economy-finance/",
+      "status": "active",
+      "local_role": "economic systems",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "infrastructure-capability",
+      "title": "Infrastructure & Capability",
+      "parent_room_id": "world-systems",
+      "route": "/rooms/inside/infrastructure-capability/",
+      "status": "active",
+      "local_role": "infrastructure systems",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "geography-countries",
+      "title": "Geography & Countries",
+      "parent_room_id": "world-systems",
+      "route": "/rooms/inside/geography-countries/",
+      "status": "active",
+      "local_role": "geographic context",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "internet-platforms",
+      "title": "Internet & Platforms",
+      "parent_room_id": "culture-information",
+      "route": "/rooms/inside/internet-platforms/",
+      "status": "active",
+      "local_role": "digital culture",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "subculture-group-formation",
+      "title": "Subculture, Cult & Group Formation",
+      "parent_room_id": "culture-information",
+      "route": "/rooms/inside/subculture-group-formation/",
+      "status": "active",
+      "local_role": "social formation",
+      "adjacency_count": 5
+    },
+    {
+      "subroom_id": "information-ecology",
+      "title": "Information Ecology & Memory",
+      "parent_room_id": "culture-information",
+      "route": "/rooms/inside/information-ecology/",
+      "status": "active",
+      "local_role": "information systems",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "great-book-literature",
+      "title": "Great Book & Literature",
+      "parent_room_id": "works",
+      "route": "/rooms/inside/great-book-literature/",
+      "status": "active",
+      "local_role": "literary works",
+      "adjacency_count": 6
+    },
+    {
+      "subroom_id": "music-sound",
+      "title": "Music & Sound",
+      "parent_room_id": "works",
+      "route": "/rooms/inside/music-sound/",
+      "status": "active",
+      "local_role": "music works",
+      "adjacency_count": 3
+    },
+    {
+      "subroom_id": "visual-art",
+      "title": "Visual Art & Symbolic Composition",
+      "parent_room_id": "works",
+      "route": "/rooms/inside/visual-art/",
+      "status": "active",
+      "local_role": "visual works",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "games-simulations",
+      "title": "Games & Simulations",
+      "parent_room_id": "works",
+      "route": "/rooms/inside/games-simulations/",
+      "status": "active",
+      "local_role": "interactive works",
+      "adjacency_count": 3
+    },
+    {
+      "subroom_id": "house-architecture",
+      "title": "House Architecture",
+      "parent_room_id": "research-lab",
+      "route": "/rooms/inside/house-architecture/",
+      "status": "active",
+      "local_role": "architecture research",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "open-questions",
+      "title": "Open Questions & Hypotheses",
+      "parent_room_id": "research-lab",
+      "route": "/rooms/inside/open-questions/",
+      "status": "active",
+      "local_role": "hypothesis frontier",
+      "adjacency_count": 5
+    },
+    {
+      "subroom_id": "experiments-formalization",
+      "title": "Experiments & Formalization",
+      "parent_room_id": "research-lab",
+      "route": "/rooms/inside/experiments-formalization/",
+      "status": "active",
+      "local_role": "experimental work",
+      "adjacency_count": 4
+    },
+    {
+      "subroom_id": "research-programmes",
+      "title": "Research Programmes",
+      "parent_room_id": "research-lab",
+      "route": "/rooms/inside/research-programmes/",
+      "status": "active",
+      "local_role": "programme coordination",
+      "adjacency_count": 5
+    }
+  ],
+  "source_records": [
+    "data/house/subrooms.json",
+    "data/house/non-euclidean-room-grammar.json",
+    "data/house/elevator-spatial-projection.json"
+  ]
+}
