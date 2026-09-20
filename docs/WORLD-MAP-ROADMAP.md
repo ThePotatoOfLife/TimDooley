@@ -108,14 +108,14 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. Work pro
 
 - [x] Reduce top-bar density without redesigning the map: consolidate relation-context filters into Analyze, group N/W/E/S as compact axis lenses, shrink icon controls and tighten fixed Search/Compare/Inspect spacing.
 
-- [ ] Add visual-channel compatibility matrix.
+- [x] Add a complete symmetric visual-channel compatibility matrix, with explicit composition/separation semantics and governed conditional fallback for pattern + height.
 - [~] Audit every writer of country fill/pattern/outline/height. Persistent planes are now explicit and specialist Gateways/Chains/Impact/Demography/Axis renderers register with the shared Render Stack; legacy dormant Fields/Networks remain compatibility debt.
 - [x] Centralize style-generation restoration for Render Stack and migrated physical layers.
-- [ ] Drain remaining duplicate style/lifecycle writers discovered by the architecture auditor.
+- [x] Drain direct duplicate Style Lifecycle ownership; remaining visual-channel compatibility debt is tracked independently rather than as duplicate `styledata` ownership.
 - [ ] Consolidate global UI design tokens, z-index bands and common surfaces.
 - [~] Make top-level controls increasingly question-oriented: the visible World Bar now converges Analytical / Physical / Geography / Evidence with Compare / Analyze / Time / View; further wording simplification can continue without adding another control surface.
-- [ ] Audit mobile occlusion, keyboard access, focus return, color-only semantics and reduced motion.
-- [ ] Add concise accessible active-view summaries.
+- [x] Audit current shared surfaces for mobile occlusion, keyboard access, focus return, color-only semantics and reduced motion; keep the audit requirement on every newly promoted surface.
+- [x] Add concise accessible active-view summaries through the World Bar context/status owner, with duplicate-announcement suppression.
 
 ## ACTIVE — PROJECTION TRANSPARENCY
 
