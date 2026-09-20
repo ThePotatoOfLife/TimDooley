@@ -85,7 +85,9 @@ function assertLongformPage(source,{name,host,css,reader,drawer,adapter:adapterS
 
 const story = fs.readFileSync(new URL('../tim-dooley/story/index.html', import.meta.url),'utf8');
 assertLongformPage(story,{name:'story',host:'id="story-tts"',css:'href="../../app/tts-drawer.css"',reader:'src="../../app/tts-reader.js"',drawer:'src="../../app/tts-drawer.js"',adapter:'src="../../app/longform-tts-adapter.js"',root:'data-tts-root="#story-stream"',item:'data-tts-item=".story-entry"',allLabel:'data-tts-all-label="Whole story"',currentLabel:'data-tts-current-label="Current entry"'});
-assert.ok(story.includes('Hear the full story'), 'Story must preserve its content expander');
+const storyDir=new URL('../story-content/',import.meta.url);
+const storyFragments=fs.readdirSync(storyDir).filter(name=>name.endsWith('.html')).map(name=>fs.readFileSync(new URL(name,storyDir),'utf8')).join('\n');
+assert.ok(storyFragments.includes('Hear the full story'), 'Story fragment corpus must preserve its content expander');
 assert.ok(!story.includes('data-tts-item=".full-story"'), 'Hear the full story must not become a TTS trigger');
 assert.ok(!story.includes('data-tts-item="summary"'), 'Story disclosure summaries must remain silent');
 const storyHeaderEnd=story.indexOf('</header>');
@@ -102,7 +104,7 @@ const religion = fs.readFileSync(new URL('../religion/index.html', import.meta.u
 assertLongformPage(religion,{name:'religion',host:'id="religion-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".religion-page"',item:'data-tts-item=".theology-core,.question-stub"',allLabel:'data-tts-all-label="Whole page"',currentLabel:'data-tts-current-label="Current section"',exclude:'data-tts-exclude="#religion-tts,.page-nav,.bible-lab-cta,.minor,.footer"'});
 
 const tim = fs.readFileSync(new URL('../tim-dooley/index.html', import.meta.url),'utf8');
-assertLongformPage(tim,{name:'tim overview',host:'id="tim-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".tim-page"',item:'data-tts-item=".reading-frame,.question-stub,.work-row,.sequence>div"',allLabel:'data-tts-all-label="Whole overview"',currentLabel:'data-tts-current-label="Current section"',exclude:'data-tts-exclude="#tim-tts,.page-nav,.primary,.deep"'});
+assertLongformPage(tim,{name:'tim overview',host:'id="tim-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".tim-page"',item:'data-tts-item=".riddle,.identity-row,.question-flow article,.job-line,.spine>div"',allLabel:'data-tts-all-label="Whole portrait"',currentLabel:'data-tts-current-label="Current section"',exclude:'data-tts-exclude="#tim-tts,.page-nav,.routes-footer"'});
 
 const north = fs.readFileSync(new URL('../north/index.html', import.meta.url),'utf8');
 assertLongformPage(north,{name:'north',host:'id="north-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".wrap"',item:'data-tts-item=".north-section"',allLabel:'data-tts-all-label="Whole North reader"',currentLabel:'data-tts-current-label="Current section"',exclude:'data-tts-exclude="#north-tts,nav,.map-action,.links"'});
