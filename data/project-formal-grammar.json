@@ -1,6 +1,6 @@
 {
   "id": "project-formal-grammar",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "status": "canonical cross-project mathematical typing and correspondence contract",
   "source_thesis": "docs/11D-M-THEORY-QUANTUM-DOOR-THESIS.md",
@@ -11,7 +11,9 @@
     "A scientific comparator never upgrades a project symbol into empirical physics by resemblance alone.",
     "Every use of dimension, Door, Axis, Spiral, Eye, Room, House, Root, Tree, Seed, Ladder, Flow or Fruit should declare which formal type is meant when ambiguity matters.",
     "Visible pages may simplify labels, but backend records should preserve source type, target type, preserved structure, mismatch and evidence status.",
-    "Physical claims must satisfy units, dynamics, known-limit, parameter, observable, uncertainty and falsifier contracts."
+    "Physical claims must satisfy units, dynamics, known-limit, parameter, observable, uncertainty and falsifier contracts.",
+    "A drawn spiral does not determine its mechanism: geometric shape, dynamical focus, phase winding, flow, holonomy, RG recurrence and torus winding are separately typed.",
+    "Golden-ratio/Fibonacci structure is a parameterized scaling or quasiperiodicity choice unless a domain-specific mechanism derives it."
   ],
   "dimension_types": {
     "P": {
@@ -57,7 +59,8 @@
     "observation": "state/model to measured data",
     "inference": "data to constraints/posterior over candidate models",
     "recovery": "attempted inverse/reconstruction after a lossy/restricted map",
-    "formalization": "project relation to explicit mathematics with mismatch retained"
+    "formalization": "project relation to explicit mathematics with mismatch retained",
+    "parallel_transport": "transport of an internal state along a path under a declared connection; closed-path return may produce holonomy"
   },
   "typed_objects": {
     "Door": {
@@ -73,24 +76,33 @@
       }
     },
     "Axis": {
-      "schema": "A=(A_geom,A_dyn,A_sym,A_RG,A_order)",
+      "schema": "A=(A_geom,A_dyn,A_sym,A_RG,A_order,A_prop,A_eig,A_fiber,A_scale)",
       "components": {
         "A_geom": "distinguished geometric direction/vector field",
         "A_dyn": "dynamical generator/flow",
         "A_sym": "symmetry generator",
         "A_RG": "resolution/renormalization flow",
-        "A_order": "project ordering/orientation coordinate"
-      }
+        "A_order": "project ordering/orientation coordinate",
+        "A_prop": "propagation axis of a wave/beam or directed transport model",
+        "A_eig": "eigendirection/eigenmode frame for local dynamical evolution",
+        "A_fiber": "distinguished compact/fiber direction in an explicitly fibered geometry",
+        "A_scale": "resolution/scale axis; use A_RG when an actual beta-function/RG model exists"
+      },
+      "rule": "A project Axis may instantiate several components, but no component is inherited merely because the same visual vertical is reused."
     },
     "Spiral": {
-      "schema": "S=(S_helix,S_return,S_RG,S_hol,S_phase)",
+      "schema": "S=(S_geom,S_dyn,S_phase,S_flow,S_hol,S_RG,S_torus,S_return)",
       "components": {
-        "S_helix": "geometric recurrence with displacement",
-        "S_return": "Poincare/return map",
-        "S_RG": "scale recurrence/limit cycle",
-        "S_hol": "holonomy around a closed path",
-        "S_phase": "Berry/Wilson-like accumulated phase"
-      }
+        "S_geom": "geometric spiral/helix; recovered logarithmic project form is r=a exp(b theta)",
+        "S_dyn": "dynamical spiral from coupled rotation plus growth/decay; for a linear focus z_dot=(sigma+i omega)z, b=sigma/omega",
+        "S_phase": "phase-vortex or accumulated phase winding around a singularity/cycle",
+        "S_flow": "vortical or helical material/energy transport",
+        "S_hol": "holonomy: return to the same base point with transformed internal state",
+        "S_RG": "recurrence/limit-cycle behavior under scale/RG flow",
+        "S_torus": "periodic or quasiperiodic winding on compact cycles",
+        "S_return": "project recurrence with declared non-zero state/level displacement"
+      },
+      "rule": "Similarity of drawings is not identity of mechanism. Every technical Spiral claim should declare the active component(s)."
     },
     "House": {
       "schema": "H=(X,∂X,A_global)",
@@ -127,6 +139,11 @@
     "Flow": {
       "schema": "J or Phi_t depending domain",
       "meaning": "typed current, transport or dynamical evolution; units/domain required"
+    },
+    "Connection": {
+      "schema": "C=(base,fiber,nabla,F,Hol)",
+      "meaning": "transport rule relating neighboring internal states; curvature measures nontrivial local transport and holonomy records closed-path return",
+      "boundary": "Use as established geometry only where a bundle/connection is actually defined. Else treat connection/holonomy language as a structural comparator."
     }
   },
   "correspondence_contract": {
@@ -182,7 +199,8 @@
       "use": [
         "Treat Rooms as typed objects and guarded interfaces as morphisms.",
         "Upgrade interface records with preserved invariants, lost structure, reversibility and epistemic status.",
-        "Use category composition to validate multi-Room traversals."
+        "Use category composition to validate multi-Room traversals.",
+        "For spiral/route views, distinguish geometric path, state recurrence and holonomy; a loop may return to the same location while an internal state changes only when a transport rule is declared."
       ]
     },
     "Axis": {
@@ -196,7 +214,9 @@
       "use": [
         "Type Axis as ordering, dynamical, symmetry or RG comparator rather than one overloaded object.",
         "Type Door and Spiral behaviors explicitly.",
-        "Keep D1-D11 under dimension type P unless a separate physical model is invoked."
+        "Keep D1-D11 under dimension type P unless a separate physical model is invoked.",
+        "Expose propagation/eigen/fiber/scale Axis subtypes only where the underlying model actually supplies those structures.",
+        "Use b=sigma/omega as the dynamical-focus interpretation of a logarithmic spiral only for systems with declared rotational frequency and radial growth/decay rate."
       ]
     },
     "LifeBody": {
@@ -270,5 +290,8 @@
     "Do not replace project narrative with mathematical notation on reader-facing pages unless it clarifies a real ambiguity.",
     "Do not treat C0/C1 analogy as evidence for C3 physical embedding.",
     "Do not use the formal grammar to create new claims where the underlying project record is sparse."
+  ],
+  "structured_extensions": [
+    "knowledge/science/11d-electromagnetic-vortex-fibonacci-extension.json"
   ]
 }
