@@ -99,19 +99,29 @@ function validatedPoint(point, label) {
 function pointInRing(point, ring) {
   const [lng, lat] = validatedPoint(point, 'point');
   if (!Array.isArray(ring) || ring.length < 3) return false;
-  const points = ring.map(coord => {
+  const rawPoints = ring.map(coord => {
     if (!Array.isArray(coord) || coord.length < 2) return null;
+    const x = Number(coord[0]);
     const y = Number(coord[1]);
-    if (!Number.isFinite(y)) return null;
-    return [unwrapLongitude(coord[0], lng), y];
+    if (!Number.isFinite(x) || !Number.isFinite(y)) return null;
+    return [normalizeLongitude(x), y];
   }).filter(Boolean);
-  if (points.length < 3) return false;
+  if (rawPoints.length < 3) return false;
+
+  // Choose the ring's own minimum-width longitude frame. Unwrapping every
+  // vertex relative to the query point makes a narrow dateline polygon look
+  // almost world-wide when the query is near Greenwich.
+  const interval = minimalLongitudeInterval(rawPoints.map(coord => coord[0]));
+  const reference = (interval.west + interval.east) / 2;
+  const testLng = unwrapLongitude(lng, reference);
+  const points = rawPoints.map(([x, y]) => [unwrapLongitude(x, reference), y]);
+
   let inside = false;
   for (let i = 0, j = points.length - 1; i < points.length; j = i++) {
     const [xi, yi] = points[i];
     const [xj, yj] = points[j];
     const intersects = ((yi > lat) !== (yj > lat))
-      && (lng < (xj - xi) * (lat - yi) / ((yj - yi) || Number.EPSILON) + xi);
+      && (testLng < (xj - xi) * (lat - yi) / ((yj - yi) || Number.EPSILON) + xi);
     if (intersects) inside = !inside;
   }
   return inside;
