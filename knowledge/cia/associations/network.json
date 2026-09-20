@@ -2,10 +2,16 @@
   "id": "cia-association-network-2024-2026",
   "title": "CIA Associations — Co-presence & Relationship Network",
   "version": "2.0.0",
-  "updated": "2026-09-20",
-  "scope": "20 deep-dossier characters",
+  "updated": "2026-09-21",
+  "scope": "35 canonical dossiers; recent associations prioritized",
   "rule": "An association records a sourced relation such as co-presence, direct interaction, explicit relationship language or project-symbolic linkage. Co-presence alone does not prove friendship, alliance, motive, conflict or wrongdoing.",
   "notable_associations": [
+    {
+      "a": "matthew-mtclassic",
+      "b": "mediomu007",
+      "status": "documentary-2026",
+      "summary": "20 September 2026 public chat places both in the same ordinary-life scene: Matthew's controller/Elden Ring progress and Mediomu's room rearrangement/cleaning."
+    },
     {
       "a": "marty-biz",
       "b": "sammy",
@@ -61,6 +67,19 @@
     "project_symbolic": "A literary or Potatoverse role connects characters; never silently convert this to biography."
   },
   "associations": [
+    {
+      "a": "matthew-mtclassic",
+      "b": "mediomu007",
+      "count": 1,
+      "dates": [
+        "2026-09-20"
+      ],
+      "contexts": [
+        "A Controller, a Clean Room and a Dragon"
+      ],
+      "association_type": "documentary co-presence / public chat",
+      "source": "story-content/2026-09-20-matthew-mediomu.html"
+    },
     {
       "a": "marty-biz",
       "b": "port-monkey",
