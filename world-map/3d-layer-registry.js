@@ -1,3 +1,7 @@
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('analytical-layers', ['layers','lens','lensOption']);
+
 // Registry-driven analytical state for the World Map.
 // Canonical values stay in their source files; this module owns only presentation
 // metadata and the user's active analytical layer set.
@@ -28,13 +32,11 @@ function validAvailable(id) {
 }
 
 function persist() {
-  const url = new URL(location.href);
   const ids = [...activeIds].filter(validAvailable).sort();
-  if (ids.length) url.searchParams.set(ACTIVE_PARAM, ids.join(','));
-  else url.searchParams.delete(ACTIVE_PARAM);
-  url.searchParams.delete('lens');
-  url.searchParams.delete('lensOption');
-  history.replaceState({}, '', url);
+  urlState.patch('analytical-layers', {
+    set:{ [ACTIVE_PARAM]:ids.length ? ids.join(',') : null },
+    remove:['lens','lensOption'],
+  });
 }
 
 function emit(reason = 'change') {
