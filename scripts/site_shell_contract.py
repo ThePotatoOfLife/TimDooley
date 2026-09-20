@@ -225,12 +225,12 @@ def main() -> int:
         require(chronology, ('name="robots" content="noindex,follow"', "../timeline/"), "chronology/index.html", errors)
 
         world_map = read("world-map/index.html", errors)
-        require(world_map, ("World Map", 'id="map"', 'id="compare"', 'id="relationType"', 'id="traceDepth"', 'id="timeMode"', 'src="./3d-bootstrap.js"', 'href="../world/"', 'href="../politics/"', 'href="../north/"', 'href="../world-systems/"'), "world-map/index.html", errors)
+        require(world_map, ("World Map", 'id="map"', 'id="compare"', 'id="relationType"', 'id="traceDepth"', 'id="timeMode"', 'src="./3d-bootstrap.js', 'href="../world/"', 'href="../politics/"', 'href="../north/"', 'href="../world-systems/"'), "world-map/index.html", errors)
         forbid(world_map, ('href="../explore/#branch=world">World systems</a>',), "world-map/index.html", errors)
 
         legacy_map = read("world-map/3d.html", errors)
         require(legacy_map, ('name="robots" content="noindex,follow"', 'href="./"'), "world-map/3d.html", errors)
-        forbid(legacy_map, ('id="map"', 'src="./3d-bootstrap.js"'), "world-map/3d.html", errors)
+        forbid(legacy_map, ('id="map"', 'src="./3d-bootstrap.js'), "world-map/3d.html", errors)
 
         machine_path = SITE / "machine-index.json"
         if machine_path.exists():
