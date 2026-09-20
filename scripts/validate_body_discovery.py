@@ -78,6 +78,10 @@ def main():
     if "(?:data|knowledge)" not in app or "registrySearch" not in app:
         fail("Explore does not expose knowledge-root record search")
 
+    journey=(ROOT/"app/house-journey.js").read_text(encoding="utf-8")
+    if "installRoomKnowledge" not in journey or "data/house/holdings.json" not in journey:
+        fail("nested Room runtime does not expose live holdings/current routes")
+
     build=(ROOT/"scripts/build_discovery.py").read_text(encoding="utf-8")
     for needle in ("def core_records()","def body_objects()","record-discovery-index.json","body-discovery-index.json"):
         if needle not in build: fail(f"discovery builder missing {needle}")
