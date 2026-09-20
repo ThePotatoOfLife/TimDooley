@@ -1,5 +1,5 @@
 {
-  "version": "1.9.0",
+  "version": "2.0.0",
   "updated": "2026-09-20",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
@@ -2497,6 +2497,231 @@
       "status_note": "A coordination programme may connect many Rooms but never becomes the factual owner of their subject matter.",
       "evidence_note": "Use ownership registries, health audits, validators and concrete before/after route or duplication findings rather than generic cleanup claims.",
       "maturity": "described"
+    },
+    {
+      "id": "state-cia",
+      "label": "U.S. CIA — Central Intelligence Agency",
+      "kind": "state-intelligence-interface",
+      "room_ids": [
+        "politics-governance",
+        "law-justice",
+        "provenance-evidence"
+      ],
+      "route": "/shadow-farm/#intelligence-desk",
+      "summary": "U.S. foreign-intelligence institution modeled as a real state interface for foreign intelligence collection, all-source analysis, covert action under presidential direction, oversight and public/declassified records.",
+      "status_note": "A real U.S. government agency; placement in Below reflects restricted-information/intelligence work, not a presumption of corruption, criminality or project alignment.",
+      "evidence_note": "Separate public institutional mandate, declassified record, oversight finding, allegation, historical operation and project interpretation.",
+      "maturity": "faceted",
+      "facets": {
+        "identity": {
+          "scope": "U.S. foreign-intelligence agency established in 1947",
+          "boundary": "Institutional identity does not establish the truth of any specific intelligence claim or allegation."
+        },
+        "sources": [
+          {
+            "source_ref": "https://www.cia.gov/about/",
+            "role": "official mission and institutional description",
+            "evidence_class": "official source"
+          },
+          {
+            "source_ref": "https://www.cia.gov/about/organization/",
+            "role": "current organization and oversight offices",
+            "evidence_class": "official source"
+          },
+          {
+            "source_ref": "data/security-intelligence-organizations.json",
+            "role": "project institutional registry",
+            "evidence_class": "project structured data"
+          },
+          {
+            "source_ref": "data/intelligence-security-graph.json",
+            "role": "country/institution relationship layer",
+            "evidence_class": "project structured data"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "institution-of",
+            "target_id_or_label": "United States",
+            "direction": "outgoing",
+            "status": "institutional",
+            "boundary": "Agency mandate is defined under U.S. law and executive authority."
+          },
+          {
+            "type": "oversight",
+            "target_id_or_label": "Executive branch / Congress / CIA Inspector General",
+            "direction": "incoming",
+            "status": "institutional",
+            "boundary": "Oversight mechanisms and specific findings must be sourced separately."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "intelligence",
+            "input": "foreign-source information and collection",
+            "mechanism": "collection → analysis → dissemination / authorized action",
+            "output": "national-security intelligence and policy support",
+            "measurement_or_limit": "Public descriptions do not reveal classified operational detail."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which public, declassified or oversight records are relevant to a specific project claim?",
+            "why_it_matters": "Prevents generic CIA references from becoming unsupported explanations.",
+            "needed_evidence": "declassified records, statutes, oversight reports, official releases"
+          }
+        ]
+      }
+    },
+    {
+      "id": "institution-federal-reserve",
+      "label": "Federal Reserve System",
+      "kind": "central-bank-system",
+      "room_ids": [
+        "economy-finance",
+        "politics-governance",
+        "infrastructure-capability"
+      ],
+      "route": "/economy/",
+      "summary": "The U.S. central-bank system, represented as a material monetary/financial node for monetary policy, financial stability, bank supervision, payment and settlement infrastructure, and dollar-system obligations.",
+      "status_note": "A real U.S. institution. Project metaphors about printers, spiritual banking or karmic debt remain separate from the Federal Reserve's legal and economic functions.",
+      "evidence_note": "Connect Fed observations to dated FOMC/Board releases, balance-sheet or payment-system data and legal authority; do not infer ownership of government debt from monetary-policy involvement.",
+      "maturity": "faceted",
+      "facets": {
+        "identity": {
+          "scope": "central bank of the United States",
+          "boundary": "The Federal Reserve System, Board of Governors, Reserve Banks and FOMC have distinct roles and should not be collapsed into one actor for every relation."
+        },
+        "sources": [
+          {
+            "source_ref": "https://www.federalreserve.gov/",
+            "role": "official current institution",
+            "evidence_class": "official source"
+          },
+          {
+            "source_ref": "https://www.federalreserve.gov/aboutthefed/files/pf_complete.pdf",
+            "role": "official functions overview",
+            "evidence_class": "official source"
+          },
+          {
+            "source_ref": "knowledge/economics/stock-flow-obligation-network-atlas.json",
+            "role": "project obligation/stock-flow model",
+            "evidence_class": "project research"
+          },
+          {
+            "source_ref": "knowledge/economics/north-obligation-graph-schema.json",
+            "role": "typed obligation edge schema",
+            "evidence_class": "project schema"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "monetary-authority-of",
+            "target_id_or_label": "United States / U.S. dollar system",
+            "direction": "outgoing",
+            "status": "institutional",
+            "boundary": "Monetary authority is not ownership of all dollar-denominated assets or liabilities."
+          },
+          {
+            "type": "payment-infrastructure",
+            "target_id_or_label": "banks / U.S. Treasury / payment and settlement systems",
+            "direction": "bidirectional",
+            "status": "institutional",
+            "boundary": "Specific services and legal relationships must be modeled separately."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "monetary-financial",
+            "input": "economic conditions / bank reserves / financial-market information",
+            "mechanism": "policy, supervision, liquidity and payment-system operations",
+            "output": "interest-rate/balance-sheet conditions, financial-system and payment-system effects",
+            "measurement_or_limit": "Policy transmission is distributed and should not be modeled as a single deterministic command edge."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Who owes what to whom across Treasuries, reserves, deposits and Fed balance-sheet positions?",
+            "why_it_matters": "Turns vague 'Fed/debt' language into typed counterparties and instruments.",
+            "needed_evidence": "Treasury/Fed balance sheets, security-holder data, instrument and maturity records"
+          }
+        ]
+      }
+    },
+    {
+      "id": "institution-ecb",
+      "label": "European Central Bank / Eurosystem",
+      "kind": "central-bank-system",
+      "room_ids": [
+        "economy-finance",
+        "politics-governance",
+        "infrastructure-capability"
+      ],
+      "route": "/economy/",
+      "summary": "Euro-area monetary authority represented as a material node for euro monetary policy, foreign reserves, payment systems, banking supervision, financial stability and relations with national central banks.",
+      "status_note": "The ECB and the Eurosystem are related but not identical: the Eurosystem comprises the ECB plus the national central banks of euro-area countries.",
+      "evidence_note": "Attach monetary-policy, payments, supervision and balance-sheet claims to ECB/Eurosystem sources and distinguish euro-area authority from the wider EU.",
+      "maturity": "faceted",
+      "facets": {
+        "identity": {
+          "scope": "ECB as euro-area central bank within the Eurosystem",
+          "boundary": "Euro area, European Union, ECB, Eurosystem and ESCB are overlapping but distinct institutional scopes."
+        },
+        "sources": [
+          {
+            "source_ref": "https://www.ecb.europa.eu/ecb/orga/tasks/html/index.en.html",
+            "role": "official tasks",
+            "evidence_class": "official source"
+          },
+          {
+            "source_ref": "https://www.ecb.europa.eu/ecb/orga/escb/ecb-mission/html/index.en.html",
+            "role": "official mission and supervision role",
+            "evidence_class": "official source"
+          },
+          {
+            "source_ref": "data/european-system-observations-2026-09.json",
+            "role": "project European observations",
+            "evidence_class": "project structured data"
+          },
+          {
+            "source_ref": "knowledge/economics/north-obligation-graph-schema.json",
+            "role": "typed obligation edge schema",
+            "evidence_class": "project schema"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "monetary-authority-of",
+            "target_id_or_label": "Euro area / euro",
+            "direction": "outgoing",
+            "status": "institutional",
+            "boundary": "The ECB does not constitute the whole EU institutional system."
+          },
+          {
+            "type": "system-member-relation",
+            "target_id_or_label": "euro-area national central banks / Eurosystem",
+            "direction": "bidirectional",
+            "status": "institutional",
+            "boundary": "Operational and balance-sheet roles may sit at ECB or national-central-bank level."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "monetary-financial",
+            "input": "euro-area economic/financial conditions",
+            "mechanism": "monetary policy, foreign-reserve operations, payment systems, supervision and macroprudential work",
+            "output": "euro-area monetary and financial-system effects",
+            "measurement_or_limit": "The exact channel depends on instrument, national banking systems and market transmission."
+          }
+        ],
+        "questions": [
+          {
+            "question": "How do ECB/Eurosystem balance sheets, sovereign debt, bank funding and TARGET services connect countries and institutions?",
+            "why_it_matters": "Makes the European obligation graph concrete rather than treating the euro as one undifferentiated node.",
+            "needed_evidence": "ECB/NCB accounts, securities holdings, TARGET and banking-sector data"
+          }
+        ]
+      }
     }
   ],
   "source_records": [
