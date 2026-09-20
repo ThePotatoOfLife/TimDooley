@@ -16,8 +16,8 @@ const SOURCE_ID = 'project-mud-below-us';
 const POINT_LAYER = 'project-mud-below-points';
 const LABEL_LAYER = 'project-mud-below-labels';
 const HIT_LAYER = 'project-mud-below-hit';
-const interaction = window.__potatoAtlasInteraction;
-const inspector = window.__potatoAtlasInspector;
+function interactionRouter() { return window.__potatoAtlasInteraction; }
+function inspectorRouter() { return window.__potatoAtlasInspector; }
 
 let enabled = false;
 let loaded = false;
@@ -55,13 +55,13 @@ function renderSubdivisionCasesPanel(id) {
   window.__potatoAtlasPanelLifecycle?.publish?.();
 }
 function openSubdivisionCases(id) {
-  if (!inspector?.open) { renderSubdivisionCasesPanel(id); return true; }
-  const current = inspector.current?.();
+  if (!inspectorRouter()?.open) { renderSubdivisionCasesPanel(id); return true; }
+  const current = inspectorRouter()?.current?.();
   if (current?.type !== 'subdivision' || current.id !== id) {
     renderSubdivisionCasesPanel(id);
     return true;
   }
-  inspector.open({
+  inspectorRouter()?.open({
     type:'evidence',
     id:`mud-below-us:${id}`,
     owner:'mud-below-us',
@@ -133,17 +133,17 @@ function renderCasePanel(feature) {
 
 function renderCase(feature) {
   const p = feature?.properties || {};
-  if (!inspector?.open) { renderCasePanel(feature); return true; }
-  let current = inspector.current?.();
+  if (!inspectorRouter()?.open) { renderCasePanel(feature); return true; }
+  let current = inspectorRouter()?.current?.();
   if (!current) {
-    inspector.setBaseline({
+    inspectorRouter()?.setBaseline({
       type:'country', id:'USA', owner:'country-selection',
       restore:() => window.goCountry?.('USA'),
     });
-    current = inspector.current?.();
+    current = inspectorRouter()?.current?.();
   }
   const id = String(feature?.id ?? p.id ?? p.label ?? 'mud-below-case');
-  inspector.open({
+  inspectorRouter()?.open({
     type:'project-case',
     id,
     owner:'mud-below-us',
@@ -204,8 +204,8 @@ function installLayers() {
       paint:{'circle-radius':['interpolate',['linear'],['zoom'],3.2,10,8,15],'circle-opacity':0.001}
     });
   }
-  if (interaction?.register) {
-    interaction.register('project-mud-below-us', {
+  if (interactionRouter()?.register) {
+    interactionRouter()?.register('project-mud-below-us', {
       layers:[HIT_LAYER],
       objectType:'project-symbolic-case',
       clickPriority:84,
