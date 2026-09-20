@@ -67,8 +67,8 @@ def main() -> int:
             "__potatoAtlasUILayout", "right-inspector", "left-status", "canvas-control",
             "register", "unregister", "setVisible", "getState", "refresh", "scheduleRefresh",
             "upsertRegistration", "uiLayoutRefreshes", "atlasUILeftStatus",
-            "atlasWorldContext", "atlasTimeState", "atlasLensLegend", "axisFieldLegend", "axisOperatorHud", "axisDepthNavigator", "axisCompactToggle",
-            "main-inspector", "world-context", "time-state", "lens-legend", "axis-field-legend", "axis-operator-hud", "axis-compact",
+            "atlasWorldContext", "atlasTimeState", "axisFieldLegend", "axisOperatorHud", "axisDepthNavigator", "axisCompactToggle",
+            "main-inspector", "world-context", "time-state", "axis-field-legend", "axis-operator-hud", "axis-compact",
             "atlas-axis-inspector-nav", "@media(max-width:900px)",
         ):
             if token not in text:
