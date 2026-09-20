@@ -1,6 +1,6 @@
 {
-  "version": "1.2.0",
-  "updated": "2026-09-19",
+  "version": "1.1.0",
+  "updated": "2026-09-20",
   "authority": "house-orientation-population",
   "purpose": "Populate the three-plane cardinal House from existing governed Rooms and holdings, then add a small curated landmark layer for religious, mythic and project-symbolic wayfinding.",
   "source_registries": [
@@ -2124,5 +2124,6 @@
     ],
     "comparative_default": "room-detail",
     "authority": "data/house/project-center.json"
-  }
+  },
+  "structural_census": "data/house/structural-census.json"
 }
