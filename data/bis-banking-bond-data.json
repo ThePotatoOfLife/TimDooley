@@ -1,0 +1,374 @@
+{
+  "id": "bis-banking-bond-data",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "status": "active-foundation",
+  "purpose": "Normalized Bank for International Settlements foundation for international banking positions and debt securities. Keeps residence, nationality, issuer, counterparty, currency, sector, maturity, valuation and market dimensions explicit so banking claims and bond obligations can later become directed World Map relations.",
+  "source_boundary": "BIS statistics describe financial positions and securities. They do not establish political control, sovereignty, Axis membership or ultimate beneficial ownership unless the underlying dataset explicitly identifies it.",
+  "release_metadata": {
+    "lbs": {
+      "label": "Locational banking statistics",
+      "latest_reference_period": "2026-Q1",
+      "last_release_date": "2026-09-14",
+      "next_release_date": "2026-10-30",
+      "frequency": "quarterly",
+      "unit": "US dollar",
+      "source_id": "bis-lbs"
+    },
+    "cbs": {
+      "label": "Consolidated banking statistics",
+      "latest_reference_period": "2026-Q1",
+      "last_release_date": "2026-09-14",
+      "next_release_date": "2026-10-30",
+      "frequency": "quarterly",
+      "unit": "US dollar",
+      "source_id": "bis-cbs"
+    },
+    "dss": {
+      "label": "Debt securities statistics",
+      "latest_reference_period": "2026-Q1",
+      "last_release_date": "2026-09-14",
+      "next_release_date": "2026-12-07",
+      "frequency": "quarterly/annual",
+      "source_id": "bis-dss"
+    },
+    "ids": {
+      "label": "International debt securities (BIS-compiled)",
+      "latest_reference_period": "2026-Q2",
+      "last_release_date": "2026-09-14",
+      "next_release_date": "2026-12-07",
+      "frequency": "quarterly",
+      "unit": "US dollar",
+      "source_id": "bis-ids"
+    }
+  },
+  "dataset_semantics": {
+    "lbs": {
+      "basis": "residence of banking office",
+      "consolidation": "unconsolidated; includes intragroup positions",
+      "coverage_note": "Captures around 95% of global cross-border banking activity according to BIS.",
+      "primary_questions": [
+        "Where is the banking position booked?",
+        "Which country or sector is the counterparty resident in?",
+        "Is the position a claim or liability?",
+        "What instrument and currency is involved?",
+        "What is the exchange-rate- and break-adjusted quarterly change?"
+      ],
+      "map_role": "Directed cross-border bank claim/liability edges by reporting location and counterparty residence."
+    },
+    "cbs": {
+      "basis": "nationality of banking group parent",
+      "consolidation": "consolidated worldwide group; intragroup positions excluded",
+      "benchmark_measure": "foreign claims",
+      "counterparty_bases": [
+        "immediate counterparty",
+        "guarantor/ultimate-risk basis"
+      ],
+      "primary_questions": [
+        "Which national banking groups carry the exposure?",
+        "Which counterparty country bears the immediate exposure?",
+        "How does exposure change after guarantees or risk transfers?",
+        "What sector and remaining maturity make up the foreign claim?",
+        "What derivatives, guarantees and credit commitments sit outside claims?"
+      ],
+      "map_role": "Country-risk exposure from banking-group nationality to counterparty country."
+    },
+    "dss": {
+      "basis": "issuer residence; national source data",
+      "market_scope": [
+        "domestic market",
+        "international market",
+        "total"
+      ],
+      "valuation_note": "Valuation can differ across countries; retain market/nominal/face-value metadata and never aggregate incompatible valuations without harmonisation.",
+      "instruments": [
+        "treasury bills",
+        "commercial paper",
+        "negotiable certificates of deposit",
+        "bonds",
+        "debentures",
+        "asset-backed securities"
+      ],
+      "primary_questions": [
+        "How much tradable debt is outstanding?",
+        "Which issuer sector issued it?",
+        "Is it domestic or international market debt?",
+        "What currency, maturity and interest-rate structure does it have?",
+        "Where available, which holder sector holds it?"
+      ],
+      "map_role": "Country/sector bond-market stocks and comparable maturity/currency overlays."
+    },
+    "ids": {
+      "basis": "issuer residence and issuer nationality/parent",
+      "market_scope": "securities issued outside the local market of the issuer's residence",
+      "valuation": "face value",
+      "compiled_from": "security-by-security commercial-source database aggregated by BIS",
+      "holder_limitation": "IDS does not identify holders of outstanding securities.",
+      "dimensions": [
+        "issuer residence",
+        "issuer nationality",
+        "immediate issuer sector",
+        "ultimate issuer sector",
+        "currency",
+        "original maturity",
+        "remaining maturity",
+        "interest-rate type",
+        "issue market"
+      ],
+      "map_role": "International bond issuance/exposure characteristics. It can identify the debtor/issuer and instrument structure, not the creditor/holder."
+    }
+  },
+  "observation_schema": {
+    "required": [
+      "observation_id",
+      "dataset",
+      "measure",
+      "value",
+      "unit",
+      "reference_period",
+      "source_id",
+      "evidence_status"
+    ],
+    "banking_dimensions": [
+      "reporting_country",
+      "parent_country",
+      "counterparty_country",
+      "counterparty_sector",
+      "position",
+      "instrument",
+      "currency",
+      "position_type",
+      "counterparty_basis",
+      "maturity"
+    ],
+    "securities_dimensions": [
+      "issuer_residence",
+      "issuer_nationality",
+      "issuer_sector",
+      "ultimate_issuer_sector",
+      "market",
+      "currency",
+      "original_maturity",
+      "remaining_maturity",
+      "rate_type",
+      "valuation_basis",
+      "holder_sector"
+    ],
+    "rule": "Absent dimensions remain null/unknown. A value is not promoted into a bilateral map edge unless reporting/issuer side, counterparty/holder side, direction, period, unit and semantic basis are explicit."
+  },
+  "latest_global_observations": [
+    {
+      "observation_id": "bis-lbs-cross-border-claims-2026q1",
+      "dataset": "LBS",
+      "measure": "cross_border_total_claims",
+      "value": 47621.926,
+      "unit": "USD billion",
+      "reference_period": "2026-Q1",
+      "source_id": "bis-lbs-a6-2",
+      "evidence_status": "sourced",
+      "notes": "All reporting banking offices, all sectors, all instruments. Residence basis; unconsolidated and including intragroup positions."
+    },
+    {
+      "observation_id": "bis-lbs-cross-border-liabilities-2026q1",
+      "dataset": "LBS",
+      "measure": "cross_border_total_liabilities",
+      "value": 42006.222,
+      "unit": "USD billion",
+      "reference_period": "2026-Q1",
+      "source_id": "bis-lbs-a6-2",
+      "evidence_status": "sourced",
+      "notes": "All reporting banking offices, all sectors, all instruments. This is a banking liability aggregate, not sovereign external debt."
+    },
+    {
+      "observation_id": "bis-lbs-cross-border-bank-credit-2026q1",
+      "dataset": "LBS",
+      "measure": "cross_border_bank_credit",
+      "value": 39.5,
+      "unit": "USD trillion",
+      "reference_period": "2026-Q1",
+      "source_id": "bis-ibs-commentary-2026q1",
+      "evidence_status": "sourced_rounded",
+      "notes": "BIS commentary reports outstanding cross-border bank credit of $39.5 trillion at end-Q1 2026. It rose by $1.7 trillion during the quarter."
+    },
+    {
+      "observation_id": "bis-cbs-foreign-claims-2026q1",
+      "dataset": "CBS",
+      "measure": "foreign_claims_immediate_counterparty",
+      "value": 43383,
+      "unit": "USD billion",
+      "reference_period": "2026-Q1",
+      "source_id": "bis-cbs-b2",
+      "evidence_status": "sourced",
+      "notes": "All bank nationalities. Nationality/consolidated basis; foreign claims are the BIS benchmark CBS measure."
+    },
+    {
+      "observation_id": "bis-cbs-international-claims-2026q1",
+      "dataset": "CBS",
+      "measure": "international_claims",
+      "value": 27415.6,
+      "unit": "USD billion",
+      "reference_period": "2026-Q1",
+      "source_id": "bis-cbs-b2",
+      "evidence_status": "sourced"
+    },
+    {
+      "observation_id": "bis-cbs-short-international-claims-2026q1",
+      "dataset": "CBS",
+      "measure": "international_claims_remaining_maturity_le_1y",
+      "value": 12444.9,
+      "unit": "USD billion",
+      "reference_period": "2026-Q1",
+      "source_id": "bis-cbs-b2",
+      "evidence_status": "sourced",
+      "maturity": "up to and including one year"
+    },
+    {
+      "observation_id": "bis-ids-outstanding-2026q2",
+      "dataset": "IDS",
+      "measure": "international_debt_securities_amount_outstanding",
+      "value": 35096.3,
+      "unit": "USD billion",
+      "reference_period": "2026-Q2",
+      "source_id": "bis-ids-c3",
+      "evidence_status": "sourced",
+      "valuation_basis": "face value"
+    },
+    {
+      "observation_id": "bis-ids-short-remaining-2026q2",
+      "dataset": "IDS",
+      "measure": "international_debt_securities_remaining_maturity_le_1y",
+      "value": 4699.1,
+      "unit": "USD billion",
+      "reference_period": "2026-Q2",
+      "source_id": "bis-ids-c3",
+      "evidence_status": "sourced",
+      "valuation_basis": "face value",
+      "remaining_maturity": "up to and including one year"
+    }
+  ],
+  "ingestion_contract": {
+    "preferred_format": "BIS flat CSV bulk files",
+    "raw_sources": [
+      {
+        "dataset": "LBS",
+        "url": "https://data.bis.org/static/bulk/WS_LBS_D_PUB_csv_flat.zip"
+      },
+      {
+        "dataset": "CBS",
+        "url": "https://data.bis.org/static/bulk/WS_CBS_PUB_csv_flat.zip"
+      },
+      {
+        "dataset": "DSS",
+        "url": "https://data.bis.org/static/bulk/WS_NA_SEC_DSS_csv_flat.zip"
+      },
+      {
+        "dataset": "IDS",
+        "url": "https://data.bis.org/static/bulk/WS_DEBT_SEC2_PUB_csv_flat.zip"
+      }
+    ],
+    "normalization_targets": [
+      "preserve BIS series key",
+      "preserve source dataset and vintage",
+      "map BIS country codes to canonical ISO3 only through an explicit crosswalk",
+      "keep residence and nationality separate",
+      "keep immediate-counterparty and guarantor bases separate",
+      "keep claims and liabilities separate",
+      "keep stock and adjusted-change measures separate",
+      "keep domestic and international securities markets separate",
+      "keep valuation basis explicit",
+      "never infer holders from IDS"
+    ],
+    "dedup_key": [
+      "dataset",
+      "bis_series_key",
+      "reference_period",
+      "measure"
+    ]
+  },
+  "north_axis_query_plan": {
+    "axis_source": "data/world-axis-fields.json",
+    "boundary": "These are empirical BIS facts filtered through a project-defined country set. The filter does not alter legal ownership, debtor/creditor status or political authority.",
+    "queries": [
+      "Cross-border claims of banking offices located in North jurisdictions on residents inside versus outside North.",
+      "Cross-border liabilities of North residents to banking offices inside versus outside North.",
+      "Foreign claims of banking groups headquartered in North jurisdictions by counterparty country and sector.",
+      "Risk-transfer differences between immediate-counterparty and guarantor basis for North banking groups.",
+      "Total, domestic and international debt securities of North issuers by government, bank and corporate sector.",
+      "North international bond issuance by EUR, USD, DKK, NOK, SEK, GBP, CAD and other currencies.",
+      "North maturity wall: securities with remaining maturity up to one year versus longer maturities.",
+      "Distinguish issuer-side bond exposure from actual holder-side creditor data; IDS alone cannot answer who owns the bond."
+    ]
+  },
+  "map_projection_rules": [
+    "LBS bilateral edges render from reporting banking location to counterparty residence, with claim/liability direction labeled.",
+    "CBS edges render from banking-group parent nationality to counterparty country and must state immediate-counterparty or guarantor basis.",
+    "DSS normally renders as issuer-country/sector scalar or category layers; holder edges only where the relevant holdings table identifies a holder sector.",
+    "IDS renders issuer-side international bond structure and never fabricates a holder endpoint.",
+    "Flows use adjusted changes only when the BIS measure explicitly reports/derives an adjusted change; stocks are not animated as flows.",
+    "Do not combine LBS and CBS values as if they were additive because the consolidation and geography bases differ."
+  ],
+  "source_layers": [
+    {
+      "id": "bis-lbs",
+      "publisher": "Bank for International Settlements",
+      "title": "Locational banking statistics overview",
+      "url": "https://data.bis.org/topics/LBS"
+    },
+    {
+      "id": "bis-lbs-a6-2",
+      "publisher": "Bank for International Settlements",
+      "title": "LBS A6.2 — cross-border positions by counterparty country and reporting-bank location",
+      "url": "https://data.bis.org/topics/LBS/tables-and-dashboards/BIS%2CLBS_A6_2%2C1.0"
+    },
+    {
+      "id": "bis-cbs",
+      "publisher": "Bank for International Settlements",
+      "title": "Consolidated banking statistics overview",
+      "url": "https://data.bis.org/topics/CBS"
+    },
+    {
+      "id": "bis-cbs-b2",
+      "publisher": "Bank for International Settlements",
+      "title": "CBS B2 — foreign claims, immediate counterparty basis",
+      "url": "https://data.bis.org/topics/CBS/tables-and-dashboards/BIS%2CCBS_B2%2C1.0"
+    },
+    {
+      "id": "bis-dss",
+      "publisher": "Bank for International Settlements",
+      "title": "Debt securities statistics overview",
+      "url": "https://data.bis.org/topics/DSS"
+    },
+    {
+      "id": "bis-ids",
+      "publisher": "Bank for International Settlements",
+      "title": "International debt securities overview",
+      "url": "https://data.bis.org/topics/IDS"
+    },
+    {
+      "id": "bis-ids-c3",
+      "publisher": "Bank for International Settlements",
+      "title": "IDS C3 — international debt securities issues and amounts outstanding",
+      "url": "https://data.bis.org/topics/IDS/tables-and-dashboards/BIS%2CSEC_C3%2C1.0"
+    },
+    {
+      "id": "bis-ibs-commentary-2026q1",
+      "publisher": "Bank for International Settlements",
+      "title": "International banking statistics and global liquidity indicators at end-March 2026",
+      "url": "https://www.bis.org/publications/202607-commentary-ibs-gli"
+    },
+    {
+      "id": "bis-bulk",
+      "publisher": "Bank for International Settlements",
+      "title": "BIS Data Portal bulk downloads",
+      "url": "https://data.bis.org/bulkdownload"
+    }
+  ],
+  "next_build": [
+    "Create a BIS-code-to-ISO3 crosswalk and test it against North jurisdictions before importing bilateral data.",
+    "Materialize selected LBS bilateral series for North jurisdictions instead of vendoring the entire global raw archive into the public site.",
+    "Materialize CBS B4 country-risk edges for immediate and guarantor bases.",
+    "Materialize DSS central/general-government securities by currency, maturity and valuation for comparable countries.",
+    "Materialize IDS country/sector/currency/maturity aggregates for North and major global issuers.",
+    "Add a small versioned generated runtime for the map and keep raw full BIS bulk files out of the browser bundle."
+  ]
+}
