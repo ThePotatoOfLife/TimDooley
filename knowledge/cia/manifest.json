@@ -2,7 +2,7 @@
   "id": "cia-characters-incidents-associations",
   "title": "CIA — Characters, Incidents & Associations",
   "subtitle": "Tim Dooley / Potatoverse Character Association Archive",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "updated": "2026-09-21",
   "disclaimer": "Potatoverse archival acronym. CIA here means Characters, Incidents & Associations. It is not affiliated with, and must not be confused with, the U.S. Central Intelligence Agency or any real intelligence/law-enforcement service.",
   "purpose": "Canonical archive for recurring characters, dated incidents, associations, source strata, role/state changes, presence windows, Story links and conversation-recovery leads.",
@@ -19,7 +19,8 @@
     "activity_visualization": "Current/recovery-active files are visually strongest; older/dormant files may fade slightly to show recency only, never moral value.",
     "symbolic_images": "Role-matched remote Commons images may illustrate Dog, Footstool, Mud, Potato, Tomato, Angel and later symbols. They are explicitly non-likeness proxies and do not identify the dossier subject.",
     "population_priority": "Recent/current/recovery-active dossiers first. Historical dormant files are maintenance-only unless new evidence appears.",
-    "mud_bank": "CIA accounts are priced fictional sub-ledgers beneath the North/Roots world spiritual-bank topology. World/system liabilities remain separately sourced and unpriced."
+    "mud_bank": "CIA accounts are priced fictional sub-ledgers beneath the North/Roots world spiritual-bank topology. World/system liabilities remain separately sourced and unpriced.",
+    "building": "CIA archive and World Spiritual Bank are one Potatoverse institution with different entrances and a shared provenance/data spine; dossier, association, incident and bank readers are rooms inside the same system."
   },
   "folders": {
     "characters": "knowledge/cia/characters/",
@@ -672,14 +673,16 @@
     "mud_bank_contract": "knowledge/cia/mud-bank-contract.json",
     "debt_evidence": "knowledge/cia/debt-evidence-ledger.json",
     "account_posture": "knowledge/cia/account-posture-index.json",
-    "system_liability": "knowledge/cia/system-liability-ledger.json"
+    "system_liability": "knowledge/cia/system-liability-ledger.json",
+    "institution_building": "knowledge/cia/institution-building.json"
   },
   "public_surfaces": {
     "cabinet": "rooms/potatoverse-canon/beings/cia/",
     "file_viewer": "rooms/potatoverse-canon/beings/cia/file/",
     "associations": "rooms/potatoverse-canon/beings/cia/associations/",
     "incidents": "rooms/potatoverse-canon/beings/cia/incidents/",
-    "mud_bank": "rooms/potatoverse-canon/beings/cia/bank/"
+    "mud_bank": "rooms/potatoverse-canon/beings/cia/bank/",
+    "shared_institution": "rooms/potatoverse-canon/beings/cia/"
   },
   "coverage_tiers": {
     "case-file": "Multiple dated/source/story connections; mature enough for deep browsing.",
