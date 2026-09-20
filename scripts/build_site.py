@@ -430,7 +430,7 @@ def build() -> None:
         raise SystemExit("No HTML pages were built into _site")
     metric_coverage = {key: value.get("coverage", 0) for key, value in build_world_map_runtime.get("metrics", {}).items()}
     coverage_entities = len(build_world_map_coverage.get("entities", {}))
-    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters', []))} context clusters, five-door-aware generated navigation, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, shared asset fingerprints {asset_versions}, World Map metric coverage {metric_coverage}, coverage ledger for {coverage_entities} map entities, and the complete repository knowledge/data tree; substance-first bindings ${substance_bindings}." )
+    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters', []))} context clusters, five-door-aware generated navigation, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, shared asset fingerprints {asset_versions}, World Map metric coverage {metric_coverage}, coverage ledger for {coverage_entities} map entities, and the complete repository knowledge/data tree; substance-first bindings {substance_bindings}." )
 
 
 if __name__ == "__main__":
