@@ -39,6 +39,12 @@ CANONICAL_MARKERS = (
     "So why hasn't everybody heard of Tim Dooley?",
     "100000-hour-public-benchmarks.json",
     "The counter should keep sending you away from the counter.",
+    "766 hours",
+    "848 hours",
+    "211,896 views / 37,635.0 watch-hours",
+    "The point was not always to make something.",
+    "A spiral is only different from a circle if something changes on the next pass.",
+    "livestream-duration-and-100000-hour-threshold.json",
     'site-tts.js',
 )
 LEGACY_MARKERS = (
