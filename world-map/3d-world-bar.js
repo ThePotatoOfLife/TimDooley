@@ -208,6 +208,15 @@
     if (physicalIds.length) lines.push(`<div><span>Physical</span><b>${esc(compactIds(physicalIds))}</b></div>`);
     if (geographyIds.length) lines.push(`<div><span>Geography</span><b>${esc(compactIds(geographyIds))}</b></div>`);
     if (evidenceIds.length) lines.push(`<div><span>Evidence</span><b>${esc(compactIds(evidenceIds))}</b></div>`);
+    const projectionMeta = view?.projection;
+    if (projectionMeta?.informationLoss?.length) {
+      const loss = projectionMeta.informationLoss.slice(0, 2).join(' · ');
+      lines.push(`<div><span>View omits</span><b>${esc(loss)}${projectionMeta.informationLoss.length > 2 ? ` +${projectionMeta.informationLoss.length - 2}` : ''}</b></div>`);
+    }
+    if (projectionMeta?.reconstructability) {
+      const label = projectionMeta.reconstructability === 'source-linked' ? 'Source-linked' : 'Partial';
+      lines.push(`<div><span>Reconstructability</span><b>${esc(label)}</b></div>`);
+    }
     lines.push(`<div><span>Projection</span><b>${projection === 'globe' ? 'Globe' : 'Flat'}</b></div>`);
     if (currentTime) lines.push(`<div><span>Time</span><b>${esc(timeLabel(currentTime))}</b></div>`);
     const markup = `<small>Current map view</small>${lines.join('')}`;

@@ -113,6 +113,14 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. Work pro
 - [ ] Audit mobile occlusion, keyboard access, focus return, color-only semantics and reduced motion.
 - [ ] Add concise accessible active-view summaries.
 
+## ACTIVE — PROJECTION TRANSPARENCY
+
+- [x] Bind live analytical views to the shared Atlas projection contract through `data/world-map-view-projections.json`.
+- [x] Disclose compact information-loss semantics in Current Map context for scalar, set, relation and comparison views.
+- [x] Expose source-linked reconstructability state from Active View rather than implying aggregate views are canonical records.
+- [x] Gate the contract, runtime markers and reader disclosure in the World Map quality group.
+- [ ] Extend the same projection-loss/reconstructability discipline to future derived network/system aggregates as they become reader-facing.
+
 ## NEXT — VERIFICATION + OBSERVABILITY
 
 - [x] Add real behavioral scenario tests for drag/projection/wrap/overlap/inspector transitions.
