@@ -2,7 +2,7 @@
   "id": "cia-characters-incidents-associations",
   "title": "CIA — Characters, Incidents & Associations",
   "subtitle": "Tim Dooley / Potatoverse Character Association Archive",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "updated": "2026-09-20",
   "disclaimer": "Potatoverse archival acronym. CIA here means Characters, Incidents & Associations. It is not affiliated with, and must not be confused with, the U.S. Central Intelligence Agency or any real intelligence/law-enforcement service.",
   "purpose": "Canonical archive for recurring characters, dated incidents, associations, source strata, role/state changes, presence windows, Story links and conversation-recovery leads.",
@@ -557,6 +557,25 @@
       "depth_tier": "case-file"
     },
     {
+      "id": "dim",
+      "name": "DIM / Dim Tooley",
+      "aliases": [
+        "DIM",
+        "Dim Tooley",
+        "@DimTooley43",
+        "Dimmus Maximus"
+      ],
+      "path": "knowledge/cia/characters/dim.json",
+      "room_path": "shadow-farm/dim/",
+      "archive_status": "recovery-active-2026",
+      "chronicle_occurrence_count": 0,
+      "archetypes": [
+        "mirror-foil",
+        "wanderer-threshold"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
       "id": "tachy",
       "name": "Tachy / Krystato",
       "aliases": [
@@ -653,7 +672,7 @@
     "center-file": "Central archive subject; topology only, never a suspicion label."
   },
   "coverage_summary": {
-    "total_characters": 34,
+    "total_characters": 35,
     "center_files": 1,
     "case_files": 21,
     "working_files": 11,
