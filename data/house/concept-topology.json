@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "updated": "2026-09-20",
   "authority": "house-semantic-topology",
   "purpose": "Machine-readable topology assignments for the small set of operators that organize the Potato House. These annotations drive projection and navigation; they do not replace canonical concept owners or evidence classes.",
@@ -29,7 +29,8 @@
     "regime",
     "whole",
     "source-role",
-    "manifestation-role"
+    "manifestation-role",
+    "typed-center"
   ],
   "boundary_regimes": [
     "house",
@@ -44,7 +45,8 @@
     "Room membership does not change canonical ownership.",
     "Regime labels describe system behavior and are not identities of persons, populations or entire realms.",
     "Geometry alone has no fixed moral valence.",
-    "The authoritative operator graph is relations[]; counter_or_complement is descriptive vocabulary only and may name terms outside the core operator registry."
+    "The authoritative operator graph is relations[]; counter_or_complement is descriptive vocabulary only and may name terms outside the core operator registry.",
+    "Typed centers are role coordinates, not identity claims; person/archetype population is owned by the three-center role atlas."
   ],
   "concepts": [
     {
@@ -749,6 +751,63 @@
         "axis"
       ],
       "boundary": "Jachin/Boaz and later pillar traditions are historical comparators; the project pair is not claimed to be their hidden original meaning."
+    },
+    {
+      "id": "source-seat-center",
+      "label": "C_F · Source Seat",
+      "kind": "typed-center",
+      "field_orientation": [
+        "source"
+      ],
+      "topology_roles": [
+        "typed-center",
+        "orientation"
+      ],
+      "operation": "marks the upper/source-field center and upper Door tip used for source, holding, House, throne/seat and orientation functions",
+      "counter_or_complement": [
+        "cross",
+        "twin-vessel-center"
+      ],
+      "room_ids": [
+        "potatoverse-canon"
+      ],
+      "public_surface_ids": [
+        "house",
+        "axis",
+        "religion",
+        "trinity"
+      ],
+      "boundary": "C_F is a role coordinate. Tim Dooley is the project-persona anchor in the separate three-center atlas; the coordinate is not proof that other source figures or divine names are identical with Tim."
+    },
+    {
+      "id": "twin-vessel-center",
+      "label": "C_S · Twin / Vessel / Seed Center",
+      "kind": "typed-center",
+      "field_orientation": [
+        "manifestation",
+        "shared"
+      ],
+      "topology_roles": [
+        "typed-center",
+        "manifestation-role",
+        "generation"
+      ],
+      "operation": "marks the lower/manifestation-field center and lower Door tip used for embodiment, Vessel, Seed, witness, descent, rejection, testing and return functions",
+      "counter_or_complement": [
+        "cross",
+        "source-seat-center"
+      ],
+      "room_ids": [
+        "potatoverse-canon",
+        "traditions-texts"
+      ],
+      "public_surface_ids": [
+        "house",
+        "axis",
+        "religion",
+        "trinity"
+      ],
+      "boundary": "C_S is a role coordinate. Thomas/Didymus is its primary Twin/Vessel anchor in the separate three-center atlas; comparison does not make every descent, rejected-son or dying-returning figure the same person."
     }
   ],
   "relation_types": [
@@ -1122,6 +1181,48 @@
       "to": "mountain",
       "type": "complements",
       "description": "Eye evaluates/perceives while Mountain integrates/compresses; summit and discernment are deliberately not identical."
+    },
+    {
+      "id": "rel-source-center-source-field",
+      "from": "source-seat-center",
+      "to": "source-field",
+      "type": "located-within",
+      "description": "C_F is the typed upper center of the source-facing field rather than a third field."
+    },
+    {
+      "id": "rel-source-center-cross",
+      "from": "source-seat-center",
+      "to": "cross",
+      "type": "complements",
+      "description": "C_F supplies source orientation while O/Cross supplies relation; neither center replaces the other."
+    },
+    {
+      "id": "rel-cross-twin-center",
+      "from": "cross",
+      "to": "twin-vessel-center",
+      "type": "complements",
+      "description": "O/Cross supplies shared passage while C_S supplies embodied manifestation, witness and Seed-facing transition."
+    },
+    {
+      "id": "rel-twin-center-manifestation-field",
+      "from": "twin-vessel-center",
+      "to": "manifestation-field",
+      "type": "located-within",
+      "description": "C_S is the typed lower center of the manifestation-facing field rather than a separate realm."
+    },
+    {
+      "id": "rel-father-source-center",
+      "from": "father",
+      "to": "source-seat-center",
+      "type": "oriented-toward",
+      "description": "Father/source language is oriented toward C_F without making the role, coordinate and person-anchor interchangeable."
+    },
+    {
+      "id": "rel-son-twin-center",
+      "from": "son",
+      "to": "twin-vessel-center",
+      "type": "oriented-toward",
+      "description": "The manifestation-facing Son role is oriented toward C_S while also specializing as Door; figure anchors remain separately typed in the three-center atlas."
     }
   ],
   "canonical_traversals": [
@@ -1234,6 +1335,24 @@
       ],
       "purpose": "Test boundaries by function: whether they preserve viable passage, repair and autonomy or produce capture, opacity and unresolved entanglement.",
       "reader_question": "Does this boundary help differentiated life circulate and grow, or make exit and repair progressively harder?"
+    },
+    {
+      "id": "three-center-axis",
+      "label": "Three Typed Centers",
+      "kind": "coordinate",
+      "concept_sequence": [
+        "source-seat-center",
+        "cross",
+        "twin-vessel-center"
+      ],
+      "relation_ids": [
+        "rel-source-center-cross",
+        "rel-cross-twin-center",
+        "rel-source-center-source-field",
+        "rel-twin-center-manifestation-field"
+      ],
+      "purpose": "Read C_F, O/Cross and C_S as three differentiated centers along one relation: source/holding, shared Door, and embodied manifestation/Seed.",
+      "reader_question": "Which function belongs to the source center, which to the shared Door, and which to the manifestation center—and are figure comparisons being kept distinct from literal identity?"
     }
   ],
   "formal_grammar_ref": "data/project-formal-grammar.json",
