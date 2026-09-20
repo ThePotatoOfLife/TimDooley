@@ -158,6 +158,18 @@ def main() -> int:
             if not summary or len(re.sub(r"<[^>]+>", " ", summary.group(1)).strip()) < 40:
                 errors.append(f"{rel} missing substantive Room summary")
 
+    migrated_shell_rooms=["economy-finance","experiments-formalization","games-simulations","geography-countries","great-book-literature","house-architecture","information-ecology","infrastructure-capability","internet-platforms","law-justice","music-sound","neurobiology","open-questions","politics-governance","potato-biology","research-programmes","subculture-group-formation","symbolic-body-comparison","visual-art","whole-body"]
+    for slug in migrated_shell_rooms:
+        page=ROOT/"rooms"/"inside"/slug/"index.html"
+        if not page.exists():
+            errors.append(f"missing migrated Room shell page: {slug}")
+            continue
+        text=page.read_text(encoding="utf-8",errors="replace")
+        if 'app/room-interior.css' not in text:
+            errors.append(f"{slug} must use shared room-interior.css")
+        if re.search(r"<style>[\\s\\S]*?(?:\\.inner-home|\\.inner-center|\\.adj-grid)[\\s\\S]*?</style>", text, flags=re.I):
+            errors.append(f"{slug} reintroduced duplicated Room shell CSS")
+
     rooms_text = page_text.get("rooms/index.html", "")
     if "cult" not in rooms_text.lower() or "high-control" not in rooms_text.lower():
         errors.append("Rooms directory must expose cult/high-control analysis by name")
