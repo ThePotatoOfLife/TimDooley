@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from house_public_surfaces import primary_gateway_route_map, secondary_global_route_map
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -66,6 +67,15 @@ def main() -> int:
     surfaces = load_json("data/house/public-surfaces.json")
 
     errors: list[str] = []
+
+    derived_doors={k:v.lstrip("/") for k,v in primary_gateway_route_map(ROOT).items()}
+    if bridge.get("route_authority")!="data/house/public-surfaces.json":
+        fail("frontend bridge must declare House public-surfaces as route authority", errors)
+    if bridge.get("public_doors")!=derived_doors:
+        fail(f"frontend bridge public_doors drifted from House authority: {bridge.get('public_doors')!r} != {derived_doors!r}", errors)
+    derived_secondary={k:v.lstrip("/") for k,v in secondary_global_route_map(ROOT).items()}
+    if bridge.get("global_secondary_surfaces")!=derived_secondary:
+        fail(f"frontend bridge global_secondary_surfaces drifted from House authority: {bridge.get('global_secondary_surfaces')!r} != {derived_secondary!r}", errors)
 
     def norm_route(value: str) -> str:
         value = str(value or "").strip()
