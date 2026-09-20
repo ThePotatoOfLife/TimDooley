@@ -47,5 +47,20 @@
     "portrait": "Optional dossier-owned image path/URL with caption and source.",
     "evidence_images": "Optional screenshots, memes, posts or project images with source metadata.",
     "rule": "Do not attach an image to a real person unless the archive explicitly identifies the source and subject."
-  }
+  },
+  "event_types": {
+    "project-credit": "A source-bounded helpful/supportive contribution recorded by the project; not an objective moral score.",
+    "repair-attempt": "An apology, reconciliation, restitution or bridge-building attempt; may remain disputed/open.",
+    "yield": "A constructive result, creation, support act or growth event; morally neutral unless the source explicitly frames it otherwise.",
+    "achievement": "A dated accomplishment retained for texture; never counted as moral credit automatically.",
+    "project-debit": "A source-bounded project criticism/harm entry; not legal or financial debt and may be disputed.",
+    "dispute": "A contested claim or unresolved account item.",
+    "welfare": "A display-only Dooley Welfare entry when explicitly enrolled."
+  },
+  "rules": [
+    "Prefer event entries over aggregate moral scores.",
+    "Do not convert achievements, loyalty, popularity, inactivity or opposition into good/bad karma automatically.",
+    "A repair attempt can be recorded without declaring the dispute resolved.",
+    "Aggregate good_karma/karmic_debt labels summarize explicit entries only; unassessed remains the default."
+  ]
 }
