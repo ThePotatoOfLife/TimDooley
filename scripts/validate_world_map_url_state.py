@@ -29,6 +29,12 @@ MIGRATED=(
     ROOT/"world-map/3d-world-bar.js",
     ROOT/"world-map/3d-symbolic-operators.js",
     ROOT/"world-map/3d-time.js",
+    ROOT/"world-map/3d-app.js",
+    ROOT/"world-map/3d-country-selection.js",
+    ROOT/"world-map/3d-inspector-url.js",
+    ROOT/"world-map/3d-places.js",
+    ROOT/"world-map/3d-subdivisions.js",
+    ROOT/"world-map/3d-map-state.js",
 )
 
 def main()->int:
@@ -57,6 +63,13 @@ def main()->int:
         if "history.replaceState" in text:
             errors.append(f"{path.relative_to(ROOT)} still owns direct history.replaceState after migration")
 
+    for path in sorted((ROOT/"world-map").glob("*.js")):
+        if path == OWNER:
+            continue
+        text=path.read_text(encoding="utf-8",errors="replace")
+        if "history.replaceState" in text:
+            errors.append(f"{path.relative_to(ROOT)} bypasses canonical URL State owner")
+
     node=shutil.which("node")
     if not node: errors.append("node executable unavailable; cannot run URL-state regression")
     else:
@@ -70,7 +83,7 @@ def main()->int:
         print("WORLD MAP URL STATE VALIDATION FAILED")
         for error in errors: print("-",error)
         return 1
-    print("WORLD MAP URL STATE VALIDATION PASSED: migrated domain and specialist writers are centrally owned.")
+    print("WORLD MAP URL STATE VALIDATION PASSED: canonical owner is the only direct runtime history writer.")
     return 0
 
 if __name__=="__main__":
