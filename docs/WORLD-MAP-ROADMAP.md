@@ -112,7 +112,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The curr
 - [ ] Map architecture-auditor finding codes to ledger IDs, owner and severity so CI output becomes an actionable queue instead of a parallel diagnosis.
 - [ ] Add regional-statistics enrichment as an optional sourced layer; keep geometry-first partitions useful when population/area/density remain unknown.
 - [ ] Continue design-token convergence beyond z-index into shared surface/background/border/radius/spacing tokens without flattening semantic distinctions.
-- [ ] Add a common freshness/status vocabulary for data-backed layers so historical, stale, delayed, current and unknown-vintage data read consistently in the UI.
+- [~] Add a common freshness/status vocabulary for data-backed layers. Shared explicit-only freshness semantics now cover Evidence/ADL and Places; expand the same contract to other empirical reader surfaces without conflating provider availability.
 
 
 ## NEXT — RENDER + UI CONVERGENCE
