@@ -46,7 +46,14 @@
         "role": "top-fan UI #2 in supplied YouTube capture; rearranges and cleans room, moves TV/console/bed/desk/nightstand, brief ordinary chat"
       }
     ],
-    "recovered_social_days": []
+    "recovered_social_days": [
+      {
+        "date": "2026-09-20",
+        "title": "A Controller, a Clean Room and a Dragon",
+        "minimum_event": "Public YouTube chat records Mediomu reporting a rearranged and cleaned room while Matthew is present with controller/Elden Ring continuity in the same captured social scene.",
+        "source_mode": "public_chat_transcript"
+      }
+    ]
   },
   "top_co_presence": [],
   "symbolic_roles": [
@@ -80,6 +87,14 @@
     {
       "type": "public_room",
       "path": "rooms/potatoverse-canon/beings/mediomu/"
+    },
+    {
+      "type": "2026_social_ledger",
+      "path": "knowledge/story/mediomu007-social-ledger-2026.json"
+    },
+    {
+      "type": "documentary_story_scene",
+      "path": "story-content/2026-09-20-matthew-mediomu.html#matthew-mediomu-ordinary-day-2026-09-20"
     }
   ],
   "recovery_leads": [
