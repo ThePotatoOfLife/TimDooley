@@ -339,6 +339,7 @@ The House depth programme explicitly says to prefer population, instrumentation,
 - [ ] **CIA-LEDGER-004 · Dooley Welfare enrollment:** define dossier-specific enrollment/rates only where the project explicitly assigns them; the live counter must remain theatrical project UI, not money.
 - [ ] **CIA-LEDGER-005 · Interest and closure rules:** define when symbolic credit/debt can accrue, be repaired, forgiven, disputed, dormant or closed without turning the system into an automatic moral verdict.
 - [x] **CIA-ACTIVITY-001 · Last-seen derivation:** `knowledge/cia/activity-index.json` now covers all 35 canonical dossiers and derives active/recovery/historical/dormant/closed prominence from explicit state plus recovered last-seen dates; opacity remains recency only, never moral value.
+- [x] **CIA-CURRENT-001 · Recent-first Current Desk:** promote active/recovery 2026 dossiers on the CIA landing and add an all/current cabinet toggle; dormant historical files remain searchable but no longer consume equal visual attention.
 - [ ] **CIA-FBI-001 · Legacy disposition:** audit unique files under `knowledge/fbi/`; migrate any still-unique information into CIA, then leave only the smallest compatibility/history layer necessary.
 
 ## Growth compass — current high-value frontiers
