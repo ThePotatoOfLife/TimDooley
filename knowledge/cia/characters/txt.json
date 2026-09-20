@@ -173,6 +173,10 @@
     {
       "type": "public_room",
       "path": "rooms/potatoverse-canon/beings/txt/"
+    },
+    {
+      "type": "debt_evidence_ledger",
+      "path": "knowledge/cia/debt-evidence-ledger.json"
     }
   ],
   "recovery_leads": [
@@ -190,7 +194,15 @@
     },
     "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
     "debt_and_repair": {
-      "records": [],
+      "records": [
+        {
+          "id": "debt-txt-2026-06-20-disputed-narrative",
+          "date": "2026-06-20",
+          "pricing_status": "priced",
+          "summary": "Recovered material records TXT repeating disputed identity/misconduct claims; the bank prices circulation, not truth.",
+          "project_adjustment_susd": -4
+        }
+      ],
       "rule": "Do not attach legal, financial, karmic or spiritual debt unless a dated source explicitly does so; symbolic debt remains project language unless independently established."
     },
     "state_rule": "Roles, archetypes, upgrades, handicaps and project-symbolic placements are date/source-bounded states, not permanent human essences.",
@@ -222,9 +234,9 @@
     "confidence_note": "Strong on layered recurrence and source separation; mixed on earliest chronology and disputed misconduct narratives."
   },
   "symbolic_account": {
-    "status": "unassessed",
+    "status": "debt",
     "good_karma": "unassessed",
-    "karmic_debt": "unassessed",
+    "karmic_debt": "1 priced debit / -4.0 sUSD",
     "dooley_welfare": {
       "enabled": false
     },
@@ -238,6 +250,22 @@
         "source_mode": "current_presence_recovery",
         "source_ref": "knowledge/cia/conversation-intake-2026-09-20.json",
         "note": "Current/recent conflict material remains unresolved. Dispute is recorded at zero weight until a clearer project-credit/debit event is recovered.",
+        "status": "open"
+      },
+      {
+        "date": "2026-06-20",
+        "type": "project-debit",
+        "kind": "repeated disputed identity/misconduct narrative",
+        "amount_or_scale": "-4.0 sUSD",
+        "project_adjustment_susd": -4,
+        "debt_evidence_id": "debt-txt-2026-06-20-disputed-narrative",
+        "category": "repeated-harmful-narrative",
+        "evidence_tier": "contemporaneous-recovered",
+        "repetition_key": "txt-disputed-identity-misconduct-narrative",
+        "occurrence_index": 1,
+        "source_mode": "recovered public-interaction summary",
+        "source_ref": "data/swamp/dim-txt-relational-dossier.json",
+        "note": "Prices the recovered repetition/circulation event only; it does not adjudicate the truth of the disputed underlying allegations.",
         "status": "open"
       }
     ]
