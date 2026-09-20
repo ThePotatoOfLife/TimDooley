@@ -333,12 +333,12 @@ The House depth programme explicitly says to prefer population, instrumentation,
 - [x] **CIA-MEDIA-002 · Shared symbolic proxy pool:** add a remote-only Wikimedia Commons registry for Dog, Footstool, Mud/Soil, Potato, Tomato and Angel symbols; dossiers deterministically borrow up to three role-matched images and label every one **symbolic · not a likeness** with source/license metadata.
 - [ ] **CIA-MEDIA-003 · Recover actual dossier images:** attach sourced screenshots, profile images, memes and project art to dossiers where the subject/source is explicit; prioritize active/recovery-heavy files first.
 - [x] **CIA-DEPTH-001 · Meaning spine contract:** define and render why-this-file-matters, known, interpretive, unknown, relationship-arc and confidence sections.
-- [~] **CIA-DEPTH-002 · Population wave:** 17/35 canonical dossiers now expose the meaning spine. Next priority wave: Highly Regarded, Kale, Juice, duaaaht, Jazzy and GG; machine-readable queue lives at `knowledge/cia/dossier-depth-audit-2026-09-21.json`.
+- [~] **CIA-DEPTH-002 · Population wave:** 23/35 canonical dossiers now expose the meaning spine. Next priority wave: Highly Regarded, Kale, Juice, duaaaht, Jazzy and GG; machine-readable queue lives at `knowledge/cia/dossier-depth-audit-2026-09-21.json`.
 - [x] **CIA-LEDGER-006 · Event-led accounting:** symbolic accounts now prefer dated credit/yield/repair/debit/dispute events over aggregate moral scores; the reader summarizes sourced event counts and leaves absent balances unassessed.
 - [ ] **CIA-LEDGER-003 · Populate real symbolic entries:** mine dated project/conversation records for explicit credit, debt, repair, welfare, promise or outstanding-language and add only source-bounded ledger rows.
 - [ ] **CIA-LEDGER-004 · Dooley Welfare enrollment:** define dossier-specific enrollment/rates only where the project explicitly assigns them; the live counter must remain theatrical project UI, not money.
 - [ ] **CIA-LEDGER-005 · Interest and closure rules:** define when symbolic credit/debt can accrue, be repaired, forgiven, disputed, dormant or closed without turning the system into an automatic moral verdict.
-- [ ] **CIA-ACTIVITY-001 · Last-seen derivation:** derive activity bands from the best recovered last-recorded date where possible instead of relying only on broad archive-status strings.
+- [x] **CIA-ACTIVITY-001 · Last-seen derivation:** `knowledge/cia/activity-index.json` now covers all 35 canonical dossiers and derives active/recovery/historical/dormant/closed prominence from explicit state plus recovered last-seen dates; opacity remains recency only, never moral value.
 - [ ] **CIA-FBI-001 · Legacy disposition:** audit unique files under `knowledge/fbi/`; migrate any still-unique information into CIA, then leave only the smallest compatibility/history layer necessary.
 
 ## Growth compass — current high-value frontiers
