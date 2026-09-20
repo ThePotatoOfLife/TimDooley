@@ -97,6 +97,7 @@ const bootstrap = fs.readFileSync(new URL('../world-map/3d-bootstrap.js', import
 const app = fs.readFileSync(new URL('../world-map/3d-app.js', import.meta.url), 'utf8');
 const handoff = fs.readFileSync(new URL('../world-map/3d-core-interaction-handoff.js', import.meta.url), 'utf8');
 const hover = fs.readFileSync(new URL('../world-map/3d-hover.js', import.meta.url), 'utf8');
+const places = fs.readFileSync(new URL('../world-map/3d-places.js', import.meta.url), 'utf8');
 const countrySelection = fs.readFileSync(new URL('../world-map/3d-country-selection.js', import.meta.url), 'utf8');
 const spatialOverlays = fs.readFileSync(new URL('../world-map/3d-spatial-overlays.js', import.meta.url), 'utf8');
 const gateways = fs.readFileSync(new URL('../world-map/3d-gateways.js', import.meta.url), 'utf8');
@@ -105,9 +106,11 @@ const impactActions = fs.readFileSync(new URL('../world-map/3d-impact-actions.js
 const routerSource = fs.readFileSync(new URL('../world-map/3d-interaction-router.js', import.meta.url), 'utf8');
 
 assert.ok(lifecycle.includes("__potatoAtlasLoadModule?.('Interaction Router', './3d-interaction-router.js')"), 'panel lifecycle must retain the shared Interaction Router preload for standalone/degraded boots');
-assert.ok(subdivisions.includes('const interaction = window.__potatoAtlasInteraction'), 'subdivisions must consume the shared Interaction Router when available');
-assert.ok(subdivisions.includes('if (interaction?.register)'), 'subdivision interaction migration must retain an explicit degraded fallback boundary');
+assert.ok(subdivisions.includes('function interactionRouter()'), 'subdivisions must resolve the shared Interaction Router dynamically');
+assert.ok(subdivisions.includes('function unbindSharedLayerFallback()'), 'subdivisions must be able to remove degraded direct handlers');
+assert.ok(subdivisions.includes('function syncSharedLayerInteraction()'), 'subdivisions need an explicit Router promotion path');
 assert.ok(subdivisions.includes("interaction.register('subdivisions'"), 'subdivisions must register with the Interaction Router on normal app boots');
+assert.ok(subdivisions.includes("window.addEventListener('potato-atlas-interaction-ready', () => syncSharedLayerInteraction())"), 'subdivisions must promote when Router readiness arrives');
 
 assert.ok(routerSource.includes('potato-atlas-interaction-ready'), 'Interaction Router must publish an explicit ready signal for early-boot handoff');
 const bootstrapCapture = bootstrap.indexOf("await import(versionedModule('./3d-core-interaction-handoff.js'))");
@@ -142,6 +145,15 @@ for (const marker of [
 ]) assert.ok(countrySelection.includes(marker), `country selection Router promotion missing marker: ${marker}`);
 assert.ok(countrySelection.includes('__potatoAtlasOverlayHandled = true'), 'country selection degraded fallback must still claim handled direct events');
 assert.ok(countrySelection.includes('installClickInterception();'), 'country selection degraded fallback must still install the direct click interception path');
+
+
+for (const marker of [
+  'function interactionRouter()',
+  'function unbindFallbackLayerEvents()',
+  "interaction.register('places'",
+  "window.addEventListener('potato-atlas-interaction-ready'",
+  "map.off('click', layerId, handlers.onClick)",
+]) assert.ok(places.includes(marker), `Places Router promotion missing marker: ${marker}`);
 
 for (const marker of [
   'function interactionRouter()',
