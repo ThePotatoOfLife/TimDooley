@@ -4,7 +4,7 @@
   "as_of": "2026-09-21T00:00:00Z",
   "denomination": "fictional sUSD-equivalent",
   "welfare_rate_per_second": 1e-11,
-  "method": "Welfare from exact/override story-entry dates plus explicit event weights from knowledge/cia/mud-bank-contract.json. Dispute/entanglement alone is zero-weight.",
+  "method": "Welfare from exact/override story-entry dates plus explicit event weights and evidence-discounted project-debit amounts from knowledge/cia/mud-bank-contract.json. Dispute/entanglement alone is zero-weight.",
   "boundary": "Approximate project accounting only; not money, compensation, objective morality, legal debt, guilt, creditworthiness or human worth.",
   "accounts": [
     {
@@ -21,13 +21,14 @@
     {
       "id": "txt",
       "welfare_as_of": 0.000507168,
-      "event_adjustment": 0,
-      "approx_balance": 0.000507168,
-      "posture": "mixed/disputed",
+      "event_adjustment": -4,
+      "approx_balance": -3.999492832,
+      "posture": "debit-supported / disputed relation",
       "basis": [
-        "open zero-weight current conflict/relation dispute"
+        "project-debit: repeated disputed narrative -4",
+        "open zero-weight reciprocal/current disputes"
       ],
-      "note": "No sourced debit or credit assigned yet."
+      "note": "The debit prices recovered circulation/repetition only; later reciprocal conflict and current presence remain zero-weight."
     },
     {
       "id": "matthew-mtclassic",
@@ -67,13 +68,14 @@
     {
       "id": "port-monkey",
       "welfare_as_of": 0.000593568,
-      "event_adjustment": 8,
-      "approx_balance": 8.000593568,
-      "posture": "repair-in-progress",
+      "event_adjustment": 1.4,
+      "approx_balance": 1.400593568,
+      "posture": "mixed / repair-active / net-positive",
       "basis": [
+        "project-debit: project-authored destructive trust event -6.6",
         "repair-attempt: seed / grievance-healing proposal +8"
       ],
-      "note": "No completed reconciliation inferred."
+      "note": "Historical project-authored debit remains visible; later repair attempt does not erase it."
     },
     {
       "id": "gg",
