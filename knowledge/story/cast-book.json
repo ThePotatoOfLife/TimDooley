@@ -62,7 +62,14 @@
         }
       ],
       "room_path": "rooms/potatoverse-canon/beings/marty/",
-      "identity_note": "Person is not archetype. Old hostile profiles are historical source-characterization, not permanent fact."
+      "identity_note": "Person is not archetype. Old hostile profiles are historical source-characterization, not permanent fact.",
+      "symbolic_role_assignments": [
+        {
+          "date": "late 2024 literary",
+          "role": "Tomatoes around literary orbit",
+          "status": "relation-not-identity"
+        }
+      ]
     },
     {
       "id": "sammy",
@@ -532,7 +539,19 @@
         }
       ],
       "room_path": "rooms/potatoverse-canon/beings/rahu/",
-      "identity_note": "Mixed literary/social name; do not assume all appearances are the same identity without source linkage."
+      "identity_note": "Mixed literary/social name; do not assume all appearances are the same identity without source linkage.",
+      "symbolic_role_assignments": [
+        {
+          "date": "2024-12-15",
+          "role": "tomato-villain",
+          "status": "scene-bound"
+        },
+        {
+          "date": "2026-03-01",
+          "role": "Mud Dweller / lost-soul story",
+          "status": "scene-bound creative/conversation"
+        }
+      ]
     },
     {
       "id": "optimistique",
@@ -708,7 +727,14 @@
         }
       ],
       "room_path": "rooms/potatoverse-canon/beings/termite/",
-      "identity_note": "Mixed literary/public name; no clean conversation-side Termite scene recovered yet."
+      "identity_note": "Mixed literary/public name; no clean conversation-side Termite scene recovered yet.",
+      "symbolic_role_assignments": [
+        {
+          "date": "2024 literary",
+          "role": "Potato cultivation adjacency",
+          "status": "symbolic adjacency"
+        }
+      ]
     },
     {
       "id": "txt",
@@ -754,7 +780,14 @@
           "role": "top-fan UI #1 in supplied YouTube capture; new controller, gaming-deprivation jokes, site interest and Ancient Dragon Senessax victory after 20+ attempts"
         }
       ],
-      "identity_note": "Real person/handle. Do not conflate with created being Matthew the Potato; creative relation is explicit and separate."
+      "identity_note": "Real person/handle. Do not conflate with created being Matthew the Potato; creative relation is explicit and separate.",
+      "symbolic_role_assignments": [
+        {
+          "date": "2026-08",
+          "role": "Guardian/Defender in moderation scene",
+          "status": "archetype-only"
+        }
+      ]
     },
     {
       "id": "mediomu007",
@@ -778,9 +811,38 @@
           "role": "top-fan UI #2 in supplied YouTube capture; rearranges and cleans room, moves TV/console/bed/desk/nightstand, brief ordinary chat"
         }
       ],
-      "identity_note": "Keep ordinary public-chat person distinct from symbolic Mount-Zion-like project narrative."
+      "identity_note": "Keep ordinary public-chat person distinct from symbolic Mount-Zion-like project narrative.",
+      "symbolic_role_assignments": [
+        {
+          "date": "2026-09-20",
+          "role": "Builder/Cultivator through literal room-making",
+          "status": "archetype-only"
+        }
+      ]
+    },
+    {
+      "id": "tomatoes",
+      "name": "Tomatoes",
+      "class": "collective",
+      "period_roles": [
+        {
+          "period": "2024 Great Book",
+          "role": "neighbor/counter-symbol with both healthy Tomato-of-Life and rotten-fruit variants"
+        },
+        {
+          "period": "2024-12-15",
+          "role": "comic Potato-vs-Tomato social-performance field; Rahu temporarily plays tomato-villain"
+        },
+        {
+          "period": "late 2024 literary",
+          "role": "Tomatoes attached to Marty/Baal literary orbit in hostile/satirical Great Book material"
+        }
+      ],
+      "identity_note": "Tomato is not a permanent enemy caste. Healthy, rotten, comic and satirical variants must remain distinct."
     }
   ],
   "character_archive": "knowledge/story/character-archive-v2.json",
-  "archive_rule": "For long-tail people/handles, consult character-archive-v2.json for role × time × source × function. Do not promote old psychological labels into canonical identity."
+  "archive_rule": "For long-tail people/handles, consult character-archive-v2.json for role × time × source × function. Do not promote old psychological labels into canonical identity.",
+  "role_ecology_owner": "knowledge/world/potatoverse-cast-role-ecology.json",
+  "scene_assignment_ledger": "knowledge/story/character-symbolic-role-assignments.json"
 }
