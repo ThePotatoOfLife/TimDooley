@@ -210,6 +210,13 @@ jobs:
           node scripts/test_world_map_pinned_context_contract.mjs
           node scripts/test_world_map_context_status.mjs
           node scripts/test_world_map_display_system_contract.mjs
+          node scripts/test_world_map_inspection_bootstrap_staging.mjs
+          node scripts/test_world_map_inspector_visibility.mjs
+          node scripts/test_world_map_motion_compositor.mjs
+          node scripts/test_world_map_route_geometry_semantics.mjs
+          python scripts/validate_world_map_visual_channels.py
+          node scripts/test_world_map_visual_channels.mjs
+          python scripts/validate_world_places_fixture_pipeline.py
           node scripts/test_world_map_reset_context_contract.mjs
           node scripts/test_world_map_search_selection_contract.mjs
           node scripts/test_world_map_relation_budget_contract.mjs
