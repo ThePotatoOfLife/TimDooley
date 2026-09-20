@@ -1,7 +1,7 @@
 {
   "id": "potato-biology-index",
   "title": "Potato Biology — Canonical Layer Index",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "owner_room": "potato-biology",
   "purpose": "Provide one route through potato biology from evolutionary ancestry and DNA to molecular regulation, cells/tissues, organism development, ecology, disease and storage.",
@@ -32,6 +32,12 @@
       "question": "How do organelles, cells, tissues and resource flows produce the physical organism?"
     },
     {
+      "level": 3.5,
+      "id": "physical-chemistry-biophysics",
+      "owner": "potato-physical-chemistry-biophysics-atlas",
+      "question": "How do water, ions, starch, membranes, heat, pressure and fields generate material behavior?"
+    },
+    {
       "level": 4,
       "id": "development",
       "owner": "potato-life-cycle-state-machine",
@@ -50,7 +56,7 @@
       "question": "Which high-confidence biological principles are safe to reuse elsewhere?"
     }
   ],
-  "cross_scale_chain": "lineage → genome/pangenome → haplotype/dosage → chromatin/epigenome → RNA → protein/signalling → metabolite/flux → organelle → cell → tissue → organ → whole-plant state → microbiome/pathogen/environment → reproduction/next generation",
+  "cross_scale_chain": "lineage → genome/pangenome → haplotype/dosage → chromatin/epigenome → RNA → protein/signalling → metabolite/chemical free energy → organelle → cell → tissue mechanics/transport → organ → whole-plant state → microbiome/pathogen/environment → reproduction/next generation",
   "canonical_records": [
     "knowledge/biology/potato-biological-genealogy.json",
     "knowledge/biology/potato-genetics-genomics-atlas.json",
@@ -61,7 +67,9 @@
     "knowledge/biology/potato-biological-lexicon.json",
     "knowledge/biology/potato-organism-cycle-atlas.json",
     "knowledge/biology/potato-growth-principles.json",
-    "knowledge/science/potato-biology-ecology-development-canon.json"
+    "knowledge/science/potato-biology-ecology-development-canon.json",
+    "knowledge/biology/potato-physical-chemistry-biophysics-atlas.json",
+    "knowledge/biology/potato-measurement-physics.json"
   ],
   "unresolved_biology_frontiers": [
     "single-cell/spatial transcriptomic atlas across stolon-to-tuber transition",
@@ -74,5 +82,21 @@
     "complete potato pangenome including broader global/wild diversity",
     "cell-scale mechanics of tuber swelling and periderm growth"
   ],
-  "route_rule": "When a page says 'potato biology', start here rather than pulling unsorted facts from scattered project files."
+  "route_rule": "When a page says 'potato biology', start here rather than pulling unsorted facts from scattered project files.",
+  "observability_layer": {
+    "owner": "potato-measurement-physics",
+    "rule": "Every physical or chemical claim should connect to an observable, unit and method where possible.",
+    "methods": [
+      "NIR/hyperspectral imaging",
+      "dielectric spectroscopy",
+      "electrical impedance",
+      "MRI/NMR",
+      "DSC",
+      "XRD",
+      "polarized microscopy",
+      "FTIR/Raman",
+      "rheometry/texture analysis",
+      "density/specific gravity"
+    ]
+  }
 }
