@@ -1,5 +1,5 @@
 {
-  "version": "2.8.0",
+  "version": "2.9.0",
   "updated": "2026-09-20",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -243,6 +243,11 @@
       "concern": "Level 3 inhabitant/case center-table focus",
       "owner": "data/house/object-focus-contract.json",
       "rule": "Centers cases, entities, concepts and artifacts inside a nested Room without promoting them into architecture or changing ownership; alternate Room lenses remain projections of the same object."
+    },
+    {
+      "concern": "recursive spatial House integrity snapshot",
+      "owner": "data/house/spatial-house-health-2026-09-20.json",
+      "rule": "Records validated counts and referential-integrity state for Dwellings, nested Rooms, interiors, inhabitants, wormholes, journey memory and object focus as of the snapshot date."
     }
   ],
   "resolver_order": [
