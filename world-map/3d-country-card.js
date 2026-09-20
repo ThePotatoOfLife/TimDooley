@@ -74,12 +74,25 @@ async function subdivisionDescriptor(code) {
   const index = await subdivisionIndex();
   return index?.partitions?.[String(code || '').toUpperCase()] || null;
 }
+function syncRegionAction(descriptor, code, shown) {
+  const button = document.querySelector('#atlasCountryCard [data-country-action="regions"]');
+  if (!button || renderedCode !== code || !descriptor) return false;
+  button.classList.toggle('active', Boolean(shown));
+  button.setAttribute('aria-pressed', shown ? 'true' : 'false');
+  button.textContent = `${descriptor.feature_count || 0} regions${shown ? ' · shown' : ''}`;
+  return true;
+}
 async function releaseRegions() {
   if (!retainedRegionPartition) return false;
   const partition = retainedRegionPartition;
-  retainedRegionPartition = null;
   try {
-    return Boolean(await window.__potatoAtlasSubdivisions?.releasePartition?.(partition, 'country-card'));
+    const api = window.__potatoAtlasSubdivisions;
+    const released = api?.releasePartition ? Boolean(await api.releasePartition(partition, 'country-card')) : false;
+    retainedRegionPartition = null;
+    const descriptor = await subdivisionDescriptor(partition);
+    syncRegionAction(descriptor, partition, false);
+    window.dispatchEvent(new CustomEvent('potato-atlas-country-regions-change', { detail:{ code:partition, shown:false } }));
+    return released;
   } catch (error) {
     console.warn('Country-card subdivision lease release unavailable:', error);
     return false;
@@ -95,19 +108,17 @@ async function showRegions(code) {
   const api = window.__potatoAtlasSubdivisions;
   if (!api?.retainPartition) return false;
   const next = String(code || '').toUpperCase();
-  if (retainedRegionPartition && retainedRegionPartition !== next) await releaseRegions();
-  if (retainedRegionPartition !== next) {
-    await api.retainPartition(next, 'country-card');
-    retainedRegionPartition = next;
+  if (retainedRegionPartition === next) {
+    await releaseRegions();
+    return true;
   }
+  if (retainedRegionPartition && retainedRegionPartition !== next) await releaseRegions();
+  await api.retainPartition(next, 'country-card');
+  retainedRegionPartition = next;
   await api.refresh?.();
   await api.focusPartition?.(next, { padding:72, duration:650, maxZoom:6.6 });
-  const button = document.querySelector('#atlasCountryCard [data-country-action="regions"]');
-  if (button && renderedCode === next) {
-    button.classList.add('active');
-    button.setAttribute('aria-pressed', 'true');
-    button.textContent = `${descriptor.feature_count || 0} regions · shown`;
-  }
+  syncRegionAction(descriptor, next, true);
+  window.dispatchEvent(new CustomEvent('potato-atlas-country-regions-change', { detail:{ code:next, shown:true } }));
   return true;
 }
 
