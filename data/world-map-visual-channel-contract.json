@@ -1,6 +1,6 @@
 {
   "id": "world-map-visual-channel-contract",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-20",
   "status": "active",
   "channels": {
@@ -57,5 +57,128 @@
     "countries-fill.fill-opacity": "world-map/3d-physical-layers.js",
     "countries-extrude.fill-extrusion-height": "world-map/3d-app.js",
     "countries-fill/countries-extrude.visibility": "world-map/3d-app.js"
+  },
+  "compatibility_matrix": {
+    "channels": [
+      "fill",
+      "pattern",
+      "outline",
+      "line",
+      "point",
+      "height",
+      "card",
+      "timeline",
+      "scene"
+    ],
+    "legend": {
+      "self": "same channel; the canonical owner resolves multiplicity",
+      "compose": "may render simultaneously without changing meaning",
+      "conditional": "may compose only when the named runtime policy is satisfied",
+      "separate": "valid together because they occupy different presentation surfaces or semantic spaces"
+    },
+    "rows": {
+      "fill": {
+        "fill": "self",
+        "pattern": "compose",
+        "outline": "compose",
+        "line": "compose",
+        "point": "compose",
+        "height": "compose",
+        "card": "separate",
+        "timeline": "separate",
+        "scene": "separate"
+      },
+      "pattern": {
+        "fill": "compose",
+        "pattern": "self",
+        "outline": "compose",
+        "line": "compose",
+        "point": "compose",
+        "height": "conditional",
+        "card": "separate",
+        "timeline": "separate",
+        "scene": "separate"
+      },
+      "outline": {
+        "fill": "compose",
+        "pattern": "compose",
+        "outline": "self",
+        "line": "compose",
+        "point": "compose",
+        "height": "compose",
+        "card": "separate",
+        "timeline": "separate",
+        "scene": "separate"
+      },
+      "line": {
+        "fill": "compose",
+        "pattern": "compose",
+        "outline": "compose",
+        "line": "self",
+        "point": "compose",
+        "height": "compose",
+        "card": "separate",
+        "timeline": "separate",
+        "scene": "separate"
+      },
+      "point": {
+        "fill": "compose",
+        "pattern": "compose",
+        "outline": "compose",
+        "line": "compose",
+        "point": "self",
+        "height": "compose",
+        "card": "separate",
+        "timeline": "separate",
+        "scene": "separate"
+      },
+      "height": {
+        "fill": "compose",
+        "pattern": "conditional",
+        "outline": "compose",
+        "line": "compose",
+        "point": "compose",
+        "height": "self",
+        "card": "separate",
+        "timeline": "separate",
+        "scene": "separate"
+      },
+      "card": {
+        "fill": "separate",
+        "pattern": "separate",
+        "outline": "separate",
+        "line": "separate",
+        "point": "separate",
+        "height": "separate",
+        "card": "self",
+        "timeline": "separate",
+        "scene": "separate"
+      },
+      "timeline": {
+        "fill": "separate",
+        "pattern": "separate",
+        "outline": "separate",
+        "line": "separate",
+        "point": "separate",
+        "height": "separate",
+        "card": "separate",
+        "timeline": "self",
+        "scene": "separate"
+      },
+      "scene": {
+        "fill": "separate",
+        "pattern": "separate",
+        "outline": "separate",
+        "line": "separate",
+        "point": "separate",
+        "height": "separate",
+        "card": "separate",
+        "timeline": "separate",
+        "scene": "self"
+      }
+    },
+    "conditional_policies": {
+      "pattern+height": "prefer-pattern-flatten-height"
+    }
   }
 }
