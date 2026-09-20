@@ -4,6 +4,9 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Physical Water requires the core map.');
+if (!window.__potatoAtlasScale) await import('./3d-scale.js');
+const scale = await window.__potatoAtlasScale?.ready;
+if (!scale?.threshold) throw new Error('Physical Water requires the shared Scale runtime.');
 if (!window.__potatoAtlasStyleLifecycle) {
   const { createStyleLifecycle } = await import('./3d-style-lifecycle.js');
   window.__potatoAtlasStyleLifecycle = createStyleLifecycle(map);
@@ -12,7 +15,7 @@ const styleLifecycle = window.__potatoAtlasStyleLifecycle;
 
 const NE_SHA = 'ca96624a56bd078437bca8184e78163e5039ad19';
 const NE_BASE = `https://raw.githubusercontent.com/nvkelso/natural-earth-vector/${NE_SHA}/geojson`;
-const DETAIL_ZOOM = 3.4;
+const DETAIL_ZOOM = scale.threshold('physical-water-detail', 'load');
 const DEFAULT_OPACITY = 0.72;
 const OCEAN_SOURCE = 'atlas-physical-water-ocean-grid';
 const BASE_LAYERS = {
