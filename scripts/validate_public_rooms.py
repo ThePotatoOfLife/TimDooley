@@ -149,12 +149,12 @@ def main() -> int:
         for page in sorted(nested_root.glob("*/index.html")):
             text = page.read_text(encoding="utf-8", errors="replace")
             rel = page.relative_to(ROOT).as_posix()
-            match = re.search(r"<meta\\s+name=[\"']description[\"']\\s+content=[\"']([^\"']+)[\"'][^>]*>", text, flags=re.I)
+            match = re.search(r"<meta\s+name=[\"']description[\"']\s+content=[\"']([^\"']+)[\"'][^>]*>", text, flags=re.I)
             if not match:
                 errors.append(f"{rel} missing meta description")
             elif len(match.group(1).strip()) < 40:
                 errors.append(f"{rel} meta description is too weak")
-            summary = re.search(r"<p\\s+class=[\"']summary[\"'][^>]*>(.*?)</p>", text, flags=re.I | re.S)
+            summary = re.search(r"<p\s+class=[\"']summary[\"'][^>]*>(.*?)</p>", text, flags=re.I | re.S)
             if not summary or len(re.sub(r"<[^>]+>", " ", summary.group(1)).strip()) < 40:
                 errors.append(f"{rel} missing substantive Room summary")
 
@@ -174,7 +174,7 @@ def main() -> int:
         text=page.read_text(encoding="utf-8",errors="replace")
         if 'app/room-interior.css' not in text:
             errors.append(f"{slug} must use shared room-interior.css")
-        if re.search(r"<style>[\\s\\S]*?(?:\\.inner-home|\\.inner-center|\\.adj-grid|\\.actions)[\\s\\S]*?</style>", text, flags=re.I):
+        if re.search(r"<style>[\s\S]*?(?:\.inner-home|\.inner-center|\.adj-grid|\.actions)[\s\S]*?</style>", text, flags=re.I):
             errors.append(f"{slug} reintroduced duplicated Room shell CSS")
 
     rooms_text = page_text.get("rooms/index.html", "")
