@@ -4,11 +4,9 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Land cover requires the core map.');
-if (!window.__potatoAtlasStyleLifecycle) {
-  const { createStyleLifecycle } = await import('./3d-style-lifecycle.js');
-  window.__potatoAtlasStyleLifecycle = createStyleLifecycle(map);
-}
+if (!window.__potatoAtlasStyleLifecycle) await import('./3d-style-lifecycle.js');
 const styleLifecycle = window.__potatoAtlasStyleLifecycle;
+if (!styleLifecycle) throw new Error('World Map Style Lifecycle unavailable.');
 
 const SOURCE_ID = 'atlas-land-cover-worldcover-2021';
 const LAYER_ID = 'atlas-land-cover-worldcover-2021-raster';
