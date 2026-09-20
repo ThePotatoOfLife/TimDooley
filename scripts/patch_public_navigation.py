@@ -138,7 +138,7 @@ PROJECT_COMPASS_QUIET_PREFIXES = (
 def inject_project_compass(text: str, page: Path) -> str:
     """Add the compact project orientation layer to ordinary generated reader pages."""
     rel = page.relative_to(OUT).as_posix()
-    if any(rel.startswith(prefix) for prefix in PROJECT_COMPASS_QUIET_PREFIXES):
+    if rel == "index.html" or any(rel.startswith(prefix) for prefix in PROJECT_COMPASS_QUIET_PREFIXES):
         return text
     if "project-compass.js" in text or "project-compass.css" in text:
         return text
