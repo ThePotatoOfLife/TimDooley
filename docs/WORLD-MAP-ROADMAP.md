@@ -157,7 +157,7 @@ Drain only after unique behavior is preserved and tested:
 
 - [ ] `world-map/3d-ui.js`
 - [ ] `world-map/3d-selection-ui.js`
-- [ ] old Lens ownership after registry/compositor parity
+- [x] old Lens ownership after registry/compositor parity — retired; canonical Layer Registry + Compositor own analytical state.
 - [ ] old Atlas naming/routing remnants
 - [ ] remaining duplicated style/lifecycle ownership not yet under Style Lifecycle
 - [ ] `__potatoAtlasOverlayHandled` after direct standalone/degraded interaction fallbacks are retired
