@@ -243,6 +243,14 @@
 **Rule retained:** retire only compatibility code whose unique behavior has a tested canonical owner; this change does not remove core country selection, inspector, layer or panel capability.
 
 
+### WM-042 · Map UI layering uses scattered numeric z-index values — P2
+**Status:** fixed / governed on branch `world-map-ui-layering-tokens-rebased-20260920`, pending exact-head CI confirmation.  
+**Cause:** header, menus, status surfaces, selection/context cards and investigation panels used locally chosen numeric z-index values. The values were mostly coherent, but their meaning was implicit and easy to drift as more surfaces were added.  
+**Resolution:** the World Map shell now declares semantic layering bands for tint, decoration, Axis, map controls, selection, context, overlays, header and menus. Current shared surfaces consume those tokens instead of repeating raw layer numbers.  
+**Guard:** UI-layout validation requires the canonical token set and verifies that the shell consumes the header/menu/map-control bands.  
+**Rule retained:** semantic z-index tokens describe UI stacking only; MapLibre render-stack order remains governed independently by the map Render Stack.
+
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
