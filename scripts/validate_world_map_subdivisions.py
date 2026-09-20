@@ -19,6 +19,7 @@ USA = ROOT / "data" / "world-subdivisions" / "USA.geo.json"
 DNK = ROOT / "data" / "world-subdivisions" / "DNK.geo.json"
 CAN = ROOT / "data" / "world-subdivisions" / "CAN.geo.json"
 UKR = ROOT / "data" / "world-subdivisions" / "UKR.geo.json"
+RUS = ROOT / "data" / "world-subdivisions" / "RUS.geo.json"
 GEO_KERNEL_REGRESSION = ROOT / "scripts" / "test_world_map_geo_kernel.mjs"
 WRAP_MATH_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_wrap_math.mjs"
 FREEZE_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_freeze.mjs"
@@ -36,7 +37,7 @@ EXPECTED_RUNTIME_BUDGET = {
 def main() -> int:
     errors: list[str] = []
     required = (
-        BUILDER, MODULE, GEO_KERNEL, SCALE, SCALE_CONTRACT, LIFECYCLE, INDEX, USA, DNK, CAN, UKR,
+        BUILDER, MODULE, GEO_KERNEL, SCALE, SCALE_CONTRACT, LIFECYCLE, INDEX, USA, DNK, CAN, UKR, RUS,
         GEO_KERNEL_REGRESSION, WRAP_MATH_REGRESSION,
         FREEZE_REGRESSION, MULTI_COUNTRY_REGRESSION, BOUNDED_RUNTIME_REGRESSION,
     )
@@ -54,6 +55,7 @@ def main() -> int:
         dnk = json.loads(DNK.read_text(encoding="utf-8"))
         can = json.loads(CAN.read_text(encoding="utf-8"))
         ukr = json.loads(UKR.read_text(encoding="utf-8"))
+        rus = json.loads(RUS.read_text(encoding="utf-8"))
         for token in ("GENZ2025", "cb_2025_us_state_20m.zip", "NST-EST2025-ALLDATA.csv", "EXPECTED_US_UNITS = 51", "parse_state_kml", "federal district"):
             if token not in builder:
                 errors.append(f"subdivision builder missing marker: {token}")
@@ -236,6 +238,73 @@ def main() -> int:
             if "UN OCHA" not in str(props.get("geometry_source") or ""):
                 errors.append(f"{props.get('id')}: Ukraine geometry provenance must retain UN OCHA lineage")
 
+        rus_descriptor = partitions.get("RUS", {})
+        if rus_descriptor.get("feature_count") != 83:
+            errors.append("RUS subdivision index must declare 83 base federal-subject features")
+        if rus_descriptor.get("id_prefix") != "RU-":
+            errors.append("RUS subdivision descriptor must declare RU- id_prefix")
+        if rus_descriptor.get("parent_name") != "Russia" or not isinstance(rus_descriptor.get("viewport_bounds"), dict):
+            errors.append("RUS subdivision descriptor must declare Russia parent and viewport bounds")
+        if rus_descriptor.get("population_status") != "unknown-not-zero":
+            errors.append("RUS missing population must remain explicitly unknown-not-zero")
+        if rus_descriptor.get("source_scope") != "geometry-and-names-only":
+            errors.append("RUS source scope must remain geometry-and-names-only")
+        if rus_descriptor.get("source_feature_count") != 89:
+            errors.append("RUS source provenance must record the 89-feature upstream snapshot")
+        expected_excluded = {
+            "Sevastopol",
+            "Donetsk People's Republic",
+            "Zaporozhye Oblast",
+            "Lugansk People's Republic",
+            "Republic of Crimea",
+            "Kherson Oblast",
+        }
+        if set(rus_descriptor.get("excluded_disputed_features") or []) != expected_excluded:
+            errors.append("RUS descriptor must explicitly preserve the six excluded disputed source features")
+        note = str(rus_descriptor.get("representation_note") or "")
+        if "83 Russian federal subjects" not in note or "separately typed disputed/conflict geography" not in note:
+            errors.append("RUS descriptor must preserve base-geography vs disputed/conflict separation")
+
+        rus_features = rus.get("features", []) if rus.get("type") == "FeatureCollection" else []
+        if len(rus_features) != 83:
+            errors.append(f"RUS subdivision snapshot must contain 83 base features; found {len(rus_features)}")
+        rus_ids = [str((feature.get("properties") or {}).get("id") or "") for feature in rus_features]
+        if len(set(rus_ids)) != 83 or not all(value.startswith("RU-") for value in rus_ids):
+            errors.append("RUS subdivision ids must be 83 unique RU-* identifiers")
+        rus_names = {str((feature.get("properties") or {}).get("name") or "") for feature in rus_features}
+        if rus_names & expected_excluded:
+            errors.append(f"RUS base partition reintroduced disputed source features: {sorted(rus_names & expected_excluded)}")
+        type_counts = {}
+        forbidden_source_fields = {
+            "Vladimir_Putin", "Nikolai_Kharitonov", "Vladislav_Davankov", "Leonid_Slutsky",
+            "Voters_tournout", "Voters", "Population_2002", "Population_2010", "Population_2021",
+            "Popilation_2002_to_2020", "Popilation_2010_to_2020",
+        }
+        for feature in rus_features:
+            props = feature.get("properties") or {}
+            if props.get("parent_iso3") != "RUS" or props.get("parent_name") != "Russia":
+                errors.append(f"{props.get('id')}: Russia parent metadata drift")
+            if props.get("population") is not None:
+                errors.append(f"{props.get('id')}: Russia population must not be imported from the source snapshot")
+            if props.get("population_status") != "unknown-not-zero":
+                errors.append(f"{props.get('id')}: Russia unknown population status missing")
+            if forbidden_source_fields & set(props):
+                errors.append(f"{props.get('id')}: political/demographic source attributes leaked into canonical geometry")
+            if props.get("geometry_source_sha") != rus_descriptor.get("source_sha"):
+                errors.append(f"{props.get('id')}: Russia source SHA drift")
+            kind = str(props.get("subdivision_type") or "")
+            type_counts[kind] = type_counts.get(kind, 0) + 1
+        expected_types = {
+            "oblast": 46,
+            "republic": 21,
+            "krai": 9,
+            "autonomous okrug": 4,
+            "federal city": 2,
+            "autonomous oblast": 1,
+        }
+        if type_counts != expected_types:
+            errors.append(f"RUS federal-subject type counts drifted: {type_counts!r}")
+
         node = shutil.which("node")
         if node:
             checked = subprocess.run([node, "--check", str(MODULE)], capture_output=True, text=True)
@@ -264,7 +333,7 @@ def main() -> int:
         for error in errors:
             print("-", error)
         return 1
-    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · Denmark 5/5 · Canada 13/13 · Ukraine 26 source-represented ADM1 · wrap-safe geo kernel · shared scale ownership · budgets · freeze + multi-country + bounded-runtime regressions")
+    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · Denmark 5/5 · Canada 13/13 · Ukraine 26 source-represented ADM1 · Russia 83 base federal subjects · wrap-safe geo kernel · shared scale ownership · budgets · freeze + multi-country + bounded-runtime regressions")
     return 0
 
 
