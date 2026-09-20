@@ -2467,3 +2467,1254 @@ The strongest form of the 11D Door thesis is now:
 - \`knowledge/science/gauge-unification-supersymmetry-archaeology.json\`
 - \`knowledge/science/11d-m-theory-quantum-door-thesis.json\`
 - \`docs/AXIS-11D-SUN-SPIRAL-TIME-SYMMETRY-DEEP-DIVE.md\`
+
+
+---
+
+# 51. A third physical branch: Hořava–Witten boundary M-theory
+
+The thesis has so far emphasized the circle Door
+
+\[
+S^1
+\]
+
+and the direct \(G_2\) branch.
+
+There is another highly relevant M-theory construction:
+
+\[
+S^1/\mathbb Z_2.
+\]
+
+Quotienting a circle by the reflection
+
+\[
+y\sim-y
+\]
+
+turns the compact direction into an interval with two fixed ten-dimensional boundary components.
+
+Schematically,
+
+\[
+\mathcal M_{11}
+=
+\mathcal M_{10}
+\times
+S^1/\mathbb Z_2.
+\]
+
+In the Hořava–Witten construction, consistency places an \(E_8\) gauge sector on each boundary:
+
+\[
+E_8
+\quad|\quad
+\text{11D bulk}
+\quad|\quad
+E_8.
+\]
+
+This is exceptionally important for the project's Door language because it supplies a genuine physical example where:
+
+\`\`\`text
+higher-dimensional bulk
++
+codimension-one boundaries
++
+boundary-localized gauge degrees of freedom
+\`\`\`
+
+belong to one consistent theory.
+
+A boundary is therefore not merely where geometry stops.
+
+It can carry degrees of freedom required by quantum consistency.
+
+That distinction should later be reused throughout the project:
+
+\[
+\text{boundary}
+\neq
+\text{empty edge}.
+\]
+
+A Door/boundary may itself possess fields, charges, anomalies and dynamics.
+
+---
+
+# 52. Boundary consistency can determine what is allowed to live there
+
+The Hořava–Witten construction also teaches a stronger lesson.
+
+Gauge and gravitational anomalies constrain the boundary theory so severely that anomaly cancellation determines the allowed boundary gauge structure.
+
+This gives the thesis a new general principle:
+
+> a mathematically drawable room/boundary is not automatically a physically admissible one.
+
+A physical interface has consistency conditions.
+
+For every future project Door interpreted physically, ask:
+
+1. Which fields live in the bulk?
+2. Which fields live on the interface?
+3. What boundary conditions are imposed?
+4. Which charges cross the interface?
+5. Are gauge symmetries preserved?
+6. Are anomalies cancelled?
+7. Does energy-momentum remain consistently conserved?
+
+This **boundary contract** should become part of the site's general Door vocabulary.
+
+---
+
+# 53. Chirality is a major missing requirement
+
+Our observed weak interactions distinguish left- and right-handed fermions.
+
+So any higher-dimensional route toward realistic particle physics must explain four-dimensional chirality.
+
+For M-theory on \(G_2\)-holonomy spaces, smooth compactification alone does not generically produce the required chiral matter.
+
+A major result is that chiral fermions in four dimensions arise in the presence of suitable singularities.
+
+Thus:
+
+\[
+\text{smooth hidden geometry}
+\]
+
+and
+
+\[
+\text{realistic chiral matter}
+\]
+
+are not equivalent goals.
+
+The stronger chain is
+
+\[
+G_2\ \text{geometry}
+\rightarrow
+\text{singular structure}
+\rightarrow
+\text{localized gauge/matter sector}
+\rightarrow
+\text{possible chiral 4D spectrum}.
+\]
+
+This matters for the whole project because it teaches:
+
+> differentiation can occur at singular loci, defects and interfaces rather than uniformly throughout the bulk.
+
+That is a scientifically legitimate pattern that can later be compared—carefully—to project language about knots, Doors, seeds, branching points or concentrated sites of transformation.
+
+---
+
+# 54. Singularities are not automatically pathologies
+
+In classical differential geometry, a singularity often means the smooth description has failed.
+
+In string/M-theory, however, some singular limits can signal the appearance of new light degrees of freedom or enhanced gauge symmetry.
+
+Therefore the project should distinguish:
+
+### Destructive singularity
+
+The mathematical/physical model becomes inconsistent or uncontrolled.
+
+### Resolving singularity
+
+A supposedly singular low-energy description is completed by additional degrees of freedom.
+
+### Productive singular locus
+
+Localized gauge fields or chiral matter arise at a special geometric locus.
+
+This gives "Needle", "Door", "knot" and "branch point" a much more disciplined scientific comparison:
+
+\[
+\text{special locus}
+\neq
+\text{magic point};
+\]
+
+the useful question is
+
+\[
+\text{which modes become massless or localized there?}
+\]
+
+---
+
+# 55. Anomalies: a theory can be classically beautiful and quantum-mechanically impossible
+
+An anomaly occurs when a symmetry of the classical description fails after quantization.
+
+For gauge symmetries, an uncancelled anomaly generally makes the quantum gauge theory inconsistent.
+
+Schematically,
+
+\[
+\partial_\mu J^\mu_{\rm gauge}
+\neq0
+\]
+
+at the quantum level is fatal if the current is required to generate an exact gauge redundancy.
+
+Anomalies therefore belong in the thesis as **obstruction tests**.
+
+Every claimed compactification should ask:
+
+\[
+\text{Does the lower-dimensional spectrum cancel all required anomalies?}
+\]
+
+This is deeper than merely deriving fields.
+
+A candidate world must also be quantum-mechanically self-consistent.
+
+---
+
+# 56. Anomaly inflow: the bulk can repair the boundary
+
+M-theory gives a particularly powerful mechanism known as anomaly inflow.
+
+A boundary or brane may possess an anomalous effective theory by itself, while a variation of bulk topological terms supplies precisely the compensating contribution.
+
+In schematic form,
+
+\[
+\delta S_{\rm boundary}
++
+\delta S_{\rm bulk}
+=
+0.
+\]
+
+For the M5-brane, the eleven-dimensional Chern–Simons/gravitational structure participates in cancelling worldvolume anomalies.
+
+This creates another reusable project principle:
+
+> a subsystem that appears inconsistent in isolation may be consistent only as part of a larger bulk–boundary system.
+
+That is a rigorous physical idea.
+
+It should not be turned into a universal metaphysical rule, but it is an excellent structural comparator for parts of the project where local rooms depend on a larger House.
+
+---
+
+# 57. Higher-form gauge fields require higher-dimensional charged objects
+
+Ordinary electromagnetism has a one-form gauge potential
+
+\[
+A_1,
+\]
+
+which couples electrically to point-particle worldlines.
+
+M-theory contains a three-form
+
+\[
+C_3.
+\]
+
+The natural electric object coupled to it is therefore a membrane:
+
+\[
+S_{\rm M2}
+\supset
+\int_{\mathcal W_3} C_3.
+\]
+
+The magnetic dual of \(C_3\) is associated with a six-form potential \(C_6\), and the corresponding magnetic object is the M5-brane.
+
+This supplies a general rule:
+
+\[
+(p+1)\text{-form potential}
+\longleftrightarrow
+p\text{-brane electric object}.
+\]
+
+So point particles, strings, membranes and higher branes are not arbitrary extensions of "object."
+
+They are naturally matched to differential-form gauge structure.
+
+---
+
+# 58. Generalized symmetries enlarge the meaning of charge
+
+Ordinary global symmetries act on local operators or particles.
+
+A \(q\)-form symmetry instead acts on \(q\)-dimensional charged operators/objects.
+
+Examples include:
+
+- line operators;
+- strings;
+- surface operators;
+- extended defects.
+
+This makes generalized symmetry an important conceptual tool for the project.
+
+The mature hierarchy is not
+
+\`\`\`text
+point -> line -> surface -> volume
+because it looks symbolic
+\`\`\`
+
+but rather:
+
+\`\`\`text
+different-dimensional observables
+can carry different generalized charges
+and couple to different higher-form gauge fields.
+\`\`\`
+
+This gives the project's point/Axis/Door/surface vocabulary a legitimate neighboring mathematics without identifying the two.
+
+---
+
+# 59. The M-algebra already knows about membranes and fivebranes
+
+The eleven-dimensional supersymmetry algebra can contain tensorial charges associated with extended objects.
+
+Schematically,
+
+\[
+\{Q,Q\}
+\sim
+\Gamma^M P_M
++
+\Gamma^{MN}Z_{MN}
++
+\Gamma^{M_1\cdots M_5}
+Z_{M_1\cdots M_5}.
+\]
+
+The terms correspond structurally to:
+
+- momentum;
+- M2-brane charge;
+- M5-brane charge.
+
+This is profound for the thesis.
+
+Extended objects are not merely solutions added after the algebra is written.
+
+Their charges are woven into the supersymmetry structure itself.
+
+Thus the 11D model should contain a **charge ledger** in addition to:
+
+- geometry ledger;
+- field ledger;
+- topology ledger;
+- state ledger.
+
+---
+
+# 60. BPS structure explains protected states
+
+Supersymmetric theories contain states that can saturate bounds of the form
+
+\[
+M\ge |Z|,
+\]
+
+where \(Z\) denotes an appropriate central/tensorial charge.
+
+A state saturating the bound is BPS.
+
+Such states preserve part of the supersymmetry and can enjoy protection against certain quantum corrections.
+
+Wrapped branes on calibrated cycles are natural sources of BPS states.
+
+This gives a deeper connection among:
+
+\[
+\text{calibration}
+\leftrightarrow
+\text{minimal volume}
+\leftrightarrow
+\text{brane charge}
+\leftrightarrow
+\text{protected state}.
+\]
+
+So associative/coassociative geometry is not decorative topology.
+
+It participates in determining which wrapped configurations can preserve supersymmetry.
+
+---
+
+# 61. Axions arise from periods of the M-theory three-form
+
+Expand the three-form in a basis of harmonic three-forms:
+
+\[
+C_3
+=
+\sum_i a^i(x)\,\omega_i(y)
++\cdots .
+\]
+
+The four-dimensional coefficients \(a^i(x)\) behave as axion-like scalar fields.
+
+Likewise, geometric deformations of the \(G_2\) structure contribute real moduli \(s^i\).
+
+These naturally combine into complex scalar variables schematically like
+
+\[
+z^i
+=
+a^i+i s^i
+\]
+
+up to convention.
+
+This gives a concrete version of another important category conversion:
+
+\[
+\text{period of a higher-dimensional form}
+\rightarrow
+\text{4D scalar/axionic field}.
+\]
+
+It also means that hidden geometry and hidden gauge-field configuration can combine into the same lower-dimensional multiplet.
+
+---
+
+# 62. Nonperturbative effects mean cycles can generate forces on moduli
+
+Euclidean M2-branes wrapping suitable associative three-cycles can generate nonperturbative contributions to the four-dimensional superpotential.
+
+Schematically,
+
+\[
+W_{\rm M2}
+\sim
+A\,e^{-S_{\rm M2}}.
+\]
+
+The Euclidean action contains a volume term and a phase from the \(C_3\) period:
+
+\[
+S_{\rm M2}
+\sim
+T_{\rm M2}\,\mathrm{Vol}(\Sigma_3)
+-
+i\int_{\Sigma_3}C_3.
+\]
+
+This creates a remarkable chain:
+
+\[
+\text{hidden cycle}
+\rightarrow
+\text{instanton action}
+\rightarrow
+\text{4D superpotential}
+\rightarrow
+\text{force on moduli/vacuum structure}.
+\]
+
+So compact topology can affect low-energy dynamics even when no ordinary particle travels around the cycle in the classical sense.
+
+---
+
+# 63. A realistic compactification needs the full 4D supergravity data
+
+For a four-dimensional \(N=1\) effective supergravity, a useful organizing set is:
+
+\[
+K,
+\qquad
+W,
+\qquad
+f_{ab},
+\]
+
+where
+
+- \(K\) is the Kähler potential;
+- \(W\) is the superpotential;
+- \(f_{ab}\) is the gauge kinetic function.
+
+The scalar potential contains the F-term structure
+
+\[
+V_F
+=
+e^{K/M_P^2}
+\left(
+K^{i\bar j}
+D_iW\,D_{\bar j}\overline W
+-
+\frac{3}{M_P^2}|W|^2
+\right)
+\]
+
+plus possible D-term contributions.
+
+This is a major missing bridge in the thesis.
+
+The compactification pipeline should therefore become:
+
+\[
+\text{11D geometry/fields}
+\rightarrow
+(K,W,f)
+\rightarrow
+V_{\rm 4D}
+\rightarrow
+\text{vacuum}
+\rightarrow
+\text{masses/couplings}.
+\]
+
+A compactification is not finished when \(X_7\) has been named.
+
+It is finished only much later, after the effective dynamics has been derived.
+
+---
+
+# 64. Moduli stabilization is the difference between a shape and a world
+
+A modulus with a flat potential has no fixed vacuum value.
+
+If a compactification radius \(R\) is a true unstabilized modulus, then saying
+
+\[
+R=R_0
+\]
+
+does not explain why the universe sits there.
+
+Stabilization requires a potential with an appropriate stationary point:
+
+\[
+\frac{\partial V}{\partial\phi_i}=0,
+\]
+
+and a positive/stable mass matrix in the relevant directions:
+
+\[
+M^2_{ij}
+=
+\frac{\partial^2V}
+{\partial\phi_i\partial\phi_j}.
+\]
+
+Thus:
+
+\[
+\text{geometry}
++
+\text{stabilization}
+=
+\text{candidate vacuum}.
+\]
+
+This should become a general project rule:
+
+> a room whose size, shape or coupling is free to drift is not yet a finished physical room.
+
+Fluxes, nonperturbative effects, hidden-sector gauge dynamics and other mechanisms may contribute to stabilization in specific models.
+
+No one mechanism should be assumed universally.
+
+---
+
+# 65. Supersymmetry breaking is a separate question
+
+A \(G_2\)-holonomy compactification may produce four-dimensional \(N=1\) supersymmetry at an intermediate stage.
+
+The observed low-energy world does not exhibit exact unbroken supersymmetry.
+
+Therefore the thesis needs another arrow:
+
+\[
+\text{compactification}
+\rightarrow
+N=1\ \text{effective theory}
+\rightarrow
+\text{SUSY breaking}
+\rightarrow
+\text{soft terms / low-energy spectrum}.
+\]
+
+This is separate from dimensional reduction.
+
+A theory may compactify consistently and still fail phenomenologically because it never generates the correct supersymmetry-breaking scale or particle spectrum.
+
+This reinforces a general lesson:
+
+\[
+\text{unification}
+\neq
+\text{phenomenology}.
+\]
+
+---
+
+# 66. The vacuum is not determined by topology alone
+
+Betti numbers and singularities constrain field content, but they do not uniquely determine:
+
+- coupling constants;
+- Yukawa matrices;
+- vacuum expectation values;
+- supersymmetry-breaking scales;
+- cosmological constant;
+- particle masses.
+
+Those depend on geometric moduli, fluxes, instanton effects, localized sectors and quantum corrections.
+
+Therefore the project's "hidden structure determines the visible world" statement must be qualified:
+
+> hidden geometry constrains and helps generate lower-dimensional physics, but topology alone does not determine the full observed world.
+
+This qualification should travel with every future use of the thesis.
+
+---
+
+# 67. Black holes turn geometry into thermodynamic information
+
+A black hole gives another important category conversion.
+
+For semiclassical Einstein gravity, the entropy is
+
+\[
+S_{\rm BH}
+=
+\frac{k_B c^3 A}
+{4G\hbar}.
+\]
+
+Entropy scales with horizon **area**, not ordinary spatial volume.
+
+This is one of the historical roots of holographic thinking.
+
+The lesson relevant to the project is not that every boundary literally contains a universe.
+
+It is that quantum gravity repeatedly gives boundaries/surfaces an information-theoretic role far richer than ordinary classical intuition suggests.
+
+The project should distinguish:
+
+\[
+\text{geometric boundary}
+\]
+
+from
+
+\[
+\text{entropy/information bound}
+\]
+
+and from
+
+\[
+\text{holographic dual boundary theory}.
+\]
+
+They are related concepts but not interchangeable.
+
+---
+
+# 68. Entanglement can become geometry in holographic formulas
+
+In holographic settings, the Ryu–Takayanagi relation connects boundary entanglement entropy to a bulk extremal/minimal surface area:
+
+\[
+S_A
+=
+\frac{\mathrm{Area}(\gamma_A)}
+{4G_N}
+\]
+
+in its original static form.
+
+This gives an extraordinary but context-dependent category conversion:
+
+\[
+\text{quantum entanglement}
+\leftrightarrow
+\text{bulk geometry}.
+\]
+
+This is important enough to become a major comparator in the project.
+
+But the scope must remain explicit:
+
+- it is a holographic result in appropriate gravitational duals;
+- it is not a universal equation relating all human relations or consciousness to spacetime geometry;
+- it does not prove the project's symbolic House is a holographic spacetime.
+
+Used correctly, it shows that **geometry and information need not be fundamentally independent concepts** in quantum gravity.
+
+---
+
+# 69. Quantum gravity appears to constrain symmetry more strongly than ordinary QFT
+
+Ordinary quantum field theory allows exact global symmetries.
+
+Quantum gravity is widely expected not to.
+
+In AdS/CFT, strong arguments establish the absence of exact bulk global symmetries under the assumptions of the correspondence.
+
+The thesis should therefore distinguish:
+
+### Gauge symmetry
+
+A redundancy/local structure accompanied by gauge fields and charges.
+
+### Global symmetry
+
+A genuine transformation acting on physical states/operators.
+
+### Generalized/higher-form symmetry
+
+A symmetry acting on extended operators.
+
+### Approximate/emergent symmetry
+
+A low-energy symmetry that may be broken by high-energy physics.
+
+This matters for the project because words such as "universal symmetry" should never automatically mean a new exact global symmetry of quantum gravity.
+
+---
+
+# 70. Swampland constraints belong in the paper only as conjectural filters
+
+The swampland program asks whether apparently consistent low-energy effective field theories can fail to admit any ultraviolet completion including quantum gravity.
+
+This is highly relevant to the project's method:
+
+\[
+\text{internally consistent EFT}
+\not\Rightarrow
+\text{consistent quantum gravity}.
+\]
+
+But individual swampland criteria have different evidential status and many remain conjectural.
+
+Therefore the thesis may use the swampland as:
+
+\[
+\text{consistency-question generator},
+\]
+
+not as a set of experimentally established laws.
+
+This creates a useful three-stage filter:
+
+\[
+\text{mathematical consistency}
+\rightarrow
+\text{QFT consistency}
+\rightarrow
+\text{candidate quantum-gravity consistency}.
+\]
+
+---
+
+# 71. Duality means ontology can depend on description
+
+The web of string/M-theory dualities gives a deeper philosophical lesson with a precise mathematical origin.
+
+Two descriptions may use apparently different fundamental objects while yielding equivalent physics.
+
+Examples include transformations exchanging:
+
+- large and small compactification radii;
+- weak and strong coupling;
+- momentum and winding sectors;
+- geometric and brane descriptions.
+
+Thus a theory should not infer ontology directly from one representation.
+
+This is extremely useful for the project:
+
+> "what the object is" may be less invariant than "which relations and observables survive translation."
+
+The thesis should therefore privilege **invariants and maps** over visual similarity.
+
+---
+
+# 72. Exceptional geometry shows that even the coordinate list can be description-dependent
+
+Duality-covariant approaches such as exceptional field theory enlarge the coordinate description so that ordinary coordinates and coordinates conjugate to wrapped-brane charges can be organized together under U-duality groups.
+
+These extended coordinates are constrained; they are not simply extra ordinary spacetime directions.
+
+A section/strong constraint selects a physical slice.
+
+This gives the project an important warning and opportunity:
+
+\[
+\text{extended coordinate}
+\neq
+\text{ordinary physical dimension}.
+\]
+
+But a larger mathematical space may make hidden duality symmetries manifest.
+
+This is a much better external comparator for a non-Euclidean "many-room" project architecture than simply declaring every information coordinate to be another spacetime dimension.
+
+---
+
+# 73. Topology can change
+
+Compactification topology is not necessarily eternally fixed.
+
+String/M-theory contains controlled settings involving flop/conifold-like transitions and other topology-changing processes.
+
+In such situations, cycles can shrink, extra states can become light, and the effective description changes.
+
+The useful project grammar is:
+
+\[
+\text{cycle size}
+\rightarrow 0
+\]
+
+may signal
+
+\[
+\text{old effective description breaks down}
+\]
+
+and
+
+\[
+\text{new degrees of freedom must be included}.
+\]
+
+Again:
+
+\[
+\text{singularity}
+\]
+
+can be a Door between descriptions rather than simply the end of mathematics.
+
+A topology-changing claim in the project, however, must identify an actual geometric family and transition rather than relying on metaphor.
+
+---
+
+# 74. Causality remains a separate constraint
+
+Extra dimensions, entanglement, holography and advanced mathematical descriptions do not automatically permit faster-than-light signaling.
+
+A physical spacetime theory still has a causal structure determined by its metric or equivalent microscopic causal rules.
+
+For a Lorentzian metric,
+
+\[
+ds^2
+=
+g_{MN}dx^Mdx^N,
+\]
+
+the local null cone satisfies
+
+\[
+ds^2=0.
+\]
+
+Any claim that a Door permits causal shortcuts must derive them from an explicit geometry and show that the construction is stable and consistent.
+
+Therefore:
+
+\[
+\text{hidden dimension}
+\neq
+\text{automatic FTL channel}.
+\]
+
+This boundary should be imported whenever the project uses quantum nonlocality, advanced/retarded fields or higher-dimensional language.
+
+---
+
+# 75. Observation itself is a quotient of reality
+
+The observational Door introduced earlier can now be strengthened.
+
+Let the underlying state be
+
+\[
+X\in\mathcal S.
+\]
+
+An experiment returns
+
+\[
+Y
+=
+\mathcal O(X).
+\]
+
+Define observational equivalence:
+
+\[
+X_1\sim_{\mathcal O}X_2
+\quad\Longleftrightarrow\quad
+\mathcal O(X_1)=\mathcal O(X_2).
+\]
+
+Then the observer effectively has access to the quotient
+
+\[
+\mathcal S/\!\sim_{\mathcal O}.
+\]
+
+This is a powerful general concept for the project.
+
+A "lower world" need not literally be lower-dimensional.
+
+It may be the quotient produced by restricted observability.
+
+This connects:
+
+- projection;
+- measurement;
+- inverse problems;
+- hidden variables/degrees of freedom;
+- epistemic limits.
+
+It should be reused far beyond the M-theory pages.
+
+---
+
+# 76. The thesis needs a causal chain, not just a concept cloud
+
+The physical branch should always be read in this direction:
+
+\[
+\boxed{
+\text{UV theory}
+\rightarrow
+\text{background/geometry}
+\rightarrow
+\text{topology + flux + branes}
+\rightarrow
+\text{compactification}
+\rightarrow
+\text{4D effective action}
+\rightarrow
+\text{vacuum/stabilization}
+\rightarrow
+\text{symmetry breaking}
+\rightarrow
+\text{spectrum/couplings}
+\rightarrow
+\text{quantum state}
+\rightarrow
+\text{observables}
+}
+\]
+
+Evidence should normally flow backward:
+
+\[
+\text{data}
+\rightarrow
+\text{likelihood over effective models}
+\rightarrow
+\text{constraints on compactifications}
+\rightarrow
+\text{constraints on UV completions}.
+\]
+
+This prevents the project from jumping directly from a symbolic correspondence to an empirical conclusion.
+
+---
+
+# 77. A reusable dimensional type system for the whole project
+
+Every occurrence of the word **dimension** should receive a type.
+
+Define
+
+\[
+\mathrm{DimType}
+\in
+\{
+P,S,C,E,H,Q,M,F
+\},
+\]
+
+where:
+
+- \(P\): project/symbolic grade;
+- \(S\): spacetime dimension;
+- \(C\): compact/internal dimension;
+- \(E\): effective/spectral dimension;
+- \(H\): Hilbert-space dimension;
+- \(Q\): configuration/state-space dimension;
+- \(M\): moduli-space dimension;
+- \(F\): fractal/information dimension when explicitly defined.
+
+Then write, for example,
+
+\[
+D^{(S)}=11,
+\]
+
+\[
+D^{(C)}=7,
+\]
+
+\[
+D^{(P)}=5\ \text{Door},
+\]
+
+rather than using the naked symbol \(D\) for all three.
+
+This simple notation can prevent a large fraction of the conceptual errors across the entire project.
+
+---
+
+# 78. A reusable correspondence contract
+
+Every science ↔ project comparison should be stored as
+
+\[
+\mathcal A
+=
+(
+S,
+T,
+F,
+I,
+B,
+P,
+\mathcal F
+),
+\]
+
+where:
+
+- \(S\): source/project object;
+- \(T\): scientific target/comparator;
+- \(F:S\to T\): proposed mapping;
+- \(I\): structure/invariants actually preserved;
+- \(B\): boundary/mismatch — what the analogy does **not** preserve;
+- \(P\): prediction or useful consequence if promoted physically;
+- \(\mathcal F\): falsifier/failure condition.
+
+Example:
+
+\`\`\`text
+S = Door
+T = KK compactification threshold
+F = Door -> ER/(hbar c) ~ 1 crossover
+I = threshold / change of effective description
+B = does not preserve spiritual/moral meaning;
+    is not a portal or choice-point
+P = mode spacing ~ 1/R
+Falsifier = no predicted KK structure at the claimed scale
+\`\`\`
+
+This is the central translation tool the rest of the project has been missing.
+
+---
+
+# 79. Correspondence maturity should be graded separately from theory maturity
+
+The existing T0–T5 scale measures physical-theory maturity.
+
+Add a second scale for **correspondence strength**:
+
+### C0 — poetic resemblance
+
+Only imagery or wording overlaps.
+
+### C1 — structural analogy
+
+Both objects share a pattern such as boundary, branching or recurrence.
+
+### C2 — typed mathematical map
+
+A real map preserves declared mathematical structure.
+
+### C3 — derived physical embedding
+
+The project object is embedded into an explicit physical model.
+
+### C4 — distinctive prediction
+
+The correspondence produces a quantitative consequence not inserted by hand.
+
+### C5 — empirical support
+
+The distinctive consequence is supported by observation/experiment.
+
+This prevents a beautiful analogy from being mistaken for a mature physical model.
+
+A model may simultaneously be
+
+\[
+T2,\ C1.
+\]
+
+That is useful information.
+
+---
+
+# 80. Reusable translation dictionary for other project rooms
+
+The thesis can now supply disciplined default comparators for the wider site.
+
+| Project term | Strong mathematical/scientific comparator | Boundary |
+|---|---|---|
+| **Door** | interface, channel, compactification threshold, duality, phase boundary | not automatically a literal portal |
+| **Axis** | vector field, symmetry generator, RG/resolution scale | not automatically an extra coordinate |
+| **Spiral** | recurrence with scale displacement, holonomy, limit cycle | these are different mechanisms |
+| **Room** | sector, chart, fiber, subsystem, basin, effective theory | must declare which |
+| **House** | ambient state/configuration space or global theory | not necessarily physical spacetime |
+| **Root** | dependency/provenance structure, UV degrees, source/boundary data | symbolic biological meaning remains separate |
+| **Tree** | branching state graph, vacuum graph, dependency hierarchy | not automatically Everett branches |
+| **Eye** | observable, measurement map, POVM, inference interface | observer does not create arbitrary reality |
+| **Seed** | initial condition, generating data, compact parameter set | not automatically a physical particle |
+| **Ladder** | chain of maps, scales, embeddings, coarse-grainings | levels need not be spacetime dimensions |
+| **Flow/Spirit** | propagator, current, dynamical flow, information transfer | theological meaning is not physical identity |
+| **Needle** | bottleneck, critical surface, singular limit, narrow channel | requires specified variables |
+| **Boundary** | interface carrying conditions/fields/anomaly inflow | not an empty line |
+| **Fruit** | effective observable/excitation/output | outcome depends on the declared mechanism |
+
+This table is not an identity dictionary.
+
+It is a **candidate-comparator dictionary**.
+
+Every actual use still requires the correspondence contract from the previous section.
+
+---
+
+# 81. The project can now distinguish ontology, dynamics, information and observation
+
+Many earlier objects were made to perform all four jobs simultaneously.
+
+The thesis should enforce four layers:
+
+### Ontology
+
+What objects exist in the model?
+
+\[
+\mathcal O_{\rm nt}.
+\]
+
+### Dynamics
+
+How do they evolve?
+
+\[
+\dot X=F(X).
+\]
+
+### Information
+
+Which distinctions/correlations exist and are recoverable?
+
+\[
+\mathcal I.
+\]
+
+### Observation
+
+What does a particular observer/experiment actually access?
+
+\[
+Y=\mathcal O(X).
+\]
+
+These must not be collapsed.
+
+For example:
+
+\`\`\`text
+hidden object exists
+\`\`\`
+
+does not imply
+
+\`\`\`text
+hidden object dynamically affects this experiment,
+\`\`\`
+
+which does not imply
+
+\`\`\`text
+the effect is informationally recoverable,
+\`\`\`
+
+which does not imply
+
+\`\`\`text
+our current apparatus can observe it.
+\`\`\`
+
+This four-layer separation may be useful across nearly every scientific and metaphysical room in the project.
+
+---
+
+# 82. The fullest current statement
+
+The 11D thesis now reaches a more complete form:
+
+> A higher-dimensional theory is not understood merely by counting dimensions. One must specify its geometry, topology, differential forms, fluxes, extended charged objects, supersymmetry algebra, boundaries, singular loci, anomaly structure, quantum state, compactification maps, effective action, moduli potential, symmetry breaking, observational map and consistency conditions. M-theory is especially valuable as a comparator because it demonstrates multiple forms of category conversion: metric components become gauge and scalar fields; compact momentum becomes particle charge and mass; cycles and Betti numbers become spectra and multiplets; wrapped M2/M5 branes become lower-dimensional objects; boundaries can carry gauge sectors required by anomaly cancellation; singularities can generate gauge enhancement and chiral matter; form fields imply extended charges; nonperturbative branes generate effective potentials; holographic duality shows that lower dimensionality need not mean less information; and matrix/duality-covariant formulations warn that classical coordinates may themselves be emergent or representation-dependent. The Potato project's Door, Axis, Spiral, House, Room, Root, Tree, Eye, Seed and Ladder can therefore be given disciplined scientific comparators only through typed correspondence contracts. The goal is not to make symbolism "true by physics," but to use physics to ask exactly what structure a symbol preserves, where the comparison breaks, what mathematical object it becomes, and what would have to be observed before the comparison could be promoted from metaphor to physical theory.
+
+---
+
+# Additional external physics spine
+
+- P. Hořava & E. Witten, **Heterotic and Type I String Dynamics from Eleven Dimensions**:  
+  https://arxiv.org/abs/hep-th/9510209
+
+- P. Hořava & E. Witten, **Eleven-Dimensional Supergravity on a Manifold with Boundary**:  
+  https://arxiv.org/abs/hep-th/9603142
+
+- B. Acharya & E. Witten, **Chiral Fermions from Manifolds of G2 Holonomy**:  
+  https://arxiv.org/abs/hep-th/0109152
+
+- D. Freed, J. Harvey, R. Minasian & G. Moore, **Gravitational Anomaly Cancellation for M-Theory Fivebranes**:  
+  https://arxiv.org/abs/hep-th/9803205
+
+- P. K. Townsend, **p-Brane Democracy**:  
+  https://arxiv.org/abs/hep-th/9507048
+
+- E. Sezgin, **The M-Algebra**:  
+  https://arxiv.org/abs/hep-th/9609086
+
+- D. Sorokin & P. K. Townsend, **M-theory superalgebra from the M-5-brane**:  
+  https://arxiv.org/abs/hep-th/9708003
+
+- D. Gaiotto, A. Kapustin, N. Seiberg & B. Willett, **Generalized Global Symmetries**:  
+  https://arxiv.org/abs/1412.5148
+
+- A. Braun et al., **Infinitely Many M2-instanton Corrections to M-theory on G2-manifolds**:  
+  https://arxiv.org/abs/1803.02343
+
+- S. Ryu & T. Takayanagi, **Holographic Derivation of Entanglement Entropy from AdS/CFT**:  
+  https://arxiv.org/abs/hep-th/0603001
+
+- D. Harlow & H. Ooguri, **Symmetries in quantum field theory and quantum gravity**:  
+  https://arxiv.org/abs/1810.05338
+
+- C. Vafa, **The String Landscape and the Swampland**:  
+  https://arxiv.org/abs/hep-th/0509212
+
+- N. Obers & B. Pioline, **U-duality and M-Theory**:  
+  https://arxiv.org/abs/hep-th/9809039
+
+- D. Berman & D. Thompson, **Duality Symmetric String and M-Theory**:  
+  https://arxiv.org/abs/1306.2643
+
+- B. Greene, K. Schalm & G. Shiu, **Dynamical Topology Change in M Theory**:  
+  https://arxiv.org/abs/hep-th/0010207
