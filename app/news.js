@@ -68,7 +68,22 @@ function storyCard(r,lead=false){
 function renderLatest(host,rows,maxFeed){const lead=$('[data-news-lead]',host),feed=$('[data-news-list]',host);if(!rows.length){if(lead)lead.innerHTML='';if(feed)feed.innerHTML='<div class="news-empty">No live items reached the browser for this query and time window. Try a broader lens, longer window, or refresh.</div>';return}if(lead)lead.innerHTML=storyCard(rows[0],true)+(rows[1]?storyCard(rows[1],false):'');if(feed)feed.innerHTML=rows.slice(2,maxFeed).map(r=>storyCard(r)).join('')}
 function renderClusters(host,clusters){const el=$('[data-news-clusters]',host);if(!el)return;el.innerHTML=clusters.length?clusters.map((g,i)=>'<article class="news-cluster"><div class="news-cluster-head"><div><div class="news-cluster-meta">Repeated coverage · cluster '+(i+1)+'</div><h3>'+esc(g.title)+'</h3></div><div class="news-cluster-count">'+g.domains+'<small>source domains</small></div></div><div class="news-cluster-links">'+g.items.map(r=>'<a class="news-cluster-link" href="'+esc(r.url)+'" target="_blank" rel="noopener noreferrer"><span>'+esc(r.source||r.provider)+'</span><b>'+esc(r.title)+'</b><em>'+esc(relativeTime(r.published))+'</em></a>').join('')+'</div></article>').join(''):'<div class="news-empty">No repeated-coverage clusters cleared the current overlap rule in this sample. That does not mean the underlying events are unimportant or unreported.</div>'}
 function providerDescription(id){return id==='gdelt'?'Broad publisher discovery via GDELT':id==='publisher-rss'?'Publisher-supplied RSS excerpts and metadata':id==='hacker-news'?'Community technology link stream':id==='spaceflight-news'?'Specialist space reporting index':id}
-function renderSourceLanes(host,rows,providers,limit){const el=$('[data-news-source-lanes]',host);if(!el)return;el.innerHTML=providers.map(id=>{const items=rows.filter(r=>r.providerId===id).slice(0,limit);const name=items[0]?.provider||(id==='spaceflight-news'?'Spaceflight News':id==='hacker-news'?'Hacker News':id==='publisher-rss'?'Publisher RSS':'GDELT');return'<article class="news-source-lane"><div class="news-source-lane-head"><b>'+esc(name)+'</b><span>'+esc(providerDescription(id))+' · '+items.length+' shown</span></div>'+(items.length?items.map(r=>'<a class="news-source-item" href="'+esc(r.url)+'" target="_blank" rel="noopener noreferrer"><b>'+esc(r.title)+'</b><span>'+esc(r.source)+' · '+esc(relativeTime(r.published))+'</span></a>').join(''):'<div class="news-empty">No items from this provider in the active view.</div>')+'</article>'}).join('')}
+function providerContract(config,id){return(config.providers||[]).find(row=>row.id===id)||{}}
+function publisherFeedRegister(config){
+ const feeds=config.publisher_feeds||[];if(!feeds.length)return'';
+ return'<div class="news-feed-register"><div class="news-feed-register-title">Publisher feed register</div>'+feeds.map(feed=>{const terms=safeUrl(feed.terms_url);return'<div class="news-feed-contract"><div><b>'+esc(feed.name)+'</b><span>'+esc(feed.scope||'publisher feed')+'</span></div><div><span class="news-contract-chip">'+esc(feed.reuse_mode||'publisher terms')+'</span><p>'+esc(feed.reuse_note||feed.source_note||'Feed use remains subject to the publisher terms.')+'</p>'+(terms?'<a href="'+esc(terms)+'" target="_blank" rel="noopener noreferrer">Terms / source note ↗</a>':'')+'</div></div>'}).join('')+'</div>';
+}
+function renderSourceLanes(host,rows,providers,limit,config){
+ const el=$('[data-news-source-lanes]',host);if(!el)return;
+ el.innerHTML=providers.map(id=>{
+   const items=rows.filter(r=>r.providerId===id).slice(0,limit),contract=providerContract(config,id);
+   const name=contract.name||items[0]?.provider||(id==='spaceflight-news'?'Spaceflight News':id==='hacker-news'?'Hacker News':id==='publisher-rss'?'Publisher RSS':'GDELT');
+   const meta='<div class="news-source-contract"><div class="news-source-contract-chips"><span>'+esc(contract.display_mode||contract.source_class||'external source')+'</span><span>'+esc(contract.access||'external access')+'</span></div><p>'+esc(contract.boundary||providerDescription(id))+'</p></div>';
+   const register=id==='publisher-rss'?publisherFeedRegister(config):'';
+   const stories=items.length?items.map(r=>'<a class="news-source-item" href="'+esc(r.url)+'" target="_blank" rel="noopener noreferrer"><b>'+esc(r.title)+'</b><span>'+esc(r.source)+' · '+esc(relativeTime(r.published))+'</span></a>').join(''):'<div class="news-empty">No items from this provider in the active view.</div>';
+   return'<article class="news-source-lane"><div class="news-source-lane-head"><b>'+esc(name)+'</b><span>'+esc(providerDescription(id))+' · '+items.length+' shown</span></div>'+meta+stories+register+'</article>';
+ }).join('');
+}
 function sourceBalancedBriefing(rows,providers,limit=12){
  const queues=new Map(providers.map(id=>[id,rows.filter(r=>r.providerId===id)]));
  const seenSources=new Set(),out=[];let progress=true;
@@ -113,7 +128,7 @@ async function bootFull(host,config){
    const groups=await Promise.all(providers.map(id=>providerLoad(host,id,q,timespan,force,ms,config,category)));force=false;
    const allRows=dedupe(groups.flat()),rows=readable?allRows.filter(r=>clean(r.summary).length>0):allRows,clusters=coverageClusters(rows,config.presentation?.max_clusters||6,config.presentation?.max_cluster_items||4);
    const count=$('[data-news-count]',host),updated=$('[data-news-updated]',host);if(count)count.textContent=rows.length+' items';if(updated)updated.textContent='refreshed '+new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
-   renderLatest(host,rows,config.presentation?.max_feed||36);renderBriefing(host,rows,providers);renderClusters(host,clusters);renderSourceLanes(host,rows,providers,config.presentation?.source_lane_items||5);renderPulse(host,rows,clusters,providers);
+   renderLatest(host,rows,config.presentation?.max_feed||36);renderBriefing(host,rows,providers);renderClusters(host,clusters);renderSourceLanes(host,rows,providers,config.presentation?.source_lane_items||5,config);renderPulse(host,rows,clusters,providers);
  }
  tabs?.addEventListener('click',e=>{const b=e.target.closest('[data-news-category]');if(!b)return;category=b.dataset.newsCategory;custom='';if(input)input.value='';press();persist();run()});
  lenses?.addEventListener('click',e=>{const b=e.target.closest('[data-news-lens]');if(!b)return;lens=b.dataset.newsLens||'';if(lens)readable=false;press();persist();run()});
