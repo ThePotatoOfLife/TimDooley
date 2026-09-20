@@ -1,5 +1,5 @@
 {
-  "version": "2.1.0",
+  "version": "2.2.0",
   "updated": "2026-09-20",
   "authority": "live-news-source-contract",
   "purpose": "Declare the external, non-owning current-events sources, publisher excerpt feeds, viewing lenses, time horizons and geographic-mentions projection used by Current World. The page may display publisher-supplied RSS descriptions, thumbnails and metadata in-page, but does not mirror full copyrighted articles.",
@@ -33,7 +33,9 @@
       "endpoint": "https://api.gdeltproject.org/api/v2/doc/doc",
       "documentation": "https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/",
       "provenance": "Article titles, publication times, source domains, source-country metadata and links are supplied by GDELT's index of external publishers.",
-      "boundary": "GDELT is a discovery/index layer. The linked publisher remains the source for the article; source-country metadata describes the publisher/source context and must not be presented as the event location."
+      "boundary": "GDELT is a discovery/index layer. The linked publisher remains the source for the article; source-country metadata describes the publisher/source context and must not be presented as the event location.",
+      "display_mode": "headline discovery",
+      "reuse_mode": "index metadata + publisher links"
     },
     {
       "id": "publisher-rss",
@@ -45,7 +47,9 @@
       "endpoint": "https://api.rss2json.com/v1/api.json",
       "documentation": "https://rss2json.com/docs",
       "provenance": "Titles, descriptions, thumbnails, categories, publication times and links come from each publisher's own RSS payload as exposed by the feed adapter.",
-      "boundary": "Only publisher-supplied feed excerpts and metadata are rendered. The project does not fetch, reconstruct or republish full article bodies; the original publisher remains the full-report destination."
+      "boundary": "Only publisher-supplied feed excerpts and metadata are rendered. The project does not fetch, reconstruct or republish full article bodies; the original publisher remains the full-report destination.",
+      "display_mode": "publisher excerpt",
+      "reuse_mode": "publisher RSS metadata/excerpts subject to each publisher's terms"
     },
     {
       "id": "hacker-news",
@@ -57,7 +61,9 @@
       "endpoint": "https://hacker-news.firebaseio.com/v0/",
       "documentation": "https://github.com/HackerNews/API",
       "provenance": "Titles, timestamps and outbound URLs are community-submitted Hacker News items.",
-      "boundary": "A Hacker News item is a community link, not independent journalistic verification."
+      "boundary": "A Hacker News item is a community link, not independent journalistic verification.",
+      "display_mode": "community link",
+      "reuse_mode": "public community API metadata + outbound links"
     },
     {
       "id": "spaceflight-news",
@@ -69,7 +75,9 @@
       "endpoint": "https://api.spaceflightnewsapi.net/v4/articles/",
       "documentation": "https://api.spaceflightnewsapi.net/v4/docs/",
       "provenance": "The API aggregates article metadata from spaceflight publishers and links to the original story.",
-      "boundary": "The aggregator is a discovery layer; claims should be evaluated at the linked publisher."
+      "boundary": "The aggregator is a discovery layer; claims should be evaluated at the linked publisher.",
+      "display_mode": "specialist summary",
+      "reuse_mode": "specialist aggregation metadata + publisher links"
     }
   ],
   "horizons": [
@@ -316,7 +324,10 @@
         "climate",
         "culture"
       ],
-      "source_note": "Euronews publicly advertises RSS feeds/widgets for webpage embedding."
+      "source_note": "Euronews publicly advertises RSS feeds/widgets for webpage embedding.",
+      "reuse_mode": "official RSS / embeddable publisher service",
+      "reuse_note": "Euronews publicly offers RSS feeds and widgets for embedding on webpages; feed access remains subject to Euronews terms of use.",
+      "terms_url": "https://www.euronews.com/widgets"
     },
     {
       "id": "bbc-world",
@@ -332,7 +343,10 @@
         "science",
         "technology",
         "climate"
-      ]
+      ],
+      "reuse_mode": "RSS with attribution conditions",
+      "reuse_note": "BBC terms permit adding the BBC News RSS feed to a website with prominent BBC attribution for personal use; business use requires permission/licensing.",
+      "terms_url": "https://downloads.bbc.co.uk/usingthebbc/bbc_terms_of_use_19September2022english.pdf"
     },
     {
       "id": "dw",
@@ -349,7 +363,10 @@
         "technology",
         "climate",
         "culture"
-      ]
+      ],
+      "reuse_mode": "terms-bound partner RSS",
+      "reuse_note": "DW describes customized RSS/content-box integration for partners and professional website operators; treat reuse as terms-bound rather than unrestricted.",
+      "terms_url": "https://www.dw.com/downloads/35915853/contentbox_english.pdf"
     },
     {
       "id": "al-jazeera",
@@ -363,7 +380,14 @@
         "politics",
         "economy",
         "climate"
-      ]
+      ],
+      "reuse_mode": "link/discovery pending explicit reuse permission",
+      "reuse_note": "Al Jazeera's general terms reserve content rights and restrict republication without permission; retain direct full-report linking and treat any feed excerpt reuse conservatively.",
+      "terms_url": "https://www.aljazeera.com/terms-and-conditions"
     }
-  ]
+  ],
+  "source_transparency": {
+    "rule": "Access method and reuse mode are provenance metadata, not quality ratings. They explain why a card can be displayed and how much content may appear on-page.",
+    "no_ranking": true
+  }
 }
