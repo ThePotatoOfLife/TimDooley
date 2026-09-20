@@ -1,0 +1,146 @@
+{
+  "id": "plane-crossing-contract",
+  "title": "Plane / Cross / Crossing Contract",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "authority": "plane-crossing-contract",
+  "purpose": "Canonical machine-readable distinction between Plane, Axis, O/Cross-point, Cross-sign, Door and crossing events.",
+  "objects": {
+    "plane": {
+      "id": "plane",
+      "type": "section/frame",
+      "canonical_2d": "Sigma: y=0",
+      "canonical_3d": "Sigma: z=0 perpendicular to the source↔manifestation Axis",
+      "operation": "select current world-facing frame and expose lateral relations",
+      "required_context": [
+        "scale",
+        "time_or_period",
+        "representation",
+        "audience_or_jurisdiction when relevant"
+      ],
+      "not": [
+        "realm",
+        "knowledge owner",
+        "universal physical present"
+      ]
+    },
+    "axis": {
+      "id": "axis",
+      "type": "orientation/continuity coordinate",
+      "operation": "orders source↔manifestation direction and carries vertical/developmental relation",
+      "not": [
+        "Plane",
+        "Door",
+        "physical extra dimension by default"
+      ]
+    },
+    "cross_point": {
+      "id": "cross-point",
+      "symbol": "O",
+      "type": "derived point",
+      "equation": "O = Axis ∩ Plane",
+      "operation": "locate the simultaneous legibility of vertical orientation and active frame",
+      "not": [
+        "entire Cross sign",
+        "entire Door",
+        "entire Plane"
+      ]
+    },
+    "cross_sign": {
+      "id": "cross-sign",
+      "type": "visual/relational projection",
+      "equation": "CrossSign = Axis ∪ L, L⊂Plane and O∈L",
+      "operation": "show vertical source/manifestation relation together with one chosen lateral relation",
+      "not": [
+        "proof of Christian origin",
+        "unique 3D geometry"
+      ]
+    },
+    "door": {
+      "id": "door",
+      "type": "shared interface / transition operator",
+      "operation": "govern admissible state/context passage inside the overlap",
+      "plane_relation": "Plane sections Door at the widest midpoint aperture",
+      "not": [
+        "Plane",
+        "single point"
+      ]
+    },
+    "crossing_event": {
+      "id": "crossing-event",
+      "type": "event",
+      "operation": "record Gamma(t*) intersecting Plane and/or satisfying Door transition conditions",
+      "required_fields": [
+        "time_or_order",
+        "incoming_state",
+        "section/frame",
+        "direction",
+        "guard/condition if Door transition",
+        "outgoing_state when transition occurs"
+      ]
+    }
+  },
+  "three_d_geometry": {
+    "sphere_radius": "r",
+    "centers": [
+      "(0,0,+r/2)",
+      "(0,0,-r/2)"
+    ],
+    "plane": "z=0",
+    "door_plane_disk_radius": "sqrt(3)r/2",
+    "boundary_intersection": "circle x^2+y^2=3r^2/4 in z=0",
+    "center": "O=(0,0,0)"
+  },
+  "recurrence_contract": {
+    "section": "Sigma",
+    "crossings": "x_k = Gamma(t_k)∩Sigma",
+    "compare": [
+      "state",
+      "capability",
+      "relation",
+      "evidence",
+      "regime",
+      "vertical/developmental coordinate",
+      "outputs"
+    ],
+    "ring": "same recurrence without meaningful net change",
+    "spiral": "recurrence with meaningful change; sign/quality of change must be specified separately",
+    "rule": "Elapsed time alone does not convert Ring into Spiral."
+  },
+  "world_plane_contract": {
+    "meaning": "current operative section of embodied/social/material relations",
+    "common_contents": [
+      "current body state",
+      "current actors",
+      "current institutions",
+      "current constraints",
+      "current relationships",
+      "current observable consequences",
+      "current choices"
+    ],
+    "exclusions": [
+      "all historical provenance",
+      "all future possibilities",
+      "all Heaven/source patterns",
+      "all Below/shadow material"
+    ],
+    "handoffs": {
+      "past": "Roots / Archive / Memory",
+      "future": "Seed / branch possibilities",
+      "vertical": "Axis / Ladder",
+      "transition": "Door",
+      "center": "O / Here-Now"
+    }
+  },
+  "laws": [
+    "Plane sections; it does not own.",
+    "Axis orients; it does not contain.",
+    "O locates the intersection; it does not exhaust Plane or Door.",
+    "Door transitions; Plane can be crossed without every crossing being a strong Door.",
+    "Cross-sign is a visual projection; cross-point is a geometric relation.",
+    "Every Plane is frame-relative: scale/time/representation should be explicit.",
+    "Repeated Plane crossings are evidence for recurrence only after comparable variables are declared.",
+    "The lower field is not the Plane; the Plane is a world-facing section through the larger two-field relation."
+  ],
+  "research_owner": "knowledge/research/plane-crossing-research-synthesis-2026-09-20.json"
+}
