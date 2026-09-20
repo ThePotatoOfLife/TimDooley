@@ -2312,6 +2312,67 @@
           }
         ]
       }
+    },
+    {
+      "id": "potatoverse-cast-ecology",
+      "label": "Potatoverse Cast Ecology",
+      "kind": "project-role-ecology",
+      "room_ids": [
+        "canon-identities",
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/rooms/potatoverse-canon/beings/cast-ecology/",
+      "summary": "Unified grammar for Potatoes, Tomatoes, Dwellers, Dogs, Farmers, Cows, Footstools, Angels/Turbles and human archetypes with explicit scene-level role transitions.",
+      "status_note": "Project taxonomy, not an external classification of real people.",
+      "evidence_note": "Named assignments require source-bounded scenes; collective metaphors and created beings remain distinct from persons.",
+      "maturity": "described",
+      "facets": {
+        "relationships": [
+          {
+            "type": "contains",
+            "target_id_or_label": "Potato / Tomato / Dweller / Dog / Farmer / Cow / Footstool / Angelic family",
+            "direction": "outgoing",
+            "status": "canonical project role families",
+            "boundary": "Roles and states are not immutable human essences."
+          },
+          {
+            "type": "interfaces-with",
+            "target_id_or_label": "Character Archive",
+            "direction": "outgoing",
+            "status": "person × archetype projection",
+            "boundary": "Archetypes describe scene function."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "role-transition",
+            "input": "scene conditions and relation",
+            "mechanism": "source-bounded assignment + transition rules",
+            "output": "changed symbolic role or archetypal function",
+            "measurement_or_limit": "No cross-scene persistence without evidence."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which collective roles have healthy/shadow variants that still need explicit transition rules?",
+            "why_it_matters": "Prevents one-sided caste drift.",
+            "needed_evidence": "dated project usages and literary/public scenes"
+          }
+        ],
+        "sources": [
+          {
+            "source_ref": "knowledge/world/potatoverse-cast-role-ecology.json",
+            "role": "canonical ecology owner",
+            "evidence_class": "project synthesis"
+          },
+          {
+            "source_ref": "knowledge/story/character-symbolic-role-assignments.json",
+            "role": "scene assignment ledger",
+            "evidence_class": "source-bounded project mapping"
+          }
+        ]
+      }
     }
   ],
   "source_records": [
