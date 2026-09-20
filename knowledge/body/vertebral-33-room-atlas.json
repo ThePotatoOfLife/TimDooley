@@ -1,0 +1,774 @@
+{
+  "id": "vertebral-33-room-atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "title": "The 33 Vertebral Rooms — Bone, Canal, Nerve, River and Project Gate",
+  "status": "canonical 33-room vertebral specialist atlas",
+  "purpose": "Give each conventional vertebral element an individual room for Life & Body while keeping bony, neural, fluid, vascular and symbolic coordinate systems distinct.",
+  "master_rules": [
+    "33 is the conventional vertebral-element count: 7 cervical + 12 thoracic + 5 lumbar + 5 sacral + 4 coccygeal.",
+    "There are 31 paired spinal nerves; C8 has no corresponding C8 vertebra.",
+    "C1–C7 spinal nerves exit above same-numbered vertebrae; C8 exits C7–T1; thoracic/lumbar nerves exit below same-numbered vertebrae.",
+    "Adult spinal cord commonly ends around L1–L2, so lower rooms contain cauda-equina roots/filum and fluid spaces rather than spinal-cord tissue.",
+    "Dural/subarachnoid sac typically continues to about S2; below it, roots/filum continue but the normal CSF-filled lumbar cistern does not.",
+    "Dermatomes/myotomes are overlapping clinical root maps, not properties of vertebral bones.",
+    "Sacral/coccygeal elements remain addressable as project rooms despite adult fusion."
+  ],
+  "counts": {
+    "rooms": 33,
+    "cervical": 7,
+    "thoracic": 12,
+    "lumbar": 5,
+    "sacral": 5,
+    "coccygeal": 4
+  },
+  "rooms": [
+    {
+      "id": "vertebra-c1",
+      "level": "C1",
+      "region": "cervical",
+      "regional_index": 1,
+      "room_name": "Atlas — Skull-Bearing Room",
+      "distinctive_anatomy": [
+        "Ring-shaped atlas; no true vertebral body or spinous process",
+        "lateral masses articulate with occipital condyles",
+        "vertebral-artery groove on posterior arch"
+      ],
+      "canal_contents": "Spinal cord, meninges and subarachnoid CSF are present at this vertebral level; lower cervical levels contain the cervical enlargement.",
+      "neural_relation": "C1 spinal nerve exits above the C1 vertebra; the next cervical nerve exits below.",
+      "root_function_note": "C1 nerve is predominantly motor/proprioceptive with little/no consistent cutaneous dermatome.",
+      "vascular_note": "Vertebral arteries curve around the atlas before entering the skull.",
+      "project_role": [
+        "Atlas",
+        "support",
+        "cranial hinge"
+      ],
+      "room_question": "What must be supported before the head can orient?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-c2",
+      "level": "C2",
+      "region": "cervical",
+      "regional_index": 2,
+      "room_name": "Axis — Pivot Room",
+      "distinctive_anatomy": [
+        "Dens projects upward as pivot for atlas/head rotation",
+        "strong atlanto-axial ligament/joint complex"
+      ],
+      "canal_contents": "Spinal cord, meninges and subarachnoid CSF are present at this vertebral level; lower cervical levels contain the cervical enlargement.",
+      "neural_relation": "C2 spinal nerve exits above the C2 vertebra; the next cervical nerve exits below.",
+      "root_function_note": "C2 contributes posterior scalp/upper-neck sensation; maps overlap.",
+      "vascular_note": "Cervical transverse foramina and segmental vessels lie nearby; vertebral-artery anatomy varies.",
+      "project_role": [
+        "Axis",
+        "pivot",
+        "orientation"
+      ],
+      "room_question": "How can rotation occur around a stable axis?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-c3",
+      "level": "C3",
+      "region": "cervical",
+      "regional_index": 3,
+      "room_name": "Upper Cervical Conduction Room",
+      "distinctive_anatomy": [
+        "Typical cervical vertebra with transverse foramina",
+        "upper cervical cord and segmental roots"
+      ],
+      "canal_contents": "Spinal cord, meninges and subarachnoid CSF are present at this vertebral level; lower cervical levels contain the cervical enlargement.",
+      "neural_relation": "C3 spinal nerve exits above the C3 vertebra; the next cervical nerve exits below.",
+      "root_function_note": "C3 contributes neck sensation and motor control.",
+      "vascular_note": "Cervical transverse foramina and segmental vessels lie nearby; vertebral-artery anatomy varies.",
+      "project_role": [
+        "upper Ladder",
+        "conduction"
+      ],
+      "room_question": "How does the upper Ladder distribute control into neck and upper limb?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-c4",
+      "level": "C4",
+      "region": "cervical",
+      "regional_index": 4,
+      "room_name": "Breath Bridge Room",
+      "distinctive_anatomy": [
+        "Typical cervical vertebra",
+        "C3–C5 phrenic motor pool makes this region important to diaphragm control"
+      ],
+      "canal_contents": "Spinal cord, meninges and subarachnoid CSF are present at this vertebral level; lower cervical levels contain the cervical enlargement.",
+      "neural_relation": "C4 spinal nerve exits above the C4 vertebra; the next cervical nerve exits below.",
+      "root_function_note": "C4 contributes lower-neck/shoulder sensation and joins C3/C5 in phrenic control of diaphragm.",
+      "vascular_note": "Cervical transverse foramina and segmental vessels lie nearby; vertebral-artery anatomy varies.",
+      "project_role": [
+        "Breath bridge",
+        "upper Ladder"
+      ],
+      "room_question": "Where does the Ladder become literal breath mechanics?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-c5",
+      "level": "C5",
+      "region": "cervical",
+      "regional_index": 5,
+      "room_name": "Shoulder/Arm Gateway Room",
+      "distinctive_anatomy": [
+        "Lower cervical enlargement region",
+        "major upper-limb motor/sensory roots begin to dominate"
+      ],
+      "canal_contents": "Spinal cord, meninges and subarachnoid CSF are present at this vertebral level; lower cervical levels contain the cervical enlargement.",
+      "neural_relation": "C5 spinal nerve exits above the C5 vertebra; the next cervical nerve exits below.",
+      "root_function_note": "C5 contributes shoulder/lateral upper-arm sensation and shoulder-abduction/elbow-flexion motor pools.",
+      "vascular_note": "Cervical transverse foramina and segmental vessels lie nearby; vertebral-artery anatomy varies.",
+      "project_role": [
+        "upper Ladder",
+        "conduction"
+      ],
+      "room_question": "How does the upper Ladder distribute control into neck and upper limb?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-c6",
+      "level": "C6",
+      "region": "cervical",
+      "regional_index": 6,
+      "room_name": "Upper-Limb Conduction Room",
+      "distinctive_anatomy": [
+        "Lower cervical enlargement region",
+        "vertebral artery usually enters transverse foramen at C6"
+      ],
+      "canal_contents": "Spinal cord, meninges and subarachnoid CSF are present at this vertebral level; lower cervical levels contain the cervical enlargement.",
+      "neural_relation": "C6 spinal nerve exits above the C6 vertebra; the next cervical nerve exits below.",
+      "root_function_note": "C6 contributes thumb/lateral forearm sensation and wrist-extension/elbow-flexion motor pools.",
+      "vascular_note": "Vertebral arteries commonly enter the transverse foramina at C6 and ascend toward C1.",
+      "project_role": [
+        "upper Ladder",
+        "conduction"
+      ],
+      "room_question": "How does the upper Ladder distribute control into neck and upper limb?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-c7",
+      "level": "C7",
+      "region": "cervical",
+      "regional_index": 7,
+      "room_name": "Prominent Threshold Room",
+      "distinctive_anatomy": [
+        "Vertebra prominens; long palpable spinous process",
+        "cervicothoracic transition",
+        "C8 nerve exits below C7 although there is no C8 vertebra"
+      ],
+      "canal_contents": "Spinal cord, meninges and subarachnoid CSF are present at this vertebral level; lower cervical levels contain the cervical enlargement.",
+      "neural_relation": "C7 exits above C7; C8 exits between C7 and T1.",
+      "root_function_note": "C7 contributes middle-finger sensation and elbow/finger extension motor pools.",
+      "vascular_note": "Cervical transverse foramina and segmental vessels lie nearby; vertebral-artery anatomy varies.",
+      "project_role": [
+        "Throat→Heart threshold",
+        "upper Ladder"
+      ],
+      "room_question": "How does the upper Ladder distribute control into neck and upper limb?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-t1",
+      "level": "T1",
+      "region": "thoracic",
+      "regional_index": 1,
+      "room_name": "T1 — Upper Thoracic Room",
+      "distinctive_anatomy": [
+        "Rib-bearing thoracic vertebra with costal facets",
+        "Rib-1 articulation is atypical; cervicothoracic transition"
+      ],
+      "canal_contents": "Thoracic spinal cord, meninges and subarachnoid CSF; same-numbered vertebra and cord segment progressively diverge inferiorly.",
+      "neural_relation": "T1 spinal nerve exits below T1 through the T1–T2 foramen.",
+      "root_function_note": "T1 contributes medial forearm/arm sensation and intrinsic-hand motor pools.",
+      "vascular_note": "Posterior intercostal/radicular vessels reinforce spinal arterial supply variably.",
+      "project_role": [
+        "upper Heart/Breath bridge",
+        "rib-bearing Ladder"
+      ],
+      "room_question": "How does a rib-bearing room protect cord while distributing segmental body traffic?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-t2",
+      "level": "T2",
+      "region": "thoracic",
+      "regional_index": 2,
+      "room_name": "T2 — Upper Thoracic Room",
+      "distinctive_anatomy": [
+        "Rib-bearing thoracic vertebra with costal facets"
+      ],
+      "canal_contents": "Thoracic spinal cord, meninges and subarachnoid CSF; same-numbered vertebra and cord segment progressively diverge inferiorly.",
+      "neural_relation": "T2 spinal nerve exits below T2 through the T2–T3 foramen.",
+      "root_function_note": "T2 contributes segmental chest/abdominal-wall sensation and motor control; dermatomes overlap and vary.",
+      "vascular_note": "Posterior intercostal/radicular vessels reinforce spinal arterial supply variably.",
+      "project_role": [
+        "upper Heart/Breath bridge",
+        "rib-bearing Ladder"
+      ],
+      "room_question": "How does a rib-bearing room protect cord while distributing segmental body traffic?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-t3",
+      "level": "T3",
+      "region": "thoracic",
+      "regional_index": 3,
+      "room_name": "T3 — Upper Thoracic Room",
+      "distinctive_anatomy": [
+        "Rib-bearing thoracic vertebra with costal facets"
+      ],
+      "canal_contents": "Thoracic spinal cord, meninges and subarachnoid CSF; same-numbered vertebra and cord segment progressively diverge inferiorly.",
+      "neural_relation": "T3 spinal nerve exits below T3 through the T3–T4 foramen.",
+      "root_function_note": "T3 contributes segmental chest/abdominal-wall sensation and motor control; dermatomes overlap and vary.",
+      "vascular_note": "Posterior intercostal/radicular vessels reinforce spinal arterial supply variably.",
+      "project_role": [
+        "upper Heart/Breath bridge",
+        "rib-bearing Ladder"
+      ],
+      "room_question": "How does a rib-bearing room protect cord while distributing segmental body traffic?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-t4",
+      "level": "T4",
+      "region": "thoracic",
+      "regional_index": 4,
+      "room_name": "T4 — Upper Thoracic Room",
+      "distinctive_anatomy": [
+        "Rib-bearing thoracic vertebra with costal facets",
+        "Classical T4 dermatome landmark lies near nipple line; this is a nerve-root landmark, not a property of the bone"
+      ],
+      "canal_contents": "Thoracic spinal cord, meninges and subarachnoid CSF; same-numbered vertebra and cord segment progressively diverge inferiorly.",
+      "neural_relation": "T4 spinal nerve exits below T4 through the T4–T5 foramen.",
+      "root_function_note": "T4 dermatome is classically near nipple level.",
+      "vascular_note": "Posterior intercostal/radicular vessels reinforce spinal arterial supply variably.",
+      "project_role": [
+        "Heart / rib-cage chamber",
+        "middle Ladder"
+      ],
+      "room_question": "How does a rib-bearing room protect cord while distributing segmental body traffic?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-t5",
+      "level": "T5",
+      "region": "thoracic",
+      "regional_index": 5,
+      "room_name": "T5 — Mid-Thoracic Room",
+      "distinctive_anatomy": [
+        "Rib-bearing thoracic vertebra with costal facets"
+      ],
+      "canal_contents": "Thoracic spinal cord, meninges and subarachnoid CSF; same-numbered vertebra and cord segment progressively diverge inferiorly.",
+      "neural_relation": "T5 spinal nerve exits below T5 through the T5–T6 foramen.",
+      "root_function_note": "T5 contributes segmental chest/abdominal-wall sensation and motor control; dermatomes overlap and vary.",
+      "vascular_note": "Posterior intercostal/radicular vessels reinforce spinal arterial supply variably.",
+      "project_role": [
+        "Heart / rib-cage chamber",
+        "middle Ladder"
+      ],
+      "room_question": "How does a rib-bearing room protect cord while distributing segmental body traffic?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-t6",
+      "level": "T6",
+      "region": "thoracic",
+      "regional_index": 6,
+      "room_name": "T6 — Mid-Thoracic Room",
+      "distinctive_anatomy": [
+        "Rib-bearing thoracic vertebra with costal facets",
+        "Classical T6 dermatome landmark lies near xiphoid level"
+      ],
+      "canal_contents": "Thoracic spinal cord, meninges and subarachnoid CSF; same-numbered vertebra and cord segment progressively diverge inferiorly.",
+      "neural_relation": "T6 spinal nerve exits below T6 through the T6–T7 foramen.",
+      "root_function_note": "T6 dermatome is classically near xiphoid level.",
+      "vascular_note": "Posterior intercostal/radicular vessels reinforce spinal arterial supply variably.",
+      "project_role": [
+        "Heart / rib-cage chamber",
+        "middle Ladder"
+      ],
+      "room_question": "How does a rib-bearing room protect cord while distributing segmental body traffic?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-t7",
+      "level": "T7",
+      "region": "thoracic",
+      "regional_index": 7,
+      "room_name": "T7 — Mid-Thoracic Room",
+      "distinctive_anatomy": [
+        "Rib-bearing thoracic vertebra with costal facets"
+      ],
+      "canal_contents": "Thoracic spinal cord, meninges and subarachnoid CSF; same-numbered vertebra and cord segment progressively diverge inferiorly.",
+      "neural_relation": "T7 spinal nerve exits below T7 through the T7–T8 foramen.",
+      "root_function_note": "T7 contributes segmental chest/abdominal-wall sensation and motor control; dermatomes overlap and vary.",
+      "vascular_note": "Posterior intercostal/radicular vessels reinforce spinal arterial supply variably.",
+      "project_role": [
+        "Heart / rib-cage chamber",
+        "middle Ladder"
+      ],
+      "room_question": "How does a rib-bearing room protect cord while distributing segmental body traffic?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-t8",
+      "level": "T8",
+      "region": "thoracic",
+      "regional_index": 8,
+      "room_name": "T8 — Mid-Thoracic Room",
+      "distinctive_anatomy": [
+        "Rib-bearing thoracic vertebra with costal facets"
+      ],
+      "canal_contents": "Thoracic spinal cord, meninges and subarachnoid CSF; same-numbered vertebra and cord segment progressively diverge inferiorly.",
+      "neural_relation": "T8 spinal nerve exits below T8 through the T8–T9 foramen.",
+      "root_function_note": "T8 contributes segmental chest/abdominal-wall sensation and motor control; dermatomes overlap and vary.",
+      "vascular_note": "Within the broad T8–L2 range where the artery of Adamkiewicz may originate; exact side/level is highly variable and never inferred from vertebral number alone.",
+      "project_role": [
+        "lower thoracic / autonomic-Forge bridge",
+        "middle Ladder"
+      ],
+      "room_question": "How does a rib-bearing room protect cord while distributing segmental body traffic?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-t9",
+      "level": "T9",
+      "region": "thoracic",
+      "regional_index": 9,
+      "room_name": "T9 — Lower Thoracic Room",
+      "distinctive_anatomy": [
+        "Rib-bearing thoracic vertebra with costal facets",
+        "Costal-facet anatomy becomes increasingly variable/transitional"
+      ],
+      "canal_contents": "Thoracic spinal cord, meninges and subarachnoid CSF; same-numbered vertebra and cord segment progressively diverge inferiorly.",
+      "neural_relation": "T9 spinal nerve exits below T9 through the T9–T10 foramen.",
+      "root_function_note": "T9 contributes segmental chest/abdominal-wall sensation and motor control; dermatomes overlap and vary.",
+      "vascular_note": "Within the broad T8–L2 range where the artery of Adamkiewicz may originate; exact side/level is highly variable and never inferred from vertebral number alone.",
+      "project_role": [
+        "lower thoracic / autonomic-Forge bridge",
+        "middle Ladder"
+      ],
+      "room_question": "How does a rib-bearing room protect cord while distributing segmental body traffic?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-t10",
+      "level": "T10",
+      "region": "thoracic",
+      "regional_index": 10,
+      "room_name": "T10 — Lower Thoracic Room",
+      "distinctive_anatomy": [
+        "Rib-bearing thoracic vertebra with costal facets",
+        "Often a complete facet for rib 10 rather than paired demifacets"
+      ],
+      "canal_contents": "Lower thoracic canal contains caudal cord segments plus long lumbar/sacral roots because vertebral growth exceeds cord length.",
+      "neural_relation": "T10 spinal nerve exits below T10 through the T10–T11 foramen.",
+      "root_function_note": "T10 dermatome is classically near the umbilicus.",
+      "vascular_note": "Within the broad T8–L2 range where the artery of Adamkiewicz may originate; exact side/level is highly variable and never inferred from vertebral number alone.",
+      "project_role": [
+        "lower thoracic / autonomic-Forge bridge",
+        "middle Ladder"
+      ],
+      "room_question": "How can a fixed bony rung contain neural elements belonging to more caudal segments?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-t11",
+      "level": "T11",
+      "region": "thoracic",
+      "regional_index": 11,
+      "room_name": "T11 — Lower Thoracic Room",
+      "distinctive_anatomy": [
+        "Rib-bearing thoracic vertebra with costal facets",
+        "Single facet for floating rib 11; transverse costal facet absent"
+      ],
+      "canal_contents": "Lower thoracic canal contains caudal cord segments plus long lumbar/sacral roots because vertebral growth exceeds cord length.",
+      "neural_relation": "T11 spinal nerve exits below T11 through the T11–T12 foramen.",
+      "root_function_note": "T11 contributes segmental chest/abdominal-wall sensation and motor control; dermatomes overlap and vary.",
+      "vascular_note": "Within the broad T8–L2 range where the artery of Adamkiewicz may originate; exact side/level is highly variable and never inferred from vertebral number alone.",
+      "project_role": [
+        "lower thoracic / autonomic-Forge bridge",
+        "middle Ladder"
+      ],
+      "room_question": "How does a rib-bearing room protect cord while distributing segmental body traffic?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-t12",
+      "level": "T12",
+      "region": "thoracic",
+      "regional_index": 12,
+      "room_name": "T12 — Lower Thoracic Room",
+      "distinctive_anatomy": [
+        "Rib-bearing thoracic vertebra with costal facets",
+        "Single facet for rib 12; no transverse costal facet; inferior facets become lumbar-like"
+      ],
+      "canal_contents": "T12 may lie near the conus-medullaris range in some adults; long cauda-equina roots are already present.",
+      "neural_relation": "T12 spinal nerve exits below T12 through the T12–L1 foramen.",
+      "root_function_note": "T12 contributes segmental chest/abdominal-wall sensation and motor control; dermatomes overlap and vary.",
+      "vascular_note": "Within the broad T8–L2 range where the artery of Adamkiewicz may originate; exact side/level is highly variable and never inferred from vertebral number alone.",
+      "project_role": [
+        "lower thoracic / autonomic-Forge bridge",
+        "middle Ladder"
+      ],
+      "room_question": "How does a rib-bearing room protect cord while distributing segmental body traffic?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-l1",
+      "level": "L1",
+      "region": "lumbar",
+      "regional_index": 1,
+      "room_name": "L1 — Conus / Root-Descent Room",
+      "distinctive_anatomy": [
+        "Large kidney-shaped weight-bearing body",
+        "robust spinous/transverse processes",
+        "facet orientation favors flexion/extension over rotation"
+      ],
+      "canal_contents": "Conus medullaris commonly lies near L1–L2; canal may contain terminal cord plus emerging cauda-equina roots, filum and CSF.",
+      "neural_relation": "L1 nerve exits below L1; roots for more caudal segments descend within the canal before reaching their foramina.",
+      "root_function_note": "L1 root commonly includes groin/upper-hip sensory territory.",
+      "vascular_note": "This region overlaps the broad variable range of entry for major radiculomedullary arteries including the artery of Adamkiewicz.",
+      "project_role": [
+        "cord→roots transition",
+        "Work / lower Ladder"
+      ],
+      "room_question": "Where does one compact cord become many descending roots?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-l2",
+      "level": "L2",
+      "region": "lumbar",
+      "regional_index": 2,
+      "room_name": "L2 — Conus / Root-Descent Room",
+      "distinctive_anatomy": [
+        "Large kidney-shaped weight-bearing body",
+        "robust spinous/transverse processes",
+        "facet orientation favors flexion/extension over rotation"
+      ],
+      "canal_contents": "Conus may terminate at/above this level; cauda equina, filum terminale and lumbar-cistern CSF increasingly dominate.",
+      "neural_relation": "L2 nerve exits below L2; roots for more caudal segments descend within the canal before reaching their foramina.",
+      "root_function_note": "L2 contributes hip flexion and anterior/upper-thigh sensation.",
+      "vascular_note": "This region overlaps the broad variable range of entry for major radiculomedullary arteries including the artery of Adamkiewicz.",
+      "project_role": [
+        "cord→roots transition",
+        "Work / lower Ladder"
+      ],
+      "room_question": "Where does one compact cord become many descending roots?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-l3",
+      "level": "L3",
+      "region": "lumbar",
+      "regional_index": 3,
+      "room_name": "L3 — Cauda-Equina Room",
+      "distinctive_anatomy": [
+        "Large kidney-shaped weight-bearing body",
+        "robust spinous/transverse processes",
+        "facet orientation favors flexion/extension over rotation"
+      ],
+      "canal_contents": "Typical adult canal contains cauda-equina roots, filum terminale, meninges and lumbar-cistern CSF rather than spinal-cord parenchyma.",
+      "neural_relation": "L3 nerve exits below L3; roots for more caudal segments descend within the canal before reaching their foramina.",
+      "root_function_note": "L3 contributes knee extension and medial-knee sensation.",
+      "vascular_note": "Lumbar segmental/radicular vessels serve vertebrae and roots; arterial patterns vary.",
+      "project_role": [
+        "roots-in-River",
+        "locomotion / lower Ladder"
+      ],
+      "room_question": "How does distributed neural traffic continue after cord tissue itself has ended?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-l4",
+      "level": "L4",
+      "region": "lumbar",
+      "regional_index": 4,
+      "room_name": "L4 — Cauda-Equina Room",
+      "distinctive_anatomy": [
+        "Large kidney-shaped weight-bearing body",
+        "robust spinous/transverse processes",
+        "facet orientation favors flexion/extension over rotation"
+      ],
+      "canal_contents": "Typical adult canal contains cauda-equina roots, filum terminale, meninges and lumbar-cistern CSF rather than spinal-cord parenchyma.",
+      "neural_relation": "L4 nerve exits below L4; roots for more caudal segments descend within the canal before reaching their foramina.",
+      "root_function_note": "L4 contributes knee extension/ankle dorsiflexion and medial-leg/ankle sensation.",
+      "vascular_note": "Lumbar segmental/radicular vessels serve vertebrae and roots; arterial patterns vary.",
+      "project_role": [
+        "roots-in-River",
+        "locomotion / lower Ladder"
+      ],
+      "room_question": "How does distributed neural traffic continue after cord tissue itself has ended?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-l5",
+      "level": "L5",
+      "region": "lumbar",
+      "regional_index": 5,
+      "room_name": "L5 — Cauda-Equina Room",
+      "distinctive_anatomy": [
+        "Largest lower-lumbar body",
+        "wedge relation contributes to lumbosacral angle",
+        "major L5–S1 load/shear transition"
+      ],
+      "canal_contents": "Typical adult canal contains cauda-equina roots, filum terminale, meninges and lumbar-cistern CSF rather than spinal-cord parenchyma.",
+      "neural_relation": "L5 nerve exits below L5; roots for more caudal segments descend within the canal before reaching their foramina.",
+      "root_function_note": "L5 contributes great-toe extension/dorsiflexion and dorsum-of-foot/lateral-shin sensation.",
+      "vascular_note": "Lumbar segmental/radicular vessels serve vertebrae and roots; arterial patterns vary.",
+      "project_role": [
+        "roots-in-River",
+        "locomotion / lower Ladder"
+      ],
+      "room_question": "How does distributed neural traffic continue after cord tissue itself has ended?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-s1",
+      "level": "S1",
+      "region": "sacral",
+      "regional_index": 1,
+      "room_name": "Sacral Promontory / Weight-Transfer Room",
+      "distinctive_anatomy": [
+        "Largest sacral body; anterior margin forms sacral promontory",
+        "sacral ala transfers axial load toward sacroiliac joints"
+      ],
+      "canal_contents": "Sacral canal contains descending roots, filum and CSF within the dural/subarachnoid sac.",
+      "neural_relation": "S1 ventral ramus exits through anterior sacral foramen and dorsal ramus through posterior sacral foramen.",
+      "root_function_note": "S1 contributes plantar flexion and posterolateral-leg/lateral-foot sensation.",
+      "vascular_note": "Lateral/median sacral and iliolumbar vascular branches supply the sacrum and neighboring neural/soft-tissue structures.",
+      "project_role": [
+        "weight transfer",
+        "Root / locomotor foundation"
+      ],
+      "room_question": "How does the lower Ladder distribute into pelvis, legs and pelvic organs?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-s2",
+      "level": "S2",
+      "region": "sacral",
+      "regional_index": 2,
+      "room_name": "Dural-Termination / Pelvic Room",
+      "distinctive_anatomy": [
+        "Second fused sacral element",
+        "near typical caudal termination of dural/subarachnoid sac"
+      ],
+      "canal_contents": "Roots and filum continue; dural and subarachnoid spaces typically terminate around S2.",
+      "neural_relation": "S2 ventral ramus exits through anterior sacral foramen and dorsal ramus through posterior sacral foramen.",
+      "root_function_note": "S2 contributes posterior leg/pelvic territories; S2–S4 carry pelvic parasympathetic outflow.",
+      "vascular_note": "Lateral/median sacral and iliolumbar vascular branches supply the sacrum and neighboring neural/soft-tissue structures.",
+      "project_role": [
+        "River termination zone",
+        "pelvic autonomic foundation"
+      ],
+      "room_question": "Where does the River's meningeal container end while roots continue?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-s3",
+      "level": "S3",
+      "region": "sacral",
+      "regional_index": 3,
+      "room_name": "Sacral Plexus / Pelvic Control Room",
+      "distinctive_anatomy": [
+        "Third fused sacral element with S3 foraminal routes"
+      ],
+      "canal_contents": "Lower sacral roots continue through canal/foramina; below S2 the normal CSF-containing dural sac has ended.",
+      "neural_relation": "S3 ventral ramus exits through anterior sacral foramen and dorsal ramus through posterior sacral foramen.",
+      "root_function_note": "S3 contributes perineal/pelvic sensory-motor and visceral networks with S2–S4.",
+      "vascular_note": "Lateral/median sacral and iliolumbar vascular branches supply the sacrum and neighboring neural/soft-tissue structures.",
+      "project_role": [
+        "pelvic control",
+        "Root / generative gate"
+      ],
+      "room_question": "How does the lower Ladder distribute into pelvis, legs and pelvic organs?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-s4",
+      "level": "S4",
+      "region": "sacral",
+      "regional_index": 4,
+      "room_name": "Lower Sacral / Perineal Room",
+      "distinctive_anatomy": [
+        "Fourth fused sacral element adjacent to lower foramina and sacral-hiatus margin"
+      ],
+      "canal_contents": "Lower roots and filum remain; no normal subarachnoid lumbar-cistern compartment.",
+      "neural_relation": "S4 ventral ramus exits through anterior sacral foramen and dorsal ramus through posterior sacral foramen.",
+      "root_function_note": "S4 participates in perineal sensation, pelvic-floor and pelvic parasympathetic networks.",
+      "vascular_note": "Lateral/median sacral and iliolumbar vascular branches supply the sacrum and neighboring neural/soft-tissue structures.",
+      "project_role": [
+        "pelvic control",
+        "Root / generative gate"
+      ],
+      "room_question": "How does the lower Ladder distribute into pelvis, legs and pelvic organs?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-s5",
+      "level": "S5",
+      "region": "sacral",
+      "regional_index": 5,
+      "room_name": "Sacral Hiatus Room",
+      "distinctive_anatomy": [
+        "Lowest fused sacral element; posterior arch incompleteness contributes to sacral hiatus",
+        "sacral cornua border the hiatus"
+      ],
+      "canal_contents": "S5/coccygeal roots and filum approach the hiatus; no spinal cord or normal dural CSF sac.",
+      "neural_relation": "S5 exits through the sacral hiatus rather than paired sacral foramina.",
+      "root_function_note": "S5 exits through the sacral hiatus and contributes very caudal sensory/motor networks.",
+      "vascular_note": "Lateral/median sacral and iliolumbar vascular branches supply the sacrum and neighboring neural/soft-tissue structures.",
+      "project_role": [
+        "exit / root-tip",
+        "foundation threshold"
+      ],
+      "room_question": "How does the lower Ladder distribute into pelvis, legs and pelvic organs?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-co1",
+      "level": "Co1",
+      "region": "coccygeal",
+      "regional_index": 1,
+      "room_name": "Co1 — Coccygeal Cornua / Anchor Room",
+      "distinctive_anatomy": [
+        "Largest coccygeal element",
+        "may retain coccygeal cornua/transverse processes",
+        "attachment region for filum terminale externum, ligaments and pelvic-floor structures"
+      ],
+      "canal_contents": "No spinal cord; filum terminale externum/coccygeal ligament attaches in the coccygeal region; tiny coccygeal neural branches lie nearby.",
+      "neural_relation": "Co1 nerve is the single paired coccygeal spinal nerve; coccygeal plexus also receives S4–S5 contributions.",
+      "root_function_note": "Coccygeal sensory/motor territory is small and variable; do not infer a separate neural or chakra level from each distal bone.",
+      "vascular_note": "Small sacrococcygeal arterial branches and soft-tissue vascular networks serve the distal region.",
+      "project_role": [
+        "terminal Root",
+        "anchor",
+        "end of bony Ladder"
+      ],
+      "room_question": "What remains when the neural Ladder has ended but the structural axis still needs an anchor?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-co2",
+      "level": "Co2",
+      "region": "coccygeal",
+      "regional_index": 2,
+      "room_name": "Co2 — Distal Anchor Room",
+      "distinctive_anatomy": [
+        "Very small distal coccygeal segment; usually fused/partly fused",
+        "pelvic-floor and ligamentous attachment region",
+        "coccygeal element count varies between individuals"
+      ],
+      "canal_contents": "No vertebral canal containing spinal cord; predominantly bony/ligamentous/pelvic-floor terminal anatomy.",
+      "neural_relation": "There is no separate Co2–Co4 spinal nerve segment corresponding one-to-one with these bones.",
+      "root_function_note": "Coccygeal sensory/motor territory is small and variable; do not infer a separate neural or chakra level from each distal bone.",
+      "vascular_note": "Small sacrococcygeal arterial branches and soft-tissue vascular networks serve the distal region.",
+      "project_role": [
+        "terminal Root",
+        "anchor",
+        "end of bony Ladder"
+      ],
+      "room_question": "What remains when the neural Ladder has ended but the structural axis still needs an anchor?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-co3",
+      "level": "Co3",
+      "region": "coccygeal",
+      "regional_index": 3,
+      "room_name": "Co3 — Pelvic-Floor Attachment Room",
+      "distinctive_anatomy": [
+        "Very small distal coccygeal segment; usually fused/partly fused",
+        "pelvic-floor and ligamentous attachment region",
+        "coccygeal element count varies between individuals"
+      ],
+      "canal_contents": "No vertebral canal containing spinal cord; predominantly bony/ligamentous/pelvic-floor terminal anatomy.",
+      "neural_relation": "There is no separate Co2–Co4 spinal nerve segment corresponding one-to-one with these bones.",
+      "root_function_note": "Coccygeal sensory/motor territory is small and variable; do not infer a separate neural or chakra level from each distal bone.",
+      "vascular_note": "Small sacrococcygeal arterial branches and soft-tissue vascular networks serve the distal region.",
+      "project_role": [
+        "terminal Root",
+        "anchor",
+        "end of bony Ladder"
+      ],
+      "room_question": "What remains when the neural Ladder has ended but the structural axis still needs an anchor?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    },
+    {
+      "id": "vertebra-co4",
+      "level": "Co4",
+      "region": "coccygeal",
+      "regional_index": 4,
+      "room_name": "Co4 — Terminal Bone Room",
+      "distinctive_anatomy": [
+        "Very small distal coccygeal segment; usually fused/partly fused",
+        "pelvic-floor and ligamentous attachment region",
+        "coccygeal element count varies between individuals"
+      ],
+      "canal_contents": "No vertebral canal containing spinal cord; predominantly bony/ligamentous/pelvic-floor terminal anatomy.",
+      "neural_relation": "There is no separate Co2–Co4 spinal nerve segment corresponding one-to-one with these bones.",
+      "root_function_note": "Coccygeal sensory/motor territory is small and variable; do not infer a separate neural or chakra level from each distal bone.",
+      "vascular_note": "Small sacrococcygeal arterial branches and soft-tissue vascular networks serve the distal region.",
+      "project_role": [
+        "terminal Root",
+        "anchor",
+        "end of bony Ladder"
+      ],
+      "room_question": "What remains when the neural Ladder has ended but the structural axis still needs an anchor?",
+      "epistemic_boundary": "Vertebral level, cord segment, spinal nerve/root, dermatome/myotome and symbolic Gate are different coordinate systems. Adjacency does not make them identical."
+    }
+  ],
+  "sources": [
+    {
+      "topic": "cervical vertebrae / C1-C2",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK459200/"
+    },
+    {
+      "topic": "thoracic vertebrae",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK459153/"
+    },
+    {
+      "topic": "lumbar vertebrae",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK459278/"
+    },
+    {
+      "topic": "vertebral column count",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK539734/"
+    },
+    {
+      "topic": "spinal nerves / dermatomes",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK535401/"
+    },
+    {
+      "topic": "myotomes/dermatomes",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK544267/"
+    },
+    {
+      "topic": "cauda equina",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK513251/"
+    },
+    {
+      "topic": "subarachnoid space to S2",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK551715/"
+    },
+    {
+      "topic": "spinal cord vascular supply",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK532971/"
+    }
+  ],
+  "connections": [
+    "knowledge/body/spine-csf-levels-axis-atlas.json",
+    "knowledge/body/axis-orientation-autonomic-interface-atlas.json",
+    "knowledge/corporium/ladder-33-vertebrae-five-centers-study.json",
+    "life-body/index.html"
+  ]
+}
