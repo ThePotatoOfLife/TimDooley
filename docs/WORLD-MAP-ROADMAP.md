@@ -109,7 +109,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The curr
 - [ ] Replace the GeoNames mirror seed with a reviewed fresh canonical build; preserve source date, build date and upstream freshness separately.
 - [ ] Promote at least one reviewed delayed/historical conflict snapshot with source bundle, date semantics and explicit not-live boundary before exposing Conflict as current functionality.
 - [ ] Add behavioral viewport scenarios for globe mode, narrow screens, dense regional labels, Alaska/Hawaii/DC-like detached geography and region→Places handoff.
-- [ ] Map architecture-auditor finding codes to ledger IDs, owner and severity so CI output becomes an actionable queue instead of a parallel diagnosis.
+- [x] Map architecture-auditor finding codes to ledger IDs, owner and severity; the audit now fails if an actionable finding reaches CI without a queue mapping.
 - [ ] Add regional-statistics enrichment as an optional sourced layer; keep geometry-first partitions useful when population/area/density remain unknown.
 - [ ] Continue design-token convergence beyond z-index into shared surface/background/border/radius/spacing tokens without flattening semantic distinctions.
 - [ ] Add a common freshness/status vocabulary for data-backed layers so historical, stale, delayed, current and unknown-vintage data read consistently in the UI.
