@@ -2,7 +2,7 @@
 const BASE='/TimDooley/';
 const esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 const q=new URLSearchParams(location.search);let current=q.get('character')||'marty-biz';
-let manifest,roles,stories,associations,incidents,enhancements,dossier,accountContract;
+let manifest,roles,stories,associations,incidents,enhancements,dossier,accountContract,symbolicPool;
 async function get(path){const r=await fetch(BASE+path);if(!r.ok)throw new Error(path);return r.json()}
 const arr=x=>Array.isArray(x)?x:[];
 function route(path){if(!path)return'#';if(/^https?:/.test(path))return path;return BASE+path.replace(/^\/+/, '')}
@@ -20,12 +20,31 @@ function activityBand(){
  return['historical','archive state unresolved'];
 }
 function initials(name){return String(name||'?').split(/\s+|\//).filter(Boolean).slice(0,2).map(x=>x[0]?.toUpperCase()||'').join('')||'?'}
+function stableHash(text){let h=2166136261;for(const ch of String(text||'')){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)}return h>>>0}
+function roleText(){
+ const indexed=roleMatches(current).flatMap(x=>[x.role,x.note,x.status]);
+ const local=arr(dossier.symbolic_roles).flatMap(x=>[x.role,x.scope,x.note]);
+ const archetypes=arr(dossier.tim_relation?.archetypes);
+ return [...indexed,...local,...archetypes].filter(Boolean).join(' ').toLowerCase();
+}
+function symbolicImages(){
+ const hay=roleText(),imgs=arr(symbolicPool?.images).filter(img=>arr(img.role_terms).some(t=>hay.includes(String(t).toLowerCase())));
+ if(!imgs.length)return[];
+ const offset=stableHash(current)%imgs.length;
+ return imgs.slice(offset).concat(imgs.slice(0,offset)).slice(0,3);
+}
 function renderMug(){
  const box=document.getElementById('mug'),caption=document.getElementById('mugCaption');
  const p=dossier.media?.portrait;
  if(p?.src){box.innerHTML='<img src="'+esc(route(p.src))+'" alt="'+esc(p.alt||('Archive portrait for '+(dossier.display_name||current)))+'">';caption.textContent=p.caption||p.source_ref||'';return}
- box.innerHTML='<div><span class="monogram">'+esc(initials(dossier.display_name||current))+'</span><small>NO SOURCED PORTRAIT</small></div>';
- caption.textContent='Image slot opens only when the dossier owns an explicit source.';
+ const proxy=symbolicImages()[0];
+ if(proxy){
+   box.innerHTML='<img src="'+esc(proxy.image_url)+'" alt="'+esc(proxy.label+' symbolic proxy image')+'">';
+   caption.innerHTML='<b>SYMBOLIC PROXY · NOT A LIKENESS</b><br>'+esc(proxy.label)+' · '+esc(proxy.license)+' · <a href="'+esc(proxy.source_page)+'" target="_blank" rel="noopener">source</a>';
+   return;
+ }
+ box.innerHTML='<div><span class="monogram">'+esc(initials(dossier.display_name||current))+'</span><small>NO SOURCED OR SYMBOLIC IMAGE</small></div>';
+ caption.textContent='No role-matched symbolic proxy is currently available.';
 }
 function accountData(){
  const explicit=dossier.symbolic_account||{};
@@ -67,8 +86,10 @@ function accountHtml(){
  '<div class="block"><h3>Outstanding / repair / recovery</h3>'+(a.outstanding.length?'<ul>'+a.outstanding.map(x=>'<li>'+esc(typeof x==='string'?x:(x.note||x.condition||JSON.stringify(x)))+'</li>').join('')+'</ul>':'<p class="empty">No open symbolic obligations recorded.</p>')+'</div></div>';
 }
 function mediaHtml(){
- const media=arr(dossier.media?.evidence_images);
- return'<div class="block"><h2>Evidence & project images</h2><p class="muted">Images appear only when the dossier explicitly owns a source and subject/caption.</p>'+(media.length?'<div class="media-grid">'+media.map(x=>'<figure class="media-card"><img src="'+esc(route(x.src))+'" alt="'+esc(x.alt||x.caption||'CIA dossier evidence image')+'"><p>'+esc(x.caption||'')+(x.source_ref?'<br>'+esc(x.source_ref):'')+'</p></figure>').join('')+'</div>':'<p class="empty">No sourced images attached yet. The slot is ready for recovered screenshots, profile images, memes and project art.</p>')+'</div>';
+ const media=arr(dossier.media?.evidence_images),symbols=symbolicImages();
+ const evidence=media.length?'<div class="media-grid">'+media.map(x=>'<figure class="media-card"><img src="'+esc(route(x.src))+'" alt="'+esc(x.alt||x.caption||'CIA dossier evidence image')+'"><p>'+esc(x.caption||'')+(x.source_ref?'<br>'+esc(x.source_ref):'')+'</p></figure>').join('')+'</div>':'<p class="empty">No sourced documentary/project images attached yet.</p>';
+ const proxies=symbols.length?'<h3>Symbolic proxies</h3><p class="ledger-boundary">These are humorous role-symbol illustrations, not portraits or likeness claims about the dossier subject.</p><div class="media-grid">'+symbols.map(x=>'<figure class="media-card proxy-card"><img src="'+esc(x.image_url)+'" alt="'+esc(x.label+' symbolic proxy image')+'"><p><b>'+esc(x.label)+'</b><br>'+esc(x.caption)+'<br>'+esc(x.author)+' · '+esc(x.license)+' · <a href="'+esc(x.source_page)+'" target="_blank" rel="noopener">source</a></p></figure>').join('')+'</div>':'';
+ return'<div class="block"><h2>Images & visual evidence</h2><p class="muted">Documentary images require dossier-owned provenance. Symbolic proxies come from the shared Commons pool and are always labeled as non-likeness illustrations.</p>'+evidence+proxies+'</div>';
 }
 function enhancementsHtml(){const e=enhancementFor(current);if(!e)return'<p class="empty">No enhancement/capability sheet recovered yet.</p>';const ordinary=arr(e.ordinary),creative=arr(e.creative);return'<div class="two"><div class="block"><h2>Ordinary / documentary capabilities</h2>'+(ordinary.length?'<ul>'+ordinary.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'<p class="empty">none recovered</p>')+'</div><div class="block"><h2>Creative / project enhancements</h2>'+(creative.length?'<ul>'+creative.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'<p class="empty">none recovered</p>')+'</div></div><p class="stamp">SOURCE BOUNDARY</p><p>'+esc(e.boundary||'Keep documentary and creative traits separate.')+'</p>'}
 function sourcesHtml(){const ss=arr(dossier.source_strata),leads=arr(dossier.recovery_leads);return'<div class="two"><div class="block"><h2>Source strata</h2>'+(ss.length?ss.map(s=>'<a class="route-link" href="'+route(s.path)+'">'+esc(s.type)+' → '+esc(s.path)+'</a>').join(''):'<p class="empty">No source routes indexed.</p>')+'</div><div class="block"><h2>Open recovery leads</h2>'+(leads.length?'<ul>'+leads.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'<p class="empty">No current recovery leads.</p>')+'</div></div>'}
@@ -82,5 +103,5 @@ async function load(id){current=id;history.replaceState(null,'','?character='+en
 function shuffle(){const figs=arr(manifest?.characters).map(x=>x.id).filter(x=>x!==current);if(figs.length)load(figs[Math.floor(Math.random()*figs.length)])}
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.panel).classList.add('active')}));
 document.getElementById('shuffleTop').onclick=shuffle;document.getElementById('shuffleBottom').onclick=shuffle;
-(async()=>{[manifest,roles,stories,associations,incidents,enhancements,accountContract]=await Promise.all([get('knowledge/cia/manifest.json'),get('knowledge/cia/role-index.json'),get('knowledge/cia/story-links.json'),get('knowledge/cia/associations/network.json'),get('knowledge/cia/incidents/index.json'),get('knowledge/cia/enhancements-index.json'),get('knowledge/cia/symbolic-account-contract.json')]);await load(current)})().catch(()=>{document.getElementById('summary').textContent='The cabinet could not load one of its indexes.'});
+(async()=>{[manifest,roles,stories,associations,incidents,enhancements,accountContract,symbolicPool]=await Promise.all([get('knowledge/cia/manifest.json'),get('knowledge/cia/role-index.json'),get('knowledge/cia/story-links.json'),get('knowledge/cia/associations/network.json'),get('knowledge/cia/incidents/index.json'),get('knowledge/cia/enhancements-index.json'),get('knowledge/cia/symbolic-account-contract.json'),get('knowledge/cia/symbolic-image-pool.json')]);await load(current)})().catch(()=>{document.getElementById('summary').textContent='The cabinet could not load one of its indexes.'});
 })();
