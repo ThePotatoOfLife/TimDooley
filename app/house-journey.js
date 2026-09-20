@@ -1,3 +1,13 @@
+// Shared reader infrastructure for House-connected surfaces.
+(function(){
+  if(typeof document==='undefined')return;
+  if([...document.scripts].some(s=>/\/app\/site-tts\.js(?:\?|$)/.test(s.src||'')))return;
+  const current=document.currentScript;
+  let src='';
+  try{src=new URL('site-tts.js',current?.src||document.baseURI).href}catch(_){return}
+  const script=document.createElement('script');script.src=src;script.defer=true;document.head.appendChild(script);
+})();
+
 (()=> {
   const KEY='potato-house-journey-v1';
   const marker='/TimDooley/';
