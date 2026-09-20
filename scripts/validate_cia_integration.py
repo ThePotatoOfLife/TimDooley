@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MANIFEST=ROOT/"knowledge/cia/manifest.json"; CABINET=ROOT/"rooms/potatoverse-canon/beings/cia/index.html"
 VIEWER=ROOT/"rooms/potatoverse-canon/beings/cia/file/index.html"; COLLECTIONS=ROOT/"data/house/collections.json"
-ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
+ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
 ROUTE="rooms/potatoverse-canon/beings/cia/"
 def fail(m): print("FAIL:",m); raise SystemExit(1)
 def main():
@@ -33,6 +33,16 @@ def main():
  account=json.loads(ACCOUNT.read_text(encoding="utf-8"))
  if account.get("welfare_rule",{}).get("enabled_by_default") is not False: fail("Dooley welfare must default off")
  if "not money" not in str(account.get("boundary","")).lower(): fail("symbolic account boundary missing")
+ if not SYMBOLS.is_file(): fail("CIA symbolic image pool missing")
+ symbols=json.loads(SYMBOLS.read_text(encoding="utf-8"))
+ if symbols.get("storage")!="remote-url-only": fail("symbolic image pool must stay remote-url-only")
+ if "not a portrait" not in str(symbols.get("boundary","")).lower(): fail("symbolic image non-likeness boundary missing")
+ needed={"dog","footstool","mud","potato","tomato","angel"}
+ terms={str(t).lower() for img in symbols.get("images",[]) for t in img.get("role_terms",[])}
+ if not needed.issubset(terms): fail("symbolic image pool missing core role symbols")
+ for img in symbols.get("images",[]):
+  if not str(img.get("image_url","")).startswith("https://"): fail("symbolic image must use https remote URL")
+  if not img.get("source_page") or not img.get("license"): fail("symbolic image provenance incomplete")
  fbi=json.loads(FBI_MANIFEST.read_text(encoding="utf-8"))
  if fbi.get("status")!="retired-predecessor": fail("FBI manifest not retired")
  if (fbi.get("successor") or {}).get("path")!="knowledge/cia/manifest.json": fail("FBI successor drift")
