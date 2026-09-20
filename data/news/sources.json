@@ -1,8 +1,8 @@
 {
-  "version": "2.0.0",
+  "version": "2.1.0",
   "updated": "2026-09-20",
   "authority": "live-news-source-contract",
-  "purpose": "Declare the external, non-owning current-events sources, viewing lenses, time horizons and geographic-mentions projection used by the public Current World surface. Feed presence, repetition and mapped mentions do not make a claim true, important or part of project canon.",
+  "purpose": "Declare the external, non-owning current-events sources, publisher excerpt feeds, viewing lenses, time horizons and geographic-mentions projection used by Current World. The page may display publisher-supplied RSS descriptions, thumbnails and metadata in-page, but does not mirror full copyrighted articles.",
   "surface": "/news/",
   "sorting": {
     "default": "published_at_desc",
@@ -18,7 +18,9 @@
     "max_feed": 36,
     "max_clusters": 6,
     "max_cluster_items": 4,
-    "source_lane_items": 5
+    "source_lane_items": 5,
+    "publisher_excerpt_max_chars": 520,
+    "publisher_rss_items_per_feed": 10
   },
   "providers": [
     {
@@ -32,6 +34,18 @@
       "documentation": "https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/",
       "provenance": "Article titles, publication times, source domains, source-country metadata and links are supplied by GDELT's index of external publishers.",
       "boundary": "GDELT is a discovery/index layer. The linked publisher remains the source for the article; source-country metadata describes the publisher/source context and must not be presented as the event location."
+    },
+    {
+      "id": "publisher-rss",
+      "name": "Publisher RSS excerpts",
+      "role": "In-page summaries and metadata from public publisher feeds",
+      "source_class": "publisher-rss",
+      "access": "public RSS via RSS2JSON browser adapter; no project API key",
+      "browser_access": "JSON conversion endpoint",
+      "endpoint": "https://api.rss2json.com/v1/api.json",
+      "documentation": "https://rss2json.com/docs",
+      "provenance": "Titles, descriptions, thumbnails, categories, publication times and links come from each publisher's own RSS payload as exposed by the feed adapter.",
+      "boundary": "Only publisher-supplied feed excerpts and metadata are rendered. The project does not fetch, reconstruct or republish full article bodies; the original publisher remains the full-report destination."
     },
     {
       "id": "hacker-news",
@@ -99,6 +113,7 @@
       "gdelt_query": "(international OR world OR Europe OR science OR technology OR climate OR economy)",
       "providers": [
         "gdelt",
+        "publisher-rss",
         "hacker-news",
         "spaceflight-news"
       ]
@@ -109,7 +124,8 @@
       "description": "International and cross-border reporting.",
       "gdelt_query": "(international OR world OR Europe OR Asia OR Africa OR Americas)",
       "providers": [
-        "gdelt"
+        "gdelt",
+        "publisher-rss"
       ]
     },
     {
@@ -282,5 +298,72 @@
     "documentation": "https://blog.gdeltproject.org/gdelt-geo-2-0-api-debuts/",
     "boundary": "The spatial pulse maps locations mentioned near the active search terms in monitored coverage. It is a geography-of-mentions view, not verified event geolocation, casualty mapping, territorial adjudication or a measure of real-world importance."
   },
-  "epistemic_boundary": "Presence in a live feed establishes only that an external source or community item was indexed. Similar headlines establish repeated coverage, not corroboration. Geographic mentions establish media-location context, not that the mapped place is where an event occurred."
+  "epistemic_boundary": "Presence in a live feed establishes only that an external source or community item was indexed. Publisher RSS text is an excerpt supplied by that publisher, not a Potato-of-Life rewrite or a full-article mirror. Similar headlines establish repeated coverage, not corroboration. Geographic mentions establish media-location context, not that the mapped place is where an event occurred.",
+  "publisher_feeds": [
+    {
+      "id": "euronews",
+      "name": "Euronews",
+      "feed_url": "https://www.euronews.com/rss",
+      "homepage": "https://www.euronews.com/",
+      "scope": "Europe and international news",
+      "categories": [
+        "all",
+        "world",
+        "politics",
+        "economy",
+        "science",
+        "technology",
+        "climate",
+        "culture"
+      ],
+      "source_note": "Euronews publicly advertises RSS feeds/widgets for webpage embedding."
+    },
+    {
+      "id": "bbc-world",
+      "name": "BBC News · World",
+      "feed_url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+      "homepage": "https://www.bbc.com/news/world",
+      "scope": "World news",
+      "categories": [
+        "all",
+        "world",
+        "politics",
+        "economy",
+        "science",
+        "technology",
+        "climate"
+      ]
+    },
+    {
+      "id": "dw",
+      "name": "DW",
+      "feed_url": "https://rss.dw.com/xml/rss-en-all",
+      "homepage": "https://www.dw.com/",
+      "scope": "International news",
+      "categories": [
+        "all",
+        "world",
+        "politics",
+        "economy",
+        "science",
+        "technology",
+        "climate",
+        "culture"
+      ]
+    },
+    {
+      "id": "al-jazeera",
+      "name": "Al Jazeera",
+      "feed_url": "https://www.aljazeera.com/xml/rss/all.xml",
+      "homepage": "https://www.aljazeera.com/",
+      "scope": "International news",
+      "categories": [
+        "all",
+        "world",
+        "politics",
+        "economy",
+        "climate"
+      ]
+    }
+  ]
 }
