@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MANIFEST=ROOT/"knowledge/cia/manifest.json"; CABINET=ROOT/"rooms/potatoverse-canon/beings/cia/index.html"
 VIEWER=ROOT/"rooms/potatoverse-canon/beings/cia/file/index.html"; COLLECTIONS=ROOT/"data/house/collections.json"
-ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
+ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
 ROUTE="rooms/potatoverse-canon/beings/cia/"
 def fail(m): print("FAIL:",m); raise SystemExit(1)
 def main():
@@ -33,6 +33,10 @@ def main():
  account=json.loads(ACCOUNT.read_text(encoding="utf-8"))
  if account.get("welfare_rule",{}).get("enabled_by_default") is not False: fail("Dooley welfare must default off")
  if "not money" not in str(account.get("boundary","")).lower(): fail("symbolic account boundary missing")
+ if not ACTIVITY.is_file(): fail("CIA activity index missing")
+ activity=json.loads(ACTIVITY.read_text(encoding="utf-8"))
+ if len(activity.get("records",[]))!=len(chars): fail("CIA activity index coverage drift")
+ if "moral" not in str((activity.get("rules") or {}).get("boundary","")).lower(): fail("CIA activity opacity boundary missing")
  if not SYMBOLS.is_file(): fail("CIA symbolic image pool missing")
  symbols=json.loads(SYMBOLS.read_text(encoding="utf-8"))
  if symbols.get("storage")!="remote-url-only": fail("symbolic image pool must stay remote-url-only")
