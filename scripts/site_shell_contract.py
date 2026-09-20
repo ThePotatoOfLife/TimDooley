@@ -147,15 +147,15 @@ def main() -> int:
                 errors.append(f"missing required site file: {rel}")
 
         index = read("index.html", errors)
-        require(index, ("POTATO", 'class="sections"'), "index.html", errors)
+        require(index, ("POTATO", 'data-reader-surface="home"', 'class="public-doors"'), "index.html", errors)
         for href in CANONICAL_HOME_LINKS:
             if f'href="{href}"' not in index:
                 errors.append(f"index.html missing canonical reader entrance: {href}")
         forbid(index, ('id="rootbtn"', 'id="branches"', 'id="reader"', "app/app.js", "explore/#root", "<iframe"), "index.html", errors)
 
-        primary_nav = re.search(r'<nav class="sections"[^>]*>(.*?)</nav>', index, flags=re.I | re.S)
+        primary_nav = re.search(r'<nav class="public-doors"[^>]*>(.*?)</nav>', index, flags=re.I | re.S)
         if not primary_nav:
-            errors.append("index.html missing canonical sections navigation")
+            errors.append("index.html missing canonical public-doors navigation")
         else:
             hrefs = re.findall(r'href="([^"]+)"', primary_nav.group(1))
             if tuple(hrefs) != CANONICAL_HOME_LINKS:
@@ -169,14 +169,14 @@ def main() -> int:
         require(comparison, ('name="robots" content="noindex,follow"', "location.replace('../../traditions/bible/')"), "religion/jesus-tim/index.html", errors)
 
         tim = read("tim-dooley/index.html", errors)
-        require(tim, ('href="../timeline/"', 'href="../traditions/bible/"', "Public record", "Evidence"), "tim-dooley/index.html", errors)
+        require(tim, ('data-reader-surface="tim"', 'href="../timeline/"', 'href="story/"', 'href="100000-hours/"', 'href="claims/"'), "tim-dooley/index.html", errors)
 
         bible = read("traditions/bible/index.html", errors)
         require(bible, ("TIM &amp; THE BIBLE", 'id="search"', 'id="relations"', 'href="../../religion/"', 'href="../../timeline/'), "traditions/bible/index.html", errors)
         forbid(bible, ('class="focus-links"', "Source authority", ">FAQ<"), "traditions/bible/index.html", errors)
 
         timeline = read("timeline/index.html", errors)
-        require(timeline, ("THE LONG", 'class="timeline-explorer-standalone"', 'src="../app/timeline.js"', 'href="../religion/"'), "timeline/index.html", errors)
+        require(timeline, ("THE LONG", 'data-reader-surface="timeline"', 'class="long-chronology"', 'src="../app/long-chronology.js"', 'href="../religion/"'), "timeline/index.html", errors)
         forbid(timeline, ('class="source-note"', 'class="roadmap-note"', 'class="formula"', "Open Timeline in the complete archive", 'href="../corporium/"'), "timeline/index.html", errors)
 
         world = read("world/index.html", errors)
