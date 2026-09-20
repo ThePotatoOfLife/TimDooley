@@ -2,8 +2,8 @@
   "id": "cia-characters-incidents-associations",
   "title": "CIA — Characters, Incidents & Associations",
   "subtitle": "Tim Dooley / Potatoverse Character Association Archive",
-  "version": "2.1.0",
-  "updated": "2026-09-20",
+  "version": "2.2.0",
+  "updated": "2026-09-21",
   "disclaimer": "Potatoverse archival acronym. CIA here means Characters, Incidents & Associations. It is not affiliated with, and must not be confused with, the U.S. Central Intelligence Agency or any real intelligence/law-enforcement service.",
   "purpose": "Canonical archive for recurring characters, dated incidents, associations, source strata, role/state changes, presence windows, Story links and conversation-recovery leads.",
   "bureau_logic": {
@@ -13,7 +13,10 @@
     "tim_centering_rule": "Each dossier may record relation to Tim because Tim is the project's central subject, but no character is reduced to usefulness, loyalty, opposition or proximity.",
     "source_rule": "Public chat, raw/recovered conversation, Chronicle retelling, literary Great Book material, user-supplied clues and later synthesis remain distinct strata.",
     "state_rule": "Symbolic roles, archetypes, upgrades, handicaps, placement and debt/repair language must remain dated and source-bounded.",
-    "presence_rule": "First/last recorded means first/last currently recovered archive evidence, not birth/death or total lifetime span."
+    "presence_rule": "First/last recorded means first/last currently recovered archive evidence, not birth/death or total lifetime span.",
+    "symbolic_account": "Optional project-internal karma/repair/welfare accounting. Defaults to unassessed and never becomes legal, financial, diagnostic or objective moral scoring.",
+    "media": "Portraits and evidence images require dossier-owned source metadata; unsourced faces are not guessed or scraped.",
+    "activity_visualization": "Current/recovery-active files are visually strongest; older/dormant files may fade slightly to show recency only, never moral value."
   },
   "folders": {
     "characters": "knowledge/cia/characters/",
@@ -657,7 +660,8 @@
     "stories": "knowledge/cia/story-links.json",
     "enhancements": "knowledge/cia/enhancements-index.json",
     "schema": "knowledge/cia/character-schema.json",
-    "conversation_intake": "knowledge/cia/conversation-intake-2026-09-20.json"
+    "conversation_intake": "knowledge/cia/conversation-intake-2026-09-20.json",
+    "symbolic_account_contract": "knowledge/cia/symbolic-account-contract.json"
   },
   "public_surfaces": {
     "cabinet": "rooms/potatoverse-canon/beings/cia/",
@@ -685,5 +689,11 @@
     "former_root": "knowledge/fbi/",
     "former_public_route": "rooms/potatoverse-canon/beings/fbi/",
     "status": "compatibility-only"
+  },
+  "predecessor": {
+    "id": "fbi-figures-bonds-incidents",
+    "status": "retired-predecessor",
+    "path": "knowledge/fbi/manifest.json",
+    "public_route": "rooms/potatoverse-canon/beings/fbi/"
   }
 }
