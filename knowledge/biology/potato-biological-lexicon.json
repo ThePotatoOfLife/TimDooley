@@ -1,0 +1,167 @@
+{
+  "id": "potato-biological-lexicon",
+  "title": "Potato Biological Lexicon — Canonical Literal Meanings",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "owner_room": "potato-biology",
+  "status": "canonical vocabulary layer",
+  "purpose": "Prevent metaphor from flattening distinct botanical structures and mechanisms.",
+  "terms": [
+    {
+      "term": "tuber",
+      "definition": "A swollen underground stem-derived storage and vegetative-propagation organ.",
+      "not": "a botanical root"
+    },
+    {
+      "term": "stolon",
+      "definition": "A lateral stem that grows underground; a stolon tip can transition into a tuber.",
+      "not": "a root"
+    },
+    {
+      "term": "eye",
+      "definition": "A node-associated bud complex on the tuber containing meristematic tissue.",
+      "not": "a sensory organ"
+    },
+    {
+      "term": "sprout",
+      "definition": "A shoot growing from a tuber bud.",
+      "not": "a root"
+    },
+    {
+      "term": "adventitious root",
+      "definition": "A true root arising from stem/shoot tissues after plant establishment.",
+      "not": "the tuber"
+    },
+    {
+      "term": "periderm",
+      "definition": "Protective secondary dermal tissue comprising phellem, phellogen and phelloderm.",
+      "not": "mere dead peel"
+    },
+    {
+      "term": "lenticel",
+      "definition": "A multicellular opening/structure in periderm that facilitates gas exchange and can be a pathogen entry site.",
+      "not": "a stomatal pore with guard-cell control"
+    },
+    {
+      "term": "parenchyma",
+      "definition": "Living ground tissue that makes up much of tuber flesh and contains abundant amyloplasts/starch."
+    },
+    {
+      "term": "amyloplast",
+      "definition": "A non-pigmented plastid specialized for starch synthesis and storage."
+    },
+    {
+      "term": "vascular ring",
+      "definition": "Vascular tissues arranged within the tuber that connect it to transport networks."
+    },
+    {
+      "term": "source",
+      "definition": "A tissue exporting assimilates/resources at a particular developmental stage.",
+      "warning": "role is state-dependent"
+    },
+    {
+      "term": "sink",
+      "definition": "A tissue importing and using/storing assimilates at a particular developmental stage.",
+      "warning": "role is state-dependent"
+    },
+    {
+      "term": "seed tuber",
+      "definition": "A tuber or viable tuber piece planted for clonal propagation.",
+      "not": "botanical seed"
+    },
+    {
+      "term": "true potato seed",
+      "definition": "Botanical seed formed after sexual reproduction in potato berries.",
+      "not": "a tuber"
+    },
+    {
+      "term": "berry",
+      "definition": "Potato fruit containing true seeds; it is not the edible tuber."
+    },
+    {
+      "term": "endodormancy",
+      "definition": "Internally imposed inability of a bud/meristem to grow."
+    },
+    {
+      "term": "ecodormancy",
+      "definition": "External environmental restraint of a growth-competent bud."
+    },
+    {
+      "term": "paradormancy",
+      "definition": "Suppression by another organ or signal within the organism."
+    },
+    {
+      "term": "physiological age",
+      "definition": "Developmental readiness/history-dependent state of a tuber, not simply elapsed chronological time."
+    },
+    {
+      "term": "autotetraploid",
+      "definition": "Four homologous chromosome sets derived within a species lineage; many cultivated potatoes are 2n=4x=48."
+    },
+    {
+      "term": "haplotype",
+      "definition": "A linked chromosome sequence inherited as a unit; the four homologs of a tetraploid cultivar can have different haplotypes."
+    },
+    {
+      "term": "allele dosage",
+      "definition": "Number of copies of an allele among homologous chromosome copies."
+    },
+    {
+      "term": "double reduction",
+      "definition": "Autopolyploid meiotic outcome in which related chromatid segments can enter the same gamete following multivalent recombination."
+    },
+    {
+      "term": "pangenome",
+      "definition": "A representation of genomic diversity across multiple individuals/accessions rather than one linear reference genome."
+    },
+    {
+      "term": "geocaulosphere",
+      "definition": "Soil/microbial niche closely associated with underground stem/tuber surfaces."
+    },
+    {
+      "term": "rhizosphere",
+      "definition": "Soil region influenced by roots and root exudates."
+    },
+    {
+      "term": "endosphere",
+      "definition": "Microbial communities living within plant tissues."
+    },
+    {
+      "term": "phyllosphere",
+      "definition": "Microbial habitat associated with above-ground plant surfaces."
+    },
+    {
+      "term": "suberin",
+      "definition": "A hydrophobic cell-wall-associated biopolymer central to periderm and wound barriers."
+    },
+    {
+      "term": "tuberization",
+      "definition": "Developmental transition in which a stolon region changes growth program and becomes a tuber."
+    },
+    {
+      "term": "StSP6A",
+      "definition": "An FT-like mobile tuberigenic signal central to potato tuberization networks."
+    },
+    {
+      "term": "cold-induced sweetening",
+      "definition": "Accumulation of reducing sugars during cold storage through starch/sucrose remodeling, strongly involving vacuolar invertase."
+    },
+    {
+      "term": "steroidal glycoalkaloid",
+      "definition": "Potato defense metabolites including alpha-solanine and alpha-chaconine; excessive levels are undesirable for food safety."
+    }
+  ],
+  "invariant_rules": [
+    "Never call the edible tuber a root as literal botany.",
+    "Never use seed, seed tuber and true potato seed interchangeably.",
+    "Never treat 12×4 as four identical copies of each chromosome.",
+    "Never describe genotype as sufficient to determine phenotype without environment and developmental state.",
+    "Never infer project metaphysics from biological analogy."
+  ],
+  "connections": [
+    "potato-genetics-genomics-atlas",
+    "potato-life-cycle-state-machine",
+    "potato-anatomy-metabolism-ecology",
+    "potato-molecular-development-and-signalling"
+  ]
+}
