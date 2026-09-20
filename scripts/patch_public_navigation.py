@@ -127,6 +127,52 @@ LEGACY_TTS_READERS = {
 }
 
 
+UNIVERSAL_TTS_QUIET_PREFIXES = (
+    "world-map/",
+    "rooms/objects/",
+    "index-a-z/",
+    "tools/tts/",
+)
+
+def _relative_asset_prefix(page: Path) -> str:
+    rel = page.relative_to(OUT)
+    depth = max(0, len(rel.parts) - 1)
+    return "../" * depth
+
+def inject_universal_tts(text: str, page: Path) -> str:
+    """Ensure every deployed prose HTML document has shared TTS coverage.
+
+    Existing specialist/declarative readers are preserved. Full-page TTS is not
+    projected into deliberately control-heavy explorers; those remain scoped to
+    selected/active-object reading. Fragments without a full document shell are
+    ignored.
+    """
+    rel = page.relative_to(OUT).as_posix()
+    if any(rel.startswith(prefix) for prefix in UNIVERSAL_TTS_QUIET_PREFIXES):
+        return text
+    if "site-tts.js" in text or "data-tts-longform" in text or "tts-drawer.js" in text:
+        return text
+    if not re.search(r"<html\b", text, flags=re.I):
+        return text
+    if not re.search(r"<main\b", text, flags=re.I):
+        return text
+    if not re.search(r"</body\s*>", text, flags=re.I):
+        return text
+
+    prefix = _relative_asset_prefix(page)
+    tag = f'<script src="{prefix}app/site-tts.js" defer></script>'
+    return re.sub(r"</body\s*>", tag + "</body>", text, count=1, flags=re.I)
+
+def patch_universal_tts(out: Path) -> set[Path]:
+    changed: set[Path] = set()
+    for page in out.rglob("*.html"):
+        text = page.read_text(encoding="utf-8", errors="replace")
+        projected = inject_universal_tts(text, page)
+        if projected != text:
+            page.write_text(projected, encoding="utf-8")
+            changed.add(page)
+    return changed
+
 def patch_text(path: Path, replacements: tuple[tuple[str, str], ...] = ()) -> bool:
     if not path.exists():
         return False
@@ -249,6 +295,7 @@ def main() -> None:
             changed.add(page)
 
     changed.update(patch_legacy_tts_readers(OUT))
+    changed.update(patch_universal_tts(OUT))
 
     religion = OUT / "religion" / "index.html"
     if patch_text(
