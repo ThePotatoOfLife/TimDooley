@@ -19,6 +19,53 @@ def load_public_surfaces(root: Path) -> dict:
     return data
 
 
+def surface_rows(root: Path, *, active_only: bool = True) -> list[dict]:
+    data = load_public_surfaces(root)
+    rows = [row for row in data.get("surfaces", []) if isinstance(row, dict) and row.get("id")]
+    if active_only:
+        rows = [row for row in rows if row.get("status") == "active"]
+    return rows
+
+
+def surface_by_id(root: Path, *, active_only: bool = True) -> dict[str, dict]:
+    return {row["id"]: row for row in surface_rows(root, active_only=active_only)}
+
+
+def surface_route_map(root: Path, *, active_only: bool = True) -> dict[str, str]:
+    return {
+        row["id"]: row.get("canonical_route") or row.get("route")
+        for row in surface_rows(root, active_only=active_only)
+        if row.get("canonical_route") or row.get("route")
+    }
+
+
+def primary_gateway_route_map(root: Path) -> dict[str, str]:
+    return {row["id"]: row["canonical_route"] for row in primary_gateway_rows(root)}
+
+
+def secondary_global_route_map(root: Path, *, compatibility_keys: bool = True) -> dict[str, str]:
+    data = load_public_surfaces(root)
+    routes = surface_route_map(root)
+    out: dict[str, str] = {}
+    for surface_id in data.get("secondary_global_ids", []):
+        if surface_id not in routes:
+            raise ValueError(f"secondary global surface is missing or inactive: {surface_id}")
+        key = surface_id.replace("-", "_") if compatibility_keys else surface_id
+        out[key] = routes[surface_id]
+    return out
+
+
+def visibility_layer(row: dict) -> str:
+    visibility = row.get("visibility")
+    if visibility in {"primary", "secondary"}:
+        return "visible"
+    if visibility == "specialist":
+        return "semi-visible"
+    if visibility == "compatibility":
+        return "compatibility"
+    return "invisible"
+
+
 def primary_gateway_rows(root: Path) -> list[dict]:
     data = load_public_surfaces(root)
     ids = tuple(data.get("primary_gateway_ids", []))
