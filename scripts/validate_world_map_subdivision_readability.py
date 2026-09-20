@@ -31,11 +31,14 @@ def main()->int:
         "atlas-subdivision-selected-label",
         "NARROW_SCREEN_MAX",
         "NARROW_LABEL_DELAY",
+        "GLOBE_LABEL_DELAY",
+        "function projectionMode()",
         "function labelPresentation()",
         "function syncSelectedLabel(",
         "function syncLabelPresentation()",
         "'text-allow-overlap':true",
         "window.addEventListener?.('resize', syncLabelPresentation)",
+        "window.addEventListener?.('potato-atlas-projection-change', syncLabelPresentation)",
     ):
         if token not in runtime: errors.append(f"subdivision runtime missing readability marker {token!r}")
     if "setLayerZoomRange?.(LABEL_ID" not in runtime:
@@ -56,7 +59,7 @@ def main()->int:
         print("WORLD MAP SUBDIVISION READABILITY FAILED")
         for e in errors: print("-",e)
         return 1
-    print("WORLD MAP SUBDIVISION READABILITY PASSED: AK/HI/DC present, narrow labels deferred, selected label guaranteed.")
+    print("WORLD MAP SUBDIVISION READABILITY PASSED: AK/HI/DC present, narrow/globe labels deferred, selected label guaranteed.")
     return 0
 
 if __name__=="__main__":
