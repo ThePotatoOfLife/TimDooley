@@ -125,7 +125,8 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. Work pro
 
 - [x] Keep subdivisions behind one generic country-indexed partition engine and one bounded source/layer set.
 - [x] Add Ukraine as a geometry-first first-order administrative partition with explicit source-representation caveats.
-- [ ] Add Russia through the same partition contract from a compact pinned ADM1 source.
+- [~] Add Russia through the same partition contract from a compact pinned ADM1 source. Generic reviewed-local ADM1 normalization is now implemented; source acquisition/review and Russia-specific representation checks remain.
+- [x] Normalize future ADM1 sources through one fail-closed importer that emits canonical partitions + descriptor sidecars without mutating the live registry.
 - [ ] Add further country partitions only after provenance, byte budget, search records and national-context readability pass the same validator.
 - [ ] Keep dated occupation/control/front-line states in a separate conflict-context overlay family; never rewrite administrative partitions into live war geometry.
 
