@@ -1,4 +1,6 @@
 import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs';
+if (!window.__potatoAtlasScale?.ready) await import('./3d-scale.js');
+const scale = await window.__potatoAtlasScale.ready;
 
 const URL = {
   geo: 'https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json',
@@ -123,9 +125,16 @@ function groupedModules(record,code){
   return groups;
 }
 
+const SCALE_MODE_COPY = Object.freeze({
+  world:'Polygons and global systems dominate.',
+  'macro-region':'Large regional structures and cross-border systems begin to resolve.',
+  region:'Country hubs and cross-border relations become primary.',
+  country:'Selected polygons act as data shells; country interiors and evidence become useful.',
+  subnational:'Subdivisions, places and local context become increasingly useful.',
+  local:'Real geocoded assets should dominate here; semantic hubs remain navigation-only.',
+});
 function mode() {
-  const z = map.getZoom();
-  return z < 3 ? 'world' : z < 5 ? 'regional' : z < 7 ? 'country' : 'subnational';
+  return scale.bandForZoom(map.getZoom());
 }
 function relationEdgesFor(code) {
   return (worldCfg.curated_edges || []).filter(e => (e.a === code || e.b === code) && (relationType === 'all' || (e.types || []).includes(relationType)));
@@ -191,7 +200,7 @@ function updateHud() {
   const m = mode(), r = selected ? by3[selected] : null;
   const graph = selected ? traceGraph(selected) : null;
   $('#camera').textContent = `zoom ${map.getZoom().toFixed(1)} · pitch ${Math.round(map.getPitch())}° · bearing ${Math.round(map.getBearing())}°`;
-  $('#hud').innerHTML = `<b>${title(m)} mode${selected?' · '+esc(r?.name?.common||selected):''}${compareMode?' · compare':''}</b><div class="muted">${compareMode?`${compareCodes.length}/4 countries held · click polygons to add/remove.`:m==='world'?'Polygons and global systems dominate.':m==='regional'?'Country hubs and cross-border relations become primary.':m==='country'?'Selected polygon acts as a data shell; interior modules unfold.':'Real geocoded assets should dominate here; semantic hubs remain navigation-only.'}${selected&&showRelations?` · trace depth ${traceDepth}: ${Math.max(0,(graph?.nodes.length||1)-1)} reachable nodes / ${graph?.edges.length||0} edges.`:''}</div>`;
+  $('#hud').innerHTML = `<b>${title(m.replaceAll('-',' '))} mode${selected?' · '+esc(r?.name?.common||selected):''}${compareMode?' · compare':''}</b><div class="muted">${compareMode?`${compareCodes.length}/4 countries held · click polygons to add/remove.`:(SCALE_MODE_COPY[m] || SCALE_MODE_COPY.world)}${selected&&showRelations?` · trace depth ${traceDepth}: ${Math.max(0,(graph?.nodes.length||1)-1)} reachable nodes / ${graph?.edges.length||0} edges.`:''}</div>`;
 }
 async function loadCanonical(code) {
   if (cache.has(code)) return cache.get(code);
