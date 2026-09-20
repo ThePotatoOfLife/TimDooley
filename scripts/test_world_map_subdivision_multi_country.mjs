@@ -38,6 +38,9 @@ const scaleRuntime = Object.freeze({
     if (band !== 'subnational') throw new Error(`unexpected scale band ${band}`);
     return 5.8;
   },
+  capabilityActive(capability, phase, zoom) {
+    return Number(zoom) >= this.threshold(capability, phase);
+  },
 });
 window.__potatoAtlasScale = { ...scaleRuntime, ready:Promise.resolve(scaleRuntime) };
 
