@@ -5,6 +5,8 @@ const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas Places require the core map.');
 const interaction = window.__potatoAtlasInteraction;
 const inspector = window.__potatoAtlasInspector;
+if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
+const motion = window.__potatoAtlasMotion;
 
 const DATA_ROOT = '../data/world-places/';
 const INDEX_URL = `${DATA_ROOT}index.json`;
@@ -517,7 +519,7 @@ async function focus(id, options = {}) {
   syncUrl(selectedId);
   openInspector(feature);
   if (options.fit !== false && Array.isArray(coords) && coords.length >= 2) {
-    map.easeTo({
+    motion.easeTo(map, {
       center:[Number(coords[0]), Number(coords[1])],
       zoom:Math.max(Number(options.zoom) || 6.2, map.getZoom()),
       pitch:Math.min(map.getPitch(), 45), duration:650
