@@ -24,16 +24,12 @@
 **Resolution:** source-change lifecycle + ADL repaint; load de-duplication; regression coverage.
 
 ### WM-003 · Physical Water owns a private 3.4 detail threshold — P2
-**Status:** in progress in this wave.  
-**Risk:** drift from canonical scale semantics; duplicated lifecycle thresholds.  
-**Owner:** Scale runtime.  
-**Resolution:** move threshold to `world-map-scale-contract.json`; Water consumes `physical-water-detail`.
+**Status:** fixed on main (2026-09-20).  
+**Resolution:** threshold moved to `world-map-scale-contract.json`; Water consumes the canonical `physical-water-detail` capability.
 
 ### WM-004 · Hydrology owns private 4 / 5.2 / 6.7 / 8.2 thresholds — P2
-**Status:** in progress in this wave.  
-**Risk:** request density, cache identity and render activation can diverge.  
-**Owner:** Scale runtime + Hydrology.  
-**Resolution:** canonical capabilities + one `riverRegime()` owner shared by query threshold and request-key regime.
+**Status:** fixed on main (2026-09-20).  
+**Resolution:** Hydrology consumes canonical Scale capabilities for load/detail regimes so request density and render activation share one threshold owner.
 
 ### WM-005 · Remaining raw zoom-magic inventory — P2
 **Status:** open.  
@@ -66,14 +62,13 @@
 **Next:** remove only after direct/degraded standalone paths have canonical Router boot and tests.
 
 ### WM-010 · Mobile occlusion / keyboard / focus-return audit incomplete — P2
-**Status:** open.  
-**Risks:** controls can overlap, menus can lose focus, inspector transitions can strand keyboard users.  
-**Next:** add keyboard navigation, focus return, small-viewport occlusion and modal/menu regressions.
+**Status:** in progress (2026-09-20).  
+**Completed in current wave:** Inspector now exposes expanded/controls/hidden state, explicit opens can focus the inspector, close/Escape returns focus to the opening control, World Bar Escape returns focus to its summary, and mobile menu popovers are bounded by the dynamic viewport.  
+**Remaining:** verify narrow-height landscape, browser zoom, keyboard-only traversal order, and interaction with native select popups / temporary investigation surfaces.
 
 ### WM-011 · Reduced-motion behavior incomplete — P2
-**Status:** open.  
-**Risk:** camera `easeTo` / animated transitions ignore user motion preferences.  
-**Next:** central motion policy used by fit/focus/navigation helpers.
+**Status:** fixed on main (2026-09-20).  
+**Resolution:** shared `3d-motion.js` policy removes camera animation for `prefers-reduced-motion: reduce`, migrated camera consumers use it, CSS motion is suppressed, and canonical validation/regression coverage exists.
 
 ### WM-012 · Color-only semantics remain possible — P2
 **Status:** open.  
@@ -81,8 +76,9 @@
 **Next:** add textual/shape/pattern redundancy and accessibility checks.
 
 ### WM-013 · Active-view accessibility summary incomplete — P2
-**Status:** open.  
-**Next:** concise live region describing active analytical/physical/evidence/geography layers, selection, scale and time.
+**Status:** in progress (current wave).  
+**Implementation:** read-only polite/atomic live region summarizes selection, analytical/physical/evidence/geography layers, relation mode, projection, time and named scale from canonical APIs/events.  
+**Next:** exact-head CI, then close.
 
 ### WM-014 · Route-geometry behavioral coverage incomplete — P2
 **Status:** open.  
@@ -114,6 +110,17 @@
 ### WM-020 · Architecture audit should emit actionable queue IDs — P3
 **Status:** open.  
 **Next:** map recurring audit findings to this ledger and include remediation owner + severity.
+
+### WM-021 · Escape dismissal can fall through to legacy world reset — P1/P2
+**Status:** fixed in current wave; awaiting exact-head CI.  
+**Cause:** core `3d-app.js` still owns a global Escape shortcut that resets world state, while newer menus/inspector surfaces lacked guaranteed precedence.  
+**Resolution:** inspector/menu dismissal consumes Escape before legacy reset and restores focus to the owning control; regressions pin propagation ownership.
+
+### WM-022 · Mobile World Bar popover can exceed usable viewport — P2
+**Status:** fixed in current wave; awaiting exact-head CI.  
+**Cause:** fixed-position menu used a top offset without a dynamic bottom/height bound.  
+**Resolution:** mobile menu uses left/right/bottom bounds, `100dvh` maximum height and contained overscroll.  
+**Remaining:** landscape + browser-zoom visual verification.
 
 ## Work order
 
