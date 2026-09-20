@@ -1,0 +1,201 @@
+{
+  "id": "fbi-incidents-index",
+  "title": "FBI Incidents — Dated Character Events",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "incident_rule": "An incident is a dated or bounded scene that materially changes knowledge of a figure, bond, role, boundary, or project artifact. It is not synonymous with wrongdoing.",
+  "incidents": [
+    {
+      "id": "inc-2024-11-03-social-room",
+      "date": "2024-11-03",
+      "title": "Tanks / voice chat / Great Book social room",
+      "figures": [
+        "marty-biz",
+        "port-monkey",
+        "optimistique",
+        "rahu",
+        "termite",
+        "ledgeview"
+      ],
+      "type": [
+        "ordinary-presence",
+        "game",
+        "discussion"
+      ],
+      "source": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "id": "inc-2024-11-04-first-mover",
+      "date": "2024-11-04",
+      "title": "Juice challenges Potatoism; Kale answers cyclically",
+      "figures": [
+        "juice",
+        "kale",
+        "termite"
+      ],
+      "type": [
+        "theology",
+        "debate"
+      ],
+      "source": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "id": "inc-2024-11-14-vc-crew",
+      "date": "2024-11-14",
+      "title": "Sammy / Marty / Port Monkey voice-chat crew",
+      "figures": [
+        "sammy",
+        "marty-biz",
+        "port-monkey",
+        "optimistique"
+      ],
+      "type": [
+        "ordinary-presence",
+        "game",
+        "group"
+      ],
+      "source": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "id": "inc-2024-12-04-tree-split",
+      "date": "2024-12-04",
+      "title": "Tree becomes separate social space",
+      "figures": [
+        "tachy",
+        "termite",
+        "kale"
+      ],
+      "type": [
+        "boundary",
+        "platform",
+        "group-formation"
+      ],
+      "source": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "id": "inc-2024-12-07-reconciliation",
+      "date": "2024-12-07",
+      "title": "Optimistique / Juice reconciliation and trust corridor",
+      "figures": [
+        "optimistique",
+        "juice",
+        "termite"
+      ],
+      "type": [
+        "repair",
+        "trust",
+        "boundary"
+      ],
+      "source": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "id": "inc-2024-12-15-kitchen",
+      "date": "2024-12-15",
+      "title": "Anacondasin potato-chip stream / Tomato debate",
+      "figures": [
+        "anacondasin",
+        "termite",
+        "rahu",
+        "ledgeview",
+        "pondo",
+        "sammy"
+      ],
+      "type": [
+        "collaboration",
+        "food",
+        "humor",
+        "symbolic-role"
+      ],
+      "source": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "id": "inc-2024-12-21-moderation-care",
+      "date": "2024-12-21",
+      "title": "Moderation dispute and care intervention",
+      "figures": [
+        "literally",
+        "pondo",
+        "tachy",
+        "marty-biz"
+      ],
+      "type": [
+        "moderation",
+        "boundary",
+        "care"
+      ],
+      "source": "knowledge/story/social-presence-ledger-2024-2025.json",
+      "sensitivity": "Keep self-harm details minimized in general-purpose surfaces."
+    },
+    {
+      "id": "inc-2025-01-29-marty-death",
+      "date": "2025-01-29",
+      "title": "Marty dies",
+      "figures": [
+        "marty-biz",
+        "sammy"
+      ],
+      "type": [
+        "death",
+        "grief"
+      ],
+      "source": "knowledge/story/social-presence-ledger-2024-2025.json",
+      "boundary": "Date externally corrected; cause remains separate."
+    },
+    {
+      "id": "inc-2025-03-12-creation-wave",
+      "date": "2025-03-12",
+      "title": "TTS / HTML / interactive Great Book creation wave",
+      "figures": [
+        "tachy"
+      ],
+      "type": [
+        "creation",
+        "software",
+        "story"
+      ],
+      "source": "knowledge/story/turning-corridor-chronicle-recovery-2025.json"
+    },
+    {
+      "id": "inc-2026-03-01-rahu-growth",
+      "date": "2026-03-01",
+      "title": "Rahu 1/137 growth story",
+      "figures": [
+        "rahu"
+      ],
+      "type": [
+        "conversation-story",
+        "growth",
+        "symbolic-role"
+      ],
+      "source": "rooms/potatoverse-canon/beings/rahu/"
+    },
+    {
+      "id": "inc-2026-07-07-txt",
+      "date": "2026-07-07",
+      "title": "TXT public recurrence with Dim",
+      "figures": [
+        "txt"
+      ],
+      "type": [
+        "public-conflict",
+        "recurrence"
+      ],
+      "source": "rooms/potatoverse-canon/beings/txt/"
+    },
+    {
+      "id": "inc-2026-09-20-matthew-mediomu",
+      "date": "2026-09-20",
+      "title": "Controller, clean room and dragon",
+      "figures": [
+        "matthew-mtclassic",
+        "mediomu007"
+      ],
+      "type": [
+        "ordinary-presence",
+        "gaming",
+        "room-making"
+      ],
+      "source": "story-content/2026-09-20-matthew-mediomu.html"
+    }
+  ]
+}
