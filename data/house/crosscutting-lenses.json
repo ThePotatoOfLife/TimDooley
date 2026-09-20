@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.1.0",
+  "updated": "2026-09-20",
   "authority": "crosscutting-lenses",
   "purpose": "Provide a small set of non-owning interpretive lenses that can be applied across the Potato of Life without creating new Rooms, planes or realms.",
   "master_rule": "A lens changes how a subject is read; it does not change who owns the knowledge or create a new ontological level.",
@@ -196,6 +196,57 @@
           "use": "Useful comparator for cultivation that works with conditions rather than confusing force with effective action.",
           "boundary": "Wu wei is not mere passivity and is not a biological property of potatoes."
         }
+      ]
+    },
+    {
+      "id": "present-time",
+      "label": "Present — Root, Here/Now, Seed & Spiral Time",
+      "question": "What belongs to the past/provenance, what is actually present now, and what future potential is being seeded from the current state?",
+      "project_operators": [
+        "root",
+        "here-now",
+        "door",
+        "seed",
+        "ladder",
+        "spiral"
+      ],
+      "room_ids": [
+        "chronology-events",
+        "developmental-genealogy",
+        "canon-identities",
+        "symbolic-architecture",
+        "practice-ethics"
+      ],
+      "distinctions": [
+        "Past memory is not current event.",
+        "Future possibility is not current fact.",
+        "Door/Here is the operative present state.",
+        "Seed begins from present conditions, not detached prediction.",
+        "Spiral represents recurrence with changed state/history."
+      ]
+    },
+    {
+      "id": "affective-integration",
+      "label": "Affective Integration — Contraction, Courage, Love & Return",
+      "question": "Is this state becoming more contracted/reactive or more integrated, agentic, loving and capable of return?",
+      "project_operators": [
+        "shadow",
+        "door",
+        "garden",
+        "fruit",
+        "return"
+      ],
+      "room_ids": [
+        "practice-ethics",
+        "theology-god-language",
+        "symbolic-architecture",
+        "subculture-group-formation"
+      ],
+      "distinctions": [
+        "Use qualitative state language only; no objective vibration numbers.",
+        "Lower states do not define human worth.",
+        "Descent can be healthy rooting/grief/investigation.",
+        "Ascent is incomplete without service/return."
       ]
     }
   ],
