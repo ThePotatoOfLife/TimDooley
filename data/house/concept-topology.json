@@ -287,10 +287,23 @@
       "boundary": "Axis is not asserted as a literal extra physical dimension.",
       "formal_type": {
         "template": "Axis",
-        "schema": "A=(A_geom,A_dyn,A_sym,A_RG,A_order)",
+        "schema": "A=(A_geom,A_dyn,A_sym,A_RG,A_order,A_prop,A_eig,A_fiber,A_scale)",
         "primary_project_component": "A_order with optional dynamical comparator",
         "default_dimension_type": "P",
-        "note": "Project Axis is principally orientation/order unless another component is explicitly modeled."
+        "note": "Project Axis is principally orientation/order and geometric continuity; technical propagation, eigendirection, fiber, scale or RG readings activate only when explicitly modeled.",
+        "active_components": [
+          "A_order",
+          "A_geom"
+        ],
+        "optional_components": [
+          "A_dyn",
+          "A_sym",
+          "A_RG",
+          "A_prop",
+          "A_eig",
+          "A_fiber",
+          "A_scale"
+        ]
       }
     },
     {
@@ -614,9 +627,21 @@
       "boundary": "Spiral is a trajectory description, not a guarantee of improvement.",
       "formal_type": {
         "template": "Spiral",
-        "schema": "S=(S_helix,S_return,S_RG,S_hol,S_phase)",
+        "schema": "S=(S_geom,S_dyn,S_phase,S_flow,S_hol,S_RG,S_torus,S_return)",
         "primary_project_component": "recurrence-with-change",
-        "note": "Specific scientific spiral mechanisms require separate evidence."
+        "note": "Project Spiral defaults to geometric recurrence-with-change. Scientific flow, phase, holonomy, RG or torus mechanisms require separate evidence and explicit activation.",
+        "active_components": [
+          "S_geom",
+          "S_return"
+        ],
+        "optional_components": [
+          "S_dyn",
+          "S_phase",
+          "S_flow",
+          "S_hol",
+          "S_RG",
+          "S_torus"
+        ]
       }
     },
     {
