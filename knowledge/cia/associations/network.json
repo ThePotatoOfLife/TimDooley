@@ -1046,6 +1046,33 @@
       "contexts": [
         "Sammy returns; Masha is born through TTS"
       ]
+    },
+    {
+      "a": "dim",
+      "b": "txt",
+      "count": 1,
+      "dates": [
+        "2026-07-07"
+      ],
+      "contexts": [
+        "DIM and TXT share a public conflict field"
+      ],
+      "association_type": "documentary co-presence / public interaction",
+      "source": "data/swamp/dim-txt-relational-dossier.json"
+    },
+    {
+      "a": "gg",
+      "b": "port-monkey",
+      "count": 1,
+      "dates": [
+        "2026-03-04"
+      ],
+      "contexts": [
+        "Monkey reports catching up with GG and a proposed grievance/healing meeting"
+      ],
+      "association_type": "reported contact / repair lead",
+      "source": "conversation recovery",
+      "boundary": "The contact is reported by Monkey; meeting completion is unresolved."
     }
   ]
 }
