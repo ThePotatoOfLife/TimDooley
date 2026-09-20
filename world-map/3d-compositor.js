@@ -1,3 +1,7 @@
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('compositor-query', ['query']);
+
 // Composable analytical renderer for the World Relational Atlas.
 // One scalar owns base fill; categorical memberships occupy a separate pattern
 // layer; country selection remains owned by the existing selection subsystem.
@@ -389,10 +393,8 @@ async function render() {
 }
 
 function persistQuery() {
-  const url = new URL(location.href);
   const count = activeSetEntries().length;
-  if (count >= 2) url.searchParams.set('query', queryMode); else url.searchParams.delete('query');
-  history.replaceState({}, '', url);
+  urlState.patch('compositor-query', { set:{ query:count >= 2 ? queryMode : null } });
 }
 function setQueryMode(mode) {
   const next = mode === 'all' ? 'all' : 'any';
