@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-20",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
@@ -599,6 +599,47 @@
       "summary": "Variable South Asian subtle-body systems and later modern physiological reinterpretations compared with the project's five spinal Gates + higher centers.",
       "status_note": "Cakras/nāḍīs are not established anatomical structures.",
       "evidence_note": "Historical variation and modern plexus/endocrine mappings must remain chronologically visible."
+    },
+    {
+      "id": "body-neural-development",
+      "label": "Neural Tube → Adult Rooms",
+      "kind": "developmental-neurobiology",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "route": "/records/neural-development-lineage-atlas/",
+      "summary": "Developmental route from neural plate/tube through brain vesicles, progenitors, migration, glia and tract formation into adult House/brainstem/spinal architecture.",
+      "status_note": "Developmental ancestry informs but does not uniquely determine adult function.",
+      "evidence_note": "Human development and rodent models must remain distinguishable."
+    },
+    {
+      "id": "body-neurovascular-unit",
+      "label": "Neurovascular Unit / Living Wall",
+      "kind": "cellular-interface",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "route": "/records/glia-neurovascular-barrier-atlas/",
+      "summary": "Astrocytes, endothelium, pericytes, microglia, neurons and extracellular matrix form a living barrier/metabolic/vascular ecosystem.",
+      "status_note": "BBB, blood-CSF barrier and meningeal borders are distinct interfaces.",
+      "evidence_note": "Use the glia/neurovascular atlas for cell-type and boundary distinctions."
+    },
+    {
+      "id": "body-cortical-celltypes",
+      "label": "Cortical Layers / Cell Types",
+      "kind": "cellular-neuroanatomy",
+      "room_ids": [
+        "neurobiology",
+        "symbolic-body-comparison"
+      ],
+      "route": "/records/cortical-celltype-parcellation-atlas/",
+      "summary": "Layers I–VI, projection classes, interneuron families, glia and transcriptomic parcellations deepen broad cortical room labels.",
+      "status_note": "No single parcellation is the final map of cortex.",
+      "evidence_note": "Cytoarchitecture, transcriptomics, connectivity and functional networks are complementary coordinate systems."
     }
   ],
   "source_records": [
