@@ -67,6 +67,10 @@ def main() -> int:
         errors.append("snapshot status must be historical-seed or official-export")
     if snap.get("status") == "historical-seed" and "not the current" not in str(snap.get("limitation","")).lower():
         errors.append("historical seed must explicitly say it is not the current ADL download")
+    if snap.get("status") == "historical-seed":
+        for token in ("snapshotFreshness()", "data-adl-freshness", "not current monthly ADL coverage"):
+            if token not in js:
+                errors.append(f"historical ADL runtime missing persistent freshness marker: {token}")
     semantics = str((meta.get("methodology") or {}).get("display_semantics","")).lower()
     for phrase in ("not a general hate score","not", "population-normalized"):
         if phrase not in semantics:
