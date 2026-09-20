@@ -1,7 +1,7 @@
 {
   "id": "tim-dooley",
   "display_name": "Tim Dooley",
-  "bureau": "FBI — Figures, Bonds & Incidents",
+  "bureau": "CIA — Characters, Incidents & Associations",
   "depth_tier": "center-file",
   "depth_note": "Central subject of the Potato of Life archive. 'Center file' indicates archive topology, not suspicion, guilt or law-enforcement status.",
   "entity_class": "person",
@@ -87,5 +87,25 @@
     "Keep Tim's own statement layer distinct from later project interpretation.",
     "Use the center file as a graph root, not a verdict about other figures.",
     "Link major biographical corrections and recovered source windows as the archive improves."
-  ]
+  ],
+  "cia_record": {
+    "authority": "canonical",
+    "record_type": "character-dossier",
+    "presence": {
+      "first_recorded": null,
+      "last_recorded": null,
+      "rule": "First/last currently recovered dated evidence in this dossier; not lifetime endpoints."
+    },
+    "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
+    "debt_and_repair": {
+      "records": [],
+      "rule": "Do not attach legal, financial, karmic or spiritual debt unless a dated source explicitly does so; symbolic debt remains project language unless independently established."
+    },
+    "state_rule": "Roles, archetypes, upgrades, handicaps and project-symbolic placements are date/source-bounded states, not permanent human essences.",
+    "open_loops": [
+      "Keep Tim's own statement layer distinct from later project interpretation.",
+      "Use the center file as a graph root, not a verdict about other figures.",
+      "Link major biographical corrections and recovered source windows as the archive improves."
+    ]
+  }
 }
