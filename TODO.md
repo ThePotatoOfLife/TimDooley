@@ -172,7 +172,7 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 - [x] Add an explicit built-site assertion that every registered `room-inhabitants.json` route under `/records/` resolves after `build_site.py`; `validate_generated_navigation.py` now derives the full route set from the registry.
 - [ ] Continue visible-page density auditing after each major content wave: prefer concrete cases/mechanisms over another navigation card when a page is already route-heavy.
 - [ ] Review the remaining homepage House corridor and cross-cutting-view blocks after user testing; merge any pair whose reader job is no longer meaningfully distinct.
-- [ ] Audit generated question/topic/context/record pages for meaningful TTS sectioning, not just script presence.
+- [~] Generated question/topic/context/record TTS semantics are tracked canonically as **READ-010** below; topic/context/record pages are improved, question readers remain.
 - [ ] Run an exact-head final Pages build after the current navigation/content/TTS wave and fix any source-vs-generated route drift it exposes.
 
 ### ACCESS / navigation recovery — 2026-09-20
@@ -235,7 +235,7 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [ ] **GOV-003 · Post-build mutation debt:** reduce brittle literal-HTML rewriting in `scripts/patch_public_navigation.py`. Authored pages should own their stable navigation/content; generated patching should be limited to genuinely derived capabilities and be structurally/idempotently tested.
 - [ ] **GOV-004 · Semantic migration validator:** generalize the CIA lesson: when an owner/path namespace migrates, validate IDs, titles, aliases and projected references as well as file existence so predecessor names cannot survive invisibly inside valid paths.
 - [ ] **GOV-005 · Source-vs-generated artifact contract:** mark discovery outputs such as sitemap/site-index/build projections explicitly as source-owned, build-generated, compatibility or historical so authority manifests cannot look like they reference missing source files.
-- [ ] **GOV-006 · Backlog deduplication:** periodically collapse duplicate TODOs and superseded architectural instructions; the backlog itself must not become a second legacy architecture.
+- [~] **GOV-006 · Backlog deduplication:** periodically collapse duplicate TODOs and superseded architectural instructions; this sweep removed the stale Project Compass directive and collapsed duplicate asset-version/TTS tasks, but the full ledger still needs periodic deduplication.
 - [ ] **GOV-007 · Root authority-doc convergence:** compare README, PROJECT-OPERATING-MAP, PROJECT-STRUCTURE, MASTER-ARCHITECTURE and dated navigation plans against current House/public-surface/Quick-Access authority, marking old design documents historical where appropriate rather than letting them compete with live contracts.
 
 #### P2 — reader focus / navigation
@@ -276,7 +276,7 @@ The current problem is not lack of information. It is **retrieval cost**: import
 
 ### P2 — maintainability and duplication
 
-- [ ] Reduce hand-maintained asset-version duplication for shared components (for example the same spiral CSS/JS version string repeated across four reader pages).
+- [ ] Shared asset-version duplication is tracked canonically as **CLEAN-003** above; do not create a second versioning backlog here.
 - [x] Move repeated nested-Room presentation CSS into shared assets. All 38 registered interiors now share `app/room-interior.css`, including local-center, adjacency, boundary and action-control rules.
 - [ ] Continue cross-file duplicate auditing and merge only true duplicate definitions; preserve primary evidence, historical snapshots with provenance value and additive research.
 - [ ] Review old `data/expansions/*wave*/*round*` records against their current canonical owners and House holdings. **Registry reconciliation complete:** all 14 JSON expansion files are now classified and validator-enforced. `wave-009.json` is a promotion backlog (54/55 seed ids are not in `data/nodes.json`), `lexicon-wave-009.json` is a migration candidate (177/179 aliases are absent from the narrow public discovery-alias registry), wave 012 remains actively cited research, and wave 018 remains a broad research reservoir. Next: classify the 54 seed ids by strongest canonical owner and design the correct backend/node alias owner before migrating vocabulary.
