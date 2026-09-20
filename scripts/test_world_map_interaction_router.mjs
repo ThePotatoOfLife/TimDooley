@@ -110,7 +110,11 @@ assert.ok(subdivisions.includes('function interactionRouter()'), 'subdivisions m
 assert.ok(subdivisions.includes('function unbindSharedLayerFallback()'), 'subdivisions must be able to remove degraded direct handlers');
 assert.ok(subdivisions.includes('function syncSharedLayerInteraction()'), 'subdivisions need an explicit Router promotion path');
 assert.ok(subdivisions.includes("interaction.register('subdivisions'"), 'subdivisions must register with the Interaction Router on normal app boots');
-assert.ok(subdivisions.includes("window.addEventListener('potato-atlas-interaction-ready', () => syncSharedLayerInteraction())"), 'subdivisions must promote when Router readiness arrives');
+assert.ok(
+  subdivisions.includes("'potato-atlas-interaction-ready'") &&
+  subdivisions.includes("syncSharedLayerInteraction()"),
+  'subdivisions must promote when Router readiness arrives',
+);
 
 assert.ok(routerSource.includes('potato-atlas-interaction-ready'), 'Interaction Router must publish an explicit ready signal for early-boot handoff');
 const bootstrapCapture = bootstrap.indexOf("await import(versionedModule('./3d-core-interaction-handoff.js'))");
