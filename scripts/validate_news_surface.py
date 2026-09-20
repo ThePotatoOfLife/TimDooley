@@ -2,6 +2,7 @@
 """Validate the Current World live-news projection and its House boundaries."""
 from __future__ import annotations
 import json
+import re
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -82,11 +83,11 @@ for token in (
     require(js,token,"app/news.js")
 
 
-if "$('[data-news-category]',tabs).forEach" in js:
+if re.search(r"(?<!\$)\$\('\[data-news-category\]',tabs\)\.forEach", js):
     errors.append("News category controls must use $() node-list selection, not $() single-element selection")
-if "$('[data-news-lens]',lenses).forEach" in js:
+if re.search(r"(?<!\$)\$\('\[data-news-lens\]',lenses\)\.forEach", js):
     errors.append("News lens controls must use $() node-list selection, not $() single-element selection")
-if "$('[data-news-horizon]',horizons).forEach" in js:
+if re.search(r"(?<!\$)\$\('\[data-news-horizon\]',horizons\)\.forEach", js):
     errors.append("News horizon controls must use $() node-list selection, not $() single-element selection")
 
 for token in (
