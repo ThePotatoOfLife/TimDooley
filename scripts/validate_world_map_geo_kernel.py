@@ -8,6 +8,7 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 KERNEL = ROOT / "world-map" / "3d-geo-kernel.js"
+SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 TEST = ROOT / "scripts" / "test_world_map_geo_kernel.mjs"
 CORE_FIT_WRAP_TEST = ROOT / "scripts" / "test_world_map_core_fit_wrap.mjs"
 SUBDIVISION_WRAP_TEST = ROOT / "scripts" / "test_world_map_subdivision_wrap_fit.mjs"
@@ -21,6 +22,12 @@ def main() -> int:
         source = ""
     else:
         source = KERNEL.read_text(encoding="utf-8", errors="replace")
+
+    subdivisions = SUBDIVISIONS.read_text(encoding="utf-8", errors="replace") if SUBDIVISIONS.exists() else ""
+    if not subdivisions:
+        errors.append("missing world-map/3d-subdivisions.js")
+    elif "window.__potatoAtlasGeo =" in subdivisions:
+        errors.append("subdivisions must consume, not publish, the Geo singleton")
 
     for token in (
         "normalizeLongitude",
