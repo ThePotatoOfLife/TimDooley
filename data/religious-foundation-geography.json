@@ -1,0 +1,991 @@
+{
+  "id": "religious-foundation-geography",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "status": "canonical historical-geography projection",
+  "purpose": "Connect religious lineage origins and later diffusion events to the World Map without collapsing a religion into a modern country or treating an origin place as present-day ownership.",
+  "source": "data/religious-foundation-lineages.json",
+  "map_contract": {
+    "origin_anchor": "Use a point or region only when historically meaningful and sufficiently specific.",
+    "distributed_origin": "Use a region/band or no point when formation was distributed.",
+    "diffusion": "Later spread must be represented by dated events/routes/regions, not by expanding the origin point.",
+    "present_demography": "Country affiliation shares come only from world-religion-layer and its dated sources.",
+    "no_geopolitical_bloc": "A religious tradition is never automatically an alliance, political alignment or state identity.",
+    "minority_rule": "Map presence without implying uniformity, loyalty or belief intensity."
+  },
+  "anchors": [
+    {
+      "node_id": "israelite-religion",
+      "family_id": "judaism-lineage",
+      "name": "Israelite/Judahite religious formation",
+      "node_type": "phase",
+      "seed_year_start": -1200,
+      "seed_year_end": -586,
+      "origin_place": "ancient Israel and Judah",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "post-exilic-judaism",
+      "family_id": "judaism-lineage",
+      "name": "Post-exilic / Persian-period Judaism",
+      "node_type": "phase",
+      "seed_year_start": -539,
+      "seed_year_end": -332,
+      "origin_place": "Yehud / Jerusalem and diaspora",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "israelite-religion"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "second-temple-judaism",
+      "family_id": "judaism-lineage",
+      "name": "Second Temple Jewish field",
+      "node_type": "phase",
+      "seed_year_start": -516,
+      "seed_year_end": 70,
+      "origin_place": "Jerusalem and wider Jewish diaspora",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "post-exilic-judaism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "rabbinic-judaism",
+      "family_id": "judaism-lineage",
+      "name": "Rabbinic Judaism",
+      "node_type": "trunk",
+      "seed_year_start": 70,
+      "seed_year_end": 600,
+      "origin_place": "Judea/Galilee and Babylonia",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "second-temple-judaism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "karaite-judaism",
+      "family_id": "judaism-lineage",
+      "name": "Karaite Judaism",
+      "node_type": "schism_lineage",
+      "seed_year_start": 750,
+      "seed_year_end": 900,
+      "origin_place": "Baghdad and wider Middle East",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "rabbinic-judaism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "kabbalistic-current",
+      "family_id": "judaism-lineage",
+      "name": "Medieval Kabbalistic currents",
+      "node_type": "mystical_current",
+      "seed_year_start": 1150,
+      "seed_year_end": 1300,
+      "origin_place": "southern France / Iberia and wider Jewish networks",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "rabbinic-judaism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "hasidic-judaism",
+      "family_id": "judaism-lineage",
+      "name": "Hasidic Judaism",
+      "node_type": "reform_movement",
+      "seed_year_start": 1740,
+      "seed_year_end": 1770,
+      "origin_place": "Podolia and eastern European Jewish communities",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "rabbinic-judaism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "reform-judaism",
+      "family_id": "judaism-lineage",
+      "name": "Reform / Liberal Judaism",
+      "node_type": "reform_movement",
+      "seed_year_start": 1817,
+      "seed_year_end": 1818,
+      "origin_place": "Hamburg, Germany",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "rabbinic-judaism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "orthodox-judaism-modern",
+      "family_id": "judaism-lineage",
+      "name": "Orthodox Judaism as modern denominational identity",
+      "node_type": "denomination",
+      "seed_year_start": 1818,
+      "seed_year_end": 1870,
+      "origin_place": "Central and Eastern Europe",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "rabbinic-judaism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "conservative-masorti-judaism",
+      "family_id": "judaism-lineage",
+      "name": "Conservative / Masorti Judaism",
+      "node_type": "denomination",
+      "seed_year_start": 1886,
+      "seed_year_end": 1902,
+      "origin_place": "New York, United States",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "rabbinic-judaism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "samaritan-israelite-tradition",
+      "family_id": "judaism-lineage",
+      "name": "Samaritan Israelite tradition",
+      "node_type": "sister_lineage",
+      "seed_year_start": -500,
+      "seed_year_end": 200,
+      "origin_place": "Samaria",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "israelite-religion"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "early-christianity",
+      "family_id": "christianity-lineage",
+      "name": "Early Christianity / Jesus movement",
+      "node_type": "trunk",
+      "seed_year_start": 30,
+      "seed_year_end": 100,
+      "origin_place": "Judea/Galilee → eastern Mediterranean",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "second-temple-judaism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "nicene-christianity",
+      "family_id": "christianity-lineage",
+      "name": "Nicene Christian consolidation",
+      "node_type": "phase",
+      "seed_year_start": 325,
+      "seed_year_end": 381,
+      "origin_place": "Nicaea / Constantinople and Roman imperial church networks",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "early-christianity"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "church-of-east-lineage",
+      "family_id": "christianity-lineage",
+      "name": "Church of the East lineage",
+      "node_type": "communion",
+      "seed_year_start": 431,
+      "seed_year_end": 500,
+      "origin_place": "Mesopotamia / Persian Empire",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "early-christianity"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "chalcedonian-christianity",
+      "family_id": "christianity-lineage",
+      "name": "Chalcedonian Christian family",
+      "node_type": "phase",
+      "seed_year_start": 451,
+      "seed_year_end": 500,
+      "origin_place": "Chalcedon / Roman Empire",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "nicene-christianity"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "oriental-orthodox-family",
+      "family_id": "christianity-lineage",
+      "name": "Oriental Orthodox / non-Chalcedonian communion family",
+      "node_type": "communion",
+      "seed_year_start": 451,
+      "seed_year_end": 600,
+      "origin_place": "Egypt, Syria, Armenia and connected regions",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "nicene-christianity"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "latin-western-christianity",
+      "family_id": "christianity-lineage",
+      "name": "Latin Western Christian tradition",
+      "node_type": "phase",
+      "seed_year_start": 500,
+      "seed_year_end": 1054,
+      "origin_place": "Rome and Latin western Europe",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "chalcedonian-christianity"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "greek-eastern-christianity",
+      "family_id": "christianity-lineage",
+      "name": "Greek/Eastern Chalcedonian tradition",
+      "node_type": "phase",
+      "seed_year_start": 500,
+      "seed_year_end": 1054,
+      "origin_place": "Constantinople and eastern Roman/Byzantine world",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "chalcedonian-christianity"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "roman-catholic-postschism",
+      "family_id": "christianity-lineage",
+      "name": "Roman Catholic Church, post-schism Western trajectory",
+      "node_type": "communion",
+      "seed_year_start": 1054,
+      "seed_year_end": 1204,
+      "origin_place": "Rome / Latin West",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "latin-western-christianity",
+        "greek-eastern-christianity"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "eastern-orthodox-postschism",
+      "family_id": "christianity-lineage",
+      "name": "Eastern Orthodox communion, post-schism trajectory",
+      "node_type": "communion",
+      "seed_year_start": 1054,
+      "seed_year_end": 1204,
+      "origin_place": "Constantinople and eastern patriarchates",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "greek-eastern-christianity",
+        "latin-western-christianity"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "protestant-reformation",
+      "family_id": "christianity-lineage",
+      "name": "Protestant Reformation family",
+      "node_type": "reform_movement",
+      "seed_year_start": 1517,
+      "seed_year_end": 1529,
+      "origin_place": "Wittenberg and multiple European reform centers",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "roman-catholic-postschism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "lutheran-tradition",
+      "family_id": "christianity-lineage",
+      "name": "Lutheran tradition",
+      "node_type": "denomination",
+      "seed_year_start": 1517,
+      "seed_year_end": 1530,
+      "origin_place": "Wittenberg / Augsburg, Holy Roman Empire",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "protestant-reformation"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "reformed-tradition",
+      "family_id": "christianity-lineage",
+      "name": "Reformed tradition",
+      "node_type": "denomination",
+      "seed_year_start": 1520,
+      "seed_year_end": 1540,
+      "origin_place": "Zürich, Geneva and Swiss/Reformed networks",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "protestant-reformation"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "anglican-tradition",
+      "family_id": "christianity-lineage",
+      "name": "Church of England / Anglican trajectory",
+      "node_type": "denomination",
+      "seed_year_start": 1534,
+      "seed_year_end": 1559,
+      "origin_place": "England",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "latin-western-christianity",
+        "protestant-reformation"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "anabaptist-traditions",
+      "family_id": "christianity-lineage",
+      "name": "Anabaptist traditions",
+      "node_type": "reform_movement",
+      "seed_year_start": 1525,
+      "seed_year_end": 1527,
+      "origin_place": "Zürich / Swiss-German regions",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "protestant-reformation"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "methodist-traditions",
+      "family_id": "christianity-lineage",
+      "name": "Methodist traditions",
+      "node_type": "reform_movement",
+      "seed_year_start": 1729,
+      "seed_year_end": 1740,
+      "origin_place": "Oxford / Britain",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "anglican-tradition"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "adventist-traditions",
+      "family_id": "christianity-lineage",
+      "name": "Adventist traditions",
+      "node_type": "reform_movement",
+      "seed_year_start": 1830,
+      "seed_year_end": 1863,
+      "origin_place": "United States",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "protestant-reformation"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "pentecostalism",
+      "family_id": "christianity-lineage",
+      "name": "Pentecostal movement",
+      "node_type": "reform_movement",
+      "seed_year_start": 1901,
+      "seed_year_end": 1906,
+      "origin_place": "Topeka, Kansas / Los Angeles, California",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "protestant-reformation",
+        "methodist-traditions"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "evangelical-current",
+      "family_id": "christianity-lineage",
+      "name": "Evangelical movement/current",
+      "node_type": "reform_movement",
+      "seed_year_start": 1730,
+      "seed_year_end": 1800,
+      "origin_place": "Britain and North America",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "protestant-reformation"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "early-islam",
+      "family_id": "islam-lineage",
+      "name": "Early Islam / Qur'anic community",
+      "node_type": "trunk",
+      "seed_year_start": 610,
+      "seed_year_end": 632,
+      "origin_place": "Mecca → Medina, Hijaz",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "sunni-formation",
+      "family_id": "islam-lineage",
+      "name": "Sunni Islam, formative majority tradition",
+      "node_type": "communion",
+      "seed_year_start": 632,
+      "seed_year_end": 900,
+      "origin_place": "Medina, Damascus, Baghdad and wider caliphal networks",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "early-islam"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "shia-formation",
+      "family_id": "islam-lineage",
+      "name": "Shiʿi / Alid-imamate traditions",
+      "node_type": "schism_lineage",
+      "seed_year_start": 632,
+      "seed_year_end": 680,
+      "origin_place": "Medina / Kufa / Karbala and wider networks",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "early-islam"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "kharijite-muhakkima",
+      "family_id": "islam-lineage",
+      "name": "Kharijite / Muhakkima early current",
+      "node_type": "schism_lineage",
+      "seed_year_start": 657,
+      "seed_year_end": 658,
+      "origin_place": "Siffin / Iraq",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "early-islam"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "ibadi-islam",
+      "family_id": "islam-lineage",
+      "name": "Ibadi Islam",
+      "node_type": "communion",
+      "seed_year_start": 680,
+      "seed_year_end": 750,
+      "origin_place": "Basra → Oman / North Africa",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "kharijite-muhakkima"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "hanafi-school",
+      "family_id": "islam-lineage",
+      "name": "Hanafi legal school",
+      "node_type": "school",
+      "seed_year_start": 750,
+      "seed_year_end": 900,
+      "origin_place": "Kufa / Baghdad and wider eastern networks",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "sunni-formation"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "maliki-school",
+      "family_id": "islam-lineage",
+      "name": "Maliki legal school",
+      "node_type": "school",
+      "seed_year_start": 760,
+      "seed_year_end": 900,
+      "origin_place": "Medina → North Africa / al-Andalus",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "sunni-formation"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "shafii-school",
+      "family_id": "islam-lineage",
+      "name": "Shafiʿi legal school",
+      "node_type": "school",
+      "seed_year_start": 800,
+      "seed_year_end": 950,
+      "origin_place": "Egypt / Iraq and wider networks",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "sunni-formation"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "hanbali-school",
+      "family_id": "islam-lineage",
+      "name": "Hanbali legal school",
+      "node_type": "school",
+      "seed_year_start": 820,
+      "seed_year_end": 950,
+      "origin_place": "Baghdad",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "sunni-formation"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "zaydi-shia",
+      "family_id": "islam-lineage",
+      "name": "Zaydi Shiʿism",
+      "node_type": "schism_lineage",
+      "seed_year_start": 740,
+      "seed_year_end": 800,
+      "origin_place": "Kufa → Caspian/Yemen in later expansion",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "shia-formation"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "ismaili-shia",
+      "family_id": "islam-lineage",
+      "name": "Ismaili Shiʿism",
+      "node_type": "schism_lineage",
+      "seed_year_start": 765,
+      "seed_year_end": 900,
+      "origin_place": "Iraq / Iran / wider missionary networks",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "shia-formation"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "twelver-shia",
+      "family_id": "islam-lineage",
+      "name": "Twelver / Imami Shiʿism",
+      "node_type": "schism_lineage",
+      "seed_year_start": 874,
+      "seed_year_end": 941,
+      "origin_place": "Samarra / Baghdad and wider Imami networks",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "shia-formation"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "nizari-ismaili",
+      "family_id": "islam-lineage",
+      "name": "Nizari Ismaili lineage",
+      "node_type": "schism_lineage",
+      "seed_year_start": 1094,
+      "seed_year_end": 1100,
+      "origin_place": "Cairo / wider Ismaili daʿwa networks",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "ismaili-shia"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "mustali-ismaili",
+      "family_id": "islam-lineage",
+      "name": "Mustaʿli Ismaili lineage",
+      "node_type": "schism_lineage",
+      "seed_year_start": 1094,
+      "seed_year_end": 1100,
+      "origin_place": "Cairo → Yemen / western India in later developments",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "ismaili-shia"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "sufi-currents",
+      "family_id": "islam-lineage",
+      "name": "Sufi / tasawwuf currents",
+      "node_type": "mystical_current",
+      "seed_year_start": 700,
+      "seed_year_end": 1000,
+      "origin_place": "distributed across early Islamic centers",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "early-islam"
+      ],
+      "map_policy": "distributed-origin",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "early-buddhism",
+      "family_id": "buddhism-lineage",
+      "name": "Early Buddhist sangha",
+      "node_type": "trunk",
+      "seed_year_start": -500,
+      "seed_year_end": -350,
+      "origin_place": "north India",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "sri-lankan-theravada-lineage",
+      "family_id": "buddhism-lineage",
+      "name": "Sri Lankan Theravada-associated monastic lineage",
+      "node_type": "monastic_lineage",
+      "seed_year_start": -250,
+      "seed_year_end": -200,
+      "origin_place": "Anuradhapura / Sri Lanka",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "early-buddhism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "mahayana-buddhism",
+      "family_id": "buddhism-lineage",
+      "name": "Mahayana movements",
+      "node_type": "reform_movement",
+      "seed_year_start": -100,
+      "seed_year_end": 200,
+      "origin_place": "India, distributed monastic environments",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "early-buddhism"
+      ],
+      "map_policy": "distributed-origin",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "vajrayana-buddhism",
+      "family_id": "buddhism-lineage",
+      "name": "Vajrayana / tantric Buddhist traditions",
+      "node_type": "reform_movement",
+      "seed_year_start": 500,
+      "seed_year_end": 800,
+      "origin_place": "South Asia → Tibet/Himalaya and wider Asia",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "mahayana-buddhism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "vedic-religious-field",
+      "family_id": "hindu-lineage",
+      "name": "Vedic religious field",
+      "node_type": "phase",
+      "seed_year_start": -1500,
+      "seed_year_end": -500,
+      "origin_place": "South Asia",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "hindu-traditions",
+      "family_id": "hindu-lineage",
+      "name": "Hindu traditions / long formation",
+      "node_type": "trunk",
+      "seed_year_start": -500,
+      "seed_year_end": 500,
+      "origin_place": "South Asia, distributed",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "vedic-religious-field"
+      ],
+      "map_policy": "distributed-origin",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "vaishnava-traditions",
+      "family_id": "hindu-lineage",
+      "name": "Vaishnava traditions",
+      "node_type": "communion",
+      "seed_year_start": -300,
+      "seed_year_end": 500,
+      "origin_place": "South Asia, distributed",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "hindu-traditions"
+      ],
+      "map_policy": "distributed-origin",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "shaiva-traditions",
+      "family_id": "hindu-lineage",
+      "name": "Shaiva traditions",
+      "node_type": "communion",
+      "seed_year_start": -200,
+      "seed_year_end": 500,
+      "origin_place": "South Asia, distributed",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "hindu-traditions"
+      ],
+      "map_policy": "distributed-origin",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "shakta-traditions",
+      "family_id": "hindu-lineage",
+      "name": "Shakta traditions",
+      "node_type": "communion",
+      "seed_year_start": 300,
+      "seed_year_end": 700,
+      "origin_place": "South Asia, distributed",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "hindu-traditions"
+      ],
+      "map_policy": "distributed-origin",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "jain-early-community",
+      "family_id": "jain-lineage",
+      "name": "Jain / Jina tradition, Mahavira-associated historical formation",
+      "node_type": "trunk",
+      "seed_year_start": -600,
+      "seed_year_end": -400,
+      "origin_place": "north India",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "svetambara-jain",
+      "family_id": "jain-lineage",
+      "name": "Śvetāmbara Jain tradition",
+      "node_type": "denomination",
+      "seed_year_start": 1,
+      "seed_year_end": 500,
+      "origin_place": "western/northern India",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "jain-early-community"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "digambara-jain",
+      "family_id": "jain-lineage",
+      "name": "Digambara Jain tradition",
+      "node_type": "denomination",
+      "seed_year_start": 1,
+      "seed_year_end": 500,
+      "origin_place": "central/southern/northern India",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "jain-early-community"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "sikh-tradition",
+      "family_id": "other-major-lineages",
+      "name": "Sikh tradition",
+      "node_type": "trunk",
+      "seed_year_start": 1469,
+      "seed_year_end": 1539,
+      "origin_place": "Punjab",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "khalsa",
+      "family_id": "other-major-lineages",
+      "name": "Khalsa",
+      "node_type": "reform_movement",
+      "seed_year_start": 1699,
+      "seed_year_end": 1699,
+      "origin_place": "Anandpur Sahib, Punjab",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "sikh-tradition"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "babi-movement",
+      "family_id": "other-major-lineages",
+      "name": "Bábí movement",
+      "node_type": "trunk",
+      "seed_year_start": 1844,
+      "seed_year_end": 1844,
+      "origin_place": "Shiraz, Persia (Iran)",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "bahai-faith-lineage",
+      "family_id": "other-major-lineages",
+      "name": "Baháʼí Faith",
+      "node_type": "trunk",
+      "seed_year_start": 1863,
+      "seed_year_end": 1863,
+      "origin_place": "Baghdad, Ottoman Iraq",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "babi-movement"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "zoroastrian-tradition",
+      "family_id": "other-major-lineages",
+      "name": "Zoroastrian tradition / Zarathustra-associated reform",
+      "node_type": "trunk",
+      "seed_year_start": -1300,
+      "seed_year_end": -550,
+      "origin_place": "eastern Iranian / Central Asian region, uncertain",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [],
+      "map_policy": "distributed-origin",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    }
+  ],
+  "next_diffusion_layers": [
+    "Christianity: Judea/eastern Mediterranean → Roman world → Europe/Africa/Asia → global missionary/diaspora expansions by period.",
+    "Islam: Hijaz → Near East/North Africa/Persia/Central and South Asia → Southeast Asia/Africa/Europe/global diaspora by dated phases.",
+    "Jewish lineages: ancient Israel/Judah → Babylonian and Mediterranean diasporas → medieval regional centers → modern global distributions.",
+    "Buddhism: north India → Sri Lanka/Central Asia/China/Southeast Asia/Tibet/Japan with school-specific dates.",
+    "Hindu traditions: South Asian regional formations and diaspora; avoid one-point origin when evidence is distributed.",
+    "Sikhism: Punjab → global diaspora; distinguish sacred/institutional centers from population distribution.",
+    "Baháʼí: Shiraz/Baghdad/Akka-Haifa trajectory plus later global administrative/community spread."
+  ]
+}
