@@ -7,7 +7,7 @@
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/tim-dooley/claims/">
 <link rel="stylesheet" href="../../app/site-system.css?v=20260914a">
 <style>
-.page{max-width:980px}.lead{max-width:840px}.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:25px 0 18px}.search{flex:1;min-width:260px;border:1px solid var(--site-line);background:transparent;color:inherit;border-radius:8px;padding:10px 12px}.filter{border:1px solid var(--site-line);border-radius:999px;background:transparent;color:var(--site-muted);padding:6px 9px;cursor:pointer}.filter[aria-pressed="true"]{color:var(--site-green);border-color:#647b5d}.readout{color:var(--site-muted);font-size:12px;margin:0 0 10px}.stream{border-top:1px solid var(--site-line)}.claim{display:grid;grid-template-columns:118px minmax(0,1fr);gap:24px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.055)}.date{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--site-muted);padding-top:5px}.claim blockquote{margin:0 0 7px;font:400 19px/1.48 var(--site-font-serif);color:#e8e2d3}.meta{font-size:10px;color:var(--site-muted)}.meta span+span:before{content:" · "}.claim small{display:block;color:var(--site-muted);margin-top:7px}.section{margin-top:50px;padding-top:34px;border-top:1px solid var(--site-line)}.section h2{font:400 36px/1.1 var(--site-font-serif);color:var(--site-gold)}.jobs{border-top:1px solid rgba(255,255,255,.05)}.job{display:grid;grid-template-columns:190px 1fr;gap:20px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.05)}.job strong{font:400 20px var(--site-font-serif);color:var(--site-green)}.role-river{font:400 20px/1.7 var(--site-font-serif);color:#d8ddd3}.role-river span:after{content:" · ";color:var(--site-faint)}.role-river span:last-child:after{content:""}.boundary{padding:14px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line);color:var(--site-muted);font-size:12px}.bridge{margin-top:25px;color:#ccd1c8}.bridge a{color:var(--site-green)}@media(max-width:680px){.claim,.job{grid-template-columns:1fr;gap:4px}.date{padding-top:0}}
+.page{max-width:980px}.lead{max-width:840px}.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:25px 0 18px}.search{flex:1;min-width:260px;border:1px solid var(--site-line);background:transparent;color:inherit;border-radius:8px;padding:10px 12px}.filter{border:1px solid var(--site-line);border-radius:999px;background:transparent;color:var(--site-muted);padding:6px 9px;cursor:pointer}.filter[aria-pressed="true"]{color:var(--site-green);border-color:#647b5d}.readout{color:var(--site-muted);font-size:12px;margin:0 0 10px}.stream{border-top:1px solid var(--site-line)}.claim{display:grid;grid-template-columns:118px minmax(0,1fr);gap:24px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.055)}.date{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--site-muted);padding-top:5px}.claim blockquote{margin:0 0 7px;font:400 19px/1.48 var(--site-font-serif);color:#e8e2d3}.meta{font-size:10px;color:var(--site-muted)}.meta span+span:before{content:" · "}.claim small{display:block;color:var(--site-muted);margin-top:7px}.claim-routes{margin-top:7px;font-size:10px;color:var(--site-muted)}.claim-routes a{color:var(--site-green)}.section{margin-top:50px;padding-top:34px;border-top:1px solid var(--site-line)}.section h2{font:400 36px/1.1 var(--site-font-serif);color:var(--site-gold)}.jobs{border-top:1px solid rgba(255,255,255,.05)}.job{display:grid;grid-template-columns:190px 1fr;gap:20px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.05)}.job strong{font:400 20px var(--site-font-serif);color:var(--site-green)}.role-river{font:400 20px/1.7 var(--site-font-serif);color:#d8ddd3}.role-river span:after{content:" · ";color:var(--site-faint)}.role-river span:last-child:after{content:""}.boundary{padding:14px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line);color:var(--site-muted);font-size:12px}.bridge{margin-top:25px;color:#ccd1c8}.bridge a{color:var(--site-green)}@media(max-width:680px){.claim,.job{grid-template-columns:1fr;gap:4px}.date{padding-top:0}}
 </style>
 </head>
 <body><main class="page page--reading">
@@ -38,10 +38,27 @@ const dateKey=x=>{
  const families=[...new Set(rows.flatMap(x=>x.families||[]))].sort();
  const filters=document.getElementById('filters');
  filters.innerHTML='<button class="filter" data-fam="all" aria-pressed="true">All</button>'+families.map(x=>'<button class="filter" data-fam="'+esc(x)+'" aria-pressed="false">'+esc(x.replaceAll('-',' '))+'</button>').join('');
+ const routeMap={
+   'identity-title':[['../ontology/','identity / ontology'],['../how-much-is-tim-god/','God/Father modes']],
+   'figure-genealogy-relation':[['../biblical-case/','religion / genealogy']],
+   'capability-function':[['../','Tim portrait']],
+   'digital-public':[['../public-witness/','public witness'],['../100000-hours/','100,000 Hours']],
+   'scope-geography-network':[['../../world/','World / map']],
+   'body-symbolism':[['../../religion/','religion'],['../../philosophy/','philosophy']],
+   'value-karma-ledger':[['../../philosophy/','philosophy']],
+   'ethic-belief':[['../../philosophy/','philosophy']],
+   'job-vocation':[['../','jobs / Tim portrait']]
+ };
+ function routesFor(x){
+   const out=new Map();
+   (x.families||[]).forEach(f=>(routeMap[f]||[]).forEach(([h,l])=>out.set(h,l)));
+   out.set('../../timeline/','timeline');
+   return [...out.entries()].slice(0,4).map(([h,l])=>'<a href="'+h+'">'+esc(l)+'</a>').join(' · ');
+ }
  function render(){
    const shown=rows.filter(x=>(fam==='all'||(x.families||[]).includes(fam))&&(!q||[x.wording,x.date_or_period,x.source_class,(x.domains||[]).join(' ')].join(' ').toLowerCase().includes(q)));
    document.getElementById('readout').textContent=shown.length+' of '+rows.length+' recovered declaration records visible';
-   document.getElementById('claims').innerHTML=shown.map(x=>'<article class="claim"><div class="date">'+esc(x.date_or_period||'undated')+'</div><div><blockquote>“'+esc(x.wording)+'”</blockquote><div class="meta"><span>'+esc(x.source_class||'')+'</span><span>'+esc((x.families||[]).join(', '))+'</span></div>'+(x.note?'<small>'+esc(x.note)+'</small>':'')+'</div></article>').join('');
+   document.getElementById('claims').innerHTML=shown.map(x=>'<article class="claim" id="claim-'+esc(String(x.id||'').replace(/[^a-zA-Z0-9_-]/g,'-'))+'"><div class="date">'+esc(x.date_or_period||'undated')+'</div><div><blockquote>“'+esc(x.wording)+'”</blockquote><div class="meta"><span>'+esc(x.source_class||'')+'</span><span>'+esc((x.families||[]).join(', '))+'</span></div>'+(x.note?'<small>'+esc(x.note)+'</small>':'')+'<div class="claim-routes">'+routesFor(x)+'</div></div></article>').join('');
    filters.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.fam===fam)));
  }
  filters.addEventListener('click',e=>{const b=e.target.closest('[data-fam]');if(!b)return;fam=b.dataset.fam;render()});
