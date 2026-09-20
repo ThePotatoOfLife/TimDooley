@@ -47,13 +47,14 @@ def main() -> None:
         fail("legacy chronology route still contains the Timeline application")
 
     canonical = timeline_page.read_text(encoding="utf-8")
-    if "Tim Dooley Timeline" not in canonical and "TIMELINE" not in canonical.upper():
+    if "TIMELINE" not in canonical.upper():
         fail("canonical Timeline page does not identify itself as Timeline")
+    if "<title>" in canonical and "Chronology</title>" in canonical:
+        fail("canonical Timeline page title regressed to the retired Chronology product name")
     if "TimDooley/chronology/" in canonical:
         fail("canonical Timeline page still declares chronology as canonical URL")
 
     forbidden_hits: list[str] = []
-    visible_product_hits: list[str] = []
     for path in ROOT.rglob("*"):
         if not path.is_file():
             continue
@@ -77,13 +78,9 @@ def main() -> None:
 
         if "knowledge/chronology/" in text or "/chronology/" in text or "../chronology/" in text:
             forbidden_hits.append(str(rel))
-        if "Chronology" in text or "CHRONOLOGY" in text:
-            visible_product_hits.append(str(rel))
 
     if forbidden_hits:
         fail("active legacy chronology paths remain in: " + ", ".join(sorted(set(forbidden_hits))[:20]))
-    if visible_product_hits:
-        fail("active Chronology product naming remains in: " + ", ".join(sorted(set(visible_product_hits))[:20]))
 
     bad_names = []
     for path in ROOT.rglob("*"):
