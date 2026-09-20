@@ -14,8 +14,7 @@ APP = ROOT / "world-map" / "3d-app.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 EVIDENCE = ROOT / "world-map" / "3d-evidence.js"
-UI = ROOT / "world-map" / "3d-ui.js"
-SELECTION_UI = ROOT / "world-map" / "3d-selection-ui.js"
+RETIRED_UI = (ROOT / "world-map" / "3d-ui.js", ROOT / "world-map" / "3d-selection-ui.js")
 SELECTION = ROOT / "world-map" / "3d-country-selection.js"
 PULSE = ROOT / "world-map" / "3d-country-pulse.js"
 LENSES = ROOT / "world-map" / "3d-lenses.js"
@@ -76,8 +75,6 @@ def main() -> int:
     hover = HOVER.read_text(encoding="utf-8", errors="replace")
     bootstrap = BOOTSTRAP.read_text(encoding="utf-8", errors="replace")
     evidence = EVIDENCE.read_text(encoding="utf-8", errors="replace")
-    ui = UI.read_text(encoding="utf-8", errors="replace")
-    selection_ui = SELECTION_UI.read_text(encoding="utf-8", errors="replace")
     selection = SELECTION.read_text(encoding="utf-8", errors="replace")
     pulse = PULSE.read_text(encoding="utf-8", errors="replace")
     lenses = LENSES.read_text(encoding="utf-8", errors="replace")
@@ -104,6 +101,9 @@ def main() -> int:
         errors.append("Eye refresh regressed to click-dependent timeout synchronization")
     if "new MutationObserver(" in evidence:
         errors.append("Eye must consume the canonical panel lifecycle instead of creating a DOM observer")
+    for retired in RETIRED_UI:
+        if retired.exists():
+            errors.append(f"retired Progressive/Selection UI must stay deleted: {retired.relative_to(ROOT)}")
     if "'./3d-ui.js'" in bootstrap or "'./3d-selection-ui.js'" in bootstrap:
         errors.append("retired Progressive/Selection UI must not return to the live bootstrap registry")
     if "declareDormant('Fields'" in bootstrap or "declareDormant('Networks'" in bootstrap:
@@ -175,7 +175,7 @@ def main() -> int:
     print(f"Curated relation types: {len(relation_types)}")
     print(f"Referenced country/territory codes: {len(referenced)}")
     print("Trace contract: breadth-first · 1–3 hops · cycle guarded · capped")
-    print("UI contract: map-first · working selection · Country Pulse · canonical analytical layers · legacy Lens compatibility adapter · automatic relations")
+    print("UI contract: map-first · working selection · Country Pulse · canonical analytical layers · retired Progressive/Selection UI · automatic relations")
     print("Time contract: Current / As-of / Compare-dates · URL persisted · current-only overlays suppressed historically")
     print("Eye-Time contract: observation years are checked against requested historical view")
     print("Boot contract: local snapshot · core-first · advanced overlays dormant until requested · deployment-versioned module chain")
