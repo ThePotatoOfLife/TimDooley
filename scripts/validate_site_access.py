@@ -25,7 +25,7 @@ except json.JSONDecodeError as exc:
     contract={}
 
 for token in (
-    "Current World","World Map","CIA — Characters, Incidents & Associations","Mud Bank / Dooley Welfare","People & Cases",
+    "Current World","World Map","CIA — Characters, Incidents & Associations","World Spiritual Bank / Mud Bank","People & Cases",
     "data/house/site-access.json","data/house/public-surfaces.json","data/house/room-inhabitants.json","data/house/rooms.json",
     "site-access-dock","site-access-panel",
 ):
@@ -100,4 +100,4 @@ if errors:
     for e in errors: print("-",e)
     raise SystemExit(1)
 
-print("SITE ACCESS VALIDATION PASSED: fixed dock, direct News/Map/CIA/Mud Bank access, compact local nav and generated coverage are aligned.")
+print("SITE ACCESS VALIDATION PASSED: fixed dock, direct News/Map/CIA/World Spiritual Bank access, compact local nav and generated coverage are aligned.")
