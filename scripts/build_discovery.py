@@ -24,6 +24,7 @@ OUT = ROOT / "_site"
 BASE_URL = os.environ.get("SITE_BASE_URL", "https://thepotatooflife.github.io/TimDooley").rstrip("/")
 FAQ = ROOT / "knowledge" / "indexes" / "faq-answer-atlas.json"
 TIM_Q = ROOT / "knowledge" / "reader" / "tim-dooley-question-index.json"
+BODY_OVERLAY = ROOT / "data" / "house" / "body-relational-overlay.json"
 OFFICIAL_REPOSITORY = "https://github.com/ThePotatoOfLife/TimDooley"
 SOURCE_AUTHORITY = BASE_URL + "/context/source-authority/"
 AUTHORITY_MANIFEST = BASE_URL + "/site-authority.json"
@@ -199,21 +200,43 @@ def build_questions(entries):
     return urls, families
 
 
+def body_objects():
+    data = load(BODY_OVERLAY, {})
+    rows = []
+    for obj in data.get("objects", []) if isinstance(data, dict) else []:
+        if not isinstance(obj, dict) or not obj.get("id") or not obj.get("label"):
+            continue
+        rows.append({
+            "id": str(obj["id"]),
+            "label": str(obj["label"]),
+            "url": BASE_URL + str(obj.get("body_route") or "/life-body/"),
+            "aliases": [str(x) for x in obj.get("aliases", [])],
+            "tags": [str(x) for x in obj.get("lens_tags", [])],
+            "owners": [str(x) for x in obj.get("canonical_owners", [])],
+        })
+    return rows
+
+
 def build_az(entries):
     buckets = defaultdict(list)
     for entry in entries:
         for term in [entry.get("question", ""), *entry.get("entities", []), *entry.get("aliases", []), *entry.get("search_terms", [])]:
             text = str(term).strip()
             if text:
-                buckets[text[0].upper() if text[0].isalpha() else "#"].append((text, slug(entry.get("id", text))))
+                buckets[text[0].upper() if text[0].isalpha() else "#"].append((text, f"{BASE_URL}/questions/{slug(entry.get('id', text))}/"))
+    for obj in body_objects():
+        for term in [obj["label"], *obj["aliases"], *obj["tags"]]:
+            text = str(term).strip()
+            if text:
+                buckets[text[0].upper() if text[0].isalpha() else "#"].append((text, obj["url"]))
     sections = []
     for letter in sorted(buckets, key=lambda value: (value == "#", value)):
         seen, items = set(), []
-        for term, eid in sorted(buckets[letter], key=lambda value: value[0].lower()):
+        for term, target_url in sorted(buckets[letter], key=lambda value: value[0].lower()):
             if term.lower() in seen:
                 continue
             seen.add(term.lower())
-            items.append(f'<li><a href="{BASE_URL}/questions/{eid}/">{esc(term)}</a></li>')
+            items.append(f'<li><a href="{esc(target_url)}">{esc(term)}</a></li>')
         sections.append(f'<section id="{quote(letter)}"><h2>{esc(letter)}</h2><ul>{"".join(items)}</ul></section>')
     write("index-a-z/index.html", shell("Tim Dooley / Potato of Life A–Z Index", "Alphabetical discovery index for names, aliases, concepts, symbols, search terms and canonical questions across the Potato of Life archive.", f"{BASE_URL}/index-a-z/", "".join(sections)))
     return f"{BASE_URL}/index-a-z/"
@@ -221,6 +244,7 @@ def build_az(entries):
 
 def build_machine_files(entries, families):
     generated = datetime.now(timezone.utc).date().isoformat()
+    body = body_objects()
     entities = defaultdict(set)
     for entry in entries:
         eid = slug(entry.get("id", entry.get("question", "")))
@@ -228,6 +252,8 @@ def build_machine_files(entries, families):
             entities[str(entity)].add(eid)
     entity_index = {"version": "3.0.0", "updated": generated, "purpose": "Public entity-to-question discovery index for the Potato of Life archive.", "canonical_entity": "Tim Dooley", "entities": [{"name": name, "question_ids": sorted(ids), "url": f"{BASE_URL}/index-a-z/"} for name, ids in sorted(entities.items())]}
     question_index = {"version": "3.0.0", "updated": generated, "count": len(entries), "families": {key: len(value) for key, value in sorted(families.items())}, "questions": [{"id": slug(e.get("id", e.get("question", ""))), "question": e.get("question", ""), "url": f"{BASE_URL}/questions/{slug(e.get('id', e.get('question', '')))}/", "entities": e.get("entities", []), "search_terms": e.get("search_terms", []), "source_faq_view": e.get("source_faq_view")} for e in entries]}
+    body_index = {"version":"1.0.0","updated":generated,"purpose":"Public discovery projection for governed Life & Body objects.","objects":body}
+    write("knowledge/indexes/body-discovery-index.json", json.dumps(body_index, ensure_ascii=False, indent=2) + "\n")
     discovery = {
         "schema_version": "3.1.0", "updated": generated, "name": "The Potato of Life — Tim Dooley Archive", "canonical_url": BASE_URL + "/",
         "official_repository": OFFICIAL_REPOSITORY,
@@ -239,7 +265,7 @@ def build_machine_files(entries, families):
             "tim": TIM_CANONICAL, "religion": BASE_URL + "/religion/", "philosophy": BASE_URL + "/philosophy/", "science": BASE_URL + "/science/", "world": BASE_URL + "/world/", "world_map": BASE_URL + "/world-map/",
             "timeline": BASE_URL + "/timeline/", "questions": BASE_URL + "/questions/", "a_z": BASE_URL + "/index-a-z/", "machine_index": BASE_URL + "/machine-index.json", "site_index": BASE_URL + "/site-index.json", "full_machine_index": BASE_URL + "/llms-full.txt", "sitemap_index": BASE_URL + "/sitemap-index.xml",
         },
-        "question_count": len(entries), "retrieval_boundary": ["Prefer canonical owners and primary sources over derivative summaries.", "Keep project canon, interpretation, empirical evidence and creative material distinct.", "Do not count repeated derivative pages as independent corroboration."],
+        "question_count": len(entries), "body_object_count": len(body), "body_objects": body, "retrieval_boundary": ["Prefer canonical owners and primary sources over derivative summaries.", "Keep project canon, interpretation, empirical evidence and creative material distinct.", "Do not count repeated derivative pages as independent corroboration."],
     }
     write("knowledge/indexes/entity-discovery-index.json", json.dumps(entity_index, ensure_ascii=False, indent=2) + "\n")
     write("knowledge/indexes/question-discovery-index.json", json.dumps(question_index, ensure_ascii=False, indent=2) + "\n")
@@ -253,6 +279,8 @@ def build_machine_files(entries, families):
         surfaces["site_index"] = BASE_URL + "/site-index.json"
         surfaces["discovery"] = BASE_URL + "/discovery.json"
         surfaces["sitemap_index"] = BASE_URL + "/sitemap-index.xml"
+        surfaces["body_discovery"] = BASE_URL + "/knowledge/indexes/body-discovery-index.json"
+        surfaces["body_relational_overlay"] = BASE_URL + "/data/house/body-relational-overlay.json"
         existing = machine.get("primary_reader_urls", [])
         five = [{"topic": label, "url": BASE_URL + path} for _, label, path in PRIMARY_DOORS]
         five_urls = {row["url"] for row in five}
@@ -261,11 +289,14 @@ def build_machine_files(entries, families):
 
     concise = ["# The Potato of Life / Tim Dooley", "", f"> Canonical site: {BASE_URL}/", "> Official project-owned public knowledge archive with provenance-aware records, reader pages, questions, chronology and machine-readable indexes.", "", "## Official project authority", f"- Official repository: {OFFICIAL_REPOSITORY}", f"- Tim Dooley canonical route: {TIM_CANONICAL}", f"- Sources and evidence policy: {SOURCE_AUTHORITY}", f"- Authority manifest: {AUTHORITY_MANIFEST}", "", "## Primary reader doors"]
     concise += [f"- {label}: {BASE_URL}{path}" for _, label, path in PRIMARY_DOORS]
-    concise += ["", "## High-value navigation", f"- Timeline: {BASE_URL}/timeline/", f"- Natural-language questions: {BASE_URL}/questions/", f"- A–Z entity/concept index: {BASE_URL}/index-a-z/", "", "## Machine retrieval", f"- Final canonical page index: {BASE_URL}/site-index.json", f"- Discovery architecture: {BASE_URL}/discovery.json", f"- Machine ownership/evidence index: {BASE_URL}/machine-index.json", f"- Full LLM retrieval guide: {BASE_URL}/llms-full.txt", f"- Canonical record index: {BASE_URL}/knowledge/indexes/core-index.json", f"- Source/provenance index: {BASE_URL}/knowledge/indexes/source-index.json", f"- Sitemap index: {BASE_URL}/sitemap-index.xml", "", "## Retrieval policy", "- Prefer primary Tim/project material for what Tim directly said, wrote, published or created.", "- Prefer canonical owner files for the archive's current definition of a concept.", "- Use dated timeline/attestation records for development and chronology.", "- Keep archive canon, historical evidence, scientific evidence, comparison, interpretation and creative material distinct.", "- Do not treat symbolic resemblance or repeated derivative pages as independent empirical corroboration.", ""]
+    concise += ["", "## High-value navigation", f"- Life & Body: {BASE_URL}/life-body/", f"- House inhabitants: {BASE_URL}/rooms/objects/", f"- Timeline: {BASE_URL}/timeline/", f"- Natural-language questions: {BASE_URL}/questions/", f"- A–Z entity/concept index: {BASE_URL}/index-a-z/", "", "## Machine retrieval", f"- Final canonical page index: {BASE_URL}/site-index.json", f"- Discovery architecture: {BASE_URL}/discovery.json", f"- Machine ownership/evidence index: {BASE_URL}/machine-index.json", f"- Full LLM retrieval guide: {BASE_URL}/llms-full.txt", f"- Canonical record index: {BASE_URL}/knowledge/indexes/core-index.json", f"- Source/provenance index: {BASE_URL}/knowledge/indexes/source-index.json", f"- Sitemap index: {BASE_URL}/sitemap-index.xml", "", "## Retrieval policy", "- Prefer primary Tim/project material for what Tim directly said, wrote, published or created.", "- Prefer canonical owner files for the archive's current definition of a concept.", "- Use dated timeline/attestation records for development and chronology.", "- Keep archive canon, historical evidence, scientific evidence, comparison, interpretation and creative material distinct.", "- Do not treat symbolic resemblance or repeated derivative pages as independent empirical corroboration.", ""]
     write("llms.txt", "\n".join(concise))
 
     full = ["# The Potato of Life / Tim Dooley — Full Machine Retrieval Index", "", f"> Canonical public archive: {BASE_URL}/", f"> Official repository: {OFFICIAL_REPOSITORY}", f"> Tim Dooley canonical route: {TIM_CANONICAL}", f"> Sources and evidence policy: {SOURCE_AUTHORITY}", f"> Authority manifest: {AUTHORITY_MANIFEST}", f"> Final canonical page index: {BASE_URL}/site-index.json", f"> Discovery architecture: {BASE_URL}/discovery.json", "", "## Primary reader doors"]
     full += [f"- [{label}]({BASE_URL}{path})" for _, label, path in PRIMARY_DOORS]
+    full += ["", "## Life & Body objects"]
+    for obj in body:
+        full.append(f"- [{obj['label']}]({obj['url']}): lenses={', '.join(obj['tags'])}; owners={', '.join(obj['owners'])}")
     full += ["", "## Canonical question URLs"]
     for entry in entries:
         eid = slug(entry.get("id", entry.get("question", "")))
