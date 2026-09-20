@@ -1,5 +1,5 @@
 {
-  "version": "7.6.0",
+  "version": "7.7.0",
   "updated": "2026-09-20",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -45,7 +45,11 @@
       "body-axis-chakra-kundalini-comparative-atlas",
       "spine-csf-levels-axis-atlas",
       "thalamus-house-horus-crown-atlas",
-      "axis-orientation-autonomic-interface-atlas"
+      "axis-orientation-autonomic-interface-atlas",
+      "vertebral-33-room-atlas",
+      "spinal-cord-microcircuit-atlas",
+      "cranial-brainstem-room-atlas",
+      "brain-room-deep-atlas"
     ],
     "science": [
       "science-master-index",
@@ -2459,6 +2463,74 @@
         "Axis",
         "Messenger",
         "Psychopomp"
+      ]
+    },
+    {
+      "id": "vertebral-33-room-atlas",
+      "path": "knowledge/body/vertebral-33-room-atlas.json",
+      "branch": "body",
+      "kind": "33-room vertebral Ladder atlas",
+      "terms": [
+        "C1",
+        "C2",
+        "C7",
+        "T1",
+        "T12",
+        "L1",
+        "L5",
+        "S1",
+        "S5",
+        "Co1",
+        "Co4",
+        "33 Vertebrae"
+      ]
+    },
+    {
+      "id": "spinal-cord-microcircuit-atlas",
+      "path": "knowledge/body/spinal-cord-microcircuit-atlas.json",
+      "branch": "body",
+      "kind": "spinal cord laminae tracts and local-circuit atlas",
+      "terms": [
+        "Rexed Laminae",
+        "Dorsal Horn",
+        "Ventral Horn",
+        "Intermediolateral",
+        "Clarke Column",
+        "Corticospinal",
+        "Spinothalamic"
+      ]
+    },
+    {
+      "id": "cranial-brainstem-room-atlas",
+      "path": "knowledge/body/cranial-brainstem-room-atlas.json",
+      "branch": "body",
+      "kind": "cranial nerve brainstem and sleep-state atlas",
+      "terms": [
+        "Cranial Nerves",
+        "Brainstem",
+        "NTS",
+        "Vagus",
+        "VLPO",
+        "Orexin",
+        "Locus Coeruleus",
+        "Raphe"
+      ]
+    },
+    {
+      "id": "brain-room-deep-atlas",
+      "path": "knowledge/body/brain-room-deep-atlas.json",
+      "branch": "body",
+      "kind": "granular whole-brain room atlas",
+      "terms": [
+        "Prefrontal",
+        "Insula",
+        "Hippocampus",
+        "Amygdala",
+        "Basal Ganglia",
+        "Hypothalamus",
+        "Thalamus",
+        "Cerebellum",
+        "Choroid Plexus"
       ]
     }
   ],
