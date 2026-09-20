@@ -159,6 +159,7 @@ Current rules:
 - [ ] Compare PR #129's branch-only `app/archive-lookup.js` with current Explore, A–Z, Room holdings and machine discovery; port a minimal resolver only if a live gap remains.
 - [ ] Audit Sep-19 public-surface authority v2 against current House route authority; salvage only routes/metadata still absent after Sep-20 convergence.
 - [ ] Audit the branch-only US Mud/Below map layer under current World Map interaction, provenance and evidence contracts before deciding whether it belongs on `main`.
+- [x] Promote and retire focused World Map PRs #305 and #310–#314 onto current `main`: ADL scale ownership, reduced-motion policy, Gateway/Infrastructure Interaction Router ownership, centralized Style Lifecycle audit model, Geo/Style/Tooltip singleton ownership, and Evidence Layer URL ownership. All six PRs are now closed as superseded after selective promotion; stale branch bases were not merged wholesale.
 - [ ] Continue retiring branches that are 0 commits ahead of `main` or whose unique value is fully absorbed into stronger canonical owners.
 
 ### P3 population / instrumentation work still active
