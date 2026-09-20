@@ -3,6 +3,7 @@
 // summary data, and the Inspector remains the deep-dive surface.
 
 const layers = window.__potatoAtlasLayers;
+const SUBDIVISION_INDEX_URL = '../data/world-subdivisions/index.json';
 const selection = window.__potatoAtlasSelection;
 const presentation = window.__potatoAtlasCountryPresentation;
 if (!layers || !selection || !presentation) throw new Error('Country card requires registry, selection and Country Presentation APIs.');
@@ -13,6 +14,7 @@ const RELATION_LABELS = { all:'All context', money:'Money', systems:'Systems', i
 let index = null;
 let renderedCode = null;
 let renderVersion = 0;
+let subdivisionIndexPromise = null;
 let activeTab = 'overview';
 const records = new Map();
 
@@ -55,6 +57,35 @@ async function countryRecord(code) {
     records.set(code, record);
     return record;
   } catch { return null; }
+}
+
+
+async function subdivisionIndex() {
+  if (!subdivisionIndexPromise) {
+    subdivisionIndexPromise = fetchJson(SUBDIVISION_INDEX_URL).catch(error => {
+      console.warn('Subdivision coverage unavailable to country card:', error);
+      return { partitions:{} };
+    });
+  }
+  return subdivisionIndexPromise;
+}
+async function subdivisionDescriptor(code) {
+  const index = await subdivisionIndex();
+  return index?.partitions?.[String(code || '').toUpperCase()] || null;
+}
+async function showRegions(code) {
+  const descriptor = await subdivisionDescriptor(code);
+  if (!descriptor) return false;
+  if (!window.__potatoAtlasSubdivisions) {
+    if (window.__potatoAtlasLoadModule) await window.__potatoAtlasLoadModule('Subdivisions', './3d-subdivisions.js');
+    else await import('./3d-subdivisions.js').catch(() => false);
+  }
+  const api = window.__potatoAtlasSubdivisions;
+  if (!api?.retainPartition) return false;
+  await api.retainPartition(code, 'country-card');
+  const first = descriptor.search_records?.[0];
+  if (first?.id) await api.select(first.id, { fit:false });
+  return true;
 }
 
 async function defaultMetrics(code, record, shared) {
@@ -214,6 +245,7 @@ function install() {
     if (pin) { selection.togglePinnedCountry?.(pin.dataset.atlasPin); return; }
     if (event.target.closest('[data-atlas-statistics]')) { showStatistics(); return; }
     const action = event.target.closest('[data-country-action]')?.dataset.countryAction;
+    if (action === 'regions') showRegions(renderedCode);
     if (action === 'details') showDetails();
     if (action === 'entity-trace') toggleEntityTrace();
     if (action === 'path') showPath();
@@ -228,7 +260,7 @@ async function render(code = selection.current?.activeCode || selection.current?
   const version = ++renderVersion;
   if (!/^[A-Z]{3}$/.test(code)) { renderedCode = null; card.hidden = true; card.innerHTML = ''; return; }
   renderedCode = code;
-  const [record, shared] = await Promise.all([countryRecord(code), presentation.forCountry(code)]);
+  const [record, shared, subdivision] = await Promise.all([countryRecord(code), presentation.forCountry(code), subdivisionDescriptor(code)]);
   if (renderVersion !== version || renderedCode !== code || !shared) return;
   const [metrics, context] = await Promise.all([
     defaultMetrics(code, record || {}, shared),
@@ -245,6 +277,7 @@ async function render(code = selection.current?.activeCode || selection.current?
   const refreshed = record?.coverage?.last_enriched || record?.updated || record?.provenance?.retrieved || record?.provenance?.last_refresh || '';
   const name = shared.identity?.name || identity.name || selection.countryName?.(code) || code;
   const capital = shared.identity?.capital || identity.capital || record?.capital || 'Capital unavailable';
+  const regionActionHtml = subdivision ? '<button type="button" data-country-action="regions">' + esc(String(subdivision.feature_count || 0) + ' regions') + '</button>' : '';
 
   card.innerHTML = `
     <div class="atlas-country-head">
@@ -270,7 +303,7 @@ async function render(code = selection.current?.activeCode || selection.current?
     <section class="atlas-country-tab-panel" data-country-panel="connections" role="tabpanel">
       <div class="atlas-country-section"><small>${esc(RELATION_LABELS[relationMode] || relationMode)} · ${connections.length} represented</small>${connections.length ? connections.map(row => `<div class="atlas-country-connection"><button type="button" data-connection-country="${esc(row.partner)}">${esc(row.name)}</button><span>${esc(row.types)}</span></div>`).join('') : '<div class="atlas-country-empty">No represented relationships match this filter.</div>'}</div>
     </section>
-    <div class="atlas-country-actions"><button type="button" data-atlas-statistics>Statistics</button><button type="button" data-country-action="details">More data</button><button type="button" data-country-action="entity-trace">Trace</button><button type="button" data-country-action="path">Path</button><button type="button" data-country-action="impact">Impact</button></div>
+    <div class="atlas-country-actions">${regionActionHtml}<button type="button" data-atlas-statistics>Statistics</button><button type="button" data-country-action="details">More data</button><button type="button" data-country-action="entity-trace">Trace</button><button type="button" data-country-action="path">Path</button><button type="button" data-country-action="impact">Impact</button></div>
     <div class="atlas-country-source">${refreshed ? `Country record · ${esc(refreshed)}` : 'Country record'} · missing values remain unavailable</div>`;
   card.hidden = false;
   card.querySelector('.atlas-country-close')?.addEventListener('click', () => { card.hidden = true; });
