@@ -112,7 +112,7 @@ def main():
     ),errors)
     adl_js=require(ADL_JS,(
         "incidentTypeTokens","flatMap","retainPartition('USA', 'adl-heat')","releasePartition?.('USA', 'adl-heat')",
-        "potato-atlas-subdivisions-source-change","loadPromise",
+        "registerSourceRefreshObserver","loadPromise",
         "slot:'subnational-fill'","slot:'context-network'","State shading = filtered record count",
         "not a general hate score or crime score",
     ),errors)
