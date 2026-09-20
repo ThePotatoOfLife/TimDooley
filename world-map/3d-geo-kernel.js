@@ -96,6 +96,45 @@ function validatedPoint(point, label) {
   return [normalizeLongitude(lng), lat];
 }
 
+function pointInRing(point, ring) {
+  const [lng, lat] = validatedPoint(point, 'point');
+  if (!Array.isArray(ring) || ring.length < 3) return false;
+  const points = ring.map(coord => {
+    if (!Array.isArray(coord) || coord.length < 2) return null;
+    const y = Number(coord[1]);
+    if (!Number.isFinite(y)) return null;
+    return [unwrapLongitude(coord[0], lng), y];
+  }).filter(Boolean);
+  if (points.length < 3) return false;
+  let inside = false;
+  for (let i = 0, j = points.length - 1; i < points.length; j = i++) {
+    const [xi, yi] = points[i];
+    const [xj, yj] = points[j];
+    const intersects = ((yi > lat) !== (yj > lat))
+      && (lng < (xj - xi) * (lat - yi) / ((yj - yi) || Number.EPSILON) + xi);
+    if (intersects) inside = !inside;
+  }
+  return inside;
+}
+
+function pointInPolygon(point, polygonCoordinates) {
+  if (!Array.isArray(polygonCoordinates) || !polygonCoordinates.length) return false;
+  if (!pointInRing(point, polygonCoordinates[0])) return false;
+  for (let i = 1; i < polygonCoordinates.length; i += 1) {
+    if (pointInRing(point, polygonCoordinates[i])) return false;
+  }
+  return true;
+}
+
+function pointInGeometry(point, geometry) {
+  if (!geometry || typeof geometry !== 'object') return false;
+  if (geometry.type === 'Polygon') return pointInPolygon(point, geometry.coordinates);
+  if (geometry.type === 'MultiPolygon') {
+    return (geometry.coordinates || []).some(polygon => pointInPolygon(point, polygon));
+  }
+  return false;
+}
+
 function haversineDistanceKm(a, b) {
   const [lng1, lat1] = validatedPoint(a, 'first point');
   const [lng2, lat2] = validatedPoint(b, 'second point');
@@ -117,6 +156,7 @@ const api = Object.freeze({
   unwrapLongitude,
   minimalLongitudeInterval,
   antimeridianAwareBounds,
+  pointInGeometry,
   haversineDistanceKm,
 });
 
@@ -129,5 +169,6 @@ export {
   unwrapLongitude,
   minimalLongitudeInterval,
   antimeridianAwareBounds,
+  pointInGeometry,
   haversineDistanceKm,
 };
