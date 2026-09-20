@@ -18,45 +18,27 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  validate:
+  core:
+    name: Core · House · Atlas
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 18
     steps:
       - name: Checkout
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
-
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: '3.x'
-
-      - name: Validate repository hygiene
-        run: python scripts/validate_repo_hygiene.py
-
-      - name: Test bidirectional spiral field
-        run: python scripts/test_bidirectional_spiral_field.py
-
-      - name: Validate World Map ownership
-        run: python scripts/validate_world_map_ownership.py
-
-      - name: Validate ADL H.E.A.T. World Map evidence layer
-        run: python scripts/validate_world_map_adl_heat.py
-
-      - name: Validate World Map layer integration
-        run: python scripts/validate_world_map_layer_integration.py
-
-      - name: Validate archive runtime hardening
-        run: python scripts/validate_archive_runtime_hardening.py
-
-      - name: Validate country refresh reliability
-        run: python scripts/validate_country_refresh_reliability.py
-
-      - name: Validate SEO pipeline
-        run: python scripts/validate_seo_pipeline.py
-
-      - name: Validate Potato House governance
+      - name: Repository and runtime basics
+        run: |
+          python scripts/validate_repo_hygiene.py
+          python scripts/test_bidirectional_spiral_field.py
+          python scripts/validate_archive_runtime_hardening.py
+          python scripts/validate_country_refresh_reliability.py
+          python scripts/validate_seo_pipeline.py
+      - name: House governance and topology
         run: |
           python scripts/validate_house_governance.py
           python scripts/validate_house_topology.py
@@ -64,146 +46,95 @@ jobs:
           python scripts/validate_house_compatibility.py
           python scripts/validate_house_world_routing.py
           python scripts/test_coordination_convergence.py
-
-      - name: Validate shared formal grammar
-        run: python scripts/validate_project_formal_grammar.py
-
-      - name: Validate public Rooms navigation
-        run: python scripts/validate_public_rooms.py
-
-      - name: Validate Foundation layer
-        run: python scripts/validate_foundation_layer.py
-
-      - name: Validate Foundation Seed genealogy
-        run: python scripts/validate_foundation_seed_genealogy.py
-
-      - name: Validate Foundation Axis placement
-        run: python scripts/validate_foundation_axis_placement.py
-
-      - name: Validate Foundation Rooms
-        run: python scripts/validate_foundation_rooms.py
-
-      - name: Validate commit crystallization
-        run: python scripts/validate_commit_crystallization.py
-
-      - name: Validate entity dossier instrumentation
-        run: python scripts/validate_entity_dossier_instrumentation.py
-
-      - name: Validate route case instrumentation
-        run: python scripts/validate_route_case_instrumentation.py
-
-      - name: Validate Works Fruit instrumentation
-        run: python scripts/validate_works_fruit_instrumentation.py
-
-
-      - name: Validate Timeline naming
-        run: python scripts/validate_timeline_naming.py
-
-      - name: Validate under-mined prediction domains
-        run: python scripts/validate_prediction_under_mined_domains.py
-
-      - name: Validate 100,000-hour canonical page
-        run: python scripts/validate_100000_hour_page.py
-
-      - name: Validate Story archive and source closeness
+          python scripts/validate_project_formal_grammar.py
+          python scripts/validate_public_rooms.py
+      - name: Foundation and instrumentation
         run: |
+          python scripts/validate_foundation_layer.py
+          python scripts/validate_foundation_seed_genealogy.py
+          python scripts/validate_foundation_axis_placement.py
+          python scripts/validate_foundation_rooms.py
+          python scripts/validate_commit_crystallization.py
+          python scripts/validate_entity_dossier_instrumentation.py
+          python scripts/validate_route_case_instrumentation.py
+          python scripts/validate_works_fruit_instrumentation.py
+      - name: Timeline and story integrity
+        run: |
+          python scripts/validate_timeline_naming.py
+          python scripts/validate_prediction_under_mined_domains.py
+          python scripts/validate_100000_hour_page.py
           python scripts/validate_story_archive.py
           python scripts/audit_story_source_closeness.py
-
-      - name: Build canonical record registry
-        run: python scripts/build_canonical_record_registry.py
-
-      - name: Build repository index
-        run: python scripts/build_repository_index.py
-
-      - name: Audit source-of-truth and routes
-        run: python scripts/audit_source_of_truth.py
-
-      - name: Validate blueprint contract
-        run: python scripts/validate_blueprints.py
-
-      - name: Run whole-project stability audit
-        run: python scripts/stability_audit.py
-
-      - name: Validate Atlas structure
-        run: python scripts/validate_atlas.py
-
-      - name: Validate Atlas projection and time contracts
-        run: python scripts/validate_atlas_view_contracts.py
-
-      - name: Validate Atlas mathematical calibration
-        run: python scripts/validate_atlas_math_calibration.py
-
-      - name: Validate World Map data runtime
-        run: python scripts/validate_world_map_data_runtime.py
-
-      - name: Validate World Map Axis and systems
-        run: python scripts/validate_world_axis_systems.py
-
-      - name: Validate World Map system intelligence
-        run: python scripts/validate_world_map_system_intelligence.py
-
-      - name: Validate World Map functional chain explorer
-        run: python scripts/validate_world_map_chain_explorer.py
-
-      - name: Validate World Map entity and Africa repair
-        run: python scripts/validate_world_map_entity_africa_repair.py
-
-      - name: Validate World Map dependency impact trace
-        run: python scripts/validate_world_map_impact_trace.py
-
-      - name: Build and validate World Map coverage ledger
+      - name: Atlas and architecture contracts
         run: |
+          python scripts/validate_blueprints.py
+          python scripts/stability_audit.py
+          python scripts/validate_atlas.py
+          python scripts/validate_atlas_view_contracts.py
+          python scripts/validate_atlas_math_calibration.py
+          python scripts/validate_repository_spine.py
+          python scripts/validate_architecture_layers.py
+          python scripts/validate_content_integrity.py
+          python scripts/check_css_namespace_collisions.py
+
+  world_map:
+    name: World Map
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+      - name: Ownership, evidence and layer integration
+        run: |
+          python scripts/validate_world_map_ownership.py
+          python scripts/validate_world_map_adl_heat.py
+          python scripts/validate_world_map_layer_integration.py
+          python scripts/validate_world_map_data_runtime.py
+          python scripts/validate_world_axis_systems.py
+          python scripts/validate_world_map_system_intelligence.py
+      - name: Chains, entities and coverage
+        run: |
+          python scripts/validate_world_map_chain_explorer.py
+          python scripts/validate_world_map_entity_africa_repair.py
+          python scripts/validate_world_map_impact_trace.py
           python scripts/build_world_map_coverage.py
           python scripts/validate_world_map_coverage.py
-
-      - name: Validate World Map infrastructure
-        run: python scripts/validate_world_map_infrastructure.py
-
-      - name: Validate World Map infrastructure integration
-        run: python scripts/validate_world_map_infrastructure_integration.py
-
-      - name: Validate canonical World Map runtime
-        if: ${{ always() }}
-        run: python scripts/validate_world_map_source.py
-
-      - name: Test World Map architecture auditor
-        run: python scripts/test_world_map_auditor.py
-
+          python scripts/validate_world_map_infrastructure.py
+          python scripts/validate_world_map_infrastructure_integration.py
+      - name: Canonical runtime and auditor tests
+        run: |
+          python scripts/validate_world_map_source.py
+          python scripts/test_world_map_auditor.py
       - name: Audit World Map runtime architecture
         id: world_map_audit
         continue-on-error: true
         run: python scripts/audit_world_map.py
-
       - name: Upload World Map audit report
-        if: ${{ always() && hashFiles('world-map-audit-report.json') != '' }}
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: world-map-audit-report
           path: world-map-audit-report.json
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 7
-
       - name: Enforce World Map audit gate
         if: steps.world_map_audit.outcome == 'failure'
         run: exit 1
-
-      - name: Validate World Map UI layout
-        run: python scripts/validate_world_map_ui_layout.py
-
-      - name: Validate World Map spatial overlays
-        run: python scripts/validate_world_map_spatial_overlays.py
-
-      - name: Validate World Map Palestine geometry
-        run: python scripts/validate_world_map_palestine.py
-
-      - name: Validate canonical World Map relationship path finder
-        run: python scripts/validate_world_map_pathfinder_source.py
-
-      - name: Validate World Map investigation utility
-        run: python scripts/validate_world_map_investigation_utility.py
-
-      - name: Validate World Map context control plane
+      - name: UI, geometry and investigation
+        run: |
+          python scripts/validate_world_map_ui_layout.py
+          python scripts/validate_world_map_spatial_overlays.py
+          python scripts/validate_world_map_palestine.py
+          python scripts/validate_world_map_pathfinder_source.py
+          python scripts/validate_world_map_investigation_utility.py
+          python scripts/validate_world_map_entity_trace.py
+      - name: Context control plane
         run: |
           python scripts/validate_world_map_context_visibility.py
           node scripts/test_world_map_context_policy.mjs
@@ -227,172 +158,160 @@ jobs:
           python scripts/validate_world_map_runtime_telemetry.py
           node scripts/test_world_map_context_ci_contract.mjs
 
-      - name: Validate entity-aware Trace
-        run: python scripts/validate_world_map_entity_trace.py
-
-      - name: Validate question-led reader surfaces
-        run: python scripts/validate_reader_surfaces.py
-
-      - name: Validate BODY discoverability
-        run: python scripts/validate_body_discovery.py
-
-      - name: Validate Potatoism philosophy projection
-        run: python scripts/validate_potatoism_philosophy_projection.py
-
-      - name: Validate backend to frontend projection
-        run: python scripts/validate_public_projection.py
-
-      - name: Validate discovery provenance projection
-        run: python scripts/validate_discovery_projection.py
-
-      - name: Validate generated navigation projection
-        run: python scripts/validate_generated_navigation.py
-
-      - name: Validate Explore registry projection
-        run: python scripts/validate_explore_projection.py
-
-      - name: Validate repository spine
-        run: python scripts/validate_repository_spine.py
-
-      - name: Validate architecture layers
-        run: python scripts/validate_architecture_layers.py
-
-      - name: Validate content integrity
-        run: python scripts/validate_content_integrity.py
-
-      - name: Validate religious-adjacent layer
-        run: python scripts/validate_religious_adjacent.py
-
-      - name: Validate religious layer coupling map
-        run: python scripts/validate_religious_layer_map.py
-
-      - name: Validate Potatoism layer
-        run: python scripts/validate_potatoism.py
-
-      - name: Validate expansion layers
-        run: python scripts/validate_expansion_layers.py
-
-      - name: Check FAQ backend
-        run: python scripts/check_faq_backend.py
-
-      - name: Check CSS namespaces
-        run: python scripts/check_css_namespace_collisions.py
-
-      - name: Check biblical syncretism field
-        run: python scripts/check_biblical_syncretism_field.py
-
-      - name: Validate Bible atlas corpus
+  content:
+    name: Content · Research · Bible
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+      - name: Reader and projection contracts
+        run: |
+          python scripts/validate_reader_surfaces.py
+          python scripts/validate_body_discovery.py
+          python scripts/validate_potatoism_philosophy_projection.py
+          python scripts/validate_public_projection.py
+          python scripts/validate_discovery_projection.py
+          python scripts/validate_generated_navigation.py
+          python scripts/validate_explore_projection.py
+      - name: Religion, Potatoism and expansions
+        run: |
+          python scripts/validate_religious_adjacent.py
+          python scripts/validate_religious_layer_map.py
+          python scripts/validate_potatoism.py
+          python scripts/validate_expansion_layers.py
+          python scripts/check_faq_backend.py
+          python scripts/check_biblical_syncretism_field.py
+      - name: Bible corpus and reader
         run: |
           python scripts/validate_bible_layer_manifest.py
           python scripts/test_bible_corpus.py
           python scripts/test_bible_comparator_coverage.py
           python scripts/check_biblical_scenes.py
           python scripts/build_bible_comparator_quality.py
+          python scripts/validate_bible_reader.py
+      - name: Ownership and coverage audits
+        run: |
+          python scripts/audit_backend_coverage.py
+          python scripts/audit_atlas_links.py
+          python scripts/audit_web.py
 
-      - name: Validate Bible reader
-        run: python scripts/validate_bible_reader.py
-
-      - name: Audit backend ownership, duplicates and graph orphans
-        run: python scripts/audit_backend_coverage.py
-
-      - name: Audit Atlas links and record coverage
-        run: python scripts/audit_atlas_links.py
-
-      - name: Audit web layer
-        run: python scripts/audit_web.py
-
+  build:
+    name: Public build · SEO · Science
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+      - name: Build registries and source-of-truth indexes
+        run: |
+          python scripts/build_canonical_record_registry.py
+          python scripts/build_repository_index.py
+          python scripts/audit_source_of_truth.py
       - name: Build public site
         run: python scripts/build_site.py
-
       - name: Remove internal archive from public artifact
         run: rm -rf _site/archive && test ! -e _site/archive
-
-      - name: Compile Bible comparator
-        run: python scripts/build_bible_study.py
-
-      - name: Validate Bible static dynamic parity
-        run: python scripts/check_bible_static_dynamic_parity.py
-
+      - name: Compile and validate Bible comparator
+        run: |
+          python scripts/build_bible_study.py
+          python scripts/check_bible_static_dynamic_parity.py
+          python scripts/build_bible_comparator_quality.py
       - name: Upload Bible comparator quality report
-        if: ${{ always() && hashFiles('knowledge/indexes/bible-comparator-quality-report.json') != '' }}
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: bible-comparator-quality-report
           path: knowledge/indexes/bible-comparator-quality-report.json
           if-no-files-found: warn
           retention-days: 7
-
-      - name: Compile science paper library
-        run: python scripts/build_science_catalog.py
-
-      - name: Validate science paper library
-        run: python scripts/validate_science_portal.py
-
-      - name: Build machine discovery layer
-        run: python scripts/build_discovery.py
-
-      - name: Expose machine discovery entry points
-        run: python scripts/patch_home_discovery.py
-
-      - name: Apply public ontology patch
-        run: python scripts/patch_public_ontology.py
-
-      - name: Enrich weak page descriptions
-        run: python scripts/enrich_weak_descriptions.py
-
+      - name: Compile and validate science paper library
+        run: |
+          python scripts/build_science_catalog.py
+          python scripts/validate_science_portal.py
+      - name: Build discovery and ontology layers
+        run: |
+          python scripts/build_discovery.py
+          python scripts/patch_home_discovery.py
+          python scripts/patch_public_ontology.py
+          python scripts/enrich_weak_descriptions.py
       - name: Optimize crawl, sharing and sitemap SEO
         id: seo
         continue-on-error: true
         run: python scripts/optimize_seo.py
-
       - name: Finalize public homepage metadata
         run: python scripts/finalize_public_home.py
-
       - name: Upload SEO diagnostics
-        if: ${{ always() && hashFiles('_site/seo-report.json') != '' }}
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: quality-seo-report
           path: _site/seo-report.json
           if-no-files-found: warn
           retention-days: 7
-
       - name: Enforce SEO gate
         if: steps.seo.outcome == 'failure'
         run: exit 1
-
       - name: Validate public navigation
         run: python scripts/validate_public_navigation.py
-
       - name: Audit machine discoverability
         id: machine_discovery
         continue-on-error: true
         run: python scripts/check_machine_discoverability.py
-
       - name: Upload machine-discovery diagnostics
-        if: ${{ always() && hashFiles('machine-discoverability-report.json') != '' }}
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: quality-machine-discoverability-report
           path: machine-discoverability-report.json
           if-no-files-found: warn
           retention-days: 7
-
       - name: Enforce machine-discovery gate
         if: steps.machine_discovery.outcome == 'failure'
         run: exit 1
-
       - name: Validate built site shell
         run: python scripts/validate_site_shell.py
-
       - name: Upload site-shell diagnostics
-        if: ${{ always() && hashFiles('site-shell-report.txt') != '' }}
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: quality-site-shell-report
           path: site-shell-report.txt
           if-no-files-found: warn
           retention-days: 7
-
       - name: Assert internal archive is absent from artifact
         run: test ! -e _site/archive
+
+  validate:
+    name: validate
+    if: always()
+    needs: [core, world_map, content, build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Quality group summary
+        env:
+          CORE_RESULT: ${{ needs.core.result }}
+          WORLD_MAP_RESULT: ${{ needs.world_map.result }}
+          CONTENT_RESULT: ${{ needs.content.result }}
+          BUILD_RESULT: ${{ needs.build.result }}
+        run: |
+          printf '%-18s %s\n' 'Core/House/Atlas' "$CORE_RESULT"
+          printf '%-18s %s\n' 'World Map' "$WORLD_MAP_RESULT"
+          printf '%-18s %s\n' 'Content/Research' "$CONTENT_RESULT"
+          printf '%-18s %s\n' 'Public Build' "$BUILD_RESULT"
+          test "$CORE_RESULT" = success
+          test "$WORLD_MAP_RESULT" = success
+          test "$CONTENT_RESULT" = success
+          test "$BUILD_RESULT" = success
