@@ -2,7 +2,7 @@
   "id": "fbi-figures-bonds-incidents",
   "title": "FBI — Figures, Bonds & Incidents",
   "subtitle": "Tim Dooley / Potatoverse Character Dossier Bureau",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-20",
   "disclaimer": "Potatoverse archival acronym. Not affiliated with the U.S. Federal Bureau of Investigation or any real law-enforcement or intelligence service.",
   "purpose": "Persistent dossiers for recurring people and characters, their relationships, dated incidents, source strata, archetypes, symbolic roles, Story links and recovery leads.",
@@ -39,7 +39,26 @@
         "trickster-catalyst",
         "mirror-foil",
         "wanderer-threshold"
-      ]
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "gg",
+      "name": "GG",
+      "aliases": [
+        "GG",
+        "GGallin"
+      ],
+      "path": "knowledge/fbi/figures/gg.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 55,
+      "archetypes": [
+        "trickster-catalyst",
+        "wanderer-threshold",
+        "skeptic-contrarian"
+      ],
+      "depth_tier": "case-file"
     },
     {
       "id": "port-monkey",
@@ -56,7 +75,8 @@
         "trickster-catalyst",
         "wanderer-threshold",
         "mirror-foil"
-      ]
+      ],
+      "depth_tier": "case-file"
     },
     {
       "id": "rage",
@@ -71,7 +91,8 @@
       "archetypes": [
         "guardian-defender",
         "healer-companion"
-      ]
+      ],
+      "depth_tier": "case-file"
     },
     {
       "id": "sammy",
@@ -90,7 +111,8 @@
         "sovereign-warrior",
         "trickster-catalyst",
         "wanderer-threshold"
-      ]
+      ],
+      "depth_tier": "case-file"
     },
     {
       "id": "juice",
@@ -108,7 +130,8 @@
         "skeptic-contrarian",
         "mirror-foil",
         "mystic-interpreter"
-      ]
+      ],
+      "depth_tier": "case-file"
     },
     {
       "id": "ledgeview",
@@ -124,7 +147,8 @@
         "witness-observer",
         "chronicler-archivist",
         "bard-jester"
-      ]
+      ],
+      "depth_tier": "case-file"
     },
     {
       "id": "termite",
@@ -143,7 +167,8 @@
         "builder-cultivator",
         "guardian-defender",
         "healer-companion"
-      ]
+      ],
+      "depth_tier": "case-file"
     },
     {
       "id": "optimistique",
@@ -159,7 +184,8 @@
         "healer-companion",
         "bard-jester",
         "guardian-defender"
-      ]
+      ],
+      "depth_tier": "case-file"
     },
     {
       "id": "kale",
@@ -175,7 +201,43 @@
       "archetypes": [
         "seeker-student",
         "healer-companion"
-      ]
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "highly-regarded",
+      "name": "Highly Regarded",
+      "aliases": [
+        "Highly Regarded",
+        "HRH"
+      ],
+      "path": "knowledge/fbi/figures/highly-regarded.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 18,
+      "archetypes": [
+        "seeker-student",
+        "patron-supporter",
+        "bard-jester"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "darkchild",
+      "name": "DARKCHILD",
+      "aliases": [
+        "DARKCHILD",
+        "☆ DARKCHILD ☆"
+      ],
+      "path": "knowledge/fbi/figures/darkchild.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 16,
+      "archetypes": [
+        "bard-jester",
+        "patron-supporter"
+      ],
+      "depth_tier": "case-file"
     },
     {
       "id": "rahu",
@@ -191,7 +253,25 @@
         "mystic-interpreter",
         "seeker-student",
         "wanderer-threshold"
-      ]
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "jazzy",
+      "name": "Jazzy",
+      "aliases": [
+        "Jazzy",
+        "SaxxyRottenCrotch"
+      ],
+      "path": "knowledge/fbi/figures/jazzy.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 13,
+      "archetypes": [
+        "wanderer-threshold",
+        "mirror-foil"
+      ],
+      "depth_tier": "case-file"
     },
     {
       "id": "metalorian",
@@ -208,7 +288,60 @@
       "archetypes": [
         "shadow-adversary",
         "mirror-foil"
-      ]
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "petty-wappo",
+      "name": "Petty Wappo",
+      "aliases": [
+        "Petty Wappo",
+        "PWappo"
+      ],
+      "path": "knowledge/fbi/figures/petty-wappo.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 11,
+      "archetypes": [
+        "witness-observer",
+        "wanderer-threshold"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "barry-bletunick",
+      "name": "Barry Bletunick",
+      "aliases": [
+        "Barry Bletunick",
+        "Big Lemon",
+        "Barry"
+      ],
+      "path": "knowledge/fbi/figures/barry-bletunick.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 10,
+      "archetypes": [
+        "historian-memory",
+        "witness-observer"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "duaaaht",
+      "name": "duaaaht",
+      "aliases": [
+        "duaaaht"
+      ],
+      "path": "knowledge/fbi/figures/duaaaht.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 10,
+      "archetypes": [
+        "mystic-interpreter",
+        "bard-jester",
+        "seeker-student"
+      ],
+      "depth_tier": "case-file"
     },
     {
       "id": "literally",
@@ -226,7 +359,8 @@
       "archetypes": [
         "guardian-defender",
         "skeptic-contrarian"
-      ]
+      ],
+      "depth_tier": "working-file"
     },
     {
       "id": "anacondasin",
@@ -242,7 +376,64 @@
         "wanderer-threshold",
         "seeker-student",
         "artisan-maker"
-      ]
+      ],
+      "depth_tier": "working-file"
+    },
+    {
+      "id": "supersusi87",
+      "name": "Supersusi87",
+      "aliases": [
+        "Supersusi87",
+        "Super Susi",
+        "SuperSusi88",
+        "Mudbaggins",
+        "Susi the Resilient"
+      ],
+      "path": "knowledge/fbi/figures/supersusi87.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 8,
+      "archetypes": [
+        "builder-cultivator",
+        "artisan-maker",
+        "wanderer-threshold"
+      ],
+      "depth_tier": "working-file"
+    },
+    {
+      "id": "anja",
+      "name": "Anja / Ansja",
+      "aliases": [
+        "Anja / Ansja",
+        "Ansja"
+      ],
+      "path": "knowledge/fbi/figures/anja.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 7,
+      "archetypes": [
+        "wanderer-threshold",
+        "witness-observer"
+      ],
+      "depth_tier": "working-file"
+    },
+    {
+      "id": "don-jefe",
+      "name": "Don Jefe",
+      "aliases": [
+        "Don Jefe",
+        "Diplomat"
+      ],
+      "path": "knowledge/fbi/figures/don-jefe.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 7,
+      "archetypes": [
+        "mirror-foil",
+        "shadow-adversary",
+        "witness-observer"
+      ],
+      "depth_tier": "working-file"
     },
     {
       "id": "pondo",
@@ -257,7 +448,58 @@
       "archetypes": [
         "healer-companion",
         "guardian-defender"
-      ]
+      ],
+      "depth_tier": "working-file"
+    },
+    {
+      "id": "rob",
+      "name": "RoB",
+      "aliases": [
+        "RoB"
+      ],
+      "path": "knowledge/fbi/figures/rob.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 6,
+      "archetypes": [
+        "witness-observer",
+        "bard-jester"
+      ],
+      "depth_tier": "working-file"
+    },
+    {
+      "id": "potato-repair-guy",
+      "name": "Potato Repair Guy",
+      "aliases": [
+        "Potato Repair Guy"
+      ],
+      "path": "knowledge/fbi/figures/potato-repair-guy.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 5,
+      "archetypes": [
+        "guardian-defender",
+        "builder-cultivator"
+      ],
+      "depth_tier": "working-file"
+    },
+    {
+      "id": "pkfc",
+      "name": "PKFC",
+      "aliases": [
+        "PKFC",
+        "Tony Balogny",
+        "Universal Skumbagz"
+      ],
+      "path": "knowledge/fbi/figures/pkfc.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 4,
+      "archetypes": [
+        "shadow-adversary",
+        "mirror-foil"
+      ],
+      "depth_tier": "index-card"
     },
     {
       "id": "bigtech",
@@ -276,7 +518,8 @@
         "mirror-foil",
         "skeptic-contrarian",
         "trickster-catalyst"
-      ]
+      ],
+      "depth_tier": "working-file"
     },
     {
       "id": "txt",
@@ -292,7 +535,8 @@
       "archetypes": [
         "shadow-adversary",
         "mirror-foil"
-      ]
+      ],
+      "depth_tier": "case-file"
     },
     {
       "id": "tachy",
@@ -310,7 +554,21 @@
         "chronicler-archivist",
         "witness-observer",
         "trickster-catalyst"
-      ]
+      ],
+      "depth_tier": "working-file"
+    },
+    {
+      "id": "capy",
+      "name": "Capy",
+      "aliases": [
+        "Capy"
+      ],
+      "path": "knowledge/fbi/figures/capy.json",
+      "room_path": null,
+      "archive_status": null,
+      "chronicle_occurrence_count": 0,
+      "archetypes": [],
+      "depth_tier": "working-file"
     },
     {
       "id": "matthew-mtclassic",
@@ -328,7 +586,8 @@
         "healer-companion",
         "guardian-defender",
         "seeker-student"
-      ]
+      ],
+      "depth_tier": "case-file"
     },
     {
       "id": "mediomu007",
@@ -345,19 +604,8 @@
         "healer-companion",
         "seeker-student",
         "builder-cultivator"
-      ]
-    },
-    {
-      "id": "capy",
-      "name": "Capy",
-      "aliases": [
-        "Capy"
       ],
-      "path": "knowledge/fbi/figures/capy.json",
-      "room_path": null,
-      "archive_status": null,
-      "chronicle_occurrence_count": 0,
-      "archetypes": []
+      "depth_tier": "case-file"
     }
   ],
   "canonical_support": [
@@ -377,5 +625,16 @@
     "file_viewer": "rooms/potatoverse-canon/beings/fbi/file/",
     "bonds": "rooms/potatoverse-canon/beings/fbi/bonds/",
     "incidents": "rooms/potatoverse-canon/beings/fbi/incidents/"
+  },
+  "coverage_tiers": {
+    "case-file": "Multiple dated/source/story connections; mature enough for deep browsing.",
+    "working-file": "Recurring figure with meaningful chronology but incomplete recovery.",
+    "index-card": "Recurring name retained for discoverability while evidence remains sparse."
+  },
+  "coverage_summary": {
+    "total_figures": 33,
+    "case_files": 21,
+    "working_files": 11,
+    "index_cards": 1
   }
 }
