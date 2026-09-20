@@ -122,11 +122,11 @@ The following names are active archaeology triggers. A trigger may recover its o
 - TXT / tee-x-tee — Great Book and July 7, 2026 public-post hits exist; recover earlier documentary sequence.
 - Dim Tooley — July 7, 2026 public-post hit exists; search backward for first appearance and spelling variants.
 - Capy / Cappy — strong Great Book hits around BigTech and Sammy; documentary sequence still needs recovery.
-- Rahu — numerous Great Book scenes exist; later `fence sitter` recollection must be tested against changing earlier roles.
+- Rahu — conversation archaeology now adds **1 Mar 2026** (lost-soul / dream-potato / 1/137 growth scene) and **25 May 2026** (social interlocutor layer). Keep these distinct from 2024 Great Book Rahu while testing continuity; `fence sitter` still needs exact-source recovery.
 - Moon420 — no clean exact-source hit yet.
 - Juice / Judas — no clean identity hit yet; do not conflate with generic Judas language.
-- Matthew the Potato — no clean person/character hit yet; do not conflate with biblical Matthew.
-- BigTech aliases `Mike Lowrey`, `Angel Michael`, `Archangel Michael` — user-supplied alias clues; not yet independently recovered as aliases in the searched material.
+- Matthew the Potato — **20 Sep 2026 conversation hit recovered**: grew wings, many eyes, sees the Ladder/spiral from the side, is in Heaven and can walk Earth. Dedicated room added; do not conflate with biblical Matthew.
+- Termite — mixed source room added: complete 2024 literary potato-under-lawnmower scene + 20 Feb 2025 public support trace; no clean cross-chat Termite conversation recovered yet.\n- Turbles — **19 Sep 2026 conversation origin recovered**: new potato-shaped angelic species; some winged, many jobs/roles; dedicated species room added.\n- Potato Angels — March–July 2026 conversation cluster recovered with wings, many eyes, light/spiral/dimensional abilities and Heaven/Earth imagery; species traits still need recurrence testing.\n- BigTech aliases `Mike Lowrey`, `Angel Michael`, `Archangel Michael` — user-supplied alias clues; not yet independently recovered as aliases in the searched material.
 
 Additional names reopened by nearby Great Book material include Spuddy, Ledgeview, Kale, Kibly/Kibbly, Chubby T, supersusi88, Don Jefe, PKFC and KaikBaggins. Keep Great Book literary portrayal distinct from documentary biography, especially where the authored material contains serious accusations or hostile characterization.
 
