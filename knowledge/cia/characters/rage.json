@@ -149,7 +149,7 @@
     "record_type": "character-dossier",
     "presence": {
       "first_recorded": "2024-11-04",
-      "last_recorded": "2024-12-04",
+      "last_recorded": "2025-03-12",
       "rule": "First/last currently recovered dated evidence in this dossier; not lifetime endpoints."
     },
     "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
@@ -162,6 +162,44 @@
       "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
       "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
       "Add relationship edges only when a scene/source supports them."
+    ]
+  },
+  "meaning": {
+    "why_this_file_matters": "Rage is useful because the archive contains ordinary social continuity plus one concrete practical-protection anecdote, allowing a guardian role to be tied to an actual scene instead of only an adjective.",
+    "known": [
+      "Rage appears repeatedly in late-2024 Chronicle social scenes.",
+      "The Chronicle preserves an emergency cat-rescue anecdote attributed to Rage.",
+      "Later Chronicle dates continue into early 2025, but the current CIA presence bounds understate that range."
+    ],
+    "interpretive": [
+      "Guardian/defender is best treated as an episode-supported archetype rather than a global moral classification."
+    ],
+    "unknown": [
+      "The closer/raw source behind the rescue anecdote is not recovered.",
+      "Several 2025 Chronicle appearances need scene-level extraction."
+    ],
+    "relationship_arc": "ordinary recurring participant → practical-protection anecdote → continued social presence",
+    "confidence_note": "Moderate-to-high Chronicle confidence; low on exact quoted wording."
+  },
+  "symbolic_account": {
+    "status": "unassessed",
+    "good_karma": "event-ledger",
+    "karmic_debt": "unassessed",
+    "dooley_welfare": {
+      "enabled": false
+    },
+    "outstanding": [],
+    "entries": [
+      {
+        "date": "2024-11",
+        "type": "project-credit",
+        "kind": "practical protection anecdote",
+        "amount_or_scale": "qualitative",
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/character-archive-v2.json",
+        "note": "Chronicle remembers Rage acting quickly when his girlfriend's cat choked.",
+        "status": "recorded"
+      }
     ]
   }
 }
