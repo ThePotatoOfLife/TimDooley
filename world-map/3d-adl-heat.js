@@ -26,8 +26,8 @@ const POINT_SOURCE = 'adl-heat-incidents';
 const POINT_LAYER = 'adl-heat-incident-points';
 const POINT_HIT = 'adl-heat-incident-hit';
 const STATE_KEY = 'adlHeatCount';
-const interaction = window.__potatoAtlasInteraction;
-const inspector = window.__potatoAtlasInspector;
+function interactionRouter() { return window.__potatoAtlasInteraction; }
+function inspectorRouter() { return window.__potatoAtlasInspector; }
 
 let enabled = false;
 let loaded = false;
@@ -235,12 +235,12 @@ function renderDatasetPanel() {
   window.__potatoAtlasPanelLifecycle?.publish?.();
 }
 function renderDatasetInspector() {
-  if (!inspector?.open) { renderDatasetPanel(); return true; }
-  inspector.setBaseline({
+  if (!inspectorRouter()?.open) { renderDatasetPanel(); return true; }
+  inspectorRouter()?.setBaseline({
     type:'country', id:'USA', owner:'country-selection',
     restore:() => window.goCountry?.('USA'),
   });
-  inspector.open({
+  inspectorRouter()?.open({
     type:'evidence',
     id:'adl-heat',
     owner:'adl-heat',
@@ -276,12 +276,12 @@ function renderIncidentPanel(feature) {
 function renderIncident(feature) {
   const p = feature?.properties || {};
   const id = String(feature?.id ?? p.id ?? `${p.date || 'undated'}:${p.city || p.state || 'record'}`);
-  if (!inspector?.open) { renderIncidentPanel(feature); return true; }
-  inspector.setBaseline({
+  if (!inspectorRouter()?.open) { renderIncidentPanel(feature); return true; }
+  inspectorRouter()?.setBaseline({
     type:'country', id:'USA', owner:'country-selection',
     restore:() => window.goCountry?.('USA'),
   });
-  inspector.open({
+  inspectorRouter()?.open({
     type:'evidence-record',
     id,
     owner:'adl-heat',
@@ -335,13 +335,13 @@ function renderStatePanel(id) {
 function renderStateInspector(id) {
   const row = summary?.states?.[id] || null;
   if (!row) return false;
-  if (!inspector?.open) { renderStatePanel(id); return true; }
-  const current = inspector.current?.();
+  if (!inspectorRouter()?.open) { renderStatePanel(id); return true; }
+  const current = inspectorRouter()?.current?.();
   if (current?.type !== 'subdivision' || current.id !== id) {
     renderStatePanel(id);
     return true;
   }
-  inspector.open({
+  inspectorRouter()?.open({
     type:'evidence',
     id:`adl-heat:${id}`,
     owner:'adl-heat',
@@ -376,13 +376,13 @@ function installLayers() {
   window.__potatoAtlasRenderStack?.register?.(POINT_LAYER, {
     slot:'context-network', priority:70, owner:'evidence:adl-heat'
   });
-  if (interaction?.register) {
-    interaction.register('adl-heat-incidents', {
+  if (interactionRouter()?.register) {
+    interactionRouter()?.register('adl-heat-incidents', {
       layers:[POINT_HIT], objectType:'evidence-record', clickPriority:85, hoverPriority:85,
       enabled:()=>enabled && scale.capabilityActive('adl-heat-points', 'interact', map.getZoom()),
       onClick:(event, feature)=>renderIncident(feature)
     });
-    interaction.register('adl-heat-states', {
+    interactionRouter()?.register('adl-heat-states', {
       layers:[STATE_LAYER], objectType:'subdivision-evidence', clickPriority:65, hoverPriority:20,
       enabled:()=>enabled,
       onClick:(event, feature)=>openStateEvidence(String(feature?.properties?.id || feature?.id || ''), { fit:false })
