@@ -100,7 +100,7 @@ for token in (
     "function renderBriefing",
     "readable=params.get('readable')==='1'",
     "allRows.filter(r=>clean(r.summary).length>0)",
-    "baseProviders.filter(id=>id!=='publisher-rss')",
+    "baseProviders.filter(id=>id!=='publisher-rss'&&id!=='official-rss')",
     "function renderPulse",
     "news-story--compact",
     "view!=='latest')more.open=true",
