@@ -66,13 +66,35 @@ def main() -> int:
             if "/records/" not in text:
                 errors.append(f"topics/{record_branch['id']}/ still renders canonical records as path-only text")
 
+        inhabitants = json.loads((ROOT / "data" / "house" / "room-inhabitants.json").read_text(encoding="utf-8"))
+        def walk(value):
+            if isinstance(value, dict):
+                yield value
+                for child in value.values():
+                    yield from walk(child)
+            elif isinstance(value, list):
+                for child in value:
+                    yield from walk(child)
+        record_routes = sorted({
+            str(row.get("route")).strip()
+            for row in walk(inhabitants)
+            if isinstance(row, dict)
+            and isinstance(row.get("route"), str)
+            and str(row.get("route")).startswith("/records/")
+        })
+        for route in record_routes:
+            rel = route.strip("/")
+            page = OUT / rel / "index.html"
+            if not page.exists():
+                errors.append(f"registered House inhabitant record route missing after build_site.py: {route}")
+
         if errors:
             print("Generated navigation validation FAILED")
             for error in errors:
                 print(f" - {error}")
             return 1
 
-        print("Generated navigation validation passed: topic, record and context pages resolve to current human parents.")
+        print(f"Generated navigation validation passed: topic/context readers resolve correctly and {len(record_routes)} registered House record routes exist.")
         return 0
     finally:
         if OUT.exists():
