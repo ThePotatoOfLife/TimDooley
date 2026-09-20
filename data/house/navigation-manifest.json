@@ -1,5 +1,5 @@
 {
-  "version": "2.9.0",
+  "version": "3.0.0",
   "updated": "2026-09-20",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -248,6 +248,26 @@
       "concern": "recursive spatial House integrity snapshot",
       "owner": "data/house/spatial-house-health-2026-09-20.json",
       "rule": "Records validated counts and referential-integrity state for Dwellings, nested Rooms, interiors, inhabitants, wormholes, journey memory and object focus as of the snapshot date."
+    },
+    {
+      "concern": "cross-project Life & Body object projection",
+      "owner": "data/house/body-relational-overlay.json",
+      "rule": "Keep one object identity while projecting anatomy, project symbolism, historical tradition and systems lenses across Life & Body, House, Axis, Religion, Science, Spirit and Corporium."
+    },
+    {
+      "concern": "House inhabitants / object focus",
+      "owner": "data/house/room-inhabitants.json",
+      "rule": "Concrete concepts, cases and biological objects may inhabit several nested Rooms and switch lenses without becoming architecture or duplicate knowledge owners."
+    },
+    {
+      "concern": "public Body discovery questions",
+      "owner": "knowledge/indexes/faq-body-neurobiology-discovery.json",
+      "rule": "Natural-language discovery routes into canonical BODY owners; answers must preserve anatomy/history/symbolism boundaries."
+    },
+    {
+      "concern": "whole-archive record discovery",
+      "owner": "scripts/build_discovery.py",
+      "rule": "A–Z and machine retrieval include questions, every core canonical record and governed Body objects; Explore record search consumes the generated cross-root registry."
     }
   ],
   "resolver_order": [
