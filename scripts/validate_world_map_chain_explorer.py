@@ -20,8 +20,9 @@ def main() -> int:
         explorer = read(EXPLORER)
         bootstrap = read(BOOTSTRAP)
         world_bar = read(WORLD_BAR)
-        for token in ("data-chain-id", "atlasChainMatch", "atlas-chain-outline", "runtime.chain", "searchParams.get('chain')", "searchParams.set('chain'", "__potatoAtlasChainExplorer", "feature-state", "Functional chains"):
+        for token in ("data-chain-id", "atlasChainMatch", "atlas-chain-outline", "runtime.chain", "searchParams.get('chain')", "urlState.claim('chain-explorer'", "urlState.patch('chain-explorer'", "__potatoAtlasChainExplorer", "feature-state", "Functional chains"):
             assert token in explorer, f"chain explorer missing marker: {token}"
+        assert "history.replaceState" not in explorer, "chain explorer must not bypass canonical URL State owner"
         assert "./3d-chain-explorer.js" in bootstrap, "bootstrap must load chain explorer"
         assert "Functional Chains" not in world_bar and "Chain Explorer" not in world_bar, "chain explorer must not add top-level navigation"
     except AssertionError as exc:
