@@ -848,7 +848,7 @@ def validate_swamp_and_transition_contracts(errors):
         if ids!=expected:
             errors.append('Door/Cross/Spiral lifecycle order drifted')
         distinctions=' '.join(life.get('distinctions',[])).casefold()
-        for token in ('plane crossing','door can exist','spiral is diagnosed','fruit judges'):
+        for token in ('crossing a plane','door can exist','spiral is diagnosed','fruit judges'):
             if token not in distinctions:
                 errors.append(f'Door/Cross/Spiral lifecycle missing distinction: {token}')
         failures={x.get('id') for x in life.get('failure_modes',[]) if isinstance(x,dict)}
