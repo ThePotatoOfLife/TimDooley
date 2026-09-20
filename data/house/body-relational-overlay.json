@@ -1,6 +1,6 @@
 {
   "id": "body-relational-overlay",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-20",
   "authority": "cross-layer projection only; canonical facts remain in referenced owners",
   "purpose": "Project the same body/anatomy objects through Life & Body, House, Axis, Religion, Science and Corporium without duplicating ownership. An object keeps one identity while each surface asks a different typed question.",
@@ -54,6 +54,23 @@
         "project": "Father's House / inner Potato; nuclei as rooms; TRN as wall/gate.",
         "history": "Thalamus carries an 'inner chamber' naming history from Greek anatomical tradition.",
         "tradition": "John 14 Father's-House comparison belongs to Christian/project comparison; Horus-brain overlay is a separate modern hypothesis."
+      },
+      "formal_correspondence": {
+        "source": "House / Room",
+        "target": "thalamic nuclei and thalamocortical network",
+        "map": "functional architecture comparator",
+        "preserves": [
+          "central/deep location",
+          "differentiated internal subregions",
+          "routing/gating relations"
+        ],
+        "does_not_preserve": [
+          "theological identity",
+          "literal Father's House",
+          "one-to-one room/function localization"
+        ],
+        "correspondence_maturity": "C1",
+        "epistemic_status": "E3"
       }
     },
     {
@@ -87,6 +104,22 @@
         "anatomy": "Narrow CSF-filled midline ventricular cavity within the diencephalon.",
         "project": "Inner Court / shared chamber between House, Steward and posterior Door region.",
         "systems": "Part of ventricular CSF route toward the cerebral aqueduct."
+      },
+      "formal_correspondence": {
+        "source": "Court / chamber",
+        "target": "third ventricular cavity and CSF route",
+        "map": "spatial/interface comparator",
+        "preserves": [
+          "midline cavity",
+          "adjacency",
+          "fluid-route role"
+        ],
+        "does_not_preserve": [
+          "sacred-court identity",
+          "agency"
+        ],
+        "correspondence_maturity": "C1",
+        "epistemic_status": "E3"
       }
     },
     {
@@ -123,6 +156,23 @@
         "systems": "Retina→SCN→PVN→upper thoracic sympathetic route→superior cervical ganglion→pineal forms a real descent-and-return timing circuit.",
         "project": "Son-side Door / Single Eye / timing threshold.",
         "history": "Pineal soul/third-eye interpretations belong to history of ideas and later esoteric reception, not modern anatomical proof."
+      },
+      "formal_correspondence": {
+        "source": "Door / Eye / timing threshold",
+        "target": "pineal circadian endocrine system",
+        "map": "timing/interface comparator",
+        "preserves": [
+          "rhythmic timing",
+          "light-dark dependence through upstream circuitry",
+          "small central interface role"
+        ],
+        "does_not_preserve": [
+          "5D spacetime",
+          "quantum portal",
+          "seat of soul"
+        ],
+        "correspondence_maturity": "C1",
+        "epistemic_status": "E3"
       }
     },
     {
@@ -161,6 +211,23 @@
         "systems": "Ascending, descending, autonomic, reflex and local spinal circuits form a multiplex vertical communication architecture.",
         "project": "Ladder / Axis with 33 bony Rooms and five broader project spinal Gates.",
         "tradition": "Chakra/nāḍī overlays are historical/subtle-body comparators rather than spinal anatomy."
+      },
+      "formal_correspondence": {
+        "source": "Ladder / Axis",
+        "target": "vertebral-spinal communication architecture",
+        "map": "ordered-chain/network comparator",
+        "preserves": [
+          "vertical ordering",
+          "segmentation",
+          "ascending/descending traffic"
+        ],
+        "does_not_preserve": [
+          "33 spiritual dimensions",
+          "one-to-one chakra mapping",
+          "single linear neural channel"
+        ],
+        "correspondence_maturity": "C1",
+        "epistemic_status": "E3"
       }
     },
     {
@@ -195,6 +262,22 @@
         "anatomy": "CSF occupies ventricles and subarachnoid spaces around brain, cord and cauda-equina roots; adult central canal is not the main spinal CSF route.",
         "systems": "Production, circulation, exchange and drainage are distinct processes involving choroid plexus, ventricular/subarachnoid spaces and drainage interfaces.",
         "project": "River / Spirit-flow comparator; strongest as one layer within a wider multi-flow organism."
+      },
+      "formal_correspondence": {
+        "source": "River / Flow",
+        "target": "cerebrospinal fluid circulation/exchange system",
+        "map": "transport-flow comparator",
+        "preserves": [
+          "circulation/exchange",
+          "distributed fluid spaces",
+          "production/drainage distinction"
+        ],
+        "does_not_preserve": [
+          "Spirit as biological substance",
+          "single-direction river mechanics"
+        ],
+        "correspondence_maturity": "C1",
+        "epistemic_status": "E3"
       }
     },
     {
@@ -226,6 +309,22 @@
         "anatomy": "Vascular epithelial interface producing much CSF and maintaining the blood–CSF barrier.",
         "systems": "A living production/transport/immune boundary, not passive plumbing.",
         "project": "Spring / Well / guarded inner-water interface."
+      },
+      "formal_correspondence": {
+        "source": "Spring / guarded interface",
+        "target": "choroid plexus blood-CSF interface",
+        "map": "production/boundary comparator",
+        "preserves": [
+          "production",
+          "selective boundary",
+          "transport interface"
+        ],
+        "does_not_preserve": [
+          "sacred-water identity",
+          "unrestricted source metaphor"
+        ],
+        "correspondence_maturity": "C1",
+        "epistemic_status": "E3"
       }
     },
     {
@@ -578,5 +677,7 @@
     "knowledge/body/axis-orientation-autonomic-interface-atlas.json",
     "knowledge/body/thalamus-house-horus-crown-atlas.json",
     "knowledge/traditions/hermes-serpent-axis-comparative-atlas.json"
-  ]
+  ],
+  "formal_grammar_ref": "data/project-formal-grammar.json",
+  "correspondence_rule": "Body mappings use the shared correspondence contract. C/E tags describe comparison maturity and epistemic role, not spiritual importance."
 }
