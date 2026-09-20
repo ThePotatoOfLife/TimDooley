@@ -64,7 +64,8 @@ def main() -> int:
         "edgeMatchesRelationMode",
         "data-path-target",
         "function shortestPath",
-        "searchParams.set('path'",
+        "urlState.claim('pathfinder', ['path'])",
+        "urlState.patch('pathfinder'",
         "Shortest represented path",
         "not necessarily the shortest or strongest relationship in the real world",
     )
