@@ -117,11 +117,11 @@
 
 
 ### WM-021 · URL state ownership is fragmented — P1
-**Status:** open.  
-**Evidence:** more than twenty World Map runtime modules directly call `history.replaceState`.  
-**Risk:** unrelated modules can preserve/delete each other's parameters; reset/hydration compatibility rules are distributed; URL races become load-order dependent.  
-**Owner target:** one URL State service / transaction owner.  
-**Solution:** namespaced parameter ownership, atomic patch API, hydration registration, diagnostics, and a validator forbidding direct URL mutation outside the owner plus explicitly bounded compatibility bridges.
+**Status:** partially fixed (Phase 1 on main, 2026-09-20).  
+**Completed:** canonical `3d-url-state.js` owner with parameter claims, collision detection, atomic patches and diagnostics. Analytical layers, Physical, Geography overlays, Evidence coordinator and ADL filters no longer call `history.replaceState` directly.  
+**Remaining:** country/pins/relation/compare, Inspector mirrors (`inspect`/country/subdivision/place), Time, Axis/specialist state and legacy Lens/Fields/Networks still own direct writes.  
+**Risk:** remaining mirrored/compatibility families can still race or preserve/delete each other incorrectly.  
+**Next:** define transaction groups for selection+Inspector and Time, then migrate legacy/specialist writers; validator forbids direct writes for each migrated family.
 
 ### WM-022 · Specialist inspectors bypass typed Inspector Router — P1
 **Status:** open.  
