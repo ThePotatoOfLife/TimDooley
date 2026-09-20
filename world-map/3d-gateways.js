@@ -3,6 +3,7 @@
 const map = window.__potatoAtlasMap;
 const runtime = window.__potatoAtlasDataRuntime;
 const selection = window.__potatoAtlasSelection;
+const interaction = window.__potatoAtlasInteraction;
 if (!map || !runtime || !selection) throw new Error('System intelligence requires map, runtime and selection APIs.');
 await runtime.ready;
 
@@ -153,10 +154,8 @@ function emitGateway(id, gateway) {
 }
 
 ensureGatewayLayers();
-map.on('mouseenter', POINT_LAYER, () => { map.getCanvas().style.cursor = 'pointer'; });
-map.on('mouseleave', POINT_LAYER, () => { map.getCanvas().style.cursor = ''; });
-map.on('click', POINT_LAYER, async event => {
-  const feature = event.features?.[0];
+
+async function openGatewayFeature(_event, feature) {
   if (!feature) return;
   const p = feature.properties || {};
   const gateway = await runtime.gateway(p.id) || { id:p.id, label:p.label, type:p.type };
@@ -171,7 +170,23 @@ map.on('click', POINT_LAYER, async event => {
   popup.on('close', () => {
     if (activeGatewayId === p.id) emitGateway(null, null);
   });
-});
+}
+
+if (interaction?.register) {
+  interaction.register('system-gateways', {
+    layers:[POINT_LAYER],
+    objectType:'gateway',
+    clickPriority:75,
+    hoverPriority:75,
+    cursor:'pointer',
+    onClick:openGatewayFeature,
+  });
+} else {
+  // Degraded/direct-module fallback only. Normal app boots are Router-owned.
+  map.on('mouseenter', POINT_LAYER, () => { map.getCanvas().style.cursor = 'pointer'; });
+  map.on('mouseleave', POINT_LAYER, () => { map.getCanvas().style.cursor = ''; });
+  map.on('click', POINT_LAYER, event => openGatewayFeature(event, event.features?.[0]));
+}
 
 let injectionQueued = false;
 function queueInjection(code) {
