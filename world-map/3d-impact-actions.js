@@ -63,9 +63,8 @@ function syncChainAction(event = null) {
   button.dataset.impactChain = id;
 }
 
-function injectGatewayAction(event) {
-  const feature = event.features?.[0];
-  const id = feature?.properties?.id;
+function injectGatewayAction(id) {
+  id = String(id || '');
   if (!id) return;
   queueMicrotask(() => {
     const popups = [...document.querySelectorAll('.maplibregl-popup-content')];
@@ -90,7 +89,10 @@ function refreshCardActions() {
 window.addEventListener('potato-atlas-country-card-rendered', () => queueMicrotask(refreshCardActions));
 window.addEventListener('potato-atlas-working-selection-change', () => queueMicrotask(refreshCardActions));
 window.addEventListener('potato-atlas-chain-change', event => queueMicrotask(() => syncChainAction(event)));
-if (map.getLayer('atlas-context-gateways-points')) map.on('click', 'atlas-context-gateways-points', injectGatewayAction);
+window.addEventListener('potato-atlas-gateway-change', event => {
+  const id = event?.detail?.id || event?.detail?.gatewayId || '';
+  if (id) injectGatewayAction(id);
+});
 
 refreshCardActions();
 syncChainAction();
