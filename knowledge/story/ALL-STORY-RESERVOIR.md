@@ -136,3 +136,37 @@ Entries **1–104** are imported by reference from `knowledge/story/DIARY-STORY-
 ## Mining law
 
 The count above is a floor, not a target. Append new candidates whenever an episode is found. Concept-only material does not become Story unless a concrete scene/session is recovered. Complete stories publish; incomplete ones remain visible as stubs instead of being invented into completion.
+
+
+## Dog, Footstool & Cow recovery candidates
+
+These are archaeology leads recovered from prior conversations. They are **not** promoted to documentary scene depth until contiguous source turns are recovered. Canonical archaeology owner: `knowledge/timeline/dog-footstool-cow-conversation-archaeology-wave-015.json`.
+
+221. 14 Mar 2026 — **The Dog That Came Back in the Morning** — partial
+222. 22 Jun 2026 — **Mud Is Bad, That Is Why Baths Exist** — partial / assistant-story boundary
+223. Jul 2026 — **Kermit, Jermit and Bermit in the Doghouse** — partial family
+224. 26 Jul 2026 — **The Tiny Footstool With a Door Inside** — partial
+225. 11 Aug 2026 — **Phil Looks for the Real Source** — partial
+226. 15 Aug 2026 — **Good Dogs and Chasers at the Gate** — partial
+227. 19 Aug 2026 — **The Free Companion Dog** — partial / game-archetype
+228. 21 Aug 2026 — **Free to Move, Still Returning** — partial
+229. 25 Aug 2026 — **All Timelines Are Dog Leashes** — partial
+230. 25 Aug 2026 — **The Lion, the Cow and the Lamb Problem** — partial
+231. 27 Aug 2026 — **When the Box Became a Footstool** — partial
+232. 31 Aug 2026 — **Dust in Little Boxes Trying to Hold Sunlight** — partial
+233. 31 Aug 2026 — **Footstool Walking** — partial / assistant-story boundary
+234. 2 Sep 2026 — **Dimmy and the 130 Demons** — partial / assistant-story boundary
+235. Apr 2026 — **Holy Cow, Red Heifer, Golden Calf** — partial
+236. May 2026 — **When Milk Became Attention** — partial
+237. Jun 2026 — **The Cow Under the Moon** — partial
+238. Aug 2026 — **The Thought Patrol Dogs** — partial
+239. Mar 2026 — **The Weight of Potato** — partial / mythic-role story
+
+### Recovery law for this family
+
+- Recover the original contiguous conversation before writing documentary dialogue.
+- Keep user-originated motifs separate from assistant-authored prose and later ontology.
+- Preserve Dog, Cow, Farmer, Footstool and Mud Dweller as period-specific roles rather than timeless biographies.
+- For real people, publish conduct and relation; do not publish a symbolic role as objective identity.
+- Cow variants must be typed: ordinary cow, ox, nourisher, cash cow, lolcow, Holy Cow, Red Heifer, Golden Calf, Cow-target or project cosmological Cow.
+- Dog stories should preserve role mobility: companion, free agent, guard, chaser, pack member, witness, learner, source-seeker and former role are all possible.
