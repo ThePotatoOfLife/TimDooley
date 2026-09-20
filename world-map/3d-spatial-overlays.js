@@ -2,6 +2,10 @@
 // They intentionally preserve overlap between sacred, textual, historical,
 // ideological, current/disputed and conflict-context geography.
 
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('spatial-overlays', ['overlays']);
+
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Spatial overlays require the core atlas map.');
 if (!window.__potatoAtlasGeo) await import('./3d-geo-kernel.js');
@@ -65,11 +69,8 @@ function emit(reason='change', extra={}) {
   }));
 }
 function persist() {
-  const url = new URL(location.href);
   const ids = [...activeIds].filter(available).sort();
-  if (ids.length) url.searchParams.set(ACTIVE_PARAM, ids.join(','));
-  else url.searchParams.delete(ACTIVE_PARAM);
-  history.replaceState({}, '', url);
+  urlState.patch('spatial-overlays', { set:{ [ACTIVE_PARAM]:ids.length ? ids.join(',') : null } });
 }
 function normalizeManifest(data) {
   byId.clear();
