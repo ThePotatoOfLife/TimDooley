@@ -1,16 +1,13 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
-const lenses = fs.readFileSync(new URL('../world-map/3d-lenses.js', import.meta.url), 'utf8');
 const layout = fs.readFileSync(new URL('../world-map/3d-ui-layout.js', import.meta.url), 'utf8');
+const bootstrap = fs.readFileSync(new URL('../world-map/3d-bootstrap.js', import.meta.url), 'utf8');
+const compositor = fs.readFileSync(new URL('../world-map/3d-compositor.js', import.meta.url), 'utf8');
 
-for (const marker of ['LEGACY_TO_LAYER','layers.activate(layerId)','compositor.render()','compatibility:true']) {
-  assert.ok(lenses.includes(marker), `legacy Lens adapter missing canonical translation marker: ${marker}`);
-}
-for (const forbidden of ['setPaintProperty(', 'setFeatureState(', "atlasLensLegend", "atlasLensControl"]) {
-  assert.ok(!lenses.includes(forbidden), `legacy Lens adapter must not own live paint/control surface: ${forbidden}`);
-}
-assert.ok(!layout.includes('atlasLensLegend'), 'UI layout must not reserve a stale Lens legend surface');
-assert.ok(!layout.includes('lens-legend'), 'UI layout must not retain the retired Lens legend registration');
+assert.equal(fs.existsSync(new URL('../world-map/3d-lenses.js', import.meta.url)), false, 'retired Lens adapter must stay deleted');
+assert.ok(!bootstrap.includes('3d-lenses.js'), 'bootstrap must not restore the retired Lens adapter');
+assert.ok(compositor.includes('window.__potatoAtlasCompositor'), 'Compositor must remain the canonical analytical renderer');
+assert.ok(layout.includes('atlasWorldBar') || layout.includes('atlas-registry-ui'), 'UI Layout must remain compatible with the registry-owned toolbar');
 
-console.log('WORLD MAP LENS ADAPTER OWNERSHIP REGRESSION PASSED');
+console.log('WORLD MAP LENS RETIREMENT REGRESSION PASSED');
