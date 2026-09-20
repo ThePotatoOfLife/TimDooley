@@ -306,5 +306,23 @@
       ]
     },
     "rule": "Record only where Tim/project material supports the placement. A person may occupy different coordinates in different dated scenes."
+  },
+  "next_state_model": {
+    "purpose": "Describe the next reachable symbolic state inside Tim's framework from the current dated relation.",
+    "derivation_order": [
+      "explicit repair_path on dossier",
+      "counterform on state modifier",
+      "taxonomy exit path for current role",
+      "constructive route matching current function"
+    ],
+    "examples": {
+      "Mud Dweller": "source checking → accountability → Door → useful work / cultivation",
+      "Dog": "stopping condition → evidence discipline → Guardian Dog or exit from role",
+      "Footstool": "recognition of Door → changed relation / support without humiliation",
+      "Witness": "truthful memory → Archive / root rather than passive spectatorship",
+      "Builder/Cultivator": "sustain useful work → Gardener / steward",
+      "Bridge": "maintain connection without erasing boundaries"
+    },
+    "rule": "A next-state path is a project possibility, not a prediction, moral command or guaranteed outcome."
   }
 }
