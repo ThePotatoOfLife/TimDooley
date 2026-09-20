@@ -1,6 +1,6 @@
 {
-  "version": "4.8.0",
-  "updated": "2026-09-18",
+  "version": "4.9.0",
+  "updated": "2026-09-20",
   "purpose": "Canonical backend-to-frontend projection contract. Canonical data stays modular and keeps its existing owners; this bridge maps major archive branches and backend families into exactly five simple public doors plus a visible secondary Rooms layer and quieter global/deep surfaces.",
   "data_roots": [
     "data/",
@@ -110,10 +110,11 @@
     },
     "body": {
       "primary_door": "science",
-      "human_route": "science/",
+      "human_route": "life-body/",
       "archive_route": "explore/#branch=body",
       "static_topic_route": "topics/body/",
       "related_doors": [
+        "science",
         "religion",
         "philosophy"
       ]
@@ -262,7 +263,8 @@
       "related_doors": [
         "philosophy",
         "religion"
-      ]
+      ],
+      "body_relational_overlay": "data/house/body-relational-overlay.json"
     },
     "research_lab": {
       "global_route": "research-lab/",
