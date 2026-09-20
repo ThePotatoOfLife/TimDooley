@@ -50,7 +50,12 @@ function accountData(){
  const explicit=dossier.symbolic_account||{};
  const legacy=dossier.cia_record?.debt_and_repair||{};
  const records=arr(explicit.entries).length?arr(explicit.entries):arr(legacy.records);
- return{status:explicit.status||'unassessed',good:explicit.good_karma??'unassessed',debt:explicit.karmic_debt??(records.length?records.filter(x=>/debt|debit|harm|repair/i.test(String(x.kind||''))).length+' sourced entr'+(records.length===1?'y':'ies'):'unassessed'),welfare:explicit.dooley_welfare||null,outstanding:arr(explicit.outstanding).length?arr(explicit.outstanding):arr(dossier.cia_record?.open_loops||dossier.recovery_leads),entries:records};
+ const credits=records.filter(x=>['project-credit','yield','repair-attempt'].includes(String(x.type||'')));
+ const debits=records.filter(x=>['project-debit'].includes(String(x.type||'')));
+ const disputes=records.filter(x=>String(x.type||'')==='dispute');
+ const good=explicit.good_karma&&explicit.good_karma!=='event-ledger'?explicit.good_karma:(credits.length?credits.length+' sourced credit/yield event'+(credits.length===1?'':'s'):'unassessed');
+ const debt=explicit.karmic_debt&&explicit.karmic_debt!=='event-ledger'?explicit.karmic_debt:(debits.length?debits.length+' sourced debit event'+(debits.length===1?'':'s'):(disputes.length?disputes.length+' disputed item'+(disputes.length===1?'':'s'):'unassessed'));
+ return{status:explicit.status||'unassessed',good,debt,welfare:explicit.dooley_welfare||null,outstanding:arr(explicit.outstanding).length?arr(explicit.outstanding):arr(dossier.cia_record?.open_loops||dossier.recovery_leads),entries:records};
 }
 function welfareLabel(w){
  if(!w?.enabled)return'not enrolled';
