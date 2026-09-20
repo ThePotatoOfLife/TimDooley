@@ -69,7 +69,8 @@
           "role": "Tomatoes around literary orbit",
           "status": "relation-not-identity"
         }
-      ]
+      ],
+      "fbi_dossier_path": "knowledge/fbi/figures/marty-biz.json"
     },
     {
       "id": "sammy",
@@ -84,7 +85,8 @@
           "period": "2024",
           "role": "recurring Potatoverse social cast"
         }
-      ]
+      ],
+      "fbi_dossier_path": "knowledge/fbi/figures/sammy.json"
     },
     {
       "id": "josh-moon",
@@ -121,7 +123,8 @@
           "period": "2023-2024",
           "role": "public/project rival and Great Book literary figure"
         }
-      ]
+      ],
+      "fbi_dossier_path": "knowledge/fbi/figures/bigtech.json"
     },
     {
       "id": "grace",
@@ -168,7 +171,8 @@
         "Joe"
       ],
       "room_path": "rooms/potatoverse-canon/beings/metalorian/",
-      "identity_note": "Alias continuity and allegations require source-level confirmation. Later illness/misfortune is not evidence of causation or fulfilled prophecy."
+      "identity_note": "Alias continuity and allegations require source-level confirmation. Later illness/misfortune is not evidence of causation or fulfilled prophecy.",
+      "fbi_dossier_path": "knowledge/fbi/figures/metalorian.json"
     },
     {
       "id": "monkey",
@@ -212,7 +216,8 @@
           "period": "2024",
           "role": "Great Book/project-side chaotic social character; documentary basis requires recovery"
         }
-      ]
+      ],
+      "fbi_dossier_path": "knowledge/fbi/figures/capy.json"
     },
     {
       "id": "sarah-ann",
@@ -551,7 +556,8 @@
           "role": "Mud Dweller / lost-soul story",
           "status": "scene-bound creative/conversation"
         }
-      ]
+      ],
+      "fbi_dossier_path": "knowledge/fbi/figures/rahu.json"
     },
     {
       "id": "optimistique",
@@ -562,7 +568,8 @@
           "period": "2024",
           "role": "gentle singing/support figure in the Soul Farmers/Ethereal Tuber story"
         }
-      ]
+      ],
+      "fbi_dossier_path": "knowledge/fbi/figures/optimistique.json"
     },
     {
       "id": "evil-mashed-potatoes",
@@ -734,7 +741,8 @@
           "role": "Potato cultivation adjacency",
           "status": "symbolic adjacency"
         }
-      ]
+      ],
+      "fbi_dossier_path": "knowledge/fbi/figures/termite.json"
     },
     {
       "id": "txt",
@@ -759,7 +767,8 @@
           "role": "directly named public conflict referent alongside Dim; allegations remain attributed to Tim"
         }
       ],
-      "identity_note": "Keep person/handle, literary character and later retrospective role separate until the source chain joins them."
+      "identity_note": "Keep person/handle, literary character and later retrospective role separate until the source chain joins them.",
+      "fbi_dossier_path": "knowledge/fbi/figures/txt.json"
     },
     {
       "id": "matthew-mtclassic",
@@ -787,7 +796,8 @@
           "role": "Guardian/Defender in moderation scene",
           "status": "archetype-only"
         }
-      ]
+      ],
+      "fbi_dossier_path": "knowledge/fbi/figures/matthew-mtclassic.json"
     },
     {
       "id": "mediomu007",
@@ -818,7 +828,8 @@
           "role": "Builder/Cultivator through literal room-making",
           "status": "archetype-only"
         }
-      ]
+      ],
+      "fbi_dossier_path": "knowledge/fbi/figures/mediomu007.json"
     },
     {
       "id": "tomatoes",
@@ -844,5 +855,11 @@
   "character_archive": "knowledge/story/character-archive-v2.json",
   "archive_rule": "For long-tail people/handles, consult character-archive-v2.json for role × time × source × function. Do not promote old psychological labels into canonical identity.",
   "role_ecology_owner": "knowledge/world/potatoverse-cast-role-ecology.json",
-  "scene_assignment_ledger": "knowledge/story/character-symbolic-role-assignments.json"
+  "scene_assignment_ledger": "knowledge/story/character-symbolic-role-assignments.json",
+  "fbi_bureau": {
+    "manifest": "knowledge/fbi/manifest.json",
+    "bonds": "knowledge/fbi/bonds/network.json",
+    "incidents": "knowledge/fbi/incidents/index.json",
+    "public_room": "rooms/potatoverse-canon/beings/fbi/"
+  }
 }
