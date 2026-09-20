@@ -165,6 +165,13 @@
 **Guard:** `scripts/validate_world_map_conflict_snapshots.py` requires the conflict family to remain dormant until reviewed geometry exists, binds snapshots to the canonical Time owner, rejects activation without source/not-live/administrative-independence guarantees, and preserves the explicit no-live-tactical-tracking boundary.  
 **Next:** ingest reviewed delayed/historical source snapshots as separate geometry owners; compare exact snapshots through Time without interpolating invented front lines.
 
+### WM-030 · Geometry-first subdivision inspectors hide uncertainty/provenance — P2
+**Status:** fixed / governed on branch `world-map-subdivision-inspector-richness-rebased-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** generic subdivision cards displayed bare dashes for missing population/area/density and only a one-line boundary source, so newer geometry-first partitions could look incomplete without explaining what was intentionally unknown or source-specific.  
+**Resolution:** subdivision inspection now distinguishes known vs unknown population/area/density, explicitly states that unknown population is not zero, shows local names, source reference/vintage, boundary provenance and representation notes, and keeps city/place hydration plus evidence context intact.  
+**Guard:** the canonical subdivision validator requires the richer inspector helpers and explicit unknown/provenance/representation language.  
+**Rule retained:** missing statistics are never inferred from geometry, and source-specific boundary transforms remain visible to the reader.
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
