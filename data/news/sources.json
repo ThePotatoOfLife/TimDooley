@@ -1,34 +1,43 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "updated": "2026-09-20",
   "authority": "live-news-source-contract",
-  "purpose": "Declare the external, non-owning current-events sources used by the public News surface. These feeds are reader views of third-party reporting and community links; they do not become project canon merely by appearing on the site.",
+  "purpose": "Declare the external, non-owning current-events sources, viewing lenses, time horizons and geographic-mentions projection used by the public Current World surface. Feed presence, repetition and mapped mentions do not make a claim true, important or part of project canon.",
   "surface": "/news/",
   "sorting": {
     "default": "published_at_desc",
-    "rule": "Newest first. No project-authored political, ideological or source-quality score is used to order stories."
+    "rule": "The article river is ordered mechanically by publication time after URL de-duplication. The project does not assign partisan, ideological, truth, importance or source-quality scores.",
+    "coverage_clusters": "Repeated-coverage clusters are formed from headline-token overlap across distinct source domains. They describe repeated coverage only and are not an importance, consensus or truth score."
   },
   "cache": {
     "scope": "browser-local public feed cache only",
     "ttl_minutes": 10,
     "stores_personal_data": false
   },
+  "presentation": {
+    "max_feed": 36,
+    "max_clusters": 6,
+    "max_cluster_items": 4,
+    "source_lane_items": 5
+  },
   "providers": [
     {
       "id": "gdelt",
       "name": "GDELT DOC 2.0",
       "role": "Broad multilingual news discovery",
+      "source_class": "publisher-index",
       "access": "no API key",
       "browser_access": "CORS-enabled",
       "endpoint": "https://api.gdeltproject.org/api/v2/doc/doc",
       "documentation": "https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/",
-      "provenance": "Article titles, publication times, source domains and links are supplied by GDELT's index of external publishers.",
-      "boundary": "GDELT is an index/discovery layer. The linked publisher remains the source for the article."
+      "provenance": "Article titles, publication times, source domains, source-country metadata and links are supplied by GDELT's index of external publishers.",
+      "boundary": "GDELT is a discovery/index layer. The linked publisher remains the source for the article; source-country metadata describes the publisher/source context and must not be presented as the event location."
     },
     {
       "id": "hacker-news",
       "name": "Hacker News Firebase API",
-      "role": "Technology and computing link stream",
+      "role": "Technology and computing community link stream",
+      "source_class": "community-link",
       "access": "no API key",
       "browser_access": "public JSON API",
       "endpoint": "https://hacker-news.firebaseio.com/v0/",
@@ -40,6 +49,7 @@
       "id": "spaceflight-news",
       "name": "Spaceflight News API",
       "role": "Space and aerospace reporting index",
+      "source_class": "specialist-index",
       "access": "no API key",
       "browser_access": "public JSON API",
       "endpoint": "https://api.spaceflightnewsapi.net/v4/articles/",
@@ -48,16 +58,229 @@
       "boundary": "The aggregator is a discovery layer; claims should be evaluated at the linked publisher."
     }
   ],
-  "categories": [
-    {"id":"all","label":"All","gdelt_query":"(international OR world OR Europe OR science OR technology OR climate)","providers":["gdelt","hacker-news","spaceflight-news"]},
-    {"id":"world","label":"World","gdelt_query":"(international OR world OR Europe OR Asia OR Africa OR Americas)","providers":["gdelt"]},
-    {"id":"europe","label":"Europe","gdelt_query":"(Europe OR European Union OR Ukraine OR Russia OR NATO)","providers":["gdelt"]},
-    {"id":"politics","label":"Politics","gdelt_query":"(election OR parliament OR government OR policy OR diplomacy)","providers":["gdelt"]},
-    {"id":"science","label":"Science","gdelt_query":"(science OR research OR discovery OR medicine OR climate)","providers":["gdelt","spaceflight-news"]},
-    {"id":"technology","label":"Technology","gdelt_query":"(technology OR artificial intelligence OR cybersecurity OR computing OR semiconductor)","providers":["gdelt","hacker-news"]},
-    {"id":"space","label":"Space","gdelt_query":"(space OR NASA OR ESA OR rocket OR satellite)","providers":["gdelt","spaceflight-news"]},
-    {"id":"climate","label":"Climate","gdelt_query":"(\"climate change\" OR energy OR environment OR emissions)","providers":["gdelt"]},
-    {"id":"culture","label":"Culture","gdelt_query":"(culture OR film OR music OR books OR art)","providers":["gdelt"]}
+  "horizons": [
+    {
+      "id": "3h",
+      "label": "3 hours",
+      "gdelt_timespan": "3h",
+      "milliseconds": 10800000
+    },
+    {
+      "id": "12h",
+      "label": "12 hours",
+      "gdelt_timespan": "12h",
+      "milliseconds": 43200000
+    },
+    {
+      "id": "24h",
+      "label": "24 hours",
+      "gdelt_timespan": "24h",
+      "milliseconds": 86400000,
+      "default": true
+    },
+    {
+      "id": "3d",
+      "label": "3 days",
+      "gdelt_timespan": "3d",
+      "milliseconds": 259200000
+    },
+    {
+      "id": "7d",
+      "label": "7 days",
+      "gdelt_timespan": "7d",
+      "milliseconds": 604800000
+    }
   ],
-  "epistemic_boundary": "Presence in a live feed establishes only that an external source or community item was indexed. It does not establish the truth, importance or project endorsement of the underlying claim."
+  "categories": [
+    {
+      "id": "all",
+      "label": "All",
+      "description": "A broad current-world mix.",
+      "gdelt_query": "(international OR world OR Europe OR science OR technology OR climate OR economy)",
+      "providers": [
+        "gdelt",
+        "hacker-news",
+        "spaceflight-news"
+      ]
+    },
+    {
+      "id": "world",
+      "label": "World",
+      "description": "International and cross-border reporting.",
+      "gdelt_query": "(international OR world OR Europe OR Asia OR Africa OR Americas)",
+      "providers": [
+        "gdelt"
+      ]
+    },
+    {
+      "id": "politics",
+      "label": "Politics",
+      "description": "Government, elections, parliaments, policy and diplomacy.",
+      "gdelt_query": "(election OR parliament OR government OR policy OR diplomacy)",
+      "providers": [
+        "gdelt"
+      ]
+    },
+    {
+      "id": "economy",
+      "label": "Economy",
+      "description": "Economy, trade, finance, industry and energy.",
+      "gdelt_query": "(economy OR trade OR finance OR inflation OR industry OR energy)",
+      "providers": [
+        "gdelt"
+      ]
+    },
+    {
+      "id": "science",
+      "label": "Science",
+      "description": "Research, medicine, climate science and discovery.",
+      "gdelt_query": "(science OR research OR discovery OR medicine OR climate)",
+      "providers": [
+        "gdelt",
+        "spaceflight-news"
+      ]
+    },
+    {
+      "id": "technology",
+      "label": "Technology",
+      "description": "Computing, AI, cybersecurity and semiconductors.",
+      "gdelt_query": "(technology OR artificial intelligence OR cybersecurity OR computing OR semiconductor)",
+      "providers": [
+        "gdelt",
+        "hacker-news"
+      ]
+    },
+    {
+      "id": "space",
+      "label": "Space",
+      "description": "Spaceflight, astronomy and satellite reporting.",
+      "gdelt_query": "(space OR NASA OR ESA OR rocket OR satellite OR astronomy)",
+      "providers": [
+        "gdelt",
+        "spaceflight-news"
+      ]
+    },
+    {
+      "id": "climate",
+      "label": "Climate",
+      "description": "Climate, environment, energy transition and emissions.",
+      "gdelt_query": "(\"climate change\" OR climate OR environment OR emissions OR renewable energy)",
+      "providers": [
+        "gdelt"
+      ]
+    },
+    {
+      "id": "culture",
+      "label": "Culture",
+      "description": "Film, music, books, art and wider cultural reporting.",
+      "gdelt_query": "(culture OR film OR music OR books OR art)",
+      "providers": [
+        "gdelt"
+      ]
+    }
+  ],
+  "lenses": [
+    {
+      "id": "north-arctic",
+      "label": "North & Arctic",
+      "description": "Arctic, Greenland, Iceland, Nordic and North Atlantic coverage.",
+      "gdelt_query": "(Arctic OR Greenland OR Iceland OR Denmark OR Norway OR Sweden OR Finland OR \"North Atlantic\")",
+      "providers": [
+        "gdelt"
+      ]
+    },
+    {
+      "id": "europe",
+      "label": "Europe",
+      "description": "Europe, the EU and continental security/economy coverage.",
+      "gdelt_query": "(Europe OR \"European Union\" OR EU OR NATO)",
+      "providers": [
+        "gdelt"
+      ]
+    },
+    {
+      "id": "ukraine-russia",
+      "label": "Ukraine / Russia",
+      "description": "Coverage explicitly mentioning Ukraine or Russia.",
+      "gdelt_query": "(Ukraine OR Russia)",
+      "providers": [
+        "gdelt"
+      ]
+    },
+    {
+      "id": "middle-east",
+      "label": "Middle East",
+      "description": "Regional reporting spanning Israel, Palestinian territories, Iran and neighboring states.",
+      "gdelt_query": "(\"Middle East\" OR Israel OR Gaza OR Palestinian OR Iran OR Lebanon OR Syria OR Jordan OR Iraq)",
+      "providers": [
+        "gdelt"
+      ]
+    },
+    {
+      "id": "americas",
+      "label": "Americas",
+      "description": "North, Central and South American coverage.",
+      "gdelt_query": "(\"United States\" OR Canada OR Mexico OR Brazil OR Argentina OR Colombia OR \"South America\" OR \"Latin America\")",
+      "providers": [
+        "gdelt"
+      ]
+    },
+    {
+      "id": "asia-pacific",
+      "label": "Asia-Pacific",
+      "description": "East, South and Southeast Asia plus Pacific reporting.",
+      "gdelt_query": "(China OR Japan OR India OR Korea OR Indonesia OR Australia OR \"Asia Pacific\" OR \"Southeast Asia\")",
+      "providers": [
+        "gdelt"
+      ]
+    },
+    {
+      "id": "africa",
+      "label": "Africa",
+      "description": "Continental and country-level African reporting.",
+      "gdelt_query": "(Africa OR Nigeria OR Ethiopia OR Kenya OR \"South Africa\" OR Sudan OR Congo OR Sahel)",
+      "providers": [
+        "gdelt"
+      ]
+    },
+    {
+      "id": "economy-energy",
+      "label": "Economy & Energy",
+      "description": "Trade, inflation, industry, energy and infrastructure.",
+      "gdelt_query": "(economy OR trade OR inflation OR energy OR oil OR gas OR electricity OR infrastructure)",
+      "providers": [
+        "gdelt"
+      ]
+    },
+    {
+      "id": "security",
+      "label": "Security",
+      "description": "Defence, security, conflict, diplomacy and cyber reporting.",
+      "gdelt_query": "(security OR defence OR defense OR conflict OR diplomacy OR cybersecurity)",
+      "providers": [
+        "gdelt"
+      ]
+    },
+    {
+      "id": "science-tech",
+      "label": "Science & Tech",
+      "description": "Research, AI, computing, health and space.",
+      "gdelt_query": "(science OR research OR technology OR \"artificial intelligence\" OR medicine OR space)",
+      "providers": [
+        "gdelt",
+        "hacker-news",
+        "spaceflight-news"
+      ]
+    }
+  ],
+  "geo": {
+    "provider": "GDELT GEO 2.0",
+    "endpoint": "https://api.gdeltproject.org/api/v2/geo/geo",
+    "mode": "country",
+    "format": "html",
+    "max_horizon": "7d",
+    "documentation": "https://blog.gdeltproject.org/gdelt-geo-2-0-api-debuts/",
+    "boundary": "The spatial pulse maps locations mentioned near the active search terms in monitored coverage. It is a geography-of-mentions view, not verified event geolocation, casualty mapping, territorial adjudication or a measure of real-world importance."
+  },
+  "epistemic_boundary": "Presence in a live feed establishes only that an external source or community item was indexed. Similar headlines establish repeated coverage, not corroboration. Geographic mentions establish media-location context, not that the mapped place is where an event occurred."
 }
