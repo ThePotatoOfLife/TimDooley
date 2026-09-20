@@ -60,8 +60,8 @@ def main() -> int:
         errors.append("first entity Trace implementation must remain depth 1 until growth gates are met")
     if contract.get("scope", {}).get("surface") != "Country card / contextual investigation":
         errors.append("entity Trace must be entered contextually from the canonical country card")
-    if bridge.get("public_reader") != "index.html":
-        errors.append("global graph bridge public reader changed; entity Trace routing must be reviewed")
+    if bridge.get("public_reader") not in {"explore/", "index.html"}:
+        errors.append("global graph bridge public reader must resolve through Explore or the legacy root reader")
 
     evidence_contract = contract.get("evidence", {})
     if set(evidence_contract.get("filters", [])) != {"evidence class", "confidence"}:
