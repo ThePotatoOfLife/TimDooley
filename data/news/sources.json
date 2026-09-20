@@ -1,5 +1,5 @@
 {
-  "version": "2.3.0",
+  "version": "2.4.0",
   "updated": "2026-09-20",
   "authority": "live-news-source-contract",
   "purpose": "Declare the external, non-owning current-events sources, publisher excerpt feeds, viewing lenses, time horizons and geographic-mentions projection used by Current World. The page may display publisher-supplied RSS descriptions, thumbnails and metadata in-page, but does not mirror full copyrighted articles.",
@@ -79,6 +79,20 @@
       "boundary": "The aggregator is a discovery layer; claims should be evaluated at the linked publisher.",
       "display_mode": "specialist summary",
       "reuse_mode": "specialist aggregation metadata + publisher links"
+    },
+    {
+      "id": "official-rss",
+      "name": "Official economic releases",
+      "role": "First-party monetary-policy and statistical releases",
+      "source_class": "primary-source-rss",
+      "access": "public official RSS via RSS2JSON browser adapter; no project API key",
+      "browser_access": "JSON conversion endpoint",
+      "endpoint": "https://api.rss2json.com/v1/api.json",
+      "documentation": "https://rss2json.com/docs",
+      "provenance": "Titles, timestamps, descriptions and links come from official central-bank/statistical-office RSS feeds.",
+      "boundary": "These are primary-source institutional releases, not independent journalism or project analysis. They report what the issuing institution published.",
+      "display_mode": "primary-source release",
+      "reuse_mode": "official public RSS metadata/excerpts subject to issuer terms"
     }
   ],
   "horizons": [
@@ -143,7 +157,8 @@
       "description": "Government, elections, parliaments, policy and diplomacy.",
       "gdelt_query": "(election OR parliament OR government OR policy OR diplomacy)",
       "providers": [
-        "gdelt"
+        "gdelt",
+        "publisher-rss"
       ]
     },
     {
@@ -152,7 +167,9 @@
       "description": "Economy, trade, finance, industry and energy.",
       "gdelt_query": "(economy OR trade OR finance OR inflation OR industry OR energy)",
       "providers": [
-        "gdelt"
+        "gdelt",
+        "publisher-rss",
+        "official-rss"
       ]
     },
     {
@@ -317,13 +334,7 @@
       "scope": "Europe and international news",
       "categories": [
         "all",
-        "world",
-        "politics",
-        "economy",
-        "science",
-        "technology",
-        "climate",
-        "culture"
+        "world"
       ],
       "source_note": "Euronews publicly advertises RSS feeds/widgets for webpage embedding.",
       "reuse_mode": "official RSS / embeddable publisher service",
@@ -338,12 +349,7 @@
       "scope": "World news",
       "categories": [
         "all",
-        "world",
-        "politics",
-        "economy",
-        "science",
-        "technology",
-        "climate"
+        "world"
       ],
       "reuse_mode": "RSS with attribution conditions",
       "reuse_note": "BBC terms permit adding the BBC News RSS feed to a website with prominent BBC attribution for personal use; business use requires permission/licensing.",
@@ -357,13 +363,7 @@
       "scope": "International news",
       "categories": [
         "all",
-        "world",
-        "politics",
-        "economy",
-        "science",
-        "technology",
-        "climate",
-        "culture"
+        "world"
       ],
       "reuse_mode": "terms-bound partner RSS",
       "reuse_note": "DW describes customized RSS/content-box integration for partners and professional website operators; treat reuse as terms-bound rather than unrestricted.",
@@ -377,18 +377,131 @@
       "scope": "International news",
       "categories": [
         "all",
-        "world",
-        "politics",
-        "economy",
-        "climate"
+        "world"
       ],
       "reuse_mode": "link/discovery pending explicit reuse permission",
       "reuse_note": "Al Jazeera's general terms reserve content rights and restrict republication without permission; retain direct full-report linking and treat any feed excerpt reuse conservatively.",
       "terms_url": "https://www.aljazeera.com/terms-and-conditions"
+    },
+    {
+      "id": "bbc-politics",
+      "name": "BBC News · Politics",
+      "feed_url": "https://feeds.bbci.co.uk/news/politics/rss.xml",
+      "homepage": "https://www.bbc.com/news/politics",
+      "scope": "UK politics",
+      "categories": [
+        "politics"
+      ],
+      "reuse_mode": "RSS with attribution conditions",
+      "reuse_note": "BBC RSS use is subject to BBC terms and attribution requirements; Current World preserves direct full-report links.",
+      "terms_url": "https://downloads.bbc.co.uk/usingthebbc/bbc_terms_of_use_19September2022english.pdf"
+    },
+    {
+      "id": "fox-politics",
+      "name": "Fox News · Politics",
+      "feed_url": "https://moxie.foxnews.com/google-publisher/politics.xml",
+      "homepage": "https://www.foxnews.com/politics",
+      "scope": "US politics",
+      "categories": [
+        "politics"
+      ],
+      "reuse_mode": "free RSS for personal, non-commercial use",
+      "reuse_note": "Fox states its RSS feeds provide headlines and summaries with direct links to full articles and are governed by Fox RSS/website terms.",
+      "terms_url": "https://www.foxnews.com/story/foxnews-com-rss-feeds"
+    },
+    {
+      "id": "bbc-business",
+      "name": "BBC News · Business",
+      "feed_url": "https://feeds.bbci.co.uk/news/business/rss.xml",
+      "homepage": "https://www.bbc.com/news/business",
+      "scope": "Business and economy",
+      "categories": [
+        "economy"
+      ],
+      "reuse_mode": "RSS with attribution conditions",
+      "reuse_note": "BBC RSS use is subject to BBC terms and attribution requirements; Current World preserves direct full-report links.",
+      "terms_url": "https://downloads.bbc.co.uk/usingthebbc/bbc_terms_of_use_19September2022english.pdf"
+    },
+    {
+      "id": "foxbusiness-economy",
+      "name": "Fox Business · Economy",
+      "feed_url": "https://moxie.foxbusiness.com/google-publisher/economy.xml",
+      "homepage": "https://www.foxbusiness.com/economy",
+      "scope": "US economy",
+      "categories": [
+        "economy"
+      ],
+      "reuse_mode": "Fox Business RSS",
+      "reuse_note": "Fox Business publishes an Economy RSS endpoint; Current World preserves direct full-report links and treats the feed as publisher-supplied metadata/excerpts.",
+      "terms_url": "https://www.foxbusiness.com/fox-business-rss-feed"
     }
   ],
   "source_transparency": {
     "rule": "Access method and reuse mode are provenance metadata, not quality ratings. They explain why a card can be displayed and how much content may appear on-page.",
     "no_ranking": true
-  }
+  },
+  "official_feeds": [
+    {
+      "id": "fed-monetary",
+      "name": "Federal Reserve · Monetary Policy",
+      "feed_url": "https://www.federalreserve.gov/feeds/press_monetary.xml",
+      "homepage": "https://www.federalreserve.gov/newsevents/pressreleases.htm",
+      "scope": "US monetary policy",
+      "categories": [
+        "economy"
+      ],
+      "reuse_mode": "official public RSS",
+      "reuse_note": "Federal Reserve monetary-policy press releases and brief summaries from the Board's official RSS service.",
+      "terms_url": "https://www.federalreserve.gov/feeds/feeds.htm"
+    },
+    {
+      "id": "ecb-press",
+      "name": "European Central Bank · Press",
+      "feed_url": "https://www.ecb.europa.eu/rss/press.html",
+      "homepage": "https://www.ecb.europa.eu/press/html/index.en.html",
+      "scope": "Euro-area monetary policy and central-bank communication",
+      "categories": [
+        "economy"
+      ],
+      "reuse_mode": "official public RSS",
+      "reuse_note": "ECB press releases, speeches, interviews and press-conference material from the ECB's official RSS service.",
+      "terms_url": "https://www.ecb.europa.eu/home/html/rss.en.html"
+    },
+    {
+      "id": "ecb-statpress",
+      "name": "European Central Bank · Statistical releases",
+      "feed_url": "https://www.ecb.europa.eu/rss/statpress.html",
+      "homepage": "https://www.ecb.europa.eu/press/stats/html/index.en.html",
+      "scope": "Euro-area statistical releases",
+      "categories": [
+        "economy"
+      ],
+      "reuse_mode": "official public RSS",
+      "reuse_note": "ECB statistical press-release updates from the ECB's official RSS service.",
+      "terms_url": "https://www.ecb.europa.eu/home/html/rss.en.html"
+    },
+    {
+      "id": "eurostat-updates",
+      "name": "Eurostat · Statistics updates",
+      "feed_url": "https://ec.europa.eu/eurostat/api/dissemination/catalogue/rss/en/statistics-update.rss",
+      "homepage": "https://ec.europa.eu/eurostat/",
+      "scope": "EU statistical data updates",
+      "categories": [
+        "economy"
+      ],
+      "reuse_mode": "official public RSS",
+      "reuse_note": "Eurostat catalogue updates generated automatically when statistical data products change.",
+      "terms_url": "https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-detailed-guidelines/catalogue-api/rss"
+    }
+  ],
+  "external_comparison_tools": [
+    {
+      "id": "ground-news",
+      "name": "Ground News",
+      "url": "https://ground.news/",
+      "role": "External coverage-comparison destination",
+      "integration": "link-only",
+      "note": "No public Current World feed integration is declared; do not scrape subscriber/custom-feed features."
+    }
+  ]
 }
