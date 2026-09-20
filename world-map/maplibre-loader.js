@@ -7,6 +7,8 @@
 
 import * as runtime from './vendor/maplibre-gl.mjs?v=6.9.0';
 
+const motionClass = 'potato-atlas-map-moving';
+
 const LOCAL_BOOT_STYLE = {
   version: 8,
   sources: {},
@@ -46,6 +48,19 @@ class AtlasMap extends runtime.Map {
     this.__potatoAtlasFirstLoadComplete = false;
     this.__potatoAtlasDeferredRaster = deferredRaster;
     this.__potatoAtlasBasemapAttached = false;
+
+    // Camera motion is a high-frequency rendering phase. Publish one shared
+    // document-level state so decorative UI can suspend expensive blur,
+    // shadows and transitions until the map settles again.
+    super.on('movestart', () => {
+      document.documentElement.classList.add(motionClass);
+    });
+    super.on('moveend', () => {
+      document.documentElement.classList.remove(motionClass);
+    });
+    super.on('remove', () => {
+      document.documentElement.classList.remove(motionClass);
+    });
 
     super.once('load', () => {
       this.__potatoAtlasFirstLoadComplete = true;
