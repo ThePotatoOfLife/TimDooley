@@ -179,6 +179,13 @@
 **Guard:** subdivision validation enforces 83 unique `RU-*` features, exact federal-subject type counts, the six-feature exclusion set, source scope, source SHA, no imported population/political fields, byte budget and generic loader compatibility.  
 **Rule retained:** base geography represents the ordinary administrative partition; disputed territory and dated control belong to independent epistemically typed overlays.
 
+### WM-032 · Country-card Regions doorway can load invisible subdivisions — P1
+**Status:** fixed / governed on branch `world-map-region-doorway-focus-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** the country card retained and refreshed a subdivision partition but did not hand camera intent to the subdivision owner. From world/macro zoom, a user could click “regions” and see no obvious change because the partition remained below its shared render/interact threshold.  
+**Resolution:** the subdivision runtime now owns `focusPartition()`, derives canonical descriptor bounds, unwraps antimeridian-crossing extents, computes the MapLibre camera from those bounds, floors the destination at the shared subdivision render threshold, and executes through the reduced-motion-aware Motion owner. The country card calls this after acquiring its partition lease.  
+**Guard:** a behavioral regression covers Russia’s 19°E→170°W descriptor, proves unwrapping to 190°E, and requires a visible-scale floor; UI-shell validation requires the country-card handoff marker.  
+**Rule retained:** feature entry points may request focus, but camera semantics and subdivision scale thresholds stay with shared owners.
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
