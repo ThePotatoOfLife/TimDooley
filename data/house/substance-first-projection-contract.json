@@ -1,0 +1,574 @@
+{
+  "id": "substance-first-projection-contract",
+  "title": "Substance-First Public Projection Contract",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "status": "binding presentation/materialization contract",
+  "purpose": "Make reader-facing substance the first-class public experience while preserving quiet, typed, machine-readable bonds to canonical owners, Rooms, provenance and evidence boundaries underneath the prose.",
+  "paradox_resolution": {
+    "frontend_priority": "A public reader page must first be worth reading on its own. Authored explanation, examples, dates, mechanisms, cases, numbers, quotations, disputes and consequences outrank navigation scaffolding and generic projection copy.",
+    "backend_authority": "Durable definitions, evidence, provenance, typed relations and revision state remain owned by canonical backend records. The public page is a living projection, not a competing source of truth.",
+    "invisible_bonds": "Public prose may be quietly bound to backend owners through build-injected machine-readable bindings. These bonds support traceability, discovery and review without forcing visible cards, filenames or schema language into the reading flow.",
+    "non_constraint": "Bindings do not generate, order, shorten or rewrite authored prose. Validators check that bindings resolve and that enriched sections still exist; they do not enforce paragraph templates, card counts, exact word counts or a single visual form.",
+    "bidirectional_revision": "Backend changes may flag a bound public section for editorial review, but must not overwrite it automatically. Frontend questions or contradictions may expose missing backend ownership; the repair is to strengthen the durable owner and then revise prose deliberately.",
+    "materialization_rule": "A backend object is not fully public-materialized merely because a route exists. Its public projection must expose enough concrete substance that a reader can learn something without opening repository governance or raw JSON."
+  },
+  "principles": [
+    "Spend the archive on the page instead of merely pointing at it.",
+    "Substance before scaffolding; scaffolding should disappear when the prose is read aloud.",
+    "Use links as optional doors inside meaningful sentences, not as substitutes for explanation.",
+    "Prefer named objects, dates, mechanisms, texts, measurements, cases, conflicts, evidence classes and consequences over generic category prose.",
+    "Let one frontend paragraph bind to several backend owners when the synthesis genuinely crosses Rooms.",
+    "Never make one backend schema dictate the rhetorical shape of every public page.",
+    "Preserve disagreement and uncertainty in bindings rather than smoothing them out in the frontend.",
+    "A visible page may synthesize; canonical owners remain responsible for source truth and revision history."
+  ],
+  "binding_model": {
+    "deployment_surface": "The build injects a non-visible application/json block into registered public pages.",
+    "html_marker": "data-house-substance-bindings",
+    "page_attribute": "data-substance-policy=\"substance-first\"",
+    "binding_fields": [
+      "page",
+      "rooms",
+      "anchors",
+      "owner_paths",
+      "relation_types",
+      "evidence_classes",
+      "review_triggers"
+    ],
+    "review_triggers": [
+      "canonical owner changes materially",
+      "evidence class changes",
+      "a bound claim is corrected or withdrawn",
+      "a public section disappears",
+      "a new contradiction changes the synthesis"
+    ]
+  },
+  "pages": [
+    {
+      "page": "index.html",
+      "route": "/",
+      "rooms": [
+        "potatoverse-canon",
+        "archive-sources",
+        "research-lab"
+      ],
+      "anchors": [
+        {
+          "section_id": null,
+          "owner_paths": [
+            "data/house/project-synthesis.json",
+            "data/house/public-surfaces.json",
+            "data/house/reader-richness-audit.json"
+          ],
+          "relation_types": [
+            "public-doorway",
+            "project-synthesis",
+            "reader-projection"
+          ],
+          "evidence_classes": [
+            "project-governance"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "house/index.html",
+      "route": "/house/",
+      "rooms": [
+        "potatoverse-canon",
+        "archive-sources",
+        "research-lab"
+      ],
+      "anchors": [
+        {
+          "section_id": null,
+          "owner_paths": [
+            "data/house/topology.json",
+            "data/house/room-dossiers.json",
+            "data/house/operator-ownership-registry.json"
+          ],
+          "relation_types": [
+            "house-topology",
+            "room-ownership",
+            "operator-routing"
+          ],
+          "evidence_classes": [
+            "project-governance"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "tim-dooley/index.html",
+      "route": "/tim-dooley/",
+      "rooms": [
+        "potatoverse-canon",
+        "time-history",
+        "archive-sources"
+      ],
+      "anchors": [
+        {
+          "section_id": "substance-dossier",
+          "owner_paths": [
+            "docs/TIM-DOOLEY-CANON.md",
+            "knowledge/reader/tim-dooley-dossier.json",
+            "knowledge/timeline/developmental-genealogy.json"
+          ],
+          "relation_types": [
+            "portrait-synthesis",
+            "developmental-genealogy",
+            "claim-context"
+          ],
+          "evidence_classes": [
+            "project-canon",
+            "public-record",
+            "interpretation"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "tim-dooley/100000-hours/index.html",
+      "route": "/tim-dooley/100000-hours/",
+      "rooms": [
+        "time-history",
+        "archive-sources",
+        "culture-information"
+      ],
+      "anchors": [
+        {
+          "section_id": "hour-ledger",
+          "owner_paths": [
+            "knowledge/timeline/livestream-duration-and-100000-hour-threshold.json",
+            "knowledge/timeline/100000-hour-counting-models.json",
+            "data/100000-hour-story-anchors.json"
+          ],
+          "relation_types": [
+            "duration-model",
+            "public-witness",
+            "story-anchor"
+          ],
+          "evidence_classes": [
+            "project-reconstruction",
+            "public-record",
+            "measurement"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "religion/index.html",
+      "route": "/religion/",
+      "rooms": [
+        "traditions-texts",
+        "potatoverse-canon",
+        "archive-sources"
+      ],
+      "anchors": [
+        {
+          "section_id": "textual-spine",
+          "owner_paths": [
+            "data/potatoism-religion.json",
+            "knowledge/theology/father-son-door-reciprocity.json",
+            "docs/DOOR-RELIGIOUS-COMPARISON-MATRIX.md"
+          ],
+          "relation_types": [
+            "textual-comparison",
+            "theology",
+            "boundary"
+          ],
+          "evidence_classes": [
+            "tradition-source",
+            "project-canon",
+            "comparison"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "rooms/index.html",
+      "route": "/rooms/",
+      "rooms": [
+        "potatoverse-canon",
+        "archive-sources",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models",
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "works",
+        "research-lab"
+      ],
+      "anchors": [
+        {
+          "section_id": "room-holdings-ledger",
+          "owner_paths": [
+            "data/house/room-dossiers.json",
+            "data/house/holdings.json",
+            "data/house/room-interiors.json"
+          ],
+          "relation_types": [
+            "room-population",
+            "ownership",
+            "public-orientation"
+          ],
+          "evidence_classes": [
+            "project-governance"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "potato-of-life/index.html",
+      "route": "/potato-of-life/",
+      "rooms": [
+        "potatoverse-canon",
+        "science-formal-models",
+        "life-body"
+      ],
+      "anchors": [
+        {
+          "section_id": "literal-potato-substance",
+          "owner_paths": [
+            "knowledge/science/potato-biology-ecology-development-canon.json",
+            "knowledge/biology/potato-organism-cycle-atlas.json",
+            "data/potatoism-canonical-corpus.json"
+          ],
+          "relation_types": [
+            "literal-organism",
+            "symbolic-bridge",
+            "canon"
+          ],
+          "evidence_classes": [
+            "established-biology",
+            "project-canon",
+            "interpretation"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "below/index.html",
+      "route": "/below/",
+      "rooms": [
+        "culture-information",
+        "archive-sources",
+        "research-lab"
+      ],
+      "anchors": [
+        {
+          "section_id": "below-substance-ledger",
+          "owner_paths": [
+            "knowledge/core/below-intelligence-shadow-observatory.json",
+            "knowledge/world/farm-sektur-attention-extraction-ecology.json",
+            "knowledge/research/digital-underground-network-audit-2026-09.json"
+          ],
+          "relation_types": [
+            "investigative-process",
+            "attention-ecology",
+            "evidence-status"
+          ],
+          "evidence_classes": [
+            "project-model",
+            "external-research",
+            "case-research"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "science/index.html",
+      "route": "/science/",
+      "rooms": [
+        "science-formal-models",
+        "archive-sources",
+        "research-lab"
+      ],
+      "anchors": [
+        {
+          "section_id": "substance-casebook",
+          "owner_paths": [
+            "knowledge/science/equation-ledger.json",
+            "knowledge/science/science-model-registry.json",
+            "knowledge/science/merkaba-counterrotation-oscillator-model.json"
+          ],
+          "relation_types": [
+            "model",
+            "equation-lineage",
+            "falsifier"
+          ],
+          "evidence_classes": [
+            "established-science",
+            "formal-analogy",
+            "project-model",
+            "speculation"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "tim-dooley/public-witness/index.html",
+      "route": "/tim-dooley/public-witness/",
+      "rooms": [
+        "archive-sources",
+        "time-history",
+        "culture-information"
+      ],
+      "anchors": [
+        {
+          "section_id": "witness-ledger",
+          "owner_paths": [
+            "knowledge/timeline/livestream-duration-and-100000-hour-threshold.json",
+            "data/tim-dooley-public-theology-timeline-2025-2026.json",
+            "knowledge/indexes/tim-statement-corpus-index.json"
+          ],
+          "relation_types": [
+            "attestation",
+            "duration",
+            "statement-history"
+          ],
+          "evidence_classes": [
+            "public-record",
+            "project-reconstruction"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "tim-dooley/ontology/index.html",
+      "route": "/tim-dooley/ontology/",
+      "rooms": [
+        "potatoverse-canon",
+        "time-history",
+        "archive-sources"
+      ],
+      "anchors": [
+        {
+          "section_id": "ontology-genealogy",
+          "owner_paths": [
+            "knowledge/core/tim-identity-ontology.json",
+            "knowledge/timeline/developmental-genealogy.json",
+            "knowledge/theology/divine-identity-answer-spine.json"
+          ],
+          "relation_types": [
+            "identity-resolution",
+            "development",
+            "entity-typing"
+          ],
+          "evidence_classes": [
+            "project-canon",
+            "biographical-record",
+            "administrative-boundary"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "works/index.html",
+      "route": "/works/",
+      "rooms": [
+        "works",
+        "culture-information",
+        "archive-sources"
+      ],
+      "anchors": [
+        {
+          "section_id": "actual-works",
+          "owner_paths": [
+            "knowledge/culture/creative-systems-archive.json",
+            "data/house/works-fruit-wave-001.json",
+            "manifest.json"
+          ],
+          "relation_types": [
+            "creative-work",
+            "simulation",
+            "fruit"
+          ],
+          "evidence_classes": [
+            "creative-artifact",
+            "project-record"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "context/culture/index.html",
+      "route": "/context/culture/",
+      "rooms": [
+        "culture-information",
+        "world-systems",
+        "archive-sources"
+      ],
+      "anchors": [
+        {
+          "section_id": "culture-mechanics-ledger",
+          "owner_paths": [
+            "knowledge/world/farm-sektur-attention-extraction-ecology.json",
+            "knowledge/world/culture-sektur-platform-media-political-ecology.json",
+            "knowledge/world/internet-subculture-farm-moloch-precedence-map.json"
+          ],
+          "relation_types": [
+            "formation",
+            "attention",
+            "migration",
+            "archive-persistence"
+          ],
+          "evidence_classes": [
+            "cultural-analysis",
+            "external-research",
+            "project-model"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "world/index.html",
+      "route": "/world/",
+      "rooms": [
+        "world-systems",
+        "archive-sources",
+        "research-lab"
+      ],
+      "anchors": [
+        {
+          "section_id": "world-substance-ledger",
+          "owner_paths": [
+            "data/world-map-spatialization-registry.json",
+            "data/house/entity-dossiers-wave-001.json",
+            "data/house/project-synthesis.json"
+          ],
+          "relation_types": [
+            "geography",
+            "infrastructure",
+            "ownership",
+            "capability"
+          ],
+          "evidence_classes": [
+            "external-fact",
+            "project-model",
+            "programme-design"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "philosophy/index.html",
+      "route": "/philosophy/",
+      "rooms": [
+        "potatoverse-canon",
+        "works",
+        "research-lab"
+      ],
+      "anchors": [
+        {
+          "section_id": "philosophy-substance-ledger",
+          "owner_paths": [
+            "knowledge/philosophy/potato-philosophy.json",
+            "knowledge/philosophy/tim-dooley-potatoism-sourcebook.md",
+            "knowledge/philosophy/timic-dynamics.json"
+          ],
+          "relation_types": [
+            "principle",
+            "application",
+            "consequence-test"
+          ],
+          "evidence_classes": [
+            "project-philosophy",
+            "interpretation"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "axis/index.html",
+      "route": "/axis/",
+      "rooms": [
+        "potatoverse-canon",
+        "science-formal-models",
+        "research-lab"
+      ],
+      "anchors": [
+        {
+          "section_id": "axis-substance-ledger",
+          "owner_paths": [
+            "data/axis-flow-contract.json",
+            "knowledge/core/deep-element-definition-atlas.json",
+            "knowledge/science/tree-branching-provenance-growth-model.json"
+          ],
+          "relation_types": [
+            "transition",
+            "orientation",
+            "repair",
+            "route-test"
+          ],
+          "evidence_classes": [
+            "project-canon",
+            "formal-model",
+            "interpretation"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "tim-dooley/how-much-is-tim-god/index.html",
+      "route": "/tim-dooley/how-much-is-tim-god/",
+      "rooms": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "archive-sources"
+      ],
+      "anchors": [
+        {
+          "section_id": "godhood-development-ledger",
+          "owner_paths": [
+            "knowledge/theology/tim-god-question.json",
+            "knowledge/theology/tim-godhood-modalities.json",
+            "data/tim-dooley-public-theology-timeline-2025-2026.json"
+          ],
+          "relation_types": [
+            "theology",
+            "development",
+            "modality"
+          ],
+          "evidence_classes": [
+            "public-record",
+            "project-canon",
+            "theology"
+          ]
+        }
+      ]
+    },
+    {
+      "page": "tim-dooley/god-in-real-life/index.html",
+      "route": "/tim-dooley/god-in-real-life/",
+      "rooms": [
+        "potatoverse-canon",
+        "archive-sources",
+        "research-lab"
+      ],
+      "anchors": [
+        {
+          "section_id": "real-life-evidence-ledger",
+          "owner_paths": [
+            "knowledge/theology/tim-godhood-real-world-case.json",
+            "data/tim-dooley-public-theology-timeline-2025-2026.json",
+            "knowledge/reader/tim-godhood-criticism-response-index.json"
+          ],
+          "relation_types": [
+            "evidence-typing",
+            "criticism",
+            "real-world-function"
+          ],
+          "evidence_classes": [
+            "public-record",
+            "theology",
+            "interpretation",
+            "external-evidence"
+          ]
+        }
+      ]
+    }
+  ]
+}
