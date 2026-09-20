@@ -1,7 +1,7 @@
 (()=>{'use strict';
 const BASE='/TimDooley/';
 const esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
-let manifest,activity,currentDesk,contract,accounts=[],scope='all';const selected=new URLSearchParams(location.search).get('character')||'';
+let manifest,activity,currentDesk,contract,postureIndex,systemLedger,accounts=[],scope='all';const selected=new URLSearchParams(location.search).get('character')||'';
 async function get(path){const r=await fetch(BASE+path);if(!r.ok)throw new Error(path);return r.json()}
 function exactDate(s){return /^\d{4}-\d{2}-\d{2}$/.test(String(s||''))?new Date(String(s)+'T00:00:00Z'):null}
 function money(n){return '$'+Number(n||0).toLocaleString(undefined,{minimumFractionDigits:4,maximumFractionDigits:4})}
@@ -22,7 +22,12 @@ function bandFor(id){return (activity?.records||[]).find(x=>x.id===id)?.band||'h
 function currentIds(){return new Set((currentDesk?.items||[]).map(x=>x.id))}
 function buildAccount(meta,d){
  const start=d.symbolic_account?.welfare_start_override||d.cia_record?.presence?.first_recorded||'',w=welfare(start),adj=eventAdjustment(d.symbolic_account?.entries||[]);
- return{id:meta.id,name:meta.name||d.display_name||meta.id,start,band:bandFor(meta.id),welfare:w.value,exact:w.exact,adjustment:adj.total,balance:w.value+adj.total,events:(d.symbolic_account?.entries||[]),status:d.symbolic_account?.status||'unassessed'};
+ const posture=(postureIndex?.accounts||[]).find(x=>x.id===meta.id)||{};
+ return{id:meta.id,name:meta.name||d.display_name||meta.id,start,band:bandFor(meta.id),welfare:w.value,exact:w.exact,adjustment:adj.total,balance:w.value+adj.total,events:(d.symbolic_account?.entries||[]),status:d.symbolic_account?.status||'unassessed',posture:posture.posture||'unassessed',gross_credit_susd:Number(posture.gross_credit_susd||0),gross_debit_susd:Number(posture.gross_debit_susd||0),unpriced_negative_candidates:Number(posture.unpriced_negative_candidates||0)};
+}
+function renderSystemDomains(){
+ const box=document.getElementById('systemDomains');if(!box)return;
+ box.innerHTML=(systemLedger?.domains||[]).map(x=>'<article class="system-domain"><span>'+esc(x.status||'symbolic-domain')+'</span><h3>'+esc(x.label||x.id)+'</h3><p>'+esc(x.scope||'')+'</p><small>'+esc(x.priced?'priced':'unpriced')+' · '+esc((x.repair_questions||[]).slice(0,2).join(' · '))+'</small></article>').join('')||'<p>No system liability domains loaded.</p>';
 }
 function render(){
  const q=document.getElementById('bankSearch').value.trim().toLowerCase(),cur=currentIds();
@@ -30,7 +35,8 @@ function render(){
  const box=document.getElementById('accounts');
  box.innerHTML=filtered.map(a=>{
   const eventNote=a.events.length?a.events.length+' explicit ledger event'+(a.events.length===1?'':'s'):'no explicit event adjustments';
-  return '<article class="account" data-band="'+esc(a.band)+'"><div class="account-name"><span>'+esc(a.band)+' account</span><a href="../file/?character='+encodeURIComponent(a.id)+'">'+esc(a.name)+'</a><small>Story entry: '+esc(a.start||'unresolved')+' · '+eventNote+'</small></div>'+
+  const postureNote='posture: '+a.posture+' · credit '+money(a.gross_credit_susd)+' · debit '+money(a.gross_debit_susd)+(a.unpriced_negative_candidates?' · '+a.unpriced_negative_candidates+' unpriced negative candidate'+(a.unpriced_negative_candidates===1?'':'s'):'');
+  return '<article class="account" data-band="'+esc(a.band)+'"><div class="account-name"><span>'+esc(a.band)+' account</span><a href="../file/?character='+encodeURIComponent(a.id)+'">'+esc(a.name)+'</a><small>Story entry: '+esc(a.start||'unresolved')+' · '+eventNote+'</small><small class="posture-note">'+esc(postureNote)+'</small></div>'+
    '<div class="metric '+(a.exact?'positive':'provisional')+'"><b>Dooley Welfare</b><strong data-live-welfare="'+esc(a.id)+'">'+(a.exact?money(a.welfare):'provisional')+'</strong><small>'+(a.exact?'still accruing':'exact start date needed')+'</small></div>'+
    '<div class="metric '+(a.adjustment>0?'positive':a.adjustment<0?'negative':'')+'"><b>Event adjustment</b><strong>'+money(a.adjustment)+'</strong><small>event-weighted, not moral score</small></div>'+
    '<div class="metric '+(a.balance>=0?'positive':'negative')+'"><b>Approx balance</b><strong data-live-balance="'+esc(a.id)+'">'+(a.exact?money(a.balance):money(a.adjustment)+' + welfare')+'</strong><small>fictional sUSD-equivalent</small></div>'+
@@ -52,9 +58,9 @@ function tick(){
 }
 function setScope(x){scope=x;document.getElementById('bankAll').classList.toggle('active',x==='all');document.getElementById('bankCurrent').classList.toggle('active',x==='current');render()}
 (async()=>{
- [manifest,activity,currentDesk,contract]=await Promise.all([get('knowledge/cia/manifest.json'),get('knowledge/cia/activity-index.json'),get('knowledge/cia/current-desk.json'),get('knowledge/cia/mud-bank-contract.json')]);
+ [manifest,activity,currentDesk,contract,postureIndex,systemLedger]=await Promise.all([get('knowledge/cia/manifest.json'),get('knowledge/cia/activity-index.json'),get('knowledge/cia/current-desk.json'),get('knowledge/cia/mud-bank-contract.json'),get('knowledge/cia/account-posture-index.json'),get('knowledge/cia/system-liability-ledger.json')]);
  const ds=await Promise.all((manifest.characters||[]).map(async m=>[m,await get(m.path)]));
  accounts=ds.map(([m,d])=>buildAccount(m,d)).sort((a,b)=>{const ca=currentIds(),ac=ca.has(a.id)?0:1,bc=ca.has(b.id)?0:1;return ac-bc||b.balance-a.balance||a.name.localeCompare(b.name)});
- if(selected){document.getElementById('bankSearch').value=selected;}render();document.getElementById('bankSearch').addEventListener('input',render);document.getElementById('bankAll').onclick=()=>setScope('all');document.getElementById('bankCurrent').onclick=()=>setScope('current');setInterval(tick,1000);
+ renderSystemDomains();if(selected){document.getElementById('bankSearch').value=selected;}render();document.getElementById('bankSearch').addEventListener('input',render);document.getElementById('bankAll').onclick=()=>setScope('all');document.getElementById('bankCurrent').onclick=()=>setScope('current');setInterval(tick,1000);
 })().catch(e=>{document.getElementById('accounts').innerHTML='<p>The symbolic bank could not open all ledgers. CIA dossiers remain available individually.</p>';});
 })();
