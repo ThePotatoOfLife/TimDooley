@@ -82,24 +82,24 @@
     "required_derivation":"Specify the kinetic operator/geometry, compute or simulate the heat kernel, and derive P(sigma). Do not prescribe D_s->5 by hand and then call it evidence.",
     "status":"archive/conversation hypothesis, not an observed result"
   },
-  "matter_light_coupling":[
-    "L_QED,int=-e psi_bar gamma^mu A_mu psi",
-    "L_new=g_phi phi F_mu_nu F^mu_nu [effective scalar-photon operator]",
+  "matter_light_coupling":{
+    "qed_interaction":"L_QED,int=-e psi_bar gamma^mu A_mu psi",
+    "candidate_new_operator":"L_new=g_phi phi F_mu_nu F^mu_nu [effective scalar-photon operator]",
     "research_question":"Would a completed transition model alter electromagnetic propagation/emission in a manner not already excluded or degenerate with plasma/accretion/environmental effects?",
     "constraint_rule":"Gauge invariance, operator dimension and observational limits must be checked before using the coupling as a prediction."
-  ],
-  "five_dimensional_gravity":[
-    "S_5=(1/(2 kappa_5)) integral d^5x sqrt(-G)(R_5-2 Lambda_5)+S_matter",
-    "S_eff=integral d^4x sqrt(-g)[R_4/(2 kappa_4)+L_phi+L_KK+L_matter]",
+  },
+  "five_dimensional_gravity":{
+    "five_d_action":"S_5=(1/(2 kappa_5)) integral d^5x sqrt(-G)(R_5-2 Lambda_5)+S_matter",
+    "effective_four_d_action":"S_eff=integral d^4x sqrt(-g)[R_4/(2 kappa_4)+L_phi+L_KK+L_matter]",
     "completion_requirements":["topology/size of the fifth dimension","boundary or compactification conditions","relation between kappa_5 and effective 4D Newton constant","field content in 5D","dimensional reduction procedure","stability of the compactification"]
   },
-  "kaluza_klein_branch":[
-    "p_5=n hbar/R",
-    "m_n^2=m_0^2+n^2 hbar^2/(R^2 c^2)",
-    "E_KK,1=hbar c/R for the first massless-base excitation scale",
+  "kaluza_klein_branch":{
+    "momentum_quantization":"p_5=n hbar/R",
+    "mass_tower":"m_n^2=m_0^2+n^2 hbar^2/(R^2 c^2)",
+    "first_excitation_scale":"E_KK,1=hbar c/R for the first massless-base excitation scale",
     "interpretive_lesson":"Hidden-dimensional momentum can appear to a 4D observer as a mass tower rather than literal visible disappearance.",
     "falsifiability":"Any claimed compactification radius maps to an excitation scale and therefore to experimental/astrophysical constraints; R cannot remain a purely symbolic parameter in a physical model."
-  ],
+  },
   "strong_gravity_observables":{
     "metric":"g_mu_nu = g_mu_nu^GR + delta g_mu_nu(phi)",
     "ringdown":["f_QNM=f_GR+Delta f","tau_QNM=tau_GR+Delta tau"],
@@ -114,20 +114,15 @@
     "2026_reference":"https://link.springer.com/article/10.1140/epjc/s10052-025-15272-w",
     "review_reference":"https://link.springer.com/article/10.1007/s10714-024-03278-w"
   },
-  "cosmology_recycling_branch":[
-    "higher-dimensional state -> 4D expanding phase [speculative project branch]",
-    "derive observed a(t) from higher-dimensional boundary conditions as a serious target",
-    "nabla_mu T_4^(mu nu)=-Q^nu",
-    "nabla_A T_5^(AB)=+Q^B",
-    "nabla_A T_total^(AB)=0",
+  "cosmology_recycling_branch":{
+    "programme":["higher-dimensional state -> 4D expanding phase [speculative project branch]","derive observed a(t) from higher-dimensional boundary conditions as a serious target"],
+    "conservation_equations":["nabla_mu T_4^(mu nu)=-Q^nu","nabla_A T_5^(AB)=+Q^B","nabla_A T_total^(AB)=0"],
     "interpretive_rule":"If energy-momentum is exchanged between sectors, the combined theory needs a covariantly consistent conservation law; symbolic reservoir language is not enough."
-  ],
-  "duality_branch":[
-    "T : D_low <-> D_high",
-    "T^2=1 [candidate involution]",
-    "collapse <-> emergence under T",
+  },
+  "duality_branch":{
+    "candidate_relations":["T : D_low <-> D_high","T^2=1 [candidate involution]","collapse <-> emergence under T"],
     "rigor_requirement":"Specify what mathematical objects T acts on and show that the action/equations or observables have the claimed symmetry. Otherwise it is a narrative duality, not a physical one."
-  ],
+  },
   "minimal_falsifiable_submodel":{
     "goal":"Produce one calculable strong-gravity threshold before pursuing full 5D cosmology.",
     "steps":[
