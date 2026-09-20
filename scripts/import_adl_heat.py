@@ -184,22 +184,24 @@ def main() -> int:
                     summary["by_year_type_token"][str(year)][token] += 1
             summary["by_ideology"][ideology] += 1
 
-        lat_raw = row_value(row, columns, "latitude")
-        lon_raw = row_value(row, columns, "longitude")
-        lat = float_or_none(lat_raw)
-        lon = float_or_none(lon_raw)
-        if (lat is not None and not -90 <= lat <= 90) or (lon is not None and not -180 <= lon <= 180):
-            invalid_coordinates.append((ordinal, lat_raw, lon_raw))
-            continue
-        if lat is None or lon is None or not state:
-            missing_geometry += 1
-            continue
-
         source_id = row_value(row, columns, "id") or str(ordinal)
         if source_id in seen_source_ids:
             duplicate_source_ids.append(source_id)
             continue
         seen_source_ids.add(source_id)
+
+        lat_raw = row_value(row, columns, "latitude")
+        lon_raw = row_value(row, columns, "longitude")
+        lat = float_or_none(lat_raw)
+        lon = float_or_none(lon_raw)
+        malformed_coordinate = (bool(lat_raw) and lat is None) or (bool(lon_raw) and lon is None)
+        out_of_range = (lat is not None and not -90 <= lat <= 90) or (lon is not None and not -180 <= lon <= 180)
+        if malformed_coordinate or out_of_range:
+            invalid_coordinates.append((ordinal, lat_raw, lon_raw))
+            continue
+        if lat is None or lon is None or not state:
+            missing_geometry += 1
+            continue
         features.append({
             "type": "Feature",
             "id": f"adl-{source_id}",
