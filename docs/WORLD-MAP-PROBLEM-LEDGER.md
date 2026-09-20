@@ -49,10 +49,9 @@
 **Next:** migrate or retire the dormant legacy Lens repaint path, then audit remaining variable/dynamic paint writers.
 
 ### WM-007 · Duplicate style/lifecycle writers remain — P2
-**Status:** open.  
-**Risk:** style reloads can recreate layers in conflicting order.  
-**Owner:** Style Lifecycle.  
-**Next:** drain auditor findings and forbid new global style writers outside approved owners.
+**Status:** fixed for direct Style Lifecycle ownership on main (2026-09-20).  
+**Evidence:** only `3d-style-lifecycle.js` owns the MapLibre `styledata` listener; Render Stack and physical restorers register as participants.  
+**Remaining visual-channel conflicts:** tracked separately under WM-006/WM-008 rather than reopening style lifecycle ownership.
 
 ### WM-008 · Legacy UI ownership remains split — P2
 **Status:** open.  
@@ -71,9 +70,10 @@
 **Next:** add keyboard navigation, focus return, small-viewport occlusion and modal/menu regressions.
 
 ### WM-011 · Reduced-motion behavior incomplete — P2
-**Status:** open.  
-**Risk:** camera `easeTo` / animated transitions ignore user motion preferences.  
-**Next:** central motion policy used by fit/focus/navigation helpers.
+**Status:** partially fixed (2026-09-20).  
+**Completed:** shared Motion policy exists and major country/place/subdivision/ADL/Axis consumers use it; reduced-motion CSS and regression coverage exist.  
+**Remaining defect:** capital focus in Hover and Spatial Overlay fit still call raw MapLibre camera methods and therefore bypass the policy.  
+**Next:** migrate those residual camera consumers and make raw user-visible camera calls validator failures outside the Motion owner.
 
 ### WM-012 · Color-only semantics remain possible — P2
 **Status:** open.  
@@ -81,8 +81,9 @@
 **Next:** add textual/shape/pattern redundancy and accessibility checks.
 
 ### WM-013 · Active-view accessibility summary incomplete — P2
-**Status:** open.  
-**Next:** concise live region describing active analytical/physical/evidence/geography layers, selection, scale and time.
+**Status:** partially fixed.  
+**Completed:** Context Status is a polite live region and reports selected/preview country, population, active analytical answer, investigation mode, scale band, pins and time.  
+**Remaining:** explicitly summarize active Physical / Geography / Evidence layer identities and verify announcement noise/ordering.
 
 ### WM-014 · Route-geometry behavioral coverage incomplete — P2
 **Status:** open.  
@@ -115,14 +116,49 @@
 **Status:** open.  
 **Next:** map recurring audit findings to this ledger and include remediation owner + severity.
 
+
+### WM-021 · URL state ownership is fragmented — P1
+**Status:** open.  
+**Evidence:** more than twenty World Map runtime modules directly call `history.replaceState`.  
+**Risk:** unrelated modules can preserve/delete each other's parameters; reset/hydration compatibility rules are distributed; URL races become load-order dependent.  
+**Owner target:** one URL State service / transaction owner.  
+**Solution:** namespaced parameter ownership, atomic patch API, hydration registration, diagnostics, and a validator forbidding direct URL mutation outside the owner plus explicitly bounded compatibility bridges.
+
+### WM-022 · Specialist inspectors bypass typed Inspector Router — P1
+**Status:** open.  
+**Evidence:** ADL, Axis, Axis Depth, Mud/Below and Spatial Overlay UI write `panel.innerHTML` directly; Places and Subdivisions already use typed Inspector nodes.  
+**Risk:** visible panel, `inspect=` URL path, parent/back history and focus semantics can disagree.  
+**Owner target:** Inspector Router.  
+**Solution:** migrate each specialist surface to typed inspector nodes; raw panel writes occur only inside the active node's render callback.
+
+### WM-023 · Degraded interaction fallback can become permanent by boot order — P1
+**Status:** open.  
+**Evidence:** Spatial Overlays and Country Selection capture `window.__potatoAtlasInteraction` once at module initialization; if unavailable, direct MapLibre listeners are installed and never promoted later.  
+**Risk:** normal app behavior becomes load-order dependent; direct listeners can coexist with Router ownership.  
+**Owner target:** Interaction Router + module loader.  
+**Solution:** await/resolve Router for normal application boot, or register removable degraded listeners that are explicitly torn down when Router readiness is announced; add delayed-Router regression.
+
+### WM-024 · Canonical subdivision evidence integration lacks generic search/badge projection — P2
+**Status:** open.  
+**Completed:** subdivisions now expose generic evidence-provider and source-refresh observer contracts; ADL is the first provider.  
+**Gap:** search/results and subdivision lists do not expose provider availability/count context, so evidence is discoverable mainly after selection.  
+**Solution:** generic provider badges/summaries in subdivision search/inspector surfaces without hard-coding ADL.
+
+### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
+**Status:** open data-quality task.  
+**Current:** 335-record historical `Extremist murders` seed, 2005–2023; source/methodology boundary is explicit and official CSV importer exists.  
+**Risk:** polished interaction can be mistaken for current monthly ADL coverage.  
+**Solution:** persistent stale/snapshot-age indicator, reviewed official CSV replacement when available, and keep ADL/FBI methodologies separate.
+
 ## Work order
 
-1. **Scale ownership wave** — WM-003/004/005.
-2. **Render ownership wave** — WM-006/007/017.
-3. **Interaction/degraded runtime wave** — WM-009/014/015.
+1. **State/control ownership wave** — WM-021/022/023.
+2. **Scale ownership wave** — WM-003/004/005.
+3. **Render/visual ownership wave** — WM-006/008/014.
 4. **Accessibility/mobile/motion wave** — WM-010/011/012/013/016.
 5. **Physical provider reliability wave** — WM-018/019.
-6. **Compatibility retirement** — WM-008/020 and remaining legacy surfaces.
+6. **Evidence/subdivision projection wave** — WM-024/025.
+7. **Compatibility + audit retirement** — WM-009/015/020 and remaining legacy surfaces.
 
 ## Completion rule
 
