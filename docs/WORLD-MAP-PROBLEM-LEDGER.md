@@ -142,10 +142,10 @@
 **Guard:** `validate_world_map_subdivision_evidence_projection.py` requires the generic provider/search bridge and explicitly rejects ADL hard-coding in unified search.
 
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
-**Status:** open data-quality task.  
-**Current:** 335-record historical `Extremist murders` seed, 2005–2023; source/methodology boundary is explicit and official CSV importer exists.  
-**Risk:** polished interaction can be mistaken for current monthly ADL coverage.  
-**Solution:** persistent stale/snapshot-age indicator, reviewed official CSV replacement when available, and keep ADL/FBI methodologies separate.
+**Status:** UI/currentness boundary fixed; external data refresh remains open.  
+**Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence menu declares `historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary.  
+**Guard:** ADL validation requires `snapshotFreshness()`, a persistent `data-adl-freshness` control warning and the explicit phrase that this is not current monthly ADL coverage.  
+**Remaining:** replace the historical seed with a reviewed official CSV export when available; keep ADL/FBI methodologies separate.
 
 ### WM-018/019 · Physical provider status + request reliability — P1/P2
 **Status:** fixed / governed on main (2026-09-20).  
