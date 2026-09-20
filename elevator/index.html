@@ -73,13 +73,14 @@ linear-gradient(to bottom,rgba(12,16,12,.96),rgba(5,8,6,.995))}
 <script>
 (async()=>{
 const root=(p)=>'..'+p;
-const [eRes,sRes,pRes]=await Promise.all([
+const [eRes,sRes,pRes,iRes]=await Promise.all([
  fetch('../data/house/elevator-spatial-projection.json'),
  fetch('../data/house/subrooms.json'),
- fetch('../data/house/public-surfaces.json')
+ fetch('../data/house/public-surfaces.json'),
+ fetch('../data/house/room-interiors.json')
 ]);
-if(!eRes.ok||!sRes.ok||!pRes.ok)return;
-const data=await eRes.json(), subData=await sRes.json(), surfaceData=await pRes.json();
+if(!eRes.ok||!sRes.ok||!pRes.ok||!iRes.ok)return;
+const data=await eRes.json(), subData=await sRes.json(), surfaceData=await pRes.json(), interiorData=await iRes.json();
 const rot=document.getElementById('rotunda'),lc=document.getElementById('levelControls'),shaft=document.getElementById('shaft'),sign=document.getElementById('levelSign'),portals=document.getElementById('levelPortals'),copy=document.getElementById('localCopy'),textGrid=document.getElementById('textGrid'),crumbs=document.getElementById('depthCrumbs'),innerBadge=document.getElementById('innerBadge'),journeyTrack=document.getElementById('journeyTrack'),journeyDetail=document.getElementById('journeyDetail');
 const params=new URLSearchParams(location.search);
 let level=params.get('level')||'world', local=params.get('room')||null, inner=params.get('inner')||null, yaw=0;
@@ -138,8 +139,9 @@ function renderJourney(){
 const roomById=Object.fromEntries(data.dwellings.map(x=>[x.id,x]));
 const subById=Object.fromEntries(subData.subrooms.map(x=>[x.id,x]));
 const surfaceById=Object.fromEntries(surfaceData.surfaces.map(x=>[x.id,x]));
+const interiorBySubroom=Object.fromEntries((interiorData.interiors||[]).map(x=>[x.subroom_id,x]));
 function routeFor(r){return root(r)}
-function subPublicRoute(S){return root('/rooms/inside/'+S.id+'/')}
+function subPublicRoute(S){const I=interiorBySubroom[S.id];return root(I?.route||('/rooms/inside/'+S.id+'/'))}
 function writeUrl(){const q=new URLSearchParams();if(local)q.set('room',local);if(inner)q.set('inner',inner);if(level!=='world')q.set('level',level);history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:''))}
 function renderLevels(){
  lc.innerHTML='';shaft.innerHTML='';
