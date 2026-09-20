@@ -12,6 +12,7 @@ CONTRACT = ROOT / "data" / "world-map-scale-contract.json"
 MODULE = ROOT / "world-map" / "3d-scale.js"
 LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 TEST = ROOT / "scripts" / "test_world_map_scale_contract.mjs"
+ADL_SCALE_TEST = ROOT / "scripts" / "test_world_map_adl_scale_ownership.mjs"
 
 EXPECTED_BANDS = [
     ("world", 0),
@@ -24,6 +25,7 @@ EXPECTED_BANDS = [
 EXPECTED_CAPABILITIES = {
     "subdivisions": {"load": 3.4, "render": 3.4, "label": 4.25, "interact": 3.4},
     "places-detail": {"load": 4.2, "render": 4.2, "label": 5.0, "interact": 4.2},
+    "adl-heat-points": {"render": 4.2, "interact": 4.2},
     "physical-water-detail": {"load": 3.4, "render": 3.4},
     "physical-hydrology": {"load": 4.0, "render": 4.0},
     "hydrology-rivers-medium": {"load": 5.2},
@@ -93,9 +95,16 @@ def main() -> int:
         syntax = subprocess.run([node, "--check", str(MODULE)], cwd=ROOT, text=True, capture_output=True, check=False)
         if syntax.returncode:
             errors.append("3d-scale.js syntax failed: " + (syntax.stderr.strip() or syntax.stdout.strip()))
-        result = subprocess.run([node, str(TEST)], cwd=ROOT, text=True, capture_output=True, check=False)
-        if result.returncode:
-            errors.append("scale-contract regression failed: " + (result.stderr.strip() or result.stdout.strip()))
+        for test_path, label in (
+            (TEST, "scale-contract"),
+            (ADL_SCALE_TEST, "ADL point scale ownership"),
+        ):
+            if not test_path.exists():
+                errors.append(f"missing scale regression: {test_path.relative_to(ROOT)}")
+                continue
+            result = subprocess.run([node, str(test_path)], cwd=ROOT, text=True, capture_output=True, check=False)
+            if result.returncode:
+                errors.append(f"{label} regression failed: " + (result.stderr.strip() or result.stdout.strip()))
 
     print("World Map scale contract:")
     print("- bands: world → macro-region → region → country → subnational → local")
