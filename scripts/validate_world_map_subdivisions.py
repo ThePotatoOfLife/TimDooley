@@ -261,6 +261,8 @@ def main() -> int:
         }
         if set(rus_descriptor.get("excluded_disputed_features") or []) != expected_excluded:
             errors.append("RUS descriptor must explicitly preserve the six excluded disputed source features")
+        if rus_descriptor.get("boundary_reference_ids") != ["UN A/RES/68/262", "UN A/RES/ES-11/4"]:
+            errors.append("RUS descriptor must preserve the UN territorial-integrity boundary references")
         note = str(rus_descriptor.get("representation_note") or "")
         if "83 Russian federal subjects" not in note or "separately typed disputed/conflict geography" not in note:
             errors.append("RUS descriptor must preserve base-geography vs disputed/conflict separation")
