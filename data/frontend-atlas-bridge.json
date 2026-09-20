@@ -1,5 +1,5 @@
 {
-  "version": "4.9.0",
+  "version": "5.0.0",
   "updated": "2026-09-20",
   "purpose": "Canonical backend-to-frontend projection contract. Canonical data stays modular and keeps its existing owners; this bridge maps major archive branches and backend families into exactly five simple public doors plus a visible secondary Rooms layer and quieter global/deep surfaces.",
   "data_roots": [
@@ -373,5 +373,7 @@
     "The ten canonical top-level bounded contexts remain owners; publicly they are Dwellings, while nested Rooms delegate scope within them",
     "House topology is typed and multi-axis; URL nesting or visual proximity never determines truth rank or ownership"
   ],
-  "design_rule": "Five simple Doors above, ten visible Dwellings in the middle, nested Rooms within them, and one deep archive below. Specialist Views project the same canonical backend without duplicating truth or exposing internal file organization as navigation."
+  "design_rule": "Five simple Doors above, ten visible Dwellings in the middle, nested Rooms within them, and one deep archive below. Specialist Views project the same canonical backend without duplicating truth or exposing internal file organization as navigation.",
+  "shared_formal_grammar": "data/project-formal-grammar.json",
+  "formal_grammar_policy": "Public Doors/Rooms remain navigation surfaces. Formal types come from the shared grammar and must not change canonical ownership or promote symbolic mappings into empirical identity."
 }
