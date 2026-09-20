@@ -102,7 +102,13 @@ function overviewHtml(){
  };
  const coverageRows=Object.entries(coverage).map(([k,v])=>'<span class="badge">'+esc(v)+' '+esc(k)+'</span>').join('');
  const recovery=arr(dossier.recovery_leads);
- return '<div class="block"><h2>Archive coverage</h2><div class="badges">'+coverageRows+'</div><p class="muted">Coverage measures indexed material, not importance, guilt, truth or completeness. Sparse files are recovery targets; dense files may still be biased toward conflict or surviving source types.</p></div>'+
+ const witness=dossier.tim_witness||{};
+ const fruit=witness.fruit||{};
+ const place=witness.placement||{};
+ const witnessGlance=Object.keys(witness).length
+   ? '<div class="block"><h2>Tim’s witness · at a glance</h2><p><b>Character:</b> '+esc(witness.character_reading||'')+'</p><p><b>Fruit:</b> '+esc(fruit.direction||'unresolved')+' · <b>Placement:</b> '+esc(arr(place.primary).join(' · ')||'unresolved')+'</p><p class="muted">Attributed Tim/project witness. Open <b>Tim’s Witness</b> for karma, symbols, dated roles, effects and transformation path.</p></div>'
+   : '<div class="block"><h2>Tim’s witness · at a glance</h2><p class="empty">No explicit Tim-witness synthesis has been recovered for this file yet.</p></div>';
+ return witnessGlance+'<div class="block"><h2>Archive coverage</h2><div class="badges">'+coverageRows+'</div><p class="muted">Coverage measures indexed material, not importance, guilt, truth or completeness. Sparse files are recovery targets; dense files may still be biased toward conflict or surviving source types.</p></div>'+
  '<div class="two"><div><div class="block"><h2>Identity</h2><p><b>Class:</b> '+esc(dossier.entity_class||'unresolved')+'</p><p><b>Archive status:</b> '+esc(dossier.archive_status||'not specified')+'</p><p><b>Aliases:</b> '+(aliases.length?aliases.map(esc).join(' · '):'<span class="empty">none recovered</span>')+'</p></div><div class="block"><h2>Tim relation</h2><p>'+esc(tr.editorial_reading||'No compact editorial reading yet.')+'</p><p class="muted">'+esc(tr.source_boundary||'Source boundary not yet summarized.')+'</p></div></div><div><div class="block"><h2>Archetypes</h2><div class="role-list">'+(arr(tr.archetypes).length?arr(tr.archetypes).map(x=>'<span class="role">'+esc(x)+'</span>').join(''):'<span class="empty">none assigned</span>')+'</div></div><div class="block"><h2>Frequent co-presence</h2>'+(cp.length?cp.map(x=>'<p><b>'+esc(x.name)+'</b> <span class="mono">×'+esc(x.count)+'</span></p>').join(''):'<p class="empty">No social-ledger co-presence recovered.</p>')+'</div><div class="block"><h2>Recovery pressure</h2>'+(recovery.length?'<p><b>'+esc(recovery.length)+'</b> open recovery lead'+(recovery.length===1?'':'s')+'.</p><p class="muted">'+esc(recovery[0])+'</p>':'<p class="empty">No recovery leads recorded.</p>')+'</div></div></div>';
 }
 function witnessHtml(){
