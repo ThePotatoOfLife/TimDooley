@@ -172,6 +172,7 @@
     const lines = [];
     if (scalar) {
       lines.push(`<div><span>Color</span><b>${esc(scalar.label)}</b></div>`);
+      lines.push('<div><span>Encoding</span><b>Color fill + exact value text</b></div>');
       const semantic = layerMeta(scalar);
       if (semantic) lines.push(`<div><span>Layer type</span><b>${esc(semantic)}</b></div>`);
       const source = layerSource(scalar);
@@ -189,6 +190,7 @@
     if (sets.length) {
       const labels = sets.slice(0,3).map(entry => entry.label).join(' · ');
       lines.push(`<div><span>Sets</span><b>${esc(labels)}${sets.length>3?` +${sets.length-3}`:''}</b></div>`);
+      lines.push('<div><span>Encoding</span><b>Pattern + membership text</b></div>');
       const semantics = [...new Set(sets.map(layerMeta).filter(Boolean))].join(' · ');
       if (semantics) lines.push(`<div><span>Set types</span><b>${esc(semantics)}</b></div>`);
       const matchCount = Number(view?.matchCount);
@@ -222,7 +224,12 @@
         return;
       }
       const rows = entries(family);
-      pop.innerHTML = rows.map(entry => `<button type="button" class="atlas-world-option${layers.isActive(entry.id)?' active':''}" data-layer-option="${esc(entry.id)}" title="${esc(layerTitle(entry))}">${entry.color?`<i style="--layer-color:${esc(entry.color)}"></i>`:''}<span>${esc(entry.label)}<small>${esc(layerMeta(entry))}</small></span></button>`).join('') || '<div class="atlas-world-empty">No current layers</div>';
+      pop.innerHTML = rows.map(entry => {
+        const active = layers.isActive(entry.id);
+        const encoding = entry.kind === 'scalar' ? 'color fill with exact value text' : entry.kind === 'set' ? 'pattern with membership text' : (entry.visual_channel || entry.kind || 'layer');
+        const state = active ? 'active' : 'inactive';
+        return `<button type="button" class="atlas-world-option${active?' active':''}" data-layer-option="${esc(entry.id)}" aria-pressed="${active?'true':'false'}" aria-label="${esc(`${entry.label}, ${encoding}, ${state}`)}" title="${esc(layerTitle(entry))}">${entry.color?`<i aria-hidden="true" style="--layer-color:${esc(entry.color)}"></i>`:''}<span>${esc(entry.label)}<small>${esc(layerMeta(entry))}</small></span></button>`;
+      }).join('') || '<div class="atlas-world-empty">No current layers</div>';
       const count = rows.filter(entry => layers.isActive(entry.id)).length;
       menuNode.classList.toggle('active', count > 0);
     });
