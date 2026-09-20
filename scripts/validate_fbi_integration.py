@@ -110,6 +110,21 @@ def main() -> int:
         if token not in viewer:
             fail(f"generic dossier viewer lost rich dossier projection token {token!r}")
 
+    discovery_surfaces = {
+        "home": ROOT / "index.html",
+        "explore": ROOT / "explore/index.html",
+        "rooms": ROOT / "rooms/index.html",
+        "house": ROOT / "house/index.html",
+        "beings": ROOT / "rooms/potatoverse-canon/beings/index.html",
+    }
+    canonical_fragment = "rooms/potatoverse-canon/beings/cia/"
+    for name, path in discovery_surfaces.items():
+        text = path.read_text(encoding="utf-8")
+        if canonical_fragment not in text and name != "beings":
+            fail(f"{name} no longer exposes a direct CIA doorway")
+        if name == "beings" and 'href="cia/"' not in text:
+            fail("Beings & Cast no longer exposes the CIA doorway")
+
     collections = json.loads(COLLECTIONS.read_text(encoding="utf-8"))
     fbi = next((x for x in collections.get("collections", []) if x.get("id") == "figures-bonds-incidents"), None)
     if not fbi:
