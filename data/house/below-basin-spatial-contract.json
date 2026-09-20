@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0",
-  "updated": "2026-09-19",
+  "version": "1.2.0",
+  "updated": "2026-09-20",
   "authority": "below-basin-spatial-contract",
   "title": "Below Basin / Subterrain Vessel — Spatial Contract",
   "purpose": "Define the round lower Potato platform as one coherent navigational vessel that can host subculture, Sektur, Farm, Swamp, Mud, Ash, Roots, intelligence, media, money, classifiers, law, harm and Forge processing without turning unlike concepts into synonyms.",
@@ -140,7 +140,19 @@
         "politics",
         "one conspiracy",
         "literal wetland"
-      ]
+      ],
+      "state_variables": [
+        "residue load",
+        "recurrence rate",
+        "provenance clarity",
+        "exit cost",
+        "correction permeability",
+        "extraction rate",
+        "role lock",
+        "repair capacity"
+      ],
+      "currentness_rule": "Swamp is a time-varying regime. Display should support pre-swamp, swamp, deep-swamp, draining and recovered rather than a permanent binary label.",
+      "boundary": "A real person or institution should be shown as participating in documented relations/flows, not as intrinsically 'Swamp'."
     },
     {
       "id": "mud-bed",
@@ -322,5 +334,6 @@
     "Forge output fan for verified/narrowed/rejected/repaired/unresolved",
     "time scrubber for showing how a case moved between zones",
     "case comparison mode for two ecologies without merging them"
-  ]
+  ],
+  "swamp_contract": "data/house/swamp-regime-contract.json"
 }
