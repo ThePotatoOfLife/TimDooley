@@ -235,6 +235,14 @@
 **Rule retained:** the matrix describes whether channels may coexist; it does not grant paint ownership. Canonical owners remain declared separately in `country_surface_owners`.
 
 
+### WM-040 · Retired UI compatibility modules remain as misleading live source — P2
+**Status:** fixed / governed on branch `world-map-retire-legacy-ui-20260920`, pending exact-head CI confirmation.  
+**Cause:** `3d-ui.js` and `3d-selection-ui.js` had already been removed from normal bootstrap ownership, but their large implementations remained in the runtime tree. That made obsolete panel/menu/selection behavior look reusable and left a path for accidental reintroduction.  
+**Resolution:** both compatibility modules are deleted. Their surviving responsibilities are already owned by World Bar, Panel Lifecycle, Country Selection, Layer Registry, Country Card, Accessibility/UI Layout and the typed Inspector stack.  
+**Guard:** UI-shell validation now requires both retired files to stay absent and rejects either filename if it reappears in bootstrap. Visual-channel validation also rejects restoration of `3d-ui.js`.  
+**Rule retained:** retire only compatibility code whose unique behavior has a tested canonical owner; this change does not remove core country selection, inspector, layer or panel capability.
+
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
