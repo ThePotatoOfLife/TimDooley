@@ -125,8 +125,8 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 
 - [ ] **WM-021 · URL state ownership:** replace 20+ direct `history.replaceState` writers with one namespaced/transactional URL State owner; migrate incrementally and forbid new direct writers.
 - [ ] **WM-022 · Inspector convergence:** migrate ADL, Axis, Axis Depth, Mud/Below and Spatial Overlay UI onto typed Inspector Router nodes so panel, back/history, focus and `inspect=` state cannot disagree.
-- [ ] **WM-023 · Interaction boot-order safety:** ensure Router ownership cannot be permanently bypassed when Spatial Overlays/Country Selection load before the Router; degraded listeners must be removable/promotable.
-- [ ] **WM-011 · Complete Motion ownership:** remove remaining raw user-visible camera calls in Hover capital focus and Spatial Overlay fit; validator must reject raw camera calls outside Motion owner.
+- [x] **WM-023 · Interaction boot-order safety:** Spatial Overlays and Country Selection now promote removable degraded listeners to the shared Router when `potato-atlas-interaction-ready` arrives; validator/regression coverage enforces teardown.
+- [x] **WM-011 · Complete Motion ownership:** capital focus and Spatial Overlay fit now use the shared Motion owner; reduced-motion validation rejects raw governed camera calls.
 - [ ] **WM-005 · Scale classification:** classify every raw zoom/minzoom threshold as capability / cartographic interpolation / camera intent / fixture; move only capability thresholds into shared Scale contract.
 - [ ] **WM-010/012/013/016 · Accessibility/mobile:** focus return, keyboard/menu scenarios, non-color redundancy, active layer announcements, Alaska/Hawaii/DC + dense Northeast + narrow-screen subdivision readability.
 - [ ] **WM-018/019 · Physical reliability:** common provider status schema plus one shared request/concurrency budget with abort/de-dupe/cache telemetry.
