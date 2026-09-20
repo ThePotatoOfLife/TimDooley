@@ -31,6 +31,8 @@ SEED_SPIRAL_ROUTING=ROOT/'data/house/seed-spiral-routing.json'
 SWAMP_REGIME=ROOT/'data/house/swamp-regime-contract.json'
 DOOR_CROSS_LIFECYCLE=ROOT/'data/house/door-cross-spiral-lifecycle.json'
 PLANE_CROSSING=ROOT/'data/house/plane-crossing-contract.json'
+TREE_FAMILY=ROOT/'data/house/tree-family-contract.json'
+ROOT_SEED=ROOT/'data/house/root-seed-temporal-contract.json'
 NAVIGATION_MANIFEST=ROOT/'data/house/navigation-manifest.json'
 RELIGIOUS_BRANCH_ATLAS=ROOT/'data/house/religious-symbolic-branch-atlas.json'
 PROVIDENCE_STRUCTURE=ROOT/'data/house/providence-pillars-esoteric-structure.json'
@@ -844,6 +846,33 @@ def validate_swamp_and_transition_contracts(errors):
             errors.append('Plane contract must keep Plane as section/frame')
         if plane.get('objects',{}).get('cross_point',{}).get('equation')!='O = Axis ∩ Plane':
             errors.append('Plane contract cross-point equation drifted')
+
+def validate_tree_root_seed_contracts(errors):
+    tree=load(TREE_FAMILY,errors)
+    if tree:
+        ids=[x.get('id') for x in tree.get('family_types',[]) if isinstance(x,dict)]
+        required={'generic-tree-operator','literal-biological-tree','tree-of-life','tree-of-knowledge','tree-of-strife','world-tree-comparator','akashic-archive-tree','organizational-tree','ui-data-tree'}
+        if not required<=set(ids):
+            errors.append('Tree family contract missing types: '+', '.join(sorted(required-set(ids))))
+        rules=' '.join(tree.get('naming_rules',[])).casefold()
+        for token in ("use 'tree' alone only","otherwise qualify","pruning removes duplication"):
+            if token not in rules:
+                errors.append(f'Tree family missing naming/pruning rule: {token}')
+
+    rs=load(ROOT_SEED,errors)
+    if rs:
+        root_ids={x.get('id') for x in rs.get('root_types',[]) if isinstance(x,dict)}
+        seed_ids={x.get('id') for x in rs.get('seed_types',[]) if isinstance(x,dict)}
+        for key in ('botanical-root','provenance-root','source-root','living-root','root-of-ash','root-of-strife'):
+            if key not in root_ids:
+                errors.append(f'Root Seed contract missing root type: {key}')
+        for key in ('biological-seed','tuber-eye','project-seed','seed-of-death','seed-of-life','fruit-seed','data-record-seed'):
+            if key not in seed_ids:
+                errors.append(f'Root Seed contract missing seed type: {key}')
+        fire=' '.join(rs.get('temporal_firewalls',[])).casefold()
+        for token in ('root != past event','seed != prediction','memory != root','idea != seed'):
+            if token not in fire:
+                errors.append(f'Root Seed contract missing temporal firewall: {token}')
 
 def validate_depth_crystallization(errors):
     required_paths=[SHADOW_OVERLAY,GARDEN_REGIME,REPAIR_FORGE,FRUIT_ATLAS,TREE_BRANCHING,KNOWLEDGE_FORK,HISTORY_REVISION,WORKS_FRUIT,LOCAL_CENTERS]
