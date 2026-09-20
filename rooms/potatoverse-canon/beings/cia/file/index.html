@@ -42,6 +42,7 @@ body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transpa
 <div class="badges" id="badges"></div>
 <div class="tabs">
 <button class="tab active" data-panel="overview">Overview</button>
+<button class="tab" data-panel="witness">Tim’s Witness</button>
 <button class="tab" data-panel="timeline">Timeline</button>
 <button class="tab" data-panel="conversations">Conversations</button>
 <button class="tab" data-panel="patterns">Patterns</button>
@@ -53,6 +54,7 @@ body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transpa
 <button class="tab" data-panel="sources">Sources</button>
 </div>
 <section class="panel active" id="overview"></section>
+<section class="panel" id="witness"></section>
 <section class="panel" id="timeline"></section>
 <section class="panel" id="conversations"></section>
 <section class="panel" id="patterns"></section>
@@ -102,6 +104,22 @@ function overviewHtml(){
  const recovery=arr(dossier.recovery_leads);
  return '<div class="block"><h2>Archive coverage</h2><div class="badges">'+coverageRows+'</div><p class="muted">Coverage measures indexed material, not importance, guilt, truth or completeness. Sparse files are recovery targets; dense files may still be biased toward conflict or surviving source types.</p></div>'+
  '<div class="two"><div><div class="block"><h2>Identity</h2><p><b>Class:</b> '+esc(dossier.entity_class||'unresolved')+'</p><p><b>Archive status:</b> '+esc(dossier.archive_status||'not specified')+'</p><p><b>Aliases:</b> '+(aliases.length?aliases.map(esc).join(' · '):'<span class="empty">none recovered</span>')+'</p></div><div class="block"><h2>Tim relation</h2><p>'+esc(tr.editorial_reading||'No compact editorial reading yet.')+'</p><p class="muted">'+esc(tr.source_boundary||'Source boundary not yet summarized.')+'</p></div></div><div><div class="block"><h2>Archetypes</h2><div class="role-list">'+(arr(tr.archetypes).length?arr(tr.archetypes).map(x=>'<span class="role">'+esc(x)+'</span>').join(''):'<span class="empty">none assigned</span>')+'</div></div><div class="block"><h2>Frequent co-presence</h2>'+(cp.length?cp.map(x=>'<p><b>'+esc(x.name)+'</b> <span class="mono">×'+esc(x.count)+'</span></p>').join(''):'<p class="empty">No social-ledger co-presence recovered.</p>')+'</div><div class="block"><h2>Recovery pressure</h2>'+(recovery.length?'<p><b>'+esc(recovery.length)+'</b> open recovery lead'+(recovery.length===1?'':'s')+'.</p><p class="muted">'+esc(recovery[0])+'</p>':'<p class="empty">No recovery leads recorded.</p>')+'</div></div></div>';
+}
+function witnessHtml(){
+ const w=dossier.tim_witness||{};
+ if(!Object.keys(w).length)return '<p class="empty">No explicit Tim-witness layer has been recovered for this file yet.</p>';
+ const fruit=w.fruit||{}, karma=w.karma||{}, placement=w.placement||{};
+ const roles=arr(w.roles), effects=arr(w.witnessed_effects), symbols=arr(w.symbols), repair=arr(w.repair_path);
+ const chips=arr(fruit.labels);
+ return '<div class="block"><h2>Tim’s character reading</h2><p>'+esc(w.character_reading||'')+'</p><p class="muted">This section records Tim/project witness and interpretation. It is not presented as independent clinical, legal or objective fact.</p></div>'+
+ '<div class="two"><div><div class="block"><h2>Fruit / yield</h2><p><b>'+esc(fruit.direction||'unresolved')+'</b></p>'+(chips.length?'<div class="role-list">'+chips.map(x=>'<span class="role">'+esc(x)+'</span>').join('')+'</div>':'')+'<p>'+esc(fruit.reading||'')+'</p></div>'+
+ '<div class="block"><h2>Karma</h2><p><b>'+esc(karma.direction||'unresolved')+'</b></p><p>'+esc(karma.reading||'')+'</p></div></div>'+
+ '<div><div class="block"><h2>Potato of Life placement</h2><p><b>Primary:</b> '+(arr(placement.primary).length?arr(placement.primary).map(esc).join(' · '):'unresolved')+'</p><p><b>Secondary:</b> '+(arr(placement.secondary).length?arr(placement.secondary).map(esc).join(' · '):'—')+'</p><p>'+esc(placement.reading||'')+'</p></div>'+
+ '<div class="block"><h2>Symbols</h2>'+(symbols.length?'<div class="role-list">'+symbols.map(x=>'<span class="role">'+esc(x)+'</span>').join('')+'</div>':'<p class="empty">No symbols recovered.</p>')+'</div></div></div>'+
+ '<div class="two"><div class="block"><h2>What Tim says they did / produced</h2>'+(effects.length?'<ul>'+effects.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'<p class="empty">No effect summary yet.</p>')+'</div>'+
+ '<div class="block"><h2>Repair / transformation path</h2>'+(repair.length?'<ul>'+repair.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'<p class="empty">No transformation path recovered.</p>')+'</div></div>'+
+ '<div class="block"><h2>Tim-assigned roles over time</h2>'+(roles.length?roles.map(x=>'<article class="event"><time>'+esc(x.date||'')+'</time><h3>'+esc(x.role||'')+'</h3><p>'+esc(x.note||'')+'</p><small>'+esc(x.status||'')+'</small></article>').join(''):'<p class="empty">No dated Tim-assigned roles recovered.</p>')+'</div>'+
+ '<p class="stamp">TIM-WITNESS BOUNDARY</p><p>'+esc(w.boundary||'Tim/project interpretation is preserved as attributed witness, not independent fact.')+'</p>';
 }
 function timelineHtml(){
  const all=[];
@@ -206,6 +224,7 @@ function render(){
   dossier.archive_status, dossier.room_policy, ...(dossier.tim_relation?.archetypes||[]).slice(0,4)
  ].filter(Boolean).map(x=>'<span class="badge">'+esc(x)+'</span>').join('');
  document.getElementById('overview').innerHTML=overviewHtml();
+ document.getElementById('witness').innerHTML=witnessHtml();
  document.getElementById('timeline').innerHTML=timelineHtml();
  document.getElementById('conversations').innerHTML=conversationsHtml();
  document.getElementById('patterns').innerHTML=patternsHtml();
