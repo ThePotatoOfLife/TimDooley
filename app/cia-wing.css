@@ -1,0 +1,7 @@
+/* Investigative wing shared presentation: case rooms remain visually distinct from the Bank. */
+.cia-case-room{position:relative}.cia-case-room:before{content:"CHARACTER ARCHIVE · INVESTIGATIVE WING";display:block;margin:4px 0 13px;color:var(--site-gold);font:700 8px/1.2 ui-monospace,monospace;letter-spacing:.14em}
+.cia-case-room .page-header{position:relative;padding-right:min(31vw,260px);min-height:120px}.cia-case-room .page-header:after{content:"";position:absolute;right:0;top:0;width:min(28vw,230px);height:112px;border:1px solid #4c402f;background:linear-gradient(145deg,rgba(146,121,78,.4),rgba(47,39,28,.66)),repeating-linear-gradient(0deg,transparent 0 22px,rgba(255,255,255,.035) 23px 24px);box-shadow:inset 0 0 32px rgba(0,0,0,.35)}
+.cia-case-room table{background:rgba(0,0,0,.08);border:1px solid var(--site-line)}.cia-case-room th{color:var(--site-gold);font:700 8px ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase}.cia-case-room tr:hover td{background:rgba(255,255,255,.018)}
+.cia-case-room .incident{position:relative;padding-left:18px}.cia-case-room .incident:before{content:"";position:absolute;left:0;top:21px;width:7px;height:7px;border:1px solid var(--site-gold);transform:rotate(45deg)}.cia-case-room .incident h3{font-family:var(--site-font-serif)}
+.cia-case-room .boundary{background:rgba(255,255,255,.012)}
+@media(max-width:720px){.cia-case-room .page-header{padding-right:0;min-height:0}.cia-case-room .page-header:after{display:none}}
