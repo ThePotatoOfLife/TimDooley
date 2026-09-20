@@ -1,5 +1,5 @@
 {
-  "version": "3.1.0",
+  "version": "3.2.0",
   "updated": "2026-09-20",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -13,6 +13,11 @@
       "concern": "three typed centers / figure and archetype population",
       "owner": "data/house/three-center-role-atlas.json",
       "rule": "Owns project-persona, Christian, Jewish and comparative figure/archetype population around C_F, O and C_S. Center placement is a typed role correspondence, never a literal-identity claim, target map or replacement for tradition-owned meaning."
+    },
+    {
+      "concern": "three-center relational roles / Dog Footstool Cow Farmer perimeter ecology",
+      "owner": "data/house/three-center-relational-ecology.json",
+      "rule": "Owns contextual roles around C_F, O and C_S—guard, support, harvest, witness, constraint, local centers and role transitions—while the three-center role atlas owns figure/archetype population. Role labels are contextual and reversible, never fixed human essences."
     },
     {
       "concern": "whole-project synthesis / Room-to-center pairings",
