@@ -180,15 +180,35 @@ def main() -> int:
     require(machine_audit,('"site-index.json"','"sitemap-index.xml"','"religion/index.html"','"philosophy/index.html"','"world-map/index.html"',"OAI-SearchBot","noindex URLs must not appear in sitemaps","canonical URL must match the page for indexable pages"),"check_machine_discoverability.py",errors)
     require(enrich,("repairs missing descriptions and descriptions shorter than 40","if len(current) >= 40","first substantial paragraph","<meta name=\"description\"","dedupe_question_intents","dedupe_result = dedupe_question_intents()","apply_entity_intent_seo","result = apply_entity_intent_seo()"),"enrich_weak_descriptions.py",errors)
 
-    for owner, text in (("quality-checks.yml", quality), ("pages.yml", pages)):
-        require(text,("python scripts/enrich_weak_descriptions.py","python scripts/optimize_seo.py","fetch-depth: 0","seo-report.json"),owner,errors)
-    require(quality,("id: seo","continue-on-error: true","quality-seo-report","Enforce SEO gate","steps.seo.outcome == 'failure'"),"quality-checks.yml",errors)
+    require(quality,(
+        "python scripts/enrich_weak_descriptions.py",
+        "python scripts/optimize_seo.py",
+        "fetch-depth: 0",
+        "seo-report.json",
+        "id: seo",
+        "continue-on-error: true",
+        "quality-seo-report",
+        "Enforce SEO gate",
+        "steps.seo.outcome == 'failure'",
+        "Upload exact validated Pages artifact",
+        "validated-pages-site",
+    ),"quality-checks.yml",errors)
+    require(pages,(
+        "Download exact validated site artifact",
+        "actions/download-artifact@v5",
+        "validated-pages-site",
+        "_site/build-provenance.json",
+        "actions/upload-pages-artifact@v5",
+    ),"pages.yml",errors)
+    for forbidden in ("python scripts/enrich_weak_descriptions.py","python scripts/optimize_seo.py","python scripts/build_site.py"):
+        if forbidden in pages:
+            errors.append(f"pages.yml must deploy the already-normalized validated artifact, not rerun SEO/build logic: {forbidden}")
 
-    prune = pages.find("Remove internal archive from Pages artifact")
-    enrich_step = pages.find("Enrich weak page descriptions")
-    optimize_step = pages.find("Optimize crawl, sharing and sitemap SEO")
+    prune = quality.find("Remove internal archive from public artifact")
+    enrich_step = quality.find("Enrich weak page descriptions")
+    optimize_step = quality.find("Optimize crawl, sharing and sitemap SEO")
     if prune < 0 or enrich_step < 0 or optimize_step < 0 or not (prune < enrich_step < optimize_step):
-        errors.append("pages.yml must prune the internal archive before SEO normalization")
+        errors.append("quality-checks.yml must prune the internal archive before SEO normalization")
 
     home = read("index.html", errors)
     if 'href="seo/' in home or '>SEO<' in home:
