@@ -88,6 +88,7 @@ def main() -> int:
         "knowledge/fbi/enhancements-index.json",
         "knowledge/fbi/conversation-recovery.json",
         "knowledge/fbi/tim-moral-symbolic-taxonomy.json",
+        "knowledge/fbi/presence-index.json",
     ]:
         if path not in viewer:
             fail(f"generic dossier viewer no longer loads {path}")
@@ -111,6 +112,10 @@ def main() -> int:
         "Why Tim assigned the state",
         "State History",
         "Source-derived co-presence",
+        "Recorded presence",
+        "First recorded:",
+        "Last recorded:",
+        "Turning points",
     ):
         if token not in viewer:
             fail(f"generic dossier viewer lost rich dossier projection token {token!r}")
@@ -186,6 +191,30 @@ def main() -> int:
         fail("CIA enhancements index is not linked to the state-modifier taxonomy")
     if "do not create numeric karmic debt" not in str(enhancements.get("debt_rule") or ""):
         fail("CIA enhancements index must forbid debt inference from modifiers")
+
+    presence_index = (manifest.get("indexes") or {}).get("presence")
+    if presence_index != "knowledge/fbi/presence-index.json":
+        fail("manifest indexes.presence must point to knowledge/fbi/presence-index.json")
+    presence_path = ROOT / presence_index
+    if not presence_path.is_file():
+        fail("CIA presence index is missing")
+    presence = json.loads(presence_path.read_text(encoding="utf-8"))
+    presence_entries = presence.get("entries") or []
+    if len(presence_entries) != len(figures):
+        fail(f"CIA presence index has {len(presence_entries)} entries for {len(figures)} figures")
+    exact_date = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+    for row in presence_entries:
+        first = row.get("first_recorded")
+        last = row.get("last_recorded")
+        if first is not None and not exact_date.match(str(first)):
+            fail(f"{row.get('id')} presence first_recorded is not an exact YYYY-MM-DD date")
+        if last is not None and not exact_date.match(str(last)):
+            fail(f"{row.get('id')} presence last_recorded is not an exact YYYY-MM-DD date")
+        dates = row.get("exact_recorded_dates") or []
+        if dates and (first != dates[0] or last != dates[-1]):
+            fail(f"{row.get('id')} presence first/last does not match exact date range")
+        if first and last and first > last:
+            fail(f"{row.get('id')} presence first_recorded is after last_recorded")
 
     conversation_index = (manifest.get("indexes") or {}).get("conversations")
     if conversation_index != "knowledge/fbi/conversation-recovery.json":
