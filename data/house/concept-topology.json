@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "2.0.1",
   "updated": "2026-09-20",
   "authority": "house-semantic-topology",
   "purpose": "Machine-readable topology assignments for the small set of operators that organize the Potato House. These annotations drive projection and navigation; they do not replace canonical concept owners or evidence classes.",
@@ -404,7 +404,7 @@
       "boundary": "Spiritual flow and biological/physical flows remain separately typed.",
       "formal_type": {
         "template": "Flow",
-        "schema": "J or Phi_t, domain-dependent",
+        "schema": "J or Phi_t depending domain",
         "primary_project_component": "relation/flow comparator",
         "note": "Biological, physical, social and theological flows retain separate domains and units."
       }
