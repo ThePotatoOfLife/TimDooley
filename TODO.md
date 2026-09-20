@@ -100,6 +100,46 @@ Indexes, manifests and projections should point to the canonical material rather
 - [ ] Run the complete integrity/build/Pages chain on every final integration head and fix what actually fails.
 
 
+
+## Live problem queue — 2026-09-20
+
+This is the active Gardener defect/consolidation queue. Add concrete problems here when a validator, audit, route scan or ownership scan demonstrates them. Close the item only when the source problem and its regression path are both addressed.
+
+Priority order: **P0 release breakage → P1 structural drift/duplication → P2 maintainability/readability → P3 enrichment.**
+
+### P0 — release and integrity
+
+- [x] Repair malformed Science JSON that blocked catalog compilation (`dimensional-phase-transition-full-recovery.json`, `equation-ledger-wave-002.json`).
+- [x] Restore World Map relationship geometry semantics required by the route-geometry contract.
+- [x] Restore the shared bidirectional-spiral runtime on House, Below, Axis and Potato-of-Life; validate actual script tags rather than loose filename substrings.
+- [x] Repair missing metadata on 20 nested Room pages and harden SEO enrichment to repair absent descriptions.
+- [x] Repair built-site shell blockers: stale homepage marker assertion, Politics source path, Geography → Timeline Room wormhole.
+- [x] Latest Pages deploy is green on `5e3e40b` after the ADL U.S. state-rendering merge.
+- [ ] Obtain an exact-head green **Repository quality checks** result for the current integration head; do not call a work wave complete while the quality workflow is pending/cancelled.
+
+### P1 — structural debt now demonstrated
+
+- [ ] Add a dedicated regression test for the interactive bidirectional spiral contract: section keys Σ0/±1…4, canonical JSON fetch, selected-state behavior, and fallback behavior. Governance currently checks presence/structure but does not execute the reader interaction.
+- [ ] Consolidate the legacy country batch manifests after proving unique-field parity. `data/country-enrichment-batch-2026-09-07-02..10.json` and `data/country-nodes-batch-2026-09-07-02..10.json` are still registered as House holdings even though the canonical country layer is complete at 195/195. Migrate any unique audit/provenance value before pruning.
+- [ ] Refresh `data/full-text-coverage.json` (still dated 2026-09-07) against the current Bible corpus/build architecture and distinguish: locally vendored full text, source metadata only, build-fetched text, and planned corpora.
+- [ ] Audit the 38 nested Room pages for shell consistency. Older Rooms duplicate inline `.inner-home/.inner-center/.adj-grid` CSS and omit some navigation/orientation affordances present in newer Rooms. Move stable shell rules into a shared stylesheet before doing cosmetic redesign.
+- [ ] Add an explicit alias/route contract for the one intentional internal/public naming difference: internal Room id `chronology-events` → public route `/rooms/inside/timeline-events/`. The broken Geography link is fixed, but the alias should be machine-readable so future generators cannot recreate the internal-id URL.
+- [ ] Reconcile remaining public-route projections against House authority after the latest spiral/Below/World Map merges; route aliases should be generated or validated rather than hand-maintained.
+- [ ] Audit generated/state-like files by **reference and unique information**, not filename. The repository currently contains hundreds of `wave`, `batch`, `round`, `audit` and snapshot-named files; many are legitimate research records, while others are migration residue. Produce a keep/merge/archive/prune disposition before removal.
+
+### P2 — maintainability and duplication
+
+- [ ] Reduce hand-maintained asset-version duplication for shared components (for example the same spiral CSS/JS version string repeated across four reader pages).
+- [ ] Move repeated nested-Room presentation CSS into shared assets once the Room-shell audit identifies the common invariant subset.
+- [ ] Continue cross-file duplicate auditing and merge only true duplicate definitions; preserve primary evidence, historical snapshots with provenance value and additive research.
+- [ ] Review old `data/expansions/*wave*/*round*` records against their current canonical owners and House holdings; keep distinct research, absorb repeated definitions.
+- [ ] Continue stale branch/PR salvage already listed below, but treat branch age as an audit signal rather than a merge requirement.
+
+### P3 — depth after integrity
+
+- [ ] Resume content deepening only after current P0/P1 integrity items stay green: Works/Fruit instrumentation, longitudinal entity dossiers, correction/exit measures, source-backed primary attestations and contradiction objects.
+
+
 ## Stale branch / PR salvage — 2026-09-20
 
 The repository has accumulated many historical branches whose names can make the project look farther behind than it is. Treat branch age and unmerged status as **audit signals**, not automatic backlog.
