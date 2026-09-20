@@ -18,6 +18,7 @@ EVIDENCE_COORDINATOR = ROOT / "world-map/3d-evidence-layers.js"
 IMPORTER = ROOT / "scripts/import_adl_heat.py"
 MUD_MODULE = ROOT / "world-map/3d-mud-below-us.js"
 MUD_DATA = ROOT / "data/world-symbolic/us-mud-below-project-cases.geo.json"
+STATE_SUBDIVISIONS = ROOT / "data/world-subdivisions/USA.geo.json"
 
 EXPECTED_STATES = {
     "AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA",
@@ -38,7 +39,7 @@ def require(text: str, token: str, label: str, errors: list[str]) -> None:
 
 def main() -> int:
     errors: list[str] = []
-    for path in (META,SUMMARY,GEO,MODULE,HTML,LIFECYCLE,EVIDENCE_COORDINATOR,IMPORTER,MUD_MODULE,MUD_DATA):
+    for path in (META,SUMMARY,GEO,MODULE,HTML,LIFECYCLE,EVIDENCE_COORDINATOR,IMPORTER,MUD_MODULE,MUD_DATA,STATE_SUBDIVISIONS):
         if not path.exists():
             errors.append(f"missing ADL H.E.A.T. artifact: {path.relative_to(ROOT)}")
     if errors:
@@ -55,6 +56,7 @@ def main() -> int:
     importer = IMPORTER.read_text(encoding="utf-8")
     mud_js = MUD_MODULE.read_text(encoding="utf-8")
     mud_data = load(MUD_DATA, errors)
+    subdivision_data = load(STATE_SUBDIVISIONS, errors)
 
     if meta.get("id") != "adl-heat":
         errors.append("metadata id must remain adl-heat")
@@ -70,10 +72,20 @@ def main() -> int:
         if phrase not in semantics:
             errors.append(f"methodology display semantics missing boundary phrase: {phrase}")
 
+    subdivision_ids = {
+        str(feature.get("id") or (feature.get("properties") or {}).get("id") or "")
+        for feature in (subdivision_data.get("features") or [])
+    }
     states = summary.get("states") or {}
     codes = {key.removeprefix("US-") for key in states}
     if codes != EXPECTED_STATES:
         errors.append(f"state summary must contain 50 states + DC exactly; got {len(codes)} entries")
+    if set(states) != subdivision_ids:
+        errors.append("ADL state summary IDs must match canonical USA subdivision IDs exactly")
+    for sid,row in states.items():
+        for field in ("by_type_token","by_year_type_token"):
+            if field not in row:
+                errors.append(f"{sid}: state summary missing geometry-independent filter aggregate {field}")
     if summary.get("dataset_id") != "adl-heat":
         errors.append("state summary must retain dataset_id adl-heat")
 
@@ -112,7 +124,8 @@ def main() -> int:
         "__potatoAtlasAdlHeat","updateFilterUrl","adlYear","adlType",
         "loadPromise","potato-atlas-subdivisions-source-change","scheduleStateFeatureState",
         "retainPartition('USA', 'adl-heat')","releasePartition?.('USA', 'adl-heat')",
-        "clickPriority:85","renderStateInspector","renderIncident",
+        "clickPriority:85","renderStateInspector","renderIncident","aggregateStateCount",
+        "__potatoAtlasSubdivisions.select","openStateEvidence",
     ):
         require(js, token, "world-map/3d-adl-heat.js", errors)
     if "searchParams.set('evidenceLayer'" in js or "searchParams.delete('evidenceLayer'" in js:
@@ -124,7 +137,7 @@ def main() -> int:
         require(html, token, "world-map/index.html", errors)
     for token in ("bindAdlHeatLayerControl","./3d-adl-heat.js","__potatoAtlasAdlHeat?.toggle","bindMudBelowLayerControl","./3d-mud-below-us.js","__potatoAtlasMudBelow?.toggle","hydrateEvidenceLayersFromUrl","projectLayer","mud-below-us"):
         require(lifecycle, token, "world-map/3d-panel-lifecycle.js", errors)
-    for token in ("official ADL H.E.A.T. CSV export","source_sha256","missing_geometry_count","csv.DictReader"):
+    for token in ("official ADL H.E.A.T. CSV export","source_sha256","missing_geometry_count","state_filtering","by_type_token","by_year_type_token","csv.DictReader"):
         require(importer, token, "scripts/import_adl_heat.py", errors)
 
     for token in ("project-symbolic-case","state-centroid","not an objective classification"):
