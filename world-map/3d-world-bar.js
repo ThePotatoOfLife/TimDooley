@@ -1,4 +1,7 @@
 (async () => {
+  if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+  const urlState = window.__potatoAtlasUrlState;
+  urlState.claim('projection', ['projection']);
   const layers = window.__potatoAtlasLayers;
   const query = window.__potatoAtlasQuery;
   const map = window.__potatoAtlasMap;
@@ -126,7 +129,7 @@
   function applyProjection() {
     try { map.setProjection({type: projection === 'globe' ? 'globe' : 'mercator'}); }
     catch { projection = 'flat'; try { map.setProjection({type:'mercator'}); } catch {} }
-    const url = new URL(location.href); url.searchParams.set('projection', projection); history.replaceState({}, '', url);
+    urlState.patch('projection', { set:{ projection } });
     const button = document.getElementById('atlasProjectionToggle');
     if (button) {
       button.textContent = projection === 'globe' ? '▭' : '◉';
