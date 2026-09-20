@@ -323,6 +323,14 @@
 
 
 
+### WM-054 · Garden symbolic operator targets retired Fields/Networks controls — P1
+**Status:** fixed on branch `world-map-retire-fields-networks-20260921`, pending exact-head CI.  
+**Cause:** `3d-symbolic-operators.js` still read `axisFieldView` / `empiricalNetworkView` and the Garden action called `setSelect('axisFieldView','all')`, even though the Fields/Networks compatibility modules are not loaded by current bootstrap.  
+**Failure:** Garden could change Axis depth but fail to activate the intended project-field view; operator state reported field/network as `n/a`.  
+**Resolution:** symbolic operators now read active `axis.*` and `group.*` state from the canonical Layer Registry; Garden activates the four current Axis lenses through the registry API.  
+**Guard:** retirement regressions require symbolic operators to contain no references to retired control IDs.
+
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
