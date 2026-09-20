@@ -1,6 +1,6 @@
 {
-  "version": "3.0.0",
-  "updated": "2026-09-19",
+  "version": "3.1.0",
+  "updated": "2026-09-20",
   "authority": "house-room-dossiers",
   "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
   "dossiers": [
@@ -3340,10 +3340,11 @@
       "dwelling_id": "life-body",
       "entrance": "Own brain structures, networks, physiology and evidence grading relevant to body research.",
       "belongs_here": [
-        "brain structures/networks",
-        "attention/arousal/memory physiology",
-        "evidence grading",
-        "Material rooted in knowledge/body/whole-brain-neurobiology-atlas.json"
+        "brain structures, nuclei, tracts and distributed networks",
+        "spinal cord laminae, tracts, roots and vertebral/neural coordinate distinctions",
+        "cranial nerve and brainstem state/autonomic circuitry",
+        "neural development, cortical layers, cell types and evidence grading",
+        "Material routed through knowledge/body/index.json"
       ],
       "stays_out": [
         "symbolic anatomy presented as established physiology",
@@ -3354,7 +3355,7 @@
       ],
       "epistemic_boundary": "Human, animal, theoretical and speculative evidence remain separately graded.",
       "knowledge_holdings": {
-        "primary_file_count": 7,
+        "primary_file_count": 11,
         "featured": [
           {
             "id": "brain-body-organ-axes-deepening-wave-3",
@@ -3380,6 +3381,36 @@
             "id": "whole-brain-neurobiology-atlas",
             "path": "knowledge/body/whole-brain-neurobiology-atlas.json",
             "kind": "room holding"
+          },
+          {
+            "id": "brain-room-deep-atlas",
+            "path": "knowledge/body/brain-room-deep-atlas.json",
+            "kind": "granular whole-brain room atlas"
+          },
+          {
+            "id": "cranial-brainstem-room-atlas",
+            "path": "knowledge/body/cranial-brainstem-room-atlas.json",
+            "kind": "cranial nerve, brainstem and state-circuit atlas"
+          },
+          {
+            "id": "spinal-cord-microcircuit-atlas",
+            "path": "knowledge/body/spinal-cord-microcircuit-atlas.json",
+            "kind": "spinal laminae, tracts and local-circuit atlas"
+          },
+          {
+            "id": "vertebral-33-room-atlas",
+            "path": "knowledge/body/vertebral-33-room-atlas.json",
+            "kind": "33-room vertebral and neural-coordinate atlas"
+          },
+          {
+            "id": "neural-development-lineage-atlas",
+            "path": "knowledge/body/neural-development-lineage-atlas.json",
+            "kind": "neural tube to adult-room developmental atlas"
+          },
+          {
+            "id": "cortical-celltype-parcellation-atlas",
+            "path": "knowledge/body/cortical-celltype-parcellation-atlas.json",
+            "kind": "cortical layers, cell types and parcellation atlas"
           }
         ]
       },
@@ -3429,9 +3460,9 @@
         }
       ],
       "next_work": [
-        "Deepen the Room through its center contribution: Owns evidence-graded brain anatomy and physiology used by body comparisons.",
-        "Keep handoffs explicit: receive from model-testing; hand mature work to symbolic-body-comparison, whole-body.",
-        "Keep this Room knowledge-led unless a real structured dataset emerges."
+        "Continue below region labels into human cell types, projection classes, developmental lineage and circuit-level connectivity where evidence supports it.",
+        "Keep human, animal, theoretical and speculative evidence visibly separated.",
+        "Hand symbolic comparisons through the governed Symbolic Body Crosswalk rather than embedding them in empirical anatomy."
       ],
       "center_pairing": {
         "contribution": "Owns evidence-graded brain anatomy and physiology used by body comparisons.",
@@ -3495,9 +3526,10 @@
       "entrance": "Own body-system integration across nervous, autonomic, cardiovascular, respiratory, gut, immune and fluid interfaces.",
       "belongs_here": [
         "nervous/autonomic/cardiovascular/respiratory integration",
-        "fluid and gut/immune interfaces",
-        "whole-body uncertainty",
-        "Material rooted in knowledge/body/body-system-master-atlas.json"
+        "CSF, meninges, barriers, neurovascular and fluid interfaces",
+        "gut/enteric, immune, endocrine and body-to-brain return routes",
+        "whole-body uncertainty and multi-flow physiology",
+        "Material routed through knowledge/body/body-system-master-atlas.json"
       ],
       "stays_out": [
         "symbolic anatomy presented as established physiology",
@@ -3508,7 +3540,7 @@
       ],
       "epistemic_boundary": "Whole-body synthesis must preserve uncertainty and domain-specific evidence.",
       "knowledge_holdings": {
-        "primary_file_count": 4,
+        "primary_file_count": 7,
         "featured": [
           {
             "id": "body-science-context-atlas",
@@ -3529,6 +3561,21 @@
             "id": "index",
             "path": "knowledge/body/index.json",
             "kind": "room holding"
+          },
+          {
+            "id": "axis-orientation-autonomic-interface-atlas",
+            "path": "knowledge/body/axis-orientation-autonomic-interface-atlas.json",
+            "kind": "orientation, autonomic, meningeal and body-interface atlas"
+          },
+          {
+            "id": "spine-csf-levels-axis-atlas",
+            "path": "knowledge/body/spine-csf-levels-axis-atlas.json",
+            "kind": "spine, roots, meninges and CSF-level atlas"
+          },
+          {
+            "id": "glia-neurovascular-barrier-atlas",
+            "path": "knowledge/body/glia-neurovascular-barrier-atlas.json",
+            "kind": "glia, neurovascular unit and living-boundary atlas"
           }
         ]
       },
@@ -3645,10 +3692,11 @@
       "dwelling_id": "life-body",
       "entrance": "Own explicitly comparative mappings between project symbols and anatomy while preserving the empirical/symbolic firewall.",
       "belongs_here": [
-        "thalamus/House comparison",
-        "pineal/Eye timing metaphor",
-        "spine/Axis and fluid/Spirit analogues",
-        "Material rooted in knowledge/body/neurotheology-axis-house-spirit-atlas.json"
+        "thalamus/House and third-ventricle/Inner-Court comparisons",
+        "pineal/Eye/Door timing comparison",
+        "spine/Axis/Ladder and CSF/River analogues",
+        "Horus, Hermes, serpent and chakra comparisons with historical lanes preserved",
+        "Material routed through data/house/body-relational-overlay.json"
       ],
       "stays_out": [
         "symbolic anatomy presented as established physiology",
@@ -3659,7 +3707,7 @@
       ],
       "epistemic_boundary": "A symbolic neighbor is not anatomical identity or evidence of supernatural physiology.",
       "knowledge_holdings": {
-        "primary_file_count": 3,
+        "primary_file_count": 6,
         "featured": [
           {
             "id": "body-symbolism-map",
@@ -3675,6 +3723,21 @@
             "id": "tim-neurobiology-relational-reconciliation",
             "path": "knowledge/body/tim-neurobiology-relational-reconciliation.json",
             "kind": "room holding"
+          },
+          {
+            "id": "inner-axis-integrated-atlas",
+            "path": "knowledge/body/inner-axis-integrated-atlas.json",
+            "kind": "integrated House/Court/Door/Ladder comparative route"
+          },
+          {
+            "id": "thalamus-house-horus-crown-atlas",
+            "path": "knowledge/body/thalamus-house-horus-crown-atlas.json",
+            "kind": "thalamus, Horus, Crown and House comparison atlas"
+          },
+          {
+            "id": "body-axis-chakra-kundalini-comparative-atlas",
+            "path": "knowledge/body/body-axis-chakra-kundalini-comparative-atlas.json",
+            "kind": "chakra/kundalini and anatomy comparison atlas"
           }
         ]
       },
@@ -3738,9 +3801,9 @@
         }
       ],
       "next_work": [
-        "Deepen the Room through its center contribution: Provides an explicit firewalled crosswalk between body structures and project symbols.",
-        "Keep handoffs explicit: receive from potato-biology, neurobiology, whole-body; hand mature work to theology-god-language, symbolic-architecture.",
-        "Deepen the substantive corpus before considering further subdivision."
+        "Use the shared Body relational overlay rather than creating duplicate symbol-specific anatomy owners.",
+        "Keep anatomy, historical tradition, modern reinterpretation and Potatoverse meaning in separate evidence lanes.",
+        "Promote new comparisons only when both the biological owner and the historical/tradition owner are named."
       ],
       "center_pairing": {
         "contribution": "Provides an explicit firewalled crosswalk between body structures and project symbols.",
