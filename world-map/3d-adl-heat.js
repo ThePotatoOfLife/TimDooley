@@ -27,6 +27,7 @@ const POINT_LAYER = 'adl-heat-incident-points';
 const POINT_HIT = 'adl-heat-incident-hit';
 const STATE_KEY = 'adlHeatCount';
 const interaction = window.__potatoAtlasInteraction;
+const inspector = window.__potatoAtlasInspector;
 
 let enabled = false;
 let loaded = false;
@@ -197,7 +198,7 @@ function renderControls() {
   });
   surface.querySelector('[data-adl-source]')?.addEventListener('click', () => renderDatasetInspector());
 }
-function renderDatasetInspector() {
+function renderDatasetPanel() {
   const panel = document.getElementById('panel');
   if (!panel) return;
   const snap = metadata?.snapshot || {};
@@ -213,7 +214,25 @@ function renderDatasetInspector() {
     <div class="actions"><a href="${esc(metadata?.official_source_url || '#')}" target="_blank" rel="noopener">Open ADL source</a></div>`;
   window.__potatoAtlasPanelLifecycle?.publish?.();
 }
-function renderIncident(feature) {
+function renderDatasetInspector() {
+  if (!inspector?.open) { renderDatasetPanel(); return true; }
+  const current = inspector.current?.();
+  if (!current) {
+    inspector.setBaseline({
+      type:'country', id:'USA', owner:'country-selection',
+      restore:() => window.goCountry?.('USA'),
+    });
+  }
+  inspector.open({
+    type:'evidence',
+    id:'adl-heat',
+    owner:'adl-heat',
+    parent:{ type:'country', id:'USA' },
+    render:renderDatasetPanel,
+  });
+  return true;
+}
+function renderIncidentPanel(feature) {
   const p = feature?.properties || {};
   const panel = document.getElementById('panel');
   if (!panel) return;
@@ -237,6 +256,23 @@ function renderIncident(feature) {
   panel.querySelector('[data-adl-source]')?.addEventListener('click', renderDatasetInspector);
   window.__potatoAtlasPanelLifecycle?.publish?.();
 }
+function renderIncident(feature) {
+  const p = feature?.properties || {};
+  const id = String(feature?.id ?? p.id ?? `${p.date || 'undated'}:${p.city || p.state || 'record'}`);
+  if (!inspector?.open) { renderIncidentPanel(feature); return true; }
+  inspector.setBaseline({
+    type:'country', id:'USA', owner:'country-selection',
+    restore:() => window.goCountry?.('USA'),
+  });
+  inspector.open({
+    type:'evidence-record',
+    id,
+    owner:'adl-heat',
+    parent:{ type:'country', id:'USA' },
+    render:() => renderIncidentPanel(feature),
+  });
+  return true;
+}
 function topEntries(obj = {}, limit = 6) {
   return Object.entries(obj).sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0])).slice(0,limit);
 }
@@ -249,7 +285,7 @@ async function openStateEvidence(id, options={}) {
   renderStateInspector(id);
   return true;
 }
-function renderStateInspector(id) {
+function renderStatePanel(id) {
   const row = summary?.states?.[id] || null;
   const panel = document.getElementById('panel');
   if (!panel || !row) return;
@@ -278,6 +314,24 @@ function renderStateInspector(id) {
     <div class="actions"><button type="button" data-adl-source>Source / methodology</button></div>`;
   panel.querySelector('[data-adl-source]')?.addEventListener('click', renderDatasetInspector);
   window.__potatoAtlasPanelLifecycle?.publish?.();
+}
+function renderStateInspector(id) {
+  const row = summary?.states?.[id] || null;
+  if (!row) return false;
+  if (!inspector?.open) { renderStatePanel(id); return true; }
+  const current = inspector.current?.();
+  if (current?.type !== 'subdivision' || current.id !== id) {
+    renderStatePanel(id);
+    return true;
+  }
+  inspector.open({
+    type:'evidence',
+    id:`adl-heat:${id}`,
+    owner:'adl-heat',
+    parent:{ type:'subdivision', id },
+    render:() => renderStatePanel(id),
+  });
+  return true;
 }
 function installLayers() {
   if (!map.getSource(POINT_SOURCE)) map.addSource(POINT_SOURCE, { type:'geojson', data:filtered, promoteId:'id' });
