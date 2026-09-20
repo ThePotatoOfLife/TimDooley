@@ -1,7 +1,7 @@
 {
   "id": "deep-element-definition-atlas",
   "title": "Deep Element Definition Atlas — What Each Major Element Is, Does, Connects To and Is Not",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-20",
   "status": "binding project definition grammar",
   "purpose": "Provide one reusable deep contract for central Potato of Life operators and major comparative structures. Definitions specify ontology, topology, transformation logic, relations, boundaries and failure modes instead of relying on visual resemblance or poetic naming.",
@@ -69,30 +69,35 @@
     {
       "id": "son-manifestation",
       "kind": "role/embodied-passage",
-      "identity": "Manifestation-facing role of embodiment, Vessel, Door, visible passage, suffering and return.",
-      "function": "Makes relation concrete and traversable.",
-      "topology": "Lower/manifestation-facing role; geometrically associated with C_S in canonical Vesica.",
+      "identity": "Manifestation-facing role of embodiment, Vessel, lived event, consequence, Seed-bearing potential and return.",
+      "function": "Makes relation concrete in Body/World without becoming the Door itself.",
+      "topology": "Manifestation-facing role associated with C_S in canonical Vesica; related to but distinct from O/Jesus-Door.",
       "neighbors": [
         "father-source",
         "spirit",
         "door",
         "seed",
         "world-plane",
-        "return"
+        "return",
+        "body",
+        "lion",
+        "here-now"
       ],
       "distinctions": [
+        "Son != Door/O",
         "Son != entire lower field",
-        "embodiment != inferiority"
+        "embodiment != inferiority",
+        "Lion/Lamb/Vessel/Twin are motifs/functions, not total synonyms"
       ],
-      "failure_mode": "Passage is reduced to suffering without return/capability.",
-      "test": "Does the role actually mediate embodiment and transition?",
+      "failure_mode": "Manifestation is reduced either to suffering alone or silently collapsed into the threshold/Door function.",
+      "test": "Does the role primarily embody/manifest a state and carry consequence, rather than govern the transition itself?",
       "epistemic_boundary": "project theology"
     },
     {
       "id": "spirit",
       "kind": "relational-process",
-      "identity": "Living continuity that animates, circulates, translates and returns across differentiated parts.",
-      "function": "Keeps source and manifestation in active relation.",
+      "identity": "Living continuity that animates, relates, translates and carries change through ordered positions and time.",
+      "function": "Keeps source and manifestation in active relation and carries state continuity through Ladder/return.",
       "topology": "Crosscutting; not a third sphere.",
       "neighbors": [
         "father-source",
@@ -101,12 +106,18 @@
         "axis",
         "memory",
         "body",
-        "return"
+        "return",
+        "ladder",
+        "here-now",
+        "spiral",
+        "time"
       ],
       "distinctions": [
         "Spirit != Axis",
         "Spirit != Door",
-        "Spirit != breath/CSF/blood"
+        "Spirit != breath/CSF/blood",
+        "Spirit != clock time",
+        "Spirit != a third spatial sphere"
       ],
       "failure_mode": "Every relation is called Spirit or one physical carrier is identified with Spirit.",
       "test": "Is there actual continuity/translation/circulation producing consequence?",
