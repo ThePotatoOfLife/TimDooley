@@ -1,3 +1,6 @@
+// Compatibility/reference-only World Map module.
+// Not registered by the normal bootstrap. Promotion back into the live runtime
+// requires an explicit canonical layer/control ownership decision and validators.
 if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
 const urlState = window.__potatoAtlasUrlState;
 urlState.claim('project-fields', ['field']);
