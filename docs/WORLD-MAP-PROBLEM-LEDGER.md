@@ -315,11 +315,11 @@
 **Completion:** common surfaces consume named tokens, while special semantic colors/encodings remain owned by their data/render domains.
 
 ### WM-053 · Data freshness semantics are inconsistent across map families — P2
-**Status:** verified functionality/reader-trust gap (2026-09-21).  
+**Status:** in progress on branch `world-map-freshness-contract-20260921`.  
 **Evidence:** ADL has an explicit historical-snapshot freshness model and Places records unknown upstream refresh, while other empirical/physical/relationship layers expose date/status in different forms or not at the same UI level.  
 **Risk:** “current”, “latest available”, “historical”, “delayed”, and “unknown vintage” can look equivalent to readers.  
-**TODO:** define one compact freshness/status vocabulary and projection into Current Map / Inspector context, without forcing unlike datasets into the same update cadence.  
-**Completion:** every reader-facing empirical dataset declares observation/reference period plus freshness status or explicit unknown-vintage state.
+**Progress:** added a shared explicit-only freshness vocabulary (`current`, `latest-available`, `delayed`, `historical`, `stale`, `unknown-vintage`, `planned`) plus runtime normalization. Evidence menu rows now render the shared label instead of raw machine status, and Places inspector/runtime status identifies the mirror seed as unknown-vintage rather than implying its local build date is upstream freshness. Provider availability remains explicitly separate.  
+**Remaining:** project the same vocabulary into other reader-facing empirical datasets and Current Map context before closing this item.
 
 
 
