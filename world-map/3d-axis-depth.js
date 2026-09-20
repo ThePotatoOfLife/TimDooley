@@ -4,7 +4,7 @@ urlState.claim('axis-depth', ['axisD']);
 
 if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
 const motion = window.__potatoAtlasMotion;
-const inspector = window.__potatoAtlasInspector;
+function inspectorRouter() { return window.__potatoAtlasInspector; }
 const DATA_URL = '../data/axis-depths.json';
 const ROOT_ID = 'axisDepthNavigator';
 const TINT_ID = 'axisDepthTint';
@@ -103,16 +103,16 @@ function renderAxisDepthPanel(data, current) {
 }
 function openAxisDepthInspector(data, current) {
   if (!current) return false;
-  if (!inspector?.open) { renderAxisDepthPanel(data,current); return true; }
-  const top = inspector.current?.();
+  if (!inspectorRouter()?.open) { renderAxisDepthPanel(data,current); return true; }
+  const top = inspectorRouter()?.current?.();
   if (!top) {
-    inspector.setBaseline({
+    inspectorRouter()?.setBaseline({
       type:'axis', id:'north-axis', owner:'axis-depth',
       render:() => renderAxisDepthPanel(data,current),
     });
   }
-  const parent = inspector.current?.();
-  inspector.open({
+  const parent = inspectorRouter()?.current?.();
+  inspectorRouter()?.open({
     type:'axis-depth',
     id:`D${current.dimension}`,
     owner:'axis-depth',
