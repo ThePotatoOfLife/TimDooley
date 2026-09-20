@@ -39,7 +39,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
             "python scripts/validate_house_governance.py",
             "python scripts/validate_house_topology.py",
             "python scripts/validate_house_subrooms.py",
-            "python scripts/validate_house_harmony.py",
+            "python scripts/validate_house_harmony.py",\n            "python scripts/sync_room_public_surfaces.py --check",
             "python scripts/validate_house_compatibility.py",
             "python scripts/validate_house_world_routing.py",
             "python scripts/test_coordination_convergence.py",
