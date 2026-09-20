@@ -5,6 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MANIFEST=ROOT/"knowledge/cia/manifest.json"; CABINET=ROOT/"rooms/potatoverse-canon/beings/cia/index.html"
 VIEWER=ROOT/"rooms/potatoverse-canon/beings/cia/file/index.html"; COLLECTIONS=ROOT/"data/house/collections.json"
+ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
 ROUTE="rooms/potatoverse-canon/beings/cia/"
 def fail(m): print("FAIL:",m); raise SystemExit(1)
 def main():
@@ -20,11 +21,20 @@ def main():
   p=ROOT/expected
   if not p.is_file(): fail(f"missing dossier {expected}")
  cabinet=CABINET.read_text(encoding="utf-8")
- for token in ["manifest?.characters||[]","data-character-id","knowledge/cia/manifest.json","CIA — Characters, Incidents & Associations"]:
+ for token in ["data-character-id","CIA — Characters, Incidents & Associations","cia-cabinet.js","fbi/"]:
   if token not in cabinet: fail(f"cabinet missing {token!r}")
  viewer=VIEWER.read_text(encoding="utf-8")
- for p in ["knowledge/cia/manifest.json","knowledge/cia/role-index.json","knowledge/cia/story-links.json","knowledge/cia/associations/network.json","knowledge/cia/incidents/index.json","knowledge/cia/enhancements-index.json"]:
+ for p in ["cia-dossier.js","cia-dossier.css","accountStrip","data-panel=\"account\"","data-panel=\"media\""]:
   if p not in viewer: fail(f"viewer missing {p}")
+ if not ACCOUNT.is_file(): fail("CIA symbolic account contract missing")
+ account=json.loads(ACCOUNT.read_text(encoding="utf-8"))
+ if account.get("welfare_rule",{}).get("enabled_by_default") is not False: fail("Dooley welfare must default off")
+ if "not money" not in str(account.get("boundary","")).lower(): fail("symbolic account boundary missing")
+ fbi=json.loads(FBI_MANIFEST.read_text(encoding="utf-8"))
+ if fbi.get("status")!="retired-predecessor": fail("FBI manifest not retired")
+ if (fbi.get("successor") or {}).get("path")!="knowledge/cia/manifest.json": fail("FBI successor drift")
+ fbi_route=FBI_ROUTE.read_text(encoding="utf-8",errors="replace")
+ if "Retired predecessor" not in fbi_route or "location.replace" in fbi_route: fail("FBI route must be visible retired archive, not auto-redirect")
  cols=json.loads(COLLECTIONS.read_text(encoding="utf-8")); c=next((x for x in cols.get("collections",[]) if x.get("id")=="characters-incidents-associations"),None)
  if not c or c.get("public_route")!=ROUTE: fail("House CIA collection route drift")
  actual=sum(1 for p in (ROOT/"knowledge/cia").rglob("*") if p.is_file())
