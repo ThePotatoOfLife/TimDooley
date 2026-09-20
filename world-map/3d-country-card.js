@@ -102,6 +102,12 @@ async function showRegions(code) {
   }
   await api.refresh?.();
   await api.focusPartition?.(next, { padding:72, duration:650, maxZoom:6.6 });
+  const button = document.querySelector('#atlasCountryCard [data-country-action="regions"]');
+  if (button && renderedCode === next) {
+    button.classList.add('active');
+    button.setAttribute('aria-pressed', 'true');
+    button.textContent = `${descriptor.feature_count || 0} regions · shown`;
+  }
   return true;
 }
 
@@ -295,7 +301,8 @@ async function render(code = selection.current?.activeCode || selection.current?
   const refreshed = record?.coverage?.last_enriched || record?.updated || record?.provenance?.retrieved || record?.provenance?.last_refresh || '';
   const name = shared.identity?.name || identity.name || selection.countryName?.(code) || code;
   const capital = shared.identity?.capital || identity.capital || record?.capital || 'Capital unavailable';
-  const regionActionHtml = subdivision ? '<button type="button" data-country-action="regions">' + esc(String(subdivision.feature_count || 0) + ' regions') + '</button>' : '';
+  const regionsShown = retainedRegionPartition === code;
+  const regionActionHtml = subdivision ? '<button type="button" data-country-action="regions" aria-pressed="' + (regionsShown ? 'true' : 'false') + '"' + (regionsShown ? ' class="active"' : '') + '>' + esc(String(subdivision.feature_count || 0) + ' regions' + (regionsShown ? ' · shown' : '')) + '</button>' : '';
 
   card.innerHTML = `
     <div class="atlas-country-head">
