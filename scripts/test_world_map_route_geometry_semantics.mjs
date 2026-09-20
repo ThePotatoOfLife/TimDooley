@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { shortestWrappedLine } from '../world-map/3d-geo-kernel.js';
 
 const root = new URL('../', import.meta.url);
 const app = fs.readFileSync(new URL('world-map/3d-app.js', root), 'utf8');
@@ -16,6 +17,24 @@ assert.ok(app.includes("geometry_meaning:'symbolic_route'"), 'semantic interior 
 assert.ok(
   pathfinder.includes('Map lines are schematic relationship chords, not surveyed transport, cable, pipeline, border, or physical route geometry.'),
   'Path must explain that graph lines are not surveyed physical routes',
+);
+
+// Behavioral geometry: a schematic relation crossing the antimeridian must
+// take the short wrapped chord, not draw almost all the way around the world.
+assert.deepEqual(
+  shortestWrappedLine([170, 10], [-170, 20]),
+  [[170, 10], [190, 20]],
+  'dateline relation chord must use the shortest wrapped longitude path',
+);
+assert.deepEqual(
+  shortestWrappedLine([170, 10], [-170, 20], -175),
+  [[-190, 10], [-170, 20]],
+  'relation chord must preserve the current western world-copy frame',
+);
+assert.deepEqual(
+  shortestWrappedLine([-170, 10], [170, 20], 175),
+  [[190, 10], [170, 20]],
+  'relation chord must preserve the current eastern world-copy frame',
 );
 
 console.log('WORLD MAP ROUTE GEOMETRY SEMANTICS REGRESSION PASSED');
