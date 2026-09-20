@@ -1,0 +1,84 @@
+{
+  "id": "cia-character-schema-v1",
+  "title": "CIA Character Record Schema",
+  "updated": "2026-09-20",
+  "namespace": "potatoverse-character-archive",
+  "fields": {
+    "identity": [
+      "id",
+      "display_name",
+      "aliases",
+      "entity_class",
+      "archive_status"
+    ],
+    "presence": [
+      "first_recorded",
+      "last_recorded",
+      "active_span",
+      "gaps",
+      "returns",
+      "latest_state"
+    ],
+    "chronology": [
+      "dated_events",
+      "period_roles",
+      "turning_points"
+    ],
+    "associations": [
+      "character_id",
+      "association_type",
+      "dates",
+      "contexts",
+      "source_mode",
+      "confidence"
+    ],
+    "states": [
+      "role",
+      "placement",
+      "archetype",
+      "upgrade",
+      "handicap",
+      "attribute",
+      "from",
+      "to",
+      "source_mode"
+    ],
+    "witness": [
+      "sayings",
+      "fruit_or_yield",
+      "decisions",
+      "ritual_or_symbolic_actions"
+    ],
+    "debt_and_repair": [
+      "kind",
+      "amount_or_scale",
+      "source_mode",
+      "date",
+      "repair_condition",
+      "status"
+    ],
+    "provenance": [
+      "source_strata",
+      "direct_quote",
+      "retelling",
+      "conversation_recovered",
+      "literary",
+      "user_supplied",
+      "later_synthesis"
+    ],
+    "recovery": [
+      "open_loops",
+      "identity_questions",
+      "missing_middle",
+      "exact_source_needed"
+    ]
+  },
+  "rules": [
+    "Record first/last as first/last currently recovered evidence, never lifetime endpoints unless independently established.",
+    "Do not infer motive, diagnosis, criminality, supernatural status or permanent moral essence from a role label.",
+    "Project-symbolic debt, karmic debt and spiritual accounting are not legal or financial liabilities unless independently established.",
+    "Association is typed: co-presence is weaker than direct interaction, and direct interaction is weaker than an explicit relationship claim.",
+    "Keep user-supplied alias clues separate from independently recovered aliases.",
+    "A role can change; retain old and new states with dates instead of overwriting history."
+  ]
+}

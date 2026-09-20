@@ -1,0 +1,72 @@
+{
+  "id": "capy",
+  "display_name": "Capy",
+  "bureau": "CIA — Characters, Incidents & Associations",
+  "entity_class": "person",
+  "aliases": [],
+  "archive_status": null,
+  "room_policy": null,
+  "room_path": null,
+  "tim_relation": {
+    "archetypes": [],
+    "narrative_functions": [],
+    "regions": [],
+    "editorial_reading": null,
+    "source_boundary": null
+  },
+  "chronology": {
+    "chronicle_occurrence_count": 0,
+    "chronicle_dates": [],
+    "cast_period_roles": [
+      {
+        "period": "2024",
+        "role": "Great Book/project-side chaotic social character; documentary basis requires recovery"
+      }
+    ],
+    "recovered_social_days": []
+  },
+  "top_co_presence": [],
+  "symbolic_roles": [],
+  "highlighted_incidents": [
+    {
+      "date": "2024 literary",
+      "title": "Chaotic conduit",
+      "summary": "Great Book casts Capy as a chaotic conduit interacting with Tim, BigTech and Sammy; documentary sequence still needs recovery."
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "character_archive",
+      "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json"
+    }
+  ],
+  "recovery_leads": [
+    "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
+    "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
+    "Add relationship edges only when a dated scene or explicit source supports them."
+  ],
+  "cia_record": {
+    "authority": "canonical",
+    "record_type": "character-dossier",
+    "presence": {
+      "first_recorded": null,
+      "last_recorded": null,
+      "rule": "First/last currently recovered dated evidence in this dossier; not lifetime endpoints."
+    },
+    "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
+    "debt_and_repair": {
+      "records": [],
+      "rule": "Do not attach legal, financial, karmic or spiritual debt unless a dated source explicitly does so; symbolic debt remains project language unless independently established."
+    },
+    "state_rule": "Roles, archetypes, upgrades, handicaps and project-symbolic placements are date/source-bounded states, not permanent human essences.",
+    "open_loops": [
+      "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
+      "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
+      "Add relationship edges only when a dated scene or explicit source supports them."
+    ]
+  }
+}

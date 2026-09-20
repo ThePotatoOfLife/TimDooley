@@ -70,7 +70,7 @@
           "status": "relation-not-identity"
         }
       ],
-      "fbi_dossier_path": "knowledge/fbi/figures/marty-biz.json"
+      "fbi_dossier_path": "knowledge/cia/characters/marty-biz.json"
     },
     {
       "id": "sammy",
@@ -86,7 +86,7 @@
           "role": "recurring Potatoverse social cast"
         }
       ],
-      "fbi_dossier_path": "knowledge/fbi/figures/sammy.json"
+      "fbi_dossier_path": "knowledge/cia/characters/sammy.json"
     },
     {
       "id": "josh-moon",
@@ -124,7 +124,7 @@
           "role": "public/project rival and Great Book literary figure"
         }
       ],
-      "fbi_dossier_path": "knowledge/fbi/figures/bigtech.json"
+      "fbi_dossier_path": "knowledge/cia/characters/bigtech.json"
     },
     {
       "id": "grace",
@@ -172,7 +172,7 @@
       ],
       "room_path": "rooms/potatoverse-canon/beings/metalorian/",
       "identity_note": "Alias continuity and allegations require source-level confirmation. Later illness/misfortune is not evidence of causation or fulfilled prophecy.",
-      "fbi_dossier_path": "knowledge/fbi/figures/metalorian.json"
+      "fbi_dossier_path": "knowledge/cia/characters/metalorian.json"
     },
     {
       "id": "monkey",
@@ -217,7 +217,7 @@
           "role": "Great Book/project-side chaotic social character; documentary basis requires recovery"
         }
       ],
-      "fbi_dossier_path": "knowledge/fbi/figures/capy.json"
+      "fbi_dossier_path": "knowledge/cia/characters/capy.json"
     },
     {
       "id": "sarah-ann",
@@ -557,7 +557,7 @@
           "status": "scene-bound creative/conversation"
         }
       ],
-      "fbi_dossier_path": "knowledge/fbi/figures/rahu.json"
+      "fbi_dossier_path": "knowledge/cia/characters/rahu.json"
     },
     {
       "id": "optimistique",
@@ -569,7 +569,7 @@
           "role": "gentle singing/support figure in the Soul Farmers/Ethereal Tuber story"
         }
       ],
-      "fbi_dossier_path": "knowledge/fbi/figures/optimistique.json"
+      "fbi_dossier_path": "knowledge/cia/characters/optimistique.json"
     },
     {
       "id": "evil-mashed-potatoes",
@@ -742,7 +742,7 @@
           "status": "symbolic adjacency"
         }
       ],
-      "fbi_dossier_path": "knowledge/fbi/figures/termite.json"
+      "fbi_dossier_path": "knowledge/cia/characters/termite.json"
     },
     {
       "id": "txt",
@@ -768,7 +768,7 @@
         }
       ],
       "identity_note": "Keep person/handle, literary character and later retrospective role separate until the source chain joins them.",
-      "fbi_dossier_path": "knowledge/fbi/figures/txt.json"
+      "fbi_dossier_path": "knowledge/cia/characters/txt.json"
     },
     {
       "id": "matthew-mtclassic",
@@ -797,7 +797,7 @@
           "status": "archetype-only"
         }
       ],
-      "fbi_dossier_path": "knowledge/fbi/figures/matthew-mtclassic.json"
+      "fbi_dossier_path": "knowledge/cia/characters/matthew-mtclassic.json"
     },
     {
       "id": "mediomu007",
@@ -829,7 +829,7 @@
           "status": "archetype-only"
         }
       ],
-      "fbi_dossier_path": "knowledge/fbi/figures/mediomu007.json"
+      "fbi_dossier_path": "knowledge/cia/characters/mediomu007.json"
     },
     {
       "id": "tomatoes",
@@ -877,10 +877,12 @@
   "archive_rule": "For long-tail people/handles, consult character-archive-v2.json for role × time × source × function. Do not promote old psychological labels into canonical identity.",
   "role_ecology_owner": "knowledge/world/potatoverse-cast-role-ecology.json",
   "scene_assignment_ledger": "knowledge/story/character-symbolic-role-assignments.json",
-  "fbi_bureau": {
-    "manifest": "knowledge/fbi/manifest.json",
-    "bonds": "knowledge/fbi/bonds/network.json",
-    "incidents": "knowledge/fbi/incidents/index.json",
-    "public_room": "rooms/potatoverse-canon/beings/fbi/"
+  "cia_archive": {
+    "manifest": "knowledge/cia/manifest.json",
+    "bonds": "knowledge/cia/associations/network.json",
+    "incidents": "knowledge/cia/incidents/index.json",
+    "public_room": "rooms/potatoverse-canon/beings/cia/",
+    "associations": "knowledge/cia/associations/network.json",
+    "principle": "Characters, Incidents & Associations; source-bounded Tim-centered archive records, not an intelligence-service classification."
   }
 }

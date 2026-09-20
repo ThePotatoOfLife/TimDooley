@@ -1,0 +1,105 @@
+{
+  "id": "petty-wappo",
+  "display_name": "Petty Wappo",
+  "bureau": "CIA — Characters, Incidents & Associations",
+  "depth_tier": "working-file",
+  "depth_note": "Recurring figure with enough dated presence for a working dossier; raw-source recovery can still deepen it.",
+  "entity_class": "person-or-handle",
+  "aliases": [
+    "PWappo"
+  ],
+  "archive_status": "historical-current-unknown",
+  "room_policy": "cluster",
+  "room_path": null,
+  "tim_relation": {
+    "archetypes": [
+      "witness-observer",
+      "wanderer-threshold"
+    ],
+    "narrative_functions": [
+      "questions",
+      "detached observation"
+    ],
+    "regions": [
+      "Plane",
+      "Threshold"
+    ],
+    "editorial_reading": "Old profile explicitly calls him a passive observer and wanderer.",
+    "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+  },
+  "chronology": {
+    "chronicle_occurrence_count": 11,
+    "chronicle_dates": [
+      "November 7, 2024",
+      "December 18, 2024",
+      "March 6, 2025"
+    ],
+    "cast_period_roles": [],
+    "recovered_social_days": [
+      {
+        "date": "2024-12-18",
+        "title": "Growth lesson and disruption share one day",
+        "minimum_event": "The Chronicle frames Tim's work with Ana as a growth/cultivation episode while Juice/Petty Wappo occupy a disruptive counter-thread.",
+        "source_mode": "chronicle_retelling"
+      }
+    ]
+  },
+  "top_co_presence": [
+    {
+      "name": "Tim Dooley",
+      "count": 1
+    },
+    {
+      "name": "Anacondasin",
+      "count": 1
+    },
+    {
+      "name": "Juice",
+      "count": 1
+    }
+  ],
+  "symbolic_roles": [],
+  "highlighted_incidents": [
+    {
+      "date": "2024-12-18",
+      "title": "Growth lesson and disruption share one day",
+      "summary": "The Chronicle frames Tim's work with Ana as a growth/cultivation episode while Juice/Petty Wappo occupy a disruptive counter-thread.",
+      "source_mode": "chronicle_retelling"
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "character_archive",
+      "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "dated_social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    }
+  ],
+  "recovery_leads": [
+    "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
+    "Separate direct speech from Chronicle paraphrase and later project interpretation.",
+    "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+  ],
+  "cia_record": {
+    "authority": "canonical",
+    "record_type": "character-dossier",
+    "presence": {
+      "first_recorded": "2024-12-18",
+      "last_recorded": "2024-12-18",
+      "rule": "First/last currently recovered dated evidence in this dossier; not lifetime endpoints."
+    },
+    "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
+    "debt_and_repair": {
+      "records": [],
+      "rule": "Do not attach legal, financial, karmic or spiritual debt unless a dated source explicitly does so; symbolic debt remains project language unless independently established."
+    },
+    "state_rule": "Roles, archetypes, upgrades, handicaps and project-symbolic placements are date/source-bounded states, not permanent human essences.",
+    "open_loops": [
+      "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
+      "Separate direct speech from Chronicle paraphrase and later project interpretation.",
+      "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+    ]
+  }
+}

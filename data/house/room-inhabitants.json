@@ -536,7 +536,7 @@
       ],
       "route": "/shadow-farm/",
       "summary": "Federal law-enforcement interface for criminal investigation, civil-rights enforcement and hate-crime data collection.",
-      "status_note": "Real U.S. federal law-enforcement institution; distinct from the Potatoverse Figures, Bonds & Incidents bureau.",
+      "status_note": "Real U.S. federal law-enforcement institution; distinct from the Potatoverse Characters, Incidents & Associations bureau.",
       "evidence_note": "Separate complaint, investigation, charge, conviction and aggregate statistics.",
       "facets": {
         "identity": {
@@ -2376,7 +2376,7 @@
     },
     {
       "id": "fbi-character-bureau",
-      "label": "FBI — Figures, Bonds & Incidents (Potatoverse)",
+      "label": "CIA — Characters, Incidents & Associations (Potatoverse)",
       "kind": "character-dossier-bureau",
       "room_ids": [
         "memory-recovery",
@@ -2386,25 +2386,25 @@
         "developmental-genealogy",
         "subculture-group-formation"
       ],
-      "route": "/rooms/potatoverse-canon/beings/fbi/",
+      "route": "/rooms/potatoverse-canon/beings/cia/",
       "summary": "Canonical Potatoverse dossier bureau linking recurring figures to aliases, chronology, conversations, Story, archetypes, symbolic roles, bonds, dated incidents and recovery leads.",
-      "status_note": "FBI means Figures, Bonds & Incidents. This is a Potatoverse archive system, not law enforcement.",
+      "status_note": "FBI means Characters, Incidents & Associations. This is a Potatoverse archive system, not law enforcement.",
       "evidence_note": "Dossier inclusion means archival relevance only; it does not imply suspicion, guilt or wrongdoing.",
       "maturity": "case-ready",
       "facets": {
         "sources": [
           {
-            "source_ref": "knowledge/fbi/manifest.json",
+            "source_ref": "knowledge/cia/manifest.json",
             "role": "bureau manifest",
             "evidence_class": "project archive synthesis"
           },
           {
-            "source_ref": "knowledge/fbi/bonds/network.json",
+            "source_ref": "knowledge/cia/associations/network.json",
             "role": "relationship/co-presence network",
             "evidence_class": "source-derived network"
           },
           {
-            "source_ref": "knowledge/fbi/incidents/index.json",
+            "source_ref": "knowledge/cia/incidents/index.json",
             "role": "dated incident index",
             "evidence_class": "source-bounded event index"
           }
