@@ -92,6 +92,15 @@ def main() -> int:
             errors.append("country card must use the normalized Current Map answer instead of legacy Map color copy")
         if "populationPrimary" not in country_card:
             errors.append("country card must deduplicate Population when Population is the primary analytical layer")
+        for token in (
+            "SUBDIVISION_INDEX_URL",
+            "async function subdivisionDescriptor",
+            "async function showRegions",
+            "data-country-action=\"regions\"",
+            "retainPartition(code, 'country-card')",
+        ):
+            if token not in country_card:
+                errors.append(f"country card missing subdivision discovery marker: {token}")
 
     if world_bar:
         compact = re.sub(r"\s+", "", world_bar)
