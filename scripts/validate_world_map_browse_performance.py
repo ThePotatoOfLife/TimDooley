@@ -120,7 +120,7 @@ def main() -> int:
         "function pinCountry",
         "function unpinCountry",
         "potato-atlas-pin-change",
-        "searchParams.set('pins'",
+        "urlState.patch('selection-inspector'",
         "event.originalEvent?.shiftKey",
         "activateCountry(code",
     ):
