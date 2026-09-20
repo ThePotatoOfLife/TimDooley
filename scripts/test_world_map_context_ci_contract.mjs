@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
 const workflow = fs.readFileSync(new URL('../.github/workflows/quality-checks.yml', import.meta.url), 'utf8');
+const runner = fs.readFileSync(new URL('./run_quality_group.py', import.meta.url), 'utf8');
 
 for (const command of [
   'python scripts/validate_world_map_context_visibility.py',
@@ -19,9 +20,10 @@ for (const command of [
   'node scripts/test_world_map_relation_budget_contract.mjs',
   'python scripts/validate_world_map_runtime_telemetry.py',
 ]) {
-  assert.ok(workflow.includes(command), `repository quality workflow missing ${command}`);
+  assert.ok(runner.includes(command), `world-map quality runner missing ${command}`);
 }
 
+assert.ok(workflow.includes('python scripts/run_quality_group.py world_map'), 'quality workflow must delegate World Map checks to the grouped runner');
 assert.ok(workflow.includes('pull_request:'), 'quality checks must run for pull requests');
 assert.ok(workflow.includes('workflow_dispatch:'), 'quality checks must support manual verification');
 assert.ok(!fs.existsSync(new URL('../.github/workflows/world-map-context-checks.yml', import.meta.url)), 'context checks must not add workflow sprawl');
