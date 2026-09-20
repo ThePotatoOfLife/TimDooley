@@ -44,6 +44,7 @@ body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transpa
 <div class="tabs">
 <button class="tab active" data-panel="overview">Overview</button>
 <button class="tab" data-panel="witness">Tim’s Witness</button>
+<button class="tab" data-panel="statehistory">State History</button>
 <button class="tab" data-panel="timeline">Timeline</button>
 <button class="tab" data-panel="conversations">Conversations</button>
 <button class="tab" data-panel="patterns">Patterns</button>
@@ -56,6 +57,7 @@ body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transpa
 </div>
 <section class="panel active" id="overview"></section>
 <section class="panel" id="witness"></section>
+<section class="panel" id="statehistory"></section>
 <section class="panel" id="timeline"></section>
 <section class="panel" id="conversations"></section>
 <section class="panel" id="patterns"></section>
@@ -133,6 +135,22 @@ function witnessHtml(){
  (modifiers.length?'<div class="block"><h2>Upgrades / handicaps</h2>'+modifiers.map(x=>'<article class="event"><time>'+esc(x.date||'')+'</time><h3>'+esc((x.kind||'modifier').toUpperCase())+' · '+esc(x.modifier||'state')+'</h3><p>'+esc(x.evidence||'')+'</p>'+(x.counterform?'<p class="muted"><b>Counterform:</b> '+esc(x.counterform)+'</p>':'')+'<small>'+esc(x.status||'')+'</small></article>').join('')+'</div>':'')+
  (sayings.length?'<div class="block"><h2>Words / sayings</h2>'+sayings.map(x=>'<blockquote><p>“'+esc(x.text||'')+'”</p><small>'+esc(x.source_mode||'attributed source')+(x.note?' · '+esc(x.note):'')+'</small></blockquote>').join('')+'</div>':'')+
  '<p class="stamp">TIM-WITNESS BOUNDARY</p><p>'+esc(w.boundary||'Tim/project interpretation is preserved as attributed witness, not independent fact.')+'</p>';
+}
+function stateHistoryHtml(){
+ const w=dossier.tim_witness||{};
+ const rows=[];
+ for(const x of arr(w.roles)) rows.push({date:x.date||'',kind:'role',title:x.role||'role',summary:x.note||'',status:x.status||''});
+ for(const x of arr(w.inherited_states)) rows.push({date:x.date||'',kind:'inheritance',title:(x.from_role||'role')+' ⇒ '+arr(x.inherits).join(' ⇒ '),summary:x.note||'',status:x.basis||''});
+ for(const x of arr(w.episode_attributes)) rows.push({date:x.date||'',kind:'attribute',title:x.attribute||'attribute',summary:x.evidence||'',status:x.status||''});
+ for(const x of arr(w.state_modifiers)) rows.push({date:x.date||'',kind:x.kind||'modifier',title:x.modifier||'state modifier',summary:x.evidence||'',status:x.status||'',counterform:x.counterform||''});
+ const debt=w.debt_relation||{};
+ for(const x of arr(debt.basis)) rows.push({date:x.date||'',kind:'debt relation',title:x.kind||'debt relation',summary:x.reading||'',status:x.source_class||''});
+ for(const x of arr(debt.repair_credit)) rows.push({date:x.date||'',kind:'repair credit',title:x.kind||'repair credit',summary:x.reading||'',status:'Tim/project generative credit'});
+ const key=x=>String(x.date||'').replace(/^around\s+/i,'').replace(/^late\s+/i,'9999-').replace(/^open/i,'9999');
+ rows.sort((a,b)=>key(a).localeCompare(key(b)));
+ if(!rows.length)return '<p class="empty">No dated symbolic state history has been recovered for this file yet.</p>';
+ return '<div class="block"><h2>State history</h2><p>How Tim/project classifications change over time: roles, inherited states, debt/credit, attributes and reversible upgrades or handicaps.</p><p class="muted">This is a symbolic relation-history, not a psychological score or permanent caste.</p></div>'+
+ '<div class="timeline">'+rows.map(x=>'<article class="event"><time>'+esc(x.date)+'</time><p class="stamp">'+esc(x.kind)+'</p><h3>'+esc(x.title)+'</h3><p>'+esc(x.summary)+'</p>'+(x.counterform?'<p class="muted"><b>Counterform:</b> '+esc(x.counterform)+'</p>':'')+'<small>'+esc(x.status||'')+'</small></article>').join('')+'</div>';
 }
 function timelineHtml(){
  const all=[];
@@ -238,6 +256,7 @@ function render(){
  ].filter(Boolean).map(x=>'<span class="badge">'+esc(x)+'</span>').join('');
  document.getElementById('overview').innerHTML=overviewHtml();
  document.getElementById('witness').innerHTML=witnessHtml();
+ document.getElementById('statehistory').innerHTML=stateHistoryHtml();
  document.getElementById('timeline').innerHTML=timelineHtml();
  document.getElementById('conversations').innerHTML=conversationsHtml();
  document.getElementById('patterns').innerHTML=patternsHtml();
