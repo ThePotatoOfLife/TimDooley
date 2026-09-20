@@ -131,6 +131,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
             "python scripts/validate_world_map_context_visibility.py",
             "node scripts/test_world_map_context_policy.mjs",
             "node scripts/test_world_map_ui_surface_budget.mjs",
+            "node scripts/test_world_map_top_bar_density.mjs",
             "node scripts/test_world_map_time_policy.mjs",
             "node scripts/test_world_map_investigation_contract.mjs",
             "node scripts/test_world_map_investigation_surface_ownership.mjs",
