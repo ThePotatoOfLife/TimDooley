@@ -1,6 +1,6 @@
 {
   "id": "world-financial-system-foundation",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-20",
   "status": "active-foundation",
   "purpose": "Canonical seed layer for central banks, currencies, sovereign and supranational debt, reserve assets, settlement systems, creditor classes, cross-border claims and financial obligations. It is designed to answer who issues, who owes, who holds, in what currency, through which institution, at what date, and with what evidence.",
@@ -938,6 +938,10 @@
     }
   },
   "research_queue": [
+    "Use LEIs to resolve legal entities and parent relationships before scaling named institution graphs.",
+    "Add financial-market infrastructure roles for messaging, payment settlement, securities settlement/custody and clearing without treating them as ownership.",
+    "Add multilateral lender funding chains so member capital, institution bonds and downstream project/sovereign loans remain separate obligations.",
+    "Add IMF PIP/CPIS counterpart-economy portfolio holdings as the primary holder-side complement to BIS IDS issuer data.",
     "Build the BIS LBS/CBS/DSS/IDS generated runtime described in data/bis-banking-bond-data.json.",
     "Add the remaining major and North-relevant central banks with primary-source institutional records, including the Central Bank of Iceland and Swiss National Bank.",
     "Build country-by-country sovereign issuer records and maturity/auction calendars without confusing funding flows with debt stocks.",
@@ -950,5 +954,6 @@
     "Create a dated obligation graph that can answer issuer-to-creditor, creditor-to-issuer, currency exposure, maturity wall and refinancing questions.",
     "Only after comparable directed edges exist, expose money/debt flow arrows in the World Map relation renderer."
   ],
-  "bis_data_foundation": "data/bis-banking-bond-data.json"
+  "bis_data_foundation": "data/bis-banking-bond-data.json",
+  "institution_topology": "data/world-financial-institution-topology.json"
 }
