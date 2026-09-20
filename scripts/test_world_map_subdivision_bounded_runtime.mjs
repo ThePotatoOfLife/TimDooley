@@ -90,6 +90,9 @@ const fakeMap = {
   },
   getLayer(id) { return layers.get(id) || null; },
   addLayer(layer) { layers.set(layer.id, layer); },
+  setFilter(id, filter) { const layer=layers.get(id); if (layer) layer.filter=filter; },
+  setLayerZoomRange(id, minzoom, maxzoom) { const layer=layers.get(id); if (layer) { layer.minzoom=minzoom; layer.maxzoom=maxzoom; } },
+  setLayoutProperty(id, key, value) { const layer=layers.get(id); if (layer) { layer.layout=layer.layout||{}; layer.layout[key]=value; } },
   getCanvas() { return { style:{} }; },
   on(event, layerOrHandler, maybeHandler) {
     const layer = typeof layerOrHandler === 'string' ? layerOrHandler : '*';
@@ -141,14 +144,16 @@ await window.__potatoAtlasSubdivisions.loadPartition('DNK');
 assert.deepEqual([...sources.keys()], ['atlas-subdivisions-active'], 'subdivisions must use exactly one shared GeoJSON source');
 assert.deepEqual(
   [...layers.keys()].filter(id => id.startsWith('atlas-subdivision')).sort(),
-  ['atlas-subdivision-hit', 'atlas-subdivision-label', 'atlas-subdivision-line'],
-  'subdivisions must use exactly three shared layers independent of loaded country count',
+  ['atlas-subdivision-hit', 'atlas-subdivision-label', 'atlas-subdivision-line', 'atlas-subdivision-selected-label'],
+  'subdivisions must use three shared interaction/context layers plus one selected-label layer independent of loaded country count',
 );
 assert.equal(layers.get('atlas-subdivision-line')?.minzoom, 2.5, 'subdivision borders should remain visible at national context scale once geometry is retained');
 assert.equal(layers.get('atlas-subdivision-hit')?.minzoom, 3.4, 'early national-context borders must not create early subdivision hit targets');
-assert.equal(layers.get('atlas-subdivision-label')?.minzoom, 4.25, 'state labels should keep the shared label threshold');
+assert.equal(layers.get('atlas-subdivision-label')?.minzoom, 4.25, 'wide-screen state labels should keep the shared label threshold');
+assert.equal(layers.get('atlas-subdivision-selected-label')?.layout?.['text-allow-overlap'], true, 'selected tiny/dense subdivisions must bypass ordinary collision suppression');
 
 assert.equal(await window.__potatoAtlasSubdivisions.select('US-CA', {fit:false}), true);
+assert.deepEqual(layers.get('atlas-subdivision-selected-label')?.filter, ['==',['get','id'],'US-CA'], 'selected subdivision must receive a collision-independent label');
 assert.equal(selectedEvents.at(-1)?.feature?.properties?.population?.source, 'U.S. Census Bureau', 'selection must preserve raw nested population provenance');
 assert.equal(await window.__potatoAtlasSubdivisions.select('DK-1083', {fit:false}), true);
 assert.equal(selectedEvents.at(-1)?.feature?.properties?.geometry_source_url, 'https://api.dataforsyningen.dk/regioner?format=geojson', 'selection must preserve raw nested/source provenance');
