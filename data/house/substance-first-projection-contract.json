@@ -1,7 +1,7 @@
 {
   "id": "substance-first-projection-contract",
   "title": "Substance-First Public Projection Contract",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "status": "binding presentation/materialization contract",
   "purpose": "Make reader-facing substance the first-class public experience while preserving quiet, typed, machine-readable bonds to canonical owners, Rooms, provenance and evidence boundaries underneath the prose.",
@@ -55,19 +55,59 @@
       ],
       "anchors": [
         {
-          "section_id": null,
+          "section_id": "culture-in-motion",
           "owner_paths": [
-            "data/house/project-synthesis.json",
-            "data/house/public-surfaces.json",
-            "data/house/reader-richness-audit.json"
+            "knowledge/world/culture-sektur-platform-media-political-ecology.json",
+            "knowledge/world/farm-sektur-attention-extraction-ecology.json",
+            "data/house/project-synthesis.json"
           ],
           "relation_types": [
-            "public-doorway",
-            "project-synthesis",
-            "reader-projection"
+            "formation",
+            "reproduction",
+            "attention-economy",
+            "institutional-interface"
           ],
           "evidence_classes": [
-            "project-governance"
+            "cultural-analysis",
+            "project-model",
+            "external-research"
+          ]
+        },
+        {
+          "section_id": "reality-cases",
+          "owner_paths": [
+            "data/house/entity-dossiers-wave-001.json",
+            "data/house/route-case-matrix-wave-001.json"
+          ],
+          "relation_types": [
+            "entity-case",
+            "longitudinal-indicator",
+            "operator-test",
+            "evidence-boundary"
+          ],
+          "evidence_classes": [
+            "external-fact",
+            "official-source",
+            "project-synthesis"
+          ]
+        },
+        {
+          "section_id": "working-capabilities",
+          "owner_paths": [
+            "data/house/foundation-integration-contract.json",
+            "knowledge/core/repair-forge-protocol.json",
+            "data/house/history-canon-revision-protocol.json",
+            "data/house/works-fruit-contract.json"
+          ],
+          "relation_types": [
+            "capability",
+            "revision",
+            "repair",
+            "consequence"
+          ],
+          "evidence_classes": [
+            "project-governance",
+            "project-model"
           ]
         }
       ]
