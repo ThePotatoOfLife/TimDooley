@@ -85,6 +85,8 @@ globalThis.fetch = async url => {
         USA:{ path:'USA.geo.json', id_prefix:'US-', viewport_bounds:{west:-179.5,east:-65,south:17,north:72.5} },
         DNK:{ path:'DNK.geo.json', id_prefix:'DK-', viewport_bounds:{west:7.5,east:15.3,south:54.4,north:57.9} },
         CAN:{ path:'CAN.geo.json', id_prefix:'CA-', viewport_bounds:{west:-141.1,east:-52.5,south:41.6,north:83.2} },
+        UKR:{ path:'UKR.geo.json', id_prefix:'UA-', viewport_bounds:{west:22,east:40.3,south:44,north:52.5} },
+        RUS:{ path:'RUS.geo.json', id_prefix:'RU-', viewport_bounds:{west:19,east:-170,south:41,north:82} },
       } }),
     };
   }
@@ -99,6 +101,20 @@ globalThis.fetch = async url => {
       type:'Feature',
       properties:{id:'CA-ON',name:'Ontario',code:'ON',subdivision_type:'province',parent_iso3:'CAN',parent_name:'Canada'},
       geometry:{type:'Polygon',coordinates:[[[-95,42],[-74,42],[-74,57],[-95,57],[-95,42]]]},
+    }] }) };
+  }
+  if (text.includes('world-subdivisions/UKR.geo.json')) {
+    return { ok:true, json:async()=>({ type:'FeatureCollection', features:[{
+      type:'Feature',
+      properties:{id:'UA-63',name:'Kharkiv Oblast',code:'63',subdivision_type:'oblast',parent_iso3:'UKR',parent_name:'Ukraine'},
+      geometry:{type:'Polygon',coordinates:[[[35,48],[38,48],[38,51],[35,51],[35,48]]]},
+    }] }) };
+  }
+  if (text.includes('world-subdivisions/RUS.geo.json')) {
+    return { ok:true, json:async()=>({ type:'FeatureCollection', features:[{
+      type:'Feature',
+      properties:{id:'RU-MOSCOW',name:'Moscow',code:'MOSCOW',subdivision_type:'federal city',parent_iso3:'RUS',parent_name:'Russia'},
+      geometry:{type:'Polygon',coordinates:[[[37,55],[38,55],[38,56],[37,56],[37,55]]]},
     }] }) };
   }
   throw new Error(`unexpected fetch ${text}`);
@@ -117,5 +133,13 @@ assert.equal(window.__potatoAtlasSubdivisions.selected, 'DK-1083');
 const canadaLoaded = await window.__potatoAtlasSubdivisions.loadPartition('CAN');
 assert.equal(canadaLoaded.data.features[0].properties.id, 'CA-ON');
 assert.ok(fetched.some(url => url.includes('world-subdivisions/CAN.geo.json')), 'Canada partition must resolve through the generic loader');
+
+const ukraineLoaded = await window.__potatoAtlasSubdivisions.loadPartition('UKR');
+assert.equal(ukraineLoaded.data.features[0].properties.id, 'UA-63');
+assert.ok(fetched.some(url => url.includes('world-subdivisions/UKR.geo.json')), 'Ukraine partition must resolve through the generic loader');
+
+const russiaLoaded = await window.__potatoAtlasSubdivisions.loadPartition('RUS');
+assert.equal(russiaLoaded.data.features[0].properties.id, 'RU-MOSCOW');
+assert.ok(fetched.some(url => url.includes('world-subdivisions/RUS.geo.json')), 'Russia partition must resolve through the generic loader');
 
 console.log('WORLD MAP MULTI-COUNTRY SUBDIVISION REGRESSION PASSED');

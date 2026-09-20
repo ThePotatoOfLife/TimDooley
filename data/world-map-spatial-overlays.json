@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.1.0",
-  "updated": "2026-09-19",
+  "schema_version": "1.2.0",
+  "updated": "2026-09-20",
   "purpose": "Independent spatial overlays for sacred, textual, historical, current, disputed and conflict-context geography. Overlap is intentional and never implies equivalence.",
   "epistemic_types": [
     "current_observed",
@@ -370,11 +370,12 @@
       "confidence": "direct",
       "availability": "planned",
       "measurable": false,
-      "status_note": "Reserved for delayed, dated, source-attributed events and humanitarian/access layers. No live tracking of individual tanks, aircraft, troops, units or operational routes.",
+      "status_note": "Reserved for delayed, dated, source-attributed conflict snapshots and humanitarian/access layers. Administrative geography remains independent. No live tracking of individual tanks, aircraft, troops, ships, units or operational routes.",
       "visual": {
         "channel": "overlay-event",
         "legend_class": "event"
-      }
+      },
+      "contract_owner": "data/world-map-conflict-snapshot-contract.json"
     },
     {
       "id": "project.below.us-cases",

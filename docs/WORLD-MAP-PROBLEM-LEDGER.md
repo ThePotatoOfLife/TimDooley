@@ -137,6 +137,67 @@
 **Resolution:** subdivision runtime exposes provider-agnostic `evidenceSummaries(id)`; inspector cards and unified subdivision search consume the generic summaries. Search displays active evidence count context without naming or depending on ADL.  
 **Guard:** `validate_world_map_subdivision_evidence_projection.py` requires the generic provider/search bridge and explicitly rejects ADL hard-coding in unified search.
 
+### WM-026 · Aggregate map views do not disclose projection loss — P2
+**Status:** fixed / governed on branch `world-map-projection-loss-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** the shared Atlas projection contract required `information_loss` and `source_path_back`, but the live World Map Active View did not project those semantics into runtime state or reader UI.  
+**Resolution:** `data/world-map-view-projections.json` declares preservation, loss and reconstructability for country scalar, set-membership, active-country relation and pinned-country comparison views. `3d-active-view.js` composes the active contracts and `3d-world-bar.js` exposes a compact “View omits” + reconstructability disclosure.  
+**Guard:** `scripts/validate_world_map_view_projections.py` enforces the contract, runtime markers and reader disclosure through the World Map quality group.  
+**Rule retained:** a choropleth, set, relation filter or comparison is a lossy View, never a substitute for the canonical country/relationship/source owner.
+
+### WM-027 · Ukraine first-order region partition — P2
+**Status:** implemented on branch `world-map-ukraine-regions-2026-09-20`, pending exact-head CI confirmation.  
+**Resolution:** Ukraine now enters through the canonical generic subdivision registry as a bounded geometry-first partition with 26 source-represented first-order features, stable `UA-*` IDs, local + English names, generic search records, and no invented population values.  
+**Epistemic boundary:** the partition is administrative reference geometry only. It is not a current occupation, control, sovereignty, or front-line layer. The source transform combines Sevastopol into the Crimea geometry; that transformation is preserved as explicit source metadata rather than adopted as a project claim.  
+**Guard:** the generic subdivision validator checks feature count, IDs, provenance, unknown-population semantics, the Crimea/Sevastopol representation note, runtime byte budgets and multi-country loader behavior.  
+**Next:** add Russia through the same contract once a compact reproducible ADM1 geometry source is pinned; model war/control snapshots separately as dated conflict-context overlays.
+
+### WM-028 · ADM1 ingestion remains manual and country-specific — P2
+**Status:** fixed / governed on branch `world-map-adm1-importer-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** the renderer and partition registry were generic, but adding another first-order country partition still required manual canonicalization of IDs, provenance, unknown-population semantics, byte accounting and search records.  
+**Resolution:** `scripts/import_world_adm1.py` now normalizes a reviewed local GeoJSON into the canonical geometry-first partition schema plus a review-only descriptor sidecar. It never downloads sources or silently mutates the live registry. Operators must explicitly map name/code/type fields and supply source label/ref/vintage, representation note, expected count and optional viewport.  
+**Guards:** importer fails closed on duplicate IDs, missing names/codes, non-polygon geometry, feature-count drift and hard byte-budget overflow; it SHA-256 fingerprints the exact source bytes, preserves unknown population as `unknown-not-zero`, and emits geometry-free search records. `test_world_map_adm1_importer.py` runs in the World Map quality group.  
+**Rule retained:** acquisition, normalization and registry promotion remain separate review steps; external geometry does not become authoritative merely because it can be normalized.
+
+### WM-029 · Conflict-context geography lacks a dated snapshot contract — P2
+**Status:** fixed / governed on branch `world-map-conflict-snapshot-contract-rebased-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** the Spatial Overlay system reserved a conflict family, but it did not yet define the minimum time/source/meaning metadata needed to show historical or delayed control/front-line context without contaminating administrative geography.  
+**Resolution:** `data/world-map-conflict-snapshot-contract.json` defines allowed snapshot meanings, required observation/publication fields, source attribution, confidence, explicit not-live semantics, Time-dimension ownership and administrative-independence rules. The live `conflict.context` manifest row points to this contract and remains planned/dormant with no geometry.  
+**Guard:** `scripts/validate_world_map_conflict_snapshots.py` requires the conflict family to remain dormant until reviewed geometry exists, binds snapshots to the canonical Time owner, rejects activation without source/not-live/administrative-independence guarantees, and preserves the explicit no-live-tactical-tracking boundary.  
+**Next:** ingest reviewed delayed/historical source snapshots as separate geometry owners; compare exact snapshots through Time without interpolating invented front lines.
+
+### WM-030 · Geometry-first subdivision inspectors hide uncertainty/provenance — P2
+**Status:** fixed / governed on branch `world-map-subdivision-inspector-richness-rebased-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** generic subdivision cards displayed bare dashes for missing population/area/density and only a one-line boundary source, so newer geometry-first partitions could look incomplete without explaining what was intentionally unknown or source-specific.  
+**Resolution:** subdivision inspection now distinguishes known vs unknown population/area/density, explicitly states that unknown population is not zero, shows local names, source reference/vintage, boundary provenance and representation notes, and keeps city/place hydration plus evidence context intact.  
+**Guard:** the canonical subdivision validator requires the richer inspector helpers and explicit unknown/provenance/representation language.  
+**Rule retained:** missing statistics are never inferred from geometry, and source-specific boundary transforms remain visible to the reader.
+
+### WM-031 · Russia regional partition needs a neutral base-geography contract — P2
+**Status:** implemented on branch `world-map-russia-regions-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** available Russia regional sources may bundle disputed Ukrainian territories and unrelated political/demographic attributes into the same GeoJSON, which would silently turn a base administrative partition into a geopolitical claim surface.  
+**Resolution:** the canonical Russia partition contains 83 source-derived federal-subject geometries only. Crimea, Sevastopol, Donetsk, Luhansk, Zaporizhzhia and Kherson are excluded from Russia base geography and remain eligible only for separately typed disputed/conflict overlays. All source election/demographic attributes are stripped; only geometry, names, region type and provenance remain. UN General Assembly resolutions A/RES/68/262 and A/RES/ES-11/4 are recorded as the territorial-integrity references for the exclusion rule.  
+**Guard:** subdivision validation enforces 83 unique `RU-*` features, exact federal-subject type counts, the six-feature exclusion set, source scope, source SHA, no imported population/political fields, byte budget and generic loader compatibility.  
+**Rule retained:** base geography represents the ordinary administrative partition; disputed territory and dated control belong to independent epistemically typed overlays.
+
+### WM-032 · Country-card Regions doorway can load invisible subdivisions — P1
+**Status:** fixed / governed on branch `world-map-region-doorway-focus-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** the country card retained and refreshed a subdivision partition but did not hand camera intent to the subdivision owner. From world/macro zoom, a user could click “regions” and see no obvious change because the partition remained below its shared render/interact threshold.  
+**Resolution:** the subdivision runtime now owns `focusPartition()`, derives canonical descriptor bounds, unwraps antimeridian-crossing extents, computes the MapLibre camera from those bounds, floors the destination at the shared subdivision render threshold, and executes through the reduced-motion-aware Motion owner. The country card calls this after acquiring its partition lease.  
+**Guard:** a behavioral regression covers Russia’s 19°E→170°W descriptor, proves unwrapping to 190°E, and requires a visible-scale floor; UI-shell validation requires the country-card handoff marker.  
+**Rule retained:** feature entry points may request focus, but camera semantics and subdivision scale thresholds stay with shared owners.
+
+### WM-033 · Selectable subdivisions have no transient hover identity — P2
+**Status:** fixed / governed on branch `world-map-subdivision-hover-preview-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** subdivision interaction registered hover priority but only implemented click behavior, so dense regional browsing lacked fast identity feedback before opening the Inspector.  
+**Resolution:** subdivisions now reuse the shared Tooltip Service and Interaction Router for region-name/local-name/type/country previews, with semantic hover-key reuse and leave invalidation. The degraded direct-listener fallback mirrors the same tooltip behavior without constructing a private popup.  
+**Guard:** specialist-tooltip regression now requires shared subdivision tooltip ownership, routed hover, leave invalidation, degraded fallback parity and zero private Popup construction.
+
+### WM-034 · Regions doorway active state is one-way / optimistic — P2
+**Status:** fixed / governed on branch `world-map-regions-toggle-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** once a country-card partition was retained, clicking the active Regions control only refocused it; the same control could not release the lease. Local retained state was also cleared before release completed.  
+**Resolution:** the Regions action now toggles the country-card partition lease on/off, updates `aria-pressed` and the “regions · shown” state from the actual retained partition, emits a bounded regions-change event, and only clears local lease state after the release path returns without error.  
+**Guard:** UI-shell validation requires the toggle branch, shared action-state helper and region-state event.
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  

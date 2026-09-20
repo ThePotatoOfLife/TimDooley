@@ -15,7 +15,9 @@ if (!layers || !compositor || !selection || !runtime?.ready) {
 await layers.ready;
 
 const DEMOGRAPHY_URL = '../data/world-country-demography.json';
+const VIEW_PROJECTIONS_URL = '../data/world-map-view-projections.json';
 let demography = null;
+let viewProjections = null;
 let current = null;
 let refreshSerial = 0;
 let timeState = readTimeState();
@@ -29,6 +31,30 @@ function fetchJson(url) {
 async function demographyData() {
   if (!demography) demography = await fetchJson(DEMOGRAPHY_URL);
   return demography;
+}
+async function projectionData() {
+  if (!viewProjections) viewProjections = await fetchJson(VIEW_PROJECTIONS_URL);
+  return viewProjections;
+}
+function dedupe(values) {
+  return [...new Set((values || []).filter(Boolean))];
+}
+async function projectionSummary({ scalar, sets, relationMode, pinnedCodes }) {
+  const data = await projectionData();
+  const contracts = [];
+  if (scalar) contracts.push(data?.views?.['country-scalar']);
+  if (sets?.length) contracts.push(data?.views?.['country-set']);
+  if (relationMode && relationMode !== 'all') contracts.push(data?.views?.['active-country-relations']);
+  if ((pinnedCodes || []).length > 1) contracts.push(data?.views?.['country-comparison']);
+  const active = contracts.filter(Boolean);
+  return {
+    contractId:data?.id || null,
+    contractVersion:data?.version || null,
+    views:active.map(item => item.label),
+    informationLoss:dedupe(active.flatMap(item => item.information_loss || [])),
+    reconstructability:active.length ? (active.every(item => item.reconstructability === 'source-linked') ? 'source-linked' : 'partial') : null,
+    sourcePaths:dedupe(active.map(item => item.source_path_back)),
+  };
 }
 function number(value) {
   const parsed = Number(value);
@@ -130,12 +156,14 @@ async function forCountry(code) {
   const coverage = await coverageFor(scalar);
   const memberships = code ? await setMembership(code, sets) : { mode:query?.getMode?.() || 'any', matches:null, memberships:[] };
   const relationMode = selection.getRelationMode?.() || selection.current?.relationMode || 'all';
+  const pinnedCodes = selection.current?.pinnedCodes || selection.current?.selectedCodes || [];
+  const projection = await projectionSummary({ scalar, sets, relationMode, pinnedCodes });
 
   if (!scalar && !sets.length) {
     return {
       status:'neutral', code, scalar:null, sets:[], observation:null, display:null,
       source:null, period:null, coverage:null, memberships, relationMode,
-      timeState, question:'No analytical overlay',
+      projection, timeState, question:'No analytical overlay',
     };
   }
 
@@ -143,7 +171,7 @@ async function forCountry(code) {
     return {
       status:'unknown', code, scalar, sets, observation:null, display:'Unknown',
       source:sourceLabel(scalar, observation), period:periodLabel(observation), coverage,
-      memberships, relationMode, timeState, question:`Color: ${scalar.label}`,
+      memberships, relationMode, projection, timeState, question:`Color: ${scalar.label}`,
     };
   }
 
@@ -151,7 +179,7 @@ async function forCountry(code) {
     status:'current', code, scalar, sets, observation,
     display:scalar ? formatObservation(observation, scalar.unit) : null,
     source:sourceLabel(scalar, observation), period:periodLabel(observation), coverage,
-    memberships, relationMode, timeState,
+    memberships, relationMode, projection, timeState,
     question:scalar ? `Color: ${scalar.label}` : `${memberships.mode.toUpperCase()} set view`,
   };
 }
@@ -174,7 +202,9 @@ async function refresh(reason = 'refresh') {
       status:'unknown', code, scalar:scalarEntry(), sets:setEntries(), display:'Unknown',
       source:null, period:null, coverage:null,
       memberships:{ mode:query?.getMode?.() || 'any', matches:null, memberships:[] },
-      relationMode:selection.getRelationMode?.() || 'all', timeState,
+      relationMode:selection.getRelationMode?.() || 'all',
+      projection:{ contractId:null, contractVersion:null, views:[], informationLoss:[], reconstructability:null, sourcePaths:[] },
+      timeState,
       matchCount:null, question:'Map view unavailable',
     };
   }

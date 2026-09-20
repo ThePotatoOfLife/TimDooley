@@ -113,6 +113,28 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. Work pro
 - [ ] Audit mobile occlusion, keyboard access, focus return, color-only semantics and reduced motion.
 - [ ] Add concise accessible active-view summaries.
 
+## ACTIVE — PROJECTION TRANSPARENCY
+
+- [x] Bind live analytical views to the shared Atlas projection contract through `data/world-map-view-projections.json`.
+- [x] Disclose compact information-loss semantics in Current Map context for scalar, set, relation and comparison views.
+- [x] Expose source-linked reconstructability state from Active View rather than implying aggregate views are canonical records.
+- [x] Gate the contract, runtime markers and reader disclosure in the World Map quality group.
+- [ ] Extend the same projection-loss/reconstructability discipline to future derived network/system aggregates as they become reader-facing.
+
+## ACTIVE — REGIONAL DEPTH
+
+- [x] Keep subdivisions behind one generic country-indexed partition engine and one bounded source/layer set.
+- [x] Add Ukraine as a geometry-first first-order administrative partition with explicit source-representation caveats.
+- [x] Add Russia through the same partition contract as an 83-feature base partition; strip unrelated source attributes and exclude six disputed Ukrainian source features from ordinary Russia geography.
+- [x] Normalize future ADM1 sources through one fail-closed importer that emits canonical partitions + descriptor sidecars without mutating the live registry.
+- [ ] Add further country partitions only after provenance, byte budget, search records and national-context readability pass the same validator.
+- [x] Make the generic subdivision inspector expose unknown-vs-known statistics, local names, boundary provenance/vintage and source-specific representation notes.
+- [x] Make the country-card Regions doorway focus the retained partition into visible/interactable regional scale using subdivision-owned camera policy.
+- [x] Make the Regions doorway a real on/off control with lease-backed active state and explicit state-change events.
+- [x] Add shared transient hover previews for selectable regions, including local names and region type.
+- [x] Define a separate dated conflict-snapshot contract for control/contested/historical-front/humanitarian/event-aggregate geometry.
+- [ ] Promote conflict snapshots only after reviewed geometry + source bundles exist; never rewrite administrative partitions into live war geometry.
+
 ## NEXT — VERIFICATION + OBSERVABILITY
 
 - [x] Add real behavioral scenario tests for drag/projection/wrap/overlap/inspector transitions.

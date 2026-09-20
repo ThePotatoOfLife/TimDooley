@@ -1,6 +1,6 @@
 {
-  "version": "1.5.0",
-  "generated_at": "2026-09-20T12:48:00+02:00",
+  "version": "1.7.0",
+  "generated_at": "2026-09-20",
   "record_type": "world-subdivision-partition-index",
   "runtime_budget": {
     "partition_max_bytes": 1500000,
@@ -619,6 +619,1049 @@
           "parent_name": "Canada"
         }
       ]
+    },
+    "UKR": {
+      "path": "UKR.geo.json",
+      "bytes": 739807,
+      "feature_count": 26,
+      "admin_level": 1,
+      "status": "implemented-geometry-first",
+      "source": "UN OCHA Ukraine administrative boundaries; simplified/dissolved derivative in matthewjohnsobolev/sirens",
+      "source_repository": "matthewjohnsobolev/sirens",
+      "source_sha": "14b444dda5ecb221fb765ec89ae364a201e719d8",
+      "geometry_vintage_status": "source-vintage-not-asserted",
+      "population_status": "unknown-not-zero",
+      "id_prefix": "UA-",
+      "parent_name": "Ukraine",
+      "representation_note": "Administrative reference only; not a current occupation/control/front-line layer. Source transform combines Sevastopol with Crimea geometry.",
+      "viewport_bounds": {
+        "west": 22,
+        "east": 40.3,
+        "south": 44,
+        "north": 52.5
+      },
+      "search_records": [
+        {
+          "id": "UA-71",
+          "name": "Cherkasy Oblast",
+          "local_name": "Черкаська область",
+          "code": "71",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-74",
+          "name": "Chernihiv Oblast",
+          "local_name": "Чернігівська область",
+          "code": "74",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-73",
+          "name": "Chernivtsi Oblast",
+          "local_name": "Чернівецька область",
+          "code": "73",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-01",
+          "name": "Crimea",
+          "local_name": "Крим",
+          "code": "01",
+          "subdivision_type": "autonomous republic / source-combined Sevastopol geometry",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-12",
+          "name": "Dnipropetrovsk Oblast",
+          "local_name": "Дніпропетровська область",
+          "code": "12",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-14",
+          "name": "Donetsk Oblast",
+          "local_name": "Донецька область",
+          "code": "14",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-26",
+          "name": "Ivano-Frankivsk Oblast",
+          "local_name": "Івано-Франківська область",
+          "code": "26",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-63",
+          "name": "Kharkiv Oblast",
+          "local_name": "Харківська область",
+          "code": "63",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-65",
+          "name": "Kherson Oblast",
+          "local_name": "Херсонська область",
+          "code": "65",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-68",
+          "name": "Khmelnytskyi Oblast",
+          "local_name": "Хмельницька область",
+          "code": "68",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-35",
+          "name": "Kirovohrad Oblast",
+          "local_name": "Кіровоградська область",
+          "code": "35",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-80",
+          "name": "Kyiv",
+          "local_name": "м. Київ",
+          "code": "80",
+          "subdivision_type": "special-status city",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-32",
+          "name": "Kyiv Oblast",
+          "local_name": "Київська область",
+          "code": "32",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-44",
+          "name": "Luhansk Oblast",
+          "local_name": "Луганська область",
+          "code": "44",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-46",
+          "name": "Lviv Oblast",
+          "local_name": "Львівська область",
+          "code": "46",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-48",
+          "name": "Mykolaiv Oblast",
+          "local_name": "Миколаївська область",
+          "code": "48",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-51",
+          "name": "Odesa Oblast",
+          "local_name": "Одеська область",
+          "code": "51",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-53",
+          "name": "Poltava Oblast",
+          "local_name": "Полтавська область",
+          "code": "53",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-56",
+          "name": "Rivne Oblast",
+          "local_name": "Рівненська область",
+          "code": "56",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-59",
+          "name": "Sumy Oblast",
+          "local_name": "Сумська область",
+          "code": "59",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-61",
+          "name": "Ternopil Oblast",
+          "local_name": "Тернопільська область",
+          "code": "61",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-05",
+          "name": "Vinnytsia Oblast",
+          "local_name": "Вінницька область",
+          "code": "05",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-07",
+          "name": "Volyn Oblast",
+          "local_name": "Волинська область",
+          "code": "07",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-21",
+          "name": "Zakarpattia Oblast",
+          "local_name": "Закарпатська область",
+          "code": "21",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-23",
+          "name": "Zaporizhzhia Oblast",
+          "local_name": "Запорізька область",
+          "code": "23",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        },
+        {
+          "id": "UA-18",
+          "name": "Zhytomyr Oblast",
+          "local_name": "Житомирська область",
+          "code": "18",
+          "subdivision_type": "oblast",
+          "parent_iso3": "UKR",
+          "parent_name": "Ukraine"
+        }
+      ]
+    },
+    "RUS": {
+      "path": "RUS.geo.json",
+      "bytes": 961014,
+      "feature_count": 83,
+      "admin_level": 1,
+      "status": "implemented-geometry-first",
+      "source": "Arseniy24RUS/Foreign-labor-migration regional GeoJSON snapshot; geometry + names only",
+      "source_repository": "Arseniy24RUS/Foreign-labor-migration",
+      "source_sha": "14b5f7e9f88419f84cf550826f7390f1d3aef755",
+      "source_feature_count": 89,
+      "geometry_vintage_status": "source-vintage-not-asserted",
+      "population_status": "unknown-not-zero",
+      "id_prefix": "RU-",
+      "parent_name": "Russia",
+      "source_scope": "geometry-and-names-only",
+      "license_status": "upstream-terms-not-asserted-by-this-repository",
+      "representation_note": "Administrative-reference geometry for the 83 Russian federal subjects in this base partition, excluding Crimea, Sevastopol, Donetsk, Luhansk, Zaporizhzhia and Kherson. Those six source features are not promoted into Russia base geography and must remain separately typed disputed/conflict geography.",
+      "excluded_disputed_features": [
+        "Donetsk People's Republic",
+        "Kherson Oblast",
+        "Lugansk People's Republic",
+        "Republic of Crimea",
+        "Sevastopol",
+        "Zaporozhye Oblast"
+      ],
+      "viewport_bounds": {
+        "west": 19,
+        "east": -170,
+        "south": 41,
+        "north": 82
+      },
+      "search_records": [
+        {
+          "id": "RU-ADYGEA",
+          "name": "Adygea",
+          "local_name": "Республика Адыгея (Адыгея)",
+          "code": "ADYGEA",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-ALTAI-KRAI",
+          "name": "Altai Krai",
+          "local_name": "Алтайский край",
+          "code": "ALTAI-KRAI",
+          "subdivision_type": "krai",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-ALTAI-REPUBLIC",
+          "name": "Altai Republic",
+          "local_name": "Республика Алтай",
+          "code": "ALTAI-REPUBLIC",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-AMUR-OBLAST",
+          "name": "Amur Oblast",
+          "local_name": "Амурская область",
+          "code": "AMUR-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-ARKHANGELSK-OBLAST",
+          "name": "Arkhangelsk Oblast",
+          "local_name": "Архангельская область",
+          "code": "ARKHANGELSK-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-ASTRAKHAN-OBLAST",
+          "name": "Astrakhan Oblast",
+          "local_name": "Астраханская область",
+          "code": "ASTRAKHAN-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-BASHKORTOSTAN",
+          "name": "Bashkortostan",
+          "local_name": "Республика Башкортостан",
+          "code": "BASHKORTOSTAN",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-BELGOROD-OBLAST",
+          "name": "Belgorod Oblast",
+          "local_name": "Белгородская область",
+          "code": "BELGOROD-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-BRYANSK-OBLAST",
+          "name": "Bryansk Oblast",
+          "local_name": "Брянская область",
+          "code": "BRYANSK-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-BURYATIA",
+          "name": "Buryatia",
+          "local_name": "Республика Бурятия",
+          "code": "BURYATIA",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-CHECHNYA",
+          "name": "Chechnya",
+          "local_name": "Чеченская Республика",
+          "code": "CHECHNYA",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-CHELYABINSK-OBLAST",
+          "name": "Chelyabinsk Oblast",
+          "local_name": "Челябинская область",
+          "code": "CHELYABINSK-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-CHUKOTKA-AUTONOMOUS-OKRUG",
+          "name": "Chukotka Autonomous Okrug",
+          "local_name": "Чукотский автономный округ",
+          "code": "CHUKOTKA-AUTONOMOUS-OKRUG",
+          "subdivision_type": "autonomous okrug",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-CHUVASHIA",
+          "name": "Chuvashia",
+          "local_name": "Чувашская Республика - Чувашия",
+          "code": "CHUVASHIA",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-DAGESTAN",
+          "name": "Dagestan",
+          "local_name": "Республика Дагестан",
+          "code": "DAGESTAN",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-INGUSHETIA",
+          "name": "Ingushetia",
+          "local_name": "Республика Ингушетия",
+          "code": "INGUSHETIA",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-IRKUTSK-OBLAST",
+          "name": "Irkutsk Oblast",
+          "local_name": "Иркутская область",
+          "code": "IRKUTSK-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-IVANOVO-OBLAST",
+          "name": "Ivanovo Oblast",
+          "local_name": "Ивановская область",
+          "code": "IVANOVO-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-JEWISH-AUTONOMOUS-OBLAST",
+          "name": "Jewish Autonomous Oblast",
+          "local_name": "Еврейская автономная область",
+          "code": "JEWISH-AUTONOMOUS-OBLAST",
+          "subdivision_type": "autonomous oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-KABARDINO-BALKARIA",
+          "name": "Kabardino-Balkaria",
+          "local_name": "Кабардино-Балкарская Республика",
+          "code": "KABARDINO-BALKARIA",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-KALININGRAD",
+          "name": "Kaliningrad",
+          "local_name": "Калининградская область",
+          "code": "KALININGRAD",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-KALMYKIA",
+          "name": "Kalmykia",
+          "local_name": "Республика Калмыкия",
+          "code": "KALMYKIA",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-KALUGA-OBLAST",
+          "name": "Kaluga Oblast",
+          "local_name": "Калужская область",
+          "code": "KALUGA-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-KAMCHATKA-KRAI",
+          "name": "Kamchatka Krai",
+          "local_name": "Камчатский край",
+          "code": "KAMCHATKA-KRAI",
+          "subdivision_type": "krai",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-KARACHAY-CHERKESSIA",
+          "name": "Karachay-Cherkessia",
+          "local_name": "Карачаево-Черкесская Республика",
+          "code": "KARACHAY-CHERKESSIA",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-KEMEROVO-OBLAST",
+          "name": "Kemerovo Oblast",
+          "local_name": "Кемеровская область – Кузбасс",
+          "code": "KEMEROVO-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-KHABAROVSK-KRAI",
+          "name": "Khabarovsk Krai",
+          "local_name": "Хабаровский край",
+          "code": "KHABAROVSK-KRAI",
+          "subdivision_type": "krai",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-KHAKASSIA",
+          "name": "Khakassia",
+          "local_name": "Республика Хакасия",
+          "code": "KHAKASSIA",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-KHANTY-MANSIYSK-AUTONOMOUS-OKRUG-UGRA",
+          "name": "Khanty-Mansiysk Autonomous Okrug – Ugra",
+          "local_name": "Ханты-Мансийский автономный округ – Югра",
+          "code": "KHANTY-MANSIYSK-AUTONOMOUS-OKRUG-UGRA",
+          "subdivision_type": "autonomous okrug",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-KIROV-OBLAST",
+          "name": "Kirov Oblast",
+          "local_name": "Кировская область",
+          "code": "KIROV-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-KOMI-REPUBLIC",
+          "name": "Komi Republic",
+          "local_name": "Республика Коми",
+          "code": "KOMI-REPUBLIC",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-KOSTROMA-OBLAST",
+          "name": "Kostroma Oblast",
+          "local_name": "Костромская область",
+          "code": "KOSTROMA-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-KRASNODAR-KRAI",
+          "name": "Krasnodar Krai",
+          "local_name": "Краснодарский край",
+          "code": "KRASNODAR-KRAI",
+          "subdivision_type": "krai",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-KRASNOYARSK-KRAI",
+          "name": "Krasnoyarsk Krai",
+          "local_name": "Красноярский край",
+          "code": "KRASNOYARSK-KRAI",
+          "subdivision_type": "krai",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-KURGAN-OBLAST",
+          "name": "Kurgan Oblast",
+          "local_name": "Курганская область",
+          "code": "KURGAN-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-KURSK-OBLAST",
+          "name": "Kursk Oblast",
+          "local_name": "Курская область",
+          "code": "KURSK-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-LENINGRAD-OBLAST",
+          "name": "Leningrad oblast",
+          "local_name": "Ленинградская область",
+          "code": "LENINGRAD-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-LIPETSK-OBLAST",
+          "name": "Lipetsk Oblast",
+          "local_name": "Липецкая область",
+          "code": "LIPETSK-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-MAGADAN-OBLAST",
+          "name": "Magadan Oblast",
+          "local_name": "Магаданская область",
+          "code": "MAGADAN-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-MARI-EL",
+          "name": "Mari El",
+          "local_name": "Республика Марий Эл",
+          "code": "MARI-EL",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-MOSCOW",
+          "name": "Moscow",
+          "local_name": "Город Москва",
+          "code": "MOSCOW",
+          "subdivision_type": "federal city",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-MOSCOW-OBLAST",
+          "name": "Moscow Oblast",
+          "local_name": "Московская область",
+          "code": "MOSCOW-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-MURMANSK-OBLAST",
+          "name": "Murmansk Oblast",
+          "local_name": "Мурманская область",
+          "code": "MURMANSK-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-NENETS-AUTONOMOUS-OKRUG",
+          "name": "Nenets Autonomous Okrug",
+          "local_name": "Ненецкий автономный округ",
+          "code": "NENETS-AUTONOMOUS-OKRUG",
+          "subdivision_type": "autonomous okrug",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-NIZHNY-NOVGOROD-OBLAST",
+          "name": "Nizhny Novgorod Oblast",
+          "local_name": "Нижегородская область",
+          "code": "NIZHNY-NOVGOROD-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-NORTH-OSSETIAALANIA",
+          "name": "North Ossetia–Alania",
+          "local_name": "Республика Северная Осетия – Алания",
+          "code": "NORTH-OSSETIAALANIA",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-NOVGOROD-OBLAST",
+          "name": "Novgorod Oblast",
+          "local_name": "Новгородская область",
+          "code": "NOVGOROD-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-NOVOSIBIRSK-OBLAST",
+          "name": "Novosibirsk Oblast",
+          "local_name": "Новосибирская область",
+          "code": "NOVOSIBIRSK-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-OMSK-OBLAST",
+          "name": "Omsk Oblast",
+          "local_name": "Омская область",
+          "code": "OMSK-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-ORENBURG-OBLAST",
+          "name": "Orenburg Oblast",
+          "local_name": "Оренбургская область",
+          "code": "ORENBURG-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-ORYOL-OBLAST",
+          "name": "Oryol Oblast",
+          "local_name": "Орловская область",
+          "code": "ORYOL-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-PENZA-OBLAST",
+          "name": "Penza Oblast",
+          "local_name": "Пензенская область",
+          "code": "PENZA-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-PERM-KRAI",
+          "name": "Perm Krai",
+          "local_name": "Пермский край",
+          "code": "PERM-KRAI",
+          "subdivision_type": "krai",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-PRIMORSKY-KRAI",
+          "name": "Primorsky Krai",
+          "local_name": "Приморский край",
+          "code": "PRIMORSKY-KRAI",
+          "subdivision_type": "krai",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-PSKOV-OBLAST",
+          "name": "Pskov Oblast",
+          "local_name": "Псковская область",
+          "code": "PSKOV-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-REPUBLIC-OF-KARELIA",
+          "name": "Republic of Karelia",
+          "local_name": "Республика Карелия",
+          "code": "REPUBLIC-OF-KARELIA",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-REPUBLIC-OF-MORDOVIA",
+          "name": "Republic of Mordovia",
+          "local_name": "Республика Мордовия",
+          "code": "REPUBLIC-OF-MORDOVIA",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-ROSTOV-OBLAST",
+          "name": "Rostov Oblast",
+          "local_name": "Ростовская область",
+          "code": "ROSTOV-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-RYAZAN-OBLAST",
+          "name": "Ryazan Oblast",
+          "local_name": "Рязанская область",
+          "code": "RYAZAN-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-SAINT-PETERSBURG",
+          "name": "Saint Petersburg",
+          "local_name": "Город Санкт-Петербург",
+          "code": "SAINT-PETERSBURG",
+          "subdivision_type": "federal city",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-SAKHA-REPUBLIC",
+          "name": "Sakha Republic",
+          "local_name": "Республика Саха (Якутия)",
+          "code": "SAKHA-REPUBLIC",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-SAKHALIN-OBLAST",
+          "name": "Sakhalin Oblast",
+          "local_name": "Сахалинская область",
+          "code": "SAKHALIN-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-SAMARA-OBLAST",
+          "name": "Samara Oblast",
+          "local_name": "Самарская область",
+          "code": "SAMARA-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-SARATOV-OBLAST",
+          "name": "Saratov Oblast",
+          "local_name": "Саратовская область",
+          "code": "SARATOV-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-SMOLENSK-OBLAST",
+          "name": "Smolensk Oblast",
+          "local_name": "Смоленская область",
+          "code": "SMOLENSK-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-STAVROPOL-KRAI",
+          "name": "Stavropol Krai",
+          "local_name": "Ставропольский край",
+          "code": "STAVROPOL-KRAI",
+          "subdivision_type": "krai",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-SVERDLOVSK-OBLAST",
+          "name": "Sverdlovsk Oblast",
+          "local_name": "Свердловская область",
+          "code": "SVERDLOVSK-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-TAMBOV-OBLAST",
+          "name": "Tambov Oblast",
+          "local_name": "Тамбовская область",
+          "code": "TAMBOV-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-TATARSTAN",
+          "name": "Tatarstan",
+          "local_name": "Республика Татарстан (Татарстан)",
+          "code": "TATARSTAN",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-TOMSK-OBLAST",
+          "name": "Tomsk Oblast",
+          "local_name": "Томская область",
+          "code": "TOMSK-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-TULA-OBLAST",
+          "name": "Tula Oblast",
+          "local_name": "Тульская область",
+          "code": "TULA-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-TUVA",
+          "name": "Tuva",
+          "local_name": "Республика Тыва",
+          "code": "TUVA",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-TVER-OBLAST",
+          "name": "Tver Oblast",
+          "local_name": "Тверская область",
+          "code": "TVER-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-TYUMEN-OBLAST",
+          "name": "Tyumen Oblast",
+          "local_name": "Тюменская область",
+          "code": "TYUMEN-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-UDMURTIA",
+          "name": "Udmurtia",
+          "local_name": "Удмуртская Республика",
+          "code": "UDMURTIA",
+          "subdivision_type": "republic",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-ULYANOVSK-OBLAST",
+          "name": "Ulyanovsk Oblast",
+          "local_name": "Ульяновская область",
+          "code": "ULYANOVSK-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-VLADIMIR-OBLAST",
+          "name": "Vladimir Oblast",
+          "local_name": "Владимирская область",
+          "code": "VLADIMIR-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-VOLGOGRAD-OBLAST",
+          "name": "Volgograd Oblast",
+          "local_name": "Волгоградская область",
+          "code": "VOLGOGRAD-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-VOLOGDA-OBLAST",
+          "name": "Vologda Oblast",
+          "local_name": "Вологодская область",
+          "code": "VOLOGDA-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-VORONEZH-OBLAST",
+          "name": "Voronezh Oblast",
+          "local_name": "Воронежская область",
+          "code": "VORONEZH-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-YAMALO-NENETS-AUTONOMOUS-OKRUG",
+          "name": "Yamalo-Nenets Autonomous Okrug",
+          "local_name": "Ямало-Ненецкий автономный округ",
+          "code": "YAMALO-NENETS-AUTONOMOUS-OKRUG",
+          "subdivision_type": "autonomous okrug",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-YAROSLAVL-OBLAST",
+          "name": "Yaroslavl Oblast",
+          "local_name": "Ярославская область",
+          "code": "YAROSLAVL-OBLAST",
+          "subdivision_type": "oblast",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        },
+        {
+          "id": "RU-ZABAYKALSKY-KRAI",
+          "name": "Zabaykalsky Krai",
+          "local_name": "Забайкальский край",
+          "code": "ZABAYKALSKY-KRAI",
+          "subdivision_type": "krai",
+          "parent_iso3": "RUS",
+          "parent_name": "Russia"
+        }
+      ],
+      "boundary_reference_ids": [
+        "UN A/RES/68/262",
+        "UN A/RES/ES-11/4"
+      ],
+      "boundary_reference_note": "These UN General Assembly resolutions are the reference for keeping the six disputed Ukrainian source features out of Russia base geography; this partition does not encode live control."
     }
   }
 }

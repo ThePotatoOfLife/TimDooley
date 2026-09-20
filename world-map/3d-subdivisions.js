@@ -17,6 +17,41 @@ const geo = window.__potatoAtlasGeo;
 if (!geo) throw new Error('Atlas subdivisions require the shared geospatial kernel.');
 function interactionRouter() { return window.__potatoAtlasInteraction; }
 function inspectorRouter() { return window.__potatoAtlasInspector; }
+let subdivisionTooltipPromise = null;
+let subdivisionHoverKey = '';
+let subdivisionHoverGeneration = null;
+async function subdivisionTooltip() {
+  if (window.__potatoAtlasTooltip) return window.__potatoAtlasTooltip;
+  if (!window.maplibregl?.Popup) return null;
+  if (!subdivisionTooltipPromise) {
+    subdivisionTooltipPromise = import('./3d-tooltip.js')
+      .then(module => module.getOrCreateTooltipService(map, { PopupClass:window.maplibregl.Popup, eventTarget:window, offset:10 }))
+      .catch(() => null);
+  }
+  return subdivisionTooltipPromise;
+}
+function subdivisionHoverHtml(feature) {
+  const p = feature?.properties || {};
+  const local = p.local_name && p.local_name !== p.name ? `<div class="muted">${esc(p.local_name)}</div>` : '';
+  return `<div class="atlas-hover"><b>${esc(p.name || p.id || 'Region')}</b>${local}<div>${esc(p.subdivision_type || 'Subdivision')} · ${esc(p.parent_name || p.country_name || countryCode(p))}</div><small>Click to inspect region</small></div>`;
+}
+async function showSubdivisionHover(event, feature) {
+  if (!feature) return;
+  const tooltip = await subdivisionTooltip();
+  if (!tooltip) return;
+  const key = String(feature?.properties?.id || feature?.id || '');
+  if (!key) return;
+  if (key !== subdivisionHoverKey) {
+    subdivisionHoverKey = key;
+    subdivisionHoverGeneration = tooltip.nextGeneration('subdivision');
+  }
+  tooltip.show('subdivision', event.lngLat, subdivisionHoverHtml(feature), subdivisionHoverGeneration);
+}
+function clearSubdivisionHover() {
+  subdivisionHoverKey = '';
+  subdivisionHoverGeneration = null;
+  window.__potatoAtlasTooltip?.invalidate?.('subdivision-leave');
+}
 
 const INDEX_URL = '../data/world-subdivisions/index.json';
 const USA_PARTITION_FALLBACK = 'USA.geo.json';
@@ -167,6 +202,31 @@ function placePopulationLabel(feature) {
   const value = Number(feature?.properties?.population);
   return Number.isFinite(value) && value > 0 ? fmt(value) : 'population unknown';
 }
+function subdivisionPopulationView(properties = {}) {
+  const population = properties.population || {};
+  const value = Number(population.value);
+  const known = Number.isFinite(value) && value > 0;
+  return {
+    known,
+    value:known ? fmt(value) : 'Unknown',
+    period:known ? String(population.period || 'period unknown') : 'not supplied in this partition',
+    source:population.source || '',
+  };
+}
+function subdivisionAreaView(properties = {}) {
+  const value = Number(properties.area_km2);
+  return Number.isFinite(value) && value > 0 ? { known:true, value:`${fmt(value)} km²` } : { known:false, value:'Unknown' };
+}
+function subdivisionProvenanceHtml(properties = {}) {
+  const rows = [];
+  if (properties.geometry_source) rows.push(`<div><span>Boundary source</span><b>${esc(properties.geometry_source)}</b></div>`);
+  const sourceRef = properties.geometry_source_ref || properties.geometry_source_repository || properties.geometry_source_url || '';
+  if (sourceRef) rows.push(`<div><span>Source reference</span><b>${esc(sourceRef)}</b></div>`);
+  const vintage = properties.geometry_source_vintage || properties.geometry_vintage || '';
+  if (vintage) rows.push(`<div><span>Boundary vintage</span><b>${esc(vintage)}</b></div>`);
+  if (properties.local_name && properties.local_name !== properties.name) rows.push(`<div><span>Local name</span><b>${esc(properties.local_name)}</b></div>`);
+  return rows.length ? `<div class="card subdivision-provenance"><div class="eyebrow">Boundary & provenance</div>${rows.join('')}</div>` : '';
+}
 async function hydrateSubdivisionPlaces(feature) {
   const host = document.querySelector('[data-subdivision-places]');
   if (!host || !feature) return false;
@@ -206,21 +266,24 @@ function renderInspector(feature) {
   const panel = document.getElementById('panel');
   if (!panel || !feature) return;
   const p = feature.properties || {};
-  const population = p.population || {};
+  const population = subdivisionPopulationView(p);
+  const area = subdivisionAreaView(p);
   const density = populationDensity(p);
   const code = countryCode(p);
+  const representationNote = String(p.representation_note || '').trim();
   panel.innerHTML = `
     <div class="eyebrow">Subdivision</div>
     <h1>${esc(p.name || p.id || 'Subdivision')}</h1>
     <p class="muted">${esc(p.subdivision_type || 'Subdivision')} · ${esc(p.code || p.id || '')} · ${esc(p.country_name || p.parent_name || code)}</p>
     <div class="stat-grid">
-      <div><span>Population</span><b>${fmt(population.value)}</b><small>${esc(population.period || '—')}</small></div>
-      <div><span>Area</span><b>${fmt(p.area_km2)} km²</b><small>land + water</small></div>
-      <div><span>Density</span><b>${density == null ? '—' : `${fmt(density)} / km²`}</b><small>population ÷ area</small></div>
+      <div><span>Population</span><b>${esc(population.value)}</b><small>${esc(population.period)}</small></div>
+      <div><span>Area</span><b>${esc(area.value)}</b><small>${area.known ? 'stored source area' : 'not supplied in this partition'}</small></div>
+      <div><span>Density</span><b>${density == null ? 'Unknown' : `${fmt(density)} / km²`}</b><small>${density == null ? 'requires population + area' : 'population ÷ area'}</small></div>
       <div><span>Region type</span><b>${esc(p.subdivision_type || 'Subdivision')}</b><small>${esc(p.code || p.id || '')}</small></div>
     </div>
-    ${population.source ? `<p class="muted">Population source: ${esc(population.source)}</p>` : ''}
-    ${p.geometry_source ? `<p class="muted">Boundary source: ${esc(p.geometry_source)}</p>` : ''}
+    ${population.source ? `<p class="muted">Population source: ${esc(population.source)}</p>` : `<p class="muted">Population is unknown in this geometry-first partition; unknown is not zero.</p>`}
+    ${subdivisionProvenanceHtml(p)}
+    ${representationNote ? `<div class="boundary"><b>Representation note.</b> ${esc(representationNote)}</div>` : ''}
     <h2>Cities and places</h2>
     <div data-subdivision-places><p class="muted">Loading mapped places inside this region…</p></div>
     <h2>Evidence & project context</h2>
@@ -337,6 +400,39 @@ function descriptorCenter(bounds) {
   const east = geo.unwrapLongitude(bounds.east, west);
   return [(west + east) / 2, (Number(bounds.south) + Number(bounds.north)) / 2];
 }
+function descriptorFitBounds(bounds) {
+  if (!bounds) return null;
+  const west = Number(bounds.west);
+  const east = geo.unwrapLongitude(bounds.east, west);
+  const south = Number(bounds.south);
+  const north = Number(bounds.north);
+  if (![west,east,south,north].every(Number.isFinite)) return null;
+  return [[west,south],[east,north]];
+}
+async function focusPartition(partition, options = {}) {
+  const key = String(partition || '').toUpperCase();
+  const index = await subdivisionIndex();
+  const descriptor = index?.partitions?.[key];
+  const rawBounds = descriptorBounds(key, descriptor);
+  const bounds = descriptorFitBounds(rawBounds);
+  if (!descriptor || !bounds) return false;
+  const scale = sharedScale || await scaleRuntime();
+  const renderFloor = Number(scale.threshold('subdivisions', 'render')) + 0.18;
+  const padding = Number(options.padding) || 72;
+  const duration = Number.isFinite(Number(options.duration)) ? Number(options.duration) : 650;
+  const maxZoom = Number(options.maxZoom) || 6.6;
+  const camera = map.cameraForBounds?.(bounds, { padding, maxZoom }) || null;
+  if (camera?.center && Number.isFinite(Number(camera.zoom))) {
+    return motion.easeTo(map, {
+      center:camera.center,
+      zoom:Math.min(maxZoom, Math.max(renderFloor, Number(camera.zoom))),
+      duration,
+    });
+  }
+  const center = descriptorCenter(rawBounds);
+  if (!center) return false;
+  return motion.easeTo(map, { center, zoom:renderFloor, duration });
+}
 function distanceToMapCenterKm(bounds) {
   const center = descriptorCenter(bounds);
   const mapCenter = map.getCenter?.();
@@ -450,6 +546,7 @@ async function handleSharedLayerClick(event) {
 function unbindSharedLayerFallback() {
   if (!fallbackSharedHandlers) return;
   try { map.off('mouseenter', HIT_ID, fallbackSharedHandlers.onEnter); } catch {}
+  try { map.off('mousemove', HIT_ID, fallbackSharedHandlers.onMove); } catch {}
   try { map.off('mouseleave', HIT_ID, fallbackSharedHandlers.onLeave); } catch {}
   try { map.off('click', HIT_ID, fallbackSharedHandlers.onClick); } catch {}
   fallbackSharedHandlers = null;
@@ -465,6 +562,8 @@ function syncSharedLayerInteraction() {
     hoverPriority:60,
     enabled:()=>!sharedScale || sharedScale.capabilityActive('subdivisions', 'interact', map.getZoom()),
     onClick:(event, feature) => handleSharedLayerClick({ ...event, features:[feature] }),
+    onHover:(event, feature) => { void showSubdivisionHover(event, feature); },
+    onLeave:() => clearSubdivisionHover(),
   });
   return true;
 }
@@ -474,15 +573,17 @@ function bindSharedLayerEvents() {
   // Degraded/direct-module fallback for tests and partial boots. Promote live
   // to Interaction Router ownership when the shared Router announces readiness.
   const onEnter = () => { map.getCanvas().style.cursor = 'pointer'; };
-  const onLeave = () => { map.getCanvas().style.cursor = ''; };
+  const onMove = event => { const feature = event.features?.[0]; if (feature) void showSubdivisionHover(event, feature); };
+  const onLeave = () => { map.getCanvas().style.cursor = ''; clearSubdivisionHover(); };
   const onClick = event => {
     if (event?.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
     return handleSharedLayerClick(event);
   };
   map.on('mouseenter', HIT_ID, onEnter);
+  map.on('mousemove', HIT_ID, onMove);
   map.on('mouseleave', HIT_ID, onLeave);
   map.on('click', HIT_ID, onClick);
-  fallbackSharedHandlers = { onEnter, onLeave, onClick };
+  fallbackSharedHandlers = { onEnter, onMove, onLeave, onClick };
   eventsBound = true;
 }
 window.addEventListener?.('potato-atlas-interaction-ready', () => syncSharedLayerInteraction());
@@ -761,6 +862,9 @@ window.__potatoAtlasSubdivisions = {
     const index = await subdivisionIndex();
     await reconcileActive(index);
     return true;
+  },
+  async focusPartition(partition, options={}) {
+    return focusPartition(partition, options);
   },
   async refresh() {
     const index = await subdivisionIndex();

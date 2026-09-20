@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "checked": "2026-09-20",
   "authority": "spatial-house-health",
   "scope": "recursive spatial House",
@@ -7,10 +7,10 @@
     "dwellings": 10,
     "nested_rooms": 38,
     "nested_room_interiors": 38,
-    "inhabitants": 45,
+    "inhabitants": 56,
     "inhabitant_maturity": {
-      "described": 15,
-      "case-ready": 21,
+      "described": 21,
+      "case-ready": 26,
       "faceted": 9
     }
   },
@@ -24,13 +24,18 @@
     "object_facet_contract_registered": true,
     "object_facet_maturity_registered": true,
     "inhabitant_registry_registered": true,
-    "inhabitant_explorer_registry_driven": true
+    "inhabitant_explorer_registry_driven": true,
+    "all_nested_rooms_have_inhabitants": true,
+    "all_public_surface_references_resolve": true,
+    "all_room_dossiers_present": true,
+    "all_room_holdings_present": true
   },
   "current_frontier": [
-    "Raise remaining described inhabitants toward faceted or case-ready maturity.",
-    "Upgrade mature real-world institutions to the full entity-dossier schema when evidence depth warrants it.",
-    "Add richer source IDs and dated observations rather than expanding symbolic prose.",
-    "Keep Room ownership, spatial projection, object focus and factual identity separate."
+    "Deepen sparse Rooms by promoting real objects only when a durable subject, case, model or programme already exists.",
+    "Keep adjacency broader than governed interfaces: relation does not automatically imply a state-changing Door.",
+    "Raise remaining described inhabitants toward faceted or case-ready maturity when source depth warrants it.",
+    "Keep Room ownership, spatial projection, public visibility, object focus and factual identity separate.",
+    "Continue visible/semi-visible/invisible calibration so specialist routes appear contextually instead of competing globally."
   ],
   "invariants": [
     "Dwelling ownership remains separate from navigation projection.",

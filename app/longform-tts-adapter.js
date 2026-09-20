@@ -111,6 +111,7 @@
       root:container,
       id:data.ttsId||container.id||'longform',
       label:data.ttsLabel||doc.title||'Read aloud',
+      triggerLabel:data.ttsTriggerLabel||'',
       allLabel:data.ttsAllLabel||'Whole content',
       currentLabel:data.ttsCurrentLabel||'Current section',
       selectionLabel:data.ttsSelectionLabel||'Selection',
@@ -186,6 +187,7 @@
     drawer=Drawer.mount({
       target:host,
       getPayload:source,
+      triggerLabel:config.triggerLabel||'',
       prepareSection:prepareForPlayback,
       settingsKey:config.settingsKey||'potato-tts-settings',
       onEvent:event=>{

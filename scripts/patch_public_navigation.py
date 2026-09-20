@@ -127,6 +127,46 @@ LEGACY_TTS_READERS = {
 }
 
 
+PROJECT_COMPASS_QUIET_PREFIXES = (
+    "world-map/",
+    "elevator/",
+    "rooms/objects/",
+    "index-a-z/",
+    "tools/tts/",
+)
+
+def inject_project_compass(text: str, page: Path) -> str:
+    """Add the compact project orientation layer to ordinary generated reader pages."""
+    rel = page.relative_to(OUT).as_posix()
+    if rel == "index.html" or any(rel.startswith(prefix) for prefix in PROJECT_COMPASS_QUIET_PREFIXES):
+        return text
+    if "project-compass.js" in text or "project-compass.css" in text:
+        return text
+    if not re.search(r"<html\\b", text, flags=re.I):
+        return text
+    if not re.search(r"<main\\b", text, flags=re.I):
+        return text
+    if not re.search(r"</head\\s*>", text, flags=re.I) or not re.search(r"</body\\s*>", text, flags=re.I):
+        return text
+
+    prefix = _relative_asset_prefix(page)
+    css = f'<link rel="stylesheet" href="{prefix}app/project-compass.css?v=20260920a">'
+    js = f'<script src="{prefix}app/project-compass.js?v=20260920a" defer></script>'
+    text = re.sub(r"</head\\s*>", css + "</head>", text, count=1, flags=re.I)
+    text = re.sub(r"</body\\s*>", js + "</body>", text, count=1, flags=re.I)
+    return text
+
+def patch_project_compass(out: Path = OUT) -> set[Path]:
+    changed: set[Path] = set()
+    for page in out.rglob("*.html"):
+        text = page.read_text(encoding="utf-8", errors="replace")
+        projected = inject_project_compass(text, page)
+        if projected != text:
+            page.write_text(projected, encoding="utf-8")
+            changed.add(page)
+    return changed
+
+
 UNIVERSAL_TTS_QUIET_PREFIXES = (
     "world-map/",
     "rooms/objects/",
@@ -295,6 +335,7 @@ def main() -> None:
             changed.add(page)
 
     changed.update(patch_legacy_tts_readers(OUT))
+    changed.update(patch_project_compass(OUT))
     changed.update(patch_universal_tts(OUT))
 
     religion = OUT / "religion" / "index.html"
