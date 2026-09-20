@@ -14,3 +14,11 @@ __pycache__/
 Thumbs.db
 *.swp
 *.swo
+
+# Local/CI build and diagnostic artifacts
+_site/
+.quality-logs/
+quality-report-*.json
+site-shell-report.txt
+machine-discoverability-report.json
+world-map-audit-report.json
