@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FBI File — Potatoverse</title>
+<meta name="description" content="Reusable Potatoverse dossier viewer for Figures, Bonds & Incidents.">
+<link rel="stylesheet" href="../../../../../app/site-system.css?v=20260914a">
+<style>
+:root{--paper:#d7d0ba;--paper-ink:#241f18;--paper-muted:#665d50;--folder:#89734e;--folder-dark:#5e4c31}
+body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transparent 35%),#111510}
+.case-shell{max-width:1150px;margin:0 auto;padding:20px}
+.case-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:8px 0 18px}
+.case-top a,.case-top button{border:1px solid var(--site-line);background:transparent;color:var(--site-green);padding:8px 11px;text-decoration:none;cursor:pointer;font:inherit}
+.folder-tab{display:inline-block;background:var(--folder);color:#efe8d3;padding:8px 16px 6px;border-radius:7px 7px 0 0;font:700 11px ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase}
+.file-sheet{background:var(--paper);color:var(--paper-ink);padding:clamp(20px,4vw,46px);box-shadow:0 18px 60px rgba(0,0,0,.38);position:relative;border-radius:2px}
+.file-sheet:before{content:"POTATOVERSE ARCHIVE";position:absolute;top:16px;right:22px;font:700 9px ui-monospace,monospace;letter-spacing:.18em;color:#8c2f2f;transform:rotate(-3deg);border:2px solid #8c2f2f;padding:5px 7px;opacity:.72}
+.file-header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;border-bottom:2px solid rgba(36,31,24,.28);padding-bottom:18px}
+.file-id{font:700 10px ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-muted)}
+.file-header h1{font:700 clamp(31px,5vw,58px)/.95 Georgia,serif;margin:7px 0 6px}.file-header p{margin:0;color:var(--paper-muted)}
+.mug{width:130px;height:150px;border:2px solid rgba(36,31,24,.38);display:grid;place-items:center;text-align:center;font:700 10px ui-monospace,monospace;color:var(--paper-muted);background:rgba(255,255,255,.14)}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0}.badge{border:1px solid rgba(36,31,24,.32);padding:4px 7px;font:700 9px ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;margin:24px 0 14px}.tab{border:0;border-bottom:2px solid transparent;background:transparent;color:var(--paper-muted);font:700 10px ui-monospace,monospace;padding:8px 9px;cursor:pointer;text-transform:uppercase}.tab.active{border-bottom-color:var(--paper-ink);color:var(--paper-ink)}
+.panel{display:none}.panel.active{display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}.block{border-top:1px solid rgba(36,31,24,.25);padding-top:12px;margin-top:14px}.block h2{font:700 19px Georgia,serif;margin:0 0 8px}.block h3{font:700 14px Georgia,serif;margin:10px 0 5px}.block p,.block li{line-height:1.55}.muted{color:var(--paper-muted)}.mono{font:11px/1.5 ui-monospace,monospace}
+.timeline{border-left:2px solid rgba(36,31,24,.22);padding-left:15px}.event{margin:0 0 18px}.event time{font:700 9px ui-monospace,monospace;color:#8c2f2f}.event h3{margin:3px 0 5px}.story-link,.route-link{display:block;color:#2c4b36;text-decoration:none;border-bottom:1px dotted rgba(44,75,54,.45);padding:7px 0}
+.role-list{display:flex;gap:6px;flex-wrap:wrap}.role{border:1px solid rgba(36,31,24,.3);padding:5px 7px;font:700 9px ui-monospace,monospace;background:rgba(255,255,255,.14)}
+.stamp{display:inline-block;border:2px solid #8c2f2f;color:#8c2f2f;padding:4px 7px;font:700 9px ui-monospace,monospace;transform:rotate(-2deg);margin:6px 4px 6px 0}
+.empty{color:var(--paper-muted);font-style:italic}
+.footer-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px;padding-top:16px;border-top:2px solid rgba(36,31,24,.25)}
+.footer-actions button,.footer-actions a{border:1px solid rgba(36,31,24,.35);background:rgba(255,255,255,.18);color:var(--paper-ink);padding:8px 10px;text-decoration:none;cursor:pointer;font:700 10px ui-monospace,monospace}
+@media(max-width:760px){.file-header,.two{grid-template-columns:1fr}.mug{width:100%;height:80px}}
+</style>
+</head>
+<body>
+<main class="case-shell">
+<div class="case-top"><div><a href="../">← Filing cabinet</a> <a href="../bonds/">Bonds</a> <a href="../incidents/">Incidents</a></div><div><button id="shuffleTop">Shuffle file</button></div></div>
+<span class="folder-tab">FBI · Figure File</span>
+<article class="file-sheet" id="sheet">
+<div class="file-header"><div><div class="file-id" id="fileId">Loading dossier…</div><h1 id="name">Loading…</h1><p id="summary">Retrieving file from cabinet.</p></div><div class="mug" id="mug">NO PHOTO<br>ARCHIVE FILE</div></div>
+<div class="badges" id="badges"></div>
+<div class="tabs">
+<button class="tab active" data-panel="overview">Overview</button>
+<button class="tab" data-panel="timeline">Timeline</button>
+<button class="tab" data-panel="bonds">Bonds</button>
+<button class="tab" data-panel="stories">Stories</button>
+<button class="tab" data-panel="roles">Roles</button>
+<button class="tab" data-panel="enhancements">Enhancements</button>
+<button class="tab" data-panel="sources">Sources</button>
+</div>
+<section class="panel active" id="overview"></section>
+<section class="panel" id="timeline"></section>
+<section class="panel" id="bonds"></section>
+<section class="panel" id="stories"></section>
+<section class="panel" id="roles"></section>
+<section class="panel" id="enhancements"></section>
+<section class="panel" id="sources"></section>
+<div class="footer-actions"><button id="shuffleBottom">Shuffle another file</button><a id="rawLink" href="#">Open raw dossier</a><a href="../">Back to cabinet</a></div>
+</article>
+</main>
+<script>
+const BASE='/TimDooley/';
+const esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+const q=new URLSearchParams(location.search); let current=q.get('figure')||'marty-biz';
+let manifest,roles,stories,bonds,incidents,enhancements,dossier;
+async function get(path){const r=await fetch(BASE+path);if(!r.ok)throw new Error(path);return r.json();}
+function route(path){
+ if(!path)return '#';
+ if(/^https?:/.test(path))return path;
+ return BASE+path.replace(/^\/+/, '');
+}
+function arr(x){return Array.isArray(x)?x:[]}
+function roleMatches(id){
+ const out=[];
+ for(const role of arr(roles?.roles)) for(const m of arr(role.matches)) if(m.entity_id===id) out.push({role:role.label,...m});
+ return out;
+}
+function incidentMatches(id){return arr(incidents?.incidents).filter(x=>arr(x.figures).includes(id))}
+function bondMatches(id){return arr(bonds?.edges).filter(x=>x.a===id||x.b===id)}
+function enhancementFor(id){return enhancements?.figures?.[id]||enhancements?.created_beings?.[id]||null}
+function storyMatches(id){return arr(stories?.figures?.[id])}
+function overviewHtml(){
+ const aliases=arr(dossier.aliases);
+ const tr=dossier.tim_relation||{};
+ const cp=arr(dossier.top_co_presence).slice(0,8);
+ return '<div class="two"><div><div class="block"><h2>Identity</h2><p><b>Class:</b> '+esc(dossier.entity_class||'unresolved')+'</p><p><b>Archive status:</b> '+esc(dossier.archive_status||'not specified')+'</p><p><b>Aliases:</b> '+(aliases.length?aliases.map(esc).join(' · '):'<span class="empty">none recovered</span>')+'</p></div><div class="block"><h2>Tim relation</h2><p>'+esc(tr.editorial_reading||'No compact editorial reading yet.')+'</p><p class="muted">'+esc(tr.source_boundary||'Source boundary not yet summarized.')+'</p></div></div><div><div class="block"><h2>Archetypes</h2><div class="role-list">'+(arr(tr.archetypes).length?arr(tr.archetypes).map(x=>'<span class="role">'+esc(x)+'</span>').join(''):'<span class="empty">none assigned</span>')+'</div></div><div class="block"><h2>Frequent co-presence</h2>'+(cp.length?cp.map(x=>'<p><b>'+esc(x.name)+'</b> <span class="mono">×'+esc(x.count)+'</span></p>').join(''):'<p class="empty">No social-ledger co-presence recovered.</p>')+'</div></div></div>';
+}
+function timelineHtml(){
+ const all=[];
+ for(const x of arr(dossier.chronology?.cast_period_roles)) all.push({date:x.period,title:x.role,summary:'Cast-book period role'});
+ for(const x of arr(dossier.chronology?.recovered_social_days)) all.push({date:x.date,title:x.title,summary:x.minimum_event});
+ for(const x of arr(dossier.highlighted_incidents)) all.push({date:x.date,title:x.title,summary:x.summary});
+ const seen=new Set(); const uniq=all.filter(x=>{const k=x.date+'|'+x.title;if(seen.has(k))return false;seen.add(k);return true;});
+ return '<div class="timeline">'+(uniq.length?uniq.map(x=>'<article class="event"><time>'+esc(x.date)+'</time><h3>'+esc(x.title)+'</h3><p>'+esc(x.summary||'')+'</p></article>').join(''):'<p class="empty">No dated events loaded.</p>')+'</div>';
+}
+function bondsHtml(){
+ const list=bondMatches(current).sort((a,b)=>b.count-a.count);
+ return '<div class="block"><h2>Source-derived co-presence</h2><p class="muted">Co-presence does not itself prove friendship, alliance, motive or conflict.</p>'+(list.length?list.map(e=>{const other=e.a===current?e.b:e.a;return '<article class="event"><h3>'+esc(other)+' <span class="mono">×'+esc(e.count)+'</span></h3><p>'+esc(arr(e.contexts).slice(0,4).join(' · '))+'</p><small>'+esc(arr(e.dates).join(', '))+'</small></article>'}).join(''):'<p class="empty">No co-presence edges in current network.</p>')+'</div>';
+}
+function storiesHtml(){
+ const list=storyMatches(current); const inc=incidentMatches(current);
+ return '<div class="two"><div class="block"><h2>Story appearances</h2>'+(list.length?list.map(s=>'<a class="story-link" href="'+route(s.path)+'"><b>'+esc(s.title)+'</b><br><small>'+esc(s.mode||'')+'</small></a>').join(''):'<p class="empty">No explicit Story links indexed yet.</p>')+'</div><div class="block"><h2>Indexed incidents</h2>'+(inc.length?inc.map(x=>'<article class="event"><time>'+esc(x.date)+'</time><h3>'+esc(x.title)+'</h3><small>'+esc(arr(x.type).join(' / '))+'</small></article>').join(''):'<p class="empty">No FBI incident entries yet.</p>')+'</div></div>';
+}
+function rolesHtml(){
+ const list=roleMatches(current);
+ const symbolic=arr(dossier.symbolic_roles);
+ return '<div class="block"><h2>Source-bounded roles</h2>'+(list.length?list.map(x=>'<article class="event"><h3>'+esc(x.role)+'</h3><p>'+esc(x.note||'')+'</p><small>'+esc(x.date||'')+' · '+esc(x.status||'')+'</small></article>').join(''):'<p class="empty">No indexed Dog/Farmer/Dweller/Potato/Tomato-style role assignments.</p>')+'</div><div class="block"><h2>Dossier symbolic-role records</h2>'+(symbolic.length?'<pre class="mono">'+esc(JSON.stringify(symbolic,null,2))+'</pre>':'<p class="empty">None.</p>')+'</div>';
+}
+function enhancementsHtml(){
+ const e=enhancementFor(current);
+ if(!e)return '<p class="empty">No enhancement/capability sheet recovered yet.</p>';
+ const ordinary=arr(e.ordinary), creative=arr(e.creative);
+ return '<div class="two"><div class="block"><h2>Ordinary / documentary capabilities</h2>'+(ordinary.length?'<ul>'+ordinary.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'<p class="empty">none recovered</p>')+'</div><div class="block"><h2>Creative / project enhancements</h2>'+(creative.length?'<ul>'+creative.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'<p class="empty">none recovered</p>')+'</div></div><p class="stamp">SOURCE BOUNDARY</p><p>'+esc(e.boundary||'Keep documentary and creative traits separate.')+'</p>';
+}
+function sourcesHtml(){
+ const ss=arr(dossier.source_strata); const leads=arr(dossier.recovery_leads);
+ return '<div class="two"><div class="block"><h2>Source strata</h2>'+(ss.length?ss.map(s=>'<a class="route-link" href="'+route(s.path)+'">'+esc(s.type)+' → '+esc(s.path)+'</a>').join(''):'<p class="empty">No source routes indexed.</p>')+'</div><div class="block"><h2>Open recovery leads</h2>'+(leads.length?'<ul>'+leads.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'<p class="empty">No current recovery leads.</p>')+'</div></div>';
+}
+function render(){
+ document.title=(dossier.display_name||current)+' — FBI File';
+ document.getElementById('fileId').textContent='FILE '+current.toUpperCase()+' · '+(dossier.entity_class||'ENTITY');
+ document.getElementById('name').textContent=dossier.display_name||current;
+ document.getElementById('summary').textContent=dossier.tim_relation?.editorial_reading||'Persistent Potatoverse dossier.';
+ document.getElementById('badges').innerHTML=[
+  dossier.archive_status, dossier.room_policy, ...(dossier.tim_relation?.archetypes||[]).slice(0,4)
+ ].filter(Boolean).map(x=>'<span class="badge">'+esc(x)+'</span>').join('');
+ document.getElementById('overview').innerHTML=overviewHtml();
+ document.getElementById('timeline').innerHTML=timelineHtml();
+ document.getElementById('bonds').innerHTML=bondsHtml();
+ document.getElementById('stories').innerHTML=storiesHtml();
+ document.getElementById('roles').innerHTML=rolesHtml();
+ document.getElementById('enhancements').innerHTML=enhancementsHtml();
+ document.getElementById('sources').innerHTML=sourcesHtml();
+ document.getElementById('rawLink').href=route('knowledge/fbi/figures/'+current+'.json');
+}
+async function load(id){
+ current=id; history.replaceState(null,'','?figure='+encodeURIComponent(id));
+ try{dossier=await get('knowledge/fbi/figures/'+id+'.json');render()}catch(e){
+  document.getElementById('name').textContent='File not found';
+  document.getElementById('summary').textContent='This entity does not yet have a deep FBI JSON dossier.';
+ }
+}
+function shuffle(){
+ const figs=arr(manifest?.figures).map(x=>x.id).filter(x=>x!==current);
+ if(!figs.length)return; load(figs[Math.floor(Math.random()*figs.length)]);
+}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
+ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+ b.classList.add('active');document.getElementById(b.dataset.panel).classList.add('active');
+}));
+document.getElementById('shuffleTop').onclick=shuffle;document.getElementById('shuffleBottom').onclick=shuffle;
+(async()=>{[manifest,roles,stories,bonds,incidents,enhancements]=await Promise.all([
+ get('knowledge/fbi/manifest.json'),get('knowledge/fbi/role-index.json'),get('knowledge/fbi/story-links.json'),
+ get('knowledge/fbi/bonds/network.json'),get('knowledge/fbi/incidents/index.json'),get('knowledge/fbi/enhancements-index.json')
+]);await load(current)})().catch(e=>{document.getElementById('summary').textContent='The cabinet could not load one of its indexes.'});
+</script>
+</body></html>
