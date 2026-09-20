@@ -19,13 +19,14 @@
     ],
     "narrative_functions": [
       "provocation",
-      "quiet influence"
+      "quiet influence",
+      "grievance/repair interlocutor"
     ],
     "regions": [
       "Plane",
       "Network"
     ],
-    "editorial_reading": "Old profile emphasizes sideline influence and provocation; treat motive claims cautiously.",
+    "editorial_reading": "GG remains a dense Chronicle figure, but March 2026 adds an important counterweight to provocation-only readings: Port Monkey reported catching up with GG and said GG mentioned a grievance/healing meeting intended to move on. This is a reported repair lead, not evidence that a meeting or reconciliation was completed.",
     "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
   },
   "chronology": {
@@ -56,16 +57,31 @@
       "Feb 25 2025",
       "Feb 26 2025"
     ],
-    "cast_period_roles": [],
+    "cast_period_roles": [
+      {
+        "period": "2026-03-04",
+        "role": "reported via Port Monkey as discussing a grievance/healing meeting aimed at moving on; completion unresolved"
+      }
+    ],
     "recovered_social_days": []
   },
   "top_co_presence": [],
   "symbolic_roles": [],
-  "highlighted_incidents": [],
+  "highlighted_incidents": [
+    {
+      "date": "2026-03-04",
+      "title": "Reported grievance/healing proposal",
+      "summary": "Port Monkey reports that GG mentioned a meeting for healing discussion about grievances 'to move on.' The archive does not infer that the meeting happened or resolved the grievances."
+    }
+  ],
   "source_strata": [
     {
       "type": "character_archive",
       "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "conversation_recovery",
+      "path": "knowledge/cia/conversation-intake-2026-09-20.json"
     }
   ],
   "recovery_leads": [
@@ -77,8 +93,8 @@
     "authority": "canonical",
     "record_type": "character-dossier",
     "presence": {
-      "first_recorded": null,
-      "last_recorded": null,
+      "first_recorded": "2024-11-03",
+      "last_recorded": "2026-03-04",
       "rule": "First/last currently recovered dated evidence in this dossier; not lifetime endpoints."
     },
     "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
@@ -90,7 +106,9 @@
     "open_loops": [
       "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
       "Separate direct speech from Chronicle paraphrase and later project interpretation.",
-      "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+      "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve.",
+      "Recover raw 4 March 2026 source for the grievance/healing proposal.",
+      "Establish whether the proposed meeting occurred, who attended, and whether any durable repair followed."
     ]
   }
 }

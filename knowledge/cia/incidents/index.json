@@ -621,6 +621,77 @@
         "room-making"
       ],
       "source": "story-content/2026-09-20-matthew-mediomu.html"
+    },
+    {
+      "id": "inc-2026-06-20-txt-disputed-narrative",
+      "date": "2026-06-20",
+      "title": "TXT disputed narrative resurfaces",
+      "characters": [
+        "txt"
+      ],
+      "type": [
+        "public-interaction",
+        "disputed-claims",
+        "recurrence"
+      ],
+      "source": "data/swamp/dim-txt-relational-dossier.json",
+      "source_mode": "recovered public interaction",
+      "summary": "Recovered material shows disputed identity/misconduct claims circulating. The archive records circulation, not truth or guilt.",
+      "boundary": "Treat claims and counterclaims as attributed unless independently established."
+    },
+    {
+      "id": "inc-2026-07-07-dim-txt-shared-field",
+      "date": "2026-07-07",
+      "title": "DIM and TXT share a public conflict field",
+      "characters": [
+        "dim",
+        "txt"
+      ],
+      "type": [
+        "public-interaction",
+        "association",
+        "conflict"
+      ],
+      "source": "data/swamp/dim-txt-relational-dossier.json",
+      "source_mode": "public-interaction recovery",
+      "summary": "DIM and TXT appear in the same argument about following, neighbors, narrative transfer and Cow/Dog language.",
+      "boundary": "This establishes dated co-presence and conflict context, not motive or wrongdoing."
+    },
+    {
+      "id": "inc-2026-08-02-dim-txt-outleveling-fable",
+      "date": "2026-08-02",
+      "title": "Dogs who outlevel the caretaker",
+      "characters": [
+        "dim",
+        "txt"
+      ],
+      "type": [
+        "fable",
+        "role-change",
+        "repair-question"
+      ],
+      "source": "data/swamp/dim-txt-relational-dossier.json",
+      "source_mode": "project fable",
+      "summary": "DIM and TXT are recast as differently tempered dogs cultivated until they become stronger and harder to direct; a bridge variant leaves repair/cooperation as an open question.",
+      "boundary": "Literary/project layer, not biography."
+    },
+    {
+      "id": "inc-2026-03-04-monkey-gg-repair-lead",
+      "date": "2026-03-04",
+      "title": "Monkey reports GG grievance/healing proposal",
+      "characters": [
+        "port-monkey",
+        "gg"
+      ],
+      "type": [
+        "conversation-recovery",
+        "repair-lead",
+        "grievance"
+      ],
+      "source": "knowledge/cia/conversation-intake-2026-09-20.json",
+      "source_mode": "conversation-recovered report",
+      "summary": "Port Monkey reports catching up with GG and says GG mentioned a meeting for healing discussion about grievances with the aim of moving on.",
+      "boundary": "Reported proposal only; do not infer the meeting occurred or that reconciliation was completed."
     }
   ],
   "coverage_note": "Incident means a bounded dated event, not wrongdoing. Chronicle social-presence days are indexed as recovery incidents."
