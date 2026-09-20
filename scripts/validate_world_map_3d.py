@@ -89,7 +89,7 @@ def main() -> int:
     countries = load_json(COUNTRIES, errors)
 
     fail_if_missing(html, ('id="map"','id="panel"','id="status"','id="search"','id="country-list"','id="height"','id="compare"','id="interior"','id="relations"','id="relationType"','id="traceDepth"','id="fit"','id="tilt"','id="globe"','id="world"','id="layersMenu"','id="traceMenu"','id="timeMenu"','id="viewMenu"','id="panelToggle"','id="focusMode"','id="timeMode"','id="timeDate"','id="timeDate2"','id="atlasTimeState"','class="app panel-collapsed"','src="./3d-hover.js"','src="./3d-pathfinder.js"','src="./3d-evidence.js"','src="./3d-time.js"',"Geography, graph topology, project hierarchy and time are separate coordinates"),"world-map/3d.html",errors)
-    fail_if_missing(bootstrap,("ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v')","function versionedModule","await import(versionedModule('./3d-hover.js'))","waitForCore","countries-fill","window.__potatoAtlasReady","Path finder","Demography","Country selection","Country Pulse","declareDormant('Evidence'","declareDormant('Fields'","declareDormant('Networks'","declareDormant('Time'","declareDormant('Axis depth'","declareDormant('Axis operators'","declareDormant('North Axis'","potato-atlas-interactive","__potatoAtlasDiagnostics","deploymentVersion"),"world-map/3d-bootstrap.js",errors)
+    fail_if_missing(bootstrap,("ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v')","function versionedModule","await import(versionedModule('./3d-hover.js'))","waitForCore","countries-fill","window.__potatoAtlasReady","Path finder","Demography","Country selection","Country Pulse","declareDormant('Evidence'","declareDormant('Time'","declareDormant('Axis depth'","declareDormant('Axis operators'","declareDormant('North Axis'","potato-atlas-interactive","__potatoAtlasDiagnostics","deploymentVersion"),"world-map/3d-bootstrap.js",errors)
     fail_if_missing(selection,("pinnedCodes","activeCode","function togglePinnedCountry","function pinCountry","function unpinCountry","function automaticRelationData","urlState.patch('selection-inspector'","selection-chip","data-country-code","clearAll","__potatoAtlasSelection","automaticRelationBudget","DEFAULT_AUTO_RELATION_BUDGET"),"world-map/3d-country-selection.js",errors)
     fail_if_missing(pulse,("Country Pulse","GDP per capita","Inflation","Unemployment","__potatoAtlasCountryPulse","More statistics"),"world-map/3d-country-pulse.js",errors)
     fail_if_missing(lenses,("__potatoAtlasLenses","LEGACY_TO_LAYER","layers.activate(layerId)","compositor.render()","potato-atlas-lens-change","compatibility:true","urlState.claim('legacy-lens'"),"world-map/3d-lenses.js",errors)
@@ -106,6 +106,8 @@ def main() -> int:
         errors.append("Eye must consume the canonical panel lifecycle instead of creating a DOM observer")
     if "'./3d-ui.js'" in bootstrap or "'./3d-selection-ui.js'" in bootstrap:
         errors.append("retired Progressive/Selection UI must not return to the live bootstrap registry")
+    if "declareDormant('Fields'" in bootstrap or "declareDormant('Networks'" in bootstrap:
+        errors.append("legacy Fields/Networks must not return to the live bootstrap registry without explicit canonical promotion")
     if 'src="./3d-ui.js"' in html or 'src="./3d-selection-ui.js"' in html:
         errors.append("retired Progressive/Selection UI must not return to public source markers")
     if "__potatoAtlasUI" in time_js:
