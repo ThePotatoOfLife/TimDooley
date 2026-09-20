@@ -1,4 +1,4 @@
-const INSPECTOR_TYPES = Object.freeze(['country','subdivision','place','evidence','evidence-record','project-case','spatial-overlay']);
+const INSPECTOR_TYPES = Object.freeze(['country','subdivision','place','evidence','evidence-record','project-case','spatial-overlay','axis','axis-depth']);
 const TYPE_RANK = new Map(INSPECTOR_TYPES.map((type, index) => [type, index]));
 
 function normalizePathNodes(nodes = []) {
