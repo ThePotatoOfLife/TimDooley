@@ -1,3 +1,5 @@
+if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
+const motion = window.__potatoAtlasMotion;
 const FORMAL_URL = '../data/axis-formal-lenses.json';
 const DEPTH_URL = '../data/axis-depths.json';
 const CONTROL_ID = 'axisOperatorAction';
@@ -90,7 +92,7 @@ function applyOperator(name,formal,depths,map){
     extra='<div class="card"><b>Door</b><p class="muted">The camera is returned to the North threshold. A rigorous Door needs an explicit guard or condition before a represented state transition is claimed.</p></div>';
   } else if(name==='spiral'){
     setDimension(6,{silentCamera:true});
-    map.easeTo({center:[-36,80],zoom:Math.max(map.getZoom(),2.75),pitch:58,bearing:map.getBearing()+115,duration:1300});
+    motion.easeTo(map,{center:[-36,80],zoom:Math.max(map.getZoom(),2.75),pitch:58,bearing:map.getBearing()+115,duration:1300});
     extra='<div class="card"><b>Return with change</b><p class="muted">The view rotates while remaining anchored to the same North region. Use this operator for repeated historical/system states only when a delta—scale, phase, capability, topology or evidence—can be shown.</p></div>';
   } else if(name==='tree'){
     setDimension(7);
@@ -106,11 +108,11 @@ function applyOperator(name,formal,depths,map){
     extra='<div class="card"><b>Relay</b><p class="muted">Relations stay visible because D9 asks what crosses an edge: message, standard, knowledge, resource, obligation or signal—and what is lost or distorted in transmission.</p></div>';
   } else if(name==='mountain'){
     setDimension(10,{silentCamera:true});
-    map.easeTo({center:[10,43],zoom:1.45,pitch:60,bearing:18,duration:1200});
+    motion.easeTo(map,{center:[10,43],zoom:1.45,pitch:60,bearing:18,duration:1200});
     extra='<div class="card"><b>Mountain compression</b><p class="muted">The camera widens toward system scale. This is a many-to-one analytical move: aggregate details into larger systems while explicitly remembering that aggregation loses information.</p></div>';
   } else if(name==='north'){
     setDimension(11,{silentCamera:true});
-    map.easeTo({center:[-36,81.5],zoom:2.7,pitch:72,bearing:0,duration:1200});
+    motion.easeTo(map,{center:[-36,81.5],zoom:2.7,pitch:72,bearing:0,duration:1200});
     extra='<div class="card"><b>Meta-reference</b><p class="muted">North of North asks which criterion survives changes of representation and whether a claimed orientation can descend back into D10 service and D4 observable consequences.</p></div>';
   } else if(name==='reflect'){
     const up=depths.reflection_law?.upward_example||'';
