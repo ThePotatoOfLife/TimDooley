@@ -13,6 +13,7 @@
 <meta property="og:description" content="Not just a counter: follow the 100,000-hour idea from recovered story moments to a transparent arithmetic model and evidence audit.">
 <meta property="og:url" content="https://thepotatooflife.github.io/TimDooley/tim-dooley/100000-hours/">
 <meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../app/tts-drawer.css">
 <style>
 :root{--bg:#080a08;--ink:#f3efe4;--muted:#9da69a;--faint:#6e776c;--green:#acd47a;--green2:#6f9559;--gold:#d9b46b;--line:#2b342b;--panel:#101510;--panel2:#0b0f0c;--soft:#dce1d7;--red:#ca8976}
 *{box-sizing:border-box}html{background:var(--bg);scroll-behavior:smooth}body{margin:0;color:var(--ink);font:17px/1.7 system-ui,-apple-system,Segoe UI,sans-serif;background:
@@ -290,6 +291,22 @@ function render(){
 render();setInterval(render,1000);
 })();
 </script>
-<script src="../../app/site-tts.js" defer></script>
+<script src="../../app/tts-reader.js"></script>
+<script src="../../app/tts-drawer.js"></script>
+<script src="../../app/longform-tts-adapter.js"></script>
+<script>
+(function(){
+  function mount100kReader(){
+    if(window.PotatoLongformTTS&&typeof window.PotatoLongformTTS.autoMount==='function'){
+      window.PotatoLongformTTS.autoMount(document);
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',mount100kReader,{once:true});
+  }else{
+    mount100kReader();
+  }
+})();
+</script>
 </body>
 </html>
