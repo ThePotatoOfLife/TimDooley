@@ -1,6 +1,6 @@
 {
   "id": "axis-flow-contract",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "updated": "2026-09-20",
   "status": "active project-symbolic flow contract",
   "purpose": "Define the bidirectional flow grammar of the D1-D11 Axis so the Atlas can place residue, obligations, recurrence, repair, growth, transmission and integration consistently without confusing project symbolism with empirical physics.",
@@ -1251,5 +1251,13 @@
     "definition_owner": "knowledge/core/deep-element-definition-atlas.json",
     "plane_contract": "data/house/plane-crossing-contract.json",
     "note": "This file owns D1-D11 transformation-flow invariants, not visualization coordinates, world geopolitics or generic Plane definition."
+  },
+  "bidirectional_spiral_field": {
+    "owner": "data/house/bidirectional-spiral-field.json",
+    "relation": "Axis supplies signed axial orientation; Spiral supplies history-bearing turning/recurrence around that orientation.",
+    "upper_branch": "+Axis and increasing rho may coexist; ascent/integration and radial widening measure different coordinates.",
+    "lower_branch": "-Axis and increasing rho may represent rooting/depth or entanglement depending route/outcome.",
+    "chirality": "handedness is a projection parameter only",
+    "time_firewall": "Axis displacement and time/order are distinct variables."
   }
 }
