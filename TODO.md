@@ -160,6 +160,19 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 - [ ] Audit generated question/topic/context/record pages for meaningful TTS sectioning, not just script presence.
 - [ ] Run an exact-head final Pages build after the current navigation/content/TTS wave and fix any source-vs-generated route drift it exposes.
 
+### Integration conditions sweep — 2026-09-20
+
+Goal: improve movement and hierarchy across the public project without redesigning it or adding another navigation system.
+
+- [ ] **Quiet secondary UI:** collapse the persistent House journey ribbon by default so content remains primary; keep the thread one click away.
+- [ ] **Hide backend custody detail:** nested-Room readers should show human titles/kinds first; raw repository paths and inventory counts belong in optional details/tooltips rather than the main reading flow.
+- [ ] **CIA canonicalization:** `/rooms/potatoverse-canon/beings/cia/` is the public character archive; old `/fbi/` routes remain compatibility/source history rather than competing primary surfaces.
+- [ ] **Legacy person-page demotion:** preserve unique scene summaries on old `/fbi/<person>/` pages but mark them non-canonical/noindex and send readers into the richer CIA folder.
+- [ ] **Meaningful cross-Room doors:** connect CIA to Time & History (character chronology), Culture & Information (social formation/context), Archive & Sources (provenance) and Beings & Cast (identity) without spraying CIA links across unrelated pages.
+- [ ] **Reader-over-backend rule:** public pages may expose source/provenance, but raw JSON paths, file counts, registry mechanics and implementation vocabulary should be secondary unless the page's job is explicitly archival.
+- [ ] **Route regression:** extend validation so CIA canonical/legacy behavior and the quieter House shell remain intentional after future content waves.
+- [ ] **Density follow-up:** after this sweep, rescan high-level public surfaces for places where another card/link should instead become one stronger paragraph, scene, example or case.
+
 ### P2 — maintainability and duplication
 
 - [ ] Reduce hand-maintained asset-version duplication for shared components (for example the same spiral CSS/JS version string repeated across four reader pages).
