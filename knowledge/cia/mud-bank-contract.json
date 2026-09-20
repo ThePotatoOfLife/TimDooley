@@ -149,5 +149,91 @@
       "forgiveness inferred from silence or elapsed time",
       "closure treated as proof of guilt, innocence or moral worth"
     ]
+  },
+  "future_positive_value_candidates": {
+    "status": "unpriced research / canon candidates",
+    "rule": "These may become positive ledger events only after the project defines observable event criteria, provenance and non-duplicative pricing. Until then they are conceptual categories, not automatic rewards.",
+    "candidates": [
+      {
+        "id": "table-value",
+        "label": "Create value on the Table",
+        "concept": "A substantial created, repaired, cultivated or shared thing that can metaphorically be placed on the Table in Heaven.",
+        "possible_evidence": [
+          "finished work",
+          "repair completed",
+          "useful artifact",
+          "nourishment/service",
+          "documented created value"
+        ],
+        "priced": false
+      },
+      {
+        "id": "potato-growth",
+        "label": "Grow a Potato",
+        "concept": "Demonstrable growth from seed/potential into a more capable, cultivated or generative state.",
+        "possible_evidence": [
+          "learning milestone",
+          "completed cultivation",
+          "new capability",
+          "documented spiritual/practical growth"
+        ],
+        "priced": false
+      },
+      {
+        "id": "gate-passage",
+        "label": "Pass the Gate",
+        "concept": "A meaningful threshold crossed with evidence of changed state rather than merely claiming passage.",
+        "possible_evidence": [
+          "completed transition",
+          "resolved threshold",
+          "documented decision/action",
+          "before/after capability change"
+        ],
+        "priced": false
+      },
+      {
+        "id": "ladder-walk",
+        "label": "Walk the Ladder",
+        "concept": "Sustained upward/repair movement through ordered steps rather than a one-off symbolic label.",
+        "possible_evidence": [
+          "completed sequence",
+          "repair steps",
+          "learning progression",
+          "repeatable practice"
+        ],
+        "priced": false
+      },
+      {
+        "id": "potato-study",
+        "label": "Study Potato",
+        "concept": "Learning, reflection and integration of Potatoverse material that produces understanding rather than passive repetition.",
+        "possible_evidence": [
+          "completed study",
+          "clear synthesis",
+          "new applied understanding",
+          "source-grounded contribution"
+        ],
+        "priced": false
+      },
+      {
+        "id": "spiritual-growth",
+        "label": "Grow spiritually",
+        "concept": "Project-defined growth in responsibility, repair, understanding, generativity or integration.",
+        "possible_evidence": [
+          "documented repair",
+          "increased responsibility",
+          "better boundaries",
+          "generative action",
+          "integrated learning"
+        ],
+        "priced": false
+      }
+    ],
+    "anti_gaming": [
+      "Do not award value merely for self-declaring a symbolic role.",
+      "Do not double-count one act as Table value + Potato growth + Gate + Ladder unless distinct evidence supports distinct events.",
+      "Prefer created/repair outcomes over performative labels.",
+      "A future spiral score should describe a path of change, not a person's permanent worth."
+    ]
   }
 }
