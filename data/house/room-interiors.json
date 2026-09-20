@@ -1,9 +1,9 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-20",
   "authority": "nested-room-interior-registry",
   "purpose": "Bind every registered nested Room to a stable spatial-home route without changing its canonical knowledge ownership.",
-  "route_pattern": "/rooms/inside/<subroom-id>/",
+  "route_pattern": "/rooms/inside/<public-route-slug>/",
   "count": 38,
   "rules": [
     "Every active nested Room receives one spatial interior route.",
@@ -83,7 +83,9 @@
       "route": "/rooms/inside/timeline-events/",
       "status": "active",
       "local_role": "occurrence time",
-      "adjacency_count": 4
+      "adjacency_count": 4,
+      "route_slug": "timeline-events",
+      "route_alias_status": "intentional"
     },
     {
       "subroom_id": "developmental-genealogy",
@@ -360,5 +362,13 @@
     "data/house/subrooms.json",
     "data/house/non-euclidean-room-grammar.json",
     "data/house/elevator-spatial-projection.json"
-  ]
+  ],
+  "route_alias_rule": "subroom_id is the canonical internal identity; route_slug is the public path segment when it intentionally differs. Generators must use route/route_slug, never derive public URLs blindly from subroom_id.",
+  "route_aliases": {
+    "chronology-events": {
+      "route_slug": "timeline-events",
+      "route": "/rooms/inside/timeline-events/",
+      "reason": "Preserve the established reader-facing Timeline wording while retaining chronology-events as the canonical internal Room id."
+    }
+  }
 }
