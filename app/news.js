@@ -47,6 +47,11 @@ function mergeQueries(a,b){if(a&&b)return'('+a+') AND ('+b+')';return a||b||'(in
 async function bootFull(host,config){
  const tabs=$('[data-news-tabs]',host),lenses=$('[data-news-lenses]',host),horizons=$('[data-news-horizons]',host),input=$('[data-news-search]',host),form=$('form.news-search',host),refresh=$('[data-news-refresh]',host),queryText=$('[data-news-active-query]',host);
  const params=new URLSearchParams(location.search);let category=params.get('category')||host.dataset.newsCategory||'all';let lens=params.get('lens')||'';let horizon=params.get('window')||'24h';let custom=clean(params.get('q')||'');let view=params.get('view')||'latest';let force=false;
+ if(!(config.categories||[]).some(x=>x.id===category))category='all';
+ if(lens&&!(config.lenses||[]).some(x=>x.id===lens))lens='';
+ if(!(config.horizons||[]).some(x=>x.id===horizon))horizon='24h';
+ if(!['latest','clusters','sources'].includes(view))view='latest';
+ if(custom){category='all';lens=''}
  function catRow(){return(config.categories||[]).find(x=>x.id===category)||(config.categories||[])[0]||{}}
  function lensRow(){return(config.lenses||[]).find(x=>x.id===lens)||null}
  function press(){$$('[data-news-category]',tabs).forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.newsCategory===category)));$$('[data-news-lens]',lenses).forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.newsLens===lens)));$$('[data-news-horizon]',horizons).forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.newsHorizon===horizon)));setView(host,view)}
