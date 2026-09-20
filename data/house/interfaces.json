@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-20",
   "authority": "house-interface-governance",
   "subroom_registry": "data/house/subrooms.json",
@@ -18,7 +18,20 @@
       ],
       "guard": "The formal model must state what is analogy, what is exact, and what would count as misuse.",
       "reversible": "yes, with loss noted",
-      "public_use": "science / axis"
+      "public_use": "science / axis",
+      "formal_contract": {
+        "morphism_type": "formalization",
+        "preserved_invariants": [
+          "source identity",
+          "declared relation",
+          "uncertainty"
+        ],
+        "lost_or_not_preserved": [
+          "symbolic/theological meaning not encoded by the mathematics"
+        ],
+        "epistemic_transition": "E0/E1 -> E1/E3 unless separately physically tested",
+        "correspondence_target": "C2 only when an explicit typed map is defined"
+      }
     },
     {
       "id": "if-theology-bible",
@@ -47,7 +60,19 @@
       ],
       "guard": "No symbolic mapping may overwrite established anatomy or uncertainty.",
       "reversible": "yes",
-      "public_use": "life-body / science"
+      "public_use": "life-body / science",
+      "formal_contract": {
+        "morphism_type": "formalization / comparison",
+        "preserved_invariants": [
+          "anatomical identity",
+          "source status",
+          "symbolic status"
+        ],
+        "lost_or_not_preserved": [
+          "supernatural or theological identity is not preserved as anatomy"
+        ],
+        "epistemic_transition": "symbolic comparison remains E3; empirical anatomy remains E2"
+      }
     },
     {
       "id": "if-body-theology",
@@ -76,7 +101,19 @@
       ],
       "guard": "A candidate must name assumptions and what result would change confidence.",
       "reversible": "yes",
-      "public_use": "research-lab"
+      "public_use": "research-lab",
+      "formal_contract": {
+        "morphism_type": "formalization",
+        "preserved_invariants": [
+          "question provenance",
+          "known unknowns",
+          "counterevidence"
+        ],
+        "lost_or_not_preserved": [
+          "open-ended wording may be narrowed into operational variables"
+        ],
+        "epistemic_transition": "candidate may move E0/E1 -> E4 only after dynamics/observables/falsifier exist"
+      }
     },
     {
       "id": "if-experiment-test",
@@ -91,7 +128,19 @@
       ],
       "guard": "Testing criteria must be stated before promotion claims.",
       "reversible": "yes",
-      "public_use": "research-lab / science"
+      "public_use": "research-lab / science",
+      "formal_contract": {
+        "morphism_type": "observation / inference",
+        "preserved_invariants": [
+          "model version",
+          "assumptions",
+          "negative results"
+        ],
+        "lost_or_not_preserved": [
+          "unmeasured latent distinctions may remain unidentified"
+        ],
+        "epistemic_transition": "E4 -> E5 only when meaningful evidence constrains the model"
+      }
     },
     {
       "id": "if-test-science",
@@ -106,7 +155,19 @@
       ],
       "guard": "Passing a local test does not imply universal validity; evidence scope must be declared.",
       "reversible": "reviewable",
-      "public_use": "science"
+      "public_use": "science",
+      "formal_contract": {
+        "morphism_type": "promotion / effective ownership transfer",
+        "preserved_invariants": [
+          "test history",
+          "limitations",
+          "provenance"
+        ],
+        "lost_or_not_preserved": [
+          "local success does not preserve universal scope"
+        ],
+        "epistemic_transition": "E5 -> E6 only for distinctive reproducible empirical support"
+      }
     },
     {
       "id": "if-provenance-witness",
@@ -121,7 +182,19 @@
       ],
       "guard": "Attestation may prove wording/time without proving the claim's truth.",
       "reversible": "yes",
-      "public_use": "sources / timeline"
+      "public_use": "sources / timeline",
+      "formal_contract": {
+        "morphism_type": "observation",
+        "preserved_invariants": [
+          "artifact identity",
+          "timestamp precision",
+          "capture lineage"
+        ],
+        "lost_or_not_preserved": [
+          "artifact observation does not uniquely identify all underlying events"
+        ],
+        "epistemic_transition": "observation constrains history; it does not prove every interpretation"
+      }
     },
     {
       "id": "if-witness-time",
@@ -136,7 +209,19 @@
       ],
       "guard": "Publication/capture time and occurrence time must remain distinguishable.",
       "reversible": "yes",
-      "public_use": "timeline / history"
+      "public_use": "timeline / history",
+      "formal_contract": {
+        "morphism_type": "projection",
+        "preserved_invariants": [
+          "attestation time",
+          "source identity",
+          "date uncertainty"
+        ],
+        "lost_or_not_preserved": [
+          "chronology view may omit semantic/contextual dimensions"
+        ],
+        "epistemic_transition": "placement is descriptive unless causal claims are separately supported"
+      }
     },
     {
       "id": "if-time-genealogy",
@@ -531,5 +616,10 @@
       "reversible": "yes",
       "public_use": "science / life-body / house"
     }
-  ]
+  ],
+  "formal_grammar_ref": "data/project-formal-grammar.json",
+  "interface_contract_extension": {
+    "rule": "Interfaces are House morphisms. formal_contract adds map type, preserved invariants, known loss/mismatch and epistemic role without replacing the existing human-readable guard.",
+    "composition_test": "For A->B->C, compare the direct interpretation with composed interfaces; disagreements on shared observables/invariants must be recorded rather than hidden."
+  }
 }
