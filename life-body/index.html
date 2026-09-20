@@ -68,6 +68,7 @@
    const data=await fetch('../knowledge/body/vertebral-33-room-atlas.json').then(r=>r.json());
    const nav=document.getElementById('spineNav'), detail=document.getElementById('spineDetail'), filters=document.getElementById('spineFilters');
    const regions=['all','cervical','thoracic','lumbar','sacral','coccygeal'];
+   const params=new URLSearchParams(location.search);const requested=(params.get('spine')||'').toUpperCase();
    let active='all';
    regions.forEach(region=>{const b=document.createElement('button');b.textContent=region==='all'?'All 33':region;b.onclick=()=>{active=region;[...filters.children].forEach(x=>x.classList.toggle('is-active',x===b));draw();};if(region==='all')b.classList.add('is-active');filters.appendChild(b);});
    function show(room,button){
@@ -83,15 +84,16 @@
        +'<h4>Boundary</h4><p>'+esc(room.epistemic_boundary)+'</p>';
    }
    function draw(){
-     const rs=data.rooms.filter(r=>active==='all'||r.region===active);nav.innerHTML='';
-     rs.forEach((room,i)=>{const b=document.createElement('button');b.textContent=room.level+' — '+room.room_name.replace(/^.*?—\s*/,'');b.onclick=()=>show(room,b);nav.appendChild(b);if(i===0)show(room,b);});
+     const rs=data.rooms.filter(r=>active==='all'||r.region===active);nav.innerHTML='';let selected=false;
+     rs.forEach((room,i)=>{const b=document.createElement('button');b.textContent=room.level+' — '+room.room_name.replace(/^.*?—\s*/,'');b.onclick=()=>show(room,b);nav.appendChild(b);if(requested&&room.level.toUpperCase()===requested){show(room,b);selected=true}else if(i===0&&!selected&&!requested)show(room,b);});
+     if(requested&&!selected){const target=data.rooms.find(r=>r.level.toUpperCase()===requested);if(target){active=target.region;const fb=[...filters.children].find(x=>x.textContent.toLowerCase()===active);if(fb){[...filters.children].forEach(x=>x.classList.remove('is-active'));fb.classList.add('is-active')}draw();}}
    } draw();
  }
  async function buildBrain(){
    const data=await fetch('../knowledge/body/brain-room-deep-atlas.json').then(r=>r.json());
    const nav=document.getElementById('brainNav'), detail=document.getElementById('brainDetail'), filters=document.getElementById('brainFilters');
-   const groups=['all',...data.groups];let active='all';
-   groups.forEach(group=>{const b=document.createElement('button');b.textContent=group==='all'?'All rooms':group.replaceAll('-',' ');b.onclick=()=>{active=group;[...filters.children].forEach(x=>x.classList.toggle('is-active',x===b));draw();};if(group==='all')b.classList.add('is-active');filters.appendChild(b);});
+   const groups=['all',...data.groups];const params=new URLSearchParams(location.search);const requested=params.get('brain')||'';const requestedGroup=params.get('brain-group')||'';let active=requestedGroup&&groups.includes(requestedGroup)?requestedGroup:'all';
+   groups.forEach(group=>{const b=document.createElement('button');b.textContent=group==='all'?'All rooms':group.replaceAll('-',' ');b.onclick=()=>{active=group;[...filters.children].forEach(x=>x.classList.toggle('is-active',x===b));draw();};if(group===active)b.classList.add('is-active');filters.appendChild(b);});
    function show(room,button){
      [...nav.querySelectorAll('button')].forEach(x=>x.classList.toggle('is-active',x===button));
      detail.innerHTML='<h3>'+esc(room.name)+'</h3><div class="room-meta"><span>'+esc(room.group)+'</span><span>'+esc(room.location)+'</span></div>'
@@ -100,7 +102,7 @@
        +'<h4>Project relation</h4><p>'+esc(room.project)+'</p>'
        +'<h4>Boundary</h4><p>'+esc(room.boundary)+'</p>';
    }
-   function draw(){const rs=data.rooms.filter(r=>active==='all'||r.group===active);nav.innerHTML='';rs.forEach((room,i)=>{const b=document.createElement('button');b.textContent=room.name;b.onclick=()=>show(room,b);nav.appendChild(b);if(i===0)show(room,b);});} draw();
+   function draw(){const rs=data.rooms.filter(r=>active==='all'||r.group===active);nav.innerHTML='';let selected=false;rs.forEach((room,i)=>{const b=document.createElement('button');b.textContent=room.name;b.onclick=()=>show(room,b);nav.appendChild(b);if(requested&&room.id===requested){show(room,b);selected=true}else if(i===0&&!selected&&!requested)show(room,b);});if(requested&&!selected){const target=data.rooms.find(r=>r.id===requested);if(target){active=target.group;const fb=[...filters.children].find(x=>x.textContent.toLowerCase()===active.replaceAll('-',' '));if(fb){[...filters.children].forEach(x=>x.classList.remove('is-active'));fb.classList.add('is-active')}draw();}}} draw();
  }
  buildSpine().catch(e=>document.getElementById('spineNav').innerHTML='<p>Could not load vertebral atlas.</p>');
  buildBrain().catch(e=>document.getElementById('brainNav').innerHTML='<p>Could not load brain atlas.</p>');
