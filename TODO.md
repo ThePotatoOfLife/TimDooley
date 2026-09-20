@@ -115,7 +115,16 @@ Priority order: **P0 release breakage → P1 structural drift/duplication → P2
 - [x] Repair missing metadata on 20 nested Room pages and harden SEO enrichment to repair absent descriptions.
 - [x] Repair built-site shell blockers: stale homepage marker assertion, Politics source path, Geography → Timeline Room wormhole.
 - [x] Latest Pages deploy is green on `5e3e40b` after the ADL U.S. state-rendering merge.
-- [ ] Obtain an exact-head green **Repository quality checks** result for the current integration head; do not call a work wave complete while the quality workflow is pending/cancelled.
+- [x] Obtain an exact-head green **Repository quality checks** result for the current integration head. `39527e2` passed Core · House · Atlas, World Map, Content · Research · Bible, Public build · SEO · Science and aggregate `validate`; the matching Pages deployment also completed successfully on 2026-09-20.
+
+### Release-candidate snapshot — 2026-09-20
+
+- **Current release head:** `39527e2`.
+- **Quality status:** exact-head green across all four quality groups plus aggregate validation.
+- **Deployment status:** matching GitHub Pages deployment green.
+- **Release posture:** technically releasable as a public v1 candidate; remaining work is primarily P1/P2 hardening, stale-branch reconciliation, route-authority cleanup, reader-density/TTS quality and the externally dependent ADL freshness refresh.
+- **Do not block release on:** stale PR count alone, historical ADL seed while it remains explicitly labeled, or non-blocking blueprint/richness warnings.
+- **Block release on:** a new exact-head CI/deploy failure, broken primary navigation, corrupted generated artifact, missing critical public surface, or a regression in canonical ownership/provenance contracts.
 
 ### P1 — structural debt now demonstrated
 
