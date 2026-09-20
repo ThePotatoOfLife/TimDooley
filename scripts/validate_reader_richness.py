@@ -120,11 +120,31 @@ def main() -> int:
     if missing_shell:
         errors.append("registered nested Room shells missing: "+", ".join(missing_shell[:10]))
 
-    history=audit.get("authored_history") or []
+    authored_groups = [
+        audit.get("authored_history") or [],
+        audit.get("second_authored_wave") or [],
+        audit.get("third_authored_wave") or [],
+        audit.get("fourth_authored_wave") or [],
+    ]
+    history=[row for group in authored_groups for row in group]
+    seen_authored=set()
     for row in history:
-        path=ROOT/str(row.get("path") or "")
+        rel=str(row.get("path") or "")
+        if not rel or rel in seen_authored:
+            continue
+        seen_authored.add(rel)
+        path=ROOT/rel
         if not path.is_file():
-            errors.append(f"historically authored richness page missing: {row.get('path')}")
+            errors.append(f"authored richness page missing: {rel}")
+            continue
+        source=path.read_text(encoding="utf-8",errors="replace")
+        mass=len(plain_text(source))
+        if mass < 1800:
+            errors.append(f"authored richness page regressed to a thin shell: {rel} has {mass} plain-text characters")
+        if rel.startswith("rooms/inside/") and 'class="room-essay"' not in source:
+            errors.append(f"authored nested Room lost its substantive essay marker: {rel}")
+        if re.match(r"^rooms/[^/]+/index\.html$", rel) and rel != "rooms/objects/index.html" and 'class="dwelling-reader"' not in source:
+            errors.append(f"authored Dwelling lost its narrative reader marker: {rel}")
 
     bound_pages={str(row.get("page") or "") for row in bindings}
     surface_rows=[row for row in surfaces.get("surfaces",[]) if isinstance(row,dict)]
@@ -148,7 +168,7 @@ def main() -> int:
         print("READER RICHNESS VALIDATION FAILED")
         for error in errors: print("-",error)
         return 1
-    print(f"Reader richness: PASS · {len(registered)} nested Rooms · {len(history)} authored-history Rooms · {len(bindings)} substance-bound public pages · {len(visible)} visible surfaces checked live")
+    print(f"Reader richness: PASS · {len(registered)} nested Rooms · {len(seen_authored)} authored pages protected · {len(bindings)} substance-bound public pages · {len(visible)} visible surfaces checked live")
     return 0
 
 if __name__=="__main__":
