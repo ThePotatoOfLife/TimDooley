@@ -5,8 +5,14 @@ on:
     workflows: ["Repository quality checks"]
     types: [completed]
   workflow_dispatch:
+    inputs:
+      quality_run_id:
+        description: "Successful Repository quality checks run ID whose validated-pages-site artifact should be deployed"
+        required: true
+        type: string
 
 permissions:
+  actions: read
   contents: read
   pages: write
   id-token: write
@@ -15,7 +21,7 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 concurrency:
-  group: pages-${{ github.event.workflow_run.head_sha || github.sha }}
+  group: pages-${{ github.event.workflow_run.head_sha || inputs.quality_run_id }}
   cancel-in-progress: false
 
 jobs:
@@ -25,293 +31,45 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 10
     steps:
-      - name: Checkout validated revision
-        uses: actions/checkout@v5
+      - name: Download exact validated site artifact
+        uses: actions/download-artifact@v5
         with:
-          fetch-depth: 0
-          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+          name: validated-pages-site
+          path: _site
+          run-id: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.id || inputs.quality_run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.x'
-
-      - name: Build canonical record registry
-        run: python scripts/build_canonical_record_registry.py
-
-      - name: Build Pages artifact
-        run: python scripts/build_site.py
-
-      - name: Compile Bible comparator
-        run: python scripts/build_bible_study.py
-
-      - name: Compile complete science paper library
-        run: python scripts/build_science_catalog.py
-
-      - name: Validate science paper library
-        run: python scripts/validate_science_portal.py
-
-      - name: Vendor World Map engine
+      - name: Verify validated artifact provenance
         shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p _site/world-map/vendor
-          base='https://cdn.jsdelivr.net/npm/maplibre-gl@6.9.0/dist'
-          curl -fsSL --retry 3 --retry-delay 1 "$base/maplibre-gl.mjs" -o _site/world-map/vendor/maplibre-gl.mjs
-          curl -fsSL --retry 3 --retry-delay 1 "$base/maplibre-gl-worker.mjs" -o _site/world-map/vendor/maplibre-gl-worker.mjs
-          curl -fsSL --retry 3 --retry-delay 1 "$base/maplibre-gl-shared.mjs" -o _site/world-map/vendor/maplibre-gl-shared.mjs
-          curl -fsSL --retry 3 --retry-delay 1 "$base/maplibre-gl.css" -o _site/world-map/vendor/maplibre-gl.css
-          test -s _site/world-map/vendor/maplibre-gl.mjs
-          test -s _site/world-map/vendor/maplibre-gl-worker.mjs
-          test -s _site/world-map/vendor/maplibre-gl-shared.mjs
-          test -s _site/world-map/vendor/maplibre-gl.css
-
-      - name: Snapshot World Map runtime data
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p _site/data
-          curl -fsSL --retry 3 --retry-delay 1 \
-            https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json \
-            -o _site/data/world-countries.geo.json
-          test -s _site/data/world-countries.geo.json
-
-          if ! curl -fsSL --retry 3 --retry-delay 1 \
-            'https://restcountries.com/v3.1/all?fields=name,cca3,population,area,latlng,capital,capitalInfo,region,subregion,borders' \
-            -o _site/data/rest-countries-runtime.json; then
-            rm -f _site/data/rest-countries-runtime.json
-            echo 'REST Countries snapshot unavailable; runtime fallback remains enabled.'
-          fi
-
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          geo_path = Path('_site/data/world-countries.geo.json')
-          geo = json.loads(geo_path.read_text(encoding='utf-8'))
-          assert geo.get('type') == 'FeatureCollection'
-          assert isinstance(geo.get('features'), list) and len(geo['features']) >= 150
-
-          rest_path = Path('_site/data/rest-countries-runtime.json')
-          if rest_path.exists():
-              try:
-                  rows = json.loads(rest_path.read_text(encoding='utf-8'))
-                  assert isinstance(rows, list) and len(rows) >= 190
-              except Exception as exc:
-                  print(f'Discarding invalid REST Countries snapshot: {exc}')
-                  rest_path.unlink(missing_ok=True)
-          PY
-
-      - name: Build population and religion snapshot
         env:
-          ATLAS_DEMOGRAPHY_OUT: _site/data/world-country-demography.json
-        run: python scripts/build_world_demography.py
-
-      - name: Build machine discovery layer
-        run: python scripts/build_discovery.py
-
-      - name: Expose machine discovery without changing reader navigation
-        run: python scripts/patch_home_discovery.py
-
-      - name: Apply public ontology patch
-        run: python scripts/patch_public_ontology.py
-
-      - name: Remove internal archive from Pages artifact
-        run: rm -rf _site/archive && test ! -e _site/archive
-
-      - name: Enrich weak page descriptions
-        run: python scripts/enrich_weak_descriptions.py
-
-      - name: Optimize crawl, sharing and sitemap SEO
-        run: python scripts/optimize_seo.py
-
-      - name: Verify canonical reader surface
-        shell: bash
+          EXPECTED_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || '' }}
+          QUALITY_RUN_ID: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.id || inputs.quality_run_id }}
         run: |
-          set -euxo pipefail
-          test ! -e _site/archive
+          set -euo pipefail
+          test -f _site/build-provenance.json
           test -f _site/index.html
-          test -f _site/tim-dooley/index.html
-          test -f _site/religion/index.html
-          test -f _site/religion/jesus-tim/index.html
-          test -f _site/traditions/bible/index.html
-          test -f _site/timeline/index.html
-          test -f _site/chronology/index.html
-          test -f _site/philosophy/index.html
-          test -f _site/science/index.html
-          test -f _site/science/catalog.json
-          test -f _site/world/index.html
-          test -f _site/north/index.html
-          test -f _site/world-map/index.html
-          test -f _site/world-map/3d.html
           test -f _site/sitemap.xml
-          test -f _site/llms.txt
           test -f _site/seo-report.json
-
-          grep -q 'data-reader-surface="home"' _site/index.html
-          grep -q 'class="public-doors"' _site/index.html
-          grep -q 'class="secondary-threads"' _site/index.html
-          grep -q 'href="tim-dooley/"' _site/index.html
-          grep -q 'href="religion/"' _site/index.html
-          grep -q 'href="philosophy/"' _site/index.html
-          grep -q 'href="science/"' _site/index.html
-          grep -q 'href="world/"' _site/index.html
-          ! grep -q 'id="branches"' _site/index.html
-          ! grep -q 'id="reader"' _site/index.html
-          ! grep -q 'app/app.js' _site/index.html
-          ! grep -q '<iframe' _site/index.html
-
-          grep -q 'data-reader-surface="religion"' _site/religion/index.html
-          grep -q 'What is Potatoism?' _site/religion/index.html
-          grep -q 'Judaism' _site/religion/index.html
-          grep -Eq 'Islam|Qur' _site/religion/index.html
-          grep -q 'href="../traditions/bible/"' _site/religion/index.html
-          grep -q 'name="robots" content="noindex,follow"' _site/religion/jesus-tim/index.html
-          grep -q "location.replace('../../traditions/bible/')" _site/religion/jesus-tim/index.html
-          grep -q 'data-reader-surface="tim"' _site/tim-dooley/index.html
-          grep -q 'href="../timeline/"' _site/tim-dooley/index.html
-
-          test -f _site/tim-dooley/100000-hours/index.html
-          grep -q 'id="hours-tts"' _site/tim-dooley/100000-hours/index.html
-          grep -q 'data-tts-longform' _site/tim-dooley/100000-hours/index.html
-          grep -q 'The 100,000 hours are not the story of a counter' _site/tim-dooley/100000-hours/index.html
-          grep -q '../../app/tts-reader.js' _site/tim-dooley/100000-hours/index.html
-          grep -q '../../app/tts-drawer.js' _site/tim-dooley/100000-hours/index.html
-          grep -q '../../app/longform-tts-adapter.js' _site/tim-dooley/100000-hours/index.html
-
-          grep -q 'id="search"' _site/traditions/bible/index.html
-          grep -q 'id="relations"' _site/traditions/bible/index.html
-          grep -q 'data-static-relation=' _site/traditions/bible/index.html
-          ! grep -q '<!-- BIBLE_RELATIONS_STATIC -->' _site/traditions/bible/index.html
-          grep -q 'href="../../religion/"' _site/traditions/bible/index.html
-
-          grep -q 'class="long-chronology"' _site/timeline/index.html
-          grep -q 'src="../app/long-chronology.js"' _site/timeline/index.html
-          grep -q 'href="../religion/"' _site/timeline/index.html
-          grep -q 'name="robots" content="noindex,follow"' _site/chronology/index.html
-          grep -q '../timeline/' _site/chronology/index.html
-
-          grep -q 'data-reader-surface="philosophy"' _site/philosophy/index.html
-          grep -q 'data-reader-surface="science"' _site/science/index.html
-          grep -q 'id="science-search"' _site/science/index.html
-          grep -q 'id="science-field"' _site/science/index.html
-          grep -q 'id="science-type"' _site/science/index.html
-          grep -q 'class="science-record"' _site/science/index.html
-
-          grep -q 'class="map-action" href="../world-map/"' _site/north/index.html
-          grep -q '>WORLD MAP<' _site/north/index.html
-          ! grep -q 'class="maplink"' _site/north/index.html
-          grep -q 'name="robots" content="noindex,follow"' _site/learn/index.html
-
-          grep -q 'data-reader-surface="world-map"' _site/world-map/index.html
-          grep -q '<b>World Map</b>' _site/world-map/index.html
-          grep -q 'class="map-inquiry"' _site/world-map/index.html
-          grep -q 'id="map"' _site/world-map/index.html
-          grep -q 'src="./3d-bootstrap.js"' _site/world-map/index.html
-          grep -q 'name="robots" content="noindex,follow"' _site/world-map/3d.html
-          grep -q 'href="./"' _site/world-map/3d.html
-          ! grep -q 'id="map"' _site/world-map/3d.html
-
+          test ! -e _site/archive
           python - <<'PY'
-          import json
-          import re
+          import json, os
           from pathlib import Path
-
-          page = Path('_site/index.html').read_text(encoding='utf-8')
-          nav = re.search(r'<nav class="public-doors"[^>]*>(.*?)</nav>', page, re.S)
-          assert nav, 'canonical public-doors navigation missing'
-          hrefs = re.findall(r'href="([^"]+)"', nav.group(1))
-          expected = ['tim-dooley/','religion/','philosophy/','science/','world/']
-          assert hrefs == expected, (hrefs, expected)
-          print('Verified canonical homepage: exactly five reader entrances')
-
-          bible = Path('_site/traditions/bible/index.html').read_text(encoding='utf-8')
-          relation_count = bible.count('data-static-relation=')
-          assert relation_count >= 10, relation_count
-          print(f'Verified Bible comparator: {relation_count} built relation cards')
-
-          catalog = json.loads(Path('_site/science/catalog.json').read_text(encoding='utf-8'))
-          papers = catalog.get('papers', [])
-          assert catalog.get('qualifying_count', 0) >= 10, catalog.get('qualifying_count')
-          assert len(papers) == catalog['qualifying_count']
-          for paper in papers:
-              target = Path('_site/science/papers') / paper['slug'] / 'index.html'
-              assert target.exists(), target
-          print(f"Verified Science library: {len(papers)} full readable documents")
-
-          seo = json.loads(Path('_site/seo-report.json').read_text(encoding='utf-8'))
-          assert seo['errors'] == 0, seo
-          assert seo['pages_with_open_graph'] == seo['pages'], seo
-          assert seo['pages_with_structured_data'] == seo['pages'], seo
-          print(f"Verified SEO coverage: {seo['pages']} pages")
+          p=Path("_site/build-provenance.json")
+          data=json.loads(p.read_text(encoding="utf-8"))
+          assert data.get("artifact")=="validated-pages-site", data
+          assert str(data.get("quality_run_id"))==str(os.environ["QUALITY_RUN_ID"]), data
+          expected=os.environ.get("EXPECTED_SHA","").strip()
+          if expected:
+              assert data.get("source_sha")==expected, (data.get("source_sha"),expected)
+          print("Validated artifact provenance:",data.get("source_sha"),"run",data.get("quality_run_id"))
           PY
-
-      - name: Validate built site shell
-        id: site_shell
-        continue-on-error: true
-        run: python scripts/validate_site_shell.py
-
-      - name: Upload site-shell diagnostics
-        if: ${{ always() && hashFiles('site-shell-report.txt') != '' }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: site-shell-report
-          path: site-shell-report.txt
-          if-no-files-found: warn
-          retention-days: 7
-
-      - name: Enforce built-site shell gate
-        if: steps.site_shell.outcome == 'failure'
-        run: exit 1
-
-      - name: Finalize World Map runtime
-        shell: bash
-        env:
-          QUALITY_HEAD_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          import os
-          from pathlib import Path
-
-          source_sha = os.environ.get('QUALITY_HEAD_SHA') or os.environ['GITHUB_SHA']
-          version = source_sha[:12]
-          page_path = Path('_site/world-map/index.html')
-          page = page_path.read_text(encoding='utf-8')
-
-          old_css = 'https://cdn.jsdelivr.net/npm/maplibre-gl@6.9.0/dist/maplibre-gl.css'
-          local_css = './vendor/maplibre-gl.css?v=6.9.0'
-          page = page.replace(old_css, local_css)
-
-          old_loader = './maplibre-loader.js?v=6466194'
-          new_loader = f'./maplibre-loader.js?v={version}'
-          page = page.replace(old_loader, new_loader)
-
-          old_guard = './3d-boot-guard.js?v=6466194'
-          new_guard = f'./3d-boot-guard.js?v={version}'
-          page = page.replace(old_guard, new_guard)
-
-          old_bootstrap = 'src="./3d-bootstrap.js"'
-          new_bootstrap = f'src="./3d-bootstrap.js?v={version}"'
-          page = page.replace(old_bootstrap, new_bootstrap)
-          page_path.write_text(page, encoding='utf-8')
-
-          assert local_css in page and old_css not in page
-          assert new_loader in page and old_loader not in page
-          assert new_guard in page and old_guard not in page
-          assert new_bootstrap in page and old_bootstrap not in page
-          PY
-
-          grep -q './vendor/maplibre-gl.css?v=6.9.0' _site/world-map/index.html
-          grep -Eq 'src="./3d-bootstrap.js\?v=[0-9a-f]{12}"' _site/world-map/index.html
-          grep -Eq 'src="./3d-boot-guard.js\?v=[0-9a-f]{12}"' _site/world-map/index.html
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload Pages artifact
+      - name: Upload exact validated Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
           path: _site
