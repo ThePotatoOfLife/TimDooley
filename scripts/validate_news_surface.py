@@ -74,6 +74,8 @@ for token in (
     "querySelectorAll('[data-news-lens]')",
     "querySelectorAll('[data-news-horizon]')",
     "function renderClusters",
+    "function providerContract",
+    "function publisherFeedRegister",
     "function renderSourceLanes",
     "function mergeQueries",
     "horizonMs(config,horizon)",
@@ -98,6 +100,9 @@ for token in (
     ".news-view-switch",
     ".news-clusters",
     ".news-source-lanes",
+    ".news-source-contract",
+    ".news-feed-register",
+    ".news-feed-contract",
     ".news-console",
     ".news-audio-reader",
     ".news-story-summary",
@@ -107,14 +112,24 @@ for token in (
 ):
     require(css,token,"app/news.css")
 
-for token in ('data-news-mode="preview"','publisher-rss','app/news.js?v=20260920f','app/news.css?v=20260920f'):
+for token in ('data-news-mode="preview"','publisher-rss','app/news.js?v=20260920g','app/news.css?v=20260920g'):
     require(home,token,"index.html")
 require(house,'href="../news/">Current World</a>',"house/index.html")
 
 providers={row.get("id") for row in cfg.get("providers",[]) if isinstance(row,dict)}
 if providers != {"gdelt","publisher-rss","hacker-news","spaceflight-news"}:
     errors.append(f"unexpected provider contract: {sorted(providers)}")
+for row in cfg.get("providers",[]):
+    if not isinstance(row,dict):
+        continue
+    if not row.get("display_mode") or not row.get("reuse_mode"):
+        errors.append(f"news provider missing display/reuse metadata: {row.get('id')}")
 feeds=cfg.get("publisher_feeds",[])
+for row in feeds:
+    if not isinstance(row,dict):
+        continue
+    if not row.get("reuse_mode") or not row.get("reuse_note") or not row.get("terms_url"):
+        errors.append(f"publisher feed missing reuse/terms metadata: {row.get('id')}")
 if len(feeds) < 4:
     errors.append("publisher RSS layer must declare at least four feeds")
 if not all(row.get("feed_url") and row.get("name") for row in feeds if isinstance(row,dict)):
@@ -131,6 +146,9 @@ lens_ids={row.get("id") for row in cfg.get("lenses",[]) if isinstance(row,dict)}
 for required in ("north-arctic","europe","ukraine-russia","middle-east","americas","asia-pacific","africa","economy-energy","security","science-tech"):
     if required not in lens_ids:
         errors.append(f"missing Current World lens: {required}")
+transparency=cfg.get("source_transparency",{})
+if transparency.get("no_ranking") is not True:
+    errors.append("news source transparency must remain non-ranking")
 boundary=str(cfg.get("epistemic_boundary","")).lower()
 for phrase in ("similar headlines","geographic mentions","not corroboration"):
     if phrase not in boundary:
