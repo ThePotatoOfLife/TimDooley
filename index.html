@@ -11,6 +11,7 @@
 <link rel="alternate" type="text/plain" href="https://thepotatooflife.github.io/TimDooley/llms.txt" title="Machine-readable site guide">
 <link rel="alternate" type="application/json" href="https://thepotatooflife.github.io/TimDooley/site-authority.json" title="Official project authority and discovery manifest">
 <link rel="stylesheet" href="app/site-system.css?v=20260914a">
+<link rel="stylesheet" href="app/news.css?v=20260920a">
 <style>
 .home-page{padding-top:30px;padding-bottom:82px}.home-nav{margin-bottom:46px}
 .home-hero{display:grid;grid-template-columns:minmax(280px,.88fr) minmax(320px,1.12fr);gap:48px;align-items:end;padding:8px 0 42px}
@@ -93,7 +94,14 @@
 <a href="#working-capabilities"><b>See</b> what the machinery can do</a>
 <a href="#doors-title"><b>Enter</b> the public Doors</a>
 <a href="#learn-the-structure"><b>Orient</b> when the architecture becomes useful</a>
+<a href="news/"><b>Current</b> live world news</a>
 </nav>
+
+<section class="news-preview" data-news-feed data-news-mode="preview" data-news-category="all" data-news-providers="gdelt,hacker-news,spaceflight-news" data-news-limit="3" aria-labelledby="current-world-title">
+<div class="news-preview-head"><div><p class="eyebrow">Current world · live outside feeds</p><h2 id="current-world-title">What is moving now?</h2></div><p>A small source-linked window beside the project entrance. It pulls recent public API metadata and keeps outside reporting distinct from project canon.</p></div>
+<div class="news-preview-grid" data-news-preview-grid><div class="news-empty">Loading current headlines…</div></div>
+<a class="news-preview-more" href="news/">Open Current World News →</a>
+</section>
 
 <section class="home-section" aria-labelledby="start-title">
 <div class="home-section-head"><div><p class="eyebrow">Start here</p><h2 id="start-title">One project, one visible spine</h2></div><p>Center tells you what the project means. House tells you how it fits together. Rooms tell you where knowledge belongs. Views let you cross the archive without creating another ownership system.</p></div>
@@ -332,6 +340,7 @@
 <footer class="home-footer"><span>Archive tools · </span><a href="questions/">Questions</a><a href="index-a-z/">A–Z index</a><a href="tools/tts/">TTS Reader</a><a href="https://github.com/ThePotatoOfLife/TimDooley">Repository</a></footer>
 <div class="home-view-counter" aria-label="Homepage view count"><img src="https://hits.sh/thepotatooflife.github.io/TimDooley.svg?style=flat-square&amp;label=views" alt="Homepage views" loading="eager" decoding="async"></div>
 
+<script src="app/news.js?v=20260920a" data-news-config="data/news/sources.json"></script>
 <script>
 (async()=>{
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
