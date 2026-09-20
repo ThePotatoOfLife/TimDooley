@@ -133,6 +133,10 @@
     {
       "type": "conversation_recovery",
       "path": "knowledge/cia/conversation-intake-2026-09-20.json"
+    },
+    {
+      "type": "debt_evidence_ledger",
+      "path": "knowledge/cia/debt-evidence-ledger.json"
     }
   ],
   "recovery_leads": [
@@ -150,7 +154,15 @@
     },
     "association_rule": "DIM–TXT co-presence is documentary at the July 7 anchor; later joint appearances may be interpretive or fictional and must be typed separately.",
     "debt_and_repair": {
-      "records": [],
+      "records": [
+        {
+          "id": "candidate-dim-2026-07-07-conflict-day",
+          "date": "2026-07-07",
+          "pricing_status": "unpriced",
+          "summary": "Public conflict presence is documented, but no distinct harmful act is isolated strongly enough to price.",
+          "reason_unpriced": "unpriced: conflict participation / later symbolic interpretation only"
+        }
+      ],
       "rule": "No legal, financial, karmic or spiritual debt is attached here without a dated source explicitly doing so."
     },
     "state_rule": "Dog/Farmer, Dimmus Maximus, threshold and satire labels are episode/layer states rather than permanent human essence.",
