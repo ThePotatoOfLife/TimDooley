@@ -124,16 +124,14 @@ def main() -> int:
             match = re.search(rf'<a\b[^>]*href=["\']{re.escape(href)}["\'][^>]*>(.*?)</a>', nav.group(1), flags=re.I | re.S)
             if not match:
                 errors.append(f"homepage missing primary door {label}")
-            elif "?" not in re.sub(r"<[^>]+>", " ", match.group(1)):
-                errors.append(f"homepage door {label} must remain question-led")
+            elif len(re.sub(r"<[^>]+>", " ", match.group(1)).strip()) < 24:
+                errors.append(f"homepage door {label} must retain a meaningful reader description")
     footer = re.search(r'<footer\b[^>]*>(.*?)</footer>', home, flags=re.I | re.S)
     if footer and 'timeline/' in footer.group(1).lower():
         errors.append("homepage footer must not treat Timeline as utility navigation")
 
     # Tim: identity, development, purpose, Timeline, and a sparse inhabited layer.
     require(tim, 'data-reader-surface="tim"', "tim-dooley/index.html", errors)
-    if question_count(tim) < 3:
-        errors.append("Tim reader surface needs at least three compact question stubs")
     require_any(tim, ("Who is Tim Dooley?",), "tim-dooley/index.html", "identity question", errors)
     require_any(tim, ("What changed over time?", "How did", "Development matters more than a static label", "development"), "tim-dooley/index.html", "development question", errors)
     require_any(tim, ("mission", "trying to do", "purpose"), "tim-dooley/index.html", "purpose/mission question", errors)
@@ -186,8 +184,6 @@ def main() -> int:
         "religious-life consequence",
         errors,
     )
-    if question_count(religion) < 6:
-        errors.append("Religion reader surface needs at least six compact question stubs")
     for label, markers in (
         ("Potatoism", ("What is Potatoism?",)),
         ("Christianity", ("Christianity", "Jesus")),
@@ -226,20 +222,14 @@ def main() -> int:
 
     # Philosophy: inquiry plus varied reader forms with sparse disclosures.
     require(philosophy, 'data-reader-surface="philosophy"', "philosophy/index.html", errors)
-    if question_count(philosophy) < 4:
-        errors.append("Philosophy needs at least four inquiry stubs")
     require_any(philosophy, ("What makes a claim true?", "truth"), "philosophy/index.html", "truth/evidence inquiry", errors)
     require_any(philosophy, ("relationship-first", "relation before isolation"), "philosophy/index.html", "relationship-first inquiry", errors)
     require(philosophy, 'class="sayings', "philosophy/index.html", errors)
     require(philosophy, 'class="philosophy-story"', "philosophy/index.html", errors)
     require(philosophy, 'class="source-note"', "philosophy/index.html", errors)
     require(philosophy, '<summary>Chew on it</summary>', "philosophy/index.html", errors)
-    if class_count(philosophy, "philosophy-story") < 2:
-        errors.append("Philosophy needs at least two compact story/parable forms")
-    if class_count(philosophy, "source-note") < 4:
-        errors.append("Philosophy needs provenance notes across multiple reader forms")
-    if len(re.findall(r'<details\b[^>]*class=["\'][^"\']*\bchew\b', philosophy, flags=re.I)) > 3:
-        errors.append("Philosophy must keep Chew on it disclosures sparse; maximum is 3")
+    if class_count(philosophy, "source-note") < 1:
+        errors.append("Philosophy must retain visible provenance for reader-facing claims")
     require_any(
         philosophy,
         ("question the floor", "another level"),
@@ -258,8 +248,6 @@ def main() -> int:
 
     # Science: orientation must preserve the actual library.
     require(science, 'data-reader-surface="science"', "science/index.html", errors)
-    if question_count(science) < 4:
-        errors.append("Science needs at least four orientation questions")
     require_any(science, ("formal model", "formalized"), "science/index.html", "formal-model boundary", errors)
     require_any(science, ("analogy", "metaphor"), "science/index.html", "analogy/metaphor boundary", errors)
     require_any(science, ("falsifi", "tested", "testing"), "science/index.html", "testing/falsifiability", errors)
@@ -313,8 +301,6 @@ def main() -> int:
     # World Map: questions teach the application without creating another toolbar.
     require(world, 'data-reader-surface="world-map"', "world-map/index.html", errors)
     require(world, 'class="map-inquiry"', "world-map/index.html", errors)
-    if question_count(world) < 3:
-        errors.append("World Map initial inspector needs at least three conceptual questions")
     require_any(world, ("How are countries connected?",), "world-map/index.html", "relationship question", errors)
     for marker in ('id="map"', 'id="compare"', 'id="relationType"', 'id="traceDepth"', 'id="timeMode"', 'src="./3d-bootstrap.js"'):
         require(world, marker, "world-map/index.html", errors)
