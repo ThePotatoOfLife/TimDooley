@@ -4,6 +4,7 @@
 const map = window.__potatoAtlasMap;
 const runtime = window.__potatoAtlasDataRuntime;
 const selection = window.__potatoAtlasSelection;
+const interaction = window.__potatoAtlasInteraction;
 if (!map || !runtime || !selection) throw new Error('Infrastructure context requires map, runtime and selection APIs.');
 await runtime.ready;
 
@@ -185,13 +186,28 @@ document.addEventListener('click', async event => {
 });
 
 ensureLayer();
-map.on('mouseenter', POINT_LAYER, () => { map.getCanvas().style.cursor = 'pointer'; });
-map.on('mouseleave', POINT_LAYER, () => { map.getCanvas().style.cursor = ''; });
-map.on('click', POINT_LAYER, async event => {
-  const id = event.features?.[0]?.properties?.id;
+
+async function openInfrastructureFeature(_event, feature) {
+  const id = feature?.properties?.id;
   const asset = id ? await runtime.infrastructure?.(id) : null;
-  if (asset) await showPopup(asset, event.features[0].geometry.coordinates);
-});
+  if (asset) await showPopup(asset, feature.geometry.coordinates);
+}
+
+if (interaction?.register) {
+  interaction.register('infrastructure-context', {
+    layers:[POINT_LAYER],
+    objectType:'infrastructure',
+    clickPriority:74,
+    hoverPriority:74,
+    cursor:'pointer',
+    onClick:openInfrastructureFeature,
+  });
+} else {
+  // Degraded/direct-module fallback only. Normal app boots are Router-owned.
+  map.on('mouseenter', POINT_LAYER, () => { map.getCanvas().style.cursor = 'pointer'; });
+  map.on('mouseleave', POINT_LAYER, () => { map.getCanvas().style.cursor = ''; });
+  map.on('click', POINT_LAYER, event => openInfrastructureFeature(event, event.features?.[0]));
+}
 
 window.addEventListener('potato-atlas-country-card-rendered', event => {
   const code = String(event?.detail?.code || currentEntityCode()).toUpperCase();
