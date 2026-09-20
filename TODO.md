@@ -175,6 +175,68 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 - [ ] Audit generated question/topic/context/record pages for meaningful TTS sectioning, not just script presence.
 - [ ] Run an exact-head final Pages build after the current navigation/content/TTS wave and fix any source-vs-generated route drift it exposes.
 
+### Fresh repository sweep — 2026-09-20
+
+#### P1 — structural drift / integration
+- [x] **NEWS-001 · Stale validator ownership:** Current World validation still required a House-level visible link after News was consolidated under World. Validator now enforces `primary_parent=world` and checks the World hub instead.
+- [x] **NEWS-002 · Missing owner-surface doorway:** World owned News structurally but did not visibly expose it. Added Current World to the World route list.
+- [x] **HOUSE-001 · CIA present in research but absent from House object layer:** promote CIA as a typed state-intelligence inhabitant with Politics/Law/Provenance placement and an Intelligence Desk route.
+- [x] **ECON-001 · Fed/ECB researched but not inhabited:** promote Federal Reserve and ECB/Eurosystem as typed central-bank-system objects inside Economy/Politics/Infrastructure.
+- [x] **HOUSE-002 · News feeder Rooms lacked reverse projection:** project Current World into Politics, Economy, Geography, Information Ecology, Chronology and Provenance holdings/dossiers/subroom surfaces.
+- [ ] **HOUSE-003 · Parent-cycle guard:** extend whole-House validation to reject public-surface parent cycles and self-parenting, not only unknown parents.
+- [ ] **HOUSE-004 · Surface/Room projection parity:** derive or validate that `subrooms.json`, `holdings.json` and `room-dossiers.json` expose the same public-surface set for every nested Room.
+- [ ] **HOUSE-005 · Object route resolution:** validate every House inhabitant route against source-time or generated-route rules, not only `/records/` routes.
+- [ ] **HOUSE-006 · Cross-Dwelling interface review:** produce a disposition for each cross-Dwelling adjacency: ordinary relation, guarded Door, or remove stale adjacency.
+- [ ] **HOUSE-007 · Public parent semantics:** document and validate when a specialist belongs under House, World, Timeline, Sources, Tim, Religion, Philosophy or Science so future surfaces do not default lazily to Home.
+- [ ] **TODAY-001 · Today → House ledger:** add a compact integration ledger for each major workstream with canonical owner, Dwelling/Room, public surface and cross-links; use it after large work days to detect researched-but-uninhabited material.
+
+#### P2 — cleanliness / maintainability
+- [ ] **CLEAN-001 · Live health filename:** replace date-stamped `spatial-house-health-2026-09-20.json` as the runtime health authority with a stable live path; preserve dated copies only as historical snapshots.
+- [ ] **CLEAN-002 · Generated projection ownership:** stop hand-editing the same Room public-surface projections in three registries; choose one source and derive the other views.
+- [ ] **CLEAN-003 · Shared asset version strings:** reduce repeated `?v=202609...` literals across HTML pages by centralizing or build-stamping shared component versions.
+- [ ] **CLEAN-004 · House inline CSS extraction:** `house/index.html` still owns a very large page-local style block; migrate reusable House component rules into a scoped shared stylesheet without introducing generic selector ownership.
+- [ ] **CLEAN-005 · Navigation label consistency:** audit Home/World/House/Rooms/Tim route labels for competing names such as Current/Current World/Current World News, Witness/Public witness/Public record, and standardize reader-facing terms.
+- [ ] **CLEAN-006 · Legacy snapshot disposition:** classify compatibility snapshots such as `public-route-topology.json` as generated, historical, or removable and ensure readers/builders never treat them as live authority.
+- [ ] **CLEAN-007 · Date-stamped audit sprawl:** inventory live files whose names contain `audit`, `wave`, `round`, `batch` or dates; mark each keep / merge / archive / prune based on unique information and references.
+- [ ] **CLEAN-008 · Obsolete presentation assets:** finish the existing asset-prune task by proving references are absent before deleting retired CSS/JS/HTML.
+- [ ] **CLEAN-009 · Duplicate validator assertions:** identify checks that independently encode the same route/ownership invariant and route them through shared resolver helpers instead of repeated literals.
+- [ ] **CLEAN-010 · Root-doc authority audit:** recheck README, PROJECT-OPERATING-MAP, PROJECT-STRUCTURE and MASTER-ARCHITECTURE for stale route/owner language after today's House/News/navigation changes.
+
+#### P2 — reader focus / navigation
+- [ ] **READ-001 · First-screen door budget:** add an audit for mature reader pages that expose too many first-screen links/menus before the first substantive section.
+- [ ] **READ-002 · Compass coverage validation:** assert the Project Compass is added to eligible built readers and intentionally absent from Home/Map/Elevator/A–Z/object explorer.
+- [ ] **READ-003 · Specialist parent continuity:** verify every specialist surface exposes one clear route back to its canonical public parent.
+- [ ] **READ-004 · Dead-end reader audit:** find public pages with no meaningful onward route beyond Home and connect them to their owner or adjacent subject.
+- [ ] **READ-005 · Vague-link language:** scan visible anchors like More, Deep, Explore, Context, Archive and replace ambiguous instances with destination intent where context does not already make it obvious.
+- [ ] **READ-006 · Repeated intro blocks:** find pages where header summary, intro card and first section restate the same purpose; preserve the strongest version and remove the duplicate layer.
+- [ ] **READ-007 · Card-density audit:** identify pages using card grids mainly as navigation compensation; convert low-information cards into inline prose/links where that improves reading flow.
+- [ ] **READ-008 · Discovery-mode separation:** validate that Explore, A–Z, Questions and Paths retain visibly distinct jobs and do not converge into four near-identical indexes.
+- [ ] **READ-009 · Mobile link-wall check:** add narrow-screen tests/heuristics for page-nav + compass + local controls stacking into excessive pre-content height.
+- [ ] **READ-010 · TTS semantic sectioning:** audit generated question/topic/context/record pages for meaningful speech boundaries and excluded controls, not merely presence of TTS script tags.
+
+#### P2 — data / evidence integration
+- [ ] **DATA-001 · Security institution object parity:** compare CIA/FBI/Mossad/PET/FE/MI5/MI6/NSA/DIA/Europol/INTERPOL datasets against House inhabitants; promote only institutions that need first-class project interaction, leave the rest as indexed data.
+- [ ] **DATA-002 · Central-bank graph foundation:** add typed institution/obligation edges among Fed, ECB/Eurosystem, national central banks, treasuries, banking systems, reserves, sovereign securities and payment rails using the obligation schema.
+- [ ] **DATA-003 · Institution alias registry:** prevent duplicates such as ECB vs European Central Bank, Fed vs Federal Reserve System, SIS vs MI6 by giving institutional entities stable aliases and canonical IDs.
+- [ ] **DATA-004 · News→archive promotion rule:** define when a current-news item graduates into Timeline, World, Politics, Economy or a source ledger, and when it should disappear with the feed.
+- [ ] **DATA-005 · Current-data freshness metadata:** ensure time-sensitive institutional/economic records carry observed/retrieved dates and do not silently look timeless.
+- [ ] **DATA-006 · Source-link health sampling:** add bounded checking for important external source URLs and mark unreachable sources without deleting their historical provenance.
+- [ ] **DATA-007 · Country institution completeness:** for each country, track explicit missing/known state for central bank, legislature, executive, judiciary and major memberships rather than treating absence as null knowledge.
+- [ ] **DATA-008 · Economy public surface depth:** expose central-bank and obligation-network institutions more directly from Economy without turning the page into another directory.
+
+#### P3 — enhancements / polish
+- [ ] **ENH-001 · Room “why this matters” line:** add one concise human-purpose line to Rooms whose current opening is mostly structural language.
+- [ ] **ENH-002 · Best-next-door cues:** allow each Room to nominate at most one or two especially meaningful next Rooms, separate from exhaustive adjacency.
+- [ ] **ENH-003 · House integration pulse:** show small derived counts for Rooms, inhabitants, guarded Doors and active public surfaces from registries rather than hard-coded numbers.
+- [ ] **ENH-004 · Current World contextual exits:** from filtered News views, offer restrained links into relevant World/Politics/Economy/Map lenses without pretending feed content is canonical.
+- [ ] **ENH-005 · Economy relationship explorer:** give Economy a compact “who owes / funds / holds / regulates whom?” entry into the obligation graph.
+- [ ] **ENH-006 · Intelligence desk explorer:** allow the Intelligence Desk to open typed institutional records (mandate, jurisdiction, oversight, sources) without mixing them with allegations/cases.
+- [ ] **ENH-007 · Recent-work integration report:** generate a small report from commits + changed canonical registries that asks whether each substantial new subsystem gained ownership, exposure and validation.
+- [ ] **ENH-008 · Reader route telemetry without tracking:** consider a purely local/dev audit of route density and unreachable pages; do not add invasive user analytics merely to solve information architecture.
+- [ ] **ENH-009 · Page-purpose contract:** standardize an optional machine-readable one-line `reader_job` for major public surfaces so navigation and audits can reason about page purpose without scraping prose.
+- [ ] **ENH-010 · Visible / semi-visible / invisible contract:** encode the current editorial rule into documentation/validation so public-primary, contextual specialist and backend-only layers remain intentionally distinct.
+
+
 ### P2 — maintainability and duplication
 
 - [ ] Reduce hand-maintained asset-version duplication for shared components (for example the same spiral CSS/JS version string repeated across four reader pages).
