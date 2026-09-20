@@ -200,5 +200,56 @@
     "CIA here means Characters, Incidents & Associations.",
     "World Spiritual Bank and sUSD are fictional Potatoverse accounting devices.",
     "No symbolic balance is objective morality, human worth, legal liability or real financial debt."
-  ]
+  ],
+  "contextual_entrances": [
+    {
+      "id": "canon-grand-entrance",
+      "context": "mythic / karmic / Potatoverse canon",
+      "path": "rooms/potatoverse-canon/#cia-bank-grand-entrance",
+      "doors": [
+        "archive",
+        "bank"
+      ],
+      "rule": "Primary symbolic entrance. Both departments can be presented openly because the reader is already inside project-canon space."
+    },
+    {
+      "id": "culture-casework-side-door",
+      "context": "subculture / information ecology",
+      "path": "rooms/culture-information/#cia-culture-side-door",
+      "doors": [
+        "archive"
+      ],
+      "rule": "Enter CIA for people/scenes/associations while Culture retains ownership of cultural mechanisms."
+    },
+    {
+      "id": "digital-recovery-hatch",
+      "context": "digital / platforms / archive recovery",
+      "path": "rooms/inside/internet-platforms/#cia-digital-recovery-door",
+      "doors": [
+        "archive"
+      ],
+      "rule": "Use when platform fragments become dossier recovery work; platform evidence remains owned by the platform/archive layers."
+    },
+    {
+      "id": "world-symbolic-annex",
+      "context": "geopolitical / economic seam",
+      "path": "rooms/world-systems/#spiritual-bank-world-annex",
+      "doors": [
+        "bank"
+      ],
+      "rule": "A deliberately bounded symbolic-finance threshold. Real central banks, debt, trade, institutions and geopolitical evidence remain World Systems owners."
+    }
+  ],
+  "threshold_copy_policy": {
+    "principle": "Keep boundaries compact and local to the threshold rather than flattening sober pages with repeated disclaimers.",
+    "preferred_tone": "fine print, dry humor, clearly authored",
+    "shorthand": "mythic archive based on a true story",
+    "must_preserve": [
+      "real-world source material may appear in dossiers",
+      "symbolic interpretation begins at the threshold",
+      "CIA is not the U.S. Central Intelligence Agency",
+      "World Spiritual Bank is not real finance",
+      "symbolic accounts do not become empirical world-system facts"
+    ]
+  }
 }
