@@ -316,12 +316,30 @@ function installLayers() {
   }
   setLayerVisibility(false);
 }
+function registerSubdivisionEvidence() {
+  return window.__potatoAtlasSubdivisions?.registerEvidenceProvider?.('adl-heat', {
+    summary(id) {
+      const row = window.__potatoAtlasAdlHeat?.stateEvidence?.(id);
+      if (!row?.enabled) return null;
+      return {
+        active:true,
+        eyebrow:'Active evidence · ADL H.E.A.T.',
+        primary:row.filteredCount,
+        summary:`records under active filters · ${fmt(row.snapshotTotal)} in snapshot.`,
+        boundary:'Source-attributed evidence; not a population-normalized score or characterization of residents.',
+        actionLabel:'Open ADL evidence',
+      };
+    },
+    open(id) { renderStateInspector(id); },
+  }) || false;
+}
 async function ensureSubdivisions() {
   if (!window.__potatoAtlasSubdivisions) {
     await window.__potatoAtlasLoadModule?.('Subdivisions', './3d-subdivisions.js');
   }
   if (!window.__potatoAtlasSubdivisions) throw new Error('Subdivision runtime unavailable.');
   await window.__potatoAtlasSubdivisions.loadPartition('USA');
+  registerSubdivisionEvidence();
   await window.__potatoAtlasSubdivisions.refresh?.();
 }
 async function loadData() {
