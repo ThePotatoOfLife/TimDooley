@@ -17,11 +17,13 @@ BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 PLACES = ROOT / "world-map" / "3d-places.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 ADL = ROOT / "world-map" / "3d-adl-heat.js"
+MUD = ROOT / "world-map" / "3d-mud-below-us.js"
+SPATIAL_UI = ROOT / "world-map" / "3d-spatial-overlay-ui.js"
 
 
 def main() -> int:
     errors: list[str] = []
-    for path in (ROUTER, URL_BRIDGE, TEST, URL_TEST, CONSUMER_TEST, LIFECYCLE, BOOTSTRAP, PLACES, SUBDIVISIONS, ADL):
+    for path in (ROUTER, URL_BRIDGE, TEST, URL_TEST, CONSUMER_TEST, LIFECYCLE, BOOTSTRAP, PLACES, SUBDIVISIONS, ADL, MUD, SPATIAL_UI):
         if not path.exists():
             errors.append(f"missing inspector-router file: {path.relative_to(ROOT)}")
     if errors:
@@ -37,6 +39,8 @@ def main() -> int:
     places = PLACES.read_text(encoding="utf-8", errors="replace")
     subdivisions = SUBDIVISIONS.read_text(encoding="utf-8", errors="replace")
     adl = ADL.read_text(encoding="utf-8", errors="replace")
+    mud = MUD.read_text(encoding="utf-8", errors="replace")
+    spatial_ui = SPATIAL_UI.read_text(encoding="utf-8", errors="replace")
     for token in ("function createInspectorRouter", "function setBaseline", "function open", "function back", "function current", "function state", "potato-atlas-inspector-change", "window.__potatoAtlasInspector"):
         if token not in router:
             errors.append(f"inspector router missing interface marker: {token}")
@@ -71,11 +75,19 @@ def main() -> int:
     if "['country','subdivision','place','evidence','evidence-record']" not in url_bridge:
         errors.append("Inspector URL hierarchy must include typed evidence nodes")
 
+    for label, source, node_type, owner in (
+        ("Mud/Below", mud, "project-case", "mud-below-us"),
+        ("Spatial Overlay UI", spatial_ui, "spatial-overlay", "spatial-overlay-ui"),
+    ):
+        for token in ("const inspector = window.__potatoAtlasInspector", "inspector.open(", f"type:'{node_type}'", f"owner:'{owner}'"):
+            if token not in source:
+                errors.append(f"{label} typed inspector migration missing marker: {token}")
+
     node = shutil.which("node")
     if not node:
         errors.append("node executable unavailable; cannot run inspector-router regressions")
     else:
-        for path in (ROUTER, URL_BRIDGE, PLACES, SUBDIVISIONS, ADL):
+        for path in (ROUTER, URL_BRIDGE, PLACES, SUBDIVISIONS, ADL, MUD, SPATIAL_UI):
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
@@ -89,7 +101,7 @@ def main() -> int:
     print("- deterministic parent restoration")
     print("- serializable state snapshots")
     print("- typed inspect= URL projection with legacy country/subdivision/place hydration")
-    print("- Places/subdivisions plus ADL evidence use typed semantic inspector nodes")
+    print("- Places, subdivisions, ADL evidence, Mud/Below and Spatial Overlays use typed semantic inspector nodes")
     print(f"Errors: {len(errors)}")
     if errors:
         print("WORLD MAP INSPECTOR ROUTER VALIDATION FAILED")
