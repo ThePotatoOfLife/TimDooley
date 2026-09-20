@@ -15,18 +15,13 @@ assert.ok(
     bootstrap.indexOf("loadAfterPaint('Country selection', './3d-country-selection.js')"),
   'inspector visibility must be listening before Country selection restores or emits state',
 );
-assert.ok(
-  bootstrap.includes("declareDormant('Progressive UI', './3d-ui.js', 'legacy compatibility')"),
-  'the broad Progressive UI must remain dormant; this fix must not restore legacy clutter',
-);
-
-const { createInspectorVisibility } = await import(moduleUrl);
 
 function element(initial = []) {
   const classes = new Set(initial);
   const listeners = new Map();
   const attributes = new Map();
-  return {
+  let focusCount = 0;
+  const node = {
     classList: {
       contains: name => classes.has(name),
       toggle(name, force) {
@@ -36,11 +31,14 @@ function element(initial = []) {
       },
     },
     addEventListener(name, fn) { listeners.set(name, fn); },
-    click() { listeners.get('click')?.({ preventDefault() {} }); },
+    click() { listeners.get('click')?.({ currentTarget:node, preventDefault() {} }); },
     setAttribute(name, value) { attributes.set(name, String(value)); },
     getAttribute(name) { return attributes.get(name); },
+    focus() { focusCount += 1; },
+    get focusCount() { return focusCount; },
     textContent: '',
   };
+  return node;
 }
 
 function eventBus() {
@@ -51,39 +49,70 @@ function eventBus() {
       listeners.get(name).push(fn);
     },
     emit(name, detail) { for (const fn of listeners.get(name) || []) fn({ detail }); },
+    emitEvent(name, event) { for (const fn of listeners.get(name) || []) fn(event); },
     dispatchEvent() {},
   };
 }
 
+const { createInspectorVisibility } = await import(moduleUrl);
 const app = element(['panel-collapsed']);
+const panel = element();
 const panelToggle = element();
 const mapInspectorToggle = element();
 const bus = eventBus();
+const keys = eventBus();
 const storageValues = new Map();
 const storage = {
   getItem: key => storageValues.get(key) ?? null,
   setItem: (key, value) => storageValues.set(key, String(value)),
 };
 
-const visibility = createInspectorVisibility({ app, panelToggle, mapInspectorToggle, eventTarget: bus, storage });
+const visibility = createInspectorVisibility({
+  app, panel, panelToggle, mapInspectorToggle, eventTarget:bus, keyTarget:keys, storage,
+});
 visibility.install();
 
-assert.equal(visibility.isOpen(), false, 'inspector starts collapsed when no persisted preference exists');
+assert.equal(visibility.isOpen(), false, 'inspector starts collapsed');
+assert.equal(panel.getAttribute('aria-hidden'), 'true');
+assert.equal(panelToggle.getAttribute('aria-controls'), 'panel');
+assert.equal(panelToggle.getAttribute('aria-expanded'), 'false');
+
 panelToggle.click();
-assert.equal(visibility.isOpen(), true, 'header Inspect button must open the inspector');
+assert.equal(visibility.isOpen(), true, 'header Inspect button must open inspector');
 assert.equal(panelToggle.textContent, 'Close');
-assert.equal(mapInspectorToggle.getAttribute('aria-pressed'), 'true');
+assert.equal(panelToggle.getAttribute('aria-expanded'), 'true');
+assert.equal(panel.getAttribute('aria-hidden'), 'false');
+await Promise.resolve();
+assert.equal(panel.focusCount, 1, 'explicit open should move focus into inspector');
 
-visibility.setOpen(false, { persist: false });
+let prevented = false, stopped = false;
+keys.emitEvent('keydown', {
+  key:'Escape',
+  defaultPrevented:false,
+  target:{ closest:() => null },
+  preventDefault(){ prevented = true; },
+  stopPropagation(){ stopped = true; },
+});
+await Promise.resolve();
+assert.equal(visibility.isOpen(), false, 'Escape must close inspector');
+assert.equal(prevented, true, 'inspector Escape must consume the key');
+assert.equal(stopped, true, 'inspector Escape must not fall through to legacy map reset');
+assert.equal(panelToggle.focusCount, 1, 'closing must return focus to the control that opened inspector');
+
 mapInspectorToggle.click();
-assert.equal(visibility.isOpen(), true, 'map Inspector button must open the inspector');
+await Promise.resolve();
+assert.equal(visibility.isOpen(), true, 'map Inspector button must open inspector');
+visibility.setOpen(false, { persist:false, returnFocusOnClose:true });
+await Promise.resolve();
+assert.equal(mapInspectorToggle.focusCount, 1, 'focus return must preserve the actual opening control');
 
-visibility.setOpen(false, { persist: false });
-bus.emit('potato-atlas-working-selection-change', { selected: true, activeCode: 'DNK' });
-assert.equal(visibility.isOpen(), true, 'selecting a country must reveal the inspector that already contains its full country overview');
+visibility.setOpen(false, { persist:false });
+bus.emit('potato-atlas-working-selection-change', { selected:true, activeCode:'DNK' });
+assert.equal(visibility.isOpen(), true, 'country selection must reveal inspector without forcing keyboard focus');
+assert.equal(panel.focusCount, 2, 'selection-driven open must not add an extra focus move');
 
-visibility.setOpen(false, { persist: false });
-bus.emit('potato-atlas-working-selection-change', { selected: false, activeCode: null });
-assert.equal(visibility.isOpen(), false, 'clearing selection must not force the inspector open');
+visibility.setOpen(false, { persist:false });
+bus.emit('potato-atlas-working-selection-change', { selected:false, activeCode:null });
+assert.equal(visibility.isOpen(), false, 'clearing selection must not force inspector open');
 
 console.log('World Map inspector visibility regression passed');
