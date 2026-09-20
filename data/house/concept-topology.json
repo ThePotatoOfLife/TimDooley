@@ -1,6 +1,6 @@
 {
-  "version": "1.4.0",
-  "updated": "2026-09-18",
+  "version": "1.5.0",
+  "updated": "2026-09-20",
   "authority": "house-semantic-topology",
   "purpose": "Machine-readable topology assignments for the small set of operators that organize the Potato House. These annotations drive projection and navigation; they do not replace canonical concept owners or evidence classes.",
   "field_orientations": [
@@ -208,7 +208,14 @@
         "philosophy",
         "trinity"
       ],
-      "boundary": "Not every hyperlink or resemblance is a strong Door."
+      "boundary": "Not every hyperlink or resemblance is a strong Door.",
+      "formal_type": {
+        "template": "Door",
+        "schema": "D=(D_G,D_E,D_Y,D_Q,D_U,D_O,D_R)",
+        "primary_project_component": "ordered interface / transition",
+        "default_dimension_type": "P",
+        "note": "Project Door is not automatically a geometric, quantum or physical Door."
+      }
     },
     {
       "id": "plane",
@@ -259,7 +266,14 @@
         "house",
         "world-map"
       ],
-      "boundary": "Axis is not asserted as a literal extra physical dimension."
+      "boundary": "Axis is not asserted as a literal extra physical dimension.",
+      "formal_type": {
+        "template": "Axis",
+        "schema": "A=(A_geom,A_dyn,A_sym,A_RG,A_order)",
+        "primary_project_component": "A_order with optional dynamical comparator",
+        "default_dimension_type": "P",
+        "note": "Project Axis is principally orientation/order unless another component is explicitly modeled."
+      }
     },
     {
       "id": "cross",
@@ -336,7 +350,13 @@
         "life-body",
         "axis"
       ],
-      "boundary": "Symbolic Eye mappings do not make the pineal or other anatomy a supernatural organ."
+      "boundary": "Symbolic Eye mappings do not make the pineal or other anatomy a supernatural organ.",
+      "formal_type": {
+        "template": "Eye",
+        "schema": "E=(A_acc,{E_y},p(y|rho),R_infer)",
+        "primary_project_component": "perception/access/inference interface",
+        "note": "This is a measurement comparator, not a supernatural-anatomy claim."
+      }
     },
     {
       "id": "spirit",
@@ -363,7 +383,13 @@
         "axis",
         "trinity"
       ],
-      "boundary": "Spiritual flow and biological/physical flows remain separately typed."
+      "boundary": "Spiritual flow and biological/physical flows remain separately typed.",
+      "formal_type": {
+        "template": "Flow",
+        "schema": "J or Phi_t, domain-dependent",
+        "primary_project_component": "relation/flow comparator",
+        "note": "Biological, physical, social and theological flows retain separate domains and units."
+      }
     },
     {
       "id": "potato",
@@ -417,7 +443,12 @@
         "religion",
         "axis"
       ],
-      "boundary": "Seed metaphors do not prove supernatural biological mechanisms."
+      "boundary": "Seed metaphors do not prove supernatural biological mechanisms.",
+      "formal_type": {
+        "template": "Seed",
+        "schema": "Z=(theta_0,G,mu_0)",
+        "primary_project_component": "generative/initial condition"
+      }
     },
     {
       "id": "root",
@@ -446,7 +477,12 @@
         "house",
         "history"
       ],
-      "boundary": "Depth is not inferiority; root is not inherently negative."
+      "boundary": "Depth is not inferiority; root is not inherently negative.",
+      "formal_type": {
+        "template": "Root",
+        "schema": "R_root=(G_dep,S_source,preceq)",
+        "primary_project_component": "dependency/provenance/support structure"
+      }
     },
     {
       "id": "tree",
@@ -471,7 +507,12 @@
         "axis",
         "religion"
       ],
-      "boundary": "Tree and Mountain are complementary operations, not moral opposites."
+      "boundary": "Tree and Mountain are complementary operations, not moral opposites.",
+      "formal_type": {
+        "template": "Tree",
+        "schema": "T=(V,E,lambda)",
+        "primary_project_component": "branching/differentiation network"
+      }
     },
     {
       "id": "mountain",
@@ -521,7 +562,12 @@
         "axis",
         "religion"
       ],
-      "boundary": "A Ladder is not a literal physical dimension by default."
+      "boundary": "A Ladder is not a literal physical dimension by default.",
+      "formal_type": {
+        "template": "Ladder",
+        "schema": "L=(X0->X1->...->Xn)",
+        "primary_project_component": "ordered chain of typed transitions"
+      }
     },
     {
       "id": "spiral",
@@ -547,7 +593,13 @@
         "science",
         "timeline"
       ],
-      "boundary": "Spiral is a trajectory description, not a guarantee of improvement."
+      "boundary": "Spiral is a trajectory description, not a guarantee of improvement.",
+      "formal_type": {
+        "template": "Spiral",
+        "schema": "S=(S_helix,S_return,S_RG,S_hol,S_phase)",
+        "primary_project_component": "recurrence-with-change",
+        "note": "Specific scientific spiral mechanisms require separate evidence."
+      }
     },
     {
       "id": "fruit",
@@ -575,7 +627,12 @@
         "axis",
         "house"
       ],
-      "boundary": "Output quality must be assessed in its domain; symbolic fruit is not evidence by itself."
+      "boundary": "Output quality must be assessed in its domain; symbolic fruit is not evidence by itself.",
+      "formal_type": {
+        "template": "Fruit",
+        "schema": "F=(O_eff,Y,p(Y|theta))",
+        "primary_project_component": "output/consequence/observable family"
+      }
     },
     {
       "id": "garden",
@@ -1178,5 +1235,7 @@
       "purpose": "Test boundaries by function: whether they preserve viable passage, repair and autonomy or produce capture, opacity and unresolved entanglement.",
       "reader_question": "Does this boundary help differentiated life circulate and grow, or make exit and repair progressively harder?"
     }
-  ]
+  ],
+  "formal_grammar_ref": "data/project-formal-grammar.json",
+  "formal_typing_rule": "formal_type annotations clarify mathematical/project role; they do not alter canonical ownership, evidence class or imply physical identity."
 }
