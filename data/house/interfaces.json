@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0",
-  "updated": "2026-09-18",
+  "version": "1.2.0",
+  "updated": "2026-09-20",
   "authority": "house-interface-governance",
   "subroom_registry": "data/house/subrooms.json",
   "principle": "Adjacency becomes architecturally meaningful when the passage states what is translated, what must remain invariant, what guard applies, and whether the crossing can be reversed or reviewed.",
@@ -468,6 +468,68 @@
       "guard": "Simulation output is not automatically evidence about the real-world system it resembles.",
       "reversible": "yes",
       "public_use": "works / science"
+    },
+    {
+      "id": "if-symbolic-architecture-body",
+      "from": "symbolic-architecture",
+      "to": "symbolic-body-comparison",
+      "type": "structural-embodiment",
+      "changes": "A House/Axis/Door/Tree/Room relation is projected onto body structures as a typed analogy rather than literal anatomy.",
+      "preserves": [
+        "project operator identity",
+        "biological structure identity",
+        "comparison status"
+      ],
+      "guard": "An anatomical neighbor may sharpen a symbolic operator but may not become proof of the operator's metaphysical truth.",
+      "reversible": "yes",
+      "public_use": "axis / house / life-body"
+    },
+    {
+      "id": "if-myth-body",
+      "from": "comparative-mythology",
+      "to": "symbolic-body-comparison",
+      "type": "historical-body-comparison",
+      "changes": "A historically described symbol such as Horus Eye, caduceus, serpent or crown is compared with project/body structures after preserving its own-tradition meaning.",
+      "preserves": [
+        "tradition identity",
+        "historical chronology",
+        "anatomical evidence",
+        "project interpretation status"
+      ],
+      "guard": "Visual resemblance or modern physiological reinterpretation must not be backdated into the source tradition.",
+      "reversible": "yes",
+      "public_use": "religion / life-body / axis"
+    },
+    {
+      "id": "if-traditions-body",
+      "from": "other-traditions",
+      "to": "symbolic-body-comparison",
+      "type": "subtle-body-comparison",
+      "changes": "Subtle-body systems such as cakra/nāḍī/kuṇḍalinī are compared with nearby anatomy while remaining religious/historical systems.",
+      "preserves": [
+        "source tradition",
+        "variant system",
+        "modern-reinterpretation history",
+        "anatomical distinction"
+      ],
+      "guard": "No one-to-one nerve/plexus/endocrine identity without historically and scientifically appropriate evidence.",
+      "reversible": "yes",
+      "public_use": "religion / corporium / life-body"
+    },
+    {
+      "id": "if-neuro-symbolic-architecture",
+      "from": "neurobiology",
+      "to": "symbolic-architecture",
+      "type": "scientific-neighbor",
+      "changes": "Empirical relational structures such as recurrent loops, gates, walls, orientation systems or flow routes are exposed as possible structural neighbors for project architecture.",
+      "preserves": [
+        "empirical description",
+        "evidence grade",
+        "project boundary"
+      ],
+      "guard": "Scientific structure remains descriptive; symbolic interpretation is an additional lens, not the scientific conclusion.",
+      "reversible": "yes",
+      "public_use": "science / life-body / house"
     }
   ]
 }
