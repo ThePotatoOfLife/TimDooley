@@ -38,6 +38,7 @@ let useClock = 0;
 let activePartitions = [];
 const forcedPartitions = new Set();
 const forcedPartitionOwners = new Map();
+const evidenceProviders = new Map();
 
 function retentionOwner(owner = 'anonymous') {
   const token = String(owner || '').trim();
@@ -95,17 +96,24 @@ function countryBaseline(code) {
     restore:() => { if (id && window.goCountry) window.goCountry(id); },
   };
 }
+function activeEvidenceRows(id) {
+  const rows = [];
+  for (const [providerId, provider] of evidenceProviders.entries()) {
+    let row = null;
+    try { row = provider?.summary?.(id) || null; } catch (error) { console.warn(`Subdivision evidence provider failed: ${providerId}`, error); }
+    if (!row || row.active === false) continue;
+    rows.push({ providerId, provider, row });
+  }
+  return rows;
+}
 function subdivisionEvidenceHtml(id) {
-  const adl = window.__potatoAtlasAdlHeat;
-  const row = adl?.stateEvidence?.(id);
-  if (!row?.enabled) return '';
-  return `
+  return activeEvidenceRows(id).map(({providerId,row}) => `
     <div class="card subdivision-evidence-card">
-      <div class="eyebrow">Active evidence · ADL H.E.A.T.</div>
-      <p><b>${fmt(row.filteredCount)}</b> records under active ADL filters · <b>${fmt(row.snapshotTotal)}</b> in snapshot.</p>
-      <p class="muted">Evidence is source-attributed and not a population-normalized score or characterization of residents.</p>
-      <button type="button" data-subdivision-adl-evidence>Open ADL evidence</button>
-    </div>`;
+      <div class="eyebrow">${esc(row.eyebrow || 'Active evidence')}</div>
+      <p>${row.primary != null ? `<b>${fmt(row.primary)}</b>` : ''} ${esc(row.summary || '')}</p>
+      ${row.boundary ? `<p class="muted">${esc(row.boundary)}</p>` : ''}
+      <button type="button" data-subdivision-evidence-provider="${esc(providerId)}">${esc(row.actionLabel || 'Open evidence')}</button>
+    </div>`).join('');
 }
 function renderInspector(feature) {
   const panel = document.getElementById('panel');
@@ -127,8 +135,11 @@ function renderInspector(feature) {
       <button type="button" data-subdivision-open-country>Open country</button>
       <button type="button" data-subdivision-close>Close subdivision</button>
     </div>`;
-  panel.querySelector('[data-subdivision-adl-evidence]')?.addEventListener('click', () => {
-    window.__potatoAtlasAdlHeat?.renderStateInspector?.(p.id);
+  panel.querySelectorAll?.('[data-subdivision-evidence-provider]')?.forEach(button => {
+    button.addEventListener('click', () => {
+      const provider = evidenceProviders.get(button.dataset.subdivisionEvidenceProvider);
+      provider?.open?.(p.id);
+    });
   });
   panel.querySelector('[data-subdivision-open-country]')?.addEventListener('click', () => {
     window.__potatoAtlasSubdivisions?.clear?.({ restore:false });
@@ -550,6 +561,16 @@ window.__potatoAtlasSubdivisions = {
     const index = await subdivisionIndex();
     return reconcileActive(index);
   },
+  registerEvidenceProvider(id, provider) {
+    const key = String(id || '').trim();
+    if (!key || !provider?.summary) return false;
+    evidenceProviders.set(key, provider);
+    return true;
+  },
+  unregisterEvidenceProvider(id) {
+    return evidenceProviders.delete(String(id || '').trim());
+  },
+  evidenceProviders() { return [...evidenceProviders.keys()].sort(); },
   status() {
     return {
       selected:selectedId,
