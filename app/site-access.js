@@ -68,6 +68,7 @@
   const menuBtn=wrapper.querySelector('[data-site-access-menu]');
   const findBtn=wrapper.querySelector('[data-site-access-find]');
   const closeBtn=wrapper.querySelector('.site-access-close');
+  let returnFocus=menuBtn;
   wrapper.querySelectorAll('[data-site-access-route]').forEach(a=>{
     const r=a.getAttribute('data-site-access-route');
     if(r==='/'?current==='/':current.startsWith(r))a.setAttribute('aria-current','page');
@@ -144,22 +145,23 @@
     content.className='site-access-results';
     content.innerHTML=rows.length?rows.map(e=>'<a class="site-access-result" href="'+esc(href(e.route))+'"><span><b>'+esc(e.label)+'</b><small>'+esc(e.note||'')+'</small></span><em>'+esc(e.kind||'result')+'</em></a>').join(''):'<div class="site-access-empty">No quick result. Try a broader word or open A–Z / Explore.</div>';
   };
-  const setOpen=(open,focusSearch=false)=>{
+  const setOpen=(open,focusSearch=false,trigger=null)=>{
+    if(open&&trigger)returnFocus=trigger;
     panel.hidden=!open;
     menuBtn.setAttribute('aria-expanded',String(open));
     findBtn.setAttribute('aria-expanded',String(open));
     if(open){if(!input.value)renderDefault();if(focusSearch)setTimeout(()=>input.focus(),0)}
   };
-  menuBtn.addEventListener('click',()=>setOpen(panel.hidden,false));
-  findBtn.addEventListener('click',()=>setOpen(true,true));
-  closeBtn.addEventListener('click',()=>setOpen(false));
+  menuBtn.addEventListener('click',()=>setOpen(panel.hidden,false,menuBtn));
+  findBtn.addEventListener('click',()=>setOpen(true,true,findBtn));
+  closeBtn.addEventListener('click',()=>{setOpen(false);returnFocus?.focus?.()});
   input.addEventListener('input',renderSearch);
   wrapper.querySelector('.site-access-search').addEventListener('submit',async e=>{
     e.preventDefault();await renderSearch();
     const first=content.querySelector('.site-access-result');
     if(first)location.href=first.href;
   });
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden){setOpen(false);menuBtn.focus()}});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden){setOpen(false);returnFocus?.focus?.()}});
   document.addEventListener('pointerdown',e=>{if(!panel.hidden&&!wrapper.contains(e.target))setOpen(false)});
   renderDefault();
 })();
