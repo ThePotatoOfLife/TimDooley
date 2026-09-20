@@ -50,7 +50,8 @@ These capabilities are established enough to build on:
 - typed Inspector Router and canonical inspector URL path with deterministic child/back semantics;
 - shared Style Lifecycle for Render Stack and physical layer restoration;
 - event-driven runtime telemetry for map/style/interaction/tooltip state;
-- integrated behavioral regression spanning wrapped geometry, overlap arbitration, tooltip invalidation and inspector URL/back state.
+- integrated behavioral regression spanning wrapped geometry, overlap arbitration, tooltip invalidation and inspector URL/back state;
+- core country/compare fits and viewport-bounded hydrology both handle antimeridian crossings.
 
 ## ACTIVE — CONTROL-PLANE HARDENING
 
@@ -59,8 +60,8 @@ These capabilities are established enough to build on:
 - [x] Add shared geospatial kernel.
 - [x] Normalize longitudes and wrapped world-copy identity.
 - [x] Make bounds/fit calculations antimeridian-aware.
-- [ ] Replace degree-squared partition prioritization where physical/geographic distance is intended.
-- [ ] Define schematic-vs-physical route geometry semantics.
+- [x] Replace degree-squared partition prioritization where physical/geographic distance is intended.
+- [x] Define schematic-vs-physical route geometry semantics.
 - [x] Add dateline/globe/Mercator regressions for the shared kernel.
 
 ### B. Scale safety
@@ -86,8 +87,8 @@ Current compatibility rule: normal application interaction is Router-owned and d
 
 - [x] Add one transient-tooltip service.
 - [x] Centralize stale async suppression and motion/projection/style invalidation in the shared service.
-- [ ] Migrate every remaining country hover, Axis, Fields, Networks and infrastructure tooltip path.
-- [ ] Remove the boot-guard CSS workaround only after behavioral regressions prove equivalent behavior.
+- [x] Migrate all transient country/capital/Axis/Fields/Networks hover paths to the shared Tooltip Service; persistent Gateway/Infrastructure click popups remain intentionally separate.
+- [x] Remove the boot-guard CSS/pointer-drag workaround after shared Tooltip Service behavioral regressions proved equivalent motion invalidation.
 
 ### E. Inspector/state safety
 
