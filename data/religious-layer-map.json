@@ -63,6 +63,18 @@
       ]
     },
     {
+      "id": "foundation-events",
+      "file": "data/religious-foundation-events.json",
+      "kind": "historical-event-registry",
+      "route": "timeline/foundations/",
+      "purpose": "Notable birth, rupture, council, succession, textual, institutional and diffusion events anchored back to foundation and lineage nodes.",
+      "next_layers": [
+        "foundation-lineages",
+        "foundation-timeline",
+        "foundation-geography"
+      ]
+    },
+    {
       "id": "foundation-geography",
       "file": "data/religious-foundation-geography.json",
       "kind": "historical-geography-projection",
