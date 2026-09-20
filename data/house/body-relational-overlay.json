@@ -1,6 +1,6 @@
 {
   "id": "body-relational-overlay",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "authority": "cross-layer projection only; canonical facts remain in referenced owners",
   "purpose": "Project the same body/anatomy objects through Life & Body, House, Axis, Religion, Science and Corporium without duplicating ownership. An object keeps one identity while each surface asks a different typed question.",
@@ -456,6 +456,117 @@
         "anatomy": "Thalamus is not at the physical crown. Brainstem/foramen-magnum continuity joins spinal cord to intracranial systems.",
         "systems": "Vertical orientation becomes branched/recurrent inside the skull rather than one straight tube.",
         "tradition": "Sahasrāra/crown imagery is a subtle-body comparator, not a thalamic anatomical label."
+      }
+    },
+    {
+      "id": "neural-development",
+      "label": "Neural Tube → Adult Rooms",
+      "kind": "developmental-neurobiology-object",
+      "canonical_owners": [
+        "knowledge/body/neural-development-lineage-atlas.json"
+      ],
+      "body_route": "/records/neural-development-lineage-atlas/",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "surface_ids": [
+        "life-body",
+        "science",
+        "house"
+      ],
+      "lens_tags": [
+        "anatomy",
+        "development",
+        "systems"
+      ],
+      "aliases": [
+        "neural development",
+        "brain embryology",
+        "neural tube",
+        "brain vesicles",
+        "radial glia"
+      ],
+      "projections": {
+        "anatomy": "Neural plate/tube regionalizes into forebrain, midbrain, hindbrain and spinal cord; progenitor lineages, migration and tract growth produce adult structures.",
+        "systems": "Adult brain rooms inherit developmental lineage and geometry but are remodeled by migration, connectivity and maturation.",
+        "project": "Useful for explaining how one continuous Axis differentiates into many adult rooms without claiming embryology encodes theology."
+      }
+    },
+    {
+      "id": "neurovascular-living-wall",
+      "label": "Neurovascular Unit / Living Wall",
+      "kind": "cellular-interface-object",
+      "canonical_owners": [
+        "knowledge/body/glia-neurovascular-barrier-atlas.json"
+      ],
+      "body_route": "/records/glia-neurovascular-barrier-atlas/",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "surface_ids": [
+        "life-body",
+        "science",
+        "house",
+        "axis"
+      ],
+      "lens_tags": [
+        "anatomy",
+        "cellular ecology",
+        "barrier",
+        "systems"
+      ],
+      "aliases": [
+        "blood brain barrier",
+        "BBB",
+        "neurovascular unit",
+        "glia",
+        "astrocytes",
+        "pericytes"
+      ],
+      "projections": {
+        "anatomy": "Endothelium, pericytes, astrocytes, neurons, microglia and extracellular matrix interact to maintain barrier, metabolism and local blood-flow coupling.",
+        "systems": "A living boundary is maintained by cooperating cell types rather than one wall material.",
+        "project": "Better biological neighbor for House wall/boundary imagery than a passive shell."
+      }
+    },
+    {
+      "id": "cortical-cell-layers",
+      "label": "Cortical Layers / Cell Types",
+      "kind": "cellular-cortex-object",
+      "canonical_owners": [
+        "knowledge/body/cortical-celltype-parcellation-atlas.json"
+      ],
+      "body_route": "/records/cortical-celltype-parcellation-atlas/",
+      "room_ids": [
+        "neurobiology",
+        "symbolic-body-comparison"
+      ],
+      "surface_ids": [
+        "life-body",
+        "science",
+        "house"
+      ],
+      "lens_tags": [
+        "anatomy",
+        "cell types",
+        "cortex",
+        "systems"
+      ],
+      "aliases": [
+        "cortical layers",
+        "layers I VI",
+        "brain cell types",
+        "spatial transcriptomics",
+        "cortical parcellation"
+      ],
+      "projections": {
+        "anatomy": "Cortex is layered and contains many excitatory, inhibitory and non-neuronal cell classes with area-specific molecular and projection patterns.",
+        "systems": "Thalamocortical input and corticothalamic feedback form recurrent House↔cortex loops across layers.",
+        "project": "Turns broad cortical 'rooms' into nested cellular rooms while keeping the navigation metaphor separate from cytoarchitecture."
       }
     }
   ],
