@@ -137,6 +137,13 @@
 **Resolution:** subdivision runtime exposes provider-agnostic `evidenceSummaries(id)`; inspector cards and unified subdivision search consume the generic summaries. Search displays active evidence count context without naming or depending on ADL.  
 **Guard:** `validate_world_map_subdivision_evidence_projection.py` requires the generic provider/search bridge and explicitly rejects ADL hard-coding in unified search.
 
+### WM-026 · Aggregate map views do not disclose projection loss — P2
+**Status:** fixed / governed on branch `world-map-projection-loss-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** the shared Atlas projection contract required `information_loss` and `source_path_back`, but the live World Map Active View did not project those semantics into runtime state or reader UI.  
+**Resolution:** `data/world-map-view-projections.json` declares preservation, loss and reconstructability for country scalar, set-membership, active-country relation and pinned-country comparison views. `3d-active-view.js` composes the active contracts and `3d-world-bar.js` exposes a compact “View omits” + reconstructability disclosure.  
+**Guard:** `scripts/validate_world_map_view_projections.py` enforces the contract, runtime markers and reader disclosure through the World Map quality group.  
+**Rule retained:** a choropleth, set, relation filter or comparison is a lossy View, never a substitute for the canonical country/relationship/source owner.
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
