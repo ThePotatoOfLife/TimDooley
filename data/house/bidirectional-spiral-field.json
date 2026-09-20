@@ -1,7 +1,7 @@
 {
   "id": "bidirectional-spiral-field",
   "title": "Bidirectional Spiral Field — O-Centered Axial Expansion, Layers & Terrain",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "authority": "bidirectional-spiral-field",
   "status": "canonical project geometry + explicit mathematical boundary",
@@ -216,5 +216,185 @@
     "data/house/door-cross-spiral-lifecycle.json",
     "knowledge/core/vertical-potato-mountain-plane-atlas.json",
     "knowledge/science/recurrence-orbit-spiral-dynamics-atlas.json"
-  ]
+  ],
+  "section_ecology": {
+    "rule": "Sigma±n are sampled analytical sections through one continuous O-centered field. They are not stacked realms, moral ranks or permanent Room addresses. A Room, case or operator may project onto more than one section when the active question changes.",
+    "selection_axes": [
+      "z/section = declared source↔manifestation/depth orientation",
+      "rho/radius = modeled horizon, differentiation or coupling scope",
+      "theta/phase = recurrence/turning",
+      "route = actual sequence of state changes",
+      "regime = Garden/Swamp/Forge/etc. only when its own tests are met"
+    ],
+    "center": {
+      "key": "0",
+      "label": "Σ0 · O / Plane",
+      "title": "Operative present / common crossing",
+      "role": "The waist where Axis and the canonical Plane meet. It is the best default place to ask what is actually present, what can cross, and what state-change is being attempted now.",
+      "overlays": [
+        "Door",
+        "Plane",
+        "Axis",
+        "Cross-point"
+      ],
+      "route_questions": [
+        "What is here now rather than remembered or anticipated?",
+        "What BEFORE and AFTER states would make this a real Door?",
+        "What guard, evidence, consent, capability or incorporation condition controls passage?"
+      ],
+      "room_projection": "Any Room may appear at Σ0 when its material is being evaluated in the current operative frame.",
+      "boundary": "O is not the whole Door, whole World, whole present of the universe or a proof of spiritual status."
+    },
+    "upper": [
+      {
+        "key": "+1",
+        "label": "Σ+1 · Incorporation",
+        "title": "First above-plane integration",
+        "role": "Near-waist section for newly incorporated states: a crossing has happened, but continuity, agency and consequence still need to stabilize.",
+        "overlays": [
+          "Door upper half",
+          "Tree trunk",
+          "Garden edge"
+        ],
+        "route_questions": [
+          "What changed after crossing?",
+          "Has the new state been incorporated into capability, rights, practice or relationship?",
+          "Can the result return to Plane/World without losing coherence?"
+        ],
+        "room_projection": "Practice, ethics, theology, identity and system-design Rooms often project here when testing whether a claimed transition became durable.",
+        "boundary": "Higher z does not mean morally better; this section records integration work, not rank."
+      },
+      {
+        "key": "+2",
+        "label": "Σ+2 · Branching",
+        "title": "Differentiation and capable branching",
+        "role": "A wider section where one integrated trunk can support several specialized branches without losing provenance to the common center.",
+        "overlays": [
+          "Tree branches",
+          "Garden",
+          "Ladder routes"
+        ],
+        "route_questions": [
+          "Which branches are genuinely distinct capabilities rather than duplicate labels?",
+          "What shared trunk/provenance still connects them?",
+          "Which branch produces testable Fruit?"
+        ],
+        "room_projection": "The House can expose multiple Rooms here as sibling branches. The same Room may also project at other sections under a different question.",
+        "boundary": "Branch count or visual width is not evidence of truth, maturity or importance."
+      },
+      {
+        "key": "+3",
+        "label": "Σ+3 · Garden",
+        "title": "Generative ecology",
+        "role": "Broad upper section for viable coexistence, cultivation, exchange, reproduction and Fruit across differentiated branches.",
+        "overlays": [
+          "Garden",
+          "Tree canopy",
+          "Fruit/Seed return routes"
+        ],
+        "route_questions": [
+          "Which relations increase independent future capacity?",
+          "What is being cultivated, pruned, repaired or reproduced?",
+          "What Fruit can descend back toward shared use?"
+        ],
+        "room_projection": "Cross-Room collections and mature knowledge systems can be viewed here when their concern is generativity rather than ownership.",
+        "boundary": "Garden is a regime test, not a synonym for all upper geometry."
+      },
+      {
+        "key": "+4",
+        "label": "Σ+4 · Mountain horizon",
+        "title": "Synthesis / compressed horizon",
+        "role": "Wide-horizon section paired with Mountain as a separate convergence overlay: many paths can be compared while criteria are compressed toward a coherent summit.",
+        "overlays": [
+          "Mountain",
+          "Garden horizon",
+          "return path"
+        ],
+        "route_questions": [
+          "What can be synthesized without erasing important differences?",
+          "Which criteria remain stable across wider scope?",
+          "What must descend again as usable Fruit, teaching, service or Seed?"
+        ],
+        "room_projection": "High-level synthesis may span many Rooms here, but ownership remains with the underlying Rooms and specialist sources.",
+        "boundary": "Mountain convergence and spiral radius encode different variables; neither makes the section a supernatural altitude."
+      }
+    ],
+    "lower": [
+      {
+        "key": "-1",
+        "label": "Σ−1 · Embodiment / soil",
+        "title": "First below-plane consequence",
+        "role": "Near-waist section for embodiment, material consequence, burial, soil contact, unresolved residue and the first step of rooting.",
+        "overlays": [
+          "Manifestation field",
+          "Soil",
+          "Root entry"
+        ],
+        "route_questions": [
+          "What concrete consequence followed from the current state?",
+          "Is descent becoming viable rooting, ordinary embodiment or loss of agency?",
+          "What remains connected to O/current structure?"
+        ],
+        "room_projection": "Body, history, material culture, evidence and practice Rooms often project here when consequences rather than abstractions are foregrounded.",
+        "boundary": "Below is not automatically negative. Rooting and embodiment can be generative."
+      },
+      {
+        "key": "-2",
+        "label": "Σ−2 · Roots",
+        "title": "Provenance / dependency network",
+        "role": "Wider lower section for sources, ancestry, dependencies, hidden support, retained memory and causal routes that still affect the current structure.",
+        "overlays": [
+          "Roots",
+          "provenance routes",
+          "buried Seed states"
+        ],
+        "route_questions": [
+          "Which prior sources or dependencies still feed or constrain the present?",
+          "What is live support versus dead residue?",
+          "Can the route back to a current claim or structure be traced?"
+        ],
+        "room_projection": "History, source-authority, research and system Rooms project here when reconstructing provenance or dependency.",
+        "boundary": "Root is not the past itself, not memory by default and not Strife by default."
+      },
+      {
+        "key": "-3",
+        "label": "Σ−3 · Swamp",
+        "title": "Recurrence / entanglement field",
+        "role": "Broad lower section for unresolved coupling, repeated roles, opacity, capture pressure and recurrence that may or may not still permit repair and exit.",
+        "overlays": [
+          "Swamp",
+          "Root network",
+          "local Drain attractors"
+        ],
+        "route_questions": [
+          "What is actually repeating?",
+          "Where is agency, correction, exit or reciprocity being reduced?",
+          "Which claims are sourced facts, allegations, interpretations or unresolved signals?"
+        ],
+        "room_projection": "Subculture, attention, institutional, conflict and evidence Rooms may project here when the active object is recurrence or entanglement.",
+        "boundary": "Swamp is a diagnosed regime, not a label for people and not the whole lower field."
+      },
+      {
+        "key": "-4",
+        "label": "Σ−4 · Deep basin",
+        "title": "Deep context / investigation / possible Forge contact",
+        "role": "Wide-depth section for difficult-to-resolve context, hidden dependencies and accumulated residue. Forge or Drain may intersect locally, but neither owns the whole section.",
+        "overlays": [
+          "deep Roots",
+          "Swamp depth",
+          "possible Forge interfaces",
+          "local Drain"
+        ],
+        "route_questions": [
+          "What can still be verified at this depth?",
+          "Which uncertainties must remain unresolved?",
+          "What evidence or repair path can return material toward O rather than deepen capture?"
+        ],
+        "room_projection": "Research, source-authority, history and repair/Forge views can project here while preserving claim status and provenance.",
+        "boundary": "Depth is not guilt, evil or certainty. Investigation must preserve evidence classes, counterevidence, appeal and return."
+      }
+    ],
+    "room_mapping_rule": "Rooms are addressable semantic/evidence homes; sections are movable analytical cuts. A Room may be reached from several sections and a section may expose several Rooms. This is the intended non-Euclidean effect: navigation changes the projection without changing canonical ownership.",
+    "navigation_rule": "Reader interfaces should permit selecting Σ0 or sampled Σ±n, then show role, overlays, questions and boundary. Selection changes the lens, not the underlying ontology."
+  }
 }
