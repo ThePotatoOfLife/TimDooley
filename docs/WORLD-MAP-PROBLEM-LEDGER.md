@@ -61,9 +61,9 @@
 **Next:** remove only after direct/degraded standalone paths have canonical Router boot and tests.
 
 ### WM-010 · Mobile occlusion / keyboard / focus-return audit incomplete — P2
-**Status:** substantially fixed; broader scenario coverage remains.  
-**Completed:** shared Accessibility owner synchronizes menu ARIA state, Escape closes the active menu and returns focus to its summary, Inspector Router captures/restores focus across typed inspector transitions, and keyboard regressions enforce the core contract.  
-**Remaining:** broaden scenario coverage for overlapping menus/very small viewports and continue checking legacy compatibility surfaces for focus traps.
+**Status:** fixed / governed for current shared surfaces on main (2026-09-20), pending exact-head CI confirmation.  
+**Resolution:** shared Accessibility owner synchronizes menu ARIA state, Escape closes the active menu and returns focus, opening a map menu closes any already-open sibling without stealing focus, and Inspector Router captures/restores focus across typed inspector transitions. On narrow screens, either World Bar or top-menu expansion suppresses background status, pinned context and inspector surfaces so they cannot compete for pointer/focus space.  
+**Guard:** keyboard regression covers Escape/focus and single-open-menu behavior; UI-layout validation requires both mobile menu families in the occlusion policy.
 
 ### WM-011 · Reduced-motion behavior incomplete — P2
 **Status:** fixed for known user-visible camera consumers on main (2026-09-20).  
