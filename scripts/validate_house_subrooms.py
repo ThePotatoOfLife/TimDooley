@@ -69,9 +69,9 @@ def main():
     if topo.get('architectural_vocabulary')!='data/house/architectural-vocabulary.json': errors.append('House topology architectural vocabulary drift')
     if topo.get('projection_registry')!='data/house/projections.json': errors.append('House topology projection registry drift')
     projection_ids=[x.get('id') for x in projections.get('projections',[]) if isinstance(x,dict)]
-    if projection_ids!=['house-view','temple-view','body-view','tree-vine-view','city-view']: errors.append(f'Integrated plurality projection set drifted: {projection_ids}')
+    if projection_ids!=['house-view','temple-view','body-view','tree-vine-view','city-view','plane-view']: errors.append(f'Integrated plurality projection set drifted: {projection_ids}')
     role_ids={x.get('id') for x in census.get('role_types',[]) if isinstance(x,dict)}
-    required_roles={'house','dwelling','room','chamber','field','vineyard','road','path','view','court','table','bridge','gate','door','archive','treasury','foundation','pillar','protocol','state','projection','tabernacle','vessel'}
+    required_roles={'house','dwelling','room','chamber','field','vineyard','road','path','view','court','table','bridge','gate','door','archive','treasury','foundation','pillar','protocol','state','projection','tabernacle','vessel','plane-section','rim','trajectory','spiral-field'}
     if role_ids!=required_roles: errors.append(f'House structural role set drifted: {sorted(role_ids)}')
     if census.get('chamber_status',{}).get('registered_count')!=0: errors.append('Chambers must remain reserved until an explicit Chamber registry is adopted')
     instance_ids=[x.get('id') for x in census.get('instances',[]) if isinstance(x,dict)]
