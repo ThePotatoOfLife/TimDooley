@@ -144,9 +144,12 @@ def validate_data(data_dir: Path, errors: list[str]) -> None:
         if int((descriptor or {}).get("count") or -1) != len(rows):
             errors.append(f"Places partition {iso3} descriptor count does not match file feature count")
         for feature in rows:
-            place_id = str((feature.get("properties") or {}).get("id") or "")
+            props = feature.get("properties") or {}
+            place_id = str(props.get("id") or "")
             if place_id:
                 partition_ids.add(place_id)
+            if props.get("is_national_capital") is True and place_id not in seen:
+                errors.append(f"Places partition {iso3} national capital missing from global-major: {place_id}")
 
     search_records = index.get("search_records")
     if not isinstance(search_records, list) or not search_records:
