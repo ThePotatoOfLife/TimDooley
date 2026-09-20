@@ -1,8 +1,8 @@
 {
   "id": "specialist-subviews",
   "title": "Specialist Subviews — Legacy Readers Inside the House",
-  "version": "1.2.1",
-  "updated": "2026-09-18",
+  "version": "2.1.0",
+  "updated": "2026-09-20",
   "authority": "public-subview-placement",
   "purpose": "Place valuable specialist/legacy readers beneath an existing public surface and inside explicit nested Rooms without promoting every deep page into the main public-surface registry.",
   "rule": "A specialist subview is a public reader projection, not a new knowledge owner, Room or primary gateway.",
@@ -298,6 +298,63 @@
         "knowledge/core/tim-dooley.json",
         "knowledge/theology/tim-god-question.json",
         "knowledge/indexes/provenance-chain-of-custody-atlas.json"
+      ]
+    },
+    {
+      "id": "tim-story",
+      "title": "The Story of Tim Dooley",
+      "route": "/tim-dooley/story/",
+      "parent_surface_id": "tim",
+      "room_ids": [
+        "chronology-events",
+        "developmental-genealogy",
+        "witness-attestation",
+        "canon-identities"
+      ],
+      "classification": "living-specialist",
+      "summary": "Continuous chronological narrative over source-supported episodes. Story interprets events as scenes without replacing Timeline, Statements or source ownership.",
+      "current_owner_refs": [
+        "knowledge/story/DIARY-STORY-LEDGER.md",
+        "knowledge/story/source-records.json",
+        "knowledge/story/AUTHORING-GUIDE.md"
+      ]
+    },
+    {
+      "id": "tim-raw-story",
+      "title": "Raw Story",
+      "route": "/tim-dooley/story/raw/",
+      "parent_surface_id": "tim",
+      "room_ids": [
+        "chronology-events",
+        "provenance-evidence",
+        "developmental-genealogy",
+        "witness-attestation"
+      ],
+      "classification": "living-specialist",
+      "summary": "Recovery room for complete, partial, stub and merge candidates that remain visible without being promoted into finished public narrative.",
+      "current_owner_refs": [
+        "knowledge/story/ALL-STORY-RESERVOIR.md",
+        "knowledge/story/TIM-STORY-COMPLETENESS-AUDIT.md",
+        "knowledge/story/source-records.json"
+      ]
+    },
+    {
+      "id": "tim-statements",
+      "title": "Tim Statements & Roles",
+      "route": "/tim-dooley/claims/",
+      "parent_surface_id": "tim",
+      "room_ids": [
+        "witness-attestation",
+        "canon-identities",
+        "developmental-genealogy",
+        "provenance-evidence"
+      ],
+      "classification": "living-specialist",
+      "summary": "Chronological statement archaeology for Tim's declarations, titles, jobs, functions and role language, preserving source class and date.",
+      "current_owner_refs": [
+        "knowledge/corporium/tim-dooley-maximal-claims-roles-capabilities-atlas.json",
+        "knowledge/indexes/tim-statement-corpus-index.json",
+        "knowledge/reader/tim-dooley-identity-chronology.json"
       ]
     }
   ]
