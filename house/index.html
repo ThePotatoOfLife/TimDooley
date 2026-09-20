@@ -85,6 +85,7 @@
 @media(max-width:620px){.foundation-strip,.foundation-grid{grid-template-columns:1fr}}
 
 </style>
+<link rel="stylesheet" href="../app/bidirectional-spiral-field.css?v=20260920b">
 </head>
 <body class="house-depth-overview"><main class="page page--reading">
 <p class="topology-note"><a href="../elevator/">Enter the House from the Door / Axis Elevator →</a></p><nav class="page-nav"><a href="../rooms/objects/">Inhabitants</a><a href="../">← Home</a><a href="../rooms/">Rooms</a><a href="../rooms/#planes">Three Planes</a><a href="../axis/">Living Axis</a><a href="../explore/">Explore</a></nav>
@@ -295,7 +296,17 @@
 <section class="page-section"><p class="eyebrow">The lifecycle</p><h2>What the Axis had been missing</h2><p>The project’s practice path starts earlier than Plane and continues beyond Fruit. Mud, Burial, Eye, Root and Sprout explain latent development before visible world-facing action; Fruit, Seed and Return explain how growth becomes transferable and cyclical rather than merely “ascending.”</p><p class="house-law">Mud → Burial → Eye → Root → Sprout → Plane → Door → Ladder / Mountain → Tree → Fruit → Seed → Return</p><p class="boundary">This lifecycle is a practical/developmental projection, not a literal cosmic staircase. It can intersect the same D-level more than once.</p></section>
 
 <section class="page-section"><p class="eyebrow">Boundary</p><p class="boundary">The House vocabulary is a project architecture for organizing knowledge and symbolic interpretation. It does not make symbolic placement into evidence rank, political authority, scientific truth or moral worth. The public site remains a projection of the underlying House rather than the owner of it.</p></section>
-<section data-body-lens></section></main><script>
+<section data-body-lens></section>
+<section class="page-section" id="spiral-field-model">
+<p class="eyebrow">Moving sections through one House</p>
+<h2>Rooms are homes; Σ-sections are views</h2>
+<p class="topology-note">The House can now be read through the same O-centered bidirectional spiral used by the Axis. The sampled rings are not extra floors. They are movable analytical cuts: select a section to ask a different question while canonical Room ownership stays fixed.</p>
+<div data-bidirectional-spiral-field data-levels="4" data-turns="1.2" data-focus-section="+2" data-spiral-source="../data/house/bidirectional-spiral-field.json"></div>
+<p class="boundary">This is the non-Euclidean part of the architecture: one Room may be reachable from several sections, and one section may expose several Rooms. Navigation changes the projection, not the underlying evidence owner.</p>
+<p><a href="../data/house/bidirectional-spiral-field.json">Open the section ecology contract →</a></p>
+</section>
+
+</main><script>
 (()=>{
   const body=document.body,root=document.getElementById('houseDepthSwitcher'),explain=document.getElementById('houseDepthExplain');
   if(!root)return;
