@@ -281,6 +281,7 @@ function installLayers() {
   const before = map.getLayer('atlas-subdivision-line') ? 'atlas-subdivision-line' : (map.getLayer('countries-line') ? 'countries-line' : undefined);
   if (!map.getLayer(STATE_LAYER)) map.addLayer({
     id:STATE_LAYER,type:'fill',source:STATE_SOURCE,
+    filter:['==',['get','parent_iso3'],'USA'],
     paint:{'fill-color':stateColorExpression(),'fill-opacity':1}
   }, before);
   if (!map.getLayer(POINT_LAYER)) map.addLayer({
@@ -379,6 +380,20 @@ window.__potatoAtlasAdlHeat = {
   applyFilters,
   renderDatasetInspector,
   renderStateInspector,
+  stateEvidence(id){
+    const row = summary?.states?.[id] || null;
+    if (!row) return null;
+    return {
+      id,
+      enabled,
+      filteredCount:aggregateStateCount(row),
+      snapshotTotal:Number(row.total)||0,
+      year:selectedYear,
+      incidentType:selectedType,
+      dataset:metadata?.snapshot?.dataset || metadata?.title || 'ADL H.E.A.T.',
+      sourceStatus:metadata?.snapshot?.status || null,
+    };
+  },
   status(){ return { enabled, loaded, year:selectedYear, incidentType:selectedType, records:filtered.features.length, snapshot:metadata?.snapshot || null }; }
 };
 
