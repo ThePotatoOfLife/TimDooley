@@ -1,5 +1,5 @@
 {
-  "version": "1.6.0",
+  "version": "1.7.0",
   "updated": "2026-09-20",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
@@ -1557,7 +1557,54 @@
       "summary": "Vascular epithelial blood–CSF interface producing much of CSF and regulating ventricular fluid composition.",
       "status_note": "Spring/Well is an architectural analogy.",
       "evidence_note": "Barrier, transport, immune-interface and CSF-production functions are empirical.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "choroid plexus as CSF-producing biological interface plus project Spring analogy",
+          "boundary": "Biological production and symbolic Spring imagery remain separate."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public body atlas",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "biological-interface",
+            "target_id_or_label": "ventricular system / CSF / blood-CSF barrier",
+            "direction": "bidirectional",
+            "status": "biological",
+            "boundary": "Different plexuses and transport mechanisms must not be collapsed."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "fluid/transport",
+            "input": "blood-derived water/ions/solutes",
+            "mechanism": "epithelial transport across choroid plexus",
+            "output": "CSF contribution and barrier functions",
+            "measurement_or_limit": "CSF dynamics also involve exchange and clearance beyond the plexus."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "empirical interface physiology + symbolic Spring mapping",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Symbolic source imagery is not a biological claim."
+          }
+        ],
+        "questions": [
+          {
+            "question": "How much of total CSF production and solute regulation should the project attribute specifically to the choroid plexus?",
+            "why_it_matters": "Keeps the Spring metaphor physiologically bounded.",
+            "needed_evidence": "current CSF/choroid physiology review"
+          }
+        ]
+      }
     },
     {
       "id": "body-vagus-return",
@@ -1572,7 +1619,54 @@
       "summary": "Bilateral cranial nerve X carries extensive visceral afference to medullary NTS and parasympathetic regulation back toward organs.",
       "status_note": "Return-road is a project systems analogy; vagus is not the sole mind–body channel.",
       "evidence_note": "Keep afferent/efferent and organ-specific pathways explicit.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "vagus nerve as parasympathetic cranial-autonomic route plus project Return analogy",
+          "boundary": "Autonomic physiology and symbolic return are distinct."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public body atlas",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "autonomic",
+            "target_id_or_label": "brainstem / heart / lungs / gut / visceral afferents",
+            "direction": "bidirectional",
+            "status": "biological",
+            "boundary": "Afferent and efferent components have different roles."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "neural/autonomic",
+            "input": "visceral sensory and central autonomic signals",
+            "mechanism": "vagal afferent/efferent pathways",
+            "output": "visceral regulation and feedback",
+            "measurement_or_limit": "Not all parasympathetic control is vagal."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "empirical autonomic route + symbolic Return mapping",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Return is analogy, not a literal physiological destination."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which vagal pathways best support the project's 'return/feedback' analogy without overgeneralizing autonomic function?",
+            "why_it_matters": "Makes the route mapping specific.",
+            "needed_evidence": "organ- and nucleus-specific vagal anatomy"
+          }
+        ]
+      }
     },
     {
       "id": "body-sympathetic-sidechains",
@@ -1587,7 +1681,54 @@
       "summary": "Left/right paravertebral sympathetic ganglion chains beside the vertebral axis, useful as a modern paired-channel comparator.",
       "status_note": "They do not form a double helix and are not proven iḍā/piṅgalā.",
       "evidence_note": "Historical subtle-body mappings remain separate from autonomic anatomy.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "sympathetic chain and related autonomic outflow plus project side-chain/branch analogy",
+          "boundary": "Anatomical branches and symbolic sidechains are separate."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public body atlas",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "autonomic",
+            "target_id_or_label": "spinal cord / sympathetic trunks / prevertebral ganglia / target organs",
+            "direction": "outgoing",
+            "status": "biological",
+            "boundary": "Segmental origin and ganglionic routing vary by target."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "neural/autonomic",
+            "input": "thoracolumbar preganglionic output",
+            "mechanism": "ganglionic relay and distributed sympathetic pathways",
+            "output": "organ and vascular regulation",
+            "measurement_or_limit": "Sympathetic activity is not one uniform 'fight or flight' signal."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "empirical autonomic network + symbolic branch mapping",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Do not moralize sympathetic activation."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Can the project's side-chain image distinguish chain ganglia, splanchnic routes and prevertebral relays clearly?",
+            "why_it_matters": "Prevents an anatomically vague branch metaphor.",
+            "needed_evidence": "segmental autonomic route map"
+          }
+        ]
+      }
     },
     {
       "id": "body-orientation-house",
@@ -1603,7 +1744,54 @@
       "summary": "Vestibular, anterior-thalamic, retrosplenial and hippocampal/entorhinal networks supporting heading and spatial orientation.",
       "status_note": "Biological heading is not sacred or magnetic North detection.",
       "evidence_note": "Useful empirical neighbor for Axis/North/orientation language only.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "distributed orientation/attention body-brain system plus project House orientation analogy",
+          "boundary": "No single brain structure is the literal House."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public Life & Body surface",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "neural-system",
+            "target_id_or_label": "vestibular / thalamic / cortical / hippocampal / brainstem orientation systems",
+            "direction": "bidirectional",
+            "status": "biological",
+            "boundary": "Orientation emerges from multiple interacting systems."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "multisensory-information",
+            "input": "vestibular, visual, proprioceptive and spatial-memory signals",
+            "mechanism": "integration across distributed networks",
+            "output": "body/world orientation and navigation",
+            "measurement_or_limit": "Different tasks recruit different networks."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "distributed neurobiology + architectural analogy",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "House is an integrative model, not a localized organ."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which orientation subsystems map cleanly to Door, Room, Axis and local-center concepts, and which do not?",
+            "why_it_matters": "Tests whether the spatial metaphor tracks real navigation functions.",
+            "needed_evidence": "vestibular/spatial cognition literature"
+          }
+        ]
+      }
     },
     {
       "id": "tradition-horus-eye",
@@ -1618,7 +1806,45 @@
       "summary": "Ancient restored/protective Eye of Horus viewed beside a separate modern speculative sagittal-brain comparison.",
       "status_note": "Ancient Wedjat meaning and modern brain overlay are distinct historical layers.",
       "evidence_note": "Do not present the brain overlay as demonstrated Egyptian neuroanatomy.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "historical Egyptian Eye of Horus symbol family",
+          "boundary": "Historical symbol and modern project Eye analogy remain distinct."
+        },
+        "sources": [
+          {
+            "source_ref": "religion/index.html",
+            "role": "public comparative religion surface",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "historical-symbol",
+            "target_id_or_label": "protection / healing / royal-divine imagery",
+            "direction": "outgoing",
+            "status": "historical tradition",
+            "boundary": "Do not back-project modern neuroanatomical claims into ancient symbolism."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "historical symbol + later comparative interpretation",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "No anatomical proof inferred from resemblance."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which Eye of Horus meanings are textually/archaeologically secure versus later esoteric reinterpretations?",
+            "why_it_matters": "Keeps comparative symbolism historically grounded.",
+            "needed_evidence": "Egyptological sources"
+          }
+        ]
+      }
     },
     {
       "id": "tradition-hermes-caduceus",
@@ -1634,7 +1860,45 @@
       "summary": "Hermes as messenger/boundary/psychopomp and the paired-serpent herald staff viewed beside Axis/side-channel comparisons.",
       "status_note": "Caduceus, kundalini, sympathetic trunks and DNA are separate lineages.",
       "evidence_note": "Use own-tradition history before structural comparison.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "Hermes/caduceus historical-symbol complex",
+          "boundary": "Classical iconography, later occult readings and project spinal/serpent comparison are separate layers."
+        },
+        "sources": [
+          {
+            "source_ref": "religion/index.html",
+            "role": "public comparative surface",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "historical-symbol",
+            "target_id_or_label": "Hermes / staff / intertwined serpents / mediation",
+            "direction": "outgoing",
+            "status": "historical tradition",
+            "boundary": "Medical-symbol confusion with the Rod of Asclepius should remain explicit."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "historical iconography + comparative project mapping",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Do not treat caduceus as ancient proof of spinal energy anatomy."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which caduceus meanings belong to classical Hermes, alchemy, later occultism and modern medical misuse respectively?",
+            "why_it_matters": "Separates historical strata.",
+            "needed_evidence": "classical/iconographic history"
+          }
+        ]
+      }
     },
     {
       "id": "tradition-kundalini-chakra",
@@ -1650,7 +1914,52 @@
       "summary": "Variable South Asian subtle-body systems and later modern physiological reinterpretations compared with the project's five spinal Gates + higher centers.",
       "status_note": "Cakras/nāḍīs are not established anatomical structures.",
       "evidence_note": "Historical variation and modern plexus/endocrine mappings must remain chronologically visible.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "South Asian subtle-body traditions concerning kundalini/chakra systems",
+          "boundary": "Historical/religious subtle-body models and modern neuroanatomy are not identical systems."
+        },
+        "sources": [
+          {
+            "source_ref": "religion/index.html",
+            "role": "comparative traditions surface",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "tradition",
+            "target_id_or_label": "yogic/tantric subtle-body systems",
+            "direction": "incoming",
+            "status": "historical religious tradition",
+            "boundary": "Systems differ across texts and lineages."
+          },
+          {
+            "type": "comparative",
+            "target_id_or_label": "spine / ladder / centers",
+            "direction": "outgoing",
+            "status": "project comparison",
+            "boundary": "Comparison does not establish physiological equivalence."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic split",
+            "value": "historical subtle-body tradition + project comparison",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "No biomedical identity claim."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which chakra/kundalini schemas are earliest, lineage-specific, or modern standardizations?",
+            "why_it_matters": "Prevents treating one modern seven-chakra scheme as universal.",
+            "needed_evidence": "textual history"
+          }
+        ]
+      }
     },
     {
       "id": "body-neural-development",
@@ -1665,7 +1974,54 @@
       "summary": "Developmental route from neural plate/tube through brain vesicles, progenitors, migration, glia and tract formation into adult House/brainstem/spinal architecture.",
       "status_note": "Developmental ancestry informs but does not uniquely determine adult function.",
       "evidence_note": "Human development and rodent models must remain distinguishable.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "developmental construction of nervous-system structure and connectivity",
+          "boundary": "Developmental biology is empirical; project growth imagery is comparative."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public body atlas",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "developmental",
+            "target_id_or_label": "neurogenesis / migration / axon guidance / synaptogenesis / pruning / myelination",
+            "direction": "outgoing",
+            "status": "biological",
+            "boundary": "Timing and mechanisms vary by region and species."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "developmental-state",
+            "input": "progenitors + molecular gradients + activity",
+            "mechanism": "differentiation, migration, wiring, refinement",
+            "output": "mature neural circuits",
+            "measurement_or_limit": "Development is staged and overlapping, not a single linear ladder."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic class",
+            "value": "empirical developmental neurobiology",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Symbolic growth language must be separately labeled."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which developmental transitions best explain the project's Seed → Root → Branch sequence without forcing a false one-to-one mapping?",
+            "why_it_matters": "Tests biological usefulness of the growth analogy.",
+            "needed_evidence": "developmental timing and mechanism comparison"
+          }
+        ]
+      }
     },
     {
       "id": "body-neurovascular-unit",
@@ -1680,7 +2036,54 @@
       "summary": "Astrocytes, endothelium, pericytes, microglia, neurons and extracellular matrix form a living barrier/metabolic/vascular ecosystem.",
       "status_note": "BBB, blood-CSF barrier and meningeal borders are distinct interfaces.",
       "evidence_note": "Use the glia/neurovascular atlas for cell-type and boundary distinctions.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "cellular interface coupling neural activity, vascular regulation and barrier function",
+          "boundary": "Unit is a systems concept spanning several cell types and compartments."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public body atlas",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "cellular-interface",
+            "target_id_or_label": "neurons / astrocytes / endothelial cells / pericytes / extracellular matrix",
+            "direction": "bidirectional",
+            "status": "biological",
+            "boundary": "Roles vary by region and condition."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "blood-flow/metabolic",
+            "input": "neural activity and vascular signals",
+            "mechanism": "cellular signaling and vessel regulation",
+            "output": "local perfusion, exchange and barrier maintenance",
+            "measurement_or_limit": "Neurovascular coupling is multi-mechanistic and context dependent."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic class",
+            "value": "empirical cellular systems model",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Do not reduce it to one cell or one direction of control."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Can the neurovascular unit provide a better scientific model for project 'interface' language than single-structure analogies?",
+            "why_it_matters": "May improve the technical accuracy of Door/interface concepts.",
+            "needed_evidence": "cellular coupling literature"
+          }
+        ]
+      }
     },
     {
       "id": "body-cortical-celltypes",
@@ -1694,7 +2097,54 @@
       "summary": "Layers I–VI, projection classes, interneuron families, glia and transcriptomic parcellations deepen broad cortical room labels.",
       "status_note": "No single parcellation is the final map of cortex.",
       "evidence_note": "Cytoarchitecture, transcriptomics, connectivity and functional networks are complementary coordinate systems.",
-      "maturity": "described"
+      "maturity": "case-ready",
+      "facets": {
+        "identity": {
+          "scope": "diverse cortical neuronal and glial cell populations",
+          "boundary": "Cell-type taxonomies are empirical classifications and continue to evolve."
+        },
+        "sources": [
+          {
+            "source_ref": "life-body/index.html",
+            "role": "public body atlas",
+            "evidence_class": "project surface"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "cellular-network",
+            "target_id_or_label": "excitatory neurons / inhibitory interneurons / glia / layers / long-range projections",
+            "direction": "bidirectional",
+            "status": "biological",
+            "boundary": "Transcriptomic, morphological and functional classes do not always align one-to-one."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "neural-computation",
+            "input": "local and long-range synaptic signals",
+            "mechanism": "cell-type-specific connectivity and dynamics",
+            "output": "distributed cortical processing",
+            "measurement_or_limit": "No single cell taxonomy captures every functional distinction."
+          }
+        ],
+        "status": [
+          {
+            "label": "epistemic class",
+            "value": "empirical cellular neuroanatomy",
+            "as_of": "2026-09-20",
+            "authority": "Potato House",
+            "boundary": "Project roles must not be projected onto cell types as if they were literal social agents."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which cell-type distinctions matter most for the House's future brain model: transcriptomic, laminar, projectional or physiological?",
+            "why_it_matters": "Determines a scalable scientific ontology.",
+            "needed_evidence": "cell atlas comparison"
+          }
+        ]
+      }
     }
   ],
   "source_records": [
