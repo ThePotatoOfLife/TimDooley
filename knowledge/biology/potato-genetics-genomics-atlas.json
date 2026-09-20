@@ -1,0 +1,658 @@
+{
+  "id": "potato-genetics-genomics-atlas",
+  "title": "Potato Genetics & Genomics Atlas — 12 Chromosomes × 4 Homologs",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "owner_room": "potato-biology",
+  "status": "canonical external biology/genomics layer",
+  "purpose": "Map the genetic substrate underneath potato development. For the common cultivated autotetraploid condition, treat the genome as 12 chromosome groups with four homologous haplotypes per group (2n=4x=48), while preserving the fact that potato germplasm also includes other ploidy levels and that the four homologs are not identical copies.",
+  "epistemic_boundary": "This record is literal plant genetics. Project symbolism may link to it through separately labeled bridges, but tetraploidy, haplotypes, DNA sequence, inheritance, methylation or gene regulation are not evidence for spiritual or cosmological claims.",
+  "karyotype": {
+    "base_number": 12,
+    "common_cultivated_state": "autotetraploid",
+    "notation": "2n = 4x = 48",
+    "interpretation": "There are 12 homologous chromosome groups and commonly four homologs/haplotypes for each group in commercial tetraploid cultivars.",
+    "important_exception": "Potato germplasm is not uniformly tetraploid; diploid, triploid, pentaploid and hexaploid forms also occur.",
+    "not_four_identical_copies": "The four homologs can differ in SNPs, indels, structural variants, gene presence/absence, repeat content, centromeric sequence, regulatory sequence, methylation and expression."
+  },
+  "genome_scale": {
+    "monoploid_reference_context": "The DM1-3 v6.1 chromosome-scale reference represents 741.6 Mb of assembled sequence from an estimated ~844 Mb monoploid genome, with 731.2 Mb anchored to 12 chromosomes and 32,917 high-confidence protein-coding genes.",
+    "tetraploid_haplotype_resolved_example": "The cultivar Otava was assembled as a 3.1 Gb haplotype-resolved tetraploid genome, resolving 48 chromosome haplotypes at chromosome scale.",
+    "otava_gene_architecture": {
+      "gene_families_or_loci_reported": 38214,
+      "gene_models_across_four_haplotypes": 152855,
+      "mean_copies_per_gene": 3.2,
+      "genes_present_on_all_four_haplotypes_percent": 53.6,
+      "genes_present_on_three_haplotypes_percent": 20,
+      "genes_present_on_two_haplotypes_percent": 15.9,
+      "genes_present_on_one_haplotype_percent": 10.5,
+      "mean_distinct_alleles_per_gene": 1.9
+    },
+    "otava_structure": {
+      "repetitive_sequence_percent": 66,
+      "large_structural_rearrangement_fraction": "approximately 20% of the genome",
+      "identity_by_descent_fraction": "approximately 50% in the studied Otava genome",
+      "architecture": "Gene density is generally higher toward distal chromosome regions, while repeat density is higher in pericentromeric regions."
+    }
+  },
+  "chromosome_12x4_model": {
+    "warning": "A-D below are conceptual homolog slots for the project data model, not universal biological names. Real haplotypes must be attached to a named cultivar/assembly.",
+    "chromosome_groups": [
+      {
+        "chromosome": 1,
+        "homolog_slots": [
+          "1A",
+          "1B",
+          "1C",
+          "1D"
+        ],
+        "required_tracks": [
+          "sequence/assembly accession",
+          "centromere/pericentromere",
+          "telomeres",
+          "genes and isoforms",
+          "haplotype-specific gene presence/absence",
+          "SNPs and small indels",
+          "structural variants",
+          "transposable elements/repeats",
+          "methylation/regulatory state",
+          "expression by tissue/developmental stage",
+          "QTL/trait loci",
+          "recombination and double-reduction evidence",
+          "wild-relative introgression/provenance"
+        ]
+      },
+      {
+        "chromosome": 2,
+        "homolog_slots": [
+          "2A",
+          "2B",
+          "2C",
+          "2D"
+        ],
+        "required_tracks": [
+          "sequence/assembly accession",
+          "centromere/pericentromere",
+          "telomeres",
+          "genes and isoforms",
+          "haplotype-specific gene presence/absence",
+          "SNPs and small indels",
+          "structural variants",
+          "transposable elements/repeats",
+          "methylation/regulatory state",
+          "expression by tissue/developmental stage",
+          "QTL/trait loci",
+          "recombination and double-reduction evidence",
+          "wild-relative introgression/provenance"
+        ]
+      },
+      {
+        "chromosome": 3,
+        "homolog_slots": [
+          "3A",
+          "3B",
+          "3C",
+          "3D"
+        ],
+        "required_tracks": [
+          "sequence/assembly accession",
+          "centromere/pericentromere",
+          "telomeres",
+          "genes and isoforms",
+          "haplotype-specific gene presence/absence",
+          "SNPs and small indels",
+          "structural variants",
+          "transposable elements/repeats",
+          "methylation/regulatory state",
+          "expression by tissue/developmental stage",
+          "QTL/trait loci",
+          "recombination and double-reduction evidence",
+          "wild-relative introgression/provenance"
+        ]
+      },
+      {
+        "chromosome": 4,
+        "homolog_slots": [
+          "4A",
+          "4B",
+          "4C",
+          "4D"
+        ],
+        "required_tracks": [
+          "sequence/assembly accession",
+          "centromere/pericentromere",
+          "telomeres",
+          "genes and isoforms",
+          "haplotype-specific gene presence/absence",
+          "SNPs and small indels",
+          "structural variants",
+          "transposable elements/repeats",
+          "methylation/regulatory state",
+          "expression by tissue/developmental stage",
+          "QTL/trait loci",
+          "recombination and double-reduction evidence",
+          "wild-relative introgression/provenance"
+        ]
+      },
+      {
+        "chromosome": 5,
+        "homolog_slots": [
+          "5A",
+          "5B",
+          "5C",
+          "5D"
+        ],
+        "required_tracks": [
+          "sequence/assembly accession",
+          "centromere/pericentromere",
+          "telomeres",
+          "genes and isoforms",
+          "haplotype-specific gene presence/absence",
+          "SNPs and small indels",
+          "structural variants",
+          "transposable elements/repeats",
+          "methylation/regulatory state",
+          "expression by tissue/developmental stage",
+          "QTL/trait loci",
+          "recombination and double-reduction evidence",
+          "wild-relative introgression/provenance"
+        ]
+      },
+      {
+        "chromosome": 6,
+        "homolog_slots": [
+          "6A",
+          "6B",
+          "6C",
+          "6D"
+        ],
+        "required_tracks": [
+          "sequence/assembly accession",
+          "centromere/pericentromere",
+          "telomeres",
+          "genes and isoforms",
+          "haplotype-specific gene presence/absence",
+          "SNPs and small indels",
+          "structural variants",
+          "transposable elements/repeats",
+          "methylation/regulatory state",
+          "expression by tissue/developmental stage",
+          "QTL/trait loci",
+          "recombination and double-reduction evidence",
+          "wild-relative introgression/provenance"
+        ]
+      },
+      {
+        "chromosome": 7,
+        "homolog_slots": [
+          "7A",
+          "7B",
+          "7C",
+          "7D"
+        ],
+        "required_tracks": [
+          "sequence/assembly accession",
+          "centromere/pericentromere",
+          "telomeres",
+          "genes and isoforms",
+          "haplotype-specific gene presence/absence",
+          "SNPs and small indels",
+          "structural variants",
+          "transposable elements/repeats",
+          "methylation/regulatory state",
+          "expression by tissue/developmental stage",
+          "QTL/trait loci",
+          "recombination and double-reduction evidence",
+          "wild-relative introgression/provenance"
+        ]
+      },
+      {
+        "chromosome": 8,
+        "homolog_slots": [
+          "8A",
+          "8B",
+          "8C",
+          "8D"
+        ],
+        "required_tracks": [
+          "sequence/assembly accession",
+          "centromere/pericentromere",
+          "telomeres",
+          "genes and isoforms",
+          "haplotype-specific gene presence/absence",
+          "SNPs and small indels",
+          "structural variants",
+          "transposable elements/repeats",
+          "methylation/regulatory state",
+          "expression by tissue/developmental stage",
+          "QTL/trait loci",
+          "recombination and double-reduction evidence",
+          "wild-relative introgression/provenance"
+        ]
+      },
+      {
+        "chromosome": 9,
+        "homolog_slots": [
+          "9A",
+          "9B",
+          "9C",
+          "9D"
+        ],
+        "required_tracks": [
+          "sequence/assembly accession",
+          "centromere/pericentromere",
+          "telomeres",
+          "genes and isoforms",
+          "haplotype-specific gene presence/absence",
+          "SNPs and small indels",
+          "structural variants",
+          "transposable elements/repeats",
+          "methylation/regulatory state",
+          "expression by tissue/developmental stage",
+          "QTL/trait loci",
+          "recombination and double-reduction evidence",
+          "wild-relative introgression/provenance"
+        ]
+      },
+      {
+        "chromosome": 10,
+        "homolog_slots": [
+          "10A",
+          "10B",
+          "10C",
+          "10D"
+        ],
+        "required_tracks": [
+          "sequence/assembly accession",
+          "centromere/pericentromere",
+          "telomeres",
+          "genes and isoforms",
+          "haplotype-specific gene presence/absence",
+          "SNPs and small indels",
+          "structural variants",
+          "transposable elements/repeats",
+          "methylation/regulatory state",
+          "expression by tissue/developmental stage",
+          "QTL/trait loci",
+          "recombination and double-reduction evidence",
+          "wild-relative introgression/provenance"
+        ]
+      },
+      {
+        "chromosome": 11,
+        "homolog_slots": [
+          "11A",
+          "11B",
+          "11C",
+          "11D"
+        ],
+        "required_tracks": [
+          "sequence/assembly accession",
+          "centromere/pericentromere",
+          "telomeres",
+          "genes and isoforms",
+          "haplotype-specific gene presence/absence",
+          "SNPs and small indels",
+          "structural variants",
+          "transposable elements/repeats",
+          "methylation/regulatory state",
+          "expression by tissue/developmental stage",
+          "QTL/trait loci",
+          "recombination and double-reduction evidence",
+          "wild-relative introgression/provenance"
+        ]
+      },
+      {
+        "chromosome": 12,
+        "homolog_slots": [
+          "12A",
+          "12B",
+          "12C",
+          "12D"
+        ],
+        "required_tracks": [
+          "sequence/assembly accession",
+          "centromere/pericentromere",
+          "telomeres",
+          "genes and isoforms",
+          "haplotype-specific gene presence/absence",
+          "SNPs and small indels",
+          "structural variants",
+          "transposable elements/repeats",
+          "methylation/regulatory state",
+          "expression by tissue/developmental stage",
+          "QTL/trait loci",
+          "recombination and double-reduction evidence",
+          "wild-relative introgression/provenance"
+        ]
+      }
+    ],
+    "known_cross_chromosome_examples": [
+      {
+        "chromosome": 2,
+        "observation": "Multiple starch-synthase genes cluster on chromosome 2 in genome-wide starch-pathway maps.",
+        "scope": "functional anchor, not a complete chromosome annotation"
+      },
+      {
+        "chromosome": 3,
+        "observation": "Late-blight resistance QTL have been mapped on chromosome 3 in multi-location studies.",
+        "scope": "trait anchor"
+      },
+      {
+        "chromosome": 4,
+        "observation": "The R2 late-blight resistance region is a major resistance anchor on chromosome 4.",
+        "scope": "defense anchor"
+      },
+      {
+        "chromosome": 5,
+        "observation": "StCDF1, a major maturity/photoperiod/tuberization locus, is on chromosome 5; chromosome 5 also contains the R1 resistance region.",
+        "scope": "development + defense anchor"
+      },
+      {
+        "chromosome": 8,
+        "observation": "Genome-wide starch-pathway analysis reports a concentration of beta-amylase-family genes on chromosome 8.",
+        "scope": "metabolic anchor"
+      },
+      {
+        "chromosome": 11,
+        "observation": "Chromosome 11 contains a major late-blight resistance cluster including R3 and multiple related R loci.",
+        "scope": "defense anchor"
+      },
+      {
+        "chromosome": "1-12",
+        "observation": "Starch-related genes and disease-resistance QTL are distributed across all twelve chromosomes; complex agronomic traits are not confined to one chromosome.",
+        "scope": "whole-genome rule"
+      }
+    ]
+  },
+  "allele_dosage_and_combinatorics": {
+    "biallelic_locus": {
+      "allele_dosage_states": [
+        "AAAA",
+        "AAAa",
+        "AAaa",
+        "Aaaa",
+        "aaaa"
+      ],
+      "dosage_count": 5,
+      "interpretation": "A biallelic locus has five dosage classes in a tetraploid rather than three diploid genotype classes."
+    },
+    "general_unordered_genotype_count": "For k possible alleles across four homologous copies, the number of unordered allele multisets is C(k+3,4).",
+    "four_allele_example": "If four distinguishable alleles are possible at one locus, C(7,4)=35 unordered tetraploid genotype compositions are possible before considering phase, linkage, epistasis or expression.",
+    "phase_matters": "The same allele dosage can reside on different homologs and different linked haplotype backgrounds, so dosage alone is not the entire genotype.",
+    "gene_presence_absence": "Some loci are absent from one or more haplotypes, so the biologically relevant state can be copy-number 1, 2, 3 or 4 rather than a simple four-copy allele substitution model."
+  },
+  "meiosis_and_inheritance": {
+    "mode": "predominantly tetrasomic/polysomic inheritance in cultivated autotetraploid potato",
+    "gametes": "Tetraploid plants generally produce diploid (2x) gametes.",
+    "pairing": "Homologs can form bivalents and multivalents; bivalent-like behavior is often predominant but quadrivalents/multivalents occur.",
+    "double_reduction": "Crossing over in multivalents can place sister-chromatid-derived copies into the same gamete, producing double reduction. Double-reduction evidence has been observed across all 12 chromosomes and often increases with distance from centromeres.",
+    "breeding_consequence": "Linkage, allele dosage, phase, multivalent pairing and double reduction make inheritance and QTL mapping substantially more complex than in diploids.",
+    "heterosis_and_load": "High heterozygosity can mask deleterious alleles; haplotype-resolved studies show many deleterious variants can be carried in heterozygous combinations."
+  },
+  "sequence_to_phenotype_layers": [
+    {
+      "layer": "DNA sequence",
+      "contents": [
+        "genes",
+        "promoters/enhancers",
+        "introns",
+        "noncoding RNA loci",
+        "transposable elements",
+        "repeats",
+        "structural variants"
+      ]
+    },
+    {
+      "layer": "haplotype/copy state",
+      "contents": [
+        "four homolog-specific sequences",
+        "allele dosage",
+        "presence/absence variation",
+        "copy number",
+        "phase/linkage"
+      ]
+    },
+    {
+      "layer": "epigenetic regulation",
+      "contents": [
+        "DNA methylation",
+        "chromatin context",
+        "haplotype-specific regulatory state"
+      ]
+    },
+    {
+      "layer": "transcription",
+      "contents": [
+        "allele-specific expression",
+        "tissue-specific expression",
+        "developmental expression",
+        "environment-responsive expression"
+      ]
+    },
+    {
+      "layer": "protein/signaling networks",
+      "contents": [
+        "tuberization",
+        "hormone signaling",
+        "source-sink control",
+        "starch metabolism",
+        "defense",
+        "self-incompatibility"
+      ]
+    },
+    {
+      "layer": "cell/tissue phenotype",
+      "contents": [
+        "meristem activity",
+        "stolon identity",
+        "amyloplast function",
+        "vascular transport",
+        "defense response"
+      ]
+    },
+    {
+      "layer": "whole-organism phenotype",
+      "contents": [
+        "maturity",
+        "tuber initiation",
+        "yield",
+        "tuber number/size",
+        "starch composition",
+        "dormancy",
+        "sprouting",
+        "disease resistance",
+        "environmental adaptation"
+      ]
+    }
+  ],
+  "regulatory_networks": {
+    "tuberization": {
+      "key_nodes": [
+        "StCDF1",
+        "StSP6A",
+        "StBEL5",
+        "StCO1/2",
+        "StSP5G",
+        "StSWEET11",
+        "gibberellin-regulatory genes"
+      ],
+      "logic": "Photoperiod, temperature, sucrose and endogenous developmental signals are integrated through a mobile/signaling network that changes stolon fate toward tuber formation.",
+      "chromosome_anchor": "StCDF1 is on chromosome 5."
+    },
+    "starch": {
+      "scale": "Genome-wide studies identify roughly 70+ starch-metabolism loci spread across all 12 chromosomes, depending on annotation/gene set.",
+      "examples": [
+        "GBSS",
+        "SS1-SS family members",
+        "AGPase components",
+        "branching/debranching enzymes",
+        "phosphoglucomutases",
+        "amylases"
+      ],
+      "implication": "The tuber's starch phenotype is a distributed genomic network, not a single 'starch gene'."
+    },
+    "defense": {
+      "architecture": "Resistance genes and QTL form clusters/hotspots as well as distributed polygenic resistance across the genome.",
+      "examples": [
+        "R1 region on chromosome 5",
+        "R2 region on chromosome 4",
+        "R3/R5-R11-rich region on chromosome 11"
+      ],
+      "implication": "Wild-relative introgression is a major source of resistance diversity."
+    }
+  },
+  "epigenetics_and_expression": {
+    "rule": "Four DNA copies do not imply four equal outputs.",
+    "evidence": "Haplotype-resolved potato studies show allele-specific sequence divergence, differential expression and differential methylation.",
+    "diploid_reference_example": "In RH89-039-16, 16.6% of allelic gene pairs showed differential expression and 30.8% showed differential methylation, demonstrating that haplotypes can be regulated differently even within one individual.",
+    "project_requirement": "Future chromosome tracks should carry expression and methylation as separate layers from DNA sequence."
+  },
+  "organellar_genomes": {
+    "chloroplast": {
+      "structure": "A circular double-stranded plastid genome of about 155.3 kb in studied cultivars, with large/small single-copy regions separated by inverted repeats.",
+      "role": "Carries photosynthesis and plastid-expression genes and is inherited separately from the nuclear 12×4 chromosome system."
+    },
+    "mitochondrion": {
+      "structure": "Potato mitochondrial DNA is structurally dynamic and multipartite; studies report multiple autonomous/recombining molecules rather than one simple immutable chromosome.",
+      "role": "Encodes core mitochondrial functions and participates in nuclear-cytoplasmic interactions; cytoplasmic variation can matter in breeding."
+    },
+    "rule": "A complete potato DNA map therefore requires nuclear + plastid + mitochondrial genomes."
+  },
+  "pangenome_and_domestication": {
+    "rule": "No single reference potato contains the whole genetic repertoire of potato diversity.",
+    "petota_pangenome": "A 296-accession pangenome spanning wild species, landraces and cultivars shows extensive gene presence/absence and transposable-element variation across Solanum section Petota.",
+    "graph_pangenome": "A 2025 graph-based potato pangenome integrated 194,330 nonredundant structural variants and linked thousands of structural variants to tuber metabolite traits.",
+    "implication": "The project should distinguish 'reference genome', 'cultivar genome', 'tetraploid haplotype set' and 'species/pangenome' instead of treating potato DNA as one fixed sequence."
+  },
+  "clonal_propagation_and_mutation": {
+    "rule": "Tuber propagation preserves a highly heterozygous genome without re-shuffling it every generation.",
+    "benefit": "Successful multi-haplotype combinations can be maintained clonally.",
+    "cost": "Deleterious alleles, somatic mutations and pathogens can also persist; sexual reproduction reshuffles the genome while clonal propagation largely preserves haplotype combinations."
+  },
+  "integration_with_organism_cycle": [
+    "genotype + epigenetic state → dormancy duration and sprouting behavior",
+    "photoperiod/tuberization network → stolon-to-tuber transition",
+    "source-sink/starch network → tuber filling and composition",
+    "maturity alleles → canopy senescence and harvest timing",
+    "defense loci → disease susceptibility/resistance across the life cycle",
+    "clonal propagation → persistence of the multi-haplotype genotype",
+    "meiotic recombination → new haplotype combinations in botanical seed"
+  ],
+  "completeness_policy": {
+    "what_fully_mapped_means": [
+      "all 12 chromosome groups represented",
+      "four cultivar-specific homolog/haplotype tracks where the plant is tetraploid",
+      "gene annotation plus regulatory and noncoding sequence",
+      "small and structural variation",
+      "repeat/transposon landscape",
+      "centromere and recombination structure",
+      "allele dosage and phase",
+      "methylation/expression tracks",
+      "QTL and experimentally validated functional loci",
+      "chloroplast and mitochondrial genomes",
+      "pangenome/wild-relative context",
+      "assembly/version/provenance attached to every coordinate claim"
+    ],
+    "anti_overclaim": "The project must never present a generic 1A-12D diagram as though it were the literal sequence of every potato. A 48-track view is a scaffold; actual sequence content must be resolved against a named tetraploid cultivar and assembly."
+  },
+  "sources": [
+    {
+      "title": "Genome sequence and analysis of the tuber crop potato",
+      "year": 2011,
+      "publisher": "Nature",
+      "url": "https://www.nature.com/articles/nature10158",
+      "use": "base chromosome number, autotetraploidy, heterozygosity and first reference-genome context"
+    },
+    {
+      "title": "Construction of a chromosome-scale long-read reference genome assembly for potato",
+      "year": 2020,
+      "publisher": "GigaScience / SpudDB",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7509475/",
+      "use": "DM1-3 v6.1 genome size, 12 chromosome assembly and high-confidence genes"
+    },
+    {
+      "title": "Chromosome-scale and haplotype-resolved genome assembly of a tetraploid potato cultivar",
+      "year": 2022,
+      "publisher": "Nature Genetics",
+      "url": "https://www.nature.com/articles/s41588-022-01015-0",
+      "use": "Otava 3.1 Gb 48-haplotype assembly, structural variation, gene copy/presence-absence and repeat architecture"
+    },
+    {
+      "title": "Genome architecture and tetrasomic inheritance of autotetraploid potato",
+      "year": 2022,
+      "publisher": "Molecular Plant",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35733345/",
+      "use": "haplotype diversity, centromeres, tetrasomic inheritance and double reduction"
+    },
+    {
+      "title": "The Double-Reduction Landscape in Tetraploid Potato as Revealed by a High-Density Linkage Map",
+      "year": 2015,
+      "publisher": "Genetics",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4649655/",
+      "use": "double reduction across chromosomes and centromere-distance pattern"
+    },
+    {
+      "title": "Haplotype-resolved genome analyses of a heterozygous diploid potato",
+      "year": 2020,
+      "publisher": "Nature Genetics",
+      "url": "https://www.nature.com/articles/s41588-020-0699-x",
+      "use": "allelic divergence, differential expression and differential methylation"
+    },
+    {
+      "title": "Pangenome analyses reveal impact of transposable elements and ploidy on the evolution of potato species",
+      "year": 2023,
+      "publisher": "PNAS",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37487084/",
+      "use": "296-accession Petota pangenome and presence/absence diversity"
+    },
+    {
+      "title": "Graph-based pangenome provides insights into structural variations and genetic basis of metabolic traits in potato",
+      "year": 2025,
+      "publisher": "Molecular Plant",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39871478/",
+      "use": "graph pangenome, 194,330 nonredundant structural variants and metabolite associations"
+    },
+    {
+      "title": "Genome-wide analysis of starch metabolism genes in potato",
+      "year": 2017,
+      "publisher": "BMC Genomics",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5217216/",
+      "use": "starch pathway loci distributed across all 12 chromosomes"
+    },
+    {
+      "title": "A physical map of traits of agronomic importance based on potato and tomato genome sequences",
+      "year": 2023,
+      "publisher": "Frontiers in Genetics",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10411547/",
+      "use": "chromosome-level mapping of resistance, yield, sugar and maturity loci"
+    },
+    {
+      "title": "The complete mitochondrial genome sequences of potato",
+      "year": 2018,
+      "publisher": "Mitochondrial DNA Part B",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7800320/",
+      "use": "potato mitochondrial genome structure"
+    },
+    {
+      "title": "Complete chloroplast genome of Solanum tuberosum cv. Shepody",
+      "year": 2021,
+      "publisher": "Mitochondrial DNA Part B",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8284121/",
+      "use": "chloroplast genome size and gene architecture"
+    }
+  ],
+  "connections": [
+    "potato-growth-principles",
+    "potato-organism-cycle-atlas",
+    "potato-biology-ecology-development-canon",
+    "science-master-index"
+  ],
+  "next_actions": [
+    "Render a 12-ring × 4-haplotype chromosome viewer rather than a single generic chromosome list.",
+    "Attach cultivar/assembly selectors so DM, RH, Otava, C88 and future references are not conflated.",
+    "Add chromosome-coordinate tracks from a current potato genome browser/source rather than hand-entering unsupported positions.",
+    "Create separate views for inheritance/dosage, gene regulation, pangenome variation and organellar DNA.",
+    "Wire genetics into every organism-cycle stage so phenotype pages can trace claims back to genes/haplotypes and evidence."
+  ]
+}
