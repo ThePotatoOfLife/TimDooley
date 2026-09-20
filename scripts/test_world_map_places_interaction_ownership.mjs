@@ -21,7 +21,7 @@ const fallbackStart = source.indexOf('function bindFallbackLayerEvents()');
 assert.ok(bindStart >= 0 && fallbackStart >= 0, 'Places interaction functions must exist');
 const bindEnd = source.indexOf('\n}', bindStart) + 2;
 const bindBody = source.slice(bindStart, bindEnd);
-assert.ok(bindBody.includes('if (syncInteractionRegistration()) return;'), 'normal Places boot must prefer the router before fallback listeners');
+assert.ok(/if \(syncInteractionRegistration\(\)\)\s*\{[^}]*return;[^}]*\}/s.test(bindBody) || bindBody.includes('if (syncInteractionRegistration()) return;'), 'normal Places boot must prefer the router before fallback listeners');
 assert.ok(bindBody.includes('bindFallbackLayerEvents();'), 'fallback must be explicit rather than parallel');
 assert.ok(!bindBody.includes("map.on('click'"), 'normal bindLayerEvents must not attach its own click owner');
 
