@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
@@ -439,6 +439,166 @@
       "summary": "Inspection surface that centers a case, platform, text, process or artifact while preserving its containing Room and alternate Room lenses.",
       "status_note": "An object may become informationally central without becoming a Room, Dwelling or knowledge owner.",
       "evidence_note": "Status and evidence boundaries travel with the object across every Room lens."
+    },
+    {
+      "id": "body-thalamus-house",
+      "label": "Thalamus / Father's House",
+      "kind": "anatomical-symbolic-object",
+      "room_ids": [
+        "neurobiology",
+        "symbolic-body-comparison",
+        "theology-god-language",
+        "symbolic-architecture"
+      ],
+      "route": "/life-body/?brain-group=thalamus#brain-rooms",
+      "summary": "Paired diencephalic nuclear architecture viewed as empirical thalamus, historical inner-chamber terminology and Potatoverse Father's House.",
+      "status_note": "House/rooms are project mappings; thalamic anatomy remains empirical and distributed.",
+      "evidence_note": "Use thalamus specialist atlases for nuclear functions and historical/Horus boundaries."
+    },
+    {
+      "id": "body-pineal-door",
+      "label": "Pineal / Timing Door",
+      "kind": "anatomical-symbolic-object",
+      "room_ids": [
+        "neurobiology",
+        "symbolic-body-comparison",
+        "theology-god-language"
+      ],
+      "route": "/life-body/?brain=pineal#brain-rooms",
+      "summary": "Midline pineal neuroendocrine timing organ and project Door/Eye comparator, including the real retina→SCN→spine→pineal control loop.",
+      "status_note": "The human pineal is not a retinal third eye or proven seat of soul.",
+      "evidence_note": "Circadian physiology and historical/esoteric interpretation stay separately typed."
+    },
+    {
+      "id": "body-spinal-ladder",
+      "label": "Spine / 33-Room Ladder",
+      "kind": "anatomical-symbolic-object",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison",
+        "symbolic-architecture"
+      ],
+      "route": "/life-body/?spine=C1#vertebral-rooms",
+      "summary": "Thirty-three conventional vertebral rooms overlaid with 31 neural segments, spinal microcircuits, roots, autonomic side chains, CSF and project Ladder/Gate structure.",
+      "status_note": "Vertebra, cord segment, nerve root, dermatome and symbolic Gate are different coordinate systems.",
+      "evidence_note": "Use the 33-room and spinal-cord microcircuit atlases for exact level distinctions."
+    },
+    {
+      "id": "body-csf-river",
+      "label": "CSF / River",
+      "kind": "fluid-interface-object",
+      "room_ids": [
+        "whole-body",
+        "neurobiology",
+        "symbolic-body-comparison",
+        "theology-god-language"
+      ],
+      "route": "/life-body/#vertebral-rooms",
+      "summary": "Ventricular and subarachnoid cerebrospinal-fluid system viewed alongside the project's River/Spirit-flow analogy.",
+      "status_note": "CSF is not Spirit; River is strongest as a multiplex-flow analogy.",
+      "evidence_note": "Production, circulation, exchange and drainage are separate physiological operations."
+    },
+    {
+      "id": "body-choroid-spring",
+      "label": "Choroid Plexus / Spring",
+      "kind": "biological-interface",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "route": "/life-body/?brain=choroid#brain-rooms",
+      "summary": "Vascular epithelial blood–CSF interface producing much of CSF and regulating ventricular fluid composition.",
+      "status_note": "Spring/Well is an architectural analogy.",
+      "evidence_note": "Barrier, transport, immune-interface and CSF-production functions are empirical."
+    },
+    {
+      "id": "body-vagus-return",
+      "label": "Vagus / Wandering Return",
+      "kind": "neural-route",
+      "room_ids": [
+        "whole-body",
+        "neurobiology",
+        "symbolic-body-comparison"
+      ],
+      "route": "/life-body/?brain=nts#brain-rooms",
+      "summary": "Bilateral cranial nerve X carries extensive visceral afference to medullary NTS and parasympathetic regulation back toward organs.",
+      "status_note": "Return-road is a project systems analogy; vagus is not the sole mind–body channel.",
+      "evidence_note": "Keep afferent/efferent and organ-specific pathways explicit."
+    },
+    {
+      "id": "body-sympathetic-sidechains",
+      "label": "Sympathetic Trunks / Paired Side Chains",
+      "kind": "autonomic-route",
+      "room_ids": [
+        "whole-body",
+        "neurobiology",
+        "symbolic-body-comparison"
+      ],
+      "route": "/life-body/#vertebral-rooms",
+      "summary": "Left/right paravertebral sympathetic ganglion chains beside the vertebral axis, useful as a modern paired-channel comparator.",
+      "status_note": "They do not form a double helix and are not proven iḍā/piṅgalā.",
+      "evidence_note": "Historical subtle-body mappings remain separate from autonomic anatomy."
+    },
+    {
+      "id": "body-orientation-house",
+      "label": "Orientation Room / Head-Direction Network",
+      "kind": "neural-system",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison",
+        "symbolic-architecture"
+      ],
+      "route": "/life-body/?brain=anterior-thalamus#brain-rooms",
+      "summary": "Vestibular, anterior-thalamic, retrosplenial and hippocampal/entorhinal networks supporting heading and spatial orientation.",
+      "status_note": "Biological heading is not sacred or magnetic North detection.",
+      "evidence_note": "Useful empirical neighbor for Axis/North/orientation language only."
+    },
+    {
+      "id": "tradition-horus-eye",
+      "label": "Wedjat / Eye of Horus",
+      "kind": "historical-symbol",
+      "room_ids": [
+        "comparative-mythology",
+        "symbolic-body-comparison",
+        "neurobiology"
+      ],
+      "route": "/life-body/?brain-group=thalamus#brain-rooms",
+      "summary": "Ancient restored/protective Eye of Horus viewed beside a separate modern speculative sagittal-brain comparison.",
+      "status_note": "Ancient Wedjat meaning and modern brain overlay are distinct historical layers.",
+      "evidence_note": "Do not present the brain overlay as demonstrated Egyptian neuroanatomy."
+    },
+    {
+      "id": "tradition-hermes-caduceus",
+      "label": "Hermes / Caduceus",
+      "kind": "historical-symbol",
+      "room_ids": [
+        "comparative-mythology",
+        "other-traditions",
+        "symbolic-body-comparison",
+        "symbolic-architecture"
+      ],
+      "route": "/life-body/#vertebral-rooms",
+      "summary": "Hermes as messenger/boundary/psychopomp and the paired-serpent herald staff viewed beside Axis/side-channel comparisons.",
+      "status_note": "Caduceus, kundalini, sympathetic trunks and DNA are separate lineages.",
+      "evidence_note": "Use own-tradition history before structural comparison."
+    },
+    {
+      "id": "tradition-kundalini-chakra",
+      "label": "Kuṇḍalinī / Cakra Overlay",
+      "kind": "historical-subtle-body-system",
+      "room_ids": [
+        "other-traditions",
+        "comparative-mythology",
+        "symbolic-body-comparison",
+        "whole-body"
+      ],
+      "route": "/life-body/#vertebral-rooms",
+      "summary": "Variable South Asian subtle-body systems and later modern physiological reinterpretations compared with the project's five spinal Gates + higher centers.",
+      "status_note": "Cakras/nāḍīs are not established anatomical structures.",
+      "evidence_note": "Historical variation and modern plexus/endocrine mappings must remain chronologically visible."
     }
   ],
   "source_records": [
