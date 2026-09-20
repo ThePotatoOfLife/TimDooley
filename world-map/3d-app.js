@@ -1,6 +1,9 @@
 import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs';
 if (!window.__potatoAtlasScale?.ready) await import('./3d-scale.js');
 const scale = await window.__potatoAtlasScale.ready;
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('selection-inspector', ['country','compare','rel','depth']);
 
 const URL = {
   geo: 'https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json',
@@ -290,12 +293,12 @@ function fitCodes(codes,padding=55) {
 function setState(code,key,value){if(!code)return;try{map.setFeatureState({source:'countries',id:code},{[key]:value})}catch{}}
 function clearCompareStates(){for(const c of compareCodes)setState(c,'compare',false)}
 function updateUrl(){
-  const u=new URL(location.href);
-  selected?u.searchParams.set('country',selected):u.searchParams.delete('country');
-  compareCodes.length?u.searchParams.set('compare',compareCodes.join(',')):u.searchParams.delete('compare');
-  relationType!=='all'?u.searchParams.set('rel',relationType):u.searchParams.delete('rel');
-  traceDepth!==1?u.searchParams.set('depth',String(traceDepth)):u.searchParams.delete('depth');
-  history.replaceState({},'',u);
+  urlState.patch('selection-inspector',{set:{
+    country:selected || null,
+    compare:compareCodes.length ? compareCodes.join(',') : null,
+    rel:relationType!=='all' ? relationType : null,
+    depth:traceDepth!==1 ? String(traceDepth) : null,
+  }});
 }
 async function toggleCompareCountry(code){
   if(compareCodes.includes(code)){compareCodes=compareCodes.filter(x=>x!==code);setState(code,'compare',false)}
