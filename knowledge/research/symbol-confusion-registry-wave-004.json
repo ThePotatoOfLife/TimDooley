@@ -1,8 +1,8 @@
 {
   "id": "symbol-confusion-registry-wave-004",
   "title": "Symbol Confusion Registry Wave 004 — Distinctions, Productive Tensions and Open Knots",
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.1.0",
+  "updated": "2026-09-20",
   "status": "active canonical disambiguation registry",
   "purpose": "Track where project symbols overlap too much, where distinctions are resolved, where multiple meanings are legitimately retained, and which unresolved knots need more conversation archaeology or external research before implementation.",
   "rule": "Do not resolve every overlap by choosing one meaning. Classify each case as synonym-error, scale-confusion, role-confusion, projection-overlap, productive-tension, historical-layer-confusion or empirical-symbolic-confusion.",
@@ -123,6 +123,71 @@
       "confusion": "Axis was sometimes treated as identical with Father or Son.",
       "resolution": "Father/Son/Spirit are theological/project roles; Axis is the bidirectional reference relation through which many roles/processes can be mapped. Spirit supplies living relation/flow; Axis does not become a person merely by passing through a role.",
       "owner": "knowledge/core/deep-element-definition-atlas.json"
+    },
+    {
+      "id": "son-door-jesus-thomas",
+      "type": "role-confusion",
+      "status": "resolved-2026-09-20",
+      "confusion": "Older project language sometimes bundled Son, Door, Jesus and manifestation into one role.",
+      "resolution": "Jesus Christ is the primary O/Door/Here theological anchor. C_S is the manifestation-facing Son/Twin/Vessel center with Thomas/Didymus as primary Twin/Vessel anchor. Son/Body manifests state; Door governs transition. They remain strongly related without being the same operator.",
+      "tests": [
+        "Is this claim about passage/threshold or embodiment/consequence?",
+        "Is the figure Jesus/O or Thomas/C_S in the current projection?",
+        "Is 'Son' being used generically, Christologically, or for the project Twin/Vessel role?"
+      ],
+      "owners": [
+        "data/house/three-center-role-atlas.json",
+        "data/house/center-relational-ontology.json",
+        "knowledge/theology/father-son-door-reciprocity.json"
+      ]
+    },
+    {
+      "id": "plane-navigation-deck-field",
+      "type": "projection-overlap",
+      "status": "resolved-2026-09-20",
+      "confusion": "Plane, Heaven Plane, World Plane, Below Plane, Source Field and Manifestation Field were sometimes read as the same class of thing.",
+      "resolution": "Canonical Plane = frame-relative section/hypersurface. Heaven/World/Below Plane IDs in tree-plane-routing are navigation decks/projections. Source and Manifestation Fields are full relational domains. Below is a depth/shadow projection, not the lower field itself.",
+      "tests": [
+        "Is this a full field, a frame/section, or a navigation projection?",
+        "Does it own content or merely render it?",
+        "What scale/time/representation defines the Plane?"
+      ],
+      "owners": [
+        "data/house/plane-crossing-contract.json",
+        "data/house/topology.json",
+        "data/house/tree-plane-routing.json"
+      ]
+    },
+    {
+      "id": "cross-point-sign-crossing",
+      "type": "role-confusion",
+      "status": "resolved-2026-09-20",
+      "confusion": "Cross could mean O, the visible cross-form, an event of passage, or the Christian Cross.",
+      "resolution": "Cross-point O = Axis∩Plane. Cross-sign = Axis plus a chosen lateral line in Plane. Crossing-event = trajectory intersection/transition event. Christian Cross retains its own historical/theological meaning.",
+      "tests": [
+        "Is the object a point, sign, event, or religious symbol?",
+        "Can the relevant Axis, Plane, trajectory or text be named?"
+      ],
+      "owners": [
+        "data/house/plane-crossing-contract.json",
+        "data/house/concept-topology.json"
+      ]
+    },
+    {
+      "id": "lower-field-below-swamp",
+      "type": "scale-confusion",
+      "status": "resolved-2026-09-20",
+      "confusion": "Lower circle, Below and Swamp could be flattened into one negative realm.",
+      "resolution": "Manifestation Field = embodiment/actuality/history/consequence. Below = depth/intelligence/shadow projection. Swamp = unresolved entanglement/blocked-flow regime. They are nested/related but not synonyms.",
+      "tests": [
+        "Is the claim about embodiment generally, hidden/depth material, or a self-reinforcing entanglement regime?",
+        "Would the label still apply if no moral judgment were implied?"
+      ],
+      "owners": [
+        "data/house/topology.json",
+        "knowledge/core/below-intelligence-shadow-observatory.json",
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json"
+      ]
     }
   ],
   "open_knots": [
