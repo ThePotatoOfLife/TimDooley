@@ -191,8 +191,8 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 - [ ] **TODAY-001 · Today → House ledger:** add a compact integration ledger for each major workstream with canonical owner, Dwelling/Room, public surface and cross-links; use it after large work days to detect researched-but-uninhabited material.
 
 #### P2 — cleanliness / maintainability
-- [ ] **CLEAN-001 · Live health filename:** replace date-stamped `spatial-house-health-2026-09-20.json` as the runtime health authority with a stable live path; preserve dated copies only as historical snapshots.
-- [ ] **CLEAN-002 · Generated projection ownership:** stop hand-editing the same Room public-surface projections in three registries; choose one source and derive the other views.
+- [x] **CLEAN-001 · Live health filename:** replace date-stamped `spatial-house-health-2026-09-20.json` as the runtime health authority with a stable live path; preserve dated copies only as historical snapshots.
+- [x] **CLEAN-002 · Generated projection ownership:** stop hand-editing the same Room public-surface projections in three registries; choose one source and derive the other views.
 - [ ] **CLEAN-003 · Shared asset version strings:** reduce repeated `?v=202609...` literals across HTML pages by centralizing or build-stamping shared component versions.
 - [ ] **CLEAN-004 · House inline CSS extraction:** `house/index.html` still owns a very large page-local style block; migrate reusable House component rules into a scoped shared stylesheet without introducing generic selector ownership.
 - [ ] **CLEAN-005 · Navigation label consistency:** audit Home/World/House/Rooms/Tim route labels for competing names such as Current/Current World/Current World News, Witness/Public witness/Public record, and standardize reader-facing terms.
