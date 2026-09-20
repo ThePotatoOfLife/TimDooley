@@ -155,8 +155,8 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. Work pro
 
 Drain only after unique behavior is preserved and tested:
 
-- [ ] `world-map/3d-ui.js`
-- [ ] `world-map/3d-selection-ui.js`
+- [x] `world-map/3d-ui.js` — retired after canonical World Bar / Panel Lifecycle / presentation owners replaced its normal-boot responsibilities.
+- [x] `world-map/3d-selection-ui.js` — retired after Country Selection / Layer Registry / Country Card replaced its compatibility surface.
 - [ ] old Lens ownership after registry/compositor parity
 - [ ] old Atlas naming/routing remnants
 - [ ] remaining duplicated style/lifecycle ownership not yet under Style Lifecycle

@@ -63,6 +63,8 @@ for token in (
     'data-tts-trigger-label="Read all news"',
     'data-tts-exclude=".news-story-kicker,.news-story-footer,.news-story-image,.news-story-expand,.news-empty"',
     'data-provider="publisher-rss"',
+    'data-provider="official-rss"',
+    'Compare coverage on Ground News',
 ):
     require(html,token,"news/index.html")
 
@@ -74,6 +76,8 @@ if latest_pos < 0 or secondary_pos < 0 or latest_pos > secondary_pos:
 for token in (
     "function coverageClusters",
     "function normalizePublisherRss",
+    "function normalizeOfficialRss",
+    "async function loadOfficialRss",
     "async function loadPublisherRss",
     "publisher-excerpt",
     "Full report ↗",
@@ -96,7 +100,7 @@ for token in (
     "function renderBriefing",
     "readable=params.get('readable')==='1'",
     "allRows.filter(r=>clean(r.summary).length>0)",
-    "baseProviders.filter(id=>id!=='publisher-rss')",
+    "baseProviders.filter(id=>id!=='publisher-rss'&&id!=='official-rss')",
     "function renderPulse",
     "news-story--compact",
     "view!=='latest')more.open=true",
@@ -108,6 +112,12 @@ for token in (
     "function renderClusters",
     "function providerContract",
     "function publisherFeedRegister",
+    "function officialFeedRegister",
+    "function nearDuplicate",
+    "function latestRiverRows",
+    "function leadRows",
+    "querySelectorAll(\'[data-news-view]\')",
+    "querySelectorAll(\'[data-news-view-panel]\')",
     "function renderSourceLanes",
     "function mergeQueries",
     "horizonMs(config,horizon)",
@@ -138,12 +148,12 @@ for token in (
 ):
     require(css,token,"app/news.css")
 
-for token in ('data-news-mode="preview"','publisher-rss','app/news.js?v=20260920i','app/news.css?v=20260920i'):
+for token in ('data-news-mode="preview"','publisher-rss','app/news.js?v=20260920j','app/news.css?v=20260920j'):
     require(home,token,"index.html")
 require(world,'href="../news/"',"world/index.html")
 
 providers={row.get("id") for row in cfg.get("providers",[]) if isinstance(row,dict)}
-if providers != {"gdelt","publisher-rss","hacker-news","spaceflight-news"}:
+if providers != {"gdelt","publisher-rss","official-rss","hacker-news","spaceflight-news"}:
     errors.append(f"unexpected provider contract: {sorted(providers)}")
 for row in cfg.get("providers",[]):
     if isinstance(row,dict) and (not row.get("display_mode") or not row.get("reuse_mode")):
@@ -156,6 +166,13 @@ for row in feeds:
     if isinstance(row,dict) and (not row.get("feed_url") or not row.get("name") or not row.get("reuse_mode") or not row.get("reuse_note") or not row.get("terms_url")):
         errors.append(f"publisher feed missing URL/reuse/terms metadata: {row.get('id')}")
 
+official_feeds=cfg.get("official_feeds",[])
+if len(official_feeds) < 4:
+    errors.append("official economy layer must declare Fed, ECB and Eurostat feeds")
+for row in official_feeds:
+    if isinstance(row,dict) and (not row.get("feed_url") or not row.get("name") or not row.get("reuse_mode") or not row.get("reuse_note") or not row.get("terms_url")):
+        errors.append(f"official feed missing URL/reuse/terms metadata: {row.get('id')}")
+
 presentation=cfg.get("presentation",{})
 if int(presentation.get("max_feed",0)) < 60:
     errors.append("Current World must expose at least 60 stories in the main river")
@@ -163,6 +180,12 @@ if int(presentation.get("publisher_rss_items_per_feed",0)) != 10:
     errors.append("public no-key RSS adapter limit must remain explicit at 10 items per feed")
 if not presentation.get("rss_adapter_note"):
     errors.append("RSS adapter public-limit note is required")
+
+categories={row.get("id"):row for row in cfg.get("categories",[]) if isinstance(row,dict)}
+if set(categories.get("politics",{}).get("providers",[])) != {"gdelt","publisher-rss"}:
+    errors.append("Politics must combine GDELT with category-specific publisher RSS")
+if set(categories.get("economy",{}).get("providers",[])) != {"gdelt","publisher-rss","official-rss"}:
+    errors.append("Economy must combine newsroom discovery, publisher RSS and official releases")
 
 horizons={row.get("id") for row in cfg.get("horizons",[]) if isinstance(row,dict)}
 if not {"3h","12h","24h","3d","7d"}.issubset(horizons):
@@ -174,6 +197,11 @@ lens_ids={row.get("id") for row in cfg.get("lenses",[]) if isinstance(row,dict)}
 for required in ("north-arctic","europe","ukraine-russia","middle-east","americas","asia-pacific","africa","economy-energy","security","science-tech"):
     if required not in lens_ids:
         errors.append(f"missing Current World lens: {required}")
+
+tools=cfg.get("external_comparison_tools",[])
+ground=next((row for row in tools if isinstance(row,dict) and row.get("id")=="ground-news"),None)
+if not ground or ground.get("integration")!="link-only":
+    errors.append("Ground News must remain a link-only comparison tool unless a public integration is documented")
 
 if cfg.get("source_transparency",{}).get("no_ranking") is not True:
     errors.append("news source transparency must remain non-ranking")

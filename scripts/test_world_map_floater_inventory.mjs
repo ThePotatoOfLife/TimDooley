@@ -3,7 +3,6 @@ import fs from 'node:fs';
 
 const read = name => fs.readFileSync(new URL(`../world-map/${name}`, import.meta.url), 'utf8');
 const layout = read('3d-ui-layout.js');
-const ui = read('3d-ui.js');
 const axisDepth = read('3d-axis-depth.js');
 const selection = read('3d-country-selection.js');
 const pathfinder = read('3d-pathfinder.js');
@@ -23,7 +22,7 @@ assert.ok(axisDepth.includes("tint.id = TINT_ID"), 'Axis tint remains an explici
 // to the layout coordinator, not the toolbar domain module.
 assert.ok(selection.includes("document.getElementById('atlasSelectionDock')?.style.setProperty('display', 'none', 'important')"), 'working selection must suppress legacy selection dock');
 assert.ok(layout.includes('body.atlas-registry-ui .hud') && layout.includes('body.atlas-registry-ui .camera') && layout.includes('{display:none!important}'), 'registry layout must suppress legacy HUD and camera helpers');
-assert.ok(ui.includes("id:'axis-compact', zone:'canvas-control'"), 'Axis compact control must register as a canvas control');
+assert.ok(layout.includes("id:'axis-compact', zone:'canvas-control'"), 'UI Layout must own Axis compact canvas-control registration');
 
 // Persistent informational surfaces belong to the shared status stack.
 for (const marker of ['world-context','time-state','axis-field-legend','axis-operator-hud']) {

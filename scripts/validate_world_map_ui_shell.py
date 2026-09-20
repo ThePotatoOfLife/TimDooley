@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "world-map" / "index.html"
-UI = ROOT / "world-map" / "3d-ui.js"
+RETIRED_UI = (ROOT / "world-map" / "3d-ui.js", ROOT / "world-map" / "3d-selection-ui.js")
 WORLD_BAR = ROOT / "world-map" / "3d-world-bar.js"
 ACTIVE_VIEW = ROOT / "world-map" / "3d-active-view.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
@@ -29,7 +29,6 @@ def read(path: Path, errors: list[str]) -> str:
 def main() -> int:
     errors: list[str] = []
     html = read(INDEX, errors)
-    ui = read(UI, errors)
     world_bar = read(WORLD_BAR, errors)
     active_view = read(ACTIVE_VIEW, errors)
     bootstrap = read(BOOTSTRAP, errors)
@@ -71,11 +70,6 @@ def main() -> int:
             if token not in public_patch:
                 errors.append(f"public World Map first-paint projection missing unified-header marker: {token}")
 
-    if ui:
-        forbidden = ("atlasToolsMenu", "atlas-tools-root", "function installToolbox", "installToolbox();")
-        for token in forbidden:
-            if token in ui:
-                errors.append(f"World Map UI must remain one level deep; nested toolbox marker still present: {token}")
 
     if country_card:
         compact = re.sub(r"\s+", "", country_card)
@@ -171,6 +165,14 @@ def main() -> int:
         for token in ("atlas-time-change", "timeState", "refreshSerial", "matchCount", "potato-atlas-active-view-change"):
             if token not in active_view:
                 errors.append(f"authoritative active-view state missing synchronization marker: {token}")
+
+    for retired in RETIRED_UI:
+        if retired.exists():
+            errors.append(f"retired World Map compatibility UI must stay deleted: {retired.relative_to(ROOT)}")
+    if bootstrap:
+        for retired_name in ("3d-ui.js", "3d-selection-ui.js"):
+            if retired_name in bootstrap:
+                errors.append(f"bootstrap must not restore retired compatibility UI: {retired_name}")
 
     if bootstrap and "declareDormant('Time', './3d-time.js'" not in bootstrap:
         errors.append("Time should remain lazy but explicitly declared in bootstrap diagnostics")
