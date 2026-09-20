@@ -64,8 +64,6 @@
     details.innerHTML = `<summary>${esc(label)}</summary><div class="atlas-world-menu-pop"></div>`;
     details.addEventListener('toggle', () => { if (details.open) closeMenus(details); });
     details.addEventListener('click', event => {
-      const relationButton = event.target.closest('[data-relation-mode]');
-      if (relationButton) return window.__potatoAtlasSelection?.setRelationMode?.(relationButton.dataset.relationMode);
       const layerButton = event.target.closest('[data-layer-option]');
       if (layerButton) layers.toggle(layerButton.dataset.layerOption);
     });
