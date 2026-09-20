@@ -18,6 +18,7 @@ MAP_STATE = ROOT / "world-map" / "3d-map-state.js"
 PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 SUBDIVISION_INDEX = ROOT / "data" / "world-subdivisions" / "index.json"
+WORLD_CAPITALS = ROOT / "data" / "world-capitals.geo.json"
 SUBDIVISION_SEARCH_TEST = ROOT / "scripts" / "test_world_map_subdivision_search.mjs"
 LABEL_DENSITY_TEST = ROOT / "scripts" / "test_world_map_place_label_density.mjs"
 EXPECTED_RUNTIME_BUDGET = {
@@ -125,6 +126,16 @@ def validate_data(data_dir: Path, errors: list[str]) -> None:
         missing_regional_places = sorted(regional_countries - set(countries.keys()))
         if missing_regional_places:
             errors.append("regional place coverage missing for subdivision countries: " + ", ".join(missing_regional_places))
+    canonical_capital_names: dict[str, str] = {}
+    if data_dir == DEFAULT_DATA_DIR and WORLD_CAPITALS.exists():
+        capital_payload = load_json(WORLD_CAPITALS, errors) or {}
+        for feature in capital_payload.get("features") or []:
+            props = feature.get("properties") or {}
+            iso3 = str(props.get("iso3") or "").upper()
+            name = str(props.get("name") or "").strip()
+            if iso3 and name and props.get("primary") is True:
+                canonical_capital_names[iso3] = name
+
     partition_ids: set[str] = set()
     for iso3, descriptor in countries.items():
         path = data_dir / str((descriptor or {}).get("path") or "")
@@ -148,8 +159,15 @@ def validate_data(data_dir: Path, errors: list[str]) -> None:
             place_id = str(props.get("id") or "")
             if place_id:
                 partition_ids.add(place_id)
-            if props.get("is_national_capital") is True and place_id not in seen:
-                errors.append(f"Places partition {iso3} national capital missing from global-major: {place_id}")
+            if props.get("is_national_capital") is True:
+                if place_id not in seen:
+                    errors.append(f"Places partition {iso3} national capital missing from global-major: {place_id}")
+                canonical_name = canonical_capital_names.get(str(iso3).upper())
+                if canonical_name and str(props.get("name") or "").strip() != canonical_name:
+                    errors.append(
+                        f"Places partition {iso3} national capital name must match canonical World Capitals name "
+                        f"{canonical_name!r}; got {props.get('name')!r}"
+                    )
 
     search_records = index.get("search_records")
     if not isinstance(search_records, list) or not search_records:
