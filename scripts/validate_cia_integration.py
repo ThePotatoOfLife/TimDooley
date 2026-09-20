@@ -62,6 +62,10 @@ def main():
    mult=reps[min(idx-1,len(reps)-1)]
    expected=round(float(categories[e["category"]])*float(tiers[e["evidence_tier"]])*float(mult),6)
    if abs(float(e["project_adjustment_susd"])-expected)>1e-9: fail(f"debt pricing formula drift for {e.get('id')}: {e.get('project_adjustment_susd')} != {expected}")
+ bank_js=(ROOT/"app/mud-bank.js").read_text(encoding="utf-8",errors="replace")
+ if "project_adjustment_susd" not in bank_js: fail("Mud Bank runtime must honor priced per-event adjustments")
+ dossier_js=(ROOT/"app/cia-dossier.js").read_text(encoding="utf-8",errors="replace")
+ if "evidence_tier" not in dossier_js or "debt_evidence_id" not in dossier_js: fail("CIA dossier account reader must expose debit provenance")
  for cid in ["txt","port-monkey","marty-biz"]:
   cd=json.loads((ROOT/f"knowledge/cia/characters/{cid}.json").read_text(encoding="utf-8"))
   refs={x.get("debt_evidence_id") for x in ((cd.get("symbolic_account") or {}).get("entries") or []) if x.get("type")=="project-debit"}
