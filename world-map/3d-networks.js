@@ -1,3 +1,7 @@
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('empirical-networks', ['network']);
+
 import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs';
 import { getOrCreateTooltipService } from './3d-tooltip.js';
 
@@ -89,7 +93,7 @@ function applyNetwork(map,registry,id,{writeUrl=true}={}) {
     map.setPaintProperty(LINE_ID,'line-color',colorFor(id,registry));
     map.setPaintProperty(FILL_ID,'fill-opacity',opacityFor(id));
   }
-  if(writeUrl){const next = new URL(location.href);if (id==='off') next.searchParams.delete('network'); else next.searchParams.set('network',id);history.replaceState(null,'',next);}
+  if(writeUrl) urlState.patch('empirical-networks', { set:{ network:id==='off' ? null : id } });
 }
 
 function installControl(map, registry) {
