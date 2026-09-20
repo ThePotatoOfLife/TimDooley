@@ -80,6 +80,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
             "python scripts/validate_world_map_ownership.py",
             "python scripts/validate_world_map_adl_heat.py",
             "python scripts/validate_world_map_layer_integration.py",
+            "python scripts/validate_world_map_url_state.py",
             "python scripts/validate_world_map_data_runtime.py",
             "python scripts/validate_world_axis_systems.py",
             "python scripts/validate_world_map_system_intelligence.py",
