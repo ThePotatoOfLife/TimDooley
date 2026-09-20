@@ -213,8 +213,12 @@ def main() -> int:
         "POINTER_DRAG_THRESHOLD_PX",
         "suppressUntilMove",
         ".maplibregl-popup:has(.atlas-hover)",
+        "pointerDragSuppressions",
     ):
-        require(boot_guard, token, "world-map/3d-boot-guard.js", errors)
+        reject(boot_guard, token, "world-map/3d-boot-guard.js", errors)
+    reject(boot_guard, "atlas-hover", "world-map/3d-boot-guard.js", errors)
+    for token in ("dragstart", "zoomstart", "rotatestart", "pitchstart"):
+        require(tooltip, token, "world-map/3d-tooltip.js", errors)
 
     for token in ("function suspendCountryCard", "function restoreCountryCard", "potato-atlas-country-card-rendered"):
         require(evidence, token, "world-map/3d-evidence.js", errors)
@@ -268,7 +272,7 @@ def main() -> int:
         return 1
 
     print("WORLD MAP BROWSE/PERFORMANCE VALIDATION PASSED")
-    print("Browse + Pins · normalized Current Map answer · minimal shared-tooltip hover · drag-safe compatibility guard · exclusive top-left overlays · single panel observer · bounded subdivisions/Places · staged lazy specialist stack")
+    print("Browse + Pins · normalized Current Map answer · shared-tooltip motion invalidation · no boot-level hover drag workaround · exclusive top-left overlays · single panel observer · bounded subdivisions/Places · staged lazy specialist stack")
     return 0
 
 
