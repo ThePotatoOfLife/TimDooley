@@ -91,6 +91,7 @@ def main() -> int:
     for token in (
         'data-panel="conversations"',
         'data-panel="patterns"',
+        'data-panel="knowledge"',
         "function conversationsHtml()",
         "function patternsHtml()",
         "Archive coverage",
@@ -131,6 +132,16 @@ def main() -> int:
     dim_path = ROOT / "knowledge/fbi/figures/dim.json"
     if not dim_path.is_file():
         fail("DIM dossier is missing")
+
+    if manifest.get("title") != "CIA — Characters, Incidents & Associations":
+        fail("public dossier bureau title must remain CIA — Characters, Incidents & Associations")
+    public_identity = manifest.get("public_identity") or {}
+    if public_identity.get("acronym") != "CIA":
+        fail("manifest public_identity.acronym must remain CIA")
+    if "Central Intelligence Agency" not in manifest.get("disclaimer", ""):
+        fail("CIA non-affiliation disclaimer is missing")
+    if "knowledge/fbi/" not in str(public_identity.get("legacy_storage_namespace") or ""):
+        fail("legacy FBI storage namespace must remain documented during compatibility migration")
 
     surfaces = manifest.get("public_surfaces") or {}
     if surfaces.get("cabinet") != EXPECTED_ROUTE:
