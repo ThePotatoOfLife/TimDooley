@@ -1,7 +1,7 @@
 {
   "id": "substance-first-projection-contract",
   "title": "Substance-First Public Projection Contract",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-20",
   "status": "binding presentation/materialization contract",
   "purpose": "Make reader-facing substance the first-class public experience while preserving quiet, typed, machine-readable bonds to canonical owners, Rooms, provenance and evidence boundaries underneath the prose.",
@@ -54,6 +54,27 @@
         "research-lab"
       ],
       "anchors": [
+        {
+          "section_id": "project-substance",
+          "owner_paths": [
+            "knowledge/core/tim-dooley.json",
+            "data/potatoism-canonical-corpus.json",
+            "data/tim-dooley-public-theology-timeline-2025-2026.json",
+            "data/house/project-synthesis.json"
+          ],
+          "relation_types": [
+            "biography",
+            "canon-development",
+            "public-record",
+            "project-synthesis"
+          ],
+          "evidence_classes": [
+            "project-canon",
+            "public-record",
+            "interpretation",
+            "project-governance"
+          ]
+        },
         {
           "section_id": "culture-in-motion",
           "owner_paths": [
