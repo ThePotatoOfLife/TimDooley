@@ -34,6 +34,12 @@ function activeLayerEntries() {
     return layers?.active?.().map(id => layers.get(id)).filter(Boolean) || [];
   } catch { return []; }
 }
+function activeIds(api) {
+  try {
+    const values = api?.active?.() || [];
+    return Array.isArray(values) ? values.map(value => String(value || '')).filter(Boolean) : [];
+  } catch { return []; }
+}
 
 function scaleBand() {
   const zoom = Number(map.getZoom?.());
@@ -122,6 +128,11 @@ async function buildContext(reason) {
       investigationId:activeInvestigationId(),
     },
     epistemic:{ activeTypes:epistemicTypes },
+    layers:{
+      physical:activeIds(window.__potatoAtlasPhysicalLayers),
+      geography:activeIds(window.__potatoAtlasSpatialOverlays),
+      evidence:activeIds(window.__potatoAtlasEvidenceLayers),
+    },
     budgets:{
       activeRelations:budgets.active,
       pinnedRelations:budgets.pinned,
