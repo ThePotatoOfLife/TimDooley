@@ -69,7 +69,8 @@ function welfareValue(){
 }
 function welfareLabel(){
  const value=welfareValue();
- return value==null?'provisional start':'
+ return value==null?'provisional start':'$'+value.toLocaleString(undefined,{minimumFractionDigits:10,maximumFractionDigits:10});
+}
 function renderAccountStrip(){
  const a=accountData();
  document.getElementById('accountStrip').innerHTML=
