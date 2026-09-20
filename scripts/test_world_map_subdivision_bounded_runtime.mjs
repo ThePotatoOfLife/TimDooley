@@ -34,8 +34,10 @@ const scaleRuntime = Object.freeze({
     return value;
   },
   bandThreshold(band) {
-    if (band !== 'subnational') throw new Error(`unexpected scale band ${band}`);
-    return 5.8;
+    const values = { 'macro-region':2.5, subnational:5.8 };
+    const value = values[band];
+    if (!Number.isFinite(value)) throw new Error(`unexpected scale band ${band}`);
+    return value;
   },
 });
 window.__potatoAtlasScale = { ...scaleRuntime, ready:Promise.resolve(scaleRuntime) };
@@ -142,6 +144,9 @@ assert.deepEqual(
   ['atlas-subdivision-hit', 'atlas-subdivision-label', 'atlas-subdivision-line'],
   'subdivisions must use exactly three shared layers independent of loaded country count',
 );
+assert.equal(layers.get('atlas-subdivision-line')?.minzoom, 2.5, 'subdivision borders should remain visible at national context scale once geometry is retained');
+assert.equal(layers.get('atlas-subdivision-hit')?.minzoom, 3.4, 'early national-context borders must not create early subdivision hit targets');
+assert.equal(layers.get('atlas-subdivision-label')?.minzoom, 4.25, 'state labels should keep the shared label threshold');
 
 assert.equal(await window.__potatoAtlasSubdivisions.select('US-CA', {fit:false}), true);
 assert.equal(selectedEvents.at(-1)?.feature?.properties?.population?.source, 'U.S. Census Bureau', 'selection must preserve raw nested population provenance');
@@ -156,5 +161,18 @@ assert.ok(status.cacheEvictions >= 1, 'loading beyond cache budget must evict an
 assert.equal(typeof status.cacheHits, 'number');
 assert.equal(typeof status.cacheMisses, 'number');
 assert.ok(status.renderedPartitions.length <= status.budget.rendered_max_partitions);
+
+await window.__potatoAtlasSubdivisions.retainPartition('USA', 'adl-heat');
+await window.__potatoAtlasSubdivisions.retainPartition('USA', 'mud-below-us');
+let retained = window.__potatoAtlasSubdivisions.status();
+assert.deepEqual(retained.retentionOwners.USA, ['adl-heat','mud-below-us'], 'shared U.S. geometry must retain independent overlay owners');
+await window.__potatoAtlasSubdivisions.releasePartition('USA', 'adl-heat');
+retained = window.__potatoAtlasSubdivisions.status();
+assert.ok(retained.forcedPartitions.includes('USA'), 'releasing ADL must not evict U.S. geometry while another owner still needs it');
+assert.deepEqual(retained.retentionOwners.USA, ['mud-below-us']);
+await window.__potatoAtlasSubdivisions.releasePartition('USA', 'mud-below-us');
+retained = window.__potatoAtlasSubdivisions.status();
+assert.ok(!retained.forcedPartitions.includes('USA'), 'U.S. geometry may release after its final owner releases it');
+assert.equal(retained.retentionOwners.USA, undefined);
 
 console.log('WORLD MAP BOUNDED SUBDIVISION RUNTIME REGRESSION PASSED');

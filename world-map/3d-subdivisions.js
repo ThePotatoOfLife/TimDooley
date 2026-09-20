@@ -34,6 +34,41 @@ let eventsBound = false;
 let useClock = 0;
 let activePartitions = [];
 const forcedPartitions = new Set();
+const forcedPartitionOwners = new Map();
+
+function retentionOwner(owner = 'anonymous') {
+  const token = String(owner || '').trim();
+  return token || 'anonymous';
+}
+function retainForcedPartition(partition, owner = 'anonymous') {
+  const key = String(partition || '').toUpperCase();
+  if (!key) return false;
+  const token = retentionOwner(owner);
+  const owners = forcedPartitionOwners.get(key) || new Set();
+  owners.add(token);
+  forcedPartitionOwners.set(key, owners);
+  forcedPartitions.add(key);
+  return true;
+}
+function releaseForcedPartition(partition, owner = 'anonymous') {
+  const key = String(partition || '').toUpperCase();
+  const owners = forcedPartitionOwners.get(key);
+  if (!owners) return false;
+  const removed = owners.delete(retentionOwner(owner));
+  if (!owners.size) {
+    forcedPartitionOwners.delete(key);
+    forcedPartitions.delete(key);
+  }
+  return removed;
+}
+function retentionOwners() {
+  return Object.fromEntries(
+    [...forcedPartitionOwners.entries()]
+      .sort(([a],[b]) => a.localeCompare(b))
+      .map(([partition, owners]) => [partition, [...owners].sort()])
+  );
+}
+
 let activeBytes = 0;
 let runtimeBudget = { ...DEFAULT_RUNTIME_BUDGET };
 let cacheHits = 0;
@@ -294,6 +329,8 @@ async function installSharedLayers() {
   const scale = await scaleRuntime();
   const renderZoom = scale.threshold('subdivisions', 'render');
   const labelZoom = scale.threshold('subdivisions', 'label');
+  let contextLineZoom = renderZoom;
+  try { contextLineZoom = Math.min(renderZoom, scale.bandThreshold('macro-region')); } catch {}
   const nameZoom = scale.bandThreshold('subnational');
   if (!map.getSource(SOURCE_ID)) {
     map.addSource(SOURCE_ID, { type:'geojson', data:{type:'FeatureCollection',features:[]}, promoteId:'id' });
@@ -304,7 +341,7 @@ async function installSharedLayers() {
   }
   if (!map.getLayer(LINE_ID)) {
     map.addLayer({
-      id:LINE_ID,type:'line',source:SOURCE_ID,minzoom:renderZoom,
+      id:LINE_ID,type:'line',source:SOURCE_ID,minzoom:contextLineZoom,
       paint:{
         'line-color':'#9aa9a2',
         'line-opacity':['interpolate',['linear'],['zoom'],renderZoom,0.28,5,0.55,7,0.78],
@@ -406,6 +443,9 @@ async function reconcileActive(index) {
   else if (source) source.data = merged;
   activePartitions = selected.map(entry => entry.partition);
   activeBytes = bytes;
+  window.dispatchEvent(new CustomEvent('potato-atlas-subdivisions-source-change', {
+    detail:{ renderedPartitions:[...activePartitions], featureCount:merged.features.length }
+  }));
   enforceCacheBudget(index);
   syncDiagnostics();
   return activePartitions;
@@ -466,23 +506,23 @@ window.__potatoAtlasSubdivisions = {
   },
   get selected() { return selectedId; },
   loadedPartitions() { return [...cache.keys()]; },
-  async retainPartition(partition) {
+  async retainPartition(partition, owner='anonymous') {
     const key = String(partition || '').toUpperCase();
     const index = await subdivisionIndex();
     if (!index?.partitions?.[key]) return false;
-    forcedPartitions.add(key);
+    retainForcedPartition(key, owner);
     try {
       await loadPartition(key);
       await reconcileActive(index);
       return true;
     } catch (error) {
-      forcedPartitions.delete(key);
+      releaseForcedPartition(key, owner);
       throw error;
     }
   },
-  async releasePartition(partition) {
+  async releasePartition(partition, owner='anonymous') {
     const key = String(partition || '').toUpperCase();
-    forcedPartitions.delete(key);
+    releaseForcedPartition(key, owner);
     const index = await subdivisionIndex();
     await reconcileActive(index);
     return true;
@@ -498,6 +538,7 @@ window.__potatoAtlasSubdivisions = {
       renderedBytes:activeBytes,
       cachedPartitions:[...cache.keys()],
       forcedPartitions:[...forcedPartitions],
+      retentionOwners:retentionOwners(),
       cacheBytes:cacheBytes(),
       cacheHits,
       cacheMisses,
