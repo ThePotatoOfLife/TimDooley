@@ -540,7 +540,7 @@ def validate_navigation_consolidation(errors):
         'data/house/topology.json','data/house/concept-topology.json',
         'data/house/orientation-population.json','data/house/tree-plane-routing.json',
         'data/house/seed-spiral-routing.json','data/axis-flow-contract.json',
-        'data/house/religious-symbolic-branch-atlas.json','data/house/project-center.json','knowledge/core/root-system.json'
+        'data/house/religious-symbolic-branch-atlas.json','data/house/project-center.json','data/house/three-center-role-atlas.json','knowledge/core/root-system.json'
     }
     missing=sorted(required_owners-set(owners))
     if missing: errors.append('navigation manifest missing authorities: '+', '.join(missing))
@@ -650,6 +650,11 @@ def validate_project_center(errors):
     nucleus=next((x for x in rings if x.get('id')=='r0-nucleus'),{})
     if nucleus.get('node_ids')!=['potato-of-life','father','son','spirit']:
         errors.append('project nucleus must remain Potato of Life / Father / Son / Spirit')
+    three=data.get('three_center_population',{})
+    if three.get('authority')!='data/house/three-center-role-atlas.json': errors.append('project center must delegate three-center population to the canonical three-center atlas')
+    placements={x.get('center_id'):x for x in three.get('placements',[]) if isinstance(x,dict)}
+    if set(placements)!={'C_F','O','C_S'}: errors.append('project center three-center placements must cover C_F / O / C_S')
+    if 'not a target list' not in three.get('rights_guard','').casefold(): errors.append('project center three-center rights guard must preserve non-target semantics')
     rules=' '.join(data.get('promotion_rules',[])).casefold()
     for token in ('comparative node cannot enter ring 0–2','volume of sources does not determine centrality','semantic center is potato of life','home should explain ring 0–1'):
         if token not in rules: errors.append(f'project center missing promotion boundary: {token}')
