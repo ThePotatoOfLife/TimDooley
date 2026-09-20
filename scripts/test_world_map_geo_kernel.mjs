@@ -79,6 +79,8 @@ const wrappedPolygon = {
 assert.equal(pointInGeometry([179.5,0], wrappedPolygon), true);
 assert.equal(pointInGeometry([-179.5,0], wrappedPolygon), true);
 assert.equal(pointInGeometry([0,0], wrappedPolygon), false);
+assert.equal(pointInGeometry([90,0], wrappedPolygon), false);
+assert.equal(pointInGeometry([-90,0], wrappedPolygon), false);
 
 const distance = haversineDistanceKm([179, 0], [-179, 0]);
 assert.ok(distance > 200 && distance < 225, `expected about 222 km across dateline, got ${distance}`);
