@@ -70,10 +70,9 @@
 **Next:** add keyboard navigation, focus return, small-viewport occlusion and modal/menu regressions.
 
 ### WM-011 · Reduced-motion behavior incomplete — P2
-**Status:** partially fixed (2026-09-20).  
-**Completed:** shared Motion policy exists and major country/place/subdivision/ADL/Axis consumers use it; reduced-motion CSS and regression coverage exist.  
-**Remaining defect:** capital focus in Hover and Spatial Overlay fit still call raw MapLibre camera methods and therefore bypass the policy.  
-**Next:** migrate those residual camera consumers and make raw user-visible camera calls validator failures outside the Motion owner.
+**Status:** fixed for known user-visible camera consumers on main (2026-09-20).  
+**Resolution:** shared Motion policy owns major country/place/subdivision/ADL/Axis transitions plus capital focus and Spatial Overlay fit; reduced-motion CSS and regression coverage exist.  
+**Guard:** validator rejects raw `map.easeTo(` / `map.fitBounds(` calls in governed camera consumers outside the Motion owner.
 
 ### WM-012 · Color-only semantics remain possible — P2
 **Status:** open.  
