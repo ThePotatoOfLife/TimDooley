@@ -2206,6 +2206,112 @@
       "status_note": "Lolcow is an attributed/subcultural role label, not an objective essence; the archive must preserve exit and declassification.",
       "evidence_note": "Track who applies the label, what behavior/attention loop supports it, how long it persists, and whether correction or role exit is recognized.",
       "maturity": "case-ready"
+    },
+    {
+      "id": "potatoverse-social-season-2024-2025",
+      "label": "Potatoverse Social Season · Nov 2024–Apr 2025",
+      "kind": "historical-social-context",
+      "room_ids": [
+        "memory-recovery",
+        "chronology-events",
+        "developmental-genealogy",
+        "subculture-group-formation",
+        "internet-platforms",
+        "canon-identities"
+      ],
+      "route": "/tim-dooley/story/#potatoverse-social-room-2024-11-03",
+      "summary": "Recovered social season spanning games, voice chat, Great Book discussion, theology, cooking, music, moderation, reconciliation, Tree/Garden boundaries, grief, TTS/HTML work and movement through new online spaces into the April 2025 Turning corridor.",
+      "status_note": "Built primarily from a dated authored Chronicle and later routed into stronger owners; it is not a verbatim transcript season.",
+      "evidence_note": "Chronicle co-presence and dates are recovery evidence; dialogue, motives and allegations require closer source recovery.",
+      "maturity": "described",
+      "facets": {
+        "timeline": [
+          {
+            "date": "2024-11-03",
+            "event": "Dense Tanks/voice-chat/Great Book social snapshot.",
+            "status": "Chronicle recovery"
+          },
+          {
+            "date": "2024-12-04",
+            "event": "Tree recorded as separate social space.",
+            "status": "Chronicle recovery"
+          },
+          {
+            "date": "2024-12-07",
+            "event": "Reconciliation/trust-repair day.",
+            "status": "Chronicle recovery"
+          },
+          {
+            "date": "2025-01-29",
+            "event": "Marty death date corrected by funeral-home obituary.",
+            "status": "externally corrected date"
+          },
+          {
+            "date": "2025-03-12",
+            "event": "HTML/TTS/interactive Great Book creation wave.",
+            "status": "Chronicle recovery"
+          },
+          {
+            "date": "2025-04-08 to 2025-04-13",
+            "event": "Empire → Fishtank → Tree movement before April Turning.",
+            "status": "Chronicle recovery; primary invites/log missing"
+          }
+        ],
+        "sources": [
+          {
+            "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+            "role": "day-level social owner",
+            "evidence_class": "recovered synthesis"
+          },
+          {
+            "source_ref": "knowledge/indexes/social-presence-memory-integration-2024-2025.json",
+            "role": "promotion/routing spine",
+            "evidence_class": "archive method"
+          },
+          {
+            "source_ref": "knowledge/story/turning-corridor-chronicle-recovery-2025.json",
+            "role": "March-April corridor owner",
+            "evidence_class": "recovered synthesis"
+          }
+        ],
+        "relationships": [
+          {
+            "type": "contains",
+            "target_id_or_label": "Marty / Termite / Optimistique / Zombie Dad / Rahu / Tree / livestream",
+            "direction": "outgoing",
+            "status": "dated social co-presence",
+            "boundary": "Co-presence does not imply shared motive or permanent alliance."
+          },
+          {
+            "type": "develops-into",
+            "target_id_or_label": "April 2025 Turning corridor",
+            "direction": "outgoing",
+            "status": "developmental bridge",
+            "boundary": "Later mythic interpretation is not backdated into ordinary events."
+          }
+        ],
+        "flows": [
+          {
+            "flow_type": "social-presence",
+            "input": "voice chat / games / chat / collaborative streams",
+            "mechanism": "repeated co-presence + shared artifacts + moderation + movement between spaces",
+            "output": "durable community memory and later narrative roles",
+            "measurement_or_limit": "Chronicle frequency is not equivalent to full platform participation data."
+          }
+        ],
+        "questions": [
+          {
+            "question": "Which raw logs survive behind the highest-value Chronicle days?",
+            "why_it_matters": "Would convert remembered topology into closer documentary history.",
+            "needed_evidence": "Discord/YouTube logs, screenshots, VODs, server records"
+          },
+          {
+            "question": "Which March 2025 TTS/HTML artifacts survive?",
+            "why_it_matters": "Would directly connect early interactive experiments to later site architecture.",
+            "needed_evidence": "HTML files, screenshots, TTS code/output, project folders"
+          }
+        ]
+      }
     }
   ],
   "source_records": [
