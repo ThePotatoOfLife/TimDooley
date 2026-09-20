@@ -155,7 +155,8 @@ def build_report(records,findings,ownership):
     for row in records: inv[row["kind"]].append(row)
     inventory={k:sorted(v,key=lambda r:(r["resource"],r["module"],r["line"])) for k,v in sorted(inv.items())}; domains={d:0 for d in RISK_DOMAINS}
     for item in findings: domains[item["domain"]]=domains.get(item["domain"],0)+RISK_WEIGHTS.get(item["severity"],0)
-    summary={"modules":len({r["module"] for r in records}),"resources":len(ownership),"errors":sum(i["severity"]=="error" for i in findings),"warnings":sum(i["severity"]=="warning" for i in findings),"notes":sum(i["severity"]=="note" for i in findings),"risk_score":min(100,sum(domains.values()))}; actions=[{"domain":d,"risk":s} for d,s in sorted(domains.items(),key=lambda p:(-p[1],p[0])) if s>0][:5]
+    unmapped_actionable=sum(i["severity"] in {"error","warning"} and not i.get("queue_id") for i in findings)
+    summary={"modules":len({r["module"] for r in records}),"resources":len(ownership),"errors":sum(i["severity"]=="error" for i in findings),"warnings":sum(i["severity"]=="warning" for i in findings),"notes":sum(i["severity"]=="note" for i in findings),"unmapped_actionable":unmapped_actionable,"risk_score":min(100,sum(domains.values()))}; actions=[{"domain":d,"risk":s} for d,s in sorted(domains.items(),key=lambda p:(-p[1],p[0])) if s>0][:5]
     return {"schema_version":SCHEMA_VERSION,"generated_at":datetime.now(timezone.utc).isoformat(),"scope":"world-map","summary":summary,"inventory":inventory,"ownership":{k:ownership[k] for k in sorted(ownership)},"findings":findings,"risk_domains":dict(sorted(domains.items())),"next_actions":actions}
 def parse_args(argv=None):
     p=argparse.ArgumentParser(); root=Path(__file__).resolve().parents[1]; p.add_argument("--root",type=Path,default=root); p.add_argument("--contract",type=Path); p.add_argument("--report",type=Path); return p.parse_args(argv)
@@ -166,9 +167,9 @@ def main(argv=None):
         for path in modules: records.extend(scan_module(path,root))
         records.sort(key=lambda r:(r["resource"],r["module"],r["line"],r["kind"])); contract=load_contract(contract_path); findings,ownership=analyze(records,contract,{p.relative_to(root).as_posix() for p in modules}); report=build_report(records,findings,ownership); report_path.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     except (OSError,ValueError,json.JSONDecodeError) as exc: print(f"WORLD MAP ARCHITECTURE AUDIT FAILED TO RUN: {exc}",file=sys.stderr); return 2
-    s=report["summary"]; print(f"WORLD MAP ARCHITECTURE AUDIT {'FAILED' if s['errors'] else 'PASSED'} · {s['modules']} modules · {s['resources']} resources · {s['errors']} errors · {s['warnings']} warnings · risk {s['risk_score']}")
+    s=report["summary"]; failed=bool(s["errors"] or s.get("unmapped_actionable")); print(f"WORLD MAP ARCHITECTURE AUDIT {'FAILED' if failed else 'PASSED'} · {s['modules']} modules · {s['resources']} resources · {s['errors']} errors · {s['warnings']} warnings · {s.get('unmapped_actionable',0)} unmapped · risk {s['risk_score']}")
     for item in report["findings"][:12]:
         queue=f" · {item['queue_id']} · {item['owner']}" if item.get("queue_id") else ""
         print(f"- {item['severity'].upper()} {item['code']}{queue}: {item['message']}")
-    return 1 if s["errors"] else 0
+    return 1 if failed else 0
 if __name__=="__main__": raise SystemExit(main())
