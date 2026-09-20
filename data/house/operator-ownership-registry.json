@@ -1,0 +1,457 @@
+{
+  "id": "operator-ownership-registry",
+  "title": "Operator Ownership Registry — One Definition, Many Views",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "status": "canonical routing and consolidation registry",
+  "purpose": "Consolidate the repository's recurring Potato operators by assigning one durable definition/contract owner, then routing specialist atlases, research comparisons, archaeology/provenance and public views underneath that owner. Prevent filename proliferation from becoming ontology proliferation.",
+  "research_principles": [
+    {
+      "principle": "chart-not-whole",
+      "statement": "A projection/view can reveal a real part of an object without being the object itself. Multiple compatible views may cover one underlying structure.",
+      "comparator": "mathematical manifold atlas / local charts",
+      "source": "https://encyclopediaofmath.org/wiki/Differentiable_manifold",
+      "project_use": "House, Body, Tree, City, Plane and other Views remain projections over canonical owners rather than rival ontologies."
+    },
+    {
+      "principle": "provenance-before-promotion",
+      "statement": "Derived entities should retain the entities/activities from which they were produced.",
+      "comparator": "W3C PROV",
+      "source": "https://www.w3.org/TR/prov-primer/",
+      "project_use": "Research synthesis and reader pages must point back to canonical/specialist/source owners instead of copying claims without lineage."
+    }
+  ],
+  "file_role_precedence": [
+    "canonical_contract",
+    "canonical_definition_owner",
+    "specialist_owner",
+    "research_comparator",
+    "timeline_or_archaeology",
+    "reader_projection",
+    "temporary_wave"
+  ],
+  "families": [
+    {
+      "id": "whole-and-fields",
+      "operators": [
+        {
+          "id": "potato-of-life",
+          "canonical_definition_owner": "knowledge/core/deep-element-definition-atlas.json",
+          "canonical_contract_owner": "data/house/topology.json",
+          "specialist_owners": [
+            "knowledge/core/potato-of-life-deep-structure.json",
+            "knowledge/core/potatoverse-master-framework.json"
+          ],
+          "public_views": [
+            "potato-of-life/index.html",
+            "house/index.html"
+          ],
+          "merge_rule": "Global semantic whole; no specialist may redefine it as one circle, one Room, one body organ or one empirical object."
+        },
+        {
+          "id": "source-field",
+          "canonical_definition_owner": "data/house/topology.json",
+          "canonical_contract_owner": "data/house/topology.json",
+          "specialist_owners": [
+            "data/house/upper-plane-population-atlas.json",
+            "knowledge/core/heaven-spirit-father.json"
+          ],
+          "public_views": [
+            "potato-of-life/index.html",
+            "house/index.html"
+          ],
+          "merge_rule": "Own source/pattern/integration/potential semantics; upper population adds inhabitants but not a new field definition."
+        },
+        {
+          "id": "manifestation-field",
+          "canonical_definition_owner": "data/house/topology.json",
+          "canonical_contract_owner": "data/house/topology.json",
+          "specialist_owners": [
+            "data/house/lower-plane-population-atlas.json",
+            "knowledge/core/vertical-potato-mountain-plane-atlas.json"
+          ],
+          "public_views": [
+            "potato-of-life/index.html",
+            "below/index.html",
+            "house/index.html"
+          ],
+          "merge_rule": "Own embodiment/actuality/history/consequence semantics. Below/Swamp is a deeper projection, never the entire field."
+        }
+      ]
+    },
+    {
+      "id": "centers-and-interface",
+      "operators": [
+        {
+          "id": "three-centers",
+          "canonical_definition_owner": "data/house/three-center-role-atlas.json",
+          "canonical_contract_owner": "data/house/project-center.json",
+          "specialist_owners": [
+            "data/house/center-relational-ontology.json",
+            "knowledge/theology/father-son-door-reciprocity.json"
+          ],
+          "public_views": [
+            "potato-of-life/index.html",
+            "religion/trinity/index.html",
+            "house/index.html"
+          ],
+          "merge_rule": "C_F/O/C_S are typed coordinates. Person/archetype anchors do not convert role correspondence into identity."
+        },
+        {
+          "id": "door",
+          "canonical_definition_owner": "knowledge/core/deep-element-definition-atlas.json",
+          "canonical_contract_owner": "data/house/concept-topology.json",
+          "specialist_owners": [
+            "knowledge/core/door-topology-access-and-capability-atlas.json",
+            "data/house/plane-crossing-contract.json",
+            "knowledge/theology/father-son-door-reciprocity.json"
+          ],
+          "research_comparators": [
+            "knowledge/science/door-window-screen-aperture-transition-model.json",
+            "docs/DOOR-MANDORLA-VESICA-PISCIS-ATLAS.md"
+          ],
+          "timeline_or_archaeology": [
+            "knowledge/timeline/conversation-archaeology-wave-009-door-embodiments.json"
+          ],
+          "public_views": [
+            "potato-of-life/index.html",
+            "axis/index.html",
+            "religion/trinity/index.html"
+          ],
+          "merge_rule": "General state-transition law belongs to the canonical owner; physical, religious, UI and body Doors remain typed specialist embodiments."
+        },
+        {
+          "id": "rim-boundary",
+          "canonical_definition_owner": "knowledge/research/circle-field-research-synthesis-2026-09-20.json",
+          "canonical_contract_owner": "data/house/topology.json",
+          "specialist_owners": [
+            "data/house/interfaces.json",
+            "knowledge/science/house-shell-boundary-permeability-model.json"
+          ],
+          "public_views": [
+            "potato-of-life/index.html"
+          ],
+          "merge_rule": "Rim owns selective-boundary semantics. Guardian, membrane, law, consent and evidence threshold are comparators/instances, not synonyms."
+        }
+      ]
+    },
+    {
+      "id": "plane-axis-cross",
+      "operators": [
+        {
+          "id": "plane",
+          "canonical_definition_owner": "knowledge/core/deep-element-definition-atlas.json",
+          "canonical_contract_owner": "data/house/plane-crossing-contract.json",
+          "specialist_owners": [
+            "knowledge/core/vertical-potato-mountain-plane-atlas.json",
+            "data/axis-flow-contract.json",
+            "data/house/tree-plane-routing.json"
+          ],
+          "research_comparators": [
+            "knowledge/research/plane-crossing-research-synthesis-2026-09-20.json"
+          ],
+          "public_views": [
+            "potato-of-life/index.html",
+            "axis/index.html",
+            "world-map/index.html"
+          ],
+          "merge_rule": "Plane is frame/section. No file may redefine it as a realm, entire World, entire lower field or universal physical Now."
+        },
+        {
+          "id": "axis",
+          "canonical_definition_owner": "knowledge/core/deep-element-definition-atlas.json",
+          "canonical_contract_owner": "data/axis-flow-contract.json",
+          "specialist_owners": [
+            "knowledge/core/axis-world-model.json",
+            "data/axis-model.json",
+            "data/axis-operators.json",
+            "data/axis-topology.json"
+          ],
+          "research_comparators": [
+            "knowledge/research/axis-relational-cosmology-deep-synthesis-2026-09-10.md",
+            "knowledge/science/axis-11d-sun-spiral-time-symmetry-recovery.json"
+          ],
+          "public_views": [
+            "axis/index.html",
+            "potato-of-life/index.html"
+          ],
+          "merge_rule": "Axis owns orientation/order. Tree, Ladder, spine, North and physical axes are specialist projections/comparators."
+        },
+        {
+          "id": "cross-point",
+          "canonical_definition_owner": "data/house/plane-crossing-contract.json",
+          "canonical_contract_owner": "data/house/plane-crossing-contract.json",
+          "specialist_owners": [
+            "data/house/concept-topology.json",
+            "knowledge/core/vertical-potato-mountain-plane-atlas.json"
+          ],
+          "public_views": [
+            "potato-of-life/index.html",
+            "axis/index.html"
+          ],
+          "merge_rule": "O=Axis∩Plane. Do not conflate point O with Cross-sign, Door, Christian Cross or whole present."
+        },
+        {
+          "id": "cross-sign",
+          "canonical_definition_owner": "data/house/plane-crossing-contract.json",
+          "canonical_contract_owner": "data/house/concept-topology.json",
+          "specialist_owners": [
+            "knowledge/science/research-notes/2026-09-11-cross-theory-research-program.json"
+          ],
+          "public_views": [
+            "potato-of-life/index.html",
+            "axis/index.html"
+          ],
+          "merge_rule": "Cross-sign is visual/relational projection of Axis plus lateral line in Plane; historical Christian Cross meanings remain tradition-owned."
+        },
+        {
+          "id": "crossing-event",
+          "canonical_definition_owner": "data/house/plane-crossing-contract.json",
+          "canonical_contract_owner": "data/house/concept-topology.json",
+          "specialist_owners": [
+            "knowledge/research/plane-crossing-research-synthesis-2026-09-20.json"
+          ],
+          "public_views": [
+            "potato-of-life/index.html",
+            "timeline/index.html"
+          ],
+          "merge_rule": "Crossing is an event. Plane intersection alone is weaker than a Door transition; record pre/post state and guards."
+        }
+      ]
+    },
+    {
+      "id": "time-continuity",
+      "operators": [
+        {
+          "id": "here-now",
+          "canonical_definition_owner": "data/house/center-relational-ontology.json",
+          "canonical_contract_owner": "data/house/concept-topology.json",
+          "specialist_owners": [
+            "data/house/mind-body-spirit-time-axis.json",
+            "knowledge/theology/father-son-door-reciprocity.json"
+          ],
+          "timeline_or_archaeology": [
+            "knowledge/corporium/tim-statements-conversation-recovery-wave-006-2026-09-15.json"
+          ],
+          "public_views": [
+            "potato-of-life/index.html",
+            "religion/trinity/index.html"
+          ],
+          "merge_rule": "Here/Now is operative present at O in the active frame. It is not the entire Plane or a claim of universal physical simultaneity."
+        },
+        {
+          "id": "spirit",
+          "canonical_definition_owner": "knowledge/core/deep-element-definition-atlas.json",
+          "canonical_contract_owner": "data/house/mind-body-spirit-time-axis.json",
+          "specialist_owners": [
+            "knowledge/spirit/spirit-context-atlas.json",
+            "knowledge/core/heaven-spirit-father.json",
+            "knowledge/body/neurotheology-axis-house-spirit-atlas.json"
+          ],
+          "public_views": [
+            "potato-of-life/spirit/index.html",
+            "religion/trinity/index.html",
+            "axis/index.html"
+          ],
+          "merge_rule": "Spirit owns living continuity/flow relation; no single bodily carrier or geometry replaces it."
+        },
+        {
+          "id": "ladder",
+          "canonical_definition_owner": "knowledge/core/deep-element-definition-atlas.json",
+          "canonical_contract_owner": "data/house/concept-topology.json",
+          "specialist_owners": [
+            "knowledge/core/vertical-potato-mountain-plane-atlas.json",
+            "data/axis-flow-contract.json"
+          ],
+          "public_views": [
+            "axis/index.html",
+            "religion/index.html"
+          ],
+          "merge_rule": "Ladder is an ordered chain of meaningful transitions; not Axis itself and not a literal physical dimension by default."
+        },
+        {
+          "id": "spiral",
+          "canonical_definition_owner": "knowledge/core/deep-element-definition-atlas.json",
+          "canonical_contract_owner": "data/house/seed-spiral-routing.json",
+          "specialist_owners": [
+            "knowledge/science/recurrence-orbit-spiral-dynamics-atlas.json",
+            "knowledge/cosmology/axis-spiral-root.json"
+          ],
+          "research_comparators": [
+            "knowledge/research/spiral-relational-geometry-2026-09-11.md",
+            "knowledge/science/sacred-geometry-solids-spirals-and-phyllotaxis-atlas.json"
+          ],
+          "timeline_or_archaeology": [
+            "knowledge/science/april-21-2025-potato-axis-spiral-primary-recovery.json"
+          ],
+          "public_views": [
+            "axis/index.html",
+            "science/axis-11d-sun-spiral/index.html"
+          ],
+          "merge_rule": "Spiral means recurrence with meaningful state change. Golden/Fibonacci/helix/vortex models are specific specialist forms, not the definition."
+        }
+      ]
+    },
+    {
+      "id": "organic-metabolism",
+      "operators": [
+        {
+          "id": "root",
+          "canonical_definition_owner": "knowledge/core/root-system.json",
+          "canonical_contract_owner": "data/house/concept-topology.json",
+          "specialist_owners": [
+            "knowledge/core/deep-element-definition-atlas.json",
+            "knowledge/cosmology/axis-spiral-root.json"
+          ],
+          "public_views": [
+            "potato-of-life/index.html",
+            "history/index.html"
+          ],
+          "merge_rule": "Root owns provenance/support/resource continuity. Root location, source-origin and moral value are separate dimensions."
+        },
+        {
+          "id": "seed",
+          "canonical_definition_owner": "knowledge/core/deep-element-definition-atlas.json",
+          "canonical_contract_owner": "data/house/seed-spiral-routing.json",
+          "specialist_owners": [
+            "knowledge/theology/food-body-knowledge-seed-genealogy.json",
+            "data/house/foundation-door-seed-genealogy.json"
+          ],
+          "public_views": [
+            "potato-of-life/index.html"
+          ],
+          "merge_rule": "Seed is transferable/latent future capacity. Biological seed, grain, tuber eye and symbolic Seed stay typed."
+        },
+        {
+          "id": "tree",
+          "canonical_definition_owner": "knowledge/core/deep-element-definition-atlas.json",
+          "canonical_contract_owner": "data/house/tree-plane-routing.json",
+          "specialist_owners": [
+            "knowledge/core/tree-branching-pruning-atlas.json",
+            "knowledge/traditions/tree-family-crosswalk-atlas.json",
+            "knowledge/world/farm-swamp-tree-of-strife-atlas.json"
+          ],
+          "public_views": [
+            "potato-of-life/index.html",
+            "religion/index.html"
+          ],
+          "merge_rule": "Tree owns regulated differentiation. Tree of Life, Knowledge, Strife, world trees and literal botany are separate typed subfamilies."
+        },
+        {
+          "id": "garden",
+          "canonical_definition_owner": "knowledge/core/deep-element-definition-atlas.json",
+          "canonical_contract_owner": "data/house/layer-terrain-regime-atlas.json",
+          "specialist_owners": [
+            "knowledge/core/garden-regime-mechanics.json",
+            "knowledge/core/garden-mud-orientation.json",
+            "knowledge/science/garden-farm-control-network-model.json"
+          ],
+          "public_views": [
+            "potato-of-life/index.html",
+            "house/index.html"
+          ],
+          "merge_rule": "Garden is a generative regime, not simply an upper location or effortless paradise."
+        },
+        {
+          "id": "below-swamp",
+          "canonical_definition_owner": "knowledge/core/below-intelligence-shadow-observatory.json",
+          "canonical_contract_owner": "data/house/lower-plane-population-atlas.json",
+          "specialist_owners": [
+            "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+            "knowledge/core/swamp-mud-mountain-debt-relational-model.json",
+            "data/house/below-basin-spatial-contract.json"
+          ],
+          "public_views": [
+            "below/index.html"
+          ],
+          "merge_rule": "Below is depth/intelligence/shadow projection; Swamp is an entanglement regime/terrain; neither equals the whole lower Manifestation Field."
+        }
+      ]
+    },
+    {
+      "id": "projections-and-provenance",
+      "operators": [
+        {
+          "id": "projection",
+          "canonical_definition_owner": "data/house/projections.json",
+          "canonical_contract_owner": "data/house/projections.json",
+          "specialist_owners": [
+            "data/house/orientation-population.json",
+            "data/house/public-surfaces.json"
+          ],
+          "research_comparators": [
+            "knowledge/research/circle-field-research-synthesis-2026-09-20.json"
+          ],
+          "merge_rule": "Views are lossy charts over owners. A useful projection may omit dimensions but may not silently change evidence, identity or ownership."
+        },
+        {
+          "id": "provenance",
+          "canonical_definition_owner": "knowledge/philosophy/archive-epistemics.json",
+          "canonical_contract_owner": "data/house/interfaces.json",
+          "specialist_owners": [
+            "knowledge/indexes/source-index.json",
+            "data/timeline-source-registry.json"
+          ],
+          "research_comparators": [
+            "https://www.w3.org/TR/prov-primer/"
+          ],
+          "merge_rule": "Every synthesis should remain traversable to source entities/activities and distinguish derivation from corroboration."
+        }
+      ]
+    }
+  ],
+  "pressure_zones_from_inventory": [
+    {
+      "keyword": "axis",
+      "approx_filename_hits": 51,
+      "action": "route to axis canonical contract + specialist subtypes; do not create new generic Axis masters"
+    },
+    {
+      "keyword": "door",
+      "approx_filename_hits": 33,
+      "action": "generic Door law stays centralized; physical/religious/science embodiments remain specialists"
+    },
+    {
+      "keyword": "spiral",
+      "approx_filename_hits": 22,
+      "action": "protect recurrence-with-change definition; distinguish geometry, dynamics, archaeology and reader views"
+    },
+    {
+      "keyword": "tree",
+      "approx_filename_hits": 19,
+      "action": "keep Tree family typed: biology, Life, Knowledge, Strife, world-tree, archive-tree"
+    },
+    {
+      "keyword": "swamp",
+      "approx_filename_hits": 19,
+      "action": "separate terrain/regime from case datasets and public Below projection"
+    },
+    {
+      "keyword": "plane",
+      "approx_filename_hits": 10,
+      "action": "new Plane contract resolves section/frame ownership and should absorb generic definitions"
+    },
+    {
+      "keyword": "vesica",
+      "approx_filename_hits": 9,
+      "action": "exact geometry owner should remain separate from art-historical/esoteric interpretations"
+    }
+  ],
+  "promotion_rules": [
+    "If a specialist file discovers a general law, promote only that law into the canonical owner and keep examples/provenance in the specialist.",
+    "If two files contain the same general definition, the non-owner should replace the duplicate definition with an owner pointer plus its unique specialization.",
+    "If a research wave has no unique source/provenance after promotion, mark it provenance-only/absorbed before considering archival movement.",
+    "If a public page introduces a new definition, route it back to an owner before treating it as canon.",
+    "If two Views conflict, inspect their frame/scale/question first; disagreement may be projection-relative rather than ontological.",
+    "Never resolve symbolic/scientific conflict by allowing the symbolic owner to overwrite empirical domain owners."
+  ],
+  "connections": [
+    "knowledge/indexes/project-consolidation-map.json",
+    "data/house/navigation-manifest.json",
+    "data/house/structural-census.json",
+    "data/house/projections.json",
+    "data/house/holdings.json",
+    "data/house/data-holdings.json",
+    "knowledge/indexes/core-index.json"
+  ]
+}
