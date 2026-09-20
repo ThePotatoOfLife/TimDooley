@@ -13,6 +13,8 @@ const title = s => String(s || '').replaceAll('_', ' ').replace(/\b\w/g, m => m.
 const emptyFC = () => ({type:'FeatureCollection', features:[]});
 const geoKernel = window.__potatoAtlasGeo;
 if (!geoKernel?.antimeridianAwareBounds) throw new Error('World Map geospatial kernel unavailable.');
+const motion = window.__potatoAtlasMotion;
+if (!motion?.easeTo || !motion?.fitBounds) throw new Error('World Map motion policy unavailable.');
 
 const status = $('#status');
 function setStatus(message, kind='info') {
@@ -274,7 +276,7 @@ function fitCodes(codes,padding=55) {
   let bounds;
   try{bounds=geoKernel.antimeridianAwareBounds(geometries,Number.isFinite(referenceLng)?referenceLng:null)}
   catch{return}
-  map.fitBounds([[bounds.west,bounds.south],[bounds.east,bounds.north]],{padding,pitch:Math.min(map.getPitch(),45),duration:650,maxZoom:6});
+  motion.fitBounds(map, [[bounds.west,bounds.south],[bounds.east,bounds.north]], {padding,pitch:Math.min(map.getPitch(),45),duration:650,maxZoom:6});
 }
 function setState(code,key,value){if(!code)return;try{map.setFeatureState({source:'countries',id:code},{[key]:value})}catch{}}
 function clearCompareStates(){for(const c of compareCodes)setState(c,'compare',false)}
@@ -315,7 +317,7 @@ function deselectCountry({keepView=true,clearCompare=false}={}){
   if(clearCompare){clearCompareStates();compareCodes=[];compareMode=false;$('#compare').classList.remove('active')}
   updateSpatial();updateUrl();
   $('#panel').innerHTML='<div class="eyebrow">World mode</div><h1>World Relational Atlas</h1><p class="muted">Select a country to reveal its stable action dock. Detailed country modules stay off-map until requested.</p>';
-  if(!keepView)map.easeTo({center:[5,24],zoom:1.5,pitch:0,bearing:0,duration:650});
+  if(!keepView)motion.easeTo(map,{center:[5,24],zoom:1.5,pitch:0,bearing:0,duration:650});
   emitSelectionChange('cleared');
 }
 async function selectFeature(f,fly=false,{toggle=false}={}){
@@ -426,7 +428,7 @@ $('#relationType').onchange=e=>{relationType=e.target.value;updateSpatial();if(c
 $('#traceDepth').onchange=e=>{traceDepth=Math.max(1,Math.min(TRACE_MAX_DEPTH,Number(e.target.value)||1));updateSpatial();if(selected&&!compareMode)renderCountry();updateUrl()};
 $('#fit').onclick=()=>compareMode?window.fitCompare():selected&&traceDepth>1?window.fitTrace():window.fitCountry();
 $('#compare').onclick=()=>{if(compareMode){window.leaveCompare();return}compareMode=true;$('#compare').classList.add('active');if(selected&&!compareCodes.includes(selected)){compareCodes.push(selected);setState(selected,'compare',true);setState(selected,'selected',false)}updateSpatial();renderCompare();updateUrl()};
-$('#tilt').onclick=()=>map.easeTo({pitch:map.getPitch()>20?0:55,duration:500});
+$('#tilt').onclick=()=>motion.easeTo(map,{pitch:map.getPitch()>20?0:55,duration:500});
 $('#globe').onclick=()=>{globe=!globe;try{map.setProjection({type:globe?'globe':'mercator'});$('#globe').classList.toggle('active',globe)}catch(e){console.warn(e)}};
 $('#world').onclick=()=>resetWorld(true);
 $('#search').addEventListener('keydown',async e=>{if(e.key!=='Enter')return;const r=findCountry(e.target.value);if(!r)return;const f=featureByCode(r.cca3);if(f){if(compareMode)await toggleCompareCountry(r.cca3);else await selectFeature(f,true)}});
