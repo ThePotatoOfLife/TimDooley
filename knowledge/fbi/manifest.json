@@ -2,7 +2,7 @@
   "id": "fbi-figures-bonds-incidents",
   "title": "FBI — Figures, Bonds & Incidents",
   "subtitle": "Tim Dooley / Potatoverse Character Dossier Bureau",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-20",
   "disclaimer": "Potatoverse archival acronym. Not affiliated with the U.S. Federal Bureau of Investigation or any real law-enforcement or intelligence service.",
   "purpose": "Persistent dossiers for recurring people and characters, their relationships, dated incidents, source strata, archetypes, symbolic roles, Story links and recovery leads.",
@@ -20,6 +20,23 @@
     "incidents": "knowledge/fbi/incidents/"
   },
   "figures": [
+    {
+      "id": "tim-dooley",
+      "name": "Tim Dooley",
+      "aliases": [
+        "Tim Dooley"
+      ],
+      "path": "knowledge/fbi/figures/tim-dooley.json",
+      "room_path": "tim-dooley/",
+      "archive_status": "active",
+      "chronicle_occurrence_count": 76,
+      "archetypes": [
+        "center-axis",
+        "gardener-sage",
+        "chronicler-archivist"
+      ],
+      "depth_tier": "center-file"
+    },
     {
       "id": "marty-biz",
       "name": "Marty Biz Music",
@@ -629,10 +646,12 @@
   "coverage_tiers": {
     "case-file": "Multiple dated/source/story connections; mature enough for deep browsing.",
     "working-file": "Recurring figure with meaningful chronology but incomplete recovery.",
-    "index-card": "Recurring name retained for discoverability while evidence remains sparse."
+    "index-card": "Recurring name retained for discoverability while evidence remains sparse.",
+    "center-file": "Central archive subject; topology only, never a suspicion label."
   },
   "coverage_summary": {
-    "total_figures": 33,
+    "total_figures": 34,
+    "center_files": 1,
     "case_files": 21,
     "working_files": 11,
     "index_cards": 1
