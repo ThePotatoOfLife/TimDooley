@@ -41,6 +41,7 @@ def main()->int:
         "policy.localNameZoom",
         "['has','local_name']",
         "['concat',['get','name'],'\\n',['get','local_name']]",
+        "['concat',['coalesce',['get','name'],['get','code']],'\\n',['get','local_name']]",
         "'text-allow-overlap':true",
         "window.addEventListener?.('resize', syncLabelPresentation)",
         "window.addEventListener?.('potato-atlas-projection-change', syncLabelPresentation)",
@@ -50,6 +51,8 @@ def main()->int:
         errors.append("narrow-screen label policy must adjust presentation zoom without changing shared capability thresholds")
     if "syncSelectedLabel(selectedId)" not in runtime or "syncSelectedLabel(null)" not in runtime:
         errors.append("selected-label filter must follow select and clear lifecycle")
+    if "['concat',['coalesce',['get','name'],['get','code']],'\\n',['get','local_name']]" not in runtime:
+        errors.append("selected label must preserve local name when available")
 
     node=shutil.which("node")
     if not node:
