@@ -117,6 +117,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
         ("UI geometry and investigation", [
             "python scripts/validate_world_map_ui_layout.py",
             "python scripts/validate_world_map_spatial_overlays.py",
+            "python scripts/validate_world_map_conflict_snapshots.py",
             "python scripts/validate_world_map_palestine.py",
             "python scripts/validate_world_map_pathfinder_source.py",
             "python scripts/validate_world_map_investigation_utility.py",
