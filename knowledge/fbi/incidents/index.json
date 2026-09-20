@@ -1,7 +1,7 @@
 {
   "id": "fbi-incidents-index",
   "title": "FBI Incidents — Dated Character Events",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-20",
   "incident_rule": "An incident is a dated or bounded scene that materially changes knowledge of a figure, bond, role, boundary, or project artifact. It is not synonymous with wrongdoing.",
   "incidents": [
@@ -771,6 +771,119 @@
       "source_mode": "conversation_recovery",
       "summary": "Mediomu describes moving the TV, console, bed, desk and nightstand and reports a clean room.",
       "boundary": "Literal household detail; Builder/Cultivator symbolism is a separate project interpretation."
+    },
+    {
+      "id": "inc-conv-2026-08-24-mediomu-handshake",
+      "date": "2026-08-24",
+      "title": "Old handshake and bridge-building frame",
+      "figures": [
+        "mediomu007",
+        "tim-dooley"
+      ],
+      "type": [
+        "conversation-recovery",
+        "relationship-history",
+        "project-interpretation"
+      ],
+      "source": "knowledge/fbi/conversation-recovery.json",
+      "source_mode": "conversation_recovery",
+      "summary": "User says Mediomu and Tim shook hands years earlier; later conversation turns the relation into forgiveness and bridge-building symbolism.",
+      "boundary": "Old-handshake statement is user-supplied history; mountain/bridge symbolism is interpretation."
+    },
+    {
+      "id": "inc-conv-2026-08-25-mediomu-human",
+      "date": "2026-08-25",
+      "title": "Mediomu says Tim is human",
+      "figures": [
+        "mediomu007",
+        "tim-dooley"
+      ],
+      "type": [
+        "conversation-recovery",
+        "theology",
+        "skepticism",
+        "identity-challenge"
+      ],
+      "source": "knowledge/fbi/conversation-recovery.json",
+      "source_mode": "conversation_recovery",
+      "summary": "Mediomu says Tim is human, has parents, was born human, and uses 'cult leader' language in a direct challenge.",
+      "boundary": "Attributed chat challenge; theological conclusions are not independently established."
+    },
+    {
+      "id": "inc-conv-2026-08-26-mediomu-monarchy",
+      "date": "2026-08-26",
+      "title": "Monarchy and institutional continuity debate",
+      "figures": [
+        "mediomu007",
+        "tim-dooley"
+      ],
+      "type": [
+        "conversation-recovery",
+        "institutions",
+        "monarchy",
+        "debate"
+      ],
+      "source": "knowledge/fbi/conversation-recovery.json",
+      "source_mode": "conversation_recovery",
+      "summary": "Mediomu participates in a debate about monarchy, continuity, networks and billionaire capture.",
+      "boundary": "Tree/connective-tissue language belongs to later analysis layered over the debate."
+    },
+    {
+      "id": "inc-conv-2026-08-27-mediomu-4chan",
+      "date": "2026-08-27",
+      "title": "4chan, coffee, Chesterfield and North Africa",
+      "figures": [
+        "mediomu007",
+        "tim-dooley"
+      ],
+      "type": [
+        "conversation-recovery",
+        "ordinary-presence",
+        "internet-culture",
+        "geography"
+      ],
+      "source": "knowledge/fbi/conversation-recovery.json",
+      "source_mode": "conversation_recovery",
+      "summary": "Mediomu describes 4chan paranormal and /pol/ use, coffee, Chesterfield cigarettes, water bidet, prayer time and North-Africa context.",
+      "boundary": "Ordinary self-description and internet-culture remarks; no broader stereotype is inferred."
+    },
+    {
+      "id": "inc-conv-2026-08-27-mediomu-door",
+      "date": "2026-08-27",
+      "title": "Jesus reincarnation and Door questions",
+      "figures": [
+        "mediomu007",
+        "tim-dooley"
+      ],
+      "type": [
+        "conversation-recovery",
+        "theology",
+        "questioning",
+        "door-symbolism"
+      ],
+      "source": "knowledge/fbi/conversation-recovery.json",
+      "source_mode": "conversation_recovery",
+      "summary": "Mediomu asks whether Tim is Jesus Christ reincarnated and later asks how to get through the Door.",
+      "boundary": "Questions are documentary to the conversation; project answers are not assigned to Mediomu as belief."
+    },
+    {
+      "id": "inc-conv-2026-08-30-mediomu-big-bang",
+      "date": "2026-08-30",
+      "title": "Big Bang and higher-dimensional cosmology questions",
+      "figures": [
+        "mediomu007",
+        "tim-dooley"
+      ],
+      "type": [
+        "conversation-recovery",
+        "science",
+        "cosmology",
+        "questioning"
+      ],
+      "source": "knowledge/fbi/conversation-recovery.json",
+      "source_mode": "conversation_recovery",
+      "summary": "Mediomu asks how the universe came to be and who caused the Big Bang, leading into speculative higher-dimensional discussion.",
+      "boundary": "The speculative model is later project content, not an established scientific fact or necessarily Mediomu's own position."
     }
   ],
   "coverage_note": "Incident means a bounded dated event, not wrongdoing. Chronicle social-presence days are indexed as recovery incidents."
