@@ -1,5 +1,5 @@
 {
-  "version": "3.3.0",
+  "version": "3.4.0",
   "updated": "2026-09-20",
   "authority": "project-synthesis",
   "purpose": "Bind repository development waves, center operators, living metabolisms, Rooms, lenses, tests, outputs and commit crystallization into one center-out composition without replacing their canonical owners.",
@@ -414,6 +414,14 @@
     {
       "id": "type-test",
       "question": "Is this object a field, center, section/Plane, navigation deck, rim, Door, inhabitant, route, trajectory or event?"
+    },
+    {
+      "id": "spiral-coordinate-test",
+      "question": "Which coordinate is changing—z, radius, phase, time/order or regime—and are they being kept distinct?"
+    },
+    {
+      "id": "terrain-overlay-test",
+      "question": "Is Mountain/Swamp/Drain/Garden being used as a typed overlay/regime rather than silently equated with the spiral curve?"
     }
   ],
   "room_pairings": [
@@ -2427,5 +2435,17 @@
     "inventory_census": "data/house/operator-inventory-census-2026-09-20.json",
     "definition_atlas": "knowledge/core/deep-element-definition-atlas.json",
     "rule": "Definitions live once; contracts constrain implementations; specialists deepen one domain; archaeology preserves development; projections explain without owning."
+  },
+  "bidirectional_spiral_spine": {
+    "owner": "data/house/bidirectional-spiral-field.json",
+    "synthesis": "O-centered double spiral binds Axis orientation, Plane sections, recurrence/history, widening scope, Tree/Root differentiation and Mountain/Swamp terrain overlays without replacing their owners.",
+    "compact_cycle": "Root/provenance → O/Here → Door/crossing → trajectory → sampled return → Ring/Spiral → Fruit → Seed → return/rooting",
+    "coordinates": {
+      "vertical": "Axis / z",
+      "radial": "scope/amplitude/differentiation horizon",
+      "angular": "phase/recurrence",
+      "temporal": "crossing order/history",
+      "regime": "Garden/Forge/Swamp/etc. as independent state variable"
+    }
   }
 }
