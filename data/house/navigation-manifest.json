@@ -1,5 +1,5 @@
 {
-  "version": "3.8.0",
+  "version": "3.9.0",
   "updated": "2026-09-20",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -13,6 +13,16 @@
       "concern": "operator family classification / Door Cross Spiral Tree Swamp",
       "owner": "data/house/operator-family-manifest.json",
       "rule": "Classifies high-frequency operator files into definition/contract, specialist, research, archaeology, benchmark and reader/story roles. A filename containing an operator never grants canonical ownership."
+    },
+    {
+      "concern": "Door Cross Plane Spiral lifecycle",
+      "owner": "data/house/door-cross-spiral-lifecycle.json",
+      "rule": "Owns the full transition lifecycle from prior state through rim/guard, crossing, Here/Now, incorporation, Plane snapshot, recurrence classification, Fruit, Seed and return."
+    },
+    {
+      "concern": "Swamp regime/state semantics",
+      "owner": "data/house/swamp-regime-contract.json",
+      "rule": "Owns generic Swamp entry, persistence, state variables, exit and recovery semantics. Subjects participate in relations/regimes; they are not intrinsically 'Swamp'."
     },
     {
       "concern": "project semantic center / center-out importance",
