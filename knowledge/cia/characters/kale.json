@@ -143,7 +143,7 @@
     "record_type": "character-dossier",
     "presence": {
       "first_recorded": "2024-11-03",
-      "last_recorded": "2024-12-20",
+      "last_recorded": "2025-02-25",
       "rule": "First/last currently recovered dated evidence in this dossier; not lifetime endpoints."
     },
     "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
@@ -156,6 +156,45 @@
       "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
       "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
       "Add relationship edges only when a scene/source supports them."
+    ]
+  },
+  "meaning": {
+    "why_this_file_matters": "Kale provides a grounded intellectual/social counterpoint: philosophical debate, naming/wordplay and ordinary companion scenes recur without requiring a conflict-heavy mythology.",
+    "known": [
+      "4 November 2024 Chronicle material places Kale in the First-Mover debate, answering with cyclic/interconnection language.",
+      "14 November material credits Kale with the 'Ecclesia Solenum' potato-church name.",
+      "Chronicle/social recurrence continues into February 2025."
+    ],
+    "interpretive": [
+      "Grounded enjoyer and seeker/companion are recurring scene-functions, not permanent personality claims.",
+      "The philosophical contributions matter as community thought, even when the exact raw wording is unavailable."
+    ],
+    "unknown": [
+      "Closer transcripts for the First-Mover exchange and church-naming scene remain open.",
+      "The February 2025 appearances need more scene-level extraction."
+    ],
+    "relationship_arc": "ordinary companion → philosophical countervoice → naming/creative participant → later presence",
+    "confidence_note": "High on dated Chronicle recurrence; medium on exact formulations."
+  },
+  "symbolic_account": {
+    "status": "unassessed",
+    "good_karma": "event-ledger",
+    "karmic_debt": "unassessed",
+    "dooley_welfare": {
+      "enabled": false
+    },
+    "outstanding": [],
+    "entries": [
+      {
+        "date": "2024-11-14",
+        "type": "yield",
+        "kind": "naming / creative contribution",
+        "amount_or_scale": "Ecclesia Solenum",
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/character-archive-v2.json",
+        "note": "Chronicle credits Kale with the potato-church naming phrase.",
+        "status": "recorded"
+      }
     ]
   }
 }
