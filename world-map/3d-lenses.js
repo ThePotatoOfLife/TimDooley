@@ -1,3 +1,7 @@
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('legacy-lens', ['lens','lensOption']);
+
 // Color Lens framework for the World Relational Atlas.
 //
 // Exactly one Lens owns country fill color at a time. Selection remains an
@@ -246,15 +250,12 @@ async function applyLens() {
 }
 
 function persist() {
-  const url = new URL(location.href);
-  if (state.id === 'neutral') {
-    url.searchParams.delete('lens');
-    url.searchParams.delete('lensOption');
-  } else {
-    url.searchParams.set('lens', state.id);
-    if (state.option) url.searchParams.set('lensOption', state.option); else url.searchParams.delete('lensOption');
-  }
-  history.replaceState({}, '', url);
+  urlState.patch('legacy-lens', {
+    set:{
+      lens:state.id === 'neutral' ? null : state.id,
+      lensOption:state.id === 'neutral' || !state.option ? null : state.option,
+    },
+  });
 }
 
 function optionConfig(id) {
