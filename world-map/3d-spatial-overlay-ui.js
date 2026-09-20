@@ -2,6 +2,7 @@
 // Layers remains the advanced multi-overlay surface; Analyze gets a quick Geography picker.
 
 const spatial = window.__potatoAtlasSpatialOverlays;
+const inspector = window.__potatoAtlasInspector;
 if (!spatial) throw new Error('Spatial overlay UI requires the spatial overlay runtime.');
 
 const app = document.querySelector('#atlasApp');
@@ -199,7 +200,7 @@ function renderControls() {
   renderGeographyPicker();
 }
 
-async function openInspector(features) {
+async function renderSpatialPanel(features) {
   if (!panel || !features?.length) return;
   const measurements = await measurementPromise;
   if (app) app.classList.remove('panel-collapsed');
@@ -223,6 +224,30 @@ async function openInspector(features) {
     <div class="boundary">Current sovereignty, disputed status, historical reconstruction, scripture, ideological scenarios and Potatoverse sacred geography never share an unlabeled visual meaning.</div>
   </div>`;
   for (const button of panel.querySelectorAll('[data-fit-overlay]')) button.onclick = () => spatial.fit(button.dataset.fitOverlay);
+}
+
+async function openInspector(features) {
+  if (!features?.length) return false;
+  const ids = features.map(feature => String(feature.feature_id || feature.overlay_id || feature.label || '')).filter(Boolean).sort();
+  const id = ids.join('+') || 'spatial-overlay';
+  if (!inspector?.open) { await renderSpatialPanel(features); return true; }
+  const current = inspector.current?.();
+  if (!current) {
+    inspector.setBaseline({
+      type:'spatial-overlay', id, owner:'spatial-overlay-ui',
+      render:() => renderSpatialPanel(features),
+    });
+    await renderSpatialPanel(features);
+    return true;
+  }
+  inspector.open({
+    type:'spatial-overlay',
+    id,
+    owner:'spatial-overlay-ui',
+    parent:{ type:current.type, id:current.id },
+    render:() => renderSpatialPanel(features),
+  });
+  return true;
 }
 
 window.addEventListener('potato-atlas-spatial-overlay-change', event => {
