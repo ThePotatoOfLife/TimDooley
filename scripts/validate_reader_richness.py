@@ -127,6 +127,7 @@ def main() -> int:
         "house/index.html":"app/house.css",
         "axis/index.html":"app/axis.css",
         "rooms/index.html":"app/rooms.css",
+        "tim-dooley/index.html":"app/tim.css",
     }
     for rel,asset in scoped_reader_styles.items():
         page=ROOT/rel
