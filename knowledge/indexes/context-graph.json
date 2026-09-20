@@ -658,6 +658,103 @@
         "navigation",
         "project_symbolism"
       ]
+    },
+    {
+      "id": "developmental-axis-lineage",
+      "title": "One Neural Tube → Many Adult Rooms",
+      "summary": "Development supplies a lineage map underneath the static adult House: one neural tube regionalizes into telencephalon, diencephalon, midbrain, pons/cerebellum, medulla and spinal cord while progenitors, migration and axon guidance build increasingly differentiated rooms and roads.",
+      "branches": [
+        "body",
+        "science",
+        "transformation",
+        "timeline"
+      ],
+      "records": [
+        "knowledge/body/neural-development-lineage-atlas.json",
+        "knowledge/body/brain-room-deep-atlas.json",
+        "knowledge/body/cranial-brainstem-room-atlas.json",
+        "knowledge/body/spinal-cord-microcircuit-atlas.json"
+      ],
+      "concepts": [
+        "Neural Tube",
+        "Primary Brain Vesicles",
+        "Secondary Brain Vesicles",
+        "Radial Glia",
+        "Neural Crest",
+        "Inside-out Cortex",
+        "Axon Guidance",
+        "Adult Rooms"
+      ],
+      "epistemic_mix": [
+        "developmental_neurobiology",
+        "human_development",
+        "comparative_model_boundary"
+      ]
+    },
+    {
+      "id": "living-wall-cellular-ecology",
+      "title": "Neuron ↔ Glia ↔ Vessel ↔ Barrier",
+      "summary": "Neural rooms are maintained by a cellular ecology: astrocytes, oligodendrocytes, OPCs, microglia, endothelium, pericytes, vascular smooth muscle, ependyma, choroid epithelium and meningeal border tissues. This makes the House wall a living interface rather than a passive shell.",
+      "branches": [
+        "body",
+        "science",
+        "spirit",
+        "cosmology"
+      ],
+      "records": [
+        "knowledge/body/glia-neurovascular-barrier-atlas.json",
+        "knowledge/body/body-science-context-atlas.json",
+        "knowledge/body/axis-orientation-autonomic-interface-atlas.json"
+      ],
+      "concepts": [
+        "Astrocytes",
+        "Oligodendrocytes",
+        "OPCs",
+        "Microglia",
+        "Endothelium",
+        "Pericytes",
+        "BBB",
+        "Blood-CSF Barrier",
+        "Choroid Plexus",
+        "Meninges"
+      ],
+      "epistemic_mix": [
+        "cell_biology",
+        "vascular_biology",
+        "barrier_physiology",
+        "project_boundary_comparison"
+      ]
+    },
+    {
+      "id": "cortex-nested-rooms",
+      "title": "Cortical Area → Layer → Projection Class → Cell Type",
+      "summary": "A cortical Room has nested coordinate systems beneath it: gross area, cytoarchitectonic layers, long-range projection class, inhibitory interneuron family, glial/vascular context and transcriptomic identity. No single parcellation exhausts the cortex.",
+      "branches": [
+        "body",
+        "science",
+        "corporium"
+      ],
+      "records": [
+        "knowledge/body/cortical-celltype-parcellation-atlas.json",
+        "knowledge/body/brain-room-deep-atlas.json",
+        "knowledge/body/whole-brain-neurobiology-atlas.json"
+      ],
+      "concepts": [
+        "Layers I–VI",
+        "Glutamatergic Projection Classes",
+        "PVALB",
+        "SST",
+        "VIP",
+        "Brodmann",
+        "Multimodal Parcellation",
+        "Spatial Transcriptomics"
+      ],
+      "epistemic_mix": [
+        "cytoarchitecture",
+        "cell_atlas",
+        "connectivity",
+        "functional_networks"
+      ]
     }
   ]
 }
