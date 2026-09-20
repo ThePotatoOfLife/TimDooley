@@ -11,7 +11,7 @@ const map = window.__potatoAtlasMap;
 const baseSelection = window.__potatoAtlasSelection;
 const baseGoCountry = window.goCountry;
 const baseClearCountry = window.clearCountrySelection;
-const interaction = window.__potatoAtlasInteraction;
+function interactionRouter() { return window.__potatoAtlasInteraction; }
 
 if (!map || typeof baseGoCountry !== 'function' || !baseSelection) {
   throw new Error('Country selection controller requires the core atlas selection API.');
@@ -45,6 +45,7 @@ let names = {};
 let entityNames = {};
 let syncingCore = false;
 let ready = false;
+let fallbackCountryClicksInstalled = false;
 let relationMode = RELATION_MODES.has(new URL(location.href).searchParams.get('relation'))
   ? new URL(location.href).searchParams.get('relation')
   : 'all';
@@ -303,10 +304,26 @@ function interceptPolygonClick(event) {
   handleCountryFeature(event, feature);
 }
 function installClickInterception() {
-  for (const layer of ['countries-fill', 'countries-extrude']) if (map.getLayer(layer)) map.on('click', layer, interceptPolygonClick);
+  if (fallbackCountryClicksInstalled) return;
+  let installed = false;
+  for (const layer of ['countries-fill', 'countries-extrude']) {
+    if (!map.getLayer(layer)) continue;
+    map.on('click', layer, interceptPolygonClick);
+    installed = true;
+  }
+  fallbackCountryClicksInstalled = installed;
+}
+function uninstallClickInterception() {
+  if (!fallbackCountryClicksInstalled) return;
+  for (const layer of ['countries-fill', 'countries-extrude']) {
+    try { map.off('click', layer, interceptPolygonClick); } catch {}
+  }
+  fallbackCountryClicksInstalled = false;
 }
 function installCountryInteraction() {
+  const interaction = interactionRouter();
   if (interaction?.register) {
+    uninstallClickInterception();
     interaction.unregister('core-country-fallback');
     interaction.register('countries', {
       layers:['countries-fill', 'countries-extrude'],
@@ -315,9 +332,10 @@ function installCountryInteraction() {
       hoverPriority:10,
       onClick:(event, feature) => handleCountryFeature(event, feature),
     });
-    return;
+    return true;
   }
   installClickInterception();
+  return false;
 }
 function adoptExternalSelection(event) {
   if (syncingCore) return;
@@ -372,6 +390,8 @@ async function restoreState() {
   if (pinnedCodes.length) emitPins('restored');
   if (activeCode) emit('restored');
 }
+
+window.addEventListener('potato-atlas-interaction-ready', installCountryInteraction);
 
 await loadData();
 installStrip(); installCountryInteraction(); applySelectionStates(); installRelationPaint(); ready = true;
