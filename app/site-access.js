@@ -89,11 +89,17 @@
     if(loaded)return;
     loaded=true;
     try{
-      const [cr,sr,ir]=await Promise.all([
+      const [cr,sr,ir,rr]=await Promise.all([
         fetch(href('/data/house/site-access.json')),
         fetch(href('/data/house/public-surfaces.json')),
-        fetch(href('/data/house/room-inhabitants.json'))
+        fetch(href('/data/house/room-inhabitants.json')),
+        fetch(href('/data/house/rooms.json'))
       ]);
+      let roomNames={};
+      if(rr.ok){
+        const d=await rr.json();
+        roomNames=Object.fromEntries((d.rooms||[]).filter(x=>x?.id).map(x=>[x.id,x.title||x.id]));
+      }
       if(cr.ok){
         const d=await cr.json();
         if(Array.isArray(d.entries)&&d.entries.length){
@@ -104,17 +110,35 @@
       }
       if(sr.ok){
         const d=await sr.json();
-        for(const s of d.surfaces||[])if(s?.status==='active'&&s?.route)index.push({label:s.title||s.id,route:s.route,kind:'page',note:s.surface_type||'public surface',aliases:s.id});
+        for(const s of d.surfaces||[])if(s?.status==='active'&&s?.route)index.push({
+          label:s.title||s.id,
+          route:s.route,
+          kind:'page',
+          note:s.surface_type||'public surface',
+          context:s.primary_parent?'Under '+s.primary_parent:'Public surface',
+          aliases:s.id
+        });
       }
       if(ir.ok){
         const d=await ir.json();
-        for(const x of d.inhabitants||[])if(x?.route)index.push({label:x.label||x.id,route:x.route,kind:x.kind||'object',note:x.summary||'House object',aliases:(x.id||'')+' '+(x.room_ids||[]).join(' ')});
+        for(const x of d.inhabitants||[])if(x?.route){
+          const rooms=(x.room_ids||[]).map(id=>roomNames[id]||id).filter(Boolean);
+          index.push({
+            label:x.label||x.id,
+            route:x.route,
+            kind:x.kind||'object',
+            note:x.summary||'House object',
+            context:rooms.length?'Rooms: '+rooms.join(' · '):'House object',
+            aliases:(x.id||'')+' '+(x.room_ids||[]).join(' ')
+          });
+        }
       }
       index=unique(index);
     }catch(_){}
   };
   const group=(title,entries)=>'<div class="site-access-group"><span>'+esc(title)+'</span><div class="site-access-links">'+entries.map(e=>'<a href="'+esc(href(e.route))+'"><b>'+esc(e.label)+'</b><small>'+esc(e.note||'')+'</small></a>').join('')+'</div></div>';
-  const renderDefault=()=>{
+  const renderDefault=async()=>{
+    await loadIndex();
     content.className='site-access-groups';
     const byId=id=>curatedEntries.find(e=>e.id===id);
     const rows=ids=>(ids||[]).map(byId).filter(Boolean);
@@ -125,7 +149,7 @@
   };
   const renderSearch=async()=>{
     const q=input.value.trim().toLowerCase();
-    if(!q){renderDefault();return}
+    if(!q){await renderDefault();return}
     await loadIndex();
     const terms=q.split(/\s+/).filter(Boolean);
     const rows=index.map(e=>{
@@ -143,14 +167,14 @@
       return {e,score};
     }).filter(Boolean).sort((a,b)=>b.score-a.score||priority(b.e)-priority(a.e)||a.e.label.localeCompare(b.e.label)).slice(0,12).map(x=>x.e);
     content.className='site-access-results';
-    content.innerHTML=rows.length?rows.map(e=>'<a class="site-access-result" href="'+esc(href(e.route))+'"><span><b>'+esc(e.label)+'</b><small>'+esc(e.note||'')+'</small></span><em>'+esc(e.kind||'result')+'</em></a>').join(''):'<div class="site-access-empty">No quick result. Try a broader word or open A–Z / Explore.</div>';
+    content.innerHTML=rows.length?rows.map(e=>'<a class="site-access-result" href="'+esc(href(e.route))+'"><span><b>'+esc(e.label)+'</b><small>'+esc(e.note||'')+'</small>'+(e.context?'<small class="site-access-context">'+esc(e.context)+'</small>':'')+'</span><em>'+esc(e.kind||'result')+'</em></a>').join(''):'<div class="site-access-empty">No quick result. Try a broader word or open A–Z / Explore.</div>';
   };
   const setOpen=(open,focusSearch=false,trigger=null)=>{
     if(open&&trigger)returnFocus=trigger;
     panel.hidden=!open;
     menuBtn.setAttribute('aria-expanded',String(open));
     findBtn.setAttribute('aria-expanded',String(open));
-    if(open){if(!input.value)renderDefault();if(focusSearch)setTimeout(()=>input.focus(),0)}
+    if(open){if(!input.value)void renderDefault();if(focusSearch)setTimeout(()=>input.focus(),0)}
   };
   menuBtn.addEventListener('click',()=>setOpen(panel.hidden,false,menuBtn));
   findBtn.addEventListener('click',()=>setOpen(true,true,findBtn));
@@ -163,5 +187,5 @@
   });
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden){setOpen(false);returnFocus?.focus?.()}});
   document.addEventListener('pointerdown',e=>{if(!panel.hidden&&!wrapper.contains(e.target))setOpen(false)});
-  renderDefault();
+  void renderDefault();
 })();
