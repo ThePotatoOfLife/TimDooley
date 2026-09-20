@@ -1,7 +1,7 @@
 {
   "id": "operator-inventory-census-2026-09-20",
   "title": "Core Operator Inventory Census — Consolidation Pressure and Next Work",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "status": "repository inventory snapshot",
   "purpose": "Summarize high-frequency operator families and route future consolidation through canonical owners instead of creating additional generic masters.",
@@ -14,7 +14,9 @@
       "canonical_contract": "data/axis-flow-contract.json",
       "definition_owner": "knowledge/core/deep-element-definition-atlas.json",
       "pressure": "very-high",
-      "next_action": "Audit generic Axis definitions across axis-model/topology/operators/world-model and convert repeated prose to owner pointers + subtype-specific semantics."
+      "next_action": "Audit generic Axis definitions across axis-model/topology/operators/world-model and convert repeated prose to owner pointers + subtype-specific semantics.",
+      "consolidation_status": "controlled",
+      "progress_note": "Axis ownership separated across flow contract, visualization, terrain, D-level operators and world application."
     },
     {
       "id": "door",
@@ -22,7 +24,9 @@
       "canonical_contract": "data/house/concept-topology.json",
       "definition_owner": "knowledge/core/deep-element-definition-atlas.json",
       "pressure": "very-high",
-      "next_action": "Separate generic Door law from religious, legal, UI, physical and science-specific Door embodiments."
+      "next_action": "Separate generic Door law from religious, legal, UI, physical and science-specific Door embodiments.",
+      "consolidation_status": "controlled",
+      "progress_note": "Door family classified and full transition lifecycle installed."
     },
     {
       "id": "cross",
@@ -30,7 +34,9 @@
       "canonical_contract": "data/house/plane-crossing-contract.json",
       "definition_owner": "data/house/plane-crossing-contract.json",
       "pressure": "high",
-      "next_action": "Migrate old generic 'cross' wording into cross-point, cross-sign, crossing-event or Christian-Cross context."
+      "next_action": "Migrate old generic 'cross' wording into cross-point, cross-sign, crossing-event or Christian-Cross context.",
+      "consolidation_status": "controlled",
+      "progress_note": "Cross-point, Cross-sign and Crossing Event separated by contract."
     },
     {
       "id": "spiral",
@@ -38,23 +44,29 @@
       "canonical_contract": "data/house/seed-spiral-routing.json",
       "definition_owner": "knowledge/core/deep-element-definition-atlas.json",
       "pressure": "high",
-      "next_action": "Classify each spiral file as recurrence law, geometry, dynamics, archaeology, science benchmark or reader view."
+      "next_action": "Classify each spiral file as recurrence law, geometry, dynamics, archaeology, science benchmark or reader view.",
+      "consolidation_status": "partially-controlled",
+      "progress_note": "Return-map/Ring-vs-Spiral law is consolidated; specialist geometry/dynamics files still need metadata normalization."
     },
     {
       "id": "tree",
       "path_hits": 19,
-      "canonical_contract": "data/house/tree-plane-routing.json",
+      "canonical_contract": "data/house/tree-family-contract.json",
       "definition_owner": "knowledge/core/deep-element-definition-atlas.json",
       "pressure": "high",
-      "next_action": "Keep literal biology, Tree of Life, Knowledge, Strife, world-tree, archive-tree and organizational tree explicitly typed."
+      "next_action": "Keep literal biology, Tree of Life, Knowledge, Strife, world-tree, archive-tree and organizational tree explicitly typed.",
+      "consolidation_status": "controlled",
+      "progress_note": "Typed Tree family contract installed; data/tree.json reclassified as UI/navigation projection."
     },
     {
       "id": "swamp",
       "path_hits": 19,
-      "canonical_contract": "data/house/lower-plane-population-atlas.json",
+      "canonical_contract": "data/house/swamp-regime-contract.json",
       "definition_owner": "knowledge/core/below-intelligence-shadow-observatory.json",
       "pressure": "high",
-      "next_action": "Separate Swamp regime/terrain from datasets, cases, research seeds and lower-field semantics."
+      "next_action": "Separate Swamp regime/terrain from datasets, cases, research seeds and lower-field semantics.",
+      "consolidation_status": "controlled",
+      "progress_note": "Swamp regime/state contract separates system state from Below, persons and datasets."
     },
     {
       "id": "plane",
@@ -62,7 +74,9 @@
       "canonical_contract": "data/house/plane-crossing-contract.json",
       "definition_owner": "knowledge/core/deep-element-definition-atlas.json",
       "pressure": "medium",
-      "next_action": "Plane semantics are now consolidated; update older specialists opportunistically as touched."
+      "next_action": "Plane semantics are now consolidated; update older specialists opportunistically as touched.",
+      "consolidation_status": "controlled",
+      "progress_note": "Plane section/frame contract installed; navigation decks disambiguated."
     },
     {
       "id": "vesica",
@@ -70,23 +84,29 @@
       "canonical_contract": "data/geometry-vesica-pisces-mandorla.json",
       "definition_owner": "knowledge/core/deep-element-definition-atlas.json",
       "pressure": "medium",
-      "next_action": "Protect exact geometry from art-historical, theological and esoteric interpretations."
+      "next_action": "Protect exact geometry from art-historical, theological and esoteric interpretations.",
+      "consolidation_status": "controlled",
+      "progress_note": "Exact geometry owner already distinct from mandorla/art-historical and theological interpretation."
     },
     {
       "id": "root",
       "path_hits": 14,
-      "canonical_contract": "data/house/concept-topology.json",
+      "canonical_contract": "data/house/root-seed-temporal-contract.json",
       "definition_owner": "knowledge/core/root-system.json",
       "pressure": "medium",
-      "next_action": "Separate botanical root, provenance root, source-origin, causal root and project Father/Root relation."
+      "next_action": "Separate botanical root, provenance root, source-origin, causal root and project Father/Root relation.",
+      "consolidation_status": "controlled",
+      "progress_note": "Root Seed temporal contract now separates active provenance/support from mere historical material."
     },
     {
       "id": "seed",
       "path_hits": 11,
-      "canonical_contract": "data/house/seed-spiral-routing.json",
+      "canonical_contract": "data/house/root-seed-temporal-contract.json",
       "definition_owner": "knowledge/core/deep-element-definition-atlas.json",
       "pressure": "medium",
-      "next_action": "Separate biological seed/grain/tuber-eye from transferable-future-capacity operator and human-record seed datasets."
+      "next_action": "Separate biological seed/grain/tuber-eye from transferable-future-capacity operator and human-record seed datasets.",
+      "consolidation_status": "controlled",
+      "progress_note": "Root Seed temporal contract separates present viability/capacity from future prediction and botanical subtypes."
     }
   ],
   "consolidation_layers": [
@@ -122,12 +142,11 @@
     }
   ],
   "immediate_merge_queue": [
-    "Axis family: reconcile data/axis-model.json, data/axis-topology.json, data/axis-operators.json, knowledge/core/axis-world-model.json under data/axis-flow-contract.json.",
-    "Door family: classify the 33 visible Door-named files as contract, embodiment, archaeology, science model, comparative religion or reader view.",
-    "Cross family: audit pre-2026-09-20 files for ambiguous 'Cross' and migrate to cross-point/cross-sign/crossing-event/Christian-cross labels.",
-    "Spiral family: mark which files own recurrence law vs geometry/dynamics/archaeology and add the Plane-return-map relation where appropriate.",
-    "Tree family: create a family registry if current tree-plane-routing does not yet enumerate all literal/comparative/project subtypes.",
-    "Swamp family: keep Below/Manifestation distinction visible in every public/data route."
+    "Spiral family: normalize specialist metadata so recurrence law, geometry, physics analogy, archaeology, benchmark and reader layers all point to canonical recurrence owners.",
+    "Public projection audit: continue converting old page-local definitions into owner links and typed reader explanations.",
+    "Legacy master audit: identify root-level or older files that still declare themselves canonical despite newer House/operator ownership.",
+    "Promotion-status system: mark research/conversation waves as unpromoted, partially promoted, absorbed/provenance-only, or still canonical-source-bearing.",
+    "Only after these are controlled, consider moving fully absorbed temporary/recovery files to archive."
   ],
   "success_metrics": [
     "One obvious definition/contract owner for every high-frequency operator.",
