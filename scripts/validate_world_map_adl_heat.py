@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,6 +17,7 @@ HTML = ROOT / "world-map/index.html"
 LIFECYCLE = ROOT / "world-map/3d-panel-lifecycle.js"
 EVIDENCE_COORDINATOR = ROOT / "world-map/3d-evidence-layers.js"
 IMPORTER = ROOT / "scripts/import_adl_heat.py"
+IMPORTER_TEST = ROOT / "scripts/test_import_adl_heat.py"
 MUD_MODULE = ROOT / "world-map/3d-mud-below-us.js"
 MUD_DATA = ROOT / "data/world-symbolic/us-mud-below-project-cases.geo.json"
 STATE_SUBDIVISIONS = ROOT / "data/world-subdivisions/USA.geo.json"
@@ -39,7 +41,7 @@ def require(text: str, token: str, label: str, errors: list[str]) -> None:
 
 def main() -> int:
     errors: list[str] = []
-    for path in (META,SUMMARY,GEO,MODULE,HTML,LIFECYCLE,EVIDENCE_COORDINATOR,IMPORTER,MUD_MODULE,MUD_DATA,STATE_SUBDIVISIONS):
+    for path in (META,SUMMARY,GEO,MODULE,HTML,LIFECYCLE,EVIDENCE_COORDINATOR,IMPORTER,IMPORTER_TEST,MUD_MODULE,MUD_DATA,STATE_SUBDIVISIONS):
         if not path.exists():
             errors.append(f"missing ADL H.E.A.T. artifact: {path.relative_to(ROOT)}")
     if errors:
@@ -145,7 +147,7 @@ def main() -> int:
         require(html, token, "world-map/index.html", errors)
     for token in ("bindAdlHeatLayerControl","./3d-adl-heat.js","__potatoAtlasAdlHeat?.toggle","bindMudBelowLayerControl","./3d-mud-below-us.js","__potatoAtlasMudBelow?.toggle","hydrateEvidenceLayersFromUrl","projectLayer","mud-below-us"):
         require(lifecycle, token, "world-map/3d-panel-lifecycle.js", errors)
-    for token in ("official ADL H.E.A.T. CSV export","source_sha256","missing_geometry_count","state_filtering","by_type_token","by_year_type_token","csv.DictReader"):
+    for token in ("official ADL H.E.A.T. CSV export","source_sha256","missing_geometry_count","state_filtering","by_type_token","by_year_type_token","csv.DictReader","--confirm-official-export","--out-dir","invalid_coordinates","duplicate_source_ids","import_diagnostics"):
         require(importer, token, "scripts/import_adl_heat.py", errors)
 
     for token in ("project-symbolic-case","state-centroid","not an objective classification"):
@@ -165,6 +167,10 @@ def main() -> int:
         errors.append("runtime must not scrape ADL live; it must use committed same-origin snapshots")
     if "hate score" not in js.lower():
         errors.append("runtime must preserve explicit no-hate-score disclosure")
+
+    importer_result = subprocess.run([sys.executable, str(IMPORTER_TEST)], cwd=ROOT, capture_output=True, text=True)
+    if importer_result.returncode:
+        errors.append("ADL importer regression failed: " + (importer_result.stderr.strip() or importer_result.stdout.strip()))
 
     node = shutil.which("node")
     if node:
