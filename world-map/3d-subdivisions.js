@@ -48,6 +48,7 @@ const forcedPartitions = new Set();
 const forcedPartitionOwners = new Map();
 const evidenceProviders = new Map();
 const sourceRefreshObservers = new Map();
+let sharedScale = null;
 
 function retentionOwner(owner = 'anonymous') {
   const token = String(owner || '').trim();
@@ -416,6 +417,7 @@ function syncSharedLayerInteraction() {
     objectType:'subdivision',
     clickPriority:60,
     hoverPriority:60,
+    enabled:()=>!sharedScale || sharedScale.capabilityActive('subdivisions', 'interact', map.getZoom()),
     onClick:(event, feature) => handleSharedLayerClick({ ...event, features:[feature] }),
   });
   return true;
@@ -464,7 +466,8 @@ function syncLabelPresentation() {
 }
 async function scaleRuntime() {
   const scale = await window.__potatoAtlasScale?.ready;
-  if (!scale?.threshold || !scale?.bandThreshold) throw new Error('World Map Scale runtime unavailable to subdivisions.');
+  if (!scale?.threshold || !scale?.bandThreshold || !scale?.capabilityActive) throw new Error('World Map Scale runtime unavailable to subdivisions.');
+  sharedScale = scale;
   return scale;
 }
 async function installSharedLayers() {
