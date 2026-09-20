@@ -1,0 +1,137 @@
+{
+  "id": "tachy",
+  "display_name": "Tachy / Krystato",
+  "bureau": "FBI — Figures, Bonds & Incidents",
+  "entity_class": "person-or-handle",
+  "aliases": [
+    "imnotkrystalstation",
+    "Krystato"
+  ],
+  "archive_status": "historical-current-unknown",
+  "room_policy": "own-room-candidate",
+  "room_path": null,
+  "tim_relation": {
+    "archetypes": [
+      "chronicler-archivist",
+      "witness-observer",
+      "trickster-catalyst"
+    ],
+    "narrative_functions": [
+      "clipping",
+      "systems mapping",
+      "humor",
+      "cross-community movement"
+    ],
+    "regions": [
+      "Archive",
+      "Plane",
+      "Threshold"
+    ],
+    "editorial_reading": "One of the strongest archive candidates: old profile explicitly frames her as Archivist of Chaos and systems observer.",
+    "source_boundary": "Roles and traits are archival descriptions of how the figure appears in old sources. Motive, diagnosis, criminality, and permanent moral essence are not inferred from the old profile prose."
+  },
+  "chronology": {
+    "chronicle_occurrence_count": 1,
+    "chronicle_dates": [
+      "November 19, 2024"
+    ],
+    "cast_period_roles": [],
+    "recovered_social_days": [
+      {
+        "date": "2024-12-04",
+        "title": "The Tree becomes a separate social space",
+        "minimum_event": "Chronicle narration says Monkey and Tachy established a separate Tree server while Termite and Kale remained visible around Tim's space. This is a strong dated anchor for community fragmentation, though motive-language remains interpretive.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2024-12-21",
+        "title": "Anja arrives inside a Marty-mediated boundary dispute",
+        "minimum_event": "Marty introduces Anja while asserting social leverage; moderation disputes intensify around Literally. The Chronicle also credits Pondo with providing urgent support to a distressed community member.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2025-02-27",
+        "title": "Three conflict calls",
+        "minimum_event": "The Chronicle organizes three separate social conflicts/calls on one day. It calls them 'rituals'; that is the author's interpretation, while the bounded calls and named participants are the recoverable historical targets.",
+        "source_mode": "chronicle_retelling"
+      },
+      {
+        "date": "2025-03-12",
+        "title": "Seeds of invention",
+        "minimum_event": "Chronicle reports active HTML experiments, text-to-speech work, Spudify, Potizer, PKFC, game development and an interactive Great Book. It also records a whimsical Tim/Tachy wedding scene and a large Garden membership reduction.",
+        "source_mode": "chronicle_retelling"
+      }
+    ]
+  },
+  "top_co_presence": [
+    {
+      "name": "Tim Dooley",
+      "count": 4
+    },
+    {
+      "name": "Optimistique",
+      "count": 2
+    },
+    {
+      "name": "Monkey",
+      "count": 1
+    },
+    {
+      "name": "Termite",
+      "count": 1
+    },
+    {
+      "name": "Kale",
+      "count": 1
+    },
+    {
+      "name": "Rage",
+      "count": 1
+    },
+    {
+      "name": "PKFC",
+      "count": 1
+    },
+    {
+      "name": "Marty",
+      "count": 1
+    }
+  ],
+  "symbolic_roles": [],
+  "highlighted_incidents": [
+    {
+      "date": "2024",
+      "title": "Potato data structure",
+      "summary": "Older character material depicts Tachy/Krystato using engineering/data-structure metaphors for the Potatoverse and Tim as a root node; authored profile, not independently verified quote set."
+    },
+    {
+      "date": "2024-12-04",
+      "title": "Tree split",
+      "summary": "Chronicle places Tachy with Monkey in a separate Tree server."
+    },
+    {
+      "date": "2025-03-12",
+      "title": "Whimsical wedding / creation wave",
+      "summary": "Chronicle records a playful Tim/Tachy wedding scene inside the same day as HTML/TTS/interactive Great Book work."
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "character_archive",
+      "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json"
+    },
+    {
+      "type": "dated_social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    }
+  ],
+  "recovery_leads": [
+    "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
+    "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
+    "Add relationship edges only when a scene/source supports them."
+  ]
+}
