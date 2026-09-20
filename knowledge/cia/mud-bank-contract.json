@@ -47,7 +47,9 @@
     "achievement": 0,
     "project-debit": -20,
     "dispute": 0,
-    "welfare": "continuous"
+    "welfare": "continuous",
+    "growth": 6,
+    "entanglement": 0
   },
   "balance_formula": "welfare accrued + sum(explicit weighted event entries). Aggregate labels, archetypes, popularity, loyalty, inactivity and unsourced allegations have weight 0.",
   "confidence": {
@@ -60,6 +62,7 @@
     "No balance is an objective measure of morality, human worth, guilt, innocence, diagnosis or legal responsibility.",
     "Negative movement requires an explicit source-bounded project-debit event; disagreement, criticism, inactivity or a symbolic Dog/Mud role does not automatically create debt.",
     "Positive welfare is universal story-participation credit, not proof of virtue.",
-    "The trillion-scale Mud Economy totals remain Tim/project claims and are not mathematically distributed across character accounts."
+    "The trillion-scale Mud Economy totals remain Tim/project claims and are not mathematically distributed across character accounts.",
+    "Growth may add a small positive project adjustment only when a dated source explicitly records growth; symbolic entanglement alone is zero-weight."
   ]
 }
