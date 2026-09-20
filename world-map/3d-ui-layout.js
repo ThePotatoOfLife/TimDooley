@@ -24,7 +24,6 @@ function ensureStyle() {
     #atlasUIBottomContext>*{position:static!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;max-width:100%;pointer-events:auto}
     #atlasUILeftStatus #atlasWorldContext{width:min(290px,100%)!important}
     #atlasUILeftStatus #atlasTimeState{width:auto!important}
-    #atlasUILeftStatus #atlasLensLegend{width:min(340px,100%)!important}
     #atlasUILeftStatus #axisFieldLegend{width:min(430px,100%)!important;pointer-events:none!important}
     #atlasUILeftStatus #axisOperatorHud{width:min(420px,100%)!important;pointer-events:none!important}
     #axisDepthNavigator[data-layout-hosted="1"]{display:none!important}
@@ -141,8 +140,6 @@ function adoptKnownSurfaces() {
   if (context && !registrations.has('world-context')) upsertRegistration({ id:'world-context', zone:'left-status', element:context, priority:30 });
   const time = document.getElementById('atlasTimeState');
   if (time && !registrations.has('time-state')) upsertRegistration({ id:'time-state', zone:'left-status', element:time, priority:20 });
-  const lens = document.getElementById('atlasLensLegend');
-  if (lens && !registrations.has('lens-legend')) upsertRegistration({ id:'lens-legend', zone:'left-status', element:lens, priority:40 });
   const fieldLegend = document.getElementById('axisFieldLegend');
   if (fieldLegend && !registrations.has('axis-field-legend')) upsertRegistration({ id:'axis-field-legend', zone:'left-status', element:fieldLegend, priority:45 });
   const operatorHud = document.getElementById('axisOperatorHud');
