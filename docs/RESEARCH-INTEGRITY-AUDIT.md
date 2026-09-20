@@ -7,7 +7,7 @@ This audit is a repository-level control document. Expansion files must be addit
 - `data/tree.json` is canonical and must not be reordered.
 - `data/frame.json` defines the evidence classes and the rule that metaphor is not evidence.
 - `data/tree-child-records.json` supplies real records for canonical children that are not promoted into the main node registry.
-- `site.js` fails loudly when a canonical child has no backend record; it does not invent placeholder records.
+- `scripts/validate_content_integrity.py` fails when a canonical Tree child has no registered record; the retired root `site.js` presentation bridge has been removed rather than kept as a second integrity mechanism.
 
 ## Verified recent expansion layers
 
