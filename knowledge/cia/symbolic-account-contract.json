@@ -1,0 +1,51 @@
+{
+  "id": "cia-symbolic-account-contract-v1",
+  "title": "CIA Symbolic Account / Karma Ledger Contract",
+  "updated": "2026-09-21",
+  "scope": "Potatoverse project-internal symbolic accounting attached to character dossiers",
+  "boundary": "This is not money, credit scoring, legal debt, guilt, diagnosis, or an objective measurement of human worth. Entries must be explicitly sourced as project language, authored interpretation, or a recorded repair/credit claim.",
+  "states": [
+    "unassessed",
+    "open",
+    "balanced",
+    "credit",
+    "debt",
+    "repair-active",
+    "dormant",
+    "closed"
+  ],
+  "account_fields": {
+    "status": "Symbolic account state. Defaults to unassessed.",
+    "good_karma": "Optional sourced/project-authored credits. Never inferred from popularity, loyalty or inactivity.",
+    "karmic_debt": "Optional sourced/project-authored debits. Never treated as legal/financial debt.",
+    "dooley_welfare": "Optional playful project allowance. If enabled, a display-only accrual may be calculated from an explicit start date and rate.",
+    "interest": "Optional project-defined symbolic interest on a specific sourced entry; never silently compounded.",
+    "outstanding": "Open repair conditions, promises, unresolved project obligations or recovery questions.",
+    "entries": "Dated ledger rows with type, amount_or_scale, source_mode, source_ref, note and status."
+  },
+  "welfare_rule": {
+    "enabled_by_default": false,
+    "unit": "Dooley",
+    "display_only": true,
+    "required_fields": [
+      "enabled",
+      "start_date",
+      "rate_per_day"
+    ],
+    "note": "A live counter is permitted only when the dossier explicitly enables it. The counter is theatrical project UI, not a financial asset."
+  },
+  "activity_visualization": {
+    "rule": "Visual prominence reflects archive recency/status only, never moral value.",
+    "active": 1,
+    "recovery_active": 0.94,
+    "historical_current_unknown": 0.82,
+    "dormant_or_index": 0.72,
+    "deceased_or_closed": 0.76,
+    "interaction": "Hover/focus restores full opacity for readability."
+  },
+  "media": {
+    "portrait": "Optional dossier-owned image path/URL with caption and source.",
+    "evidence_images": "Optional screenshots, memes, posts or project images with source metadata.",
+    "rule": "Do not attach an image to a real person unless the archive explicitly identifies the source and subject."
+  }
+}
