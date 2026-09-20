@@ -145,6 +145,21 @@ function pointInGeometry(point, geometry) {
   return false;
 }
 
+function shortestWrappedLine(a, b, referenceLng = null) {
+  const [lng1, lat1] = validatedPoint(a, 'first line point');
+  const [lng2, lat2] = validatedPoint(b, 'second line point');
+  let west = lng1;
+  let east = unwrapLongitude(lng2, lng1);
+  if (referenceLng != null) {
+    const reference = finiteNumber(referenceLng, 'line reference longitude');
+    const center = (west + east) / 2;
+    const turns = Math.round((reference - center) / 360);
+    west += turns * 360;
+    east += turns * 360;
+  }
+  return [[west, lat1], [east, lat2]];
+}
+
 function haversineDistanceKm(a, b) {
   const [lng1, lat1] = validatedPoint(a, 'first point');
   const [lng2, lat2] = validatedPoint(b, 'second point');
@@ -167,6 +182,7 @@ const api = Object.freeze({
   minimalLongitudeInterval,
   antimeridianAwareBounds,
   pointInGeometry,
+  shortestWrappedLine,
   haversineDistanceKm,
 });
 
@@ -180,5 +196,6 @@ export {
   minimalLongitudeInterval,
   antimeridianAwareBounds,
   pointInGeometry,
+  shortestWrappedLine,
   haversineDistanceKm,
 };
