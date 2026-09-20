@@ -27,6 +27,7 @@ const LABEL_ID = 'atlas-subdivision-label';
 const SELECTED_LABEL_ID = 'atlas-subdivision-selected-label';
 const NARROW_SCREEN_MAX = 720;
 const NARROW_LABEL_DELAY = 0.85;
+const GLOBE_LABEL_DELAY = 0.45;
 const USA_BOUNDS_FALLBACK = { west:-179.5, east:-65, south:17, north:72.5 };
 const DEFAULT_RUNTIME_BUDGET = Object.freeze({
   partition_max_bytes:1500000,
@@ -489,12 +490,18 @@ window.addEventListener?.('potato-atlas-interaction-ready', () => syncSharedLaye
 function viewportWidth() {
   return Number(window.innerWidth || document.documentElement?.clientWidth || 1024);
 }
+function projectionMode() {
+  return window.__potatoAtlasProjection?.get?.() === 'globe' ? 'globe' : 'flat';
+}
 function labelPresentation() {
   const narrow = viewportWidth() <= NARROW_SCREEN_MAX;
+  const globe = projectionMode() === 'globe';
+  const delay = (narrow ? NARROW_LABEL_DELAY : 0) + (globe ? GLOBE_LABEL_DELAY : 0);
   return {
     narrow,
-    labelZoom:Number(labelZoomBase || 0) + (narrow ? NARROW_LABEL_DELAY : 0),
-    nameZoom:Number(nameZoomBase || 0) + (narrow ? NARROW_LABEL_DELAY : 0),
+    globe,
+    labelZoom:Number(labelZoomBase || 0) + delay,
+    nameZoom:Number(nameZoomBase || 0) + delay,
   };
 }
 function syncSelectedLabel(id = selectedId) {
@@ -703,6 +710,7 @@ styleLifecycle?.register?.('subdivisions', {
 await installSharedLayers();
 map.on('moveend', ensureRelevantPartitions);
 window.addEventListener?.('resize', syncLabelPresentation);
+window.addEventListener?.('potato-atlas-projection-change', syncLabelPresentation);
 await ensureRelevantPartitions();
 
 window.__potatoAtlasSubdivisions = {
