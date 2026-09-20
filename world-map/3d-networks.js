@@ -127,20 +127,34 @@ function installInteractions(map, registry) {
   const tooltip = getOrCreateTooltipService(map,{PopupClass:maplibregl.Popup,eventTarget:window,offset:8});
   let activeHoverKey='';
   let activeGeneration=0;
-  map.on('mousemove',FILL_ID,event=>{
-    if(historicalSuppressed)return;
-    map.getCanvas().style.cursor='pointer';
-    const p = event.features?.[0]?.properties || {};
-    const key=String(p.iso3||p.name||'country');
-    if(key!==activeHoverKey){activeHoverKey=key;activeGeneration=tooltip.nextGeneration('networks');}
-    const memberships = String(p.empirical_memberships || '').split('|').filter(Boolean).map(item=>{
-      const [id,role] = item.split(':');
-      const label = registry.networks?.[id]?.label || id;
-      return `${label} · ${role}`;
+
+  const register=()=>{
+    const interaction=window.__potatoAtlasInteraction;
+    if(!interaction?.register)return false;
+    interaction.register('empirical-networks',{
+      layers:[FILL_ID],
+      objectType:'empirical-network',
+      clickPriority:0,
+      hoverPriority:35,
+      cursor:'pointer',
+      enabled:()=>!historicalSuppressed&&activeNetwork!=='off',
+      onHover:(event,feature)=>{
+        const p=feature?.properties||{};
+        const key=String(p.iso3||p.name||'country');
+        if(key!==activeHoverKey){activeHoverKey=key;activeGeneration=tooltip.nextGeneration('networks');}
+        const memberships=String(p.empirical_memberships||'').split('|').filter(Boolean).map(item=>{
+          const [id,role]=item.split(':');
+          const label=registry.networks?.[id]?.label||id;
+          return `${label} · ${role}`;
+        });
+        tooltip.show('networks',event.lngLat,`<div class="atlas-hover"><b>${esc(p.name||p.iso3||'Country')}</b><br>${memberships.length?memberships.map(esc).join('<br>'):'No selected network membership'}<br><small>Observable institutional/regional layer · separate from project fields.</small></div>`,activeGeneration);
+      },
+      onLeave:()=>{activeHoverKey='';tooltip.invalidate('networks-leave');},
     });
-    tooltip.show('networks',event.lngLat,`<div class="atlas-hover"><b>${esc(p.name || p.iso3 || 'Country')}</b><br>${memberships.length ? memberships.map(esc).join('<br>') : 'No selected network membership'}<br><small>Observable institutional/regional layer · separate from project fields.</small></div>`,activeGeneration);
-  });
-  map.on('mouseleave',FILL_ID,()=>{activeHoverKey='';map.getCanvas().style.cursor='';tooltip.invalidate('networks-leave');});
+    return true;
+  };
+
+  if(!register())window.addEventListener('potato-atlas-interaction-ready',register,{once:true});
 }
 
 async function boot() {
