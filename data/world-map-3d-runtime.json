@@ -20,14 +20,36 @@
   "interface": {
     "status": "implemented-progressive-disclosure",
     "principle": "Map first; ordinary country clicks build a persistent working selection, the active country opens a Country Pulse, and deeper Layers, Analyze/Trace, Time, View, Eye and Axis controls remain progressively disclosed.",
-    "persistent": ["country search", "working selection strip when non-empty", "Inspector"],
-    "grouped": ["Layers", "Analyze / legacy Compare and Trace", "Time", "View", "More"],
-    "contextual": ["Country Pulse", "Lens legend", "country inspector", "Eye/evidence", "Axis navigator", "operator HUD", "Time status"],
+    "persistent": [
+      "country search",
+      "working selection strip when non-empty",
+      "Inspector"
+    ],
+    "grouped": [
+      "Layers",
+      "Analyze / legacy Compare and Trace",
+      "Time",
+      "View",
+      "More"
+    ],
+    "contextual": [
+      "Country Pulse",
+      "Lens legend",
+      "country inspector",
+      "Eye/evidence",
+      "Axis navigator",
+      "operator HUD",
+      "Time status"
+    ],
     "focus_mode": "Temporarily hides informational overlays/HUDs without changing underlying map/data state.",
-    "preference_memory": ["inspector open/closed", "focus mode", "Axis open/closed"]
+    "preference_memory": [
+      "inspector open/closed",
+      "focus mode",
+      "Axis open/closed"
+    ]
   },
   "renderer_architecture": {
-    "shell": "world-map/3d.html contains the public interface, progressive controls and map layout",
+    "shell": "world-map/index.html is the canonical public interface; world-map/3d.html is a noindex compatibility redirect.",
     "application": "world-map/3d-app.js owns MapLibre initialization, canonical country loading, legacy Compare, recursive Trace, semantic modules, golden-angle navigation layout and core URL state",
     "working_selection": "world-map/3d-country-selection.js composes over the core active-country API to own persistent multi-country working selection, active-country state, selection-strip state and bounded automatic relationship context without creating a second renderer",
     "country_pulse": "world-map/3d-country-pulse.js owns the sourced active-country first-screen summary over canonical country records plus optional demography runtime data",
@@ -37,7 +59,7 @@
     "demography": "world-map/3d-demography.js owns sourced population/religion presentation",
     "evidence": "world-map/3d-evidence.js owns the Eye inspector for source provenance, observation dates, represented relation evidence and project-vs-empirical boundaries",
     "time": "world-map/3d-time.js owns Current / As-of / Compare-dates view state, URL persistence, conservative unknown-date handling and atlas-time-change events",
-    "interface_controller": "world-map/3d-ui.js owns progressive disclosure, inspector/focus preferences, menu exclusivity, dynamic control relocation and compact Axis visibility",
+    "interface_controller": "world-map/3d-inspector-router.js owns semantic inspector routing; world-map/3d-inspector-visibility.js owns inspector open/close state; world-map/3d-ui-layout.js owns screen-zone placement; world-map/3d-world-bar.js owns the primary global control/readout surface; world-map/3d-context-visibility.js derives presentation policy. Retired broad 3d-ui.js is not a live bootstrap owner.",
     "axis": "world-map/3d-axis.js plus operator modules expose project-symbolic vertical navigation without turning it into physical geography",
     "reason_for_split": "Feature modules extend one renderer and shared public APIs rather than duplicating MapLibre state."
   },
@@ -56,10 +78,21 @@
     "principle": "A country polygon is a container. Selection unfolds canonical data into semantic modules and progressively exposes real spatial nodes as data quality and zoom permit.",
     "layout": "Available semantic modules are placed by a Vogel-style golden-angle sequence to reduce spoke alignment and preserve relative placement as new modules are added. This is navigation geometry only.",
     "implemented_semantic_modules": [
-      "religion / irreligion", "government / law", "economy / money", "physical debt / public finance",
-      "trade / supply chains", "energy / resources", "infrastructure / mobility", "companies / ownership",
-      "security / alliances", "science / technology", "migration / diaspora", "history / time",
-      "relationships", "North / Programme", "Tim / Project Canon"
+      "religion / irreligion",
+      "government / law",
+      "economy / money",
+      "physical debt / public finance",
+      "trade / supply chains",
+      "energy / resources",
+      "infrastructure / mobility",
+      "companies / ownership",
+      "security / alliances",
+      "science / technology",
+      "migration / diaspora",
+      "history / time",
+      "relationships",
+      "North / Programme",
+      "Tim / Project Canon"
     ],
     "source_resolution": "Modules resolve from canonical country records plus explicitly typed world/project context. Empty modules are not fabricated."
   },
@@ -83,13 +116,26 @@
   "lens_mode": {
     "status": "implemented-foundation",
     "principle": "Exactly one Lens owns country fill color at a time; working selection and active-country state remain encoded through outlines so analytical meaning and interaction state are not conflated.",
-    "families": ["Neutral", "Alignment / Axis", "Alliances", "Religion", "Metric"],
+    "families": [
+      "Neutral",
+      "Alignment / Axis",
+      "Alliances",
+      "Religion",
+      "Metric"
+    ],
     "alignment": "Uses explicitly ISO-coded project-axis classifications for North/West/East and overlap; South remains in the legend but countries are not guessed into it where no settled ISO-coded membership exists. This is project interpretation, not empirical alliance or sovereignty.",
     "alliances": "Uses empirical membership data for NATO, BRICS, AUKUS and Five Eyes, distinguishing members and partners where represented.",
     "religion": "Supports dominant broad category and selected-category percentage views for Christian, Muslim, Hindu, Buddhist, Jewish, other-religion and unaffiliated identity shares from the dated demography snapshot.",
     "metric": "Foundation metric Lens supports population and area from the current country geographic runtime; the harmonized WDI metric registry remains the next quantitative expansion.",
-    "url_state": ["lens", "lensOption"],
-    "boundaries": ["religious composition does not imply political loyalty, conduct or belief intensity", "project Axis classification does not imply sovereignty, consent or empirical institutional membership", "missing Lens data renders neutral rather than zero"]
+    "url_state": [
+      "lens",
+      "lensOption"
+    ],
+    "boundaries": [
+      "religious composition does not imply political loyalty, conduct or belief intensity",
+      "project Axis classification does not imply sovereignty, consent or empirical institutional membership",
+      "missing Lens data renders neutral rather than zero"
+    ]
   },
   "compare_mode": {
     "status": "implemented-basic",
@@ -105,7 +151,10 @@
     "minimum_depth": 1,
     "maximum_depth": 3,
     "cycle_handling": "visited-country tracking prevents repeated cycles; each country is presented at its shortest discovered hop",
-    "browser_safety": {"maximum_nodes": 60, "maximum_edges": 120},
+    "browser_safety": {
+      "maximum_nodes": 60,
+      "maximum_edges": 120
+    },
     "filters": "Relation type applies before traversal and persists in URL state.",
     "epistemic_boundary": "Hop count is graph-geodesic distance in the represented dataset, not causal, political, moral or evidentiary distance.",
     "next": "Generalize into entity-aware traversal using data/relationships.json and data/global-graph-bridge.json with time and epistemic filters."
@@ -118,8 +167,16 @@
   },
   "time_mode": {
     "status": "implemented-conservative-foundation",
-    "modes": ["Current", "As of", "Compare dates"],
-    "url_state": ["timeMode", "time", "time2"],
+    "modes": [
+      "Current",
+      "As of",
+      "Compare dates"
+    ],
+    "url_state": [
+      "timeMode",
+      "time",
+      "time2"
+    ],
     "unknown_date_policy": "flag",
     "current_overlay_guard": "When historical mode is active, current-only project Fields and empirical Network overlays are suppressed and their selectors disabled unless a dated layer implementation can honestly replace them.",
     "north_history": "An exact recovered project snapshot may be shown as context when the selected date exactly matches one; approximate/nearest snapshots are context only and are not projected forward as membership truth.",
@@ -139,7 +196,13 @@
   },
   "capital_and_country_facts": {
     "status": "implemented",
-    "hover": ["population + year", "capital", "area km²", "region/subregion", "currency"],
+    "hover": [
+      "population + year",
+      "capital",
+      "area km²",
+      "region/subregion",
+      "currency"
+    ],
     "capital_nodes": "Wikidata-backed capital city nodes with coordinates/name and population where returned; dated population statements are preferred by latest observation date and the date is exposed in hover.",
     "facts_snapshot": "world-country-facts.json is built same-origin from canonical country records with GeoNames fallback, exact area semantics and per-field provenance."
   },
@@ -196,19 +259,69 @@
     "single-owner country fill Lenses for project Alignment/Axis, empirical Alliances, descriptive Religion and foundation Population/Area metrics"
   ],
   "node_record_schema": {
-    "required": ["id", "kind", "name", "country_or_jurisdiction", "provenance"],
-    "spatial": ["lat", "lon", "geometry", "coordinate_source", "coordinate_precision"],
-    "identity": ["legal_name", "entity_type", "parent", "owner", "operator", "status"],
-    "relations": ["edge_ids"],
-    "time": ["valid_from", "valid_to", "observed_at"],
-    "display": ["minimum_zoom", "maximum_zoom", "importance", "icon_or_shape"],
+    "required": [
+      "id",
+      "kind",
+      "name",
+      "country_or_jurisdiction",
+      "provenance"
+    ],
+    "spatial": [
+      "lat",
+      "lon",
+      "geometry",
+      "coordinate_source",
+      "coordinate_precision"
+    ],
+    "identity": [
+      "legal_name",
+      "entity_type",
+      "parent",
+      "owner",
+      "operator",
+      "status"
+    ],
+    "relations": [
+      "edge_ids"
+    ],
+    "time": [
+      "valid_from",
+      "valid_to",
+      "observed_at"
+    ],
+    "display": [
+      "minimum_zoom",
+      "maximum_zoom",
+      "importance",
+      "icon_or_shape"
+    ],
     "boundary": "Never invent a coordinate for a nonspatial concept merely to make the map visually busy."
   },
   "metric_and_3d_rules": {
     "principle": "Extrusion height and Metric Lens color are chart encodings, not rank, holiness, guilt, value or sovereignty.",
-    "implemented": ["population extrusion", "area extrusion", "population color Lens", "area color Lens"],
-    "next": ["harmonized GDP", "GDP per capita", "documented gross public debt", "debt-to-GDP", "energy import dependence", "archive coverage", "sourced graph-edge count", "infrastructure capacity"],
-    "required_display": ["metric name", "unit", "observation year/date", "source", "normalization/scaling method"]
+    "implemented": [
+      "population extrusion",
+      "area extrusion",
+      "population color Lens",
+      "area color Lens"
+    ],
+    "next": [
+      "harmonized GDP",
+      "GDP per capita",
+      "documented gross public debt",
+      "debt-to-GDP",
+      "energy import dependence",
+      "archive coverage",
+      "sourced graph-edge count",
+      "infrastructure capacity"
+    ],
+    "required_display": [
+      "metric name",
+      "unit",
+      "observation year/date",
+      "source",
+      "normalization/scaling method"
+    ]
   },
   "data_growth_strategy": {
     "current": "Use country polygons, persistent working selection, Country Pulse, bounded automatic relationship context, one active country-fill Lens, sourced facts/demography, stable semantic modules, curated relationship graph, Path/Trace/legacy Compare, conservative Time, Eye evidence and the project-symbolic Axis view.",
@@ -253,6 +366,12 @@
     "world-map/3d-lenses.js",
     "world-map/3d-evidence.js",
     "world-map/3d-time.js",
-    "world-map/3d-ui.js"
+    "world-map/3d-inspector-router.js",
+    "world-map/3d-inspector-visibility.js",
+    "world-map/3d-ui-layout.js",
+    "world-map/3d-world-bar.js",
+    "world-map/3d-context-visibility.js",
+    "world-map/3d-render-stack.js",
+    "world-map/3d-url-state.js"
   ]
 }
