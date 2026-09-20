@@ -10,6 +10,27 @@ RISK_WEIGHTS={"error":10,"warning":3,"note":0}
 RISK_DOMAINS=("render_ownership","feature_state","style_lifecycle","event_lifecycle","popup_interaction","data_mutation","url_state","dom_ownership")
 DEFAULT_RENDER_STACK_SLOTS=("physical-surface","physical-water","physical-line","geography-context","context-network","selection-emphasis")
 HOVER_EVENTS={"mousemove","mouseenter","mouseover"}
+QUEUE_MAP={
+    "duplicate-source-owner":("WM-006","Render Stack / canonical layer owner"),
+    "duplicate-layer-owner":("WM-006","Render Stack / canonical layer owner"),
+    "declared-owner-conflict":("WM-006","Render Stack / canonical visual owner"),
+    "multiple-dom-creators":("WM-008","UI Layout / owning surface"),
+    "multiple-api-assigners":("WM-008","canonical runtime owner"),
+    "feature-state-owner-collision":("WM-005","canonical feature-state owner"),
+    "multiple-setdata-writers":("WM-006","canonical data/source owner"),
+    "multiple-url-writers":("WM-021","URL State"),
+    "unapproved-style-restorer":("WM-007","Style Lifecycle"),
+    "multiple-style-restorers":("WM-007","Style Lifecycle"),
+    "style-owner-listener-missing":("WM-007","Style Lifecycle"),
+    "style-owner-undeferred":("WM-007","Style Lifecycle"),
+    "unapproved-style-participant":("WM-007","Style Lifecycle"),
+    "stale-style-participant-contract":("WM-007","Style Lifecycle"),
+    "unknown-render-stack-slot":("WM-006","Render Stack"),
+    "transient-popup-class-missing":("WM-010","Tooltip / Accessibility"),
+    "stale-contract-entry":("WM-020","Architecture audit contract"),
+    "declared-owner-module-missing":("WM-020","Architecture audit contract"),
+    "style-owner-module-missing":("WM-020","Architecture audit contract"),
+}
 
 def line_for(source,offset): return source.count("\n",0,offset)+1
 def record(kind,resource,module,operation,line,confidence="high",**details): return {"kind":kind,"resource":resource,"module":module,"operation":operation,"line":line,"confidence":confidence,"details":details}
@@ -58,6 +79,10 @@ def load_contract(path):
     return payload
 def finding(code,severity,domain,message,resources=None,modules=None,remediation=None):
     item={"code":code,"severity":severity,"domain":domain,"message":message,"resources":sorted(set(resources or [])),"modules":sorted(set(modules or []))};
+    queue=QUEUE_MAP.get(code)
+    if queue:
+        item["queue_id"]=queue[0]
+        item["owner"]=queue[1]
     if remediation:item["remediation"]=remediation
     return item
 def contract_shared(contract,rid,modules):
@@ -142,6 +167,8 @@ def main(argv=None):
         records.sort(key=lambda r:(r["resource"],r["module"],r["line"],r["kind"])); contract=load_contract(contract_path); findings,ownership=analyze(records,contract,{p.relative_to(root).as_posix() for p in modules}); report=build_report(records,findings,ownership); report_path.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     except (OSError,ValueError,json.JSONDecodeError) as exc: print(f"WORLD MAP ARCHITECTURE AUDIT FAILED TO RUN: {exc}",file=sys.stderr); return 2
     s=report["summary"]; print(f"WORLD MAP ARCHITECTURE AUDIT {'FAILED' if s['errors'] else 'PASSED'} · {s['modules']} modules · {s['resources']} resources · {s['errors']} errors · {s['warnings']} warnings · risk {s['risk_score']}")
-    for item in report["findings"][:12]: print(f"- {item['severity'].upper()} {item['code']}: {item['message']}")
+    for item in report["findings"][:12]:
+        queue=f" · {item['queue_id']} · {item['owner']}" if item.get("queue_id") else ""
+        print(f"- {item['severity'].upper()} {item['code']}{queue}: {item['message']}")
     return 1 if s["errors"] else 0
 if __name__=="__main__": raise SystemExit(main())
