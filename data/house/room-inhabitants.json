@@ -528,7 +528,7 @@
     },
     {
       "id": "state-fbi",
-      "label": "FBI / federal law-enforcement interface",
+      "label": "U.S. FBI — Federal Bureau of Investigation (real institution)",
       "kind": "state-interface",
       "room_ids": [
         "law-justice",
@@ -536,7 +536,7 @@
       ],
       "route": "/shadow-farm/",
       "summary": "Federal law-enforcement interface for criminal investigation, civil-rights enforcement and hate-crime data collection.",
-      "status_note": "The FBI investigates crimes under statutory authority; being discussed by or reported to the FBI is not proof of guilt.",
+      "status_note": "Real U.S. federal law-enforcement institution; distinct from the Potatoverse Figures, Bonds & Incidents bureau.",
       "evidence_note": "Separate complaint, investigation, charge, conviction and aggregate statistics.",
       "facets": {
         "identity": {
@@ -2376,18 +2376,20 @@
     },
     {
       "id": "fbi-character-bureau",
-      "label": "FBI — Figures, Bonds & Incidents",
+      "label": "FBI — Figures, Bonds & Incidents (Potatoverse)",
       "kind": "character-dossier-bureau",
       "room_ids": [
-        "canon-identities",
         "memory-recovery",
+        "provenance-evidence",
+        "witness-attestation",
+        "canon-identities",
         "developmental-genealogy",
         "subculture-group-formation"
       ],
       "route": "/rooms/potatoverse-canon/beings/fbi/",
-      "summary": "Tim-centered character dossier system connecting recurring figures to aliases, chronology, conversations, Story, archetypes, symbolic roles, relationships and dated incidents.",
-      "status_note": "Potatoverse archival acronym; not affiliated with a real agency.",
-      "evidence_note": "Dossiers keep Chronicle, public chat, conversation recovery, literature and later synthesis as distinct source strata.",
+      "summary": "Canonical Potatoverse dossier bureau linking recurring figures to aliases, chronology, conversations, Story, archetypes, symbolic roles, bonds, dated incidents and recovery leads.",
+      "status_note": "FBI means Figures, Bonds & Incidents. This is a Potatoverse archive system, not law enforcement.",
+      "evidence_note": "Dossier inclusion means archival relevance only; it does not imply suspicion, guilt or wrongdoing.",
       "maturity": "case-ready",
       "facets": {
         "sources": [
@@ -2430,75 +2432,6 @@
             "mechanism": "identify → date → relate → classify source → link Story/Room → record unresolved",
             "output": "persistent figure dossier",
             "measurement_or_limit": "No motive or permanent identity inferred from co-presence alone."
-          }
-        ]
-      }
-    },
-    {
-      "id": "collection-fbi-figures-bonds-incidents",
-      "label": "FBI — Figures, Bonds & Incidents",
-      "kind": "character-dossier-collection",
-      "room_ids": [
-        "memory-recovery",
-        "provenance-evidence",
-        "witness-attestation",
-        "canon-identities",
-        "developmental-genealogy",
-        "subculture-group-formation"
-      ],
-      "route": "/rooms/potatoverse-canon/beings/fbi/",
-      "summary": "Potatoverse filing bureau connecting recurring figures to dated appearances, relationships, incidents, stories, symbolic roles, source strata and unresolved recovery leads.",
-      "status_note": "FBI means Figures, Bonds & Incidents. It is a project archive metaphor, not the U.S. Federal Bureau of Investigation.",
-      "evidence_note": "Named claims stay source-bounded; literary/project roles, public chat, Chronicle retelling and documentary evidence remain distinguishable.",
-      "maturity": "case-ready",
-      "facets": {
-        "identity": {
-          "scope": "cross-Room character dossier collection",
-          "boundary": "Retrieval layer; does not replace canonical person, history, source or story owners."
-        },
-        "sources": [
-          {
-            "source_ref": "knowledge/fbi/manifest.json",
-            "role": "bureau manifest",
-            "evidence_class": "project index"
-          },
-          {
-            "source_ref": "knowledge/fbi/figures/",
-            "role": "per-figure dossiers",
-            "evidence_class": "mixed-source dossier layer"
-          },
-          {
-            "source_ref": "knowledge/fbi/bonds/network.json",
-            "role": "relationship network",
-            "evidence_class": "source-bounded synthesis"
-          },
-          {
-            "source_ref": "knowledge/fbi/incidents/index.json",
-            "role": "incident index",
-            "evidence_class": "dated project index"
-          }
-        ],
-        "relationships": [
-          {
-            "type": "routes-to",
-            "target_id_or_label": "Beings & Cast",
-            "direction": "outgoing",
-            "status": "reader interface",
-            "boundary": "Character-facing view."
-          },
-          {
-            "type": "routes-to",
-            "target_id_or_label": "Memory & Recovery",
-            "direction": "outgoing",
-            "status": "source recovery interface",
-            "boundary": "Recovery state preserved."
-          }
-        ],
-        "questions": [
-          {
-            "question": "Which recurring figures still lack enough dated/source-bounded material for a deep file?",
-            "why_it_matters": "Sets the next mining queue.",
-            "needed_evidence": "chat logs, Chronicle dates, story scenes, public posts, conversation recovery"
           }
         ]
       }
