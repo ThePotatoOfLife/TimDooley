@@ -45,16 +45,20 @@ def main() -> int:
         errors.append("project consolidation map must identify manifest.json as archive navigation owner")
 
     workflow = (ROOT / ".github/workflows/quality-checks.yml").read_text(encoding="utf-8")
+    runner = (ROOT / "scripts/run_quality_group.py").read_text(encoding="utf-8")
     if "Validate JavaScript syntax" in workflow:
         errors.append("quality workflow must not maintain a partial manual JavaScript syntax list")
     if "node --check app/bible-study.js" in workflow:
         errors.append("manual JavaScript syntax checks remain in quality workflow")
     if "- name: Validate World Map UI shell" in workflow:
         errors.append("quality workflow must not rerun UI-shell validation already owned by validate_world_map_source.py")
-    if "python scripts/stability_audit.py" not in workflow:
-        errors.append("quality workflow must retain the all-JavaScript stability audit")
-    if "python scripts/validate_world_map_source.py" not in workflow:
-        errors.append("quality workflow must retain canonical World Map source validation")
+    for group in ("core", "world_map", "content"):
+        if f"python scripts/run_quality_group.py {group}" not in workflow:
+            errors.append(f"quality workflow must invoke grouped quality runner for {group}")
+    if "python scripts/stability_audit.py" not in runner:
+        errors.append("core quality runner must retain the all-JavaScript stability audit")
+    if "python scripts/validate_world_map_source.py" not in runner:
+        errors.append("world-map quality runner must retain canonical World Map source validation")
 
     if errors:
         print("COORDINATION CONVERGENCE TEST FAILED")
