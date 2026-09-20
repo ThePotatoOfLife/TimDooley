@@ -18,10 +18,12 @@ class FakeDetails {
 global.HTMLDetailsElement = FakeDetails;
 
 const openMenu = new FakeDetails();
+const secondMenu = new FakeDetails();
+secondMenu.open = false;
 const listeners = new Map();
 global.document = {
   addEventListener(type,handler){ listeners.set(type,handler); },
-  querySelectorAll(){ return [openMenu]; },
+  querySelectorAll(){ return [openMenu, secondMenu]; },
 };
 global.CustomEvent = class CustomEvent { constructor(type,options={}){this.type=type;this.detail=options.detail;} };
 global.window = {
@@ -50,5 +52,17 @@ assert.equal(openMenu.summary.attrs.get('aria-expanded'),'false');
 assert.equal(openMenu.summary.focused,true,'Escape should restore focus to the menu summary');
 assert.equal(prevented,true);
 assert.equal(stopped,true);
+
+// Only one map menu should remain open at a time on constrained layouts.
+openMenu.open = true;
+openMenu.summary.focused = false;
+secondMenu.open = true;
+listeners.get('toggle')?.({ target:secondMenu });
+await Promise.resolve();
+assert.equal(secondMenu.open,true,'newly opened menu remains open');
+assert.equal(openMenu.open,false,'opening a second map menu closes the previous menu');
+assert.equal(openMenu.summary.focused,false,'automatic sibling closure must not steal focus');
+assert.equal(openMenu.summary.attrs.get('aria-expanded'),'false');
+assert.equal(secondMenu.summary.attrs.get('aria-expanded'),'true');
 
 console.log('WORLD MAP ACCESSIBILITY KEYBOARD REGRESSION PASSED');
