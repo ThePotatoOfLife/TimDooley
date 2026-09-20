@@ -7,7 +7,7 @@
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/news/">
 <link rel="stylesheet" href="../app/site-system.css?v=20260914a">
-<link rel="stylesheet" href="../app/news.css?v=20260920c">
+<link rel="stylesheet" href="../app/news.css?v=20260920d">
 <link rel="stylesheet" href="../app/tts-drawer.css?v=20260915">
 </head>
 <body>
@@ -101,6 +101,7 @@
 
 <nav class="news-view-switch" aria-label="News reading mode">
 <button type="button" data-news-view="latest" aria-pressed="true"><b>Latest</b><span>chronological river</span></button>
+<button type="button" data-news-view="briefing" aria-pressed="false"><b>Briefing</b><span>source-balanced rotation</span></button>
 <button type="button" data-news-view="clusters" aria-pressed="false"><b>Repeated coverage</b><span>similar headlines across sources</span></button>
 <button type="button" data-news-view="sources" aria-pressed="false"><b>Sources</b><span>provider lanes</span></button>
 </nav>
@@ -108,6 +109,11 @@
 <section id="news-reading-stream" class="news-view is-active" data-news-view-panel="latest" aria-label="Latest coverage">
 <section class="news-lead" data-news-lead aria-label="Newest stories"></section>
 <section class="news-feed" data-news-list aria-label="More current stories"><div class="news-empty">Loading public feeds…</div></section>
+</section>
+
+<section class="news-view" data-news-view-panel="briefing" aria-label="Source-balanced briefing">
+<div class="news-section-intro"><div><p class="eyebrow">Mechanical briefing</p><h2>A shorter pass across the streams</h2></div><p>This view rotates through active providers and avoids repeating the same source domain where possible. It is not a ranking of importance, quality, truth or political significance; it is simply a shorter, more source-diverse way to consume the returned sample.</p></div>
+<div class="news-briefing" data-news-briefing><div class="news-empty">Building a source-balanced briefing…</div></div>
 </section>
 
 <section class="news-view" data-news-view-panel="clusters" aria-label="Repeated coverage">
@@ -136,7 +142,7 @@
 </div>
 </section>
 </main>
-<script src="../app/news.js?v=20260920c" data-news-config="../data/news/sources.json"></script>
+<script src="../app/news.js?v=20260920d" data-news-config="../data/news/sources.json"></script>
 <script src="../app/tts-reader.js"></script><script src="../app/tts-drawer.js"></script><script src="../app/longform-tts-adapter.js"></script>
 <script src="../app/house-journey.js"></script>
 </body></html>
