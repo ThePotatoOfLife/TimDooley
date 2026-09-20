@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MOTION = ROOT / "world-map" / "3d-motion.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
+SPATIAL = ROOT / "world-map" / "3d-spatial-overlays.js"
 INDEX = ROOT / "world-map" / "index.html"
 TEST = ROOT / "scripts" / "test_world_map_reduced_motion.mjs"
 CONSUMERS = (
@@ -25,7 +26,7 @@ CONSUMERS = (
 
 def main() -> int:
     errors: list[str] = []
-    for path in (MOTION, HOVER, INDEX, TEST, *CONSUMERS):
+    for path in (MOTION, HOVER, SPATIAL, INDEX, TEST, *CONSUMERS):
         if not path.is_file():
             errors.append(f"missing reduced-motion contract file: {path.relative_to(ROOT)}")
     if errors:
@@ -53,10 +54,14 @@ def main() -> int:
     if motion_boot < 0 or app_boot < 0 or motion_boot > app_boot:
         errors.append("shared motion policy must preload before core 3d-app.js")
 
-    for path in CONSUMERS:
+    governed_consumers = (*CONSUMERS, HOVER, SPATIAL)
+    for path in governed_consumers:
         text = path.read_text(encoding="utf-8", errors="replace")
         if "__potatoAtlasMotion" not in text and "motion." not in text:
             errors.append(f"camera consumer does not use shared motion policy: {path.relative_to(ROOT)}")
+        for raw_call in ("map.easeTo(", "map.fitBounds("):
+            if raw_call in text:
+                errors.append(f"camera consumer bypasses shared motion policy: {path.relative_to(ROOT)} · {raw_call}")
 
     html = INDEX.read_text(encoding="utf-8", errors="replace")
     if "@media(prefers-reduced-motion:reduce)" not in html:
