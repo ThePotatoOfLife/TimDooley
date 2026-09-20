@@ -1,5 +1,5 @@
 {
-  "version": "7.7.0",
+  "version": "7.8.0",
   "updated": "2026-09-20",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -49,7 +49,10 @@
       "vertebral-33-room-atlas",
       "spinal-cord-microcircuit-atlas",
       "cranial-brainstem-room-atlas",
-      "brain-room-deep-atlas"
+      "brain-room-deep-atlas",
+      "neural-development-lineage-atlas",
+      "glia-neurovascular-barrier-atlas",
+      "cortical-celltype-parcellation-atlas"
     ],
     "science": [
       "science-master-index",
@@ -2531,6 +2534,51 @@
         "Thalamus",
         "Cerebellum",
         "Choroid Plexus"
+      ]
+    },
+    {
+      "id": "neural-development-lineage-atlas",
+      "path": "knowledge/body/neural-development-lineage-atlas.json",
+      "branch": "body",
+      "kind": "developmental neurobiology and lineage atlas",
+      "terms": [
+        "Neural Tube",
+        "Neurulation",
+        "Brain Vesicles",
+        "Radial Glia",
+        "Neural Crest",
+        "Cortical Migration"
+      ]
+    },
+    {
+      "id": "glia-neurovascular-barrier-atlas",
+      "path": "knowledge/body/glia-neurovascular-barrier-atlas.json",
+      "branch": "body",
+      "kind": "glial neurovascular and barrier ecology atlas",
+      "terms": [
+        "Astrocytes",
+        "Oligodendrocytes",
+        "Microglia",
+        "BBB",
+        "Pericytes",
+        "Blood-CSF Barrier",
+        "Neurovascular Unit"
+      ]
+    },
+    {
+      "id": "cortical-celltype-parcellation-atlas",
+      "path": "knowledge/body/cortical-celltype-parcellation-atlas.json",
+      "branch": "body",
+      "kind": "cortical laminar cell-type and parcellation atlas",
+      "terms": [
+        "Cortical Layers",
+        "Cell Types",
+        "PVALB",
+        "SST",
+        "VIP",
+        "Corticothalamic",
+        "Spatial Transcriptomics",
+        "Parcellation"
       ]
     }
   ],
