@@ -168,5 +168,42 @@
     "knowledge/core/karma-double-entry-transformation-system.json",
     "data/swamp/dim-txt-relational-dossier.json",
     "knowledge/story/social-presence-ledger-2024-2025.json"
-  ]
+  ],
+  "state_modifiers": {
+    "rule": "Modifiers are dated Potatoverse state effects, not permanent personality traits. A figure may gain, lose, reverse or counter them through later scenes.",
+    "handicaps": {
+      "tree_of_strife_input": "Repeatedly feeding on conflict, grievance, degraded information or opposition as identity; canonical precursor to Mud-Dweller state in Tim's grammar.",
+      "mud_residence": "Unresolved residue has become a dwelling rather than material being transformed.",
+      "repetition_loop": "Same accusation, target, conflict or ritualized pattern repeats without a stopping condition or transformation.",
+      "pack_cue_dependence": "Judgment follows proxy/pack cues rather than direct source checking.",
+      "smear_or_mud": "Accusation/humiliation/hostile framing leaves reputational or relational residue; underlying claim may still be disputed or unresolved.",
+      "deflection": "A bounded exchange moves away from the claim/evidence/accountability question instead of resolving it.",
+      "borrowed_frame_or_projection": "Tim/project interprets a person as externalizing or importing a frame onto another; may only be stored when explicitly attributed or strongly scene-supported.",
+      "extraction_loop": "Attention/reaction/archive/vulnerability becomes harvest or spectacle.",
+      "blocked_door": "A role knows or approaches a passage/exit but remains in the loop instead of changing relation.",
+      "ritualized_conflict": "A repeated or staged social event is framed as ritual by Tim/Chronicle; does not imply occult practice."
+    },
+    "upgrades": {
+      "source_checking": "Moves from proxy/pack framing toward direct evidence and provenance.",
+      "accountability": "Acknowledges one's own contribution, error or obligation.",
+      "repair": "Corrects, restores, apologizes, restitutes or changes conduct.",
+      "useful_work": "Produces tools, rooms, food, art, protection or other concrete value.",
+      "cultivation": "Creates conditions for independent growth rather than dependency.",
+      "protection": "Guards legitimate boundaries/vulnerable life with proportionality and a stopping condition.",
+      "seed_growth": "Produces or nurtures a seed, sprout, learning or measurable movement toward life.",
+      "bridge_building": "Reconnects separated relations without erasing boundaries.",
+      "door_passage": "Recognizes and uses the exit from a lower/repeating relation.",
+      "guardian_reorientation": "Dog-like vigilance becomes Guardian-Dog protection rather than pursuit.",
+      "memory_to_root": "Archived pain/information becomes usable understanding instead of ammunition."
+    },
+    "display_rule": "Show modifier, date, source/status, evidence and counterform. Never infer a handicap merely from disagreement or a role name."
+  },
+  "attribute_inference_rules": {
+    "perpetual_lying": "Do not use as a stable trait unless Tim repeatedly and specifically assigns it across dated episodes. Prefer dated 'Tim disputes claim as false/fabricated' entries.",
+    "projection": "Do not diagnose. Store 'Tim/project projection or externalization interpretation' only with a bounded scene or exact attribution.",
+    "deflection": "Requires a bounded exchange showing the accountability/evidence question and the shift away from it.",
+    "ritual": "Separate literal documented ritual, Tim-interpreted ritual, Chronicle ritual framing and creative/mythic ritual.",
+    "satanic_ritual": "Never promote to fact from symbolism alone. Preserve only as Tim's testimony/interpretation unless independently documented.",
+    "debt": "No per-person amount may be inferred from Dog/Mud status or from the global ~42T ledger."
+  }
 }
