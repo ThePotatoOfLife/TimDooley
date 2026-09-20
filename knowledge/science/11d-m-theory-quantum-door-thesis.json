@@ -1,9 +1,9 @@
 {
   "id": "11d-m-theory-quantum-door-thesis",
   "title": "11D Door Thesis — M-Theory, Compactification and Quantum Information",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "updated": "2026-09-20",
-  "status": "deepened archive-developed scientific synthesis: recovered project scaffold + explicit M-theory/IIA dictionary + G2 geometry + brane compactification + EFT + quantum information/recovery + holographic/matrix-theory comparators",
+  "status": "consolidated mathematical reference for the 11D Door thesis and reusable project-science typing framework",
   "core_thesis": "The recovered 1–4D / 5D Door / 6–11D scaffold is strongest as a typed multi-description architecture. Its best literal comparator is a 4+1+6 M-theory-circle/Type-IIA branch; its best direct 11D→4D comparator is a 4+7 G2-holonomy compactification. Reduction is category conversion: higher-dimensional geometry, topology, flux and momentum become lower-dimensional fields, spectra, charges, couplings and moduli. Quantum reduction must be typed separately as lossy channel, effective truncation, recoverable encoding or exact duality.",
   "dimensional_branches": {
     "door_compatible": {
@@ -139,7 +139,11 @@
     "https://arxiv.org/abs/1411.7041",
     "https://arxiv.org/abs/1503.06237",
     "https://arxiv.org/abs/2003.13914",
-    "https://arxiv.org/abs/2009.14197"
+    "https://arxiv.org/abs/2009.14197",
+    "https://arxiv.org/abs/hep-th/0312069",
+    "https://arxiv.org/abs/1810.12659",
+    "https://arxiv.org/abs/2109.11147",
+    "https://arxiv.org/abs/2006.09777"
   ],
   "m_theory_iia_dictionary": {
     "radius_coupling": "R_11 = g_s l_s; l_11 = g_s^(1/3) l_s",
@@ -243,5 +247,99 @@
     "T4": "distinctive non-free observable",
     "T5": "empirical confrontation",
     "current": "mostly T1–T2 depending on branch"
-  }
+  },
+  "final_foundations": {
+    "manifold": "dimension means local coordinate dimension of a declared manifold; coordinates are chart labels, not invariant physical objects",
+    "forms_cohomology": "differential forms, de Rham cohomology, cycles and periods formalize flux/topology",
+    "hodge": "harmonic forms represent cohomology classes and produce compactification zero modes",
+    "bundles_connections": "fiber bundles, principal bundles, connections, curvature and holonomy formalize internal/gauge structure",
+    "compactification_pushforward": "11D reduction is mode expansion + fiber integration + truncation, not coordinate deletion",
+    "scale_separation": "E/M_KK << 1 is required for controlled low-energy EFT",
+    "truncation": "distinguish ordinary approximate truncation from consistent truncation",
+    "warped_geometry": "metric topology alone does not determine effective physics; warp factors matter",
+    "spin_index": "spin structure, Dirac operator and index theory connect geometry/topology to fermions and chirality",
+    "c_field_global": "the M-theory C-field has globally refined topological data beyond one ordinary global 3-form",
+    "config_moduli": "configuration space, gauge quotient and moduli space are distinct",
+    "dynamics": "physical models require action/equations, boundary data and stability",
+    "quantum_algebra": "observable algebra/state-functional language is often more robust than naive Hilbert tensor factorization",
+    "measurement": "Eye is typed by accessible observables, POVM/instrument and inference map",
+    "emergence": "C o Phi_t ≈ Psi_t o C defines approximate closed higher-level dynamics",
+    "category": "Rooms/models as objects and Doors/maps as morphisms give a compositional grammar"
+  },
+  "master_schema": {
+    "form": "P = (G,T,F,D,Q,I,O,R,E,V)",
+    "G": "geometry: manifold, metric, orientation, spin structure, bundles",
+    "T": "topology: homology, cohomology, homotopy, characteristic classes, cycles",
+    "F": "fields: gauge/form/fermion/scalar sectors and charges",
+    "D": "dynamics: action, equations, constraints, boundary conditions, flows",
+    "Q": "quantum structure: Hilbert/algebra, state, channels, charges",
+    "I": "information: entropy, mutual information, distinguishability, sufficiency, recoverability",
+    "O": "observation: accessible algebra, POVMs, likelihood/instrument",
+    "R": "reduction/translation: compactification, EFT, coarse-graining, duality, recovery",
+    "E": "effective theory: action, K/W/f where relevant, spectrum, couplings, vacuum",
+    "V": "verification: units, known limits, parameters, predictions, uncertainty, falsifiers, data"
+  },
+  "typed_project_objects": {
+    "Door": "D=(D_G,D_E,D_Y,D_Q,D_U,D_O,D_R)",
+    "Axis": "A=(A_geom,A_dyn,A_sym,A_RG,A_order)",
+    "Spiral": "S=(S_helix,S_return,S_RG,S_hol,S_phase)",
+    "House": "H=(X, boundary X, global algebra/structure)",
+    "Room": "R_i=(X_i,A_i,inclusion/relation)",
+    "Root": "dependency/provenance graph + source data + partial order",
+    "Tree": "labeled branching graph/network",
+    "Eye": "E=(A_accessible,{E_y},p(y|rho),R_infer)",
+    "Seed": "Z=(theta_0,generation rule,initial measure/state)",
+    "Ladder": "X0 -> X1 -> ... -> Xn",
+    "Fruit": "effective observable/output family"
+  },
+  "dimension_type_system": {
+    "P": "project/symbolic grade",
+    "S": "spacetime dimension",
+    "C": "compact/internal dimension",
+    "E": "effective/spectral dimension",
+    "H": "Hilbert-space dimension",
+    "Q": "configuration/state-space dimension",
+    "M": "moduli-space dimension",
+    "F": "fractal/information dimension when explicitly defined"
+  },
+  "epistemic_scale": {
+    "E0": "symbol/project metaphor",
+    "E1": "mathematical definition",
+    "E2": "established external mathematics/physics",
+    "E3": "structural comparator with explicit mismatch",
+    "E4": "speculative physical model with calculable consequences",
+    "E5": "model constrained against existing evidence",
+    "E6": "distinctive empirically supported result"
+  },
+  "correspondence_scale": {
+    "C0": "poetic resemblance",
+    "C1": "structural analogy",
+    "C2": "typed mathematical map",
+    "C3": "derived physical embedding",
+    "C4": "distinctive quantitative prediction",
+    "C5": "empirical support"
+  },
+  "validation_rules": [
+    "check dimensional units before interpretation",
+    "require known-theory correspondence limits",
+    "count free parameters and separate fitted from derived values",
+    "propagate theory and experimental uncertainty",
+    "attach local falsifiers to subclaims",
+    "require identifiability before inferring hidden cause from observation",
+    "check anomaly cancellation and spin/chirality requirements",
+    "check scale separation and truncation control",
+    "check horizontal consistency/commuting diagrams across dual routes"
+  ],
+  "final_completion_checklist": [
+    "mathematical typing",
+    "geometry/topology",
+    "fields/charges",
+    "dynamics",
+    "reduction",
+    "quantum structure",
+    "effective theory",
+    "observation",
+    "verification",
+    "correspondence provenance/maturity"
+  ]
 }
