@@ -35,6 +35,9 @@ jobs:
       - name: Validate repository hygiene
         run: python scripts/validate_repo_hygiene.py
 
+      - name: Test bidirectional spiral field
+        run: python scripts/test_bidirectional_spiral_field.py
+
       - name: Validate World Map ownership
         run: python scripts/validate_world_map_ownership.py
 
