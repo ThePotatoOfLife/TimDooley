@@ -1,3 +1,5 @@
+if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
+const motion = window.__potatoAtlasMotion;
 const DATA_URL = '../data/axis-depths.json';
 const ROOT_ID = 'axisDepthNavigator';
 const TINT_ID = 'axisDepthTint';
@@ -157,19 +159,19 @@ function installNavigator(map, data) {
       const baseZoom = Math.max(map.getZoom(),2.35);
       if (current.dimension >= 5) {
         const rise = current.dimension - 5;
-        map.easeTo({center:[-36,80.0],zoom:baseZoom + Math.min(rise*.075,.42),pitch:48 + Math.min(rise*4.5,28),bearing:rise*16,duration:900});
+        motion.easeTo(map,{center:[-36,80.0],zoom:baseZoom + Math.min(rise*.075,.42),pitch:48 + Math.min(rise*4.5,28),bearing:rise*16,duration:900});
       } else if (current.dimension === 4) {
-        map.easeTo({center:[-36,74.5],zoom:Math.max(2.1,Math.min(map.getZoom(),2.8)),pitch:30,bearing:0,duration:800});
+        motion.easeTo(map,{center:[-36,74.5],zoom:Math.max(2.1,Math.min(map.getZoom(),2.8)),pitch:30,bearing:0,duration:800});
       } else {
         const depth = 4-current.dimension;
-        map.easeTo({center:[-36,73.4],zoom:Math.max(2.0,baseZoom-.12*depth),pitch:28-depth*7,bearing:-depth*16,duration:900});
+        motion.easeTo(map,{center:[-36,73.4],zoom:Math.max(2.0,baseZoom-.12*depth),pitch:28-depth*7,bearing:-depth*16,duration:900});
       }
     }
     renderPanel(data,current);
     window.dispatchEvent(new CustomEvent('atlas-axis-dimension-change',{detail:{dimension:current.dimension,id:current.id,label:current.label,direction:current.direction,breadth:breadthFor(data,current.dimension)}}));
   }
 
-  function focusNorth(){map.easeTo({center:[-36,79.7],zoom:Math.max(map.getZoom(),2.55),pitch:48,bearing:0,duration:900});}
+  function focusNorth(){motion.easeTo(map,{center:[-36,79.7],zoom:Math.max(map.getZoom(),2.55),pitch:48,bearing:0,duration:900});}
   window.__potatoAxisDepth = {data,setDimension,setLevel:setDimension,focusNorth,getDimension:()=>Number(new URL(location.href).searchParams.get('axisD')||DEFAULT_DIMENSION),getBreadth:()=>breadthFor(data,Number(new URL(location.href).searchParams.get('axisD')||DEFAULT_DIMENSION))};
   const legacy = new URL(location.href).searchParams.get('axisLevel');
   const requested = Number(new URL(location.href).searchParams.get('axisD') || (legacy !== null ? Number(legacy)+4 : DEFAULT_DIMENSION));
