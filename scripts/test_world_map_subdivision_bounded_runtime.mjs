@@ -39,6 +39,12 @@ const scaleRuntime = Object.freeze({
     if (!Number.isFinite(value)) throw new Error(`unexpected scale band ${band}`);
     return value;
   },
+  capabilityActive(capability, phase, zoom) {
+    const values = { subdivisions:{ load:3.4, render:3.4, label:4.25, interact:3.4 } };
+    const value = values?.[capability]?.[phase];
+    if (!Number.isFinite(value)) throw new Error(`unexpected scale capability ${capability}.${phase}`);
+    return Number(zoom) >= value;
+  },
 });
 window.__potatoAtlasScale = { ...scaleRuntime, ready:Promise.resolve(scaleRuntime) };
 
@@ -81,6 +87,7 @@ const sources = new Map();
 const layers = new Map();
 const fetched = [];
 const fakeMap = {
+  getZoom() { return 6; },
   getBounds() { return { getWest:()=>20, getEast:()=>21, getSouth:()=>0, getNorth:()=>1 }; },
   getCenter() { return { lng:20.5, lat:0.5 }; },
   getSource(id) { return sources.get(id) || null; },
