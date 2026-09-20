@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>FBI — Figures, Bonds & Incidents</title>
 <meta name="description" content="Potatoverse filing cabinet for character dossiers, symbolic roles, bonds, incidents and story appearances.">
+<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/rooms/potatoverse-canon/beings/fbi/">
 <link rel="stylesheet" href="../../../../app/site-system.css?v=20260914a">
 <style>
 :root{--cab:#2a241b;--cab2:#181510;--folder:#8b744e;--paper:#d8d0b8;--ink:#292319}
@@ -19,7 +20,7 @@ body{background:linear-gradient(90deg,rgba(255,255,255,.015),transparent 20%,tra
 .file{position:relative;background:var(--folder);color:#f1e8d2;min-height:130px;padding:19px 14px 14px;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.22);border-radius:2px}.file:before{content:"";position:absolute;top:-9px;left:8px;width:76px;height:13px;background:var(--folder);border-radius:4px 4px 0 0}.file b{display:block;font:700 19px Georgia,serif;margin:5px 0}.file small{display:block;color:#d0c5ad;line-height:1.45}.file .count{font:700 9px ui-monospace,monospace;letter-spacing:.09em;text-transform:uppercase}.file .tags{margin-top:9px;display:flex;gap:4px;flex-wrap:wrap}.file .tag{font:700 8px ui-monospace,monospace;border:1px solid rgba(255,255,255,.25);padding:3px 5px}
 .role-results{display:none;border:1px solid var(--site-line);padding:15px;margin:14px 0}.role-results.show{display:block}.role-hit{border-top:1px solid var(--site-line);padding:10px 0}.role-hit:first-of-type{border-top:0}.role-hit a{color:var(--site-green)}
 .desks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px 0}.desk{border:1px solid var(--site-line);padding:15px}.desk h2{margin-top:0}.boundary{border-left:2px solid var(--site-line);padding:13px 16px;color:var(--site-muted)}
-.status{font:10px ui-monospace,monospace;color:var(--site-muted);margin:9px 0}
+.status{font:10px ui-monospace,monospace;color:var(--site-muted);margin:9px 0}.quickfiles{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 24px}.quickfiles a{border:1px solid var(--site-line);padding:7px 10px;text-decoration:none;color:var(--site-green);font:700 9px ui-monospace,monospace;text-transform:uppercase}.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0}.legend div{border-top:1px solid var(--site-line);padding-top:10px}.legend b{display:block;color:var(--site-gold);margin-bottom:4px}.legend span{color:var(--site-muted);font-size:11px;line-height:1.55}@media(max-width:760px){.legend{grid-template-columns:1fr}}
 @media(max-width:760px){.controls{grid-template-columns:1fr}.desks{grid-template-columns:1fr}}
 </style>
 </head>
@@ -29,17 +30,20 @@ body{background:linear-gradient(90deg,rgba(255,255,255,.015),transparent 20%,tra
 <header class="page-header"><p class="eyebrow">Potatoverse dossier bureau</p><h1>FBI</h1><p class="summary">Figures, Bonds &amp; Incidents — a searchable filing cabinet for characters, roles, stories, relationships and source-bounded project archaeology.</p></header>
 <p class="lede">Pull a folder. Search a name. Ask for Dogs, Farmers, Mud Dwellers, Potatoes or Tomatoes. Shuffle until somebody unexpected lands on the desk. Each deep file opens as a dossier sheet with chronology, Bonds, Story appearances, roles, capabilities and source notes.</p>
 <p class="boundary"><strong>FBI means Figures, Bonds &amp; Incidents.</strong> It is a Potatoverse archive metaphor, not the real U.S. FBI or any intelligence/law-enforcement service. Named role matches remain scene- and source-bounded.</p>
+<div class="quickfiles" aria-label="Featured files"><a href="file/?figure=marty-biz">Marty</a><a href="file/?figure=termite">Termite</a><a href="file/?figure=rahu">Rahu</a><a href="file/?figure=txt">TXT</a><a href="file/?figure=metalorian">Metalorian</a><a href="file/?figure=matthew-mtclassic">Matthew / MTClassic</a></div>
+<section class="legend" aria-label="FBI evidence legend"><div><b>Documentary</b><span>Public chat, dated posts, recovered conversation, source files and ordinary social presence. These support chronology but not every later interpretation.</span></div><div><b>Literary / project</b><span>Great Book scenes, symbolic roles and creative enhancements remain visibly typed as authored project material rather than biography.</span></div><div><b>Recovery active</b><span>A file may be useful while still missing original links, complete transcripts, the middle of a relationship arc or identity confirmation.</span></div></section>
 
-<div class="controls"><input id="search" type="search" placeholder="Search names, aliases, archetypes, roles…"><button id="shuffle">Shuffle file</button></div>
+<div class="controls"><input id="search" type="search" aria-label="Search FBI character files" placeholder="Search names, aliases, archetypes, roles…"><button id="shuffle" type="button">Shuffle file</button></div>
 <div class="rolebar" id="rolebar"></div>
 <section class="role-results" id="roleResults"></section>
 
 <div class="cabinet">
 <div class="drawer"><div class="drawer-head"><strong>Cabinet A · Deep figure files</strong><span class="handle"></span></div></div>
-<p class="status" id="status">Loading cabinet…</p>
+<p class="status" id="status" role="status" aria-live="polite">Loading cabinet…</p>
 <div class="files" id="files"></div>
 <div class="drawer"><div class="drawer-head"><strong>Cabinet B · Roles / created beings / unfiled leads</strong><span class="handle"></span></div></div>
 </div>
+<noscript><section><h2>Direct dossier access</h2><p>JavaScript is disabled, so the searchable cabinet cannot initialize. These files remain directly accessible:</p><p><a href="file/?figure=marty-biz">Marty Biz Music</a> · <a href="file/?figure=termite">Termite</a> · <a href="file/?figure=rahu">Rahu</a> · <a href="file/?figure=txt">TXT</a> · <a href="file/?figure=metalorian">Metalorian</a> · <a href="bonds/">Bonds</a> · <a href="incidents/">Incidents</a></p></section></noscript>
 
 <section class="desks">
 <div class="desk"><h2><a href="bonds/">Bonds desk</a></h2><p>Who repeatedly appears with whom, on which dates, and in what scene contexts.</p></div>
