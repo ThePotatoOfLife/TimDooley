@@ -1,17 +1,95 @@
 {
-  "version":"1.1.0",
-  "updated":"2026-09-07",
-  "purpose":"Audit of whether comparative texts are actually stored as searchable raw text or only represented by metadata/links, with a separate distinction between raw text and structural depth.",
-  "rule":"A text is full-text-ready only when the repository contains the reusable source text itself, preferably as UTF-8 TXT, and the frontend can search it without depending on an external website.",
-  "coverage":[
-    {"id":"poetic-edda","label":"Poetic Edda","status":"verified-raw-text","depth":"corpus","paths":["books/norse-edda/poetic-edda-bellows-1923.txt"],"reader":"books/norse-edda/reader.html","structure":"books/norse-edda/structure.json","notes":"Complete Bellows edition stored locally as raw UTF-8 text; reader searches the complete edition and exposes the poem structure."},
-    {"id":"prose-edda","label":"Prose Edda / Younger Edda","status":"verified-raw-text","depth":"corpus","paths":["books/norse-edda/prose-edda-anderson.txt"],"reader":"books/norse-edda/reader.html","structure":"books/norse-edda/structure.json","notes":"Complete Anderson edition stored locally as raw UTF-8 text; reader searches the complete edition and exposes its major sections."},
-    {"id":"christian-bible","label":"Christian Bible","status":"existing-working-layer","depth":"corpus-or-verify","paths":[],"notes":"Preserve the existing working Bible layer, but verify its actual local corpus and stable passage model rather than assuming it is equivalent to the Edda layer."},
-    {"id":"torah-tanakh","label":"Torah / Tanakh","status":"metadata-or-external-library","depth":"planned","paths":[],"source_library":"Sefaria","next_action":"Add a legally reusable local full-text edition where permitted, then register book/chapter/verse structure and provenance."},
-    {"id":"dao-de-jing","label":"Dao De Jing","status":"metadata-or-external-library","depth":"planned","paths":[],"source_library":"Chinese Text Project","next_action":"Add a legally reusable local edition where permitted, preserving chapter boundaries and translation metadata."},
-    {"id":"comparative-wisdom","label":"Comparative Wisdom Library","status":"planned","depth":"planned","paths":[],"next_action":"Build each work as a distinct corpus record. Do not populate the library with summaries alone."
+  "version": "1.2.0",
+  "updated": "2026-09-20",
+  "purpose": "Audit of whether comparative texts are actually stored as searchable local raw text, represented by source metadata/book indexes, fetched on demand, or merely planned. Structural reader depth is tracked separately from local full-text custody.",
+  "rule": "A text is locally-full-text-ready only when the repository contains the reusable source wording itself in stable local files. A functioning reader, source manifest, remote fetch path or book index does not by itself count as local full-text custody.",
+  "coverage": [
+    {
+      "id": "poetic-edda",
+      "label": "Poetic Edda",
+      "status": "verified-raw-text",
+      "depth": "corpus",
+      "paths": [
+        "books/norse-edda/poetic-edda-bellows-1923.txt"
+      ],
+      "reader": "books/norse-edda/reader.html",
+      "structure": "books/norse-edda/structure.json",
+      "notes": "Complete Bellows edition stored locally as raw UTF-8 text; reader searches the complete edition and exposes the poem structure."
+    },
+    {
+      "id": "prose-edda",
+      "label": "Prose Edda / Younger Edda",
+      "status": "verified-raw-text",
+      "depth": "corpus",
+      "paths": [
+        "books/norse-edda/prose-edda-anderson.txt"
+      ],
+      "reader": "books/norse-edda/reader.html",
+      "structure": "books/norse-edda/structure.json",
+      "notes": "Complete Anderson edition stored locally as raw UTF-8 text; reader searches the complete edition and exposes its major sections."
+    },
+    {
+      "id": "christian-bible",
+      "label": "Christian Bible / active WEB reader",
+      "status": "reader-active-source-metadata-local-text-upstream",
+      "depth": "corpus-reader",
+      "paths": [
+        "data/sources/bible-world-english-bible.json",
+        "data/sources/bible-web-book-index.json",
+        "knowledge/traditions/bible-layer-manifest.json"
+      ],
+      "reader": "traditions/bible/",
+      "build_and_runtime": [
+        "scripts/bible_corpus.py",
+        "scripts/build_bible_study.py",
+        "app/bible-scripture-reader.js"
+      ],
+      "local_text_custody": "not-complete",
+      "source_mode": "World English Bible source metadata and deterministic 66-book index are local; complete WEB wording is still treated as upstream/on-demand until book files are vendored.",
+      "notes": "The Bible comparator/corpus architecture is active and validated. Do not confuse the mature relation/scene/comparator layer with local custody of the complete primary text.",
+      "next_action": "Vendor the complete public-domain WEB book files locally, preserve chapter/verse/source metadata, then switch this status to verified-local-full-text only after corpus tests use the local files."
+    },
+    {
+      "id": "torah-tanakh",
+      "label": "Torah / Tanakh",
+      "status": "metadata-or-external-library",
+      "depth": "planned",
+      "paths": [],
+      "source_library": "Sefaria",
+      "next_action": "Add a legally reusable local full-text edition where permitted, then register book/chapter/verse structure and provenance."
+    },
+    {
+      "id": "dao-de-jing",
+      "label": "Dao De Jing",
+      "status": "metadata-or-external-library",
+      "depth": "planned",
+      "paths": [],
+      "source_library": "Chinese Text Project",
+      "next_action": "Add a legally reusable local edition where permitted, preserving chapter boundaries and translation metadata."
+    },
+    {
+      "id": "comparative-wisdom",
+      "label": "Comparative Wisdom Library",
+      "status": "planned",
+      "depth": "planned",
+      "paths": [],
+      "next_action": "Build each work as a distinct corpus record. Do not populate the library with summaries alone."
     }
   ],
-  "next_targets":["Bible verification","Tanakh / Torah","Quran","Avesta","Upanishads","Bhagavad Gita","Tripitaka","Popol Vuh","Epic of Gilgamesh","Iliad","Odyssey","Kalevala","major Norse sagas"],
-  "architecture":"data/deep-entry-schema.json"
+  "next_targets": [
+    "Complete local WEB vendoring",
+    "Tanakh / Torah local full-text edition where legally reusable",
+    "Quran",
+    "Avesta",
+    "Upanishads",
+    "Bhagavad Gita",
+    "Tripitaka",
+    "Popol Vuh",
+    "Epic of Gilgamesh",
+    "Iliad",
+    "Odyssey",
+    "Kalevala",
+    "major Norse sagas"
+  ],
+  "architecture": "data/deep-entry-schema.json"
 }
