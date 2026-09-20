@@ -124,6 +124,7 @@ function retentionOwners() {
 let activeBytes = 0;
 let labelZoomBase = null;
 let nameZoomBase = null;
+let localNameZoomBase = null;
 let runtimeBudget = { ...DEFAULT_RUNTIME_BUDGET };
 let cacheHits = 0;
 let cacheMisses = 0;
@@ -245,6 +246,7 @@ async function hydrateSubdivisionPlaces(feature) {
   const rows = result.places || [];
   host.innerHTML = rows.length ? `
     <p class="muted"><b>${fmt(result.total)} mapped places</b> fall inside this subdivision · showing ${fmt(rows.length)} by population · source: ${esc(result.source || 'Places')}${result.datasetRefreshDate ? ` · refreshed ${esc(result.datasetRefreshDate)}` : ''}</p>
+    <div class="actions"><button type="button" data-subdivision-show-places aria-pressed="false">Show mapped places on map</button></div>
     <div class="card">${rows.map(place => {
       const p = place.properties || {};
       return `<button type="button" class="relation-button" data-subdivision-place="${esc(p.id || '')}">
@@ -253,6 +255,19 @@ async function hydrateSubdivisionPlaces(feature) {
       </button>`;
     }).join('')}</div>`
     : '<p class="muted">No mapped places in the current place snapshot fall inside this subdivision.</p>';
+  host.querySelector('[data-subdivision-show-places]')?.addEventListener('click', async event => {
+    const button = event.currentTarget;
+    button.disabled = true;
+    try {
+      const shown = await window.__potatoAtlasPlaces?.showSubdivision?.(feature, {limit:50});
+      if (shown?.shown) {
+        button.setAttribute('aria-pressed', 'true');
+        button.textContent = 'Mapped places shown';
+      }
+    } finally {
+      button.disabled = false;
+    }
+  });
   host.querySelectorAll?.('[data-subdivision-place]')?.forEach(button => {
     button.addEventListener('click', async () => {
       const placeId = button.dataset.subdivisionPlace;
@@ -603,6 +618,7 @@ function labelPresentation() {
     globe,
     labelZoom:Number(labelZoomBase || 0) + delay,
     nameZoom:Number(nameZoomBase || 0) + delay,
+    localNameZoom:Number(localNameZoomBase || 0) + delay,
   };
 }
 function syncSelectedLabel(id = selectedId) {
@@ -614,7 +630,17 @@ function syncLabelPresentation() {
   if (!map.getLayer(LABEL_ID) || labelZoomBase == null || nameZoomBase == null) return false;
   const policy = labelPresentation();
   map.setLayerZoomRange?.(LABEL_ID, policy.labelZoom, 24);
-  map.setLayoutProperty?.(LABEL_ID, 'text-field', ['step',['zoom'],['get','code'],policy.nameZoom,['get','name']]);
+  map.setLayoutProperty?.(LABEL_ID, 'text-field', [
+    'step',['zoom'],
+    ['get','code'],
+    policy.nameZoom,['get','name'],
+    policy.localNameZoom,[
+      'case',
+      ['all',['has','local_name'],['!=',['get','local_name'],['get','name']]],
+      ['concat',['get','name'],'\n',['get','local_name']],
+      ['get','name']
+    ]
+  ]);
   return true;
 }
 async function scaleRuntime() {
@@ -631,7 +657,9 @@ async function installSharedLayers() {
   let contextLineZoom = renderZoom;
   try { contextLineZoom = Math.min(renderZoom, scale.bandThreshold('macro-region')); } catch {}
   const nameZoom = scale.bandThreshold('subnational');
+  const localNameZoom = scale.bandThreshold('local');
   nameZoomBase = nameZoom;
+  localNameZoomBase = localNameZoom;
   if (!map.getSource(SOURCE_ID)) {
     map.addSource(SOURCE_ID, { type:'geojson', data:{type:'FeatureCollection',features:[]}, promoteId:'id' });
   }
@@ -665,7 +693,12 @@ async function installSharedLayers() {
       id:SELECTED_LABEL_ID,type:'symbol',source:SOURCE_ID,minzoom:renderZoom,
       filter:['==',['get','id'],'__none__'],
       layout:{
-        'text-field':['coalesce',['get','name'],['get','code']],
+        'text-field':[
+          'case',
+          ['all',['has','local_name'],['!=',['get','local_name'],['get','name']]],
+          ['concat',['coalesce',['get','name'],['get','code']],'\n',['get','local_name']],
+          ['coalesce',['get','name'],['get','code']]
+        ],
         'text-size':['interpolate',['linear'],['zoom'],renderZoom,10,7,13],
         'text-max-width':10,'text-allow-overlap':true,'text-ignore-placement':true
       },
