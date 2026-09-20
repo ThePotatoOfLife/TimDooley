@@ -12,6 +12,7 @@ URL_BRIDGE = ROOT / "world-map" / "3d-inspector-url.js"
 TEST = ROOT / "scripts" / "test_world_map_inspector_router.mjs"
 URL_TEST = ROOT / "scripts" / "test_world_map_inspector_url.mjs"
 CONSUMER_TEST = ROOT / "scripts" / "test_world_map_inspector_consumers.mjs"
+DEGRADED_TEST = ROOT / "scripts" / "test_world_map_degraded_inspector_consumers.mjs"
 LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 PLACES = ROOT / "world-map" / "3d-places.js"
@@ -25,7 +26,7 @@ AXIS_DEPTH = ROOT / "world-map" / "3d-axis-depth.js"
 
 def main() -> int:
     errors: list[str] = []
-    for path in (ROUTER, URL_BRIDGE, TEST, URL_TEST, CONSUMER_TEST, LIFECYCLE, BOOTSTRAP, PLACES, SUBDIVISIONS, ADL, MUD, SPATIAL_UI, AXIS, AXIS_DEPTH):
+    for path in (ROUTER, URL_BRIDGE, TEST, URL_TEST, CONSUMER_TEST, DEGRADED_TEST, LIFECYCLE, BOOTSTRAP, PLACES, SUBDIVISIONS, ADL, MUD, SPATIAL_UI, AXIS, AXIS_DEPTH):
         if not path.exists():
             errors.append(f"missing inspector-router file: {path.relative_to(ROOT)}")
     if errors:
@@ -105,7 +106,7 @@ def main() -> int:
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
-        for test_path, label in ((TEST, "inspector-router"), (URL_TEST, "inspector-url"), (CONSUMER_TEST, "inspector-consumer")):
+        for test_path, label in ((TEST, "inspector-router"), (URL_TEST, "inspector-url"), (CONSUMER_TEST, "inspector-consumer"), (DEGRADED_TEST, "degraded-inspector")):
             result = subprocess.run([node, str(test_path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"{label} regression failed: " + (result.stderr.strip() or result.stdout.strip()))
