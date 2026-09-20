@@ -1,5 +1,7 @@
 import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs';
 import { getOrCreateTooltipService } from './3d-tooltip.js';
+if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
+const motion = window.__potatoAtlasMotion;
 
 // North / Axis threshold overlay for the 3D World Relational Atlas.
 // This is a project-symbolic rendering attached to real northern geography;
@@ -122,7 +124,7 @@ function installAxisInteractions(map) {
   [AXIS_FILL,AXIS_LINE,AXIS_GATE].forEach(layer => { map.on('mouseenter',layer,enter); map.on('mouseleave',layer,leave); });
 
   const openGate = () => {
-    map.easeTo({center:[ARC_CENTER_LON,79.7],zoom:Math.max(map.getZoom(),2.55),pitch:48,bearing:0,duration:1100});
+    motion.easeTo(map,{center:[ARC_CENTER_LON,79.7],zoom:Math.max(map.getZoom(),2.55),pitch:48,bearing:0,duration:1100});
     window.dispatchEvent(new CustomEvent('atlas-axis-open',{detail:{anchor:'north-axis-gate',dimension:5}}));
     if (window.__potatoAxisDepth?.setDimension) {
       window.__potatoAxisDepth.setDimension(5,{silentCamera:true});
