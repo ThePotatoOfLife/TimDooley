@@ -20,13 +20,16 @@ SPATIAL = ROOT / "world-map" / "3d-spatial-overlays.js"
 GATEWAYS = ROOT / "world-map" / "3d-gateways.js"
 INFRASTRUCTURE = ROOT / "world-map" / "3d-infrastructure.js"
 IMPACT_ACTIONS = ROOT / "world-map" / "3d-impact-actions.js"
+AXIS = ROOT / "world-map" / "3d-axis.js"
+FIELDS = ROOT / "world-map" / "3d-fields.js"
+NETWORKS = ROOT / "world-map" / "3d-networks.js"
 TEST = ROOT / "scripts" / "test_world_map_interaction_router.mjs"
 COMPAT_TEST = ROOT / "scripts" / "test_world_map_interaction_compatibility.mjs"
 
 
 def main() -> int:
     errors: list[str] = []
-    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, BOOTSTRAP, APP, HANDOFF, HOVER, PLACES, COUNTRY, SPATIAL, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS, TEST, COMPAT_TEST):
+    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, BOOTSTRAP, APP, HANDOFF, HOVER, PLACES, COUNTRY, SPATIAL, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS, AXIS, FIELDS, NETWORKS, TEST, COMPAT_TEST):
         if not path.exists():
             errors.append(f"missing interaction-router file: {path.relative_to(ROOT)}")
     if errors:
@@ -48,6 +51,9 @@ def main() -> int:
     gateways = GATEWAYS.read_text(encoding="utf-8", errors="replace")
     infrastructure = INFRASTRUCTURE.read_text(encoding="utf-8", errors="replace")
     impact_actions = IMPACT_ACTIONS.read_text(encoding="utf-8", errors="replace")
+    axis = AXIS.read_text(encoding="utf-8", errors="replace")
+    fields = FIELDS.read_text(encoding="utf-8", errors="replace")
+    networks = NETWORKS.read_text(encoding="utf-8", errors="replace")
 
     for token in (
         "function createInteractionRouter",
@@ -178,11 +184,31 @@ def main() -> int:
     if "potato-atlas-gateway-change" not in impact_actions or "injectGatewayAction(id)" not in impact_actions:
         errors.append("Impact Actions must derive Gateway side effects from the semantic gateway-change event")
 
+    for label, source, owner, object_type, priority in (
+        ("Axis", axis, "axis-threshold", "axis-threshold", "hoverPriority:78"),
+        ("Project Fields", fields, "project-fields", "project-field", "hoverPriority:34"),
+        ("Empirical Networks", networks, "empirical-networks", "empirical-network", "hoverPriority:35"),
+    ):
+        for token in (
+            f"interaction.register('{owner}'",
+            f"objectType:'{object_type}'",
+            priority,
+            "potato-atlas-interaction-ready",
+        ):
+            if token not in source:
+                errors.append(f"{label} interaction-router migration missing marker: {token}")
+    if "map.on('click',AXIS_GATE" in axis or "map.on('click',AXIS_FILL" in axis:
+        errors.append("Axis must not own direct MapLibre click handlers after Router migration")
+    if "map.on('mousemove',FILL_ID" in fields:
+        errors.append("Project Fields must not own direct MapLibre mousemove after Router migration")
+    if "map.on('mousemove',FILL_ID" in networks:
+        errors.append("Empirical Networks must not own direct MapLibre mousemove after Router migration")
+
     node = shutil.which("node")
     if not node:
         errors.append("node executable unavailable; cannot run interaction-router regression")
     else:
-        for path in (ROUTER, SUBDIVISIONS, APP, HANDOFF, HOVER, PLACES, COUNTRY, SPATIAL, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS):
+        for path in (ROUTER, SUBDIVISIONS, APP, HANDOFF, HOVER, PLACES, COUNTRY, SPATIAL, GATEWAYS, INFRASTRUCTURE, IMPACT_ACTIONS, AXIS, FIELDS, NETWORKS):
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
@@ -198,7 +224,7 @@ def main() -> int:
     print("- disabled registrations cannot win")
     print("- pre-core capture hands direct click listeners to the shared router")
     print("- canonical 3d-app renderer remains in-place and unchanged")
-    print("- country, spatial overlay, capital, Gateway and Infrastructure interaction owned by the router on normal boots")
+    print("- country, spatial overlays, Axis, fields, networks, capital, Gateway and Infrastructure interaction owned by the router on normal boots")
     print("- degraded direct-handler fallbacks are removable and promote to Router ownership when readiness arrives")
     print(f"Errors: {len(errors)}")
     if errors:
