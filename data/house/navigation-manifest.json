@@ -1,5 +1,5 @@
 {
-  "version": "4.0.0",
+  "version": "4.1.0",
   "updated": "2026-09-20",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -23,6 +23,11 @@
       "concern": "Tree family typing / generic Life Knowledge Strife world-tree archive and UI trees",
       "owner": "data/house/tree-family-contract.json",
       "rule": "Owns Tree-family type distinctions and naming rules. Generic Tree branching, tradition-specific Trees, project Strife, archive trees and UI trees must remain explicitly typed."
+    },
+    {
+      "concern": "Root Seed temporal and provenance/future-capacity semantics",
+      "owner": "data/house/root-seed-temporal-contract.json",
+      "rule": "Separates Root as surviving provenance/support from Seed as present conditional future capacity across botanical, archival, theological and systems uses."
     },
     {
       "concern": "Swamp regime/state semantics",
