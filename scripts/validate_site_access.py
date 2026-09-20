@@ -42,7 +42,7 @@ for required_id in ("news","world-map","tim","house","rooms","cia-character-arch
         errors.append(f"site-access contract missing curated entry: {required_id}")
 required_aliases={
     "cia-character-archive":("cia","character archive","dossiers"),
-    "mud-bank":("mud bank","dooley welfare","karma bank"),
+    "mud-bank":("world spiritual bank","mud bank","dooley welfare","karma bank"),
     "intelligence-cia":("central intelligence agency","intelligence desk"),
     "economy":("fed","federal reserve","ecb","eurosystem","debt","bonds","obligations"),
     "tts":("tts","read aloud","text to speech"),
