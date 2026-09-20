@@ -1,6 +1,6 @@
 {
   "id": "cia-mud-bank-snapshot-2026-09-21",
-  "title": "CIA Mud Bank — Current Desk Balance Snapshot",
+  "title": "World Spiritual Bank — CIA Current Desk Balance Snapshot",
   "as_of": "2026-09-21T00:00:00Z",
   "denomination": "fictional sUSD-equivalent",
   "welfare_rate_per_second": 1e-11,
@@ -102,8 +102,16 @@
     }
   ],
   "interpretation_rules": [
-    "positive balance means the weighted project ledger currently contains constructive/repair/growth entries; it does not mean a person is morally good.",
-    "mixed/disputed means conflict exists but evidence is not strong enough to price as debit or credit.",
-    "negative posture requires at least one explicit source-bounded project-debit event; none of the current-desk accounts receives one in this snapshot."
-  ]
+    "Positive event balance means the weighted project ledger currently contains constructive/repair/growth entries; it does not mean a person is morally good.",
+    "Mixed/disputed means conflict exists and may include both debit and repair history; unpriced candidates remain visible without changing the number.",
+    "Negative posture requires at least one explicit source-bounded project-debit event. TXT currently qualifies on the current desk; Marty qualifies in the broader closed/historical set.",
+    "A repair event never deletes an older debit. Port Monkey is the clearest present example: -6.6 debit +8 repair attempt = +1.4 net event balance.",
+    "System domains such as Epstein Axis, Rubble, Mud, Swamp, Loosh and Rainbow Shadow are not rolled into these person-level sUSD totals."
+  ],
+  "system_context": {
+    "custody": "North / Roots",
+    "movement": "Mud / Swamp / Rubble → evidence/accountability → Ladder → Garden / Tikkun",
+    "system_liability_ledger": "knowledge/cia/system-liability-ledger.json",
+    "note": "World-scale symbolic liabilities are held separately and remain unpriced; this snapshot covers individual CIA sub-ledgers only."
+  }
 }
