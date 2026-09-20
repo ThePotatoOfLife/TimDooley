@@ -1,3 +1,5 @@
+const INSPECTOR_URL_OWNER = 'selection-inspector';
+const INSPECTOR_URL_PARAMS = Object.freeze(['inspect','country','subdivision','place']);
 const INSPECTOR_TYPES = Object.freeze(['country','subdivision','place','evidence','evidence-record','project-case','spatial-overlay','axis','axis-depth']);
 const TYPE_RANK = new Map(INSPECTOR_TYPES.map((type, index) => [type, index]));
 
@@ -59,9 +61,16 @@ function mirrorLegacyParams(url, nodes) {
   else if (nodes.some(node => node.type === 'country' || node.type === 'subdivision')) url.searchParams.delete('place');
   return url;
 }
+function replaceCanonical(url) {
+  const state = typeof window !== 'undefined' ? window.__potatoAtlasUrlState : null;
+  if (!state?.claim || !state?.patch) throw new Error('Inspector URL bridge requires canonical URL State owner');
+  state.claim(INSPECTOR_URL_OWNER, INSPECTOR_URL_PARAMS);
+  const set = Object.fromEntries(INSPECTOR_URL_PARAMS.map(param => [param, url.searchParams.get(param)]));
+  state.patch(INSPECTOR_URL_OWNER, { set });
+}
 function createInspectorUrlBridge(options = {}) {
   const getHref = typeof options.getHref === 'function' ? options.getHref : () => location.href;
-  const replace = typeof options.replace === 'function' ? options.replace : url => history.replaceState({}, '', url);
+  const replace = typeof options.replace === 'function' ? options.replace : replaceCanonical;
   const eventTarget = options.eventTarget || (typeof window !== 'undefined' ? window : null);
   let path = '';
   function commit(url, nextPath) { path = nextPath || ''; replace(url); return path; }
