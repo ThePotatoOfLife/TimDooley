@@ -5961,3 +5961,95 @@ If these questions cannot yet be answered, the idea may still be valuable—but 
 
 - D. Berman & C. Blair, **The Geometry, Branes and Applications of Exceptional Field Theory**:  
   https://arxiv.org/abs/2006.09777
+
+
+---
+
+# 128. Electromagnetic, vortex and Fibonacci extension
+
+A dedicated extension now develops the 11D model through differential forms, gauge connections, vortex topology, helicity, logarithmic-spiral dynamics, Fibonacci transfer maps, golden-angle organization and quasiperiodic torus winding.
+
+The strongest new identity is the dynamical origin of the logarithmic spiral. For
+
+\[
+\dot z=(\sigma+i\omega)z,
+\]
+
+one obtains
+
+\[
+r(\theta)=r_0\exp\left[\frac{\sigma}{\omega}(\theta-\theta_0)\right],
+\]
+
+so
+
+\[
+\boxed{b=\sigma/\omega}.
+\]
+
+The recovered golden spiral
+
+\[
+b=\frac{2\ln\varphi}{\pi}
+\]
+
+can therefore be interpreted, in a declared focus-dynamics toy model, as a specific ratio between radial growth/decay and angular rotation.
+
+The extension also makes the higher-dimensional language cleaner. Electromagnetism and fluid vorticity are naturally represented as two-forms,
+
+\[
+F=dA,
+\qquad
+\Omega=du^\flat,
+\]
+
+while eleven-dimensional supergravity contains
+
+\[
+G_4=dC_3
+\]
+
+and the native top-degree Chern–Simons structure
+
+\[
+\int_{M_{11}} C_3\wedge G_4\wedge G_4.
+\]
+
+This does not identify electromagnetism, vorticity and the M-theory \(C\)-field. It shows that flux, circulation, twist and topology should be expressed through differential forms and cycles rather than through dimension-specific vector pictures.
+
+For the Door-compatible branch, the compact circle may be treated as a fiber with local connection
+
+\[
+\eta=dy+\kappa A,
+\qquad
+d\eta=\kappa F,
+\]
+
+which makes connection, curvature and holonomy explicit.
+
+Fibonacci structure is now restricted to mathematically defensible roles. With
+
+\[
+Q=
+\begin{pmatrix}
+1&1\\
+1&0
+\end{pmatrix},
+\]
+
+the eigenvalues
+
+\[
+\varphi,
+\qquad
+-\varphi^{-1}
+\]
+
+supply reciprocal expanding/contracting scales. Golden-ratio winding on a compact torus supplies a separate quasiperiodic/resonance model whose rational approximants are Fibonacci ratios.
+
+The canonical extension is:
+
+- `knowledge/science/11d-electromagnetic-vortex-fibonacci-extension.json`
+- `docs/11D-ELECTROMAGNETIC-VORTEX-FIBONACCI-EXTENSION.md`
+
+The new scientific discipline is simple: do not say only that something is a Spiral. Declare whether it is a geometric logarithmic spiral, a complex-eigenvalue trajectory, a phase vortex, a vortical flow, a holonomy, an RG recurrence or a torus winding.
