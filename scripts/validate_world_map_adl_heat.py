@@ -122,11 +122,12 @@ def main() -> int:
         "atlas-subdivisions-active","adl-heat-state-fill","adl-heat-incident-points",
         "feature-state","ADL H.E.A.T. filters","not a general hate score or crime score",
         "__potatoAtlasAdlHeat","updateFilterUrl","adlYear","adlType",
-        "loadPromise","potato-atlas-subdivisions-source-change","scheduleStateFeatureState",
+        "loadPromise","scheduleStateFeatureState",
         "retainPartition('USA', 'adl-heat')","releasePartition?.('USA', 'adl-heat')",
         "clickPriority:85","renderStateInspector","renderIncident","aggregateStateCount",
         "__potatoAtlasSubdivisions.select","openStateEvidence","parent_iso3","stateEvidence(id)",
         "registerSubdivisionEvidence","registerEvidenceProvider",
+        "registerSubdivisionRefreshObserver","registerSourceRefreshObserver",
     ):
         require(js, token, "world-map/3d-adl-heat.js", errors)
     if "searchParams.set('evidenceLayer'" in js or "searchParams.delete('evidenceLayer'" in js:
