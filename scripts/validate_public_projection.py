@@ -184,6 +184,22 @@ def main() -> int:
     if contains_live_retired_reference(coverage):
         fail("backend coverage map still names retired root.js or index.html#node= as a live consumer", errors)
 
+    live_route_metadata = (
+        "data/belief-backend.json",
+        "data/belief-registry.json",
+        "data/country-fallback.json",
+        "data/religious-layer-map.json",
+        "data/axis-model.json",
+        "data/global-graph-bridge.json",
+    )
+    for relative in live_route_metadata:
+        path = ROOT / relative
+        if not path.exists():
+            continue
+        payload = load_json(relative)
+        if contains_live_retired_reference(payload):
+            fail(f"{relative} still exposes retired root.js or index.html#node= routing", errors)
+
     interactive_routes = atlas.get("interactive_routes", {})
     if interactive_routes != EXPECTED_INTERACTIVE_ROUTES:
         fail(f"atlas interactive_routes must equal {EXPECTED_INTERACTIVE_ROUTES!r}; got {interactive_routes!r}", errors)
