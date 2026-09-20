@@ -1,9 +1,9 @@
 {
   "id": "reader-richness-audit",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-20",
   "purpose": "Measure whether reader-facing HTML surfaces feel inhabited rather than merely navigational, and drive a systematic enrichment programme.",
-  "thesis": "The project is not poor in knowledge; it is poor where backend knowledge fails to project into the page. Richness means useful density, not card count.",
+  "thesis": "The project is not poor in knowledge; it is poor where backend knowledge fails to become authored public substance. Richness means useful density, concrete explanation and lived specificity—not card count, route count or schema exposure.",
   "quality_contract": {
     "minimum_experience": [
       "orientation: what this page is and why it matters",
@@ -30,7 +30,19 @@
       "large grids where every card has equal visual weight",
       "generic definitions that could belong to any website",
       "link directories with no explanation of why a reader should care",
-      "backend richness that never reaches the public surface"
+      "backend richness that never reaches the public surface",
+      "schema-shaped prose that reads like a database record",
+      "a page that requires opening JSON or governance files before the subject becomes concrete",
+      "automatic backend projection overwriting authored explanation",
+      "word-count padding without new objects, mechanisms, evidence or consequences"
+    ],
+    "substance_first_rule": [
+      "The visible page must teach before it routes.",
+      "Authored prose is a first-class materialization target, not decorative copy around backend structure.",
+      "A reader should encounter concrete objects, dates, mechanisms, examples, evidence, disputes and consequences before repository architecture.",
+      "Backend owners strengthen and correct the page but do not dictate its rhetorical shape.",
+      "Machine-readable semantic bonds should be quiet enough that TTS and ordinary reading remain continuous.",
+      "Automatic projection may prevent starvation but must never be mistaken for finished editorial substance."
     ]
   },
   "thresholds": {
@@ -613,11 +625,13 @@
     "limitation": "Shared projection fixes starvation but not voice. High-value Rooms still benefit from authored Tim/project-specific essays and examples."
   },
   "enrichment_strategy": [
-    "Phase 1: guarantee automatic dossier-driven substance in every nested Room.",
-    "Phase 2: author bespoke opening essays for the highest-traffic/highest-concept Rooms.",
-    "Phase 3: turn featured holdings into human-readable extracts and object/case spotlights rather than filename-only lists.",
-    "Phase 4: enrich parent Dwellings and hubs with narrative synthesis instead of scope-card repetition.",
-    "Phase 5: use validators to prevent enriched pages regressing into shells."
+    "Phase 0: substance first — identify the concrete things the reader should leave knowing.",
+    "Phase 1: guarantee automatic dossier-driven minimum substance in every nested Room.",
+    "Phase 2: author bespoke opening essays and case material for high-value public surfaces.",
+    "Phase 3: quietly bind authored sections to canonical owners, Rooms, relation types and evidence classes.",
+    "Phase 4: turn featured holdings into human-readable extracts and object/case spotlights rather than filename-only lists.",
+    "Phase 5: enrich parent Dwellings and hubs with narrative synthesis instead of scope-card repetition.",
+    "Phase 6: use validators to prevent enriched pages regressing into shells while preserving editorial freedom."
   ],
   "first_authored_wave": [
     {
@@ -795,5 +809,11 @@
       "path": "rooms/inside/neurobiology/index.html",
       "size_bytes": 5476
     }
-  ]
+  ],
+  "substance_first_contract": {
+    "owner": "data/house/substance-first-projection-contract.json",
+    "rule": "Presentation / Fruit has editorial freedom; canonical owners provide quiet typed support. Build-time bindings connect them without making backend schema visible or allowing generated copy to overwrite authored prose.",
+    "materialization_upgrade": "A public route is not enough. Important material should become understandable on the frontend itself, while source truth, provenance, relations and revision remain durable behind it.",
+    "review_model": "Backend change can trigger editorial review; it cannot silently rewrite the human-facing synthesis."
+  }
 }
