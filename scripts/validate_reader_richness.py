@@ -2,6 +2,7 @@
 """Validate the site-wide reader-richness projection without turning byte size into doctrine."""
 from __future__ import annotations
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -10,10 +11,25 @@ JOURNEY = ROOT / "app/house-journey.js"
 INTERIORS = ROOT / "data/house/room-interiors.json"
 SUBSTANCE = ROOT / "data/house/substance-first-projection-contract.json"
 BUILD = ROOT / "scripts/build_site.py"
+SURFACES = ROOT / "data/house/public-surfaces.json"
+
+def plain_text(fragment: str) -> str:
+    fragment=re.sub(r"<script\b[\s\S]*?</script>", " ", fragment, flags=re.I)
+    fragment=re.sub(r"<style\b[\s\S]*?</style>", " ", fragment, flags=re.I)
+    fragment=re.sub(r"<[^>]+>", " ", fragment)
+    return re.sub(r"\s+", " ", fragment).strip()
+
+def anchored_section(source: str, section_id: str) -> str:
+    match=re.search(
+        rf'<section\b[^>]*\bid=["\']{re.escape(section_id)}["\'][^>]*>([\s\S]*?)</section>',
+        source,
+        flags=re.I,
+    )
+    return match.group(1) if match else ""
 
 def main() -> int:
     errors=[]
-    for path in (AUDIT,JOURNEY,INTERIORS,SUBSTANCE,BUILD):
+    for path in (AUDIT,JOURNEY,INTERIORS,SUBSTANCE,BUILD,SURFACES):
         if not path.is_file():
             errors.append(f"missing reader-richness owner: {path.relative_to(ROOT)}")
     if errors:
@@ -26,6 +42,7 @@ def main() -> int:
     interiors=json.loads(INTERIORS.read_text(encoding="utf-8"))
     substance=json.loads(SUBSTANCE.read_text(encoding="utf-8"))
     build=BUILD.read_text(encoding="utf-8",errors="replace")
+    surfaces=json.loads(SURFACES.read_text(encoding="utf-8"))
 
     if audit.get("id")!="reader-richness-audit":
         errors.append("reader richness audit id changed or missing")
@@ -54,6 +71,7 @@ def main() -> int:
         if not resolution.get(key):
             errors.append(f"substance-first paradox resolution missing {key}")
 
+    floor=((audit.get("thresholds") or {}).get("authored_section_floor") or {}).get("minimum_plain_text_characters",650)
     bindings=substance.get("pages") or []
     if len(bindings)<10:
         errors.append(f"substance-first contract has suspiciously few public page bindings: {len(bindings)}")
@@ -68,6 +86,11 @@ def main() -> int:
             section_id=anchor.get("section_id")
             if section_id and f'id="{section_id}"' not in source and f"id='{section_id}'" not in source:
                 errors.append(f"{rel} lost authored substance section #{section_id}")
+            elif section_id:
+                section=anchored_section(source,section_id)
+                mass=len(plain_text(section))
+                if mass < floor:
+                    errors.append(f"{rel}#{section_id} regressed below authored substance floor: {mass} < {floor} plain-text characters")
             for owner in anchor.get("owner_paths") or []:
                 if not (ROOT/owner).is_file():
                     errors.append(f"{rel} substance binding points to missing owner: {owner}")
@@ -97,21 +120,26 @@ def main() -> int:
     if missing_shell:
         errors.append("registered nested Room shells missing: "+", ".join(missing_shell[:10]))
 
-    wave=audit.get("first_authored_wave") or []
-    if len(wave)<5:
-        errors.append("reader richness audit lost the first authored enrichment wave")
-    for row in wave:
+    history=audit.get("authored_history") or []
+    for row in history:
         path=ROOT/str(row.get("path") or "")
         if not path.is_file():
-            errors.append(f"authored richness page missing: {row.get('path')}")
-        elif path.stat().st_size<3000:
-            errors.append(f"authored richness page regressed to a thin shell: {row.get('path')}")
+            errors.append(f"historically authored richness page missing: {row.get('path')}")
+
+    surface_rows=[row for row in surfaces.get("surfaces",[]) if isinstance(row,dict)]
+    visible=[row for row in surface_rows if row.get("status")=="active" and row.get("visibility") in {"primary","secondary"}]
+    for row in visible:
+        route=row.get("canonical_route") or row.get("route") or "/"
+        rel="index.html" if route=="/" else route.strip("/")+"/index.html"
+        page=ROOT/rel
+        if not page.is_file():
+            errors.append(f"visible public surface missing reader file: {row.get('id')} -> {rel}")
 
     if errors:
         print("READER RICHNESS VALIDATION FAILED")
         for error in errors: print("-",error)
         return 1
-    print(f"Reader richness: PASS · {len(registered)} nested Rooms · {len(wave)} authored first-wave Rooms · {len(bindings)} substance-bound public pages")
+    print(f"Reader richness: PASS · {len(registered)} nested Rooms · {len(history)} authored-history Rooms · {len(bindings)} substance-bound public pages · {len(visible)} visible surfaces checked live")
     return 0
 
 if __name__=="__main__":
