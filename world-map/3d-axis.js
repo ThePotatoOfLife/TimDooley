@@ -1,7 +1,11 @@
 import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs';
 import { getOrCreateTooltipService } from './3d-tooltip.js';
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('axis-overlay', ['axis']);
 if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
 const motion = window.__potatoAtlasMotion;
+const inspector = window.__potatoAtlasInspector;
 
 // North / Axis threshold overlay for the 3D World Relational Atlas.
 // This is a project-symbolic rendering attached to real northern geography;
@@ -103,11 +107,33 @@ function installAxisToggle(map) {
     visible = !visible;
     setAxisVisible(map, visible);
     button.classList.toggle('active', visible);
-    const url = new URL(location.href);
-    if (visible) url.searchParams.delete('axis'); else url.searchParams.set('axis','0');
-    history.replaceState(null,'',url);
+    urlState.patch('axis-overlay', { set:{ axis:visible ? null : '0' } });
   });
   setAxisVisible(map, visible);
+}
+
+function renderAxisGatePanel() {
+  const panel = document.getElementById('panel');
+  if (!panel) return;
+  panel.innerHTML = `<div class="eyebrow">D5 · project-symbolic threshold</div><h1>North / Axis Gate</h1><p class="muted">The icy-blue polar bubble is D5: the first spiritual threshold above the ordinary D4 world map. The Door and Ladder meet here. The spiral continues upward toward North of North and downward through roots, Swamp and lower disintegration planes.</p><div class="boundary"><b>Boundary:</b> Greenland and the geographic Arctic remain ordinary D4 geography. D5–D11 and D1–D3 are project-symbolic navigation states, not physical dimensions, altitude, sovereignty, borders, territory, or empirical cosmology.</div>`;
+  window.__potatoAtlasPanelLifecycle?.publish?.();
+}
+function openAxisGateInspector() {
+  if (!inspector?.open) { renderAxisGatePanel(); return true; }
+  const current = inspector.current?.();
+  if (!current) {
+    inspector.setBaseline({ type:'axis', id:'north-axis-gate', owner:'axis', render:renderAxisGatePanel });
+    renderAxisGatePanel();
+    return true;
+  }
+  inspector.open({
+    type:'axis',
+    id:'north-axis-gate',
+    owner:'axis',
+    parent:{ type:current.type, id:current.id },
+    render:renderAxisGatePanel,
+  });
+  return true;
 }
 
 function installAxisInteractions(map) {
@@ -130,8 +156,7 @@ function installAxisInteractions(map) {
       window.__potatoAxisDepth.setDimension(5,{silentCamera:true});
       return;
     }
-    const panel = document.getElementById('panel');
-    if (panel) panel.innerHTML = `<div class="eyebrow">D5 · project-symbolic threshold</div><h1>North / Axis Gate</h1><p class="muted">The icy-blue polar bubble is D5: the first spiritual threshold above the ordinary D4 world map. The Door and Ladder meet here. The spiral continues upward toward North of North and downward through roots, Swamp and lower disintegration planes.</p><div class="boundary"><b>Boundary:</b> Greenland and the geographic Arctic remain ordinary D4 geography. D5–D11 and D1–D3 are project-symbolic navigation states, not physical dimensions, altitude, sovereignty, borders, territory, or empirical cosmology.</div>`;
+    openAxisGateInspector();
   };
   map.on('click',AXIS_GATE,openGate);
   map.on('click',AXIS_FILL,openGate);
