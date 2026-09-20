@@ -11,6 +11,8 @@ INDEX = ROOT / "world-map" / "index.html"
 UI = ROOT / "world-map" / "3d-ui.js"
 WORLD_BAR = ROOT / "world-map" / "3d-world-bar.js"
 ACTIVE_VIEW = ROOT / "world-map" / "3d-active-view.js"
+ACCESSIBILITY = ROOT / "world-map" / "3d-accessibility-status.js"
+INSPECTOR_VISIBILITY = ROOT / "world-map" / "3d-inspector-visibility.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 COMPOSITOR = ROOT / "world-map" / "3d-compositor.js"
 COUNTRY_CARD = ROOT / "world-map" / "3d-country-card.js"
@@ -31,6 +33,8 @@ def main() -> int:
     ui = read(UI, errors)
     world_bar = read(WORLD_BAR, errors)
     active_view = read(ACTIVE_VIEW, errors)
+    accessibility = read(ACCESSIBILITY, errors)
+    inspector_visibility = read(INSPECTOR_VISIBILITY, errors)
     bootstrap = read(BOOTSTRAP, errors)
     compositor = read(COMPOSITOR, errors)
     country_card = read(COUNTRY_CARD, errors)
@@ -137,6 +141,31 @@ def main() -> int:
             if token not in active_view:
                 errors.append(f"authoritative active-view state missing synchronization marker: {token}")
 
+    if accessibility:
+        for token in (
+            "role', 'status'", "aria-live', 'polite'", "aria-atomic', 'true'",
+            "Selected country:", "Analytical layers:", "Physical layers:",
+            "Geography overlays:", "Evidence layers:", "Relations:",
+            "Projection:", "Time:", "Scale:",
+            "potato-atlas-active-view-change", "potato-atlas-physical-change",
+            "potato-atlas-spatial-overlay-change", "potato-atlas-evidence-layer-change",
+        ):
+            if token not in accessibility:
+                errors.append(f"accessible active-view summary missing marker: {token}")
+        if "MutationObserver" in accessibility or "setInterval(" in accessibility:
+            errors.append("accessible active-view summary must be event-driven rather than DOM-polled")
+
+    if inspector_visibility:
+        for token in (
+            "aria-expanded", "aria-controls", "aria-hidden",
+            "returnFocusOnClose", "event?.key !== 'Escape'", "stopPropagation",
+        ):
+            if token not in inspector_visibility:
+                errors.append(f"inspector keyboard/focus contract missing marker: {token}")
+
+
+    if bootstrap and "loadAfterPaint('Accessibility Status', './3d-accessibility-status.js')" not in bootstrap:
+        errors.append("Accessibility Status must load in the ordinary interactive bootstrap sequence")
     if bootstrap and "declareDormant('Time', './3d-time.js'" not in bootstrap:
         errors.append("Time should remain lazy but explicitly declared in bootstrap diagnostics")
     if bootstrap and "loadAfterPaint('Country Presentation', './3d-country-presentation.js')" not in bootstrap:
