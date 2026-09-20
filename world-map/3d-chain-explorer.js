@@ -1,3 +1,7 @@
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('chain-explorer', ['chain']);
+
 // Contextual functional-chain explorer for the canonical World Map.
 // Uses the shared runtime and a dedicated outline feature-state channel.
 const map = window.__potatoAtlasMap;
@@ -35,10 +39,7 @@ function ensureLayer() {
 }
 
 function persist() {
-  const url = new URL(location.href);
-  if (activeChainId) url.searchParams.set('chain', activeChainId);
-  else url.searchParams.delete('chain');
-  history.replaceState({}, '', url);
+  urlState.patch('chain-explorer', { set:{ chain:activeChainId || null } });
 }
 
 function clearFeatureState() {
