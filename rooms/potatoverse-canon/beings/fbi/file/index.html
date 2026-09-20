@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>FBI File — Potatoverse</title>
-<meta name="description" content="Reusable Potatoverse dossier viewer for Figures, Bonds & Incidents.">
+<meta name="description" content="Reusable Potatoverse dossier viewer for Figures, Bonds & Incidents, with chronology, source strata, bonds, roles, stories and recovery leads.">
+<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/rooms/potatoverse-canon/beings/fbi/file/">
 <link rel="stylesheet" href="../../../../../app/site-system.css?v=20260914a">
 <style>
 :root{--paper:#d7d0ba;--paper-ink:#241f18;--paper-muted:#665d50;--folder:#89734e;--folder-dark:#5e4c31}
@@ -33,8 +34,8 @@ body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transpa
 </style>
 </head>
 <body>
-<main class="case-shell">
-<div class="case-top"><div><a href="../">← Filing cabinet</a> <a href="../bonds/">Bonds</a> <a href="../incidents/">Incidents</a></div><div><button id="shuffleTop">Shuffle file</button></div></div>
+<main class="case-shell" data-tts-longform>
+<div class="case-top"><div><a href="../">← Filing cabinet</a> <a href="../../">Beings &amp; Cast</a> <a href="../bonds/">Bonds</a> <a href="../incidents/">Incidents</a></div><div><button id="shuffleTop" type="button">Shuffle file</button></div></div>
 <span class="folder-tab">FBI · Figure File</span>
 <article class="file-sheet" id="sheet">
 <div class="file-header"><div><div class="file-id" id="fileId">Loading dossier…</div><h1 id="name">Loading…</h1><p id="summary">Retrieving file from cabinet.</p></div><div class="mug" id="mug">NO PHOTO<br>ARCHIVE FILE</div></div>
@@ -55,7 +56,7 @@ body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transpa
 <section class="panel" id="roles"></section>
 <section class="panel" id="enhancements"></section>
 <section class="panel" id="sources"></section>
-<div class="footer-actions"><button id="shuffleBottom">Shuffle another file</button><a id="rawLink" href="#">Open raw dossier</a><a href="../">Back to cabinet</a></div>
+<div class="footer-actions"><button id="shuffleBottom" type="button">Shuffle another file</button><a id="rawLink" href="#">Open raw dossier</a><a href="../">Back to cabinet</a></div>
 </article>
 </main>
 <script>
@@ -154,4 +155,5 @@ document.getElementById('shuffleTop').onclick=shuffle;document.getElementById('s
  get('knowledge/fbi/bonds/network.json'),get('knowledge/fbi/incidents/index.json'),get('knowledge/fbi/enhancements-index.json')
 ]);await load(current)})().catch(e=>{document.getElementById('summary').textContent='The cabinet could not load one of its indexes.'});
 </script>
+<script src="../../../../../app/house-journey.js"></script>
 </body></html>
