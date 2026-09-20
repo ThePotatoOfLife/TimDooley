@@ -498,24 +498,38 @@ def short_status(value: str, limit: int = 150) -> str:
     return text if len(text) <= limit else text[: limit - 1].rstrip() + "…"
 
 
+def text_items(value, limit=32) -> list[str]:
+    """Return stable display/search strings from scalar or structured metadata."""
+    if value is None:
+        return []
+    if isinstance(value, str):
+        text = " ".join(value.split())
+        return [text] if text else []
+    if isinstance(value, (int, float, bool)):
+        return [str(value)]
+    return list(dict.fromkeys(flatten_strings(value, limit)))[:limit]
+
+
 def render_library_rows(records: list[dict]) -> str:
     rows: list[str] = []
     for record in records:
-        fields = "|".join(record["fields"])
-        field_label = " · ".join(record["fields"])
+        field_values = text_items(record.get("fields", []), 24)
+        fields = "|".join(field_values)
+        field_label = " · ".join(field_values)
         status = short_status(record.get("maturity") or record.get("status") or "")
-        equation = record["equations"][0] if record.get("equations") else ""
+        equation_values = text_items(record.get("equations", []), 12)
+        equation = equation_values[0] if equation_values else ""
         equation_html = f'<code class="science-equation-preview">{esc(equation)}</code>' if equation else ""
-        tags = record.get("keywords", [])[:4]
+        tags = text_items(record.get("keywords", []), 12)[:4]
         tags_html = ""
         if tags:
             tags_html = '<div class="science-record-tags">' + "".join(f"<span>{esc(tag)}</span>" for tag in tags) + "</div>"
         read_label = "Read full paper →" if record["document_type"] == "Theory / Paper" else "Read full document →"
         source_href = "../knowledge/science/" + record["file"]
-        search_blob = " ".join([
-            record["title"], record["abstract"], record.get("status", ""), record.get("maturity", ""),
-            record["document_type"], *record["fields"], *record.get("equations", [])[:6], *record.get("keywords", []),
-        ]).lower()
+        search_blob = " ".join(text_items([
+            record.get("title", ""), record.get("abstract", ""), record.get("status", ""), record.get("maturity", ""),
+            record.get("document_type", ""), field_values, equation_values[:6], tags,
+        ], 80)).lower()
         rows.append(f'''<article class="science-record" data-fields="{esc(fields)}" data-type="{esc(record['document_type'])}" data-search="{esc(search_blob)}">
   <div class="science-record-meta">
     <span class="science-record-kind">{esc(record['document_type'])}</span>
