@@ -1,0 +1,235 @@
+{
+  "schema_version": "1.0",
+  "id": "github-project-construction-history-2026-09-20",
+  "title": "The Making of the Tim Dooley / Potato of Life Repository",
+  "record_type": "documentary_project_history",
+  "epistemic_status": [
+    "documentary",
+    "archive_analysis",
+    "project_self_description"
+  ],
+  "snapshot": {
+    "branch": "main",
+    "repository_created_at_utc": "2026-09-07T08:27:54Z",
+    "first_commit": {
+      "sha": "73fb399ca73d34e83ec49a05765241a91aad98d0",
+      "committed_at_utc": "2026-09-07T08:30:49Z",
+      "message": "Initialize Tim Dooley repository"
+    },
+    "traced_head": {
+      "sha": "c9be4315e10c74db32877855449c894fad7adc44",
+      "committed_at_utc": "2026-09-20T11:16:44Z",
+      "message": "Close initial World Map quality-audit bugs"
+    },
+    "elapsed_days_first_commit_to_traced_head": 13.1152,
+    "commits_on_main": 5987,
+    "merge_commits": 163,
+    "pull_requests_observed_repository_total": 314,
+    "files_at_snapshot": 2581,
+    "directories_at_snapshot": 228,
+    "file_bytes_at_snapshot": 29789159
+  },
+  "commit_style_note": "The repository uses an unusually atomic and heavily tool-assisted commit style. Tests, validators, contracts, documentation, implementation, migration and cleanup steps are often committed separately. Commit count therefore measures recorded construction decisions and repository activity, not an ordinary one-feature-per-commit human workflow.",
+  "daily_commits_utc": [
+    {
+      "date": "2026-09-07",
+      "commits": 991,
+      "phase": "Foundation explosion: canonical Potatoverse, North, chronology, symbols, theology, psychology and initial architecture."
+    },
+    {
+      "date": "2026-09-08",
+      "commits": 576,
+      "phase": "Taxonomy and retrieval: context graphs, provenance, epistemic layers, indexing, search and content classification."
+    },
+    {
+      "date": "2026-09-09",
+      "commits": 512,
+      "phase": "Knowledge engine: canonical body systems, evidence registries, science atlases, attestation sources and synchronized readers."
+    },
+    {
+      "date": "2026-09-10",
+      "commits": 328,
+      "phase": "Interactive knowledge: entity-aware tracing, progressive inspectors, time/evidence state and richer retrieval surfaces."
+    },
+    {
+      "date": "2026-09-11",
+      "commits": 263,
+      "phase": "Formalization: Axis/Door dynamics, vortex/spiral research, dimensions, consciousness and project consolidation."
+    },
+    {
+      "date": "2026-09-12",
+      "commits": 511,
+      "phase": "Great consolidation: salvage of older branches and PRs into canonical architecture, readers, Bible material and World Map foundations."
+    },
+    {
+      "date": "2026-09-13",
+      "commits": 233,
+      "phase": "Culture and contextual readers: tighter public surfaces, lifecycle models and recovered developmental hinges."
+    },
+    {
+      "date": "2026-09-14",
+      "commits": 354,
+      "phase": "Prediction and chronology deepening: North Axis foresight, fulfilled-only audit work, restored diary material and public narrative."
+    },
+    {
+      "date": "2026-09-15",
+      "commits": 511,
+      "phase": "House and reader convergence: Spiral Reader, route authority, conversation recovery, subdivision search and performance budgets."
+    },
+    {
+      "date": "2026-09-16",
+      "commits": 195,
+      "phase": "Evidence Root and integrity: public-statement ownership, Rooms navigation, CI contracts and canonical source cleanup."
+    },
+    {
+      "date": "2026-09-17",
+      "commits": 213,
+      "phase": "Product hardening: TTS behavior, reader edge cases, World Map hover/context and globe rendering fixes."
+    },
+    {
+      "date": "2026-09-18",
+      "commits": 399,
+      "phase": "House population: Foundation/Below grammar, Room status, Door histories, Today snapshots and two-field topology integration."
+    },
+    {
+      "date": "2026-09-19",
+      "commits": 200,
+      "phase": "Convergence and naming: homepage authority, Timeline migration, map-state hardening and validation."
+    },
+    {
+      "date": "2026-09-20",
+      "commits": 701,
+      "phase": "Systems engineering: centralized map ownership, motion policy, ADL/subdivision evidence, Canadian provinces, quality audits and bug closure."
+    }
+  ],
+  "activity_summary": {
+    "average_commits_per_calendar_day_in_snapshot": 427.64,
+    "average_commits_per_elapsed_24h": 456.49,
+    "message_category_counts_note": "Categories overlap; a commit can match several themes.",
+    "message_category_counts": {
+      "feature_add_expand_promote": 2330,
+      "architecture_registry_routing_consolidation": 1052,
+      "reader_ui_search_style_discovery": 978,
+      "world_map_geo_subdivision_adl": 939,
+      "tests_validators_regressions_contracts": 919,
+      "religion_theology_bible_potatoism": 607,
+      "archive_recovery_provenance_chronology": 566,
+      "politics_country_europe_greenland_north": 538,
+      "fixes_repairs_hardening_bug_closure": 500,
+      "docs_plans_designs_audits_todo": 385,
+      "science_dimensions_spiral_vortex_consciousness": 259
+    }
+  },
+  "repository_shape": {
+    "largest_top_level_areas_by_file_count": [
+      {
+        "path": "knowledge/",
+        "files": 802
+      },
+      {
+        "path": "data/",
+        "files": 626
+      },
+      {
+        "path": "scripts/",
+        "files": 293
+      },
+      {
+        "path": "docs/",
+        "files": 231
+      },
+      {
+        "path": "great-book/",
+        "files": 180
+      },
+      {
+        "path": "world-map/",
+        "files": 78
+      },
+      {
+        "path": "archive/",
+        "files": 74
+      },
+      {
+        "path": "story-content/",
+        "files": 57
+      },
+      {
+        "path": "rooms/",
+        "files": 50
+      },
+      {
+        "path": "app/",
+        "files": 46
+      }
+    ],
+    "extension_counts": {
+      ".json": 1434,
+      ".html": 350,
+      ".md": 298,
+      ".py": 252,
+      ".js": 131,
+      ".mjs": 64,
+      ".css": 34
+    },
+    "interpretation": "The repository is structurally more knowledge/data corpus than visual website. Public pages increasingly act as projections over canonical structured owners."
+  },
+  "developmental_story": [
+    {
+      "phase": "1 — Pour the world into containers",
+      "dates": "2026-09-07",
+      "description": "The repository begins by materializing an already-developed conceptual world: Potatoverse canon, North Programme, Kingdom Atlas, chronology, economics, symbols, theology and psychology."
+    },
+    {
+      "phase": "2 — Teach the archive what kind of thing each thing is",
+      "dates": "2026-09-08 to 2026-09-09",
+      "description": "Taxonomy, provenance, evidence classes and canonical records appear. The project shifts from collecting material toward distinguishing source, attestation, interpretation, canon and later synthesis."
+    },
+    {
+      "phase": "3 — Make knowledge traversable",
+      "dates": "2026-09-10 to 2026-09-11",
+      "description": "Readers, inspectors, entity-aware traces, time state, science relationships and formal Axis/Door research turn the archive into an interactive knowledge system."
+    },
+    {
+      "phase": "4 — Consolidate instead of merely accumulating",
+      "dates": "2026-09-12 to 2026-09-15",
+      "description": "Legacy PRs and branches are salvaged selectively. House authority, public routes, Spiral Reader, canonical owners, World Map performance and conversation recovery begin converging around one architecture."
+    },
+    {
+      "phase": "5 — Behave like maintained software",
+      "dates": "2026-09-16 to 2026-09-20",
+      "description": "CI, tests, TTS behavior, accessibility, motion policy, router ownership, typed evidence contracts, subdivision systems and critic-level bug ledgers dominate. The system begins policing its own consistency."
+    }
+  ],
+  "central_transition": {
+    "from": "Add Potatoverse.",
+    "to": "Forbid raw camera transitions outside Motion owner.",
+    "meaning": "The history moves from naming a worldview to engineering the infrastructure that can hold, retrieve, render, test and revise that worldview."
+  },
+  "projected_end_state": {
+    "description": "A living computational library/world rather than a single website: one canonical knowledge corpus projected through History, Timeline, Story, House, Rooms, Paths, Axis, World Map, Science, Religion, Philosophy, Great Book, Evidence and machine-readable discovery surfaces.",
+    "core_capabilities": [
+      "preserve first appearance and developmental history without backdating later interpretations",
+      "distinguish canon, testimony, evidence, comparison, interpretation, inference and creative lore",
+      "let humans listen/read continuously while optional links open specialist rooms",
+      "let machines retrieve canonical owners and provenance rather than scrape duplicated prose",
+      "map time, geography, relations, evidence and conceptual topology as different views over one corpus",
+      "revise current synthesis without deleting the record of how earlier synthesis arose"
+    ]
+  },
+  "sources": [
+    "GitHub repository metadata API for ThePotatoOfLife/TimDooley",
+    "GitHub commits collection for main, paged through the complete 5,987-commit snapshot",
+    "GitHub recursive main tree",
+    "GitHub issue search for repository pull-request count",
+    "Repository README.md, TODO.md and public-surface architecture"
+  ],
+  "public_routes": {
+    "history": "/history/",
+    "home": "/",
+    "tim": "/tim-dooley/",
+    "timeline": "/timeline/",
+    "house": "/house/",
+    "world_map": "/world-map/"
+  }
+}
