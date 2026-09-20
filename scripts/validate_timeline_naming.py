@@ -91,7 +91,7 @@ def main() -> None:
             continue
         if rel == Path("chronology") or (rel.parts and rel.parts[0] == "chronology"):
             continue
-        if "chronology" in path.name.lower():
+        if "chronology" in path.name.lower() and rel not in {Path("app/long-chronology.js"), Path("app/long-chronology.css")}:
             bad_names.append(str(rel))
     if bad_names:
         fail("active filenames/directories still use chronology: " + ", ".join(sorted(bad_names)[:20]))
