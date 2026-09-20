@@ -129,6 +129,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. Work pro
 - [x] Normalize future ADM1 sources through one fail-closed importer that emits canonical partitions + descriptor sidecars without mutating the live registry.
 - [ ] Add further country partitions only after provenance, byte budget, search records and national-context readability pass the same validator.
 - [x] Make the generic subdivision inspector expose unknown-vs-known statistics, local names, boundary provenance/vintage and source-specific representation notes.
+- [x] Make the country-card Regions doorway focus the retained partition into visible/interactable regional scale using subdivision-owned camera policy.
 - [x] Define a separate dated conflict-snapshot contract for control/contested/historical-front/humanitarian/event-aggregate geometry.
 - [ ] Promote conflict snapshots only after reviewed geometry + source bundles exist; never rewrite administrative partitions into live war geometry.
 

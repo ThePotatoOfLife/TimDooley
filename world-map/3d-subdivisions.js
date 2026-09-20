@@ -365,6 +365,39 @@ function descriptorCenter(bounds) {
   const east = geo.unwrapLongitude(bounds.east, west);
   return [(west + east) / 2, (Number(bounds.south) + Number(bounds.north)) / 2];
 }
+function descriptorFitBounds(bounds) {
+  if (!bounds) return null;
+  const west = Number(bounds.west);
+  const east = geo.unwrapLongitude(bounds.east, west);
+  const south = Number(bounds.south);
+  const north = Number(bounds.north);
+  if (![west,east,south,north].every(Number.isFinite)) return null;
+  return [[west,south],[east,north]];
+}
+async function focusPartition(partition, options = {}) {
+  const key = String(partition || '').toUpperCase();
+  const index = await subdivisionIndex();
+  const descriptor = index?.partitions?.[key];
+  const rawBounds = descriptorBounds(key, descriptor);
+  const bounds = descriptorFitBounds(rawBounds);
+  if (!descriptor || !bounds) return false;
+  const scale = sharedScale || await scaleRuntime();
+  const renderFloor = Number(scale.threshold('subdivisions', 'render')) + 0.18;
+  const padding = Number(options.padding) || 72;
+  const duration = Number.isFinite(Number(options.duration)) ? Number(options.duration) : 650;
+  const maxZoom = Number(options.maxZoom) || 6.6;
+  const camera = map.cameraForBounds?.(bounds, { padding, maxZoom }) || null;
+  if (camera?.center && Number.isFinite(Number(camera.zoom))) {
+    return motion.easeTo(map, {
+      center:camera.center,
+      zoom:Math.min(maxZoom, Math.max(renderFloor, Number(camera.zoom))),
+      duration,
+    });
+  }
+  const center = descriptorCenter(rawBounds);
+  if (!center) return false;
+  return motion.easeTo(map, { center, zoom:renderFloor, duration });
+}
 function distanceToMapCenterKm(bounds) {
   const center = descriptorCenter(bounds);
   const mapCenter = map.getCenter?.();
@@ -789,6 +822,9 @@ window.__potatoAtlasSubdivisions = {
     const index = await subdivisionIndex();
     await reconcileActive(index);
     return true;
+  },
+  async focusPartition(partition, options={}) {
+    return focusPartition(partition, options);
   },
   async refresh() {
     const index = await subdivisionIndex();
