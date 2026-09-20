@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-20",
   "authority": "crosscutting-lenses",
   "purpose": "Provide a small set of non-owning interpretive lenses that can be applied across the Potato of Life without creating new Rooms, planes or realms.",
@@ -41,7 +41,15 @@
           "use": "The useful empty hub helps distinguish center-as-capacity from center-as-filled-object.",
           "boundary": "The Daoist image is a philosophical comparator, not evidence that Daoism encodes the Potato House."
         }
-      ]
+      ],
+      "bidirectional_spiral": {
+        "owner": "data/house/bidirectional-spiral-field.json",
+        "questions": [
+          "What coordinate changes: axial position, radial scope, phase, time/order or regime?",
+          "Is this an exact return, a Ring, a changed Spiral, an attractor, or a return/service path?",
+          "Does the interpretation preserve the difference between trajectory and terrain overlay?"
+        ]
+      }
     },
     {
       "id": "polarity",
@@ -223,7 +231,8 @@
         "Door/Here is the operative present state.",
         "Seed begins from present conditions, not detached prediction.",
         "Spiral represents recurrence with changed state/history."
-      ]
+      ],
+      "spiral_relation": "O/Here is the operative current crossing. The double spiral represents history-bearing trajectories before/after that present; it is not the present itself."
     },
     {
       "id": "affective-integration",
@@ -247,7 +256,8 @@
         "Lower states do not define human worth.",
         "Descent can be healthy rooting/grief/investigation.",
         "Ascent is incomplete without service/return."
-      ]
+      ],
+      "spiral_boundary": "Do not assign emotional/spiritual worth from +z/-z, radius, clockwise/counter-clockwise turning or Fibonacci resemblance. Evaluate lived state by agency, integration, correction, care and return."
     }
   ],
   "application_order": [
