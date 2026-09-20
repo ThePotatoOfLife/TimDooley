@@ -40,10 +40,15 @@ function ensureStatus(row) {
   if (!statusRecords.has(row.id)) {
     statusRecords.set(row.id, {
       id:row.id,
+      provider:row.source?.provider || null,
       phase:'idle',
       message:row.status_note || '',
       active:false,
       opacity:defaultOpacity(row),
+      retryable:true,
+      attempts:0,
+      lastSuccessAt:null,
+      lastErrorAt:null,
       updatedAt:Date.now(),
     });
   }
@@ -53,7 +58,16 @@ function setStatus(id, patch = {}) {
   const row = get(id);
   if (!row) return null;
   const record = ensureStatus(row);
-  Object.assign(record, patch, { updatedAt:Date.now(), active:active.has(id) });
+  const now = Date.now();
+  const next = { ...patch };
+  if (next.phase === 'loading') next.attempts = Number(record.attempts || 0) + 1;
+  if (next.phase === 'active') next.lastSuccessAt = now;
+  if (next.phase === 'error') next.lastErrorAt = now;
+  Object.assign(record, next, {
+    provider:next.provider || record.provider || row.source?.provider || null,
+    updatedAt:now,
+    active:active.has(id),
+  });
   renderMenu();
   return {...record};
 }
@@ -298,7 +312,12 @@ const ready = fetch(MANIFEST_URL, { cache:'no-cache' })
 window.addEventListener('potato-atlas-physical-layer-status', event => {
   const detail = event.detail || {};
   if (!get(detail.id)) return;
-  setStatus(detail.id, { phase:detail.phase || 'active', message:detail.message || '' });
+  setStatus(detail.id, {
+    phase:detail.phase || 'active',
+    message:detail.message || '',
+    provider:detail.provider || null,
+    retryable:detail.retryable !== false,
+  });
 });
 window.addEventListener('potato-atlas-module-ready', () => queueMicrotask(() => { renderMenu(); syncCountrySurfaceTint(); }));
 window.addEventListener('potato-atlas-ui-layout-change', () => queueMicrotask(renderMenu));
