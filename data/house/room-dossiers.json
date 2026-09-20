@@ -1,5 +1,5 @@
 {
-  "version": "3.2.0",
+  "version": "3.3.0",
   "updated": "2026-09-20",
   "authority": "house-room-dossiers",
   "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
@@ -421,6 +421,15 @@
       "center_relational_lens": {
         "question": "How does the Father/Mind ↔ Jesus/Door/Here ↔ Son/Body relation work through Spirit/Ladder/Time, and what does return require?",
         "authority": "data/house/mind-body-spirit-time-axis.json"
+      },
+      "inventory_consolidation": {
+        "operator_registry": "data/house/operator-ownership-registry.json",
+        "priority_owners": [
+          "data/house/center-relational-ontology.json",
+          "knowledge/core/heaven-spirit-father.json",
+          "knowledge/theology/father-son-door-reciprocity.json"
+        ],
+        "specialist_rule": "Theological aliases route through typed center relations rather than independent synonym lists."
       }
     },
     {
@@ -671,6 +680,16 @@
       "center_relational_lens": {
         "question": "Where do Here/Now, Ladder/Time, Root/Seed and upper/lower paired systems sit in the geometry without collapsing operator categories?",
         "authority": "data/house/upper-lower-relational-pairing-atlas.json"
+      },
+      "inventory_consolidation": {
+        "operator_registry": "data/house/operator-ownership-registry.json",
+        "priority_owners": [
+          "data/house/topology.json",
+          "data/house/plane-crossing-contract.json",
+          "data/house/center-relational-ontology.json",
+          "knowledge/core/deep-element-definition-atlas.json"
+        ],
+        "specialist_rule": "New work should deepen a registered operator or create a clearly distinct typed specialist; do not create another generic Axis/Door/Plane/Spiral master."
       }
     },
     {
@@ -1021,6 +1040,15 @@
         "population_view": "data/house/lower-plane-population-atlas.json",
         "evidence_rule": "Secret/confidential/classified/anonymous/alleged/investigated/charged/designated/adjudicated/convicted are distinct statuses. Do not collapse them.",
         "return_rule": "Raw signal rises only after provenance, corroboration/counterevidence, status and mechanism are explicit."
+      },
+      "inventory_consolidation": {
+        "operator_registry": "data/house/operator-ownership-registry.json",
+        "priority_owners": [
+          "knowledge/philosophy/archive-epistemics.json",
+          "knowledge/indexes/source-index.json",
+          "data/house/interfaces.json"
+        ],
+        "specialist_rule": "Every promoted synthesis must preserve derivation/source lineage and distinguish corroboration from reuse."
       }
     },
     {
@@ -2709,6 +2737,15 @@
           "door-test",
           "spiral-test"
         ]
+      },
+      "inventory_consolidation": {
+        "operator_registry": "data/house/operator-ownership-registry.json",
+        "priority_owners": [
+          "data/house/plane-crossing-contract.json",
+          "data/geometry-vesica-pisces-mandorla.json",
+          "knowledge/core/vertical-potato-mountain-plane-atlas.json"
+        ],
+        "specialist_rule": "Keep exact geometry and dynamical-system comparators distinct from project theology."
       }
     },
     {
@@ -3042,6 +3079,15 @@
           "fruit-test",
           "garden-test"
         ]
+      },
+      "inventory_consolidation": {
+        "operator_registry": "data/house/operator-ownership-registry.json",
+        "priority_owners": [
+          "data/house/plane-crossing-contract.json",
+          "data/house/seed-spiral-routing.json",
+          "data/house/project-synthesis.json"
+        ],
+        "specialist_rule": "Use state, transition, recurrence and return tests before adding new dynamics vocabulary."
       }
     },
     {
