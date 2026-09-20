@@ -1,9 +1,9 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-20",
   "authority": "tree-plane-routing",
   "purpose": "Define how the three horizontal navigation planes, the vertical Axis/Tree structures, and religious/comparative subjects intersect so the Potato House can answer where something belongs and what it leads to.",
-  "master_rule": "This file coordinates three navigation decks/projections around the Axis and vertical Tree routes. The canonical geometric Plane is separately defined by data/house/plane-crossing-contract.json. Rooms own subjects; decks project them; Trees route vertically; corridors relate them.",
+  "master_rule": "This file coordinates three navigation decks/projections around the Axis and vertical Tree routes. The canonical geometric Plane is separately defined by data/house/plane-crossing-contract.json. Rooms own subjects; decks project them; Trees route vertically; corridors relate them. The generic Tree operator and family typing are governed by data/house/tree-family-contract.json.",
   "centerline": {
     "id": "axis",
     "label": "Axis",
@@ -459,5 +459,7 @@
       "below-plane": "Below Deck / depth navigation projection"
     },
     "rule": "Keep stable IDs for compatibility, but public/explanatory text should distinguish navigation deck from geometric Plane whenever ambiguity matters."
-  }
+  },
+  "tree_family_contract": "data/house/tree-family-contract.json",
+  "tree_type_rule": "Every vertical Tree in this file must remain typed: archive/Akashic, Knowledge fork, Life generative route or Strife reproductive failure pattern."
 }
