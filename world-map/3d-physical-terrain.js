@@ -6,6 +6,7 @@
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Physical Terrain requires the core map.');
 
+const PHYSICAL_ID = 'physical.terrain';
 const TERRAIN_SOURCE = 'atlas-terrain-dem';
 const HILLSHADE_LAYER = 'atlas-hillshade';
 const TERRAIN_TILEJSON = 'https://tiles.mapterhorn.com/tilejson.json';
@@ -18,6 +19,12 @@ const HILLSHADE_EXAGGERATION = 0.28;
 
 let enabled = false;
 let busy = false;
+
+function reportStatus(phase, message) {
+  window.dispatchEvent(new CustomEvent('potato-atlas-physical-layer-status', {
+    detail:{ id:PHYSICAL_ID, provider:'Mapterhorn', phase, message, retryable:true }
+  }));
+}
 
 function registerHillshade() {
   window.__potatoAtlasRenderStack?.register?.(HILLSHADE_LAYER, {
@@ -61,6 +68,7 @@ function setBaseOpacity(value) {
 async function setEnabled(next) {
   if (busy || enabled === next) return enabled;
   busy = true;
+  if (next) reportStatus('loading', 'Loading terrain DEM');
   try {
     if (next) {
       // Network-backed DEM data is created only here, after explicit activation.
@@ -71,11 +79,13 @@ async function setEnabled(next) {
       map.setTerrain({ source:TERRAIN_SOURCE, exaggeration:TERRAIN_EXAGGERATION });
       setBaseOpacity(BASE_RASTER_TERRAIN_OPACITY);
       enabled = true;
+      reportStatus('active', 'Terrain DEM active');
     } else {
       try { map.setTerrain(null); } catch {}
       if (map.getLayer(HILLSHADE_LAYER)) map.setLayoutProperty(HILLSHADE_LAYER, 'visibility', 'none');
       setBaseOpacity(BASE_RASTER_DEFAULT_OPACITY);
       enabled = false;
+      reportStatus('idle', 'Terrain off');
     }
   } catch (error) {
     console.warn('Physical terrain unavailable:', error);
@@ -85,6 +95,7 @@ async function setEnabled(next) {
     }
     setBaseOpacity(BASE_RASTER_DEFAULT_OPACITY);
     enabled = false;
+    reportStatus('error', error?.message || 'Terrain provider unavailable');
   } finally {
     busy = false;
   }
