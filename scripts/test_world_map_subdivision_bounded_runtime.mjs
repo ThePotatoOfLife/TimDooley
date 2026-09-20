@@ -34,7 +34,7 @@ const scaleRuntime = Object.freeze({
     return value;
   },
   bandThreshold(band) {
-    const values = { 'macro-region':2.5, subnational:5.8 };
+    const values = { 'macro-region':2.5, subnational:5.8, local:8 };
     const value = values[band];
     if (!Number.isFinite(value)) throw new Error(`unexpected scale band ${band}`);
     return value;
