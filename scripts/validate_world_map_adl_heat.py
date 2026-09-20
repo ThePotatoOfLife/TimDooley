@@ -64,6 +64,8 @@ def main() -> int:
         errors.append("metadata id must remain adl-heat")
     if meta.get("source_organization") != "Anti-Defamation League (ADL), Center on Extremism":
         errors.append("metadata must preserve explicit ADL source ownership")
+    if not meta.get("official_source_verified") or not (meta.get("official_source_verified_claims") or []):
+        errors.append("metadata must preserve dated official-source refresh verification")
     snap = meta.get("snapshot") or {}
     if snap.get("status") not in {"historical-seed","official-export"}:
         errors.append("snapshot status must be historical-seed or official-export")
