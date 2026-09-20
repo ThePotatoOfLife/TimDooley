@@ -1,6 +1,6 @@
 {
   "id": "religious-foundation-timeline",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "status": "canonical projection of religious-foundation-lineages",
   "purpose": "Flatten religious lineage nodes into a chronology suitable for timeline and spiral rendering while preserving uncertainty, parentage and node type.",
@@ -1249,5 +1249,13 @@
       ],
       "notes": "Heavily shaped by Holiness currents; later becomes globally diverse and cross-denominational."
     }
-  ]
+  ],
+  "event_registry": "data/religious-foundation-events.json",
+  "merge_model": {
+    "lineage_events": "Primary lineage-node seed/formation clocks remain in events.",
+    "notable_events": "Load data/religious-foundation-events.json as a second chronological stream.",
+    "merge_key": "year_start + foundation_id + lineage_node_ids/event_id",
+    "branch_rule": "If a notable event creates_or_crystallizes_child_ids, render the child trajectory from that marker while keeping the child's full formation window available.",
+    "priority": "major by default; secondary optional; context hidden unless requested"
+  }
 }
