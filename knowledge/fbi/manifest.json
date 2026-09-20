@@ -1,0 +1,369 @@
+{
+  "id": "fbi-figures-bonds-incidents",
+  "title": "FBI — Figures, Bonds & Incidents",
+  "subtitle": "Tim Dooley / Potatoverse Character Dossier Bureau",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "disclaimer": "Potatoverse archival acronym. Not affiliated with the U.S. Federal Bureau of Investigation or any real law-enforcement or intelligence service.",
+  "purpose": "Persistent dossiers for recurring people and characters, their relationships, dated incidents, source strata, archetypes, symbolic roles, Story links and recovery leads.",
+  "bureau_logic": {
+    "figures": "Who appears, under what names, with what source-bounded roles and chronology?",
+    "bonds": "Who is repeatedly connected to whom, in what contexts, and how does the relationship change?",
+    "incidents": "What dated scene changes a role, relationship, boundary, project artifact or narrative?",
+    "tim_centering_rule": "Each dossier records relation to Tim because Tim is the project's central subject, but no person is reduced to their usefulness, loyalty, opposition or proximity to Tim.",
+    "source_rule": "Chronicle prose, public chat, raw conversation, literary Great Book, retrospective profile and later synthesis remain distinct source strata."
+  },
+  "folders": {
+    "figures": "knowledge/fbi/figures/",
+    "bonds": "knowledge/fbi/bonds/",
+    "incidents": "knowledge/fbi/incidents/"
+  },
+  "figures": [
+    {
+      "id": "marty-biz",
+      "name": "Marty Biz Music",
+      "aliases": [
+        "Marty Biz Music",
+        "Marty",
+        "martymusicbiz",
+        "Drift King",
+        "Chance & Taylor",
+        "Top Scholar"
+      ],
+      "path": "knowledge/fbi/figures/marty-biz.json",
+      "room_path": "rooms/potatoverse-canon/beings/marty/",
+      "archive_status": "deceased-2025",
+      "chronicle_occurrence_count": 133,
+      "archetypes": [
+        "trickster-catalyst",
+        "mirror-foil",
+        "wanderer-threshold"
+      ]
+    },
+    {
+      "id": "port-monkey",
+      "name": "Port Monkey",
+      "aliases": [
+        "Port Monkey",
+        "Monkey"
+      ],
+      "path": "knowledge/fbi/figures/port-monkey.json",
+      "room_path": null,
+      "archive_status": "historical-recovery-active",
+      "chronicle_occurrence_count": 44,
+      "archetypes": [
+        "trickster-catalyst",
+        "wanderer-threshold",
+        "mirror-foil"
+      ]
+    },
+    {
+      "id": "rage",
+      "name": "Rage",
+      "aliases": [
+        "Rage"
+      ],
+      "path": "knowledge/fbi/figures/rage.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 44,
+      "archetypes": [
+        "guardian-defender",
+        "healer-companion"
+      ]
+    },
+    {
+      "id": "sammy",
+      "name": "Sammy",
+      "aliases": [
+        "Sammy",
+        "Sami",
+        "Queen of the Potatoverse",
+        "QUEEN OF MARTYVERSE"
+      ],
+      "path": "knowledge/fbi/figures/sammy.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 33,
+      "archetypes": [
+        "sovereign-warrior",
+        "trickster-catalyst",
+        "wanderer-threshold"
+      ]
+    },
+    {
+      "id": "juice",
+      "name": "Juice",
+      "aliases": [
+        "Juice",
+        "Judas-in-the-Cup",
+        "Rational Soul"
+      ],
+      "path": "knowledge/fbi/figures/juice.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 29,
+      "archetypes": [
+        "skeptic-contrarian",
+        "mirror-foil",
+        "mystic-interpreter"
+      ]
+    },
+    {
+      "id": "ledgeview",
+      "name": "Ledgeview",
+      "aliases": [
+        "Ledgeview"
+      ],
+      "path": "knowledge/fbi/figures/ledgeview.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 27,
+      "archetypes": [
+        "witness-observer",
+        "chronicler-archivist",
+        "bard-jester"
+      ]
+    },
+    {
+      "id": "termite",
+      "name": "Termite",
+      "aliases": [
+        "Termite",
+        "termitesmoothie",
+        "The Faithful Tuber",
+        "The Groyper Potato"
+      ],
+      "path": "knowledge/fbi/figures/termite.json",
+      "room_path": "rooms/potatoverse-canon/beings/termite/",
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 26,
+      "archetypes": [
+        "builder-cultivator",
+        "guardian-defender",
+        "healer-companion"
+      ]
+    },
+    {
+      "id": "optimistique",
+      "name": "Optimistique",
+      "aliases": [
+        "Optimistique"
+      ],
+      "path": "knowledge/fbi/figures/optimistique.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 22,
+      "archetypes": [
+        "healer-companion",
+        "bard-jester",
+        "guardian-defender"
+      ]
+    },
+    {
+      "id": "kale",
+      "name": "Kale",
+      "aliases": [
+        "Kale",
+        "The Grounded Enjoyer"
+      ],
+      "path": "knowledge/fbi/figures/kale.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 19,
+      "archetypes": [
+        "seeker-student",
+        "healer-companion"
+      ]
+    },
+    {
+      "id": "rahu",
+      "name": "Rahu",
+      "aliases": [
+        "Rahu"
+      ],
+      "path": "knowledge/fbi/figures/rahu.json",
+      "room_path": "rooms/potatoverse-canon/beings/rahu/",
+      "archive_status": "recovery-active-2026",
+      "chronicle_occurrence_count": 14,
+      "archetypes": [
+        "mystic-interpreter",
+        "seeker-student",
+        "wanderer-threshold"
+      ]
+    },
+    {
+      "id": "metalorian",
+      "name": "Metalorian",
+      "aliases": [
+        "Metalorian",
+        "Meta",
+        "Joe"
+      ],
+      "path": "knowledge/fbi/figures/metalorian.json",
+      "room_path": "rooms/potatoverse-canon/beings/metalorian/",
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 11,
+      "archetypes": [
+        "shadow-adversary",
+        "mirror-foil"
+      ]
+    },
+    {
+      "id": "literally",
+      "name": "Literally",
+      "aliases": [
+        "Literally",
+        "The Cognitive Contrarian",
+        "The Razor of Reason",
+        "The Perception Provocateur"
+      ],
+      "path": "knowledge/fbi/figures/literally.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 9,
+      "archetypes": [
+        "guardian-defender",
+        "skeptic-contrarian"
+      ]
+    },
+    {
+      "id": "anacondasin",
+      "name": "Anacondasin",
+      "aliases": [
+        "Anacondasin"
+      ],
+      "path": "knowledge/fbi/figures/anacondasin.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 8,
+      "archetypes": [
+        "wanderer-threshold",
+        "seeker-student",
+        "artisan-maker"
+      ]
+    },
+    {
+      "id": "pondo",
+      "name": "Pondo",
+      "aliases": [
+        "Pondo"
+      ],
+      "path": "knowledge/fbi/figures/pondo.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 7,
+      "archetypes": [
+        "healer-companion",
+        "guardian-defender"
+      ]
+    },
+    {
+      "id": "bigtech",
+      "name": "BigTech",
+      "aliases": [
+        "BigTech",
+        "Mike Lowry",
+        "Mike Lowrey",
+        "The Mind Graper"
+      ],
+      "path": "knowledge/fbi/figures/bigtech.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 3,
+      "archetypes": [
+        "mirror-foil",
+        "skeptic-contrarian",
+        "trickster-catalyst"
+      ]
+    },
+    {
+      "id": "txt",
+      "name": "TXT",
+      "aliases": [
+        "TXT",
+        "Low-T"
+      ],
+      "path": "knowledge/fbi/figures/txt.json",
+      "room_path": "rooms/potatoverse-canon/beings/txt/",
+      "archive_status": "historical-recovery-active",
+      "chronicle_occurrence_count": 2,
+      "archetypes": [
+        "shadow-adversary",
+        "mirror-foil"
+      ]
+    },
+    {
+      "id": "tachy",
+      "name": "Tachy / Krystato",
+      "aliases": [
+        "Tachy / Krystato",
+        "imnotkrystalstation",
+        "Krystato"
+      ],
+      "path": "knowledge/fbi/figures/tachy.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 1,
+      "archetypes": [
+        "chronicler-archivist",
+        "witness-observer",
+        "trickster-catalyst"
+      ]
+    },
+    {
+      "id": "matthew-mtclassic",
+      "name": "Matthew / MTClassic",
+      "aliases": [
+        "Matthew / MTClassic",
+        "@mtclassic3",
+        "MTClassic"
+      ],
+      "path": "knowledge/fbi/figures/matthew-mtclassic.json",
+      "room_path": "rooms/potatoverse-canon/beings/matthew-mtclassic/",
+      "archive_status": "active-2026",
+      "chronicle_occurrence_count": 0,
+      "archetypes": [
+        "healer-companion",
+        "guardian-defender",
+        "seeker-student"
+      ]
+    },
+    {
+      "id": "mediomu007",
+      "name": "Mediomu007",
+      "aliases": [
+        "Mediomu007",
+        "@mediomu007"
+      ],
+      "path": "knowledge/fbi/figures/mediomu007.json",
+      "room_path": "rooms/potatoverse-canon/beings/mediomu/",
+      "archive_status": "active-2026",
+      "chronicle_occurrence_count": 0,
+      "archetypes": [
+        "healer-companion",
+        "seeker-student",
+        "builder-cultivator"
+      ]
+    },
+    {
+      "id": "capy",
+      "name": "Capy",
+      "aliases": [
+        "Capy"
+      ],
+      "path": "knowledge/fbi/figures/capy.json",
+      "room_path": null,
+      "archive_status": null,
+      "chronicle_occurrence_count": 0,
+      "archetypes": []
+    }
+  ],
+  "canonical_support": [
+    "knowledge/story/character-archive-v2.json",
+    "knowledge/story/cast-book.json",
+    "knowledge/story/social-presence-ledger-2024-2025.json",
+    "knowledge/story/character-symbolic-role-assignments.json",
+    "knowledge/world/potatoverse-cast-role-ecology.json"
+  ]
+}
