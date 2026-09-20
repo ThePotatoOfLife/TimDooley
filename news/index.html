@@ -3,34 +3,28 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Current World — Live News | The Potato of Life</title>
-<meta name="description" content="A live, source-linked current-world reader beside the Potato House: latest coverage, repeated headline clusters, source lanes, time horizons and transparent provenance.">
+<meta name="description" content="A simple live, source-linked current-world reader: more news up front, with filters, alternate views, source provenance and methodology available when needed.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/news/">
 <link rel="stylesheet" href="../app/site-system.css?v=20260914a">
-<link rel="stylesheet" href="../app/news.css?v=20260920h">
+<link rel="stylesheet" href="../app/news.css?v=20260920i">
 <link rel="stylesheet" href="../app/tts-drawer.css?v=20260915">
 </head>
 <body>
 <main class="page page--standard news-page" data-reader-surface="news" data-news-feed>
-<nav class="page-nav" aria-label="News navigation"><a href="../">← Home</a><a href="../house/">House</a><a href="../world/">World</a><a href="../world-map/">World Map</a><a href="../timeline/">Timeline</a><a href="../context/source-authority/">Sources</a></nav>
+<nav class="page-nav" aria-label="News navigation"><a href="../">← Home</a><a href="../house/">House</a><a href="../world-map/">World Map</a><a href="../timeline/">Timeline</a></nav>
 
-<header class="news-header">
-<div><p class="eyebrow">Current world · external live feeds</p><h1>NEWS</h1><p class="news-deck">A moving window beside the House: not one homepage algorithm, but several ways to inspect what outside sources are publishing now.</p></div>
-<div class="news-header-copy"><strong>Current, source-linked, and deliberately non-owning.</strong> The page combines free public discovery feeds, preserves the original publisher link and lets the reader change topic, geographic/system lens and time horizon without turning the result into project canon.
-<p class="news-boundary">Newest-first is the default. “Repeated coverage” means multiple source domains use sufficiently similar headline language; it is not a truth, consensus, importance or endorsement score.</p></div>
+<header class="news-header news-header--simple">
+<div>
+<p class="eyebrow">Current World · live outside reporting</p>
+<h1>NEWS</h1>
+<p class="news-deck">Fresh headlines and publisher-supplied excerpts. Newest first. Open a full report only when you want to go deeper.</p>
+</div>
+<p class="news-boundary">External reporting remains external: appearing here is not project endorsement, verification or canon.</p>
 </header>
 
-<section class="news-orientation" aria-labelledby="news-orientation-title">
-<div><p class="eyebrow">What this surface is</p><h2 id="news-orientation-title">The world outside the archive, passing by the Door</h2></div>
-<div class="news-orientation-copy">
-<p>The House owns durable project knowledge. Current World owns no durable claim. It is an observation surface: a temporary sample of external reporting that can send a reader toward the original publisher, the World Map, Timeline, Sources or a project Room when deeper work is warranted.</p>
-<p>The useful question is not only “what is the latest headline?” It is also: <em>how broad is this sample, which sources are present, what is being repeated across outlets, what changes when the time window changes, and which geographic or systems lens are you actually looking through?</em></p>
-<div class="news-corridors" aria-label="Current World corridors"><a href="../world-map/">Spatial context → World Map</a><a href="../world/">Systems context → World</a><a href="../timeline/">Historical context → Timeline</a><a href="../context/source-authority/">Evidence rules → Sources</a></div>
-</div>
-</section>
-
-<section class="news-audio-reader" aria-labelledby="news-audio-title">
-<div class="news-audio-copy"><p class="eyebrow">Audio bulletin</p><h2 id="news-audio-title">Read the news, not the interface</h2><p>The main reader speaks only the loaded chronological story stream: headline plus any publisher-supplied excerpt or specialist summary. Navigation, filters, timestamps, source links, methodology and the rest of the page stay silent.</p></div>
+<section class="news-primary-bar" aria-label="News reader actions">
+<div class="news-primary-status"><strong data-news-count>Loading news…</strong><span data-news-updated></span></div>
 <div id="news-tts" data-tts-longform data-tts-root="#news-reading-stream" data-tts-id="current-world-news-only" data-tts-label="Current World News" data-tts-trigger-label="Read all news" data-tts-all-label="All news" data-tts-current-label="This story" data-tts-selection-label="Selection" data-tts-item=".news-story" data-tts-exclude=".news-story-kicker,.news-story-footer,.news-story-image,.news-story-expand,.news-empty"></div>
 </section>
 
@@ -78,21 +72,51 @@
 </div>
 <button class="news-refresh" type="button" data-news-refresh>Refresh</button>
 </div>
-<form class="news-search" role="search"><input type="search" data-news-search aria-label="Search current news" placeholder="Search the current GDELT news index…"><button type="submit">Search current coverage</button></form>
-<div class="news-display-filters"><button type="button" class="news-readable-toggle" data-news-readable aria-pressed="false"><b>Readable here only</b><span>hide headline-only discovery cards</span></button></div>
+<form class="news-search" role="search"><input type="search" data-news-search aria-label="Search current news" placeholder="Search current coverage…"><button type="submit">Search</button></form>
+<div class="news-display-filters"><button type="button" class="news-readable-toggle" data-news-readable aria-pressed="false"><b>Readable here only</b><span>hide headline-only cards</span></button></div>
 </section>
 </details>
 
+<section id="news-reading-stream" class="news-view is-active news-latest-view" data-news-view-panel="latest" aria-label="Latest coverage">
+<section class="news-lead" data-news-lead aria-label="Newest stories"></section>
+<section class="news-feed" data-news-list aria-label="More current stories"><div class="news-empty">Loading public feeds…</div></section>
+</section>
+
+<details class="news-secondary-drawer">
+<summary><b>More views</b><span>briefing · repeated coverage · sources</span></summary>
+<nav class="news-view-switch" aria-label="News reading mode">
+<button type="button" data-news-view="latest" aria-pressed="true"><b>Latest</b><span>chronological river</span></button>
+<button type="button" data-news-view="briefing" aria-pressed="false"><b>Briefing</b><span>source-balanced rotation</span></button>
+<button type="button" data-news-view="clusters" aria-pressed="false"><b>Repeated coverage</b><span>similar headlines across sources</span></button>
+<button type="button" data-news-view="sources" aria-pressed="false"><b>Sources</b><span>provider lanes</span></button>
+</nav>
+
+<section class="news-view" data-news-view-panel="briefing" aria-label="Source-balanced briefing">
+<div class="news-section-intro"><div><p class="eyebrow">Mechanical briefing</p><h2>A shorter pass across the streams</h2></div><p>This rotates through active providers and avoids repeating the same source where possible. It is not a ranking of importance, truth or political significance.</p></div>
+<div class="news-briefing" data-news-briefing><div class="news-empty">Building a source-balanced briefing…</div></div>
+</section>
+
+<section class="news-view" data-news-view-panel="clusters" aria-label="Repeated coverage">
+<div class="news-section-intro"><div><p class="eyebrow">Headline overlap</p><h2>Where coverage repeats</h2></div><p>These groups reflect similar headline language across source domains. Repetition is not corroboration.</p></div>
+<div class="news-clusters" data-news-clusters><div class="news-empty">Waiting for enough coverage to compare…</div></div>
+</section>
+
+<section class="news-view" data-news-view-panel="sources" aria-label="Source lanes">
+<div class="news-section-intro"><div><p class="eyebrow">Provider lanes</p><h2>See the streams separately</h2></div><p>Inspect where items came from, how each provider is accessed, and the boundary around what is displayed.</p></div>
+<div class="news-source-lanes" data-news-source-lanes><div class="news-empty">Loading source lanes…</div></div>
+</section>
+</details>
+
+<details class="news-info-drawer">
+<summary><b>Feed details</b><span>health · sample · freshness</span></summary>
 <div class="news-status" aria-live="polite">
-<strong data-news-count>Loading…</strong><span data-news-updated></span>
 <span class="news-provider-status" data-provider="gdelt" data-state="loading"><span>GDELT</span></span>
 <span class="news-provider-status" data-provider="publisher-rss" data-state="loading"><span>Publisher RSS</span></span>
 <span class="news-provider-status" data-provider="hacker-news" data-state="loading"><span>Hacker News</span></span>
 <span class="news-provider-status" data-provider="spaceflight-news" data-state="loading"><span>Spaceflight</span></span>
 </div>
-
 <section class="news-pulse" aria-labelledby="news-pulse-title">
-<div class="news-pulse-head"><div><p class="eyebrow">Sample pulse</p><h2 id="news-pulse-title">What came back from the current window?</h2></div><p>This is observability, not a scorecard. Counts describe the returned sample only; provider coverage and API limits differ.</p></div>
+<div class="news-pulse-head"><div><p class="eyebrow">Sample pulse</p><h2 id="news-pulse-title">What came back?</h2></div><p>Counts describe the returned sample only.</p></div>
 <div class="news-pulse-grid" data-news-pulse>
 <div class="news-pulse-cell"><b>—</b><span>items returned</span></div>
 <div class="news-pulse-cell"><b>—</b><span>readable here</span></div>
@@ -102,51 +126,35 @@
 <div class="news-pulse-cell"><b>—</b><span>newest item age</span></div>
 </div>
 </section>
+</details>
 
-<nav class="news-view-switch" aria-label="News reading mode">
-<button type="button" data-news-view="latest" aria-pressed="true"><b>Latest</b><span>chronological river</span></button>
-<button type="button" data-news-view="briefing" aria-pressed="false"><b>Briefing</b><span>source-balanced rotation</span></button>
-<button type="button" data-news-view="clusters" aria-pressed="false"><b>Repeated coverage</b><span>similar headlines across sources</span></button>
-<button type="button" data-news-view="sources" aria-pressed="false"><b>Sources</b><span>provider lanes</span></button>
-</nav>
-
-<section id="news-reading-stream" class="news-view is-active" data-news-view-panel="latest" aria-label="Latest coverage">
-<section class="news-lead" data-news-lead aria-label="Newest stories"></section>
-<section class="news-feed" data-news-list aria-label="More current stories"><div class="news-empty">Loading public feeds…</div></section>
+<details class="news-about-drawer">
+<summary><b>About Current World</b><span>method · boundaries · links</span></summary>
+<section class="news-orientation" aria-labelledby="news-orientation-title">
+<div><p class="eyebrow">Observation surface</p><h2 id="news-orientation-title">Outside reporting stays outside reporting</h2></div>
+<div class="news-orientation-copy">
+<p>Current World is a temporary view of external reporting, not a Room that owns claims. It can point toward the original publisher, World Map, Timeline or project Sources when deeper work is warranted.</p>
+<p>Publisher RSS cards may contain publisher-supplied excerpts. Discovery cards may know only a headline and link. Similar headlines can reveal repeated coverage but do not establish truth or independent corroboration.</p>
+<div class="news-corridors" aria-label="Current World corridors"><a href="../world-map/">World Map</a><a href="../world/">World</a><a href="../timeline/">Timeline</a><a href="../context/source-authority/">Sources &amp; evidence</a></div>
+</div>
 </section>
-
-<section class="news-view" data-news-view-panel="briefing" aria-label="Source-balanced briefing">
-<div class="news-section-intro"><div><p class="eyebrow">Mechanical briefing</p><h2>A shorter pass across the streams</h2></div><p>This view rotates through active providers and avoids repeating the same source domain where possible. It is not a ranking of importance, quality, truth or political significance; it is simply a shorter, more source-diverse way to consume the returned sample.</p></div>
-<div class="news-briefing" data-news-briefing><div class="news-empty">Building a source-balanced briefing…</div></div>
-</section>
-
-<section class="news-view" data-news-view-panel="clusters" aria-label="Repeated coverage">
-<div class="news-section-intro"><div><p class="eyebrow">Headline overlap</p><h2>Where coverage repeats</h2></div><p>These groups are produced from normalized headline-token overlap and require more than one source domain. They show repeated framing or subject language, not independent corroboration.</p></div>
-<div class="news-clusters" data-news-clusters><div class="news-empty">Waiting for enough coverage to compare…</div></div>
-</section>
-
-<section class="news-view" data-news-view-panel="sources" aria-label="Source lanes">
-<div class="news-section-intro"><div><p class="eyebrow">Provider lanes</p><h2>See the streams separately</h2></div><p>Separating the providers makes their different jobs visible: broad discovery, publisher-supplied RSS excerpts, a community technology stream, and a specialist space index. Access/reuse labels explain the delivery contract; they are not source-quality, truth or political ratings.</p></div>
-<div class="news-source-lanes" data-news-source-lanes><div class="news-empty">Loading source lanes…</div></div>
-</section>
-
 <section class="news-method" aria-labelledby="news-method-title">
-<div><p class="eyebrow">How to read this surface</p><h2 id="news-method-title">Current information without flattening provenance</h2></div>
+<div><p class="eyebrow">Method</p><h2 id="news-method-title">Useful without pretending to know more than the feeds do</h2></div>
 <div>
 <div class="news-method-grid">
-<article><b>Read here, finish there</b><span>Publisher RSS cards can include the publisher’s own short description, thumbnail and categories directly on this page. Full article bodies are not mirrored; “Full report” still returns to the publisher.</span></article>
-<article><b>Community ≠ newsroom</b><span>Hacker News is explicitly labeled as a community link stream. Its presence adds a technology-discovery channel, not journalistic verification.</span></article>
-<article><b>Repetition ≠ truth</b><span>Similar headlines from several domains can reveal repeated coverage, syndication or a common event. The cluster does not decide which interpretation is correct.</span></article>
-<article><b>Window matters</b><span>A 3-hour sample answers a different question from a 7-day sample. The selected publication horizon travels in the URL so views can be revisited.</span></article>
-<article><b>Lens matters</b><span>North & Arctic, Europe, Middle East and other lenses are query scopes, not project alignment labels. They constrain discovery terms only.</span></article>
-<article><b>Absence ≠ silence</b><span>If a topic is missing, that may reflect query wording, API coverage, rate limits, language, indexing delay or the chosen time horizon.</span></article>
+<article><b>Read here, finish there</b><span>Publisher excerpts can be read here; full article bodies remain with the publisher.</span></article>
+<article><b>Community ≠ newsroom</b><span>Hacker News is a community link stream, not independent reporting.</span></article>
+<article><b>Repetition ≠ truth</b><span>Headline overlap describes repeated coverage, not consensus or verification.</span></article>
+<article><b>Window matters</b><span>A 3-hour sample and a 7-day sample answer different questions.</span></article>
+<article><b>Lens matters</b><span>Geographic/system lenses constrain discovery terms; they are not alignment labels.</span></article>
+<article><b>Absence ≠ silence</b><span>Missing coverage may reflect query wording, indexing delay, rate limits or feed scope.</span></article>
 </div>
-<p class="news-method-note">Current World therefore has two kinds of card: <strong>discovery cards</strong>, which may only know a headline/link, and <strong>excerpt cards</strong>, which can be read meaningfully on-page because the publisher supplied a description through RSS. The interface labels the distinction rather than pretending they contain the same evidence.</p>
-<nav class="news-footlinks" aria-label="News source and project links"><a href="../data/news/sources.json">Source contract</a><a href="https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/">GDELT documentation</a><a href="https://github.com/HackerNews/API">Hacker News API</a><a href="https://api.spaceflightnewsapi.net/v4/docs/">Spaceflight News API</a><a href="../context/source-authority/">Project evidence policy</a><a href="../house/">Back to the House</a></nav>
+<nav class="news-footlinks" aria-label="News source and project links"><a href="../data/news/sources.json">Source contract</a><a href="../context/source-authority/">Evidence policy</a><a href="../house/">Back to House</a></nav>
 </div>
 </section>
+</details>
 </main>
-<script src="../app/news.js?v=20260920h" data-news-config="../data/news/sources.json"></script>
+<script src="../app/news.js?v=20260920i" data-news-config="../data/news/sources.json"></script>
 <script src="../app/tts-reader.js"></script><script src="../app/tts-drawer.js"></script><script src="../app/longform-tts-adapter.js"></script>
 <script src="../app/house-journey.js"></script>
 </body></html>

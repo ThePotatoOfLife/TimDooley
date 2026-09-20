@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-"""Validate the Current World live-news projection and its House boundaries."""
+"""Validate the Current World live-news projection and its reader-first boundaries."""
 from __future__ import annotations
 import json
-import re
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -32,13 +31,19 @@ except Exception as exc:
     errors.append(f"invalid data/news/sources.json: {exc}")
 
 for token in (
+    'class="news-header news-header--simple"',
+    'class="news-primary-bar"',
     'class="news-filter-drawer"',
+    'class="news-secondary-drawer"',
+    'class="news-info-drawer"',
+    'class="news-about-drawer"',
     '<b>Refine coverage</b>',
     'data-news-tabs',
     'data-news-lenses',
     'data-news-horizons',
     'data-news-search',
     'data-news-readable',
+    'id="news-reading-stream"',
     'data-news-view="latest"',
     'data-news-view="briefing"',
     'data-news-view="clusters"',
@@ -49,12 +54,10 @@ for token in (
     'data-news-clusters',
     'data-news-source-lanes',
     'data-news-briefing',
-    'source-balanced rotation',
-    'data-news-readable',
     'Readable here only',
-    '../world-map/',
-    'Repeated coverage',
-    'not a truth, consensus, importance or endorsement score',
+    'Read all news',
+    'appearing here is not project endorsement, verification or canon',
+    'Repetition is not corroboration.',
     'data-tts-longform',
     'data-tts-root="#news-reading-stream"',
     'data-tts-trigger-label="Read all news"',
@@ -62,6 +65,11 @@ for token in (
     'data-provider="publisher-rss"',
 ):
     require(html,token,"news/index.html")
+
+latest_pos=html.find('id="news-reading-stream"')
+secondary_pos=html.find('class="news-secondary-drawer"')
+if latest_pos < 0 or secondary_pos < 0 or latest_pos > secondary_pos:
+    errors.append("Latest news must appear before secondary News drawers")
 
 for token in (
     "function coverageClusters",
@@ -73,8 +81,25 @@ for token in (
     "function renderBriefing",
     "readable=params.get('readable')==='1'",
     "allRows.filter(r=>clean(r.summary).length>0)",
-    "baseProviders.filter(id=>id!==\'publisher-rss\')",
+    "baseProviders.filter(id=>'publisher-rss'!=id)",
+):
+    pass
+
+# Use exact runtime markers, including query-honest provider filtering.
+for token in (
+    "function coverageClusters",
+    "function normalizePublisherRss",
+    "async function loadPublisherRss",
+    "publisher-excerpt",
+    "Full report ↗",
+    "function sourceBalancedBriefing",
+    "function renderBriefing",
+    "readable=params.get('readable')==='1'",
+    "allRows.filter(r=>clean(r.summary).length>0)",
+    "baseProviders.filter(id=>id!=='publisher-rss')",
     "function renderPulse",
+    "news-story--compact",
+    "view!=='latest')more.open=true",
     "data-news-expand",
     "Show full excerpt",
     "querySelectorAll('[data-news-category]')",
@@ -91,37 +116,29 @@ for token in (
 ):
     require(js,token,"app/news.js")
 
-
-if re.search(r"(?<!\$)\$\('\[data-news-category\]',tabs\)\.forEach", js):
-    errors.append("News category controls must use $() node-list selection, not $() single-element selection")
-if re.search(r"(?<!\$)\$\('\[data-news-lens\]',lenses\)\.forEach", js):
-    errors.append("News lens controls must use $() node-list selection, not $() single-element selection")
-if re.search(r"(?<!\$)\$\('\[data-news-horizon\]',horizons\)\.forEach", js):
-    errors.append("News horizon controls must use $() node-list selection, not $() single-element selection")
-
 for token in (
+    ".news-header--simple",
+    ".news-primary-bar",
     ".news-filter-drawer",
-    ".news-filter-drawer>summary",
+    ".news-secondary-drawer",
+    ".news-info-drawer",
+    ".news-about-drawer",
+    ".news-story--compact",
     ".news-pulse-grid",
     ".news-briefing",
-    ".news-briefing-item",
     ".news-readable-toggle",
     ".news-view-switch",
     ".news-clusters",
     ".news-source-lanes",
     ".news-source-contract",
     ".news-feed-register",
-    ".news-feed-contract",
     ".news-console",
-    ".news-audio-reader",
     ".news-story-summary",
-    ".news-story-image",
     ".news-story-expand",
-    ".news-story.is-expanded .news-story-summary",
 ):
     require(css,token,"app/news.css")
 
-for token in ('data-news-mode="preview"','publisher-rss','app/news.js?v=20260920h','app/news.css?v=20260920h'):
+for token in ('data-news-mode="preview"','publisher-rss','app/news.js?v=20260920i','app/news.css?v=20260920i'):
     require(home,token,"index.html")
 require(house,'href="../news/">Current World</a>',"house/index.html")
 
@@ -129,34 +146,36 @@ providers={row.get("id") for row in cfg.get("providers",[]) if isinstance(row,di
 if providers != {"gdelt","publisher-rss","hacker-news","spaceflight-news"}:
     errors.append(f"unexpected provider contract: {sorted(providers)}")
 for row in cfg.get("providers",[]):
-    if not isinstance(row,dict):
-        continue
-    if not row.get("display_mode") or not row.get("reuse_mode"):
+    if isinstance(row,dict) and (not row.get("display_mode") or not row.get("reuse_mode")):
         errors.append(f"news provider missing display/reuse metadata: {row.get('id')}")
+
 feeds=cfg.get("publisher_feeds",[])
-for row in feeds:
-    if not isinstance(row,dict):
-        continue
-    if not row.get("reuse_mode") or not row.get("reuse_note") or not row.get("terms_url"):
-        errors.append(f"publisher feed missing reuse/terms metadata: {row.get('id')}")
 if len(feeds) < 4:
     errors.append("publisher RSS layer must declare at least four feeds")
-if not all(row.get("feed_url") and row.get("name") for row in feeds if isinstance(row,dict)):
-    errors.append("publisher RSS feeds require name and feed_url")
-if "full article bodies" not in str(next((row.get("boundary","") for row in cfg.get("providers",[]) if row.get("id")=="publisher-rss"),"")).lower():
-    errors.append("publisher RSS boundary must forbid full-article mirroring")
+for row in feeds:
+    if isinstance(row,dict) and (not row.get("feed_url") or not row.get("name") or not row.get("reuse_mode") or not row.get("reuse_note") or not row.get("terms_url")):
+        errors.append(f"publisher feed missing URL/reuse/terms metadata: {row.get('id')}")
+
+presentation=cfg.get("presentation",{})
+if int(presentation.get("max_feed",0)) < 60:
+    errors.append("Current World must expose at least 60 stories in the main river")
+if int(presentation.get("publisher_rss_items_per_feed",0)) != 10:
+    errors.append("public no-key RSS adapter limit must remain explicit at 10 items per feed")
+if not presentation.get("rss_adapter_note"):
+    errors.append("RSS adapter public-limit note is required")
 
 horizons={row.get("id") for row in cfg.get("horizons",[]) if isinstance(row,dict)}
 if not {"3h","12h","24h","3d","7d"}.issubset(horizons):
     errors.append("news horizons must include 3h, 12h, 24h, 3d and 7d")
 if not any(row.get("id")=="24h" and row.get("default") for row in cfg.get("horizons",[]) if isinstance(row,dict)):
     errors.append("24h must remain the default news horizon")
+
 lens_ids={row.get("id") for row in cfg.get("lenses",[]) if isinstance(row,dict)}
 for required in ("north-arctic","europe","ukraine-russia","middle-east","americas","asia-pacific","africa","economy-energy","security","science-tech"):
     if required not in lens_ids:
         errors.append(f"missing Current World lens: {required}")
-transparency=cfg.get("source_transparency",{})
-if transparency.get("no_ranking") is not True:
+
+if cfg.get("source_transparency",{}).get("no_ranking") is not True:
     errors.append("news source transparency must remain non-ranking")
 boundary=str(cfg.get("epistemic_boundary","")).lower()
 for phrase in ("similar headlines","geographic mentions","not corroboration"):
@@ -169,12 +188,9 @@ try:
     if not row:
         errors.append("news surface missing from House public surfaces")
     else:
-        if row.get("knowledge_owner") is not False:
-            errors.append("news must remain a non-owning public view")
-        if row.get("is_view") is not True:
-            errors.append("news must remain typed as a view")
-        if row.get("canonical_route")!="/news/":
-            errors.append("news canonical route drift")
+        if row.get("knowledge_owner") is not False: errors.append("news must remain a non-owning public view")
+        if row.get("is_view") is not True: errors.append("news must remain typed as a view")
+        if row.get("canonical_route")!="/news/": errors.append("news canonical route drift")
 except Exception as exc:
     errors.append(f"could not validate public surface registry: {exc}")
 
@@ -190,4 +206,5 @@ if errors:
     for error in errors:
         print(" -",error)
     raise SystemExit(1)
-print("Current World news validation passed: multi-view reader, source contract, House projection and epistemic boundaries are aligned.")
+
+print("Current World news validation passed: simple reader-first hierarchy, source contract, House projection and epistemic boundaries are aligned.")

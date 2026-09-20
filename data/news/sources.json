@@ -1,5 +1,5 @@
 {
-  "version": "2.2.0",
+  "version": "2.3.0",
   "updated": "2026-09-20",
   "authority": "live-news-source-contract",
   "purpose": "Declare the external, non-owning current-events sources, publisher excerpt feeds, viewing lenses, time horizons and geographic-mentions projection used by Current World. The page may display publisher-supplied RSS descriptions, thumbnails and metadata in-page, but does not mirror full copyrighted articles.",
@@ -15,12 +15,13 @@
     "stores_personal_data": false
   },
   "presentation": {
-    "max_feed": 36,
+    "max_feed": 60,
     "max_clusters": 6,
     "max_cluster_items": 4,
-    "source_lane_items": 5,
+    "source_lane_items": 7,
     "publisher_excerpt_max_chars": 520,
-    "publisher_rss_items_per_feed": 10
+    "publisher_rss_items_per_feed": 10,
+    "rss_adapter_note": "RSS2JSON returns 10 feed items by default without an API key; Current World does not embed a project API key in the public site."
   },
   "providers": [
     {
