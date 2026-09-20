@@ -221,24 +221,33 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [x] **CLEAN-001 · Live health filename:** replace date-stamped `spatial-house-health-2026-09-20.json` as the runtime health authority with a stable live path; preserve dated copies only as historical snapshots.
 - [x] **CLEAN-002 · Generated projection ownership:** stop hand-editing the same Room public-surface projections in three registries; choose one source and derive the other views.
 - [ ] **CLEAN-003 · Shared asset version strings:** reduce repeated `?v=202609...` literals across HTML pages by centralizing or build-stamping shared component versions.
-- [ ] **CLEAN-004 · House inline CSS extraction:** `house/index.html` still owns a very large page-local style block; migrate reusable House component rules into a scoped shared stylesheet without introducing generic selector ownership.
+- [ ] **CLEAN-004 · Major-reader inline CSS extraction:** measured page-local CSS remains excessive on Home (~22 KB), House (~21 KB), Axis (~14 KB) and Rooms (~12 KB). Move reusable component rules into scoped shared assets while preserving truly page-specific composition and avoiding generic-selector ownership.
 - [ ] **CLEAN-005 · Navigation label consistency:** audit Home/World/House/Rooms/Tim route labels for competing names such as Current/Current World/Current World News, Witness/Public witness/Public record, and standardize reader-facing terms.
 - [ ] **CLEAN-006 · Legacy snapshot disposition:** classify compatibility snapshots such as `public-route-topology.json` as generated, historical, or removable and ensure readers/builders never treat them as live authority.
-- [ ] **CLEAN-007 · Date-stamped audit sprawl:** inventory live files whose names contain `audit`, `wave`, `round`, `batch` or dates; mark each keep / merge / archive / prune based on unique information and references.
-- [ ] **CLEAN-008 · Obsolete presentation assets:** finish the existing asset-prune task by proving references are absent before deleting retired CSS/JS/HTML.
-- [ ] **CLEAN-009 · Duplicate validator assertions:** identify checks that independently encode the same route/ownership invariant and route them through shared resolver helpers instead of repeated literals.
+- [ ] **CLEAN-007 · Date-stamped audit sprawl:** inventory live files whose names contain `audit`, `wave`, `round`, `batch` or dates; mark each keep / merge / archive / prune based on unique information and references. Current sweep measured **505 active non-map paths** outside `archive/` and `world-map/` matching these patterns (263 knowledge, 153 docs, 60 data, 21 scripts, 4 app); treat naming as an audit signal, not evidence for deletion.
+- [x] **CLEAN-008 · Obsolete presentation assets:** reference-scan and prune the retired root presentation generation plus the superseded Project Compass; preserve substantive standalone texts/readers, and make repo hygiene reject the retired assets if they return.
+- [ ] **CLEAN-009 · Duplicate validator assertions:** identify checks that independently encode the same route/ownership invariant and route them through shared resolver helpers instead of repeated literals. `validate_house_governance.py` is now ~64 KB, so split reusable route/ownership/schema resolution into focused helpers rather than growing another validator monolith.
 - [ ] **CLEAN-010 · Root-doc authority audit:** recheck README, PROJECT-OPERATING-MAP, PROJECT-STRUCTURE and MASTER-ARCHITECTURE for stale route/owner language after today's House/News/navigation changes.
 
+#### P1/P2 — governance / build architecture
+- [x] **GOV-001 · Backlog contradiction repair:** remove the stale READ-002 instruction that would have reintroduced Project Compass after ACCESS-005 retired it; treat TODO/docs contradictions as repository defects rather than harmless prose.
+- [x] **GOV-002 · CIA/FBI namespace parity:** repair CIA incident/association projection IDs that still carried FBI names after canonical ownership migrated to CIA, and add namespace regression checks to `validate_cia_integration.py`.
+- [ ] **GOV-003 · Post-build mutation debt:** reduce brittle literal-HTML rewriting in `scripts/patch_public_navigation.py`. Authored pages should own their stable navigation/content; generated patching should be limited to genuinely derived capabilities and be structurally/idempotently tested.
+- [ ] **GOV-004 · Semantic migration validator:** generalize the CIA lesson: when an owner/path namespace migrates, validate IDs, titles, aliases and projected references as well as file existence so predecessor names cannot survive invisibly inside valid paths.
+- [ ] **GOV-005 · Source-vs-generated artifact contract:** mark discovery outputs such as sitemap/site-index/build projections explicitly as source-owned, build-generated, compatibility or historical so authority manifests cannot look like they reference missing source files.
+- [ ] **GOV-006 · Backlog deduplication:** periodically collapse duplicate TODOs and superseded architectural instructions; the backlog itself must not become a second legacy architecture.
+- [ ] **GOV-007 · Root authority-doc convergence:** compare README, PROJECT-OPERATING-MAP, PROJECT-STRUCTURE, MASTER-ARCHITECTURE and dated navigation plans against current House/public-surface/Quick-Access authority, marking old design documents historical where appropriate rather than letting them compete with live contracts.
+
 #### P2 — reader focus / navigation
-- [ ] **READ-001 · First-screen door budget:** add an audit for mature reader pages that expose too many first-screen links/menus before the first substantive section.
-- [ ] **READ-002 · Compass coverage validation:** assert the Project Compass is added to eligible built readers and intentionally absent from Home/Map/Elevator/A–Z/object explorer.
+- [ ] **READ-001 · First-screen door budget:** add a measurable audit for mature reader pages that expose too many first-screen links/menus before substantive reading. Current sweep flags Home (12 pre-section links), A–Z (15), Axis (15), plus Context/Science/World/Tim at 6 each as candidates for intent-specific review rather than one universal numeric cap.
+- [x] **READ-002 · Retired-global-layer guard:** the Project Compass instruction was stale and contradicted ACCESS-005. Remove its injector and assets completely; Quick Access is the sole global layer and validators now reject any Project Compass return.
 - [~] **READ-003 · Specialist parent continuity:** generated topic/context/record readers now expose a single clear parent breadcrumb; authored specialist surfaces still need the project-wide continuity audit.
 - [ ] **READ-004 · Dead-end reader audit:** find public pages with no meaningful onward route beyond Home and connect them to their owner or adjacent subject.
 - [ ] **READ-005 · Vague-link language:** scan visible anchors like More, Deep, Explore, Context, Archive and replace ambiguous instances with destination intent where context does not already make it obvious.
 - [ ] **READ-006 · Repeated intro blocks:** find pages where header summary, intro card and first section restate the same purpose; preserve the strongest version and remove the duplicate layer.
 - [ ] **READ-007 · Card-density audit:** identify pages using card grids mainly as navigation compensation; convert low-information cards into inline prose/links where that improves reading flow.
 - [ ] **READ-008 · Discovery-mode separation:** validate that Explore, A–Z, Questions and Paths retain visibly distinct jobs and do not converge into four near-identical indexes.
-- [ ] **READ-009 · Mobile link-wall check:** add narrow-screen tests/heuristics for page-nav + compass + local controls stacking into excessive pre-content height.
+- [ ] **READ-009 · Mobile link-wall check:** add narrow-screen tests/heuristics for page-nav + Quick Access + local controls stacking into excessive pre-content height.
 - [~] **READ-010 · TTS semantic sectioning:** generated topic/context/record readers now expose explicit speech sections and exclude their utility navigation; generated question readers still need the same semantic audit before closure.
 
 #### P2 — data / evidence integration
@@ -250,6 +259,7 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [ ] **DATA-006 · Source-link health sampling:** add bounded checking for important external source URLs and mark unreachable sources without deleting their historical provenance.
 - [ ] **DATA-007 · Country institution completeness:** for each country, track explicit missing/known state for central bank, legislature, executive, judiciary and major memberships rather than treating absence as null knowledge.
 - [ ] **DATA-008 · Economy public surface depth:** expose central-bank and obligation-network institutions more directly from Economy without turning the page into another directory.
+- [ ] **DATA-009 · Projection-ID/path semantic parity:** audit projected holdings/dossiers/indexes for IDs whose namespace disagrees with their canonical path/owner; CIA/FBI was the first demonstrated case, but the check should become reusable across migrations.
 
 #### P3 — enhancements / polish
 - [ ] **ENH-001 · Room “why this matters” line:** add one concise human-purpose line to Rooms whose current opening is mostly structural language.
