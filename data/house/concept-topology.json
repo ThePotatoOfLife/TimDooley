@@ -1,5 +1,5 @@
 {
-  "version": "1.8.0",
+  "version": "1.9.0",
   "updated": "2026-09-20",
   "authority": "house-semantic-topology",
   "purpose": "Machine-readable topology assignments for the small set of operators that organize the Potato House. These annotations drive projection and navigation; they do not replace canonical concept owners or evidence classes.",
@@ -51,7 +51,7 @@
   "concepts": [
     {
       "id": "son",
-      "label": "Son / Manifestation / Door",
+      "label": "Son / Manifestation / Body",
       "kind": "theological-role",
       "field_orientation": [
         "manifestation",
@@ -59,9 +59,9 @@
       ],
       "topology_roles": [
         "manifestation-role",
-        "ordered-transition"
+        "generation"
       ],
-      "operation": "expresses embodiment, manifestation, passage, Vessel, suffering, Door, visible expression and return inside the triune Potato of Life",
+      "operation": "expresses embodiment, manifestation, Vessel, suffering, visible event, consequence, Seed-bearing potential and return inside the triune Potato of Life",
       "counter_or_complement": [
         "father",
         "spirit"
@@ -75,7 +75,7 @@
         "house",
         "trinity"
       ],
-      "boundary": "Son is not identical with the entire Manifestation Field; mature project language specializes Son as manifestation-facing and Door/Vessel related."
+      "boundary": "Son is manifestation-facing and Door-related but not identical with O/Door or the entire Manifestation Field."
     },
     {
       "id": "father",
@@ -1132,8 +1132,8 @@
       "id": "rel-son-door",
       "from": "son",
       "to": "door",
-      "type": "specializes-as",
-      "description": "In the mature project Son specializes as Door/Vessel/passage at the shared interface."
+      "type": "complements",
+      "description": "Son/manifestation and Door/transition are distinct but mutually clarifying: Door governs passage; Son embodies the changed state and consequence."
     },
     {
       "id": "rel-son-manifestation-field",
@@ -1399,7 +1399,7 @@
       "from": "son",
       "to": "twin-vessel-center",
       "type": "oriented-toward",
-      "description": "The manifestation-facing Son role is oriented toward C_S while also specializing as Door; figure anchors remain separately typed in the three-center atlas."
+      "description": "The manifestation-facing Son role is oriented toward C_S/Twin-Vessel while remaining distinct from O/Jesus-Door."
     },
     {
       "id": "rel-father-mind",
