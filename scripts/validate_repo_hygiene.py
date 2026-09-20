@@ -43,6 +43,7 @@ FORBIDDEN_RETIRED_PRESENTATION = {
     "timeline.css",
     "timeline.js",
     "torah.js",
+    "app/tim-portrait-expansion.css",
 }
 
 FORBIDDEN_GENERATED_GLOBS = (
