@@ -11,6 +11,8 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt
 const fmt = n => n == null ? '—' : new Intl.NumberFormat('en', {notation: Math.abs(n) > 1e9 ? 'compact' : 'standard', maximumFractionDigits: 1}).format(n);
 const title = s => String(s || '').replaceAll('_', ' ').replace(/\b\w/g, m => m.toUpperCase());
 const emptyFC = () => ({type:'FeatureCollection', features:[]});
+const geo = window.__potatoAtlasGeo;
+if (!geo?.antimeridianAwareBounds) throw new Error('World Map geospatial kernel unavailable.');
 
 const status = $('#status');
 function setStatus(message, kind='info') {
@@ -258,16 +260,21 @@ function axisBadges(code) {
   if((a.east?.strong_reference_nodes||[]).includes(code)) out.push('East · reference');
   return out;
 }
-function geometryBounds(f) {
-  let minX=180,minY=90,maxX=-180,maxY=-90;
-  const walk=x=>{if(!Array.isArray(x))return;if(typeof x[0]==='number'&&typeof x[1]==='number'){minX=Math.min(minX,x[0]);maxX=Math.max(maxX,x[0]);minY=Math.min(minY,x[1]);maxY=Math.max(maxY,x[1]);return}x.forEach(walk)};
-  walk(f?.geometry?.coordinates);
-  return minX<=maxX?[[minX,minY],[maxX,maxY]]:null;
+function geometryBounds(f,referenceLng=null) {
+  if(!f?.geometry)return null;
+  try{
+    const b=geo.antimeridianAwareBounds(f.geometry,referenceLng);
+    return [[b.west,b.south],[b.east,b.north]];
+  }catch{return null}
 }
 function fitCodes(codes,padding=55) {
-  let minX=180,minY=90,maxX=-180,maxY=-90,ok=false;
-  for(const code of codes){const b=geometryBounds(featureByCode(code));if(!b)continue;ok=true;minX=Math.min(minX,b[0][0]);minY=Math.min(minY,b[0][1]);maxX=Math.max(maxX,b[1][0]);maxY=Math.max(maxY,b[1][1])}
-  if(ok) map.fitBounds([[minX,minY],[maxX,maxY]],{padding,pitch:Math.min(map.getPitch(),45),duration:650,maxZoom:6});
+  const geometries=codes.map(code=>featureByCode(code)?.geometry).filter(Boolean);
+  if(!geometries.length)return;
+  const referenceLng=Number(map.getCenter()?.lng);
+  let bounds;
+  try{bounds=geo.antimeridianAwareBounds(geometries,Number.isFinite(referenceLng)?referenceLng:null)}
+  catch{return}
+  map.fitBounds([[bounds.west,bounds.south],[bounds.east,bounds.north]],{padding,pitch:Math.min(map.getPitch(),45),duration:650,maxZoom:6});
 }
 function setState(code,key,value){if(!code)return;try{map.setFeatureState({source:'countries',id:code},{[key]:value})}catch{}}
 function clearCompareStates(){for(const c of compareCodes)setState(c,'compare',false)}
