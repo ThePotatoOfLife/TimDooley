@@ -113,7 +113,9 @@ for (const marker of [
   "interaction.register('subdivisions'",
   "window.addEventListener('potato-atlas-interaction-ready'",
   "map.off('click', HIT_ID, subdivisionFallbackHandlers.click)",
-]) assert.ok(subdivisions.includes(marker), `subdivision late Router promotion missing marker: ${marker}`);
+  'function inspectorRouter()',
+  'const inspector = inspectorRouter();',
+]) assert.ok(subdivisions.includes(marker), `subdivision degraded-runtime convergence missing marker: ${marker}`);
 
 for (const marker of [
   'function interactionRouter()',
@@ -121,7 +123,9 @@ for (const marker of [
   "interaction.register('places'",
   "window.addEventListener('potato-atlas-interaction-ready'",
   "map.off('click', layerId, handlers.click)",
-]) assert.ok(places.includes(marker), `Places late Router promotion missing marker: ${marker}`);
+  'function inspectorRouter()',
+  'const inspector = inspectorRouter();',
+]) assert.ok(places.includes(marker), `Places degraded-runtime convergence missing marker: ${marker}`);
 
 assert.ok(routerSource.includes('potato-atlas-interaction-ready'), 'Interaction Router must publish an explicit ready signal for early-boot handoff');
 const bootstrapCapture = bootstrap.indexOf("await import(versionedModule('./3d-core-interaction-handoff.js'))");
