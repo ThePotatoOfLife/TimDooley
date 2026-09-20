@@ -1,3 +1,7 @@
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('evidence-layers', ['evidenceLayer']);
+
 // First-class specialist Evidence layer coordinator for the World Relational Atlas.
 // Canonical evidence records remain in their own datasets/modules. This owner only
 // coordinates discoverability, activation, URL hydration and reset state.
@@ -24,11 +28,10 @@ function active() { return [...activeIds]; }
 function isActive(id) { return activeIds.has(String(id || '')); }
 
 function persist() {
-  const url=new URL(location.href);
   const primary=active().find(id=>entry(id)?.url_param==='evidenceLayer') || null;
-  if(primary) url.searchParams.set('evidenceLayer', entry(primary)?.url_value || primary);
-  else url.searchParams.delete('evidenceLayer');
-  history.replaceState({},'',url);
+  urlState.patch('evidence-layers', {
+    set:{ evidenceLayer:primary ? (entry(primary)?.url_value || primary) : null },
+  });
 }
 function emit(reason,id=null) {
   const detail={reason,id,active:active(),entries:active().map(entry).filter(Boolean)};
