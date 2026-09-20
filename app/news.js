@@ -57,8 +57,9 @@ async function getConfig(){const r=await fetch(DEFAULT_CONFIG,{headers:{Accept:'
 function sourceState(host,id,state){const el=$('[data-provider="'+id+'"]',host);if(el)el.dataset.state=state}
 async function providerLoad(host,id,query,timespan,force,horizon,config,category){sourceState(host,id,'loading');try{let rows=[];if(id==='gdelt')rows=await loadGdelt(query,timespan,force);else if(id==='publisher-rss')rows=await loadPublisherRss(config,category,force);else if(id==='hacker-news')rows=await loadHn(force);else if(id==='spaceflight-news')rows=await loadSpace(force);rows=trimToHorizon(rows,horizon);sourceState(host,id,'ok');return rows}catch(err){sourceState(host,id,'error');return[]}}
 function storyCard(r,lead=false){
- const limit=lead?520:360;
- const summary=r.summary?'<p class="news-story-summary">'+esc(r.summary.slice(0,limit))+(r.summary.length>limit?'…':'')+'</p>':'';
+ const text=clean(r.summary).slice(0,lead?700:620);
+ const expandable=text.length>(lead?320:230);
+ const summary=text?'<p class="news-story-summary">'+esc(text)+(clean(r.summary).length>text.length?'…':'')+'</p>'+(expandable?'<button class="news-story-expand" type="button" data-news-expand aria-expanded="false">Show full excerpt</button>':''):'';
  const image=r.image?'<img class="news-story-image" src="'+esc(r.image)+'" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">':'';
  const country=r.country?'<span title="GDELT source-country metadata">'+esc(r.country)+'</span>':'';
  const kind=r.kind==='community'?'community link':r.kind==='publisher-excerpt'?'publisher excerpt':'publisher link';
@@ -89,7 +90,7 @@ function renderBriefing(host,rows,providers){
  const items=sourceBalancedBriefing(rows,providers,12);
  el.innerHTML=items.length?items.map((r,i)=>'<article class="news-briefing-item"><div class="news-briefing-index">'+String(i+1).padStart(2,'0')+'</div><div><div class="news-story-kicker"><span>'+esc(r.provider)+'</span><i></i><span>'+esc(r.source||'source')+'</span></div><h3>'+esc(r.title)+'</h3>'+(r.summary?'<p>'+esc(r.summary.slice(0,300))+(r.summary.length>300?'…':'')+'</p>':'')+'<div class="news-story-footer"><span>'+esc(relativeTime(r.published))+'</span><a href="'+esc(r.url)+'" target="_blank" rel="noopener noreferrer">Full report ↗</a></div></div></article>').join(''):'<div class="news-empty">No stories are available for a briefing in this sample.</div>';
 }
-function renderPulse(host,rows,clusters,providers){const pulse=$('[data-news-pulse]',host);if(!pulse)return;const domains=new Set(rows.map(r=>r.source).filter(Boolean));const active=new Set(rows.map(r=>r.providerId).filter(Boolean));const newest=rows.length?relativeTime(rows[0].published):'—';const vals=[[rows.length,'items returned'],[domains.size,'source domains'],[active.size+'/'+providers.length,'active providers'],[clusters.length,'repeated clusters'],[newest,'newest item age']];pulse.innerHTML=vals.map(v=>'<div class="news-pulse-cell"><b>'+esc(v[0])+'</b><span>'+esc(v[1])+'</span></div>').join('')}
+function renderPulse(host,rows,clusters,providers){const pulse=$('[data-news-pulse]',host);if(!pulse)return;const domains=new Set(rows.map(r=>r.source).filter(Boolean));const active=new Set(rows.map(r=>r.providerId).filter(Boolean));const readable=rows.filter(r=>clean(r.summary).length>0).length;const newest=rows.length?relativeTime(rows[0].published):'—';const vals=[[rows.length,'items returned'],[readable,'readable here'],[domains.size,'source domains'],[active.size+'/'+providers.length,'active providers'],[clusters.length,'repeated clusters'],[newest,'newest item age']];pulse.innerHTML=vals.map(v=>'<div class="news-pulse-cell"><b>'+esc(v[0])+'</b><span>'+esc(v[1])+'</span></div>').join('')}
 function renderPreview(host,rows,limit){const grid=$('[data-news-preview-grid]',host);if(!grid)return;const take=rows.slice(0,limit);grid.innerHTML=take.length?take.map(r=>'<a class="news-preview-item" href="'+esc(r.url)+'" target="_blank" rel="noopener noreferrer"><small>'+esc(r.provider)+' · '+esc(r.source)+'</small><b>'+esc(r.title)+'</b><span>'+esc(relativeTime(r.published))+'</span></a>').join(''):'<div class="news-empty">Live preview unavailable. The full News page can retry each source independently.</div>'}
 function setView(host,view){$$('[data-news-view]',host).forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.newsView===view)));$$('[data-news-view-panel]',host).forEach(p=>p.classList.toggle('is-active',p.dataset.newsViewPanel===view))}
 function mergeQueries(a,b){if(a&&b)return'('+a+') AND ('+b+')';return a||b||'(international OR world)'}
@@ -119,6 +120,7 @@ async function bootFull(host,config){
  horizons?.addEventListener('click',e=>{const b=e.target.closest('[data-news-horizon]');if(!b)return;horizon=b.dataset.newsHorizon;press();persist();run()});
  $$('[data-news-view]',host).forEach(b=>b.addEventListener('click',()=>{view=b.dataset.newsView;press();persist()}));
  form?.addEventListener('submit',e=>{e.preventDefault();custom=clean(input.value);if(!custom)return;category='all';lens='';press();persist();run()});
+ host.addEventListener('click',e=>{const expand=e.target.closest('[data-news-expand]');if(!expand)return;const card=expand.closest('.news-story');if(!card)return;const open=!card.classList.contains('is-expanded');card.classList.toggle('is-expanded',open);expand.setAttribute('aria-expanded',String(open));expand.textContent=open?'Collapse excerpt':'Show full excerpt'});
  refresh?.addEventListener('click',()=>{force=true;run()});
  readableToggle?.addEventListener('click',()=>{readable=!readable;press();persist();run()});
  if(input&&custom)input.value=custom;press();await run();
