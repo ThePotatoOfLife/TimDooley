@@ -8,10 +8,11 @@ ROOT = Path(__file__).resolve().parents[1]
 AUDIT = ROOT / "data/house/reader-richness-audit.json"
 JOURNEY = ROOT / "app/house-journey.js"
 INTERIORS = ROOT / "data/house/room-interiors.json"
+SUBSTANCE = ROOT / "data/house/substance-first-projection-contract.json"
 
 def main() -> int:
     errors=[]
-    for path in (AUDIT,JOURNEY,INTERIORS):
+    for path in (AUDIT,JOURNEY,INTERIORS,SUBSTANCE):
         if not path.is_file():
             errors.append(f"missing reader-richness owner: {path.relative_to(ROOT)}")
     if errors:
@@ -22,6 +23,7 @@ def main() -> int:
     audit=json.loads(AUDIT.read_text(encoding="utf-8"))
     journey=JOURNEY.read_text(encoding="utf-8",errors="replace")
     interiors=json.loads(INTERIORS.read_text(encoding="utf-8"))
+    substance=json.loads(SUBSTANCE.read_text(encoding="utf-8"))
 
     if audit.get("id")!="reader-richness-audit":
         errors.append("reader richness audit id changed or missing")
@@ -42,6 +44,31 @@ def main() -> int:
     ):
         if marker not in journey:
             errors.append(f"House journey reader-richness projection missing marker: {marker}")
+
+    if substance.get("id")!="substance-first-projection-contract":
+        errors.append("substance-first projection contract id changed or missing")
+    resolution=substance.get("paradox_resolution") or {}
+    for key in ("frontend_priority","backend_authority","invisible_bonds","non_constraint","bidirectional_revision","materialization_rule"):
+        if not resolution.get(key):
+            errors.append(f"substance-first paradox resolution missing {key}")
+
+    bindings=substance.get("pages") or []
+    if len(bindings)<10:
+        errors.append(f"substance-first contract has suspiciously few public page bindings: {len(bindings)}")
+    for row in bindings:
+        rel=str(row.get("page") or "")
+        page=ROOT/rel
+        if not page.is_file():
+            errors.append(f"substance-bound public page missing: {rel}")
+            continue
+        source=page.read_text(encoding="utf-8",errors="replace")
+        for anchor in row.get("anchors") or []:
+            section_id=anchor.get("section_id")
+            if section_id and f'id="{section_id}"' not in source and f"id='{section_id}'" not in source:
+                errors.append(f"{rel} lost authored substance section #{section_id}")
+            for owner in anchor.get("owner_paths") or []:
+                if not (ROOT/owner).is_file():
+                    errors.append(f"{rel} substance binding points to missing owner: {owner}")
 
     registered=[]
     for row in interiors.get("interiors") or interiors.get("rooms") or []:
@@ -78,7 +105,7 @@ def main() -> int:
         print("READER RICHNESS VALIDATION FAILED")
         for error in errors: print("-",error)
         return 1
-    print(f"Reader richness: PASS · {len(registered)} nested Rooms project dossier knowledge · {len(wave)} authored first-wave Rooms")
+    print(f"Reader richness: PASS · {len(registered)} nested Rooms · {len(wave)} authored first-wave Rooms · {len(bindings)} substance-bound public pages")
     return 0
 
 if __name__=="__main__":
