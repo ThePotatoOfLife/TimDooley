@@ -83,6 +83,7 @@ def main() -> int:
         "knowledge/fbi/bonds/network.json",
         "knowledge/fbi/incidents/index.json",
         "knowledge/fbi/enhancements-index.json",
+        "knowledge/fbi/conversation-recovery.json",
     ]:
         if path not in viewer:
             fail(f"generic dossier viewer no longer loads {path}")
@@ -100,6 +101,19 @@ def main() -> int:
             f"House FBI source_file_count={fbi.get('source_file_count')} "
             f"but knowledge/fbi contains {actual_fbi_files} files"
         )
+
+    conversation_index = (manifest.get("indexes") or {}).get("conversations")
+    if conversation_index != "knowledge/fbi/conversation-recovery.json":
+        fail("manifest indexes.conversations must point to knowledge/fbi/conversation-recovery.json")
+    conversation_path = ROOT / conversation_index
+    if not conversation_path.is_file():
+        fail("conversation recovery index is missing")
+    conversation = json.loads(conversation_path.read_text(encoding="utf-8"))
+    if not conversation.get("entries"):
+        fail("conversation recovery index has no entries")
+    for fid in ("matthew-mtclassic", "mediomu007"):
+        if not any(fid in (row.get("figures") or []) for row in conversation.get("entries", [])):
+            fail(f"conversation recovery has no entries for {fid}")
 
     surfaces = manifest.get("public_surfaces") or {}
     if surfaces.get("cabinet") != EXPECTED_ROUTE:
