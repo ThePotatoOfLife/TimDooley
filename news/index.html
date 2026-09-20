@@ -7,7 +7,7 @@
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/news/">
 <link rel="stylesheet" href="../app/site-system.css?v=20260914a">
-<link rel="stylesheet" href="../app/news.css?v=20260920b">
+<link rel="stylesheet" href="../app/news.css?v=20260920c">
 <link rel="stylesheet" href="../app/tts-drawer.css?v=20260915">
 </head>
 <body>
@@ -29,7 +29,10 @@
 </div>
 </section>
 
-<div id="news-tts" data-tts-longform data-tts-root=".news-page" data-tts-id="current-world-news" data-tts-label="Current World News" data-tts-all-label="Whole news reader" data-tts-current-label="Current story" data-tts-selection-label="Selection" data-tts-item=".news-story,.news-cluster,.news-source-lane,.news-orientation,.news-method article" data-tts-exclude="#news-tts,.page-nav,.news-console,.news-status,.news-footlinks,.news-view-switch"></div>
+<section class="news-audio-reader" aria-labelledby="news-audio-title">
+<div class="news-audio-copy"><p class="eyebrow">Audio bulletin</p><h2 id="news-audio-title">Read the news, not the interface</h2><p>The main reader speaks only the loaded chronological story stream: headline plus any publisher-supplied excerpt or specialist summary. Navigation, filters, timestamps, source links, methodology and the rest of the page stay silent.</p></div>
+<div id="news-tts" data-tts-longform data-tts-root="#news-reading-stream" data-tts-id="current-world-news-only" data-tts-label="Current World News" data-tts-trigger-label="Read all news" data-tts-all-label="All news" data-tts-current-label="This story" data-tts-selection-label="Selection" data-tts-item=".news-story" data-tts-exclude=".news-story-kicker,.news-story-footer,.news-story-image,.news-empty"></div>
+</section>
 
 <section class="news-console" aria-label="Current World controls">
 <div class="news-console-block">
@@ -80,6 +83,7 @@
 <div class="news-status" aria-live="polite">
 <strong data-news-count>Loading…</strong><span data-news-updated></span>
 <span class="news-provider-status" data-provider="gdelt" data-state="loading"><span>GDELT</span></span>
+<span class="news-provider-status" data-provider="publisher-rss" data-state="loading"><span>Publisher RSS</span></span>
 <span class="news-provider-status" data-provider="hacker-news" data-state="loading"><span>Hacker News</span></span>
 <span class="news-provider-status" data-provider="spaceflight-news" data-state="loading"><span>Spaceflight</span></span>
 </div>
@@ -101,7 +105,7 @@
 <button type="button" data-news-view="sources" aria-pressed="false"><b>Sources</b><span>provider lanes</span></button>
 </nav>
 
-<section class="news-view is-active" data-news-view-panel="latest" aria-label="Latest coverage">
+<section id="news-reading-stream" class="news-view is-active" data-news-view-panel="latest" aria-label="Latest coverage">
 <section class="news-lead" data-news-lead aria-label="Newest stories"></section>
 <section class="news-feed" data-news-list aria-label="More current stories"><div class="news-empty">Loading public feeds…</div></section>
 </section>
@@ -112,7 +116,7 @@
 </section>
 
 <section class="news-view" data-news-view-panel="sources" aria-label="Source lanes">
-<div class="news-section-intro"><div><p class="eyebrow">Provider lanes</p><h2>See the streams separately</h2></div><p>Separating the providers makes their different jobs visible: broad publisher discovery, a community technology stream, and a specialist space index.</p></div>
+<div class="news-section-intro"><div><p class="eyebrow">Provider lanes</p><h2>See the streams separately</h2></div><p>Separating the providers makes their different jobs visible: broad discovery, publisher-supplied RSS excerpts, a community technology stream, and a specialist space index.</p></div>
 <div class="news-source-lanes" data-news-source-lanes><div class="news-empty">Loading source lanes…</div></div>
 </section>
 
@@ -120,18 +124,19 @@
 <div><p class="eyebrow">How to read this surface</p><h2 id="news-method-title">Current information without flattening provenance</h2></div>
 <div>
 <div class="news-method-grid">
-<article><b>Publisher ≠ index</b><span>GDELT and Spaceflight News help discover articles. The original linked outlet remains the source for the report.</span></article>
+<article><b>Read here, finish there</b><span>Publisher RSS cards can include the publisher’s own short description, thumbnail and categories directly on this page. Full article bodies are not mirrored; “Full report” still returns to the publisher.</span></article>
 <article><b>Community ≠ newsroom</b><span>Hacker News is explicitly labeled as a community link stream. Its presence adds a technology-discovery channel, not journalistic verification.</span></article>
 <article><b>Repetition ≠ truth</b><span>Similar headlines from several domains can reveal repeated coverage, syndication or a common event. The cluster does not decide which interpretation is correct.</span></article>
 <article><b>Window matters</b><span>A 3-hour sample answers a different question from a 7-day sample. The selected publication horizon travels in the URL so views can be revisited.</span></article>
 <article><b>Lens matters</b><span>North & Arctic, Europe, Middle East and other lenses are query scopes, not project alignment labels. They constrain discovery terms only.</span></article>
 <article><b>Absence ≠ silence</b><span>If a topic is missing, that may reflect query wording, API coverage, rate limits, language, indexing delay or the chosen time horizon.</span></article>
 </div>
+<p class="news-method-note">Current World therefore has two kinds of card: <strong>discovery cards</strong>, which may only know a headline/link, and <strong>excerpt cards</strong>, which can be read meaningfully on-page because the publisher supplied a description through RSS. The interface labels the distinction rather than pretending they contain the same evidence.</p>
 <nav class="news-footlinks" aria-label="News source and project links"><a href="../data/news/sources.json">Source contract</a><a href="https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/">GDELT documentation</a><a href="https://github.com/HackerNews/API">Hacker News API</a><a href="https://api.spaceflightnewsapi.net/v4/docs/">Spaceflight News API</a><a href="../context/source-authority/">Project evidence policy</a><a href="../house/">Back to the House</a></nav>
 </div>
 </section>
 </main>
-<script src="../app/news.js?v=20260920b" data-news-config="../data/news/sources.json"></script>
+<script src="../app/news.js?v=20260920c" data-news-config="../data/news/sources.json"></script>
 <script src="../app/tts-reader.js"></script><script src="../app/tts-drawer.js"></script><script src="../app/longform-tts-adapter.js"></script>
 <script src="../app/house-journey.js"></script>
 </body></html>
