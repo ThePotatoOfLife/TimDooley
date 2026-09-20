@@ -6,6 +6,7 @@ const urlState = window.__potatoAtlasUrlState;
 urlState.claim('selection-inspector', ['place']);
 
 const map = window.__potatoAtlasMap;
+const styleLifecycle = window.__potatoAtlasStyleLifecycle;
 if (!map) throw new Error('Atlas Places require the core map.');
 function interactionRouter() { return window.__potatoAtlasInteraction; }
 function inspectorRouter() { return window.__potatoAtlasInspector; }
@@ -682,6 +683,26 @@ function status() {
 
 window.addEventListener('potato-atlas-capitals-ready', () => convergeLegacyCapitals());
 
+
+async function restoreAfterStyleGeneration() {
+  try {
+    await installLayers();
+    if (majorData?.features?.length) sourceData(MAJOR_SOURCE, majorData);
+    const rendered = [...renderedPartitions.keys()];
+    if (rendered.length) {
+      const merged = {
+        type:'FeatureCollection',
+        features:rendered.flatMap(code => partitionCache.get(code)?.data?.features || []),
+      };
+      sourceData(DETAIL_SOURCE, merged);
+    }
+    setVisible(visible, {silent:true});
+    syncInteractionRegistration();
+  } catch (error) {
+    console.warn('Places style-generation restore unavailable:', error);
+  }
+}
+
 async function initialize() {
   if (map.loaded()) await installLayers();
   else await new Promise(resolve => map.once('load', async () => { await installLayers(); resolve(); }));
@@ -700,6 +721,8 @@ async function initialize() {
   window.dispatchEvent(new CustomEvent('potato-atlas-places-ready', {detail:state}));
   return state;
 }
+
+styleLifecycle?.register?.('places', { priority:50, restore:() => { queueMicrotask(restoreAfterStyleGeneration); } });
 
 const ready = initialize();
 window.__potatoAtlasPlaces = {
