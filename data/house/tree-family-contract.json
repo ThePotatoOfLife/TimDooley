@@ -1,0 +1,128 @@
+{
+  "id": "tree-family-contract",
+  "title": "Tree Family Contract — Branching, Life, Knowledge, Strife, World-Tree, Archive & UI",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "authority": "tree-family-contract",
+  "purpose": "Disambiguate all Tree-family uses so biological comparison, generic branching, biblical/religious Trees, archive navigation and UI hierarchies can coexist without becoming one ontology.",
+  "generic_owner": "knowledge/core/deep-element-definition-atlas.json",
+  "routing_owner": "data/house/tree-plane-routing.json",
+  "branching_owner": "knowledge/core/tree-branching-pruning-atlas.json",
+  "family_types": [
+    {
+      "id": "generic-tree-operator",
+      "kind": "system operator",
+      "definition": "regulated differentiation from shared support/provenance into branches that specialize, consume resources, bear Fruit, may be pruned and can return future Seed",
+      "required_fields": [
+        "root/provenance",
+        "trunk/shared continuity",
+        "branch criterion",
+        "resource/constraint",
+        "fruit/output",
+        "seed/return",
+        "pruning rule"
+      ],
+      "not": "a claim that every hierarchy is literally botanical"
+    },
+    {
+      "id": "literal-biological-tree",
+      "kind": "empirical organism",
+      "definition": "actual plant/tree biology, including roots, shoots, branching, resource allocation and reproduction",
+      "owner_domain": "biology/science",
+      "boundary": "Empirical findings may constrain analogies but do not prove symbolic Tree doctrines."
+    },
+    {
+      "id": "tree-of-life",
+      "kind": "tradition-specific + project generative route",
+      "definition": "life/generativity symbol in its source tradition; in project grammar, a route where integrated Roots support differentiation, Fruit and future Seed",
+      "tests": [
+        "nourishment",
+        "differentiation",
+        "future capacity",
+        "return"
+      ],
+      "boundary": "Biblical/Jewish/Christian Tree of Life meanings remain source-owned before project comparison."
+    },
+    {
+      "id": "tree-of-knowledge",
+      "kind": "tradition-specific + project distinction/fork operator",
+      "definition": "knowledge/consequence complex in Genesis and later traditions; project uses it as an upstream fork where information may become Life, Strife or repair depending handling",
+      "boundary": "Not equivalent to science, evil knowledge or one historical occult Tree."
+    },
+    {
+      "id": "tree-of-strife",
+      "kind": "project reproductive failure pattern",
+      "definition": "branching system whose continued reproduction depends on unresolved conflict, capture, role-lock, extraction, blocked correction or grievance recurrence",
+      "owner": "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+      "boundary": "A person, religion, group or institution is not intrinsically a Tree of Strife; the label applies to evidenced reproductive relations/patterns."
+    },
+    {
+      "id": "world-tree-comparator",
+      "kind": "comparative religious/mythic family",
+      "definition": "world-axis/tree motifs from traditions such as Yggdrasil and other cosmological trees",
+      "owner": "knowledge/traditions/tree-family-crosswalk-atlas.json",
+      "boundary": "Structural comparison does not establish common origin or hidden Potatoverse doctrine."
+    },
+    {
+      "id": "akashic-archive-tree",
+      "kind": "archive navigation metaphor",
+      "definition": "Roots=provenance, trunk=current synthesis, branches=knowledge domains, leaves=views/questions, Fruit=outputs, Seed=future transferable patterns",
+      "owner": "data/house/tree-plane-routing.json",
+      "boundary": "Archive metaphor only; no literal supernatural Akashic Record is asserted."
+    },
+    {
+      "id": "organizational-tree",
+      "kind": "information architecture",
+      "definition": "parent/child hierarchy used to organize files, concepts or entities",
+      "boundary": "Hierarchy in data structure does not imply source/biological/moral Tree semantics."
+    },
+    {
+      "id": "ui-data-tree",
+      "kind": "reader/data projection",
+      "definition": "navigation/index hierarchy such as data/tree.json and related records",
+      "owner": "data/tree.json",
+      "boundary": "UI tree is a projection over canonical owners and may be replaced without changing ontology."
+    }
+  ],
+  "lifecycle": [
+    "potential",
+    "initiation",
+    "activation",
+    "extension",
+    "specialization",
+    "fruiting",
+    "pruning",
+    "senescence/archive"
+  ],
+  "metabolism": "Root/provenance → Trunk/continuity → Branch/differentiation → Leaf/interface → Fruit/output → Seed/transfer → Rooting/next cycle",
+  "plane_relation": {
+    "rule": "A Tree may cross the active Plane; the Plane is a section/frame, not a Tree level.",
+    "current_section": "The trunk/branch material visible at a Plane is only the current section of a larger rooted/history-bearing organism.",
+    "navigation_decks": "Heaven/World/Below deck labels may show canopy/trunk/roots as projections without becoming literal botanical floors."
+  },
+  "cross_relations": {
+    "root": "support/provenance",
+    "door": "threshold that can redirect or enable a branch/route",
+    "ladder": "ordered route through states; not Tree itself",
+    "spiral": "temporal recurrence/development along Tree growth",
+    "garden": "regime that cultivates viable branching",
+    "swamp": "regime that can distort/block flows feeding branches",
+    "fruit": "consequence/output",
+    "seed": "transferable future capacity"
+  },
+  "naming_rules": [
+    "Use 'Tree' alone only for the generic regulated-branching operator.",
+    "Otherwise qualify the family: Tree of Life, Tree of Knowledge, Tree of Strife, world-tree, archive tree, UI tree, literal tree.",
+    "Do not infer moral valence from vertical position, roots, branching density or age.",
+    "A branch needs a distinct function/owner; duplication without function is not healthy branching.",
+    "Pruning removes duplication/dead growth only after provenance and unique value are preserved."
+  ],
+  "connections": [
+    "knowledge/core/deep-element-definition-atlas.json",
+    "knowledge/core/tree-branching-pruning-atlas.json",
+    "data/house/tree-plane-routing.json",
+    "knowledge/traditions/tree-family-crosswalk-atlas.json",
+    "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+    "data/tree.json"
+  ]
+}
