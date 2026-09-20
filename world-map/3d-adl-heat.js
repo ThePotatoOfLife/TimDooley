@@ -5,6 +5,8 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('ADL H.E.A.T. layer requires the core map.');
+if (!window.__potatoAtlasMotion) await import('./3d-motion.js');
+const motion = window.__potatoAtlasMotion;
 if (!window.__potatoAtlasScale?.ready) await import('./3d-scale.js');
 const scale = await window.__potatoAtlasScale?.ready;
 if (!scale?.threshold || !scale?.capabilityActive) throw new Error('ADL H.E.A.T. requires the shared World Map Scale runtime.');
@@ -183,7 +185,7 @@ function renderControls() {
     applyFilters();
   });
   surface.querySelector('[data-adl-focus]')?.addEventListener('click', () => {
-    try { map.fitBounds([[-125,24],[-66,50]], { padding:60, duration:550, maxZoom:4.8 }); } catch {}
+    try { motion.fitBounds(map, [[-125,24],[-66,50]], { padding:60, duration:550, maxZoom:4.8 }); } catch {}
   });
   surface.querySelector('[data-adl-source]')?.addEventListener('click', () => renderDatasetInspector());
 }
@@ -346,7 +348,7 @@ async function setEnabled(next) {
   renderControls();
   if (enabled) {
     try {
-      map.fitBounds([[-125,24],[-66,50]], { padding:60, duration:550, maxZoom:4.8 });
+      motion.fitBounds(map, [[-125,24],[-66,50]], { padding:60, duration:550, maxZoom:4.8 });
     } catch {}
   } else {
     await window.__potatoAtlasSubdivisions?.releasePartition?.('USA', 'adl-heat');
