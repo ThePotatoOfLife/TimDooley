@@ -198,6 +198,13 @@
 **Resolution:** the Regions action now toggles the country-card partition lease on/off, updates `aria-pressed` and the “regions · shown” state from the actual retained partition, emits a bounded regions-change event, and only clears local lease state after the release path returns without error.  
 **Guard:** UI-shell validation requires the toggle branch, shared action-state helper and region-state event.
 
+### WM-036 · Region → Places handoff is panel-only — P2
+**Status:** fixed / governed on branch `world-map-region-places-handoff-2026-09-20`, pending exact-head CI confirmation.  
+**Cause:** subdivision inspectors could list mapped places and open one place at a time, but had no explicit path to reveal the region's place context on the map.  
+**Resolution:** the canonical Places runtime now exposes `showSubdivision()`, which reuses the existing bounded country place partition, turns the shared Places layers on, preserves the selected region/camera, and emits one bounded subdivision-show event. The region inspector exposes a “Show mapped places on map” action and updates it to a pressed/shown state after success.  
+**Guard:** Places ownership validation and the bounded-runtime regression require the shared handoff, bounded country load and canonical visibility owner.  
+**Rule retained:** regions do not create their own city source or renderer; place geometry remains owned by Places.
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
