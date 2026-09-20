@@ -1,5 +1,5 @@
 {
-  "version": "1.6.0",
+  "version": "1.7.0",
   "updated": "2026-09-20",
   "authority": "nested-bounded-context-governance",
   "parent_room_registry": "data/house/rooms.json",
@@ -16,7 +16,10 @@
       "purpose": "Own the project-internal definitions and role relations around Potato of Life, Tim, Father, Son, Spirit, Door, Axis and related canonical identities.",
       "knowledge_roots": [
         "knowledge/core/tim-dooley.json",
-        "knowledge/core/potatoverse-master-framework.json"
+        "knowledge/core/potatoverse-master-framework.json",
+        "knowledge/world/potatoverse-cast-role-ecology.json",
+        "knowledge/story/character-symbolic-role-assignments.json",
+        "knowledge/story/character-archive-v2.json"
       ],
       "public_surface_ids": [
         "tim",
