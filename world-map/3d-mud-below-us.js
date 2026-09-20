@@ -1,3 +1,7 @@
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('mud-below', ['projectLayer']);
+
 // U.S. project-symbolic Mud / Below case overlay for the canonical World Map.
 // This is a project-interpretive layer. It must never be read as an objective
 // classification of people, and its coordinates are broad state-centroid anchors.
@@ -22,10 +26,10 @@ let data = { type:'FeatureCollection', features:[] };
 const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 
 function updateUrl() {
-  const url = new URL(location.href);
-  if (enabled) url.searchParams.set('projectLayer', 'mud-below-us');
-  else if (url.searchParams.get('projectLayer') === 'mud-below-us') url.searchParams.delete('projectLayer');
-  history.replaceState({}, '', url);
+  const current = urlState.read('projectLayer');
+  urlState.patch('mud-below', {
+    set:{ projectLayer:enabled ? 'mud-below-us' : (current === 'mud-below-us' ? null : current) },
+  });
 }
 
 function setLayerVisibility(show) {
