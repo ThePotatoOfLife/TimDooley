@@ -661,6 +661,22 @@ async function inSubdivision(subdivisionFeature, options = {}) {
   };
 }
 
+async function showSubdivision(subdivisionFeature, options = {}) {
+  const result = await inSubdivision(subdivisionFeature, options);
+  if (!result?.available) return result;
+  await loadCountry(result.code);
+  setVisible(true);
+  window.dispatchEvent(new CustomEvent('potato-atlas-places-subdivision-show', {
+    detail:{
+      code:result.code,
+      subdivision:String(subdivisionFeature?.properties?.id || ''),
+      total:result.total,
+      owner:'places',
+    }
+  }));
+  return { ...result, shown:true };
+}
+
 function status() {
   const renderedCodes = [...renderedPartitions.keys()];
   const cachedCodes = [...partitionCache.keys()];
@@ -733,6 +749,7 @@ window.__potatoAtlasPlaces = {
   current,
   search,
   inSubdivision,
+  showSubdivision,
   clear,
   status,
   loadCountry,
