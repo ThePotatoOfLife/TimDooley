@@ -63,6 +63,9 @@ def main() -> int:
             "potato-atlas-subdivision-select", "pendingDeepLinkId",
             "id_prefix", "viewport_bounds", "partitionForId",
             "window.__potatoAtlasGeo", "unwrappedInterval", "distanceToMapCenterKm", "haversineDistanceKm",
+            "subdivisionPopulationView", "subdivisionAreaView", "subdivisionProvenanceHtml",
+            "Population is unknown in this geometry-first partition; unknown is not zero.",
+            "Representation note.", "Boundary & provenance", "requires population + area",
         ):
             if token not in module:
                 errors.append(f"subdivision module missing marker: {token}")
