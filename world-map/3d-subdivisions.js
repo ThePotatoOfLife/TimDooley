@@ -125,11 +125,57 @@ function subdivisionEvidenceHtml(id) {
       <button type="button" data-subdivision-evidence-provider="${esc(providerId)}">${esc(row.actionLabel || 'Open evidence')}</button>
     </div>`).join('');
 }
+function populationDensity(properties = {}) {
+  const population = Number(properties?.population?.value);
+  const area = Number(properties?.area_km2);
+  if (!Number.isFinite(population) || population <= 0 || !Number.isFinite(area) || area <= 0) return null;
+  return population / area;
+}
+function placePopulationLabel(feature) {
+  const value = Number(feature?.properties?.population);
+  return Number.isFinite(value) && value > 0 ? fmt(value) : 'population unknown';
+}
+async function hydrateSubdivisionPlaces(feature) {
+  const host = document.querySelector('[data-subdivision-places]');
+  if (!host || !feature) return false;
+  const id = String(feature?.properties?.id || '');
+  const api = window.__potatoAtlasPlaces;
+  if (!api?.inSubdivision) {
+    host.innerHTML = '<p class="muted">City detail is not loaded yet.</p>';
+    return false;
+  }
+  const result = await api.inSubdivision(feature, {limit:12});
+  if (selectedId !== id || !host.isConnected) return false;
+  if (!result?.available) {
+    host.innerHTML = '<p class="muted">City detail is not available for this country snapshot yet.</p>';
+    return false;
+  }
+  const rows = result.places || [];
+  host.innerHTML = rows.length ? `
+    <p class="muted">${fmt(result.total)} mapped places fall inside this subdivision · source: ${esc(result.source || 'Places')}</p>
+    <div class="card">${rows.map(place => {
+      const p = place.properties || {};
+      return `<button type="button" class="relation-button" data-subdivision-place="${esc(p.id || '')}">
+        <span><b>${esc(p.name || p.id || 'Place')}</b><small>${esc(placePopulationLabel(place))}</small></span>
+        <span>Open</span>
+      </button>`;
+    }).join('')}</div>`
+    : '<p class="muted">No mapped places in the current place snapshot fall inside this subdivision.</p>';
+  host.querySelectorAll?.('[data-subdivision-place]')?.forEach(button => {
+    button.addEventListener('click', async () => {
+      const placeId = button.dataset.subdivisionPlace;
+      if (!placeId) return;
+      await window.__potatoAtlasPlaces?.focus?.(placeId, { country:result.code, fit:true });
+    });
+  });
+  return true;
+}
 function renderInspector(feature) {
   const panel = document.getElementById('panel');
   if (!panel || !feature) return;
   const p = feature.properties || {};
   const population = p.population || {};
+  const density = populationDensity(p);
   const code = countryCode(p);
   panel.innerHTML = `
     <div class="eyebrow">Subdivision</div>
@@ -158,6 +204,11 @@ function renderInspector(feature) {
   });
   panel.querySelector('[data-subdivision-close]')?.addEventListener('click', () => window.__potatoAtlasSubdivisions?.clear?.());
   window.__potatoAtlasPanelLifecycle?.publish?.();
+  hydrateSubdivisionPlaces(feature).catch(error => {
+    const host = document.querySelector('[data-subdivision-places]');
+    if (host && selectedId === String(p.id || '')) host.innerHTML = '<p class="muted">City detail could not be loaded for this subdivision.</p>';
+    console.warn('Subdivision places unavailable:', error);
+  });
 }
 function openInspector(feature) {
   if (!feature) return false;
