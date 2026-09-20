@@ -93,6 +93,7 @@ function subdivisionResult(row, query) {
     ...aliases.map(alias => scoreName(alias, query))
   );
   if (best >= 99) return null;
+  const evidence = window.__potatoAtlasSubdivisions?.evidenceSummaries?.(id) || [];
   return {
     type:subdivisionType(row),
     kind:'Subdivision',
@@ -101,6 +102,7 @@ function subdivisionResult(row, query) {
     country:String(row.parent_iso3 || '').toUpperCase(),
     parentName:row.parent_name || '',
     score:best,
+    evidence,
     row,
   };
 }
@@ -188,7 +190,8 @@ function renderSuggestions(results) {
     const option = document.createElement('option');
     option.value = result.name;
     const context = result.parentName || result.country;
-    option.label = `${result.type}${context ? ` · ${context}` : ''}`;
+    const evidenceLabel = result.kind === 'Subdivision' && result.evidence?.length ? ` · evidence ${result.evidence.length}` : '';
+    option.label = `${result.type}${context ? ` · ${context}` : ''}${evidenceLabel}`;
     return option;
   }));
 }
