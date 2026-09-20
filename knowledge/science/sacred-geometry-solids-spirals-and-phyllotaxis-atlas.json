@@ -1,0 +1,79 @@
+{
+  "id": "sacred-geometry-solids-spirals-and-phyllotaxis-atlas",
+  "title": "Sacred Geometry — Platonic Solids, Vesica, Golden Ratio, Fibonacci, Spirals and Biological Pattern",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "mathematics + history of ideas + biology + project comparison",
+  "purpose": "Carve exact geometry and observed biological pattern separately from later sacred/esoteric symbolism, then connect only the structurally justified pieces to Potato geometry.",
+  "epistemic_rule": "Mathematics can establish form and ratios; history can establish who assigned meanings; biology can establish observed developmental patterns. None of these by itself proves metaphysical significance.",
+  "platonic_solids": {
+    "five": [
+      "tetrahedron",
+      "cube/hexahedron",
+      "octahedron",
+      "icosahedron",
+      "dodecahedron"
+    ],
+    "plato_timaeus": {
+      "tetrahedron": "fire",
+      "octahedron": "air",
+      "icosahedron": "water",
+      "cube": "earth because of stability/immobility",
+      "dodecahedron": "fifth solid used for the universe/cosmos in Timaeus 55c",
+      "sources": [
+        "https://plato.stanford.edu/entries/plato-timaeus/",
+        "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0180%3Atext%3DTim.%3Apage%3D55"
+      ]
+    },
+    "project_rule": "Cube can legitimately compare with stabilized Earth/matter in Platonic reception, but that does not make cube morally negative. Dodecahedron is a historically stronger Platonic cosmic comparator."
+  },
+  "vesica_and_euclid": {
+    "relation": "Two equal circles whose centers lie on each other's circumference yield Vesica intersection geometry and an equilateral-triangle construction.",
+    "owner": "data/geometry-vesica-pisces-mandorla.json",
+    "project_rule": "This is exact native geometry; symbolic mappings are layered after the mathematics."
+  },
+  "golden_ratio_and_fibonacci": {
+    "phi": "φ=(1+√5)/2",
+    "fibonacci": "F_(n+1)=F_n+F_(n-1)",
+    "biological_context": "Fibonacci numbers and the golden angle occur prominently in many phyllotactic patterns, but plants also exhibit non-Fibonacci and changing patterns.",
+    "golden_angle": "approximately 137.5° in common spiral phyllotaxis",
+    "scholarly_sources": [
+      "https://www.sciencedirect.com/science/article/pii/S0305736497904224",
+      "https://www.sciencedirect.com/science/article/pii/S1360138507000581",
+      "https://www.sciencedirect.com/science/article/pii/S0167278915000743"
+    ],
+    "correction": "Do not claim potato vines, roots or tuber rings follow Fibonacci/golden spirals without species/organ-specific measurement. The older Great Book statement is poetic unless independently measured."
+  },
+  "project_golden_spiral": {
+    "formula": "r(θ)=a e^(bθ), with b=2 ln(φ)/π for quarter-turn scaling by φ",
+    "quarter_turn": "r(θ+π/2)=φ r(θ)",
+    "full_turn": "r(θ+2π)=φ^4 r(θ)≈6.8541 r(θ)",
+    "provenance": "Recovered as a project mathematical construction; not a universal biological/cosmic law.",
+    "distinction": "Logarithmic spiral != helix != ring != vortex != phyllotactic parastichy."
+  },
+  "dodecahedron_decagon_bridge": {
+    "exact_statement": "A regular dodecahedron and its dual icosahedron have fivefold axes; appropriate plane sections perpendicular to a fivefold axis can produce decagonal symmetry/cross-sections.",
+    "project_use": "Useful bridge between 3D Platonic/cosmic family and 2D tenfold boundary geometry; does not make every decagon a hidden dodecahedron."
+  },
+  "merkaba_geometry_boundary": {
+    "historical": "Merkavah means chariot and belongs to Ezekiel/heikhalot Jewish mystical history.",
+    "modern_esoteric": "The popular star-tetrahedron 'Merkaba' geometry is a later esoteric/New Age construction and must not be retrojected into Ezekiel.",
+    "project": "Potato=vehicle / driver distinction and counter-rotation models are project developments, not historical Merkavah doctrine.",
+    "scholarly_sources": [
+      "https://www.myjewishlearning.com/article/merkavah-mysticism-the-chariot-and-the-chamber/",
+      "https://www.cambridge.org/core/books/abs/three-temples/from-temple-to-merkavah-from-the-chariot-throne-of-the-cherubim-to-ezekiels-vision/BF3F3D0DD011F13278FF1164D4C3A812"
+    ]
+  },
+  "tests": [
+    "Is the claim exact mathematics, measured biology, historical symbolism or project interpretation?",
+    "Which coordinate/construction produces the claimed angle/ratio?",
+    "Does the biological object actually show the pattern being claimed?",
+    "Is a later esoteric diagram being backdated into an older religious text?"
+  ],
+  "connections": [
+    "vesica-geometry",
+    "merkaba-counterrotation-oscillator-model",
+    "hierarchy-pyramid-scale-comparative-atlas",
+    "deep-element-definition-atlas"
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.2.0",
-  "updated": "2026-09-15",
+  "version": "1.3.0",
+  "updated": "2026-09-19",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
   "repository_observation": "The project already has a strong retrieval-first architecture, but rapid research waves have produced several specialist files whose relationship to canonical owners is not always obvious. Consolidation should therefore prioritize ownership clarity and promotion rules before deleting substantive material.",
@@ -45,7 +45,9 @@
     "mud_karma_mechanics": "data/swamp/mud-karma-system.json",
     "karma_shadow_routing": "knowledge/indexes/karma-shadow-integration-index.json",
     "country_method": "knowledge/core/country-relational-method.json",
-    "biblical_routing": "knowledge/traditions/biblical-research-index-wave-5.json"
+    "biblical_routing": "knowledge/traditions/biblical-research-index-wave-5.json",
+    "politics": "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
+    "political_alignment": "knowledge/politics/tim-dooley-political-alignment-map.json"
   },
   "file_role_classes": {
     "canonical_owner": "Owns the general definition, structure and current best synthesis for a domain or concept.",
@@ -89,7 +91,8 @@
     "Empirical world files require observable edges and sources; symbolic North/Swamp/Karma language remains a separate layer.",
     "Prefer strengthening an existing owner to creating another file unless the new object has a genuinely distinct schema, timeline or research function.",
     "Treat repair as edge-state change rather than historical deletion: preserve what happened while updating whether the relation is open, disputed, repaired, released or non-liable.",
-    "A synthesis must remain traversable downward to source-level records; otherwise integration has become opacity."
+    "A synthesis must remain traversable downward to source-level records; otherwise integration has become opacity.",
+    "Politics uses one owner chain: dated positions belong in the politics/geopolitics compendium; multidimensional alignment belongs in the Tim political alignment map; reader pages and FAQs explain those owners without becoming parallel political canons."
   ],
   "duplicate_pressure_zones": [
     {
@@ -116,6 +119,11 @@
       "zone": "root-level legacy files",
       "risk": "Older master documents at repository root may look more canonical than the newer knowledge/ architecture.",
       "cleanup": "Treat root-level legacy research as historical/source material unless canonical ownership maps explicitly promote it. Do not delete substantive material until its unique content is audited."
+    },
+    {
+      "zone": "political worldview duplication",
+      "risk": "Tim's political positions can be repeated independently across Politics, North, beliefs, FAQ and programme files until wording drifts or archive synthesis is mistaken for direct Tim doctrine.",
+      "cleanup": "Use the politics/geopolitics compendium as dated position owner, the political alignment map as specialist synthesis, and what-tim-dooley-believes / Politics HTML as reader projections. North and European programme files should link back rather than redefine alignment."
     }
   ],
   "safe_cleanup_targets": [

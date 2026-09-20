@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thepotatooflife.github.io/TimDooley/schemas/house-room-dossiers.schema.json",
+  "title": "Potato House Room Dossiers",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "updated",
+    "authority",
+    "principle",
+    "dossiers"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "updated": {
+      "type": "string"
+    },
+    "authority": {
+      "const": "house-room-dossiers"
+    },
+    "principle": {
+      "type": "string"
+    },
+    "dossiers": {
+      "type": "array",
+      "minItems": 38,
+      "maxItems": 38,
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

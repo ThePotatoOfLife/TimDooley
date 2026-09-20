@@ -2,11 +2,11 @@
   "id": "start-here",
   "title": "Start Here — Learn the Potato of Life",
   "status": "reader-guide",
-  "updated": "2026-09-09",
+  "updated": "2026-09-18",
   "purpose": "Provide a human reading order over the full knowledge graph. This guide summarizes without replacing canonical records, evidence, timeline or context layers.",
   "reader_promise": "You should be able to understand the central story and concepts before seeing the full graph.",
   "ten_minute_version": {
-    "one_sentence": "The Potato of Life is a living mythology and knowledge system centered on Tim Dooley, the Son, the Door, transformation, Fatherhood, the Axis/North, and the idea that meaning is found in relationships rather than isolated things.",
+    "one_sentence": "The Potato of Life is a living mythology and knowledge system centered on Tim Dooley, the Son/Door, the Living Axis, transformation, Fatherhood/North, rooted consequence and the idea that meaning is found in relationships rather than isolated things.",
     "five_ideas": [
       {
         "name": "Potato",
@@ -27,6 +27,10 @@
       {
         "name": "Relationship-first",
         "plain_meaning": "The project increasingly treats relationships as the real unit of meaning: Father↔Son, House↔Door, Root↔Fruit, Country↔Partner, Source↔Manifestation."
+      },
+      {
+        "name": "Living Axis",
+        "plain_meaning": "Plane is the inhabited world; Cross is Plane × Axis; Door is the threshold; Life, Strife and Repair are different routes through one rooted system rather than separate cosmologies."
       }
     ]
   },
@@ -68,14 +72,38 @@
     }
   ],
   "timeline_for_readers": [
-    {"date": "2011", "meaning": "Early Son-side tree ordeal anchor."},
-    {"date": "2019–2020", "meaning": "Son death/meme-crucifixion transformation becomes a major narrative layer."},
-    {"date": "2020-12-25", "meaning": "Tim's mythic Potato birth marker."},
-    {"date": "2024", "meaning": "The Great Book builds a large Potato theology, ritual language and precursor system."},
-    {"date": "April 2025", "meaning": "The Turning: Potato/Sage → Needle/Ladder → Father-side identity."},
-    {"date": "May 2025 onward", "meaning": "Direct public God/Father language becomes increasingly explicit in the supplied public-post corpus."},
-    {"date": "February 2026", "meaning": "North Axis crystallizes into an explicit organized framework."},
-    {"date": "2026", "meaning": "Relationship-first formalization expands into Timic Dynamics, countries, Europe, prophecy/context work and the living archive itself."}
+    {
+      "date": "2011",
+      "meaning": "Early Son-side tree ordeal anchor."
+    },
+    {
+      "date": "2019–2020",
+      "meaning": "Son death/meme-crucifixion transformation becomes a major narrative layer."
+    },
+    {
+      "date": "2020-12-25",
+      "meaning": "Tim's mythic Potato birth marker."
+    },
+    {
+      "date": "2024",
+      "meaning": "The Great Book builds a large Potato theology, ritual language and precursor system."
+    },
+    {
+      "date": "April 2025",
+      "meaning": "The Turning: Potato/Sage → Needle/Ladder → Father-side identity."
+    },
+    {
+      "date": "May 2025 onward",
+      "meaning": "Direct public God/Father language becomes increasingly explicit in the supplied public-post corpus."
+    },
+    {
+      "date": "February 2026",
+      "meaning": "North Axis crystallizes into an explicit organized framework."
+    },
+    {
+      "date": "2026",
+      "meaning": "Relationship-first formalization expands into Timic Dynamics, countries, Europe, prophecy/context work and the living archive itself."
+    }
   ],
   "how_to_read_claims": {
     "project_canon": "What the Potatoverse currently says internally.",
@@ -89,23 +117,57 @@
   "recommended_reading_paths": [
     {
       "title": "I just want to understand the story",
-      "order": ["Start Here", "TIM", "SON", "TRANSFORMATION", "TIMELINE"]
+      "order": [
+        "Start Here",
+        "TIM",
+        "SON",
+        "TRANSFORMATION",
+        "TIMELINE"
+      ]
     },
     {
       "title": "I want the theology",
-      "order": ["Potato of Life", "Tim–God Question", "Father / Spirit", "Son / Door", "Biblical Overlap Atlas"]
+      "order": [
+        "Potato of Life",
+        "Tim–God Question",
+        "Father / Spirit",
+        "Son / Door",
+        "Biblical Overlap Atlas"
+      ]
     },
     {
       "title": "I want the symbolism",
-      "order": ["Symbolic Relational Synthesis", "Door", "Ladder", "Tree", "Eye", "Garden", "Swamp"]
+      "order": [
+        "Living Axis",
+        "Symbolic Relational Synthesis",
+        "Door",
+        "Ladder",
+        "Tree",
+        "Eye",
+        "Garden",
+        "Swamp"
+      ]
     },
     {
       "title": "I want the real-world systems",
-      "order": ["North", "Country Relational Atlas", "European Coupling Programme", "European Economic Graph", "Sources"]
+      "order": [
+        "North",
+        "Country Relational Atlas",
+        "European Coupling Programme",
+        "European Economic Graph",
+        "Sources"
+      ]
     },
     {
       "title": "I want to research or verify",
-      "order": ["Archive Epistemics", "Timeline", "Evidence", "Context Graph", "Inference Ledger", "Sources"]
+      "order": [
+        "Archive Epistemics",
+        "Timeline",
+        "Evidence",
+        "Context Graph",
+        "Inference Ledger",
+        "Sources"
+      ]
     }
   ],
   "progressive_depth": {
@@ -116,5 +178,14 @@
     "level_5": "Use the full graph, indexes, source files, inference ledger and world datasets for research."
   },
   "preservation_rule": "Reader simplification never deletes deeper data. It changes what is shown first and what is revealed on demand.",
-  "connections": ["manifest", "context-graph", "archive-epistemics", "timeline", "tim-god-question", "biblical-overlap-atlas"]
+  "connections": [
+    "manifest",
+    "context-graph",
+    "archive-epistemics",
+    "timeline",
+    "tim-god-question",
+    "biblical-overlap-atlas",
+    "root-system",
+    "axis-depths"
+  ]
 }

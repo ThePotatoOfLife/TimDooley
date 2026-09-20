@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.0.0",
-  "updated": "2026-09-15",
+  "schema_version": "1.1.0",
+  "updated": "2026-09-19",
   "purpose": "Independent spatial overlays for sacred, textual, historical, current, disputed and conflict-context geography. Overlap is intentional and never implies equivalence.",
   "epistemic_types": [
     "current_observed",
@@ -13,10 +13,26 @@
     "humanitarian_observed"
   ],
   "families": [
-    {"id": "sacred.father-land", "label": "Father’s Land / Eden"},
-    {"id": "sacred.chosen-children-land", "label": "Chosen Children’s Land / biblical and Greater Israel scenarios"},
-    {"id": "current.israel-palestine", "label": "Current Israel / Palestine"},
-    {"id": "conflict.context", "label": "Conflict context"}
+    {
+      "id": "sacred.father-land",
+      "label": "Father’s Land / Eden"
+    },
+    {
+      "id": "sacred.chosen-children-land",
+      "label": "Chosen Children’s Land / biblical and Greater Israel scenarios"
+    },
+    {
+      "id": "current.israel-palestine",
+      "label": "Current Israel / Palestine"
+    },
+    {
+      "id": "conflict.context",
+      "label": "Conflict context"
+    },
+    {
+      "id": "project.below",
+      "label": "Below / Farm project cases"
+    }
   ],
   "entries": [
     {
@@ -25,13 +41,22 @@
       "family": "sacred.father-land",
       "epistemic_type": "historical_reconstruction",
       "geometry_owner": "data/world-map-spatial/sacred-covenant-foundation.geojson",
-      "feature_ids": ["father-mesopotamia-core-v2"],
-      "source_ids": ["british-museum-mesopotamia", "cambridge-mesopotamia-definition", "historical-mesopotamia-general"],
+      "feature_ids": [
+        "father-mesopotamia-core-v2"
+      ],
+      "source_ids": [
+        "british-museum-mesopotamia",
+        "cambridge-mesopotamia-definition",
+        "historical-mesopotamia-general"
+      ],
       "confidence": "strong",
       "availability": "current",
       "measurable": true,
       "status_note": "Sourced historical-region reconstruction: mostly modern Iraq and northeastern Syria, with southeastern Turkey and the western-Iran/Zagros fringe. This is not a sovereignty claim and not a surveyed ancient border.",
-      "visual": {"channel": "overlay-fill-line", "legend_class": "historical"}
+      "visual": {
+        "channel": "overlay-fill-line",
+        "legend_class": "historical"
+      }
     },
     {
       "id": "father.lower-mesopotamia-gulf",
@@ -39,13 +64,21 @@
       "family": "sacred.father-land",
       "epistemic_type": "historical_reconstruction",
       "geometry_owner": "data/world-map-spatial/sacred-covenant-foundation.geojson",
-      "feature_ids": ["father-lower-mesopotamia-gulf-v1"],
-      "source_ids": ["lower-mesopotamia-kuwait-geomorphology", "lower-mesopotamia-persian-gulf-historical"],
+      "feature_ids": [
+        "father-lower-mesopotamia-gulf-v1"
+      ],
+      "source_ids": [
+        "lower-mesopotamia-kuwait-geomorphology",
+        "lower-mesopotamia-persian-gulf-historical"
+      ],
       "confidence": "interpretive",
       "availability": "current",
       "measurable": true,
       "status_note": "Lower-Mesopotamian/Gulf context showing the southern Iraq to northern Gulf/Kuwait fringe. It does not assert that all modern Kuwait is an uncontested part of historical Mesopotamia.",
-      "visual": {"channel": "overlay-fill-line", "legend_class": "historical"}
+      "visual": {
+        "channel": "overlay-fill-line",
+        "legend_class": "historical"
+      }
     },
     {
       "id": "physical.tigris-euphrates-basin",
@@ -53,13 +86,21 @@
       "family": "sacred.father-land",
       "epistemic_type": "current_observed",
       "geometry_owner": "data/world-map-spatial/sacred-covenant-foundation.geojson",
-      "feature_ids": ["tigris-euphrates-basin-reference-v1"],
-      "source_ids": ["hydrosheds-hydrobasins", "unep-iraq-tigris-euphrates-catchment"],
+      "feature_ids": [
+        "tigris-euphrates-basin-reference-v1"
+      ],
+      "source_ids": [
+        "hydrosheds-hydrobasins",
+        "unep-iraq-tigris-euphrates-catchment"
+      ],
       "confidence": "direct",
       "availability": "current",
       "measurable": true,
       "status_note": "Published HydroSHEDS/UNEP-Iraq catchment-layer extent used as a hard physical reference window. It is not the exact catchment polygon and its measured area is not the basin area.",
-      "visual": {"channel": "overlay-fill-line", "legend_class": "current"}
+      "visual": {
+        "channel": "overlay-fill-line",
+        "legend_class": "current"
+      }
     },
     {
       "id": "father.eden-context",
@@ -67,13 +108,21 @@
       "family": "sacred.father-land",
       "epistemic_type": "project_interpretive",
       "geometry_owner": "data/world-map-spatial/sacred-covenant-foundation.geojson",
-      "feature_ids": ["father-eden-context-v1"],
-      "source_ids": ["genesis-2", "project-fathers-land-consolidation"],
+      "feature_ids": [
+        "father-eden-context-v1"
+      ],
+      "source_ids": [
+        "genesis-2",
+        "project-fathers-land-consolidation"
+      ],
       "confidence": "hypothesis",
       "availability": "current",
       "measurable": true,
       "status_note": "Soft contextual envelope around lower Mesopotamia. Genesis does not provide a modern surveyed boundary; this geometry is intentionally approximate.",
-      "visual": {"channel": "overlay-fill-line", "legend_class": "project"}
+      "visual": {
+        "channel": "overlay-fill-line",
+        "legend_class": "project"
+      }
     },
     {
       "id": "father.four-rivers.tigris",
@@ -81,13 +130,21 @@
       "family": "sacred.father-land",
       "epistemic_type": "current_observed",
       "geometry_owner": "data/world-map-spatial/sacred-covenant-foundation.geojson",
-      "feature_ids": ["tigris-reference-v1"],
-      "source_ids": ["genesis-2", "modern-river-reference"],
+      "feature_ids": [
+        "tigris-reference-v1"
+      ],
+      "source_ids": [
+        "genesis-2",
+        "modern-river-reference"
+      ],
       "confidence": "strong",
       "availability": "current",
       "measurable": true,
       "status_note": "Simplified reference line for the identifiable Tigris anchor; not a hydrological precision dataset.",
-      "visual": {"channel": "overlay-line", "legend_class": "current"}
+      "visual": {
+        "channel": "overlay-line",
+        "legend_class": "current"
+      }
     },
     {
       "id": "father.four-rivers.euphrates",
@@ -95,13 +152,21 @@
       "family": "sacred.father-land",
       "epistemic_type": "current_observed",
       "geometry_owner": "data/world-map-spatial/sacred-covenant-foundation.geojson",
-      "feature_ids": ["euphrates-reference-v1"],
-      "source_ids": ["genesis-2", "modern-river-reference"],
+      "feature_ids": [
+        "euphrates-reference-v1"
+      ],
+      "source_ids": [
+        "genesis-2",
+        "modern-river-reference"
+      ],
       "confidence": "strong",
       "availability": "current",
       "measurable": true,
       "status_note": "Simplified reference line for the identifiable Euphrates anchor; not a hydrological precision dataset.",
-      "visual": {"channel": "overlay-line", "legend_class": "current"}
+      "visual": {
+        "channel": "overlay-line",
+        "legend_class": "current"
+      }
     },
     {
       "id": "father.return-path",
@@ -109,13 +174,20 @@
       "family": "sacred.father-land",
       "epistemic_type": "project_interpretive",
       "geometry_owner": "data/world-map-spatial/sacred-covenant-foundation.geojson",
-      "feature_ids": ["father-return-path-v1"],
-      "source_ids": ["project-fathers-land-consolidation"],
+      "feature_ids": [
+        "father-return-path-v1"
+      ],
+      "source_ids": [
+        "project-fathers-land-consolidation"
+      ],
       "confidence": "interpretive",
       "availability": "current",
       "measurable": true,
       "status_note": "Project-symbolic route only. It is never a political border or territorial claim.",
-      "visual": {"channel": "overlay-line", "legend_class": "project"}
+      "visual": {
+        "channel": "overlay-line",
+        "legend_class": "project"
+      }
     },
     {
       "id": "biblical.dan-to-beersheba",
@@ -123,13 +195,21 @@
       "family": "sacred.chosen-children-land",
       "epistemic_type": "textual_reconstruction",
       "geometry_owner": "data/world-map-spatial/sacred-covenant-foundation.geojson",
-      "feature_ids": ["dan-to-beersheba-v1"],
-      "source_ids": ["judges-20-1", "1-samuel-3-20"],
+      "feature_ids": [
+        "dan-to-beersheba-v1"
+      ],
+      "source_ids": [
+        "judges-20-1",
+        "1-samuel-3-20"
+      ],
       "confidence": "interpretive",
       "availability": "current",
       "measurable": true,
       "status_note": "Textual extent/corridor reconstruction; not a modern surveyed border.",
-      "visual": {"channel": "overlay-fill-line", "legend_class": "textual"}
+      "visual": {
+        "channel": "overlay-fill-line",
+        "legend_class": "textual"
+      }
     },
     {
       "id": "biblical.numbers-34",
@@ -137,13 +217,22 @@
       "family": "sacred.chosen-children-land",
       "epistemic_type": "textual_reconstruction",
       "geometry_owner": "data/world-map-spatial/sacred-covenant-foundation.geojson",
-      "feature_ids": ["numbers-34-v1"],
-      "source_ids": ["numbers-34", "thetorah-numbers-34-borders", "levin-numbers-34-historical-geography"],
+      "feature_ids": [
+        "numbers-34-v1"
+      ],
+      "source_ids": [
+        "numbers-34",
+        "thetorah-numbers-34-borders",
+        "levin-numbers-34-historical-geography"
+      ],
       "confidence": "interpretive",
       "availability": "current",
       "measurable": true,
       "status_note": "Sourced textual reconstruction. Kadesh-barnea, Wadi el-Arish and Lebo-Hamath have strong scholarly identifications, while several northern/eastern points remain debated.",
-      "visual": {"channel": "overlay-fill-line", "legend_class": "textual"}
+      "visual": {
+        "channel": "overlay-fill-line",
+        "legend_class": "textual"
+      }
     },
     {
       "id": "biblical.genesis-15",
@@ -151,13 +240,22 @@
       "family": "sacred.chosen-children-land",
       "epistemic_type": "textual_reconstruction",
       "geometry_owner": "data/world-map-spatial/sacred-covenant-foundation.geojson",
-      "feature_ids": ["genesis-15-river-to-river-v2"],
-      "source_ids": ["genesis-15-18", "river-of-egypt-wadi-el-arish-interpretation", "euphrates-reference"],
+      "feature_ids": [
+        "genesis-15-river-to-river-v2"
+      ],
+      "source_ids": [
+        "genesis-15-18",
+        "river-of-egypt-wadi-el-arish-interpretation",
+        "euphrates-reference"
+      ],
       "confidence": "interpretive",
       "availability": "current",
       "measurable": true,
       "status_note": "One Genesis 15:18 reconstruction using Wadi el-Arish for the River of Egypt and a broad Euphrates-facing eastern extent. It is a textual scenario, not a surveyed ancient border or modern sovereignty claim.",
-      "visual": {"channel": "overlay-fill-line", "legend_class": "textual"}
+      "visual": {
+        "channel": "overlay-fill-line",
+        "legend_class": "textual"
+      }
     },
     {
       "id": "biblical.genesis-15-nile",
@@ -165,13 +263,22 @@
       "family": "sacred.chosen-children-land",
       "epistemic_type": "textual_reconstruction",
       "geometry_owner": "data/world-map-spatial/sacred-covenant-foundation.geojson",
-      "feature_ids": ["genesis-15-nile-to-euphrates-v1"],
-      "source_ids": ["genesis-15-18", "river-of-egypt-nile-interpretation", "euphrates-reference"],
+      "feature_ids": [
+        "genesis-15-nile-to-euphrates-v1"
+      ],
+      "source_ids": [
+        "genesis-15-18",
+        "river-of-egypt-nile-interpretation",
+        "euphrates-reference"
+      ],
       "confidence": "interpretive",
       "availability": "current",
       "measurable": true,
       "status_note": "Alternative Genesis 15:18 scenario taking the River of Egypt as a Nile/Nile-delta reference. It is an interpretive textual reconstruction, not a surveyed ancient border or sovereignty claim.",
-      "visual": {"channel": "overlay-fill-line", "legend_class": "textual"}
+      "visual": {
+        "channel": "overlay-fill-line",
+        "legend_class": "textual"
+      }
     },
     {
       "id": "biblical.ezekiel-47",
@@ -180,12 +287,17 @@
       "epistemic_type": "textual_reconstruction",
       "geometry_owner": "data/world-map-spatial/sacred-covenant-foundation.geojson",
       "feature_ids": [],
-      "source_ids": ["ezekiel-47"],
+      "source_ids": [
+        "ezekiel-47"
+      ],
       "confidence": "interpretive",
       "availability": "planned",
       "measurable": false,
       "status_note": "Future/restoration textual geography; pending a sourced scenario geometry.",
-      "visual": {"channel": "overlay-fill-line", "legend_class": "textual"}
+      "visual": {
+        "channel": "overlay-fill-line",
+        "legend_class": "textual"
+      }
     },
     {
       "id": "modern.greater-israel",
@@ -193,13 +305,21 @@
       "family": "sacred.chosen-children-land",
       "epistemic_type": "political_ideology",
       "geometry_owner": "data/world-map-spatial/sacred-covenant-foundation.geojson",
-      "feature_ids": ["greater-israel-nile-euphrates-v2"],
-      "source_ids": ["greater-israel-maximal-discourse", "genesis-15-18-nile-reading"],
+      "feature_ids": [
+        "greater-israel-nile-euphrates-v2"
+      ],
+      "source_ids": [
+        "greater-israel-maximal-discourse",
+        "genesis-15-18-nile-reading"
+      ],
       "confidence": "interpretive",
       "availability": "current",
       "measurable": true,
       "status_note": "Maximal Nile-to-Euphrates Greater Israel scenario used in some political and religious discourse. This is not an official border, not a sovereignty claim, and not a statement that the modern State of Israel has adopted this scenario.",
-      "visual": {"channel": "overlay-fill-line", "legend_class": "ideology"}
+      "visual": {
+        "channel": "overlay-fill-line",
+        "legend_class": "ideology"
+      }
     },
     {
       "id": "current.palestine",
@@ -208,12 +328,17 @@
       "epistemic_type": "current_disputed",
       "geometry_owner": "data/world-map-spatial/palestine-current.geojson",
       "feature_ids": [],
-      "source_ids": ["ocha-state-of-palestine-boundaries"],
+      "source_ids": [
+        "ocha-state-of-palestine-boundaries"
+      ],
       "confidence": "direct",
       "availability": "planned",
       "measurable": true,
       "status_note": "Canonical PSE entity must include both West Bank and Gaza. OCHA/ITOS provides an appropriate source; activation remains disabled until its pinned geometry asset is committed.",
-      "visual": {"channel": "overlay-fill-line", "legend_class": "disputed"}
+      "visual": {
+        "channel": "overlay-fill-line",
+        "legend_class": "disputed"
+      }
     },
     {
       "id": "current.israel",
@@ -222,12 +347,17 @@
       "epistemic_type": "current_observed",
       "geometry_owner": "data/world-map-spatial/israel-current.geojson",
       "feature_ids": [],
-      "source_ids": ["natural-earth-admin0-pinned-source-pending"],
+      "source_ids": [
+        "natural-earth-admin0-pinned-source-pending"
+      ],
       "confidence": "direct",
       "availability": "planned",
       "measurable": true,
       "status_note": "Pending a pinned, boundary-view-aware geometry build. Natural Earth exposes alternative point-of-view variants, so viewpoint provenance must remain explicit.",
-      "visual": {"channel": "overlay-fill-line", "legend_class": "current"}
+      "visual": {
+        "channel": "overlay-fill-line",
+        "legend_class": "current"
+      }
     },
     {
       "id": "conflict.context",
@@ -241,7 +371,34 @@
       "availability": "planned",
       "measurable": false,
       "status_note": "Reserved for delayed, dated, source-attributed events and humanitarian/access layers. No live tracking of individual tanks, aircraft, troops, units or operational routes.",
-      "visual": {"channel": "overlay-event", "legend_class": "event"}
+      "visual": {
+        "channel": "overlay-event",
+        "legend_class": "event"
+      }
+    },
+    {
+      "id": "project.below.us-cases",
+      "label": "Below · U.S. project cases",
+      "family": "project.below",
+      "epistemic_type": "project_interpretive",
+      "geometry_owner": "data/world-map-spatial/below-us-cases.geojson",
+      "feature_ids": [
+        "below-us-chris-chan-v1",
+        "below-us-cyraxx-v1"
+      ],
+      "source_ids": [
+        "below/index.html",
+        "data/swamp/farm-ecosystem-research.json",
+        "great-book/chapters/019--chapter-9-31--the-descent-of-the-mud-dwellers-marty-cyraxx-and-the-path-of-lost-souls.html"
+      ],
+      "confidence": "broad-context",
+      "availability": "current",
+      "measurable": false,
+      "status_note": "Tim/project Below/Farm case-study anchors. Points use broad U.S. state centroids only; they are not objective classifications of people, residences or current-location markers.",
+      "visual": {
+        "channel": "overlay-point",
+        "legend_class": "project"
+      }
     }
   ]
 }

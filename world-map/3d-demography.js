@@ -206,6 +206,9 @@ async function addPopulationLabels(map, data) {
     map.addSource('country-population-labels',{type:'geojson',data:sourceData});
     map.addLayer({id:'country-population-labels',type:'symbol',source:'country-population-labels',minzoom:3.2,layout:{'text-field':['get','population_label'],'text-size':['interpolate',['linear'],['zoom'],3.2,9,6,12],'text-offset':[0,2.35],'text-allow-overlap':false},paint:{'text-color':'#dfe8dc','text-halo-color':'#080b0b','text-halo-width':1.2,'text-opacity':0.82}});
   }
+  window.__potatoAtlasRenderStack?.register?.('country-population-labels', {
+    slot:'context-network', priority:34, owner:'demography'
+  });
 }
 
 async function boot() {

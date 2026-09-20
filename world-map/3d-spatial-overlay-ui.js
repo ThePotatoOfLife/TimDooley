@@ -13,12 +13,14 @@ const GROUP_ORDER = [
   'sacred.father-land',
   'sacred.chosen-children-land',
   'current.israel-palestine',
+  'project.below',
   'conflict.context',
 ];
 const GROUP_LABELS = {
   'sacred.father-land':'Father’s Land / Eden',
   'sacred.chosen-children-land':'Chosen Children’s Land / Greater Israel scenarios',
   'current.israel-palestine':'Israel / Palestine',
+  'project.below':'Below / Farm project cases',
   'conflict.context':'Conflict context',
 };
 const EPISTEMIC_LABEL = {
@@ -37,6 +39,7 @@ const QUICK_GEOGRAPHIES = [
   ['biblical.dan-to-beersheba','Dan → Beer-sheba'],
   ['biblical.genesis-15','Genesis 15 · Wadi el-Arish → Euphrates'],
   ['modern.greater-israel','Greater Israel · maximal Nile → Euphrates scenario'],
+  ['project.below.us-cases','Below · U.S. project cases'],
 ];
 
 const measurementPromise = fetch(MEASUREMENTS_URL, { cache:'no-cache' })

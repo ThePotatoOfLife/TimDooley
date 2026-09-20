@@ -1,0 +1,452 @@
+{
+  "id": "route-case-matrix-wave-001",
+  "title": "Route Case Matrix — Life, Strife, Repair and Return Under Evidence",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "materialized route-instrumentation wave",
+  "purpose": "Turn Life/Strife/Repair/Return from symbolic route names into evidence-aware state-transition tests. The matrix compares how the same starting material can branch under different operators, then applies the route grammar cautiously to concrete project and institutional cases.",
+  "authority_chain": [
+    "data/axis-flow-contract.json",
+    "data/house/tree-plane-routing.json",
+    "knowledge/core/knowledge-fork-discernment-atlas.json",
+    "knowledge/core/repair-forge-protocol.json",
+    "knowledge/core/garden-regime-mechanics.json",
+    "knowledge/core/fruit-consequence-evaluation-atlas.json"
+  ],
+  "master_rule": "A route is not assigned from appearance, direction or moral intuition. It is supported only when the starting state, operator, transition condition, downstream consequence and falsifier are explicit.",
+  "route_contract": {
+    "required_fields": [
+      "starting_state",
+      "observed_material",
+      "proposed_transition",
+      "operator",
+      "condition_required",
+      "evidence_for_transition",
+      "counterevidence_or_falsifier",
+      "world_return_measure",
+      "status"
+    ],
+    "statuses": {
+      "observed": "The underlying event/change is documented.",
+      "synthesis": "The route mapping is a project interpretation over documented facts.",
+      "candidate": "A plausible route test that still lacks enough outcome evidence.",
+      "falsified": "The proposed transition failed its stated test.",
+      "unresolved": "Evidence does not yet distinguish among routes."
+    },
+    "prohibition": "Never use a route label as a substitute for a person's, group's or institution's factual identity. Strife, Swamp, Garden and similar terms describe proposed relational mechanisms only."
+  },
+  "mechanism_contrasts": [
+    {
+      "id": "knowledge-fork",
+      "starting_material": "The same consequential piece of information.",
+      "shared_root": [
+        "signal/data",
+        "source/provenance",
+        "interpretation"
+      ],
+      "routes": [
+        {
+          "route": "life",
+          "operator": "verify + contextualize + proportion + preserve correction",
+          "sequence": [
+            "knowledge",
+            "discernment",
+            "responsible choice",
+            "repair/capability",
+            "future Seed"
+          ],
+          "transition_test": "The information increases orientation or capability while preserving provenance, agency, privacy/proportionality and correction.",
+          "failure_signs": [
+            "source context lost",
+            "uncertainty hidden",
+            "downstream harm ignored",
+            "correction becomes difficult"
+          ]
+        },
+        {
+          "route": "strife",
+          "operator": "decontextualize + expose + humiliate/provoke + reward recurrence",
+          "sequence": [
+            "knowledge",
+            "exposure",
+            "role lock",
+            "retaliation",
+            "archive reactivation",
+            "further exposure"
+          ],
+          "transition_test": "The information becomes fuel for a self-reproducing loop whose incentives increasingly depend on continued conflict or exposure.",
+          "failure_signs": [
+            "participants can freely exit",
+            "correction reduces recurrence",
+            "conflict is not needed to sustain the system"
+          ]
+        },
+        {
+          "route": "withhold",
+          "operator": "temporary non-publication",
+          "sequence": [
+            "knowledge",
+            "safety/privacy/due-process check",
+            "preserve provenance",
+            "later review"
+          ],
+          "transition_test": "Non-publication protects safety, privacy, uncertainty or due process without deleting the record.",
+          "failure_signs": [
+            "withholding becomes permanent concealment without review",
+            "provenance is destroyed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "residue-fork",
+      "starting_material": "The same Ash/residue after rupture, failure or contradiction.",
+      "shared_root": [
+        "record",
+        "memory",
+        "obligation",
+        "damage",
+        "uncertainty"
+      ],
+      "routes": [
+        {
+          "route": "strife",
+          "operator": "reactivate without usable context",
+          "sequence": [
+            "residue",
+            "unresolved",
+            "capture",
+            "closure"
+          ],
+          "transition_test": "Reactivation hardens roles, shrinks exit/correction and makes recurrence necessary to the relation.",
+          "failure_signs": [
+            "the history can remain visible without compulsory reenactment",
+            "agency and viable exit increase"
+          ]
+        },
+        {
+          "route": "repair",
+          "operator": "establish record + distinguish responsibility + redesign boundary/capability",
+          "sequence": [
+            "residue",
+            "evidence/provenance",
+            "threshold",
+            "changed recurrence",
+            "living root"
+          ],
+          "transition_test": "The old material remains remembered but the mechanism no longer has to recur.",
+          "failure_signs": [
+            "only labels change",
+            "same failure repeats",
+            "provenance is erased",
+            "repair requires forced reconciliation"
+          ]
+        },
+        {
+          "route": "life",
+          "operator": "retain memory as nourishment",
+          "sequence": [
+            "living root",
+            "generative branch",
+            "Garden",
+            "Fruit",
+            "future Seed"
+          ],
+          "transition_test": "Past experience produces independent capability or reciprocal value beyond the original rupture.",
+          "failure_signs": [
+            "future capacity depends permanently on the old conflict or center"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "growth-fork",
+      "starting_material": "The same successful growth or expanding capacity.",
+      "shared_root": [
+        "new capability",
+        "more participants/resources",
+        "branching",
+        "visibility"
+      ],
+      "routes": [
+        {
+          "route": "life",
+          "operator": "differentiate + distribute capability + preserve correction/exit",
+          "sequence": [
+            "generative",
+            "habitation",
+            "transmission",
+            "integration",
+            "return"
+          ],
+          "transition_test": "Growth makes other nodes more capable without permanent dependence and eventually returns measurable value to the World.",
+          "failure_signs": [
+            "center monopoly increases",
+            "exit becomes punitive",
+            "externalities are exported"
+          ]
+        },
+        {
+          "route": "strife-risk",
+          "operator": "centralize + make dependents",
+          "sequence": [
+            "generative",
+            "capture",
+            "closure"
+          ],
+          "transition_test": "Growth increasingly requires permanent dependence, enemy production, humiliation or extraction.",
+          "failure_signs": [
+            "authority can be replaced",
+            "participants retain meaningful exit",
+            "benefits and decision capacity genuinely decentralize"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "descent-fork",
+      "starting_material": "The same downward movement on the Axis.",
+      "shared_root": [
+        "loss of visible height/status",
+        "movement toward roots/world/depth"
+      ],
+      "routes": [
+        {
+          "route": "rooting",
+          "operator": "bury + anchor + absorb context",
+          "transition_test": "Descent increases grounded capacity and future sprouting.",
+          "failure_signs": [
+            "descent only compounds closure or dependency"
+          ]
+        },
+        {
+          "route": "strife",
+          "operator": "unresolved recurrence + capture",
+          "transition_test": "Each cycle reduces agency, provenance, correction or viable exit.",
+          "failure_signs": [
+            "descent opens evidence, exit or future capacity"
+          ]
+        },
+        {
+          "route": "return",
+          "operator": "descend as service / cultivation / implementation",
+          "transition_test": "Integrated perspective becomes observable protection, infrastructure, knowledge, repair or nourishment in World conditions.",
+          "failure_signs": [
+            "nothing changes at D4/World level"
+          ]
+        }
+      ],
+      "lesson": "Downward direction alone cannot identify the route."
+    }
+  ],
+  "cases": [
+    {
+      "id": "project-homepage-governance-repair",
+      "case_type": "project-internal observed repair case",
+      "subject": "The Potato of Life repository homepage and House governance",
+      "source_artifacts": [
+        "index.html",
+        "data/house/project-synthesis.json",
+        "knowledge/research/recent-commit-materialization-crystallization-257-283.json",
+        "scripts/validate_house_governance.py",
+        "scripts/validate_commit_crystallization.py"
+      ],
+      "starting_state": "unresolved",
+      "observed_material": [
+        "Homepage had repeated center/architecture/navigation blocks that competed for hierarchy.",
+        "An older governance validator still enforced retired homepage markup after the homepage structure changed.",
+        "Recent build waves existed across many files before they were merged into a single crystallization authority."
+      ],
+      "proposed_transition": "unresolved → threshold → transformed_recurrence → living_root → generative/return",
+      "operator": "identify duplication → choose canonical spine → merge commit results into owners → update validators → project canonical data back onto Home",
+      "condition_required": "The new hierarchy must survive later edits because canonical owners and validators agree, not merely because the current HTML looks cleaner.",
+      "evidence_for_transition": [
+        "Home now uses Potato → House → Rooms → Views as its stable spine.",
+        "Project synthesis contains a governed homepage projection.",
+        "House governance now validates the current synthesis and homepage teaching structure.",
+        "Homepage reads counts, cases, cycles, layer definitions and Axis data from canonical registries."
+      ],
+      "counterevidence_or_falsifier": [
+        "Future pages reintroduce a rival master ontology on Home.",
+        "Homepage counts or definitions drift from canonical registries.",
+        "Validators stop checking the teaching hierarchy or Axis distinctions.",
+        "New concepts accumulate as home-only prose with no owner."
+      ],
+      "world_return_measure": [
+        "A new reader can identify Center, House, Rooms, planes, Axis, routes and real cases without reading repository governance files.",
+        "Changes in canonical registries visibly update Home without duplicative manual edits.",
+        "CI detects drift between the homepage and project synthesis."
+      ],
+      "status": "observed+synthesis",
+      "route_boundary": "This is the project's own development history, so route claims concern repository structure rather than a moral judgment about people."
+    },
+    {
+      "id": "nationalbank-payment-resilience-trace",
+      "case_type": "real-world candidate repair/return trace",
+      "subject_ref": "danmarks-nationalbank",
+      "starting_state": "observed",
+      "observed_material": [
+        "The dossier records migration of DKK settlement from Kronos2 to TARGET Services in 2025.",
+        "The dossier records payment disruptions in July 2025 and May 2026 and subsequent work to expand offline card contingency for basic purchases.",
+        "Average banking-day payment throughput increased from DKK 732 billion in 2024 to DKK 838 billion in 2025."
+      ],
+      "source_ids": [
+        "dnb-target-dkk-2026",
+        "dnb-offline-contingency-2026",
+        "dnb-oversight-2024",
+        "dnb-payments-2025"
+      ],
+      "proposed_transition": "observed/residue → threshold → transformed_recurrence → return",
+      "operator": "incident learning + infrastructure migration + contingency redesign",
+      "condition_required": "A repair interpretation requires evidence that revised arrangements reduce vulnerability or preserve payment capability under comparable disruption.",
+      "evidence_for_transition": [
+        "A concrete system migration occurred.",
+        "A concrete contingency capability was expanded after documented disruption.",
+        "Infrastructure performance and throughput are tracked publicly."
+      ],
+      "counterevidence_or_falsifier": [
+        "Comparable disruptions continue with no improvement in continuity.",
+        "The contingency capability cannot be used under the conditions it was designed for.",
+        "Observed resilience changes are attributable to unrelated system changes rather than the intervention."
+      ],
+      "world_return_measure": [
+        "continuity during future outages",
+        "availability of basic-payment routes during disruption",
+        "incident severity/duration and recommendation follow-through"
+      ],
+      "status": "candidate",
+      "route_boundary": "The documented facts support an adaptation trace; they do not by themselves prove the project's Repair or Garden interpretation."
+    },
+    {
+      "id": "wikimedia-capability-growth-trace",
+      "case_type": "real-world candidate Garden/growth trace",
+      "subject_ref": "wikimedia-foundation",
+      "starting_state": "observed",
+      "observed_material": [
+        "The dossier records FY2026–27 increases in technology and volunteer-support budgets.",
+        "The plan explicitly responds to declining referral traffic, bot/scraping load and contributor/audience challenges.",
+        "The organization operates inside a decentralized volunteer knowledge movement rather than owning ordinary article decisions."
+      ],
+      "source_ids": [
+        "wmf-plan-2627",
+        "wmf-goals-2627",
+        "wmf-trustee-2026"
+      ],
+      "proposed_transition": "observed pressure → threshold/adaptation → generative branch or capture risk",
+      "operator": "resource reallocation + contributor/product adaptation",
+      "condition_required": "A Garden/generative interpretation requires evidence that investment increases volunteer/community capability, correction or resilience rather than only central organizational capacity.",
+      "evidence_for_transition": [
+        "Planned technology and volunteer-support investment increased.",
+        "The plan names resilience and reader/contributor pathways as explicit problems."
+      ],
+      "counterevidence_or_falsifier": [
+        "Volunteer capability or meaningful participation declines despite greater central spending.",
+        "Community governance becomes more dependent on Foundation-controlled capacity.",
+        "Traffic/output metrics improve while correction, representation or contributor health deteriorate."
+      ],
+      "world_return_measure": [
+        "contributor retention and onboarding",
+        "community-controlled capability",
+        "service reliability under bot/scraping load",
+        "reader-to-contributor pathways",
+        "correction and governance participation"
+      ],
+      "status": "candidate",
+      "route_boundary": "Budget growth is an input, not Fruit. The route remains unresolved until capability and community outcomes are measured."
+    },
+    {
+      "id": "cern-reproduction-return-trace",
+      "case_type": "real-world Foundation/reproduction trace",
+      "subject_ref": "cern",
+      "starting_state": "generative",
+      "observed_material": [
+        "CERN has a durable treaty/governance foundation reproduced through Member States, Council, technical institutions and research collaborations.",
+        "Slovenia joined as the 25th Member State in 2025.",
+        "The 2026–2030 strategy prioritizes HL-LHC completion and sets a later decision horizon for the FCC-ee proposal."
+      ],
+      "source_ids": [
+        "cern-members-2026",
+        "cern-strategy-2026-2030",
+        "cern-governance"
+      ],
+      "proposed_transition": "Foundation → reproduction → branching/integration → future return",
+      "operator": "institutional succession + training + collaboration + strategy revision",
+      "condition_required": "A successful reproduction interpretation requires competence and scientific/technical capacity to survive personnel turnover and strategic change without depending on a single founder or cohort.",
+      "evidence_for_transition": [
+        "Governance and membership persist across generations.",
+        "New Member States and research cohorts can join an existing institutional grammar.",
+        "Strategy is revisable through institutional processes."
+      ],
+      "counterevidence_or_falsifier": [
+        "Core capability cannot be reproduced without irreplaceable individuals.",
+        "Governance cannot revise strategy under changed evidence or constraints.",
+        "Training/collaboration stops generating future independent scientific capability."
+      ],
+      "world_return_measure": [
+        "trained scientific/technical capability",
+        "usable research infrastructure",
+        "published knowledge and reproducible methods",
+        "technology/knowledge transfer",
+        "future research capacity"
+      ],
+      "status": "synthesis",
+      "route_boundary": "The dossier supports institutional reproduction; the quality of particular collider choices remains a separate scientific/political evaluation."
+    },
+    {
+      "id": "icrc-resource-adaptation-trace",
+      "case_type": "real-world candidate Garden/repair trace",
+      "subject_ref": "icrc",
+      "starting_state": "observed",
+      "observed_material": [
+        "Reported donor contributions fell from CHF 2.04 billion in 2024 to CHF 1.76 billion in 2025.",
+        "The flexible share of contributions rose from 39% to 45%.",
+        "Operational outputs moved differently by category rather than following one aggregate trend."
+      ],
+      "source_ids": [
+        "icrc-annual-2024",
+        "icrc-annual-2025",
+        "icrc-finance"
+      ],
+      "proposed_transition": "resource stress → adaptation → Garden/repair candidate",
+      "operator": "increase flexible allocation + adapt programmes under changing need/access",
+      "condition_required": "A Garden/repair interpretation requires evidence that greater flexibility actually improves need-responsive allocation, access, continuity or affected-population capability.",
+      "evidence_for_transition": [
+        "Funding composition changed in a direction that increases allocation flexibility.",
+        "The organization tracks multiple operational outcomes rather than one headline score."
+      ],
+      "counterevidence_or_falsifier": [
+        "Flexible funding does not improve responsiveness or continuity.",
+        "Reduced contributions create capability losses that flexibility cannot offset.",
+        "Headline outputs hide deterioration in access, accountability or local capacity."
+      ],
+      "world_return_measure": [
+        "need-responsive allocation",
+        "continuity of protection/assistance under funding stress",
+        "access to affected populations",
+        "accountability/feedback quality",
+        "local capability rather than permanent dependence"
+      ],
+      "status": "candidate",
+      "route_boundary": "Funding composition is documented; Garden/repair is only a testable project synthesis, not a factual label for the ICRC."
+    }
+  ],
+  "homepage_projection": {
+    "purpose": "Teach that routes are state-transition hypotheses, not symbolic verdicts.",
+    "default_case": "project-homepage-governance-repair",
+    "default_contrast": "residue-fork",
+    "reader_question": "Given the same starting material, what operator changes what it reproduces?",
+    "handoffs": [
+      "axis/",
+      "house/#crystallized-cases",
+      "research-lab/",
+      "context/source-authority/"
+    ]
+  },
+  "promotion_gate": [
+    "Named real-world cases must cite source IDs already present in a source-grounded dossier or add new sources first.",
+    "The route mapping must be labelled synthesis/candidate unless the underlying route criterion is directly observable.",
+    "Every proposed transition needs a counterevidence/falsifier.",
+    "Every route must name a World-level return measure or explain why no return is expected.",
+    "No route label may be used to essentialize a person, group, institution, religion, nationality or political position."
+  ]
+}

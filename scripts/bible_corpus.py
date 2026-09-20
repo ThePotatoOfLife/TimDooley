@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 ACTIVE_STATUSES = {'canonical', 'additive'}
+REDIRECTS_PATH = Path('knowledge/traditions/bible-relation-redirects.json')
 
 
 class CorpusError(RuntimeError):
@@ -18,6 +19,17 @@ def load_json(path: Path) -> dict:
 
 def load_manifest(root: Path) -> dict:
     return load_json(root / 'knowledge' / 'traditions' / 'bible-layer-manifest.json')
+
+
+def load_relation_redirects(root: Path) -> dict[str, str]:
+    path = root / REDIRECTS_PATH
+    if not path.exists():
+        return {}
+    data = load_json(path)
+    redirects = data.get('redirects') or {}
+    if not isinstance(redirects, dict):
+        raise CorpusError('Bible relation redirects must be an object')
+    return {str(source): str(target) for source, target in redirects.items() if source and target}
 
 
 def active_layers(manifest: dict, kind: str) -> list[dict]:
@@ -37,6 +49,7 @@ def merge_value(old, new):
 
 
 def assemble_relations(root: Path, manifest: dict) -> list[dict]:
+    redirects = load_relation_redirects(root)
     rows = []
     by_id = {}
     for layer_meta in active_layers(manifest, 'relations'):
@@ -45,6 +58,8 @@ def assemble_relations(root: Path, manifest: dict) -> list[dict]:
             rid = row.get('id')
             if not rid:
                 raise CorpusError(f"relation without id in {layer_meta['id']}")
+            if rid in redirects:
+                continue
             if rid in by_id:
                 raise CorpusError(f"duplicate relation id {rid} in {layer_meta['id']}")
             item = copy.deepcopy(row)
@@ -63,11 +78,16 @@ def assemble_relations(root: Path, manifest: dict) -> list[dict]:
             rid = row.get('id')
             if not rid:
                 raise CorpusError(f"new relation without id in {layer_meta['id']}")
+            if rid in redirects:
+                continue
             if rid in by_id:
                 raise CorpusError(f"duplicate relation id {rid} in {layer_meta['id']}")
             item = copy.deepcopy(row)
             rows.append(item)
             by_id[rid] = item
+    missing_targets = sorted({target for target in redirects.values() if target not in by_id})
+    if missing_targets:
+        raise CorpusError(f"Bible relation redirect target(s) missing from active corpus: {', '.join(missing_targets)}")
     return rows
 
 

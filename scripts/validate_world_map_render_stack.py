@@ -48,7 +48,7 @@ def main() -> int:
         RENDER_STACK,
         (
             "__potatoAtlasRenderStack", "register", "unregister", "reconcile", "state", "slotOrder",
-            "physical-surface", "physical-water", "physical-line", "geography-context", "context-network", "selection-emphasis",
+            "physical-surface", "physical-water", "physical-line", "geography-context", "subnational-fill", "context-network", "selection-emphasis",
             "moveLayer", "potato-atlas-render-stack-change", "queueMicrotask",
             "potato-atlas-module-ready", "localeCompare",
             "function styleSnapshot", "orderIndex", "renderStackStyleSnapshots",
@@ -64,7 +64,7 @@ def main() -> int:
         if forbidden in render:
             errors.append(f"render stack must not own map data/paint/style lifecycle or arbitrary z-index state: found {forbidden}")
     if render:
-        expected_order = ("physical-surface", "physical-water", "physical-line", "geography-context", "context-network", "selection-emphasis")
+        expected_order = ("physical-surface", "physical-water", "physical-line", "geography-context", "subnational-fill", "context-network", "selection-emphasis")
         positions = [render.find(repr(slot).replace('"', "'")) for slot in expected_order]
         if any(position < 0 for position in positions) or positions != sorted(positions):
             errors.append("render stack must declare canonical slot order bottom-to-top")
@@ -91,13 +91,29 @@ def main() -> int:
     expected_physical_slots = {
         "terrain": ("__potatoAtlasRenderStack", "physical-surface"),
         "land-cover": ("__potatoAtlasRenderStack", "physical-surface"),
-        "water": ("__potatoAtlasRenderStack", "physical-water", "physical-line"),
+        "water": ("__potatoAtlasRenderStack", "physical-surface", "physical-water", "physical-line"),
         "deserts": ("__potatoAtlasRenderStack", "physical-surface", "physical-line"),
         "hydrology": ("__potatoAtlasRenderStack", "physical-surface", "physical-line"),
     }
+    physical_text = {}
     for label, path in PHYSICAL_MODULES.items():
-        require_tokens(path, expected_physical_slots[label], errors, f"Physical {label}")
+        physical_text[label] = require_tokens(path, expected_physical_slots[label], errors, f"Physical {label}")
         check_node(path, errors)
+
+    # Water/terrain visual invariant: the seam-safe ocean base is first, the opaque
+    # canonical-land mask is directly above it, and terrain hillshade is above both.
+    # MapLibre DEM terrain itself is draped geometry, not a separate solid slab; this
+    # contract guarantees compositing order rather than claiming a literal 3D sea plane.
+    water = physical_text.get("water", "")
+    terrain = physical_text.get("terrain", "")
+    for token in (
+        "BASE_LAYERS.oceanBase, { slot:'physical-surface', priority:8",
+        "BASE_LAYERS.landMask, { slot:'physical-surface', priority:9",
+    ):
+        if token not in water:
+            errors.append(f"Physical water must preserve ocean/land-mask ordering invariant: missing {token}")
+    if "HILLSHADE_LAYER, {\n    slot:'physical-surface',\n    priority:10" not in terrain:
+        errors.append("Physical terrain hillshade must remain physical-surface priority 10 above water priorities 8/9")
 
     spatial = require_tokens(
         SPATIAL,

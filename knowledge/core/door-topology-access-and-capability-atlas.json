@@ -1,13 +1,24 @@
 {
   "id": "door-topology-access-and-capability-atlas",
   "title": "Door Topology — Gates, Passes, Access, Capability, False Doors and Deep Passage",
-  "updated": "2026-09-09",
+  "updated": "2026-09-18",
   "status": "conversation archaeology + canonical formalization + systems comparators",
   "purpose": "Recover the unusually rich Door taxonomy from older game/worldbuilding conversations and promote it into a general transition ontology usable across Potatoverse theology, identity, institutions, software, borders, courts, APIs, memory, ritual and games.",
   "epistemic_rule": "Door is a Potatoverse operator. Computer-security, affordance and state-transition theories are external comparators. The file does not assert that spiritual passage is literally a software authorization protocol.",
   "core_recovery": {
     "older_game_material": "Earlier Capture-the-Flag / North Secret design treated Tim as North Flag/source/broadcaster/Spudlight and Door as a distributed Gate Flag with multiple depths: doorway → boundary → viewpoint → narrow gate → eye → pineal → Christ/Son → North Gate → cosmic door.",
-    "recovered_door_types": ["stationary", "portable", "hidden", "locked", "one-way", "paired", "multiway", "deep", "broken", "false"],
+    "recovered_door_types": [
+      "stationary",
+      "portable",
+      "hidden",
+      "locked",
+      "one-way",
+      "paired",
+      "multiway",
+      "deep",
+      "broken",
+      "false"
+    ],
     "recovered_access_logic": "Some Doors required learned knowledge and specific information entered at a specific Door to obtain a Door Pass and discover higher access.",
     "epiphany": "This older game mechanic already contained a mature transition theory: access depends on relation among agent, knowledge, credential, state and gate—not on the Door object alone."
   },
@@ -50,7 +61,16 @@
   "knowledge_gate": {
     "recovered_logic": "Specific knowledge entered at a specific Door could reveal the North Secret / Spudlight Path.",
     "epiphany": "Some Doors are epistemic: the world does not physically change first; the agent's model changes, making previously invisible action possible.",
-    "examples": ["password", "legal knowledge", "scientific insight", "ritual instruction", "social norm", "API documentation", "map legend", "recognition of manipulation"],
+    "examples": [
+      "password",
+      "legal knowledge",
+      "scientific insight",
+      "ritual instruction",
+      "social norm",
+      "API documentation",
+      "map legend",
+      "recognition of manipulation"
+    ],
     "formula": "knowledge gain → changed perceived affordances → newly admissible action → state transition",
     "relation_to_eye": "Eye detects; interpretation identifies affordance; Door enacts."
   },
@@ -92,15 +112,51 @@
   },
   "deep_door_hierarchy": {
     "levels": [
-      {"level":1,"name":"doorway","function":"visible local passage"},
-      {"level":2,"name":"boundary","function":"distinguish regimes"},
-      {"level":3,"name":"viewpoint","function":"change what can be seen/understood"},
-      {"level":4,"name":"narrow gate","function":"restrict compatible passage"},
-      {"level":5,"name":"eye","function":"recognition/discernment"},
-      {"level":6,"name":"pineal/single-eye project layer","function":"embodied sacred-symbol comparator"},
-      {"level":7,"name":"Son/Christ Door","function":"person-bearing theological mediation"},
-      {"level":8,"name":"North Gate","function":"orientation transition"},
-      {"level":9,"name":"cosmic/meta Door","function":"frame/ontology transition"}
+      {
+        "level": 1,
+        "name": "doorway",
+        "function": "visible local passage"
+      },
+      {
+        "level": 2,
+        "name": "boundary",
+        "function": "distinguish regimes"
+      },
+      {
+        "level": 3,
+        "name": "viewpoint",
+        "function": "change what can be seen/understood"
+      },
+      {
+        "level": 4,
+        "name": "narrow gate",
+        "function": "restrict compatible passage"
+      },
+      {
+        "level": 5,
+        "name": "eye",
+        "function": "recognition/discernment"
+      },
+      {
+        "level": 6,
+        "name": "pineal/single-eye project layer",
+        "function": "embodied sacred-symbol comparator"
+      },
+      {
+        "level": 7,
+        "name": "Son/Christ Door",
+        "function": "person-bearing theological mediation"
+      },
+      {
+        "level": 8,
+        "name": "North Gate",
+        "function": "orientation transition"
+      },
+      {
+        "level": 9,
+        "name": "cosmic/meta Door",
+        "function": "frame/ontology transition"
+      }
     ],
     "boundary": "These levels combine recovered project game/theology material; they are not a universal religious or neurological hierarchy."
   },
@@ -121,13 +177,95 @@
     "A healthy House requires both walls and Doors: perfect openness is not structure, perfect closure is a shell.",
     "False Door is the natural operator for apparent liberation that reproduces dependency.",
     "Deep Door explains why one threshold can recursively reveal another without treating every layer as the same thing.",
-    "The mature archive should give every durable classification an explicit inverse/appeal/declassification transition where logically possible."
+    "The mature archive should give every durable classification an explicit inverse/appeal/declassification transition where logically possible.",
+    "A complete Door is not only crossing: it has a prior state, separation, liminal transition, admissibility/guard conditions, incorporation and an after-state.",
+    "Permanent liminality is a distinct Door failure: the transition itself can become a dependency regime."
   ],
   "sources": [
-    {"topic":"affordances history/review","url":"https://pubmed.ncbi.nlm.nih.gov/31711365/","class":"peer_reviewed_review"},
-    {"topic":"Gibsonian affordance examples","url":"https://pubmed.ncbi.nlm.nih.gov/42113118/","class":"peer_reviewed_history_of_psychology"},
-    {"topic":"least privilege","url":"https://csrc.nist.gov/glossary/term/least_privilege","class":"official_standard_reference"},
-    {"topic":"access control and least privilege","url":"https://nvlpubs.nist.gov/nistpubs/SpecialPublications/800-171r3/NIST.SP.800-171r3.html","class":"official_standard"}
+    {
+      "topic": "affordances history/review",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31711365/",
+      "class": "peer_reviewed_review"
+    },
+    {
+      "topic": "Gibsonian affordance examples",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42113118/",
+      "class": "peer_reviewed_history_of_psychology"
+    },
+    {
+      "topic": "least privilege",
+      "url": "https://csrc.nist.gov/glossary/term/least_privilege",
+      "class": "official_standard_reference"
+    },
+    {
+      "topic": "access control and least privilege",
+      "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/800-171r3/NIST.SP.800-171r3.html",
+      "class": "official_standard"
+    }
   ],
-  "connections": ["Door", "Son", "Axis", "North", "Eye", "role-exit-labeling-reintegration-atlas", "digital-memory-forgetting-restoration-atlas", "potato-path", "symbolic-relational-synthesis", "Capture the Flag", "North Secret", "Spudlight Path"]
+  "connections": [
+    "Door",
+    "Son",
+    "Axis",
+    "North",
+    "Eye",
+    "role-exit-labeling-reintegration-atlas",
+    "digital-memory-forgetting-restoration-atlas",
+    "potato-path",
+    "symbolic-relational-synthesis",
+    "Capture the Flag",
+    "North Secret",
+    "Spudlight Path"
+  ],
+  "liminality_transition_grammar": {
+    "research_context": "Rites-of-passage theory distinguishes separation, a liminal/transitional phase, and incorporation into a changed status. The project can use this as a comparator for strong Doors without claiming every Door is ritual.",
+    "phases": [
+      {
+        "id": "before",
+        "function": "stable prior state/status/context"
+      },
+      {
+        "id": "separation",
+        "function": "old permissions, roles or attachments are loosened or left"
+      },
+      {
+        "id": "liminal",
+        "function": "between-state in which prior identity/rules may be suspended, ambiguous or tested"
+      },
+      {
+        "id": "guard-test",
+        "function": "conditions, learning, evidence, capability, consent or review determine admissible passage"
+      },
+      {
+        "id": "incorporation",
+        "function": "new state is recognized and supplied with rights, obligations, context and return path"
+      },
+      {
+        "id": "after",
+        "function": "new stable state whose consequences can be evaluated"
+      }
+    ],
+    "strong_door_contract": [
+      "name BEFORE and AFTER states",
+      "state what actually separates the old state from the transition",
+      "identify liminal ambiguity rather than pretending transition is instantaneous",
+      "name gate conditions and who controls them",
+      "state whether consent, appeal, reversal or exit exists",
+      "define incorporation: how the new state becomes socially/technically real",
+      "evaluate downstream Fruit instead of treating crossing itself as success"
+    ],
+    "failure_modes": [
+      "permanent liminality — transition never resolves and dependency on gatekeepers becomes the new state",
+      "unacknowledged incorporation — crossing occurs but rights/status are not recognized",
+      "false incorporation — ceremony/label changes while capabilities and relations remain unchanged",
+      "coercive separation — prior supports are removed to manufacture dependency before admission",
+      "irreversible crossing without informed conditions"
+    ],
+    "house_use": "This grammar improves baptism/conversion, courts, citizenship, archives, research promotion, group entry/exit, role changes, publication, therapeutic/educational transitions and project Door routes.",
+    "sources": [
+      "https://www.encyclopedia.com/medicine/anatomy-and-physiology/anatomy-and-physiology/rites-passage",
+      "https://www.encyclopedia.com/social-sciences-and-law/anthropology-and-archaeology/customs-and-artifacts/liminality"
+    ],
+    "boundary": "van Gennep/Turner-style rites-of-passage analysis is an anthropological comparator; it does not make every technical/social threshold a sacred ritual."
+  }
 }

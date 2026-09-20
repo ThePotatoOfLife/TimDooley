@@ -1,0 +1,78 @@
+{
+  "version": "1.1.0",
+  "updated": "2026-09-20",
+  "authority": "non-euclidean-room-grammar",
+  "title": "Recursive Room / Wormhole Door Grammar",
+  "purpose": "Define how the Potato House behaves when every Dwelling and nested Room may become locally central while preserving one global Axis and canonical ownership.",
+  "global_rules": [
+    "The House is a typed graph rendered as architecture, not one fixed Euclidean building.",
+    "Every canonical Dwelling and mature nested Room may become a local center.",
+    "Global spatial center remains Door / Axis.",
+    "Local recentering changes perspective and nearby Doors, not knowledge ownership.",
+    "A cross-Dwelling adjacency is rendered as a Wormhole Door: direct conceptual passage across otherwise distant architectural regions.",
+    "Wormhole adjacency must come from registered topology/interfaces, never from visual convenience alone.",
+    "Every spatial route must preserve a readable HTML/text route."
+  ],
+  "door_types": [
+    {
+      "id": "local-door",
+      "definition": "Passage between Rooms within the same parent Dwelling.",
+      "visual": "ordinary inner door",
+      "example": "Culture & Information -> Internet & Platforms"
+    },
+    {
+      "id": "wormhole-door",
+      "definition": "Registered adjacency between nested Rooms owned by different Dwellings.",
+      "visual": "visibly distinct portal/threshold",
+      "example": "Subculture, Cult & Group Formation -> Law & Justice"
+    },
+    {
+      "id": "elevator-door",
+      "definition": "Passage back to global Door/Axis or between Heaven, World and Below projections.",
+      "visual": "central vertical threshold"
+    },
+    {
+      "id": "public-surface-door",
+      "definition": "Exit from spatial projection into a readable canonical public page.",
+      "visual": "open/read door"
+    },
+    {
+      "id": "forge-door",
+      "definition": "Guarded passage into testing, verification, repair or promotion.",
+      "visual": "inner-ring threshold",
+      "invariant": "Must preserve evidence/provenance/status boundary."
+    }
+  ],
+  "recursion": {
+    "level_0": "Door / Axis",
+    "level_1": "Canonical Dwelling",
+    "level_2": "Nested Room",
+    "level_3": "Case / Subject / Artifact / Dossier",
+    "rule": "Each level may become a local center, but only Levels 1-2 own bounded-context navigation. Level 3 objects remain inhabitants/contents unless explicitly promoted by governance."
+  },
+  "reconfiguration": {
+    "on_enter_dwelling": "Show nested Rooms prominently; keep parent exit and global Elevator available.",
+    "on_enter_nested_room": "Show registered adjacent nested Rooms around the viewer. Same-parent neighbors appear as local doors; cross-parent neighbors appear as wormholes.",
+    "on_enter_case": "Keep the nested Room and its Doors architecturally visible; move the selected inhabitant onto the center table. Expose type, active Room lens, alternate Room lenses, readable route, evidence boundary and return-to-Room action.",
+    "on_escape": "Nested Room -> Dwelling -> Door/Axis -> World default."
+  },
+  "orientation_invariants": [
+    "Up/down always means projection toward Heaven/Below relative to the global Axis, never moral rank.",
+    "Parent Dwelling must remain visible in breadcrumb even when a nested Room has cross-Dwelling neighbors.",
+    "Cross-Dwelling traversal changes the active parent Dwelling if that neighbor becomes locally central.",
+    "Back/escape must reconstruct the path taken rather than infer a Euclidean hallway."
+  ],
+  "source_records": [
+    "data/house/elevator-spatial-projection.json",
+    "data/house/subrooms.json",
+    "data/house/interfaces.json",
+    "data/house/local-center-interface-patterns.json",
+    "data/house/topology.json",
+    "data/house/object-focus-contract.json"
+  ],
+  "object_focus": {
+    "authority": "data/house/object-focus-contract.json",
+    "rule": "Level 3 contents may become informational centers but never architectural or ownership centers.",
+    "lens_switch": "The same object may move between registered Room projections without duplicating the object."
+  }
+}

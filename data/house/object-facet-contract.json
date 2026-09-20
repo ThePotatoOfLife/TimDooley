@@ -1,0 +1,121 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "authority": "object-facet-contract",
+  "title": "Level 3 Object Facet Contract",
+  "purpose": "Give centered House inhabitants enough internal structure to be meaningfully inspected without promoting every object into a full crystallized entity dossier.",
+  "relationship_to_entity_dossier": "This is the lightweight Level-3 projection of data/house/entity-dossier-schema.json. Mature real-world institutions can later upgrade to the full dossier contract while retaining the same object ID.",
+  "facet_order": [
+    "identity",
+    "timeline",
+    "sources",
+    "relationships",
+    "flows",
+    "status",
+    "consequences",
+    "questions",
+    "repair"
+  ],
+  "facets": {
+    "identity": {
+      "question": "What is this object in ordinary factual/project terms?",
+      "allowed": [
+        "kind",
+        "scope",
+        "owner",
+        "definition",
+        "boundary"
+      ]
+    },
+    "timeline": {
+      "question": "What dated sequence matters for understanding it?",
+      "allowed": [
+        "date",
+        "event",
+        "status",
+        "source_ref"
+      ]
+    },
+    "sources": {
+      "question": "What source-bearing records support or define it?",
+      "allowed": [
+        "source_ref",
+        "role",
+        "evidence_class",
+        "note"
+      ]
+    },
+    "relationships": {
+      "question": "What typed connections matter?",
+      "allowed": [
+        "type",
+        "target_id_or_label",
+        "direction",
+        "status",
+        "source_ref",
+        "boundary"
+      ]
+    },
+    "flows": {
+      "question": "What moves through or around it?",
+      "allowed": [
+        "flow_type",
+        "input",
+        "mechanism",
+        "output",
+        "measurement_or_limit"
+      ]
+    },
+    "status": {
+      "question": "What is established, attributed, disputed, unresolved or project-native?",
+      "allowed": [
+        "label",
+        "value",
+        "as_of",
+        "authority",
+        "boundary"
+      ]
+    },
+    "consequences": {
+      "question": "What documented outputs, effects, harms or capabilities follow?",
+      "allowed": [
+        "effect",
+        "evidence_class",
+        "scope",
+        "limit"
+      ]
+    },
+    "questions": {
+      "question": "What would materially deepen, challenge or falsify the current understanding?",
+      "allowed": [
+        "question",
+        "why_it_matters",
+        "needed_evidence"
+      ]
+    },
+    "repair": {
+      "question": "What correction, redesign, exit or next-step pathway exists?",
+      "allowed": [
+        "problem",
+        "mechanism",
+        "success_condition",
+        "failure_condition"
+      ]
+    }
+  },
+  "display_rules": [
+    "Do not show empty facets.",
+    "Status and source facets remain visible for sensitive real-world cases.",
+    "Relationships are typed connections, not guilt by association.",
+    "Flows distinguish money, attention, information, authority, material and people rather than collapsing them into one River.",
+    "Questions remain questions; they are not converted into implied allegations.",
+    "A lightweight object may have only identity + sources + questions.",
+    "A mature real-world institution should upgrade to the full entity-dossier schema rather than indefinitely expanding this lightweight projection."
+  ],
+  "source_records": [
+    "data/house/entity-dossier-schema.json",
+    "data/house/object-focus-contract.json",
+    "data/house/room-inhabitants.json",
+    "knowledge/core/inhabited-house-society-ontology.json"
+  ]
+}

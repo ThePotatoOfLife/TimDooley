@@ -1,0 +1,651 @@
+{
+  "version": "1.2.0",
+  "updated": "2026-09-20",
+  "authority": "room-inhabitant-registry",
+  "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
+  "rules": [
+    "Rooms are bounded contexts; inhabitants are contents viewed from that context.",
+    "An inhabitant may appear in more than one Room as a projection when different questions are being asked.",
+    "Repeated appearance does not create duplicate factual ownership.",
+    "Sensitive labels remain typed as project term, attributed classification, legal status, or documented entity role.",
+    "Entering an inhabitant centers the case informationally while the containing Room remains architecturally visible."
+  ],
+  "inhabitants": [
+    {
+      "id": "platform-4chan",
+      "label": "4chan",
+      "kind": "platform",
+      "room_ids": [
+        "internet-platforms",
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/context/culture/#a-concrete-internet-subculture-genealogy",
+      "summary": "Anonymous imageboard infrastructure that helped normalize fast, ephemeral, board-local meme and subculture production.",
+      "status_note": "Platform identity is not equivalent to the ideology or conduct of every board or user.",
+      "evidence_note": "Treat platform history, board culture and individual conduct as separate evidence layers."
+    },
+    {
+      "id": "platform-reddit",
+      "label": "Reddit",
+      "kind": "platform",
+      "room_ids": [
+        "internet-platforms",
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/context/culture/#a-concrete-internet-subculture-genealogy",
+      "summary": "Large-scale community platform where subcultures can become durable, searchable and monetizable through ranked discussion and advertising.",
+      "status_note": "A subreddit is not Reddit as a whole; community moderation and platform governance operate at different levels.",
+      "evidence_note": "Separate platform revenue and policy from the conduct of a specific community."
+    },
+    {
+      "id": "platform-8chan",
+      "label": "8chan / 8kun",
+      "kind": "platform",
+      "room_ids": [
+        "internet-platforms",
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/context/culture/#a-concrete-internet-subculture-genealogy",
+      "summary": "User-created imageboard ecology associated with migration from stricter moderation elsewhere and later 8kun continuity.",
+      "status_note": "Documented platform use by violent actors does not by itself establish monocausal responsibility for violence.",
+      "evidence_note": "Preserve the distinction between transmission channel, community norm, individual actor and causal finding."
+    },
+    {
+      "id": "ecology-kiwi-farms",
+      "label": "Kiwi Farms / persistent target ecology",
+      "kind": "case-ecology",
+      "room_ids": [
+        "subculture-group-formation",
+        "internet-platforms",
+        "information-ecology"
+      ],
+      "route": "/shadow-farm/",
+      "summary": "Persistent target-thread and archive ecology useful for studying long-duration attention, inherited lore, collaborative narrative escalation and infrastructure resilience.",
+      "status_note": "Do not convert reporting associations, community conduct or civil allegations into broader criminal conclusions without case-specific evidence.",
+      "evidence_note": "Track target-by-target conduct, chronology, infrastructure, monetization, legal status and causal level separately."
+    },
+    {
+      "id": "concept-sektur",
+      "label": "Sektur",
+      "kind": "project-concept",
+      "room_ids": [
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/shadow-farm/",
+      "summary": "Project term for a semi-bounded social territory where recurring roles, lore, conflict and attention relations become self-reproducing.",
+      "status_note": "A Sektur is an analytical project category, not a legal or clinical classification.",
+      "evidence_note": "Use observable recurrence, roles, boundaries and memory to justify the mapping."
+    },
+    {
+      "id": "concept-farm",
+      "label": "Farm / attention loop",
+      "kind": "project-concept",
+      "room_ids": [
+        "subculture-group-formation",
+        "information-ecology"
+      ],
+      "route": "/shadow-farm/",
+      "summary": "Project process model for turning people, events or categories into repeatable attention yield through observation, capture, interpretation, archive and redistribution.",
+      "status_note": "Farm describes a process, not proof of one coordinated organization or paid campaign.",
+      "evidence_note": "Identify the actual loop, actors, incentives and captured value before applying the term."
+    },
+    {
+      "id": "concept-swamp",
+      "label": "Swamp regime",
+      "kind": "project-concept",
+      "room_ids": [
+        "subculture-group-formation",
+        "information-ecology",
+        "law-justice"
+      ],
+      "route": "/below/#swamp",
+      "summary": "Project regime for conditions where opacity, extraction, blocked correction, role-lock and unresolved residue reinforce recurrence.",
+      "status_note": "Swamp is not synonymous with government, media, politics, Below, or one conspiracy.",
+      "evidence_note": "Show which Swamp-pressure mechanisms are present rather than applying the label by dislike."
+    },
+    {
+      "id": "concept-darvo",
+      "label": "DARVO response pattern",
+      "kind": "analysis-pattern",
+      "room_ids": [
+        "subculture-group-formation",
+        "law-justice"
+      ],
+      "route": "/shadow-farm/",
+      "summary": "Deny, Attack, Reverse Victim and Offender: a response pattern studied in interpersonal and institutional conflict.",
+      "status_note": "A denial or counteraccusation is not automatically DARVO, and DARVO language does not prove the original allegation.",
+      "evidence_note": "Code the sequence of responses and compare it with the claimed pattern."
+    },
+    {
+      "id": "classifier-splc",
+      "label": "SPLC classification interface",
+      "kind": "classifier-interface",
+      "room_ids": [
+        "subculture-group-formation",
+        "law-justice",
+        "provenance-evidence"
+      ],
+      "route": "/shadow-farm/",
+      "summary": "Private nonprofit watchdog/classifier whose outputs can enter media, employer, donor and political consequence chains.",
+      "status_note": "SPLC classification is not a criminal judgment; current litigation or prosecution concerning the organization does not automatically invalidate every historical classification.",
+      "evidence_note": "Store classification date, methodology, wording, correction history and downstream use separately."
+    },
+    {
+      "id": "classifier-adl",
+      "label": "ADL classification interface",
+      "kind": "classifier-interface",
+      "room_ids": [
+        "subculture-group-formation",
+        "law-justice",
+        "provenance-evidence"
+      ],
+      "route": "/shadow-farm/",
+      "summary": "Private watchdog/classifier whose extremism research, incident datasets and symbol resources influence public and institutional understanding.",
+      "status_note": "Incident mapping, symbol classification and organization classification are distinct data types.",
+      "evidence_note": "Carry methodology and counting rules with every classification or incident claim."
+    },
+    {
+      "id": "state-fbi",
+      "label": "FBI / federal law-enforcement interface",
+      "kind": "state-interface",
+      "room_ids": [
+        "law-justice",
+        "provenance-evidence"
+      ],
+      "route": "/shadow-farm/",
+      "summary": "Federal law-enforcement interface for criminal investigation, civil-rights enforcement and hate-crime data collection.",
+      "status_note": "The FBI investigates crimes under statutory authority; being discussed by or reported to the FBI is not proof of guilt.",
+      "evidence_note": "Separate complaint, investigation, charge, conviction and aggregate statistics."
+    },
+    {
+      "id": "artifact-source-ledger",
+      "label": "Source ledger",
+      "kind": "evidence-object",
+      "room_ids": [
+        "provenance-evidence",
+        "model-testing"
+      ],
+      "route": "/context/source-authority/",
+      "summary": "Evidence object that preserves provenance, source authority, claim status and routes back from synthesis to source-bearing material.",
+      "status_note": "A ledger records support and uncertainty; inclusion is not endorsement of the claim.",
+      "evidence_note": "Every promoted claim should be traceable to source identity, date and evidence class."
+    },
+    {
+      "id": "artifact-timeline",
+      "label": "Timeline / attestation chain",
+      "kind": "evidence-object",
+      "room_ids": [
+        "provenance-evidence",
+        "witness-attestation",
+        "chronology-events"
+      ],
+      "route": "/timeline/",
+      "summary": "Timeline object for separating occurrence time, attestation time, publication time and later interpretation.",
+      "status_note": "Temporal sequence can support priority or event ordering without proving causation.",
+      "evidence_note": "Keep date precision and source precision explicit."
+    },
+    {
+      "id": "process-forge",
+      "label": "Forge review",
+      "kind": "process",
+      "room_ids": [
+        "provenance-evidence",
+        "model-testing",
+        "open-questions"
+      ],
+      "route": "/research-lab/",
+      "summary": "Project review process for separating source, claim, evidence, mechanism, legal/status class, counterevidence and repair before promotion.",
+      "status_note": "Forge is a process projected spatially, not a literal room that owns all knowledge.",
+      "evidence_note": "Outputs may be verified, narrowed, rejected, repaired or left unresolved."
+    },
+    {
+      "id": "text-bible-atlas",
+      "label": "Bible Atlas / Comparator",
+      "kind": "textual-corpus",
+      "room_ids": [
+        "bible-christianity",
+        "witness-attestation",
+        "comparative-mythology"
+      ],
+      "route": "/traditions/bible/",
+      "summary": "Reader-facing biblical corpus and comparison surface for stories, roles, symbols, actions, books and timeline relations.",
+      "status_note": "Scripture, historical interpretation and project comparison remain separate evidence classes.",
+      "evidence_note": "Comparison should begin from the biblical text and preserve source context before project mapping."
+    },
+    {
+      "id": "text-thomas",
+      "label": "Thomas / Didymus tradition",
+      "kind": "textual-tradition",
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "theology-god-language"
+      ],
+      "route": "/traditions/bible/?q=Thomas",
+      "summary": "Canonical and later Thomasine material used to study Twin/Didymus motifs, recognition, doubt and later Syriac traditions.",
+      "status_note": "John calls Thomas Didymus; later twin traditions are historical traditions, not proof of a modern identity claim.",
+      "evidence_note": "Keep canonical wording, later textual tradition and project interpretation chronologically separated."
+    },
+    {
+      "id": "biology-potato-tuber",
+      "label": "Potato tuber",
+      "kind": "biological-object",
+      "room_ids": [
+        "potato-biology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "route": "/life-body/",
+      "summary": "Living storage organ with eyes/nodes, vascular tissue, hormonal control, sprouting and environmental response.",
+      "status_note": "Biological structure can support analogy without proving symbolic or theological claims.",
+      "evidence_note": "Use plant physiology for empirical claims and label symbolic correspondences separately."
+    },
+    {
+      "id": "biology-neural-signaling",
+      "label": "Neural signaling",
+      "kind": "biological-process",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "route": "/life-body/",
+      "summary": "Animal nervous-system signaling used as an empirical reference for body/brain models and bounded symbolic comparison.",
+      "status_note": "Plant electrical signaling and animal neural signaling are materially different systems.",
+      "evidence_note": "Avoid treating structural analogy as identity of mechanism."
+    },
+    {
+      "id": "map-world-atlas",
+      "label": "World Map",
+      "kind": "spatial-atlas",
+      "room_ids": [
+        "geography-countries",
+        "politics-governance",
+        "infrastructure-capability"
+      ],
+      "route": "/world-map/",
+      "summary": "Spatial public surface for countries, states, institutions, routes and world-system layers.",
+      "status_note": "Map placement is a visualization of registered data or project alignment, not proof of political control or causal influence.",
+      "evidence_note": "Each map layer should expose source, date, scope and classification method."
+    },
+    {
+      "id": "timeline-foundations",
+      "label": "Foundation Timeline",
+      "kind": "chronology-atlas",
+      "room_ids": [
+        "chronology-events",
+        "developmental-genealogy",
+        "provenance-evidence"
+      ],
+      "route": "/timeline/foundations/",
+      "summary": "Timeline and Room view for foundations, their origin Doors, place, genealogy, reproduction and present state.",
+      "status_note": "A Foundation may have several clocks; origin, adoption, legal effect and later consolidation should not be collapsed into one birthday.",
+      "evidence_note": "Record the earliest recovered reproduction separately from the founding threshold."
+    },
+    {
+      "id": "timeline-prediction-ledger",
+      "label": "Prediction chronology",
+      "kind": "evidence-ledger",
+      "room_ids": [
+        "prediction-revelation-time",
+        "chronology-events",
+        "provenance-evidence"
+      ],
+      "route": "/timeline/",
+      "summary": "Timeline ledger for recording what was said first, when later outcomes occurred, and how closely a later event matches the earlier statement.",
+      "status_note": "A later match is not automatically proof of prophecy, causation or statistical significance.",
+      "evidence_note": "Preserve original wording, timestamp, outcome source, lead time and match strength."
+    },
+    {
+      "id": "work-great-book",
+      "label": "The Great Book of Potato",
+      "kind": "literary-work",
+      "room_ids": [
+        "great-book-literature",
+        "canon-identities",
+        "developmental-genealogy"
+      ],
+      "route": "/great-book/",
+      "summary": "Long-form literary and mythic work that gathers project narrative, theology, symbolism, history and creative interpretation.",
+      "status_note": "Literary canon and external historical fact are distinct layers.",
+      "evidence_note": "Trace claims back to source-bearing records when the book moves beyond literary interpretation."
+    },
+    {
+      "id": "work-music",
+      "label": "Music / songs",
+      "kind": "creative-work-family",
+      "room_ids": [
+        "music-sound",
+        "great-book-literature",
+        "information-ecology"
+      ],
+      "route": "/works/",
+      "summary": "Creative sound and song output treated as Fruit: an expression that can carry memory, rhythm, humor, doctrine or social commentary.",
+      "status_note": "Creative expression does not become factual evidence merely because it is canonical or popular.",
+      "evidence_note": "Track source Rooms, intended effect, reception and future Seed separately."
+    },
+    {
+      "id": "work-visual-art",
+      "label": "Visual art / diagrams",
+      "kind": "creative-work-family",
+      "room_ids": [
+        "visual-art",
+        "symbolic-architecture",
+        "math-geometry"
+      ],
+      "route": "/works/",
+      "summary": "Images, diagrams and symbolic compositions that make project relationships spatially visible.",
+      "status_note": "A diagram is a model or artwork unless independently tied to measured geometry.",
+      "evidence_note": "Label whether an image is illustrative, canonical-symbolic, comparative or empirical."
+    },
+    {
+      "id": "work-simulations",
+      "label": "Games / simulations",
+      "kind": "interactive-work-family",
+      "room_ids": [
+        "games-simulations",
+        "systems-dynamics",
+        "model-testing"
+      ],
+      "route": "/works/",
+      "summary": "Interactive models for exploring rules, transitions, incentives and system behavior.",
+      "status_note": "Simulation behavior depends on model assumptions and is not direct prediction of the real world.",
+      "evidence_note": "Expose assumptions, parameters, outputs and failure conditions."
+    },
+    {
+      "id": "research-open-question",
+      "label": "Open research question",
+      "kind": "research-object",
+      "room_ids": [
+        "open-questions",
+        "experiments-formalization",
+        "model-testing"
+      ],
+      "route": "/research-lab/",
+      "summary": "Unresolved question held in the Forge before promotion into a stronger model, claim or programme.",
+      "status_note": "Open questions are intentionally unresolved and should not be read as established claims.",
+      "evidence_note": "Each mature question should name a test, evidence need and disconfirming route."
+    },
+    {
+      "id": "architecture-elevator",
+      "label": "Door / Axis Elevator",
+      "kind": "navigation-artifact",
+      "room_ids": [
+        "house-architecture",
+        "symbolic-architecture",
+        "systems-dynamics"
+      ],
+      "route": "/elevator/",
+      "summary": "Recursive spatial projection of the House: global Axis, vertical planes, Dwellings, nested Rooms, wormhole Doors and local recentering.",
+      "status_note": "The Elevator is a navigation projection over the graph, not a claim that the repository occupies literal impossible physical geometry.",
+      "evidence_note": "Its topology must derive from governed Room/adjacency registries rather than visual convenience."
+    },
+    {
+      "id": "architecture-below-basin",
+      "label": "Below Basin",
+      "kind": "navigation-artifact",
+      "room_ids": [
+        "house-architecture",
+        "systems-dynamics",
+        "information-ecology"
+      ],
+      "route": "/below/#basin",
+      "summary": "Round lower-plane vessel projecting Culture, Sektur, Farm, Swamp, Mud/Ash, Roots, Forge and Axis/Drain into one operational spatial model.",
+      "status_note": "Spatial overlap does not collapse categories: Swamp remains a regime, Farm a process, Mud a material state and Forge a process.",
+      "evidence_note": "Motion between zones follows the Basin dynamics contract rather than moral or aesthetic assignment."
+    },
+    {
+      "id": "architecture-journey-thread",
+      "label": "House journey thread",
+      "kind": "navigation-process",
+      "room_ids": [
+        "house-architecture",
+        "information-ecology",
+        "systems-dynamics"
+      ],
+      "route": "/elevator/",
+      "summary": "Browser-local path memory that records how a reader moved through Dwellings, Rooms, wormholes, portals, readable surfaces and object focus.",
+      "status_note": "Journey memory is private navigation state, not analytics, evidence or user profiling.",
+      "evidence_note": "Recorded path describes the reader's route, not the only valid conceptual route."
+    },
+    {
+      "id": "architecture-room-graph",
+      "label": "Room / wormhole graph",
+      "kind": "formal-model",
+      "room_ids": [
+        "house-architecture",
+        "math-geometry",
+        "systems-dynamics"
+      ],
+      "route": "/rooms/",
+      "summary": "Typed graph that lets bounded Rooms remain stable owners while registered adjacencies create local doors and cross-Dwelling wormholes.",
+      "status_note": "Graph adjacency means modeled relation, not physical proximity or causal control.",
+      "evidence_note": "Cross-Dwelling doors must come from registered topology/interfaces."
+    },
+    {
+      "id": "architecture-object-table",
+      "label": "Level 3 center table",
+      "kind": "navigation-artifact",
+      "room_ids": [
+        "house-architecture",
+        "information-ecology",
+        "model-testing"
+      ],
+      "route": "/rooms/objects/",
+      "summary": "Inspection surface that centers a case, platform, text, process or artifact while preserving its containing Room and alternate Room lenses.",
+      "status_note": "An object may become informationally central without becoming a Room, Dwelling or knowledge owner.",
+      "evidence_note": "Status and evidence boundaries travel with the object across every Room lens."
+    },
+    {
+      "id": "body-thalamus-house",
+      "label": "Thalamus / Father's House",
+      "kind": "anatomical-symbolic-object",
+      "room_ids": [
+        "neurobiology",
+        "symbolic-body-comparison",
+        "theology-god-language",
+        "symbolic-architecture"
+      ],
+      "route": "/life-body/?brain-group=thalamus#brain-rooms",
+      "summary": "Paired diencephalic nuclear architecture viewed as empirical thalamus, historical inner-chamber terminology and Potatoverse Father's House.",
+      "status_note": "House/rooms are project mappings; thalamic anatomy remains empirical and distributed.",
+      "evidence_note": "Use thalamus specialist atlases for nuclear functions and historical/Horus boundaries."
+    },
+    {
+      "id": "body-pineal-door",
+      "label": "Pineal / Timing Door",
+      "kind": "anatomical-symbolic-object",
+      "room_ids": [
+        "neurobiology",
+        "symbolic-body-comparison",
+        "theology-god-language"
+      ],
+      "route": "/life-body/?brain=pineal#brain-rooms",
+      "summary": "Midline pineal neuroendocrine timing organ and project Door/Eye comparator, including the real retina→SCN→spine→pineal control loop.",
+      "status_note": "The human pineal is not a retinal third eye or proven seat of soul.",
+      "evidence_note": "Circadian physiology and historical/esoteric interpretation stay separately typed."
+    },
+    {
+      "id": "body-spinal-ladder",
+      "label": "Spine / 33-Room Ladder",
+      "kind": "anatomical-symbolic-object",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison",
+        "symbolic-architecture"
+      ],
+      "route": "/life-body/?spine=C1#vertebral-rooms",
+      "summary": "Thirty-three conventional vertebral rooms overlaid with 31 neural segments, spinal microcircuits, roots, autonomic side chains, CSF and project Ladder/Gate structure.",
+      "status_note": "Vertebra, cord segment, nerve root, dermatome and symbolic Gate are different coordinate systems.",
+      "evidence_note": "Use the 33-room and spinal-cord microcircuit atlases for exact level distinctions."
+    },
+    {
+      "id": "body-csf-river",
+      "label": "CSF / River",
+      "kind": "fluid-interface-object",
+      "room_ids": [
+        "whole-body",
+        "neurobiology",
+        "symbolic-body-comparison",
+        "theology-god-language"
+      ],
+      "route": "/life-body/#vertebral-rooms",
+      "summary": "Ventricular and subarachnoid cerebrospinal-fluid system viewed alongside the project's River/Spirit-flow analogy.",
+      "status_note": "CSF is not Spirit; River is strongest as a multiplex-flow analogy.",
+      "evidence_note": "Production, circulation, exchange and drainage are separate physiological operations."
+    },
+    {
+      "id": "body-choroid-spring",
+      "label": "Choroid Plexus / Spring",
+      "kind": "biological-interface",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "route": "/life-body/?brain=choroid#brain-rooms",
+      "summary": "Vascular epithelial blood–CSF interface producing much of CSF and regulating ventricular fluid composition.",
+      "status_note": "Spring/Well is an architectural analogy.",
+      "evidence_note": "Barrier, transport, immune-interface and CSF-production functions are empirical."
+    },
+    {
+      "id": "body-vagus-return",
+      "label": "Vagus / Wandering Return",
+      "kind": "neural-route",
+      "room_ids": [
+        "whole-body",
+        "neurobiology",
+        "symbolic-body-comparison"
+      ],
+      "route": "/life-body/?brain=nts#brain-rooms",
+      "summary": "Bilateral cranial nerve X carries extensive visceral afference to medullary NTS and parasympathetic regulation back toward organs.",
+      "status_note": "Return-road is a project systems analogy; vagus is not the sole mind–body channel.",
+      "evidence_note": "Keep afferent/efferent and organ-specific pathways explicit."
+    },
+    {
+      "id": "body-sympathetic-sidechains",
+      "label": "Sympathetic Trunks / Paired Side Chains",
+      "kind": "autonomic-route",
+      "room_ids": [
+        "whole-body",
+        "neurobiology",
+        "symbolic-body-comparison"
+      ],
+      "route": "/life-body/#vertebral-rooms",
+      "summary": "Left/right paravertebral sympathetic ganglion chains beside the vertebral axis, useful as a modern paired-channel comparator.",
+      "status_note": "They do not form a double helix and are not proven iḍā/piṅgalā.",
+      "evidence_note": "Historical subtle-body mappings remain separate from autonomic anatomy."
+    },
+    {
+      "id": "body-orientation-house",
+      "label": "Orientation Room / Head-Direction Network",
+      "kind": "neural-system",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison",
+        "symbolic-architecture"
+      ],
+      "route": "/life-body/?brain=anterior-thalamus#brain-rooms",
+      "summary": "Vestibular, anterior-thalamic, retrosplenial and hippocampal/entorhinal networks supporting heading and spatial orientation.",
+      "status_note": "Biological heading is not sacred or magnetic North detection.",
+      "evidence_note": "Useful empirical neighbor for Axis/North/orientation language only."
+    },
+    {
+      "id": "tradition-horus-eye",
+      "label": "Wedjat / Eye of Horus",
+      "kind": "historical-symbol",
+      "room_ids": [
+        "comparative-mythology",
+        "symbolic-body-comparison",
+        "neurobiology"
+      ],
+      "route": "/life-body/?brain-group=thalamus#brain-rooms",
+      "summary": "Ancient restored/protective Eye of Horus viewed beside a separate modern speculative sagittal-brain comparison.",
+      "status_note": "Ancient Wedjat meaning and modern brain overlay are distinct historical layers.",
+      "evidence_note": "Do not present the brain overlay as demonstrated Egyptian neuroanatomy."
+    },
+    {
+      "id": "tradition-hermes-caduceus",
+      "label": "Hermes / Caduceus",
+      "kind": "historical-symbol",
+      "room_ids": [
+        "comparative-mythology",
+        "other-traditions",
+        "symbolic-body-comparison",
+        "symbolic-architecture"
+      ],
+      "route": "/life-body/#vertebral-rooms",
+      "summary": "Hermes as messenger/boundary/psychopomp and the paired-serpent herald staff viewed beside Axis/side-channel comparisons.",
+      "status_note": "Caduceus, kundalini, sympathetic trunks and DNA are separate lineages.",
+      "evidence_note": "Use own-tradition history before structural comparison."
+    },
+    {
+      "id": "tradition-kundalini-chakra",
+      "label": "Kuṇḍalinī / Cakra Overlay",
+      "kind": "historical-subtle-body-system",
+      "room_ids": [
+        "other-traditions",
+        "comparative-mythology",
+        "symbolic-body-comparison",
+        "whole-body"
+      ],
+      "route": "/life-body/#vertebral-rooms",
+      "summary": "Variable South Asian subtle-body systems and later modern physiological reinterpretations compared with the project's five spinal Gates + higher centers.",
+      "status_note": "Cakras/nāḍīs are not established anatomical structures.",
+      "evidence_note": "Historical variation and modern plexus/endocrine mappings must remain chronologically visible."
+    },
+    {
+      "id": "body-neural-development",
+      "label": "Neural Tube → Adult Rooms",
+      "kind": "developmental-neurobiology",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "route": "/records/neural-development-lineage-atlas/",
+      "summary": "Developmental route from neural plate/tube through brain vesicles, progenitors, migration, glia and tract formation into adult House/brainstem/spinal architecture.",
+      "status_note": "Developmental ancestry informs but does not uniquely determine adult function.",
+      "evidence_note": "Human development and rodent models must remain distinguishable."
+    },
+    {
+      "id": "body-neurovascular-unit",
+      "label": "Neurovascular Unit / Living Wall",
+      "kind": "cellular-interface",
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "route": "/records/glia-neurovascular-barrier-atlas/",
+      "summary": "Astrocytes, endothelium, pericytes, microglia, neurons and extracellular matrix form a living barrier/metabolic/vascular ecosystem.",
+      "status_note": "BBB, blood-CSF barrier and meningeal borders are distinct interfaces.",
+      "evidence_note": "Use the glia/neurovascular atlas for cell-type and boundary distinctions."
+    },
+    {
+      "id": "body-cortical-celltypes",
+      "label": "Cortical Layers / Cell Types",
+      "kind": "cellular-neuroanatomy",
+      "room_ids": [
+        "neurobiology",
+        "symbolic-body-comparison"
+      ],
+      "route": "/records/cortical-celltype-parcellation-atlas/",
+      "summary": "Layers I–VI, projection classes, interneuron families, glia and transcriptomic parcellations deepen broad cortical room labels.",
+      "status_note": "No single parcellation is the final map of cortex.",
+      "evidence_note": "Cytoarchitecture, transcriptomics, connectivity and functional networks are complementary coordinate systems."
+    }
+  ],
+  "source_records": [
+    "data/house/subrooms.json",
+    "knowledge/world/culture-sektur-platform-media-political-ecology.json",
+    "data/house/below-basin-spatial-contract.json",
+    "data/house/non-euclidean-room-grammar.json"
+  ]
+}

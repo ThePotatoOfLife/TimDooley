@@ -1,0 +1,169 @@
+{
+  "id": "house-topology-golden-fixture",
+  "version": "1.2.0",
+  "updated": "2026-09-18",
+  "purpose": "Semantic regression fixture for the minimal Potato House topology. These assertions protect meaning, not presentation order.",
+  "required_concepts": [
+    "spirit",
+    "son",
+    "father",
+    "potato-of-life",
+    "source-field",
+    "manifestation-field",
+    "door",
+    "plane",
+    "axis",
+    "cross",
+    "root",
+    "tree",
+    "fruit",
+    "seed",
+    "ladder",
+    "garden",
+    "shell-cube",
+    "swamp"
+  ],
+  "required_relations": [
+    {
+      "from": "son",
+      "to": "door",
+      "type": "specializes-as"
+    },
+    {
+      "from": "son",
+      "to": "manifestation-field",
+      "type": "oriented-toward"
+    },
+    {
+      "from": "father",
+      "to": "source-field",
+      "type": "oriented-toward"
+    },
+    {
+      "from": "potato-of-life",
+      "to": "spirit",
+      "type": "expresses-through"
+    },
+    {
+      "from": "potato-of-life",
+      "to": "son",
+      "type": "expresses-through"
+    },
+    {
+      "from": "potato-of-life",
+      "to": "father",
+      "type": "expresses-through"
+    },
+    {
+      "from": "door",
+      "to": "source-field",
+      "type": "intersection-of"
+    },
+    {
+      "from": "door",
+      "to": "manifestation-field",
+      "type": "intersection-of"
+    },
+    {
+      "from": "plane",
+      "to": "door",
+      "type": "sections"
+    },
+    {
+      "from": "cross",
+      "to": "door",
+      "type": "located-within"
+    },
+    {
+      "from": "root",
+      "to": "tree",
+      "type": "supports"
+    },
+    {
+      "from": "tree",
+      "to": "fruit",
+      "type": "differentiates-into"
+    },
+    {
+      "from": "fruit",
+      "to": "seed",
+      "type": "returns-as"
+    },
+    {
+      "from": "seed",
+      "to": "root",
+      "type": "germinates-toward"
+    },
+    {
+      "from": "ladder",
+      "to": "door",
+      "type": "orders"
+    },
+    {
+      "from": "garden",
+      "to": "door",
+      "type": "preserves-passage"
+    },
+    {
+      "from": "shell-cube",
+      "to": "door",
+      "type": "constrains-passage"
+    },
+    {
+      "from": "garden",
+      "to": "swamp",
+      "type": "counter-regime"
+    }
+  ],
+  "forbidden_relations": [
+    {
+      "from": "manifestation-field",
+      "to": "shell-cube",
+      "type": "identity"
+    },
+    {
+      "from": "source-field",
+      "to": "garden",
+      "type": "identity"
+    },
+    {
+      "from": "cross",
+      "to": "door",
+      "type": "contains"
+    }
+  ],
+  "textual_invariants": [
+    {
+      "concept": "cross",
+      "contains": "internal to Door"
+    },
+    {
+      "concept": "manifestation-field",
+      "contains": "not identical with Swamp, Strife, Saturn or Cube"
+    },
+    {
+      "concept": "shell-cube",
+      "contains": "not inherently evil"
+    },
+    {
+      "concept": "potato-of-life",
+      "contains": "triune whole"
+    },
+    {
+      "concept": "father",
+      "contains": "does not by itself exhaust"
+    },
+    {
+      "concept": "son",
+      "contains": "not identical with the entire Manifestation Field"
+    }
+  ],
+  "required_traversals": [
+    "triune-potato",
+    "growth-return-cycle",
+    "recognition-circuit",
+    "shared-door-bridge",
+    "orientation-crossing",
+    "boundary-regime-test"
+  ]
+}

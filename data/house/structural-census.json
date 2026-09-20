@@ -1,0 +1,1270 @@
+{
+  "version": "1.2.0",
+  "updated": "2026-09-18",
+  "authority": "house-structural-role-census",
+  "purpose": "Inventory important project structures by architectural role without turning every recurring topic into another containment level.",
+  "governing_rule": "Structural role and knowledge ownership are orthogonal. A thing may be a View, Court, Programme/Vineyard, Gate or Archive while its facts continue to belong to canonical Dwellings/Rooms.",
+  "chamber_status": {
+    "registered_count": 0,
+    "state": "reserved",
+    "rule": "No Chamber registry is active. Chamber is reserved for a future protected/specialist cell that passes a stricter admission test; corpus density alone is insufficient."
+  },
+  "role_types": [
+    {
+      "id": "house",
+      "question": "What is the compositional whole?",
+      "test": "Contains differentiated Dwellings/Rooms while preserving boundaries and relations.",
+      "ownership_effect": "whole architecture only"
+    },
+    {
+      "id": "dwelling",
+      "question": "What major domain abides inside the House?",
+      "test": "Top-level stable bounded context containing several Rooms.",
+      "ownership_effect": "canonical top-level owner"
+    },
+    {
+      "id": "room",
+      "question": "What bounded specialist context needs local semantics?",
+      "test": "Distinct vocabulary/tasks/boundaries/interfaces with delegated ownership.",
+      "ownership_effect": "delegated from Dwelling"
+    },
+    {
+      "id": "chamber",
+      "question": "What truly needs a smaller protected/specialist cell?",
+      "test": "Requires a stable narrower task or access boundary that materially improves integrity.",
+      "ownership_effect": "inherits from Room; currently none"
+    },
+    {
+      "id": "field",
+      "question": "Where is the open problem-space?",
+      "test": "Broad porous area with unresolved targets; not yet a bounded owner.",
+      "ownership_effect": "none"
+    },
+    {
+      "id": "vineyard",
+      "question": "What mission is being deliberately cultivated?",
+      "test": "Bounded programme/workstream with stewardship, inputs, outputs and review.",
+      "ownership_effect": "none; consumes Room-owned facts"
+    },
+    {
+      "id": "road",
+      "question": "What typed lateral relation connects existing spaces without changing state?",
+      "test": "Stable semantic corridor/edge such as comparison, influence, dependency, publication, trade or interface adjacency.",
+      "ownership_effect": "none; relation only"
+    },
+    {
+      "id": "path",
+      "question": "How does a reader/researcher move for a purpose?",
+      "test": "Ordered traversal across existing owners.",
+      "ownership_effect": "none"
+    },
+    {
+      "id": "view",
+      "question": "How is existing material represented?",
+      "test": "Replaceable projection of canonical data.",
+      "ownership_effect": "none"
+    },
+    {
+      "id": "court",
+      "question": "Where do several destinations meet before deeper entry?",
+      "test": "Shared approach/common space serving multiple domains.",
+      "ownership_effect": "none"
+    },
+    {
+      "id": "table",
+      "question": "Where are distinct materials compared or deliberated together?",
+      "test": "Shared comparison/review surface preserving participant/source identity.",
+      "ownership_effect": "none"
+    },
+    {
+      "id": "bridge",
+      "question": "What connection creates new usable capability across an existing separation?",
+      "test": "A durable cross-boundary relation that makes previously difficult/impossible exchange, translation or traversal possible.",
+      "ownership_effect": "none; connective capability only"
+    },
+    {
+      "id": "gate",
+      "question": "What controls entry to a broader domain?",
+      "test": "Perimeter access/navigation boundary.",
+      "ownership_effect": "none"
+    },
+    {
+      "id": "door",
+      "question": "What changes when a threshold is crossed?",
+      "test": "Guarded state/context transition with preserved invariants.",
+      "ownership_effect": "may transfer context, never silently transfer facts"
+    },
+    {
+      "id": "archive",
+      "question": "What preserves provenance and recoverable memory?",
+      "test": "Stores records/source lineage for reconstruction and correction.",
+      "ownership_effect": "owns provenance, not every derived interpretation"
+    },
+    {
+      "id": "treasury",
+      "question": "What stores reusable future capability?",
+      "test": "Reusable patterns, templates, seeds, blueprints or capacity.",
+      "ownership_effect": "none by storage alone"
+    },
+    {
+      "id": "foundation",
+      "question": "What must remain load-bearing and stable?",
+      "test": "Governance/invariant required by structures above it.",
+      "ownership_effect": "structural governance"
+    },
+    {
+      "id": "pillar",
+      "question": "What cross-cutting invariant repeatedly supports many spaces?",
+      "test": "Rule/service that spans several Dwellings without owning them.",
+      "ownership_effect": "cross-cutting service"
+    },
+    {
+      "id": "protocol",
+      "question": "What shared grammar/rules let different nodes interoperate without becoming identical?",
+      "test": "Explicit shared conventions for meaning, evidence, data, passage, standards or exchange among heterogeneous participants.",
+      "ownership_effect": "none; coordination grammar only"
+    },
+    {
+      "id": "state",
+      "question": "What condition/regime is a system in?",
+      "test": "Garden/Forge/Swamp/Dormancy/Wound/Repair/Mature/Ash/Mud/Soil condition.",
+      "ownership_effect": "none"
+    },
+    {
+      "id": "projection",
+      "question": "Which one-and-many grammar is being used?",
+      "test": "House/Temple/Body/Tree-Vine/City lossy View over the same differentiated system.",
+      "ownership_effect": "none"
+    },
+    {
+      "id": "tabernacle",
+      "question": "What provisional architecture is being tested before permanence?",
+      "test": "Portable/research/prototype structure awaiting promotion or retirement.",
+      "ownership_effect": "none"
+    },
+    {
+      "id": "vessel",
+      "question": "What carries a selected collection through a transition?",
+      "test": "Portable curated bundle preserving member identity.",
+      "ownership_effect": "none; collection semantics only"
+    }
+  ],
+  "instances": [
+    {
+      "id": "potato-house",
+      "title": "Potato House",
+      "roles": [
+        "house"
+      ],
+      "status": "canonical",
+      "sources": [
+        "docs/POTATO-HOUSE-CONSTITUTION.md",
+        "data/house/topology.json"
+      ],
+      "public_surfaces": [
+        "house"
+      ],
+      "note": "Compositional whole."
+    },
+    {
+      "id": "ten-dwellings",
+      "title": "Ten canonical Dwellings / Mansions",
+      "roles": [
+        "dwelling"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/house/rooms.json",
+        "data/house/architectural-vocabulary.json"
+      ],
+      "public_surfaces": [
+        "rooms",
+        "house"
+      ],
+      "note": "Top-level ownership domains; backend type remains canonical Room registry."
+    },
+    {
+      "id": "nested-room-network",
+      "title": "Nested Room network",
+      "roles": [
+        "room"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/house/subrooms.json",
+        "data/house/interfaces.json"
+      ],
+      "public_surfaces": [
+        "house",
+        "rooms"
+      ],
+      "note": "Delegated specialist contexts and guarded interfaces."
+    },
+    {
+      "id": "field-world",
+      "title": "World research field",
+      "roles": [
+        "field"
+      ],
+      "status": "active",
+      "owner_hint": "research-lab",
+      "sources": [
+        "data/research-frontier.json"
+      ],
+      "public_surfaces": [],
+      "note": "Open problem-space from research frontier domain 'world'. Field status does not create fact ownership."
+    },
+    {
+      "id": "field-intelligence-security",
+      "title": "Intelligence & security research field",
+      "roles": [
+        "field"
+      ],
+      "status": "active",
+      "owner_hint": "research-lab",
+      "sources": [
+        "data/research-frontier.json"
+      ],
+      "public_surfaces": [],
+      "note": "Open problem-space from research frontier domain 'intelligence-security'. Field status does not create fact ownership."
+    },
+    {
+      "id": "field-extremism-terrorism",
+      "title": "Extremism & terrorism research field",
+      "roles": [
+        "field"
+      ],
+      "status": "active",
+      "owner_hint": "research-lab",
+      "sources": [
+        "data/research-frontier.json"
+      ],
+      "public_surfaces": [],
+      "note": "Open problem-space from research frontier domain 'extremism-terrorism'. Field status does not create fact ownership."
+    },
+    {
+      "id": "field-religion-belief",
+      "title": "Religion & belief research field",
+      "roles": [
+        "field"
+      ],
+      "status": "active",
+      "owner_hint": "research-lab",
+      "sources": [
+        "data/research-frontier.json"
+      ],
+      "public_surfaces": [],
+      "note": "Open problem-space from research frontier domain 'religion-belief'. Field status does not create fact ownership."
+    },
+    {
+      "id": "field-economic-graph",
+      "title": "Economic graph research field",
+      "roles": [
+        "field"
+      ],
+      "status": "active",
+      "owner_hint": "research-lab",
+      "sources": [
+        "data/research-frontier.json"
+      ],
+      "public_surfaces": [],
+      "note": "Open problem-space from research frontier domain 'economic-graph'. Field status does not create fact ownership."
+    },
+    {
+      "id": "field-energy",
+      "title": "Energy research field",
+      "roles": [
+        "field"
+      ],
+      "status": "active",
+      "owner_hint": "research-lab",
+      "sources": [
+        "data/research-frontier.json"
+      ],
+      "public_surfaces": [],
+      "note": "Open problem-space from research frontier domain 'energy'. Field status does not create fact ownership."
+    },
+    {
+      "id": "field-infrastructure",
+      "title": "Infrastructure research field",
+      "roles": [
+        "field"
+      ],
+      "status": "active",
+      "owner_hint": "research-lab",
+      "sources": [
+        "data/research-frontier.json"
+      ],
+      "public_surfaces": [],
+      "note": "Open problem-space from research frontier domain 'infrastructure'. Field status does not create fact ownership."
+    },
+    {
+      "id": "field-technology-industry",
+      "title": "Technology & industry research field",
+      "roles": [
+        "field"
+      ],
+      "status": "active",
+      "owner_hint": "research-lab",
+      "sources": [
+        "data/research-frontier.json"
+      ],
+      "public_surfaces": [],
+      "note": "Open problem-space from research frontier domain 'technology-industry'. Field status does not create fact ownership."
+    },
+    {
+      "id": "field-people-labour",
+      "title": "People & labour research field",
+      "roles": [
+        "field"
+      ],
+      "status": "active",
+      "owner_hint": "research-lab",
+      "sources": [
+        "data/research-frontier.json"
+      ],
+      "public_surfaces": [],
+      "note": "Open problem-space from research frontier domain 'people-labour'. Field status does not create fact ownership."
+    },
+    {
+      "id": "field-governance",
+      "title": "Governance research field",
+      "roles": [
+        "field"
+      ],
+      "status": "active",
+      "owner_hint": "research-lab",
+      "sources": [
+        "data/research-frontier.json"
+      ],
+      "public_surfaces": [],
+      "note": "Open problem-space from research frontier domain 'governance'. Field status does not create fact ownership."
+    },
+    {
+      "id": "field-environment-resources",
+      "title": "Environment & resources research field",
+      "roles": [
+        "field"
+      ],
+      "status": "active",
+      "owner_hint": "research-lab",
+      "sources": [
+        "data/research-frontier.json"
+      ],
+      "public_surfaces": [],
+      "note": "Open problem-space from research frontier domain 'environment-resources'. Field status does not create fact ownership."
+    },
+    {
+      "id": "field-history",
+      "title": "History research field",
+      "roles": [
+        "field"
+      ],
+      "status": "active",
+      "owner_hint": "research-lab",
+      "sources": [
+        "data/research-frontier.json"
+      ],
+      "public_surfaces": [],
+      "note": "Open problem-space from research frontier domain 'history'. Field status does not create fact ownership."
+    },
+    {
+      "id": "field-potatoism",
+      "title": "Potatoism research field",
+      "roles": [
+        "field"
+      ],
+      "status": "active",
+      "owner_hint": "research-lab",
+      "sources": [
+        "data/research-frontier.json"
+      ],
+      "public_surfaces": [],
+      "note": "Open problem-space from research frontier domain 'potatoism'. Field status does not create fact ownership."
+    },
+    {
+      "id": "vineyard-north-programme",
+      "title": "North Programme",
+      "roles": [
+        "vineyard"
+      ],
+      "status": "active",
+      "sources": [
+        "data/north-programme-atlas.json",
+        "docs/NORTH-PROGRAMME.md"
+      ],
+      "public_surfaces": [
+        "north"
+      ],
+      "note": "Cross-Room mission/programme; does not own participating world facts."
+    },
+    {
+      "id": "vineyard-european-coupling",
+      "title": "European Coupling Programme",
+      "roles": [
+        "vineyard"
+      ],
+      "status": "active",
+      "sources": [
+        "knowledge/core/european-coupling-programme.json"
+      ],
+      "public_surfaces": [
+        "world-systems",
+        "north"
+      ],
+      "note": "Capability/interoperability programme fed by World Systems research."
+    },
+    {
+      "id": "vineyard-house-architecture",
+      "title": "Potato House architecture programme",
+      "roles": [
+        "vineyard",
+        "tabernacle"
+      ],
+      "status": "active",
+      "sources": [
+        "knowledge/research/potato-house-master/",
+        "docs/superpowers/specs/"
+      ],
+      "public_surfaces": [
+        "house",
+        "research-lab"
+      ],
+      "note": "Research/design programme; promoted outputs move into governance owners, while draft/spec material remains provisional."
+    },
+    {
+      "id": "path-practice",
+      "title": "Practice Path",
+      "roles": [
+        "path"
+      ],
+      "status": "active",
+      "sources": [
+        "knowledge/practice/potato-path.json"
+      ],
+      "public_surfaces": [
+        "paths",
+        "philosophy"
+      ],
+      "note": "Mud → Burial → Eye → Root → Sprout → Plane → Door → Tree → Fruit → Seed → Return."
+    },
+    {
+      "id": "path-journey",
+      "title": "Journey Path",
+      "roles": [
+        "path"
+      ],
+      "status": "active",
+      "sources": [
+        "knowledge/journey/tim-dooley-journey.json"
+      ],
+      "public_surfaces": [
+        "paths",
+        "story"
+      ],
+      "note": "Development through event, experience, symbol, later understanding and unresolved questions."
+    },
+    {
+      "id": "path-revelation",
+      "title": "Revelation & Prophecy Path",
+      "roles": [
+        "path"
+      ],
+      "status": "active",
+      "sources": [
+        "knowledge/prophecy/"
+      ],
+      "public_surfaces": [
+        "paths",
+        "timeline"
+      ],
+      "note": "Statement → source → date → event → comparison → evaluation."
+    },
+    {
+      "id": "path-evidence",
+      "title": "Evidence Path",
+      "roles": [
+        "path"
+      ],
+      "status": "active",
+      "sources": [
+        "knowledge/philosophy/archive-epistemics.json"
+      ],
+      "public_surfaces": [
+        "paths",
+        "sources"
+      ],
+      "note": "View → assertion → activity/occurrence → artifact/source."
+    },
+    {
+      "id": "path-research",
+      "title": "Research Path",
+      "roles": [
+        "path"
+      ],
+      "status": "active",
+      "sources": [
+        "data/research-frontier.json"
+      ],
+      "public_surfaces": [
+        "paths",
+        "research-lab"
+      ],
+      "note": "Question → sources → candidate → test → review → owner."
+    },
+    {
+      "id": "path-repair",
+      "title": "Repair Path",
+      "roles": [
+        "path"
+      ],
+      "status": "active",
+      "sources": [
+        "data/axis-flow-contract.json"
+      ],
+      "public_surfaces": [
+        "paths",
+        "axis"
+      ],
+      "note": "Failure/residue → cause → boundary/agency → Door → changed recurrence → living root → fruit."
+    },
+    {
+      "id": "path-orientation",
+      "title": "Orientation Path",
+      "roles": [
+        "path"
+      ],
+      "status": "active",
+      "sources": [
+        "data/axis-flow-contract.json",
+        "data/house/topology.json"
+      ],
+      "public_surfaces": [
+        "paths",
+        "north"
+      ],
+      "note": "Here → broader integration → criteria → service → observable return."
+    },
+    {
+      "id": "path-programme",
+      "title": "Programme Path",
+      "roles": [
+        "path"
+      ],
+      "status": "active",
+      "sources": [
+        "knowledge/research/potato-house-master/paths-doors-and-navigation.md"
+      ],
+      "public_surfaces": [
+        "paths",
+        "research-lab"
+      ],
+      "note": "Mission → workstreams → Room inputs → analysis → outputs → review."
+    },
+    {
+      "id": "view-timeline",
+      "title": "Timeline",
+      "roles": [
+        "view"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json"
+      ],
+      "public_surfaces": [
+        "timeline"
+      ],
+      "note": "Chronological projection over Time & History and provenance."
+    },
+    {
+      "id": "view-world-map",
+      "title": "World Map",
+      "roles": [
+        "view"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json"
+      ],
+      "public_surfaces": [
+        "world-map"
+      ],
+      "note": "Geographic projection over World Systems."
+    },
+    {
+      "id": "view-bible",
+      "title": "Bible Comparison",
+      "roles": [
+        "view",
+        "table"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json"
+      ],
+      "public_surfaces": [
+        "bible"
+      ],
+      "note": "Comparative surface joining project motifs to sourced biblical material while preserving both identities."
+    },
+    {
+      "id": "view-living-axis",
+      "title": "Living Axis",
+      "roles": [
+        "view",
+        "path"
+      ],
+      "status": "active",
+      "sources": [
+        "data/axis-flow-contract.json",
+        "data/house/public-surfaces.json"
+      ],
+      "public_surfaces": [
+        "axis"
+      ],
+      "note": "THROUGH/transition projection across the House."
+    },
+    {
+      "id": "view-house",
+      "title": "Potato House guide",
+      "roles": [
+        "view",
+        "court"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/topology.json"
+      ],
+      "public_surfaces": [
+        "house"
+      ],
+      "note": "Structural overview/common approach to the architecture."
+    },
+    {
+      "id": "view-explore",
+      "title": "Explore",
+      "roles": [
+        "view",
+        "court"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json"
+      ],
+      "public_surfaces": [
+        "explore"
+      ],
+      "note": "Temporary browse corridor across permanent owners."
+    },
+    {
+      "id": "view-questions",
+      "title": "Questions",
+      "roles": [
+        "view",
+        "field"
+      ],
+      "status": "active",
+      "sources": [
+        "knowledge/indexes/faq-question-bank.json"
+      ],
+      "public_surfaces": [
+        "questions"
+      ],
+      "note": "Question-oriented access to unresolved and answered material; not a new owner."
+    },
+    {
+      "id": "view-index",
+      "title": "A–Z",
+      "roles": [
+        "view"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json"
+      ],
+      "public_surfaces": [
+        "index-a-z"
+      ],
+      "note": "Alphabetic projection."
+    },
+    {
+      "id": "view-context",
+      "title": "Context & Evidence",
+      "roles": [
+        "view",
+        "table"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json"
+      ],
+      "public_surfaces": [
+        "context"
+      ],
+      "note": "Cross-Room context/evidence comparison surface."
+    },
+    {
+      "id": "view-story",
+      "title": "Story",
+      "roles": [
+        "view",
+        "path"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json"
+      ],
+      "public_surfaces": [
+        "story"
+      ],
+      "note": "Narrative projection over biography, time, works and sources."
+    },
+    {
+      "id": "view-rooms",
+      "title": "Dwellings & Rooms directory",
+      "roles": [
+        "view",
+        "court"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/rooms.json",
+        "data/house/subrooms.json"
+      ],
+      "public_surfaces": [
+        "rooms"
+      ],
+      "note": "Shared approach space to canonical Dwellings and nested Rooms."
+    },
+    {
+      "id": "court-home",
+      "title": "Homepage court",
+      "roles": [
+        "court"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json"
+      ],
+      "public_surfaces": [
+        "home"
+      ],
+      "note": "Common public approach before the five primary Gates."
+    },
+    {
+      "id": "gate-tim",
+      "title": "Tim Gate",
+      "roles": [
+        "gate"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json"
+      ],
+      "public_surfaces": [
+        "tim"
+      ],
+      "note": "Primary public gateway; not a canonical fact owner."
+    },
+    {
+      "id": "gate-religion",
+      "title": "Religion Gate",
+      "roles": [
+        "gate"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json"
+      ],
+      "public_surfaces": [
+        "religion"
+      ],
+      "note": "Primary public gateway; not a canonical fact owner."
+    },
+    {
+      "id": "gate-philosophy",
+      "title": "Philosophy Gate",
+      "roles": [
+        "gate"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json"
+      ],
+      "public_surfaces": [
+        "philosophy"
+      ],
+      "note": "Primary public gateway; not a canonical fact owner."
+    },
+    {
+      "id": "gate-science",
+      "title": "Science Gate",
+      "roles": [
+        "gate"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json"
+      ],
+      "public_surfaces": [
+        "science"
+      ],
+      "note": "Primary public gateway; not a canonical fact owner."
+    },
+    {
+      "id": "gate-world",
+      "title": "World Gate",
+      "roles": [
+        "gate"
+      ],
+      "status": "active",
+      "sources": [
+        "data/house/public-surfaces.json"
+      ],
+      "public_surfaces": [
+        "world"
+      ],
+      "note": "Primary public gateway; not a canonical fact owner."
+    },
+    {
+      "id": "door-room-interfaces",
+      "title": "Guarded Room interfaces",
+      "roles": [
+        "door"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/house/interfaces.json"
+      ],
+      "public_surfaces": [
+        "house"
+      ],
+      "note": "Cross-Room Doors declare translation, preserved invariants and guards."
+    },
+    {
+      "id": "door-axis-thresholds",
+      "title": "Axis thresholds",
+      "roles": [
+        "door"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/axis-flow-contract.json"
+      ],
+      "public_surfaces": [
+        "axis"
+      ],
+      "note": "State/context transitions in the Living Axis."
+    },
+    {
+      "id": "door-research-promotion",
+      "title": "Research promotion Door",
+      "roles": [
+        "door"
+      ],
+      "status": "canonical",
+      "sources": [
+        "docs/POTATO-HOUSE-CONSTITUTION.md",
+        "research-lab/index.html"
+      ],
+      "public_surfaces": [
+        "research-lab"
+      ],
+      "note": "Reviewed work may move from Research Lab into the appropriate canonical owner without erasing research provenance."
+    },
+    {
+      "id": "archive-source-room",
+      "title": "Archive & Sources",
+      "roles": [
+        "archive",
+        "pillar"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/house/rooms.json",
+        "knowledge/indexes/source-index.json"
+      ],
+      "public_surfaces": [
+        "sources",
+        "context"
+      ],
+      "note": "Cross-cutting provenance service and canonical source-memory owner."
+    },
+    {
+      "id": "archive-conversation-recovery",
+      "title": "Conversation recovery inventory",
+      "roles": [
+        "archive"
+      ],
+      "status": "active",
+      "sources": [
+        "knowledge/indexes/conversation-recovery-inventory.json"
+      ],
+      "public_surfaces": [
+        "explore"
+      ],
+      "note": "Recovered conversation/source strata with retained temporal/source status."
+    },
+    {
+      "id": "treasury-blueprints",
+      "title": "Blueprint treasury",
+      "roles": [
+        "treasury"
+      ],
+      "status": "active",
+      "sources": [
+        "data/blueprints/"
+      ],
+      "public_surfaces": [
+        "research-lab"
+      ],
+      "note": "Reusable domain blueprints/seeds; capacity store, not fact ownership."
+    },
+    {
+      "id": "treasury-concept-registry",
+      "title": "Potatoism concept registry",
+      "roles": [
+        "treasury"
+      ],
+      "status": "active",
+      "sources": [
+        "data/potatoism-concept-registry.json"
+      ],
+      "public_surfaces": [
+        "religion",
+        "explore"
+      ],
+      "note": "Reusable concept vocabulary/pattern store; canonical status remains governed by owners."
+    },
+    {
+      "id": "foundation-constitution",
+      "title": "Potato House Constitution",
+      "roles": [
+        "foundation"
+      ],
+      "status": "canonical",
+      "sources": [
+        "docs/POTATO-HOUSE-CONSTITUTION.md"
+      ],
+      "public_surfaces": [
+        "house"
+      ],
+      "note": "Load-bearing governance and ontology rules."
+    },
+    {
+      "id": "foundation-room-registry",
+      "title": "Canonical Dwelling registry",
+      "roles": [
+        "foundation"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/house/rooms.json"
+      ],
+      "public_surfaces": [
+        "house",
+        "rooms"
+      ],
+      "note": "Stable top-level bounded-context IDs and ownership contracts."
+    },
+    {
+      "id": "foundation-schemas",
+      "title": "House schemas",
+      "roles": [
+        "foundation"
+      ],
+      "status": "canonical",
+      "sources": [
+        "schemas/"
+      ],
+      "public_surfaces": [
+        "research-lab"
+      ],
+      "note": "Machine-checkable structural contracts."
+    },
+    {
+      "id": "pillar-provenance",
+      "title": "Provenance pillar",
+      "roles": [
+        "pillar"
+      ],
+      "status": "canonical",
+      "sources": [
+        "knowledge/philosophy/archive-epistemics.json",
+        "knowledge/indexes/source-index.json"
+      ],
+      "public_surfaces": [
+        "sources",
+        "context"
+      ],
+      "note": "Cross-cutting evidence/source lineage invariant."
+    },
+    {
+      "id": "pillar-time",
+      "title": "Time pillar",
+      "roles": [
+        "pillar"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/timeline-events.json",
+        "knowledge/timeline/"
+      ],
+      "public_surfaces": [
+        "timeline",
+        "history"
+      ],
+      "note": "Occurrence/attestation/interpretation time kept distinct across the House."
+    },
+    {
+      "id": "pillar-boundaries",
+      "title": "Boundary & noncollapse pillar",
+      "roles": [
+        "pillar"
+      ],
+      "status": "canonical",
+      "sources": [
+        "docs/POTATO-HOUSE-CONSTITUTION.md",
+        "data/house/interfaces.json"
+      ],
+      "public_surfaces": [
+        "house"
+      ],
+      "note": "Preserves local semantics and guarded passage across Rooms."
+    },
+    {
+      "id": "states-house-regimes",
+      "title": "House lifecycle & regime states",
+      "roles": [
+        "state"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/axis-flow-contract.json"
+      ],
+      "public_surfaces": [
+        "axis",
+        "house"
+      ],
+      "note": "Garden, Forge, Swamp, Dormancy, Wound, Repair, Mature, Ash, Mud and Soil are conditions, not containers."
+    },
+    {
+      "id": "projections-one-many",
+      "title": "Integrated plurality projections",
+      "roles": [
+        "projection"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/house/projections.json"
+      ],
+      "public_surfaces": [
+        "house"
+      ],
+      "note": "House, Temple, Body, Tree/Vine and City views over differentiated plurality."
+    },
+    {
+      "id": "tabernacle-design-specs",
+      "title": "Provisional design/spec space",
+      "roles": [
+        "tabernacle"
+      ],
+      "status": "provisional",
+      "sources": [
+        "docs/superpowers/specs/",
+        "knowledge/research/potato-house-master/"
+      ],
+      "public_surfaces": [
+        "research-lab"
+      ],
+      "note": "Portable/provisional architecture pending promotion, revision or retirement."
+    },
+    {
+      "id": "vessel-corporium",
+      "title": "Corporium Collection",
+      "roles": [
+        "vessel"
+      ],
+      "status": "active",
+      "sources": [
+        "knowledge/corporium/",
+        "corporium/"
+      ],
+      "public_surfaces": [
+        "collection"
+      ],
+      "note": "Curated collection/vessel across several owners; collection membership does not transfer ownership."
+    },
+    {
+      "id": "roads-house-corridors",
+      "title": "House strong corridors",
+      "roles": [
+        "road"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/house/topology.json",
+        "data/house/interfaces.json"
+      ],
+      "public_surfaces": [
+        "house"
+      ],
+      "note": "Typed lateral corridors among Dwellings and nested Rooms; unlike Doors, a Road need not change state."
+    },
+    {
+      "id": "roads-semantic-graph",
+      "title": "Semantic relationship graph",
+      "roles": [
+        "road"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/relationships.json",
+        "knowledge/indexes/context-graph.json"
+      ],
+      "public_surfaces": [
+        "explore"
+      ],
+      "note": "Typed cross-domain relations connecting stable identities without forcing containment or transition."
+    },
+    {
+      "id": "roads-world-system-chains",
+      "title": "World-system chains",
+      "roles": [
+        "road"
+      ],
+      "status": "active",
+      "sources": [
+        "data/world-system-chains.json"
+      ],
+      "public_surfaces": [
+        "world-systems",
+        "world-map"
+      ],
+      "note": "Observable dependency/flow chains across World Systems; route semantics are distinct from ownership."
+    },
+    {
+      "id": "bridge-global-graph",
+      "title": "Global graph bridge",
+      "roles": [
+        "bridge"
+      ],
+      "status": "active",
+      "sources": [
+        "data/global-graph-bridge.json"
+      ],
+      "public_surfaces": [
+        "explore"
+      ],
+      "note": "Connects graph/atlas structures across otherwise separated data surfaces."
+    },
+    {
+      "id": "bridge-frontend-atlas",
+      "title": "Frontend ↔ Atlas bridge",
+      "roles": [
+        "bridge"
+      ],
+      "status": "canonical",
+      "sources": [
+        "data/frontend-atlas-bridge.json"
+      ],
+      "public_surfaces": [
+        "house",
+        "explore"
+      ],
+      "note": "Connects canonical backend families to replaceable public routes without transferring ownership."
+    },
+    {
+      "id": "bridge-interpretive-justice",
+      "title": "Interpretive Justice bridge",
+      "roles": [
+        "bridge"
+      ],
+      "status": "active",
+      "sources": [
+        "knowledge/philosophy/information-war-interpretive-justice-bridge.json"
+      ],
+      "public_surfaces": [
+        "interpretive-justice",
+        "context"
+      ],
+      "note": "Connects information-war analysis to source-aware interpretive-justice rules while preserving evidence boundaries."
+    },
+    {
+      "id": "protocol-model-testing",
+      "title": "Model testing protocol",
+      "roles": [
+        "protocol"
+      ],
+      "status": "canonical",
+      "sources": [
+        "knowledge/science/model-testing-protocol.json"
+      ],
+      "public_surfaces": [
+        "science",
+        "research-lab"
+      ],
+      "note": "Shared rules for observables, falsifiers, uncertainty and test discipline."
+    },
+    {
+      "id": "protocol-recursive-expansion",
+      "title": "Recursive expansion protocol",
+      "roles": [
+        "protocol"
+      ],
+      "status": "active",
+      "sources": [
+        "docs/RECURSIVE-EXPANSION-PROTOCOL.md"
+      ],
+      "public_surfaces": [
+        "research-lab"
+      ],
+      "note": "Shared rules for expanding the project without losing provenance, ownership or structural integrity."
+    },
+    {
+      "id": "protocol-north-gate",
+      "title": "North Gate semantic protocol",
+      "roles": [
+        "protocol",
+        "gate"
+      ],
+      "status": "project-canon",
+      "sources": [
+        "knowledge/core/new-jerusalem-network-civilization-atlas.json",
+        "knowledge/core/door-topology-access-and-capability-atlas.json"
+      ],
+      "public_surfaces": [
+        "north",
+        "house"
+      ],
+      "note": "Project-symbolic interoperability grammar: enough shared meaning/evidence/language for heterogeneous nodes to communicate without collapsing."
+    }
+  ],
+  "unresolved_candidates": [
+    {
+      "id": "kingdom-scale",
+      "question": "Does Kingdom deserve a distinct federation/governance scale above City/House, or is it currently theological/political vocabulary better handled by existing Views?",
+      "status": "open"
+    },
+    {
+      "id": "household-layer",
+      "question": "Does Household need a formal participant/community layer separate from House architecture and Body/City projections?",
+      "status": "open"
+    },
+    {
+      "id": "treasury-types",
+      "question": "Should knowledge, financial, seed/template and institutional-capacity treasuries be split into typed treasury classes?",
+      "status": "open"
+    },
+    {
+      "id": "chambers",
+      "question": "What is the first real case where a protected/specialist Chamber provides more benefit than a topic, Collection, Field or View?",
+      "status": "open"
+    },
+    {
+      "id": "corporium-role",
+      "question": "Is Corporium best kept as a Collection/Vessel, or does its domain model eventually justify another stable structural role?",
+      "status": "open"
+    }
+  ]
+}

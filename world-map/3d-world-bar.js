@@ -19,6 +19,7 @@
     ['biblical.genesis-15','Genesis 15 · Wadi el-Arish'],
     ['biblical.genesis-15-nile','Genesis 15 · Nile'],
     ['modern.greater-israel','Greater Israel'],
+    ['project.below.us-cases','Below · U.S. cases'],
   ];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const entries = family => layers.entries(family, {availableOnly:true, ordinaryOnly:true});
@@ -154,7 +155,9 @@
     const currentEntries = layers.active().map(id => layers.get(id)).filter(Boolean);
     const scalar = view?.scalar || currentEntries.find(entry => entry.kind === 'scalar') || null;
     const sets = view?.sets || currentEntries.filter(entry => entry.kind === 'set');
-    const pinned = window.__potatoAtlasSelection?.current?.pinnedCodes || window.__potatoAtlasSelection?.current?.selectedCodes || [];
+    const currentSelection = window.__potatoAtlasSelection?.current || {};
+    const activeCode = currentSelection.activeCode || currentSelection.code || '';
+    const pinned = currentSelection.pinnedCodes || currentSelection.selectedCodes || [];
     const relationMode = view?.relationMode || window.__potatoAtlasSelection?.getRelationMode?.() || 'all';
     const currentTime = view?.timeState || timeState;
     if (!currentEntries.length && !pinned.length && relationMode === 'all' && (!currentTime || currentTime.mode === 'current')) {
@@ -185,9 +188,11 @@
       const matchCount = Number(view?.matchCount);
       lines.push(`<div><span>Matches</span><b>${esc((view?.memberships?.mode || query.getMode() || 'any').toUpperCase())} · ${Number.isFinite(matchCount) ? `${matchCount} countries` : 'calculating…'}</b></div>`);
     }
-    if (view?.code) lines.push(`<div><span>Active</span><b>${esc(view.code)}</b></div>`);
     if (pinned.length) lines.push(`<div><span>Pinned</span><b>${pinned.length} countr${pinned.length===1?'y':'ies'}</b></div>`);
-    if (relationMode !== 'all') lines.push(`<div><span>Connections</span><b>${esc(relationLabel(relationMode))}</b></div>`);
+    if (relationMode !== 'all') {
+      const relation = relationLabel(relationMode);
+      lines.push(`<div><span>Connections</span><b>${esc(activeCode ? relation : `${relation} · select a country`)}</b></div>`);
+    }
     lines.push(`<div><span>Projection</span><b>${projection === 'globe' ? 'Globe' : 'Flat'}</b></div>`);
     if (currentTime) lines.push(`<div><span>Time</span><b>${esc(timeLabel(currentTime))}</b></div>`);
     node.innerHTML = `<small>Current map view</small>${lines.join('')}`;
@@ -230,7 +235,7 @@
     installStyle(); document.body.classList.add('atlas-registry-ui');
     const host = document.getElementById('atlasWorldBarHost') || document.querySelector('.top');
     if (!host) return;
-    const bar = document.createElement('div'); bar.id='atlasWorldBar'; bar.setAttribute('role','toolbar'); bar.setAttribute('aria-label','World map analytical layers');
+    const bar = document.createElement('div'); bar.id='atlasWorldBar'; bar.setAttribute('role','toolbar'); bar.setAttribute('aria-label','World map layers and controls');
     AXES.forEach(id => {
       const entry = layers.get(id); if (!entry || entry.availability !== 'current') return;
       const button=document.createElement('button'); button.type='button'; button.className='atlas-axis-button'; button.dataset.layerId=id; button.title=layerTitle(entry); button.textContent=entry.label.slice(0,1).toUpperCase(); button.addEventListener('click',()=>layers.toggle(id)); bar.appendChild(button);
@@ -244,7 +249,7 @@
     const projectionButton=document.createElement('button'); projectionButton.id='atlasProjectionToggle'; projectionButton.type='button'; projectionButton.addEventListener('click',()=>window.__potatoAtlasProjection.toggle()); bar.appendChild(projectionButton);
     const queryBox=document.createElement('div'); queryBox.id='atlasWorldQuery'; queryBox.hidden=true; queryBox.innerHTML='<button type="button" data-query-mode="any">ANY</button><button type="button" data-query-mode="all">ALL</button>'; queryBox.addEventListener('click',event=>{const b=event.target.closest('[data-query-mode]');if(b)query.setMode(b.dataset.queryMode);}); bar.appendChild(queryBox);
     const result=document.createElement('span'); result.id='atlasWorldResult'; result.hidden=true; bar.appendChild(result);
-    const reset=document.createElement('button'); reset.id='atlasWorldReset'; reset.type='button'; reset.textContent='×'; reset.title='Clear analytical layers'; reset.addEventListener('click',()=>window.__potatoAtlasCompositor?.reset?.()); bar.appendChild(reset);
+    const reset=document.createElement('button'); reset.id='atlasWorldReset'; reset.type='button'; reset.textContent='×'; reset.title='Reset map layers and investigation state'; reset.setAttribute('aria-label','Reset map layers and investigation state'); reset.addEventListener('click',()=>window.__potatoAtlasCompositor?.reset?.()); bar.appendChild(reset);
     host.appendChild(bar);
     const mapHost=document.querySelector('.mapwrap'); if (mapHost && !document.getElementById('atlasWorldContext')) { const context=document.createElement('aside'); context.id='atlasWorldContext'; context.hidden=true; context.setAttribute('aria-label','Current map view'); mapHost.appendChild(context); }
     applyProjection(); syncMenus();

@@ -62,6 +62,9 @@ jobs:
       - name: Validate question-led reader surfaces
         run: python scripts/validate_reader_surfaces.py
 
+      - name: Validate BODY discoverability
+        run: python scripts/validate_body_discovery.py
+
       - name: Validate SEO pipeline
         run: python scripts/validate_seo_pipeline.py
 

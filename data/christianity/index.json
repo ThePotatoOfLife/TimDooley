@@ -1,16 +1,74 @@
 {
-  "id":"christianity-scripture-layer",
-  "tradition":"christianity",
-  "title":"Christianity — Scripture Library",
-  "purpose":"Connect Christian scripture editions and structured Bible metadata to the wider religious graph.",
-  "canonical_texts":[{"id":"bible-kjv","title":"King James Version","edition":"1611 tradition","language":"English","status":"public-domain reading edition","reader":"bible.html","catalog":"data/christianity/bible-kjv.json","source":"Project Gutenberg eBook 30","source_url":"https://www.gutenberg.org/ebooks/30"}],
-  "graph_links":[
-    {"from":"christianity","type":"has-scripture-library","to":"bible-kjv"},
-    {"from":"bible-kjv","type":"has-book","to":"genesis"},
-    {"from":"bible-kjv","type":"has-book","to":"matthew"},
-    {"from":"bible-kjv","type":"has-book","to":"john"},
-    {"from":"bible-kjv","type":"has-book","to":"revelation"}
+  "id": "christianity-scripture-layer",
+  "tradition": "christianity",
+  "title": "Christianity — Scripture Library",
+  "purpose": "Connect Christian scripture editions, canon profiles and structured Bible metadata to the wider religious graph while keeping textual sources distinct from project comparison layers.",
+  "canonical_texts": [
+    {
+      "id": "bible-kjv",
+      "title": "King James Version",
+      "edition": "1611 tradition",
+      "language": "English",
+      "status": "structured 80-book public-domain catalogue and source anchor",
+      "reader": "traditions/bible/",
+      "catalog": "data/christianity/bible-kjv.json",
+      "source": "Project Gutenberg eBook 30",
+      "source_url": "https://www.gutenberg.org/ebooks/30"
+    },
+    {
+      "id": "bible-web",
+      "title": "World English Bible",
+      "edition": "public-domain modern English",
+      "language": "English",
+      "status": "66-book chapter and verse reader",
+      "reader": "traditions/bible/",
+      "source_manifest": "data/sources/bible-world-english-bible.json",
+      "book_index": "data/sources/bible-web-book-index.json",
+      "scope": "Protestant 66-book canon"
+    }
   ],
-  "reading_routes":["bible.html","bible.html?book=genesis","bible.html?book=john"],
-  "canon_note":"The KJV catalogue distinguishes the 66-book Protestant arrangement from the 80-book edition including the Apocrypha; canon differences are part of Christianity's historical record and should remain explicit."
+  "graph_links": [
+    {
+      "from": "christianity",
+      "type": "has-scripture-library",
+      "to": "bible-kjv"
+    },
+    {
+      "from": "christianity",
+      "type": "has-scripture-reader",
+      "to": "bible-web"
+    },
+    {
+      "from": "bible-kjv",
+      "type": "has-book",
+      "to": "genesis"
+    },
+    {
+      "from": "bible-kjv",
+      "type": "has-book",
+      "to": "matthew"
+    },
+    {
+      "from": "bible-kjv",
+      "type": "has-book",
+      "to": "john"
+    },
+    {
+      "from": "bible-kjv",
+      "type": "has-book",
+      "to": "revelation"
+    },
+    {
+      "from": "bible-web",
+      "type": "reader-route",
+      "to": "traditions/bible/"
+    }
+  ],
+  "reading_routes": [
+    "traditions/bible/",
+    "traditions/bible/?libraryBook=genesis&libraryChapter=1",
+    "traditions/bible/?libraryBook=john&libraryChapter=1",
+    "traditions/bible/?libraryBook=revelation&libraryChapter=1"
+  ],
+  "canon_note": "The scripture library deliberately distinguishes the 80-book 1611 KJV arrangement (39 Old Testament + 14 Apocrypha + 27 New Testament) from the current 66-book WEB reader. Protestant, Catholic and Orthodox canon boundaries differ; the atlas records those differences instead of declaring one universal Christian book count."
 }

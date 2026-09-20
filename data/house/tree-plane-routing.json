@@ -1,0 +1,447 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "tree-plane-routing",
+  "purpose": "Define how the three horizontal navigation planes, the vertical Axis/Tree structures, and religious/comparative subjects intersect so the Potato House can answer where something belongs and what it leads to.",
+  "master_rule": "Planes are standing surfaces. Trees are vertical branching routes. Rooms are subject owners. Entities and traditions are inhabitants/subjects with anchors and projections. Corridors are typed relations between them.",
+  "centerline": {
+    "id": "axis",
+    "label": "Axis",
+    "role": "exact spatial center through all three planes",
+    "rule": "The Axis is the shared vertical reference. It is not a Room and does not own knowledge.",
+    "local_intersections": {
+      "heaven-plane": {
+        "label": "Crown Junction",
+        "meaning": "Canopy, integration, orientation, Garden-facing return and upper-axis comparison."
+      },
+      "world-plane": {
+        "label": "Door / Cross Junction",
+        "meaning": "The visible threshold where source/manifestation, evidence, embodiment and choice meet."
+      },
+      "below-plane": {
+        "label": "Root Junction",
+        "meaning": "Buried provenance, memory and the root fork where material can become Living Root/Soil or remain Ash/Strife."
+      }
+    },
+    "inner_ring": {
+      "label": "Research Lab / Forge",
+      "room_id": "research-lab",
+      "role": "provisional cross-Room testing around the Axis",
+      "rule": "Research surrounds the center because unresolved material is inspected and transformed here before being promoted into a stable Room relation or pathway."
+    },
+    "outer_ring": {
+      "label": "Works / Fruit",
+      "room_id": "works",
+      "role": "expressed output and returned consequence",
+      "rule": "Works occupy the output edge because fruit may emerge from any direction and later return as seed."
+    }
+  },
+  "planes": [
+    {
+      "id": "heaven-plane",
+      "label": "Heaven Plane",
+      "axial_intersection": "Crown Junction",
+      "tree_layer": "canopy / upper branches",
+      "primary_functions": [
+        "integration",
+        "orientation",
+        "transmission",
+        "Garden",
+        "fruit",
+        "return"
+      ],
+      "rooms": [
+        "potatoverse-canon",
+        "traditions-texts",
+        "research-lab",
+        "works"
+      ],
+      "typical_subjects": [
+        "angelologies",
+        "messengers",
+        "divine figures",
+        "heavens",
+        "sacred mountains",
+        "celestial orders",
+        "salvation/liberation traditions",
+        "Tree of Life canopy",
+        "Garden",
+        "Crown / North"
+      ],
+      "not_equivalent_to": [
+        "goodness",
+        "truth",
+        "empirical proof",
+        "all religion"
+      ]
+    },
+    {
+      "id": "world-plane",
+      "label": "World Plane",
+      "axial_intersection": "Door / Cross Junction",
+      "tree_layer": "trunk / visible branches",
+      "primary_functions": [
+        "embodiment",
+        "evidence",
+        "history",
+        "ritual",
+        "institutions",
+        "choice",
+        "public consequence"
+      ],
+      "rooms": [
+        "life-body",
+        "world-systems",
+        "culture-information",
+        "time-history",
+        "traditions-texts",
+        "science-formal-models"
+      ],
+      "typical_subjects": [
+        "historical religions",
+        "texts",
+        "ritual",
+        "churches/temples/institutions",
+        "bodies",
+        "countries",
+        "economies",
+        "platforms",
+        "public culture",
+        "historical reception",
+        "messenger/mediator narratives"
+      ],
+      "not_equivalent_to": [
+        "mere materialism",
+        "inferiority",
+        "secular-only"
+      ]
+    },
+    {
+      "id": "below-plane",
+      "label": "Below Plane",
+      "axial_intersection": "Root Junction",
+      "tree_layer": "roots / buried underside",
+      "primary_functions": [
+        "provenance",
+        "memory",
+        "burial",
+        "hidden cause",
+        "residue",
+        "shadow",
+        "subculture",
+        "descent",
+        "repair entry"
+      ],
+      "rooms": [
+        "archive-sources",
+        "time-history",
+        "culture-information",
+        "traditions-texts",
+        "research-lab",
+        "world-systems"
+      ],
+      "typical_subjects": [
+        "archives",
+        "ancestry",
+        "burial/death traditions",
+        "underworlds",
+        "chthonic traditions",
+        "demonologies",
+        "adversarial figures",
+        "esoteric/initiatory material",
+        "occult subcultures",
+        "Roots of Ash",
+        "Roots of Strife",
+        "Living Roots",
+        "Wide Road",
+        "Swamp"
+      ],
+      "not_equivalent_to": [
+        "evil",
+        "Earth",
+        "matter",
+        "damnation",
+        "all occultism",
+        "all subculture"
+      ]
+    }
+  ],
+  "vertical_organisms": [
+    {
+      "id": "akashic-tree",
+      "label": "Akashic Tree",
+      "kind": "archive navigation metaphor",
+      "spans": [
+        "below-plane",
+        "world-plane",
+        "heaven-plane"
+      ],
+      "structure": {
+        "roots": "provenance / history / memory / buried context",
+        "trunk": "present synthesis / embodiment / public reality",
+        "branches": "Rooms / traditions / sciences / cultures / systems",
+        "leaves": "questions / interfaces / active readings",
+        "fruit": "Works / outputs",
+        "seed": "transferable future patterns"
+      },
+      "boundary": "Archive metaphor only; not evidence for a literal supernatural Akashic Record."
+    },
+    {
+      "id": "tree-of-knowledge",
+      "label": "Tree of Knowledge",
+      "kind": "fork / distinction operator",
+      "spans": [
+        "below-plane",
+        "world-plane"
+      ],
+      "anchor": "World Door/Cross with roots into Below",
+      "leads_to": [
+        "tree-of-life",
+        "tree-of-strife",
+        "repair-route"
+      ],
+      "rule": "Knowledge introduces distinction, memory, responsibility and consequence. It is upstream of both Life and Strife."
+    },
+    {
+      "id": "tree-of-life",
+      "label": "Tree of Life",
+      "kind": "generative vertical organism",
+      "spans": [
+        "below-plane",
+        "world-plane",
+        "heaven-plane"
+      ],
+      "layers": {
+        "below": [
+          "living roots",
+          "soil",
+          "seed",
+          "buried capacity",
+          "integrated memory"
+        ],
+        "world": [
+          "trunk",
+          "Door-crossing",
+          "practice",
+          "repair",
+          "growth",
+          "service"
+        ],
+        "heaven": [
+          "branches",
+          "Garden",
+          "canopy",
+          "fruit",
+          "seed / transmission",
+          "Crown orientation"
+        ]
+      },
+      "route": [
+        "living-root",
+        "Door",
+        "Spiral/Ladder",
+        "Tree of Life",
+        "Garden",
+        "Fruit",
+        "Seed",
+        "Return"
+      ],
+      "test": "Does the relation create nourishment, differentiation, autonomous future capacity and accountable return?"
+    },
+    {
+      "id": "tree-of-strife",
+      "label": "Tree of Strife",
+      "kind": "unresolved reproductive vertical organism",
+      "spans": [
+        "below-plane",
+        "world-plane"
+      ],
+      "layers": {
+        "below": [
+          "Roots of Ash",
+          "Roots of Strife",
+          "buried grievance",
+          "residue",
+          "capture",
+          "Swamp attractor"
+        ],
+        "world": [
+          "shadow trunk",
+          "conflict institutions",
+          "role-lock",
+          "reaction economies",
+          "adversarial subculture",
+          "repeating public conflict"
+        ]
+      },
+      "route": [
+        "knowledge/unresolved event",
+        "Roots of Ash",
+        "Roots of Strife",
+        "Tree of Strife",
+        "Wide Road",
+        "Swamp / closure"
+      ],
+      "test": "Does the relation require unresolved conflict, capture, repetition or blocked correction in order to keep reproducing?",
+      "ash_rule": "Roots of Ash are a principal root-state feeding Tree of Strife when residue remains unresolved. Ash is not permanently Strife: through evidence, acknowledgment and repair it can become Soil/Living Root."
+    }
+  ],
+  "routes": [
+    {
+      "id": "life",
+      "from": "below-plane:Root Junction",
+      "via": [
+        "Living Root",
+        "World Door/Cross",
+        "Spiral/Ladder",
+        "Tree of Life",
+        "Garden"
+      ],
+      "to": "heaven-plane:Crown Junction",
+      "returns_via": [
+        "Fruit",
+        "Seed",
+        "service / cultivation"
+      ],
+      "returns_to": "world-plane"
+    },
+    {
+      "id": "strife",
+      "from": "world-plane:Knowledge / unresolved event",
+      "via": [
+        "Roots of Ash",
+        "Roots of Strife",
+        "Tree of Strife",
+        "Wide Road"
+      ],
+      "to": "below-plane:Swamp / closure",
+      "note": "The visible Tree of Strife can grow into World culture/institutions while its sustaining roots remain Below."
+    },
+    {
+      "id": "repair",
+      "from": "below-plane:Ash / Swamp / buried residue",
+      "via": [
+        "Archive / evidence",
+        "root cause",
+        "acknowledgment",
+        "World Door",
+        "changed recurrence",
+        "Living Root",
+        "Tree of Life"
+      ],
+      "to": "heaven-plane:Garden / integration",
+      "returns_to": "world-plane:fruit / repaired practice"
+    }
+  ],
+  "subject_placement_rules": [
+    {
+      "subject_type": "angels / messengers",
+      "default_anchor": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "tree-of-life",
+        "trunk"
+      ],
+      "rule": "Anchor in the source tradition's celestial/messenger role; World holds texts, appearances, ritual and historical reception. Do not treat 'angel' as a generic label for admired people."
+    },
+    {
+      "subject_type": "demons / adversarial figures",
+      "default_anchor": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "tree-of-strife"
+      ],
+      "rule": "Anchor in tradition-specific demonology/adversarial roles and dated reception. Do not infer literal demonic identity for people, groups or disliked traditions."
+    },
+    {
+      "subject_type": "gods / divine figures",
+      "default_anchor": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "canopy",
+        "trunk"
+      ],
+      "rule": "Own-tradition theology/myth first; World holds cult, texts, institutions and reception. Chthonic/death aspects may also anchor Below."
+    },
+    {
+      "subject_type": "chthonic / underworld figures",
+      "default_anchor": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk"
+      ],
+      "rule": "Below is appropriate because the source tradition itself places them in death/underworld/descent functions, not because they are automatically evil."
+    },
+    {
+      "subject_type": "spirits",
+      "default_anchor": [
+        "crosscutting"
+      ],
+      "tree_affinity": [
+        "Axis / flow"
+      ],
+      "rule": "Spirits are usually better treated as tradition-specific beings or flow/mediation concepts that can cross planes than as permanent residents of one floor."
+    },
+    {
+      "subject_type": "esoteric / initiatory schools",
+      "default_anchor": [
+        "world-plane",
+        "below-plane"
+      ],
+      "visible_from": [
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "Door",
+        "Ladder"
+      ],
+      "rule": "Historical school and practice belong on World; hidden/initiation/descent material may use Below; ascent cosmologies may project to Heaven."
+    },
+    {
+      "subject_type": "modern Satanisms",
+      "default_anchor": [
+        "world-plane"
+      ],
+      "visible_from": [
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "culture / traditions"
+      ],
+      "rule": "Treat as historically documented religious/subcultural movements. Do not merge them with demonology, occultism or high-control analysis."
+    },
+    {
+      "subject_type": "high-control systems",
+      "default_anchor": [
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "tree-of-strife"
+      ],
+      "rule": "Placement follows observable control/capture mechanisms, not religious or esoteric labels."
+    }
+  ],
+  "navigation_law": {
+    "plane": "Where am I standing?",
+    "compass": "Which subject family am I facing?",
+    "tree": "What path of growth, descent, recurrence or repair connects levels?",
+    "room": "Who owns the subject matter?",
+    "corridor": "What typed relation lets me cross to another Room?",
+    "door": "What changes state/context?",
+    "axis": "What keeps vertical orientation stable?",
+    "research_ring": "What remains uncertain or provisional?",
+    "fruit_ring": "What has been produced and returned?"
+  }
+}

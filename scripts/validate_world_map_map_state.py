@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MAP_STATE = ROOT / "world-map" / "3d-map-state.js"
 WORLD_BAR = ROOT / "world-map" / "3d-world-bar.js"
 PHYSICAL = ROOT / "world-map" / "3d-physical-layers.js"
+EVIDENCE = ROOT / "world-map" / "3d-evidence-layers.js"
 LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 MANIFEST = ROOT / "data" / "world-map-physical-layers.json"
 WATER = ROOT / "world-map" / "3d-physical-water.js"
@@ -42,7 +43,7 @@ def require_tokens(path: Path, tokens: tuple[str, ...], label: str, errors: list
 
 def main() -> int:
     errors: list[str] = []
-    for path in (MAP_STATE, WORLD_BAR, PHYSICAL, LIFECYCLE, WATER, HYDROLOGY, LAND_COVER, DESERTS):
+    for path in (MAP_STATE, WORLD_BAR, PHYSICAL, EVIDENCE, LIFECYCLE, WATER, HYDROLOGY, LAND_COVER, DESERTS):
         check_node(path, errors)
 
     map_state = require_tokens(MAP_STATE, (
@@ -50,6 +51,10 @@ def main() -> int:
         "__potatoAtlasCompositor",
         "__potatoAtlasPhysicalLayers",
         "__potatoAtlasSpatialOverlays",
+        "__potatoAtlasEvidenceLayers",
+        "evidenceLayer",
+        "adlYear",
+        "adlType",
         "__potatoAtlasSelection",
         "clearAll",
         "keepView:true",
@@ -65,7 +70,17 @@ def main() -> int:
         if forbidden in map_state:
             errors.append(f"Map State coordinator must preserve camera/projection and may not call {forbidden}")
 
-    require_tokens(WORLD_BAR, ("atlasWorldReset",), "World Bar reset control", errors)
+    require_tokens(WORLD_BAR, (
+        "atlasWorldReset",
+        "reset.setAttribute('aria-label','Reset map layers and investigation state')",
+    ), "World Bar reset control", errors)
+
+    require_tokens(EVIDENCE, (
+        "adapterSyncDepth",
+        "async function setAdapterEnabled(row,next)",
+        "if(adapterSyncDepth > 0) return;",
+        "if(wasOn===on) { renderMenu(); return; }",
+    ), "Evidence state coordinator", errors)
 
     require_tokens(LIFECYCLE, (
         "Map State",

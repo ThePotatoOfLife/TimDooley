@@ -1,50 +1,320 @@
 {
-  "id":"body-index",
-  "version":"1.1.0",
-  "updated":"2026-09-15",
-  "title":"BODY / Neurobiology Canonical Index",
-  "status":"canonical navigation index for knowledge/body",
-  "purpose":"Expose the complete BODY/neurobiology architecture from one file so readers and machines can move from whole-body overview into science, evidence quality, brain anatomy, brain-body physiology, organ axes, Tim-specific reconciliation, systems formalization, symbolic synthesis and provenance without relying on scattered filenames.",
-  "entry":"knowledge/body/body-system-master-atlas.json",
-  "reading_order":[
-    {"step":1,"name":"Whole BODY overview","path":"knowledge/body/body-system-master-atlas.json","use_for":"concise whole-body map; system→symbol→boundary routing"},
-    {"step":2,"name":"Body↔brain scientific context","path":"knowledge/body/body-science-context-atlas.json","use_for":"interoception, heart/breath, gut, endocrine, immune, glia, neurovascular and River-as-multiplex corrections"},
-    {"step":3,"name":"Evidence quality map","path":"knowledge/body/neurobiology-evidence-grade.json","use_for":"separate established anatomy, strong human evidence, emerging animal-heavy fields and Potatoverse interpretation"},
-    {"step":4,"name":"Whole-brain neurobiology","path":"knowledge/body/whole-brain-neurobiology-atlas.json","use_for":"brain hierarchy, regions, nuclei, tracts, networks, cellular systems and canonical physiological flows"},
-    {"step":5,"name":"Brain specialist anatomy","path":"knowledge/body/whole-brain-neurobiology-deepening-wave-1.json","use_for":"cranial nerves, hypothalamic/brainstem nuclei, hippocampal subfields, cerebellar microcircuit, pain, language, social cognition, development and theory-layer detail"},
-    {"step":6,"name":"Brain↔body systems physiology","path":"knowledge/body/brain-body-systems-deepening-wave-2.json","use_for":"cardiorespiratory reflexes, endocrine axes, brain borders, choroid plexus, neuroimmune systems, gut sensing, metabolic hormones and sleep/circadian homeostasis"},
-    {"step":7,"name":"Whole-organ axes","path":"knowledge/body/brain-body-organ-axes-deepening-wave-3.json","use_for":"kidney, liver, adipose, skeletal muscle, pancreas, reproductive axis, skull marrow and peripheral ganglia"},
-    {"step":8,"name":"Tim ↔ biology reconciliation","path":"knowledge/body/tim-neurobiology-relational-reconciliation.json","use_for":"what Tim's motifs mean, nearest biological neighbors, chronology and hard mismatch boundaries"},
-    {"step":9,"name":"Biological systems formalization","path":"knowledge/science/biological-multiplex-flow-formalization.json","use_for":"River as typed multiplex flow; Door as channel-specific gate; Eye as observation; Axis as directed state flow; Return as feedback"},
-    {"step":10,"name":"Integrated neurotheology","path":"knowledge/body/neurotheology-axis-house-spirit-atlas.json","use_for":"House/Seed/Eye/Door/Spirit/Ladder and religious/mythic comparators"},
-    {"step":11,"name":"Recovered legacy neurobiology","path":"knowledge/body/neurobiology-recovery-wave-2.json","use_for":"recovered Great Book/conversation biology, corrections and quarantined legacy claims"},
-    {"step":12,"name":"Attestation chronology","path":"knowledge/timeline/neurotheology-attestation-ledger.json","use_for":"first known Tim/project strata and unresolved first-source recovery"}
+  "id": "body-index",
+  "version": "1.6.0",
+  "updated": "2026-09-20",
+  "title": "BODY / Neurobiology Canonical Index",
+  "status": "canonical navigation index for knowledge/body",
+  "purpose": "Expose the complete BODY/neurobiology architecture from one file so readers and machines can move from whole-body overview into science, evidence quality, brain anatomy, brain-body physiology, organ axes, Tim-specific reconciliation, systems formalization, symbolic synthesis and provenance without relying on scattered filenames.",
+  "entry": "knowledge/body/body-system-master-atlas.json",
+  "reading_order": [
+    {
+      "step": 1,
+      "name": "Whole BODY overview",
+      "path": "knowledge/body/body-system-master-atlas.json",
+      "use_for": "concise whole-body map; system→symbol→boundary routing"
+    },
+    {
+      "step": 2,
+      "name": "Body↔brain scientific context",
+      "path": "knowledge/body/body-science-context-atlas.json",
+      "use_for": "interoception, heart/breath, gut, endocrine, immune, glia, neurovascular and River-as-multiplex corrections"
+    },
+    {
+      "step": 3,
+      "name": "Evidence quality map",
+      "path": "knowledge/body/neurobiology-evidence-grade.json",
+      "use_for": "separate established anatomy, strong human evidence, emerging animal-heavy fields and Potatoverse interpretation"
+    },
+    {
+      "step": 4,
+      "name": "Whole-brain neurobiology",
+      "path": "knowledge/body/whole-brain-neurobiology-atlas.json",
+      "use_for": "brain hierarchy, regions, nuclei, tracts, networks, cellular systems and canonical physiological flows"
+    },
+    {
+      "step": 5,
+      "name": "Brain specialist anatomy",
+      "path": "knowledge/body/whole-brain-neurobiology-deepening-wave-1.json",
+      "use_for": "cranial nerves, hypothalamic/brainstem nuclei, hippocampal subfields, cerebellar microcircuit, pain, language, social cognition, development and theory-layer detail"
+    },
+    {
+      "step": 6,
+      "name": "Brain↔body systems physiology",
+      "path": "knowledge/body/brain-body-systems-deepening-wave-2.json",
+      "use_for": "cardiorespiratory reflexes, endocrine axes, brain borders, choroid plexus, neuroimmune systems, gut sensing, metabolic hormones and sleep/circadian homeostasis"
+    },
+    {
+      "step": 7,
+      "name": "Whole-organ axes",
+      "path": "knowledge/body/brain-body-organ-axes-deepening-wave-3.json",
+      "use_for": "kidney, liver, adipose, skeletal muscle, pancreas, reproductive axis, skull marrow and peripheral ganglia"
+    },
+    {
+      "step": 8,
+      "name": "Tim ↔ biology reconciliation",
+      "path": "knowledge/body/tim-neurobiology-relational-reconciliation.json",
+      "use_for": "what Tim's motifs mean, nearest biological neighbors, chronology and hard mismatch boundaries"
+    },
+    {
+      "step": 9,
+      "name": "Biological systems formalization",
+      "path": "knowledge/science/biological-multiplex-flow-formalization.json",
+      "use_for": "River as typed multiplex flow; Door as channel-specific gate; Eye as observation; Axis as directed state flow; Return as feedback"
+    },
+    {
+      "step": 10,
+      "name": "Integrated Inner Axis",
+      "path": "knowledge/body/inner-axis-integrated-atlas.json",
+      "use_for": "Eye→Clock/Vision→Steward→House/Court→Door→Aqueduct→Brainstem→Ladder→Body→Return; interface families and integrated route"
+    },
+    {
+      "step": 11,
+      "name": "Spine / CSF / 33 levels",
+      "path": "knowledge/body/spine-csf-levels-axis-atlas.json",
+      "use_for": "33 vertebral elements vs 31 neural segments; conus/cauda equina; CSF subarachnoid River; crown-to-House vertical coordinate systems"
+    },
+    {
+      "step": 12,
+      "name": "Thalamus / House / Horus / Crown",
+      "path": "knowledge/body/thalamus-house-horus-crown-atlas.json",
+      "use_for": "thalamic rooms and loops; history of thalamus='chamber'; Wedjat history; modern Horus-brain hypothesis; Crown/House distinction"
+    },
+    {
+      "step": 13,
+      "name": "Axis biology / autonomic side-chains / orientation",
+      "path": "knowledge/body/axis-orientation-autonomic-interface-atlas.json",
+      "use_for": "vestibular orientation, head-direction circuitry, sympathetic trunks, dorsal-root ganglia, vagus, plexuses, ENS, phrenic breath, meninges and choroid/blood-CSF boundaries"
+    },
+    {
+      "step": 14,
+      "name": "Integrated neurotheology",
+      "path": "knowledge/body/neurotheology-axis-house-spirit-atlas.json",
+      "use_for": "House/Seed/Eye/Door/Spirit/Ladder and religious/mythic comparators"
+    },
+    {
+      "step": 15,
+      "name": "Recovered legacy neurobiology",
+      "path": "knowledge/body/neurobiology-recovery-wave-2.json",
+      "use_for": "recovered Great Book/conversation biology, corrections and quarantined legacy claims"
+    },
+    {
+      "step": 16,
+      "name": "Attestation chronology",
+      "path": "knowledge/timeline/neurotheology-attestation-ledger.json",
+      "use_for": "first known Tim/project strata and unresolved first-source recovery"
+    },
+    {
+      "step": 17,
+      "name": "33 vertebral rooms",
+      "path": "knowledge/body/vertebral-33-room-atlas.json",
+      "use_for": "C1→Co4 individual rooms with bone/canal/root/CSF/vascular/project coordinates"
+    },
+    {
+      "step": 18,
+      "name": "Spinal cord microcircuits",
+      "path": "knowledge/body/spinal-cord-microcircuit-atlas.json",
+      "use_for": "Rexed laminae, autonomic columns, motor pools, ascending/descending tracts and local loops"
+    },
+    {
+      "step": 19,
+      "name": "Cranial & brainstem rooms",
+      "path": "knowledge/body/cranial-brainstem-room-atlas.json",
+      "use_for": "cranial nerves/nuclei, functional columns, sleep/wake rooms and vital-state loops"
+    },
+    {
+      "step": 20,
+      "name": "Granular brain rooms",
+      "path": "knowledge/body/brain-room-deep-atlas.json",
+      "use_for": "sub-lobe cortical territories, hippocampal/amygdala nuclei, basal ganglia, hypothalamus, thalamus, brainstem, cerebellum, interfaces and vascular supply"
+    },
+    {
+      "step": 21,
+      "name": "Neural development & lineage",
+      "path": "knowledge/body/neural-development-lineage-atlas.json",
+      "use_for": "neural tube, brain vesicles, radial glia, migration, neural crest, developmental origin of adult rooms"
+    },
+    {
+      "step": 22,
+      "name": "Glia / neurovascular / living boundaries",
+      "path": "knowledge/body/glia-neurovascular-barrier-atlas.json",
+      "use_for": "astrocytes, oligodendrocytes, microglia, BBB, blood-CSF barrier, pericytes and neurovascular unit"
+    },
+    {
+      "step": 23,
+      "name": "Cortical cell types & parcellations",
+      "path": "knowledge/body/cortical-celltype-parcellation-atlas.json",
+      "use_for": "cortical layers, projection classes, interneuron families, transcriptomics and competing parcellation systems"
+    }
   ],
-  "specialist_owners":[
-    {"topic":"thalamus / Potato / Father's House / rooms","path":"data/potatoism-thalamus-brain-map.json"},
-    {"topic":"spine / 33 / five centers / Ladder","path":"knowledge/corporium/ladder-33-vertebrae-five-centers-study.json"},
-    {"topic":"body symbolism distinctions","path":"knowledge/body/body-symbolism-map.json"},
-    {"topic":"completion and remaining depth","path":"knowledge/body/whole-brain-neurobiology-completion.json"},
-    {"topic":"evidence grading","path":"knowledge/body/neurobiology-evidence-grade.json"},
-    {"topic":"biological River / Door / Axis formalization","path":"knowledge/science/biological-multiplex-flow-formalization.json"},
-    {"topic":"routing / ownership","path":"knowledge/indexes/neurotheology-routing-index.json"}
+  "specialist_owners": [
+    {
+      "topic": "thalamus / Potato / Father's House / rooms",
+      "path": "data/potatoism-thalamus-brain-map.json"
+    },
+    {
+      "topic": "spine / 33 / five centers / Ladder",
+      "path": "knowledge/corporium/ladder-33-vertebrae-five-centers-study.json"
+    },
+    {
+      "topic": "body symbolism distinctions",
+      "path": "knowledge/body/body-symbolism-map.json"
+    },
+    {
+      "topic": "completion and remaining depth",
+      "path": "knowledge/body/whole-brain-neurobiology-completion.json"
+    },
+    {
+      "topic": "evidence grading",
+      "path": "knowledge/body/neurobiology-evidence-grade.json"
+    },
+    {
+      "topic": "biological River / Door / Axis formalization",
+      "path": "knowledge/science/biological-multiplex-flow-formalization.json"
+    },
+    {
+      "topic": "routing / ownership",
+      "path": "knowledge/indexes/neurotheology-routing-index.json"
+    },
+    {
+      "topic": "integrated inner axis / House-Court-Door-Aqueduct-Ladder route",
+      "path": "knowledge/body/inner-axis-integrated-atlas.json"
+    },
+    {
+      "topic": "spine / CSF / 33 bones / 31 neural segments / Crown continuation",
+      "path": "knowledge/body/spine-csf-levels-axis-atlas.json"
+    },
+    {
+      "topic": "thalamus / House / Horus Eye / Crown",
+      "path": "knowledge/body/thalamus-house-horus-crown-atlas.json"
+    },
+    {
+      "topic": "axis biology / autonomic side-chains / orientation / living boundaries",
+      "path": "knowledge/body/axis-orientation-autonomic-interface-atlas.json"
+    },
+    {
+      "topic": "all 33 vertebral rooms",
+      "path": "knowledge/body/vertebral-33-room-atlas.json"
+    },
+    {
+      "topic": "spinal cord laminae / columns / tracts",
+      "path": "knowledge/body/spinal-cord-microcircuit-atlas.json"
+    },
+    {
+      "topic": "cranial nerves / brainstem / sleep-arousal",
+      "path": "knowledge/body/cranial-brainstem-room-atlas.json"
+    },
+    {
+      "topic": "granular brain rooms",
+      "path": "knowledge/body/brain-room-deep-atlas.json"
+    },
+    {
+      "topic": "neural development / embryology / lineage",
+      "path": "knowledge/body/neural-development-lineage-atlas.json"
+    },
+    {
+      "topic": "glia / BBB / neurovascular unit",
+      "path": "knowledge/body/glia-neurovascular-barrier-atlas.json"
+    },
+    {
+      "topic": "cortical layers / cell types / parcellations",
+      "path": "knowledge/body/cortical-celltype-parcellation-atlas.json"
+    }
   ],
-  "canonical_symbol_relations":[
-    {"symbol":"Potato / Father's House","biology":"thalamus","status":"project canon","boundary":"potato-shaped is project language; conventional anatomy usually says ovoid/egg-shaped"},
-    {"symbol":"rooms","biology":"thalamic nuclei","status":"project canon / architectural analogy"},
-    {"symbol":"roads / roots / branches","biology":"white-matter and thalamocortical/corticothalamic connectivity","status":"project interpretation"},
-    {"symbol":"wall / gate / sieve","biology":"TRN and wider selective/gating systems","status":"project interpretation"},
-    {"symbol":"Single Eye / Third Eye / Son-side Door","biology":"pineal gland","status":"project canon + historical/esoteric comparator","boundary":"not a literal photoreceptive third eye in humans"},
-    {"symbol":"Steward","biology":"hypothalamic/endocrine/autonomic homeostasis","status":"project canon / functional analogy"},
-    {"symbol":"River / Spirit-flow","biology":"multiplex neural, cardiorespiratory, endocrine, immune, metabolic, CSF/interstitial and lymphatic flows","status":"project canon + flow analogy","boundary":"not CSF alone and no flow is scientifically Spirit"},
-    {"symbol":"inward Eye","biology":"distributed interoception","status":"phenomenological/scientific analogy"},
-    {"symbol":"Heart","biology":"cardiorespiratory interoception and embodied affective state","status":"project symbolism / phenomenological neighbor"},
-    {"symbol":"Ladder / Axis","biology":"spine and long-range ascending/descending pathways; C1 Atlas/C2 Axis lexical anchors","status":"project canon + structural/linguistic analogy"},
-    {"symbol":"Garden","biology":"whole-organism ecology: gut/microbiome, metabolism, immune/barrier systems, organs and maintenance","status":"project canon + ecological analogy"},
-    {"symbol":"Gardener","biology":"distributed maintenance/support/remodeling across glia, immunity, metabolism, barriers and tissue repair","status":"project canon + functional analogy"},
-    {"symbol":"Return to center","biology":"recurrent distributed feedback/state estimation","status":"project interpretation / systems analogy","boundary":"no single anatomical return point"}
+  "canonical_symbol_relations": [
+    {
+      "symbol": "Potato / Father's House",
+      "biology": "thalamus",
+      "status": "project canon",
+      "boundary": "potato-shaped is project language; conventional anatomy usually says ovoid/egg-shaped"
+    },
+    {
+      "symbol": "rooms",
+      "biology": "thalamic nuclei",
+      "status": "project canon / architectural analogy"
+    },
+    {
+      "symbol": "roads / roots / branches",
+      "biology": "white-matter and thalamocortical/corticothalamic connectivity",
+      "status": "project interpretation"
+    },
+    {
+      "symbol": "wall / gate / sieve",
+      "biology": "TRN and wider selective/gating systems",
+      "status": "project interpretation"
+    },
+    {
+      "symbol": "Single Eye / Third Eye / Son-side Door",
+      "biology": "pineal gland",
+      "status": "project canon + historical/esoteric comparator",
+      "boundary": "not a literal photoreceptive third eye in humans"
+    },
+    {
+      "symbol": "Steward",
+      "biology": "hypothalamic/endocrine/autonomic homeostasis",
+      "status": "project canon / functional analogy"
+    },
+    {
+      "symbol": "River / Spirit-flow",
+      "biology": "multiplex neural, cardiorespiratory, endocrine, immune, metabolic, CSF/interstitial and lymphatic flows",
+      "status": "project canon + flow analogy",
+      "boundary": "not CSF alone and no flow is scientifically Spirit"
+    },
+    {
+      "symbol": "inward Eye",
+      "biology": "distributed interoception",
+      "status": "phenomenological/scientific analogy"
+    },
+    {
+      "symbol": "Heart",
+      "biology": "cardiorespiratory interoception and embodied affective state",
+      "status": "project symbolism / phenomenological neighbor"
+    },
+    {
+      "symbol": "Ladder / Axis",
+      "biology": "spine and long-range ascending/descending pathways; C1 Atlas/C2 Axis lexical anchors",
+      "status": "project canon + structural/linguistic analogy"
+    },
+    {
+      "symbol": "Garden",
+      "biology": "whole-organism ecology: gut/microbiome, metabolism, immune/barrier systems, organs and maintenance",
+      "status": "project canon + ecological analogy"
+    },
+    {
+      "symbol": "Gardener",
+      "biology": "distributed maintenance/support/remodeling across glia, immunity, metabolism, barriers and tissue repair",
+      "status": "project canon + functional analogy"
+    },
+    {
+      "symbol": "Return to center",
+      "biology": "recurrent distributed feedback/state estimation",
+      "status": "project interpretation / systems analogy",
+      "boundary": "no single anatomical return point"
+    },
+    {
+      "symbol": "Clock-Eye",
+      "biology": "retina → SCN circadian entrainment route",
+      "status": "scientific-function comparator",
+      "boundary": "distinct from image-forming vision and from pineal itself"
+    },
+    {
+      "symbol": "Inner Court",
+      "biology": "third ventricle",
+      "status": "project architectural analogy",
+      "boundary": "CSF-filled ventricular cavity, not sacred chamber in science"
+    },
+    {
+      "symbol": "Narrow Passage",
+      "biology": "cerebral aqueduct",
+      "status": "structural analogy",
+      "boundary": "not a biblical anatomical teaching"
+    },
+    {
+      "symbol": "Lower Hinge",
+      "biology": "brainstem continuity between forebrain, cranial systems, spinal cord and viscera",
+      "status": "project systems analogy"
+    }
   ],
-  "organism_layers":[
+  "organism_layers": [
     "external environment and sensory interfaces",
     "skin/barriers",
     "gut lumen and microbiome",
@@ -64,7 +334,7 @@
     "behavior and environment-changing output",
     "feedback into the next sensed state"
   ],
-  "epistemic_rules":[
+  "epistemic_rules": [
     "Scientific anatomy/physiology and Potatoverse symbolism must remain separately typed.",
     "Tim's first attestation and the date of later neuroscience research must remain separate.",
     "One project symbol may have multiple biological neighbors without becoming identical to any of them.",

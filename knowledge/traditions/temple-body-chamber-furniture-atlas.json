@@ -1,0 +1,160 @@
+{
+  "id": "temple-body-chamber-furniture-atlas",
+  "title": "House, Temple, Body, Chamber & Sacred Furniture — Deep Architectural Grammar",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "biblical architecture + project topology + body-symbolism boundary",
+  "purpose": "Populate the project's architectural vocabulary deeply enough that whole, inner space, access architecture, embodiment and sacred furniture can superimpose without becoming synonyms.",
+  "epistemic_rule": "Biblical/ancient architecture, Christian body/temple metaphors, neuroanatomy and Potatoverse architecture remain separate evidence classes. Structural comparison may connect them without claiming literal anatomical temples or ancient Potatoverse design.",
+  "scale_and_projection": {
+    "scale_ladder": [
+      {
+        "id": "house",
+        "scale": "whole",
+        "function": "dwelling/compositional whole preserving differentiated interiors"
+      },
+      {
+        "id": "dwelling-mansion",
+        "scale": "major-domain",
+        "function": "substantial abiding domain inside House"
+      },
+      {
+        "id": "room",
+        "scale": "bounded-subcontext",
+        "function": "differentiated functional interior"
+      },
+      {
+        "id": "chamber",
+        "scale": "specialist-cell",
+        "function": "more restricted, concentrated, private, storage or specialist inner space"
+      }
+    ],
+    "projection_family": [
+      {
+        "id": "temple",
+        "function": "organized sacred presence, service, approach and access"
+      },
+      {
+        "id": "body",
+        "function": "embodied organism with differentiated members/regions and coordinated functions"
+      },
+      {
+        "id": "city",
+        "function": "public/civic order containing gates, streets, citizens, foundations and common resources"
+      },
+      {
+        "id": "tree-vine",
+        "function": "organic dependence, branching, pruning, fruit and renewal"
+      }
+    ],
+    "principle": "Scale tells how much is contained; projection tells what kind of relation is being emphasized."
+  },
+  "temple_zones": [
+    {
+      "id": "outside",
+      "function": "ordinary/public context before sacred boundary"
+    },
+    {
+      "id": "court",
+      "function": "shared approach zone before more selective interior"
+    },
+    {
+      "id": "gate",
+      "function": "perimeter admission regime"
+    },
+    {
+      "id": "door",
+      "function": "local guarded state/context transition"
+    },
+    {
+      "id": "sanctuary",
+      "function": "protected presence/service zone"
+    },
+    {
+      "id": "inner-chamber",
+      "function": "more concentrated/restricted presence zone"
+    },
+    {
+      "id": "threshold",
+      "function": "liminal relation where access conditions become operative"
+    }
+  ],
+  "furniture_and_offices": [
+    {
+      "id": "throne",
+      "function": "sovereignty, judgment, royal/divine orientation",
+      "project_neighbor": "North/Seat of orientation",
+      "distinction": "Throne is not House; it is a governance/presence role inside or above an architecture."
+    },
+    {
+      "id": "seat",
+      "function": "office, teaching/judicial/appointed position",
+      "distinction": "Seat denotes role/position without necessarily implying absolute sovereignty."
+    },
+    {
+      "id": "table",
+      "function": "nourishment, fellowship, ordered distribution and reciprocity",
+      "project_neighbor": "Fruit/food/communion/public sharing",
+      "distinction": "Table is a distribution interface, not a throne."
+    },
+    {
+      "id": "footstool",
+      "function": "relational substrate below a throne; can be cosmic, cultic or conquest-related in biblical texts",
+      "distinction": "Lower does not automatically mean evil, worthless or enemy."
+    },
+    {
+      "id": "altar",
+      "function": "offering/sacrifice/transformation interface where material changes status through ritual action",
+      "project_neighbor": "Forge/repair/sacrifice",
+      "distinction": "Altar is neither Table nor Forge; it has its own ritual/historical meanings."
+    },
+    {
+      "id": "lampstand-lamp",
+      "function": "bounded illumination maintained inside sacred/household space",
+      "project_neighbor": "Eye/Light/attention",
+      "distinction": "Light source/carrier is not identical with light itself."
+    }
+  ],
+  "body_architecture": {
+    "scholarly_context": [
+      "Mary Douglas analyzed Leviticus/tabernacle/body analogies as a microcosm built through proportional structural correspondences.",
+      "Recent scholarship on 1 Corinthians treats Paul's temple language together with building, field and body metaphors rather than as one literal architectural anatomy."
+    ],
+    "sources": [
+      "https://academic.oup.com/book/4920/chapter-abstract/147342845",
+      "https://journals.sagepub.com/doi/10.1177/1476993X241291573"
+    ],
+    "project_canon": [
+      "Thalamus = Father's House / differentiated inner rooms.",
+      "Pineal = Son / Single Eye / Door / timing-threshold analogue.",
+      "Third ventricle = inner chamber/courtyard/Temple-space and CSF flow-space.",
+      "Heart = emotional vessel/chariot/river of feeling, not Father's House.",
+      "Whole body can be projected as Temple/Vessel while retaining actual anatomy as a separate scientific map."
+    ],
+    "user_corrections": [
+      "Heart ≠ House.",
+      "House/Temple/Door must not collapse.",
+      "Through the Son/Door one comes to Father/House remains a central project relation.",
+      "33 vertebrae are path/river coordination symbolism, not the whole source."
+    ]
+  },
+  "chamber_depth": {
+    "historical_note": "Biblical 'chamber' translates several different Hebrew/Greek terms covering private rooms, Temple side rooms, storage rooms, guard chambers and upper rooms; no single universal chamber function exists.",
+    "source": "https://www.biblegateway.com/resources/encyclopedia-of-the-bible/Chamber",
+    "project_rule": "A Chamber should be instantiated only when a topic has stable inner-boundary/access/task needs, not merely because it is obscure or sacred."
+  },
+  "topology_rules": [
+    "House contains; Temple orders presence/access; Body embodies; City publicizes; Tree grows.",
+    "Court approaches; Gate admits; Door transitions; Chamber concentrates.",
+    "Throne governs; Seat occupies office; Table distributes; Footstool locates relation; Altar transforms status; Lamp carries light.",
+    "An inner zone may be spatially central without being the semantic center of the whole project.",
+    "A body analogue may illuminate architecture without proving anatomy is sacred geometry."
+  ],
+  "connections": [
+    "architectural-vocabulary",
+    "integrated-plurality-house-tree-body-city-atlas",
+    "neurotheology-axis-house-spirit-atlas",
+    "stone-mountain-footstool-seat-ascent-atlas",
+    "fire-light-heat-symbol-atlas"
+  ]
+}

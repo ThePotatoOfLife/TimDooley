@@ -99,6 +99,49 @@ Indexes, manifests and projections should point to the canonical material rather
 - [ ] Ensure every important surviving body is reachable through an appropriate reader, discovery surface or archive path.
 - [ ] Run the complete integrity/build/Pages chain on every final integration head and fix what actually fails.
 
+
+## Stale branch / PR salvage — 2026-09-20
+
+The repository has accumulated many historical branches whose names can make the project look farther behind than it is. Treat branch age and unmerged status as **audit signals**, not automatic backlog.
+
+Canonical audit: `knowledge/research/stale-branch-salvage-audit-2026-09-20.json`.
+
+Current rules:
+
+- [x] Compare stale branches against current `main` before assuming work is missing.
+- [x] Record ahead/behind counts and file-level disposition for the oldest open PRs and high-value Sep-18/19 branches.
+- [x] Confirm that several apparently unmerged assets are already on `main` through later salvage/convergence work.
+- [ ] Reconcile open PR #184 (Evidence Root) and close it once remaining branch-only files are either superseded or selectively salvaged. Do **not** merge the 1,271-commits-behind branch wholesale.
+- [ ] Reconcile PR #142 Story evidence wave at record level against the newer current Story registry/audit; port only still-missing evidence labels.
+- [ ] Test the branch-only semantic Science auditor from PR #137 against current `main`; port it only if it adds checks not already owned by current Science validators.
+- [ ] Compare PR #129's branch-only `app/archive-lookup.js` with current Explore, A–Z, Room holdings and machine discovery; port a minimal resolver only if a live gap remains.
+- [ ] Audit Sep-19 public-surface authority v2 against current House route authority; salvage only routes/metadata still absent after Sep-20 convergence.
+- [ ] Audit the branch-only US Mud/Below map layer under current World Map interaction, provenance and evidence contracts before deciding whether it belongs on `main`.
+- [ ] Continue retiring branches that are 0 commits ahead of `main` or whose unique value is fully absorbed into stronger canonical owners.
+
+### P3 population / instrumentation work still active
+
+The House depth programme explicitly says to prefer population, instrumentation, longitudinal cases and pruning over another broad ontology wave. Continue:
+
+- [ ] instrument more existing Works with the Fruit contract;
+- [ ] run the first real canon revision end-to-end through the revision protocol;
+- [ ] propagate Shadow/Below overlays into Culture, History and Research where they add mechanism rather than imagery;
+- [ ] attach reproduction / exit / correction measures to more formation cases;
+- [ ] extend entity dossiers beyond wave 001 with longitudinal source-backed cases;
+- [ ] prune or merge low-yield duplicate atlases after unique fields are absorbed;
+- [ ] merge unique Sep-18 formation/body branch fields into current owners rather than recreating obsolete branch files.
+
+### Formal-grammar propagation still active
+
+- [x] Add the shared project formal grammar and register it in core/ontology/frontend architecture.
+- [x] Type core House operators and key House interfaces.
+- [x] Mark Axis D1–D11 explicitly as project dimensions `D^(P)`.
+- [x] Add formal correspondence contracts to major body cross-layer objects.
+- [x] Expose correspondence maturity in Body Lens and Research Lab.
+- [ ] Add schema/CI validation for formal-grammar references so future records cannot silently invent incompatible Door/Axis/dimension types.
+- [ ] Add projection-loss / reconstructability metadata to selected World Map and House aggregate views.
+- [ ] Extend the Eye/measurement formalism into sensory/attention reader surfaces where it improves explanation.
+
 ## Growth compass — current high-value frontiers
 
 Use `knowledge/guides/project-growth-compass.json` as the editorial compass for expansion. The current project-wide priorities are:

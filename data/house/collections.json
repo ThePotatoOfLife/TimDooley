@@ -1,0 +1,112 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "house-curated-collections",
+  "principle": "Collections assemble material across owners for reading, recovery, comparison or interpretation. They never transfer canonical ownership merely by inclusion.",
+  "collections": [
+    {
+      "id": "corporium",
+      "title": "Corporium Collection",
+      "kind": "cross-branch interpretive collection",
+      "source_prefixes": [
+        "knowledge/corporium/"
+      ],
+      "public_surface_ids": [
+        "collection"
+      ],
+      "related_room_ids": [
+        "canon-identities",
+        "practice-ethics",
+        "whole-body",
+        "symbolic-body-comparison",
+        "information-ecology",
+        "witness-attestation",
+        "developmental-genealogy",
+        "great-book-literature"
+      ],
+      "boundary": "Corporium assembles sayings, embodiment, affect, persona, recurrence and later formalization. It is a cross-branch interpretive collection, not a new fact owner.",
+      "source_file_count": 20
+    },
+    {
+      "id": "story-reservoir",
+      "title": "Story & Scene Reservoir",
+      "kind": "documentary/narrative collection",
+      "source_prefixes": [
+        "knowledge/story/",
+        "story-content/"
+      ],
+      "public_surface_ids": [
+        "story"
+      ],
+      "related_room_ids": [
+        "canon-identities",
+        "developmental-genealogy",
+        "witness-attestation",
+        "great-book-literature",
+        "information-ecology"
+      ],
+      "boundary": "Story assembles documentary and literary material while preserving source depth and uncertainty; narrative sequence does not replace occurrence/source owners.",
+      "source_file_count": 74
+    },
+    {
+      "id": "reader-dossiers",
+      "title": "Reader Dossiers",
+      "kind": "reader-facing synthesis layer",
+      "source_prefixes": [
+        "knowledge/reader/"
+      ],
+      "public_surface_ids": [
+        "tim",
+        "explore"
+      ],
+      "related_room_ids": [
+        "canon-identities",
+        "developmental-genealogy",
+        "provenance-evidence",
+        "theology-god-language"
+      ],
+      "boundary": "Reader dossiers summarize owners for accessibility; they do not become canonical owners.",
+      "source_file_count": 6
+    },
+    {
+      "id": "project-guides",
+      "title": "Project Guides",
+      "kind": "orientation/navigation layer",
+      "source_prefixes": [
+        "knowledge/guides/"
+      ],
+      "public_surface_ids": [
+        "house",
+        "explore"
+      ],
+      "related_room_ids": [
+        "house-architecture",
+        "open-questions",
+        "research-programmes"
+      ],
+      "boundary": "Guides route readers through the House and may be replaced without changing ontology.",
+      "source_file_count": 3
+    },
+    {
+      "id": "indexes-routing",
+      "title": "Indexes & Routing",
+      "kind": "retrieval/navigation infrastructure",
+      "source_prefixes": [
+        "knowledge/indexes/"
+      ],
+      "public_surface_ids": [
+        "explore",
+        "research-lab",
+        "sources"
+      ],
+      "related_room_ids": [
+        "provenance-evidence",
+        "memory-recovery",
+        "open-questions",
+        "house-architecture"
+      ],
+      "boundary": "Indexes route toward owners, sources and unresolved work; index membership is not itself truth or ownership.",
+      "source_file_count": 91
+    }
+  ]
+}

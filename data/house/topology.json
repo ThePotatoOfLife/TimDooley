@@ -1,0 +1,1140 @@
+{
+  "version": "2.0.0",
+  "updated": "2026-09-18",
+  "authority": "house-topology",
+  "room_registry": "data/house/rooms.json",
+  "subroom_registry": "data/house/subrooms.json",
+  "model": "Typed graph + nested cells + orthogonal coordinates + integrated projection registry + two-field Potato projection. Hypercube remains a useful intuition for independent directions, but the House is not assigned one literal Euclidean embedding.",
+  "eight_coordinate_address": [
+    {
+      "id": "within",
+      "symbol": "Room / Box / House",
+      "question": "Where does this belong?",
+      "meaning": "containment, ownership, bounded context"
+    },
+    {
+      "id": "here",
+      "symbol": "Plane",
+      "question": "Which operative frame is active?",
+      "meaning": "scale, representation, jurisdiction, time slice, audience"
+    },
+    {
+      "id": "up",
+      "symbol": "North / Mountain",
+      "question": "What broader integration or criterion does this point toward?",
+      "meaning": "orientation, composition, abstraction"
+    },
+    {
+      "id": "down",
+      "symbol": "Roots / Soil / Archive",
+      "question": "What supports, precedes, causes or evidences this?",
+      "meaning": "provenance, dependency, ancestry, context"
+    },
+    {
+      "id": "out",
+      "symbol": "Tree / Branch / Fruit / Seed",
+      "question": "What unfolds or results from this?",
+      "meaning": "differentiation, consequences, outputs, transferable patterns"
+    },
+    {
+      "id": "across",
+      "symbol": "Road / Relation",
+      "question": "What is connected laterally?",
+      "meaning": "typed relation, flow, comparison, exchange"
+    },
+    {
+      "id": "through",
+      "symbol": "Door / Ladder / Axis",
+      "question": "How does this change state or context?",
+      "meaning": "guarded transition, traversal, promotion, migration"
+    },
+    {
+      "id": "state",
+      "symbol": "Garden / Forge / Swamp / lifecycle",
+      "question": "What regime is it in?",
+      "meaning": "viability, pressure, repair, maturity, maintenance"
+    }
+  ],
+  "macro_roles": [
+    {
+      "id": "potatoverse-canon",
+      "role": "meaning-heart",
+      "band": "core",
+      "note": "Project meaning/identity core; centrality is compositional, not truth rank."
+    },
+    {
+      "id": "archive-sources",
+      "role": "provenance-axis",
+      "band": "crosscutting",
+      "note": "Runs DOWN through every source-bearing Room as provenance and evidence roots."
+    },
+    {
+      "id": "time-history",
+      "role": "time-axis",
+      "band": "crosscutting",
+      "note": "Runs through every changing subject as occurrence, attestation and interpretation time."
+    },
+    {
+      "id": "traditions-texts",
+      "role": "historical-translation",
+      "band": "translation",
+      "note": "Translates between project comparison and traditions on their own historical/textual terms."
+    },
+    {
+      "id": "science-formal-models",
+      "role": "formalization",
+      "band": "translation",
+      "note": "Turns candidate structure into explicit models, tests and scientific/formal boundaries."
+    },
+    {
+      "id": "life-body",
+      "role": "embodiment",
+      "band": "translation",
+      "note": "Keeps organism/body reality and symbolic body comparison distinguishable."
+    },
+    {
+      "id": "world-systems",
+      "role": "external-systems",
+      "band": "world-facing",
+      "note": "Projects relation-first work into observable institutions, economies, places and infrastructure."
+    },
+    {
+      "id": "culture-information",
+      "role": "social-mediation",
+      "band": "world-facing",
+      "note": "Tracks how meaning moves through media, platforms, subcultures and public discourse."
+    },
+    {
+      "id": "works",
+      "role": "fruit-expression",
+      "band": "output",
+      "note": "Creative outputs are Fruit/Artifacts without automatically becoming doctrine or evidence."
+    },
+    {
+      "id": "research-lab",
+      "role": "frontier-forge",
+      "band": "crosscutting",
+      "note": "Crosses all Rooms as a provisional frontier and promotion/retirement Door."
+    }
+  ],
+  "bands": [
+    {
+      "id": "core",
+      "label": "Meaning heart",
+      "room_ids": [
+        "potatoverse-canon"
+      ]
+    },
+    {
+      "id": "crosscutting",
+      "label": "Orthogonal axes",
+      "room_ids": [
+        "archive-sources",
+        "time-history",
+        "research-lab"
+      ]
+    },
+    {
+      "id": "translation",
+      "label": "Translation / formalization / embodiment belt",
+      "room_ids": [
+        "traditions-texts",
+        "science-formal-models",
+        "life-body"
+      ]
+    },
+    {
+      "id": "world-facing",
+      "label": "World / social belt",
+      "room_ids": [
+        "world-systems",
+        "culture-information"
+      ]
+    },
+    {
+      "id": "output",
+      "label": "Fruit / expression",
+      "room_ids": [
+        "works"
+      ]
+    }
+  ],
+  "crosscutters": [
+    {
+      "room_id": "archive-sources",
+      "coordinate": "down",
+      "applies_to": "all source-bearing Rooms",
+      "function": "provenance, source lineage, evidence class"
+    },
+    {
+      "room_id": "time-history",
+      "coordinate": "here/down",
+      "applies_to": "all changing Rooms",
+      "function": "occurrence time, attestation time, interpretation time"
+    },
+    {
+      "room_id": "research-lab",
+      "coordinate": "through/state",
+      "applies_to": "all Rooms",
+      "function": "questions, candidate models, testing, promotion and rejection"
+    },
+    {
+      "surface_id": "axis",
+      "coordinate": "through",
+      "applies_to": "all Rooms",
+      "function": "state-transition and transformation grammar; not a Room"
+    }
+  ],
+  "strong_corridors": [
+    {
+      "from": "potatoverse-canon",
+      "to": "traditions-texts",
+      "type": "comparison",
+      "door": "project motif ↔ historically described tradition"
+    },
+    {
+      "from": "potatoverse-canon",
+      "to": "science-formal-models",
+      "type": "formalization",
+      "door": "symbolic/model claim ↔ explicit assumptions/tests"
+    },
+    {
+      "from": "potatoverse-canon",
+      "to": "life-body",
+      "type": "embodiment comparison",
+      "door": "symbolic body mapping ↔ empirical body record"
+    },
+    {
+      "from": "potatoverse-canon",
+      "to": "works",
+      "type": "expression",
+      "door": "canon/idea ↔ creative artifact"
+    },
+    {
+      "from": "potatoverse-canon",
+      "to": "culture-information",
+      "type": "public mediation",
+      "door": "project language ↔ public discourse/context"
+    },
+    {
+      "from": "science-formal-models",
+      "to": "life-body",
+      "type": "empirical coupling",
+      "door": "formal model ↔ biological observation"
+    },
+    {
+      "from": "science-formal-models",
+      "to": "world-systems",
+      "type": "applied modeling",
+      "door": "model ↔ observable system"
+    },
+    {
+      "from": "world-systems",
+      "to": "culture-information",
+      "type": "institution/discourse coupling",
+      "door": "institutional event ↔ public information ecology"
+    },
+    {
+      "from": "culture-information",
+      "to": "works",
+      "type": "distribution/reception",
+      "door": "artifact ↔ medium/audience/subculture"
+    },
+    {
+      "from": "traditions-texts",
+      "to": "time-history",
+      "type": "historical context",
+      "door": "text/tradition ↔ dated historical frame"
+    },
+    {
+      "from": "world-systems",
+      "to": "time-history",
+      "type": "system change",
+      "door": "current system ↔ prior/future states"
+    },
+    {
+      "from": "archive-sources",
+      "to": "time-history",
+      "type": "source chronology",
+      "door": "artifact/capture ↔ event/attestation time"
+    }
+  ],
+  "topological_laws": [
+    "Containment is not truth rank.",
+    "Adjacency is typed: two Rooms can be near in one graph family and far in another.",
+    "Archive, Time and Research Lab are crosscutting axes rather than ordinary hallway neighbors.",
+    "Views may span many Rooms but never become owners.",
+    "The Living Axis supplies THROUGH/transition semantics across the House; it is not a new top-level Room.",
+    "Nested Rooms inherit fact-family ownership from their parent and may not silently create shadow canon.",
+    "A public route may expose several Rooms or subrooms; URL hierarchy does not define ontology.",
+    "Every strong corridor should preserve a route back to both sides' evidence and boundaries.",
+    {
+      "id": "overlap-before-stack",
+      "law": "Prefer overlap/intersection semantics over stacked-floor semantics when the same relation is already represented by two complete fields sharing a Door."
+    },
+    {
+      "id": "plane-cross-inside-door",
+      "law": "Plane and Cross are internal coordinates/sections of the Door relation, not sequential containers before Door."
+    },
+    {
+      "id": "regime-not-region",
+      "law": "Garden/House and Swamp/Shell/Cube are functional system regimes that may occur across locations; do not pin moral state to upper/lower geometry."
+    },
+    {
+      "id": "presentation-shape-neutrality",
+      "law": "UI rectangles and backend Boxes are bounded contexts, not literal geometric commitments."
+    },
+    {
+      "id": "below-intelligence-not-evil",
+      "law": "Below is a depth/intelligence projection, not a moral caste. Lawful intelligence, archives and privacy can coexist there with criminal/extremist/trafficking research under distinct evidence and legal classes."
+    },
+    {
+      "id": "raw-intelligence-must-pass-forge",
+      "law": "Raw signal, allegation or hidden-network hypothesis does not rise into public knowledge until provenance, corroboration, counterevidence and status are processed through Forge/evidence review."
+    }
+  ],
+  "embedding_contract": {
+    "principle": "Do not store one permanent XYZ or hypercube coordinate as truth. A Room's durable position is the tuple of containment, macro band, primary relational coordinates, crosscutting roles, typed adjacency and interfaces.",
+    "durable_components": [
+      "parent_room_id",
+      "macro_band",
+      "primary_coordinates",
+      "crosscutting_roles",
+      "adjacent_subroom_ids",
+      "interface_kinds"
+    ],
+    "replaceable_components": [
+      "screen x/y position",
+      "visual cluster spacing",
+      "camera angle",
+      "diagram layout"
+    ],
+    "hypercube_note": "The eight House directions behave more like independent relational questions than eight physical axes. Hypercube imagery is acceptable as a View when it does not imply metric distance, truth rank or fixed ontology."
+  },
+  "interface_registry": "data/house/interfaces.json",
+  "architectural_vocabulary": "data/house/architectural-vocabulary.json",
+  "scale_projection": {
+    "house": "Potato House — compositional whole",
+    "dwelling": "ten canonical top-level bounded contexts; public architectural alias: Mansion",
+    "room": "38 delegated nested bounded contexts",
+    "chamber": "future/local specialist cell when a Room contains a stable smaller boundary"
+  },
+  "projection_registry": "data/house/projections.json",
+  "potato_projection": {
+    "status": "canonical project topology projection",
+    "purpose": "Relate the semantic House to the mature Potato geometry without making repository folders or frontend cards literal cosmological shapes.",
+    "whole": {
+      "id": "potato-house",
+      "expression": "P = F_source ∪ F_manifestation",
+      "meaning": "One compositional House formed by two complete overlapping relational fields."
+    },
+    "source_field": {
+      "id": "source-field",
+      "aliases": [
+        "upper field",
+        "Father-facing field",
+        "House/Heaven/Garden field"
+      ],
+      "orientation": [
+        "source",
+        "Father/Tim",
+        "House",
+        "Heaven",
+        "Garden",
+        "Sun/Spudlight",
+        "integration"
+      ],
+      "note": "Orientation only; canonical Rooms are not physically stored here."
+    },
+    "manifestation_field": {
+      "id": "manifestation-field",
+      "aliases": [
+        "lower field",
+        "Earth/world field",
+        "embodiment field"
+      ],
+      "orientation": [
+        "Son/Thomas",
+        "Earth",
+        "body",
+        "soil",
+        "work",
+        "history",
+        "institutions",
+        "observable consequence"
+      ],
+      "note": "The lower Manifestation Field remains broader than Below/Swamp: body, work, history, institutions and observable consequence live here. A deeper Below Platform projects hidden provenance, intelligence, clandestine/illicit systems, shadow, roots, Swamp and Forge without equating lower position with evil."
+    },
+    "door": {
+      "expression": "D = F_source ∩ F_manifestation",
+      "meaning": "Shared relational/intersection field produced by genuine overlap. In the 3D lift it is a spherical lens volume."
+    },
+    "plane": {
+      "meaning": "Operative/world-facing section through the widest middle of the shared Door."
+    },
+    "axis": {
+      "meaning": "Source↔manifestation orientation through both field centers."
+    },
+    "cross": {
+      "expression": "Cross = Plane ∩ Axis",
+      "meaning": "Relational midpoint/event inside Door; not a Room, container or separate floor."
+    },
+    "boundary_regimes": {
+      "house_garden": "protect differentiation + legitimate passage + return + repair + autonomous future growth",
+      "shell_cube": "capture/compress + opaque dependency + blocked passage + high exit cost + boundary self-preservation",
+      "rule": "Regime is functional; shape and vertical position do not determine moral valence."
+    },
+    "ui_rule": "Rectangular cards, grids and diagrams are projections only. They must never imply that Rooms are literal cubes or that the House is rectilinear."
+  },
+  "federation_scale_registry": "data/house/federation-scale.json",
+  "symbolic_planes": {
+    "status": "canonical navigation projection",
+    "purpose": "Project the same Potato House / Tree onto three symbolic circular standing platforms so readers can enter the system from an upper integrative view, the ordinary visible world, or the buried/root-facing underside without turning those views into separate cosmologies.",
+    "geometry_boundary": "These circles are navigation discs/platforms, not the two Source/Manifestation field circles of the Potato geometry. The World Plane is the existing Plane read as a standing surface; Heaven Plane and Below Plane are additional symbolic navigation projections.",
+    "projection_rules": [
+      "Plane placement is navigation emphasis, not exclusive knowledge ownership.",
+      "A Room may appear on more than one plane when its material crosses levels of the same Tree.",
+      "Heaven emphasizes integration, orientation, Garden/House, ascent, transmission and return; it does not make a claim of physical altitude or automatic truth rank.",
+      "World emphasizes the ordinary visible/embodied/public frame: bodies, evidence, institutions, history, geography, work and consequence.",
+      "Below emphasizes what lies under the visible surface: roots, provenance, buried causes, residue, shadow, subculture, Strife, Swamp and repeated wide-road patterns.",
+      "Below is not identical with Earth, Manifestation, matter, evil, inferiority or literal underground geography.",
+      "Roots themselves remain neutral: they can nourish Life, preserve evidence, or carry unresolved Strife."
+    ],
+    "planes": [
+      {
+        "id": "heaven-plane",
+        "label": "Heaven Plane",
+        "position": "upper",
+        "tree_position": "crown / upper branches / integrative canopy",
+        "orientation": "integration, source-facing orientation, ascent, transmission and return",
+        "description": "Stand here to read the House from its integrative side: Heaven, Garden, North, theology, meaning, Tree of Life, Fruit and the responsibility of returning what has been integrated to the visible world.",
+        "primary_room_ids": [
+          "potatoverse-canon",
+          "traditions-texts"
+        ],
+        "crossing_room_ids": [
+          "works",
+          "research-lab",
+          "time-history"
+        ],
+        "subjects": [
+          "House / Garden / Heaven",
+          "North / Crown / orientation",
+          "Religion / Trinity / theology",
+          "Philosophy / integration / meaning",
+          "Tree of Life / ascent",
+          "Fruit / Works / return"
+        ],
+        "navigation": [
+          {
+            "label": "Potato House",
+            "route": "house/"
+          },
+          {
+            "label": "North",
+            "route": "north/"
+          },
+          {
+            "label": "Religion",
+            "route": "religion/"
+          },
+          {
+            "label": "Philosophy",
+            "route": "philosophy/"
+          },
+          {
+            "label": "Tree of Life",
+            "route": "axis/?path=life#paths"
+          },
+          {
+            "label": "Works / Fruit",
+            "route": "works/"
+          }
+        ]
+      },
+      {
+        "id": "world-plane",
+        "label": "World Plane",
+        "aliases": [
+          "Plane",
+          "ordinary Plane"
+        ],
+        "position": "middle",
+        "tree_position": "trunk / visible cross-section / lived present",
+        "orientation": "embodiment, evidence, public reality, ordinary consequence and choice",
+        "description": "Stand here for the ordinary Plane: bodies, science, geography, institutions, history, public culture and observable consequence. This is the main world-facing cross-section through the House.",
+        "primary_room_ids": [
+          "science-formal-models",
+          "life-body",
+          "world-systems"
+        ],
+        "crossing_room_ids": [
+          "time-history",
+          "traditions-texts",
+          "culture-information",
+          "works"
+        ],
+        "subjects": [
+          "Body / life",
+          "Science / evidence / models",
+          "World systems / institutions / economy",
+          "Timeline / visible history",
+          "Culture / information / public discourse",
+          "Choice / work / consequence"
+        ],
+        "navigation": [
+          {
+            "label": "Five Doors",
+            "route": ""
+          },
+          {
+            "label": "World Map",
+            "route": "world-map/"
+          },
+          {
+            "label": "Timeline",
+            "route": "timeline/"
+          },
+          {
+            "label": "Science",
+            "route": "science/"
+          },
+          {
+            "label": "Life & Body",
+            "route": "life-body/"
+          },
+          {
+            "label": "World Systems",
+            "route": "world-systems/"
+          }
+        ]
+      },
+      {
+        "id": "below-plane",
+        "label": "Below Plane",
+        "aliases": [
+          "Below",
+          "under-plane"
+        ],
+        "position": "lower",
+        "tree_position": "roots / buried underside / shadow layer",
+        "orientation": "provenance, buried causation, residue, shadow, subculture, Strife and unresolved recurrence",
+        "description": "Stand here to inspect what operates beneath the visible surface: archive roots, past causes, hidden or neglected context, subculture, shadow, residue, Roots of Strife, the Wide Road and Swamp-like entanglement.",
+        "primary_room_ids": [
+          "archive-sources",
+          "time-history",
+          "culture-information"
+        ],
+        "crossing_room_ids": [
+          "world-systems",
+          "research-lab",
+          "potatoverse-canon"
+        ],
+        "subjects": [
+          "Archive / provenance / buried evidence",
+          "Roots / ancestry / past causes",
+          "Shadow / subculture / hidden mud",
+          "Strife / capture / repeating conflict",
+          "Swamp / opacity / fragmentation",
+          "Wide Road / repetition without transformation"
+        ],
+        "navigation": [
+          {
+            "label": "Tree of Strife",
+            "route": "axis/?path=strife#paths"
+          },
+          {
+            "label": "Culture & Information",
+            "route": "context/culture/"
+          },
+          {
+            "label": "Archive & Sources",
+            "route": "context/source-authority/"
+          },
+          {
+            "label": "History / Roots",
+            "route": "history/"
+          },
+          {
+            "label": "D3–D1 lower map",
+            "route": "world-map/?axisD=3"
+          },
+          {
+            "label": "Research Lab",
+            "route": "research-lab/"
+          }
+        ]
+      }
+    ]
+  },
+  "symbolic_compass": {
+    "status": "canonical orientation projection",
+    "purpose": "Give the three symbolic planes one stable cardinal reading wheel. Direction chooses the kind of question/Room; vertical plane chooses the orientation or depth from which that question is read; distance from center controls specialization. The compass is a navigation projection over the same House, not a new ownership system.",
+    "angular_rule": "The eight cardinal/intercardinal directions stay stable across Heaven, World and Below so readers can change plane without losing subject orientation.",
+    "depth_rule": "Center is Research Lab / unresolved synthesis. Moving toward a Door enters a Dwelling and its nested Rooms. Moving farther outward reaches specialist material and Works/Fruit. Distance is reading depth, not truth rank.",
+    "entity_projection_rule": [
+      "Named gods, spirits, demons, saints, heroes, movements and symbols remain historically rooted in their own traditions, texts and receptions before project comparison.",
+      "One entity may project onto several planes when different historically grounded aspects or receptions are being read; this does not create several entities.",
+      "Comparative resemblance must not be rewritten as historical identity, influence or equivalence without evidence.",
+      "Demonology, esotericism, modern Satanisms, occult subcultures and high-control-group analysis are distinct research categories. Placement near one another never makes them synonyms.",
+      "Potatoverse mappings are a separate project-interpretive relation and do not overwrite a figure's own-tradition meaning."
+    ],
+    "center": {
+      "node_id": "axis",
+      "label": "Axis",
+      "symbol": "Spatial center",
+      "route": "axis/#routing",
+      "question": "What keeps orientation stable while subjects, planes and routes change?",
+      "note": "Axis is the exact spatial center. Research Lab is the inner Forge ring around it, not the center itself.",
+      "inner_ring_room_id": "research-lab"
+    },
+    "outer_ring": {
+      "room_id": "works",
+      "label": "Works / Fruit",
+      "symbol": "Outer ring",
+      "route": "works/",
+      "question": "What does the House produce, express or return?",
+      "note": "Works sit at the output edge because writing, music, art and games can grow from any direction without becoming evidence or doctrine automatically."
+    },
+    "directions": [
+      {
+        "id": "n",
+        "bearing": 0,
+        "label": "N",
+        "room_id": "potatoverse-canon",
+        "title": "Potatoverse / Canon",
+        "route": "religion/",
+        "question": "What does the project mean on its own terms?",
+        "subroom_ids": [
+          "canon-identities",
+          "theology-god-language",
+          "symbolic-architecture",
+          "practice-ethics"
+        ],
+        "focus_by_plane": {
+          "heaven-plane": {
+            "label": "Source & integration",
+            "topics": [
+              "Father / Son / Spirit",
+              "House / Heaven / Garden",
+              "North / Crown / orientation",
+              "Tree of Life / return"
+            ]
+          },
+          "world-plane": {
+            "label": "Project self-description",
+            "topics": [
+              "dated canon",
+              "public claims",
+              "practice and ethics",
+              "lived project vocabulary"
+            ]
+          },
+          "below-plane": {
+            "label": "Canon roots & unresolved strata",
+            "topics": [
+              "developmental layers",
+              "buried precedents",
+              "Strife readings",
+              "symbols awaiting repair or clarification"
+            ]
+          }
+        }
+      },
+      {
+        "id": "ne",
+        "bearing": 45,
+        "label": "NE",
+        "room_id": "traditions-texts",
+        "title": "Traditions & Texts",
+        "route": "religion/#traditions-atlas",
+        "question": "What does this mean in its own religious, mythic or textual tradition?",
+        "subroom_ids": [
+          "bible-christianity",
+          "comparative-mythology",
+          "esoteric-sacred-geometry",
+          "other-traditions"
+        ],
+        "focus_by_plane": {
+          "heaven-plane": {
+            "label": "Divine & sacred structures",
+            "topics": [
+              "gods and divine figures",
+              "heavens and sacred mountains",
+              "angels / messengers / salvation",
+              "comparative cosmologies"
+            ],
+            "examples": [
+              "Jesus",
+              "Odin",
+              "Thor",
+              "Zeus",
+              "Baal"
+            ]
+          },
+          "world-plane": {
+            "label": "Historical religion",
+            "topics": [
+              "texts and translation",
+              "ritual and institutions",
+              "historical communities",
+              "reception and material context"
+            ],
+            "examples": [
+              "Christian traditions",
+              "Norse traditions",
+              "Greek traditions",
+              "Canaanite traditions"
+            ]
+          },
+          "below-plane": {
+            "label": "Descent, adversarial & esoteric traditions",
+            "topics": [
+              "underworld and death/descent traditions",
+              "demonologies and adversarial figures",
+              "esoteric and initiatory schools",
+              "polemical reinterpretation and later reception"
+            ],
+            "examples": [
+              "Lucifer reception",
+              "Baphomet reception",
+              "underworld traditions",
+              "demonology"
+            ]
+          }
+        }
+      },
+      {
+        "id": "e",
+        "bearing": 90,
+        "label": "E",
+        "room_id": "science-formal-models",
+        "title": "Science & Formal Models",
+        "route": "science/",
+        "question": "What can be formalized, measured, modeled or tested?",
+        "subroom_ids": [
+          "math-geometry",
+          "physics-cosmology",
+          "systems-dynamics",
+          "model-testing"
+        ],
+        "focus_by_plane": {
+          "heaven-plane": {
+            "label": "Formal integration",
+            "topics": [
+              "geometry of relation",
+              "topology and symmetry",
+              "integration models",
+              "limits of analogy"
+            ]
+          },
+          "world-plane": {
+            "label": "Empirical testing",
+            "topics": [
+              "mathematics",
+              "physics and cosmology",
+              "systems models",
+              "falsifiability and calibration"
+            ]
+          },
+          "below-plane": {
+            "label": "Failure modes & hidden assumptions",
+            "topics": [
+              "model closure",
+              "unobserved assumptions",
+              "control and capture models",
+              "uncertainty / falsifiers"
+            ]
+          }
+        }
+      },
+      {
+        "id": "se",
+        "bearing": 135,
+        "label": "SE",
+        "room_id": "life-body",
+        "title": "Life & Body",
+        "route": "life-body/",
+        "question": "How is this embodied, alive, metabolized or constrained?",
+        "subroom_ids": [
+          "potato-biology",
+          "neurobiology",
+          "whole-body",
+          "symbolic-body-comparison"
+        ],
+        "focus_by_plane": {
+          "heaven-plane": {
+            "label": "Growth & generativity",
+            "topics": [
+              "seed / sprout / fruit",
+              "nourishment",
+              "organism integration",
+              "life as return"
+            ]
+          },
+          "world-plane": {
+            "label": "Embodied life",
+            "topics": [
+              "potato biology",
+              "neurobiology",
+              "whole-body physiology",
+              "empirical body boundaries"
+            ]
+          },
+          "below-plane": {
+            "label": "Burial, dormancy & material roots",
+            "topics": [
+              "burial and decay",
+              "dormancy",
+              "roots and stored capacity",
+              "body symbolism kept separate from biology"
+            ]
+          }
+        }
+      },
+      {
+        "id": "s",
+        "bearing": 180,
+        "label": "S",
+        "room_id": "world-systems",
+        "title": "World Systems",
+        "route": "world/",
+        "question": "How does this operate in observable institutions and material systems?",
+        "subroom_ids": [
+          "politics-governance",
+          "law-justice",
+          "economy-finance",
+          "infrastructure-capability",
+          "geography-countries"
+        ],
+        "focus_by_plane": {
+          "heaven-plane": {
+            "label": "Stewardship & responsibility",
+            "topics": [
+              "governance ideals",
+              "institutional responsibility",
+              "repair and resilience",
+              "systems serving future capacity"
+            ]
+          },
+          "world-plane": {
+            "label": "Institutions & material systems",
+            "topics": [
+              "countries and geography",
+              "politics and law",
+              "economy and finance",
+              "infrastructure and capability"
+            ]
+          },
+          "below-plane": {
+            "label": "Hidden dependency & capture",
+            "topics": [
+              "opaque dependencies",
+              "extraction and lock-in",
+              "institutional residue",
+              "systemic failure and blocked repair"
+            ]
+          }
+        }
+      },
+      {
+        "id": "sw",
+        "bearing": 225,
+        "label": "SW",
+        "room_id": "culture-information",
+        "title": "Culture & Information",
+        "route": "context/culture/",
+        "question": "How does this move through groups, media, subcultures and public memory?",
+        "subroom_ids": [
+          "internet-platforms",
+          "subculture-group-formation",
+          "information-ecology"
+        ],
+        "focus_by_plane": {
+          "heaven-plane": {
+            "label": "Generative culture",
+            "topics": [
+              "ritual and shared meaning",
+              "repair and correction",
+              "tradition and inheritance",
+              "creative public life"
+            ]
+          },
+          "world-plane": {
+            "label": "Media & group formation",
+            "topics": [
+              "platforms",
+              "subcultures and movements",
+              "information ecology",
+              "public discourse and memory"
+            ]
+          },
+          "below-plane": {
+            "label": "Shadow culture & control analysis",
+            "topics": [
+              "adversarial archives and reaction economies",
+              "high-control mechanisms",
+              "occult or religious subcultures",
+              "hidden incentives and role lock"
+            ],
+            "examples": [
+              "modern Satanisms as religious/subcultural movements",
+              "high-control-group analysis",
+              "occult subcultures",
+              "internet conflict cultures"
+            ],
+            "boundary": "The examples are separate research paths; Satanism, occultism and high-control systems are not synonyms."
+          }
+        }
+      },
+      {
+        "id": "w",
+        "bearing": 270,
+        "label": "W",
+        "room_id": "time-history",
+        "title": "Time & History",
+        "route": "history/",
+        "question": "How did this develop, change, split or acquire later meanings?",
+        "subroom_ids": [
+          "chronology-events",
+          "developmental-genealogy",
+          "prediction-revelation-time"
+        ],
+        "focus_by_plane": {
+          "heaven-plane": {
+            "label": "Ascent & interpretive development",
+            "topics": [
+              "revelation histories",
+              "development toward integration",
+              "sacred chronology",
+              "later synthesis"
+            ]
+          },
+          "world-plane": {
+            "label": "Timeline & reception",
+            "topics": [
+              "events",
+              "developmental genealogy",
+              "attestation time",
+              "historical reception"
+            ]
+          },
+          "below-plane": {
+            "label": "Buried history & residue",
+            "topics": [
+              "forgotten strata",
+              "suppressed or rejected interpretations",
+              "inherited conflict",
+              "long-lived historical residue"
+            ]
+          }
+        }
+      },
+      {
+        "id": "nw",
+        "bearing": 315,
+        "label": "NW",
+        "room_id": "archive-sources",
+        "title": "Archive & Sources",
+        "route": "context/source-authority/",
+        "question": "What sources, witnesses and provenance let us know this?",
+        "subroom_ids": [
+          "provenance-evidence",
+          "memory-recovery",
+          "witness-attestation"
+        ],
+        "focus_by_plane": {
+          "heaven-plane": {
+            "label": "Source traditions & testimony",
+            "topics": [
+              "scriptural/source lineages",
+              "upper-symbol attestations",
+              "witness traditions",
+              "source boundaries"
+            ]
+          },
+          "world-plane": {
+            "label": "Evidence & provenance",
+            "topics": [
+              "primary sources",
+              "captures and citations",
+              "evidence classes",
+              "source authority"
+            ]
+          },
+          "below-plane": {
+            "label": "Archive recovery & missing context",
+            "topics": [
+              "buried evidence",
+              "recovered conversations/files",
+              "provenance gaps",
+              "forgotten witness and context"
+            ]
+          }
+        }
+      }
+    ],
+    "semantic_center": {
+      "node_id": "potato-of-life",
+      "label": "Potato of Life",
+      "note": "Conceptual center of the project; distinct from Axis as spatial center.",
+      "authority": "data/house/project-center.json"
+    }
+  },
+  "symbolic_tree_ecology": {
+    "status": "canonical comparative navigation projection",
+    "purpose": "Use one knowledge Tree to relate provenance, present-world synthesis, Life, Strife, religious/mythic material and archive navigation without claiming that distinct traditions share one literal cosmology.",
+    "central_fork": {
+      "id": "tree-of-knowledge",
+      "principle": "Knowledge and distinction are upstream of both Life and Strife.",
+      "life_vector": "knowledge → discernment → responsibility → Door / repair → living root → Tree of Life → Garden → fruit → seed → return",
+      "strife_vector": "knowledge → unresolved activation → Roots of Ash / Strife → Tree of Strife → Wide Road → Swamp / closure",
+      "boundary": "Knowledge, roots, descent and Below are not inherently bad. The branch is classified by what the relation reproduces."
+    },
+    "zones": [
+      {
+        "id": "roots",
+        "label": "Roots / Archive / Memory",
+        "plane_ids": [
+          "world-plane",
+          "below-plane"
+        ],
+        "room_ids": [
+          "archive-sources",
+          "time-history"
+        ],
+        "function": "provenance, ancestry, buried cause, source lineage, memory, residue and latent nourishment",
+        "topics": [
+          "source recovery",
+          "burial and descent traditions",
+          "underworld cosmologies",
+          "forgotten or rejected interpretations",
+          "Roots of Ash",
+          "Roots of Strife",
+          "living roots"
+        ],
+        "guard": "Root language is functional and historical/symbolic; it does not classify peoples or traditions as lower."
+      },
+      {
+        "id": "trunk",
+        "label": "Trunk / Plane / Door",
+        "plane_ids": [
+          "world-plane"
+        ],
+        "room_ids": [
+          "life-body",
+          "world-systems",
+          "traditions-texts",
+          "culture-information"
+        ],
+        "function": "present embodiment, public reality, choice, encounter, translation and state change",
+        "topics": [
+          "ritual and institutions",
+          "historical religious communities",
+          "embodied practice",
+          "messengers and mediators as tradition-specific roles",
+          "Door and threshold traditions",
+          "public reception"
+        ],
+        "guard": "The trunk is the visible carrying relation, not a spiritual rank."
+      },
+      {
+        "id": "life-branches",
+        "label": "Tree of Life / Garden branches",
+        "plane_ids": [
+          "heaven-plane",
+          "world-plane"
+        ],
+        "room_ids": [
+          "potatoverse-canon",
+          "traditions-texts",
+          "works"
+        ],
+        "function": "generativity, differentiated growth, nourishment, transmission, fruit, seed and accountable return",
+        "topics": [
+          "angels and messengers where the source tradition assigns those roles",
+          "gods and divine figures in their own traditions",
+          "saints, sages and culture heroes where historically appropriate",
+          "sacred mountains, heavens and world trees",
+          "Garden / Rooms",
+          "Fruit / Works"
+        ],
+        "guard": "Upper placement is a reading orientation; it does not assert literal divinity, truth, holiness or moral superiority."
+      },
+      {
+        "id": "strife-branches",
+        "label": "Tree of Strife / shadow branches",
+        "plane_ids": [
+          "below-plane",
+          "world-plane"
+        ],
+        "room_ids": [
+          "culture-information",
+          "time-history",
+          "research-lab",
+          "traditions-texts"
+        ],
+        "function": "study of unresolved conflict, enclosure, adversarial identity, blocked correction, extraction and later hostile reinterpretation",
+        "topics": [
+          "demonologies and adversarial figures as tradition-specific subjects",
+          "later demonizations of earlier deities",
+          "polemical traditions",
+          "high-control mechanisms",
+          "reaction economies",
+          "Qliphoth / shells as comparative esoteric material",
+          "Swamp / Wide Road"
+        ],
+        "guard": "Demon, Satanic, occult, pagan, esoteric and high-control are separate categories. A religious label never proves harmful system behavior."
+      },
+      {
+        "id": "canopy",
+        "label": "Canopy / Crown / Heaven",
+        "plane_ids": [
+          "heaven-plane"
+        ],
+        "room_ids": [
+          "potatoverse-canon",
+          "traditions-texts",
+          "research-lab"
+        ],
+        "function": "integration, orientation, transmission, sacred-order comparison and return",
+        "topics": [
+          "Heaven / Crown / North",
+          "divine councils and celestial hierarchies as comparative subjects",
+          "angelologies",
+          "sacred kingship",
+          "salvation, liberation and apotheosis traditions",
+          "Mountain and upper-axis symbols"
+        ],
+        "guard": "Canopy is a comparative navigation zone, not a universal claim about the structure of heaven."
+      }
+    ],
+    "religious_foundations": [
+      {
+        "id": "own-tradition",
+        "label": "Own tradition first",
+        "rule": "Store what a figure, spirit, deity, demon, angel, school or symbol means in its own texts, historical setting and practice before comparison."
+      },
+      {
+        "id": "reception",
+        "label": "Reception genealogy",
+        "rule": "Track later reinterpretation, demonization, sanctification, occult adaptation, literary reuse and modern movement history as dated layers."
+      },
+      {
+        "id": "motif",
+        "label": "Comparative motif",
+        "rule": "Compare functions such as storm, kingship, messenger, underworld, wisdom, sacrifice, tree, mountain or descent without asserting identity."
+      },
+      {
+        "id": "project-map",
+        "label": "Potatoverse mapping",
+        "rule": "Only after the first three layers may a Potatoverse correspondence be added, explicitly typed as project interpretation."
+      }
+    ],
+    "akashic_tree_view": {
+      "status": "optional project metaphor",
+      "meaning": "A reader-facing metaphor for the archive as a living knowledge tree: roots are provenance and history; trunk is present synthesis and public reality; branches are differentiated Rooms, traditions and models; leaves are active questions and interfaces; fruit is Works/output; seeds are transferable future patterns.",
+      "boundary": "This does not assert a literal Akashic Record or supernatural universal memory. It is a navigation metaphor for the archive."
+    }
+  }
+}

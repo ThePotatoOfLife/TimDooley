@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Foundation Timeline — Tim Dooley & The Potato of Life</title>
+<meta name="description" content="Cross-domain chronology of foundations, refoundations, constitutions, religious formations, schools, protocols, companies and movements.">
+<link rel="stylesheet" href="../../app/site-system.css">
+<style>
+.page{max-width:1180px;margin:auto;padding:38px 20px 96px}.nav{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px}.nav a{color:var(--site-muted);text-decoration:none}.lead{max-width:880px;color:#cdd3c8;font:400 20px/1.55 var(--site-font-serif)}
+.controls{display:flex;gap:7px;flex-wrap:wrap;margin:22px 0}.filter{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:7px 10px;cursor:pointer}.filter[aria-pressed="true"],.filter:hover{color:var(--site-green);border-color:#647b5d;background:#101710}
+.foundation-years{display:grid;gap:26px}.year-group{border-top:1px solid var(--site-line);padding-top:16px}.year-group h2{font:400 32px var(--site-font-serif);color:var(--site-gold);margin:0 0 10px}.event-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.event{border:1px solid var(--site-line);border-radius:12px;padding:14px;background:var(--site-panel)}.event strong{display:block;font:400 18px var(--site-font-serif);color:var(--site-gold)}.event em{display:block;color:var(--site-green);font-style:normal;font-size:9px;text-transform:uppercase;letter-spacing:.06em;margin:4px 0}.event p{color:var(--site-muted);font-size:11px;line-height:1.5;margin:5px 0}.event small{display:block;color:var(--site-faint);margin-top:8px}.readout{color:var(--site-muted);font-size:12px;margin:0 0 16px}.room-catalog-controls{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 14px}.room-filter{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:5px 8px;font-size:9px;cursor:pointer}.room-filter[aria-pressed="true"]{color:var(--site-green);border-color:#647b5d}.foundation-room-catalog{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:14px 0 34px}.foundation-room{border:1px solid var(--site-line);border-radius:12px;padding:14px;background:var(--site-panel)}.foundation-room h3{font:400 19px var(--site-font-serif);margin:0}.foundation-room>em{display:block;font-style:normal;color:var(--site-green);font-size:9px;text-transform:uppercase;letter-spacing:.06em;margin-top:3px}.room-face{border-top:1px solid var(--site-line);padding-top:8px;margin-top:9px}.room-face b{display:block;font:400 14px var(--site-font-serif);color:var(--site-gold)}.room-face span{display:block;color:var(--site-muted);font-size:10px;line-height:1.4;margin-top:3px}.room-face small{display:block;color:var(--site-faint);font-size:9px;line-height:1.35;margin-top:4px}.room-metrics{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}.room-metrics i{font-style:normal;border:1px solid var(--site-line);border-radius:999px;padding:4px 6px;font-size:9px;color:#cbd1c8}.foundation-room details{margin-top:9px;border-top:1px solid var(--site-line);padding-top:8px}.foundation-room summary{cursor:pointer;color:#cbd1c8;font-size:10px}.foundation-room details p{color:var(--site-muted);font-size:10px;line-height:1.45}.room-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}.room-badges span{border:1px solid var(--site-line);border-radius:999px;padding:4px 6px;font-size:8px;color:var(--site-muted)}.room-status-ribbon{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin-top:9px}.status-cell{border:1px solid var(--site-line);border-radius:8px;padding:6px}.status-cell b{display:block;font-size:8px;text-transform:uppercase;letter-spacing:.06em;color:var(--site-faint)}.status-cell span{display:block;font-size:9px;color:var(--site-muted);margin-top:2px}.door-history{margin-top:8px}.door-history article{border-top:1px solid var(--site-line);padding:7px 0}.door-history b{display:block;font:400 13px var(--site-font-serif);color:var(--site-gold)}.door-history span{display:block;color:var(--site-muted);font-size:9px;line-height:1.35;margin-top:2px}.research-queue{margin-top:8px;padding:8px 10px;border-left:2px solid #7d6d49;background:rgba(255,255,255,.012)}.research-queue b{display:block;font:400 13px var(--site-font-serif)}.research-queue ul{margin:5px 0 0;padding-left:16px;color:var(--site-muted);font-size:9px;line-height:1.4}
+.seed-controls{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 16px}.seed-toggle{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:6px 9px;cursor:pointer}.seed-toggle[aria-pressed="true"]{color:var(--site-green);border-color:#647b5d}.seed-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:16px 0 34px}.seed-card{border:1px solid var(--site-line);border-radius:12px;padding:14px;background:var(--site-panel)}.seed-card h3{font:400 19px var(--site-font-serif);margin:0;color:var(--site-gold)}.seed-card em{display:block;color:var(--site-green);font-style:normal;font-size:9px;text-transform:uppercase;letter-spacing:.06em;margin:4px 0}.seed-card p{color:var(--site-muted);font-size:11px;line-height:1.5;margin:6px 0}.seed-card small{display:block;color:var(--site-faint);font-size:9px;line-height:1.4}.seed-sides{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}.seed-side{border-top:1px solid var(--site-line);padding-top:8px}.seed-side b{font:400 14px var(--site-font-serif)}.seed-door{margin-top:9px;border-left:2px solid #647b5d;padding:8px 10px;background:rgba(255,255,255,.015)}.seed-door b{display:block;font:400 14px var(--site-font-serif)}.stage-path{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}.stage-chip{border:1px solid var(--site-line);border-radius:999px;padding:4px 7px;font-size:9px;color:var(--site-muted)}.stage-chip b{font-weight:700;color:#cdd5c8}.status-chip{display:inline-block;margin-top:6px;border-radius:999px;border:1px solid var(--site-line);padding:4px 7px;font-size:9px;color:var(--site-green)}@media(max-width:760px){.seed-grid,.seed-sides,.foundation-room-catalog{grid-template-columns:1fr}.room-status-ribbon{grid-template-columns:1fr 1fr}}.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:20px 0}.legend article{border-top:1px solid var(--site-line);padding-top:8px}.legend b{font:400 15px var(--site-font-serif);color:var(--site-gold)}.legend span{display:block;color:var(--site-muted);font-size:10px;margin-top:3px}@media(max-width:760px){.event-grid,.legend{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main class="page">
+<nav class="nav"><a href="../../">← Home</a><a href="../">Timeline</a><a href="../../house/#foundations">House Foundations</a><a href="../../world/">World</a><a href="../../religion/">Religion</a></nav>
+<header><p class="eyebrow">Foundation chronology</p><h1>WHEN WORLDS BECOME REPEATABLE</h1><p class="lead">A cross-domain timeline of Seed, authorization, legal effect, operation, consolidation, refoundation and branching. It does not force every religion, nation, company or philosophy into one false birthday.</p></header>
+<section class="legend">
+<article><b>F₀ / beginning</b><span>The first stable recoverable reference state may be an event, text, practice, legal instrument or interval.</span></article>
+<article><b>Operation</b><span>A thing may be authorized before it actually begins functioning.</span></article>
+<article><b>Refoundation</b><span>Continuity may survive even when the operating platform changes materially.</span></article>
+</section>
+<section id="foundation-rooms">
+<p class="eyebrow">Foundation Rooms</p>
+<h2>Door · Place · House · Today</h2>
+<p class="lead">This is the primary Foundation reader. Each Foundation is a Room/blob in the House. Its Door records when and where it crossed into an operating form; its House location records the conceptual owner/circle; Today records what still exists. Seed/root/sprout/fall remain technical genealogy inside the room.</p>
+<div class="room-catalog-controls" id="foundationRoomFilters"></div>
+<p class="readout" id="foundationRoomReadout">Loading Foundation Rooms…</p>
+<div class="foundation-room-catalog" id="foundationRoomCatalog"></div>
+</section>
+<section>
+<p class="eyebrow">Seeds through the Door</p>
+<h2>Every Foundation has a genealogy, not just a birthday</h2>
+<p class="lead">The death-side records what was compressed, lost, superseded, blocked or no longer sufficient. The Door records the actual crossing. The life-side records the first viable pattern that later people can reproduce. Each record keeps time and place separate, because seed, signature, operation and refoundation often happen in different places.</p>
+<div class="seed-controls" id="foundationSeedFilters"></div>
+<p class="readout" id="foundationSeedReadout">Loading Seed genealogies…</p>
+<div class="seed-grid" id="foundationSeedGrid"></div>
+</section>
+<div class="controls" id="foundationFilters"></div>
+<p class="readout" id="foundationReadout">Loading foundation clocks…</p>
+<div class="foundation-years" id="foundationTimeline"></div>
+</main>
+<script>
+(async()=>{
+ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const [r,g,p,fr]=await Promise.all([fetch('../../data/house/foundation-timeline-wave-001.json'),fetch('../../data/house/foundation-door-seed-genealogy.json'),fetch('../../data/house/foundation-placement-wave-003.json'),fetch('../../data/house/foundation-room-atlas.json')]);if(!r.ok||!g.ok||!p.ok||!fr.ok)return;
+ const data=await r.json(),genealogy=await g.json(),placement=await p.json(),foundationRooms=await fr.json(),events=data.events||[],seedRows=genealogy.records||[],placementBy=Object.fromEntries((placement.records||[]).map(x=>[x.foundation_id,x]));
+ const filters=document.getElementById('foundationFilters'),root=document.getElementById('foundationTimeline'),readout=document.getElementById('foundationReadout');
+ const domains=[...new Set(events.map(x=>x.domain).filter(Boolean))].sort();
+ const types=[...new Set(events.map(x=>x.event_type).filter(Boolean))];
+ let domain='all',type='all';
+ filters.innerHTML='<button class="filter" data-domain="all" aria-pressed="true">All domains</button>'+domains.map(x=>'<button class="filter" data-domain="'+esc(x)+'" aria-pressed="false">'+esc(x)+'</button>').join('')+'<span style="flex-basis:100%"></span><button class="filter" data-type="all" aria-pressed="true">All clocks</button>'+types.map(x=>'<button class="filter" data-type="'+esc(x)+'" aria-pressed="false">'+esc(x.replaceAll('_',' '))+'</button>').join('');
+ function render(){
+   const rows=events.filter(x=>(domain==='all'||x.domain===domain)&&(type==='all'||x.event_type===type));
+   const groups=new Map();
+   for(const e of rows){const y=Number.isFinite(e.year_start)?e.year_start:null;const bucket=y==null?'Undated':y<0?Math.abs(y)+' BCE':String(y);if(!groups.has(bucket))groups.set(bucket,[]);groups.get(bucket).push(e)}
+   root.innerHTML=[...groups.entries()].map(([y,list])=>'<section class="year-group"><h2>'+esc(y)+'</h2><div class="event-grid">'+list.map(e=>'<article class="event"><strong>'+esc(e.name)+'</strong><em>'+esc(e.event_type.replaceAll('_',' '))+' · '+esc(e.domain)+'</em><p>'+esc(e.date_or_range)+' — '+esc(e.label)+'</p><small>'+esc(e.precision)+' · '+esc(e.status)+'</small></article>').join('')+'</div></section>').join('');
+   readout.textContent=rows.length+' foundation-state events visible · '+(domain==='all'?'all domains':domain)+' · '+(type==='all'?'all clocks':type.replaceAll('_',' '));
+   filters.querySelectorAll('[data-domain]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.domain===domain)));
+   filters.querySelectorAll('[data-type]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.type===type)));
+ }
+ filters.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.domain){domain=b.dataset.domain}else if(b.dataset.type){type=b.dataset.type}render()});
+
+
+ const roomFilters=document.getElementById('foundationRoomFilters'),roomCatalog=document.getElementById('foundationRoomCatalog'),roomReadout=document.getElementById('foundationRoomReadout');
+ const roomRows=foundationRooms.rooms||[],ownerRooms=[...new Set(roomRows.map(x=>x.house_location?.primary_room).filter(Boolean))].sort();
+ let roomOwner='all',roomMode='all';
+ roomFilters.innerHTML='<button class="room-filter" data-room-owner="all" aria-pressed="true">All House Rooms</button>'+ownerRooms.map(x=>'<button class="room-filter" data-room-owner="'+esc(x)+'" aria-pressed="false">'+esc(x)+'</button>').join('')+'<span style="flex-basis:100%"></span><button class="room-filter" data-room-mode="all" aria-pressed="true">All</button><button class="room-filter" data-room-mode="map" aria-pressed="false">Map-ready origin</button><button class="room-filter" data-room-mode="today" aria-pressed="false">Quantified Today</button>';
+ const formatValue=m=>{const q=m.qualifier?m.qualifier+' ':'';const v=typeof m.value==='number'?new Intl.NumberFormat('en-US',{notation:m.value>=1000000?'compact':'standard',maximumFractionDigits:1}).format(m.value):String(m.value??'');return q+v+' '+(m.unit||'')};
+ function renderFoundationRooms(){
+   const rows=roomRows.filter(x=>(roomOwner==='all'||x.house_location?.primary_room===roomOwner)&&(roomMode==='all'||(roomMode==='map'&&x.origin_door?.map_ready)||(roomMode==='today'&&(x.today?.typed_reach||[]).length)));
+   roomCatalog.innerHTML=rows.map(x=>{
+     const metrics=(x.today?.typed_reach||[]).map(m=>'<i>'+esc(formatValue(m))+'</i>').join('');
+     const badges=['House: '+(x.house_location?.primary_room||''),x.house_location?.circle_anchor?.label||'',x.origin_door?.map_ready?'map-ready origin':'non-point / unresolved origin'].filter(Boolean).map(v=>'<span>'+esc(v)+'</span>').join('');
+     const st=x.room_status||{},statusHtml='<div class="room-status-ribbon"><div class="status-cell"><b>Origin</b><span>'+esc(st.origin?.label||'')+'</span></div><div class="status-cell"><b>Reproduction</b><span>'+esc(st.reproduction?.label||'')+'</span></div><div class="status-cell"><b>Today</b><span>'+esc(st.today?.label||'')+'</span></div><div class="status-cell"><b>Geography</b><span>'+esc(st.geography?.label||'')+'</span></div></div>',doors=(x.door_history||[]).map(d=>'<article><b>'+esc(d.role||d.event_type||'Door')+'</b><span>'+esc(d.date_or_range||'')+' · '+esc(d.label||'')+'</span></article>').join(''),queue=(x.research_queue||[]).length?'<div class="research-queue"><b>Research queue</b><ul>'+(x.research_queue||[]).map(q=>'<li>'+esc(q)+'</li>').join('')+'</ul></div>':'';return '<article class="foundation-room"><h3>'+esc(x.name)+'</h3><em>'+esc(x.domain)+'</em><div class="room-badges">'+badges+'</div>'+statusHtml+'<div class="room-face"><b>Origin Door</b><span>'+esc(x.origin_door?.event||'')+'</span><small>'+esc(x.origin_door?.time||'')+' · '+esc(x.origin_door?.physical_origin||'distributed/unknown')+' · '+esc(x.origin_door?.place_precision||'')+'</small></div><div class="room-face"><b>House location</b><span>'+esc(x.house_location?.primary_room||'')+' · '+esc(x.house_location?.circle_anchor?.label||'')+'</span><small>'+esc(x.house_location?.circle_anchor?.why||'')+'</small></div><div class="room-face"><b>First reproduction</b><span>'+esc(x.first_reproduction?.evidence?.label||x.first_reproduction?.evidence?.evidence_type||'Not yet recovered')+'</span><small>'+esc(x.first_reproduction?.evidence?.date_or_range||'undated')+' · '+esc(x.first_reproduction?.evidence?.status||'research gap')+'</small></div><div class="room-face"><b>Today</b><span>'+esc(x.today?.continuity_mode||x.today?.current_status||'unresolved')+'</span>'+(metrics?'<div class="room-metrics">'+metrics+'</div>':'<small>'+esc(x.today?.snapshot_coverage||'structural snapshot only')+'</small>')+'</div>'+queue+'<details><summary>Door history & genealogy</summary><div class="door-history">'+doors+'</div><p><b>Root / death-side:</b> '+esc(x.genealogy?.seed_of_death?.summary||'')+'</p><p><b>Sprout / life-side:</b> '+esc(x.genealogy?.seed_of_life?.summary||'')+'</p><p><b>Fall / refoundation:</b> '+esc(x.genealogy?.fall_return_refoundation?.summary||'')+'</p></details></article>';
+   }).join('');
+   roomReadout.textContent=rows.length+' of '+roomRows.length+' Foundation Rooms visible · '+(roomOwner==='all'?'all House owners':roomOwner)+' · '+(roomMode==='all'?'all snapshot states':roomMode==='map'?'map-ready origins':'quantified Today');
+   roomFilters.querySelectorAll('[data-room-owner]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.roomOwner===roomOwner)));
+   roomFilters.querySelectorAll('[data-room-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.roomMode===roomMode)));
+ }
+ roomFilters.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.roomOwner!==undefined)roomOwner=b.dataset.roomOwner;if(b.dataset.roomMode!==undefined)roomMode=b.dataset.roomMode;renderFoundationRooms()});
+ renderFoundationRooms();
+
+ const seedFilters=document.getElementById('foundationSeedFilters'),seedRoot=document.getElementById('foundationSeedGrid'),seedReadout=document.getElementById('foundationSeedReadout');
+ const seedDomains=[...new Set(seedRows.map(x=>x.domain).filter(Boolean))].sort();let seedDomain='all';
+ seedFilters.innerHTML='<button class="seed-toggle" data-seed-domain="all" aria-pressed="true">All Seeds</button>'+seedDomains.map(x=>'<button class="seed-toggle" data-seed-domain="'+esc(x)+'" aria-pressed="false">'+esc(x)+'</button>').join('');
+ function renderSeeds(){
+   const rows=seedRows.filter(x=>seedDomain==='all'||x.domain===seedDomain);
+   seedRoot.innerHTML=rows.map(x=>{
+     const places=(x.emergence_places||[]).map(p=>p.clock+' · '+p.place).join(' | ');
+     const rise=Array.isArray(x.foundation_rise?.reproduction_basis)?x.foundation_rise.reproduction_basis.join(' · '):String(x.foundation_rise?.reproduction_basis||'');
+     const pl=placementBy[x.foundation_id],stage=(pl?.field_projection||[]).map(z=>'<span class="stage-chip"><b>'+esc(z.stage)+'</b> · '+esc(z.plane)+' · '+esc(z.direction)+'</span>').join('');
+     return '<article class="seed-card"><h3>'+esc(x.name)+'</h3><em>'+esc(x.domain)+'</em>'+(pl?'<span class="status-chip">'+esc(pl.current_status)+'</span>':'')+'<small>'+esc(places)+'</small><div class="seed-sides"><div class="seed-side"><b>Seed of Death</b><p>'+esc(x.seed_of_death?.summary||'')+'</p><small>'+esc(x.seed_of_death?.time||'')+' · '+esc(x.seed_of_death?.place||'')+' · '+esc(x.seed_of_death?.status||'')+'</small></div><div class="seed-side"><b>Seed of Life</b><p>'+esc(x.seed_of_life?.summary||'')+'</p><small>'+esc(x.seed_of_life?.time||'')+' · '+esc(x.seed_of_life?.place||'')+' · '+esc(x.seed_of_life?.status||'')+'</small></div></div><div class="seed-door"><b>Door crossing</b><p>'+esc(x.door_crossing?.event||'')+'</p><small>'+esc(x.door_crossing?.time||'')+' · '+esc(x.door_crossing?.place||'')+'</small></div><p><b>Foundation rises through:</b> '+esc(rise)+'</p>'+(stage?'<div class="stage-path">'+stage+'</div>':'')+'<p><b>Fall / refoundation:</b> '+esc(x.fall_return_refoundation?.type||'')+' — '+esc(x.fall_return_refoundation?.summary||'')+'</p></article>';
+   }).join('');
+   seedReadout.textContent=rows.length+' Foundation Seed genealogies visible · '+(seedDomain==='all'?'all domains':seedDomain);
+   seedFilters.querySelectorAll('[data-seed-domain]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.seedDomain===seedDomain)));
+ }
+ seedFilters.addEventListener('click',e=>{const b=e.target.closest('[data-seed-domain]');if(!b)return;seedDomain=b.dataset.seedDomain;renderSeeds()});
+ renderSeeds();
+
+ render();
+})().catch(()=>{});
+</script>
+<script src="../../app/house-journey.js"></script></body></html>

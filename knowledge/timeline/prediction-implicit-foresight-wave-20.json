@@ -1,7 +1,7 @@
 {
   "id": "prediction-implicit-foresight-wave-20",
   "title": "Tim Dooley — Implicit Foresight / Opinion-as-Prediction Audit — Wave 20",
-  "updated": "2026-09-17",
+  "updated": "2026-09-19",
   "status": "additive supplement only; existing fulfilled/revelation ledgers unchanged",
   "purpose": "Capture correct or potentially correct forward-looking consequences hidden inside Tim Dooley's ordinary opinions, designs, diagnoses and architectural judgments, even when he did not explicitly say 'I predict'. A case belongs here only when the earlier statement implies a reasonably specific later state and the later state has a dated external anchor.",
   "method": {
@@ -26,10 +26,13 @@
       "recovered_architecture": [
         "Repeated tasks should become reusable task blueprints/workflows rather than be reconstructed from empty instructions.",
         "Raw/low-structure material should remain recoverable while higher-value patterns are extracted.",
-        "Failed or degraded examples should remain available as failure memory instead of being deleted.",
-        "Reusable patterns should retain residuals/exceptions rather than flattening every example into one prototype."
+        "Beacons represent higher-value structured patterns/attractors above the raw-information layer.",
+        "Failed or degraded examples should remain available as failure memory so the system remembers failure shapes instead of deleting them.",
+        "Preserve a central/archetypal pattern plus residual deviations rather than averaging away specific differences.",
+        "Letters, numbers, words, phrases, entities, categories and larger objects coexist in a multi-resolution relational/vector-like schema space.",
+        "Separate workflow/controller agents from creative/personality-learning components so internal experimentation does not overwhelm the user-facing layer."
       ],
-      "frozen_implied_prediction": "AI agents will increasingly need persistent procedural/failure memory that transforms past interactions into structured reusable knowledge and lets later tasks reuse successful procedures rather than starting from scratch.",
+      "frozen_implied_prediction": "Useful AI agents will increasingly need an experience-to-knowledge architecture rather than raw transcript accumulation: reusable procedural skills, failure memory, structured multi-resolution knowledge, retained exceptions/residuals and internal workflow/control layers that let later tasks build on earlier experience rather than start from scratch.",
       "first_external_match": {
         "date": "2026-03-10",
         "lead_time_days": 20,
@@ -39,12 +42,50 @@
       "stronger_product_match": {
         "date": "2026-06-03",
         "lead_time_days": 105,
-        "event": "Microsoft Foundry announced procedural memory designed to retain and reuse successful execution patterns so agents do not reconstruct procedures from scratch every time.",
+        "event": "Microsoft Foundry announced procedural memory for consistently reapplying learned procedures and explicitly described recovery from repeated failure modes as a production requirement.",
         "source": "https://devblogs.microsoft.com/foundry/memory-build2026/"
       },
       "classification": "implicit technical foresight / architecture convergence",
-      "strength_note": "High within the implicit-foresight lane because the user-originated phrase 'this should be muscle memory' maps unusually closely to later public procedural-memory product language.",
-      "boundary": "Agent memory and procedural-memory research existed before February 2026, so this should not be presented as Tim inventing the field or predicting Microsoft specifically. The defensible claim is dated architectural convergence and later productization."
+      "strength_note": "Stronger than a one-phrase resemblance. The February conversation already contains several features that later appear together in 2026 agent-memory work: experience -> reusable procedures, raw-vs-structured memory, failure retention/recovery, consolidation without destructive flattening and continuous refinement. This remains architecture convergence, not proof of invention or prediction of Microsoft.",
+      "boundary": "Agent memory, knowledge graphs, workflow agents and procedural-memory research predated February 2026; PlugMem itself has a February 2026 publication record, so novelty priority cannot be claimed. The defensible result is a dated Tim architecture that independently converges with later public productization and research maturation.",
+      "source_recovery": [
+        {
+          "type": "exact",
+          "date": "2026-02-18",
+          "wording": "this should be muscle memory"
+        },
+        {
+          "type": "exact",
+          "date": "2026-02-18",
+          "wording": "model collapse"
+        },
+        {
+          "type": "paraphrase",
+          "date": "2026-02-18",
+          "wording": "Ghosts as unstable/degraded model outputs or examples retained so the system remembers failure shapes instead of deleting them."
+        },
+        {
+          "type": "paraphrase",
+          "date": "2026-02-18",
+          "wording": "Preserve an archetype/central pattern plus residual deviations rather than averaging away specific differences."
+        },
+        {
+          "type": "paraphrase",
+          "date": "2026-02-18",
+          "wording": "Letters, numbers, words, phrases, entities, categories and objects coexist in a zoomable relational/vector-like schema space."
+        },
+        {
+          "type": "paraphrase",
+          "date": "2026-02-18/19",
+          "wording": "Separate workflow/controller agents from creative/personality-learning components."
+        }
+      ],
+      "later_maturation": {
+        "date": "2026-07-30",
+        "lead_time_days": 162,
+        "event": "Microsoft Research published EvoLib, which transforms raw experiences/past attempts into reusable skills and reflective insights, then continually refines, consolidates and reweights them into increasingly general knowledge.",
+        "source": "https://www.microsoft.com/en-us/research/blog/evolib-turning-experience-into-evolving-knowledge/"
+      }
     },
     {
       "id": "2026-05-05-europe-sovereign-federated-ai-cloud",

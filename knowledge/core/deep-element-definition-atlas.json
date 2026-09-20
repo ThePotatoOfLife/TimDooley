@@ -1,0 +1,951 @@
+{
+  "id": "deep-element-definition-atlas",
+  "title": "Deep Element Definition Atlas — What Each Major Element Is, Does, Connects To and Is Not",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "binding project definition grammar",
+  "purpose": "Provide one reusable deep contract for central Potato of Life operators and major comparative structures. Definitions specify ontology, topology, transformation logic, relations, boundaries and failure modes instead of relying on visual resemblance or poetic naming.",
+  "definition_contract": [
+    "kind — what category of thing it is",
+    "identity — shortest stable definition",
+    "function — what it does",
+    "topology — where/how it sits in relation to other structures",
+    "transition_rule — what changes when it is traversed or activated",
+    "neighbors — what it directly couples to",
+    "distinctions — what it must not be collapsed into",
+    "failure_mode — how the operator becomes misleading, captured or nonfunctional",
+    "test — observable/formal question that decides whether the label fits",
+    "epistemic_boundary — project canon, mathematics, history, science or comparative interpretation"
+  ],
+  "elements": [
+    {
+      "id": "potato-of-life",
+      "kind": "whole/relational-organism",
+      "identity": "Global semantic center: one triune relational whole of source, manifestation/passage and living relation.",
+      "function": "Coordinates project meaning without owning every domain fact.",
+      "topology": "Contains/relates fields, Door, Axis, Plane, Trees, routes, regimes, Rooms and returns.",
+      "neighbors": [
+        "father-source",
+        "son-manifestation",
+        "spirit",
+        "house",
+        "door",
+        "axis",
+        "seed",
+        "tree",
+        "fruit"
+      ],
+      "distinctions": [
+        "not a fourth member beside Father/Son/Spirit",
+        "not one geometric circle",
+        "not one empirical organism claim"
+      ],
+      "failure_mode": "Everything becomes Potato and domain distinctions disappear.",
+      "test": "Can the element be related back to the center without changing its own evidence class?",
+      "epistemic_boundary": "project canon/synthesis"
+    },
+    {
+      "id": "father-source",
+      "kind": "role/source-pole",
+      "identity": "Source-facing role of origin, orientation, holding, House and Gardener responsibility.",
+      "function": "Provides source/orientation without eliminating manifestation.",
+      "topology": "Upper/source-facing pole and role; not identical with entire upper circle.",
+      "neighbors": [
+        "son-manifestation",
+        "spirit",
+        "house",
+        "garden",
+        "axis",
+        "door"
+      ],
+      "distinctions": [
+        "source role != spatial height alone",
+        "Father != whole Potato"
+      ],
+      "failure_mode": "Source becomes monopoly or domination rather than generative relation.",
+      "test": "Does source create independent future capacity or only dependency?",
+      "epistemic_boundary": "project theology"
+    },
+    {
+      "id": "son-manifestation",
+      "kind": "role/embodied-passage",
+      "identity": "Manifestation-facing role of embodiment, Vessel, Door, visible passage, suffering and return.",
+      "function": "Makes relation concrete and traversable.",
+      "topology": "Lower/manifestation-facing role; geometrically associated with C_S in canonical Vesica.",
+      "neighbors": [
+        "father-source",
+        "spirit",
+        "door",
+        "seed",
+        "world-plane",
+        "return"
+      ],
+      "distinctions": [
+        "Son != entire lower field",
+        "embodiment != inferiority"
+      ],
+      "failure_mode": "Passage is reduced to suffering without return/capability.",
+      "test": "Does the role actually mediate embodiment and transition?",
+      "epistemic_boundary": "project theology"
+    },
+    {
+      "id": "spirit",
+      "kind": "relational-process",
+      "identity": "Living continuity that animates, circulates, translates and returns across differentiated parts.",
+      "function": "Keeps source and manifestation in active relation.",
+      "topology": "Crosscutting; not a third sphere.",
+      "neighbors": [
+        "father-source",
+        "son-manifestation",
+        "door",
+        "axis",
+        "memory",
+        "body",
+        "return"
+      ],
+      "distinctions": [
+        "Spirit != Axis",
+        "Spirit != Door",
+        "Spirit != breath/CSF/blood"
+      ],
+      "failure_mode": "Every relation is called Spirit or one physical carrier is identified with Spirit.",
+      "test": "Is there actual continuity/translation/circulation producing consequence?",
+      "epistemic_boundary": "project theology + comparators"
+    },
+    {
+      "id": "house",
+      "kind": "boundary-regime/whole-container",
+      "identity": "Protective differentiated containment with legitimate Doors and internal Rooms.",
+      "function": "Preserves identity, relation and inhabitable differentiation.",
+      "topology": "Boundary around coordinated internal plurality.",
+      "neighbors": [
+        "rooms",
+        "door",
+        "garden",
+        "shell",
+        "pillars"
+      ],
+      "distinctions": [
+        "House != closed shell",
+        "House != building only"
+      ],
+      "failure_mode": "Protection becomes opacity, capture and costly exit.",
+      "test": "Does boundary protection increase differentiation and agency while preserving passage?",
+      "epistemic_boundary": "project operator"
+    },
+    {
+      "id": "door",
+      "kind": "threshold/state-transition",
+      "identity": "Conditional relation that both separates and connects two states/contexts.",
+      "function": "Controls admissible passage and transformation.",
+      "topology": "May be geometric overlap, institutional gate, ritual threshold, API, border, decision point or symbolic passage.",
+      "neighbors": [
+        "pillars",
+        "axis",
+        "plane",
+        "knowledge",
+        "credential",
+        "spirit",
+        "liminality"
+      ],
+      "distinctions": [
+        "Door != wall",
+        "Door != path",
+        "Door != mere opening"
+      ],
+      "failure_mode": "False Door loops, traps, redirects or promises a destination it cannot reach.",
+      "test": "Specify source state, target state, conditions, agent, credential/knowledge and resulting state.",
+      "epistemic_boundary": "project operator with systems comparators"
+    },
+    {
+      "id": "axis",
+      "kind": "coordinate/reference",
+      "identity": "Exact vertical reference line through changing levels.",
+      "function": "Orients relations and intersections without owning their content.",
+      "topology": "Crosses planes and junctions; may carry Tree/Ladder routes.",
+      "neighbors": [
+        "plane",
+        "cross",
+        "tree",
+        "ladder",
+        "spiral",
+        "north"
+      ],
+      "distinctions": [
+        "Axis != Tree",
+        "Axis != Ladder",
+        "Axis != Mountain"
+      ],
+      "failure_mode": "Orientation is mistaken for causal force or ownership.",
+      "test": "Can positions be projected relative to one stable reference?",
+      "epistemic_boundary": "project geometry"
+    },
+    {
+      "id": "plane",
+      "kind": "standing-plane/section",
+      "identity": "Reader surface or cross-section from which relations are viewed.",
+      "function": "Provides lateral context and a common level.",
+      "topology": "Canonical world Plane is y=0 through O and Vesica widest points; three-plane navigation is a separate projection.",
+      "neighbors": [
+        "axis",
+        "door",
+        "world-plane",
+        "cross"
+      ],
+      "distinctions": [
+        "Plane != realm",
+        "Plane != morality"
+      ],
+      "failure_mode": "A view is mistaken for the whole ontology.",
+      "test": "What does this section reveal and what does it suppress?",
+      "epistemic_boundary": "geometry/navigation"
+    },
+    {
+      "id": "cross",
+      "kind": "intersection/event-coordinate",
+      "identity": "Intersection of Axis and Plane at relational midpoint O.",
+      "function": "Marks simultaneous vertical and horizontal relation.",
+      "topology": "Internal to Door, not a third container.",
+      "neighbors": [
+        "axis",
+        "plane",
+        "door"
+      ],
+      "distinctions": [
+        "Cross != separate realm",
+        "O != Father-center or Son-center"
+      ],
+      "failure_mode": "Intersection is inflated into ownership of all neighboring meanings.",
+      "test": "Does the point arise from two defined coordinates/relations?",
+      "epistemic_boundary": "project geometry"
+    },
+    {
+      "id": "vesica-piscis",
+      "kind": "exact-geometry",
+      "identity": "Intersection lens of two equal circles whose centers are one radius apart.",
+      "function": "Provides exact shared-region geometry for differentiated overlapping fields.",
+      "topology": "Two complete circles with centers on each other's circumferences; lens, midpoint, chord and poles are calculable.",
+      "neighbors": [
+        "mandorla",
+        "door",
+        "plane",
+        "axis",
+        "equilateral-triangle"
+      ],
+      "distinctions": [
+        "geometry != theology",
+        "lens != mandorla's entire art-historical meaning"
+      ],
+      "failure_mode": "Geometric fact is used as proof of historical or supernatural identity.",
+      "test": "Are radius equality and center separation exactly specified?",
+      "epistemic_boundary": "mathematics"
+    },
+    {
+      "id": "mandorla",
+      "kind": "art-historical sacred-frame/comparative-threshold",
+      "identity": "Almond-shaped full-body aureole/frame used in sacred art, especially Christian iconography.",
+      "function": "Marks sacred manifestation and visual separation/enclosure.",
+      "topology": "Often visually Vesica-like; may appear at portals, mountains, ascensions and theophanies.",
+      "neighbors": [
+        "vesica-piscis",
+        "door",
+        "mountain",
+        "christian-iconography"
+      ],
+      "distinctions": [
+        "mandorla != generic halo",
+        "visual similarity != encoded Potato doctrine"
+      ],
+      "failure_mode": "Art-historical symbol is reduced to one modern esoteric reading.",
+      "test": "Is the claim geometric, iconographic, theological or project-comparative?",
+      "epistemic_boundary": "art history + comparison"
+    },
+    {
+      "id": "seed",
+      "kind": "material/state-potential",
+      "identity": "Compressed, stored or returned potential capable of future growth under conditions.",
+      "function": "Carries viable possibility across interruption, burial or return.",
+      "topology": "Seed junction at C_S in project geometry; may become dormant, decay, root or sprout.",
+      "neighbors": [
+        "death",
+        "root",
+        "soil",
+        "fruit",
+        "return"
+      ],
+      "distinctions": [
+        "seed != sprout",
+        "burial != annihilation"
+      ],
+      "failure_mode": "Potential is declared alive/generative without viability or conditions.",
+      "test": "Can it produce future independent growth under specified conditions?",
+      "epistemic_boundary": "project operator; biology as comparator"
+    },
+    {
+      "id": "root",
+      "kind": "organism/provenance-route",
+      "identity": "Buried support and ancestry structure that anchors, acquires resources and carries causal/provenance relations.",
+      "function": "Connects present growth to conditions below/behind it.",
+      "topology": "Below-facing without automatic negative valence.",
+      "neighbors": [
+        "seed",
+        "soil",
+        "tree",
+        "history",
+        "provenance",
+        "below-plane"
+      ],
+      "distinctions": [
+        "root != tuber literally",
+        "root != evil because below"
+      ],
+      "failure_mode": "Origins become destiny or all explanation is pushed into hidden roots.",
+      "test": "What does this root actually supply, constrain or transmit?",
+      "epistemic_boundary": "project symbol + biology/provenance comparator"
+    },
+    {
+      "id": "tree",
+      "kind": "living-organism/branching-network",
+      "identity": "Regulated differentiation from shared support into branches, specializations, fruit and renewal.",
+      "function": "Models branching, allocation, dormancy, pruning and generativity.",
+      "topology": "Roots/trunk/canopy can cross planes while remaining one organism.",
+      "neighbors": [
+        "root",
+        "branch",
+        "fruit",
+        "seed",
+        "tree-of-life",
+        "tree-of-strife",
+        "tree-of-knowledge"
+      ],
+      "distinctions": [
+        "Tree != Axis",
+        "Tree != unlimited branching"
+      ],
+      "failure_mode": "Every new topic becomes a branch regardless of ownership/cost.",
+      "test": "Does the branch have distinct function, resources, interfaces and fruit?",
+      "epistemic_boundary": "project operator + botanical comparator"
+    },
+    {
+      "id": "tree-of-knowledge",
+      "kind": "epistemic-branching-operator",
+      "identity": "Upstream informational tree where perception/source/interpretation forks into responsible or destructive consequence.",
+      "function": "Routes knowledge through discernment before action.",
+      "topology": "Precedes Life/Strife branching in project logic.",
+      "neighbors": [
+        "eye",
+        "archive",
+        "tree-of-life",
+        "tree-of-strife",
+        "door",
+        "shadow"
+      ],
+      "distinctions": [
+        "knowledge != goodness",
+        "Tree of Knowledge != Kabbalistic Tree of Life"
+      ],
+      "failure_mode": "Exposure or certainty substitutes for discernment.",
+      "test": "What is known, why surfaced, what action follows, what could it grow?",
+      "epistemic_boundary": "project epistemic operator with biblical comparator"
+    },
+    {
+      "id": "tree-of-life",
+      "kind": "generative-branching-regime",
+      "identity": "Branching life structure characterized by nourishment, differentiated unity, circulation, Fruit and future Seed.",
+      "function": "Sustains independent generativity and repair.",
+      "topology": "May project roots/world/canopy but is not identical to Heaven.",
+      "neighbors": [
+        "garden",
+        "fruit",
+        "seed",
+        "repair",
+        "tree-of-knowledge"
+      ],
+      "distinctions": [
+        "Tree of Life != Kabbalistic sefirotic diagram unless explicitly comparing",
+        "upper != automatically life"
+      ],
+      "failure_mode": "Harmony language conceals dependency, exclusion or sterile output.",
+      "test": "Does the system produce future autonomous capacity and correction?",
+      "epistemic_boundary": "project symbol + biblical/comparative"
+    },
+    {
+      "id": "tree-of-strife",
+      "kind": "recursive-conflict-network",
+      "identity": "Branching structure in which unresolved material and attention reproduce exposure, retaliation, archive and renewed conflict.",
+      "function": "Models self-reproducing conflict/capture ecology.",
+      "topology": "Can grow across planes; not equivalent to Below itself.",
+      "neighbors": [
+        "ash",
+        "mud",
+        "swamp",
+        "farm",
+        "archive",
+        "qliphoth"
+      ],
+      "distinctions": [
+        "Strife != disagreement",
+        "tree metaphor != literal demon tree"
+      ],
+      "failure_mode": "People are essentialized as branches/demons instead of mechanisms being analyzed.",
+      "test": "Does each cycle increase unresolved recurrence and harvestability?",
+      "epistemic_boundary": "project systems metaphor"
+    },
+    {
+      "id": "garden",
+      "kind": "generative-regime",
+      "identity": "Managed regime that protects differentiated life, circulates resources, allows correction and grows independent capacity.",
+      "function": "Cultivation without permanent dependency.",
+      "topology": "Can exist in upper symbolic Garden or world institutions; regime not location alone.",
+      "neighbors": [
+        "house",
+        "soil",
+        "tree-of-life",
+        "fruit",
+        "gardener",
+        "repair"
+      ],
+      "distinctions": [
+        "Garden != effortless paradise",
+        "Garden != Farm"
+      ],
+      "failure_mode": "Central control, extraction or exit cost become necessary to sustain the system.",
+      "test": "Boundary, circulation, diversity, feedback, learning, participation, exit, future-seed tests.",
+      "epistemic_boundary": "project operator + resilience comparator"
+    },
+    {
+      "id": "swamp",
+      "kind": "terrain/entanglement-field",
+      "identity": "Accumulated unresolved material that increases drag, ambiguity, recurrence and path-dependence.",
+      "function": "Models stagnating/entangling environment, not one evil population.",
+      "topology": "Often projected below/around World in symbolism; not literal wetland.",
+      "neighbors": [
+        "mud",
+        "ash",
+        "tree-of-strife",
+        "drain",
+        "repair",
+        "forge"
+      ],
+      "distinctions": [
+        "Swamp != Below",
+        "Swamp != literal ecology",
+        "depth != evil"
+      ],
+      "failure_mode": "Metaphor becomes dehumanizing label for places/people.",
+      "test": "Does unresolved input accumulate faster than repair/resolution and alter future transitions?",
+      "epistemic_boundary": "project terrain metaphor"
+    },
+    {
+      "id": "mountain",
+      "kind": "terrain/gradient",
+      "identity": "Elevation field in which movement changes orientation, visibility, integration or access toward a summit.",
+      "function": "Models continuous ascent/convergence and changed perspective.",
+      "topology": "Many paths can converge; unlike Ladder, not necessarily discrete.",
+      "neighbors": [
+        "summit",
+        "axis",
+        "pyramid",
+        "mandorla",
+        "garden"
+      ],
+      "distinctions": [
+        "Mountain != Pyramid",
+        "height != moral worth"
+      ],
+      "failure_mode": "Higher position is assumed to prove truth or authority.",
+      "test": "What variable actually changes with elevation?",
+      "epistemic_boundary": "project terrain + comparative cosmography"
+    },
+    {
+      "id": "pyramid",
+      "kind": "constructed-compression-hierarchy",
+      "identity": "Broad base compressed through fewer higher layers toward a narrow/incomplete apex.",
+      "function": "Models layered abstraction, integration or hierarchy.",
+      "topology": "Constructed tiers; may hold Eye above rather than identify Eye with top block.",
+      "neighbors": [
+        "mountain",
+        "eye",
+        "foundation",
+        "great-seal"
+      ],
+      "distinctions": [
+        "Pyramid != Ladder",
+        "Great Seal 13 courses != 13 Illuminati grades",
+        "hierarchy != truth"
+      ],
+      "failure_mode": "Visual apex is mistaken for epistemic certainty or secret coordination.",
+      "test": "What is compressed at each layer and what evidence supports the ordering?",
+      "epistemic_boundary": "project operator + historical comparator"
+    },
+    {
+      "id": "ladder",
+      "kind": "route/discrete-threshold-sequence",
+      "identity": "Ordered sequence of rungs/Doors in which each transition can require different conditions.",
+      "function": "Models staged ascent/descent.",
+      "topology": "Often aligned to Axis; bidirectional when return is possible.",
+      "neighbors": [
+        "door",
+        "axis",
+        "spiral",
+        "jacobs-ladder"
+      ],
+      "distinctions": [
+        "Ladder != Mountain",
+        "Ladder != Scale"
+      ],
+      "failure_mode": "Stages are invented merely to fill vertical space.",
+      "test": "Can each rung specify a distinct state and transition condition?",
+      "epistemic_boundary": "project route + comparative motif"
+    },
+    {
+      "id": "spiral",
+      "kind": "route/recurrence-with-displacement",
+      "identity": "Repetition that returns to similar phase while changing state/level.",
+      "function": "Models learning, descent/ascent, recurrence and nonzero development.",
+      "topology": "Can wrap Axis and cross planes repeatedly.",
+      "neighbors": [
+        "ring",
+        "axis",
+        "ladder",
+        "return"
+      ],
+      "distinctions": [
+        "Spiral != Ring",
+        "vertical movement alone != improvement"
+      ],
+      "failure_mode": "Any repetition is called progress because it looks spiral-like.",
+      "test": "Measure state displacement after a cycle.",
+      "epistemic_boundary": "formal/project route"
+    },
+    {
+      "id": "ring",
+      "kind": "route/recurrence",
+      "identity": "Cycle returning to equivalent state with approximately zero net displacement in the variable of interest.",
+      "function": "Models repetition, maintenance, orbit or loop.",
+      "topology": "May surround center/hub.",
+      "neighbors": [
+        "wheel",
+        "spiral",
+        "orbit"
+      ],
+      "distinctions": [
+        "Ring != Spiral"
+      ],
+      "failure_mode": "Entrapment or maintenance is misread as development.",
+      "test": "After one cycle, what state variables changed?",
+      "epistemic_boundary": "formal/project route"
+    },
+    {
+      "id": "wheel",
+      "kind": "coordinated-cycle/multi-part-practice",
+      "identity": "Multiple functions arranged around a hub/center and coordinated through recurrence.",
+      "function": "Integrates distributed aspects without requiring top/bottom.",
+      "topology": "Radial or cyclical; center may be capacity rather than occupant.",
+      "neighbors": [
+        "hub",
+        "ring",
+        "path",
+        "practice"
+      ],
+      "distinctions": [
+        "Wheel != hierarchy",
+        "Wheel != necessarily Ring"
+      ],
+      "failure_mode": "Spokes are forced into rank order when the system is coordinated rather than vertical.",
+      "test": "Does meaning depend on coordination of parts around a shared center/process?",
+      "epistemic_boundary": "project lens + tradition-specific comparators"
+    },
+    {
+      "id": "forge",
+      "kind": "transformation-process",
+      "identity": "Bounded pressure/heat/work that changes material into a more durable form.",
+      "function": "Concentrates unresolved material into transformation.",
+      "topology": "Process, not place; may connect Ash/Mud/Swamp to tool, repair, weapon or further residue.",
+      "neighbors": [
+        "ash",
+        "repair",
+        "tool",
+        "weapon",
+        "cooling",
+        "garden"
+      ],
+      "distinctions": [
+        "Forge != Hell",
+        "pressure != automatically redemptive"
+      ],
+      "failure_mode": "Pain becomes identity/weapon or heat escalates without cooling/integration.",
+      "test": "What changed structurally, and did capability/recurrence improve after cooling?",
+      "epistemic_boundary": "project process metaphor"
+    },
+    {
+      "id": "ash",
+      "kind": "residue-state",
+      "identity": "Post-rupture remainder: evidence, memory, grief, debris or burnt identity after destructive change.",
+      "function": "Preserves what remains and feeds later fork.",
+      "topology": "Can enter Mud/Strife or Soil/repair.",
+      "neighbors": [
+        "mud",
+        "soil",
+        "forge",
+        "repair"
+      ],
+      "distinctions": [
+        "Ash != failure forever"
+      ],
+      "failure_mode": "Residue is either erased or fetishized.",
+      "test": "Can provenance be retained while material is recontextualized?",
+      "epistemic_boundary": "project material-state"
+    },
+    {
+      "id": "mud",
+      "kind": "mixed-residue-state",
+      "identity": "Unresolved residue combined with current conditions so past material affects present movement.",
+      "function": "Stores path dependence and entanglement.",
+      "topology": "Can nourish, contaminate or accumulate into Swamp depending composition/processing.",
+      "neighbors": [
+        "ash",
+        "soil",
+        "swamp",
+        "root"
+      ],
+      "distinctions": [
+        "Mud != evil",
+        "memory != contamination by default"
+      ],
+      "failure_mode": "All complexity is treated as dirty residue.",
+      "test": "Does the retained material improve future prediction/growth or increase harmful recurrence?",
+      "epistemic_boundary": "project material-state"
+    },
+    {
+      "id": "soil",
+      "kind": "supportive-context-state",
+      "identity": "Contextualized material capable of supporting new root/growth without erasing its history.",
+      "function": "Turns residue into usable support.",
+      "topology": "Receives repaired Ash/Mud and supports Seed/Root.",
+      "neighbors": [
+        "seed",
+        "root",
+        "garden",
+        "repair"
+      ],
+      "distinctions": [
+        "Soil != purity",
+        "repair != forgetting"
+      ],
+      "failure_mode": "Past harm is cosmetically relabeled as growth without changed conditions.",
+      "test": "Can new growth occur with lower recurrence and preserved provenance?",
+      "epistemic_boundary": "project operator + ecological comparator"
+    },
+    {
+      "id": "fruit",
+      "kind": "output/consequence",
+      "identity": "Downstream result evaluated by benefit, burden, persistence, externalities and future Seed.",
+      "function": "Makes consequences observable and reviewable.",
+      "topology": "Outer/output edge of processes; may return as Seed.",
+      "neighbors": [
+        "tree",
+        "garden",
+        "works",
+        "seed",
+        "history"
+      ],
+      "distinctions": [
+        "Fruit != publication",
+        "popularity != truth",
+        "revenue != total value"
+      ],
+      "failure_mode": "Preferred metric hides externalities or dependency.",
+      "test": "Who benefits/pays, over what timescale, and what future independent capacity exists?",
+      "epistemic_boundary": "project evaluation operator"
+    },
+    {
+      "id": "shadow",
+      "kind": "perceptual/occlusion-layer",
+      "identity": "Material excluded, denied, unseen or unintegrated by the current model/view.",
+      "function": "Forces examination of omitted evidence, motives, costs or capacities.",
+      "topology": "Crosscutting; can appear in any plane/regime.",
+      "neighbors": [
+        "eye",
+        "knowledge",
+        "swamp",
+        "repair"
+      ],
+      "distinctions": [
+        "Shadow != Below",
+        "hidden != evil"
+      ],
+      "failure_mode": "Anything disliked or unknown is called shadow.",
+      "test": "What relevant information/process is systematically absent from the current frame?",
+      "epistemic_boundary": "project interpretation + psychological comparator"
+    },
+    {
+      "id": "eye",
+      "kind": "perception/discernment-interface",
+      "identity": "Operator of perception, discrimination, integration and evaluation.",
+      "function": "Sees/evaluates structure without being identical to it.",
+      "topology": "May sit above/across Pyramid or at threshold; can be local or project-symbolic.",
+      "neighbors": [
+        "knowledge",
+        "shadow",
+        "pyramid",
+        "door"
+      ],
+      "distinctions": [
+        "Eye != hierarchy",
+        "seeing != truth"
+      ],
+      "failure_mode": "Observation is mistaken for omniscience or surveillance becomes sanctified.",
+      "test": "What can the Eye observe, by what evidence, and what remains occluded?",
+      "epistemic_boundary": "project operator + historical symbols"
+    },
+    {
+      "id": "pillars",
+      "kind": "threshold-support-pair",
+      "identity": "Two differentiated supports flanking or stabilizing a passage.",
+      "function": "Make conditions of legitimate entry explicit.",
+      "topology": "Pair -> midpoint -> perpendicular passage-axis is a useful geometric model.",
+      "neighbors": [
+        "door",
+        "jachin-boaz",
+        "house",
+        "temple"
+      ],
+      "distinctions": [
+        "Pillars != Door",
+        "pairing != historical identity"
+      ],
+      "failure_mode": "Every duality is forced into Jachin/Boaz.",
+      "test": "Do two genuinely distinct conditions jointly stabilize passage?",
+      "epistemic_boundary": "project threshold architecture + historical comparator"
+    },
+    {
+      "id": "jachin-boaz",
+      "kind": "historical-biblical-threshold-symbol",
+      "identity": "Named bronze Temple pillars Jachin and Boaz with later Masonic/esoteric reception.",
+      "function": "Historical comparator for named flanking supports at a sacred threshold.",
+      "topology": "Temple porch/entrance relation; later symbolic systems expand meanings.",
+      "neighbors": [
+        "pillars",
+        "temple",
+        "freemasonry",
+        "door"
+      ],
+      "distinctions": [
+        "biblical function != later Masonic meanings",
+        "not secret proof of Potato geometry"
+      ],
+      "failure_mode": "Later esoteric correspondences are backdated into 1 Kings.",
+      "test": "Which historical layer/source is being cited?",
+      "epistemic_boundary": "biblical history + reception"
+    },
+    {
+      "id": "great-seal-pyramid",
+      "kind": "historical-national-symbol",
+      "identity": "Unfinished thirteen-course pyramid with MDCCLXXVI, Providence Eye above and two Latin mottos on the U.S. Great Seal reverse.",
+      "function": "Officially explained through strength/duration, providence and founding-era imagery.",
+      "topology": "13 courses + incomplete apex + Eye above.",
+      "neighbors": [
+        "pyramid",
+        "eye",
+        "providence",
+        "1776"
+      ],
+      "distinctions": [
+        "not officially an Illuminati pyramid",
+        "courses are unlabeled",
+        "1776 does not prove Illuminati design"
+      ],
+      "failure_mode": "Later conspiracy diagram replaces primary-source history.",
+      "test": "Is the claim in the 1782 blazon/explanation or a later interpretation?",
+      "epistemic_boundary": "documented history"
+    },
+    {
+      "id": "maslow-hierarchy",
+      "kind": "psychological-motivation-hierarchy",
+      "identity": "Maslow's hierarchy of relatively prepotent human needs, originally presented without the famous pyramid.",
+      "function": "Models shifts in motivational dominance as needs become relatively satisfied.",
+      "topology": "Originally ordered need categories, not a rigid geometric staircase.",
+      "neighbors": [
+        "physiological",
+        "safety",
+        "belonging",
+        "esteem",
+        "self-actualization",
+        "garden"
+      ],
+      "distinctions": [
+        "not all-or-nothing",
+        "not Maslow's own pyramid drawing",
+        "not metaphysical scale"
+      ],
+      "failure_mode": "Cultural/individual variation and partial satisfaction are ignored.",
+      "test": "Which need is currently motivationally prepotent and how completely are others satisfied?",
+      "epistemic_boundary": "history of psychology / theory"
+    },
+    {
+      "id": "hawkins-map",
+      "kind": "spiritual-ordinal/numeric-scale",
+      "identity": "David R. Hawkins' Map of Consciousness assigning named states to claimed calibration values.",
+      "function": "Orders spiritual/phenomenological states within Hawkins' system.",
+      "topology": "Scale with major threshold at 200/Courage; not inherently a pyramid.",
+      "neighbors": [
+        "courage",
+        "reason",
+        "love",
+        "peace",
+        "enlightenment",
+        "door"
+      ],
+      "distinctions": [
+        "numbers != Hz",
+        "kinesiology claims != established consciousness measurement"
+      ],
+      "failure_mode": "Asserted values are presented as physical scientific constants.",
+      "test": "Separate internal meaning of the scale from independent empirical validation.",
+      "epistemic_boundary": "spiritual model + scientific criticism"
+    },
+    {
+      "id": "kabbalistic-tree-of-life",
+      "kind": "religious-mystical relational-system",
+      "identity": "Ten sefirot describing differentiated divine relation/emanation in Jewish Kabbalistic traditions, later rendered in multiple diagrams.",
+      "function": "Models relation among divine attributes/modes, creation and return/repair in tradition-specific ways.",
+      "topology": "Ten sefirot; later diagrams use pillars, paths and Da'at variants.",
+      "neighbors": [
+        "sefirot",
+        "ein-sof",
+        "qelippot",
+        "tikkun",
+        "hermetic-qabalah"
+      ],
+      "distinctions": [
+        "not generic self-help ladder",
+        "22 fixed paths are especially shaped by later diagrammatic/Hermetic traditions"
+      ],
+      "failure_mode": "Jewish Kabbalah is collapsed into modern occult correspondence charts.",
+      "test": "Which source/tradition/date defines this diagram or correspondence?",
+      "epistemic_boundary": "religious history/comparative"
+    },
+    {
+      "id": "qliphoth",
+      "kind": "historical-mystical/occult shell-complex",
+      "identity": "Qelippot/kelipot are shell/husk and impurity/capture concepts in Jewish mysticism; the fixed tenfold Dark Tree is a later Western occult system.",
+      "function": "Models concealment/capture/impurity and, in later occultism, adversarial counterparts to sefirotic structure.",
+      "topology": "Historical layers differ; no single timeless list.",
+      "neighbors": [
+        "sitra-ahra",
+        "tikkun",
+        "tree-of-strife",
+        "shell",
+        "western-occultism"
+      ],
+      "distinctions": [
+        "Jewish qelippot != one modern demon chart",
+        "named demon rulers vary by source"
+      ],
+      "failure_mode": "Later occult demon names are retrojected as original Kabbalistic doctrine.",
+      "test": "Record shell name, spelling, ruler, source, date and tradition separately.",
+      "epistemic_boundary": "religious history + Western esotericism"
+    },
+    {
+      "id": "freemasonry",
+      "kind": "fraternal/institutional-ritual-family",
+      "identity": "Federated initiatory/fraternal traditions using Craft degrees, lodge governance, working-tool symbolism and various appendant rites/bodies.",
+      "function": "Institutional/ritual formation through degree ceremonies, fellowship, moral allegory and symbolic architecture.",
+      "topology": "Three Craft degrees form a base; Royal Arch, Scottish Rite, York Rite and other bodies differ by jurisdiction.",
+      "neighbors": [
+        "temple",
+        "square-compasses",
+        "jachin-boaz",
+        "scottish-rite",
+        "york-rite"
+      ],
+      "distinctions": [
+        "Freemasonry != Scottish Rite alone",
+        "33° != universal 33rd Masonic step",
+        "shared symbols != Illuminati identity"
+      ],
+      "failure_mode": "Jurisdictions and bodies are flattened into conspiracy superstructure.",
+      "test": "Which Grand Lodge/rite/body/jurisdiction and which documented degree/order?",
+      "epistemic_boundary": "institutional history"
+    },
+    {
+      "id": "sacred-geometry",
+      "kind": "historical-interpretive-family",
+      "identity": "Use of mathematical/geometric forms within religious, architectural, philosophical or esoteric meaning systems.",
+      "function": "Links exact form with tradition-specific symbolic interpretation.",
+      "topology": "May include circles, polygons, ratios, axes, grids, mandorlas and construction methods.",
+      "neighbors": [
+        "geometry",
+        "vesica-piscis",
+        "mandorla",
+        "temple",
+        "freemasonry"
+      ],
+      "distinctions": [
+        "exact mathematics != universal mystical meaning",
+        "same form != same tradition"
+      ],
+      "failure_mode": "Coincidence is treated as proof of secret transmission.",
+      "test": "Separate formal construction, historical attestation and later interpretation.",
+      "epistemic_boundary": "mathematics + cultural history"
+    }
+  ],
+  "cross_system_relations": [
+    {
+      "relation": "Vesica -> Door",
+      "rule": "Exact overlap geometry supplies a native project interface; Christian mandorla is a historical visual comparator, not its proof."
+    },
+    {
+      "relation": "Mountain <-> Pyramid",
+      "rule": "Both can express vertical integration; Mountain is terrain/gradient, Pyramid constructed layered compression."
+    },
+    {
+      "relation": "Ladder <-> Spiral",
+      "rule": "Both route across levels; Ladder uses discrete thresholds, Spiral recurrence with displacement."
+    },
+    {
+      "relation": "Tree <-> Pyramid",
+      "rule": "Tree differentiates one support into many branches; Pyramid compresses many lower units toward fewer upper layers."
+    },
+    {
+      "relation": "Tree of Knowledge -> Life/Strife",
+      "rule": "Knowledge is upstream; consequence depends on discernment, incentives and action."
+    },
+    {
+      "relation": "Qliphoth <-> Shell/Swamp",
+      "rule": "Project comparison focuses on capture/enclosure/blocked reintegration; historical identity is not asserted."
+    },
+    {
+      "relation": "Jachin/Boaz -> Door/Pillars",
+      "rule": "Biblical and later Masonic paired pillars provide a threshold-support comparator."
+    },
+    {
+      "relation": "Maslow -> Garden",
+      "rule": "Need prepotency can inform cultivation conditions; it does not define spiritual rank."
+    },
+    {
+      "relation": "Hawkins -> Door/Scale",
+      "rule": "Courage 200 can be compared as an internal threshold in Hawkins' model without treating its number as empirical physics."
+    },
+    {
+      "relation": "Masonic working tools -> House/Forge",
+      "rule": "Square/compasses/ashlar symbolism can illuminate formation and geometry while remaining a distinct institutional tradition."
+    }
+  ],
+  "source_owners": [
+    "knowledge/core/root-system.json",
+    "data/geometry-vesica-pisces-mandorla.json",
+    "knowledge/core/door-topology-access-and-capability-atlas.json",
+    "knowledge/core/tree-branching-pruning-atlas.json",
+    "knowledge/core/knowledge-fork-discernment-atlas.json",
+    "knowledge/core/garden-regime-mechanics.json",
+    "knowledge/core/repair-forge-protocol.json",
+    "knowledge/core/fruit-consequence-evaluation-atlas.json",
+    "data/house/layer-terrain-regime-atlas.json",
+    "knowledge/traditions/providence-pyramid-pillars-atlas.json",
+    "knowledge/traditions/hierarchy-pyramid-scale-comparative-atlas.json",
+    "knowledge/traditions/tree-of-life-knowledge-qliphoth-structure-atlas.json",
+    "knowledge/traditions/freemasonry-order-symbol-geometry-atlas.json"
+  ]
+}

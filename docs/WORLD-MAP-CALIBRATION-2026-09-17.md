@@ -17,6 +17,19 @@ The map should be read as several coordinated information planes, not as one und
 
 The visual-channel contract remains: fill = one scalar/ordered field; pattern = categorical/set overlap; outline = interaction/selection; line = relationships/flows/routes; point = geocoded entities/assets; height = optional scalar extrusion; card = contextual non-spatial data; timeline = dated state; scene = specialist non-geographic representation.
 
+## Integrated control surfaces
+
+The persistent user-controlled map planes now have one public controller each:
+
+- **Analytical** — country scalar/set registry + compositor. One scalar fill at a time; set memberships remain stackable patterns.
+- **Physical** — provider-backed terrain, water, hydrology, land cover and aridity through the Physical runtime.
+- **Geography** — typed spatial overlays through the spatial-overlay registry. Historical/textual/project/disputed/current geometries may overlap but never merge epistemically.
+- **Evidence** — specialist source-classified datasets through the Evidence controller. ADL H.E.A.T. is the first current adapter; FBI hate-crime data remains a separate planned adapter rather than being folded into one score.
+
+Time, scale and projection remain dimensions rather than layer families. Places, subdivisions, infrastructure, Gateways, Chains, Impact and Axis-depth are contextual/application layers: they appear because the user enters a scale or investigation, not because every possible renderer belongs in one giant checkbox menu.
+
+The machine-readable contract is `data/world-map-layer-surfaces.json`.
+
 ## Terrain calibration
 
 Terrain remains explicitly opt-in and network-backed. The 3D terrain surface and hillshade now share a single Mapterhorn raster-DEM source rather than maintaining duplicate DEM sources for the same TileJSON endpoint. The source is capped at zoom 12, terrain and hillshade exaggeration are intentionally modest, and the ordinary raster basemap is only partially strengthened while terrain is active.

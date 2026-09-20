@@ -10,5 +10,10 @@ assert.match(source, /atlas-pinned-overflow/, 'pinned context should explain hid
 assert.match(source, /data-show-all/, 'pinned overflow should let the user temporarily reveal all pinned countries');
 assert.match(source, /data-collapse/, 'expanded pinned context should offer a compact collapse action');
 assert.match(source, /pinnedContextOverflow/, 'pinned context diagnostics should expose hidden pin count');
+assert.match(source, /__potatoAtlasCountryPresentation/, 'pins must consume the shared Country Presentation adapter');
+assert.doesNotMatch(source, /function populationObservation/, 'pins must not own a second population resolver');
+assert.doesNotMatch(source, /__potatoAtlasDataRuntime\?\.populationObservation/, 'pins must not directly read canonical population runtime');
+assert.match(source, /Population ·/, 'pinned country cards must keep population visible even when another map metric is active');
+assert.match(source, /populationPrimary/, 'Population as the primary layer must deduplicate the second answer line');
 
 console.log('World Map pinned context contract tests passed');

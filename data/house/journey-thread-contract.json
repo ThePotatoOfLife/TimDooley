@@ -1,0 +1,105 @@
+{
+  "version": "1.2.0",
+  "updated": "2026-09-20",
+  "authority": "house-journey-thread",
+  "title": "House Journey Thread / Path Memory Contract",
+  "purpose": "Remember the reader's traversed spatial centers so the Potato House feels like a journey through a graph rather than a stateless menu.",
+  "storage": {
+    "scope": "browser-local navigation memory",
+    "mechanism": "localStorage when available",
+    "key": "potato-house-journey-v1",
+    "maximum_entries": 48,
+    "analytics": false,
+    "server_tracking": false,
+    "knowledge_owner": false,
+    "note": "Journey history is private navigation state in the visitor's browser. It is not evidence, canon, user profiling, or a repository record."
+  },
+  "bead_types": [
+    {
+      "id": "space",
+      "meaning": "A spatial center or elevator stop the reader occupied."
+    },
+    {
+      "id": "read",
+      "meaning": "The reader exited the spatial projection through a Door to a readable public page."
+    },
+    {
+      "id": "portal",
+      "meaning": "The reader used a plane landmark such as Roots, Ash, Swamp or Forge."
+    }
+  ],
+  "state_fields": [
+    "level",
+    "room",
+    "inner",
+    "object",
+    "label",
+    "type",
+    "via",
+    "reason"
+  ],
+  "behavior": [
+    "Consecutive duplicate states collapse into one bead.",
+    "Entering a Dwelling or nested Room appends a bead.",
+    "Cross-Dwelling wormhole traversal appends the destination Room while preserving its parent identity.",
+    "Moving Heaven/World/Below appends a Door/Axis level bead.",
+    "Opening a readable room may append a read bead pointing back to the spatial state from which it was opened.",
+    "Back through thread restores the prior spatial state without creating a duplicate bead.",
+    "Clicking an earlier bead returns to that recorded center without changing knowledge ownership.",
+    "Clear thread deletes only local navigation memory.",
+    "Each newly recorded spatial bead derives a transition type from the prior bead.",
+    "Journey UI may expose a short transition reason and replay the route step-by-step.",
+    "Replay never writes duplicate beads or changes canonical content.",
+    "Centering an inhabitant appends an object-focus bead and preserves its containing Room and current lens."
+  ],
+  "semantic_rule": "The trail records the route the reader took, not the only valid route through the House.",
+  "visual_rule": "Render the journey as a connected thread/chain of beads. Current position is emphasized; wormhole or read exits may receive distinct labels, but color must not be the only status signal.",
+  "source_records": [
+    "data/house/elevator-spatial-projection.json",
+    "data/house/non-euclidean-room-grammar.json",
+    "data/house/local-center-interface-patterns.json"
+  ],
+  "transition_types": [
+    {
+      "id": "start",
+      "meaning": "Initial position in the remembered journey."
+    },
+    {
+      "id": "dwelling-door",
+      "meaning": "Door / Axis or another context recentered into a canonical Dwelling."
+    },
+    {
+      "id": "local-door",
+      "meaning": "Movement between a Dwelling and one of its nested Rooms, or between nested Rooms in the same Dwelling."
+    },
+    {
+      "id": "wormhole-door",
+      "meaning": "Direct registered passage between nested Rooms belonging to different Dwellings."
+    },
+    {
+      "id": "elevator",
+      "meaning": "Vertical movement between Heaven, World and Below projections."
+    },
+    {
+      "id": "portal",
+      "meaning": "Exit through a plane landmark such as Roots, Ash, Swamp or Forge."
+    },
+    {
+      "id": "read",
+      "meaning": "Exit from spatial navigation into a readable public surface."
+    },
+    {
+      "id": "return",
+      "meaning": "Movement outward toward parent Dwelling or Door / Axis."
+    },
+    {
+      "id": "object-focus",
+      "meaning": "An inhabitant, case or artifact was placed on the center table while its containing Room remained architecturally active."
+    }
+  ],
+  "narrative": {
+    "rule": "Every bead should be able to answer: where did I arrive, what kind of threshold did I cross, and why is this destination relevant from the prior center?",
+    "derived_reasoning": "Transition reasons are derived from registered Room purpose/local-role/adjacency and plane descriptions, not invented claims about causation.",
+    "replay": "The UI may replay remembered beads in sequence. Replay restores navigation states only; it must not generate new journey history."
+  }
+}

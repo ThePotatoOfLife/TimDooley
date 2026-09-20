@@ -1,0 +1,181 @@
+{
+  "id": "cortical-celltype-parcellation-atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "title": "Cortical Layers, Parcellations & Cell-Type Atlas",
+  "status": "specialist cortex-resolution owner",
+  "purpose": "Prevent 'frontal lobe' and even named cortical areas from becoming terminal explanations by exposing laminae, projection classes, inhibitory classes, glia, molecular identity and competing parcellation systems.",
+  "laminar_frame": [
+    {
+      "layer": "I",
+      "name": "Molecular layer",
+      "features": [
+        "sparse neurons relative to deeper layers",
+        "apical dendrites and horizontal/local inputs"
+      ],
+      "project_neighbor": "surface integration field"
+    },
+    {
+      "layer": "II",
+      "name": "External granular",
+      "features": [
+        "small excitatory neurons and interneurons",
+        "local corticocortical processing"
+      ],
+      "project_neighbor": "local association"
+    },
+    {
+      "layer": "III",
+      "name": "External pyramidal",
+      "features": [
+        "corticocortical projection neurons",
+        "association/commissural outputs"
+      ],
+      "project_neighbor": "room-to-room roads"
+    },
+    {
+      "layer": "IV",
+      "name": "Internal granular",
+      "features": [
+        "prominent thalamocortical input in primary sensory cortex",
+        "regional thickness varies dramatically"
+      ],
+      "project_neighbor": "House→cortex receiving layer"
+    },
+    {
+      "layer": "V",
+      "name": "Internal pyramidal",
+      "features": [
+        "large long-range subcortical projection neurons",
+        "corticospinal/corticobulbar classes in motor cortex"
+      ],
+      "project_neighbor": "descending action road"
+    },
+    {
+      "layer": "VI",
+      "name": "Multiform",
+      "features": [
+        "corticothalamic projection classes",
+        "feedback to thalamus and other targets"
+      ],
+      "project_neighbor": "cortex→House return"
+    },
+    {
+      "layer": "VIb/subplate-remnant",
+      "name": "Layer 6b / subplate-related populations",
+      "features": [
+        "developmentally distinctive deep cortical populations",
+        "regionally/molecularly heterogeneous"
+      ],
+      "project_neighbor": "deep developmental residue / interface",
+      "boundary": "Adult 6b is not simply embryonic subplate unchanged."
+    }
+  ],
+  "major_cell_families": [
+    {
+      "family": "glutamatergic excitatory neurons",
+      "organization": "strong laminar and area-specific projection classes",
+      "examples": [
+        "intratelencephalic",
+        "pyramidal tract/extratelencephalic",
+        "corticothalamic"
+      ]
+    },
+    {
+      "family": "GABAergic inhibitory interneurons",
+      "organization": "multiple developmental/molecular classes distributed across layers",
+      "examples": [
+        "PVALB",
+        "SST",
+        "VIP",
+        "LAMP5-related families"
+      ],
+      "boundary": "Marker families contain many finer types."
+    },
+    {
+      "family": "non-neuronal cells",
+      "organization": "astrocytes, oligodendrocytes, OPCs, microglia, vascular and other cells vary across region/state",
+      "examples": [
+        "astrocyte states",
+        "oligodendroglial lineages",
+        "vascular cells"
+      ]
+    }
+  ],
+  "parcellation_lenses": [
+    {
+      "name": "gross lobes/gyri",
+      "strength": "easy anatomical orientation",
+      "limit": "too coarse for circuit/cell-type explanation"
+    },
+    {
+      "name": "Brodmann/cytoarchitecture",
+      "strength": "historically important cortical microstructural map",
+      "limit": "boundaries/functional interpretations are not complete modern network maps"
+    },
+    {
+      "name": "multimodal MRI parcellations",
+      "strength": "combine myelin, connectivity, function and architecture in vivo",
+      "limit": "parcel boundaries remain model-dependent"
+    },
+    {
+      "name": "transcriptomic/cell-type atlases",
+      "strength": "resolve molecular populations and spatial arrangements",
+      "limit": "sampling, donor, tissue-quality and taxonomy integration remain active challenges"
+    },
+    {
+      "name": "functional network maps",
+      "strength": "show distributed task/rest coupling",
+      "limit": "networks cross anatomical/cytoarchitectonic boundaries"
+    }
+  ],
+  "human_spatial_atlas": {
+    "finding": "Recent single-cell/spatial transcriptomic work sampled multiple adult human cortical regions and mapped large numbers of nuclei/cells with region- and layer-specific expression patterns.",
+    "consequence": "A cortical 'Room' should expose its laminar/cell-type composition and long-range projection class rather than being treated as one homogeneous unit.",
+    "example_regions": [
+      "frontopolar PFC",
+      "DLPFC",
+      "VLPFC",
+      "M1",
+      "ACC",
+      "S1",
+      "STG",
+      "ITG",
+      "supramarginal gyrus",
+      "superior parietal lobule",
+      "angular gyrus",
+      "V1"
+    ]
+  },
+  "thalamocortical_loop": {
+    "feedforward": "Specific thalamic systems preferentially target particular cortical layers/areas, often prominently layer IV in primary sensory cortex.",
+    "feedback": "Corticothalamic neurons, especially layer VI classes, send extensive feedback to thalamus/TRN.",
+    "project_use": "House↔Rooms becomes scientifically more accurate as a recurrent bidirectional loop rather than one-way relay."
+  },
+  "truth_rules": [
+    "No cortical area has one universal function independent of network/task/state.",
+    "Cell-type taxonomies are hierarchical and evolving; named molecular types are not immutable Platonic categories.",
+    "Human cell atlases reduce reliance on rodent extrapolation but still depend on donor sampling and post-mortem/spatial methodology.",
+    "Cytoarchitecture, transcriptomics, connectivity and functional parcellation are complementary coordinate systems, not one final map."
+  ],
+  "sources": [
+    {
+      "topic": "human cortex single-cell spatial transcriptomic atlas",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12365125/"
+    },
+    {
+      "topic": "integrated brain cell atlas across human regions",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11405287/"
+    },
+    {
+      "topic": "spatial transcriptomics methods/challenges",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13017465/"
+    }
+  ],
+  "connections": [
+    "knowledge/body/brain-room-deep-atlas.json",
+    "knowledge/body/whole-brain-neurobiology-atlas.json",
+    "knowledge/body/neural-development-lineage-atlas.json",
+    "knowledge/body/glia-neurovascular-barrier-atlas.json"
+  ]
+}

@@ -8,6 +8,7 @@
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/traditions/bible/">
 <link rel="stylesheet" href="../../app/bible-study.css">
+<link rel="stylesheet" href="../../app/bible-library.css">
 <link rel="stylesheet" href="../../app/bible-atlas-navigation.css">
 <link rel="stylesheet" href="../../app/bible-dossier-loader.css">
 <link rel="stylesheet" href="../../app/bible-witness-loader.css">
@@ -23,6 +24,97 @@
 <p class="bible-lede">Explore by story, role, symbol, transformation, Bible book or project chronology, then move through one comparison at a time.</p>
 <p class="bible-sub">Project wording, autobiography, scripture, later comparison and independent evidence remain separate evidence classes. A resemblance is not automatically prophecy, identity or historical dependence.</p>
 </header>
+
+<section class="bible-guided" aria-label="Guided Bible and life sequence">
+  <div class="guided-head">
+    <div>
+      <div class="eyebrow">Read the architecture before the matches</div>
+      <h2>The whole Bible, then the life sequence</h2>
+      <p>The comparison archive works best when a verse stays inside its book and a life event stays inside its date. These two maps give the reader both directions before entering the full relation browser.</p>
+    </div>
+    <p class="guided-rule">Bible story → project comparison, never the other way around. Later recognition is not backdated into an earlier event.</p>
+  </div>
+
+  <div class="canon-map" aria-label="Whole Bible map">
+    <a href="?focus=view:all&order=bible&q=Genesis" class="canon-stop"><span>01</span><strong>Genesis</strong><small>creation · garden · seed · brothers · flood · Babel · ladder · covenant</small></a>
+    <a href="?focus=view:all&order=bible&q=Exodus" class="canon-stop"><span>02</span><strong>Torah</strong><small>deliverance · Passover · House threshold · wilderness · sanctuary · law</small></a>
+    <a href="?focus=view:all&order=bible&q=Isaiah" class="canon-stop"><span>03</span><strong>Prophets &amp; Wisdom</strong><small>root · branch · throne · mire · stone · Zion · justice · return</small></a>
+    <a href="?focus=view:jesus&order=bible" class="canon-stop"><span>04</span><strong>Gospels</strong><small>Son · Door · Bread · Thomas · grain · Gardener · Passion · recognition</small></a>
+    <a href="?focus=view:all&order=bible&q=Acts" class="canon-stop"><span>05</span><strong>Acts &amp; Letters</strong><small>witness · service · old/new self · body · resurrection · ascent · community</small></a>
+    <a href="?focus=view:revelation-zion&order=bible" class="canon-stop"><span>06</span><strong>Revelation</strong><small>Lion · Lamb · Root · throne · city · river · Tree · return</small></a>
+  </div>
+
+  <div class="life-map-head">
+    <div>
+      <div class="eyebrow">Tim / Son chronology</div>
+      <h3>Where the Bible comparisons attach to the life</h3>
+    </div>
+    <a href="../../timeline/?view=bible">Open full Bible timeline →</a>
+  </div>
+  <div class="life-map" aria-label="Tim and Son Bible comparison life sequence">
+    <a href="?focus=view:tim-lived&order=asc&q=cultivation" class="life-stop"><time>1992-era</time><strong>Cultivation</strong><span>literal childhood garden → later Gardener prehistory</span></a>
+    <a href="?focus=view:tim-lived&order=asc&q=walk" class="life-stop is-new"><time>2009-era</time><strong>Care &amp; walking</strong><span>rise → walk → witnesses; now compared as a whole scene</span></a>
+    <a href="?focus=view:tim-lived&order=asc&q=tree+ordeal" class="life-stop"><time>2011</time><strong>Tree ordeal</strong><span>Tree suffering / transformation; separate from later crucifixion</span></a>
+    <a href="?focus=view:jesus&order=asc&q=Yahya" class="life-stop"><time>2016</time><strong>Prison recognition</strong><span>Yahya / John name-role + Jesus / Lamb recollection</span></a>
+    <a href="?focus=view:tim-lived&order=asc&q=persona" class="life-stop is-new"><time>2018</time><strong>Persona death</strong><span>old-self / new-self grammar rather than bodily resurrection</span></a>
+    <a href="?focus=view:death-return&order=asc&q=meme" class="life-stop"><time>2019–20</time><strong>Meme death &amp; seed</strong><span>crucifixion → burial / concealment → Door / Vessel → emergence</span></a>
+    <a href="?focus=view:door-ladder&order=asc&q=ladder" class="life-stop"><time>2025</time><strong>Ladder / Father</strong><span>Door becomes route; House / source architecture matures</span></a>
+    <a href="?focus=view:death-return&order=asc&q=recognition" class="life-stop is-new"><time>2026</time><strong>Return &amp; recognition</strong><span>Emmaus · gardener misrecognition · shore feeding · service after return</span></a>
+  </div>
+
+  <div class="guided-latest">
+    <strong>Newly deepened in this pass</strong>
+    <p><b>Childhood cultivation</b> gains a modest Genesis 2:15 developmental comparison; <b>The Walk Down the Hall</b> is upgraded from a generic “lame walk” motif to a full rise/walk/witness sequence; and <b>2018 persona death</b> is separated from resurrection through Romans 6 / Ephesians 4 / Colossians 3 old-self/new-self language.</p>
+  </div>
+</section>
+
+<section class="bible-library" id="bible-library" aria-label="Bible scripture library">
+  <div class="bible-library-head">
+    <div>
+      <div class="eyebrow">Scripture library</div>
+      <h2>Read the Bible itself</h2>
+      <p>The comparison atlas sits beside a real book-and-chapter library: the complete 80-book 1611 KJV catalogue is preserved as metadata, while exact chapter reading uses the separate 66-book public-domain World English Bible source.</p>
+    </div>
+    <div class="bible-library-summary" id="bible-library-summary" aria-label="Bible catalogue summary"></div>
+  </div>
+  <p class="bible-library-loading">Loading the scripture catalogue…</p>
+
+  <div class="bible-library-groups" id="bible-library-groups" aria-label="Bible divisions"></div>
+
+  <div class="bible-library-tools">
+    <div class="bible-library-tabs" aria-label="Filter Bible books by section">
+      <button type="button" data-bible-section="all" class="is-active" aria-pressed="true">All 80</button>
+      <button type="button" data-bible-section="old" aria-pressed="false">Old Testament</button>
+      <button type="button" data-bible-section="apocrypha" aria-pressed="false">KJV Apocrypha</button>
+      <button type="button" data-bible-section="new" aria-pressed="false">New Testament</button>
+    </div>
+    <div class="bible-library-search-row">
+      <input id="bible-book-search" type="search" placeholder="Find a book or division — Isaiah, wisdom, gospel…" autocomplete="off" aria-label="Find a Bible book">
+      <span id="bible-book-count">80 books</span>
+    </div>
+    <div class="bible-book-grid" id="bible-book-grid" aria-label="Bible books"></div>
+  </div>
+
+  <section class="bible-library-reader" id="bible-library-reader" hidden aria-label="Selected Bible book">
+    <div class="bible-library-reader-head">
+      <div>
+        <div class="eyebrow">Selected book</div>
+        <h3 id="bible-reader-book">John</h3>
+        <p id="bible-reader-meta"></p>
+      </div>
+      <div class="bible-library-reader-controls">
+        <select id="bible-reader-chapter" aria-label="Choose chapter"></select>
+        <button id="bible-read-chapter" type="button">Read exact WEB chapter</button>
+      </div>
+    </div>
+    <p class="bible-reader-source" id="bible-reader-source"></p>
+    <form class="bible-reference-form" id="bible-reference-form">
+      <input id="bible-reference-input" type="text" placeholder="Open a precise WEB reference — John 12:24; Genesis 28:12-17" aria-label="Bible reference">
+      <button type="submit">Open reference</button>
+    </form>
+    <div class="bible-reference-help">The reference reader supports book + chapter, verse, ranges, comma continuations and semicolon-separated passages inside the current 66-book WEB source.</div>
+  </section>
+</section>
 
 <section class="study-shell" aria-label="Bible comparison study tool">
 <section class="atlas-explorer" id="atlas-explorer" hidden aria-label="Explore the Bible comparison atlas">
@@ -132,6 +224,7 @@
 </div></details>
 </main>
 <script src="../../app/bible-corpus-loader.js"></script>
+<script src="../../app/bible-relation-redirects.js"></script>
 <script src="../../app/bible-atlas-navigation.js"></script>
 <script src="../../app/bible-mining-wave19-loader.js"></script>
 <script src="../../app/bible-mining-wave20-loader.js"></script>
@@ -144,7 +237,8 @@
 <script src="../../app/tts-drawer.js"></script>
 <script src="../../app/bible-tts-adapter.js"></script>
 <script src="../../app/bible-scripture-reader.js"></script>
+<script src="../../app/bible-library.js"></script>
 <script src="../../app/bible-scene-reader.js"></script>
 <script src="../../app/bible-atlas-ui.js"></script>
-</body>
+<script src="../../app/house-journey.js"></script></body>
 </html>

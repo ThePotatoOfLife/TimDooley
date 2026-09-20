@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "checked": "2026-09-20",
+  "authority": "spatial-house-health",
+  "scope": "recursive spatial House",
+  "counts": {
+    "dwellings": 10,
+    "nested_rooms": 38,
+    "nested_room_interiors": 38,
+    "inhabitants": 31
+  },
+  "checks": {
+    "all_nested_rooms_have_valid_parent": true,
+    "all_registered_adjacencies_resolve": true,
+    "all_inhabitant_room_ids_resolve": true,
+    "all_nested_room_interior_routes_exist": true,
+    "journey_contract_registered": true,
+    "object_focus_contract_registered": true,
+    "inhabitant_registry_registered": true
+  },
+  "invariants": [
+    "Dwelling ownership remains separate from navigation projection.",
+    "Nested Room interiors are homes/views, not duplicate knowledge owners.",
+    "Cross-Dwelling wormholes require registered adjacency.",
+    "Level 3 objects remain inhabitants even when centered.",
+    "Journey memory remains browser-local navigation state.",
+    "Readable HTML routes remain available alongside spatial navigation."
+  ],
+  "source_records": [
+    "data/house/rooms.json",
+    "data/house/subrooms.json",
+    "data/house/room-interiors.json",
+    "data/house/room-inhabitants.json",
+    "data/house/non-euclidean-room-grammar.json",
+    "data/house/journey-thread-contract.json",
+    "data/house/object-focus-contract.json"
+  ]
+}

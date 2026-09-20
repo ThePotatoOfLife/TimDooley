@@ -1,0 +1,170 @@
+{
+  "version": "1.2.0",
+  "status": "active-blueprint",
+  "visibility": "backend-only",
+  "entity": "foundation",
+  "purpose": "Shared cross-domain contract for any durable generative beginning: constitutions, charters, treaties, covenants, religious formations, schools, companies, protocols, standards, scientific programmes, movements, lineages and project-native foundations.",
+  "applies_when": "Use when a record needs to explain not merely origin but the stable reference/platform and reproduction mechanism by which later continuity, branching, amendment or refoundation becomes possible.",
+  "record_schema": {
+    "identity": [
+      "foundation_id",
+      "name",
+      "subject_id",
+      "domain",
+      "foundation_types",
+      "status"
+    ],
+    "substrate": [
+      "predecessors",
+      "historical_field",
+      "active_roots",
+      "problem_or_opportunity"
+    ],
+    "clocks": [
+      "substrate",
+      "seed_idea",
+      "authorization",
+      "adoption_signature",
+      "entry_into_force",
+      "first_operation",
+      "consolidation",
+      "refoundation_revision",
+      "branching",
+      "termination_supersession"
+    ],
+    "clocks_contract": [
+      "date_or_range",
+      "year_start",
+      "year_end",
+      "event_type",
+      "precision",
+      "status",
+      "label",
+      "source"
+    ],
+    "generative_core": [
+      "seed",
+      "founding_purpose",
+      "load_bearing_rules",
+      "rights_or_promises",
+      "prohibitions_or_limits",
+      "identity_boundary"
+    ],
+    "authority": [
+      "founders_or_parties",
+      "constituting_authority",
+      "legitimacy_basis",
+      "jurisdiction_or_scope",
+      "interpretive_authority"
+    ],
+    "reproduction": [
+      "mechanism",
+      "admission",
+      "training_or_socialization",
+      "succession",
+      "offices_or_roles",
+      "ritual_or_practice",
+      "technical_implementation",
+      "ownership_or_capital",
+      "archives_or_canon"
+    ],
+    "platform": [
+      "what_becomes_possible",
+      "institutions_created",
+      "capabilities_created",
+      "interfaces_or_doors",
+      "material_base"
+    ],
+    "revision": [
+      "amendment_method",
+      "review",
+      "schism_or_fork",
+      "merger",
+      "supersession",
+      "continuity_claim",
+      "preserved_invariants"
+    ],
+    "branches": [
+      "descendants",
+      "schools",
+      "denominations",
+      "agencies",
+      "subsidiaries",
+      "versions",
+      "forks",
+      "receptions"
+    ],
+    "evidence": [
+      "primary_instrument",
+      "official_record",
+      "archive",
+      "contemporary_account",
+      "scholarship",
+      "traditional_account",
+      "project_canon",
+      "retrieved_at",
+      "confidence"
+    ],
+    "geography": [
+      "emergence_places",
+      "place_precision",
+      "migration_or_relocation",
+      "virtual_or_distributed_origin"
+    ],
+    "current_state": [
+      "current_status",
+      "current_status_source",
+      "termination_or_supersession",
+      "living_successor",
+      "surviving_seed"
+    ],
+    "placement": [
+      "primary_room",
+      "supporting_rooms",
+      "field_stage",
+      "plane_projection",
+      "axis_direction",
+      "route_condition",
+      "motive_lens"
+    ]
+  },
+  "relation_templates": [
+    "subject-founded-by-foundation",
+    "foundation-emerges-from-substrate",
+    "foundation-constituted-by-instrument",
+    "foundation-authorized-by-authority",
+    "foundation-enters-force-on-date",
+    "foundation-reproduces-through-mechanism",
+    "foundation-refounded-by-foundation",
+    "foundation-branches-into-descendant",
+    "foundation-superseded-by-foundation",
+    "foundation-preserves-invariant"
+  ],
+  "integration_rule": "Domain records keep substantive identity. Foundation records are cross-domain generative-history records referencing those owners; they do not replace country, religion, company, school, law, technology or project records.",
+  "integrity_rules": [
+    "Do not force one birthday when authorization, legal effect, operation and consolidation differ.",
+    "Ancient or emergent traditions may require ranges and contested/traditional dates.",
+    "A predecessor/root is not automatically the foundation.",
+    "A founding document is insufficient unless the reproduction/operation mechanism is stated.",
+    "Refoundation must state what changed and what continuity is claimed.",
+    "Superseded foundation states remain addressable in Archive.",
+    "Project-symbolic foundation claims retain their own evidence class.",
+    "Store current survival separately from historical origin.",
+    "Place Foundation stages rather than assigning one moral altitude to the whole Foundation.",
+    "Fear/love and angel/demon motifs may appear only as project-native motive lenses and cannot override evidence.",
+    "Reader surfaces lead with Door/date/place, House owner/circle, and current snapshot before technical Seed genealogy.",
+    "Physical map anchors and House/circle placement are separate coordinate systems."
+  ],
+  "updated": "2026-09-18",
+  "reader_projection": {
+    "contract": "data/house/foundation-room-contract.json",
+    "atlas": "data/house/foundation-room-atlas.json",
+    "primary_faces": [
+      "origin-door",
+      "house-location",
+      "today",
+      "genealogy"
+    ],
+    "rule": "The Foundation Room is the main reader object. Seed/root/sprout remain technical genealogy beneath it."
+  }
+}

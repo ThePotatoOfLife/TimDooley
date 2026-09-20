@@ -1,7 +1,7 @@
 {
   "id": "culture-theory-source-ledger",
-  "version": "1.0.0",
-  "updated": "2026-09-14",
+  "version": "1.1.0",
+  "updated": "2026-09-19",
   "purpose": "Source ledger for culture formation, subculture, counterpublic, prestige and cultural-memory concepts used by the Culture & Subculture reader. Sources support only the stated concepts and do not validate project-symbolic claims.",
   "sources": [
     {
@@ -9,7 +9,10 @@
       "source": "UNESCO — About the Culture Sector",
       "url": "https://www.unesco.org/en/culture/about?hub=365",
       "class": "intergovernmental_reference",
-      "supports": ["culture extends beyond arts to ways of life, values, traditions and beliefs", "culture can characterize a society or social group"],
+      "supports": [
+        "culture extends beyond arts to ways of life, values, traditions and beliefs",
+        "culture can characterize a society or social group"
+      ],
       "limits": "A broad policy definition does not by itself establish the boundaries of any particular subculture or community."
     },
     {
@@ -17,7 +20,11 @@
       "source": "Nancy Fraser — Rethinking the Public Sphere: A Contribution to the Critique of Actually Existing Democracy",
       "url": "https://www.unm.edu/~sromano/english540/Fraser%2C%20Subaltern%20Counterpublics.pdf",
       "class": "scholarly_article",
-      "supports": ["multiple publics rather than one homogeneous public", "subaltern counterpublics as alternative discursive arenas", "counterpublics can develop language and interpretations that contest dominant publics"],
+      "supports": [
+        "multiple publics rather than one homogeneous public",
+        "subaltern counterpublics as alternative discursive arenas",
+        "counterpublics can develop language and interpretations that contest dominant publics"
+      ],
       "limits": "Fraser's concept is specifically tied to subordinated social groups; the project should not label every niche, fandom or hostile internet community a subaltern counterpublic."
     },
     {
@@ -25,7 +32,11 @@
       "source": "Dick Hebdige — Subculture: The Meaning of Style",
       "url": "https://www.routledge.com/Subculture/Hebdige/p/book/9780415291378",
       "class": "scholarly_book",
-      "supports": ["subcultural style as meaningful symbolic practice", "music, dress and aesthetics can mark cultural distinction", "subcultural forms can later be commodified or incorporated into wider culture"],
+      "supports": [
+        "subcultural style as meaningful symbolic practice",
+        "music, dress and aesthetics can mark cultural distinction",
+        "subcultural forms can later be commodified or incorporated into wider culture"
+      ],
       "limits": "The work centers on postwar British youth cultures and should not be universalized as a complete model of modern or American internet subculture."
     },
     {
@@ -33,7 +44,11 @@
       "source": "Pierre Bourdieu — Distinction: A Social Critique of the Judgement of Taste",
       "url": "https://www.routledge.com/Distinction-A-Social-Critique-of-the-Judgement-of-Taste/Bourdieu/p/book/9780415567886",
       "class": "scholarly_book",
-      "supports": ["taste and prestige are socially structured", "cultural judgments can function as social distinctions", "prestige and elite access should be analyzed separately from intrinsic or moral worth"],
+      "supports": [
+        "taste and prestige are socially structured",
+        "cultural judgments can function as social distinctions",
+        "prestige and elite access should be analyzed separately from intrinsic or moral worth"
+      ],
       "limits": "Bourdieu's empirical setting was primarily French class structure; the archive uses the work as a comparative framework rather than a universal ranking system."
     },
     {
@@ -41,8 +56,59 @@
       "source": "Farm / Shadow / Cow / Sektur / Moloch Source Ledger",
       "url": "../../world/farm-shadow-source-ledger.json",
       "class": "internal_source_ledger",
-      "supports": ["internet attention extraction", "anti-fandom and negative parasocial relations", "archive persistence", "gossip and reputation", "anonymity and group norms", "high-control/self-sealing comparison"],
+      "supports": [
+        "internet attention extraction",
+        "anti-fandom and negative parasocial relations",
+        "archive persistence",
+        "gossip and reputation",
+        "anonymity and group norms",
+        "high-control/self-sealing comparison"
+      ],
       "limits": "This internal ledger routes to external research and does not make the project's Farm, Sektur, Swamp or Garden terms established social-science categories."
+    },
+    {
+      "id": "polletta-jasper-collective-identity",
+      "source": "Francesca Polletta & James M. Jasper — Collective Identity and Social Movements",
+      "url": "https://www.annualreviews.org/content/journals/10.1146/annurev.soc.27.1.283",
+      "class": "scholarly_review",
+      "supports": [
+        "collective identity as a mechanism in social movement emergence, participation, tactics and impact",
+        "group boundaries and shared claims can matter for mobilization"
+      ],
+      "limits": "Collective identity is one explanatory mechanism among several; it should not be used to imply that every subculture becomes a movement or that identity alone determines political behavior."
+    },
+    {
+      "id": "farrell-internet-politics",
+      "source": "Henry Farrell — The Consequences of the Internet for Politics",
+      "url": "https://www.annualreviews.org/content/journals/10.1146/annurev-polisci-030810-110815",
+      "class": "scholarly_review",
+      "supports": [
+        "internet-mediated political effects should be analyzed through specific causal mechanisms",
+        "lower transaction costs, sorting and information dynamics can mediate political outcomes"
+      ],
+      "limits": "The review emphasizes mechanism and causal identification; internet participation does not have one uniform political effect."
+    },
+    {
+      "id": "zhuravskaya-petrova-enikolopov-social-media-politics",
+      "source": "Ekaterina Zhuravskaya, Maria Petrova & Ruben Enikolopov — Political Effects of the Internet and Social Media",
+      "url": "https://www.annualreviews.org/content/journals/10.1146/annurev-economics-081919-050239",
+      "class": "scholarly_review",
+      "supports": [
+        "internet and social media can affect voting, protest, attitudes, polarization and political behavior through context-dependent mechanisms",
+        "user-generated media and low barriers to entry can alter political information environments"
+      ],
+      "limits": "Findings differ by platform, regime, population and study design; the source does not support a universal pipeline from online subculture to political outcome."
+    },
+    {
+      "id": "battaglini-patacchini-policy-networks",
+      "source": "Marco Battaglini & Eleonora Patacchini — Social Networks in Policy Making",
+      "url": "https://www.annualreviews.org/content/journals/10.1146/annurev-economics-080218-030419",
+      "class": "scholarly_review",
+      "supports": [
+        "social networks can connect actors outside government to policy processes",
+        "lobbying, activism and social ties can shape information and influence pathways"
+      ],
+      "limits": "Network association is not proof of coordination or causal influence in any specific case; case-level claims require direct evidence."
     }
   ]
 }

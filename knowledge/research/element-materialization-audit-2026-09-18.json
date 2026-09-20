@@ -1,0 +1,100 @@
+{
+  "id": "element-materialization-audit-2026-09-18",
+  "title": "Element Materialization Audit — From Strong Definitions to Real-World Instrumentation",
+  "version": "1.1.0",
+  "updated": "2026-09-18",
+  "status": "active implementation audit",
+  "purpose": "Audit high-value Potato House elements against the crystallization gate and identify where the project already has strong definitions but still lacks enough real-world population, longitudinal change, scale, visibility and correction data to make those elements analytically useful.",
+  "audit_rule": "Do not reward another symbolic definition when a canonical element already exists. Prefer adding real entities, dated observations, relationships, outcome measures, counterexamples, correction paths and failure conditions to the strongest existing owner.",
+  "findings": [
+    {
+      "area": "core operator definitions",
+      "artifacts": [
+        "knowledge/core/deep-element-definition-atlas.json",
+        "data/house/layer-terrain-regime-atlas.json"
+      ],
+      "current_strength": "high",
+      "evidence": "41 deep element definitions plus typed layer/terrain/regime distinctions already define identity, function, topology, neighbors, distinctions, failure modes and tests.",
+      "missing": "Many operators still have fewer longitudinal real-world cases than conceptual crosswalks.",
+      "action": "Do not add another operator family. Exercise existing operators against entities and processes."
+    },
+    {
+      "area": "Foundation and reproduction",
+      "artifacts": [
+        "knowledge/core/foundation-reproduction-mechanisms-atlas.json",
+        "data/house/foundations-wave-001.json",
+        "data/house/foundations-wave-002.json"
+      ],
+      "current_strength": "high conceptual / medium empirical",
+      "evidence": "Nine reproduction mechanisms and cross-domain Foundation records already exist.",
+      "missing": "More observed succession, amendment, training, interoperability, branching and failure histories across the same entities over time.",
+      "action": "Attach Foundation/reproduction observations to real entity dossiers and longitudinal cases."
+    },
+    {
+      "area": "Garden Repair Fruit Tree",
+      "artifacts": [
+        "knowledge/core/garden-regime-mechanics.json",
+        "knowledge/core/repair-forge-protocol.json",
+        "knowledge/core/fruit-consequence-evaluation-atlas.json",
+        "knowledge/core/tree-branching-pruning-atlas.json"
+      ],
+      "current_strength": "high mechanism / medium instrumentation",
+      "evidence": "Each element already has operational tests, failure modes and connections.",
+      "missing": "Repeated cases measuring capability growth, correction, exit, externalities, pruning and future Seed.",
+      "action": "Use entity and programme dossiers to supply measurable cases instead of adding more abstract prose."
+    },
+    {
+      "area": "entity dossiers",
+      "artifacts": [
+        "data/house/entity-dossier-schema.json",
+        "data/house/entity-dossiers-wave-001.json"
+      ],
+      "current_strength": "high first-case quality / low sample and time depth",
+      "evidence": "Four source-grounded dossiers already separate identity, Spirit/Mind/Body, relationships, operators, Fruit, Shadow and open questions.",
+      "missing": "Scale is implicit; visibility/access is mixed into Shadow; reproduction/correction is scattered; longitudinal observations are not first-class.",
+      "action": "Promote scale, reproduction/correction, visibility/access and longitudinal indicators into the dossier contract and backfill wave 001."
+    },
+    {
+      "area": "House public rendering",
+      "artifacts": [
+        "house/index.html"
+      ],
+      "current_strength": "good orientation / partial case depth",
+      "evidence": "Entity cases render Spirit/Mind/Body, operators, Shadow and discovery questions.",
+      "missing": "The reader cannot yet see scale, observed change, reproduction/correction or visibility boundaries even when the data exists.",
+      "action": "Expose those dimensions in the entity-case panel with progressive disclosure rather than another page."
+    }
+  ],
+  "first_implementation_wave": {
+    "target": "entity dossier instrumentation",
+    "why": "It simultaneously deepens Foundation, Garden, Repair, Fruit, Tree, Spirit/Mind/Body, World Systems and the House without inventing a new ontology.",
+    "schema_additions": [
+      "scale_profile",
+      "reproduction_and_correction",
+      "visibility_and_access",
+      "longitudinal_indicators"
+    ],
+    "entities": [
+      "Danmarks Nationalbank",
+      "Wikimedia Foundation",
+      "CERN",
+      "International Committee of the Red Cross"
+    ],
+    "public_surface": "house/#crystallized-cases",
+    "status": "implemented",
+    "completed_artifacts": [
+      "data/house/entity-dossier-schema.json",
+      "data/house/entity-dossiers-wave-001.json",
+      "house/index.html",
+      "scripts/validate_entity_dossier_instrumentation.py"
+    ],
+    "result": "Wave 001 now exposes scale, dependencies, reproduction/correction, visibility/access and source-backed longitudinal indicators for Danmarks Nationalbank, Wikimedia Foundation, CERN and ICRC; House renders these dimensions and CI validates the contract."
+  },
+  "next_candidates": [
+    "instrument selected Works with the Fruit contract and actual reception/downstream effects",
+    "run one real canon change through the History/Canon Revision protocol",
+    "build Garden→Repair cases with before/after measures",
+    "add longitudinal Foundation/reproduction histories to additional institutions and protocols",
+    "prune symbol atlases whose unique information has already been absorbed by stronger owners"
+  ]
+}

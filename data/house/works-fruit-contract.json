@@ -1,0 +1,43 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "works-fruit-contract",
+  "purpose": "Make Works the observable Fruit layer of the project without equating publication, popularity or completion with success.",
+  "rule": "Every mature Work may declare which center material it transforms, what type of Fruit it is, who it is for, what evidence/claims it carries, and what future Seed/capacity it is intended to create.",
+  "fruit_types": [
+    "nutritive",
+    "reproductive",
+    "repair",
+    "informational",
+    "creative",
+    "institutional",
+    "poison-risk",
+    "sterile-risk"
+  ],
+  "work_record_fields": [
+    "work_id",
+    "title",
+    "work_type",
+    "source_rooms",
+    "center_nodes",
+    "fruit_types",
+    "intended_audience",
+    "intended_effect",
+    "claim/evidence_boundary",
+    "observable_reception",
+    "externalities_or_risks",
+    "future_seed",
+    "revision_status"
+  ],
+  "evaluation": [
+    "Completion is output, not automatically Fruit.",
+    "Popularity is reception, not truth.",
+    "Revenue is one consequence, not total value.",
+    "A Work that creates reusable skill/knowledge/capacity has reproductive Fruit.",
+    "A Work that intensifies dependency, confusion or hidden cost can carry poison-Fruit risk even if successful by a narrow metric.",
+    "Negative/failed experiments can be informational Fruit if they reliably close a false path."
+  ],
+  "handoff": "Works receives mature material from owning Rooms; feedback/reception returns to History, Culture and Research rather than silently rewriting canon.",
+  "owner_room_id": "works",
+  "source_contract": "knowledge/core/fruit-consequence-evaluation-atlas.json"
+}

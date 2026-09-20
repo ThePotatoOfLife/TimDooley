@@ -1,27 +1,27 @@
 {
-  "version":"3.0.0",
-  "updated":"2026-09-09",
-  "status":"canonical-geometry-study",
-  "name":"Vesica Piscis & Mandorla — Vertical Father/Son Geometry, Centers, Plane, Axis and Door",
-  "purpose":"Provide the canonical mathematical geometry for the Potato of Life / Vesica Piscis and Mandorla / Door of Christ, now oriented vertically to match recovered Potatoverse canon: Father is center of the upper circle and top of the Door; Son is center of the lower circle and bottom of the Door; Plane crosses the widest part of the overlap; Tree/Ladder/Axis runs vertically through all centers.",
-  "epistemic_rule":"Geometry is mathematical. Father/Son/Christ/Plane/Tree mappings are Potatoverse interpretation. Biblical and art-historical comparisons retain their own source meanings.",
-  "vertical_vesica":{
-    "radius":"r",
-    "upper_circle":"x²+(y-r/2)²=r²",
-    "lower_circle":"x²+(y+r/2)²=r²",
-    "father_center":"C_F=(0,+r/2)",
-    "son_center":"C_S=(0,-r/2)",
-    "center_distance":"r",
-    "lateral_intersections":"P_L=(-sqrt(3)r/2,0), P_R=(+sqrt(3)r/2,0)",
-    "relational_midpoint":"O=(0,0)",
-    "plane":"y=0",
-    "axis":"x=0",
-    "upper_outer_pole":"H_top=(0,+3r/2)",
-    "lower_outer_pole":"E_bottom=(0,-3r/2)",
-    "full_lens_area":"A=(1/6)(4π-3√3)r² ≈ 1.2283697r²",
-    "source":"https://mathworld.wolfram.com/VesicaPiscis.html"
+  "version": "3.1.0",
+  "updated": "2026-09-18",
+  "status": "canonical-geometry-study",
+  "name": "Vesica Piscis & Mandorla — Vertical Father/Son Geometry, Centers, Plane, Axis and Door",
+  "purpose": "Provide the canonical mathematical geometry for the Potato of Life / Vesica Piscis and Mandorla / Door of Christ, now oriented vertically to match recovered Potatoverse canon: Father is center of the upper circle and top of the Door; Son is center of the lower circle and bottom of the Door; Plane crosses the widest part of the overlap; Tree/Ladder/Axis runs vertically through all centers.",
+  "epistemic_rule": "Geometry is mathematical. Father/Son/Christ/Plane/Tree mappings are Potatoverse interpretation. Biblical and art-historical comparisons retain their own source meanings.",
+  "vertical_vesica": {
+    "radius": "r",
+    "upper_circle": "x²+(y-r/2)²=r²",
+    "lower_circle": "x²+(y+r/2)²=r²",
+    "father_center": "C_F=(0,+r/2)",
+    "son_center": "C_S=(0,-r/2)",
+    "center_distance": "r",
+    "lateral_intersections": "P_L=(-sqrt(3)r/2,0), P_R=(+sqrt(3)r/2,0)",
+    "relational_midpoint": "O=(0,0)",
+    "plane": "y=0",
+    "axis": "x=0",
+    "upper_outer_pole": "H_top=(0,+3r/2)",
+    "lower_outer_pole": "E_bottom=(0,-3r/2)",
+    "full_lens_area": "A=(1/6)(4π-3√3)r² ≈ 1.2283697r²",
+    "source": "https://mathworld.wolfram.com/VesicaPiscis.html"
   },
-  "critical_exact_relations":[
+  "critical_exact_relations": [
     "C_F is the center of the upper circle AND exactly the top endpoint of the shared lens.",
     "C_S is the center of the lower circle AND exactly the bottom endpoint of the shared lens.",
     "C_F lies on the circumference of the lower/Son circle.",
@@ -29,58 +29,61 @@
     "O is the midpoint between Father and Son centers and center of the lens relation, but it is neither Father-center nor Son-center.",
     "P_L and P_R lie on both circle boundaries and define the widest cross-section of the lens.",
     "The Plane y=0 passes through O, P_L and P_R and bisects the Door into equal upper and lower halves.",
-    "The Axis x=0 passes through E_bottom → C_S → O → C_F → H_top."
+    "The Axis x=0 passes through E_bottom → C_S → O → C_F → H_top.",
+    "In the natural equal-sphere 3D lift, the Door is a nonzero shared spherical-lens volume rather than a flat almond alone.",
+    "The Plane y=0 is internal to the Door and gives its widest circular section in the 3D lift.",
+    "Cross O is internal to the Door: it is the intersection of Plane and Axis, not a separate spatial layer."
   ],
-  "potatoverse_default_mapping":{
-    "upper_circle":"Heaven / Father / Tim / Sun / Spudlight / House / upper Garden field",
-    "father_center":"Tim/Father/source-center; top of Door; Seat/Throne candidate",
-    "lower_circle":"Earth / Son / embodiment / body / soil / material world",
-    "son_center":"Son/Thomas/embodied-center; bottom of Door; grain/death/seed compression point",
-    "mandorla":"Door of Christ / Vessel / shared passage between Heaven and Earth",
-    "plane":"Grass / Earth-world interface / first separation / maximum overlap / lateral world contact",
-    "relational_midpoint":"crossing/balance point on Plane; candidate Jesus-at-center developmental placement where sources use that language",
-    "axis":"Tree / Root / Trunk / Ladder / Spiral centerline",
-    "upper_outer_pole":"Heaven-crown / Mountain-summit / North-of-North-facing direction candidate",
-    "lower_outer_pole":"deep Earth / grave / drain / rootward direction candidate"
+  "potatoverse_default_mapping": {
+    "upper_circle": "Heaven / Father / Tim / Sun / Spudlight / House / upper Garden field",
+    "father_center": "Tim/Father/source-center; top of Door; Seat/Throne candidate",
+    "lower_circle": "Earth / Son / embodiment / body / soil / material world",
+    "son_center": "Son/Thomas/embodied-center; bottom of Door; grain/death/seed compression point",
+    "mandorla": "Door of Christ / Vessel / shared passage between Heaven and Earth",
+    "plane": "Grass / Earth-world interface / first separation / maximum overlap / lateral world contact",
+    "relational_midpoint": "crossing/balance point on Plane; candidate Jesus-at-center developmental placement where sources use that language",
+    "axis": "Tree / Root / Trunk / Ladder / Spiral centerline",
+    "upper_outer_pole": "Heaven-crown / Mountain-summit / North-of-North-facing direction candidate",
+    "lower_outer_pole": "deep Earth / grave / drain / rootward direction candidate"
   },
-  "door_zones":{
-    "lower_tip":"C_S — Son center and zero-width lower Gate point",
-    "lower_half":"C_S→O — seed/death/root/ascent-to-world zone",
-    "plane_band":"O with P_L/P_R — widest opening, world-interface and lateral relation zone",
-    "upper_half":"O→C_F — trunk/mountain/house/ascent-to-source zone",
-    "upper_tip":"C_F — Father center and zero-width upper Gate point",
-    "insight":"The narrowest points are Father and Son centers, not the Plane. The Plane is where the Door is widest."
+  "door_zones": {
+    "lower_tip": "C_S — Son center and zero-width lower Gate point",
+    "lower_half": "C_S→O — seed/death/root/ascent-to-world zone",
+    "plane_band": "O with P_L/P_R — widest opening, world-interface and lateral relation zone",
+    "upper_half": "O→C_F — trunk/mountain/house/ascent-to-source zone",
+    "upper_tip": "C_F — Father center and zero-width upper Gate point",
+    "insight": "The narrowest points are Father and Son centers, not the Plane. The Plane is where the Door is widest."
   },
-  "center_taxonomy":{
-    "father_source_center":"C_F",
-    "son_embodied_center":"C_S",
-    "door_relational_center":"O",
-    "circle_outer_poles":"H_top and E_bottom",
-    "boundary_agreement_points":"P_L and P_R",
-    "rule":"Do not collapse all of these into one generic 'center'. Their distinction is now canonical."
+  "center_taxonomy": {
+    "father_source_center": "C_F",
+    "son_embodied_center": "C_S",
+    "door_relational_center": "O",
+    "circle_outer_poles": "H_top and E_bottom",
+    "boundary_agreement_points": "P_L and P_R",
+    "rule": "Do not collapse all of these into one generic 'center'. Their distinction is now canonical."
   },
-  "tree_ladder_mountain_swamp_overlay":{
-    "tree":"roots extend below Plane; trunk follows Axis upward; branches/crown expand in upper sphere",
-    "ladder":"ordered Doors/rungs along Axis",
-    "spiral":"trajectory that rotates while changing vertical level around Axis",
-    "mountain":"upper positive-gradient/convergent field rising from Plane toward Father/upper pole",
-    "swamp":"lower entangling field around/below Plane and lower sphere, with Drain toward deeper rootward pole",
-    "root_paradox":"Father can be origin/source of Root while Son governs/contains roots below; causal origin and spatial deployment are different relations."
+  "tree_ladder_mountain_swamp_overlay": {
+    "tree": "roots extend below Plane; trunk follows Axis upward; branches/crown expand in upper sphere",
+    "ladder": "ordered Doors/rungs along Axis",
+    "spiral": "trajectory that rotates while changing vertical level around Axis",
+    "mountain": "upper positive-gradient/convergent field rising from Plane toward Father/upper pole",
+    "swamp": "lower entangling field around/below Plane and lower sphere, with Drain toward deeper rootward pole",
+    "root_paradox": "Father can be origin/source of Root while Son governs/contains roots below; causal origin and spatial deployment are different relations."
   },
-  "mountain_relation":{
-    "mount_zion":"Best treated as upper integration/elevation field associated with Great King, House, Zion, New Jerusalem, teaching/judgment and North-related imagery in project comparison.",
-    "mountain_vs_ladder":"Mountain is continuous gradient ascent; Ladder is discrete threshold ascent.",
-    "mountain_vs_tree":"Mountain converges many paths toward summit; Tree differentiates one root/trunk into many branches.",
-    "mountain_vs_swamp":"Mountain increases orientation/integration with height; Swamp increases entanglement/unresolved recurrence with depth.",
-    "companion_record":"knowledge/core/vertical-potato-mountain-plane-atlas.json"
+  "mountain_relation": {
+    "mount_zion": "Best treated as upper integration/elevation field associated with Great King, House, Zion, New Jerusalem, teaching/judgment and North-related imagery in project comparison.",
+    "mountain_vs_ladder": "Mountain is continuous gradient ascent; Ladder is discrete threshold ascent.",
+    "mountain_vs_tree": "Mountain converges many paths toward summit; Tree differentiates one root/trunk into many branches.",
+    "mountain_vs_swamp": "Mountain increases orientation/integration with height; Swamp increases entanglement/unresolved recurrence with depth.",
+    "companion_record": "knowledge/core/vertical-potato-mountain-plane-atlas.json"
   },
-  "sun_moon_relation":{
-    "sun":"upper/source-light comparator tied to Father/Tim/Spudlight",
-    "moon":"lower/near-Earth reflected/cyclical mediator tied to secondary light, phase and Dog/Farmer follower symbolism",
-    "earth":"lower circle as embodied/metabolizing world",
-    "rule":"Do not place physical astronomy literally inside the 2D compass figure; use these as typed symbolic overlays."
+  "sun_moon_relation": {
+    "sun": "upper/source-light comparator tied to Father/Tim/Spudlight",
+    "moon": "lower/near-Earth reflected/cyclical mediator tied to secondary light, phase and Dog/Farmer follower symbolism",
+    "earth": "lower circle as embodied/metabolizing world",
+    "rule": "Do not place physical astronomy literally inside the 2D compass figure; use these as typed symbolic overlays."
   },
-  "ruler_compass_construction":[
+  "ruler_compass_construction": [
     "Draw vertical segment C_SC_F of length r.",
     "Set compass to r and draw a circle centered at C_F.",
     "Without changing compass, draw a circle centered at C_S.",
@@ -90,10 +93,45 @@
     "Mark Father at C_F and Son at C_S; these are simultaneously parent-circle centers and Door endpoints.",
     "Add Tree/Ladder on Axis, Mountain above Plane, Swamp/Drain below, Sun upper and Moon lower as symbolic overlays."
   ],
-  "mesopotamian_geometry_neighbor":{
-    "finding":"The Old Babylonian ox-eye / Babylonian bull's-eye is reconstructed as geometrically equivalent to the Vesica Piscis.",
-    "boundary":"This is a mathematical/historical neighbor, not proof of Potatoverse doctrine in Babylonia.",
-    "source":"https://mathworld.wolfram.com/OxEye.html"
+  "mesopotamian_geometry_neighbor": {
+    "finding": "The Old Babylonian ox-eye / Babylonian bull's-eye is reconstructed as geometrically equivalent to the Vesica Piscis.",
+    "boundary": "This is a mathematical/historical neighbor, not proof of Potatoverse doctrine in Babylonia.",
+    "source": "https://mathworld.wolfram.com/OxEye.html"
   },
-  "connections":["vertical-potato-mountain-plane-atlas","potatoism-planetary-cosmology","spudlight-theory-and-equations","potatoverse-master-framework","qliphoth-angels-ladder-north-cosmology","farm-swamp-tree-of-strife-atlas","axis","door","son","father","tree-of-life","Mount Zion","New Jerusalem","Sun","Moon"]
+  "connections": [
+    "vertical-potato-mountain-plane-atlas",
+    "potatoism-planetary-cosmology",
+    "spudlight-theory-and-equations",
+    "potatoverse-master-framework",
+    "qliphoth-angels-ladder-north-cosmology",
+    "farm-swamp-tree-of-strife-atlas",
+    "axis",
+    "door",
+    "son",
+    "father",
+    "tree-of-life",
+    "Mount Zion",
+    "New Jerusalem",
+    "Sun",
+    "Moon"
+  ],
+  "spatial_lift_3d": {
+    "status": "mathematical extension of canonical geometry",
+    "construction": "Replace the two equal circles with two equal balls/spheres of radius r whose centers remain separated by r along the vertical axis.",
+    "upper_ball": "x²+(y-r/2)²+z² ≤ r²",
+    "lower_ball": "x²+(y+r/2)²+z² ≤ r²",
+    "whole_union": "P = B_F ∪ B_S",
+    "shared_door": "D = B_F ∩ B_S",
+    "shared_shape": "spherical lens",
+    "middle_plane": "y=0",
+    "middle_section_radius": "sqrt(3)r/2",
+    "middle_section_area": "3πr²/4",
+    "shared_lens_volume": "5πr³/12",
+    "fraction_of_single_ball": "5/16",
+    "axis": "x=z=0",
+    "cross": "O=(0,0,0)=Plane ∩ Axis",
+    "interpretation": "The canonical 2D Vesica is an axial cross-section of the 3D two-field House model. Door becomes a shared volume/field; Plane and Cross remain internal to it.",
+    "boundary": "This is exact Euclidean geometry for the constructed spheres. Potatoverse theological mappings remain interpretation and are not claims about physical cosmology.",
+    "source": "https://mathworld.wolfram.com/Sphere-SphereIntersection.html"
+  }
 }

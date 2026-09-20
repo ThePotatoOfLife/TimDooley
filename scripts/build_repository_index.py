@@ -2,7 +2,7 @@
 from __future__ import annotations
 import json,re
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]; DATA=ROOT/'data'; OUT=DATA/'repository-index.json'; CONCEPT_REGISTRY=DATA/'potatoism-concept-registry.json'
+ROOT=Path(__file__).resolve().parents[1]; DATA=ROOT/'data'; KNOWLEDGE=ROOT/'knowledge'; OUT=DATA/'repository-index.json'; CONCEPT_REGISTRY=DATA/'potatoism-concept-registry.json'; SCAN_ROOTS=(DATA,KNOWLEDGE)
 ID_KEYS=('id','slug','key','term','iso3','country_id'); NAME_KEYS=('name','display_name','proper_name','title','label','term'); DESC_KEYS=('description','definition','summary','purpose','meaning','notes','worldview','core','origin')
 SKIP={'repository-index.json','canonical-record-registry.json','source-of-truth-audit.json'}; ROOTS={'spirit','mind','matter'}; SPIRIT={'source','meaning','belief','myths'}; MIND={'psychology','hawkinscale','neurobiology'}; MATTER={'world','region','institution','network','person','object','event','record','ground'}; SCALES={'source','principle','concept','world','region','institution','network','person','object','event','record','ground'}
 ROLE_RULES=(('enrichment',lambda s:'-enrichment' in s or '/enrichment' in s),('projection',lambda s:any(x in s for x in ('-nodes','repository-index','country-atlas','lexicon','glossary','comparative-library'))),('relationship',lambda s:s.endswith('relationships.json') or '/relationships' in s),('research',lambda s:'/research/' in s or 'research-' in Path(s).name or '/expansions/' in s or 'expansion-' in Path(s).name),('source',lambda s:'/sources/' in s or Path(s).name.startswith('source-')),('identity-index',lambda s:Path(s).name=='index.json' or Path(s).name.endswith('-index.json')),('schema',lambda s:'blueprint' in Path(s).name),('archive',lambda s:'archive' in Path(s).name))
@@ -100,7 +100,8 @@ def concept_priority(r):
     except ValueError:return 99
 def main():
     records=[]; files=[]; errors=[]
-    for p in sorted(DATA.rglob('*.json')):
+    paths=sorted(p for scan_root in SCAN_ROOTS for p in scan_root.rglob('*.json'))
+    for p in paths:
         if p.name in SKIP:continue
         source=p.relative_to(ROOT).as_posix()
         try:data=json.loads(p.read_text(encoding='utf-8'))
