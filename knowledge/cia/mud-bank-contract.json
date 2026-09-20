@@ -23,9 +23,9 @@
   },
   "welfare": {
     "name": "Dooley Welfare",
-    "rate_per_second_susd": 0.000001,
-    "rate_per_day_susd": 0.0864,
-    "rate_per_year_365d_susd": 31.536,
+    "rate_per_second_susd": 1e-11,
+    "rate_per_day_susd": 8.64e-7,
+    "rate_per_year_365d_susd": 0.00031536,
     "accrual": "continuous from the dossier's best recovered story-entry date and continues after inactivity, closure or death",
     "default_enabled": true,
     "stop_conditions": [
@@ -37,7 +37,8 @@
       "dormancy",
       "death",
       "closed archive status"
-    ]
+    ],
+    "calibration_note": "No earlier conversation established a canonical per-second rate. This microscopic rate adopts the 2026-09-21 user calibration; older Dole/Dooley material used monthly/passive-income and breathing-dividend metaphors rather than a continuous numeric rate."
   },
   "event_weights": {
     "project-credit": 25,
