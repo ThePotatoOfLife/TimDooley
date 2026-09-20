@@ -2,6 +2,7 @@
 """Validate the universal fast-access layer in source assets and the built site."""
 from __future__ import annotations
 from pathlib import Path
+import json
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/"_site"
@@ -16,10 +17,16 @@ def read(path:Path)->str:
 js=read(ROOT/"app/site-access.js")
 css=read(ROOT/"app/site-access.css")
 patch=read(ROOT/"scripts/patch_public_navigation.py")
+contract_text=read(ROOT/"data/house/site-access.json")
+try:
+    contract=json.loads(contract_text) if contract_text else {}
+except json.JSONDecodeError as exc:
+    errors.append(f"invalid data/house/site-access.json: {exc}")
+    contract={}
 
 for token in (
     "Current World","World Map","CIA / Intelligence","People & Cases",
-    "data/house/public-surfaces.json","data/house/room-inhabitants.json",
+    "data/house/site-access.json","data/house/public-surfaces.json","data/house/room-inhabitants.json",
     "site-access-dock","site-access-panel",
 ):
     if token not in js and token not in css:
@@ -28,6 +35,29 @@ for token in (
 for token in ("inject_site_access","patch_site_access","app/site-access.css","app/site-access.js"):
     if token not in patch:
         errors.append(f"public navigation projection missing marker: {token}")
+
+entries={row.get("id"):row for row in contract.get("entries",[]) if isinstance(row,dict) and row.get("id")}
+for required_id in ("news","world-map","tim","house","rooms","cia","fbi","economy","tts","claims","public-witness","hours"):
+    if required_id not in entries:
+        errors.append(f"site-access contract missing curated entry: {required_id}")
+required_aliases={
+    "cia":("central intelligence agency",),
+    "fbi":("fbi",),
+    "economy":("fed","federal reserve","ecb","eurosystem","debt","bonds","obligations"),
+    "tts":("tts","read aloud","text to speech"),
+    "claims":("claims","statements"),
+    "public-witness":("public witness","public record"),
+}
+for entry_id,aliases in required_aliases.items():
+    hay=" ".join(str(x).lower() for x in entries.get(entry_id,{}).get("aliases",[]))
+    for alias in aliases:
+        if alias not in hay:
+            errors.append(f"site-access {entry_id} missing alias: {alias}")
+groups=contract.get("groups",{})
+for group_name in ("go_now","find","direct_doors"):
+    for entry_id in groups.get(group_name,[]):
+        if entry_id not in entries:
+            errors.append(f"site-access group {group_name} references unknown entry: {entry_id}")
 
 if "changed.update(patch_project_compass(OUT))" in patch:
     errors.append("legacy Project Compass must not be injected alongside the quick-access dock")
