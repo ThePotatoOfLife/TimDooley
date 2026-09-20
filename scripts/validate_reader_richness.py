@@ -120,6 +120,26 @@ def main() -> int:
     if missing_shell:
         errors.append("registered nested Room shells missing: "+", ".join(missing_shell[:10]))
 
+    # Major authored readers keep their presentation in scoped assets rather than
+    # regrowing large page-local style blocks.
+    scoped_reader_styles={
+        "index.html":"app/home.css",
+        "house/index.html":"app/house.css",
+        "axis/index.html":"app/axis.css",
+        "rooms/index.html":"app/rooms.css",
+    }
+    for rel,asset in scoped_reader_styles.items():
+        page=ROOT/rel
+        stylesheet=ROOT/asset
+        if not stylesheet.is_file():
+            errors.append(f"scoped reader stylesheet missing: {asset}")
+            continue
+        source=page.read_text(encoding="utf-8",errors="replace")
+        if re.search(r"<style\\b",source,flags=re.I):
+            errors.append(f"{rel} regrew page-local <style>; keep major reader styles in {asset}")
+        if asset not in source:
+            errors.append(f"{rel} does not load scoped reader stylesheet {asset}")
+
     authored_groups = [
         audit.get("authored_history") or [],
         audit.get("second_authored_wave") or [],
