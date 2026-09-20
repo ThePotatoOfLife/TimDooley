@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "title": "Potatoverse Being Room Registry",
   "purpose": "Expandable cast/being archaeology recovered from conversations, public records and literary material without flattening those source modes together.",
@@ -134,7 +134,7 @@
         "What event caused the wings to grow?",
         "What can be seen from the side that cannot be seen from inside the spiral?"
       ],
-      "caution": "Do not conflate this character with biblical Matthew; there is no canonical biblical angel named Matthew."
+      "caution": "Created being; do not conflate with biblical Matthew or with the real public-chat participant Matthew / @mtclassic3. Any relation to the real person must be explicitly marked creative/projective."
     },
     {
       "id": "rahu",
@@ -395,6 +395,29 @@
         "method"
       ],
       "core_question": "Which mechanism occurs in each scene without making the mechanism a permanent identity?"
+    },
+    {
+      "id": "matthew-mtclassic",
+      "label": "Matthew / MTClassic",
+      "kind": "person",
+      "room": "rooms/potatoverse-canon/beings/matthew-mtclassic/",
+      "status": [
+        "public_recovered",
+        "conversation_recovered"
+      ],
+      "core_question": "How does one recurring livestream participant move between ordinary gaming, moderation advice, theology and later creative projection without those layers collapsing?"
+    },
+    {
+      "id": "mediomu007",
+      "label": "Mediomu007",
+      "kind": "person",
+      "room": "rooms/potatoverse-canon/beings/mediomu/",
+      "status": [
+        "public_recovered",
+        "conversation_recovered",
+        "mixed"
+      ],
+      "core_question": "How do ordinary room-making, theological questioning and the August mountain/bridge-building narrative relate while remaining source-distinct?"
     }
   ],
   "institutional_routes": [
@@ -408,6 +431,8 @@
   ],
   "related_ledgers": [
     "knowledge/story/social-presence-ledger-2024-2025.json",
-    "knowledge/story/turning-corridor-chronicle-recovery-2025.json"
+    "knowledge/story/turning-corridor-chronicle-recovery-2025.json",
+    "knowledge/story/matthew-mtclassic-social-ledger-2026.json",
+    "knowledge/story/mediomu007-social-ledger-2026.json"
   ]
 }
