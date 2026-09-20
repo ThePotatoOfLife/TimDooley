@@ -1,5 +1,7 @@
 # World Map Quality Audit — 2026-09-20
 
+**Superseded:** 2026-09-21 by `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-21.md`. This file is retained as a dated diagnosis and must not be treated as current-main status.
+
 **Scope:** current `main` World Relational Atlas / `world-map/`.
 **Purpose:** critic-level assessment of what works, what is degraded, what is broken, why it fails, and the standard required before the map should be considered clean.
 **Relationship to other docs:** this document is the quality diagnosis; `docs/WORLD-MAP-PROBLEM-LEDGER.md` is the numbered execution queue; `docs/WORLD-MAP-ROADMAP.md` is the architectural direction.
