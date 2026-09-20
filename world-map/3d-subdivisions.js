@@ -127,6 +127,33 @@ function subdivisionEvidenceHtml(id) {
       <button type="button" data-subdivision-evidence-provider="${esc(providerId)}">${esc(row.actionLabel || 'Open evidence')}</button>
     </div>`).join('');
 }
+function subdivisionContextActions(properties = {}) {
+  const code = countryCode(properties);
+  if (code !== 'USA') return '';
+  return `
+    <div class="card subdivision-context-actions">
+      <div class="eyebrow">Optional state context</div>
+      <p class="muted">Load source-attributed evidence or project case context for this state. These counts do not characterize residents.</p>
+      <div class="actions">
+        <button type="button" data-subdivision-context="adl-heat">Show ADL evidence</button>
+        <button type="button" data-subdivision-context="mud-below-us">Show Mud / Below project cases</button>
+      </div>
+    </div>`;
+}
+async function activateSubdivisionContext(kind, feature) {
+  const id = String(feature?.properties?.id || '');
+  if (!id) return false;
+  if (kind === 'adl-heat') {
+    await window.__potatoAtlasLoadModule?.('ADL H.E.A.T.', './3d-adl-heat.js');
+    await window.__potatoAtlasAdlHeat?.setEnabled?.(true);
+  } else if (kind === 'mud-below-us') {
+    await window.__potatoAtlasLoadModule?.('Mud / Below U.S.', './3d-mud-below-us.js');
+    await window.__potatoAtlasMudBelow?.setEnabled?.(true);
+  } else return false;
+  renderInspector(feature);
+  return true;
+}
+
 function populationDensity(properties = {}) {
   const population = Number(properties?.population?.value);
   const area = Number(properties?.area_km2);
@@ -154,7 +181,7 @@ async function hydrateSubdivisionPlaces(feature) {
   }
   const rows = result.places || [];
   host.innerHTML = rows.length ? `
-    <p class="muted">${fmt(result.total)} mapped places fall inside this subdivision · source: ${esc(result.source || 'Places')}</p>
+    <p class="muted"><b>${fmt(result.total)} mapped places</b> fall inside this subdivision · showing ${fmt(rows.length)} by population · source: ${esc(result.source || 'Places')}${result.datasetRefreshDate ? ` · refreshed ${esc(result.datasetRefreshDate)}` : ''}</p>
     <div class="card">${rows.map(place => {
       const p = place.properties || {};
       return `<button type="button" class="relation-button" data-subdivision-place="${esc(p.id || '')}">
@@ -193,7 +220,8 @@ function renderInspector(feature) {
     ${p.geometry_source ? `<p class="muted">Boundary source: ${esc(p.geometry_source)}</p>` : ''}
     <h2>Cities and places</h2>
     <div data-subdivision-places><p class="muted">Loading mapped places inside this region…</p></div>
-    ${subdivisionEvidenceHtml(p.id)}
+    <h2>Evidence & project context</h2>
+    ${subdivisionEvidenceHtml(p.id) || subdivisionContextActions(p)}
     <div class="panel-actions">
       <button type="button" data-subdivision-open-country>Open country</button>
       <button type="button" data-subdivision-close>Close subdivision</button>
@@ -202,6 +230,14 @@ function renderInspector(feature) {
     button.addEventListener('click', () => {
       const provider = evidenceProviders.get(button.dataset.subdivisionEvidenceProvider);
       provider?.open?.(p.id);
+    });
+  });
+  panel.querySelectorAll?.('[data-subdivision-context]')?.forEach(button => {
+    button.addEventListener('click', async () => {
+      button.disabled = true;
+      try { await activateSubdivisionContext(button.dataset.subdivisionContext, feature); }
+      catch (error) { console.warn('Subdivision context layer unavailable:', error); }
+      finally { button.disabled = false; }
     });
   });
   panel.querySelector('[data-subdivision-open-country]')?.addEventListener('click', () => {
