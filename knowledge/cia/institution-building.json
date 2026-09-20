@@ -1,0 +1,204 @@
+{
+  "id": "cia-world-spiritual-bank-building-v1",
+  "title": "CIA / World Spiritual Bank — Shared Institution",
+  "updated": "2026-09-21",
+  "status": "Potatoverse interior architecture",
+  "concept": "CIA — Characters, Incidents & Associations and the World Spiritual Bank are one project institution with different entrances. The archive entrance emphasizes people, scenes and relationships; the bank entrance emphasizes accounts, obligations, repair and system ledgers. Both read and write the same provenance spine.",
+  "reader_position": "inside-the-system",
+  "reader_position_note": "Public CIA, dossier, association, incident and bank pages are treated as rooms inside the institution. Navigation between them is an internal corridor rather than a jump between unrelated mini-sites.",
+  "entrances": [
+    {
+      "id": "archive",
+      "label": "Archive entrance",
+      "path": "rooms/potatoverse-canon/beings/cia/",
+      "purpose": "Enter through files, chronology, people and recovered evidence."
+    },
+    {
+      "id": "bank",
+      "label": "Bank entrance",
+      "path": "rooms/potatoverse-canon/beings/cia/bank/",
+      "purpose": "Enter through accounts, obligations, welfare, repair and system liabilities."
+    }
+  ],
+  "navigation": [
+    {
+      "id": "archive",
+      "label": "Filing Hall",
+      "path": "rooms/potatoverse-canon/beings/cia/",
+      "zone": "archive"
+    },
+    {
+      "id": "bank",
+      "label": "Bank Counter",
+      "path": "rooms/potatoverse-canon/beings/cia/bank/",
+      "zone": "bank",
+      "preserve_character": true
+    },
+    {
+      "id": "dossier",
+      "label": "Dossier Room",
+      "path": "rooms/potatoverse-canon/beings/cia/file/",
+      "zone": "dossier",
+      "preserve_character": true
+    },
+    {
+      "id": "associations",
+      "label": "Associations",
+      "path": "rooms/potatoverse-canon/beings/cia/associations/",
+      "zone": "associations"
+    },
+    {
+      "id": "incidents",
+      "label": "Incidents",
+      "path": "rooms/potatoverse-canon/beings/cia/incidents/",
+      "zone": "incidents"
+    },
+    {
+      "id": "current",
+      "label": "Current Desk",
+      "path": "rooms/potatoverse-canon/beings/cia/#currentDeskTitle",
+      "zone": "current"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "filing-hall",
+      "label": "Filing Hall",
+      "function": "Searchable cabinet, archive authority and recovery triage.",
+      "data_owners": [
+        "knowledge/cia/manifest.json",
+        "knowledge/cia/activity-index.json",
+        "knowledge/cia/current-desk.json"
+      ]
+    },
+    {
+      "id": "dossier-reading-room",
+      "label": "Dossier Reading Room",
+      "function": "One subject at a time: identity, chronology, meaning spine, roles, sources, media and symbolic account.",
+      "data_owners": [
+        "knowledge/cia/characters/",
+        "knowledge/cia/character-schema.json"
+      ]
+    },
+    {
+      "id": "associations-room",
+      "label": "Associations Room",
+      "function": "Relationship and co-presence edges with dates, contexts and evidence boundaries.",
+      "data_owners": [
+        "knowledge/cia/associations/network.json"
+      ]
+    },
+    {
+      "id": "incidents-room",
+      "label": "Incidents Room",
+      "function": "Dated scenes that materially change the archive.",
+      "data_owners": [
+        "knowledge/cia/incidents/"
+      ]
+    },
+    {
+      "id": "bank-counter",
+      "label": "Bank Counter",
+      "function": "Reader-facing fictional sUSD statements, Dooley Welfare and event-led account posture.",
+      "data_owners": [
+        "knowledge/cia/mud-bank-contract.json",
+        "knowledge/cia/account-posture-index.json"
+      ]
+    },
+    {
+      "id": "account-vault",
+      "label": "Account Vault",
+      "function": "Dossier-level credit, debit, dispute, repair and welfare entries; every priced movement must retain source provenance.",
+      "data_owners": [
+        "knowledge/cia/debt-evidence-ledger.json",
+        "knowledge/cia/characters/"
+      ]
+    },
+    {
+      "id": "system-ledger-vault",
+      "label": "System Ledger Vault",
+      "function": "Unpriced world/system liability domains kept separate from person-level accounts.",
+      "data_owners": [
+        "knowledge/cia/system-liability-ledger.json",
+        "knowledge/core/north-root-spiritual-bank-architecture.json"
+      ]
+    },
+    {
+      "id": "north-root-records",
+      "label": "North / Root Records",
+      "function": "Custody, memory, provenance and long-form ledger topology.",
+      "data_owners": [
+        "knowledge/core/north-root-spiritual-bank-architecture.json"
+      ]
+    },
+    {
+      "id": "ladder-clearing",
+      "label": "Ladder Clearing",
+      "function": "Repair, restitution, correction, forgiveness/closure rules and restored exit capacity without erasing history.",
+      "data_owners": [
+        "knowledge/cia/mud-bank-contract.json"
+      ]
+    }
+  ],
+  "flows": [
+    {
+      "id": "person-flow",
+      "sequence": [
+        "archive",
+        "dossier",
+        "bank"
+      ],
+      "meaning": "A person is found in the cabinet, read as a dossier, then opened as an account without losing identity context."
+    },
+    {
+      "id": "evidence-flow",
+      "sequence": [
+        "incidents",
+        "associations",
+        "dossier",
+        "account-vault"
+      ],
+      "meaning": "Evidence enters as dated scenes/relations before it can become a sourced dossier or ledger event."
+    },
+    {
+      "id": "system-flow",
+      "sequence": [
+        "bank-counter",
+        "system-ledger-vault",
+        "north-root-records"
+      ],
+      "meaning": "Individual statements remain distinct from larger system domains and world-scale symbolic topology."
+    },
+    {
+      "id": "repair-flow",
+      "sequence": [
+        "account-vault",
+        "ladder-clearing",
+        "dossier"
+      ],
+      "meaning": "Repair changes current posture while the historical record remains visible."
+    }
+  ],
+  "shared_data_spine": {
+    "identity": "knowledge/cia/manifest.json + knowledge/cia/characters/",
+    "chronology": "knowledge/cia/incidents/ + dossier chronology",
+    "relationships": "knowledge/cia/associations/network.json",
+    "accounting": "knowledge/cia/mud-bank-contract.json + dossier symbolic_account",
+    "debt_provenance": "knowledge/cia/debt-evidence-ledger.json",
+    "system_liability": "knowledge/cia/system-liability-ledger.json",
+    "world_bank_topology": "knowledge/core/north-root-spiritual-bank-architecture.json"
+  },
+  "interface_rules": [
+    "Preserve the selected character when moving between dossier and bank when a character query parameter exists.",
+    "Show the reader where they are inside the institution and provide internal-room exits before generic site navigation.",
+    "Archive evidence must precede priced account movement; an archetype or insult cannot itself create debt.",
+    "Person-level fictional balances and system/world symbolic liabilities remain visually and mathematically distinct.",
+    "The same building metaphor must never imply affiliation with the real U.S. Central Intelligence Agency, a real bank, court or intelligence service."
+  ],
+  "boundaries": [
+    "This is project architecture and narrative interface design, not a claim that a real CIA/bank hybrid institution exists.",
+    "CIA here means Characters, Incidents & Associations.",
+    "World Spiritual Bank and sUSD are fictional Potatoverse accounting devices.",
+    "No symbolic balance is objective morality, human worth, legal liability or real financial debt."
+  ]
+}
