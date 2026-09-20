@@ -67,5 +67,92 @@
     "telecommunications"
   ],
   "conclusion": "Do not archive or prune wave-009 yet. Its node seed is largely unpromoted. Promotion should be selective and canonical-owner aware; broad categories may belong in specialist registries rather than data/nodes.json.",
-  "next_step": "Classify the 54 missing ids by strongest canonical owner before promotion. Avoid blindly copying the whole wave into data/nodes.json."
+  "next_step": "For each owner group, compare seed definitions against current canonical records and choose promote / alias / merge / retain-as-research. Start with science-formal-models and geography-countries because they contain the largest groups.",
+  "owner_routing": {
+    "science-formal-models": [
+      "universe",
+      "cosmos",
+      "galaxies",
+      "stars",
+      "solar-system",
+      "sun",
+      "moon",
+      "planets",
+      "physics",
+      "chemistry",
+      "elements",
+      "energy",
+      "science",
+      "mathematics"
+    ],
+    "geography-countries": [
+      "earth",
+      "geography",
+      "continents",
+      "oceans",
+      "atmosphere",
+      "climate",
+      "water",
+      "cities"
+    ],
+    "potato-biology": [
+      "ecosystems",
+      "plants",
+      "microorganisms",
+      "cells",
+      "genetics",
+      "evolution"
+    ],
+    "neurobiology": [
+      "neuroscience",
+      "cognition"
+    ],
+    "culture-information": [
+      "language",
+      "culture",
+      "education",
+      "communities"
+    ],
+    "works": [
+      "art",
+      "music"
+    ],
+    "economy-finance": [
+      "agriculture"
+    ],
+    "politics-governance": [
+      "states",
+      "constitutions",
+      "diplomacy",
+      "military"
+    ],
+    "law-justice": [
+      "justice"
+    ],
+    "other-traditions": [
+      "religion",
+      "philosophy"
+    ],
+    "whole-body": [
+      "medicine",
+      "health"
+    ],
+    "infrastructure-capability": [
+      "electricity",
+      "oil-and-gas",
+      "minerals",
+      "manufacturing",
+      "logistics",
+      "transport",
+      "aviation",
+      "telecommunications"
+    ]
+  },
+  "routing_rule": "These are ownership destinations, not instructions to force every id into data/nodes.json. Promote only where the target owner lacks an equivalent canonical concept; otherwise record an alias/crosswalk and retire the duplicate seed definition.",
+  "routing_count": 54,
+  "routing_check": {
+    "expected_missing_count": 54,
+    "all_missing_routed": true,
+    "duplicate_routes": []
+  }
 }
