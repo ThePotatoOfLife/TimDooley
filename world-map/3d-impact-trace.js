@@ -1,3 +1,7 @@
+if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
+const urlState = window.__potatoAtlasUrlState;
+urlState.claim('impact-trace', ['impact']);
+
 // Evidence-first dependency impact tracing for the World Relational Atlas.
 // Dependency edges point dependent -> dependency. This module traverses incoming
 // explicit causal edges only; generic connectivity and membership stay context.
@@ -171,10 +175,7 @@ function applyStates(result) {
 }
 
 function persist(id) {
-  const url = new URL(location.href);
-  if (id) url.searchParams.set('impact', id);
-  else url.searchParams.delete('impact');
-  history.replaceState({}, '', url);
+  urlState.patch('impact-trace', { set:{ impact:id || null } });
 }
 function panel() { return document.getElementById('atlasImpactContext'); }
 function ensurePanel() {
