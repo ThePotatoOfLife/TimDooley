@@ -71,9 +71,9 @@
 **Next:** add keyboard navigation, focus return, small-viewport occlusion and modal/menu regressions.
 
 ### WM-011 · Reduced-motion behavior incomplete — P2
-**Status:** open.  
-**Risk:** camera `easeTo` / animated transitions ignore user motion preferences.  
-**Next:** central motion policy used by fit/focus/navigation helpers.
+**Status:** fixed (2026-09-20).  
+**Risk addressed:** camera `easeTo` / `fitBounds` transitions previously ignored user motion preferences.  
+**Resolution:** shared `3d-motion.js` policy now removes animation under `prefers-reduced-motion: reduce`; core, Places, subdivisions, ADL/Mud focus, Axis navigation and symbolic operators consume it; decorative shell transitions are also suppressed; canonical runtime validation includes a behavioral regression.
 
 ### WM-012 · Color-only semantics remain possible — P2
 **Status:** open.  
