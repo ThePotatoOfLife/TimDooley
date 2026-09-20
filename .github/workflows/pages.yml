@@ -52,10 +52,14 @@ jobs:
           test -f _site/index.html
           test -f _site/sitemap.xml
           test -f _site/seo-report.json
+          test -f _site/world/index.html
           test ! -e _site/archive
           python - <<'PY'
           import json, os
           from pathlib import Path
+          primary_routes=['tim-dooley/','religion/','philosophy/','science/','world/']
+          for route in primary_routes:
+              assert Path("_site", route, "index.html").is_file(), route
           p=Path("_site/build-provenance.json")
           data=json.loads(p.read_text(encoding="utf-8"))
           assert data.get("artifact")=="validated-pages-site", data
