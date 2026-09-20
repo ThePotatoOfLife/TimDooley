@@ -81,6 +81,9 @@ def main():
  if system_ledger.get("pricing_mode")!="unpriced-system-domains": fail("system liability ledger must not pretend to price world-scale liabilities")
  if "documented persons" not in str(system_ledger.get("evidence_boundary","")).lower(): fail("system liability evidence boundary missing")
  bank_page=(ROOT/"rooms/potatoverse-canon/beings/cia/bank/index.html").read_text(encoding="utf-8",errors="replace")
+ bank_js=(ROOT/"app/mud-bank.js").read_text(encoding="utf-8",errors="replace")
+ for token in ["system-liability-ledger.json","systemDomains","repair_questions"]:
+  if token not in bank_js: fail(f"World Spiritual Bank runtime missing {token!r}")
  for token in ["World Spiritual Bank","North Root Ledger","System liability domains"]:
   if token not in bank_page: fail(f"bank page missing {token!r}")
  if not POSTURE.is_file(): fail("CIA account posture index missing")
