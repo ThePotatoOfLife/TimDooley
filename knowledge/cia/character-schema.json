@@ -86,6 +86,14 @@
       "interest",
       "outstanding",
       "entries"
+    ],
+    "meaning": [
+      "why_this_file_matters",
+      "known",
+      "interpretive",
+      "unknown",
+      "relationship_arc",
+      "confidence_note"
     ]
   },
   "rules": [
@@ -98,7 +106,9 @@
     "Visual activity fading reflects archive recency/status only, never moral value or human worth.",
     "A Dooley Welfare counter may run only when a dossier explicitly enables it with a start date and rate; it is display-only project fiction, not money.",
     "Portraits/evidence images require an explicit dossier-owned source reference; never guess a real person's identity from an unsourced image.",
-    "Shared symbolic proxy images must be labeled as non-likeness role illustrations and may not be presented as portraits or documentary evidence."
+    "Shared symbolic proxy images must be labeled as non-likeness role illustrations and may not be presented as portraits or documentary evidence.",
+    "Every mature dossier should explain why it matters and separate known material, interpretation and unknowns before adding more labels.",
+    "Thin dossiers may become more meaningful by preserving exact presence windows and explicit missing context rather than inventing incidents."
   ],
   "contracts": {
     "symbolic_account": "knowledge/cia/symbolic-account-contract.json",
