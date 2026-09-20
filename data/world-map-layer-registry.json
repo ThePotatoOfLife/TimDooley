@@ -1,6 +1,6 @@
 {
   "id": "world-atlas-layer-registry",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "updated": "2026-09-20",
   "status": "active-browser-registry",
   "purpose": "Browser-facing presentation registry for the World Relational Atlas. Canonical values remain owned by referenced source files; this registry declares how available and planned knowledge participates in the map/query engine.",
@@ -1486,6 +1486,66 @@
       "source_owner": "data/world-financial-system-foundation.json",
       "source_path": "settlement_and_infrastructure",
       "spatiality": "relation"
+    },
+    {
+      "id": "finance.bis-lbs",
+      "label": "BIS · Locational banking",
+      "family": "finance",
+      "kind": "network",
+      "visual_channel": "line",
+      "epistemic_type": "observed",
+      "map_priority": "advanced",
+      "queryable": true,
+      "availability": "planned",
+      "source_owner": "data/bis-banking-bond-data.json",
+      "source_path": "dataset_semantics.lbs",
+      "spatiality": "relation",
+      "notes": "Residence-based, unconsolidated cross-border bank positions; includes intragroup positions."
+    },
+    {
+      "id": "finance.bis-cbs",
+      "label": "BIS · Consolidated banking",
+      "family": "finance",
+      "kind": "network",
+      "visual_channel": "line",
+      "epistemic_type": "observed",
+      "map_priority": "advanced",
+      "queryable": true,
+      "availability": "planned",
+      "source_owner": "data/bis-banking-bond-data.json",
+      "source_path": "dataset_semantics.cbs",
+      "spatiality": "relation",
+      "notes": "Bank-parent nationality basis; consolidated; supports immediate-counterparty and guarantor-risk views."
+    },
+    {
+      "id": "finance.bis-dss",
+      "label": "BIS · Debt securities",
+      "family": "finance",
+      "kind": "scalar-network",
+      "visual_channel": "card",
+      "epistemic_type": "observed",
+      "map_priority": "advanced",
+      "queryable": true,
+      "availability": "planned",
+      "source_owner": "data/bis-banking-bond-data.json",
+      "source_path": "dataset_semantics.dss",
+      "spatiality": "mixed",
+      "notes": "Issuer-side domestic and international tradable debt; retain valuation basis."
+    },
+    {
+      "id": "finance.bis-ids",
+      "label": "BIS · International bonds",
+      "family": "finance",
+      "kind": "scalar-network",
+      "visual_channel": "card",
+      "epistemic_type": "observed",
+      "map_priority": "advanced",
+      "queryable": true,
+      "availability": "planned",
+      "source_owner": "data/bis-banking-bond-data.json",
+      "source_path": "dataset_semantics.ids",
+      "spatiality": "mixed",
+      "notes": "Security-level international debt aggregates by issuer/currency/maturity; does not identify holders."
     }
   ],
   "relation_families": [
@@ -1601,6 +1661,7 @@
     "demography": "data/world-country-demography.json",
     "placement": "data/map-layer-placement-matrix.json",
     "world_finance_foundation": "data/world-financial-system-foundation.json",
-    "finance_debt_blueprint": "data/blueprints/finance-debt-blueprint.json"
+    "finance_debt_blueprint": "data/blueprints/finance-debt-blueprint.json",
+    "bis_banking_bonds": "data/bis-banking-bond-data.json"
   }
-}\n
+}
