@@ -97,7 +97,10 @@ def main() -> int:
             "async function subdivisionDescriptor",
             "async function showRegions",
             "data-country-action=\"regions\"",
-            "retainPartition(code, 'country-card')",
+            "retainPartition(next, 'country-card')",
+            "let retainedRegionPartition",
+            "async function releaseRegions",
+            "releasePartition?.(partition, 'country-card')",
         ):
             if token not in country_card:
                 errors.append(f"country card missing subdivision discovery marker: {token}")
