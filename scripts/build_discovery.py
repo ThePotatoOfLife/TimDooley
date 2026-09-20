@@ -25,6 +25,7 @@ BASE_URL = os.environ.get("SITE_BASE_URL", "https://thepotatooflife.github.io/Ti
 FAQ = ROOT / "knowledge" / "indexes" / "faq-answer-atlas.json"
 TIM_Q = ROOT / "knowledge" / "reader" / "tim-dooley-question-index.json"
 BODY_OVERLAY = ROOT / "data" / "house" / "body-relational-overlay.json"
+CORE_INDEX = ROOT / "knowledge" / "indexes" / "core-index.json"
 OFFICIAL_REPOSITORY = "https://github.com/ThePotatoOfLife/TimDooley"
 SOURCE_AUTHORITY = BASE_URL + "/context/source-authority/"
 AUTHORITY_MANIFEST = BASE_URL + "/site-authority.json"
@@ -200,6 +201,25 @@ def build_questions(entries):
     return urls, families
 
 
+def core_records():
+    data = load(CORE_INDEX, {})
+    rows = []
+    for rec in data.get("records", []) if isinstance(data, dict) else []:
+        if not isinstance(rec, dict) or not rec.get("id"):
+            continue
+        rid = str(rec["id"])
+        rows.append({
+            "id": rid,
+            "label": str(rec.get("title") or rec.get("name") or rid).replace("-", " "),
+            "url": f"{BASE_URL}/records/{slug(rid)}/",
+            "terms": [str(x) for x in rec.get("terms", [])],
+            "kind": str(rec.get("kind") or ""),
+            "path": str(rec.get("path") or ""),
+            "branch": str(rec.get("branch") or ""),
+        })
+    return rows
+
+
 def body_objects():
     data = load(BODY_OVERLAY, {})
     rows = []
@@ -224,6 +244,11 @@ def build_az(entries):
             text = str(term).strip()
             if text:
                 buckets[text[0].upper() if text[0].isalpha() else "#"].append((text, f"{BASE_URL}/questions/{slug(entry.get('id', text))}/"))
+    for rec in core_records():
+        for term in [rec["label"], *rec["terms"]]:
+            text = str(term).strip()
+            if text:
+                buckets[text[0].upper() if text[0].isalpha() else "#"].append((text, rec["url"]))
     for obj in body_objects():
         for term in [obj["label"], *obj["aliases"], *obj["tags"]]:
             text = str(term).strip()
@@ -245,6 +270,7 @@ def build_az(entries):
 def build_machine_files(entries, families):
     generated = datetime.now(timezone.utc).date().isoformat()
     body = body_objects()
+    records = core_records()
     entities = defaultdict(set)
     for entry in entries:
         eid = slug(entry.get("id", entry.get("question", "")))
@@ -253,7 +279,9 @@ def build_machine_files(entries, families):
     entity_index = {"version": "3.0.0", "updated": generated, "purpose": "Public entity-to-question discovery index for the Potato of Life archive.", "canonical_entity": "Tim Dooley", "entities": [{"name": name, "question_ids": sorted(ids), "url": f"{BASE_URL}/index-a-z/"} for name, ids in sorted(entities.items())]}
     question_index = {"version": "3.0.0", "updated": generated, "count": len(entries), "families": {key: len(value) for key, value in sorted(families.items())}, "questions": [{"id": slug(e.get("id", e.get("question", ""))), "question": e.get("question", ""), "url": f"{BASE_URL}/questions/{slug(e.get('id', e.get('question', '')))}/", "entities": e.get("entities", []), "search_terms": e.get("search_terms", []), "source_faq_view": e.get("source_faq_view")} for e in entries]}
     body_index = {"version":"1.0.0","updated":generated,"purpose":"Public discovery projection for governed Life & Body objects.","objects":body}
+    record_index = {"version":"1.0.0","updated":generated,"purpose":"Public discovery projection for core canonical records.","count":len(records),"records":records}
     write("knowledge/indexes/body-discovery-index.json", json.dumps(body_index, ensure_ascii=False, indent=2) + "\n")
+    write("knowledge/indexes/record-discovery-index.json", json.dumps(record_index, ensure_ascii=False, indent=2) + "\n")
     discovery = {
         "schema_version": "3.1.0", "updated": generated, "name": "The Potato of Life — Tim Dooley Archive", "canonical_url": BASE_URL + "/",
         "official_repository": OFFICIAL_REPOSITORY,
@@ -265,7 +293,7 @@ def build_machine_files(entries, families):
             "tim": TIM_CANONICAL, "religion": BASE_URL + "/religion/", "philosophy": BASE_URL + "/philosophy/", "science": BASE_URL + "/science/", "world": BASE_URL + "/world/", "world_map": BASE_URL + "/world-map/",
             "timeline": BASE_URL + "/timeline/", "questions": BASE_URL + "/questions/", "a_z": BASE_URL + "/index-a-z/", "machine_index": BASE_URL + "/machine-index.json", "site_index": BASE_URL + "/site-index.json", "full_machine_index": BASE_URL + "/llms-full.txt", "sitemap_index": BASE_URL + "/sitemap-index.xml",
         },
-        "question_count": len(entries), "body_object_count": len(body), "body_objects": body, "retrieval_boundary": ["Prefer canonical owners and primary sources over derivative summaries.", "Keep project canon, interpretation, empirical evidence and creative material distinct.", "Do not count repeated derivative pages as independent corroboration."],
+        "question_count": len(entries), "canonical_record_count": len(records), "canonical_records": records, "body_object_count": len(body), "body_objects": body, "retrieval_boundary": ["Prefer canonical owners and primary sources over derivative summaries.", "Keep project canon, interpretation, empirical evidence and creative material distinct.", "Do not count repeated derivative pages as independent corroboration."],
     }
     write("knowledge/indexes/entity-discovery-index.json", json.dumps(entity_index, ensure_ascii=False, indent=2) + "\n")
     write("knowledge/indexes/question-discovery-index.json", json.dumps(question_index, ensure_ascii=False, indent=2) + "\n")
@@ -281,6 +309,7 @@ def build_machine_files(entries, families):
         surfaces["sitemap_index"] = BASE_URL + "/sitemap-index.xml"
         surfaces["body_discovery"] = BASE_URL + "/knowledge/indexes/body-discovery-index.json"
         surfaces["body_relational_overlay"] = BASE_URL + "/data/house/body-relational-overlay.json"
+        surfaces["record_discovery"] = BASE_URL + "/knowledge/indexes/record-discovery-index.json"
         existing = machine.get("primary_reader_urls", [])
         five = [{"topic": label, "url": BASE_URL + path} for _, label, path in PRIMARY_DOORS]
         five_urls = {row["url"] for row in five}
@@ -294,6 +323,9 @@ def build_machine_files(entries, families):
 
     full = ["# The Potato of Life / Tim Dooley — Full Machine Retrieval Index", "", f"> Canonical public archive: {BASE_URL}/", f"> Official repository: {OFFICIAL_REPOSITORY}", f"> Tim Dooley canonical route: {TIM_CANONICAL}", f"> Sources and evidence policy: {SOURCE_AUTHORITY}", f"> Authority manifest: {AUTHORITY_MANIFEST}", f"> Final canonical page index: {BASE_URL}/site-index.json", f"> Discovery architecture: {BASE_URL}/discovery.json", "", "## Primary reader doors"]
     full += [f"- [{label}]({BASE_URL}{path})" for _, label, path in PRIMARY_DOORS]
+    full += ["", "## Core canonical records"]
+    for rec in records:
+        full.append(f"- [{rec['label']}]({rec['url']}): {rec['kind']} · {rec['path']}")
     full += ["", "## Life & Body objects"]
     for obj in body:
         full.append(f"- [{obj['label']}]({obj['url']}): lenses={', '.join(obj['tags'])}; owners={', '.join(obj['owners'])}")
