@@ -13,6 +13,7 @@ const POINT_LAYER = 'project-mud-below-points';
 const LABEL_LAYER = 'project-mud-below-labels';
 const HIT_LAYER = 'project-mud-below-hit';
 const interaction = window.__potatoAtlasInteraction;
+const inspector = window.__potatoAtlasInspector;
 
 let enabled = false;
 let loaded = false;
@@ -37,7 +38,7 @@ function setLayerVisibility(show) {
   button?.setAttribute('aria-pressed', show ? 'true' : 'false');
 }
 
-function renderCase(feature) {
+function renderCasePanel(feature) {
   const p = feature?.properties || {};
   const panel = document.getElementById('panel');
   if (!panel) return;
@@ -60,6 +61,28 @@ function renderCase(feature) {
     if (p.subdivision_id) await window.__potatoAtlasSubdivisions?.select?.(p.subdivision_id, { fit:true });
   });
   window.__potatoAtlasPanelLifecycle?.publish?.();
+}
+
+function renderCase(feature) {
+  const p = feature?.properties || {};
+  if (!inspector?.open) { renderCasePanel(feature); return true; }
+  let current = inspector.current?.();
+  if (!current) {
+    inspector.setBaseline({
+      type:'country', id:'USA', owner:'country-selection',
+      restore:() => window.goCountry?.('USA'),
+    });
+    current = inspector.current?.();
+  }
+  const id = String(feature?.id ?? p.id ?? p.label ?? 'mud-below-case');
+  inspector.open({
+    type:'project-case',
+    id,
+    owner:'mud-below-us',
+    parent:current ? { type:current.type, id:current.id } : { type:'country', id:'USA' },
+    render:() => renderCasePanel(feature),
+  });
+  return true;
 }
 
 function installLayers() {
