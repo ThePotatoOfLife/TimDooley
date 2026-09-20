@@ -1,7 +1,7 @@
 # World Map Roadmap
 
-**Updated:** 2026-09-16  
-**Authority:** current live roadmap for the World Map / World Relational Atlas. Older `docs/superpowers/specs/` and `docs/superpowers/plans/` remain design history unless explicitly referenced here.
+**Updated:** 2026-09-20  
+**Authority:** current live roadmap for the World Map / World Relational Atlas. The active defect queue is `docs/WORLD-MAP-PROBLEM-LEDGER.md`. Older `docs/superpowers/specs/` and `docs/superpowers/plans/` remain design history unless explicitly referenced here.
 
 ## Vision
 
@@ -70,7 +70,8 @@ These capabilities are established enough to build on:
 - [x] Separate load/render/label/interaction thresholds for migrated consumers.
 - [x] Add hysteresis for boundary crossings where churn is possible.
 - [x] Migrate Places/subdivision thresholds first.
-- [ ] Audit every remaining module for raw zoom magic numbers.
+- [x] Move Physical Water detail and Hydrology request-density thresholds into the shared Scale contract.
+- [~] Audit every remaining module for raw zoom magic numbers; classify capability thresholds separately from camera-preservation and cartographic interpolation.
 
 ### C. Interaction safety
 
@@ -96,6 +97,10 @@ Current compatibility rule: normal application interaction is Router-owned and d
 - [x] Replace raw `panel.innerHTML` snapshots in Places and subdivisions.
 - [x] Make child → parent → back semantics deterministic.
 - [x] Align URL restoration with typed inspector state.
+
+## CURRENT PROBLEM QUEUE
+
+The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. Work proceeds by shared-owner leverage: scale → render/style → interaction → accessibility → provider reliability → compatibility retirement.
 
 ## NEXT — RENDER + UI CONVERGENCE
 
