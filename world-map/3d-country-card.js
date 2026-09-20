@@ -83,8 +83,7 @@ async function showRegions(code) {
   const api = window.__potatoAtlasSubdivisions;
   if (!api?.retainPartition) return false;
   await api.retainPartition(code, 'country-card');
-  const first = descriptor.search_records?.[0];
-  if (first?.id) await api.select(first.id, { fit:false });
+  await api.refresh?.();
   return true;
 }
 
