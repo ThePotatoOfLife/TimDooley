@@ -1,7 +1,7 @@
 {
   "id": "operator-family-manifest",
   "title": "Operator Family Manifest — Door, Cross, Spiral, Tree & Swamp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "status": "canonical family classification manifest",
   "purpose": "Classify high-frequency operator files by role so each family can expand without producing competing generic masters.",
@@ -86,6 +86,7 @@
         "data/house/plane-crossing-contract.json"
       ],
       "dynamics": [
+        "data/house/bidirectional-spiral-field.json",
         "knowledge/science/recurrence-orbit-spiral-dynamics-atlas.json",
         "knowledge/cosmology/axis-spiral-root.json"
       ],
@@ -112,7 +113,8 @@
         "science/axis-11d-sun-spiral/index.html",
         "story-content/2026-03-28-100k-spirals.html"
       ],
-      "family_rule": "Spiral means recurrence with meaningful state displacement/change. Golden, logarithmic, helix, vortex and Fibonacci-related spirals are subtypes/models, never synonyms for the operator."
+      "family_rule": "Spiral means recurrence with meaningful state displacement/change. The bidirectional spiral field owns O-centered paired trajectory/layer geometry; golden/logarithmic, shifted-origin, helix, vortex and Fibonacci-related forms remain typed submodels rather than synonyms.",
+      "canonical_field": "data/house/bidirectional-spiral-field.json"
     },
     "tree": {
       "definition_owner": "knowledge/core/deep-element-definition-atlas.json",
