@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "updated": "2026-09-20",
   "authority": "nested-bounded-context-governance",
   "parent_room_registry": "data/house/rooms.json",
@@ -216,7 +216,9 @@
       "purpose": "Recover prior conversations, files, historical strata and forgotten project material while preserving source/time boundaries.",
       "knowledge_roots": [
         "knowledge/indexes/conversation-recovery-inventory.json",
-        "knowledge/world/digital-memory-forgetting-restoration-atlas.json"
+        "knowledge/world/digital-memory-forgetting-restoration-atlas.json",
+        "knowledge/indexes/social-presence-memory-integration-2024-2025.json",
+        "knowledge/story/social-presence-ledger-2024-2025.json"
       ],
       "public_surface_ids": [
         "explore",
@@ -338,7 +340,9 @@
       "purpose": "Track how identities, symbols, roles and interpretations developed without backdating mature meaning into earlier phases.",
       "knowledge_roots": [
         "knowledge/timeline/developmental-genealogy.json",
-        "knowledge/journey/"
+        "knowledge/journey/",
+        "knowledge/story/turning-corridor-chronicle-recovery-2025.json",
+        "knowledge/story/social-presence-ledger-2024-2025.json"
       ],
       "public_surface_ids": [
         "history",
@@ -1125,7 +1129,8 @@
       "purpose": "Own platforms, online spaces, public digital behavior, media formats and platform-specific context.",
       "knowledge_roots": [
         "knowledge/culture/",
-        "data/culture-ontology.json"
+        "data/culture-ontology.json",
+        "knowledge/story/turning-corridor-chronicle-recovery-2025.json"
       ],
       "public_surface_ids": [
         "culture",
@@ -1164,7 +1169,9 @@
       "purpose": "Own subculture, movement formation, high-control/cult analysis, group dynamics and social-boundary questions.",
       "knowledge_roots": [
         "knowledge/culture/",
-        "knowledge/world/ritual-mimesis-scapegoat-collective-ecology.json"
+        "knowledge/world/ritual-mimesis-scapegoat-collective-ecology.json",
+        "knowledge/story/social-presence-ledger-2024-2025.json",
+        "knowledge/story/conflict-role-crosswalk.json"
       ],
       "public_surface_ids": [
         "culture",
