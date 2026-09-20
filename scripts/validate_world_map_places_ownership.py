@@ -9,6 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PLACES = ROOT / "world-map" / "3d-places.js"
+SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 TESTS = (
     ROOT / "scripts" / "test_world_map_places_interaction_ownership.mjs",
     ROOT / "scripts" / "test_world_map_place_label_density.mjs",
@@ -17,9 +18,19 @@ TESTS = (
 
 def main() -> int:
     errors: list[str] = []
-    for path in (PLACES, *TESTS):
+    for path in (PLACES, SUBDIVISIONS, *TESTS):
         if not path.is_file():
             errors.append(f"missing required file: {path.relative_to(ROOT)}")
+
+    if not errors:
+        places_source = PLACES.read_text(encoding="utf-8", errors="replace")
+        subdivision_source = SUBDIVISIONS.read_text(encoding="utf-8", errors="replace")
+        for token in ("async function showSubdivision(", "potato-atlas-places-subdivision-show", "showSubdivision,"):
+            if token not in places_source:
+                errors.append(f"Places region handoff missing marker: {token}")
+        for token in ("data-subdivision-show-places", "Show mapped places on map", "showSubdivision?.(feature", "Mapped places shown"):
+            if token not in subdivision_source:
+                errors.append(f"Subdivision → Places handoff missing marker: {token}")
 
     node = shutil.which("node")
     if not node:
