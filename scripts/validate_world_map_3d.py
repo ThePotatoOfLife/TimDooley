@@ -19,8 +19,7 @@ SELECTION = ROOT / "world-map" / "3d-country-selection.js"
 PULSE = ROOT / "world-map" / "3d-country-pulse.js"
 RETIRED_LENS = ROOT / "world-map" / "3d-lenses.js"
 TIME = ROOT / "world-map" / "3d-time.js"
-FIELDS = ROOT / "world-map" / "3d-fields.js"
-NETWORKS = ROOT / "world-map" / "3d-networks.js"
+RETIRED_ANALYTICAL = (ROOT / "world-map" / "3d-fields.js", ROOT / "world-map" / "3d-networks.js")
 RUNTIME = ROOT / "data" / "world-map-3d-runtime.json"
 WORLD = ROOT / "data" / "world-relational-map.json"
 COUNTRIES = ROOT / "data" / "countries" / "index.json"
@@ -61,7 +60,7 @@ def main() -> int:
     errors: list[str] = []
     warnings: list[str] = []
 
-    required = (HTML, APP, HOVER, BOOTSTRAP, EVIDENCE, SELECTION, PULSE, TIME, FIELDS, NETWORKS, RUNTIME, WORLD, COUNTRIES)
+    required = (HTML, APP, HOVER, BOOTSTRAP, EVIDENCE, SELECTION, PULSE, TIME, RUNTIME, WORLD, COUNTRIES)
     for path in required:
         if not path.exists():
             errors.append(f"missing required atlas file: {path.relative_to(ROOT)}")
@@ -78,8 +77,6 @@ def main() -> int:
     selection = SELECTION.read_text(encoding="utf-8", errors="replace")
     pulse = PULSE.read_text(encoding="utf-8", errors="replace")
     time_js = TIME.read_text(encoding="utf-8", errors="replace")
-    fields = FIELDS.read_text(encoding="utf-8", errors="replace")
-    networks = NETWORKS.read_text(encoding="utf-8", errors="replace")
     runtime = load_json(RUNTIME, errors)
     world = load_json(WORLD, errors)
     countries = load_json(COUNTRIES, errors)
@@ -89,8 +86,6 @@ def main() -> int:
     fail_if_missing(selection,("pinnedCodes","activeCode","function togglePinnedCountry","function pinCountry","function unpinCountry","function automaticRelationData","urlState.patch('selection-inspector'","selection-chip","data-country-code","clearAll","__potatoAtlasSelection","automaticRelationBudget","DEFAULT_AUTO_RELATION_BUDGET"),"world-map/3d-country-selection.js",errors)
     fail_if_missing(pulse,("Country Pulse","GDP per capita","Inflation","Unemployment","__potatoAtlasCountryPulse","More statistics"),"world-map/3d-country-pulse.js",errors)
     fail_if_missing(time_js,("atlas-time-contract.json","north-axis-membership-history.json","timeMode","changed_between","canonicalUrlState.patch('time'","atlas-time-change","unknownDatePolicy","No exact dated project-field snapshot is safe to apply automatically","Current project Fields and empirical Networks are not automatically rewritten as historical layers","__potatoAtlasInspectorVisibility?.setOpen","__potatoAtlasTime"),"world-map/3d-time.js",errors)
-    fail_if_missing(fields,("historicalSuppressed","atlas-time-change","setHistoricalSuppressed","Current project-field snapshot hidden in historical mode"),"world-map/3d-fields.js",errors)
-    fail_if_missing(networks,("historicalSuppressed","atlas-time-change","setHistoricalSuppressed","Current network snapshot hidden in historical mode"),"world-map/3d-networks.js",errors)
     fail_if_missing(app,("function relationEdgesFor","function edgeKey","function traceGraph","function traceRelationData","function traceHubData","function updateSpatial","function geometryBounds","function fitCodes","function toggleCompareCountry","function deselectCountry","function selectFeature","__potatoAtlasSelection","potato-atlas-selection-change","function renderCompare","function traceRows","window.openModule","window.goCountry","window.fitTrace","window.fitCompare","window.leaveCompare","TRACE_MAX_DEPTH = 3","TRACE_MAX_NODES","TRACE_MAX_EDGES","new Map([[root, 0]])","queue.shift()","visited.has(other)","__potatoAtlasUrlState","urlState.patch('selection-inspector'","compareCodes","relationType","traceDepth","trace-hubs","semantic-hubs","semantic-links","compare-hubs","relations","maplibre-gl@6.9.0","OpenStreetMap contributors","Atlas data failed to load","Breadth-first traversal","A relation line describes a typed connection","Project-canon material is separate from empirical country data","documented physical/public finance"),"world-map/3d-app.js",errors)
     fail_if_missing(hover,("ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v')","function versionedModule","await import(versionedModule('./3d-app.js'))","GEO_LOCAL","GEO_PRIMARY","GEO_FALLBACK","REST_LOCAL","function bestGeometryResponse","function fallbackRestCountries","atlasResilientFetch","local minimal country runtime","CAPITALS_LOCAL","world-capitals.geo.json","installCapitalsWhenUseful","capital-cities","capital-city-major-labels","capital-city-labels","function countryHtml","function capitalHtml","mousemove","mouseleave"),"world-map/3d-hover.js",errors)
     fail_if_missing(evidence,("id = 'evidenceEye'","id = 'evidencePanel'","world-country-facts.json","world-country-demography.json","world-relational-map.json","function projectStatuses","function relationsFor","Source provenance and epistemic context","Project interpretation","Repetition is not corroboration","window.refreshAtlasEvidence","function refreshIfSelectionChanged","potato-atlas-panel-rendered","function suspendCountryCard","function restoreCountryCard","selectedCode() !== renderedCode","function timeCompatibility","atlas-time-change"),"world-map/3d-evidence.js",errors)
@@ -104,6 +99,9 @@ def main() -> int:
             errors.append(f"retired Progressive/Selection UI must stay deleted: {retired.relative_to(ROOT)}")
     if RETIRED_LENS.exists():
         errors.append("retired Lens compatibility adapter must stay deleted")
+    for retired in RETIRED_ANALYTICAL:
+        if retired.exists():
+            errors.append(f"retired analytical compatibility module must stay deleted: {retired.relative_to(ROOT)}")
     if "'./3d-lenses.js'" in bootstrap:
         errors.append("retired Lens compatibility adapter must not return to bootstrap")
     if "'./3d-ui.js'" in bootstrap or "'./3d-selection-ui.js'" in bootstrap:
@@ -121,7 +119,7 @@ def main() -> int:
     if "await import('./3d-app.js')" in hover:
         errors.append("hover regressed to an unversioned app-core import; deployment cache isolation would be incomplete")
 
-    for text,label in ((app,"3d-app.js"),(hover,"3d-hover.js"),(bootstrap,"3d-bootstrap.js"),(evidence,"3d-evidence.js"),(selection,"3d-country-selection.js"),(pulse,"3d-country-pulse.js"),(time_js,"3d-time.js"),(fields,"3d-fields.js"),(networks,"3d-networks.js")):
+    for text,label in ((app,"3d-app.js"),(hover,"3d-hover.js"),(bootstrap,"3d-bootstrap.js"),(evidence,"3d-evidence.js"),(selection,"3d-country-selection.js"),(pulse,"3d-country-pulse.js"),(time_js,"3d-time.js")):
         check_js_syntax(text,label,warnings,errors)
 
     if runtime.get("status") != "active renderer contract": errors.append("world-map-3d-runtime must be marked as the active renderer contract")
