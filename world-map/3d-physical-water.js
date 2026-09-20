@@ -11,6 +11,7 @@ if (!window.__potatoAtlasStyleLifecycle) await import('./3d-style-lifecycle.js')
 const styleLifecycle = window.__potatoAtlasStyleLifecycle;
 if (!styleLifecycle) throw new Error('World Map Style Lifecycle unavailable.');
 
+const PHYSICAL_ID = 'physical.water.base';
 const NE_SHA = 'ca96624a56bd078437bca8184e78163e5039ad19';
 const NE_BASE = `https://raw.githubusercontent.com/nvkelso/natural-earth-vector/${NE_SHA}/geojson`;
 const DETAIL_ZOOM = scale.threshold('physical-water-detail', 'load');
@@ -48,6 +49,12 @@ let installed = false;
 let detailInstalled = false;
 let restoring = false;
 let opacity = DEFAULT_OPACITY;
+
+function reportStatus(phase, message) {
+  window.dispatchEvent(new CustomEvent('potato-atlas-physical-layer-status', {
+    detail:{ id:PHYSICAL_ID, provider:'Natural Earth', phase, message, retryable:true }
+  }));
+}
 
 function registerBase() {
   const stack = window.__potatoAtlasRenderStack;
@@ -222,15 +229,18 @@ function syncScaleDetail() {
 
 async function enable() {
   if (enabled) return true;
+  reportStatus('loading', 'Loading Natural Earth water context');
   try {
     ensureSources();
     ensureLayers();
     enabled = true;
     syncScaleDetail();
+    reportStatus('active', map.getZoom() >= DETAIL_ZOOM ? 'Regional water detail active' : 'World water overview active');
     return true;
   } catch (error) {
     console.warn('Physical Water unavailable; ordinary map remains active.', error);
     enabled = false;
+    reportStatus('error', error?.message || 'Natural Earth water unavailable');
     return false;
   }
 }
@@ -241,6 +251,7 @@ async function disable() {
   }
   if (detailInstalled) setLayerGroupVisibility(DETAIL_LAYERS, 'none');
   enabled = false;
+  reportStatus('idle', 'Water off');
   return true;
 }
 async function toggle() { return enabled ? disable() : enable(); }
@@ -248,7 +259,7 @@ async function toggle() { return enabled ? disable() : enable(); }
 map.on('zoomend', () => {
   if (!enabled) return;
   try { syncScaleDetail(); }
-  catch (error) { console.warn('Physical Water detail unavailable at this zoom.', error); }
+  catch (error) { console.warn('Physical Water detail unavailable at this zoom.', error); reportStatus('partial', error?.message || 'Regional water detail unavailable'); }
 });
 styleLifecycle.register('physical-water', {
   priority:40,
@@ -264,6 +275,7 @@ styleLifecycle.register('physical-water', {
         applyOpacity();
       } catch (error) {
         console.warn('Physical Water could not restore after style change.', error);
+        reportStatus('partial', error?.message || 'Water layer restore incomplete');
       } finally {
         restoring = false;
       }
