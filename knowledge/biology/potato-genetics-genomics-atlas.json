@@ -1,7 +1,7 @@
 {
   "id": "potato-genetics-genomics-atlas",
   "title": "Potato Genetics & Genomics Atlas — 12 Chromosomes × 4 Homologs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "owner_room": "potato-biology",
   "status": "canonical external biology/genomics layer",
@@ -363,6 +363,15 @@
         "observation": "Starch-related genes and disease-resistance QTL are distributed across all twelve chromosomes; complex agronomic traits are not confined to one chromosome.",
         "scope": "whole-genome rule"
       }
+    ],
+    "required_global_overlays": [
+      "ancestry/introgression blocks",
+      "chromatin/methylation",
+      "allele-specific expression",
+      "proteomic evidence",
+      "metabolite/QTL associations",
+      "meiotic recombination/double-reduction",
+      "trait evidence and uncertainty"
     ]
   },
   "allele_dosage_and_combinatorics": {
@@ -646,7 +655,9 @@
     "potato-growth-principles",
     "potato-organism-cycle-atlas",
     "potato-biology-ecology-development-canon",
-    "science-master-index"
+    "science-master-index",
+    "potato-biological-genealogy",
+    "potato-molecular-development-and-signalling"
   ],
   "next_actions": [
     "Render a 12-ring × 4-haplotype chromosome viewer rather than a single generic chromosome list.",
@@ -654,5 +665,26 @@
     "Add chromosome-coordinate tracks from a current potato genome browser/source rather than hand-entering unsupported positions.",
     "Create separate views for inheritance/dosage, gene regulation, pangenome variation and organellar DNA.",
     "Wire genetics into every organism-cycle stage so phenotype pages can trace claims back to genes/haplotypes and evidence."
-  ]
+  ],
+  "evolutionary_context": {
+    "lineage_owner": "potato-biological-genealogy",
+    "ancient_hybrid_origin": "Current genomic evidence supports an ancient hybrid origin of the Petota lineage from Tomato-related and Etuberosum-related ancestors about 8–9 million years ago.",
+    "implication": "The 12×4 cultivated genome sits inside a deeper reticulate history; haplotypes can contain mosaics of ancient lineage ancestry, later wild-relative introgression and breeding history.",
+    "european_phased_pangenome": "A 2025 phased pangenome of ten historical tetraploid cultivars captured about 85% of haplotypes estimated to segregate in European potato, showing high sequence divergence within a restricted haplotype space.",
+    "design_rule": "Every cultivar-level chromosome track should eventually support ancestry/introgression labels in addition to sequence and trait annotations."
+  },
+  "multiomics_extension": {
+    "layers": [
+      "epigenome/chromatin",
+      "epitranscriptome",
+      "transcriptome",
+      "translatome/proteome",
+      "metabolome",
+      "ionome",
+      "phenome",
+      "microbiome/environment"
+    ],
+    "rule": "A DNA difference is only one layer of phenotype. Haplotype-specific regulation, protein abundance, metabolite state and environment must be separately represented.",
+    "owner": "potato-molecular-development-and-signalling"
+  }
 }
