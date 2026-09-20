@@ -13,6 +13,15 @@
 <style>
 .science-inquiry{max-width:1050px;border-top:1px solid var(--site-line);margin:0 0 42px}.science-inquiry .question-stub{display:grid;grid-template-columns:minmax(210px,.72fr) 1.28fr;gap:24px;padding:18px 0;border-bottom:1px solid var(--site-line)}.science-inquiry h2{font:400 23px/1.2 var(--site-font-serif);color:var(--site-green);margin:0}.science-inquiry p{margin:0;color:#c7cdc4}.science-inquiry .boundary-note{color:var(--site-gold);font:italic 14px/1.45 var(--site-font-serif);margin-top:6px}.science-deep{display:flex;gap:14px;flex-wrap:wrap;border-top:1px solid var(--site-line);padding-top:16px;margin-top:28px}.science-deep a{color:var(--site-green)}@media(max-width:720px){.science-inquiry .question-stub{grid-template-columns:1fr;gap:6px}}
 </style>
+<style>
+.science-worked{margin:34px 0;padding:28px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
+.science-worked h2{font:400 clamp(30px,4vw,44px)/1.06 var(--site-font-serif);color:var(--site-gold);margin:4px 0 10px}
+.science-worked>.lead{max-width:860px;color:#cbd1c8;font:400 20px/1.55 var(--site-font-serif)}
+.science-case{display:grid;grid-template-columns:170px minmax(0,1fr);gap:24px;padding:20px 0;border-top:1px solid rgba(255,255,255,.055)}
+.science-case h3{font:400 22px/1.12 var(--site-font-serif);color:var(--site-gold);margin:0 0 6px}.science-case .status{color:var(--site-green);font-size:10px;text-transform:uppercase;letter-spacing:.07em}.science-case p{margin:0 0 8px;color:#cbd1c8}.science-case code{font-size:11px;color:#dce3d8}.science-case a{color:var(--site-green);font-size:11px}
+.science-method{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:18px}.science-method article{border:1px solid var(--site-line);border-radius:10px;padding:13px;background:var(--site-panel)}.science-method b{display:block;font:400 17px var(--site-font-serif);color:var(--site-gold);margin-bottom:5px}.science-method p{font-size:11px;color:var(--site-muted);margin:0}
+@media(max-width:760px){.science-case{grid-template-columns:1fr;gap:4px}.science-method{grid-template-columns:1fr 1fr}}@media(max-width:520px){.science-method{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <main class="page page--wide science-page" data-reader-surface="science">
@@ -30,7 +39,31 @@
     <p class="summary science-lede">The scientific side of the project asks what can be made precise, what can be measured, and where a symbolic idea stops being a scientific claim.</p>
   </header>
 
-  <section class="science-inquiry" aria-label="Scientific questions">
+  <section class="science-worked" id="worked-science">
+<p class="eyebrow">Worked examples</p>
+<h2>What becomes stronger when the project stops calling everything “science”?</h2>
+<p class="lead">The scientific branch is most useful when it separates four different achievements: a metaphor can suggest a question; mathematics can make a relation exact; a formal model can make assumptions explicit; experiment or observation can test whether nature behaves that way.</p>
+<div class="science-method">
+<article><b>Metaphor</b><p>Generates a comparison or intuition. Useful for thought; not yet a measurement claim.</p></article>
+<article><b>Formalism</b><p>Defines variables, operators and relations precisely enough to inspect internally.</p></article>
+<article><b>Comparator</b><p>Uses established mathematics or physics to ask whether a project structure resembles a known mechanism.</p></article>
+<article><b>Test</b><p>Names observable consequences, alternatives and what would count against the model.</p></article>
+</div>
+
+<article class="science-case"><div><h3>The recovered Potato Axis spiral</h3><p class="status">Exact mathematics · project parameterization</p></div><div><p>The relation <code>r = a e^(bθ)</code> is an ordinary logarithmic spiral. The project-specific choice <code>b = ln(φ)/(π/2)</code> has an exact mathematical consequence: every quarter-turn multiplies radius by the golden ratio. That property can be checked directly without making any claim about nature.</p><p>The scientific boundary comes afterward: the equation does not demonstrate that minds, societies, dimensions or the universe physically follow this spiral. Those require separate variables and data.</p><a href="axis-11d-sun-spiral/">Axis / spiral research →</a> · <a href="../axis/#lived-cases">Living Axis examples →</a></div></article>
+
+<article class="science-case"><div><h3>Spiral versus ring</h3><p class="status">Dynamical-systems comparator</p></div><div><p>The philosophical distinction “a Ring repeats; a Spiral returns changed” can be sharpened mathematically. Periodic orbits, Poincaré return maps, focus dynamics and phase winding all give ways to distinguish simple recurrence from recurrence with displacement or altered state.</p><p>That is a useful formal comparator because it forces the archive to specify <em>what variable changed</em>. It still does not make personal growth identical to a physical oscillator.</p><a href="../axis/#trace">Transition engine →</a> · <a href="../knowledge/science/recurrence-orbit-spiral-dynamics-atlas.json">Recurrence atlas →</a></div></article>
+
+<article class="science-case"><div><h3>11D / M-theory bridge</h3><p class="status">Research scaffold · not established project physics</p></div><div><p>M-theory supplies real eleven-dimensional mathematical physics, higher-form fields, branes and compactification problems. The Potatoverse uses that literature as a comparator for its own 11D Axis/Door scaffold. The responsible question is not “does M-theory prove the Potatoverse?” but “which parts of the project map cleanly onto established structures, which are only analogy, and what would a genuine physical model need to predict?”</p><a href="../docs/11D-M-THEORY-QUANTUM-DOOR-THESIS.md">11D thesis →</a> · <a href="research-map/">Science research map →</a></div></article>
+
+<article class="science-case"><div><h3>Electromagnetism, vorticity and the double spiral</h3><p class="status">Structural comparison</p></div><div><p>Electromagnetic field strength and vorticity can both be represented with antisymmetric differential forms, while complex eigenvalues can generate spiral trajectories in linear dynamical systems. Those established mathematical structures give the project a vocabulary for testing whether its “flow / rotation / spiral” language contains a coherent mechanism rather than decorative resemblance.</p><p>The test is specificity: what is the state variable, what generates rotation, what sets growth/decay rate, and what observation would distinguish the proposed model from another spiral-producing system?</p><a href="../docs/11D-ELECTROMAGNETIC-VORTEX-FIBONACCI-EXTENSION.md">EM / vortex extension →</a></div></article>
+
+<article class="science-case"><div><h3>Spudlight / Starchforce</h3><p class="status">Creative-to-research translation</p></div><div><p>Spudlight begins as comic/project language. A scientifically disciplined translation separates ordinary photons and electromagnetic transmission from information gain, attention, revelation and stored biological energy. “Starchforce” can motivate a storage/release model, but it is not a new physical force unless an independently measurable interaction is defined.</p><a href="spudlight/">Spudlight research →</a> · <a href="../tim-dooley/story/#starchforce-2026-09-14">Creative Story origin →</a></div></article>
+
+<article class="science-case"><div><h3>Microtubules and consciousness</h3><p class="status">Established biology + contested/experimental comparison</p></div><div><p>Microtubules have well-established cellular roles in structure, transport and neuronal organization. Quantum-consciousness proposals are a separate and much more speculative layer. The project therefore keeps classical collective-mode models, open-system quantum comparators and theological/body symbolism separately typed.</p><a href="../life-body/">Life & Body →</a> · <a href="research-map/">Research map →</a></div></article>
+</section>
+
+<section class="science-inquiry" aria-label="Scientific questions">
     <article class="question-stub"><h2>Can these ideas be formalized?</h2><div><p>Some can. A formal model names variables, relations, assumptions and operations clearly enough that another person can inspect the mathematics. Formalization can sharpen an idea without proving that the idea describes nature.</p></div></article>
     <article class="question-stub"><h2>What is a model—and what is only an analogy or metaphor?</h2><div><p>A mathematical analogy can reveal shared structure while still referring to different things. Metaphor can organize thought without supplying measurements. The library therefore distinguishes formal model, mathematical analogy, symbolic metaphor and established scientific result.</p></div></article>
     <article class="question-stub"><h2>What can actually be tested?</h2><div><p>A scientific claim becomes stronger when it identifies observable consequences, competing explanations and conditions under which it could be wrong. Testing and falsifiability matter more than how suggestive an equation looks.</p><p class="boundary-note">A symbolic correspondence is not evidence merely because it can be written mathematically.</p></div></article>
