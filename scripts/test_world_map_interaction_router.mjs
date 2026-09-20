@@ -93,6 +93,7 @@ assert.ok(state.some(row => row.owner === 'overlay' && row.objectType === 'spati
 
 const lifecycle = fs.readFileSync(new URL('../world-map/3d-panel-lifecycle.js', import.meta.url), 'utf8');
 const subdivisions = fs.readFileSync(new URL('../world-map/3d-subdivisions.js', import.meta.url), 'utf8');
+const places = fs.readFileSync(new URL('../world-map/3d-places.js', import.meta.url), 'utf8');
 const bootstrap = fs.readFileSync(new URL('../world-map/3d-bootstrap.js', import.meta.url), 'utf8');
 const app = fs.readFileSync(new URL('../world-map/3d-app.js', import.meta.url), 'utf8');
 const handoff = fs.readFileSync(new URL('../world-map/3d-core-interaction-handoff.js', import.meta.url), 'utf8');
@@ -105,9 +106,22 @@ const impactActions = fs.readFileSync(new URL('../world-map/3d-impact-actions.js
 const routerSource = fs.readFileSync(new URL('../world-map/3d-interaction-router.js', import.meta.url), 'utf8');
 
 assert.ok(lifecycle.includes("__potatoAtlasLoadModule?.('Interaction Router', './3d-interaction-router.js')"), 'panel lifecycle must retain the shared Interaction Router preload for standalone/degraded boots');
-assert.ok(subdivisions.includes('const interaction = window.__potatoAtlasInteraction'), 'subdivisions must consume the shared Interaction Router when available');
-assert.ok(subdivisions.includes('if (interaction?.register)'), 'subdivision interaction migration must retain an explicit degraded fallback boundary');
-assert.ok(subdivisions.includes("interaction.register('subdivisions'"), 'subdivisions must register with the Interaction Router on normal app boots');
+for (const marker of [
+  'function interactionRouter()',
+  'function bindSubdivisionFallback()',
+  'function unbindSubdivisionFallback()',
+  "interaction.register('subdivisions'",
+  "window.addEventListener('potato-atlas-interaction-ready'",
+  "map.off('click', HIT_ID, subdivisionFallbackHandlers.click)",
+]) assert.ok(subdivisions.includes(marker), `subdivision late Router promotion missing marker: ${marker}`);
+
+for (const marker of [
+  'function interactionRouter()',
+  'function unbindFallbackLayerEvents()',
+  "interaction.register('places'",
+  "window.addEventListener('potato-atlas-interaction-ready'",
+  "map.off('click', layerId, handlers.click)",
+]) assert.ok(places.includes(marker), `Places late Router promotion missing marker: ${marker}`);
 
 assert.ok(routerSource.includes('potato-atlas-interaction-ready'), 'Interaction Router must publish an explicit ready signal for early-boot handoff');
 const bootstrapCapture = bootstrap.indexOf("await import(versionedModule('./3d-core-interaction-handoff.js'))");
@@ -158,18 +172,22 @@ for (const marker of [
 ]) assert.ok(hover.includes(marker), `hover/capital router migration missing marker: ${marker}`);
 
 for (const marker of [
+  'function interactionRouter()',
+  'function unbindGatewayFallback()',
+  'function syncGatewayInteraction(',
   "interaction.register('system-gateways'",
-  "objectType:'gateway'",
-  'clickPriority:75',
-  'Degraded/direct-module fallback only',
-]) assert.ok(gateways.includes(marker), `Gateway Router migration missing marker: ${marker}`);
+  "window.addEventListener('potato-atlas-interaction-ready'",
+  "map.off('click', POINT_LAYER, gatewayFallbackHandlers.click)",
+]) assert.ok(gateways.includes(marker), `Gateway late Router promotion missing marker: ${marker}`);
 
 for (const marker of [
+  'function interactionRouter()',
+  'function unbindInfrastructureFallback()',
+  'function syncInfrastructureInteraction(',
   "interaction.register('infrastructure-context'",
-  "objectType:'infrastructure'",
-  'clickPriority:74',
-  'Degraded/direct-module fallback only',
-]) assert.ok(infrastructure.includes(marker), `Infrastructure Router migration missing marker: ${marker}`);
+  "window.addEventListener('potato-atlas-interaction-ready'",
+  "map.off('click', POINT_LAYER, infrastructureFallbackHandlers.click)",
+]) assert.ok(infrastructure.includes(marker), `Infrastructure late Router promotion missing marker: ${marker}`);
 
 assert.ok(!impactActions.includes("map.getLayer('atlas-context-gateways-points')) map.on('click'"), 'Impact Actions must not attach a second Gateway click listener');
 assert.ok(impactActions.includes("window.addEventListener('potato-atlas-gateway-change'"), 'Impact Actions must respond to semantic Gateway state');
