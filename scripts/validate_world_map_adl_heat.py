@@ -147,7 +147,7 @@ def main() -> int:
 
     for token in ("id=\"adlHeatLayer\"","ADL H.E.A.T. incidents","U.S. evidence","id=\"mudBelowLayer\"","Mud / Below cases","state centroids"):
         require(html, token, "world-map/index.html", errors)
-    for token in ("bindAdlHeatLayerControl","./3d-adl-heat.js","__potatoAtlasAdlHeat?.toggle","bindMudBelowLayerControl","./3d-mud-below-us.js","__potatoAtlasMudBelow?.toggle","hydrateEvidenceLayersFromUrl","projectLayer","mud-below-us"):
+    for token in ("bindAdlHeatLayerControl","./3d-adl-heat.js","__potatoAtlasAdlHeat?.toggle","bindMudBelowLayerControl","./3d-spatial-overlays.js","__potatoAtlasSpatialOverlays?.toggle?.('project.below.us-cases')","hydrateEvidenceLayersFromUrl","projectLayer","mud-below-us","__potatoAtlasSpatialOverlays?.activate?.('project.below.us-cases')"):
         require(lifecycle, token, "world-map/3d-panel-lifecycle.js", errors)
     for token in ("official ADL H.E.A.T. CSV export","source_sha256","missing_geometry_count","state_filtering","by_type_token","by_year_type_token","csv.DictReader","--confirm-official-export","--out-dir","invalid_coordinates","duplicate_source_ids","import_diagnostics"):
         require(importer, token, "scripts/import_adl_heat.py", errors)
