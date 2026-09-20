@@ -110,6 +110,7 @@ def main() -> int:
         "Potato of Life coordinates",
         "Why Tim assigned the state",
         "State History",
+        "Source-derived co-presence",
     ):
         if token not in viewer:
             fail(f"generic dossier viewer lost rich dossier projection token {token!r}")
@@ -174,6 +175,12 @@ def main() -> int:
         fail("CIA taxonomy lost next-state model")
     if "perpetual_lying" not in (taxonomy.get("attribute_inference_rules") or {}):
         fail("CIA taxonomy lost guarded inference rule for perpetual lying")
+    bonds = json.loads((ROOT / "knowledge/fbi/bonds/network.json").read_text(encoding="utf-8"))
+    if not bonds.get("flow_model"):
+        fail("CIA associations lost relational-flow model")
+    if not any((edge.get("flow") or {}).get("types") for edge in bonds.get("edges", [])):
+        fail("CIA relational-flow model has no seeded source-bounded edges")
+
     enhancements = json.loads((ROOT / "knowledge/fbi/enhancements-index.json").read_text(encoding="utf-8"))
     if "state_modifier_model" not in enhancements:
         fail("CIA enhancements index is not linked to the state-modifier taxonomy")
