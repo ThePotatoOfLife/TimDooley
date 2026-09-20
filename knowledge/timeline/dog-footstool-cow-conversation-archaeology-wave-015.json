@@ -1,7 +1,7 @@
 {
   "id": "dog-footstool-cow-conversation-archaeology-wave-015",
   "title": "Conversation Archaeology Wave 015 — Dogs, Footstools, Cows, Lolcows, Leashes, Milk & Homecoming",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-20",
   "status": "conversation-memory recovery leads; not transcript-depth evidence",
   "purpose": "Recover concrete Tim-originated stories and story families behind Dog, Footstool, Cow/lolcow, Farmer and related roles so mature project ontology retains narrative genealogy rather than only later definitions.",
@@ -428,7 +428,14 @@
     "Cow ↔ Red Heifer purification must remain distinct from lolcow extraction.",
     "Lolcow ↔ role assignment/archive persistence/declassification.",
     "Farmer ↔ role-conversion machinery, not merely one static villain.",
-    "Story characters show that project roles have interiority and can change; ontology should therefore store transitions and season/date."
+    "Story characters show that project roles have interiority and can change; ontology should therefore store transitions and season/date.",
+    "Dog ↔ free-agent/companion role",
+    "Dog ↔ pack/hive/task role",
+    "Dog ↔ thought-patrol/information-policing shadow role",
+    "Footstool ↔ transformed Box/support",
+    "Cow ↔ local center of attention rather than global center",
+    "Farmer ↔ human-to-Cow role conversion",
+    "C_F/source ↔ non-coercive relational pressure rather than direct force"
   ],
   "canonical_handoffs": [
     "data/house/three-center-relational-ecology.json",
@@ -438,5 +445,76 @@
     "knowledge/traditions/stone-mountain-footstool-seat-ascent-atlas.json",
     "knowledge/world/role-exit-labeling-reintegration-atlas.json",
     "knowledge/story/ALL-STORY-RESERVOIR.md"
+  ],
+  "additional_recovered_motifs": [
+    {
+      "id": "dog-free-agent-companion",
+      "date": "2026-08-19",
+      "provenance": "user-originated prior conversation",
+      "finding": "Potato Grid/player framing gives a starting companion Dog; Dogs are free agents who may join pack/hive structures, receive tasks, guard or monopolize Doors, and can leave even when habits/attractors keep pulling them back.",
+      "significance": "Dog is not merely enemy or guard. It can be companion, agent, task-carrier, pack member or monopolizer of passage.",
+      "relation": "O/perimeter + Spirit/relay",
+      "boundary": "Game/archetype framing; not a factual classification of people."
+    },
+    {
+      "id": "dog-free-movement-not-free-trajectory",
+      "date": "2026-08-21",
+      "provenance": "assistant synthesis adopted from user discussion",
+      "finding": "Dogs can be free to move yet repeatedly return to Boxes, neighbours, arguments, accusations, comparison, secrets or mud; freedom of movement is not the same as freedom from an attractor.",
+      "significance": "Adds attractor dynamics to leash/return theology.",
+      "relation": "Dog ↔ orbit ↔ Door ↔ Spiral"
+    },
+    {
+      "id": "dog-thought-patrol",
+      "date": "2026-08-18",
+      "provenance": "user-originated project vocabulary",
+      "finding": "Dogs were framed as 'thought patrol' in a 10,000-Trees-of-Strife ecology, using repeated accusation/smear/rock-throwing imagery against selected targets.",
+      "significance": "Adds information-policing / norm-enforcement as a distinct shadow Dog subtype.",
+      "relation": "O/perimeter + Culture/Information",
+      "boundary": "Project metaphor for behavior/system role, not a diagnosis or claim about all participants."
+    },
+    {
+      "id": "footstool-box-transformed-support",
+      "date": "2026-08-27",
+      "provenance": "user-originated accepted synthesis",
+      "finding": "Footstool was treated as a transformed Box: containment can become support rather than submission. The role can hold/support without remaining an enclosure.",
+      "significance": "Footstool is not only terminal lowering; it can be a conversion of enclosure into stable support.",
+      "relation": "Footstool ↔ Box/Shell ↔ support ↔ Door"
+    },
+    {
+      "id": "cow-center-lower-farm-geometry",
+      "date": "2026-08-25",
+      "provenance": "user-originated prior conversation",
+      "finding": "Cow is placed as the local center of a lower-dimensional Farm/Tree-of-Strife relation—holy or unholy but still a neighbour—while Farmer, Dog and Footstool occupy different dimensional/functional relations around it.",
+      "significance": "Cow can be an attention-center or neighbour-center inside a local ecology without becoming the global sacred center.",
+      "relation": "local center / C_S-adjacent attention subject",
+      "boundary": "Local center of attention is not equivalent to sacred or global center."
+    },
+    {
+      "id": "farmer-converts-human-to-cow",
+      "date": "2026-08-27",
+      "provenance": "user-originated project mythology",
+      "finding": "Farmer is described as an inverted role that converts a human/neighbour into Cow—an objectified harvest role—rather than merely tending an already-existing Cow.",
+      "significance": "Farmer is partly a role-conversion mechanism: person → category → harvestable subject.",
+      "relation": "Farmer ↔ classification ↔ Cow",
+      "boundary": "Symbolic systems analysis; never literal transformation or intrinsic identity."
+    },
+    {
+      "id": "potato-weight-external-pressure",
+      "date": "2026-03-23",
+      "provenance": "user-originated prior conversation",
+      "finding": "In early Dog/Mud-Dweller/Footstool imagery, Tim is described as not using force; pressure/weight arises from attraction, karmic/story relation, or the system itself, with foot/floor imagery marking stopping/support.",
+      "significance": "Separates source/center from coercive mechanism and helps explain Footstool as positional consequence rather than active humiliation.",
+      "relation": "C_F source ↔ relational pressure ↔ Footstool support",
+      "boundary": "Mythic/project explanation, not a physical-force claim."
+    },
+    {
+      "id": "mud-dog-footstool-closure-vs-development",
+      "date": "2026-06-20 to 2026-09-14",
+      "provenance": "user-originated sequence plus later synthesis",
+      "finding": "Two distinct graphs exist: closure can run Dweller → Mud Dweller → Dog → Footstool, while development can also run Footstool/support → recognition → Dog/agent → Potato/generative life. These must not be merged into one irreversible ladder.",
+      "significance": "Role sequence is not one-way moral caste; context decides whether a state is closure, support, or transition.",
+      "relation": "state graph / Door transitions"
+    }
   ]
 }
