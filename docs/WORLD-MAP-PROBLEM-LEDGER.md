@@ -115,6 +115,39 @@
 **Status:** open.  
 **Next:** map recurring audit findings to this ledger and include remediation owner + severity.
 
+### WM-021 · Path route geometry disclosure drift — P2
+**Status:** fixed (2026-09-20).  
+**Cause:** Path described shortest represented graph paths but did not explicitly say rendered graph lines are not surveyed physical routes.  
+**Resolution:** canonical Path disclosure now states that map lines are schematic relationship chords, not surveyed transport, cable, pipeline, border, or physical route geometry; the route-semantics regression pins the wording.
+
+### WM-022 · Gateway has duplicate / bypassed click ownership — P1/P2
+**Status:** in progress.  
+**Cause:** System Gateway points bind a direct MapLibre click after the Interaction Router is available, while Impact Actions adds another direct click on the same layer.  
+**Risk:** one pointer action can trigger multiple semantic owners and bypass overlap priority.  
+**Next:** one Router-owned Gateway click; Impact reacts to the semantic gateway-change event.
+
+### WM-023 · Infrastructure points bypass semantic interaction priority — P2
+**Status:** in progress.  
+**Cause:** Infrastructure binds direct hover/click listeners during normal app boots.  
+**Risk:** overlap with Places/subdivisions/other contextual points depends on listener/render order instead of semantic priority.  
+**Next:** register Infrastructure with the Interaction Router and retain direct handlers only as a degraded standalone fallback.
+
+### WM-024 · Architecture auditor style-restorer contract is stale — P2
+**Status:** open.  
+**Observed:** audit reports the central `3d-style-lifecycle.js` as unapproved while flagging Render Stack and four physical modules as stale restorers.  
+**Cause:** audit contract still describes pre-centralization `styledata` ownership.  
+**Next:** move approved ownership to the central Style Lifecycle and classify registered restore participants separately from direct `styledata` listeners.
+
+### WM-025 · Shared singleton APIs still look like multiple assigners — P2
+**Status:** open.  
+**Observed:** `__potatoAtlasGeo`, `__potatoAtlasStyleLifecycle`, and `__potatoAtlasTooltip` trigger multi-assigner warnings.  
+**Next:** distinguish guarded get-or-create singleton publication from competing mutation; converge any genuine duplicate assignment.
+
+### WM-026 · Evidence-layer URL state has multiple writers — P2
+**Status:** open.  
+**Observed:** architecture audit reports multiple writers for `url:evidenceLayer`.  
+**Next:** identify canonical URL-state owner and convert other writers to request/event APIs or document intentional shared ownership with one normalization path.
+
 ## Work order
 
 1. **Scale ownership wave** — WM-003/004/005.
