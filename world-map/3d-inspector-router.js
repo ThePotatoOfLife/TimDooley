@@ -8,6 +8,27 @@ function createInspectorRouter(options = {}) {
       };
   let stack = [];
 
+  function captureFocusTarget() {
+    if (typeof document === 'undefined') return null;
+    const element = document.activeElement;
+    if (!element || element === document.body || element === document.documentElement) return null;
+    return typeof element.focus === 'function' ? element : null;
+  }
+  function focusInspectorHeading() {
+    if (typeof document === 'undefined') return false;
+    const panel = document.getElementById('panel');
+    const heading = panel?.querySelector(':scope > h1, :scope > h2, [data-inspector-heading]');
+    if (!heading || typeof heading.focus !== 'function') return false;
+    if (!heading.hasAttribute('tabindex')) heading.setAttribute('tabindex', '-1');
+    queueMicrotask(() => heading.isConnected && heading.focus({preventScroll:false}));
+    return true;
+  }
+  function restoreFocus(target) {
+    if (!target || typeof target.focus !== 'function') return false;
+    queueMicrotask(() => target.isConnected && target.focus({preventScroll:true}));
+    return true;
+  }
+
   function normalizeNode(node = {}) {
     const type = String(node.type || '').trim();
     const id = String(node.id || '').trim();
@@ -23,6 +44,7 @@ function createInspectorRouter(options = {}) {
       parent:parent?.type && parent?.id ? parent : null,
       render:typeof node.render === 'function' ? node.render : null,
       restore:typeof node.restore === 'function' ? node.restore : null,
+      returnFocus:node.returnFocus || null,
     };
   }
 
@@ -50,12 +72,14 @@ function createInspectorRouter(options = {}) {
     return true;
   }
   function open(node) {
-    const next = normalizeNode(node);
+    const focusTarget = node?.returnFocus || captureFocusTarget();
+    const next = normalizeNode({ ...node, returnFocus:focusTarget });
     if (!stack.length) throw new Error('inspector baseline must be set before opening a child node');
     const top = stack.at(-1);
     if (top?.type === next.type && top?.id === next.id && top?.owner === next.owner) {
       stack[stack.length - 1] = next;
       invoke(next);
+      focusInspectorHeading();
       snapshot('refresh');
       return true;
     }
@@ -70,14 +94,16 @@ function createInspectorRouter(options = {}) {
     }
     stack.push(next);
     invoke(next);
+    focusInspectorHeading();
     snapshot('open');
     return true;
   }
   function back() {
     if (stack.length <= 1) return false;
-    stack.pop();
+    const closed = stack.pop();
     const next = stack.at(-1);
     invoke(next);
+    if (!restoreFocus(closed?.returnFocus)) focusInspectorHeading();
     snapshot('back');
     return true;
   }
