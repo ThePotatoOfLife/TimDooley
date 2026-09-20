@@ -1,7 +1,7 @@
 {
   "id": "axis-operators",
-  "version": "1.1.0",
-  "updated": "2026-09-18",
+  "version": "1.2.0",
+  "updated": "2026-09-20",
   "purpose": "Define what each D1-D11 Axis layer does to relationships. Dimensions are treated as transformation regimes, not literal places. This model drives Atlas interpretation and future content placement.",
   "boundary": "D1-D11 is project-symbolic scaffolding. D4 alone is ordinary geographic map space. Physics, sociology, theology and comparative mythology supply analogies or evidence for particular relationship mechanisms, not proof that the spiritual dimensions are physical realities.",
   "global_rules": {
@@ -22,7 +22,8 @@
       "rule": "Never arithmetically merge financial and symbolic debt without an explicit validated conversion method."
     },
     "state_level_distinction": "D-levels describe transformation regimes; relation states describe current conditions. Do not treat Ash, Swamp, Door, Living Root or Fruit as fixed addresses when the analytical question is how a relation changes.",
-    "transition_contract": "data/axis-flow-contract.json transition_model is the canonical state-transition grammar."
+    "transition_contract": "data/axis-flow-contract.json transition_model is the canonical state-transition grammar.",
+    "plane_firewall": "D4 Earth/World and Plane are not synonyms: D4 is a project transformation/observation regime; Plane is a frame-relative section used to inspect a current state."
   },
   "dimensions": {
     "1": {
@@ -167,7 +168,8 @@
       "upward_transition": "identify a meaningful threshold, choice, rupture, obligation or transformation that cannot be represented as geography alone",
       "do_not_show_as": [
         "project symbolism masquerading as empirical geography",
-        "invented coordinates for abstract concepts"
+        "invented coordinates for abstract concepts",
+        "the entire Plane or universal present"
       ]
     },
     "5": {
@@ -419,5 +421,11 @@
     "return_path": "D11/D10 orientation/integration -> service/protection/cultivation -> D4 observable consequences -> new evidence and feedback",
     "debt_path": "obligation -> provenance -> classification -> settlement/repair or compounding/entanglement; direction is determined by closure dynamics, not by the word debt itself",
     "knowledge_path": "knowledge/distinction is upstream of both Life and Strife; verification, responsibility and repair can route toward generativity, while provocation, humiliation, recursive archive warfare or denied agency can route toward capture"
+  },
+  "ownership": {
+    "role": "D1-D11 relation-regime operator catalogue",
+    "canonical_axis_contract": "data/axis-flow-contract.json",
+    "definition_owner": "knowledge/core/deep-element-definition-atlas.json",
+    "rule": "D-level labels are transformation regimes layered onto Axis; they do not redefine the generic Axis or Plane."
   }
 }
