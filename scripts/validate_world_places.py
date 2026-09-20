@@ -17,6 +17,7 @@ SEARCH = ROOT / "world-map" / "3d-search.js"
 MAP_STATE = ROOT / "world-map" / "3d-map-state.js"
 PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
+SUBDIVISION_INDEX = ROOT / "data" / "world-subdivisions" / "index.json"
 SUBDIVISION_SEARCH_TEST = ROOT / "scripts" / "test_world_map_subdivision_search.mjs"
 LABEL_DENSITY_TEST = ROOT / "scripts" / "test_world_map_place_label_density.mjs"
 EXPECTED_RUNTIME_BUDGET = {
@@ -118,6 +119,12 @@ def validate_data(data_dir: Path, errors: list[str]) -> None:
             errors.append(f"global-major feature {place_id or i} has population without population_source")
 
     countries = index.get("countries") or {}
+    if SUBDIVISION_INDEX.exists() and data_dir == DEFAULT_DATA_DIR:
+        subdivision_index = load_json(SUBDIVISION_INDEX, errors) or {}
+        regional_countries = set((subdivision_index.get("partitions") or {}).keys())
+        missing_regional_places = sorted(regional_countries - set(countries.keys()))
+        if missing_regional_places:
+            errors.append("regional place coverage missing for subdivision countries: " + ", ".join(missing_regional_places))
     partition_ids: set[str] = set()
     for iso3, descriptor in countries.items():
         path = data_dir / str((descriptor or {}).get("path") or "")
@@ -137,9 +144,12 @@ def validate_data(data_dir: Path, errors: list[str]) -> None:
         if int((descriptor or {}).get("count") or -1) != len(rows):
             errors.append(f"Places partition {iso3} descriptor count does not match file feature count")
         for feature in rows:
-            place_id = str((feature.get("properties") or {}).get("id") or "")
+            props = feature.get("properties") or {}
+            place_id = str(props.get("id") or "")
             if place_id:
                 partition_ids.add(place_id)
+            if props.get("is_national_capital") is True and place_id not in seen:
+                errors.append(f"Places partition {iso3} national capital missing from global-major: {place_id}")
 
     search_records = index.get("search_records")
     if not isinstance(search_records, list) or not search_records:
