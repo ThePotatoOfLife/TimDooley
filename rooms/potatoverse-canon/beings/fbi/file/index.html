@@ -43,6 +43,7 @@ body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transpa
 <div class="tabs">
 <button class="tab active" data-panel="overview">Overview</button>
 <button class="tab" data-panel="timeline">Timeline</button>
+<button class="tab" data-panel="conversations">Conversations</button>
 <button class="tab" data-panel="bonds">Bonds</button>
 <button class="tab" data-panel="stories">Stories</button>
 <button class="tab" data-panel="roles">Roles</button>
@@ -51,6 +52,7 @@ body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transpa
 </div>
 <section class="panel active" id="overview"></section>
 <section class="panel" id="timeline"></section>
+<section class="panel" id="conversations"></section>
 <section class="panel" id="bonds"></section>
 <section class="panel" id="stories"></section>
 <section class="panel" id="roles"></section>
@@ -63,7 +65,7 @@ body{background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.035),transpa
 const BASE='/TimDooley/';
 const esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 const q=new URLSearchParams(location.search); let current=q.get('figure')||'marty-biz';
-let manifest,roles,stories,bonds,incidents,enhancements,dossier;
+let manifest,roles,stories,bonds,incidents,enhancements,conversationRecovery,dossier;
 async function get(path){const r=await fetch(BASE+path);if(!r.ok)throw new Error(path);return r.json();}
 function route(path){
  if(!path)return '#';
@@ -93,6 +95,31 @@ function timelineHtml(){
  for(const x of arr(dossier.highlighted_incidents)) all.push({date:x.date,title:x.title,summary:x.summary});
  const seen=new Set(); const uniq=all.filter(x=>{const k=x.date+'|'+x.title;if(seen.has(k))return false;seen.add(k);return true;});
  return '<div class="timeline">'+(uniq.length?uniq.map(x=>'<article class="event"><time>'+esc(x.date)+'</time><h3>'+esc(x.title)+'</h3><p>'+esc(x.summary||'')+'</p></article>').join(''):'<p class="empty">No dated events loaded.</p>')+'</div>';
+}
+function conversationEntries(id){
+ return arr(conversationRecovery?.entries).filter(x=>arr(x.figures).includes(id));
+}
+function conversationsHtml(){
+ const list=conversationEntries(current);
+ const local=dossier.conversation_archaeology||{};
+ const modes=arr(local.recurring_modes);
+ const ordinary=arr(local.ordinary_life_signals);
+ const pattern=local.disagreement_support_pattern||'';
+ const boundary=local.interpretive_boundary||conversationRecovery?.source_rule||'Keep recovered chat separate from later interpretation.';
+ return '<div class="block"><h2>Conversation archaeology</h2><p class="muted">'+esc(conversationRecovery?.scope||'Recovered conversation material outside the main Story archive.')+'</p>'+
+   (modes.length?'<p><b>Recurring modes:</b> '+modes.map(esc).join(' · ')+'</p>':'')+
+   (ordinary.length?'<p><b>Ordinary-life signals:</b> '+ordinary.map(esc).join(' · ')+'</p>':'')+
+   (pattern?'<p><b>Pattern:</b> '+esc(pattern)+'</p>':'')+
+   '<p class="stamp">SOURCE BOUNDARY</p><p>'+esc(boundary)+'</p></div>'+
+   '<div class="timeline">'+(list.length?list.map(x=>{
+     const raw=arr(x.raw_fragments);
+     const details=arr(x.ordinary_details);
+     return '<article class="event"><time>'+esc(x.date)+'</time><h3>'+esc(x.id.replace(/^conv-[^-]+-[^-]+-/,'').replaceAll('-',' '))+'</h3>'+
+       '<p><b>Modes:</b> '+esc(arr(x.modes).join(' / '))+'</p>'+
+       (raw.length?'<ul>'+raw.map(v=>'<li>'+esc(v)+'</li>').join('')+'</ul>':'')+
+       (details.length?'<p class="mono"><b>Ordinary detail:</b> '+details.map(esc).join(' · ')+'</p>':'')+
+       '<p class="muted">'+esc(x.interpretive_boundary||'')+'</p></article>';
+   }).join(''):'<p class="empty">No recovered conversation entries indexed for this figure yet.</p>')+'</div>';
 }
 function bondsHtml(){
  const list=bondMatches(current).sort((a,b)=>b.count-a.count);
@@ -127,6 +154,7 @@ function render(){
  ].filter(Boolean).map(x=>'<span class="badge">'+esc(x)+'</span>').join('');
  document.getElementById('overview').innerHTML=overviewHtml();
  document.getElementById('timeline').innerHTML=timelineHtml();
+ document.getElementById('conversations').innerHTML=conversationsHtml();
  document.getElementById('bonds').innerHTML=bondsHtml();
  document.getElementById('stories').innerHTML=storiesHtml();
  document.getElementById('roles').innerHTML=rolesHtml();
@@ -150,9 +178,10 @@ document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{
  b.classList.add('active');document.getElementById(b.dataset.panel).classList.add('active');
 }));
 document.getElementById('shuffleTop').onclick=shuffle;document.getElementById('shuffleBottom').onclick=shuffle;
-(async()=>{[manifest,roles,stories,bonds,incidents,enhancements]=await Promise.all([
+(async()=>{[manifest,roles,stories,bonds,incidents,enhancements,conversationRecovery]=await Promise.all([
  get('knowledge/fbi/manifest.json'),get('knowledge/fbi/role-index.json'),get('knowledge/fbi/story-links.json'),
- get('knowledge/fbi/bonds/network.json'),get('knowledge/fbi/incidents/index.json'),get('knowledge/fbi/enhancements-index.json')
+ get('knowledge/fbi/bonds/network.json'),get('knowledge/fbi/incidents/index.json'),get('knowledge/fbi/enhancements-index.json'),
+ get('knowledge/fbi/conversation-recovery.json')
 ]);await load(current)})().catch(e=>{document.getElementById('summary').textContent='The cabinet could not load one of its indexes.'});
 </script>
 <script src="../../../../../app/house-journey.js"></script>
