@@ -109,8 +109,9 @@
 **Status:** fixed for explicit provider fetches; see combined WM-018/019 reliability resolution below.
 
 ### WM-020 · Architecture audit should emit actionable queue IDs — P3
-**Status:** open.  
-**Next:** map recurring audit findings to this ledger and include remediation owner + severity.
+**Status:** fixed on main (2026-09-20).  
+**Resolution:** recurring architecture-audit finding codes now project to owning `WM-xxx` queue IDs plus remediation owner in both JSON reports and console output.  
+**Guard:** `scripts/test_world_map_auditor.py` verifies queue projection for ownership collisions.
 
 
 ### WM-021 · URL state ownership is fragmented — P1
