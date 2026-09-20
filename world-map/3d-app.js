@@ -11,8 +11,8 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt
 const fmt = n => n == null ? '—' : new Intl.NumberFormat('en', {notation: Math.abs(n) > 1e9 ? 'compact' : 'standard', maximumFractionDigits: 1}).format(n);
 const title = s => String(s || '').replaceAll('_', ' ').replace(/\b\w/g, m => m.toUpperCase());
 const emptyFC = () => ({type:'FeatureCollection', features:[]});
-const geo = window.__potatoAtlasGeo;
-if (!geo?.antimeridianAwareBounds) throw new Error('World Map geospatial kernel unavailable.');
+const geoKernel = window.__potatoAtlasGeo;
+if (!geoKernel?.antimeridianAwareBounds) throw new Error('World Map geospatial kernel unavailable.');
 
 const status = $('#status');
 function setStatus(message, kind='info') {
@@ -263,7 +263,7 @@ function axisBadges(code) {
 function geometryBounds(f,referenceLng=null) {
   if(!f?.geometry)return null;
   try{
-    const b=geo.antimeridianAwareBounds(f.geometry,referenceLng);
+    const b=geoKernel.antimeridianAwareBounds(f.geometry,referenceLng);
     return [[b.west,b.south],[b.east,b.north]];
   }catch{return null}
 }
@@ -272,7 +272,7 @@ function fitCodes(codes,padding=55) {
   if(!geometries.length)return;
   const referenceLng=Number(map.getCenter()?.lng);
   let bounds;
-  try{bounds=geo.antimeridianAwareBounds(geometries,Number.isFinite(referenceLng)?referenceLng:null)}
+  try{bounds=geoKernel.antimeridianAwareBounds(geometries,Number.isFinite(referenceLng)?referenceLng:null)}
   catch{return}
   map.fitBounds([[bounds.west,bounds.south],[bounds.east,bounds.north]],{padding,pitch:Math.min(map.getPitch(),45),duration:650,maxZoom:6});
 }
