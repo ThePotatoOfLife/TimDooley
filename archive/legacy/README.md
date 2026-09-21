@@ -28,7 +28,7 @@ These files remain at repository root until their unique content and downstream 
 - `book-research.json` — important 2024 Great Book extraction/source bridge.
 - `2026-master-framework.json` — conversation-developed 2026 synthesis used as historical development evidence.
 - `POTATOVERSE-DEEP-RESEARCH.md` and `POTATOVERSE-ALTERNATIVE-RESEARCH.md` — older readable research strata pending unique-content diff.
-- `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md` — readable timeline still used by the public timeline layer.
+- `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md` — historical readable research stratum retained as provenance/source material; current life/timeline ownership is `knowledge/journey/tim-dooley-journey.json`, `knowledge/timeline/developmental-genealogy.json`, `data/timeline-events.json` and `data/tim-dooley-timeline.json`.
 - `THE-TURNING-APRIL-2025.md` — dedicated Turning document; remains a distinct historical/interpretive artifact.
 
 ## Migration rule
