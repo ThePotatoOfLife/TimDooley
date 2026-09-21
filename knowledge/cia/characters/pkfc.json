@@ -41,14 +41,61 @@
       {
         "date": "2024-12-04",
         "title": "The Tree becomes a separate social space",
+        "participants": [
+          "Tim Dooley",
+          "Monkey",
+          "Tachy",
+          "Termite",
+          "Kale",
+          "Rage",
+          "Optimistique",
+          "PKFC"
+        ],
         "minimum_event": "Chronicle narration says Monkey and Tachy established a separate Tree server while Termite and Kale remained visible around Tim's space. This is a strong dated anchor for community fragmentation, though motive-language remains interpretive.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "Tree ↔ separate space",
+          "Monkey ↔ Tachy",
+          "Termite/Kale ↔ continuing center"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Monkey",
+          "Tachy",
+          "Termite",
+          "Kale",
+          "Rage",
+          "Optimistique"
+        ]
       },
       {
         "date": "2025-03-01",
         "title": "Sammy returns; Masha is born through TTS",
+        "participants": [
+          "Tim Dooley",
+          "Sammy",
+          "TXT",
+          "Meta",
+          "PKFC",
+          "Masha"
+        ],
         "minimum_event": "The Chronicle says Sammy returned to the Garden. During a long quiet stream period Tim created Masha, a fictional woman voiced through his TTS program.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "silence ↔ creation",
+          "TTS ↔ character embodiment",
+          "Sammy ↔ return",
+          "fiction ↔ livestream presence"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Sammy",
+          "TXT",
+          "Meta",
+          "Masha"
+        ]
       }
     ]
   },
@@ -109,12 +156,17 @@
     {
       "type": "dated_social_ledger",
       "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json",
+      "note": "Period-role transitions and cast continuity."
     }
   ],
   "recovery_leads": [
-    "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
-    "Separate direct speech from Chronicle paraphrase and later project interpretation.",
-    "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: November 14, 2024; December 4, 2024; March 1 2025; March 12, 2025.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: November 14, 2024 (1); December 4, 2024 (1); March 1 2025 (1); March 12, 2025 (1).",
+    "Cross-check relationship edges against dated scenes instead of raw co-presence: Tim Dooley, Monkey, Tachy, Termite, Kale, Rage."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -146,7 +198,90 @@
       "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
       "Separate direct speech from Chronicle paraphrase and later project interpretation.",
       "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 4,
+      "chronicle_distinct_dates": 4,
+      "expanded_social_ledger_cases": 2,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "PKFC currently has 4 indexed Chronicle mentions across 4 Chronicle dates, 2 expanded day-level social cases.",
+      "cases": [
+        {
+          "date": "2024-12-04",
+          "title": "The Tree becomes a separate social space",
+          "what_happened": "Chronicle narration says Monkey and Tachy established a separate Tree server while Termite and Kale remained visible around Tim's space. This is a strong dated anchor for community fragmentation, though motive-language remains interpretive.",
+          "co_present": [
+            "Tim Dooley",
+            "Monkey",
+            "Tachy",
+            "Termite",
+            "Kale",
+            "Rage",
+            "Optimistique"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2025-03-01",
+          "title": "Sammy returns; Masha is born through TTS",
+          "what_happened": "The Chronicle says Sammy returned to the Garden. During a long quiet stream period Tim created Masha, a fictional woman voiced through his TTS program.",
+          "co_present": [
+            "Tim Dooley",
+            "Sammy",
+            "TXT",
+            "Meta",
+            "Masha"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [
+        {
+          "date": "November 14, 2024",
+          "count": 1
+        },
+        {
+          "date": "December 4, 2024",
+          "count": 1
+        },
+        {
+          "date": "March 1 2025",
+          "count": 1
+        },
+        {
+          "date": "March 12, 2025",
+          "count": 1
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "November 14, 2024",
+          "count": 1
+        },
+        {
+          "date": "December 4, 2024",
+          "count": 1
+        },
+        {
+          "date": "March 1 2025",
+          "count": 1
+        },
+        {
+          "date": "March 12, 2025",
+          "count": 1
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "PKFC is intentionally an index-card-scale conflict/archive file: repeated dates justify discoverability, but the surviving material is too sparse and rhetorically loaded to support the severe older profile labels.",
@@ -164,7 +299,14 @@
       "The March 12 appearance needs scene-level extraction only if PKFC becomes relevant again."
     ],
     "relationship_arc": "recurring named conflict/archive object → sparse later recurrence → dormant recovery card",
-    "confidence_note": "Good recurrence confidence; deliberately low confidence in legacy characterization."
+    "confidence_note": "Good recurrence confidence; deliberately low confidence in legacy characterization.",
+    "evidence_density": {
+      "chronicle_mentions": 4,
+      "indexed_chronicle_dates": 4,
+      "expanded_day_level_cases": 2,
+      "unexpanded_indexed_dates": 2
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unpriced boundary dispute",
