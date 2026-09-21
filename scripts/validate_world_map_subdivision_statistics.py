@@ -8,6 +8,7 @@ CONTRACT=ROOT/"data/world-subdivisions/statistics/contract.json"
 RUNTIME=ROOT/"world-map/3d-subdivision-statistics.js"
 SUBDIV=ROOT/"world-map/3d-subdivisions.js"
 TEST=ROOT/"scripts/test_world_map_subdivision_statistics.mjs"
+SOURCES=ROOT/"data/world-subdivisions/statistics/sources"
 
 def main():
     errors=[]
@@ -22,6 +23,27 @@ def main():
     metrics=contract.get("allowed_metrics") or {}
     for metric in ("population","area_km2","density_per_km2"):
         if metric not in metrics: errors.append(f"statistics contract missing {metric}")
+    if not SOURCES.is_dir():
+        errors.append("missing subdivision statistics source-contract directory")
+    else:
+        for path in sorted(SOURCES.glob("*.json")):
+            try:
+                source=json.loads(path.read_text(encoding="utf-8"))
+            except Exception as exc:
+                errors.append(f"invalid statistics source contract {path.name}: {exc}")
+                continue
+            if source.get("parent_iso3") != path.stem:
+                errors.append(f"{path.name}: parent_iso3 must match filename")
+            rows=source.get("subdivision_mapping") or []
+            if not rows or len({row.get("subdivision_id") for row in rows}) != len(rows):
+                errors.append(f"{path.name}: subdivision mapping must contain unique stable IDs")
+            requirements=" ".join(source.get("acquisition_requirements") or []).lower()
+            if "verify the statbank area code" not in requirements:
+                errors.append(f"{path.name}: source contract must require area-code verification")
+            metrics=source.get("metrics") or {}
+            for metric in ("population","area_km2"):
+                if not (metrics.get(metric) or {}).get("source_url"):
+                    errors.append(f"{path.name}: missing {metric} source URL")
     runtime=RUNTIME.read_text(encoding="utf-8",errors="replace")
     subdiv=SUBDIV.read_text(encoding="utf-8",errors="replace")
     for token in ("enrichCollection","statistics_provenance","geometry_source","population_status='sourced'"):
