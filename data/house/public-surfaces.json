@@ -1,5 +1,5 @@
 {
-  "version": "2.6.0",
+  "version": "2.7.0",
   "updated": "2026-09-21",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
@@ -886,6 +886,111 @@
       "represented_by": "absence from public-surfaces.json or backend_only in projection contracts",
       "meaning": "Canonical backend owners, research records and machine/support artifacts with no independent public-surface obligation.",
       "navigation_rule": "Invisible material may support visible prose through bindings and discovery, but should not become a page merely because a file exists."
+    }
+  },
+  "parent_semantics": {
+    "home": {
+      "meaning": "Global orientation root for the five canonical gateways and a small set of genuinely cross-project utilities/readers.",
+      "child_rule": "Use Home only when the child spans multiple domains or is itself a canonical gateway/global utility. Domain specialists should belong under their strongest subject parent instead.",
+      "allowed_child_ids": [
+        "potato-of-life",
+        "tim",
+        "religion",
+        "philosophy",
+        "science",
+        "world",
+        "timeline",
+        "explore",
+        "sources",
+        "questions",
+        "index-a-z",
+        "house"
+      ]
+    },
+    "house": {
+      "meaning": "Project spatial/architectural owner for Rooms, paths, interfaces and operator views.",
+      "child_rule": "Use House for structural/project-architecture specialists, not for ordinary subject matter or named-entity lookup.",
+      "allowed_child_ids": [
+        "axis",
+        "rooms",
+        "research-lab",
+        "paths",
+        "elevator"
+      ]
+    },
+    "world": {
+      "meaning": "Real-world geography, institutions, politics, economy, law, culture and current-world specialist owner.",
+      "child_rule": "Use World when the reader's primary job is to explain or explore external real-world systems rather than project canon.",
+      "allowed_child_ids": [
+        "news",
+        "world-map",
+        "politics",
+        "north",
+        "world-systems",
+        "culture",
+        "law",
+        "economy"
+      ]
+    },
+    "timeline": {
+      "meaning": "Chronological/event-order owner for readers whose main job is temporal inspection.",
+      "child_rule": "Use Timeline when chronology is the reader's primary organizing principle rather than merely one filter among many.",
+      "allowed_child_ids": [
+        "foundation-timeline",
+        "history"
+      ]
+    },
+    "sources": {
+      "meaning": "Evidence, provenance, source-authority and verification owner.",
+      "child_rule": "Use Sources when the reader primarily teaches how claims are sourced, verified or bounded.",
+      "allowed_child_ids": [
+        "context"
+      ]
+    },
+    "tim": {
+      "meaning": "Tim Dooley subject owner for biography, story projection, collection and authored/project works.",
+      "child_rule": "Use Tim when the surface is primarily a Tim-centered narrative, corpus or body of work rather than a general religious/philosophical/scientific domain.",
+      "allowed_child_ids": [
+        "story",
+        "collection",
+        "works"
+      ]
+    },
+    "religion": {
+      "meaning": "Religious framework and tradition-comparison owner.",
+      "child_rule": "Use Religion when the surface's primary task is theology, scripture or comparative religious interpretation.",
+      "allowed_child_ids": [
+        "bible",
+        "trinity"
+      ]
+    },
+    "philosophy": {
+      "meaning": "Philosophical argument, ethics and conceptual-analysis owner.",
+      "child_rule": "Use Philosophy for focused argument/ethics/concept readers whose organizing job is philosophical rather than religious or empirical.",
+      "allowed_child_ids": [
+        "interpretive-justice"
+      ]
+    },
+    "science": {
+      "meaning": "Scientific, formal-model and body-research owner.",
+      "child_rule": "Use Science when empirical/formal explanation is primary and project analogy is explicitly secondary.",
+      "allowed_child_ids": [
+        "life-body"
+      ]
+    },
+    "potato-of-life": {
+      "meaning": "Semantic-center guide owner for project identity/operator material that is broader than Tim biography but narrower than the whole House.",
+      "child_rule": "Use Potato of Life only for project-center identity/operator guides that directly explain the Potato semantic center.",
+      "allowed_child_ids": [
+        "spirit"
+      ]
+    },
+    "rooms": {
+      "meaning": "Named House-object/inhabitant entry owner beneath House.",
+      "child_rule": "Use Rooms for entity/object entry surfaces that resolve House inhabitants rather than explain overall topology.",
+      "allowed_child_ids": [
+        "inhabitants"
+      ]
     }
   }
 }
