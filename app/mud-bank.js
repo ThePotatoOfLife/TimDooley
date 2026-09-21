@@ -1,7 +1,7 @@
 (()=>{'use strict';
 const BASE='/TimDooley/';
 const esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
-let manifest,activity,currentDesk,contract,postureIndex,systemLedger,fieldExposure,accounts=[],scope='all';
+let manifest,activity,currentDesk,contract,postureIndex,systemLedger,fieldExposure,roleCensus,accounts=[],scope='all';
 let activeId=new URLSearchParams(location.search).get('character')||'';
 async function get(path){const r=await fetch(BASE+path);if(!r.ok)throw new Error(path);return r.json()}
 function exactDate(s){return /^\d{4}-\d{2}-\d{2}$/.test(String(s||''))?new Date(String(s)+'T00:00:00Z'):null}
@@ -13,8 +13,8 @@ function currentIds(){return new Set((currentDesk?.items||[]).map(x=>x.id))}
 function buildAccount(meta,d){
  const start=d.symbolic_account?.welfare_start_override||d.cia_record?.presence?.first_recorded||'',w=welfare(start);
  const events=(d.symbolic_account?.entries||[]).map(e=>({...e,amount:amountFor(e)}));
- const posture=(postureIndex?.accounts||[]).find(x=>x.id===meta.id)||{},adjustment=events.reduce((n,e)=>n+e.amount,0);
- return{id:meta.id,name:meta.name||d.display_name||meta.id,start,band:bandFor(meta.id),welfare:w.value,exact:w.exact,adjustment,balance:w.value+adjustment,events,status:d.symbolic_account?.status||'unassessed',posture:posture.posture||'unassessed',gross_credit_susd:Number(posture.gross_credit_susd||0),gross_debit_susd:Number(posture.gross_debit_susd||0),unpriced_negative_candidates:Number(posture.unpriced_negative_candidates||0)}
+ const posture=(postureIndex?.accounts||[]).find(x=>x.id===meta.id)||{},role=(roleCensus?.entities||[]).find(x=>x.character_id===meta.id)||{},adjustment=events.reduce((n,e)=>n+e.amount,0);
+ return{id:meta.id,name:meta.name||d.display_name||meta.id,start,band:bandFor(meta.id),welfare:w.value,exact:w.exact,adjustment,balance:w.value+adjustment,events,status:d.symbolic_account?.status||'unassessed',posture:posture.posture||'unassessed',role_posture:role.role_posture||'unclassified',gross_credit_susd:Number(posture.gross_credit_susd||0),gross_debit_susd:Number(posture.gross_debit_susd||0),unpriced_negative_candidates:Number(posture.unpriced_negative_candidates||0)}
 }
 function allEvents(){return accounts.flatMap(a=>a.events.map(e=>({...e,account_id:a.id,account_name:a.name})))}
 function totals(){
@@ -60,7 +60,7 @@ function tick(){
  refreshLiveAggregate();const selected=accounts.find(a=>a.id===activeId);if(selected){const card=document.querySelector('[data-select-account="'+CSS.escape(selected.id)+'"] em');if(card)card.textContent=selected.exact?money(selected.balance):money(selected.adjustment)+' + welfare'}
 }
 (async()=>{
- [manifest,activity,currentDesk,contract,postureIndex,systemLedger,fieldExposure]=await Promise.all([get('knowledge/cia/manifest.json'),get('knowledge/cia/activity-index.json'),get('knowledge/cia/current-desk.json'),get('knowledge/cia/mud-bank-contract.json'),get('knowledge/cia/account-posture-index.json'),get('knowledge/cia/system-liability-ledger.json'),get('knowledge/cia/field-exposure-model.json')]);
+ [manifest,activity,currentDesk,contract,postureIndex,systemLedger,fieldExposure,roleCensus]=await Promise.all([get('knowledge/cia/manifest.json'),get('knowledge/cia/activity-index.json'),get('knowledge/cia/current-desk.json'),get('knowledge/cia/mud-bank-contract.json'),get('knowledge/cia/account-posture-index.json'),get('knowledge/cia/system-liability-ledger.json'),get('knowledge/cia/field-exposure-model.json'),get('knowledge/cia/role-archetype-census.json')]);
  const ds=await Promise.all((manifest.characters||[]).map(async m=>[m,await get(m.path)]));accounts=ds.map(([m,d])=>buildAccount(m,d)).sort((a,b)=>b.balance-a.balance||a.name.localeCompare(b.name));if(activeId&&!accounts.some(a=>a.id===activeId))activeId='';
  renderSystemDomains();renderOverview();renderFieldExposure();renderAccountRail();renderStatement();updateUrl();
  document.getElementById('bankSearch')?.addEventListener('input',renderAccountRail);document.getElementById('bankAll')?.addEventListener('click',()=>setScope('all'));document.getElementById('bankCurrent')?.addEventListener('click',()=>setScope('current'));document.getElementById('accountPrev')?.addEventListener('click',()=>scrollRail('accountRail',-1));document.getElementById('accountNext')?.addEventListener('click',()=>scrollRail('accountRail',1));document.querySelectorAll('[data-rail-prev]').forEach(btn=>btn.addEventListener('click',()=>scrollRail(btn.dataset.railPrev,-1)));document.querySelectorAll('[data-rail-next]').forEach(btn=>btn.addEventListener('click',()=>scrollRail(btn.dataset.railNext,1)));setInterval(tick,1000)
