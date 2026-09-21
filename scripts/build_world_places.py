@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 from collections import defaultdict
@@ -24,6 +25,14 @@ RUNTIME_BUDGET = {
     "global_major_max_bytes": 5_242_880,
     "global_major_max_features": 5000,
 }
+
+
+def file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def country_maps(path: Path) -> tuple[dict[str, str], dict[str, str]]:
@@ -255,7 +264,7 @@ def write_geojson(path: Path, features: list[dict]) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
 
 
-def build_outputs(features: list[dict], out_dir: Path, refresh_date: str, selected: set[str] | None = None) -> None:
+def build_outputs(features: list[dict], out_dir: Path, refresh_date: str, selected: set[str] | None = None, source_provenance: dict | None = None) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     generated_features = [
         feature for feature in features
@@ -276,13 +285,23 @@ def build_outputs(features: list[dict], out_dir: Path, refresh_date: str, select
         write_geojson(path, rows)
         countries[iso3] = {"path": rel, "count": len(rows), "bytes": path.stat().st_size}
 
+    provenance = dict(source_provenance or {})
+    build_at = str(provenance.get("build_at") or datetime.now(timezone.utc).isoformat())
     index = {
-        "schema_version": "1.1.0",
-        "source": "GeoNames cities5000",
+        "schema_version": "1.2.0",
+        "source": str(provenance.get("source_name") or "GeoNames cities15000"),
         "license": "CC BY 4.0",
         "attribution": "GeoNames",
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generated_at": build_at,
         "dataset_refresh_date": refresh_date,
+        "provenance": {
+            "source_url": provenance.get("source_url"),
+            "input_filename": provenance.get("input_filename"),
+            "input_sha256": provenance.get("input_sha256"),
+            "upstream_last_modified": provenance.get("upstream_last_modified"),
+            "retrieved_at": provenance.get("retrieved_at"),
+            "build_at": build_at,
+        },
         "total_place_count": len(generated_features),
         "runtime_budget": dict(RUNTIME_BUDGET),
         "global_major": {"path": "global-major.geo.json", "count": len(major), "bytes": major_path.stat().st_size},
@@ -306,6 +325,8 @@ def resolve_inputs(args: argparse.Namespace, parser: argparse.ArgumentParser) ->
                 ("--capitals", args.capitals),
                 ("--country-index", args.country_index),
                 ("--refresh-date", args.refresh_date),
+                ("--upstream-last-modified", args.upstream_last_modified),
+                ("--retrieved-at", args.retrieved_at),
             ) if not value
         ]
         if missing:
@@ -329,6 +350,10 @@ def main() -> None:
     parser.add_argument("--country-index", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--refresh-date")
+    parser.add_argument("--source-name", default="GeoNames cities15000")
+    parser.add_argument("--source-url", default="https://download.geonames.org/export/dump/cities15000.zip")
+    parser.add_argument("--upstream-last-modified")
+    parser.add_argument("--retrieved-at")
     parser.add_argument("--countries", default="")
     args = parser.parse_args()
 
@@ -345,7 +370,16 @@ def main() -> None:
     capitals = json.loads(capitals_path.read_text(encoding="utf-8"))
     merge_capitals(features, capitals, refresh_date)
     selected = {value.strip().upper() for value in args.countries.split(",") if value.strip()} or None
-    build_outputs(features, args.output, refresh_date, selected)
+    source_provenance = {
+        "source_name": args.source_name,
+        "source_url": args.source_url,
+        "input_filename": geonames_path.name,
+        "input_sha256": file_sha256(geonames_path),
+        "upstream_last_modified": args.upstream_last_modified or ("fixture" if args.fixture else None),
+        "retrieved_at": args.retrieved_at or ("fixture" if args.fixture else None),
+        "build_at": datetime.now(timezone.utc).isoformat(),
+    }
+    build_outputs(features, args.output, refresh_date, selected, source_provenance)
 
 
 if __name__ == "__main__":
