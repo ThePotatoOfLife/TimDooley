@@ -110,7 +110,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The curr
 - [ ] Promote at least one reviewed delayed/historical conflict snapshot with source bundle, date semantics and explicit not-live boundary before exposing Conflict as current functionality.
 - [~] Add behavioral viewport scenarios for globe mode, narrow screens, dense regional labels, detached geography and region→Places handoff. A combined narrow+globe+region+Places contract regression is now in progress; browser-level occlusion/detached-geography proof remains.
 - [x] Map architecture-auditor finding codes to ledger IDs, owner and severity; actionable unmapped findings now fail the architecture audit.
-- [~] Add regional-statistics enrichment as an optional sourced layer. A separate ID-joined statistics runtime/contract now preserves geometry provenance; the first reviewed real dataset still needs promotion.
+- [~] Add regional-statistics enrichment as an optional sourced layer. The ID-joined runtime preserves geometry provenance and a fail-closed reviewed-export importer is in place; Denmark's verified StatBank codes/exports and first real sidecar still need promotion.
 - [ ] Continue design-token convergence beyond z-index into shared surface/background/border/radius/spacing tokens without flattening semantic distinctions.
 - [~] Add a common freshness/status vocabulary for data-backed layers. Evidence/ADL and Places now consume shared explicit-only freshness semantics; extend them to other empirical reader surfaces.
 
