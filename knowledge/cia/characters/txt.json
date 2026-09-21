@@ -83,14 +83,52 @@
       {
         "date": "2025-02-11/12",
         "title": "Monkey / Don Jefe / TXT conflict cluster",
+        "participants": [
+          "Tim Dooley",
+          "Monkey",
+          "Don Jefe",
+          "TXT"
+        ],
         "minimum_event": "The Chronicle groups Monkey, Don Jefe and TXT inside an aggressively adversarial retelling. Treat labels and allegations as authored conflict language; the useful historical fact is the dated co-occurrence of these names.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "Monkey ↔ Don Jefe ↔ TXT",
+          "Tree/Farm conflict ↔ shared date window"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Monkey",
+          "Don Jefe"
+        ]
       },
       {
         "date": "2025-03-01",
         "title": "Sammy returns; Masha is born through TTS",
+        "participants": [
+          "Tim Dooley",
+          "Sammy",
+          "TXT",
+          "Meta",
+          "PKFC",
+          "Masha"
+        ],
         "minimum_event": "The Chronicle says Sammy returned to the Garden. During a long quiet stream period Tim created Masha, a fictional woman voiced through his TTS program.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "silence ↔ creation",
+          "TTS ↔ character embodiment",
+          "Sammy ↔ return",
+          "fiction ↔ livestream presence"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Sammy",
+          "Meta",
+          "PKFC",
+          "Masha"
+        ]
       }
     ]
   },
@@ -177,12 +215,18 @@
     {
       "type": "debt_evidence_ledger",
       "path": "knowledge/cia/debt-evidence-ledger.json"
+    },
+    {
+      "type": "conversation_recovery",
+      "path": "knowledge/cia/conversation-intake-2026-09-20.json",
+      "note": "Recent/semi-recent recovery layer."
     }
   ],
   "recovery_leads": [
-    "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
-    "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
-    "Add relationship edges only when a dated scene or explicit source supports them."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: Feb 8 2025; March 1 2025.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: Feb 8 2025 (1); March 1 2025 (1).",
+    "Cross-check relationship edges against dated scenes instead of raw co-presence: Tim Dooley, Monkey, Don Jefe, Sammy, Meta, PKFC.",
+    "Attach primary artifacts for recent recovery markers: 2024, 2025-02-08, 2025-03-01, 2026-06-20, 2026-07-07, 2026-07-16/20, 2026-07-30, 2026-08-02, 2026-09-10; retain intake boundaries until those artifacts are recovered."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -219,7 +263,121 @@
       "Add relationship edges only when a dated scene or explicit source supports them.",
       "Recover exact June–September 2026 primary post/status URLs.",
       "Separate current public presence from exact interaction chronology."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 2,
+      "chronicle_distinct_dates": 2,
+      "expanded_social_ledger_cases": 2,
+      "recent_conversation_recovery": {
+        "dates": [
+          "2024",
+          "2025-02-08",
+          "2025-03-01",
+          "2026-06-20",
+          "2026-07-07",
+          "2026-07-16/20",
+          "2026-07-30",
+          "2026-08-02",
+          "2026-09-10"
+        ],
+        "summary": "Recovered trail includes the 2024 ‘TXT’s Shadow Games’ project layer, 2025 appearances and a denser 2026 sequence. @YouCantKillTXT was described as publicly active; exact artifacts remain to attach.",
+        "source_mode": "conversation archaeology",
+        "status": "merge-priority"
+      },
+      "cast_period_roles": [
+        {
+          "period": "2017 onward old-profile claim",
+          "role": "long-running antagonism recovery lead; original sequence incomplete"
+        },
+        {
+          "period": "2019 retrospective",
+          "role": "later biography groups TXT with Meta in digital-crucifixion/Farm interpretation"
+        },
+        {
+          "period": "2024",
+          "role": "literary Shadow Games figure"
+        },
+        {
+          "period": "2026-07-07",
+          "role": "directly named public conflict referent alongside Dim; allegations remain attributed to Tim"
+        }
+      ],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "TXT currently has 2 indexed Chronicle mentions across 2 Chronicle dates, 2 expanded day-level social cases, plus a recent recovery layer covering 9 dated/period markers.",
+      "cases": [
+        {
+          "date": "2025-02-11/12",
+          "title": "Monkey / Don Jefe / TXT conflict cluster",
+          "what_happened": "The Chronicle groups Monkey, Don Jefe and TXT inside an aggressively adversarial retelling. Treat labels and allegations as authored conflict language; the useful historical fact is the dated co-occurrence of these names.",
+          "co_present": [
+            "Tim Dooley",
+            "Monkey",
+            "Don Jefe"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2025-03-01",
+          "title": "Sammy returns; Masha is born through TTS",
+          "what_happened": "The Chronicle says Sammy returned to the Garden. During a long quiet stream period Tim created Masha, a fictional woman voiced through his TTS program.",
+          "co_present": [
+            "Tim Dooley",
+            "Sammy",
+            "Meta",
+            "PKFC",
+            "Masha"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": {
+        "dates": [
+          "2024",
+          "2025-02-08",
+          "2025-03-01",
+          "2026-06-20",
+          "2026-07-07",
+          "2026-07-16/20",
+          "2026-07-30",
+          "2026-08-02",
+          "2026-09-10"
+        ],
+        "summary": "Recovered trail includes the 2024 ‘TXT’s Shadow Games’ project layer, 2025 appearances and a denser 2026 sequence. @YouCantKillTXT was described as publicly active; exact artifacts remain to attach.",
+        "boundaries": [
+          "Great Book interpretation is Tim-authored/project material.",
+          "Keep observable interaction separate from projection/tethering/dehumanization interpretation."
+        ],
+        "source_mode": "conversation archaeology",
+        "status": "merge-priority"
+      },
+      "chronicle_occurrence_index": [
+        {
+          "date": "Feb 8 2025",
+          "count": 1
+        },
+        {
+          "date": "March 1 2025",
+          "count": 1
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "Feb 8 2025",
+          "count": 1
+        },
+        {
+          "date": "March 1 2025",
+          "count": 1
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "TXT is one of the archive's clearest long-running opposition files, but its value comes from separating literary, public-conflict and later symbolic layers rather than treating 'antagonist' as a timeless identity.",
@@ -238,7 +396,14 @@
       "Identity and relationship edges should still be tied to specific dated scenes."
     ],
     "relationship_arc": "literary shadow figure → dated Chronicle recurrence → public conflict → Dog/Swamp interpretation → later fable/satire/current-presence trace",
-    "confidence_note": "Strong on layered recurrence and source separation; mixed on earliest chronology and disputed misconduct narratives."
+    "confidence_note": "Strong on layered recurrence and source separation; mixed on earliest chronology and disputed misconduct narratives.",
+    "evidence_density": {
+      "chronicle_mentions": 2,
+      "indexed_chronicle_dates": 2,
+      "expanded_day_level_cases": 2,
+      "unexpanded_indexed_dates": 0
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "debt",
