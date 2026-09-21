@@ -45,26 +45,109 @@
       {
         "date": "2024-11-04",
         "title": "Potatoism gets challenged from inside the room",
+        "participants": [
+          "Tim Dooley",
+          "Juice",
+          "Kale",
+          "Termite",
+          "Kibly",
+          "Ledgeview",
+          "Rage"
+        ],
         "minimum_event": "Juice challenges Potatoism with creator/First-Mover arguments; Kale answers with cyclic/interconnection language; Termite explores gods-creating-gods; Kibly contributes an epistemic box thought experiment.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "theology ↔ live debate",
+          "skeptic ↔ seeker",
+          "absurdity ↔ philosophy"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Kale",
+          "Termite",
+          "Kibly",
+          "Ledgeview",
+          "Rage"
+        ]
       },
       {
         "date": "2024-11-19",
         "title": "Garden conflict becomes a named day",
+        "participants": [
+          "Tim Dooley",
+          "Marty",
+          "Juice",
+          "Port Monkey",
+          "Sammy",
+          "Highly Regarded",
+          "Ledgeview",
+          "Kale"
+        ],
         "minimum_event": "The Chronicle labels the day 'The Garden Betrayed' and concentrates conflict around the community boundary. Treat allegations in this entry as authored interpretation until raw logs are recovered.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "Garden ↔ boundary governance",
+          "Marty/Juice ↔ conflict cluster"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Marty",
+          "Port Monkey",
+          "Sammy",
+          "Highly Regarded",
+          "Ledgeview",
+          "Kale"
+        ]
       },
       {
         "date": "2024-12-07",
         "title": "Reconciliation becomes a community problem",
+        "participants": [
+          "Tim Dooley",
+          "Optimistique",
+          "Juice",
+          "Super Susi",
+          "Termite",
+          "PotatoJim"
+        ],
         "minimum_event": "Optimistique apologizes/seeks reconciliation in the Chronicle; Termite and others respond cautiously. Juice and Super Susi are also discussed through return, trust and redemption language while PotatoJim supplies festive/creative levity.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "apology ↔ trust repair",
+          "Termite ↔ boundary caution",
+          "PotatoJim ↔ festive culture"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Optimistique",
+          "Super Susi",
+          "Termite",
+          "PotatoJim"
+        ]
       },
       {
         "date": "2024-12-18",
         "title": "Growth lesson and disruption share one day",
+        "participants": [
+          "Tim Dooley",
+          "Anacondasin",
+          "Juice",
+          "Petty Wappo"
+        ],
         "minimum_event": "The Chronicle frames Tim's work with Ana as a growth/cultivation episode while Juice/Petty Wappo occupy a disruptive counter-thread.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "cultivation ↔ conflict coexistence"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Anacondasin",
+          "Petty Wappo"
+        ]
       }
     ]
   },
@@ -130,9 +213,9 @@
     }
   ],
   "recovery_leads": [
-    "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
-    "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
-    "Add relationship edges only when a scene/source supports them."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: November 4, 2024; November 9, 2024; November 19, 2024; November 21, 2024; December 7, 2024; December 18, 2024; December 21 2024.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: November 9, 2024 (8); December 18, 2024 (6); November 4, 2024 (4); November 21, 2024 (4); December 7, 2024 (4).",
+    "Cross-check relationship edges against dated scenes instead of raw co-presence: Tim Dooley, Kale, Termite, Ledgeview, Kibly, Rage."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -152,7 +235,143 @@
       "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
       "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
       "Add relationship edges only when a scene/source supports them."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 29,
+      "chronicle_distinct_dates": 7,
+      "expanded_social_ledger_cases": 4,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "Juice currently has 29 indexed Chronicle mentions across 7 Chronicle dates, 4 expanded day-level social cases.",
+      "cases": [
+        {
+          "date": "2024-11-04",
+          "title": "Potatoism gets challenged from inside the room",
+          "what_happened": "Juice challenges Potatoism with creator/First-Mover arguments; Kale answers with cyclic/interconnection language; Termite explores gods-creating-gods; Kibly contributes an epistemic box thought experiment.",
+          "co_present": [
+            "Tim Dooley",
+            "Kale",
+            "Termite",
+            "Kibly",
+            "Ledgeview",
+            "Rage"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2024-11-19",
+          "title": "Garden conflict becomes a named day",
+          "what_happened": "The Chronicle labels the day 'The Garden Betrayed' and concentrates conflict around the community boundary. Treat allegations in this entry as authored interpretation until raw logs are recovered.",
+          "co_present": [
+            "Tim Dooley",
+            "Marty",
+            "Port Monkey",
+            "Sammy",
+            "Highly Regarded",
+            "Ledgeview",
+            "Kale"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2024-12-07",
+          "title": "Reconciliation becomes a community problem",
+          "what_happened": "Optimistique apologizes/seeks reconciliation in the Chronicle; Termite and others respond cautiously. Juice and Super Susi are also discussed through return, trust and redemption language while PotatoJim supplies festive/creative levity.",
+          "co_present": [
+            "Tim Dooley",
+            "Optimistique",
+            "Super Susi",
+            "Termite",
+            "PotatoJim"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2024-12-18",
+          "title": "Growth lesson and disruption share one day",
+          "what_happened": "The Chronicle frames Tim's work with Ana as a growth/cultivation episode while Juice/Petty Wappo occupy a disruptive counter-thread.",
+          "co_present": [
+            "Tim Dooley",
+            "Anacondasin",
+            "Petty Wappo"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [
+        {
+          "date": "November 4, 2024",
+          "count": 4
+        },
+        {
+          "date": "November 9, 2024",
+          "count": 8
+        },
+        {
+          "date": "November 19, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 21, 2024",
+          "count": 4
+        },
+        {
+          "date": "December 7, 2024",
+          "count": 4
+        },
+        {
+          "date": "December 18, 2024",
+          "count": 6
+        },
+        {
+          "date": "December 21 2024",
+          "count": 1
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "November 4, 2024",
+          "count": 4
+        },
+        {
+          "date": "November 9, 2024",
+          "count": 8
+        },
+        {
+          "date": "November 19, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 21, 2024",
+          "count": 4
+        },
+        {
+          "date": "December 7, 2024",
+          "count": 4
+        },
+        {
+          "date": "December 18, 2024",
+          "count": 6
+        },
+        {
+          "date": "December 21 2024",
+          "count": 1
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "Juice is strongest as a debate-and-trust file: the archive has a concrete theological challenge, later disruption/conflict context and a return/reconciliation corridor that should remain separate from the old profile's harsh motive language.",
@@ -170,7 +389,14 @@
       "Whether reconciliation produced durable relationship change is unclear."
     ],
     "relationship_arc": "theological challenger → friction/conflict participant → return/trust problem → later status unresolved",
-    "confidence_note": "High on dated Chronicle function; low on the old source's motive judgments."
+    "confidence_note": "High on dated Chronicle function; low on the old source's motive judgments.",
+    "evidence_density": {
+      "chronicle_mentions": 29,
+      "indexed_chronicle_dates": 7,
+      "expanded_day_level_cases": 4,
+      "unexpanded_indexed_dates": 3
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
