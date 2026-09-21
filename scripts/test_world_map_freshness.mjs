@@ -11,4 +11,16 @@ assert.equal(f.describe({freshness_status:'latest-available',reference_period:'2
 assert.equal(f.describe({freshness_status:'delayed'}).key,'delayed');
 assert.equal(f.describe({freshness_status:'planned'}).key,'planned');
 assert.equal(f.describe({generated_at:'2026-09-21'}).key,'unknown-vintage','local build date must not imply currentness');
+assert.equal(f.register('fixture',()=>[
+  {id:'historical',label:'Historical fixture',meta:{data_status:'historical-snapshot',data_through:'2023-10-11'}},
+  {id:'unknown',label:'Unknown fixture',meta:{dataset_refresh_date:'mirror snapshot; exact upstream refresh unknown'}},
+]),true);
+const active=f.active();
+assert.equal(active.length,2);
+assert.equal(active[0].label,'Historical fixture');
+assert.equal(active[0].freshness.key,'historical');
+assert.equal(active[0].freshness.asOf,'2023-10-11');
+assert.equal(active[1].freshness.key,'unknown-vintage');
+assert.equal(f.unregister('fixture'),true);
+assert.equal(f.active().length,0);
 console.log('WORLD MAP FRESHNESS REGRESSION PASSED');
