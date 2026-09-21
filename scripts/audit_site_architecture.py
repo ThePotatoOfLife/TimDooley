@@ -66,7 +66,8 @@ def main()->int:
         path=source_path(route)
         if not path.is_file():
             errors.append(f"{sid} source surface missing: {path.relative_to(ROOT)}"); continue
-        visible=STYLE_SCRIPT.sub("",path.read_text(encoding="utf-8",errors="replace"))
+        raw=path.read_text(encoding="utf-8",errors="replace")
+        visible=STYLE_SCRIPT.sub("",raw)
         h1=H1.search(visible); h2=H2.search(visible); hrefs=ANCHOR_HREF.findall(visible)
         first_h2=h2.start() if h2 else len(visible)
         pre_links=count_before(visible,first_h2,ANCHOR_HREF); pre_buttons=count_before(visible,first_h2,BUTTON)
@@ -79,7 +80,8 @@ def main()->int:
         if repeated: warnings.append({"code":"repeated-destination","surface":sid,"targets":repeated[:12]})
         if not h1: warnings.append({"code":"missing-h1","surface":sid})
         if len(registered_targets)>18: warnings.append({"code":"high-registered-outdegree","surface":sid,"count":len(registered_targets)})
-        metrics.append({"id":sid,"route":route,"surface_type":row.get("surface_type"),"visibility":row.get("visibility"),"reader_job":row.get("reader_job"),"source":path.relative_to(ROOT).as_posix(),"hrefs":len(hrefs),"buttons":len(BUTTON.findall(visible)),"navs":len(NAV.findall(visible)),"pre_substance_links":pre_links,"pre_substance_buttons":pre_buttons,"registered_outdegree":len(registered_targets),"registered_targets":sorted(registered_targets)})
+        runtime_href_literals=len(re.findall(r'href(?:=|\\s*[:+])', raw, flags=re.I))-len(hrefs)
+        metrics.append({"id":sid,"route":route,"surface_type":row.get("surface_type"),"visibility":row.get("visibility"),"reader_job":row.get("reader_job"),"source":path.relative_to(ROOT).as_posix(),"authored_anchor_hrefs":len(hrefs),"runtime_or_script_href_literals":max(0,runtime_href_literals),"buttons":len(BUTTON.findall(visible)),"navs":len(NAV.findall(visible)),"pre_substance_links":pre_links,"pre_substance_buttons":pre_buttons,"registered_outdegree":len(registered_targets),"registered_targets":sorted(registered_targets)})
     overlaps=[]; ids=sorted(target_sets)
     for i,left in enumerate(ids):
         a=target_sets[left]
