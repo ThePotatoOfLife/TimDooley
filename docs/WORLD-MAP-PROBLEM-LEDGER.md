@@ -302,11 +302,12 @@
 **Completion guard:** future actionable finding codes must be mapped before CI can pass.
 
 ### WM-051 · Geometry-first regional statistics remain uneven — P3
-**Status:** verified functionality-depth gap (2026-09-21).  
+**Status:** in progress on branch `world-map-subdivision-statistics-current-20260921`.  
 **Evidence:** newer partitions intentionally preserve unknown population/area/density instead of fabricating values; this is correct but leaves regional comparison depth uneven.  
 **Risk:** users can select a region but receive mostly identity/provenance while other regions expose richer statistics.  
-**TODO:** define an optional sourced ADM1 statistics enrichment contract independent from boundary geometry, including period/source/missingness and join confidence.  
-**Completion:** at least one geometry-first partition can accept sourced statistics without mutating or pretending they came from the boundary source.
+**Progress:** added a separate ADM1 statistics contract/index/runtime joined by stable subdivision ID. Enrichment clones canonical features, allows only population/area/density metrics with source/period/reference metadata, preserves geometry provenance, and explicitly labels enriched area as not calculated from display geometry. Regression coverage proves canonical input is not mutated.  
+**Progress continued:** a generic reviewed-export importer now accepts separate population/area tables, requires verified source geography codes in the acquisition contract, hashes both inputs, rejects missing/duplicate/unexpected region rows, preserves source table/code metadata, and fails closed while Denmark's StatBank codes remain unverified.  
+**Remaining:** verify the five StatBank geography codes, capture reviewed BEFOLK3 + ARE207 exports, generate/review the first DNK statistics sidecar, then surface its source/period consistently in the region inspector before closing the item.
 
 ### WM-052 · Shared UI token convergence stops at layering — P3
 **Status:** in progress on branch `world-map-zindex-tokens-current-20260921`.  
@@ -331,6 +332,14 @@
 **Failure:** Garden could change Axis depth but fail to activate the intended project-field view; operator state reported field/network as `n/a`.  
 **Resolution:** symbolic operators now read active `axis.*` and `group.*` state from the canonical Layer Registry; Garden activates the four current Axis lenses through the registry API.  
 **Guard:** retirement regressions require symbolic operators to contain no references to retired control IDs.
+
+
+### WM-055 · Region inspector can overwrite sourced density semantics with a derived value — P2
+**Status:** fixed on branch `world-map-subdivision-statistics-current-20260921`, pending exact-head CI.  
+**Cause:** the generic region inspector always computed density as population ÷ area, even when the new statistics enrichment contract carried an explicit sourced `density_per_km2`. Enriched area also appeared only as “stored source area,” obscuring its separate statistics provenance.  
+**Failure:** a future reviewed source density could be visually replaced by a derived number, and readers could not cleanly distinguish statistical area provenance from boundary provenance.  
+**Resolution:** explicit sourced density now wins; derived density is labeled `Derived · population ÷ area`; enriched area exposes source/period; and a separate Statistics provenance card lists population/area/density source metadata without mutating the Boundary & provenance card.  
+**Guard:** subdivision-statistics validation requires the sourced-density branch, derived label and statistics-provenance renderer.
 
 
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2

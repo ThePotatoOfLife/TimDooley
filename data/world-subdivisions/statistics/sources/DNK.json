@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0.0",
+  "status": "source-verified-query-pending",
+  "reviewed_on": "2026-09-21",
+  "parent_iso3": "DNK",
+  "source_owner": "Statistics Denmark / StatBank Denmark",
+  "reference_period": "2026-01-01",
+  "metrics": {
+    "population": {
+      "table": "BEFOLK3",
+      "title": "Population 1 January by region, sex and age",
+      "unit": "persons",
+      "selection": {
+        "sex": "Total",
+        "age": "Age total",
+        "year": "2026"
+      },
+      "source_url": "https://www.statbank.dk/BEFOLK3"
+    },
+    "area_km2": {
+      "table": "ARE207",
+      "title": "Area 1 January by region",
+      "unit": "km2",
+      "selection": {
+        "year": "2026"
+      },
+      "source_url": "https://www.statbank.dk/ARE207"
+    }
+  },
+  "subdivision_mapping": [
+    {
+      "subdivision_id": "DK-1084",
+      "name": "Region Hovedstaden"
+    },
+    {
+      "subdivision_id": "DK-1085",
+      "name": "Region Sjælland"
+    },
+    {
+      "subdivision_id": "DK-1083",
+      "name": "Region Syddanmark"
+    },
+    {
+      "subdivision_id": "DK-1082",
+      "name": "Region Midtjylland"
+    },
+    {
+      "subdivision_id": "DK-1081",
+      "name": "Region Nordjylland"
+    }
+  ],
+  "acquisition_requirements": [
+    "Use Statistics Denmark / StatBank output for the five region rows only.",
+    "Verify the StatBank area code for each region against the canonical subdivision ID before promotion.",
+    "Capture retrieval timestamp and exact query/export representation.",
+    "Do not use population projections in place of observed BEFOLK3 population.",
+    "Do not calculate area from simplified display geometry; use ARE207.",
+    "If population density is shown, derive it from the sourced BEFOLK3 population and ARE207 area and label it derived."
+  ],
+  "importer": {
+    "script": "scripts/import_world_subdivision_statistics.py",
+    "status": "blocked-until-statbank-area-codes-verified",
+    "required_join_fields": [
+      "subdivision_id",
+      "name",
+      "statbank_area_code"
+    ],
+    "output_status": "review-required-generated-statistics",
+    "rule": "A real sidecar may not be generated from name-only matching; verified StatBank geography codes are required."
+  }
+}

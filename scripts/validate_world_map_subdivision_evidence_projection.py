@@ -22,7 +22,7 @@ def main()->int:
     adl=ADL.read_text(encoding="utf-8",errors="replace")
     for token in (
         "registerEvidenceProvider","evidenceSummaries(id)","subdivisionEvidenceHtml","data-subdivision-evidence-provider",
-        "populationDensity(p)","data-subdivision-places","hydrateSubdivisionPlaces(feature)","inSubdivision",
+        "subdivisionDensityView(p)","statistics_provenance?.density_per_km2","data-subdivision-places","hydrateSubdivisionPlaces(feature)","inSubdivision",
         "Evidence & project context","subdivisionContextActions","data-subdivision-context",
         "Show ADL evidence","Show Mud / Below project cases",
     ):

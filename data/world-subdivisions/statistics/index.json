@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "updated": "2026-09-21",
+  "id": "world-subdivision-statistics",
+  "purpose": "Optional sourced statistics joined to canonical ADM1 IDs independently from boundary geometry.",
+  "rules": [
+    "Geometry and statistics keep separate provenance owners.",
+    "Missing statistics remain missing; no value is inferred from geometry or neighboring regions.",
+    "Each metric declares source, reference period and unit.",
+    "Population zero is not used as a missing-data sentinel.",
+    "Area supplied by a statistics source must not be described as measured from simplified display geometry unless that source explicitly says so."
+  ],
+  "datasets": {}
+}
