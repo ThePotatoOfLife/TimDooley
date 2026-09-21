@@ -196,10 +196,22 @@ async function activateSubdivisionContext(kind, feature) {
 }
 
 function populationDensity(properties = {}) {
+  const explicit = Number(properties?.statistics_provenance?.density_per_km2?.value);
+  if (Number.isFinite(explicit) && explicit >= 0) return explicit;
   const population = Number(properties?.population?.value);
   const area = Number(properties?.area_km2);
   if (!Number.isFinite(population) || population <= 0 || !Number.isFinite(area) || area <= 0) return null;
   return population / area;
+}
+function subdivisionDensityView(properties = {}) {
+  const value = populationDensity(properties);
+  const explicit = properties?.statistics_provenance?.density_per_km2 || null;
+  if (value == null) return { known:false, value:'Unknown', detail:'requires population + area or sourced density' };
+  if (explicit) {
+    const source=[explicit.source, explicit.period].filter(Boolean).join(' · ');
+    return { known:true, value:`${fmt(value)} / km²`, detail:source ? `Sourced · ${source}` : 'Sourced density' };
+  }
+  return { known:true, value:`${fmt(value)} / km²`, detail:'Derived · population ÷ area' };
 }
 function placePopulationLabel(feature) {
   const value = Number(feature?.properties?.population);
@@ -218,7 +230,23 @@ function subdivisionPopulationView(properties = {}) {
 }
 function subdivisionAreaView(properties = {}) {
   const value = Number(properties.area_km2);
-  return Number.isFinite(value) && value > 0 ? { known:true, value:`${fmt(value)} km²` } : { known:false, value:'Unknown' };
+  if (!Number.isFinite(value) || value <= 0) return { known:false, value:'Unknown', detail:'not supplied in this partition' };
+  const stats = properties?.statistics_provenance?.area_km2 || null;
+  const source = stats?.source || properties.area_source || '';
+  const period = stats?.period || '';
+  const detail = [source, period].filter(Boolean).join(' · ') || properties.area_definition || 'stored source area';
+  return { known:true, value:`${fmt(value)} km²`, detail };
+}
+function subdivisionStatisticsProvenanceHtml(properties = {}) {
+  const provenance = properties.statistics_provenance || {};
+  const rows = [];
+  for (const [metric, label] of [['population','Population'],['area_km2','Area'],['density_per_km2','Density']]) {
+    const row = provenance[metric];
+    if (!row) continue;
+    const detail = [row.source, row.period, row.source_ref].filter(Boolean).join(' · ');
+    rows.push(`<div><span>${label}</span><b>${esc(detail || row.status || 'Sourced')}</b></div>`);
+  }
+  return rows.length ? `<div class="card subdivision-statistics-provenance"><div class="eyebrow">Statistics provenance</div>${rows.join('')}</div>` : '';
 }
 function subdivisionProvenanceHtml(properties = {}) {
   const rows = [];
@@ -285,7 +313,7 @@ function renderInspector(feature) {
   const p = feature.properties || {};
   const population = subdivisionPopulationView(p);
   const area = subdivisionAreaView(p);
-  const density = populationDensity(p);
+  const density = subdivisionDensityView(p);
   const code = countryCode(p);
   const representationNote = String(p.representation_note || '').trim();
   panel.innerHTML = `
@@ -294,11 +322,12 @@ function renderInspector(feature) {
     <p class="muted">${esc(p.subdivision_type || 'Subdivision')} · ${esc(p.code || p.id || '')} · ${esc(p.country_name || p.parent_name || code)}</p>
     <div class="stat-grid">
       <div><span>Population</span><b>${esc(population.value)}</b><small>${esc(population.period)}</small></div>
-      <div><span>Area</span><b>${esc(area.value)}</b><small>${area.known ? 'stored source area' : 'not supplied in this partition'}</small></div>
-      <div><span>Density</span><b>${density == null ? 'Unknown' : `${fmt(density)} / km²`}</b><small>${density == null ? 'requires population + area' : 'population ÷ area'}</small></div>
+      <div><span>Area</span><b>${esc(area.value)}</b><small>${esc(area.detail)}</small></div>
+      <div><span>Density</span><b>${esc(density.value)}</b><small>${esc(density.detail)}</small></div>
       <div><span>Region type</span><b>${esc(p.subdivision_type || 'Subdivision')}</b><small>${esc(p.code || p.id || '')}</small></div>
     </div>
     ${population.source ? `<p class="muted">Population source: ${esc(population.source)}</p>` : `<p class="muted">Population is unknown in this geometry-first partition; unknown is not zero.</p>`}
+    ${subdivisionStatisticsProvenanceHtml(p)}
     ${subdivisionProvenanceHtml(p)}
     ${representationNote ? `<div class="boundary"><b>Representation note.</b> ${esc(representationNote)}</div>` : ''}
     <h2>Cities and places</h2>
