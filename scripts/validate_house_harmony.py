@@ -18,7 +18,9 @@ def main():
     holdings=load("data/house/holdings.json").get("holdings",[])
     dossiers=load("data/house/room-dossiers.json").get("dossiers",[])
     inhabitants=load("data/house/room-inhabitants.json").get("inhabitants",[])
-    surfaces=load("data/house/public-surfaces.json").get("surfaces",[])
+    public_surface_payload=load("data/house/public-surfaces.json")
+    surfaces=public_surface_payload.get("surfaces",[])
+    parent_semantics=public_surface_payload.get("parent_semantics",{})
     health=load("data/house/spatial-house-health.json")
 
     room_ids={x.get("id") for x in rooms if isinstance(x,dict)}
@@ -113,6 +115,22 @@ def main():
         for rid in s.get("primary_room_ids",[]):
             if rid not in room_ids:
                 errors.append(f"surface {s.get('id')} references unknown Dwelling {rid}")
+
+    used_parents={s.get("primary_parent") for s in surfaces if isinstance(s,dict) and s.get("primary_parent")}
+    for parent in sorted(used_parents):
+        rule=parent_semantics.get(parent)
+        if not isinstance(rule,dict):
+            errors.append(f"public parent {parent} has no documented parent_semantics rule")
+            continue
+        if not str(rule.get("meaning") or "").strip() or not str(rule.get("child_rule") or "").strip():
+            errors.append(f"public parent {parent} has incomplete parent_semantics documentation")
+        declared=set(rule.get("allowed_child_ids") or [])
+        actual={s.get("id") for s in surfaces if isinstance(s,dict) and s.get("primary_parent")==parent}
+        if declared!=actual:
+            errors.append(f"public parent {parent} child contract drift: declared={sorted(declared)} actual={sorted(actual)}")
+    unused=set(parent_semantics)-used_parents
+    if unused:
+        errors.append(f"unused public parent semantics entries: {sorted(unused)}")
 
     counts=health.get("counts",{})
     if counts.get("dwellings")!=len(room_ids):
