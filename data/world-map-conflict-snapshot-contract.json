@@ -2,7 +2,7 @@
   "id": "world-map-conflict-snapshot-contract",
   "version": "1.0.0",
   "updated": "2026-09-20",
-  "status": "active-schema-dormant-data",
+  "status": "active-schema-acquisition-ready",
   "purpose": "Govern delayed, dated, source-attributed conflict-context geometry without replacing administrative geography or implying live tactical awareness.",
   "owner": "data/world-map-spatial-overlays.json:conflict.context",
   "separation_rules": [
@@ -71,6 +71,10 @@
   },
   "empty_state": {
     "status": "planned",
-    "message": "No reviewed conflict snapshot geometry is committed yet."
-  }
+    "message": "No reviewed conflict snapshot geometry is committed yet; a guarded historical event-aggregate acquisition path is available."
+  },
+  "source_contract_directory": "data/world-map-conflict-sources",
+  "importers": [
+    "scripts/import_world_conflict_event_aggregate.py"
+  ]
 }
