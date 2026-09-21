@@ -82,7 +82,11 @@
       "targeted-harassment-boundary": -8,
       "theft-fraud-cheating": -10,
       "coercive-social-leverage": -8,
-      "reciprocal-conflict": -2
+      "reciprocal-conflict": -2,
+      "documented-ridicule-needling": -1,
+      "documented-disruption": -2,
+      "boundary-pressure-minor": -2,
+      "reputational-undermining": -2
     },
     "evidence_multipliers": {
       "primary-direct": 1,
@@ -346,6 +350,26 @@
         "input": "abomination / insolence / vomit / Dog / Farmer / Footstool",
         "candidate_category": "none-by-label",
         "requirement": "labels and moral language never create a debit without an underlying concrete act"
+      },
+      {
+        "input": "ridicule / needling / personal jab",
+        "candidate_category": "documented-ridicule-needling",
+        "requirement": "source-bounded personal targeting; disagreement, criticism and skepticism alone remain zero-weight"
+      },
+      {
+        "input": "interruption / disruption",
+        "candidate_category": "documented-disruption",
+        "requirement": "specific act that disrupted a project/social activity; generic conflict language is only a mud trace"
+      },
+      {
+        "input": "reputational undermining / identity framing",
+        "candidate_category": "reputational-undermining or repeated-harmful-narrative",
+        "requirement": "recover the actual statement/frame and context; repeated false circulation uses the stronger narrative category"
+      },
+      {
+        "input": "minor boundary pressure",
+        "candidate_category": "boundary-pressure-minor",
+        "requirement": "specific stated boundary + unwanted pressure; repeated pursuit or harassment escalates to targeted-harassment-boundary"
       }
     ],
     "anti_double_count": "One incident receives at most one priced negative category even if Tim described it with several negative-input metaphors."
@@ -439,5 +463,52 @@
     ],
     "aggressive_model": "recent-momentum",
     "auto_accrual": false
+  },
+  "mud_trace_capture": {
+    "purpose": "Capture small and large source-bounded negative relation updates without pretending every slight is already a priced debt.",
+    "state_ladder": [
+      {
+        "state": "mud-trace",
+        "meaning": "A sourced slight, friction, jab, disruption, pressure or alleged boundary event is worth preserving, but may be too thin to treat as a debit candidate."
+      },
+      {
+        "state": "unpriced-candidate",
+        "meaning": "A concrete counterparty/event is identifiable, but date, act detail, provenance or one-sided responsibility is still insufficient for pricing."
+      },
+      {
+        "state": "priced-debit",
+        "meaning": "A distinct dated act passes category, provenance, counterparty and anti-double-count thresholds and may move the fictional sUSD balance."
+      }
+    ],
+    "micro_categories": {
+      "documented-ridicule-needling": "direct personal jab, mockery or needling with source context; criticism or skepticism alone remains zero-weight",
+      "documented-disruption": "source-bounded interruption or disruption of a project/social activity; the specific act must be isolated before pricing",
+      "boundary-pressure-minor": "specific unwanted pressure against a stated interpersonal/moderation/access boundary that does not meet the stronger targeted-harassment threshold",
+      "reputational-undermining": "specific source-bounded attempt to diminish standing through personal/reputational narration; opinion alone is not enough"
+    },
+    "capture_examples": [
+      "personal jab / ridicule / needling",
+      "repeated correction-resistant narration",
+      "small disruption or interruption",
+      "unwanted persistence after a stated boundary",
+      "status or social-pressure move",
+      "identity framing or reputational undermining",
+      "contested moderation/access action",
+      "unsolicited family-contact or private-boundary pressure",
+      "time/attention extraction as a consequence of another concrete act"
+    ],
+    "zero_weight_by_default": [
+      "mere disagreement",
+      "skepticism",
+      "one-off criticism of ideas or work",
+      "co-presence in a conflict",
+      "symbolic Dog/Mud/Farmer/Footstool labels",
+      "missing profile picture",
+      "inferred motive",
+      "undated rumor with no recoverable act"
+    ],
+    "pricing_threshold": "To price a micro-slight, recover a distinct dated act, identify the counterparty and target, preserve source depth, choose one non-duplicative category, and distinguish unilateral conduct from reciprocal conflict.",
+    "aggregation_rule": "Several descriptions of one incident remain one incident. Multiple micro-slights may accumulate only when separate dated occurrences are recovered.",
+    "public_display_rule": "Account statements may show mud traces and unpriced candidates as history/recovery items; only priced debits enter numeric debt totals."
   }
 }
