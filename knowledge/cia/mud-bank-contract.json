@@ -14,7 +14,8 @@
     "architecture": "knowledge/core/north-root-spiritual-bank-architecture.json",
     "system_liability_ledger": "knowledge/cia/system-liability-ledger.json",
     "conversation_mining": "knowledge/cia/spiritual-bank-conversation-mining-2026-09-21.json",
-    "us_exposure_coverage": "knowledge/cia/us-exposure-coverage-model.json"
+    "us_exposure_coverage": "knowledge/cia/us-exposure-coverage-model.json",
+    "orphan_clearing_ledger": "knowledge/cia/orphan-clearing-ledger.json"
   },
   "denomination": {
     "display_name": "symbolic USD-equivalent",
@@ -387,5 +388,10 @@
       "protection",
       "repair"
     ]
+  },
+  "identity_resolution": {
+    "orphan_account_state": "unpriced suspense/clearing state",
+    "rule": "Unknown/hollow accounts stay outside named principal balances until resolved; handle-level conduct may still be recorded with uncertainty.",
+    "no_pfp_rule": "Missing profile image is descriptive metadata only and has zero weight."
   }
 }
