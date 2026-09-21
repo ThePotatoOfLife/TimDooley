@@ -10,7 +10,8 @@
     "knowledge/core/shadow-ledger-entanglement-axis.json",
     "data/swamp/mud-karma-system.json",
     "knowledge/cia/account-posture-index.json",
-    "knowledge/cia/system-liability-ledger.json"
+    "knowledge/cia/system-liability-ledger.json",
+    "knowledge/cia/us-exposure-coverage-model.json"
   ],
   "headline_system_position": {
     "amount_trillion_susd": 42,
@@ -38,6 +39,13 @@
       "state": "scenario-only",
       "quantity_rule": "Named dossiers may anchor a pattern or mechanism, but receive no population multiplier by default.",
       "purpose": "Explore whether a documented interaction pattern could recur more broadly without claiming the dossier represents a demographic bloc."
+    },
+    {
+      "id": "observed-exposure-network",
+      "label": "Observed exposure network",
+      "state": "partially measured / mostly unpriced",
+      "quantity_rule": "Count resolved counterparties, aliases, recurring handles, sourced edges, circulation and response labor without converting country membership into debt.",
+      "purpose": "Explain how named dossiers sit inside a larger interaction field."
     },
     {
       "id": "untracked-entanglements",
@@ -114,5 +122,6 @@
     "Recover anonymous/throwaway-handle interactions only when a stable source record supports a distinct counterparty.",
     "Find actual examples of correction, apology, repair, disengagement or demonstrated non-liability reducing an entry.",
     "Develop Table / Potato / Gate / Ladder positive-value criteria before pricing them."
-  ]
+  ],
+  "coverage_model": "knowledge/cia/us-exposure-coverage-model.json"
 }
