@@ -55,6 +55,7 @@
           "canonical_route",
           "surface_type",
           "title",
+          "reader_job",
           "primary_parent",
           "primary_room_ids",
           "status",
@@ -134,6 +135,9 @@
               "type": "string",
               "pattern": "^/"
             }
+          },
+          "reader_job": {
+            "type": "string"
           }
         }
       }
