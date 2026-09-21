@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "status": "source-verified-download-pending",
+  "reviewed_on": "2026-09-21",
+  "iso3": "DEU",
+  "parent_name": "Germany",
+  "admin_level": 1,
+  "expected_feature_count": 16,
+  "canonical_id_prefix": "DE-",
+  "source": {
+    "owner": "Bundesamt für Kartographie und Geodäsie (BKG)",
+    "product": "Verwaltungsgebiete 1:250 000 (VG250), Stand 01.01.",
+    "product_url": "https://gdz.bkg.bund.de/index.php/default/open-data/verwaltungsgebiete-1-250-000-stand-01-01-vg250-01-01.html",
+    "service_url": "https://sgx.geodatenzentrum.de/wfs_vg250",
+    "service_type": "WFS 2.0.0",
+    "layer": "vg250:vg250_lan",
+    "geometry_scale": "1:250000",
+    "source_vintage": "2026-01-01",
+    "source_update_note": "BKG product page lists the 01.01.2026 data update published 2026-07-29.",
+    "license": "Datenlizenz Deutschland – Namensnennung – Version 2.0",
+    "license_id": "dl-de/by-2-0",
+    "attribution": "© BKG (2026) dl-de/by-2-0",
+    "attribution_url": "https://www.bkg.bund.de",
+    "license_url": "https://www.govdata.de/dl-de/by-2-0"
+  },
+  "acquisition": {
+    "runtime_fetch_allowed": false,
+    "retrieval_mode": "reviewed-build-time-only",
+    "expected_format": "GeoJSON FeatureCollection or reviewed conversion from BKG WFS/GeoPackage",
+    "wfs_request": {
+      "service": "WFS",
+      "version": "2.0.0",
+      "request": "GetFeature",
+      "type_names": "vg250:vg250_lan",
+      "srs_name": "EPSG:4326"
+    }
+  },
+  "field_mapping": {
+    "name_field": "GEN",
+    "code_field": "SN_L",
+    "default_type": "Land",
+    "optional_type_field": "BEZ"
+  },
+  "viewport_bounds": {
+    "west": 5.8,
+    "east": 15.1,
+    "south": 47.2,
+    "north": 55.1
+  },
+  "importer": {
+    "script": "scripts/import_world_adm1.py",
+    "max_bytes": 1500000,
+    "expected_count": 16,
+    "source_label": "BKG Verwaltungsgebiete 1:250 000 (VG250)",
+    "source_ref": "BKG VG250 01.01.2026 / vg250:vg250_lan",
+    "source_vintage": "2026-01-01",
+    "representation_note": "Administrative reference geometry for Germany's 16 Länder. This is not a political, electoral, conflict-control or live operational layer."
+  },
+  "promotion_requirements": [
+    "Acquire the official BKG layer or a byte-identifiable reviewed export.",
+    "Record the acquired source SHA-256.",
+    "Run scripts/import_world_adm1.py with this contract's field mapping and expected count.",
+    "Review the generated DEU.geo.json and DEU.partition.json sidecar.",
+    "Confirm generated partition stays within the 1.5 MB partition budget.",
+    "Build a bounded DEU Places partition before promoting DEU into data/world-subdivisions/index.json.",
+    "Preserve the required BKG and dl-de/by-2-0 attribution on reader-facing provenance surfaces."
+  ]
+}
