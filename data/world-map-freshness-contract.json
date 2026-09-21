@@ -1,0 +1,55 @@
+{
+  "id": "world-map-freshness-contract",
+  "version": "1.0.0",
+  "updated": "2026-09-21",
+  "purpose": "Shared reader-facing vocabulary for empirical dataset freshness. Freshness describes the temporal status of observations, not provider/network availability.",
+  "statuses": {
+    "current": {
+      "label": "Current",
+      "meaning": "Dataset owner explicitly represents the observation as current for its declared scope."
+    },
+    "latest-available": {
+      "label": "Latest available",
+      "meaning": "Most recent observation available from the source, without claiming it represents current conditions."
+    },
+    "delayed": {
+      "label": "Delayed",
+      "meaning": "Observation is intentionally published or consumed with a known delay."
+    },
+    "historical": {
+      "label": "Historical",
+      "meaning": "Snapshot is historical and must not be presented as current coverage."
+    },
+    "stale": {
+      "label": "Stale",
+      "meaning": "Dataset is outside a cadence or freshness boundary explicitly declared by its source contract."
+    },
+    "unknown-vintage": {
+      "label": "Unknown vintage",
+      "meaning": "Exact upstream observation/refresh vintage is not known."
+    },
+    "planned": {
+      "label": "Planned",
+      "meaning": "No active dataset is currently available on this surface."
+    }
+  },
+  "rules": [
+    "Do not infer current/stale from age alone unless the dataset contract declares a cadence or freshness boundary.",
+    "A build/retrieval date is not automatically an observation date.",
+    "Provider loading/error/degraded state is availability, not freshness.",
+    "Unknown upstream vintage must remain unknown even when the local build date is known.",
+    "Historical and delayed datasets may remain useful when their temporal boundary is visible."
+  ],
+  "explicit_aliases": {
+    "historical-snapshot": "historical",
+    "historical-seed": "historical",
+    "current-snapshot": "current",
+    "latest_available": "latest-available",
+    "latest-available": "latest-available",
+    "delayed-snapshot": "delayed",
+    "stale-snapshot": "stale",
+    "unknown": "unknown-vintage",
+    "unknown-vintage": "unknown-vintage",
+    "planned": "planned"
+  }
+}
