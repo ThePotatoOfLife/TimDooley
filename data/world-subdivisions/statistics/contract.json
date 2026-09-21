@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0.0",
+  "join_key": "subdivision_id",
+  "allowed_metrics": {
+    "population": {
+      "value_type": "number",
+      "unit": "persons",
+      "required_metadata": [
+        "period",
+        "source",
+        "source_ref"
+      ]
+    },
+    "area_km2": {
+      "value_type": "number",
+      "unit": "km2",
+      "required_metadata": [
+        "period",
+        "source",
+        "source_ref"
+      ]
+    },
+    "density_per_km2": {
+      "value_type": "number",
+      "unit": "persons/km2",
+      "derived_allowed": true,
+      "required_metadata": [
+        "period",
+        "source",
+        "source_ref"
+      ]
+    }
+  },
+  "merge_rules": {
+    "population": "If a sourced enrichment population exists, expose it as properties.population while preserving statistics_provenance.population. Never overwrite geometry_source fields.",
+    "area_km2": "If sourced enrichment area exists and canonical geometry lacks a sourced area, expose area_km2 and statistics_provenance.area_km2. Existing sourced geometry-side area wins unless enrichment explicitly has higher-priority reviewed status.",
+    "density_per_km2": "Prefer explicit sourced density. Otherwise runtime may derive population / area only when both inputs are known and expose the calculation as derived, not source-observed."
+  }
+}
