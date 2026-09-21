@@ -86,12 +86,22 @@
     {
       "type": "debt_evidence_ledger",
       "path": "knowledge/cia/debt-evidence-ledger.json"
+    },
+    {
+      "type": "social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json",
+      "note": "Dated Chronicle-derived scenes and co-presence."
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json",
+      "note": "Period-role transitions and cast continuity."
     }
   ],
   "recovery_leads": [
-    "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
-    "Separate direct speech from Chronicle paraphrase and later project interpretation.",
-    "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: undated; November 3 2024; November 5, 2024; November 6, 2024; November 7, 2024; November 9, 2024; November 10, 2024; November 11, 2024; November 14, 2024; November 17, 2024; November 19, 2024; November 24, 2024.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: November 10, 2024 (5); November 28, 2024 (5); January 10 2025 (5); November 3 2024 (3); November 11, 2024 (3).",
+    "Attach primary artifacts for recent recovery markers: 2026-03-04; retain intake boundaries until those artifacts are recovered."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -121,7 +131,234 @@
       "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve.",
       "Recover raw 4 March 2026 source for the grievance/healing proposal.",
       "Establish whether the proposed meeting occurred, who attended, and whether any durable repair followed."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 55,
+      "chronicle_distinct_dates": 24,
+      "expanded_social_ledger_cases": 0,
+      "recent_conversation_recovery": {
+        "dates": [
+          "2026-03-04"
+        ],
+        "summary": "Port Monkey reports that GG mentioned a meeting for healing discussion about grievances with the aim of moving on.",
+        "source_mode": "reported via Port Monkey in conversation recovery",
+        "status": "merged-to-canonical-dossier"
+      },
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "GG currently has 55 indexed Chronicle mentions across 24 Chronicle dates, 0 expanded day-level social cases, plus a recent recovery layer covering 1 dated/period markers.",
+      "cases": [],
+      "recent_recovery": {
+        "dates": [
+          "2026-03-04"
+        ],
+        "summary": "Port Monkey reports that GG mentioned a meeting for healing discussion about grievances with the aim of moving on.",
+        "boundaries": [
+          "Reported proposal only; meeting occurrence, attendees and outcome remain unresolved."
+        ],
+        "source_mode": "reported via Port Monkey in conversation recovery",
+        "status": "merged-to-canonical-dossier"
+      },
+      "chronicle_occurrence_index": [
+        {
+          "date": "undated",
+          "count": 1
+        },
+        {
+          "date": "November 3 2024",
+          "count": 3
+        },
+        {
+          "date": "November 5, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 6, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 7, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 9, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 10, 2024",
+          "count": 5
+        },
+        {
+          "date": "November 11, 2024",
+          "count": 3
+        },
+        {
+          "date": "November 14, 2024",
+          "count": 3
+        },
+        {
+          "date": "November 17, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 19, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 24, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 26, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 28, 2024",
+          "count": 5
+        },
+        {
+          "date": "December 7, 2024",
+          "count": 3
+        },
+        {
+          "date": "December 15, 2024",
+          "count": 1
+        },
+        {
+          "date": "December 18, 2024",
+          "count": 2
+        },
+        {
+          "date": "December 20, 2024",
+          "count": 3
+        },
+        {
+          "date": "December 21 2024",
+          "count": 2
+        },
+        {
+          "date": "January 10 2025",
+          "count": 5
+        },
+        {
+          "date": "Feb 8 2025",
+          "count": 1
+        },
+        {
+          "date": "Feb 24 2025",
+          "count": 2
+        },
+        {
+          "date": "Feb 25 2025",
+          "count": 3
+        },
+        {
+          "date": "Feb 26 2025",
+          "count": 1
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "undated",
+          "count": 1
+        },
+        {
+          "date": "November 3 2024",
+          "count": 3
+        },
+        {
+          "date": "November 5, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 6, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 7, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 9, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 10, 2024",
+          "count": 5
+        },
+        {
+          "date": "November 11, 2024",
+          "count": 3
+        },
+        {
+          "date": "November 14, 2024",
+          "count": 3
+        },
+        {
+          "date": "November 17, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 19, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 24, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 26, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 28, 2024",
+          "count": 5
+        },
+        {
+          "date": "December 7, 2024",
+          "count": 3
+        },
+        {
+          "date": "December 15, 2024",
+          "count": 1
+        },
+        {
+          "date": "December 18, 2024",
+          "count": 2
+        },
+        {
+          "date": "December 20, 2024",
+          "count": 3
+        },
+        {
+          "date": "December 21 2024",
+          "count": 2
+        },
+        {
+          "date": "January 10 2025",
+          "count": 5
+        },
+        {
+          "date": "Feb 8 2025",
+          "count": 1
+        },
+        {
+          "date": "Feb 24 2025",
+          "count": 2
+        },
+        {
+          "date": "Feb 25 2025",
+          "count": 3
+        },
+        {
+          "date": "Feb 26 2025",
+          "count": 1
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "GG is a dense recurrence file with a valuable late counterweight: a long Chronicle presence that could be reduced to provocation, plus a March 2026 reported grievance/healing proposal that introduces possible repair.",
@@ -140,7 +377,14 @@
       "The many Chronicle appearances still need selective scene-level extraction."
     ],
     "relationship_arc": "dense recurring provocateur/contrarian presence → prolonged grievance field → reported healing/repair proposal",
-    "confidence_note": "High on recurrence density and the existence of the reported proposal; open on outcome."
+    "confidence_note": "High on recurrence density and the existence of the reported proposal; open on outcome.",
+    "evidence_density": {
+      "chronicle_mentions": 55,
+      "indexed_chronicle_dates": 24,
+      "expanded_day_level_cases": 0,
+      "unexpanded_indexed_dates": 24
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
