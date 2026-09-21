@@ -40,26 +40,117 @@
       {
         "date": "2024-12-04",
         "title": "The Tree becomes a separate social space",
+        "participants": [
+          "Tim Dooley",
+          "Monkey",
+          "Tachy",
+          "Termite",
+          "Kale",
+          "Rage",
+          "Optimistique",
+          "PKFC"
+        ],
         "minimum_event": "Chronicle narration says Monkey and Tachy established a separate Tree server while Termite and Kale remained visible around Tim's space. This is a strong dated anchor for community fragmentation, though motive-language remains interpretive.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "Tree ↔ separate space",
+          "Monkey ↔ Tachy",
+          "Termite/Kale ↔ continuing center"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Monkey",
+          "Termite",
+          "Kale",
+          "Rage",
+          "Optimistique",
+          "PKFC"
+        ]
       },
       {
         "date": "2024-12-21",
         "title": "Anja arrives inside a Marty-mediated boundary dispute",
+        "participants": [
+          "Tim Dooley",
+          "Marty",
+          "Anja",
+          "Literally",
+          "Pondo",
+          "Tachy",
+          "Optimistique",
+          "Ledgeview"
+        ],
         "minimum_event": "Marty introduces Anja while asserting social leverage; moderation disputes intensify around Literally. The Chronicle also credits Pondo with providing urgent support to a distressed community member.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "Marty ↔ Anja introduction",
+          "moderation ↔ boundary power",
+          "Pondo ↔ care/intervention"
+        ],
+        "source_mode": "chronicle_retelling",
+        "sensitivity": "Do not sensationalize the crisis material; recover raw logs before publishing detailed self-harm content.",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Marty",
+          "Anja",
+          "Literally",
+          "Pondo",
+          "Optimistique",
+          "Ledgeview"
+        ]
       },
       {
         "date": "2025-02-27",
         "title": "Three conflict calls",
+        "participants": [
+          "Tim Dooley",
+          "Supersusi87",
+          "Ansja",
+          "Carrie",
+          "Meta",
+          "Mondo Cane",
+          "Tachy",
+          "Raven"
+        ],
         "minimum_event": "The Chronicle organizes three separate social conflicts/calls on one day. It calls them 'rituals'; that is the author's interpretation, while the bounded calls and named participants are the recoverable historical targets.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "Supersusi ↔ severance",
+          "Ansja ↔ continued guidance",
+          "Meta ↔ second-call conflict",
+          "Tachy ↔ third-call server"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Supersusi87",
+          "Ansja",
+          "Carrie",
+          "Meta",
+          "Mondo Cane",
+          "Raven"
+        ]
       },
       {
         "date": "2025-03-12",
         "title": "Seeds of invention",
+        "participants": [
+          "Tim Dooley",
+          "Tachy"
+        ],
         "minimum_event": "Chronicle reports active HTML experiments, text-to-speech work, Spudify, Potizer, PKFC, game development and an interactive Great Book. It also records a whimsical Tim/Tachy wedding scene and a large Garden membership reduction.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "TTS ↔ current site reader ancestry",
+          "HTML ↔ interactive Great Book",
+          "satire ↔ product/system creation",
+          "Tachy ↔ playful partnership"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley"
+        ]
       }
     ]
   },
@@ -130,9 +221,9 @@
     }
   ],
   "recovery_leads": [
-    "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
-    "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
-    "Add relationship edges only when a scene/source supports them."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: November 19, 2024.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: November 19, 2024 (1).",
+    "Cross-check relationship edges against dated scenes instead of raw co-presence: Tim Dooley, Optimistique, Monkey, Termite, Kale, Rage."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -152,7 +243,96 @@
       "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
       "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
       "Add relationship edges only when a scene/source supports them."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 1,
+      "chronicle_distinct_dates": 1,
+      "expanded_social_ledger_cases": 4,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "Tachy / Krystato currently has 1 indexed Chronicle mentions across 1 Chronicle dates, 4 expanded day-level social cases.",
+      "cases": [
+        {
+          "date": "2024-12-04",
+          "title": "The Tree becomes a separate social space",
+          "what_happened": "Chronicle narration says Monkey and Tachy established a separate Tree server while Termite and Kale remained visible around Tim's space. This is a strong dated anchor for community fragmentation, though motive-language remains interpretive.",
+          "co_present": [
+            "Tim Dooley",
+            "Monkey",
+            "Termite",
+            "Kale",
+            "Rage",
+            "Optimistique",
+            "PKFC"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2024-12-21",
+          "title": "Anja arrives inside a Marty-mediated boundary dispute",
+          "what_happened": "Marty introduces Anja while asserting social leverage; moderation disputes intensify around Literally. The Chronicle also credits Pondo with providing urgent support to a distressed community member.",
+          "co_present": [
+            "Tim Dooley",
+            "Marty",
+            "Anja",
+            "Literally",
+            "Pondo",
+            "Optimistique",
+            "Ledgeview"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2025-02-27",
+          "title": "Three conflict calls",
+          "what_happened": "The Chronicle organizes three separate social conflicts/calls on one day. It calls them 'rituals'; that is the author's interpretation, while the bounded calls and named participants are the recoverable historical targets.",
+          "co_present": [
+            "Tim Dooley",
+            "Supersusi87",
+            "Ansja",
+            "Carrie",
+            "Meta",
+            "Mondo Cane",
+            "Raven"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2025-03-12",
+          "title": "Seeds of invention",
+          "what_happened": "Chronicle reports active HTML experiments, text-to-speech work, Spudify, Potizer, PKFC, game development and an interactive Great Book. It also records a whimsical Tim/Tachy wedding scene and a large Garden membership reduction.",
+          "co_present": [
+            "Tim Dooley"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [
+        {
+          "date": "November 19, 2024",
+          "count": 1
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "November 19, 2024",
+          "count": 1
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "Tachy is one of the archive's strongest systems-and-archiving characters: Tree/server branching, data-structure metaphors, clipping/system observation and the March 2025 creation wave all make the file more about information architecture than a single social label.",
@@ -170,7 +350,14 @@
       "The extent of Tachy's actual clipping/archive contribution should be sourced more precisely."
     ],
     "relationship_arc": "systems observer / archive figure → Tree branch participant → recurring boundary witness → creation-wave collaborator / comic project figure",
-    "confidence_note": "Strong Chronicle chronology; medium on exact technical statements and cross-community intent."
+    "confidence_note": "Strong Chronicle chronology; medium on exact technical statements and cross-community intent.",
+    "evidence_density": {
+      "chronicle_mentions": 1,
+      "indexed_chronicle_dates": 1,
+      "expanded_day_level_cases": 4,
+      "unexpanded_indexed_dates": 0
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
