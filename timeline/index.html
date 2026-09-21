@@ -10,6 +10,11 @@
 <link rel="stylesheet" href="../app/long-chronology.css">
 <style>
 .page{max-width:1180px;margin:auto;padding:38px 20px 96px}.nav{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:38px}.nav a{color:var(--muted,#9fa79d);text-decoration:none}.nav a:hover{color:#b8dc82}.page>header h1{font-size:clamp(3rem,8vw,6.4rem);line-height:.9;margin:0 0 16px}.summary{max-width:900px;margin:0;color:#cdd3c8;font:400 20px/1.5 Georgia,serif}.boundary{max-width:960px;border-left:2px solid #647b5d;padding-left:14px;color:#adb6a9;font-size:12px;line-height:1.55;margin:18px 0 0}
+.life-entry{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);gap:18px;align-items:start;max-width:960px;margin:28px 0 30px;padding:18px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(255,255,255,.018)}
+.life-entry h2{font:400 clamp(26px,3.8vw,38px)/1.06 Georgia,serif;margin:2px 0 7px}.life-entry p{margin:0;color:#adb6a9;font-size:12px;line-height:1.55}
+.life-entry-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.life-entry-actions a,.life-entry-actions button{appearance:none;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.025);color:#d7ddd1;text-align:left;padding:11px 12px;text-decoration:none;cursor:pointer;font:inherit}
+.life-entry-actions b{display:block;color:#b8dc82;font:400 16px Georgia,serif}.life-entry-actions span{display:block;color:#9fa79d;font-size:10px;line-height:1.4;margin-top:3px}
+@media(max-width:760px){.life-entry,.life-entry-actions{grid-template-columns:1fr}}
 </style>
 </head>
 <body><main class="page" data-reader-surface="timeline">
@@ -22,6 +27,19 @@
 <p class="boundary">Dates do different jobs here. A person's lifetime is not automatically a religion's birthday; a revelation is not automatically an institution; a charter is not the same thing as first operation; a later interpretation does not travel backward and become an earlier fact.</p>
 <p class="boundary">The chronology is also a recovery surface. When a source is retrospective, uncertain or later corrected, the timeline preserves that status instead of forcing a false single date. Recent project history therefore includes ordinary social scenes, software experiments, platform moves, public statements and later symbolic interpretations as separate kinds of record.</p>
 </header>
+
+<section class="life-entry" aria-labelledby="life-entry-title">
+  <div>
+    <p class="eyebrow">A simple way in</p>
+    <h2 id="life-entry-title">If you came for Tim's life</h2>
+    <p>Use the life/project preset for dated events, Story for scenes and lived episodes, and Tim Dooley for the portrait. These are three views of the same development, not competing biographies.</p>
+  </div>
+  <div class="life-entry-actions">
+    <button type="button" data-mode="project"><b>Life & project</b><span>Show the project/life track on this timeline.</span></button>
+    <a href="../tim-dooley/story/"><b>Story</b><span>Read the scenes, people and turning points.</span></a>
+    <a href="../tim-dooley/"><b>Tim Dooley</b><span>Return to the portrait, roles and public record.</span></a>
+  </div>
+</section>
 
 <section class="long-chronology" aria-label="Long chronology explorer">
 <div class="chron-intro">
