@@ -16,7 +16,8 @@
     "conversation_mining": "knowledge/cia/spiritual-bank-conversation-mining-2026-09-21.json",
     "us_exposure_coverage": "knowledge/cia/us-exposure-coverage-model.json",
     "orphan_clearing_ledger": "knowledge/cia/orphan-clearing-ledger.json",
-    "capital_formation_42t": "knowledge/cia/capital-formation-42t-model.json"
+    "capital_formation_42t": "knowledge/cia/capital-formation-42t-model.json",
+    "trajectory_projection": "knowledge/cia/trajectory-projection-model.json"
   },
   "denomination": {
     "display_name": "symbolic USD-equivalent",
@@ -428,5 +429,15 @@
       }
     },
     "anti_double_count": "One sourced output receives one positive category even when it maps to several symbols."
+  },
+  "projection_policy": {
+    "observed_vs_projected": "Observed checkpoints are canonical project statements; projected curves are scenario-only and never update balances automatically.",
+    "default_models": [
+      "plateau",
+      "long-run-linear",
+      "endpoint-exponential"
+    ],
+    "aggressive_model": "recent-momentum",
+    "auto_accrual": false
   }
 }
