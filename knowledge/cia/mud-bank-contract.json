@@ -345,5 +345,34 @@
       }
     ],
     "anti_double_count": "One incident receives at most one priced negative category even if Tim described it with several negative-input metaphors."
-  }
+  },
+  "role_archetype_census": "knowledge/cia/role-archetype-census.json",
+  "account_thresholds": [
+    {
+      "id": "constructive-yielding",
+      "gate": "priced positive/yield/growth events with no priced debit",
+      "meaning": "constructive project ledger posture; not a judgment of human worth"
+    },
+    {
+      "id": "mixed-repair-active",
+      "gate": "both debit/credit, or a sourced repair attempt against an unresolved negative event",
+      "meaning": "relation contains both burden and repair"
+    },
+    {
+      "id": "open-dispute-unpriced",
+      "gate": "one or more source-bounded negative candidates but insufficient evidence for pricing",
+      "meaning": "research/recovery state"
+    },
+    {
+      "id": "debit-supported",
+      "gate": "one or more priced negative conduct events",
+      "meaning": "project-symbolic negative event balance, still not legal debt or objective morality"
+    },
+    {
+      "id": "shadow-unallocated",
+      "gate": "system-scale or unidentified exposure without bounded allocation",
+      "meaning": "held outside person accounts"
+    }
+  ],
+  "role_threshold_rule": "Creature/job/archetype labels never cross an account threshold on their own. Only conduct events, positive yield, repair or evidence state can do so."
 }
