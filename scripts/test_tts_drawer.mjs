@@ -42,8 +42,9 @@ assert.ok(source.includes('function playSection(id)'), 'drawer must expose expli
 assert.ok(source.includes('playSection,'), 'drawer public API must return playSection');
 assert.ok(source.includes("const triggerLabel=clean(options.triggerLabel)||'Listen'"), 'collapsed shared player must default to the Listen label');
 assert.ok(source.includes("'🔊 '+triggerLabel"), 'collapsed shared player must visibly render the active trigger label');
-assert.ok(source.includes("button('Follow reading','🎯')"), 'shared player must expose the bullseye follow-reading toggle');
+assert.ok(source.includes("button('Follow reading','🎯 Follow')"), 'shared player must expose a visibly labeled follow-reading toggle');
 assert.ok(source.includes("writeSettings({followReading})"), 'follow-reading preference must persist in shared TTS settings');
+assert.ok(source.includes('automatic scrolling'), 'follow control must explain that it moves the page');
 assert.ok(!source.includes('scrollIntoView'), 'drawer reading copy must never move the page viewport');
 assert.ok(source.includes("persistedFollow()"), 'page highlighter must read the persisted follow-reading preference');
 assert.ok(source.includes('function mountSelectionAction(options={})'), 'drawer must expose shared read-selection UI');
