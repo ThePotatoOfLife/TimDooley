@@ -41,8 +41,34 @@
       {
         "date": "2024-11-14",
         "title": "The voice-chat crew becomes visible",
+        "participants": [
+          "Tim Dooley",
+          "Sammy",
+          "Marty",
+          "Port Monkey",
+          "Suckerpunch",
+          "Zombie Dad",
+          "Barry Beefslice",
+          "Jazzy",
+          "Optimistique"
+        ],
         "minimum_event": "The Chronicle explicitly places this group together in Discord voice chat and Tanks gameplay. Zombie Dad is named as the former King of POL.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "Zombie Dad ↔ Tim/Marty/Sammy social orbit",
+          "Tanks ↔ recurring bonding ritual"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Sammy",
+          "Marty",
+          "Port Monkey",
+          "Suckerpunch",
+          "Zombie Dad",
+          "Jazzy",
+          "Optimistique"
+        ]
       }
     ]
   },
@@ -97,12 +123,17 @@
     {
       "type": "dated_social_ledger",
       "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json",
+      "note": "Period-role transitions and cast continuity."
     }
   ],
   "recovery_leads": [
-    "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
-    "Separate direct speech from Chronicle paraphrase and later project interpretation.",
-    "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: November 4, 2024; November 9, 2024; November 14, 2024; November 19, 2024.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: November 4, 2024 (4); November 9, 2024 (2); November 14, 2024 (2); November 19, 2024 (2).",
+    "Cross-check the strongest relationship edges against dated scenes rather than raw co-presence counts: Tim Dooley, Sammy, Marty, Port Monkey, Suckerpunch, Zombie Dad."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -122,7 +153,76 @@
       "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
       "Separate direct speech from Chronicle paraphrase and later project interpretation.",
       "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 10,
+      "chronicle_distinct_dates": 4,
+      "expanded_social_ledger_cases": 1,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "Barry Bletunick currently has 10 indexed Chronicle mentions across 4 Chronicle dates, 1 expanded day-level social cases.",
+      "cases": [
+        {
+          "date": "2024-11-14",
+          "title": "The voice-chat crew becomes visible",
+          "what_happened": "The Chronicle explicitly places this group together in Discord voice chat and Tanks gameplay. Zombie Dad is named as the former King of POL.",
+          "co_present": [
+            "Tim Dooley",
+            "Sammy",
+            "Marty",
+            "Port Monkey",
+            "Suckerpunch",
+            "Zombie Dad",
+            "Jazzy",
+            "Optimistique"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [
+        {
+          "date": "November 4, 2024",
+          "count": 4
+        },
+        {
+          "date": "November 9, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 14, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 19, 2024",
+          "count": 2
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "November 4, 2024",
+          "count": 4
+        },
+        {
+          "date": "November 9, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 14, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 19, 2024",
+          "count": 2
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "Barry is an archive-memory file: recurring nostalgia and early-tech recollection give him a distinct witness/historian function that is valuable precisely because it preserves community memory instead of conflict.",
@@ -139,7 +239,14 @@
       "Later presence after 19 November 2024 is not currently established."
     ],
     "relationship_arc": "recurring social participant → memory/nostalgia witness → unofficial historian function",
-    "confidence_note": "Good Chronicle recurrence; thin catalog of the actual remembered stories."
+    "confidence_note": "Good Chronicle recurrence; thin catalog of the actual remembered stories.",
+    "evidence_density": {
+      "chronicle_mentions": 10,
+      "indexed_chronicle_dates": 4,
+      "expanded_day_level_cases": 1,
+      "unexpanded_indexed_dates": 3
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
