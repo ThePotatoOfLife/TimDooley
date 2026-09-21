@@ -10,7 +10,7 @@ ROOT=Path(__file__).resolve().parents[1]
 REGISTRY=ROOT/"data"/"house"/"public-surfaces.json"
 REPORT=ROOT/".quality-logs"/"site-architecture-audit.json"
 STYLE_SCRIPT=re.compile(r"<(?:style|script)\\b[\\s\\S]*?</(?:style|script)>",re.I)
-HREF=re.compile(r'href=[\\"\\']([^\\"\\']+)[\\"\\']',re.I)
+ANCHOR_HREF=re.compile(r'<a\\b[^>]*href=[\\"\\']([^\\"\\']+)[\\"\\']',re.I)
 BUTTON=re.compile(r"<button\\b",re.I); NAV=re.compile(r"<nav\\b",re.I)
 H1=re.compile(r"<h1\\b",re.I); H2=re.compile(r"<h2\\b",re.I)
 EXTERNAL=("http://","https://","//","mailto:","tel:","javascript:","data:","blob:")
@@ -89,7 +89,27 @@ def main()->int:
             if len(b)<5: continue
             union=a|b; score=len(a&b)/len(union) if union else 0.0
             if score>=0.70: overlaps.append({"left":left,"right":right,"jaccard":round(score,3),"shared":sorted(a&b)})
-    report={"version":"1.0.0","registry_version":data.get("version"),"surface_count":len(rows),"errors":errors,"warnings":warnings,"overlap_pairs":overlaps,"metrics":metrics,"notes":["Density budgets are page-type heuristics, not release-failure thresholds.","Registered outdegree counts only links to other registered public surfaces; deep records and anchors remain separate.","Overlap is a review signal for redundant reader jobs, not proof that two surfaces should merge."]}
+    dead_ends=[]
+    for row in rows:
+        sid=row["id"]
+        targets=target_sets.get(sid,set())
+        parent=row.get("primary_parent")
+        if not targets and sid!="home":
+            dead_ends.append({"surface":sid,"route":normalize_route(row.get("canonical_route") or row.get("route") or "/"),"parent":parent})
+            warnings.append({"code":"registered-dead-end","surface":sid,"parent":parent})
+
+    short_cycles=[]
+    seen_cycles=set()
+    for left,a_targets in target_sets.items():
+        for right in a_targets:
+            right_id=route_to_id.get(right)
+            if not right_id or right_id==left: continue
+            if normalize_route(by_id[left].get("canonical_route") or by_id[left].get("route") or "/") in target_sets.get(right_id,set()):
+                key=tuple(sorted((left,right_id)))
+                if key not in seen_cycles:
+                    seen_cycles.add(key)
+                    short_cycles.append({"length":2,"surfaces":list(key)})
+    report={"version":"1.1.0","registry_version":data.get("version"),"surface_count":len(rows),"errors":errors,"warnings":warnings,"overlap_pairs":overlaps,"dead_ends":dead_ends,"short_cycles":short_cycles,"metrics":metrics,"notes":["Density budgets are page-type heuristics, not release-failure thresholds.","Registered outdegree counts only links to other registered public surfaces; deep records and anchors remain separate.","Two-way cycles are review signals: reciprocal orientation may be healthy, repeated hub bouncing may not be.","Overlap is a review signal for redundant reader jobs, not proof that two surfaces should merge."]}
     REPORT.parent.mkdir(parents=True,exist_ok=True); REPORT.write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
     print(f"SITE ARCHITECTURE AUDIT: {len(rows)} active surfaces · {len(errors)} errors · {len(warnings)} warnings · {len(overlaps)} high-overlap pairs")
     for item in warnings[:12]: print(f"- WARN {item['code']}: {item.get('surface',item.get('left','site'))}")
