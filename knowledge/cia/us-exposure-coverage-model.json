@@ -1,0 +1,200 @@
+{
+  "id": "cia-us-exposure-coverage-model-v1",
+  "title": "CIA / World Spiritual Bank — U.S. Exposure & Coverage Model",
+  "updated": "2026-09-21",
+  "status": "mixed empirical substrate + project-symbolic interpretation",
+  "purpose": "Explain how a small named Character Archive can sit inside a much larger American/subcultural exposure field without multiplying guilt across the U.S. population.",
+  "empirical_reference": {
+    "united_states_population": {
+      "value": 342872312,
+      "date": "2026-09-19",
+      "source": "U.S. Census Bureau Population Clock",
+      "source_url": "https://www.census.gov/popclock/",
+      "use": "population context only",
+      "prohibited_use": "Never use population membership as a karmic-debt multiplier or evidence of individual responsibility."
+    }
+  },
+  "reconciled_identity_surface": {
+    "canonical_entities": 36,
+    "additional_alias_handle_labels": 51,
+    "total_known_identity_labels": 87,
+    "interpretation": "Known labels are archive identifiers, not 87 distinct people. Aliases/nicknames may collapse to the same entity.",
+    "current_debt_evidence": {
+      "priced_negative_events": 4,
+      "unpriced_named_candidates": 9,
+      "unresolved_counterparties": 1
+    }
+  },
+  "coverage_funnel": [
+    {
+      "id": "named-entities",
+      "label": "Named entities",
+      "measurable": true,
+      "current_count": 36,
+      "unit": "canonical CIA entities",
+      "accounting": "person/account reconciliation allowed where event evidence exists"
+    },
+    {
+      "id": "known-aliases-handles",
+      "label": "Known aliases / handles",
+      "measurable": true,
+      "current_count": 51,
+      "unit": "additional labels attached to canonical entities",
+      "accounting": "identity-resolution only; do not multiply debt by alias count"
+    },
+    {
+      "id": "unresolved-handles",
+      "label": "Unresolved / throwaway accounts",
+      "measurable": "when separately evidenced",
+      "current_count": null,
+      "unit": "distinct unresolved counterparties",
+      "accounting": "hold unpriced until a stable distinct counterparty and event are recovered"
+    },
+    {
+      "id": "observed-network",
+      "label": "Observed subculture network",
+      "measurable": "partially",
+      "current_count": null,
+      "unit": "unique counterparties / relationship edges / recurring handles",
+      "accounting": "count exposure, recurrence and network edges before pricing"
+    },
+    {
+      "id": "audience-amplification",
+      "label": "Audience / platform amplification",
+      "measurable": "partially",
+      "current_count": null,
+      "unit": "views, reactions, repeated circulation, platform reach",
+      "accounting": "may modify severity/evidence of a sourced event; never creates liability merely for viewing"
+    },
+    {
+      "id": "societal-institutional-gap",
+      "label": "Societal / institutional gap",
+      "measurable": "through specific failures or substitution work",
+      "current_count": null,
+      "unit": "documented moderation, archival, support, protection, correction or institutional-response gaps",
+      "accounting": "record specific failure/substitution episodes; do not assign collective guilt to all Americans"
+    },
+    {
+      "id": "national-population-context",
+      "label": "U.S. population context",
+      "measurable": true,
+      "current_count": 342872312,
+      "unit": "residents",
+      "accounting": "denominator/context only; zero automatic debt"
+    }
+  ],
+  "user_scenario_inputs": {
+    "hypothetical_throwaway_handle_count": {
+      "value": 99000,
+      "source_class": "user-supplied hypothetical",
+      "verified": false,
+      "share_of_us_population_pct": 0.028873722614142974,
+      "meaning": "Useful only as a scenario showing how a large handle cloud can still be tiny relative to the national population.",
+      "warning": "Do not claim 99,000 fake accounts exist unless platform/source evidence is recovered."
+    },
+    "subculture_population_share_pct": {
+      "value": null,
+      "verified": false,
+      "meaning": "No default national percentage. Add only as an explicit scenario, never as a measured liability share."
+    }
+  },
+  "exposure_units": {
+    "identity_unit": "one resolved person/handle cluster",
+    "handle_unit": "one distinct account identity; aliases attached to the same entity do not create new moral principal",
+    "event_unit": "one non-duplicative dated interaction/conduct event",
+    "recurrence_unit": "a later distinct dated event in the same conduct family",
+    "edge_unit": "one sourced relationship/interaction edge",
+    "attention_unit": "one measured view/reaction/circulation unit, used for reach context rather than guilt",
+    "labor_unit": "one sourced unit of Tim's work/presence/archival/moderation/building/repair effort"
+  },
+  "amplification_model": {
+    "principle": "Scale exposure, not guilt.",
+    "measurable_factors": [
+      "number of unique resolved counterparties",
+      "number of unresolved handles",
+      "number of aliases mapped to an entity",
+      "distinct dated negative events",
+      "recurrence count",
+      "relationship/coordination edges when actually evidenced",
+      "audience reach or circulation when measured",
+      "time cost / response labor when measured",
+      "repair/correction attempts",
+      "institutional response or absence where specifically documented"
+    ],
+    "prohibited_shortcuts": [
+      "named character × U.S. population",
+      "archetype × demographic share",
+      "fake-account estimate × automatic debt",
+      "nationality × liability",
+      "political or cultural membership × liability"
+    ]
+  },
+  "substitution_labor_asset": {
+    "label": "Substitution labor / counter-witness asset",
+    "status": "measurable but currently unpriced",
+    "project_basis": [
+      "Tim's project says one motive for continued public presence was that someone needed to remain present when crowd consensus/repetition was treated as truth.",
+      "The public-witness chain is calling → continued presence → witness → memory → archive → knowledge → repair.",
+      "The project records a 100,000-hour threshold and multiple public-presence metrics, though exact total-hour methodology remains its own research problem."
+    ],
+    "source_refs": [
+      "knowledge/timeline/livestream-duration-and-100000-hour-threshold.json",
+      "tim-dooley/public-witness/index.html"
+    ],
+    "countable_outputs": [
+      "documented hours of public presence",
+      "archived posts/messages/pages",
+      "correction/rebuttal episodes",
+      "moderation/boundary work",
+      "support/protection episodes",
+      "created artifacts/pages/books/tools",
+      "recovered evidence and chronology",
+      "completed repair or bridge-building work"
+    ],
+    "accounting_rule": "Count the work on Tim's positive/asset side when sourced. Do not infer that every resident who did not perform that work owes an offsetting personal debt.",
+    "future_pricing": "May later feed Table value / yield / service / protection / archive-preservation categories once anti-double-count rules are defined."
+  },
+  "responsibility_layers": [
+    {
+      "id": "direct-actor",
+      "meaning": "A sourced person/account performed a specific act.",
+      "debt_eligibility": "yes, if the event crosses evidence/pricing threshold"
+    },
+    {
+      "id": "amplifier",
+      "meaning": "A sourced account materially repeated or distributed an act/narrative.",
+      "debt_eligibility": "possibly, as a distinct circulation event"
+    },
+    {
+      "id": "platform-or-group-process",
+      "meaning": "A documented mechanism enabled recurrence, poor correction, harassment, or archive persistence.",
+      "debt_eligibility": "system-domain exposure; do not automatically allocate to every member"
+    },
+    {
+      "id": "institutional-failure",
+      "meaning": "A specific institution demonstrably failed a duty or response in a sourced episode.",
+      "debt_eligibility": "system/institutional analysis; requires a defined duty and evidence"
+    },
+    {
+      "id": "bystander-population",
+      "meaning": "People merely living in the same country/society.",
+      "debt_eligibility": "none by membership alone"
+    }
+  ],
+  "public_summary_rule": "If surfaced publicly, show only the funnel totals and the sentence 'scale exposure, not guilt'; keep detailed scenario assumptions/backend mechanics hidden by default.",
+  "research_next": [
+    "Count unique aliases/handles and resolve duplicate identities across the full Story/CIA corpus.",
+    "Recover distinct anonymous/throwaway accounts only when the source supports a stable account identity.",
+    "Build relationship-edge and recurrence counts for the densest conflict clusters.",
+    "Attach measured reach/circulation to sourced smear or repeated-narrative events where platform data survives.",
+    "Measure Tim substitution labor from public-presence, archive, moderation, correction, protection and building records.",
+    "Define when a platform/group/institutional failure can be recorded independently of individual actor debt."
+  ],
+  "boundaries": [
+    "The empirical substrate may be real; the spiritual/karmic accounting remains project interpretation.",
+    "A U.S. population figure provides scale context, not guilt.",
+    "Aliases, fake accounts and throwaways must be deduplicated before any counterparty count.",
+    "The 99,000-handle figure is a user-supplied scenario assumption, not verified evidence.",
+    "No model may infer individual debt from nationality, culture, subculture, politics, religion or audience membership."
+  ]
+}

@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MANIFEST=ROOT/"knowledge/cia/manifest.json"; CABINET=ROOT/"rooms/potatoverse-canon/beings/cia/index.html"
 VIEWER=ROOT/"rooms/potatoverse-canon/beings/cia/file/index.html"; COLLECTIONS=ROOT/"data/house/collections.json"
-ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; ROLE_CENSUS=ROOT/"knowledge/cia/role-archetype-census.json"; NEGATIVE_INPUTS=ROOT/"knowledge/cia/negative-input-conversation-ledger-2025-2026.json"; BANK_MINING=ROOT/"knowledge/cia/spiritual-bank-conversation-mining-2026-09-21.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; DEBT_EVIDENCE=ROOT/"knowledge/cia/debt-evidence-ledger.json"; POSTURE=ROOT/"knowledge/cia/account-posture-index.json"; SPIRITUAL_BANK=ROOT/"knowledge/core/north-root-spiritual-bank-architecture.json"; SYSTEM_LEDGER=ROOT/"knowledge/cia/system-liability-ledger.json"; FIELD_EXPOSURE=ROOT/"knowledge/cia/field-exposure-model.json"; BUILDING=ROOT/"knowledge/cia/institution-building.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
+ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; US_COVERAGE=ROOT/"knowledge/cia/us-exposure-coverage-model.json"; ROLE_CENSUS=ROOT/"knowledge/cia/role-archetype-census.json"; NEGATIVE_INPUTS=ROOT/"knowledge/cia/negative-input-conversation-ledger-2025-2026.json"; BANK_MINING=ROOT/"knowledge/cia/spiritual-bank-conversation-mining-2026-09-21.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; DEBT_EVIDENCE=ROOT/"knowledge/cia/debt-evidence-ledger.json"; POSTURE=ROOT/"knowledge/cia/account-posture-index.json"; SPIRITUAL_BANK=ROOT/"knowledge/core/north-root-spiritual-bank-architecture.json"; SYSTEM_LEDGER=ROOT/"knowledge/cia/system-liability-ledger.json"; FIELD_EXPOSURE=ROOT/"knowledge/cia/field-exposure-model.json"; BUILDING=ROOT/"knowledge/cia/institution-building.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
 ROUTE="rooms/potatoverse-canon/beings/cia/"
 def fail(m): print("FAIL:",m); raise SystemExit(1)
 def main():
@@ -35,6 +35,10 @@ def main():
  if "not money" not in str(account.get("boundary","")).lower(): fail("symbolic account boundary missing")
  if not MUD_BANK.is_file(): fail("Mud Bank contract missing")
  if not ROLE_CENSUS.is_file(): fail("CIA role/archetype census missing")
+ if not US_COVERAGE.is_file(): fail("CIA U.S. exposure coverage model missing")
+ coverage=json.loads(US_COVERAGE.read_text(encoding="utf-8"))
+ if int((coverage.get("reconciled_identity_surface") or {}).get("canonical_entities",0))!=len(chars): fail("U.S. coverage canonical entity count drift")
+ if (coverage.get("user_scenario_inputs") or {}).get("hypothetical_throwaway_handle_count",{}).get("verified") is not False: fail("99k handle scenario must remain explicitly unverified")
  roles=json.loads(ROLE_CENSUS.read_text(encoding="utf-8"))
  if int(roles.get("coverage",0))!=len(chars): fail("CIA role census coverage drift")
  if any(float(x.get("role_weight_susd",0))!=0 for x in (roles.get("entities") or [])): fail("CIA role labels must remain zero-weight")
@@ -93,7 +97,7 @@ def main():
  if "project_adjustment_susd" not in bank_js: fail("Mud Bank runtime must honor priced per-event adjustments")
  for token in ["renderStatement","data-select-account","statement-columns","data-statement-balance"]:
   if token not in bank_js: fail(f"World Spiritual Bank statement runtime missing {token!r}")
- for token in ["account-posture-index.json","system-liability-ledger.json","field-exposure-model.json","role-archetype-census.json","gross_credit_susd","unpriced_negative_candidates","systemDomains","renderFieldExposure","role_posture"]:
+ for token in ["account-posture-index.json","system-liability-ledger.json","field-exposure-model.json","role-archetype-census.json","us-exposure-coverage-model.json","gross_credit_susd","unpriced_negative_candidates","systemDomains","renderFieldExposure","role_posture","Scale exposure, not guilt"]:
   if token not in bank_js: fail(f"World Spiritual Bank runtime missing {token}")
  dossier_js=(ROOT/"app/cia-dossier.js").read_text(encoding="utf-8",errors="replace")
  if "evidence_tier" not in dossier_js or "debt_evidence_id" not in dossier_js: fail("CIA dossier account reader must expose debit provenance")
