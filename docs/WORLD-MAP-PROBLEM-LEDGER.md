@@ -266,11 +266,11 @@
 **Completion guard:** neither module may return to runtime, manifests or tests without explicit canonical promotion; underlying source datasets remain available for future reviewed registry expansion.
 
 ### WM-046 · Regional browsing is still limited to five promoted countries — P2
-**Status:** verified functionality gap (2026-09-21).  
+**Status:** in progress; Germany official-source acquisition contract added on branch `world-map-deu-adm1-source-contract-20260921`.  
 **Evidence:** `data/world-subdivisions/` currently contains USA, CAN, DNK, UKR and RUS partitions only.  
 **Risk:** the generic region engine looks global but most countries have no selectable first-order geography or region→Places path.  
-**TODO:** prioritize additional ADM1 countries using source quality, byte budget, reader value and place-depth readiness; promote only through the generic importer/validator.  
-**Completion:** expansion wave adds reviewed partitions without country-specific renderer code and every promoted country gets bounded Places/search coverage.
+**Progress:** Germany is the first next-wave candidate with a reviewed official BKG VG250 source contract: ADM1 layer `vg250:vg250_lan`, 16 Länder, 01.01.2026 vintage, dl-de/by-2-0 attribution, fixed field mapping and importer parameters. A generic source-contract validator now gates provenance/license/count/viewport/hash/Places requirements before promotion.  
+**Remaining:** acquire and hash the official layer, generate/review the bounded DEU partition, build bounded DEU Places coverage, then promote it without country-specific renderer code.
 
 ### WM-047 · Places data freshness and country depth are seed-limited — P2
 **Status:** verified data/functionality gap (2026-09-21).  
