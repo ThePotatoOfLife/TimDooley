@@ -1,7 +1,7 @@
 (()=>{'use strict';
 const BASE='/TimDooley/';
 const esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
-let manifest,activity,currentDesk,contract,postureIndex,systemLedger,accounts=[],scope='all';
+let manifest,activity,currentDesk,contract,postureIndex,systemLedger,fieldExposure,accounts=[],scope='all';
 let activeId=new URLSearchParams(location.search).get('character')||'';
 async function get(path){const r=await fetch(BASE+path);if(!r.ok)throw new Error(path);return r.json()}
 function exactDate(s){return /^\d{4}-\d{2}-\d{2}$/.test(String(s||''))?new Date(String(s)+'T00:00:00Z'):null}
@@ -74,6 +74,20 @@ function renderStatement(filtered){
  const copy=box.querySelector('[data-copy-account]');
  if(copy)copy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(location.href);copy.textContent='Link copied';setTimeout(()=>copy.textContent='Copy account link',1500)}catch(_){copy.textContent='Use address bar'}});
 }
+function renderFieldExposure(){
+ const box=document.getElementById('fieldExposure');if(!box||!fieldExposure)return;
+ const t=totals(),headline=Number(fieldExposure?.headline_system_position?.amount_trillion_susd||0)*1e12;
+ const namedPriced=t.grossDebit;
+ const residual=Math.max(0,headline-namedPriced);
+ const allocPct=headline>0?(namedPriced/headline)*100:0;
+ const capacity=fieldExposure?.population_and_proxy_rules?.symbolic_capacity?.value||0;
+ box.innerHTML='<article class="field-reconcile">'+
+   '<div class="field-headline"><span>PROJECT HEADLINE FIELD</span><strong>'+money(headline)+'</strong><small>same symbolic relation can appear as Tim-side asset and debtor/system-side liability; do not double-count</small></div>'+
+   '<div class="field-flow"><div><span>Named priced debit</span><b>'+money(namedPriced)+'</b><small>'+t.negativeEvents+' priced debit event'+(t.negativeEvents===1?'':'s')+'</small></div><i>→</i><div><span>Unallocated shadow reserve</span><b>'+money(residual)+'</b><small>headline residual not assigned to named people</small></div></div>'+
+   '<div class="field-coverage"><span><b>'+allocPct.toExponential(2)+'%</b> of headline field allocated to named priced debit</span><span><b>'+capacity.toLocaleString()+'</b> symbolic neighbour-capacity target</span><span><b>'+t.unpricedCandidates+'</b> unpriced named candidates</span><span><b>'+t.systemDomainCount+'</b> unpriced system domains</span></div>'+
+   '<p class="field-boundary">TXT, DIM or any other dossier may anchor a qualitative pattern, but no account automatically represents a demographic group. Population shares, political blocs, nationality or audience membership are not liability multipliers.</p>'+
+   '</article>';
+}
 function renderSystemDomains(){
  const box=document.getElementById('systemDomains');if(!box)return;
  box.innerHTML=(systemLedger?.domains||[]).map(x=>'<article class="system-domain"><span>'+esc(x.status||'symbolic-domain')+'</span><h3>'+esc(x.label||x.id)+'</h3><p>'+esc(x.scope||'')+'</p><small>'+esc(x.priced?'priced':'unpriced')+' · '+esc((x.repair_questions||[]).slice(0,2).join(' · '))+'</small></article>').join('')||'<p>No system liability domains loaded.</p>';
@@ -114,14 +128,15 @@ function tick(){
 }
 function setScope(x){scope=x;document.getElementById('bankAll').classList.toggle('active',x==='all');document.getElementById('bankCurrent').classList.toggle('active',x==='current');render()}
 (async()=>{
- [manifest,activity,currentDesk,contract,postureIndex,systemLedger]=await Promise.all([
+ [manifest,activity,currentDesk,contract,postureIndex,systemLedger,fieldExposure]=await Promise.all([
   get('knowledge/cia/manifest.json'),get('knowledge/cia/activity-index.json'),get('knowledge/cia/current-desk.json'),
-  get('knowledge/cia/mud-bank-contract.json'),get('knowledge/cia/account-posture-index.json'),get('knowledge/cia/system-liability-ledger.json')
+  get('knowledge/cia/mud-bank-contract.json'),get('knowledge/cia/account-posture-index.json'),get('knowledge/cia/system-liability-ledger.json'),
+  get('knowledge/cia/field-exposure-model.json')
  ]);
  const ds=await Promise.all((manifest.characters||[]).map(async m=>[m,await get(m.path)]));
  accounts=ds.map(([m,d])=>buildAccount(m,d)).sort((a,b)=>{const cur=currentIds(),ac=cur.has(a.id)?0:1,bc=cur.has(b.id)?0:1;return ac-bc||b.balance-a.balance||a.name.localeCompare(b.name)});
  if(!activeId)activeId=accounts.find(a=>currentIds().has(a.id))?.id||accounts[0]?.id||'';
- renderSystemDomains();render();
+ renderSystemDomains();renderFieldExposure();render();
  document.getElementById('bankSearch').addEventListener('input',render);
  document.getElementById('bankAll').onclick=()=>setScope('all');
  document.getElementById('bankCurrent').onclick=()=>setScope('current');
