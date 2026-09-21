@@ -8,6 +8,8 @@ CONTRACT=ROOT/"data/world-subdivisions/statistics/contract.json"
 RUNTIME=ROOT/"world-map/3d-subdivision-statistics.js"
 SUBDIV=ROOT/"world-map/3d-subdivisions.js"
 TEST=ROOT/"scripts/test_world_map_subdivision_statistics.mjs"
+IMPORTER=ROOT/"scripts/import_world_subdivision_statistics.py"
+IMPORTER_TEST=ROOT/"scripts/test_world_map_subdivision_statistics_importer.py"
 SOURCES=ROOT/"data/world-subdivisions/statistics/sources"
 
 def main():
@@ -44,6 +46,9 @@ def main():
             for metric in ("population","area_km2"):
                 if not (metrics.get(metric) or {}).get("source_url"):
                     errors.append(f"{path.name}: missing {metric} source URL")
+            importer=source.get("importer") or {}
+            if importer.get("script") != "scripts/import_world_subdivision_statistics.py":
+                errors.append(f"{path.name}: statistics importer path must be canonical")
     runtime=RUNTIME.read_text(encoding="utf-8",errors="replace")
     subdiv=SUBDIV.read_text(encoding="utf-8",errors="replace")
     for token in ("enrichCollection","statistics_provenance","geometry_source","population_status='sourced'"):
@@ -59,6 +64,8 @@ def main():
             if r.returncode: errors.append(f"syntax failed {p.name}: {(r.stderr or r.stdout).strip()}")
         r=subprocess.run([node,str(TEST)],cwd=ROOT,capture_output=True,text=True)
         if r.returncode: errors.append("statistics regression failed: "+(r.stderr or r.stdout).strip())
+    r=subprocess.run([sys.executable,str(IMPORTER_TEST)],cwd=ROOT,capture_output=True,text=True)
+    if r.returncode: errors.append("statistics importer regression failed: "+(r.stderr or r.stdout).strip())
     if errors:
         print("WORLD MAP SUBDIVISION STATISTICS VALIDATION FAILED"); [print("-",e) for e in errors]; return 1
     print("WORLD MAP SUBDIVISION STATISTICS VALIDATION PASSED")
