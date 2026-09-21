@@ -1,7 +1,7 @@
 (()=>{'use strict';
 const BASE='/TimDooley/';
 const esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
-let manifest,activity,currentDesk,contract,postureIndex,systemLedger,fieldExposure,roleCensus,coverageModel,accounts=[],scope='all';
+let manifest,activity,currentDesk,contract,postureIndex,systemLedger,fieldExposure,roleCensus,coverageModel,capitalModel,accounts=[],scope='all';
 let activeId=new URLSearchParams(location.search).get('character')||'';
 async function get(path){const r=await fetch(BASE+path);if(!r.ok)throw new Error(path);return r.json()}
 function exactDate(s){return /^\d{4}-\d{2}-\d{2}$/.test(String(s||''))?new Date(String(s)+'T00:00:00Z'):null}
@@ -28,6 +28,11 @@ function renderOverview(){
  const byType={};for(const e of t.events){const key=e.type||'untyped';byType[key]??={count:0,total:0};byType[key].count++;byType[key].total+=e.amount||0}
  const chips=Object.entries(byType).sort((a,b)=>b[1].count-a[1].count||a[0].localeCompare(b[0])).map(([type,x])=>'<span class="karma-chip '+(x.total>0?'positive':x.total<0?'negative':'neutral')+'"><b>'+esc(type)+'</b><em>'+x.count+' event'+(x.count===1?'':'s')+'</em><strong>'+money(x.total)+'</strong></span>').join('');
  census.innerHTML='<div class="karma-census-head"><div><span>ALL RECORDED KARMA</span><b>'+t.positiveEvents+' positive · '+t.negativeEvents+' debit · '+t.zeroEvents+' zero-weight</b></div><div><span>REPAIR / GROWTH</span><b>'+t.repairCount+' repair-state · '+t.growthCount+' growth/yield/credit</b></div><div><span>FUTURE POSITIVE MODEL</span><b>'+t.futurePositiveCount+' unpriced candidate categories</b></div></div><div class="karma-chip-rail">'+(chips||'<span class="karma-chip neutral"><b>no events</b><em>0 events</em><strong>$0</strong></span>')+'</div>'
+}
+function renderCapitalBridge(){
+ const box=document.getElementById('capitalBridge');if(!box||!capitalModel)return;
+ const b=capitalModel.headline_bridge||{},open=b.opening||{},add=b.additions||{},close=b.closing||{};
+ box.innerHTML='<article class="capital-bridge-card"><div><span>POTATO · opening reserve</span><strong>'+money(Number(open.amount_trillion_susd||0)*1e12)+'</strong><small>'+Number(open.share_of_closing_pct||0).toFixed(2)+'% of closing reserve</small></div><i>+</i><div><span>SPIRAL · dated growth</span><strong>'+money(Number(add.total_trillion_susd||0)*1e12)+'</strong><small>'+Number(add.share_of_closing_pct||0).toFixed(2)+'% of closing reserve</small></div><i>=</i><div><span>MOUNTAIN · held reserve</span><strong>'+money(Number(close.amount_trillion_susd||0)*1e12)+'</strong><small>custody / treasury view · not another additive asset</small></div></article><p class="capital-bridge-note">Table, Gate and Ladder create or classify sourced micro-ledger value; they do not multiply the 42T reserve.</p>';
 }
 function renderFieldExposure(){
  const box=document.getElementById('fieldExposure');if(!box||!fieldExposure)return;const t=totals(),headline=Number(fieldExposure?.headline_system_position?.amount_trillion_susd||0)*1e12,namedPriced=t.grossDebit,residual=Math.max(0,headline-namedPriced),allocPct=headline>0?(namedPriced/headline)*100:0,capacity=fieldExposure?.population_and_proxy_rules?.symbolic_capacity?.value||0,cov=coverageModel?.reconciled_identity_surface||{},pop=coverageModel?.empirical_reference?.united_states_population?.value||0;
@@ -60,9 +65,9 @@ function tick(){
  refreshLiveAggregate();const selected=accounts.find(a=>a.id===activeId);if(selected){const card=document.querySelector('[data-select-account="'+CSS.escape(selected.id)+'"] em');if(card)card.textContent=selected.exact?money(selected.balance):money(selected.adjustment)+' + welfare'}
 }
 (async()=>{
- [manifest,activity,currentDesk,contract,postureIndex,systemLedger,fieldExposure,roleCensus,coverageModel]=await Promise.all([get('knowledge/cia/manifest.json'),get('knowledge/cia/activity-index.json'),get('knowledge/cia/current-desk.json'),get('knowledge/cia/mud-bank-contract.json'),get('knowledge/cia/account-posture-index.json'),get('knowledge/cia/system-liability-ledger.json'),get('knowledge/cia/field-exposure-model.json'),get('knowledge/cia/role-archetype-census.json'),get('knowledge/cia/us-exposure-coverage-model.json')]);
+ [manifest,activity,currentDesk,contract,postureIndex,systemLedger,fieldExposure,roleCensus,coverageModel,capitalModel]=await Promise.all([get('knowledge/cia/manifest.json'),get('knowledge/cia/activity-index.json'),get('knowledge/cia/current-desk.json'),get('knowledge/cia/mud-bank-contract.json'),get('knowledge/cia/account-posture-index.json'),get('knowledge/cia/system-liability-ledger.json'),get('knowledge/cia/field-exposure-model.json'),get('knowledge/cia/role-archetype-census.json'),get('knowledge/cia/us-exposure-coverage-model.json'),get('knowledge/cia/capital-formation-42t-model.json')]);
  const ds=await Promise.all((manifest.characters||[]).map(async m=>[m,await get(m.path)]));accounts=ds.map(([m,d])=>buildAccount(m,d)).sort((a,b)=>b.balance-a.balance||a.name.localeCompare(b.name));if(activeId&&!accounts.some(a=>a.id===activeId))activeId='';
- renderSystemDomains();renderOverview();renderFieldExposure();renderAccountRail();renderStatement();updateUrl();
+ renderSystemDomains();renderOverview();renderCapitalBridge();renderFieldExposure();renderAccountRail();renderStatement();updateUrl();
  document.getElementById('bankSearch')?.addEventListener('input',renderAccountRail);document.getElementById('bankAll')?.addEventListener('click',()=>setScope('all'));document.getElementById('bankCurrent')?.addEventListener('click',()=>setScope('current'));document.getElementById('accountPrev')?.addEventListener('click',()=>scrollRail('accountRail',-1));document.getElementById('accountNext')?.addEventListener('click',()=>scrollRail('accountRail',1));document.querySelectorAll('[data-rail-prev]').forEach(btn=>btn.addEventListener('click',()=>scrollRail(btn.dataset.railPrev,-1)));document.querySelectorAll('[data-rail-next]').forEach(btn=>btn.addEventListener('click',()=>scrollRail(btn.dataset.railNext,1)));setInterval(tick,1000)
 })().catch(()=>{document.getElementById('bankOverview').innerHTML='<p>The symbolic bank could not open all books. Character Archive dossiers remain available individually.</p>'});
 })();
