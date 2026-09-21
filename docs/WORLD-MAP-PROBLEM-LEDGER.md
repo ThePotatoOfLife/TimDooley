@@ -332,6 +332,14 @@
 **Guard:** retirement regressions require symbolic operators to contain no references to retired control IDs.
 
 
+### WM-055 · Region inspector can overwrite sourced density semantics with a derived value — P2
+**Status:** fixed on branch `world-map-subdivision-statistics-current-20260921`, pending exact-head CI.  
+**Cause:** the generic region inspector always computed density as population ÷ area, even when the new statistics enrichment contract carried an explicit sourced `density_per_km2`. Enriched area also appeared only as “stored source area,” obscuring its separate statistics provenance.  
+**Failure:** a future reviewed source density could be visually replaced by a derived number, and readers could not cleanly distinguish statistical area provenance from boundary provenance.  
+**Resolution:** explicit sourced density now wins; derived density is labeled `Derived · population ÷ area`; enriched area exposes source/period; and a separate Statistics provenance card lists population/area/density source metadata without mutating the Boundary & provenance card.  
+**Guard:** subdivision-statistics validation requires the sourced-density branch, derived label and statistics-provenance renderer.
+
+
 ### WM-025 · ADL state evidence is structurally integrated but snapshot freshness is historical — P2
 **Status:** integration and refresh pipeline fixed; external source acquisition remains open.  
 **Current:** 335-record historical `Extremist murders` seed, 2005–2023; the Evidence manifest declares `data_status: historical-snapshot`, active controls compute snapshot age from the latest record (2023-10-11), and state/dataset inspectors repeat the freshness boundary. ADL's official page was re-verified on 2026-09-20 as monthly-updated with downloadable raw data.  
