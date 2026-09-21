@@ -39,8 +39,23 @@
       {
         "date": "2024-12-18",
         "title": "Growth lesson and disruption share one day",
+        "participants": [
+          "Tim Dooley",
+          "Anacondasin",
+          "Juice",
+          "Petty Wappo"
+        ],
         "minimum_event": "The Chronicle frames Tim's work with Ana as a growth/cultivation episode while Juice/Petty Wappo occupy a disruptive counter-thread.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "cultivation ↔ conflict coexistence"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Anacondasin",
+          "Juice"
+        ]
       }
     ]
   },
@@ -75,12 +90,17 @@
     {
       "type": "dated_social_ledger",
       "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json",
+      "note": "Period-role transitions and cast continuity."
     }
   ],
   "recovery_leads": [
-    "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
-    "Separate direct speech from Chronicle paraphrase and later project interpretation.",
-    "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: November 7, 2024; December 18, 2024; March 6, 2025.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: December 18, 2024 (6); November 7, 2024 (4); March 6, 2025 (1).",
+    "Cross-check relationship edges against dated scenes instead of raw co-presence: Tim Dooley, Anacondasin, Juice."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -100,7 +120,63 @@
       "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
       "Separate direct speech from Chronicle paraphrase and later project interpretation.",
       "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 11,
+      "chronicle_distinct_dates": 3,
+      "expanded_social_ledger_cases": 1,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "Petty Wappo currently has 11 indexed Chronicle mentions across 3 Chronicle dates, 1 expanded day-level social cases.",
+      "cases": [
+        {
+          "date": "2024-12-18",
+          "title": "Growth lesson and disruption share one day",
+          "what_happened": "The Chronicle frames Tim's work with Ana as a growth/cultivation episode while Juice/Petty Wappo occupy a disruptive counter-thread.",
+          "co_present": [
+            "Tim Dooley",
+            "Anacondasin",
+            "Juice"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [
+        {
+          "date": "November 7, 2024",
+          "count": 4
+        },
+        {
+          "date": "December 18, 2024",
+          "count": 6
+        },
+        {
+          "date": "March 6, 2025",
+          "count": 1
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "November 7, 2024",
+          "count": 4
+        },
+        {
+          "date": "December 18, 2024",
+          "count": 6
+        },
+        {
+          "date": "March 6, 2025",
+          "count": 1
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "Petty Wappo is a sparse observer/friction file whose main value is showing the limits of the source: recurrence extends into March 2025, while the actual scenes behind the old passive-observer profile remain thin.",
@@ -117,7 +193,14 @@
       "Direct speech and relationship edges remain sparse."
     ],
     "relationship_arc": "recurring peripheral observer → one documented disruption/friction corridor → later recurrence with little context",
-    "confidence_note": "High on recurrence window; low on richer characterization."
+    "confidence_note": "High on recurrence window; low on richer characterization.",
+    "evidence_density": {
+      "chronicle_mentions": 11,
+      "indexed_chronicle_dates": 3,
+      "expanded_day_level_cases": 1,
+      "unexpanded_indexed_dates": 2
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
