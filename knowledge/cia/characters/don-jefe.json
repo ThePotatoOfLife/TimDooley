@@ -93,7 +93,22 @@
     },
     "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
     "debt_and_repair": {
-      "records": [],
+      "records": [
+        {
+          "id": "debt-don-jefe-2025-02-11-12-destructive-bot",
+          "date": "2025-02-11/12",
+          "pricing_status": "priced",
+          "summary": "Chronicle retelling says Don Jefe sought to create a bot intended to erase Tim's Discord channels/halls/monuments after the Monkey conflict.",
+          "category": "destructive-act",
+          "evidence_tier": "chronicle-retelling",
+          "repetition_key": "don-jefe-destructive-bot",
+          "occurrence_index": 1,
+          "project_adjustment_susd": -5.4,
+          "source_ref": "Chronicles of The Potato of Life.rtf / txt",
+          "source_mode": "chronicle-retelling",
+          "boundary": "This prices the project-authored Chronicle event only; it is not an independent finding that a real destructive bot was deployed."
+        }
+      ],
       "rule": "Do not attach legal, financial, karmic or spiritual debt unless a dated source explicitly does so; symbolic debt remains project language unless independently established."
     },
     "state_rule": "Roles, archetypes, upgrades, handicaps and project-symbolic placements are date/source-bounded states, not permanent human essences.",
@@ -121,13 +136,30 @@
     "confidence_note": "High on recurrence/co-occurrence; low on motives and detailed relationship claims."
   },
   "symbolic_account": {
-    "status": "unassessed",
+    "status": "debit-supported / historical dispute",
     "good_karma": "unassessed",
-    "karmic_debt": "unassessed",
+    "karmic_debt": "priced project-symbolic debit + unresolved claims",
     "dooley_welfare": {
       "enabled": false
     },
     "outstanding": [],
-    "entries": []
+    "entries": [
+      {
+        "date": "2025-02-11/12",
+        "type": "project-debit",
+        "kind": "Chronicle destructive-bot / channel-erasure attempt",
+        "amount_or_scale": "-5.4 sUSD",
+        "project_adjustment_susd": -5.4,
+        "debt_evidence_id": "debt-don-jefe-2025-02-11-12-destructive-bot",
+        "category": "destructive-act",
+        "evidence_tier": "chronicle-retelling",
+        "repetition_key": "don-jefe-destructive-bot",
+        "occurrence_index": 1,
+        "source_mode": "chronicle-retelling",
+        "source_ref": "Chronicles of The Potato of Life.rtf / txt",
+        "note": "Discounted symbolic debit for a specific dated Chronicle event; allegation remains attributed to the Chronicle.",
+        "status": "recorded"
+      }
+    ]
   }
 }
