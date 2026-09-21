@@ -2,6 +2,7 @@
 """Exercise the World Places builder, runtime regressions and data validator end-to-end."""
 from __future__ import annotations
 
+import hashlib
 import json
 import shutil
 import subprocess
@@ -105,6 +106,14 @@ def main() -> int:
             errors.append(f"fixture partitions must be {sorted(EXPECTED_COUNTRIES)}; found {sorted(countries)}")
         if index.get("dataset_refresh_date") != "2026-09-15-fixture":
             errors.append("fixture refresh date was not propagated into the generated index")
+        provenance = index.get("provenance") or {}
+        expected_sha = hashlib.sha256((FIXTURE / "geonames-cities-sample.txt").read_bytes()).hexdigest()
+        if provenance.get("input_sha256") != expected_sha:
+            errors.append("fixture build must record the exact GeoNames input SHA-256")
+        if provenance.get("upstream_last_modified") != "fixture" or provenance.get("retrieved_at") != "fixture":
+            errors.append("fixture build must preserve deterministic upstream/retrieval provenance markers")
+        if not provenance.get("build_at") or index.get("generated_at") != provenance.get("build_at"):
+            errors.append("fixture build_at must be explicit and equal generated_at")
         if index.get("license") != "CC BY 4.0" or "GeoNames" not in str(index.get("attribution") or ""):
             errors.append("fixture output lost GeoNames license/attribution metadata")
         if index.get("runtime_budget") != EXPECTED_BUDGET:
