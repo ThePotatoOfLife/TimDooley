@@ -42,8 +42,45 @@
       {
         "date": "2024-11-03",
         "title": "Tanks, pipe, coffee and the first dense social snapshot",
+        "participants": [
+          "Tim Dooley",
+          "Marty",
+          "Port Monkey",
+          "Mr. E",
+          "Klunty",
+          "Optimistique",
+          "Rahu",
+          "Tdog",
+          "Termite",
+          "Ledgeview",
+          "Kale",
+          "Highly Regarded",
+          "DARKCHILD",
+          "duaaaht"
+        ],
         "minimum_event": "Tim spends the day around Tanks/voice-chat social life while the Great Book is actively discussed. Optimistique urges him back into play, Rahu/Tdog supply religious interpretation, and Termite marks group camaraderie.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "games ↔ social presence",
+          "Great Book ↔ live discussion",
+          "support ↔ ordinary companionship"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Marty",
+          "Port Monkey",
+          "Mr. E",
+          "Klunty",
+          "Optimistique",
+          "Rahu",
+          "Tdog",
+          "Termite",
+          "Ledgeview",
+          "Kale",
+          "Highly Regarded",
+          "duaaaht"
+        ]
       }
     ]
   },
@@ -98,12 +135,17 @@
     {
       "type": "dated_social_ledger",
       "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json",
+      "note": "Period-role transitions and cast continuity."
     }
   ],
   "recovery_leads": [
-    "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
-    "Separate direct speech from Chronicle paraphrase and later project interpretation.",
-    "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: November 3 2024; November 10, 2024; November 11, 2024; November 14, 2024; Nov 20 2024.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: November 10, 2024 (10); November 3 2024 (2); November 11, 2024 (2); November 14, 2024 (1); Nov 20 2024 (1).",
+    "Cross-check the strongest relationship edges against dated scenes rather than raw co-presence counts: Tim Dooley, Marty, Port Monkey, Mr. E, Klunty, Optimistique."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -123,7 +165,89 @@
       "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
       "Separate direct speech from Chronicle paraphrase and later project interpretation.",
       "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 16,
+      "chronicle_distinct_dates": 5,
+      "expanded_social_ledger_cases": 1,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "DARKCHILD currently has 16 indexed Chronicle mentions across 5 Chronicle dates, 1 expanded day-level social cases.",
+      "cases": [
+        {
+          "date": "2024-11-03",
+          "title": "Tanks, pipe, coffee and the first dense social snapshot",
+          "what_happened": "Tim spends the day around Tanks/voice-chat social life while the Great Book is actively discussed. Optimistique urges him back into play, Rahu/Tdog supply religious interpretation, and Termite marks group camaraderie.",
+          "co_present": [
+            "Tim Dooley",
+            "Marty",
+            "Port Monkey",
+            "Mr. E",
+            "Klunty",
+            "Optimistique",
+            "Rahu",
+            "Tdog",
+            "Termite",
+            "Ledgeview",
+            "Kale",
+            "Highly Regarded",
+            "duaaaht"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [
+        {
+          "date": "November 3 2024",
+          "count": 2
+        },
+        {
+          "date": "November 10, 2024",
+          "count": 10
+        },
+        {
+          "date": "November 11, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 14, 2024",
+          "count": 1
+        },
+        {
+          "date": "Nov 20 2024",
+          "count": 1
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "November 3 2024",
+          "count": 2
+        },
+        {
+          "date": "November 10, 2024",
+          "count": 10
+        },
+        {
+          "date": "November 11, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 14, 2024",
+          "count": 1
+        },
+        {
+          "date": "Nov 20 2024",
+          "count": 1
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "DARKCHILD is a morale-and-play file: repeated November presence is clearer than any dramatic biography, and the strongest archive function is hype, joy and whimsy inside ordinary social scenes.",
@@ -140,7 +264,14 @@
       "Raw chat that would show the actual humor/hype style remains unrecovered."
     ],
     "relationship_arc": "recurring playful participant / morale raiser → later-November continuity → later status unresolved",
-    "confidence_note": "High recurrence confidence; low scene-level detail."
+    "confidence_note": "High recurrence confidence; low scene-level detail.",
+    "evidence_density": {
+      "chronicle_mentions": 16,
+      "indexed_chronicle_dates": 5,
+      "expanded_day_level_cases": 1,
+      "unexpanded_indexed_dates": 4
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
