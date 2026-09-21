@@ -35,14 +35,68 @@
       {
         "date": "2024-12-15",
         "title": "Cooking stream and the Potato–Tomato joke war",
+        "participants": [
+          "Tim Dooley",
+          "Anacondasin",
+          "Termite",
+          "Rahu",
+          "Pondo",
+          "Ledgeview",
+          "Hetero God",
+          "Port Monkey",
+          "Sammy"
+        ],
         "minimum_event": "Tim and Anacondasin make potato chips in a collaborative stream. Termite jokes about flying her to Denmark; Rahu adopts a tomato-villain role; a parallel access dispute concerns Tree/Garden boundaries.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "cooking ↔ grounding",
+          "Anacondasin ↔ collaboration",
+          "Rahu ↔ playful villain role",
+          "Tree/Garden ↔ access boundary"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Anacondasin",
+          "Termite",
+          "Rahu",
+          "Ledgeview",
+          "Hetero God",
+          "Port Monkey",
+          "Sammy"
+        ]
       },
       {
         "date": "2024-12-21",
         "title": "Anja arrives inside a Marty-mediated boundary dispute",
+        "participants": [
+          "Tim Dooley",
+          "Marty",
+          "Anja",
+          "Literally",
+          "Pondo",
+          "Tachy",
+          "Optimistique",
+          "Ledgeview"
+        ],
         "minimum_event": "Marty introduces Anja while asserting social leverage; moderation disputes intensify around Literally. The Chronicle also credits Pondo with providing urgent support to a distressed community member.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "Marty ↔ Anja introduction",
+          "moderation ↔ boundary power",
+          "Pondo ↔ care/intervention"
+        ],
+        "source_mode": "chronicle_retelling",
+        "sensitivity": "Do not sensationalize the crisis material; recover raw logs before publishing detailed self-harm content.",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Marty",
+          "Anja",
+          "Literally",
+          "Tachy",
+          "Optimistique",
+          "Ledgeview"
+        ]
       }
     ]
   },
@@ -108,9 +162,9 @@
     }
   ],
   "recovery_leads": [
-    "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
-    "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
-    "Add relationship edges only when a scene/source supports them."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: December 15, 2024; December 21 2024.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: December 21 2024 (5); December 15, 2024 (2).",
+    "Cross-check relationship edges against dated scenes instead of raw co-presence: Tim Dooley, Ledgeview, Anacondasin, Termite, Rahu, Hetero God."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -130,7 +184,77 @@
       "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
       "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
       "Add relationship edges only when a scene/source supports them."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 7,
+      "chronicle_distinct_dates": 2,
+      "expanded_social_ledger_cases": 2,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "Pondo currently has 7 indexed Chronicle mentions across 2 Chronicle dates, 2 expanded day-level social cases.",
+      "cases": [
+        {
+          "date": "2024-12-15",
+          "title": "Cooking stream and the Potato–Tomato joke war",
+          "what_happened": "Tim and Anacondasin make potato chips in a collaborative stream. Termite jokes about flying her to Denmark; Rahu adopts a tomato-villain role; a parallel access dispute concerns Tree/Garden boundaries.",
+          "co_present": [
+            "Tim Dooley",
+            "Anacondasin",
+            "Termite",
+            "Rahu",
+            "Ledgeview",
+            "Hetero God",
+            "Port Monkey",
+            "Sammy"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2024-12-21",
+          "title": "Anja arrives inside a Marty-mediated boundary dispute",
+          "what_happened": "Marty introduces Anja while asserting social leverage; moderation disputes intensify around Literally. The Chronicle also credits Pondo with providing urgent support to a distressed community member.",
+          "co_present": [
+            "Tim Dooley",
+            "Marty",
+            "Anja",
+            "Literally",
+            "Tachy",
+            "Optimistique",
+            "Ledgeview"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [
+        {
+          "date": "December 15, 2024",
+          "count": 2
+        },
+        {
+          "date": "December 21 2024",
+          "count": 5
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "December 15, 2024",
+          "count": 2
+        },
+        {
+          "date": "December 21 2024",
+          "count": 5
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "Pondo is a compact care/intervention dossier: ordinary kitchen-social presence is followed by a Chronicle-attributed urgent compassionate intervention, giving the healer/guardian role a concrete source-bounded anchor.",
@@ -146,7 +270,14 @@
       "Closer primary evidence behind the crisis intervention is not recovered and should only be sought if needed without exposing unnecessary sensitive detail."
     ],
     "relationship_arc": "ordinary companion / observer → compassionate crisis intervention",
-    "confidence_note": "Strong Chronicle attribution; sensitive underlying details intentionally minimized."
+    "confidence_note": "Strong Chronicle attribution; sensitive underlying details intentionally minimized.",
+    "evidence_density": {
+      "chronicle_mentions": 7,
+      "indexed_chronicle_dates": 2,
+      "expanded_day_level_cases": 2,
+      "unexpanded_indexed_dates": 0
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
