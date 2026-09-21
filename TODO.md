@@ -115,7 +115,7 @@ Priority order: **P0 release breakage → P1 structural drift/duplication → P2
 - [x] Repair missing metadata on 20 nested Room pages and harden SEO enrichment to repair absent descriptions.
 - [x] Repair built-site shell blockers: stale homepage marker assertion, Politics source path, Geography → Timeline Room wormhole.
 - [x] Latest Pages deploy is green on `5e3e40b` after the ADL U.S. state-rendering merge.
-- [ ] Obtain an exact-head green **Repository quality checks** result for the current integration head; do not call a work wave complete while the quality workflow is pending/cancelled.
+- [x] Obtain an exact-head green **Repository quality checks** result for the current integration head; `22938459e588773987eb0ff3493664579785113f` passed Repository quality checks and deployed successfully before the next editorial wave began.
 
 ### P1 — structural debt now demonstrated
 
@@ -555,8 +555,8 @@ The governing rule is: **life → meaning → making → world → shadow → ev
 - [ ] **SITE-MISSION-006 · North/world-repair ladder:** structure North as symbol → observation → programme → evidence/constraints → current status, then link World Systems/Economy/Law/Politics without collapsing symbolic and empirical claims.
 - [ ] **SITE-MISSION-007 · Stale-master retirement:** audit legacy/source-stratum syntheses that still sound current, beginning with `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md`; preserve them as historical source strata but route current readers/machines to canonical owners.
 - [ ] **SITE-MISSION-008 · Runtime resilience:** audit Story, Timeline, World Map, Inhabitants, Elevator and Foundation Timeline for useful static orientation, isolated data-source failure and direct underlying-record routes.
-- [ ] **SITE-MISSION-009 · Question concierge:** deepen Questions and Paths with real intents: Tim's life, how Potatoism formed, Son/crucifixion sequence, how to verify a claim, conflict→repair, North/world-repair and what the project has actually made.
+- [x] **SITE-MISSION-009 · Question concierge:** Questions now opens with human intents (Tim's life, Potatoism, Son/crucifixion, North, Works, shadow vocabulary, CIA/Bank, sourcing and science boundaries) and Paths now carries complete worked journeys for Tim's life, Potatoism formation, Son sequence, North/world-repair, conflict→repair and claim verification.
 - [ ] **SITE-MISSION-010 · Project self-story:** connect Great Book, streaming, games, images/music, AI work, GitHub/site and research architecture to the life phases that produced them.
 - [ ] **SITE-MISSION-011 · People change over time:** every important recurring person should expose first appearance → role then → relationship changes → repair/current state → evidence class, rather than a permanent archetype label.
-- [ ] **SITE-MISSION-012 · Page-purpose contract:** extend the architecture audit so every active public surface has a declared 'become', exclusion/boundary, primary next step and density expectation; fail on role drift only where the rule can be made deterministic.
+- [x] **SITE-MISSION-012 · Page-purpose contract:** `data/house/public-surface-missions.json` now gives every active public surface a narrative stage, `become`, `must_not_become`, primary next surfaces and density intent; House validation enforces coverage, field completeness and valid next-surface references without turning subjective editorial judgments into CI.
 - [ ] **SITE-MISSION-013 · No-overshadow review:** explicitly test that Home is not House, Tim is not Claims/Story, Potato is not every domain, Axis is not all theology/science, and Culture/CIA/Bank do not become the default interpretation of the whole project.
