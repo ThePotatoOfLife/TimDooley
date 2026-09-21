@@ -21,6 +21,7 @@ def main():
     public_surface_payload=load("data/house/public-surfaces.json")
     surfaces=public_surface_payload.get("surfaces",[])
     parent_semantics=public_surface_payload.get("parent_semantics",{})
+    public_missions=load("data/house/public-surface-missions.json")
     health=load("data/house/spatial-house-health.json")
 
     room_ids={x.get("id") for x in rooms if isinstance(x,dict)}
@@ -131,6 +132,28 @@ def main():
     unused=set(parent_semantics)-used_parents
     if unused:
         errors.append(f"unused public parent semantics entries: {sorted(unused)}")
+
+    mission_rows=public_missions.get("surfaces",{})
+    active_surface_ids={s.get("id") for s in surfaces if isinstance(s,dict) and s.get("status")=="active"}
+    if set(mission_rows)!=active_surface_ids:
+        missing=sorted(active_surface_ids-set(mission_rows))
+        extra=sorted(set(mission_rows)-active_surface_ids)
+        errors.append(f"public mission contract drift: missing={missing} extra={extra}")
+    valid_stages=set(public_missions.get("narrative_stages",[]))
+    for sid in sorted(active_surface_ids):
+        mission=mission_rows.get(sid,{})
+        for field in ("become","must_not_become","density_intent","narrative_stage"):
+            if not str(mission.get(field) or "").strip():
+                errors.append(f"public mission {sid} missing {field}")
+        if mission.get("narrative_stage") not in valid_stages:
+            errors.append(f"public mission {sid} has invalid narrative_stage {mission.get('narrative_stage')!r}")
+        nxt=mission.get("primary_next_surface_ids",[])
+        if not isinstance(nxt,list) or not nxt:
+            errors.append(f"public mission {sid} has no primary next surfaces")
+        else:
+            for target in nxt:
+                if target not in active_surface_ids:
+                    errors.append(f"public mission {sid} points to unknown next surface {target}")
 
     counts=health.get("counts",{})
     if counts.get("dwellings")!=len(room_ids):
