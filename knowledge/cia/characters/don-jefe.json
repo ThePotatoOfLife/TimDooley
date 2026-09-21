@@ -40,8 +40,24 @@
       {
         "date": "2025-02-11/12",
         "title": "Monkey / Don Jefe / TXT conflict cluster",
+        "participants": [
+          "Tim Dooley",
+          "Monkey",
+          "Don Jefe",
+          "TXT"
+        ],
         "minimum_event": "The Chronicle groups Monkey, Don Jefe and TXT inside an aggressively adversarial retelling. Treat labels and allegations as authored conflict language; the useful historical fact is the dated co-occurrence of these names.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "Monkey ↔ Don Jefe ↔ TXT",
+          "Tree/Farm conflict ↔ shared date window"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Monkey",
+          "TXT"
+        ]
       }
     ]
   },
@@ -76,12 +92,17 @@
     {
       "type": "dated_social_ledger",
       "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json",
+      "note": "Period-role transitions and cast continuity."
     }
   ],
   "recovery_leads": [
-    "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
-    "Separate direct speech from Chronicle paraphrase and later project interpretation.",
-    "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: Feb 8 2025; Feb 25 2025.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: Feb 8 2025 (6); Feb 25 2025 (1).",
+    "Cross-check the strongest relationship edges against dated scenes rather than raw co-presence counts: Tim Dooley, Monkey, TXT."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -116,7 +137,55 @@
       "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
       "Separate direct speech from Chronicle paraphrase and later project interpretation.",
       "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 7,
+      "chronicle_distinct_dates": 2,
+      "expanded_social_ledger_cases": 1,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "Don Jefe currently has 7 indexed Chronicle mentions across 2 Chronicle dates, 1 expanded day-level social cases.",
+      "cases": [
+        {
+          "date": "2025-02-11/12",
+          "title": "Monkey / Don Jefe / TXT conflict cluster",
+          "what_happened": "The Chronicle groups Monkey, Don Jefe and TXT inside an aggressively adversarial retelling. Treat labels and allegations as authored conflict language; the useful historical fact is the dated co-occurrence of these names.",
+          "co_present": [
+            "Tim Dooley",
+            "Monkey",
+            "TXT"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [
+        {
+          "date": "Feb 8 2025",
+          "count": 6
+        },
+        {
+          "date": "Feb 25 2025",
+          "count": 1
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "Feb 8 2025",
+          "count": 6
+        },
+        {
+          "date": "Feb 25 2025",
+          "count": 1
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "Don Jefe is primarily a conflict-cluster recovery file: the archive proves repeated February 2025 presence and a Monkey/Don Jefe/TXT co-occurrence, but does not yet support the old profile's stronger motive or adversary claims.",
@@ -133,7 +202,14 @@
       "The old profile's strategic/motive claims are not sufficiently sourced for promotion."
     ],
     "relationship_arc": "recurring February conflict-field presence → named Monkey/TXT cluster → deeper relationship unresolved",
-    "confidence_note": "High on recurrence/co-occurrence; low on motives and detailed relationship claims."
+    "confidence_note": "High on recurrence/co-occurrence; low on motives and detailed relationship claims.",
+    "evidence_density": {
+      "chronicle_mentions": 7,
+      "indexed_chronicle_dates": 2,
+      "expanded_day_level_cases": 1,
+      "unexpanded_indexed_dates": 1
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "debit-supported / historical dispute",
