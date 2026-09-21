@@ -106,7 +106,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The curr
 
 - [x] Retire dormant `3d-fields.js` / `3d-networks.js`: live symbolic operators now use Layer Registry state; obsolete render/control modules are deleted while underlying datasets remain available for future registry expansion.
 - [ ] Expand subdivision + bounded Places depth beyond the current five promoted countries (USA, CAN, DNK, UKR, RUS) through the generic importer/partition contract.
-- [ ] Replace the GeoNames mirror seed with a reviewed fresh canonical build; preserve source date, build date and upstream freshness separately.
+- [~] Replace the GeoNames mirror seed with a reviewed fresh canonical build. Official `cities15000.zip` source/provenance semantics are now formalized; current dump acquisition and reviewed generated replacement remain.
 - [ ] Promote at least one reviewed delayed/historical conflict snapshot with source bundle, date semantics and explicit not-live boundary before exposing Conflict as current functionality.
 - [~] Add behavioral viewport scenarios for globe mode, narrow screens, dense regional labels, detached geography and region→Places handoff. A combined narrow+globe+region+Places contract regression is now in progress; browser-level occlusion/detached-geography proof remains.
 - [ ] Map architecture-auditor finding codes to ledger IDs, owner and severity so CI output becomes an actionable queue instead of a parallel diagnosis.
