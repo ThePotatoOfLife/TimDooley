@@ -283,8 +283,8 @@
 **Status:** verified functionality gap (2026-09-21).  
 **Evidence:** `world-map-conflict-snapshot-contract.json` is `active-schema-dormant-data` and explicitly says no reviewed conflict snapshot geometry is committed yet.  
 **Risk:** the map advertises a conflict-context architecture without an actual dated historical/delayed snapshot to exercise Time, Inspector, source and render contracts together.  
-**TODO:** ingest one reviewed historical/delayed snapshot set with source bundle, observation period, geometry meaning, confidence and not-live boundary; validate exact-snapshot comparison without interpolating front lines.  
-**Completion:** at least one conflict dataset can be inspected and time-selected end-to-end while administrative geography remains untouched.
+**Progress:** reviewed UCDP GED 26.1 as the first acquisition candidate (free CC BY 4.0, event-level organized-violence data through 2025) and added a guarded build-time importer for the `event_aggregate` geometry meaning. The importer requires a closed historical period, hashes the source CSV, aggregates into cells no finer than 0.5° (default 1°), suppresses low-count cells, caps features/bytes, retains only aggregate event/fatality counts, and strips raw event-coordinate/tactical detail. The conflict manifest remains planned because the official ZIP bytes have not yet been acquired/reviewed in-repo.  
+**Remaining:** acquire/hash the official GED 26.1 CSV, build and review one bounded historical aggregate, commit its source bundle + geometry, then exercise Time/Inspector end-to-end before activating the manifest entry.
 
 ### WM-049 · Region/globe/mobile behavior lacks broad end-to-end scenario coverage — P2
 **Status:** in progress on branch `world-map-combined-region-scenario-20260921`.  
