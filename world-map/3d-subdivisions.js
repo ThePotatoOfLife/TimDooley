@@ -15,6 +15,8 @@ const motion = window.__potatoAtlasMotion;
 if (!window.__potatoAtlasGeo) await import('./3d-geo-kernel.js');
 const geo = window.__potatoAtlasGeo;
 if (!geo) throw new Error('Atlas subdivisions require the shared geospatial kernel.');
+if (!window.__potatoAtlasSubdivisionStatistics) await import('./3d-subdivision-statistics.js');
+const statistics = window.__potatoAtlasSubdivisionStatistics;
 function interactionRouter() { return window.__potatoAtlasInteraction; }
 function inspectorRouter() { return window.__potatoAtlasInspector; }
 let subdivisionTooltipPromise = null;
@@ -738,9 +740,12 @@ async function loadPartition(partition) {
     syncDiagnostics();
     throw new Error(`Subdivision partition ${partition} is not GeoJSON.`);
   }
+  let enriched = data;
+  try { enriched = await statistics?.enrichCollection?.(partition, data) || data; }
+  catch (error) { console.warn(`Subdivision statistics unavailable: ${partition}`, error); }
   const state = touch({
     descriptor: descriptor || { path:partitionPath },
-    data,
+    data:enriched,
     bytes:Number(descriptor?.bytes) || 0,
     lastUsed:0,
   });
