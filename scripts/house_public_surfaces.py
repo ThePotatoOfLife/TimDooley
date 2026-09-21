@@ -95,6 +95,7 @@ def derived_route_topology_records(root: Path) -> list[dict]:
         records.append({
             "surface_id": row["id"],
             "surface_type": row.get("surface_type"),
+            "reader_job": row.get("reader_job"),
             "canonical_route": row.get("canonical_route") or row.get("route"),
             "primary_hub_id": hub_id,
             "room_ids": list(row.get("primary_room_ids") or []),
