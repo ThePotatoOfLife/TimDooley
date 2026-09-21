@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DATA_DIR = ROOT / "data" / "world-places"
 BUILDER = ROOT / "scripts" / "build_world_places.py"
+SOURCE_CONTRACT = ROOT / "data" / "world-places" / "source-contract.json"
 PLACES = ROOT / "world-map" / "3d-places.js"
 SEARCH = ROOT / "world-map" / "3d-search.js"
 MAP_STATE = ROOT / "world-map" / "3d-map-state.js"
@@ -74,6 +75,19 @@ def validate_data(data_dir: Path, errors: list[str]) -> None:
         )
         if not mirror_seed_ok:
             errors.append("Places index must declare canonical GeoNames CC BY 4.0, or an explicitly provenance-bounded CC BY 3.0 historical seed")
+    else:
+        required_provenance = (
+            "source_url", "input_filename", "input_sha256",
+            "upstream_last_modified", "retrieved_at", "build_at",
+        )
+        for key in required_provenance:
+            if not str(provenance.get(key) or "").strip():
+                errors.append(f"canonical Places build missing provenance.{key}")
+        digest = str(provenance.get("input_sha256") or "")
+        if digest and (len(digest) != 64 or any(ch not in "0123456789abcdef" for ch in digest.lower())):
+            errors.append("canonical Places provenance.input_sha256 must be a SHA-256 hex digest")
+        if provenance.get("build_at") and index.get("generated_at") != provenance.get("build_at"):
+            errors.append("Places generated_at must equal provenance.build_at for canonical builds")
     if "GeoNames" not in str(index.get("attribution") or ""):
         errors.append("Places index must preserve GeoNames attribution")
     budget = index.get("runtime_budget") or {}
@@ -205,7 +219,22 @@ def validate_data(data_dir: Path, errors: list[str]) -> None:
 
 
 def validate_runtime(errors: list[str]) -> None:
-    require_tokens(BUILDER, ("--fixture", "geonames-cities-sample.txt", "capitals-sample.geo.json", "RUNTIME_BUDGET", "search_records"), errors)
+    if not SOURCE_CONTRACT.exists():
+        errors.append(f"missing Places source contract: {SOURCE_CONTRACT.relative_to(ROOT)}")
+    else:
+        contract = load_json(SOURCE_CONTRACT, errors) or {}
+        source = contract.get("source") or {}
+        if source.get("license") != "CC BY 4.0":
+            errors.append("Places source contract must preserve GeoNames CC BY 4.0")
+        if source.get("artifact") != "cities15000.zip":
+            errors.append("Places source contract must pin cities15000.zip for the bounded canonical build")
+        if (contract.get("acquisition") or {}).get("runtime_fetch_allowed") is not False:
+            errors.append("Places source acquisition must remain build-time only")
+        required_capture = set(contract.get("required_capture") or [])
+        expected_capture = {"input_sha256", "upstream_last_modified", "retrieved_at", "build_at"}
+        if not expected_capture <= required_capture:
+            errors.append("Places source contract must require hash/upstream/retrieval/build provenance")
+    require_tokens(BUILDER, ("--fixture", "geonames-cities-sample.txt", "capitals-sample.geo.json", "RUNTIME_BUDGET", "search_records", "--upstream-last-modified", "--retrieved-at", "input_sha256"), errors)
     require_tokens(PLACES, (
         "__potatoAtlasPlaces", "setVisible", "focus", "current", "search", "inSubdivision", "clear", "status",
         "atlas-places-major-points", "atlas-places-major-labels",
