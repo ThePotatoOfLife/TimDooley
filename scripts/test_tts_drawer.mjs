@@ -59,6 +59,9 @@ assert.ok(source.includes('prepareSection=typeof options.prepareSection'), 'draw
 assert.ok(source.includes('await prepareSection(sectionId,{signal:'), 'drawer must await cancellable content preparation before speech');
 assert.ok(source.includes('preparationController?.abort?.()'), 'drawer stop/collapse must abort pending preparation');
 
+const longformSource = fs.readFileSync(new URL('../app/longform-tts-adapter.js', import.meta.url),'utf8');
+assert.ok(longformSource.includes("ttsSuppressed='duplicate-primary'"), 'longform adapter must suppress competing primary TTS drawers on the same page');
+
 const css = fs.readFileSync(new URL('../app/tts-drawer.css', import.meta.url),'utf8');
 assert.match(css,/\.ptts-button\[aria-pressed="true"\]/,'active follow-reading toggle needs a visible pressed state');
 assert.match(css,/\.ptts-select\s+option\s*\{[^}]*background\s*:\s*#(?:111|121|141|1[0-9a-f]{5}|[0-9a-f]{6})/i,'TTS native dropdown options need an explicit dark background');
