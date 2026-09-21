@@ -39,20 +39,94 @@
       {
         "date": "2024-12-21",
         "title": "Anja arrives inside a Marty-mediated boundary dispute",
+        "participants": [
+          "Tim Dooley",
+          "Marty",
+          "Anja",
+          "Literally",
+          "Pondo",
+          "Tachy",
+          "Optimistique",
+          "Ledgeview"
+        ],
         "minimum_event": "Marty introduces Anja while asserting social leverage; moderation disputes intensify around Literally. The Chronicle also credits Pondo with providing urgent support to a distressed community member.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "Marty ↔ Anja introduction",
+          "moderation ↔ boundary power",
+          "Pondo ↔ care/intervention"
+        ],
+        "source_mode": "chronicle_retelling",
+        "sensitivity": "Do not sensationalize the crisis material; recover raw logs before publishing detailed self-harm content.",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Marty",
+          "Literally",
+          "Pondo",
+          "Tachy",
+          "Optimistique",
+          "Ledgeview"
+        ]
       },
       {
         "date": "2025-02-27",
         "title": "Three conflict calls",
+        "participants": [
+          "Tim Dooley",
+          "Supersusi87",
+          "Ansja",
+          "Carrie",
+          "Meta",
+          "Mondo Cane",
+          "Tachy",
+          "Raven"
+        ],
         "minimum_event": "The Chronicle organizes three separate social conflicts/calls on one day. It calls them 'rituals'; that is the author's interpretation, while the bounded calls and named participants are the recoverable historical targets.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "Supersusi ↔ severance",
+          "Ansja ↔ continued guidance",
+          "Meta ↔ second-call conflict",
+          "Tachy ↔ third-call server"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Supersusi87",
+          "Carrie",
+          "Meta",
+          "Mondo Cane",
+          "Tachy",
+          "Raven"
+        ]
       },
       {
         "date": "2025-03-05",
         "title": "HTML Great Book and new social roles",
+        "participants": [
+          "Tim Dooley",
+          "Rahu",
+          "Kira",
+          "Kaspiansee",
+          "Raven",
+          "Ansja"
+        ],
         "minimum_event": "The Chronicle reports 52 potatoes and 167 dwellers; says the Great Book HTML transformation had begun the previous day; Kira/Kaspiansee become counselors, Raven is named Princess, and Rahu is appointed admin.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "Great Book ↔ HTML",
+          "Rahu ↔ governance",
+          "Kira/Kaspiansee ↔ counseling",
+          "Raven ↔ title/role"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Rahu",
+          "Kira",
+          "Kaspiansee",
+          "Raven"
+        ]
       }
     ]
   },
@@ -119,12 +193,17 @@
     {
       "type": "dated_social_ledger",
       "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json",
+      "note": "Period-role transitions and cast continuity."
     }
   ],
   "recovery_leads": [
-    "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
-    "Separate direct speech from Chronicle paraphrase and later project interpretation.",
-    "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: Feb 26 2025; March 5, 2025.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: March 5, 2025 (4); Feb 26 2025 (3).",
+    "Cross-check the strongest relationship edges against dated scenes rather than raw co-presence counts: Tim Dooley, Tachy, Raven, Marty, Literally, Pondo."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -144,7 +223,91 @@
       "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
       "Separate direct speech from Chronicle paraphrase and later project interpretation.",
       "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 7,
+      "chronicle_distinct_dates": 2,
+      "expanded_social_ledger_cases": 3,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "Anja / Ansja currently has 7 indexed Chronicle mentions across 2 Chronicle dates, 3 expanded day-level social cases.",
+      "cases": [
+        {
+          "date": "2024-12-21",
+          "title": "Anja arrives inside a Marty-mediated boundary dispute",
+          "what_happened": "Marty introduces Anja while asserting social leverage; moderation disputes intensify around Literally. The Chronicle also credits Pondo with providing urgent support to a distressed community member.",
+          "co_present": [
+            "Tim Dooley",
+            "Marty",
+            "Literally",
+            "Pondo",
+            "Tachy",
+            "Optimistique",
+            "Ledgeview"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2025-02-27",
+          "title": "Three conflict calls",
+          "what_happened": "The Chronicle organizes three separate social conflicts/calls on one day. It calls them 'rituals'; that is the author's interpretation, while the bounded calls and named participants are the recoverable historical targets.",
+          "co_present": [
+            "Tim Dooley",
+            "Supersusi87",
+            "Carrie",
+            "Meta",
+            "Mondo Cane",
+            "Tachy",
+            "Raven"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2025-03-05",
+          "title": "HTML Great Book and new social roles",
+          "what_happened": "The Chronicle reports 52 potatoes and 167 dwellers; says the Great Book HTML transformation had begun the previous day; Kira/Kaspiansee become counselors, Raven is named Princess, and Rahu is appointed admin.",
+          "co_present": [
+            "Tim Dooley",
+            "Rahu",
+            "Kira",
+            "Kaspiansee",
+            "Raven"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [
+        {
+          "date": "Feb 26 2025",
+          "count": 3
+        },
+        {
+          "date": "March 5, 2025",
+          "count": 4
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "Feb 26 2025",
+          "count": 3
+        },
+        {
+          "date": "March 5, 2025",
+          "count": 4
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "Anja is a threshold file: her arrival is preserved inside an already tense boundary dispute, and later appearances place her near broader conflict calls and changing community roles rather than one stable faction.",
@@ -161,7 +324,14 @@
       "The relationship after March 2025 and any durable bridge role remain unclear."
     ],
     "relationship_arc": "arrival through a conflict boundary → recurring witness/bridge presence → later continuity unresolved",
-    "confidence_note": "Good confidence in dated Chronicle placement; thin direct-speech evidence."
+    "confidence_note": "Good confidence in dated Chronicle placement; thin direct-speech evidence.",
+    "evidence_density": {
+      "chronicle_mentions": 7,
+      "indexed_chronicle_dates": 2,
+      "expanded_day_level_cases": 3,
+      "unexpanded_indexed_dates": 0
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
