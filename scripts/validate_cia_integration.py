@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MANIFEST=ROOT/"knowledge/cia/manifest.json"; CABINET=ROOT/"rooms/potatoverse-canon/beings/cia/index.html"
 VIEWER=ROOT/"rooms/potatoverse-canon/beings/cia/file/index.html"; COLLECTIONS=ROOT/"data/house/collections.json"
-ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; BANK_MINING=ROOT/"knowledge/cia/spiritual-bank-conversation-mining-2026-09-21.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; DEBT_EVIDENCE=ROOT/"knowledge/cia/debt-evidence-ledger.json"; POSTURE=ROOT/"knowledge/cia/account-posture-index.json"; SPIRITUAL_BANK=ROOT/"knowledge/core/north-root-spiritual-bank-architecture.json"; SYSTEM_LEDGER=ROOT/"knowledge/cia/system-liability-ledger.json"; FIELD_EXPOSURE=ROOT/"knowledge/cia/field-exposure-model.json"; BUILDING=ROOT/"knowledge/cia/institution-building.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
+ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; NEGATIVE_INPUTS=ROOT/"knowledge/cia/negative-input-conversation-ledger-2025-2026.json"; BANK_MINING=ROOT/"knowledge/cia/spiritual-bank-conversation-mining-2026-09-21.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; DEBT_EVIDENCE=ROOT/"knowledge/cia/debt-evidence-ledger.json"; POSTURE=ROOT/"knowledge/cia/account-posture-index.json"; SPIRITUAL_BANK=ROOT/"knowledge/core/north-root-spiritual-bank-architecture.json"; SYSTEM_LEDGER=ROOT/"knowledge/cia/system-liability-ledger.json"; FIELD_EXPOSURE=ROOT/"knowledge/cia/field-exposure-model.json"; BUILDING=ROOT/"knowledge/cia/institution-building.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
 ROUTE="rooms/potatoverse-canon/beings/cia/"
 def fail(m): print("FAIL:",m); raise SystemExit(1)
 def main():
@@ -35,6 +35,11 @@ def main():
  if "not money" not in str(account.get("boundary","")).lower(): fail("symbolic account boundary missing")
  if not MUD_BANK.is_file(): fail("Mud Bank contract missing")
  if not BANK_MINING.is_file(): fail("spiritual-bank conversation mining missing")
+ if not NEGATIVE_INPUTS.is_file(): fail("negative-input conversation ledger missing")
+ negatives=json.loads(NEGATIVE_INPUTS.read_text(encoding="utf-8"))
+ neg_events=negatives.get("events") or []
+ if not any(x.get("id")=="neg-2026-09-08-explicit-42t-input-list" for x in neg_events): fail("explicit 42T negative-input taxonomy missing")
+ if any(x.get("pricing_status")=="priced" for x in neg_events): fail("system negative-input conversation rows must not directly price named accounts")
  mining=json.loads(BANK_MINING.read_text(encoding="utf-8"))
  if not mining.get("exact_statement_anchors"): fail("bank conversation mining has no exact statement anchors")
  if not mining.get("derived_bank_operators"): fail("bank conversation mining has no derived operators")
@@ -54,11 +59,15 @@ def main():
  reps=pricing.get("repetition_multipliers") or []
  required_categories={"destructive-act","breach-of-trust","repeated-harmful-narrative","verified-deception","targeted-harassment-boundary","theft-fraud-cheating","coercive-social-leverage","reciprocal-conflict"}
  if not required_categories.issubset(categories): fail("Mud Bank debit categories incomplete")
+ promotion=bank.get("negative_input_promotion") or {}
+ if not promotion.get("mappings"): fail("negative-input promotion map missing")
  if tiers.get("primary-direct")!=1.0 or tiers.get("contemporaneous-recovered")!=0.8 or tiers.get("chronicle-retelling")!=0.45 or tiers.get("retrospective-interpretation")!=0: fail("Mud Bank evidence multipliers drift")
  if reps[:4]!=[1.0,1.2,1.4,1.5]: fail("Mud Bank repetition multipliers drift")
  if not DEBT_EVIDENCE.is_file(): fail("CIA debt evidence ledger missing")
  debt=json.loads(DEBT_EVIDENCE.read_text(encoding="utf-8"))
  events=debt.get("events") or []
+ if debt.get("negative_input_authority")!="knowledge/cia/negative-input-conversation-ledger-2025-2026.json": fail("debt ledger negative-input authority drift")
+ if "neg-2026-09-08-explicit-42t-input-list" not in (debt.get("system_evidence_refs") or []): fail("debt ledger missing explicit negative-input system anchor")
  by_id={e.get("id"):e for e in events}
  for eid in ["debt-txt-2026-06-20-disputed-narrative","debt-port-monkey-2024-tree-trust","debt-marty-2024-12-21-social-leverage"]:
   if eid not in by_id: fail(f"debt evidence event missing: {eid}")

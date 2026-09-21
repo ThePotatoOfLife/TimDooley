@@ -288,5 +288,62 @@
       "Entanglement topology may be counted before any price is assigned.",
       "Every promoted operator retains provenance depth."
     ]
+  },
+  "negative_input_promotion": {
+    "source": "knowledge/cia/negative-input-conversation-ledger-2025-2026.json",
+    "principle": "Tim's debt-causation vocabulary is evidence for what the project treats as a negative input; it is not by itself enough to price a person.",
+    "mappings": [
+      {
+        "input": "accusation / smear",
+        "candidate_category": "repeated-harmful-narrative",
+        "requirement": "dated circulation/repetition event; pricing is for circulation impact, not a truth ruling"
+      },
+      {
+        "input": "circling / pursuit",
+        "candidate_category": "targeted-harassment-boundary",
+        "requirement": "specific target + repeated pursuit/contact + source-bounded boundary pressure"
+      },
+      {
+        "input": "dog-piling",
+        "candidate_category": "targeted-harassment-boundary",
+        "requirement": "distinct multi-party or repeated targeting evidence; do not infer coordination from shared opinion"
+      },
+      {
+        "input": "broken promise / covenant",
+        "candidate_category": "breach-of-trust",
+        "requirement": "specific promise/duty + counterparty + source showing non-performance or breach"
+      },
+      {
+        "input": "betrayal / obstruction / blocked exit",
+        "candidate_category": "breach-of-trust or coercive-social-leverage",
+        "requirement": "concrete act and relationship context; choose one category to avoid double charging"
+      },
+      {
+        "input": "rock / stone / mud throwing",
+        "candidate_category": "context-dependent",
+        "requirement": "metaphor alone is zero-weight; price only the underlying sourced act"
+      },
+      {
+        "input": "wasted time",
+        "candidate_category": "consequence-only",
+        "requirement": "not a standalone debit; may document consequence/severity of another sourced event"
+      },
+      {
+        "input": "attention extraction / suffering as entertainment",
+        "candidate_category": "context-dependent",
+        "requirement": "specific exploitative act, benefit/extraction mechanism and source; system metaphor remains unpriced"
+      },
+      {
+        "input": "seed of death / strife propagation",
+        "candidate_category": "mechanism-only",
+        "requirement": "zero-weight until a distinct sourced act such as repeated harmful narrative or targeted harassment is identified"
+      },
+      {
+        "input": "abomination / insolence / vomit / Dog / Farmer / Footstool",
+        "candidate_category": "none-by-label",
+        "requirement": "labels and moral language never create a debit without an underlying concrete act"
+      }
+    ],
+    "anti_double_count": "One incident receives at most one priced negative category even if Tim described it with several negative-input metaphors."
   }
 }
