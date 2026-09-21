@@ -56,5 +56,16 @@
     "Do not use population projections in place of observed BEFOLK3 population.",
     "Do not calculate area from simplified display geometry; use ARE207.",
     "If population density is shown, derive it from the sourced BEFOLK3 population and ARE207 area and label it derived."
-  ]
-}
+  ],
+  "importer": {
+    "script": "scripts/import_world_subdivision_statistics.py",
+    "status": "blocked-until-statbank-area-codes-verified",
+    "required_join_fields": [
+      "subdivision_id",
+      "name",
+      "statbank_area_code"
+    ],
+    "output_status": "review-required-generated-statistics",
+    "rule": "A real sidecar may not be generated from name-only matching; verified StatBank geography codes are required."
+  }
+}\n
