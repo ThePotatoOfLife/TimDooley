@@ -44,11 +44,11 @@
     },
     {
       "id": "unresolved-handles",
-      "label": "Unresolved / throwaway accounts",
+      "label": "Orphan / hollow / unresolved handles",
       "measurable": "when separately evidenced",
       "current_count": null,
       "unit": "distinct unresolved counterparties",
-      "accounting": "hold unpriced until a stable distinct counterparty and event are recovered"
+      "accounting": "count only stable observed handles; no-PFP or anonymity alone remains zero-weight"
     },
     {
       "id": "observed-network",
@@ -89,8 +89,9 @@
       "source_class": "user-supplied hypothetical",
       "verified": false,
       "share_of_us_population_pct": 0.028873722614142974,
-      "meaning": "Useful only as a scenario showing how a large handle cloud can still be tiny relative to the national population.",
-      "warning": "Do not claim 99,000 fake accounts exist unless platform/source evidence is recovered."
+      "meaning": "Symbolic riff on '99 problems' and a placeholder for a potentially large hollow/throwaway account cloud; not a census.",
+      "warning": "Do not claim 99,000 fake accounts exist unless platform/source evidence is recovered.",
+      "label": "99,000 orphan-account scenario"
     },
     "subculture_population_share_pct": {
       "value": null,
@@ -196,5 +197,6 @@
     "Aliases, fake accounts and throwaways must be deduplicated before any counterparty count.",
     "The 99,000-handle figure is a user-supplied scenario assumption, not verified evidence.",
     "No model may infer individual debt from nationality, culture, subculture, politics, religion or audience membership."
-  ]
+  ],
+  "orphan_clearing_ledger": "knowledge/cia/orphan-clearing-ledger.json"
 }
