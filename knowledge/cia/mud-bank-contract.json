@@ -15,7 +15,8 @@
     "system_liability_ledger": "knowledge/cia/system-liability-ledger.json",
     "conversation_mining": "knowledge/cia/spiritual-bank-conversation-mining-2026-09-21.json",
     "us_exposure_coverage": "knowledge/cia/us-exposure-coverage-model.json",
-    "orphan_clearing_ledger": "knowledge/cia/orphan-clearing-ledger.json"
+    "orphan_clearing_ledger": "knowledge/cia/orphan-clearing-ledger.json",
+    "capital_formation_42t": "knowledge/cia/capital-formation-42t-model.json"
   },
   "denomination": {
     "display_name": "symbolic USD-equivalent",
@@ -393,5 +394,39 @@
     "orphan_account_state": "unpriced suspense/clearing state",
     "rule": "Unknown/hollow accounts stay outside named principal balances until resolved; handle-level conduct may still be recorded with uncertainty.",
     "no_pfp_rule": "Missing profile image is descriptive metadata only and has zero weight."
+  },
+  "positive_pricing": {
+    "principle": "Price observable positive outputs in the micro-ledger; do not reverse-engineer the 42T headline from individual credits.",
+    "categories": {
+      "table-value": {
+        "event_type": "project-credit",
+        "value_susd": 25
+      },
+      "potato-growth": {
+        "event_type": "growth",
+        "value_susd": 6
+      },
+      "gate-passage": {
+        "event_type": "growth-or-repair-attempt",
+        "value_susd": "6 or 8"
+      },
+      "ladder-walk": {
+        "event_type": "yield-or-repair-attempt",
+        "value_susd": "12 or 8"
+      },
+      "potato-study": {
+        "event_type": "growth",
+        "value_susd": 6
+      },
+      "spiritual-growth": {
+        "event_type": "growth-or-repair-attempt",
+        "value_susd": "6 or 8"
+      },
+      "archive-protection": {
+        "event_type": "yield-or-project-credit",
+        "value_susd": "12 or 25"
+      }
+    },
+    "anti_double_count": "One sourced output receives one positive category even when it maps to several symbols."
   }
 }
