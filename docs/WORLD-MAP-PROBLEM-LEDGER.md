@@ -310,11 +310,12 @@
 **Remaining:** verify the five StatBank geography codes, capture reviewed BEFOLK3 + ARE207 exports, generate/review the first DNK statistics sidecar, then surface its source/period consistently in the region inspector before closing the item.
 
 ### WM-052 · Shared UI token convergence stops at layering — P3
-**Status:** in progress on branch `world-map-zindex-tokens-current-20260921`.  
+**Status:** in progress on branch `world-map-surface-tokens-current2-20260921`.  
 **Evidence:** semantic z-index bands are being centralized, but many map surfaces still repeat local background, border, radius, padding and shadow literals.  
 **Risk:** visual drift returns as new controls and inspectors are added, making density/mobile tuning harder.  
 **Progress:** current `main` still used raw stacking numbers despite an earlier unmerged branch. The current-main reconstruction defines semantic z-index bands for decoration, map controls, selection, context, overlays, header and menus, then migrates the shell plus primary context/investigation surfaces to those bands with validator coverage.  
-**Remaining:** introduce the smaller shared background/border/radius/spacing surface token set; do not flatten data-semantic colors or specialized visualization styling.
+**Progress continued:** shared menu/context/overlay/panel background roles plus common border, radius, shadow and blur tokens now cover the shell menu, World Bar, Country Card, Evidence, Path, Chain and Impact surfaces. Specialized semantic borders and data colors remain local rather than being flattened into generic styling.  
+**Remaining:** keep spacing/padding convergence selective, migrate later shared surfaces only when the role is genuinely common, and preserve specialist visualization semantics.
 
 ### WM-053 · Data freshness semantics are inconsistent across map families — P2
 **Status:** in progress on branch `world-map-control-plane-cleanup-current-20260921`.  
