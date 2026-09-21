@@ -36,8 +36,32 @@
       {
         "date": "2024-12-20",
         "title": "Cookbook, studio design and music memory",
+        "participants": [
+          "Tim Dooley",
+          "Termite",
+          "Potato Repair Guy",
+          "Ledgeview",
+          "Kale",
+          "Hetero God",
+          "Marty"
+        ],
         "minimum_event": "Potato Repair Guy proposes a community potato cookbook; Ledgeview suggests studio-wall symmetry; Termite repeats growth language; Kale/Ledgeview remember or propose songs/performances.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "community ↔ co-creation",
+          "food ↔ archive",
+          "studio ↔ visual identity",
+          "music ↔ memory"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Termite",
+          "Ledgeview",
+          "Kale",
+          "Hetero God",
+          "Marty"
+        ]
       }
     ]
   },
@@ -84,12 +108,17 @@
     {
       "type": "dated_social_ledger",
       "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json",
+      "note": "Period-role transitions and cast continuity."
     }
   ],
   "recovery_leads": [
-    "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
-    "Separate direct speech from Chronicle paraphrase and later project interpretation.",
-    "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: December 20, 2024; December 21 2024.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: December 20, 2024 (4); December 21 2024 (1).",
+    "Cross-check relationship edges against dated scenes instead of raw co-presence: Tim Dooley, Termite, Ledgeview, Kale, Hetero God, Marty."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -109,7 +138,58 @@
       "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
       "Separate direct speech from Chronicle paraphrase and later project interpretation.",
       "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 5,
+      "chronicle_distinct_dates": 2,
+      "expanded_social_ledger_cases": 1,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "Potato Repair Guy currently has 5 indexed Chronicle mentions across 2 Chronicle dates, 1 expanded day-level social cases.",
+      "cases": [
+        {
+          "date": "2024-12-20",
+          "title": "Cookbook, studio design and music memory",
+          "what_happened": "Potato Repair Guy proposes a community potato cookbook; Ledgeview suggests studio-wall symmetry; Termite repeats growth language; Kale/Ledgeview remember or propose songs/performances.",
+          "co_present": [
+            "Tim Dooley",
+            "Termite",
+            "Ledgeview",
+            "Kale",
+            "Hetero God",
+            "Marty"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [
+        {
+          "date": "December 20, 2024",
+          "count": 4
+        },
+        {
+          "date": "December 21 2024",
+          "count": 1
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "December 20, 2024",
+          "count": 4
+        },
+        {
+          "date": "December 21 2024",
+          "count": 1
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "Potato Repair Guy is a small but concrete repair/build file: the name survives in a cookbook proposal and warning/repair framing, making constructive contribution more meaningful than inflating a sparse biography.",
@@ -126,7 +206,14 @@
       "No basis exists for a larger biography yet."
     ],
     "relationship_arc": "brief repair/warning presence → concrete cookbook/build contribution → sparse later recurrence",
-    "confidence_note": "High on the cookbook proposal; otherwise deliberately thin."
+    "confidence_note": "High on the cookbook proposal; otherwise deliberately thin.",
+    "evidence_density": {
+      "chronicle_mentions": 5,
+      "indexed_chronicle_dates": 2,
+      "expanded_day_level_cases": 1,
+      "unexpanded_indexed_dates": 1
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
