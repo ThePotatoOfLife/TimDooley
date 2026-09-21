@@ -319,7 +319,8 @@
 **Evidence:** ADL has an explicit historical-snapshot freshness model and Places records unknown upstream refresh, while other empirical/physical/relationship layers expose date/status in different forms or not at the same UI level.  
 **Risk:** “current”, “latest available”, “historical”, “delayed”, and “unknown vintage” can look equivalent to readers.  
 **Progress:** added one explicit-only freshness vocabulary (`current`, `latest-available`, `delayed`, `historical`, `stale`, `unknown-vintage`, `planned`) plus runtime normalization. Evidence/ADL and Places consume the shared owner; local build dates do not imply upstream currentness and provider availability remains separate.  
-**Remaining:** project the same semantics into additional empirical reader surfaces and Current Map context before closing the item.
+**Progress continued:** the freshness owner now accepts active providers. Evidence layers and visible Places register their current status, and the canonical World Bar Current Map View projects one compact `Data status` row with status + observation marker when known.  
+**Remaining:** register future empirical/conflict data families as they become reader-facing and decide whether country-record freshness should project at the same global-view level before closing the item.
 
 
 
