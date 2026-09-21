@@ -67,9 +67,9 @@ def main()->int:
         if not path.is_file():
             errors.append(f"{sid} source surface missing: {path.relative_to(ROOT)}"); continue
         visible=STYLE_SCRIPT.sub("",path.read_text(encoding="utf-8",errors="replace"))
-        h1=H1.search(visible); h2=H2.search(visible); hrefs=HREF.findall(visible)
+        h1=H1.search(visible); h2=H2.search(visible); hrefs=ANCHOR_HREF.findall(visible)
         first_h2=h2.start() if h2 else len(visible)
-        pre_links=count_before(visible,first_h2,HREF); pre_buttons=count_before(visible,first_h2,BUTTON)
+        pre_links=count_before(visible,first_h2,ANCHOR_HREF); pre_buttons=count_before(visible,first_h2,BUTTON)
         internal=[resolve_href(route,h) for h in hrefs]; internal=[x for x in internal if x]
         registered_targets={x for x in internal if x in registered_routes and x!=route}; target_sets[sid]=registered_targets
         counts=Counter(internal); repeated=sorted((t,c) for t,c in counts.items() if c>=4)
