@@ -82,6 +82,9 @@ def main() -> int:
             "--atlas-z-tint:1", "--atlas-z-decoration:2", "--atlas-z-axis:3",
             "--atlas-z-map-control:4", "--atlas-z-selection:6", "--atlas-z-context:7",
             "--atlas-z-overlay:8", "--atlas-z-header:10", "--atlas-z-menu:30",
+            "--atlas-surface-menu-bg:", "--atlas-surface-context-bg:", "--atlas-surface-overlay-bg:",
+            "--atlas-surface-panel-bg:", "--atlas-surface-border:", "--atlas-surface-radius:",
+            "--atlas-surface-shadow:", "--atlas-surface-blur:",
             "z-index:var(--atlas-z-header,10)", "z-index:var(--atlas-z-menu,30)",
             "z-index:var(--atlas-z-map-control,4)",
         ):
