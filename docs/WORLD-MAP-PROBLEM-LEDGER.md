@@ -305,7 +305,8 @@
 **Evidence:** newer partitions intentionally preserve unknown population/area/density instead of fabricating values; this is correct but leaves regional comparison depth uneven.  
 **Risk:** users can select a region but receive mostly identity/provenance while other regions expose richer statistics.  
 **Progress:** added a separate ADM1 statistics contract/index/runtime joined by stable subdivision ID. Enrichment clones canonical features, allows only population/area/density metrics with source/period/reference metadata, preserves geometry provenance, and explicitly labels enriched area as not calculated from display geometry. Regression coverage proves canonical input is not mutated.  
-**Remaining:** add the first reviewed real statistics dataset for a geometry-first partition and surface its source/period consistently in the region inspector before closing the item.
+**Progress continued:** a generic reviewed-export importer now accepts separate population/area tables, requires verified source geography codes in the acquisition contract, hashes both inputs, rejects missing/duplicate/unexpected region rows, preserves source table/code metadata, and fails closed while Denmark's StatBank codes remain unverified.  
+**Remaining:** verify the five StatBank geography codes, capture reviewed BEFOLK3 + ARE207 exports, generate/review the first DNK statistics sidecar, then surface its source/period consistently in the region inspector before closing the item.
 
 ### WM-052 · Shared UI token convergence stops at layering — P3
 **Status:** in progress on branch `world-map-zindex-tokens-current-20260921`.  
