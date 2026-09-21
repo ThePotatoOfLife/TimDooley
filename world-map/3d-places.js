@@ -747,6 +747,11 @@ async function initialize() {
 styleLifecycle?.register?.('places', { priority:50, restore:() => { queueMicrotask(restoreAfterStyleGeneration); } });
 
 const ready = initialize();
+freshness.register('places', () => {
+  if (!visible || !indexPayload) return [];
+  return [{ id:'places', label:'Places', meta:indexPayload }];
+});
+
 window.__potatoAtlasPlaces = {
   ready,
   setVisible,

@@ -50,6 +50,36 @@ function describe(meta={}) {
     : 'Exact upstream observation/refresh vintage is unknown';
   return Object.freeze({key,label,asOf,detail});
 }
-window.__potatoAtlasFreshness = Object.freeze({ describe, labels:{...LABELS} });
+const providers = new Map();
+function providerRows(id, provider) {
+  let rows = [];
+  try { rows = provider?.() || []; } catch (error) { console.warn(`Freshness provider failed: ${id}`, error); }
+  if (!Array.isArray(rows)) rows = rows ? [rows] : [];
+  return rows.filter(Boolean).map((row, index) => ({
+    id:String(row.id || `${id}:${index}`),
+    label:String(row.label || row.id || id),
+    owner:id,
+    freshness:describe(row.meta || row),
+  }));
+}
+function register(id, provider) {
+  const key=String(id || '').trim();
+  if (!key || typeof provider !== 'function') return false;
+  providers.set(key, provider);
+  window.dispatchEvent?.(new CustomEvent('potato-atlas-freshness-change', {detail:{owner:key,action:'register'}}));
+  return true;
+}
+function unregister(id) {
+  const key=String(id || '').trim();
+  const changed=providers.delete(key);
+  if (changed) window.dispatchEvent?.(new CustomEvent('potato-atlas-freshness-change', {detail:{owner:key,action:'unregister'}}));
+  return changed;
+}
+function active() {
+  return [...providers.entries()]
+    .flatMap(([id, provider]) => providerRows(id, provider))
+    .sort((a,b)=>a.label.localeCompare(b.label) || a.id.localeCompare(b.id));
+}
+window.__potatoAtlasFreshness = Object.freeze({ describe, labels:{...LABELS}, register, unregister, active });
 window.dispatchEvent?.(new CustomEvent('potato-atlas-freshness-ready'));
 export { describe };

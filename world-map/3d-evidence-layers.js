@@ -182,6 +182,11 @@ window.addEventListener('potato-atlas-adl-heat-change',event=>{
   emit('adapter-sync','adl-heat');
 });
 
+freshness.register('evidence-layers', () => active().map(id => {
+  const row=entry(id);
+  return row ? { id:`evidence:${id}`, label:row.label || id, meta:row } : null;
+}).filter(Boolean));
+
 const ready=load();
 window.__potatoAtlasEvidenceLayers={
   ready,

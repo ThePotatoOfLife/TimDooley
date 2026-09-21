@@ -112,7 +112,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The curr
 - [x] Map architecture-auditor finding codes to ledger IDs, owner and severity; actionable unmapped findings now fail the architecture audit.
 - [ ] Add regional-statistics enrichment as an optional sourced layer; keep geometry-first partitions useful when population/area/density remain unknown.
 - [ ] Continue design-token convergence beyond z-index into shared surface/background/border/radius/spacing tokens without flattening semantic distinctions.
-- [~] Add a common freshness/status vocabulary for data-backed layers. Evidence/ADL and Places now consume shared explicit-only freshness semantics; extend them to other empirical reader surfaces.
+- [~] Add a common freshness/status vocabulary for data-backed layers. Evidence/ADL and Places now register shared freshness and Current Map projects active `Data status`; extend the provider contract to future empirical/conflict reader surfaces.
 
 
 ## NEXT — RENDER + UI CONVERGENCE
