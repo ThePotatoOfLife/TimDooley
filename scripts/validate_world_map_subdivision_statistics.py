@@ -12,7 +12,7 @@ SOURCES=ROOT/"data/world-subdivisions/statistics/sources"
 
 def main():
     errors=[]
-    for p in (INDEX,CONTRACT,RUNTIME,SUBDIV,TEST):
+    for p in (INDEX,CONTRACT,RUNTIME,SUBDIV,TEST,IMPORTER,IMPORTER_TEST):
         if not p.is_file(): errors.append(f"missing {p.relative_to(ROOT)}")
     if errors:
         print("WORLD MAP SUBDIVISION STATISTICS VALIDATION FAILED"); [print("-",e) for e in errors]; return 1
