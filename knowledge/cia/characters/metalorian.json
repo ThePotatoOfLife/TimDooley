@@ -57,20 +57,82 @@
       {
         "date": "2025-02-08",
         "title": "Community counts enter the Chronicle",
+        "participants": [
+          "Tim Dooley",
+          "Sammy",
+          "Meta"
+        ],
         "minimum_event": "The Chronicle claims 38 potatoes, nearly 200 dwellers and a recent stream of roughly 100 viewers. Preserve these as Chronicle-reported counts pending platform/server verification.",
-        "source_mode": "chronicle_reported_counts"
+        "connections": [
+          "identity badges ↔ measurable community",
+          "presence ↔ counts"
+        ],
+        "source_mode": "chronicle_reported_counts",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Sammy"
+        ]
       },
       {
         "date": "2025-02-27",
         "title": "Three conflict calls",
+        "participants": [
+          "Tim Dooley",
+          "Supersusi87",
+          "Ansja",
+          "Carrie",
+          "Meta",
+          "Mondo Cane",
+          "Tachy",
+          "Raven"
+        ],
         "minimum_event": "The Chronicle organizes three separate social conflicts/calls on one day. It calls them 'rituals'; that is the author's interpretation, while the bounded calls and named participants are the recoverable historical targets.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "Supersusi ↔ severance",
+          "Ansja ↔ continued guidance",
+          "Meta ↔ second-call conflict",
+          "Tachy ↔ third-call server"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Supersusi87",
+          "Ansja",
+          "Carrie",
+          "Mondo Cane",
+          "Tachy",
+          "Raven"
+        ]
       },
       {
         "date": "2025-03-01",
         "title": "Sammy returns; Masha is born through TTS",
+        "participants": [
+          "Tim Dooley",
+          "Sammy",
+          "TXT",
+          "Meta",
+          "PKFC",
+          "Masha"
+        ],
         "minimum_event": "The Chronicle says Sammy returned to the Garden. During a long quiet stream period Tim created Masha, a fictional woman voiced through his TTS program.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "silence ↔ creation",
+          "TTS ↔ character embodiment",
+          "Sammy ↔ return",
+          "fiction ↔ livestream presence"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Sammy",
+          "TXT",
+          "PKFC",
+          "Masha"
+        ]
       }
     ]
   },
@@ -157,9 +219,9 @@
     }
   ],
   "recovery_leads": [
-    "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
-    "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
-    "Add relationship edges only when a dated scene or explicit source supports them."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: November 4, 2024; November 7, 2024; November 17, 2024; November 28, 2024; December 15, 2024; Feb 8 2025; Feb 26 2025; March 1 2025; March 12, 2025.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: November 17, 2024 (2); March 12, 2025 (2); November 4, 2024 (1); November 7, 2024 (1); November 28, 2024 (1).",
+    "Cross-check relationship edges against dated scenes instead of raw co-presence: Tim Dooley, Sammy, Supersusi87, Ansja, Carrie, Mondo Cane."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -187,7 +249,155 @@
       "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
       "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
       "Add relationship edges only when a dated scene or explicit source supports them."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 11,
+      "chronicle_distinct_dates": 9,
+      "expanded_social_ledger_cases": 3,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [
+        {
+          "period": "around 2017",
+          "role": "retrospective warning/adversarial lead; primary interaction and warning wording still need recovery"
+        },
+        {
+          "period": "2018-2019 retrospective",
+          "role": "later manuscripts use Meta in narrative-control/framing interpretations, sometimes alongside TXT"
+        },
+        {
+          "period": "2023 later meaning",
+          "role": "later Great Book timeline places Metalorian suffering near Cube/karmic interpretation; not same-day evidence"
+        }
+      ],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "Metalorian currently has 11 indexed Chronicle mentions across 9 Chronicle dates, 3 expanded day-level social cases.",
+      "cases": [
+        {
+          "date": "2025-02-08",
+          "title": "Community counts enter the Chronicle",
+          "what_happened": "The Chronicle claims 38 potatoes, nearly 200 dwellers and a recent stream of roughly 100 viewers. Preserve these as Chronicle-reported counts pending platform/server verification.",
+          "co_present": [
+            "Tim Dooley",
+            "Sammy"
+          ],
+          "source_mode": "chronicle_reported_counts",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2025-02-27",
+          "title": "Three conflict calls",
+          "what_happened": "The Chronicle organizes three separate social conflicts/calls on one day. It calls them 'rituals'; that is the author's interpretation, while the bounded calls and named participants are the recoverable historical targets.",
+          "co_present": [
+            "Tim Dooley",
+            "Supersusi87",
+            "Ansja",
+            "Carrie",
+            "Mondo Cane",
+            "Tachy",
+            "Raven"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2025-03-01",
+          "title": "Sammy returns; Masha is born through TTS",
+          "what_happened": "The Chronicle says Sammy returned to the Garden. During a long quiet stream period Tim created Masha, a fictional woman voiced through his TTS program.",
+          "co_present": [
+            "Tim Dooley",
+            "Sammy",
+            "TXT",
+            "PKFC",
+            "Masha"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [
+        {
+          "date": "November 4, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 7, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 17, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 28, 2024",
+          "count": 1
+        },
+        {
+          "date": "December 15, 2024",
+          "count": 1
+        },
+        {
+          "date": "Feb 8 2025",
+          "count": 1
+        },
+        {
+          "date": "Feb 26 2025",
+          "count": 1
+        },
+        {
+          "date": "March 1 2025",
+          "count": 1
+        },
+        {
+          "date": "March 12, 2025",
+          "count": 2
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "November 4, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 7, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 17, 2024",
+          "count": 2
+        },
+        {
+          "date": "November 28, 2024",
+          "count": 1
+        },
+        {
+          "date": "December 15, 2024",
+          "count": 1
+        },
+        {
+          "date": "Feb 8 2025",
+          "count": 1
+        },
+        {
+          "date": "Feb 26 2025",
+          "count": 1
+        },
+        {
+          "date": "March 1 2025",
+          "count": 1
+        },
+        {
+          "date": "March 12, 2025",
+          "count": 2
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "Metalorian is primarily an evidence-discipline file: serious retrospective allegations and symbolic interpretations exist, but the original interaction layer is much thinner than the later narrative built around it.",
@@ -206,7 +416,14 @@
       "The relation between early retrospective material and later 2025 social appearances needs reconstruction."
     ],
     "relationship_arc": "early retrospective warning/conflict lead → later framing mythology → 2025 recurrence in conflict/social archive",
-    "confidence_note": "High confidence that the project contains these retrospective layers; low-to-medium confidence in the underlying historical claims until primary sources are recovered."
+    "confidence_note": "High confidence that the project contains these retrospective layers; low-to-medium confidence in the underlying historical claims until primary sources are recovered.",
+    "evidence_density": {
+      "chronicle_mentions": 11,
+      "indexed_chronicle_dates": 9,
+      "expanded_day_level_cases": 3,
+      "unexpanded_indexed_dates": 6
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
