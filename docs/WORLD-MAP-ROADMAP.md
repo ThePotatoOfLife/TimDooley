@@ -107,7 +107,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The curr
 - [x] Retire dormant `3d-fields.js` / `3d-networks.js`: live symbolic operators now use Layer Registry state; obsolete render/control modules are deleted while underlying datasets remain available for future registry expansion.
 - [~] Expand subdivision + bounded Places depth beyond the current five promoted countries. Germany now has a reviewed official BKG ADM1 acquisition contract; geometry + bounded DEU Places promotion remain.
 - [ ] Replace the GeoNames mirror seed with a reviewed fresh canonical build; preserve source date, build date and upstream freshness separately.
-- [ ] Promote at least one reviewed delayed/historical conflict snapshot with source bundle, date semantics and explicit not-live boundary before exposing Conflict as current functionality.
+- [~] Promote at least one reviewed delayed/historical conflict snapshot. A guarded UCDP GED 26.1 coarse-event-aggregate acquisition/import path is now in progress; official source bytes and first reviewed snapshot remain before activation.
 - [~] Add behavioral viewport scenarios for globe mode, narrow screens, dense regional labels, detached geography and region→Places handoff. A combined narrow+globe+region+Places contract regression is now in progress; browser-level occlusion/detached-geography proof remains.
 - [x] Map architecture-auditor finding codes to ledger IDs, owner and severity; actionable unmapped findings now fail the architecture audit.
 - [ ] Add regional-statistics enrichment as an optional sourced layer; keep geometry-first partitions useful when population/area/density remain unknown.
