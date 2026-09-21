@@ -301,11 +301,11 @@
 **Completion guard:** future actionable finding codes must be mapped before CI can pass.
 
 ### WM-051 · Geometry-first regional statistics remain uneven — P3
-**Status:** verified functionality-depth gap (2026-09-21).  
+**Status:** in progress on branch `world-map-subdivision-statistics-current-20260921`.  
 **Evidence:** newer partitions intentionally preserve unknown population/area/density instead of fabricating values; this is correct but leaves regional comparison depth uneven.  
 **Risk:** users can select a region but receive mostly identity/provenance while other regions expose richer statistics.  
-**TODO:** define an optional sourced ADM1 statistics enrichment contract independent from boundary geometry, including period/source/missingness and join confidence.  
-**Completion:** at least one geometry-first partition can accept sourced statistics without mutating or pretending they came from the boundary source.
+**Progress:** added a separate ADM1 statistics contract/index/runtime joined by stable subdivision ID. Enrichment clones canonical features, allows only population/area/density metrics with source/period/reference metadata, preserves geometry provenance, and explicitly labels enriched area as not calculated from display geometry. Regression coverage proves canonical input is not mutated.  
+**Remaining:** add the first reviewed real statistics dataset for a geometry-first partition and surface its source/period consistently in the region inspector before closing the item.
 
 ### WM-052 · Shared UI token convergence stops at layering — P3
 **Status:** in progress on branch `world-map-zindex-tokens-current-20260921`.  
