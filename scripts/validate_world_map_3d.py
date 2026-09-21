@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the 3D World Relational Atlas renderer and its runtime/data contracts."""
+"""Validate the canonical World Map renderer and its runtime/data contracts."""
 from __future__ import annotations
 
 import json
@@ -9,7 +9,7 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-HTML = ROOT / "world-map" / "3d.html"
+HTML = ROOT / "world-map" / "index.html"
 APP = ROOT / "world-map" / "3d-app.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
@@ -81,9 +81,9 @@ def main() -> int:
     world = load_json(WORLD, errors)
     countries = load_json(COUNTRIES, errors)
 
-    fail_if_missing(html, ('id="map"','id="panel"','id="status"','id="search"','id="country-list"','id="height"','id="compare"','id="interior"','id="relations"','id="relationType"','id="traceDepth"','id="fit"','id="tilt"','id="globe"','id="world"','id="layersMenu"','id="traceMenu"','id="timeMenu"','id="viewMenu"','id="panelToggle"','id="focusMode"','id="timeMode"','id="timeDate"','id="timeDate2"','id="atlasTimeState"','class="app panel-collapsed"','src="./3d-hover.js"','src="./3d-pathfinder.js"','src="./3d-evidence.js"','src="./3d-time.js"',"Geography, graph topology, project hierarchy and time are separate coordinates"),"world-map/3d.html",errors)
+    fail_if_missing(html, ('id="map"','id="panel"','id="status"','id="search"','id="country-list"','id="height"','id="compare"','id="interior"','id="relations"','id="relationType"','id="traceDepth"','id="fit"','id="tilt"','id="globe"','id="world"','id="layersMenu"','id="traceMenu"','id="timeMenu"','id="viewMenu"','id="panelToggle"','id="focusMode"','id="timeMode"','id="timeDate"','id="timeDate2"','id="atlasTimeState"','class="app panel-collapsed"','src="./3d-hover.js"','src="./3d-pathfinder.js"','src="./3d-evidence.js"','src="./3d-time.js"',"Geography, graph topology, project hierarchy and time are separate coordinates"),"world-map/index.html",errors)
     fail_if_missing(bootstrap,("ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v')","function versionedModule","await import(versionedModule('./3d-hover.js'))","waitForCore","countries-fill","window.__potatoAtlasReady","Path finder","Demography","Country selection","Country Pulse","declareDormant('Evidence'","declareDormant('Time'","declareDormant('Axis depth'","declareDormant('Axis operators'","declareDormant('North Axis'","potato-atlas-interactive","__potatoAtlasDiagnostics","deploymentVersion"),"world-map/3d-bootstrap.js",errors)
-    fail_if_missing(selection,("pinnedCodes","activeCode","function togglePinnedCountry","function pinCountry","function unpinCountry","function automaticRelationData","urlState.patch('selection-inspector'","selection-chip","data-country-code","clearAll","__potatoAtlasSelection","automaticRelationBudget","DEFAULT_AUTO_RELATION_BUDGET"),"world-map/3d-country-selection.js",errors)
+    fail_if_missing(selection,("pinnedCodes","activeCode","function togglePinnedCountry","function pinCountry","function unpinCountry","function automaticRelationData","urlState.patch('selection-inspector'","selection-chip","data-country-code","clearAll","__potatoAtlasSelection","automaticRelationBudget","DEFAULT_AUTO_RELATION_BUDGET","setAutomaticRelationBudget","getAutomaticRelationBudget"),"world-map/3d-country-selection.js",errors)
     fail_if_missing(pulse,("Country Pulse","GDP per capita","Inflation","Unemployment","__potatoAtlasCountryPulse","More statistics"),"world-map/3d-country-pulse.js",errors)
     fail_if_missing(time_js,("atlas-time-contract.json","north-axis-membership-history.json","timeMode","changed_between","canonicalUrlState.patch('time'","atlas-time-change","unknownDatePolicy","No exact dated project-field snapshot is safe to apply automatically","Current project Fields and empirical Networks are not automatically rewritten as historical layers","__potatoAtlasInspectorVisibility?.setOpen","__potatoAtlasTime"),"world-map/3d-time.js",errors)
     fail_if_missing(app,("function relationEdgesFor","function edgeKey","function traceGraph","function traceRelationData","function traceHubData","function updateSpatial","function geometryBounds","function fitCodes","function toggleCompareCountry","function deselectCountry","function selectFeature","__potatoAtlasSelection","potato-atlas-selection-change","function renderCompare","function traceRows","window.openModule","window.goCountry","window.fitTrace","window.fitCompare","window.leaveCompare","TRACE_MAX_DEPTH = 3","TRACE_MAX_NODES","TRACE_MAX_EDGES","new Map([[root, 0]])","queue.shift()","visited.has(other)","__potatoAtlasUrlState","urlState.patch('selection-inspector'","compareCodes","relationType","traceDepth","trace-hubs","semantic-hubs","semantic-links","compare-hubs","relations","maplibre-gl@6.9.0","OpenStreetMap contributors","Atlas data failed to load","Breadth-first traversal","A relation line describes a typed connection","Project-canon material is separate from empirical country data","documented physical/public finance"),"world-map/3d-app.js",errors)

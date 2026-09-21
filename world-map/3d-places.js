@@ -16,6 +16,8 @@ const motion = window.__potatoAtlasMotion;
 if (!window.__potatoAtlasGeo) await import('./3d-geo-kernel.js');
 const geo = window.__potatoAtlasGeo;
 if (!geo?.pointInGeometry) throw new Error('Places requires the shared geospatial containment kernel.');
+if (!window.__potatoAtlasFreshness) await import('./3d-data-freshness.js');
+const freshness = window.__potatoAtlasFreshness;
 
 const DATA_ROOT = '../data/world-places/';
 const INDEX_URL = `${DATA_ROOT}index.json`;
@@ -258,6 +260,7 @@ function renderInspector(feature) {
   const populationPeriod = p.population_period || '—';
   const country = p.country_name || p.country_iso3 || '—';
   const admin = [p.admin1_name, p.admin1_code].filter(Boolean).join(' · ');
+  const freshnessView = freshness.describe({ dataset_refresh_date:p.dataset_refresh_date });
   panel.innerHTML = `
     <div class="eyebrow">Place</div>
     <h1>${esc(p.name || p.id || 'Place')}</h1>
@@ -267,7 +270,7 @@ function renderInspector(feature) {
       <div><span>Coordinates</span><b>${Number.isFinite(Number(lat)) ? Number(lat).toFixed(3) : '—'}, ${Number.isFinite(Number(lon)) ? Number(lon).toFixed(3) : '—'}</b></div>
     </div>
     ${admin ? `<p><b>Administrative region</b><br>${esc(admin)}</p>` : ''}
-    <p class="muted">Source: ${esc(p.source || 'GeoNames')}<br>Dataset refreshed: ${esc(p.dataset_refresh_date || '—')}</p>
+    <p class="muted">Source: ${esc(p.source || 'GeoNames')}<br>Freshness: ${esc(freshnessView.label)}${freshnessView.asOf ? ` · ${esc(freshnessView.asOf)}` : ''}<br>${esc(freshnessView.detail)}</p>
     <div class="panel-actions">
       <button type="button" data-place-open-country>Open country</button>
       <button type="button" data-place-close>Close place</button>
@@ -658,6 +661,7 @@ async function inSubdivision(subdivisionFeature, options = {}) {
     places,
     source:indexPayload?.source || 'GeoNames',
     datasetRefreshDate:indexPayload?.dataset_refresh_date || null,
+    freshness:freshness.describe(indexPayload || {}),
   };
 }
 
@@ -694,6 +698,7 @@ function status() {
     cacheEvictions,
     runtimeBudget:{...runtimeBudget},
     indexReady:Boolean(indexPayload),
+    freshness:freshness.describe(indexPayload || {}),
     error:lastError ? String(lastError.message || lastError) : null,
   };
 }

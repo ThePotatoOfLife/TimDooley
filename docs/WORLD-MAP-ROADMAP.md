@@ -109,10 +109,10 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The curr
 - [ ] Replace the GeoNames mirror seed with a reviewed fresh canonical build; preserve source date, build date and upstream freshness separately.
 - [ ] Promote at least one reviewed delayed/historical conflict snapshot with source bundle, date semantics and explicit not-live boundary before exposing Conflict as current functionality.
 - [~] Add behavioral viewport scenarios for globe mode, narrow screens, dense regional labels, detached geography and region→Places handoff. A combined narrow+globe+region+Places contract regression is now in progress; browser-level occlusion/detached-geography proof remains.
-- [ ] Map architecture-auditor finding codes to ledger IDs, owner and severity so CI output becomes an actionable queue instead of a parallel diagnosis.
+- [x] Map architecture-auditor finding codes to ledger IDs, owner and severity; actionable unmapped findings now fail the architecture audit.
 - [ ] Add regional-statistics enrichment as an optional sourced layer; keep geometry-first partitions useful when population/area/density remain unknown.
 - [ ] Continue design-token convergence beyond z-index into shared surface/background/border/radius/spacing tokens without flattening semantic distinctions.
-- [ ] Add a common freshness/status vocabulary for data-backed layers so historical, stale, delayed, current and unknown-vintage data read consistently in the UI.
+- [~] Add a common freshness/status vocabulary for data-backed layers. Evidence/ADL and Places now consume shared explicit-only freshness semantics; extend them to other empirical reader surfaces.
 
 
 ## NEXT — RENDER + UI CONVERGENCE
@@ -171,7 +171,7 @@ Drain only after unique behavior is preserved and tested:
 - [x] `world-map/3d-ui.js` — retired after canonical World Bar / Panel Lifecycle / presentation owners replaced its normal-boot responsibilities.
 - [x] `world-map/3d-selection-ui.js` — retired after Country Selection / Layer Registry / Country Card replaced its compatibility surface.
 - [x] old Lens ownership after registry/compositor parity — retired; canonical Layer Registry + Compositor own analytical state.
-- [ ] old Atlas naming/routing remnants
+- [~] old Atlas naming/routing remnants — canonical renderer validation now targets `world-map/index.html` directly and the source wrapper no longer monkey-patches validator behavior; internal `atlas*` identifiers remain compatibility/naming debt.
 - [ ] remaining duplicated style/lifecycle ownership not yet under Style Lifecycle
 - [ ] `__potatoAtlasOverlayHandled` after direct standalone/degraded interaction fallbacks are retired
 - [ ] stale generated/retired map artifacts already represented by canonical owners

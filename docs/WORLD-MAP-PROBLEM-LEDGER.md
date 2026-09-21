@@ -294,11 +294,11 @@
 **Remaining:** add a true browser-level visual scenario for dense labels, detached/non-contiguous geography and focus/occlusion behavior before closing the item.
 
 ### WM-050 · Architecture auditor findings are not first-class ledger work items — P2
-**Status:** verified observability gap (2026-09-21).  
+**Status:** fixed on branch `world-map-control-plane-cleanup-current-20260921`, pending exact-head CI.  
 **Evidence:** the architecture auditor inventories ownership hazards, but recurring finding types do not consistently resolve to ledger ID, canonical owner and severity in CI output.  
 **Risk:** diagnosis and execution queues can drift; the same issue may be rediscovered without a stable remediation identity.  
-**TODO:** add a finding-code mapping contract (finding code → ledger ID → owner → severity/status) and include it in quality-group summaries.  
-**Completion:** every promoted auditor finding either maps to an existing ledger item or is explicitly marked informational/ignored with rationale.
+**Resolution:** the auditor's existing `QUEUE_MAP` now becomes an enforced contract: actionable warning/error findings without queue ID + owner increment `unmapped_actionable` and fail the architecture audit. Regression coverage proves current emitted actionable findings carry both fields.  
+**Completion guard:** future actionable finding codes must be mapped before CI can pass.
 
 ### WM-051 · Geometry-first regional statistics remain uneven — P3
 **Status:** verified functionality-depth gap (2026-09-21).  
@@ -315,11 +315,11 @@
 **Remaining:** introduce the smaller shared background/border/radius/spacing surface token set; do not flatten data-semantic colors or specialized visualization styling.
 
 ### WM-053 · Data freshness semantics are inconsistent across map families — P2
-**Status:** verified functionality/reader-trust gap (2026-09-21).  
+**Status:** in progress on branch `world-map-control-plane-cleanup-current-20260921`.  
 **Evidence:** ADL has an explicit historical-snapshot freshness model and Places records unknown upstream refresh, while other empirical/physical/relationship layers expose date/status in different forms or not at the same UI level.  
 **Risk:** “current”, “latest available”, “historical”, “delayed”, and “unknown vintage” can look equivalent to readers.  
-**TODO:** define one compact freshness/status vocabulary and projection into Current Map / Inspector context, without forcing unlike datasets into the same update cadence.  
-**Completion:** every reader-facing empirical dataset declares observation/reference period plus freshness status or explicit unknown-vintage state.
+**Progress:** added one explicit-only freshness vocabulary (`current`, `latest-available`, `delayed`, `historical`, `stale`, `unknown-vintage`, `planned`) plus runtime normalization. Evidence/ADL and Places consume the shared owner; local build dates do not imply upstream currentness and provider availability remains separate.  
+**Remaining:** project the same semantics into additional empirical reader surfaces and Current Map context before closing the item.
 
 
 

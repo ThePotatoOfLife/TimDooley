@@ -1,6 +1,8 @@
 if (!window.__potatoAtlasUrlState) await import('./3d-url-state.js');
 const urlState = window.__potatoAtlasUrlState;
 urlState.claim('evidence-layers', ['evidenceLayer']);
+if (!window.__potatoAtlasFreshness) await import('./3d-data-freshness.js');
+const freshness = window.__potatoAtlasFreshness;
 
 // First-class specialist Evidence layer coordinator for the World Relational Atlas.
 // Canonical evidence records remain in their own datasets/modules. This owner only
@@ -127,8 +129,9 @@ function renderMenu() {
   const rows=entries().map(row=>{
     const current=row.availability==='current';
     const on=isActive(row.id);
-    const note=[row.epistemic_type,row.geography,row.source_owner,row.status_note].filter(Boolean).join(' · ');
-    return `<button type="button" class="atlas-world-option${on?' active':''}" data-evidence-layer="${esc(row.id)}" aria-pressed="${on?'true':'false'}" ${current?'':'disabled'} title="${esc(note)}"><span>${esc(row.label)}<small>${esc([row.epistemic_type,row.data_status].filter(Boolean).join(' · '))}${current?'':' · planned'}</small></span></button>`;
+    const fresh=freshness.describe(current ? row : {...row,freshness_status:'planned'});
+    const note=[row.epistemic_type,row.geography,row.source_owner,fresh.label,fresh.asOf,row.status_note].filter(Boolean).join(' · ');
+    return `<button type="button" class="atlas-world-option${on?' active':''}" data-evidence-layer="${esc(row.id)}" aria-pressed="${on?'true':'false'}" ${current?'':'disabled'} title="${esc(note)}"><span>${esc(row.label)}<small>${esc([row.epistemic_type,fresh.label].filter(Boolean).join(' · '))}</small></span></button>`;
   }).join('');
   pop.innerHTML=`<div class="atlas-world-static"><span>Evidence datasets</span><small>${activeIds.size ? `${activeIds.size} active` : 'source-classified · lazy'}</small></div>${rows || '<div class="atlas-world-empty">No evidence layers registered</div>'}<div class="atlas-world-static"><small>Evidence datasets preserve source methodology and snapshot vintage; they do not become generic scores.</small></div>`;
   details.classList.toggle('active',activeIds.size>0);
