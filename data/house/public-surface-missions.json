@@ -1,0 +1,573 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-21",
+  "authority": "public-surface-editorial-mission",
+  "registry": "data/house/public-surfaces.json",
+  "principle": "Every active public surface must know what it is trying to become, what it must not become, where a reader should go next, and how much first-party substance it should carry. Mission contracts guide architecture; they do not replace canonical knowledge owners.",
+  "narrative_stages": [
+    "orientation",
+    "life",
+    "meaning",
+    "making",
+    "world",
+    "shadow",
+    "evidence",
+    "return"
+  ],
+  "density_intents": {
+    "compact": "short orientation/lookup surface; prefer routing over encyclopedic expansion",
+    "focused": "single-essay specialist; deepen argument rather than widen scope",
+    "balanced": "substantive specialist reader with a clear beginning, middle and exits",
+    "deep-but-tiered": "large gateway allowed only when short-path orientation precedes deeper sections",
+    "compact-runtime": "runtime-heavy explorer; static shell must still explain purpose and fallback routes",
+    "deep-runtime": "large runtime projection; failures must be isolated and static orientation must survive",
+    "balanced-runtime": "runtime-enhanced reader with meaningful static explanation and source/fallback routes"
+  },
+  "surfaces": {
+    "home": {
+      "title": "Home",
+      "route": "/",
+      "narrative_stage": "orientation",
+      "become": "A calm five-minute orientation to the project, Tim, Potato of Life and the five canonical gateways.",
+      "must_not_become": "A compressed duplicate of House, Tim, Potatoism, World and Shadow.",
+      "primary_next_surface_ids": [
+        "tim",
+        "potato-of-life",
+        "religion",
+        "philosophy",
+        "science",
+        "world"
+      ],
+      "density_intent": "compact",
+      "reader_job": "Orient a new reader quickly, state what the project is, and open the five canonical gateways without becoming a directory."
+    },
+    "potato-of-life": {
+      "title": "Potato of Life",
+      "route": "/potato-of-life/",
+      "narrative_stage": "meaning",
+      "become": "The clearest semantic-center explanation from literal potato through project metaphor, relation and repair.",
+      "must_not_become": "A universal master page for biology, theology, philosophy, House and Axis.",
+      "primary_next_surface_ids": [
+        "religion",
+        "philosophy",
+        "life-body",
+        "axis"
+      ],
+      "density_intent": "deep-but-tiered",
+      "reader_job": "Explain Potato of Life as the semantic center and route deeper canon, body, tradition, and research views."
+    },
+    "tim": {
+      "title": "Tim Dooley",
+      "route": "/tim-dooley/",
+      "narrative_stage": "life",
+      "become": "The definitive portrait of Tim: development, work, public presence, mission, contradictions and routes outward.",
+      "must_not_become": "The complete Story, Claims corpus, theology or conflict ledger.",
+      "primary_next_surface_ids": [
+        "story",
+        "timeline",
+        "works",
+        "sources"
+      ],
+      "density_intent": "deep-but-tiered",
+      "reader_job": "Present the main Tim Dooley portrait, development, public record, and evidence-linked project identity."
+    },
+    "religion": {
+      "title": "Religion",
+      "route": "/religion/",
+      "narrative_stage": "meaning",
+      "become": "The introduction to project theology and its historical/comparative religious context.",
+      "must_not_become": "A substitute for the Bible explorer or a proof page for project claims.",
+      "primary_next_surface_ids": [
+        "bible",
+        "trinity",
+        "sources"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Explain the project's religious framework and comparisons, then route detailed tradition study to specialist readers."
+    },
+    "philosophy": {
+      "title": "Philosophy",
+      "route": "/philosophy/",
+      "narrative_stage": "meaning",
+      "become": "The usable ethical and conceptual layer: perception, judgment, agency, repair, growth and relation.",
+      "must_not_become": "A second all-purpose Potatoism encyclopedia.",
+      "primary_next_surface_ids": [
+        "interpretive-justice",
+        "paths",
+        "story"
+      ],
+      "density_intent": "deep-but-tiered",
+      "reader_job": "Present core philosophical questions, arguments, parables, and relation-first concepts with provenance."
+    },
+    "science": {
+      "title": "Science",
+      "route": "/science/",
+      "narrative_stage": "evidence",
+      "become": "A skeptical boundary layer separating analogy, hypothesis, formal model and established science.",
+      "must_not_become": "A place where symbolic resemblance is presented as empirical validation.",
+      "primary_next_surface_ids": [
+        "life-body",
+        "research-lab",
+        "sources"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Orient the scientific and formal-model library, distinguish model from analogy, and expose testable work."
+    },
+    "world": {
+      "title": "World",
+      "route": "/world/",
+      "narrative_stage": "world",
+      "become": "The empirical outward face for geography, institutions and real systems.",
+      "must_not_become": "A projection of Potatoverse certainty onto external facts.",
+      "primary_next_surface_ids": [
+        "world-map",
+        "north",
+        "world-systems",
+        "news"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Orient real-world geography, institutions, politics, and systems and route into current and specialist World views."
+    },
+    "news": {
+      "title": "Current World",
+      "route": "/news/",
+      "narrative_stage": "world",
+      "become": "A lightweight current-events reader with exits into durable World context.",
+      "must_not_become": "A permanent knowledge owner or a project-spin news feed.",
+      "primary_next_surface_ids": [
+        "world",
+        "world-map"
+      ],
+      "density_intent": "compact-runtime",
+      "reader_job": "Show current external reporting first, with lightweight filters and exits into durable project context."
+    },
+    "timeline": {
+      "title": "Timeline",
+      "route": "/timeline/",
+      "narrative_stage": "life",
+      "become": "The authoritative time lens for life/project chronology and wider historical overlays.",
+      "must_not_become": "A second narrative Story or a second owner of canonical event content.",
+      "primary_next_surface_ids": [
+        "story",
+        "tim",
+        "history",
+        "foundation-timeline"
+      ],
+      "density_intent": "compact-runtime",
+      "reader_job": "Let readers inspect chronology and event development without becoming a second content owner."
+    },
+    "foundation-timeline": {
+      "title": "Foundation Timeline",
+      "route": "/timeline/foundations/",
+      "narrative_stage": "evidence",
+      "become": "A specialist chronology for how traditions and institutions become established through stages.",
+      "must_not_become": "A universal history page.",
+      "primary_next_surface_ids": [
+        "timeline",
+        "history"
+      ],
+      "density_intent": "compact-runtime",
+      "reader_job": "Inspect foundation histories and temporal layers across traditions and institutions."
+    },
+    "explore": {
+      "title": "Explore",
+      "route": "/explore/",
+      "narrative_stage": "evidence",
+      "become": "Deep archive traversal after the reader already has a question.",
+      "must_not_become": "The primary way newcomers are expected to navigate the project.",
+      "primary_next_surface_ids": [
+        "questions",
+        "sources",
+        "index-a-z"
+      ],
+      "density_intent": "compact",
+      "reader_job": "Traverse relationships and backend-held knowledge when the reader wants deep archive exploration."
+    },
+    "sources": {
+      "title": "Sources",
+      "route": "/context/source-authority/",
+      "narrative_stage": "evidence",
+      "become": "The trust contract explaining provenance, evidence status, corrections and verification routes.",
+      "must_not_become": "A claim that first-person testimony automatically outranks independent evidence in every domain.",
+      "primary_next_surface_ids": [
+        "context",
+        "history",
+        "questions"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Explain source authority, evidence status, and provenance and provide verification routes."
+    },
+    "questions": {
+      "title": "Questions",
+      "route": "/questions/",
+      "narrative_stage": "return",
+      "become": "The human-language concierge that turns real questions into direct routes, answers, recovery tasks or research seeds.",
+      "must_not_become": "A static directory grouped only by internal archive domains.",
+      "primary_next_surface_ids": [
+        "paths",
+        "faq",
+        "research-lab",
+        "story"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Enter the project through concrete reader questions and route answers to their canonical owners."
+    },
+    "index-a-z": {
+      "title": "A–Z",
+      "route": "/index-a-z/",
+      "narrative_stage": "orientation",
+      "become": "Fast name-first term resolution.",
+      "must_not_become": "A definition engine or substitute for canonical owners.",
+      "primary_next_surface_ids": [
+        "questions",
+        "explore"
+      ],
+      "density_intent": "compact-runtime",
+      "reader_job": "Resolve known terms quickly by name and send readers to canonical destinations."
+    },
+    "context": {
+      "title": "Context & Evidence",
+      "route": "/context/",
+      "narrative_stage": "evidence",
+      "become": "A practical guide to how context changes interpretation and evidentiary weight.",
+      "must_not_become": "A second Sources page.",
+      "primary_next_surface_ids": [
+        "sources",
+        "history",
+        "interpretive-justice"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Explain context and source-reading conventions beneath the Sources surface."
+    },
+    "story": {
+      "title": "Story",
+      "route": "/tim-dooley/story/",
+      "narrative_stage": "life",
+      "become": "The lived narrative: scenes, people, places, making, loss, conflict, repair and change.",
+      "must_not_become": "A flat claims list or a duplicate interactive Timeline.",
+      "primary_next_surface_ids": [
+        "tim",
+        "timeline",
+        "works",
+        "sources"
+      ],
+      "density_intent": "deep-runtime",
+      "reader_job": "Tell the Tim Dooley story as a coherent narrative projection over canonical records."
+    },
+    "collection": {
+      "title": "Collection",
+      "route": "/corporium/",
+      "narrative_stage": "making",
+      "become": "A curated constellation of recurring clues, works and records.",
+      "must_not_become": "A second Works catalog or another canonical owner.",
+      "primary_next_surface_ids": [
+        "works",
+        "tim",
+        "sources"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Present the Corporium collection as a curated body of works and records tied back to canonical owners."
+    },
+    "works": {
+      "title": "Works",
+      "route": "/works/",
+      "narrative_stage": "making",
+      "become": "A chronological and functional gallery of what Tim/project made and what each medium revealed.",
+      "must_not_become": "A doctrine page where creative output automatically becomes canonical truth.",
+      "primary_next_surface_ids": [
+        "story",
+        "collection",
+        "tim"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Present creative and project outputs by form while preserving doctrine and evidence boundaries."
+    },
+    "interpretive-justice": {
+      "title": "Interpretive Justice",
+      "route": "/philosophy/interpretive-justice.html",
+      "narrative_stage": "evidence",
+      "become": "A focused ethics of fair interpretation, dossiers, provenance and reply.",
+      "must_not_become": "A general philosophy hub.",
+      "primary_next_surface_ids": [
+        "philosophy",
+        "sources",
+        "culture"
+      ],
+      "density_intent": "focused",
+      "reader_job": "Explain interpretive justice as a focused philosophy essay and route to related concepts."
+    },
+    "world-map": {
+      "title": "World Map",
+      "route": "/world-map/",
+      "narrative_stage": "world",
+      "become": "An interactive geographic/system explorer grounded in World-owned data.",
+      "must_not_become": "A separate truth source or decorative map detached from provenance.",
+      "primary_next_surface_ids": [
+        "world",
+        "north",
+        "world-systems"
+      ],
+      "density_intent": "compact-runtime",
+      "reader_job": "Provide interactive geographic and system exploration without replacing World-owned knowledge."
+    },
+    "politics": {
+      "title": "Politics & Geopolitics",
+      "route": "/politics/",
+      "narrative_stage": "world",
+      "become": "A neutral specialist reader for political ideas, institutions and geopolitics.",
+      "must_not_become": "A partisan recommendation engine or ranking page.",
+      "primary_next_surface_ids": [
+        "world",
+        "law",
+        "economy",
+        "world-systems"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Present political and geopolitical material neutrally as a specialist World view."
+    },
+    "axis": {
+      "title": "Living Axis",
+      "route": "/axis/",
+      "narrative_stage": "meaning",
+      "become": "A focused explanation of the project's movement/operator grammar across Source, Door, Plane, Tree and repair.",
+      "must_not_become": "The universal master page for theology, science and House.",
+      "primary_next_surface_ids": [
+        "house",
+        "potato-of-life",
+        "religion",
+        "life-body"
+      ],
+      "density_intent": "deep-but-tiered",
+      "reader_job": "Explain the Axis as a project operator and spatial relation within House architecture."
+    },
+    "north": {
+      "title": "North",
+      "route": "/north/",
+      "narrative_stage": "world",
+      "become": "The bridge from symbolic North to observed geography/institutions to explicit programme proposals and constraints.",
+      "must_not_become": "A conflation of sacred direction, political bloc, empirical geography and policy status.",
+      "primary_next_surface_ids": [
+        "world",
+        "world-systems",
+        "economy",
+        "law"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Explain symbolic North, geography, and programme distinctions without conflating them."
+    },
+    "world-systems": {
+      "title": "World Systems",
+      "route": "/world-systems/",
+      "narrative_stage": "world",
+      "become": "A relation-first synthesis of institutions, dependencies, infrastructure and capacity.",
+      "must_not_become": "A replacement for domain-specific evidence owners.",
+      "primary_next_surface_ids": [
+        "world",
+        "economy",
+        "law",
+        "world-map"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Explain institutions, systems, and interdependence as a specialist World synthesis."
+    },
+    "bible": {
+      "title": "Bible Comparison",
+      "route": "/traditions/bible/",
+      "narrative_stage": "meaning",
+      "become": "A source-aware Bible comparison explorer that exposes text, context, relation and mismatch.",
+      "must_not_become": "A one-to-one casting engine for modern people as biblical figures.",
+      "primary_next_surface_ids": [
+        "religion",
+        "trinity",
+        "sources",
+        "timeline"
+      ],
+      "density_intent": "balanced-runtime",
+      "reader_job": "Provide a focused Bible comparison explorer with source-aware relation browsing."
+    },
+    "trinity": {
+      "title": "Potato of Life Trinity",
+      "route": "/religion/trinity/",
+      "narrative_stage": "meaning",
+      "become": "A focused explanation of project Trinity mappings and their differences from historical doctrine.",
+      "must_not_become": "A claim that project geometry establishes Christian doctrine.",
+      "primary_next_surface_ids": [
+        "religion",
+        "bible",
+        "spirit"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Explain Trinity-related project mappings while keeping project interpretation distinct from tradition."
+    },
+    "culture": {
+      "title": "Culture & Subculture",
+      "route": "/context/culture/",
+      "narrative_stage": "shadow",
+      "become": "A serious social-systems reader for culture/subculture formation, capture, repair and regeneration.",
+      "must_not_become": "The emotional center of the entire project or a default enemy taxonomy.",
+      "primary_next_surface_ids": [
+        "world",
+        "interpretive-justice",
+        "inhabitants"
+      ],
+      "density_intent": "deep-but-tiered",
+      "reader_job": "Explain cultures, subcultures, platforms, and information ecology as concrete World phenomena."
+    },
+    "rooms": {
+      "title": "Rooms",
+      "route": "/rooms/",
+      "narrative_stage": "evidence",
+      "become": "A map of the ten knowledge-owning Dwellings and where subjects live.",
+      "must_not_become": "The global menu every reader must learn.",
+      "primary_next_surface_ids": [
+        "house",
+        "inhabitants",
+        "paths"
+      ],
+      "density_intent": "balanced-runtime",
+      "reader_job": "Explain the ten knowledge-owning Dwellings and help readers enter the right Room without becoming the global menu."
+    },
+    "history": {
+      "title": "History & Time",
+      "route": "/history/",
+      "narrative_stage": "evidence",
+      "become": "The canonical method page for occurrence time, source time, interpretation time and reception time.",
+      "must_not_become": "A duplicate Timeline event owner.",
+      "primary_next_surface_ids": [
+        "timeline",
+        "sources",
+        "context"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Present historical context and lenses under Timeline while preserving canonical event ownership."
+    },
+    "law": {
+      "title": "Law & Justice",
+      "route": "/law/",
+      "narrative_stage": "world",
+      "become": "A specialist reader for authority, procedure, rights, institutions and remedies.",
+      "must_not_become": "Legal advice or a place where allegations become legal findings.",
+      "primary_next_surface_ids": [
+        "world",
+        "politics",
+        "economy"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Present legal and institutional material as a specialist World view with source boundaries."
+    },
+    "economy": {
+      "title": "Economy & Finance",
+      "route": "/economy/",
+      "narrative_stage": "world",
+      "become": "A specialist reader for money, debt, banking, trade, ownership and obligations.",
+      "must_not_become": "A bridge that converts the fictional Mud Bank into real finance.",
+      "primary_next_surface_ids": [
+        "world",
+        "world-systems",
+        "law"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Explain economic, monetary, banking, and obligation systems and expose relevant institutional relationships."
+    },
+    "house": {
+      "title": "Potato House",
+      "route": "/house/",
+      "narrative_stage": "evidence",
+      "become": "The project map for readers who want to know where knowledge lives and how owners connect.",
+      "must_not_become": "Required reading for understanding Tim or a duplicate of all subject matter.",
+      "primary_next_surface_ids": [
+        "rooms",
+        "paths",
+        "research-lab",
+        "elevator"
+      ],
+      "density_intent": "deep-but-tiered",
+      "reader_job": "Explain how the project fits together, its ownership architecture, and major spatial relationships."
+    },
+    "spirit": {
+      "title": "Spirit",
+      "route": "/potato-of-life/spirit/",
+      "narrative_stage": "meaning",
+      "become": "A focused explanation of Spirit as continuity/relation within project canon with historical/body comparisons bounded.",
+      "must_not_become": "A universal empirical substance claim.",
+      "primary_next_surface_ids": [
+        "potato-of-life",
+        "religion",
+        "life-body"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Explain the Spirit relation within Potato of Life canon and route to supporting theology and body material."
+    },
+    "life-body": {
+      "title": "Life & Body",
+      "route": "/life-body/",
+      "narrative_stage": "evidence",
+      "become": "A biology/body reader distinguishing literal organism facts, body analogies and project symbolism.",
+      "must_not_become": "A neurotheology proof page.",
+      "primary_next_surface_ids": [
+        "science",
+        "potato-of-life",
+        "research-lab"
+      ],
+      "density_intent": "balanced-runtime",
+      "reader_job": "Explain biological, body, and neuro material and its project mappings with empirical-symbolic boundaries."
+    },
+    "research-lab": {
+      "title": "Research Lab",
+      "route": "/research-lab/",
+      "narrative_stage": "return",
+      "become": "The visible frontier for hypotheses, tests, failed ideas, promotion criteria and unresolved questions.",
+      "must_not_become": "A parallel canon where research candidates are treated as established.",
+      "primary_next_surface_ids": [
+        "questions",
+        "sources",
+        "science"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Expose active research programmes, methods, tests, and unresolved questions without competing with domain owners."
+    },
+    "paths": {
+      "title": "Paths",
+      "route": "/paths/",
+      "narrative_stage": "orientation",
+      "become": "Curated end-to-end journeys that answer real reader intentions across multiple owners.",
+      "must_not_become": "Another taxonomy of the archive.",
+      "primary_next_surface_ids": [
+        "questions",
+        "tim",
+        "story",
+        "north"
+      ],
+      "density_intent": "balanced",
+      "reader_job": "Offer intentional cross-domain reading journeys generated from canonical ownership and relations."
+    },
+    "elevator": {
+      "title": "Door / Axis Elevator",
+      "route": "/elevator/",
+      "narrative_stage": "meaning",
+      "become": "A spatial transition viewer showing how House layers relate.",
+      "must_not_become": "A literal cosmology or substitute for House/Axis owners.",
+      "primary_next_surface_ids": [
+        "house",
+        "axis",
+        "rooms"
+      ],
+      "density_intent": "compact-runtime",
+      "reader_job": "Provide a spatial transition view across House layers while preserving Room and plane ownership."
+    },
+    "inhabitants": {
+      "title": "House Inhabitants & Cases",
+      "route": "/rooms/objects/",
+      "narrative_stage": "shadow",
+      "become": "Name-first lookup for people, cases and objects with clear type/context before deeper dossiers.",
+      "must_not_become": "A hierarchy-only browser or a list that collapses people, symbols and cases into one class.",
+      "primary_next_surface_ids": [
+        "rooms",
+        "culture",
+        "sources"
+      ],
+      "density_intent": "compact-runtime",
+      "reader_job": "Find named House inhabitants, cases, and objects without requiring knowledge of Room hierarchy."
+    }
+  }
+}
