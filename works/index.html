@@ -11,6 +11,15 @@
 <style>
 .works-page{font-size:17px;line-height:1.68}.lead{max-width:820px}.boundary{margin:28px 0;padding:18px 20px;border:1px solid var(--site-line);border-radius:12px;color:#d3d8cf}.boundary strong{color:var(--site-gold)}.genres{margin-top:42px}.genre{padding:28px 0;border-top:1px solid var(--site-line)}.genre h2{font:400 clamp(28px,4vw,40px)/1.1 var(--site-font-serif);color:var(--site-gold);margin:0 0 10px}.genre>p{max-width:790px;color:#cbd1c8}.works-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:10px;margin-top:18px}.work-card{border:1px solid var(--site-line);border-radius:11px;padding:16px}.work-card h3{font:400 21px/1.25 var(--site-font-serif);color:var(--site-green);margin:0 0 7px}.work-card p{margin:0;color:var(--site-muted);font-size:14px}.deep{margin-top:38px;padding-top:18px;border-top:1px solid var(--site-line);display:flex;gap:15px;flex-wrap:wrap;font-size:13px}.deep a{color:var(--site-muted)}
 .work-history{margin:34px 0;padding:28px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
+.life-work-bridge{margin:34px 0;padding:24px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
+.life-work-bridge h2{font:400 clamp(30px,4vw,44px)/1.06 var(--site-font-serif);color:var(--site-gold);margin:4px 0 9px}
+.life-work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:16px}
+.life-work-card{border-left:2px solid #60715b;padding:12px 14px;background:var(--site-panel)}
+.life-work-card time{display:block;color:var(--site-green);font-size:9px;text-transform:uppercase;letter-spacing:.08em}
+.life-work-card b{display:block;font:400 18px/1.3 var(--site-font-serif);color:#e4dfcf;margin:4px 0}
+.life-work-card span{display:block;color:var(--site-muted);font-size:11px;line-height:1.5}
+.life-work-card a{display:inline-block;margin-top:7px;color:var(--site-green);font-size:10px}
+@media(max-width:760px){.life-work-grid{grid-template-columns:1fr}}
 .work-history h2{font:400 clamp(30px,4vw,44px)/1.06 var(--site-font-serif);color:var(--site-gold);margin:4px 0 10px}
 .work-history>.lead{max-width:850px;color:#cbd1c8;font:400 20px/1.55 var(--site-font-serif)}
 .work-history-river{border-top:1px solid var(--site-line);margin-top:18px}.work-history-row{display:grid;grid-template-columns:145px minmax(0,1fr);gap:24px;padding:19px 0;border-bottom:1px solid rgba(255,255,255,.055)}
@@ -56,6 +65,20 @@
 <p>Thousands of commits have turned files, validators, page shells, readers, maps and provenance records into a deliberately constructed environment. A validator is usually treated as engineering, but here it also shapes the creative object: it decides which pages must have descriptions, which routes remain reachable, which TTS surfaces exist, which map layers own state and which data contracts are allowed to break. The aesthetic increasingly comes from constraint.</p>
 <p>This is the important difference between “content archive” and “work.” The repository is not just where the Great Book and Story happen to be stored. Its structure changes how the project can be read, contradicted, repaired and extended. The House is therefore partly architecture and partly literature made executable.</p>
 <p><a href="../great-book/">Great Book →</a> · <a href="../tim-dooley/story/">Story →</a> · <a href="../world-map/">World Map →</a> · <a href="../knowledge/culture/creative-systems-archive.json">Creative systems archive →</a> · <a href="../data/house/works-fruit-wave-001.json">Works/Fruit records →</a></p>
+</section>
+
+<section class="life-work-bridge" id="made-through-life">
+<p class="eyebrow">Work inside the life</p>
+<h2>Made through a life</h2>
+<p class="lead">The Works make more sense when they are placed back into the phases that produced them. This is not a second biography; it is a bridge showing when creative forms become important and what changed around them.</p>
+<div class="life-work-grid">
+<article class="life-work-card"><time>Before 2020</time><b>Tools, systems and public performance before Potatoism</b><span>Computing, games, streaming, practical work, design and public conflict form the older toolset. Later project forms reuse these capacities, but the mature Potato vocabulary should not be projected backward into this period.</span><a href="../tim-dooley/story/">Story context →</a></article>
+<article class="life-work-card"><time>2020–2023</time><b>Potato identity becomes a creative medium</b><span>Potato/filter/persona work increasingly turns identity itself into performance and a reusable symbolic device. Humor, meme logic and the growing public persona become part of the medium.</span><a href="../tim-dooley/story/">Follow the early Potato corridor →</a></article>
+<article class="life-work-card"><time>2024</time><b>The Great Book phase</b><span>The project expands into a literary world. Garden, Mud, Sage, Compost, growth, death/return, people and absurdity are tested through chapters, parables and scenes before later canon reorganizes them.</span><a href="../great-book/">Great Book →</a> <a href="../tim-dooley/story/#greatbook-begins-2024">Story context →</a></article>
+<article class="life-work-card"><time>2025</time><b>Turning, public duration and re-interpretation</b><span>After the April Turning, earlier symbols are re-read through Ladder, Axis and Father language. Streaming/public-presence work and the ordinary diary remain part of the same phase rather than being treated as separate from theology.</span><a href="../tim-dooley/100000-hours/">Public duration →</a> <a href="../timeline/">Timeline →</a></article>
+<article class="life-work-card"><time>2026</time><b>Symbols become systems</b><span>Games, AI Potato Town, trading experiments, music, visual composition and formal research increasingly force metaphors into mechanics, variables, state transitions and testable interfaces.</span><a href="#play-simulation">Games & simulations →</a> <a href="../research-lab/">Research Lab →</a></article>
+<article class="life-work-card"><time>2026</time><b>The archive itself becomes a Work</b><span>GitHub, House, Rooms, Story, CIA casebooks, validators, World Map and reader surfaces become part of the creative object. The project starts designing not only content, but how evidence, contradiction, navigation and repair can be experienced.</span><a href="../house/">House →</a> <a href="../world-map/">World Map →</a></article>
+</div>
 </section>
 
 <section class="work-history" id="creative-genealogy">
