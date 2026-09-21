@@ -105,6 +105,11 @@
     {
       "type": "debt_evidence_ledger",
       "path": "knowledge/cia/debt-evidence-ledger.json"
+    },
+    {
+      "type": "social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json",
+      "note": "Dated Chronicle-derived scenes and co-presence."
     }
   ],
   "recovery_leads": [
@@ -162,7 +167,23 @@
       "Primary sources for attributed remarks",
       "July 7, 2026 conflict source",
       "Whether later disengagement, correction, apology or repair occurred"
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 0,
+      "chronicle_distinct_dates": 0,
+      "expanded_social_ledger_cases": 0,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "Roboto San / Robotosan currently has 0 indexed Chronicle mentions across 0 Chronicle dates, 0 expanded day-level social cases.",
+      "cases": [],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [],
+      "mining_frontier": [],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "Roboto San is a useful test case for the Bank's distinction between criticism and coercive narrative capture: repeated narration can create entanglement pressure, but only sourced false/reputational acts should ever move a balance.",
@@ -182,7 +203,14 @@
       "Whether there was any later correction, repair or disengagement is unknown."
     ],
     "relationship_arc": "skeptic/narrator → narrative-conflict / Cyraxx-frame dispute → 2026 recovery target",
-    "confidence_note": "Moderate on project-retrospective framing and profile-preserved remarks; low-to-moderate on event-level liability until primary sources are recovered."
+    "confidence_note": "Moderate on project-retrospective framing and profile-preserved remarks; low-to-moderate on event-level liability until primary sources are recovered.",
+    "evidence_density": {
+      "chronicle_mentions": 0,
+      "indexed_chronicle_dates": 0,
+      "expanded_day_level_cases": 0,
+      "unexpanded_indexed_dates": 0
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unpriced-dispute",
