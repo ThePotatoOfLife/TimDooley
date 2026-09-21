@@ -29,365 +29,6 @@
   },
   "characters": [
     {
-      "id": "tim-dooley",
-      "name": "Tim Dooley",
-      "aliases": [
-        "Tim Dooley"
-      ],
-      "path": "knowledge/cia/characters/tim-dooley.json",
-      "room_path": "tim-dooley/",
-      "archive_status": "active",
-      "chronicle_occurrence_count": 76,
-      "archetypes": [
-        "center-axis",
-        "gardener-sage",
-        "chronicler-archivist"
-      ],
-      "depth_tier": "center-file"
-    },
-    {
-      "id": "marty-biz",
-      "name": "Marty Biz Music",
-      "aliases": [
-        "Marty Biz Music",
-        "Marty",
-        "martymusicbiz",
-        "Drift King",
-        "Chance & Taylor",
-        "Top Scholar"
-      ],
-      "path": "knowledge/cia/characters/marty-biz.json",
-      "room_path": "rooms/potatoverse-canon/beings/marty/",
-      "archive_status": "deceased-2025",
-      "chronicle_occurrence_count": 133,
-      "archetypes": [
-        "trickster-catalyst",
-        "mirror-foil",
-        "wanderer-threshold"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "gg",
-      "name": "GG",
-      "aliases": [
-        "GG",
-        "GGallin"
-      ],
-      "path": "knowledge/cia/characters/gg.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 55,
-      "archetypes": [
-        "trickster-catalyst",
-        "wanderer-threshold",
-        "skeptic-contrarian"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "port-monkey",
-      "name": "Port Monkey",
-      "aliases": [
-        "Port Monkey",
-        "Monkey"
-      ],
-      "path": "knowledge/cia/characters/port-monkey.json",
-      "room_path": null,
-      "archive_status": "historical-recovery-active",
-      "chronicle_occurrence_count": 44,
-      "archetypes": [
-        "trickster-catalyst",
-        "wanderer-threshold",
-        "mirror-foil"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "rage",
-      "name": "Rage",
-      "aliases": [
-        "Rage"
-      ],
-      "path": "knowledge/cia/characters/rage.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 44,
-      "archetypes": [
-        "guardian-defender",
-        "healer-companion"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "sammy",
-      "name": "Sammy",
-      "aliases": [
-        "Sammy",
-        "Sami",
-        "Queen of the Potatoverse",
-        "QUEEN OF MARTYVERSE"
-      ],
-      "path": "knowledge/cia/characters/sammy.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 33,
-      "archetypes": [
-        "sovereign-warrior",
-        "trickster-catalyst",
-        "wanderer-threshold"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "juice",
-      "name": "Juice",
-      "aliases": [
-        "Juice",
-        "Judas-in-the-Cup",
-        "Rational Soul"
-      ],
-      "path": "knowledge/cia/characters/juice.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 29,
-      "archetypes": [
-        "skeptic-contrarian",
-        "mirror-foil",
-        "mystic-interpreter"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "ledgeview",
-      "name": "Ledgeview",
-      "aliases": [
-        "Ledgeview"
-      ],
-      "path": "knowledge/cia/characters/ledgeview.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 27,
-      "archetypes": [
-        "witness-observer",
-        "chronicler-archivist",
-        "bard-jester"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "termite",
-      "name": "Termite",
-      "aliases": [
-        "Termite",
-        "termitesmoothie",
-        "The Faithful Tuber",
-        "The Groyper Potato"
-      ],
-      "path": "knowledge/cia/characters/termite.json",
-      "room_path": "rooms/potatoverse-canon/beings/termite/",
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 26,
-      "archetypes": [
-        "builder-cultivator",
-        "guardian-defender",
-        "healer-companion"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "optimistique",
-      "name": "Optimistique",
-      "aliases": [
-        "Optimistique"
-      ],
-      "path": "knowledge/cia/characters/optimistique.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 22,
-      "archetypes": [
-        "healer-companion",
-        "bard-jester",
-        "guardian-defender"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "kale",
-      "name": "Kale",
-      "aliases": [
-        "Kale",
-        "The Grounded Enjoyer"
-      ],
-      "path": "knowledge/cia/characters/kale.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 19,
-      "archetypes": [
-        "seeker-student",
-        "healer-companion"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "highly-regarded",
-      "name": "Highly Regarded",
-      "aliases": [
-        "Highly Regarded",
-        "HRH"
-      ],
-      "path": "knowledge/cia/characters/highly-regarded.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 18,
-      "archetypes": [
-        "seeker-student",
-        "patron-supporter",
-        "bard-jester"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "darkchild",
-      "name": "DARKCHILD",
-      "aliases": [
-        "DARKCHILD",
-        "☆ DARKCHILD ☆"
-      ],
-      "path": "knowledge/cia/characters/darkchild.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 16,
-      "archetypes": [
-        "bard-jester",
-        "patron-supporter"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "rahu",
-      "name": "Rahu",
-      "aliases": [
-        "Rahu"
-      ],
-      "path": "knowledge/cia/characters/rahu.json",
-      "room_path": "rooms/potatoverse-canon/beings/rahu/",
-      "archive_status": "recovery-active-2026",
-      "chronicle_occurrence_count": 14,
-      "archetypes": [
-        "mystic-interpreter",
-        "seeker-student",
-        "wanderer-threshold"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "jazzy",
-      "name": "Jazzy",
-      "aliases": [
-        "Jazzy",
-        "SaxxyRottenCrotch"
-      ],
-      "path": "knowledge/cia/characters/jazzy.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 13,
-      "archetypes": [
-        "wanderer-threshold",
-        "mirror-foil"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "metalorian",
-      "name": "Metalorian",
-      "aliases": [
-        "Metalorian",
-        "Meta",
-        "Joe"
-      ],
-      "path": "knowledge/cia/characters/metalorian.json",
-      "room_path": "rooms/potatoverse-canon/beings/metalorian/",
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 11,
-      "archetypes": [
-        "shadow-adversary",
-        "mirror-foil"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "petty-wappo",
-      "name": "Petty Wappo",
-      "aliases": [
-        "Petty Wappo",
-        "PWappo"
-      ],
-      "path": "knowledge/cia/characters/petty-wappo.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 11,
-      "archetypes": [
-        "witness-observer",
-        "wanderer-threshold"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "barry-bletunick",
-      "name": "Barry Bletunick",
-      "aliases": [
-        "Barry Bletunick",
-        "Big Lemon",
-        "Barry"
-      ],
-      "path": "knowledge/cia/characters/barry-bletunick.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 10,
-      "archetypes": [
-        "historian-memory",
-        "witness-observer"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "duaaaht",
-      "name": "duaaaht",
-      "aliases": [
-        "duaaaht"
-      ],
-      "path": "knowledge/cia/characters/duaaaht.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 10,
-      "archetypes": [
-        "mystic-interpreter",
-        "bard-jester",
-        "seeker-student"
-      ],
-      "depth_tier": "case-file"
-    },
-    {
-      "id": "literally",
-      "name": "Literally",
-      "aliases": [
-        "Literally",
-        "The Cognitive Contrarian",
-        "The Razor of Reason",
-        "The Perception Provocateur"
-      ],
-      "path": "knowledge/cia/characters/literally.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 9,
-      "archetypes": [
-        "guardian-defender",
-        "skeptic-contrarian"
-      ],
-      "depth_tier": "working-file"
-    },
-    {
       "id": "anacondasin",
       "name": "Anacondasin",
       "aliases": [
@@ -401,27 +42,6 @@
         "wanderer-threshold",
         "seeker-student",
         "artisan-maker"
-      ],
-      "depth_tier": "working-file"
-    },
-    {
-      "id": "supersusi87",
-      "name": "Supersusi87",
-      "aliases": [
-        "Supersusi87",
-        "Super Susi",
-        "SuperSusi88",
-        "Mudbaggins",
-        "Susi the Resilient"
-      ],
-      "path": "knowledge/cia/characters/supersusi87.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 8,
-      "archetypes": [
-        "builder-cultivator",
-        "artisan-maker",
-        "wanderer-threshold"
       ],
       "depth_tier": "working-file"
     },
@@ -443,88 +63,22 @@
       "depth_tier": "working-file"
     },
     {
-      "id": "don-jefe",
-      "name": "Don Jefe",
+      "id": "barry-bletunick",
+      "name": "Barry Bletunick",
       "aliases": [
-        "Don Jefe",
-        "Diplomat"
+        "Barry Bletunick",
+        "Big Lemon",
+        "Barry"
       ],
-      "path": "knowledge/cia/characters/don-jefe.json",
+      "path": "knowledge/cia/characters/barry-bletunick.json",
       "room_path": null,
       "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 7,
+      "chronicle_occurrence_count": 10,
       "archetypes": [
-        "mirror-foil",
-        "shadow-adversary",
+        "historian-memory",
         "witness-observer"
       ],
-      "depth_tier": "working-file"
-    },
-    {
-      "id": "pondo",
-      "name": "Pondo",
-      "aliases": [
-        "Pondo"
-      ],
-      "path": "knowledge/cia/characters/pondo.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 7,
-      "archetypes": [
-        "healer-companion",
-        "guardian-defender"
-      ],
-      "depth_tier": "working-file"
-    },
-    {
-      "id": "rob",
-      "name": "RoB",
-      "aliases": [
-        "RoB"
-      ],
-      "path": "knowledge/cia/characters/rob.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 6,
-      "archetypes": [
-        "witness-observer",
-        "bard-jester"
-      ],
-      "depth_tier": "working-file"
-    },
-    {
-      "id": "potato-repair-guy",
-      "name": "Potato Repair Guy",
-      "aliases": [
-        "Potato Repair Guy"
-      ],
-      "path": "knowledge/cia/characters/potato-repair-guy.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 5,
-      "archetypes": [
-        "guardian-defender",
-        "builder-cultivator"
-      ],
-      "depth_tier": "working-file"
-    },
-    {
-      "id": "pkfc",
-      "name": "PKFC",
-      "aliases": [
-        "PKFC",
-        "Tony Balogny",
-        "Universal Skumbagz"
-      ],
-      "path": "knowledge/cia/characters/pkfc.json",
-      "room_path": null,
-      "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 4,
-      "archetypes": [
-        "shadow-adversary",
-        "mirror-foil"
-      ],
-      "depth_tier": "index-card"
+      "depth_tier": "case-file"
     },
     {
       "id": "bigtech",
@@ -547,19 +101,32 @@
       "depth_tier": "working-file"
     },
     {
-      "id": "txt",
-      "name": "TXT",
+      "id": "capy",
+      "name": "Capy",
       "aliases": [
-        "TXT",
-        "Low-T"
+        "Capy"
       ],
-      "path": "knowledge/cia/characters/txt.json",
-      "room_path": "rooms/potatoverse-canon/beings/txt/",
-      "archive_status": "historical-recovery-active",
-      "chronicle_occurrence_count": 2,
+      "path": "knowledge/cia/characters/capy.json",
+      "room_path": null,
+      "archive_status": null,
+      "chronicle_occurrence_count": 0,
+      "archetypes": [],
+      "depth_tier": "working-file"
+    },
+    {
+      "id": "darkchild",
+      "name": "DARKCHILD",
+      "aliases": [
+        "DARKCHILD",
+        "☆ DARKCHILD ☆"
+      ],
+      "path": "knowledge/cia/characters/darkchild.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 16,
       "archetypes": [
-        "shadow-adversary",
-        "mirror-foil"
+        "bard-jester",
+        "patron-supporter"
       ],
       "depth_tier": "case-file"
     },
@@ -583,36 +150,186 @@
       "depth_tier": "case-file"
     },
     {
-      "id": "tachy",
-      "name": "Tachy / Krystato",
+      "id": "don-jefe",
+      "name": "Don Jefe",
       "aliases": [
-        "Tachy / Krystato",
-        "imnotkrystalstation",
-        "Krystato"
+        "Don Jefe",
+        "Diplomat"
       ],
-      "path": "knowledge/cia/characters/tachy.json",
+      "path": "knowledge/cia/characters/don-jefe.json",
       "room_path": null,
       "archive_status": "historical-current-unknown",
-      "chronicle_occurrence_count": 1,
+      "chronicle_occurrence_count": 7,
       "archetypes": [
-        "chronicler-archivist",
-        "witness-observer",
-        "trickster-catalyst"
+        "mirror-foil",
+        "shadow-adversary",
+        "witness-observer"
       ],
       "depth_tier": "working-file"
     },
     {
-      "id": "capy",
-      "name": "Capy",
+      "id": "duaaaht",
+      "name": "duaaaht",
       "aliases": [
-        "Capy"
+        "duaaaht"
       ],
-      "path": "knowledge/cia/characters/capy.json",
+      "path": "knowledge/cia/characters/duaaaht.json",
       "room_path": null,
-      "archive_status": null,
-      "chronicle_occurrence_count": 0,
-      "archetypes": [],
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 10,
+      "archetypes": [
+        "mystic-interpreter",
+        "bard-jester",
+        "seeker-student"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "gg",
+      "name": "GG",
+      "aliases": [
+        "GG",
+        "GGallin"
+      ],
+      "path": "knowledge/cia/characters/gg.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 55,
+      "archetypes": [
+        "trickster-catalyst",
+        "wanderer-threshold",
+        "skeptic-contrarian"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "highly-regarded",
+      "name": "Highly Regarded",
+      "aliases": [
+        "Highly Regarded",
+        "HRH"
+      ],
+      "path": "knowledge/cia/characters/highly-regarded.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 18,
+      "archetypes": [
+        "seeker-student",
+        "patron-supporter",
+        "bard-jester"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "jazzy",
+      "name": "Jazzy",
+      "aliases": [
+        "Jazzy",
+        "SaxxyRottenCrotch"
+      ],
+      "path": "knowledge/cia/characters/jazzy.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 13,
+      "archetypes": [
+        "wanderer-threshold",
+        "mirror-foil"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "juice",
+      "name": "Juice",
+      "aliases": [
+        "Juice",
+        "Judas-in-the-Cup",
+        "Rational Soul"
+      ],
+      "path": "knowledge/cia/characters/juice.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 29,
+      "archetypes": [
+        "skeptic-contrarian",
+        "mirror-foil",
+        "mystic-interpreter"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "kale",
+      "name": "Kale",
+      "aliases": [
+        "Kale",
+        "The Grounded Enjoyer"
+      ],
+      "path": "knowledge/cia/characters/kale.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 19,
+      "archetypes": [
+        "seeker-student",
+        "healer-companion"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "ledgeview",
+      "name": "Ledgeview",
+      "aliases": [
+        "Ledgeview"
+      ],
+      "path": "knowledge/cia/characters/ledgeview.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 27,
+      "archetypes": [
+        "witness-observer",
+        "chronicler-archivist",
+        "bard-jester"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "literally",
+      "name": "Literally",
+      "aliases": [
+        "Literally",
+        "The Cognitive Contrarian",
+        "The Razor of Reason",
+        "The Perception Provocateur"
+      ],
+      "path": "knowledge/cia/characters/literally.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 9,
+      "archetypes": [
+        "guardian-defender",
+        "skeptic-contrarian"
+      ],
       "depth_tier": "working-file"
+    },
+    {
+      "id": "marty-biz",
+      "name": "Marty Biz Music",
+      "aliases": [
+        "Marty Biz Music",
+        "Marty",
+        "martymusicbiz",
+        "Drift King",
+        "Chance & Taylor",
+        "Top Scholar"
+      ],
+      "path": "knowledge/cia/characters/marty-biz.json",
+      "room_path": "rooms/potatoverse-canon/beings/marty/",
+      "archive_status": "deceased-2025",
+      "chronicle_occurrence_count": 133,
+      "archetypes": [
+        "trickster-catalyst",
+        "mirror-foil",
+        "wanderer-threshold"
+      ],
+      "depth_tier": "case-file"
     },
     {
       "id": "matthew-mtclassic",
@@ -648,6 +365,298 @@
         "healer-companion",
         "seeker-student",
         "builder-cultivator"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "metalorian",
+      "name": "Metalorian",
+      "aliases": [
+        "Metalorian",
+        "Meta",
+        "Joe"
+      ],
+      "path": "knowledge/cia/characters/metalorian.json",
+      "room_path": "rooms/potatoverse-canon/beings/metalorian/",
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 11,
+      "archetypes": [
+        "shadow-adversary",
+        "mirror-foil"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "optimistique",
+      "name": "Optimistique",
+      "aliases": [
+        "Optimistique"
+      ],
+      "path": "knowledge/cia/characters/optimistique.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 22,
+      "archetypes": [
+        "healer-companion",
+        "bard-jester",
+        "guardian-defender"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "petty-wappo",
+      "name": "Petty Wappo",
+      "aliases": [
+        "Petty Wappo",
+        "PWappo"
+      ],
+      "path": "knowledge/cia/characters/petty-wappo.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 11,
+      "archetypes": [
+        "witness-observer",
+        "wanderer-threshold"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "pkfc",
+      "name": "PKFC",
+      "aliases": [
+        "PKFC",
+        "Tony Balogny",
+        "Universal Skumbagz"
+      ],
+      "path": "knowledge/cia/characters/pkfc.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 4,
+      "archetypes": [
+        "shadow-adversary",
+        "mirror-foil"
+      ],
+      "depth_tier": "index-card"
+    },
+    {
+      "id": "pondo",
+      "name": "Pondo",
+      "aliases": [
+        "Pondo"
+      ],
+      "path": "knowledge/cia/characters/pondo.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 7,
+      "archetypes": [
+        "healer-companion",
+        "guardian-defender"
+      ],
+      "depth_tier": "working-file"
+    },
+    {
+      "id": "port-monkey",
+      "name": "Port Monkey",
+      "aliases": [
+        "Port Monkey",
+        "Monkey"
+      ],
+      "path": "knowledge/cia/characters/port-monkey.json",
+      "room_path": null,
+      "archive_status": "historical-recovery-active",
+      "chronicle_occurrence_count": 44,
+      "archetypes": [
+        "trickster-catalyst",
+        "wanderer-threshold",
+        "mirror-foil"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "potato-repair-guy",
+      "name": "Potato Repair Guy",
+      "aliases": [
+        "Potato Repair Guy"
+      ],
+      "path": "knowledge/cia/characters/potato-repair-guy.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 5,
+      "archetypes": [
+        "guardian-defender",
+        "builder-cultivator"
+      ],
+      "depth_tier": "working-file"
+    },
+    {
+      "id": "rage",
+      "name": "Rage",
+      "aliases": [
+        "Rage"
+      ],
+      "path": "knowledge/cia/characters/rage.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 44,
+      "archetypes": [
+        "guardian-defender",
+        "healer-companion"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "rahu",
+      "name": "Rahu",
+      "aliases": [
+        "Rahu"
+      ],
+      "path": "knowledge/cia/characters/rahu.json",
+      "room_path": "rooms/potatoverse-canon/beings/rahu/",
+      "archive_status": "recovery-active-2026",
+      "chronicle_occurrence_count": 14,
+      "archetypes": [
+        "mystic-interpreter",
+        "seeker-student",
+        "wanderer-threshold"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "rob",
+      "name": "RoB",
+      "aliases": [
+        "RoB"
+      ],
+      "path": "knowledge/cia/characters/rob.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 6,
+      "archetypes": [
+        "witness-observer",
+        "bard-jester"
+      ],
+      "depth_tier": "working-file"
+    },
+    {
+      "id": "roboto-san",
+      "name": "Roboto San / Robotosan",
+      "path": "knowledge/cia/characters/roboto-san.json",
+      "aliases": [
+        "Robotosan",
+        "Roberto Sanchez (Tim nickname)"
+      ]
+    },
+    {
+      "id": "sammy",
+      "name": "Sammy",
+      "aliases": [
+        "Sammy",
+        "Sami",
+        "Queen of the Potatoverse",
+        "QUEEN OF MARTYVERSE"
+      ],
+      "path": "knowledge/cia/characters/sammy.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 33,
+      "archetypes": [
+        "sovereign-warrior",
+        "trickster-catalyst",
+        "wanderer-threshold"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "supersusi87",
+      "name": "Supersusi87",
+      "aliases": [
+        "Supersusi87",
+        "Super Susi",
+        "SuperSusi88",
+        "Mudbaggins",
+        "Susi the Resilient"
+      ],
+      "path": "knowledge/cia/characters/supersusi87.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 8,
+      "archetypes": [
+        "builder-cultivator",
+        "artisan-maker",
+        "wanderer-threshold"
+      ],
+      "depth_tier": "working-file"
+    },
+    {
+      "id": "tachy",
+      "name": "Tachy / Krystato",
+      "aliases": [
+        "Tachy / Krystato",
+        "imnotkrystalstation",
+        "Krystato"
+      ],
+      "path": "knowledge/cia/characters/tachy.json",
+      "room_path": null,
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 1,
+      "archetypes": [
+        "chronicler-archivist",
+        "witness-observer",
+        "trickster-catalyst"
+      ],
+      "depth_tier": "working-file"
+    },
+    {
+      "id": "termite",
+      "name": "Termite",
+      "aliases": [
+        "Termite",
+        "termitesmoothie",
+        "The Faithful Tuber",
+        "The Groyper Potato"
+      ],
+      "path": "knowledge/cia/characters/termite.json",
+      "room_path": "rooms/potatoverse-canon/beings/termite/",
+      "archive_status": "historical-current-unknown",
+      "chronicle_occurrence_count": 26,
+      "archetypes": [
+        "builder-cultivator",
+        "guardian-defender",
+        "healer-companion"
+      ],
+      "depth_tier": "case-file"
+    },
+    {
+      "id": "tim-dooley",
+      "name": "Tim Dooley",
+      "aliases": [
+        "Tim Dooley"
+      ],
+      "path": "knowledge/cia/characters/tim-dooley.json",
+      "room_path": "tim-dooley/",
+      "archive_status": "active",
+      "chronicle_occurrence_count": 76,
+      "archetypes": [
+        "center-axis",
+        "gardener-sage",
+        "chronicler-archivist"
+      ],
+      "depth_tier": "center-file"
+    },
+    {
+      "id": "txt",
+      "name": "TXT",
+      "aliases": [
+        "TXT",
+        "Low-T"
+      ],
+      "path": "knowledge/cia/characters/txt.json",
+      "room_path": "rooms/potatoverse-canon/beings/txt/",
+      "archive_status": "historical-recovery-active",
+      "chronicle_occurrence_count": 2,
+      "archetypes": [
+        "shadow-adversary",
+        "mirror-foil"
       ],
       "depth_tier": "case-file"
     }
