@@ -218,7 +218,7 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [x] **HOUSE-004 · Surface/Room projection parity:** derive or validate that `subrooms.json`, `holdings.json` and `room-dossiers.json` expose the same public-surface set for every nested Room.
 - [x] **HOUSE-005 · Object route resolution:** validate every House inhabitant route against source-time or generated-route rules, not only `/records/` routes.
 - [ ] **HOUSE-006 · Cross-Dwelling interface review:** produce a disposition for each cross-Dwelling adjacency: ordinary relation, guarded Door, or remove stale adjacency.
-- [ ] **HOUSE-007 · Public parent semantics:** document and validate when a specialist belongs under House, World, Timeline, Sources, Tim, Religion, Philosophy or Science so future surfaces do not default lazily to Home.
+- [x] **HOUSE-007 · Public parent semantics:** `data/house/public-surfaces.json` now documents parent meaning + child-selection rules for Home, House, World, Timeline, Sources, Tim, Religion, Philosophy, Science, Potato of Life and Rooms; `validate_house_harmony.py` fails on undocumented parents or child-contract drift.
 - [x] **TODAY-001 · Today → House ledger:** add a compact integration ledger for each major workstream with canonical owner, Dwelling/Room, public surface and cross-links; use it after large work days to detect researched-but-uninhabited material.
 
 #### P2 — cleanliness / maintainability
