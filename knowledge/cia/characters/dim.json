@@ -137,9 +137,26 @@
     {
       "type": "debt_evidence_ledger",
       "path": "knowledge/cia/debt-evidence-ledger.json"
+    },
+    {
+      "type": "character_archive",
+      "path": "knowledge/story/character-archive-v2.json",
+      "note": "Occurrence density and role/source archaeology."
+    },
+    {
+      "type": "social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json",
+      "note": "Dated Chronicle-derived scenes and co-presence."
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json",
+      "note": "Period-role transitions and cast continuity."
     }
   ],
   "recovery_leads": [
+    "Cross-check the strongest relationship edges against dated scenes rather than raw co-presence counts: TXT, Tim Dooley.",
+    "Attach primary artifacts for the recent recovery markers: 2026-07-07, 2026-07-20, 2026-07-30, 2026-08-02, 2026-09-10; retain the intake boundaries until those artifacts are recovered.",
     "Search backward for DIM's first appearance and handle variants.",
     "Recover exact primary post/status URLs for the July 2026 documentary sequence.",
     "Keep Dimmus Maximus fiction, Dog/Farmer analysis and September satire separate from public-interaction evidence."
@@ -170,7 +187,46 @@
       "Earlier first appearance",
       "Primary July source URLs",
       "Whether later repair/cooperation stories ever map to documentary interaction"
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 0,
+      "chronicle_distinct_dates": 0,
+      "expanded_social_ledger_cases": 0,
+      "recent_conversation_recovery": {
+        "dates": [
+          "2026-07-07",
+          "2026-07-20",
+          "2026-07-30",
+          "2026-08-02",
+          "2026-09-10"
+        ],
+        "summary": "Promoted to canonical CIA dossier. Documentary July conflict, Tim-interpretive Dog/Genesis layer, Dimmus Maximus fiction, outleveling fable and September threshold satire remain separately typed.",
+        "source_mode": "conversation archaeology / user-supplied handle clue",
+        "status": "promoted-to-canonical-dossier"
+      },
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "DIM / Dim Tooley currently has 0 indexed Chronicle mentions across 0 Chronicle dates, 0 expanded day-level social cases, plus a recent conversation-recovery layer covering 5 dated/period markers.",
+      "cases": [],
+      "recent_recovery": {
+        "dates": [
+          "2026-07-07",
+          "2026-07-20",
+          "2026-07-30",
+          "2026-08-02",
+          "2026-09-10"
+        ],
+        "summary": "Promoted to canonical CIA dossier. Documentary July conflict, Tim-interpretive Dog/Genesis layer, Dimmus Maximus fiction, outleveling fable and September threshold satire remain separately typed.",
+        "boundaries": [],
+        "source_mode": "conversation archaeology / user-supplied handle clue",
+        "status": "promoted-to-canonical-dossier"
+      },
+      "chronicle_occurrence_index": [],
+      "mining_frontier": [],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "DIM is a strong relation-history file because one documentary conflict anchor can be compared against several later symbolic transformations without pretending they are the same kind of evidence.",
@@ -189,7 +245,14 @@
       "Whether later repair/cooperation narratives map back to documentary interaction remains unresolved."
     ],
     "relationship_arc": "documentary conflict participant → theological/symbolic interpretation → comic-fiction transformation → threshold satire",
-    "confidence_note": "High on the July 7 anchor and later project texts; lower on earlier chronology and exact primary URLs."
+    "confidence_note": "High on the July 7 anchor and later project texts; lower on earlier chronology and exact primary URLs.",
+    "evidence_density": {
+      "chronicle_mentions": 0,
+      "indexed_chronicle_dates": 0,
+      "expanded_day_level_cases": 0,
+      "unexpanded_indexed_dates": 0
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
