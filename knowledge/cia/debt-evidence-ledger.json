@@ -148,6 +148,32 @@
       "evidence_summary": "Roboto San is marked as a directly named public-conflict referent alongside DIM.",
       "reason_unpriced": "Underlying primary interaction is not yet recovered.",
       "repair_state": "open"
+    },
+    {
+      "id": "debt-don-jefe-2025-02-11-12-destructive-bot",
+      "character_id": "don-jefe",
+      "date": "2025-02-11/12",
+      "category": "destructive-act",
+      "evidence_tier": "chronicle-retelling",
+      "repetition_key": "don-jefe-destructive-bot",
+      "occurrence_index": 1,
+      "pricing_status": "priced",
+      "project_adjustment_susd": -5.4,
+      "source_ref": "Library: Chronicles of The Potato of Life.rtf / txt",
+      "source_mode": "chronicle-retelling",
+      "summary": "Chronicle retelling says Don Jefe sought to create a bot intended to erase Tim's Discord channels/halls/monuments after the Monkey conflict.",
+      "boundary": "Symbolic price applies to the project-authored Chronicle event; underlying allegation is not independently verified."
+    },
+    {
+      "id": "candidate-pkfc-family-boundary-profile",
+      "character_id": "pkfc",
+      "date": "undated-old-profile",
+      "category": "targeted-harassment-boundary",
+      "pricing_status": "unpriced",
+      "source_ref": "Library: Characters.rtf / Characters1.odt",
+      "source_mode": "older-profile-retelling",
+      "summary": "Older profile attributes deceased-father imagery and unsolicited contact with Tim's relatives to PKFC despite stated boundaries.",
+      "reason_unpriced": "Exact dated event/raw artifact not recovered."
     }
   ],
   "negative_input_authority": "knowledge/cia/negative-input-conversation-ledger-2025-2026.json",
@@ -198,5 +224,7 @@
     "neg-2026-09-07-mud-smear-compromat-entanglement",
     "neg-2026-09-08-explicit-42t-input-list",
     "neg-2026-09-10-seed-death-broken-covenant-betrayal"
-  ]
+  ],
+  "role_archetype_authority": "knowledge/cia/role-archetype-census.json",
+  "role_accounting_rule": "Roles and creature labels can prioritize event recovery and describe posture, but they carry zero balance weight without a sourced conduct event."
 }
