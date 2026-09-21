@@ -111,7 +111,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The curr
 - [~] Add behavioral viewport scenarios for globe mode, narrow screens, dense regional labels, detached geography and region→Places handoff. A combined narrow+globe+region+Places contract regression is now in progress; browser-level occlusion/detached-geography proof remains.
 - [x] Map architecture-auditor finding codes to ledger IDs, owner and severity; actionable unmapped findings now fail the architecture audit.
 - [ ] Add regional-statistics enrichment as an optional sourced layer; keep geometry-first partitions useful when population/area/density remain unknown.
-- [ ] Continue design-token convergence beyond z-index into shared surface/background/border/radius/spacing tokens without flattening semantic distinctions.
+- [~] Continue design-token convergence beyond z-index. Shared surface/background/border/radius/shadow/blur tokens are in progress while semantic border/color distinctions remain local.
 - [~] Add a common freshness/status vocabulary for data-backed layers. Evidence/ADL and Places now consume shared explicit-only freshness semantics; extend them to other empirical reader surfaces.
 
 
@@ -125,7 +125,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The curr
 - [x] Audit every writer of country fill/pattern/outline/height. Persistent planes are explicit; specialist renderers register with the shared Render Stack; dormant Fields/Networks compatibility writers are retired.
 - [x] Centralize style-generation restoration for Render Stack and migrated physical layers.
 - [x] Drain direct duplicate Style Lifecycle ownership; remaining visual-channel compatibility debt is tracked independently rather than as duplicate `styledata` ownership.
-- [~] Consolidate global UI design tokens, z-index bands and common surfaces. Semantic stacking bands are being reconstructed on current main; shared surface/background/border/radius/spacing tokens remain.
+- [~] Consolidate global UI design tokens, z-index bands and common surfaces. Semantic stacking bands are on main; shared menu/context/overlay/panel backgrounds plus border/radius/shadow/blur tokens are in progress. Spacing/padding convergence remains selective.
 - [~] Make top-level controls increasingly question-oriented: the visible World Bar now converges Analytical / Physical / Geography / Evidence with Compare / Analyze / Time / View; further wording simplification can continue without adding another control surface.
 - [x] Audit current shared surfaces for mobile occlusion, keyboard access, focus return, color-only semantics and reduced motion; keep the audit requirement on every newly promoted surface.
 - [x] Add concise accessible active-view summaries through the World Bar context/status owner, with duplicate-announcement suppression.
