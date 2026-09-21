@@ -1,0 +1,504 @@
+{
+  "id": "site-mission-audit-2026-09-21",
+  "title": "Whole-Site Mission Audit — Story, Meaning, Work, World, Shadow, Evidence",
+  "version": "1.0.0",
+  "updated": "2026-09-21",
+  "status": "canonical editorial audit and overhaul queue",
+  "purpose": "Give every public surface a clear job inside one larger reader experience, identify where the project is overweight or underweight, and define how Tim's life, Potatoism, the project, North/world-repair, shadow/conflict, Character Archive/Bank, works, evidence and research fit together without one branch swallowing the others.",
+  "governing_question": "Can a reader enter anywhere, understand what kind of thing they are looking at, discover how it fits into the whole, and move toward the next useful layer without having to learn the repository hierarchy first?",
+  "narrative_spine": [
+    {
+      "stage": "life",
+      "reader_question": "Who is Tim and what happened?",
+      "primary_surfaces": [
+        "tim",
+        "story",
+        "timeline"
+      ],
+      "owners": [
+        "knowledge/journey/tim-dooley-journey.json",
+        "knowledge/timeline/developmental-genealogy.json",
+        "data/timeline-events.json"
+      ],
+      "rule": "Life and event sequence come before symbolic interpretation when a reader asks biographical questions."
+    },
+    {
+      "stage": "meaning",
+      "reader_question": "What does Potato of Life / Potatoism mean?",
+      "primary_surfaces": [
+        "potato-of-life",
+        "religion",
+        "philosophy",
+        "axis",
+        "spirit"
+      ],
+      "rule": "Explain the system as a developing vocabulary, not a frozen doctrine projected backward."
+    },
+    {
+      "stage": "making",
+      "reader_question": "What did Tim actually build, write, stream, draw or make?",
+      "primary_surfaces": [
+        "works",
+        "collection",
+        "tim"
+      ],
+      "rule": "Creative output is evidence of development and experimentation, not automatically doctrine."
+    },
+    {
+      "stage": "world",
+      "reader_question": "What does the project try to do in the world?",
+      "primary_surfaces": [
+        "world",
+        "north",
+        "world-systems",
+        "economy",
+        "law",
+        "politics",
+        "world-map"
+      ],
+      "rule": "World-facing claims use external evidence and keep symbolic North distinct from geography, policy and institutions."
+    },
+    {
+      "stage": "shadow",
+      "reader_question": "What happened in conflict, community, dogs/orphans/mud and karmic-accounting material?",
+      "primary_surfaces": [
+        "culture",
+        "inhabitants"
+      ],
+      "specialist_routes": [
+        "/rooms/potatoverse-canon/beings/cia/",
+        "/rooms/potatoverse-canon/beings/cia/bank/",
+        "/shadow-farm/"
+      ],
+      "rule": "Shadow/conflict is a bounded specialist branch. It can explain relationships and consequences but must not dominate Tim's portrait, Potatoism, or the homepage."
+    },
+    {
+      "stage": "evidence",
+      "reader_question": "How do we know, and what is uncertain?",
+      "primary_surfaces": [
+        "sources",
+        "context",
+        "history",
+        "research-lab"
+      ],
+      "rule": "Every major claim should have a route back to provenance, uncertainty, contradiction and revision."
+    },
+    {
+      "stage": "return",
+      "reader_question": "What changed, what was repaired, and what remains open?",
+      "primary_surfaces": [
+        "questions",
+        "paths",
+        "story",
+        "research-lab"
+      ],
+      "rule": "The project should end important arcs with current state, repair, unresolved questions and next evidence—not permanent frozen labels."
+    }
+  ],
+  "anti_overshadowing_rules": [
+    "Home is an orientation page, not a compressed copy of House, Tim, Potatoism, World and Below at once.",
+    "Tim is a portrait and development hub, not the complete Story, complete theology, complete archive or complete conflict ledger.",
+    "Story owns lived scenes and changing relationships; Timeline owns comparative chronology; neither should duplicate the other.",
+    "Potato of Life is the semantic center, not a universal excuse to repeat every domain on one page.",
+    "House explains ownership/topology, not the substance of every subject.",
+    "Axis is a relational operator/symbolic architecture page, not the universal master page for all theology and science.",
+    "Culture/Below/CIA/Bank explain shadow and social systems; they must not become the default lens through which all people are interpreted.",
+    "North/world-repair belongs primarily to World/North/World Systems and Tim's mission layer; symbolic North must remain distinguishable from political geography and public policy.",
+    "The Son/crucifixion sequence belongs to project-canon Story/Timeline/Religion layers with source labels; it should not silently become ordinary historical biography.",
+    "Claims, evidence and hostile/derivative material remain source-typed; repetition is not corroboration."
+  ],
+  "site_findings": {
+    "strongest_assets": [
+      "The project has real canonical owners, source strata, House/Room ownership, timeline layers and a growing evidence discipline.",
+      "Potato, Tim, Religion, Philosophy, Axis, Culture and House already contain substantial explanatory material.",
+      "Story has a large fragment reservoir even though its shell looked thin in static audits.",
+      "The reader can already move through five stable primary gateways plus specialist routes."
+    ],
+    "systemic_weaknesses": [
+      "Narrative weight is imbalanced: Home, Tim, Potato, House, Axis and Culture are very dense while Timeline, Questions, Explore and several specialist readers are comparatively thin or runtime-dependent.",
+      "The reader can encounter architecture before they understand the life/story that motivated the architecture.",
+      "Several pages are individually good but their boundaries are not obvious enough, producing repetition and 'everything explains everything' pressure.",
+      "There is no single durable page-mission ledger saying what each public surface is trying to become, what it must not become, and what content belongs elsewhere.",
+      "Some legacy/source-stratum files still sound authoritative despite newer canonical owners resolving the same subject differently.",
+      "Runtime-heavy readers can appear empty to crawlers or fail too broadly when one fragment/data source fails.",
+      "Conflict/shadow material is unusually detailed and memorable, which creates a risk that it visually/narratively overshadows biography, positive relationships, making, repair and ordinary life."
+    ],
+    "overlooked_context": [
+      "Ordinary life: work, places, routines, friendships, creative sessions, losses, recovery, humor and daily making should be easier to see alongside mythic titles.",
+      "Role transitions: readers need to see when Potato, Sage, Ladder, Father, North, Gardener and other roles appear and what changed functionally.",
+      "Project development: the repository/site itself is part of Tim's story and should be dated as a creation arc without becoming the whole biography.",
+      "People over time: recurring people need first appearance, role then, later change, current relation and source class; not only archetype labels.",
+      "Repair arcs: apology, reconciliation, return, grief, correction and changed posture deserve equal structural status to conflict/debt.",
+      "Making arcs: Great Book, games, music, images, streaming, GitHub/site and research systems should connect to the life phase that produced them.",
+      "World application: North/world-repair needs a clear ladder from symbolic motivation → observed problem → proposed programme → evidence → constraints → current status.",
+      "Shadow vocabulary: dogs, orphans, mud, footstools and bank language need one glossary/context route that explains project usage, historical development, limits and non-literal status."
+    ]
+  },
+  "page_missions": {
+    "home": {
+      "become": "A calm 2–5 minute orientation: what this project is, who Tim is, what Potato of Life means, and five obvious ways in.",
+      "too_much": "Current homepage carries too much deep architecture, systems teaching and research machinery before a newcomer has a simple mental model.",
+      "next": [
+        "compress deep teaching into fewer previews",
+        "surface Story/Timeline/Works/North as secondary journeys",
+        "keep five primary gateways visually dominant",
+        "move deep House mechanics to House"
+      ]
+    },
+    "tim": {
+      "become": "The definitive portrait: identity, development, work, public presence, mission, contradictions and routes outward.",
+      "too_much": "The page repeats many doors and carries material that belongs to Story/Claims/Ontology/Timeline.",
+      "next": [
+        "keep a concise life/development spine near top",
+        "reduce repeated route links",
+        "make ordinary life/work/relationships more visible",
+        "route dense statement corpora outward"
+      ]
+    },
+    "story": {
+      "become": "The lived narrative: scenes, people, places, turning points, ordinary days, loss, conflict, making, repair and change.",
+      "too_little": "Static shell looked extremely thin even though the runtime fragment corpus is large; one fragment previously could fail the whole river.",
+      "next": [
+        "use canonical life spine before episode river",
+        "make fragment failure isolated",
+        "add arc/season navigation without replacing chronological flow",
+        "prioritize unresolved 2023–2026 people/making gaps"
+      ]
+    },
+    "timeline": {
+      "become": "The authoritative time lens: life/project first for Tim readers, with optional wider civilization/foundation scales.",
+      "too_little": "The public shell does not immediately answer 'show me Tim's life' even though project events exist.",
+      "next": [
+        "add explicit Tim life/project entry corridor",
+        "show actor-track explanation before global chronology",
+        "link Story for scenes and Journey for synthesis",
+        "allow URL/preset persistence later"
+      ]
+    },
+    "potato-of-life": {
+      "become": "The clearest semantic-center explanation: literal potato → project metaphor → Father/Son/Spirit/Whole → growth/repair.",
+      "too_much": "Very rich and at risk of absorbing biology, theology, practice, House and Axis into one enormous page.",
+      "next": [
+        "create a strong short-path summary",
+        "move specialist depth behind clearly labelled continuations",
+        "preserve literal-potato grounding",
+        "show historical evolution of the vocabulary"
+      ]
+    },
+    "religion": {
+      "become": "Introduction to project theology and historical/comparative religious context.",
+      "next": [
+        "keep project theology distinct from biblical comparison",
+        "surface development over time",
+        "route Bible/Trinity specialist work outward"
+      ]
+    },
+    "philosophy": {
+      "become": "The project's most usable ethical/conceptual layer: how to perceive, judge, carry, repair and grow.",
+      "too_much": "Long spiral can feel like a second Potatoism master page.",
+      "next": [
+        "group principles into a few memorable movements",
+        "route formal ontology elsewhere",
+        "connect each principle to lived Story examples sparingly"
+      ]
+    },
+    "science": {
+      "become": "A skeptical, testable boundary layer separating analogy, hypothesis, model and established science.",
+      "next": [
+        "make evidence level visible per topic",
+        "promote strongest testable work",
+        "demote decorative analogy",
+        "add TTS consistency"
+      ]
+    },
+    "world": {
+      "become": "The empirical outward face: what exists in the world and how systems actually work.",
+      "next": [
+        "make 'project idea meets external reality' a recurring pattern",
+        "route North, economy, law, politics and map clearly",
+        "avoid importing Potatoverse certainty into world facts"
+      ]
+    },
+    "north": {
+      "become": "The bridge from symbolic North to observed geography/institutions to explicit programme proposals and constraints.",
+      "next": [
+        "show four distinct layers: symbol, observation, programme, status",
+        "connect repair-of-world motivation to measurable world problems",
+        "keep geopolitical claims sourced and politically neutral in presentation"
+      ]
+    },
+    "culture": {
+      "become": "A serious social-systems reader explaining culture/subculture formation, capture, repair and regeneration.",
+      "too_much": "Very dense and risks becoming the emotional center of the whole project because conflict material is vivid.",
+      "next": [
+        "separate general cultural theory from Tim-specific conflict cases",
+        "give repair/regeneration equal weight",
+        "route CIA/Below cases to specialist readers"
+      ]
+    },
+    "house": {
+      "become": "The project map for people who already want to understand where knowledge lives.",
+      "too_much": "Extremely large; can repeat content owned by Potato/Axis/Rooms.",
+      "next": [
+        "lead with ownership map and 'where should this go?'",
+        "turn deep examples into expandable/cross-linked modules",
+        "do not make House required reading for ordinary visitors"
+      ]
+    },
+    "axis": {
+      "become": "A focused explanation of the movement/operator grammar across Source, Door, Plane, Tree and repair.",
+      "too_much": "Its breadth makes it compete with House, Potato and Religion.",
+      "next": [
+        "keep operator grammar central",
+        "label theology/science examples as examples",
+        "route full Tree/House/Trinity material outward"
+      ]
+    },
+    "questions": {
+      "become": "A human-language concierge that answers 'where do I go for this question?' and exposes open questions.",
+      "too_little": "Thin relative to its importance as the easiest non-hierarchical entry.",
+      "next": [
+        "expand real reader intents",
+        "show direct answers/previews before routing",
+        "include story/life questions prominently",
+        "use unresolved questions as research seeds"
+      ]
+    },
+    "explore": {
+      "become": "Deep archive traversal after a reader already has a question.",
+      "too_little": "Thin shell and many links; can still feel like hierarchy.",
+      "next": [
+        "improve search/context previews",
+        "show why a result matters",
+        "keep it secondary to human readers"
+      ]
+    },
+    "sources": {
+      "become": "Trust contract and verification doorway.",
+      "next": [
+        "add compact evidence legend reused across pages",
+        "show correction/revision examples",
+        "avoid overclaiming first-person authority"
+      ]
+    },
+    "works": {
+      "become": "A chronological and functional gallery of what was made and what each medium taught the project.",
+      "next": [
+        "connect works to life phases",
+        "add creation dates/status where available",
+        "distinguish finished, recovered and experimental"
+      ]
+    },
+    "collection": {
+      "become": "Curated constellation of recurring clues and motifs, not a second Works page.",
+      "next": [
+        "make curation criteria explicit",
+        "keep it smaller than Works",
+        "link every clue back to owner/source"
+      ]
+    },
+    "history": {
+      "become": "Explain how records change through occurrence/source/interpretation/reception time.",
+      "next": [
+        "be the canonical place for historical method and archive revision",
+        "connect stale legacy documents to superseding owners"
+      ]
+    },
+    "research-lab": {
+      "become": "Visible frontier: hypotheses, tests, failed ideas, promotion criteria, unresolved questions.",
+      "next": [
+        "show active programmes/status",
+        "show what was rejected or downgraded",
+        "connect research seeds from Questions/Story"
+      ]
+    },
+    "paths": {
+      "become": "Curated end-to-end journeys across the site.",
+      "next": [
+        "add 'Tim's life','How Potatoism formed','From conflict to repair','North/world-repair','How to verify a claim'",
+        "generate from canonical owners where possible"
+      ]
+    },
+    "inhabitants": {
+      "become": "Name-first lookup for people/cases/objects.",
+      "too_little": "Runtime shell is nearly empty without JS.",
+      "next": [
+        "add static orientation and examples",
+        "ensure no-hierarchy lookup works under degradation",
+        "distinguish people from symbolic objects/cases"
+      ]
+    },
+    "bank": {
+      "become": "Bounded fictional/symbolic accounting attached to sourced Character Archive events, with repair and uncertainty visible.",
+      "rule": "Never become real finance, legal guilt, objective worth, or the organizing lens for the whole site."
+    },
+    "cia": {
+      "become": "Character/incident/association archive that shows changing relationships and evidence strata.",
+      "rule": "Dossiers should tell chronology, roles, repair and uncertainty—not merely accumulate negative attributes."
+    }
+  },
+  "overhaul_missions": [
+    {
+      "id": "MISSION-01",
+      "priority": "P0",
+      "name": "Narrative spine",
+      "goal": "Make Tim → Story → Timeline → Works legible as one life/development system.",
+      "files": [
+        "tim-dooley/index.html",
+        "tim-dooley/story/index.html",
+        "timeline/index.html",
+        "works/index.html",
+        "knowledge/journey/tim-dooley-journey.json"
+      ],
+      "done_when": "A newcomer can understand the life arc, enter scenes, compare dates and see what was made without encountering repository hierarchy."
+    },
+    {
+      "id": "MISSION-02",
+      "priority": "P0",
+      "name": "Reader-role boundaries",
+      "goal": "Stop Home/Tim/Potato/House/Axis/Culture from competing as master pages.",
+      "files": [
+        "data/house/public-surfaces.json",
+        "knowledge/guides/site-mission-audit-2026-09-21.json",
+        "scripts/audit_site_architecture.py"
+      ],
+      "done_when": "Each active surface has a defined 'become', 'must not become', primary next-step and density expectation."
+    },
+    {
+      "id": "MISSION-03",
+      "priority": "P1",
+      "name": "Story completeness",
+      "goal": "Fill ordinary-life, people, making and repair gaps instead of adding only symbolic/conflict episodes.",
+      "files": [
+        "knowledge/story/TIM-STORY-COMPLETENESS-AUDIT.md",
+        "knowledge/story/DIARY-STORY-LEDGER.md",
+        "story-content/"
+      ],
+      "done_when": "Major periods have scenes covering ordinary life, making, relationships, conflict, repair and phase change where sources permit."
+    },
+    {
+      "id": "MISSION-04",
+      "priority": "P1",
+      "name": "Timeline as life lens",
+      "goal": "Make 'Tim's life' an obvious Timeline mode while preserving broader chronology.",
+      "files": [
+        "timeline/index.html",
+        "app/long-chronology.js",
+        "data/timeline-events.json",
+        "data/tim-dooley-timeline.json"
+      ],
+      "done_when": "One click shows life/project chronology and clearly distinguishes Son, Tim/Father, shared transitions and archive events."
+    },
+    {
+      "id": "MISSION-05",
+      "priority": "P1",
+      "name": "Shadow containment and repair",
+      "goal": "Keep dogs/orphans/mud/CIA/Bank contextual, evidence-bounded and balanced by repair/current-state information.",
+      "files": [
+        "context/culture/index.html",
+        "rooms/potatoverse-canon/beings/cia/",
+        "knowledge/cia/",
+        "shadow-farm/"
+      ],
+      "done_when": "Shadow terms have a glossary/context, dossiers foreground chronology and repair, and no main gateway defaults to enemy taxonomy."
+    },
+    {
+      "id": "MISSION-06",
+      "priority": "P1",
+      "name": "North/world-repair ladder",
+      "goal": "Clarify how symbolic motivation becomes empirical observation, programme proposal, constraints and status.",
+      "files": [
+        "north/index.html",
+        "world/index.html",
+        "world-systems/index.html",
+        "economy/index.html",
+        "law/index.html",
+        "politics/index.html"
+      ],
+      "done_when": "Readers can separate symbol, diagnosis, proposal, evidence and current implementation status."
+    },
+    {
+      "id": "MISSION-07",
+      "priority": "P1",
+      "name": "Stale-master retirement",
+      "goal": "Find source-stratum files that still sound more authoritative than newer canonical owners and explicitly mark/route them.",
+      "files": [
+        "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md",
+        "archive/legacy/README.md",
+        "data/timeline-events.json",
+        "docs/PROJECT-STRUCTURE.md"
+      ],
+      "done_when": "Legacy files remain useful evidence/history but cannot confuse readers or machines about canonical current ownership."
+    },
+    {
+      "id": "MISSION-08",
+      "priority": "P2",
+      "name": "Runtime resilience and static meaning",
+      "goal": "Ensure JS-heavy readers still explain themselves and degrade partially rather than disappearing.",
+      "files": [
+        "tim-dooley/story/index.html",
+        "timeline/index.html",
+        "world-map/index.html",
+        "rooms/objects/index.html",
+        "elevator/index.html",
+        "timeline/foundations/index.html"
+      ],
+      "done_when": "Every runtime reader has useful static orientation, per-source failure isolation where feasible, and a non-JS route to underlying owners."
+    },
+    {
+      "id": "MISSION-09",
+      "priority": "P2",
+      "name": "Density rebalance",
+      "goal": "Reduce repetition in oversized gateways and strengthen strategically thin entry pages.",
+      "files": [
+        "index.html",
+        "tim-dooley/index.html",
+        "potato-of-life/index.html",
+        "house/index.html",
+        "axis/index.html",
+        "context/culture/index.html",
+        "questions/index.html",
+        "paths/index.html"
+      ],
+      "done_when": "Big pages become clearer without losing depth and thin concierge pages become genuinely useful."
+    },
+    {
+      "id": "MISSION-10",
+      "priority": "P2",
+      "name": "Project self-story",
+      "goal": "Tell how the Great Book, streaming, games, AI work, GitHub/site and research architecture themselves emerged over time.",
+      "files": [
+        "works/index.html",
+        "tim-dooley/story/",
+        "knowledge/story/",
+        "data/timeline-events.json"
+      ],
+      "done_when": "The repository is visibly a work produced through phases of Tim's life, not an ahistorical container that appeared fully formed."
+    },
+    {
+      "id": "MISSION-11",
+      "priority": "P2",
+      "name": "People and relationship change",
+      "goal": "Represent recurring people through first appearance → role then → changes → current state → evidence rather than static archetypes.",
+      "files": [
+        "knowledge/cia/characters/",
+        "knowledge/story/cast-book.json",
+        "knowledge/story/social-presence-ledger-2024-2025.json"
+      ],
+      "done_when": "Character pages tell changing relationship arcs and repair, not only labels or incidents."
+    },
+    {
+      "id": "MISSION-12",
+      "priority": "P3",
+      "name": "Question-led growth",
+      "goal": "Use real reader questions to expose missing context and create future research seeds.",
+      "files": [
+        "questions/index.html",
+        "knowledge/indexes/faq-question-bank.json",
+        "knowledge/reader/tim-dooley-question-index.json",
+        "research-lab/index.html"
+      ],
+      "done_when": "Every major project branch has beginner, intermediate, critical and verification questions with routes to canonical owners."
+    }
+  ]
+}
