@@ -1,5 +1,7 @@
 # Tim Dooley — Life, Persona and Myth Timeline
 
+> **LEGACY RESEARCH STRATUM — not the current canonical life/timeline owner.** This document preserves an earlier research pass, including questions and uncertainties that later project records may have resolved or reframed. For the current reader-oriented developmental model use `knowledge/journey/tim-dooley-journey.json`; for detailed development use `knowledge/timeline/developmental-genealogy.json`; for canonical event navigation use `data/timeline-events.json` and `data/tim-dooley-timeline.json`. Treat statements below according to their original research status rather than silently promoting them into current canon.
+
 > This timeline is intentionally split into **public-person history**, **mythic timeline**, and **open research**. A mythic event is not silently converted into a biographical fact.
 
 ## What we know, what we can infer, and what remains open
