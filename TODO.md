@@ -540,3 +540,23 @@ If the answer to the cleanup question is no, the pass is not finished.
 
 - [x] Promote CIA — Characters, Incidents & Associations to canonical character-archive ownership; migrate dossier graph, Associations, Incidents, public routes, House references and CI validation while retaining FBI compatibility redirects.
 - [ ] Continue CIA conversation archaeology: recover exact-source artifacts for Dim/TXT 2026 sequences, then merge only source-bounded records into canonical character dossiers and association edges.
+
+## Whole-site mission programme — 2026-09-21
+
+Canonical audit: `knowledge/guides/site-mission-audit-2026-09-21.json`.
+
+The governing rule is: **life → meaning → making → world → shadow → evidence → return**. Each public page should own one clear part of that journey and route the rest outward rather than trying to become the whole project.
+
+- [~] **SITE-MISSION-001 · Narrative spine:** make Tim → Story → Timeline → Works read as one coherent life/development system. Story now has a canonical life-spine orientation and fragment-level failure isolation; Timeline now exposes a direct Life & Project entry corridor. Continue with Tim-page de-duplication and Works↔life-phase links.
+- [ ] **SITE-MISSION-002 · Gateway density rebalance:** simplify Home, Tim, Potato of Life, House, Axis and Culture so their strongest purpose appears before deep architecture. Preserve depth behind continuations rather than deleting substance.
+- [ ] **SITE-MISSION-003 · Story completeness:** prioritize ordinary life, places, work, making, friendships, grief, repair and role transitions in addition to mythic/conflict episodes. Use `knowledge/story/TIM-STORY-COMPLETENESS-AUDIT.md` as the recovery queue.
+- [ ] **SITE-MISSION-004 · Timeline as life lens:** make life/project chronology persistable/shareable, clarify Son vs Tim/Father tracks, and make Story ↔ Timeline ↔ Journey handoffs explicit.
+- [ ] **SITE-MISSION-005 · Shadow containment:** create one clear contextual glossary/reader for Dog, orphan, mud, footstool, CIA/Character Archive and Bank language; keep this branch specialist and balance conflict with repair/current-state material.
+- [ ] **SITE-MISSION-006 · North/world-repair ladder:** structure North as symbol → observation → programme → evidence/constraints → current status, then link World Systems/Economy/Law/Politics without collapsing symbolic and empirical claims.
+- [ ] **SITE-MISSION-007 · Stale-master retirement:** audit legacy/source-stratum syntheses that still sound current, beginning with `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md`; preserve them as historical source strata but route current readers/machines to canonical owners.
+- [ ] **SITE-MISSION-008 · Runtime resilience:** audit Story, Timeline, World Map, Inhabitants, Elevator and Foundation Timeline for useful static orientation, isolated data-source failure and direct underlying-record routes.
+- [ ] **SITE-MISSION-009 · Question concierge:** deepen Questions and Paths with real intents: Tim's life, how Potatoism formed, Son/crucifixion sequence, how to verify a claim, conflict→repair, North/world-repair and what the project has actually made.
+- [ ] **SITE-MISSION-010 · Project self-story:** connect Great Book, streaming, games, images/music, AI work, GitHub/site and research architecture to the life phases that produced them.
+- [ ] **SITE-MISSION-011 · People change over time:** every important recurring person should expose first appearance → role then → relationship changes → repair/current state → evidence class, rather than a permanent archetype label.
+- [ ] **SITE-MISSION-012 · Page-purpose contract:** extend the architecture audit so every active public surface has a declared 'become', exclusion/boundary, primary next step and density expectation; fail on role drift only where the rule can be made deterministic.
+- [ ] **SITE-MISSION-013 · No-overshadow review:** explicitly test that Home is not House, Tim is not Claims/Story, Potato is not every domain, Axis is not all theology/science, and Culture/CIA/Bank do not become the default interpretation of the whole project.
