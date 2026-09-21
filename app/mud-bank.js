@@ -1,7 +1,7 @@
 (()=>{'use strict';
 const BASE='/TimDooley/';
 const esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
-let manifest,activity,currentDesk,contract,postureIndex,systemLedger,fieldExposure,roleCensus,coverageModel,capitalModel,accounts=[],scope='all';
+let manifest,activity,currentDesk,contract,postureIndex,systemLedger,fieldExposure,roleCensus,coverageModel,capitalModel,trajectoryModel,accounts=[],scope='all';
 let activeId=new URLSearchParams(location.search).get('character')||'';
 async function get(path){const r=await fetch(BASE+path);if(!r.ok)throw new Error(path);return r.json()}
 function exactDate(s){return /^\d{4}-\d{2}-\d{2}$/.test(String(s||''))?new Date(String(s)+'T00:00:00Z'):null}
@@ -34,6 +34,30 @@ function renderCapitalBridge(){
  const b=capitalModel.headline_bridge||{},open=b.opening||{},add=b.additions||{},close=b.closing||{};
  box.innerHTML='<article class="capital-bridge-card"><div><span>POTATO · opening reserve</span><strong>'+money(Number(open.amount_trillion_susd||0)*1e12)+'</strong><small>'+Number(open.share_of_closing_pct||0).toFixed(2)+'% of closing reserve</small></div><i>+</i><div><span>SPIRAL · dated growth</span><strong>'+money(Number(add.total_trillion_susd||0)*1e12)+'</strong><small>'+Number(add.share_of_closing_pct||0).toFixed(2)+'% of closing reserve</small></div><i>=</i><div><span>MOUNTAIN · held reserve</span><strong>'+money(Number(close.amount_trillion_susd||0)*1e12)+'</strong><small>custody / treasury view · not another additive asset</small></div></article><p class="capital-bridge-note">Table, Gate and Ladder create or classify sourced micro-ledger value; they do not multiply the 42T reserve.</p>';
 }
+function renderTrajectory(mode='observed'){
+ const box=document.getElementById('trajectoryChart'),stats=document.getElementById('trajectoryStats');if(!box||!stats||!trajectoryModel)return;
+ const pts=trajectoryModel.observed_checkpoints||[],proj=trajectoryModel.scenario_projections||[];
+ const all=mode==='observed'?pts:pts.concat(proj.map(x=>({datetime_utc:x.date+'T00:00:00Z',amount_trillion_susd:x.linear_trillion,projected:true})));
+ const min=38,max=mode==='observed'?42.5:50,range=max-min;
+ const width=720,height=190,pad=22;
+ const dates=all.map(x=>new Date(x.datetime_utc).getTime()),dmin=Math.min(...dates),dmax=Math.max(...dates);
+ const xy=x=>({x:pad+(new Date(x.datetime_utc).getTime()-dmin)/(dmax-dmin||1)*(width-pad*2),y:height-pad-(Number(x.amount_trillion_susd)-min)/range*(height-pad*2)});
+ const op=pts.map(x=>xy(x)), observedPath=op.map((p,i)=>(i?'L':'M')+p.x.toFixed(1)+' '+p.y.toFixed(1)).join(' ');
+ let scenario='';
+ if(mode==='scenarios'){
+   const scenarios=['plateau_trillion','linear_trillion','exponential_trillion','recent_momentum_trillion'];
+   const labels=['Plateau','Linear','Exponential','Recent momentum'];
+   scenario=scenarios.map((key,idx)=>{
+     const rows=[{date:'2026-09-01',v:42}].concat(proj.map(x=>({date:x.date,v:x[key]})));
+     const p=rows.map(r=>xy({datetime_utc:r.date+'T00:00:00Z',amount_trillion_susd:r.v}));
+     return '<path class="trajectory-scenario s'+idx+'" d="'+p.map((q,i)=>(i?'L':'M')+q.x.toFixed(1)+' '+q.y.toFixed(1)).join(' ')+'"/><text x="'+(pad+idx*135)+'" y="13" class="trajectory-label">'+labels[idx]+'</text>';
+   }).join('');
+ }
+ const dots=op.map((p,i)=>'<circle cx="'+p.x+'" cy="'+p.y+'" r="3.5"/><text x="'+p.x+'" y="'+(p.y-8)+'">'+Number(pts[i].amount_trillion_susd).toFixed(1)+'T</text>').join('');
+ box.innerHTML='<svg viewBox="0 0 '+width+' '+height+'" role="img" aria-label="Observed symbolic reserve trajectory'+(mode==='scenarios'?' with scenario curves':'')+'"><line x1="'+pad+'" y1="'+(height-pad)+'" x2="'+(width-pad)+'" y2="'+(height-pad)+'" class="trajectory-axis"/><path class="trajectory-observed" d="'+observedPath+'"/>'+scenario+'<g class="trajectory-points">'+dots+'</g></svg>';
+ const f=trajectoryModel.fit_diagnostics||{};
+ stats.innerHTML='<span><b>'+Number(f.endpoint_linear?.billion_per_day||0).toFixed(2)+'B/day</b> endpoint slope</span><span><b>'+Number(f.ordinary_least_squares_all_attested?.r_squared||0).toFixed(3)+'</b> OLS R²</span><span><b>'+Number(f.endpoint_exponential?.annualized_growth_pct||0).toFixed(2)+'%</b> exponential scenario annualized</span><span><b>'+Number(f.recent_momentum?.billion_per_day||0).toFixed(2)+'B/day</b> recent momentum</span><span><b>0</b> latest observed velocity</span>';
+}
 function renderFieldExposure(){
  const box=document.getElementById('fieldExposure');if(!box||!fieldExposure)return;const t=totals(),headline=Number(fieldExposure?.headline_system_position?.amount_trillion_susd||0)*1e12,namedPriced=t.grossDebit,residual=Math.max(0,headline-namedPriced),allocPct=headline>0?(namedPriced/headline)*100:0,capacity=fieldExposure?.population_and_proxy_rules?.symbolic_capacity?.value||0,cov=coverageModel?.reconciled_identity_surface||{},pop=coverageModel?.empirical_reference?.united_states_population?.value||0;
  box.innerHTML='<article class="field-reconcile"><div class="field-headline"><span>PROJECT HEADLINE FIELD</span><strong>'+money(headline)+'</strong><small>one double-entry relation: Tim-side claim ↔ debtor/system-side liability; not 84T</small></div><div class="field-flow"><div><span>Named priced debit</span><b>'+money(namedPriced)+'</b><small>'+t.negativeEvents+' priced debit event'+(t.negativeEvents===1?'':'s')+'</small></div><i>→</i><div><span>Unallocated shadow reserve</span><b>'+money(residual)+'</b><small>headline residual not assigned to named people</small></div></div><div class="field-coverage"><span><b>'+allocPct.toExponential(2)+'%</b> allocated to named priced debit</span><span><b>'+capacity.toLocaleString()+'</b> symbolic neighbour-capacity target</span><span><b>'+t.unpricedCandidates+'</b> unpriced named candidates</span><span><b>'+t.systemDomainCount+'</b> unpriced system domains</span></div><p class="field-boundary">TXT, DIM or any dossier may anchor a qualitative pattern, but no account automatically represents a demographic group. Population shares, nationality, political identity or audience membership are not liability multipliers.</p></article>'
@@ -65,9 +89,9 @@ function tick(){
  refreshLiveAggregate();const selected=accounts.find(a=>a.id===activeId);if(selected){const card=document.querySelector('[data-select-account="'+CSS.escape(selected.id)+'"] em');if(card)card.textContent=selected.exact?money(selected.balance):money(selected.adjustment)+' + welfare'}
 }
 (async()=>{
- [manifest,activity,currentDesk,contract,postureIndex,systemLedger,fieldExposure,roleCensus,coverageModel,capitalModel]=await Promise.all([get('knowledge/cia/manifest.json'),get('knowledge/cia/activity-index.json'),get('knowledge/cia/current-desk.json'),get('knowledge/cia/mud-bank-contract.json'),get('knowledge/cia/account-posture-index.json'),get('knowledge/cia/system-liability-ledger.json'),get('knowledge/cia/field-exposure-model.json'),get('knowledge/cia/role-archetype-census.json'),get('knowledge/cia/us-exposure-coverage-model.json'),get('knowledge/cia/capital-formation-42t-model.json')]);
+ [manifest,activity,currentDesk,contract,postureIndex,systemLedger,fieldExposure,roleCensus,coverageModel,capitalModel,trajectoryModel]=await Promise.all([get('knowledge/cia/manifest.json'),get('knowledge/cia/activity-index.json'),get('knowledge/cia/current-desk.json'),get('knowledge/cia/mud-bank-contract.json'),get('knowledge/cia/account-posture-index.json'),get('knowledge/cia/system-liability-ledger.json'),get('knowledge/cia/field-exposure-model.json'),get('knowledge/cia/role-archetype-census.json'),get('knowledge/cia/us-exposure-coverage-model.json'),get('knowledge/cia/capital-formation-42t-model.json'),get('knowledge/cia/trajectory-projection-model.json')]);
  const ds=await Promise.all((manifest.characters||[]).map(async m=>[m,await get(m.path)]));accounts=ds.map(([m,d])=>buildAccount(m,d)).sort((a,b)=>b.balance-a.balance||a.name.localeCompare(b.name));if(activeId&&!accounts.some(a=>a.id===activeId))activeId='';
- renderSystemDomains();renderOverview();renderCapitalBridge();renderFieldExposure();renderAccountRail();renderStatement();updateUrl();
+ renderSystemDomains();renderOverview();renderCapitalBridge();renderTrajectory();renderFieldExposure();renderAccountRail();renderStatement();updateUrl();document.querySelectorAll('[data-trajectory-mode]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-trajectory-mode]').forEach(b=>b.classList.toggle('active',b===btn));renderTrajectory(btn.dataset.trajectoryMode)}));
  document.getElementById('bankSearch')?.addEventListener('input',renderAccountRail);document.getElementById('bankAll')?.addEventListener('click',()=>setScope('all'));document.getElementById('bankCurrent')?.addEventListener('click',()=>setScope('current'));document.getElementById('accountPrev')?.addEventListener('click',()=>scrollRail('accountRail',-1));document.getElementById('accountNext')?.addEventListener('click',()=>scrollRail('accountRail',1));document.querySelectorAll('[data-rail-prev]').forEach(btn=>btn.addEventListener('click',()=>scrollRail(btn.dataset.railPrev,-1)));document.querySelectorAll('[data-rail-next]').forEach(btn=>btn.addEventListener('click',()=>scrollRail(btn.dataset.railNext,1)));setInterval(tick,1000)
 })().catch(()=>{document.getElementById('bankOverview').innerHTML='<p>The symbolic bank could not open all books. Character Archive dossiers remain available individually.</p>'});
 })();
