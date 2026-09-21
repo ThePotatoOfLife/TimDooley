@@ -36,14 +36,57 @@
       {
         "date": "2024-12-15",
         "title": "Cooking stream and the Potato–Tomato joke war",
+        "participants": [
+          "Tim Dooley",
+          "Anacondasin",
+          "Termite",
+          "Rahu",
+          "Pondo",
+          "Ledgeview",
+          "Hetero God",
+          "Port Monkey",
+          "Sammy"
+        ],
         "minimum_event": "Tim and Anacondasin make potato chips in a collaborative stream. Termite jokes about flying her to Denmark; Rahu adopts a tomato-villain role; a parallel access dispute concerns Tree/Garden boundaries.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "cooking ↔ grounding",
+          "Anacondasin ↔ collaboration",
+          "Rahu ↔ playful villain role",
+          "Tree/Garden ↔ access boundary"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Termite",
+          "Rahu",
+          "Pondo",
+          "Ledgeview",
+          "Hetero God",
+          "Port Monkey",
+          "Sammy"
+        ]
       },
       {
         "date": "2024-12-18",
         "title": "Growth lesson and disruption share one day",
+        "participants": [
+          "Tim Dooley",
+          "Anacondasin",
+          "Juice",
+          "Petty Wappo"
+        ],
         "minimum_event": "The Chronicle frames Tim's work with Ana as a growth/cultivation episode while Juice/Petty Wappo occupy a disruptive counter-thread.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "cultivation ↔ conflict coexistence"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Juice",
+          "Petty Wappo"
+        ]
       }
     ]
   },
@@ -109,9 +152,9 @@
     }
   ],
   "recovery_leads": [
-    "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
-    "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
-    "Add relationship edges only when a scene/source supports them."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: December 15, 2024.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: December 15, 2024 (8).",
+    "Cross-check the strongest relationship edges against dated scenes rather than raw co-presence counts: Tim Dooley, Termite, Rahu, Pondo, Ledgeview, Hetero God."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -131,7 +174,65 @@
       "Recover raw/closer conversation or stream logs behind the densest Chronicle dates.",
       "Separate direct speech from Chronicle paraphrase and later character-profile interpretation.",
       "Add relationship edges only when a scene/source supports them."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 8,
+      "chronicle_distinct_dates": 1,
+      "expanded_social_ledger_cases": 2,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "Anacondasin currently has 8 indexed Chronicle mentions across 1 Chronicle dates, 2 expanded day-level social cases.",
+      "cases": [
+        {
+          "date": "2024-12-15",
+          "title": "Cooking stream and the Potato–Tomato joke war",
+          "what_happened": "Tim and Anacondasin make potato chips in a collaborative stream. Termite jokes about flying her to Denmark; Rahu adopts a tomato-villain role; a parallel access dispute concerns Tree/Garden boundaries.",
+          "co_present": [
+            "Tim Dooley",
+            "Termite",
+            "Rahu",
+            "Pondo",
+            "Ledgeview",
+            "Hetero God",
+            "Port Monkey",
+            "Sammy"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2024-12-18",
+          "title": "Growth lesson and disruption share one day",
+          "what_happened": "The Chronicle frames Tim's work with Ana as a growth/cultivation episode while Juice/Petty Wappo occupy a disruptive counter-thread.",
+          "co_present": [
+            "Tim Dooley",
+            "Juice",
+            "Petty Wappo"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [
+        {
+          "date": "December 15, 2024",
+          "count": 8
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "December 15, 2024",
+          "count": 8
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "Anacondasin has a short but unusually concrete two-scene arc: a collaborative potato-chip stream followed by a growth/support conversation, making the file more useful as an ordinary creative relationship than as the old profile's speculative psychology.",
@@ -149,7 +250,14 @@
       "Longer-term continuity after December 18 is unresolved."
     ],
     "relationship_arc": "collaborative kitchen/social presence → growth/support corridor → later continuity unknown",
-    "confidence_note": "Good Chronicle scene anchors; limited longer-term chronology."
+    "confidence_note": "Good Chronicle scene anchors; limited longer-term chronology.",
+    "evidence_density": {
+      "chronicle_mentions": 8,
+      "indexed_chronicle_dates": 1,
+      "expanded_day_level_cases": 2,
+      "unexpanded_indexed_dates": 0
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
