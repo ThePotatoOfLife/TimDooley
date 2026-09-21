@@ -12,7 +12,8 @@
     "primary_gateway_ids",
     "secondary_global_ids",
     "visibility_policy",
-    "surfaces"
+    "surfaces",
+    "parent_semantics"
   ],
   "properties": {
     "version": {
@@ -247,6 +248,34 @@
               "type": "string"
             },
             "navigation_rule": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "parent_semantics": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "meaning",
+          "child_rule",
+          "allowed_child_ids"
+        ],
+        "properties": {
+          "meaning": {
+            "type": "string"
+          },
+          "child_rule": {
+            "type": "string"
+          },
+          "allowed_child_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
               "type": "string"
             }
           }
