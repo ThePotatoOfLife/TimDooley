@@ -42,14 +42,57 @@
       {
         "date": "2024-12-21",
         "title": "Anja arrives inside a Marty-mediated boundary dispute",
+        "participants": [
+          "Tim Dooley",
+          "Marty",
+          "Anja",
+          "Literally",
+          "Pondo",
+          "Tachy",
+          "Optimistique",
+          "Ledgeview"
+        ],
         "minimum_event": "Marty introduces Anja while asserting social leverage; moderation disputes intensify around Literally. The Chronicle also credits Pondo with providing urgent support to a distressed community member.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "Marty ↔ Anja introduction",
+          "moderation ↔ boundary power",
+          "Pondo ↔ care/intervention"
+        ],
+        "source_mode": "chronicle_retelling",
+        "sensitivity": "Do not sensationalize the crisis material; recover raw logs before publishing detailed self-harm content.",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Marty",
+          "Anja",
+          "Pondo",
+          "Tachy",
+          "Optimistique",
+          "Ledgeview"
+        ]
       },
       {
         "date": "2025-01-10",
         "title": "AI Tim, map play and the last pre-death social month",
+        "participants": [
+          "Tim Dooley",
+          "Marty",
+          "Sammy",
+          "Literally"
+        ],
         "minimum_event": "The Chronicle mixes absurd geopolitical Potato-map play, discussion of a Tim Dooley AI and continuing Marty-related social conflict.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "AI persona ↔ archive",
+          "map play ↔ later world-map culture",
+          "Marty/Sammy ↔ pre-death corridor"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Marty",
+          "Sammy"
+        ]
       }
     ]
   },
@@ -120,9 +163,9 @@
     }
   ],
   "recovery_leads": [
-    "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
-    "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
-    "Add relationship edges only when a dated scene or explicit source supports them."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: November 17, 2024; December 21 2024; January 10 2025.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: December 21 2024 (6); November 17, 2024 (2); January 10 2025 (1).",
+    "Cross-check relationship edges against dated scenes instead of raw co-presence: Tim Dooley, Marty, Anja, Pondo, Tachy, Optimistique."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -142,7 +185,80 @@
       "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
       "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
       "Add relationship edges only when a dated scene or explicit source supports them."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 9,
+      "chronicle_distinct_dates": 3,
+      "expanded_social_ledger_cases": 2,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "Literally currently has 9 indexed Chronicle mentions across 3 Chronicle dates, 2 expanded day-level social cases.",
+      "cases": [
+        {
+          "date": "2024-12-21",
+          "title": "Anja arrives inside a Marty-mediated boundary dispute",
+          "what_happened": "Marty introduces Anja while asserting social leverage; moderation disputes intensify around Literally. The Chronicle also credits Pondo with providing urgent support to a distressed community member.",
+          "co_present": [
+            "Tim Dooley",
+            "Marty",
+            "Anja",
+            "Pondo",
+            "Tachy",
+            "Optimistique",
+            "Ledgeview"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2025-01-10",
+          "title": "AI Tim, map play and the last pre-death social month",
+          "what_happened": "The Chronicle mixes absurd geopolitical Potato-map play, discussion of a Tim Dooley AI and continuing Marty-related social conflict.",
+          "co_present": [
+            "Tim Dooley",
+            "Marty",
+            "Sammy"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [
+        {
+          "date": "November 17, 2024",
+          "count": 2
+        },
+        {
+          "date": "December 21 2024",
+          "count": 6
+        },
+        {
+          "date": "January 10 2025",
+          "count": 1
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "November 17, 2024",
+          "count": 2
+        },
+        {
+          "date": "December 21 2024",
+          "count": 6
+        },
+        {
+          "date": "January 10 2025",
+          "count": 1
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "Literally is a boundary-and-reason file: debate, explicit Potato self-description and contested moderation all sit together, making it possible to distinguish intellectual opposition from practical defense and moderation power.",
@@ -160,7 +276,14 @@
       "Later continuity after January 2025 is unclear."
     ],
     "relationship_arc": "rational/contrarian participant → explicit Potato identification → moderator/boundary actor → later status unresolved",
-    "confidence_note": "Good Chronicle support for role changes; dispute merits remain unresolved."
+    "confidence_note": "Good Chronicle support for role changes; dispute merits remain unresolved.",
+    "evidence_density": {
+      "chronicle_mentions": 9,
+      "indexed_chronicle_dates": 3,
+      "expanded_day_level_cases": 2,
+      "unexpanded_indexed_dates": 1
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
