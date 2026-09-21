@@ -309,11 +309,11 @@
 **Completion:** at least one geometry-first partition can accept sourced statistics without mutating or pretending they came from the boundary source.
 
 ### WM-052 · Shared UI token convergence stops at layering — P3
-**Status:** in progress on branch `world-map-zindex-tokens-current-20260921`.  
+**Status:** in progress on branch `world-map-surface-tokens-current-20260921c`.  
 **Evidence:** semantic z-index bands are being centralized, but many map surfaces still repeat local background, border, radius, padding and shadow literals.  
 **Risk:** visual drift returns as new controls and inspectors are added, making density/mobile tuning harder.  
-**Progress:** current `main` still used raw stacking numbers despite an earlier unmerged branch. The current-main reconstruction defines semantic z-index bands for decoration, map controls, selection, context, overlays, header and menus, then migrates the shell plus primary context/investigation surfaces to those bands with validator coverage.  
-**Remaining:** introduce the smaller shared background/border/radius/spacing surface token set; do not flatten data-semantic colors or specialized visualization styling.
+**Progress:** semantic z-index bands are already on main. The current-main surface wave defines shared menu/context/overlay/panel backgrounds plus common border/radius/shadow/blur tokens, then migrates the shell, World Bar, country card, Evidence, Path, Impact and Chain surfaces while preserving semantic border/color distinctions.  
+**Remaining:** promote spacing/padding tokens only where repetition is genuinely cross-surface; do not flatten specialized data/visual semantics.
 
 ### WM-053 · Data freshness semantics are inconsistent across map families — P2
 **Status:** in progress on branch `world-map-control-plane-cleanup-current-20260921`.  
