@@ -126,7 +126,19 @@
     },
     "association_rule": "Co-presence, direct interaction, explicit relationship language and later interpretation remain distinct evidence types.",
     "debt_and_repair": {
-      "records": [],
+      "records": [
+        {
+          "id": "candidate-pkfc-family-boundary-profile",
+          "date": "undated-old-profile",
+          "pricing_status": "unpriced",
+          "category_candidate": "targeted-harassment-boundary",
+          "summary": "Older character archive attributes to PKFC sending images of Tim's deceased father and attempting unsolicited contact with Tim's living relatives despite stated wishes against such contact.",
+          "source_mode": "older character archive profile",
+          "source_ref": "Library: Characters.rtf / Characters1.odt",
+          "reason_unpriced": "Concrete conduct is described, but the surviving profile does not preserve an exact date, raw message/contact artifact or enough event context for responsible pricing.",
+          "repair_state": "open"
+        }
+      ],
       "rule": "Do not attach legal, financial, karmic or spiritual debt unless a dated source explicitly does so; symbolic debt remains project language unless independently established."
     },
     "state_rule": "Roles, archetypes, upgrades, handicaps and project-symbolic placements are date/source-bounded states, not permanent human essences.",
@@ -155,13 +167,26 @@
     "confidence_note": "Good recurrence confidence; deliberately low confidence in legacy characterization."
   },
   "symbolic_account": {
-    "status": "unassessed",
+    "status": "unpriced boundary dispute",
     "good_karma": "unassessed",
-    "karmic_debt": "unassessed",
+    "karmic_debt": "claimed / unpriced",
     "dooley_welfare": {
       "enabled": false
     },
-    "outstanding": [],
-    "entries": []
+    "outstanding": [
+      "recover exact dates and raw artifacts for family-contact / deceased-father-image allegations"
+    ],
+    "entries": [
+      {
+        "date": "undated-old-profile",
+        "type": "dispute",
+        "kind": "claimed family-boundary violation",
+        "amount_or_scale": "unpriced",
+        "source_mode": "older character archive profile",
+        "source_ref": "Library: Characters.rtf / Characters1.odt",
+        "note": "Profile attributes deceased-father imagery and unsolicited relative contact to PKFC; no price until date/context is recovered.",
+        "status": "open"
+      }
+    ]
   }
 }

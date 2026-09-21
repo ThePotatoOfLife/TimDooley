@@ -1,0 +1,704 @@
+{
+  "id": "cia-role-archetype-census-v1",
+  "title": "CIA Role / Creature / Archetype Census",
+  "updated": "2026-09-21",
+  "status": "backend normalization authority",
+  "coverage": 36,
+  "purpose": "Normalize jobs, creatures, roles, archetypes and narrative functions across every canonical CIA entity while keeping role state separate from conduct-based symbolic accounting.",
+  "accounting_principle": "A role can affect sorting, recovery priority and interpretation, but a role alone never creates debit or credit. Balances move only through source-bounded acts.",
+  "role_accounting_map": [
+    {
+      "role_family": "Dog / circling",
+      "effect": "state-only",
+      "meaning": "reactive/looping/boundary-pressure motif",
+      "pricing_gate": "requires a distinct pursuit, dog-piling, harassment or boundary event"
+    },
+    {
+      "role_family": "Footstool",
+      "effect": "state-only",
+      "meaning": "dependency/subordination motif",
+      "pricing_gate": "no automatic price"
+    },
+    {
+      "role_family": "Farmer",
+      "effect": "state-only",
+      "meaning": "cultivation or extraction role",
+      "pricing_gate": "price the actual stewardship or exploitative act, not the title"
+    },
+    {
+      "role_family": "Mud Dweller / Shadow",
+      "effect": "state-only",
+      "meaning": "residue/unresolved entanglement motif",
+      "pricing_gate": "no person-level price by label"
+    },
+    {
+      "role_family": "Potato / Builder / Cultivator",
+      "effect": "positive-context",
+      "meaning": "growth/construction",
+      "pricing_gate": "dated yield/growth/project-credit event"
+    },
+    {
+      "role_family": "Guardian / Defender / Healer",
+      "effect": "positive-context",
+      "meaning": "protection/repair",
+      "pricing_gate": "dated support, repair or protection event"
+    },
+    {
+      "role_family": "Narrator / Skeptic / Mirror",
+      "effect": "neutral-context",
+      "meaning": "interpretive/oppositional stance",
+      "pricing_gate": "criticism is zero; sourced false framing/coercive narration may price"
+    },
+    {
+      "role_family": "Trickster / Catalyst",
+      "effect": "neutral-context",
+      "meaning": "change-pressure role",
+      "pricing_gate": "event decides positive or negative"
+    }
+  ],
+  "entities": [
+    {
+      "character_id": "anacondasin",
+      "display_name": "Anacondasin",
+      "role_posture": "constructive",
+      "archetypes": [
+        "wanderer-threshold",
+        "seeker-student",
+        "artisan-maker"
+      ],
+      "narrative_functions": [
+        "performance",
+        "retreat",
+        "reconstruction"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "anja",
+      "display_name": "Anja / Ansja",
+      "role_posture": "constructive",
+      "archetypes": [
+        "wanderer-threshold",
+        "witness-observer"
+      ],
+      "narrative_functions": [
+        "arrival",
+        "bridge",
+        "clarity"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "barry-bletunick",
+      "display_name": "Barry Bletunick",
+      "role_posture": "neutral-observer",
+      "archetypes": [
+        "historian-memory",
+        "witness-observer"
+      ],
+      "narrative_functions": [
+        "nostalgia",
+        "early-tech memory"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "bigtech",
+      "display_name": "BigTech",
+      "role_posture": "neutral-observer",
+      "archetypes": [
+        "mirror-foil",
+        "skeptic-contrarian",
+        "trickster-catalyst"
+      ],
+      "narrative_functions": [
+        "distance",
+        "narrative control",
+        "intellectual pressure"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "capy",
+      "display_name": "Capy",
+      "role_posture": "unclassified",
+      "archetypes": [],
+      "narrative_functions": [],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "darkchild",
+      "display_name": "DARKCHILD",
+      "role_posture": "constructive",
+      "archetypes": [
+        "bard-jester",
+        "patron-supporter"
+      ],
+      "narrative_functions": [
+        "hype",
+        "joy",
+        "whimsy"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "dim",
+      "display_name": "DIM / Dim Tooley",
+      "role_posture": "mixed",
+      "archetypes": [
+        "mirror-foil",
+        "wanderer-threshold"
+      ],
+      "narrative_functions": [
+        "public conflict participant",
+        "relation-history node",
+        "later mythic transformation",
+        "repair/open-question foil"
+      ],
+      "symbolic_roles": [
+        "Dog-like reactive function",
+        "Dog",
+        "Footstool",
+        "Dimmus Maximus"
+      ],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "don-jefe",
+      "display_name": "Don Jefe",
+      "role_posture": "adversarial-recovery",
+      "archetypes": [
+        "mirror-foil",
+        "shadow-adversary",
+        "witness-observer"
+      ],
+      "narrative_functions": [
+        "strategic distance",
+        "conflict architecture"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "duaaaht",
+      "display_name": "duaaaht",
+      "role_posture": "neutral-observer",
+      "archetypes": [
+        "mystic-interpreter",
+        "bard-jester",
+        "seeker-student"
+      ],
+      "narrative_functions": [
+        "science-spirit jokes",
+        "surreal interpretation"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "gg",
+      "display_name": "GG",
+      "role_posture": "constructive",
+      "archetypes": [
+        "trickster-catalyst",
+        "wanderer-threshold",
+        "skeptic-contrarian"
+      ],
+      "narrative_functions": [
+        "provocation",
+        "quiet influence",
+        "grievance/repair interlocutor"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "highly-regarded",
+      "display_name": "Highly Regarded",
+      "role_posture": "constructive",
+      "archetypes": [
+        "seeker-student",
+        "patron-supporter",
+        "bard-jester"
+      ],
+      "narrative_functions": [
+        "encouragement",
+        "hype",
+        "potato-in-training"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "jazzy",
+      "display_name": "Jazzy",
+      "role_posture": "adversarial-recovery",
+      "archetypes": [
+        "wanderer-threshold",
+        "mirror-foil"
+      ],
+      "narrative_functions": [
+        "evasion",
+        "social friction"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "juice",
+      "display_name": "Juice",
+      "role_posture": "neutral-observer",
+      "archetypes": [
+        "skeptic-contrarian",
+        "mirror-foil",
+        "mystic-interpreter"
+      ],
+      "narrative_functions": [
+        "theological challenge",
+        "moral argument",
+        "friction"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "kale",
+      "display_name": "Kale",
+      "role_posture": "constructive",
+      "archetypes": [
+        "seeker-student",
+        "healer-companion"
+      ],
+      "narrative_functions": [
+        "clarity",
+        "release",
+        "grounding"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "ledgeview",
+      "display_name": "Ledgeview",
+      "role_posture": "neutral-observer",
+      "archetypes": [
+        "witness-observer",
+        "chronicler-archivist",
+        "bard-jester"
+      ],
+      "narrative_functions": [
+        "questions",
+        "reflection",
+        "poetic framing",
+        "equilibrium"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "literally",
+      "display_name": "Literally",
+      "role_posture": "constructive",
+      "archetypes": [
+        "guardian-defender",
+        "skeptic-contrarian"
+      ],
+      "narrative_functions": [
+        "argument",
+        "moderation",
+        "defense",
+        "clarity"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "marty-biz",
+      "display_name": "Marty Biz Music",
+      "role_posture": "adversarial-recovery",
+      "archetypes": [
+        "trickster-catalyst",
+        "mirror-foil",
+        "wanderer-threshold"
+      ],
+      "narrative_functions": [
+        "catalysis",
+        "social gravity",
+        "conflict",
+        "companionship"
+      ],
+      "symbolic_roles": [
+        "Tomato-orbit relation"
+      ],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "matthew-mtclassic",
+      "display_name": "Matthew / MTClassic",
+      "role_posture": "constructive",
+      "archetypes": [
+        "healer-companion",
+        "guardian-defender",
+        "seeker-student"
+      ],
+      "narrative_functions": [
+        "ordinary chat continuity",
+        "gaming progress",
+        "moderation advice",
+        "theological dialogue"
+      ],
+      "symbolic_roles": [
+        "Guardian/Defender"
+      ],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "mediomu007",
+      "display_name": "Mediomu007",
+      "role_posture": "constructive",
+      "archetypes": [
+        "healer-companion",
+        "seeker-student",
+        "builder-cultivator"
+      ],
+      "narrative_functions": [
+        "questioning",
+        "ordinary companionship",
+        "room-making",
+        "bridge-building"
+      ],
+      "symbolic_roles": [
+        "Builder/Cultivator"
+      ],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "metalorian",
+      "display_name": "Metalorian",
+      "role_posture": "adversarial-recovery",
+      "archetypes": [
+        "shadow-adversary",
+        "mirror-foil"
+      ],
+      "narrative_functions": [
+        "control conflict",
+        "recurring opposition"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "optimistique",
+      "display_name": "Optimistique",
+      "role_posture": "constructive",
+      "archetypes": [
+        "healer-companion",
+        "bard-jester",
+        "guardian-defender"
+      ],
+      "narrative_functions": [
+        "affirmation",
+        "singing",
+        "support"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "petty-wappo",
+      "display_name": "Petty Wappo",
+      "role_posture": "neutral-observer",
+      "archetypes": [
+        "witness-observer",
+        "wanderer-threshold"
+      ],
+      "narrative_functions": [
+        "questions",
+        "detached observation"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "pkfc",
+      "display_name": "PKFC",
+      "role_posture": "adversarial-recovery",
+      "archetypes": [
+        "shadow-adversary",
+        "mirror-foil"
+      ],
+      "narrative_functions": [
+        "boundary conflict",
+        "attention pressure"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "pondo",
+      "display_name": "Pondo",
+      "role_posture": "constructive",
+      "archetypes": [
+        "healer-companion",
+        "guardian-defender"
+      ],
+      "narrative_functions": [
+        "kindness",
+        "de-escalation",
+        "crisis support"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "port-monkey",
+      "display_name": "Port Monkey",
+      "role_posture": "mixed",
+      "archetypes": [
+        "trickster-catalyst",
+        "wanderer-threshold",
+        "mirror-foil"
+      ],
+      "narrative_functions": [
+        "Tree boundary",
+        "conflict",
+        "branching social space",
+        "repair/stewardship possibility"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "potato-repair-guy",
+      "display_name": "Potato Repair Guy",
+      "role_posture": "constructive",
+      "archetypes": [
+        "guardian-defender",
+        "builder-cultivator"
+      ],
+      "narrative_functions": [
+        "warning",
+        "repair"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "rage",
+      "display_name": "Rage",
+      "role_posture": "constructive",
+      "archetypes": [
+        "guardian-defender",
+        "healer-companion"
+      ],
+      "narrative_functions": [
+        "crisis response",
+        "practical protection"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "rahu",
+      "display_name": "Rahu",
+      "role_posture": "mixed",
+      "archetypes": [
+        "mystic-interpreter",
+        "seeker-student",
+        "wanderer-threshold"
+      ],
+      "narrative_functions": [
+        "mythic interpretation",
+        "challenge",
+        "growth pressure"
+      ],
+      "symbolic_roles": [
+        "tomato-villain",
+        "Mud Dweller / lost soul"
+      ],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "rob",
+      "display_name": "RoB",
+      "role_posture": "neutral-observer",
+      "archetypes": [
+        "witness-observer",
+        "bard-jester"
+      ],
+      "narrative_functions": [
+        "cryptic comments",
+        "play"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "roboto-san",
+      "display_name": "Roboto San / Robotosan",
+      "role_posture": "adversarial-recovery",
+      "archetypes": [
+        "skeptic-contrarian",
+        "mirror-foil",
+        "narrative-conflict node"
+      ],
+      "narrative_functions": [
+        "YouTube narrative-conflict recovery target",
+        "Cyraxx-frame / identity-transfer dispute",
+        "repeated undermining / FUD source",
+        "coercive-narration / reputational-entanglement candidate"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "sammy",
+      "display_name": "Sammy",
+      "role_posture": "adversarial-recovery",
+      "archetypes": [
+        "sovereign-warrior",
+        "trickster-catalyst",
+        "wanderer-threshold"
+      ],
+      "narrative_functions": [
+        "survival",
+        "loyalty conflict",
+        "chaos",
+        "boundary testing"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "supersusi87",
+      "display_name": "Supersusi87",
+      "role_posture": "constructive",
+      "archetypes": [
+        "builder-cultivator",
+        "artisan-maker",
+        "wanderer-threshold"
+      ],
+      "narrative_functions": [
+        "gardening",
+        "cooking",
+        "return",
+        "resilience"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "tachy",
+      "display_name": "Tachy / Krystato",
+      "role_posture": "neutral-observer",
+      "archetypes": [
+        "chronicler-archivist",
+        "witness-observer",
+        "trickster-catalyst"
+      ],
+      "narrative_functions": [
+        "clipping",
+        "systems mapping",
+        "humor",
+        "cross-community movement"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "termite",
+      "display_name": "Termite",
+      "role_posture": "constructive",
+      "archetypes": [
+        "builder-cultivator",
+        "guardian-defender",
+        "healer-companion"
+      ],
+      "narrative_functions": [
+        "growing",
+        "belonging",
+        "persistence",
+        "support"
+      ],
+      "symbolic_roles": [
+        "Potato cultivation adjacency"
+      ],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "tim-dooley",
+      "display_name": "Tim Dooley",
+      "role_posture": "neutral-observer",
+      "archetypes": [
+        "center-axis",
+        "gardener-sage",
+        "chronicler-archivist"
+      ],
+      "narrative_functions": [
+        "cultivation",
+        "simplification",
+        "story-making",
+        "boundary-setting"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    },
+    {
+      "character_id": "txt",
+      "display_name": "TXT",
+      "role_posture": "adversarial-recovery",
+      "archetypes": [
+        "shadow-adversary",
+        "mirror-foil"
+      ],
+      "narrative_functions": [
+        "persistent opposition",
+        "returning conflict"
+      ],
+      "symbolic_roles": [],
+      "role_weight_susd": 0,
+      "rule": "Role labels are zero-weight; use them to guide recovery of concrete acts."
+    }
+  ]
+}
