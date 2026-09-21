@@ -58,12 +58,16 @@
     {
       "type": "dated_social_ledger",
       "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json",
+      "note": "Period-role transitions and cast continuity."
     }
   ],
   "recovery_leads": [
-    "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
-    "Separate direct speech from Chronicle paraphrase and later project interpretation.",
-    "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: November 3 2024; November 26, 2024; Feb 24 2025; Feb 26 2025.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: November 26, 2024 (3); November 3 2024 (1); Feb 24 2025 (1); Feb 26 2025 (1)."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -83,7 +87,57 @@
       "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
       "Separate direct speech from Chronicle paraphrase and later project interpretation.",
       "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 6,
+      "chronicle_distinct_dates": 4,
+      "expanded_social_ledger_cases": 0,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "RoB currently has 6 indexed Chronicle mentions across 4 Chronicle dates, 0 expanded day-level social cases.",
+      "cases": [],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [
+        {
+          "date": "November 3 2024",
+          "count": 1
+        },
+        {
+          "date": "November 26, 2024",
+          "count": 3
+        },
+        {
+          "date": "Feb 24 2025",
+          "count": 1
+        },
+        {
+          "date": "Feb 26 2025",
+          "count": 1
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "November 3 2024",
+          "count": 1
+        },
+        {
+          "date": "November 26, 2024",
+          "count": 3
+        },
+        {
+          "date": "Feb 24 2025",
+          "count": 1
+        },
+        {
+          "date": "Feb 26 2025",
+          "count": 1
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "RoB is a deliberately sparse dossier: four dated Chronicle windows prove recurrence, but there is not yet enough scene-level recovery to justify a richer personality story.",
@@ -99,7 +153,14 @@
       "Associations and direct quotes should not be inferred merely from recurrence."
     ],
     "relationship_arc": "recurring cameo across four dated windows; detailed arc not yet recovered",
-    "confidence_note": "High confidence in recurrence dates; low confidence in richer interpretation."
+    "confidence_note": "High confidence in recurrence dates; low confidence in richer interpretation.",
+    "evidence_density": {
+      "chronicle_mentions": 6,
+      "indexed_chronicle_dates": 4,
+      "expanded_day_level_cases": 0,
+      "unexpanded_indexed_dates": 4
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
