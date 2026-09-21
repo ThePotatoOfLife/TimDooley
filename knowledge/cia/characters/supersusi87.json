@@ -46,14 +46,61 @@
       {
         "date": "2024-12-07",
         "title": "Reconciliation becomes a community problem",
+        "participants": [
+          "Tim Dooley",
+          "Optimistique",
+          "Juice",
+          "Super Susi",
+          "Termite",
+          "PotatoJim"
+        ],
         "minimum_event": "Optimistique apologizes/seeks reconciliation in the Chronicle; Termite and others respond cautiously. Juice and Super Susi are also discussed through return, trust and redemption language while PotatoJim supplies festive/creative levity.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "apology ↔ trust repair",
+          "Termite ↔ boundary caution",
+          "PotatoJim ↔ festive culture"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Optimistique",
+          "Juice",
+          "Termite",
+          "PotatoJim"
+        ]
       },
       {
         "date": "2025-02-27",
         "title": "Three conflict calls",
+        "participants": [
+          "Tim Dooley",
+          "Supersusi87",
+          "Ansja",
+          "Carrie",
+          "Meta",
+          "Mondo Cane",
+          "Tachy",
+          "Raven"
+        ],
         "minimum_event": "The Chronicle organizes three separate social conflicts/calls on one day. It calls them 'rituals'; that is the author's interpretation, while the bounded calls and named participants are the recoverable historical targets.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "Supersusi ↔ severance",
+          "Ansja ↔ continued guidance",
+          "Meta ↔ second-call conflict",
+          "Tachy ↔ third-call server"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Ansja",
+          "Carrie",
+          "Meta",
+          "Mondo Cane",
+          "Tachy",
+          "Raven"
+        ]
       }
     ]
   },
@@ -114,12 +161,17 @@
     {
       "type": "dated_social_ledger",
       "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+    },
+    {
+      "type": "cast_book",
+      "path": "knowledge/story/cast-book.json",
+      "note": "Period-role transitions and cast continuity."
     }
   ],
   "recovery_leads": [
-    "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
-    "Separate direct speech from Chronicle paraphrase and later project interpretation.",
-    "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: November 17, 2024; November 19, 2024; December 7, 2024; Feb 26 2025.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: Feb 26 2025 (3); November 19, 2024 (2); December 7, 2024 (2); November 17, 2024 (1).",
+    "Cross-check relationship edges against dated scenes instead of raw co-presence: Tim Dooley, Optimistique, Juice, Termite, PotatoJim, Ansja."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -139,7 +191,90 @@
       "Recover closer/raw chat, stream, post or screenshot evidence behind the densest dated appearances.",
       "Separate direct speech from Chronicle paraphrase and later project interpretation.",
       "Promote this file to a deeper tier only when chronology, relationships and source strata materially improve."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 8,
+      "chronicle_distinct_dates": 4,
+      "expanded_social_ledger_cases": 2,
+      "recent_conversation_recovery": null,
+      "cast_period_roles": [],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "Supersusi87 currently has 8 indexed Chronicle mentions across 4 Chronicle dates, 2 expanded day-level social cases.",
+      "cases": [
+        {
+          "date": "2024-12-07",
+          "title": "Reconciliation becomes a community problem",
+          "what_happened": "Optimistique apologizes/seeks reconciliation in the Chronicle; Termite and others respond cautiously. Juice and Super Susi are also discussed through return, trust and redemption language while PotatoJim supplies festive/creative levity.",
+          "co_present": [
+            "Tim Dooley",
+            "Optimistique",
+            "Juice",
+            "Termite",
+            "PotatoJim"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2025-02-27",
+          "title": "Three conflict calls",
+          "what_happened": "The Chronicle organizes three separate social conflicts/calls on one day. It calls them 'rituals'; that is the author's interpretation, while the bounded calls and named participants are the recoverable historical targets.",
+          "co_present": [
+            "Tim Dooley",
+            "Ansja",
+            "Carrie",
+            "Meta",
+            "Mondo Cane",
+            "Tachy",
+            "Raven"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": null,
+      "chronicle_occurrence_index": [
+        {
+          "date": "November 17, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 19, 2024",
+          "count": 2
+        },
+        {
+          "date": "December 7, 2024",
+          "count": 2
+        },
+        {
+          "date": "Feb 26 2025",
+          "count": 3
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "November 17, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 19, 2024",
+          "count": 2
+        },
+        {
+          "date": "December 7, 2024",
+          "count": 2
+        },
+        {
+          "date": "Feb 26 2025",
+          "count": 3
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "Super Susi is useful because the surviving profile is unusually constructive: gardening/cooking/resilience themes coexist with return/trust and conflict-call contexts, giving the archive a recovery/return file rather than a fixed faction label.",
@@ -156,7 +291,14 @@
       "Raw statements behind the trust/redemption framing are still missing."
     ],
     "relationship_arc": "older affiliation / distance → return and trust problem → constructive Garden/cultivation framing → later conflict-field recurrence",
-    "confidence_note": "Moderate Chronicle support; identity/affiliation transitions need closer raw sources."
+    "confidence_note": "Moderate Chronicle support; identity/affiliation transitions need closer raw sources.",
+    "evidence_density": {
+      "chronicle_mentions": 8,
+      "indexed_chronicle_dates": 4,
+      "expanded_day_level_cases": 2,
+      "unexpanded_indexed_dates": 2
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
