@@ -273,11 +273,11 @@
 **Remaining:** acquire and hash the official layer, generate/review the bounded DEU partition, build bounded DEU Places coverage, then promote it without country-specific renderer code.
 
 ### WM-047 · Places data freshness and country depth are seed-limited — P2
-**Status:** verified data/functionality gap (2026-09-21).  
+**Status:** in progress on branch `world-map-places-provenance-current-20260921`.  
 **Evidence:** `data/world-places/index.json` identifies a GeoNames `cities15000` mirror seed with unknown exact upstream refresh date; detailed partitions exist only for USA, DNK, CAN, UKR and RUS, with 95 global-major features.  
 **Risk:** technically polished place search can appear more current/global than its provenance supports.  
-**TODO:** add a reviewed canonical GeoNames build pipeline with explicit upstream date/retrieval date/build date, then expand detailed country partitions under existing byte/cache budgets.  
-**Completion:** exact freshness is known or explicitly unavailable per build, and country/place coverage expansion is reproducible from pinned input.
+**Progress:** the canonical build path now pins the official GeoNames `cities15000.zip` source contract (CC BY 4.0), hashes the exact input, and requires upstream-last-modified plus retrieval timestamps separately from build time. Fixture regression proves those provenance fields and the existing DNK/DEU bounded build semantics.  
+**Remaining:** acquire a reviewed current official dump, run the canonical build for the promoted/next-wave countries including DEU, review byte/search/global-major output, then replace the historical mirror seed.
 
 ### WM-048 · Conflict/history functionality is schema-only — P2
 **Status:** verified functionality gap (2026-09-21).  
