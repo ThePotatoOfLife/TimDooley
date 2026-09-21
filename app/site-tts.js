@@ -98,6 +98,12 @@
     if(QUIET_ROUTES.some(route=>location.pathname.includes(route)))return;
     configureAutomaticHost();
     if(!doc.querySelector('[data-tts-longform]'))return;
+    const hosts=[...doc.querySelectorAll('[data-tts-longform]')];
+    const duplicatePrimary=hosts.filter(x=>x.dataset?.ttsPrimary!==undefined);
+    if(duplicatePrimary.length>1){
+      duplicatePrimary.slice(1).forEach(x=>x.removeAttribute('data-tts-longform'));
+      console.warn('[TTS] Multiple primary longform hosts detected; only the first remains active.');
+    }
     await loadCss(asset('tts-drawer.css'));
     await loadScript(asset('tts-reader.js'),()=>Boolean(root.PotatoTTS?.TTSEngine));
     await loadScript(asset('tts-drawer.js'),()=>Boolean(root.PotatoTTSDrawer?.mount));

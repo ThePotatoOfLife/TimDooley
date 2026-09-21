@@ -42,8 +42,9 @@ assert.ok(source.includes('function playSection(id)'), 'drawer must expose expli
 assert.ok(source.includes('playSection,'), 'drawer public API must return playSection');
 assert.ok(source.includes("const triggerLabel=clean(options.triggerLabel)||'Listen'"), 'collapsed shared player must default to the Listen label');
 assert.ok(source.includes("'🔊 '+triggerLabel"), 'collapsed shared player must visibly render the active trigger label');
-assert.ok(source.includes("button('Follow reading','🎯')"), 'shared player must expose the bullseye follow-reading toggle');
+assert.ok(source.includes("button('Follow reading','🎯 Follow')"), 'shared player must expose a visibly labeled follow-reading toggle');
 assert.ok(source.includes("writeSettings({followReading})"), 'follow-reading preference must persist in shared TTS settings');
+assert.ok(source.includes('automatic scrolling'), 'follow control must explain that it moves the page');
 assert.ok(!source.includes('scrollIntoView'), 'drawer reading copy must never move the page viewport');
 assert.ok(source.includes("persistedFollow()"), 'page highlighter must read the persisted follow-reading preference');
 assert.ok(source.includes('function mountSelectionAction(options={})'), 'drawer must expose shared read-selection UI');
@@ -57,6 +58,9 @@ assert.ok(source.includes("highlights?.delete?.(name)"), 'page highlighter must 
 assert.ok(source.includes('prepareSection=typeof options.prepareSection'), 'drawer must preserve async content preparation for lazy-loaded longform reading');
 assert.ok(source.includes('await prepareSection(sectionId,{signal:'), 'drawer must await cancellable content preparation before speech');
 assert.ok(source.includes('preparationController?.abort?.()'), 'drawer stop/collapse must abort pending preparation');
+
+const longformSource = fs.readFileSync(new URL('../app/longform-tts-adapter.js', import.meta.url),'utf8');
+assert.ok(longformSource.includes("ttsSuppressed='duplicate-primary'"), 'longform adapter must suppress competing primary TTS drawers on the same page');
 
 const css = fs.readFileSync(new URL('../app/tts-drawer.css', import.meta.url),'utf8');
 assert.match(css,/\.ptts-button\[aria-pressed="true"\]/,'active follow-reading toggle needs a visible pressed state');

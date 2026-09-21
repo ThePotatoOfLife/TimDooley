@@ -283,6 +283,11 @@
     const mounted=[];
     for(const host of doc.querySelectorAll('[data-tts-longform]')){
       if(host.dataset?.ttsMounted==='true')continue;
+      const existingPrimary=doc.querySelector('[data-tts-primary]');
+      if(existingPrimary&&existingPrimary!==host){
+        host.dataset.ttsSuppressed='duplicate-primary';
+        continue;
+      }
       const config=configFromElement(host,doc);
       if(!config)continue;
       const instance=mount(config);

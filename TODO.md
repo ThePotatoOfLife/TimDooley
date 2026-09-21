@@ -233,7 +233,16 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [ ] **CLEAN-009 · Duplicate validator assertions:** identify checks that independently encode the same route/ownership invariant and route them through shared resolver helpers instead of repeated literals.
 - [ ] **CLEAN-010 · Root-doc authority audit:** recheck README, PROJECT-OPERATING-MAP, PROJECT-STRUCTURE and MASTER-ARCHITECTURE for stale route/owner language after today's House/News/navigation changes.
 
-#### P2 — reader focus / navigation
+#### Reader UI bug queue — 2026-09-21
+
+- [x] **UI-BUG-001 · `/rooms/objects/` native dropdown contrast:** filter selects inherited transparent/dark styling while browser-native option menus could render white text on white. Give select controls and options explicit dark foreground/background colors.
+- [x] **UI-BUG-002 · “Your thread” nested scrollbar / unclear purpose:** replace the 12-pill horizontal scroll ribbon with four recent path steps plus an optional History popover; explain that the path is only a retrace aid and does not create a separate reading mode.
+- [~] **TTS-BUG-001 · Follow-reading unexpected page movement:** make the bullseye state visibly say Follow / Follow ON and disclose that ON moves the page. Add a single-primary-reader guard. Continue testing pages with inline Listen controls, sticky player, selection reader and scroll-driven current-section updates together.
+- [ ] **TTS-BUG-002 · Cross-reader interaction matrix:** test shared sticky drawer + inline Listen + selection reader + persisted Follow state + manual scrolling on long authored readers. Required invariant: at most one component owns page movement, and turning Follow OFF immediately stops TTS-driven viewport movement.
+- [ ] **NAV-BUG-001 · Lower-layer maze audit:** audit lower House/Room pages by actual browsing rather than search. For each commonly followed concept, verify that local doors have intuitive labels, correct destinations, a clear parent/owner, and a useful next step; remove circular/backtracking routes that exist only because of architecture.
+- [ ] **NAV-BUG-002 · “Read” means read:** scan visible links/buttons labeled Read/Open/Enter and verify they open the promised reader/content rather than another directory, abstract routing page or dead intermediate layer.
+
+### P2 — reader focus / navigation
 - [ ] **READ-001 · First-screen door budget:** add an audit for mature reader pages that expose too many first-screen links/menus before the first substantive section.
 - [ ] **READ-002 · Compass coverage validation:** assert the Project Compass is added to eligible built readers and intentionally absent from Home/Map/Elevator/A–Z/object explorer.
 - [~] **READ-003 · Specialist parent continuity:** generated topic/context/record readers now expose a single clear parent breadcrumb; authored specialist surfaces still need the project-wide continuity audit.

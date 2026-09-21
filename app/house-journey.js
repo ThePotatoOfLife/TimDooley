@@ -49,27 +49,36 @@
     if(!trail.length)return;
     const style=document.createElement('style');
     style.textContent=`
-      .house-journey-ribbon{position:fixed;left:14px;right:14px;bottom:12px;z-index:9998;border:1px solid var(--site-line,#303830);background:rgba(5,8,6,.94);backdrop-filter:blur(10px);border-radius:14px;padding:8px 10px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:9px;align-items:center;box-shadow:0 10px 35px rgba(0,0,0,.28)}
-      .house-journey-ribbon>b{font:400 13px var(--site-font-serif,serif);color:var(--site-gold,#d5ba74);white-space:nowrap}
-      .house-journey-ribbon-track{display:flex;gap:5px;overflow-x:auto;scrollbar-width:thin}
-      .house-journey-ribbon-track a{white-space:nowrap;border:1px solid var(--site-line,#303830);border-radius:999px;padding:4px 7px;color:var(--site-muted,#9ba59a);text-decoration:none;font-size:8px}
-      .house-journey-ribbon-track a small{display:block;font-size:6px;opacity:.65;text-transform:uppercase;letter-spacing:.04em;margin-top:1px}
+      .house-journey-ribbon{position:fixed;left:14px;right:14px;bottom:12px;z-index:9998;border:1px solid var(--site-line,#303830);background:rgba(5,8,6,.94);backdrop-filter:blur(10px);border-radius:14px;padding:7px 9px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;box-shadow:0 10px 35px rgba(0,0,0,.28)}
+      .house-journey-ribbon-main{min-width:0;display:flex;align-items:center;gap:7px}
+      .house-journey-ribbon-title{display:flex;align-items:baseline;gap:6px;white-space:nowrap}.house-journey-ribbon-title b{font:400 12px var(--site-font-serif,serif);color:var(--site-gold,#d5ba74)}.house-journey-ribbon-title small{color:var(--site-faint,#778076);font-size:7px}
+      .house-journey-ribbon-track{display:flex;gap:4px;min-width:0;overflow:hidden}
+      .house-journey-ribbon-track a{white-space:nowrap;border:1px solid var(--site-line,#303830);border-radius:999px;padding:4px 7px;color:var(--site-muted,#9ba59a);text-decoration:none;font-size:8px;max-width:145px;overflow:hidden;text-overflow:ellipsis}
+      .house-journey-ribbon-track a small{display:none}
       .house-journey-ribbon-track a:last-child{color:var(--site-green,#9eb58d);border-color:#61745b}
-      .house-journey-ribbon>a{border:1px solid var(--site-line,#303830);border-radius:999px;padding:5px 8px;color:var(--site-muted,#9ba59a);text-decoration:none;font-size:8px;white-space:nowrap}
-      @media(max-width:620px){.house-journey-ribbon{grid-template-columns:1fr auto}.house-journey-ribbon>b{display:none}}
+      .house-journey-ribbon-actions{display:flex;gap:4px}.house-journey-ribbon-actions a,.house-journey-ribbon-actions button{appearance:none;border:1px solid var(--site-line,#303830);background:transparent;border-radius:999px;padding:5px 8px;color:var(--site-muted,#9ba59a);text-decoration:none;font:700 8px/1 system-ui,sans-serif;white-space:nowrap;cursor:pointer}
+      .house-journey-popover{position:absolute;right:0;bottom:48px;width:min(460px,calc(100vw - 28px));max-height:min(52vh,420px);overflow:auto;border:1px solid var(--site-line,#303830);border-radius:12px;background:#090d0a;padding:10px;box-shadow:0 16px 40px rgba(0,0,0,.4)}
+      .house-journey-popover[hidden]{display:none}.house-journey-popover>p{margin:0 0 8px;color:var(--site-muted,#9ba59a);font-size:9px}.house-journey-history{display:grid;gap:4px}.house-journey-history a{display:flex;justify-content:space-between;gap:10px;padding:7px 8px;border:1px solid var(--site-line,#303830);border-radius:8px;color:var(--site-muted,#9ba59a);text-decoration:none;font-size:9px}.house-journey-history small{color:var(--site-faint,#778076)}
+      @media(max-width:720px){.house-journey-ribbon-title small{display:none}.house-journey-ribbon-track a:nth-last-child(n+3){display:none}}
+      @media(max-width:520px){.house-journey-ribbon-title{display:none}.house-journey-ribbon{left:8px;right:8px}.house-journey-ribbon-track a{max-width:110px}}
     `;
     document.head.appendChild(style);
 
     const ribbon=document.createElement('aside');
     ribbon.className='house-journey-ribbon';
     ribbon.setAttribute('aria-label','Your journey through the House');
-    const shown=trail.slice(-12);
-    ribbon.innerHTML='<b>Your thread</b><div class="house-journey-ribbon-track">'+shown.map(st=>
+    const shown=trail.slice(-4);
+    const history=trail.slice().reverse();
+    ribbon.innerHTML='<div class="house-journey-ribbon-main"><span class="house-journey-ribbon-title"><b>Your path</b><small>recent places</small></span><div class="house-journey-ribbon-track">'+shown.map(st=>
       '<a href="'+elevatorUrl(st)+'" title="'+esc(st.reason||'Return to this spatial center')+'"><span>'+esc(st.label||'House')+'</span><small>'+esc(viaLabel(st.via))+'</small></a>'
-    ).join('')+'</div><a href="'+base+'elevator/">Return to Elevator</a>';
+    ).join('')+'</div></div><div class="house-journey-ribbon-actions"><button type="button" data-journey-history aria-expanded="false">History</button><a href="'+base+'elevator/">Elevator</a></div><div class="house-journey-popover" data-journey-popover hidden><p><strong>Your path</strong> remembers places you entered through House/Elevator navigation so you can retrace them. It does not change the page or create a separate reading mode.</p><div class="house-journey-history">'+history.map(st=>
+      '<a href="'+elevatorUrl(st)+'"><span>'+esc(st.label||'House')+'</span><small>'+esc(viaLabel(st.via))+'</small></a>'
+    ).join('')+'</div></div>';
     document.body.appendChild(ribbon);
-    const track=ribbon.querySelector('.house-journey-ribbon-track');
-    if(track)track.scrollLeft=track.scrollWidth;
+    const historyButton=ribbon.querySelector('[data-journey-history]'),popover=ribbon.querySelector('[data-journey-popover]');
+    historyButton?.addEventListener('click',()=>{const open=popover.hidden;popover.hidden=!open;historyButton.setAttribute('aria-expanded',String(open));});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&popover&&!popover.hidden){popover.hidden=true;historyButton?.setAttribute('aria-expanded','false')}});
+    document.addEventListener('pointerdown',e=>{if(popover&&!popover.hidden&&!ribbon.contains(e.target)){popover.hidden=true;historyButton?.setAttribute('aria-expanded','false')}});
   }
 
   async function installInhabitants(){
