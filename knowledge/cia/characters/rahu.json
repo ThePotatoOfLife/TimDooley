@@ -55,26 +55,157 @@
       {
         "date": "2024-11-03",
         "title": "Tanks, pipe, coffee and the first dense social snapshot",
+        "participants": [
+          "Tim Dooley",
+          "Marty",
+          "Port Monkey",
+          "Mr. E",
+          "Klunty",
+          "Optimistique",
+          "Rahu",
+          "Tdog",
+          "Termite",
+          "Ledgeview",
+          "Kale",
+          "Highly Regarded",
+          "DARKCHILD",
+          "duaaaht"
+        ],
         "minimum_event": "Tim spends the day around Tanks/voice-chat social life while the Great Book is actively discussed. Optimistique urges him back into play, Rahu/Tdog supply religious interpretation, and Termite marks group camaraderie.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "games ↔ social presence",
+          "Great Book ↔ live discussion",
+          "support ↔ ordinary companionship"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Marty",
+          "Port Monkey",
+          "Mr. E",
+          "Klunty",
+          "Optimistique",
+          "Termite",
+          "Ledgeview",
+          "Kale",
+          "Highly Regarded",
+          "DARKCHILD",
+          "duaaaht"
+        ]
+      },
+      {
+        "date": "2024-11-06",
+        "title": "Marty as Chance & Taylor; Optimistique's creative thread",
+        "participants": [
+          "Tim Dooley",
+          "Marty / Chance & Taylor",
+          "Optimistique",
+          "Rage",
+          "Termite",
+          "Tdog",
+          "duaaaht"
+        ],
+        "minimum_event": "Marty discusses being removed from another chat while Tim is already distancing from him; Optimistique discusses music, AI-generated instrumentals and Jungian-shadow creativity.",
+        "connections": [
+          "Marty ↔ separation begins",
+          "Optimistique ↔ music/creative identity",
+          "AI music ↔ social world"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Marty / Chance & Taylor",
+          "Optimistique",
+          "Rage",
+          "Termite",
+          "duaaaht"
+        ]
       },
       {
         "date": "2024-12-15",
         "title": "Cooking stream and the Potato–Tomato joke war",
+        "participants": [
+          "Tim Dooley",
+          "Anacondasin",
+          "Termite",
+          "Rahu",
+          "Pondo",
+          "Ledgeview",
+          "Hetero God",
+          "Port Monkey",
+          "Sammy"
+        ],
         "minimum_event": "Tim and Anacondasin make potato chips in a collaborative stream. Termite jokes about flying her to Denmark; Rahu adopts a tomato-villain role; a parallel access dispute concerns Tree/Garden boundaries.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "cooking ↔ grounding",
+          "Anacondasin ↔ collaboration",
+          "Rahu ↔ playful villain role",
+          "Tree/Garden ↔ access boundary"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Anacondasin",
+          "Termite",
+          "Pondo",
+          "Ledgeview",
+          "Hetero God",
+          "Port Monkey",
+          "Sammy"
+        ]
       },
       {
         "date": "2025-02-26",
         "title": "47 potatoes / 162 dwellers",
+        "participants": [
+          "Tim Dooley",
+          "Rahu",
+          "Raven",
+          "Monkey"
+        ],
         "minimum_event": "The Chronicle records 47 potatoes and 162 dwellers. These are useful dated community-size claims but still need Discord/platform verification.",
-        "source_mode": "chronicle_reported_counts"
+        "connections": [
+          "community ↔ countable identity",
+          "Rahu/Raven ↔ late-Feb presence"
+        ],
+        "source_mode": "chronicle_reported_counts",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Raven",
+          "Monkey"
+        ]
       },
       {
         "date": "2025-03-05",
         "title": "HTML Great Book and new social roles",
+        "participants": [
+          "Tim Dooley",
+          "Rahu",
+          "Kira",
+          "Kaspiansee",
+          "Raven",
+          "Ansja"
+        ],
         "minimum_event": "The Chronicle reports 52 potatoes and 167 dwellers; says the Great Book HTML transformation had begun the previous day; Kira/Kaspiansee become counselors, Raven is named Princess, and Rahu is appointed admin.",
-        "source_mode": "chronicle_retelling"
+        "connections": [
+          "Great Book ↔ HTML",
+          "Rahu ↔ governance",
+          "Kira/Kaspiansee ↔ counseling",
+          "Raven ↔ title/role"
+        ],
+        "source_mode": "chronicle_retelling",
+        "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+        "co_present": [
+          "Tim Dooley",
+          "Kira",
+          "Kaspiansee",
+          "Raven",
+          "Ansja"
+        ]
       }
     ]
   },
@@ -165,12 +296,18 @@
     {
       "type": "public_room",
       "path": "rooms/potatoverse-canon/beings/rahu/"
+    },
+    {
+      "type": "conversation_recovery",
+      "path": "knowledge/cia/conversation-intake-2026-09-20.json",
+      "note": "Recent/semi-recent recovery layer."
     }
   ],
   "recovery_leads": [
-    "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
-    "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
-    "Add relationship edges only when a dated scene or explicit source supports them."
+    "Expand still-indexed Chronicle dates into source-bounded cases, starting with: November 3 2024; November 7, 2024; November 11, 2024; December 15, 2024; Feb 25 2025; Feb 26 2025; March 5, 2025.",
+    "Recover closer/raw artifacts behind the densest Chronicle dates: November 3 2024 (4); November 11, 2024 (3); December 15, 2024 (2); March 5, 2025 (2); November 7, 2024 (1).",
+    "Cross-check relationship edges against dated scenes instead of raw co-presence: Tim Dooley, Port Monkey, Termite, Ledgeview, Raven, Marty.",
+    "Attach primary artifacts for recent recovery markers: 2026-03-01, 2026-05-25; retain intake boundaries until those artifacts are recovered."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -190,7 +327,196 @@
       "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
       "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
       "Add relationship edges only when a dated scene or explicit source supports them."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 14,
+      "chronicle_distinct_dates": 7,
+      "expanded_social_ledger_cases": 5,
+      "recent_conversation_recovery": {
+        "dates": [
+          "2026-03-01",
+          "2026-05-25"
+        ],
+        "summary": "Lost-soul/dream-potato/1-of-137 growth story plus later social-interlocutor layer; keep distinct from 2024 Great Book Rahu.",
+        "source_mode": "conversation archaeology",
+        "status": "already-integrated"
+      },
+      "cast_period_roles": [
+        {
+          "period": "2024",
+          "role": "Great Book challenger/urgency figure and Garden companion around Tim and Spuddy"
+        },
+        {
+          "period": "2026-03-01",
+          "role": "conversation story casts Rahu as a lost soul / Mud Dweller learning that even 1/137 potato growth matters; another-world potato memory is framed as a dream"
+        },
+        {
+          "period": "2026-05-25",
+          "role": "Rahu appears as a social interlocutor in discussion around Dim; documentary/social layer must remain distinct from literary portrayal"
+        }
+      ],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "Rahu currently has 14 indexed Chronicle mentions across 7 Chronicle dates, 5 expanded day-level social cases, plus a recent recovery layer covering 2 dated/period markers.",
+      "cases": [
+        {
+          "date": "2024-11-03",
+          "title": "Tanks, pipe, coffee and the first dense social snapshot",
+          "what_happened": "Tim spends the day around Tanks/voice-chat social life while the Great Book is actively discussed. Optimistique urges him back into play, Rahu/Tdog supply religious interpretation, and Termite marks group camaraderie.",
+          "co_present": [
+            "Tim Dooley",
+            "Marty",
+            "Port Monkey",
+            "Mr. E",
+            "Klunty",
+            "Optimistique",
+            "Termite",
+            "Ledgeview",
+            "Kale",
+            "Highly Regarded",
+            "DARKCHILD",
+            "duaaaht"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2024-11-06",
+          "title": "Marty as Chance & Taylor; Optimistique's creative thread",
+          "what_happened": "Marty discusses being removed from another chat while Tim is already distancing from him; Optimistique discusses music, AI-generated instrumentals and Jungian-shadow creativity.",
+          "co_present": [
+            "Tim Dooley",
+            "Marty / Chance & Taylor",
+            "Optimistique",
+            "Rage",
+            "Termite",
+            "duaaaht"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2024-12-15",
+          "title": "Cooking stream and the Potato–Tomato joke war",
+          "what_happened": "Tim and Anacondasin make potato chips in a collaborative stream. Termite jokes about flying her to Denmark; Rahu adopts a tomato-villain role; a parallel access dispute concerns Tree/Garden boundaries.",
+          "co_present": [
+            "Tim Dooley",
+            "Anacondasin",
+            "Termite",
+            "Pondo",
+            "Ledgeview",
+            "Hetero God",
+            "Port Monkey",
+            "Sammy"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2025-02-26",
+          "title": "47 potatoes / 162 dwellers",
+          "what_happened": "The Chronicle records 47 potatoes and 162 dwellers. These are useful dated community-size claims but still need Discord/platform verification.",
+          "co_present": [
+            "Tim Dooley",
+            "Raven",
+            "Monkey"
+          ],
+          "source_mode": "chronicle_reported_counts",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        },
+        {
+          "date": "2025-03-05",
+          "title": "HTML Great Book and new social roles",
+          "what_happened": "The Chronicle reports 52 potatoes and 167 dwellers; says the Great Book HTML transformation had begun the previous day; Kira/Kaspiansee become counselors, Raven is named Princess, and Rahu is appointed admin.",
+          "co_present": [
+            "Tim Dooley",
+            "Kira",
+            "Kaspiansee",
+            "Raven",
+            "Ansja"
+          ],
+          "source_mode": "chronicle_retelling",
+          "source_ref": "knowledge/story/social-presence-ledger-2024-2025.json",
+          "evidence_status": "dated authored Chronicle scene; strong for presence/topology, weaker for verbatim dialogue or motive"
+        }
+      ],
+      "recent_recovery": {
+        "dates": [
+          "2026-03-01",
+          "2026-05-25"
+        ],
+        "summary": "Lost-soul/dream-potato/1-of-137 growth story plus later social-interlocutor layer; keep distinct from 2024 Great Book Rahu.",
+        "boundaries": [],
+        "source_mode": "conversation archaeology",
+        "status": "already-integrated"
+      },
+      "chronicle_occurrence_index": [
+        {
+          "date": "November 3 2024",
+          "count": 4
+        },
+        {
+          "date": "November 7, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 11, 2024",
+          "count": 3
+        },
+        {
+          "date": "December 15, 2024",
+          "count": 2
+        },
+        {
+          "date": "Feb 25 2025",
+          "count": 1
+        },
+        {
+          "date": "Feb 26 2025",
+          "count": 1
+        },
+        {
+          "date": "March 5, 2025",
+          "count": 2
+        }
+      ],
+      "mining_frontier": [
+        {
+          "date": "November 3 2024",
+          "count": 4
+        },
+        {
+          "date": "November 7, 2024",
+          "count": 1
+        },
+        {
+          "date": "November 11, 2024",
+          "count": 3
+        },
+        {
+          "date": "December 15, 2024",
+          "count": 2
+        },
+        {
+          "date": "Feb 25 2025",
+          "count": 1
+        },
+        {
+          "date": "Feb 26 2025",
+          "count": 1
+        },
+        {
+          "date": "March 5, 2025",
+          "count": 2
+        }
+      ],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "Rahu is a strong provenance test because the same name spans 2024 literary/social material, a March 2026 dream-growth story and a May 2026 documentary social conversation.",
@@ -208,7 +534,14 @@
       "Closer source material for the May 2026 discussion is still desirable."
     ],
     "relationship_arc": "interpreter/challenger → comic social role → dream-growth figure → documentary interlocutor",
-    "confidence_note": "Strong on dates/layer separation; medium on cross-layer continuity."
+    "confidence_note": "Strong on dates/layer separation; medium on cross-layer continuity.",
+    "evidence_density": {
+      "chronicle_mentions": 14,
+      "indexed_chronicle_dates": 7,
+      "expanded_day_level_cases": 5,
+      "unexpanded_indexed_dates": 2
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
