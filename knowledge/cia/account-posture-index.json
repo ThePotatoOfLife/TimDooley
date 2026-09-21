@@ -2,7 +2,7 @@
   "id": "cia-account-posture-index-v1",
   "title": "CIA Mud Bank — Account Posture Index",
   "updated": "2026-09-21",
-  "coverage": 35,
+  "coverage": 36,
   "denomination": "fictional sUSD-equivalent",
   "rule": "This index compares explicit event-ledger adjustments only. Live Dooley Welfare is added separately in the Mud Bank UI and is too small to materially reorder current event balances.",
   "boundary": "This is a source-bounded Potatoverse bookkeeping view, not a factual ranking of morality, guilt, trustworthiness, criminality or human worth.",
@@ -306,6 +306,16 @@
       "net_event_susd": 0,
       "posture": "welfare-only / sparse evidence",
       "unpriced_negative_candidates": 0,
+      "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
+    },
+    {
+      "id": "roboto-san",
+      "name": "Roboto San / Robotosan",
+      "gross_credit_susd": 0,
+      "gross_debit_susd": 0,
+      "net_event_susd": 0,
+      "posture": "unpriced narrative-conflict dispute",
+      "unpriced_negative_candidates": 3,
       "live_balance_rule": "net_event_susd + continuously accrued Dooley Welfare when story-entry date is exact"
     },
     {
