@@ -92,12 +92,20 @@
     {
       "type": "documentary_story_scene",
       "path": "story-content/2026-09-20-matthew-mediomu.html#matthew-mediomu-ordinary-day-2026-09-20"
+    },
+    {
+      "type": "social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json",
+      "note": "Dated Chronicle-derived scenes and co-presence."
+    },
+    {
+      "type": "conversation_recovery",
+      "path": "knowledge/cia/conversation-intake-2026-09-20.json",
+      "note": "Recent/semi-recent recovery layer."
     }
   ],
   "recovery_leads": [
-    "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
-    "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
-    "Add relationship edges only when a dated scene or explicit source supports them."
+    "Attach primary artifacts for recent recovery markers: 2026-05/06, 2026-09-20; retain intake boundaries until those artifacts are recovered."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -117,7 +125,49 @@
       "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
       "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
       "Add relationship edges only when a dated scene or explicit source supports them."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 0,
+      "chronicle_distinct_dates": 0,
+      "expanded_social_ledger_cases": 0,
+      "recent_conversation_recovery": {
+        "dates": [
+          "2026-05/06",
+          "2026-09-20"
+        ],
+        "summary": "Recurring public-chat participant; September 20 adds controller/Elden Ring/Senessax ordinary-life continuity. Keep separate from Matthew the Potato.",
+        "source_mode": "conversation-recovered public chat",
+        "status": "already-integrated"
+      },
+      "cast_period_roles": [
+        {
+          "period": "2026-08",
+          "role": "recurring public chat participant; Elden Ring/gaming continuity, moderation advice and theological discussion"
+        },
+        {
+          "period": "2026-09-20",
+          "role": "top-fan UI #1 in supplied YouTube capture; new controller, gaming-deprivation jokes, site interest and Ancient Dragon Senessax victory after 20+ attempts"
+        }
+      ],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "Matthew / MTClassic currently has 0 indexed Chronicle mentions across 0 Chronicle dates, 0 expanded day-level social cases, plus a recent recovery layer covering 2 dated/period markers.",
+      "cases": [],
+      "recent_recovery": {
+        "dates": [
+          "2026-05/06",
+          "2026-09-20"
+        ],
+        "summary": "Recurring public-chat participant; September 20 adds controller/Elden Ring/Senessax ordinary-life continuity. Keep separate from Matthew the Potato.",
+        "boundaries": [],
+        "source_mode": "conversation-recovered public chat",
+        "status": "already-integrated"
+      },
+      "chronicle_occurrence_index": [],
+      "mining_frontier": [],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "Matthew is one of the clearest ordinary-life dossiers: gaming, moderation advice and theology coexist without needing mythic inflation.",
@@ -134,7 +184,14 @@
       "Earlier raw-chat dates behind the August 2026 summary remain to be recovered."
     ],
     "relationship_arc": "recurring chat participant → moderation adviser / theological interlocutor → mundane gaming continuity",
-    "confidence_note": "High for the September 20 public-chat capture; medium for earlier summarized scenes."
+    "confidence_note": "High for the September 20 public-chat capture; medium for earlier summarized scenes.",
+    "evidence_density": {
+      "chronicle_mentions": 0,
+      "indexed_chronicle_dates": 0,
+      "expanded_day_level_cases": 0,
+      "unexpanded_indexed_dates": 0
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
