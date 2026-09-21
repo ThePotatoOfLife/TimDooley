@@ -6,12 +6,26 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 SOURCES=ROOT/"data"/"world-subdivisions"/"sources"
 IMPORTER=ROOT/"scripts"/"import_world_adm1.py"
+SUBDIVISION_INDEX=ROOT/"data"/"world-subdivisions"/"index.json"
+PLACES_INDEX=ROOT/"data"/"world-places"/"index.json"
 REQUIRED_SOURCE=("owner","product","product_url","service_url","source_vintage","license","license_id","attribution")
 REQUIRED_MAPPING=("name_field","code_field","default_type")
 REQUIRED_IMPORTER=("script","max_bytes","expected_count","source_label","source_ref","source_vintage","representation_note")
 
 def main()->int:
     errors=[]
+    try:
+        subdivision_index=json.loads(SUBDIVISION_INDEX.read_text(encoding="utf-8"))
+        places_index=json.loads(PLACES_INDEX.read_text(encoding="utf-8"))
+    except Exception as exc:
+        errors.append(f"could not load live regional/place indexes: {exc}")
+        subdivision_index={"partitions":{}}
+        places_index={"countries":{}}
+    live_partitions=set((subdivision_index.get("partitions") or {}).keys())
+    place_partitions=set((places_index.get("countries") or {}).keys())
+    missing_places=sorted(live_partitions-place_partitions)
+    if missing_places:
+        errors.append(f"live subdivision countries require bounded Places partitions: {missing_places}")
     if not SOURCES.is_dir():
         errors.append("missing data/world-subdivisions/sources")
         rows=[]
@@ -28,6 +42,10 @@ def main()->int:
         if path.stem != iso3: errors.append(f"{path.name}: filename must match iso3")
         if data.get("status") not in {"source-verified-download-pending","source-acquired-review-pending","ready-for-import"}:
             errors.append(f"{path.name}: unsupported review status")
+        if iso3 in live_partitions and data.get("status") != "ready-for-import":
+            errors.append(f"{path.name}: live subdivision promotion requires source status ready-for-import")
+        if iso3 in live_partitions and iso3 not in place_partitions:
+            errors.append(f"{path.name}: live promotion requires bounded Places partition for {iso3}")
         if int(data.get("admin_level") or 0)!=1: errors.append(f"{path.name}: only ADM1 source contracts supported")
         count=int(data.get("expected_feature_count") or 0)
         if count<=0: errors.append(f"{path.name}: expected_feature_count must be positive")

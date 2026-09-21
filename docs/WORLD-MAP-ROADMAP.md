@@ -105,7 +105,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The curr
 ### 2026-09-21 re-audit priorities
 
 - [x] Retire dormant `3d-fields.js` / `3d-networks.js`: live symbolic operators now use Layer Registry state; obsolete render/control modules are deleted while underlying datasets remain available for future registry expansion.
-- [~] Expand subdivision + bounded Places depth beyond the current five promoted countries. Germany now has a reviewed official BKG ADM1 acquisition contract; geometry + bounded DEU Places promotion remain.
+- [~] Expand subdivision + bounded Places depth beyond the current five promoted countries. Germany has a reviewed official BKG ADM1 acquisition contract, and live-index validation now blocks any regional promotion lacking bounded Places or a ready source contract; DEU geometry + Places promotion remain.
 - [ ] Replace the GeoNames mirror seed with a reviewed fresh canonical build; preserve source date, build date and upstream freshness separately.
 - [ ] Promote at least one reviewed delayed/historical conflict snapshot with source bundle, date semantics and explicit not-live boundary before exposing Conflict as current functionality.
 - [~] Add behavioral viewport scenarios for globe mode, narrow screens, dense regional labels, detached geography and region→Places handoff. A combined narrow+globe+region+Places contract regression is now in progress; browser-level occlusion/detached-geography proof remains.

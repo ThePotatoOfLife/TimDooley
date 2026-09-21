@@ -270,7 +270,8 @@
 **Evidence:** `data/world-subdivisions/` currently contains USA, CAN, DNK, UKR and RUS partitions only.  
 **Risk:** the generic region engine looks global but most countries have no selectable first-order geography or region→Places path.  
 **Progress:** Germany is the first next-wave candidate with a reviewed official BKG VG250 source contract: ADM1 layer `vg250:vg250_lan`, 16 Länder, 01.01.2026 vintage, dl-de/by-2-0 attribution, fixed field mapping and importer parameters. A generic source-contract validator now gates provenance/license/count/viewport/hash/Places requirements before promotion.  
-**Remaining:** acquire and hash the official layer, generate/review the bounded DEU partition, build bounded DEU Places coverage, then promote it without country-specific renderer code.
+**Progress continued:** source validation now cross-checks the live subdivision and Places indexes. A country cannot enter the live subdivision registry without bounded Places coverage, and a source-contract candidate cannot be live while still marked download/review-pending.  
+**Remaining:** acquire and hash the official BKG layer, generate/review the bounded DEU partition, build bounded DEU Places coverage, move the source contract to `ready-for-import`, then promote it without country-specific renderer code.
 
 ### WM-047 · Places data freshness and country depth are seed-limited — P2
 **Status:** verified data/functionality gap (2026-09-21).  
