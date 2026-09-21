@@ -53,12 +53,20 @@
     {
       "type": "story_recovery_audit",
       "path": "knowledge/story/reservoir/2026-09-14-wave-05-social-timeline.md"
+    },
+    {
+      "type": "social_ledger",
+      "path": "knowledge/story/social-presence-ledger-2024-2025.json",
+      "note": "Dated Chronicle-derived scenes and co-presence."
+    },
+    {
+      "type": "conversation_recovery",
+      "path": "knowledge/cia/conversation-intake-2026-09-20.json",
+      "note": "Recent/semi-recent recovery layer."
     }
   ],
   "recovery_leads": [
-    "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
-    "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
-    "Add relationship edges only when a dated scene or explicit source supports them."
+    "Attach primary artifacts for the recent recovery markers: 2024 project layer; retain the intake boundaries until those artifacts are recovered."
   ],
   "cia_record": {
     "authority": "canonical",
@@ -78,7 +86,43 @@
       "Recover raw or closer conversation/stream logs behind the strongest dated scene.",
       "Separate direct speech from Chronicle paraphrase, literary transformation and later synthesis.",
       "Add relationship edges only when a dated scene or explicit source supports them."
-    ]
+    ],
+    "evidence_inventory": {
+      "chronicle_mentions": 0,
+      "chronicle_distinct_dates": 0,
+      "expanded_social_ledger_cases": 0,
+      "recent_conversation_recovery": {
+        "dates": [
+          "2024 project layer"
+        ],
+        "summary": "Project material places Capy with Tim and BigTech and in conflict with Sammy; keep literary/project source typing.",
+        "source_mode": "Great Book/project recovery",
+        "status": "review"
+      },
+      "cast_period_roles": [
+        {
+          "period": "2024",
+          "role": "Great Book/project-side chaotic social character; documentary basis requires recovery"
+        }
+      ],
+      "source_rule": "Chronicle counts establish recurrence and dated presence; day-level case summaries provide scene context; conversation archaeology and later project/literary layers remain separately typed."
+    },
+    "casebook": {
+      "summary": "Capy currently has 0 indexed Chronicle mentions across 0 Chronicle dates, 0 expanded day-level social cases, plus a recent conversation-recovery layer covering 1 dated/period markers.",
+      "cases": [],
+      "recent_recovery": {
+        "dates": [
+          "2024 project layer"
+        ],
+        "summary": "Project material places Capy with Tim and BigTech and in conflict with Sammy; keep literary/project source typing.",
+        "boundaries": [],
+        "source_mode": "Great Book/project recovery",
+        "status": "review"
+      },
+      "chronicle_occurrence_index": [],
+      "mining_frontier": [],
+      "mining_rule": "Expand indexed dates into cases only when a source provides scene-level context. Do not invent dialogue, motives, wrongdoing or relationship changes from occurrence counts alone."
+    }
   },
   "meaning": {
     "why_this_file_matters": "Capy is meaningful chiefly as a disciplined missing-evidence file: the literary character is vivid, but the archive has not recovered the documentary person/handle chronology underneath it.",
@@ -95,7 +139,14 @@
       "Whether the literary figure maps cleanly to one real handle/person is unresolved."
     ],
     "relationship_arc": "documentary layer missing → vivid Great Book character → active recovery target",
-    "confidence_note": "High confidence in literary text; intentionally low documentary confidence."
+    "confidence_note": "High confidence in literary text; intentionally low documentary confidence.",
+    "evidence_density": {
+      "chronicle_mentions": 0,
+      "indexed_chronicle_dates": 0,
+      "expanded_day_level_cases": 0,
+      "unexpanded_indexed_dates": 0
+    },
+    "reader_rule": "Read the casebook before the archetype labels: dated scenes and source mode are the documentary spine; roles and symbolic interpretations explain later meaning but do not replace the events."
   },
   "symbolic_account": {
     "status": "unassessed",
