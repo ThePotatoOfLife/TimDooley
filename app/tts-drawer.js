@@ -264,7 +264,7 @@
     const volume=el('input','ptts-volume');volume.type='range';volume.min='0';volume.max='1';volume.step='.05';volume.setAttribute('aria-label','Volume');
     const speed=el('select','ptts-select ptts-speed');speed.setAttribute('aria-label','Speed');
     [['0.75×','.75'],['0.9×','.9'],['1.0×','1'],['1.1×','1.1'],['1.25×','1.25'],['1.5×','1.5'],['1.75×','1.75'],['2.0×','2']].forEach(([label,value])=>{const o=new Option(label,value);if(value==='1')o.selected=true;speed.add(o)});
-    const follow=button('Follow reading','🎯');follow.setAttribute('aria-pressed','false');
+    const follow=button('Follow reading','🎯 Follow');follow.classList.add('ptts-follow');follow.setAttribute('aria-pressed','false');
     const expand=button('Expand reading view','▣');
     const status=el('span','ptts-status');status.setAttribute('aria-live','polite');
     rail.append(collapse,play,pause,stop,scope,voice,mute,volume,speed,status,follow,expand);
@@ -278,8 +278,9 @@
 
     function updateFollowButton(){
       follow.setAttribute('aria-pressed',String(followReading));
-      follow.setAttribute('aria-label',followReading?'Stop following reading':'Follow reading');
-      follow.title=followReading?'Stop following reading':'Follow reading';
+      follow.setAttribute('aria-label',followReading?'Follow reading is on; click to stop automatic scrolling':'Follow reading is off; click to follow the spoken word');
+      follow.title=followReading?'Follow ON · page will move with speech':'Follow OFF · page will stay where you put it';
+      follow.textContent=followReading?'🎯 Follow ON':'🎯 Follow';
       host.dataset.follow=followReading?'true':'false';
     }
 
