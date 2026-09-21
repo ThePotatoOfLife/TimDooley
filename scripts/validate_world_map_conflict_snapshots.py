@@ -4,11 +4,15 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import subprocess, sys
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / "data" / "world-map-conflict-snapshot-contract.json"
 SPATIAL = ROOT / "data" / "world-map-spatial-overlays.json"
 SURFACES = ROOT / "data" / "world-map-layer-surfaces.json"
+SOURCES = ROOT / "data" / "world-map-conflict-sources"
+IMPORTER = ROOT / "scripts" / "import_world_conflict_event_aggregate.py"
+IMPORTER_TEST = ROOT / "scripts" / "test_world_map_conflict_event_aggregate.py"
 
 EXPECTED_MEANINGS = {
     "control_area_snapshot",
@@ -41,8 +45,8 @@ def main() -> int:
     if meanings != EXPECTED_MEANINGS:
         errors.append(f"geometry_meanings drifted: {sorted(meanings)}")
 
-    if contract.get("status") != "active-schema-dormant-data":
-        errors.append("conflict contract must remain dormant until reviewed geometry exists")
+    if contract.get("status") not in {"active-schema-dormant-data","active-schema-acquisition-ready"}:
+        errors.append("conflict contract status must remain schema-only until reviewed geometry exists")
 
     policy = contract.get("activation_policy") or {}
     for key in (
@@ -68,6 +72,31 @@ def main() -> int:
         if token not in boundary:
             errors.append(f"conflict boundary text missing: {token}")
 
+    if contract.get("source_contract_directory") != "data/world-map-conflict-sources":
+        errors.append("conflict source-contract directory must remain canonical")
+    if "scripts/import_world_conflict_event_aggregate.py" not in (contract.get("importers") or []):
+        errors.append("conflict contract missing canonical event-aggregate importer")
+    if not IMPORTER.is_file() or not IMPORTER_TEST.is_file():
+        errors.append("conflict aggregate importer/test missing")
+    if not SOURCES.is_dir():
+        errors.append("conflict source-contract directory missing")
+    else:
+        source_files=sorted(SOURCES.glob("*.json"))
+        if not source_files:
+            errors.append("no conflict source acquisition contracts")
+        for path in source_files:
+            source=json.loads(path.read_text(encoding="utf-8"))
+            if source.get("runtime_fetch_allowed") is not False:
+                errors.append(f"{path.name}: conflict source acquisition must remain build-time only")
+            if source.get("intended_geometry_meaning") not in EXPECTED_MEANINGS:
+                errors.append(f"{path.name}: unsupported intended geometry meaning")
+            if source.get("license") == "CC BY 4.0" and "UCDP" in str(source.get("owner") or ""):
+                if source.get("status") != "source-verified-download-pending":
+                    errors.append(f"{path.name}: unacquired UCDP source must remain download-pending")
+                requirements=" ".join(source.get("promotion_requirements") or []).lower()
+                for token in ("sha-256","coarse grid","raw event coordinates","administrative geography independent"):
+                    if token not in requirements:
+                        errors.append(f"{path.name}: promotion requirements missing {token}")
     entries = {row.get("id"): row for row in spatial.get("entries") or []}
     conflict = entries.get("conflict.context") or {}
     if conflict.get("family") != "conflict.context":
@@ -99,6 +128,11 @@ def main() -> int:
         if not isinstance(rule, str) or not rule.strip():
             errors.append("separation_rules must be non-empty strings")
 
+    if IMPORTER_TEST.is_file():
+        result=subprocess.run([sys.executable,str(IMPORTER_TEST)],cwd=ROOT,capture_output=True,text=True)
+        if result.returncode:
+            errors.append("conflict event-aggregate importer regression failed: "+(result.stderr or result.stdout).strip())
+
     if errors:
         print("WORLD MAP CONFLICT SNAPSHOT CONTRACT FAILED")
         for error in errors:
@@ -106,7 +140,7 @@ def main() -> int:
         return 1
 
     print("WORLD MAP CONFLICT SNAPSHOT CONTRACT PASSED")
-    print("Schema ready; no live/tactical geometry promoted.")
+    print("Schema + guarded acquisition ready; no live/tactical geometry promoted.")
     return 0
 
 
