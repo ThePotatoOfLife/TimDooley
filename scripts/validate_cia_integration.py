@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MANIFEST=ROOT/"knowledge/cia/manifest.json"; CABINET=ROOT/"rooms/potatoverse-canon/beings/cia/index.html"
 VIEWER=ROOT/"rooms/potatoverse-canon/beings/cia/file/index.html"; COLLECTIONS=ROOT/"data/house/collections.json"
-ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; ORPHAN_LEDGER=ROOT/"knowledge/cia/orphan-clearing-ledger.json"; US_COVERAGE=ROOT/"knowledge/cia/us-exposure-coverage-model.json"; ROLE_CENSUS=ROOT/"knowledge/cia/role-archetype-census.json"; NEGATIVE_INPUTS=ROOT/"knowledge/cia/negative-input-conversation-ledger-2025-2026.json"; BANK_MINING=ROOT/"knowledge/cia/spiritual-bank-conversation-mining-2026-09-21.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; DEBT_EVIDENCE=ROOT/"knowledge/cia/debt-evidence-ledger.json"; POSTURE=ROOT/"knowledge/cia/account-posture-index.json"; SPIRITUAL_BANK=ROOT/"knowledge/core/north-root-spiritual-bank-architecture.json"; SYSTEM_LEDGER=ROOT/"knowledge/cia/system-liability-ledger.json"; FIELD_EXPOSURE=ROOT/"knowledge/cia/field-exposure-model.json"; BUILDING=ROOT/"knowledge/cia/institution-building.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
+ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; CAPITAL_MODEL=ROOT/"knowledge/cia/capital-formation-42t-model.json"; ORPHAN_LEDGER=ROOT/"knowledge/cia/orphan-clearing-ledger.json"; US_COVERAGE=ROOT/"knowledge/cia/us-exposure-coverage-model.json"; ROLE_CENSUS=ROOT/"knowledge/cia/role-archetype-census.json"; NEGATIVE_INPUTS=ROOT/"knowledge/cia/negative-input-conversation-ledger-2025-2026.json"; BANK_MINING=ROOT/"knowledge/cia/spiritual-bank-conversation-mining-2026-09-21.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; DEBT_EVIDENCE=ROOT/"knowledge/cia/debt-evidence-ledger.json"; POSTURE=ROOT/"knowledge/cia/account-posture-index.json"; SPIRITUAL_BANK=ROOT/"knowledge/core/north-root-spiritual-bank-architecture.json"; SYSTEM_LEDGER=ROOT/"knowledge/cia/system-liability-ledger.json"; FIELD_EXPOSURE=ROOT/"knowledge/cia/field-exposure-model.json"; BUILDING=ROOT/"knowledge/cia/institution-building.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
 ROUTE="rooms/potatoverse-canon/beings/cia/"
 def fail(m): print("FAIL:",m); raise SystemExit(1)
 def main():
@@ -37,6 +37,10 @@ def main():
  if not ROLE_CENSUS.is_file(): fail("CIA role/archetype census missing")
  if not US_COVERAGE.is_file(): fail("CIA U.S. exposure coverage model missing")
  if not ORPHAN_LEDGER.is_file(): fail("CIA orphan clearing ledger missing")
+ if not CAPITAL_MODEL.is_file(): fail("CIA 42T capital model missing")
+ capital=json.loads(CAPITAL_MODEL.read_text(encoding="utf-8"))
+ bridge=capital.get("headline_bridge") or {}
+ if abs(float((bridge.get("opening") or {}).get("amount_trillion_susd",0))+float((bridge.get("additions") or {}).get("total_trillion_susd",0))-float((bridge.get("closing") or {}).get("amount_trillion_susd",0)))>1e-9: fail("42T capital bridge does not reconcile")
  orphan=json.loads(ORPHAN_LEDGER.read_text(encoding="utf-8"))
  if ((orphan.get("scenario_language") or {}).get("ninety_nine_thousand") or {}).get("status")!="symbolic scenario, not census": fail("99k orphan scenario boundary drift")
  if "no profile image by itself" not in (orphan.get("zero_weight_features") or []): fail("no-PFP zero-weight rule missing")
@@ -101,7 +105,7 @@ def main():
  if "project_adjustment_susd" not in bank_js: fail("Mud Bank runtime must honor priced per-event adjustments")
  for token in ["renderStatement","data-select-account","statement-columns","data-statement-balance"]:
   if token not in bank_js: fail(f"World Spiritual Bank statement runtime missing {token!r}")
- for token in ["account-posture-index.json","system-liability-ledger.json","field-exposure-model.json","role-archetype-census.json","us-exposure-coverage-model.json","gross_credit_susd","unpriced_negative_candidates","systemDomains","renderFieldExposure","role_posture","Scale exposure, not guilt"]:
+ for token in ["account-posture-index.json","system-liability-ledger.json","field-exposure-model.json","role-archetype-census.json","us-exposure-coverage-model.json","capital-formation-42t-model.json","gross_credit_susd","unpriced_negative_candidates","systemDomains","renderFieldExposure","renderCapitalBridge","role_posture","Scale exposure, not guilt"]:
   if token not in bank_js: fail(f"World Spiritual Bank runtime missing {token}")
  dossier_js=(ROOT/"app/cia-dossier.js").read_text(encoding="utf-8",errors="replace")
  if "evidence_tier" not in dossier_js or "debt_evidence_id" not in dossier_js: fail("CIA dossier account reader must expose debit provenance")

@@ -1,0 +1,253 @@
+{
+  "id": "world-spiritual-bank-capital-formation-v1",
+  "title": "World Spiritual Bank — 42T Capital Formation & Balance-Sheet Model",
+  "updated": "2026-09-21",
+  "status": "project-symbolic accounting model",
+  "purpose": "Turn the dated 38.8T→42T project sequence into a non-double-counting capital bridge, distinguish Bank assets/liabilities from counterparty liabilities, and give Potato/Mountain/Spiral/Table/Gate/Ladder concrete accounting functions.",
+  "denomination": "sUSD (fictional symbolic USD-equivalent)",
+  "headline_bridge": {
+    "opening": {
+      "datetime_utc": "2026-02-27T16:54:41Z",
+      "amount_trillion_susd": 38.8,
+      "label": "Opening Potato Reserve",
+      "project_wording": "positive karma stored up in Tim's Potato",
+      "share_of_closing_pct": 92.38095238095238,
+      "source": "knowledge/timeline/karmic-debt-ledger-2026.json"
+    },
+    "additions": {
+      "total_trillion_susd": 3.2,
+      "label": "Spiral Growth Since Opening",
+      "share_of_closing_pct": 7.6190476190476195,
+      "share_of_opening_pct": 8.247422680412372,
+      "steps": [
+        {
+          "date": "2026-03-14",
+          "from_trillion": 38.8,
+          "to_trillion": 39,
+          "delta_trillion": 0.2,
+          "share_of_total_growth_pct": 6.25,
+          "stage": "collection / Babylon / debt accrual",
+          "note": "Uses 38.8T as the higher-precision Feb 27 opening; the nearby 38T wording is treated as probable rounding."
+        },
+        {
+          "date": "2026-07-18",
+          "from_trillion": 39,
+          "to_trillion": 40.2,
+          "delta_trillion": 1.2,
+          "share_of_total_growth_pct": 37.5,
+          "stage": "systemic externalization / Mud + stones / shadow debt"
+        },
+        {
+          "date": "2026-08-17",
+          "from_trillion": 40.2,
+          "to_trillion": 41.4,
+          "delta_trillion": 1.2,
+          "share_of_total_growth_pct": 37.5,
+          "stage": "parallel physical + karmic ledgers"
+        },
+        {
+          "date": "2026-08-24",
+          "from_trillion": 41.4,
+          "to_trillion": 42,
+          "delta_trillion": 0.6,
+          "share_of_total_growth_pct": 18.75,
+          "stage": "42T threshold / positive-karma-owed duality",
+          "note": "Aug 23 says 'soon 42T'; Aug 24 supplies the exact 42T positive-claim wording."
+        }
+      ]
+    },
+    "closing": {
+      "datetime_utc": "2026-08-24T12:06:16Z",
+      "amount_trillion_susd": 42,
+      "label": "Closing Mountain-Held Reserve",
+      "project_wording": "42 trillion dollars worth of positive karma, owed to him",
+      "source": "knowledge/timeline/karmic-debt-ledger-2026.json"
+    },
+    "elapsed": {
+      "days": 177.79971064814814,
+      "hours": 4267.1930555555555,
+      "implied_mean_increment_per_day_susd": 17997779570.81467,
+      "implied_mean_increment_per_hour_susd": 749907482.1172779,
+      "implied_mean_increment_per_second_susd": 208307.63392146607,
+      "rule": "Descriptive average between two project checkpoints only. It is not an accrual rate and must never be used to auto-grow the balance."
+    },
+    "equation": "38.8T opening Potato Reserve + 3.2T dated Spiral growth = 42T closing Mountain-held reserve"
+  },
+  "symbolic_asset_functions": [
+    {
+      "symbol": "Potato",
+      "accounting_function": "storage / seed capital",
+      "amount_relation": "38.8T opening reserve in the earliest recoverable positive-balance checkpoint",
+      "additive_rule": "part of the 42T bridge; not added again on top of 42T"
+    },
+    {
+      "symbol": "Spiral",
+      "accounting_function": "capital transformation / movement through dated checkpoints",
+      "amount_relation": "+3.2T between Feb 27 and Aug 24",
+      "additive_rule": "the change component of the 42T bridge, not automatic compound interest"
+    },
+    {
+      "symbol": "Mountain",
+      "accounting_function": "custody / treasury / total reserve presentation",
+      "amount_relation": "42T closing reserve",
+      "additive_rule": "container/view of the closing reserve; not a second 42T asset"
+    },
+    {
+      "symbol": "Table",
+      "accounting_function": "realized constructive yield",
+      "amount_relation": "source-priced micro-ledger credits and future completed artifacts/service",
+      "additive_rule": "micro-ledger memorandum until a source explicitly reconciles it into the trillion-scale headline"
+    },
+    {
+      "symbol": "Gate",
+      "accounting_function": "state transition / activation",
+      "amount_relation": "can map to one growth or repair event when a real before→after transition is documented",
+      "additive_rule": "no credit for merely clicking/claiming passage"
+    },
+    {
+      "symbol": "Ladder",
+      "accounting_function": "ordered transformation / repair arc",
+      "amount_relation": "can map to one completed yield/growth/repair event per non-duplicative arc",
+      "additive_rule": "do not pay every symbolic step; reward sourced completion/output"
+    }
+  ],
+  "bank_view": {
+    "assets": [
+      {
+        "id": "headline-claim-reserve",
+        "amount_susd": 42000000000000,
+        "status": "project-headline / symbolic",
+        "treatment": "primary treasury asset / reciprocal claim reserve"
+      },
+      {
+        "id": "priced-counterparty-receivables",
+        "amount_susd": 19.6,
+        "status": "source-priced micro-ledger",
+        "treatment": "memorandum subset of the larger claim field; do not add to 42T unless future reconciliation proves it is outside the headline"
+      },
+      {
+        "id": "substitution-labor",
+        "measured_hours_working_estimate": 107000,
+        "timic_stated_hours": 115000,
+        "status": "unpriced memorandum asset",
+        "treatment": "witness/archive/moderation/building labor; converts to positive value only through sourced outputs or a future bounded pricing contract"
+      }
+    ],
+    "liabilities": [
+      {
+        "id": "character-positive-balances",
+        "gross_event_credit_susd": 247,
+        "status": "source-priced micro-ledger",
+        "treatment": "amount the symbolic Bank credits to account holders; bank-side liability / customer-side asset"
+      },
+      {
+        "id": "dooley-welfare-payable",
+        "nominal_account_count": 36,
+        "rate_per_account_per_second_susd": 1e-11,
+        "maximum_nominal_rate_all_accounts_per_second_susd": 3.6e-10,
+        "maximum_nominal_rate_all_accounts_per_day_susd": 0.000031104,
+        "maximum_nominal_rate_all_accounts_per_365d_susd": 0.01135296,
+        "status": "live microscopic liability",
+        "caveat": "Actual recognized accrual depends on exact story-entry dates; provisional accounts are not forced into day-level precision."
+      },
+      {
+        "id": "orphan-clearing-suspense",
+        "amount_susd": null,
+        "status": "unpriced / unknown",
+        "treatment": "unresolved account identities remain in suspense until resolved, merged or retired"
+      }
+    ],
+    "owner_equity": {
+      "label": "North Root / Tim treasury capital",
+      "formula": "headline claim reserve − recognized customer/account liabilities; micro receivables are memorandum unless proven outside the headline",
+      "note": "Because the account-holder micro-ledger is tiny relative to 42T, owner-equity presentation remains approximately the 42T headline. Do not manufacture extra precision by subtracting unpriced unknowns."
+    }
+  },
+  "micro_ledger_snapshot": {
+    "canonical_accounts": 36,
+    "gross_positive_event_credit_susd": 247,
+    "gross_priced_debit_susd": 19.6,
+    "net_event_position_susd": 227.4,
+    "positive_credit_accounts": 14,
+    "unpriced_negative_candidates": 9,
+    "gross_positive_as_pct_of_42t": 5.880952380952381e-10,
+    "net_event_as_pct_of_42t": 5.414285714285715e-10,
+    "interpretation": "The priced dossier ledger is a microscopic reconciliation layer, not the mathematical source of the 42T headline. Its purpose is evidence allocation, not reverse-engineering trillions from a few people."
+  },
+  "positive_event_calibration": {
+    "principle": "Use the existing event weights to price observable constructive outputs. Do not invent trillion-scale multipliers.",
+    "mappings": [
+      {
+        "concept": "Create value on the Table",
+        "event_type": "project-credit",
+        "value_susd": 25,
+        "gate": "substantial finished useful artifact/service/repair with source"
+      },
+      {
+        "concept": "Grow a Potato",
+        "event_type": "growth",
+        "value_susd": 6,
+        "gate": "documented new capability, learning milestone, cultivation or meaningful growth"
+      },
+      {
+        "concept": "Pass the Gate",
+        "event_type": "growth or repair-attempt",
+        "value_susd": "6 or 8",
+        "gate": "one documented before→after transition; choose one category, never both for the same change"
+      },
+      {
+        "concept": "Walk the Ladder",
+        "event_type": "yield or repair-attempt",
+        "value_susd": "12 or 8",
+        "gate": "credit the completed arc/output, not each symbolic rung"
+      },
+      {
+        "concept": "Study Potato",
+        "event_type": "growth",
+        "value_susd": 6,
+        "gate": "only when study produces applied understanding, synthesis or capability; passive reading is zero"
+      },
+      {
+        "concept": "Spiritual growth",
+        "event_type": "growth or repair-attempt",
+        "value_susd": "6 or 8",
+        "gate": "observable change in responsibility, repair, boundaries, understanding or generativity"
+      },
+      {
+        "concept": "Archive / protect / preserve",
+        "event_type": "yield or project-credit",
+        "value_susd": "12 or 25",
+        "gate": "completed source-preservation, protection, substantial archive/building output; scale determines one category"
+      }
+    ],
+    "anti_double_count": [
+      "One output receives one positive category even if it simultaneously looks like Potato growth, Table value and Ladder progress.",
+      "Do not pay for page views, declarations, role labels, repeated symbolic gestures or raw hours by themselves.",
+      "Hours are memorandum labor units until tied to outputs/results.",
+      "A positive event can coexist with an unresolved debit; accounts may be mixed."
+    ]
+  },
+  "scenario_tools": {
+    "purpose": "Let the Bank become richer without pretending uncertain quantities are known.",
+    "permitted": [
+      "show checkpoint-to-checkpoint deltas",
+      "show share of closing reserve",
+      "show micro-ledger reconciliation coverage",
+      "show memorandum hours/output counts",
+      "show hypothetical attribution scenarios with all assumptions visible"
+    ],
+    "prohibited": [
+      "back-solving individual guilt from 42T",
+      "multiplying people by an arbitrary average debt to force the total",
+      "automatic compound interest",
+      "counting Mountain + Potato + Spiral as separate additive 42T assets",
+      "pricing anonymous orphans without event evidence"
+    ]
+  },
+  "boundaries": [
+    "The 42T figure is a Tim/project symbolic headline, not independently measured wealth, legal damages or collectable currency.",
+    "The capital bridge explains the internal chronology of the project claim; it does not prove a supernatural financial system.",
+    "Mountain/Potato/Spiral/Table/Gate/Ladder are accounting metaphors/functions inside the project.",
+    "Real-world work, hours, artifacts and interactions can be measured separately from the symbolic valuation."
+  ]
+}
