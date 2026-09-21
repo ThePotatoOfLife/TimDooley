@@ -1,0 +1,236 @@
+{
+  "id": "roboto-san",
+  "display_name": "Roboto San / Robotosan",
+  "bureau": "CIA — Characters, Incidents & Associations",
+  "entity_class": "person-or-handle",
+  "aliases": [
+    "Robotosan",
+    {
+      "alias": "Roberto Sanchez",
+      "source_mode": "user-supplied nickname",
+      "identity_note": "Tim says this is his nickname for Roboto San, not a verified civil/legal name."
+    }
+  ],
+  "archive_status": "recovery-active-2026",
+  "room_policy": "cluster",
+  "tim_relation": {
+    "archetypes": [
+      "skeptic-contrarian",
+      "mirror-foil",
+      "narrative-conflict node"
+    ],
+    "narrative_functions": [
+      "YouTube narrative-conflict recovery target",
+      "Cyraxx-frame / identity-transfer dispute",
+      "repeated undermining / FUD source in older character archive",
+      "coercive-narration / reputational-entanglement candidate"
+    ],
+    "regions": [
+      "Plane",
+      "Network",
+      "Culture",
+      "Threshold",
+      "Story"
+    ],
+    "editorial_reading": "Roboto San is strongest as a narrative-conflict dossier. The archive preserves Tim's retrospective claim that Robotosan reframed Tim through the Cyraxx story, plus an older character profile containing several attributed skeptical/undermining remarks. These support a recovery-active dispute file, not an independent finding that every allegation in the old profile is true.",
+    "source_boundary": "Claims that Roboto San lied, framed, coerced or entangled Tim remain attributed to Tim/project sources unless a primary post/video/chat is recovered. 'Roberto Sanchez' is stored only as Tim's nickname, not as a verified civil identity."
+  },
+  "chronology": {
+    "cast_period_roles": [
+      {
+        "period": "2024",
+        "role": "retrospective project history: YouTube/narrative conflict after the Cyraxx encounter; Tim says Robotosan tried to reframe Tim as Cyraxx"
+      },
+      {
+        "period": "2026-07-07",
+        "role": "cast archive marks Robotosan as a directly named public-conflict referent alongside DIM; underlying primary exchange remains unrecovered"
+      }
+    ],
+    "recovered_social_days": []
+  },
+  "highlighted_incidents": [
+    {
+      "date": "2024",
+      "title": "Cyraxx narrative-frame dispute",
+      "summary": "Retrospective project sources say Robotosan appeared on YouTube and tried to frame/reframe Tim through the Cyraxx story.",
+      "evidence_state": "retrospective recovery lead"
+    },
+    {
+      "date": "2026-07-07",
+      "title": "Public-conflict referent",
+      "summary": "Cast archive marks Robotosan as directly named in a public-conflict field alongside DIM; allegations remain attributed to Tim.",
+      "evidence_state": "indexed recovery lead"
+    }
+  ],
+  "attributed_remarks": [
+    {
+      "wording": "How is giving you respect, you haven't earned, the truth that will set me free?",
+      "source_mode": "older character archive profile",
+      "provenance_depth": "profile-preserved attribution; raw chat not yet recovered"
+    },
+    {
+      "wording": "Timbo just turns his thoughts into AI rants.",
+      "source_mode": "older character archive profile",
+      "provenance_depth": "profile-preserved attribution; raw chat not yet recovered"
+    },
+    {
+      "wording": "Well, maybe you'd be happier in prison again?",
+      "source_mode": "older character archive profile",
+      "provenance_depth": "profile-preserved attribution; raw chat not yet recovered"
+    },
+    {
+      "wording": "Haven't seen you connect deeply with anyone, bud",
+      "source_mode": "older character archive profile",
+      "provenance_depth": "profile-preserved attribution; raw chat not yet recovered"
+    }
+  ],
+  "source_strata": [
+    {
+      "type": "story_archive",
+      "path": "knowledge/story/character-archive-v2.json"
+    },
+    {
+      "type": "story_recovery",
+      "path": "knowledge/story/reservoir/2026-09-14-wave-05-social-timeline.md"
+    },
+    {
+      "type": "story_entry",
+      "path": "story-content/part-03.html"
+    },
+    {
+      "type": "cast_index",
+      "path": "knowledge/story/cast-book.json"
+    },
+    {
+      "type": "library_profile",
+      "path": "Library: Characters.rtf / Characters1.odt",
+      "note": "Profile preserves attributed remarks; primary raw chat remains unresolved."
+    },
+    {
+      "type": "debt_evidence_ledger",
+      "path": "knowledge/cia/debt-evidence-ledger.json"
+    }
+  ],
+  "recovery_leads": [
+    "Recover the original Tim–Robotosan YouTube/chat exchange behind the Cyraxx framing claim.",
+    "Recover primary source(s) for the four remarks preserved in the old character archive.",
+    "Recover the July 7, 2026 public-conflict source and determine what Robotosan actually said/did.",
+    "Test whether repeated framing continued across multiple dates; do not infer recurrence from one retrospective summary.",
+    "Separate criticism/skepticism from false factual narration, coercive identity-framing or unwanted entanglement."
+  ],
+  "cia_record": {
+    "authority": "canonical",
+    "record_type": "character-dossier",
+    "presence": {
+      "first_recorded": "2024 retrospective",
+      "last_recorded": "2026-07-07 recovery anchor",
+      "rule": "First/last currently recovered evidence in this dossier; not lifetime endpoints."
+    },
+    "debt_and_repair": {
+      "records": [
+        {
+          "id": "candidate-robotosan-2024-cyraxx-narrative-frame",
+          "date": "2024",
+          "pricing_status": "unpriced",
+          "category_candidate": "repeated-harmful-narrative / coercive-narration",
+          "summary": "Tim's retrospective project history says Robotosan tried to reframe Tim through the Cyraxx story on YouTube.",
+          "relation_to_negative_input_taxonomy": [
+            "smear-campaign",
+            "accusation",
+            "entanglement",
+            "wasted-time"
+          ],
+          "reason_unpriced": "Retrospective source; exact video/post/chat and exact false statement have not yet been recovered."
+        },
+        {
+          "id": "candidate-robotosan-profile-undermining",
+          "date": "undated-old-profile",
+          "pricing_status": "unpriced",
+          "category_candidate": "reputational-undermining / repeated-harmful-narrative",
+          "summary": "Older profile preserves four attributed remarks challenging Tim's legitimacy, AI use, prison history and capacity for connection.",
+          "reason_unpriced": "The profile preserves attributed wording but not original timestamps, platform context or raw primary messages."
+        },
+        {
+          "id": "candidate-robotosan-2026-07-07-conflict",
+          "date": "2026-07-07",
+          "pricing_status": "unpriced",
+          "category_candidate": "public-conflict / narrative-entanglement",
+          "summary": "Cast archive records Robotosan as a directly named public-conflict referent alongside DIM.",
+          "reason_unpriced": "The underlying primary exchange is not yet recovered."
+        }
+      ],
+      "rule": "The dossier records claimed narrative/reputational harm without treating it as established fact. A priced debit requires a recoverable dated act, clear counterparty, source context, and non-duplicative category."
+    },
+    "open_loops": [
+      "Primary Cyraxx-frame source",
+      "Primary sources for attributed remarks",
+      "July 7, 2026 conflict source",
+      "Whether later disengagement, correction, apology or repair occurred"
+    ]
+  },
+  "meaning": {
+    "why_this_file_matters": "Roboto San is a useful test case for the Bank's distinction between criticism and coercive narrative capture: repeated narration can create entanglement pressure, but only sourced false/reputational acts should ever move a balance.",
+    "known": [
+      "The project has treated Robotosan as a YouTube/narrative-conflict recovery target.",
+      "Retrospective story sources say Robotosan tried to reframe Tim through the Cyraxx story.",
+      "An older character archive preserves several attributed skeptical/undermining remarks.",
+      "The cast archive includes a July 7, 2026 public-conflict reference."
+    ],
+    "interpretive": [
+      "The pattern can be modeled as coercive narrative capture / reputational entanglement when another person persistently forces Tim into a disputed identity/story frame.",
+      "Skepticism or criticism alone is not debt; the relevant candidate is repeated sourced false framing, unwanted narrative capture, or boundary-persistent entanglement."
+    ],
+    "unknown": [
+      "The exact original Robotosan posts/videos/messages behind the framing claim are still missing.",
+      "Whether the attributed profile remarks were all Robotosan, when they were made, and in what context remains unresolved.",
+      "Whether there was any later correction, repair or disengagement is unknown."
+    ],
+    "relationship_arc": "skeptic/narrator → narrative-conflict / Cyraxx-frame dispute → 2026 recovery target",
+    "confidence_note": "Moderate on project-retrospective framing and profile-preserved remarks; low-to-moderate on event-level liability until primary sources are recovered."
+  },
+  "symbolic_account": {
+    "status": "unpriced-dispute",
+    "good_karma": "unassessed",
+    "karmic_debt": "claimed / unpriced",
+    "dooley_welfare": {
+      "enabled": true
+    },
+    "outstanding": [
+      "recover primary Cyraxx-frame source",
+      "recover original attributed remarks and dates",
+      "determine whether repeated unwanted narration continued after 2024"
+    ],
+    "entries": [
+      {
+        "date": "2024",
+        "type": "dispute",
+        "kind": "claimed coercive narration / Cyraxx identity-frame",
+        "amount_or_scale": "unpriced",
+        "source_mode": "retrospective project history",
+        "source_ref": "knowledge/story/reservoir/2026-09-14-wave-05-social-timeline.md",
+        "note": "Tim's project account says Robotosan tried to frame/reframe Tim through the Cyraxx story. Candidate debt exists, but no price is assigned without the primary source.",
+        "status": "open"
+      },
+      {
+        "date": "undated-old-profile",
+        "type": "dispute",
+        "kind": "attributed reputational undermining / repeated doubt",
+        "amount_or_scale": "unpriced",
+        "source_mode": "older character archive profile",
+        "source_ref": "Library: Characters.rtf / Characters1.odt",
+        "note": "Four attributed remarks are preserved, but original timestamps/platform context remain unresolved.",
+        "status": "open"
+      },
+      {
+        "date": "2026-07-07",
+        "type": "dispute",
+        "kind": "public conflict / narrative entanglement recovery lead",
+        "amount_or_scale": "unpriced",
+        "source_mode": "cast archive",
+        "source_ref": "knowledge/story/cast-book.json",
+        "note": "Directly named public-conflict referent alongside DIM; underlying event still needs recovery.",
+        "status": "open"
+      }
+    ]
+  }
+}
