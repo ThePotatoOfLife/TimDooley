@@ -55,6 +55,8 @@ def main():
         if token not in runtime: errors.append(f"statistics runtime missing {token}")
     for token in ("3d-subdivision-statistics.js","statistics.enrichCollection"):
         if token not in subdiv: errors.append(f"subdivision runtime missing statistics integration {token}")
+    for token in ("statistics_provenance?.density_per_km2", "subdivisionStatisticsProvenanceHtml", "Derived · population ÷ area", "Statistics provenance"):
+        if token not in subdiv: errors.append(f"subdivision statistics reader projection missing {token}")
     if "geometry_source =" in runtime or "geometry_source:" in runtime:
         errors.append("statistics runtime must not write geometry_source provenance")
     node=shutil.which("node")
