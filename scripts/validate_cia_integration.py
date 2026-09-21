@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MANIFEST=ROOT/"knowledge/cia/manifest.json"; CABINET=ROOT/"rooms/potatoverse-canon/beings/cia/index.html"
 VIEWER=ROOT/"rooms/potatoverse-canon/beings/cia/file/index.html"; COLLECTIONS=ROOT/"data/house/collections.json"
-ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; DEBT_EVIDENCE=ROOT/"knowledge/cia/debt-evidence-ledger.json"; POSTURE=ROOT/"knowledge/cia/account-posture-index.json"; SPIRITUAL_BANK=ROOT/"knowledge/core/north-root-spiritual-bank-architecture.json"; SYSTEM_LEDGER=ROOT/"knowledge/cia/system-liability-ledger.json"; FIELD_EXPOSURE=ROOT/"knowledge/cia/field-exposure-model.json"; BUILDING=ROOT/"knowledge/cia/institution-building.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
+ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; BANK_MINING=ROOT/"knowledge/cia/spiritual-bank-conversation-mining-2026-09-21.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; DEBT_EVIDENCE=ROOT/"knowledge/cia/debt-evidence-ledger.json"; POSTURE=ROOT/"knowledge/cia/account-posture-index.json"; SPIRITUAL_BANK=ROOT/"knowledge/core/north-root-spiritual-bank-architecture.json"; SYSTEM_LEDGER=ROOT/"knowledge/cia/system-liability-ledger.json"; FIELD_EXPOSURE=ROOT/"knowledge/cia/field-exposure-model.json"; BUILDING=ROOT/"knowledge/cia/institution-building.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
 ROUTE="rooms/potatoverse-canon/beings/cia/"
 def fail(m): print("FAIL:",m); raise SystemExit(1)
 def main():
@@ -34,7 +34,18 @@ def main():
  if account.get("welfare_rule",{}).get("enabled_by_default") is not True: fail("Dooley welfare must default on")
  if "not money" not in str(account.get("boundary","")).lower(): fail("symbolic account boundary missing")
  if not MUD_BANK.is_file(): fail("Mud Bank contract missing")
+ if not BANK_MINING.is_file(): fail("spiritual-bank conversation mining missing")
+ mining=json.loads(BANK_MINING.read_text(encoding="utf-8"))
+ if not mining.get("exact_statement_anchors"): fail("bank conversation mining has no exact statement anchors")
+ if not mining.get("derived_bank_operators"): fail("bank conversation mining has no derived operators")
+ if not mining.get("recovery_leads"): fail("bank conversation mining has no recovery leads")
+ for row in mining.get("exact_statement_anchors",[]):
+  if not row.get("evidence_class") or not row.get("source"): fail("bank exact statement anchor missing evidence/source")
+
  bank=json.loads(MUD_BANK.read_text(encoding="utf-8"))
+ dims=bank.get("backend_account_dimensions") or {}
+ for key in ["activation_state","capital_state","obligation_state","entanglement_state","provenance_depth"]:
+  if key not in (dims.get("dimensions") or {}): fail(f"bank backend dimension missing {key}")
  if bank.get("welfare",{}).get("rate_per_second_susd")!=0.00000000001: fail("Dooley Welfare rate drift")
  if bank.get("denomination",{}).get("real_currency") is not False: fail("Mud Bank denomination boundary drift")
  pricing=bank.get("debit_pricing") or {}

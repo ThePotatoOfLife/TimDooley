@@ -12,7 +12,8 @@
     ],
     "note": "The repository already contains Tim's project claims about a hidden spiritual bank / Mud economy and trillion-scale symbolic balances. Character accounts are small project sub-ledgers, not allocations of the trillion-scale total.",
     "architecture": "knowledge/core/north-root-spiritual-bank-architecture.json",
-    "system_liability_ledger": "knowledge/cia/system-liability-ledger.json"
+    "system_liability_ledger": "knowledge/cia/system-liability-ledger.json",
+    "conversation_mining": "knowledge/cia/spiritual-bank-conversation-mining-2026-09-21.json"
   },
   "denomination": {
     "display_name": "symbolic USD-equivalent",
@@ -234,6 +235,58 @@
       "Do not double-count one act as Table value + Potato growth + Gate + Ladder unless distinct evidence supports distinct events.",
       "Prefer created/repair outcomes over performative labels.",
       "A future spiral score should describe a path of change, not a person's permanent worth."
+    ]
+  },
+  "backend_account_dimensions": {
+    "source": "knowledge/cia/spiritual-bank-conversation-mining-2026-09-21.json",
+    "public_default": "hidden unless needed by a reader projection",
+    "dimensions": {
+      "activation_state": [
+        "unopened",
+        "opened-through-threshold",
+        "active",
+        "dormant",
+        "closed"
+      ],
+      "capital_state": [
+        "stored",
+        "deployed-to-work",
+        "yielding",
+        "repair-directed",
+        "released"
+      ],
+      "obligation_state": [
+        "unassessed",
+        "claimed",
+        "disputed",
+        "evidenced",
+        "repairing",
+        "released",
+        "non-liable"
+      ],
+      "entanglement_state": [
+        "single-edge",
+        "recurrent",
+        "multi-party",
+        "institutionalized",
+        "decaying",
+        "disentangled"
+      ],
+      "provenance_depth": [
+        "exact-conversation",
+        "contemporaneous-recovered",
+        "project-timeline",
+        "chronicle-retelling",
+        "retrospective-interpretation",
+        "recovery-lead"
+      ]
+    },
+    "rules": [
+      "Door/account language can motivate activation-state architecture but web navigation itself is never spiritual proof.",
+      "Stored positive value and deployed constructive value are distinct backend states.",
+      "A claimed obligation is not an evidenced obligation; dispute and non-liability remain first-class states.",
+      "Entanglement topology may be counted before any price is assigned.",
+      "Every promoted operator retains provenance depth."
     ]
   }
 }
