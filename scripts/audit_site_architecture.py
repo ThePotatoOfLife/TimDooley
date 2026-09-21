@@ -10,7 +10,7 @@ ROOT=Path(__file__).resolve().parents[1]
 REGISTRY=ROOT/"data"/"house"/"public-surfaces.json"
 REPORT=ROOT/".quality-logs"/"site-architecture-audit.json"
 STYLE_SCRIPT=re.compile(r"<(?:style|script)\\b[\\s\\S]*?</(?:style|script)>",re.I)
-ANCHOR_HREF=re.compile(r'<a\\b[^>]*href=[\\"\\']([^\\"\\']+)[\\"\\']',re.I)
+ANCHOR_HREF=re.compile(r"<a\\b[^>]*href=[\\\"']([^\\\"']+)[\\\"']", re.I)
 BUTTON=re.compile(r"<button\\b",re.I); NAV=re.compile(r"<nav\\b",re.I)
 H1=re.compile(r"<h1\\b",re.I); H2=re.compile(r"<h2\\b",re.I)
 EXTERNAL=("http://","https://","//","mailto:","tel:","javascript:","data:","blob:")
