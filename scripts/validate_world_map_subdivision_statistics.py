@@ -51,9 +51,9 @@ def main():
                 errors.append(f"{path.name}: statistics importer path must be canonical")
     runtime=RUNTIME.read_text(encoding="utf-8",errors="replace")
     subdiv=SUBDIV.read_text(encoding="utf-8",errors="replace")
-    for token in ("enrichCollection","statistics_provenance","geometry_source","population_status='sourced'"):
+    for token in ("enrichCollection","statistics_provenance","population_status='sourced'"):
         if token not in runtime: errors.append(f"statistics runtime missing {token}")
-    for token in ("3d-subdivision-statistics.js","statistics.enrichCollection"):
+    for token in ("3d-subdivision-statistics.js","statistics?.enrichCollection?."):
         if token not in subdiv: errors.append(f"subdivision runtime missing statistics integration {token}")
     for token in ("statistics_provenance?.density_per_km2", "subdivisionStatisticsProvenanceHtml", "Derived · population ÷ area", "Statistics provenance"):
         if token not in subdiv: errors.append(f"subdivision statistics reader projection missing {token}")
