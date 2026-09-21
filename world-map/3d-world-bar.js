@@ -229,6 +229,15 @@
     if (physicalIds.length) lines.push(`<div><span>Physical</span><b>${esc(compactIds(physicalIds))}</b></div>`);
     if (geographyIds.length) lines.push(`<div><span>Geography</span><b>${esc(compactIds(geographyIds))}</b></div>`);
     if (evidenceIds.length) lines.push(`<div><span>Evidence</span><b>${esc(compactIds(evidenceIds))}</b></div>`);
+    const freshnessRows = window.__potatoAtlasFreshness?.active?.() || [];
+    if (freshnessRows.length) {
+      const compactFreshness = freshnessRows.slice(0, 3).map(row => {
+        const state=row.freshness || {};
+        const asOf=state.asOf ? ` (${state.asOf})` : '';
+        return `${row.label}: ${state.label || 'Unknown vintage'}${asOf}`;
+      });
+      lines.push(`<div><span>Data status</span><b>${esc(compactFreshness.join(' · '))}${freshnessRows.length > 3 ? ` +${freshnessRows.length - 3}` : ''}</b></div>`);
+    }
     const projectionMeta = view?.projection;
     if (projectionMeta?.informationLoss?.length) {
       const loss = projectionMeta.informationLoss.slice(0, 2).join(' · ');
@@ -319,6 +328,9 @@
   window.addEventListener('potato-atlas-relation-mode-change', syncMenus);
   window.addEventListener('potato-atlas-spatial-overlay-change', () => { syncGeographyMenu(); renderContext(); });
   window.addEventListener('potato-atlas-evidence-layer-change', () => renderContext());
+  window.addEventListener('potato-atlas-places-change', () => renderContext());
+  window.addEventListener('potato-atlas-places-ready', () => renderContext());
+  window.addEventListener('potato-atlas-freshness-change', () => renderContext());
   window.addEventListener('potato-atlas-physical-layer-change', () => renderContext());
   window.addEventListener('potato-atlas-active-view-change', event => { activeView=event.detail||null; renderSummary(activeView); renderContext(activeView); });
   window.addEventListener('atlas-time-change', event => { timeState=event.detail||null; renderContext(); window.__potatoAtlasActiveView?.refresh?.('time'); });
