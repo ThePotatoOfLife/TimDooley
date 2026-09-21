@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MANIFEST=ROOT/"knowledge/cia/manifest.json"; CABINET=ROOT/"rooms/potatoverse-canon/beings/cia/index.html"
 VIEWER=ROOT/"rooms/potatoverse-canon/beings/cia/file/index.html"; COLLECTIONS=ROOT/"data/house/collections.json"
-ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; US_COVERAGE=ROOT/"knowledge/cia/us-exposure-coverage-model.json"; ROLE_CENSUS=ROOT/"knowledge/cia/role-archetype-census.json"; NEGATIVE_INPUTS=ROOT/"knowledge/cia/negative-input-conversation-ledger-2025-2026.json"; BANK_MINING=ROOT/"knowledge/cia/spiritual-bank-conversation-mining-2026-09-21.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; DEBT_EVIDENCE=ROOT/"knowledge/cia/debt-evidence-ledger.json"; POSTURE=ROOT/"knowledge/cia/account-posture-index.json"; SPIRITUAL_BANK=ROOT/"knowledge/core/north-root-spiritual-bank-architecture.json"; SYSTEM_LEDGER=ROOT/"knowledge/cia/system-liability-ledger.json"; FIELD_EXPOSURE=ROOT/"knowledge/cia/field-exposure-model.json"; BUILDING=ROOT/"knowledge/cia/institution-building.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
+ACCOUNT=ROOT/"knowledge/cia/symbolic-account-contract.json"; ORPHAN_LEDGER=ROOT/"knowledge/cia/orphan-clearing-ledger.json"; US_COVERAGE=ROOT/"knowledge/cia/us-exposure-coverage-model.json"; ROLE_CENSUS=ROOT/"knowledge/cia/role-archetype-census.json"; NEGATIVE_INPUTS=ROOT/"knowledge/cia/negative-input-conversation-ledger-2025-2026.json"; BANK_MINING=ROOT/"knowledge/cia/spiritual-bank-conversation-mining-2026-09-21.json"; MUD_BANK=ROOT/"knowledge/cia/mud-bank-contract.json"; DEBT_EVIDENCE=ROOT/"knowledge/cia/debt-evidence-ledger.json"; POSTURE=ROOT/"knowledge/cia/account-posture-index.json"; SPIRITUAL_BANK=ROOT/"knowledge/core/north-root-spiritual-bank-architecture.json"; SYSTEM_LEDGER=ROOT/"knowledge/cia/system-liability-ledger.json"; FIELD_EXPOSURE=ROOT/"knowledge/cia/field-exposure-model.json"; BUILDING=ROOT/"knowledge/cia/institution-building.json"; SYMBOLS=ROOT/"knowledge/cia/symbolic-image-pool.json"; ACTIVITY=ROOT/"knowledge/cia/activity-index.json"; CURRENT=ROOT/"knowledge/cia/current-desk.json"; FBI_MANIFEST=ROOT/"knowledge/fbi/manifest.json"; FBI_ROUTE=ROOT/"rooms/potatoverse-canon/beings/fbi/index.html"
 ROUTE="rooms/potatoverse-canon/beings/cia/"
 def fail(m): print("FAIL:",m); raise SystemExit(1)
 def main():
@@ -36,6 +36,10 @@ def main():
  if not MUD_BANK.is_file(): fail("Mud Bank contract missing")
  if not ROLE_CENSUS.is_file(): fail("CIA role/archetype census missing")
  if not US_COVERAGE.is_file(): fail("CIA U.S. exposure coverage model missing")
+ if not ORPHAN_LEDGER.is_file(): fail("CIA orphan clearing ledger missing")
+ orphan=json.loads(ORPHAN_LEDGER.read_text(encoding="utf-8"))
+ if ((orphan.get("scenario_language") or {}).get("ninety_nine_thousand") or {}).get("status")!="symbolic scenario, not census": fail("99k orphan scenario boundary drift")
+ if "no profile image by itself" not in (orphan.get("zero_weight_features") or []): fail("no-PFP zero-weight rule missing")
  coverage=json.loads(US_COVERAGE.read_text(encoding="utf-8"))
  if int((coverage.get("reconciled_identity_surface") or {}).get("canonical_entities",0))!=len(chars): fail("U.S. coverage canonical entity count drift")
  if (coverage.get("user_scenario_inputs") or {}).get("hypothetical_throwaway_handle_count",{}).get("verified") is not False: fail("99k handle scenario must remain explicitly unverified")
