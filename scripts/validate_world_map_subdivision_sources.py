@@ -59,6 +59,22 @@ def main()->int:
         acq=data.get("acquisition") or {}
         if acq.get("runtime_fetch_allowed") is not False:
             errors.append(f"{path.name}: administrative source acquisition must remain build-time only")
+        direct_url=str(src.get("direct_download_url") or "").strip()
+        service_vintage=str(src.get("service_vintage") or "").strip()
+        source_vintage=str(src.get("source_vintage") or "").strip()
+        if direct_url:
+            if str(acq.get("preferred_source_url") or "").strip()!=direct_url:
+                errors.append(f"{path.name}: acquisition.preferred_source_url must match source.direct_download_url")
+            if str(acq.get("preferred_source_vintage") or "").strip()!=source_vintage:
+                errors.append(f"{path.name}: preferred source vintage must match source.source_vintage")
+        if service_vintage and source_vintage and service_vintage!=source_vintage:
+            if src.get("service_import_allowed_for_source_vintage") is not False:
+                errors.append(f"{path.name}: stale service vintage must be explicitly blocked from current-source import")
+            wfs=acq.get("wfs_request") or {}
+            if wfs.get("import_allowed_for_source_vintage") is not False:
+                errors.append(f"{path.name}: acquisition WFS request must remain reference-only when service/source vintages differ")
+            if str(wfs.get("reference_vintage") or "").strip()!=service_vintage:
+                errors.append(f"{path.name}: WFS reference vintage must match source.service_vintage")
         mapping=data.get("field_mapping") or {}
         for key in REQUIRED_MAPPING:
             if not str(mapping.get(key) or "").strip(): errors.append(f"{path.name}: field_mapping.{key} missing")

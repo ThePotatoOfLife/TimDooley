@@ -105,7 +105,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The curr
 ### 2026-09-21 re-audit priorities
 
 - [x] Retire dormant `3d-fields.js` / `3d-networks.js`: live symbolic operators now use Layer Registry state; obsolete render/control modules are deleted while underlying datasets remain available for future registry expansion.
-- [~] Expand subdivision + bounded Places depth beyond the current five promoted countries. Germany has a reviewed official BKG ADM1 acquisition contract, and live-index validation now blocks any regional promotion lacking bounded Places or a ready source contract; DEU geometry + Places promotion remain.
+- [~] Expand subdivision + bounded Places depth beyond the current five promoted countries. Germany's BKG contract now pins the current 01.01.2026 GeoPackage as the preferred source and treats the older WFS as reference-only; DEU source bytes, geometry review and fresh Places promotion remain.
 - [ ] Replace the GeoNames mirror seed with a reviewed fresh canonical build; preserve source date, build date and upstream freshness separately.
 - [~] Promote at least one reviewed delayed/historical conflict snapshot. A guarded UCDP GED 26.1 coarse-event-aggregate acquisition/import path is now in progress; official source bytes and first reviewed snapshot remain before activation.
 - [~] Add behavioral viewport scenarios for globe mode, narrow screens, dense regional labels, detached geography and region→Places handoff. A combined narrow+globe+region+Places contract regression is now in progress; browser-level occlusion/detached-geography proof remains.
@@ -144,7 +144,7 @@ The numbered working queue lives in `docs/WORLD-MAP-PROBLEM-LEDGER.md`. The curr
 - [x] Add Ukraine as a geometry-first first-order administrative partition with explicit source-representation caveats.
 - [x] Add Russia through the same partition contract as an 83-feature base partition; strip unrelated source attributes and exclude six disputed Ukrainian source features from ordinary Russia geography.
 - [x] Normalize future ADM1 sources through one fail-closed importer that emits canonical partitions + descriptor sidecars without mutating the live registry.
-- [~] Add further country partitions only after provenance, byte budget, search records and national-context readability pass the same validator. Pre-promotion source contracts now formalize these requirements; Germany is the first next-wave candidate.
+- [~] Add further country partitions only after provenance, byte budget, search records and national-context readability pass the same validator. Pre-promotion source contracts now formalize these requirements; Germany is the first next-wave candidate and its current-vs-service source-vintage mismatch is explicitly guarded.
 - [x] Require every promoted regional country to carry a bounded Places partition; Ukraine and Russia now have same-origin GeoNames place coverage plus global-major/search projection.
 - [x] Make the generic subdivision inspector expose unknown-vs-known statistics, local names, boundary provenance/vintage and source-specific representation notes.
 - [x] Make the country-card Regions doorway focus the retained partition into visible/interactable regional scale using subdivision-owned camera policy.
