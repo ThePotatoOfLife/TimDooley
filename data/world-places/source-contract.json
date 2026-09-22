@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "status": "source-verified-download-pending",
+  "verified_on": "2026-09-21",
+  "purpose": "Canonical build-time source contract for scale-aware World Map Places.",
+  "source": {
+    "owner": "GeoNames",
+    "dataset": "GeoNames Gazetteer extract",
+    "artifact": "cities15000.zip",
+    "artifact_url": "https://download.geonames.org/export/dump/cities15000.zip",
+    "listing_url": "https://download.geonames.org/export/dump/",
+    "license": "CC BY 4.0",
+    "attribution": "GeoNames",
+    "attribution_url": "https://www.geonames.org/"
+  },
+  "acquisition": {
+    "runtime_fetch_allowed": false,
+    "retrieval_mode": "reviewed-build-time-only",
+    "unpacked_input": "cities15000.txt",
+    "note": "Capture the current upstream listing/file timestamp at acquisition time; do not reuse the historical mirror seed's unknown-vintage label as canonical freshness."
+  },
+  "required_capture": [
+    "input_sha256",
+    "upstream_last_modified",
+    "retrieved_at",
+    "build_at"
+  ],
+  "builder": {
+    "script": "scripts/build_world_places.py",
+    "source_name": "GeoNames cities15000",
+    "source_url": "https://download.geonames.org/export/dump/cities15000.zip",
+    "required_production_flags": [
+      "--geonames",
+      "--capitals",
+      "--country-index",
+      "--refresh-date",
+      "--upstream-last-modified",
+      "--retrieved-at"
+    ],
+    "runtime_budget_owner": "scripts/build_world_places.py:RUNTIME_BUDGET"
+  },
+  "promotion_rules": [
+    "The downloaded input must be hashed before generation.",
+    "Upstream last-modified, retrieval time and build time are separate fields.",
+    "Generated country partitions must remain within the canonical per-partition byte budget.",
+    "Only countries selected for detailed coverage are emitted as detailed partitions.",
+    "GeoNames attribution and CC BY 4.0 licensing remain reader-visible through provenance.",
+    "The historical CC BY 3.0 mirror seed remains a bounded fallback until a reviewed canonical build is committed."
+  ]
+}
