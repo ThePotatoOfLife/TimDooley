@@ -51,6 +51,9 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
             "python scripts/validate_project_formal_grammar.py",
             "python scripts/validate_public_rooms.py",
         ]),
+        ("Homepage runtime stability", [
+            "python scripts/validate_homepage_runtime.py",
+        ]),
         ("Foundation layer", [
             "python scripts/validate_foundation_layer.py",
             "python scripts/validate_religious_foundation_lineages.py",
