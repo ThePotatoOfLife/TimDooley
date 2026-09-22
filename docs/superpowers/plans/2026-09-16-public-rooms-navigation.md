@@ -1,5 +1,7 @@
 # Public Rooms Navigation Implementation Plan
 
+> **Status note · 2026-09-22:** implemented historically, then refined. The dedicated homepage `rooms-corridor` described below is **superseded** by the compact task-led `reader-routing` surface on Home. Direct subject discoverability now belongs to `/rooms/`, World/specialist owners and the fixed Find/Places access layer. Keep this file as implementation history; do not use its old homepage-card requirement as the current navigation contract.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Make Culture, History, Politics/Geopolitics, Law, Economy and World Systems directly discoverable from the public homepage while preserving exactly five primary Doors and all existing canonical knowledge ownership.

@@ -18,14 +18,12 @@ EXPECTED_PRIMARY = [
     "world/",
 ]
 
-REQUIRED_HOME_ROOM_LINKS = {
-    "context/culture/": "Culture",
-    "history/": "History",
-    "politics/": "Politics",
-    "law/": "Law",
-    "economy/": "Economy",
-    "world-systems/": "World Systems",
-    "rooms/": "All Rooms",
+REQUIRED_HOME_ROUTING_LINKS = {
+    "rooms/": "Rooms",
+    "timeline/": "Timeline",
+    "context/source-authority/": "Sources & Evidence",
+    "explore/": "Explore",
+    "research-lab/": "Research Lab",
 }
 
 REQUIRED_SURFACES = {
@@ -116,14 +114,23 @@ def main() -> int:
     if primary != EXPECTED_PRIMARY:
         errors.append(f"homepage primary Doors drifted: expected {EXPECTED_PRIMARY!r}; got {primary!r}")
 
-    if "Explore the Dwellings &amp; Rooms" not in home and "Explore the Dwellings & Rooms" not in home:
-        errors.append("homepage missing distinct 'Explore the Dwellings & Rooms' corridor")
-    for href, label in REQUIRED_HOME_ROOM_LINKS.items():
-        if f'href="{href}"' not in home and f"href='{href}'" not in home:
-            errors.append(f"homepage Rooms corridor missing route {href} ({label})")
-    corridor = re.search(r'<section\s+class=["\']rooms-corridor["\'][^>]*>(.*?)</section>', home, flags=re.I | re.S)
-    if not corridor or "cult" not in corridor.group(1).lower():
-        errors.append("homepage Rooms corridor must name cult/high-control culture explicitly")
+    routing = re.search(
+        r'<section\s+class=["\'][^"\']*reader-routing[^"\']*["\'][^>]+id=["\']reader-routing["\'][^>]*>(.*?)</section>',
+        home,
+        flags=re.I | re.S,
+    )
+    if not routing:
+        errors.append("homepage missing compact reader-routing section")
+    else:
+        body = routing.group(1)
+        for href, label in REQUIRED_HOME_ROUTING_LINKS.items():
+            if f'href="{href}"' not in body and f"href='{href}'" not in body:
+                errors.append(f"homepage reader-routing missing route {href} ({label})")
+        for redundant in ("context/culture/", "politics/", "law/", "economy/", "world-systems/"):
+            if f'href="{redundant}"' in body or f"href='{redundant}'" in body:
+                errors.append(f"homepage reader-routing must not recreate subject-card route {redundant}")
+    if 'class="rooms-corridor"' in home or "class='rooms-corridor'" in home:
+        errors.append("homepage must not reintroduce the retired duplicate Rooms corridor")
 
     page_text: dict[str, str] = {}
     for relative, (surface_id, label) in ROOM_PAGE_CONTRACTS.items():
@@ -244,7 +251,7 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print("PUBLIC ROOMS VALIDATION PASSED: five Doors preserved; subject Rooms and specialist Law/Economy sources are directly discoverable.")
+    print("PUBLIC ROOMS VALIDATION PASSED: five Doors preserved; Home uses one compact task router while subject discovery remains owned by Rooms/World.")
     return 0
 
 

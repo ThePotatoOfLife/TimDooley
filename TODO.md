@@ -171,7 +171,7 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 - [x] Correct source-time web auditing so generated `/records/<id>/` readers are recognized as build products rather than broken source links.
 - [x] Add an explicit built-site assertion that every registered `room-inhabitants.json` route under `/records/` resolves after `build_site.py`; `validate_generated_navigation.py` now derives the full route set from the registry.
 - [ ] Continue visible-page density auditing after each major content wave: prefer concrete cases/mechanisms over another navigation card when a page is already route-heavy.
-- [ ] Review the remaining homepage House corridor and cross-cutting-view blocks after user testing; merge any pair whose reader job is no longer meaningfully distinct.
+- [x] Merge the remaining homepage House corridor + cross-cutting-view blocks: Home now has one compact task-led routing layer (Rooms / Timeline / Sources / Explore / Research Lab) instead of a second subject-card index.
 - [ ] Audit generated question/topic/context/record pages for meaningful TTS sectioning, not just script presence.
 - [ ] Run an exact-head final Pages build after the current navigation/content/TTS wave and fix any source-vs-generated route drift it exposes.
 
@@ -193,7 +193,7 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [x] **ACCESS-011 · Deep-object result quality:** exact labels and aliases now receive explicit ranking boosts, object/direct-door kinds outrank generic pages, and House results expose their owning Room/context.
 - [ ] **ACCESS-012 · No-hierarchy-required test:** pick 25 common intents (News, CIA, FBI bureau, debt, Bible, Tim claims, 100,000 Hours, map, sources, TTS, Rooms, economy, North, Below, etc.) and require each to be reachable in ≤2 interactions from an arbitrary normal reader page.
 - [ ] **ACCESS-013 · Specialist local-nav budget:** review every mature reader's first navigation row and keep only page-owned routes; remove global links duplicated by the dock.
-- [~] **ACCESS-014 · Home hierarchy compression:** first compression complete: the four-card project-spine navigation layer was reduced to one compact Center → House → Rooms → Explore orientation sentence, preserving the conceptual sequence while removing a competing card menu between the hero and substantive material. Continue auditing later Home blocks for repeated architecture before closing.
+- [x] **ACCESS-014 · Home hierarchy compression:** Home now keeps the compact Center → House → Rooms → Explore spine, the five canonical public Doors, and one late task-led reader router. The separate House subject corridor and cross-cutting card wall were merged so Home no longer carries a second directory for Culture/Politics/Law/Economy/World Systems.
 - [ ] **ACCESS-015 · Map access integration:** keep the dock available on World Map without competing with World Bar / Inspector / mobile controls.
 - [ ] **ACCESS-016 · News access integration:** News should open directly into stories; filters/methodology stay secondary and the global dock must not displace headline content.
 - [ ] **ACCESS-017 · House access integration:** House should explain structure, while quick Find handles named-entity retrieval; avoid turning House itself into the universal menu.
@@ -204,6 +204,15 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [~] **ACCESS-023 · Name-first wayfinding audit:** extend the landmark rule to other repeatedly sought destinations demonstrated by user confusion. Do not turn every specialist page into a global shortcut; require evidence that hierarchy/scrolling is causing retrieval failure.
 - [ ] **ACCESS-024 · Long-reader reorientation audit:** inspect mature long pages for cases where users can scroll far enough to lose page identity or the meaningful next exit; prefer a compact persistent locator/back-to-owner cue over more first-screen navigation.
 - [ ] **ACCESS-020 · Live-deploy visibility:** after exact-head quality/deploy succeeds, verify the public Pages artifact actually contains the dock and Current World first-screen link before closing this access-recovery wave.
+
+### Homepage calibration queue — 2026-09-22
+
+- [x] **HOME-000 · Late-page routing merge:** retire the separate House subject corridor and cross-cutting card wall; keep one task-led reader router and update the validator so old duplication cannot silently return.
+- [ ] **HOME-001 · First-screen link budget:** decide whether the local five-link section-shortcut row still earns its space now that the fixed dock handles global retrieval; remove or reduce it only if the first-screen audit shows it is competing with substance.
+- [ ] **HOME-002 · Projection fetch resilience:** audit the homepage runtime’s large parallel JSON fetch set; distinguish critical projection data from optional teaching/enrichment data so one missing secondary dataset cannot blank unrelated dynamic sections.
+- [ ] **HOME-003 · Homepage CSS ownership:** after the current layout stabilizes, move durable homepage component rules out of the large inline style block into a scoped shared asset; do not create another generic stylesheet namespace.
+- [ ] **HOME-004 · Repetition audit:** compare the project-spine, structure teaching, Foundation/route teaching and materialized-state explanations for repeated concepts; keep the strongest explanation and link to canonical owners rather than restating architecture.
+- [ ] **HOME-005 · Runtime/data naming cleanup:** review homepage-only data sources with wave/date names and either promote stable live authorities or explicitly mark them as historical inputs before they harden into permanent runtime dependencies.
 
 
 ### Fresh repository sweep — 2026-09-20

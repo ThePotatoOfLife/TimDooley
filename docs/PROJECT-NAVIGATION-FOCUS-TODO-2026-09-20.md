@@ -31,8 +31,10 @@ The rule for this pass is therefore **less visible navigation, stronger orientat
 ### Home
 - Keep the first screen about what the project is, not every capability it has.
 - Preserve the four-step spine: Center → Structure → Knowledge → Views.
+- Keep three navigation jobs visually distinct: popular named destinations near the entrance, exactly five canonical public Doors for broad subject ownership, and one compact task-led reader router for Rooms / Timeline / Sources / Explore / Research Lab.
+- Do not rebuild a second subject directory on Home. Culture, Politics, Law, Economy, World Systems and similar specialist subjects belong to their canonical hubs, Rooms and Find.
 - Let “Current World” remain a window, not another primary branch.
-- Compress repeated archive/discovery links if they duplicate the new compass or footer routes.
+- Compress repeated archive/discovery links if they duplicate the fixed dock, task router or footer routes.
 
 ### Tim Dooley
 - Treat it as the main human/project portrait.
