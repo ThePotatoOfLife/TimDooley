@@ -35,6 +35,7 @@ The rule for this pass is therefore **less visible navigation, stronger orientat
 - Do not rebuild a second subject directory on Home. Culture, Politics, Law, Economy, World Systems and similar specialist subjects belong to their canonical hubs, Rooms and Find.
 - Let “Current World” remain a window, not another primary branch.
 - Compress repeated archive/discovery links if they duplicate the fixed dock, task router or footer routes.
+- Do not add local section-jump navigation near the top of Home unless a measured long-page problem demonstrates that the reader cannot recover position without it; the default is linear reading plus the fixed dock.
 
 ### Tim Dooley
 - Treat it as the main human/project portrait.

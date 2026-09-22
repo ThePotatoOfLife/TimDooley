@@ -55,6 +55,9 @@ def main() -> int:
         if f"fetch('{path}')" in home:
             errors.append(f"homepage dataset bypasses isolated loader with raw fetch: {path}")
 
+    if 'class="home-guide"' in home or 'aria-label="Homepage section shortcuts"' in home:
+        errors.append("homepage reintroduced the retired first-screen section shortcut row")
+
     stale_loading = (
         "Loading Foundation landscape",
         "Loading Foundation Rooms",
