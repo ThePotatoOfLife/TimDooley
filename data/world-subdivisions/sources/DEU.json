@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "status": "source-verified-download-pending",
   "reviewed_on": "2026-09-21",
   "iso3": "DEU",
@@ -21,19 +21,30 @@
     "license_id": "dl-de/by-2-0",
     "attribution": "© BKG (2026) dl-de/by-2-0",
     "attribution_url": "https://www.bkg.bund.de",
-    "license_url": "https://www.govdata.de/dl-de/by-2-0"
+    "license_url": "https://www.govdata.de/dl-de/by-2-0",
+    "direct_download_url": "https://daten.gdz.bkg.bund.de/produkte/vg/vg250_ebenen_0101/aktuell/vg250_01-01.utm32s.gpkg.ebenen.zip",
+    "direct_download_format": "GeoPackage ZIP",
+    "direct_download_filename": "vg250_01-01.utm32s.gpkg.ebenen.zip",
+    "service_vintage": "2025-01-01",
+    "service_import_allowed_for_source_vintage": false,
+    "service_update_note": "BKG's WFS product page currently reports Aktualitätsstand 01.01.2025; do not use that service as if it were the 01.01.2026 direct-download product."
   },
   "acquisition": {
     "runtime_fetch_allowed": false,
     "retrieval_mode": "reviewed-build-time-only",
-    "expected_format": "GeoJSON FeatureCollection or reviewed conversion from BKG WFS/GeoPackage",
+    "expected_format": "Reviewed conversion from the official BKG 01.01.2026 GeoPackage package to GeoJSON FeatureCollection",
     "wfs_request": {
       "service": "WFS",
       "version": "2.0.0",
       "request": "GetFeature",
       "type_names": "vg250:vg250_lan",
-      "srs_name": "EPSG:4326"
-    }
+      "srs_name": "EPSG:4326",
+      "import_allowed_for_source_vintage": false,
+      "reference_vintage": "2025-01-01"
+    },
+    "preferred_source": "direct-download-geopackage",
+    "preferred_source_url": "https://daten.gdz.bkg.bund.de/produkte/vg/vg250_ebenen_0101/aktuell/vg250_01-01.utm32s.gpkg.ebenen.zip",
+    "preferred_source_vintage": "2026-01-01"
   },
   "field_mapping": {
     "name_field": "GEN",
@@ -52,13 +63,14 @@
     "max_bytes": 1500000,
     "expected_count": 16,
     "source_label": "BKG Verwaltungsgebiete 1:250 000 (VG250)",
-    "source_ref": "BKG VG250 01.01.2026 / vg250:vg250_lan",
+    "source_ref": "BKG VG250 01.01.2026 / vg250_01-01.utm32s.gpkg.ebenen.zip / VG250_LAN",
     "source_vintage": "2026-01-01",
     "representation_note": "Administrative reference geometry for Germany's 16 Länder. This is not a political, electoral, conflict-control or live operational layer."
   },
   "promotion_requirements": [
-    "Acquire the official BKG layer or a byte-identifiable reviewed export.",
+    "Acquire the official BKG 01.01.2026 GeoPackage package from acquisition.preferred_source_url; do not substitute the WFS while its published vintage is 01.01.2025.",
     "Record the acquired source SHA-256.",
+    "Extract/review the VG250_LAN layer and convert it to GeoJSON without changing the 16-Länder identity/code fields.",
     "Run scripts/import_world_adm1.py with this contract's field mapping and expected count.",
     "Review the generated DEU.geo.json and DEU.partition.json sidecar.",
     "Confirm generated partition stays within the 1.5 MB partition budget.",
