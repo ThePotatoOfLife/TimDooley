@@ -75,6 +75,24 @@
       '<a href="'+elevatorUrl(st)+'"><span>'+esc(st.label||'House')+'</span><small>'+esc(viaLabel(st.via))+'</small></a>'
     ).join('')+'</div></div>';
     document.body.appendChild(ribbon);
+
+    // Keep the journey ribbon clear of the universal fixed access layer.
+    // Measure the actual wrapper so mobile wrapping and local institution shortcuts
+    // are handled without a brittle hard-coded offset.
+    const access=document.querySelector('.site-access');
+    const syncFixedClearance=()=>{
+      if(!access){ribbon.style.removeProperty('bottom');return}
+      const rect=access.getBoundingClientRect();
+      const viewportBottomGap=Math.max(0,window.innerHeight-rect.bottom);
+      ribbon.style.bottom=Math.ceil(viewportBottomGap+rect.height+8)+'px';
+    };
+    syncFixedClearance();
+    if(access&&typeof ResizeObserver!=='undefined'){
+      const observer=new ResizeObserver(syncFixedClearance);
+      observer.observe(access);
+    }
+    window.addEventListener('resize',syncFixedClearance,{passive:true});
+
     const historyButton=ribbon.querySelector('[data-journey-history]'),popover=ribbon.querySelector('[data-journey-popover]');
     historyButton?.addEventListener('click',()=>{const open=popover.hidden;popover.hidden=!open;historyButton.setAttribute('aria-expanded',String(open));});
     document.addEventListener('keydown',e=>{if(e.key==='Escape'&&popover&&!popover.hidden){popover.hidden=true;historyButton?.setAttribute('aria-expanded','false')}});
