@@ -76,6 +76,18 @@
       '<div data-site-access-content></div>'+
     '</section>';
   document.body.appendChild(wrapper);
+  const publishClearance=()=>{
+    const rect=wrapper.getBoundingClientRect();
+    const bottomGap=Math.max(0,window.innerHeight-rect.bottom);
+    document.documentElement.style.setProperty('--site-access-clearance',Math.ceil(bottomGap+rect.height)+'px');
+  };
+  publishClearance();
+  if(typeof ResizeObserver!=='undefined'){
+    const accessObserver=new ResizeObserver(publishClearance);
+    accessObserver.observe(wrapper);
+  }
+  window.addEventListener('resize',publishClearance,{passive:true});
+
   const panel=wrapper.querySelector('[data-site-access-panel]');
   const input=wrapper.querySelector('.site-access-search input');
   const content=wrapper.querySelector('[data-site-access-content]');
