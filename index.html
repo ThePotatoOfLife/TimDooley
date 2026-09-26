@@ -178,38 +178,8 @@
 
 
 
-<section class="home-section" id="learn-the-structure" aria-labelledby="learn-title">
-<div class="home-section-head"><div><p class="eyebrow">Learn the structure</p><h2 id="learn-title">First learn what kind of thing each element is</h2></div><p>The House becomes easier when the symbols stop competing for the same job. Whole, coordinate, plane, terrain, regime, organism, threshold, process, route and inhabitant are different categories. The vertical picture does not make them one hierarchy.</p></div>
-<div class="teaching-shell">
-<nav class="teaching-nav" id="homeTeachingNav" aria-label="Structure lessons">
-<button class="teaching-tab" type="button" data-teach="whole" aria-pressed="true"><b>1 · Whole</b><span>What contains the relation?</span></button>
-<button class="teaching-tab" type="button" data-teach="coordinates" aria-pressed="false"><b>2 · Coordinates</b><span>Axis, Plane and Cross orient.</span></button>
-<button class="teaching-tab" type="button" data-teach="planes" aria-pressed="false"><b>3 · Three planes</b><span>Where is the reader standing?</span></button>
-<button class="teaching-tab" type="button" data-teach="terrain-regime" aria-pressed="false"><b>4 · Terrain & regime</b><span>What conditions shape passage?</span></button>
-<button class="teaching-tab" type="button" data-teach="living-systems" aria-pressed="false"><b>5 · Living systems</b><span>What roots, branches and reproduces?</span></button>
-<button class="teaching-tab" type="button" data-teach="operators" aria-pressed="false"><b>6 · Operators</b><span>What actually changes state?</span></button>
-<button class="teaching-tab" type="button" data-teach="inhabitants" aria-pressed="false"><b>7 · Inhabitants</b><span>What real thing is being studied?</span></button>
-</nav>
-<div>
-<div class="teaching-panel" id="homeTeachingPanel"><h3>The Potato of Life is the whole</h3><p>It coordinates the project without becoming every symbol, fact or Room inside it.</p><p class="teaching-question">What contains the relation without erasing its parts?</p></div>
-<div class="axis-lesson" aria-labelledby="axis-lesson-title">
-<div class="axis-stack" aria-hidden="true"><div class="axis-plane"><span>Heaven</span></div><div class="axis-plane"><span>World</span></div><div class="axis-plane"><span>Below</span></div></div>
-<div class="axis-explain">
-<article><b id="axis-lesson-title">Axis is orientation</b><span>The Axis is the global centerline through changing states. It is not the Tree, Ladder, Mountain, a place or a truth ranking.</span></article>
-<article><b>Planes are viewpoints</b><span>Heaven emphasizes integration and return; World emphasizes evidence and consequence; Below emphasizes roots, provenance, hidden/restricted context and repair entry.</span></article>
-<article><b>Movement is conditional</b><span>Downward can be rooting or fruitful return; upward can be growth or merely status imagery. Direction alone does not decide Life or Strife.</span></article>
-<p class="axis-rule">The test is always what the movement does to memory, agency, correction, growth, dependency and observable return.</p>
-<div class="axis-route-links"><a href="axis/">Open the Living Axis →</a><a href="rooms/">See the three-plane Room view →</a><a href="house/">Open full House architecture →</a></div>
-<div class="axis-levels">
-<h4>Eleven transformation regimes</h4>
-<p>D1–D11 are not eleven literal floors and they are not identical with the three reader planes. They describe changing relational conditions along the Axis.</p>
-<div class="axis-level-tabs" id="axisLevelTabs" aria-label="Axis transformation regimes"></div>
-<div class="axis-level-panel" id="axisLevelPanel"><b>D4 · Earth / World Map</b><span>Observable anchor: locate, measure, exchange and source what is happening in the inhabited world.</span><small>Risk: allowing symbolic polarity to masquerade as empirical geography.</small></div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<section class="home-section" id="structure-handoff" aria-labelledby="structure-handoff-title">
+<div class="home-section-head"><div><p class="eyebrow">Structure when you need it</p><h2 id="structure-handoff-title">Home does not need to teach the whole House</h2></div><p>The homepage only needs enough structure to keep the material legible. <a href="house/">House</a> owns topology, <a href="rooms/">Rooms</a> owns subject placement, and <a href="axis/">Living Axis</a> owns movement and transition. Go there when the architecture becomes the question.</p></div>
 </section>
 
 <section class="home-section" aria-labelledby="doors-title">
@@ -274,50 +244,14 @@
         return null;
       }
     };
-    const [synth,rooms,cases,below,layers,concepts,axisFlow,routeMatrix,foundationLandscape,foundationRooms]=await Promise.all([
-      loadJson('data/house/project-synthesis.json'),
+    const [rooms,cases,below,routeMatrix,foundationLandscape,foundationRooms]=await Promise.all([
       loadJson('data/house/subrooms.json'),
       loadJson('data/house/entity-dossiers-wave-001.json'),
       loadJson('data/house/lower-plane-population-atlas.json'),
-      loadJson('data/house/layer-terrain-regime-atlas.json'),
-      loadJson('data/house/concept-topology.json'),
-      loadJson('data/axis-flow-contract.json'),
       loadJson('data/house/route-case-matrix-wave-001.json'),
       loadJson('data/house/foundation-landscape-synthesis.json'),
       loadJson('data/house/foundation-room-atlas.json')
     ]);
-    const teaching=synth?.homepage_projection?.teaching_sequence||[];
-    const layerBy=Object.fromEntries((layers?.nodes||[]).map(x=>[x.id,x]));
-    const conceptBy=Object.fromEntries((concepts?.concepts||[]).map(x=>[x.id,x]));
-    const teachNav=document.getElementById('homeTeachingNav'),teachPanel=document.getElementById('homeTeachingPanel');
-    const renderTeach=(id)=>{
-      const t=teaching.find(x=>x.id===id)||teaching[0];if(!t||!teachPanel)return;
-      if(teachNav)teachNav.querySelectorAll('[data-teach]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.teach===t.id)));
-      const nodes=[...(t.node_ids||[]).map(x=>layerBy[x]).filter(Boolean),...(t.concept_ids||[]).map(x=>conceptBy[x]).filter(Boolean)];
-      const nodeHtml=nodes.map(n=>{
-        const kind=n.category||n.kind||'element',def=n.definition||((n.topology_roles||[]).join(' · '));
-        const distinction=(n.not_equal_to||[]).slice(0,3);
-        return '<article class="teaching-node"><b>'+esc(n.label||n.id)+'</b><em>'+esc(kind)+'</em><span>'+esc(def||'')+'</span>'+(distinction.length?'<small>Not the same as: '+esc(distinction.join(' · '))+'</small>':'')+'</article>';
-      }).join('');
-      teachPanel.innerHTML='<h3>'+esc(t.label||t.id)+'</h3><p>'+esc(t.lesson||'')+'</p><p class="teaching-question">'+esc(t.question||'')+'</p>'+(nodeHtml?'<div class="teaching-nodes">'+nodeHtml+'</div>':'<div class="teaching-nodes"><article class="teaching-node"><b>Real inhabitants</b><em>inhabitant / subject</em><span>People, institutions, texts, organisms, traditions and events keep their own factual identity and evidence class.</span><small>The House grammar asks questions about them; it does not rename them into symbols.</small></article></div>')+'<a class="teaching-link" href="'+esc(t.route||'house/')+'">Go deeper →</a>';
-    };
-    if(teachNav&&teaching.length){
-      teachNav.addEventListener('click',e=>{const b=e.target.closest('[data-teach]');if(b)renderTeach(b.dataset.teach)});
-      renderTeach('whole');
-    }else if(teachNav){teachNav.hidden=true}
-    const axisTabs=document.getElementById('axisLevelTabs'),axisPanel=document.getElementById('axisLevelPanel');
-    if(axisTabs&&axisPanel){
-      const dims=axisFlow?.dimensions||{};
-      const ids=Object.keys(dims).sort((a,b)=>Number(a)-Number(b));
-      if(!ids.length){axisTabs.hidden=true}else axisTabs.innerHTML=ids.map(id=>'<button class="axis-level-tab" type="button" data-axis-level="'+esc(id)+'" aria-pressed="'+String(id==='4')+'">D'+esc(id)+'</button>').join('');
-      const renderAxisLevel=(id)=>{
-        const d=dims[id];if(!d)return;
-        axisTabs.querySelectorAll('[data-axis-level]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.axisLevel===String(id))));
-        axisPanel.innerHTML='<b>D'+esc(id)+' · '+esc(d.label||'')+'</b><span><strong>Flow:</strong> '+esc(d.flow_behavior||'')+'</span><span><strong>Out:</strong> '+esc((d.outflow||[]).join(' · '))+'</span><small><strong>Risk:</strong> '+esc(d.risk||'')+'</small>';
-      };
-      axisTabs.addEventListener('click',e=>{const b=e.target.closest('[data-axis-level]');if(b)renderAxisLevel(b.dataset.axisLevel)});
-      renderAxisLevel('4');
-    }
     const routeTabs=document.getElementById('homeRouteTabs'),routePanel=document.getElementById('homeRoutePanel'),routeCases=document.getElementById('homeRouteCases'),routeCasePanel=document.getElementById('homeRouteCasePanel');
     const contrasts=routeMatrix?.mechanism_contrasts||[],routeCaseRows=routeMatrix?.cases||[];
     const renderContrast=(id)=>{
