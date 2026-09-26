@@ -838,6 +838,25 @@ def validate_project_synthesis(errors):
     axis_spiral=load(ROOT/'knowledge/cosmology/axis-spiral-root.json',errors)
     if axis_spiral and axis_spiral.get('archive_role')!='specialist_atlas':
         errors.append('axis-spiral-root must remain a specialist atlas, not a competing master')
+    family_manifest=load(ROOT/'data/house/operator-family-manifest.json',errors)
+    ownership_registry=load(ROOT/'data/house/operator-ownership-registry.json',errors)
+    cross_family=(family_manifest.get('families',{}).get('cross',{}) if family_manifest else {})
+    false_cross='knowledge/science/research-notes/2026-09-11-cross-theory-research-program.json'
+    for key,value in cross_family.items():
+        if key=='name_collisions':
+            continue
+        if isinstance(value,list) and false_cross in value:
+            errors.append('cross-theory science methodology must not be classified as Cross operator material')
+    collisions={x.get('path') for x in cross_family.get('name_collisions',[]) if isinstance(x,dict)}
+    if false_cross not in collisions:
+        errors.append('Cross family must preserve cross-theory lexical collision guard')
+    cross_sign=None
+    for family in ownership_registry.get('families',[]) if ownership_registry else []:
+        for op in family.get('operators',[]) if isinstance(family,dict) else []:
+            if isinstance(op,dict) and op.get('id')=='cross-sign':
+                cross_sign=op
+    if cross_sign and false_cross in cross_sign.get('specialist_owners',[]):
+        errors.append('cross-sign ownership must not absorb cross-theory science methodology')
     p0=data.get('depth_program',{}).get('active_p0',[])
     required_p0=['door-liminality','spirit-relation','culture-formation-control','axis-local-centers','fruit-consequence','tree-branching']
     if p0!=required_p0: errors.append('project synthesis P0 depth programme drifted')
