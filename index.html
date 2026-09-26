@@ -125,7 +125,7 @@
 </div>
 <div class="route-case-select" id="homeRouteCases" aria-label="Concrete route cases"></div>
 <div class="route-case-panel" id="homeRouteCasePanel"><b>Project homepage governance repair</b><span>The repository itself is used as a test case: duplicated structure was surfaced, a canonical spine was chosen, validators were updated and Home was reconnected to canonical registries.</span><small>A real route claim requires evidence of changed recurrence, not merely new vocabulary.</small></div>
-<p class="evidence-note">The route matrix requires a starting state, operator, transition condition, evidence, falsifier and World-level return measure. <a href="data/house/route-case-matrix-wave-001.json">Open the route case matrix →</a></p>
+<p class="evidence-note">The route matrix requires a starting state, operator, transition condition, evidence, falsifier and World-level return measure. <a href="data/house/route-case-matrix.json">Open the route case matrix →</a></p>
 </section>
 
 <section class="home-section" id="foundation-landscape" aria-labelledby="foundation-landscape-title">
@@ -246,9 +246,9 @@
     };
     const [rooms,cases,below,routeMatrix,foundationLandscape,foundationRooms]=await Promise.all([
       loadJson('data/house/subrooms.json'),
-      loadJson('data/house/entity-dossiers-wave-001.json'),
+      loadJson('data/house/entity-dossiers.json'),
       loadJson('data/house/lower-plane-population-atlas.json'),
-      loadJson('data/house/route-case-matrix-wave-001.json'),
+      loadJson('data/house/route-case-matrix.json'),
       loadJson('data/house/foundation-landscape-synthesis.json'),
       loadJson('data/house/foundation-room-atlas.json')
     ]);
