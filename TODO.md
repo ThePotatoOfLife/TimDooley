@@ -846,3 +846,72 @@ The governing editorial rule is:
 - [ ] Add mobile tests for all branch maps; collapse years and branches gracefully rather than horizontally scrolling giant genealogies.
 - [ ] Audit Religion after each new guide so only the broad family remains visible at the top level.
 - [ ] Add Hindu/Jain/Sikh/Zoroastrian/Bahá'i public treatment next based on evidence maturity, but use each tradition's appropriate structure rather than one universal tree.
+
+
+### Remaining tradition depth after first public guides
+
+- [x] Materialize Hindu traditions without forcing a single-founder or denomination model.
+- [x] Materialize Jain traditions with sacred Tirthankara chronology separated from the historical Mahavira clock and gradual sectarian differentiation.
+- [x] Materialize Sikh history around Guru succession, scripture, Khalsa and community institutions.
+- [x] Materialize Zoroastrianism with wide Zarathustra dating uncertainty and separate composition/canon/manuscript clocks.
+- [x] Materialize Bahá'í history around the unusually precise Bábí/Bahá'í modern event sequence.
+- [x] Wire all five from Religion and Foundation Timeline without making them top-level House navigation.
+
+#### Hindu traditions next depth
+
+- [ ] Add text-family map: Vedas, Brāhmaṇas, Upanishads, Mahabharata/Bhagavad Gita, Ramayana, Purāṇas, Āgamas and Tantras as different corpora and periods.
+- [ ] Deepen Vaishnava sampradayas: Sri Vaishnava, Madhva, Gaudiya, Ramanandi and other major lineages only after source validation.
+- [ ] Deepen Shaiva systems: Shaiva Siddhanta, Kashmir Shaivism, Pashupata and major temple/monastic traditions.
+- [ ] Deepen Shakta/Tantric traditions without equating Tantra with sexuality or one esoteric school.
+- [ ] Add Vedanta school comparison: Advaita, Vishishtadvaita, Dvaita and later schools, with ontology/soteriology differences stated plainly.
+- [ ] Add temple / pilgrimage / domestic pūjā / festival / guru / āśrama / matha institutional map.
+- [ ] Add bhakti poet-saint and vernacular traditions regionally rather than as one pan-Indian movement.
+- [ ] Add karma/dharma/samsara/moksha vocabulary page that shows how meanings differ across Hindu, Buddhist and Jain contexts.
+
+#### Jain traditions next depth
+
+- [ ] Add Tirthankara structure and distinguish sacred cyclic chronology from historical reconstruction.
+- [ ] Add Śvetāmbara canon history and Digambara canonical-loss/replacement traditions with primary-source provenance.
+- [ ] Add Sthānakavāsī and Terāpanth histories with verified dates.
+- [ ] Add monastic vs lay vows, ahiṃsā, aparigraha, anekāntavāda and karma ontology as lived/doctrinal structures.
+- [ ] Add temple/image traditions, pilgrimage geography and non-image reform currents.
+- [ ] Add Jain cosmology as its own non-creator universe model; useful for comparison precisely because it resists creator-centered framing.
+
+#### Sikh tradition next depth
+
+- [ ] Add ten-Guru timeline with each Guru's major institutional/textual contribution rather than one compressed list.
+- [ ] Add Guru Granth Sahib textual history: Adi Granth 1604, later recension/final form, rāga organization and 1,430-ang structure.
+- [ ] Add Khalsa 1699 in more depth: initiation, five Ks, discipline and the distinction between Khalsa identity and the whole Sikh population.
+- [ ] Add Harmandir Sahib, Akal Takht, gurdwara, sangat, pangat/langar and seva as institutional/lived structures.
+- [ ] Add Miri/Piri and post-Guru political/community developments without reducing Sikhism to militancy.
+- [ ] Add modern Sikh groups only with careful classification and community-sensitive sourcing.
+- [ ] Connect Sikh scripture reader from the religious text library into the public page.
+
+#### Zoroastrianism next depth
+
+- [ ] Add Gathas vs Younger Avesta vs Pahlavi/Middle Persian literature as separate textual clocks.
+- [ ] Add Achaemenid evidence carefully: distinguish broader Iranian religion, royal inscriptions and specifically Zoroastrian attribution.
+- [ ] Add Sasanian priesthood/canonization and post-conquest transmission.
+- [ ] Add Parsi migration/history and modern Iranian Zoroastrian communities.
+- [ ] Add ritual structure: fire temples, yasna, navjote/sedra-kusti, purity traditions and funerary practices with contemporary variation.
+- [ ] Add theology vocabulary: Ahura Mazda, Amesha Spentas, asha/druj, Angra Mainyu, judgment and frashokereti without flattening the system into “good god vs evil god.”
+- [ ] Add influence-comparison page only with evidence: Jewish/Christian/Islamic eschatological parallels should be presented as historical scholarly debates, not assumed borrowing.
+
+#### Bahá'í next depth
+
+- [ ] Add Bábí predecessor history in its own section: Shaykhi context, Báb, early community, persecution and succession field.
+- [ ] Add Bahá’u’lláh exile chronology: Tehran → Baghdad → Constantinople/Istanbul → Adrianople/Edirne → Acre.
+- [ ] Add writings map: Kitáb-i-Íqán, Hidden Words, Kitáb-i-Aqdas and major tablets with dates/contexts.
+- [ ] Add covenant/administration sequence: Bahá’u’lláh → ‘Abdu’l-Bahá → Shoghi Effendi → Hands/interregnum → Universal House of Justice.
+- [ ] Add Local/National Spiritual Assembly and Universal House of Justice governance distinctions.
+- [ ] Add worship/fast/calendar/pilgrimage and community-practice layer.
+- [ ] Keep official Bahá'í sources clearly labeled as tradition-internal sources and pair contested historical claims with independent scholarship where necessary.
+
+#### Still missing major tradition surfaces
+
+- [ ] Confucian traditions: classical texts, Han institutionalization, Neo-Confucian schools, ritual/education/state traditions; do not force religion/philosophy binary.
+- [ ] Shinto: kami cults, shrine networks, Kojiki/Nihon Shoki, medieval shinbutsu-shūgō, Meiji separation/State Shinto and postwar shrine religion.
+- [ ] Chinese popular/religious traditions: ancestor rites, local gods, temples, spirit mediums and interactions with Daoism/Buddhism/Confucianism.
+- [ ] Yoruba/Ifá and major African traditional religious systems using lineage/orisha/divination/community models rather than scriptural-denomination templates.
+- [ ] Indigenous traditions should be handled regionally and community-specifically; do not create one generic “Indigenous religion” page.
+- [ ] Ancient Egyptian, Mesopotamian, Greek/Roman and broader Germanic religion should receive period/cult/text/region maps rather than modern denomination maps.
