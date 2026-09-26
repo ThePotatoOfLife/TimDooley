@@ -26,7 +26,7 @@
     mount.classList.add('body-lens');
     mount.innerHTML='<p class="eyebrow">Body lens</p><h2>Same object, different layer</h2><p class="boundary">These cards do not create duplicate truth. They project the same governed object through anatomy, project symbolism, history/tradition and systems views.</p><div class="body-lens-grid">'+rows.map(x=>{
       const p=x.projections||{};const summary=p.anatomy||p.tradition||p.project||p.systems||'Cross-layer project object.';const fc=x.formal_correspondence||{};const status=(fc.correspondence_maturity&&fc.epistemic_status)?'<div class="body-lens-formal"><b>'+esc(fc.correspondence_maturity)+' · '+esc(fc.epistemic_status)+'</b><span>'+esc(fc.map||'typed comparator')+'</span></div>':'';
-      return '<article class="body-lens-card"><strong>'+esc(x.label)+'</strong><div class="body-lens-tags">'+(x.lens_tags||[]).map(t=>'<span>'+esc(t)+'</span>').join('')+'</div><p>'+esc(summary)+'</p>'+status+'<a href="'+esc(x.body_route||'/life-body/')+'">Open exact Body view →</a></article>';
+      return '<article class="body-lens-card"><strong>'+esc(x.label)+'</strong><div class="body-lens-tags">'+(x.lens_tags||[]).map(t=>'<span>'+esc(t)+'</span>').join('')+'</div><p>'+esc(summary)+'</p>'+status+'<a href="'+esc(projectUrl(x.body_route||'/life-body/'))+'">Open exact Body view →</a></article>';
     }).join('')+'</div>';
   }).catch(()=>{});
 })();
