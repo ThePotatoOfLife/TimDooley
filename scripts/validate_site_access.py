@@ -22,6 +22,7 @@ contract_text=read(ROOT/"data/house/site-access.json")
 journey_text=read(ROOT/"data/house/access-journeys.json")
 journey_ui=read(ROOT/"app/house-journey.js")
 journey_css=read(ROOT/"app/house-journey.css")
+patcher=read(ROOT/"scripts/patch_public_navigation.py")
 try:
     contract=json.loads(contract_text) if contract_text else {}
 except json.JSONDecodeError as exc:
@@ -128,6 +129,10 @@ for token in ("house-journey.css?v=20260926c","data-house-journey-style"):
         errors.append(f"House journey stylesheet loader missing: {token}")
 if "style.textContent" in journey_ui or "createElement('style')" in journey_ui:
     errors.append("House journey runtime must not inject component CSS")
+if '"house-journey.js": "20260926d"' not in patcher:
+    errors.append("shared asset registry does not version the House journey runtime")
+if '"body-relational-lens.js": "20260926b"' not in patcher:
+    errors.append("shared asset registry does not version the Body relational lens runtime")
 
 for token in ("--site-access-clearance", "viewportHeight-clearance-44"):
     if token not in tts_drawer:
