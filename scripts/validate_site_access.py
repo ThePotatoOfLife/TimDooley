@@ -126,8 +126,14 @@ for token in ("--site-access-clearance", "viewportHeight-clearance-44"):
     if token not in tts_drawer:
         errors.append(f"TTS selection control does not honor fixed access clearance: {token}")
 
-if "bottom:calc(var(--site-access-clearance,0px) + 12px)" not in journey_ui:
-    errors.append("House journey ribbon does not honor fixed access clearance")
+for token in (
+    "bottom:calc(var(--site-access-clearance,0px) + 8px)",
+    "width:min(520px,calc(100vw - 118px))",
+    "const shown=trail.slice(-2)",
+    "house-journey-ribbon-actions a{display:none}",
+):
+    if token not in journey_ui:
+        errors.append(f"House journey compact-lane contract missing: {token}")
 
 if "@media(max-width:680px)" not in css or ".site-access-panel{bottom:52px;width:calc(100vw - 12px)" not in css:
     errors.append("site-access narrow-screen panel contract missing")
