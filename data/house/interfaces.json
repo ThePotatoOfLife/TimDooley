@@ -1,6 +1,6 @@
 {
   "version": "1.3.0",
-  "updated": "2026-09-20",
+  "updated": "2026-09-26",
   "authority": "house-interface-governance",
   "subroom_registry": "data/house/subrooms.json",
   "principle": "Adjacency becomes architecturally meaningful when the passage states what is translated, what must remain invariant, what guard applies, and whether the crossing can be reversed or reviewed.",
@@ -615,6 +615,148 @@
       "guard": "Scientific structure remains descriptive; symbolic interpretation is an additional lens, not the scientific conclusion.",
       "reversible": "yes",
       "public_use": "science / life-body / house"
+    },
+    {
+      "id": "if-math-physics",
+      "from": "math-geometry",
+      "to": "physics-cosmology",
+      "type": "empirical-promotion",
+      "changes": "An exact or project-defined mathematical structure becomes a physical hypothesis only after variables are mapped to measurable quantities, units, mechanisms and observables.",
+      "preserves": [
+        "formal definitions",
+        "equations",
+        "assumptions",
+        "uncertainty"
+      ],
+      "guard": "Mathematical consistency does not establish that nature instantiates the model; empirical evidence and discriminating tests are required.",
+      "reversible": "yes",
+      "public_use": "science / formal models",
+      "formal_contract": {
+        "morphism_type": "empirical-promotion",
+        "preserved_invariants": [
+          "formal structure",
+          "declared parameterization",
+          "uncertainty"
+        ],
+        "lost_or_not_preserved": [
+          "symbolic meaning not operationalized",
+          "untested physical interpretation"
+        ],
+        "epistemic_transition": "E1/E3 -> E3/E4 only with measurement and testing",
+        "correspondence_target": "C2/C3 when a measurable mapping is explicit"
+      }
+    },
+    {
+      "id": "if-identities-genealogy",
+      "from": "canon-identities",
+      "to": "developmental-genealogy",
+      "type": "historical-decomposition",
+      "changes": "A current identity or role is decomposed into earlier attestations, precursor functions, transitions and historical variants.",
+      "preserves": [
+        "current role definition",
+        "source identity",
+        "date precision",
+        "contradictions"
+      ],
+      "guard": "Current canon must not be backdated into periods where the wording or role had not yet appeared.",
+      "reversible": "yes, with historical variants retained",
+      "public_use": "canon / history"
+    },
+    {
+      "id": "if-subculture-provenance",
+      "from": "subculture-group-formation",
+      "to": "provenance-evidence",
+      "type": "claim-audit",
+      "changes": "A group narrative, role claim or repeated community assertion is converted into a source question about who said what, when, with what independence and what corroboration.",
+      "preserves": [
+        "speaker/source identity",
+        "date",
+        "claim wording",
+        "context"
+      ],
+      "guard": "Repetition inside one community does not become independent corroboration, and association does not establish motive or coordinated command.",
+      "reversible": "yes",
+      "public_use": "culture / evidence"
+    },
+    {
+      "id": "if-information-provenance",
+      "from": "information-ecology",
+      "to": "provenance-evidence",
+      "type": "source-resolution",
+      "changes": "A circulating information object is traced from repetition and transmission back toward origin, capture, transformations, missing context and source authority.",
+      "preserves": [
+        "artifact identity",
+        "publication/capture time",
+        "transmission path",
+        "uncertainty"
+      ],
+      "guard": "Visibility, virality or repetition does not increase source authority by itself.",
+      "reversible": "yes",
+      "public_use": "culture / archive"
+    },
+    {
+      "id": "if-culture-cia",
+      "from": "subculture-group-formation",
+      "to": "canon-identities",
+      "type": "role-to-identity-boundary",
+      "changes": "A scene-bounded cultural role or repeated interaction is checked against the canonical identity layer before it is allowed to become a durable person/character classification.",
+      "preserves": [
+        "scene",
+        "date",
+        "role wording",
+        "source"
+      ],
+      "guard": "Behavioral or symbolic roles must not silently become permanent identity, essence, diagnosis or legal status.",
+      "reversible": "yes",
+      "public_use": "culture / CIA / beings"
+    },
+    {
+      "id": "if-prediction-witness",
+      "from": "prediction-revelation-time",
+      "to": "witness-attestation",
+      "type": "prior-wording-check",
+      "changes": "A claimed prediction or revelation is reduced to the earliest recoverable wording, timestamp, claim type and source before outcome comparison.",
+      "preserves": [
+        "exact wording",
+        "timestamp",
+        "source class",
+        "uncertainty"
+      ],
+      "guard": "Later interpretation cannot be promoted into a prior prediction unless the earlier wording already supports the claimed specificity.",
+      "reversible": "yes",
+      "public_use": "time / prophecy / evidence"
+    },
+    {
+      "id": "if-visual-symbolic",
+      "from": "visual-art",
+      "to": "symbolic-architecture",
+      "type": "composition-to-operator",
+      "changes": "A visual composition is translated into explicit spatial relations such as above/below, center/edge, containment, threshold, axis, root or overlap.",
+      "preserves": [
+        "artifact identity",
+        "composition date",
+        "visual relation",
+        "uncertainty"
+      ],
+      "guard": "Visual proximity or hierarchy does not automatically establish theological, historical, scientific or moral identity.",
+      "reversible": "yes",
+      "public_use": "works / symbolic architecture"
+    },
+    {
+      "id": "if-music-genealogy",
+      "from": "music-sound",
+      "to": "developmental-genealogy",
+      "type": "creative-attestation",
+      "changes": "A song title, lyric motif, style choice or release becomes dated evidence of creative motif use inside a developmental period.",
+      "preserves": [
+        "song identity",
+        "date where known",
+        "creative provenance",
+        "motif"
+      ],
+      "guard": "Creative language may exaggerate, compress or fictionalize; it must not be treated as doctrinal or biographical fact without independent support.",
+      "reversible": "yes",
+      "public_use": "works / history"
     }
   ],
   "formal_grammar_ref": "data/project-formal-grammar.json",
