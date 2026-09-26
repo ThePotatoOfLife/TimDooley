@@ -81,6 +81,14 @@ def main():
     journey=(ROOT/"app/house-journey.js").read_text(encoding="utf-8")
     if "installRoomKnowledge" not in journey or "data/house/holdings.json" not in journey:
         fail("nested Room runtime does not expose live holdings/current routes")
+    body_lens=(ROOT/"app/body-relational-lens.js").read_text(encoding="utf-8")
+    body_lens_css=ROOT/"app/body-relational-lens.css"
+    if "body-relational-lens.css?v=20260926a" not in body_lens or "data-body-lens-style" not in body_lens:
+        fail("Body relational lens does not load its shared stylesheet")
+    if "createElement('style')" in body_lens or "style.textContent" in body_lens:
+        fail("Body relational lens must not inject component CSS")
+    if not body_lens_css.exists():
+        fail("Body relational lens stylesheet missing")
     if "const jsonCache=new Map()" not in journey or "function getJson(path)" not in journey:
         fail("House journey runtime does not reuse shared JSON requests")
 
