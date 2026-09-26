@@ -94,10 +94,20 @@ def main() -> int:
             "@media (prefers-reduced-motion: reduce)",
             "--site-elevator-clearance",
             ".site-elevator-room.is-active",
+            "flex-wrap:wrap",
+            "overflow:visible",
+            '.site-elevator-up::before{content:"△"}',
+            '.site-elevator-down::before{content:"▽"}',
+            "background:transparent",
         )
         for token in css_tokens:
             if token not in css:
                 errors.append(f"site elevator CSS missing required marker: {token}")
+
+        if "overflow-x:auto" in css:
+            errors.append("site elevator Room rail must wrap instead of horizontally scrolling")
+        if "scrollbar-width" in css or "scrollbar-color" in css:
+            errors.append("site elevator Room rail must not expose scrollbar styling")
 
     if len(active_rooms) != 10:
         errors.append(f"expected exactly 10 active governed Rooms, got {len(active_rooms)}")
@@ -133,6 +143,9 @@ def main() -> int:
             errors.append(f"{room_id}: unsupported projections {bad}")
         if primary and primary not in projections:
             errors.append(f"{room_id}: primary_level {primary!r} must also appear in projections")
+        expected_homepage = f"/rooms/{room_id}/"
+        if row.get("homepage") != expected_homepage:
+            errors.append(f"{room_id}: homepage must be {expected_homepage!r}, got {row.get('homepage')!r}")
         notes = row.get("projection_notes")
         if not isinstance(notes, dict):
             errors.append(f"{room_id}: projection_notes must map every declared floor to a short explanation")
