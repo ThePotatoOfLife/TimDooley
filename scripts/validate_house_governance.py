@@ -872,18 +872,20 @@ def validate_project_synthesis(errors):
     required_p0=['door-liminality','spirit-relation','culture-formation-control','axis-local-centers','fruit-consequence','tree-branching']
     if p0!=required_p0: errors.append('project synthesis P0 depth programme drifted')
     hp=data.get('homepage_projection',{})
-    teaching=[x.get('id') for x in hp.get('teaching_sequence',[]) if isinstance(x,dict)]
+    structural=data.get('structural_teaching',{})
+    teaching=[x.get('id') for x in structural.get('sequence',[]) if isinstance(x,dict)]
     expected_teaching=['whole','coordinates','planes','terrain-regime','living-systems','operators','inhabitants']
-    if teaching!=expected_teaching: errors.append('homepage teaching sequence drifted')
-    axis_teaching=hp.get('axis_teaching',{})
+    if teaching!=expected_teaching: errors.append('structural teaching sequence drifted')
+    axis_teaching=structural.get('axis_teaching',{})
     if axis_teaching.get('invariant')!='Axis is the global orientation line, not the Tree, Ladder, Mountain or a truth hierarchy.':
-        errors.append('homepage Axis teaching invariant drifted')
+        errors.append('structural Axis teaching invariant drifted')
     movement=axis_teaching.get('movement_rule','')
     if 'Up/down direction alone does not determine value' not in movement:
-        errors.append('homepage Axis movement rule must preserve non-moral direction')
-    runtime=set(hp.get('runtime_sources',[]))
-    for path in ('data/house/layer-terrain-regime-atlas.json','data/house/concept-topology.json','data/axis-flow-contract.json'):
-        if path not in runtime: errors.append(f'homepage projection missing teaching runtime source: {path}')
+        errors.append('structural Axis movement rule must preserve non-moral direction')
+    if 'learn-the-structure' in hp.get('hierarchy',[]):
+        errors.append('homepage must not host the retired full structural teaching layer')
+    if not any(x.get('id')=='structure-handoff' for x in hp.get('sections',[]) if isinstance(x,dict)):
+        errors.append('homepage projection missing compact structure handoff')
 
 
 def validate_root_architecture_docs(errors):
