@@ -1,7 +1,7 @@
 {
   "id": "religious-foundation-lineages",
   "version": "1.1.0",
-  "updated": "2026-09-20",
+  "updated": "2026-09-26",
   "status": "canonical historical genealogy + timeline/map projection contract",
   "purpose": "Represent major religious traditions as dated, branching historical lineages. Nodes can be trunks, schisms, reforms, schools, mystical currents or institutional crystallizations. The structure is designed for timeline, spiral and map projection without pretending every tradition has one exact birthday.",
   "epistemic_rule": "Traditional/sacred origin claims, historical reconstruction, institutional dates and project visualization coordinates remain distinct. A genealogy edge describes historical relation, not theological truth, superiority, legitimacy or identity.",
@@ -1578,7 +1578,8 @@
           },
           "parent_ids": [
             "protestant-reformation",
-            "methodist-traditions"
+            "methodist-traditions",
+            "holiness-movement"
           ],
           "relation_to_parent": "develops_from",
           "sources": [
@@ -1643,6 +1644,326 @@
           "sources": [],
           "notes": "Cross-denominational movement rather than a single church; later evangelical identities diversify substantially.",
           "event_anchors": []
+        },
+        {
+          "id": "presbyterian-traditions",
+          "name": "Presbyterian traditions",
+          "node_type": "denomination",
+          "seed_clock": {
+            "year_start": 1560,
+            "year_end": 1647,
+            "date_or_range": "1560 Scots Confession → 1647 Westminster Confession",
+            "precision": "range",
+            "status": "documented+confessional-formation"
+          },
+          "origin": {
+            "place": "Scotland → wider Reformed world",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "reformed-tradition"
+          ],
+          "relation_to_parent": "institutionalizes_from",
+          "sources": [
+            "pcusa_reformed_history"
+          ],
+          "notes": "A Reformed family especially associated with presbyterial governance; not all Reformed churches are Presbyterian.",
+          "event_anchors": [
+            {
+              "event_id": "chr-presbyterian-scots-confession",
+              "name": "Scots Confession and Reformed Kirk consolidation",
+              "date": "1560 CE",
+              "year_start": 1560,
+              "year_end": 1560,
+              "event_kind": "confessional_consolidation",
+              "merge_priority": "secondary",
+              "creates_or_crystallizes_child_ids": [
+                "presbyterian-traditions"
+              ],
+              "place": "Scotland",
+              "source_id": "pcusa_reformed_history"
+            }
+          ],
+          "branch_anchor": {
+            "event_id": "chr-presbyterian-scots-confession",
+            "date": "1560 CE",
+            "year_start": 1560,
+            "event_kind": "confessional_consolidation",
+            "note": "A strong Scottish Presbyterian marker, not the birth of Reformed Christianity as a whole."
+          }
+        },
+        {
+          "id": "baptist-traditions",
+          "name": "Baptist traditions",
+          "node_type": "denomination",
+          "seed_clock": {
+            "year_start": 1609,
+            "year_end": 1644,
+            "date_or_range": "1609 Amsterdam congregation → 17th-century English Baptist differentiation",
+            "precision": "range",
+            "status": "documented+long-formation"
+          },
+          "origin": {
+            "place": "Amsterdam / England",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "english-separatist-field",
+            "protestant-reformation"
+          ],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "baptist_1609"
+          ],
+          "notes": "Modern Baptist histories commonly use the 1609 Amsterdam congregation as a seed marker; General and Particular Baptist streams develop separately. Do not derive Baptists directly from continental Anabaptists as a simple one-line genealogy.",
+          "event_anchors": [
+            {
+              "event_id": "chr-baptist-amsterdam",
+              "name": "First Baptist congregation forms in Amsterdam",
+              "date": "1609 CE",
+              "year_start": 1609,
+              "year_end": 1609,
+              "event_kind": "reform_seed",
+              "merge_priority": "major",
+              "creates_or_crystallizes_child_ids": [
+                "baptist-traditions"
+              ],
+              "place": "Amsterdam",
+              "source_id": "baptist_1609"
+            }
+          ],
+          "branch_anchor": {
+            "event_id": "chr-baptist-amsterdam",
+            "date": "1609 CE",
+            "year_start": 1609,
+            "event_kind": "reform_seed",
+            "note": "High-information Baptist seed marker; later Baptist streams diversify."
+          }
+        },
+        {
+          "id": "quaker-friends",
+          "name": "Religious Society of Friends / Quaker traditions",
+          "node_type": "reform_movement",
+          "seed_clock": {
+            "year_start": 1647,
+            "year_end": 1652,
+            "date_or_range": "1647 Fox ministry → 1652 major movement expansion",
+            "precision": "range",
+            "status": "documented+formation"
+          },
+          "origin": {
+            "place": "England",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "english-dissent-field"
+          ],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "quaker_history"
+          ],
+          "notes": "Friends emerge in the 17th-century English dissenting/Seeker field with strong emphasis on immediate divine guidance, equality and distinctive worship. Later branches differ substantially.",
+          "event_anchors": [
+            {
+              "event_id": "chr-quaker-emergence",
+              "name": "Quaker/Friends movement takes recognizable form",
+              "date": "c. 1647–1652 CE",
+              "year_start": 1647,
+              "year_end": 1652,
+              "event_kind": "reform_movement",
+              "merge_priority": "secondary",
+              "creates_or_crystallizes_child_ids": [
+                "quaker-friends"
+              ],
+              "place": "England",
+              "source_id": "quaker_history"
+            }
+          ],
+          "branch_anchor": {
+            "event_id": "chr-quaker-emergence",
+            "date": "c. 1647–1652 CE",
+            "year_start": 1647,
+            "event_kind": "reform_movement",
+            "note": "Movement-formation window, not one exact institutional birthday."
+          }
+        },
+        {
+          "id": "holiness-movement",
+          "name": "Wesleyan-Holiness movement",
+          "node_type": "reform_movement",
+          "seed_clock": {
+            "year_start": 1830,
+            "year_end": 1900,
+            "date_or_range": "19th-century Wesleyan-Holiness expansion",
+            "precision": "range",
+            "status": "broad-formation"
+          },
+          "origin": {
+            "place": "Britain / United States",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "methodist-traditions"
+          ],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "nazarene_history"
+          ],
+          "notes": "Transdenominational holiness current emphasizing sanctification/perfect love in Wesleyan trajectories; later feeds Nazarene and some Pentecostal histories.",
+          "event_anchors": [
+            {
+              "event_id": "chr-holiness-movement",
+              "name": "Wesleyan-Holiness movement expands across denominations",
+              "date": "19th century",
+              "year_start": 1830,
+              "year_end": 1900,
+              "event_kind": "reform_movement",
+              "merge_priority": "secondary",
+              "creates_or_crystallizes_child_ids": [
+                "holiness-movement"
+              ],
+              "place": "Britain and North America",
+              "source_id": "nazarene_history"
+            }
+          ]
+        },
+        {
+          "id": "church-of-nazarene",
+          "name": "Church of the Nazarene",
+          "node_type": "denomination",
+          "seed_clock": {
+            "year_start": 1908,
+            "year_end": 1915,
+            "date_or_range": "1908 union marker; additional mergers through 1915",
+            "precision": "range",
+            "status": "documented-markers"
+          },
+          "origin": {
+            "place": "United States",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "holiness-movement"
+          ],
+          "relation_to_parent": "institutionalizes_from",
+          "sources": [
+            "nazarene_history"
+          ],
+          "notes": "A Wesleyan-Holiness denomination formed through union of several holiness bodies; 1908 is the official anniversary marker.",
+          "event_anchors": [
+            {
+              "event_id": "chr-nazarene-1908",
+              "name": "Church of the Nazarene union",
+              "date": "1908 CE",
+              "year_start": 1908,
+              "year_end": 1908,
+              "event_kind": "institutionalization",
+              "merge_priority": "secondary",
+              "creates_or_crystallizes_child_ids": [
+                "church-of-nazarene"
+              ],
+              "place": "United States",
+              "source_id": "nazarene_history"
+            }
+          ],
+          "branch_anchor": {
+            "event_id": "chr-nazarene-1908",
+            "date": "1908 CE",
+            "year_start": 1908,
+            "event_kind": "institutionalization",
+            "note": "Official union marker."
+          }
+        },
+        {
+          "id": "restoration-stone-campbell",
+          "name": "Stone-Campbell / Restoration Movement",
+          "node_type": "reform_movement",
+          "seed_clock": {
+            "year_start": 1801,
+            "year_end": 1832,
+            "date_or_range": "early 19th-century restoration movements → 1831/32 union",
+            "precision": "range",
+            "status": "documented+formation"
+          },
+          "origin": {
+            "place": "United States",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "protestant-reformation"
+          ],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "disciples_history"
+          ],
+          "notes": "A restorationist/primitivist movement seeking New Testament church patterns; later trajectories include Disciples of Christ, Churches of Christ and Christian Churches/Churches of Christ.",
+          "event_anchors": [
+            {
+              "event_id": "chr-restoration-union",
+              "name": "Stone and Campbell movements unite",
+              "date": "31 Dec 1831–1 Jan 1832",
+              "year_start": 1831,
+              "year_end": 1832,
+              "event_kind": "reform_movement",
+              "merge_priority": "secondary",
+              "creates_or_crystallizes_child_ids": [
+                "restoration-stone-campbell"
+              ],
+              "place": "United States",
+              "source_id": "disciples_history"
+            }
+          ],
+          "branch_anchor": {
+            "event_id": "chr-restoration-union",
+            "date": "1831–1832",
+            "year_start": 1831,
+            "event_kind": "reform_movement",
+            "note": "High-information union marker within a broader restoration field."
+          }
+        },
+        {
+          "id": "english-separatist-field",
+          "name": "English Separatist / Independent field",
+          "node_type": "phase",
+          "seed_clock": {
+            "year_start": 1550,
+            "year_end": 1620,
+            "date_or_range": "late 16th–early 17th centuries",
+            "precision": "range",
+            "status": "broad-formation"
+          },
+          "origin": {
+            "place": "England / Dutch exile communities",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "protestant-reformation"
+          ],
+          "relation_to_parent": "develops_from",
+          "sources": [],
+          "notes": "Context node for English congregational/separatist currents; not a denomination."
+        },
+        {
+          "id": "english-dissent-field",
+          "name": "English dissenting / Seeker field",
+          "node_type": "phase",
+          "seed_clock": {
+            "year_start": 1600,
+            "year_end": 1660,
+            "date_or_range": "17th-century English religious ferment",
+            "precision": "range",
+            "status": "broad-formation"
+          },
+          "origin": {
+            "place": "England",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "protestant-reformation"
+          ],
+          "relation_to_parent": "develops_from",
+          "sources": [],
+          "notes": "Context node for radical Protestant, Seeker and dissenting currents; not one church."
         }
       ],
       "integrity": [
@@ -3472,7 +3793,12 @@
     "bahai_history": "https://news.bahai.org/media-information/brief-history",
     "bahai_ridvan": "https://www.bahai.org/documents/bic-opi/bahaullah-his-life-and-work",
     "iranica_zoroaster": "https://www.iranicaonline.org/articles/zoroastrianism-i-historical-review/",
-    "pew_global_2020": "https://www.pewresearch.org/religion/2025/06/09/how-the-global-religious-landscape-changed-from-2010-to-2020/"
+    "pew_global_2020": "https://www.pewresearch.org/religion/2025/06/09/how-the-global-religious-landscape-changed-from-2010-to-2020/",
+    "baptist_1609": "https://baptistworld.org/bwa-resolutions/400th-anniversary-of-the-formation-of-the-first-baptist-congregation/",
+    "pcusa_reformed_history": "https://pcusa.org/historical-society/exhibits/foundations-faith",
+    "quaker_history": "https://quaker.org/quaker-history-introduction/",
+    "disciples_history": "https://disciples.org/our-identity/history-of-the-disciples/",
+    "nazarene_history": "https://nazarene.org/historical-statement/"
   },
   "cross_family_connections": [
     {
