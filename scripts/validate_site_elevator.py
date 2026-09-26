@@ -144,6 +144,13 @@ def main() -> int:
             errors.append(f"{match}: route context level_id must be one of {EXPECTED_LEVELS}, got {level_id!r}")
         if room_id is not None and room_id not in active_rooms:
             errors.append(f"{match}: route context references unknown Room {room_id!r}")
+        if room_id is not None and room_id in dwelling_by_id and level_id in allowed:
+            projections = dwelling_by_id[room_id].get("projections") or []
+            if level_id not in projections:
+                errors.append(
+                    f"{match}: route context Room projection mismatch; "
+                    f"{room_id!r} does not project to {level_id!r}"
+                )
 
     active_surfaces = [
         row for row in public_surfaces.get("surfaces", [])
