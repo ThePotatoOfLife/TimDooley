@@ -181,3 +181,12 @@ The old circular nested-Room design still survived in `app/room-interior.css` af
 The projection rule is now **subject first, architecture second**: on canonical Dwellings the first `.dwelling-reader` section is rendered before the three-floor projection. If no authored reader exists, the projection falls back after the page header rather than prepending itself. This also removes the obsolete local-center lookup from the runtime.
 
 Generated record pages were brought under the same rule: structured record content is visible first; key/search terms follow; raw source paths, record kind and branch metadata are embedded as `data-generated-knowledge-meta` instead of displayed as a final “Canonical source record” filename section. Topic/context collection pages remain collection views because their promised object is navigation across related records.
+
+
+## Optional archive depth
+
+The shared nested-Room runtime still appended a governance-heavy block after authored content. Its placement was acceptable, but its visible language still centered the filing system: “The Room behind the doorway,” “What actually belongs here,” “Open the actual material,” and raw repository file paths inside holding cards.
+
+That layer is now explicitly secondary. It renders as **Archive depth → Show archive structure**, collapsed by default. The subject reader stays above it. Inside the disclosure, the headings are reader-facing: **Scope & boundaries**, **Further archive material**, **Cross-domain interfaces**, **Inputs & handoffs**, **Open work**, and **Related reader routes**. Raw record paths remain available as quiet `data-source-path` metadata for tooling but are no longer printed as visible prose.
+
+This preserves the useful House machinery without making the reader pay an architectural tax for every subject.
