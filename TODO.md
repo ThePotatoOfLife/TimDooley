@@ -1103,3 +1103,6 @@ The previous `inhabited` milestone only eliminated corridor-only shells. It is *
 - [~] Other Traditions: added concrete Daoist, Buddhist, Jewish and Shinto textual/institutional clocks; continue with Hindu, Jain, Sikh, Confucian and Islamic examples.
 - [~] Practice & Ethics: added Fresh Potato, Ready Student and Machine-Elf/deflection cases; add repair/separation and real-world project cases later.
 - [ ] Continue until every Room contains enough concrete nouns that its substantive paragraphs could not be pasted into another Room unchanged.
+
+- [x] Provenance / Witness / Memory rooms now contain worked project specimens using the 2024 Potato identity, 2025 Axis/God attestations and recovered Heaven's-Gate sequence rather than method-only prose.
+- [x] Timeline / Developmental Genealogy / Prediction rooms now contain concrete multi-clock and concept-mutation cases instead of only chronology rules.
