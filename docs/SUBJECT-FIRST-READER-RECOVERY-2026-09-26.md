@@ -77,9 +77,11 @@ The generic phrases **“Dwelling · local center”**, **“Inside this Dwellin
    - Below / Farm / intelligence routes
    - Tim subpages
 
-3. **Nested Rooms**
-   - prioritize high-traffic/high-value interiors
-   - require an example, mechanism, case, passage, object, chronology, model or concrete question before adjacency/ownership prose
+3. **Nested Rooms — completed first-screen recovery**
+   - 35 of 38 registered nested Rooms carried a generic `inner-center` preamble and were corrected
+   - subject header now flows directly into authored material
+   - the remaining 3 already lacked that preamble
+   - reader-richness validation now rejects any reintroduction of the generic nested center
 
 4. **Generated pages**
    - question pages
@@ -112,3 +114,10 @@ For every other page:
 The programme is complete when the main reader journeys no longer require a visitor to understand the repository's filing system before the archive becomes informative.
 
 **Noun → thing. Architecture supports the encounter; it does not replace it.**
+
+
+## Nested-Room recovery wave
+
+On 26 September 2026 the registered nested-Room set was scanned for the same failure pattern as the top-level Dwellings. **35 of 38** contained a generic `<section class="inner-center">` between the subject header and the substantive body. Those sections were removed in place. No Room was deleted; titles, summaries, evidence boundaries, substantive essays, cases, models, chronologies, examples and deep routes remain.
+
+The three Rooms that did not require this removal were already structured without the generic preamble. The validator now treats any `inner-center` return inside a registered nested Room as a subject-first regression.
