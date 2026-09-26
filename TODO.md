@@ -119,6 +119,26 @@ Priority order: **P0 release breakage → P1 structural drift/duplication → P2
 
 ### P1 — structural debt now demonstrated
 
+### P1 — SUBJECT-FIRST READER RECOVERY · noun → thing, not noun → filing system
+
+**Priority rule:** when a reader clicks a named subject, the first screen must deliver that subject. House ownership, routing, boundaries and metadata are supporting machinery and belong after substantive orientation, not before it.
+
+- [x] **SUBJECT-001 · Canonical Dwellings:** remove the generic “Dwelling · local center” / circular-center splash from all 10 top-level Dwellings and make their first authored section substantive.
+- [x] **SUBJECT-002 · Direct subject routes:** put concrete reader/action links inside the first substantive section of each canonical Dwelling rather than behind “Open primary public surface.”
+- [x] **SUBJECT-003 · Reader-facing summaries:** replace ownership-first “Own X…” summaries on the 10 canonical Dwellings with descriptions of what the reader will actually encounter.
+- [ ] **SUBJECT-004 · Public noun audit:** audit Home, House, Rooms, A–Z, Find, Elevator, Paths and every visible public-surface label. For each noun, record whether it reaches (a) substance directly, (b) a useful explorer, or (c) a meta-page. Eliminate category (c) where a stronger canonical reader exists.
+- [ ] **SUBJECT-005 · Specialist hub audit:** review History, World Systems, Culture, North, Politics, Research Lab, Context/Sources, Collection, Works and other specialist hubs for “page-about-the-page” behavior. Merge or demote explanatory shells when the public noun has a stronger substantive owner.
+- [ ] **SUBJECT-006 · Nested Room first-screen pass:** keep Room governance available, but ensure high-value nested Rooms start with an example, mechanism, case, passage, object, chronology, model or concrete question before adjacency/ownership prose.
+- [ ] **SUBJECT-007 · Route-label honesty:** labels such as Timeline, History, Works, Science, Religion, World, Culture, Sources, People/Cases and Research must resolve to the thing implied by the label; architectural-owner pages must identify themselves as House/Room views.
+- [ ] **SUBJECT-008 · Navigation compression:** remove redundant “open X” links where the current page is only a wrapper around X; prefer canonical destination links from parent navigation instead of another intermediate screen.
+- [ ] **SUBJECT-009 · Concrete-content floor:** extend reader-richness checks so important subject pages contain an authored example/mechanism/case/data/story section, not merely enough prose characters.
+- [ ] **SUBJECT-010 · Full route crawl:** run a source + built-site route crawl and manually sample the main reader journeys: Home → noun, Find → noun, Rooms → noun, A–Z → noun, and deep-page → related noun. Record and repair every unnecessary meta-hop.
+- [ ] **SUBJECT-011 · Generated surfaces:** audit generated question/topic/context/record pages so generation does not recreate generic taxonomic shells around rich underlying records.
+- [ ] **SUBJECT-012 · Final simplification:** after direct routes are stable, prune obsolete meta-only prose, duplicate local-center CSS, retired helper labels and documentation that still instructs authors to create routing shells.
+
+**Acceptance test:** ask of every prominent link: **“If I click this noun, do I immediately get the thing?”** If not, either route directly to the canonical substance or make the current page itself substantive enough to deserve the noun.
+
+
 ### World Map quality programme — critic audit 2026-09-20
 
 Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution ledger: `docs/WORLD-MAP-PROBLEM-LEDGER.md`.
