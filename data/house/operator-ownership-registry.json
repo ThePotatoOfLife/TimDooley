@@ -1,8 +1,8 @@
 {
   "id": "operator-ownership-registry",
   "title": "Operator Ownership Registry — One Definition, Many Views",
-  "version": "1.1.0",
-  "updated": "2026-09-20",
+  "version": "1.2.0",
+  "updated": "2026-09-27",
   "status": "canonical routing and consolidation registry",
   "purpose": "Consolidate the repository's recurring Potato operators by assigning one durable definition/contract owner, then routing specialist atlases, research comparisons, archaeology/provenance and public views underneath that owner. Prevent filename proliferation from becoming ontology proliferation.",
   "research_principles": [
@@ -195,14 +195,18 @@
           "id": "cross-sign",
           "canonical_definition_owner": "data/house/plane-crossing-contract.json",
           "canonical_contract_owner": "data/house/concept-topology.json",
-          "specialist_owners": [
-            "knowledge/science/research-notes/2026-09-11-cross-theory-research-program.json"
-          ],
+          "specialist_owners": [],
           "public_views": [
             "potato-of-life/index.html",
             "axis/index.html"
           ],
-          "merge_rule": "Cross-sign is visual/relational projection of Axis plus lateral line in Plane; historical Christian Cross meanings remain tradition-owned."
+          "merge_rule": "Cross-sign is visual/relational projection of Axis plus lateral line in Plane; historical Christian Cross meanings remain tradition-owned.",
+          "excluded_name_collisions": [
+            {
+              "path": "knowledge/science/research-notes/2026-09-11-cross-theory-research-program.json",
+              "reason": "'Cross-theory' means cross-domain scientific methodology, not the Cross-sign operator."
+            }
+          ]
         },
         {
           "id": "crossing-event",
