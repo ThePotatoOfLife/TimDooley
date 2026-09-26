@@ -261,7 +261,7 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [ ] **READ-007 · Card-density audit:** identify pages using card grids mainly as navigation compensation; convert low-information cards into inline prose/links where that improves reading flow.
 - [ ] **READ-008 · Discovery-mode separation:** validate that Explore, A–Z, Questions and Paths retain visibly distinct jobs and do not converge into four near-identical indexes.
 - [x] **READ-009 · Mobile link-wall check:** the architecture audit now emits a mobile pre-content stack score combining first-nav links, buttons and extra navigation rows before the first substantive H2; major reader first-nav budgets are also enforced in the built-site access validator.
-- [~] **READ-010 · TTS semantic sectioning:** generated topic/context/record readers now expose explicit speech sections and exclude their utility navigation; generated question readers still need the same semantic audit before closure.
+- [x] **READ-010 · TTS semantic sectioning:** generated topic/context/record readers and generated discovery/question pages now mark substantive sections explicitly for TTS and exclude utility navigation; TTS/discovery validators guard the generator contract.
 
 #### P2 — data / evidence integration
 - [ ] **DATA-001 · Security institution object parity:** compare CIA/FBI/Mossad/PET/FE/MI5/MI6/NSA/DIA/Europol/INTERPOL datasets against House inhabitants; promote only institutions that need first-class project interaction, leave the rest as indexed data.
