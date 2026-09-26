@@ -42,7 +42,7 @@
     if(subroomMatch){
       const subrooms=(subroomContract&&Array.isArray(subroomContract.subrooms)?subroomContract.subrooms:[])
         .filter(row=>row&&row.status==='active'&&row.id&&row.parent_room_id);
-      const subroom=subrooms.find(row=>row.id===subroomMatch[1]);
+      const subroom=subrooms.find(row=>row.id===subroomMatch[1]||row.route_id===subroomMatch[1]);
       if(subroom&&roomById[subroom.parent_room_id]&&dwellingById[subroom.parent_room_id]){
         const roomId=subroom.parent_room_id;
         const dwelling=dwellingById[roomId];
