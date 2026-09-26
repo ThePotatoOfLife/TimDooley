@@ -189,8 +189,8 @@ def main() -> int:
         require(systems, ("WORLD", "SYSTEMS", 'href="../world/"', 'href="../world-map/"', 'href="../politics/"', 'href="../north/"'), "world-systems/index.html", errors)
 
         north = read("north/index.html", errors)
-        require(north, ('href="../world/"', 'href="../world-map/"', 'href="../politics/"', 'href="./"', 'href="../world-systems/"'), "north/index.html", errors)
-        forbid(north, ("<title>North Axis — World Map</title>", 'class="maplink"', "Open North Axis in the World Map"), "north/index.html", errors)
+        require(north, ('href="../world/"', 'href="../axis/"', 'href="../world-map/"', 'href="../world-systems/"'), "north/index.html", errors)
+        forbid(north, ('href="./" aria-current="page"', "<title>North Axis — World Map</title>", 'class="maplink"', "Open North Axis in the World Map"), "north/index.html", errors)
 
         shadow = read("shadow-farm/index.html", errors)
         require(

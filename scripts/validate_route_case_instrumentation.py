@@ -73,7 +73,7 @@ def main():
         'id="route-comparison"',
         'id="homeRouteTabs"',
         'id="homeRouteCases"',
-        "fetch('data/house/route-case-matrix-wave-001.json')",
+        "loadJson('data/house/route-case-matrix-wave-001.json')",
         'Same root, different route',
         'A route is a testable change in what the relation reproduces',
     ):

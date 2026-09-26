@@ -107,7 +107,7 @@ def main():
         errors.append('project synthesis Foundation Room population drifted')
 
     home=HOME.read_text(encoding='utf-8',errors='replace')
-    for marker in ('id="foundation-rooms"',"fetch('data/house/foundation-room-atlas.json')",'Door · Place · House · Today','Foundation Rooms'):
+    for marker in ('id="foundation-rooms"',"loadJson('data/house/foundation-room-atlas.json')",'Door · Place · House · Today','Foundation Rooms'):
         if marker not in home: errors.append(f'Home missing Foundation Room marker: {marker}')
 
     timeline=TIMELINE.read_text(encoding='utf-8',errors='replace')
