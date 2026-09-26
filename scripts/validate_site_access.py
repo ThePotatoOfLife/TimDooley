@@ -134,7 +134,7 @@ for token in ("--site-access-clearance", "viewportHeight-clearance-44"):
         errors.append(f"TTS selection control does not honor fixed access clearance: {token}")
 
 for token in (
-    "bottom:calc(var(--site-access-clearance,0px) + 8px)",
+    "bottom:calc(var(--site-access-clearance,0px) + var(--site-floating-gap,8px))",
     "width:min(520px,calc(100vw - 118px))",
     "const shown=trail.slice(-2)",
     "house-journey-ribbon-actions a{display:none}",
