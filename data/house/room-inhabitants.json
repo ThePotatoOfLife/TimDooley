@@ -1,5 +1,5 @@
 {
-  "version": "2.2.0",
+  "version": "2.3.0",
   "updated": "2026-09-26",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
@@ -3186,6 +3186,180 @@
       "status_note": "Creative archaeology; original story/image still needs primary recovery.",
       "evidence_note": "Memory-recovery target explicitly marked unresolved.",
       "maturity": "seeded"
+    },
+    {
+      "id": "memory-archaeology-wave-005",
+      "label": "Conversation Archaeology Wave 005",
+      "kind": "recovery-wave",
+      "room_ids": [
+        "memory-recovery",
+        "developmental-genealogy"
+      ],
+      "route": "/knowledge/timeline/conversation-archaeology-wave-005.json",
+      "summary": "Recovered earlier conversation strata including older symbolic and theological formulations, preserved with provenance rather than silently rewritten into current canon.",
+      "status_note": "Conversation archaeology is recovery evidence, not automatically verbatim Tim-authored publication.",
+      "evidence_note": "Canonical recovery wave with provenance boundaries.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "memory-high-value-undated-queue",
+      "label": "High-Value Undated Recovery Queue",
+      "kind": "recovery-queue",
+      "room_ids": [
+        "memory-recovery",
+        "witness-attestation"
+      ],
+      "route": "/knowledge/timeline/high-value-undated-timeline-recovery-queue.json",
+      "summary": "Tracks important remembered formulations that still lack a sufficiently precise original date or source artifact.",
+      "status_note": "Items remain unresolved until stronger source/time evidence is recovered.",
+      "evidence_note": "Explicit uncertainty queue.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "memory-primary-recovery-wave-10",
+      "label": "Primary Recovery Wave 10 Ledger",
+      "kind": "recovery-ledger",
+      "room_ids": [
+        "memory-recovery",
+        "provenance-evidence"
+      ],
+      "route": "/knowledge/timeline/primary-recovery-wave-10-ledger.json",
+      "summary": "Primary-source recovery work promoted into a dated ledger so rediscovered wording can be distinguished from later summaries.",
+      "status_note": "Recovery status and source class remain part of each record.",
+      "evidence_note": "Primary recovery ledger.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "memory-missed-clue-audit",
+      "label": "Missed Clue Audit — Wave 015",
+      "kind": "recovery-audit",
+      "room_ids": [
+        "memory-recovery",
+        "open-questions"
+      ],
+      "route": "/knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json",
+      "summary": "Audits earlier material for overlooked connections while preserving the danger of hindsight and retrospective overfitting.",
+      "status_note": "A later-recognized connection is not a prior prediction merely because it now looks meaningful.",
+      "evidence_note": "Conversation archaeology audit.",
+      "maturity": "described"
+    },
+    {
+      "id": "tradition-tao-useful-emptiness",
+      "label": "Door / Window / Useful Emptiness — Daoist atlas",
+      "kind": "tradition-atlas",
+      "room_ids": [
+        "other-traditions",
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "route": "/knowledge/traditions/door-window-negative-space-tao-atlas.json",
+      "summary": "Uses Daoist discussions of hub, vessel and room opening to sharpen the project distinction between boundary and usable emptiness.",
+      "status_note": "Functional comparison only; Daoist wu is not reduced to a Potatoverse engineering variable.",
+      "evidence_note": "Source-led comparative tradition atlas.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "tradition-fate-thread",
+      "label": "Norns / Moirai / Fate Thread atlas",
+      "kind": "tradition-atlas",
+      "room_ids": [
+        "other-traditions",
+        "comparative-mythology"
+      ],
+      "route": "/knowledge/traditions/fate-thread-norns-moirai-comparative-atlas.json",
+      "summary": "Compares Norse fate, Greek allotment/thread, biblical cords and Timic leash/path imagery while preserving operator differences.",
+      "status_note": "Shared line/thread imagery does not establish one common doctrine or transmission path.",
+      "evidence_note": "Comparative traditions atlas.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "tradition-cosmography-exemplars",
+      "label": "Selected Cosmography Structural Exemplars",
+      "kind": "tradition-atlas",
+      "room_ids": [
+        "other-traditions",
+        "comparative-mythology"
+      ],
+      "route": "/knowledge/traditions/selected-cosmography-structural-exemplars.json",
+      "summary": "Yggdrasil, Duat, Mount Meru and Bardo used as distinct structural exemplars for ecology, staged descent, world-order and transitional state.",
+      "status_note": "Each tradition remains distinct; comparison is structural rather than identity-based.",
+      "evidence_note": "Source-led comparative selection.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "tradition-expanded-cosmography",
+      "label": "Expanded Comparative Cosmography Atlas",
+      "kind": "tradition-atlas",
+      "room_ids": [
+        "other-traditions",
+        "comparative-mythology",
+        "symbolic-architecture"
+      ],
+      "route": "/knowledge/traditions/comparative-placement-cosmography-expanded-atlas.json",
+      "summary": "Broader placement-oriented comparison across world-axis, mountain, tree, underworld and threshold cosmographies.",
+      "status_note": "Placement similarity does not prove genealogy or hidden universality.",
+      "evidence_note": "Comparative synthesis with source boundaries.",
+      "maturity": "described"
+    },
+    {
+      "id": "research-foundation-synthesis",
+      "label": "Foundation Cross-Domain Synthesis",
+      "kind": "research-programme",
+      "room_ids": [
+        "research-programmes",
+        "house-architecture",
+        "systems-dynamics"
+      ],
+      "route": "/knowledge/research/foundation-cross-domain-synthesis.json",
+      "summary": "Cross-domain investigation of beginnings, substrate, Seed, succession, reproduction and refoundation across project and external systems.",
+      "status_note": "Cross-domain analogies require owner-specific evidence before promotion.",
+      "evidence_note": "Canonical research synthesis.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "research-circle-field",
+      "label": "Circle / Field Research Synthesis",
+      "kind": "research-programme",
+      "room_ids": [
+        "research-programmes",
+        "math-geometry",
+        "symbolic-architecture"
+      ],
+      "route": "/knowledge/research/circle-field-research-synthesis-2026-09-20.json",
+      "summary": "Investigates circles, overlapping fields, centers, boundaries and project field language across geometry and systems contexts.",
+      "status_note": "Formal resemblance does not establish a physical field.",
+      "evidence_note": "Dated research synthesis.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "research-plane-crossing",
+      "label": "Plane-Crossing Research Synthesis",
+      "kind": "research-programme",
+      "room_ids": [
+        "research-programmes",
+        "house-architecture",
+        "systems-dynamics"
+      ],
+      "route": "/knowledge/research/plane-crossing-research-synthesis-2026-09-20.json",
+      "summary": "Tests what should count as a plane, projection and crossing event without multiplying duplicate worlds.",
+      "status_note": "Project planes are architectural/formal constructs unless separately tied to measurable physical variables.",
+      "evidence_note": "Dated research synthesis.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "research-public-trust",
+      "label": "Public Trust Infrastructure Synthesis",
+      "kind": "research-programme",
+      "room_ids": [
+        "research-programmes",
+        "politics-governance",
+        "infrastructure-capability"
+      ],
+      "route": "/knowledge/research/public-trust-infrastructure-synthesis.json",
+      "summary": "Examines how capability, transparency, correction, institutions and infrastructure interact in public trust systems.",
+      "status_note": "Institutional performance claims require dated jurisdiction-specific evidence.",
+      "evidence_note": "Cross-domain research synthesis.",
+      "maturity": "described"
     }
   ],
   "source_records": [
