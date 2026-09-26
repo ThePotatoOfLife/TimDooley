@@ -167,6 +167,16 @@ if OUT.exists():
         "science/index.html":2,
         "world/index.html":2,
         "north/index.html":2,
+        "axis/index.html":3,
+        "elevator/index.html":4,
+        "paths/index.html":3,
+        "politics/index.html":3,
+        "tim-dooley/story/index.html":4,
+        "timeline/index.html":2,
+        "religion/trinity/index.html":3,
+        "works/index.html":3,
+        "world-systems/index.html":4,
+        "timeline/foundations/index.html":2,
     }
     for rel,budget in first_nav_budgets.items():
         page=read(OUT/rel)
