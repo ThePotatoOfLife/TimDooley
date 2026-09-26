@@ -1058,7 +1058,7 @@ The archive now needs to remember **what makes an entity itself** across pages w
 - [x] Project compact identity facets onto Potatoes, Angels, Matthew and Turbles without new navigation.
 - [~] Extend the facet ledger to the remaining Great Book cast: Grumbleton, Elder Grapes, Kibly/Kibbly, machine elves/goblins, Evil Mashed Potatoes and Hash-brown Gods are now retained; continue the rest of the recurring literary cast.
 - [~] Extend ordinary/documentary facets from CIA enhancements into real-person dossiers: first real-participant wave now includes Marty, Sammy, BigTech, Metalorian, Capy, TXT, Matthew/MTClassic and Mediomu007 with creative/project layers kept separate.
-- [ ] Add **first seen / last seen / first title / first gift / first role-change** clocks where the source record supports them.
+- [~] Add **first seen / last seen / first title / first gift / first role-change** clocks: derived first-seen/title/gift/role clocks now exist from ledger evidence; last-seen still needs dedicated source traversal.
 - [~] Add story-beat references to the facet ledger: primary/source pointers now exist for Fresh Potato, Ready Student, Sentinel of Silence, Elder Grapes, Machine Elves and satirical Potatoism figures; continue across remaining entities.
 - [ ] Add a compact “signature facets” projection to CIA dossiers only after it can distinguish ordinary capability, source-era title and creative enhancement.
 - [x] Add a facet validator: species traits require repeated/canonical evidence or explicit generalization; hypothesis/unresolved strengths are constrained and source pointers are checked in CI.
@@ -1074,3 +1074,5 @@ The archive now needs to remember **what makes an entity itself** across pages w
 - [x] Add review-only corpus-mining workflow that proposes facets from known aliases and structured sources but never auto-promotes canon.
 
 - [ ] Add source-specific real-person facet projection to selected public dossiers only after reviewing each page for sensitivity, duplication and local usefulness; ledger inclusion does not require public facet chips.
+
+- [x] Build entity clocks from the facet ledger without guessing missing dates; null clocks remain explicit recovery gaps.
