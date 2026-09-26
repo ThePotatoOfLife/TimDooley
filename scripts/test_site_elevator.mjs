@@ -172,6 +172,11 @@ assert.ok(css.includes('[data-elevator-level="heaven"]::before'),'Heaven needs a
 assert.ok(css.includes('[data-elevator-level="plane"]::before'),'Plane needs a distinct pixel-biome layer');
 assert.ok(css.includes('[data-elevator-level="below"]::before'),'Below needs a distinct pixel-biome layer');
 assert.ok(css.includes('border-radius:0'),'terminal Room tiles should not drift back into pill styling');
+assert.ok(css.includes('content:"HERE"'),'actual Room tile needs an explicit HERE terminal marker');
+assert.ok(css.includes('border-style:dashed'),'secondary projected Rooms must remain visually subordinate');
+assert.ok(css.includes('[data-elevator-level="plane"] .site-elevator-room'),'Plane Room tiles need block-earth material styling');
+assert.ok(css.includes('[data-elevator-level="heaven"] .site-elevator-room'),'Heaven Room tiles need sky material styling');
+assert.ok(css.includes('[data-elevator-level="below"] .site-elevator-room'),'Below Room tiles need underground material styling');
 assert.ok(css.includes('background:transparent'),'arrow controls must float without metallic button blocks');
 assert.ok(css.includes('align-self:start'),'elevator controls must stay pinned when Room grid wraps');
 assert.ok(css.includes('height:42px'),'desktop elevator controls need a fixed one-row height');
