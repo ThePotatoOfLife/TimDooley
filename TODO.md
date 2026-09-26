@@ -253,7 +253,7 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [x] **HOME-003 · Homepage CSS ownership:** the current homepage component rules now live in scoped `app/home-page.css`; `index.html` loads that asset directly and homepage validation rejects both a missing stylesheet and renewed `.home-*` inline-style drift.
 - [x] **HOME-004 · Repetition audit:** retired the duplicate generic “project in motion” lifecycle section, kept transition detail in Route/Foundation owners, narrowed Foundation Rooms to concrete instances, narrowed Materialized Now to registry counts, and added a machine-readable repetition contract plus validator guards.
 - [~] **HOME-005 · Runtime/data naming cleanup:** Home no longer loads the three Foundation wave files just to compute a count; `foundation-room-atlas.json` and `foundation-landscape-synthesis.json` now own the live Foundation projection. The two remaining wave-named runtime inputs (entity dossiers and route matrix) are explicitly declared as active legacy-named inputs with migration dispositions; repository-wide safe rename/promotion remains before full closure.
-- [ ] **HOME-006 · Retired structural-teaching CSS:** after the Home teaching instrument removal, audit `app/home-page.css` for now-orphaned `.teaching-*`, `.axis-lesson` and axis-level rules; remove only selectors no longer used by any surviving Home markup.
+- [x] **HOME-006 · Retired structural-teaching CSS:** removed the orphaned Home teaching shell/nav/panel/node and Axis lesson/level rules plus their responsive selectors. Retained the three small shared styles still used by Route/Foundation content: `.teaching-question`, `.teaching-link` and `.axis-rule`.
 
 
 ### Fresh repository sweep — 2026-09-20
