@@ -1,6 +1,5 @@
 /* Universal fast-access layer. Small fixed dock; expanded navigation stays out of document flow. */
-:root{--site-access-z:10050}
-.site-access{position:fixed;inset:auto 0 10px;z-index:var(--site-access-z);pointer-events:none;font-family:var(--site-font-sans,system-ui,sans-serif)}
+.site-access{position:fixed;inset:auto 0 10px;z-index:var(--site-z-access,10050);pointer-events:none;font-family:var(--site-font-sans,system-ui,sans-serif)}
 .site-access-dock{pointer-events:auto;width:max-content;max-width:calc(100vw - 16px);margin:auto;display:flex;align-items:center;gap:2px;padding:4px;border:1px solid var(--site-line,#30382f);border-radius:14px;background:rgba(9,12,9,.94);box-shadow:0 10px 34px rgba(0,0,0,.36);backdrop-filter:blur(14px)}
 .site-access-dock a,.site-access-dock button{appearance:none;border:0;background:transparent;color:var(--site-muted,#a4aba0);font:700 10px/1 var(--site-font-sans,system-ui,sans-serif);letter-spacing:.02em;text-decoration:none;padding:10px 12px;border-radius:10px;cursor:pointer;white-space:nowrap}
 .site-access-dock a:hover,.site-access-dock a:focus-visible,.site-access-dock button:hover,.site-access-dock button:focus-visible,.site-access-dock [aria-current="page"]{background:rgba(255,255,255,.055);color:var(--site-green,#b8dc82);outline:none}
