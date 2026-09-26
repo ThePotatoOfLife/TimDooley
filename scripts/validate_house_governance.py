@@ -886,6 +886,44 @@ def validate_project_synthesis(errors):
         if path not in runtime: errors.append(f'homepage projection missing teaching runtime source: {path}')
 
 
+def validate_root_architecture_docs(errors):
+    docs={
+        'README.md':[
+            'Explore is the retrieval umbrella',
+            'Reader families',
+            'data/house/project-synthesis.json',
+        ],
+        'docs/PROJECT-STRUCTURE.md':[
+            '### 5. Seven reader families',
+            'Explore / retrieval family',
+            'Sources / Context form a separate evidence family',
+        ],
+        'docs/PROJECT-OPERATING-MAP.md':[
+            '### Seven reader families',
+            'Explore owns retrieval modes',
+            'manifest.json remains the deep archive/pathway authority',
+        ],
+        'docs/MASTER-ARCHITECTURE.md':[
+            '## Current authority bridge',
+            '## Public reader families',
+            'Historical files named “master”, “framework”, “wave” or “synthesis”',
+        ],
+    }
+    for rel,markers in docs.items():
+        path=ROOT/rel
+        if not path.is_file():
+            errors.append(f'missing root architecture document: {rel}')
+            continue
+        text=path.read_text(encoding='utf-8',errors='replace')
+        for marker in markers:
+            if marker not in text:
+                errors.append(f'{rel} missing current architecture marker: {marker}')
+    project=(ROOT/'docs/PROJECT-STRUCTURE.md').read_text(encoding='utf-8',errors='replace')
+    retired_block='- **Questions** — natural-language retrieval;\n- **A–Z** — entity/concept lookup;\n- **Explore** — deep archive branches'
+    if retired_block in project:
+        errors.append('PROJECT-STRUCTURE still teaches Questions/A–Z/Explore as sibling discovery systems')
+
+
 def validate_swamp_and_transition_contracts(errors):
     swamp=load(SWAMP_REGIME,errors)
     if swamp:
