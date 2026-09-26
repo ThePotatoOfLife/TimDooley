@@ -141,3 +141,14 @@
 .room-archive-boundary{border-left:2px solid var(--site-line,#303830);padding-left:11px;margin-top:12px!important;font-size:9px!important}
 .room-archive-boundary strong{color:var(--site-gold,#d5ba74)}
 @media(max-width:720px){.room-archive-head{grid-template-columns:1fr;gap:8px}.room-archive-drawer-title{display:block}.room-archive-drawer-title>a{display:inline-block;margin-top:8px}}
+
+
+.house-deep-corpora{margin-top:10px}
+.house-corpus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:9px;margin-top:18px}
+.house-corpus-card{display:flex;min-height:185px;flex-direction:column;border:1px solid var(--site-line,#303830);padding:15px;text-decoration:none;color:inherit;background:rgba(255,255,255,.012)}
+.house-corpus-card:hover{border-color:#61745b;background:rgba(255,255,255,.025)}
+.house-corpus-card small{display:block;color:var(--site-green,#9eb58d);font-size:8px;text-transform:uppercase;letter-spacing:.08em}
+.house-corpus-card strong{display:block;color:var(--site-gold,#d5ba74);font:400 20px/1.15 var(--site-font-serif,serif);margin:7px 0 8px}
+.house-corpus-card span{display:block;color:var(--site-muted,#9ba59a);font-size:10px;line-height:1.5;flex:1}
+.house-corpus-card em{display:block;color:var(--site-faint,#778076);font-style:normal;font-size:7px;line-height:1.35;text-transform:uppercase;letter-spacing:.06em;margin-top:12px}
+@media(max-width:720px){.house-corpus-card{min-height:auto}}
