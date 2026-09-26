@@ -12,7 +12,7 @@
 </head>
 <body>
 <main class="page page--standard news-page" data-reader-surface="news" data-news-feed>
-<nav class="page-nav" aria-label="News navigation"><a href="../world/">← World</a><a href="../world-map/">World Map</a><a href="../timeline/">Timeline</a><a href="../context/source-authority/">Sources</a></nav>
+<nav class="page-nav" aria-label="News navigation"><a href="../world/">← World</a></nav>
 
 <header class="news-header news-header--simple">
 <div>
@@ -26,6 +26,11 @@
 <section class="news-primary-bar" aria-label="News reader actions">
 <div class="news-primary-status"><strong data-news-count>Loading news…</strong><span data-news-updated></span></div>
 <div id="news-tts" data-tts-longform data-tts-root="#news-reading-stream" data-tts-id="current-world-news-only" data-tts-label="Current World" data-tts-trigger-label="Read all news" data-tts-all-label="All news" data-tts-current-label="This story" data-tts-selection-label="Selection" data-tts-item=".news-story" data-tts-exclude=".news-story-kicker,.news-story-footer,.news-story-image,.news-story-expand,.news-empty"></div>
+</section>
+
+<section id="news-reading-stream" class="news-view is-active news-latest-view" data-news-view-panel="latest" aria-label="Latest coverage">
+<section class="news-lead" data-news-lead aria-label="Newest stories"></section>
+<section class="news-feed" data-news-list aria-label="More current stories"><div class="news-empty">Loading public feeds…</div></section>
 </section>
 
 <details class="news-filter-drawer">
@@ -76,11 +81,6 @@
 <div class="news-display-filters"><button type="button" class="news-readable-toggle" data-news-readable aria-pressed="false"><b>Readable here only</b><span>hide headline-only cards</span></button></div>
 </section>
 </details>
-
-<section id="news-reading-stream" class="news-view is-active news-latest-view" data-news-view-panel="latest" aria-label="Latest coverage">
-<section class="news-lead" data-news-lead aria-label="Newest stories"></section>
-<section class="news-feed" data-news-list aria-label="More current stories"><div class="news-empty">Loading public feeds…</div></section>
-</section>
 
 <details class="news-secondary-drawer">
 <summary><b>More views</b><span>briefing · repeated coverage · sources</span></summary>

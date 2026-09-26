@@ -143,8 +143,13 @@ if OUT.exists():
             if asset not in text:
                 errors.append(f"{rel} missing generated {asset}")
     world=read(OUT/"world/index.html")
+    news=read(OUT/"news/index.html")
     if 'href="../news/">Current World</a>' not in world:
         errors.append("World must expose Current World in first-screen local navigation")
+    nav_start=news.find('<nav class="page-nav" aria-label="News navigation">')
+    nav_end=news.find("</nav>",nav_start)
+    if nav_start>=0 and nav_end>=0 and news[nav_start:nav_end].count("<a ")!=1:
+        errors.append("Current World local navigation duplicates global dock destinations")
     home=read(OUT/"index.html")
     nav_start=home.find('<nav class="page-nav home-nav"')
     nav_end=home.find("</nav>",nav_start)
