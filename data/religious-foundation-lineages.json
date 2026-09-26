@@ -1,6 +1,6 @@
 {
   "id": "religious-foundation-lineages",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-26",
   "status": "canonical historical genealogy + timeline/map projection contract",
   "purpose": "Represent major religious traditions as dated, branching historical lineages. Nodes can be trunks, schisms, reforms, schools, mystical currents or institutional crystallizations. The structure is designed for timeline, spiral and map projection without pretending every tradition has one exact birthday.",
@@ -3036,6 +3036,104 @@
             "event_kind": "movement_emergence",
             "note": "High-information historical marker for visual branch attachment; not necessarily the complete origin of the lineage."
           }
+        },
+        {
+          "id": "chan-zen-traditions",
+          "name": "Chan / Zen traditions",
+          "node_type": "school",
+          "seed_clock": {
+            "year_start": 600,
+            "year_end": 800,
+            "date_or_range": "7th–8th centuries CE institutional formation in China",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "China → Korea, Japan, Vietnam and wider transmission",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "mahayana-buddhism"
+          ],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "oxford_chan",
+            "oxford_chinese_buddhism"
+          ],
+          "notes": "Chan institutional identity crystallizes in China through the 7th–8th centuries; later Zen, Seon and Thiền are regionally distinct transmission histories, not one unchanged school."
+        },
+        {
+          "id": "pure-land-traditions",
+          "name": "Pure Land traditions",
+          "node_type": "school",
+          "seed_clock": {
+            "year_start": 400,
+            "year_end": 1200,
+            "date_or_range": "Mahayana Pure Land practices/text networks develop in China; distinct Japanese schools crystallize especially 12th–13th centuries",
+            "precision": "long-range",
+            "status": "networked-formation"
+          },
+          "origin": {
+            "place": "India/China → East Asia",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "mahayana-buddhism"
+          ],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "oxford_pureland"
+          ],
+          "notes": "Pure Land is a trans-Asian family of practices and texts, not one coherent denomination; Japanese Jōdo/Jōdo Shin institutions are later specific formations."
+        },
+        {
+          "id": "tibetan-buddhism",
+          "name": "Tibetan Buddhist traditions",
+          "node_type": "transmission_family",
+          "seed_clock": {
+            "year_start": 600,
+            "year_end": 1200,
+            "date_or_range": "first transmission from 7th century; later transmission from 10th–12th centuries",
+            "precision": "range",
+            "status": "documented-historical-formation"
+          },
+          "origin": {
+            "place": "Tibetan Plateau",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "mahayana-buddhism",
+            "vajrayana-buddhism"
+          ],
+          "relation_to_parent": "transmission_and_local_formation",
+          "sources": [
+            "oxford_tibet_buddhism"
+          ],
+          "notes": "Tibetan Buddhism receives Indian Mahayana and Vajrayana transmissions over centuries; Nyingma and later Sakya/Kagyu/Gelug/Jonang histories should be carved separately."
+        },
+        {
+          "id": "east-asian-buddhist-field",
+          "name": "East Asian Buddhist transmission field",
+          "node_type": "phase",
+          "seed_clock": {
+            "year_start": 100,
+            "year_end": 900,
+            "date_or_range": "early centuries CE transmission into China → major Chinese schools from c. 6th century onward",
+            "precision": "range",
+            "status": "long-transmission"
+          },
+          "origin": {
+            "place": "Central Asia / China / Korea / Japan / Vietnam",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "mahayana-buddhism"
+          ],
+          "relation_to_parent": "transmission_and_local_formation",
+          "sources": [
+            "oxford_chinese_buddhism"
+          ],
+          "notes": "Context node for networked transmission; should not replace specific school histories."
         }
       ],
       "integrity": [
@@ -3763,6 +3861,167 @@
       "integrity": [
         "This section is intentionally incomplete; future waves should deepen Sikh sub-lineages, Baháʼí administrative clocks, Chinese traditions, Shinto, Yoruba/Ifa and indigenous traditions without forcing them into Abrahamic branching logic."
       ]
+    },
+    {
+      "id": "daoism-lineage",
+      "name": "Daoist textual and religious lineages",
+      "root_ids": [
+        "classical-daoist-textual-field",
+        "celestial-masters-daoism"
+      ],
+      "trunk_id": "celestial-masters-daoism",
+      "nodes": [
+        {
+          "id": "classical-daoist-textual-field",
+          "name": "Classical Daoist textual field",
+          "node_type": "phase",
+          "seed_clock": {
+            "year_start": -400,
+            "year_end": -250,
+            "date_or_range": "4th–3rd centuries BCE textual formation",
+            "precision": "range",
+            "status": "scholarly-range"
+          },
+          "origin": {
+            "place": "Warring States China",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "sep_religious_daoism"
+          ],
+          "notes": "Daodejing/Zhuangzi textual-philosophical formation predates organized Daoist religious institutions; 'philosophical vs religious Daoism' is a modern simplification but chronology still matters."
+        },
+        {
+          "id": "celestial-masters-daoism",
+          "name": "Way of the Celestial Masters",
+          "node_type": "trunk",
+          "seed_clock": {
+            "year_start": 142,
+            "year_end": 220,
+            "date_or_range": "142 CE traditional foundation marker → late-Han community formation",
+            "precision": "range",
+            "status": "traditional-marker+historical-formation"
+          },
+          "origin": {
+            "place": "Sichuan / Han China",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [],
+          "relation_to_parent": "institutionalizes_from",
+          "sources": [
+            "jstor_early_daoist",
+            "sep_religious_daoism"
+          ],
+          "notes": "First Daoist religious organization for which substantial documentation survives; 142 is a traditional/organizational marker rather than origin of all Daoist religion."
+        },
+        {
+          "id": "shangqing-daoism",
+          "name": "Shangqing / Highest Clarity tradition",
+          "node_type": "revelatory_lineage",
+          "seed_clock": {
+            "year_start": 364,
+            "year_end": 370,
+            "date_or_range": "364–370 CE revelations",
+            "precision": "range",
+            "status": "documented-textual-revelation-window"
+          },
+          "origin": {
+            "place": "Jiangnan / near Nanjing",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "celestial-masters-daoism"
+          ],
+          "relation_to_parent": "synthesis_with",
+          "sources": [
+            "sep_religious_daoism"
+          ],
+          "notes": "Textual/revelatory corpus emphasizing visualization and inner deities; incorporates earlier traditions rather than descending simply from Celestial Masters."
+        },
+        {
+          "id": "lingbao-daoism",
+          "name": "Lingbao / Numinous Treasure tradition",
+          "node_type": "revelatory_lineage",
+          "seed_clock": {
+            "year_start": 397,
+            "year_end": 402,
+            "date_or_range": "397–402 CE textual/revelatory formation",
+            "precision": "range",
+            "status": "documented-textual-window"
+          },
+          "origin": {
+            "place": "Jiangnan China",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "celestial-masters-daoism",
+            "shangqing-daoism"
+          ],
+          "relation_to_parent": "synthesis_with",
+          "sources": [
+            "sep_religious_daoism"
+          ],
+          "notes": "Strong communal ritual and salvation orientation; integrates Celestial Master, Shangqing and Buddhist elements."
+        },
+        {
+          "id": "quanzhen-daoism",
+          "name": "Quanzhen / Complete Perfection",
+          "node_type": "reform_movement",
+          "seed_clock": {
+            "year_start": 1160,
+            "year_end": 1170,
+            "date_or_range": "1160s CE founding phase under Wang Chongyang",
+            "precision": "range",
+            "status": "historical-formation"
+          },
+          "origin": {
+            "place": "North China / Shandong",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "celestial-masters-daoism"
+          ],
+          "relation_to_parent": "new_movement_within_daoist_field",
+          "sources": [
+            "jstor_quanzhen",
+            "sep_religious_daoism"
+          ],
+          "notes": "Monastic/cultivation movement founded by Wang Chongyang and early disciples; develops its own institutions while drawing on wider Daoist, Buddhist and Confucian currents."
+        },
+        {
+          "id": "zhengyi-daoism",
+          "name": "Zhengyi / Orthodox Unity",
+          "node_type": "communion",
+          "seed_clock": {
+            "year_start": 900,
+            "year_end": 1400,
+            "date_or_range": "medieval umbrella consolidation; Longhushan authority especially Song–Yuan",
+            "precision": "long-range",
+            "status": "institutional-consolidation"
+          },
+          "origin": {
+            "place": "Longhushan and southern Chinese ritual networks",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "celestial-masters-daoism",
+            "shangqing-daoism",
+            "lingbao-daoism"
+          ],
+          "relation_to_parent": "umbrella_consolidation",
+          "sources": [
+            "sep_religious_daoism"
+          ],
+          "notes": "Later umbrella for multiple register/ritual lineages rooted in Celestial Master traditions; alongside Quanzhen, one of the principal living Daoist formations."
+        }
+      ],
+      "integrity": [
+        "Classical textual Daoism and organized religious Daoism are historically related but should not be presented as one simple founder-to-denomination tree.",
+        "Shangqing and Lingbao are textual/revelatory corpora and practice systems as well as lineages.",
+        "Zhengyi is an umbrella consolidation, not a daughter denomination born in one year."
+      ]
     }
   ],
   "source_registry": {
@@ -3798,7 +4057,15 @@
     "pcusa_reformed_history": "https://pcusa.org/historical-society/exhibits/foundations-faith",
     "quaker_history": "https://quaker.org/quaker-history-introduction/",
     "disciples_history": "https://disciples.org/our-identity/history-of-the-disciples/",
-    "nazarene_history": "https://nazarene.org/historical-statement/"
+    "nazarene_history": "https://nazarene.org/historical-statement/",
+    "sep_religious_daoism": "https://plato.stanford.edu/entries/daoism-religion/",
+    "jstor_early_daoist": "https://www.jstor.org/stable/jj.8501239",
+    "jstor_quanzhen": "https://www.jstor.org/stable/jj.18254939",
+    "oxford_buddhist_canon": "https://academic.oup.com/reference/62340/reference-article-abstract/554134298",
+    "oxford_chinese_buddhism": "https://academic.oup.com/reference/62338/reference-article-abstract/554177590",
+    "oxford_tibet_buddhism": "https://academic.oup.com/reference/62340/reference-article-abstract/554143746",
+    "oxford_chan": "https://academic.oup.com/book/10975",
+    "oxford_pureland": "https://academic.oup.com/reference/62340/reference-article-abstract/574192908"
   },
   "cross_family_connections": [
     {
