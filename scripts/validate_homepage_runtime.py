@@ -40,7 +40,7 @@ def main() -> int:
         for marker in (".home-page{", ".home-hero{", ".reader-routing{"):
             if marker not in home_css:
                 errors.append(f"homepage stylesheet missing core scoped rule: {marker}")
-    if 'href="app/home-page.css?v=20260926a"' not in home:
+    if 'href="app/home-page.css?v=20260926d"' not in home:
         errors.append("homepage does not load the scoped app/home-page.css asset")
     if re.search(r"<style>[\\s\\S]*?\\.home-", home):
         errors.append("homepage-specific CSS drifted back into an inline <style> block")
