@@ -1,8 +1,8 @@
 {
   "id": "operator-family-manifest",
   "title": "Operator Family Manifest — Door, Cross, Spiral, Tree & Swamp",
-  "version": "1.1.0",
-  "updated": "2026-09-20",
+  "version": "1.2.0",
+  "updated": "2026-09-27",
   "status": "canonical family classification manifest",
   "purpose": "Classify high-frequency operator files by role so each family can expand without producing competing generic masters.",
   "families": {
@@ -66,18 +66,30 @@
         "data/house/plane-crossing-contract.json",
         "data/house/concept-topology.json"
       ],
-      "science_research": [
-        "knowledge/science/research-notes/2026-09-11-cross-theory-research-program.json",
-        "knowledge/science/formulation-upgrades/2026-09-11-cross-model-defect-calculus.json",
-        "knowledge/science/formulation-upgrades/2026-09-11-cross-model-pareto-advancement.json"
-      ],
       "comparison_crosswalks": [
         "knowledge/body/symbolic-body-crosswalk-method-atlas.json",
         "knowledge/traditions/tree-family-crosswalk-atlas.json",
         "knowledge/traditions/moloch-cow-serpent-precedence-biblical-crosswalk.json",
         "knowledge/traditions/rod-staff-33-layered-crosswalk.json"
       ],
-      "family_rule": "Use cross-point, cross-sign, crossing-event, crosswalk or Christian Cross explicitly. Avoid unqualified 'Cross' when the intended type can be named."
+      "family_rule": "Use cross-point, cross-sign, crossing-event, crosswalk or Christian Cross explicitly. 'Cross-theory' and 'cross-model' science methodology are lexical collisions, not members of the geometric/symbolic Cross operator family.",
+      "name_collisions": [
+        {
+          "path": "knowledge/science/research-notes/2026-09-11-cross-theory-research-program.json",
+          "meaning": "cross-domain / cross-model methodology",
+          "rule": "Not a Cross-point, Cross-sign or crossing-event owner; keep under Science / Experiments & Formalization."
+        },
+        {
+          "path": "knowledge/science/formulation-upgrades/2026-09-11-cross-model-defect-calculus.json",
+          "meaning": "cross-domain / cross-model methodology",
+          "rule": "Not a Cross-point, Cross-sign or crossing-event owner; keep under Science / Experiments & Formalization."
+        },
+        {
+          "path": "knowledge/science/formulation-upgrades/2026-09-11-cross-model-pareto-advancement.json",
+          "meaning": "cross-domain / cross-model methodology",
+          "rule": "Not a Cross-point, Cross-sign or crossing-event owner; keep under Science / Experiments & Formalization."
+        }
+      ]
     },
     "spiral": {
       "definition_owner": "knowledge/core/deep-element-definition-atlas.json",
