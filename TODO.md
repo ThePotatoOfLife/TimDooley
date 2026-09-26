@@ -1092,10 +1092,10 @@ The previous `inhabited` milestone only eliminated corridor-only shells. It is *
 - [x] Ground Theology's upper field in Genesis 1–3, Genesis 28, Isaiah 2/6, John 14 and the project's dated 18 May 2026 Heaven's-Gate→Garden phrase while preserving source seams.
 - [x] Place core identities spatially/functionally inside the House rather than leaving them as isolated title definitions.
 - [ ] Repeat the same **concrete-object audit** across all 38 nested Rooms: count real named anchors, not bytes/word count.
-- [ ] Economy & Finance: replace generic stock/flow examples with dated CBO/BIS/Treasury/Fed/ECB cases, real instrument examples and at least one worked obligation network.
-- [ ] Law & Justice: add worked jurisdiction/status examples from distinct legal systems, primary-source legal instruments and one procedural case walk without making one case own the Room.
-- [ ] Politics & Governance: add dated institutional examples and neutral policy-lifecycle cases from several systems; keep user/project politics descriptive.
-- [ ] Infrastructure & Capability: add concrete grid/port/data-center/logistics failure chains and recovery cases.
+- [~] Economy & Finance: added CBO 2026 baseline, Treasury foreign-holdings survey, BIS Q1 2026 foreign-currency credit and a worked obligation chain; add Fed/ECB monetary-policy transmission cases later.
+- [~] Law & Justice: added EU AI Act staged applicability, DSA investigation-status boundary, Danish constitutional separation and a worked procedural chain; add another non-EU/non-Danish jurisdiction later.
+- [~] Politics & Governance: added Danish separation/oversight, EU AI Act distributed enforcement and DSA multi-level procedure as neutral institutional examples; broaden to additional systems later.
+- [~] Infrastructure & Capability: added Iberian 2025 blackout, Baltimore Key Bridge and Panama Canal drought as grid/transport/chokepoint failure chains; add data-centre/fibre and industrial-supply examples later.
 - [ ] Geography & Countries: add actual country/region examples showing point/polygon/network distinctions and current map provenance.
 - [ ] Systems & Dynamics: add named canonical systems examples (feedback, hysteresis, attractors, contagion/network cascade) with one project translation each.
 - [ ] Model Testing: add one complete T0→T5 worked example and one negative/falsified example.
