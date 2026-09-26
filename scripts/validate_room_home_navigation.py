@@ -7,6 +7,18 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 ROOMS=ROOT/"data"/"house"/"rooms.json"
+EXPECTED_PRIMARY_LABELS={
+    "potatoverse-canon":"Open Religion →",
+    "archive-sources":"Open Source Authority →",
+    "time-history":"Open Timeline →",
+    "traditions-texts":"Open Religion →",
+    "science-formal-models":"Open Science →",
+    "life-body":"Open Life & Body →",
+    "world-systems":"Open World →",
+    "culture-information":"Open Culture →",
+    "works":"Open Works →",
+    "research-lab":"Open Research Lab →",
+}
 
 NAV_RE=re.compile(r"<nav\b[^>]*>([\s\S]*?)</nav>",re.I)
 LINK_RE=re.compile(r"<a\b[^>]*href=[\"']([^\"']+)[\"'][^>]*>([\s\S]*?)</a>",re.I)
@@ -44,6 +56,11 @@ def main()->int:
             errors.append(f"{room_id}: repeated 'Stand inside this Dwelling in the Elevator' action must be removed")
         if 'class="room-actions"' not in source:
             errors.append(f"{room_id}: Room actions container missing")
+        expected_label=EXPECTED_PRIMARY_LABELS.get(room_id)
+        if expected_label and expected_label not in source:
+            errors.append(f"{room_id}: primary public action must use reader-facing label {expected_label!r}")
+        if "Open primary public surface" in source:
+            errors.append(f"{room_id}: internal 'primary public surface' terminology leaked into reader UI")
 
     if errors:
         print("ROOM HOME NAVIGATION VALIDATION FAILED")
