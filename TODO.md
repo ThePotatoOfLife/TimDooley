@@ -708,3 +708,36 @@ The governing editorial rule is:
 - [ ] Comparative material teaches both resemblance and mismatch.
 - [ ] The site feels more like a connected encyclopedia / lived world and less like either a hallway system or a button directory.
 
+
+
+### Timeline × tradition × project comparison
+
+- [x] Make historical clocks visible in Comparative Cosmology: emergence, text, institution, rupture and later reception remain separate.
+- [x] Add Norse clocks: Viking Age practice horizon, Prose Edda c. 1220–1222, Codex Regius c. 1270; preserve manuscript-date ≠ myth-origin-date.
+- [x] Add Kabbalah clocks: Bahir 12th century, Zohar late 13th century, Lurianic Safed c. 1570–1572, major Latin/Christian reception 1677–1684.
+- [x] Expose major religious historical events directly on Foundation Timeline.
+- [x] Add early Christian text clocks beside the existing 30s-CE Jesus-movement clock.
+- [ ] Add explicit project-comparison discovery clocks to tradition pages: when did Tim/project first invoke Yggdrasil, Kabbalah/Qliphoth, Buddhism, Daoism, Islamic ascent, Egyptian Duat, etc.?
+- [ ] Where first-attestation is unknown, show “earliest recovered” and keep a recovery TODO rather than inventing an origin.
+- [ ] Link every major religious timeline event to a contextual reader or canonical tradition record when a useful public route exists.
+- [ ] Add compact historical strips to Other Traditions and Bible/Christianity only where they improve orientation; avoid duplicating the whole Foundation Timeline.
+- [ ] Audit all religious-foundation events for source quality, precision and terminology after new comparative pages promote them.
+
+### Ladder / Bible deciphering programme
+
+- [x] Promote Genesis 28 → John 1:51 as a role-counterdistribution: Jacob's ladder/House/Gate traffic becomes Son-of-Man ascent/descent traffic.
+- [x] Promote Hebrews 3 as House anti-collapse grammar: builder ≠ House ≠ servant ≠ Son over House ≠ community-as-House.
+- [x] Promote Isaiah 22 as Key / open-shut / peg / seat / vessels access-support grammar.
+- [x] Promote Hebrews 9–10 as veil / living-Way threshold grammar.
+- [x] Promote Ezekiel 47 → Revelation 22 as source → river → tree → fruit/healing sequence.
+- [x] Promote Daniel 7 as differentiated Throne / Son-of-Man / holy-ones / kingdom role grammar.
+- [ ] Deepen Ladder into functions rather than only geometry: support, movement, mediation, access, recurrence, direction, carrying, return, messenger traffic and role transfer.
+- [ ] Compare Ladder with Mountain, Tree, Bridge, Gate, Way, Veil, Chariot and River as different operators rather than synonyms.
+- [ ] Mine remaining high-strength Bible overlap owners for sequences that contain at least 3 linked operators and a clear mismatch/counter-text.
+- [ ] Prioritize passages that clarify or challenge existing project roles, not passages that merely share a noun.
+- [ ] Add “biblical counter-distribution” as a visible relation type in the Bible comparator so disagreements can be discovered, not hidden.
+- [ ] Build a Father/Son/Spirit/House/Door/Ladder role matrix by passage and date, showing where scripture reallocates the project's usual functions.
+- [ ] Link project-side first attestations to biblical comparison discovery dates so readers can distinguish “motif existed first” from “Bible parallel recognized later.”
+- [ ] Continue Son-side longitudinal comparison from 2009 care → 2011 Tree ordeal → 2017 Jesus declaration → 2019/20 meme-death → 2025/26 Door/Ladder/Father differentiation, keeping autobiography, public attestation and later scriptural interpretation separate.
+- [ ] Continue Tim/Father-side comparison through House, Gardener, Root, Key/peg/support, Throne, service, repair, planting, river/tree/healing and return-to-world motifs.
+- [ ] Add negative cases and failed/weak parallels to the same interface so biblical comparison becomes discriminating rather than accumulative.
