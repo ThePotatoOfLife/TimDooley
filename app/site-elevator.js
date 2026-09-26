@@ -181,7 +181,11 @@
 
     const render=(direction='')=>{
       header.dataset.elevatorLevel=selectedLevel;
-      header.dataset.elevatorDirection=direction;
+      delete header.dataset.elevatorDirection;
+      if(direction==='up'||direction==='down'){
+        void header.offsetWidth;
+        header.dataset.elevatorDirection=direction;
+      }
       floorLabel.textContent=levelLabel(selectedLevel,projection).replace(/\s*\/.*$/,'').toUpperCase();
       const currentRoom=spatial.room;
       const projected=currentRoom&&projection
