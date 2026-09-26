@@ -1,6 +1,6 @@
 {
   "id": "room-archive-drawers",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-26",
   "purpose": "Expose deep canonical corpora from nested Rooms without turning every knowledge record into a featured-object card.",
   "editorial_rule": "A drawer represents a body of work. Representative records are entry points, not rankings or claims that other records are unimportant.",
@@ -544,6 +544,42 @@
         }
       ],
       "boundary": "Specialist project reconstruction does not replace official records, legal counsel, procedural status or jurisdiction-specific authoritative law."
+    },
+    {
+      "id": "project-index-registry-corpus",
+      "title": "Indexes · registries, graphs and routing",
+      "scope_prefix": "knowledge/indexes/",
+      "record_count": 96,
+      "room_ids": [
+        "provenance-evidence",
+        "research-programmes",
+        "house-architecture"
+      ],
+      "summary": "The project's self-indexing machinery: source and statement indexes, context graphs, ontology/routing maps, inference ledgers, recovery inventories, FAQ/answer atlases and consolidation maps.",
+      "landing_href": "explore/",
+      "entries": [
+        {
+          "title": "Core index",
+          "path": "knowledge/indexes/core-index.json"
+        },
+        {
+          "title": "Source index",
+          "path": "knowledge/indexes/source-index.json"
+        },
+        {
+          "title": "Context graph",
+          "path": "knowledge/indexes/context-graph.json"
+        },
+        {
+          "title": "Ontology tree",
+          "path": "knowledge/indexes/ontology-tree.json"
+        },
+        {
+          "title": "Conversation recovery inventory",
+          "path": "knowledge/indexes/conversation-recovery-inventory.json"
+        }
+      ],
+      "boundary": "Indexes route and summarize other records. They are navigation and synthesis infrastructure, not independent evidence merely because they aggregate many sources."
     }
   ]
 }
