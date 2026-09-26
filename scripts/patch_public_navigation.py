@@ -21,7 +21,7 @@ SHARED_ASSET_VERSIONS = {
     "site-access.js": "20260926c",
     "site-elevator.css": "20260926p",
     "site-elevator.js": "20260926n",
-    "house-journey.js": "20260926d",
+    "house-journey.js": "20260926e",
     "body-relational-lens.js": "20260926b",
 }
 
