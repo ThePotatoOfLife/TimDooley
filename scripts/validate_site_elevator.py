@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PROJECTION = ROOT / "data" / "house" / "elevator-spatial-projection.json"
 ROOMS = ROOT / "data" / "house" / "rooms.json"
 PUBLIC_SURFACES = ROOT / "data" / "house" / "public-surfaces.json"
+SUBROOMS = ROOT / "data" / "house" / "subrooms.json"
 ELEVATOR_CSS = ROOT / "app" / "site-elevator.css"
 ELEVATOR_JS = ROOT / "app" / "site-elevator.js"
 PATCHER = ROOT / "scripts" / "patch_public_navigation.py"
@@ -58,6 +59,7 @@ def main() -> int:
     world_map_source = WORLD_MAP_SOURCE.read_text(encoding="utf-8", errors="replace") if WORLD_MAP_SOURCE.exists() else ""
     room_contract = load_json(ROOMS, errors)
     public_surfaces = load_json(PUBLIC_SURFACES, errors)
+    subroom_contract = load_json(SUBROOMS, errors)
 
     active_rooms = {
         row.get("id"): row
@@ -167,6 +169,33 @@ def main() -> int:
                 if not isinstance(note, str) or len(note.strip()) < 28:
                     errors.append(f"{room_id}: projection note for {floor_id!r} is too thin")
 
+        room_home = ROOT / "rooms" / room_id / "index.html"
+        if not room_home.exists():
+            errors.append(f"{room_id}: canonical Room homepage missing at rooms/{room_id}/index.html")
+
+    active_subrooms = [
+        row for row in subroom_contract.get("subrooms", [])
+        if isinstance(row, dict) and row.get("status") == "active" and row.get("id")
+    ]
+    seen_subroom_routes: set[str] = set()
+    for subroom in active_subrooms:
+        subroom_id = subroom.get("id")
+        parent_room_id = subroom.get("parent_room_id")
+        route_id = subroom.get("route_id") or subroom_id
+        if parent_room_id not in active_rooms:
+            errors.append(f"{subroom_id}: nested Room references unknown parent {parent_room_id!r}")
+        if not isinstance(route_id, str) or not route_id.strip():
+            errors.append(f"{subroom_id}: route_id must be a non-empty string when supplied")
+            continue
+        if route_id in seen_subroom_routes:
+            errors.append(f"duplicate nested Room route id: {route_id}")
+        seen_subroom_routes.add(route_id)
+        subroom_home = ROOT / "rooms" / "inside" / route_id / "index.html"
+        if not subroom_home.exists():
+            errors.append(
+                f"{subroom_id}: nested Room page missing at rooms/inside/{route_id}/index.html"
+            )
+
     contexts = [row for row in projection.get("route_contexts", []) if isinstance(row, dict)]
     by_match = {row.get("match"): row for row in contexts if row.get("match")}
     for row in contexts:
@@ -227,6 +256,26 @@ def main() -> int:
             )
 
     if OUT.exists():
+        standalone_pages = []
+        for path in OUT.rglob("*.html"):
+            text = path.read_text(encoding="utf-8", errors="replace")
+            if "<html" not in text.lower() or "<body" not in text.lower():
+                continue
+            standalone_pages.append((path, text))
+        for path, text in standalone_pages:
+            rel = path.relative_to(OUT).as_posix()
+            quiet = rel.startswith("tools/tts/")
+            elevator_css_count = text.count("site-elevator.css")
+            elevator_js_count = text.count("site-elevator.js")
+            if quiet:
+                if elevator_css_count or elevator_js_count:
+                    errors.append(f"{rel}: quiet TTS tool must not receive the universal elevator")
+            elif elevator_css_count != 1 or elevator_js_count != 1:
+                errors.append(
+                    f"{rel}: expected exactly one universal elevator CSS + JS asset, "
+                    f"got css={elevator_css_count}, js={elevator_js_count}"
+                )
+
         representative = [
             "index.html",
             "house/index.html",
