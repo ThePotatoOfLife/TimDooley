@@ -1,5 +1,5 @@
 {
-  "version": "3.6.0",
+  "version": "3.7.0",
   "updated": "2026-09-27",
   "authority": "project-synthesis",
   "purpose": "Bind the current project center, operators, living metabolisms, Rooms, tests, outputs and public composition into one center-out synthesis without replacing canonical owners. Development history is referenced, not embedded as current-state weight.",
@@ -1894,7 +1894,7 @@
       "route-comparison",
       "foundation-landscape",
       "foundation-rooms",
-      "learn-the-structure",
+      "structure-handoff",
       "public-doors",
       "materialized-project-state",
       "reader-routing"
@@ -1916,12 +1916,10 @@
         "owner": "data/house/project-synthesis.json"
       },
       {
-        "id": "learn-the-structure",
-        "purpose": "Teach the ontological type of major elements before symbolic interpretation: whole, coordinate, standing plane, terrain/regime, organism, threshold/process/route and inhabitant.",
+        "id": "structure-handoff",
+        "purpose": "Give one compact handoff to House, Rooms and Axis when structure becomes the reader's question; do not reteach the topology on Home.",
         "owners": [
-          "data/house/layer-terrain-regime-atlas.json",
-          "data/axis-flow-contract.json",
-          "data/house/concept-topology.json"
+          "data/house/public-surfaces.json"
         ]
       },
       {
@@ -1978,15 +1976,11 @@
       }
     ],
     "runtime_sources": [
-      "data/house/project-synthesis.json",
       "data/house/subrooms.json",
       "data/house/entity-dossiers-wave-001.json",
       "data/house/foundations-wave-001.json",
       "data/house/foundations-wave-002.json",
       "data/house/lower-plane-population-atlas.json",
-      "data/house/layer-terrain-regime-atlas.json",
-      "data/axis-flow-contract.json",
-      "data/house/concept-topology.json",
       "data/house/route-case-matrix-wave-001.json",
       "data/house/foundation-landscape-synthesis.json",
       "data/house/foundation-room-atlas.json"
@@ -2002,118 +1996,6 @@
       "Homepage prominence is editorial and reader-driven; backend object count is not a ranking signal.",
       "A missing or malformed secondary homepage dataset must degrade only its dependent enhancement; static reader content and unrelated projections remain usable."
     ],
-    "teaching_sequence": [
-      {
-        "id": "whole",
-        "label": "Whole",
-        "node_ids": [
-          "potato-of-life"
-        ],
-        "lesson": "Start with the whole. The Potato of Life coordinates the project but is not identical with every symbol, Room, tradition or claim.",
-        "question": "What contains the relation without erasing its parts?",
-        "route": "potato-of-life/"
-      },
-      {
-        "id": "coordinates",
-        "label": "Coordinates",
-        "node_ids": [
-          "axis"
-        ],
-        "concept_ids": [
-          "plane",
-          "cross"
-        ],
-        "lesson": "Axis, Plane and Cross orient the map. They are coordinates, not places, moral ranks or organisms.",
-        "question": "Where am I looking from, and along which direction?",
-        "route": "axis/"
-      },
-      {
-        "id": "planes",
-        "label": "Three planes",
-        "node_ids": [
-          "heaven-plane",
-          "world-plane",
-          "below-plane"
-        ],
-        "lesson": "Heaven, World and Below are standing reader platforms. They change emphasis without changing who owns the underlying knowledge.",
-        "question": "Which aspect becomes visible from this reader plane?",
-        "route": "rooms/"
-      },
-      {
-        "id": "terrain-regime",
-        "label": "Terrain & regime",
-        "node_ids": [
-          "mountain",
-          "garden",
-          "swamp",
-          "shadow"
-        ],
-        "lesson": "Mountain, Garden, Swamp and Shadow describe integration landscapes, growth conditions or visibility problems. They are not synonyms for the three planes.",
-        "question": "What kind of environment, boundary or visibility condition is operating?",
-        "route": "house/"
-      },
-      {
-        "id": "living-systems",
-        "label": "Living systems",
-        "node_ids": [
-          "roots",
-          "tree-of-knowledge",
-          "tree-of-life",
-          "tree-of-strife"
-        ],
-        "lesson": "Roots and Trees describe memory, branching, reproduction and consequence. Knowledge can feed Life or Strife depending on what the system reproduces.",
-        "question": "What is being rooted, reproduced, branched or pruned?",
-        "route": "axis/"
-      },
-      {
-        "id": "operators",
-        "label": "Thresholds & processes",
-        "node_ids": [
-          "door-pillars",
-          "eye",
-          "forge",
-          "spiral-family"
-        ],
-        "lesson": "Door changes state, Eye perceives/evaluates, Forge transforms under pressure, and Spiral/Ladder describe trajectories. Each does a different job.",
-        "question": "What operation is actually changing the relation?",
-        "route": "research-lab/"
-      },
-      {
-        "id": "inhabitants",
-        "label": "Inhabitants",
-        "node_ids": [],
-        "lesson": "Real people, institutions, texts, traditions, organisms and events inhabit the House. The symbolic grammar helps ask questions about them but never replaces their factual identity.",
-        "question": "What real thing is being studied, with what evidence and at what scale?",
-        "route": "house/#crystallized-cases"
-      }
-    ],
-    "axis_teaching": {
-      "invariant": "Axis is the global orientation line, not the Tree, Ladder, Mountain or a truth hierarchy.",
-      "three_planes": [
-        {
-          "id": "heaven-plane",
-          "label": "Heaven",
-          "emphasis": "integration, canopy, transmission, Garden/Fruit and accountable return"
-        },
-        {
-          "id": "world-plane",
-          "label": "World",
-          "emphasis": "embodiment, evidence, institutions, choice and observable consequence"
-        },
-        {
-          "id": "below-plane",
-          "label": "Below",
-          "emphasis": "provenance, buried context, roots, intelligence, restricted information and repair entry"
-        }
-      ],
-      "movement_rule": "Up/down direction alone does not determine value. Rooting descent and fruitful return can be generative; upward motion without Fruit/return is not sufficient evidence of Life.",
-      "route_families": [
-        "life",
-        "strife",
-        "repair",
-        "return"
-      ]
-    },
     "calibration": {
       "substance_bias": "Concrete reader value outranks architecture exposition when both compete for early-page attention.",
       "structure_budget": "Structural teaching should explain enough to prevent category errors, then hand back to cases, mechanisms and consequences.",
@@ -2123,22 +2005,18 @@
     },
     "repetition_contract": {
       "project-spine": "Owns only the top-level Center → House → Rooms → Views orientation.",
-      "learn-the-structure": "Owns type distinctions: whole, coordinate, plane, terrain/regime, living system, operator and inhabitant.",
       "route-comparison": "Owns conditional transition testing and falsifiers.",
       "foundation-landscape": "Owns cross-domain origin/reproduction trajectory patterns.",
       "foundation-rooms": "Owns concrete Foundation instances: origin Door, physical place, House owner and present continuity.",
       "materialized-now": "Owns registry counts only; it must not restate the lifecycle or crystallization pipeline.",
-      "rule": "Do not add another homepage section that re-explains a lifecycle already owned by Route, Foundation, Structure or a canonical specialist reader."
+      "rule": "Do not add another homepage section that re-explains a lifecycle already owned by Route, Foundation, Structure or a canonical specialist reader.",
+      "structure-handoff": "Owns only the compact Home → House / Rooms / Axis handoff. Detailed structural teaching belongs to structural_teaching and its specialist readers."
     },
     "runtime_input_contract": {
       "rule": "Homepage runtime should prefer stable live authorities. Wave/date-named inputs require an explicit disposition and must not be added casually.",
       "stable_live_authorities": [
-        "data/house/project-synthesis.json",
         "data/house/subrooms.json",
         "data/house/lower-plane-population-atlas.json",
-        "data/house/layer-terrain-regime-atlas.json",
-        "data/house/concept-topology.json",
-        "data/axis-flow-contract.json",
         "data/house/foundation-landscape-synthesis.json",
         "data/house/foundation-room-atlas.json"
       ],
@@ -2559,5 +2437,127 @@
       "relation": "semantic center → theology / philosophy / empirical testing / embodiment / operator dynamics / unresolved research",
       "rule": "The same project symbols may be read through several domains, but theological, philosophical, empirical and formal claims remain typed rather than merged."
     }
-  ]
+  ],
+  "structural_teaching": {
+    "status": "owned outside homepage",
+    "purpose": "Preserve the durable Whole / coordinates / planes / terrain-regime / living-systems / operators / inhabitants teaching sequence for House, Axis and specialist readers without requiring Home to render it.",
+    "primary_readers": [
+      "/house/",
+      "/axis/",
+      "/rooms/"
+    ],
+    "sequence": [
+      {
+        "id": "whole",
+        "label": "Whole",
+        "node_ids": [
+          "potato-of-life"
+        ],
+        "lesson": "Start with the whole. The Potato of Life coordinates the project but is not identical with every symbol, Room, tradition or claim.",
+        "question": "What contains the relation without erasing its parts?",
+        "route": "potato-of-life/"
+      },
+      {
+        "id": "coordinates",
+        "label": "Coordinates",
+        "node_ids": [
+          "axis"
+        ],
+        "concept_ids": [
+          "plane",
+          "cross"
+        ],
+        "lesson": "Axis, Plane and Cross orient the map. They are coordinates, not places, moral ranks or organisms.",
+        "question": "Where am I looking from, and along which direction?",
+        "route": "axis/"
+      },
+      {
+        "id": "planes",
+        "label": "Three planes",
+        "node_ids": [
+          "heaven-plane",
+          "world-plane",
+          "below-plane"
+        ],
+        "lesson": "Heaven, World and Below are standing reader platforms. They change emphasis without changing who owns the underlying knowledge.",
+        "question": "Which aspect becomes visible from this reader plane?",
+        "route": "rooms/"
+      },
+      {
+        "id": "terrain-regime",
+        "label": "Terrain & regime",
+        "node_ids": [
+          "mountain",
+          "garden",
+          "swamp",
+          "shadow"
+        ],
+        "lesson": "Mountain, Garden, Swamp and Shadow describe integration landscapes, growth conditions or visibility problems. They are not synonyms for the three planes.",
+        "question": "What kind of environment, boundary or visibility condition is operating?",
+        "route": "house/"
+      },
+      {
+        "id": "living-systems",
+        "label": "Living systems",
+        "node_ids": [
+          "roots",
+          "tree-of-knowledge",
+          "tree-of-life",
+          "tree-of-strife"
+        ],
+        "lesson": "Roots and Trees describe memory, branching, reproduction and consequence. Knowledge can feed Life or Strife depending on what the system reproduces.",
+        "question": "What is being rooted, reproduced, branched or pruned?",
+        "route": "axis/"
+      },
+      {
+        "id": "operators",
+        "label": "Thresholds & processes",
+        "node_ids": [
+          "door-pillars",
+          "eye",
+          "forge",
+          "spiral-family"
+        ],
+        "lesson": "Door changes state, Eye perceives/evaluates, Forge transforms under pressure, and Spiral/Ladder describe trajectories. Each does a different job.",
+        "question": "What operation is actually changing the relation?",
+        "route": "research-lab/"
+      },
+      {
+        "id": "inhabitants",
+        "label": "Inhabitants",
+        "node_ids": [],
+        "lesson": "Real people, institutions, texts, traditions, organisms and events inhabit the House. The symbolic grammar helps ask questions about them but never replaces their factual identity.",
+        "question": "What real thing is being studied, with what evidence and at what scale?",
+        "route": "house/#crystallized-cases"
+      }
+    ],
+    "axis_teaching": {
+      "invariant": "Axis is the global orientation line, not the Tree, Ladder, Mountain or a truth hierarchy.",
+      "three_planes": [
+        {
+          "id": "heaven-plane",
+          "label": "Heaven",
+          "emphasis": "integration, canopy, transmission, Garden/Fruit and accountable return"
+        },
+        {
+          "id": "world-plane",
+          "label": "World",
+          "emphasis": "embodiment, evidence, institutions, choice and observable consequence"
+        },
+        {
+          "id": "below-plane",
+          "label": "Below",
+          "emphasis": "provenance, buried context, roots, intelligence, restricted information and repair entry"
+        }
+      ],
+      "movement_rule": "Up/down direction alone does not determine value. Rooting descent and fruitful return can be generative; upward motion without Fruit/return is not sufficient evidence of Life.",
+      "route_families": [
+        "life",
+        "strife",
+        "repair",
+        "return"
+      ]
+    },
+    "rule": "Home may link into this teaching but must not host the full structural instrument; Home's reader job is orientation, substance and broad entrance."
+  }
 }
