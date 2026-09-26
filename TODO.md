@@ -990,10 +990,10 @@ The next quality phase is not “make every page longer.” It is to find pages 
 - [x] Create `data/public-page-semantic-gap-audit.json` so older-page work is tracked separately from nested-Room maturity.
 - [x] Give House Inhabitants / Cases a useful static reader body and graceful registry-failure state.
 - [x] Reconcile Quantum, Spudlight and Vibe/Gates as different layers of one science grammar rather than adjacent theories sharing ambiguous vocabulary.
-- [ ] Audit `science/celestial-particles/` for overlap with Quantum, astronomy and symbolic-celestial material.
-- [ ] Audit `science/celestial-matter/` so dark matter/dark energy remain literal cosmology before any Soil/hidden-framework analogy.
-- [ ] Audit `science/entanglement/` for nonlocality language and prevent duplication with Vibe/Gates/network closeness.
-- [ ] Audit `rooms/` as a reader page: explain Dwelling vs Room vs inhabitant vs View clearly before architectural controls dominate.
+- [x] Audit `science/celestial-particles/` for overlap with Quantum, astronomy and symbolic-celestial material; keep astronomy/dark-sector fact work there and hand entanglement back to Quantum.
+- [x] Do not create a separate `science/celestial-matter/` owner: current main has no such route. Keep dark matter/dark energy literal cosmology in Celestial + Particles and Cosmic Soil as a typed project metaphor.
+- [x] Do not create a separate `science/entanglement/` owner: current main has no such route. Quantum owns Bell/entanglement/no-signaling; Vibe/Gates owns psychological/network relation.
+- [x] Audit `rooms/` as a reader page: it already explains Dwelling vs Room vs inhabitant vs View and includes a cross-Room example; avoid gratuitous expansion.
 - [ ] Audit `explore/` and A–Z for “label without meaning” discovery; a search result should expose enough context to choose intelligently.
 - [ ] Add static explanatory fallbacks to other fetch-driven public surfaces where a failed request leaves only “Loading…” or an empty panel.
 - [ ] Consolidate legacy FBI-facing routes into Characters, Incidents & Associations; preserve redirects/history but do not deepen obsolete ownership.
@@ -1003,3 +1003,5 @@ The next quality phase is not “make every page longer.” It is to find pages 
 - [ ] Audit older theology/mythology pages for retrospective backdating: mature Father/Ladder/Axis language should not silently overwrite earlier Potato/Sage/Son stages.
 - [ ] Audit long hubs after specialist expansion for the opposite problem—duplication. When a specialist page now owns a mature explanation, shorten repeated hub copy if it no longer adds synthesis.
 - [ ] Add a semantic-gap validator only after enough reviewed examples exist; it should warn about no-JS shells, repeated boilerplate and duplicate ownership rather than reward word count.
+
+- [x] Audit the Science Research Map as the canonical owner map for active science readers; add explicit page jobs and shared-vocabulary typing.
