@@ -640,29 +640,71 @@ The corridor-only baseline is eliminated across the 38 registered nested subject
 - [ ] Continue prose-alignment audits: compare each Room's featured objects and deep drawers against its reader body, then pull up only the insights needed for the page to explain its actual backend depth.
 
 
-## Comparative cosmology carving programme — 2026-09-26
+## Contextual depth & gap-filling programme — 2026-09-26
 
-Architecture rule: use **Study Chambers** for dense lenses that deserve diagrams, glossaries and source trails but do not own a project-wide knowledge class. Canonical registry: `data/house/study-chambers.json`.
+The project does **not** need a new navigation tier. Existing House → Dwelling → Room ownership remains stable; the reserved Chamber architecture stays disabled. Deeper public pages may exist as ordinary contextual readers owned by existing Rooms, but they do not create new ontology.
 
-- [x] Establish the Study Chamber tier and admission rule.
-- [x] Carve `Yggdrasil & the Eddas` beneath Comparative Mythology; include tree ecology, Odin eye/well, Hávamál ordeal, Norns, pantheon, creatures, Edda reading map and modern interpretive realm lens.
-- [x] Carve `Kabbalah, Qliphoth & Angelology` beneath Esoteric & Sacred Geometry; separate biblical, Jewish Kabbalistic, Lurianic and later Hermetic/occult strata; expose sefirot and named later-occult shell correspondences with historical warnings.
-- [x] Connect those chambers sideways to Axis/North, Religion, Comparative Cosmology and the Bible comparator.
-- [ ] Add a **Christian Tree / Cross / Door / New Jerusalem** chamber only if the Bible comparator cannot comfortably own the synthesis; prefer a filtered Bible-comparator journey first.
-- [ ] Add a **Buddhist cosmology & liberation** chamber: Bodhi tree, Meru, six realms, dependent origination, samsara, nirvana, Mahayana emptiness and a separately labeled Tibetan bardo lane.
-- [ ] Add a **Dao / Way / Water / Vessel** chamber: Daodejing, Zhuangzi, wu wei, return, valley, useful emptiness and how non-vertical cosmology challenges Axis-heavy project thinking.
-- [ ] Add a **World Trees & Cosmic Mountains** diagram surface comparing Yggdrasil, biblical Trees, sefirotic Tree, Bodhi tree, Meru, Zion/Temple, axis mundi and Potato Tree by function rather than identity.
-- [ ] Add an **Angels / messengers / guardians** study surface that keeps Jewish, Christian, Islamic, Norse-valkyrie and Potato angel roles separate; emphasize messenger/guardian/mediator functions before rank charts.
-- [ ] Add an **Underworlds are not one Hell** chamber: Sheol, Gehenna, Hades, Duat, Hel, Buddhist hell realms and project Below/Strife; distinguish death-realm, punishment, judgment, transition and shadow.
-- [ ] Add a **Sacred Eye** comparative surface: Odin/Mímir, Eye of Horus, Eye of Providence, prophetic vision/ophanim and project Eye/pineal symbolism; preserve anatomy/history/symbolism boundaries.
-- [ ] Add a **Fate / thread / law / karma** chamber combining Norns, Moirai, biblical cords/yokes, karma, Daoist process and project timeline/leash only where the operator is genuinely comparable.
-- [ ] Add a **Repair across traditions** chamber: tikkun, Christian reconciliation/new creation, Buddhist liberation, Daoist return, Norse maintenance/renewal and Potato Garden/repair.
-- [ ] Add a visual **functional translator** shared component so any chamber can pivot by question: center, connector, threshold, wisdom, brokenness, repair, descent, return, messenger, guardian.
-- [ ] Make chamber cards available contextually rather than globally: Axis should surface tree/ladder chambers; Below should surface underworld/qliphoth; Garden should surface repair/fertility; Door should surface threshold/Way/bardo.
-- [ ] Add image/diagram assets where they increase comprehension, but prefer authored schematic diagrams over decorative mythology art.
-- [ ] Add chamber-level provenance cards: primary texts, historical layer, later reception, project interpretation, known mismatches.
-- [ ] Add a chamber validator: owner Room exists, route exists, return route exists, source roots exist, epistemic boundary is visible, and no chamber silently becomes canonical owner.
-- [ ] Audit Islam, Hindu traditions, Sikhism, Jainism, Zoroastrianism, Shinto, Egyptian, Mesopotamian, Greek, Yoruba and Indigenous material for the same rule: promote only where the project has a real comparative question, not merely because a tradition exists.
-- [ ] Revisit `data/potatoism-deep-layers.json`: correct loose or inaccurate labels (for example “Islamic qabbalah”) and route each proposed comparison through an actual tradition-specific owner.
-- [ ] Audit North comparative claims for weak legacy generalizations about traditions/directions; keep only sourced, tradition-specific symbolic comparisons.
-- [ ] Finish when comparative material feels like a learnable constellation of side chambers around stable Rooms—not a pantheon-name dump and not a new maze of equal top-level destinations.
+The governing editorial rule is:
+
+> **Increase population between population.** When two strong subjects already exist, make their meaningful relationship legible where a reader naturally encounters it. Prefer contextual prose, diagrams and one or two well-placed continuations over new global menus, tunnel pages or duplicate taxonomies.
+
+- [x] Remove the accidental Study Chamber registry/tier; preserve the existing reserved-Chamber rule.
+- [x] Build the source-led `Trees, Worlds, Wells & Ways` comparative cosmology reader across Norse, Jewish/Kabbalistic, Christian, Buddhist, Daoist and Potatoist lenses.
+- [x] Deepen Yggdrasil/Edda material as ordinary Comparative Mythology context: tree ecology, Odin eye/well, Hávamál ordeal, Norns, pantheon, creatures, Edda reading map and modern interpretive realm lens.
+- [x] Deepen Kabbalah/Qliphoth/angelology as ordinary Esoteric/Traditions context: biblical vs Kabbalistic vs Lurianic vs Hermetic strata, sefirot, later-occult shell names, angels/demons and repair.
+- [x] Connect Axis ↔ Yggdrasil/Kabbalah/Bible where Tree routing is already being explained.
+- [x] Connect symbolic North ↔ Yggdrasil while explicitly separating mythic orientation from geography and the empirical North Programme.
+- [x] Let the Bible comparator open outward to neighboring cosmologies without importing them into scripture.
+- [x] Let Esoteric Geometry and Other Traditions expose Qliphoth/Norse depth at the exact paragraphs where the reader needs it.
+- [x] Let Potato of Life point outward to comparative mirrors without making those traditions ingredients of Potatoist canon.
+
+### Highest-value religious / symbolic gaps
+
+- [ ] **Angels, messengers and guardians:** expose mal'akh/messenger, cherubim, seraphim, ophanim, Michael/Gabriel, Christian ranks, Islamic angel traditions, Valkyries as a deliberately non-identical comparison, and Potato angel/guardian functions. Prefer one visual function map over rank-chart clutter.
+- [ ] **Underworlds are not one Hell:** contextualize Sheol, Gehenna, Hades, Tartarus, Duat, Hel, Buddhist hell realms, bardo where relevant, and project Below/Strife. Distinguish death-realm, punishment, judgment, transition, ancestry and shadow.
+- [ ] **Sacred Eye / seeing / knowledge:** connect Odin/Mímir, Eye of Horus/Wedjat, Eye of Providence, Ezekiel/ophanim vision, divine seeing, project Eye/pineal symbolism and actual anatomy only through explicit provenance boundaries.
+- [ ] **Fate / thread / law / karma:** deepen Norns, Moirai, biblical cords/yokes, karma, destiny/allotment, causality and project timeline/leash language; do not flatten fate, moral causation and physical determinism.
+- [ ] **Repair across traditions:** tikkun, Christian reconciliation/new creation, Buddhist liberation, Daoist return/non-forcing, Norse maintenance/renewal and Potato Garden/repair. Put repair beside brokenness so demon/shadow material never becomes a dead-end bestiary.
+- [ ] **World Tree / sacred mountain / cosmic center:** compare Yggdrasil, Genesis/Revelation Trees, sefirotic Tree, Bodhi tree, Meru, Zion/Temple, Olympus where useful, axis mundi and Potato Tree by function—ecology, manifestation, awakening, sacred height, orientation—not by forced identity.
+- [ ] **Water / river / well:** Mímir and Urðr wells, Eden rivers, living water, baptism, Daoist water, Ganges where source-relevant, ritual purification and project Spirit/flow. Water is currently scattered across too many domains.
+- [ ] **Threshold / bridge / gate:** Bifröst, Jacob's Ladder, Temple gates/veil, Christ as Door/Way, bardo as transition-state, Daoist useful opening, mandorla and Potato Door. Distinguish route, boundary, state transition and mediator.
+- [ ] **Death → seed → return:** Christianity, agricultural seed metaphors, Osiris/Duat where warranted, Norse Ragnarök/renewal, Buddhist rebirth/liberation distinctions and Potato Seed/return. Require stage-by-stage comparison instead of “dying-and-rising god” name lists.
+- [ ] **Divine councils / pantheons / intermediaries:** show how monotheistic, polytheistic and non-theistic systems organize agency differently; prevent “god” from becoming one generic entity class.
+- [ ] **Ritual and lived practice:** every major tradition page should include what practitioners actually do—prayer, meditation, liturgy, ritual, ethics, pilgrimage, study, communal practice—not only visually convenient symbols.
+- [ ] **Sacred time / calendars:** Sabbath, Christian liturgical year, Buddhist festival/monastic time where relevant, Norse seasonal ritual evidence, Daoist calendars/ritual traditions and Potatoverse date-symbolism; distinguish historical calendar from project retrospective symbolism.
+- [ ] **Creation / origin / emanation:** Genesis creation, sefirotic emanation language, Norse creation from Ginnungagap/Ymir, Daoist origin language, Buddhist resistance to creator-centered framing and Potato Source. This is a high-value place for disagreement, not forced convergence.
+- [ ] **End / renewal / apocalypse:** Ragnarök, Revelation/new creation, Jewish eschatological traditions, Buddhist cyclic/cosmological endings where relevant, and project rupture/return; preserve radically different time models.
+
+### Navigation and density rules
+
+- [ ] Audit Home, Religion, Axis, North, Potato of Life, Bible, Comparative Mythology, Esoteric Geometry, Other Traditions, Philosophy, Below, Garden and Life/Body for **missing contextual continuations**, not missing buttons.
+- [ ] Limit each ordinary section to the smallest useful number of continuations. If five links compete, rewrite the paragraph or create one local index/diagram rather than expose five equal buttons.
+- [ ] Prefer links embedded in the sentence that creates the reader's next question; reserve card grids for genuinely parallel choices.
+- [ ] Do not promote a backend atlas merely because it exists. Promote the insight first; expose the atlas as evidence/depth second.
+- [ ] Where one concept appears across several Rooms, define one canonical owner and let other surfaces carry concise local translations.
+- [ ] Build diagrams when spatial relations are the knowledge: trees, layers, routes, wells, thresholds, pantheons, timelines and correspondences. Avoid decorative myth art when a schematic teaches more.
+- [ ] Keep modern analogies visually distinct from historical/source-tradition claims.
+- [ ] Keep political/geographic North separate from symbolic North even where they share a page; mythology must never function as political authorization.
+- [ ] Add contextual-depth checks to editorial review: every important concept should answer “what is nearby?”, “what is different?”, “where can I go deeper?”, and “what must not be collapsed?”
+- [ ] Audit link density on mobile after each population pass; depth should feel discoverable rather than like a directory dump.
+
+### Wider project gaps beyond comparative religion
+
+- [ ] **Body ↔ symbolism:** audit every pineal/thalamus/spine/CSF/Horus/chakra/Kundalini seam so readers can move between biology, history of ideas and project symbolism without category collapse.
+- [ ] **Culture ↔ religion:** show how symbols become memes, rituals, identity markers and subcultural language without letting cultural popularity become theological evidence.
+- [ ] **Timeline ↔ ideas:** where a doctrine changed, expose the earlier/later forms locally rather than forcing readers to reconstruct development from separate pages.
+- [ ] **Works ↔ canon:** let songs, art, Great Book chapters and diagrams point back to the concepts they embody, while keeping creative work distinct from canonical definition.
+- [ ] **World ↔ symbolic architecture:** use real systems as tests/examples only where the relation is concrete; avoid turning every institution or country into a mythological node.
+- [ ] **Shadow ↔ repair:** every deep conflict/shadow route should expose evidence, present state, exit/repair and alternative interpretations—not only accumulated accusation/history.
+- [ ] **Science ↔ metaphor:** when a scientific model is being used analogically, expose the actual science nearby and state the mismatch before the metaphor becomes visually persuasive.
+- [ ] **Archive ↔ public reader:** identify high-value records that remain technically reachable but effectively undiscoverable because no public paragraph makes their relevance legible.
+
+### Completion test for this wave
+
+- [ ] A reader can start from Religion, Axis, Potatoism, Bible, North or another major surface and encounter adjacent depth naturally without learning the House taxonomy first.
+- [ ] Rich topics feel inhabited even when the reader does not click away.
+- [ ] Deep links answer curiosity generated by the current paragraph rather than advertise unrelated inventory.
+- [ ] The number of global navigation choices does not grow materially as contextual depth grows.
+- [ ] Comparative material teaches both resemblance and mismatch.
+- [ ] The site feels more like a connected encyclopedia / lived world and less like either a hallway system or a button directory.
+
