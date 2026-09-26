@@ -1,6 +1,6 @@
 {
-  "version": "2.0.0",
-  "updated": "2026-09-20",
+  "version": "2.1.0",
+  "updated": "2026-09-27",
   "purpose": "Legacy checked snapshot of route topology. It is no longer an independent control plane: current route/type/Room/hub topology is deterministically derived from data/house/public-surfaces.json by scripts/house_public_surfaces.py. Preserve this file for research history and compatibility, not for new authoring decisions.",
   "room_registry": "data/house/rooms.json",
   "public_surface_registry": "data/house/public-surfaces.json",
@@ -607,5 +607,16 @@
     "resolver": "scripts/house_public_surfaces.py::derived_route_topology_records",
     "maintenance_rule": "Do not hand-edit this file to change route identity, visibility or Room membership. Change public-surfaces.json; consumers must derive current topology from that authority.",
     "status": "compatibility-snapshot"
+  },
+  "disposition": {
+    "class": "historical-derived-compatibility",
+    "live_authority": false,
+    "authoring_allowed": false,
+    "canonical_authority": "data/house/public-surfaces.json",
+    "deterministic_resolver": "scripts/house_public_surfaces.py::derived_route_topology_records",
+    "allowed_live_consumers": [
+      "scripts/validate_house_topology.py"
+    ],
+    "rule": "Never edit this file to change public routing. Change public-surfaces.json, then regenerate or compare the derived projection. Preserve this snapshot only for compatibility/history until all historical references no longer need it."
   }
 }
