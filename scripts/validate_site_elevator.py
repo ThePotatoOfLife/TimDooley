@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PROJECTION = ROOT / "data" / "house" / "elevator-spatial-projection.json"
 ROOMS = ROOT / "data" / "house" / "rooms.json"
+PUBLIC_SURFACES = ROOT / "data" / "house" / "public-surfaces.json"
 ELEVATOR_CSS = ROOT / "app" / "site-elevator.css"
 ELEVATOR_JS = ROOT / "app" / "site-elevator.js"
 PATCHER = ROOT / "scripts" / "patch_public_navigation.py"
@@ -56,6 +57,7 @@ def main() -> int:
     patcher = PATCHER.read_text(encoding="utf-8", errors="replace") if PATCHER.exists() else ""
     world_map_source = WORLD_MAP_SOURCE.read_text(encoding="utf-8", errors="replace") if WORLD_MAP_SOURCE.exists() else ""
     room_contract = load_json(ROOMS, errors)
+    public_surfaces = load_json(PUBLIC_SURFACES, errors)
 
     active_rooms = {
         row.get("id"): row
@@ -142,6 +144,34 @@ def main() -> int:
             errors.append(f"{match}: route context level_id must be one of {EXPECTED_LEVELS}, got {level_id!r}")
         if room_id is not None and room_id not in active_rooms:
             errors.append(f"{match}: route context references unknown Room {room_id!r}")
+
+    active_surfaces = [
+        row for row in public_surfaces.get("surfaces", [])
+        if isinstance(row, dict) and row.get("status") == "active" and row.get("route")
+    ]
+    direct_room_prefixes = {f"/rooms/{room_id}/" for room_id in active_rooms}
+    uncovered_surfaces = []
+    for surface in active_surfaces:
+        route = surface.get("route")
+        direct_room = any(route == prefix or route.startswith(prefix) for prefix in direct_room_prefixes)
+        if direct_room:
+            continue
+        matched = any(
+            (ctx.get("match") == "/" and route == "/")
+            or (
+                isinstance(ctx.get("match"), str)
+                and ctx.get("match") != "/"
+                and (route == ctx.get("match") or route.startswith(ctx.get("match")))
+            )
+            for ctx in contexts
+        )
+        if not matched:
+            uncovered_surfaces.append(f"{surface.get('id')}:{route}")
+    if uncovered_surfaces:
+        errors.append(
+            "active public surfaces missing elevator context: "
+            + ", ".join(sorted(uncovered_surfaces))
+        )
 
     for route, (level_id, room_id) in REPRESENTATIVE_CONTEXTS.items():
         row = by_match.get(route)
