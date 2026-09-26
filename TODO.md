@@ -1108,3 +1108,5 @@ The previous `inhabited` milestone only eliminated corridor-only shells. It is *
 - [x] Timeline / Developmental Genealogy / Prediction rooms now contain concrete multi-clock and concept-mutation cases instead of only chronology rules.
 
 - [x] Bible / Esoteric / Math / Physics concrete wave: Bible now has passage-level action sequences; Esoteric Geometry has a documented 1776–1782 Great Seal design trail; Mathematics has numeric Vesica/spiral worked examples; Physics has NASA-measured Saturn-hexagon scale and dynamics.
+
+- [x] Whole Body / Symbolic Body concrete wave: baroreflex, chemoreflex and gut–brain channels added; body symbolism now carries thalamic nuclei, pineal/SCN pathway, 33 vertebrae vs 31 spinal-nerve-pair distinctions and self-falsifying crosswalk examples.
