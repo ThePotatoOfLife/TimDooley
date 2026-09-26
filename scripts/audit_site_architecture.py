@@ -12,6 +12,9 @@ REPORT=ROOT/".quality-logs"/"site-architecture-audit.json"
 STYLE_SCRIPT=re.compile(r"<(?:style|script)\\b[\\s\\S]*?</(?:style|script)>",re.I)
 ANCHOR_HREF=re.compile(r"<a\\b[^>]*href=[\\\"']([^\\\"']+)[\\\"']", re.I)
 BUTTON=re.compile(r"<button\\b",re.I); NAV=re.compile(r"<nav\\b",re.I)
+FIRST_NAV=re.compile(r"<nav\\b[^>]*>([\\s\\S]*?)</nav>",re.I)
+ANCHOR_FULL=re.compile(r"<a\\b[^>]*href=[\\\"\']([^\\\"\']+)[\\\"\'][^>]*>([\\s\\S]*?)</a>",re.I)
+TAG=re.compile(r"<[^>]+>")
 H1=re.compile(r"<h1\\b",re.I); H2=re.compile(r"<h2\\b",re.I)
 EXTERNAL=("http://","https://","//","mailto:","tel:","javascript:","data:","blob:")
 BUDGETS={
@@ -75,6 +78,15 @@ def main()->int:
         pre_navs=count_before(visible,first_h2,NAV)
         mobile_stack_score=first_nav_links + pre_buttons + max(0,pre_navs-1)*2
         internal=[resolve_href(route,h) for h in hrefs]; internal=[x for x in internal if x]
+        cta_rows=[]
+        for href,label_html in ANCHOR_FULL.findall(visible):
+            label=re.sub(r"\\s+"," ",TAG.sub(" ",label_html)).strip()
+            if not re.match(r"^(read|open|enter)\\b",label,re.I): continue
+            target=resolve_href(route,href)
+            if not target: continue
+            target_id=route_to_id.get(target)
+            target_job=(by_id.get(target_id) or {}).get("reader_job") if target_id else None
+            cta_rows.append({"label":label,"target":target,"target_surface":target_id,"target_reader_job":target_job})
         registered_targets={x for x in internal if x in registered_routes and x!=route}; target_sets[sid]=registered_targets
         counts=Counter(internal); repeated=sorted((t,c) for t,c in counts.items() if c>=4)
         budget=SPECIAL_BUDGETS.get(sid,BUDGETS.get(row.get("surface_type"),BUDGETS["guide"]))
@@ -85,8 +97,12 @@ def main()->int:
         if repeated: warnings.append({"code":"repeated-destination","surface":sid,"targets":repeated[:12]})
         if not h1: warnings.append({"code":"missing-h1","surface":sid})
         if len(registered_targets)>18: warnings.append({"code":"high-registered-outdegree","surface":sid,"count":len(registered_targets)})
+        for cta in cta_rows:
+            target_id=cta.get("target_surface")
+            if target_id and (by_id.get(target_id) or {}).get("surface_type") in {"hub","explorer"}:
+                warnings.append({"code":"read-open-enter-to-hub","surface":sid,**cta})
         runtime_href_literals=len(re.findall(r'href(?:=|\\s*[:+])', raw, flags=re.I))-len(hrefs)
-        metrics.append({"id":sid,"route":route,"surface_type":row.get("surface_type"),"visibility":row.get("visibility"),"reader_job":row.get("reader_job"),"source":path.relative_to(ROOT).as_posix(),"authored_anchor_hrefs":len(hrefs),"runtime_or_script_href_literals":max(0,runtime_href_literals),"buttons":len(BUTTON.findall(visible)),"navs":len(NAV.findall(visible)),"pre_substance_links":pre_links,"pre_substance_buttons":pre_buttons,"first_nav_links":first_nav_links,"pre_substance_navs":pre_navs,"mobile_precontent_stack_score":mobile_stack_score,"registered_outdegree":len(registered_targets),"registered_targets":sorted(registered_targets)})
+        metrics.append({"id":sid,"route":route,"surface_type":row.get("surface_type"),"visibility":row.get("visibility"),"reader_job":row.get("reader_job"),"source":path.relative_to(ROOT).as_posix(),"authored_anchor_hrefs":len(hrefs),"runtime_or_script_href_literals":max(0,runtime_href_literals),"buttons":len(BUTTON.findall(visible)),"navs":len(NAV.findall(visible)),"pre_substance_links":pre_links,"pre_substance_buttons":pre_buttons,"first_nav_links":first_nav_links,"pre_substance_navs":pre_navs,"mobile_precontent_stack_score":mobile_stack_score,"registered_outdegree":len(registered_targets),"registered_targets":sorted(registered_targets),"promise_ctas":cta_rows})
     overlaps=[]; ids=sorted(target_sets)
     for i,left in enumerate(ids):
         a=target_sets[left]
@@ -101,7 +117,8 @@ def main()->int:
         sid=row["id"]
         targets=target_sets.get(sid,set())
         parent=row.get("primary_parent")
-        if not targets and sid!="home":
+        meaningful_targets={t for t in targets if route_to_id.get(t)!="home"}
+        if not meaningful_targets and sid!="home":
             dead_ends.append({"surface":sid,"route":normalize_route(row.get("canonical_route") or row.get("route") or "/"),"parent":parent})
             warnings.append({"code":"registered-dead-end","surface":sid,"parent":parent})
 
@@ -116,7 +133,7 @@ def main()->int:
                 if key not in seen_cycles:
                     seen_cycles.add(key)
                     short_cycles.append({"length":2,"surfaces":list(key)})
-    report={"version":"1.1.0","registry_version":data.get("version"),"surface_count":len(rows),"errors":errors,"warnings":warnings,"overlap_pairs":overlaps,"dead_ends":dead_ends,"short_cycles":short_cycles,"metrics":metrics,"notes":["Density budgets are page-type heuristics, not release-failure thresholds.","First-nav link-wall warns above four links; mobile pre-content stack score combines first-nav links, buttons and extra nav rows before the first substantive H2.","Registered outdegree counts only links to other registered public surfaces; deep records and anchors remain separate.","Two-way cycles are review signals: reciprocal orientation may be healthy, repeated hub bouncing may not be.","Overlap is a review signal for redundant reader jobs, not proof that two surfaces should merge."]}
+    report={"version":"1.1.0","registry_version":data.get("version"),"surface_count":len(rows),"errors":errors,"warnings":warnings,"overlap_pairs":overlaps,"dead_ends":dead_ends,"short_cycles":short_cycles,"metrics":metrics,"notes":["Density budgets are page-type heuristics, not release-failure thresholds.","First-nav link-wall warns above four links; mobile pre-content stack score combines first-nav links, buttons and extra nav rows before the first substantive H2.","Registered outdegree counts only links to other registered public surfaces; deep records and anchors remain separate.","Two-way cycles are review signals: reciprocal orientation may be healthy, repeated hub bouncing may not be.","Overlap is a review signal for redundant reader jobs, not proof that two surfaces should merge.","Read/Open/Enter CTAs pointing to registered hub/explorer shells are review signals because promise language should normally land on substance, not another directory."]}
     REPORT.parent.mkdir(parents=True,exist_ok=True); REPORT.write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
     print(f"SITE ARCHITECTURE AUDIT: {len(rows)} active surfaces · {len(errors)} errors · {len(warnings)} warnings · {len(overlaps)} high-overlap pairs")
     for item in warnings[:12]: print(f"- WARN {item['code']}: {item.get('surface',item.get('left','site'))}")
