@@ -629,3 +629,8 @@ The corridor-only baseline is eliminated across the 38 registered nested subject
 
 - [x] Room inhabitant registry now requires concrete openable routes, summaries, status boundaries and valid nested-Room placement; enforced by `scripts/validate_room_inhabitants.py` in CI.
 - [x] High-value Room interface contracts are protected by `scripts/validate_room_interfaces.py`; adjacent Room doors now expose what changes and what must remain guarded when crossing.
+
+- [x] Current non-retired knowledge corpus reachability is complete: 893/893 canonical records are reachable through governed Room/House surfaces; 41 retired `knowledge/fbi/` records remain intentionally outside the current corpus.
+- [x] Deep archive drawers integrate 18 major corpora (866 drawer-covered records) into nested Rooms, Dwellings and House without flattening every backend record into a featured card.
+- [x] Dwelling deep archive indexes expose the larger corpora behind each domain in addition to the curated featured-object shelf.
+- [ ] Future corpus work should prioritize promotion quality, synthesis, dated examples and reader journeys rather than raw reachability; the current corpus already has governed access.
