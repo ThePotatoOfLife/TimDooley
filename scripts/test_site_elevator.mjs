@@ -182,7 +182,7 @@ assert.ok(css.includes('[data-elevator-level="heaven"]::before'),'Heaven needs a
 assert.ok(css.includes('[data-elevator-level="plane"]::before'),'Plane needs a distinct pixel-biome layer');
 assert.ok(css.includes('[data-elevator-level="below"]::before'),'Below needs a distinct pixel-biome layer');
 assert.ok(css.includes('border-radius:0'),'terminal Room tiles should not drift back into pill styling');
-assert.ok(css.includes('content:"HERE"'),'actual Room tile needs an explicit HERE terminal marker');
+assert.ok(css.includes('background:var(--site-elevator-accent)'),'active Room tile needs a compact location beacon');
 assert.ok(css.includes('border-style:dashed'),'secondary projected Rooms must remain visually subordinate');
 assert.ok(css.includes('[data-elevator-level="plane"] .site-elevator-room'),'Plane Room tiles need block-earth material styling');
 assert.ok(css.includes('[data-elevator-level="heaven"] .site-elevator-room'),'Heaven Room tiles need sky material styling');
@@ -207,6 +207,8 @@ assert.ok(css.includes('grid-auto-rows:minmax(26px,auto)'),'wrapped Room rows mu
 assert.ok(css.includes('.site-elevator-up::before{content:"△"}'),'up arrow needs triangle framing');
 assert.ok(css.includes('.site-elevator-down::before{content:"▽"}'),'down arrow needs inverted triangle framing');
 assert.ok(css.includes('font:400 21px/1'),'triangle framing should be slightly larger on desktop');
+assert.ok(!css.includes('pointer-events:none;\n  z-index:-1;\n}\n.site-elevator-up::before'),'triangle framing must not disappear behind the control column');
+assert.ok(css.includes('text-wrap:balance'),'Room labels should wrap into balanced readable lines');
 assert.ok(source.includes('site-elevator-floor-code'),'runtime must render terminal floor code');
 assert.ok(source.includes('header.dataset.elevatorRoom=spatial.roomId'),'runtime must publish the current Room on the header');
 assert.ok(source.includes("selectedLevel===spatial.levelId"),'active Room highlight must only appear on the actual floor');
@@ -218,6 +220,8 @@ assert.ok(source.includes("sessionStorage.getItem(key)"),'elevator governance da
 assert.ok(source.includes("cache:'no-cache'"),'first governance fetch should revalidate rather than bypass all caching');
 assert.ok(source.includes("requestAnimationFrame(publishClearance)"),'every render must republish top clearance after Room wrapping');
 assert.ok(source.includes("setAttribute('aria-busy','true')"),'loading header should expose busy state');
+assert.ok(source.includes('const runtimeScript='),'elevator must capture its script URL before deferred context can disappear');
+assert.ok(source.includes("'aria-keyshortcuts','ArrowUp ArrowDown Home'"),'header keyboard navigation should be discoverable to assistive tech');
 assert.ok(source.includes("'ORIENTATION OFFLINE'"),'failed governance hydration needs a visible fallback state');
 
 console.log('Site elevator resolver + visual contract passed.');
