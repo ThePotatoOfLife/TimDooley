@@ -286,6 +286,32 @@ def main() -> int:
         if required not in discovery_builder:
             errors.append(f"generated question template lost subject-first marker: {required}")
 
+    # Final-pruning regression guards.
+    room_css=(ROOT/"app/room-interior.css").read_text(encoding="utf-8",errors="replace")
+    if ".inner-center" in room_css:
+        errors.append("retired inner-center styling returned to shared Room CSS")
+    journey_source=(ROOT/"app/house-journey.js").read_text(encoding="utf-8",errors="replace")
+    if "main.querySelector('.local-center')" in journey_source:
+        errors.append("House journey restored retired local-center insertion fallback")
+    if "firstReader.insertAdjacentElement('afterend',section)" not in journey_source:
+        errors.append("House floor projection no longer follows first Dwelling substance")
+
+    generated_builder=(ROOT/"scripts/build_site.py").read_text(encoding="utf-8",errors="replace")
+    record_block=generated_builder.split("def generate_record_pages",1)[-1].split("def generate_sitemap",1)[0]
+    for forbidden in (
+        "<h2>Canonical source record</h2>",
+        "<br><code>{esc(path)}</code>",
+    ):
+        if forbidden in generated_builder:
+            errors.append(f"generated knowledge pages expose backend path taxonomy again: {forbidden}")
+    for required in (
+        "data-generated-knowledge-meta",
+        "machine_meta = {",
+        'body = "".join(text_blocks(data))',
+    ):
+        if required not in generated_builder:
+            errors.append(f"generated record projection lost subject-first marker: {required}")
+
     authored_groups = [
         audit.get("authored_history") or [],
         audit.get("second_authored_wave") or [],
