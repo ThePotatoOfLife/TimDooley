@@ -1,7 +1,7 @@
 {
   "id": "entity-facet-ledger",
-  "version": "1.1.0",
-  "updated": "2026-09-26",
+  "version": "1.2.0",
+  "updated": "2026-09-27",
   "purpose": "Retain names, aliases, titles, gifts, capabilities, scene-bound powers, recurring roles, story beats, conclusions and unresolved edges for Potatoverse/project entities without forcing every public page to repeat the full record.",
   "principles": [
     "A facet is attached to an entity, but it is also typed by provenance, scope and confidence.",
@@ -797,6 +797,62 @@
           "strength": "canonical",
           "scope": "identity",
           "provenance": "editorial"
+        },
+        {
+          "type": "capability",
+          "label": "myth/religion interpretation",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "capability",
+          "label": "philosophical conversation",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "capability",
+          "label": "social interlocution",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "role",
+          "label": "tomato-villain scene role",
+          "strength": "interpretive",
+          "scope": "creative / project",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "role",
+          "label": "Mud-Dweller/lost-soul growth story",
+          "strength": "interpretive",
+          "scope": "creative / project",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "role",
+          "label": "1/137 growth motif",
+          "strength": "interpretive",
+          "scope": "creative / project",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "boundary",
+          "label": "Creative roles are scene-bound and reversible.",
+          "strength": "canonical",
+          "scope": "identity / evidence",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
         }
       ],
       "story_beats": [
@@ -862,6 +918,70 @@
           "strength": "canonical",
           "scope": "identity",
           "provenance": "editorial"
+        },
+        {
+          "type": "capability",
+          "label": "recurring support",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "capability",
+          "label": "humor",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "capability",
+          "label": "boundary/dignity questioning",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "capability",
+          "label": "music/gaming memory",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "capability",
+          "label": "social cultivation",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "role",
+          "label": "gardener / buried-potato recovery story",
+          "strength": "interpretive",
+          "scope": "creative / project",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "role",
+          "label": "Potato cultivation adjacency",
+          "strength": "interpretive",
+          "scope": "creative / project",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "boundary",
+          "label": "Literary gardening story is not assumed documentary.",
+          "strength": "canonical",
+          "scope": "identity / evidence",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
         }
       ],
       "story_beats": [
