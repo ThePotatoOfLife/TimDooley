@@ -1,5 +1,5 @@
 {
-  "version": "3.5.3",
+  "version": "3.5.4",
   "updated": "2026-09-26",
   "authority": "project-synthesis",
   "purpose": "Bind the current project center, operators, living metabolisms, Rooms, tests, outputs and public composition into one center-out synthesis without replacing canonical owners. Development history is referenced, not embedded as current-state weight.",
@@ -2129,6 +2129,37 @@
       "foundation-rooms": "Owns concrete Foundation instances: origin Door, physical place, House owner and present continuity.",
       "materialized-now": "Owns registry counts only; it must not restate the lifecycle or crystallization pipeline.",
       "rule": "Do not add another homepage section that re-explains a lifecycle already owned by Route, Foundation, Structure or a canonical specialist reader."
+    },
+    "runtime_input_contract": {
+      "rule": "Homepage runtime should prefer stable live authorities. Wave/date-named inputs require an explicit disposition and must not be added casually.",
+      "stable_live_authorities": [
+        "data/house/project-synthesis.json",
+        "data/house/subrooms.json",
+        "data/house/lower-plane-population-atlas.json",
+        "data/house/layer-terrain-regime-atlas.json",
+        "data/house/concept-topology.json",
+        "data/axis-flow-contract.json",
+        "data/house/foundation-landscape-synthesis.json",
+        "data/house/foundation-room-atlas.json"
+      ],
+      "legacy_named_active_inputs": [
+        {
+          "path": "data/house/entity-dossiers-wave-001.json",
+          "role": "homepage reality-case content",
+          "disposition": "active source with legacy wave filename; rename/promote only when repository-wide references can be migrated safely"
+        },
+        {
+          "path": "data/house/route-case-matrix-wave-001.json",
+          "role": "homepage route contrast and concrete route-case content",
+          "disposition": "active source with legacy wave filename; rename/promote only when repository-wide references can be migrated safely"
+        }
+      ],
+      "retired_homepage_runtime_inputs": [
+        "data/house/foundations-wave-001.json",
+        "data/house/foundations-wave-002.json",
+        "data/house/foundations-wave-003.json"
+      ],
+      "replacement": "Foundation count and concrete Foundation Room state now come from data/house/foundation-room-atlas.json; trajectory teaching comes from data/house/foundation-landscape-synthesis.json."
     }
   },
   "route_instrumentation": {
