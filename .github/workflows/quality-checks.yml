@@ -37,6 +37,7 @@ jobs:
           python scripts/validate_room_holdings.py
           python scripts/validate_dwelling_featured_objects.py
           python scripts/validate_public_reader_completeness.py
+          python scripts/validate_room_interfaces.py
           python scripts/validate_legacy_fbi_redirects.py
           python scripts/validate_seo_pipeline.py
           python scripts/validate_repo_hygiene.py
