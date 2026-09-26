@@ -70,6 +70,8 @@ def main()->int:
         errors.append("architecture audit base-href self-check failed")
     if not VAGUE_STANDALONE_LABEL.match("Explore") or VAGUE_STANDALONE_LABEL.match("Archive explorer"):
         errors.append("architecture audit vague-label self-check failed")
+    if not named_open_matches_target("Open World Map",{"title":"World Map"}) or named_open_matches_target("Open Foundation Rooms",{"title":"House"}):
+        errors.append("architecture audit promise-CTA self-check failed")
     data=json.loads(REGISTRY.read_text(encoding="utf-8"))
     rows=[r for r in data.get("surfaces",[]) if isinstance(r,dict) and r.get("status")=="active"]
     by_id={r["id"]:r for r in rows}; route_to_id={}
@@ -105,8 +107,10 @@ def main()->int:
             target=resolve_href(link_base,href)
             if not target: continue
             target_id=route_to_id.get(target)
-            target_job=(by_id.get(target_id) or {}).get("reader_job") if target_id else None
-            cta_rows.append({"label":label,"target":target,"target_surface":target_id,"target_reader_job":target_job})
+            target_row=(by_id.get(target_id) or {}) if target_id else {}
+            target_job=target_row.get("reader_job") if target_id else None
+            target_title=target_row.get("title") if target_id else None
+            cta_rows.append({"label":label,"target":target,"target_surface":target_id,"target_title":target_title,"target_reader_job":target_job})
         registered_targets={x for x in internal if x in registered_routes and x!=route}; target_sets[sid]=registered_targets
         counts=Counter(internal); repeated=sorted((t,c) for t,c in counts.items() if c>=4)
         budget=SPECIAL_BUDGETS.get(sid,BUDGETS.get(row.get("surface_type"),BUDGETS["guide"]))
@@ -119,8 +123,11 @@ def main()->int:
         if len(registered_targets)>18: warnings.append({"code":"high-registered-outdegree","surface":sid,"count":len(registered_targets)})
         for cta in cta_rows:
             target_id=cta.get("target_surface")
-            if target_id and (by_id.get(target_id) or {}).get("surface_type") in {"hub","explorer"}:
-                warnings.append({"code":"read-open-enter-to-hub","surface":sid,**cta})
+            target_row=(by_id.get(target_id) or {}) if target_id else {}
+            if target_id and target_row.get("surface_type") in {"hub","explorer"}:
+                if named_open_matches_target(cta.get("label",""),target_row):
+                    continue
+                warnings.append({"code":"promise-cta-to-hub","surface":sid,**cta})
         runtime_href_literals=len(re.findall(r'href(?:=|\s*[:+])', raw, flags=re.I))-len(hrefs)
         metrics.append({"id":sid,"route":route,"surface_type":row.get("surface_type"),"visibility":row.get("visibility"),"reader_job":row.get("reader_job"),"source":path.relative_to(ROOT).as_posix(),"authored_anchor_hrefs":len(hrefs),"runtime_or_script_href_literals":max(0,runtime_href_literals),"buttons":len(BUTTON.findall(visible)),"navs":len(NAV.findall(visible)),"pre_substance_links":pre_links,"pre_substance_buttons":pre_buttons,"first_nav_links":first_nav_links,"pre_substance_navs":pre_navs,"mobile_precontent_stack_score":mobile_stack_score,"registered_outdegree":len(registered_targets),"registered_targets":sorted(registered_targets),"promise_ctas":cta_rows})
     overlaps=[]; ids=sorted(target_sets)
@@ -174,14 +181,14 @@ def main()->int:
         if not internal:
             warnings.append({"code":"authored-dead-end","surface":rel})
 
-    report={"version":"1.2.0","registry_version":data.get("version"),"surface_count":len(rows),"errors":errors,"warnings":warnings,"overlap_pairs":overlaps,"dead_ends":dead_ends,"short_cycles":short_cycles,"authored_surfaces":standalone,"metrics":metrics,"notes":["Density budgets are page-type heuristics, not release-failure thresholds.","First-nav link-wall warns above four links; mobile pre-content stack score combines first-nav links, buttons and extra nav rows before the first substantive H2.","Registered outdegree counts only links to other registered public surfaces; deep records and anchors remain separate.","Two-way cycles are review signals: reciprocal orientation may be healthy, repeated hub bouncing may not be.","Overlap is a review signal for redundant reader jobs, not proof that two surfaces should merge.","Read/Open/Enter CTAs pointing to registered hub/explorer shells are review signals because promise language should normally land on substance, not another directory.","Bare More/Deep/Explore/Context/Archive labels are flagged when they do not state destination intent."]}
+    report={"version":"1.2.0","registry_version":data.get("version"),"surface_count":len(rows),"errors":errors,"warnings":warnings,"overlap_pairs":overlaps,"dead_ends":dead_ends,"short_cycles":short_cycles,"authored_surfaces":standalone,"metrics":metrics,"notes":["Density budgets are page-type heuristics, not release-failure thresholds.","First-nav link-wall warns above four links; mobile pre-content stack score combines first-nav links, buttons and extra nav rows before the first substantive H2.","Registered outdegree counts only links to other registered public surfaces; deep records and anchors remain separate.","Two-way cycles are review signals: reciprocal orientation may be healthy, repeated hub bouncing may not be.","Overlap is a review signal for redundant reader jobs, not proof that two surfaces should merge.","Read/Enter CTAs and mismatched Open CTAs pointing to hub/explorer shells are review signals; a named Open X → X hub is treated as valid navigation.","Bare More/Deep/Explore/Context/Archive labels are flagged when they do not state destination intent."]}
     REPORT.parent.mkdir(parents=True,exist_ok=True); REPORT.write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
     print(f"SITE ARCHITECTURE AUDIT: {len(rows)} active surfaces · {len(errors)} errors · {len(warnings)} warnings · {len(overlaps)} high-overlap pairs")
     warning_counts=Counter(item.get("code","unknown") for item in warnings)
     if warning_counts:
         print("- Warning classes: " + " · ".join(f"{code}={count}" for code,count in sorted(warning_counts.items())))
-    priority_codes={"authored-dead-end","registered-dead-end","read-open-enter-to-hub","vague-link-label","first-nav-link-wall","mobile-precontent-stack"}
-    priority_rank={"authored-dead-end":0,"registered-dead-end":1,"vague-link-label":2,"read-open-enter-to-hub":3,"first-nav-link-wall":4,"mobile-precontent-stack":5}
+    priority_codes={"authored-dead-end","registered-dead-end","promise-cta-to-hub","vague-link-label","first-nav-link-wall","mobile-precontent-stack"}
+    priority_rank={"authored-dead-end":0,"registered-dead-end":1,"vague-link-label":2,"promise-cta-to-hub":3,"first-nav-link-wall":4,"mobile-precontent-stack":5}
     priority=sorted((item for item in warnings if item.get("code") in priority_codes),key=lambda item:(priority_rank.get(item.get("code"),99),item.get("surface","")))
     for item in priority[:30]:
         detail=item.get("label") or item.get("target") or item.get("count") or item.get("score") or ""
