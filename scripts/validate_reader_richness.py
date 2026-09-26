@@ -186,6 +186,22 @@ def main() -> int:
     if nested_meta_hits:
         errors.append("nested Rooms regressed to meta-first inner-center shells: "+", ".join(nested_meta_hits[:12]))
 
+    # A-Z is a name-first explorer: orientation cards must actually open a
+    # canonical destination, except explicitly disambiguated cards that contain links.
+    az_source=(ROOT/"index-a-z/index.html").read_text(encoding="utf-8",errors="replace")
+    orientation_match=re.search(r'<section><h2>Orientation set</h2>([\s\S]*?)</section>',az_source,re.I)
+    if not orientation_match:
+        errors.append("A-Z lost its Orientation set")
+    else:
+        orientation=orientation_match.group(1)
+        for card in re.findall(r'(<(?:a|div)\b[^>]*class=["\'][^"\']*\bcard\b[^"\']*["\'][^>]*>[\s\S]*?</(?:a|div)>)',orientation,re.I):
+            opening=card.split(">",1)[0]
+            if opening.lstrip().lower().startswith("<a") and "href=" not in opening.lower():
+                errors.append("A-Z contains an anchor card without href")
+            if opening.lstrip().lower().startswith("<div") and "<a " not in card.lower():
+                label=plain_text(card)[:80]
+                errors.append(f"A-Z dead noun card has no destination: {label}")
+
     authored_groups = [
         audit.get("authored_history") or [],
         audit.get("second_authored_wave") or [],
