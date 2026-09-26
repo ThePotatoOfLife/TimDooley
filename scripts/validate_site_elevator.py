@@ -102,6 +102,9 @@ def main() -> int:
             '[data-elevator-level="below"]::before',
             "border-radius:0",
             "background:transparent",
+            "display:block!important",
+            "display:grid!important",
+            "margin:0!important",
         )
         for token in css_tokens:
             if token not in css:
