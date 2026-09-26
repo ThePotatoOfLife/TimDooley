@@ -178,6 +178,9 @@ def validate_surfaces(errors,rooms):
         elif by[sid].get('canonical_route')!=route: errors.append(f'{sid} canonical route must be {route}')
     if by.get('interpretive-justice',{}).get('primary_parent')!='philosophy':
         errors.append('Interpretive Justice specialist surface must live under Philosophy')
+    for sid in ('questions','index-a-z','paths'):
+        if by.get(sid,{}).get('primary_parent')!='explore':
+            errors.append(f'{sid} retrieval surface must live under Explore')
     for sid in p.get('secondary_global_ids',[]):
         if sid not in by: errors.append(f'secondary_global_ids references unknown surface {sid}')
     room_ids={x.get('id') for x in rooms.get('rooms',[]) if isinstance(x,dict)}; seen={}; legacy={}
@@ -771,6 +774,22 @@ def validate_project_synthesis(errors):
     levels={x.get('id'):x for x in scoped.get('levels',[]) if isinstance(x,dict)}
     if levels.get('semantic-global',{}).get('center')!='potato-of-life': errors.append('scoped center semantic-global must remain Potato of Life')
     if levels.get('spatial-global',{}).get('center')!='axis': errors.append('scoped center spatial-global must remain Axis')
+    families={x.get('id'):x for x in data.get('reader_route_families',[]) if isinstance(x,dict)}
+    required_families={
+        'tim-life-making','time-history','evidence-context','archive-retrieval',
+        'house-navigation','world-field','meaning-and-testing'
+    }
+    missing_families=sorted(required_families-set(families))
+    if missing_families:
+        errors.append('project synthesis missing reader route families: '+', '.join(missing_families))
+    retrieval=set(families.get('archive-retrieval',{}).get('routes',[]))
+    for route in ('/explore/','/questions/','/index-a-z/','/paths/'):
+        if route not in retrieval:
+            errors.append(f'archive retrieval family missing route: {route}')
+    tim_routes=set(families.get('tim-life-making',{}).get('routes',[]))
+    for route in ('/tim-dooley/','/tim-dooley/story/','/corporium/','/works/'):
+        if route not in tim_routes:
+            errors.append(f'Tim life/making family missing route: {route}')
     p0=data.get('depth_program',{}).get('active_p0',[])
     required_p0=['door-liminality','spirit-relation','culture-formation-control','axis-local-centers','fruit-consequence','tree-branching']
     if p0!=required_p0: errors.append('project synthesis P0 depth programme drifted')
