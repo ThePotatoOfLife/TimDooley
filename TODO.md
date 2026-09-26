@@ -1080,3 +1080,26 @@ The archive now needs to remember **what makes an entity itself** across pages w
 - [x] Fix mixed-precision facet clock derivation so year-only and exact dates in the same year do not create fake role changes; fall back to earliest sourced story beat when explicit first_seen is absent.
 
 - [x] Establish selective projection rule: do not project facet strips onto every person page; add them only where they clarify identity or prevent creative/documentary bleed.
+
+
+### Concrete Room population pass
+
+The previous `inhabited` milestone only eliminated corridor-only shells. It is **not** a completion claim. The next audit must treat every Room heading/card as incomplete until it contains subject-specific material: names, dates, mechanisms, examples, texts, artifacts, cases, quantitative anchors, source passages, contradictions or explicit recovery questions.
+
+- [x] Reframe the 38/38 “inhabited” milestone as baseline reader presence, not substantive completion.
+- [x] Build `knowledge/core/source-to-swamp-vertical-field.json` so Source/Father/House/Garden/Throne/Mountain/Gate/Ladder/World/Roots/Forge/Swamp/Drain form one inhabitable field instead of scattered definitions.
+- [x] Put that field directly inside Symbolic Architecture with Crown, Father-center, Heaven's Gate, Ladder, World, Tree fork, roots, Forge and Swamp/Drain populated by concrete project functions and biblical neighbors.
+- [x] Ground Theology's upper field in Genesis 1–3, Genesis 28, Isaiah 2/6, John 14 and the project's dated 18 May 2026 Heaven's-Gate→Garden phrase while preserving source seams.
+- [x] Place core identities spatially/functionally inside the House rather than leaving them as isolated title definitions.
+- [ ] Repeat the same **concrete-object audit** across all 38 nested Rooms: count real named anchors, not bytes/word count.
+- [ ] Economy & Finance: replace generic stock/flow examples with dated CBO/BIS/Treasury/Fed/ECB cases, real instrument examples and at least one worked obligation network.
+- [ ] Law & Justice: add worked jurisdiction/status examples from distinct legal systems, primary-source legal instruments and one procedural case walk without making one case own the Room.
+- [ ] Politics & Governance: add dated institutional examples and neutral policy-lifecycle cases from several systems; keep user/project politics descriptive.
+- [ ] Infrastructure & Capability: add concrete grid/port/data-center/logistics failure chains and recovery cases.
+- [ ] Geography & Countries: add actual country/region examples showing point/polygon/network distinctions and current map provenance.
+- [ ] Systems & Dynamics: add named canonical systems examples (feedback, hysteresis, attractors, contagion/network cascade) with one project translation each.
+- [ ] Model Testing: add one complete T0→T5 worked example and one negative/falsified example.
+- [ ] Comparative Mythology: add source-specific Yggdrasil/Duat/Meru/Bardo passages or artifacts, chronology and mismatch details beyond motif summaries.
+- [ ] Other Traditions: replace generic tradition paragraphs with named texts, institutions, practices, schools and historical dates from the newly built tradition guides.
+- [ ] Practice & Ethics: add worked Garden/Forge/Fruit decisions from concrete project scenes instead of only protocol abstractions.
+- [ ] Continue until every Room contains enough concrete nouns that its substantive paragraphs could not be pasted into another Room unchanged.
