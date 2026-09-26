@@ -192,7 +192,7 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [x] **ACCESS-010 · Search synonym pass:** governed aliases now cover CIA/FBI, Fed/Federal Reserve, ECB/Eurosystem, TTS/read aloud, News/Current World, House/Rooms, claims/statements, public witness/public record and debt/bonds/obligations.
 - [x] **ACCESS-011 · Deep-object result quality:** exact labels and aliases now receive explicit ranking boosts, object/direct-door kinds outrank generic pages, and House results expose their owning Room/context.
 - [x] **ACCESS-012 · No-hierarchy-required test:** `data/house/access-journeys.json` now defines 25 representative name-first intents with expected destinations/disambiguation and a ≤2-activation contract; site-access validation checks fixture count, destination existence, alias resolution and the interaction budget.
-- [ ] **ACCESS-013 · Specialist local-nav budget:** review every mature reader's first navigation row and keep only page-owned routes; remove global links duplicated by the dock.
+- [~] **ACCESS-013 · Specialist local-nav budget:** first major reader wave complete: Tim, Religion, Philosophy, Science, World, North, News and House now keep compact page-owned first navigation; site-access validation enforces explicit budgets for the six major readers. Remaining: extend the same review to authored specialist surfaces outside this primary set.
 - [x] **ACCESS-014 · Home hierarchy compression:** Home now keeps the compact Center → House → Rooms → Explore spine, the five canonical public Doors, and one late task-led reader router. The separate House subject corridor and cross-cutting card wall were merged so Home no longer carries a second directory for Culture/Politics/Law/Economy/World Systems.
 - [x] **ACCESS-015 · Map access integration:** the built World Map keeps the universal dock, while HUD, Inspector toggle, MapLibre bottom controls, mobile inspector panel and fixed map menus all reserve the dock’s measured clearance; World Bar remains the map-local control owner.
 - [x] **ACCESS-016 · News access integration:** Current World now keeps only its local World return above the header, places the story river before refinement controls, and leaves filters, alternate views, diagnostics and methodology secondary; global Map/Timeline/Sources access stays in the universal dock/Find.
@@ -252,7 +252,7 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [ ] **NAV-BUG-002 · “Read” means read:** scan visible links/buttons labeled Read/Open/Enter and verify they open the promised reader/content rather than another directory, abstract routing page or dead intermediate layer.
 
 ### P2 — reader focus / navigation
-- [ ] **READ-001 · First-screen door budget:** add an audit for mature reader pages that expose too many first-screen links/menus before the first substantive section.
+- [x] **READ-001 · First-screen door budget:** `audit_site_architecture.py` now records first-nav link count and warns on first navigation walls above four links in addition to the existing pre-substance link/button budgets.
 - [ ] **READ-002 · Compass coverage validation:** assert the Project Compass is added to eligible built readers and intentionally absent from Home/Map/Elevator/A–Z/object explorer.
 - [~] **READ-003 · Specialist parent continuity:** generated topic/context/record readers now expose a single clear parent breadcrumb; authored specialist surfaces still need the project-wide continuity audit.
 - [ ] **READ-004 · Dead-end reader audit:** find public pages with no meaningful onward route beyond Home and connect them to their owner or adjacent subject.
@@ -260,7 +260,7 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [ ] **READ-006 · Repeated intro blocks:** find pages where header summary, intro card and first section restate the same purpose; preserve the strongest version and remove the duplicate layer.
 - [ ] **READ-007 · Card-density audit:** identify pages using card grids mainly as navigation compensation; convert low-information cards into inline prose/links where that improves reading flow.
 - [ ] **READ-008 · Discovery-mode separation:** validate that Explore, A–Z, Questions and Paths retain visibly distinct jobs and do not converge into four near-identical indexes.
-- [ ] **READ-009 · Mobile link-wall check:** add narrow-screen tests/heuristics for page-nav + compass + local controls stacking into excessive pre-content height.
+- [x] **READ-009 · Mobile link-wall check:** the architecture audit now emits a mobile pre-content stack score combining first-nav links, buttons and extra navigation rows before the first substantive H2; major reader first-nav budgets are also enforced in the built-site access validator.
 - [~] **READ-010 · TTS semantic sectioning:** generated topic/context/record readers now expose explicit speech sections and exclude their utility navigation; generated question readers still need the same semantic audit before closure.
 
 #### P2 — data / evidence integration
