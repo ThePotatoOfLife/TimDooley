@@ -180,5 +180,8 @@ assert.ok(css.includes('.site-elevator-down::before{content:"▽"}'),'down arrow
 assert.ok(css.includes('font:400 20px/1'),'triangle framing should be slightly larger on desktop');
 assert.ok(source.includes('site-elevator-floor-code'),'runtime must render terminal floor code');
 assert.ok(source.includes('header.dataset.elevatorRoom=spatial.roomId'),'runtime must publish the current Room on the header');
+assert.ok(source.includes("selectedLevel===spatial.levelId"),'active Room highlight must only appear on the actual floor');
+assert.ok(source.includes("'HERE · '"),'actual floor must expose HERE label');
+assert.ok(source.includes("'BROWSING FLOOR'"),'non-actual floor must be clearly marked as browsing');
 
 console.log('Site elevator resolver + visual contract passed.');
