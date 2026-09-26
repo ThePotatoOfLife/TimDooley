@@ -49,7 +49,7 @@
     if(!trail.length)return;
     const style=document.createElement('style');
     style.textContent=`
-      .house-journey-ribbon{position:fixed;left:14px;right:14px;bottom:12px;z-index:9998;border:1px solid var(--site-line,#303830);background:rgba(5,8,6,.94);backdrop-filter:blur(10px);border-radius:14px;padding:7px 9px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;box-shadow:0 10px 35px rgba(0,0,0,.28)}
+      .house-journey-ribbon{position:fixed;left:14px;right:14px;bottom:calc(var(--site-access-clearance,0px) + 12px);z-index:9998;border:1px solid var(--site-line,#303830);background:rgba(5,8,6,.94);backdrop-filter:blur(10px);border-radius:14px;padding:7px 9px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;box-shadow:0 10px 35px rgba(0,0,0,.28)}
       .house-journey-ribbon-main{min-width:0;display:flex;align-items:center;gap:7px}
       .house-journey-ribbon-title{display:flex;align-items:baseline;gap:6px;white-space:nowrap}.house-journey-ribbon-title b{font:400 12px var(--site-font-serif,serif);color:var(--site-gold,#d5ba74)}.house-journey-ribbon-title small{color:var(--site-faint,#778076);font-size:7px}
       .house-journey-ribbon-track{display:flex;gap:4px;min-width:0;overflow:hidden}
