@@ -69,7 +69,7 @@ def main() -> int:
             if token not in js:
                 errors.append(f"site elevator JS missing clearance marker: {token}")
 
-    if ".app{height:calc(100% - var(--site-elevator-clearance,0px))" not in world_map_source.replace(" ",""):
+    if ".app{height:calc(100%-var(--site-elevator-clearance,0px))" not in world_map_source.replace(" ",""):
         errors.append("World Map full-screen app must reserve measured site-elevator top clearance")
 
     for token in ("inject_site_elevator", "patch_site_elevator", "app/site-elevator.css", "app/site-elevator.js"):
