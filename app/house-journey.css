@@ -38,11 +38,14 @@
 
 .room-inhabitants-panel{margin:34px 0 90px}
 .room-inhabitant-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:9px;margin-top:14px}
-.room-inhabitant-card{border:1px solid var(--site-line,#303830);padding:12px;text-decoration:none;color:inherit;display:block}
+.room-inhabitant-card{border:1px solid var(--site-line,#303830);padding:12px;color:inherit;display:flex;flex-direction:column;min-height:150px}
 .room-inhabitant-card:hover{border-color:#61745b}
 .room-inhabitant-card strong{display:block;color:var(--site-gold,#d5ba74);font:400 17px var(--site-font-serif,serif)}
 .room-inhabitant-card small{display:block;color:var(--site-muted,#9ba59a);margin-top:4px;text-transform:uppercase;letter-spacing:.05em;font-size:7px}
-.room-inhabitant-card span{display:block;color:var(--site-muted,#9ba59a);font-size:9px;line-height:1.4;margin-top:6px}
+.room-inhabitant-card p{color:var(--site-muted,#9ba59a);font-size:9px;line-height:1.45;margin:8px 0 12px;flex:1}
+.room-inhabitant-actions{display:flex;flex-wrap:wrap;gap:7px 12px;margin-top:auto}
+.room-inhabitant-actions a{color:var(--site-green,#9eb58d);font-size:8px;text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px}
+.room-inhabitant-actions a:hover,.room-inhabitant-actions a:focus-visible{border-bottom-color:var(--site-line,#303830);outline:none}
 
 .room-richness{margin:52px 0 60px;max-width:930px}
 .room-richness-intro{font:400 clamp(20px,2.4vw,29px)/1.5 var(--site-font-serif,serif);color:var(--site-ink,#e7e1d2);max-width:840px;margin:8px 0 24px}
