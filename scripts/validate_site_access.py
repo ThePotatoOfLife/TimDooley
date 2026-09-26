@@ -120,7 +120,7 @@ for group_name in ("go_now","find","direct_doors"):
         if entry_id not in entries:
             errors.append(f"site-access group {group_name} references unknown entry: {entry_id}")
 
-for token in ("label===t","priority(e)","site-access-context","await loadIndex()","returnFocus","--site-access-clearance","resultLinks","focusResult","moveResultFocus","ArrowDown","ArrowUp","Home","End","sessionStorage.getItem(key)","cache:'no-cache'"):
+for token in ("label===t","priority(e)","site-access-context","await loadIndex()","returnFocus","--site-access-clearance","resultLinks","focusResult","moveResultFocus","ArrowDown","ArrowUp","Home","End","sessionStorage.getItem(key)","cache:'no-cache'","loadPromise=null","if(loadPromise)return loadPromise","loaded=received"):
     if token not in js and token not in css:
         errors.append(f"quick-access behavior missing regression marker: {token}")
 
