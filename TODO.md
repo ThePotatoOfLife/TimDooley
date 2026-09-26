@@ -1061,10 +1061,14 @@ The archive now needs to remember **what makes an entity itself** across pages w
 - [ ] Add **first seen / last seen / first title / first gift / first role-change** clocks where the source record supports them.
 - [~] Add story-beat references to the facet ledger: primary/source pointers now exist for Fresh Potato, Ready Student, Sentinel of Silence, Elder Grapes, Machine Elves and satirical Potatoism figures; continue across remaining entities.
 - [ ] Add a compact “signature facets” projection to CIA dossiers only after it can distinguish ordinary capability, source-era title and creative enhancement.
-- [ ] Add a facet validator: a `species_trait` should require repeated evidence or explicit source generalization; `hypothesis` should never render as settled canon.
+- [x] Add a facet validator: species traits require repeated/canonical evidence or explicit generalization; hypothesis/unresolved strengths are constrained and source pointers are checked in CI.
 - [ ] Add “who has this gift/title/motif?” derived views only later; do not add buttons to entity pages now.
 - [ ] Fold orphan recovery-shelf entities into the ledger even when they do not justify a public room; retained identity should not depend on having a page.
 - [ ] Reconcile duplicate title stores (cast-book aliases, enhancement index, CIA character files, being registry) into the facet ledger while leaving those older stores as source inputs.
 - [ ] Track when conclusions change: preserve prior conclusion + superseding evidence instead of overwriting interpretive history.
 
 - [~] Add first-seen clocks to orphan entities even when they do not have public pages; first-source pointers now exist for the first literary expansion wave.
+
+- [x] Define compact entity-facet rendering rules so pages can retain identity without turning facets into navigation or dashboards.
+- [x] Add JSON schema for the Entity Facet Ledger and document the public rendering contract.
+- [x] Add review-only corpus-mining workflow that proposes facets from known aliases and structured sources but never auto-promotes canon.
