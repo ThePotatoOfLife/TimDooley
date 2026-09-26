@@ -172,3 +172,12 @@ Reader-richness validation now rejects a return of visible Canonical owners / Di
 ## Legacy-route crawl contract
 
 The site architecture audit now builds a registry of every `legacy_routes` value in the public-surface contract. Any current registered public surface linking to one of those compatibility URLs is reported as `live-link-to-legacy-route` with the canonical surface that should replace it. Redirect shells may remain for historical inbound traffic, but the current site must not intentionally route readers through them.
+
+
+## Final simplification wave
+
+The old circular nested-Room design still survived in `app/room-interior.css` after all 35 HTML instances had been removed. That dead `.inner-center` styling has now been deleted. The shared House journey code also retained a `.local-center` fallback and attempted to place the three-floor House projection around the old architectural splash/action strip.
+
+The projection rule is now **subject first, architecture second**: on canonical Dwellings the first `.dwelling-reader` section is rendered before the three-floor projection. If no authored reader exists, the projection falls back after the page header rather than prepending itself. This also removes the obsolete local-center lookup from the runtime.
+
+Generated record pages were brought under the same rule: structured record content is visible first; key/search terms follow; raw source paths, record kind and branch metadata are embedded as `data-generated-knowledge-meta` instead of displayed as a final “Canonical source record” filename section. Topic/context collection pages remain collection views because their promised object is navigation across related records.
