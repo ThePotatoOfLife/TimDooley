@@ -120,7 +120,7 @@
 
     const header=document.createElement('header');
     header.className='site-elevator';
-    header.dataset.elevatorLevel='plane';
+    header.setAttribute('data-elevator-level','plane');
     header.dataset.elevatorReady='false';
     header.setAttribute('data-no-tts','');
     header.setAttribute('aria-label','House elevator');
@@ -180,7 +180,7 @@
     };
 
     const render=(direction='')=>{
-      header.dataset.elevatorLevel=selectedLevel;
+      header.setAttribute('data-elevator-level',selectedLevel);
       delete header.dataset.elevatorDirection;
       if(direction==='up'||direction==='down'){
         void header.offsetWidth;
