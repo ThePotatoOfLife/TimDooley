@@ -1,5 +1,5 @@
 {
-  "version": "2.1.0",
+  "version": "2.2.0",
   "updated": "2026-09-26",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
@@ -2983,6 +2983,209 @@
       "status_note": "Symbolic North does not itself create legal membership, sovereignty or alliance status.",
       "evidence_note": "Project programme with explicit symbolic/empirical boundary.",
       "maturity": "described"
+    },
+    {
+      "id": "work-potato-growth-game",
+      "label": "Potato of Life Growth Game",
+      "kind": "game-simulation",
+      "room_ids": [
+        "games-simulations",
+        "potato-biology",
+        "symbolic-architecture"
+      ],
+      "route": "/works/#actual-works",
+      "summary": "Generational growth simulation concept where inheritance, weather, selection, resources and future viability become explicit state transitions.",
+      "status_note": "Simulation rules model chosen mechanics; outcomes are not biological evidence unless independently calibrated.",
+      "evidence_note": "Instrumented Works/Fruit record sourced from the Creative Systems Archive.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "work-tim-trading-game",
+      "label": "Tim Dooley Trading Game",
+      "kind": "market-simulation",
+      "room_ids": [
+        "games-simulations",
+        "economy-finance",
+        "information-ecology"
+      ],
+      "route": "/works/#actual-works",
+      "summary": "Browser market simulation exploring price signals, attention, narrative and feedback without claiming authority over real asset prices.",
+      "status_note": "Creative simulation, not financial guidance or a market-data source.",
+      "evidence_note": "Instrumented Works/Fruit record with explicit false-realism boundary.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "work-ai-potato-town",
+      "label": "Self-Playing AI Potato Town",
+      "kind": "agent-simulation",
+      "room_ids": [
+        "games-simulations",
+        "systems-dynamics",
+        "culture-information"
+      ],
+      "route": "/works/#actual-works",
+      "summary": "Accelerated-time town where local agents, seasons, Door events and small rules generate larger stories for observation and ablation.",
+      "status_note": "Emergence inside the simulation describes implemented rules, not autonomous proof of real social or cosmological claims.",
+      "evidence_note": "Instrumented Works/Fruit record from Creative Systems Archive.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "work-potato-school",
+      "label": "Secret Hidden Esoteric Potato School",
+      "kind": "interactive-teaching-satire",
+      "room_ids": [
+        "games-simulations",
+        "practice-ethics",
+        "culture-information"
+      ],
+      "route": "/works/#actual-works",
+      "summary": "Quest-based teaching satire using Doors, keys, cultivation and absurd credentials to test whether philosophy can be learned through play while mocking gatekeeping.",
+      "status_note": "Creative teaching satire, not a real secret institution or credential.",
+      "evidence_note": "Memory-recovery source; original specification remains a recovery target.",
+      "maturity": "described"
+    },
+    {
+      "id": "music-suno-catalogue",
+      "label": "Suno Music Archive — 62 recovered generations",
+      "kind": "music-corpus",
+      "room_ids": [
+        "music-sound",
+        "great-book-literature",
+        "culture-information"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Ftim-dooley-suno-music-archive.json",
+      "summary": "Recovered public catalogue fragment containing 62 distinct song generations and 59 unique titles, kept as a creative-source ledger rather than prophecy evidence.",
+      "status_note": "Song lyrics and titles are creative artifacts; lyrical assertions are not independent factual evidence.",
+      "evidence_note": "Primary song identity keyed by Suno UUID; dates/lyrics included only when directly recovered.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "music-one-potato-seed",
+      "label": "One Potato (The Seed)",
+      "kind": "song",
+      "room_ids": [
+        "music-sound",
+        "practice-ethics"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Ftim-dooley-suno-music-archive.json",
+      "summary": "Recovered Suno generation centered on the Seed motif, useful for tracing how compact musical form carries cultivation and origin language.",
+      "status_note": "Creative artifact; motif use does not establish doctrine by itself.",
+      "evidence_note": "Song identity preserved by Suno UUID in the music archive.",
+      "maturity": "described"
+    },
+    {
+      "id": "music-throne-north",
+      "label": "The Throne of North of North",
+      "kind": "song",
+      "room_ids": [
+        "music-sound",
+        "theology-god-language"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Ftim-dooley-suno-music-archive.json",
+      "summary": "Rock-form song generation carrying North/throne language into performance rather than expository theology.",
+      "status_note": "Performance register may exaggerate or compress canon and should not be treated as a doctrinal authority.",
+      "evidence_note": "Recovered Suno catalogue record.",
+      "maturity": "described"
+    },
+    {
+      "id": "music-goodbye-marty",
+      "label": "Goodbye Marty",
+      "kind": "song",
+      "room_ids": [
+        "music-sound",
+        "developmental-genealogy"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Ftim-dooley-suno-music-archive.json",
+      "summary": "Recovered V3.5 song artifact associated with Marty, useful as a creative/memory object in the 2025 corridor rather than as a substitute for biographical evidence.",
+      "status_note": "Creative memorial artifact; chronology and biographical claims belong to their own owners.",
+      "evidence_note": "Recovered Suno catalogue record.",
+      "maturity": "described"
+    },
+    {
+      "id": "music-mooncube",
+      "label": "The Mooncube",
+      "kind": "song",
+      "room_ids": [
+        "music-sound",
+        "esoteric-sacred-geometry"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Ftim-dooley-suno-music-archive.json",
+      "summary": "Recovered V4 song title preserving Moon/Cube imagery as a creative artifact inside the project's symbolic development.",
+      "status_note": "A song title is evidence of creative motif use, not of external occult or astronomical truth.",
+      "evidence_note": "Recovered Suno catalogue record.",
+      "maturity": "described"
+    },
+    {
+      "id": "visual-god-king-door-swamp-axis",
+      "label": "God-King / Door / Swamp / Axis composition",
+      "kind": "visual-composition",
+      "room_ids": [
+        "visual-art",
+        "symbolic-architecture"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Fvisual-art-symbolic-composition-archive.json",
+      "summary": "Recurring composition placing Father above an open Door with Son at threshold and roots, dogs, mud/Swamp, Moon and dawn in the lower/lateral field.",
+      "status_note": "Core visual synthesis, not literal cosmography.",
+      "evidence_note": "Conversation visual specification preserved in the visual composition archive.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "visual-couch-throne-red-heifer",
+      "label": "Couch-Throne / Door / Red-Heifer composition",
+      "kind": "visual-composition",
+      "room_ids": [
+        "visual-art",
+        "bible-christianity",
+        "symbolic-architecture"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Fvisual-art-symbolic-composition-archive.json",
+      "summary": "Father on a salmon/orange couch-throne, Door before/below, Son peering through and red-heifer foundation imagery in the lower field.",
+      "status_note": "Creative/theological composition, not evidence of biblical fulfillment.",
+      "evidence_note": "Conversation visual specification with explicit boundary.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "visual-heavenly-gardener",
+      "label": "Heavenly Gardener / Green Ring",
+      "kind": "visual-composition",
+      "room_ids": [
+        "visual-art",
+        "practice-ethics"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Fvisual-art-symbolic-composition-archive.json",
+      "summary": "Gardener waters one potato inside a green Spudlight ring and gate while crowd/dogs, dark tree, ladder and mountain occupy surrounding fields.",
+      "status_note": "Visual ethic of cultivation; original prompt/artifact remains a recovery target where not yet linked.",
+      "evidence_note": "Remembered 2026-07-20 visual specification.",
+      "maturity": "described"
+    },
+    {
+      "id": "visual-vesica-star",
+      "label": "Vertical Potato / Vesica / Star composition",
+      "kind": "diagram-composition",
+      "room_ids": [
+        "visual-art",
+        "math-geometry",
+        "esoteric-sacred-geometry"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Fvisual-art-symbolic-composition-archive.json",
+      "summary": "Upper and lower equal fields with overlap/mandorla Door and a vertical Axis through both centers, translating exact geometry into project iconography.",
+      "status_note": "Project mapping sits on top of exact geometry; the mapping itself is interpretive.",
+      "evidence_note": "User visual mapping with canonical geometry owners.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "visual-infinite-potato",
+      "label": "Infinite Potato with many eyes",
+      "kind": "creative-lore-image",
+      "room_ids": [
+        "visual-art",
+        "open-questions"
+      ],
+      "route": "/explore/#record=knowledge%2Fcreative%2Fvisual-art-symbolic-composition-archive.json",
+      "summary": "Older creative image/lore of a many-eyed potato observing many timelines, retained as possible precursor to later Eye/witness architecture.",
+      "status_note": "Creative archaeology; original story/image still needs primary recovery.",
+      "evidence_note": "Memory-recovery target explicitly marked unresolved.",
+      "maturity": "seeded"
     }
   ],
   "source_records": [
