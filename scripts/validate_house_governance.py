@@ -790,6 +790,25 @@ def validate_project_synthesis(errors):
     for route in ('/tim-dooley/','/tim-dooley/story/','/corporium/','/works/'):
         if route not in tim_routes:
             errors.append(f'Tim life/making family missing route: {route}')
+    consolidation=load(ROOT/'knowledge/indexes/project-consolidation-map.json',errors)
+    disposition=consolidation.get('master_role_disposition',{}) if consolidation else {}
+    required_master_roles={
+        'data/house/project-synthesis.json':'current',
+        'knowledge/core/root-system.json':'current',
+        'knowledge/core/potatoverse-master-framework.json':'current within project canon',
+        'knowledge/core/symbolic-relational-synthesis.json':'current specialist owner',
+        '2026-master-framework.json':'source-bearing historical stratum',
+        'knowledge/cosmology/axis-spiral-root.json':'specialist',
+    }
+    for path,authority in required_master_roles.items():
+        if disposition.get(path,{}).get('authority')!=authority:
+            errors.append(f'master/synthesis role drift: {path} must be {authority}')
+    historical=load(ROOT/'2026-master-framework.json',errors)
+    if historical and historical.get('archive_role')!='recovery_stratum':
+        errors.append('2026 master framework must remain a historical recovery stratum')
+    axis_spiral=load(ROOT/'knowledge/cosmology/axis-spiral-root.json',errors)
+    if axis_spiral and axis_spiral.get('archive_role')!='specialist_atlas':
+        errors.append('axis-spiral-root must remain a specialist atlas, not a competing master')
     p0=data.get('depth_program',{}).get('active_p0',[])
     required_p0=['door-liminality','spirit-relation','culture-formation-control','axis-local-centers','fruit-consequence','tree-branching']
     if p0!=required_p0: errors.append('project synthesis P0 depth programme drifted')
