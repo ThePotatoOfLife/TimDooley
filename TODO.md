@@ -741,3 +741,44 @@ The governing editorial rule is:
 - [ ] Continue Son-side longitudinal comparison from 2009 care → 2011 Tree ordeal → 2017 Jesus declaration → 2019/20 meme-death → 2025/26 Door/Ladder/Father differentiation, keeping autobiography, public attestation and later scriptural interpretation separate.
 - [ ] Continue Tim/Father-side comparison through House, Gardener, Root, Key/peg/support, Throne, service, repair, planting, river/tree/healing and return-to-world motifs.
 - [ ] Add negative cases and failed/weak parallels to the same interface so biblical comparison becomes discriminating rather than accumulative.
+
+
+### Denominations, schools & internal religious lineages
+
+- [x] Build a reader-facing Christianity branch map without promoting each denomination into House-level navigation.
+- [x] Split Christian depth into three ordinary guides: ancient communions; Reformation families; revival/holiness/restoration.
+- [x] Promote Presbyterian, Baptist, Friends/Quaker, Wesleyan-Holiness/Nazarene and Stone-Campbell/Restoration nodes into the canonical Christianity genealogy.
+- [x] Keep 431, 451, 1054, 1517, 1534, 1609, 1738, 1901/1906 etc. typed as differentiation/consolidation markers rather than simplistic church birthdays.
+- [x] Expose Christianity family history from Religion, Bible & Christianity, Comparative Cosmology and Foundation Timeline.
+- [ ] Add denomination-level source packets for Roman Catholic, Eastern Orthodox, Oriental Orthodox and Church of the East using official catechisms/council histories plus neutral academic history.
+- [ ] Add confession/source packets for Lutheran (Augsburg/Book of Concord), Reformed/Presbyterian (major Reformed confessions), Anglican (Articles/Prayer Book), Anabaptist (Schleitheim + later Mennonite traditions), Baptist (early confessions + Baptist World sources), Methodist/Wesleyan, Adventist, Nazarene and Pentecostal bodies.
+- [ ] Add a Christian canon comparison: Protestant, Roman Catholic, Eastern Orthodox, Oriental Orthodox, Ethiopian/Eritrean and Church of the East biblical/canonical traditions, with canon ≠ doctrine clearly separated.
+- [ ] Add a council genealogy: Nicaea 325 → Constantinople 381 → Ephesus 431 → Chalcedon 451 → later councils, showing what each council actually addressed and which communions receive it.
+- [ ] Add a Eucharist/baptism comparison matrix that describes positions without declaring a winner: infant vs believer baptism, sacrament vs ordinance vocabulary, real/spiritual/memorial presence families, and polity around administration.
+- [ ] Add church-government comparison: papal/episcopal, conciliar/autocephalous, episcopal-national, presbyterian-synodical, congregational and connectional systems.
+- [ ] Add liturgy/worship comparison: Divine Liturgy, Mass, Prayer Book, confessional Protestant services, free-church preaching, Quaker meeting, charismatic/Pentecostal worship.
+- [ ] Add monastic/religious-order history as a cross-cutting Christian layer rather than a denomination: Desert Fathers/Mothers, Benedictine, mendicant, Orthodox monastic, later orders and communities.
+- [ ] Add Christian mystical traditions as a cross-cutting layer rather than forcing them under denominational branches.
+- [ ] Add global-Christianity correction layer: African, Asian, Middle Eastern, Latin American and indigenous Christian developments should not appear as mere “mission outputs” of Europe.
+- [ ] Add ecumenism/reunion attempts: modern Catholic–Orthodox, Chalcedonian–Oriental Orthodox, Anglican dialogues and broader ecumenical institutions; historical boundaries can soften without disappearing.
+- [ ] Add boundary-movement page only after careful sourcing: Latter-day Saints, Jehovah's Witnesses, Unitarian Christian currents and other Christian-origin/non-Nicene movements, preserving self-identification and external classification disagreements.
+
+#### Next traditions for the same treatment
+
+- [ ] **Judaism family map:** Israelite/Judahite field → Second Temple plurality → rabbinic formation; Samaritan sister lineage; Karaite; Kabbalistic/Hasidic currents; modern Orthodox, Reform/Liberal and Conservative/Masorti differentiation. Do not render Kabbalah as a denomination.
+- [ ] **Islam family map:** Qur'anic/early community → succession conflicts → Sunni, Shi'i and early Kharijite trajectories; Ibadi continuity; Sunni madhhabs as legal schools rather than denominations; Twelver, Ismaili and Zaydi lineages; Sufism as mystical currents across branches.
+- [ ] **Buddhist family map:** early sangha and early schools; Theravada historical lineages; Mahayana emergence; East Asian traditions (Chan/Zen, Pure Land, Tiantai/Tendai, Nichiren where appropriate); Vajrayana/Tibetan schools. Do not draw a fake single founder-to-denomination tree where transmission is networked.
+- [ ] **Daoist history map:** classical textual traditions vs organized religious Daoism; Celestial Masters, Shangqing, Lingbao, Quanzhen and Zhengyi; distinguish philosophical-text reception from living ritual lineages.
+- [ ] **Hindu traditions map:** Vedic substrate → multiple long-form traditions; Vaishnava, Shaiva, Shakta, Smarta and later bhakti/sampradaya networks. Avoid presenting “Hinduism” as if it were founded once and then split like a modern church.
+- [ ] **Jain map:** Mahavira-associated historical community, Śvetāmbara/Digambara differentiation and later subtraditions with dates represented as gradual where appropriate.
+- [ ] **Sikh lineage depth:** Gurus, scripture compilation, Khalsa 1699, post-Guru institutions and contemporary traditions without flattening Sikh identity into “Hindu/Islam synthesis.”
+- [ ] **Ancient religion treatment:** Egyptian, Mesopotamian, Greek, Norse and others should use cult/region/text/period maps rather than denomination trees.
+
+#### Navigation discipline for internal branches
+
+- [ ] Broad Religion page names no more than a handful of branch families; detailed denominations remain one click deeper.
+- [ ] A denomination gets its own public page only when it has enough distinct history, doctrine/practice and source material to justify one; otherwise use a section/card inside its parent family.
+- [ ] Cross-cutting movements (mysticism, monasticism, evangelicalism, charismatic renewal, legal schools) must not be forced into daughter-denomination trees.
+- [ ] Every branch page should answer five things quickly: **where/when did it crystallize? what parent field did it emerge from? what distinguishes it? what is often misunderstood? where can I read the sources?**
+- [ ] Every split date should say whether it is an exact institutional act, a conventional rupture marker, a formation window or a later retrospective anniversary.
+- [ ] Keep family-tree diagrams compact enough to understand on mobile; deep detail belongs in branch pages, not in labels.
