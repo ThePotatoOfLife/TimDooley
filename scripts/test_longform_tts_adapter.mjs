@@ -69,7 +69,11 @@ assert.ok(adapterSource.includes("classList?.remove('ptts-reading-active')"), 'a
 assert.ok(adapterSource.includes('onEvent:event=>'), 'longform adapter must consume drawer speech events');
 assert.ok(adapterSource.includes('createPageHighlighter'), 'longform adapter must use shared actual-page word highlighting');
 assert.ok(adapterSource.includes("event.type==='boundary'&&event.absoluteWord"), 'longform adapter must map boundary words back to page text');
-assert.ok(adapterSource.includes("event.sectionId==='current'?currentItem:event.sectionId==='all'?container:null"), 'longform highlight target must follow current vs whole-page scope');
+assert.equal(typeof adapter.highlightTargetForSection,'function','longform adapter must expose pure highlight ownership logic');
+assert.equal(adapter.highlightTargetForSection('current',current,fakeRoot),current,'current scope must highlight only the active item');
+assert.equal(adapter.highlightTargetForSection('all',current,fakeRoot),fakeRoot,'whole-page scope must highlight the reader root');
+assert.equal(adapter.highlightTargetForSection('selection',current,fakeRoot),null,'selection scope must not own page movement');
+assert.ok(adapterSource.includes('highlightTargetForSection(event.sectionId,currentItem,container)'), 'longform highlight events must route through the tested ownership helper');
 assert.ok(adapterSource.includes('pageHighlighter.clear()'), 'longform page highlight must clear at speech end/context change');
 assert.ok(adapterSource.includes('mutationsAreInside(records,host)'), 'observer must ignore mutations caused by its own player host');
 assert.ok(!adapterSource.includes("doc.addEventListener('selectionchange',onSelection)"),'selection changes must not clone and rebuild the whole long-form payload eagerly');
