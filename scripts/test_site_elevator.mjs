@@ -80,6 +80,16 @@ for(const subroom of subroomContract.subrooms.filter(row=>row.status==='active')
   assert.equal(ctx.subroomId,subroom.id, subroom.id+' must preserve nested Room identity');
 }
 
+const chronologyAlias=elevator.resolveSpatialContext('/rooms/inside/timeline-events/',projection,roomContract,subroomContract);
+assert.equal(chronologyAlias.roomId,'time-history','timeline-events route alias must light Time & History');
+assert.equal(chronologyAlias.levelId,'plane','timeline-events route alias must stand on Plane');
+assert.equal(chronologyAlias.subroomId,'chronology-events','timeline-events route alias must preserve chronology-events identity');
+assert.equal(chronologyAlias.source,'subroom-route','timeline-events route alias must resolve through nested Room ownership');
+
+const taoismFile=elevator.resolveSpatialContext('/taoism.html',projection,roomContract,subroomContract);
+assert.equal(taoismFile.levelId,'heaven','taoism.html must stand on Heaven');
+assert.equal(taoismFile.roomId,'traditions-texts','taoism.html must light Traditions & Texts');
+
 const unknown=elevator.resolveSpatialContext('/totally-unknown/',projection,roomContract,subroomContract);
 assert.equal(unknown.levelId,'plane');
 assert.equal(unknown.roomId,null);
