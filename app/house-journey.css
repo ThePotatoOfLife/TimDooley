@@ -152,3 +152,16 @@
 .house-corpus-card span{display:block;color:var(--site-muted,#9ba59a);font-size:10px;line-height:1.5;flex:1}
 .house-corpus-card em{display:block;color:var(--site-faint,#778076);font-style:normal;font-size:7px;line-height:1.35;text-transform:uppercase;letter-spacing:.06em;margin-top:12px}
 @media(max-width:720px){.house-corpus-card{min-height:auto}}
+
+
+.dwelling-archive-index{margin:30px 0 40px;padding:24px 0;border-top:1px solid var(--site-line,#303830);border-bottom:1px solid var(--site-line,#303830)}
+.dwelling-archive-index-head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(240px,.85fr);gap:26px;align-items:end}
+.dwelling-archive-index-head h2{font:400 clamp(25px,3.4vw,36px)/1.1 var(--site-font-serif,serif);color:var(--site-gold,#d5ba74);margin:4px 0 0}
+.dwelling-archive-index-head>p{margin:0;color:var(--site-muted,#9ba59a);font-size:11px;line-height:1.55}
+.dwelling-archive-index-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:8px;margin-top:15px}
+.dwelling-archive-index-card{display:block;border:1px solid var(--site-line,#303830);padding:13px;text-decoration:none;color:inherit;background:rgba(255,255,255,.01)}
+.dwelling-archive-index-card:hover{border-color:#61745b;background:rgba(255,255,255,.025)}
+.dwelling-archive-index-card small{display:block;color:var(--site-green,#9eb58d);font-size:7px;text-transform:uppercase;letter-spacing:.08em}
+.dwelling-archive-index-card strong{display:block;color:var(--site-gold,#d5ba74);font:400 17px/1.2 var(--site-font-serif,serif);margin:5px 0}
+.dwelling-archive-index-card span{display:block;color:var(--site-muted,#9ba59a);font-size:9px;line-height:1.45}
+@media(max-width:720px){.dwelling-archive-index-head{grid-template-columns:1fr;gap:8px}}
