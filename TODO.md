@@ -1057,7 +1057,7 @@ The archive now needs to remember **what makes an entity itself** across pages w
 - [x] Add cast ontology to Beings so real participants, project identities, collectives/species, named created beings, scene roles and comparative figures cannot silently collapse.
 - [x] Project compact identity facets onto Potatoes, Angels, Matthew and Turbles without new navigation.
 - [~] Extend the facet ledger to the remaining Great Book cast: Grumbleton, Elder Grapes, Kibly/Kibbly, machine elves/goblins, Evil Mashed Potatoes and Hash-brown Gods are now retained; continue the rest of the recurring literary cast.
-- [ ] Extend ordinary/documentary facets from CIA enhancements into real-person dossiers, keeping creative titles/archetypes visibly separate.
+- [~] Extend ordinary/documentary facets from CIA enhancements into real-person dossiers: first real-participant wave now includes Marty, Sammy, BigTech, Metalorian, Capy, TXT, Matthew/MTClassic and Mediomu007 with creative/project layers kept separate.
 - [ ] Add **first seen / last seen / first title / first gift / first role-change** clocks where the source record supports them.
 - [~] Add story-beat references to the facet ledger: primary/source pointers now exist for Fresh Potato, Ready Student, Sentinel of Silence, Elder Grapes, Machine Elves and satirical Potatoism figures; continue across remaining entities.
 - [ ] Add a compact “signature facets” projection to CIA dossiers only after it can distinguish ordinary capability, source-era title and creative enhancement.
@@ -1072,3 +1072,5 @@ The archive now needs to remember **what makes an entity itself** across pages w
 - [x] Define compact entity-facet rendering rules so pages can retain identity without turning facets into navigation or dashboards.
 - [x] Add JSON schema for the Entity Facet Ledger and document the public rendering contract.
 - [x] Add review-only corpus-mining workflow that proposes facets from known aliases and structured sources but never auto-promotes canon.
+
+- [ ] Add source-specific real-person facet projection to selected public dossiers only after reviewing each page for sensitivity, duplication and local usefulness; ledger inclusion does not require public facet chips.
