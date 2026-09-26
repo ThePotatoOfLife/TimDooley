@@ -187,8 +187,12 @@ assert.ok(css.includes('border-style:dashed'),'secondary projected Rooms must re
 assert.ok(css.includes('.site-elevator-room.is-secondary{\n  opacity:1;'),'secondary Rooms must stay readable instead of fading the text');
 assert.ok(css.includes('[data-elevator-level="plane"] .site-elevator-room'),'Plane Room tiles need block-earth material styling');
 assert.ok(css.includes('[data-elevator-level="heaven"] .site-elevator-room'),'Heaven Room tiles need sky material styling');
-assert.ok(css.includes('background:rgba(15,36,55,.95)'),'Heaven floor board needs a dark readability plate');
-assert.ok(css.includes('background:rgba(14,34,51,.90)'),'Heaven Room rail needs a dark readability plate');
+assert.ok(css.includes('rgba(18,49,75,.72)'),'Heaven Room panes must stay dark enough for readable text');
+assert.ok(css.includes('[data-elevator-level="heaven"] .site-elevator-room.is-active'),'Heaven current Room needs a dedicated glass-active state');
+assert.ok(css.includes('rgba(15,38,60,.78)'),'Heaven floor board needs readable translucent glass');
+assert.ok(css.includes('backdrop-filter:blur(9px) saturate(122%)'),'Heaven floor board needs a restrained frosted-glass treatment');
+assert.ok(css.includes('rgba(11,33,52,.70)'),'Heaven Room rail needs translucent glass over the sky');
+assert.ok(css.includes('backdrop-filter:blur(8px) saturate(118%)'),'Heaven rail needs restrained glass refraction');
 assert.ok(css.includes('background:rgba(38,30,21,.95)'),'Plane floor board needs a dark readability plate');
 assert.ok(css.includes('background:rgba(24,14,11,.96)'),'Below floor board needs a dark readability plate');
 assert.ok(css.includes('background:rgba(5,8,8,.72)'),'arrow column needs a stable dark readability plate');
