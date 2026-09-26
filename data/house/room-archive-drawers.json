@@ -1,0 +1,541 @@
+{
+  "id": "room-archive-drawers",
+  "version": "1.0.0",
+  "updated": "2026-09-26",
+  "purpose": "Expose deep canonical corpora from nested Rooms without turning every knowledge record into a featured-object card.",
+  "editorial_rule": "A drawer represents a body of work. Representative records are entry points, not rankings or claims that other records are unimportant.",
+  "drawers": [
+    {
+      "id": "corporium-lived-formulations",
+      "title": "Corporium · lived formulations",
+      "scope_prefix": "knowledge/corporium/",
+      "record_count": 21,
+      "room_ids": [
+        "canon-identities",
+        "witness-attestation",
+        "developmental-genealogy"
+      ],
+      "summary": "Sayings, voice, body-state, persona, affect, public signals and later formalization—the layer where recurring formulations can be followed without backdating mature theory into their original moment.",
+      "landing_href": "corporium/",
+      "entries": [
+        {
+          "title": "Corporium master framework",
+          "path": "knowledge/corporium/corporium-master-framework.json"
+        },
+        {
+          "title": "Maximal claims, roles & capabilities atlas",
+          "path": "knowledge/corporium/tim-dooley-maximal-claims-roles-capabilities-atlas.json"
+        },
+        {
+          "title": "Greatest quotes & reflections",
+          "path": "knowledge/corporium/tim-dooley-greatest-quotes-and-reflections.json"
+        },
+        {
+          "title": "Tim Dooley expression grammar",
+          "path": "knowledge/corporium/tim-dooley-expression-grammar.json"
+        },
+        {
+          "title": "Sayings & formulations ledger",
+          "path": "knowledge/corporium/tim-sayings-and-formulations-ledger.json"
+        }
+      ],
+      "boundary": "Corporium preserves wording, persona and interpretation classes; it does not independently verify supernatural, medical, legal, financial or political claims."
+    },
+    {
+      "id": "core-operator-atlases",
+      "title": "Core · operator and relation atlases",
+      "scope_prefix": "knowledge/core/",
+      "record_count": 62,
+      "room_ids": [
+        "symbolic-architecture",
+        "practice-ethics",
+        "canon-identities"
+      ],
+      "summary": "The deep operator layer beneath House, Door, Axis, Garden, Swamp, Tree, Center, passage, growth, repair and relational transformation.",
+      "landing_href": "potato-of-life/",
+      "entries": [
+        {
+          "title": "Deep Element Definition Atlas",
+          "path": "knowledge/core/deep-element-definition-atlas.json"
+        },
+        {
+          "title": "Door topology, access & capability",
+          "path": "knowledge/core/door-topology-access-and-capability-atlas.json"
+        },
+        {
+          "title": "Recovered conversation operators",
+          "path": "knowledge/core/recovered-conversation-operators-atlas.json"
+        },
+        {
+          "title": "Purpose / growth orientation atlas",
+          "path": "knowledge/core/purpose-growth-orientation-atlas.json"
+        },
+        {
+          "title": "Passage / transition ontology",
+          "path": "knowledge/core/passage-transition-ontology.json"
+        }
+      ],
+      "boundary": "Core atlases formalize project operators. Their internal coherence does not make symbolic constructs empirical facts."
+    },
+    {
+      "id": "theology-deep-corpus",
+      "title": "Theology · identity, discernment and Christology",
+      "scope_prefix": "knowledge/theology/",
+      "record_count": 31,
+      "room_ids": [
+        "theology-god-language",
+        "canon-identities",
+        "bible-christianity"
+      ],
+      "summary": "The deeper theology corpus behind God/Father language, Son/Jesus development, signs and revelation, Christian comparison, reciprocity and competing formulations.",
+      "landing_href": "religion/",
+      "entries": [
+        {
+          "title": "Tim God question",
+          "path": "knowledge/theology/tim-god-question.json"
+        },
+        {
+          "title": "Signs, revelations & epiphanies discernment atlas",
+          "path": "knowledge/theology/signs-revelations-epiphanies-discernment-atlas.json"
+        },
+        {
+          "title": "Tim Godhood modalities",
+          "path": "knowledge/theology/tim-godhood-modalities.json"
+        },
+        {
+          "title": "Divine identity answer spine",
+          "path": "knowledge/theology/divine-identity-answer-spine.json"
+        },
+        {
+          "title": "Father / Son / Door reciprocity",
+          "path": "knowledge/theology/father-son-door-reciprocity.json"
+        }
+      ],
+      "boundary": "Theology records project doctrine, self-description and comparison. Historical Christian claims and empirical claims retain separate evidence requirements."
+    },
+    {
+      "id": "traditions-comparison-corpus",
+      "title": "Traditions · texts, scenes and comparison",
+      "scope_prefix": "knowledge/traditions/",
+      "record_count": 165,
+      "room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "other-traditions",
+        "esoteric-sacred-geometry"
+      ],
+      "summary": "The largest comparative corpus: biblical scenes and operators, textual overlap, cosmographies, fate/thread, sacred geometry, Jewish/Christian material and later esoteric reception.",
+      "landing_href": "traditions/bible/",
+      "entries": [
+        {
+          "title": "Biblical scenes",
+          "path": "knowledge/traditions/biblical-scenes.json"
+        },
+        {
+          "title": "Biblical symbol-function atlas",
+          "path": "knowledge/traditions/biblical-symbol-function-atlas.json"
+        },
+        {
+          "title": "Biblical Overlap Atlas",
+          "path": "knowledge/traditions/biblical-overlap-atlas.json"
+        },
+        {
+          "title": "Selected cosmography exemplars",
+          "path": "knowledge/traditions/selected-cosmography-structural-exemplars.json"
+        },
+        {
+          "title": "Vesica / Mandorla / Sun / Moon atlas",
+          "path": "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json"
+        }
+      ],
+      "boundary": "Comparison preserves source-tradition meaning; resemblance is not proof of transmission, identity, fulfillment or one hidden universal doctrine."
+    },
+    {
+      "id": "science-formal-corpus",
+      "title": "Science · models, equations and rigor",
+      "scope_prefix": "knowledge/science/",
+      "record_count": 131,
+      "room_ids": [
+        "physics-cosmology",
+        "math-geometry",
+        "model-testing",
+        "experiments-formalization"
+      ],
+      "summary": "The large science/formalization corpus spanning model registry, equation lineage, 11D recovery, astronomy, dynamics, theory audits, toy models and explicit promotion from metaphor toward test.",
+      "landing_href": "science/",
+      "entries": [
+        {
+          "title": "Science model registry",
+          "path": "knowledge/science/science-model-registry.json"
+        },
+        {
+          "title": "Equation lineage & theory graph",
+          "path": "knowledge/science/equation-lineage-and-theory-graph.json"
+        },
+        {
+          "title": "Science theory rigor completion matrix",
+          "path": "knowledge/science/science-theory-rigor-completion-matrix-2026-09-11.json"
+        },
+        {
+          "title": "Integrated scientific architecture",
+          "path": "knowledge/science/integrated-scientific-architecture.json"
+        },
+        {
+          "title": "11D M-theory / quantum Door thesis",
+          "path": "knowledge/science/11d-m-theory-quantum-door-thesis.json"
+        }
+      ],
+      "boundary": "Formal and speculative models are not promoted to physical fact without observables, baselines, units, mechanisms and discriminating evidence."
+    },
+    {
+      "id": "timeline-recovery-corpus",
+      "title": "Timeline · sequence, archaeology and prediction audits",
+      "scope_prefix": "knowledge/timeline/",
+      "record_count": 85,
+      "room_ids": [
+        "chronology-events",
+        "developmental-genealogy",
+        "memory-recovery",
+        "prediction-revelation-time"
+      ],
+      "summary": "Dated sequence, conversation archaeology, role-development ledgers, public-duration records, prediction audits, synchronisms and unresolved recovery queues.",
+      "landing_href": "timeline/",
+      "entries": [
+        {
+          "title": "Master timeline 1987–2030",
+          "path": "knowledge/timeline/master-timeline-1987-2030.json"
+        },
+        {
+          "title": "Developmental genealogy",
+          "path": "knowledge/timeline/developmental-genealogy.json"
+        },
+        {
+          "title": "Conversation archaeology — memory operators",
+          "path": "knowledge/timeline/conversation-archaeology-wave-007-memory-operators.json"
+        },
+        {
+          "title": "High-value undated recovery queue",
+          "path": "knowledge/timeline/high-value-undated-timeline-recovery-queue.json"
+        },
+        {
+          "title": "Prediction / foresight master index",
+          "path": "knowledge/timeline/prediction-foresight-master-index.json"
+        }
+      ],
+      "boundary": "Later meaning may connect backward, but occurrence time, source time, first attestation and interpretation time remain distinct."
+    },
+    {
+      "id": "cia-current-corpus",
+      "title": "CIA · characters, incidents and associations",
+      "scope_prefix": "knowledge/cia/",
+      "record_count": 64,
+      "room_ids": [
+        "canon-identities",
+        "subculture-group-formation",
+        "provenance-evidence"
+      ],
+      "summary": "The current character/dossier institution: people, role posture, activity, associations, incident context, symbolic-account rules and recovery work.",
+      "landing_href": "rooms/potatoverse-canon/beings/cia/",
+      "entries": [
+        {
+          "title": "Current desk",
+          "path": "knowledge/cia/current-desk.json"
+        },
+        {
+          "title": "Role & archetype census",
+          "path": "knowledge/cia/role-archetype-census.json"
+        },
+        {
+          "title": "Activity index",
+          "path": "knowledge/cia/activity-index.json"
+        },
+        {
+          "title": "Account posture index",
+          "path": "knowledge/cia/account-posture-index.json"
+        },
+        {
+          "title": "Institution building",
+          "path": "knowledge/cia/institution-building.json"
+        }
+      ],
+      "boundary": "Association, role or repeated appearance does not establish motive, diagnosis, guilt, conspiracy or legal status. Current CIA records supersede the retired FBI data model."
+    },
+    {
+      "id": "research-programme-corpus",
+      "title": "Research · cross-domain synthesis and audits",
+      "scope_prefix": "knowledge/research/",
+      "record_count": 59,
+      "room_ids": [
+        "research-programmes",
+        "open-questions",
+        "house-architecture"
+      ],
+      "summary": "Cross-domain syntheses, House architecture research, source-ledgers, commit/materialization audits and work that has not yet earned canonical promotion.",
+      "landing_href": "research-lab/",
+      "entries": [
+        {
+          "title": "Recent commit materialization / crystallization",
+          "path": "knowledge/research/recent-commit-materialization-crystallization-257-283.json"
+        },
+        {
+          "title": "Circle / Field research synthesis",
+          "path": "knowledge/research/circle-field-research-synthesis-2026-09-20.json"
+        },
+        {
+          "title": "Plane-crossing research synthesis",
+          "path": "knowledge/research/plane-crossing-research-synthesis-2026-09-20.json"
+        },
+        {
+          "title": "Rare-value undiscovered knowledge protocol",
+          "path": "knowledge/research/rare-value-undiscovered-knowledge-protocol.json"
+        },
+        {
+          "title": "Symbol confusion registry",
+          "path": "knowledge/research/symbol-confusion-registry-wave-004.json"
+        }
+      ],
+      "boundary": "Research status means the work is still under pressure; it should not be mistaken for settled canon simply because it is detailed."
+    },
+    {
+      "id": "philosophy-reader-corpus",
+      "title": "Philosophy · Potatoism, epistemics and interpretation",
+      "scope_prefix": "knowledge/philosophy/",
+      "record_count": 19,
+      "room_ids": [
+        "practice-ethics",
+        "open-questions",
+        "information-ecology"
+      ],
+      "summary": "Long-form Potatoist philosophy, relational operators, interpretive justice, archive epistemics, source authority and belief-testing.",
+      "landing_href": "philosophy/",
+      "entries": [
+        {
+          "title": "Potatoism reader philosophy",
+          "path": "knowledge/philosophy/potatoism-reader-philosophy.md"
+        },
+        {
+          "title": "Potatoism philosophy engine",
+          "path": "knowledge/philosophy/potatoism-philosophy-engine.md"
+        },
+        {
+          "title": "Potato philosophy",
+          "path": "knowledge/philosophy/potato-philosophy.json"
+        },
+        {
+          "title": "Archive epistemics",
+          "path": "knowledge/philosophy/archive-epistemics.json"
+        },
+        {
+          "title": "Belief evolution & claim testing",
+          "path": "knowledge/philosophy/belief-evolution-and-claim-testing.json"
+        }
+      ],
+      "boundary": "Philosophical usefulness and internal coherence remain separate from historical or empirical verification."
+    },
+    {
+      "id": "story-archive-corpus",
+      "title": "Story · scenes, cast and narrative reservoirs",
+      "scope_prefix": "knowledge/story/",
+      "record_count": 25,
+      "room_ids": [
+        "great-book-literature",
+        "developmental-genealogy",
+        "chronology-events"
+      ],
+      "summary": "Character archive, source records, scene packets, social-presence ledgers, narrative reservoirs and the authoring machinery behind the public Story.",
+      "landing_href": "tim-dooley/story/",
+      "entries": [
+        {
+          "title": "Character archive v2",
+          "path": "knowledge/story/character-archive-v2.json"
+        },
+        {
+          "title": "Social presence ledger 2024–2025",
+          "path": "knowledge/story/social-presence-ledger-2024-2025.json"
+        },
+        {
+          "title": "Source records",
+          "path": "knowledge/story/source-records.json"
+        },
+        {
+          "title": "Scene packets",
+          "path": "knowledge/story/scene-packets.json"
+        },
+        {
+          "title": "Turning corridor recovery",
+          "path": "knowledge/story/turning-corridor-chronicle-recovery-2025.json"
+        }
+      ],
+      "boundary": "Narrative reconstruction must preserve source gaps and may not make a vivid scene more certain than its evidence."
+    },
+    {
+      "id": "world-shadow-corpus",
+      "title": "World · subculture, shadow and accountability",
+      "scope_prefix": "knowledge/world/",
+      "record_count": 25,
+      "room_ids": [
+        "subculture-group-formation",
+        "law-justice",
+        "geography-countries"
+      ],
+      "summary": "World-facing research on attention extraction, subculture ecology, legal/accountability routing, role exit, institutional protection and the project’s Farm/Swamp/under-culture models.",
+      "landing_href": "shadow-farm/",
+      "entries": [
+        {
+          "title": "World shadow research index",
+          "path": "knowledge/world/world-shadow-research-index.json"
+        },
+        {
+          "title": "Farm / Sektur attention-extraction ecology",
+          "path": "knowledge/world/farm-sektur-attention-extraction-ecology.json"
+        },
+        {
+          "title": "Legal accountability / human consequence atlas",
+          "path": "knowledge/world/legal-accountability-human-consequence-atlas.json"
+        },
+        {
+          "title": "Role exit / labeling / reintegration atlas",
+          "path": "knowledge/world/role-exit-labeling-reintegration-atlas.json"
+        },
+        {
+          "title": "Controlled opposition / co-optation methodology",
+          "path": "knowledge/world/controlled-opposition-cooptation-methodology.json"
+        }
+      ],
+      "boundary": "Project shadow models and contested social interpretations require source-specific evidence; association or narrative fit does not establish wrongdoing or covert coordination."
+    },
+    {
+      "id": "biology-potato-corpus",
+      "title": "Biology · literal potato from molecule to field",
+      "scope_prefix": "knowledge/biology/",
+      "record_count": 12,
+      "room_ids": [
+        "potato-biology"
+      ],
+      "summary": "The literal organism corpus: anatomy, metabolism, ecology, molecular development, signaling, state transitions, lineage, measurement and biophysics.",
+      "landing_href": "life-body/",
+      "entries": [
+        {
+          "title": "Potato anatomy, metabolism & ecology",
+          "path": "knowledge/biology/potato-anatomy-metabolism-ecology.json"
+        },
+        {
+          "title": "Potato molecular development & signalling",
+          "path": "knowledge/biology/potato-molecular-development-and-signalling.json"
+        },
+        {
+          "title": "Potato life-cycle state machine",
+          "path": "knowledge/biology/potato-life-cycle-state-machine.json"
+        },
+        {
+          "title": "Potato measurement physics",
+          "path": "knowledge/biology/potato-measurement-physics.json"
+        },
+        {
+          "title": "Potato biological genealogy",
+          "path": "knowledge/biology/potato-biological-genealogy.json"
+        }
+      ],
+      "boundary": "Literal potato biology is empirical organism science. Symbolic Potato meanings are comparative overlays owned elsewhere."
+    },
+    {
+      "id": "body-neurophysiology-corpus",
+      "title": "Body · neurobiology and whole-body regulation",
+      "scope_prefix": "knowledge/body/",
+      "record_count": 28,
+      "room_ids": [
+        "neurobiology",
+        "whole-body",
+        "symbolic-body-comparison"
+      ],
+      "summary": "Brain regions, cell types, development, glia/vascular interfaces, physiology, whole-body regulation and the scientific side of the body crosswalk.",
+      "landing_href": "life-body/",
+      "entries": [
+        {
+          "title": "Whole-brain neurobiology atlas",
+          "path": "knowledge/body/whole-brain-neurobiology-atlas.json"
+        },
+        {
+          "title": "Whole-brain deepening wave 1",
+          "path": "knowledge/body/whole-brain-neurobiology-deepening-wave-1.json"
+        },
+        {
+          "title": "Whole-body regulation & coupling",
+          "path": "knowledge/body/whole-body-regulation-coupling-atlas.json"
+        },
+        {
+          "title": "Neural development lineage atlas",
+          "path": "knowledge/body/neural-development-lineage-atlas.json"
+        },
+        {
+          "title": "Glia / neurovascular / barrier atlas",
+          "path": "knowledge/body/glia-neurovascular-barrier-atlas.json"
+        }
+      ],
+      "boundary": "Body science is empirical; symbolic body mappings must remain explicitly comparative and must not be used as medical diagnosis."
+    },
+    {
+      "id": "culture-mechanics-corpus",
+      "title": "Culture · platforms, memory and propagation",
+      "scope_prefix": "knowledge/culture/",
+      "record_count": 16,
+      "room_ids": [
+        "information-ecology",
+        "internet-platforms",
+        "subculture-group-formation"
+      ],
+      "summary": "Platform mechanics, information ecology, culture formation, correction/memory repair, creative systems and specific cultural-object lineages.",
+      "landing_href": "context/culture/",
+      "entries": [
+        {
+          "title": "Culture formation & zeitgeist atlas",
+          "path": "knowledge/culture/culture-formation-zeitgeist-atlas.json"
+        },
+        {
+          "title": "Platform mechanics atlas",
+          "path": "knowledge/culture/platform-mechanics-atlas.json"
+        },
+        {
+          "title": "Information ecology mechanics atlas",
+          "path": "knowledge/culture/information-ecology-mechanics-atlas.json"
+        },
+        {
+          "title": "Information correction / memory repair",
+          "path": "knowledge/culture/information-correction-memory-repair-atlas.json"
+        },
+        {
+          "title": "Turble cultural object",
+          "path": "knowledge/culture/turble-cultural-object.json"
+        }
+      ],
+      "boundary": "Cultural models describe mechanisms and meaning-making; labels should not become permanent identities or unsupported claims about real people."
+    },
+    {
+      "id": "legal-specialist-corpus",
+      "title": "Legal · case reconstruction and accountability",
+      "scope_prefix": "knowledge/legal/",
+      "record_count": 15,
+      "room_ids": [
+        "law-justice",
+        "provenance-evidence"
+      ],
+      "summary": "Specialist legal research, case reconstruction, evidentiary ledgers and accountability material behind the general Law Room.",
+      "landing_href": "law/",
+      "entries": [
+        {
+          "title": "Mai Mercado 2016 research index",
+          "path": "knowledge/legal/mai-mercado-2016-research-index.md"
+        },
+        {
+          "title": "Mai Mercado legal case study",
+          "path": "knowledge/legal/mai-mercado-2016-legal-case-study.md"
+        },
+        {
+          "title": "Mai Mercado court / source map",
+          "path": "knowledge/legal/mai-mercado-2016-source-map.json"
+        }
+      ],
+      "boundary": "Specialist project reconstruction does not replace official records, legal counsel, procedural status or jurisdiction-specific authoritative law."
+    }
+  ]
+}
