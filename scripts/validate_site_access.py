@@ -160,6 +160,21 @@ if OUT.exists():
         for forbidden in ('../rooms/objects/', '../paths/', 'href="../">← Home</a>'):
             if forbidden in house_nav:
                 errors.append(f"House top navigation duplicates global/named-object access: {forbidden}")
+    first_nav_budgets={
+        "tim-dooley/index.html":2,
+        "religion/index.html":3,
+        "philosophy/index.html":2,
+        "science/index.html":2,
+        "world/index.html":2,
+        "north/index.html":2,
+    }
+    for rel,budget in first_nav_budgets.items():
+        page=read(OUT/rel)
+        nav_match=__import__("re").search(r"<nav\\b[^>]*>(.*?)</nav>",page,flags=__import__("re").I|__import__("re").S)
+        if not nav_match:
+            errors.append(f"{rel} missing first local navigation row")
+        elif nav_match.group(1).count("<a ")>budget:
+            errors.append(f"{rel} first navigation row exceeds specialist budget {budget}")
     home=read(OUT/"index.html")
     nav_start=home.find('<nav class="page-nav home-nav"')
     nav_end=home.find("</nav>",nav_start)
