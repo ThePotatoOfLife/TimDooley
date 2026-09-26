@@ -412,7 +412,7 @@
   if(!buttons||!detail)return;
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   try{
-    const res=await fetch('../data/house/route-case-matrix-wave-001.json');if(!res.ok)throw new Error('route cases unavailable');
+    const res=await fetch('../data/house/route-case-matrix.json');if(!res.ok)throw new Error('route cases unavailable');
     const data=await res.json(),rows=data.cases||[];
     buttons.innerHTML=rows.map((x,i)=>'<button type="button" data-route-case="'+esc(x.id)+'" aria-pressed="'+String(i===0)+'">'+esc(x.subject||x.subject_ref||x.id)+'</button>').join('');
     const render=id=>{
