@@ -479,6 +479,20 @@
   58%{opacity:.88;transform:translateY(-5%) rotateX(7deg) scale(1)}
   100%{opacity:1;transform:translateY(0) rotateX(0deg) scale(1)}
 }
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-controls{background:rgba(10,31,50,.91)}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-reel{background:rgba(15,38,60,.93)}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room-rail{background:rgba(11,33,52,.90)}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{background:rgba(18,49,75,.92)}
+}
+@media (prefers-contrast: more){
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-controls,
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-reel,
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room-rail{background-color:rgba(9,28,45,.94)}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room{background-color:rgba(14,40,63,.96);border-color:rgba(255,255,255,.48)}
+  .site-elevator[data-elevator-level="heaven"] .site-elevator-room.is-active{border-color:#ffe39a}
+}
+
 @media (max-width:900px){
   .site-elevator{
     --elevator-board-width:108px;
