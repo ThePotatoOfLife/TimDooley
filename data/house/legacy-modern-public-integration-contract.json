@@ -1,8 +1,8 @@
 {
   "id": "legacy-modern-public-integration-contract",
   "title": "Legacy ↔ Modern Public Integration Contract",
-  "version": "1.1.0",
-  "updated": "2026-09-18",
+  "version": "1.2.0",
+  "updated": "2026-09-27",
   "authority": "house-public-integration",
   "purpose": "Integrate older substantial readers with the newer Potato of Life / House / Rooms architecture without rewriting historical source strata, creating duplicate knowledge owners, or forcing every page into one visual template.",
   "master_rule": "Preserve old pages as authored/documentary strata where they still carry unique value; integrate them through generated public context, authoritative routing, shared capabilities and canonical-owner links.",
@@ -42,7 +42,7 @@
     "classify the old page: source stratum, specialist View, duplicate projection, compatibility route or obsolete shell",
     "identify its canonical parent gateway and feeding Dwellings/Rooms",
     "register mature public surfaces in data/house/public-surfaces.json",
-    "mirror route topology in the checked public-route projection",
+    "derive/verify the compatibility route-topology snapshot from data/house/public-surfaces.json; never author routes in the snapshot",
     "attach relevant nested Rooms through room dossiers",
     "project shared House bridge and reader capabilities at build time",
     "replace duplicate current definitions with links to canonical owners where practical",
@@ -112,9 +112,10 @@
   "implementation": {
     "projection_owner": "scripts/patch_public_navigation.py",
     "route_owner": "data/house/public-surfaces.json",
-    "topology_projection": "knowledge/research/potato-house-master/public-route-topology.json",
+    "topology_projection": "knowledge/research/potato-house-master/public-route-topology.json (historical derived compatibility snapshot; validator-only)",
     "room_context": "data/house/room-dossiers.json",
-    "validation": "scripts/site_shell_contract.py"
+    "validation": "scripts/site_shell_contract.py",
+    "route_projection_rule": "Public route changes are authored only in data/house/public-surfaces.json and deterministically projected by scripts/house_public_surfaces.py."
   },
   "migration_inventory": [
     {
