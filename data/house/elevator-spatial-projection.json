@@ -1,9 +1,9 @@
 {
-  "version": "1.1.0",
-  "updated": "2026-09-20",
+  "version": "1.2.0",
+  "updated": "2026-09-26",
   "authority": "elevator-spatial-projection",
-  "title": "Door / Axis Elevator — Non-Euclidean House Projection",
-  "purpose": "Project the governed Potato House graph as a navigable 3D rotunda/elevator without making Euclidean coordinates authoritative. Existing HTML routes remain canonical public surfaces; this projection provides a spatial wayfinding layer over them.",
+  "title": "Door / Axis Elevator — Three-Floor House Projection",
+  "purpose": "Project the governed Potato House graph as a navigable three-floor orientation system (Heaven / Plane / Below) without making UI coordinates authoritative. Existing HTML routes remain canonical public surfaces; this projection provides a spatial wayfinding layer over them.",
   "global_start": {
     "id": "door-axis",
     "label": "Door / Axis",
@@ -50,10 +50,10 @@
       ]
     },
     {
-      "id": "world",
-      "label": "World / Door",
+      "id": "plane",
+      "label": "Plane / Door",
       "elevator_direction": "center",
-      "description": "The visible plane of people, institutions, history, culture, evidence and consequence.",
+      "description": "The manifest plane of people, institutions, science, body, history, culture, evidence, consequence and ordinary public life.",
       "landmarks": [
         {
           "id": "home",
@@ -138,9 +138,10 @@
       ],
       "projections": [
         "heaven",
-        "world",
+        "plane",
         "below"
-      ]
+      ],
+      "primary_level": "heaven"
     },
     {
       "id": "archive-sources",
@@ -158,9 +159,10 @@
         "potatoverse-canon"
       ],
       "projections": [
-        "world",
+        "plane",
         "below"
-      ]
+      ],
+      "primary_level": "below"
     },
     {
       "id": "time-history",
@@ -175,9 +177,10 @@
         "potatoverse-canon"
       ],
       "projections": [
-        "world",
+        "plane",
         "below"
-      ]
+      ],
+      "primary_level": "plane"
     },
     {
       "id": "traditions-texts",
@@ -193,9 +196,10 @@
       ],
       "projections": [
         "heaven",
-        "world",
+        "plane",
         "below"
-      ]
+      ],
+      "primary_level": "heaven"
     },
     {
       "id": "science-formal-models",
@@ -211,8 +215,9 @@
         "traditions-texts"
       ],
       "projections": [
-        "world"
-      ]
+        "plane"
+      ],
+      "primary_level": "plane"
     },
     {
       "id": "life-body",
@@ -227,8 +232,9 @@
         "traditions-texts"
       ],
       "projections": [
-        "world"
-      ]
+        "plane"
+      ],
+      "primary_level": "plane"
     },
     {
       "id": "world-systems",
@@ -244,9 +250,10 @@
         "archive-sources"
       ],
       "projections": [
-        "world",
+        "plane",
         "below"
-      ]
+      ],
+      "primary_level": "plane"
     },
     {
       "id": "culture-information",
@@ -262,9 +269,10 @@
         "research-lab"
       ],
       "projections": [
-        "world",
+        "plane",
         "below"
-      ]
+      ],
+      "primary_level": "plane"
     },
     {
       "id": "works",
@@ -279,8 +287,9 @@
       ],
       "projections": [
         "heaven",
-        "world"
-      ]
+        "plane"
+      ],
+      "primary_level": "heaven"
     },
     {
       "id": "research-lab",
@@ -297,9 +306,10 @@
       ],
       "projections": [
         "heaven",
-        "world",
+        "plane",
         "below"
-      ]
+      ],
+      "primary_level": "below"
     }
   ],
   "local_center_behavior": {
@@ -307,7 +317,7 @@
     "neighbors": "Only graph neighbors receive prominent doors; non-neighbors remain reachable through the global elevator/House view.",
     "homepage": "Enter opens the Dwelling's canonical public homepage.",
     "return": "Center/Elevator returns to Door / Axis without changing canonical page ownership.",
-    "query_model": "The projection may encode local center as ?room=<room-id>&level=<level-id>; URLs are navigation state, not content identity."
+    "query_model": "The projection may encode local center as ?room=<room-id>&level=<level-id> in dedicated spatial viewers; the universal header does not mutate canonical URLs."
   },
   "future_renderer_contract": {
     "current": "CSS 3D transform rotunda",
@@ -332,5 +342,77 @@
     "data/house/public-surfaces.json",
     "data/house/tree-plane-routing.json",
     "data/house/below-basin-spatial-contract.json"
+  ],
+  "route_contexts": [
+    {
+      "match": "/",
+      "level_id": "plane",
+      "room_id": "potatoverse-canon"
+    },
+    {
+      "match": "/tim-dooley/",
+      "level_id": "plane",
+      "room_id": "potatoverse-canon"
+    },
+    {
+      "match": "/potato-of-life/",
+      "level_id": "heaven",
+      "room_id": "potatoverse-canon"
+    },
+    {
+      "match": "/religion/",
+      "level_id": "heaven",
+      "room_id": "traditions-texts"
+    },
+    {
+      "match": "/science/",
+      "level_id": "plane",
+      "room_id": "science-formal-models"
+    },
+    {
+      "match": "/politics/",
+      "level_id": "plane",
+      "room_id": "world-systems"
+    },
+    {
+      "match": "/economy/",
+      "level_id": "plane",
+      "room_id": "world-systems"
+    },
+    {
+      "match": "/context/culture/",
+      "level_id": "plane",
+      "room_id": "culture-information"
+    },
+    {
+      "match": "/shadow-farm/",
+      "level_id": "below",
+      "room_id": "culture-information"
+    },
+    {
+      "match": "/context/source-authority/",
+      "level_id": "below",
+      "room_id": "archive-sources"
+    },
+    {
+      "match": "/research-lab/",
+      "level_id": "below",
+      "room_id": "research-lab"
+    },
+    {
+      "match": "/works/",
+      "level_id": "heaven",
+      "room_id": "works"
+    },
+    {
+      "match": "/timeline/",
+      "level_id": "plane",
+      "room_id": "time-history"
+    },
+    {
+      "match": "/below/",
+      "level_id": "below",
+      "room_id": null
+    }
   ]
 }
