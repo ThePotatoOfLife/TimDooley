@@ -3,6 +3,7 @@
 from __future__ import annotations
 import json
 from pathlib import Path
+import re
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -83,8 +84,8 @@ def main():
         fail("nested Room runtime does not expose live holdings/current routes")
     body_lens=(ROOT/"app/body-relational-lens.js").read_text(encoding="utf-8")
     body_lens_css=ROOT/"app/body-relational-lens.css"
-    if "body-relational-lens.css?v=20260926a" not in body_lens or "data-body-lens-style" not in body_lens:
-        fail("Body relational lens does not load its shared stylesheet")
+    if not re.search(r"body-relational-lens\.css\?v=[A-Za-z0-9._-]+", body_lens) or "data-body-lens-style" not in body_lens:
+        fail("Body relational lens does not load a versioned shared stylesheet")
     if "createElement('style')" in body_lens or "style.textContent" in body_lens:
         fail("Body relational lens must not inject component CSS")
     if not body_lens_css.exists():
