@@ -131,6 +131,8 @@ if "style.textContent" in journey_ui or "createElement('style')" in journey_ui:
     errors.append("House journey runtime must not inject component CSS")
 if '"house-journey.js": "20260926e"' not in patcher:
     errors.append("shared asset registry does not version the House journey runtime")
+if "(?:href|src)" not in patcher or "match.group(\"head\")" not in patcher:
+    errors.append("shared asset version normalizer must be scoped to href/src attributes")
 if '"body-relational-lens.js": "20260926b"' not in patcher:
     errors.append("shared asset registry does not version the Body relational lens runtime")
 
