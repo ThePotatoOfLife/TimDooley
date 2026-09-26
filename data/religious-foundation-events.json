@@ -1,6 +1,6 @@
 {
   "id": "religious-foundation-events",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-26",
   "status": "canonical event anchor registry for religious foundations",
   "purpose": "Provide notable dates that can be merged into the Foundation Timeline, spiral and map. Events are anchored to foundation records and, where available, to deep lineage nodes.",
@@ -84,7 +84,17 @@
     "disciples_history": "https://disciples.org/our-identity/history-of-the-disciples/",
     "disciples_dates": "https://disciples.org/our-identity/history-of-the-disciples/important-dates-in-disciple-history/",
     "nazarene_history": "https://nazarene.org/our-history/",
-    "wcrc_history": "https://wcrc.eu/about/history/"
+    "wcrc_history": "https://wcrc.eu/about/history/",
+    "sep_confucius": "https://plato.stanford.edu/entries/confucius/",
+    "sep_wang_yangming": "https://plato.stanford.edu/entries/wang-yangming/",
+    "sep_modern_confucianism": "https://plato.stanford.edu/entries/confucianism-modern/",
+    "pluralism_four_books": "https://pluralism.org/four-books",
+    "shinto_kiki_history": "https://www.nippon.com/en/japan-topics/g00709/",
+    "jinja_shinto": "https://www.jinjahoncho.or.jp/en/shinto/",
+    "jinja_honcho": "https://www.jinjahoncho.or.jp/en/honcho/",
+    "jstor_shinbutsu_bunri": "https://www.jstor.org/stable/30233540",
+    "oxford_chinese_ancestor": "https://academic.oup.com/reference/62338/reference-article-abstract/571509804",
+    "oxford_chinese_popular": "https://academic.oup.com/edited-volume/55817/chapter-abstract/436581365"
   },
   "events": [
     {
@@ -2778,6 +2788,220 @@
       "source_id": "nazarene_history",
       "source_url": "https://nazarene.org/our-history/",
       "note": "1908 is the denomination's official anniversary marker for the union of major holiness bodies; additional mergers followed."
+    },
+    {
+      "id": "con-confucius-era",
+      "family": "confucian",
+      "name": "Confucius traditional lifetime / classical teaching era",
+      "date": {
+        "year_start": -551,
+        "year_end": -479,
+        "display": "traditional dates 551–479 BCE",
+        "precision": "range"
+      },
+      "event_kind": "teacher_clock",
+      "merge_priority": "major",
+      "foundation_id": "confucian-foundation",
+      "lineage_node_ids": [
+        "classical-confucian-field"
+      ],
+      "place": "Lu / Eastern Zhou China",
+      "source_id": "sep_confucius",
+      "source_url": "https://plato.stanford.edu/entries/confucius/",
+      "note": "Traditional biographical dates; Confucian/Ru tradition is not reducible to a founder-birthday."
+    },
+    {
+      "id": "con-han-institution",
+      "family": "confucian",
+      "name": "Confucian classics and ritual gain durable Han state sponsorship",
+      "date": {
+        "year_start": -202,
+        "year_end": 220,
+        "display": "Han dynasty, 202 BCE–220 CE",
+        "precision": "range"
+      },
+      "event_kind": "state_institutionalization",
+      "merge_priority": "major",
+      "foundation_id": "confucian-foundation",
+      "lineage_node_ids": [
+        "han-confucian-institutionalization"
+      ],
+      "place": "Han China",
+      "source_id": "sep_confucius",
+      "source_url": "https://plato.stanford.edu/entries/confucius/",
+      "note": "Long institutionalization rather than one decree/birthday."
+    },
+    {
+      "id": "con-four-books-zhu",
+      "family": "confucian",
+      "name": "Zhu Xi organizes and comments on the Four Books",
+      "date": {
+        "year_start": 1130,
+        "year_end": 1200,
+        "display": "12th century CE; Zhu Xi 1130–1200",
+        "precision": "range"
+      },
+      "event_kind": "textual_intellectual_consolidation",
+      "merge_priority": "major",
+      "foundation_id": "confucian-foundation",
+      "lineage_node_ids": [
+        "song-ming-neo-confucianism",
+        "cheng-zhu-confucianism"
+      ],
+      "place": "Southern Song China",
+      "source_id": "pluralism_four_books",
+      "source_url": "https://pluralism.org/four-books",
+      "note": "Four Books become a major Neo-Confucian curricular core."
+    },
+    {
+      "id": "con-four-books-exam-1313",
+      "family": "confucian",
+      "name": "Four Books receive examination orthodoxy",
+      "date": {
+        "year_start": 1313,
+        "year_end": 1313,
+        "display": "1313 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "state_curricular_institutionalization",
+      "merge_priority": "major",
+      "foundation_id": "confucian-foundation",
+      "lineage_node_ids": [
+        "cheng-zhu-confucianism"
+      ],
+      "place": "Yuan China",
+      "source_id": "pluralism_four_books",
+      "source_url": "https://pluralism.org/four-books",
+      "note": "Institutional marker for Zhu Xi's Four Books in examination orthodoxy; not origin of Confucianism."
+    },
+    {
+      "id": "con-wang-yangming",
+      "family": "confucian",
+      "name": "Wang Yangming develops School of Heart-Mind teaching",
+      "date": {
+        "year_start": 1472,
+        "year_end": 1529,
+        "display": "1472–1529 CE",
+        "precision": "biographical-range"
+      },
+      "event_kind": "philosophical_school_marker",
+      "merge_priority": "secondary",
+      "foundation_id": "confucian-foundation",
+      "lineage_node_ids": [
+        "lu-wang-confucianism"
+      ],
+      "place": "Ming China",
+      "source_id": "sep_wang_yangming",
+      "source_url": "https://plato.stanford.edu/entries/wang-yangming/",
+      "note": "Major alternative Neo-Confucian current emphasizing innate knowing and unity of knowledge/action."
+    },
+    {
+      "id": "shinto-separation-1868",
+      "family": "shinto",
+      "name": "Meiji separation of kami and Buddhas begins",
+      "date": {
+        "year_start": 1868,
+        "year_end": 1872,
+        "display": "from 1868 CE",
+        "precision": "range"
+      },
+      "event_kind": "state_reorganization",
+      "merge_priority": "major",
+      "foundation_id": "shinto-foundation",
+      "lineage_node_ids": [
+        "shinbutsu-shugo",
+        "meiji-shinto-reorganization"
+      ],
+      "place": "Japan",
+      "source_id": "jstor_shinbutsu_bunri",
+      "source_url": "https://www.jstor.org/stable/30233540",
+      "note": "Shinbutsu bunri policies forcibly reorganize long-combined shrine-temple worlds."
+    },
+    {
+      "id": "shinto-directive-1945",
+      "family": "shinto",
+      "name": "Shinto Directive separates shrines from state sponsorship",
+      "date": {
+        "year_start": 1945,
+        "year_end": 1945,
+        "display": "15 December 1945",
+        "precision": "day"
+      },
+      "event_kind": "state_disestablishment",
+      "merge_priority": "major",
+      "foundation_id": "shinto-foundation",
+      "lineage_node_ids": [
+        "meiji-shinto-reorganization",
+        "modern-jinja-shinto"
+      ],
+      "place": "Japan",
+      "source_id": "jinja_honcho",
+      "source_url": "https://www.jinjahoncho.or.jp/en/honcho/",
+      "note": "Postwar legal/institutional rupture between shrine religion and the state."
+    },
+    {
+      "id": "shinto-jinja-honcho-1946",
+      "family": "shinto",
+      "name": "Jinja Honcho founded",
+      "date": {
+        "year_start": 1946,
+        "year_end": 1946,
+        "display": "3 February 1946",
+        "precision": "day"
+      },
+      "event_kind": "institutionalization",
+      "merge_priority": "secondary",
+      "foundation_id": "shinto-foundation",
+      "lineage_node_ids": [
+        "modern-jinja-shinto"
+      ],
+      "place": "Japan",
+      "source_id": "jinja_honcho",
+      "source_url": "https://www.jinjahoncho.or.jp/en/honcho/",
+      "note": "Postwar shrine association for the majority of Japanese jinja; not a founding date for Shinto itself."
+    },
+    {
+      "id": "chn-ancestor-shang",
+      "family": "chinese-popular",
+      "name": "Ancestor sacrifice and divination attested in Shang sources",
+      "date": {
+        "year_start": -1600,
+        "year_end": -1045,
+        "display": "Shang dynasty, c. 1600–1045 BCE",
+        "precision": "range"
+      },
+      "event_kind": "deep_origin",
+      "merge_priority": "major",
+      "foundation_id": "chinese-popular-religion-foundation",
+      "lineage_node_ids": [
+        "ancient-chinese-ancestor-deity-field",
+        "ancestor-veneration-chinese"
+      ],
+      "place": "North China",
+      "source_id": "oxford_chinese_ancestor",
+      "source_url": "https://academic.oup.com/reference/62338/reference-article-abstract/571509804",
+      "note": "Ancient attestation of practices, not a single foundation event."
+    },
+    {
+      "id": "chn-popular-song-expansion",
+      "family": "chinese-popular",
+      "name": "Local popular religious institutions expand in Song commercial/urban worlds",
+      "date": {
+        "year_start": 960,
+        "year_end": 1279,
+        "display": "Song dynasty, 960–1279 CE",
+        "precision": "range"
+      },
+      "event_kind": "institutional_expansion",
+      "merge_priority": "secondary",
+      "foundation_id": "chinese-popular-religion-foundation",
+      "lineage_node_ids": [
+        "local-temple-ancestor-field"
+      ],
+      "place": "China",
+      "source_id": "oxford_chinese_popular",
+      "source_url": "https://academic.oup.com/edited-volume/55817/chapter-abstract/436581365",
+      "note": "Temple cults, ritual economies and local deity networks become especially visible; practices have much older roots."
     }
   ]
 }
