@@ -1,7 +1,7 @@
 {
   "id": "religious-foundation-timeline",
   "version": "1.1.0",
-  "updated": "2026-09-20",
+  "updated": "2026-09-26",
   "status": "canonical projection of religious-foundation-lineages",
   "purpose": "Flatten religious lineage nodes into a chronology suitable for timeline and spiral rendering while preserving uncertainty, parentage and node type.",
   "source": "data/religious-foundation-lineages.json",
@@ -128,25 +128,6 @@
       "notes": "A plural religious field, not one denomination."
     },
     {
-      "node_id": "samaritan-israelite-tradition",
-      "family_id": "judaism-lineage",
-      "name": "Samaritan Israelite tradition",
-      "node_type": "sister_lineage",
-      "year_start": -500,
-      "year_end": 200,
-      "date_or_range": "ancient Israelite/Samaritan differentiation, broad window",
-      "precision": "range",
-      "status": "high-uncertainty",
-      "relation_to_parent": "sister_to",
-      "parent_ids": [
-        "israelite-religion"
-      ],
-      "place": "Samaria",
-      "spatial_status": "geocodable historical anchor",
-      "source_ids": [],
-      "notes": "Do not render Samaritanism as a denomination born from rabbinic Judaism."
-    },
-    {
       "node_id": "early-buddhism",
       "family_id": "buddhism-lineage",
       "name": "Early Buddhist sangha",
@@ -164,6 +145,25 @@
         "oxford_srilanka"
       ],
       "notes": "Historical Buddha chronology is debated; avoid one exact birthday."
+    },
+    {
+      "node_id": "samaritan-israelite-tradition",
+      "family_id": "judaism-lineage",
+      "name": "Samaritan Israelite tradition",
+      "node_type": "sister_lineage",
+      "year_start": -500,
+      "year_end": 200,
+      "date_or_range": "ancient Israelite/Samaritan differentiation, broad window",
+      "precision": "range",
+      "status": "high-uncertainty",
+      "relation_to_parent": "sister_to",
+      "parent_ids": [
+        "israelite-religion"
+      ],
+      "place": "Samaria",
+      "spatial_status": "geocodable historical anchor",
+      "source_ids": [],
+      "notes": "Do not render Samaritanism as a denomination born from rabbinic Judaism."
     },
     {
       "node_id": "hindu-traditions",
@@ -450,6 +450,25 @@
       "notes": "Constituent churches have pre-451 roots; 451 marks enduring non-reception of Chalcedon, not their creation ex nihilo."
     },
     {
+      "node_id": "vajrayana-buddhism",
+      "family_id": "buddhism-lineage",
+      "name": "Vajrayana / tantric Buddhist traditions",
+      "node_type": "reform_movement",
+      "year_start": 500,
+      "year_end": 800,
+      "date_or_range": "c. 6th–8th centuries CE",
+      "precision": "range",
+      "status": "broad-formation",
+      "relation_to_parent": "develops_from",
+      "parent_ids": [
+        "mahayana-buddhism"
+      ],
+      "place": "South Asia → Tibet/Himalaya and wider Asia",
+      "spatial_status": "geocodable historical anchor",
+      "source_ids": [],
+      "notes": "Multiple tantric textual and practice lineages; no single founder."
+    },
+    {
       "node_id": "latin-western-christianity",
       "family_id": "christianity-lineage",
       "name": "Latin Western Christian tradition",
@@ -492,25 +511,6 @@
       "notes": "Gradual differentiation; includes multiple patriarchates/churches, not one ethnicity."
     },
     {
-      "node_id": "vajrayana-buddhism",
-      "family_id": "buddhism-lineage",
-      "name": "Vajrayana / tantric Buddhist traditions",
-      "node_type": "reform_movement",
-      "year_start": 500,
-      "year_end": 800,
-      "date_or_range": "c. 6th–8th centuries CE",
-      "precision": "range",
-      "status": "broad-formation",
-      "relation_to_parent": "develops_from",
-      "parent_ids": [
-        "mahayana-buddhism"
-      ],
-      "place": "South Asia → Tibet/Himalaya and wider Asia",
-      "spatial_status": "geocodable historical anchor",
-      "source_ids": [],
-      "notes": "Multiple tantric textual and practice lineages; no single founder."
-    },
-    {
       "node_id": "early-islam",
       "family_id": "islam-lineage",
       "name": "Early Islam / Qur'anic community",
@@ -526,27 +526,6 @@
       "spatial_status": "geocodable historical anchor",
       "source_ids": [],
       "notes": "622 Hijra is a particularly strong community/institutional clock inside this formation."
-    },
-    {
-      "node_id": "sunni-formation",
-      "family_id": "islam-lineage",
-      "name": "Sunni Islam, formative majority tradition",
-      "node_type": "communion",
-      "year_start": 632,
-      "year_end": 900,
-      "date_or_range": "7th–9th centuries CE",
-      "precision": "range",
-      "status": "long-formation",
-      "relation_to_parent": "differentiates_from",
-      "parent_ids": [
-        "early-islam"
-      ],
-      "place": "Medina, Damascus, Baghdad and wider caliphal networks",
-      "spatial_status": "geocodable historical anchor",
-      "source_ids": [
-        "cambridge_madhhab"
-      ],
-      "notes": "Do not represent Sunni Islam as fully formed on the day of Muhammad's death; later hadith, law and theology crystallize over centuries."
     },
     {
       "node_id": "shia-formation",
@@ -568,6 +547,27 @@
         "iranica_occultation"
       ],
       "notes": "Shiʿi identity and doctrine develop through several succession crises and imamate lineages."
+    },
+    {
+      "node_id": "sunni-formation",
+      "family_id": "islam-lineage",
+      "name": "Sunni Islam, formative majority tradition",
+      "node_type": "communion",
+      "year_start": 632,
+      "year_end": 900,
+      "date_or_range": "7th–9th centuries CE",
+      "precision": "range",
+      "status": "long-formation",
+      "relation_to_parent": "differentiates_from",
+      "parent_ids": [
+        "early-islam"
+      ],
+      "place": "Medina, Damascus, Baghdad and wider caliphal networks",
+      "spatial_status": "geocodable historical anchor",
+      "source_ids": [
+        "cambridge_madhhab"
+      ],
+      "notes": "Do not represent Sunni Islam as fully formed on the day of Muhammad's death; later hadith, law and theology crystallize over centuries."
     },
     {
       "node_id": "kharijite-muhakkima",
@@ -1024,6 +1024,108 @@
       "notes": "Has both institutional continuity with medieval English Christianity and Reformation-era doctrinal/liturgical transformation."
     },
     {
+      "node_id": "english-separatist-field",
+      "family_id": "christianity-lineage",
+      "name": "English Separatist / Independent field",
+      "node_type": "phase",
+      "year_start": 1550,
+      "year_end": 1620,
+      "date_or_range": "late 16th–early 17th centuries",
+      "precision": "range",
+      "status": "broad-formation",
+      "relation_to_parent": "develops_from",
+      "parent_ids": [
+        "protestant-reformation"
+      ],
+      "place": "England / Dutch exile communities",
+      "spatial_status": "geocodable historical anchor",
+      "source_ids": [],
+      "notes": "Context node for English congregational/separatist currents; not a denomination."
+    },
+    {
+      "node_id": "presbyterian-traditions",
+      "family_id": "christianity-lineage",
+      "name": "Presbyterian traditions",
+      "node_type": "denomination",
+      "year_start": 1560,
+      "year_end": 1647,
+      "date_or_range": "1560 Scots Confession → 1647 Westminster Confession",
+      "precision": "range",
+      "status": "documented+confessional-formation",
+      "relation_to_parent": "institutionalizes_from",
+      "parent_ids": [
+        "reformed-tradition"
+      ],
+      "place": "Scotland → wider Reformed world",
+      "spatial_status": "geocodable historical anchor",
+      "source_ids": [
+        "pcusa_reformed_history"
+      ],
+      "notes": "A Reformed family especially associated with presbyterial governance; not all Reformed churches are Presbyterian."
+    },
+    {
+      "node_id": "english-dissent-field",
+      "family_id": "christianity-lineage",
+      "name": "English dissenting / Seeker field",
+      "node_type": "phase",
+      "year_start": 1600,
+      "year_end": 1660,
+      "date_or_range": "17th-century English religious ferment",
+      "precision": "range",
+      "status": "broad-formation",
+      "relation_to_parent": "develops_from",
+      "parent_ids": [
+        "protestant-reformation"
+      ],
+      "place": "England",
+      "spatial_status": "geocodable historical anchor",
+      "source_ids": [],
+      "notes": "Context node for radical Protestant, Seeker and dissenting currents; not one church."
+    },
+    {
+      "node_id": "baptist-traditions",
+      "family_id": "christianity-lineage",
+      "name": "Baptist traditions",
+      "node_type": "denomination",
+      "year_start": 1609,
+      "year_end": 1644,
+      "date_or_range": "1609 Amsterdam congregation → 17th-century English Baptist differentiation",
+      "precision": "range",
+      "status": "documented+long-formation",
+      "relation_to_parent": "develops_from",
+      "parent_ids": [
+        "english-separatist-field",
+        "protestant-reformation"
+      ],
+      "place": "Amsterdam / England",
+      "spatial_status": "geocodable historical anchor",
+      "source_ids": [
+        "baptist_1609"
+      ],
+      "notes": "Modern Baptist histories commonly use the 1609 Amsterdam congregation as a seed marker; General and Particular Baptist streams develop separately. Do not derive Baptists directly from continental Anabaptists as a simple one-line genealogy."
+    },
+    {
+      "node_id": "quaker-friends",
+      "family_id": "christianity-lineage",
+      "name": "Religious Society of Friends / Quaker traditions",
+      "node_type": "reform_movement",
+      "year_start": 1647,
+      "year_end": 1652,
+      "date_or_range": "1647 Fox ministry → 1652 major movement expansion",
+      "precision": "range",
+      "status": "documented+formation",
+      "relation_to_parent": "develops_from",
+      "parent_ids": [
+        "english-dissent-field"
+      ],
+      "place": "England",
+      "spatial_status": "geocodable historical anchor",
+      "source_ids": [
+        "quaker_history"
+      ],
+      "notes": "Friends emerge in the 17th-century English dissenting/Seeker field with strong emphasis on immediate divine guidance, equality and distinctive worship. Later branches differ substantially."
+    },
+    {
       "node_id": "khalsa",
       "family_id": "other-major-lineages",
       "name": "Khalsa",
@@ -1104,6 +1206,27 @@
       "notes": "Baal Shem Tov-associated revival; later diversified into dynastic/group lineages."
     },
     {
+      "node_id": "restoration-stone-campbell",
+      "family_id": "christianity-lineage",
+      "name": "Stone-Campbell / Restoration Movement",
+      "node_type": "reform_movement",
+      "year_start": 1801,
+      "year_end": 1832,
+      "date_or_range": "early 19th-century restoration movements → 1831/32 union",
+      "precision": "range",
+      "status": "documented+formation",
+      "relation_to_parent": "develops_from",
+      "parent_ids": [
+        "protestant-reformation"
+      ],
+      "place": "United States",
+      "spatial_status": "geocodable historical anchor",
+      "source_ids": [
+        "disciples_history"
+      ],
+      "notes": "A restorationist/primitivist movement seeking New Testament church patterns; later trajectories include Disciples of Christ, Churches of Christ and Christian Churches/Churches of Christ."
+    },
+    {
       "node_id": "reform-judaism",
       "family_id": "judaism-lineage",
       "name": "Reform / Liberal Judaism",
@@ -1165,6 +1288,27 @@
         "adventist_history"
       ],
       "notes": "Adventism is broader than Seventh-day Adventism; 1863 is the SDA organizational date."
+    },
+    {
+      "node_id": "holiness-movement",
+      "family_id": "christianity-lineage",
+      "name": "Wesleyan-Holiness movement",
+      "node_type": "reform_movement",
+      "year_start": 1830,
+      "year_end": 1900,
+      "date_or_range": "19th-century Wesleyan-Holiness expansion",
+      "precision": "range",
+      "status": "broad-formation",
+      "relation_to_parent": "develops_from",
+      "parent_ids": [
+        "methodist-traditions"
+      ],
+      "place": "Britain / United States",
+      "spatial_status": "geocodable historical anchor",
+      "source_ids": [
+        "nazarene_history"
+      ],
+      "notes": "Transdenominational holiness current emphasizing sanctification/perfect love in Wesleyan trajectories; later feeds Nazarene and some Pentecostal histories."
     },
     {
       "node_id": "babi-movement",
@@ -1248,6 +1392,27 @@
         "pew_pentecostal"
       ],
       "notes": "Heavily shaped by Holiness currents; later becomes globally diverse and cross-denominational."
+    },
+    {
+      "node_id": "church-of-nazarene",
+      "family_id": "christianity-lineage",
+      "name": "Church of the Nazarene",
+      "node_type": "denomination",
+      "year_start": 1908,
+      "year_end": 1915,
+      "date_or_range": "1908 union marker; additional mergers through 1915",
+      "precision": "range",
+      "status": "documented-markers",
+      "relation_to_parent": "institutionalizes_from",
+      "parent_ids": [
+        "holiness-movement"
+      ],
+      "place": "United States",
+      "spatial_status": "geocodable historical anchor",
+      "source_ids": [
+        "nazarene_history"
+      ],
+      "notes": "A Wesleyan-Holiness denomination formed through union of several holiness bodies; 1908 is the official anniversary marker."
     }
   ],
   "event_registry": "data/religious-foundation-events.json",
