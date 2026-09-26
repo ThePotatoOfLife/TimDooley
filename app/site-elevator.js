@@ -162,6 +162,7 @@
         '</div>'+
         '<div class="site-elevator-reel" aria-label="Current House floor">'+
           '<div class="site-elevator-floor" aria-live="polite">'+
+            '<span class="site-elevator-floor-code" aria-hidden="true">02</span>'+
             '<strong class="site-elevator-floor-label">PLANE</strong>'+
             '<small class="site-elevator-room-label">House orientation</small>'+
           '</div>'+
@@ -184,6 +185,7 @@
 
     const up=header.querySelector('.site-elevator-up');
     const down=header.querySelector('.site-elevator-down');
+    const floorCode=header.querySelector('.site-elevator-floor-code');
     const floorLabel=header.querySelector('.site-elevator-floor-label');
     const roomLabel=header.querySelector('.site-elevator-room-label');
     const roomRail=header.querySelector('.site-elevator-room-rail');
@@ -225,6 +227,7 @@
         void header.offsetWidth;
         header.dataset.elevatorDirection=direction;
       }
+      floorCode.textContent=({heaven:'03',plane:'02',below:'01'}[selectedLevel]||'02');
       floorLabel.textContent=levelLabel(selectedLevel,projection).replace(/\s*\/.*$/,'').toUpperCase();
       const currentRoom=spatial.room;
       const projected=currentRoom&&projection
@@ -292,6 +295,8 @@
         }
       }
       selectedLevel=LEVELS.includes(spatial.levelId)?spatial.levelId:'plane';
+      if(spatial.roomId)header.dataset.elevatorRoom=spatial.roomId;
+      else delete header.dataset.elevatorRoom;
       header.dataset.elevatorReady='true';
       render('hydrate');
     }).catch(()=>{
