@@ -2,7 +2,7 @@
 
 Status: operator orientation / routing document — **not a canonical source of truth**
 
-Updated: 2026-09-15
+Updated: 2026-09-27
 
 This document exists so repository work enters through the current architecture instead of rediscovering it, creating parallel masters, or mistaking presentation files for canonical knowledge. When this note conflicts with a canonical owner, registry, source ledger, validator or newer dated record, **the dedicated owner wins**.
 
