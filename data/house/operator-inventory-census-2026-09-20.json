@@ -2,7 +2,7 @@
   "id": "operator-inventory-census-2026-09-20",
   "title": "Core Operator Inventory Census — Consolidation Pressure and Next Work",
   "version": "1.2.0",
-  "updated": "2026-09-20",
+  "updated": "2026-09-27",
   "status": "repository inventory snapshot",
   "purpose": "Summarize high-frequency operator families and route future consolidation through canonical owners instead of creating additional generic masters.",
   "method": "Filename/path inventory plus canonical-owner review. Counts below are filename/path hits from the current repository tree and therefore measure visible fragmentation pressure, not semantic frequency inside file contents.",
@@ -162,5 +162,19 @@
     "data/house/holdings.json",
     "data/house/data-holdings.json",
     "knowledge/indexes/core-index.json"
+  ],
+  "resolved_name_collisions": [
+    {
+      "id": "cross-theory-vs-cross-operator",
+      "resolved": "2026-09-27",
+      "paths": [
+        "knowledge/science/research-notes/2026-09-11-cross-theory-research-program.json",
+        "knowledge/science/formulation-upgrades/2026-09-11-cross-model-defect-calculus.json",
+        "knowledge/science/formulation-upgrades/2026-09-11-cross-model-pareto-advancement.json"
+      ],
+      "decision": "Science cross-theory/cross-model methodology is not part of the Cross-point/Cross-sign/crossing-event operator family.",
+      "owner": "science / experiments-formalization",
+      "guard": "operator-family-manifest and operator-ownership-registry explicitly record the lexical collision."
+    }
   ]
 }
