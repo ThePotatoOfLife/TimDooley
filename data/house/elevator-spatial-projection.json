@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-26",
   "authority": "elevator-spatial-projection",
   "title": "Door / Axis Elevator — Three-Floor House Projection",
@@ -345,8 +345,53 @@
   ],
   "route_contexts": [
     {
-      "match": "/",
+      "match": "/philosophy/interpretive-justice.html",
+      "level_id": "heaven",
+      "room_id": "potatoverse-canon"
+    },
+    {
+      "match": "/context/source-authority/",
+      "level_id": "below",
+      "room_id": "archive-sources"
+    },
+    {
+      "match": "/traditions/bible/",
+      "level_id": "heaven",
+      "room_id": "traditions-texts"
+    },
+    {
+      "match": "/context/culture/",
       "level_id": "plane",
+      "room_id": "culture-information"
+    },
+    {
+      "match": "/potato-of-life/",
+      "level_id": "heaven",
+      "room_id": "potatoverse-canon"
+    },
+    {
+      "match": "/rooms/objects/",
+      "level_id": "plane",
+      "room_id": null
+    },
+    {
+      "match": "/world-systems/",
+      "level_id": "plane",
+      "room_id": "world-systems"
+    },
+    {
+      "match": "/research-lab/",
+      "level_id": "below",
+      "room_id": "research-lab"
+    },
+    {
+      "match": "/shadow-farm/",
+      "level_id": "below",
+      "room_id": "culture-information"
+    },
+    {
+      "match": "/philosophy/",
+      "level_id": "heaven",
       "room_id": "potatoverse-canon"
     },
     {
@@ -355,19 +400,34 @@
       "room_id": "potatoverse-canon"
     },
     {
-      "match": "/potato-of-life/",
-      "level_id": "heaven",
+      "match": "/corporium/",
+      "level_id": "plane",
       "room_id": "potatoverse-canon"
     },
     {
-      "match": "/religion/",
-      "level_id": "heaven",
-      "room_id": "traditions-texts"
+      "match": "/index-a-z/",
+      "level_id": "plane",
+      "room_id": null
     },
     {
-      "match": "/science/",
+      "match": "/life-body/",
       "level_id": "plane",
-      "room_id": "science-formal-models"
+      "room_id": "life-body"
+    },
+    {
+      "match": "/questions/",
+      "level_id": "plane",
+      "room_id": null
+    },
+    {
+      "match": "/world-map/",
+      "level_id": "plane",
+      "room_id": "world-systems"
+    },
+    {
+      "match": "/elevator/",
+      "level_id": "plane",
+      "room_id": null
     },
     {
       "match": "/politics/",
@@ -375,34 +435,9 @@
       "room_id": "world-systems"
     },
     {
-      "match": "/economy/",
-      "level_id": "plane",
-      "room_id": "world-systems"
-    },
-    {
-      "match": "/context/culture/",
-      "level_id": "plane",
-      "room_id": "culture-information"
-    },
-    {
-      "match": "/shadow-farm/",
-      "level_id": "below",
-      "room_id": "culture-information"
-    },
-    {
-      "match": "/context/source-authority/",
-      "level_id": "below",
-      "room_id": "archive-sources"
-    },
-    {
-      "match": "/research-lab/",
-      "level_id": "below",
-      "room_id": "research-lab"
-    },
-    {
-      "match": "/works/",
+      "match": "/religion/",
       "level_id": "heaven",
-      "room_id": "works"
+      "room_id": "traditions-texts"
     },
     {
       "match": "/timeline/",
@@ -410,9 +445,84 @@
       "room_id": "time-history"
     },
     {
+      "match": "/context/",
+      "level_id": "below",
+      "room_id": "archive-sources"
+    },
+    {
+      "match": "/economy/",
+      "level_id": "plane",
+      "room_id": "world-systems"
+    },
+    {
+      "match": "/explore/",
+      "level_id": "plane",
+      "room_id": null
+    },
+    {
+      "match": "/history/",
+      "level_id": "plane",
+      "room_id": "time-history"
+    },
+    {
+      "match": "/science/",
+      "level_id": "plane",
+      "room_id": "science-formal-models"
+    },
+    {
       "match": "/below/",
       "level_id": "below",
       "room_id": null
+    },
+    {
+      "match": "/house/",
+      "level_id": "plane",
+      "room_id": null
+    },
+    {
+      "match": "/north/",
+      "level_id": "heaven",
+      "room_id": null
+    },
+    {
+      "match": "/paths/",
+      "level_id": "plane",
+      "room_id": null
+    },
+    {
+      "match": "/rooms/",
+      "level_id": "plane",
+      "room_id": null
+    },
+    {
+      "match": "/works/",
+      "level_id": "heaven",
+      "room_id": "works"
+    },
+    {
+      "match": "/world/",
+      "level_id": "plane",
+      "room_id": "world-systems"
+    },
+    {
+      "match": "/axis/",
+      "level_id": "heaven",
+      "room_id": "potatoverse-canon"
+    },
+    {
+      "match": "/news/",
+      "level_id": "plane",
+      "room_id": "world-systems"
+    },
+    {
+      "match": "/law/",
+      "level_id": "plane",
+      "room_id": "world-systems"
+    },
+    {
+      "match": "/",
+      "level_id": "plane",
+      "room_id": "potatoverse-canon"
     }
   ]
 }
