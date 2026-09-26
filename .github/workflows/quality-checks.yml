@@ -35,6 +35,7 @@ jobs:
         run: |
           python scripts/validate_reader_richness.py
           python scripts/validate_room_holdings.py
+          python scripts/validate_room_inhabitants.py
           python scripts/validate_dwelling_featured_objects.py
           python scripts/validate_public_reader_completeness.py
           python scripts/validate_room_interfaces.py
