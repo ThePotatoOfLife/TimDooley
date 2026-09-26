@@ -193,8 +193,8 @@ assert.ok(css.includes('background:rgba(38,30,21,.95)'),'Plane floor board needs
 assert.ok(css.includes('background:rgba(24,14,11,.96)'),'Below floor board needs a dark readability plate');
 assert.ok(css.includes('background:rgba(5,8,8,.72)'),'arrow column needs a stable dark readability plate');
 assert.ok(css.includes('[data-elevator-ready="false"]'),'loading state must have a neutral terminal treatment');
-assert.ok(css.includes('minmax(49px,1fr)'),'narrow mobile Plane grid must fit enough columns to avoid four Room rows');
-assert.ok(css.includes('font-size:12px'),'floor label must remain immediately readable');
+assert.ok(css.includes('--elevator-room-min:49px'),'narrow mobile Plane grid must fit enough columns to avoid four Room rows');
+assert.ok(css.includes('--elevator-floor-size:12px'),'floor label must remain immediately readable');
 assert.ok(css.includes('text-shadow:0 1px 0 rgba(0,0,0,.95)'),'floor text needs dark contrast shadow');
 assert.ok(css.includes('[data-elevator-level="below"] .site-elevator-room'),'Below Room tiles need underground material styling');
 assert.ok(css.includes('background:transparent'),'arrow controls must float without metallic button blocks');
@@ -202,12 +202,12 @@ assert.ok(css.includes('display:block!important'),'elevator shell must survive p
 assert.ok(css.includes('display:grid!important'),'Room rail must survive page-level nav display overrides');
 assert.ok(css.includes('margin:0!important'),'elevator shell must reset page-level header/nav margins');
 assert.ok(css.includes('align-self:start'),'elevator controls must stay pinned when Room grid wraps');
-assert.ok(css.includes('height:42px'),'desktop elevator controls need a fixed one-row height');
+assert.ok(css.includes('--elevator-row-height:42px'),'desktop elevator controls need a fixed one-row height token');
 assert.ok(css.includes('.site-elevator-reel{\n  align-self:start;'),'floor board must stay pinned when Room grid wraps');
-assert.ok(css.includes('grid-auto-rows:minmax(26px,auto)'),'wrapped Room rows must stay compact and predictable');
+assert.ok(css.includes('--elevator-room-row-min:26px'),'wrapped Room rows must stay compact and predictable');
 assert.ok(css.includes('.site-elevator-up::before{content:"△"}'),'up arrow needs triangle framing');
 assert.ok(css.includes('.site-elevator-down::before{content:"▽"}'),'down arrow needs inverted triangle framing');
-assert.ok(css.includes('font:400 21px/1'),'triangle framing should be slightly larger on desktop');
+assert.ok(css.includes('--elevator-arrow-size:21px'),'triangle framing should retain its desktop size token');
 assert.ok(!css.includes('pointer-events:none;\n  z-index:-1;\n}\n.site-elevator-up::before'),'triangle framing must not disappear behind the control column');
 assert.ok(css.includes('text-wrap:balance'),'Room labels should wrap into balanced readable lines');
 assert.ok(source.includes('site-elevator-floor-code'),'runtime must render terminal floor code');
