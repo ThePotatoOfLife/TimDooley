@@ -1,6 +1,6 @@
 {
   "id": "public-page-semantic-gap-audit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-26",
   "purpose": "Track older public pages that are technically reachable but still need coherence, fallback substance, consolidation or authored synthesis. This audit targets semantic gaps, not raw word count.",
   "principles": [
@@ -60,28 +60,24 @@
       "issue": "strong_no_action",
       "status": "reviewed",
       "action": "Already long and internally structured; future work should improve compression/visual hierarchy rather than add prose."
+    },
+    {
+      "path": "science/research-map/index.html",
+      "issue": "isolated_substantive",
+      "status": "fixed",
+      "action": "Added active science-owner map and typed shared-vocabulary rules."
     }
   ],
   "next_wave": [
     {
-      "path": "science/celestial-particles/index.html",
+      "path": "science/axis-11d-sun-spiral/index.html",
       "issue": "isolated_substantive",
-      "question": "Does the page clearly separate astronomy/particle physics from celestial symbolism and from the broader quantum page?"
+      "question": "Audit whether speculative 11D/Axis physics is sufficiently separated from established M-theory and from symbolic Axis geometry throughout the full long page."
     },
     {
-      "path": "science/celestial-matter/index.html",
-      "issue": "isolated_substantive",
-      "question": "Check dark matter/energy analogies against literal cosmology and remove metaphor bleed."
-    },
-    {
-      "path": "science/entanglement/index.html",
-      "issue": "isolated_substantive",
-      "question": "Ensure entanglement/nonlocality does not duplicate Vibe/Gates or imply communication."
-    },
-    {
-      "path": "rooms/index.html",
-      "issue": "generic_hub",
-      "question": "Does the Rooms surface explain how Dwellings, Rooms, objects and views differ before presenting architecture?"
+      "path": "science/index.html",
+      "issue": "strong_no_action",
+      "question": "Re-review only for compression after specialist ownership changes; do not lengthen unless a genuine gap appears."
     },
     {
       "path": "explore/index.html",
@@ -117,5 +113,12 @@
     "Review older theology/mythology pages for terms that silently changed meaning after 2025–2026 and date those shifts instead of rewriting history.",
     "Review long hubs for duplication and compression after specialist pages mature; sometimes coherence means removing repeated explanation.",
     "Track semantic-gap status separately from Room maturity because a page can be inhabited yet still poorly integrated."
+  ],
+  "findings": [
+    {
+      "date": "2026-09-26",
+      "finding": "Expected celestial-matter and entanglement public routes do not exist on current main.",
+      "decision": "Do not create them. Consolidate dark-sector astronomy into Celestial + Particles and entanglement/nonlocality into Quantum; use Research Map to make ownership explicit."
+    }
   ]
 }
