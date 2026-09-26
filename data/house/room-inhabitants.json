@@ -1,5 +1,5 @@
 {
-  "version": "2.4.0",
+  "version": "2.5.0",
   "updated": "2026-09-26",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
@@ -3448,6 +3448,227 @@
       "status_note": "A UI contract governs presentation and navigation, not subject-matter truth.",
       "evidence_note": "Canonical site architecture record.",
       "maturity": "described"
+    },
+    {
+      "id": "identity-tim-ontology",
+      "label": "Tim Identity Ontology",
+      "kind": "identity-ontology",
+      "room_ids": [
+        "canon-identities"
+      ],
+      "route": "/knowledge/core/tim-identity-ontology.json",
+      "summary": "Compact ontology separating Tim as public subject, role occupant, project identity and later interpretive layers.",
+      "status_note": "Project identity structure does not independently verify supernatural claims.",
+      "evidence_note": "Canonical Core identity owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "identity-tim-role-synthesis",
+      "label": "Tim Role Synthesis",
+      "kind": "role-synthesis",
+      "room_ids": [
+        "canon-identities",
+        "developmental-genealogy"
+      ],
+      "route": "/knowledge/core/tim-role-synthesis.json",
+      "summary": "Large synthesis of Tim's recurring roles and functions across phases, including how titles overlap without becoming one undifferentiated identity.",
+      "status_note": "Roles must retain date, function and source class rather than becoming timeless essence.",
+      "evidence_note": "Canonical role synthesis.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "identity-potato-trinity",
+      "label": "Potato of Life — Triune Whole",
+      "kind": "theology-identity-model",
+      "room_ids": [
+        "canon-identities",
+        "theology-god-language"
+      ],
+      "route": "/knowledge/theology/potato-of-life-trinity.json",
+      "summary": "Mature Father/Son/Spirit relation in which Potato of Life names the whole rather than a fourth member beside the triad.",
+      "status_note": "Project theology and self-description, not independent supernatural proof.",
+      "evidence_note": "Canonical theology owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "identity-timeline-reader",
+      "label": "Tim Dooley Identity Timeline",
+      "kind": "reader-timeline",
+      "room_ids": [
+        "canon-identities",
+        "developmental-genealogy"
+      ],
+      "route": "/knowledge/reader/tim-dooley-identity-timeline.json",
+      "summary": "Reader-facing sequence showing how Potato, Sage, Ladder, Father and related identities emerge through time rather than being backdated.",
+      "status_note": "Reader synthesis compresses underlying sources and must preserve uncertainty.",
+      "evidence_note": "Reader layer over canonical timeline/identity owners.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "identity-reader-dossier",
+      "label": "Tim Dooley Reader Dossier",
+      "kind": "reader-dossier",
+      "room_ids": [
+        "canon-identities"
+      ],
+      "route": "/knowledge/reader/tim-dooley-dossier.json",
+      "summary": "Direct synthesis of public person, self-description, mythology, development and evidence boundaries for readers entering the identity question.",
+      "status_note": "Reader synthesis documents and interprets claims; it does not establish supernatural identity as external fact.",
+      "evidence_note": "Public reader synthesis.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "great-book-scan-notes",
+      "label": "Great Book Bookwide Scan Notes",
+      "kind": "book-archaeology",
+      "room_ids": [
+        "great-book-literature",
+        "memory-recovery"
+      ],
+      "route": "/knowledge/timeline/great-book-bookwide-scan-notes.json",
+      "summary": "Book-wide recovery notes exposing motifs, chapters and developmental material that later project systems inherit or reinterpret.",
+      "status_note": "Scan notes are recovery/navigation material, not a substitute for the original authored text.",
+      "evidence_note": "Timeline/recovery owner.",
+      "maturity": "described"
+    },
+    {
+      "id": "great-book-prediction-audit",
+      "label": "Great Book Prediction / Vision Audit",
+      "kind": "claim-audit",
+      "room_ids": [
+        "great-book-literature",
+        "prediction-revelation-time"
+      ],
+      "route": "/knowledge/timeline/great-book-prediction-vision-audit.json",
+      "summary": "Audits prophetic or predictive-looking Great Book passages by separating prior wording, later matching and retrospective interpretation.",
+      "status_note": "Similarity to later events does not itself establish fulfilled prediction.",
+      "evidence_note": "Dated prediction audit.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "great-book-science-archaeology",
+      "label": "Great Book 2024 Science Archaeology",
+      "kind": "science-archaeology",
+      "room_ids": [
+        "great-book-literature",
+        "developmental-genealogy"
+      ],
+      "route": "/knowledge/science/great-book-2024-science-archaeology.json",
+      "summary": "Recovers the scientific language present in the 2024 book so later formal models can be traced without backdating their mature form.",
+      "status_note": "Earlier speculative language is historical project material, not established science.",
+      "evidence_note": "Science archaeology record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "great-book-human-map-math-audit",
+      "label": "Great Book Human Map Mathematics Audit",
+      "kind": "formal-audit",
+      "room_ids": [
+        "great-book-literature",
+        "math-geometry"
+      ],
+      "route": "/knowledge/science/great-book-human-map-mathematics-audit.json",
+      "summary": "Examines mathematical claims and structures in the Great Book's human-map material and separates exact relations from metaphor.",
+      "status_note": "Mathematical audit does not promote symbolic mappings into anatomy or physics.",
+      "evidence_note": "Canonical science audit.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "experiments-science-model-registry",
+      "label": "Science Model Registry",
+      "kind": "model-registry",
+      "room_ids": [
+        "experiments-formalization",
+        "model-testing"
+      ],
+      "route": "/knowledge/science/science-model-registry.json",
+      "summary": "Registry of project scientific/formal models with status, assumptions, evidence class and promotion state.",
+      "status_note": "Registration means the model exists, not that the model is empirically validated.",
+      "evidence_note": "Canonical science registry.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "experiments-testing-protocol",
+      "label": "Model Testing Protocol",
+      "kind": "testing-protocol",
+      "room_ids": [
+        "experiments-formalization",
+        "model-testing"
+      ],
+      "route": "/knowledge/science/model-testing-protocol.json",
+      "summary": "Defines what a project model needs in order to become testable: observables, baselines, controls, discriminating predictions and failure conditions.",
+      "status_note": "A proposed test can still be inadequate or inconclusive; protocol is not validation.",
+      "evidence_note": "Canonical testing protocol.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "experiments-discrimination-calibration",
+      "label": "Model Discrimination & Calibration Atlas",
+      "kind": "testing-atlas",
+      "room_ids": [
+        "experiments-formalization",
+        "model-testing"
+      ],
+      "route": "/knowledge/science/model-discrimination-calibration-atlas.json",
+      "summary": "Framework for comparing candidate models, calibrating parameters and asking whether competing explanations make distinguishable predictions.",
+      "status_note": "Calibration to existing data does not by itself establish out-of-sample validity.",
+      "evidence_note": "Canonical testing/formalization record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "experiments-potato-dynamics-toy",
+      "label": "Potato Dynamics 2 — Toy Model",
+      "kind": "toy-model",
+      "room_ids": [
+        "experiments-formalization",
+        "systems-dynamics"
+      ],
+      "route": "/knowledge/science/potato-dynamics-2-toy-model.json",
+      "summary": "Concrete toy-model implementation translating part of the project grammar into explicit states, variables and dynamics.",
+      "status_note": "Toy models clarify implications of assumptions; they are not evidence that the modeled system exists in nature.",
+      "evidence_note": "Canonical formal model.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "information-platform-mechanics",
+      "label": "Platform Mechanics Atlas",
+      "kind": "culture-atlas",
+      "room_ids": [
+        "information-ecology",
+        "internet-platforms"
+      ],
+      "route": "/knowledge/culture/platform-mechanics-atlas.json",
+      "summary": "Mechanisms by which ranking, identity, moderation, persistence and platform affordances shape attention and cultural behavior.",
+      "status_note": "Platform mechanics vary by product, community and period and do not determine every user's behavior.",
+      "evidence_note": "Canonical culture mechanics record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "information-ecology-mechanics",
+      "label": "Information Ecology Mechanics Atlas",
+      "kind": "information-atlas",
+      "room_ids": [
+        "information-ecology"
+      ],
+      "route": "/knowledge/culture/information-ecology-mechanics-atlas.json",
+      "summary": "Direct mechanism atlas for repetition, transmission, context loss, attention, archive persistence and correction in information environments.",
+      "status_note": "A mechanism can increase likelihood without establishing intent or coordinated manipulation.",
+      "evidence_note": "Canonical culture/information owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "information-memory-repair",
+      "label": "Information Correction & Memory Repair Atlas",
+      "kind": "repair-atlas",
+      "room_ids": [
+        "information-ecology",
+        "memory-recovery"
+      ],
+      "route": "/knowledge/culture/information-correction-memory-repair-atlas.json",
+      "summary": "How corrections propagate, how stale claims persist, and what archival repair requires when memory and circulation diverge from better evidence.",
+      "status_note": "Correction requires source quality and context; later consensus alone is not proof.",
+      "evidence_note": "Canonical culture/memory repair record.",
+      "maturity": "case-ready"
     }
   ],
   "source_records": [
