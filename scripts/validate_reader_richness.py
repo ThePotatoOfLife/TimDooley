@@ -65,10 +65,10 @@ def main() -> int:
         "data/house/room-dossiers.json",
         "data/house/holdings.json",
         "data/house/population-pulse.json",
-        "The Room behind the doorway",
-        "What actually belongs here",
-        "Open the actual material",
-        "What is still unfinished",
+        "Archive depth",
+        "Show archive structure",
+        "Further archive material",
+        "Open work",
     ):
         if marker not in journey:
             errors.append(f"House journey reader-richness projection missing marker: {marker}")
@@ -302,6 +302,15 @@ def main() -> int:
         errors.append("House journey restored retired local-center insertion fallback")
     if "firstReader.insertAdjacentElement('afterend',section)" not in journey_source:
         errors.append("House floor projection no longer follows first Dwelling substance")
+
+    # Dynamic Room depth must remain optional and must not visibly print raw
+    # backend source paths into holding cards.
+    if "room-richness-details" not in journey_source or "Show archive structure" not in journey_source:
+        errors.append("nested Room archive depth is no longer optional/collapsible")
+    if "(path?'<br>'+esc(path):'')" in journey_source:
+        errors.append("nested Room holdings expose raw backend paths in visible card text")
+    if "data-source-path=" not in journey_source:
+        errors.append("nested Room archive holdings lost quiet source-path metadata")
 
     generated_builder=(ROOT/"scripts/build_site.py").read_text(encoding="utf-8",errors="replace")
     record_block=generated_builder.split("def generate_record_pages",1)[-1].split("def generate_sitemap",1)[0]
