@@ -138,6 +138,22 @@ Priority order: **P0 release breakage → P1 structural drift/duplication → P2
 
 **Acceptance test:** ask of every prominent link: **“If I click this noun, do I immediately get the thing?”** If not, either route directly to the canonical substance or make the current page itself substantive enough to deserve the noun.
 
+### P1 — WHOLE-PROJECT CONVERGENCE · fewer systems, stronger families
+
+**Rule:** merge reader experiences before creating new surfaces. Distinct pages may survive when they answer distinct questions, but they should belong to one visible family rather than behaving like neighboring mini-projects.
+
+- [x] **WHOLE-001 · Route-family model:** `data/house/project-synthesis.json` now binds seven reader families: Tim/life/making, Timeline/history, Sources/context, Explore/retrieval, House/placement, World/systems, and Meaning/testing.
+- [x] **WHOLE-002 · Retrieval convergence:** Questions, A–Z and Paths now live structurally under Explore; Explore exposes all four retrieval modes as one archive family.
+- [x] **WHOLE-003 · Tim continuum:** Tim now visibly connects Portrait → Story → Collection → Works, with Timeline as the time projection of the same subject.
+- [x] **WHOLE-004 · Time/evidence pairing:** Timeline exposes History as its interpretation/revision lens; Sources exposes Context as its interpretive lens; both cross-link directly.
+- [ ] **WHOLE-005 · House navigation compression:** review House, Rooms, Inhabitants and Elevator as one placement family; remove repeated explanations and let each surface answer only its distinct placement question.
+- [ ] **WHOLE-006 · World convergence:** merge repeated introductory systems material across World, World Systems, Economy, Law, Politics, Culture and North into stronger local continuations under World.
+- [ ] **WHOLE-007 · Tim material merge:** inspect Story, Collection, Works, Claims, Public Witness and 100,000 Hours for duplicated narrative paragraphs and consolidate shared chronology/definitions into one owner with local excerpts.
+- [ ] **WHOLE-008 · Context/evidence merge:** reduce repeated provenance explanations across Sources, Context, History, Questions and specialist pages; preserve worked examples where they answer different questions.
+- [ ] **WHOLE-009 · Backend duplicate audit:** use owner/term overlap to identify genuinely duplicate JSON concepts and merge definitions into canonical owners before deleting redundant projections.
+- [ ] **WHOLE-010 · Final family crawl:** verify every active public surface has one family, one parent, one distinct reader job and a direct route back to the family center.
+
+
 
 ### World Map quality programme — critic audit 2026-09-20
 
