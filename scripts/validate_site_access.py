@@ -21,6 +21,7 @@ patch=read(ROOT/"scripts/patch_public_navigation.py")
 contract_text=read(ROOT/"data/house/site-access.json")
 journey_text=read(ROOT/"data/house/access-journeys.json")
 journey_ui=read(ROOT/"app/house-journey.js")
+journey_css=read(ROOT/"app/house-journey.css")
 try:
     contract=json.loads(contract_text) if contract_text else {}
 except json.JSONDecodeError as exc:
@@ -122,6 +123,12 @@ for token in ("label===t","priority(e)","site-access-context","await loadIndex()
     if token not in js and token not in css:
         errors.append(f"quick-access behavior missing regression marker: {token}")
 
+for token in ("house-journey.css?v=20260926a","data-house-journey-style"):
+    if token not in journey_ui:
+        errors.append(f"House journey stylesheet loader missing: {token}")
+if "style.textContent" in journey_ui or "createElement('style')" in journey_ui:
+    errors.append("House journey runtime must not inject component CSS")
+
 for token in ("--site-access-clearance", "viewportHeight-clearance-44"):
     if token not in tts_drawer:
         errors.append(f"TTS selection control does not honor fixed access clearance: {token}")
@@ -132,7 +139,7 @@ for token in (
     "const shown=trail.slice(-2)",
     "house-journey-ribbon-actions a{display:none}",
 ):
-    if token not in journey_ui:
+    if token not in journey_css and token not in journey_ui:
         errors.append(f"House journey compact-lane contract missing: {token}")
 
 if "@media(max-width:680px)" not in css or ".site-access-panel{bottom:52px;width:calc(100vw - 12px)" not in css:
