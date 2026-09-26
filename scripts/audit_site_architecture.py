@@ -91,7 +91,12 @@ def main()->int:
         if not str(row.get("reader_job") or "").strip(): errors.append(f"{sid} has no reader_job")
         parent=row.get("primary_parent")
         if parent is not None and parent not in by_id: errors.append(f"{sid} references missing active parent {parent}")
-    registered_routes=set(route_to_id); target_sets={}
+    registered_routes=set(route_to_id)
+    legacy_routes={}
+    for row in rows:
+        for legacy in row.get("legacy_routes") or []:
+            legacy_routes[normalize_route(legacy)]=row["id"]
+    target_sets={}
     for row in rows:
         sid=row["id"]; route=normalize_route(row.get("canonical_route") or row.get("route") or "/")
         path=source_path(route)
@@ -107,6 +112,14 @@ def main()->int:
         pre_navs=count_before(visible,first_h2,NAV)
         mobile_stack_score=first_nav_links + pre_buttons + max(0,pre_navs-1)*2
         internal=[resolve_href(link_base,h) for h in hrefs]; internal=[x for x in internal if x]
+        for target in internal:
+            if target in legacy_routes:
+                warnings.append({
+                    "code":"live-link-to-legacy-route",
+                    "surface":sid,
+                    "target":target,
+                    "canonical_surface":legacy_routes[target],
+                })
         cta_rows=[]
         for href,label_html in ANCHOR_FULL.findall(visible):
             label=re.sub(r"\s+"," ",TAG.sub(" ",label_html)).strip()
@@ -196,8 +209,8 @@ def main()->int:
     warning_counts=Counter(item.get("code","unknown") for item in warnings)
     if warning_counts:
         print("- Warning classes: " + " · ".join(f"{code}={count}" for code,count in sorted(warning_counts.items())))
-    priority_codes={"authored-dead-end","registered-dead-end","promise-cta-to-hub","vague-link-label","first-nav-link-wall","mobile-precontent-stack"}
-    priority_rank={"authored-dead-end":0,"registered-dead-end":1,"vague-link-label":2,"promise-cta-to-hub":3,"first-nav-link-wall":4,"mobile-precontent-stack":5}
+    priority_codes={"authored-dead-end","registered-dead-end","promise-cta-to-hub","vague-link-label","first-nav-link-wall","mobile-precontent-stack","live-link-to-legacy-route"}
+    priority_rank={"live-link-to-legacy-route":0,"authored-dead-end":1,"registered-dead-end":2,"vague-link-label":3,"promise-cta-to-hub":4,"first-nav-link-wall":5,"mobile-precontent-stack":6}
     priority=sorted((item for item in warnings if item.get("code") in priority_codes),key=lambda item:(priority_rank.get(item.get("code"),99),item.get("surface","")))
     for item in priority[:30]:
         detail=item.get("label") or item.get("target") or item.get("count") or item.get("score") or ""
