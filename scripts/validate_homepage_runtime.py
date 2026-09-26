@@ -14,9 +14,9 @@ PROJECT_SYNTHESIS = ROOT / "data" / "house" / "project-synthesis.json"
 
 REQUIRED_DATASETS = (
     "data/house/subrooms.json",
-    "data/house/entity-dossiers-wave-001.json",
+    "data/house/entity-dossiers.json",
     "data/house/lower-plane-population-atlas.json",
-    "data/house/route-case-matrix-wave-001.json",
+    "data/house/route-case-matrix.json",
     "data/house/foundation-landscape-synthesis.json",
     "data/house/foundation-room-atlas.json",
 )
@@ -67,10 +67,14 @@ def main() -> int:
             }
             if retired != expected_retired:
                 errors.append("homepage runtime input contract does not declare the retired Foundation wave inputs exactly")
+            stable_paths = set(runtime_contract.get("stable_live_authorities", []))
+            for required_stable in ("data/house/entity-dossiers.json", "data/house/route-case-matrix.json"):
+                if required_stable not in stable_paths:
+                    errors.append(f"homepage stable runtime authority missing from contract: {required_stable}")
             legacy_paths = {item.get("path") for item in runtime_contract.get("legacy_named_active_inputs", [])}
-            for required_legacy in ("data/house/entity-dossiers-wave-001.json", "data/house/route-case-matrix-wave-001.json"):
-                if required_legacy not in legacy_paths:
-                    errors.append(f"homepage legacy-named active input lacks explicit disposition: {required_legacy}")
+            for retired_name in ("data/house/entity-dossiers-wave-001.json", "data/house/route-case-matrix-wave-001.json"):
+                if retired_name in legacy_paths:
+                    errors.append(f"retired wave-named homepage input still active in contract: {retired_name}")
             for owner in ("project-spine", "structure-handoff", "route-comparison", "foundation-landscape", "foundation-rooms", "materialized-now"):
                 if owner not in contract:
                     errors.append(f"homepage repetition contract missing owner: {owner}")
