@@ -1,6 +1,6 @@
 {
   "id": "room-archive-drawers",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-26",
   "purpose": "Expose deep canonical corpora from nested Rooms without turning every knowledge record into a featured-object card.",
   "editorial_rule": "A drawer represents a body of work. Representative records are entry points, not rankings or claims that other records are unimportant.",
@@ -580,6 +580,74 @@
         }
       ],
       "boundary": "Indexes route and summarize other records. They are navigation and synthesis infrastructure, not independent evidence merely because they aggregate many sources."
+    },
+    {
+      "id": "reader-dossier-corpus",
+      "title": "Reader · direct questions and dossiers",
+      "scope_prefix": "knowledge/reader/",
+      "record_count": 8,
+      "room_ids": [
+        "canon-identities",
+        "theology-god-language",
+        "open-questions"
+      ],
+      "summary": "Direct reader-facing syntheses answering who Tim is, what he believes, how identity develops, how divine claims are bounded, and where a newcomer should go next.",
+      "landing_href": "tim-dooley/",
+      "entries": [
+        {
+          "title": "Tim Dooley reader dossier",
+          "path": "knowledge/reader/tim-dooley-dossier.json"
+        },
+        {
+          "title": "What Tim Dooley believes",
+          "path": "knowledge/reader/what-tim-dooley-believes.json"
+        },
+        {
+          "title": "Tim Dooley identity timeline",
+          "path": "knowledge/reader/tim-dooley-identity-timeline.json"
+        },
+        {
+          "title": "Tim Dooley question index",
+          "path": "knowledge/reader/tim-dooley-question-index.json"
+        },
+        {
+          "title": "Tim Godhood criticism / response index",
+          "path": "knowledge/reader/tim-godhood-criticism-response-index.json"
+        }
+      ],
+      "boundary": "Reader syntheses compress underlying records. They should remain traceable to source owners and may not silently increase certainty."
+    },
+    {
+      "id": "guides-editorial-corpus",
+      "title": "Guides · start-here and project growth compass",
+      "scope_prefix": "knowledge/guides/",
+      "record_count": 4,
+      "room_ids": [
+        "research-programmes",
+        "house-architecture",
+        "provenance-evidence"
+      ],
+      "summary": "Editorial and navigation guides that explain how to enter the project, how branches should be read, and how the archive should grow without multiplying noise.",
+      "landing_href": "explore/",
+      "entries": [
+        {
+          "title": "Start Here",
+          "path": "knowledge/guides/start-here.json"
+        },
+        {
+          "title": "Project Growth Compass",
+          "path": "knowledge/guides/project-growth-compass.json"
+        },
+        {
+          "title": "Branch Reader Guides",
+          "path": "knowledge/guides/branch-reader-guides.json"
+        },
+        {
+          "title": "Site Mission Audit",
+          "path": "knowledge/guides/site-mission-audit-2026-09-21.json"
+        }
+      ],
+      "boundary": "Guides govern reading and editorial direction. They do not become evidence for the subject matter they route."
     }
   ]
 }
