@@ -153,10 +153,10 @@ def inject_site_access(text: str, page: Path) -> str:
         return text
 
     prefix = _relative_asset_prefix(page)
-    if "site-access.css" not in text:
+    if not _has_asset_reference(text, "site-access.css"):
         css = f'<link rel="stylesheet" href="{prefix}app/site-access.css?v={SHARED_ASSET_VERSIONS["site-access.css"]}">'
         text = re.sub(r"</head\\s*>", css + "</head>", text, count=1, flags=re.I)
-    if "site-access.js" not in text:
+    if not _has_asset_reference(text, "site-access.js"):
         js = f'<script src="{prefix}app/site-access.js?v={SHARED_ASSET_VERSIONS["site-access.js"]}" defer></script>'
         text = re.sub(r"</body\\s*>", js + "</body>", text, count=1, flags=re.I)
     return text
@@ -187,10 +187,10 @@ def inject_site_elevator(text: str, page: Path) -> str:
         return text
 
     prefix = _relative_asset_prefix(page)
-    if "site-elevator.css" not in text:
+    if not _has_asset_reference(text, "site-elevator.css"):
         css = f'<link rel="stylesheet" href="{prefix}app/site-elevator.css?v={SHARED_ASSET_VERSIONS["site-elevator.css"]}">'
         text = re.sub(r"</head\s*>", css + "</head>", text, count=1, flags=re.I)
-    if "site-elevator.js" not in text:
+    if not _has_asset_reference(text, "site-elevator.js"):
         js = f'<script src="{prefix}app/site-elevator.js?v={SHARED_ASSET_VERSIONS["site-elevator.js"]}" defer></script>'
         text = re.sub(r"</body\s*>", js + "</body>", text, count=1, flags=re.I)
     return text
@@ -257,6 +257,11 @@ def _relative_asset_prefix(page: Path) -> str:
     rel = page.relative_to(OUT)
     depth = max(0, len(rel.parts) - 1)
     return "../" * depth
+
+def _has_asset_reference(text: str, asset: str) -> bool:
+    pattern = rf'''(?:href|src)\s*=\s*["'][^"']*app/{re.escape(asset)}(?:\?[^"']*)?["']'''
+    return re.search(pattern, text, flags=re.I) is not None
+
 
 def normalize_shared_asset_versions(text: str) -> str:
     """Keep shared UI asset attributes on one build generation."""
