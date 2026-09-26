@@ -280,7 +280,8 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [ ] **CLEAN-007 · Date-stamped audit sprawl:** inventory live files whose names contain `audit`, `wave`, `round`, `batch` or dates; mark each keep / merge / archive / prune based on unique information and references.
 - [ ] **CLEAN-008 · Obsolete presentation assets:** finish the existing asset-prune task by proving references are absent before deleting retired CSS/JS/HTML.
 - [ ] **CLEAN-009 · Duplicate validator assertions:** identify checks that independently encode the same route/ownership invariant and route them through shared resolver helpers instead of repeated literals.
-- [ ] **CLEAN-010 · Root-doc authority audit:** recheck README, PROJECT-OPERATING-MAP, PROJECT-STRUCTURE and MASTER-ARCHITECTURE for stale route/owner language after today's House/News/navigation changes.
+- [x] **CLEAN-010 · Root-doc authority audit:** README, PROJECT-OPERATING-MAP, PROJECT-STRUCTURE and MASTER-ARCHITECTURE now describe the current seven-family public model, Explore as the retrieval umbrella, House/Rooms ownership split, Sources/Context split, World/World Systems split, and current owner hierarchy. Old “master/framework” filenames are explicitly non-authoritative unless promoted by an ownership registry.
+- [ ] **CLEAN-011 · Root-doc drift guard:** add a bounded validator that samples root architecture docs for retired public-model phrases (for example Questions/A–Z/Explore as sibling systems, Paths as a structural owner, or legacy master files presented as current authority) so contributor documentation cannot silently diverge from registries again.
 
 #### Reader UI bug queue — 2026-09-21
 
