@@ -366,9 +366,11 @@
   box-shadow:inset 0 2px 0 color-mix(in srgb,var(--site-elevator-accent) 54%,transparent);
 }
 .site-elevator-room.is-secondary{
-  opacity:.68;
+  opacity:1;
   filter:saturate(.72);
+  color:color-mix(in srgb,var(--site-elevator-muted) 88%,#fff 12%);
   border-style:dashed;
+  border-color:color-mix(in srgb,var(--site-elevator-line) 82%,transparent);
 }
 .site-elevator-room:hover,
 .site-elevator-room:focus-visible{
