@@ -90,13 +90,23 @@
   --site-elevator-shadow:rgba(13,30,45,.52);
 }
 .site-elevator[data-elevator-level="heaven"]::before{
-  opacity:.78;
+  opacity:.96;
   background-image:
-    radial-gradient(circle at 91% 22%,#fff7c1 0 5px,#f6d66e 6px 9px,transparent 10px),
-    linear-gradient(90deg,transparent 0 10%,rgba(255,255,255,.20) 10% 19%,transparent 19% 34%,rgba(255,255,255,.15) 34% 42%,transparent 42% 69%,rgba(255,255,255,.18) 69% 78%,transparent 78%),
-    linear-gradient(180deg,#6397c2 0,#82aed1 51%,#bcd8e8 52%,#dcecf1 68%,rgba(124,169,119,.28) 69%,rgba(74,116,72,.22) 100%),
-    repeating-linear-gradient(90deg,transparent 0 15px,rgba(31,69,98,.09) 15px 16px),
-    repeating-linear-gradient(0deg,transparent 0 15px,rgba(255,255,255,.07) 15px 16px);
+    radial-gradient(circle at 88% 22%,rgba(255,251,215,.98) 0 4px,rgba(255,226,138,.88) 5px 8px,rgba(255,226,138,.24) 9px 18px,transparent 30px),
+    radial-gradient(circle at 7% 18%,rgba(255,255,255,.92) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 19% 34%,rgba(255,247,214,.82) 0 1px,transparent 1.6px),
+    radial-gradient(circle at 37% 14%,rgba(255,255,255,.82) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 54% 28%,rgba(235,248,255,.88) 0 1px,transparent 1.7px),
+    radial-gradient(circle at 68% 12%,rgba(255,241,194,.78) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 78% 39%,rgba(255,255,255,.84) 0 1px,transparent 1.6px),
+    radial-gradient(ellipse at 8% 91%,rgba(255,255,255,.78) 0 18px,rgba(232,245,252,.45) 19px 31px,transparent 34px),
+    radial-gradient(ellipse at 24% 97%,rgba(255,255,255,.72) 0 24px,rgba(230,244,252,.38) 25px 38px,transparent 42px),
+    radial-gradient(ellipse at 49% 94%,rgba(255,255,255,.54) 0 25px,rgba(222,241,250,.28) 26px 42px,transparent 46px),
+    radial-gradient(ellipse at 73% 101%,rgba(255,255,255,.66) 0 27px,rgba(229,244,251,.34) 28px 43px,transparent 47px),
+    radial-gradient(ellipse at 96% 92%,rgba(255,255,255,.70) 0 20px,rgba(233,246,252,.36) 21px 35px,transparent 39px),
+    linear-gradient(112deg,transparent 0 18%,rgba(201,236,255,.10) 28%,rgba(231,221,255,.14) 36%,rgba(255,232,170,.10) 44%,transparent 58%),
+    linear-gradient(72deg,transparent 0 31%,rgba(255,255,255,.08) 38%,transparent 44%),
+    linear-gradient(180deg,#285f94 0%,#4f8fc0 38%,#78acd0 60%,#a9cfe3 78%,#d9eaf1 100%);
 }
 .site-elevator[data-elevator-level="plane"]{
   --site-elevator-bg:#493628;
@@ -228,7 +238,7 @@
 .site-elevator[data-elevator-level="heaven"] .site-elevator-reel{
   background:
     linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.025) 36%,rgba(10,31,49,.20)),
-    rgba(15,38,60,.78);
+    rgba(15,38,60,.72);
   border-right-color:rgba(236,246,252,.38);
   box-shadow:
     inset 0 1px rgba(255,255,255,.24),
@@ -322,7 +332,7 @@
 .site-elevator[data-elevator-level="heaven"] .site-elevator-room-rail{
   background:
     linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.012)),
-    rgba(11,33,52,.70);
+    rgba(11,33,52,.64);
   border-left:1px solid rgba(236,246,252,.12);
   box-shadow:
     inset 0 1px rgba(255,255,255,.14),
@@ -375,12 +385,12 @@
   border-color:rgba(226,240,249,.30);
   background:
     linear-gradient(180deg,rgba(255,255,255,.14) 0 2px,rgba(255,255,255,.045) 2px 36%,rgba(8,31,50,.18) 100%),
-    rgba(18,49,75,.72);
+    rgba(18,49,75,.66);
   box-shadow:
-    inset 0 1px rgba(255,255,255,.18),
-    inset 1px 0 rgba(255,255,255,.055),
+    inset 0 1px rgba(255,255,255,.24),
+    inset 1px 0 rgba(255,255,255,.07),
     inset 0 -1px rgba(3,18,31,.38),
-    0 1px 0 rgba(255,255,255,.035);
+    0 1px 0 rgba(255,255,255,.045);
   text-shadow:0 1px 1px rgba(0,0,0,.92);
 }
 .site-elevator[data-elevator-level="plane"] .site-elevator-room{
@@ -504,6 +514,8 @@
   .site-elevator-room{min-height:28px;padding:3px 4px}
 }
 @media (max-width:620px){
+  .site-elevator[data-elevator-level="heaven"]::before{opacity:.88}
+
   .site-elevator{
     --elevator-control-width:28px;
     --elevator-board-width:88px;
