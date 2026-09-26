@@ -309,7 +309,32 @@
     }catch(e){}
   }
 
+
+  async function installRoomsBestOf(){
+    const isRoomsIndex=/\/rooms\/(?:index\.html)?$/.test(location.pathname);
+    if(!isRoomsIndex)return;
+    try{
+      const data=await getJson('data/house/dwelling-featured-objects.json');
+      const shelves=data.shelves||[];
+      if(!shelves.length)return;
+      const main=document.querySelector('main');
+      if(!main||main.querySelector('.rooms-best-of'))return;
+      const picks=shelves.map(shelf=>({dwelling_id:shelf.dwelling_id,object:(shelf.objects||[])[0]})).filter(x=>x.object);
+      const section=document.createElement('section');
+      section.className='rooms-best-of';
+      section.innerHTML='<div class="rooms-best-head"><div><p class="eyebrow">Start with substance</p><h2>Ten things worth opening before you learn the map</h2></div><p>The Rooms system is filing architecture. These are concrete objects from each Dwelling so the archive becomes useful before the topology becomes familiar.</p></div>'
+        +'<div class="rooms-best-grid">'+picks.map(p=>{
+          const obj=p.object,href=String(obj.href||''),resolved=/^(https?:|#)/.test(href)?href:base+href.replace(/^\//,'');
+          return '<a class="rooms-best-card" href="'+esc(resolved)+'"><small>'+esc(String(p.dwelling_id).replace(/-/g,' '))+'</small><strong>'+esc(obj.title||'Untitled')+'</strong><span>'+esc(obj.summary||'')+'</span><em>Open →</em></a>';
+        }).join('')+'</div>';
+      const header=main.querySelector('.page-header');
+      if(header) header.insertAdjacentElement('afterend',section);
+      else main.prepend(section);
+    }catch(e){}
+  }
+
   installRibbon();
+  installRoomsBestOf();
   installDwellingFeaturedObjects();
   installRoomFloorProjection();
   installInhabitants();
