@@ -144,12 +144,22 @@ if OUT.exists():
                 errors.append(f"{rel} missing generated {asset}")
     world=read(OUT/"world/index.html")
     news=read(OUT/"news/index.html")
+    house=read(OUT/"house/index.html")
     if 'href="../news/">Current World</a>' not in world:
         errors.append("World must expose Current World in first-screen local navigation")
     nav_start=news.find('<nav class="page-nav" aria-label="News navigation">')
     nav_end=news.find("</nav>",nav_start)
     if nav_start>=0 and nav_end>=0 and news[nav_start:nav_end].count("<a ")!=1:
         errors.append("Current World local navigation duplicates global dock destinations")
+    house_nav_start=house.find('<nav class="page-nav" aria-label="House structure">')
+    house_nav_end=house.find("</nav>",house_nav_start)
+    if house_nav_start>=0 and house_nav_end>=0:
+        house_nav=house[house_nav_start:house_nav_end]
+        if house_nav.count("<a ")!=2 or 'href="../rooms/">Rooms</a>' not in house_nav or 'href="../axis/">Living Axis</a>' not in house_nav:
+            errors.append("House first navigation row must stay structural: Rooms + Living Axis only")
+        for forbidden in ('../rooms/objects/', '../paths/', 'href="../">← Home</a>'):
+            if forbidden in house_nav:
+                errors.append(f"House top navigation duplicates global/named-object access: {forbidden}")
     home=read(OUT/"index.html")
     nav_start=home.find('<nav class="page-nav home-nav"')
     nav_end=home.find("</nav>",nav_start)
