@@ -9,6 +9,9 @@ ROOT = Path(__file__).resolve().parents[1]
 PROJECTION = ROOT / "data" / "house" / "elevator-spatial-projection.json"
 ROOMS = ROOT / "data" / "house" / "rooms.json"
 ELEVATOR_CSS = ROOT / "app" / "site-elevator.css"
+ELEVATOR_JS = ROOT / "app" / "site-elevator.js"
+PATCHER = ROOT / "scripts" / "patch_public_navigation.py"
+OUT = ROOT / "_site"
 
 EXPECTED_LEVELS = ["heaven", "plane", "below"]
 REPRESENTATIVE_CONTEXTS = {
@@ -48,6 +51,8 @@ def main() -> int:
     errors: list[str] = []
     projection = load_json(PROJECTION, errors)
     css = ELEVATOR_CSS.read_text(encoding="utf-8", errors="replace") if ELEVATOR_CSS.exists() else ""
+    js = ELEVATOR_JS.read_text(encoding="utf-8", errors="replace") if ELEVATOR_JS.exists() else ""
+    patcher = PATCHER.read_text(encoding="utf-8", errors="replace") if PATCHER.exists() else ""
     room_contract = load_json(ROOMS, errors)
 
     active_rooms = {
@@ -55,6 +60,17 @@ def main() -> int:
         for row in room_contract.get("rooms", [])
         if isinstance(row, dict) and row.get("status") == "active" and row.get("id")
     }
+    if not js:
+        errors.append("missing app/site-elevator.js")
+    else:
+        for token in ("publishClearance", "--site-elevator-clearance", "ResizeObserver"):
+            if token not in js:
+                errors.append(f"site elevator JS missing clearance marker: {token}")
+
+    for token in ("inject_site_elevator", "patch_site_elevator", "app/site-elevator.css", "app/site-elevator.js"):
+        if token not in patcher:
+            errors.append(f"public navigation projection missing elevator marker: {token}")
+
     if not css:
         errors.append("missing app/site-elevator.css")
     else:
@@ -132,6 +148,33 @@ def main() -> int:
                 f"{route}: expected ({level_id!r}, {room_id!r}), "
                 f"got ({row.get('level_id')!r}, {row.get('room_id')!r})"
             )
+
+    if OUT.exists():
+        representative = [
+            "index.html",
+            "house/index.html",
+            "rooms/index.html",
+            "religion/index.html",
+            "science/index.html",
+            "world/index.html",
+            "north/index.html",
+            "below/index.html",
+            "shadow-farm/index.html",
+            "research-lab/index.html",
+            "world-map/index.html",
+            "news/index.html",
+            "tim-dooley/index.html",
+        ]
+        for rel in representative:
+            path = OUT / rel
+            if not path.exists():
+                errors.append(f"built representative missing: {rel}")
+                continue
+            text = path.read_text(encoding="utf-8", errors="replace")
+            if text.count("site-elevator.css") != 1 or text.count("site-elevator.js") != 1:
+                errors.append(f"{rel}: expected exactly one elevator CSS + JS asset")
+            if "site-access.css" not in text or "site-access.js" not in text:
+                errors.append(f"{rel}: elevator rollout must preserve the bottom site-access dock")
 
     if errors:
         print(f"SITE ELEVATOR DATA VALIDATION FAILED: {len(errors)} issue(s)")
