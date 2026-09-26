@@ -16,6 +16,7 @@ FIRST_NAV=re.compile(r"<nav\b[^>]*>([\s\S]*?)</nav>",re.I)
 ANCHOR_FULL=re.compile(r"""<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)</a>""",re.I)
 TAG=re.compile(r"<[^>]+>")
 H1=re.compile(r"<h1\b",re.I); H2=re.compile(r"<h2\b",re.I)
+BASE_HREF=re.compile(r"""<base\b[^>]*href=["\']([^"\']+)["\']""",re.I)
 EXTERNAL=("http://","https://","//","mailto:","tel:","javascript:","data:","blob:")
 PUBLIC_SCAN_EXCLUDE={".git",".github","_site","archive","docs","node_modules","components","vendor","scripts"}
 BUDGETS={
@@ -44,6 +45,13 @@ def normalize_route(value:str)->str:
     if "." not in tail and not path.endswith("/"): path+="/"
     return path
 
+def effective_base_route(route:str,raw_html:str)->str:
+    match=BASE_HREF.search(raw_html)
+    if not match: return route
+    base=match.group(1).strip()
+    if not base or base.startswith(EXTERNAL): return route
+    return normalize_route(urlsplit(urljoin("https://example.invalid"+route,base)).path)
+
 def resolve_href(base_route:str,href:str):
     raw=href.strip()
     if not raw or raw.startswith("#") or raw.startswith(EXTERNAL): return None
@@ -54,9 +62,11 @@ def count_before(text:str,index:int,regex)->int:
 
 def main()->int:
     errors=[]; warnings=[]; metrics=[]
-    probe='<nav><a href="../world/">World</a></nav><h1>Title</h1><h2>Section</h2><button>Go</button>'
+    probe='<base href="../"><nav><a href="world/">World</a></nav><h1>Title</h1><h2>Section</h2><button>Go</button>'
     if not (ANCHOR_HREF.search(probe) and NAV.search(probe) and FIRST_NAV.search(probe) and H1.search(probe) and H2.search(probe) and BUTTON.search(probe)):
         errors.append("architecture audit regex self-check failed")
+    if effective_base_route("/explore/",probe)!="/" or resolve_href(effective_base_route("/explore/",probe),"world/")!="/world/":
+        errors.append("architecture audit base-href self-check failed")
     data=json.loads(REGISTRY.read_text(encoding="utf-8"))
     rows=[r for r in data.get("surfaces",[]) if isinstance(r,dict) and r.get("status")=="active"]
     by_id={r["id"]:r for r in rows}; route_to_id={}
@@ -75,20 +85,21 @@ def main()->int:
             errors.append(f"{sid} source surface missing: {path.relative_to(ROOT)}"); continue
         raw=path.read_text(encoding="utf-8",errors="replace")
         visible=STYLE_SCRIPT.sub("",raw)
+        link_base=effective_base_route(route,raw)
         h1=H1.search(visible); h2=H2.search(visible); hrefs=ANCHOR_HREF.findall(visible)
         first_h2=h2.start() if h2 else len(visible)
         pre_links=count_before(visible,first_h2,ANCHOR_HREF); pre_buttons=count_before(visible,first_h2,BUTTON)
         first_nav=FIRST_NAV.search(visible[:first_h2]); first_nav_links=len(ANCHOR_HREF.findall(first_nav.group(1))) if first_nav else 0
         pre_navs=count_before(visible,first_h2,NAV)
         mobile_stack_score=first_nav_links + pre_buttons + max(0,pre_navs-1)*2
-        internal=[resolve_href(route,h) for h in hrefs]; internal=[x for x in internal if x]
+        internal=[resolve_href(link_base,h) for h in hrefs]; internal=[x for x in internal if x]
         cta_rows=[]
         for href,label_html in ANCHOR_FULL.findall(visible):
             label=re.sub(r"\s+"," ",TAG.sub(" ",label_html)).strip()
             if re.match(r"^(more|deep|explore|context|archive)\s*(?:→|↗)?$",label,re.I):
-                warnings.append({"code":"vague-link-label","surface":sid,"label":label,"target":resolve_href(route,href)})
+                warnings.append({"code":"vague-link-label","surface":sid,"label":label,"target":resolve_href(link_base,href)})
             if not re.match(r"^(read|open|enter)\b",label,re.I): continue
-            target=resolve_href(route,href)
+            target=resolve_href(link_base,href)
             if not target: continue
             target_id=route_to_id.get(target)
             target_job=(by_id.get(target_id) or {}).get("reader_job") if target_id else None
@@ -153,7 +164,8 @@ def main()->int:
         hrefs=ANCHOR_HREF.findall(visible)
         rel=rel_path.as_posix()
         base_route="/"+rel.rsplit("/",1)[0]+"/" if "/" in rel else "/"
-        internal=[h for h in hrefs if resolve_href(base_route,h)]
+        link_base=effective_base_route(base_route,raw)
+        internal=[h for h in hrefs if resolve_href(link_base,h)]
         row={"surface":rel,"authored_links":len(hrefs),"internal_links":len(internal)}
         standalone.append(row)
         if not internal:
