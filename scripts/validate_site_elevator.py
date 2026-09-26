@@ -105,8 +105,8 @@ def main() -> int:
             "border-radius:0",
             "background:transparent",
             "display:block!important",
-            "display:grid!important",
-            "margin:0!important",
+            ".site-elevator-room-rail{",
+            "margin:0;",
         )
         for token in css_tokens:
             if token not in css:
