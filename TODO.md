@@ -1112,3 +1112,5 @@ The previous `inhabited` milestone only eliminated corridor-only shells. It is *
 - [x] Whole Body / Symbolic Body concrete wave: baroreflex, chemoreflex and gut–brain channels added; body symbolism now carries thalamic nuclei, pineal/SCN pathway, 33 vertebrae vs 31 spinal-nerve-pair distinctions and self-falsifying crosswalk examples.
 
 - [x] Information / Great Book / Music / Visual concrete wave: Information Ecology now has changing-memory cases; Great Book has three chapter specimens; Music exposes 62 recovered generations / 59 titles and named tracks; Visual Art exposes dated/recovery-typed compositions rather than motif summaries.
+
+- [x] Games / House / Questions / Experiments / Programmes concrete wave: Games now exposes recovered mechanics; House shows live 10/38/59 counts and an ownership walk; Open Questions shows live recovery/test items; Experiments carries three worked project formalisms; Research Programmes shows five active artifact-producing programmes with gates and negative results.
