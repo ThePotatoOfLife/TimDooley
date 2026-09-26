@@ -611,13 +611,15 @@ The governing rule for this wave is:
 
 The corridor-only baseline is eliminated across the 38 registered nested subject Rooms. The next phase is not indiscriminate expansion.
 
-- [ ] Audit all ten top-level Dwellings for stale summaries, duplicated navigation and missing synthesis between their inner Rooms.
-- [ ] Audit named-being dossiers and CIA specialist surfaces for stub pages, stale role-lock and missing date/source context.
-- [ ] Audit specialist institution surfaces (CIA, Bank, North, Law, Science, World systems) for subject explanation before controls/ledgers.
-- [ ] Run canonical-holding freshness checks so Room dossiers do not undercount newer knowledge owners.
+- [x] Audit all ten top-level Dwellings for stale summaries, duplicated navigation and missing synthesis between their inner Rooms. All ten already contain substantive synthesis; Archive & Sources had one stale FBI naming seam and was corrected to CIA terminology.
+- [~] Audit named-being dossiers and CIA specialist surfaces for stub pages, stale role-lock and missing date/source context. Current named-being Rooms reviewed as substantive; legacy FBI per-person dossiers converted to CIA redirects. Continue dossier-data/source completeness review.
+- [~] Audit specialist institution surfaces for subject explanation before controls/ledgers. CIA Incidents, Associations, Bank and dossier viewer reviewed; their explanatory boundaries are substantive. Continue North/Law/Science/World specialist-surface review.
+- [~] Run canonical-holding freshness checks so Room dossiers do not undercount newer knowledge owners. Fixed impossible counts in Core Identities, Memory & Recovery, and Internet & Platforms; added `scripts/validate_room_holdings.py` and CI enforcement. Continue deeper ownership-count reconciliation beyond featured holdings.
 - [ ] Audit cross-Room handoffs: every important door should explain why the reader would cross it and what claim class changes on the other side.
 - [ ] Add object-level spotlights where a Room is conceptually clear but still abstract: dated artifacts, cases, works, equations, countries, events or source passages.
 - [ ] Check TTS/readability on newly long Rooms so prose additions do not create inaccessible walls of text.
 - [ ] Review repeated CSS patterns from the inhabitation wave and consolidate where safe without flattening the different Room personalities.
 - [ ] Add a maturity downgrade path: validator/audit should permit a Room to be marked `seeded` again if substantive content is removed or becomes misleading.
 - [ ] Continue qualitative audits of semantic gaps even when validators pass; validators protect floors, not editorial excellence.
+
+- [x] Retired FBI namespace is now compatibility-only: legacy utility/person URLs redirect into CIA; `scripts/validate_legacy_fbi_redirects.py` prevents new live dossier ownership from returning there.
