@@ -184,6 +184,7 @@ assert.ok(css.includes('[data-elevator-level="below"]::before'),'Below needs a d
 assert.ok(css.includes('border-radius:0'),'terminal Room tiles should not drift back into pill styling');
 assert.ok(css.includes('background:var(--site-elevator-accent)'),'active Room tile needs a compact location beacon');
 assert.ok(css.includes('border-style:dashed'),'secondary projected Rooms must remain visually subordinate');
+assert.ok(css.includes('.site-elevator-room.is-secondary{\n  opacity:1;'),'secondary Rooms must stay readable instead of fading the text');
 assert.ok(css.includes('[data-elevator-level="plane"] .site-elevator-room'),'Plane Room tiles need block-earth material styling');
 assert.ok(css.includes('[data-elevator-level="heaven"] .site-elevator-room'),'Heaven Room tiles need sky material styling');
 assert.ok(css.includes('background:rgba(15,36,55,.95)'),'Heaven floor board needs a dark readability plate');
@@ -222,6 +223,9 @@ assert.ok(source.includes("requestAnimationFrame(publishClearance)"),'every rend
 assert.ok(source.includes("setAttribute('aria-busy','true')"),'loading header should expose busy state');
 assert.ok(source.includes('const runtimeScript='),'elevator must capture its script URL before deferred context can disappear');
 assert.ok(source.includes("'aria-keyshortcuts','ArrowUp ArrowDown Home'"),'header keyboard navigation should be discoverable to assistive tech');
+assert.ok(source.includes('role="group" aria-label="Change House floor"'),'floor controls need an announced control group');
+assert.ok(source.includes("'Move to '+levelLabel(upTarget"),'up control should announce its destination floor');
+assert.ok(source.includes("'Move to '+levelLabel(downTarget"),'down control should announce its destination floor');
 assert.ok(source.includes("'ORIENTATION OFFLINE'"),'failed governance hydration needs a visible fallback state');
 
 console.log('Site elevator resolver + visual contract passed.');
