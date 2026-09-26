@@ -1,0 +1,82 @@
+{
+  "id": "entity-facet-mining-plan",
+  "version": "1.0.0",
+  "updated": "2026-09-27",
+  "purpose": "Generate review candidates for entity facets from existing repository sources. Mining never changes canon automatically.",
+  "inputs": [
+    {
+      "path": "knowledge/story/being-room-registry.json",
+      "mode": "structured",
+      "fields": [
+        "label",
+        "gifts_or_functions",
+        "conversation_markers",
+        "literary_markers",
+        "public_markers",
+        "open_questions"
+      ]
+    },
+    {
+      "path": "knowledge/story/cast-book.json",
+      "mode": "structured",
+      "fields": [
+        "name",
+        "aliases",
+        "period_roles",
+        "identity_note",
+        "symbolic_role_assignments"
+      ]
+    },
+    {
+      "path": "knowledge/cia/enhancements-index.json",
+      "mode": "structured",
+      "fields": [
+        "ordinary",
+        "creative",
+        "boundary"
+      ]
+    },
+    {
+      "path": "knowledge/story/story-registry.json",
+      "mode": "structured",
+      "fields": [
+        "id",
+        "path",
+        "mode",
+        "depth"
+      ]
+    },
+    {
+      "path": "great-book/chapters/",
+      "mode": "text-corpus",
+      "extensions": [
+        ".html"
+      ],
+      "rule": "Search only around known entity aliases; do not invent entities from capitalized phrases alone."
+    }
+  ],
+  "candidate_types": [
+    "alias",
+    "title",
+    "capability",
+    "signature_trait",
+    "species_trait",
+    "scene_power",
+    "role",
+    "relation",
+    "motif",
+    "story_beat",
+    "boundary",
+    "open_question"
+  ],
+  "promotion_rules": [
+    "No automatic merge into entity-facet-ledger.json.",
+    "Structured source fields retain their source mode in candidate provenance.",
+    "A candidate from one literary scene defaults to established_scene or unresolved, never canonical.",
+    "Creative enhancements for real people remain creative candidates and cannot become ordinary capabilities.",
+    "Species-trait candidates require at least two independent supporting source refs or explicit collective wording before promotion.",
+    "If two source stores disagree, emit a conflict candidate rather than choosing one.",
+    "Candidate aliases are normalized for whitespace/case but original spelling is preserved."
+  ],
+  "output": "knowledge/story/entity-facet-candidates.json"
+}
