@@ -1,6 +1,6 @@
 {
   "version": "1.7.0",
-  "updated": "2026-09-20",
+  "updated": "2026-09-26",
   "authority": "religious-symbolic-branch-atlas",
   "purpose": "Populate the Potato House with religious, mythic, angelic, demonic, underworld, esoteric and sacred-architecture subjects already present in the repository while preserving own-tradition meaning before comparison.",
   "epistemic_rule": "Every node is first a subject in its own historical/textual tradition or a clearly marked Potatoverse operator. Plane, Tree and Potatoverse mappings are navigation/comparative projections, not proof of literal identity, supernatural truth or historical transmission.",
@@ -2151,6 +2151,103 @@
         "authority": "data/house/three-center-role-atlas.json",
         "boundary": "External comparator only; no identity or historical-transmission claim."
       }
+    },
+    {
+      "id": "mimir-well-odin-eye",
+      "label": "Mímir's Well · Odin's Eye",
+      "kind": "mythic-wisdom-site",
+      "branch_id": "sacred-architecture",
+      "tradition": "Old Norse literary/mythic traditions",
+      "room_ids": [
+        "comparative-mythology",
+        "other-traditions"
+      ],
+      "planes": [
+        "below-plane",
+        "world-plane"
+      ],
+      "tree_affinity": [
+        "roots"
+      ],
+      "route_affinity": [
+        "well",
+        "wisdom",
+        "sacrifice",
+        "eye",
+        "memory"
+      ],
+      "source_files": [
+        "books/norse-edda/poetic-edda-bellows-1923.txt",
+        "books/norse-edda/prose-edda-anderson.txt",
+        "data/comparative-cosmology-lenses.json"
+      ],
+      "visibility": "landmark",
+      "note": "Wisdom-at-the-root complex: Odin's eye is associated with Mímir's well, making knowledge costly and rooted rather than merely summit-facing.",
+      "boundary": "Eye symbolism is a functional comparison only; it does not identify other sacred-eye traditions with Odin."
+    },
+    {
+      "id": "norns-well-urdr",
+      "label": "Norns · Well of Urðr",
+      "kind": "mythic-fate-complex",
+      "branch_id": "sacred-architecture",
+      "tradition": "Old Norse literary/mythic traditions",
+      "room_ids": [
+        "comparative-mythology",
+        "other-traditions"
+      ],
+      "planes": [
+        "world-plane",
+        "below-plane"
+      ],
+      "tree_affinity": [
+        "roots",
+        "trunk"
+      ],
+      "route_affinity": [
+        "fate",
+        "allotment",
+        "well",
+        "maintenance",
+        "time"
+      ],
+      "source_files": [
+        "knowledge/traditions/fate-thread-norns-moirai-comparative-atlas.json",
+        "data/comparative-cosmology-lenses.json"
+      ],
+      "visibility": "landmark",
+      "note": "Urðr, Verðandi and Skuld belong to the Yggdrasil/well complex; fate is situated near root, water and maintenance.",
+      "boundary": "Do not mechanically reduce the three Norns to a simple past/present/future chart."
+    },
+    {
+      "id": "bifrost",
+      "label": "Bifröst",
+      "kind": "mythic-bridge",
+      "branch_id": "sacred-architecture",
+      "tradition": "Old Norse literary/mythic traditions",
+      "room_ids": [
+        "comparative-mythology"
+      ],
+      "planes": [
+        "world-plane",
+        "heaven-plane"
+      ],
+      "tree_affinity": [
+        "trunk",
+        "canopy"
+      ],
+      "route_affinity": [
+        "bridge",
+        "threshold",
+        "passage",
+        "guarded-route"
+      ],
+      "source_files": [
+        "books/norse-edda/prose-edda-anderson.txt",
+        "data/comparative-cosmology-lenses.json"
+      ],
+      "visibility": "room-detail",
+      "note": "Bridge between differentiated domains; useful modern comparator for a guarded interface or route.",
+      "boundary": "Bifröst is not Jacob's Ladder or the Potato Door; comparison is functional."
     }
   ],
   "corridors": [
@@ -2417,6 +2514,30 @@
       "to": "spiral-ladder-project",
       "type": "transition-comparison",
       "note": "Both concern transitions through states, but Bardo is a Tibetan Buddhist doctrinal/practice framework and the Spiral Ladder is a project operator."
+    },
+    {
+      "from": "odin",
+      "to": "mimir-well-odin-eye",
+      "type": "wisdom-sacrifice",
+      "note": "Odin's wisdom complex includes the eye/well tradition."
+    },
+    {
+      "from": "mimir-well-odin-eye",
+      "to": "yggdrasil-world-tree",
+      "type": "root-well-relation",
+      "note": "Mímir's well belongs to the broader Norse world-tree/root cosmographic complex in later Eddic presentation."
+    },
+    {
+      "from": "norns-well-urdr",
+      "to": "yggdrasil-world-tree",
+      "type": "fate-maintenance",
+      "note": "The Norns and Well of Urðr are situated at the world-tree complex and participate in fate/maintenance imagery."
+    },
+    {
+      "from": "bifrost",
+      "to": "yggdrasil-world-tree",
+      "type": "cosmographic-route",
+      "note": "Bifröst and Yggdrasil both connect differentiated domains through different Norse structures."
     }
   ],
   "layer_grammar_authority": "data/house/layer-terrain-regime-atlas.json",
