@@ -857,6 +857,17 @@ def validate_project_synthesis(errors):
                 cross_sign=op
     if cross_sign and false_cross in cross_sign.get('specialist_owners',[]):
         errors.append('cross-sign ownership must not absorb cross-theory science methodology')
+    wave_lifecycle=consolidation.get('wave_lifecycle',{}) if consolidation else {}
+    wave_statuses=wave_lifecycle.get('statuses',{})
+    for status in ('source-bearing','partially-promoted','absorbed-provenance-only','temporary-retireable'):
+        if status not in wave_statuses:
+            errors.append(f'project consolidation missing wave lifecycle status: {status}')
+    wave_families=wave_lifecycle.get('families',[])
+    archaeology=[x for x in wave_families if isinstance(x,dict) and x.get('pattern')=='knowledge/timeline/conversation-archaeology-*']
+    if not archaeology or archaeology[0].get('default_status')!='source-bearing':
+        errors.append('conversation archaeology must remain source-bearing by default')
+    if len(wave_lifecycle.get('retirement_gate',[]))<5:
+        errors.append('research-wave retirement gate is too weak')
     p0=data.get('depth_program',{}).get('active_p0',[])
     required_p0=['door-liminality','spirit-relation','culture-formation-control','axis-local-centers','fruit-consequence','tree-branching']
     if p0!=required_p0: errors.append('project synthesis P0 depth programme drifted')
