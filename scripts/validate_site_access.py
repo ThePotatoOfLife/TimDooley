@@ -130,6 +130,8 @@ if "data-house-journey-style" not in journey_ui:
     errors.append("House journey stylesheet loader missing: data-house-journey-style")
 if "style.textContent" in journey_ui or "createElement('style')" in journey_ui:
     errors.append("House journey runtime must not inject component CSS")
+if 'if "site-access.css" not in text:' not in patcher or 'if "site-access.js" not in text:' not in patcher:
+    errors.append("site-access injector must repair partial CSS/JS coverage independently")
 for asset in ("house-journey.js","body-relational-lens.js"):
     if not re.search(rf'"{re.escape(asset)}"\s*:\s*"[A-Za-z0-9._-]+"', patch):
         errors.append(f"shared asset registry does not version runtime: {asset}")
