@@ -592,8 +592,8 @@ The governing rule for this wave is:
 - [ ] Give each important Room a reader body: orientation, core explanation, internal landmarks, development, relations, evidence boundary, tensions/open questions, concrete examples and deeper routes where the subject supports them.
 - [ ] Make actual subject knowledge visually and semantically primary; reduce the dominance of Elevator links, parent links, adjacency cards, backend path names and repeated ownership boilerplate.
 - [ ] Project existing canonical holdings into readable synthesis instead of duplicating those holdings into a second source of truth.
-- [ ] Deepen the first thin World/society wave: Economy & Finance, Law & Justice, Politics & Governance, Timeline / Events, Subculture / Cult / Group Formation.
-- [ ] Deepen the first thin religion/canon wave: Theology & God-language, Bible & Christianity, Comparative Mythology, Esoteric & Sacred Geometry, Other Traditions, Symbolic Architecture, Practice & Ethics, Witness & Attestation, Prediction / Revelation / Interpretation Time.
+- [~] Deepen the first thin World/society wave: Economy & Finance, Law & Justice, Timeline / Events, and Subculture / Cult / Group Formation are inhabited; Politics & Governance remains.
+- [~] Deepen the first thin religion/canon wave: Theology & God-language and Symbolic Architecture are inhabited; Bible & Christianity, Comparative Mythology, Esoteric & Sacred Geometry, Other Traditions, Practice & Ethics, Witness & Attestation, and Prediction / Revelation / Interpretation Time remain.
 - [ ] Deepen the first thin science/formal wave: Mathematics & Geometry and Physics & Cosmology, then qualitatively audit Systems & Dynamics, Model Testing, Experiments, Information Ecology, Infrastructure and Geography.
 - [ ] Audit all remaining medium-size Rooms by human reading; mark each inhabited / partial / shell and deepen the partial ones.
 - [ ] Audit the top-level Dwellings so they explain their subjects and inner relationships rather than merely listing Rooms.
@@ -602,6 +602,6 @@ The governing rule for this wave is:
 - [ ] Give each Room a shallow-to-deep path: orientation → explanation → examples → tensions → sources/records.
 - [ ] Add anti-slop checks: reject generic paragraphs that could be pasted into many Rooms unchanged; require actual mechanisms, holdings, examples, distinctions or claims.
 - [ ] Add a Room quality validator that detects navigation-only shells, missing reader bodies, missing deep routes when holdings exist, and excessive repeated boilerplate.
-- [ ] Use Economy & Finance, Theology & God-language and Symbolic Architecture as the first three pilot Rooms because they exercise factual-systemic, theological/canonical and symbolic-project-native content respectively.
-- [ ] Treat Neurobiology as one useful qualitative reference: literal subject matter first, meaningful distinctions, evidence boundary, project relation, then deeper routes.
+- [x] Use Economy & Finance, Theology & God-language and Symbolic Architecture as the first three pilot Rooms because they exercise factual-systemic, theological/canonical and symbolic-project-native content respectively.
+- [x] Treat Neurobiology as one useful qualitative reference: literal subject matter first, meaningful distinctions, evidence boundary, project relation, then deeper routes.
 - [ ] Finish only when clicking an important Room feels like entering a subject rather than entering another hallway.
