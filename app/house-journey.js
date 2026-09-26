@@ -404,7 +404,46 @@
     }catch(e){}
   }
 
+
+  async function installRoomArchiveDrawers(){
+    const match=location.pathname.match(/\/rooms\/inside\/([^/]+)\//);
+    if(!match)return;
+    const currentId=decodeURIComponent(match[1]);
+    try{
+      const data=await getJson('data/house/room-archive-drawers.json');
+      const rows=(data.drawers||[]).filter(row=>(row.room_ids||[]).includes(currentId));
+      if(!rows.length)return;
+      const main=document.querySelector('main');
+      if(!main||main.querySelector('.room-archive-drawers'))return;
+      const section=document.createElement('section');
+      section.className='room-archive-drawers';
+      section.innerHTML='<div class="room-archive-head"><div><p class="eyebrow">Deep archive drawers</p><h2>The larger body of work behind this Room</h2></div><p>Featured objects are the front table. These drawers expose the wider corpus without pretending every record deserves equal prominence.</p></div>'
+        +rows.map(row=>{
+          const landing=String(row.landing_href||'');
+          const landingHref=landing?(/^(https?:|#)/.test(landing)?landing:base+landing.replace(/^\//,'')):'';
+          const entries=(row.entries||[]).map(entry=>{
+            const p=String(entry.path||'');
+            const href=p?base+'explore/#record='+encodeURIComponent(p):'';
+            return '<a class="room-archive-entry" href="'+esc(href)+'"><strong>'+esc(entry.title||p)+'</strong><small>'+esc(p)+'</small></a>';
+          }).join('');
+          return '<article class="room-archive-drawer">'
+            +'<div class="room-archive-drawer-title"><div><small>'+esc(String(row.record_count||0))+' canonical records</small><h3>'+esc(row.title||'Archive drawer')+'</h3></div>'
+            +(landingHref?'<a href="'+esc(landingHref)+'">Open main reader →</a>':'')+'</div>'
+            +'<p>'+esc(row.summary||'')+'</p>'
+            +'<div class="room-archive-entry-grid">'+entries+'</div>'
+            +(row.boundary?'<p class="room-archive-boundary"><strong>Boundary:</strong> '+esc(row.boundary)+'</p>':'')
+            +'</article>';
+        }).join('');
+      const objects=main.querySelector('.room-inhabitants');
+      const reader=main.querySelector('[data-room-reader-body]');
+      if(objects) objects.insertAdjacentElement('afterend',section);
+      else if(reader) reader.insertAdjacentElement('afterend',section);
+      else main.appendChild(section);
+    }catch(e){}
+  }
+
   installRibbon();
+  installRoomArchiveDrawers();
   annotateAdjacentRoomDoors();
   installRoomSectionGuide();
   installRoomsBestOf();
