@@ -188,6 +188,7 @@ assert.ok(css.includes('.site-elevator-room.is-secondary{\n  opacity:1;'),'secon
 assert.ok(css.includes('[data-elevator-level="plane"] .site-elevator-room'),'Plane Room tiles need block-earth material styling');
 assert.ok(css.includes('[data-elevator-level="heaven"] .site-elevator-room'),'Heaven Room tiles need sky material styling');
 assert.ok(css.includes('rgba(18,49,75,.72)'),'Heaven Room panes must stay dark enough for readable text');
+assert.ok(!css.includes('backdrop-filter:blur(6px) saturate(116%)'),'Heaven should blur shared panes rather than every Room tile');
 assert.ok(css.includes('[data-elevator-level="heaven"] .site-elevator-room.is-active'),'Heaven current Room needs a dedicated glass-active state');
 assert.ok(css.includes('rgba(15,38,60,.78)'),'Heaven floor board needs readable translucent glass');
 assert.ok(css.includes('backdrop-filter:blur(9px) saturate(122%)'),'Heaven floor board needs a restrained frosted-glass treatment');
