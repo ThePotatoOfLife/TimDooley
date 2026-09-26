@@ -191,6 +191,8 @@ assert.ok(css.includes('background:rgba(14,34,51,.90)'),'Heaven Room rail needs 
 assert.ok(css.includes('background:rgba(38,30,21,.95)'),'Plane floor board needs a dark readability plate');
 assert.ok(css.includes('background:rgba(24,14,11,.96)'),'Below floor board needs a dark readability plate');
 assert.ok(css.includes('background:rgba(5,8,8,.72)'),'arrow column needs a stable dark readability plate');
+assert.ok(css.includes('[data-elevator-ready="false"]'),'loading state must have a neutral terminal treatment');
+assert.ok(css.includes('minmax(49px,1fr)'),'narrow mobile Plane grid must fit enough columns to avoid four Room rows');
 assert.ok(css.includes('font-size:12px'),'floor label must remain immediately readable');
 assert.ok(css.includes('text-shadow:0 1px 0 rgba(0,0,0,.95)'),'floor text needs dark contrast shadow');
 assert.ok(css.includes('[data-elevator-level="below"] .site-elevator-room'),'Below Room tiles need underground material styling');
@@ -210,5 +212,9 @@ assert.ok(source.includes('header.dataset.elevatorRoom=spatial.roomId'),'runtime
 assert.ok(source.includes("selectedLevel===spatial.levelId"),'active Room highlight must only appear on the actual floor');
 assert.ok(source.includes("'HERE · '"),'actual floor must expose HERE label');
 assert.ok(source.includes("'BROWSING FLOOR'"),'non-actual floor must be clearly marked as browsing');
+assert.ok(source.includes("data-elevator-level','pending"),'pre-hydration header must not falsely present Plane');
+assert.ok(source.includes('Finding your Room…'),'pre-hydration header needs a neutral orientation label');
+assert.ok(source.includes("sessionStorage.getItem(key)"),'elevator governance data should be cached per deployed asset version');
+assert.ok(source.includes("cache:'no-cache'"),'first governance fetch should revalidate rather than bypass all caching');
 
 console.log('Site elevator resolver + visual contract passed.');
