@@ -5,7 +5,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 SCHEMA=ROOT/'data/house/entity-dossier-schema.json'
-DATA=ROOT/'data/house/entity-dossiers-wave-001.json'
+DATA=ROOT/'data/house/entity-dossiers.json'
 HOUSE=ROOT/'house/index.html'
 AUDIT=ROOT/'knowledge/research/element-materialization-audit-2026-09-18.json'
 
