@@ -70,9 +70,10 @@ assert.ok(adapterSource.includes('onEvent:event=>'), 'longform adapter must cons
 assert.ok(adapterSource.includes('createPageHighlighter'), 'longform adapter must use shared actual-page word highlighting');
 assert.ok(adapterSource.includes("event.type==='boundary'&&event.absoluteWord"), 'longform adapter must map boundary words back to page text');
 assert.equal(typeof adapter.highlightTargetForSection,'function','longform adapter must expose pure highlight ownership logic');
-assert.equal(adapter.highlightTargetForSection('current',current,fakeRoot),current,'current scope must highlight only the active item');
-assert.equal(adapter.highlightTargetForSection('all',current,fakeRoot),fakeRoot,'whole-page scope must highlight the reader root');
-assert.equal(adapter.highlightTargetForSection('selection',current,fakeRoot),null,'selection scope must not own page movement');
+const currentItem={kind:'current-item'};
+assert.equal(adapter.highlightTargetForSection('current',currentItem,fakeRoot),currentItem,'current scope must highlight only the active item');
+assert.equal(adapter.highlightTargetForSection('all',currentItem,fakeRoot),fakeRoot,'whole-page scope must highlight the reader root');
+assert.equal(adapter.highlightTargetForSection('selection',currentItem,fakeRoot),null,'selection scope must not own page movement');
 assert.ok(adapterSource.includes('highlightTargetForSection(event.sectionId,currentItem,container)'), 'longform highlight events must route through the tested ownership helper');
 assert.ok(adapterSource.includes('pageHighlighter.clear()'), 'longform page highlight must clear at speech end/context change');
 assert.ok(adapterSource.includes('mutationsAreInside(records,host)'), 'observer must ignore mutations caused by its own player host');
