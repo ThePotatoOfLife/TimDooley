@@ -1114,3 +1114,9 @@ The previous `inhabited` milestone only eliminated corridor-only shells. It is *
 - [x] Information / Great Book / Music / Visual concrete wave: Information Ecology now has changing-memory cases; Great Book has three chapter specimens; Music exposes 62 recovered generations / 59 titles and named tracks; Visual Art exposes dated/recovery-typed compositions rather than motif summaries.
 
 - [x] Games / House / Questions / Experiments / Programmes concrete wave: Games now exposes recovered mechanics; House shows live 10/38/59 counts and an ownership walk; Open Questions shows live recovery/test items; Experiments carries three worked project formalisms; Research Programmes shows five active artifact-producing programmes with gates and negative results.
+
+- [x] All 38 nested Rooms have now passed the first concrete-population **coverage review**. This is not a completion claim: it means every Room was reread under the stricter object/date/mechanism/artifact standard; Potato Biology was verified as pre-existing deep, while the other Rooms were either concretely enriched in this wave or already contained named cases and were re-reviewed.
+- [x] Neurobiology concrete specimen pass: VPL/VPM, LGN visual route and CSF production/circulation quantities added.
+- [x] Internet Platforms concrete specimen pass: 107k working broadcaster-hour estimate, YouTube watch-hour/view snapshots and 766/848/~900h markers separated as incompatible metrics.
+- [x] Subculture concrete specimen pass: NXIVM coercive-control mechanisms contrasted with AO3/OTW fan-owned institutionalization using dated primary/official sources.
+- [ ] Begin **Room population wave 2**: replace remaining high-level paragraphs inside each Room with deeper source objects, diagrams, tables, artifact excerpts and counterexamples; prioritize sections whose claims are still supported only by summary prose.
