@@ -125,12 +125,19 @@ assert.ok(planeRooms.every(room=>typeof room.isPrimaryProjection==='boolean'),'R
 assert.ok(planeRooms.slice(0,firstSecondaryIndex).every(room=>room.isPrimaryProjection===true),'primary Rooms must be marked primary');
 assert.ok(planeRooms.slice(firstSecondaryIndex).every(room=>room.isPrimaryProjection===false),'secondary Rooms must be marked secondary');
 
+// every governed Room must be visible on its resolved primary floor so it can be highlighted in place
+for(const dwelling of projection.dwellings){
+  const visible=elevator.roomsForLevel(dwelling.primary_level,projection,roomContract);
+  assert.ok(visible.some(room=>room.id===dwelling.id), dwelling.id+' must appear on its primary floor rail');
+}
+
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const source=fs.readFileSync(path.join(ROOT,'app/site-elevator.js'),'utf8');
+const css=fs.readFileSync(path.join(ROOT,'app/site-elevator.css'),'utf8');
 
 // VISUAL CONTRACT
 for(const marker of [
@@ -154,5 +161,13 @@ assert.ok(source.includes("ArrowUp"),'header keyboard contract needs ArrowUp');
 assert.ok(source.includes("ArrowDown"),'header keyboard contract needs ArrowDown');
 assert.ok(source.includes("Home"),'header keyboard contract needs Home → Plane');
 assert.ok(source.includes("disabled"),'boundary arrows must expose disabled state');
+
+assert.ok(css.includes('flex-wrap:wrap'),'Room rail must wrap instead of scroll');
+assert.ok(css.includes('overflow:visible'),'Room rail must expose wrapped lines');
+assert.equal(css.includes('overflow-x:auto'),false,'Room rail must not horizontally scroll');
+assert.equal(css.includes('scrollbar-width'),false,'Room rail must not render a scrollbar');
+assert.ok(css.includes('.site-elevator-up::before{content:"△"}'),'up control should use a light triangle around the arrow');
+assert.ok(css.includes('.site-elevator-down::before{content:"▽"}'),'down control should use a light inverted triangle around the arrow');
+assert.ok(css.includes('background:transparent'),'arrow controls must float without metallic button blocks');
 
 console.log('Site elevator resolver + visual contract passed.');
