@@ -269,7 +269,48 @@
     }catch(e){}
   }
 
+
+  async function installDwellingFeaturedObjects(){
+    const match=location.pathname.match(/\/rooms\/([^/]+)\/(?:index\.html)?$/);
+    if(!match)return;
+    const dwellingId=decodeURIComponent(match[1]);
+    try{
+      const data=await getJson('data/house/dwelling-featured-objects.json');
+      const shelf=(data.shelves||[]).find(row=>row&&row.dwelling_id===dwellingId);
+      if(!shelf||!(shelf.objects||[]).length)return;
+      const main=document.querySelector('main');
+      if(!main||main.querySelector('.dwelling-object-shelf'))return;
+      const section=document.createElement('section');
+      section.className='dwelling-object-shelf';
+      section.dataset.dwellingId=dwellingId;
+      const cards=(shelf.objects||[]).map(obj=>{
+        const href=String(obj.href||'');
+        const resolved=/^(https?:|#)/.test(href)?href:base+href.replace(/^\//,'');
+        return '<a class="dwelling-object-card" href="'+esc(resolved)+'">'
+          +'<small>'+esc(obj.kind||'featured object')+'</small>'
+          +'<strong>'+esc(obj.title||'Untitled')+'</strong>'
+          +'<span>'+esc(obj.summary||'')+'</span>'
+          +'<em>Open →</em>'
+          +'</a>';
+      }).join('');
+      section.innerHTML='<div class="dwelling-object-head"><div><p class="eyebrow">'+esc(shelf.title||'Things on the table')+'</p>'
+        +'<h2>Concrete things worth opening before another hallway</h2></div>'
+        +'<p>'+esc(shelf.intro||'A curated shelf of strong objects from this domain.')+'</p></div>'
+        +'<div class="dwelling-object-grid">'+cards+'</div>';
+      const reader=main.querySelector('.dwelling-reader');
+      const boundary=[...main.querySelectorAll('section')].find(x=>/What this Dwelling owns/i.test(x.textContent||''));
+      if(reader) reader.insertAdjacentElement('afterend',section);
+      else if(boundary) main.insertBefore(section,boundary);
+      else {
+        const header=main.querySelector('.page-header');
+        if(header) header.insertAdjacentElement('afterend',section);
+        else main.prepend(section);
+      }
+    }catch(e){}
+  }
+
   installRibbon();
+  installDwellingFeaturedObjects();
   installRoomFloorProjection();
   installInhabitants();
   installRoomKnowledge();
