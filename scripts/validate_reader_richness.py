@@ -132,6 +132,9 @@ def main() -> int:
         audit.get("second_authored_wave") or [],
         audit.get("third_authored_wave") or [],
         audit.get("fourth_authored_wave") or [],
+        audit.get("fifth_authored_wave") or [],
+        audit.get("sixth_authored_wave") or [],
+        audit.get("seventh_authored_wave") or [],
     ]
     history=[row for group in authored_groups for row in group]
     seen_authored=set()
@@ -148,8 +151,8 @@ def main() -> int:
         mass=len(plain_text(source))
         if mass < 1800:
             errors.append(f"authored richness page regressed to a thin shell: {rel} has {mass} plain-text characters")
-        if rel.startswith("rooms/inside/") and 'class="room-essay"' not in source:
-            errors.append(f"authored nested Room lost its substantive essay marker: {rel}")
+        if rel.startswith("rooms/inside/") and 'class="room-essay"' not in source and "data-room-reader-body" not in source:
+            errors.append(f"authored nested Room lost its substantive reader marker: {rel}")
         if re.match(r"^rooms/[^/]+/index\.html$", rel) and rel != "rooms/objects/index.html" and 'class="dwelling-reader"' not in source:
             errors.append(f"authored Dwelling lost its narrative reader marker: {rel}")
 
