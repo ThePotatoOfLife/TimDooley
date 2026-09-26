@@ -131,6 +131,20 @@ def main() -> int:
             errors.append(f"{room_id}: unsupported projections {bad}")
         if primary and primary not in projections:
             errors.append(f"{room_id}: primary_level {primary!r} must also appear in projections")
+        notes = row.get("projection_notes")
+        if not isinstance(notes, dict):
+            errors.append(f"{room_id}: projection_notes must map every declared floor to a short explanation")
+        else:
+            note_keys = set(notes)
+            expected_keys = set(projections)
+            if note_keys != expected_keys:
+                errors.append(
+                    f"{room_id}: projection_notes keys must equal declared projections; "
+                    f"expected={sorted(expected_keys)}, got={sorted(note_keys)}"
+                )
+            for floor_id, note in notes.items():
+                if not isinstance(note, str) or len(note.strip()) < 28:
+                    errors.append(f"{room_id}: projection note for {floor_id!r} is too thin")
 
     contexts = [row for row in projection.get("route_contexts", []) if isinstance(row, dict)]
     by_match = {row.get("match"): row for row in contexts if row.get("match")}
