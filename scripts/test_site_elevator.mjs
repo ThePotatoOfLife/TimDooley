@@ -203,6 +203,7 @@ assert.ok(css.includes('display:grid!important'),'Room rail must survive page-le
 assert.ok(css.includes('margin:0!important'),'elevator shell must reset page-level header/nav margins');
 assert.ok(css.includes('align-self:start'),'elevator controls must stay pinned when Room grid wraps');
 assert.ok(css.includes('--elevator-row-height:42px'),'desktop elevator controls need a fixed one-row height token');
+assert.ok(!/--([\\w-]+):var\\(--\\1\\)/.test(css),'elevator CSS custom properties must not self-reference');
 assert.ok(css.includes('.site-elevator-reel{\n  align-self:start;'),'floor board must stay pinned when Room grid wraps');
 assert.ok(css.includes('--elevator-room-row-min:26px'),'wrapped Room rows must stay compact and predictable');
 assert.ok(css.includes('.site-elevator-up::before{content:"△"}'),'up arrow needs triangle framing');
