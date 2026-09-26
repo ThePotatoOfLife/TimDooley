@@ -144,6 +144,8 @@ for token in (
 
 if "@media(max-width:680px)" not in css or ".site-access-panel{bottom:52px;width:calc(100vw - 12px)" not in css:
     errors.append("site-access narrow-screen panel contract missing")
+if css.count("@media(max-width:680px)") != 1 or css.count("@media(max-width:420px)") != 1:
+    errors.append("site-access responsive breakpoints must be consolidated into single blocks")
 
 if "changed.update(patch_project_compass(OUT))" in patch:
     errors.append("legacy Project Compass must not be injected alongside the quick-access dock")
