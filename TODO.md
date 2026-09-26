@@ -200,10 +200,20 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 - [x] **RICH-012 · Witness provenance contract:** distinguish native originals, faithful captures, derived copies, edited derivatives and reconstructions; separate authenticity, attestation, truth and interpretation; model derivation using W3C PROV-style entity/activity/agent logic and preserve C2PA credentials when available.
 - [x] **RICH-013 · Symbolic operator contracts:** make Door, House, Axis, Plane, Root, Tree, Garden, Mountain, Swamp, Forge, Spiral and Ring explicit input→transformation→output operators with invariants and misuse tests.
 - [x] **RICH-014 · Sacred-geometry artifact lineage:** anchor Vesica/Mandorla/Eye/Pyramid material in dated mathematical/art objects and reception stages rather than treating visual recurrence as one timeless doctrine.
-- [ ] **RICH-015 · Practice & Ethics mechanism pass:** replace generic moral language with worked cases, repair obligations, agency tests, restorative-vs-protective boundaries and concrete failure modes.
-- [ ] **RICH-016 · Developmental Genealogy source graph:** expose exact first/last attestations and supersession edges for major role transitions instead of summarizing change only in prose.
-- [ ] **RICH-017 · Canon Identities contradiction pass:** add dated identity conflicts, superseded roles and mutually incompatible formulations rather than only the mature resolved grammar.
+- [x] **RICH-015 · Practice & Ethics mechanism pass:** replace generic moral language with worked cases, repair obligations, agency tests, restorative-vs-protective boundaries and concrete failure modes.
+- [x] **RICH-016 · Developmental Genealogy source graph:** expose exact first/last attestations and supersession edges for major role transitions instead of summarizing change only in prose.
+- [x] **RICH-017 · Canon Identities contradiction pass:** add dated identity conflicts, superseded roles and mutually incompatible formulations rather than only the mature resolved grammar.
 - [ ] **RICH-018 · Information Ecology bibliography projection:** surface publication year/source class for external research claims without turning the page into a citation wall.
+- [x] **RICH-019 · Genealogy supersession graph:** expose role mutation as first-state → transition → later-state rather than only prose development; distinguish developmental, scope, subject, evidence-class and genuinely unresolved contradictions.
+- [x] **RICH-020 · Ethics safeguards:** ground Garden/Repair/Forge practice in voluntariness, safety, procedural fairness, agency, exit and protective-separation cases so benevolent language cannot excuse coercion.
+- [ ] **RICH-021 · Model-testing worked failures:** add at least 3 real project models/correspondences that are downgraded, rejected or narrowed by baseline comparison, missing observables or poor identifiability; a methodology page without failures is incomplete.
+- [ ] **RICH-022 · Open Questions resolution ledger:** connect major open questions to owner, evidence needed, blocker, last attempted date and closure criteria; remove questions that are merely rhetorical.
+- [ ] **RICH-023 · Law primary-source refresh:** sample major statutory/procedural claims and attach jurisdiction/date/source; add at least two worked cases showing the difference between allegation, charge, finding, remedy and appeal.
+- [ ] **RICH-024 · Economy measurement refresh:** attach current primary-source dates to debt/inflation/rate/bond examples; distinguish nominal stock, flow, market value and contingent obligation with worked calculations.
+- [ ] **RICH-025 · Internet platform mechanics pass:** add concrete platform affordance cases—ranking, clipping, deletion, monetization, identity persistence, portability—and distinguish documented mechanics from inferred motive.
+- [ ] **RICH-026 · Visual artifact recovery:** convert remembered composition families into an artifact-status table: recovered image / recovered prompt / remembered specification / derivative recreation / unresolved.
+- [ ] **RICH-027 · Great Book internal contradictions:** identify 5–10 places where later Potatoverse canon departs from or narrows the 2024 book, and expose them as literary-development evidence rather than silently normalizing the text.
+- [ ] **RICH-028 · Room source-density audit:** for each Room, count visible named sources/objects/cases/mechanisms and flag pages with high prose-to-object ratio for another carve pass.
 
 ### Whole-House harmony pass — 2026-09-20
 
