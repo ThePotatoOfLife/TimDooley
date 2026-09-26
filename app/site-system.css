@@ -15,6 +15,11 @@
   --site-content-wide: 1160px;
   --site-gutter: clamp(16px, 3vw, 24px);
   --site-focus: #e0c17c;
+  --site-z-elevator: 9997;
+  --site-z-journey: 10040;
+  --site-z-counter: 10049;
+  --site-z-access: 10050;
+  --site-floating-gap: 8px;
 }
 
 * { box-sizing: border-box; }
