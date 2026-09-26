@@ -32,7 +32,7 @@
   --elevator-room-text:9px;
   position:sticky;
   top:0;
-  z-index:9997;
+  z-index:var(--site-z-elevator,9997);
   width:100%;
   box-sizing:border-box;
   color:var(--site-elevator-ink);
