@@ -91,6 +91,8 @@ def main():
         fail("Body relational lens stylesheet missing")
     if "const jsonCache=new Map()" not in journey or "function getJson(path)" not in journey:
         fail("House journey runtime does not reuse shared JSON requests")
+    if "x.id===roomId||x.route_id===roomId" not in journey or "const canonicalRoomId=room.id" not in journey:
+        fail("nested Room enrichment does not resolve governed route aliases")
 
     build=(ROOT/"scripts/build_discovery.py").read_text(encoding="utf-8")
     for needle in ("def core_records()","def body_objects()","record-discovery-index.json","body-discovery-index.json"):
