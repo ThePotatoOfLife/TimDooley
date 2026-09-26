@@ -151,14 +151,14 @@
 
       const main=document.querySelector('main');
       if(!main||main.querySelector('.room-floor-projection'))return;
-      const localCenter=main.querySelector('.local-center');
-      const actions=main.querySelector('.room-actions');
-      if(localCenter) localCenter.insertAdjacentElement('afterend',section);
-      else if(actions) main.insertBefore(section,actions);
+      // Subject first: House projection follows the first authored reader section.
+      // Architecture should enrich the subject after the reader has entered it.
+      const firstReader=main.querySelector('.dwelling-reader');
+      if(firstReader) firstReader.insertAdjacentElement('afterend',section);
       else {
         const header=main.querySelector('.page-header');
         if(header) header.insertAdjacentElement('afterend',section);
-        else main.prepend(section);
+        else main.append(section);
       }
     }catch(e){}
   }
