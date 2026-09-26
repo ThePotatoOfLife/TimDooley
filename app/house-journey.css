@@ -2,7 +2,7 @@
    Behavior lives in house-journey.js; presentation stays here so it can be cached,
    audited and changed without injecting duplicate style elements. */
 
-.house-journey-ribbon{position:fixed;left:10px;right:auto;bottom:calc(var(--site-access-clearance,0px) + 8px);z-index:10040;width:min(520px,calc(100vw - 118px));max-width:calc(100vw - 118px);box-sizing:border-box;border:1px solid var(--site-line,#303830);background:rgba(5,8,6,.92);backdrop-filter:blur(9px);border-radius:10px;padding:4px 5px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px;align-items:center;box-shadow:0 6px 20px rgba(0,0,0,.24)}
+.house-journey-ribbon{position:fixed;left:10px;right:auto;bottom:calc(var(--site-access-clearance,0px) + var(--site-floating-gap,8px));z-index:var(--site-z-journey,10040);width:min(520px,calc(100vw - 118px));max-width:calc(100vw - 118px);box-sizing:border-box;border:1px solid var(--site-line,#303830);background:rgba(5,8,6,.92);backdrop-filter:blur(9px);border-radius:10px;padding:4px 5px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px;align-items:center;box-shadow:0 6px 20px rgba(0,0,0,.24)}
 .house-journey-ribbon-main{min-width:0;display:flex;align-items:center;gap:5px}
 .house-journey-ribbon-title{display:flex;align-items:baseline;gap:4px;white-space:nowrap}.house-journey-ribbon-title b{font:700 9px var(--site-font-sans,system-ui,sans-serif);color:var(--site-gold,#d5ba74)}.house-journey-ribbon-title small{display:none}
 .house-journey-ribbon-track{display:flex;gap:3px;min-width:0;overflow:hidden}
