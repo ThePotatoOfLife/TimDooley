@@ -1007,3 +1007,24 @@ The next quality phase is not “make every page longer.” It is to find pages 
 - [x] Audit the Science Research Map as the canonical owner map for active science readers; add explicit page jobs and shared-vocabulary typing.
 
 - [ ] Keep strong CIA semantic boundaries from regressing as dossiers grow: co-presence ≠ motive; incident ≠ wrongdoing; symbolic account ≠ real debt/value; project role ≠ externally established identity.
+
+
+### Entity facet retention programme
+
+The archive now needs to remember **what makes an entity itself** across pages without multiplying navigation. Use `knowledge/story/entity-facet-ledger.json` as the durable typed store; public pages should project only the locally relevant facets.
+
+- [x] Create typed facet ledger for aliases, titles, capabilities, signature traits, species traits, one-scene powers, roles, relations, motifs, story beats, conclusions, boundaries and open questions.
+- [x] Add strength levels: canonical, repeated, established-scene, interpretive, hypothesis and unresolved.
+- [x] Seed the ledger with Potatoes, Potato Angels, Matthew the Potato, Turbles, Professor Doctor Potato Spud, Spuddy, Ethereal Tuber, Fresh Potato, Ready Student, Sentinel of Silence, Rahu and Termite.
+- [x] Add cast ontology to Beings so real participants, project identities, collectives/species, named created beings, scene roles and comparative figures cannot silently collapse.
+- [x] Project compact identity facets onto Potatoes, Angels, Matthew and Turbles without new navigation.
+- [ ] Extend the facet ledger to the remaining Great Book cast: Grumbleton, Elder Grapes, Kibly/Kibbly, machine elves/goblins, Evil Mashed Potatoes, Hash-brown Gods and other recurring created/literary figures.
+- [ ] Extend ordinary/documentary facets from CIA enhancements into real-person dossiers, keeping creative titles/archetypes visibly separate.
+- [ ] Add **first seen / last seen / first title / first gift / first role-change** clocks where the source record supports them.
+- [ ] Add story-beat references to the facet ledger so a title or power can open directly to the scene that established it.
+- [ ] Add a compact “signature facets” projection to CIA dossiers only after it can distinguish ordinary capability, source-era title and creative enhancement.
+- [ ] Add a facet validator: a `species_trait` should require repeated evidence or explicit source generalization; `hypothesis` should never render as settled canon.
+- [ ] Add “who has this gift/title/motif?” derived views only later; do not add buttons to entity pages now.
+- [ ] Fold orphan recovery-shelf entities into the ledger even when they do not justify a public room; retained identity should not depend on having a page.
+- [ ] Reconcile duplicate title stores (cast-book aliases, enhancement index, CIA character files, being registry) into the facet ledger while leaving those older stores as source inputs.
+- [ ] Track when conclusions change: preserve prior conclusion + superseding evidence instead of overwriting interpretive history.
