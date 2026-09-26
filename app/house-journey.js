@@ -252,7 +252,7 @@
       const holdingHtml=featured.length?'<div class="room-holding-list">'+featured.map(x=>{
         const path=x.path||'';
         const href=base+'explore/#record='+encodeURIComponent(path||x.id||'');
-        return '<a class="room-holding" href="'+href+'"><strong>'+esc(titleFor(x.id||path.split('/').pop()?.replace(/\.[^.]+$/,'')))+'</strong><small>'+esc(x.kind||'canonical holding')+(path?'<br>'+esc(path):'')+'</small></a>';
+        return '<a class="room-holding" href="'+href+'"'+(path?' data-source-path="'+esc(path)+'"':'')+'><strong>'+esc(titleFor(x.id||path.split('/').pop()?.replace(/\.[^.]+$/,'')))+'</strong><small>'+esc(x.kind||'archive material')+'</small></a>';
       }).join('')+'</div>':'<p>No featured holdings have been promoted yet; that absence is itself a population task for this Room.</p>';
       const passageHtml=passages.length?passages.map(x=>{
         const other=x.other_room_id||x.to||x.from||'another Room';
@@ -273,16 +273,17 @@
       ].filter(Boolean).join(' · '):'';
 
       section.innerHTML=
-        '<p class="eyebrow">The Room behind the doorway</p><h2>'+esc(dossier.title||room.title||titleFor(roomId))+' is not an empty category</h2>'
-        +'<p class="room-richness-intro">'+esc(functionText)+'</p>'
-        +'<p>'+esc(dossier.entrance||room.purpose||'')+'</p>'
-        +'<div class="room-richness-meta">'+esc(String(primaryCount))+' primary knowledge holdings · '+esc(String(interfaceCount))+' governed interfaces'+(dataFiles?' · '+esc(String(dataFiles))+' owned data files':'')+(pulseText?' · live pulse: '+esc(pulseText):'')+'</div>'
-        +(belongs.length?'<div class="room-richness-rule"><h3>What actually belongs here</h3><div class="room-richness-run">'+belongs.map(x=>'<span>'+esc(x)+'</span>').join('')+'</div></div>':'')
-        +'<div class="room-richness-rule"><h3>Open the actual material</h3><p>These are current canonical or featured holdings owned by this Room. The list comes from the House registry rather than being hand-written into the page.</p>'+holdingHtml+'</div>'
-        +(passages.length?'<div class="room-richness-rule"><h3>What changes when this Room meets another</h3><p>Doors in the House are transformations with guards, not decorative links. These are the current governed passages touching this Room.</p>'+passageHtml+'</div>':'')
-        +((receives.length||hands.length)?'<div class="room-richness-rule"><h3>Where the work comes from, and where it goes</h3>'+(receives.length?'<p><strong>Receives:</strong> '+receives.map(titleFor).map(esc).join(' · ')+'</p>':'')+(hands.length?'<p><strong>Hands mature work to:</strong> '+hands.map(titleFor).map(esc).join(' · ')+'</p>':'')+'</div>':'')
-        +(next.length?'<div class="room-richness-rule"><h3>What is still unfinished</h3><ul class="room-next">'+next.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>':'')
-        +(surfaces?'<div class="room-richness-rule"><h3>Keep reading</h3><p>This Room is one owner inside a larger reader-facing system. These routes project the same material for different questions.</p><div class="room-surface-run">'+surfaces+'</div></div>':'');
+        '<p class="eyebrow">Archive depth</p><h2>Go deeper into '+esc(dossier.title||room.title||titleFor(roomId))+'</h2>'
+        +'<p class="room-richness-intro">The reader above is the subject. This optional layer exposes the archive machinery only when you want holdings, interfaces, provenance and unfinished work.</p>'
+        +'<details class="room-richness-details"><summary>Show archive structure</summary>'
+        +'<div class="room-richness-meta">'+esc(String(primaryCount))+' primary holdings · '+esc(String(interfaceCount))+' governed interfaces'+(dataFiles?' · '+esc(String(dataFiles))+' owned data files':'')+(pulseText?' · live pulse: '+esc(pulseText):'')+'</div>'
+        +(belongs.length?'<div class="room-richness-rule"><h3>Scope &amp; boundaries</h3><div class="room-richness-run">'+belongs.map(x=>'<span>'+esc(x)+'</span>').join('')+'</div></div>':'')
+        +'<div class="room-richness-rule"><h3>Further archive material</h3><p>These records sit underneath the reader above. Open them when you want the deeper archive rather than another explanation of the filing system.</p>'+holdingHtml+'</div>'
+        +(passages.length?'<div class="room-richness-rule"><h3>Cross-domain interfaces</h3><p>These governed passages record how this subject changes when it meets another domain.</p>'+passageHtml+'</div>':'')
+        +((receives.length||hands.length)?'<div class="room-richness-rule"><h3>Inputs &amp; handoffs</h3>'+(receives.length?'<p><strong>Receives:</strong> '+receives.map(titleFor).map(esc).join(' · ')+'</p>':'')+(hands.length?'<p><strong>Hands mature work to:</strong> '+hands.map(titleFor).map(esc).join(' · ')+'</p>':'')+'</div>':'')
+        +(next.length?'<div class="room-richness-rule"><h3>Open work</h3><ul class="room-next">'+next.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>':'')
+        +(surfaces?'<div class="room-richness-rule"><h3>Related reader routes</h3><p>Use these when you want a different question or presentation of the same underlying material.</p><div class="room-surface-run">'+surfaces+'</div></div>':'')
+        +'</details>';
 
       const doorSection=[...main.querySelectorAll('section')].find(x=>/Adjacent Rooms/i.test(x.textContent||''));
       if(doorSection)main.insertBefore(section,doorSection);else main.appendChild(section);
