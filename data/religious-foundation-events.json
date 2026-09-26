@@ -1,6 +1,6 @@
 {
   "id": "religious-foundation-events",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-26",
   "status": "canonical event anchor registry for religious foundations",
   "purpose": "Provide notable dates that can be merged into the Foundation Timeline, spiral and map. Events are anchored to foundation records and, where available, to deep lineage nodes.",
@@ -75,7 +75,16 @@
     "mjl_zohar": "https://www.myjewishlearning.com/article/the-zohar/",
     "mjl_luria": "https://www.myjewishlearning.com/article/isaac-luria/",
     "mjl_lurianic_spread": "https://www.myjewishlearning.com/article/kabbalah-origins-of-a-spiritual-adventure/",
-    "encyclopedia_new_testament": "https://www.encyclopedia.com/philosophy-and-religion/bible/new-testament/new-testament"
+    "encyclopedia_new_testament": "https://www.encyclopedia.com/philosophy-and-religion/bible/new-testament/new-testament",
+    "baptist_world_history": "https://www.baptistworld.org/wp-content/uploads/dialogues/Final-Report-of-the-International-Dialogue-between-BWA-and-WMC.pdf",
+    "baptist_1609": "https://baptistworld.org/bwa-resolutions/400th-anniversary-of-the-formation-of-the-first-baptist-congregation/",
+    "pcusa_reformed_history": "https://pcusa.org/historical-society/exhibits/foundations-faith",
+    "pcusa_history": "https://pcusa.org/about-pcusa/who-we-are/history",
+    "quaker_history": "https://quaker.org/quaker-history-introduction/",
+    "disciples_history": "https://disciples.org/our-identity/history-of-the-disciples/",
+    "disciples_dates": "https://disciples.org/our-identity/history-of-the-disciples/important-dates-in-disciple-history/",
+    "nazarene_history": "https://nazarene.org/our-history/",
+    "wcrc_history": "https://wcrc.eu/about/history/"
   },
   "events": [
     {
@@ -2602,6 +2611,173 @@
       "source_id": "encyclopedia_new_testament",
       "source_url": "https://www.encyclopedia.com/philosophy-and-religion/bible/new-testament/new-testament",
       "note": "Broad composition window; canon formation continues later."
+    },
+    {
+      "id": "chr-presbyterian-scots-confession",
+      "family": "christianity",
+      "name": "Scots Confession and Reformed Kirk consolidation",
+      "date": {
+        "year_start": 1560,
+        "year_end": 1560,
+        "display": "1560 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "confessional_consolidation",
+      "merge_priority": "secondary",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "reformed-tradition",
+        "presbyterian-traditions"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "presbyterian-traditions"
+      ],
+      "place": "Scotland",
+      "source_id": "pcusa_reformed_history",
+      "source_url": "https://pcusa.org/historical-society/exhibits/foundations-faith",
+      "note": "Presbyterianism is one Reformed trajectory; Calvin, Knox and representative presbyterial polity are central to its later identity."
+    },
+    {
+      "id": "chr-baptist-amsterdam",
+      "family": "christianity",
+      "name": "First Baptist congregation forms in Amsterdam",
+      "date": {
+        "year_start": 1609,
+        "year_end": 1609,
+        "display": "1609 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "reform_seed",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "baptist-traditions"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "baptist-traditions"
+      ],
+      "place": "Amsterdam, Dutch Republic",
+      "source_id": "baptist_1609",
+      "source_url": "https://baptistworld.org/bwa-resolutions/400th-anniversary-of-the-formation-of-the-first-baptist-congregation/",
+      "note": "High-information modern Baptist seed marker; Baptist historians also distinguish later General and Particular Baptist beginnings."
+    },
+    {
+      "id": "chr-baptist-england",
+      "family": "christianity",
+      "name": "First Baptist church on English soil",
+      "date": {
+        "year_start": 1612,
+        "year_end": 1612,
+        "display": "1612 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "institutionalization",
+      "merge_priority": "secondary",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "baptist-traditions"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "London, England",
+      "source_id": "baptist_world_history",
+      "source_url": "https://www.baptistworld.org/wp-content/uploads/dialogues/Final-Report-of-the-International-Dialogue-between-BWA-and-WMC.pdf",
+      "note": "Associated with Thomas Helwys and the General Baptist stream; Particular Baptists emerge separately from English Independency."
+    },
+    {
+      "id": "chr-quaker-emergence",
+      "family": "christianity",
+      "name": "Quaker/Friends movement takes recognizable form",
+      "date": {
+        "year_start": 1647,
+        "year_end": 1652,
+        "display": "c. 1647–1652 CE",
+        "precision": "range"
+      },
+      "event_kind": "reform_movement",
+      "merge_priority": "secondary",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "quaker-friends"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "quaker-friends"
+      ],
+      "place": "England",
+      "source_id": "quaker_history",
+      "source_url": "https://quaker.org/quaker-history-introduction/",
+      "note": "George Fox begins preaching in 1647; 1652 is a major expansion/organization memory marker. Friends develop within the English dissenting field."
+    },
+    {
+      "id": "chr-restoration-union",
+      "family": "christianity",
+      "name": "Stone and Campbell movements unite",
+      "date": {
+        "year_start": 1831,
+        "year_end": 1832,
+        "display": "31 Dec 1831–1 Jan 1832",
+        "precision": "range"
+      },
+      "event_kind": "reform_movement",
+      "merge_priority": "secondary",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "restoration-stone-campbell"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "restoration-stone-campbell"
+      ],
+      "place": "United States",
+      "source_id": "disciples_dates",
+      "source_url": "https://disciples.org/our-identity/history-of-the-disciples/important-dates-in-disciple-history/",
+      "note": "A strong Stone-Campbell/Restoration Movement union marker; later churches and denominations differentiate from the broader movement."
+    },
+    {
+      "id": "chr-holiness-movement",
+      "family": "christianity",
+      "name": "Wesleyan-Holiness movement expands across denominations",
+      "date": {
+        "year_start": 1830,
+        "year_end": 1900,
+        "display": "19th century, especially from the 1830s",
+        "precision": "range"
+      },
+      "event_kind": "reform_movement",
+      "merge_priority": "secondary",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "holiness-movement"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "holiness-movement"
+      ],
+      "place": "Britain and North America",
+      "source_id": "nazarene_history",
+      "source_url": "https://nazarene.org/our-history/",
+      "note": "A transdenominational holiness current rooted in Wesleyan sanctification teaching; it later generates multiple denominations."
+    },
+    {
+      "id": "chr-nazarene-1908",
+      "family": "christianity",
+      "name": "Church of the Nazarene union",
+      "date": {
+        "year_start": 1908,
+        "year_end": 1908,
+        "display": "1908 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "institutionalization",
+      "merge_priority": "secondary",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "church-of-nazarene"
+      ],
+      "creates_or_crystallizes_child_ids": [
+        "church-of-nazarene"
+      ],
+      "place": "United States",
+      "source_id": "nazarene_history",
+      "source_url": "https://nazarene.org/our-history/",
+      "note": "1908 is the denomination's official anniversary marker for the union of major holiness bodies; additional mergers followed."
     }
   ]
 }
