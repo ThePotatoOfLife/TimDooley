@@ -165,3 +165,14 @@
 .dwelling-archive-index-card strong{display:block;color:var(--site-gold,#d5ba74);font:400 17px/1.2 var(--site-font-serif,serif);margin:5px 0}
 .dwelling-archive-index-card span{display:block;color:var(--site-muted,#9ba59a);font-size:9px;line-height:1.45}
 @media(max-width:720px){.dwelling-archive-index-head{grid-template-columns:1fr;gap:8px}}
+
+
+.room-featured-objects{margin:22px 0 18px;padding:18px 0;border-top:1px solid var(--site-line,#303830);border-bottom:1px solid rgba(255,255,255,.055)}
+.room-featured-objects h3{font:400 23px/1.15 var(--site-font-serif,serif);color:var(--site-gold,#d5ba74);margin:4px 0 6px}
+.room-inhabitant-grid--featured .room-inhabitant-card{background:rgba(184,220,130,.025);border-color:#42503f}
+.room-more-objects{margin-top:16px;border-top:1px solid rgba(255,255,255,.055);padding-top:12px}
+.room-more-objects summary{cursor:pointer;color:var(--site-green,#9eb58d);font:700 9px/1.4 var(--site-font-sans,system-ui,sans-serif);letter-spacing:.07em;text-transform:uppercase;list-style:none}
+.room-more-objects summary::-webkit-details-marker{display:none}
+.room-more-objects summary::before{content:"＋";display:inline-block;width:15px;color:var(--site-muted,#9ba59a)}
+.room-more-objects[open] summary::before{content:"−"}
+.room-more-objects>.room-inhabitant-grid{margin-top:12px}
