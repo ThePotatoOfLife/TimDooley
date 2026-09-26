@@ -84,7 +84,7 @@ def main() -> int:
         css_tokens = (
             ".site-elevator",
             ".site-elevator-controls",
-            "single-strip compact layout",
+            "compact wrapped elevator layout",
             '[data-elevator-level="heaven"]',
             '[data-elevator-level="plane"]',
             '[data-elevator-level="below"]',
