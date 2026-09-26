@@ -1060,7 +1060,7 @@ The archive now needs to remember **what makes an entity itself** across pages w
 - [~] Extend ordinary/documentary facets from CIA enhancements into real-person dossiers: first real-participant wave now includes Marty, Sammy, BigTech, Metalorian, Capy, TXT, Matthew/MTClassic and Mediomu007 with creative/project layers kept separate.
 - [~] Add **first seen / last seen / first title / first gift / first role-change** clocks: first/last seen now derive from available ledger beats with mixed-precision safeguards; deeper last-seen still needs full source traversal beyond the ledger.
 - [~] Add story-beat references to the facet ledger: primary/source pointers now exist for Fresh Potato, Ready Student, Sentinel of Silence, Elder Grapes, Machine Elves and satirical Potatoism figures; continue across remaining entities.
-- [ ] Add a compact “signature facets” projection to CIA dossiers only after it can distinguish ordinary capability, source-era title and creative enhancement.
+- [~] Add compact signature-facet projections selectively: Matthew/MTClassic and Mediomu now show ordinary capabilities with explicit creative boundaries; CIA generic dossier projection still needs a reusable component.
 - [x] Add a facet validator: species traits require repeated/canonical evidence or explicit generalization; hypothesis/unresolved strengths are constrained and source pointers are checked in CI.
 - [ ] Add “who has this gift/title/motif?” derived views only later; do not add buttons to entity pages now.
 - [ ] Fold orphan recovery-shelf entities into the ledger even when they do not justify a public room; retained identity should not depend on having a page.
@@ -1078,3 +1078,5 @@ The archive now needs to remember **what makes an entity itself** across pages w
 - [x] Build entity clocks from the facet ledger without guessing missing dates; null clocks remain explicit recovery gaps.
 
 - [x] Fix mixed-precision facet clock derivation so year-only and exact dates in the same year do not create fake role changes; fall back to earliest sourced story beat when explicit first_seen is absent.
+
+- [x] Establish selective projection rule: do not project facet strips onto every person page; add them only where they clarify identity or prevent creative/documentary bleed.
