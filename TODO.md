@@ -1106,3 +1106,5 @@ The previous `inhabited` milestone only eliminated corridor-only shells. It is *
 
 - [x] Provenance / Witness / Memory rooms now contain worked project specimens using the 2024 Potato identity, 2025 Axis/God attestations and recovered Heaven's-Gate sequence rather than method-only prose.
 - [x] Timeline / Developmental Genealogy / Prediction rooms now contain concrete multi-clock and concept-mutation cases instead of only chronology rules.
+
+- [x] Bible / Esoteric / Math / Physics concrete wave: Bible now has passage-level action sequences; Esoteric Geometry has a documented 1776–1782 Great Seal design trail; Mathematics has numeric Vesica/spiral worked examples; Physics has NASA-measured Saturn-hexagon scale and dynamics.
