@@ -240,6 +240,13 @@ def main() -> int:
         'id="actual-works"',
         'id="how-systems-work"',
         'id="reader-body"',
+        'class="context-case"',
+        'id="formation-fork"',
+        'class="politics-frame"',
+        'data-politics-reader',
+        'class="body-case"',
+        'class="spiral-reader',
+        'class="movement"',
     )
     concrete_subject_pages = top_level_dwellings + [
         "history/index.html",
