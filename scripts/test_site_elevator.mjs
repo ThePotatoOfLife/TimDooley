@@ -61,6 +61,14 @@ assert.equal(direct.levelId,'plane');
 assert.equal(direct.roomId,'culture-information');
 assert.equal(direct.source,'room-route');
 
+// all direct Room routes must resolve to each Room's primary floor
+for(const dwelling of projection.dwellings){
+  const ctx=elevator.resolveSpatialContext('/rooms/'+dwelling.id+'/',projection,roomContract);
+  assert.equal(ctx.roomId,dwelling.id, dwelling.id+' direct Room route');
+  assert.equal(ctx.levelId,dwelling.primary_level, dwelling.id+' must open on its primary floor');
+  assert.equal(ctx.source,'room-route', dwelling.id+' must resolve through direct Room ownership');
+}
+
 const unknown=elevator.resolveSpatialContext('/totally-unknown/',projection,roomContract);
 assert.equal(unknown.levelId,'plane');
 assert.equal(unknown.roomId,null);
@@ -95,6 +103,7 @@ const source=fs.readFileSync(path.join(ROOT,'app/site-elevator.js'),'utf8');
 
 // VISUAL CONTRACT
 for(const marker of [
+  'site-elevator-controls',
   'site-elevator-up',
   'site-elevator-down',
   'site-elevator-reel',
