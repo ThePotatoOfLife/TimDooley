@@ -1,6 +1,6 @@
 {
-  "version": "2.0.0",
-  "updated": "2026-09-20",
+  "version": "2.1.0",
+  "updated": "2026-09-26",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
   "rules": [
@@ -2722,6 +2722,267 @@
           }
         ]
       }
+    },
+    {
+      "id": "science-celestial-typed-canon",
+      "label": "Celestial astronomy / astrology / project canon",
+      "kind": "typed-science-record",
+      "room_ids": [
+        "physics-cosmology"
+      ],
+      "route": "/knowledge/science/celestial-astronomy-astrology-cosmology-canon.json",
+      "summary": "Separates physical astronomy, historical astrology/symbolism and Potatoverse celestial interpretation so evidence cannot bleed across layers.",
+      "status_note": "Astronomical facts and symbolic uses remain separate claim classes.",
+      "evidence_note": "Canonical science record with explicit layer boundaries.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "science-celestial-axis-measurement",
+      "label": "Celestial Axis coordinate measurement model",
+      "kind": "measurement-model",
+      "room_ids": [
+        "physics-cosmology",
+        "math-geometry"
+      ],
+      "route": "/knowledge/science/celestial-axis-coordinate-measurement-model.json",
+      "summary": "Frame-, epoch- and coordinate-aware model for testing North, star and axis alignments instead of relying on visual resemblance.",
+      "status_note": "A coordinate model is a test method, not proof of a symbolic alignment.",
+      "evidence_note": "Uses explicit coordinate/frame discipline.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "science-deeper-physics-connections",
+      "label": "Deeper Physics Connections",
+      "kind": "formal-comparator-atlas",
+      "room_ids": [
+        "physics-cosmology",
+        "systems-dynamics"
+      ],
+      "route": "/knowledge/science/deeper-physics-connections.json",
+      "summary": "T-duality, mirror symmetry, holonomy, effective theory and other rigorous comparators used with explicit limits.",
+      "status_note": "Comparators clarify structure without establishing identity with Potatoverse claims.",
+      "evidence_note": "Established physics concepts are distinguished from project analogy.",
+      "maturity": "described"
+    },
+    {
+      "id": "science-recurrence-orbit-spiral",
+      "label": "Recurrence / Orbit / Spiral Dynamics",
+      "kind": "dynamics-atlas",
+      "room_ids": [
+        "physics-cosmology",
+        "math-geometry",
+        "systems-dynamics"
+      ],
+      "route": "/knowledge/science/recurrence-orbit-spiral-dynamics-atlas.json",
+      "summary": "Distinguishes closed recurrence, orbital return and changed-state spiral behavior across geometry and dynamics.",
+      "status_note": "State change must be defined rather than inferred from metaphor.",
+      "evidence_note": "Formal comparison record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "traditions-vesica-mandorla-atlas",
+      "label": "Vesica / Mandorla / Sun / Moon atlas",
+      "kind": "symbol-genealogy",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "comparative-mythology"
+      ],
+      "route": "/knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
+      "summary": "Tracks exact lens geometry, sacred-art mandorla history, Sun/Moon reception and later Potatoverse use as separate layers.",
+      "status_note": "Historical recurrence does not prove one timeless doctrine.",
+      "evidence_note": "Source-led tradition and reception atlas.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "traditions-providence-pyramid-pillars",
+      "label": "Providence Eye / Pyramid / Pillars atlas",
+      "kind": "symbol-genealogy",
+      "room_ids": [
+        "esoteric-sacred-geometry"
+      ],
+      "route": "/knowledge/traditions/providence-pyramid-pillars-atlas.json",
+      "summary": "Separates biblical pillars, Great Seal provenance, later esoteric reception and modern project comparison.",
+      "status_note": "Shared symbols and dates do not establish secret causal influence.",
+      "evidence_note": "Historical provenance record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "traditions-beast-666-cube",
+      "label": "Beast / Mark / Forehead / 666 / Cube atlas",
+      "kind": "text-symbol-crosswalk",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "bible-christianity",
+        "prediction-revelation-time"
+      ],
+      "route": "/knowledge/traditions/beast-mark-forehead-666-cube-atlas.json",
+      "summary": "Keeps Revelation's mark/name/number text distinct from later Potatoverse 666/cube/enclosure symbolism.",
+      "status_note": "Biblical 666 does not itself establish the later cube equation.",
+      "evidence_note": "Textual and project layers are explicitly typed.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "traditions-new-jerusalem-cube",
+      "label": "144,000 / Zion / New Jerusalem / Cube atlas",
+      "kind": "comparative-text-atlas",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "bible-christianity"
+      ],
+      "route": "/knowledge/traditions/revelation-144000-zion-new-jerusalem-cube-atlas.json",
+      "summary": "Examines Revelation's city geometry and number imagery while preserving the boundary between text, reception and project architecture.",
+      "status_note": "Comparison is not fulfillment proof.",
+      "evidence_note": "Source-led biblical/comparative record.",
+      "maturity": "described"
+    },
+    {
+      "id": "prophecy-framework",
+      "label": "Prophecy / Revelation / Rupture / Rapture framework",
+      "kind": "claim-resolution-framework",
+      "room_ids": [
+        "prediction-revelation-time"
+      ],
+      "route": "/knowledge/prophecy/prophecy-revelation-rupture-rapture.json",
+      "summary": "Defines the categories used to separate prior prediction, symbolic pattern, revelation, rupture and later interpretation.",
+      "status_note": "Framework classifies claims; it does not verify them.",
+      "evidence_note": "Project methodology record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "prophecy-seals-matrix",
+      "label": "Seals & Fulfillment Matrix",
+      "kind": "claim-audit",
+      "room_ids": [
+        "prediction-revelation-time",
+        "bible-christianity"
+      ],
+      "route": "/knowledge/prophecy/seals-and-fulfillment-matrix.json",
+      "summary": "Tracks claimed correspondences, timing, mismatches and evidence status across seal/fulfillment interpretations.",
+      "status_note": "Claimed fulfillment remains an attributed project interpretation unless prior specificity and evidence support more.",
+      "evidence_note": "Audit matrix designed to preserve mismatch and uncertainty.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "economics-inflation-prediction-ledger",
+      "label": "Inflation / Rates / Bond Prediction Ledger",
+      "kind": "dated-prediction-ledger",
+      "room_ids": [
+        "prediction-revelation-time",
+        "economy-finance"
+      ],
+      "route": "/knowledge/economics/tim-dooley-inflation-ledger.md",
+      "summary": "Dated economic claims classified as forecast, conditional forecast, mechanism or scenario, with later outcome assessment and retained misses.",
+      "status_note": "Economic forecast records are not prophecy proof.",
+      "evidence_note": "Dated project ledger with explicit success/error boundaries.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "biology-potato-organism-cycle",
+      "label": "Potato Organism Cycle Atlas",
+      "kind": "biology-atlas",
+      "room_ids": [
+        "potato-biology"
+      ],
+      "route": "/knowledge/biology/potato-organism-cycle-atlas.json",
+      "summary": "Literal organism-level cycle from dormancy and sprouting through vegetative growth, tuber initiation, bulking and renewed dormancy.",
+      "status_note": "Literal potato biology; symbolic comparison belongs elsewhere.",
+      "evidence_note": "Canonical biology atlas.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "biology-potato-genetics-genomics",
+      "label": "Potato Genetics & Genomics Atlas",
+      "kind": "biology-atlas",
+      "room_ids": [
+        "potato-biology"
+      ],
+      "route": "/knowledge/biology/potato-genetics-genomics-atlas.json",
+      "summary": "Genetic and genomic structure behind potato traits, development and variation.",
+      "status_note": "Biological genetics does not validate symbolic inheritance claims.",
+      "evidence_note": "Canonical biology record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "biology-potato-pathology-storage",
+      "label": "Potato Pathology, Immunity & Storage",
+      "kind": "biology-atlas",
+      "room_ids": [
+        "potato-biology"
+      ],
+      "route": "/knowledge/biology/potato-pathology-immunity-storage.json",
+      "summary": "Disease pressure, defense, wound response, storage physiology and post-harvest constraints.",
+      "status_note": "Literal plant health and storage science.",
+      "evidence_note": "Canonical biology record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "biology-potato-physical-chemistry",
+      "label": "Potato Physical Chemistry & Biophysics",
+      "kind": "biology-atlas",
+      "room_ids": [
+        "potato-biology",
+        "physics-cosmology"
+      ],
+      "route": "/knowledge/biology/potato-physical-chemistry-biophysics-atlas.json",
+      "summary": "Water, starch, tissue mechanics, heat and other physical properties of the literal tuber.",
+      "status_note": "Physical potato properties are not a new fundamental force.",
+      "evidence_note": "Biophysics/physical-chemistry context.",
+      "maturity": "described"
+    },
+    {
+      "id": "world-geography-place-boundary",
+      "label": "Geography / Place / State / Boundary Atlas",
+      "kind": "world-atlas",
+      "room_ids": [
+        "geography-countries"
+      ],
+      "route": "/knowledge/world/geography-place-state-boundary-atlas.json",
+      "summary": "Distinguishes physical geography, political territory, state identity, borders and project geographic overlays.",
+      "status_note": "Symbolic orientation does not alter legal borders or sovereignty.",
+      "evidence_note": "World-system geography owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "world-country-capability-dependency",
+      "label": "Country Capability & Dependency Atlas",
+      "kind": "world-atlas",
+      "room_ids": [
+        "geography-countries",
+        "infrastructure-capability"
+      ],
+      "route": "/knowledge/world/country-capability-dependency-atlas.json",
+      "summary": "Connects country-level geography to energy, industry, logistics, infrastructure and strategic dependencies.",
+      "status_note": "Capability relationships are dated empirical claims where sourced, not permanent national essences.",
+      "evidence_note": "World-system capability synthesis.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "world-map-surface",
+      "label": "Interactive World Map",
+      "kind": "interactive-atlas",
+      "room_ids": [
+        "geography-countries"
+      ],
+      "route": "/world-map/",
+      "summary": "Public map surface for countries, regions and system layers, acting as a view over canonical world records rather than their truth owner.",
+      "status_note": "Map rendering is a view; canonical records and sources own facts.",
+      "evidence_note": "Public interactive projection.",
+      "maturity": "described"
+    },
+    {
+      "id": "north-programme-object",
+      "label": "North Programme",
+      "kind": "programme",
+      "room_ids": [
+        "geography-countries",
+        "politics-governance",
+        "infrastructure-capability"
+      ],
+      "route": "/north/",
+      "summary": "A split symbolic and empirical programme covering North as orientation alongside cooperation, geography, energy, industry, digital infrastructure and capability research.",
+      "status_note": "Symbolic North does not itself create legal membership, sovereignty or alliance status.",
+      "evidence_note": "Project programme with explicit symbolic/empirical boundary.",
+      "maturity": "described"
     }
   ],
   "source_records": [
