@@ -216,10 +216,6 @@
       }
       roomRail.replaceChildren(fragment);
       roomRail.hidden=!rows.length;
-      const active=roomRail.querySelector('[aria-current="location"]');
-      if(active&&typeof active.scrollIntoView==='function'){
-        try{active.scrollIntoView({block:'nearest',inline:'center'});}catch(_){}
-      }
     };
 
     const render=(direction='')=>{
