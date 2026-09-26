@@ -144,8 +144,8 @@ def inject_site_access(text: str, page: Path) -> str:
         return text
 
     prefix = _relative_asset_prefix(page)
-    css = f'<link rel="stylesheet" href="{prefix}app/site-access.css?v=20260920a">'
-    js = f'<script src="{prefix}app/site-access.js?v=20260920a" defer></script>'
+    css = f'<link rel="stylesheet" href="{prefix}app/site-access.css?v=20260926b">'
+    js = f'<script src="{prefix}app/site-access.js?v=20260926b" defer></script>'
     text = re.sub(r"</head\\s*>", css + "</head>", text, count=1, flags=re.I)
     text = re.sub(r"</body\\s*>", js + "</body>", text, count=1, flags=re.I)
     return text
