@@ -184,9 +184,17 @@
       if(!main)return;
       const section=document.createElement('section');
       section.className='room-inhabitants-panel';
-      section.innerHTML='<p class="eyebrow">Inhabitants / cases</p><h2>What lives in this Room</h2><p class="boundary">These are objects viewed from this Room. Centering one keeps this Room around it; it does not promote the object into architecture.</p><div class="room-inhabitant-grid">'+rows.map(x=>{
+      section.innerHTML='<p class="eyebrow">Inhabitants / cases</p><h2>What lives in this Room</h2><p class="boundary">These are concrete objects viewed from this Room. Open the object itself when you want substance; place it on the center table when you want to inspect its House context.</p><div class="room-inhabitant-grid">'+rows.map(x=>{
         const q=new URLSearchParams({room:room.parent_room_id,inner:canonicalRoomId,object:x.id});
-        return '<a class="room-inhabitant-card" href="'+base+'elevator/?'+q.toString()+'"><strong>'+esc(x.label)+'</strong><small>'+esc(x.kind||'object')+'</small><span>Place on the center table →</span></a>';
+        const rawRoute=String(x.route||'');
+        const objectHref=rawRoute
+          ?(/^(https?:|#)/.test(rawRoute)?rawRoute:base+rawRoute.replace(/^\//,''))
+          :'';
+        const actions=(objectHref?'<a class="room-inhabitant-open" href="'+esc(objectHref)+'">Open the thing →</a>':'')
+          +'<a class="room-inhabitant-center" href="'+base+'elevator/?'+q.toString()+'">Place in House →</a>';
+        return '<article class="room-inhabitant-card"><strong>'+esc(x.label)+'</strong><small>'+esc(x.kind||'object')+'</small>'
+          +(x.summary?'<p>'+esc(x.summary)+'</p>':'')
+          +'<div class="room-inhabitant-actions">'+actions+'</div></article>';
       }).join('')+'</div>';
       main.appendChild(section);
     }catch(e){}
