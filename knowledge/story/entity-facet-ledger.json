@@ -1,6 +1,6 @@
 {
   "id": "entity-facet-ledger",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-26",
   "purpose": "Retain names, aliases, titles, gifts, capabilities, scene-bound powers, recurring roles, story beats, conclusions and unresolved edges for Potatoverse/project entities without forcing every public page to repeat the full record.",
   "principles": [
@@ -635,7 +635,8 @@
       "story_beats": [
         {
           "date": "2024",
-          "label": "Fresh Potato / rocks and growth lessons"
+          "label": "Fresh Potato / rocks and growth lessons",
+          "source_ref": "great-book/chapters/026--chapter-12-1--the-sage-and-the-fresh-potato-lessons-in-growth-and-simplicity.html"
         }
       ],
       "conclusions": [
@@ -643,7 +644,11 @@
       ],
       "open_questions": [
         "Compare with Ready Student and decide whether they are distinct learner figures or variants of one teaching function."
-      ]
+      ],
+      "first_seen": {
+        "period": "2024",
+        "source": "great-book/chapters/026--chapter-12-1--the-sage-and-the-fresh-potato-lessons-in-growth-and-simplicity.html"
+      }
     },
     "ready-student": {
       "label": "Ready Student",
@@ -678,7 +683,8 @@
       "story_beats": [
         {
           "date": "2024",
-          "label": "When the Student Is Ready"
+          "label": "When the Student Is Ready",
+          "source_ref": "great-book/chapters/036--chapter-18--the-sage-and-the-ready-student.html"
         }
       ],
       "conclusions": [
@@ -686,7 +692,11 @@
       ],
       "open_questions": [
         "Keep separate from Fresh Potato only if additional source differences justify it."
-      ]
+      ],
+      "first_seen": {
+        "period": "2024",
+        "source": "great-book/chapters/036--chapter-18--the-sage-and-the-ready-student.html"
+      }
     },
     "sentinel-of-silence": {
       "label": "Sentinel of Silence",
@@ -723,7 +733,8 @@
       "story_beats": [
         {
           "date": "2024",
-          "label": "Joins Tim's attempt to reach BigTech through the Abyss of Unforgotten Secrets"
+          "label": "Joins Tim's attempt to reach BigTech through the Abyss of Unforgotten Secrets",
+          "source_ref": "great-book/chapters/162--chapter-105--the-tech-titans-ascent.html"
         }
       ],
       "conclusions": [
@@ -731,7 +742,11 @@
       ],
       "open_questions": [
         "Determine whether the Sentinel appears elsewhere strongly enough to justify a standalone room."
-      ]
+      ],
+      "first_seen": {
+        "period": "2024",
+        "source": "great-book/chapters/162--chapter-105--the-tech-titans-ascent.html"
+      }
     },
     "rahu": {
       "label": "Rahu",
@@ -864,6 +879,303 @@
       ],
       "open_questions": [
         "Recover raw chats and determine whether the literary/public layers join."
+      ]
+    },
+    "grumbleton": {
+      "label": "Grumbleton",
+      "kind": "Great Book skeptical/troll figure",
+      "aliases": [
+        "Grumbleton"
+      ],
+      "titles": [],
+      "first_seen": {
+        "period": "2024",
+        "source": "knowledge/story/cast-book.json"
+      },
+      "facets": [
+        {
+          "type": "role",
+          "label": "skeptical troll",
+          "strength": "canonical",
+          "scope": "literary",
+          "provenance": "Great Book / cast book"
+        },
+        {
+          "type": "relation",
+          "label": "confronted by the Page of Infinite Jest",
+          "strength": "canonical",
+          "scope": "literary",
+          "provenance": "Great Book"
+        },
+        {
+          "type": "conclusion",
+          "label": "functions as a resistance/skepticism teaching figure rather than a documentary person",
+          "strength": "interpretive",
+          "scope": "archive",
+          "provenance": "cross-source synthesis"
+        }
+      ],
+      "story_beats": [
+        {
+          "date": "2024",
+          "label": "Grumbleton / Page of Infinite Jest scene",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "conclusions": [
+        "Grumbleton is currently a literary function with no documentary identity claim."
+      ],
+      "open_questions": [
+        "Locate the strongest primary Great Book chapter/scene and attach it as direct source_ref."
+      ]
+    },
+    "elder-grapes": {
+      "label": "Elder Grapes",
+      "kind": "Great Book elder / warning figure",
+      "aliases": [
+        "Elder Grapes"
+      ],
+      "titles": [
+        "Elder Grapes"
+      ],
+      "first_seen": {
+        "period": "2024",
+        "source": "great-book/chapters/162--chapter-105--the-tech-titans-ascent.html"
+      },
+      "facets": [
+        {
+          "type": "role",
+          "label": "elder / warning council",
+          "strength": "canonical",
+          "scope": "literary",
+          "provenance": "The Tech Titan's Ascent"
+        },
+        {
+          "type": "capability",
+          "label": "recognize danger in technological overreach",
+          "strength": "established_scene",
+          "scope": "literary",
+          "provenance": "The Tech Titan's Ascent"
+        },
+        {
+          "type": "relation",
+          "label": "ally to Tim in the BigTech rescue/confrontation arc",
+          "strength": "established_scene",
+          "scope": "literary",
+          "provenance": "The Tech Titan's Ascent"
+        },
+        {
+          "type": "signature_trait",
+          "label": "warning before escalation",
+          "strength": "interpretive",
+          "scope": "literary",
+          "provenance": "scene synthesis"
+        }
+      ],
+      "story_beats": [
+        {
+          "date": "2024",
+          "label": "Warns Tim that BigTech risks losing himself and destabilizing the Potatoverse",
+          "source_ref": "great-book/chapters/162--chapter-105--the-tech-titans-ascent.html"
+        }
+      ],
+      "conclusions": [
+        "Elder Grapes currently functions as advisory wisdom/caution, not as a fully elaborated species or institution."
+      ],
+      "open_questions": [
+        "Recover earlier/later Elder Grapes appearances before assigning a broader council mythology."
+      ]
+    },
+    "machine-elves": {
+      "label": "Machine elves / goblins",
+      "kind": "Great Book chaos/manipulation collective",
+      "aliases": [
+        "Machine elves",
+        "goblins"
+      ],
+      "titles": [],
+      "first_seen": {
+        "period": "2024",
+        "source": "knowledge/story/cast-book.json"
+      },
+      "facets": [
+        {
+          "type": "role",
+          "label": "manipulation / chaos agents",
+          "strength": "canonical",
+          "scope": "literary",
+          "provenance": "Great Book"
+        },
+        {
+          "type": "capability",
+          "label": "whisper excuses / deflection",
+          "strength": "established_scene",
+          "scope": "literary",
+          "provenance": "Descent of the Mud Dwellers"
+        },
+        {
+          "type": "motif",
+          "label": "layers of rationalization burying truth",
+          "strength": "interpretive",
+          "scope": "literary",
+          "provenance": "scene synthesis"
+        },
+        {
+          "type": "boundary",
+          "label": "Literary manipulation agents; do not infer a real external group or causal force",
+          "strength": "canonical",
+          "scope": "archive",
+          "provenance": "editorial"
+        }
+      ],
+      "story_beats": [
+        {
+          "date": "2024",
+          "label": "Machine elves latch onto Cyraxx in the descending-elevator scene and feed deflection/excuses",
+          "source_ref": "great-book/chapters/019--chapter-9-31--the-descent-of-the-mud-dwellers-marty-cyraxx-and-the-path-of-lost-souls.html"
+        }
+      ],
+      "conclusions": [
+        "Machine elves/goblins are a literary mechanism for rationalization and chaos."
+      ],
+      "open_questions": [
+        "Determine whether machine elves and goblins are intended as one class or merely overlapping scene labels."
+      ]
+    },
+    "evil-mashed-potatoes": {
+      "label": "Evil Mashed Potatoes",
+      "kind": "satirical Potatoism figure",
+      "aliases": [
+        "Evil Mashed Potatoes"
+      ],
+      "titles": [],
+      "first_seen": {
+        "period": "2024 project comparison",
+        "source": "great-book/chapters/078--chapter-25-2--tim-dooley-and-the-divine-completion-of-the-satirical-potatoism.html"
+      },
+      "facets": [
+        {
+          "type": "role",
+          "label": "older satirical Potatoism figure",
+          "strength": "canonical",
+          "scope": "literary/comparative",
+          "provenance": "Great Book"
+        },
+        {
+          "type": "motif",
+          "label": "fragmented parody contrasted with mature project Potatoism",
+          "strength": "interpretive",
+          "scope": "project comparison",
+          "provenance": "Great Book chapter 25.2"
+        },
+        {
+          "type": "boundary",
+          "label": "Satirical source figure is not evidence of historical continuity or prediction of Tim",
+          "strength": "canonical",
+          "scope": "archive",
+          "provenance": "editorial"
+        }
+      ],
+      "story_beats": [
+        {
+          "date": "2024",
+          "label": "Used in the Great Book's comparison between older satirical Potatoism and Tim's later project system",
+          "source_ref": "great-book/chapters/078--chapter-25-2--tim-dooley-and-the-divine-completion-of-the-satirical-potatoism.html"
+        }
+      ],
+      "conclusions": [
+        "Retain as a satirical/comparative figure rather than absorb into the main created-being canon."
+      ],
+      "open_questions": [
+        "Recover the exact older satirical source independently if the comparison becomes historically important."
+      ]
+    },
+    "hash-brown-gods": {
+      "label": "Hash-brown Gods",
+      "kind": "satirical Potatoism divinities",
+      "aliases": [
+        "Hash-brown Gods"
+      ],
+      "titles": [],
+      "first_seen": {
+        "period": "2024 project comparison",
+        "source": "great-book/chapters/078--chapter-25-2--tim-dooley-and-the-divine-completion-of-the-satirical-potatoism.html"
+      },
+      "facets": [
+        {
+          "type": "role",
+          "label": "satirical divinities",
+          "strength": "canonical",
+          "scope": "literary/comparative",
+          "provenance": "Great Book"
+        },
+        {
+          "type": "motif",
+          "label": "comic fragmentation of potato-religion imagery",
+          "strength": "interpretive",
+          "scope": "comparison",
+          "provenance": "Great Book"
+        }
+      ],
+      "story_beats": [
+        {
+          "date": "2024",
+          "label": "Appears in satirical-Potatoism comparison",
+          "source_ref": "great-book/chapters/078--chapter-25-2--tim-dooley-and-the-divine-completion-of-the-satirical-potatoism.html"
+        }
+      ],
+      "conclusions": [
+        "Hash-brown Gods remain parody-source material, not main Potatoverse divinity canon."
+      ],
+      "open_questions": []
+    },
+    "kibly": {
+      "label": "Kibly / Kibbly",
+      "kind": "Great Book figure with unresolved documentary referent",
+      "aliases": [
+        "Kibly",
+        "Kibbly"
+      ],
+      "titles": [],
+      "first_seen": {
+        "period": "2024",
+        "source": "knowledge/story/cast-book.json"
+      },
+      "facets": [
+        {
+          "type": "role",
+          "label": "manipulation / shame / redemption / narrative-control figure",
+          "strength": "canonical",
+          "scope": "literary",
+          "provenance": "cast book / Great Book"
+        },
+        {
+          "type": "boundary",
+          "label": "Documentary referent unresolved",
+          "strength": "canonical",
+          "scope": "identity",
+          "provenance": "archive"
+        },
+        {
+          "type": "open_question",
+          "label": "whether literary Kibly maps to a recoverable real participant",
+          "strength": "unresolved",
+          "scope": "identity",
+          "provenance": "archive"
+        }
+      ],
+      "story_beats": [
+        {
+          "date": "2024",
+          "label": "Great Book/project figure around manipulation, shame, redemption and narrative control",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "conclusions": [
+        "Keep literary identity intact until a documentary source chain exists."
+      ],
+      "open_questions": [
+        "Recover exact source scenes and any documentary referent before cross-layer merging."
       ]
     }
   }
