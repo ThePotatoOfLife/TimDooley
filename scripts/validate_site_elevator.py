@@ -256,8 +256,8 @@ def main() -> int:
             )
 
     patcher = (ROOT / "scripts" / "patch_public_navigation.py").read_text(encoding="utf-8", errors="replace")
-    if 'if "site-elevator.css" not in text:' not in patcher or 'if "site-elevator.js" not in text:' not in patcher:
-        errors.append("site elevator injector must repair partial CSS/JS coverage independently")
+    if '_has_asset_reference(text, "site-elevator.css")' not in patcher or '_has_asset_reference(text, "site-elevator.js")' not in patcher:
+        errors.append("site elevator injector must repair partial CSS/JS coverage using real asset references")
 
     if OUT.exists():
         standalone_pages = []
