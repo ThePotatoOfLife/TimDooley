@@ -1,0 +1,167 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-26",
+  "authority": "access-journey-fixtures",
+  "purpose": "Regression fixtures for common name-first intents. Count deliberate activations (click/Enter), not query typing. From any ordinary reader, each intent must reach its expected destination or explicit disambiguation in at most two activations.",
+  "interaction_model": {
+    "visible_dock_link": 1,
+    "open_places_then_choose": 2,
+    "open_find_then_choose_result": 2,
+    "open_find_then_choose_disambiguation": 2
+  },
+  "journeys": [
+    {
+      "intent": "Go home",
+      "query": "home",
+      "entry_id": "home",
+      "max_activations": 1
+    },
+    {
+      "intent": "Read current news",
+      "query": "news",
+      "entry_id": "news",
+      "max_activations": 1
+    },
+    {
+      "intent": "Open the world map",
+      "query": "map",
+      "entry_id": "world-map",
+      "max_activations": 1
+    },
+    {
+      "intent": "Find Tim Dooley",
+      "query": "tim dooley",
+      "entry_id": "tim",
+      "max_activations": 2
+    },
+    {
+      "intent": "Open Potato of Life",
+      "query": "potato of life",
+      "entry_id": "potato-of-life",
+      "max_activations": 2
+    },
+    {
+      "intent": "Open the House",
+      "query": "house",
+      "entry_id": "house",
+      "max_activations": 2
+    },
+    {
+      "intent": "Open Rooms",
+      "query": "rooms",
+      "entry_id": "rooms",
+      "max_activations": 2
+    },
+    {
+      "intent": "Find people and cases",
+      "query": "people",
+      "entry_id": "people-cases",
+      "max_activations": 2
+    },
+    {
+      "intent": "Use A-Z",
+      "query": "a-z",
+      "entry_id": "index-a-z",
+      "max_activations": 2
+    },
+    {
+      "intent": "Open Timeline",
+      "query": "timeline",
+      "entry_id": "timeline",
+      "max_activations": 2
+    },
+    {
+      "intent": "Check sources",
+      "query": "sources",
+      "entry_id": "sources",
+      "max_activations": 2
+    },
+    {
+      "intent": "Explore relationships",
+      "query": "explore",
+      "entry_id": "explore",
+      "max_activations": 2
+    },
+    {
+      "intent": "Read science",
+      "query": "science",
+      "entry_id": "science",
+      "max_activations": 2
+    },
+    {
+      "intent": "Find Bible material",
+      "query": "bible",
+      "entry_id": "religion",
+      "max_activations": 2
+    },
+    {
+      "intent": "Read philosophy",
+      "query": "philosophy",
+      "entry_id": "philosophy",
+      "max_activations": 2
+    },
+    {
+      "intent": "Open World",
+      "query": "world",
+      "entry_id": "world",
+      "max_activations": 2
+    },
+    {
+      "intent": "Find debt and finance",
+      "query": "debt",
+      "entry_id": "economy",
+      "max_activations": 2
+    },
+    {
+      "intent": "Find politics",
+      "query": "politics",
+      "entry_id": "politics",
+      "max_activations": 2
+    },
+    {
+      "intent": "Use TTS",
+      "query": "tts",
+      "entry_id": "tts",
+      "max_activations": 2
+    },
+    {
+      "intent": "Read Tim claims",
+      "query": "claims",
+      "entry_id": "claims",
+      "max_activations": 2
+    },
+    {
+      "intent": "Read public witness",
+      "query": "public record",
+      "entry_id": "public-witness",
+      "max_activations": 2
+    },
+    {
+      "intent": "Open 100,000 Hours",
+      "query": "100,000 hours",
+      "entry_id": "hours",
+      "max_activations": 2
+    },
+    {
+      "intent": "Open Below",
+      "query": "below",
+      "entry_id": "below",
+      "max_activations": 2
+    },
+    {
+      "intent": "Open North",
+      "query": "north",
+      "entry_id": "north",
+      "max_activations": 2
+    },
+    {
+      "intent": "Resolve CIA",
+      "query": "cia",
+      "disambiguation": [
+        "cia-character-archive",
+        "intelligence-cia"
+      ],
+      "max_activations": 2
+    }
+  ]
+}

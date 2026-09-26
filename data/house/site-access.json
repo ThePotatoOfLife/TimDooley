@@ -1,6 +1,6 @@
 {
-  "version": "1.2.0",
-  "updated": "2026-09-21",
+  "version": "1.3.0",
+  "updated": "2026-09-26",
   "authority": "fast-access-curation",
   "purpose": "Curated high-value quick-access doors and aliases for the universal site dock. Public-surface and House-object registries remain the broad generated search index.",
   "rules": [
@@ -11,7 +11,8 @@
     "Global access belongs here; page-owned navigation stays local.",
     "Never use bare CIA as a global destination label: disambiguate Potatoverse CIA · Character Archive from U.S. CIA · Central Intelligence Agency before navigation.",
     "Readers must not need to understand House/Dwelling hierarchy to reach repeatedly sought project landmarks.",
-    "Character Archive and World Spiritual Bank are global landmarks: expose them by name in Places and preserve a direct Archive ↔ Bank switcher inside their shared building."
+    "Character Archive and World Spiritual Bank are global landmarks: expose them by name in Places and preserve a direct Archive ↔ Bank switcher inside their shared building.",
+    "The 25 representative intents in data/house/access-journeys.json must remain reachable in no more than two deliberate activations from an ordinary reader page."
   ],
   "groups": {
     "go_now": [
@@ -436,6 +437,19 @@
         "figures bonds incidents",
         "retired fbi",
         "old character bureau"
+      ]
+    },
+    {
+      "id": "north",
+      "label": "North",
+      "route": "/north/",
+      "kind": "world",
+      "note": "North programme and symbolic/world-facing layers",
+      "aliases": [
+        "north",
+        "north axis",
+        "north programme",
+        "true north"
       ]
     }
   ],

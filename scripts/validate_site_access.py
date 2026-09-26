@@ -19,11 +19,17 @@ css=read(ROOT/"app/site-access.css")
 tts_drawer=read(ROOT/"app/tts-drawer.js")
 patch=read(ROOT/"scripts/patch_public_navigation.py")
 contract_text=read(ROOT/"data/house/site-access.json")
+journey_text=read(ROOT/"data/house/access-journeys.json")
 try:
     contract=json.loads(contract_text) if contract_text else {}
 except json.JSONDecodeError as exc:
     errors.append(f"invalid data/house/site-access.json: {exc}")
     contract={}
+try:
+    journeys=json.loads(journey_text) if journey_text else {}
+except json.JSONDecodeError as exc:
+    errors.append(f"invalid data/house/access-journeys.json: {exc}")
+    journeys={}
 
 for token in (
     "Current World","World Map","Potatoverse CIA · Character Archive","U.S. CIA · Central Intelligence Agency","World Spiritual Bank / Mud Bank","People & Cases",
@@ -80,6 +86,31 @@ if landmarks[:2]!=["cia-character-archive","mud-bank"]:
 wayfinding=contract.get("wayfinding") or {}
 if int(wayfinding.get("max_interactions_for_landmarks",99))>2:
     errors.append("landmark access exceeds two-interaction contract")
+
+journey_rows=journeys.get("journeys",[]) if isinstance(journeys,dict) else []
+if len(journey_rows)!=25:
+    errors.append(f"access journey fixture count must be exactly 25, got {len(journey_rows)}")
+for row in journey_rows:
+    if int(row.get("max_activations",99))>2:
+        errors.append(f"journey exceeds two-activation contract: {row.get('intent')}")
+    if row.get("entry_id"):
+        entry=entries.get(row.get("entry_id"))
+        if not entry:
+            errors.append(f"journey references unknown access entry: {row.get('entry_id')}")
+            continue
+        q=str(row.get("query","")).strip().lower()
+        hay=" ".join([str(entry.get("label","")).lower(),*(str(x).lower() for x in entry.get("aliases",[]))])
+        if q and q not in hay:
+            errors.append(f"journey query does not resolve to expected entry {row.get('entry_id')}: {q}")
+    elif row.get("disambiguation"):
+        opts=row.get("disambiguation",[])
+        for option in opts:
+            if option not in entries:
+                errors.append(f"journey disambiguation references unknown entry: {option}")
+        if str(row.get("query","")).strip().lower()!="cia":
+            errors.append("current access disambiguation fixture must be the bare CIA query")
+    else:
+        errors.append(f"journey lacks entry_id or disambiguation: {row.get('intent')}")
 
 for group_name in ("go_now","find","direct_doors"):
     for entry_id in groups.get(group_name,[]):
