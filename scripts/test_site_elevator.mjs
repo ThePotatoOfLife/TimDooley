@@ -173,6 +173,11 @@ assert.ok(css.includes('[data-elevator-level="plane"]::before'),'Plane needs a d
 assert.ok(css.includes('[data-elevator-level="below"]::before'),'Below needs a distinct pixel-biome layer');
 assert.ok(css.includes('border-radius:0'),'terminal Room tiles should not drift back into pill styling');
 assert.ok(css.includes('background:transparent'),'arrow controls must float without metallic button blocks');
+assert.ok(css.includes('align-self:start'),'elevator controls must stay pinned when Room grid wraps');
+assert.ok(css.includes('height:42px'),'desktop elevator controls need a fixed one-row height');
+assert.ok(css.includes('.site-elevator-up::before{content:"△"}'),'up arrow needs triangle framing');
+assert.ok(css.includes('.site-elevator-down::before{content:"▽"}'),'down arrow needs inverted triangle framing');
+assert.ok(css.includes('font:400 20px/1'),'triangle framing should be slightly larger on desktop');
 assert.ok(source.includes('site-elevator-floor-code'),'runtime must render terminal floor code');
 assert.ok(source.includes('header.dataset.elevatorRoom=spatial.roomId'),'runtime must publish the current Room on the header');
 
