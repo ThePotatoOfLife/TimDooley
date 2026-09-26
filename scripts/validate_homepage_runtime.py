@@ -8,6 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 HOME = ROOT / "index.html"
+HOME_CSS = ROOT / "app" / "home-page.css"
 
 REQUIRED_DATASETS = (
     "data/house/project-synthesis.json",
@@ -32,6 +33,18 @@ def main() -> int:
         return 1
 
     home = HOME.read_text(encoding="utf-8", errors="replace")
+
+    if not HOME_CSS.exists():
+        errors.append("homepage scoped stylesheet missing: app/home-page.css")
+    else:
+        home_css = HOME_CSS.read_text(encoding="utf-8", errors="replace")
+        for marker in (".home-page{", ".home-hero{", ".reader-routing{"):
+            if marker not in home_css:
+                errors.append(f"homepage stylesheet missing core scoped rule: {marker}")
+    if 'href="app/home-page.css?v=20260926a"' not in home:
+        errors.append("homepage does not load the scoped app/home-page.css asset")
+    if re.search(r"<style>[\\s\\S]*?\\.home-", home):
+        errors.append("homepage-specific CSS drifted back into an inline <style> block")
 
     required_markers = (
         "const unavailable=new Set();",
