@@ -1537,8 +1537,20 @@
       "title": "Economy & Finance",
       "dwelling_id": "world-systems",
       "purpose": "Own observable finance, debt, banking, trade, ownership, production, labour and economic flows.",
-      "primary_file_count": 3,
+      "primary_file_count": 5,
       "featured_holdings": [
+        {
+          "path": "knowledge/economics/stock-flow-obligation-network-atlas.json",
+          "id": "stock-flow-obligation-network-atlas",
+          "kind": "room holding",
+          "basis": "economics-family"
+        },
+        {
+          "path": "knowledge/economics/public-finance-fiscal-capacity-atlas.json",
+          "id": "public-finance-fiscal-capacity-atlas",
+          "kind": "room holding",
+          "basis": "economics-family"
+        },
         {
           "path": "knowledge/economics/gold-indexed-sovereign-bond-model.json",
           "id": "gold-indexed-sovereign-bond-model",
