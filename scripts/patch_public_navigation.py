@@ -147,18 +147,18 @@ def inject_site_access(text: str, page: Path) -> str:
     rel = page.relative_to(OUT).as_posix()
     if any(rel.startswith(prefix) for prefix in SITE_ACCESS_QUIET_PREFIXES):
         return text
-    if "site-access.js" in text or "site-access.css" in text:
-        return text
     if not re.search(r"<html\\b", text, flags=re.I):
         return text
     if not re.search(r"</head\\s*>", text, flags=re.I) or not re.search(r"</body\\s*>", text, flags=re.I):
         return text
 
     prefix = _relative_asset_prefix(page)
-    css = f'<link rel="stylesheet" href="{prefix}app/site-access.css?v={SHARED_ASSET_VERSIONS["site-access.css"]}">'
-    js = f'<script src="{prefix}app/site-access.js?v={SHARED_ASSET_VERSIONS["site-access.js"]}" defer></script>'
-    text = re.sub(r"</head\\s*>", css + "</head>", text, count=1, flags=re.I)
-    text = re.sub(r"</body\\s*>", js + "</body>", text, count=1, flags=re.I)
+    if "site-access.css" not in text:
+        css = f'<link rel="stylesheet" href="{prefix}app/site-access.css?v={SHARED_ASSET_VERSIONS["site-access.css"]}">'
+        text = re.sub(r"</head\\s*>", css + "</head>", text, count=1, flags=re.I)
+    if "site-access.js" not in text:
+        js = f'<script src="{prefix}app/site-access.js?v={SHARED_ASSET_VERSIONS["site-access.js"]}" defer></script>'
+        text = re.sub(r"</body\\s*>", js + "</body>", text, count=1, flags=re.I)
     return text
 
 def patch_site_access(out: Path = OUT) -> set[Path]:
@@ -181,18 +181,18 @@ def inject_site_elevator(text: str, page: Path) -> str:
     rel = page.relative_to(OUT).as_posix()
     if any(rel.startswith(prefix) for prefix in SITE_ELEVATOR_QUIET_PREFIXES):
         return text
-    if "site-elevator.js" in text or "site-elevator.css" in text:
-        return text
     if not re.search(r"<html\b", text, flags=re.I):
         return text
     if not re.search(r"</head\s*>", text, flags=re.I) or not re.search(r"</body\s*>", text, flags=re.I):
         return text
 
     prefix = _relative_asset_prefix(page)
-    css = f'<link rel="stylesheet" href="{prefix}app/site-elevator.css?v={SHARED_ASSET_VERSIONS["site-elevator.css"]}">'
-    js = f'<script src="{prefix}app/site-elevator.js?v={SHARED_ASSET_VERSIONS["site-elevator.js"]}" defer></script>'
-    text = re.sub(r"</head\s*>", css + "</head>", text, count=1, flags=re.I)
-    text = re.sub(r"</body\s*>", js + "</body>", text, count=1, flags=re.I)
+    if "site-elevator.css" not in text:
+        css = f'<link rel="stylesheet" href="{prefix}app/site-elevator.css?v={SHARED_ASSET_VERSIONS["site-elevator.css"]}">'
+        text = re.sub(r"</head\s*>", css + "</head>", text, count=1, flags=re.I)
+    if "site-elevator.js" not in text:
+        js = f'<script src="{prefix}app/site-elevator.js?v={SHARED_ASSET_VERSIONS["site-elevator.js"]}" defer></script>'
+        text = re.sub(r"</body\s*>", js + "</body>", text, count=1, flags=re.I)
     return text
 
 def patch_site_elevator(out: Path = OUT) -> set[Path]:
