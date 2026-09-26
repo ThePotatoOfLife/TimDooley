@@ -17,6 +17,7 @@ ANCHOR_FULL=re.compile(r"<a\\b[^>]*href=[\\\"\']([^\\\"\']+)[\\\"\'][^>]*>([\\s\
 TAG=re.compile(r"<[^>]+>")
 H1=re.compile(r"<h1\\b",re.I); H2=re.compile(r"<h2\\b",re.I)
 EXTERNAL=("http://","https://","//","mailto:","tel:","javascript:","data:","blob:")
+PUBLIC_SCAN_EXCLUDE={".git",".github","_site","archive","docs","node_modules","components","vendor","scripts"}
 BUDGETS={
  "home":{"pre_links":20,"pre_buttons":6,"total_links":100},
  "hub":{"pre_links":14,"pre_buttons":8,"total_links":120},
@@ -135,7 +136,27 @@ def main()->int:
                 if key not in seen_cycles:
                     seen_cycles.add(key)
                     short_cycles.append({"length":2,"surfaces":list(key)})
-    report={"version":"1.1.0","registry_version":data.get("version"),"surface_count":len(rows),"errors":errors,"warnings":warnings,"overlap_pairs":overlaps,"dead_ends":dead_ends,"short_cycles":short_cycles,"metrics":metrics,"notes":["Density budgets are page-type heuristics, not release-failure thresholds.","First-nav link-wall warns above four links; mobile pre-content stack score combines first-nav links, buttons and extra nav rows before the first substantive H2.","Registered outdegree counts only links to other registered public surfaces; deep records and anchors remain separate.","Two-way cycles are review signals: reciprocal orientation may be healthy, repeated hub bouncing may not be.","Overlap is a review signal for redundant reader jobs, not proof that two surfaces should merge.","Read/Open/Enter CTAs pointing to registered hub/explorer shells are review signals because promise language should normally land on substance, not another directory.","Bare More/Deep/Explore/Context/Archive labels are flagged when they do not state destination intent."]}
+    standalone=[]
+    for path in ROOT.rglob("*.html"):
+        rel_path=path.relative_to(ROOT)
+        if rel_path.parts and rel_path.parts[0] in PUBLIC_SCAN_EXCLUDE:
+            continue
+        raw=path.read_text(encoding="utf-8",errors="replace")
+        if "<main" not in raw.lower():
+            continue
+        if 'name="robots" content="noindex,follow"' in raw and ("location.replace(" in raw or 'http-equiv="refresh"' in raw.lower()):
+            continue
+        visible=STYLE_SCRIPT.sub("",raw)
+        hrefs=ANCHOR_HREF.findall(visible)
+        rel=rel_path.as_posix()
+        base_route="/"+rel.rsplit("/",1)[0]+"/" if "/" in rel else "/"
+        internal=[h for h in hrefs if resolve_href(base_route,h)]
+        row={"surface":rel,"authored_links":len(hrefs),"internal_links":len(internal)}
+        standalone.append(row)
+        if not internal:
+            warnings.append({"code":"authored-dead-end","surface":rel})
+
+    report={"version":"1.2.0","registry_version":data.get("version"),"surface_count":len(rows),"errors":errors,"warnings":warnings,"overlap_pairs":overlaps,"dead_ends":dead_ends,"short_cycles":short_cycles,"authored_surfaces":standalone,"metrics":metrics,"notes":["Density budgets are page-type heuristics, not release-failure thresholds.","First-nav link-wall warns above four links; mobile pre-content stack score combines first-nav links, buttons and extra nav rows before the first substantive H2.","Registered outdegree counts only links to other registered public surfaces; deep records and anchors remain separate.","Two-way cycles are review signals: reciprocal orientation may be healthy, repeated hub bouncing may not be.","Overlap is a review signal for redundant reader jobs, not proof that two surfaces should merge.","Read/Open/Enter CTAs pointing to registered hub/explorer shells are review signals because promise language should normally land on substance, not another directory.","Bare More/Deep/Explore/Context/Archive labels are flagged when they do not state destination intent."]}
     REPORT.parent.mkdir(parents=True,exist_ok=True); REPORT.write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
     print(f"SITE ARCHITECTURE AUDIT: {len(rows)} active surfaces · {len(errors)} errors · {len(warnings)} warnings · {len(overlaps)} high-overlap pairs")
     for item in warnings[:12]: print(f"- WARN {item['code']}: {item.get('surface',item.get('left','site'))}")
