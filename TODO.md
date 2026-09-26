@@ -1096,10 +1096,10 @@ The previous `inhabited` milestone only eliminated corridor-only shells. It is *
 - [~] Law & Justice: added EU AI Act staged applicability, DSA investigation-status boundary, Danish constitutional separation and a worked procedural chain; add another non-EU/non-Danish jurisdiction later.
 - [~] Politics & Governance: added Danish separation/oversight, EU AI Act distributed enforcement and DSA multi-level procedure as neutral institutional examples; broaden to additional systems later.
 - [~] Infrastructure & Capability: added Iberian 2025 blackout, Baltimore Key Bridge and Panama Canal drought as grid/transport/chokepoint failure chains; add data-centre/fibre and industrial-supply examples later.
-- [ ] Geography & Countries: add actual country/region examples showing point/polygon/network distinctions and current map provenance.
-- [ ] Systems & Dynamics: add named canonical systems examples (feedback, hysteresis, attractors, contagion/network cascade) with one project translation each.
-- [ ] Model Testing: add one complete T0→T5 worked example and one negative/falsified example.
-- [ ] Comparative Mythology: add source-specific Yggdrasil/Duat/Meru/Bardo passages or artifacts, chronology and mismatch details beyond motif summaries.
-- [ ] Other Traditions: replace generic tradition paragraphs with named texts, institutions, practices, schools and historical dates from the newly built tradition guides.
-- [ ] Practice & Ethics: add worked Garden/Forge/Fruit decisions from concrete project scenes instead of only protocol abstractions.
+- [~] Geography & Countries: added Eurostat GISCO polygon/projection example plus Panama corridor, Baltimore edge and Iberian network cases; add country-specific relational dossiers next.
+- [~] Systems & Dynamics: added Lake Veluwe hysteresis, SVB reinforcing run/contagion and NIST grid-cascade cases with typed project translations; add a control/observability worked case next.
+- [x] Model Testing: added Higgs T0→T5 path, 2026 SUSY null/exclusion example and GW150914 rival-explanation/detector-validation example.
+- [~] Comparative Mythology: added Grímnismál Yggdrasil source detail, two dated Met Amduat papyri and a 14th-century Mount Meru mandala; add a primary Tibetan bardo source/ritual case next.
+- [~] Other Traditions: added concrete Daoist, Buddhist, Jewish and Shinto textual/institutional clocks; continue with Hindu, Jain, Sikh, Confucian and Islamic examples.
+- [~] Practice & Ethics: added Fresh Potato, Ready Student and Machine-Elf/deflection cases; add repair/separation and real-world project cases later.
 - [ ] Continue until every Room contains enough concrete nouns that its substantive paragraphs could not be pasted into another Room unchanged.
