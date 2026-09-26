@@ -175,6 +175,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
             "python scripts/validate_generated_navigation.py",
             "python scripts/validate_explore_projection.py",
             "python scripts/audit_site_architecture.py",
+            "node scripts/test_tts_interaction_matrix.mjs",
         ]),
         ("Religion Potatoism and expansions", [
             "python scripts/validate_religious_adjacent.py",
