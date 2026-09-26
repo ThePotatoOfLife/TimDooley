@@ -76,6 +76,16 @@ assert.ok(cultureBelow.includes('culture-information'));
 const cultureHeaven=elevator.roomsForLevel('heaven',projection,roomContract).map(room=>room.id);
 assert.equal(cultureHeaven.includes('culture-information'),false);
 
+// primary Room ordering contract
+const planeRooms=elevator.roomsForLevel('plane',projection,roomContract);
+const firstSecondaryIndex=planeRooms.findIndex(room=>room.primaryLevel!=='plane');
+assert.ok(firstSecondaryIndex>0,'Plane must expose at least one primary Room before secondary projections');
+assert.ok(planeRooms.slice(0,firstSecondaryIndex).every(room=>room.primaryLevel==='plane'),'primary Plane Rooms must lead the rail');
+assert.ok(planeRooms.slice(firstSecondaryIndex).every(room=>room.primaryLevel!=='plane'),'secondary cross-floor projections must follow primary Plane Rooms');
+assert.ok(planeRooms.every(room=>typeof room.isPrimaryProjection==='boolean'),'Room rows must expose projection priority');
+assert.ok(planeRooms.slice(0,firstSecondaryIndex).every(room=>room.isPrimaryProjection===true),'primary Rooms must be marked primary');
+assert.ok(planeRooms.slice(firstSecondaryIndex).every(room=>room.isPrimaryProjection===false),'secondary Rooms must be marked secondary');
+
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -92,6 +102,8 @@ for(const marker of [
   'aria-live',
   'aria-current',
   'data-elevator-level',
+  'is-primary',
+  'is-secondary',
 ]){
   assert.ok(source.includes(marker),'site elevator visual contract missing '+marker);
 }
