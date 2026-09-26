@@ -1,5 +1,5 @@
 {
-  "version": "1.3.1",
+  "version": "1.3.2",
   "updated": "2026-09-26",
   "authority": "fast-access-curation",
   "purpose": "Curated high-value quick-access doors and aliases for the universal site dock. Public-surface and House-object registries remain the broad generated search index.",
@@ -433,16 +433,35 @@
     },
     {
       "id": "fbi-legacy",
-      "label": "FBI — retired character-bureau predecessor",
-      "route": "/rooms/potatoverse-canon/beings/fbi/",
+      "label": "FBI · legacy Character Archive name",
+      "route": "/rooms/potatoverse-canon/beings/cia/",
       "kind": "direct",
-      "note": "Read-only migration history",
+      "note": "Former Figures, Bonds & Incidents name · opens current Character Archive",
       "aliases": [
         "fbi",
         "figures bonds incidents",
         "retired fbi",
-        "old character bureau"
-      ]
+        "old character bureau",
+        "fbi character archive",
+        "legacy fbi"
+      ],
+      "scope": "POTATOVERSE"
+    },
+    {
+      "id": "intelligence-fbi",
+      "label": "U.S. FBI · Federal Bureau of Investigation",
+      "route": "/shadow-farm/#intelligence-desk",
+      "kind": "direct",
+      "note": "Real-world U.S. federal law-enforcement and domestic-intelligence institution · Intelligence Desk",
+      "aliases": [
+        "us fbi",
+        "u.s. fbi",
+        "federal bureau of investigation",
+        "real fbi",
+        "federal bureau",
+        "domestic intelligence"
+      ],
+      "scope": "REAL WORLD"
     },
     {
       "id": "north",
@@ -469,6 +488,17 @@
         "intelligence-cia"
       ],
       "rule": "A bare CIA lookup must present both namespaces; do not auto-route."
+    },
+    "fbi": {
+      "query": [
+        "fbi"
+      ],
+      "prompt": "Which FBI?",
+      "options": [
+        "fbi-legacy",
+        "intelligence-fbi"
+      ],
+      "rule": "A bare FBI lookup must distinguish the former Potatoverse bureau name from the real U.S. institution; do not route through the retired wrapper."
     }
   },
   "wayfinding": {
