@@ -178,8 +178,8 @@ def inject_site_elevator(text: str, page: Path) -> str:
         return text
 
     prefix = _relative_asset_prefix(page)
-    css = f'<link rel="stylesheet" href="{prefix}app/site-elevator.css?v=20260926f">'
-    js = f'<script src="{prefix}app/site-elevator.js?v=20260926f" defer></script>'
+    css = f'<link rel="stylesheet" href="{prefix}app/site-elevator.css?v=20260926g">'
+    js = f'<script src="{prefix}app/site-elevator.js?v=20260926g" defer></script>'
     text = re.sub(r"</head\s*>", css + "</head>", text, count=1, flags=re.I)
     text = re.sub(r"</body\s*>", js + "</body>", text, count=1, flags=re.I)
     return text
