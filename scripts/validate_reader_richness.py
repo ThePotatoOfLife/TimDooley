@@ -263,6 +263,29 @@ def main() -> int:
             if 'class="dwelling-reader"' not in source:
                 errors.append(f"{rel} has prose but no recognizable concrete-content section")
 
+    # Generated question pages must remain reader-first. Archive filenames and
+    # discovery taxonomy belong in machine metadata, not the visible article.
+    discovery_builder=(ROOT/"scripts/build_discovery.py").read_text(encoding="utf-8",errors="replace")
+    question_block=discovery_builder.split("def question_page(entry):",1)[-1].split("def build_questions(entries):",1)[0]
+    for forbidden in (
+        '"@type": "FAQPage"',
+        "<h2>Canonical owners</h2>",
+        "<h2>Discovery view</h2>",
+        "<h2>Equivalent searches</h2>",
+        "<h2>Entities</h2>",
+    ):
+        if forbidden in question_block:
+            errors.append(f"generated question template regressed to taxonomy-first output: {forbidden}")
+    for required in (
+        '"@type": "Article"',
+        'class="question-answer"',
+        "What that means",
+        "data-question-machine-meta",
+        'reader_surface="generated-question"',
+    ):
+        if required not in discovery_builder:
+            errors.append(f"generated question template lost subject-first marker: {required}")
+
     authored_groups = [
         audit.get("authored_history") or [],
         audit.get("second_authored_wave") or [],
