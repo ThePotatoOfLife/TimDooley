@@ -149,7 +149,7 @@
 
     const header=document.createElement('header');
     header.className='site-elevator';
-    header.setAttribute('data-elevator-level','plane');
+    header.setAttribute('data-elevator-level','pending');
     header.dataset.elevatorReady='false';
     header.setAttribute('data-no-tts','');
     header.setAttribute('aria-label','House elevator');
@@ -162,9 +162,9 @@
         '</div>'+
         '<div class="site-elevator-reel" aria-label="Current House floor">'+
           '<div class="site-elevator-floor" aria-live="polite">'+
-            '<span class="site-elevator-floor-code" aria-hidden="true">02</span>'+
-            '<strong class="site-elevator-floor-label">PLANE</strong>'+
-            '<small class="site-elevator-room-label">House orientation</small>'+
+            '<span class="site-elevator-floor-code" aria-hidden="true">--</span>'+
+            '<strong class="site-elevator-floor-label">HOUSE</strong>'+
+            '<small class="site-elevator-room-label">Finding your Room…</small>'+
           '</div>'+
         '</div>'+
         '<nav class="site-elevator-room-rail" aria-label="Rooms on selected floor" hidden></nav>'+
@@ -230,9 +230,6 @@
       floorCode.textContent=({heaven:'03',plane:'02',below:'01'}[selectedLevel]||'02');
       floorLabel.textContent=levelLabel(selectedLevel,projection).replace(/\s*\/.*$/,'').toUpperCase();
       const currentRoom=spatial.room;
-      const projected=currentRoom&&projection
-        ?(projection.dwellings||[]).find(row=>row?.id===spatial.roomId)?.projections||[]
-        :[];
       roomLabel.textContent=currentRoom&&selectedLevel===spatial.levelId
         ?('HERE · '+(currentRoom.title||currentRoom.id))
         :(selectedLevel===spatial.levelId?'House orientation':'BROWSING FLOOR');
@@ -268,10 +265,22 @@
 
     render();
 
+    const assetVersion=(()=>{
+      try{return new URL(context.script?.src||document.baseURI).searchParams.get('v')||'unversioned';}
+      catch(_){return 'unversioned';}
+    })();
     const fetchJson=async route=>{
-      const response=await fetch(siteHref(route,context.siteBase),{cache:'no-store'});
+      const href=siteHref(route,context.siteBase);
+      const key='site-elevator:'+assetVersion+':'+route;
+      try{
+        const cached=sessionStorage.getItem(key);
+        if(cached)return JSON.parse(cached);
+      }catch(_){}
+      const response=await fetch(href,{cache:'no-cache'});
       if(!response.ok)throw new Error('Elevator data request failed: '+route+' '+response.status);
-      return response.json();
+      const value=await response.json();
+      try{sessionStorage.setItem(key,JSON.stringify(value));}catch(_){}
+      return value;
     };
 
     Promise.all([
