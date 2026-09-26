@@ -42,6 +42,15 @@ def main() -> int:
         return 1
 
     builder = load_builder()
+    builder_source = BUILD_PATH.read_text(encoding="utf-8")
+    for marker in (
+        "data-site-tts-section",
+        'data-tts-item="[data-site-tts-section]"',
+        'data-tts-exclude="[data-no-tts]"',
+        'data-reader-surface="generated-discovery"',
+    ):
+        if marker not in builder_source:
+            errors.append(f"generated discovery reader missing semantic TTS marker: {marker}")
     entries = {entry.get("id"): entry for entry in builder.faq_entries() if isinstance(entry, dict)}
     errors = []
     checked = 0
