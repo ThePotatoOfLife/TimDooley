@@ -1,6 +1,6 @@
 {
   "version": "3.5.0",
-  "updated": "2026-09-20",
+  "updated": "2026-09-26",
   "authority": "house-room-dossiers",
   "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
   "dossiers": [
@@ -4465,22 +4465,32 @@
       ],
       "epistemic_boundary": "Symbolic/karmic accounting remains separate from material legal or financial accounting.",
       "knowledge_holdings": {
-        "primary_file_count": 3,
+        "primary_file_count": 5,
         "featured": [
+          {
+            "id": "stock-flow-obligation-network-atlas",
+            "path": "knowledge/economics/stock-flow-obligation-network-atlas.json",
+            "kind": "economic relation and risk atlas"
+          },
+          {
+            "id": "public-finance-fiscal-capacity-atlas",
+            "path": "knowledge/economics/public-finance-fiscal-capacity-atlas.json",
+            "kind": "public finance and fiscal-capacity atlas"
+          },
           {
             "id": "gold-indexed-sovereign-bond-model",
             "path": "knowledge/economics/gold-indexed-sovereign-bond-model.json",
-            "kind": "room holding"
+            "kind": "policy design thought experiment"
           },
           {
             "id": "north-obligation-graph-schema",
             "path": "knowledge/economics/north-obligation-graph-schema.json",
-            "kind": "room holding"
+            "kind": "empirical obligation graph schema"
           },
           {
             "id": "tim-dooley-inflation-ledger",
             "path": "knowledge/economics/tim-dooley-inflation-ledger.md",
-            "kind": "room holding"
+            "kind": "dated inflation, rates and bond audit"
           }
         ]
       },
@@ -4558,6 +4568,7 @@
         }
       ],
       "next_work": [
+        "Keep the public Room inhabited: project the economic corpus into reader-facing explanations before adding more navigation.",
         "Deepen the Room through its center contribution: Tracks whether economic flows produce durable capacity, dependency, extraction or resilience.",
         "Keep handoffs explicit: receive from provenance-evidence, infrastructure-capability; hand mature work to systems-dynamics, research-programmes.",
         "Deepen the substantive corpus before considering further subdivision.",
