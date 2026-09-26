@@ -1,0 +1,90 @@
+{
+  "id": "public-reader-completeness",
+  "version": "1.0.0",
+  "updated": "2026-09-26",
+  "purpose": "Define what each major reader-facing entry surface must expose so the archive feels full and coherent rather than like a chain of directories.",
+  "contracts": [
+    {
+      "surface": "home",
+      "path": "index.html",
+      "reader_job": "Meet the project without learning the filing system first.",
+      "required": [
+        "fast named destinations",
+        "substantive project overview",
+        "real examples/cases",
+        "current-world window",
+        "clear source/evidence boundary"
+      ]
+    },
+    {
+      "surface": "rooms",
+      "path": "rooms/index.html",
+      "reader_job": "See the House map without being forced to understand topology before finding substance.",
+      "required": [
+        "best-of objects before topology",
+        "Dwelling directory",
+        "plane/orientation model",
+        "placement browser",
+        "clear route to nested Rooms"
+      ]
+    },
+    {
+      "surface": "house",
+      "path": "house/index.html",
+      "reader_job": "Understand the architecture after encountering actual holdings, cases and operators.",
+      "required": [
+        "structural grammar",
+        "holdings/case exposure",
+        "nested Rooms",
+        "interfaces/corridors",
+        "projection/state machinery",
+        "reader depth controls"
+      ]
+    },
+    {
+      "surface": "explore",
+      "path": "explore/index.html",
+      "reader_job": "Enter the archive from a question or journey rather than a taxonomy.",
+      "required": [
+        "question-first starts",
+        "worked journeys",
+        "interactive archive explorer",
+        "source-sensitive routes"
+      ]
+    },
+    {
+      "surface": "dwellings",
+      "path": "rooms/*/index.html",
+      "reader_job": "Understand one domain and immediately encounter concrete material inside it.",
+      "required": [
+        "domain synthesis",
+        "curated featured-object shelf",
+        "nested Room list",
+        "epistemic boundary",
+        "neighboring Dwellings"
+      ]
+    }
+  ],
+  "editorial_rules": [
+    "Do not satisfy fullness by adding generic paragraphs.",
+    "A major reader surface should expose concrete objects, examples or records before asking the reader to learn architecture.",
+    "Directories and topology are useful only after or alongside meaningful material.",
+    "Every surface should have a distinct reader job rather than duplicating the same overview.",
+    "The best material should be surfaced near the question that naturally leads to it.",
+    "Navigation is a consequence of understanding, not a substitute for it."
+  ],
+  "current_assessment": {
+    "home": "strong",
+    "rooms": "improved with best-of object shelf; continue qualitative review",
+    "house": "strong but dense; appropriate for structure-seeking readers",
+    "explore": "strong question-first entry; legacy CIA naming corrected",
+    "dwellings": "strong synthesis plus new curated object shelves"
+  },
+  "next_gaps": [
+    "Object-level spotlights inside medium Rooms that are still conceptually abstract.",
+    "Cross-Room handoff explanations where links still feel like bare adjacency.",
+    "Named-being and institutional pages where source objects are hidden behind interface chrome.",
+    "TTS and long-page readability on newly expanded Rooms.",
+    "Potential consolidation of repeated local CSS without flattening Room-specific identity."
+  ]
+}
