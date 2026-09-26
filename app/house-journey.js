@@ -99,6 +99,87 @@
     document.addEventListener('pointerdown',e=>{if(popover&&!popover.hidden&&!ribbon.contains(e.target)){popover.hidden=true;historyButton?.setAttribute('aria-expanded','false')}});
   }
 
+  async function installRoomFloorProjection(){
+    const match=location.pathname.match(/\/rooms\/([^/]+)\/(?:index\.html)?$/);
+    if(!match)return;
+    const roomId=decodeURIComponent(match[1]);
+    try{
+      const response=await fetch(base+'data/house/elevator-spatial-projection.json');
+      if(!response.ok)return;
+      const projection=await response.json();
+      const dwelling=(projection.dwellings||[]).find(row=>row&&row.id===roomId);
+      if(!dwelling)return;
+
+      if(!document.getElementById('room-floor-projection-style')){
+        const style=document.createElement('style');
+        style.id='room-floor-projection-style';
+        style.textContent=`
+          .room-floor-projection{margin:26px 0 30px;padding:20px;border:1px solid var(--site-line,#303830);background:rgba(255,255,255,.018)}
+          .room-floor-projection>p{max-width:820px;color:var(--site-muted,#9ba59a);line-height:1.6}
+          .room-floor-projection h2{margin:5px 0 8px;font:400 clamp(25px,3.4vw,38px)/1.08 var(--site-font-serif,serif);color:var(--site-gold,#d5ba74)}
+          .room-floor-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:15px}
+          .room-floor-card{position:relative;min-height:126px;padding:13px;border:1px solid var(--site-line,#303830);background:rgba(0,0,0,.12)}
+          .room-floor-card strong{display:block;font:400 19px/1.05 var(--site-font-serif,serif);letter-spacing:.06em;text-transform:uppercase}
+          .room-floor-card small{display:block;margin-top:4px;text-transform:uppercase;letter-spacing:.08em;font-size:7px;font-weight:800}
+          .room-floor-card p{margin:11px 0 0;color:var(--site-muted,#9ba59a);font-size:9px;line-height:1.5}
+          .room-floor-card[data-floor="heaven"]{border-color:rgba(218,195,118,.34);background:linear-gradient(180deg,rgba(104,151,196,.08),rgba(218,195,118,.025))}
+          .room-floor-card[data-floor="heaven"] strong{color:#e8d88e}
+          .room-floor-card[data-floor="plane"]{border-color:rgba(150,190,111,.34);background:linear-gradient(180deg,rgba(116,155,84,.08),rgba(255,255,255,.015))}
+          .room-floor-card[data-floor="plane"] strong{color:#a9c987}
+          .room-floor-card[data-floor="below"]{border-color:rgba(179,91,61,.34);background:linear-gradient(180deg,rgba(116,48,32,.1),rgba(0,0,0,.08))}
+          .room-floor-card[data-floor="below"] strong{color:#cf886c}
+          .room-floor-card.is-primary{box-shadow:inset 0 3px var(--site-green,#9eb58d),0 0 18px rgba(158,181,141,.08)}
+          .room-floor-card.is-primary small{color:var(--site-green,#9eb58d)}
+          .room-floor-card.is-projected small{color:var(--site-muted,#9ba59a)}
+          .room-floor-card.is-absent{opacity:.48;border-style:dashed}
+          .room-floor-card.is-absent p{font-style:italic}
+          @media(max-width:720px){.room-floor-grid{grid-template-columns:1fr}.room-floor-card{min-height:auto}}
+        `;
+        document.head.appendChild(style);
+      }
+
+      const levels=['heaven','plane','below'];
+      const levelLabels={heaven:'Heaven',plane:'Plane',below:'Below'};
+      const projections=new Set(dwelling.projections||[]);
+      const notes=dwelling.projection_notes||{};
+      const cards=levels.map(level=>{
+        const primary=dwelling.primary_level===level;
+        const projected=projections.has(level);
+        const state=primary?'is-primary':projected?'is-projected':'is-absent';
+        const stateLabel=primary?'Primary floor':projected?'Projects here':'No governed projection';
+        const note=projected
+          ?(notes[level]||'This Room has a governed projection on this floor.')
+          :'This Room is not currently projected onto this floor, so the elevator leaves it unlit here.';
+        return '<article class="room-floor-card '+state+'" data-floor="'+level+'">'
+          +'<strong>'+levelLabels[level]+'</strong>'
+          +'<small>'+stateLabel+'</small>'
+          +'<p>'+esc(note)+'</p>'
+          +'</article>';
+      }).join('');
+
+      const section=document.createElement('section');
+      section.className='room-floor-projection';
+      section.dataset.roomId=roomId;
+      section.innerHTML='<p class="eyebrow">Three-floor projection</p>'
+        +'<h2>How this Room moves through the House</h2>'
+        +'<p>The Room remains one governed owner while the elevator changes the vertical lens. Its primary floor is the default orientation; other listed floors are deliberate projections, not duplicate Rooms.</p>'
+        +'<div class="room-floor-grid">'+cards+'</div>';
+
+      const main=document.querySelector('main');
+      if(!main||main.querySelector('.room-floor-projection'))return;
+      const localCenter=main.querySelector('.local-center');
+      const actions=main.querySelector('.room-actions');
+      if(localCenter) localCenter.insertAdjacentElement('afterend',section);
+      else if(actions) main.insertBefore(section,actions);
+      else {
+        const header=main.querySelector('.page-header');
+        if(header) header.insertAdjacentElement('afterend',section);
+        else main.prepend(section);
+      }
+    }catch(e){}
+  }
+
+
   async function installInhabitants(){
     const match=location.pathname.match(/\/rooms\/inside\/([^/]+)\//);
     if(!match)return;
@@ -245,6 +326,7 @@
   }
 
   installRibbon();
+  installRoomFloorProjection();
   installInhabitants();
   installRoomKnowledge();
 })();
