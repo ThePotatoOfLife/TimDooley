@@ -54,6 +54,15 @@ def main() -> int:
         if not re.search(r'<a[^>]+class=["\'][^"\']*top-home[^"\']*["\'][^>]+href=["\']\.\./["\']', html, re.I):
             errors.append("World Map top navigation must expose Home as a direct link")
         compact_html = re.sub(r"\s+", "", html)
+        for token in (
+            ".hud{position:absolute;left:12px;bottom:calc(var(--site-access-clearance,0px)+12px)",
+            ".map-ui-toggle{position:absolute;right:12px;bottom:calc(var(--site-access-clearance,0px)+12px)",
+            ".maplibregl-ctrl-bottom-left,.maplibregl-ctrl-bottom-right{bottom:var(--site-access-clearance,0px)}",
+            "padding-bottom:calc(16px+var(--site-access-clearance,0px))",
+            "max-height:calc(100dvh-68px-var(--site-access-clearance,0px))",
+        ):
+            if token not in compact_html:
+                errors.append(f"World Map must honor shared fixed-access clearance: {token}")
         for token in (".top{display:flex;gap:5px", "min-height:46px", ".topinput{width:170px", ".quick-actions{display:flex;gap:4px"):
             if token not in compact_html:
                 errors.append(f"top header must preserve compact density marker: {token}")
