@@ -232,8 +232,8 @@
       floorLabel.textContent=levelLabel(selectedLevel,projection).replace(/\s*\/.*$/,'').toUpperCase();
       const currentRoom=spatial.room;
       roomLabel.textContent=currentRoom&&selectedLevel===spatial.levelId
-        ?('HERE · '+(currentRoom.title||currentRoom.id))
-        :(selectedLevel===spatial.levelId?'House orientation':'BROWSING FLOOR');
+        ?'HERE'
+        :(selectedLevel===spatial.levelId?'HOUSE ORIENTATION':'BROWSING FLOOR');
       up.disabled=selectedLevel==='heaven'||!projection;
       down.disabled=selectedLevel==='below'||!projection;
       renderRooms();
