@@ -1,6 +1,6 @@
 {
-  "version": "4.7.0",
-  "updated": "2026-09-20",
+  "version": "4.8.0",
+  "updated": "2026-09-27",
   "authority": "house-navigation-manifest",
   "purpose": "Resolve which existing owner governs each structural concern so new work deepens the right place instead of creating parallel masters. This manifest is an index over authorities, not another ontology, navigation hierarchy or presentation plan.",
   "authorities": [
@@ -368,6 +368,11 @@
       "concern": "recent substantial work integration",
       "owner": "data/house/recent-work-integration-ledger.json",
       "rule": "Tracks substantial workstreams through canonical owners, Room placement, public exposure and validation. It is an integration audit, not a new knowledge owner or public hierarchy."
+    },
+    {
+      "concern": "legacy master / synthesis role resolution",
+      "owner": "knowledge/indexes/project-consolidation-map.json",
+      "rule": "Files titled master/framework/synthesis do not gain co-equal authority from their names. Use master_role_disposition to distinguish current whole-project, structural, theology/system, transformation-grammar, specialist and historical/recovery roles."
     }
   ],
   "resolver_order": [
