@@ -281,7 +281,7 @@ The current problem is not lack of information. It is **retrieval cost**: import
 - [ ] **CLEAN-008 · Obsolete presentation assets:** finish the existing asset-prune task by proving references are absent before deleting retired CSS/JS/HTML.
 - [ ] **CLEAN-009 · Duplicate validator assertions:** identify checks that independently encode the same route/ownership invariant and route them through shared resolver helpers instead of repeated literals.
 - [x] **CLEAN-010 · Root-doc authority audit:** README, PROJECT-OPERATING-MAP, PROJECT-STRUCTURE and MASTER-ARCHITECTURE now describe the current seven-family public model, Explore as the retrieval umbrella, House/Rooms ownership split, Sources/Context split, World/World Systems split, and current owner hierarchy. Old “master/framework” filenames are explicitly non-authoritative unless promoted by an ownership registry.
-- [ ] **CLEAN-011 · Root-doc drift guard:** add a bounded validator that samples root architecture docs for retired public-model phrases (for example Questions/A–Z/Explore as sibling systems, Paths as a structural owner, or legacy master files presented as current authority) so contributor documentation cannot silently diverge from registries again.
+- [x] **CLEAN-011 · Root-doc drift guard:** House governance now checks README, PROJECT-STRUCTURE, PROJECT-OPERATING-MAP and MASTER-ARCHITECTURE for current reader-family/owner markers and rejects the retired Questions/A–Z/Explore-as-siblings discovery block.
 
 #### Reader UI bug queue — 2026-09-21
 
