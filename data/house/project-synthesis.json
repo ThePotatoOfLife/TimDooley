@@ -1,6 +1,6 @@
 {
-  "version": "3.5.4",
-  "updated": "2026-09-26",
+  "version": "3.6.0",
+  "updated": "2026-09-27",
   "authority": "project-synthesis",
   "purpose": "Bind the current project center, operators, living metabolisms, Rooms, tests, outputs and public composition into one center-out synthesis without replacing canonical owners. Development history is referenced, not embedded as current-state weight.",
   "rule": "Pair what already exists before inventing another structure. One concept may appear in many views, but ownership, evidence class, center distance and foundation state stay explicit.",
@@ -2460,6 +2460,104 @@
       "status": "historical-development-sequence",
       "authority": "development_history",
       "current_weight": "context-only"
+    }
+  ],
+  "reader_route_families": [
+    {
+      "id": "tim-life-making",
+      "label": "Tim · life · making",
+      "center": "/tim-dooley/",
+      "routes": [
+        "/tim-dooley/",
+        "/tim-dooley/story/",
+        "/corporium/",
+        "/works/"
+      ],
+      "relation": "portrait → lived development → collected signals → made outputs",
+      "rule": "These are four views over one developing subject. Story owns scenes, Collection juxtaposes signals/formulations, Works owns outputs; none replaces the Tim portrait."
+    },
+    {
+      "id": "time-history",
+      "label": "Timeline · history",
+      "center": "/timeline/",
+      "routes": [
+        "/timeline/",
+        "/timeline/foundations/",
+        "/history/"
+      ],
+      "relation": "dated river → foundation clocks → interpretation/revision lens",
+      "rule": "Timeline is the chronology interface. History explains how occurrence, source, interpretation, reception and revision differ without becoming a second event database."
+    },
+    {
+      "id": "evidence-context",
+      "label": "Sources · context",
+      "center": "/context/source-authority/",
+      "routes": [
+        "/context/source-authority/",
+        "/context/"
+      ],
+      "relation": "source authority → contextual interpretation",
+      "rule": "Sources answers what evidence can establish. Context answers how time, domain and surrounding relations change what the evidence means."
+    },
+    {
+      "id": "archive-retrieval",
+      "label": "Explore · retrieval",
+      "center": "/explore/",
+      "routes": [
+        "/explore/",
+        "/questions/",
+        "/index-a-z/",
+        "/paths/"
+      ],
+      "relation": "deep archive → question lookup → known-term lookup → guided journey",
+      "rule": "These are retrieval modes over the same owned material, never independent knowledge hierarchies."
+    },
+    {
+      "id": "house-navigation",
+      "label": "House · placement",
+      "center": "/house/",
+      "routes": [
+        "/house/",
+        "/rooms/",
+        "/rooms/objects/",
+        "/elevator/"
+      ],
+      "relation": "whole structure → ownership domains → named objects/cases → spatial relation view",
+      "rule": "House explains composition; Rooms own bounded domains; Inhabitants finds objects across Rooms; Elevator visualizes relationships."
+    },
+    {
+      "id": "world-field",
+      "label": "World · systems",
+      "center": "/world/",
+      "routes": [
+        "/world/",
+        "/news/",
+        "/world-map/",
+        "/world-systems/",
+        "/politics/",
+        "/law/",
+        "/economy/",
+        "/context/culture/",
+        "/north/"
+      ],
+      "relation": "world orientation → current reporting / geography / systems / specialist institutional lenses",
+      "rule": "World is the public domain hub. Specialist pages answer narrower real-world questions and must preserve sourced empirical identity before project interpretation."
+    },
+    {
+      "id": "meaning-and-testing",
+      "label": "Meaning · comparison · testing",
+      "center": "/potato-of-life/",
+      "routes": [
+        "/potato-of-life/",
+        "/religion/",
+        "/philosophy/",
+        "/science/",
+        "/life-body/",
+        "/axis/",
+        "/research-lab/"
+      ],
+      "relation": "semantic center → theology / philosophy / empirical testing / embodiment / operator dynamics / unresolved research",
+      "rule": "The same project symbols may be read through several domains, but theological, philosophical, empirical and formal claims remain typed rather than merged."
     }
   ]
 }
