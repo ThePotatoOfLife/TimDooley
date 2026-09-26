@@ -84,6 +84,26 @@ const unknown=elevator.resolveSpatialContext('/totally-unknown/',projection,room
 assert.equal(unknown.levelId,'plane');
 assert.equal(unknown.roomId,null);
 
+const archiveRecord=elevator.resolveSpatialContext('/records/archive-epistemics/',projection,roomContract,subroomContract);
+const archiveInherited=elevator.inheritParentContext(
+  archiveRecord,
+  '/context/source-authority/',
+  projection,
+  roomContract,
+  subroomContract
+);
+assert.equal(archiveInherited.levelId,'below');
+assert.equal(archiveInherited.roomId,'archive-sources');
+assert.equal(archiveInherited.source,'parent-route');
+assert.equal(archiveInherited.parentRoute,'/context/source-authority/');
+
+const scienceKnown=elevator.resolveSpatialContext('/science/',projection,roomContract,subroomContract);
+assert.equal(
+  elevator.inheritParentContext(scienceKnown,'/religion/',projection,roomContract,subroomContract),
+  scienceKnown,
+  'known route context must not be overridden by a Parent link'
+);
+
 assert.equal(elevator.stepLevel('heaven','up'),'heaven');
 assert.equal(elevator.stepLevel('heaven','down'),'plane');
 assert.equal(elevator.stepLevel('plane','up'),'heaven');
