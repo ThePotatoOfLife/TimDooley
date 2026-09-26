@@ -996,8 +996,8 @@ The next quality phase is not “make every page longer.” It is to find pages 
 - [x] Audit `rooms/` as a reader page: it already explains Dwelling vs Room vs inhabitant vs View and includes a cross-Room example; avoid gratuitous expansion.
 - [ ] Audit `explore/` and A–Z for “label without meaning” discovery; a search result should expose enough context to choose intelligently.
 - [ ] Add static explanatory fallbacks to other fetch-driven public surfaces where a failed request leaves only “Loading…” or an empty panel.
-- [ ] Consolidate legacy FBI-facing routes into Characters, Incidents & Associations; preserve redirects/history but do not deepen obsolete ownership.
-- [ ] Audit CIA file / incidents / associations / bank surfaces for local explanation before ledgers and controls.
+- [x] Audit retired FBI-facing ownership: current FBI hub is correctly read-only/noindex and routes new work to CIA; preserve migration history without deepening obsolete ownership.
+- [x] Audit CIA file / incidents / associations / bank surfaces: CIA File received a static dossier/evidence primer; CIA home, Associations, Incidents and Bank already contain adequate semantic boundaries.
 - [ ] Audit named-being pages for real dossier substance: provenance, first/last appearance, role development, representative incidents/works, uncertainty and distinction between project character language and claims about real people.
 - [ ] Audit older symbolic-science pages for vocabulary collisions: **field, energy, frequency, signal, information, state, resonance, nonlocality, dimension, axis, gate** must state which domain owns the literal meaning.
 - [ ] Audit older theology/mythology pages for retrospective backdating: mature Father/Ladder/Axis language should not silently overwrite earlier Potato/Sage/Son stages.
@@ -1005,3 +1005,5 @@ The next quality phase is not “make every page longer.” It is to find pages 
 - [ ] Add a semantic-gap validator only after enough reviewed examples exist; it should warn about no-JS shells, repeated boilerplate and duplicate ownership rather than reward word count.
 
 - [x] Audit the Science Research Map as the canonical owner map for active science readers; add explicit page jobs and shared-vocabulary typing.
+
+- [ ] Keep strong CIA semantic boundaries from regressing as dossiers grow: co-presence ≠ motive; incident ≠ wrongdoing; symbolic account ≠ real debt/value; project role ≠ externally established identity.
