@@ -77,7 +77,7 @@ def robots_text():
     return "\n".join(lines)
 
 
-def shell(title, description, canonical, body, schema=None):
+def shell(title, description, canonical, body, schema=None, reader_surface="generated-discovery", machine_meta=None):
     body = re.sub(r"<section(?![^>]*data-site-tts-section)", '<section data-site-tts-section', body)
     schema = schema or {
         "@context": "https://schema.org",
@@ -97,8 +97,9 @@ def shell(title, description, canonical, body, schema=None):
 <link rel="alternate" type="text/plain" href="{esc(BASE_URL + '/llms.txt')}" title="LLM index">
 <link rel="alternate" type="application/json" href="{esc(BASE_URL + '/discovery.json')}" title="Machine discovery index">
 <script type="application/ld+json">{json.dumps(schema, ensure_ascii=False).replace('</','<\\/')}</script>
-<style>:root{{--bg:#080a08;--ink:#f5f1e7;--muted:#aab0a7;--line:#303830;--green:#acd67a;--gold:#dfbc72}}*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 system-ui,sans-serif}}main{{max-width:980px;margin:auto;padding:54px 22px 100px}}a{{color:var(--green);text-decoration-thickness:1px;text-underline-offset:3px}}h1{{font:400 clamp(38px,6vw,72px)/1.04 Georgia,serif;margin:.15em 0}}h2{{font:400 28px/1.2 Georgia,serif;color:var(--gold);margin-top:36px}}.lead{{font:20px/1.6 Georgia,serif;color:#e5e3dc;max-width:820px}}.eyebrow{{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:800}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}}.card{{border:1px solid var(--line);border-radius:14px;padding:16px;background:#0d100d}}.chips{{display:flex;flex-wrap:wrap;gap:7px}}.chip{{border:1px solid var(--line);border-radius:999px;padding:4px 9px;font-size:12px;color:#d8ddd2}}nav{{border-top:1px solid var(--line);margin-top:44px;padding-top:22px}}code{{color:var(--green);overflow-wrap:anywhere}}</style></head><body><main data-reader-surface="generated-discovery" data-tts-longform data-tts-item="[data-site-tts-section]" data-tts-exclude="[data-no-tts]">
+<style>:root{{--bg:#080a08;--ink:#f5f1e7;--muted:#aab0a7;--line:#303830;--green:#acd67a;--gold:#dfbc72}}*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 system-ui,sans-serif}}main{{max-width:980px;margin:auto;padding:54px 22px 100px}}a{{color:var(--green);text-decoration-thickness:1px;text-underline-offset:3px}}h1{{font:400 clamp(38px,6vw,72px)/1.04 Georgia,serif;margin:.15em 0}}h2{{font:400 28px/1.2 Georgia,serif;color:var(--gold);margin-top:36px}}.lead{{font:20px/1.6 Georgia,serif;color:#e5e3dc;max-width:820px}}.eyebrow{{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:800}}.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}}.card{{border:1px solid var(--line);border-radius:14px;padding:16px;background:#0d100d}}.chips{{display:flex;flex-wrap:wrap;gap:7px}}.chip{{border:1px solid var(--line);border-radius:999px;padding:4px 9px;font-size:12px;color:#d8ddd2}}.question-context{{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;color:var(--muted);font-size:13px}}nav{{border-top:1px solid var(--line);margin-top:44px;padding-top:22px}}code{{color:var(--green);overflow-wrap:anywhere}}</style></head><body><main data-reader-surface="{esc(reader_surface)}" data-tts-longform data-tts-item="[data-site-tts-section]" data-tts-exclude="[data-no-tts]">
 <div class="eyebrow">Potato of Life · public discovery layer</div><h1>{esc(title)}</h1><p class="lead">{esc(description)}</p>{body}
+{('<script type="application/json" data-question-machine-meta>'+json.dumps(machine_meta,ensure_ascii=False).replace('</','<\\/')+'</script>') if machine_meta else ''}
 <nav data-no-tts>{doors}<br><a href="{BASE_URL}/questions/">Questions</a> · <a href="{BASE_URL}/index-a-z/">A–Z</a> · <a href="{BASE_URL}/llms.txt">Machine index</a></nav>
 </main><script src="{BASE_URL}/app/site-tts.js" defer></script></body></html>'''
 
@@ -155,31 +156,58 @@ def question_page(entry):
     entities = [str(x) for x in entry.get("entities", [])]
     variants = [str(x) for x in entry.get("variants", [])]
     owners = [str(x) for x in entry.get("canonical_owners", [])]
-    related = [slug(x) for x in entry.get("related_questions", [])]
+    related_ids = [str(x) for x in entry.get("related_questions", [])]
+    related = [(slug(x), str(x).replace("-", " ")) for x in related_ids]
     schema = {
-        "@context": "https://schema.org", "@type": "FAQPage", "url": canonical,
-        "mainEntity": [{"@type": "Question", "name": question, "acceptedAnswer": {"@type": "Answer", "text": deep or short}}],
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": question,
+        "description": short or deep,
+        "url": canonical,
         "about": [{"@type": "Thing", "name": x} for x in entities[:20]],
         "isPartOf": {"@type": "WebSite", "name": "The Potato of Life", "url": BASE_URL + "/"},
     }
-    body = f"<section><h2>Answer</h2><p>{esc(short)}</p></section>"
+
+    # Human reader: answer the question before exposing archive machinery.
+    body = f'<section class="question-answer"><h2>Answer</h2><p>{esc(short or deep)}</p></section>'
     if deep and deep != short:
-        body += f"<section><h2>Full answer</h2><p>{esc(deep)}</p></section>"
-    if variants:
-        body += '<section><h2>Equivalent searches</h2><div class="chips">' + "".join(f'<span class="chip">{esc(x)}</span>' for x in variants) + "</div></section>"
-    if entities:
-        body += '<section><h2>Entities</h2><div class="chips">' + "".join(f'<span class="chip">{esc(x)}</span>' for x in entities) + "</div></section>"
+        body += f'<section class="question-deep"><h2>What that means</h2><p>{esc(deep)}</p></section>'
+
+    context_bits = []
     if entry.get("dates"):
-        body += "<section><h2>Dates</h2><p>" + esc(" · ".join(map(str, entry["dates"]))) + "</p></section>"
+        context_bits.append("Dates: " + " · ".join(map(str, entry["dates"])))
     if entry.get("epistemic_class"):
-        body += "<section><h2>Archive classification</h2><p>" + esc(" · ".join(map(str, entry["epistemic_class"]))) + "</p></section>"
-    if owners:
-        body += "<section><h2>Canonical owners</h2><ul>" + "".join(f"<li><code>{esc(x)}</code></li>" for x in owners) + "</ul></section>"
-    if entry.get("source_faq_view"):
-        body += f"<section><h2>Discovery view</h2><p><code>{esc(entry['source_faq_view'])}</code></p></section>"
+        context_bits.append("Archive status: " + " · ".join(map(str, entry["epistemic_class"])))
+    if context_bits:
+        body += '<p class="question-context"><strong>Context:</strong> ' + esc(" · ".join(context_bits)) + "</p>"
+
     if related:
-        body += "<section><h2>Related questions</h2><ul>" + "".join(f'<li><a href="{BASE_URL}/questions/{item}/">{esc(item.replace("-", " "))}</a></li>' for item in related) + "</ul></section>"
-    return eid, shell(question, short or deep, canonical, body, schema)
+        body += "<section><h2>Keep following the question</h2><ul>" + "".join(
+            f'<li><a href="{BASE_URL}/questions/{item}/">{esc(label)}</a></li>'
+            for item,label in related
+        ) + "</ul></section>"
+
+    # Machine/archive metadata remains available without becoming the visible article.
+    machine_meta = {
+        "question_id": eid,
+        "question": question,
+        "variants": variants,
+        "entities": entities,
+        "dates": entry.get("dates", []),
+        "epistemic_class": entry.get("epistemic_class", []),
+        "canonical_owners": owners,
+        "source_faq_view": entry.get("source_faq_view"),
+        "related_questions": related_ids,
+    }
+    return eid, shell(
+        question,
+        short or deep,
+        canonical,
+        body,
+        schema,
+        reader_surface="generated-question",
+        machine_meta=machine_meta,
+    )
 
 
 def build_questions(entries):
