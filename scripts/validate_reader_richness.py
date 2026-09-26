@@ -221,6 +221,48 @@ def main() -> int:
         if row.get("question")=="How does the whole system begin?" and row.get("url")=="/learn/":
             errors.append("Tim divinity integration map still sends system-beginning question through retired /learn/ wrapper")
 
+    # Concrete-content floor: subject readers must contain at least one
+    # recognizable material form, not merely enough prose characters.
+    concrete_markers=(
+        'class="room-reader"',
+        'class="room-essay"',
+        'class="worked-',
+        'class="history-step"',
+        'class="lab-case"',
+        'class="collection-case"',
+        'class="north-row"',
+        'class="systems-chain"',
+        'class="work-substance-ledger"',
+        'data-room-reader-body',
+        'id="worked-',
+        'id="chronology"',
+        'id="development"',
+        'id="actual-works"',
+        'id="how-systems-work"',
+        'id="reader-body"',
+    )
+    concrete_subject_pages = top_level_dwellings + [
+        "history/index.html",
+        "world-systems/index.html",
+        "context/culture/index.html",
+        "research-lab/index.html",
+        "context/index.html",
+        "works/index.html",
+        "corporium/index.html",
+        "politics/index.html",
+        "north/index.html",
+        "life-body/index.html",
+        "religion/index.html",
+        "science/index.html",
+        "philosophy/index.html",
+    ]
+    for rel in concrete_subject_pages:
+        source=(ROOT/rel).read_text(encoding="utf-8",errors="replace")
+        if not any(marker in source for marker in concrete_markers):
+            # Top-level Dwellings use dwelling-reader as their authored material marker.
+            if 'class="dwelling-reader"' not in source:
+                errors.append(f"{rel} has prose but no recognizable concrete-content section")
+
     authored_groups = [
         audit.get("authored_history") or [],
         audit.get("second_authored_wave") or [],
