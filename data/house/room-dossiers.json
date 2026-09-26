@@ -6159,8 +6159,8 @@
             "kind": "Foundation Seed Door time-place genealogy"
           },
           {
-            "id": "route-case-matrix-wave-001",
-            "path": "data/house/route-case-matrix-wave-001.json",
+            "id": "route-case-matrix",
+            "path": "data/house/route-case-matrix.json",
             "kind": "evidence-aware route case matrix"
           },
           {
@@ -6359,7 +6359,7 @@
       },
       "route_case_lens": {
         "question": "Given the same starting material, what operator changes what the relation reproduces—and what evidence would distinguish the route?",
-        "authority": "data/house/route-case-matrix-wave-001.json",
+        "authority": "data/house/route-case-matrix.json",
         "guard": "Life/Strife/Repair/Return describe proposed transition mechanisms, not identities or moral verdicts.",
         "required_test": "Every case needs counterevidence/falsifier and a World-level return measure."
       },
@@ -7019,7 +7019,7 @@
         "question": "Is this element missing another definition, or does it actually need real entities, dated observations, relationships, scale, visibility, reproduction/correction and outcome data?",
         "authority": "knowledge/research/element-materialization-audit-2026-09-18.json",
         "priority_rule": "Prefer instrumentation of strong existing operators over adding another ontology layer.",
-        "first_target": "data/house/entity-dossiers-wave-001.json"
+        "first_target": "data/house/entity-dossiers.json"
       }
     }
   ]
