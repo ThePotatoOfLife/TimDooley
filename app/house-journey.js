@@ -218,7 +218,7 @@
       const hands=dossier.center_pairing?.hands_to||dossier.local_center?.exit_routes||[];
       const publicSurfaces=dossier.public_surfaces||[];
       const primaryCount=dossier.knowledge_holdings?.primary_file_count??holding.primary_file_count??featured.length;
-      const interfaceCount=(ifData.interfaces||[]).filter(x=>x.from===roomId||x.to===roomId).length;
+      const interfaceCount=(ifData.interfaces||[]).filter(x=>x.from===canonicalRoomId||x.to===canonicalRoomId).length;
       const dataFiles=dossier.data_holdings?.owned_file_count||0;
       const functionText=dossier.local_center?.function||dossier.center_pairing?.contribution||dossier.entrance||room.purpose||'';
       const main=document.querySelector('main');if(!main)return;
