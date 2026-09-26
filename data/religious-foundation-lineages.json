@@ -1,6 +1,6 @@
 {
   "id": "religious-foundation-lineages",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-26",
   "status": "canonical historical genealogy + timeline/map projection contract",
   "purpose": "Represent major religious traditions as dated, branching historical lineages. Nodes can be trunks, schisms, reforms, schools, mystical currents or institutional crystallizations. The structure is designed for timeline, spiral and map projection without pretending every tradition has one exact birthday.",
@@ -4022,6 +4022,404 @@
         "Shangqing and Lingbao are textual/revelatory corpora and practice systems as well as lineages.",
         "Zhengyi is an umbrella consolidation, not a daughter denomination born in one year."
       ]
+    },
+    {
+      "id": "confucian-lineage",
+      "name": "Confucian / Ru traditions",
+      "root_ids": [
+        "classical-confucian-field"
+      ],
+      "trunk_id": "classical-confucian-field",
+      "nodes": [
+        {
+          "id": "classical-confucian-field",
+          "name": "Classical Confucian / Ru textual-ritual field",
+          "node_type": "tradition_field",
+          "seed_clock": {
+            "year_start": -551,
+            "year_end": -221,
+            "date_or_range": "Confucius traditional lifetime 551–479 BCE → Warring States classical formation",
+            "precision": "long-range",
+            "status": "traditional-dates+historical-formation"
+          },
+          "origin": {
+            "place": "Eastern Zhou China",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "sep_confucius"
+          ],
+          "notes": "Confucius is a historical teacher within a wider Ru/classical ritual world; later 'Confucianism' is a long reception history, not a religion founded in 551 BCE."
+        },
+        {
+          "id": "han-confucian-institutionalization",
+          "name": "Han Confucian state/classical institutionalization",
+          "node_type": "institutional_phase",
+          "seed_clock": {
+            "year_start": -202,
+            "year_end": 220,
+            "date_or_range": "Han dynasty, especially from 2nd century BCE onward",
+            "precision": "range",
+            "status": "historical-institutionalization"
+          },
+          "origin": {
+            "place": "Han China",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "classical-confucian-field"
+          ],
+          "relation_to_parent": "state_sponsorship_and_classical_institutionalization",
+          "sources": [
+            "sep_confucius"
+          ],
+          "notes": "Confucian classics, ritual and scholar-official culture gain durable state sponsorship; this is institutionalization rather than origin."
+        },
+        {
+          "id": "song-ming-neo-confucianism",
+          "name": "Song–Ming Neo-Confucian traditions",
+          "node_type": "intellectual_revival",
+          "seed_clock": {
+            "year_start": 960,
+            "year_end": 1644,
+            "date_or_range": "Song–Ming period, 960–1644 CE",
+            "precision": "range",
+            "status": "historical-intellectual-formation"
+          },
+          "origin": {
+            "place": "China → Korea, Japan, Vietnam",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "classical-confucian-field",
+            "han-confucian-institutionalization"
+          ],
+          "relation_to_parent": "revival_and_reconstruction",
+          "sources": [
+            "sep_wang_yangming"
+          ],
+          "notes": "Neo-Confucian thinkers reconstruct classical ethics and ritual through new metaphysical/moral psychology partly in dialogue and competition with Buddhism and Daoism."
+        },
+        {
+          "id": "cheng-zhu-confucianism",
+          "name": "Cheng–Zhu / School of Principle",
+          "node_type": "philosophical_school",
+          "seed_clock": {
+            "year_start": 1030,
+            "year_end": 1313,
+            "date_or_range": "11th–12th-century formation; Four Books exam orthodoxy by 1313",
+            "precision": "range",
+            "status": "historical-school+institutional-marker"
+          },
+          "origin": {
+            "place": "Song China",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "song-ming-neo-confucianism"
+          ],
+          "relation_to_parent": "school_within",
+          "sources": [
+            "pluralism_four_books",
+            "sep_wang_yangming"
+          ],
+          "notes": "Zhu Xi's synthesis and Four Books commentaries become extraordinarily influential across East Asia and later imperial examinations."
+        },
+        {
+          "id": "lu-wang-confucianism",
+          "name": "Lu–Wang / School of Heart-Mind",
+          "node_type": "philosophical_school",
+          "seed_clock": {
+            "year_start": 1139,
+            "year_end": 1529,
+            "date_or_range": "Lu Jiuyuan (1139–1193) → Wang Yangming (1472–1529)",
+            "precision": "range",
+            "status": "historical-school"
+          },
+          "origin": {
+            "place": "Song/Ming China",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "song-ming-neo-confucianism"
+          ],
+          "relation_to_parent": "school_within",
+          "sources": [
+            "sep_wang_yangming"
+          ],
+          "notes": "Emphasizes heart-mind, innate moral knowing and the unity of knowing and acting; develops as a major alternative to Cheng-Zhu orthodoxy."
+        },
+        {
+          "id": "modern-new-confucianism",
+          "name": "Modern / New Confucianism",
+          "node_type": "modern_intellectual_movement",
+          "seed_clock": {
+            "year_start": 1900,
+            "year_end": 2026,
+            "date_or_range": "20th century–present",
+            "precision": "range",
+            "status": "modern-movement"
+          },
+          "origin": {
+            "place": "China / Hong Kong / Taiwan / global academy",
+            "spatial_status": "distributed"
+          },
+          "parent_ids": [
+            "song-ming-neo-confucianism",
+            "classical-confucian-field"
+          ],
+          "relation_to_parent": "modern_reconstruction",
+          "sources": [
+            "sep_modern_confucianism"
+          ],
+          "notes": "Modern thinkers reinterpret Confucian traditions in relation to modernity, democracy, science and global philosophy."
+        }
+      ],
+      "integrity": [
+        "Confucianism/Ruism is simultaneously ethical, ritual, intellectual, educational and historically religious; do not force a philosophy-vs-religion binary.",
+        "State sponsorship does not make every Chinese religious practice Confucian.",
+        "Neo-Confucianism is not simply the ancient teaching of Confucius repeated unchanged."
+      ]
+    },
+    {
+      "id": "shinto-lineage",
+      "name": "Shinto / kami-veneration traditions",
+      "root_ids": [
+        "ancient-japanese-kami-field"
+      ],
+      "trunk_id": "jinja-shinto-field",
+      "nodes": [
+        {
+          "id": "ancient-japanese-kami-field",
+          "name": "Ancient Japanese kami / ritual field",
+          "node_type": "tradition_field",
+          "seed_clock": {
+            "year_start": -500,
+            "year_end": 700,
+            "date_or_range": "prehistoric/early historic Japanese ritual field → 7th century CE",
+            "precision": "broad-range",
+            "status": "archaeological+historical-field"
+          },
+          "origin": {
+            "place": "Japanese archipelago",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "jinja_shinto"
+          ],
+          "notes": "No founder or single foundation date; shrine/kami practices develop from diverse local, court and clan traditions."
+        },
+        {
+          "id": "kiki-mythic-texts",
+          "name": "Kojiki / Nihon Shoki mythic-historical textual layer",
+          "node_type": "textual_consolidation",
+          "seed_clock": {
+            "year_start": 712,
+            "year_end": 720,
+            "date_or_range": "Kojiki 712; Nihon Shoki 720",
+            "precision": "exact-text-years",
+            "status": "documented-textual-markers"
+          },
+          "origin": {
+            "place": "Nara-period Japan",
+            "spatial_status": "geocodable historical anchor"
+          },
+          "parent_ids": [
+            "ancient-japanese-kami-field"
+          ],
+          "relation_to_parent": "textualizes_and_state_frames",
+          "sources": [],
+          "notes": "Court compilations preserve and reshape mythic/genealogical traditions; they are not 'Shinto scripture' in the same sense as a canonical revealed book."
+        },
+        {
+          "id": "shinbutsu-shugo",
+          "name": "Shinbutsu-shūgō / kami-Buddha combinatory traditions",
+          "node_type": "syncretic_field",
+          "seed_clock": {
+            "year_start": 700,
+            "year_end": 1868,
+            "date_or_range": "Nara/Heian through early modern Japan; forcibly disrupted from 1868",
+            "precision": "long-range",
+            "status": "historical-syncretic-field"
+          },
+          "origin": {
+            "place": "Japan",
+            "spatial_status": "distributed"
+          },
+          "parent_ids": [
+            "ancient-japanese-kami-field"
+          ],
+          "relation_to_parent": "synthesis_with_buddhism",
+          "sources": [],
+          "notes": "For much of Japanese history kami and Buddhist institutions were deeply intertwined; modern images of a timelessly separate Shinto and Buddhism can obscure this history."
+        },
+        {
+          "id": "meiji-shinto-reorganization",
+          "name": "Meiji Shinto reorganization / separation",
+          "node_type": "state_reorganization",
+          "seed_clock": {
+            "year_start": 1868,
+            "year_end": 1945,
+            "date_or_range": "1868 shinbutsu bunri → 1945 Shinto Directive",
+            "precision": "range",
+            "status": "documented-state-reorganization"
+          },
+          "origin": {
+            "place": "Japan",
+            "spatial_status": "national"
+          },
+          "parent_ids": [
+            "shinbutsu-shugo",
+            "ancient-japanese-kami-field"
+          ],
+          "relation_to_parent": "state_separation_and_reorganization",
+          "sources": [],
+          "notes": "Meiji policies separate kami and Buddhist institutions and reorganize shrine/state relations; later 'State Shinto' is a modern institutional-political formation."
+        },
+        {
+          "id": "modern-jinja-shinto",
+          "name": "Postwar Jinja Shinto",
+          "node_type": "modern_institutional_field",
+          "seed_clock": {
+            "year_start": 1945,
+            "year_end": 1946,
+            "date_or_range": "1945 separation from state; Jinja Honcho founded 1946",
+            "precision": "exact-years",
+            "status": "documented-postwar-transition"
+          },
+          "origin": {
+            "place": "Japan",
+            "spatial_status": "national"
+          },
+          "parent_ids": [
+            "meiji-shinto-reorganization"
+          ],
+          "relation_to_parent": "postwar_reorganization",
+          "sources": [
+            "jinja_honcho"
+          ],
+          "notes": "Most shrines associated with Jinja Honcho belong to Jinja Shinto, while distinct Sect Shinto and other organizations also exist."
+        }
+      ],
+      "integrity": [
+        "Shinto has no single founder, unified creed or one scripture.",
+        "Kojiki and Nihon Shoki are major mythic/historical sources, not a simple 'Shinto Bible'.",
+        "Premodern kami worship and Buddhism were often combined; 1868 separation is a major modern rupture."
+      ]
+    },
+    {
+      "id": "chinese-popular-religion-field",
+      "name": "Chinese popular / communal religious field",
+      "root_ids": [
+        "ancient-chinese-ancestor-deity-field"
+      ],
+      "trunk_id": "local-temple-ancestor-field",
+      "nodes": [
+        {
+          "id": "ancient-chinese-ancestor-deity-field",
+          "name": "Ancient ancestors, gods and divination field",
+          "node_type": "diffuse_religious_field",
+          "seed_clock": {
+            "year_start": -1600,
+            "year_end": -256,
+            "date_or_range": "Shang–Zhou ritual worlds, 2nd–1st millennium BCE",
+            "precision": "range",
+            "status": "archaeological+textual-field"
+          },
+          "origin": {
+            "place": "North China and wider early Chinese cultural zones",
+            "spatial_status": "broad-region"
+          },
+          "parent_ids": [],
+          "relation_to_parent": "develops_from",
+          "sources": [
+            "oxford_chinese_ancestor"
+          ],
+          "notes": "Ancestor offerings, divination, gods and state/family ritual have ancient roots; no founder or denomination structure."
+        },
+        {
+          "id": "local-temple-ancestor-field",
+          "name": "Local temple, ancestor and communal religious field",
+          "node_type": "diffuse_religious_field",
+          "seed_clock": {
+            "year_start": 900,
+            "year_end": 1300,
+            "date_or_range": "especially visible institutional expansion in Song-era commercialization/urbanization",
+            "precision": "range",
+            "status": "historical-expansion"
+          },
+          "origin": {
+            "place": "China",
+            "spatial_status": "distributed"
+          },
+          "parent_ids": [
+            "ancient-chinese-ancestor-deity-field"
+          ],
+          "relation_to_parent": "long_continuity_and_expansion",
+          "sources": [
+            "oxford_chinese_popular"
+          ],
+          "notes": "Local gods, temple associations, festivals, ancestor rites, pilgrimage, healing, divination and ritual economies overlap with Daoist, Buddhist and Confucian institutions."
+        },
+        {
+          "id": "ancestor-veneration-chinese",
+          "name": "Chinese ancestor veneration traditions",
+          "node_type": "cross_cutting_practice",
+          "seed_clock": {
+            "year_start": -1600,
+            "year_end": 2026,
+            "date_or_range": "Shang-era evidence → present",
+            "precision": "long-range",
+            "status": "continuous-transforming-practice"
+          },
+          "origin": {
+            "place": "China / diaspora communities",
+            "spatial_status": "distributed"
+          },
+          "parent_ids": [
+            "ancient-chinese-ancestor-deity-field"
+          ],
+          "relation_to_parent": "practice_continuity",
+          "sources": [
+            "oxford_chinese_ancestor"
+          ],
+          "notes": "Household altars, lineage halls, graveside rites and festival observances vary by period, region and community."
+        },
+        {
+          "id": "spirit-medium-divination-field",
+          "name": "Spirit-medium, divination and geomantic practices",
+          "node_type": "cross_cutting_practice",
+          "seed_clock": {
+            "year_start": -1200,
+            "year_end": 2026,
+            "date_or_range": "ancient divination → modern regional practices",
+            "precision": "long-range",
+            "status": "diverse-practice-field"
+          },
+          "origin": {
+            "place": "China / Chinese diaspora",
+            "spatial_status": "distributed"
+          },
+          "parent_ids": [
+            "ancient-chinese-ancestor-deity-field",
+            "local-temple-ancestor-field"
+          ],
+          "relation_to_parent": "practice_family",
+          "sources": [
+            "oxford_chinese_popular"
+          ],
+          "notes": "Includes multiple regional practices; should not be treated as one church or automatically identified with formal Daoism."
+        }
+      ],
+      "integrity": [
+        "Chinese popular religion is diffuse and embedded in family, village, temple, market and state life rather than a centralized church.",
+        "Practitioners may participate in Daoist, Buddhist, Confucian and local ritual worlds without exclusive membership logic.",
+        "Ancestor veneration, local-deity worship, divination and spirit-medium practice require regional and historical specificity."
+      ]
     }
   ],
   "source_registry": {
@@ -4065,7 +4463,16 @@
     "oxford_chinese_buddhism": "https://academic.oup.com/reference/62338/reference-article-abstract/554177590",
     "oxford_tibet_buddhism": "https://academic.oup.com/reference/62340/reference-article-abstract/554143746",
     "oxford_chan": "https://academic.oup.com/book/10975",
-    "oxford_pureland": "https://academic.oup.com/reference/62340/reference-article-abstract/574192908"
+    "oxford_pureland": "https://academic.oup.com/reference/62340/reference-article-abstract/574192908",
+    "sep_confucius": "https://plato.stanford.edu/entries/confucius/",
+    "sep_wang_yangming": "https://plato.stanford.edu/entries/wang-yangming/",
+    "sep_modern_confucianism": "https://plato.stanford.edu/entries/confucianism-modern/",
+    "pluralism_four_books": "https://pluralism.org/four-books",
+    "jinja_shinto": "https://www.jinjahoncho.or.jp/en/shinto/",
+    "jinja_honcho": "https://www.jinjahoncho.or.jp/en/honcho/",
+    "oxford_chinese_ancestor": "https://academic.oup.com/reference/62338/reference-article-abstract/571509804",
+    "oxford_chinese_popular": "https://academic.oup.com/edited-volume/55817/chapter-abstract/436581365",
+    "oxford_dao_popular": "https://academic.oup.com/edited-volume/61799/chapter-abstract/546319250"
   },
   "cross_family_connections": [
     {
