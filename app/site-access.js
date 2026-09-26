@@ -117,7 +117,7 @@
     const r=a.getAttribute('data-site-access-route');
     if(r==='/'?current==='/':current.startsWith(r))a.setAttribute('aria-current','page');
   });
-  let loaded=false,index=[...curatedEntries];
+  let loaded=false,loadPromise=null,index=[...curatedEntries];
   const aliasText=e=>Array.isArray(e.aliases)?e.aliases.join(' '):(e.aliases||'');
   const key=e=>(e.label+' '+aliasText(e)+' '+(e.note||'')+' '+(e.kind||'')).toLowerCase();
   const priority=e=>({object:5,'case-ready':5,direct:4,world:3,project:2,page:1,find:1,start:0}[e.kind]??1);
@@ -131,8 +131,8 @@
   };
   const loadIndex=async()=>{
     if(loaded)return;
-    loaded=true;
-    try{
+    if(loadPromise)return loadPromise;
+    loadPromise=(async()=>{
       const [contract,surfaces,inhabitants,roomsData]=await Promise.all([
         fetchJson('/data/house/site-access.json'),
         fetchJson('/data/house/public-surfaces.json'),
@@ -165,7 +165,10 @@
         });
       }
       index=unique(index);
-    }catch(_){}
+      const received=Boolean(contract||surfaces||inhabitants||roomsData);
+      loaded=received;
+    })().catch(()=>{loaded=false}).finally(()=>{loadPromise=null});
+    return loadPromise;
   };
   const group=(title,entries)=>'<div class="site-access-group"><span>'+esc(title)+'</span><div class="site-access-links">'+entries.map(e=>'<a href="'+esc(href(e.route))+'"><b>'+esc(e.label)+'</b>'+(e.scope?'<i class="site-access-scope">'+esc(e.scope)+'</i>':'')+'<small>'+esc(e.note||'')+'</small></a>').join('')+'</div></div>';
   const landmarkCards=entries=>'<section class="site-access-landmarks" aria-label="Project landmarks"><div class="site-access-landmark-head"><b>Project landmarks</b><small>Go by name. You do not need to remember the House hierarchy.</small></div><div class="site-access-landmark-grid">'+entries.map(e=>{
