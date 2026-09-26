@@ -782,6 +782,35 @@ def validate_project_synthesis(errors):
     missing_families=sorted(required_families-set(families))
     if missing_families:
         errors.append('project synthesis missing reader route families: '+', '.join(missing_families))
+    surfaces=load(SURFACES,errors)
+    active=[x for x in surfaces.get('surfaces',[]) if isinstance(x,dict) and x.get('status')=='active']
+    by_surface={x.get('id'):x for x in active if x.get('id')}
+    route_families={}
+    for family_id,family in families.items():
+        for route in family.get('routes',[]):
+            route_families.setdefault(route,[]).append(family_id)
+    jobs={}
+    for row in active:
+        sid=row.get('id'); route=row.get('canonical_route') or row.get('route')
+        memberships=route_families.get(route,[])
+        if len(memberships)>1:
+            errors.append(f'public surface {sid} belongs to multiple reader families: {memberships}')
+        parent_id=row.get('primary_parent')
+        if sid!='home' and not parent_id:
+            errors.append(f'active public surface {sid} must have a primary parent')
+        inherited=[]
+        if parent_id in by_surface:
+            parent=by_surface[parent_id]
+            inherited=route_families.get(parent.get('canonical_route') or parent.get('route'),[])
+        if sid!='home' and not memberships and len(inherited)!=1:
+            errors.append(f'public surface {sid} has no unique reader family or family-owning parent')
+        job=str(row.get('reader_job') or '').strip().casefold()
+        if not job:
+            errors.append(f'active public surface {sid} has no reader job')
+        elif job in jobs:
+            errors.append(f'active public surfaces {jobs[job]} and {sid} duplicate the same reader job')
+        else:
+            jobs[job]=sid
     retrieval=set(families.get('archive-retrieval',{}).get('routes',[]))
     for route in ('/explore/','/questions/','/index-a-z/','/paths/'):
         if route not in retrieval:
