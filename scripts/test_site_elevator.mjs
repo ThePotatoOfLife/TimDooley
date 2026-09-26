@@ -199,8 +199,9 @@ assert.ok(css.includes('text-shadow:0 1px 0 rgba(0,0,0,.95)'),'floor text needs 
 assert.ok(css.includes('[data-elevator-level="below"] .site-elevator-room'),'Below Room tiles need underground material styling');
 assert.ok(css.includes('background:transparent'),'arrow controls must float without metallic button blocks');
 assert.ok(css.includes('display:block!important'),'elevator shell must survive page-level header display overrides');
-assert.ok(css.includes('display:grid!important'),'Room rail must survive page-level nav display overrides');
-assert.ok(css.includes('margin:0!important'),'elevator shell must reset page-level header/nav margins');
+assert.ok((css.match(/!important/g)||[]).length<=8,'elevator CSS should keep specificity escalation tightly bounded');
+assert.ok(css.includes('.site-elevator-room-rail{\n  margin:0;'),'Room rail must reset page-level nav spacing without specificity escalation');
+assert.ok(css.includes('margin:0;'),'elevator shell must reset page-level header/nav margins');
 assert.ok(css.includes('align-self:start'),'elevator controls must stay pinned when Room grid wraps');
 assert.ok(css.includes('--elevator-row-height:42px'),'desktop elevator controls need a fixed one-row height token');
 assert.ok(!/--([\\w-]+):var\\(--\\1\\)/.test(css),'elevator CSS custom properties must not self-reference');
