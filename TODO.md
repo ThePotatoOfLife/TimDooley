@@ -782,3 +782,67 @@ The governing editorial rule is:
 - [ ] Every branch page should answer five things quickly: **where/when did it crystallize? what parent field did it emerge from? what distinguishes it? what is often misunderstood? where can I read the sources?**
 - [ ] Every split date should say whether it is an exact institutional act, a conventional rupture marker, a formation window or a later retrospective anniversary.
 - [ ] Keep family-tree diagrams compact enough to understand on mobile; deep detail belongs in branch pages, not in labels.
+
+
+### Materialization wave after Christianity
+
+- [x] Build public Judaism history/movements guide from existing Israelite → Second Temple → rabbinic → Karaite/Kabbalah/Hasidic/modern-movement data.
+- [x] Build public Islam lineage/school guide separating Sunni/Shi'i/Ibadi, legal schools, Shi'i lineages and Sufi currents.
+- [x] Build public Buddhism transmission guide beyond Theravada/Mahayana/Vajrayana into Chan/Zen, Pure Land and Tibetan transmission families.
+- [x] Add Daoism as an explicit canonical lineage family: classical textual field, Celestial Masters, Shangqing, Lingbao, Quanzhen, Zhengyi.
+- [x] Sync new Buddhist and Daoist lineage nodes into Foundation Timeline.
+- [x] Wire Judaism, Islam, Buddhism and Daoism from Religion and Comparative Cosmology without growing global navigation.
+
+#### Judaism next depth
+
+- [ ] Add a Second Temple plurality page: Pharisaic, Sadducean, Essene/Qumran, apocalyptic and diaspora contexts—carefully avoiding simplistic “one became Judaism, one became Christianity” teleology.
+- [ ] Add rabbinic textual sequence: Mishnah → Tosefta → Jerusalem Talmud → Babylonian Talmud → Geonic/Rishonic/Acharonic interpretation as textual/legal history.
+- [ ] Add Karaite depth with its own textual/communal history and modern communities.
+- [ ] Separate **Kabbalah** (mystical current) from **Hasidism** (revival/community movement using mystical thought) and from modern denominational labels.
+- [ ] Add Hasidic dynasty/network treatment only after sourcing Baal Shem Tov, Maggid, Chabad, Breslov and major dynasty histories.
+- [ ] Add modern movement history: Haskalah, Wissenschaft des Judentums, Reform/Liberal, Orthodox/Haredi/Modern Orthodox, Conservative/Masorti, Reconstructionist/Renewal where warranted.
+- [ ] Add Jewish prayer/ritual calendar depth: Shabbat, High Holy Days, Passover, Shavuot, Sukkot, Hanukkah, Purim, daily prayer, Torah reading and life-cycle rites.
+- [ ] Add Temple / synagogue / beit midrash / yeshiva as different institutional-space functions.
+
+#### Islam next depth
+
+- [ ] Add early-caliphate/succession reader for 632 → First Fitna → Siffin → Karbala without treating modern Sunni/Shi'i identities as complete in 632.
+- [ ] Add Sunni madhhab reader: Hanafi, Maliki, Shafi'i, Hanbali as jurisprudential schools with methods, geographies and institutional histories—not sects.
+- [ ] Add Sunni theology reader: Ash'ari, Maturidi, Athari plus Mu'tazili historical context where relevant.
+- [ ] Add Shi'i branch reader: Twelver, Ismaili, Zaydi; then Nizari/Musta'li branches with imamate/succession clocks.
+- [ ] Add Ibadi reader with Oman/North African history and explicit correction against using “Kharijite” as a sufficient modern identity label.
+- [ ] Add Sufism reader organized by practice/current/order: early asceticism → tariqa institutionalization → major orders. Mark Sufism as cross-cutting.
+- [ ] Add Qur'an / hadith / tafsir / fiqh / kalam / falsafa as different knowledge domains so “Islamic teaching” does not become one undifferentiated corpus.
+- [ ] Add ritual/practice map: shahada, salat, zakat, fasting, hajj plus Shi'i and Sufi practice differences where relevant.
+
+#### Buddhism next depth
+
+- [ ] Deepen early Buddhist school history carefully; do not present Theravada as simply “the original Buddhism.”
+- [ ] Add Theravada transmission history across Sri Lanka, Myanmar, Thailand, Cambodia and Laos with monastic ordination-lineage changes.
+- [ ] Add East Asian Buddhism reader: Chinese translation field → Tiantai, Huayan, Chan, Pure Land and later regional transmission.
+- [ ] Add Chan → Zen / Seon / Thiền relationship map with lineage mythology separated from reconstructable institutional history.
+- [ ] Add Japanese schools only when adequately sourced: Tendai, Shingon, Jōdo, Jōdo Shin, Nichiren, Zen families.
+- [ ] Add Tibetan Buddhist history: first/second transmission, Nyingma, Kagyu, Sakya, Gelug, Jonang and Bön interaction without reducing Tibetan religion to “Vajrayana.”
+- [ ] Add Buddhist cosmology/ritual practice beside philosophy: merit, monasticism, chanting, devotional practice, relics, pilgrimage, festivals, meditation, bodhisattva cults and funerary traditions.
+- [ ] Add canonical-family comparison: Pali, Chinese Buddhist canon, Tibetan Kangyur/Tengyur and regional textual collections.
+
+#### Daoism next depth
+
+- [ ] Source and deepen Celestial Masters history: registers, parish/community structure, confession, ritual and priestly authority.
+- [ ] Add Shangqing texts/practices, visualizations and inner-deity cosmology with dates and source provenance.
+- [ ] Add Lingbao ritual/liturgy/salvation structure and Buddhist interaction as historical synthesis rather than “copying.”
+- [ ] Add Quanzhen reader: Wang Chongyang, Seven Perfected, monasticism, internal cultivation and later Longmen lineage.
+- [ ] Add Zhengyi reader: Longhushan, register ordination, household/ritual priesthood and modern institutional continuity.
+- [ ] Add Daoist pantheon/celestial bureaucracy only as a layered historical development; do not reduce it to Daodejing philosophy.
+- [ ] Add practice map: ritual, meditation, internal alchemy, talismans, liturgy, temple life, festivals, priesthood and longevity traditions.
+- [ ] Add Daoist canon/history of textual collections so “Daoism” is not represented by two classical books alone.
+
+#### Cross-tradition structural TODO
+
+- [ ] Add a shared **branch-type legend** across Religion: denomination, communion, legal school, mystical current, reform movement, monastic lineage, ritual lineage, philosophical school, sister tradition, transmission family.
+- [ ] Add a lightweight “this is a…” badge to branch cards so users learn the category while browsing.
+- [ ] Add historical-source links to Judaism/Islam/Buddhism/Daoism pages equivalent to the Christianity source trails.
+- [ ] Add a generic lineage renderer only if it can consume canonical lineage data without replacing hand-written explanatory prose.
+- [ ] Add mobile tests for all branch maps; collapse years and branches gracefully rather than horizontally scrolling giant genealogies.
+- [ ] Audit Religion after each new guide so only the broad family remains visible at the top level.
+- [ ] Add Hindu/Jain/Sikh/Zoroastrian/Bahá'i public treatment next based on evidence maturity, but use each tradition's appropriate structure rather than one universal tree.
