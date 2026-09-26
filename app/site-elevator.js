@@ -31,12 +31,31 @@
       .filter(row=>row&&row.id);
   }
 
-  function resolveSpatialContext(route,projection,roomContract){
+  function resolveSpatialContext(route,projection,roomContract,subroomContract){
     const normalized=normalizeRoute(route);
     const rooms=roomRows(roomContract);
     const roomById=Object.fromEntries(rooms.map(room=>[room.id,room]));
     const dwellings=dwellingRows(projection);
     const dwellingById=Object.fromEntries(dwellings.map(row=>[row.id,row]));
+
+    const subroomMatch=normalized.match(/^\/rooms\/inside\/([^/]+)(?:\/|$)/);
+    if(subroomMatch){
+      const subrooms=(subroomContract&&Array.isArray(subroomContract.subrooms)?subroomContract.subrooms:[])
+        .filter(row=>row&&row.status==='active'&&row.id&&row.parent_room_id);
+      const subroom=subrooms.find(row=>row.id===subroomMatch[1]);
+      if(subroom&&roomById[subroom.parent_room_id]&&dwellingById[subroom.parent_room_id]){
+        const roomId=subroom.parent_room_id;
+        const dwelling=dwellingById[roomId];
+        return {
+          levelId:dwelling.primary_level||'plane',
+          roomId,
+          room:{...roomById[roomId],homepage:dwelling.homepage||('/rooms/'+roomId+'/')},
+          subroomId:subroom.id,
+          subroom,
+          source:'subroom-route'
+        };
+      }
+    }
 
     const roomMatch=normalized.match(/^\/rooms\/([^/]+)(?:\/|$)/);
     if(roomMatch&&roomById[roomMatch[1]]&&dwellingById[roomMatch[1]]){
@@ -164,7 +183,8 @@
 
     let projection=null;
     let roomContract=null;
-    let spatial={levelId:'plane',roomId:null,room:null,source:'fallback'};
+    let subroomContract=null;
+    let spatial={levelId:'plane',roomId:null,room:null,subroomId:null,source:'fallback'};
     let selectedLevel='plane';
 
     const renderRooms=()=>{
@@ -249,13 +269,15 @@
 
     Promise.all([
       fetchJson('/data/house/elevator-spatial-projection.json'),
-      fetchJson('/data/house/rooms.json')
-    ]).then(([nextProjection,nextRooms])=>{
+      fetchJson('/data/house/rooms.json'),
+      fetchJson('/data/house/subrooms.json')
+    ]).then(([nextProjection,nextRooms,nextSubrooms])=>{
       projection=nextProjection;
       roomContract=nextRooms;
+      subroomContract=nextSubrooms;
       const siteBasePath=new URL(context.siteBase).pathname;
       const currentRoute=normalizeRoute(location.pathname,siteBasePath);
-      spatial=resolveSpatialContext(currentRoute,projection,roomContract);
+      spatial=resolveSpatialContext(currentRoute,projection,roomContract,subroomContract);
       selectedLevel=LEVELS.includes(spatial.levelId)?spatial.levelId:'plane';
       header.dataset.elevatorReady='true';
       render('hydrate');

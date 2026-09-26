@@ -11,6 +11,7 @@ try{
 
 const projection=(await import('../data/house/elevator-spatial-projection.json',{with:{type:'json'}})).default;
 const roomContract=(await import('../data/house/rooms.json',{with:{type:'json'}})).default;
+const subroomContract=(await import('../data/house/subrooms.json',{with:{type:'json'}})).default;
 
 const cases=[
   ['/', 'plane', 'potatoverse-canon'],
@@ -69,7 +70,17 @@ for(const dwelling of projection.dwellings){
   assert.equal(ctx.source,'room-route', dwelling.id+' must resolve through direct Room ownership');
 }
 
-const unknown=elevator.resolveSpatialContext('/totally-unknown/',projection,roomContract);
+// nested Room inheritance contract
+const primaryByRoom=Object.fromEntries(projection.dwellings.map(row=>[row.id,row.primary_level]));
+for(const subroom of subroomContract.subrooms.filter(row=>row.status==='active')){
+  const ctx=elevator.resolveSpatialContext('/rooms/inside/'+subroom.id+'/',projection,roomContract,subroomContract);
+  assert.equal(ctx.roomId,subroom.parent_room_id, subroom.id+' must light its parent Room');
+  assert.equal(ctx.levelId,primaryByRoom[subroom.parent_room_id], subroom.id+' must inherit the parent Room primary floor');
+  assert.equal(ctx.source,'subroom-route', subroom.id+' must resolve through nested Room ownership');
+  assert.equal(ctx.subroomId,subroom.id, subroom.id+' must preserve nested Room identity');
+}
+
+const unknown=elevator.resolveSpatialContext('/totally-unknown/',projection,roomContract,subroomContract);
 assert.equal(unknown.levelId,'plane');
 assert.equal(unknown.roomId,null);
 
