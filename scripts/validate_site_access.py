@@ -20,6 +20,7 @@ tts_drawer=read(ROOT/"app/tts-drawer.js")
 patch=read(ROOT/"scripts/patch_public_navigation.py")
 contract_text=read(ROOT/"data/house/site-access.json")
 journey_text=read(ROOT/"data/house/access-journeys.json")
+journey_ui=read(ROOT/"app/house-journey.js")
 try:
     contract=json.loads(contract_text) if contract_text else {}
 except json.JSONDecodeError as exc:
@@ -124,6 +125,9 @@ for token in ("label===t","priority(e)","site-access-context","await loadIndex()
 for token in ("--site-access-clearance", "viewportHeight-clearance-44"):
     if token not in tts_drawer:
         errors.append(f"TTS selection control does not honor fixed access clearance: {token}")
+
+if "bottom:calc(var(--site-access-clearance,0px) + 12px)" not in journey_ui:
+    errors.append("House journey ribbon does not honor fixed access clearance")
 
 if "@media(max-width:680px)" not in css or ".site-access-panel{bottom:52px;width:calc(100vw - 12px)" not in css:
     errors.append("site-access narrow-screen panel contract missing")
