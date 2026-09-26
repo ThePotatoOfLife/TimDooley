@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.3.1",
   "updated": "2026-09-26",
   "authority": "fast-access-curation",
   "purpose": "Curated high-value quick-access doors and aliases for the universal site dock. Public-surface and House-object registries remain the broad generated search index.",
@@ -20,12 +20,12 @@
       "world-map",
       "tim",
       "house",
-      "rooms"
+      "rooms",
+      "timeline"
     ],
     "find": [
       "people-cases",
       "index-a-z",
-      "timeline",
       "sources",
       "explore"
     ],
@@ -170,12 +170,17 @@
       "label": "Timeline",
       "route": "/timeline/",
       "kind": "find",
-      "note": "Events and chronology",
+      "note": "Primary chronology · life, project, traditions and foundations",
       "aliases": [
         "history",
         "dates",
         "chronology",
-        "events"
+        "events",
+        "time",
+        "tim dooley timeline",
+        "life timeline",
+        "project timeline",
+        "the long turning"
       ]
     },
     {
