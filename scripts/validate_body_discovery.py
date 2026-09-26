@@ -89,6 +89,8 @@ def main():
         fail("Body relational lens must not inject component CSS")
     if not body_lens_css.exists():
         fail("Body relational lens stylesheet missing")
+    if "projectUrl(x.body_route||'/life-body/')" not in body_lens:
+        fail("Body relational lens does not project body routes through the site base")
     if "const jsonCache=new Map()" not in journey or "function getJson(path)" not in journey:
         fail("House journey runtime does not reuse shared JSON requests")
     if "x.id===roomId||x.route_id===roomId" not in journey or "const canonicalRoomId=room.id" not in journey:
