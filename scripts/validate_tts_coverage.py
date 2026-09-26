@@ -132,6 +132,21 @@ def main() -> int:
             if marker not in text:
                 errors.append(f"TTS engine missing {marker}")
 
+    builder = ROOT / "scripts" / "build_discovery.py"
+    if not builder.exists():
+        errors.append("missing scripts/build_discovery.py")
+    else:
+        builder_text = builder.read_text(encoding="utf-8")
+        for marker in (
+            "data-site-tts-section",
+            'data-tts-item="[data-site-tts-section]"',
+            'data-tts-exclude="[data-no-tts]"',
+            "data-no-tts",
+            'data-reader-surface="generated-discovery"',
+        ):
+            if marker not in builder_text:
+                errors.append(f"generated discovery TTS contract missing {marker}")
+
     validate_built_site(errors, notes)
 
     print(f"checked {len(active)} active public surfaces")
