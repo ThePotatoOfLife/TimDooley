@@ -53,10 +53,13 @@ def count_before(text:str,index:int,regex)->int:
     return len(regex.findall(text[:index])) if index>=0 else 0
 
 def main()->int:
+    errors=[]; warnings=[]; metrics=[]
+    probe='<nav><a href="../world/">World</a></nav><h1>Title</h1><h2>Section</h2><button>Go</button>'
+    if not (ANCHOR_HREF.search(probe) and NAV.search(probe) and FIRST_NAV.search(probe) and H1.search(probe) and H2.search(probe) and BUTTON.search(probe)):
+        errors.append("architecture audit regex self-check failed")
     data=json.loads(REGISTRY.read_text(encoding="utf-8"))
     rows=[r for r in data.get("surfaces",[]) if isinstance(r,dict) and r.get("status")=="active"]
     by_id={r["id"]:r for r in rows}; route_to_id={}
-    errors=[]; warnings=[]; metrics=[]
     for row in rows:
         sid=row["id"]; route=normalize_route(row.get("canonical_route") or row.get("route") or "/")
         if route in route_to_id: errors.append(f"duplicate canonical route {route}: {route_to_id[route]} and {sid}")
