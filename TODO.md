@@ -638,3 +638,31 @@ The corridor-only baseline is eliminated across the 38 registered nested subject
 - [x] All 38 active nested Rooms now have editorial `Start here` sets backed by `data/house/room-featured-objects.json`; the full object population remains available underneath rather than competing equally for attention.
 - [x] Great Book, Experiments/Formalization and Information Ecology now pull concrete findings from their deeper canonical corpora into the reader prose, establishing the next semantic-completion pattern: promote insight, not merely routes.
 - [ ] Continue prose-alignment audits: compare each Room's featured objects and deep drawers against its reader body, then pull up only the insights needed for the page to explain its actual backend depth.
+
+
+## Comparative cosmology carving programme — 2026-09-26
+
+Architecture rule: use **Study Chambers** for dense lenses that deserve diagrams, glossaries and source trails but do not own a project-wide knowledge class. Canonical registry: `data/house/study-chambers.json`.
+
+- [x] Establish the Study Chamber tier and admission rule.
+- [x] Carve `Yggdrasil & the Eddas` beneath Comparative Mythology; include tree ecology, Odin eye/well, Hávamál ordeal, Norns, pantheon, creatures, Edda reading map and modern interpretive realm lens.
+- [x] Carve `Kabbalah, Qliphoth & Angelology` beneath Esoteric & Sacred Geometry; separate biblical, Jewish Kabbalistic, Lurianic and later Hermetic/occult strata; expose sefirot and named later-occult shell correspondences with historical warnings.
+- [x] Connect those chambers sideways to Axis/North, Religion, Comparative Cosmology and the Bible comparator.
+- [ ] Add a **Christian Tree / Cross / Door / New Jerusalem** chamber only if the Bible comparator cannot comfortably own the synthesis; prefer a filtered Bible-comparator journey first.
+- [ ] Add a **Buddhist cosmology & liberation** chamber: Bodhi tree, Meru, six realms, dependent origination, samsara, nirvana, Mahayana emptiness and a separately labeled Tibetan bardo lane.
+- [ ] Add a **Dao / Way / Water / Vessel** chamber: Daodejing, Zhuangzi, wu wei, return, valley, useful emptiness and how non-vertical cosmology challenges Axis-heavy project thinking.
+- [ ] Add a **World Trees & Cosmic Mountains** diagram surface comparing Yggdrasil, biblical Trees, sefirotic Tree, Bodhi tree, Meru, Zion/Temple, axis mundi and Potato Tree by function rather than identity.
+- [ ] Add an **Angels / messengers / guardians** study surface that keeps Jewish, Christian, Islamic, Norse-valkyrie and Potato angel roles separate; emphasize messenger/guardian/mediator functions before rank charts.
+- [ ] Add an **Underworlds are not one Hell** chamber: Sheol, Gehenna, Hades, Duat, Hel, Buddhist hell realms and project Below/Strife; distinguish death-realm, punishment, judgment, transition and shadow.
+- [ ] Add a **Sacred Eye** comparative surface: Odin/Mímir, Eye of Horus, Eye of Providence, prophetic vision/ophanim and project Eye/pineal symbolism; preserve anatomy/history/symbolism boundaries.
+- [ ] Add a **Fate / thread / law / karma** chamber combining Norns, Moirai, biblical cords/yokes, karma, Daoist process and project timeline/leash only where the operator is genuinely comparable.
+- [ ] Add a **Repair across traditions** chamber: tikkun, Christian reconciliation/new creation, Buddhist liberation, Daoist return, Norse maintenance/renewal and Potato Garden/repair.
+- [ ] Add a visual **functional translator** shared component so any chamber can pivot by question: center, connector, threshold, wisdom, brokenness, repair, descent, return, messenger, guardian.
+- [ ] Make chamber cards available contextually rather than globally: Axis should surface tree/ladder chambers; Below should surface underworld/qliphoth; Garden should surface repair/fertility; Door should surface threshold/Way/bardo.
+- [ ] Add image/diagram assets where they increase comprehension, but prefer authored schematic diagrams over decorative mythology art.
+- [ ] Add chamber-level provenance cards: primary texts, historical layer, later reception, project interpretation, known mismatches.
+- [ ] Add a chamber validator: owner Room exists, route exists, return route exists, source roots exist, epistemic boundary is visible, and no chamber silently becomes canonical owner.
+- [ ] Audit Islam, Hindu traditions, Sikhism, Jainism, Zoroastrianism, Shinto, Egyptian, Mesopotamian, Greek, Yoruba and Indigenous material for the same rule: promote only where the project has a real comparative question, not merely because a tradition exists.
+- [ ] Revisit `data/potatoism-deep-layers.json`: correct loose or inaccurate labels (for example “Islamic qabbalah”) and route each proposed comparison through an actual tradition-specific owner.
+- [ ] Audit North comparative claims for weak legacy generalizations about traditions/directions; keep only sourced, tradition-specific symbolic comparisons.
+- [ ] Finish when comparative material feels like a learnable constellation of side chambers around stable Rooms—not a pantheon-name dump and not a new maze of equal top-level destinations.
