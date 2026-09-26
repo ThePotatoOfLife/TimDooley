@@ -37,6 +37,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
         ("SEO pipeline contract", ["python scripts/validate_seo_pipeline.py"]),
         ("House governance", [
             "python scripts/validate_house_governance.py",
+            "python scripts/validate_room_home_navigation.py",
             "python scripts/validate_house_topology.py",
             "python scripts/validate_house_subrooms.py",
             "python scripts/validate_house_harmony.py",
