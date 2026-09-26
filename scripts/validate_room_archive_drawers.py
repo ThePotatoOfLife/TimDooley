@@ -31,10 +31,10 @@ def main()->int:
         if not prefix.startswith("knowledge/") or not prefix.endswith("/"):
             errors.append(f"{did}: invalid scope_prefix {prefix!r}")
             continue
-        actual=[p for p in (ROOT/prefix).glob("*") if p.is_file() and p.suffix.lower() in {".json",".md"}]
+        actual=[p for p in (ROOT/prefix).rglob("*") if p.is_file() and p.suffix.lower() in {".json",".md"}]
         declared=row.get("record_count")
         if declared!=len(actual):
-            errors.append(f"{did}: record_count={declared} but live top-level corpus count is {len(actual)} under {prefix}")
+            errors.append(f"{did}: record_count={declared} but live recursive corpus count is {len(actual)} under {prefix}")
         rooms=row.get("room_ids") or []
         if not rooms: errors.append(f"{did}: no Room placements")
         for rid in rooms:
