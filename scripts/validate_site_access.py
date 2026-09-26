@@ -129,7 +129,7 @@ for token in ("house-journey.css?v=20260926c","data-house-journey-style"):
         errors.append(f"House journey stylesheet loader missing: {token}")
 if "style.textContent" in journey_ui or "createElement('style')" in journey_ui:
     errors.append("House journey runtime must not inject component CSS")
-if '"house-journey.js": "20260926d"' not in patcher:
+if '"house-journey.js": "20260926e"' not in patcher:
     errors.append("shared asset registry does not version the House journey runtime")
 if '"body-relational-lens.js": "20260926b"' not in patcher:
     errors.append("shared asset registry does not version the Body relational lens runtime")
