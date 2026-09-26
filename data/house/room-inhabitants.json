@@ -1,5 +1,5 @@
 {
-  "version": "2.3.0",
+  "version": "2.3.1",
   "updated": "2026-09-26",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
@@ -1970,7 +1970,7 @@
         "whole-body",
         "symbolic-body-comparison"
       ],
-      "route": "/records/neural-development-lineage-atlas/",
+      "route": "/knowledge/body/neural-development-lineage-atlas.json",
       "summary": "Developmental route from neural plate/tube through brain vesicles, progenitors, migration, glia and tract formation into adult House/brainstem/spinal architecture.",
       "status_note": "Developmental ancestry informs but does not uniquely determine adult function.",
       "evidence_note": "Human development and rodent models must remain distinguishable.",
@@ -2032,7 +2032,7 @@
         "whole-body",
         "symbolic-body-comparison"
       ],
-      "route": "/records/glia-neurovascular-barrier-atlas/",
+      "route": "/knowledge/body/glia-neurovascular-barrier-atlas.json",
       "summary": "Astrocytes, endothelium, pericytes, microglia, neurons and extracellular matrix form a living barrier/metabolic/vascular ecosystem.",
       "status_note": "BBB, blood-CSF barrier and meningeal borders are distinct interfaces.",
       "evidence_note": "Use the glia/neurovascular atlas for cell-type and boundary distinctions.",
@@ -2093,7 +2093,7 @@
         "neurobiology",
         "symbolic-body-comparison"
       ],
-      "route": "/records/cortical-celltype-parcellation-atlas/",
+      "route": "/knowledge/body/cortical-celltype-parcellation-atlas.json",
       "summary": "Layers I–VI, projection classes, interneuron families, glia and transcriptomic parcellations deepen broad cortical room labels.",
       "status_note": "No single parcellation is the final map of cortex.",
       "evidence_note": "Cytoarchitecture, transcriptomics, connectivity and functional networks are complementary coordinate systems.",
@@ -3021,7 +3021,7 @@
       "room_ids": [
         "games-simulations",
         "systems-dynamics",
-        "culture-information"
+        "subculture-group-formation"
       ],
       "route": "/works/#actual-works",
       "summary": "Accelerated-time town where local agents, seasons, Door events and small rules generate larger stories for observation and ablation.",
@@ -3036,7 +3036,7 @@
       "room_ids": [
         "games-simulations",
         "practice-ethics",
-        "culture-information"
+        "subculture-group-formation"
       ],
       "route": "/works/#actual-works",
       "summary": "Quest-based teaching satire using Doors, keys, cultivation and absurd credentials to test whether philosophy can be learned through play while mocking gatekeeping.",
@@ -3051,7 +3051,7 @@
       "room_ids": [
         "music-sound",
         "great-book-literature",
-        "culture-information"
+        "information-ecology"
       ],
       "route": "/explore/#record=knowledge%2Fcreative%2Ftim-dooley-suno-music-archive.json",
       "summary": "Recovered public catalogue fragment containing 62 distinct song generations and 59 unique titles, kept as a creative-source ledger rather than prophecy evidence.",
