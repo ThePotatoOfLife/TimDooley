@@ -972,8 +972,10 @@ The governing editorial rule is:
 #### Structural / bug TODO after current wave
 
 - [ ] Add shared branch-type legend component to Religion and tradition pages once stable labels are finalized.
-- [ ] Add automated internal-link/tag-balance validation for `traditions/**/*.html` to CI instead of relying on ad-hoc audit.
-- [ ] Add one lightweight tradition-route registry so Religion/Timeline links can be generated from canonical metadata instead of hand-maintained duplication.
+- [x] Add automated internal-link/tag-balance validation for `traditions/**/*.html` to CI instead of relying on ad-hoc audit.
+- [x] Add one lightweight tradition-route registry as the canonical inventory for specialist tradition readers; future Religion/Timeline generation can consume it instead of hand-maintained duplication.
 - [ ] Audit external source links for redirects/dead pages and replace unstable secondary links with durable institutional/academic owners.
 - [ ] Verify mobile wrapping on Foundation Timeline now that its tradition nav is wider; collapse or overflow deliberately if needed.
 - [ ] Check all new pages against global typography/CSS so local inline styles can gradually be consolidated rather than proliferate.
+
+- [x] Remove stale Study Chamber wording from Comparative Cosmology after the architecture was explicitly rejected; validator now blocks its return on public tradition pages.
