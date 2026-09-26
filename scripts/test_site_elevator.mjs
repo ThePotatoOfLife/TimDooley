@@ -196,9 +196,9 @@ assert.ok(!css.includes('backdrop-filter:blur(6px) saturate(116%)'),'Heaven shou
 assert.ok(css.includes('@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)))'),'Heaven glass needs an opaque fallback when blur is unavailable');
 assert.ok(css.includes('@media (prefers-contrast: more)'),'Heaven glass needs an explicit high-contrast mode');
 assert.ok(css.includes('[data-elevator-level="heaven"] .site-elevator-room.is-active'),'Heaven current Room needs a dedicated glass-active state');
-assert.ok(css.includes('rgba(15,38,60,.78)'),'Heaven floor board needs readable translucent glass');
+assert.ok(css.includes('rgba(15,38,60,.72)'),'Heaven floor board needs readable translucent glass');
 assert.ok(css.includes('backdrop-filter:blur(9px) saturate(122%)'),'Heaven floor board needs a restrained frosted-glass treatment');
-assert.ok(css.includes('rgba(11,33,52,.70)'),'Heaven Room rail needs translucent glass over the sky');
+assert.ok(css.includes('rgba(11,33,52,.64)'),'Heaven Room rail needs translucent glass over the sky');
 assert.ok(css.includes('backdrop-filter:blur(8px) saturate(118%)'),'Heaven rail needs restrained glass refraction');
 assert.ok(css.includes('background:rgba(38,30,21,.95)'),'Plane floor board needs a dark readability plate');
 assert.ok(css.includes('background:rgba(24,14,11,.96)'),'Below floor board needs a dark readability plate');
