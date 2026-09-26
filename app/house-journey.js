@@ -333,7 +333,34 @@
     }catch(e){}
   }
 
+
+  function installRoomSectionGuide(){
+    const body=document.querySelector('[data-room-reader-body]');
+    if(!body)return;
+    const headings=[...body.querySelectorAll(':scope > h2')];
+    if(headings.length<4)return;
+    const slugify=(text)=>String(text||'section').toLowerCase()
+      .normalize('NFKD').replace(/[\u0300-\u036f]/g,'')
+      .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,72)||'section';
+    const used=new Set();
+    headings.forEach((h,index)=>{
+      if(h.id){used.add(h.id);return}
+      let id=slugify(h.textContent);
+      if(used.has(id))id+='-'+(index+1);
+      used.add(id);h.id=id;
+    });
+    if(document.querySelector('.room-section-guide'))return;
+    const guide=document.createElement('nav');
+    guide.className='room-section-guide';
+    guide.setAttribute('aria-label','In this Room');
+    guide.innerHTML='<div><p class="eyebrow">In this Room</p><strong>'+esc(headings.length)+' sections</strong></div><div class="room-section-links">'
+      +headings.map(h=>'<a href="#'+esc(h.id)+'">'+esc(h.textContent.trim())+'</a>').join('')
+      +'</div>';
+    body.insertAdjacentElement('beforebegin',guide);
+  }
+
   installRibbon();
+  installRoomSectionGuide();
   installRoomsBestOf();
   installDwellingFeaturedObjects();
   installRoomFloorProjection();
