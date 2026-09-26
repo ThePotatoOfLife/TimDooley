@@ -57,6 +57,13 @@
     sort:'asc',
     mode:'arc'
   };
+  const requestedMode=new URLSearchParams(location.search).get('mode');
+  if(['arc','road','faith','foundations','project'].includes(requestedMode)){
+    state.mode=requestedMode;
+    if(requestedMode==='faith') state.sources=new Set(['lineage','figures']);
+    if(requestedMode==='foundations') state.sources=new Set(['foundations']);
+    if(requestedMode==='project') state.sources=new Set(['project']);
+  }
   let rows=[], meta={};
 
   function unique(arr){return [...new Set(arr.filter(Boolean))]}
