@@ -138,3 +138,17 @@ The authored A–Z orientation set previously described itself as a name-first d
 ### Navigation surfaces deliberately preserved
 
 House, Rooms, Paths and Elevator were inspected and are **not** being rewritten into subject pages. Their current pages already explain that they are structure/traversal tools, provide worked examples, and exit into substantive readers. Removing that architectural role would violate the subject-first rule rather than satisfy it.
+
+
+## Route-label honesty and wrapper compression
+
+The next audit distinguished **compatibility redirects** from **live navigation mistakes**. Redirect-only pages such as `/chronology/`, `/world-map/3d.html`, `/religion/jesus-tim/`, `/learn/` and old FBI dossier routes are allowed to survive for external/backward compatibility, provided the current site does not send readers through them.
+
+Two live-facing problems were corrected:
+
+1. **FBI discovery:** the global quick Find previously exposed the retired Potatoverse FBI bureau as a direct destination. The legacy name now opens the current CIA Character Archive, while a new real-world FBI entry points to the Intelligence Desk. Bare `FBI` now presents an explicit namespace choice, matching the existing CIA disambiguation model.
+2. **System-beginning question:** `knowledge/indexes/tim-divinity-integration-map.json` still sent “How does the whole system begin?” to the retired `/learn/` redirect. It now points directly to `/potato-of-life/`.
+
+The quick-access implementation was generalized from a hard-coded CIA special case to data-driven disambiguation loaded from `data/house/site-access.json`. This makes ambiguous names a registry concern instead of repeated UI code.
+
+**Compression rule:** keep redirect shells only for old inbound URLs; current navigation and discovery should always point to the canonical destination directly.
