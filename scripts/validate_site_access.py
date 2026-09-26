@@ -123,7 +123,7 @@ for token in ("label===t","priority(e)","site-access-context","await loadIndex()
     if token not in js and token not in css:
         errors.append(f"quick-access behavior missing regression marker: {token}")
 
-for token in ("house-journey.css?v=20260926a","data-house-journey-style"):
+for token in ("house-journey.css?v=20260926b","data-house-journey-style"):
     if token not in journey_ui:
         errors.append(f"House journey stylesheet loader missing: {token}")
 if "style.textContent" in journey_ui or "createElement('style')" in journey_ui:
