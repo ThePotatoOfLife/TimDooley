@@ -1,7 +1,7 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "updated": "2026-09-27",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
@@ -192,5 +192,44 @@
       "authority": "specialist",
       "boundary": "Specializes Tim/Axis/Spiral/Root development; generic operators remain owned elsewhere."
     }
+  },
+  "wave_lifecycle": {
+    "statuses": {
+      "source-bearing": "Contains unique wording, dates, source recovery, contradictions or provenance. Keep discoverable; promote interpretations upward without deleting the source stratum.",
+      "partially-promoted": "Some durable findings are already in canonical owners, but unique evidence/analysis remains. Keep until promotion audit is complete.",
+      "absorbed-provenance-only": "Durable findings have been promoted and only provenance/history remains. May move to archive, but must remain recoverable.",
+      "temporary-retireable": "No unique evidence, analysis or provenance remains after promotion. Eligible for deletion only after reference and build audit."
+    },
+    "families": [
+      {
+        "pattern": "knowledge/timeline/conversation-archaeology-*",
+        "default_status": "source-bearing",
+        "reason": "Conversation archaeology preserves recovered wording, dates and developmental context; those are evidence strata, not disposable duplicate summaries."
+      },
+      {
+        "pattern": "knowledge/**/conversation-recovery-*",
+        "default_status": "source-bearing",
+        "reason": "Recovery records preserve source wording/context even when their interpretations are promoted elsewhere."
+      },
+      {
+        "pattern": "knowledge/research/*wave*",
+        "default_status": "partially-promoted",
+        "reason": "Research waves may contain unique external sources, tests or counterexamples; promotion must be audited before retirement."
+      },
+      {
+        "pattern": "knowledge/indexes/*wave*",
+        "default_status": "partially-promoted",
+        "reason": "Wave indexes often preserve discovery/provenance routing even after durable concepts move into owners."
+      }
+    ],
+    "retirement_gate": [
+      "All unique quotations and dated observations have a surviving source owner.",
+      "All durable general definitions/laws have been promoted into the canonical owner.",
+      "All unique external sources, counterexamples and negative findings are preserved.",
+      "Inbound references have been redirected or intentionally retained.",
+      "The file is marked absorbed-provenance-only or temporary-retireable before movement/deletion.",
+      "Repository quality/build checks pass after the structural change."
+    ],
+    "anti_rule": "Do not call a file duplicate merely because its conclusion now exists elsewhere; source/provenance and canonical synthesis are different jobs."
   }
 }
