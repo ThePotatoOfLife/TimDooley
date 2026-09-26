@@ -111,3 +111,9 @@
 .room-section-links a{color:var(--site-muted,#9ba59a);font-size:9px;text-decoration:none;border-bottom:1px solid transparent;padding:3px 0}
 .room-section-links a:hover,.room-section-links a:focus-visible{color:var(--site-green,#9eb58d);border-bottom-color:var(--site-line,#303830);outline:none}
 @media(max-width:680px){.room-section-guide{grid-template-columns:1fr;gap:8px}.room-section-guide>div:first-child{min-width:0}}
+
+
+.adj-interface{display:block;margin-top:10px;padding-top:9px;border-top:1px solid rgba(255,255,255,.055)}
+.adj-interface>b{display:block;color:var(--site-green,#9eb58d);font:700 7px/1.2 var(--site-font-sans,system-ui,sans-serif);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.adj-interface>span{display:block;color:var(--site-muted,#9ba59a);font-size:9px;line-height:1.45}
+.adj-interface>small{display:block;color:var(--site-faint,#778076);font-size:8px;line-height:1.4;margin-top:5px}
