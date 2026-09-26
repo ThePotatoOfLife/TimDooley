@@ -259,10 +259,15 @@ def _relative_asset_prefix(page: Path) -> str:
     return "../" * depth
 
 def normalize_shared_asset_versions(text: str) -> str:
-    """Keep shared UI assets on one build generation, even on authored pages."""
+    """Keep shared UI asset attributes on one build generation."""
     for asset, version in SHARED_ASSET_VERSIONS.items():
-        pattern = rf"(app/{re.escape(asset)})(?:\?v=[A-Za-z0-9._-]+)?"
-        text = re.sub(pattern, rf"\1?v={version}", text)
+        pattern = rf'''(?P<head>\b(?:href|src)\s*=\s*["'][^"']*app/{re.escape(asset)})(?:\?v=[A-Za-z0-9._-]+)?(?P<tail>["'])'''
+        text = re.sub(
+            pattern,
+            lambda match: f'{match.group("head")}?v={version}{match.group("tail")}',
+            text,
+            flags=re.I,
+        )
     return text
 
 
