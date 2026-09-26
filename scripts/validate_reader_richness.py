@@ -175,6 +175,17 @@ def main() -> int:
         elif source.find('class="room-actions"', first_reader) < 0:
             errors.append(f"{rel} first substantive section no longer exposes concrete subject routes")
 
+    # Nested subject Rooms must not reintroduce a generic local-center splash
+    # between the subject header and the authored reader material.
+    nested_meta_hits=[]
+    for route in registered:
+        rel=route.strip("/")+"/index.html"
+        source=(ROOT/rel).read_text(encoding="utf-8",errors="replace")
+        if '<section class="inner-center"' in source:
+            nested_meta_hits.append(rel)
+    if nested_meta_hits:
+        errors.append("nested Rooms regressed to meta-first inner-center shells: "+", ".join(nested_meta_hits[:12]))
+
     authored_groups = [
         audit.get("authored_history") or [],
         audit.get("second_authored_wave") or [],
