@@ -159,3 +159,16 @@ The quick-access implementation was generalized from a hard-coded CIA special ca
 Reader-richness validation previously had an important weakness: a page could satisfy the visible-substance check by accumulating enough plain text. That protects against empty shells, but it does not distinguish a dense filing-system essay from an inhabited reader.
 
 The validator now also checks the principal subject pages for recognizable authored material forms: Room readers/essays, worked sections, historical steps, lab cases, collection cases, North development rows, systems chains, actual-works ledgers, chronology/development sections, or the top-level Dwelling reader marker. This remains deliberately format-tolerant; it does not force every subject into one card layout. The contract is simply that **important subject pages must expose a concrete reader form in addition to having sufficient prose**.
+
+
+## Generated question recovery
+
+The generated discovery layer had begun reproducing the same architecture-first mistake in a different form. Individual question pages answered the question, but then exposed **Equivalent searches**, **Entities**, **Canonical owners** and the raw **Discovery view** filename as visible article sections. They also emitted `FAQPage` schema for individual answer pages despite the newer SEO contract reserving FAQ markup for genuine visible FAQ collections.
+
+The generator now produces a human sequence of **Answer → What that means → compact dated/epistemic context → related questions**. Search variants, entities, canonical owner paths and source-view provenance remain embedded in a non-visible `data-question-machine-meta` JSON block for retrieval and review. Individual question pages now identify as `generated-question` and use `Article` schema.
+
+Reader-richness validation now rejects a return of visible Canonical owners / Discovery view / Equivalent searches / Entities taxonomy sections in the individual-question template.
+
+## Legacy-route crawl contract
+
+The site architecture audit now builds a registry of every `legacy_routes` value in the public-surface contract. Any current registered public surface linking to one of those compatibility URLs is reported as `live-link-to-legacy-route` with the canonical surface that should replace it. Redirect shells may remain for historical inbound traffic, but the current site must not intentionally route readers through them.
