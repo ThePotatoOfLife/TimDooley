@@ -144,6 +144,37 @@ def main() -> int:
     if missing_shell:
         errors.append("registered nested Room shells missing: "+", ".join(missing_shell[:10]))
 
+    # Subject-first regression contract: top-level Dwellings are knowledge readers,
+    # not circular filing-system splash pages.
+    top_level_dwellings = [
+        "rooms/potatoverse-canon/index.html",
+        "rooms/archive-sources/index.html",
+        "rooms/time-history/index.html",
+        "rooms/traditions-texts/index.html",
+        "rooms/science-formal-models/index.html",
+        "rooms/life-body/index.html",
+        "rooms/world-systems/index.html",
+        "rooms/culture-information/index.html",
+        "rooms/works/index.html",
+        "rooms/research-lab/index.html",
+    ]
+    forbidden_meta_first = (
+        "Dwelling · local center",
+        "Inside this Dwelling, this subject becomes the center of attention",
+        "Open primary public surface",
+        '<section class="local-center"',
+    )
+    for rel in top_level_dwellings:
+        source=(ROOT/rel).read_text(encoding="utf-8",errors="replace")
+        for marker in forbidden_meta_first:
+            if marker in source:
+                errors.append(f"{rel} regressed to meta-first Dwelling shell: {marker}")
+        first_reader=source.find('class="dwelling-reader"')
+        if first_reader < 0:
+            errors.append(f"{rel} missing first substantive dwelling-reader section")
+        elif source.find('class="room-actions"', first_reader) < 0:
+            errors.append(f"{rel} first substantive section no longer exposes concrete subject routes")
+
     authored_groups = [
         audit.get("authored_history") or [],
         audit.get("second_authored_wave") or [],
