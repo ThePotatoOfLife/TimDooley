@@ -190,12 +190,20 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 - [ ] **RICH-002 · Information Ecology provenance hardening:** add source-class / publication-year metadata and a compact bibliography projection so research claims on the public page can be traced without exposing raw backend clutter.
 - [ ] **RICH-003 · Whole-body evidence spine:** add canonical references for NTS/parabrachial interoception, endocrine axes, neurovascular coupling, choroid plexus/CSF and meningeal lymphatics to the newly deepened public physiology page.
 - [ ] **RICH-004 · Infrastructure external cases:** verify and deepen grid, bridge/port and canal capability cases with current primary sources; add at least one semiconductor/fibre/data-centre supply-chain case and one recovery-time/resilience metric.
-- [ ] **RICH-005 · Comparative Mythology source-first pass:** choose 3–5 major comparisons and add primary-text or scholarly anchors, historical dates, and explicit transmission-vs-analogy tests; remove any comparison that is merely shape-matching.
-- [ ] **RICH-006 · Theology language archaeology:** trace Father/House/Gardener/Door/Spirit language through dated project sources and external textual traditions; distinguish original wording, later synthesis and comparative theology.
+- [x] **RICH-005 · Comparative Mythology source-first pass:** choose 3–5 major comparisons and add primary-text or scholarly anchors, historical dates, and explicit transmission-vs-analogy tests; remove any comparison that is merely shape-matching.
+- [~] **RICH-006 · Theology language archaeology:** trace Father/House/Gardener/Door/Spirit language through dated project sources and external textual traditions; distinguish original wording, later synthesis and comparative theology.
 - [ ] **RICH-007 · Visual Art object-density pass:** recover or index actual image prompts/artifacts where available; expose composition families by dated object, not only visual grammar.
 - [ ] **RICH-008 · Music provenance pass:** connect recovered song UUIDs to dated mentions, lyric-complete records, style/model transitions and reuse; do not reconstruct missing lyrics.
 - [ ] **RICH-009 · Law / Economy / Politics freshness pass:** for current institutions, statutes, fiscal figures and officeholders, use dated primary/public sources and separate descriptive fact from project interpretation.
 - [ ] **RICH-010 · Room nonsense detector:** sample every mature Room and flag paragraphs that could be moved to another Room with only noun substitutions; replace those with subject-specific mechanisms or objects.
+- [x] **RICH-011 · Prediction scoring contract:** add target/horizon/resolution/probability/base-rate/miss fields, Brier/calibration concepts, hindsight-bias controls and anti-cherry-picking rules to the Prediction / Revelation Room.
+- [x] **RICH-012 · Witness provenance contract:** distinguish native originals, faithful captures, derived copies, edited derivatives and reconstructions; separate authenticity, attestation, truth and interpretation; model derivation using W3C PROV-style entity/activity/agent logic and preserve C2PA credentials when available.
+- [x] **RICH-013 · Symbolic operator contracts:** make Door, House, Axis, Plane, Root, Tree, Garden, Mountain, Swamp, Forge, Spiral and Ring explicit input→transformation→output operators with invariants and misuse tests.
+- [x] **RICH-014 · Sacred-geometry artifact lineage:** anchor Vesica/Mandorla/Eye/Pyramid material in dated mathematical/art objects and reception stages rather than treating visual recurrence as one timeless doctrine.
+- [ ] **RICH-015 · Practice & Ethics mechanism pass:** replace generic moral language with worked cases, repair obligations, agency tests, restorative-vs-protective boundaries and concrete failure modes.
+- [ ] **RICH-016 · Developmental Genealogy source graph:** expose exact first/last attestations and supersession edges for major role transitions instead of summarizing change only in prose.
+- [ ] **RICH-017 · Canon Identities contradiction pass:** add dated identity conflicts, superseded roles and mutually incompatible formulations rather than only the mature resolved grammar.
+- [ ] **RICH-018 · Information Ecology bibliography projection:** surface publication year/source class for external research claims without turning the page into a citation wall.
 
 ### Whole-House harmony pass — 2026-09-20
 
