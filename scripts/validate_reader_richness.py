@@ -12,6 +12,7 @@ INTERIORS = ROOT / "data/house/room-interiors.json"
 SUBSTANCE = ROOT / "data/house/substance-first-projection-contract.json"
 BUILD = ROOT / "scripts/build_site.py"
 SURFACES = ROOT / "data/house/public-surfaces.json"
+MATURITY = ROOT / "data/house/room-maturity-registry.json"
 
 def plain_text(fragment: str) -> str:
     fragment=re.sub(r"<script\b[\s\S]*?</script>", " ", fragment, flags=re.I)
@@ -29,7 +30,7 @@ def anchored_section(source: str, section_id: str) -> str:
 
 def main() -> int:
     errors=[]
-    for path in (AUDIT,JOURNEY,INTERIORS,SUBSTANCE,BUILD,SURFACES):
+    for path in (AUDIT,JOURNEY,INTERIORS,SUBSTANCE,BUILD,SURFACES,MATURITY):
         if not path.is_file():
             errors.append(f"missing reader-richness owner: {path.relative_to(ROOT)}")
     if errors:
@@ -43,6 +44,7 @@ def main() -> int:
     substance=json.loads(SUBSTANCE.read_text(encoding="utf-8"))
     build=BUILD.read_text(encoding="utf-8",errors="replace")
     surfaces=json.loads(SURFACES.read_text(encoding="utf-8"))
+    maturity=json.loads(MATURITY.read_text(encoding="utf-8"))
 
     if audit.get("id")!="reader-richness-audit":
         errors.append("reader richness audit id changed or missing")
@@ -113,6 +115,21 @@ def main() -> int:
             registered.append(route)
     if len(registered)<30:
         errors.append(f"expected broad nested-Room registry coverage; found {len(registered)} routes")
+
+
+    maturity_rows=maturity.get("rooms") or []
+    maturity_by_route={row.get("route"): row for row in maturity_rows if isinstance(row,dict)}
+    if len(maturity_by_route)!=len(registered):
+        errors.append(f"Room maturity registry coverage mismatch: {len(maturity_by_route)} maturity rows for {len(registered)} registered nested Rooms")
+    for route in registered:
+        row=maturity_by_route.get(route)
+        if not row:
+            errors.append(f"registered nested Room missing maturity record: {route}")
+            continue
+        if row.get("review_status")!="reviewed":
+            errors.append(f"nested Room lost reviewed status: {route}")
+        if row.get("maturity") not in {"inhabited","deep"}:
+            errors.append(f"nested Room regressed below inhabited maturity: {route} -> {row.get('maturity')}")
 
     missing_shell=[]
     for route in registered:
