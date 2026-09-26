@@ -1,0 +1,71 @@
+{
+  "id": "physics-cosmology-literal-reference-atlas",
+  "title": "Physics & Cosmology — Literal Reference Atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-27",
+  "status": "literal-physics grounding layer",
+  "purpose": "Give project comparators a compact literal physics owner so terms such as event horizon, T-duality, mirror symmetry, M-theory and Saturn hexagon cannot float free of their actual scientific domains.",
+  "epistemic_rule": "A valid analogy preserves the literal mechanism and states the mismatch. A borrowed term is not evidence that the project object shares the physics.",
+  "entries": [
+    {
+      "id": "event-horizon",
+      "term": "Event horizon",
+      "literal": "In general-relativistic black-hole physics, the event horizon is a causal boundary: inside it, signals cannot escape to distant outside observers. It is not a solid surface.",
+      "project_boundary": "A difficult personal or symbolic threshold is not an event horizon unless an actual spacetime causal boundary is being claimed and modeled.",
+      "source": "https://science.nasa.gov/universe/black-holes/anatomy/"
+    },
+    {
+      "id": "singularity",
+      "term": "Black-hole singularity",
+      "literal": "General relativity predicts singular behavior at the center of idealized black-hole solutions. NASA explicitly notes that whether the singularity is a physical structure or a mathematical indication of the theory's limit remains unknown; quantum effects absent from classical relativity may matter.",
+      "project_boundary": "Use singularity as a methodological analogy for model breakdown only when clearly labeled; contradiction or psychological rupture is not literally gravitational singularity.",
+      "source": "https://science.nasa.gov/universe/black-holes/anatomy/"
+    },
+    {
+      "id": "saturn-hexagon",
+      "term": "Saturn north-polar hexagon",
+      "literal": "Cassini observations show a long-lived six-sided atmospheric jet stream around Saturn's north pole, about 30,000 km across with winds around 322 km/h. Laboratory rotating-fluid experiments can produce polygonal flows, including hexagons.",
+      "project_boundary": "The hexagon is an atmospheric flow pattern, not a rigid cube, artificial megastructure or physical evidence of occult Saturn symbolism.",
+      "sources": [
+        "https://science.nasa.gov/mission/cassini/science/saturn/hexagon-in-motion/",
+        "https://www.nasa.gov/news-release/nasas-cassini-spacecraft-obtains-best-views-of-saturn-hexagon/"
+      ]
+    },
+    {
+      "id": "t-duality",
+      "term": "T-duality",
+      "literal": "In string theory, T-duality relates certain string backgrounds/compactifications so that descriptions involving a compact radius R can correspond to dual descriptions involving an inverse-scale radius. The equivalence depends on the string-theory structure and is not ordinary geometric inversion.",
+      "project_boundary": "Useful as an example that apparently different scale descriptions can encode equivalent physics in a specific theory. It does not imply spiritual above/below, large/small or inner/outer states are physically dual.",
+      "source": "https://arxiv.org/abs/hep-th/9410237"
+    },
+    {
+      "id": "mirror-symmetry",
+      "term": "Mirror symmetry",
+      "literal": "Mirror symmetry relates pairs of Calabi-Yau compactifications / associated supersymmetric conformal field theories in ways that exchange geometric data while preserving relevant physical content.",
+      "project_boundary": "Mirror/Twin language may use this as a formal comparator only. Human twins, symbolic opposites and theological Father/Son relations are not thereby string-theory mirror pairs.",
+      "source": "https://arxiv.org/abs/alg-geom/9411019"
+    },
+    {
+      "id": "ads-cft-entanglement",
+      "term": "Entanglement and emergent geometry in holography",
+      "literal": "In AdS/CFT research, quantum entanglement structure is deeply related to geometric quantities in a specific gauge/gravity duality setting. This is a theory-specific relation between quantum field theory and gravitational geometry.",
+      "project_boundary": "It is not evidence that ordinary social relationships, language or spiritual bonds literally generate spacetime.",
+      "source": "https://arxiv.org/abs/2110.05634"
+    },
+    {
+      "id": "m-theory-11d",
+      "term": "M-theory and eleven dimensions",
+      "literal": "M-theory is a framework connecting several string-theory descriptions and is formulated with an eleven-dimensional low-energy supergravity limit. The extra dimensions belong to a mathematical/physical theory of fundamental interactions, not to an eleven-step symbolic hierarchy.",
+      "project_boundary": "A project architecture with eleven levels can be compared numerically or structurally only after stating that no physical identification follows from the shared number."
+    }
+  ],
+  "promotion_tests": [
+    "Name the physical object or field being modeled.",
+    "State variables and units.",
+    "Specify the governing equation or mechanism.",
+    "State the scale/regime in which the model is intended to apply.",
+    "Name an observable that differs from a baseline model.",
+    "State what result would count against the claim.",
+    "Keep symbolic analogy in a separate field from empirical status."
+  ]
+}
