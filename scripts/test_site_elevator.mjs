@@ -205,6 +205,14 @@ assert.ok(css.includes('margin:0;'),'elevator shell must reset page-level header
 assert.ok(css.includes('align-self:start'),'elevator controls must stay pinned when Room grid wraps');
 assert.ok(css.includes('--elevator-row-height:42px'),'desktop elevator controls need a fixed one-row height token');
 assert.ok(!/--([\\w-]+):var\\(--\\1\\)/.test(css),'elevator CSS custom properties must not self-reference');
+
+for(const match of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)){
+  const selector=match[1].trim();
+  if(selector.startsWith('@')||/^\d+%$/.test(selector))continue;
+  const props=[...match[2].matchAll(/([\w-]+)\s*:/g)].map(row=>row[1]);
+  const duplicates=props.filter((prop,index)=>props.indexOf(prop)!==index);
+  assert.equal(duplicates.length,0,selector+' must not repeat CSS properties: '+[...new Set(duplicates)].join(', '));
+}
 assert.ok(css.includes('.site-elevator-reel{\n  align-self:start;'),'floor board must stay pinned when Room grid wraps');
 assert.ok(css.includes('--elevator-room-row-min:26px'),'wrapped Room rows must stay compact and predictable');
 assert.ok(css.includes('.site-elevator-up::before{content:"△"}'),'up arrow needs triangle framing');
