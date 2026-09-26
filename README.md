@@ -149,16 +149,17 @@ Material is classified as one or more of:
 
 This permits strong religious expression without destroying research integrity. Similarity is not identity. Analogy is not genealogy. Symbolic correspondence is not proof of causation. A religious parallel can be profound without proving historical borrowing. A prophecy can be meaningful inside the mythology without being misrepresented as independently verified prediction.
 
-## House, Rooms, Paths and Views
+## House, Rooms and reader families
 
-The repository now distinguishes four structural questions that older versions sometimes mixed together:
+The repository separates **ownership** from **ways of reading**.
 
-- **House / Rooms** — where durable knowledge belongs and which bounded context owns each fact family;
-- **Paths** — task-oriented traversals across several Rooms, such as practice, journey, evidence, research or repair;
-- **Living Axis** — the `THROUGH` grammar of guarded transition, Life/Strife/Repair and D1–D11 transformation regimes;
-- **Views** — replaceable public projections such as the homepage, World Map, Timeline, Bible comparator and Explore.
+- **House** explains how the project fits together.
+- **Rooms** own bounded knowledge domains and answer where material belongs.
+- **Views** such as Timeline, World Map, Axis and specialist readers project owned material without becoming second canons.
+- **Explore** is the retrieval umbrella: Questions, A–Z, Paths and the deep archive are four ways to find the same owned material.
+- **Reader families** bind related public surfaces into one visible system: Tim/life/making, Timeline/history, Sources/context, Explore/retrieval, House/placement, World/systems, and Meaning/testing.
 
-The permanent structural constitution is `docs/POTATO-HOUSE-CONSTITUTION.md`. The canonical Room registry is `data/house/rooms.json`. The public House guide lives at `/house/`, Paths at `/paths/`, and the Living Axis at `/axis/`.
+The permanent structural constitution is `docs/POTATO-HOUSE-CONSTITUTION.md`. Public route identity is governed by `data/house/public-surfaces.json`; whole-project reader families are declared in `data/house/project-synthesis.json`; the canonical Room registry is `data/house/rooms.json`; and `manifest.json` owns deep archive branches/pathways rather than public-route identity.
 
 The practical lifecycle is broader than ascent alone:
 
