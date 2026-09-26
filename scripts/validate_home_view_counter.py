@@ -17,8 +17,8 @@ HTML_MARKERS = (
 )
 CSS_MARKERS = (
     '.home-view-counter{position:fixed;',
-    'z-index:10049',
-    'bottom:calc(var(--site-access-clearance,0px) + 8px)',
+    'z-index:var(--site-z-counter,10049)',
+    'bottom:calc(var(--site-access-clearance,0px) + var(--site-floating-gap,8px))',
     '.home-view-counter img{display:block;height:16px;width:auto}',
 )
 
