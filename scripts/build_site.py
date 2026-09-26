@@ -121,11 +121,16 @@ def summary_from_record(data: dict, fallback: str = "") -> str:
 
 def text_blocks(data, depth=0, limit=80):
     blocks = []
+    metadata_keys = {
+        "title","name","id","summary","version","updated","status",
+        "source_records","source_record","source_paths","source_path",
+        "canonical_owner","canonical_owners","provenance","schema_version",
+    }
     if len(blocks) >= limit:
         return blocks
     if isinstance(data, dict):
         for key, value in data.items():
-            if key in {"title", "name", "id", "summary"}:
+            if key in metadata_keys:
                 continue
             label = esc(str(key).replace("_", " ").replace("-", " ").title())
             if isinstance(value, str):
@@ -187,6 +192,7 @@ def page_shell(
     about=None,
     parent_label="Explore",
     parent_path="explore/",
+    machine_meta=None,
 ) -> str:
     desc = " ".join(description.split())[:300]
     about = about or []
@@ -208,10 +214,14 @@ def page_shell(
     # explicitly so site TTS can expose meaningful section boundaries without
     # reading utility navigation or machine-discovery controls.
     body = re.sub(r"<section(?![^>]*data-site-tts-section)", '<section data-site-tts-section', body)
+    machine_block = ""
+    if machine_meta:
+        payload = json.dumps(machine_meta, ensure_ascii=False).replace("</", "<\\/")
+        machine_block = f'<script type="application/json" data-generated-knowledge-meta>{payload}</script>'
     return f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} | The Potato of Life</title><meta name="description" content="{esc(desc)}"><meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"><link rel="canonical" href="{esc(canonical)}"><link rel="describedby" href="{esc(BASE_URL + '/llms.txt')}" type="text/plain"><script type="application/ld+json">{json.dumps(ld, ensure_ascii=False).replace('</', '<\\/')}</script>
-<style>:root{{--bg:#080a08;--ink:#f4f0e5;--muted:#a8ada3;--line:#2b322b;--green:#a8ce72;--gold:#d8b56b}}*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 system-ui,sans-serif}}main{{max-width:900px;margin:auto;padding:42px 24px 100px}}a{{color:var(--green)}}.parent-link{{display:inline-block;margin-bottom:18px;color:var(--muted);font-size:13px;text-decoration:none}}.parent-link:hover,.parent-link:focus-visible{{color:var(--green)}}header{{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:30px}}h1{{font:400 clamp(42px,7vw,76px)/1 Georgia,serif;margin:8px 0 16px}}h2{{font:400 28px/1.2 Georgia,serif;color:var(--gold);margin-top:34px}}p,li{{color:#d7d9d2}}.eyebrow{{color:var(--green);text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:800}}.summary{{font:20px/1.6 Georgia,serif;color:#e1e3dc}}.chips{{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0}}.chip{{border:1px solid var(--line);border-radius:999px;padding:5px 9px;color:#c8cec1;font-size:12px}}nav{{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}}code{{color:var(--green);overflow-wrap:anywhere}}</style></head><body><main data-reader-surface="generated-knowledge"><nav data-no-tts aria-label="Parent"><a class="parent-link" href="{esc(parent_url)}">← {esc(parent_label)}</a></nav><header><div class="eyebrow">Potato of Life · {esc(parent_label)}</div><h1>{esc(title)}</h1><p class="summary">{esc(desc)}</p></header>{body}<nav data-no-tts aria-label="Reader routes"><a href="{esc(parent_url)}">{esc(parent_label)}</a> · <a href="{esc(BASE_URL + '/')}">Home</a>{explore_link}</nav></main></body></html>'''
+<style>:root{{--bg:#080a08;--ink:#f4f0e5;--muted:#a8ada3;--line:#2b322b;--green:#a8ce72;--gold:#d8b56b}}*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 system-ui,sans-serif}}main{{max-width:900px;margin:auto;padding:42px 24px 100px}}a{{color:var(--green)}}.parent-link{{display:inline-block;margin-bottom:18px;color:var(--muted);font-size:13px;text-decoration:none}}.parent-link:hover,.parent-link:focus-visible{{color:var(--green)}}header{{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:30px}}h1{{font:400 clamp(42px,7vw,76px)/1 Georgia,serif;margin:8px 0 16px}}h2{{font:400 28px/1.2 Georgia,serif;color:var(--gold);margin-top:34px}}p,li{{color:#d7d9d2}}.eyebrow{{color:var(--green);text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:800}}.summary{{font:20px/1.6 Georgia,serif;color:#e1e3dc}}.chips{{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0}}.chip{{border:1px solid var(--line);border-radius:999px;padding:5px 9px;color:#c8cec1;font-size:12px}}nav{{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}}code{{color:var(--green);overflow-wrap:anywhere}}</style></head><body><main data-reader-surface="generated-knowledge"><nav data-no-tts aria-label="Parent"><a class="parent-link" href="{esc(parent_url)}">← {esc(parent_label)}</a></nav><header><div class="eyebrow">Potato of Life · {esc(parent_label)}</div><h1>{esc(title)}</h1><p class="summary">{esc(desc)}</p></header>{body}{machine_block}<nav data-no-tts aria-label="Reader routes"><a href="{esc(parent_url)}">{esc(parent_label)}</a> · <a href="{esc(BASE_URL + '/')}">Home</a>{explore_link}</nav></main></body></html>'''
 
 
 def write_page(rel_dir: str, content: str) -> str:
@@ -237,8 +247,8 @@ def patch_entity_metadata() -> None:
 def record_link(path: str, record_id_by_path: dict[str, str]) -> str:
     record_id = record_id_by_path.get(path)
     if not record_id:
-        return f"<li><code>{esc(path)}</code></li>"
-    return f'<li><a href="{esc(BASE_URL + "/records/" + slug(record_id) + "/")}">{esc(record_id)}</a><br><code>{esc(path)}</code></li>'
+        return ""
+    return f'<li><a href="{esc(BASE_URL + "/records/" + slug(record_id) + "/")}">{esc(record_id.replace("-", " "))}</a></li>'
 
 
 def generate_branch_pages(manifest, contexts, core_index, bridge):
@@ -296,15 +306,31 @@ def generate_record_pages(core_index, manifest, bridge):
         title = data.get("title") or data.get("name") or rec.get("id")
         desc = summary_from_record(data, rec.get("kind", ""))
         terms = rec.get("terms", [])
-        body = ""
+        # Lead with the record's actual substance. Search/discovery terms come later,
+        # and source-path/provenance metadata stays machine-readable underneath.
+        body = "".join(text_blocks(data))
         if terms:
             body += "<section><h2>Key terms</h2><div class=\"chips\">" + "".join(f"<span class=\"chip\">{esc(x)}</span>" for x in terms) + "</div></section>"
-        body += "".join(text_blocks(data))
-        body += f"<section><h2>Canonical source record</h2><p><code>{esc(rec.get('path', ''))}</code></p></section>"
         branch_id = branch_by_path.get(rec.get("path", ""))
         parent_label, parent_path = parent_for_branch(branch_id, bridge) if branch_id else ("Explore", "explore/")
         canonical = f"{BASE_URL}/records/{slug(rec['id'])}/"
-        urls.append(write_page(f"records/{slug(rec['id'])}", page_shell(title, desc, canonical, body, about=terms, parent_label=parent_label, parent_path=parent_path)))
+        machine_meta = {
+            "record_id": rec.get("id"),
+            "source_path": rec.get("path"),
+            "kind": rec.get("kind"),
+            "terms": terms,
+            "branch": branch_id,
+        }
+        urls.append(write_page(
+            f"records/{slug(rec['id'])}",
+            page_shell(
+                title, desc, canonical, body,
+                about=terms,
+                parent_label=parent_label,
+                parent_path=parent_path,
+                machine_meta=machine_meta,
+            )
+        ))
     return urls
 
 
