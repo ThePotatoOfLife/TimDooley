@@ -140,6 +140,17 @@
 
     document.body.insertBefore(header,document.body.firstChild);
 
+    const publishClearance=()=>{
+      const rect=header.getBoundingClientRect();
+      document.documentElement.style.setProperty('--site-elevator-clearance',Math.ceil(rect.height)+'px');
+    };
+    publishClearance();
+    if(typeof ResizeObserver!=='undefined'){
+      const elevatorObserver=new ResizeObserver(publishClearance);
+      elevatorObserver.observe(header);
+    }
+    window.addEventListener('resize',publishClearance,{passive:true});
+
     const up=header.querySelector('.site-elevator-up');
     const down=header.querySelector('.site-elevator-down');
     const floorLabel=header.querySelector('.site-elevator-floor-label');
