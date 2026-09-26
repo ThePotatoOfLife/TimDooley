@@ -6,6 +6,24 @@
   try{appBase=new URL('./',script?.src||document.baseURI);siteBase=new URL('../',appBase)}catch(_){return}
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const href=route=>new URL(String(route||'/').replace(/^\//,''),siteBase).href;
+  const assetVersion=(()=>{
+    try{return new URL(script?.src||document.baseURI).searchParams.get('v')||'unversioned';}
+    catch(_){return 'unversioned';}
+  })();
+  const fetchJson=async route=>{
+    const key='site-access:'+assetVersion+':'+route;
+    try{
+      const cached=sessionStorage.getItem(key);
+      if(cached)return JSON.parse(cached);
+    }catch(_){}
+    try{
+      const response=await fetch(href(route),{cache:'no-cache'});
+      if(!response.ok)return null;
+      const data=await response.json();
+      try{sessionStorage.setItem(key,JSON.stringify(data));}catch(_){}
+      return data;
+    }catch(_){return null}
+  };
   const routePath=()=>{
     try{
       let p=location.pathname,base=new URL(siteBase).pathname.replace(/\/$/,'');
@@ -115,49 +133,36 @@
     if(loaded)return;
     loaded=true;
     try{
-      const [cr,sr,ir,rr]=await Promise.all([
-        fetch(href('/data/house/site-access.json')),
-        fetch(href('/data/house/public-surfaces.json')),
-        fetch(href('/data/house/room-inhabitants.json')),
-        fetch(href('/data/house/rooms.json'))
+      const [contract,surfaces,inhabitants,roomsData]=await Promise.all([
+        fetchJson('/data/house/site-access.json'),
+        fetchJson('/data/house/public-surfaces.json'),
+        fetchJson('/data/house/room-inhabitants.json'),
+        fetchJson('/data/house/rooms.json')
       ]);
-      let roomNames={};
-      if(rr.ok){
-        const d=await rr.json();
-        roomNames=Object.fromEntries((d.rooms||[]).filter(x=>x?.id).map(x=>[x.id,x.title||x.id]));
+      const roomNames=Object.fromEntries((roomsData?.rooms||[]).filter(x=>x?.id).map(x=>[x.id,x.title||x.id]));
+      if(Array.isArray(contract?.entries)&&contract.entries.length){
+        curatedEntries=contract.entries;
+        index=[...curatedEntries];
       }
-      if(cr.ok){
-        const d=await cr.json();
-        if(Array.isArray(d.entries)&&d.entries.length){
-          curatedEntries=d.entries;
-          index=[...curatedEntries];
-        }
-        if(d.groups)accessGroups=d.groups;
-      }
-      if(sr.ok){
-        const d=await sr.json();
-        for(const s of d.surfaces||[])if(s?.status==='active'&&s?.route)index.push({
-          label:s.title||s.id,
-          route:s.route,
-          kind:'page',
-          note:s.surface_type||'public surface',
-          context:s.primary_parent?'Under '+s.primary_parent:'Public surface',
-          aliases:s.id
+      if(contract?.groups)accessGroups=contract.groups;
+      for(const row of surfaces?.surfaces||[])if(row?.status==='active'&&row?.route)index.push({
+        label:row.title||row.id,
+        route:row.route,
+        kind:'page',
+        note:row.surface_type||'public surface',
+        context:row.primary_parent?'Under '+row.primary_parent:'Public surface',
+        aliases:row.id
+      });
+      for(const row of inhabitants?.inhabitants||[])if(row?.route){
+        const rooms=(row.room_ids||[]).map(id=>roomNames[id]||id).filter(Boolean);
+        index.push({
+          label:row.label||row.id,
+          route:row.route,
+          kind:row.kind||'object',
+          note:row.summary||'House object',
+          context:rooms.length?'Rooms: '+rooms.join(' · '):'House object',
+          aliases:(row.id||'')+' '+(row.room_ids||[]).join(' ')
         });
-      }
-      if(ir.ok){
-        const d=await ir.json();
-        for(const x of d.inhabitants||[])if(x?.route){
-          const rooms=(x.room_ids||[]).map(id=>roomNames[id]||id).filter(Boolean);
-          index.push({
-            label:x.label||x.id,
-            route:x.route,
-            kind:x.kind||'object',
-            note:x.summary||'House object',
-            context:rooms.length?'Rooms: '+rooms.join(' · '):'House object',
-            aliases:(x.id||'')+' '+(x.room_ids||[]).join(' ')
-          });
-        }
       }
       index=unique(index);
     }catch(_){}
