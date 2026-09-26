@@ -1,0 +1,112 @@
+{
+  "id": "practice-ethics-repair-agency-atlas",
+  "title": "Practice & Ethics — Repair, Agency, Procedure and Protective Boundaries",
+  "version": "1.0.0",
+  "updated": "2026-09-27",
+  "status": "ethics-method research + project translation",
+  "purpose": "Ground Garden, Repair, Door, Fruit and Forge ethics in concrete procedural safeguards rather than benevolent-sounding vocabulary.",
+  "epistemic_rule": "Restorative justice research and procedural-justice research provide tested safeguards and comparative concepts. They do not imply every interpersonal conflict should use restorative practice, nor do they override law, safety planning or professional standards.",
+  "restorative_core": {
+    "finding": "UNODC describes restorative justice around harm, voluntary participation, preparation/facilitation, dialogue, responsibility, reparative action, victim recovery and offender reintegration/desistance. Council of Europe CM/Rec(2018)8 adds voluntariness, respectful dialogue, equal concern, procedural fairness, avoiding domination and the right to withdraw.",
+    "sources": [
+      "https://www.unodc.org/documents/justice-and-prison-reform/20-01146_Handbook_on_Restorative_Justice_Programmes.pdf",
+      "https://rm.coe.int/recommendation-cm-rec-2018-8-of-the-committee-of-ministers/1680a72c59"
+    ]
+  },
+  "procedural_justice": {
+    "finding": "Procedural-justice research commonly operationalizes fair process through voice/participation, neutrality, respectful treatment and trustworthy motives.",
+    "project_use": "A Garden or Forge process should be judged partly by procedure, not only by whether its organizer believes the outcome is good.",
+    "source": "https://www.ojp.gov/ncjrs/virtual-library/abstracts/procedural-justice-and-police-legitimacy-systematic-review-research"
+  },
+  "garden_governance_comparator": {
+    "finding": "Elinor Ostrom's work on durable self-governance repeatedly identifies clear boundaries, congruence between costs/benefits, participant rule-making, monitoring, graduated sanctions, conflict-resolution mechanisms, recognition of self-organization and nested organization.",
+    "project_use": "Garden is stronger when participants can shape rules, see boundaries, resolve conflict cheaply and avoid total dependence on one gardener.",
+    "boundary": "Commons governance is not a literal blueprint for every social group, and these principles do not prove Potatoverse ethics.",
+    "source": "https://www.nobelprize.org/uploads/2018/06/ostrom-lecture-slides.pdf"
+  },
+  "repair_gates": [
+    {
+      "gate": "Safety",
+      "question": "Can participation occur without exposing someone to renewed intimidation, retaliation or preventable harm?",
+      "fail_action": "protective separation / professional or legal pathway rather than forced dialogue"
+    },
+    {
+      "gate": "Voluntariness",
+      "question": "Can every participant decline or withdraw without hidden punishment?",
+      "fail_action": "do not call the process restorative"
+    },
+    {
+      "gate": "Responsibility",
+      "question": "Is there enough factual clarity and acknowledgment to discuss repair without requiring the harmed party to litigate reality indefinitely?",
+      "fail_action": "return to evidence/procedure first"
+    },
+    {
+      "gate": "Voice",
+      "question": "Can affected parties state needs and consequences rather than merely receive the authority's interpretation?",
+      "fail_action": "redesign process"
+    },
+    {
+      "gate": "Neutrality / non-domination",
+      "question": "Are rules applied consistently, and can one high-status participant control framing, evidence and outcome?",
+      "fail_action": "independent facilitation or separation"
+    },
+    {
+      "gate": "Repair specificity",
+      "question": "What concrete obligation, restitution, correction, boundary, redesign or behavior change addresses the harm?",
+      "fail_action": "do not substitute apology language for repair"
+    },
+    {
+      "gate": "Exit",
+      "question": "Can participants leave the relation/process where continued association is unwanted or unsafe?",
+      "fail_action": "Garden test fails if belonging is compulsory"
+    },
+    {
+      "gate": "Follow-through",
+      "question": "Is completion observable after the meeting, or does the process end at symbolic reconciliation?",
+      "fail_action": "track implementation and recurrence"
+    }
+  ],
+  "separation_is_a_valid_outcome": {
+    "principle": "Repair does not require reunion. A process can end in corrected records, restitution, boundaries, no-contact, removal from role, institutional redesign or other protective separation.",
+    "anti_pattern": "Treating forgiveness, reconciliation and renewed access as synonyms.",
+    "project_translation": "Door can legitimately close. Garden can contain fences. A changed state may be dignified separation rather than reintegration."
+  },
+  "authority_tests": [
+    "Voice: did affected people have meaningful input?",
+    "Neutrality: were rules/evidence standards applied consistently?",
+    "Respect: were people treated with dignity without erasing accountability?",
+    "Trustworthiness: were motives, conflicts of interest and decision criteria legible?",
+    "Appeal/correction: is there a route to challenge error?",
+    "Exit: can a person leave without retaliatory identity capture?"
+  ],
+  "worked_cases": [
+    {
+      "case": "Public correction",
+      "bad": "Delete or bury the original accusation and announce that everyone has moved on.",
+      "better": "Preserve original provenance, attach correction bidirectionally, state current status, repair downstream copies where possible, and stop presenting superseded status as current."
+    },
+    {
+      "case": "Conflict group",
+      "bad": "Force a restorative conversation because reconciliation sounds morally superior.",
+      "better": "Check safety/voluntariness first; where intimidation or repeated harm persists, use boundaries or separation."
+    },
+    {
+      "case": "Gardener authority",
+      "bad": "One organizer makes every rule, interprets every dispute and defines whether participants are 'growing'.",
+      "better": "Make boundaries/rules legible, allow participant voice, independent correction and meaningful exit; judge success partly by reduced dependency."
+    },
+    {
+      "case": "Forge pressure",
+      "bad": "Call humiliation or uncontrolled stress a growth opportunity.",
+      "better": "Specify the learning objective, safeguard participants, observe what changed, and admit when pressure only produced damage or hardening."
+    }
+  ],
+  "anti_gaming": [
+    "An apology is not repair if the concrete harm remains unchanged.",
+    "A peaceful meeting is not successful Fruit if retaliation resumes afterward.",
+    "Exit is not meaningful if leaving triggers harassment, stigma or loss unrelated to the shared resource.",
+    "Participant dependence can make a Garden look productive while suppressing autonomy.",
+    "High compliance does not alone prove fair procedure.",
+    "A process that only the authority can declare successful has a measurement conflict."
+  ]
+}
