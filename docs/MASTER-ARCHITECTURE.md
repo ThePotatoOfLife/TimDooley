@@ -2,6 +2,11 @@
 
 The repository is not a single story. It is a layered system in which mythology, philosophy, history, geography, empirical research, creative work and software can refer to one another without becoming the same kind of claim.
 
+## Current authority bridge
+
+This document describes conceptual layers; it is **not** a competing ownership registry. Current authority routes through dedicated owners: `data/house/project-synthesis.json` for whole-project synthesis and reader families, `data/house/public-surfaces.json` for public route identity, `knowledge/core/root-system.json` for structural ontology, `data/house/operator-ownership-registry.json` for recurring operator ownership, `data/timeline-events.json` for canonical chronology, and `manifest.json` for deep archive branches/pathways. Historical files named “master”, “framework”, “wave” or “synthesis” do not become co-equal authorities from their filenames.
+
+
 ## Layer 0 — Meta / epistemology
 
 Defines what kind of thing each statement is and how it may be used.
@@ -91,6 +96,10 @@ Contains games, websites, data pipelines, graph visualizations, research tooling
 ## Layer 12 — Living research layer
 
 Tracks what is known, what changed, what needs verification, what is disputed, and what should be researched next.
+
+## Public reader families
+
+The conceptual layers become usable through seven reader families rather than a flat menu: Tim/life/making; Timeline/history; Sources/context; Explore/retrieval; House/placement; World/systems; and Meaning/comparison/testing. These are presentation relationships over owned knowledge, not seven new ontologies.
 
 ## The architecture as a whole
 
