@@ -615,9 +615,9 @@ The corridor-only baseline is eliminated across the 38 registered nested subject
 - [~] Audit named-being dossiers and CIA specialist surfaces for stub pages, stale role-lock and missing date/source context. Current named-being Rooms reviewed as substantive; legacy FBI per-person dossiers converted to CIA redirects. Continue dossier-data/source completeness review.
 - [~] Audit specialist institution surfaces for subject explanation before controls/ledgers. CIA Incidents, Associations, Bank and dossier viewer reviewed; their explanatory boundaries are substantive. Continue North/Law/Science/World specialist-surface review.
 - [~] Run canonical-holding freshness checks so Room dossiers do not undercount newer knowledge owners. Fixed impossible counts in Core Identities, Memory & Recovery, and Internet & Platforms; added `scripts/validate_room_holdings.py` and CI enforcement. Continue deeper ownership-count reconciliation beyond featured holdings.
-- [~] Audit cross-Room handoffs: nested Room richness panels already expose governed passages and guards; continue improving bare adjacency cards and gateway handoffs where the reader still has to infer why to cross.
-- [~] Add object-level spotlights where a Room is conceptually clear but still abstract. Physics, Esoteric Geometry, Prediction/Time, Potato Biology and Geography now have richer canonical object populations; continue Music, Games, Visual Art and other sparse creative Rooms.
-- [~] Check TTS/readability on newly long Rooms. Added generated `In this Room` section guides to long nested readers; continue TTS, paragraph-length and mobile readability review.
+- [~] Audit cross-Room handoffs: added missing high-value interfaces (Math→Physics, Identity→Genealogy, Culture→Evidence, Prediction→Witness, Visual→Architecture, Games→Systems, Music→Genealogy) and now annotate adjacent Room cards with interface type, transformation and guard. Continue lower-value/bare adjacency coverage.
+- [x] Add object-level spotlights where Rooms were conceptually clear but abstract. Physics, Esoteric Geometry, Prediction/Time, Potato Biology, Geography, Music, Games, Visual Art, Memory & Recovery, Other Traditions and Research Programmes now expose richer canonical object populations.
+- [~] Check TTS/readability on newly long Rooms. Generated `In this Room` guides are live; object cards now offer direct `Open the thing` and secondary `Place in House` actions to reduce navigation loops. Continue TTS, paragraph-length and mobile readability review.
 - [ ] Review repeated CSS patterns from the inhabitation wave and consolidate where safe without flattening the different Room personalities.
 - [ ] Add a maturity downgrade path: validator/audit should permit a Room to be marked `seeded` again if substantive content is removed or becomes misleading.
 - [ ] Continue qualitative audits of semantic gaps even when validators pass; validators protect floors, not editorial excellence.
@@ -626,3 +626,6 @@ The corridor-only baseline is eliminated across the 38 registered nested subject
 
 - [x] Add a public reader completeness contract covering Home, Rooms, House, Explore and all active Dwellings; enforce it in CI so major entry surfaces retain distinct reader jobs and concrete substance.
 - [x] Add curated Dwelling featured-object shelves plus a Rooms-wide best-of shelf so readers encounter high-value artifacts before topology/navigation.
+
+- [x] Room inhabitant registry now requires concrete openable routes, summaries, status boundaries and valid nested-Room placement; enforced by `scripts/validate_room_inhabitants.py` in CI.
+- [x] High-value Room interface contracts are protected by `scripts/validate_room_interfaces.py`; adjacent Room doors now expose what changes and what must remain guarded when crossing.
