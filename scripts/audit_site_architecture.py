@@ -9,13 +9,13 @@ from urllib.parse import urljoin, urlsplit
 ROOT=Path(__file__).resolve().parents[1]
 REGISTRY=ROOT/"data"/"house"/"public-surfaces.json"
 REPORT=ROOT/".quality-logs"/"site-architecture-audit.json"
-STYLE_SCRIPT=re.compile(r"<(?:style|script)\\b[\\s\\S]*?</(?:style|script)>",re.I)
-ANCHOR_HREF=re.compile(r"<a\\b[^>]*href=[\\\"']([^\\\"']+)[\\\"']", re.I)
-BUTTON=re.compile(r"<button\\b",re.I); NAV=re.compile(r"<nav\\b",re.I)
-FIRST_NAV=re.compile(r"<nav\\b[^>]*>([\\s\\S]*?)</nav>",re.I)
-ANCHOR_FULL=re.compile(r"<a\\b[^>]*href=[\\\"\']([^\\\"\']+)[\\\"\'][^>]*>([\\s\\S]*?)</a>",re.I)
+STYLE_SCRIPT=re.compile(r"<(?:style|script)\b[\s\S]*?</(?:style|script)>",re.I)
+ANCHOR_HREF=re.compile(r"""<a\b[^>]*href=["']([^"']+)["']""", re.I)
+BUTTON=re.compile(r"<button\b",re.I); NAV=re.compile(r"<nav\b",re.I)
+FIRST_NAV=re.compile(r"<nav\b[^>]*>([\s\S]*?)</nav>",re.I)
+ANCHOR_FULL=re.compile(r"""<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)</a>""",re.I)
 TAG=re.compile(r"<[^>]+>")
-H1=re.compile(r"<h1\\b",re.I); H2=re.compile(r"<h2\\b",re.I)
+H1=re.compile(r"<h1\b",re.I); H2=re.compile(r"<h2\b",re.I)
 EXTERNAL=("http://","https://","//","mailto:","tel:","javascript:","data:","blob:")
 PUBLIC_SCAN_EXCLUDE={".git",".github","_site","archive","docs","node_modules","components","vendor","scripts"}
 BUDGETS={
@@ -84,10 +84,10 @@ def main()->int:
         internal=[resolve_href(route,h) for h in hrefs]; internal=[x for x in internal if x]
         cta_rows=[]
         for href,label_html in ANCHOR_FULL.findall(visible):
-            label=re.sub(r"\\s+"," ",TAG.sub(" ",label_html)).strip()
-            if re.match(r"^(more|deep|explore|context|archive)\\s*(?:→|↗)?$",label,re.I):
+            label=re.sub(r"\s+"," ",TAG.sub(" ",label_html)).strip()
+            if re.match(r"^(more|deep|explore|context|archive)\s*(?:→|↗)?$",label,re.I):
                 warnings.append({"code":"vague-link-label","surface":sid,"label":label,"target":resolve_href(route,href)})
-            if not re.match(r"^(read|open|enter)\\b",label,re.I): continue
+            if not re.match(r"^(read|open|enter)\b",label,re.I): continue
             target=resolve_href(route,href)
             if not target: continue
             target_id=route_to_id.get(target)
@@ -107,7 +107,7 @@ def main()->int:
             target_id=cta.get("target_surface")
             if target_id and (by_id.get(target_id) or {}).get("surface_type") in {"hub","explorer"}:
                 warnings.append({"code":"read-open-enter-to-hub","surface":sid,**cta})
-        runtime_href_literals=len(re.findall(r'href(?:=|\\s*[:+])', raw, flags=re.I))-len(hrefs)
+        runtime_href_literals=len(re.findall(r'href(?:=|\s*[:+])', raw, flags=re.I))-len(hrefs)
         metrics.append({"id":sid,"route":route,"surface_type":row.get("surface_type"),"visibility":row.get("visibility"),"reader_job":row.get("reader_job"),"source":path.relative_to(ROOT).as_posix(),"authored_anchor_hrefs":len(hrefs),"runtime_or_script_href_literals":max(0,runtime_href_literals),"buttons":len(BUTTON.findall(visible)),"navs":len(NAV.findall(visible)),"pre_substance_links":pre_links,"pre_substance_buttons":pre_buttons,"first_nav_links":first_nav_links,"pre_substance_navs":pre_navs,"mobile_precontent_stack_score":mobile_stack_score,"registered_outdegree":len(registered_targets),"registered_targets":sorted(registered_targets),"promise_ctas":cta_rows})
     overlaps=[]; ids=sorted(target_sets)
     for i,left in enumerate(ids):
