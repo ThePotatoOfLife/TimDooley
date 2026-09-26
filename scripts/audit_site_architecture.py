@@ -17,6 +17,7 @@ ANCHOR_FULL=re.compile(r"""<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)</a>"""
 TAG=re.compile(r"<[^>]+>")
 H1=re.compile(r"<h1\b",re.I); H2=re.compile(r"<h2\b",re.I)
 BASE_HREF=re.compile(r"""<base\b[^>]*href=["\']([^"\']+)["\']""",re.I)
+VAGUE_STANDALONE_LABEL=re.compile(r"^(more|deep|explore|context|archive)\s*(?:→|↗)?$",re.I)
 EXTERNAL=("http://","https://","//","mailto:","tel:","javascript:","data:","blob:")
 PUBLIC_SCAN_EXCLUDE={".git",".github","_site","archive","docs","node_modules","components","vendor","scripts"}
 BUDGETS={
@@ -67,6 +68,8 @@ def main()->int:
         errors.append("architecture audit regex self-check failed")
     if effective_base_route("/explore/",probe)!="/" or resolve_href(effective_base_route("/explore/",probe),"world/")!="/world/":
         errors.append("architecture audit base-href self-check failed")
+    if not VAGUE_STANDALONE_LABEL.match("Explore") or VAGUE_STANDALONE_LABEL.match("Archive explorer"):
+        errors.append("architecture audit vague-label self-check failed")
     data=json.loads(REGISTRY.read_text(encoding="utf-8"))
     rows=[r for r in data.get("surfaces",[]) if isinstance(r,dict) and r.get("status")=="active"]
     by_id={r["id"]:r for r in rows}; route_to_id={}
@@ -96,7 +99,7 @@ def main()->int:
         cta_rows=[]
         for href,label_html in ANCHOR_FULL.findall(visible):
             label=re.sub(r"\s+"," ",TAG.sub(" ",label_html)).strip()
-            if re.match(r"^(more|deep|explore|context|archive)\s*(?:→|↗)?$",label,re.I):
+            if VAGUE_STANDALONE_LABEL.match(label):
                 warnings.append({"code":"vague-link-label","surface":sid,"label":label,"target":resolve_href(link_base,href)})
             if not re.match(r"^(read|open|enter)\b",label,re.I): continue
             target=resolve_href(link_base,href)
