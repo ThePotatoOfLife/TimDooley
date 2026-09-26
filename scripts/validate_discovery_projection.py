@@ -48,7 +48,9 @@ def main() -> int:
         "data-site-tts-section",
         'data-tts-item="[data-site-tts-section]"',
         'data-tts-exclude="[data-no-tts]"',
-        'data-reader-surface="generated-discovery"',
+        'reader_surface="generated-discovery"',
+        'reader_surface="generated-question"',
+        'data-reader-surface="{esc(reader_surface)}"',
     ):
         if marker not in builder_source:
             errors.append(f"generated discovery reader missing semantic TTS marker: {marker}")
