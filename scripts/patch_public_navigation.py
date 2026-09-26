@@ -22,7 +22,7 @@ SHARED_ASSET_VERSIONS = {
     "site-elevator.css": "20260926p",
     "site-elevator.js": "20260926n",
     "house-journey.js": "20260926e",
-    "body-relational-lens.js": "20260926b",
+    "body-relational-lens.js": "20260926c",
 }
 
 ROOT_BRANCH_HREF = re.compile(
