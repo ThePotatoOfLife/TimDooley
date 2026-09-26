@@ -175,6 +175,22 @@ if OUT.exists():
             errors.append(f"{rel} missing first local navigation row")
         elif nav_match.group(1).count("<a ")>budget:
             errors.append(f"{rel} first navigation row exceeds specialist budget {budget}")
+    specialist_parent_contracts={
+        "context/index.html": ("source-authority/", 2),
+        "context/source-authority/index.html": ("../", 2),
+        "philosophy/interpretive-justice.html": ("./", 3),
+    }
+    for rel,(parent_href,budget) in specialist_parent_contracts.items():
+        page=read(OUT/rel)
+        nav_match=__import__("re").search(r"<nav\\b[^>]*>(.*?)</nav>",page,flags=__import__("re").I|__import__("re").S)
+        if not nav_match:
+            errors.append(f"{rel} missing specialist continuity navigation")
+            continue
+        nav=nav_match.group(1)
+        if f'href="{parent_href}"' not in nav:
+            errors.append(f"{rel} missing expected parent/owner handoff {parent_href}")
+        if nav.count("<a ")>budget:
+            errors.append(f"{rel} specialist continuity navigation exceeds budget {budget}")
     home=read(OUT/"index.html")
     nav_start=home.find('<nav class="page-nav home-nav"')
     nav_end=home.find("</nav>",nav_start)
