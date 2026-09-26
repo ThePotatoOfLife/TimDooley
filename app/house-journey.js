@@ -359,7 +359,45 @@
     body.insertAdjacentElement('beforebegin',guide);
   }
 
+
+  async function annotateAdjacentRoomDoors(){
+    const match=location.pathname.match(/\/rooms\/inside\/([^/]+)\//);
+    if(!match)return;
+    const currentId=decodeURIComponent(match[1]);
+    const cards=[...document.querySelectorAll('.adj-grid a.adj')];
+    if(!cards.length)return;
+    try{
+      const [subData,ifData]=await Promise.all([
+        getJson('data/house/subrooms.json'),
+        getJson('data/house/interfaces.json')
+      ]);
+      const known=new Set((subData.subrooms||[]).map(x=>x.id));
+      const interfaces=ifData.interfaces||[];
+      const titleCase=v=>String(v||'').replace(/[-_]+/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+      for(const card of cards){
+        const url=new URL(card.getAttribute('href')||'',location.href);
+        const m=url.pathname.match(/\/rooms\/inside\/([^/]+)\//);
+        if(!m)continue;
+        const other=decodeURIComponent(m[1]);
+        if(!known.has(other))continue;
+        const edge=interfaces.find(x=>(x.from===currentId&&x.to===other)||(x.from===other&&x.to===currentId));
+        if(!edge||card.querySelector('.adj-interface'))continue;
+        const note=document.createElement('span');
+        note.className='adj-interface';
+        note.innerHTML='<b>'+esc(titleCase(edge.type||'interface'))+'</b><span>'+esc(edge.changes||'')+'</span>';
+        if(edge.guard){
+          const guard=document.createElement('small');
+          guard.textContent='Guard: '+edge.guard;
+          note.appendChild(guard);
+        }
+        card.appendChild(note);
+        card.dataset.governedInterface=edge.id||'';
+      }
+    }catch(e){}
+  }
+
   installRibbon();
+  annotateAdjacentRoomDoors();
   installRoomSectionGuide();
   installRoomsBestOf();
   installDwellingFeaturedObjects();
