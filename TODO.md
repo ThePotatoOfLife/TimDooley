@@ -960,10 +960,10 @@ The governing editorial rule is:
 
 #### Ancient Egyptian / Mesopotamian / Greek-Roman source plan
 
-- [ ] **Ancient Egypt:** build period spine (Old/Middle/New Kingdom, Late/Ptolemaic/Roman), major temple cults, Pyramid/Coffin/Book of the Dead textual strata, Osiris/Ra/Amun/Horus/Isis developments, kingship/maat/afterlife, priesthood and regional cult variation.
-- [ ] **Mesopotamia:** separate Sumerian, Akkadian, Babylonian and Assyrian periods; city-god cults, temple economy, kingship, divination, underworld and textual corpora. Do not create one timeless “Mesopotamian pantheon.”
-- [ ] **Greek religion:** map polis/cult/ritual/oracle/mystery traditions alongside Homer/Hesiod literary mythology; Apollo/Delphi, Athena/Athens, Demeter/Eleusis, Dionysian traditions and hero cults should be contextual, not one god-card catalog.
-- [ ] **Roman religion:** household cult, civic priesthoods, imperial cult and Roman adaptation/identification of Greek deities as historical processes rather than “Roman copies.”
+- [x] **Ancient Egypt:** build period spine (Old/Middle/New Kingdom, Late/Ptolemaic/Roman), major temple cults, Pyramid/Coffin/Book of the Dead textual strata, Osiris/Ra/Amun/Horus/Isis developments, kingship/maat/afterlife, priesthood and regional cult variation.
+- [x] **Mesopotamia:** separate Sumerian, Akkadian, Babylonian and Assyrian periods; city-god cults, temple economy, kingship, divination, underworld and textual corpora. Do not create one timeless “Mesopotamian pantheon.”
+- [x] **Greek religion:** map polis/cult/ritual/oracle/mystery traditions alongside Homer/Hesiod literary mythology; Apollo/Delphi, Athena/Athens, Demeter/Eleusis, Dionysian traditions and hero cults should be contextual, not one god-card catalog.
+- [x] **Roman religion:** household cult, civic priesthoods, imperial cult and Roman adaptation/identification of Greek deities as historical processes rather than “Roman copies.”
 - [ ] Add cult vs myth vs philosophy vs mystery-religion labels across ancient pages.
 - [ ] Add source packets before public pages: primary texts/inscriptions/archaeology + modern academic syntheses + museum/institutional sources.
 - [ ] Add date uncertainty/period badges and avoid founder language for ancient traditions.
@@ -979,3 +979,5 @@ The governing editorial rule is:
 - [ ] Check all new pages against global typography/CSS so local inline styles can gradually be consolidated rather than proliferate.
 
 - [x] Remove stale Study Chamber wording from Comparative Cosmology after the architecture was explicitly rejected; validator now blocks its return on public tradition pages.
+
+- [x] Build one ancient-religions overview from the source-first atlas before deciding which ancient traditions deserve their own later deep pages.
