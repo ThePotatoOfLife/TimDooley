@@ -16,6 +16,7 @@ def read(path:Path)->str:
 
 js=read(ROOT/"app/site-access.js")
 css=read(ROOT/"app/site-access.css")
+tts_drawer=read(ROOT/"app/tts-drawer.js")
 patch=read(ROOT/"scripts/patch_public_navigation.py")
 contract_text=read(ROOT/"data/house/site-access.json")
 try:
@@ -85,9 +86,13 @@ for group_name in ("go_now","find","direct_doors"):
         if entry_id not in entries:
             errors.append(f"site-access group {group_name} references unknown entry: {entry_id}")
 
-for token in ("label===t","priority(e)","site-access-context","await loadIndex()","returnFocus"):
+for token in ("label===t","priority(e)","site-access-context","await loadIndex()","returnFocus","--site-access-clearance"):
     if token not in js and token not in css:
         errors.append(f"quick-access behavior missing regression marker: {token}")
+
+for token in ("--site-access-clearance", "viewportHeight-clearance-44"):
+    if token not in tts_drawer:
+        errors.append(f"TTS selection control does not honor fixed access clearance: {token}")
 
 if "changed.update(patch_project_compass(OUT))" in patch:
     errors.append("legacy Project Compass must not be injected alongside the quick-access dock")
