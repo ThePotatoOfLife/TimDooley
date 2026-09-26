@@ -442,7 +442,42 @@
     }catch(e){}
   }
 
+
+  async function installHouseDeepCorpusIndex(){
+    const isHouse=/\/house\/(?:index\.html)?$/.test(location.pathname);
+    if(!isHouse)return;
+    try{
+      const data=await getJson('data/house/room-archive-drawers.json');
+      const rows=data.drawers||[];
+      if(!rows.length)return;
+      const holdings=document.getElementById('holdings');
+      const main=document.querySelector('main');
+      if(!main||document.getElementById('deep-corpora'))return;
+      const total=rows.reduce((n,row)=>n+(Number(row.record_count)||0),0);
+      const section=document.createElement('section');
+      section.className='page-section house-deep-corpora';
+      section.id='deep-corpora';
+      section.dataset.depth='structure';
+      section.innerHTML='<p class="eyebrow">Deep corpus index</p>'
+        +'<h2>'+esc(rows.length)+' major bodies of work · '+esc(total)+' canonical records</h2>'
+        +'<p class="topology-note">Room holdings answer “who owns this?” These drawers answer “what large bodies of knowledge are actually here?” The counts expose scale without turning the House into a raw file browser.</p>'
+        +'<div class="house-corpus-grid">'+rows.map(row=>{
+          const landing=String(row.landing_href||'');
+          const href=landing?(/^(https?:|#)/.test(landing)?landing:base+landing.replace(/^\//,'')):'#';
+          return '<a class="house-corpus-card" href="'+esc(href)+'">'
+            +'<small>'+esc(String(row.record_count||0))+' records</small>'
+            +'<strong>'+esc(row.title||row.id)+'</strong>'
+            +'<span>'+esc(row.summary||'')+'</span>'
+            +'<em>'+esc((row.room_ids||[]).slice(0,4).join(' · '))+'</em>'
+            +'</a>';
+        }).join('')+'</div>';
+      if(holdings) holdings.insertAdjacentElement('afterend',section);
+      else main.appendChild(section);
+    }catch(e){}
+  }
+
   installRibbon();
+  installHouseDeepCorpusIndex();
   installRoomArchiveDrawers();
   annotateAdjacentRoomDoors();
   installRoomSectionGuide();
