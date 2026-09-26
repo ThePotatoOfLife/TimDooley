@@ -48,6 +48,13 @@ def main():
         errors.append('legacy route-topology snapshot must point to public-surfaces authority')
     if derivation.get('resolver')!='scripts/house_public_surfaces.py::derived_route_topology_records':
         errors.append('legacy route-topology snapshot must name the deterministic resolver')
+    disposition=snapshot.get('disposition') or {}
+    if disposition.get('class')!='historical-derived-compatibility':
+        errors.append('legacy route-topology snapshot must be classified as historical-derived-compatibility')
+    if disposition.get('live_authority') is not False or disposition.get('authoring_allowed') is not False:
+        errors.append('legacy route-topology snapshot must never be a live authoring authority')
+    if disposition.get('allowed_live_consumers')!=['scripts/validate_house_topology.py']:
+        errors.append('legacy route-topology snapshot live consumer list drifted')
 
     if errors:
         print('POTATO HOUSE TOPOLOGY VALIDATION FAILED')
