@@ -159,7 +159,7 @@
     header.tabIndex=0;
     header.innerHTML=
       '<div class="site-elevator-main">'+
-        '<div class="site-elevator-controls" aria-label="Change House floor">'+
+        '<div class="site-elevator-controls" role="group" aria-label="Change House floor">'+
           '<button class="site-elevator-arrow site-elevator-up" type="button" aria-label="Move elevator up" disabled>↑</button>'+
           '<button class="site-elevator-arrow site-elevator-down" type="button" aria-label="Move elevator down" disabled>↓</button>'+
         '</div>'+
@@ -238,6 +238,10 @@
         :(selectedLevel===spatial.levelId?'HOUSE ORIENTATION':'BROWSING FLOOR');
       up.disabled=selectedLevel==='heaven'||!projection;
       down.disabled=selectedLevel==='below'||!projection;
+      const upTarget=stepLevel(selectedLevel,'up');
+      const downTarget=stepLevel(selectedLevel,'down');
+      up.setAttribute('aria-label',up.disabled?'Top floor · Heaven':'Move to '+levelLabel(upTarget,projection).replace(/\s*\/.*$/,''));
+      down.setAttribute('aria-label',down.disabled?'Bottom floor · Below':'Move to '+levelLabel(downTarget,projection).replace(/\s*\/.*$/,''));
       renderRooms();
       if(typeof requestAnimationFrame==='function')requestAnimationFrame(publishClearance);
       else publishClearance();
