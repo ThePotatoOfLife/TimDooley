@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Comparative Cosmology — Trees, Worlds, Wells & Ways</title>
+<meta name="description" content="A source-led guide to Yggdrasil and the Eddas, Odin and Mimir's well, Jewish Kabbalah and Qliphoth, Christianity, Buddhism, Daoism and Potatoism as distinct but comparable symbolic systems.">
+<link rel="stylesheet" href="../../app/site-system.css?v=20260914a">
+<style>
+.cosmos-page{max-width:1120px}.cosmos-page p{line-height:1.72}.lede{max-width:920px;font:400 clamp(21px,2.6vw,31px)/1.48 var(--site-font-serif);color:var(--site-ink)}
+.boundary{border-left:2px solid var(--site-line);padding:12px 0 12px 15px;color:var(--site-muted)}
+.lens-nav{display:flex;gap:7px;flex-wrap:wrap;margin:22px 0 30px}.lens-nav a{border:1px solid var(--site-line);border-radius:999px;padding:7px 10px;text-decoration:none;color:var(--site-muted);font-size:10px}.lens-nav a:hover{color:var(--site-green);border-color:#647b5d}
+.tree-stage{display:grid;grid-template-columns:minmax(210px,.72fr) minmax(300px,1.28fr);gap:18px;margin:28px 0}.tree-visual{position:relative;min-height:620px;border:1px solid var(--site-line);border-radius:22px;background:radial-gradient(circle at 50% 16%,rgba(161,191,135,.11),transparent 28%),linear-gradient(180deg,rgba(20,26,20,.95),rgba(8,10,8,.98));overflow:hidden;padding:22px}.tree-visual:before{content:"";position:absolute;left:50%;top:85px;bottom:78px;width:8px;transform:translateX(-50%);background:linear-gradient(#8e9f72,#5d704f 50%,#594634);border-radius:99px;opacity:.8}.tree-visual:after{content:"";position:absolute;left:18%;right:18%;top:86px;height:180px;border:7px solid rgba(133,156,110,.45);border-bottom:0;border-radius:50% 50% 0 0}
+.realm{position:relative;z-index:2;max-width:78%;margin:12px auto;padding:10px 12px;border:1px solid rgba(255,255,255,.09);background:rgba(8,12,8,.84);border-radius:12px}.realm b{display:block;color:var(--site-gold);font:400 18px var(--site-font-serif)}.realm small{color:var(--site-muted);line-height:1.42}.realm--root{margin-top:18px}.well-row{position:relative;z-index:3;display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:22px}.well{padding:10px;border:1px solid #344331;border-radius:50%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;text-align:center;background:#0b120c;color:var(--site-green);font-size:9px}
+.tree-notes{display:grid;gap:9px}.note-card{border:1px solid var(--site-line);border-radius:13px;padding:14px;background:var(--site-panel)}.note-card h3{font:400 21px var(--site-font-serif);color:var(--site-gold);margin:0 0 6px}.note-card p{margin:0;color:#cbd1c8;font-size:12px}.note-card small{display:block;color:var(--site-muted);margin-top:7px}
+.god-grid,.trad-grid,.cross-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:18px 0 30px}.god-grid article,.trad-grid article,.cross-card{border:1px solid var(--site-line);border-radius:12px;padding:14px;background:var(--site-panel)}.god-grid b,.trad-grid b,.cross-card b{display:block;color:var(--site-gold);font:400 19px var(--site-font-serif);margin-bottom:5px}.god-grid small,.trad-grid small,.cross-card small{color:var(--site-muted);line-height:1.48}
+.section-rule{font:400 clamp(22px,3vw,34px)/1.35 var(--site-font-serif);color:var(--site-gold);padding:23px 0;margin:28px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
+.crosswalk{margin:22px 0 38px;border-top:1px solid var(--site-line)}.cross-row{display:grid;grid-template-columns:150px repeat(6,minmax(125px,1fr));gap:7px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.055)}.cross-row>div{padding:8px}.cross-row .axis{color:var(--site-green);font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:.06em}.cross-row b{display:block;color:var(--site-gold);font-size:10px;margin-bottom:3px}.cross-row span{font-size:9px;color:var(--site-muted);line-height:1.4}.cross-head{position:sticky;top:0;background:#090c09;z-index:4}.cross-head>div{color:var(--site-ink);font-size:10px;font-weight:800}
+.layer-stack{display:grid;gap:8px;margin:18px 0}.layer{display:grid;grid-template-columns:150px 1fr;gap:18px;border:1px solid var(--site-line);border-radius:12px;padding:15px}.layer strong{color:var(--site-gold);font:400 20px var(--site-font-serif)}.layer p{margin:0;color:#cbd1c8}
+.source-links{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 28px}.source-links a{color:var(--site-green);font-size:10px}
+.modern-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:18px 0 30px}.modern-grid article{border-top:1px solid var(--site-line);padding:13px 0}.modern-grid b{display:block;color:var(--site-gold);font:400 18px var(--site-font-serif)}.modern-grid p{font-size:11px;color:var(--site-muted);margin:5px 0 0}
+@media(max-width:980px){.crosswalk{overflow-x:auto}.cross-row{min-width:980px}.tree-stage{grid-template-columns:1fr}.god-grid,.trad-grid,.modern-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.god-grid,.trad-grid,.modern-grid{grid-template-columns:1fr}.well-row{grid-template-columns:1fr 1fr 1fr}.layer{grid-template-columns:1fr;gap:5px}}
+</style></head>
+<body><main class="page page--reading cosmos-page">
+<nav class="page-nav"><a href="../../religion/">Religion</a><a href="../../rooms/traditions-texts/">Traditions &amp; Texts</a><a href="../../rooms/inside/comparative-mythology/">Comparative Mythology</a><a href="../../house/">House</a></nav>
+<header class="page-header"><p class="eyebrow">Comparative learning surface</p><h1>Trees, Worlds, Wells &amp; Ways</h1><p class="summary">Learn Yggdrasil, Kabbalah, Christianity, Buddhism, Daoism and Potatoism in their own grammar—then compare the functions that really overlap.</p></header>
+
+<section>
+<p class="lede">Different traditions keep returning to a surprisingly small set of difficult questions: Where is the center? What connects different levels of reality? How is wisdom gained? Why does life become disordered? What is a threshold? What does descent mean? Can what is broken be repaired? The similarities are useful precisely when the differences remain visible.</p>
+<p class="boundary"><strong>Comparison rule:</strong> this page is a translation surface, not a claim that all religions secretly teach one doctrine. Historical influence must be evidenced separately. A modern analogy is labeled as a modern analogy.</p>
+<div class="lens-nav"><a href="#norse">Norse / Eddas</a><a href="#jewish">Jewish / Kabbalah</a><a href="#christian">Christianity</a><a href="#buddhist">Buddhism</a><a href="#daoist">Daoism</a><a href="#potato">Potatoism</a><a href="#crosswalk">Functional crosswalk</a></div>
+</section>
+
+<section id="norse"><p class="eyebrow">Old Norse cosmology</p><h2>Yggdrasil is not scenery. It is infrastructure.</h2>
+<p>The Eddic world tree is a better model when it is understood as an inhabited, vulnerable and maintained ecology. Gods assemble near it. Wells sit at its roots. Norns shape lives near the Well of Urðr. Creatures move through it and damage it. Odin seeks wisdom through both the tree and the well. The structure joins differentiated realms without turning them into one undivided place.</p>
+<div class="tree-stage">
+<div class="tree-visual" aria-label="Interpretive Yggdrasil teaching diagram">
+<div class="realm"><b>Upper domains</b><small>Asgard and other divine/light-associated realms in later conventional orientation. Authority, divine society, vision and order.</small></div>
+<div class="realm"><b>Midgard · inhabited middle</b><small>The human world: embodied life, ordinary society, work, conflict, kinship and consequence.</small></div>
+<div class="realm"><b>Boundary worlds</b><small>Jötunheim, Vanaheim, Álfheim and craft-associated realms remind us that the Norse cosmos is differentiated by kinds of beings, powers and relations—not a simple heaven/earth/hell stack.</small></div>
+<div class="realm realm--root"><b>Deep / death / elemental domains</b><small>Hel, Niflheim and Muspelheim belong to distinct death, cold/mist and fire complexes. They should not be flattened into one “hell.”</small></div>
+<div class="well-row"><div class="well">Mímir<br>wisdom / eye</div><div class="well">Urðr<br>fate / law</div><div class="well">Hvergelmir<br>deep waters</div></div>
+</div>
+<div class="tree-notes">
+<article class="note-card"><h3>Odin's eye · Mímir's well</h3><p>Odin gives or leaves an eye at Mímir's well in the wisdom complex preserved in Völuspá and Snorri's Gylfaginning. The structural lesson is costly seeing: knowledge changes the knower and may require surrender rather than mere collection.</p><small>Compare with Eye / knowledge only as a function. Do not turn every sacred eye into Odin.</small></article>
+<article class="note-card"><h3>Odin on the tree · Hávamál</h3><p>In Hávamál, Odin hangs on a windswept tree for nine nights, wounded by a spear and offered to himself, before taking up the runes. This is an ordeal-of-knowledge motif: descent into extremity produces a new capacity to read and act.</p></article>
+<article class="note-card"><h3>Norns · Urðr, Verðandi, Skuld</h3><p>Fate sits close to root and water. That matters: destiny is not only issued from a summit. The Eddic material places life-allotment within an ecology of source, memory, law and becoming.</p></article>
+<article class="note-card"><h3>Bifröst</h3><p>The rainbow bridge is a route between differentiated domains, not a merger of them. As a modern systems analogy it resembles an interface: passage is possible because boundaries remain.</p></article>
+<article class="note-card"><h3>Ragnarök and renewal</h3><p>Ragnarök is catastrophe, conflict and death, but the mythic horizon also includes survival and renewed world imagery. The relevant comparator is not “apocalypse equals apocalypse,” but breakdown → remainder → reconstitution.</p></article>
+</div></div>
+
+<h3>Other Norse figures worth knowing</h3>
+<div class="god-grid">
+<article><b>Thor</b><small>Storm, protection, giant-conflict, embodied force and boundary defense. A useful protection/power comparator, not simply “Norse Zeus.”</small></article>
+<article><b>Freyja</b><small>Love, desire, fertility, seiðr and a share in the slain. Her functions cross categories that modern summaries often separate.</small></article>
+<article><b>Freyr</b><small>Fertility, prosperity, peace and sacred kingship motifs; especially useful when comparing Garden, yield and good-season symbolism.</small></article>
+<article><b>Heimdall</b><small>Watcher and boundary guardian associated with Bifröst. A strong threshold/attention figure.</small></article>
+<article><b>Týr</b><small>Law, oath and the binding of Fenrir; useful for cost-bearing order and the price of constraint.</small></article>
+<article><b>Loki</b><small>Boundary-breaker, helper, adversary and catalyst across stories. Better understood as a difficult relational role than a simple devil-equivalent.</small></article>
+<article><b>Baldr</b><small>Beloved divine figure whose death becomes a major pre-Ragnarök rupture and later renewal motif.</small></article>
+<article><b>Frigg</b><small>Queenly, familial and foreknowledge-associated figure; distinct from Freyja despite later confusions.</small></article>
+<article><b>Hel</b><small>Both ruler-name and death-realm complex in Norse sources. Hel is not equivalent to later Christian Hell.</small></article>
+</div>
+<p class="boundary"><strong>About the “nine worlds”:</strong> Old Norse sources refer to nine worlds, but they do not hand us one universally agreed canonical nine-box list. Modern charts are useful orientation aids, not literal Eddic maps.</p>
+<div class="source-links"><a href="../../books/norse-edda/poetic-edda-bellows-1923.txt">Read the archived Poetic Edda →</a><a href="../../books/norse-edda/prose-edda-anderson.txt">Read the archived Prose Edda →</a><a href="../../books/norse-edda/structure.json">Edda structure index →</a></div>
+
+<h3>Modern symbolic reading of the Norse worlds</h3>
+<p>This is deliberately a present-day analogy layer, not a reconstruction of medieval belief.</p>
+<div class="modern-grid">
+<article><b>Asgard · ordered authority</b><p>Institutions, ideals, governance, high-level coordination and the narratives a society places “above” ordinary life.</p></article>
+<article><b>Midgard · lived world</b><p>Embodiment, work, family, politics, social relations, material constraint and ordinary consequence.</p></article>
+<article><b>Jötunheim · disruptive outside</b><p>Wilderness, rival powers, boundary pressure, the not-fully-domesticated and whatever does not fit the center's order.</p></article>
+<article><b>Vanaheim · fertility & exchange</b><p>Ecology, wealth, reproduction, peace-making and reciprocal relations.</p></article>
+<article><b>Álfheim · luminous culture</b><p>Beauty, imagination, refinement and the difficult category of “light” as cultural/symbolic value.</p></article>
+<article><b>Niðavellir / dwarf-world · making</b><p>Craft, infrastructure, engineering, hidden labor and objects whose power comes from skilled construction.</p></article>
+<article><b>Niflheim · cold inertia</b><p>Stagnation, obscurity, low-energy states, storage, fog and conditions in which movement is difficult.</p></article>
+<article><b>Muspelheim · heat / rupture</b><p>Energy, combustion, conflict, irreversible transformation and systems pushed beyond containment.</p></article>
+<article><b>Hel · death / memory</b><p>Loss, ancestry, irreversibility, what remains after active participation ends, and the social work of remembering the dead.</p></article>
+</div>
+</section>
+
+<section id="jewish"><p class="eyebrow">Jewish scripture &amp; mysticism</p><h2>Tree, ladder, throne, sefirot, shells and repair</h2>
+<p>Jewish material contributes several different structures that should not be collapsed into one diagram. Genesis gives the Trees of Life and Knowledge. Jacob dreams a ladder or stairway joining earth and heaven. Ezekiel supplies throne/chariot vision. Later Jewish mysticism develops heavenly palaces, sefirot, multiple worlds, angelologies and—especially in later Kabbalah—kelippot/qelipot, “shells” or “husks” associated with concealment, impurity and captured vitality.</p>
+<div class="layer-stack">
+<div class="layer"><strong>Biblical layer</strong><p>Tree of Life, Tree of Knowledge, Eden, cherubim, Jacob's ladder, prophetic visions and angels as messengers. There is no tenfold Qliphoth demon-tree in Genesis.</p></div>
+<div class="layer"><strong>Kabbalistic layer</strong><p>Ein Sof and the ten sefirot provide a language of hidden infinity and differentiated divine manifestation. The familiar Tree diagram belongs to a long development rather than one timeless biblical blueprint.</p></div>
+<div class="layer"><strong>Lurianic repair layer</strong><p>Tzimtzum, vessels, breaking, sparks, kelippot and tikkun create a powerful repair drama: vitality can become trapped in broken structures and religious action participates in restoration.</p></div>
+<div class="layer"><strong>Later Hermetic / occult layer</strong><p>The neat tenfold “Qliphoth tree” with fixed shell names, demon rulers, tunnels and one-to-one adverse correspondences is especially a later Western esoteric system. It should be studied, but not backdated into the Torah or treated as the single Jewish position.</p></div>
+</div>
+<h3>Angels and demons without the internet-chart shortcut</h3>
+<p>Jewish angels begin as messengers and agents in biblical texts; rabbinic and mystical traditions elaborate many ranks and names. Likewise, demonological material develops across periods. The useful structure is not “angel tree versus demon tree” but <strong>mediation, concealment, action, consequence and repair</strong>. Different Jewish sources organize those categories differently.</p>
+<div class="trad-grid">
+<article><b>Sefirot</b><small>Keter, Chokhmah, Binah, Chesed, Gevurah, Tiferet, Netzach, Hod, Yesod and Malkhut: a tenfold vocabulary of divine manifestation whose meanings and diagrammatic arrangements vary by school and period.</small></article>
+<article><b>Da'at</b><small>“Knowledge” sometimes appears as an additional/hidden position in diagrams without becoming an ordinary eleventh sefirah. Useful as a knowledge-junction comparison.</small></article>
+<article><b>Kelippot / Qelipot</b><small>Shell/husk language for concealment, impurity or captured vitality in mystical traditions. Lurianic versions connect the problem to broken vessels and trapped sparks.</small></article>
+<article><b>Tikkun</b><small>Repair/restoration. This is one of the strongest cross-project comparisons because repair is an action and process, not merely a cosmic label.</small></article>
+<article><b>Mal'akh / angels</b><small>“Messenger” is the basic biblical function; later Jewish thought develops much richer hierarchies and metaphysics.</small></article>
+<article><b>Four worlds</b><small>Atzilut, Beriah, Yetzirah and Assiyah provide a later mystical structure for degrees or modes of divine manifestation and creation.</small></article>
+</div>
+<div class="source-links"><a href="../../knowledge/traditions/tree-of-life-knowledge-qliphoth-structure-atlas.json">Tree / Qliphoth structural atlas →</a><a href="../../knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json">Angels / Qliphoth / Ladder atlas →</a></div>
+</section>
+
+<section id="christian"><p class="eyebrow">Christianity</p><h2>Tree, Cross, Door, Way, Vine, resurrection and New Jerusalem</h2>
+<p>Christianity inherits Jewish scripture but rereads it through Jesus, the cross and resurrection. That creates several powerful comparison points without making Christianity “the same system” as Kabbalah or Norse religion: Christ as Door and Way; the cross as death-to-life axis and, in later Christian symbolism, a life-giving tree; vine/branches as relational life; resurrection as transformed return; and Revelation's New Jerusalem with the Tree of Life restored.</p>
+<div class="trad-grid">
+<article><b>Door / Way</b><small>Passage is relational and ethical, not simply spatial. This is the closest Christian neighbor to the project's Door vocabulary.</small></article>
+<article><b>Cross / Tree</b><small>A death instrument becomes, in Christian interpretation and later imagery, a sign of life through self-giving death and resurrection.</small></article>
+<article><b>Vine / branches</b><small>Connected life, fruit and dependence become an organic social-theological model rather than a world map.</small></article>
+<article><b>Kingdom</b><small>God's reign/order is both present and anticipated; it is not merely another celestial “realm” on a cosmographic chart.</small></article>
+<article><b>Resurrection</b><small>Return is not just recurrence. Christian resurrection claims transformed life after death and anchors the new-creation horizon.</small></article>
+<article><b>New Jerusalem</b><small>City, throne, river and Tree of Life are reunited in Revelation's closing vision of restored creation.</small></article>
+</div>
+</section>
+
+<section id="buddhist"><p class="eyebrow">Buddhist traditions</p><h2>Not a creator-tree system: awakening, dependence, realms and release</h2>
+<p>Buddhism is especially valuable because it resists forcing every cosmology into a Father/Creator template. The Bodhi tree marks awakening, Mount Meru organizes cosmography in many Buddhist traditions, samsaric realms model conditioned existence, dependent origination explains arising through relation, and emptiness denies that things possess isolated permanent self-nature. Tibetan bardo traditions add a sophisticated transition-state model, but bardo should not be projected onto all Buddhism.</p>
+<div class="trad-grid">
+<article><b>Bodhi tree</b><small>Tree as place of awakening rather than cosmic trunk or divine genealogy.</small></article>
+<article><b>Mount Meru</b><small>World-center/cosmographic organization. Useful beside Axis and sacred-mountain models, but not itself a salvation ladder.</small></article>
+<article><b>Dependent origination</b><small>Things arise through conditions. This strongly challenges isolated-node thinking and encourages relation/process models.</small></article>
+<article><b>Śūnyatā / emptiness</b><small>Especially in Mahāyāna thought, emptiness concerns lack of independent inherent existence—not a literal empty void.</small></article>
+<article><b>Samsara / realms</b><small>Conditioned cycles and realms are tied to karma, perception and suffering, not merely places on a fantasy map.</small></article>
+<article><b>Nirvana / awakening</b><small>Release is not “moving to the top of the tree.” It is liberation from the conditions that sustain suffering and delusion.</small></article>
+</div>
+</section>
+
+<section id="daoist"><p class="eyebrow">Daoist traditions</p><h2>The Way may be a better comparator than the Tree</h2>
+<p>Daoism helps the project avoid making every tradition vertical. The Dao is Way/process/source language rather than a throne at the top of a hierarchy. The Daodejing repeatedly values water, valley, return, simplicity, softness, non-forcing and the usefulness of empty space. A hub works because of its empty center; a vessel works because it can contain; a room works because doors and windows open it.</p>
+<div class="trad-grid">
+<article><b>Dao · Way</b><small>Source/process that exceeds final naming. Useful beside “Source,” but not a personal Father-equivalent.</small></article>
+<article><b>Wu wei</b><small>Non-forcing or action without coercive excess; not simple passivity.</small></article>
+<article><b>Water</b><small>Yielding, low-seeking, adaptive and persistent. An unusually strong flow metaphor.</small></article>
+<article><b>Valley</b><small>Low place as generative receptivity, reversing the assumption that spiritual importance always means height.</small></article>
+<article><b>Vessel / room</b><small>Boundaries become useful through the opening or capacity they preserve. This directly sharpens House and Door thinking.</small></article>
+<article><b>Return</b><small>Return/reversal is a recurring Daoist movement: growth does not simply mean permanent outward expansion.</small></article>
+</div>
+<div class="source-links"><a href="../../knowledge/traditions/door-window-negative-space-tao-atlas.json">Door / Window / useful emptiness atlas →</a></div>
+</section>
+
+<section id="potato"><p class="eyebrow">Project-native layer</p><h2>Potatoism stays nearby as the system doing the comparing</h2>
+<p>Potatoism should not absorb the traditions above. It can instead declare its own operators clearly—Father/Source, Son/Door, Spirit/flow, Tree, Axis, Ladder, House, Seed, Garden, Knowledge, Strife, repair—and ask what each external system reveals or challenges.</p>
+<div class="trad-grid">
+<article><b>Father / Source / House</b><small>Project language for source-facing containment, orientation and generativity.</small></article>
+<article><b>Son / Door / Vessel</b><small>Threshold, manifestation and passage language inside the project's own theology.</small></article>
+<article><b>Spirit / flow</b><small>Movement, relation and transmission rather than another static object.</small></article>
+<article><b>Tree / Axis / Ladder</b><small>Living connectivity, orientation and movement between differentiated levels.</small></article>
+<article><b>Knowledge → Life / Strife</b><small>Knowledge is treated as a fork: what is learned can become generative, or remain unresolved and reproduce capture/conflict.</small></article>
+<article><b>Seed / Garden / repair</b><small>Burial, dormancy, rooting, growth, cultivation, fruit and restorative work form the project's generative cycle.</small></article>
+</div>
+<p class="boundary">These are Potatoverse meanings. Similarities with Odin, Kabbalah, Christianity, Buddhism or Daoism are comparisons, not external validation of Potatoist theological claims.</p>
+</section>
+
+<section id="crosswalk"><p class="eyebrow">Functional crosswalk</p><h2>Compare the problem being solved, not just the nouns</h2>
+<p>The most useful overlap appears when each tradition answers the same question differently.</p>
+<div class="crosswalk" role="table" aria-label="Comparative cosmology functional crosswalk">
+<div class="cross-row cross-head" role="row"><div>Question</div><div>Norse</div><div>Jewish / Kabbalah</div><div>Christian</div><div>Buddhist</div><div>Daoist</div><div>Potatoism</div></div>
+<div class="cross-row" role="row"><div class="axis">What connects?</div><div><b>Yggdrasil</b><span>inhabited world-connection</span></div><div><b>Tree / worlds / ladder</b><span>emanation, ascent, mediation</span></div><div><b>Christ / Cross / Spirit</b><span>relation, reconciliation, life</span></div><div><b>Dependent origination</b><span>conditional relation, not one cosmic trunk</span></div><div><b>Dao</b><span>Way / process</span></div><div><b>Axis / Tree / Spirit</b><span>orientation + living relation</span></div></div>
+<div class="cross-row" role="row"><div class="axis">Where is wisdom?</div><div><b>Mímir / runes</b><span>costly acquisition</span></div><div><b>Chokhmah / Torah / Da'at</b><span>wisdom, teaching, knowledge</span></div><div><b>Christ / Spirit / wisdom</b><span>truth embodied and taught</span></div><div><b>Prajñā</b><span>insight into conditions / emptiness</span></div><div><b>Knowing not-knowing</b><span>simplicity, non-forcing</span></div><div><b>Knowledge fork</b><span>knowledge tested by fruit</span></div></div>
+<div class="cross-row" role="row"><div class="axis">What goes wrong?</div><div><b>damage / feud / Ragnarök</b><span>conflict propagates through ecology</span></div><div><b>concealment / kelippot</b><span>brokenness, capture, impurity</span></div><div><b>sin / death / estrangement</b><span>broken relation</span></div><div><b>dukkha / ignorance / craving</b><span>conditioned suffering</span></div><div><b>forcing / excess</b><span>loss of accord with Way</span></div><div><b>Strife / Mud / Ash</b><span>blocked or reproducing disorder</span></div></div>
+<div class="cross-row" role="row"><div class="axis">What repairs?</div><div><b>maintenance / renewal</b><span>world survives through tending and reconstitution</span></div><div><b>Tikkun</b><span>repair / release of sparks</span></div><div><b>reconciliation / resurrection</b><span>new creation</span></div><div><b>awakening / liberation</b><span>ending conditions of suffering</span></div><div><b>return / wu wei</b><span>less coercive alignment</span></div><div><b>Garden / repair</b><span>integration that produces viable life</span></div></div>
+<div class="cross-row" role="row"><div class="axis">What is the threshold?</div><div><b>Bifröst / wells / ordeal</b><span>routes and tests</span></div><div><b>gates / ladder / palaces</b><span>mediated ascent and access</span></div><div><b>Door / baptism / cross</b><span>passage and transformed relation</span></div><div><b>path / bardo*</b><span>practice; transition in specific traditions</span></div><div><b>gate / empty opening</b><span>capacity created by non-obstruction</span></div><div><b>Door / Ladder / Spiral</b><span>typed passage and transformation</span></div></div>
+<div class="cross-row" role="row"><div class="axis">Is “above” always better?</div><div><b>No</b><span>wisdom and danger also live at roots</span></div><div><b>No simple rule</b><span>descent, embodiment and repair matter</span></div><div><b>No simple map</b><span>kingdom is ethical/theological, not altitude</span></div><div><b>No</b><span>liberation is not a highest coordinate</span></div><div><b>Often reversed</b><span>water/valley favor the low</span></div><div><b>No</b><span>placement and moral reproduction remain separate questions</span></div></div>
+</div>
+<p class="boundary"><strong>The central lesson:</strong> similar symbols often solve different problems. Yggdrasil organizes a mythic ecology. The sefirotic Tree models divine manifestation. The Christian Cross/Tree centers death and resurrection. The Bodhi tree marks awakening. Daoism may prefer Way, water and empty capacity to any tree at all. Potatoism can learn from all of them without erasing them.</p>
+</section>
+
+<section><p class="eyebrow">Keep exploring</p><h2>Move from synthesis back into the source traditions</h2>
+<div class="lens-nav"><a href="../../rooms/inside/other-traditions/">Other Traditions</a><a href="../../rooms/inside/comparative-mythology/">Comparative Mythology</a><a href="../../rooms/inside/bible-christianity/">Bible &amp; Christianity</a><a href="../../rooms/inside/esoteric-sacred-geometry/">Esoteric &amp; Sacred Geometry</a><a href="../../religion/">Religion</a><a href="../../potato-of-life/">Potato of Life</a></div>
+</section>
+</main><script src="../../app/house-journey.js"></script></body></html>
