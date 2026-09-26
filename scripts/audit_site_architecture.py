@@ -61,6 +61,15 @@ def resolve_href(base_route:str,href:str):
 def count_before(text:str,index:int,regex)->int:
     return len(regex.findall(text[:index])) if index>=0 else 0
 
+def normalized_words(text:str)->set[str]:
+    return {word for word in re.findall(r"[a-z0-9]+",str(text).lower()) if word not in {"the","a","an","full","all","archive","reader","lab","laboratory"}}
+
+def named_open_matches_target(label:str,target_row:dict)->bool:
+    if not re.match(r"^open\b",str(label),re.I): return False
+    target_words=normalized_words(target_row.get("title") or "")
+    label_words=normalized_words(re.sub(r"^open\b","",str(label),flags=re.I))
+    return bool(target_words and target_words <= label_words)
+
 def main()->int:
     errors=[]; warnings=[]; metrics=[]
     probe='<base href="../"><nav><a href="world/">World</a></nav><h1>Title</h1><h2>Section</h2><button>Go</button>'
