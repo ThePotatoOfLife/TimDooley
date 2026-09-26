@@ -634,3 +634,7 @@ The corridor-only baseline is eliminated across the 38 registered nested subject
 - [x] Deep archive drawers integrate 18 major corpora (866 drawer-covered records) into nested Rooms, Dwellings and House without flattening every backend record into a featured card.
 - [x] Dwelling deep archive indexes expose the larger corpora behind each domain in addition to the curated featured-object shelf.
 - [ ] Future corpus work should prioritize promotion quality, synthesis, dated examples and reader journeys rather than raw reachability; the current corpus already has governed access.
+
+- [x] All 38 active nested Rooms now have editorial `Start here` sets backed by `data/house/room-featured-objects.json`; the full object population remains available underneath rather than competing equally for attention.
+- [x] Great Book, Experiments/Formalization and Information Ecology now pull concrete findings from their deeper canonical corpora into the reader prose, establishing the next semantic-completion pattern: promote insight, not merely routes.
+- [ ] Continue prose-alignment audits: compare each Room's featured objects and deep drawers against its reader body, then pull up only the insights needed for the page to explain its actual backend depth.
