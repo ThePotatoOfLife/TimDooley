@@ -1,6 +1,6 @@
 {
   "id": "entity-facet-ledger",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-27",
   "purpose": "Retain names, aliases, titles, gifts, capabilities, scene-bound powers, recurring roles, story beats, conclusions and unresolved edges for Potatoverse/project entities without forcing every public page to repeat the full record.",
   "principles": [
@@ -1297,6 +1297,727 @@
       "open_questions": [
         "Recover exact source scenes and any documentary referent before cross-layer merging."
       ]
+    },
+    "marty-biz": {
+      "label": "Marty Biz Music",
+      "kind": "real participant",
+      "aliases": [
+        "Marty",
+        "Drift King",
+        "Chance & Taylor",
+        "Top Scholar"
+      ],
+      "titles": [
+        "Drift King",
+        "Top Scholar"
+      ],
+      "room_path": "rooms/potatoverse-canon/beings/marty/",
+      "first_seen": {
+        "period": "2024 early/mid",
+        "source": "knowledge/story/cast-book.json"
+      },
+      "facets": [
+        {
+          "type": "capability",
+          "label": "social-networking / gathering people",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "capability",
+          "label": "gaming/Tanks participation",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "capability",
+          "label": "music/creative association in project memory",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "role",
+          "label": "Drift King / Top Scholar literary titles",
+          "strength": "interpretive",
+          "scope": "creative / project",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "boundary",
+          "label": "Creative titles are project characterization, not objective powers.",
+          "strength": "canonical",
+          "scope": "identity / evidence",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "boundary",
+          "label": "Person is not archetype. Old hostile profiles are historical source-characterization, not permanent fact.",
+          "strength": "canonical",
+          "scope": "identity / evidence",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "type": "role",
+          "label": "recurring companion/social-room figure in Chronicle and later Great Book/project material",
+          "strength": "established_scene",
+          "scope": "2024 early/mid",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "type": "role",
+          "label": "increasingly separate/rival social center; Chronicle attributes disruptive incidents and Garden-collapse to Marty/circle, kept as source-attributed claims",
+          "strength": "unresolved",
+          "scope": "late 2024",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "type": "role",
+          "label": "death changes conflict thread into grief/memory; exact date remains under source review",
+          "strength": "established_scene",
+          "scope": "early 2025",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "type": "role",
+          "label": "Goodbye Marty creative artifact preserves grief rather than a purely adversarial legacy",
+          "strength": "established_scene",
+          "scope": "post-death",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "story_beats": [
+        {
+          "period": "2024 early/mid",
+          "label": "recurring companion/social-room figure in Chronicle and later Great Book/project material",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "period": "late 2024",
+          "label": "increasingly separate/rival social center; Chronicle attributes disruptive incidents and Garden-collapse to Marty/circle, kept as source-attributed claims",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "period": "early 2025",
+          "label": "death changes conflict thread into grief/memory; exact date remains under source review",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "period": "post-death",
+          "label": "Goodbye Marty creative artifact preserves grief rather than a purely adversarial legacy",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "conclusions": [
+        "Retain documentary/person record separately from any creative or literary role attached to the same name."
+      ],
+      "open_questions": []
+    },
+    "sammy": {
+      "label": "Sammy",
+      "kind": "real participant",
+      "aliases": [],
+      "titles": [],
+      "first_seen": {
+        "period": "2019-2020",
+        "source": "knowledge/story/cast-book.json"
+      },
+      "facets": [
+        {
+          "type": "capability",
+          "label": "high social presence in late-2024 Chronicle",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "capability",
+          "label": "loyalty/relationship persistence as a recurring narrative theme",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "role",
+          "label": "Queen-style titles in project lore",
+          "strength": "interpretive",
+          "scope": "creative / project",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "boundary",
+          "label": "Do not turn intimate or medical profile claims into capabilities.",
+          "strength": "canonical",
+          "scope": "identity / evidence",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "role",
+          "label": "later-attested mourning/witness lead entering Tim's inherited story",
+          "strength": "established_scene",
+          "scope": "2019-2020",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "type": "role",
+          "label": "recurring Potatoverse social cast",
+          "strength": "established_scene",
+          "scope": "2024",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "story_beats": [
+        {
+          "period": "2019-2020",
+          "label": "later-attested mourning/witness lead entering Tim's inherited story",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "period": "2024",
+          "label": "recurring Potatoverse social cast",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "conclusions": [
+        "Retain documentary/person record separately from any creative or literary role attached to the same name."
+      ],
+      "open_questions": []
+    },
+    "bigtech": {
+      "label": "BigTech",
+      "kind": "real participant",
+      "aliases": [],
+      "titles": [],
+      "first_seen": {
+        "period": "2023-2024",
+        "source": "knowledge/story/cast-book.json"
+      },
+      "facets": [
+        {
+          "type": "capability",
+          "label": "documentary capabilities unresolved; recovery needed",
+          "strength": "unresolved",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "role",
+          "label": "literary amplifier / rival / mirror role in Great Book strata",
+          "strength": "interpretive",
+          "scope": "creative / project",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "boundary",
+          "label": "Do not convert literary propagation claims into historical causal powers.",
+          "strength": "canonical",
+          "scope": "identity / evidence",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "role",
+          "label": "public/project rival and Great Book literary figure",
+          "strength": "established_scene",
+          "scope": "2023-2024",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "story_beats": [
+        {
+          "period": "2023-2024",
+          "label": "public/project rival and Great Book literary figure",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "conclusions": [
+        "Retain documentary/person record separately from any creative or literary role attached to the same name."
+      ],
+      "open_questions": []
+    },
+    "metalorian": {
+      "label": "Metalorian",
+      "kind": "real participant",
+      "aliases": [
+        "Meta",
+        "Joe"
+      ],
+      "titles": [],
+      "room_path": "rooms/potatoverse-canon/beings/metalorian/",
+      "first_seen": {
+        "period": "around 2017",
+        "source": "knowledge/story/cast-book.json"
+      },
+      "facets": [
+        {
+          "type": "capability",
+          "label": "documentary capabilities unresolved; recovery needed",
+          "strength": "unresolved",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "role",
+          "label": "Meta-framing / mirror / karmic comparator roles in later project interpretation",
+          "strength": "interpretive",
+          "scope": "creative / project",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "boundary",
+          "label": "Later illness/misfortune is not evidence of causation or fulfilled prophecy.",
+          "strength": "canonical",
+          "scope": "identity / evidence",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "boundary",
+          "label": "Alias continuity and allegations require source-level confirmation. Later illness/misfortune is not evidence of causation or fulfilled prophecy.",
+          "strength": "canonical",
+          "scope": "identity / evidence",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "type": "role",
+          "label": "retrospective warning/adversarial lead; primary interaction and warning wording still need recovery",
+          "strength": "unresolved",
+          "scope": "around 2017",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "type": "role",
+          "label": "later manuscripts use Meta in narrative-control/framing interpretations, sometimes alongside TXT",
+          "strength": "established_scene",
+          "scope": "2018-2019 retrospective",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "type": "role",
+          "label": "later Great Book timeline places Metalorian suffering near Cube/karmic interpretation; not same-day evidence",
+          "strength": "established_scene",
+          "scope": "2023 later meaning",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "story_beats": [
+        {
+          "period": "around 2017",
+          "label": "retrospective warning/adversarial lead; primary interaction and warning wording still need recovery",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "period": "2018-2019 retrospective",
+          "label": "later manuscripts use Meta in narrative-control/framing interpretations, sometimes alongside TXT",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "period": "2023 later meaning",
+          "label": "later Great Book timeline places Metalorian suffering near Cube/karmic interpretation; not same-day evidence",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "conclusions": [
+        "Retain documentary/person record separately from any creative or literary role attached to the same name."
+      ],
+      "open_questions": []
+    },
+    "capy": {
+      "label": "Capy",
+      "kind": "real participant",
+      "aliases": [],
+      "titles": [],
+      "first_seen": {
+        "period": "2024",
+        "source": "knowledge/story/cast-book.json"
+      },
+      "facets": [
+        {
+          "type": "capability",
+          "label": "documentary capabilities unresolved; recovery needed",
+          "strength": "unresolved",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "role",
+          "label": "Chaotic Conduit literary role",
+          "strength": "interpretive",
+          "scope": "creative / project",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "boundary",
+          "label": "Literary role should not be treated as documentary personality fact.",
+          "strength": "canonical",
+          "scope": "identity / evidence",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "role",
+          "label": "Great Book/project-side chaotic social character; documentary basis requires recovery",
+          "strength": "unresolved",
+          "scope": "2024",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "story_beats": [
+        {
+          "period": "2024",
+          "label": "Great Book/project-side chaotic social character; documentary basis requires recovery",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "conclusions": [
+        "Retain documentary/person record separately from any creative or literary role attached to the same name."
+      ],
+      "open_questions": []
+    },
+    "txt": {
+      "label": "TXT",
+      "kind": "real participant",
+      "aliases": [],
+      "titles": [],
+      "room_path": "rooms/potatoverse-canon/beings/txt/",
+      "first_seen": {
+        "period": "2017 onward old-profile claim",
+        "source": "knowledge/story/cast-book.json"
+      },
+      "facets": [
+        {
+          "type": "capability",
+          "label": "persistent public/conflict referent in project record",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "role",
+          "label": "Shadow Games literary layer",
+          "strength": "interpretive",
+          "scope": "creative / project",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "role",
+          "label": "Dog/Swamp and later comic-mythic reuse",
+          "strength": "interpretive",
+          "scope": "creative / project",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "boundary",
+          "label": "Serious allegations remain attributed; fictional Dog traits are not biography.",
+          "strength": "canonical",
+          "scope": "identity / evidence",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "boundary",
+          "label": "Keep person/handle, literary character and later retrospective role separate until the source chain joins them.",
+          "strength": "canonical",
+          "scope": "identity / evidence",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "type": "role",
+          "label": "long-running antagonism recovery lead; original sequence incomplete",
+          "strength": "established_scene",
+          "scope": "2017 onward old-profile claim",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "type": "role",
+          "label": "later biography groups TXT with Meta in digital-crucifixion/Farm interpretation",
+          "strength": "established_scene",
+          "scope": "2019 retrospective",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "type": "role",
+          "label": "literary Shadow Games figure",
+          "strength": "established_scene",
+          "scope": "2024",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "type": "role",
+          "label": "directly named public conflict referent alongside Dim; allegations remain attributed to Tim",
+          "strength": "unresolved",
+          "scope": "2026-07-07",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "story_beats": [
+        {
+          "period": "2017 onward old-profile claim",
+          "label": "long-running antagonism recovery lead; original sequence incomplete",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "period": "2019 retrospective",
+          "label": "later biography groups TXT with Meta in digital-crucifixion/Farm interpretation",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "period": "2024",
+          "label": "literary Shadow Games figure",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "period": "2026-07-07",
+          "label": "directly named public conflict referent alongside Dim; allegations remain attributed to Tim",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "conclusions": [
+        "Retain documentary/person record separately from any creative or literary role attached to the same name."
+      ],
+      "open_questions": []
+    },
+    "matthew-mtclassic": {
+      "label": "Matthew / MTClassic",
+      "kind": "real participant",
+      "aliases": [
+        "@mtclassic3",
+        "MTClassic"
+      ],
+      "titles": [],
+      "room_path": "rooms/potatoverse-canon/beings/matthew-mtclassic/",
+      "first_seen": {
+        "period": "2026-08",
+        "source": "knowledge/story/cast-book.json"
+      },
+      "facets": [
+        {
+          "type": "capability",
+          "label": "Elden Ring persistence",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "capability",
+          "label": "moderation advice",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "capability",
+          "label": "theological dialogue",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "capability",
+          "label": "recurring public-chat presence",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "boundary",
+          "label": "Do not import wings, many eyes or Heaven movement from Matthew the Potato.",
+          "strength": "canonical",
+          "scope": "identity / evidence",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "boundary",
+          "label": "Real person/handle. Do not conflate with created being Matthew the Potato; creative relation is explicit and separate.",
+          "strength": "canonical",
+          "scope": "identity / evidence",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "type": "role",
+          "label": "recurring public chat participant; Elden Ring/gaming continuity, moderation advice and theological discussion",
+          "strength": "established_scene",
+          "scope": "2026-08",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "type": "role",
+          "label": "top-fan UI #1 in supplied YouTube capture; new controller, gaming-deprivation jokes, site interest and Ancient Dragon Senessax victory after 20+ attempts",
+          "strength": "established_scene",
+          "scope": "2026-09-20",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "story_beats": [
+        {
+          "period": "2026-08",
+          "label": "recurring public chat participant; Elden Ring/gaming continuity, moderation advice and theological discussion",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "period": "2026-09-20",
+          "label": "top-fan UI #1 in supplied YouTube capture; new controller, gaming-deprivation jokes, site interest and Ancient Dragon Senessax victory after 20+ attempts",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "conclusions": [
+        "Retain documentary/person record separately from any creative or literary role attached to the same name."
+      ],
+      "open_questions": []
+    },
+    "mediomu007": {
+      "label": "Mediomu007",
+      "kind": "real participant",
+      "aliases": [
+        "@mediomu007"
+      ],
+      "titles": [],
+      "room_path": "rooms/potatoverse-canon/beings/mediomu/",
+      "first_seen": {
+        "period": "2026-08-24",
+        "source": "knowledge/story/cast-book.json"
+      },
+      "facets": [
+        {
+          "type": "capability",
+          "label": "room organization",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "capability",
+          "label": "questioning/clarification",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "capability",
+          "label": "practical rearrangement/building",
+          "strength": "established_scene",
+          "scope": "documentary / ordinary",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "role",
+          "label": "mountain / bridge-building narrative role",
+          "strength": "interpretive",
+          "scope": "creative / project",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "boundary",
+          "label": "Mountain story is project interpretation; furniture rearrangement is literal ordinary life.",
+          "strength": "canonical",
+          "scope": "identity / evidence",
+          "provenance": "knowledge/cia/enhancements-index.json",
+          "source_ref": "knowledge/cia/enhancements-index.json"
+        },
+        {
+          "type": "boundary",
+          "label": "Keep ordinary public-chat person distinct from symbolic Mount-Zion-like project narrative.",
+          "strength": "canonical",
+          "scope": "identity / evidence",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "type": "role",
+          "label": "project mountain/bridge-building narrative participant; interpretive layer",
+          "strength": "established_scene",
+          "scope": "2026-08-24",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "type": "role",
+          "label": "public theological questioner asking literal-God versus myth clarification",
+          "strength": "established_scene",
+          "scope": "2026-09-06",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "type": "role",
+          "label": "top-fan UI #2 in supplied YouTube capture; rearranges and cleans room, moves TV/console/bed/desk/nightstand, brief ordinary chat",
+          "strength": "established_scene",
+          "scope": "2026-09-20",
+          "provenance": "knowledge/story/cast-book.json",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "story_beats": [
+        {
+          "period": "2026-08-24",
+          "label": "project mountain/bridge-building narrative participant; interpretive layer",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "period": "2026-09-06",
+          "label": "public theological questioner asking literal-God versus myth clarification",
+          "source_ref": "knowledge/story/cast-book.json"
+        },
+        {
+          "period": "2026-09-20",
+          "label": "top-fan UI #2 in supplied YouTube capture; rearranges and cleans room, moves TV/console/bed/desk/nightstand, brief ordinary chat",
+          "source_ref": "knowledge/story/cast-book.json"
+        }
+      ],
+      "conclusions": [
+        "Retain documentary/person record separately from any creative or literary role attached to the same name."
+      ],
+      "open_questions": []
     }
   }
 }
