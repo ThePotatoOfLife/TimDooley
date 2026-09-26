@@ -1,6 +1,7 @@
 (function(root){
   'use strict';
 
+  const runtimeScript=(typeof document!=='undefined')?document.currentScript:null;
   const LEVELS=['heaven','plane','below'];
 
   function normalizeRoute(pathname,siteBasePath='/'){
@@ -118,7 +119,7 @@
 
   function browserContext(){
     if(typeof document==='undefined'||typeof window==='undefined')return null;
-    const script=document.currentScript;
+    const script=runtimeScript||document.currentScript;
     try{
       const appBase=new URL('./',script?.src||document.baseURI);
       const siteBase=new URL('../',appBase);
@@ -154,6 +155,7 @@
     header.setAttribute('aria-busy','true');
     header.setAttribute('data-no-tts','');
     header.setAttribute('aria-label','House elevator');
+    header.setAttribute('aria-keyshortcuts','ArrowUp ArrowDown Home');
     header.tabIndex=0;
     header.innerHTML=
       '<div class="site-elevator-main">'+
