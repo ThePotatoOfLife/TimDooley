@@ -210,7 +210,7 @@
         link.href=siteHref(room.homepage||('/rooms/'+room.id+'/'),context.siteBase);
         link.textContent=room.title||room.id;
         link.dataset.roomId=room.id;
-        if(spatial.roomId===room.id&&room.projections.includes(selectedLevel)){
+        if(spatial.roomId===room.id&&selectedLevel===spatial.levelId){
           link.setAttribute('aria-current','location');
           link.classList.add('is-active');
         }
@@ -233,9 +233,9 @@
       const projected=currentRoom&&projection
         ?(projection.dwellings||[]).find(row=>row?.id===spatial.roomId)?.projections||[]
         :[];
-      roomLabel.textContent=currentRoom&&projected.includes(selectedLevel)
-        ?(currentRoom.title||currentRoom.id)
-        :'House orientation';
+      roomLabel.textContent=currentRoom&&selectedLevel===spatial.levelId
+        ?('HERE · '+(currentRoom.title||currentRoom.id))
+        :(selectedLevel===spatial.levelId?'House orientation':'BROWSING FLOOR');
       up.disabled=selectedLevel==='heaven'||!projection;
       down.disabled=selectedLevel==='below'||!projection;
       renderRooms();
