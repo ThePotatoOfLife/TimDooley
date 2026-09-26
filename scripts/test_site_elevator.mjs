@@ -178,6 +178,9 @@ assert.ok(css.includes('[data-elevator-level="plane"] .site-elevator-room'),'Pla
 assert.ok(css.includes('[data-elevator-level="heaven"] .site-elevator-room'),'Heaven Room tiles need sky material styling');
 assert.ok(css.includes('[data-elevator-level="below"] .site-elevator-room'),'Below Room tiles need underground material styling');
 assert.ok(css.includes('background:transparent'),'arrow controls must float without metallic button blocks');
+assert.ok(css.includes('display:block!important'),'elevator shell must survive page-level header display overrides');
+assert.ok(css.includes('display:grid!important'),'Room rail must survive page-level nav display overrides');
+assert.ok(css.includes('margin:0!important'),'elevator shell must reset page-level header/nav margins');
 assert.ok(css.includes('align-self:start'),'elevator controls must stay pinned when Room grid wraps');
 assert.ok(css.includes('height:42px'),'desktop elevator controls need a fixed one-row height');
 assert.ok(css.includes('.site-elevator-reel{\n  align-self:start;'),'floor board must stay pinned when Room grid wraps');
