@@ -13,13 +13,9 @@ HOME_CSS = ROOT / "app" / "home-page.css"
 PROJECT_SYNTHESIS = ROOT / "data" / "house" / "project-synthesis.json"
 
 REQUIRED_DATASETS = (
-    "data/house/project-synthesis.json",
     "data/house/subrooms.json",
     "data/house/entity-dossiers-wave-001.json",
     "data/house/lower-plane-population-atlas.json",
-    "data/house/layer-terrain-regime-atlas.json",
-    "data/house/concept-topology.json",
-    "data/axis-flow-contract.json",
     "data/house/route-case-matrix-wave-001.json",
     "data/house/foundation-landscape-synthesis.json",
     "data/house/foundation-room-atlas.json",
@@ -75,7 +71,7 @@ def main() -> int:
             for required_legacy in ("data/house/entity-dossiers-wave-001.json", "data/house/route-case-matrix-wave-001.json"):
                 if required_legacy not in legacy_paths:
                     errors.append(f"homepage legacy-named active input lacks explicit disposition: {required_legacy}")
-            for owner in ("project-spine", "learn-the-structure", "route-comparison", "foundation-landscape", "foundation-rooms", "materialized-now"):
+            for owner in ("project-spine", "structure-handoff", "route-comparison", "foundation-landscape", "foundation-rooms", "materialized-now"):
                 if owner not in contract:
                     errors.append(f"homepage repetition contract missing owner: {owner}")
         except (OSError, json.JSONDecodeError) as exc:
@@ -114,6 +110,10 @@ def main() -> int:
 
     if 'class="home-guide"' in home or 'aria-label="Homepage section shortcuts"' in home:
         errors.append("homepage reintroduced the retired first-screen section shortcut row")
+    if 'id="homeTeachingNav"' in home or 'id="homeTeachingPanel"' in home:
+        errors.append("homepage still renders the retired full structural teaching instrument")
+    if 'id="structure-handoff"' not in home:
+        errors.append("homepage missing compact structure handoff")
 
     stale_loading = (
         "Loading Foundation landscape",
