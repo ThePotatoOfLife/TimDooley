@@ -7,7 +7,7 @@
     try{
       const link=document.createElement('link');
       link.rel='stylesheet';
-      link.href=new URL('house-journey.css?v=20260926a',baseUrl).href;
+      link.href=new URL('house-journey.css?v=20260926b',baseUrl).href;
       link.dataset.houseJourneyStyle='';
       document.head.appendChild(link);
     }catch(_){}
