@@ -121,3 +121,20 @@ The programme is complete when the main reader journeys no longer require a visi
 On 26 September 2026 the registered nested-Room set was scanned for the same failure pattern as the top-level Dwellings. **35 of 38** contained a generic `<section class="inner-center">` between the subject header and the substantive body. Those sections were removed in place. No Room was deleted; titles, summaries, evidence boundaries, substantive essays, cases, models, chronologies, examples and deep routes remain.
 
 The three Rooms that did not require this removal were already structured without the generic preamble. The validator now treats any `inner-center` return inside a registered nested Room as a subject-first regression.
+
+
+## A / B / C noun-route audit
+
+The first complete public noun audit uses three classes:
+
+- **A · Substance:** the noun opens the subject itself. Current examples include Tim Dooley, Timeline, History, Religion, Philosophy, Science, World, World Systems, Culture, Politics, North, Economy, Law, Works, Collection, Research Lab, Sources and Life & Body.
+- **B · Legitimate navigation/explorer:** navigation is the promised thing. Home, House, Rooms, Find, A–Z, Explore, Paths and Elevator belong here. They may explain structure because structure/navigation is their actual job.
+- **C · Meta-wrapper:** the noun promises subject matter but first delivers filing-system explanation or a second handoff. The top-level Dwelling local-center shells, the nested Room inner-center shells and the former World Systems “index into canonical research owners” framing were C-class findings and have been corrected.
+
+### A–Z repair
+
+The authored A–Z orientation set previously described itself as a name-first doorway while most cards were non-clickable `div` elements. It now links concrete nouns directly to their strongest reader, including Timeline, Works, Science, Religion, Culture, World Systems, Sources, Research Lab, History, Life & Body, Economy and Law. Character Archive naming was updated from the retired FBI framing to the live CIA / Characters, Incidents & Associations surface. Matthew remains an explicit two-route disambiguation rather than being collapsed into one identity.
+
+### Navigation surfaces deliberately preserved
+
+House, Rooms, Paths and Elevator were inspected and are **not** being rewritten into subject pages. Their current pages already explain that they are structure/traversal tools, provide worked examples, and exit into substantive readers. Removing that architectural role would violate the subject-first rule rather than satisfy it.
