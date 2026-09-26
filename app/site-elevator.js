@@ -151,6 +151,7 @@
     header.className='site-elevator';
     header.setAttribute('data-elevator-level','pending');
     header.dataset.elevatorReady='false';
+    header.setAttribute('aria-busy','true');
     header.setAttribute('data-no-tts','');
     header.setAttribute('aria-label','House elevator');
     header.tabIndex=0;
@@ -236,6 +237,8 @@
       up.disabled=selectedLevel==='heaven'||!projection;
       down.disabled=selectedLevel==='below'||!projection;
       renderRooms();
+      if(typeof requestAnimationFrame==='function')requestAnimationFrame(publishClearance);
+      else publishClearance();
     };
 
     const move=direction=>{
@@ -307,11 +310,14 @@
       if(spatial.roomId)header.dataset.elevatorRoom=spatial.roomId;
       else delete header.dataset.elevatorRoom;
       header.dataset.elevatorReady='true';
+      header.setAttribute('aria-busy','false');
       render('hydrate');
     }).catch(()=>{
       header.dataset.elevatorReady='error';
+      header.setAttribute('aria-busy','false');
       selectedLevel='plane';
       render('error');
+      roomLabel.textContent='ORIENTATION OFFLINE';
     });
 
     return header;
