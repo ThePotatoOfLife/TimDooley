@@ -19,7 +19,7 @@ REQUIRED_PAIRS={
     frozenset(("canon-identities","developmental-genealogy")):"historical-decomposition",
     frozenset(("prediction-revelation-time","witness-attestation")):"prior-wording-check",
     frozenset(("visual-art","symbolic-architecture")):"composition-to-operator",
-    frozenset(("games-simulations","systems-dynamics")):"mechanics-to-model",
+    frozenset(("games-simulations","systems-dynamics")):"simulation-formalization",
     frozenset(("music-sound","developmental-genealogy")):"creative-attestation",
 }
 
