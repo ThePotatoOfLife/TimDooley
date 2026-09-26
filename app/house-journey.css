@@ -12,7 +12,7 @@
 .house-journey-ribbon-actions{display:flex;gap:3px}.house-journey-ribbon-actions a,.house-journey-ribbon-actions button{appearance:none;border:0;background:transparent;border-radius:4px;padding:4px 5px;color:var(--site-muted,#9ba59a);text-decoration:none;font:700 7px/1 system-ui,sans-serif;white-space:nowrap;cursor:pointer}.house-journey-ribbon-actions button:hover,.house-journey-ribbon-actions button:focus-visible,.house-journey-ribbon-actions a:hover,.house-journey-ribbon-actions a:focus-visible{background:rgba(255,255,255,.06);color:var(--site-green,#9eb58d);outline:none}
 .house-journey-popover{position:absolute;left:0;right:auto;bottom:34px;width:min(420px,calc(100vw - 20px));max-height:min(44vh,340px);overflow:auto;border:1px solid var(--site-line,#303830);border-radius:10px;background:#090d0a;padding:9px;box-shadow:0 12px 32px rgba(0,0,0,.38)}
 .house-journey-popover[hidden]{display:none}.house-journey-popover>p{margin:0 0 7px;color:var(--site-muted,#9ba59a);font-size:8px}.house-journey-history{display:grid;gap:3px}.house-journey-history a{display:flex;justify-content:space-between;gap:8px;padding:6px 7px;border:1px solid var(--site-line,#303830);border-radius:6px;color:var(--site-muted,#9ba59a);text-decoration:none;font-size:8px}.house-journey-history small{color:var(--site-faint,#778076)}
-@media(max-width:720px){.house-journey-ribbon{width:min(360px,calc(100vw - 108px));max-width:calc(100vw - 108px)}.house-journey-ribbon-title{display:none}.house-journey-ribbon-track a:nth-last-child(n+2){display:none}.house-journey-ribbon-actions a{display:none}}
+@media(max-width:720px){.house-journey-ribbon{width:min(360px,calc(100vw - 108px));max-width:calc(100vw - 108px)}.house-journey-ribbon-title{display:none}.house-journey-ribbon-track a:nth-last-child(n+2){display:none}.house-journey-ribbon-actions a{display:none}.room-floor-grid{grid-template-columns:1fr}.room-floor-card{min-height:auto}}
 @media(max-width:420px){.house-journey-ribbon{left:6px;width:calc(100vw - 102px);max-width:calc(100vw - 102px);padding:3px 4px}.house-journey-ribbon-track a{max-width:128px}.house-journey-ribbon-actions button{padding:4px}}
 
 .room-floor-projection{margin:26px 0 30px;padding:20px;border:1px solid var(--site-line,#303830);background:rgba(255,255,255,.018)}
@@ -34,7 +34,7 @@
 .room-floor-card.is-projected small{color:var(--site-muted,#9ba59a)}
 .room-floor-card.is-absent{opacity:.48;border-style:dashed}
 .room-floor-card.is-absent p{font-style:italic}
-@media(max-width:720px){.room-floor-grid{grid-template-columns:1fr}.room-floor-card{min-height:auto}}
+
 
 .room-inhabitants-panel{margin:34px 0 90px}
 .room-inhabitant-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:9px;margin-top:14px}
