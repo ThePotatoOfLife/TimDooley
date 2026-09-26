@@ -1,6 +1,6 @@
 {
   "id": "public-page-semantic-gap-audit",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-26",
   "purpose": "Track older public pages that are technically reachable but still need coherence, fallback substance, consolidation or authored synthesis. This audit targets semantic gaps, not raw word count.",
   "principles": [
@@ -66,6 +66,30 @@
       "issue": "isolated_substantive",
       "status": "fixed",
       "action": "Added active science-owner map and typed shared-vocabulary rules."
+    },
+    {
+      "path": "rooms/potatoverse-canon/beings/cia/index.html",
+      "issue": "strong_no_action",
+      "status": "reviewed",
+      "action": "Already clearly distinguishes CIA as Potatoverse Character Archive, retired FBI predecessor, documentary vs symbolic layers and current archive ownership."
+    },
+    {
+      "path": "rooms/potatoverse-canon/beings/cia/associations/index.html",
+      "issue": "strong_no_action",
+      "status": "reviewed",
+      "action": "Already states that co-presence does not establish friendship, alliance, conflict, influence or motive; no expansion needed."
+    },
+    {
+      "path": "rooms/potatoverse-canon/beings/cia/incidents/index.html",
+      "issue": "strong_no_action",
+      "status": "reviewed",
+      "action": "Already defines incident as a dated knowledge-changing scene and explicitly says incident does not mean wrongdoing."
+    },
+    {
+      "path": "rooms/potatoverse-canon/beings/cia/bank/index.html",
+      "issue": "strong_no_action",
+      "status": "reviewed",
+      "action": "Already labels the ledger fictional/symbolic, separates it from real finance, and constrains accounting to source-bounded events."
     }
   ],
   "next_wave": [
@@ -88,16 +112,6 @@
       "path": "index-a-z/index.html",
       "issue": "generic_hub",
       "question": "Assess whether alphabetical discovery exposes definitions/context rather than only labels."
-    },
-    {
-      "path": "rooms/potatoverse-canon/beings/fbi/index.html",
-      "issue": "legacy_wrapper",
-      "question": "Consolidate FBI legacy presentation into current Characters, Incidents & Associations ownership without enriching obsolete architecture."
-    },
-    {
-      "path": "rooms/potatoverse-canon/beings/cia/file/index.html",
-      "issue": "no_js_shell",
-      "question": "Ensure CIA file pages explain the institution/data model before loading ledgers."
     },
     {
       "path": "rooms/potatoverse-canon/beings/*/index.html",
