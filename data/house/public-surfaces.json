@@ -1,6 +1,6 @@
 {
   "version": "2.7.0",
-  "updated": "2026-09-21",
+  "updated": "2026-09-27",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
   "primary_gateway_ids": [
@@ -279,7 +279,7 @@
       "surface_type": "explorer",
       "title": "Questions",
       "reader_job": "Enter the project through concrete reader questions and route answers to their canonical owners.",
-      "primary_parent": "home",
+      "primary_parent": "explore",
       "primary_room_ids": [
         "potatoverse-canon",
         "archive-sources",
@@ -306,7 +306,7 @@
       "surface_type": "explorer",
       "title": "A–Z",
       "reader_job": "Resolve known terms quickly by name and send readers to canonical destinations.",
-      "primary_parent": "home",
+      "primary_parent": "explore",
       "primary_room_ids": [
         "potatoverse-canon",
         "archive-sources",
@@ -795,7 +795,7 @@
       "surface_type": "guide",
       "title": "Paths",
       "reader_job": "Offer intentional cross-domain reading journeys generated from canonical ownership and relations.",
-      "primary_parent": "house",
+      "primary_parent": "explore",
       "primary_room_ids": [
         "potatoverse-canon",
         "archive-sources",
