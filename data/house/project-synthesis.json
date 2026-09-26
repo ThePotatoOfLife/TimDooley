@@ -1,5 +1,5 @@
 {
-  "version": "3.7.0",
+  "version": "3.8.0",
   "updated": "2026-09-27",
   "authority": "project-synthesis",
   "purpose": "Bind the current project center, operators, living metabolisms, Rooms, tests, outputs and public composition into one center-out synthesis without replacing canonical owners. Development history is referenced, not embedded as current-state weight.",
@@ -1783,7 +1783,7 @@
       },
       {
         "id": "seed-first-real-entity-dossiers",
-        "artifact": "data/house/entity-dossiers-wave-001.json",
+        "artifact": "data/house/entity-dossiers.json",
         "result": "Real source-grounded trust-infrastructure cases now exercise the entity dossier contract."
       },
       {
@@ -1803,12 +1803,12 @@
       },
       {
         "id": "instrument-entity-dossiers-with-scale-reproduction-visibility-time",
-        "artifact": "data/house/entity-dossiers-wave-001.json",
+        "artifact": "data/house/entity-dossiers.json",
         "result": "The first four real entity cases now expose operating scale, key dependencies, reproduction/correction mechanisms, visibility/access limits and source-backed longitudinal indicators."
       },
       {
         "id": "materialize-route-case-matrix",
-        "artifact": "data/house/route-case-matrix-wave-001.json",
+        "artifact": "data/house/route-case-matrix.json",
         "result": "Life/Strife/Repair/Return now have mechanism contrasts and concrete evidence-aware route cases with falsifiers and World-return measures."
       },
       {
@@ -1927,7 +1927,7 @@
         "purpose": "Show current governed project depth using counts from canonical registries.",
         "owners": [
           "data/house/subrooms.json",
-          "data/house/entity-dossiers-wave-001.json",
+          "data/house/entity-dossiers.json",
           "data/house/foundations-wave-001.json",
           "data/house/foundations-wave-002.json",
           "data/house/lower-plane-population-atlas.json"
@@ -1936,7 +1936,7 @@
       {
         "id": "reality-cases",
         "purpose": "Surface a small number of source-grounded entity cases and one longitudinal observation each.",
-        "owner": "data/house/entity-dossiers-wave-001.json"
+        "owner": "data/house/entity-dossiers.json"
       },
       {
         "id": "working-capabilities",
@@ -1962,7 +1962,7 @@
       {
         "id": "route-comparison",
         "purpose": "Teach route families as evidence-aware state-transition hypotheses using mechanism contrasts and concrete cases with falsifiers.",
-        "owner": "data/house/route-case-matrix-wave-001.json"
+        "owner": "data/house/route-case-matrix.json"
       },
       {
         "id": "foundation-landscape",
@@ -1977,11 +1977,11 @@
     ],
     "runtime_sources": [
       "data/house/subrooms.json",
-      "data/house/entity-dossiers-wave-001.json",
+      "data/house/entity-dossiers.json",
       "data/house/foundations-wave-001.json",
       "data/house/foundations-wave-002.json",
       "data/house/lower-plane-population-atlas.json",
-      "data/house/route-case-matrix-wave-001.json",
+      "data/house/route-case-matrix.json",
       "data/house/foundation-landscape-synthesis.json",
       "data/house/foundation-room-atlas.json"
     ],
@@ -2018,20 +2018,11 @@
         "data/house/subrooms.json",
         "data/house/lower-plane-population-atlas.json",
         "data/house/foundation-landscape-synthesis.json",
-        "data/house/foundation-room-atlas.json"
+        "data/house/foundation-room-atlas.json",
+        "data/house/entity-dossiers.json",
+        "data/house/route-case-matrix.json"
       ],
-      "legacy_named_active_inputs": [
-        {
-          "path": "data/house/entity-dossiers-wave-001.json",
-          "role": "homepage reality-case content",
-          "disposition": "active source with legacy wave filename; rename/promote only when repository-wide references can be migrated safely"
-        },
-        {
-          "path": "data/house/route-case-matrix-wave-001.json",
-          "role": "homepage route contrast and concrete route-case content",
-          "disposition": "active source with legacy wave filename; rename/promote only when repository-wide references can be migrated safely"
-        }
-      ],
+      "legacy_named_active_inputs": [],
       "retired_homepage_runtime_inputs": [
         "data/house/foundations-wave-001.json",
         "data/house/foundations-wave-002.json",
@@ -2041,7 +2032,7 @@
     }
   },
   "route_instrumentation": {
-    "authority": "data/house/route-case-matrix-wave-001.json",
+    "authority": "data/house/route-case-matrix.json",
     "rule": "Life, Strife, Repair and Return are route hypotheses over changing relations, not identities or moral labels for subjects.",
     "required_case_fields": [
       "starting_state",
@@ -2059,7 +2050,8 @@
       "wikimedia-capability-growth-trace",
       "cern-reproduction-return-trace",
       "icrc-resource-adaptation-trace"
-    ]
+    ],
+    "note": "Stable owner promoted from the original wave-001 artifact on 2026-09-27."
   },
   "foundation_seed_genealogy": {
     "authority": "data/house/foundation-door-seed-genealogy.json",
