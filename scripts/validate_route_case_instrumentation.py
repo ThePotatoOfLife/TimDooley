@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
-MATRIX=ROOT/'data/house/route-case-matrix-wave-001.json'
+MATRIX=ROOT/'data/house/route-case-matrix.json'
 SYNTH=ROOT/'data/house/project-synthesis.json'
 HOME=ROOT/'index.html'
 
@@ -62,10 +62,10 @@ def main():
             errors.append(f'{cid} must name a World-level return measure')
 
     ri=synth.get('route_instrumentation',{})
-    if ri.get('authority')!='data/house/route-case-matrix-wave-001.json':
+    if ri.get('authority')!='data/house/route-case-matrix.json':
         errors.append('project synthesis missing route instrumentation authority')
     hp=synth.get('homepage_projection',{})
-    if 'data/house/route-case-matrix-wave-001.json' not in hp.get('runtime_sources',[]):
+    if 'data/house/route-case-matrix.json' not in hp.get('runtime_sources',[]):
         errors.append('homepage projection must read route case matrix at runtime')
 
     text=HOME.read_text(encoding='utf-8',errors='replace')
@@ -73,7 +73,7 @@ def main():
         'id="route-comparison"',
         'id="homeRouteTabs"',
         'id="homeRouteCases"',
-        "loadJson('data/house/route-case-matrix-wave-001.json')",
+        "loadJson('data/house/route-case-matrix.json')",
         'Same root, different route',
         'A route is a testable change in what the relation reproduces',
     ):
