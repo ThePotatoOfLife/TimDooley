@@ -78,7 +78,7 @@ The generic phrases **“Dwelling · local center”**, **“Inside this Dwellin
    - Tim subpages
 
 3. **Nested Rooms — completed first-screen recovery**
-   - 35 of 38 registered nested Rooms carried a generic `inner-center` preamble and were corrected
+   - all 38 registered nested Rooms carried the generic `inner-center` pattern across the full audit and are now corrected
    - subject header now flows directly into authored material
    - the remaining 3 already lacked that preamble
    - reader-richness validation now rejects any reintroduction of the generic nested center
@@ -118,9 +118,9 @@ The programme is complete when the main reader journeys no longer require a visi
 
 ## Nested-Room recovery wave
 
-On 26 September 2026 the registered nested-Room set was scanned for the same failure pattern as the top-level Dwellings. **35 of 38** contained a generic `<section class="inner-center">` between the subject header and the substantive body. Those sections were removed in place. No Room was deleted; titles, summaries, evidence boundaries, substantive essays, cases, models, chronologies, examples and deep routes remain.
+On 26 September 2026 the registered nested-Room set was scanned for the same failure pattern as the top-level Dwellings. **38 of 38** were ultimately confirmed to contain the legacy `<section class="inner-center">` pattern across the full audit between the subject header and the substantive body. Those sections were removed in place. No Room was deleted; titles, summaries, evidence boundaries, substantive essays, cases, models, chronologies, examples and deep routes remain.
 
-The three Rooms that did not require this removal were already structured without the generic preamble. The validator now treats any `inner-center` return inside a registered nested Room as a subject-first regression.
+The first search pass missed Practice & Ethics, Witness & Attestation, and Prediction/Revelation Time because code-search indexing lagged behind the repository. CI exposed those misses; they were then corrected too. The validator now treats any `inner-center` return inside any registered nested Room as a subject-first regression.
 
 
 ## A / B / C noun-route audit
