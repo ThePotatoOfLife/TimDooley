@@ -221,6 +221,29 @@
   findBtn.addEventListener('click',()=>setOpen(true,true,findBtn));
   closeBtn.addEventListener('click',()=>{setOpen(false);returnFocus?.focus?.()});
   input.addEventListener('input',renderSearch);
+  const resultLinks=()=>[...content.querySelectorAll('.site-access-result')];
+  const focusResult=(index)=>{
+    const rows=resultLinks();if(!rows.length)return false;
+    const safe=Math.max(0,Math.min(rows.length-1,index));
+    rows[safe].focus();return true;
+  };
+  const moveResultFocus=(direction)=>{
+    const rows=resultLinks();if(!rows.length)return false;
+    const currentIndex=rows.indexOf(document.activeElement);
+    const next=currentIndex<0?(direction>0?0:rows.length-1):(currentIndex+direction+rows.length)%rows.length;
+    rows[next].focus();return true;
+  };
+  input.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'){if(focusResult(0))e.preventDefault();}
+    else if(e.key==='ArrowUp'){const rows=resultLinks();if(rows.length){rows[rows.length-1].focus();e.preventDefault();}}
+  });
+  content.addEventListener('keydown',e=>{
+    if(!e.target.closest('.site-access-result'))return;
+    if(e.key==='ArrowDown'){if(moveResultFocus(1))e.preventDefault();}
+    else if(e.key==='ArrowUp'){if(moveResultFocus(-1))e.preventDefault();}
+    else if(e.key==='Home'){if(focusResult(0))e.preventDefault();}
+    else if(e.key==='End'){const rows=resultLinks();if(rows.length){rows[rows.length-1].focus();e.preventDefault();}}
+  });
   wrapper.querySelector('.site-access-search').addEventListener('submit',async e=>{
     e.preventDefault();await renderSearch();
     const first=content.querySelector('.site-access-result');
