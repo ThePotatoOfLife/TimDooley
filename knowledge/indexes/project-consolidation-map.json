@@ -1,8 +1,8 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.4.0",
-  "updated": "2026-09-20",
+  "version": "1.5.0",
+  "updated": "2026-09-27",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
   "repository_observation": "The project already has a strong retrieval-first architecture, but rapid research waves have produced several specialist files whose relationship to canonical owners is not always obvious. Consolidation should therefore prioritize ownership clarity and promotion rules before deleting substantive material.",
@@ -160,5 +160,37 @@
     "5. Run integrity/build checks after structural changes.",
     "6. Only then begin deleting fully absorbed temporary files."
   ],
-  "success_test": "A newcomer should be able to start at a House route, descend through manifest archive branches to one canonical owner for a concept, reach specialist/source layers, and return without encountering contradictory competing masters whose roles are unexplained."
+  "success_test": "A newcomer should be able to start at a House route, descend through manifest archive branches to one canonical owner for a concept, reach specialist/source layers, and return without encountering contradictory competing masters whose roles are unexplained.",
+  "master_role_disposition": {
+    "data/house/project-synthesis.json": {
+      "role": "whole-project synthesis",
+      "authority": "current",
+      "boundary": "Coordinates project center, Rooms, reader families, tests and handoffs without replacing domain owners."
+    },
+    "knowledge/core/root-system.json": {
+      "role": "human-readable structural ontology",
+      "authority": "current",
+      "boundary": "Explains the structural whole and routes exact operator contracts downward."
+    },
+    "knowledge/core/potatoverse-master-framework.json": {
+      "role": "Potatoverse theology and relational-system synthesis",
+      "authority": "current within project canon",
+      "boundary": "Owns broad Potatoverse theology/system synthesis, not public navigation or every specialist operator definition."
+    },
+    "knowledge/core/symbolic-relational-synthesis.json": {
+      "role": "cross-symbol transformation grammar",
+      "authority": "current specialist owner",
+      "boundary": "Owns cross-symbol laws/relations, not biography, timeline or whole-project composition."
+    },
+    "2026-master-framework.json": {
+      "role": "historical conversation-era synthesis",
+      "authority": "source-bearing historical stratum",
+      "boundary": "Preserves the broad 2026 conversation-developed framework; current authority routes to House/core owners."
+    },
+    "knowledge/cosmology/axis-spiral-root.json": {
+      "role": "developmental cosmology and repair synthesis",
+      "authority": "specialist",
+      "boundary": "Specializes Tim/Axis/Spiral/Root development; generic operators remain owned elsewhere."
+    }
+  }
 }
