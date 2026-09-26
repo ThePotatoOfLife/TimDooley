@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import re
 from pathlib import Path
+import json
 
 ROOT = Path(__file__).resolve().parents[1]
 PEER_NAV_FILES = (
@@ -22,10 +23,13 @@ def main() -> int:
     errors: list[str] = []
     for rel in PEER_NAV_FILES:
         nav = first_nav((ROOT / rel).read_text(encoding="utf-8"))
-        if 'href="../world/"' not in nav:
-            errors.append(f"{rel}: primary peer nav must link to ../world/")
         if 'href="../world-map/"' in nav:
             errors.append(f"{rel}: primary peer nav must not use World Map as fifth peer")
+
+    access = json.loads((ROOT / "data/house/site-access.json").read_text(encoding="utf-8"))
+    world_entries = [row for row in access.get("entries", []) if row.get("id") == "world"]
+    if len(world_entries) != 1 or world_entries[0].get("route") != "/world/":
+        errors.append("site-access.json: World must remain a unique name-first route at /world/")
 
     patch = (ROOT / "scripts/patch_home_discovery.py").read_text(encoding="utf-8")
     if "GITHUB_WORKFLOW" in patch and 'href="world-map/' in patch:
