@@ -253,6 +253,7 @@
     up.addEventListener('click',()=>move('up'));
     down.addEventListener('click',()=>move('down'));
     header.addEventListener('keydown',event=>{
+      if(event.target!==header)return;
       if(event.key==='ArrowUp'){
         event.preventDefault();
         move('up');
