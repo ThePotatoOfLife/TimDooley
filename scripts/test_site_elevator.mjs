@@ -144,6 +144,7 @@ for(const marker of [
   'data-elevator-level',
   'is-primary',
   'is-secondary',
+  "if(event.target!==header)return",
 ]){
   assert.ok(source.includes(marker),'site elevator visual contract missing '+marker);
 }
