@@ -182,6 +182,21 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 - [ ] Reconcile remaining public-route projections against House authority after the latest spiral/Below/World Map merges; route aliases should be generated or validated rather than hand-maintained.
 - [ ] Audit generated/state-like files by **reference and unique information**, not filename. The repository currently contains hundreds of `wave`, `batch`, `round`, `audit` and snapshot-named files; many are legitimate research records, while others are migration residue. Produce a keep/merge/archive/prune disposition before removal.
 
+### Evidence-first enrichment queue — 2026-09-27
+
+**Rule:** do not enrich a Room by adding generic prose. For each pass: inspect the public page, inspect canonical holdings, research the subject externally where useful, record what the current page fails to teach, then add named mechanisms, cases, institutions, texts, equations, dates, source lineages or unresolved questions.
+
+- [x] **RICH-001 · Information Ecology research spine:** add a dedicated mechanisms atlas covering illusory truth, correction updating, context collapse, reward learning, source lineage, platformized collective memory and preservation-vs-discoverability distinctions; project the strongest findings into the public Room.
+- [ ] **RICH-002 · Information Ecology provenance hardening:** add source-class / publication-year metadata and a compact bibliography projection so research claims on the public page can be traced without exposing raw backend clutter.
+- [ ] **RICH-003 · Whole-body evidence spine:** add canonical references for NTS/parabrachial interoception, endocrine axes, neurovascular coupling, choroid plexus/CSF and meningeal lymphatics to the newly deepened public physiology page.
+- [ ] **RICH-004 · Infrastructure external cases:** verify and deepen grid, bridge/port and canal capability cases with current primary sources; add at least one semiconductor/fibre/data-centre supply-chain case and one recovery-time/resilience metric.
+- [ ] **RICH-005 · Comparative Mythology source-first pass:** choose 3–5 major comparisons and add primary-text or scholarly anchors, historical dates, and explicit transmission-vs-analogy tests; remove any comparison that is merely shape-matching.
+- [ ] **RICH-006 · Theology language archaeology:** trace Father/House/Gardener/Door/Spirit language through dated project sources and external textual traditions; distinguish original wording, later synthesis and comparative theology.
+- [ ] **RICH-007 · Visual Art object-density pass:** recover or index actual image prompts/artifacts where available; expose composition families by dated object, not only visual grammar.
+- [ ] **RICH-008 · Music provenance pass:** connect recovered song UUIDs to dated mentions, lyric-complete records, style/model transitions and reuse; do not reconstruct missing lyrics.
+- [ ] **RICH-009 · Law / Economy / Politics freshness pass:** for current institutions, statutes, fiscal figures and officeholders, use dated primary/public sources and separate descriptive fact from project interpretation.
+- [ ] **RICH-010 · Room nonsense detector:** sample every mature Room and flag paragraphs that could be moved to another Room with only noun substitutions; replace those with subject-specific mechanisms or objects.
+
 ### Whole-House harmony pass — 2026-09-20
 
 - [x] Audit all 10 canonical Dwellings and all 38 nested Rooms for valid parent ownership, adjacency, public projection, holdings and Room dossiers.
