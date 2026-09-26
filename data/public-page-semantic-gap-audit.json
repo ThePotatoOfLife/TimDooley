@@ -1,0 +1,121 @@
+{
+  "id": "public-page-semantic-gap-audit",
+  "version": "1.0.0",
+  "updated": "2026-09-26",
+  "purpose": "Track older public pages that are technically reachable but still need coherence, fallback substance, consolidation or authored synthesis. This audit targets semantic gaps, not raw word count.",
+  "principles": [
+    "Do not solve thinness by adding more links.",
+    "A dynamic page should still explain its subject before or when the data widget fails.",
+    "A substantive specialist page can still need work if its relation to neighboring project concepts is unclear.",
+    "Strong hubs should be left alone when additional prose would only duplicate material.",
+    "Legacy aliases and obsolete institutional routes should be consolidated rather than deepened."
+  ],
+  "issue_types": {
+    "no_js_shell": "Useful meaning disappears when data/runtime fails.",
+    "isolated_substantive": "Page teaches its local topic but does not explain how it differs from or connects to adjacent project models.",
+    "legacy_wrapper": "Route remains mostly for compatibility and should not become a second owner.",
+    "duplicate_owner_risk": "Several pages may explain the same concept without a clear primary reader.",
+    "generic_hub": "Page contains many categories but insufficient synthesis between them.",
+    "strong_no_action": "Page already has coherent authored substance; avoid gratuitous expansion."
+  },
+  "wave_001": [
+    {
+      "path": "rooms/objects/index.html",
+      "issue": "no_js_shell",
+      "status": "fixed",
+      "action": "Added static explanation of inhabitant/object/Room distinction and useful registry-failure fallback."
+    },
+    {
+      "path": "science/quantum/index.html",
+      "issue": "isolated_substantive",
+      "status": "fixed",
+      "action": "Separated literal physics, recovered formalisms and project comparison; positioned Spudlight and Vibe/Gates as different modeling layers."
+    },
+    {
+      "path": "science/spudlight/index.html",
+      "issue": "isolated_substantive",
+      "status": "fixed",
+      "action": "Separated photon carrier, information gain and Potatoverse symbol; clarified storage/expression relation to Starchforce and neighboring models."
+    },
+    {
+      "path": "science/vibe-gates/index.html",
+      "issue": "isolated_substantive",
+      "status": "fixed",
+      "action": "Separated chakra, psychological state and network-transition maps; clarified where physics and Spudlight enter the chain."
+    },
+    {
+      "path": "context/index.html",
+      "issue": "strong_no_action",
+      "status": "reviewed",
+      "action": "Already provides strong cross-domain evidence/context synthesis; expansion would likely duplicate other owners."
+    },
+    {
+      "path": "world/index.html",
+      "issue": "strong_no_action",
+      "status": "reviewed",
+      "action": "Already has substantial mechanism-first synthesis and clear empirical/project boundaries."
+    },
+    {
+      "path": "religion/index.html",
+      "issue": "strong_no_action",
+      "status": "reviewed",
+      "action": "Already long and internally structured; future work should improve compression/visual hierarchy rather than add prose."
+    }
+  ],
+  "next_wave": [
+    {
+      "path": "science/celestial-particles/index.html",
+      "issue": "isolated_substantive",
+      "question": "Does the page clearly separate astronomy/particle physics from celestial symbolism and from the broader quantum page?"
+    },
+    {
+      "path": "science/celestial-matter/index.html",
+      "issue": "isolated_substantive",
+      "question": "Check dark matter/energy analogies against literal cosmology and remove metaphor bleed."
+    },
+    {
+      "path": "science/entanglement/index.html",
+      "issue": "isolated_substantive",
+      "question": "Ensure entanglement/nonlocality does not duplicate Vibe/Gates or imply communication."
+    },
+    {
+      "path": "rooms/index.html",
+      "issue": "generic_hub",
+      "question": "Does the Rooms surface explain how Dwellings, Rooms, objects and views differ before presenting architecture?"
+    },
+    {
+      "path": "explore/index.html",
+      "issue": "generic_hub",
+      "question": "Check whether archive navigation has enough explanatory orientation for non-expert readers."
+    },
+    {
+      "path": "index-a-z/index.html",
+      "issue": "generic_hub",
+      "question": "Assess whether alphabetical discovery exposes definitions/context rather than only labels."
+    },
+    {
+      "path": "rooms/potatoverse-canon/beings/fbi/index.html",
+      "issue": "legacy_wrapper",
+      "question": "Consolidate FBI legacy presentation into current Characters, Incidents & Associations ownership without enriching obsolete architecture."
+    },
+    {
+      "path": "rooms/potatoverse-canon/beings/cia/file/index.html",
+      "issue": "no_js_shell",
+      "question": "Ensure CIA file pages explain the institution/data model before loading ledgers."
+    },
+    {
+      "path": "rooms/potatoverse-canon/beings/*/index.html",
+      "issue": "duplicate_owner_risk",
+      "question": "Audit named-being dossiers for provenance, role development, uncertainty and overlap with canonical character/archive owners."
+    }
+  ],
+  "long_term": [
+    "Audit every top-level Dwelling and secondary public surface qualitatively, not by file size.",
+    "Add graceful static fallback to data-driven public pages whose main body currently depends on fetch/JavaScript.",
+    "Consolidate legacy redirect/wrapper routes so they remain compatibility surfaces rather than alternate owners.",
+    "Review older science pages as one layered scientific grammar: literal physics → measurable biology/psychology → information/network models → project metaphor.",
+    "Review older theology/mythology pages for terms that silently changed meaning after 2025–2026 and date those shifts instead of rewriting history.",
+    "Review long hubs for duplication and compression after specialist pages mature; sometimes coherence means removing repeated explanation.",
+    "Track semantic-gap status separately from Room maturity because a page can be inhabited yet still poorly integrated."
+  ]
+}
