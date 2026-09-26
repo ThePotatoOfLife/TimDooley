@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PROJECTION = ROOT / "data" / "house" / "elevator-spatial-projection.json"
 ROOMS = ROOT / "data" / "house" / "rooms.json"
+ELEVATOR_CSS = ROOT / "app" / "site-elevator.css"
 
 EXPECTED_LEVELS = ["heaven", "plane", "below"]
 REPRESENTATIVE_CONTEXTS = {
@@ -46,6 +47,7 @@ def load_json(path: Path, errors: list[str]) -> dict:
 def main() -> int:
     errors: list[str] = []
     projection = load_json(PROJECTION, errors)
+    css = ELEVATOR_CSS.read_text(encoding="utf-8", errors="replace") if ELEVATOR_CSS.exists() else ""
     room_contract = load_json(ROOMS, errors)
 
     active_rooms = {
@@ -53,6 +55,25 @@ def main() -> int:
         for row in room_contract.get("rooms", [])
         if isinstance(row, dict) and row.get("status") == "active" and row.get("id")
     }
+    if not css:
+        errors.append("missing app/site-elevator.css")
+    else:
+        css_tokens = (
+            ".site-elevator",
+            '[data-elevator-level="heaven"]',
+            '[data-elevator-level="plane"]',
+            '[data-elevator-level="below"]',
+            "rotateX(",
+            "420ms",
+            "cubic-bezier(.2,.8,.2,1)",
+            "@media (prefers-reduced-motion: reduce)",
+            "--site-elevator-clearance",
+            ".site-elevator-room.is-active",
+        )
+        for token in css_tokens:
+            if token not in css:
+                errors.append(f"site elevator CSS missing required marker: {token}")
+
     if len(active_rooms) != 10:
         errors.append(f"expected exactly 10 active governed Rooms, got {len(active_rooms)}")
 
