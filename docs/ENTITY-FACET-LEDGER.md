@@ -56,3 +56,47 @@ The ledger can eventually drive:
 - “who has this gift?” views;
 - chronology of when a title or capability first appeared;
 - automated warnings when a page promotes a hypothesis to canon.
+
+
+## Rendering contract
+
+The public rendering contract lives in `data/entity-facet-rendering-rules.json`.
+
+The default projection is deliberately small: at most six signature facets, four story beats, two conclusions and three open questions. Empty sections disappear. Facets do not create navigation buttons.
+
+Strength is visible in wording:
+
+- **Canon / recurring** may be written plainly.
+- **Scene** must stay tied to the scene.
+- **Interpretation** must sound interpretive.
+- **Hypothesis** must visibly say hypothesis/possible/may.
+- **Unresolved** must remain a question or recovery state.
+
+A public page may be rich while the facet strip remains compact. The ledger is memory; the page is a view.
+
+## Validation
+
+`scripts/validate_entity_facets.py` checks the durable contract:
+
+- known facet types and strength levels;
+- required fields;
+- duplicate aliases/facets;
+- source pointers that resolve;
+- species-trait promotion rules;
+- first-seen pointers;
+- story-beat source pointers;
+- rendering-rule sanity.
+
+It intentionally does **not** reward entity count or facet count.
+
+## Mining workflow
+
+`scripts/mine_entity_facets.py` is review-only. It reads structured cast/being/enhancement records and searches Great Book chapters around already-known entity aliases. It writes candidates, never canon.
+
+The miner is intentionally conservative:
+
+1. It does not invent new entities from capitalized phrases.
+2. A one-scene literary power defaults to scene-level evidence.
+3. Creative enhancements for real people remain creative.
+4. Species traits require repeated evidence or explicit collective wording.
+5. Conflicts become candidates to review, not automatic resolutions.
