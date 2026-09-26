@@ -216,5 +216,8 @@ assert.ok(source.includes("data-elevator-level','pending"),'pre-hydration header
 assert.ok(source.includes('Finding your Room…'),'pre-hydration header needs a neutral orientation label');
 assert.ok(source.includes("sessionStorage.getItem(key)"),'elevator governance data should be cached per deployed asset version');
 assert.ok(source.includes("cache:'no-cache'"),'first governance fetch should revalidate rather than bypass all caching');
+assert.ok(source.includes("requestAnimationFrame(publishClearance)"),'every render must republish top clearance after Room wrapping');
+assert.ok(source.includes("setAttribute('aria-busy','true')"),'loading header should expose busy state');
+assert.ok(source.includes("'ORIENTATION OFFLINE'"),'failed governance hydration needs a visible fallback state');
 
 console.log('Site elevator resolver + visual contract passed.');
