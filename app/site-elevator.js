@@ -130,16 +130,18 @@
     header.tabIndex=0;
     header.innerHTML=
       '<div class="site-elevator-main">'+
-        '<button class="site-elevator-arrow site-elevator-up" type="button" aria-label="Move elevator up" disabled>↑</button>'+
+        '<div class="site-elevator-controls" aria-label="Change House floor">'+
+          '<button class="site-elevator-arrow site-elevator-up" type="button" aria-label="Move elevator up" disabled>↑</button>'+
+          '<button class="site-elevator-arrow site-elevator-down" type="button" aria-label="Move elevator down" disabled>↓</button>'+
+        '</div>'+
         '<div class="site-elevator-reel" aria-label="Current House floor">'+
           '<div class="site-elevator-floor" aria-live="polite">'+
             '<strong class="site-elevator-floor-label">PLANE</strong>'+
             '<small class="site-elevator-room-label">House orientation</small>'+
           '</div>'+
         '</div>'+
-        '<button class="site-elevator-arrow site-elevator-down" type="button" aria-label="Move elevator down" disabled>↓</button>'+
-      '</div>'+
-      '<nav class="site-elevator-room-rail" aria-label="Rooms on selected floor" hidden></nav>';
+        '<nav class="site-elevator-room-rail" aria-label="Rooms on selected floor" hidden></nav>'+
+      '</div>';
 
     document.body.insertBefore(header,document.body.firstChild);
 
