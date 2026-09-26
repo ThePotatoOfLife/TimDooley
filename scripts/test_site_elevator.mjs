@@ -54,4 +54,30 @@ assert.ok(cultureBelow.includes('culture-information'));
 const cultureHeaven=elevator.roomsForLevel('heaven',projection,roomContract).map(room=>room.id);
 assert.equal(cultureHeaven.includes('culture-information'),false);
 
-console.log('Site elevator resolver contract passed.');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const source=fs.readFileSync(path.join(ROOT,'app/site-elevator.js'),'utf8');
+
+// VISUAL CONTRACT
+for(const marker of [
+  'site-elevator-up',
+  'site-elevator-down',
+  'site-elevator-reel',
+  'site-elevator-room-rail',
+  'aria-live',
+  'aria-current',
+  'data-elevator-level',
+]){
+  assert.ok(source.includes(marker),'site elevator visual contract missing '+marker);
+}
+assert.equal(/history\.(?:pushState|replaceState)/.test(source),false,'floor switching must not mutate history');
+assert.equal(/location\.(?:assign|replace)|location\.href\s*=/.test(source),false,'floor switching must not navigate the page');
+assert.ok(source.includes("ArrowUp"),'header keyboard contract needs ArrowUp');
+assert.ok(source.includes("ArrowDown"),'header keyboard contract needs ArrowDown');
+assert.ok(source.includes("Home"),'header keyboard contract needs Home → Plane');
+assert.ok(source.includes("disabled"),'boundary arrows must expose disabled state');
+
+console.log('Site elevator resolver + visual contract passed.');
