@@ -587,15 +587,15 @@ The governing rule for this wave is:
 
 > **Every important Room should be worth entering even if the reader does not click another link.**
 
-- [ ] Build a semantic audit of every active Dwelling, nested Room, named-being Room and specialist institution Room.
-- [ ] Track Room maturity as `shell` → `seeded` → `inhabited` → `deep`; do not use byte or word count as the completion rule.
+- [x] Build a semantic audit of every active nested Room; Dwelling, named-being and specialist institution audits continue in the next phase.
+- [x] Track nested Room maturity as `shell` → `seeded` → `inhabited` → `deep` in `data/house/room-maturity-registry.json`; human review remains authoritative.
 - [ ] Give each important Room a reader body: orientation, core explanation, internal landmarks, development, relations, evidence boundary, tensions/open questions, concrete examples and deeper routes where the subject supports them.
 - [ ] Make actual subject knowledge visually and semantically primary; reduce the dominance of Elevator links, parent links, adjacency cards, backend path names and repeated ownership boilerplate.
 - [ ] Project existing canonical holdings into readable synthesis instead of duplicating those holdings into a second source of truth.
-- [~] Deepen the first thin World/society wave: Economy & Finance, Law & Justice, Timeline / Events, and Subculture / Cult / Group Formation are inhabited; Politics & Governance remains.
+- [x] Deepen the first thin World/society wave: Economy & Finance, Law & Justice, Politics & Governance, Timeline / Events, and Subculture / Cult / Group Formation are inhabited.
 - [~] Deepen the first thin religion/canon wave: Theology & God-language, Symbolic Architecture, Bible & Christianity, Comparative Mythology, Esoteric & Sacred Geometry, Other Traditions, Practice & Ethics, Witness & Attestation, and Prediction / Revelation / Interpretation Time are inhabited.
-- [ ] Deepen the first thin science/formal wave: Mathematics & Geometry and Physics & Cosmology, then qualitatively audit Systems & Dynamics, Model Testing, Experiments, Information Ecology, Infrastructure and Geography.
-- [ ] Audit all remaining medium-size Rooms by human reading; mark each inhabited / partial / shell and deepen the partial ones.
+- [x] Deepen Mathematics & Geometry and Physics & Cosmology; qualitatively audit Systems & Dynamics, Model Testing, Experiments, Information Ecology, Infrastructure and Geography. Current medium-Room audits show those existing readers are substantive.
+- [x] Audit all registered nested Rooms by human reading and authored-wave review; all 38 are now recorded as `inhabited` or `deep`. Continue semantic-gap and freshness audits.
 - [ ] Audit the top-level Dwellings so they explain their subjects and inner relationships rather than merely listing Rooms.
 - [ ] Audit `rooms/potatoverse-canon/beings/**`; replace true stubs with sourced dossiers where material exists and keep authored/project roles distinct from externally established facts about real people.
 - [ ] Explain important wormholes and cross-Room links in prose: what relation is being made and what changes when the reader crosses domains.
@@ -605,3 +605,19 @@ The governing rule for this wave is:
 - [x] Use Economy & Finance, Theology & God-language and Symbolic Architecture as the first three pilot Rooms because they exercise factual-systemic, theological/canonical and symbolic-project-native content respectively.
 - [x] Treat Neurobiology as one useful qualitative reference: literal subject matter first, meaningful distinctions, evidence boundary, project relation, then deeper routes.
 - [ ] Finish only when clicking an important Room feels like entering a subject rather than entering another hallway.
+
+
+## Room inhabitation phase 2 — semantic completion
+
+The corridor-only baseline is eliminated across the 38 registered nested subject Rooms. The next phase is not indiscriminate expansion.
+
+- [ ] Audit all ten top-level Dwellings for stale summaries, duplicated navigation and missing synthesis between their inner Rooms.
+- [ ] Audit named-being dossiers and CIA specialist surfaces for stub pages, stale role-lock and missing date/source context.
+- [ ] Audit specialist institution surfaces (CIA, Bank, North, Law, Science, World systems) for subject explanation before controls/ledgers.
+- [ ] Run canonical-holding freshness checks so Room dossiers do not undercount newer knowledge owners.
+- [ ] Audit cross-Room handoffs: every important door should explain why the reader would cross it and what claim class changes on the other side.
+- [ ] Add object-level spotlights where a Room is conceptually clear but still abstract: dated artifacts, cases, works, equations, countries, events or source passages.
+- [ ] Check TTS/readability on newly long Rooms so prose additions do not create inaccessible walls of text.
+- [ ] Review repeated CSS patterns from the inhabitation wave and consolidate where safe without flattening the different Room personalities.
+- [ ] Add a maturity downgrade path: validator/audit should permit a Room to be marked `seeded` again if substantive content is removed or becomes misleading.
+- [ ] Continue qualitative audits of semantic gaps even when validators pass; validators protect floors, not editorial excellence.
