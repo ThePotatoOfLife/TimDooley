@@ -162,8 +162,15 @@ def main()->int:
     report={"version":"1.2.0","registry_version":data.get("version"),"surface_count":len(rows),"errors":errors,"warnings":warnings,"overlap_pairs":overlaps,"dead_ends":dead_ends,"short_cycles":short_cycles,"authored_surfaces":standalone,"metrics":metrics,"notes":["Density budgets are page-type heuristics, not release-failure thresholds.","First-nav link-wall warns above four links; mobile pre-content stack score combines first-nav links, buttons and extra nav rows before the first substantive H2.","Registered outdegree counts only links to other registered public surfaces; deep records and anchors remain separate.","Two-way cycles are review signals: reciprocal orientation may be healthy, repeated hub bouncing may not be.","Overlap is a review signal for redundant reader jobs, not proof that two surfaces should merge.","Read/Open/Enter CTAs pointing to registered hub/explorer shells are review signals because promise language should normally land on substance, not another directory.","Bare More/Deep/Explore/Context/Archive labels are flagged when they do not state destination intent."]}
     REPORT.parent.mkdir(parents=True,exist_ok=True); REPORT.write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
     print(f"SITE ARCHITECTURE AUDIT: {len(rows)} active surfaces · {len(errors)} errors · {len(warnings)} warnings · {len(overlaps)} high-overlap pairs")
-    for item in warnings[:12]: print(f"- WARN {item['code']}: {item.get('surface',item.get('left','site'))}")
-    if len(warnings)>12: print(f"- ... {len(warnings)-12} additional warnings in {REPORT.relative_to(ROOT)}")
+    warning_counts=Counter(item.get("code","unknown") for item in warnings)
+    if warning_counts:
+        print("- Warning classes: " + " · ".join(f"{code}={count}" for code,count in sorted(warning_counts.items())))
+    priority_codes={"authored-dead-end","registered-dead-end","read-open-enter-to-hub","vague-link-label","first-nav-link-wall","mobile-precontent-stack"}
+    priority=[item for item in warnings if item.get("code") in priority_codes]
+    for item in priority[:30]:
+        detail=item.get("label") or item.get("target") or item.get("count") or item.get("score") or ""
+        print(f"- WARN {item['code']}: {item.get('surface',item.get('left','site'))}" + (f" · {detail}" if detail else ""))
+    if len(priority)>30: print(f"- ... {len(priority)-30} additional priority warnings in {REPORT.relative_to(ROOT)}")
     for item in overlaps[:8]: print(f"- OVERLAP {item['left']} ↔ {item['right']}: {item['jaccard']}")
     if errors:
         for error in errors: print("- ERROR",error)
