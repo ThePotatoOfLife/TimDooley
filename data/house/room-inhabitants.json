@@ -1,5 +1,5 @@
 {
-  "version": "2.3.1",
+  "version": "2.4.0",
   "updated": "2026-09-26",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
@@ -3359,6 +3359,94 @@
       "summary": "Examines how capability, transparency, correction, institutions and infrastructure interact in public trust systems.",
       "status_note": "Institutional performance claims require dated jurisdiction-specific evidence.",
       "evidence_note": "Cross-domain research synthesis.",
+      "maturity": "described"
+    },
+    {
+      "id": "cosmology-axis-spiral-root",
+      "label": "Axis / Spiral / Root & Repair Architecture",
+      "kind": "cosmology-synthesis",
+      "room_ids": [
+        "physics-cosmology",
+        "symbolic-architecture",
+        "developmental-genealogy"
+      ],
+      "route": "/knowledge/cosmology/axis-spiral-root.json",
+      "summary": "Master synthesis joining Axis, Spiral, Root, biography and repair while explicitly separating myth, documentary history, science and civic proposals.",
+      "status_note": "Developing project cosmology; symbolic entanglement does not establish physical causation or political authority.",
+      "evidence_note": "Canonical cosmology synthesis with explicit epistemic firewall.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "creative-divine-identity-crosswalk",
+      "label": "Creative Theology Crosswalk",
+      "kind": "creative-interpretation-index",
+      "room_ids": [
+        "visual-art",
+        "music-sound",
+        "theology-god-language"
+      ],
+      "route": "/knowledge/creative/divine-identity-creative-crosswalk.json",
+      "summary": "Uses fiction, songs, satire, scenes and simulations as stress-tests for different Godhood modalities without turning creative material into documentary proof.",
+      "status_note": "Creative interpretation clarifies or exaggerates doctrine; it is not independent evidence.",
+      "evidence_note": "Canonical creative-theology crosswalk.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "politics-governance-lifecycle-atlas",
+      "label": "Governance, Institutions & Policy Lifecycle Atlas",
+      "kind": "governance-atlas",
+      "room_ids": [
+        "politics-governance",
+        "law-justice",
+        "infrastructure-capability"
+      ],
+      "route": "/knowledge/politics/governance-institutions-policy-lifecycle-atlas.json",
+      "summary": "Neutral grammar for authority, institutions, implementation, accountability, review and policy lifecycle without collapsing governance into partisan scoring.",
+      "status_note": "Institutional descriptions are jurisdiction- and date-sensitive; proposals, authorization, implementation and outcomes remain separate.",
+      "evidence_note": "Canonical governance owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "practice-potato-path",
+      "label": "Potatoism Practice Path",
+      "kind": "practice-path",
+      "room_ids": [
+        "practice-ethics",
+        "symbolic-architecture"
+      ],
+      "route": "/knowledge/practice/potato-path.json",
+      "summary": "Canonical practical growth sequence from Mud and Burial through Eye, Root, Sprout, Door, Ladder, Tree, Fruit, Seed and Return.",
+      "status_note": "Practice guidance is project philosophy; it does not override medical, legal or professional standards.",
+      "evidence_note": "Canonical practice owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "schema-canonical-record",
+      "label": "Canonical Record Schema",
+      "kind": "archive-schema",
+      "room_ids": [
+        "house-architecture",
+        "provenance-evidence",
+        "research-programmes"
+      ],
+      "route": "/knowledge/schema/canonical-record.schema.json",
+      "summary": "Machine-readable contract for canonical record structure and fields, helping different domains remain interoperable without sharing truth standards.",
+      "status_note": "A schema standardizes representation; it does not validate the truth of a record's content.",
+      "evidence_note": "Canonical archive schema.",
+      "maturity": "described"
+    },
+    {
+      "id": "site-page-shell-contract",
+      "label": "Page Shell Layout Contract",
+      "kind": "site-contract",
+      "room_ids": [
+        "house-architecture",
+        "internet-platforms"
+      ],
+      "route": "/knowledge/site/page-shell-layout-contract.json",
+      "summary": "Site-level contract for page shells and layout behavior, connecting editorial architecture to the actual public interface.",
+      "status_note": "A UI contract governs presentation and navigation, not subject-matter truth.",
+      "evidence_note": "Canonical site architecture record.",
       "maturity": "described"
     }
   ],
