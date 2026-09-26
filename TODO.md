@@ -575,3 +575,33 @@ The governing rule is: **life → meaning → making → world → shadow → ev
 - [ ] **SITE-MISSION-013 · No-overshadow review:** explicitly test that Home is not House, Tim is not Claims/Story, Potato is not every domain, Axis is not all theology/science, and Culture/CIA/Bank do not become the default interpretation of the whole project.
 
 - [~] **CORE-HEAD-001 · Exact-head core convergence:** repair stale validators after the access/runtime cleanup: World name-first routing belongs to the universal access contract, and Home runtime instrumentation uses `loadJson(...)` rather than raw `fetch(...)`. Awaiting exact-head CI verification before closure.
+
+
+## Room inhabitation programme — 2026-09-26
+
+Canonical programme: `docs/ROOM-INHABITATION-PROGRAMME-2026-09-26.md`.
+
+The current problem is no longer primarily missing navigation. Too many public Room surfaces are still **corridors rather than destinations**: title → scope/boundary → backend paths → adjacent Rooms. The repository often already contains deep knowledge behind these pages, but the public projection does not let the reader consume enough of it in-place.
+
+The governing rule for this wave is:
+
+> **Every important Room should be worth entering even if the reader does not click another link.**
+
+- [ ] Build a semantic audit of every active Dwelling, nested Room, named-being Room and specialist institution Room.
+- [ ] Track Room maturity as `shell` → `seeded` → `inhabited` → `deep`; do not use byte or word count as the completion rule.
+- [ ] Give each important Room a reader body: orientation, core explanation, internal landmarks, development, relations, evidence boundary, tensions/open questions, concrete examples and deeper routes where the subject supports them.
+- [ ] Make actual subject knowledge visually and semantically primary; reduce the dominance of Elevator links, parent links, adjacency cards, backend path names and repeated ownership boilerplate.
+- [ ] Project existing canonical holdings into readable synthesis instead of duplicating those holdings into a second source of truth.
+- [ ] Deepen the first thin World/society wave: Economy & Finance, Law & Justice, Politics & Governance, Timeline / Events, Subculture / Cult / Group Formation.
+- [ ] Deepen the first thin religion/canon wave: Theology & God-language, Bible & Christianity, Comparative Mythology, Esoteric & Sacred Geometry, Other Traditions, Symbolic Architecture, Practice & Ethics, Witness & Attestation, Prediction / Revelation / Interpretation Time.
+- [ ] Deepen the first thin science/formal wave: Mathematics & Geometry and Physics & Cosmology, then qualitatively audit Systems & Dynamics, Model Testing, Experiments, Information Ecology, Infrastructure and Geography.
+- [ ] Audit all remaining medium-size Rooms by human reading; mark each inhabited / partial / shell and deepen the partial ones.
+- [ ] Audit the top-level Dwellings so they explain their subjects and inner relationships rather than merely listing Rooms.
+- [ ] Audit `rooms/potatoverse-canon/beings/**`; replace true stubs with sourced dossiers where material exists and keep authored/project roles distinct from externally established facts about real people.
+- [ ] Explain important wormholes and cross-Room links in prose: what relation is being made and what changes when the reader crosses domains.
+- [ ] Give each Room a shallow-to-deep path: orientation → explanation → examples → tensions → sources/records.
+- [ ] Add anti-slop checks: reject generic paragraphs that could be pasted into many Rooms unchanged; require actual mechanisms, holdings, examples, distinctions or claims.
+- [ ] Add a Room quality validator that detects navigation-only shells, missing reader bodies, missing deep routes when holdings exist, and excessive repeated boilerplate.
+- [ ] Use Economy & Finance, Theology & God-language and Symbolic Architecture as the first three pilot Rooms because they exercise factual-systemic, theological/canonical and symbolic-project-native content respectively.
+- [ ] Treat Neurobiology as one useful qualitative reference: literal subject matter first, meaningful distinctions, evidence boundary, project relation, then deeper routes.
+- [ ] Finish only when clicking an important Room feels like entering a subject rather than entering another hallway.
