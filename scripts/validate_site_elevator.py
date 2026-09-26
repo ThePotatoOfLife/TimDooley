@@ -94,10 +94,13 @@ def main() -> int:
             "@media (prefers-reduced-motion: reduce)",
             "--site-elevator-clearance",
             ".site-elevator-room.is-active",
-            "flex-wrap:wrap",
+            "grid-template-columns:repeat(auto-fit,minmax(",
             "overflow:visible",
-            '.site-elevator-up::before{content:"△"}',
-            '.site-elevator-down::before{content:"▽"}',
+            ".site-elevator-floor-code",
+            '[data-elevator-level="heaven"]::before',
+            '[data-elevator-level="plane"]::before',
+            '[data-elevator-level="below"]::before',
+            "border-radius:0",
             "background:transparent",
         )
         for token in css_tokens:
