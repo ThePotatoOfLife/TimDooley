@@ -480,6 +480,40 @@
     }catch(e){}
   }
 
+
+  async function installDwellingArchiveIndex(){
+    const match=location.pathname.match(/\/rooms\/([^/]+)\/(?:index\.html)?$/);
+    if(!match)return;
+    const dwellingId=decodeURIComponent(match[1]);
+    try{
+      const [subData,drawerData]=await Promise.all([
+        getJson('data/house/subrooms.json'),
+        getJson('data/house/room-archive-drawers.json')
+      ]);
+      const roomIds=new Set((subData.subrooms||[]).filter(r=>r.parent_room_id===dwellingId).map(r=>r.id));
+      const rows=(drawerData.drawers||[]).filter(d=>(d.room_ids||[]).some(id=>roomIds.has(id)));
+      if(!rows.length)return;
+      const main=document.querySelector('main');
+      if(!main||main.querySelector('.dwelling-archive-index'))return;
+      const total=rows.reduce((n,row)=>n+(Number(row.record_count)||0),0);
+      const section=document.createElement('section');
+      section.className='dwelling-archive-index';
+      section.innerHTML='<div class="dwelling-archive-index-head"><div><p class="eyebrow">Deep archive behind this Dwelling</p><h2>'+esc(rows.length)+' corpora · '+esc(total)+' record-slots</h2></div><p>The featured shelf gives you the front table. These larger corpora show how much research and archival material sits behind the inner Rooms.</p></div>'
+        +'<div class="dwelling-archive-index-grid">'+rows.map(row=>{
+          const landing=String(row.landing_href||'');
+          const href=landing?(/^(https?:|#)/.test(landing)?landing:base+landing.replace(/^\//,'')):'#';
+          return '<a class="dwelling-archive-index-card" href="'+esc(href)+'"><small>'+esc(String(row.record_count||0))+' records</small><strong>'+esc(row.title||row.id)+'</strong><span>'+esc(row.summary||'')+'</span></a>';
+        }).join('')+'</div>';
+      const shelf=main.querySelector('.dwelling-object-shelf');
+      if(shelf) shelf.insertAdjacentElement('afterend',section);
+      else {
+        const reader=main.querySelector('.dwelling-reader');
+        if(reader) reader.insertAdjacentElement('afterend',section);
+        else main.appendChild(section);
+      }
+    }catch(e){}
+  }
+
   installRibbon();
   installHouseDeepCorpusIndex();
   installRoomArchiveDrawers();
@@ -487,6 +521,7 @@
   installRoomSectionGuide();
   installRoomsBestOf();
   installDwellingFeaturedObjects();
+  installDwellingArchiveIndex();
   installRoomFloorProjection();
   installInhabitants();
   installRoomKnowledge();
