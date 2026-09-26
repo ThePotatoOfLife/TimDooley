@@ -124,9 +124,10 @@ for token in ("label===t","priority(e)","site-access-context","await loadIndex()
     if token not in js and token not in css:
         errors.append(f"quick-access behavior missing regression marker: {token}")
 
-for token in ("house-journey.css?v=20260926c","data-house-journey-style"):
-    if token not in journey_ui:
-        errors.append(f"House journey stylesheet loader missing: {token}")
+if not re.search(r"house-journey\.css\?v=[A-Za-z0-9._-]+", journey_ui):
+    errors.append("House journey stylesheet loader must use a versioned asset URL")
+if "data-house-journey-style" not in journey_ui:
+    errors.append("House journey stylesheet loader missing: data-house-journey-style")
 if "style.textContent" in journey_ui or "createElement('style')" in journey_ui:
     errors.append("House journey runtime must not inject component CSS")
 for asset in ("house-journey.js","body-relational-lens.js"):
