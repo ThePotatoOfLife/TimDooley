@@ -161,6 +161,40 @@ def patch_site_access(out: Path = OUT) -> set[Path]:
     return changed
 
 
+SITE_ELEVATOR_QUIET_PREFIXES = (
+    "tools/tts/",
+)
+
+def inject_site_elevator(text: str, page: Path) -> str:
+    """Add the universal three-floor House orientation header."""
+    rel = page.relative_to(OUT).as_posix()
+    if any(rel.startswith(prefix) for prefix in SITE_ELEVATOR_QUIET_PREFIXES):
+        return text
+    if "site-elevator.js" in text or "site-elevator.css" in text:
+        return text
+    if not re.search(r"<html\b", text, flags=re.I):
+        return text
+    if not re.search(r"</head\s*>", text, flags=re.I) or not re.search(r"</body\s*>", text, flags=re.I):
+        return text
+
+    prefix = _relative_asset_prefix(page)
+    css = f'<link rel="stylesheet" href="{prefix}app/site-elevator.css?v=20260926a">'
+    js = f'<script src="{prefix}app/site-elevator.js?v=20260926a" defer></script>'
+    text = re.sub(r"</head\s*>", css + "</head>", text, count=1, flags=re.I)
+    text = re.sub(r"</body\s*>", js + "</body>", text, count=1, flags=re.I)
+    return text
+
+def patch_site_elevator(out: Path = OUT) -> set[Path]:
+    changed: set[Path] = set()
+    for page in out.rglob("*.html"):
+        text = page.read_text(encoding="utf-8", errors="replace")
+        projected = inject_site_elevator(text, page)
+        if projected != text:
+            page.write_text(projected, encoding="utf-8")
+            changed.add(page)
+    return changed
+
+
 PROJECT_COMPASS_QUIET_PREFIXES = (
     "world-map/",
     "elevator/",
@@ -369,6 +403,7 @@ def main() -> None:
             changed.add(page)
 
     changed.update(patch_legacy_tts_readers(OUT))
+    changed.update(patch_site_elevator(OUT))
     changed.update(patch_site_access(OUT))
     changed.update(patch_universal_tts(OUT))
 

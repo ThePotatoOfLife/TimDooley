@@ -45,6 +45,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
             "python scripts/validate_recent_work_integration.py",
             "python scripts/validate_house_compatibility.py",
             "python scripts/validate_house_world_routing.py",
+            "python scripts/validate_site_elevator.py",
             "python scripts/test_coordination_convergence.py",
         ]),
         ("Formal grammar and Rooms", [
@@ -175,6 +176,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
             "python scripts/validate_generated_navigation.py",
             "python scripts/validate_explore_projection.py",
             "python scripts/audit_site_architecture.py",
+            "node scripts/test_site_elevator.mjs",
             "node scripts/test_tts_interaction_matrix.mjs",
         ]),
         ("Religion Potatoism and expansions", [
