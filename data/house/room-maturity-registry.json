@@ -1,0 +1,362 @@
+{
+  "id": "room-maturity-registry",
+  "version": "1.0.0",
+  "updated": "2026-09-26",
+  "purpose": "Track qualitative reader maturity for every registered nested subject Room without using file size as a truth or completion metric.",
+  "states": {
+    "shell": "route exists but public body is mainly navigation/scope",
+    "seeded": "unique subject content exists but another route is still required to understand the subject",
+    "inhabited": "coherent subject reader with explanation, boundaries, examples/mechanisms and deeper routes",
+    "deep": "mature specialist reader with unusually strong object-level/canonical integration"
+  },
+  "rules": [
+    "Human editorial review is authoritative.",
+    "Byte count and word count are triage/regression signals only.",
+    "Inhabited does not mean complete, correct forever, or equal in depth to every other Room.",
+    "Maturity can be downgraded if substantive reader content regresses."
+  ],
+  "rooms": [
+    {
+      "room_id": "canon-identities",
+      "route": "/rooms/inside/canon-identities/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "eighth_authored_wave",
+      "focus": "Tim/Father/Son/Spirit/Potato/Door/Axis/House/Gardener identity grammar, center taxonomy, role boundaries and subordinate CIA/bank routing",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "theology-god-language",
+      "route": "/rooms/inside/theology-god-language/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "sixth_authored_wave",
+      "focus": "Father/Son/Spirit relational grammar, 2024-2026 development, Heaven/Garden, comparison boundaries and ethical fruit tests",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "symbolic-architecture",
+      "route": "/rooms/inside/symbolic-architecture/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "sixth_authored_wave",
+      "focus": "House, Door, Plane, Axis, Tree, Root, Garden, Mountain, Swamp, Forge, Spiral and canonical geometry boundaries",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "practice-ethics",
+      "route": "/rooms/inside/practice-ethics/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "seventh_authored_wave",
+      "focus": "Knowledge Fork, Door/Fruit/Garden/Forge/Spiral tests, repair, generative independence and role plasticity",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "provenance-evidence",
+      "route": "/rooms/inside/provenance-evidence/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "second_authored_wave",
+      "focus": "source classes, corroboration, conversation archaeology, formalization dates, unresolved evidence and public source routes",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "memory-recovery",
+      "route": "/rooms/inside/memory-recovery/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "fifth_authored_wave",
+      "focus": "framework recovery, exactness levels, temporal strata, classification and non-duplicative promotion",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "witness-attestation",
+      "route": "/rooms/inside/witness-attestation/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "seventh_authored_wave",
+      "focus": "primary/recovered/secondary/reconstructed evidence, first attestation and wording/time discipline",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "timeline-events",
+      "route": "/rooms/inside/timeline-events/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "sixth_authored_wave",
+      "focus": "occurrence/source/attestation/interpretation time, project developmental arc and anti-backdating",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "developmental-genealogy",
+      "route": "/rooms/inside/developmental-genealogy/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "seventh_authored_wave",
+      "focus": "role and symbol development, Son/Potato/Sage/Ladder/Father sequence, Tree relations and contradiction-by-date discipline",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "prediction-revelation-time",
+      "route": "/rooms/inside/prediction-revelation-time/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "seventh_authored_wave",
+      "focus": "prior prediction, typology, retrospective revelation, synchronism, coincidence and resolution protocol",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "bible-christianity",
+      "route": "/rooms/inside/bible-christianity/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "seventh_authored_wave",
+      "focus": "source-led biblical context, Christian reception, typology boundaries, Revelation/666 distinctions and countertexts",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "comparative-mythology",
+      "route": "/rooms/inside/comparative-mythology/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "seventh_authored_wave",
+      "focus": "Yggdrasil, Duat, Meru, Bardo, fate/thread/leash distinctions and structure-first comparison",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "esoteric-sacred-geometry",
+      "route": "/rooms/inside/esoteric-sacred-geometry/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "seventh_authored_wave",
+      "focus": "exact geometry, mandorla art history, esoteric reception, Eye/pyramid/pillars, Saturn/666/Cube provenance",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "other-traditions",
+      "route": "/rooms/inside/other-traditions/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "seventh_authored_wave",
+      "focus": "tradition-first Daoist, Buddhist, Norse, Egyptian, Greek and Jewish/Kabbalistic context before comparison",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "math-geometry",
+      "route": "/rooms/inside/math-geometry/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "seventh_authored_wave",
+      "focus": "exact Vesica geometry, 3D lift, exact versus origin-inclusive spirals, topology and dimensional meaning",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "physics-cosmology",
+      "route": "/rooms/inside/physics-cosmology/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "seventh_authored_wave",
+      "focus": "astronomy/astrology/project-layer firewall, Saturn, North coordinates, M-theory comparators and empirical promotion path",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "systems-dynamics",
+      "route": "/rooms/inside/systems-dynamics/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "fifth_authored_wave",
+      "focus": "state transitions, observation versus control, centrality versus dominance, agency and information-loss audits",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "model-testing",
+      "route": "/rooms/inside/model-testing/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "fifth_authored_wave",
+      "focus": "provenance, domain, units, observability, identifiability, baselines, falsifiers and T0-T5 maturity",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "potato-biology",
+      "route": "/rooms/inside/potato-biology/",
+      "maturity": "deep",
+      "review_status": "reviewed",
+      "authored_wave": "eighth_authored_wave",
+      "focus": "deep literal potato organism reader spanning lineage, genome, regulation, anatomy, development, ecology, pathology, storage and physical chemistry",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "neurobiology",
+      "route": "/rooms/inside/neurobiology/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "authored_history",
+      "focus": "thalamus, pineal, CSF, spine coordinate systems and evidence boundaries",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "whole-body",
+      "route": "/rooms/inside/whole-body/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "second_authored_wave",
+      "focus": "whole-body recurrent physiology, cardiorespiratory coupling, gut/endocrine ecology, interfaces and return-loop boundaries",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "symbolic-body-comparison",
+      "route": "/rooms/inside/symbolic-body-comparison/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "fifth_authored_wave",
+      "focus": "function-first anatomy/project crosswalks with explicit empirical and supernatural-physiology boundaries",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "politics-governance",
+      "route": "/rooms/inside/politics-governance/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "eighth_authored_wave",
+      "focus": "governance machinery, policy lifecycle, authorization/accountability/capability, neutral dated political corpus and symbolic/empirical North separation",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "law-justice",
+      "route": "/rooms/inside/law-justice/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "sixth_authored_wave",
+      "focus": "jurisdiction, authority, legal status, procedure, evidence, remedies and case-layer separation",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "economy-finance",
+      "route": "/rooms/inside/economy-finance/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "sixth_authored_wave",
+      "focus": "stock/flow/obligation networks, fiscal capacity, inflation/bonds, North obligation graph and gold-indexed debt thought experiment",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "infrastructure-capability",
+      "route": "/rooms/inside/infrastructure-capability/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "third_authored_wave",
+      "focus": "asset-to-capability conversion, energy/logistics/digital dependencies, coupled capability, bottlenecks and resilience",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "geography-countries",
+      "route": "/rooms/inside/geography-countries/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "third_authored_wave",
+      "focus": "honest spatial primitives, country method, sourced points/polygons/relations and strict separation of symbolic overlays from geography",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "internet-platforms",
+      "route": "/rooms/inside/internet-platforms/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "authored_history",
+      "focus": "livestream duration, nontent, fame paradox, platform fragmentation and subculture",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "subculture-group-formation",
+      "route": "/rooms/inside/subculture-group-formation/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "sixth_authored_wave",
+      "focus": "formation stages, control axes, role plasticity, conflict-culture and Garden/Swamp/Farm mechanism boundaries",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "information-ecology",
+      "route": "/rooms/inside/information-ecology/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "authored_history",
+      "focus": "repetition, context decay, forgetting, virality, durability and archive intelligence",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "great-book-literature",
+      "route": "/rooms/inside/great-book-literature/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "second_authored_wave",
+      "focus": "2024 Great Book as developmental primary literature, cultivation ethics, identity transition, speculative science and death/return",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "music-sound",
+      "route": "/rooms/inside/music-sound/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "authored_history",
+      "focus": "creative voice, sound direction, lyric craft, sacred absurdity and music archive",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "visual-art",
+      "route": "/rooms/inside/visual-art/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "second_authored_wave",
+      "focus": "visual grammar, couch-throne, Gardener, Door/Swamp/Axis compositions, vesica overlap and dated Red/Blue development",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "games-simulations",
+      "route": "/rooms/inside/games-simulations/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "second_authored_wave",
+      "focus": "growth simulation, AI Potato Town, market simulation, surveillance satire, Potato School and external-validity boundaries",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "house-architecture",
+      "route": "/rooms/inside/house-architecture/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "second_authored_wave",
+      "focus": "Dwellings, Paths, Views, holdings, ownership, projection and substance-first architecture",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "open-questions",
+      "route": "/rooms/inside/open-questions/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "third_authored_wave",
+      "focus": "recovery, distinction, model and contemplation statuses; hypothesis promotion rules and contradiction as research input",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "experiments-formalization",
+      "route": "/rooms/inside/experiments-formalization/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "third_authored_wave",
+      "focus": "variables, assumptions, operators, equation lineage, observables, negative results and experiment ladder",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    },
+    {
+      "room_id": "research-programmes",
+      "route": "/rooms/inside/research-programmes/",
+      "maturity": "inhabited",
+      "review_status": "reviewed",
+      "authored_wave": "authored_history",
+      "focus": "programme formation, ownership, materialization, negative results and Forge discipline",
+      "next_review": "semantic-gap / freshness / cross-Room handoff audit"
+    }
+  ]
+}
