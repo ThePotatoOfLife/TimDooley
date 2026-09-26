@@ -97,7 +97,7 @@
 .site-elevator-main{
   display:grid;
   grid-template-columns:30px minmax(118px,154px) minmax(0,1fr);
-  align-items:stretch;
+  align-items:start;
   min-height:42px;
 }
 .site-elevator-controls{
@@ -139,7 +139,7 @@
   inset:50% auto auto 50%;
   transform:translate(-50%,-50%);
   color:rgba(226,231,234,.34);
-  font:400 20px/1 ui-sans-serif,system-ui,sans-serif;
+  font:400 21px/1 ui-sans-serif,system-ui,sans-serif;
   text-shadow:0 0 4px rgba(255,255,255,.14);
   pointer-events:none;
   z-index:-1;
@@ -161,8 +161,12 @@
   color:#9aa1a6;
 }
 .site-elevator-reel{
+  align-self:start;
+  width:100%;
+  height:42px;
   min-width:0;
   overflow:hidden;
+  box-sizing:border-box;
   perspective:520px;
   background:var(--site-elevator-panel);
   border-right:1px solid var(--site-elevator-line);
@@ -225,6 +229,8 @@
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(82px,1fr));
   grid-auto-flow:row;
+  grid-auto-rows:minmax(26px,auto);
+  align-self:start;
   align-items:stretch;
   gap:2px;
   min-width:0;
@@ -317,7 +323,7 @@
   background:rgba(0,0,0,.46);
   border-left:1px solid var(--site-elevator-accent);
   border-bottom:1px solid var(--site-elevator-accent);
-  font-size:5px;
+  font-size:6px;
   line-height:1;
   letter-spacing:.08em;
   text-shadow:none;
@@ -357,12 +363,13 @@
   .site-elevator-main{grid-template-columns:28px 88px minmax(0,1fr);min-height:38px}
   .site-elevator-controls{height:38px;padding-block:1px}
   .site-elevator-arrow{width:27px;height:18px;min-width:27px;min-height:18px;font-size:13px}
-  .site-elevator-arrow::before{font-size:18px}
+  .site-elevator-arrow::before{font-size:19px}
+  .site-elevator-reel{height:38px}
   .site-elevator-floor{height:38px;min-height:38px;grid-template-columns:19px minmax(0,1fr);column-gap:4px;padding:3px 4px}
   .site-elevator-floor-code{font-size:7px}
   .site-elevator-floor-label{font-size:9px;letter-spacing:.08em}
   .site-elevator-room-label{font-size:6px}
-  .site-elevator-room-rail{min-height:38px;grid-template-columns:repeat(auto-fit,minmax(58px,1fr));gap:1px;padding:2px}
+  .site-elevator-room-rail{min-height:38px;grid-template-columns:repeat(auto-fit,minmax(58px,1fr));grid-auto-rows:minmax(23px,auto);gap:1px;padding:2px}
   .site-elevator-room{min-height:25px;font-size:7px;line-height:1.02;padding:2px 3px}
 }
 @media (prefers-reduced-motion: reduce){
