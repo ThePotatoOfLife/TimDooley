@@ -41,6 +41,17 @@
     'start':'start'
   })[v]||v||'step';
 
+  const jsonCache=new Map();
+  function getJson(path){
+    if(!jsonCache.has(path)){
+      jsonCache.set(path,fetch(base+path).then(response=>{
+        if(!response.ok)throw new Error(path+' '+response.status);
+        return response.json();
+      }));
+    }
+    return jsonCache.get(path);
+  }
+
   function loadTrail(){
     try{
       const x=JSON.parse(localStorage.getItem(KEY)||'[]');
@@ -101,9 +112,7 @@
     if(!match)return;
     const roomId=decodeURIComponent(match[1]);
     try{
-      const response=await fetch(base+'data/house/elevator-spatial-projection.json');
-      if(!response.ok)return;
-      const projection=await response.json();
+      const projection=await getJson('data/house/elevator-spatial-projection.json');
       const dwelling=(projection.dwellings||[]).find(row=>row&&row.id===roomId);
       if(!dwelling)return;
 
@@ -155,13 +164,10 @@
     if(!match)return;
     const roomId=decodeURIComponent(match[1]);
     try{
-      const [inhRes,subRes]=await Promise.all([
-        fetch(base+'data/house/room-inhabitants.json'),
-        fetch(base+'data/house/subrooms.json')
+      const [inhData,subData]=await Promise.all([
+        getJson('data/house/room-inhabitants.json'),
+        getJson('data/house/subrooms.json')
       ]);
-      if(!inhRes.ok||!subRes.ok)return;
-      const inhData=await inhRes.json();
-      const subData=await subRes.json();
       const room=(subData.subrooms||[]).find(x=>x.id===roomId);
       const rows=(inhData.inhabitants||[]).filter(x=>(x.room_ids||[]).includes(roomId));
       if(!rows.length||!room)return;
@@ -185,15 +191,13 @@
     if(!match)return;
     const roomId=decodeURIComponent(match[1]);
     try{
-      const [subRes,holdRes,ifRes,dossierRes,pulseRes]=await Promise.all([
-        fetch(base+'data/house/subrooms.json'),
-        fetch(base+'data/house/holdings.json'),
-        fetch(base+'data/house/interfaces.json'),
-        fetch(base+'data/house/room-dossiers.json'),
-        fetch(base+'data/house/population-pulse.json')
+      const [subData,holdData,ifData,dossierData,pulseData]=await Promise.all([
+        getJson('data/house/subrooms.json'),
+        getJson('data/house/holdings.json'),
+        getJson('data/house/interfaces.json'),
+        getJson('data/house/room-dossiers.json'),
+        getJson('data/house/population-pulse.json')
       ]);
-      if(!subRes.ok||!holdRes.ok||!ifRes.ok||!dossierRes.ok||!pulseRes.ok)return;
-      const subData=await subRes.json(),holdData=await holdRes.json(),ifData=await ifRes.json(),dossierData=await dossierRes.json(),pulseData=await pulseRes.json();
       const room=(subData.subrooms||[]).find(x=>x.id===roomId);
       const holding=(holdData.holdings||[]).find(x=>x.room_id===roomId);
       const dossier=(dossierData.dossiers||[]).find(x=>x.room_id===roomId);
