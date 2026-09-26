@@ -981,3 +981,25 @@ The governing editorial rule is:
 - [x] Remove stale Study Chamber wording from Comparative Cosmology after the architecture was explicitly rejected; validator now blocks its return on public tradition pages.
 
 - [x] Build one ancient-religions overview from the source-first atlas before deciding which ancient traditions deserve their own later deep pages.
+
+
+### Legacy / older public page coherence programme
+
+The next quality phase is not “make every page longer.” It is to find pages that are technically populated but still fail one of four reader tests: **the page depends on JavaScript to explain itself; the page is locally good but isolated from neighboring concepts; the route is a legacy wrapper pretending to be an owner; or a hub repeats categories without enough synthesis.**
+
+- [x] Create `data/public-page-semantic-gap-audit.json` so older-page work is tracked separately from nested-Room maturity.
+- [x] Give House Inhabitants / Cases a useful static reader body and graceful registry-failure state.
+- [x] Reconcile Quantum, Spudlight and Vibe/Gates as different layers of one science grammar rather than adjacent theories sharing ambiguous vocabulary.
+- [ ] Audit `science/celestial-particles/` for overlap with Quantum, astronomy and symbolic-celestial material.
+- [ ] Audit `science/celestial-matter/` so dark matter/dark energy remain literal cosmology before any Soil/hidden-framework analogy.
+- [ ] Audit `science/entanglement/` for nonlocality language and prevent duplication with Vibe/Gates/network closeness.
+- [ ] Audit `rooms/` as a reader page: explain Dwelling vs Room vs inhabitant vs View clearly before architectural controls dominate.
+- [ ] Audit `explore/` and A–Z for “label without meaning” discovery; a search result should expose enough context to choose intelligently.
+- [ ] Add static explanatory fallbacks to other fetch-driven public surfaces where a failed request leaves only “Loading…” or an empty panel.
+- [ ] Consolidate legacy FBI-facing routes into Characters, Incidents & Associations; preserve redirects/history but do not deepen obsolete ownership.
+- [ ] Audit CIA file / incidents / associations / bank surfaces for local explanation before ledgers and controls.
+- [ ] Audit named-being pages for real dossier substance: provenance, first/last appearance, role development, representative incidents/works, uncertainty and distinction between project character language and claims about real people.
+- [ ] Audit older symbolic-science pages for vocabulary collisions: **field, energy, frequency, signal, information, state, resonance, nonlocality, dimension, axis, gate** must state which domain owns the literal meaning.
+- [ ] Audit older theology/mythology pages for retrospective backdating: mature Father/Ladder/Axis language should not silently overwrite earlier Potato/Sage/Son stages.
+- [ ] Audit long hubs after specialist expansion for the opposite problem—duplication. When a specialist page now owns a mature explanation, shorten repeated hub copy if it no longer adds synthesis.
+- [ ] Add a semantic-gap validator only after enough reviewed examples exist; it should warn about no-JS shells, repeated boilerplate and duplicate ownership rather than reward word count.
