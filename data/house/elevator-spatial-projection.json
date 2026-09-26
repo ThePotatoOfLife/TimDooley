@@ -386,6 +386,46 @@
   ],
   "route_contexts": [
     {
+      "match": "/chronology/",
+      "level_id": "plane",
+      "room_id": "time-history"
+    },
+    {
+      "match": "/traditions/vesica/",
+      "level_id": "heaven",
+      "room_id": "traditions-texts"
+    },
+    {
+      "match": "/theology/honor/",
+      "level_id": "heaven",
+      "room_id": "traditions-texts"
+    },
+    {
+      "match": "/taoism/",
+      "level_id": "heaven",
+      "room_id": "traditions-texts"
+    },
+    {
+      "match": "/potatoism/grow/",
+      "level_id": "heaven",
+      "room_id": "potatoverse-canon"
+    },
+    {
+      "match": "/israel-mesopotamia/",
+      "level_id": "heaven",
+      "room_id": "traditions-texts"
+    },
+    {
+      "match": "/great-book/",
+      "level_id": "heaven",
+      "room_id": "works"
+    },
+    {
+      "match": "/faq/",
+      "level_id": "plane",
+      "room_id": "potatoverse-canon"
+    },
+    {
       "match": "/philosophy/interpretive-justice.html",
       "level_id": "heaven",
       "room_id": "potatoverse-canon"
