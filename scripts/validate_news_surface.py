@@ -69,9 +69,18 @@ for token in (
     require(html,token,"news/index.html")
 
 latest_pos=html.find('id="news-reading-stream"')
+filter_pos=html.find('class="news-filter-drawer"')
 secondary_pos=html.find('class="news-secondary-drawer"')
-if latest_pos < 0 or secondary_pos < 0 or latest_pos > secondary_pos:
-    errors.append("Latest news must appear before secondary News drawers")
+if latest_pos < 0 or filter_pos < 0 or secondary_pos < 0 or not (latest_pos < filter_pos < secondary_pos):
+    errors.append("Latest news must appear before refinement controls and secondary News drawers")
+nav_start=html.find('<nav class="page-nav" aria-label="News navigation">')
+nav_end=html.find('</nav>',nav_start)
+if nav_start < 0 or nav_end < 0:
+    errors.append("News must expose one compact local owner navigation row")
+else:
+    local_nav=html[nav_start:nav_end]
+    if local_nav.count('<a ') != 1 or 'href="../world/">← World</a>' not in local_nav:
+        errors.append("News local navigation must contain only the owning World return; global routes belong to the dock/Find")
 
 for token in (
     "function coverageClusters",
