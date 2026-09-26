@@ -76,7 +76,7 @@ Do not force all dimensions into one folder hierarchy.
 | Vertical Potato geometry | `knowledge/core/vertical-potato-mountain-plane-atlas.json` | exact Vesica geometry, transformation grammar |
 | Body / neurotheology | `knowledge/body/body-system-master-atlas.json` | completion matrix, neurotheology atlas, science context, 33/Ladder study |
 | Spirit | `knowledge/core/heaven-spirit-father.json` | spirit context and body-flow comparators |
-| Corporium | `knowledge/corporium/corporium-master-framework.json` | sayings, psychology, chakra/Hawkins and archetype studies; `/corporium/` reader projection |
+| Collection / Corporium backend | `knowledge/corporium/corporium-master-framework.json` | sayings, psychology, body/signal and formulation studies; `/corporium/` is the reader-facing **Collection** projection and retains the old route name only for continuity |
 | Science / math | `knowledge/science/science-master-index.json` | equation ledger, formalisms, Spudlight, model testing, specialist waves |
 | Biblical / comparative research | `knowledge/traditions/biblical-overlap-atlas.json` | biblical research routing index, esoteric atlas/source ledger, comparative mythology |
 | Canonical timeline | `data/timeline-events.json` | `data/timeline-source-registry.json`, developmental genealogy, specialist attestation ledgers |
@@ -181,20 +181,38 @@ Mature reader forms provide different ways into the same underlying House withou
 
 The homepage may expose these as a subordinate Ways-in corridor while keeping them visually below the five gateways.
 
-### 3. Global discovery / depth
+### 3. Explore / retrieval family
 
-- **Questions** — natural-language retrieval;
-- **A–Z** — entity/concept lookup;
-- **Explore** — deep archive branches, relationships, records and source paths;
-- **Sources / Context** — provenance and contextual verification.
+**Explore** is the retrieval umbrella rather than one more sibling index.
 
-These are discovery mechanisms, not top-level subject doors.
+- **Questions** — enter by a concrete natural-language question;
+- **A–Z** — enter by a known term, person, symbol or concept;
+- **Paths** — take a guided cross-domain journey for a purpose;
+- **Deep archive** — inspect branches, relationships, records and source paths directly.
+
+**Sources / Context** form a separate evidence family: Sources owns provenance/evidence authority; Context owns how time, surrounding events and domain alter responsible interpretation.
+
+These surfaces are reading/retrieval modes over existing owners, not new knowledge hierarchies.
 
 ### 4. Specialist Views
 
 World Map, Politics, North, World Systems, Bible comparison and other task-specific tools remain specialist Views beneath the appropriate subject/context. In particular, **World Map is not gateway five; World is**.
 
 All reader and specialist surfaces route back toward canonical owners rather than becoming parallel truth stores. `/works/`, for example, is a curated projection over the creative archive, and `/timeline/` is a reader over canonical events/source registries.
+
+### 5. Seven reader families
+
+The current public surface registry is intentionally grouped into seven families, enforced by House governance:
+
+1. **Tim · life · making** — Tim portrait, Story, Collection and Works.
+2. **Timeline · history** — chronology, foundations and the History interpretation/revision lens.
+3. **Sources · context** — evidence authority and contextual interpretation.
+4. **Explore · retrieval** — Explore, Questions, A–Z and Paths.
+5. **House · placement** — House, Rooms, Inhabitants and Elevator.
+6. **World · systems** — World plus Current World, Map, World Systems, Politics, Law, Economy, Culture and North.
+7. **Meaning · comparison · testing** — Potato of Life, Religion, Philosophy, Science, Life & Body, Axis and Research Lab, with specialist children underneath their owner.
+
+Home is the intentional entrance outside the family graph. A new active public surface must either belong to exactly one family or inherit exactly one family from its parent.
 
 ## The complete research loop
 
