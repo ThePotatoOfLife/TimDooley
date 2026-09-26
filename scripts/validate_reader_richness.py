@@ -53,6 +53,13 @@ def main() -> int:
 
     for marker in (
         "room-richness",
+        "installRoomFloorProjection",
+        "data/house/elevator-spatial-projection.json",
+        "room-floor-projection",
+        "How this Room moves through the House",
+        "Primary floor",
+        "Projects here",
+        "No governed projection",
         "data/house/room-dossiers.json",
         "data/house/holdings.json",
         "data/house/population-pulse.json",
