@@ -193,8 +193,10 @@
       if(!rect){hide();return}
       const viewportWidth=root?.innerWidth||doc.documentElement?.clientWidth||1024;
       const viewportHeight=root?.innerHeight||doc.documentElement?.clientHeight||768;
+      const clearance=parseFloat(root?.getComputedStyle?.(doc.documentElement)?.getPropertyValue('--site-access-clearance'))||0;
       const left=clamp(rect.left+(rect.width/2),72,Math.max(72,viewportWidth-72));
-      const top=clamp(rect.bottom+8,8,Math.max(8,viewportHeight-44));
+      const maxTop=Math.max(8,viewportHeight-clearance-44);
+      const top=clamp(rect.bottom+8,8,maxTop);
       control.style.left=`${left}px`;
       control.style.top=`${top}px`;
       control.hidden=false;
