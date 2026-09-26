@@ -45,6 +45,7 @@ jobs:
           python scripts/validate_legacy_fbi_redirects.py
           python scripts/validate_seo_pipeline.py
           python scripts/validate_repo_hygiene.py
+          python scripts/validate_tradition_routes.py
       - name: Run Core · House · Atlas quality group
         run: python scripts/run_quality_group.py core
       - name: Upload Core · House · Atlas diagnostics
