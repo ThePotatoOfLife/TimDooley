@@ -146,7 +146,7 @@ Priority order: **P0 release breakage → P1 structural drift/duplication → P2
 - [x] **WHOLE-002 · Retrieval convergence:** Questions, A–Z and Paths now live structurally under Explore; Explore exposes all four retrieval modes as one archive family.
 - [x] **WHOLE-003 · Tim continuum:** Tim now visibly connects Portrait → Story → Collection → Works, with Timeline as the time projection of the same subject.
 - [x] **WHOLE-004 · Time/evidence pairing:** Timeline exposes History as its interpretation/revision lens; Sources exposes Context as its interpretive lens; both cross-link directly.
-- [ ] **WHOLE-005 · House navigation compression:** review House, Rooms, Inhabitants and Elevator as one placement family; remove repeated explanations and let each surface answer only its distinct placement question.
+- [x] **WHOLE-005 · House navigation compression:** House keeps topology/composition; Rooms is now the ownership directory; Inhabitants remains object/case lookup; Elevator remains the spatial relationship viewer. Removed the duplicate semantic-center/topology lesson from Rooms.
 - [ ] **WHOLE-006 · World convergence:** merge repeated introductory systems material across World, World Systems, Economy, Law, Politics, Culture and North into stronger local continuations under World.
 - [ ] **WHOLE-007 · Tim material merge:** inspect Story, Collection, Works, Claims, Public Witness and 100,000 Hours for duplicated narrative paragraphs and consolidate shared chronology/definitions into one owner with local excerpts.
 - [ ] **WHOLE-008 · Context/evidence merge:** reduce repeated provenance explanations across Sources, Context, History, Questions and specialist pages; preserve worked examples where they answer different questions.
