@@ -7,14 +7,19 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 HOMEPAGE = ROOT / "index.html"
+HOME_CSS = ROOT / "app" / "home-page.css"
 
-REQUIRED_MARKERS = (
+HTML_MARKERS = (
     'class="home-view-counter"',
     'https://hits.sh/thepotatooflife.github.io/TimDooley.svg',
     'style=flat-square&amp;label=views',
     'alt="Homepage views"',
+)
+CSS_MARKERS = (
     '.home-view-counter{position:fixed;',
-    '.home-view-counter img{display:block;height:18px;width:auto}',
+    'z-index:10049',
+    'bottom:calc(var(--site-access-clearance,0px) + 8px)',
+    '.home-view-counter img{display:block;height:16px;width:auto}',
 )
 
 
@@ -28,9 +33,13 @@ def main() -> None:
         fail("missing index.html")
 
     text = HOMEPAGE.read_text(encoding="utf-8", errors="replace")
-    missing = [marker for marker in REQUIRED_MARKERS if marker not in text]
-    if missing:
-        fail(f"index.html missing: {missing!r}")
+    css = HOME_CSS.read_text(encoding="utf-8", errors="replace") if HOME_CSS.exists() else ""
+    missing_html = [marker for marker in HTML_MARKERS if marker not in text]
+    missing_css = [marker for marker in CSS_MARKERS if marker not in css]
+    if missing_html:
+        fail(f"index.html missing: {missing_html!r}")
+    if missing_css:
+        fail(f"app/home-page.css missing: {missing_css!r}")
 
     if text.count('class="home-view-counter"') != 1:
         fail("homepage must contain exactly one view counter")
