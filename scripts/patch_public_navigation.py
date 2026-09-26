@@ -14,6 +14,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
+
+SHARED_ASSET_VERSIONS = {
+    "site-system.css": "20260926a",
+    "site-access.css": "20260926b",
+    "site-access.js": "20260926b",
+    "site-elevator.css": "20260926m",
+    "site-elevator.js": "20260926m",
+}
+
 ROOT_BRANCH_HREF = re.compile(
     r'''href=(?P<quote>["'])(?P<prefix>(?:\.\./|\./)*)#branch=(?P<branch>[^"']+)(?P=quote)''',
     re.I,
@@ -144,8 +153,8 @@ def inject_site_access(text: str, page: Path) -> str:
         return text
 
     prefix = _relative_asset_prefix(page)
-    css = f'<link rel="stylesheet" href="{prefix}app/site-access.css?v=20260926b">'
-    js = f'<script src="{prefix}app/site-access.js?v=20260926b" defer></script>'
+    css = f'<link rel="stylesheet" href="{prefix}app/site-access.css?v={SHARED_ASSET_VERSIONS["site-access.css"]}">'
+    js = f'<script src="{prefix}app/site-access.js?v={SHARED_ASSET_VERSIONS["site-access.js"]}" defer></script>'
     text = re.sub(r"</head\\s*>", css + "</head>", text, count=1, flags=re.I)
     text = re.sub(r"</body\\s*>", js + "</body>", text, count=1, flags=re.I)
     return text
@@ -178,8 +187,8 @@ def inject_site_elevator(text: str, page: Path) -> str:
         return text
 
     prefix = _relative_asset_prefix(page)
-    css = f'<link rel="stylesheet" href="{prefix}app/site-elevator.css?v=20260926m">'
-    js = f'<script src="{prefix}app/site-elevator.js?v=20260926m" defer></script>'
+    css = f'<link rel="stylesheet" href="{prefix}app/site-elevator.css?v={SHARED_ASSET_VERSIONS["site-elevator.css"]}">'
+    js = f'<script src="{prefix}app/site-elevator.js?v={SHARED_ASSET_VERSIONS["site-elevator.js"]}" defer></script>'
     text = re.sub(r"</head\s*>", css + "</head>", text, count=1, flags=re.I)
     text = re.sub(r"</body\s*>", js + "</body>", text, count=1, flags=re.I)
     return text
@@ -246,6 +255,25 @@ def _relative_asset_prefix(page: Path) -> str:
     rel = page.relative_to(OUT)
     depth = max(0, len(rel.parts) - 1)
     return "../" * depth
+
+def normalize_shared_asset_versions(text: str) -> str:
+    """Keep shared UI assets on one build generation, even on authored pages."""
+    for asset, version in SHARED_ASSET_VERSIONS.items():
+        pattern = rf"(app/{re.escape(asset)})(?:\?v=[A-Za-z0-9._-]+)?"
+        text = re.sub(pattern, rf"\1?v={version}", text)
+    return text
+
+
+def patch_shared_asset_versions(out: Path = OUT) -> set[Path]:
+    changed: set[Path] = set()
+    for page in out.rglob("*.html"):
+        text = page.read_text(encoding="utf-8", errors="replace")
+        projected = normalize_shared_asset_versions(text)
+        if projected != text:
+            page.write_text(projected, encoding="utf-8")
+            changed.add(page)
+    return changed
+
 
 def inject_universal_tts(text: str, page: Path) -> str:
     """Ensure every deployed prose HTML document has shared TTS coverage.
@@ -402,6 +430,7 @@ def main() -> None:
         if normalize_public_surface(page):
             changed.add(page)
 
+    changed.update(patch_shared_asset_versions(OUT))
     changed.update(patch_legacy_tts_readers(OUT))
     changed.update(patch_site_elevator(OUT))
     changed.update(patch_site_access(OUT))
