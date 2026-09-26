@@ -1,7 +1,7 @@
 {
   "id": "religious-foundation-events",
-  "version": "1.0.0",
-  "updated": "2026-09-20",
+  "version": "1.1.0",
+  "updated": "2026-09-26",
   "status": "canonical event anchor registry for religious foundations",
   "purpose": "Provide notable dates that can be merged into the Foundation Timeline, spiral and map. Events are anchored to foundation records and, where available, to deep lineage nodes.",
   "event_kinds": {
@@ -68,7 +68,14 @@
     "britannica_daoism": "https://www.britannica.com/topic/Daoism",
     "britannica_confucianism": "https://www.britannica.com/topic/Confucianism",
     "britannica_shinto": "https://www.britannica.com/topic/Shinto",
-    "iranica_zoroastrian": "https://www.iranicaonline.org/articles/zoroastrianism-i-historical-review/"
+    "iranica_zoroastrian": "https://www.iranicaonline.org/articles/zoroastrianism-i-historical-review/",
+    "arnastofnun_codex_regius": "https://arnastofnun.is/en/news/new-electronic-edition-codex-regius-poetic-edda",
+    "worldhistory_edda": "https://www.worldhistory.org/Edda/",
+    "mjl_early_kabbalah": "https://www.myjewishlearning.com/article/early-kabbalah-and-the-hasidei-ashkenaz/",
+    "mjl_zohar": "https://www.myjewishlearning.com/article/the-zohar/",
+    "mjl_luria": "https://www.myjewishlearning.com/article/isaac-luria/",
+    "mjl_lurianic_spread": "https://www.myjewishlearning.com/article/kabbalah-origins-of-a-spiritual-adventure/",
+    "encyclopedia_new_testament": "https://www.encyclopedia.com/philosophy-and-religion/bible/new-testament/new-testament"
   },
   "events": [
     {
@@ -2403,6 +2410,198 @@
       "source_id": "britannica_shinto",
       "source_url": "https://www.britannica.com/topic/Shinto",
       "note": "Modern institutional rupture/refoundation."
+    },
+    {
+      "id": "norse-viking-age-field",
+      "family": "norse",
+      "name": "Norse mythic/religious field in the Viking Age",
+      "date": {
+        "year_start": 800,
+        "year_end": 1050,
+        "display": "c. 800–1050 CE",
+        "precision": "range"
+      },
+      "event_kind": "deep_origin",
+      "merge_priority": "major",
+      "foundation_id": "norse-foundation",
+      "lineage_node_ids": [],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Scandinavia and North Atlantic",
+      "source_id": "worldhistory_edda",
+      "source_url": "https://www.worldhistory.org/Edda/",
+      "note": "A historical practice field, not a single founded religion; many mythic traditions are older than the surviving manuscripts."
+    },
+    {
+      "id": "norse-prose-edda",
+      "family": "norse",
+      "name": "Prose Edda composed by Snorri Sturluson",
+      "date": {
+        "year_start": 1220,
+        "year_end": 1222,
+        "display": "c. 1220–1222 CE",
+        "precision": "range"
+      },
+      "event_kind": "textual_consolidation",
+      "merge_priority": "major",
+      "foundation_id": "norse-foundation",
+      "lineage_node_ids": [],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Iceland",
+      "source_id": "worldhistory_edda",
+      "source_url": "https://www.worldhistory.org/Edda/",
+      "note": "Later Christian-era literary preservation/systematization of older mythic and poetic material."
+    },
+    {
+      "id": "norse-poetic-edda-codex-regius",
+      "family": "norse",
+      "name": "Codex Regius of the Poetic Edda copied",
+      "date": {
+        "year_start": 1270,
+        "year_end": 1270,
+        "display": "c. 1270 CE",
+        "precision": "year-or-marker"
+      },
+      "event_kind": "manuscript_preservation",
+      "merge_priority": "major",
+      "foundation_id": "norse-foundation",
+      "lineage_node_ids": [],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Iceland",
+      "source_id": "arnastofnun_codex_regius",
+      "source_url": "https://arnastofnun.is/en/news/new-electronic-edition-codex-regius-poetic-edda",
+      "note": "The manuscript is later than much of the poetry it preserves; manuscript date is not myth-origin date."
+    },
+    {
+      "id": "jud-bahir-kabbalah",
+      "family": "judaism",
+      "name": "Sefer ha-Bahir marks early Kabbalistic formation",
+      "date": {
+        "year_start": 1150,
+        "year_end": 1200,
+        "display": "second half of the 12th century CE",
+        "precision": "range"
+      },
+      "event_kind": "mystical_consolidation",
+      "merge_priority": "major",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "kabbalistic-current"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "southern France / Provence-associated transmission",
+      "source_id": "mjl_early_kabbalah",
+      "source_url": "https://www.myjewishlearning.com/article/early-kabbalah-and-the-hasidei-ashkenaz/",
+      "note": "Useful textual marker for early Kabbalah; not the beginning of Jewish mysticism as a whole."
+    },
+    {
+      "id": "jud-zohar-late-13c",
+      "family": "judaism",
+      "name": "Zohar emerges in late-13th-century Spain",
+      "date": {
+        "year_start": 1280,
+        "year_end": 1300,
+        "display": "late 13th century CE",
+        "precision": "range"
+      },
+      "event_kind": "textual_consolidation",
+      "merge_priority": "major",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "kabbalistic-current"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Spain",
+      "source_id": "mjl_zohar",
+      "source_url": "https://www.myjewishlearning.com/article/the-zohar/",
+      "note": "Historical emergence marker for the text; traditional attribution to Shimon bar Yohai belongs to a different sacred/traditional clock."
+    },
+    {
+      "id": "jud-luria-safed",
+      "family": "judaism",
+      "name": "Isaac Luria's Safed teaching period reshapes Kabbalah",
+      "date": {
+        "year_start": 1570,
+        "year_end": 1572,
+        "display": "c. 1570–1572 CE",
+        "precision": "range"
+      },
+      "event_kind": "mystical_refoundation",
+      "merge_priority": "major",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "kabbalistic-current"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Safed, Galilee",
+      "source_id": "mjl_luria",
+      "source_url": "https://www.myjewishlearning.com/article/isaac-luria/",
+      "note": "Lurianic tzimtzum, breaking-of-vessels, sparks and tikkun become a major later Kabbalistic system through disciples and transmission."
+    },
+    {
+      "id": "jud-kabbala-denudata",
+      "family": "judaism",
+      "name": "Lurianic Kabbalah enters major Latin Christian/European reception",
+      "date": {
+        "year_start": 1677,
+        "year_end": 1684,
+        "display": "1677–1684 CE",
+        "precision": "range"
+      },
+      "event_kind": "cross_tradition_reception",
+      "merge_priority": "secondary",
+      "foundation_id": "judaism-foundation",
+      "lineage_node_ids": [
+        "kabbalistic-current"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "Europe",
+      "source_id": "mjl_lurianic_spread",
+      "source_url": "https://www.myjewishlearning.com/article/kabbalah-origins-of-a-spiritual-adventure/",
+      "note": "Kabbala Denudata is a major Christian/Latin reception marker, not a Jewish foundation event."
+    },
+    {
+      "id": "chr-pauline-texts",
+      "family": "christianity",
+      "name": "Earliest surviving Pauline Christian writings",
+      "date": {
+        "year_start": 50,
+        "year_end": 60,
+        "display": "c. 50s CE",
+        "precision": "range"
+      },
+      "event_kind": "textual_seed",
+      "merge_priority": "major",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "early-christianity"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "eastern Mediterranean",
+      "source_id": "encyclopedia_new_testament",
+      "source_url": "https://www.encyclopedia.com/philosophy-and-religion/bible/new-testament/new-testament",
+      "note": "Textual clock distinct from the earlier Jesus-movement/community clock."
+    },
+    {
+      "id": "chr-nt-composition-window",
+      "family": "christianity",
+      "name": "Most New Testament writings composed",
+      "date": {
+        "year_start": 50,
+        "year_end": 100,
+        "display": "c. 50–100 CE",
+        "precision": "range"
+      },
+      "event_kind": "textual_consolidation",
+      "merge_priority": "secondary",
+      "foundation_id": "christianity-foundation",
+      "lineage_node_ids": [
+        "early-christianity"
+      ],
+      "creates_or_crystallizes_child_ids": [],
+      "place": "eastern Mediterranean / Roman world",
+      "source_id": "encyclopedia_new_testament",
+      "source_url": "https://www.encyclopedia.com/philosophy-and-religion/bible/new-testament/new-testament",
+      "note": "Broad composition window; canon formation continues later."
     }
   ]
 }
