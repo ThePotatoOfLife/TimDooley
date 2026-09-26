@@ -202,6 +202,25 @@ def main() -> int:
                 label=plain_text(card)[:80]
                 errors.append(f"A-Z dead noun card has no destination: {label}")
 
+    # Route-label honesty: live discovery must prefer canonical subject readers
+    # over compatibility redirects or retired naming shells.
+    access_contract=json.loads((ROOT/"data/house/site-access.json").read_text(encoding="utf-8"))
+    access_by_id={row.get("id"):row for row in access_contract.get("entries",[]) if isinstance(row,dict)}
+    for entry_id,bad_route in (
+        ("fbi-legacy","/rooms/potatoverse-canon/beings/fbi/"),
+    ):
+        row=access_by_id.get(entry_id)
+        if row and row.get("route")==bad_route:
+            errors.append(f"site access still routes {entry_id} through retired wrapper {bad_route}")
+    for key in ("cia","fbi"):
+        row=(access_contract.get("disambiguation") or {}).get(key)
+        if not row or len(row.get("options") or [])<2:
+            errors.append(f"site access lost {key.upper()} namespace disambiguation")
+    divinity=json.loads((ROOT/"knowledge/indexes/tim-divinity-integration-map.json").read_text(encoding="utf-8"))
+    for row in divinity.get("public_surfaces",[]):
+        if row.get("question")=="How does the whole system begin?" and row.get("url")=="/learn/":
+            errors.append("Tim divinity integration map still sends system-beginning question through retired /learn/ wrapper")
+
     authored_groups = [
         audit.get("authored_history") or [],
         audit.get("second_authored_wave") or [],
