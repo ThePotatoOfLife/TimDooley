@@ -162,12 +162,18 @@ assert.ok(source.includes("ArrowDown"),'header keyboard contract needs ArrowDown
 assert.ok(source.includes("Home"),'header keyboard contract needs Home → Plane');
 assert.ok(source.includes("disabled"),'boundary arrows must expose disabled state');
 
-assert.ok(css.includes('flex-wrap:wrap'),'Room rail must wrap instead of scroll');
+assert.ok(css.includes('grid-template-columns:repeat(auto-fit,minmax('),'Room rail must pack into a responsive wrapped terminal grid');
 assert.ok(css.includes('overflow:visible'),'Room rail must expose wrapped lines');
 assert.equal(css.includes('overflow-x:auto'),false,'Room rail must not horizontally scroll');
 assert.equal(css.includes('scrollbar-width'),false,'Room rail must not render a scrollbar');
-assert.ok(css.includes('.site-elevator-up::before{content:"△"}'),'up control should use a light triangle around the arrow');
-assert.ok(css.includes('.site-elevator-down::before{content:"▽"}'),'down control should use a light inverted triangle around the arrow');
+assert.ok(css.includes('.site-elevator-arrow::before'),'arrow controls should use metallic line detailing without button blocks');
+assert.ok(css.includes('.site-elevator-floor-code'),'terminal board needs a numbered floor code');
+assert.ok(css.includes('[data-elevator-level="heaven"]::before'),'Heaven needs a distinct pixel-biome layer');
+assert.ok(css.includes('[data-elevator-level="plane"]::before'),'Plane needs a distinct pixel-biome layer');
+assert.ok(css.includes('[data-elevator-level="below"]::before'),'Below needs a distinct pixel-biome layer');
+assert.ok(css.includes('border-radius:0'),'terminal Room tiles should not drift back into pill styling');
 assert.ok(css.includes('background:transparent'),'arrow controls must float without metallic button blocks');
+assert.ok(source.includes('site-elevator-floor-code'),'runtime must render terminal floor code');
+assert.ok(source.includes('header.dataset.elevatorRoom=spatial.roomId'),'runtime must publish the current Room on the header');
 
 console.log('Site elevator resolver + visual contract passed.');
