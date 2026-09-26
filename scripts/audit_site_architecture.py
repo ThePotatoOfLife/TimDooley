@@ -144,7 +144,7 @@ def main()->int:
         raw=path.read_text(encoding="utf-8",errors="replace")
         if "<main" not in raw.lower():
             continue
-        if 'name="robots" content="noindex,follow"' in raw and ("location.replace(" in raw or "http-equiv="refresh"" in raw.lower()):
+        if 'name="robots" content="noindex,follow"' in raw and ("location.replace(" in raw or 'http-equiv="refresh"' in raw.lower()):
             continue
         visible=STYLE_SCRIPT.sub("",raw)
         hrefs=ANCHOR_HREF.findall(visible)
