@@ -915,3 +915,65 @@ The governing editorial rule is:
 - [ ] Yoruba/Ifá and major African traditional religious systems using lineage/orisha/divination/community models rather than scriptural-denomination templates.
 - [ ] Indigenous traditions should be handled regionally and community-specifically; do not create one generic “Indigenous religion” page.
 - [ ] Ancient Egyptian, Mesopotamian, Greek/Roman and broader Germanic religion should receive period/cult/text/region maps rather than modern denomination maps.
+
+
+### East Asian materialization and ancient-religion source plan
+
+- [x] Add canonical Confucian lineage family: classical Ru field → Han institutionalization → Song–Ming Neo-Confucianism → Cheng-Zhu / Lu-Wang → modern reconstruction.
+- [x] Add canonical Shinto lineage family: early kami field → Kiki textual layer → shinbutsu-shūgō → Meiji separation/state reorganization → postwar Jinja Shinto.
+- [x] Add Chinese popular/communal religion as a diffuse field rather than a denomination tree: ancestors, local gods, temple networks, divination and regional ritual practice.
+- [x] Materialize public Confucian, Shinto and Chinese communal-religion readers.
+- [x] Audit all tradition HTML pages for core tag balance and missing internal links; current pass found no failures.
+- [x] Sync East Asian lineage nodes into Foundation Timeline.
+
+#### Confucian traditions next depth
+
+- [ ] Add Five Classics / Four Books textual map with composition, commentary and curriculum clocks.
+- [ ] Add Mencius / Xunzi comparison around human nature, ritual and cultivation.
+- [ ] Add Han state/classics/examination history without reducing Confucianism to state ideology.
+- [ ] Add Zhu Xi, Cheng brothers and Cheng-Zhu school in more depth.
+- [ ] Add Lu Jiuyuan / Wang Yangming / Heart-Mind school in more depth.
+- [ ] Add Korean, Japanese and Vietnamese Confucian receptions as distinct regional histories.
+- [ ] Add family ritual, education, ancestor ethics, mourning and civil-service culture as lived institutions.
+- [ ] Add modern/New Confucian thinkers only after source packets are built.
+
+#### Shinto next depth
+
+- [ ] Add Kojiki/Nihon Shoki source guide with mythic genealogy separated from historical reconstruction.
+- [ ] Add major kami and shrine complexes by period/region rather than one pantheon card wall.
+- [ ] Add Ise, Izumo, Hachiman, Tenjin and Inari traditions with distinct cult histories.
+- [ ] Add shinbutsu-shūgō and honji-suijaku as central medieval synthesis layers.
+- [ ] Add Yoshida Shinto / kokugaku / Restoration-era intellectual currents.
+- [ ] Add Meiji shrine-state reorganization and the later State Shinto debate with careful terminology.
+- [ ] Add matsuri, harae, misogi, norito, ema, omamori, priesthood and shrine administration as practice/institution layers.
+- [ ] Keep Jinja Shinto, Sect Shinto and new religious movements distinct.
+
+#### Chinese popular / communal religion next depth
+
+- [ ] Add ancestor-veneration reader: household altar, lineage hall, graveside rites, Qingming and regional variation.
+- [ ] Add local-god / city-god / earth-god / Mazu and related cult histories regionally.
+- [ ] Add temple-association / festival / pilgrimage economy as social institution.
+- [ ] Add spirit-medium / planchette / divination / geomancy practices as separate families rather than generic “folk magic.”
+- [ ] Add Daoist priest / Buddhist ritual specialist / local-medium overlap examples.
+- [ ] Add diaspora transformation in Taiwan, Hong Kong, Southeast Asia and global Chinese communities.
+- [ ] Avoid reifying “Chinese folk religion” as one unified church or creed.
+
+#### Ancient Egyptian / Mesopotamian / Greek-Roman source plan
+
+- [ ] **Ancient Egypt:** build period spine (Old/Middle/New Kingdom, Late/Ptolemaic/Roman), major temple cults, Pyramid/Coffin/Book of the Dead textual strata, Osiris/Ra/Amun/Horus/Isis developments, kingship/maat/afterlife, priesthood and regional cult variation.
+- [ ] **Mesopotamia:** separate Sumerian, Akkadian, Babylonian and Assyrian periods; city-god cults, temple economy, kingship, divination, underworld and textual corpora. Do not create one timeless “Mesopotamian pantheon.”
+- [ ] **Greek religion:** map polis/cult/ritual/oracle/mystery traditions alongside Homer/Hesiod literary mythology; Apollo/Delphi, Athena/Athens, Demeter/Eleusis, Dionysian traditions and hero cults should be contextual, not one god-card catalog.
+- [ ] **Roman religion:** household cult, civic priesthoods, imperial cult and Roman adaptation/identification of Greek deities as historical processes rather than “Roman copies.”
+- [ ] Add cult vs myth vs philosophy vs mystery-religion labels across ancient pages.
+- [ ] Add source packets before public pages: primary texts/inscriptions/archaeology + modern academic syntheses + museum/institutional sources.
+- [ ] Add date uncertainty/period badges and avoid founder language for ancient traditions.
+- [ ] Link ancient-religion material into underworld, sacred mountain, divine council, kingship, judgment, afterlife and ritual pages only after native context is visible.
+
+#### Structural / bug TODO after current wave
+
+- [ ] Add shared branch-type legend component to Religion and tradition pages once stable labels are finalized.
+- [ ] Add automated internal-link/tag-balance validation for `traditions/**/*.html` to CI instead of relying on ad-hoc audit.
+- [ ] Add one lightweight tradition-route registry so Religion/Timeline links can be generated from canonical metadata instead of hand-maintained duplication.
+- [ ] Audit external source links for redirects/dead pages and replace unstable secondary links with durable institutional/academic owners.
+- [ ] Verify mobile wrapping on Foundation Timeline now that its tradition nav is wider; collapse or overflow deliberately if needed.
+- [ ] Check all new pages against global typography/CSS so local inline styles can gradually be consolidated rather than proliferate.
