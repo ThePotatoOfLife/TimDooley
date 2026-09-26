@@ -273,13 +273,10 @@
         return null;
       }
     };
-    const [synth,rooms,cases,f1,f2,f3,below,layers,concepts,axisFlow,routeMatrix,foundationLandscape,foundationRooms]=await Promise.all([
+    const [synth,rooms,cases,below,layers,concepts,axisFlow,routeMatrix,foundationLandscape,foundationRooms]=await Promise.all([
       loadJson('data/house/project-synthesis.json'),
       loadJson('data/house/subrooms.json'),
       loadJson('data/house/entity-dossiers-wave-001.json'),
-      loadJson('data/house/foundations-wave-001.json'),
-      loadJson('data/house/foundations-wave-002.json'),
-      loadJson('data/house/foundations-wave-003.json'),
       loadJson('data/house/lower-plane-population-atlas.json'),
       loadJson('data/house/layer-terrain-regime-atlas.json'),
       loadJson('data/house/concept-topology.json'),
@@ -376,7 +373,7 @@
     if(rooms)setStat('rooms',(rooms.subrooms||[]).length);
     if(cases)setStat('cases',(cases.dossiers||[]).length);
     if(below)setStat('below',(below.zones||[]).length);
-    if(f1&&f2&&f3){const foundationIds=new Set([...(f1.records||[]),...(f2.records||[]),...(f3.records||[])].map(x=>x.id).filter(Boolean));setStat('foundations',foundationIds.size)}
+    if(foundationRooms)setStat('foundations',foundationRooms.summary?.total_rooms||foundationRooms.population||0)
     const root=document.getElementById('homeRealityCases');
     if(root&&cases){
       const rows=(cases.dossiers||[]).slice(0,4);

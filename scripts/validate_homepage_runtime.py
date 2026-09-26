@@ -16,9 +16,6 @@ REQUIRED_DATASETS = (
     "data/house/project-synthesis.json",
     "data/house/subrooms.json",
     "data/house/entity-dossiers-wave-001.json",
-    "data/house/foundations-wave-001.json",
-    "data/house/foundations-wave-002.json",
-    "data/house/foundations-wave-003.json",
     "data/house/lower-plane-population-atlas.json",
     "data/house/layer-terrain-regime-atlas.json",
     "data/house/concept-topology.json",
@@ -65,6 +62,19 @@ def main() -> int:
             if any(section.get("id") == "project-motion" for section in projection.get("sections", [])):
                 errors.append("homepage projection still registers retired project-motion section")
             contract = projection.get("repetition_contract", {})
+            runtime_contract = projection.get("runtime_input_contract", {})
+            retired = set(runtime_contract.get("retired_homepage_runtime_inputs", []))
+            expected_retired = {
+                "data/house/foundations-wave-001.json",
+                "data/house/foundations-wave-002.json",
+                "data/house/foundations-wave-003.json",
+            }
+            if retired != expected_retired:
+                errors.append("homepage runtime input contract does not declare the retired Foundation wave inputs exactly")
+            legacy_paths = {item.get("path") for item in runtime_contract.get("legacy_named_active_inputs", [])}
+            for required_legacy in ("data/house/entity-dossiers-wave-001.json", "data/house/route-case-matrix-wave-001.json"):
+                if required_legacy not in legacy_paths:
+                    errors.append(f"homepage legacy-named active input lacks explicit disposition: {required_legacy}")
             for owner in ("project-spine", "learn-the-structure", "route-comparison", "foundation-landscape", "foundation-rooms", "materialized-now"):
                 if owner not in contract:
                     errors.append(f"homepage repetition contract missing owner: {owner}")
@@ -86,6 +96,15 @@ def main() -> int:
         errors.append("homepage runtime still contains the retired all-or-nothing projection failure")
     if re.search(r"\.every\(r=>r\.ok\).*home projection", home, flags=re.S):
         errors.append("homepage runtime still gates all projection data behind one response-ok check")
+
+    retired_home_inputs = (
+        "data/house/foundations-wave-001.json",
+        "data/house/foundations-wave-002.json",
+        "data/house/foundations-wave-003.json",
+    )
+    for path in retired_home_inputs:
+        if f"loadJson('{path}')" in home:
+            errors.append(f"homepage still loads retired wave input: {path}")
 
     for path in REQUIRED_DATASETS:
         if f"loadJson('{path}')" not in home:
@@ -121,7 +140,7 @@ def main() -> int:
         "if(rooms)setStat('rooms'",
         "if(cases)setStat('cases'",
         "if(below)setStat('below'",
-        "if(f1&&f2&&f3)",
+        "if(foundationRooms)setStat('foundations'",
         "if(root&&cases)",
         "if(foundationRoomSummary&&foundationRooms)",
     )
