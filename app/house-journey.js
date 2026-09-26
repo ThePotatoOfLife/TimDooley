@@ -169,22 +169,26 @@
     if(!match)return;
     const roomId=decodeURIComponent(match[1]);
     try{
-      const [inhData,subData]=await Promise.all([
+      const [inhData,subData,featuredData]=await Promise.all([
         getJson('data/house/room-inhabitants.json'),
-        getJson('data/house/subrooms.json')
+        getJson('data/house/subrooms.json'),
+        getJson('data/house/room-featured-objects.json')
       ]);
       const room=(subData.subrooms||[]).find(x=>x.id===roomId||x.route_id===roomId);
       if(!room)return;
       const canonicalRoomId=room.id;
       const rows=(inhData.inhabitants||[]).filter(x=>(x.room_ids||[]).includes(canonicalRoomId));
       if(!rows.length)return;
-
+      const featureRow=(featuredData.rooms||[]).find(x=>x.room_id===canonicalRoomId);
+      const featureIds=new Set(featureRow?.object_ids||[]);
+      const featuredRows=(featureRow?.object_ids||[]).map(id=>rows.find(x=>x.id===id)).filter(Boolean);
+      const otherRows=rows.filter(x=>!featureIds.has(x.id));
 
       const main=document.querySelector('main');
       if(!main)return;
       const section=document.createElement('section');
       section.className='room-inhabitants-panel';
-      section.innerHTML='<p class="eyebrow">Inhabitants / cases</p><h2>What lives in this Room</h2><p class="boundary">These are concrete objects viewed from this Room. Open the object itself when you want substance; place it on the center table when you want to inspect its House context.</p><div class="room-inhabitant-grid">'+rows.map(x=>{
+      const renderCard=x=>{
         const q=new URLSearchParams({room:room.parent_room_id,inner:canonicalRoomId,object:x.id});
         const rawRoute=String(x.route||'');
         const objectHref=rawRoute
@@ -195,7 +199,15 @@
         return '<article class="room-inhabitant-card"><strong>'+esc(x.label)+'</strong><small>'+esc(x.kind||'object')+'</small>'
           +(x.summary?'<p>'+esc(x.summary)+'</p>':'')
           +'<div class="room-inhabitant-actions">'+actions+'</div></article>';
-      }).join('')+'</div>';
+      };
+      const startHtml=featuredRows.length
+        ?'<div class="room-featured-objects"><p class="eyebrow">Start here</p><h3>The strongest objects for understanding this Room</h3><p class="boundary">These are editorial entry points, not a ranking of truth or importance across the whole project.</p><div class="room-inhabitant-grid room-inhabitant-grid--featured">'+featuredRows.map(renderCard).join('')+'</div></div>'
+        :'';
+      const moreRows=featuredRows.length?otherRows:rows;
+      const moreHtml=moreRows.length
+        ?'<details class="room-more-objects" '+(featuredRows.length?'':'open')+'><summary>'+(featuredRows.length?'More in this Room · ':'What lives in this Room · ')+moreRows.length+'</summary><div class="room-inhabitant-grid">'+moreRows.map(renderCard).join('')+'</div></details>'
+        :'';
+      section.innerHTML='<p class="eyebrow">Inhabitants / cases</p><h2>What lives in this Room</h2><p class="boundary">Open the object itself when you want substance; place it on the center table when you want to inspect its House context.</p>'+startHtml+moreHtml;
       main.appendChild(section);
     }catch(e){}
   }
