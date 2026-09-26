@@ -166,7 +166,8 @@ def main()->int:
     if warning_counts:
         print("- Warning classes: " + " · ".join(f"{code}={count}" for code,count in sorted(warning_counts.items())))
     priority_codes={"authored-dead-end","registered-dead-end","read-open-enter-to-hub","vague-link-label","first-nav-link-wall","mobile-precontent-stack"}
-    priority=[item for item in warnings if item.get("code") in priority_codes]
+    priority_rank={"authored-dead-end":0,"registered-dead-end":1,"vague-link-label":2,"read-open-enter-to-hub":3,"first-nav-link-wall":4,"mobile-precontent-stack":5}
+    priority=sorted((item for item in warnings if item.get("code") in priority_codes),key=lambda item:(priority_rank.get(item.get("code"),99),item.get("surface","")))
     for item in priority[:30]:
         detail=item.get("label") or item.get("target") or item.get("count") or item.get("score") or ""
         print(f"- WARN {item['code']}: {item.get('surface',item.get('left','site'))}" + (f" · {detail}" if detail else ""))
