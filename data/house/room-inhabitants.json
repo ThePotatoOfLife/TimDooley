@@ -1,5 +1,5 @@
 {
-  "version": "2.5.0",
+  "version": "2.6.0",
   "updated": "2026-09-26",
   "authority": "room-inhabitant-registry",
   "purpose": "Place cases, entities, concepts, artifacts and dossiers inside nested Rooms without promoting each object into a Room or changing canonical ownership.",
@@ -3669,6 +3669,214 @@
       "status_note": "Correction requires source quality and context; later consensus alone is not proof.",
       "evidence_note": "Canonical culture/memory repair record.",
       "maturity": "case-ready"
+    },
+    {
+      "id": "theology-tim-god-question",
+      "label": "Tim God Question",
+      "kind": "theology-synthesis",
+      "room_ids": [
+        "theology-god-language",
+        "canon-identities"
+      ],
+      "route": "/knowledge/theology/tim-god-question.json",
+      "summary": "Large synthesis of what the project means by Tim's God/Father claims, how the identity develops, and which evidence classes can and cannot establish different parts of the claim.",
+      "status_note": "Documents project theology and self-description; it does not independently prove supernatural identity.",
+      "evidence_note": "Canonical theology synthesis.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "theology-godhood-modalities",
+      "label": "Tim Godhood Modalities",
+      "kind": "theology-atlas",
+      "room_ids": [
+        "theology-god-language"
+      ],
+      "route": "/knowledge/theology/tim-godhood-modalities.json",
+      "summary": "Separates functional, symbolic, relational, public, memetic and other Godhood modalities so different claims are not collapsed into one undifferentiated assertion.",
+      "status_note": "Modal classification clarifies what a claim means; it does not verify the claim.",
+      "evidence_note": "Canonical theology atlas.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "theology-father-son-door",
+      "label": "Father / Son / Door Reciprocity",
+      "kind": "theology-relation-model",
+      "room_ids": [
+        "theology-god-language",
+        "canon-identities"
+      ],
+      "route": "/knowledge/theology/father-son-door-reciprocity.json",
+      "summary": "Direct model of source, manifestation and threshold relations underlying the mature Father/Son architecture.",
+      "status_note": "Project theological relation model; historical Christian doctrine remains separately sourced.",
+      "evidence_note": "Canonical theology relation owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "theology-discernment-atlas",
+      "label": "Signs, Revelations & Epiphanies Discernment Atlas",
+      "kind": "discernment-atlas",
+      "room_ids": [
+        "theology-god-language",
+        "prediction-revelation-time"
+      ],
+      "route": "/knowledge/theology/signs-revelations-epiphanies-discernment-atlas.json",
+      "summary": "Framework for distinguishing intense meaning, synchronicity, revelation, interpretation and stronger evidentiary claims.",
+      "status_note": "Meaningful experience does not automatically establish external causation or prophecy.",
+      "evidence_note": "Canonical discernment record.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "provenance-archive-epistemics",
+      "label": "Archive Epistemics",
+      "kind": "epistemics-owner",
+      "room_ids": [
+        "provenance-evidence",
+        "information-ecology"
+      ],
+      "route": "/knowledge/philosophy/archive-epistemics.json",
+      "summary": "Core account of how source, memory, recovery, inference, contradiction and canonical promotion should interact in the archive.",
+      "status_note": "Method governs confidence and provenance; it does not make weak evidence strong by classification alone.",
+      "evidence_note": "Canonical epistemics owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "provenance-source-authority-policy",
+      "label": "Source Authority & Provenance Policy",
+      "kind": "source-policy",
+      "room_ids": [
+        "provenance-evidence",
+        "witness-attestation"
+      ],
+      "route": "/knowledge/philosophy/source-authority-and-provenance-policy.json",
+      "summary": "Defines source classes, authority, provenance and how later synthesis should remain traceable to earlier material.",
+      "status_note": "Source authority is domain-specific and cannot be inferred from repetition or popularity alone.",
+      "evidence_note": "Canonical provenance policy.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "provenance-source-index",
+      "label": "Source Index",
+      "kind": "source-index",
+      "room_ids": [
+        "provenance-evidence",
+        "witness-attestation"
+      ],
+      "route": "/knowledge/indexes/source-index.json",
+      "summary": "Project-wide index routing claims and records back toward their source objects and source classes.",
+      "status_note": "An index routes evidence; it is not itself independent evidence.",
+      "evidence_note": "Canonical index infrastructure.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "provenance-inference-ledger",
+      "label": "Inference Ledger",
+      "kind": "inference-ledger",
+      "room_ids": [
+        "provenance-evidence",
+        "open-questions"
+      ],
+      "route": "/knowledge/indexes/inference-ledger.json",
+      "summary": "Tracks derived conclusions separately from direct attestations so interpretation and evidence are not silently merged.",
+      "status_note": "An inference remains dependent on premises and may weaken when source evidence changes.",
+      "evidence_note": "Canonical inference registry.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "witness-statement-corpus-index",
+      "label": "Tim Statement Corpus Index",
+      "kind": "attestation-index",
+      "room_ids": [
+        "witness-attestation",
+        "canon-identities"
+      ],
+      "route": "/knowledge/indexes/tim-statement-corpus-index.json",
+      "summary": "Index over recoverable Tim statements and source strata, supporting first-attestation and wording checks.",
+      "status_note": "Indexing a statement documents the archive's record of it; public authenticity still depends on source class.",
+      "evidence_note": "Canonical statement index.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "witness-godhood-attestation",
+      "label": "Godhood Modality Attestation Ledger",
+      "kind": "attestation-ledger",
+      "room_ids": [
+        "witness-attestation",
+        "theology-god-language"
+      ],
+      "route": "/knowledge/timeline/godhood-modality-attestation-ledger.json",
+      "summary": "Dated attestations for God/Father-related formulations across different modalities and periods.",
+      "status_note": "Attestation proves recoverable wording/date within its source class, not the supernatural truth of the content.",
+      "evidence_note": "Timeline attestation ledger.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "witness-biblical-vocabulary",
+      "label": "Biblical Vocabulary Attestation Ledger",
+      "kind": "attestation-ledger",
+      "room_ids": [
+        "witness-attestation",
+        "bible-christianity"
+      ],
+      "route": "/knowledge/timeline/tim-biblical-vocabulary-attestation-ledger.json",
+      "summary": "Tracks when biblical terms and motifs appear in the project so later theological readings are not backdated.",
+      "status_note": "Vocabulary recurrence does not prove fulfillment, influence or doctrinal identity.",
+      "evidence_note": "Dated vocabulary attestation ledger.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "chronology-master-timeline",
+      "label": "Master Timeline 1987–2030",
+      "kind": "master-timeline",
+      "room_ids": [
+        "chronology-events",
+        "developmental-genealogy"
+      ],
+      "route": "/knowledge/timeline/master-timeline-1987-2030.json",
+      "summary": "Long-range chronological spine joining biography, project phases, public activity and later interpretation with typed event status.",
+      "status_note": "Future or projected entries remain distinct from established past events.",
+      "evidence_note": "Canonical timeline owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "chronology-2026-master",
+      "label": "Dated Master Timeline 2026",
+      "kind": "year-timeline",
+      "room_ids": [
+        "chronology-events"
+      ],
+      "route": "/knowledge/timeline/dated-master-timeline-2026.json",
+      "summary": "High-resolution 2026 chronology for public statements, project development, recoveries and dated events.",
+      "status_note": "Chronology preserves event/source distinctions and does not convert later interpretation into prior fact.",
+      "evidence_note": "Dated timeline owner.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "law-accountability-atlas",
+      "label": "Legal Accountability & Human Consequence Atlas",
+      "kind": "legal-atlas",
+      "room_ids": [
+        "law-justice",
+        "subculture-group-formation"
+      ],
+      "route": "/knowledge/world/legal-accountability-human-consequence-atlas.json",
+      "summary": "Separates allegation, source, legal status, procedure, liability, remedy and human consequence across contested cases and institutional contexts.",
+      "status_note": "Project analysis does not replace official legal records, adjudication or qualified legal advice.",
+      "evidence_note": "Canonical world/legal accountability atlas.",
+      "maturity": "case-ready"
+    },
+    {
+      "id": "law-accountability-routing",
+      "label": "Legal Accountability / Under-Culture Routing",
+      "kind": "legal-routing",
+      "room_ids": [
+        "law-justice",
+        "provenance-evidence"
+      ],
+      "route": "/knowledge/world/legal-accountability-under-culture-routing.json",
+      "summary": "Routing layer that hands contested social claims toward the appropriate legal/evidence owners instead of treating project labels as legal conclusions.",
+      "status_note": "Routing identifies where a claim should be evaluated; it does not adjudicate it.",
+      "evidence_note": "Canonical legal/evidence routing record.",
+      "maturity": "described"
     }
   ],
   "source_records": [
