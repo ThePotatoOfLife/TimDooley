@@ -109,6 +109,13 @@
     return LEVELS[Math.max(0,Math.min(LEVELS.length-1,index+delta))];
   }
 
+  function inheritParentContext(spatial,parentRoute,projection,roomContract,subroomContract){
+    if(!spatial||spatial.source!=='fallback'||!parentRoute)return spatial;
+    const parent=resolveSpatialContext(parentRoute,projection,roomContract,subroomContract);
+    if(!parent||parent.source==='fallback')return spatial;
+    return {...parent,source:'parent-route',parentRoute:normalizeRoute(parentRoute)};
+  }
+
   function browserContext(){
     if(typeof document==='undefined'||typeof window==='undefined')return null;
     const script=document.currentScript;
@@ -278,6 +285,15 @@
       const siteBasePath=new URL(context.siteBase).pathname;
       const currentRoute=normalizeRoute(location.pathname,siteBasePath);
       spatial=resolveSpatialContext(currentRoute,projection,roomContract,subroomContract);
+      if(spatial.source==='fallback'){
+        const parentLink=document.querySelector('nav[aria-label="Parent"] a[href]');
+        if(parentLink){
+          try{
+            const parentRoute=normalizeRoute(new URL(parentLink.href,document.baseURI).pathname,siteBasePath);
+            spatial=inheritParentContext(spatial,parentRoute,projection,roomContract,subroomContract);
+          }catch(_){}
+        }
+      }
       selectedLevel=LEVELS.includes(spatial.levelId)?spatial.levelId:'plane';
       header.dataset.elevatorReady='true';
       render('hydrate');
@@ -290,13 +306,14 @@
     return header;
   }
 
-  const api={LEVELS,normalizeRoute,resolveSpatialContext,roomsForLevel,stepLevel,mount};
+  const api={LEVELS,normalizeRoute,resolveSpatialContext,roomsForLevel,stepLevel,inheritParentContext,mount};
   if(typeof exports==='object'){
     exports.LEVELS=LEVELS;
     exports.normalizeRoute=normalizeRoute;
     exports.resolveSpatialContext=resolveSpatialContext;
     exports.roomsForLevel=roomsForLevel;
     exports.stepLevel=stepLevel;
+    exports.inheritParentContext=inheritParentContext;
     exports.mount=mount;
   }else{
     root.SiteElevator=api;
