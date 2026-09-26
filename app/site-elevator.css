@@ -67,16 +67,26 @@
     repeating-linear-gradient(90deg,rgba(122,72,48,.07) 0 16px,rgba(30,15,12,.09) 16px 32px),
     repeating-linear-gradient(135deg,transparent 0 22px,rgba(151,75,48,.055) 22px 24px,transparent 24px 46px);
 }
+/* single-strip compact layout */
 .site-elevator-main{
   display:grid;
-  grid-template-columns:46px minmax(0,1fr) 46px;
+  grid-template-columns:30px minmax(92px,150px) minmax(0,1fr);
   align-items:stretch;
-  min-height:48px;
+  min-height:42px;
+  max-height:42px;
+}
+.site-elevator-controls{
+  display:grid;
+  grid-template-rows:1fr 1fr;
+  min-width:0;
+  border-right:1px solid rgba(255,255,255,.14);
 }
 .site-elevator-arrow{
   appearance:none;
+  min-width:0;
+  min-height:0;
+  padding:0;
   border:0;
-  border-inline:1px solid rgba(255,255,255,.14);
   border-radius:0;
   color:#fff;
   background:
@@ -86,10 +96,11 @@
     inset 0 -1px rgba(0,0,0,.45),
     0 0 0 1px rgba(0,0,0,.28);
   text-shadow:0 1px 2px #20242a,0 0 7px rgba(255,255,255,.55);
-  font:700 23px/1 ui-sans-serif,system-ui,sans-serif;
+  font:800 14px/1 ui-sans-serif,system-ui,sans-serif;
   cursor:pointer;
   transition:filter 120ms ease,transform 120ms ease,opacity 120ms ease;
 }
+.site-elevator-up{border-bottom:1px solid rgba(0,0,0,.32)}
 .site-elevator-arrow:hover:not(:disabled){filter:brightness(1.12)}
 .site-elevator-arrow:active:not(:disabled){transform:translateY(1px);filter:brightness(.93)}
 .site-elevator-arrow:focus-visible{
@@ -109,12 +120,13 @@
   box-shadow:inset 0 1px rgba(255,255,255,.07),inset 0 -1px rgba(0,0,0,.45);
 }
 .site-elevator-floor{
-  min-height:48px;
+  min-height:42px;
+  height:42px;
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:10px;
-  padding:6px 12px;
+  gap:5px;
+  padding:4px 8px;
   box-sizing:border-box;
   transform-origin:50% 50%;
   backface-visibility:hidden;
@@ -126,31 +138,35 @@
   animation:site-elevator-reel-up 420ms cubic-bezier(.2,.8,.2,1);
 }
 .site-elevator-floor-label{
-  letter-spacing:.22em;
-  font-size:13px;
+  letter-spacing:.16em;
+  font-size:10px;
   color:var(--site-elevator-ink);
   text-shadow:0 0 14px var(--site-elevator-glow);
 }
 .site-elevator-room-label{
   min-width:0;
+  max-width:72px;
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
   color:var(--site-elevator-muted);
+  font-size:8px;
   font-weight:650;
 }
 .site-elevator-room-rail{
   display:flex;
-  align-items:stretch;
-  gap:6px;
-  min-height:34px;
+  align-items:center;
+  gap:5px;
+  min-width:0;
+  min-height:42px;
+  height:42px;
   overflow-x:auto;
   overflow-y:hidden;
-  padding:5px 8px 6px;
-  border-top:1px solid rgba(255,255,255,.07);
+  padding:4px 7px;
+  border-left:1px solid rgba(255,255,255,.07);
   scrollbar-width:thin;
   scrollbar-color:var(--site-elevator-accent) transparent;
-  background:rgba(0,0,0,.12);
+  background:rgba(0,0,0,.10);
 }
 .site-elevator-room-rail[hidden]{display:none}
 .site-elevator-room{
@@ -158,9 +174,9 @@
   flex:0 0 auto;
   display:inline-flex;
   align-items:center;
-  min-height:28px;
+  min-height:27px;
   box-sizing:border-box;
-  padding:5px 10px 4px;
+  padding:4px 8px 3px;
   border:1px solid var(--site-elevator-line);
   border-radius:3px;
   color:var(--site-elevator-muted);
@@ -232,11 +248,13 @@
   100%{opacity:1;transform:translateY(0) rotateX(0deg) scale(1)}
 }
 @media (max-width:680px){
-  .site-elevator-main{grid-template-columns:44px minmax(0,1fr) 44px}
-  .site-elevator-floor{gap:7px;padding-inline:8px}
-  .site-elevator-floor-label{font-size:12px;letter-spacing:.15em}
-  .site-elevator-room-label{font-size:10px}
-  .site-elevator-room-rail{padding-inline:6px}
+  .site-elevator-main{grid-template-columns:28px 86px minmax(0,1fr);min-height:40px;max-height:40px}
+  .site-elevator-floor{height:40px;min-height:40px;gap:3px;padding-inline:5px;flex-direction:column}
+  .site-elevator-floor-label{font-size:10px;letter-spacing:.11em}
+  .site-elevator-room-label{max-width:80px;font-size:7px}
+  .site-elevator-room-rail{height:40px;min-height:40px;padding-inline:5px}
+  .site-elevator-room{font-size:9px;padding-inline:7px}
+  .site-elevator-arrow{font-size:12px}
 }
 @media (prefers-reduced-motion: reduce){
   .site-elevator *, .site-elevator *::before, .site-elevator *::after{
