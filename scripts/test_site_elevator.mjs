@@ -179,6 +179,10 @@ assert.equal(css.includes('scrollbar-width'),false,'Room rail must not render a 
 assert.ok(css.includes('.site-elevator-arrow::before'),'arrow controls should use metallic line detailing without button blocks');
 assert.ok(css.includes('.site-elevator-floor-code'),'terminal board needs a numbered floor code');
 assert.ok(css.includes('[data-elevator-level="heaven"]::before'),'Heaven needs a distinct pixel-biome layer');
+assert.ok(css.includes('radial-gradient(ellipse at 24% 97%'),'Heaven sky needs layered cloud banks');
+assert.ok(css.includes('linear-gradient(112deg,transparent 0 18%'),'Heaven sky needs a restrained aurora/light sweep');
+assert.ok(css.includes('radial-gradient(circle at 7% 18%'),'Heaven sky needs sparse celestial points');
+assert.ok(css.includes('linear-gradient(180deg,#285f94'),'Heaven sky needs real depth rather than a flat blue plate');
 assert.ok(css.includes('[data-elevator-level="plane"]::before'),'Plane needs a distinct pixel-biome layer');
 assert.ok(css.includes('[data-elevator-level="below"]::before'),'Below needs a distinct pixel-biome layer');
 assert.ok(css.includes('border-radius:0'),'terminal Room tiles should not drift back into pill styling');
@@ -187,7 +191,7 @@ assert.ok(css.includes('border-style:dashed'),'secondary projected Rooms must re
 assert.ok(css.includes('.site-elevator-room.is-secondary{\n  opacity:1;'),'secondary Rooms must stay readable instead of fading the text');
 assert.ok(css.includes('[data-elevator-level="plane"] .site-elevator-room'),'Plane Room tiles need block-earth material styling');
 assert.ok(css.includes('[data-elevator-level="heaven"] .site-elevator-room'),'Heaven Room tiles need sky material styling');
-assert.ok(css.includes('rgba(18,49,75,.72)'),'Heaven Room panes must stay dark enough for readable text');
+assert.ok(css.includes('rgba(18,49,75,.66)'),'Heaven Room panes must remain readable while revealing more sky');
 assert.ok(!css.includes('backdrop-filter:blur(6px) saturate(116%)'),'Heaven should blur shared panes rather than every Room tile');
 assert.ok(css.includes('@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px)))'),'Heaven glass needs an opaque fallback when blur is unavailable');
 assert.ok(css.includes('@media (prefers-contrast: more)'),'Heaven glass needs an explicit high-contrast mode');
