@@ -1,0 +1,53 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-26",
+  "authority": "house-study-chamber-registry",
+  "purpose": "Register focused public learning surfaces smaller than a canonical nested Room. Study Chambers inherit knowledge ownership and epistemic boundaries from an existing Room while giving one dense subject its own diagram, glossary, source trail and crosswalk.",
+  "admission_rule": [
+    "Use a Study Chamber when the subject is too dense for a paragraph/card but does not own a durable project-wide class of knowledge.",
+    "Every chamber names its owning Room and return route.",
+    "A chamber may synthesize canonical holdings but must not become a second source of truth.",
+    "Diagrams must distinguish source-tradition structure from project interpretation and modern analogy.",
+    "Cross-tradition similarities remain typed as comparisons unless historical transmission is independently evidenced."
+  ],
+  "chambers": [
+    {
+      "id": "norse-world-tree-edda",
+      "title": "Yggdrasil & the Eddas",
+      "owner_room_id": "comparative-mythology",
+      "supporting_room_ids": [
+        "other-traditions",
+        "symbolic-architecture",
+        "bible-christianity"
+      ],
+      "route": "/traditions/comparative-cosmology/norse-world-tree/",
+      "job": "Teach the Eddic world-tree ecology, Odin wisdom/ordeal material, wells, Norns, gods, creatures and realm vocabulary; then expose bounded modern and Potatoverse comparisons.",
+      "source_roots": [
+        "books/norse-edda/",
+        "knowledge/traditions/comparative-mythology-map.json",
+        "knowledge/traditions/fate-thread-norns-moirai-comparative-atlas.json",
+        "data/house/religious-symbolic-branch-atlas.json"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "kabbalah-qliphoth-angelology",
+      "title": "Kabbalah, Qliphoth & Angelology",
+      "owner_room_id": "esoteric-sacred-geometry",
+      "supporting_room_ids": [
+        "bible-christianity",
+        "comparative-mythology",
+        "theology-god-language",
+        "symbolic-architecture"
+      ],
+      "route": "/traditions/comparative-cosmology/kabbalah-qliphoth/",
+      "job": "Separate biblical Tree/angel material, Jewish Kabbalah, Lurianic repair cosmology and later Hermetic/occult Qliphoth diagrams while making names, functions and boundaries learnable.",
+      "source_roots": [
+        "knowledge/traditions/tree-of-life-knowledge-qliphoth-structure-atlas.json",
+        "knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json",
+        "data/expansions/angel-demon-topology-wave-014.json"
+      ],
+      "status": "active"
+    }
+  ]
+}
