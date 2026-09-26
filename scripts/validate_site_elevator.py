@@ -12,6 +12,7 @@ ELEVATOR_CSS = ROOT / "app" / "site-elevator.css"
 ELEVATOR_JS = ROOT / "app" / "site-elevator.js"
 PATCHER = ROOT / "scripts" / "patch_public_navigation.py"
 OUT = ROOT / "_site"
+WORLD_MAP_SOURCE = ROOT / "world-map" / "index.html"
 
 EXPECTED_LEVELS = ["heaven", "plane", "below"]
 REPRESENTATIVE_CONTEXTS = {
@@ -53,6 +54,7 @@ def main() -> int:
     css = ELEVATOR_CSS.read_text(encoding="utf-8", errors="replace") if ELEVATOR_CSS.exists() else ""
     js = ELEVATOR_JS.read_text(encoding="utf-8", errors="replace") if ELEVATOR_JS.exists() else ""
     patcher = PATCHER.read_text(encoding="utf-8", errors="replace") if PATCHER.exists() else ""
+    world_map_source = WORLD_MAP_SOURCE.read_text(encoding="utf-8", errors="replace") if WORLD_MAP_SOURCE.exists() else ""
     room_contract = load_json(ROOMS, errors)
 
     active_rooms = {
@@ -66,6 +68,9 @@ def main() -> int:
         for token in ("publishClearance", "--site-elevator-clearance", "ResizeObserver"):
             if token not in js:
                 errors.append(f"site elevator JS missing clearance marker: {token}")
+
+    if ".app{height:calc(100% - var(--site-elevator-clearance,0px))" not in world_map_source.replace(" ",""):
+        errors.append("World Map full-screen app must reserve measured site-elevator top clearance")
 
     for token in ("inject_site_elevator", "patch_site_elevator", "app/site-elevator.css", "app/site-elevator.js"):
         if token not in patcher:
