@@ -42,6 +42,12 @@
     return cleanText(clone.textContent||'');
   }
 
+  function highlightTargetForSection(sectionId,currentItem,container){
+    if(sectionId==='current')return currentItem||null;
+    if(sectionId==='all')return container||null;
+    return null;
+  }
+
   function mutationsAreInside(records,boundary){
     const list=Array.from(records||[]);
     if(!list.length||!boundary)return false;
@@ -165,7 +171,7 @@
     const chooseCurrent=item=>currentGuard.select(item);
     const highlightEvent=event=>{
       if(!event.absoluteWord)return;
-      const target=event.sectionId==='current'?currentItem:event.sectionId==='all'?container:null;
+      const target=highlightTargetForSection(event.sectionId,currentItem,container);
       if(target)pageHighlighter.highlight(target,event.absoluteWord,config.excludeSelector||'',event.followReading);
       else pageHighlighter.clear();
     };
@@ -304,5 +310,5 @@
     root.document.readyState==='loading'?root.document.addEventListener('DOMContentLoaded',start,{once:true}):start();
   }
 
-  return {cleanText,buildLongformPayload,selectionInside,readableText,mutationsAreInside,createCurrentPlaybackGuard,requestContentPreparation,configFromElement,mount,autoMount};
+  return {cleanText,buildLongformPayload,selectionInside,readableText,highlightTargetForSection,mutationsAreInside,createCurrentPlaybackGuard,requestContentPreparation,configFromElement,mount,autoMount};
 });
