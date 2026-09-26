@@ -16,6 +16,7 @@ def main()->int:
     subs=json.loads(SUBROOMS.read_text(encoding="utf-8"))
     rooms={r.get("id") for r in subs.get("subrooms",[]) if isinstance(r,dict)}
     by_id={r.get("id"):r for r in inhab.get("inhabitants",[]) if isinstance(r,dict)}
+    active_rooms={r.get("id") for r in subs.get("subrooms",[]) if isinstance(r,dict) and r.get("status")=="active"}
     seen_rooms=set()
 
     for row in feat.get("rooms",[]):
@@ -43,11 +44,15 @@ def main()->int:
             if not str(obj.get("route") or "").strip():
                 errors.append(f"{rid}: featured object lacks direct route: {oid}")
 
+    missing=sorted(active_rooms-seen_rooms)
+    if missing:
+        errors.append("active Rooms missing editorial featured sets: "+", ".join(missing))
+
     if errors:
         print("ROOM FEATURED OBJECT VALIDATION FAILED")
         for e in errors: print("-",e)
         return 1
-    print(f"Room featured objects: PASS · {len(seen_rooms)} curated Rooms")
+    print(f"Room featured objects: PASS · {len(seen_rooms)}/{len(active_rooms)} active Rooms curated")
     return 0
 
 if __name__=="__main__":
