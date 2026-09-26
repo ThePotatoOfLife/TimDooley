@@ -615,11 +615,14 @@ The corridor-only baseline is eliminated across the 38 registered nested subject
 - [~] Audit named-being dossiers and CIA specialist surfaces for stub pages, stale role-lock and missing date/source context. Current named-being Rooms reviewed as substantive; legacy FBI per-person dossiers converted to CIA redirects. Continue dossier-data/source completeness review.
 - [~] Audit specialist institution surfaces for subject explanation before controls/ledgers. CIA Incidents, Associations, Bank and dossier viewer reviewed; their explanatory boundaries are substantive. Continue North/Law/Science/World specialist-surface review.
 - [~] Run canonical-holding freshness checks so Room dossiers do not undercount newer knowledge owners. Fixed impossible counts in Core Identities, Memory & Recovery, and Internet & Platforms; added `scripts/validate_room_holdings.py` and CI enforcement. Continue deeper ownership-count reconciliation beyond featured holdings.
-- [ ] Audit cross-Room handoffs: every important door should explain why the reader would cross it and what claim class changes on the other side.
-- [ ] Add object-level spotlights where a Room is conceptually clear but still abstract: dated artifacts, cases, works, equations, countries, events or source passages.
-- [ ] Check TTS/readability on newly long Rooms so prose additions do not create inaccessible walls of text.
+- [~] Audit cross-Room handoffs: nested Room richness panels already expose governed passages and guards; continue improving bare adjacency cards and gateway handoffs where the reader still has to infer why to cross.
+- [~] Add object-level spotlights where a Room is conceptually clear but still abstract. Physics, Esoteric Geometry, Prediction/Time, Potato Biology and Geography now have richer canonical object populations; continue Music, Games, Visual Art and other sparse creative Rooms.
+- [~] Check TTS/readability on newly long Rooms. Added generated `In this Room` section guides to long nested readers; continue TTS, paragraph-length and mobile readability review.
 - [ ] Review repeated CSS patterns from the inhabitation wave and consolidate where safe without flattening the different Room personalities.
 - [ ] Add a maturity downgrade path: validator/audit should permit a Room to be marked `seeded` again if substantive content is removed or becomes misleading.
 - [ ] Continue qualitative audits of semantic gaps even when validators pass; validators protect floors, not editorial excellence.
 
 - [x] Retired FBI namespace is now compatibility-only: legacy utility/person URLs redirect into CIA; `scripts/validate_legacy_fbi_redirects.py` prevents new live dossier ownership from returning there.
+
+- [x] Add a public reader completeness contract covering Home, Rooms, House, Explore and all active Dwellings; enforce it in CI so major entry surfaces retain distinct reader jobs and concrete substance.
+- [x] Add curated Dwelling featured-object shelves plus a Rooms-wide best-of shelf so readers encounter high-value artifacts before topology/navigation.
