@@ -152,3 +152,10 @@ Two live-facing problems were corrected:
 The quick-access implementation was generalized from a hard-coded CIA special case to data-driven disambiguation loaded from `data/house/site-access.json`. This makes ambiguous names a registry concern instead of repeated UI code.
 
 **Compression rule:** keep redirect shells only for old inbound URLs; current navigation and discovery should always point to the canonical destination directly.
+
+
+## Concrete-content floor
+
+Reader-richness validation previously had an important weakness: a page could satisfy the visible-substance check by accumulating enough plain text. That protects against empty shells, but it does not distinguish a dense filing-system essay from an inhabited reader.
+
+The validator now also checks the principal subject pages for recognizable authored material forms: Room readers/essays, worked sections, historical steps, lab cases, collection cases, North development rows, systems chains, actual-works ledgers, chronology/development sections, or the top-level Dwelling reader marker. This remains deliberately format-tolerant; it does not force every subject into one card layout. The contract is simply that **important subject pages must expose a concrete reader form in addition to having sufficient prose**.
