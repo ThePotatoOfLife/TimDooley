@@ -34,7 +34,7 @@ def main()->int:
             errors.append(f"reader surface lost required substance markers: {path.relative_to(ROOT)}")
 
     js=JOURNEY.read_text(encoding="utf-8",errors="replace")
-    for fn in ("installRoomsBestOf","installDwellingFeaturedObjects","installDwellingArchiveIndex","installRoomArchiveDrawers","installHouseDeepCorpusIndex"):
+    for fn in ("installRoomsBestOf","installDwellingFeaturedObjects","installDwellingArchiveIndex","installRoomArchiveDrawers","installHouseDeepCorpusIndex","installInhabitants"):
         if fn not in js:
             errors.append(f"house journey lost reader completeness function: {fn}")
 
