@@ -3,12 +3,14 @@
 
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 HOME = ROOT / "index.html"
 HOME_CSS = ROOT / "app" / "home-page.css"
+PROJECT_SYNTHESIS = ROOT / "data" / "house" / "project-synthesis.json"
 
 REQUIRED_DATASETS = (
     "data/house/project-synthesis.json",
@@ -45,6 +47,29 @@ def main() -> int:
         errors.append("homepage does not load the scoped app/home-page.css asset")
     if re.search(r"<style>[\\s\\S]*?\\.home-", home):
         errors.append("homepage-specific CSS drifted back into an inline <style> block")
+
+    # Keep homepage teaching jobs distinct. Route and Foundation sections already own
+    # transition/reproduction detail, so a generic lifecycle section is duplication.
+    if 'id="project-motion"' in home or 'data-cycle="knowledge"' in home or 'data-cycle="generative"' in home:
+        errors.append("homepage reintroduced the retired duplicate lifecycle teaching section")
+    if "materialization/crystallization gate" in home:
+        errors.append("materialized-now drifted from registry counts back into lifecycle/process teaching")
+    if not PROJECT_SYNTHESIS.exists():
+        errors.append("missing project synthesis for homepage repetition contract")
+    else:
+        try:
+            synthesis = json.loads(PROJECT_SYNTHESIS.read_text(encoding="utf-8"))
+            projection = synthesis.get("homepage_projection", {})
+            if "operating-cycles" in projection.get("hierarchy", []):
+                errors.append("homepage projection hierarchy still contains retired operating-cycles layer")
+            if any(section.get("id") == "project-motion" for section in projection.get("sections", [])):
+                errors.append("homepage projection still registers retired project-motion section")
+            contract = projection.get("repetition_contract", {})
+            for owner in ("project-spine", "learn-the-structure", "route-comparison", "foundation-landscape", "foundation-rooms", "materialized-now"):
+                if owner not in contract:
+                    errors.append(f"homepage repetition contract missing owner: {owner}")
+        except (OSError, json.JSONDecodeError) as exc:
+            errors.append(f"cannot read homepage repetition contract: {exc}")
 
     required_markers = (
         "const unavailable=new Set();",
