@@ -168,9 +168,11 @@
         getJson('data/house/room-inhabitants.json'),
         getJson('data/house/subrooms.json')
       ]);
-      const room=(subData.subrooms||[]).find(x=>x.id===roomId);
-      const rows=(inhData.inhabitants||[]).filter(x=>(x.room_ids||[]).includes(roomId));
-      if(!rows.length||!room)return;
+      const room=(subData.subrooms||[]).find(x=>x.id===roomId||x.route_id===roomId);
+      if(!room)return;
+      const canonicalRoomId=room.id;
+      const rows=(inhData.inhabitants||[]).filter(x=>(x.room_ids||[]).includes(canonicalRoomId));
+      if(!rows.length)return;
 
 
       const main=document.querySelector('main');
@@ -178,7 +180,7 @@
       const section=document.createElement('section');
       section.className='room-inhabitants-panel';
       section.innerHTML='<p class="eyebrow">Inhabitants / cases</p><h2>What lives in this Room</h2><p class="boundary">These are objects viewed from this Room. Centering one keeps this Room around it; it does not promote the object into architecture.</p><div class="room-inhabitant-grid">'+rows.map(x=>{
-        const q=new URLSearchParams({room:room.parent_room_id,inner:roomId,object:x.id});
+        const q=new URLSearchParams({room:room.parent_room_id,inner:canonicalRoomId,object:x.id});
         return '<a class="room-inhabitant-card" href="'+base+'elevator/?'+q.toString()+'"><strong>'+esc(x.label)+'</strong><small>'+esc(x.kind||'object')+'</small><span>Place on the center table →</span></a>';
       }).join('')+'</div>';
       main.appendChild(section);
@@ -198,11 +200,13 @@
         getJson('data/house/room-dossiers.json'),
         getJson('data/house/population-pulse.json')
       ]);
-      const room=(subData.subrooms||[]).find(x=>x.id===roomId);
-      const holding=(holdData.holdings||[]).find(x=>x.room_id===roomId);
-      const dossier=(dossierData.dossiers||[]).find(x=>x.room_id===roomId);
-      const pulse=(pulseData.rooms||pulseData.records||pulseData.population||pulseData.pulses||[]).find?.(x=>x.room_id===roomId);
-      if(!room||!holding||!dossier)return;
+      const room=(subData.subrooms||[]).find(x=>x.id===roomId||x.route_id===roomId);
+      if(!room)return;
+      const canonicalRoomId=room.id;
+      const holding=(holdData.holdings||[]).find(x=>x.room_id===canonicalRoomId);
+      const dossier=(dossierData.dossiers||[]).find(x=>x.room_id===canonicalRoomId);
+      const pulse=(pulseData.rooms||pulseData.records||pulseData.population||pulseData.pulses||[]).find?.(x=>x.room_id===canonicalRoomId);
+      if(!holding||!dossier)return;
 
 
       const titleFor=(id)=>String(id||'').replace(/[-_]+/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
