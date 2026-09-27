@@ -1176,3 +1176,7 @@ Shared implementation: `app/terrain-circle.css`
 - [ ] **VISUAL-TERRAIN-002:** Inspect Trinity, North, Below, Culture, Research Lab and Works for appropriate next placements using the design spec's semantic guardrails.
 - [ ] **VISUAL-TERRAIN-003:** Audit remaining decorative circles and either give them a clear operator/terrain meaning or simplify/remove them.
 - [ ] **VISUAL-TERRAIN-004:** Keep Mountain/Swamp as partial terrain regimes; never equate the full upper/lower fields with Mountain/Swamp.
+
+- [x] **VISUAL-TERRAIN-005:** Integrate shared Swamp terrain into the existing Below Basin rather than duplicating the diagram.
+- [x] **VISUAL-TERRAIN-006:** Add Forge → Door → canonical owner movement visual to Research Lab.
+- [x] **VISUAL-TERRAIN-007:** Review North and explicitly defer a large terrain emblem because it could blur symbolic orientation with empirical/political programme material.
