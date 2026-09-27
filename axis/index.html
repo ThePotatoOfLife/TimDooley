@@ -26,6 +26,21 @@
 .axis-case p{margin:0 0 9px;color:#cbd1c8}.axis-case .axis-route-line{font:400 17px/1.45 var(--site-font-serif);color:#dfe4db}
 .axis-case .axis-links{font-size:11px;color:var(--site-muted)}.axis-case .axis-links a{color:var(--site-green)}
 @media(max-width:760px){.axis-case{grid-template-columns:1fr;gap:5px}}
+
+.axis-field-live{margin:28px 0 34px;padding:26px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
+.axis-field-live>h2{font:400 clamp(30px,4vw,44px)/1.05 var(--site-font-serif);margin:4px 0 8px}
+.axis-field-live>.lead{max-width:850px;color:#cbd1c8;font:400 18px/1.55 var(--site-font-serif)}
+.axis-levels-live{display:grid;gap:7px;margin-top:17px}
+.axis-level-live{display:grid;grid-template-columns:44px minmax(220px,.7fr) minmax(260px,1.3fr);gap:14px;align-items:start;border:1px solid var(--site-line);border-radius:11px;padding:13px 14px;background:var(--site-panel)}
+.axis-level-live .n{font:400 20px var(--site-font-serif);color:var(--site-green)}
+.axis-level-live strong{font:400 18px/1.15 var(--site-font-serif);color:var(--site-gold)}
+.axis-level-live span{display:block;color:var(--site-muted);font-size:10px;line-height:1.45}
+.axis-level-live small{display:block;color:var(--site-faint);font-size:9px;line-height:1.4;margin-top:5px}
+.axis-route-live{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}
+.axis-route-live article{border:1px solid var(--site-line);border-radius:10px;padding:12px;background:rgba(255,255,255,.012)}
+.axis-route-live b{display:block;font:400 16px var(--site-font-serif);color:var(--site-gold);text-transform:capitalize}
+.axis-route-live span{display:block;color:var(--site-muted);font-size:9px;line-height:1.45;margin-top:5px}
+@media(max-width:760px){.axis-level-live,.axis-route-live{grid-template-columns:1fr}.axis-level-live{gap:4px}}
 </style>
 <link rel="stylesheet" href="../app/bidirectional-spiral-field.css?v=20260920c">
 </head>
@@ -37,6 +52,15 @@
 <p class="summary">Inside the larger Potato House, the Living Axis is the THROUGH grammar: one world, one vertical relation, one threshold—and several possible transformations. The Living Axis is the project's clearest way to understand how Plane, Cross, Door, Ladder, Tree, roots, Strife, repair and Tim's ascent belong to one organism rather than a pile of separate symbols.</p>
 <div class="axis-navline"><a href="#gateway">Enter</a><a href="#paths">Four paths</a><a href="#trace">Trace a relation</a><a href="#seed-spirals">Seed &amp; spirals</a><a href="#map">D1–D11 map</a></div>
 </header>
+
+<section class="axis-field-live" id="canonical-vertical-field">
+<p class="eyebrow">Canonical live field</p>
+<h2>The whole climb and descent, from one backend owner</h2>
+<p class="lead">This section is projected directly from the project’s source-to-swamp vertical field. It keeps the Crown, Garden, Gate, Door, World, Tree fork, Roots, Forge and Drain in one sequence instead of scattering them across separate explanations.</p>
+<div class="axis-levels-live" id="axisVerticalLevels"><p class="boundary">Loading the vertical field…</p></div>
+<div class="axis-route-live" id="axisVerticalRoutes"></div>
+</section>
+
 <div id="axis-tts" data-tts-longform data-tts-root=".axis-page" data-tts-id="living-axis-reader" data-tts-label="Living Axis" data-tts-all-label="Whole Axis reader" data-tts-current-label="Current section" data-tts-selection-label="Selection" data-tts-item=".gateway,.axis-section" data-tts-exclude="#axis-tts,.page-nav,.axis-navline,.path-tabs,.deep-links"></div>
 
 <section class="gateway" id="gateway">
@@ -427,4 +451,24 @@
 </script>
 <script src="../app/body-relational-lens.js" data-body-overlay="../data/house/body-relational-overlay.json" data-body-objects="spinal-ladder,csf-river,orientation-house,pineal-door,hermes-caduceus,kundalini-chakra,crown-house-axis,neurovascular-living-wall" data-body-mount="[data-body-lens]"></script><script src="../app/three-center-map.js"></script>
 <script src="../app/bidirectional-spiral-field.js?v=20260920c"></script>
+<script>
+(async function renderCanonicalVerticalField(){
+ const levels=document.getElementById('axisVerticalLevels'),routes=document.getElementById('axisVerticalRoutes');
+ if(!levels||!routes)return;
+ const esc=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+ try{
+  const res=await fetch('../knowledge/core/source-to-swamp-vertical-field.json');if(!res.ok)throw new Error('vertical field unavailable');
+  const data=await res.json();
+  levels.innerHTML=(data.levels||[]).sort((a,b)=>a.vertical_order-b.vertical_order).map(x=>
+   '<article class="axis-level-live"><div class="n">'+esc(String(x.vertical_order).padStart(2,'0'))+'</div><div><strong>'+esc(x.label)+'</strong><span>'+esc(x.project_function||'')+'</span></div><div><span><b>Inhabits:</b> '+esc((x.inhabitants||[]).join(' · '))+'</span>'+(x.boundary?'<small>'+esc(x.boundary)+'</small>':'')+'</div></article>'
+  ).join('');
+  routes.innerHTML=Object.entries(data.routes||{}).map(([name,steps])=>
+   '<article><b>'+esc(name)+'</b><span>'+esc((steps||[]).join(' → '))+'</span></article>'
+  ).join('');
+ }catch(e){
+  levels.innerHTML='<p class="boundary">The canonical vertical field could not be loaded.</p>';
+  routes.innerHTML='';
+ }
+})();
+</script>
 </body></html>
