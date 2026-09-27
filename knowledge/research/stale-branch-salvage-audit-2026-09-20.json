@@ -1,10 +1,10 @@
 {
   "id": "stale-branch-salvage-audit-2026-09-20",
-  "updated": "2026-09-20",
+  "updated": "2026-09-27",
   "status": "active maintenance and salvage audit",
   "baseline_main": {
-    "sha": "32644f1038ed3a9c8535d27528b900327ee4bee7",
-    "note": "Main head observed during the audit; repository is highly active, so ahead/behind counts are a dated snapshot."
+    "sha": "9b50d2fae4bc06fa4f4980b1ad51b46e3ebded5e",
+    "note": "Current integration head after the 2026-09-27 content-salvage pass; ahead/behind counts below remain historical snapshots unless separately refreshed."
   },
   "purpose": "Separate genuinely missing work from stale branch noise, prevent wholesale merges of branches far behind main, and route unique value into current canonical owners.",
   "rules": [
@@ -146,8 +146,8 @@
   ],
   "newly_identified_todos": [
     {
-      "priority": "critical",
-      "task": "Refresh project-synthesis with Sep-20 formal-grammar, body-discovery and live-Room integration waves."
+      "priority": "completed",
+      "task": "COMPLETED BY LATER MAIN: project-synthesis is now v3.8.0 dated 2026-09-27 and already includes formal grammar, body/House relations, shared tests and current Room composition."
     },
     {
       "priority": "critical",
@@ -178,8 +178,8 @@
       "task": "Audit Sep-19 public-surface authority v2 deltas against current House public-route authority."
     },
     {
-      "priority": "medium-high",
-      "task": "Audit branch-only formation/body assets and merge unique information into existing canonical owners rather than recreate duplicate files."
+      "priority": "in-progress",
+      "task": "IN PROGRESS: branch-only formation/body assets are being merged selectively into current canonical owners; 2026-09-27 restored source, economy, body, science and Below concepts without recreating duplicate atlases."
     },
     {
       "priority": "medium",
@@ -195,5 +195,27 @@
     "combined_status_entries": 0,
     "pull_request_workflow_runs_visible": 0,
     "interpretation": "No status entries or PR-triggered workflow runs were returned for this direct main commit; this is not evidence that the full quality chain passed."
-  }
+  },
+  "salvage_log": [
+    {
+      "date": "2026-09-27",
+      "source_branch": "content/deepen-formation-culture-below-20260918",
+      "disposition": "selective public-reader salvage",
+      "recovered": [
+        "Source authority: provenance-root independence, derivative-copy counting and correction/revision state",
+        "Economy: balance-sheet, fiscal-capacity, dependency-graph and shock-propagation explanatory lenses",
+        "Life & Body: whole-body coupled-control-loop explanation",
+        "Science: claim-maturity, model-failure and uncertainty-separation discipline",
+        "Below: bounded case-bundle grammar and reproduction-mechanism analysis"
+      ],
+      "current_owners": [
+        "context/source-authority/index.html",
+        "economy/index.html",
+        "life-body/index.html",
+        "science/index.html",
+        "below/index.html"
+      ],
+      "rule": "Recovered only concepts still absent from current public readers; newer current-main interfaces and examples were retained."
+    }
+  ]
 }
