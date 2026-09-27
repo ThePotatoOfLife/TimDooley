@@ -145,18 +145,26 @@ box-shadow:inset 0 0 0 10px rgba(255,255,255,.015),inset 0 -25px 55px rgba(0,0,0
 </section>
 
 <section id="relation-rooms"><p class="eyebrow">Living case rooms</p><h2>Some relations need chronology before they need a label</h2><p>DIM and TXT now sit in the Below Basin as relation rooms rather than loose names. They are useful test cases for the route <strong>public interaction → archive → role classification → mythic reuse → possible repair</strong>. The rooms preserve disputed claims as disputed, keep fiction separate from documentary history and ask whether a given episode behaves more like Dog pursuit, Farmer infrastructure, a hybrid, or neither.</p><div class="cards"><div class="card"><strong>DIM</strong><span>7 July 2026 anchor · Dimmus Maximus story layer · Dog/Farmer crosswalk · satire and threshold imagery.</span><p><a href="../shadow-farm/dim/">Open DIM →</a></p></div><div class="card"><strong>TXT</strong><span>2024 Shadow Games · 2026 interaction chronology · current public presence · Dog/Farmer/classifier questions.</span><p><a href="../shadow-farm/txt/">Open TXT →</a></p></div><div class="card"><strong>Shared dossier</strong><span>Machine-readable chronology, evidence rules, analytical lenses and recovery queue.</span><p><a href="../data/swamp/dim-txt-relational-dossier.json">Open dossier →</a></p></div></div><p class="boundary">A relation room is not a guilt room. It is a place to keep time, source class, role, interpretation and uncertainty from collapsing into one another.</p></section></main><script>
-(()=>{const bar=document.getElementById('basinModes'),panel=document.getElementById('basinModePanel'),map=document.querySelector('.basin-map');if(!bar||!panel||!map)return;
-const copy={
-all:['Whole basin','Read the lower circle as one connected system: World interfaces, culture, Sektur, Farm, currents, Swamp, Mud/Ash, Roots, Forge and Return.','Changing view changes the question, not the underlying evidence.'],
-culture:['Culture','Follow how an event becomes language, roles, status, memory, boundary and a reproducible subculture or Sektur.','Test: can later participants inherit the pattern without witnessing the original event?'],
-attention:['Attention / Farm','Follow observation, clipping, archiving, commentary and redistribution as a repeatable production loop.','Test: does each new reaction lower the cost of making the next round of content?'],
-money:['Money','Follow where traffic, views and recurring attention become ads, subscriptions, tips, donations or platform value.','Test: who captures value, and which labor is paid, unpaid or institutionally funded?'],
-power:['Power / Classification','Follow labels from forums and media into watchdog methodology, platform response, employers, donors, politics, courts or law enforcement.','Test: who applied the label, under what authority, and what consequence actually followed?'],
-harm:['Harm','Follow where attention turns into harassment, doxxing, threats, swatting, material loss or physical risk.','Test: what harm is documented, and what causal level is actually established?'],
-evidence:['Evidence','Move from Mud and archive residue back into Roots/provenance and through the Forge before anything is promoted as knowledge.','Test: does the claim survive source recovery, contradiction and status separation?'],
-repair:['Repair','Trace the exit route from Swamp and Mud through provenance, Forge, redesign, correction, boundaries and World return.','Test: did recurrence decrease and can conflict stop being the primary identity of the relation?']
-};
-bar.addEventListener('click',e=>{const b=e.target.closest('button[data-basin-mode]');if(!b)return;const mode=b.dataset.basinMode;bar.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));map.dataset.mode=mode;map.querySelectorAll('.basin-node').forEach(n=>{const tags=(n.dataset.basinTags||'').split(/\s+/);n.classList.toggle('is-hot',mode==='all'||tags.includes(mode));});const d=copy[mode]||copy.all;panel.innerHTML='<b>'+d[0]+'</b><span>'+d[1]+'</span><small>'+d[2]+'</small>';});
+(async()=>{const bar=document.getElementById('basinModes'),panel=document.getElementById('basinModePanel'),map=document.querySelector('.basin-map'),caseRoot=document.querySelector('.case-paths');if(!bar||!panel||!map)return;
+const esc=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+let modes=[{id:'all',label:'Whole basin',question:'Read the lower circle as one connected system.',emphasis:['World interfaces','culture','Sektur','Farm','Swamp','Mud/Ash','Roots','Forge','Return'],test:'Changing view changes the question, not the underlying evidence.'}],cases=[];
+try{
+ const res=await fetch('../data/house/below-basin-pathways.json');if(!res.ok)throw new Error('pathway data unavailable');
+ const data=await res.json();modes=modes.concat(data.modes||[]);cases=data.case_paths||[];
+ bar.innerHTML=modes.map((m,i)=>'<button type="button" data-basin-mode="'+esc(m.id)+'" aria-pressed="'+String(i===0)+'">'+esc(m.label)+'</button>').join('');
+ if(caseRoot&&cases.length)caseRoot.innerHTML=cases.map(x=>'<article class="case-path"><h3>'+esc(x.label)+'</h3><p>'+esc((x.route||[]).join(' → '))+'</p><span class="mini">'+esc(x.summary||x.question||'')+'</span></article>').join('');
+}catch(e){}
+function render(mode){
+ const d=modes.find(x=>x.id===mode)||modes[0];
+ bar.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.basinMode===d.id)));
+ map.dataset.mode=d.id;
+ map.querySelectorAll('.basin-node').forEach(n=>{const tags=(n.dataset.basinTags||'').split(/\s+/);n.classList.toggle('is-hot',d.id==='all'||tags.includes(d.id));});
+ const route=d.route?.length?'<span><b>Route:</b> '+esc(d.route.join(' → '))+'</span>':'<span>'+esc(d.question||'')+'</span>';
+ const emphasis=d.emphasis?.length?'<span><b>Watch:</b> '+esc(d.emphasis.join(' · '))+'</span>':'';
+ panel.innerHTML='<b>'+esc(d.label)+'</b>'+route+emphasis+'<small>'+esc(d.test||'Changing view changes the question, not the underlying evidence.')+'</small>';
+}
+bar.addEventListener('click',e=>{const b=e.target.closest('button[data-basin-mode]');if(b)render(b.dataset.basinMode)});
+render('all');
 })();
 </script><script src="../app/tts-drawer.js"></script><script src="../app/house-journey.js"></script><script src="../app/bidirectional-spiral-field.js?v=20260920c"></script>
 </body></html>
