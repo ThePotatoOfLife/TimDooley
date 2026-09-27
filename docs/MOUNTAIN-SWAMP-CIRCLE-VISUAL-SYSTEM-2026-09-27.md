@@ -57,9 +57,9 @@ Keep Door / Cross / Axis visually legible above both terrains. The project shoul
 
 - [ ] VIS-TERRAIN-001 — `religion/trinity/`: decide whether the whole-circle Trinity diagram benefits from terrain or whether it should remain abstract theology.
 - [ ] VIS-TERRAIN-002 — `north/`: use Mountain sparingly around orientation/summit material; do not paint geopolitical North as sacred terrain.
-- [ ] VIS-TERRAIN-003 — `below/`: add a contained Swamp/Forge/Root diagram rather than putting Swamp texture across the entire page.
+- [x] VIS-TERRAIN-003 — `below/`: add a contained Swamp/Forge/Root diagram rather than putting Swamp texture across the entire page.
 - [ ] VIS-TERRAIN-004 — `context/culture/`: consider a small Farm→Swamp recurrence diagram only where the mechanism is being taught.
-- [ ] VIS-TERRAIN-005 — `research-lab/`: consider a stripped technical version showing unresolved material moving from Swamp/residue through Forge to Door.
+- [x] VIS-TERRAIN-005 — `research-lab/`: consider a stripped technical version showing unresolved material moving from Swamp/residue through Forge to Door.
 - [ ] VIS-TERRAIN-006 — `works/`: allow more painterly variants for art/game/story sections while keeping the canonical geometry recognizable.
 - [ ] VIS-TERRAIN-007 — audit all remaining circular UI for circles that are purely decorative; either give them meaning or simplify/remove them.
 - [ ] VIS-TERRAIN-008 — replace any one-off Mountain/Swamp CSS with the shared component rather than duplicating shapes.
@@ -81,3 +81,7 @@ The next visual overhaul should not be "more gradients everywhere." It should ma
 - **Fruit/Seed:** small high-contrast output / return marks.
 
 Use these as compositional cues, not literal clip-art. The visual system should make the House feel inhabited while still letting prose and evidence remain primary.
+
+## North review — restraint decision
+
+Reviewed 2026-09-27. Do **not** add the full painted terrain seal to the current North page. Its symbolic-orientation material sits directly beside empirical geography and programme design; a large Mountain emblem risks visually sanctifying the political/geographic programme. Keep Mountain language in prose and route readers to Axis/House for the painted cosmology unless a future North subsection is explicitly isolated as symbolic-only.
