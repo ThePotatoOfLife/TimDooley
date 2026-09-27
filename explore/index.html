@@ -20,6 +20,17 @@
 .explore-journeys{max-width:1040px;margin:0 auto 34px}.explore-journeys h2{font:400 28px Georgia,serif;margin:0 0 12px}
 .journey-row{display:grid;grid-template-columns:170px minmax(0,1fr);gap:22px;padding:15px 0;border-top:1px solid rgba(127,127,127,.2)}.journey-row b{color:#b8dc82}.journey-row p{margin:0;color:#c8cec4}.journey-row a{color:#b8dc82}
 @media(max-width:700px){.journey-row{grid-template-columns:1fr;gap:3px}}
+.explore-shelves{max-width:1040px;margin:0 auto 38px}
+.explore-shelves>h2{font:400 clamp(28px,4vw,42px)/1.05 Georgia,serif;margin:0 0 10px}
+.explore-shelves>.lead{font:400 18px/1.55 Georgia,serif;color:#cdd3c8;max-width:850px}
+.explore-shelf{margin-top:20px}
+.explore-shelf>h3{font:600 13px/1.2 system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#b8dc82;margin:0 0 8px}
+.explore-picks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.explore-pick{display:block;border:1px solid rgba(127,127,127,.25);padding:15px;text-decoration:none;color:inherit;background:rgba(255,255,255,.018)}
+.explore-pick:hover,.explore-pick:focus-visible{border-color:rgba(184,220,130,.75);background:rgba(184,220,130,.045)}
+.explore-pick strong{display:block;color:#e8eedf;margin-bottom:6px}
+.explore-pick span{display:block;font-size:.9rem;line-height:1.45;opacity:.78}
+.explore-pick small{display:block;margin-top:8px;color:#b8dc82;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -66,10 +77,45 @@
 <div class="journey-row"><b>Evidence</b><p><a href="tim-dooley/public-witness/">public witness</a> → <a href="context/source-authority/">source authority</a> → <a href="history/">anti-backdating rules</a> → <a href="tim-dooley/story/raw/">Raw Story recovery</a>.</p></div>
 </section>
 
+<section class="explore-shelves" aria-labelledby="open-something-title">
+<h2 id="open-something-title">Open something substantial</h2>
+<p class="lead">If you do not know what to search for yet, these are high-signal doors into the project. Each one opens a real reader, tool, archive or dataset rather than another explanation of the filing system.</p>
+
+<div class="explore-shelf">
+<h3>Tim · life · public record</h3>
+<div class="explore-picks">
+<a class="explore-pick" href="tim-dooley/"><strong>Tim Dooley portrait</strong><span>The long-form front door: identities, work, beliefs, claims, contradictions and the routes into Story.</span><small>Portrait</small></a>
+<a class="explore-pick" href="timeline/"><strong>Long Timeline</strong><span>Follow the dated river instead of a static biography: life events, project development, sources and later interpretation.</span><small>Chronology</small></a>
+<a class="explore-pick" href="tim-dooley/100000-hours/"><strong>100,000 Hours</strong><span>The public-presence case: livestream duration, counting models, platform evidence and what can and cannot be established.</span><small>Public record</small></a>
+<a class="explore-pick" href="tim-dooley/public-witness/"><strong>Public Witness</strong><span>Read the changing language in dated public records without treating repetition as independent proof.</span><small>Evidence reader</small></a>
+</div>
+</div>
+
+<div class="explore-shelf">
+<h3>Books · religion · models · world</h3>
+<div class="explore-picks">
+<a class="explore-pick" href="great-book/"><strong>Great Book of Potato</strong><span>Open the indexed web edition and move through the project’s large creative and philosophical primary text.</span><small>Book</small></a>
+<a class="explore-pick" href="traditions/comparative-cosmology/"><strong>Comparative Cosmology</strong><span>Compare Yggdrasil, Christianity, Jewish mysticism, Buddhism, Daoism and Potatoism by function while preserving their differences.</span><small>Comparative reader</small></a>
+<a class="explore-pick" href="science/"><strong>Science &amp; formal models</strong><span>See which ideas are established science, analogy, speculative models or project metaphors—and where they can fail.</span><small>Models</small></a>
+<a class="explore-pick" href="world-map/"><strong>World Map</strong><span>Explore countries, layers, systems, places and spatial context on the project’s interactive atlas.</span><small>Interactive atlas</small></a>
+</div>
+</div>
+
+<div class="explore-shelf">
+<h3>Live tools · characters · culture</h3>
+<div class="explore-picks">
+<a class="explore-pick" href="news/"><strong>Current World</strong><span>Read fresh outside reporting with the project’s durable context kept separate from the news itself.</span><small>Live reader</small></a>
+<a class="explore-pick" href="rooms/potatoverse-canon/beings/cia/"><strong>Character Archive</strong><span>Characters, Incidents &amp; Associations: recurring figures, scenes, relations and source-bounded dossier archaeology.</span><small>Potatoverse archive</small></a>
+<a class="explore-pick" href="rooms/potatoverse-canon/beings/cia/bank/"><strong>World Spiritual Bank</strong><span>The fictional North Root Ledger and symbolic accounting system attached to the Character Archive.</span><small>Fictional ledger</small></a>
+<a class="explore-pick" href="tools/tts/"><strong>Read Aloud / TTS</strong><span>Use the listening tools for long pages instead of treating the archive as something that must be read only by scrolling.</span><small>Utility</small></a>
+</div>
+</div>
+</section>
+
 <section class="grid research-secondary" id="archive-explorer" aria-label="Interactive archive explorer"><aside class="archive-nav"><div class="navcard"><button class="rootbtn" id="rootbtn">🥔 ARCHIVE ROOT</button><div id="branches"><div class="status">Loading relationship map…</div></div></div></aside><article class="reader" id="reader"><noscript><h2>Tim Dooley and the Potato of Life</h2><p><a href="tim-dooley/">Tim Dooley</a> · <a href="timeline/">Timeline</a> · <a href="science/">Science</a> · <a href="traditions/bible/">Religion</a> · <a href="context/source-authority/">Sources</a> · <a href="index-a-z/">A–Z</a></p></noscript><div class="status">Growing the roots…</div></article></section>
   </main>
 
   <footer class="footer"><div class="shell"><a href="./">Home</a> · <a href="index-a-z/">A–Z</a> · <a href="faq/">FAQ</a> · <a href="context/source-authority/">Sources</a>.</div></footer>
   <script src="app/app.js" defer></script><script src="app/reader-guide.js" defer></script>
-<script src="../app/site-tts.js" defer></script></body>
+<script src="app/site-tts.js" defer></script></body>
 </html>
