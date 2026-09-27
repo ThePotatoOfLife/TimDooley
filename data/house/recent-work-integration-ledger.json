@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updated": "2026-09-20",
+  "updated": "2026-09-27",
   "authority": "recent-work-integration-ledger",
   "purpose": "Track substantial recent work through canonical ownership, House placement, public exposure and validation so researched material does not remain half-integrated.",
   "rule": "A substantial workstream is integrated when it has a durable canonical owner, appropriate Room/Dwelling placement, a reader/discovery route where warranted, and a regression or validation path. Not every dataset needs a new public page or House inhabitant.",
@@ -205,24 +205,26 @@
     },
     {
       "id": "navigation-consolidation",
-      "title": "Project navigation consolidation / compass",
+      "title": "Universal quick access / navigation consolidation",
       "canonical_owners": [
-        "data/house/public-surfaces.json",
-        "app/project-compass.js",
-        "docs/PROJECT-NAVIGATION-FOCUS-TODO-2026-09-20.md"
+        "data/house/site-access.json",
+        "app/site-access.js",
+        "data/house/public-surfaces.json"
       ],
       "room_ids": [],
       "public_surface_ids": [
         "house"
       ],
       "routes": [
-        "/house/"
+        "/house/",
+        "/find/"
       ],
       "validation": [
-        "scripts/validate_house_harmony.py"
+        "scripts/validate_site_access.py",
+        "scripts/validate_public_navigation.py"
       ],
-      "status": "active-refinement",
-      "note": "Visible / semi-visible / invisible hierarchy is being applied page by page rather than by adding another global menu."
+      "status": "integrated-with-active-audit",
+      "note": "Project Compass is retired. Universal Quick Access/site-access owns global name-first navigation; local page navigation remains contextual."
     },
     {
       "id": "science-body-deepening",
@@ -249,6 +251,40 @@
         "scripts/validate_body_discovery.py"
       ],
       "status": "integrated"
+    },
+    {
+      "id": "legacy-knowledge-salvage-20260927",
+      "title": "Legacy branch knowledge salvage into current public readers",
+      "canonical_owners": [
+        "knowledge/research/stale-branch-salvage-audit-2026-09-20.json"
+      ],
+      "room_ids": [
+        "provenance-evidence",
+        "economy-finance",
+        "neurobiology",
+        "model-testing",
+        "information-ecology"
+      ],
+      "public_surface_ids": [
+        "sources",
+        "economy",
+        "life-body",
+        "science",
+        "below"
+      ],
+      "routes": [
+        "/context/source-authority/",
+        "/economy/",
+        "/life-body/",
+        "/science/",
+        "/below/"
+      ],
+      "validation": [
+        "scripts/validate_reader_richness.py",
+        "scripts/run_quality_group.py"
+      ],
+      "status": "active-integration",
+      "note": "Selective salvage only: unique explanatory material is folded into current owners while obsolete UI, route and duplicate-atlas structure stays retired."
     }
   ]
 }
