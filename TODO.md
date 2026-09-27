@@ -1153,3 +1153,15 @@ The previous `inhabited` milestone only eliminated corridor-only shells. It is *
 - [x] Internet Platforms concrete specimen pass: 107k working broadcaster-hour estimate, YouTube watch-hour/view snapshots and 766/848/~900h markers separated as incompatible metrics.
 - [x] Subculture concrete specimen pass: NXIVM coercive-control mechanisms contrasted with AO3/OTW fan-owned institutionalization using dated primary/official sources.
 - [ ] Begin **Room population wave 2**: replace remaining high-level paragraphs inside each Room with deeper source objects, diagrams, tables, artifact excerpts and counterexamples; prioritize sections whose claims are still supported only by summary prose.
+
+
+### Page content completeness audit — 2026-09-27
+
+Canonical editorial queue: `docs/PAGE-CONTENT-COMPLETENESS-AUDIT-2026-09-27.md`
+
+This is the current page-by-page substance audit for public surfaces, all ten Dwellings and all 38 nested Rooms. Use it before creating new navigation, layout or ontology work. Each task records what the page already teaches, what a reader still cannot learn there, and the concrete objects/cases/sources/mechanisms needed to close that gap.
+
+- [ ] **CONTENT-AUDIT-001 · Wave A:** repair the thinnest public readers first — Politics, Story, Timeline, Inhabitants & Cases, Internet & Platforms, Games & Simulations, Memory & Recovery, Neurobiology, Systems & Dynamics, Infrastructure/Geography.
+- [ ] **CONTENT-AUDIT-002 · Wave B:** project strong backend knowledge into public pages rather than leaving it trapped in registries/atlases.
+- [ ] **CONTENT-AUDIT-003 · Wave C:** increase source density, first-attestation precision, contradiction handling, current-source freshness and recovered-artifact visibility.
+- [ ] **CONTENT-AUDIT-004 · Completion rule:** do not close a page because it is long; close it only when it directly teaches its subject using inspectable objects, mechanisms, provenance, concrete cases, boundaries and unresolved questions.
