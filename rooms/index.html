@@ -55,6 +55,25 @@
 .featured-backend-note{margin-top:10px;color:var(--site-faint);font-size:9px}
 @media(max-width:980px){.featured-object-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:650px){.featured-object-grid{grid-template-columns:1fr}}
+
+.room-inhabitants-live{margin:30px 0 40px;padding:28px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
+.room-inhabitants-live>h2{font:400 clamp(30px,4vw,44px)/1.06 var(--site-font-serif);color:var(--site-gold);margin:4px 0 8px}
+.room-inhabitants-live>.lead{max-width:850px;color:#cbd1c8;font:400 18px/1.55 var(--site-font-serif)}
+.inhabitant-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:15px 0}
+.inhabitant-tools input{min-width:min(100%,300px);flex:1;border:1px solid var(--site-line);border-radius:999px;background:var(--site-panel);color:inherit;padding:9px 12px}
+.inhabitant-kinds{display:flex;gap:5px;flex-wrap:wrap}
+.inhabitant-kind{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:6px 8px;font-size:9px;cursor:pointer}
+.inhabitant-kind[aria-pressed="true"],.inhabitant-kind:hover{color:var(--site-green);border-color:#647b5d}
+.inhabitant-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.inhabitant-card{display:block;border:1px solid var(--site-line);border-radius:11px;padding:13px;text-decoration:none;color:inherit;background:var(--site-panel);min-height:142px}
+.inhabitant-card:hover,.inhabitant-card:focus-visible{outline:none;border-color:#647b5d;background:#101710}
+.inhabitant-card em{display:block;font-style:normal;color:var(--site-green);font-size:8px;letter-spacing:.07em;text-transform:uppercase}
+.inhabitant-card strong{display:block;font:400 17px/1.1 var(--site-font-serif);color:#dce3d8;margin:5px 0 6px}
+.inhabitant-card span{display:block;color:var(--site-muted);font-size:9px;line-height:1.42}
+.inhabitant-card small{display:block;color:var(--site-faint);font-size:8px;line-height:1.35;margin-top:7px}
+.inhabitant-count{margin-top:10px;color:var(--site-faint);font-size:9px}
+@media(max-width:900px){.inhabitant-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.inhabitant-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body><main class="page page--standard rooms-page" data-reader-surface="rooms">
@@ -68,6 +87,15 @@
 <div class="featured-tabs" id="featuredDwellingTabs" aria-label="Choose a Dwelling shelf"><span class="boundary">Loading curated shelves…</span></div>
 <div class="featured-shelf" id="featuredDwellingShelf"><p class="boundary">Loading featured objects…</p></div>
 <p class="featured-backend-note">Projected from <code>data/house/dwelling-featured-objects.json</code>. The backend remains the owner; this page is the exhibit.</p>
+</section>
+
+<section class="room-inhabitants-live" id="room-inhabitants-live" aria-labelledby="room-inhabitants-title">
+<p class="eyebrow">The House has inhabitants</p>
+<h2 id="room-inhabitants-title">People, platforms, texts, institutions, processes and objects already live here</h2>
+<p class="lead">This is projected from the shared inhabitant registry. Search it, filter it, and open an object directly. One inhabitant can belong to several Rooms without becoming several different things.</p>
+<div class="inhabitant-tools"><input id="inhabitantSearch" type="search" placeholder="Find an inhabitant, object, institution, text, process…" aria-label="Search House inhabitants"><div class="inhabitant-kinds" id="inhabitantKinds"></div></div>
+<div class="inhabitant-grid" id="inhabitantGrid"><p class="boundary">Loading House inhabitants…</p></div>
+<div class="inhabitant-count" id="inhabitantCount"></div>
 </section>
 
 <section class="inhabited-dwellings" id="inhabited-dwellings">
@@ -268,4 +296,30 @@
  }catch(e){grid.innerHTML='<p class="boundary">Placement atlas could not be loaded.</p>'}
 })();
 </script>
-<script src="../app/house-journey.js"></script><script src="../app/site-tts.js" defer></script></body></html>
+<script src="../app/house-journey.js"></script><script src="../app/site-tts.js" defer></script><script>
+(async function renderRoomInhabitants(){
+ const grid=document.getElementById('inhabitantGrid'),kinds=document.getElementById('inhabitantKinds'),search=document.getElementById('inhabitantSearch'),count=document.getElementById('inhabitantCount');
+ if(!grid||!kinds||!search)return;
+ const esc=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+ try{
+  const res=await fetch('../data/house/room-inhabitants.json');if(!res.ok)throw new Error('inhabitants unavailable');
+  const data=await res.json(),rows=data.inhabitants||[];
+  const kindCounts={};rows.forEach(x=>kindCounts[x.kind]=(kindCounts[x.kind]||0)+1);
+  const topKinds=Object.entries(kindCounts).sort((a,b)=>b[1]-a[1]).slice(0,10).map(x=>x[0]);
+  let active='all',q='';
+  kinds.innerHTML='<button class="inhabitant-kind" type="button" data-kind="all" aria-pressed="true">All</button>'+topKinds.map(k=>'<button class="inhabitant-kind" type="button" data-kind="'+esc(k)+'" aria-pressed="false">'+esc(k.replaceAll('-',' '))+'</button>').join('');
+  const route=r=>{if(!r)return '#';const x=String(r);return x.startsWith('/')?'..'+x:'../'+x.replace(/^\.\//,'')};
+  function draw(){
+    const needle=q.trim().toLowerCase();
+    const out=rows.filter(x=>(active==='all'||x.kind===active)&&(!needle||[x.label,x.kind,x.summary,(x.room_ids||[]).join(' ')].join(' ').toLowerCase().includes(needle))).slice(0,32);
+    grid.innerHTML=out.map(x=>'<a class="inhabitant-card" href="'+esc(route(x.route))+'"><em>'+esc((x.kind||'inhabitant').replaceAll('-',' '))+'</em><strong>'+esc(x.label||x.id)+'</strong><span>'+esc(x.summary||'')+'</span><small>'+esc((x.room_ids||[]).map(r=>r.replaceAll('-',' ')).join(' · '))+'</small></a>').join('')||'<p class="boundary">No inhabitants match this view.</p>';
+    if(count)count.textContent=out.length+' shown · '+rows.length+' registered inhabitants total';
+    kinds.querySelectorAll('[data-kind]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.kind===active)));
+  }
+  kinds.addEventListener('click',e=>{const b=e.target.closest('[data-kind]');if(!b)return;active=b.dataset.kind;draw()});
+  search.addEventListener('input',()=>{q=search.value;draw()});
+  draw();
+ }catch(e){grid.innerHTML='<p class="boundary">The inhabitant registry could not be loaded.</p>'}
+})();
+</script>
+</body></html>
