@@ -92,12 +92,48 @@
 .house-walk-row b{font:400 18px var(--site-font-serif);color:var(--site-green)}
 .house-walk-row p{margin:0 0 7px;color:#cbd1c8}.house-walk-row a{color:var(--site-green);font-size:11px}
 @media(max-width:760px){.house-walk-row{grid-template-columns:1fr;gap:4px}}
+
+.living-house{margin:6px 0 32px;padding:22px 0 28px;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
+.living-house-intro{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(320px,1.28fr);gap:28px;align-items:start}
+.living-house-intro h2{font:400 clamp(36px,5vw,58px)/.98 var(--site-font-serif);letter-spacing:-.04em;margin:2px 0 0}
+.living-house-intro p{font:400 17px/1.62 var(--site-font-serif);color:#d3d9cf;margin:0}
+.living-world{display:grid;gap:8px;margin-top:20px}
+.living-zone{display:grid;grid-template-columns:130px minmax(220px,.72fr) minmax(280px,1.28fr);gap:16px;align-items:start;border:1px solid var(--site-line);border-radius:13px;padding:15px;background:var(--site-panel)}
+.living-zone em{font-style:normal;color:var(--site-green);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.living-zone strong{font:400 21px/1.1 var(--site-font-serif);color:var(--site-gold)}
+.living-zone span{color:var(--site-muted);font-size:11px;line-height:1.48}
+.living-trees{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:12px}
+.living-tree{border:1px solid var(--site-line);border-radius:12px;padding:15px;background:rgba(255,255,255,.012)}
+.living-tree h3{font:400 22px var(--site-font-serif);margin:0 0 6px}
+.living-tree p{color:var(--site-muted);font-size:11px;line-height:1.48;margin:0}
+.living-tree .route{display:block;margin-top:9px;color:#cfd8cb;font:400 14px/1.45 var(--site-font-serif)}
+.living-house-note{margin-top:12px;color:var(--site-muted);font-size:11px;line-height:1.5}
+@media(max-width:760px){.living-house-intro,.living-zone,.living-trees{grid-template-columns:1fr}.living-zone{gap:5px}}
 </style>
 <link rel="stylesheet" href="../app/bidirectional-spiral-field.css?v=20260920c">
 </head>
 <body class="house-depth-overview"><main class="page page--reading">
 <p class="topology-note"><a href="../elevator/">Enter the House from the Door / Axis Elevator →</a></p><nav class="page-nav" aria-label="House structure"><a href="../rooms/">Rooms</a><a href="../axis/">Living Axis</a></nav>
 <header class="page-header"><p class="eyebrow">The larger structure</p><h1>POTATO<br>HOUSE</h1><p class="summary">The House is the project’s organizing model. Start with the overview; deeper structure is optional. The Living Axis explains transformation, while the House explains belonging, relation, provenance and public views.</p><div class="depth-switcher" id="houseDepthSwitcher" aria-label="House reading depth"><button type="button" data-house-depth="overview" aria-pressed="true">Overview</button><button type="button" data-house-depth="structure" aria-pressed="false">Structure</button><button type="button" data-house-depth="research" aria-pressed="false">Research</button></div><p class="depth-explain" id="houseDepthExplain">Overview shows the minimum structure needed to understand the House.</p></header>
+
+<section class="living-house" id="living-house" aria-labelledby="living-house-title">
+<div class="living-house-intro">
+<div><p class="eyebrow">Enter before you diagram it</p><h2 id="living-house-title">The House is a place to inhabit</h2></div>
+<div><p>The upper end of the House is not a menu. It is the project’s source-facing image: Garden, Father’s House, Throne/Seat, Crown, river, Tree of Life and cultivated belonging. From there the Door, Ladder and Axis pass through the middle into the World, where bodies, institutions, culture, work and consequences become visible. Beneath the World are roots, memory, Ash, Forge, Swamp and Drain. The point of the architecture is movement between these conditions—not merely classification.</p></div>
+</div>
+<div class="living-world">
+<div class="living-zone"><em>Crown</em><strong>Mountain · North of North · canopy</strong><span>The far source-facing orientation: fruit, transmission, perspective and the outer crown beyond the Father-center.</span></div>
+<div class="living-zone"><em>House / Garden</em><strong>Father · Throne · Rooms · River · Tree of Life</strong><span>The cultivated center of belonging. Different rooms remain different while sharing one House; the Garden adds growth, work, nourishment and responsibility.</span></div>
+<div class="living-zone"><em>Gate / Door</em><strong>Needle · Heaven’s Gate · Mandorla · Ladder · Axis</strong><span>Threshold and relation. The Door is where fields genuinely overlap; the Ladder and Axis describe movement and continuity through that relation.</span></div>
+<div class="living-zone"><em>World</em><strong>Earth · body · history · culture · institutions</strong><span>The inhabited middle where claims become observable consequences. Countries, economies, texts, bodies, communities and Works live here.</span></div>
+<div class="living-zone"><em>Below</em><strong>Roots · Ash · Soil · Forge · Swamp · Drain</strong><span>What is buried, unresolved, remembered, tested or recirculating. Below is not simply evil: it also holds provenance, root causes and the raw material of repair.</span></div>
+</div>
+<div class="living-trees">
+<article class="living-tree"><p class="eyebrow">Generative tree</p><h3>Tree of Life</h3><p>Living roots rise through Door and Ladder into growth, Garden and Fruit, then return as Seed, teaching, nourishment, service or another capacity in the World.</p><span class="route">Living Root → Door → Spiral/Ladder → Tree of Life → Garden → Fruit → Seed → Return</span></article>
+<article class="living-tree"><p class="eyebrow">Shadow tree</p><h3>Tree of Strife</h3><p>Unresolved events can harden into Ash and Roots of Strife, become repeating conflict in the World and feed wider Swamp/Drain recurrence until evidence, exit or repair interrupts the reproduction.</p><span class="route">Unresolved event → Ash → Roots of Strife → Tree of Strife → Wide Road → Swamp → Drain</span></article>
+</div>
+<p class="living-house-note">These are project symbols and comparative structures, not a claim that Genesis, John, Yggdrasil, anatomy and the Potato House are literally the same system. The deeper sections below keep those distinctions explicit.</p>
+</section>
 
 <section class="three-center-section" id="three-center-system">
 <p class="eyebrow">Three typed centers</p>
