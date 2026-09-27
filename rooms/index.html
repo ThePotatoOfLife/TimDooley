@@ -36,14 +36,39 @@
 .room-walk h2{font:400 clamp(28px,3.8vw,40px)/1.08 var(--site-font-serif);color:var(--site-gold);margin:4px 0 10px}
 .walk-steps{display:grid;gap:0;border-top:1px solid var(--site-line);margin-top:15px}.walk-step{display:grid;grid-template-columns:70px minmax(0,1fr);gap:20px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.055)}.walk-step b{color:var(--site-green);font:400 18px var(--site-font-serif)}.walk-step p{margin:0;color:#cbd1c8}.walk-step a{color:var(--site-green)}
 @media(max-width:760px){.dwelling-population article{grid-template-columns:1fr;gap:8px}.walk-step{grid-template-columns:44px 1fr}}
+
+.featured-dwellings{margin:26px 0 38px;padding:26px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
+.featured-dwellings>h2{font:400 clamp(30px,4vw,44px)/1.06 var(--site-font-serif);color:var(--site-gold);margin:4px 0 8px}
+.featured-dwellings>.lead{max-width:860px;color:#cbd1c8;font:400 19px/1.55 var(--site-font-serif)}
+.featured-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0}
+.featured-tab{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:7px 10px;font:700 9px var(--site-font-sans);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.featured-tab[aria-pressed="true"],.featured-tab:hover{color:var(--site-green);border-color:#647b5d;background:#101710}
+.featured-shelf{border:1px solid var(--site-line);border-radius:14px;padding:18px;background:var(--site-panel)}
+.featured-shelf h3{font:400 clamp(24px,3vw,32px)/1.05 var(--site-font-serif);margin:0 0 5px;color:var(--site-gold)}
+.featured-shelf>p{color:var(--site-muted);margin:0 0 14px;max-width:760px}
+.featured-object-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.featured-object{display:block;border:1px solid var(--site-line);border-radius:10px;padding:12px;text-decoration:none;color:inherit;background:rgba(255,255,255,.012);min-height:136px}
+.featured-object:hover,.featured-object:focus-visible{outline:none;border-color:#647b5d;background:#101710}
+.featured-object em{display:block;font-style:normal;color:var(--site-green);font-size:8px;letter-spacing:.08em;text-transform:uppercase}
+.featured-object strong{display:block;font:400 17px/1.1 var(--site-font-serif);color:#dce3d8;margin:5px 0 6px}
+.featured-object span{display:block;color:var(--site-muted);font-size:9px;line-height:1.42}
+.featured-backend-note{margin-top:10px;color:var(--site-faint);font-size:9px}
+@media(max-width:980px){.featured-object-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:650px){.featured-object-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body><main class="page page--standard rooms-page" data-reader-surface="rooms">
 <nav class="page-nav" aria-label="Rooms navigation"><a href="../house/">← House</a><a href="./">Dwellings &amp; Rooms</a><a href="objects/">Inhabitants</a><a href="../elevator/">Elevator</a></nav>
 <header class="page-header"><h1>DWELLINGS<br>&amp; ROOMS</h1><p class="summary lead">This is the ownership directory: ten major domains, their nested Rooms, and the concrete material currently living inside them. Use <a href="../house/">House</a> when you want the topology; stay here when you want to know where a subject belongs and what is already there.</p><p class="boundary">Views such as Timeline, Axis, North and World Map may cross several Rooms without becoming owners.</p></header>
 
-
-
+<section class="featured-dwellings" id="featured-dwellings" aria-labelledby="featured-dwellings-title">
+<p class="eyebrow">Open the shelves</p>
+<h2 id="featured-dwellings-title">Do not choose a category. Choose something worth opening.</h2>
+<p class="lead">Each Dwelling already has a curated shelf in the backend. This reader now opens those shelves directly, so the ten domains become collections of concrete objects rather than names in a directory.</p>
+<div class="featured-tabs" id="featuredDwellingTabs" aria-label="Choose a Dwelling shelf"><span class="boundary">Loading curated shelves…</span></div>
+<div class="featured-shelf" id="featuredDwellingShelf"><p class="boundary">Loading featured objects…</p></div>
+<p class="featured-backend-note">Projected from <code>data/house/dwelling-featured-objects.json</code>. The backend remains the owner; this page is the exhibit.</p>
+</section>
 
 <section class="inhabited-dwellings" id="inhabited-dwellings">
 <p class="eyebrow">Population before orientation</p>
@@ -121,6 +146,37 @@
 <section class="rooms-corridor" style="margin-top:32px;padding-top:24px;border-top:1px solid var(--site-line)"><p class="eyebrow">Need the architecture?</p><h2 style="font:400 21px var(--site-font-serif);color:var(--site-gold)">Rooms owns entry; House owns topology</h2><p class="boundary">Stay here when you want to choose a Dwelling or inspect what belongs in it. Use the House when you need holdings, nested-Room topology, guarded Doors, layer grammar or cross-Room corridors. Comparative symbolic population belongs to its specialist tradition views rather than this ownership index.</p><nav class="deep"><a href="../house/#holdings">House holdings</a><a href="../house/#nested-rooms">Nested topology</a><a href="../house/#room-doors">Guarded Doors</a><a href="../religion/#branch-atlas">Symbolic branch atlas</a></nav></section>
 <nav class="deep"><a href="../">Five Doors</a><a href="../explore/">Explore archive</a><a href="../context/source-authority/">Sources &amp; Evidence</a></nav>
 </main><script>
+(async function renderFeaturedDwellingShelves(){
+  const tabs=document.getElementById('featuredDwellingTabs'),shelf=document.getElementById('featuredDwellingShelf');
+  if(!tabs||!shelf)return;
+  const esc=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  const labels={
+    'potatoverse-canon':'Canon','archive-sources':'Sources','time-history':'Time',
+    'traditions-texts':'Traditions','science-formal-models':'Science','life-body':'Life & Body',
+    'world-systems':'World','culture-information':'Culture','works':'Works','research-lab':'Forge'
+  };
+  try{
+    const res=await fetch('../data/house/dwelling-featured-objects.json');
+    if(!res.ok)throw new Error('featured shelves unavailable');
+    const data=await res.json(),rows=data.shelves||[];
+    let active=rows[0]?.dwelling_id||'';
+    function route(href){return href?'../'+String(href).replace(/^\.?\//,''):'../'}
+    function draw(){
+      const row=rows.find(x=>x.dwelling_id===active)||rows[0];
+      tabs.innerHTML=rows.map(x=>'<button type="button" class="featured-tab" data-dwelling="'+esc(x.dwelling_id)+'" aria-pressed="'+String(x.dwelling_id===row.dwelling_id)+'">'+esc(labels[x.dwelling_id]||x.dwelling_id)+'</button>').join('');
+      shelf.innerHTML='<h3>'+esc(row.title||labels[row.dwelling_id]||row.dwelling_id)+'</h3><p>'+esc(row.intro||'')+'</p><div class="featured-object-grid">'+
+        (row.objects||[]).map(o=>'<a class="featured-object" href="'+esc(route(o.href))+'"><em>'+esc(o.kind||'object')+'</em><strong>'+esc(o.title)+'</strong><span>'+esc(o.summary||'')+'</span></a>').join('')+
+        '</div>';
+    }
+    tabs.addEventListener('click',e=>{const b=e.target.closest('[data-dwelling]');if(!b)return;active=b.dataset.dwelling;draw()});
+    draw();
+  }catch(e){
+    tabs.innerHTML='';
+    shelf.innerHTML='<p class="boundary">The curated object shelves could not be loaded. The authored Dwelling material below remains available.</p>';
+  }
+})();
+</script>
+<script>
 (()=>{
   const esc=v=>String(v??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
   const href=route=>route?'../'+route:'../';
