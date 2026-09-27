@@ -1165,3 +1165,14 @@ This is the current page-by-page substance audit for public surfaces, all ten Dw
 - [ ] **CONTENT-AUDIT-002 · Wave B:** project strong backend knowledge into public pages rather than leaving it trapped in registries/atlases.
 - [ ] **CONTENT-AUDIT-003 · Wave C:** increase source density, first-attestation precision, contradiction handling, current-source freshness and recovered-artifact visibility.
 - [ ] **CONTENT-AUDIT-004 · Completion rule:** do not close a page because it is long; close it only when it directly teaches its subject using inspectable objects, mechanisms, provenance, concrete cases, boundaries and unresolved questions.
+
+
+### Mountain / Swamp circle visual system — 2026-09-27
+
+Canonical design spec: `docs/MOUNTAIN-SWAMP-CIRCLE-VISUAL-SYSTEM-2026-09-27.md`  
+Shared implementation: `app/terrain-circle.css`
+
+- [ ] **VISUAL-TERRAIN-001:** Continue the terrain system only where circles already carry House meaning; do not turn empirical pages into decorative cosmology.
+- [ ] **VISUAL-TERRAIN-002:** Inspect Trinity, North, Below, Culture, Research Lab and Works for appropriate next placements using the design spec's semantic guardrails.
+- [ ] **VISUAL-TERRAIN-003:** Audit remaining decorative circles and either give them a clear operator/terrain meaning or simplify/remove them.
+- [ ] **VISUAL-TERRAIN-004:** Keep Mountain/Swamp as partial terrain regimes; never equate the full upper/lower fields with Mountain/Swamp.
