@@ -36,11 +36,11 @@ Do not close a task by adding generic prose. Prefer one named case, one dated so
 - [ ] P0-POLITICS — Politics is currently a thin corpus shell. Build a dated, source-linked political reader with actual recovered positions, proposals, programme designs, forecasts and research leads, grouped by domain and evidence type.
 - [ ] P0-STORY — Story currently depends heavily on JavaScript-loaded fragments and contains little static narrative. Write the life story into the page as scenes and phases, with source links and uncertainty boundaries.
 - [ ] P0-TIMELINE — Timeline is conceptually sound but too thin before its dynamic chronology loads. Add a substantial static spine of representative events, date-quality examples and era transitions.
-- [ ] P0-INHABITANTS — Inhabitants & Cases is mostly an explorer shell. Add a visible cross-section of named people, institutions, texts, models, artifacts and cases with one-sentence reasons they matter.
-- [ ] P0-INTERNET — Internet & Platforms has useful metric distinctions but almost no actual platform-mechanics casebook. Add concrete affordance and migration cases.
-- [ ] P0-GAMES — Games & Simulations describes what belongs there but barely presents the games themselves. Recover rules, states, prototypes, screenshots/status and lessons for each surviving project.
-- [ ] P0-NEURO — Neurobiology has a good thalamic start but is much thinner than the body backend. Add named circuits, CSF/meningeal material, autonomic/interoceptive pathways and source-graded brain-room examples.
-- [ ] P0-MEMORY — Memory & Recovery is much thinner than the archive it represents. Add multiple worked recovery cases with source states, failed recoveries and promotion decisions.
+- [x] P0-INHABITANTS — Inhabitants & Cases is mostly an explorer shell. Add a visible cross-section of named people, institutions, texts, models, artifacts and cases with one-sentence reasons they matter.
+- [x] P0-INTERNET — Internet & Platforms has useful metric distinctions but almost no actual platform-mechanics casebook. Add concrete affordance and migration cases.
+- [x] P0-GAMES — Games & Simulations describes what belongs there but barely presents the games themselves. Recover rules, states, prototypes, screenshots/status and lessons for each surviving project.
+- [x] P0-NEURO — Neurobiology has a good thalamic start but is much thinner than the body backend. Add named circuits, CSF/meningeal material, autonomic/interoceptive pathways and source-graded brain-room examples.
+- [x] P0-MEMORY — Memory & Recovery is much thinner than the archive it represents. Add multiple worked recovery cases with source states, failed recoveries and promotion decisions.
 - [ ] P0-SYSTEMS — Systems & Dynamics needs more than three examples. Add actual feedback, queueing, resilience, contagion and control-system cases with variables and diagrams/equations where appropriate.
 - [ ] P0-WORLD-CASES — World and World Systems need named real-world case studies that demonstrate the relational method rather than only explaining it abstractly.
 - [ ] P0-WORK-ARTIFACTS — Works, Visual Art, Music and Games need more direct links to recovered artifacts, prompts, versions, images/audio/code and explicit missing-artifact states.
@@ -537,11 +537,11 @@ Current: moderately thin.
 
 Current: one main worked recovery case.
 
-- [ ] ROOM-MEM-001 — Add 5–8 recovery cases from different media: post, stream, conversation, image/prompt, song, timeline event and missing equation.
-- [ ] ROOM-MEM-002 — Include failed recoveries and "do not reconstruct" outcomes.
-- [ ] ROOM-MEM-003 — Show recovery states: remembered → located → authenticated → extracted → contextualized → promoted.
-- [ ] ROOM-MEM-004 — Add conflict reconciliation when two recovered versions disagree.
-- [ ] ROOM-MEM-005 — Add current highest-value recovery targets.
+- [~] ROOM-MEM-001 — Add 5–8 recovery cases from different media: post, stream, conversation, image/prompt, song, timeline event and missing equation.
+- [x] ROOM-MEM-002 — Include failed recoveries and "do not reconstruct" outcomes.
+- [x] ROOM-MEM-003 — Show recovery states: remembered → located → authenticated → extracted → contextualized → promoted.
+- [~] ROOM-MEM-004 — Add conflict reconciliation when two recovered versions disagree.
+- [x] ROOM-MEM-005 — Add current highest-value recovery targets.
 
 ## Witness & Attestation
 
@@ -658,12 +658,12 @@ Current: strong literal biology.
 
 Current: underbuilt relative to available body backend.
 
-- [ ] ROOM-NEURO-001 — Add named interoceptive pathways: vagal/NTS, spinal pathways, parabrachial, hypothalamic, insular and cingulate networks with evidence sources.
-- [ ] ROOM-NEURO-002 — Add CSF production/circulation/exchange/outflow and choroid/meningeal lymphatic material.
-- [ ] ROOM-NEURO-003 — Add neurovascular unit and BBB examples.
-- [ ] ROOM-NEURO-004 — Add cortical layers/cell-type example and one basal-ganglia or hippocampal circuit.
-- [ ] ROOM-NEURO-005 — Add developmental lineage examples.
-- [ ] ROOM-NEURO-006 — Add explicit source-grade labels for human, animal, computational and symbolic claims.
+- [~] ROOM-NEURO-001 — Add named interoceptive pathways: vagal/NTS, spinal pathways, parabrachial, hypothalamic, insular and cingulate networks with evidence sources.
+- [x] ROOM-NEURO-002 — Add CSF production/circulation/exchange/outflow and choroid/meningeal lymphatic material.
+- [x] ROOM-NEURO-003 — Add neurovascular unit and BBB examples.
+- [x] ROOM-NEURO-004 — Add cortical layers/cell-type example and one basal-ganglia or hippocampal circuit.
+- [x] ROOM-NEURO-005 — Add developmental lineage examples.
+- [~] ROOM-NEURO-006 — Add explicit source-grade labels for human, animal, computational and symbolic claims.
 
 ## Whole-body Physiology
 
@@ -727,11 +727,11 @@ Current: conceptual, too few country objects.
 
 Current: useful metric correction, otherwise very thin.
 
-- [ ] ROOM-NET-001 — Add platform affordance casebook for YouTube, X/Twitter, livestream/chat, forums, Discord/Telegram-like spaces and archives where evidence exists.
-- [ ] ROOM-NET-002 — For each platform track identity persistence, ranking/discovery, clipping/reposting, moderation, deletion, monetization, portability and archive persistence.
-- [ ] ROOM-NET-003 — Add concrete migration cases showing culture surviving a platform move.
-- [ ] ROOM-NET-004 — Add public-presence measurement methodology and de-duplication example.
-- [ ] ROOM-NET-005 — Separate documented platform mechanics from inferred motive in every case.
+- [x] ROOM-NET-001 — Add platform affordance casebook for YouTube, X/Twitter, livestream/chat, forums, Discord/Telegram-like spaces and archives where evidence exists.
+- [x] ROOM-NET-002 — For each platform track identity persistence, ranking/discovery, clipping/reposting, moderation, deletion, monetization, portability and archive persistence.
+- [x] ROOM-NET-003 — Add concrete migration cases showing culture surviving a platform move.
+- [x] ROOM-NET-004 — Add public-presence measurement methodology and de-duplication example.
+- [x] ROOM-NET-005 — Separate documented platform mechanics from inferred motive in every case.
 
 ## Subculture, Cult & Group Formation
 
@@ -776,21 +776,21 @@ Current: recovered catalogue shape exists.
 
 Current: only four dated/recovery-state compositions.
 
-- [ ] ROOM-ART-001 — Build artifact-status table across all known image families: recovered image, recovered prompt, remembered specification, derivative recreation, unresolved.
+- [x] ROOM-ART-001 — Build artifact-status table across all known image families: recovered image, recovered prompt, remembered specification, derivative recreation, unresolved.
 - [ ] ROOM-ART-002 — Add actual recovered images/prompts where available and source/date them.
-- [ ] ROOM-ART-003 — Group compositions by visual grammar: couch/Father, Door/mandorla, Tree/roots, dogs/footstools, angels, red heifer, Axis/North, Garden/Swamp.
-- [ ] ROOM-ART-004 — Add composition evolution across dates so later iconography is not backdated.
-- [ ] ROOM-ART-005 — Add explicit boundary between artwork depiction and factual/theological evidence.
+- [~] ROOM-ART-003 — Group compositions by visual grammar: couch/Father, Door/mandorla, Tree/roots, dogs/footstools, angels, red heifer, Axis/North, Garden/Swamp.
+- [~] ROOM-ART-004 — Add composition evolution across dates so later iconography is not backdated.
+- [x] ROOM-ART-005 — Add explicit boundary between artwork depiction and factual/theological evidence.
 
 ## Games & Simulations
 
 Current: major deficit.
 
-- [ ] ROOM-GAME-001 — Recover every named game/simulation into a registry with rules, state variables, objective, status and surviving code/artifacts.
-- [ ] ROOM-GAME-002 — Build a substantial reader for Growth Game, AI Potato Town, Potato School and Trading Game.
+- [~] ROOM-GAME-001 — Recover every named game/simulation into a registry with rules, state variables, objective, status and surviving code/artifacts.
+- [x] ROOM-GAME-002 — Build a substantial reader for Growth Game, AI Potato Town, Potato School and Trading Game.
 - [ ] ROOM-GAME-003 — Add screenshots/code snippets or playable routes where available.
-- [ ] ROOM-GAME-004 — Document what each game is meant to test and what outputs would surprise or falsify the design intuition.
-- [ ] ROOM-GAME-005 — Preserve abandoned/prototype versions as developmental evidence.
+- [x] ROOM-GAME-004 — Document what each game is meant to test and what outputs would surprise or falsify the design intuition.
+- [x] ROOM-GAME-005 — Preserve abandoned/prototype versions as developmental evidence.
 
 ## House Architecture Room
 
@@ -825,7 +825,7 @@ Current: five programmes, but still a light coordination page.
 
 - [ ] ROOM-RPROG-001 — For each active programme expose goals, owner Rooms, source ledger, current artifact set, last result, blocker and next milestone.
 - [ ] ROOM-RPROG-002 — Add programme history showing completed, merged, paused and abandoned programmes.
-- [ ] ROOM-RPROG-003 — Add direct links to outputs produced by each programme, not only programme descriptions.
+- [x] ROOM-RPROG-003 — Add direct links to outputs produced by each programme, not only programme descriptions.
 - [ ] ROOM-RPROG-004 — Add resource/priority rationale so readers can understand why one programme is active before another.
 - [ ] ROOM-RPROG-005 — Add cross-programme dependency graph where one research result unlocks another.
 
@@ -875,3 +875,18 @@ A page is not "done" because it is long. Close a page audit only when:
 - boundaries and uncertainty are visible;
 - backend knowledge that matters is actually projected into the page;
 - the reader can leave knowing something they could not have learned from the navigation architecture alone.
+
+
+### 2026-09-27 concrete projection wave
+
+Completed/materially advanced in this wave:
+
+- Inhabitants & Cases now opens with 12 concrete registry objects and direct Room/deep-object routes.
+- Internet & Platforms now projects the platform-mechanics atlas into six visible mechanisms with handoffs.
+- Memory & Recovery now distinguishes buried material from confirmed recovery gaps and exposes recovery-state progression.
+- Neurobiology now exposes deeper backend objects: vagus/NTS route, neurovascular unit/BBB, cortical cell types, neural development, orientation network and cranial/brainstem rooms.
+- Games & Simulations now has an honest project-status registry with state variables, rules, analytical purpose and recovery boundaries.
+- Visual Art now has an artifact-state ledger distinguishing user-conversation primary, recurring composition family, remembered specification and memory-recovery target.
+- Research Programmes now links directly to material outputs instead of describing programmes without artifacts.
+
+Remaining high-value gaps from these same pages are mostly source/artifact recovery: original game builds/screenshots, original image prompts/files, fuller recovery-case diversity, and stronger source-grade projection in Neurobiology.
