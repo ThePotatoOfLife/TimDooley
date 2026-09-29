@@ -69,7 +69,8 @@
     if(st.room)q.set('room',st.room);
     if(st.inner)q.set('inner',st.inner);
     if(st.object)q.set('object',st.object);
-    if(st.level&&st.level!=='world')q.set('level',st.level);
+    const level=st.level==='world'?'plane':st.level;
+    if(level&&level!=='plane')q.set('level',level);
     return base+'elevator/'+(q.toString()?'?'+q:'');
   }
 
