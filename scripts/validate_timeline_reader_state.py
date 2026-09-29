@@ -27,6 +27,12 @@ def main() -> int:
         "raw==='none'",
         "state.sources.size?[...state.sources].sort().join(','):'none'",
         "state.eras.size?[...state.eras].sort().join(','):'none'",
+        "const actorLabels={",
+        "initialParams.get('actors')",
+        "state.actors.size?[...state.actors].sort().join(',')",
+        "data-actor=",
+        "chron-track",
+        "state.actors.clear()",
     )
     for marker in required:
         if marker not in js:
@@ -54,6 +60,8 @@ def main() -> int:
         'id="chronClock"',
         'id="chronDetail"',
         'id="chronSort"',
+        'id="chronActors"',
+        'Life / project track',
         'Underlying timeline records',
         '../data/timeline-events.json',
     ):
