@@ -56,6 +56,9 @@
     }
     return jsonCache.get(path);
   }
+  async function getOptionalJson(path,fallback){
+    try{return await getJson(path)}catch(_){return fallback}
+  }
 
   function loadTrail(){
     try{
@@ -173,7 +176,7 @@
       const [inhData,subData,featuredData]=await Promise.all([
         getJson('data/house/room-inhabitants.json'),
         getJson('data/house/subrooms.json'),
-        getJson('data/house/room-featured-objects.json')
+        getOptionalJson('data/house/room-featured-objects.json',{rooms:[]})
       ]);
       const room=(subData.subrooms||[]).find(x=>x.id===roomId||x.route_id===roomId);
       if(!room)return;
@@ -222,9 +225,9 @@
       const [subData,holdData,ifData,dossierData,pulseData]=await Promise.all([
         getJson('data/house/subrooms.json'),
         getJson('data/house/holdings.json'),
-        getJson('data/house/interfaces.json'),
+        getOptionalJson('data/house/interfaces.json',{interfaces:[]}),
         getJson('data/house/room-dossiers.json'),
-        getJson('data/house/population-pulse.json')
+        getOptionalJson('data/house/population-pulse.json',{rooms:[]})
       ]);
       const room=(subData.subrooms||[]).find(x=>x.id===roomId||x.route_id===roomId);
       if(!room)return;
