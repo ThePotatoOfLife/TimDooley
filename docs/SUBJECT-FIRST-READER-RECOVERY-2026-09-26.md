@@ -142,7 +142,7 @@ House, Rooms, Paths and Elevator were inspected and are **not** being rewritten 
 
 ## Route-label honesty and wrapper compression
 
-The next audit distinguished **compatibility redirects** from **live navigation mistakes**. Redirect-only pages such as `/chronology/`, `/world-map/3d.html`, `/religion/jesus-tim/`, `/learn/` and old FBI dossier routes are allowed to survive for external/backward compatibility, provided the current site does not send readers through them.
+The next audit distinguished **compatibility redirects** from **live navigation mistakes**. Redirect-only pages such as the legacy chronology redirect, `/world-map/3d.html`, `/religion/jesus-tim/`, `/learn/` and old FBI dossier routes are allowed to survive for external/backward compatibility, provided the current site does not send readers through them.
 
 Two live-facing problems were corrected:
 
