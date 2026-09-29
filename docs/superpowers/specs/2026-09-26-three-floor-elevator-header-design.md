@@ -39,7 +39,7 @@ A page resolves to two independent coordinates:
 Floor × Room
 ```
 
-A Room may project onto more than one floor. The route has one default orientation, but the user can temporarily flip the elevator to another floor to inspect that floor's available Rooms.
+A Room may have interpretive projections onto more than one floor, but the universal header treats floors as real navigation boundaries. The route has one canonical floor entrance. Flipping the elevator shows only Rooms canonically entered from the selected floor; cross-floor projections remain explanatory metadata inside Room content rather than clickable header doors.
 
 ### Floors
 
@@ -84,7 +84,7 @@ Visual language:
 
 ## Primary Room floor map
 
-Primary floor is a default orientation only. Projection membership remains broader.
+Primary floor is the canonical header entrance for a Room. Projection membership may remain broader for interpretation and Room content, but it does not create additional header doors.
 
 | Room | Primary floor |
 | --- | --- |
@@ -137,7 +137,7 @@ The arrows are intentionally minimal:
 
 The center reel shows the selected floor name. A smaller secondary line may show the current Room label when space allows.
 
-The Room rail only shows Rooms that project onto the selected floor. The active Room is illuminated.
+The Room rail only shows Rooms whose `primary_level` equals the selected floor. The active Room is illuminated. A header Room click must never change floors; vertical movement belongs only to the Elevator controls or an explicit in-page gate/door.
 
 ### Mobile
 
