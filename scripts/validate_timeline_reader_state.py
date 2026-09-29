@@ -10,6 +10,10 @@ def main() -> int:
     errors = []
     js = RUNTIME.read_text(encoding="utf-8", errors="replace")
     page = PAGE.read_text(encoding="utf-8", errors="replace")
+    build = (ROOT / "scripts" / "build_site.py").read_text(encoding="utf-8", errors="replace")
+    for asset in ('"app/long-chronology.css"', '"app/long-chronology.js"'):
+        if asset not in build:
+            errors.append(f"public build must fingerprint Timeline asset: {asset}")
 
     required = (
         "const initialParams=new URLSearchParams(location.search)",
