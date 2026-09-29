@@ -541,3 +541,15 @@
     transform:none!important;
   }
 }
+
+/* Cross-floor local navigation is an explicit gate, never a silent sibling door. */
+.page-nav a.spatial-exit {
+  color: var(--site-faint);
+}
+.page-nav a.spatial-exit::before {
+  content: attr(data-exit-prefix) " · ";
+  opacity: .62;
+  font-size: .78em;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
