@@ -96,8 +96,11 @@ textarea:focus-visible,
 }
 
 .page-nav .spatial-exit::before {
-  content: "↗ ";
-  opacity: .55;
+  content: attr(data-exit-prefix) " · ";
+  opacity: .62;
+  font-size: .78em;
+  font-weight: 800;
+  letter-spacing: .08em;
 }
 
 .page-header {
