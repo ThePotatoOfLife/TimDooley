@@ -1,14 +1,14 @@
 {
   "id": "corpus-surface-coverage",
-  "version": "1.1.0",
-  "updated": "2026-09-27",
+  "version": "1.2.0",
+  "updated": "2026-09-29",
   "purpose": "Track whether canonical knowledge records are reachable from governed Room/House reader surfaces without requiring every record to be individually featured.",
   "totals": {
-    "canonical_knowledge_records": 935,
-    "reachable_records": 894,
-    "reachable_percent_total": 95.6,
-    "current_non_retired_records": 894,
-    "current_non_retired_reachable": 894,
+    "canonical_knowledge_records": 949,
+    "reachable_records": 908,
+    "reachable_percent_total": 95.7,
+    "current_non_retired_records": 908,
+    "current_non_retired_reachable": 908,
     "current_non_retired_reachable_percent": 100,
     "intentionally_retired_unreachable": 41
   },
@@ -27,8 +27,8 @@
   ],
   "current_structure": {
     "deep_archive_drawers": 18,
-    "records_covered_by_drawer_prefixes": 867,
-    "current_records_reached_outside_drawer_prefixes": 27
+    "records_covered_by_drawer_prefixes": 878,
+    "current_records_reached_outside_drawer_prefixes": 30
   },
   "editorial_rule": "Reachability is not prominence. A record can be reachable through a deep drawer without being promoted to a featured object. Promotion remains an editorial decision based on explanatory value, provenance, maturity and reader need.",
   "boundary": "Coverage measures navigable integration, not truth, freshness, equal depth, or reader quality."
