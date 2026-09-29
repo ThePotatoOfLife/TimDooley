@@ -265,10 +265,11 @@
   }
   function card(r){
     const family=r.family?'<span>'+esc(familyLabel(r.family))+'</span>':'';
+    const actors=(r.actors||[]).filter(x=>actorLabels[x]).map(x=>'<span class="chron-track">'+esc(actorLabels[x])+'</span>').join('');
     const tags=r.tags.slice(0,state.detail?8:3).map(x=>'<i>'+esc(String(x).replaceAll('_',' '))+'</i>').join('');
     return '<article class="chron-event '+(r.isRoadmap?'is-major':'')+'" id="'+esc(r.id)+'">'+
       '<div class="chron-mark"></div><div class="chron-card">'+
-      '<div class="chron-head"><time>'+esc(r.label)+'</time><div><span>'+esc(sourceLabels[r.source])+'</span>'+family+'</div></div>'+
+      '<div class="chron-head"><time>'+esc(r.label)+'</time><div><span>'+esc(sourceLabels[r.source])+'</span>'+family+actors+'</div></div>'+
       '<h3>'+esc(r.title)+'</h3>'+
       '<div class="chron-meta"><b>'+esc(r.domain)+'</b><span>'+esc(r.clock)+'</span><span>'+esc(r.status)+'</span></div>'+
       (tags?'<div class="chron-tags">'+tags+'</div>':'')+
@@ -317,6 +318,7 @@
   }
   function mode(name){
     state.mode=name;
+    state.actors.clear();
     if(name==='arc'){state.sources=new Set(['project','lineage','figures','foundations'])}
     if(name==='road'){state.sources=new Set(['project','lineage','figures','foundations'])}
     if(name==='faith'){state.sources=new Set(['lineage','figures'])}
