@@ -1,9 +1,9 @@
 {
-  "version": "1.4.0",
-  "updated": "2026-09-26",
+  "version": "1.5.0",
+  "updated": "2026-09-29",
   "authority": "elevator-spatial-projection",
   "title": "Door / Axis Elevator — Three-Floor House Projection",
-  "purpose": "Project the governed Potato House graph as a navigable three-floor orientation system (Heaven / Plane / Below) without making UI coordinates authoritative. Existing HTML routes remain canonical public surfaces; this projection provides a spatial wayfinding layer over them.",
+  "purpose": "Project the governed Potato House graph as a navigable three-floor orientation system (Heaven / Plane / Below) with one canonical floor per governed Dwelling. Existing HTML routes remain canonical public surfaces; this projection provides spatial wayfinding without duplicating a Room across floors.",
   "global_start": {
     "id": "door-axis",
     "label": "Door / Axis",
@@ -14,6 +14,7 @@
   },
   "principles": [
     "Every canonical Dwelling may become a local homepage/center when entered.",
+    "Each governed Dwelling belongs to exactly one floor. Cross-floor relationships are explicit exits or elevator moves, never duplicate local Rooms.",
     "The Axis remains the global spatial center even when a local Room becomes the viewer's center.",
     "Adjacency is graph-defined, not Euclidean distance.",
     "A Door may connect two Rooms that could not be adjacent in a literal building; the rotunda reconfigures around the current center.",
@@ -137,15 +138,11 @@
         "archive-sources"
       ],
       "projections": [
-        "heaven",
-        "plane",
-        "below"
+        "heaven"
       ],
       "primary_level": "heaven",
       "projection_notes": {
-        "heaven": "Meaning, theology, symbolic architecture and mature canon viewed as an integrated canopy of project language.",
-        "plane": "Public identity, practical definitions, interfaces and applied canon as they operate across the lived project.",
-        "below": "Developmental roots, contradictions, earlier strata and provenance that explain how the mature canon formed."
+        "heaven": "Meaning, theology, symbolic architecture and mature canon viewed as an integrated canopy of project language."
       }
     },
     {
@@ -164,12 +161,10 @@
         "potatoverse-canon"
       ],
       "projections": [
-        "plane",
         "below"
       ],
       "primary_level": "below",
       "projection_notes": {
-        "plane": "Sources as usable evidence in current readers, linked to claims, timelines, comparisons and public surfaces.",
         "below": "Raw captures, provenance, recovery state and source lineage—the root system beneath later synthesis."
       }
     },
@@ -186,13 +181,11 @@
         "potatoverse-canon"
       ],
       "projections": [
-        "plane",
-        "below"
+        "plane"
       ],
       "primary_level": "plane",
       "projection_notes": {
-        "plane": "Lived chronology, occurrence order, publication dates and visible development across the project and world.",
-        "below": "Recovered timing, memory layers and the distinction between event, attestation, recollection and later interpretation."
+        "plane": "Lived chronology, occurrence order, publication dates and visible development across the project and world."
       }
     },
     {
@@ -208,15 +201,11 @@
         "life-body"
       ],
       "projections": [
-        "heaven",
-        "plane",
-        "below"
+        "heaven"
       ],
       "primary_level": "heaven",
       "projection_notes": {
-        "heaven": "Theology, sacred language, symbols and comparative interpretation at the level of meaning and tradition.",
-        "plane": "Religions, texts, communities, practices and historical traditions as lived and documented phenomena.",
-        "below": "Textual provenance, transmission, source history, schisms and critical comparison beneath later doctrine."
+        "heaven": "Theology, sacred language, symbols and comparative interpretation at the level of meaning and tradition."
       }
     },
     {
@@ -274,13 +263,11 @@
         "archive-sources"
       ],
       "projections": [
-        "plane",
-        "below"
+        "plane"
       ],
       "primary_level": "plane",
       "projection_notes": {
-        "plane": "Countries, institutions, law, economy, infrastructure and observable relations in the current world.",
-        "below": "Dependencies, historical causes, hidden infrastructure, systemic bottlenecks and deeper institutional provenance."
+        "plane": "Countries, institutions, law, economy, infrastructure and observable relations in the current world."
       }
     },
     {
@@ -297,13 +284,11 @@
         "research-lab"
       ],
       "projections": [
-        "plane",
-        "below"
+        "plane"
       ],
       "primary_level": "plane",
       "projection_notes": {
-        "plane": "Media, platforms, public discourse, communities and information flows in ordinary social and cultural life.",
-        "below": "Subculture, shadow networks, trolling, group formation, archival persistence and the roots of cultural conflict."
+        "plane": "Media, platforms, public discourse, communities and information flows in ordinary social and cultural life."
       }
     },
     {
@@ -318,13 +303,11 @@
         "time-history"
       ],
       "projections": [
-        "heaven",
-        "plane"
+        "heaven"
       ],
       "primary_level": "heaven",
       "projection_notes": {
-        "heaven": "Finished creative fruit—literature, music, visual art and expression—viewed as synthesis at the canopy.",
-        "plane": "Works as actual made artifacts, performances and publications that can be read, heard, seen, played and dated."
+        "heaven": "Finished creative fruit—literature, music, visual art and expression—viewed as synthesis at the canopy."
       }
     },
     {
@@ -341,14 +324,10 @@
         "culture-information"
       ],
       "projections": [
-        "heaven",
-        "plane",
         "below"
       ],
       "primary_level": "below",
       "projection_notes": {
-        "heaven": "Speculative synthesis and high-level questions tested for whether they can become coherent future structures.",
-        "plane": "Active experiments, comparisons, formalizations and research programmes while they are being worked.",
         "below": "Unresolved questions, failed attempts, recovered fragments and raw research material before promotion to an owner."
       }
     }
@@ -418,7 +397,7 @@
     {
       "match": "/faq/",
       "level_id": "plane",
-      "room_id": "potatoverse-canon"
+      "room_id": null
     },
     {
       "match": "/philosophy/interpretive-justice.html",
@@ -463,7 +442,7 @@
     {
       "match": "/shadow-farm/",
       "level_id": "below",
-      "room_id": "culture-information"
+      "room_id": null
     },
     {
       "match": "/philosophy/",
@@ -473,12 +452,12 @@
     {
       "match": "/tim-dooley/",
       "level_id": "plane",
-      "room_id": "potatoverse-canon"
+      "room_id": null
     },
     {
       "match": "/corporium/",
       "level_id": "plane",
-      "room_id": "potatoverse-canon"
+      "room_id": null
     },
     {
       "match": "/index-a-z/",
@@ -598,7 +577,7 @@
     {
       "match": "/",
       "level_id": "plane",
-      "room_id": "potatoverse-canon"
+      "room_id": null
     }
   ]
 }
