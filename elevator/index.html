@@ -142,7 +142,13 @@ function transitionMeta(prev,next){
   if((prev.level||'plane')!==(next.level||'plane')&&!next.room&&!next.inner)return {via:'elevator',reason:'You changed vertical projection along the same global Axis.'};
   if(next.inner){
     const N=subById[next.inner], P=prev.inner?subById[prev.inner]:null;
-    if(P&&N&&P.parent_room_id!==N.parent_room_id)return {via:'wormhole-door',reason:'A registered cross-Dwelling adjacency connected these Rooms directly.'};
+    if(P&&N&&P.parent_room_id!==N.parent_room_id){
+      const fromFloor=roomById[P.parent_room_id]?.primary_level||prev.level;
+      const toFloor=roomById[N.parent_room_id]?.primary_level||next.level;
+      return fromFloor===toFloor
+        ?{via:'wormhole-door',reason:'A registered cross-Dwelling adjacency connected two Rooms on the same floor.'}
+        :{via:'wormhole-elevator',reason:'A registered cross-Dwelling adjacency crossed floors and moved the elevator to the destination Room.'};
+    }
     return {via:'local-door',reason:'You moved into a nested Room within the active local context.'};
   }
   if(next.room){
@@ -151,7 +157,7 @@ function transitionMeta(prev,next){
   }
   return {via:'return',reason:'You moved outward toward the parent context or global Door / Axis.'};
 }
-function viaLabel(v){return ({start:'start','dwelling-door':'dwelling door','local-door':'local door','wormhole-door':'wormhole','elevator':'elevator','portal':'portal','read':'read exit','object-focus':'object focus','return':'return'})[v]||v||'step';}
+function viaLabel(v){return ({start:'start','dwelling-door':'dwelling door','local-door':'local door','wormhole-door':'wormhole','wormhole-elevator':'wormhole + elevator','elevator':'elevator','portal':'portal','read':'read exit','object-focus':'object focus','return':'return'})[v]||v||'step';}
 function sameState(a,b){return a&&b&&a.level===b.level&&(a.room||null)===(b.room||null)&&(a.inner||null)===(b.inner||null)&&(a.object||null)===(b.object||null)&&a.type===b.type}
 function saveJourney(){try{localStorage.setItem(JOURNEY_KEY,JSON.stringify(journey.slice(-48)))}catch(e){}}
 function recordJourney(type='space',labelOverride=null){
@@ -216,8 +222,13 @@ function visibleItems(){
  return data.dwellings.filter(r=>(r.primary_level||'plane')===level).map(R=>({kind:'dwelling',id:R.id,label:R.label,subtitle:R.local_center_label,homepage:root(R.homepage),obj:R}));
 }
 function setLocal(item){stopReplay();objectId=null;
- if(item.kind==='dwelling'){local=item.id;inner=null;level=item.obj.primary_level||level;}
- else {local=item.obj.parent_room_id;inner=item.id;}
+ if(item.kind==='dwelling'){
+   local=item.id;inner=null;level=item.obj.primary_level||level;
+ }else{
+   local=item.obj.parent_room_id;inner=item.id;
+   const destination=roomById[local];
+   if(destination?.primary_level)level=destination.primary_level;
+ }
  yaw=0;render();recordJourney();renderJourney();
 }
 function renderDoors(){
