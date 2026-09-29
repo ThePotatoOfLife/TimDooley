@@ -154,9 +154,17 @@ def main() -> int:
             "if(destination?.primary_level)level=destination.primary_level",
             "'wormhole-elevator'",
             "moved the elevator to the destination Room",
+            "async function loadJson(path,fallback,required=false)",
+            "Spatial orientation unavailable",
+            "Reduced detail",
+            "Core floor/Room navigation is available",
         ):
             if token not in dedicated_elevator:
-                errors.append(f"dedicated elevator missing cross-floor transition marker: {token}")
+                errors.append(f"dedicated elevator missing cross-floor/resilience marker: {token}")
+        if "public-surfaces.json" in dedicated_elevator:
+            errors.append("dedicated elevator must not depend on unused public-surfaces data")
+        if "if(!eRes.ok||!sRes.ok" in dedicated_elevator:
+            errors.append("dedicated elevator must isolate optional data failures instead of all-or-nothing fetch gating")
         if "level='world'" in dedicated_elevator or "||'world'" in dedicated_elevator:
             errors.append("dedicated elevator must not restore the retired world floor")
 
