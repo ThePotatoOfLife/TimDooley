@@ -33,6 +33,9 @@ def main() -> int:
         "data-actor=",
         "chron-track",
         "state.actors.clear()",
+        "new URL('../'+String(x).replace(/^\\/+/,''),location.href).href",
+        "related reader ↗",
+        "record · ",
     )
     for marker in required:
         if marker not in js:
