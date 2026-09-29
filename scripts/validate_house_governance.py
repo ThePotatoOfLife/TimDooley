@@ -384,8 +384,10 @@ def validate_symbolic_planes(errors,rooms):
     if 'not identical with Earth' not in text_blob and 'not Earth' not in text_blob:
         errors.append('Below Plane boundary must preserve distinction from Earth/Manifestation')
     world=next((x for x in rows if isinstance(x,dict) and x.get('id')=='world-plane'),{})
+    if world.get('label')!='Plane':
+        errors.append('world-plane compatibility record must present the public label Plane')
     if 'Plane' not in world.get('aliases',[]):
-        errors.append('World Plane must preserve Plane alias')
+        errors.append('world-plane compatibility record must preserve Plane alias')
     compass=data.get('symbolic_compass')
     if not isinstance(compass,dict):
         errors.append('symbolic compass missing'); return
