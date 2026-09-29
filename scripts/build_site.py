@@ -50,6 +50,8 @@ SHARED_ASSETS = (
     "app/room-interior.css",
     "app/bidirectional-spiral-field.css",
     "app/bidirectional-spiral-field.js",
+    "app/long-chronology.css",
+    "app/long-chronology.js",
 )
 
 
