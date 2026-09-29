@@ -15,6 +15,8 @@ ELEVATOR_JS = ROOT / "app" / "site-elevator.js"
 PATCHER = ROOT / "scripts" / "patch_public_navigation.py"
 OUT = ROOT / "_site"
 WORLD_MAP_SOURCE = ROOT / "world-map" / "index.html"
+DEDICATED_ELEVATOR = ROOT / "elevator" / "index.html"
+HOUSE_JOURNEY_JS = ROOT / "app" / "house-journey.js"
 
 EXPECTED_LEVELS = ["heaven", "plane", "below"]
 REPRESENTATIVE_CONTEXTS = {
@@ -57,6 +59,8 @@ def main() -> int:
     js = ELEVATOR_JS.read_text(encoding="utf-8", errors="replace") if ELEVATOR_JS.exists() else ""
     patcher = PATCHER.read_text(encoding="utf-8", errors="replace") if PATCHER.exists() else ""
     world_map_source = WORLD_MAP_SOURCE.read_text(encoding="utf-8", errors="replace") if WORLD_MAP_SOURCE.exists() else ""
+    dedicated_elevator = DEDICATED_ELEVATOR.read_text(encoding="utf-8", errors="replace") if DEDICATED_ELEVATOR.exists() else ""
+    house_journey_js = HOUSE_JOURNEY_JS.read_text(encoding="utf-8", errors="replace") if HOUSE_JOURNEY_JS.exists() else ""
     room_contract = load_json(ROOMS, errors)
     public_surfaces = load_json(PUBLIC_SURFACES, errors)
     subroom_contract = load_json(SUBROOMS, errors)
@@ -126,6 +130,34 @@ def main() -> int:
         errors.append(f"elevator levels must equal {EXPECTED_LEVELS}, got {level_ids}")
     if "world" in level_ids:
         errors.append("legacy world elevator level must be renamed to plane")
+
+    if not dedicated_elevator:
+        errors.append("missing dedicated elevator/index.html")
+    else:
+        dedicated_tokens = (
+            "params.get('level')||'plane'",
+            "validLevelIds",
+            "initialDwelling?.primary_level",
+            ".filter(r=>(r.primary_level||'plane')===level)",
+            ".filter(R=>(R.primary_level||'plane')===level)",
+            "function stepFloor(direction)",
+            "moveFloor('up')",
+            "moveFloor('down')",
+            "level='plane'",
+        )
+        for token in dedicated_tokens:
+            if token not in dedicated_elevator:
+                errors.append(f"dedicated elevator missing floor-boundary marker: {token}")
+        if "projections.includes(level)" in dedicated_elevator:
+            errors.append("dedicated elevator must not expose cross-floor projected Rooms as local doors")
+        if "level='world'" in dedicated_elevator or "||'world'" in dedicated_elevator:
+            errors.append("dedicated elevator must not restore the retired world floor")
+
+    if not house_journey_js:
+        errors.append("missing app/house-journey.js")
+    else:
+        if "st.level==='world'?'plane':st.level" not in house_journey_js:
+            errors.append("House journey links must normalize legacy world states to Plane")
 
     dwellings = [row for row in projection.get("dwellings", []) if isinstance(row, dict)]
     dwelling_by_id = {row.get("id"): row for row in dwellings if row.get("id")}
