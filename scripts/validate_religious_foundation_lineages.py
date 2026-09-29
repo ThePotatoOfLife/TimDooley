@@ -77,6 +77,35 @@ if not errors:
     if len(gids)!=len(set(gids)): errors.append("duplicate node_id in religious foundation geography")
     if set(gids)!=set(nodes):
         errors.append(f"geography node set drift: missing={sorted(set(nodes)-set(gids))[:10]} extra={sorted(set(gids)-set(nodes))[:10]}")
+    geo_by_id={row.get("node_id"):row for row in gav if isinstance(row,dict) and row.get("node_id")}
+    family_by_node={
+        n.get("id"):fam.get("id")
+        for fam in a.get("families") or []
+        for n in fam.get("nodes") or []
+        if isinstance(n,dict) and n.get("id")
+    }
+    for nid,n in nodes.items():
+        row=geo_by_id.get(nid)
+        if not row: continue
+        clock=n.get("seed_clock") or {}
+        origin=n.get("origin") or {}
+        expected={
+            "family_id":family_by_node.get(nid),
+            "name":n.get("name"),
+            "node_type":n.get("node_type"),
+            "seed_year_start":clock.get("year_start"),
+            "seed_year_end":clock.get("year_end"),
+            "origin_place":origin.get("place"),
+            "spatial_status":origin.get("spatial_status"),
+            "parent_ids":n.get("parent_ids") or [],
+        }
+        for key,value in expected.items():
+            if row.get(key)!=value:
+                errors.append(f"{nid}: geography projection drift for {key}: {row.get(key)!r} != {value!r}")
+        if row.get("map_policy") not in {"historical-origin-anchor","distributed-origin"}:
+            errors.append(f"{nid}: invalid geography map_policy {row.get('map_policy')!r}")
+        if row.get("current_demography_owner")!="data/world-religion-layer.json":
+            errors.append(f"{nid}: geography must preserve current-demography ownership boundary")
 
 if errors:
     print("Religious foundation lineage validation FAILED")
