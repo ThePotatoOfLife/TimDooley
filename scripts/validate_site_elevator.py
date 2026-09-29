@@ -20,15 +20,15 @@ HOUSE_JOURNEY_JS = ROOT / "app" / "house-journey.js"
 
 EXPECTED_LEVELS = ["heaven", "plane", "below"]
 REPRESENTATIVE_CONTEXTS = {
-    "/": ("plane", "potatoverse-canon"),
-    "/tim-dooley/": ("plane", "potatoverse-canon"),
+    "/": ("plane", None),
+    "/tim-dooley/": ("plane", None),
     "/potato-of-life/": ("heaven", "potatoverse-canon"),
     "/religion/": ("heaven", "traditions-texts"),
     "/science/": ("plane", "science-formal-models"),
     "/politics/": ("plane", "world-systems"),
     "/economy/": ("plane", "world-systems"),
     "/context/culture/": ("plane", "culture-information"),
-    "/shadow-farm/": ("below", "culture-information"),
+    "/shadow-farm/": ("below", None),
     "/context/source-authority/": ("below", "archive-sources"),
     "/research-lab/": ("below", "research-lab"),
     "/works/": ("heaven", "works"),
@@ -193,6 +193,11 @@ def main() -> int:
         if not isinstance(projections, list) or not projections:
             errors.append(f"{room_id}: projections must be a non-empty list")
             continue
+        if projections != [primary]:
+            errors.append(
+                f"{room_id}: governed Room must belong to exactly one floor; "
+                f"expected projections={[primary]!r}, got {projections!r}"
+            )
         bad = sorted(set(projections) - allowed)
         if bad:
             errors.append(f"{room_id}: unsupported projections {bad}")
@@ -277,11 +282,11 @@ def main() -> int:
         if room_id is not None and room_id not in active_rooms:
             errors.append(f"{match}: route context references unknown Room {room_id!r}")
         if room_id is not None and room_id in dwelling_by_id and level_id in allowed:
-            projections = dwelling_by_id[room_id].get("projections") or []
-            if level_id not in projections:
+            primary_level = dwelling_by_id[room_id].get("primary_level") or "plane"
+            if level_id != primary_level:
                 errors.append(
-                    f"{match}: route context Room projection mismatch; "
-                    f"{room_id!r} does not project to {level_id!r}"
+                    f"{match}: route context Room/floor mismatch; "
+                    f"{room_id!r} belongs to {primary_level!r}, not {level_id!r}"
                 )
 
     active_surfaces = [
