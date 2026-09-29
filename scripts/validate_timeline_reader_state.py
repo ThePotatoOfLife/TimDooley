@@ -35,6 +35,18 @@ def main() -> int:
     if "allowedModes=new Set(['arc','road','faith','foundations','project'])" not in js:
         errors.append("Timeline reader lost legacy/current mode compatibility")
 
+    handoff_pages = {
+        "tim-dooley/index.html": "../timeline/?mode=project",
+        "tim-dooley/story/index.html": "../../timeline/?mode=project",
+        "tim-dooley/story/raw/index.html": "../../../timeline/?mode=project",
+        "tim-dooley/claims/index.html": "../../timeline/?mode=project",
+        "works/index.html": "../timeline/?mode=project",
+    }
+    for rel, marker in handoff_pages.items():
+        text = (ROOT / rel).read_text(encoding="utf-8", errors="replace")
+        if marker not in text:
+            errors.append(f"{rel} lost its life/project Timeline handoff")
+
     for marker in (
         'id="chronSearch"',
         'id="chronDomain"',
