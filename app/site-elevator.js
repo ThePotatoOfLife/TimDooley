@@ -227,6 +227,33 @@
       return dwelling?.primary_level||null;
     };
 
+    const markCrossFloorLinks=()=>{
+      if(!projection||!roomContract)return;
+      const siteOrigin=new URL(context.siteBase).origin;
+      const siteBasePath=new URL(context.siteBase).pathname;
+      document.querySelectorAll('.page-nav a[href]').forEach(link=>{
+        link.classList.remove('spatial-exit');
+        delete link.dataset.exitFloor;
+        delete link.dataset.exitPrefix;
+        let targetUrl;
+        try{targetUrl=new URL(link.href,document.baseURI);}catch(_){return}
+        if(targetUrl.origin!==siteOrigin)return;
+        const targetRoute=normalizeRoute(targetUrl.pathname,siteBasePath);
+        const target=resolveSpatialContext(targetRoute,projection,roomContract,subroomContract);
+        if(!LEVELS.includes(target.levelId)||target.levelId===spatial.levelId)return;
+        const fromIndex=LEVELS.indexOf(spatial.levelId);
+        const toIndex=LEVELS.indexOf(target.levelId);
+        const arrow=toIndex<fromIndex?'↑':'↓';
+        const label=levelLabel(target.levelId,projection).replace(/\s*\/.*$/,'').toUpperCase();
+        link.classList.add('spatial-exit');
+        link.dataset.exitFloor=target.levelId;
+        link.dataset.exitPrefix=arrow+' '+label;
+        if(!link.getAttribute('aria-label')){
+          link.setAttribute('aria-label',link.textContent.trim()+' · exit to '+label.toLowerCase());
+        }
+      });
+    };
+
     const render=(direction='')=>{
       header.setAttribute('data-elevator-level',selectedLevel);
       delete header.dataset.elevatorDirection;
@@ -323,6 +350,7 @@
       header.dataset.elevatorReady='true';
       header.setAttribute('aria-busy','false');
       render('hydrate');
+      markCrossFloorLinks();
     }).catch(()=>{
       header.dataset.elevatorReady='error';
       header.setAttribute('aria-busy','false');
