@@ -24,20 +24,26 @@
 <div class="controls"><input id="q" type="search" placeholder="Search inhabitants, cases, concepts…"><select id="kind"><option value="">All kinds</option></select><select id="room"><option value="">All Rooms</option></select><select id="maturity"><option value="">All maturity</option><option value="described">Described</option><option value="faceted">Faceted</option><option value="case-ready">Case-ready</option><option value="seed">Seed</option></select></div><div id="results"><p class="loading">Loading registry…</p></div></main><script src="../../app/house-journey.js"></script><script>
 (async()=>{
  const esc=v=>String(v??'').replace(/[&<>"]/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));
- const [ir,sr]=await Promise.all([fetch('../../data/house/room-inhabitants.json'),fetch('../../data/house/subrooms.json')]);
- if(!ir.ok||!sr.ok){document.getElementById('summary').textContent='The explanatory layer is available, but the live inhabitant registry could not be loaded.';document.getElementById('results').innerHTML='<p class="loading">The live registry is unavailable. The page above still explains how inhabitants, cases and Room lenses relate.</p>';return}
- const data=await ir.json(), sub=await sr.json();
+ let ir;
+ try{ir=await fetch('../../data/house/room-inhabitants.json',{cache:'no-cache'})}catch(_){ir=null}
+ if(!ir?.ok){document.getElementById('summary').textContent='The explanatory layer is available, but the live inhabitant registry could not be loaded.';document.getElementById('results').innerHTML='<p class="loading">The live registry is unavailable. The page above still explains how inhabitants, cases and Room lenses relate.</p>';return}
+ const data=await ir.json();
+ let sub={subrooms:[]},subroomsAvailable=false;
+ try{
+   const sr=await fetch('../../data/house/subrooms.json',{cache:'no-cache'});
+   if(sr.ok){sub=await sr.json();subroomsAvailable=true}
+ }catch(_){}
  const subBy=Object.fromEntries((sub.subrooms||[]).map(x=>[x.id,x]));
  const rows=data.inhabitants||[];
  const q=document.getElementById('q'),kind=document.getElementById('kind'),room=document.getElementById('room'),maturity=document.getElementById('maturity'),results=document.getElementById('results');
- document.getElementById('summary').textContent=rows.length+' registered objects currently live inside one or more Rooms. They can be inspected through different Room lenses without becoming new Rooms or duplicate owners.';
+ document.getElementById('summary').textContent=rows.length+' registered objects currently live inside one or more Rooms. They can be inspected through different Room lenses without becoming new Rooms or duplicate owners.'+(subroomsAvailable?'':' Room names and spatial placement are temporarily unavailable, but object browsing remains active.');
  [...new Set(rows.map(x=>x.kind).filter(Boolean))].sort().forEach(v=>kind.insertAdjacentHTML('beforeend','<option value="'+esc(v)+'">'+esc(v)+'</option>'));
  [...new Set(rows.flatMap(x=>x.room_ids||[]))].sort((a,b)=>(subBy[a]?.title||a).localeCompare(subBy[b]?.title||b)).forEach(v=>room.insertAdjacentHTML('beforeend','<option value="'+esc(v)+'">'+esc(subBy[v]?.title||v)+'</option>'));
  function render(){
    const term=q.value.trim().toLowerCase(),kv=kind.value,rv=room.value,mv=maturity.value;
    const filtered=rows.filter(x=>(!kv||x.kind===kv)&&(!rv||(x.room_ids||[]).includes(rv))&&(!mv||x.maturity===mv)&&(!term||[x.label,x.kind,x.summary,...(x.room_ids||[]).map(id=>subBy[id]?.title||id)].join(' ').toLowerCase().includes(term)));
    const groups={};filtered.forEach(x=>(groups[x.kind||'object']??=[]).push(x));
-   results.innerHTML=Object.entries(groups).sort(([a],[b])=>a.localeCompare(b)).map(([k,list])=>'<section class="kind-group"><p class="eyebrow">'+esc(k)+'</p><div class="obj-grid">'+list.map(x=>{const first=(x.room_ids||[])[0],s=subBy[first],params=new URLSearchParams({room:s?.parent_room_id||'',inner:first||'',object:x.id});return '<article class="obj-card"><h3>'+esc(x.label)+'</h3><p>'+esc(x.summary||'Registered House inhabitant.')+'</p><div class="lenses"><span>'+esc(x.maturity||'seed')+'</span>'+(x.room_ids||[]).map(id=>'<span>'+esc(subBy[id]?.title||id)+'</span>').join('')+'</div><a href="../../elevator/?'+params.toString()+'">Place on center table →</a></article>'}).join('')+'</div></section>').join('')||'<p>No inhabitants match this view.</p>';
+   results.innerHTML=Object.entries(groups).sort(([a],[b])=>a.localeCompare(b)).map(([k,list])=>'<section class="kind-group"><p class="eyebrow">'+esc(k)+'</p><div class="obj-grid">'+list.map(x=>{const first=(x.room_ids||[])[0],s=subBy[first],params=new URLSearchParams({room:s?.parent_room_id||'',inner:first||'',object:x.id});return '<article class="obj-card"><h3>'+esc(x.label)+'</h3><p>'+esc(x.summary||'Registered House inhabitant.')+'</p><div class="lenses"><span>'+esc(x.maturity||'seed')+'</span>'+(x.room_ids||[]).map(id=>'<span>'+esc(subBy[id]?.title||id)+'</span>').join('')+'</div>'+(subroomsAvailable&&s?.parent_room_id?'<a href="../../elevator/?'+params.toString()+'">Place on center table →</a>':(x.route?'<a href="'+esc(String(x.route).startsWith('/')?'../..'+x.route:x.route)+'">Open object →</a>':'<span class="loading">Spatial placement unavailable</span>'))+'</article>'}).join('')+'</div></section>').join('')||'<p>No inhabitants match this view.</p>';
  }
  q.addEventListener('input',render);kind.addEventListener('change',render);room.addEventListener('change',render);maturity.addEventListener('change',render);render();
 })();
