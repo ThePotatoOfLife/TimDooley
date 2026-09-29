@@ -256,11 +256,16 @@
   function detailHTML(r){
     if(!state.detail) return '';
     const links=(r.urls||[]).map(u=>/^https?:\/\//.test(u)?'<a href="'+esc(u)+'" target="_blank" rel="noopener">source ↗</a>':'').join('');
-    const refs=(r.sourceRecords||[]).filter(x=>!/^https?:\/\//.test(x)).slice(0,4).map(x=>'<code>'+esc(x)+'</code>').join('');
+    const refs=(r.sourceRecords||[]).filter(x=>!/^https?:\/\//.test(x)).slice(0,4).map(x=>{
+      const href=new URL('../'+String(x).replace(/^\/+/,''),location.href).href;
+      const label=String(x).split('/').pop()||'record';
+      return '<a href="'+esc(href)+'" title="'+esc(x)+'">record · '+esc(label)+' ↗</a>';
+    }).join('');
+    const publicLink=r.url?'<a href="'+esc(r.url)+'">related reader ↗</a>':'';
     return '<div class="chron-extra">'+
       (r.summary?'<p>'+esc(r.summary)+'</p>':'')+
       (r.place?'<p><b>Place</b> '+esc(r.place)+'</p>':'')+
-      ((links||refs)?'<div class="chron-sources">'+links+refs+'</div>':'')+
+      ((links||refs||publicLink)?'<div class="chron-sources">'+publicLink+links+refs+'</div>':'')+
       '</div>';
   }
   function card(r){
