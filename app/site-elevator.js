@@ -222,6 +222,11 @@
       roomRail.hidden=!rows.length;
     };
 
+    const primaryLevelForRoom=roomId=>{
+      const dwelling=projection&&roomId?dwellingRows(projection).find(row=>row.id===roomId):null;
+      return dwelling?.primary_level||null;
+    };
+
     const render=(direction='')=>{
       header.setAttribute('data-elevator-level',selectedLevel);
       delete header.dataset.elevatorDirection;
@@ -232,8 +237,9 @@
       floorCode.textContent=({heaven:'03',plane:'02',below:'01'}[selectedLevel]||'02');
       floorLabel.textContent=levelLabel(selectedLevel,projection).replace(/\s*\/.*$/,'').toUpperCase();
       const currentRoom=spatial.room;
+      const currentRoomPrimary=primaryLevelForRoom(spatial.roomId);
       roomLabel.textContent=currentRoom&&selectedLevel===spatial.levelId
-        ?'HERE'
+        ?(currentRoomPrimary===selectedLevel?'HERE':'ROOM PROJECTION · ENTER VIA '+levelLabel(currentRoomPrimary,projection).replace(/\s*\/.*$/,'').toUpperCase())
         :(selectedLevel===spatial.levelId?'HOUSE ORIENTATION':'BROWSING FLOOR');
       up.disabled=selectedLevel==='heaven'||!projection;
       down.disabled=selectedLevel==='below'||!projection;
