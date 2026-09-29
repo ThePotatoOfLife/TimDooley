@@ -204,6 +204,27 @@ def main() -> int:
         room_home = ROOT / "rooms" / room_id / "index.html"
         if not room_home.exists():
             errors.append(f"{room_id}: canonical Room homepage missing at rooms/{room_id}/index.html")
+        else:
+            room_html = room_home.read_text(encoding="utf-8", errors="replace")
+            floor_label = next(
+                (level.get("label", "").split("/")[0].strip() for level in levels if level.get("id") == primary),
+                str(primary or "").title(),
+            )
+            if 'class="page-nav room-floor-nav"' not in room_html:
+                errors.append(f"{room_id}: Room homepage must begin with floor-local Room navigation")
+            if f'aria-label="{floor_label} floor Rooms"' not in room_html:
+                errors.append(f"{room_id}: Room homepage floor navigation label must identify {floor_label}")
+            if 'class="spatial-exit"' not in room_html:
+                errors.append(f"{room_id}: structural cross-floor routes must be marked as explicit spatial exits")
+            if '<a href="../">All Rooms</a><a href="../../house/">House</a>' in room_html:
+                errors.append(f"{room_id}: legacy silent All Rooms / House cross-floor nav must not return")
+            peer_ids = [
+                peer.get("id") for peer in dwellings
+                if (peer.get("primary_level") or "plane") == primary and peer.get("id")
+            ]
+            for peer_id in peer_ids:
+                if f'href="../{peer_id}/"' not in room_html:
+                    errors.append(f"{room_id}: missing same-floor Room door to {peer_id}")
 
     active_subrooms = [
         row for row in subroom_contract.get("subrooms", [])
