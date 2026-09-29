@@ -46,12 +46,19 @@
     figures:'Origin figures',
     foundations:'Foundations'
   };
+  const actorLabels={
+    tim:'Tim / Father-side',
+    son:'Son',
+    shared:'Shared',
+    project:'Project / system'
+  };
   const state={
     sources:new Set(['project','lineage','figures','foundations']),
     eras:new Set(Object.keys(eraLabels).filter(x=>x!=='undated')),
     domains:new Set(),
     families:new Set(),
     clocks:new Set(),
+    actors:new Set(),
     q:'',
     detail:false,
     sort:'asc',
@@ -83,6 +90,8 @@
   const domainParam=initialParams.get('domain'); if(domainParam)state.domains=new Set([domainParam]);
   const familyParam=initialParams.get('family'); if(familyParam)state.families=new Set([familyParam]);
   const clockParam=initialParams.get('clock'); if(clockParam)state.clocks=new Set([clockParam]);
+  const actorParam=initialParams.get('actors');
+  if(actorParam)state.actors=new Set(actorParam.split(',').map(x=>x.trim()).filter(x=>actorLabels[x]));
   state.q=initialParams.get('q')||'';
   state.detail=initialParams.get('detail')==='1';
   state.sort=initialParams.get('sort')==='desc'?'desc':'asc';
@@ -98,6 +107,7 @@
     setOrDelete('domain',state.domains.size?[...state.domains][0]:'');
     setOrDelete('family',state.families.size?[...state.families][0]:'');
     setOrDelete('clock',state.clocks.size?[...state.clocks][0]:'');
+    setOrDelete('actors',state.actors.size?[...state.actors].sort().join(','):'');
     setOrDelete('q',state.q.trim());
     setOrDelete('detail',state.detail?'1':'');
     setOrDelete('sort',state.sort==='desc'?'desc':'');
@@ -131,6 +141,7 @@
       place:'',
       summary:e.summary||e.quote||'',
       quote:e.quote||'',
+      actors:unique(e.actor_ids||[]),
       tags:unique([...(e.layers||[]),...(e.actor_ids||[]),...(e.motifs||[])]),
       isRoadmap:(e.layers||[]).includes('roadmap'),
       url:e.public_url||'',
@@ -152,6 +163,7 @@
       place:e.place||'',
       summary:e.notes||'',
       quote:'',
+      actors:[],
       tags:unique([e.node_type,e.relation_to_parent,...(e.parent_ids||[])]),
       isRoadmap:['trunk','phase'].includes(e.node_type),
       sourceRecords:e.source_ids||[],
@@ -172,6 +184,7 @@
       place:e.place||'',
       summary:e.summary||'',
       quote:'',
+      actors:[],
       tags:unique([e.kind,...(e.family_ids||[]),...(e.related_node_ids||[]),...(e.related_foundation_names||[])]),
       isRoadmap:true,
       urls:e.source_urls||[],
@@ -193,6 +206,7 @@
       place:e.place||e.location||'',
       summary:e.label||e.notes||'',
       quote:'',
+      actors:[],
       tags:unique([e.domain,e.event_type,e.precision]),
       isRoadmap:['seed_idea','first_operation','adoption_signature','refoundation_revision','constitutional_effect'].includes(e.event_type),
       sourceRecords:e.source?[e.source]:[],
@@ -200,7 +214,7 @@
     };
   }
 
-  function searchText(r){return [r.title,r.label,r.domain,r.family,r.clock,r.status,r.place,r.summary,...r.tags].join(' ').toLowerCase()}
+  function searchText(r){return [r.title,r.label,r.domain,r.family,r.clock,r.status,r.place,r.summary,...(r.actors||[]),...r.tags].join(' ').toLowerCase()}
   function tokenMatch(r,q){
     const toks=[]; const re=/"([^"]+)"|(\S+)/g; let m;
     while((m=re.exec(q))) toks.push((m[1]||m[2]).toLowerCase());
@@ -213,6 +227,7 @@
     if(state.domains.size && !state.domains.has(r.domain)) return false;
     if(state.families.size && (!r.family || !state.families.has(r.family))) return false;
     if(state.clocks.size && !state.clocks.has(r.clock)) return false;
+    if(state.actors.size && !(r.actors||[]).some(actor=>state.actors.has(actor))) return false;
     if(state.q.trim()&&!tokenMatch(r,state.q.trim())) return false;
     if(state.mode==='road'&&!r.isRoadmap) return false;
     if(state.mode==='faith'&&!['lineage','figures'].includes(r.source)) return false;
@@ -278,6 +293,8 @@
   function renderControls(){
     const srcCounts=Object.fromEntries(Object.keys(sourceLabels).map(k=>[k,rows.filter(r=>r.source===k).length]));
     $('#chronSources').innerHTML=Object.entries(sourceLabels).map(([k,v])=>button(v,'data-source="'+k+'"',state.sources.has(k),srcCounts[k])).join('');
+    const actorCounts=Object.fromEntries(Object.keys(actorLabels).map(k=>[k,rows.filter(r=>(r.actors||[]).includes(k)).length]));
+    $('#chronActors').innerHTML=Object.entries(actorLabels).map(([k,v])=>button(v,'data-actor="'+k+'"',state.actors.has(k),actorCounts[k])).join('');
     $('#chronEras').innerHTML=Object.entries(eraLabels).filter(([k])=>k!=='undated').map(([k,v])=>button(v,'data-era="'+k+'"',state.eras.has(k),rows.filter(r=>eraFor(mid(r.start,r.end))===k).length)).join('');
     const domains=unique(rows.map(r=>r.domain)).sort();
     $('#chronDomain').innerHTML='<option value="">All domains</option>'+domains.map(x=>'<option value="'+esc(x)+'">'+esc(x)+'</option>').join('');
@@ -293,6 +310,7 @@
     $('#chronTimeline').innerHTML=timelineHTML(list);
     document.querySelectorAll('[data-source]').forEach(b=>{const on=state.sources.has(b.dataset.source);b.classList.toggle('active',on);b.setAttribute('aria-pressed',on)});
     document.querySelectorAll('[data-era]').forEach(b=>{const on=state.eras.has(b.dataset.era);b.classList.toggle('active',on);b.setAttribute('aria-pressed',on)});
+    document.querySelectorAll('[data-actor]').forEach(b=>{const on=state.actors.has(b.dataset.actor);b.classList.toggle('active',on);b.setAttribute('aria-pressed',on)});
     document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('active',b.dataset.mode===state.mode));
     syncControlValues();
     syncUrl();
@@ -360,9 +378,10 @@
   document.addEventListener('click',e=>{
     const s=e.target.closest('[data-source]'); if(s){state.sources.has(s.dataset.source)?state.sources.delete(s.dataset.source):state.sources.add(s.dataset.source);render();return}
     const er=e.target.closest('[data-era]'); if(er){state.eras.has(er.dataset.era)?state.eras.delete(er.dataset.era):state.eras.add(er.dataset.era);render();return}
+    const actor=e.target.closest('[data-actor]'); if(actor){state.actors.has(actor.dataset.actor)?state.actors.delete(actor.dataset.actor):state.actors.add(actor.dataset.actor);render();return}
     const m=e.target.closest('[data-mode]'); if(m){mode(m.dataset.mode);return}
     const reset=e.target.closest('[data-reset]'); if(reset){
-      state.sources=new Set(['project','lineage','figures','foundations']);state.eras=new Set(Object.keys(eraLabels).filter(x=>x!=='undated'));state.domains.clear();state.families.clear();state.clocks.clear();state.q='';state.detail=false;state.sort='asc';state.mode='arc';
+      state.sources=new Set(['project','lineage','figures','foundations']);state.eras=new Set(Object.keys(eraLabels).filter(x=>x!=='undated'));state.domains.clear();state.families.clear();state.clocks.clear();state.actors.clear();state.q='';state.detail=false;state.sort='asc';state.mode='arc';
       $('#chronSearch').value='';$('#chronDomain').value='';$('#chronFamily').value='';$('#chronClock').value='';$('#chronDetail').checked=false;$('#chronSort').value='asc';render();return;
     }
   });
