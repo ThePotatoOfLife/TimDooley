@@ -249,9 +249,14 @@ assert.ok(source.includes('role="group" aria-label="Change House floor"'),'floor
 assert.ok(source.includes("'Move to '+levelLabel(upTarget"),'up control should announce its destination floor');
 assert.ok(source.includes("'Move to '+levelLabel(downTarget"),'down control should announce its destination floor');
 assert.ok(source.includes("'ORIENTATION OFFLINE'"),'failed governance hydration needs a visible fallback state');
-assert.ok(source.includes('const markCrossFloorLinks='),'runtime must inspect local page navigation for silent floor changes');
-assert.ok(source.includes("document.querySelectorAll('.page-nav a[href], .door-grid a[href], .room-actions a[href], .deep a[href], .deep-links a[href], .dwelling-links a[href], .adj-grid a[href], .side-routes a[href]')"),'cross-floor audit must cover page nav, Dwelling doors, action/deep-link groups and nested Room wormholes');
-assert.ok(source.includes("link.dataset.exitPrefix=arrow+' '+label"),'cross-floor links must disclose direction and destination floor');
+assert.ok(source.includes('const enforceFloorLocalPageNavigation='),'runtime must enforce floor-local page/header navigation');
+assert.ok(source.includes("'main > nav.page-nav a[href]'"),'page navigation must participate in floor-boundary enforcement');
+assert.ok(source.includes("'main > header nav a[href]'"),'header-local navigation must participate in floor-boundary enforcement');
+assert.ok(source.includes("link.hidden=true"),'cross-floor page/header links must be hidden rather than offered as ordinary doors');
+assert.ok(source.includes("link.dataset.elevatorFloorHidden='true'"),'runtime must only unhide links that it hid for floor enforcement');
+assert.ok(source.includes('const markInPageCrossFloorExits='),'explicit in-page cross-floor relationships must remain distinguishable from header navigation');
+assert.ok(source.includes("document.querySelectorAll('.door-grid a[href], .room-actions a[href], .deep a[href], .deep-links a[href], .dwelling-links a[href], .adj-grid a[href], .side-routes a[href]')"),'cross-floor exit audit must cover content doors without folding page navigation into it');
+assert.ok(source.includes("link.dataset.exitPrefix=arrow+' '+label"),'explicit in-page cross-floor exits must disclose direction and destination floor');
 assert.ok(css.includes('.door-grid a.spatial-exit'),'cross-floor Dwelling cards must expose explicit exit styling');
 assert.ok(css.includes('.room-actions a.spatial-exit'),'cross-floor action links must expose explicit exit styling');
 assert.ok(css.includes('.adj-grid a.spatial-exit'),'cross-floor nested Room wormholes must expose explicit exit styling');
