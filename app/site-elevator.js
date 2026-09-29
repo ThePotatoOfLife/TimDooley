@@ -227,20 +227,57 @@
       return dwelling?.primary_level||null;
     };
 
-    const markCrossFloorLinks=()=>{
-      if(!projection||!roomContract)return;
+    const linkSpatialTarget=link=>{
       const siteOrigin=new URL(context.siteBase).origin;
       const siteBasePath=new URL(context.siteBase).pathname;
-      document.querySelectorAll('.page-nav a[href], .door-grid a[href], .room-actions a[href], .deep a[href], .deep-links a[href], .dwelling-links a[href], .adj-grid a[href], .side-routes a[href]').forEach(link=>{
+      let targetUrl;
+      try{targetUrl=new URL(link.href,document.baseURI);}catch(_){return null}
+      if(targetUrl.origin!==siteOrigin)return null;
+      const targetRoute=normalizeRoute(targetUrl.pathname,siteBasePath);
+      return resolveSpatialContext(targetRoute,projection,roomContract,subroomContract);
+    };
+
+    const enforceFloorLocalPageNavigation=()=>{
+      if(!projection||!roomContract)return;
+      const selector=[
+        'main > nav.page-nav a[href]',
+        'main > nav.nav a[href]',
+        'main > header nav a[href]',
+        'main .page-header > nav a[href]',
+        'main nav.room-floor-nav a[href]'
+      ].join(', ');
+      document.querySelectorAll(selector).forEach(link=>{
+        const target=linkSpatialTarget(link);
+        if(!target||!LEVELS.includes(target.levelId))return;
+        const crossFloor=target.levelId!==spatial.levelId;
+        if(crossFloor){
+          if(!link.hidden)link.dataset.elevatorFloorHidden='true';
+          link.hidden=true;
+          link.setAttribute('aria-hidden','true');
+          link.classList.remove('spatial-exit');
+          delete link.dataset.exitFloor;
+          delete link.dataset.exitPrefix;
+          return;
+        }
+        if(link.dataset.elevatorFloorHidden==='true'){
+          link.hidden=false;
+          delete link.dataset.elevatorFloorHidden;
+          link.removeAttribute('aria-hidden');
+        }
         link.classList.remove('spatial-exit');
         delete link.dataset.exitFloor;
         delete link.dataset.exitPrefix;
-        let targetUrl;
-        try{targetUrl=new URL(link.href,document.baseURI);}catch(_){return}
-        if(targetUrl.origin!==siteOrigin)return;
-        const targetRoute=normalizeRoute(targetUrl.pathname,siteBasePath);
-        const target=resolveSpatialContext(targetRoute,projection,roomContract,subroomContract);
-        if(!LEVELS.includes(target.levelId)||target.levelId===spatial.levelId)return;
+      });
+    };
+
+    const markInPageCrossFloorExits=()=>{
+      if(!projection||!roomContract)return;
+      document.querySelectorAll('.door-grid a[href], .room-actions a[href], .deep a[href], .deep-links a[href], .dwelling-links a[href], .adj-grid a[href], .side-routes a[href]').forEach(link=>{
+        link.classList.remove('spatial-exit');
+        delete link.dataset.exitFloor;
+        delete link.dataset.exitPrefix;
+        const target=linkSpatialTarget(link);
+        if(!target||!LEVELS.includes(target.levelId)||target.levelId===spatial.levelId)return;
         const fromIndex=LEVELS.indexOf(spatial.levelId);
         const toIndex=LEVELS.indexOf(target.levelId);
         const arrow=toIndex<fromIndex?'↑':'↓';
@@ -350,7 +387,8 @@
       header.dataset.elevatorReady='true';
       header.setAttribute('aria-busy','false');
       render('hydrate');
-      markCrossFloorLinks();
+      enforceFloorLocalPageNavigation();
+      markInPageCrossFloorExits();
     }).catch(()=>{
       header.dataset.elevatorReady='error';
       header.setAttribute('aria-busy','false');
