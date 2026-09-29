@@ -149,12 +149,12 @@
 <section style="margin-top:40px;padding-top:28px;border-top:1px solid var(--site-line)"><p class="eyebrow">Spatial tools</p><h2 style="font:400 25px var(--site-font-serif);color:var(--site-gold)">Explore the center from different views</h2><p class="boundary">Use planes and compass after you know which project domain you are exploring. Comparative population remains one layer farther out.</p></section>
 <section class="planes" id="planes" aria-labelledby="planes-title">
 <p class="eyebrow">Three symbolic standing platforms</p>
-<h2 id="planes-title">Heaven · World · Below</h2>
+<h2 id="planes-title">Heaven · Plane · Below</h2>
 <p class="boundary">The same House and Tree can be entered from three navigation planes. The middle circle is the ordinary Plane already used by the Axis; the upper and lower circles let the reader stand in Heaven-facing integration or Below-facing roots/shadow without turning either one into a separate universe. <strong>Mountain and Swamp are terrain regimes inside those planes, not synonyms for Heaven and Below.</strong> Room placement here is a navigation emphasis, not a change of knowledge ownership.</p>
 <div class="plane-stack" id="planeStack"><span class="plane-loading">Loading the three planes…</span></div>
 </section>
 <section class="orientation" id="orientation" aria-labelledby="orientation-title">
-<div class="orientation-head"><div><p class="eyebrow">Stand in the center and choose a direction</p><h2 id="orientation-title">One compass across all three planes</h2><p class="boundary">Direction chooses the kind of question. Plane changes the orientation from which you read it. The same eight Doors stay in the same positions on Heaven, World and Below, so you can move vertically without getting lost.</p></div><div class="orientation-tabs" id="orientationTabs" aria-label="Choose navigation plane"><button class="orientation-tab" type="button" data-plane="heaven-plane" aria-pressed="false">Heaven</button><button class="orientation-tab" type="button" data-plane="world-plane" aria-pressed="true">Plane</button><button class="orientation-tab" type="button" data-plane="below-plane" aria-pressed="false">Below</button></div></div>
+<div class="orientation-head"><div><p class="eyebrow">Stand in the center and choose a direction</p><h2 id="orientation-title">One compass across all three planes</h2><p class="boundary">Direction chooses the kind of question. Plane changes the orientation from which you read it. The same eight Doors stay in the same positions on Heaven, Plane and Below, so you can move vertically without getting lost.</p></div><div class="orientation-tabs" id="orientationTabs" aria-label="Choose navigation plane"><button class="orientation-tab" type="button" data-plane="heaven-plane" aria-pressed="false">Heaven</button><button class="orientation-tab" type="button" data-plane="world-plane" aria-pressed="true">Plane</button><button class="orientation-tab" type="button" data-plane="below-plane" aria-pressed="false">Below</button></div></div>
 <div class="orientation-layout"><div class="orientation-compass" id="orientationCompass" aria-label="Eight-direction House compass"><span class="plane-loading">Loading compass…</span></div><article class="orientation-detail" id="orientationDetail"><p class="boundary">Choose a direction to inspect what that Door means on the selected plane.</p></article></div>
 <p class="orientation-law">The Axis is the exact center. Research Lab is the inner Forge ring around it, holding unresolved cross-Room questions before promotion. Works / Fruit stays at the outer ring because creative output can grow from every direction. The compass is a reading projection only; it does not change which Room owns a fact.</p>
 </section>
@@ -234,6 +234,8 @@
       const [res,popRes]=await Promise.all([fetch('../data/house/topology.json'),fetch('../data/house/orientation-population.json')]);if(!res.ok||!popRes.ok)throw new Error('compass unavailable');
       const [topo,orientationPopulation]=await Promise.all([res.json(),popRes.json()]),model=topo.symbolic_compass;if(!model?.directions)throw new Error('compass missing');
       let plane='world-plane',selected='n';
+      const planeLabel=p=>p==='world-plane'?'Plane':p.replace('-plane','');
+      const planeQuery=p=>p==='world-plane'?'plane':p.replace('-plane','');
       const routeOf=r=>r?'../'+r:'../';
       root.innerHTML=(model.directions||[]).map(d=>'<span class="compass-spoke" style="transform:rotate('+esc(d.bearing-90)+'deg)"></span>').join('')+
         (model.directions||[]).map(d=>{const rad=(Number(d.bearing)||0)*Math.PI/180,x=50+Math.sin(rad)*42,y=50-Math.cos(rad)*42;return '<button class="compass-door" type="button" style="left:'+x.toFixed(2)+'%;top:'+y.toFixed(2)+'%" data-direction="'+esc(d.id)+'" aria-pressed="false"><small>'+esc(d.label)+'</small><b>'+esc(d.title.replace(' & ',' / '))+'</b></button>';}).join('')+
@@ -253,13 +255,13 @@
         const landmarks=(orientationPopulation.landmarks||[]).filter(x=>x.direction===d.id&&(x.plane_ids||[]).includes(plane)&&x.visibility!=='archive-only').slice(0,7);
         const landmarkHtml=landmarks.map(x=>'<a class="population-landmark" href="'+esc(routeOf(x.route))+'" title="'+esc(x.note)+'">'+esc(x.label)+'</a>').join('');
         const populationHtml=(roomHtml||landmarkHtml)?'<div class="orientation-population"><h4>In this direction</h4>'+(roomHtml?'<div class="population-grid">'+roomHtml+'</div>':'')+(landmarkHtml?'<div class="population-landmarks">'+landmarkHtml+'</div>':'')+(rooms.length>visibleRooms.length?'<div class="population-more">+'+esc(rooms.length-visibleRooms.length)+' more Room'+(rooms.length-visibleRooms.length===1?'':'s')+' in this slice</div>':'')+'</div>':'';
-        detail.innerHTML='<span class="bearing">'+esc(d.label)+' · '+esc(plane.replace('-plane',''))+'</span><h3>'+esc(d.title)+'</h3><p><b>'+esc(focus.label||'')+'</b><br>'+esc(d.question)+'</p><div class="orientation-topics">'+topics+'</div>'+examples+boundary+populationHtml+'<div class="orientation-actions"><a href="'+esc(routeOf(d.route))+'">Enter this Door →</a><a href="../house/#nested-rooms">See its nested Rooms</a></div>';
-        const u=new URL(location.href);u.searchParams.set('plane',plane.replace('-plane',''));u.searchParams.set('dir',selected);history.replaceState(null,'',u);
+        detail.innerHTML='<span class="bearing">'+esc(d.label)+' · '+esc(planeLabel(plane))+'</span><h3>'+esc(d.title)+'</h3><p><b>'+esc(focus.label||'')+'</b><br>'+esc(d.question)+'</p><div class="orientation-topics">'+topics+'</div>'+examples+boundary+populationHtml+'<div class="orientation-actions"><a href="'+esc(routeOf(d.route))+'">Enter this Door →</a><a href="../house/#nested-rooms">See its nested Rooms</a></div>';
+        const u=new URL(location.href);u.searchParams.set('plane',planeQuery(plane));u.searchParams.set('dir',selected);history.replaceState(null,'',u);
       }
       root.addEventListener('click',e=>{const b=e.target.closest('[data-direction]');if(b)show(b.dataset.direction)});
       tabs.addEventListener('click',e=>{const b=e.target.closest('[data-plane]');if(b){plane=b.dataset.plane;show(selected)}});
       const u=new URL(location.href),qp=u.searchParams.get('plane'),qd=u.searchParams.get('dir');
-      const candidate=qp+'-plane';if(['heaven-plane','world-plane','below-plane'].includes(candidate))plane=candidate;
+      const candidate=qp==='plane'?'world-plane':qp+'-plane';if(['heaven-plane','world-plane','below-plane'].includes(candidate))plane=candidate;
       if(model.directions.some(x=>x.id===qd))selected=qd;
       show(selected);
     }catch(e){root.innerHTML='<span class="plane-loading">The orientation compass could not be loaded.</span>'}
@@ -281,13 +283,13 @@
   const cats=['all',...Array.from(new Set(rows.map(x=>x.category))).sort()];
   let active='all',plane='all';
   controls.innerHTML='<button class="placement-control" data-kind="plane" data-value="all" aria-pressed="true">All planes</button>'+
-    ['heaven-plane','world-plane','below-plane'].map(p=>'<button class="placement-control" data-kind="plane" data-value="'+p+'" aria-pressed="false">'+p.replace('-plane','')+'</button>').join('')+
+    ['heaven-plane','world-plane','below-plane'].map(p=>'<button class="placement-control" data-kind="plane" data-value="'+p+'" aria-pressed="false">'+(p==='world-plane'?'Plane':p.replace('-plane',''))+'</button>').join('')+
     '<span style="width:8px"></span>'+
     cats.map(c=>'<button class="placement-control" data-kind="cat" data-value="'+esc(c)+'" aria-pressed="'+(c==='all'?'true':'false')+'">'+esc(c)+'</button>').join('');
   function render(){
    const seen=new Set();
    const out=rows.filter(x=>(active==='all'||x.category===active)&&(plane==='all'||x.planes.includes(plane))).filter(x=>{const k=x.source+':'+x.id;if(seen.has(k))return false;seen.add(k);return true;}).slice(0,48);
-   grid.innerHTML=out.map(x=>'<article class="placement-node"><strong>'+esc(x.label)+'</strong><small>'+esc(x.category)+' · '+esc((x.planes||[]).map(p=>p.replace('-plane','')).join(' / ')||'crosscutting')+'</small><p>'+esc(x.note)+'</p></article>').join('')||'<p class="boundary">No nodes in this slice.</p>';
+   grid.innerHTML=out.map(x=>'<article class="placement-node"><strong>'+esc(x.label)+'</strong><small>'+esc(x.category)+' · '+esc((x.planes||[]).map(p=>p==='world-plane'?'Plane':p.replace('-plane','')).join(' / ')||'crosscutting')+'</small><p>'+esc(x.note)+'</p></article>').join('')||'<p class="boundary">No nodes in this slice.</p>';
    count.textContent=out.length+' visible node'+(out.length===1?'':'s')+' in this slice';
    controls.querySelectorAll('[data-kind="cat"]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.value===active)));
    controls.querySelectorAll('[data-kind="plane"]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.value===plane)));
