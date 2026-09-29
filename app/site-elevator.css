@@ -553,3 +553,17 @@
   font-weight: 800;
   letter-spacing: .08em;
 }
+.door-grid a.spatial-exit {
+  position: relative;
+  border-style: dashed;
+}
+.door-grid a.spatial-exit::before {
+  content: attr(data-exit-prefix) " EXIT";
+  display: inline-block;
+  margin-bottom: 7px;
+  color: var(--site-faint);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
