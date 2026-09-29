@@ -150,6 +150,13 @@ def main() -> int:
                 errors.append(f"dedicated elevator missing floor-boundary marker: {token}")
         if "projections.includes(level)" in dedicated_elevator:
             errors.append("dedicated elevator must not expose cross-floor projected Rooms as local doors")
+        for token in (
+            "if(destination?.primary_level)level=destination.primary_level",
+            "'wormhole-elevator'",
+            "moved the elevator to the destination Room",
+        ):
+            if token not in dedicated_elevator:
+                errors.append(f"dedicated elevator missing cross-floor transition marker: {token}")
         if "level='world'" in dedicated_elevator or "||'world'" in dedicated_elevator:
             errors.append("dedicated elevator must not restore the retired world floor")
 
