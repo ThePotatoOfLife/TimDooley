@@ -259,18 +259,28 @@
   async function load(){
     const baseUrl=new URL('../data/timeline-events.json',location.href);
     const packUrl=new URL('../data/timeline-event-packs/index.json',location.href);
-    const [baseR,packR,lineR,figR,foundR]=await Promise.all([
-      fetch(baseUrl),fetch(packUrl),
-      fetch(new URL('../data/religious-foundation-timeline.json',location.href)),
-      fetch(new URL('../data/history-origin-figures.json',location.href)),
-      fetch(new URL('../data/house/foundation-timeline-wave-001.json',location.href))
+    const loadOptional=async(url,fallback)=>{
+      try{
+        const r=await fetch(url,{cache:'no-cache'});
+        return r.ok?{ok:true,value:await r.json()}:{ok:false,value:fallback};
+      }catch(_){
+        return {ok:false,value:fallback};
+      }
+    };
+    let baseR;
+    try{baseR=await fetch(baseUrl,{cache:'no-cache'})}catch(_){baseR=null}
+    if(!baseR?.ok) throw new Error('Core project chronology is unavailable. Static Timeline orientation and direct routes remain usable.');
+    const base=await baseR.json();
+    const [packLoad,lineLoad,figLoad,foundLoad]=await Promise.all([
+      loadOptional(packUrl,{packs:[]}),
+      loadOptional(new URL('../data/religious-foundation-timeline.json',location.href),{events:[]}),
+      loadOptional(new URL('../data/history-origin-figures.json',location.href),{events:[]}),
+      loadOptional(new URL('../data/house/foundation-timeline-wave-001.json',location.href),{events:[]})
     ]);
-    if(!baseR.ok||!lineR.ok||!figR.ok||!foundR.ok) throw new Error('A chronology dataset failed to load.');
-    const base=await baseR.json(), line=await lineR.json(), figs=await figR.json(), found=await foundR.json();
+    const packIndex=packLoad.value, line=lineLoad.value, figs=figLoad.value, found=foundLoad.value;
     const projectEvents=[...(base.events||[])];
-    if(packR.ok){
-      const idx=await packR.json();
-      const packs=await Promise.all((idx.packs||[]).map(async name=>{
+    if(packLoad.ok){
+      const packs=await Promise.all((packIndex.packs||[]).map(async name=>{
         try{const r=await fetch(new URL('../data/timeline-event-packs/'+name,location.href));return r.ok?(await r.json()).events||[]:[]}catch(_){return[]}
       }));
       for(const p of packs) projectEvents.push(...p);
@@ -284,7 +294,18 @@
     ].filter(r=>{if(seen.has(r.id))return false;seen.add(r.id);return true});
     meta={project:projectEvents.length,lineage:(line.events||[]).length,figures:(figs.events||[]).length,foundations:(found.events||[]).length};
     renderControls(); render();
-    $('#chronLoading').hidden=true;
+    const degraded=[];
+    if(!packLoad.ok)degraded.push('project event packs');
+    if(!lineLoad.ok)degraded.push('religious lineages');
+    if(!figLoad.ok)degraded.push('origin figures');
+    if(!foundLoad.ok)degraded.push('foundation events');
+    if(degraded.length){
+      $('#chronLoading').hidden=false;
+      $('#chronLoading').textContent='Reduced detail · unavailable optional layers: '+degraded.join(', ')+'. Core project chronology is still active.';
+      $('#chronLoading').classList.add('degraded');
+    }else{
+      $('#chronLoading').hidden=true;
+    }
   }
   document.addEventListener('click',e=>{
     const s=e.target.closest('[data-source]'); if(s){state.sources.has(s.dataset.source)?state.sources.delete(s.dataset.source):state.sources.add(s.dataset.source);render();return}
