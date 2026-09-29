@@ -38,6 +38,7 @@
     'dwelling-door':'dwelling',
     'local-door':'local door',
     'wormhole-door':'wormhole',
+    'wormhole-elevator':'wormhole + elevator',
     'elevator':'elevator',
     'portal':'portal',
     'read':'read',
