@@ -582,3 +582,20 @@
   font-weight: 800;
   letter-spacing: .08em;
 }
+
+.adj-grid a.spatial-exit,
+.deep-links a.spatial-exit,
+.side-routes a.spatial-exit {
+  border-style: dashed;
+}
+.adj-grid a.spatial-exit::before,
+.deep-links a.spatial-exit::before,
+.side-routes a.spatial-exit::before {
+  content: attr(data-exit-prefix) " · ";
+  display: inline-block;
+  margin-bottom: 5px;
+  color: var(--site-faint);
+  font-size: .76em;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
