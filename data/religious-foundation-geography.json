@@ -1,8 +1,8 @@
 {
   "id": "religious-foundation-geography",
-  "version": "1.0.0",
-  "updated": "2026-09-20",
-  "status": "canonical historical-geography projection",
+  "version": "1.1.0",
+  "updated": "2026-09-29",
+  "status": "canonical historical-geography projection synchronized to religious-foundation-lineages",
   "purpose": "Connect religious lineage origins and later diffusion events to the World Map without collapsing a religion into a modern country or treating an origin place as present-day ownership.",
   "source": "data/religious-foundation-lineages.json",
   "map_contract": {
@@ -974,6 +974,533 @@
       "origin_place": "eastern Iranian / Central Asian region, uncertain",
       "spatial_status": "geocodable historical anchor",
       "parent_ids": [],
+      "map_policy": "distributed-origin",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "presbyterian-traditions",
+      "family_id": "christianity-lineage",
+      "name": "Presbyterian traditions",
+      "node_type": "denomination",
+      "seed_year_start": 1560,
+      "seed_year_end": 1647,
+      "origin_place": "Scotland → wider Reformed world",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "reformed-tradition"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "baptist-traditions",
+      "family_id": "christianity-lineage",
+      "name": "Baptist traditions",
+      "node_type": "denomination",
+      "seed_year_start": 1609,
+      "seed_year_end": 1644,
+      "origin_place": "Amsterdam / England",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "english-separatist-field",
+        "protestant-reformation"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "quaker-friends",
+      "family_id": "christianity-lineage",
+      "name": "Religious Society of Friends / Quaker traditions",
+      "node_type": "reform_movement",
+      "seed_year_start": 1647,
+      "seed_year_end": 1652,
+      "origin_place": "England",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "english-dissent-field"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "holiness-movement",
+      "family_id": "christianity-lineage",
+      "name": "Wesleyan-Holiness movement",
+      "node_type": "reform_movement",
+      "seed_year_start": 1830,
+      "seed_year_end": 1900,
+      "origin_place": "Britain / United States",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "methodist-traditions"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "church-of-nazarene",
+      "family_id": "christianity-lineage",
+      "name": "Church of the Nazarene",
+      "node_type": "denomination",
+      "seed_year_start": 1908,
+      "seed_year_end": 1915,
+      "origin_place": "United States",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "holiness-movement"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "restoration-stone-campbell",
+      "family_id": "christianity-lineage",
+      "name": "Stone-Campbell / Restoration Movement",
+      "node_type": "reform_movement",
+      "seed_year_start": 1801,
+      "seed_year_end": 1832,
+      "origin_place": "United States",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "protestant-reformation"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "english-separatist-field",
+      "family_id": "christianity-lineage",
+      "name": "English Separatist / Independent field",
+      "node_type": "phase",
+      "seed_year_start": 1550,
+      "seed_year_end": 1620,
+      "origin_place": "England / Dutch exile communities",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "protestant-reformation"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "english-dissent-field",
+      "family_id": "christianity-lineage",
+      "name": "English dissenting / Seeker field",
+      "node_type": "phase",
+      "seed_year_start": 1600,
+      "seed_year_end": 1660,
+      "origin_place": "England",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "protestant-reformation"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "chan-zen-traditions",
+      "family_id": "buddhism-lineage",
+      "name": "Chan / Zen traditions",
+      "node_type": "school",
+      "seed_year_start": 600,
+      "seed_year_end": 800,
+      "origin_place": "China → Korea, Japan, Vietnam and wider transmission",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "mahayana-buddhism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "pure-land-traditions",
+      "family_id": "buddhism-lineage",
+      "name": "Pure Land traditions",
+      "node_type": "school",
+      "seed_year_start": 400,
+      "seed_year_end": 1200,
+      "origin_place": "India/China → East Asia",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "mahayana-buddhism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "tibetan-buddhism",
+      "family_id": "buddhism-lineage",
+      "name": "Tibetan Buddhist traditions",
+      "node_type": "transmission_family",
+      "seed_year_start": 600,
+      "seed_year_end": 1200,
+      "origin_place": "Tibetan Plateau",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "mahayana-buddhism",
+        "vajrayana-buddhism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "east-asian-buddhist-field",
+      "family_id": "buddhism-lineage",
+      "name": "East Asian Buddhist transmission field",
+      "node_type": "phase",
+      "seed_year_start": 100,
+      "seed_year_end": 900,
+      "origin_place": "Central Asia / China / Korea / Japan / Vietnam",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "mahayana-buddhism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "classical-daoist-textual-field",
+      "family_id": "daoism-lineage",
+      "name": "Classical Daoist textual field",
+      "node_type": "phase",
+      "seed_year_start": -400,
+      "seed_year_end": -250,
+      "origin_place": "Warring States China",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "celestial-masters-daoism",
+      "family_id": "daoism-lineage",
+      "name": "Way of the Celestial Masters",
+      "node_type": "trunk",
+      "seed_year_start": 142,
+      "seed_year_end": 220,
+      "origin_place": "Sichuan / Han China",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "shangqing-daoism",
+      "family_id": "daoism-lineage",
+      "name": "Shangqing / Highest Clarity tradition",
+      "node_type": "revelatory_lineage",
+      "seed_year_start": 364,
+      "seed_year_end": 370,
+      "origin_place": "Jiangnan / near Nanjing",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "celestial-masters-daoism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "lingbao-daoism",
+      "family_id": "daoism-lineage",
+      "name": "Lingbao / Numinous Treasure tradition",
+      "node_type": "revelatory_lineage",
+      "seed_year_start": 397,
+      "seed_year_end": 402,
+      "origin_place": "Jiangnan China",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "celestial-masters-daoism",
+        "shangqing-daoism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "quanzhen-daoism",
+      "family_id": "daoism-lineage",
+      "name": "Quanzhen / Complete Perfection",
+      "node_type": "reform_movement",
+      "seed_year_start": 1160,
+      "seed_year_end": 1170,
+      "origin_place": "North China / Shandong",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "celestial-masters-daoism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "zhengyi-daoism",
+      "family_id": "daoism-lineage",
+      "name": "Zhengyi / Orthodox Unity",
+      "node_type": "communion",
+      "seed_year_start": 900,
+      "seed_year_end": 1400,
+      "origin_place": "Longhushan and southern Chinese ritual networks",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "celestial-masters-daoism",
+        "shangqing-daoism",
+        "lingbao-daoism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "classical-confucian-field",
+      "family_id": "confucian-lineage",
+      "name": "Classical Confucian / Ru textual-ritual field",
+      "node_type": "tradition_field",
+      "seed_year_start": -551,
+      "seed_year_end": -221,
+      "origin_place": "Eastern Zhou China",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "han-confucian-institutionalization",
+      "family_id": "confucian-lineage",
+      "name": "Han Confucian state/classical institutionalization",
+      "node_type": "institutional_phase",
+      "seed_year_start": -202,
+      "seed_year_end": 220,
+      "origin_place": "Han China",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "classical-confucian-field"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "song-ming-neo-confucianism",
+      "family_id": "confucian-lineage",
+      "name": "Song–Ming Neo-Confucian traditions",
+      "node_type": "intellectual_revival",
+      "seed_year_start": 960,
+      "seed_year_end": 1644,
+      "origin_place": "China → Korea, Japan, Vietnam",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "classical-confucian-field",
+        "han-confucian-institutionalization"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "cheng-zhu-confucianism",
+      "family_id": "confucian-lineage",
+      "name": "Cheng–Zhu / School of Principle",
+      "node_type": "philosophical_school",
+      "seed_year_start": 1030,
+      "seed_year_end": 1313,
+      "origin_place": "Song China",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "song-ming-neo-confucianism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "lu-wang-confucianism",
+      "family_id": "confucian-lineage",
+      "name": "Lu–Wang / School of Heart-Mind",
+      "node_type": "philosophical_school",
+      "seed_year_start": 1139,
+      "seed_year_end": 1529,
+      "origin_place": "Song/Ming China",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "song-ming-neo-confucianism"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "modern-new-confucianism",
+      "family_id": "confucian-lineage",
+      "name": "Modern / New Confucianism",
+      "node_type": "modern_intellectual_movement",
+      "seed_year_start": 1900,
+      "seed_year_end": 2026,
+      "origin_place": "China / Hong Kong / Taiwan / global academy",
+      "spatial_status": "distributed",
+      "parent_ids": [
+        "song-ming-neo-confucianism",
+        "classical-confucian-field"
+      ],
+      "map_policy": "distributed-origin",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "ancient-japanese-kami-field",
+      "family_id": "shinto-lineage",
+      "name": "Ancient Japanese kami / ritual field",
+      "node_type": "tradition_field",
+      "seed_year_start": -500,
+      "seed_year_end": 700,
+      "origin_place": "Japanese archipelago",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "kiki-mythic-texts",
+      "family_id": "shinto-lineage",
+      "name": "Kojiki / Nihon Shoki mythic-historical textual layer",
+      "node_type": "textual_consolidation",
+      "seed_year_start": 712,
+      "seed_year_end": 720,
+      "origin_place": "Nara-period Japan",
+      "spatial_status": "geocodable historical anchor",
+      "parent_ids": [
+        "ancient-japanese-kami-field"
+      ],
+      "map_policy": "historical-origin-anchor",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "shinbutsu-shugo",
+      "family_id": "shinto-lineage",
+      "name": "Shinbutsu-shūgō / kami-Buddha combinatory traditions",
+      "node_type": "syncretic_field",
+      "seed_year_start": 700,
+      "seed_year_end": 1868,
+      "origin_place": "Japan",
+      "spatial_status": "distributed",
+      "parent_ids": [
+        "ancient-japanese-kami-field"
+      ],
+      "map_policy": "distributed-origin",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "meiji-shinto-reorganization",
+      "family_id": "shinto-lineage",
+      "name": "Meiji Shinto reorganization / separation",
+      "node_type": "state_reorganization",
+      "seed_year_start": 1868,
+      "seed_year_end": 1945,
+      "origin_place": "Japan",
+      "spatial_status": "national",
+      "parent_ids": [
+        "shinbutsu-shugo",
+        "ancient-japanese-kami-field"
+      ],
+      "map_policy": "distributed-origin",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "modern-jinja-shinto",
+      "family_id": "shinto-lineage",
+      "name": "Postwar Jinja Shinto",
+      "node_type": "modern_institutional_field",
+      "seed_year_start": 1945,
+      "seed_year_end": 1946,
+      "origin_place": "Japan",
+      "spatial_status": "national",
+      "parent_ids": [
+        "meiji-shinto-reorganization"
+      ],
+      "map_policy": "distributed-origin",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "ancient-chinese-ancestor-deity-field",
+      "family_id": "chinese-popular-religion-field",
+      "name": "Ancient ancestors, gods and divination field",
+      "node_type": "diffuse_religious_field",
+      "seed_year_start": -1600,
+      "seed_year_end": -256,
+      "origin_place": "North China and wider early Chinese cultural zones",
+      "spatial_status": "broad-region",
+      "parent_ids": [],
+      "map_policy": "distributed-origin",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "local-temple-ancestor-field",
+      "family_id": "chinese-popular-religion-field",
+      "name": "Local temple, ancestor and communal religious field",
+      "node_type": "diffuse_religious_field",
+      "seed_year_start": 900,
+      "seed_year_end": 1300,
+      "origin_place": "China",
+      "spatial_status": "distributed",
+      "parent_ids": [
+        "ancient-chinese-ancestor-deity-field"
+      ],
+      "map_policy": "distributed-origin",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "ancestor-veneration-chinese",
+      "family_id": "chinese-popular-religion-field",
+      "name": "Chinese ancestor veneration traditions",
+      "node_type": "cross_cutting_practice",
+      "seed_year_start": -1600,
+      "seed_year_end": 2026,
+      "origin_place": "China / diaspora communities",
+      "spatial_status": "distributed",
+      "parent_ids": [
+        "ancient-chinese-ancestor-deity-field"
+      ],
+      "map_policy": "distributed-origin",
+      "current_demography_owner": "data/world-religion-layer.json",
+      "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
+    },
+    {
+      "node_id": "spirit-medium-divination-field",
+      "family_id": "chinese-popular-religion-field",
+      "name": "Spirit-medium, divination and geomantic practices",
+      "node_type": "cross_cutting_practice",
+      "seed_year_start": -1200,
+      "seed_year_end": 2026,
+      "origin_place": "China / Chinese diaspora",
+      "spatial_status": "distributed",
+      "parent_ids": [
+        "ancient-chinese-ancestor-deity-field",
+        "local-temple-ancestor-field"
+      ],
       "map_policy": "distributed-origin",
       "current_demography_owner": "data/world-religion-layer.json",
       "note": "Origin geography is historical emergence context. Present-day population geography must come from dated demographic observations, not from this origin anchor."
