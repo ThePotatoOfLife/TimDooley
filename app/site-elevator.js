@@ -231,7 +231,7 @@
       if(!projection||!roomContract)return;
       const siteOrigin=new URL(context.siteBase).origin;
       const siteBasePath=new URL(context.siteBase).pathname;
-      document.querySelectorAll('.page-nav a[href], .door-grid a[href], .room-actions a[href], .deep a[href], .dwelling-links a[href]').forEach(link=>{
+      document.querySelectorAll('.page-nav a[href], .door-grid a[href], .room-actions a[href], .deep a[href], .deep-links a[href], .dwelling-links a[href], .adj-grid a[href], .side-routes a[href]').forEach(link=>{
         link.classList.remove('spatial-exit');
         delete link.dataset.exitFloor;
         delete link.dataset.exitPrefix;
