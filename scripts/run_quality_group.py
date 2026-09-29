@@ -71,6 +71,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
         ]),
         ("Timeline and story", [
             "python scripts/validate_timeline_naming.py",
+            "python scripts/validate_timeline_reader_state.py",
             "python scripts/validate_prediction_under_mined_domains.py",
             "python scripts/validate_100000_hour_page.py",
             "python scripts/validate_story_archive.py",
