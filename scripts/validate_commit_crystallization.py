@@ -73,8 +73,8 @@ def main():
         if marker not in center_text: errors.append(f'Potato center missing crystallization marker: {marker}')
 
     home_text=HOME.read_text(encoding='utf-8',errors='replace')
-    for marker in ('class="project-spine"','class="public-doors"','One project, one visible spine'):
-        if marker not in home_text: errors.append(f'homepage missing crystallized spine marker: {marker}')
+    for marker in ('data-reader-surface="home"','class="public-doors"','id="project-substance"','id="reality-cases"','id="working-capabilities"'):
+        if marker not in home_text: errors.append(f'homepage missing current crystallized structure marker: {marker}')
 
     if errors:
         print('Commit materialization/crystallization validation failed:')
