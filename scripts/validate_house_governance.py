@@ -72,7 +72,7 @@ WORKS_MARKERS=(
 )
 HOME_FILE=ROOT/'index.html'
 HOME_SPINE=(
-    'class="project-spine"',
+    'id="project-substance"',
     'id="reality-cases"',
     'id="working-capabilities"',
     'class="public-doors"',
@@ -147,7 +147,7 @@ def validate_home_corridor(errors):
     if not HOME_FILE.is_file(): errors.append('missing homepage index.html'); return
     text=HOME_FILE.read_text(encoding='utf-8',errors='replace')
     for marker in HOME_SPINE:
-        if marker not in text: errors.append(f'index.html missing project-spine marker: {marker}')
+        if marker not in text: errors.append(f'index.html missing current homepage structure marker: {marker}')
     nav=re.search(r'<nav class="public-doors"[^>]*>(.*?)</nav>',text,flags=re.I|re.S)
     if not nav: errors.append('index.html missing canonical public-doors nav')
     else:
