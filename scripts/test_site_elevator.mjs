@@ -121,24 +121,26 @@ assert.equal(elevator.stepLevel('plane','down'),'below');
 assert.equal(elevator.stepLevel('below','down'),'below');
 
 const cultureBelow=elevator.roomsForLevel('below',projection,roomContract).map(room=>room.id);
-assert.ok(cultureBelow.includes('culture-information'));
+assert.equal(cultureBelow.includes('culture-information'),false,'Below rail must not expose Plane-owned Culture as a door');
+const culturePlane=elevator.roomsForLevel('plane',projection,roomContract).map(room=>room.id);
+assert.ok(culturePlane.includes('culture-information'),'Culture must remain reachable from its Plane floor');
 const cultureHeaven=elevator.roomsForLevel('heaven',projection,roomContract).map(room=>room.id);
 assert.equal(cultureHeaven.includes('culture-information'),false);
 
-// primary Room ordering contract
-const planeRooms=elevator.roomsForLevel('plane',projection,roomContract);
-const firstSecondaryIndex=planeRooms.findIndex(room=>room.primaryLevel!=='plane');
-assert.ok(firstSecondaryIndex>0,'Plane must expose at least one primary Room before secondary projections');
-assert.ok(planeRooms.slice(0,firstSecondaryIndex).every(room=>room.primaryLevel==='plane'),'primary Plane Rooms must lead the rail');
-assert.ok(planeRooms.slice(firstSecondaryIndex).every(room=>room.primaryLevel!=='plane'),'secondary cross-floor projections must follow primary Plane Rooms');
-assert.ok(planeRooms.every(room=>typeof room.isPrimaryProjection==='boolean'),'Room rows must expose projection priority');
-assert.ok(planeRooms.slice(0,firstSecondaryIndex).every(room=>room.isPrimaryProjection===true),'primary Rooms must be marked primary');
-assert.ok(planeRooms.slice(firstSecondaryIndex).every(room=>room.isPrimaryProjection===false),'secondary Rooms must be marked secondary');
+// hard floor-boundary contract: the header rail is a floor-local door list, not a cross-floor projection browser
+for(const levelId of elevator.LEVELS){
+  const visible=elevator.roomsForLevel(levelId,projection,roomContract);
+  assert.ok(visible.length>0,levelId+' must expose at least one floor-local Room');
+  assert.ok(visible.every(room=>room.primaryLevel===levelId),levelId+' rail must contain only Rooms whose canonical entrance stays on '+levelId);
+  assert.ok(visible.every(room=>room.isPrimaryProjection===true),levelId+' rail rows must all be primary floor entrances');
+}
 
-// every governed Room must be visible on its resolved primary floor so it can be highlighted in place
+// every governed Room must be visible on exactly its resolved primary floor so a Room click never changes floors
 for(const dwelling of projection.dwellings){
-  const visible=elevator.roomsForLevel(dwelling.primary_level,projection,roomContract);
-  assert.ok(visible.some(room=>room.id===dwelling.id), dwelling.id+' must appear on its primary floor rail');
+  const appearances=elevator.LEVELS.filter(levelId=>
+    elevator.roomsForLevel(levelId,projection,roomContract).some(room=>room.id===dwelling.id)
+  );
+  assert.deepEqual(appearances,[dwelling.primary_level],dwelling.id+' must appear only on its primary floor rail');
 }
 
 import fs from 'node:fs';
@@ -160,7 +162,6 @@ for(const marker of [
   'aria-current',
   'data-elevator-level',
   'is-primary',
-  'is-secondary',
   "if(event.target!==header)return",
 ]){
   assert.ok(source.includes(marker),'site elevator visual contract missing '+marker);
@@ -187,8 +188,8 @@ assert.ok(css.includes('[data-elevator-level="plane"]::before'),'Plane needs a d
 assert.ok(css.includes('[data-elevator-level="below"]::before'),'Below needs a distinct pixel-biome layer');
 assert.ok(css.includes('border-radius:0'),'terminal Room tiles should not drift back into pill styling');
 assert.ok(css.includes('background:var(--site-elevator-accent)'),'active Room tile needs a compact location beacon');
-assert.ok(css.includes('border-style:dashed'),'secondary projected Rooms must remain visually subordinate');
-assert.ok(css.includes('.site-elevator-room.is-secondary{\n  opacity:1;'),'secondary Rooms must stay readable instead of fading the text');
+assert.equal(css.includes('.site-elevator-room.is-secondary'),false,'header CSS must not preserve cross-floor Room affordances');
+assert.equal(source.includes('is-secondary'),false,'runtime must not emit cross-floor Room doors');
 assert.ok(css.includes('[data-elevator-level="plane"] .site-elevator-room'),'Plane Room tiles need block-earth material styling');
 assert.ok(css.includes('[data-elevator-level="heaven"] .site-elevator-room'),'Heaven Room tiles need sky material styling');
 assert.ok(css.includes('rgba(18,49,75,.66)'),'Heaven Room panes must remain readable while revealing more sky');
