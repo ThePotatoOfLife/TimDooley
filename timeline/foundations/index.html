@@ -76,8 +76,38 @@
 <script>
 (async()=>{
  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const [r,g,p,fr,rl,re]=await Promise.all([fetch('../../data/house/foundation-timeline-wave-001.json'),fetch('../../data/house/foundation-door-seed-genealogy.json'),fetch('../../data/house/foundation-placement-wave-003.json'),fetch('../../data/house/foundation-room-atlas.json'),fetch('../../data/religious-foundation-timeline.json'),fetch('../../data/religious-foundation-events.json')]);if(!r.ok||!g.ok||!p.ok||!fr.ok||!rl.ok||!re.ok)return;
- const data=await r.json(),genealogy=await g.json(),placement=await p.json(),foundationRooms=await fr.json(),religiousLineage=await rl.json(),religiousEvents=await re.json(),events=data.events||[],seedRows=genealogy.records||[],placementBy=Object.fromEntries((placement.records||[]).map(x=>[x.foundation_id,x]));
+ async function loadJson(path,fallback,required=false){
+   try{
+     const response=await fetch(path,{cache:'no-cache'});
+     if(!response.ok)throw new Error(path+' '+response.status);
+     return {ok:true,value:await response.json()};
+   }catch(error){
+     if(required)throw error;
+     return {ok:false,value:fallback,error};
+   }
+ }
+ let core;
+ try{
+   core=await loadJson('../../data/house/foundation-timeline-wave-001.json',null,true);
+ }catch(error){
+   document.getElementById('foundationReadout').textContent='Foundation chronology is temporarily unavailable. The explanatory material and direct source routes on this page remain usable.';
+   document.getElementById('foundationTimeline').innerHTML='<section class="year-group"><h2>Direct routes</h2><div class="event-grid"><article class="event"><strong>Religious foundations</strong><p><a href="../../religion/">Open Religion →</a></p></article><article class="event"><strong>Project timeline</strong><p><a href="../">Open Timeline →</a></p></article></div></section>';
+   return;
+ }
+ const [genealogyLoad,placementLoad,roomLoad,lineageLoad,eventLoad]=await Promise.all([
+   loadJson('../../data/house/foundation-door-seed-genealogy.json',{records:[]}),
+   loadJson('../../data/house/foundation-placement-wave-003.json',{records:[]}),
+   loadJson('../../data/house/foundation-room-atlas.json',{rooms:[]}),
+   loadJson('../../data/religious-foundation-timeline.json',{events:[]}),
+   loadJson('../../data/religious-foundation-events.json',{events:[]})
+ ]);
+ const data=core.value,genealogy=genealogyLoad.value,placement=placementLoad.value,foundationRooms=roomLoad.value,religiousLineage=lineageLoad.value,religiousEvents=eventLoad.value,events=data.events||[],seedRows=genealogy.records||[],placementBy=Object.fromEntries((placement.records||[]).map(x=>[x.foundation_id,x]));
+ const degraded=[];
+ if(!genealogyLoad.ok)degraded.push('seed genealogy');
+ if(!placementLoad.ok)degraded.push('House placement');
+ if(!roomLoad.ok)degraded.push('Foundation Rooms');
+ if(!lineageLoad.ok)degraded.push('religious lineages');
+ if(!eventLoad.ok)degraded.push('religious event enrichment');
  const filters=document.getElementById('foundationFilters'),root=document.getElementById('foundationTimeline'),readout=document.getElementById('foundationReadout');
  const domains=[...new Set(events.map(x=>x.domain).filter(Boolean))].sort();
  const types=[...new Set(events.map(x=>x.event_type).filter(Boolean))];
@@ -161,6 +191,13 @@
  renderSeeds();
 
  render();
-})().catch(()=>{});
+ if(degraded.length){
+   foundationReadout.textContent+=' · Reduced detail: '+degraded.join(', ')+' unavailable.';
+ }
+})().catch(error=>{
+ const readout=document.getElementById('foundationReadout');
+ if(readout)readout.textContent='Foundation Timeline encountered a rendering error. Static explanation and direct links remain available.';
+ console.error(error);
+});
 </script>
 <script src="../../app/house-journey.js"></script></body></html>
