@@ -403,9 +403,44 @@
 (async()=>{
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   try{
-    const [subRes,topoRes,intRes,projRes,conceptRes,holdRes,collRes,dataHoldRes,dossierRes,societyRes,entityRes,foundationRes,foundation2Res,foundation3Res]=await Promise.all([fetch('../data/house/subrooms.json'),fetch('../data/house/topology.json'),fetch('../data/house/interfaces.json'),fetch('../data/house/projections.json'),fetch('../data/house/concept-topology.json'),fetch('../data/house/holdings.json'),fetch('../data/house/collections.json'),fetch('../data/house/data-holdings.json'),fetch('../data/house/room-dossiers.json'),fetch('../data/house/society-population.json'),fetch('../data/house/entity-dossiers.json'),fetch('../data/house/foundations-wave-001.json'),fetch('../data/house/foundations-wave-002.json'),fetch('../data/house/foundations-wave-003.json')]);
-    if(!subRes.ok||!topoRes.ok||!intRes.ok||!projRes.ok||!conceptRes.ok||!holdRes.ok||!collRes.ok||!dataHoldRes.ok||!dossierRes.ok||!societyRes.ok||!entityRes.ok||!foundationRes.ok||!foundation2Res.ok||!foundation3Res.ok)throw new Error('House topology unavailable');
-    const sub=await subRes.json(),topo=await topoRes.json(),interfaces=await intRes.json(),projections=await projRes.json(),concepts=await conceptRes.json(),holdings=await holdRes.json(),collections=await collRes.json(),dataHoldings=await dataHoldRes.json(),dossiers=await dossierRes.json(),society=await societyRes.json(),entityDossiers=await entityRes.json(),foundation1=await foundationRes.json(),foundation2=await foundation2Res.json(),foundation3=await foundation3Res.json();
+    async function loadJson(path,fallback,required=false){
+      try{
+        const response=await fetch(path,{cache:'no-cache'});
+        if(!response.ok)throw new Error(path+' '+response.status);
+        return {ok:true,value:await response.json()};
+      }catch(error){
+        if(required)throw error;
+        return {ok:false,value:fallback,error};
+      }
+    }
+    const [subLoad,topoLoad,intLoad,projLoad]=await Promise.all([
+      loadJson('../data/house/subrooms.json',null,true),
+      loadJson('../data/house/topology.json',null,true),
+      loadJson('../data/house/interfaces.json',null,true),
+      loadJson('../data/house/projections.json',null,true)
+    ]);
+    const [conceptLoad,holdLoad,collLoad,dataHoldLoad,dossierLoad,societyLoad,entityLoad,foundationLoad,foundation2Load,foundation3Load]=await Promise.all([
+      loadJson('../data/house/concept-topology.json',{concepts:[],relation_types:[],relations:[]}),
+      loadJson('../data/house/holdings.json',{holdings:[]}),
+      loadJson('../data/house/collections.json',{collections:[]}),
+      loadJson('../data/house/data-holdings.json',{bundles:[]}),
+      loadJson('../data/house/room-dossiers.json',{dossiers:[]}),
+      loadJson('../data/house/society-population.json',{triune_lenses:[],population_families:[],anchors:[]}),
+      loadJson('../data/house/entity-dossiers.json',{dossiers:[]}),
+      loadJson('../data/house/foundations-wave-001.json',{records:[]}),
+      loadJson('../data/house/foundations-wave-002.json',{records:[]}),
+      loadJson('../data/house/foundations-wave-003.json',{records:[]})
+    ]);
+    const sub=subLoad.value,topo=topoLoad.value,interfaces=intLoad.value,projections=projLoad.value,concepts=conceptLoad.value,holdings=holdLoad.value,collections=collLoad.value,dataHoldings=dataHoldLoad.value,dossiers=dossierLoad.value,society=societyLoad.value,entityDossiers=entityLoad.value,foundation1=foundationLoad.value,foundation2=foundation2Load.value,foundation3=foundation3Load.value;
+    const degraded=[];
+    if(!conceptLoad.ok)degraded.push('concept topology');
+    if(!holdLoad.ok)degraded.push('holdings');
+    if(!collLoad.ok)degraded.push('collections');
+    if(!dataHoldLoad.ok)degraded.push('data holdings');
+    if(!dossierLoad.ok)degraded.push('Room dossiers');
+    if(!societyLoad.ok)degraded.push('society population');
+    if(!entityLoad.ok)degraded.push('entity dossiers');
+    if(!foundationLoad.ok||!foundation2Load.ok||!foundation3Load.ok)degraded.push('foundation examples');
     const groups=document.getElementById('houseSubrooms'),corridors=document.getElementById('houseCorridors'),interfaceRoot=document.getElementById('houseInterfaces'),projectionTabs=document.getElementById('houseProjectionTabs'),projectionPanel=document.getElementById('houseProjectionPanel'),operatorRoot=document.getElementById('houseOperators'),operatorRelations=document.getElementById('houseOperatorRelations'),holdingsRoot=document.getElementById('houseHoldingsGrid'),collectionStrip=document.getElementById('houseCollectionStrip');
 
 
@@ -553,6 +588,10 @@
     }
     if(interfaceRoot)interfaceRoot.innerHTML=(interfaces.interfaces||[]).map(x=>'<div class="interface-card"><strong>'+esc(x.from)+' → '+esc(x.to)+'</strong><em>'+esc(x.type)+'</em><small>'+esc(x.changes)+'</small><small><b>Guard:</b> '+esc(x.guard)+'</small></div>').join('');
     corridors.innerHTML=(topo.strong_corridors||[]).map(x=>'<div class="corridor-row"><b>'+esc(parentLabels[x.from]||x.from)+'</b><em>'+esc(x.type)+'</em><b>'+esc(parentLabels[x.to]||x.to)+'</b></div>').join('');
+    if(degraded.length){
+      const readout=document.getElementById('houseTopologyReadout');
+      if(readout)readout.textContent+=' · Reduced detail: '+degraded.join(', ')+' unavailable.';
+    }
   }catch(e){
     document.getElementById('houseSubrooms').innerHTML='<p class="boundary">Nested Room data could not be loaded. The ten canonical Dwellings above remain the stable top-level structure.</p>';
     document.getElementById('houseCorridors').innerHTML='';
