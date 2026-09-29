@@ -91,18 +91,6 @@ textarea:focus-visible,
   text-transform: uppercase;
 }
 
-.page-nav .spatial-exit {
-  color: var(--site-faint);
-}
-
-.page-nav .spatial-exit::before {
-  content: attr(data-exit-prefix) " · ";
-  opacity: .62;
-  font-size: .78em;
-  font-weight: 800;
-  letter-spacing: .08em;
-}
-
 .page-header {
   margin: 0 0 38px;
 }
