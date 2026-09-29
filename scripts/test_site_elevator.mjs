@@ -250,8 +250,9 @@ assert.ok(source.includes("'Move to '+levelLabel(upTarget"),'up control should a
 assert.ok(source.includes("'Move to '+levelLabel(downTarget"),'down control should announce its destination floor');
 assert.ok(source.includes("'ORIENTATION OFFLINE'"),'failed governance hydration needs a visible fallback state');
 assert.ok(source.includes('const markCrossFloorLinks='),'runtime must inspect local page navigation for silent floor changes');
-assert.ok(source.includes("document.querySelectorAll('.page-nav a[href]')"),'cross-floor audit must cover local page-nav links');
+assert.ok(source.includes("document.querySelectorAll('.page-nav a[href], .door-grid a[href]')"),'cross-floor audit must cover local page-nav links and Dwelling door cards');
 assert.ok(source.includes("link.dataset.exitPrefix=arrow+' '+label"),'cross-floor links must disclose direction and destination floor');
+assert.ok(css.includes('.door-grid a.spatial-exit'),'cross-floor Dwelling cards must expose explicit exit styling');
 assert.ok(source.includes("target.levelId===spatial.levelId"),'same-floor local links must remain ordinary doors');
 
 console.log('Site elevator resolver + visual contract passed.');
