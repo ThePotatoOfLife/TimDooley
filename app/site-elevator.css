@@ -567,3 +567,18 @@
   letter-spacing: .1em;
   text-transform: uppercase;
 }
+
+.room-actions a.spatial-exit,
+.deep a.spatial-exit,
+.dwelling-links a.spatial-exit {
+  border-style: dashed;
+}
+.room-actions a.spatial-exit::before,
+.deep a.spatial-exit::before,
+.dwelling-links a.spatial-exit::before {
+  content: attr(data-exit-prefix) " · ";
+  color: var(--site-faint);
+  font-size: .78em;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
