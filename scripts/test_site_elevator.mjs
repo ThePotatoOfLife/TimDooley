@@ -235,7 +235,7 @@ assert.ok(css.includes('text-wrap:balance'),'Room labels should wrap into balanc
 assert.ok(source.includes('site-elevator-floor-code'),'runtime must render terminal floor code');
 assert.ok(source.includes('header.dataset.elevatorRoom=spatial.roomId'),'runtime must publish the current Room on the header');
 assert.ok(source.includes("selectedLevel===spatial.levelId"),'active Room highlight must only appear on the actual floor');
-assert.ok(source.includes("?'HERE'"),'actual floor board must use a compact HERE label');
+assert.ok(source.includes("?'HERE':'ROOM PROJECTION · ENTER VIA '"),'floor board must distinguish local Room entrances from cross-floor contextual projections');
 assert.ok(source.includes("'BROWSING FLOOR'"),'non-actual floor must be clearly marked as browsing');
 assert.ok(source.includes("data-elevator-level','pending"),'pre-hydration header must not falsely present Plane');
 assert.ok(source.includes('Finding your Room…'),'pre-hydration header needs a neutral orientation label');
