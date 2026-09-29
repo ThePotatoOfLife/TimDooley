@@ -546,7 +546,7 @@
 .page-nav a.spatial-exit {
   color: var(--site-faint);
 }
-.page-nav a.spatial-exit::before {
+.page-nav a.spatial-exit[data-exit-prefix]::before {
   content: attr(data-exit-prefix) " · ";
   opacity: .62;
   font-size: .78em;
@@ -557,7 +557,7 @@
   position: relative;
   border-style: dashed;
 }
-.door-grid a.spatial-exit::before {
+.door-grid a.spatial-exit[data-exit-prefix]::before {
   content: attr(data-exit-prefix) " EXIT";
   display: inline-block;
   margin-bottom: 7px;
@@ -573,9 +573,9 @@
 .dwelling-links a.spatial-exit {
   border-style: dashed;
 }
-.room-actions a.spatial-exit::before,
-.deep a.spatial-exit::before,
-.dwelling-links a.spatial-exit::before {
+.room-actions a.spatial-exit[data-exit-prefix]::before,
+.deep a.spatial-exit[data-exit-prefix]::before,
+.dwelling-links a.spatial-exit[data-exit-prefix]::before {
   content: attr(data-exit-prefix) " · ";
   color: var(--site-faint);
   font-size: .78em;
@@ -588,9 +588,9 @@
 .side-routes a.spatial-exit {
   border-style: dashed;
 }
-.adj-grid a.spatial-exit::before,
-.deep-links a.spatial-exit::before,
-.side-routes a.spatial-exit::before {
+.adj-grid a.spatial-exit[data-exit-prefix]::before,
+.deep-links a.spatial-exit[data-exit-prefix]::before,
+.side-routes a.spatial-exit[data-exit-prefix]::before {
   content: attr(data-exit-prefix) " · ";
   display: inline-block;
   margin-bottom: 5px;
