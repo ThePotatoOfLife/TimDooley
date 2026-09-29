@@ -73,6 +73,7 @@
   const parseList=(key,allowed)=>{
     const raw=initialParams.get(key);
     if(raw===null)return null;
+    if(raw==='none')return [];
     return raw.split(',').map(x=>x.trim()).filter(x=>allowed.has(x));
   };
   const requestedSources=parseList('sources',allowedSources);
@@ -92,8 +93,8 @@
     const p=u.searchParams;
     const setOrDelete=(key,value)=>value?p.set(key,value):p.delete(key);
     setOrDelete('mode',state.mode==='arc'?'':state.mode);
-    setOrDelete('sources',sameSet(state.sources,defaultSources)?'':[...state.sources].sort().join(','));
-    setOrDelete('eras',sameSet(state.eras,defaultEras)?'':[...state.eras].sort().join(','));
+    setOrDelete('sources',sameSet(state.sources,defaultSources)?'':(state.sources.size?[...state.sources].sort().join(','):'none'));
+    setOrDelete('eras',sameSet(state.eras,defaultEras)?'':(state.eras.size?[...state.eras].sort().join(','):'none'));
     setOrDelete('domain',state.domains.size?[...state.domains][0]:'');
     setOrDelete('family',state.families.size?[...state.families][0]:'');
     setOrDelete('clock',state.clocks.size?[...state.clocks][0]:'');
