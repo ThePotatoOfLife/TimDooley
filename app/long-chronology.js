@@ -57,12 +57,59 @@
     sort:'asc',
     mode:'arc'
   };
-  const requestedMode=new URLSearchParams(location.search).get('mode');
-  if(['arc','road','faith','foundations','project'].includes(requestedMode)){
+  const defaultSources=['project','lineage','figures','foundations'];
+  const defaultEras=Object.keys(eraLabels).filter(x=>x!=='undated');
+  const allowedModes=new Set(['arc','road','faith','foundations','project']);
+  const allowedSources=new Set(defaultSources);
+  const allowedEras=new Set(defaultEras);
+  const initialParams=new URLSearchParams(location.search);
+  const requestedMode=initialParams.get('mode');
+  if(allowedModes.has(requestedMode)){
     state.mode=requestedMode;
     if(requestedMode==='faith') state.sources=new Set(['lineage','figures']);
     if(requestedMode==='foundations') state.sources=new Set(['foundations']);
     if(requestedMode==='project') state.sources=new Set(['project']);
+  }
+  const parseList=(key,allowed)=>{
+    const raw=initialParams.get(key);
+    if(raw===null)return null;
+    return raw.split(',').map(x=>x.trim()).filter(x=>allowed.has(x));
+  };
+  const requestedSources=parseList('sources',allowedSources);
+  if(requestedSources)state.sources=new Set(requestedSources);
+  const requestedEras=parseList('eras',allowedEras);
+  if(requestedEras)state.eras=new Set(requestedEras);
+  const domainParam=initialParams.get('domain'); if(domainParam)state.domains=new Set([domainParam]);
+  const familyParam=initialParams.get('family'); if(familyParam)state.families=new Set([familyParam]);
+  const clockParam=initialParams.get('clock'); if(clockParam)state.clocks=new Set([clockParam]);
+  state.q=initialParams.get('q')||'';
+  state.detail=initialParams.get('detail')==='1';
+  state.sort=initialParams.get('sort')==='desc'?'desc':'asc';
+
+  const sameSet=(set,values)=>set.size===values.length&&values.every(x=>set.has(x));
+  function syncUrl(){
+    const u=new URL(location.href);
+    const p=u.searchParams;
+    const setOrDelete=(key,value)=>value?p.set(key,value):p.delete(key);
+    setOrDelete('mode',state.mode==='arc'?'':state.mode);
+    setOrDelete('sources',sameSet(state.sources,defaultSources)?'':[...state.sources].sort().join(','));
+    setOrDelete('eras',sameSet(state.eras,defaultEras)?'':[...state.eras].sort().join(','));
+    setOrDelete('domain',state.domains.size?[...state.domains][0]:'');
+    setOrDelete('family',state.families.size?[...state.families][0]:'');
+    setOrDelete('clock',state.clocks.size?[...state.clocks][0]:'');
+    setOrDelete('q',state.q.trim());
+    setOrDelete('detail',state.detail?'1':'');
+    setOrDelete('sort',state.sort==='desc'?'desc':'');
+    history.replaceState(null,'',u);
+  }
+  function syncControlValues(){
+    const search=$('#chronSearch'),domain=$('#chronDomain'),family=$('#chronFamily'),clock=$('#chronClock'),detail=$('#chronDetail'),sort=$('#chronSort');
+    if(search)search.value=state.q;
+    if(domain)domain.value=state.domains.size?[...state.domains][0]:'';
+    if(family)family.value=state.families.size?[...state.families][0]:'';
+    if(clock)clock.value=state.clocks.size?[...state.clocks][0]:'';
+    if(detail)detail.checked=state.detail;
+    if(sort)sort.value=state.sort;
   }
   let rows=[], meta={};
 
@@ -246,6 +293,8 @@
     document.querySelectorAll('[data-source]').forEach(b=>{const on=state.sources.has(b.dataset.source);b.classList.toggle('active',on);b.setAttribute('aria-pressed',on)});
     document.querySelectorAll('[data-era]').forEach(b=>{const on=state.eras.has(b.dataset.era);b.classList.toggle('active',on);b.setAttribute('aria-pressed',on)});
     document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('active',b.dataset.mode===state.mode));
+    syncControlValues();
+    syncUrl();
   }
   function mode(name){
     state.mode=name;
@@ -293,7 +342,7 @@
       ...(found.events||[]).map(normalizeFoundation)
     ].filter(r=>{if(seen.has(r.id))return false;seen.add(r.id);return true});
     meta={project:projectEvents.length,lineage:(line.events||[]).length,figures:(figs.events||[]).length,foundations:(found.events||[]).length};
-    renderControls(); render();
+    renderControls(); syncControlValues(); render();
     const degraded=[];
     if(!packLoad.ok)degraded.push('project event packs');
     if(!lineLoad.ok)degraded.push('religious lineages');
