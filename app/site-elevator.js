@@ -91,16 +91,15 @@
     const rooms=roomRows(roomContract);
     const roomById=Object.fromEntries(rooms.map(room=>[room.id,room]));
     return dwellingRows(projection)
-      .filter(dwelling=>Array.isArray(dwelling.projections)&&dwelling.projections.includes(levelId)&&roomById[dwelling.id])
+      .filter(dwelling=>(dwelling.primary_level||'plane')===levelId&&roomById[dwelling.id])
       .map((dwelling,index)=>({
         ...roomById[dwelling.id],
         homepage:dwelling.homepage||('/rooms/'+dwelling.id+'/'),
         primaryLevel:dwelling.primary_level||'plane',
-        projections:[...dwelling.projections],
-        isPrimaryProjection:(dwelling.primary_level||'plane')===levelId,
+        projections:Array.isArray(dwelling.projections)?[...dwelling.projections]:[levelId],
+        isPrimaryProjection:true,
         projectionOrder:index
-      }))
-      .sort((a,b)=>Number(b.isPrimaryProjection)-Number(a.isPrimaryProjection)||a.projectionOrder-b.projectionOrder);
+      }));
   }
 
   function stepLevel(levelId,direction){
@@ -209,7 +208,7 @@
       const fragment=document.createDocumentFragment();
       for(const room of rows){
         const link=document.createElement('a');
-        link.className='site-elevator-room '+(room.isPrimaryProjection?'is-primary':'is-secondary');
+        link.className='site-elevator-room is-primary';
         link.href=siteHref(room.homepage||('/rooms/'+room.id+'/'),context.siteBase);
         link.textContent=room.title||room.id;
         link.dataset.roomId=room.id;
