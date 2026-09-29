@@ -28,7 +28,7 @@
     },
     {
       "id": "elevator-door",
-      "definition": "Passage back to global Door/Axis or between Heaven, World and Below projections.",
+      "definition": "Passage back to global Door/Axis or between Heaven, Plane and Below projections.",
       "visual": "central vertical threshold"
     },
     {
@@ -54,7 +54,7 @@
     "on_enter_dwelling": "Show nested Rooms prominently; keep parent exit and global Elevator available.",
     "on_enter_nested_room": "Show registered adjacent nested Rooms around the viewer. Same-parent neighbors appear as local doors; cross-parent neighbors appear as wormholes.",
     "on_enter_case": "Keep the nested Room and its Doors architecturally visible; move the selected inhabitant onto the center table. Expose type, active Room lens, alternate Room lenses, readable route, evidence boundary and return-to-Room action.",
-    "on_escape": "Nested Room -> Dwelling -> Door/Axis -> World default."
+    "on_escape": "Nested Room -> Dwelling -> Door/Axis -> Plane default."
   },
   "orientation_invariants": [
     "Up/down always means projection toward Heaven/Below relative to the global Axis, never moral rank.",
