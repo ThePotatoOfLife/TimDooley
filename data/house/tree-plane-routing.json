@@ -16,7 +16,7 @@
       },
       "world-plane": {
         "label": "Door / Cross Junction",
-        "meaning": "Door/Cross junction as represented on the World navigation deck; the exact geometric O remains Axis∩active Plane under the Plane contract."
+        "meaning": "Door/Cross junction as represented on the Plane navigation deck; the exact geometric O remains Axis∩active Plane under the Plane contract."
       },
       "below-plane": {
         "label": "Root Junction",
@@ -79,7 +79,7 @@
     },
     {
       "id": "world-plane",
-      "label": "World Plane",
+      "label": "Plane",
       "axial_intersection": "Door / Cross Junction",
       "tree_layer": "trunk / visible branches",
       "primary_functions": [
@@ -118,7 +118,7 @@
         "secular-only"
       ],
       "kind": "navigation-deck/projection",
-      "canonical_plane_relation": "Often aligned with the active World-facing Plane for reader navigation, but not identical to the mathematical/frame operator."
+      "canonical_plane_relation": "Often aligned with the active world-facing Plane for reader navigation, but not identical to the mathematical/frame operator."
     },
     {
       "id": "below-plane",
@@ -200,7 +200,7 @@
         "below-plane",
         "world-plane"
       ],
-      "anchor": "World Door/Cross with roots into Below",
+      "anchor": "Plane Door/Cross with roots into Below",
       "leads_to": [
         "tree-of-life",
         "tree-of-strife",
@@ -298,7 +298,7 @@
       "from": "below-plane:Root Junction",
       "via": [
         "Living Root",
-        "World Door/Cross",
+        "Plane Door/Cross",
         "Spiral/Ladder",
         "Tree of Life",
         "Garden"
@@ -452,10 +452,10 @@
   },
   "naming_boundary": {
     "canonical_plane": "data/house/plane-crossing-contract.json defines Plane as a frame-relative section/hypersurface through the larger system.",
-    "navigation_planes": "The labels Heaven Plane, World Plane and Below Plane in this file are navigation decks/projections, not three instances of the canonical geometric Plane operator.",
+    "navigation_planes": "The labels Heaven Plane, Plane and Below Plane in this file are navigation decks/projections, not three instances of the canonical geometric Plane operator.",
     "preferred_reader_terms": {
       "heaven-plane": "Heaven Deck / upper navigation projection",
-      "world-plane": "World Deck / current-world navigation projection",
+      "world-plane": "Plane / middle navigation projection",
       "below-plane": "Below Deck / depth navigation projection"
     },
     "rule": "Keep stable IDs for compatibility, but public/explanatory text should distinguish navigation deck from geometric Plane whenever ambiguity matters."
