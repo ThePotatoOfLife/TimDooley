@@ -119,7 +119,12 @@ let level=initialDwelling?.primary_level||params.get('level')||'plane';
 if(!validLevelIds.has(level))level=initialDwelling?.primary_level||'plane';
 const JOURNEY_KEY='potato-house-journey-v1';
 let suppressJourney=false;
-function readJourney(){try{return JSON.parse(localStorage.getItem(JOURNEY_KEY)||'[]')}catch(e){return []}}
+function readJourney(){
+ try{
+   const rows=JSON.parse(localStorage.getItem(JOURNEY_KEY)||'[]');
+   return Array.isArray(rows)?rows.map(st=>({...st,level:st?.level==='world'?'plane':st?.level})).filter(Boolean):[];
+ }catch(e){return []}
+}
 let journey=readJourney();
 function labelForState(st){
  if(st.object&&inhabitantById[st.object])return inhabitantById[st.object].label;
@@ -293,7 +298,17 @@ function render(){renderLevels();renderDoors();renderObject();renderSign();rende
 document.getElementById('centerBtn').onclick=()=>{stopReplay();if(objectId){objectId=null}else if(inner){inner=null}else if(local){local=null}else{level='plane'}yaw=0;render();recordJourney();renderJourney()};
 document.getElementById('rotateLeft').onclick=()=>{yaw-=35;rot.style.transform='rotateY('+yaw+'deg)'};
 document.getElementById('rotateRight').onclick=()=>{yaw+=35;rot.style.transform='rotateY('+yaw+'deg)'};
-document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){yaw-=35;rot.style.transform='rotateY('+yaw+'deg)'}if(e.key==='ArrowRight'){yaw+=35;rot.style.transform='rotateY('+yaw+'deg)'}if(e.key==='ArrowUp'){level='heaven';local=null;inner=null;yaw=0;render();recordJourney();renderJourney()}if(e.key==='ArrowDown'){level='below';local=null;inner=null;yaw=0;render();recordJourney();renderJourney()}if(e.key==='Escape'){if(objectId)objectId=null;else if(inner)inner=null;else local=null;yaw=0;render();recordJourney();renderJourney()}});
+function stepFloor(direction){
+ const ids=(data.levels||[]).map(row=>row.id);
+ const index=Math.max(0,ids.indexOf(level));
+ const delta=direction==='up'?-1:direction==='down'?1:0;
+ return ids[Math.max(0,Math.min(ids.length-1,index+delta))]||'plane';
+}
+function moveFloor(direction){
+ const next=stepFloor(direction);if(next===level)return;
+ level=next;local=null;inner=null;objectId=null;yaw=0;render();recordJourney();renderJourney();
+}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){yaw-=35;rot.style.transform='rotateY('+yaw+'deg)'}if(e.key==='ArrowRight'){yaw+=35;rot.style.transform='rotateY('+yaw+'deg)'}if(e.key==='ArrowUp'){e.preventDefault();moveFloor('up')}if(e.key==='ArrowDown'){e.preventDefault();moveFloor('down')}if(e.key==='Escape'){if(objectId)objectId=null;else if(inner)inner=null;else local=null;yaw=0;render();recordJourney();renderJourney()}});
 let replayTimer=null;
 function stopReplay(){if(replayTimer){clearInterval(replayTimer);replayTimer=null}document.getElementById('journeyReplay').textContent='Replay route'}
 function replayJourney(){
