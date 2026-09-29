@@ -98,20 +98,44 @@ linear-gradient(to bottom,rgba(12,16,12,.96),rgba(5,8,6,.995))}
 <script>
 (async()=>{
 const root=(p)=>'..'+p;
-const [eRes,sRes,pRes,iRes,hRes]=await Promise.all([
- fetch('../data/house/elevator-spatial-projection.json'),
- fetch('../data/house/subrooms.json'),
- fetch('../data/house/public-surfaces.json'),
- fetch('../data/house/room-interiors.json'),
- fetch('../data/house/room-inhabitants.json')
-]);
-if(!eRes.ok||!sRes.ok||!pRes.ok||!iRes.ok||!hRes.ok)return;
-const data=await eRes.json(), subData=await sRes.json(), surfaceData=await pRes.json(), interiorData=await iRes.json(), inhabitantData=await hRes.json();
 const rot=document.getElementById('rotunda'),lc=document.getElementById('levelControls'),shaft=document.getElementById('shaft'),sign=document.getElementById('levelSign'),portals=document.getElementById('levelPortals'),copy=document.getElementById('localCopy'),textGrid=document.getElementById('textGrid'),crumbs=document.getElementById('depthCrumbs'),innerBadge=document.getElementById('innerBadge'),journeyTrack=document.getElementById('journeyTrack'),journeyDetail=document.getElementById('journeyDetail'),objectTable=document.getElementById('objectTable'),axisCar=document.getElementById('axisCar');
+
+async function loadJson(path,fallback,required=false){
+ try{
+   const response=await fetch(path,{cache:'no-cache'});
+   if(!response.ok)throw new Error(path+' '+response.status);
+   return {ok:true,value:await response.json()};
+ }catch(error){
+   if(required)throw error;
+   return {ok:false,value:fallback,error};
+ }
+}
+
+let coreLoad;
+try{
+ coreLoad=await loadJson('../data/house/elevator-spatial-projection.json',null,true);
+}catch(error){
+ copy.innerHTML='<b>Spatial orientation unavailable</b><span>The core House projection could not be loaded. The readable site is still available through these direct routes.</span>';
+ textGrid.innerHTML='<a href="../rooms/"><strong>All Rooms</strong><small>Open the canonical Room directory</small></a><a href="../house/"><strong>House</strong><small>Read the architecture</small></a><a href="../"><strong>Home</strong><small>Return to the project entrance</small></a>';
+ journeyDetail.textContent='Spatial data is offline; direct readable routes remain available.';
+ return;
+}
+
+const [subLoad,interiorLoad,inhabitantLoad]=await Promise.all([
+ loadJson('../data/house/subrooms.json',{subrooms:[]}),
+ loadJson('../data/house/room-interiors.json',{interiors:[]}),
+ loadJson('../data/house/room-inhabitants.json',{inhabitants:[]})
+]);
+const data=coreLoad.value, subData=subLoad.value, interiorData=interiorLoad.value, inhabitantData=inhabitantLoad.value;
+const degraded=[];
+if(!subLoad.ok)degraded.push('nested Rooms');
+if(!interiorLoad.ok)degraded.push('Room routes');
+if(!inhabitantLoad.ok)degraded.push('inhabitants');
 const params=new URLSearchParams(location.search);
 let local=params.get('room')||null, inner=params.get('inner')||null, objectId=params.get('object')||null, yaw=0;
 const initialInner=inner?(subData.subrooms||[]).find(row=>row&&row.id===inner):null;
 if(initialInner)local=initialInner.parent_room_id;
+else if(inner){inner=null;objectId=null}
 const initialDwelling=local?(data.dwellings||[]).find(row=>row&&row.id===local):null;
 if(local&&!initialDwelling){local=null;inner=null;objectId=null}
 const validLevelIds=new Set((data.levels||[]).map(row=>row.id));
@@ -193,7 +217,6 @@ function renderJourney(){
 }
 const roomById=Object.fromEntries(data.dwellings.map(x=>[x.id,x]));
 const subById=Object.fromEntries(subData.subrooms.map(x=>[x.id,x]));
-const surfaceById=Object.fromEntries(surfaceData.surfaces.map(x=>[x.id,x]));
 const interiorBySubroom=Object.fromEntries((interiorData.interiors||[]).map(x=>[x.subroom_id,x]));
 const inhabitantById=Object.fromEntries((inhabitantData.inhabitants||[]).map(x=>[x.id,x]));
 function routeFor(r){return root(r)}
@@ -305,7 +328,7 @@ function renderText(){
  }
  data.dwellings.filter(R=>(R.primary_level||'plane')===level).forEach(R=>{const a=document.createElement('a');a.href=root(R.homepage);a.innerHTML='<strong>'+R.label+'</strong><small>'+R.local_center_label+'</small>';textGrid.appendChild(a)});
 }
-function render(){renderLevels();renderDoors();renderObject();renderSign();renderCrumbs();renderText();writeUrl();renderJourney()}
+function render(){renderLevels();renderDoors();renderObject();renderSign();renderCrumbs();renderText();writeUrl();renderJourney();if(degraded.length)journeyDetail.innerHTML='<b>Reduced detail</b> · Core floor/Room navigation is available; unavailable optional data: '+degraded.join(', ')+'.'}
 document.getElementById('centerBtn').onclick=()=>{stopReplay();if(objectId){objectId=null}else if(inner){inner=null}else if(local){local=null}else{level='plane'}yaw=0;render();recordJourney();renderJourney()};
 document.getElementById('rotateLeft').onclick=()=>{yaw-=35;rot.style.transform='rotateY('+yaw+'deg)'};
 document.getElementById('rotateRight').onclick=()=>{yaw+=35;rot.style.transform='rotateY('+yaw+'deg)'};
