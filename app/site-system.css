@@ -83,6 +83,23 @@ textarea:focus-visible,
   color: var(--site-green);
 }
 
+.room-floor-nav__label {
+  color: var(--site-faint);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.page-nav .spatial-exit {
+  color: var(--site-faint);
+}
+
+.page-nav .spatial-exit::before {
+  content: "↗ ";
+  opacity: .55;
+}
+
 .page-header {
   margin: 0 0 38px;
 }
