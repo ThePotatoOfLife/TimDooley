@@ -35,7 +35,7 @@ Do not close a task by adding generic prose. Prefer one named case, one dated so
 
 - [ ] P0-POLITICS — Politics is currently a thin corpus shell. Build a dated, source-linked political reader with actual recovered positions, proposals, programme designs, forecasts and research leads, grouped by domain and evidence type.
 - [ ] P0-STORY — Story currently depends heavily on JavaScript-loaded fragments and contains little static narrative. Write the life story into the page as scenes and phases, with source links and uncertainty boundaries.
-- [ ] P0-TIMELINE — Timeline is conceptually sound but too thin before its dynamic chronology loads. Add a substantial static spine of representative events, date-quality examples and era transitions.
+- [x] P0-TIMELINE — Timeline now has a substantial 30-event static spine before the interactive chronology, including date-quality labels, hinge ranges, evidence classes and source/deep-reader routes.
 - [x] P0-INHABITANTS — Inhabitants & Cases is mostly an explorer shell. Add a visible cross-section of named people, institutions, texts, models, artifacts and cases with one-sentence reasons they matter.
 - [x] P0-INTERNET — Internet & Platforms has useful metric distinctions but almost no actual platform-mechanics casebook. Add concrete affordance and migration cases.
 - [x] P0-GAMES — Games & Simulations describes what belongs there but barely presents the games themselves. Recover rules, states, prototypes, screenshots/status and lessons for each surviving project.
@@ -134,12 +134,12 @@ Current: live multi-feed reader with cluster and source views.
 
 Current: good philosophy of historical clocks; thin static content before dynamic chronology.
 
-- [ ] SURF-TL-001 — Add a static representative timeline with at least 25 dated events spanning early life, 2011, advocacy/prison, 2017, 2019–20, 2021–24, 2025 and 2026.
-- [ ] SURF-TL-002 — Each representative event should show event date, source date, date precision, evidence class and later reinterpretation when relevant.
-- [ ] SURF-TL-003 — Add "hinge periods" rather than forcing false single dates for 2019–20 and late-2024/early-2025 transitions.
-- [ ] SURF-TL-004 — Add visible links from timeline events into Story scenes, Claims, Great Book chapters, public witness and repository history.
-- [ ] SURF-TL-005 — Add a small "conflicting date" casebook explaining how the archive handles competing dates instead of choosing silently.
-- [ ] SURF-TL-006 — Add a static non-JS fallback for the current chronology so the page remains substantial without runtime data.
+- [x] SURF-TL-001 — Added a 30-event static representative timeline spanning early life, 2011, prison/scripture, 2017, 2019–20, 2021–24, 2025 and 2026.
+- [~] SURF-TL-002 — Static events now show event date/precision and evidence class, with retrospective/later-interpretation boundaries where material is explicitly comparative. Per-event source-date projection remains incomplete.
+- [x] SURF-TL-003 — Added explicit hinge-period handling for 2019–20 and the April 2025 Turning corridor, with separate exact attestation dates preserved.
+- [~] SURF-TL-004 — Static events now link visibly into Story, Claims, Great Book, Public Witness, Potato and recovered source objects; repository-history links remain to be projected.
+- [x] SURF-TL-005 — Added a date-casebook explaining why 2019–20 and April 2025 require multiple clocks rather than one silently chosen date.
+- [x] SURF-TL-006 — Added a substantial static non-JS chronology before the interactive explorer.
 
 ## /timeline/foundations/ — Foundation Timeline
 
