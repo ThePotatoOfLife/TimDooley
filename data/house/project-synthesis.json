@@ -1,6 +1,6 @@
 {
-  "version": "3.8.0",
-  "updated": "2026-09-27",
+  "version": "3.9.0",
+  "updated": "2026-10-01",
   "authority": "project-synthesis",
   "purpose": "Bind the current project center, operators, living metabolisms, Rooms, tests, outputs and public composition into one center-out synthesis without replacing canonical owners. Development history is referenced, not embedded as current-state weight.",
   "rule": "Pair what already exists before inventing another structure. One concept may appear in many views, but ownership, evidence class, center distance and foundation state stay explicit.",
@@ -2551,5 +2551,94 @@
       ]
     },
     "rule": "Home may link into this teaching but must not host the full structural instrument; Home's reader job is orientation, substance and broad entrance."
-  }
+  },
+  "reader_families": [
+    {
+      "id": "tim-life-making",
+      "label": "Tim / life / making",
+      "purpose": "Follow the person, lived narrative, collection and creative outputs as one visible subject family without collapsing biography, evidence and works.",
+      "surface_ids": [
+        "tim",
+        "story",
+        "collection",
+        "works"
+      ]
+    },
+    {
+      "id": "timeline-history",
+      "label": "Timeline / history",
+      "purpose": "Separate occurrence order, foundation clocks and historical interpretation while keeping chronology as a projection rather than a second content owner.",
+      "surface_ids": [
+        "timeline",
+        "foundation-timeline",
+        "history"
+      ]
+    },
+    {
+      "id": "sources-context",
+      "label": "Sources / context",
+      "purpose": "Explain how the archive knows, verifies, revises and contextualizes claims.",
+      "surface_ids": [
+        "sources",
+        "context"
+      ]
+    },
+    {
+      "id": "explore-retrieval",
+      "label": "Explore / retrieval",
+      "purpose": "Provide question-first, name-first, path-first and deep-archive ways to find owned material without making retrieval surfaces into knowledge owners.",
+      "surface_ids": [
+        "explore",
+        "questions",
+        "index-a-z",
+        "paths"
+      ]
+    },
+    {
+      "id": "house-placement",
+      "label": "House / placement",
+      "purpose": "Explain where material belongs, how Rooms connect, and how spatial/operator views project the same House without creating competing ownership.",
+      "surface_ids": [
+        "house",
+        "rooms",
+        "inhabitants",
+        "axis",
+        "elevator",
+        "research-lab"
+      ]
+    },
+    {
+      "id": "world-systems",
+      "label": "World / systems",
+      "purpose": "Project external geography, institutions, current events, systems, politics, law, economy, culture and North as world-facing specialist views.",
+      "surface_ids": [
+        "world",
+        "news",
+        "world-map",
+        "politics",
+        "north",
+        "world-systems",
+        "culture",
+        "law",
+        "economy"
+      ]
+    },
+    {
+      "id": "meaning-testing",
+      "label": "Meaning / comparison / testing",
+      "purpose": "Connect the project semantic center to religion, philosophy, science, body and specialist comparison while preserving evidence and tradition boundaries.",
+      "surface_ids": [
+        "potato-of-life",
+        "religion",
+        "philosophy",
+        "science",
+        "interpretive-justice",
+        "bible",
+        "trinity",
+        "spirit",
+        "life-body"
+      ]
+    }
+  ],
+  "reader_family_rule": "Every active public surface except Home belongs to exactly one reader family. Families organize public reading and cross-linking only; they never replace canonical owners, parent semantics, Rooms or epistemic classes."
 }
