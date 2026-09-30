@@ -173,8 +173,8 @@ Current: strong source-authority and provenance explanation.
 
 Current: question-routing framework with limited visible answer substance.
 
-- [ ] SURF-Q-001 — Add 20 high-value questions with 2–4 sentence direct answers before linking deeper.
-- [ ] SURF-Q-002 — Mix closed questions and genuinely open questions; do not route everything as if an answer already exists.
+- [~] SURF-Q-001 — Questions now gives ten high-value questions direct 2–4 sentence answers before routing deeper. Expand toward 20 using canonical question owners rather than duplicating FAQ prose.
+- [x] SURF-Q-002 — Questions now separates concise answerable questions from explicitly governed open questions and recovery/test paths instead of routing everything as solved.
 - [ ] SURF-Q-003 — Add "what evidence would change this answer?" to questions involving predictions, biography, science or contested history.
 - [ ] SURF-Q-004 — Add question families for artifacts/works, politics/world, body/science, religion, chronology and source verification.
 - [ ] SURF-Q-005 — Add questions generated from current open-question owner records rather than manually inventing only evergreen FAQ prompts.
@@ -183,7 +183,7 @@ Current: question-routing framework with limited visible answer substance.
 
 Current: useful name-first doorway.
 
-- [ ] SURF-AZ-001 — Add aliases and disambiguation for overloaded terms: Father, Son, Tim, Potato, Axis, North, House, Door, Spirit, Tree, Farm, CIA/FBI.
+- [~] SURF-AZ-001 — Added explicit disambiguation for Father, Son, Tim/Potato, Axis/Door, North, House, Spirit, Tree and CIA/FBI, including the active CIA versus retired FBI distinction. Farm still needs a dedicated branch/disambiguation treatment.
 - [ ] SURF-AZ-002 — Add one-line contextual hints explaining why the destination is the canonical owner without turning A–Z into a definition engine.
 - [ ] SURF-AZ-003 — Add dates to historical role labels where the same word means different things in 2024, 2025 and 2026.
 - [ ] SURF-AZ-004 — Add recovery-state labels for names/artifacts that exist only in partial or reconstructed form.
