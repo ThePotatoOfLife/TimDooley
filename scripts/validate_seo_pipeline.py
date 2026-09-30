@@ -142,7 +142,8 @@ def main() -> int:
     require(
         discovery,
         (
-            "from house_public_surfaces import primary_gateway_rows",
+            "from house_public_surfaces import primary_gateway_rows, surface_rows",
+            "PUBLIC_SURFACES = surface_rows(ROOT)",
             "PRIMARY_DOORS = tuple(",
             "primary_gateway_rows(ROOT)",
             "datetime.now(timezone.utc).date().isoformat()",
@@ -154,6 +155,7 @@ def main() -> int:
             '"science": BASE_URL + "/science/"',
             '"world": BASE_URL + "/world/"',
             '"world_map": BASE_URL + "/world-map/"',
+            '"public_surfaces": public_surface_graph',
             '"Googlebot"',
             '"Google-Extended"',
             '"bingbot"',
