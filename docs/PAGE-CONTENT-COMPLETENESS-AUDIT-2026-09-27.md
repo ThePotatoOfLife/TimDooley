@@ -25,7 +25,7 @@ Do not close a task by adding generic prose. Prefer one named case, one dated so
 - [ ] AUDIT-GLOBAL-003 — Every historical page should distinguish occurrence time, source time, recovery time and later interpretation when those clocks differ.
 - [ ] AUDIT-GLOBAL-004 — Every science/body page should expose source class, evidence grade, measurable variables and a failure or boundary condition.
 - [ ] AUDIT-GLOBAL-005 — Every tradition/comparison page should preserve the tradition's own primary context before Potatoverse comparison and state whether a relation is transmission, shared inheritance, recurrence or analogy.
-- [ ] AUDIT-GLOBAL-006 — Every Works page or Room should expose actual artifacts and recovery status, not only the form or idea of the work.
+- [~] AUDIT-GLOBAL-006 — Works and Visual Art now expose explicit artifact/recovery states and direct owner links; continue the same treatment through Music, Games and remaining creative Rooms.
 - [ ] AUDIT-GLOBAL-007 — Every long page should periodically reconnect synthesis to named source objects so prose does not float above the corpus.
 - [ ] AUDIT-GLOBAL-008 — Do not create another parallel master ontology to solve a content gap. Deepen the current canonical owner and project it into the page.
 - [ ] AUDIT-GLOBAL-009 — When a page is already information-dense, add missing objects or cases rather than another conceptual section.
@@ -43,7 +43,7 @@ Do not close a task by adding generic prose. Prefer one named case, one dated so
 - [x] P0-MEMORY — Memory & Recovery is much thinner than the archive it represents. Add multiple worked recovery cases with source states, failed recoveries and promotion decisions.
 - [x] P0-SYSTEMS — Systems & Dynamics now includes feedback, queueing, contagion, distributed control, resilience/redundancy and path-dependence cases with named variables and equations.
 - [~] P0-WORLD-CASES — World now exposes four cross-regional country cases (Denmark, Japan, Brazil, Kenya) directly from canonical country records, including explicit missing-data boundaries. Cross-border system cases and deeper World Systems projection remain.
-- [ ] P0-WORK-ARTIFACTS — Works, Visual Art, Music and Games need more direct links to recovered artifacts, prompts, versions, images/audio/code and explicit missing-artifact states.
+- [~] P0-WORK-ARTIFACTS — Works now exposes an artifact-status shelf linking directly to the Great Book, Suno archive, visual composition archive, artifact registry, Mashy lineage and creative-systems archive, with explicit primary/recovered/memory/missing states. Original image/audio/build recovery remains.
 
 # Public surfaces
 
