@@ -20,6 +20,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote, urlparse
 
+from house_public_surfaces import primary_gateway_rows, surface_rows
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
 PUBLIC_BASE_URL = "https://thepotatooflife.github.io/TimDooley"
@@ -38,12 +40,16 @@ SCRIPT_LD_RE = re.compile(r"<script\b[^>]*type=[\"']application/ld\+json[\"'][^>
 CODE_RE = re.compile(r"<code>([^<]+)</code>", re.I)
 TAG_RE = re.compile(r"<[^>]+>")
 
-PRIMARY_DOORS = (
-    ("tim-dooley", "Tim Dooley"),
-    ("religion", "Religion"),
-    ("philosophy", "Philosophy"),
-    ("science", "Science"),
-    ("world-map", "World Map"),
+PUBLIC_SURFACES = surface_rows(ROOT)
+PUBLIC_SURFACE_BY_ID = {row["id"]: row for row in PUBLIC_SURFACES}
+PUBLIC_SURFACE_BY_ROUTE = {
+    (row.get("canonical_route") or row.get("route") or "").strip("/"): row
+    for row in PUBLIC_SURFACES
+    if row.get("canonical_route") or row.get("route")
+}
+PRIMARY_DOORS = tuple(
+    ((row["canonical_route"] or row["route"]).strip("/"), row["title"])
+    for row in primary_gateway_rows(ROOT)
 )
 
 
@@ -175,6 +181,28 @@ def breadcrumb_items(page: Path, title: str) -> list[dict]:
     items = [{"@type": "ListItem", "position": 1, "name": SITE_NAME, "item": BASE_URL + "/"}]
     if not route:
         return items
+
+    surface = PUBLIC_SURFACE_BY_ROUTE.get(route)
+    if surface:
+        lineage: list[dict] = []
+        current = surface
+        seen: set[str] = set()
+        while current and current.get("id") not in seen:
+            seen.add(current.get("id"))
+            if current.get("id") != "home":
+                lineage.append(current)
+            parent_id = current.get("primary_parent")
+            current = PUBLIC_SURFACE_BY_ID.get(parent_id) if parent_id else None
+        lineage.reverse()
+        for position, row in enumerate(lineage, start=2):
+            canonical_route = (row.get("canonical_route") or row.get("route") or "").strip("/")
+            url = BASE_URL + "/" if not canonical_route else f"{BASE_URL}/{canonical_route}/"
+            name = row.get("title") or canonical_route.replace("-", " ").title()
+            items.append({"@type": "ListItem", "position": position, "name": name, "item": url})
+        if items:
+            items[-1]["name"] = strip_site_suffix(title)
+        return items
+
     parts = route.split("/")
     for index, part in enumerate(parts, start=2):
         partial = "/".join(parts[: index - 1])
@@ -386,7 +414,8 @@ def build_site_index(dates: dict[str, str], record_routes: dict[str, str], quest
         route = page_relative_route(page)
         kind, section = classify_page(route)
         title = page_title(text, page)
-        pages.append({
+        surface = PUBLIC_SURFACE_BY_ROUTE.get(route)
+        item = {
             "url": canonical,
             "path": "/" + route + ("/" if route else ""),
             "title": strip_site_suffix(title),
@@ -394,7 +423,16 @@ def build_site_index(dates: dict[str, str], record_routes: dict[str, str], quest
             "type": kind,
             "section": section,
             "lastmod": source_date_for_url(canonical, dates, record_routes, question_sources, faq_owners),
-        })
+        }
+        if surface:
+            item.update({
+                "surface_id": surface.get("id"),
+                "surface_type": surface.get("surface_type"),
+                "reader_job": surface.get("reader_job"),
+                "primary_parent": surface.get("primary_parent"),
+                "visibility": surface.get("visibility"),
+            })
+        pages.append(item)
     payload = {
         "schema_version": "1.0.0",
         "generated": datetime.now(timezone.utc).date().isoformat(),
