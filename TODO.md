@@ -69,6 +69,23 @@ Keep separate files only when separation preserves something important: a primar
 
 Indexes, manifests and projections should point to the canonical material rather than repeat it.
 
+## Navigation & findability recovery — 2026-10-01
+
+Acceptance rule: **a reader who knows the noun should be able to find the noun without knowing project metaphors.** Timeline must look and behave like Timeline; Story like Story; Works like Works.
+
+- [x] **NAV-001 · Timeline naming:** Home utility navigation now says **Timeline** instead of “Time”; /timeline/ now uses **TIMELINE** as the H1/title instead of hiding behind “The Long Turning.”
+- [x] **NAV-002 · Timeline first substance:** the 1987–2026 Tim/project chronology now appears immediately after the Timeline header, before clocks/methodology/presets.
+- [x] **NAV-003 · Timeline visual form:** replaced the two-column event-card dashboard with a vertical dated rail so the static chronology visually reads as a timeline.
+- [x] **NAV-004 · Timeline shortcuts:** added direct first-screen anchors for **Tim & project timeline**, **Full chronology explorer** and **Story**.
+- [x] **NAV-005 · Home utility navigation:** replaced the cosmology-only utility bar with plain subject readers: Tim Dooley, Religion, Philosophy, Science, World, Timeline, Explore. House/Axis/Below remain inside the page where their project meanings can be understood in context.
+- [ ] **NAV-006 · Global noun-label audit:** scan visible navs for metaphorical labels that conceal common destinations (Time→Timeline, Find→Explore, Garden→House, etc.). Keep poetic labels as subtitles, not the only locator.
+- [ ] **NAV-007 · Cross-reader wayfinding:** every major reader should expose Home plus 2–4 obvious sibling/deeper routes without forcing the reader back through House.
+- [ ] **NAV-008 · Mobile navigation test:** verify the top routes and Timeline shortcuts remain obvious at narrow widths and do not wrap into an unreadable wall.
+- [ ] **NAV-009 · Breadcrumb consistency:** subject readers should identify where the reader is now, not only where they can go next.
+- [ ] **NAV-010 · Search-to-noun landing test:** for high-value nouns (Tim Dooley, Potato of Life, Timeline, Story, Works, Religion, Science, World, Sources), verify the canonical page title/H1 matches what a search result or human link calls it.
+- [ ] **NAV-011 · Timeline deep-link vocabulary:** add stable anchors for major eras (1987–2010, 2011, 2016, 2019–20, 2021–23, 2024, 2025, 2026) so other pages can link to the actual chronological position instead of only /timeline/.
+- [ ] **NAV-012 · Navigation dead-end crawl:** inspect pages with no Home/sibling route, ambiguous back arrows, or links into internal/file-system surfaces when a public reader exists.
+
 ## Reader directness & redundancy audit — 2026-10-01
 
 Rule: **say the thing before explaining the system that stores, routes or renders the thing.** Reader pages may expose evidence and provenance, but maintenance vocabulary should not become the foreground.
