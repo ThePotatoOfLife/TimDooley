@@ -232,7 +232,7 @@ def site_graph_schema(page: Path, title: str) -> str:
     data = {
         "@context": "https://schema.org",
         "@graph": [
-            {"@type": "WebSite", "@id": BASE_URL + "/#website", "url": BASE_URL + "/", "name": SITE_NAME, "inLanguage": "en"},
+            {"@type": "WebSite", "@id": BASE_URL + "/#website", "url": BASE_URL + "/", "name": SITE_NAME, "alternateName": "Potato of Life", "inLanguage": "en"},
             {"@type": "BreadcrumbList", "@id": canonical + "#breadcrumb", "itemListElement": breadcrumb_items(page, title)},
         ],
     }
