@@ -26,8 +26,9 @@
       "standard": "one paragraph answer",
       "deep": "route into full canonical records, timeline and sources"
     },
-    "seo_rule": "Write for real questions first. Search visibility follows from explicit entity names, aliases, dates, relations and natural-language answers rather than keyword stuffing.",
-    "epistemic_rule": "Answers must say whether material is project canon, autobiographical report, source-derived history, comparative religion, interpretation, creative work, rumor/reception or empirical fact."
+    "seo_rule": "Write for real questions first. Search visibility should come from visible useful answers, explicit entity names, aliases, dates, relations, crawlable internal links and natural-language wording rather than keyword stuffing or deprecated FAQ rich-result markup.",
+    "epistemic_rule": "Answers must say whether material is project canon, autobiographical report, source-derived history, comparative religion, interpretation, creative work, rumor/reception or empirical fact.",
+    "structured_data": "Do not rely on FAQPage/QAPage rich-result markup. Keep questions and answers visibly rendered in HTML, expose ordinary WebPage/Article/Breadcrumb semantics where appropriate, and optimize discovery through canonical owners, natural-language headings and internal links."
   },
   "question_generators": {
     "who": [
@@ -2559,7 +2560,7 @@
         "developmental_source"
       ],
       "canonical_owners": [
-        "great-book/",
+        "great-book/index.html",
         "data/house/holdings.json",
         "data/house/project-synthesis.json"
       ],
