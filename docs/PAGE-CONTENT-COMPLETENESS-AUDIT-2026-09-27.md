@@ -156,7 +156,7 @@ Current: useful archive router, but can expose more actual knowledge objects.
 
 - [ ] SURF-EXP-001 — Add a rotating/curated set of 20 concrete deep objects with one-sentence reasons they are worth opening.
 - [ ] SURF-EXP-002 — Add "surprising connections" journeys built from actual typed relations rather than generic domain links.
-- [ ] SURF-EXP-003 — Add a recovery-status filter or section for unrecovered, partial, reconstructed and complete source objects.
+- [x] SURF-EXP-003 — Add a recovery-status filter or section for unrecovered, partial, reconstructed and complete source objects. Explore now exposes four concrete science-archive examples across missing original, partial recovery, archive reconstruction and recovered primary states.
 - [ ] SURF-EXP-004 — Add representative contradiction, prediction, artifact, institution, body object, text and model entries so Explore visibly spans the corpus.
 
 ## /context/source-authority/ — Sources
