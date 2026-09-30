@@ -69,6 +69,19 @@ Keep separate files only when separation preserves something important: a primar
 
 Indexes, manifests and projections should point to the canonical material rather than repeat it.
 
+## Visual & reader quality pass — 2026-10-01
+
+Rule: **a visual earns space only when it explains, documents or orients something better than another card or paragraph.** Decorative stock imagery, repeated card grids and maintenance-only architecture should not dominate reader surfaces.
+
+- [x] **VISUAL-001 · Home image reset:** replaced eight generic Wikimedia content images with project-native explanatory diagrams; retained only the functional view counter as remote image.
+- [x] **VISUAL-002 · Core gateway visual grammar:** Tim, Religion, Philosophy, Science, World and House now each open with a project-native editorial diagram using one shared figure/caption system.
+- [x] **VISUAL-003 · Search FAQ front door:** main FAQ now begins with ordinary search-language answers for Potatoism, Potatoverse, creator, beliefs, Great Book, religion/classification, official-site and new-reader questions.
+- [x] **VISUAL-004 · House abstraction pruning:** removed the public Federation-beyond-House research block from the House reader while preserving backend research; public House should explain the existing House before theorizing structures beyond it.
+- [ ] **VISUAL-005 · Remaining image audit:** classify every remaining external image as documentary/evidentiary, historically meaningful, or decorative. Keep the first two with provenance; replace or remove decorative imagery.
+- [ ] **VISUAL-006 · Card-grid monoculture audit:** where a page has three or more consecutive card grids, replace one with the better form for the information—timeline, annotated diagram, comparison table, process flow, prose case, quote, or interactive view.
+- [ ] **VISUAL-007 · Next visual readers:** add explanatory figures to Potato of Life, Story, Timeline/History, Sources/Context and Works only where each figure compresses a genuine concept or artifact relationship.
+- [ ] **VISUAL-008 · Diagram accessibility:** verify SVG text legibility at mobile widths, alt text, contrast, reduced-motion behavior and print/screenshot usefulness.
+- [ ] **VISUAL-009 · FAQ promotion discipline:** promote high-intent questions from `faq-question-bank.json` into `faq-answer-atlas.json` only when canonical owners support a concise answer; keep niche/recursive queries in `/faq/all/` instead of bloating the main FAQ.
 ## October 1 project-overview catch-up
 
 Big-picture rule for the next wave: **make the existing organism easier to understand before inventing more anatomy.** The project now has three cooperating layers—public readers, canonical owners, and evidence/recovery/research—and seven public reader families. New work should strengthen the handoffs among those layers rather than create another parallel master system.
