@@ -261,7 +261,7 @@ Current: substantially rebuilt. Politics now combines a crawlable static corpus,
 - [x] SURF-POL-005 — Added neutral official-current-context material for EU technology sovereignty and EU law-making, explicitly marked as comparator/context rather than Tim provenance or influence.
 - [x] SURF-POL-006 — Added and corrected a chronological development timeline from ~2015/~2016 through the 2026 political corpus.
 - [ ] SURF-POL-007 — Add disagreement/alternative-policy context without ranking political actors or prescribing a choice. This remains a next-wave content task.
-- [~] SURF-POL-008 — The public reader exposes a large unresolved-position set and the backend preserves confidence/mode boundaries; add a dedicated source-recovery queue for remembered positions that lack primary-source attachment.
+- [x] SURF-POL-008 — Added a dedicated Politics primary-source recovery queue with specific compendium references, missing evidence types, discriminating questions and promotion gates; unresolved ideology-only topics remain explicitly non-inferable.
 
 ## /axis/ — Living Axis
 
