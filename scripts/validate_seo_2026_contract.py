@@ -149,6 +149,19 @@ def test_discovery_owner_contract() -> None:
             fail(f"build_discovery.py must own machine-discovery authority marker: {marker}")
 
 
+
+def test_machine_surface_graph_contract() -> None:
+    source = (ROOT / "scripts" / "build_discovery.py").read_text(encoding="utf-8", errors="replace")
+    for marker in (
+        "PUBLIC_SURFACES = surface_rows(ROOT)",
+        '"public_surfaces": public_surface_graph',
+        '"## Specialist reader surfaces"',
+        '"## Public surface graph"',
+    ):
+        if marker not in source:
+            fail(f"machine discovery must expose public-surface semantics: {marker}")
+
+
 def test_homepage_authority_contract() -> None:
     home = (ROOT / "index.html").read_text(encoding="utf-8", errors="replace")
     sitemap = f'<link rel="sitemap" type="application/xml" href="{BASE_URL}/sitemap-index.xml">'
@@ -174,6 +187,7 @@ def main() -> int:
         test_significant_source_freshness_contract,
         test_repository_robots_contract,
         test_discovery_owner_contract,
+        test_machine_surface_graph_contract,
         test_homepage_authority_contract,
     )
     failures: list[str] = []
