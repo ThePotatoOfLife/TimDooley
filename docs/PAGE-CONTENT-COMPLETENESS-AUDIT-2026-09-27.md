@@ -42,7 +42,7 @@ Do not close a task by adding generic prose. Prefer one named case, one dated so
 - [x] P0-NEURO — Neurobiology has a good thalamic start but is much thinner than the body backend. Add named circuits, CSF/meningeal material, autonomic/interoceptive pathways and source-graded brain-room examples.
 - [x] P0-MEMORY — Memory & Recovery is much thinner than the archive it represents. Add multiple worked recovery cases with source states, failed recoveries and promotion decisions.
 - [x] P0-SYSTEMS — Systems & Dynamics now includes feedback, queueing, contagion, distributed control, resilience/redundancy and path-dependence cases with named variables and equations.
-- [ ] P0-WORLD-CASES — World and World Systems need named real-world case studies that demonstrate the relational method rather than only explaining it abstractly.
+- [~] P0-WORLD-CASES — World now exposes four cross-regional country cases (Denmark, Japan, Brazil, Kenya) directly from canonical country records, including explicit missing-data boundaries. Cross-border system cases and deeper World Systems projection remain.
 - [ ] P0-WORK-ARTIFACTS — Works, Visual Art, Music and Games need more direct links to recovered artifacts, prompts, versions, images/audio/code and explicit missing-artifact states.
 
 # Public surfaces
@@ -114,7 +114,7 @@ Current: strong model/analogy boundary, several worked models, and explicit fail
 
 Current: coherent method page; still more framework than world.
 
-- [ ] SURF-WORLD-001 — Add 4–6 country casebooks from different regions showing geography + institution + law + finance + infrastructure + culture on one page.
+- [~] SURF-WORLD-001 — Added four cross-regional country cases from Europe, East Asia, South America and East Africa, projecting geography/infrastructure/economic dependencies and research gaps from canonical records. Expand to 6 and deepen institution/law/culture projection where source density supports it.
 - [ ] SURF-WORLD-002 — Add 3 cross-border system cases: one energy/grid case, one semiconductor/data/fibre case, one shipping/port/canal case.
 - [ ] SURF-WORLD-003 — Add one institution case that follows mandate → budget/resources → implementation → measurable consequence.
 - [ ] SURF-WORLD-004 — Add a current-data strip with dated primary/public sources for population, trade, debt/finance and infrastructure examples, with explicit refresh dates.
