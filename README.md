@@ -106,6 +106,35 @@ Search-engine optimization is therefore part of information architecture, not ke
 
 Long-form pages should provide real answers, not SEO shells. Structured indexes, aliases, internal links and relationship pages should allow both humans and machines to move from one concept into the surrounding corpus.
 
+## The project as three linked layers
+
+The repository has grown large enough that it is useful to name three different jobs that should cooperate without collapsing into one another.
+
+### Public readers — explain the thing
+
+Pages such as Tim Dooley, Religion, Philosophy, Science, World, Timeline, Works and specialist readers exist for people. Their first responsibility is to make a subject understandable: give the reader the thing itself, explain why it matters, show a few strong objects or cases, and offer deliberate exits deeper.
+
+A public reader is **not automatically the owner of every fact it displays**. It is a projection over deeper material.
+
+### Canonical owners — keep one durable body of knowledge
+
+The `knowledge/`, `data/` and House registries contain the durable definitions, dossiers, timelines, relationships, source-linked observations, models and domain records that public readers project.
+
+Their job is not presentation. Their job is to answer: **where does this fact, definition, relationship, event or model live when every page that displays it is closed?**
+
+This layer should become thicker and clearer while duplicate ownership becomes rarer.
+
+### Evidence, recovery and research — preserve how we know and what is still missing
+
+Primary/public statements, source registries, conversation archaeology, artifact recovery, prediction audits, external sources, contradictions, research queues and failed hypotheses belong to an evidentiary layer that may feed canonical owners without disappearing into them.
+
+This layer answers: **what is the source, what is the confidence, what changed, what failed, what remains unresolved, and what would change the current answer?**
+
+The operating loop is therefore:
+
+**capture / recover → classify evidence → place in the right owner → compare or test → project into a reader → create or revise a work → return new questions to research.**
+
+A healthy project should make that loop visible. Readers should not have to understand backend filenames, but the backend should be strong enough that every important public claim can travel back toward an owner and, where relevant, toward evidence.
 ## Governing rule
 
 > **No placeholder nodes. No empty coverage. No decorative completeness.**
