@@ -78,8 +78,8 @@ Acceptance rule: **a reader who knows the noun should be able to find the noun w
 - [x] **NAV-003 · Timeline visual form:** replaced the two-column event-card dashboard with a vertical dated rail so the static chronology visually reads as a timeline.
 - [x] **NAV-004 · Timeline shortcuts:** added direct first-screen anchors for **Tim & project timeline**, **Full chronology explorer** and **Story**.
 - [x] **NAV-005 · Home utility navigation:** replaced the cosmology-only utility bar with plain subject readers: Tim Dooley, Religion, Philosophy, Science, World, Timeline, Explore. House/Axis/Below remain inside the page where their project meanings can be understood in context.
-- [ ] **NAV-006 · Global noun-label audit:** scan visible navs for metaphorical labels that conceal common destinations (Time→Timeline, Find→Explore, Garden→House, etc.). Keep poetic labels as subtitles, not the only locator.
-- [ ] **NAV-007 · Cross-reader wayfinding:** every major reader should expose Home plus 2–4 obvious sibling/deeper routes without forcing the reader back through House.
+- [~] **NAV-006 · Global noun-label audit:** Home and Timeline now use literal subject labels, and major reader navs were normalized around Home/Timeline/Story/etc. Continue through specialist readers and generated navigation for remaining metaphor-only labels.
+- [x] **NAV-007 · Cross-reader wayfinding:** Tim, Religion, Philosophy, Science, World, Story, Works and Sources now expose an explicit Home route plus obvious sibling/deeper readers while retaining specialist exits.
 - [ ] **NAV-008 · Mobile navigation test:** verify the top routes and Timeline shortcuts remain obvious at narrow widths and do not wrap into an unreadable wall.
 - [ ] **NAV-009 · Breadcrumb consistency:** subject readers should identify where the reader is now, not only where they can go next.
 - [ ] **NAV-010 · Search-to-noun landing test:** for high-value nouns (Tim Dooley, Potato of Life, Timeline, Story, Works, Religion, Science, World, Sources), verify the canonical page title/H1 matches what a search result or human link calls it.
