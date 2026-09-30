@@ -26,6 +26,14 @@
 .work-history-row time{color:var(--site-green);font-size:11px}.work-history-row h3{font:400 22px/1.1 var(--site-font-serif);color:var(--site-gold);margin:0 0 6px}.work-history-row p{margin:0 0 7px;color:#cbd1c8}.work-history-row a{color:var(--site-green);font-size:11px}
 .work-lessons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}.work-lesson{border:1px solid var(--site-line);border-radius:11px;padding:15px;background:var(--site-panel)}.work-lesson h3{font:400 20px var(--site-font-serif);color:var(--site-gold);margin:0 0 5px}.work-lesson p{font-size:12px;color:var(--site-muted);margin:0 0 8px}.work-lesson a{color:var(--site-green);font-size:10px}
 .artifact-shelf{margin:34px 0;padding:26px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}.artifact-shelf h2{font:400 clamp(30px,4vw,44px)/1.06 var(--site-font-serif);color:var(--site-gold);margin:4px 0 10px}.artifact-shelf>.lead{max-width:850px;color:#cbd1c8;font:400 18px/1.55 var(--site-font-serif)}.artifact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}.artifact-card{border:1px solid var(--site-line);border-radius:11px;padding:15px;background:var(--site-panel)}.artifact-card small{display:block;color:var(--site-green);font-size:9px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}.artifact-card h3{font:400 20px/1.2 var(--site-font-serif);color:#e5e0d2;margin:0 0 6px}.artifact-card p{font-size:12px;color:var(--site-muted);margin:0 0 8px}.artifact-card a{color:var(--site-green);font-size:10px}@media(max-width:760px){.work-history-row{grid-template-columns:1fr;gap:4px}.work-lessons,.artifact-grid{grid-template-columns:1fr}}
+
+.fruit-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin:18px 0;border:1px solid var(--site-line);border-radius:14px;overflow:hidden}
+.fruit-step{padding:14px 13px;background:var(--site-panel);border-right:1px solid var(--site-line)}
+.fruit-step:last-child{border-right:0}.fruit-step b{display:block;font:400 17px var(--site-font-serif);color:var(--site-gold);margin-bottom:4px}.fruit-step span{display:block;color:var(--site-muted);font-size:11px;line-height:1.45}
+.fruit-step--risk{background:rgba(255,255,255,.01)}.fruit-axis{display:flex;justify-content:space-between;gap:20px;color:var(--site-muted);font-size:10px;margin-top:7px}.fruit-axis strong{color:var(--site-green);font-weight:400}
+.genre-river{border-top:1px solid var(--site-line);margin-top:18px}.genre-run{padding:24px 0;border-bottom:1px solid rgba(255,255,255,.055)}.genre-run h3{font:400 25px/1.15 var(--site-font-serif);color:var(--site-gold);margin:0 0 7px}.genre-run>p{max-width:820px;color:#cbd1c8;margin:0 0 12px}
+.genre-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}.genre-item{padding:10px 0;border-top:1px solid rgba(255,255,255,.045)}.genre-item b{display:block;color:var(--site-green);font:400 17px/1.25 var(--site-font-serif);margin-bottom:3px}.genre-item span{display:block;color:var(--site-muted);font-size:11px;line-height:1.5}
+@media(max-width:760px){.fruit-strip{grid-template-columns:1fr}.fruit-step{border-right:0;border-bottom:1px solid var(--site-line)}.fruit-step:last-child{border-bottom:0}.genre-items{grid-template-columns:1fr}}
 </style>
 </head>
 <body><main class="page page--reading works-page" data-reader-surface="works">
@@ -122,34 +130,52 @@
 </div>
 </section>
 
-<section class="genre" id="fruit-contract"><h2>Works are Fruit, but output is not automatically good Fruit</h2><p>Every mature Work can declare which Rooms it transforms, what kind of Fruit it is, who it is for, what effect it intends, what risks or externalities it carries, and what future Seed or reusable capacity it creates.</p><div class="works-grid"><div class="work-card"><h3>Nutritive</h3><p>Supports life, understanding, capability or resilience.</p></div><div class="work-card"><h3>Reproductive</h3><p>Creates transferable skill, knowledge, tools or future Seed.</p></div><div class="work-card"><h3>Repair</h3><p>Reduces damage or restores viable relation/capability.</p></div><div class="work-card"><h3>Informational</h3><p>Improves orientation, provenance, correction or closes a false path.</p></div><div class="work-card"><h3>Poison / sterile risk</h3><p>Visible success can still export hidden harm, dependency or produce no durable future capacity.</p></div></div><p><a href="../data/house/works-fruit-contract.json">Open the Works/Fruit contract →</a> · <a href="../data/house/works-fruit-wave-001.json">Inspect the first 8 instrumented Works →</a></p><p class="boundary"><strong>Instrumentation rule.</strong> Intended Fruit and observed reception are separate. Where reception has not been measured, the records say so instead of treating archive presence, completion or popularity as evidence of value.</p></section>
+<section class="genre" id="fruit-contract"><h2>Works are Fruit, but output is not automatically good Fruit</h2><p>Every mature Work can declare which Rooms it transforms, who it is for, what effect it intends, what risks or externalities it carries, and what future Seed or reusable capacity it creates.</p>
+<div class="fruit-strip" aria-label="Fruit evaluation spectrum">
+<div class="fruit-step"><b>Nutritive</b><span>Does it support life, understanding, capability or resilience?</span></div>
+<div class="fruit-step"><b>Reproductive</b><span>Does it create transferable skill, tools, knowledge or future Seed?</span></div>
+<div class="fruit-step"><b>Repair</b><span>Does it reduce damage or restore viable relation and capacity?</span></div>
+<div class="fruit-step"><b>Informational</b><span>Does it improve orientation, provenance or correction?</span></div>
+<div class="fruit-step fruit-step--risk"><b>Poison / sterile risk</b><span>Can visible success still export harm, dependency or no durable future capacity?</span></div>
+</div>
+<div class="fruit-axis"><strong>more generative / more reusable future capacity</strong><span>← observed outcome matters more than declared intention →</span><span>more dependency / externalized harm</span></div>
+<p><a href="../data/house/works-fruit-contract.json">Open the Works/Fruit contract →</a> · <a href="../data/house/works-fruit-wave-001.json">Inspect the first 8 instrumented Works →</a></p><p class="boundary"><strong>Instrumentation rule.</strong> Intended Fruit and observed reception are separate. Where reception has not been measured, the records say so instead of treating archive presence, completion or popularity as evidence of value.</p></section>
 <section class="genres" aria-label="Creative genres">
-<article class="genre" id="play-simulation"><h2>Play &amp; Simulation</h2><p>Games turn concepts into rules. Growth, inheritance, markets, observation, seasons and Doors become things that can happen rather than abstractions that can only be described.</p><div class="works-grid">
-<div class="work-card"><h3>Potato of Life Growth Game</h3><p>A generational potato-growing simulation built around watering, traits, mutations, seasons, selection, research and family memory.</p></div>
-<div class="work-card"><h3>Tim Dooley Trading Game</h3><p>A market-interface experiment joining price signals, attention, narrative and Potato humor.</p></div>
-<div class="work-card"><h3>AI Potato Town</h3><p>A self-playing town with accelerated seasons, autonomous agents, observer mode and threshold events.</p></div>
-<div class="work-card"><h3>Potato School</h3><p>An intentionally ridiculous initiation-game where Doors, puzzles, keys and cultivation turn philosophy into quests while parodying prestige and gatekeeping.</p></div>
+<p class="eyebrow">Forms of making</p>
+<h2>Different media expose different weaknesses in the same idea</h2>
+<p class="lead">A concept that sounds convincing in prose can fail as a game mechanic, become memorable in music, become ambiguous in an image, or become brittle when pushed through comedy. These are not duplicate genres; they are different tests.</p>
+<div class="genre-river">
+<article class="genre-run" id="play-simulation"><h3>Play &amp; Simulation</h3><p>Games force abstract terms such as growth, inheritance, markets, observation, seasons and Doors to become state changes and rules.</p><div class="genre-items">
+<div class="genre-item"><b>Potato of Life Growth Game</b><span>Generational growing, traits, mutation, seasons, selection and family memory.</span></div>
+<div class="genre-item"><b>Tim Dooley Trading Game</b><span>Price signals, attention, narrative, scarcity and speculative behavior.</span></div>
+<div class="genre-item"><b>AI Potato Town</b><span>Autonomous agents, accelerated seasons, observer mode and emergent social history.</span></div>
+<div class="genre-item"><b>Potato School</b><span>Doors, puzzles and initiation mechanics used to parody prestige and gatekeeping.</span></div>
 </div></article>
-<article class="genre" id="writing-performance"><h2>Writing &amp; Performance</h2><p>Some ideas arrive best through voice and pressure: sermon becoming comedy, philosophy becoming rant, symbolism becoming poetry, and repeated performance becoming a form of worldbuilding.</p><div class="works-grid">
-<div class="work-card"><h3>Dense Potatoverse Poetry</h3><p>Incantatory, often unbroken symbolic prose where Door, mud, North, dogs, rubble, light and Axis collide through rhythm.</p></div>
-<div class="work-card"><h3>Sermon / Comedy / Speech</h3><p>A register-shifting form that can move from sacred language to institutional critique to absurdity without treating any one register as the whole project.</p></div>
-<div class="work-card"><h3>Dog House Fiction</h3><p>Absurdist surveillance/game-show satire about spectatorship, incentives, scarcity and distance between viewer and subject.</p></div>
-<div class="work-card"><h3>Wall Practice / Carving Sequence</h3><p>A reported performance sequence using voice, repetition and spatial construction as a creative symbolic medium.</p></div>
+
+<article class="genre-run" id="writing-performance"><h3>Writing &amp; Performance</h3><p>Voice adds pressure. Sermon can become comedy, philosophy can become rant, symbolism can become poetry, and repeated performance can create a world before it is formally defined.</p><div class="genre-items">
+<div class="genre-item"><b>Dense Potatoverse Poetry</b><span>Incantatory symbolic prose where Door, Mud, North, dogs, rubble, light and Axis collide through rhythm.</span></div>
+<div class="genre-item"><b>Sermon / Comedy / Speech</b><span>Register-shifting performance that moves between sacred language, critique and absurdity.</span></div>
+<div class="genre-item"><b>Dog House Fiction</b><span>Surveillance/game-show satire about spectatorship, incentives, scarcity and distance between viewer and subject.</span></div>
+<div class="genre-item"><b>Wall Practice / Carving Sequence</b><span>Reported performance using voice, repetition and spatial construction as creative symbolic medium.</span></div>
 </div></article>
-<article class="genre" id="music-sound"><h2>Music &amp; Sound</h2><p>Music carries the project through cadence, atmosphere and bass rather than exposition. The archive preserves songs, prompts, recovered lyric records and aesthetic directions as creative artifacts with their own provenance.</p><div class="works-grid">
-<div class="work-card"><h3>Suno Music Archive</h3><p>A growing catalogue of Tim Dooley / Potatoverse song experiments and recovered lyric records.</p></div>
-<div class="work-card"><h3>Sound Direction</h3><p>Recurring preferences include hypnotic groove, deep bass, throat-singing textures, tribal or calypso-adjacent motion, jazz fusion and emotionally heavy electronic lineage.</p></div>
+
+<article class="genre-run" id="music-sound"><h3>Music &amp; Sound</h3><p>Music carries the project through cadence, atmosphere and bass rather than exposition. The archive preserves songs, prompts, recovered lyric records and aesthetic directions with their own provenance.</p><div class="genre-items">
+<div class="genre-item"><b>Suno Music Archive</b><span>A growing catalogue of Potatoverse song experiments and recovered lyric records.</span></div>
+<div class="genre-item"><b>Sound Direction</b><span>Hypnotic groove, deep bass, throat-singing textures, tribal/calypso-adjacent motion, jazz fusion and heavy electronic lineage.</span></div>
 </div></article>
-<article class="genre" id="visual-art"><h2>Visual &amp; Symbolic Art</h2><p>The visual corpus preserves relationships that prose can flatten: couch-thrones, Doors and drains, Gardeners, roots, dogs, Swamp, red/blue Potato polarity, Tree staircases and geometric compositions.</p><div class="works-grid">
-<div class="work-card"><h3>Symbolic Composition Corpus</h3><p>Image concepts and generated-art lineages are preserved as artifacts so composition history is not lost inside later explanations.</p></div>
-<div class="work-card"><h3>Diagram &amp; Geometry Studies</h3><p>Vesica, Axis, ladder, tree, mountain and spatial Door diagrams function as visual thinking tools while remaining distinct from empirical proof.</p></div>
+
+<article class="genre-run" id="visual-art"><h3>Visual &amp; Symbolic Art</h3><p>Images make relation spatial: couch-thrones, Doors and drains, Gardeners, roots, dogs, Swamp, red/blue polarity, Tree staircases and geometric compositions.</p><div class="genre-items">
+<div class="genre-item"><b>Symbolic Composition Corpus</b><span>Image concepts and generated-art lineages preserved so composition history is not lost inside later explanation.</span></div>
+<div class="genre-item"><b>Diagram &amp; Geometry Studies</b><span>Vesica, Axis, ladder, tree, mountain and Door diagrams used as visual thinking tools rather than empirical proof.</span></div>
 </div></article>
-<article class="genre" id="recovered-experimental"><h2>Recovered &amp; Experimental Works</h2><p>Conversation archaeology has recovered creative objects that are too distinctive to disappear simply because their original files or exact transcripts are incomplete. Their recovery status remains visible.</p><div class="works-grid">
-<div class="work-card"><h3>The Mashy Arc</h3><p>A comic transformation sequence involving mashed potato, red/blue polarity, wall-to-Door transition and Spudlight.</p></div>
-<div class="work-card"><h3>The Infinite Potato</h3><p>A many-eyed comic cosmology that turns an ordinary potato eye into an exaggerated observer of possible timelines.</p></div>
-<div class="work-card"><h3>Reverse Triangulation</h3><p>A philosophical-comic method of working backward through observations and contradictions toward a hidden center capable of relating them.</p></div>
-<div class="work-card"><h3>Ultimate Eyebrow</h3><p>An escalating fictional parody built around transformation stages, absurd power-system logic and cross-character continuity.</p></div>
+
+<article class="genre-run" id="recovered-experimental"><h3>Recovered &amp; Experimental Works</h3><p>Conversation archaeology preserves distinctive creative objects even when the original file or transcript is incomplete, while keeping that recovery status visible.</p><div class="genre-items">
+<div class="genre-item"><b>The Mashy Arc</b><span>Comic transformation sequence involving mashed potato, red/blue polarity, wall-to-Door transition and Spudlight.</span></div>
+<div class="genre-item"><b>The Infinite Potato</b><span>Many-eyed comic cosmology turning ordinary potato eyes into exaggerated timeline observation.</span></div>
+<div class="genre-item"><b>Reverse Triangulation</b><span>Philosophical-comic method of working backward from observations and contradictions toward a hidden relational center.</span></div>
+<div class="genre-item"><b>Ultimate Eyebrow</b><span>Escalating fictional parody built around transformation stages and absurd power-system continuity.</span></div>
 </div></article>
+</div>
 </section>
 <section class="deep" data-projection-surface aria-label="Explore Works more deeply"><a href="../explore/#branch=works">Full Works archive</a><a href="../tim-dooley/story/">Story</a><a href="../corporium/">Collection</a><a href="../context/source-authority/">Sources &amp; evidence</a><a href="https://github.com/ThePotatoOfLife/TimDooley/blob/main/knowledge/culture/creative-systems-archive.json">Creative systems owner</a></section>
 </main><script src="../app/house-journey.js"></script></body></html>
