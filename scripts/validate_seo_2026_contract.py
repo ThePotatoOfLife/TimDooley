@@ -150,6 +150,18 @@ def test_discovery_owner_contract() -> None:
 
 
 
+def test_generated_question_schema_contract() -> None:
+    source = (ROOT / "scripts" / "build_discovery.py").read_text(encoding="utf-8", errors="replace")
+    required = (
+        '"@type": "WebPage"',
+        '"mainEntity": {"@type": "Question", "name": question}',
+        '"@id": canonical + "#webpage"',
+    )
+    for item in required:
+        if item not in source:
+            fail(f"generated question pages must use WebPage/Question schema: {item}")
+
+
 def test_machine_surface_graph_contract() -> None:
     source = (ROOT / "scripts" / "build_discovery.py").read_text(encoding="utf-8", errors="replace")
     for marker in (
@@ -187,6 +199,7 @@ def main() -> int:
         test_significant_source_freshness_contract,
         test_repository_robots_contract,
         test_discovery_owner_contract,
+        test_generated_question_schema_contract,
         test_machine_surface_graph_contract,
         test_homepage_authority_contract,
     )
