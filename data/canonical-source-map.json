@@ -1,6 +1,6 @@
 {
-  "version": "1.6.0",
-  "updated": "2026-09-18",
+  "version": "1.7.0",
+  "updated": "2026-09-30",
   "purpose": "Canonical ownership map for overlapping repository datasets. One family may have multiple technical layers, but only one layer owns each kind of fact; indexes, evidence, graph projections and research waves reference rather than duplicate the owner.",
   "rule": "Canonical ownership is about authority for a record type, not about which file happens to be largest.",
   "families": {
@@ -184,6 +184,21 @@
         "knowledge/research/foundation-larger-purpose-atlas.json"
       ],
       "policy": "Foundation records own cross-domain generative beginnings, clocks, reproduction mechanisms and refoundation links. Substantive entity identity remains owned by its domain record; Foundation is a time-aware relational layer, not a duplicate entity owner."
+    },
+    "politics": {
+      "canonical_owner": "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
+      "alignment_view": "knowledge/politics/tim-dooley-political-alignment-map.json",
+      "domain_view": "knowledge/politics/tim-dooley-politics-policy-domain-index.json",
+      "public_reader": "politics/index.html",
+      "governance_room": "rooms/inside/politics-governance/index.html",
+      "prediction_evidence": [
+        "knowledge/timeline/prediction-foresight-master-index.json",
+        "knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json"
+      ],
+      "source_evidence": [
+        "data/evidence/public-statement-root-manifest.json"
+      ],
+      "policy": "The political compendium owns dated Tim-attributed political positions, proposals, programme designs, forecasts, research leads, symbolic models and unresolved issues. Alignment and domain files are derived views. Prediction resolution remains owned by Prediction Time evidence, and external institutional facts remain owned by their world/source records. Public pages project this material without upgrading a proposal into law, a forecast into a position, or a research lead into a finding."
     }
   },
   "consolidation_actions": [
