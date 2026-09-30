@@ -162,12 +162,14 @@ def question_page(entry):
     related = [(slug(x), str(x).replace("-", " ")) for x in related_ids]
     schema = {
         "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": question,
+        "@type": "WebPage",
+        "@id": canonical + "#webpage",
+        "name": question,
         "description": short or deep,
         "url": canonical,
+        "mainEntity": {"@type": "Question", "name": question},
         "about": [{"@type": "Thing", "name": x} for x in entities[:20]],
-        "isPartOf": {"@type": "WebSite", "name": "The Potato of Life", "url": BASE_URL + "/"},
+        "isPartOf": {"@type": "WebSite", "@id": BASE_URL + "/#website", "name": "The Potato of Life", "url": BASE_URL + "/"},
     }
 
     # Human reader: answer the question before exposing archive machinery.
