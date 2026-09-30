@@ -1,0 +1,167 @@
+{
+  "id": "tim-dooley-politics-policy-domain-index",
+  "title": "Tim Dooley Politics — Policy Domain Index",
+  "version": "1.0.0",
+  "updated": "2026-09-30",
+  "kind": "derived navigation and provenance view; not a second politics owner",
+  "canonical_owner": "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
+  "purpose": "Project the dated political compendium into policy domains without duplicating or upgrading the underlying evidence. Entry references use zero-based indexes into canonical_owner.entries and remain typed by the canonical mode/confidence fields.",
+  "rules": [
+    "This file does not turn a research lead into a finding, a prediction into a position, a programme into enacted policy, or a symbolic model into an empirical alliance.",
+    "Current-world comparators document independently existing institutions or policy directions; overlap does not establish influence, authorship, causation or endorsement.",
+    "Unresolved issues remain unresolved until a recoverable Tim source is promoted into the canonical compendium."
+  ],
+  "domains": [
+    {
+      "id": "governance-state-capacity",
+      "label": "Governance & state capacity",
+      "entry_indexes": [
+        5,
+        18,
+        32,
+        33
+      ],
+      "reader_anchor": "/politics/#governance",
+      "mechanism": "authorization → capacity → audit → implementation → measured effects → revision"
+    },
+    {
+      "id": "political-economy-fiscal",
+      "label": "Political economy & fiscal discipline",
+      "entry_indexes": [
+        11,
+        17,
+        19,
+        24,
+        29,
+        30,
+        32,
+        33
+      ],
+      "reader_anchor": "/politics/#political-economy",
+      "mechanism": "revenue/resources → allocation → service/production capacity → outcomes → fiscal feedback"
+    },
+    {
+      "id": "civil-liberty-civic-order",
+      "label": "Civil liberty & civic order",
+      "entry_indexes": [
+        0,
+        1,
+        20,
+        21,
+        22,
+        25
+      ],
+      "reader_anchor": "/politics/#civil-liberties",
+      "mechanism": "liberty → responsibility/harm boundary → lawful procedure → correction"
+    },
+    {
+      "id": "europe-north-sovereignty",
+      "label": "Europe, North & sovereignty",
+      "entry_indexes": [
+        2,
+        3,
+        4,
+        6,
+        9,
+        12,
+        14,
+        26,
+        27,
+        31,
+        35
+      ],
+      "reader_anchor": "/politics/#europe-north",
+      "mechanism": "sovereign states → voluntary coupling → shared capability → dependency reduction → retained constitutional agency"
+    },
+    {
+      "id": "defence-security",
+      "label": "Defence & security",
+      "entry_indexes": [
+        6,
+        9,
+        12,
+        13,
+        14,
+        31,
+        32
+      ],
+      "reader_anchor": "/politics/#defense-security",
+      "mechanism": "threat/obligation → capability → burden sharing → legitimacy/accountability → security outcome"
+    },
+    {
+      "id": "energy-industry-resilience",
+      "label": "Energy, industry & resilience",
+      "entry_indexes": [
+        7,
+        28,
+        31,
+        34
+      ],
+      "reader_anchor": "/politics/#energy",
+      "mechanism": "supply + infrastructure + diversity + interconnection → resilience"
+    },
+    {
+      "id": "technology-digital-sovereignty",
+      "label": "Technology, AI & digital sovereignty",
+      "entry_indexes": [
+        5,
+        8,
+        15,
+        31
+      ],
+      "reader_anchor": "/politics/#technology",
+      "mechanism": "compute/data/institutional memory → interoperability → multi-vendor capacity → auditability → reduced lock-in"
+    },
+    {
+      "id": "influence-research-leads",
+      "label": "Influence networks & research leads",
+      "entry_indexes": [
+        16,
+        36
+      ],
+      "reader_anchor": "/politics/#shadow-power",
+      "mechanism": "named hypothesis → source collection → dated relationship edges → alternative explanations → confidence update"
+    }
+  ],
+  "current_world_comparators": [
+    {
+      "id": "eu-tech-sovereignty-2026",
+      "date": "2026-06-03",
+      "class": "official EU policy/legislative context",
+      "relevance": "Independent current-world comparator for Tim's May 2026 European digital-sovereignty programme. The European Commission's 2026 technology-sovereignty package includes cloud/AI, semiconductors and open-source measures.",
+      "sources": [
+        "https://digital-strategy.ec.europa.eu/en/policies/eu-tech-sovereignty",
+        "https://digital-strategy.ec.europa.eu/en/library/proposal-cloud-and-ai-development-act-cada"
+      ],
+      "boundary": "Comparator only. It does not establish that Tim influenced EU policy or that the two programmes are identical."
+    },
+    {
+      "id": "eu-law-making",
+      "date": "current-process-checked-2026-09-30",
+      "class": "official institutional process",
+      "relevance": "Grounds the politics reader's distinction between proposal, adoption, delegated/implementing acts and implementation.",
+      "sources": [
+        "https://commission.europa.eu/law/law-making-process_en",
+        "https://commission.europa.eu/law/law-making-process/adopting-eu-law_en"
+      ]
+    },
+    {
+      "id": "denmark-parliamentary-chain",
+      "date": "current-process-checked-2026-09-30",
+      "class": "official institutional process",
+      "relevance": "Grounds the Denmark governance example: legislation, annual budget and parliamentary scrutiny are distinct tasks within a broader separation-of-powers system.",
+      "sources": [
+        "https://www.ft.dk/da/folkestyret/folketinget/folketingets-arbejde"
+      ]
+    }
+  ],
+  "provenance": {
+    "source_class_policy": {
+      "direct/recovered Tim material": "Canonical compendium entry, quote and confidence/mode fields.",
+      "archive synthesis": "Interpretive labels must remain marked as synthesis rather than Tim's own wording.",
+      "external institutional context": "Official public sources used only to test or contextualize mechanisms."
+    },
+    "generated_from": "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
+    "last_reviewed": "2026-09-30"
+  }
+}
