@@ -69,6 +69,28 @@ Keep separate files only when separation preserves something important: a primar
 
 Indexes, manifests and projections should point to the canonical material rather than repeat it.
 
+## Reader directness & redundancy audit — 2026-10-01
+
+Rule: **say the thing before explaining the system that stores, routes or renders the thing.** Reader pages may expose evidence and provenance, but maintenance vocabulary should not become the foreground.
+
+### Findings from the first cross-surface pass
+
+- [x] **DIRECT-001 · Home presentation-language leak:** removed “hidden backend,” “the site should,” “the homepage only needs,” registry/projection framing and other sentences that described presentation strategy instead of the subject.
+- [x] **DIRECT-002 · House substance-first paradox:** removed the public section that spent four paragraphs explaining why public pages should not make readers study backend architecture first. The rule belongs in project governance/TODO; the reader should experience it rather than read a manifesto about it.
+- [~] **DIRECT-003 · House owner/projection vocabulary:** simplified several visible “owner / projection / backend” phrases into ordinary language (“durable record,” “explain clearly,” “one House, several lenses”). Continue through deeper House research panels and JS-generated copy.
+- [x] **DIRECT-004 · Tim page-instruction redundancy:** removed the “One portrait, many doors” section that mostly taught the reader how to use links; shortened “this page exists” framing; replaced the stale duplicate 5,987-commit construction summary with meaning + a route to History.
+- [x] **DIRECT-005 · World backend-first opening:** World now begins with geographic/system questions rather than “one relational backend”; country-case boundaries stay source/date focused without explaining projection ownership.
+- [x] **DIRECT-006 · Rooms exhibit narration:** removed “curated shelf in the backend,” “backend remains the owner,” and “projected from registry” language from the main reading flow while retaining an inspect-data link.
+- [x] **DIRECT-007 · Religion / Philosophy page-meta trim:** changed “the site should expose…” and “this page is a reader-facing synthesis…” into direct content/source language.
+- [ ] **DIRECT-008 · Exact duplicate paragraph crawl:** scan all 38 active public surfaces for repeated or near-repeated substantive paragraphs. Keep repeated safety/evidence boundaries only where domain-specific; otherwise select one owner and shorten downstream copies.
+- [ ] **DIRECT-009 · Owner-fact staleness audit:** find detailed facts repeated outside their strongest owner (commit counts, dates, country values, metrics, artifact counts, role definitions). Replace secondary copies with short meaning + link so updates cannot leave stale twins.
+- [ ] **DIRECT-010 · House maintenance-panel placement:** review Population Pulse, Structural Census, project-state diagnostics and other maintainer-facing panels. Keep useful public transparency, but collapse/move material whose primary reader is the builder rather than a visitor.
+- [ ] **DIRECT-011 · Generated/runtime copy audit:** scan JS-rendered labels and fallback copy for “projection,” “registry,” “backend,” “owner,” “surface,” “contract” and similar maintenance terms that can leak back into otherwise-clean HTML readers.
+- [ ] **DIRECT-012 · First-screen verb test:** for every active subject reader, the first authored screen should answer at least one direct noun/verb question (“what is it?”, “what happened?”, “how does it work?”, “what can I inspect?”) before explaining route families, ownership, methodology or scope.
+- [ ] **DIRECT-013 · Repeated method prose:** Context, Sources, History, Science, Religion and specialist pages repeatedly need evidence boundaries. Build a short domain-specific pattern library so each page states the relevant boundary once rather than re-explaining the entire archive epistemology.
+- [ ] **DIRECT-014 · Navigation prose compression:** when visible links already communicate the route, remove prose whose only job is to narrate the menu (“click X for…”, “this page routes…”, “choose a lens…”). Keep prose when it teaches a real distinction between the destinations.
+- [ ] **DIRECT-015 · Backend discoverability without backend voice:** raw JSON/owner links should remain inspectable, but labels should usually say what the object contains (“Developmental genealogy,” “Country record,” “Source ledger”) rather than asking ordinary readers to understand owner/registry/projection terminology.
+
 ## Visual & reader quality pass — 2026-10-01
 
 Rule: **a visual earns space only when it explains, documents or orients something better than another card or paragraph.** Decorative stock imagery, repeated card grids and maintenance-only architecture should not dominate reader surfaces.
