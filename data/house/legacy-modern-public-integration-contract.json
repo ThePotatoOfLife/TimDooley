@@ -1,8 +1,8 @@
 {
   "id": "legacy-modern-public-integration-contract",
   "title": "Legacy ↔ Modern Public Integration Contract",
-  "version": "1.2.0",
-  "updated": "2026-09-27",
+  "version": "1.3.0",
+  "updated": "2026-10-01",
   "authority": "house-public-integration",
   "purpose": "Integrate older substantial readers with the newer Potato of Life / House / Rooms architecture without rewriting historical source strata, creating duplicate knowledge owners, or forcing every page into one visual template.",
   "master_rule": "Preserve old pages as authored/documentary strata where they still carry unique value; integrate them through generated public context, authoritative routing, shared capabilities and canonical-owner links.",
@@ -120,17 +120,17 @@
   "migration_inventory": [
     {
       "route": "/faq/",
-      "title": "Legacy Tim / Potato FAQ",
-      "current_class": "living-specialist",
+      "title": "Tim / Potato Search FAQ",
+      "current_class": "living-specialist search-facing View",
       "modern_neighbors": [
         "/questions/",
         "/tim-dooley/",
         "/potato-of-life/"
       ],
-      "unique_value": "Curated human-readable Tim/Potato identity and theology answers that remain more coherent than the generated all-domain Questions index.",
-      "overlap": "Questions now owns generated/global discovery; several FAQ answers overlap Tim ontology and Religion readers.",
-      "action": "keep-for-now",
-      "next_merge": "Move durable current definitions toward Tim/Potato canonical owners and let /faq/ become a curated Tim/Potato question View rather than a second global questions system."
+      "unique_value": "Curated visible answers to ordinary Tim/Potato/Potatoism search questions, with concise handoffs to canonical readers and owners.",
+      "overlap": "Questions owns global/open/recoverable discovery; /faq/all/ owns long-tail niche inventory; Tim, Potato of Life, Religion, Philosophy, Works and Sources own durable definitions.",
+      "action": "keep-and-narrow",
+      "next_merge": "Completed direction: /faq/ is the concise answered search front door; /questions/ remains the concierge/open-question surface; /faq/all/ remains the long-tail inventory. Future FAQ additions should route to canonical owners instead of growing another global ontology."
     },
     {
       "route": "/tim-dooley/biblical-case/",
