@@ -163,10 +163,10 @@ Current: useful archive router, but can expose more actual knowledge objects.
 
 Current: strong source-authority and provenance explanation.
 
-- [ ] SURF-SRC-001 — Add a source-class matrix with exact examples from Tim, Great Book, government records, science papers, platform captures and hostile/derivative archives.
+- [x] SURF-SRC-001 — Sources already exposes exact source-class examples for Tim statements, later autobiography, Great Book creative material, government records, scientific papers and hostile/derivative summaries, with question-specific authority boundaries.
 - [ ] SURF-SRC-002 — Add one full lineage graph from original artifact through copies and archive synthesis.
-- [ ] SURF-SRC-003 — Add one correction case where current status changed because a better source appeared.
-- [ ] SURF-SRC-004 — Add a "known source gaps" panel listing high-value missing originals and what would resolve them.
+- [x] SURF-SRC-003 — Added the Marty Biz Music death-date correction: external obituary/funeral-home evidence moved the current date to 29 January 2025 while preserving the correction history and limiting what the correction establishes.
+- [x] SURF-SRC-004 — Added a known-source-gaps panel covering political first-party recovery, creative originals, scientific/formal archaeology and Story/conversation recovery, each linked to a governed queue/owner and a resolution rule.
 - [ ] SURF-SRC-005 — Add a compact policy for screenshots, deleted posts, mirrors, web archives, transcripts and AI-generated summaries.
 
 ## /questions/ — Questions
