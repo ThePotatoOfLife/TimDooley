@@ -222,11 +222,6 @@
       roomRail.hidden=!rows.length;
     };
 
-    const primaryLevelForRoom=roomId=>{
-      const dwelling=projection&&roomId?dwellingRows(projection).find(row=>row.id===roomId):null;
-      return dwelling?.primary_level||null;
-    };
-
     const linkSpatialTarget=link=>{
       const siteOrigin=new URL(context.siteBase).origin;
       const siteBasePath=new URL(context.siteBase).pathname;
@@ -237,15 +232,7 @@
       return resolveSpatialContext(targetRoute,projection,roomContract,subroomContract);
     };
 
-    const enforceFloorLocalPageNavigation=()=>{
-      if(!projection||!roomContract)return;
-      const selector=[
-        'main > nav.page-nav a[href]',
-        'main > nav.nav a[href]',
-        'main > header nav a[href]',
-        'main .page-header > nav a[href]',
-        'main nav.room-floor-nav a[href]'
-      ].join(', ');
+    const enforceFloorLocalLinks=selector=>{
       document.querySelectorAll(selector).forEach(link=>{
         const target=linkSpatialTarget(link);
         if(!target||!LEVELS.includes(target.levelId))return;
@@ -270,25 +257,20 @@
       });
     };
 
-    const markInPageCrossFloorExits=()=>{
+    const enforceFloorLocalPageNavigation=()=>{
       if(!projection||!roomContract)return;
-      document.querySelectorAll('.door-grid a[href], .room-actions a[href], .deep a[href], .deep-links a[href], .dwelling-links a[href], .adj-grid a[href], .side-routes a[href]').forEach(link=>{
-        link.classList.remove('spatial-exit');
-        delete link.dataset.exitFloor;
-        delete link.dataset.exitPrefix;
-        const target=linkSpatialTarget(link);
-        if(!target||!LEVELS.includes(target.levelId)||target.levelId===spatial.levelId)return;
-        const fromIndex=LEVELS.indexOf(spatial.levelId);
-        const toIndex=LEVELS.indexOf(target.levelId);
-        const arrow=toIndex<fromIndex?'↑':'↓';
-        const label=levelLabel(target.levelId,projection).replace(/\s*\/.*$/,'').toUpperCase();
-        link.classList.add('spatial-exit');
-        link.dataset.exitFloor=target.levelId;
-        link.dataset.exitPrefix=arrow+' '+label;
-        if(!link.getAttribute('aria-label')){
-          link.setAttribute('aria-label',link.textContent.trim()+' · exit to '+label.toLowerCase());
-        }
-      });
+      enforceFloorLocalLinks([
+        'main > nav.page-nav a[href]',
+        'main > nav.nav a[href]',
+        'main > header nav a[href]',
+        'main .page-header > nav a[href]',
+        'main nav.room-floor-nav a[href]'
+      ].join(', '));
+    };
+
+    const enforceFloorLocalSecondaryNavigation=()=>{
+      if(!projection||!roomContract)return;
+      enforceFloorLocalLinks('.door-grid a[href], .room-actions a[href], .deep a[href], .deep-links a[href], .dwelling-links a[href], .adj-grid a[href], .side-routes a[href]');
     };
 
     const render=(direction='')=>{
@@ -301,9 +283,8 @@
       floorCode.textContent=({heaven:'03',plane:'02',below:'01'}[selectedLevel]||'02');
       floorLabel.textContent=levelLabel(selectedLevel,projection).replace(/\s*\/.*$/,'').toUpperCase();
       const currentRoom=spatial.room;
-      const currentRoomPrimary=primaryLevelForRoom(spatial.roomId);
       roomLabel.textContent=currentRoom&&selectedLevel===spatial.levelId
-        ?(currentRoomPrimary===selectedLevel?'HERE':'ROOM PROJECTION · ENTER VIA '+levelLabel(currentRoomPrimary,projection).replace(/\s*\/.*$/,'').toUpperCase())
+        ?'HERE'
         :(selectedLevel===spatial.levelId?'HOUSE ORIENTATION':'BROWSING FLOOR');
       up.disabled=selectedLevel==='heaven'||!projection;
       down.disabled=selectedLevel==='below'||!projection;
@@ -388,7 +369,7 @@
       header.setAttribute('aria-busy','false');
       render('hydrate');
       enforceFloorLocalPageNavigation();
-      markInPageCrossFloorExits();
+      enforceFloorLocalSecondaryNavigation();
     }).catch(()=>{
       header.dataset.elevatorReady='error';
       header.setAttribute('aria-busy','false');
