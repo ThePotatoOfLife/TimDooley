@@ -17,7 +17,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
 
-from house_public_surfaces import primary_gateway_rows
+from house_public_surfaces import primary_gateway_rows, surface_rows
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
@@ -30,6 +30,8 @@ OFFICIAL_REPOSITORY = "https://github.com/ThePotatoOfLife/TimDooley"
 SOURCE_AUTHORITY = BASE_URL + "/context/source-authority/"
 AUTHORITY_MANIFEST = BASE_URL + "/site-authority.json"
 TIM_CANONICAL = BASE_URL + "/tim-dooley/"
+
+PUBLIC_SURFACES = surface_rows(ROOT)
 
 PRIMARY_DOORS = tuple(
     (row["id"], row["title"], row["canonical_route"])
@@ -311,13 +313,26 @@ def build_machine_files(entries, families):
     record_index = {"version":"1.0.0","updated":generated,"purpose":"Public discovery projection for core canonical records.","count":len(records),"records":records}
     write("knowledge/indexes/body-discovery-index.json", json.dumps(body_index, ensure_ascii=False, indent=2) + "\n")
     write("knowledge/indexes/record-discovery-index.json", json.dumps(record_index, ensure_ascii=False, indent=2) + "\n")
+    public_surface_graph = [
+        {
+            "id": row.get("id"),
+            "title": row.get("title"),
+            "url": BASE_URL + (row.get("canonical_route") or row.get("route") or "/"),
+            "surface_type": row.get("surface_type"),
+            "reader_job": row.get("reader_job"),
+            "primary_parent": row.get("primary_parent"),
+            "visibility": row.get("visibility"),
+        }
+        for row in PUBLIC_SURFACES
+        if row.get("status") == "active" and (row.get("canonical_route") or row.get("route"))
+    ]
     discovery = {
-        "schema_version": "3.1.0", "updated": generated, "name": "The Potato of Life — Tim Dooley Archive", "canonical_url": BASE_URL + "/",
+        "schema_version": "3.2.0", "updated": generated, "name": "The Potato of Life — Tim Dooley Archive", "canonical_url": BASE_URL + "/",
         "official_repository": OFFICIAL_REPOSITORY,
         "source_authority": SOURCE_AUTHORITY,
         "authority_manifest": AUTHORITY_MANIFEST,
         "tim_canonical": TIM_CANONICAL,
-        "reader_architecture": {"principle": "five major doors; deeper material is routed beneath them rather than competing with them", "doors": [{"id": key, "name": label, "url": BASE_URL + path} for key, label, path in PRIMARY_DOORS]},
+        "reader_architecture": {"principle": "five major doors; deeper material is routed beneath them rather than competing with them", "doors": [{"id": key, "name": label, "url": BASE_URL + path} for key, label, path in PRIMARY_DOORS], "public_surfaces": public_surface_graph},
         "entrypoints": {
             "tim": TIM_CANONICAL, "religion": BASE_URL + "/religion/", "philosophy": BASE_URL + "/philosophy/", "science": BASE_URL + "/science/", "world": BASE_URL + "/world/", "world_map": BASE_URL + "/world-map/",
             "timeline": BASE_URL + "/timeline/", "questions": BASE_URL + "/questions/", "a_z": BASE_URL + "/index-a-z/", "machine_index": BASE_URL + "/machine-index.json", "site_index": BASE_URL + "/site-index.json", "full_machine_index": BASE_URL + "/llms-full.txt", "sitemap_index": BASE_URL + "/sitemap-index.xml",
@@ -347,11 +362,19 @@ def build_machine_files(entries, families):
 
     concise = ["# The Potato of Life / Tim Dooley", "", f"> Canonical site: {BASE_URL}/", "> Official project-owned public knowledge archive with provenance-aware records, reader pages, questions, chronology and machine-readable indexes.", "", "## Official project authority", f"- Official repository: {OFFICIAL_REPOSITORY}", f"- Tim Dooley canonical route: {TIM_CANONICAL}", f"- Sources and evidence policy: {SOURCE_AUTHORITY}", f"- Authority manifest: {AUTHORITY_MANIFEST}", "", "## Primary reader doors"]
     concise += [f"- {label}: {BASE_URL}{path}" for _, label, path in PRIMARY_DOORS]
+    concise += ["", "## Specialist reader surfaces"]
+    for row in public_surface_graph:
+        if row.get("visibility") != "specialist":
+            continue
+        concise.append(f"- {row['title']}: {row['url']} — {row.get('reader_job') or 'specialist reader'}")
     concise += ["", "## High-value navigation", f"- Life & Body: {BASE_URL}/life-body/", f"- House inhabitants: {BASE_URL}/rooms/objects/", f"- Timeline: {BASE_URL}/timeline/", f"- Natural-language questions: {BASE_URL}/questions/", f"- A–Z entity/concept index: {BASE_URL}/index-a-z/", "", "## Machine retrieval", f"- Final canonical page index: {BASE_URL}/site-index.json", f"- Discovery architecture: {BASE_URL}/discovery.json", f"- Machine ownership/evidence index: {BASE_URL}/machine-index.json", f"- Full LLM retrieval guide: {BASE_URL}/llms-full.txt", f"- Canonical record index: {BASE_URL}/knowledge/indexes/core-index.json", f"- Source/provenance index: {BASE_URL}/knowledge/indexes/source-index.json", f"- Sitemap index: {BASE_URL}/sitemap-index.xml", "", "## Retrieval policy", "- Prefer primary Tim/project material for what Tim directly said, wrote, published or created.", "- Prefer canonical owner files for the archive's current definition of a concept.", "- Use dated timeline/attestation records for development and chronology.", "- Keep archive canon, historical evidence, scientific evidence, comparison, interpretation and creative material distinct.", "- Do not treat symbolic resemblance or repeated derivative pages as independent empirical corroboration.", ""]
     write("llms.txt", "\n".join(concise))
 
     full = ["# The Potato of Life / Tim Dooley — Full Machine Retrieval Index", "", f"> Canonical public archive: {BASE_URL}/", f"> Official repository: {OFFICIAL_REPOSITORY}", f"> Tim Dooley canonical route: {TIM_CANONICAL}", f"> Sources and evidence policy: {SOURCE_AUTHORITY}", f"> Authority manifest: {AUTHORITY_MANIFEST}", f"> Final canonical page index: {BASE_URL}/site-index.json", f"> Discovery architecture: {BASE_URL}/discovery.json", "", "## Primary reader doors"]
     full += [f"- [{label}]({BASE_URL}{path})" for _, label, path in PRIMARY_DOORS]
+    full += ["", "## Public surface graph"]
+    for row in public_surface_graph:
+        full.append(f"- [{row['title']}]({row['url']}): type={row.get('surface_type')}; parent={row.get('primary_parent')}; visibility={row.get('visibility')}; job={row.get('reader_job')}")
     full += ["", "## Core canonical records"]
     for rec in records:
         full.append(f"- [{rec['label']}]({rec['url']}): {rec['kind']} · {rec['path']}")
