@@ -42,6 +42,12 @@ TAG_RE = re.compile(r"<[^>]+>")
 
 PUBLIC_SURFACES = surface_rows(ROOT)
 PUBLIC_SURFACE_BY_ID = {row["id"]: row for row in PUBLIC_SURFACES}
+SEO_SOURCE_BINDINGS_PATH = ROOT / "data" / "seo-page-source-bindings.json"
+try:
+    SEO_SOURCE_BINDINGS = json.loads(SEO_SOURCE_BINDINGS_PATH.read_text(encoding="utf-8")).get("routes", {})
+except Exception:
+    SEO_SOURCE_BINDINGS = {}
+
 PUBLIC_SURFACE_BY_ROUTE = {
     (row.get("canonical_route") or row.get("route") or "").strip("/"): row
     for row in PUBLIC_SURFACES
@@ -362,6 +368,10 @@ def source_date_for_url(url: str, dates: dict[str, str], record_routes: dict[str
     rel = canonical_relative_path(url)
     if rel is None:
         return None
+    bound = SEO_SOURCE_BINDINGS.get(rel, [])
+    bound_dates = [dates[path] for path in bound if path in dates]
+    if bound_dates:
+        return max(bound_dates)
     static = "index.html" if not rel else f"{rel}/index.html"
     if static in dates:
         return dates[static]
