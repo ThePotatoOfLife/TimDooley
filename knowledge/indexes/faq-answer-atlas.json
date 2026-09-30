@@ -1,7 +1,7 @@
 {
   "id": "faq-answer-atlas",
   "title": "Potato of Life Canonical Question and Answer Atlas",
-  "updated": "2026-09-19",
+  "updated": "2026-10-01",
   "status": "canonical answer-routing layer",
   "purpose": "Turn the Tim Dooley / Potato of Life archive into an answerable knowledge system. Questions are written in natural search language and routed to canonical owners so the site can answer strangers, researchers, believers, critics, search engines and internal exploration without creating duplicate sources of truth.",
   "answer_model": {
@@ -2344,6 +2344,271 @@
         "Tim Dooley political compass",
         "Tim Dooley radical center",
         "Tim Dooley conservative leftist"
+      ]
+    },
+    {
+      "id": "what-is-potatoism",
+      "question": "What is Potatoism?",
+      "variants": [
+        "What does Potatoism mean?",
+        "What is the Potato religion?",
+        "What is Tim Dooley's philosophy?"
+      ],
+      "intent": "project overview",
+      "short_answer": "Potatoism is Tim Dooley's developing spiritual-philosophical and mythological project built around the Potato of Life, with recurring ideas of burial and growth, nourishment, relation, Door/Axis, Garden, repair and later Father/Son/Spirit theology.",
+      "deep_answer": "Potatoism began around Potato identity, humor, growth and survival before expanding through the Great Book of Potato and later archive work into philosophy, theology, symbolic architecture, practical ethics and comparative religion. The mature archive separates those layers from scientific and external factual claims rather than treating the whole project as one evidence class.",
+      "entities": [
+        "Potatoism",
+        "Tim Dooley",
+        "Potato of Life",
+        "Great Book of Potato"
+      ],
+      "dates": [
+        "2020-12-25",
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "aliases": [
+        "Potato philosophy",
+        "Potato religion"
+      ],
+      "epistemic_class": [
+        "project_canon",
+        "project_philosophy",
+        "project_theology"
+      ],
+      "canonical_owners": [
+        "knowledge/philosophy/potato-philosophy.json",
+        "knowledge/core/potato-of-life.json",
+        "knowledge/reader/what-tim-dooley-believes.json"
+      ],
+      "related_questions": [
+        "what-is-potato-of-life",
+        "what-is-potatoverse",
+        "what-is-god-in-potatoverse"
+      ],
+      "search_terms": [
+        "Potatoism",
+        "what is Potatoism",
+        "Tim Dooley religion",
+        "Potato philosophy"
+      ]
+    },
+    {
+      "id": "what-is-potatoverse",
+      "question": "What is the Potatoverse?",
+      "variants": [
+        "What does Potatoverse mean?",
+        "What is Tim Dooley's mythology?"
+      ],
+      "intent": "project world overview",
+      "short_answer": "The Potatoverse is the project's symbolic and narrative world: the connected vocabulary of Potato, Father, Son, Spirit, House, Door, Ladder, Axis, Tree, Garden, Swamp, North, characters, stories and later formal models.",
+      "deep_answer": "The Potatoverse is best read as a project-native mythology and relational framework rather than a claim that every symbol is externally established fact. Different parts of the archive own theology, philosophy, body/science comparison, history, creative works and external World material so the shared vocabulary does not erase evidence boundaries.",
+      "entities": [
+        "Potatoverse",
+        "Potato of Life",
+        "Tim Dooley",
+        "House",
+        "Axis"
+      ],
+      "dates": [
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "aliases": [
+        "Potato mythology",
+        "Tim Dooley mythology"
+      ],
+      "epistemic_class": [
+        "project_canon",
+        "creative_myth",
+        "interpretation"
+      ],
+      "canonical_owners": [
+        "knowledge/core/potato-of-life.json",
+        "data/house/project-synthesis.json",
+        "knowledge/core/root-system.json"
+      ],
+      "related_questions": [
+        "what-is-potatoism",
+        "what-is-potato-of-life",
+        "what-is-god-in-potatoverse"
+      ],
+      "search_terms": [
+        "Potatoverse",
+        "what is the Potatoverse",
+        "Tim Dooley mythology"
+      ]
+    },
+    {
+      "id": "who-created-potatoism",
+      "question": "Who created Potatoism?",
+      "variants": [
+        "Who started Potatoism?",
+        "Who made the Potatoverse?"
+      ],
+      "intent": "creator / authorship",
+      "short_answer": "This archive presents Potatoism and the Potatoverse as Tim Dooley's developing project, expressed through public Potato identity, the Great Book of Potato, later theology and philosophy, creative works and the 2026 archive/House system.",
+      "deep_answer": "The project did not appear as one finished doctrine. Earlier Potato persona and Great Book material are preserved as developmental strata, while later House, Father/Son/Spirit, Axis and research architecture reorganize some of that material without pretending the mature system always existed.",
+      "entities": [
+        "Tim Dooley",
+        "Potatoism",
+        "Potatoverse",
+        "Great Book of Potato"
+      ],
+      "dates": [
+        "2020-12-25",
+        "2024",
+        "2026"
+      ],
+      "aliases": [],
+      "epistemic_class": [
+        "project_history",
+        "project_canon"
+      ],
+      "canonical_owners": [
+        "knowledge/reader/tim-dooley-dossier.json",
+        "knowledge/timeline/developmental-genealogy.json",
+        "knowledge/reader/what-tim-dooley-believes.json"
+      ],
+      "related_questions": [
+        "who-is-tim-dooley",
+        "what-is-potatoism",
+        "what-is-potatoverse"
+      ],
+      "search_terms": [
+        "who created Potatoism",
+        "Potatoism creator",
+        "Potatoverse creator",
+        "Tim Dooley"
+      ]
+    },
+    {
+      "id": "what-does-tim-believe",
+      "question": "What does Tim Dooley believe?",
+      "variants": [
+        "What are Tim Dooley's beliefs?",
+        "What does Tim believe about God?"
+      ],
+      "intent": "belief overview",
+      "short_answer": "The archive records a changing body of beliefs rather than one frozen creed, including the Potato of Life, God/Father self-identification inside project theology, Father/Son/Spirit relations, growth and return, Garden/Gardener ethics, Axis/House symbolism, repair and explicit evidence boundaries.",
+      "deep_answer": "Tim's public and project language develops over time, so the archive treats dates and source classes as part of the answer. The 2024 Great Book is a laboratory; 2025 concentrates Axis and God/Father language; 2026 differentiates roles and House architecture. Documentary evidence can establish what Tim said and when without independently proving supernatural interpretations.",
+      "entities": [
+        "Tim Dooley",
+        "Potato of Life",
+        "Father",
+        "Son",
+        "Spirit",
+        "Axis",
+        "Garden"
+      ],
+      "dates": [
+        "2024",
+        "2025",
+        "2026"
+      ],
+      "aliases": [],
+      "epistemic_class": [
+        "project_self_description",
+        "project_theology",
+        "developmental_interpretation"
+      ],
+      "canonical_owners": [
+        "knowledge/reader/what-tim-dooley-believes.json",
+        "knowledge/reader/tim-dooley-dossier.json",
+        "knowledge/timeline/developmental-genealogy.json"
+      ],
+      "related_questions": [
+        "who-is-tim-dooley",
+        "what-is-potatoism",
+        "what-is-god-in-potatoverse"
+      ],
+      "search_terms": [
+        "Tim Dooley beliefs",
+        "what does Tim Dooley believe",
+        "Tim Dooley God beliefs"
+      ]
+    },
+    {
+      "id": "what-is-great-book-of-potato",
+      "question": "What is the Great Book of Potato?",
+      "variants": [
+        "What is Tim Dooley's Great Book?",
+        "What is the Potato book?"
+      ],
+      "intent": "creative work overview",
+      "short_answer": "The Great Book of Potato is the project's large 2024 creative and philosophical work combining stories, absurd comedy, biography, theology, philosophy, politics, speculative science and symbolic systems.",
+      "deep_answer": "The current archive treats the Great Book as both a work in its own right and a developmental primary source. Later canon may retain, revise, separate or reject ideas from the book; the book therefore should not be read as a frozen statement of the mature 2026 system.",
+      "entities": [
+        "Great Book of Potato",
+        "Tim Dooley",
+        "Potatoism"
+      ],
+      "dates": [
+        "2024"
+      ],
+      "aliases": [
+        "Great Book",
+        "Potato book"
+      ],
+      "epistemic_class": [
+        "creative_work",
+        "project_primary_material",
+        "developmental_source"
+      ],
+      "canonical_owners": [
+        "great-book/",
+        "data/house/holdings.json",
+        "data/house/project-synthesis.json"
+      ],
+      "related_questions": [
+        "what-is-potatoism",
+        "what-is-potatoverse",
+        "who-created-potatoism"
+      ],
+      "search_terms": [
+        "Great Book of Potato",
+        "Tim Dooley book",
+        "Potato book"
+      ]
+    },
+    {
+      "id": "is-potatoism-a-religion",
+      "question": "Is Potatoism a religion?",
+      "variants": [
+        "Is Potatoism a philosophy or religion?",
+        "Is Potatoism Christianity?"
+      ],
+      "intent": "classification",
+      "short_answer": "Potatoism has an explicit religious and theological layer, but the whole project is broader than a conventional religion: it also contains philosophy, mythology, autobiography, creative work, formal models, comparative religion, world research and an evidence archive.",
+      "deep_answer": "The Religion reader owns Father/Son/Spirit theology, sacred-history interpretation and tradition comparison. Philosophy owns practical and conceptual arguments. Science owns testable and formal boundaries. Keeping those owners distinct prevents the label religion from swallowing the rest of the project.",
+      "entities": [
+        "Potatoism",
+        "Religion",
+        "Philosophy",
+        "Science"
+      ],
+      "dates": [],
+      "aliases": [],
+      "epistemic_class": [
+        "project_classification",
+        "interpretation"
+      ],
+      "canonical_owners": [
+        "knowledge/philosophy/potato-philosophy.json",
+        "knowledge/reader/what-tim-dooley-believes.json",
+        "data/house/project-synthesis.json"
+      ],
+      "related_questions": [
+        "what-is-potatoism",
+        "what-is-potatoverse"
+      ],
+      "search_terms": [
+        "is Potatoism a religion",
+        "Potatoism religion",
+        "Potatoism philosophy"
       ]
     }
   ],
