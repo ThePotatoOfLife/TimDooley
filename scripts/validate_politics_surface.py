@@ -25,7 +25,6 @@ def main()->int:
         'name="twitter:card" content="summary"',
         '"@type":"Article"',
         '"@type":"BreadcrumbList"',
-        '"@type":"FAQPage"',
         'id="policy-domains-title"',
         'tim-dooley-politics-policy-domain-index.json',
         'Comparator, not provenance',
