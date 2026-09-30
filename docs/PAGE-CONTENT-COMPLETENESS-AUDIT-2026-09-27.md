@@ -41,7 +41,7 @@ Do not close a task by adding generic prose. Prefer one named case, one dated so
 - [x] P0-GAMES — Games & Simulations describes what belongs there but barely presents the games themselves. Recover rules, states, prototypes, screenshots/status and lessons for each surviving project.
 - [x] P0-NEURO — Neurobiology has a good thalamic start but is much thinner than the body backend. Add named circuits, CSF/meningeal material, autonomic/interoceptive pathways and source-graded brain-room examples.
 - [x] P0-MEMORY — Memory & Recovery is much thinner than the archive it represents. Add multiple worked recovery cases with source states, failed recoveries and promotion decisions.
-- [ ] P0-SYSTEMS — Systems & Dynamics needs more than three examples. Add actual feedback, queueing, resilience, contagion and control-system cases with variables and diagrams/equations where appropriate.
+- [x] P0-SYSTEMS — Systems & Dynamics now includes feedback, queueing, contagion, distributed control, resilience/redundancy and path-dependence cases with named variables and equations.
 - [ ] P0-WORLD-CASES — World and World Systems need named real-world case studies that demonstrate the relational method rather than only explaining it abstractly.
 - [ ] P0-WORK-ARTIFACTS — Works, Visual Art, Music and Games need more direct links to recovered artifacts, prompts, versions, images/audio/code and explicit missing-artifact states.
 
@@ -630,9 +630,9 @@ Current: good boundary discipline.
 
 Current: too thin.
 
-- [ ] ROOM-SYS-001 — Add named feedback-loop cases with state variables and causal arrows.
-- [ ] ROOM-SYS-002 — Add queueing/bottleneck case, contagion/network case, resilience/redundancy case, control-system case and path-dependence case.
-- [ ] ROOM-SYS-003 — Add equations or simulation outputs where they genuinely clarify behavior.
+- [x] ROOM-SYS-001 — Added named feedback-loop cases with explicit variables across shallow-lake hysteresis, SVB deposit feedback, grid cascades, TCP congestion control and SIR contagion.
+- [x] ROOM-SYS-002 — Added queueing (Little’s Law), contagion (SIR), resilience/redundancy (NIST), distributed control (TCP congestion control), and path-dependence/hysteresis cases.
+- [~] ROOM-SYS-003 — Added worked equations for Little’s Law and SIR plus explicit control variables; simulation outputs remain a useful next step where they add more than prose/equations.
 - [ ] ROOM-SYS-004 — Connect Garden/Farm, Swamp, House and Spiral models to standard systems concepts and identify mismatches.
 - [ ] ROOM-SYS-005 — Add at least one system whose intuitive story fails when modeled.
 
