@@ -33,7 +33,7 @@ Do not close a task by adding generic prose. Prefer one named case, one dated so
 
 ## Immediate P0 content deficits
 
-- [ ] P0-POLITICS — Politics is currently a thin corpus shell. Build a dated, source-linked political reader with actual recovered positions, proposals, programme designs, forecasts and research leads, grouped by domain and evidence type.
+- [x] P0-POLITICS — Politics now has a substantial dated reader with explicit positions, proposals, programme designs, forecasts, research leads, symbolic models, unresolved questions, an eight-domain backend projection, implementation tests and current-world context boundaries.
 - [ ] P0-STORY — Story currently depends heavily on JavaScript-loaded fragments and contains little static narrative. Write the life story into the page as scenes and phases, with source links and uncertainty boundaries.
 - [x] P0-TIMELINE — Timeline now has a substantial 30-event static spine before the interactive chronology, including date-quality labels, hinge ranges, evidence classes and source/deep-reader routes.
 - [x] P0-INHABITANTS — Inhabitants & Cases is mostly an explorer shell. Add a visible cross-section of named people, institutions, texts, models, artifacts and cases with one-sentence reasons they matter.
@@ -252,16 +252,16 @@ Current: primarily an interactive application shell.
 
 ## /politics/ — Politics & Geopolitics
 
-Current: only a short corpus framing section; this is the largest public content deficit.
+Current: substantially rebuilt. Politics now combines a crawlable static corpus, dynamic long-form reader, policy-domain backend projection, political-development timeline, implementation tests, current-world comparators, structured SEO metadata and explicit unresolved-space handling.
 
-- [ ] SURF-POL-001 — Build a dated political corpus reader with separate sections for explicit positions, policy proposals, programme designs, forecasts, research questions and symbolic models.
-- [ ] SURF-POL-002 — Group recovered material by fiscal/economic policy, trade/industry, justice/prisons, migration/ICE, health/education, defence/security, Europe/North, Ukraine/Russia, Greenland/Arctic and internet/platform governance where sources exist.
-- [ ] SURF-POL-003 — Every item should show exact Tim source/date or reconstruction status; do not turn memory summaries into quotations.
-- [ ] SURF-POL-004 — For proposals, add jurisdiction, legal authority, implementing institution, financing mechanism, likely measurable outputs and major tradeoffs as research fields.
-- [ ] SURF-POL-005 — Add neutral current-context boxes from dated primary/public sources; clearly separate them from Tim's view.
-- [ ] SURF-POL-006 — Add a political-development timeline so 2015 advocacy, later reform ideas and 2026 North/geopolitical material are not flattened together.
-- [ ] SURF-POL-007 — Add disagreement/alternative-policy context without ranking political actors or prescribing a choice.
-- [ ] SURF-POL-008 — Add a "not yet enough evidence" queue for remembered political positions not yet tied to a primary source.
+- [x] SURF-POL-001 — Built a dated political corpus with explicit positions, policy proposals, programme designs, forecasts, research leads/questions, conceptual/symbolic models and unresolved material kept as separate modes.
+- [~] SURF-POL-002 — Added an eight-domain backend projection covering governance/state capacity, political economy/fiscal policy, civil liberty/civic order, Europe/North/sovereignty, defence/security, energy/industry/resilience, technology/digital sovereignty and influence-network research. Continue finer trade/industry, justice/prisons, health/education and country-conflict subdomain projection where source density supports it.
+- [~] SURF-POL-003 — Dates, modes, confidence/reconstruction boundaries and exact quotes are preserved in the canonical compendium where available; stronger per-entry source-record/date projection into the public reader remains open.
+- [~] SURF-POL-004 — Added jurisdiction, legal-authority, implementer, financing, measurable-output and tradeoff tests for Reverse Jenga and European digital sovereignty. Extend the template to additional proposals.
+- [x] SURF-POL-005 — Added neutral official-current-context material for EU technology sovereignty and EU law-making, explicitly marked as comparator/context rather than Tim provenance or influence.
+- [x] SURF-POL-006 — Added and corrected a chronological development timeline from ~2015/~2016 through the 2026 political corpus.
+- [ ] SURF-POL-007 — Add disagreement/alternative-policy context without ranking political actors or prescribing a choice. This remains a next-wave content task.
+- [~] SURF-POL-008 — The public reader exposes a large unresolved-position set and the backend preserves confidence/mode boundaries; add a dedicated source-recovery queue for remembered positions that lack primary-source attachment.
 
 ## /axis/ — Living Axis
 
@@ -682,12 +682,12 @@ Current: reasonably rich.
 
 ## Politics & Governance
 
-Current: much stronger than public Politics page.
+Current: governance Room and public Politics reader are now much closer in substance; the Room remains the mechanism-focused specialist while /politics/ owns the dated Tim-centered political projection.
 
-- [ ] ROOM-GOV-001 — Project the strongest governance chains into /politics/ rather than leaving them hidden here.
+- [x] ROOM-GOV-001 — Public Politics now projects governance/state-capacity mechanics and proposal → authority → implementation tests rather than leaving governance method only in the specialist Room.
 - [ ] ROOM-GOV-002 — Add more real policy lifecycle cases from different jurisdictions.
 - [ ] ROOM-GOV-003 — Add budget/administrative capacity to governance examples so authority is not treated as sufficient for implementation.
-- [ ] ROOM-GOV-004 — Add dated neutral source links for current institutional examples.
+- [x] ROOM-GOV-004 — Governance examples include dated/current official institutional source links for EU and Danish processes; continue refreshing when institutional arrangements change.
 
 ## Law & Justice Room
 
