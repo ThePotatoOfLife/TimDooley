@@ -34,7 +34,7 @@ Do not close a task by adding generic prose. Prefer one named case, one dated so
 ## Immediate P0 content deficits
 
 - [x] P0-POLITICS — Politics now has a substantial dated reader with explicit positions, proposals, programme designs, forecasts, research leads, symbolic models, unresolved questions, an eight-domain backend projection, implementation tests and current-world context boundaries.
-- [ ] P0-STORY — Story currently depends heavily on JavaScript-loaded fragments and contains little static narrative. Write the life story into the page as scenes and phases, with source links and uncertainty boundaries.
+- [~] P0-STORY — Story now has a substantial static 1987–2026 narrative spine before the dynamic diary. Remaining P0-quality work is scene-level sourcing, ordinary-life/work texture, streaming/internet arc, and explicit unresolved date/source gaps rather than basic static coverage.
 - [x] P0-TIMELINE — Timeline now has a substantial 30-event static spine before the interactive chronology, including date-quality labels, hinge ranges, evidence classes and source/deep-reader routes.
 - [x] P0-INHABITANTS — Inhabitants & Cases is mostly an explorer shell. Add a visible cross-section of named people, institutions, texts, models, artifacts and cases with one-sentence reasons they matter.
 - [x] P0-INTERNET — Internet & Platforms has useful metric distinctions but almost no actual platform-mechanics casebook. Add concrete affordance and migration cases.
