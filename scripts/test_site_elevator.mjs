@@ -235,7 +235,7 @@ assert.ok(css.includes('text-wrap:balance'),'Room labels should wrap into balanc
 assert.ok(source.includes('site-elevator-floor-code'),'runtime must render terminal floor code');
 assert.ok(source.includes('header.dataset.elevatorRoom=spatial.roomId'),'runtime must publish the current Room on the header');
 assert.ok(source.includes("selectedLevel===spatial.levelId"),'active Room highlight must only appear on the actual floor');
-assert.ok(source.includes("?'HERE':'ROOM PROJECTION · ENTER VIA '"),'floor board must distinguish local Room entrances from cross-floor contextual projections');
+assert.equal(source.includes('ROOM PROJECTION · ENTER VIA'),false,'single-floor Room ownership must not advertise legacy cross-floor projections');
 assert.ok(source.includes("'BROWSING FLOOR'"),'non-actual floor must be clearly marked as browsing');
 assert.ok(source.includes("data-elevator-level','pending"),'pre-hydration header must not falsely present Plane');
 assert.ok(source.includes('Finding your Room…'),'pre-hydration header needs a neutral orientation label');
@@ -254,12 +254,9 @@ assert.ok(source.includes("'main > nav.page-nav a[href]'"),'page navigation must
 assert.ok(source.includes("'main > header nav a[href]'"),'header-local navigation must participate in floor-boundary enforcement');
 assert.ok(source.includes("link.hidden=true"),'cross-floor page/header links must be hidden rather than offered as ordinary doors');
 assert.ok(source.includes("link.dataset.elevatorFloorHidden='true'"),'runtime must only unhide links that it hid for floor enforcement');
-assert.ok(source.includes('const markInPageCrossFloorExits='),'explicit in-page cross-floor relationships must remain distinguishable from header navigation');
-assert.ok(source.includes("document.querySelectorAll('.door-grid a[href], .room-actions a[href], .deep a[href], .deep-links a[href], .dwelling-links a[href], .adj-grid a[href], .side-routes a[href]')"),'cross-floor exit audit must cover content doors without folding page navigation into it');
-assert.ok(source.includes("link.dataset.exitPrefix=arrow+' '+label"),'explicit in-page cross-floor exits must disclose direction and destination floor');
-assert.ok(css.includes('.door-grid a.spatial-exit'),'cross-floor Dwelling cards must expose explicit exit styling');
-assert.ok(css.includes('.room-actions a.spatial-exit'),'cross-floor action links must expose explicit exit styling');
-assert.ok(css.includes('.adj-grid a.spatial-exit'),'cross-floor nested Room wormholes must expose explicit exit styling');
-assert.ok(source.includes("target.levelId===spatial.levelId"),'same-floor local links must remain ordinary doors');
+assert.ok(source.includes('const enforceFloorLocalSecondaryNavigation='),'runtime must enforce the same floor boundary on secondary navigation grids');
+assert.ok(source.includes("enforceFloorLocalLinks('.door-grid a[href], .room-actions a[href], .deep a[href], .deep-links a[href], .dwelling-links a[href], .adj-grid a[href], .side-routes a[href]')"),'secondary navigation must use the same floor-local filter as page navigation');
+assert.ok(source.includes('enforceFloorLocalSecondaryNavigation();'),'secondary floor filtering must run after spatial hydration');
+assert.ok(source.includes('const crossFloor=target.levelId!==spatial.levelId'),'floor enforcement must compare every local door against the page floor');
 
 console.log('Site elevator resolver + visual contract passed.');
