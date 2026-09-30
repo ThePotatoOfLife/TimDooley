@@ -22,6 +22,7 @@ def main():
     surfaces=public_surface_payload.get("surfaces",[])
     parent_semantics=public_surface_payload.get("parent_semantics",{})
     public_missions=load("data/house/public-surface-missions.json")
+    project_synthesis=load("data/house/project-synthesis.json")
     health=load("data/house/spatial-house-health.json")
 
     room_ids={x.get("id") for x in rooms if isinstance(x,dict)}
@@ -154,6 +155,36 @@ def main():
             for target in nxt:
                 if target not in active_surface_ids:
                     errors.append(f"public mission {sid} points to unknown next surface {target}")
+
+    families=project_synthesis.get("reader_families",[])
+    family_membership={}
+    for family in families:
+        if not isinstance(family,dict) or not family.get("id"):
+            errors.append("project synthesis reader family is missing id")
+            continue
+        members=family.get("surface_ids",[])
+        if not isinstance(members,list) or not members:
+            errors.append(f"reader family {family.get('id')} has no surface_ids")
+            continue
+        for sid in members:
+            if sid not in active_surface_ids:
+                errors.append(f"reader family {family.get('id')} references unknown/inactive public surface {sid}")
+            family_membership.setdefault(sid,[]).append(family.get("id"))
+    for sid in sorted(active_surface_ids-{"home"}):
+        memberships=family_membership.get(sid,[])
+        if len(memberships)!=1:
+            errors.append(f"public surface {sid} must belong to exactly one reader family; got {memberships}")
+    if family_membership.get("home"):
+        errors.append("Home must remain the entrance outside reader-family membership")
+    expected_family_labels={
+        "tim-life-making","timeline-history","sources-context","explore-retrieval",
+        "house-placement","world-systems","meaning-testing"
+    }
+    actual_family_labels={f.get("id") for f in families if isinstance(f,dict)}
+    if actual_family_labels!=expected_family_labels:
+        errors.append(f"reader-family contract drift: expected={sorted(expected_family_labels)} actual={sorted(actual_family_labels)}")
+    if not str(project_synthesis.get("reader_family_rule") or "").strip():
+        errors.append("project synthesis missing reader_family_rule")
 
     counts=health.get("counts",{})
     if counts.get("dwellings")!=len(room_ids):
