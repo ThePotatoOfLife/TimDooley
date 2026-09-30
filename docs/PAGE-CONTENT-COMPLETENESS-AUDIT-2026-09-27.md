@@ -52,10 +52,10 @@ Do not close a task by adding generic prose. Prefer one named case, one dated so
 Current: very rich overview of Garden/House/Axis/World/Below, culture, foundations, science and project architecture. Risk is not thinness; it is that broad synthesis can outrun concrete anchors.
 
 - [x] SURF-HOME-001 — Added a compact five-object inspection strip linking directly to a Tim public occurrence ledger, Great Book web edition, recovered Axis spiral model, institution dossiers, and Works archive.
-- [ ] SURF-HOME-002 — Ground the "life, Potato, book, public record, machine" paragraph with direct links to one representative source object for each noun.
-- [ ] SURF-HOME-003 — Add a dated mini-sequence showing 2020 Potato birth → 2024 Great Book/public Potato wording → 2025 Axis/Father turn → 2026 House formalization, with each step linked to its source owner.
-- [ ] SURF-HOME-004 — Keep institutional dossier examples fresh by showing what was actually learned from each named institution rather than merely that a dossier exists.
-- [ ] SURF-HOME-005 — Add one explicit "what the project still does not know" panel sourced from Open Questions so Home does not imply false completeness.
+- [x] SURF-HOME-002 — The Home substance section now links life to the developmental genealogy/public occurrence ledger, Potato to its canonical owner, book to the Great Book, public record to Hours/Public Witness, and machine/archive to History plus the public repository.
+- [x] SURF-HOME-003 — Added a four-step dated Home sequence: 25 Dec 2020 Potato birth anchor → 2024 Great Book laboratory → 21 Apr–3 May 2025 Axis/Father public-language turn → Sep–Oct 2026 governed House/archive, each with direct owner/deep-reader links.
+- [x] SURF-HOME-004 — The live Reality cases section now states concrete longitudinal findings/limits for Danmarks Nationalbank, CERN, Wikimedia Foundation and ICRC rather than merely advertising dossier existence.
+- [x] SURF-HOME-005 — Added a Home uncertainty panel naming unrecovered persona/stream artifacts, missing creative originals, incomplete model interpretation and World data gaps, with direct routes to Open Questions, Research Lab and source-gap records.
 
 ## /potato-of-life/ — Potato of Life
 
