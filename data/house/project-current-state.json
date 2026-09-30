@@ -1,0 +1,125 @@
+{
+  "id": "project-current-state",
+  "title": "Project Current State — Mature, Active, Unknown",
+  "version": "1.0.0",
+  "updated": "2026-10-01",
+  "authority": "project-status projection; not a replacement for canonical owners or TODO.md",
+  "purpose": "Give readers and maintainers a compact current-state view of what is structurally mature, what is under active development, and what remains unresolved or source-limited.",
+  "categories": {
+    "mature": [
+      {
+        "id": "public-architecture",
+        "title": "Public architecture",
+        "summary": "Five canonical gateways, registered specialist surfaces, seven reader families, semantic parents and the House/Rooms distinction are explicitly governed and validator-backed.",
+        "owners": [
+          "data/house/public-surfaces.json",
+          "data/house/project-synthesis.json",
+          "data/house/public-surface-missions.json"
+        ]
+      },
+      {
+        "id": "house-ownership",
+        "title": "House ownership model",
+        "summary": "Ten Dwellings and 38 nested Rooms have ownership, holdings, dossiers, inhabitants/cases and guarded interfaces.",
+        "owners": [
+          "data/house/rooms.json",
+          "data/house/subrooms.json",
+          "data/house/interfaces.json",
+          "data/house/holdings.json"
+        ]
+      },
+      {
+        "id": "source-boundaries",
+        "title": "Source and evidence boundaries",
+        "summary": "The archive distinguishes first-party material, external records, creative sources, comparison, reconstruction, model status and unresolved recovery rather than treating every source as equivalent.",
+        "owners": [
+          "data/canonical-source-map.json",
+          "context/source-authority/index.html"
+        ]
+      },
+      {
+        "id": "timeline-reader",
+        "title": "Timeline reader",
+        "summary": "Timeline now has a substantial static chronology plus dynamic exploration, hinge-period handling and explicit date/evidence boundaries.",
+        "owners": [
+          "data/timeline-events.json",
+          "timeline/index.html"
+        ]
+      },
+      {
+        "id": "politics-reader",
+        "title": "Politics reader",
+        "summary": "Politics has a canonical dated compendium, policy-domain projection, source-recovery queue, implementation tests and neutral current-context boundaries.",
+        "owners": [
+          "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
+          "knowledge/politics/tim-dooley-politics-policy-domain-index.json"
+        ]
+      }
+    ],
+    "active": [
+      {
+        "id": "world-relational-cases",
+        "title": "World relational cases",
+        "summary": "Country examples exist, but cross-border energy, data/semiconductor and shipping/logistics cases still need fuller projection and refresh discipline.",
+        "next": "docs/PAGE-CONTENT-COMPLETENESS-AUDIT-2026-09-27.md#world"
+      },
+      {
+        "id": "creative-artifact-recovery",
+        "title": "Creative artifact recovery",
+        "summary": "Works now distinguishes artifact states, but original images, audio, builds, prompts and version histories remain incomplete across several media.",
+        "next": "knowledge/creative/artifact-history-registry.json"
+      },
+      {
+        "id": "story-scene-recovery",
+        "title": "Story scene sourcing",
+        "summary": "Story has a static life spine; the next work is ordinary-life texture, scene-level provenance, streaming/internet history and unresolved dates.",
+        "next": "tim-dooley/story/"
+      },
+      {
+        "id": "surface-purpose-audit",
+        "title": "Public-surface purpose audit",
+        "summary": "Surface missions exist and a new substance heatmap is wired into Content quality; the first exact-head report still needs review and follow-up.",
+        "next": ".quality-logs/public-surface-substance-audit.json"
+      },
+      {
+        "id": "built-route-review",
+        "title": "Built-site route review",
+        "summary": "The architecture auditor can inspect built-page orphans, dead ends and short cycles once an exact-head _site build is available; real findings still need remediation.",
+        "next": ".quality-logs/site-architecture-audit.json"
+      }
+    ],
+    "unresolved": [
+      {
+        "id": "missing-originals",
+        "title": "Missing original artifacts",
+        "summary": "Some remembered posts, chat excerpts, stream segments, prompts, songs, images and early project artifacts are known only through partial or later recovery.",
+        "resolution": "Recover original artifact or a sufficiently attributable contemporaneous copy."
+      },
+      {
+        "id": "date-conflicts",
+        "title": "Exact dates and first attestations",
+        "summary": "Several biographical, role-development and source-history questions remain approximate, range-based or limited by the earliest currently recovered source.",
+        "resolution": "Recover dated primary material or an independent record that narrows the clock."
+      },
+      {
+        "id": "model-interpretation",
+        "title": "Science-adjacent model interpretation",
+        "summary": "Some equations and formal comparators are exact mathematics while their physical or biological interpretation remains hypothetical or unvalidated.",
+        "resolution": "Specify observables, baseline models and discriminating tests."
+      },
+      {
+        "id": "world-data-gaps",
+        "title": "World data gaps",
+        "summary": "Many countries and institutions still have uneven source density, stale observations or incomplete ownership/dependency graphs.",
+        "resolution": "Add dated compatible public/primary sources and retain explicit unknown fields."
+      },
+      {
+        "id": "reception-measurement",
+        "title": "Reception and downstream effects",
+        "summary": "For many works and public interventions, the archive knows that an object existed but does not yet have robust measurement of who encountered it or what changed downstream.",
+        "resolution": "Attach platform/source metrics or dated reception evidence without substituting anecdote for measurement."
+      }
+    ]
+  },
+  "rule": "Mature means the architecture or reader has an explicit owner, meaningful population and validation path; it does not mean exhaustive or infallible. Active means the next improvement is known. Unknown means the missing evidence or discriminator is itself part of the record."
+}
