@@ -1,7 +1,7 @@
 {
   "id": "tim-dooley-politics-geopolitics-compendium",
   "title": "Tim Dooley — Politics & Geopolitics Compendium",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "updated": "2026-09-30",
   "kind": "reader-facing political statement synthesis and provenance ledger",
   "method": {
@@ -33,7 +33,8 @@
       ],
       "derived_domain_view": "knowledge/politics/tim-dooley-politics-policy-domain-index.json",
       "external_context_rule": "Official institutional sources may contextualize how law, governance or current policy works, but overlap never establishes influence, causation or endorsement."
-    }
+    },
+    "source_recovery_queue": "knowledge/politics/tim-dooley-politics-source-recovery-queue.json"
   },
   "entries": [
     {
@@ -431,6 +432,7 @@
     "comprehensive nuclear-energy doctrine"
   ],
   "connections": [
+    "knowledge/politics/tim-dooley-politics-source-recovery-queue.json",
     "knowledge/politics/tim-dooley-politics-policy-domain-index.json",
     "knowledge/politics/tim-dooley-political-alignment-map.json",
     "knowledge/timeline/prediction-epiphany-causal-genealogy-2026.json"
