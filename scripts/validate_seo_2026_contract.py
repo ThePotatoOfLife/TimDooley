@@ -99,6 +99,28 @@ def test_authored_question_schema_contract() -> None:
         fail("question WebPage must expose its authored Question as mainEntity")
 
 
+
+def test_significant_source_freshness_contract() -> None:
+    bindings = json.loads((ROOT / "data" / "seo-page-source-bindings.json").read_text(encoding="utf-8"))
+    routes = bindings.get("routes", {})
+    for route in ("politics", "timeline", "works", "explore", "questions"):
+        if not routes.get(route):
+            fail(f"SEO significant-source bindings missing composite route: {route}")
+    fake_dates = {
+        "politics/index.html": "2026-09-20",
+        "politics/parts/part-03.html": "2026-09-30",
+    }
+    resolved = optimize.source_date_for_url(
+        BASE_URL + "/politics/",
+        fake_dates,
+        {},
+        {},
+        [],
+    )
+    if resolved != "2026-09-30":
+        fail(f"Politics lastmod must reflect latest bound significant source; got {resolved!r}")
+
+
 def test_repository_robots_contract() -> None:
     robots = (ROOT / "robots.txt").read_text(encoding="utf-8", errors="replace")
     expected = "Sitemap: https://thepotatooflife.github.io/TimDooley/sitemap-index.xml"
@@ -149,6 +171,7 @@ def main() -> int:
         test_primary_gateway_contract,
         test_primary_schema_contract,
         test_authored_question_schema_contract,
+        test_significant_source_freshness_contract,
         test_repository_robots_contract,
         test_discovery_owner_contract,
         test_homepage_authority_contract,
