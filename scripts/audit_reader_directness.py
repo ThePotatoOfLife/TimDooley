@@ -46,7 +46,7 @@ def norm(txt:str)->str:
 def main():
     data=json.loads(SURFACES.read_text(encoding="utf-8"))
     surfaces=[s for s in data.get("surfaces",[]) if s.get("status")=="active"]
-    report={"generated_by":"scripts/audit_reader_directness.py","terms":TERMS,"surfaces":[],"exact_duplicate_paragraphs":[],"near_duplicate_paragraphs":[]}
+    report={"generated_by":"scripts/audit_reader_directness.py","terms":TERMS,"surfaces":[],"exact_duplicate_paragraphs":[],"near_duplicate_paragraphs":[],"hard_fact_candidates":[]}
     dup=defaultdict(list)
 
     for s in surfaces:
@@ -59,6 +59,11 @@ def main():
         low=visible.lower()
         counts={t:low.count(t) for t in TERMS}
         paras=list(paragraphs(html))
+        hard_re=re.compile(r"\\b(?:\\d{1,2}\\s+(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\\s+20\\d{2}|20\\d{2}(?:[-–]\\d{2,4})?|\\d{1,3}(?:,\\d{3})+(?:\\.\\d+)?|\\d+(?:\\.\\d+)?\\s*(?:hours?|commits?|files?|views?|countries|rooms?|dwellings?))\\b",re.I)
+        for ptxt in paras:
+            hits=sorted(set(hard_re.findall(ptxt)))
+            if hits:
+                report["hard_fact_candidates"].append({"surface_id":s["id"],"route":s["canonical_route"],"facts":hits,"text":ptxt})
         for p in paras:
             dup[norm(p)].append({"surface_id":s["id"],"route":s["canonical_route"],"text":p})
         report["surfaces"].append({
@@ -106,7 +111,7 @@ def main():
     print(f"wrote {OUT.relative_to(ROOT)}")
     for row in report["surfaces"][:12]:
         print(f"{row.get('maintenance_hit_total',0):3}  {row.get('route')}  {row.get('maintenance_term_hits',{})}")
-    print(f"exact cross-surface duplicate paragraphs: {len(report['exact_duplicate_paragraphs'])}")\n    print(f"near-duplicate paragraph pairs (>= .84): {len(report['near_duplicate_paragraphs'])}")
+    print(f"exact cross-surface duplicate paragraphs: {len(report['exact_duplicate_paragraphs'])}")\n    print(f"near-duplicate paragraph pairs (>= .84): {len(report['near_duplicate_paragraphs'])}")\n    print(f"hard-fact candidate paragraphs: {len(report['hard_fact_candidates'])}")
 
 if __name__=="__main__":
     main()
