@@ -69,6 +69,19 @@ Keep separate files only when separation preserves something important: a primar
 
 Indexes, manifests and projections should point to the canonical material rather than repeat it.
 
+## Lower-field conflict integration — 2026-10-01
+
+Rule: **cultural, spiritual and informational conflict may overlap, but the site must never treat them as interchangeable evidence classes.**
+
+- [x] **LOWER-WAR-001 · Three-layer conflict model:** Below now contains a compact cultural-war / spiritual-war / informational-war passage inside the Basin flow rather than a separate encyclopedia page.
+- [x] **LOWER-WAR-002 · Overlap and recursion:** the lower model now explains how symbol → moral interpretation → information environment → amplification → role-lock → archived recurrence can create Swamp even after the originating event stops.
+- [x] **LOWER-WAR-003 · Spiritual-war human boundary:** Religion now explicitly follows the Ephesians “not flesh and blood” boundary so spiritual warfare cannot silently become a permanent demon-label for human opponents.
+- [x] **LOWER-WAR-004 · Culture bridge:** Culture now acknowledges culture-war dynamics while preserving the empirical caution that visible activists/media conflict do not imply a population is uniformly divided into two camps.
+- [x] **LOWER-WAR-005 · Farm interface:** Shadow Farm now distinguishes cultural meaning, spiritual moralization and information manipulation when a conflict crosses media/politics/state interfaces.
+- [ ] **LOWER-WAR-006 · Worked overlap cases:** add 2–3 source-bounded examples where all three layers can be shown without partisan scoring—one internet/subculture case, one religious-cultural case, and one state/non-state information-operation case.
+- [ ] **LOWER-WAR-007 · War-language threshold:** audit lower pages for casual use of “war,” “enemy,” “demon,” “propaganda” and “operation”; require either symbolic labeling or evidence of intent/coordination appropriate to the term.
+- [ ] **LOWER-WAR-008 · Repair outcomes:** connect the three-layer model more explicitly to correction, apology, exit, de-escalation, reconciliation and institutional resilience so the lower site does not end at diagnosis.
+
 ## Navigation & findability recovery — 2026-10-01
 
 Acceptance rule: **a reader who knows the noun should be able to find the noun without knowing project metaphors.** Timeline must look and behave like Timeline; Story like Story; Works like Works.
