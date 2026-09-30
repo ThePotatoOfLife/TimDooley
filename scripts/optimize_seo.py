@@ -390,13 +390,18 @@ def source_date_for_url(url: str, dates: dict[str, str], record_routes: dict[str
 def classify_page(route: str) -> tuple[str, str]:
     if not route:
         return "home", "home"
-    first = route.split("/", 1)[0]
     if route.startswith("questions/") or route == "questions":
         return "question", "questions"
     if route.startswith("records/"):
         return "record", "records"
     if route.startswith("science/papers/"):
         return "science-paper", "science"
+    surface = PUBLIC_SURFACE_BY_ROUTE.get(route)
+    if surface:
+        kind = surface.get("surface_type") or "support"
+        section = surface.get("primary_parent") or surface.get("id") or route.split("/", 1)[0]
+        return kind, section
+    first = route.split("/", 1)[0]
     if first in {key for key, _ in PRIMARY_DOORS}:
         return "reader", first
     return "support", first
