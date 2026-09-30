@@ -369,7 +369,7 @@ Current: extremely rich architecture page; content risk is over-teaching structu
 
 - [ ] SURF-HOUSE-001 — For each major architecture section, add one actual inhabitant/case/artifact that demonstrates why the structure exists.
 - [ ] SURF-HOUSE-002 — Add a "House in ten objects" reader using real source artifacts instead of registries.
-- [ ] SURF-HOUSE-003 — Add a full end-to-end example: source capture → Archive → Timeline → Canon/Room → Research test → Work/Fruit.
+- [x] SURF-HOUSE-003 — Added a full end-to-end operating-loop example in House, including a worked 21 April 2025 Axis case from recovered primary object through evidence, chronology, model testing, Story/Axis projection and return to Research/Revision.
 - [ ] SURF-HOUSE-004 — Add a visible list of currently sparse/unfinished Rooms and what specific objects they still need.
 - [ ] SURF-HOUSE-005 — Add one example where the House architecture rejected or demoted an attempted categorization because evidence/ownership did not fit.
 - [ ] SURF-HOUSE-006 — Periodically prune meta-explanation if the same rule is already demonstrated concretely elsewhere; protect subject-first density.
