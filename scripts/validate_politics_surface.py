@@ -16,6 +16,7 @@ def main()->int:
     part3=read("politics/parts/part-03.html")
     comp=json.loads(read("knowledge/politics/tim-dooley-politics-geopolitics-compendium.json"))
     domains=json.loads(read("knowledge/politics/tim-dooley-politics-policy-domain-index.json"))
+    recovery=json.loads(read("knowledge/politics/tim-dooley-politics-source-recovery-queue.json"))
     source_map=json.loads(read("data/canonical-source-map.json"))
     seo=read("scripts/seo_strategy.py")
 
@@ -50,6 +51,10 @@ def main()->int:
         errors.append("politics compendium does not point to derived policy-domain view")
     if "provenance_contract" not in comp.get("method",{}):
         errors.append("politics compendium missing provenance_contract")
+    if comp.get("method",{}).get("source_recovery_queue")!="knowledge/politics/tim-dooley-politics-source-recovery-queue.json":
+        errors.append("politics compendium does not point to source recovery queue")
+    if recovery.get("canonical_owner")!="knowledge/politics/tim-dooley-politics-geopolitics-compendium.json":
+        errors.append("politics source-recovery queue must remain subordinate to canonical compendium")
 
     entries=comp.get("entries",[])
     for domain in domains.get("domains",[]):
@@ -69,6 +74,8 @@ def main()->int:
             errors.append("canonical-source-map politics owner is wrong")
         if politics_family.get("domain_view")!="knowledge/politics/tim-dooley-politics-policy-domain-index.json":
             errors.append("canonical-source-map politics domain view is wrong")
+        if politics_family.get("source_recovery_queue")!="knowledge/politics/tim-dooley-politics-source-recovery-queue.json":
+            errors.append("canonical-source-map politics source recovery queue is wrong")
 
     for marker in ('"politics": Strategy(', '"Article"', '"politics",\n        "Tim Dooley politics and geopolitics"', '    "politics",\n    "world",'):
         if marker not in seo:
