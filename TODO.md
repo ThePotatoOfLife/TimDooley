@@ -83,7 +83,7 @@ Acceptance rule: **a reader who knows the noun should be able to find the noun w
 - [ ] **NAV-008 · Mobile navigation test:** verify the top routes and Timeline shortcuts remain obvious at narrow widths and do not wrap into an unreadable wall.
 - [ ] **NAV-009 · Breadcrumb consistency:** subject readers should identify where the reader is now, not only where they can go next.
 - [ ] **NAV-010 · Search-to-noun landing test:** for high-value nouns (Tim Dooley, Potato of Life, Timeline, Story, Works, Religion, Science, World, Sources), verify the canonical page title/H1 matches what a search result or human link calls it.
-- [ ] **NAV-011 · Timeline deep-link vocabulary:** add stable anchors for major eras (1987–2010, 2011, 2016, 2019–20, 2021–23, 2024, 2025, 2026) so other pages can link to the actual chronological position instead of only /timeline/.
+- [x] **NAV-011 · Timeline deep-link vocabulary:** added stable era anchors and a compact jump rail for 1987–2010, 2011, 2016, 2019–20, 2021–23, 2024, 2025 and 2026 so other pages can target the actual chronological position.
 - [ ] **NAV-012 · Navigation dead-end crawl:** inspect pages with no Home/sibling route, ambiguous back arrows, or links into internal/file-system surfaces when a public reader exists.
 
 ## Reader directness & redundancy audit — 2026-10-01
