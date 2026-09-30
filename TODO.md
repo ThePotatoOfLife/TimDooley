@@ -97,7 +97,7 @@ Acceptance rule: **a reader who knows the noun should be able to find the noun w
 - [ ] **NAV-009 · Breadcrumb consistency:** subject readers should identify where the reader is now, not only where they can go next.
 - [ ] **NAV-010 · Search-to-noun landing test:** for high-value nouns (Tim Dooley, Potato of Life, Timeline, Story, Works, Religion, Science, World, Sources), verify the canonical page title/H1 matches what a search result or human link calls it.
 - [x] **NAV-011 · Timeline deep-link vocabulary:** added stable era anchors and a compact jump rail for 1987–2010, 2011, 2016, 2019–20, 2021–23, 2024, 2025 and 2026 so other pages can target the actual chronological position.
-- [ ] **NAV-012 · Navigation dead-end crawl:** inspect pages with no Home/sibling route, ambiguous back arrows, or links into internal/file-system surfaces when a public reader exists.
+- [~] **NAV-012 · Navigation dead-end crawl:** added `scripts/audit_navigation_dead_ends.py` to inspect every active public surface and hard-fail major readers that lose a literal Home route or become too sparse. Remaining: review the report for specialist dead ends and ambiguous back arrows.
 
 ## Reader directness & redundancy audit — 2026-10-01
 
@@ -112,7 +112,7 @@ Rule: **say the thing before explaining the system that stores, routes or render
 - [x] **DIRECT-005 · World backend-first opening:** World now begins with geographic/system questions rather than “one relational backend”; country-case boundaries stay source/date focused without explaining projection ownership.
 - [x] **DIRECT-006 · Rooms exhibit narration:** removed “curated shelf in the backend,” “backend remains the owner,” and “projected from registry” language from the main reading flow while retaining an inspect-data link.
 - [x] **DIRECT-007 · Religion / Philosophy page-meta trim:** changed “the site should expose…” and “this page is a reader-facing synthesis…” into direct content/source language.
-- [~] **DIRECT-008 · Exact duplicate paragraph crawl:** `scripts/audit_reader_directness.py` now reports exact cross-surface duplicate paragraphs across all active public surfaces. Remaining: inspect first report, then add near-duplicate similarity detection for paraphrased stale twins.
+- [~] **DIRECT-008 · Duplicate paragraph crawl:** `scripts/audit_reader_directness.py` now reports exact duplicates **and near-duplicate paragraph pairs (SequenceMatcher ≥ .84)** across active public surfaces. Remaining: inspect the first generated report and convert high-confidence stale twins into owner-summary links.
 - [ ] **DIRECT-009 · Owner-fact staleness audit:** find detailed facts repeated outside their strongest owner (commit counts, dates, country values, metrics, artifact counts, role definitions). Replace secondary copies with short meaning + link so updates cannot leave stale twins.
 - [~] **DIRECT-010 · House maintenance-panel placement:** Population Pulse and Structural Census are now collapsed under **Builder diagnostics** instead of competing with the public House narrative. Continue reviewing project-state and other research-only panels for the same treatment.
 - [~] **DIRECT-011 · Generated/runtime copy audit:** added `scripts/audit_reader_directness.py` to the quality suite; it scans all active public readers for maintenance-language leakage and exact duplicate paragraphs. Remaining: use the first generated report to clean JS-rendered labels/fallbacks and set regression expectations.
