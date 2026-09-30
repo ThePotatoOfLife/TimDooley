@@ -1,0 +1,114 @@
+{
+  "id": "tim-dooley-politics-source-recovery-queue",
+  "title": "Tim Dooley Politics — Primary Source Recovery Queue",
+  "version": "1.0.0",
+  "updated": "2026-09-30",
+  "status": "active recovery queue; not a political-position owner",
+  "canonical_owner": "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
+  "purpose": "Identify politically important compendium entries whose current wording is recovered, summarized or context-derived but still lacks a directly attached primary artifact or exact source route. Recovery may strengthen provenance but must not silently change the canonical position.",
+  "promotion_rule": "Attach a primary source only when date, speaker, wording/context and artifact identity are sufficiently established. If the recovered artifact materially changes the interpretation, update the canonical compendium with an explicit correction rather than forcing the old summary to survive.",
+  "items": [
+    {
+      "id": "recover-2015-drug-policy",
+      "compendium_entry_index": 0,
+      "date": "~2015",
+      "topic": "Drug policy / civil liberty",
+      "current_state": "high-confidence recovered position summary; no exact primary artifact attached in the compendium",
+      "sought_evidence": [
+        "dated advocacy post",
+        "stream/video segment",
+        "campaign/community archive capture",
+        "contemporaneous written statement"
+      ],
+      "discriminating_question": "Did the original position support cannabis specifically, decriminalization of use generally, harm reduction, or a broader legalization regime?",
+      "upgrade_gate": "Recover exact wording/date/context sufficient to distinguish substance-specific advocacy from general drug-policy doctrine."
+    },
+    {
+      "id": "recover-2016-law-imprisonment",
+      "compendium_entry_index": 1,
+      "date": "~2016",
+      "topic": "Law, imprisonment and property rights",
+      "current_state": "biographical political context; not itself a complete political doctrine",
+      "sought_evidence": [
+        "contemporaneous court/prison-related public statement",
+        "dated later recollection with clear event reference"
+      ],
+      "discriminating_question": "Which later political conclusions were actually stated by Tim, and which were archive inference from biography?",
+      "upgrade_gate": "Keep biography and later political interpretation as separate fields even after recovery."
+    },
+    {
+      "id": "recover-2026-02-13-ai-governance",
+      "compendium_entry_index": 5,
+      "date": "2026-02-13",
+      "topic": "Democracy, coordination and AI",
+      "current_state": "high-confidence governance thought experiment",
+      "sought_evidence": [
+        "exact conversation/post transcript",
+        "stream timestamp"
+      ],
+      "discriminating_question": "Was AI imagined as advisor/coordinator, administrative allocator, or political decision authority?",
+      "upgrade_gate": "Exact wording must preserve the human-legitimacy boundary before any stronger governance claim is promoted."
+    },
+    {
+      "id": "recover-2026-05-29-public-transport",
+      "compendium_entry_index": 17,
+      "date": "2026-05-29",
+      "topic": "Public transport",
+      "current_state": "accepted formulation with medium confidence",
+      "sought_evidence": [
+        "exact Tim wording",
+        "conversation transcript",
+        "post or stream clip"
+      ],
+      "discriminating_question": "Was free-at-point-of-use transport a settled preference, conditional proposal, or accepted formulation in discussion?",
+      "upgrade_gate": "Recover the original modality and implementation conditions."
+    },
+    {
+      "id": "recover-2026-06-02-state-fiscal-civil",
+      "compendium_entry_indexes": [
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "date": "2026-06-02",
+      "topic": "State capacity, fiscal responsibility, Denmark, civil liberty and immigration",
+      "current_state": "cluster of high/medium-confidence recovered positions",
+      "sought_evidence": [
+        "full conversation transcript",
+        "exact quote fragments",
+        "source segmentation by issue"
+      ],
+      "discriminating_question": "Which propositions were direct statements, which were answers to prompted formulations, and which qualifications were explicit?",
+      "upgrade_gate": "Split the cluster into independently sourced issue records rather than relying on one conversation-level reconstruction."
+    },
+    {
+      "id": "recover-2026-08-27-public-services-labour",
+      "compendium_entry_indexes": [
+        29,
+        30
+      ],
+      "date": "2026-08-27",
+      "topic": "Public services, labour and civic developmentalism",
+      "current_state": "high-confidence position plus accepted archive formulation",
+      "sought_evidence": [
+        "exact direct statement",
+        "conversation transcript"
+      ],
+      "discriminating_question": "Which public-service/labour commitments are direct Tim positions and which synthesis labels were accepted afterward?",
+      "upgrade_gate": "Preserve the boundary between direct positions and the later civic-developmentalist synthesis."
+    }
+  ],
+  "negative_space": [
+    "No source-recovery task should infer positions on abortion, detailed LGBTQ/trans law, death penalty, exact gun-control regime, full tax code, electoral design, NATO end-state or conflict settlements merely from ideology.",
+    "A later repeated position can confirm persistence but does not retroactively prove the exact wording of an earlier source.",
+    "Assistant-authored summaries are discovery aids, not substitutes for Tim-authored or contemporaneous primary material."
+  ],
+  "connections": [
+    "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
+    "knowledge/politics/tim-dooley-politics-policy-domain-index.json",
+    "data/evidence/public-statement-root-manifest.json",
+    "knowledge/timeline/prediction-foresight-master-index.json"
+  ]
+}
