@@ -69,6 +69,19 @@ Keep separate files only when separation preserves something important: a primar
 
 Indexes, manifests and projections should point to the canonical material rather than repeat it.
 
+## October 1 project-overview catch-up
+
+Big-picture rule for the next wave: **make the existing organism easier to understand before inventing more anatomy.** The project now has three cooperating layers—public readers, canonical owners, and evidence/recovery/research—and seven public reader families. New work should strengthen the handoffs among those layers rather than create another parallel master system.
+
+- [x] **OVERVIEW-001 · Three-layer operating model:** README now distinguishes public readers, canonical owners, and evidence/recovery/research, with one explicit capture → classify → own → test → project → revise loop.
+- [x] **OVERVIEW-002 · Reader-family authority repair:** restored all seven public reader families to `data/house/project-synthesis.json` and added House validation requiring every active public surface except Home to belong to exactly one family.
+- [ ] **OVERVIEW-003 · House operating-loop reader:** make House visibly demonstrate one complete source capture → evidence class → canonical owner → Timeline/History → Research test → public reader/Work → revision/Seed loop using real project objects.
+- [ ] **OVERVIEW-004 · Public-purpose drift audit:** implement SITE-ARCH-011 by comparing each public surface's mission (`become`, `must_not_become`, density intent and reader job) against its first screen and dominant content shape; flag directory-heavy readers, article-heavy hubs and runtime shells without adequate static fallback.
+- [ ] **OVERVIEW-005 · Sparse-surface heatmap:** generate one machine-readable and human-readable list of active public surfaces and Rooms ranked by substance, source anchoring, object/case count, degraded-mode usefulness and unresolved TODO density. Use it to choose the next page instead of browsing randomly.
+- [ ] **OVERVIEW-006 · Backend-to-reader coverage matrix:** for each major canonical family, record which public reader exposes it, whether direct inspect/evidence/model links exist, and which rich backend owners are still effectively invisible.
+- [ ] **OVERVIEW-007 · Current-state page:** add a compact project status section to House or Home showing what is mature, what is actively being recovered, and what remains genuinely unknown—without turning the homepage into a developer dashboard.
+- [ ] **OVERVIEW-008 · Stale planning reconciliation:** continue checking TODO/audit language against the live site after every major wave; close or rewrite stale deficits instead of carrying obsolete descriptions forward.
+- [ ] **OVERVIEW-009 · End-to-end exact-head verification:** after the next architecture/content batch, run the complete quality/Pages chain and use actual built-site route/SEO reports to seed the next defect wave.
 ## Current structural work
 
 - [x] Unified `index.html` established as the main doorway.
