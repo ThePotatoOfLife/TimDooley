@@ -183,7 +183,7 @@ Current: question-routing framework with limited visible answer substance.
 
 Current: useful name-first doorway.
 
-- [~] SURF-AZ-001 — Added explicit disambiguation for Father, Son, Tim/Potato, Axis/Door, North, House, Spirit, Tree and CIA/FBI, including the active CIA versus retired FBI distinction. Farm still needs a dedicated branch/disambiguation treatment.
+- [x] SURF-AZ-001 — Added explicit disambiguation for Father, Son, Tim/Potato, Axis/Door, North, House, Spirit, Tree, Farm and CIA/FBI, including the active CIA versus retired FBI distinction and a boundary between literal farming and the project Farm/Sektur social model.
 - [ ] SURF-AZ-002 — Add one-line contextual hints explaining why the destination is the canonical owner without turning A–Z into a definition engine.
 - [ ] SURF-AZ-003 — Add dates to historical role labels where the same word means different things in 2024, 2025 and 2026.
 - [ ] SURF-AZ-004 — Add recovery-state labels for names/artifacts that exist only in partial or reconstructed form.
