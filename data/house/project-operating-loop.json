@@ -1,0 +1,124 @@
+{
+  "id": "project-operating-loop",
+  "title": "Project Operating Loop — Source to Return",
+  "version": "1.0.0",
+  "updated": "2026-10-01",
+  "authority": "House operating-process projection",
+  "purpose": "Show how project material should move from capture and evidence through ownership, chronology, testing, public reading, work/output, revision and renewed research without collapsing those jobs into one file.",
+  "lifecycle": [
+    {
+      "id": "capture",
+      "label": "Capture / recover",
+      "question": "What is the artifact or observation?",
+      "owns": "source/evidence layer"
+    },
+    {
+      "id": "classify",
+      "label": "Classify evidence",
+      "question": "What source class, confidence and recovery state does it have?",
+      "owns": "Archive & Sources"
+    },
+    {
+      "id": "place",
+      "label": "Place in canonical owner",
+      "question": "Which durable owner keeps the definition/event/model/relationship?",
+      "owns": "relevant Dwelling/Room owner"
+    },
+    {
+      "id": "time",
+      "label": "Locate in time",
+      "question": "What occurred when, what was published later, and what was interpreted later still?",
+      "owns": "Time & History"
+    },
+    {
+      "id": "test",
+      "label": "Compare / test",
+      "question": "What follows, what conflicts, what would fail, and what remains hypothesis?",
+      "owns": "Research Lab / Science / specialist comparison"
+    },
+    {
+      "id": "project",
+      "label": "Project into a reader",
+      "question": "How should a person encounter the owned material without learning backend filenames?",
+      "owns": "public surface family"
+    },
+    {
+      "id": "fruit",
+      "label": "Work / Fruit",
+      "question": "What usable explanation, model, story, map, tool or creative object results?",
+      "owns": "Works or relevant public output"
+    },
+    {
+      "id": "revise",
+      "label": "Revision / Seed",
+      "question": "What changed downstream, what is corrected, and what should be researched next?",
+      "owns": "History/Revision + Research Lab"
+    }
+  ],
+  "worked_case": {
+    "id": "potato-axis-2025-04-21",
+    "title": "21 April 2025 · “the potato axis is real” + spiral equation",
+    "boundary": "This case demonstrates archive metabolism, not independent validation of the theological or physical interpretation of the Axis.",
+    "stages": [
+      {
+        "stage_id": "capture",
+        "artifact": "knowledge/science/april-21-2025-potato-axis-spiral-primary-recovery.json",
+        "note": "Preserves the dated public attestation and equation lineage as a recovered primary project object."
+      },
+      {
+        "stage_id": "classify",
+        "artifact": "data/evidence/public-statement-root-manifest.json",
+        "note": "The public statement stack owns rooted occurrence/provenance semantics; the phrase is an attestation, not proof of later interpretations."
+      },
+      {
+        "stage_id": "place",
+        "artifact": "knowledge/science/science-master-index.json",
+        "note": "Science/formal-model indexes keep the equation lineage and model status; project-native Axis meaning remains separate from empirical validation."
+      },
+      {
+        "stage_id": "time",
+        "artifact": "data/timeline-events.json",
+        "public_route": "timeline/",
+        "note": "Timeline places the event inside the April 2025 Turning corridor without backdating later Father/Ladder/House synthesis."
+      },
+      {
+        "stage_id": "test",
+        "artifact": "knowledge/science/great-book-consciousness-spiral-equations-recovery.json",
+        "public_route": "science/",
+        "note": "The equation can be checked mathematically and compared with earlier Great Book material while keeping physical interpretation open."
+      },
+      {
+        "stage_id": "project",
+        "artifact": "story-content/part-03.html",
+        "public_route": "tim-dooley/story/#potato-axis-real-2025-04-21",
+        "note": "Story turns the dated record into narrative context while source notes preserve the distinction between event and later mythology."
+      },
+      {
+        "stage_id": "fruit",
+        "artifact": "axis/index.html",
+        "public_route": "axis/",
+        "note": "Living Axis is a public explanatory work built from many owned records; it is a reader/projection, not the source of the 2025 fact."
+      },
+      {
+        "stage_id": "revise",
+        "artifact": "knowledge/research/recent-commit-materialization-crystallization-257-283.json",
+        "public_route": "research-lab/",
+        "note": "Later formalization, contradictions and open questions return to Research rather than silently rewriting the original statement."
+      }
+    ]
+  },
+  "invariants": [
+    "A public page is not automatically the canonical owner of the facts it displays.",
+    "A later synthesis may reinterpret an earlier artifact but must not rewrite its original date or wording.",
+    "Recovery state and evidence class survive promotion into thicker canonical owners.",
+    "A model or comparison can clarify a source without upgrading it into empirical proof.",
+    "Revision should create a new state with provenance rather than erase the older one."
+  ],
+  "connections": [
+    "data/house/project-synthesis.json",
+    "data/canonical-source-map.json",
+    "data/house/history-canon-revision-protocol.json",
+    "knowledge/core/repair-forge-protocol.json",
+    "data/house/works-fruit-contract.json"
+  ]
+}
