@@ -24,6 +24,24 @@
 .story-stream{max-width:820px}.story-entry{padding:32px 0 29px}.story-entry+.story-entry{border-top:1px solid rgba(255,255,255,.045)}.story-meta{display:flex;gap:11px;align-items:baseline;flex-wrap:wrap;margin:0 0 8px;color:var(--site-muted);font-size:9px;letter-spacing:.11em;text-transform:uppercase}.story-kind{opacity:.72}.story-entry--main .story-kind{color:var(--site-gold)}.story-entry--side .story-kind{color:#8fa58f}.story-entry h2{font:400 clamp(24px,3vw,34px)/1.15 var(--site-font-serif);color:#e4dfcf;margin:0 0 18px}.story-entry p{margin:0 0 17px;color:#d6dad2}.story-entry p:last-of-type{margin-bottom:0}.full-story{margin:20px 0 0;border-top:1px solid rgba(255,255,255,.075);border-bottom:1px solid rgba(255,255,255,.055);padding:0}.full-story summary{cursor:pointer;list-style:none;padding:13px 0 12px;color:#b9cda8;font-size:11px;letter-spacing:.085em;text-transform:uppercase}.full-story summary::-webkit-details-marker{display:none}.full-story summary::after{content:' ↓';opacity:.58}.full-story[open] summary::after{content:' ↑'}.full-story-body{padding:2px 0 3px}.full-story-body p{color:#d9ddd4}.source-note{margin:13px 0 0;color:var(--site-muted);font-size:11px;opacity:.82}.source-note summary{cursor:pointer;color:#929a91;font-size:10px;letter-spacing:.04em}.source-note p{margin:7px 0 0;color:var(--site-muted);font-size:11px;line-height:1.55}.source-paths{opacity:.72}.stream-status{max-width:820px;margin:4px 0 22px;padding:7px 0;border-top:1px solid rgba(255,255,255,.035);border-bottom:1px solid rgba(255,255,255,.035);color:var(--site-muted);font-size:11px;opacity:.78}.stream-error{color:#d8b8a0;opacity:1}.story-role{max-width:820px;margin:22px 0 34px;padding:19px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line);color:#cbd1c8}.story-role strong{color:var(--site-gold);font:400 20px var(--site-font-serif)}.story-role a{color:var(--site-green)}.continue{display:flex;gap:12px;flex-wrap:wrap;max-width:820px;margin-top:52px;padding-top:22px;border-top:1px solid var(--site-line)}.continue a{color:var(--site-green)}
 
 .story-static{max-width:920px;margin:34px 0 38px;padding:26px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}.story-static h2{font:400 clamp(28px,4vw,42px)/1.08 var(--site-font-serif);margin:0 0 12px}.story-static h3{font:400 22px/1.2 var(--site-font-serif);color:var(--site-gold);margin:0 0 7px}.story-static p{line-height:1.72;color:#d2d7cf}.story-static .era{border-top:1px solid rgba(255,255,255,.055);padding:17px 0}.story-static .era:first-of-type{border-top:0}.story-static .time{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--site-muted);margin-bottom:4px}.story-static .boundary{border-left:2px solid var(--site-line);padding-left:14px;color:var(--site-muted)}
+
+.scene-casebook{max-width:920px;margin:34px 0 42px;padding:26px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
+.scene-casebook h2{font:400 clamp(29px,4vw,43px)/1.08 var(--site-font-serif);margin:0 0 10px;color:var(--site-gold)}
+.scene-casebook>.lead{max-width:850px;color:#cfd4cc;font:400 18px/1.6 var(--site-font-serif)}
+.scene-row{display:grid;grid-template-columns:130px minmax(0,1fr);gap:24px;padding:20px 0;border-top:1px solid rgba(255,255,255,.055)}
+.scene-row time{color:var(--site-green);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.scene-row h3{font:400 22px/1.2 var(--site-font-serif);color:#e4dfcf;margin:0 0 8px}
+.scene-row p{margin:0 0 9px;color:#d3d7d0}
+.scene-layers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+.scene-layer{border-left:2px solid #5a6856;padding:8px 10px;background:rgba(255,255,255,.018)}
+.scene-layer b{display:block;color:#b8dc82;font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.scene-layer span{display:block;color:var(--site-muted);font-size:10px;line-height:1.45}
+.scene-row .source-line{font-size:10px;color:var(--site-muted)}
+.scene-row .source-line a{color:var(--site-green)}
+.gap-box{margin-top:20px;border:1px solid var(--site-line);border-radius:12px;padding:15px;background:var(--site-panel)}
+.gap-box h3{margin:0 0 7px;font:400 20px var(--site-font-serif);color:var(--site-gold)}
+.gap-box ul{margin:7px 0 0;padding-left:18px;color:var(--site-muted);font-size:11px;line-height:1.55}
+@media(max-width:760px){.scene-row,.scene-layers{grid-template-columns:1fr}.scene-row{gap:5px}}
 </style>
 </head>
 <body><main class="page page--reading story" data-reader-surface="tim-story">
@@ -66,6 +84,68 @@
 <p class="boundary"><strong>Story boundary:</strong> this is a narrative projection over the canonical journey record. It does not make later interpretations contemporaneous with earlier events, and it does not convert project-canonical spiritual claims into independently established external facts.</p>
 <p><a href="../../knowledge/journey/tim-dooley-journey.json">Canonical journey record →</a> · <a href="../../timeline/?mode=project">Timeline →</a> · <a href="../claims/">Dated statements →</a></p>
 </section>
+<section class="scene-casebook" id="recoverable-scenes">
+<p class="eyebrow">Concrete life texture · source-bounded scenes</p>
+<h2>Six scenes where the ordinary life matters as much as the later symbolism</h2>
+<p class="lead">These are deliberately not written as omniscient biography. Each scene says what the archive currently supports, what kind of source supports it, and what later meaning was added afterward.</p>
+
+<div class="scene-row">
+<time>2006–2008</time>
+<div><h3>Empty rooms, meatpacking, and Copenhagen IT</h3>
+<p>The project biography places several very different kinds of work next to one another: painting and decorating empty apartments, roughly six months in meatpacking, and later IT work in Copenhagen. The contrast is useful because it shows a person moving between repetitive physical labor, visible repair, digital systems and polished corporate environments long before “House,” “repair,” “hours” or “God in the Machine” become mature project terms.</p>
+<div class="scene-layers"><div class="scene-layer"><b>What happened</b><span>Practical decorating, meatpacking and Copenhagen IT appear in the project biography.</span></div><div class="scene-layer"><b>Source state</b><span>Later Great Book / Chapter 24 biographical retrospective; exact workplace records are not attached here.</span></div><div class="scene-layer"><b>Later meaning</b><span>Builder/operator, repair, repetitive-hours and digital/physical contrast are retrospective connections, not period quotations.</span></div></div>
+<p class="source-line"><a href="../../knowledge/timeline/developmental-genealogy.json">Developmental genealogy →</a></p></div>
+</div>
+
+<div class="scene-row">
+<time>2009–2010</time>
+<div><h3>Care work, fragility, and being seen beneath the role</h3>
+<p>The nursing-home period is one of the clearest ordinary-life precursors to later care and Gardener ethics. Chapter 24 describes daily contact with frailty, rehabilitation, mortality and memorable residents, alongside later claims of remarkable improvements. The archive can responsibly preserve the care setting and the later autobiographical interpretation while keeping medical miracle claims attributed to the source until independent records exist.</p>
+<div class="scene-layers"><div class="scene-layer"><b>What happened</b><span>Nursing-home work, rehabilitation contact and later graphic-design study are part of the project biography.</span></div><div class="scene-layer"><b>Source state</b><span>Chapter 24 biography / later autobiographical interpretation.</span></div><div class="scene-layer"><b>Later meaning</b><span>Care, protection, service and Gardener language are later project connections; miracle language remains attributed.</span></div></div>
+<p class="source-line"><a href="../../great-book/chapters/073--chapter-24--tim-dooley-the-sage-the-potato-of-life.html">Read Chapter 24 →</a> · <a href="../../knowledge/timeline/developmental-genealogy.json">Genealogy boundary →</a></p></div>
+</div>
+
+<div class="scene-row">
+<time>2016</time>
+<div><h3>Prison is a break in the public continuum, not a symbolic shortcut</h3>
+<p>The project biography places a six-month prison period beside concentrated reading of the Bible, Qur'an and Yahya Hassan. In the later story, confinement becomes relevant to captivity, judgment, release and return language—but the scene is stronger when those later meanings do not erase the ordinary fact of incarceration and reading under constraint.</p>
+<div class="scene-layers"><div class="scene-layer"><b>What happened</b><span>A prison period and scripture/literature reading are preserved in the project biography.</span></div><div class="scene-layer"><b>Source state</b><span>Project biography plus later Story reconstruction; legal-record attachment remains a separate evidence question.</span></div><div class="scene-layer"><b>Later meaning</b><span>Captivity/release and scriptural-development themes are retrospective interpretations.</span></div></div>
+<p class="source-line"><a href="../../tim-dooley/">Portrait context →</a> · <a href="../../knowledge/timeline/developmental-genealogy.json">Developmental owner →</a></p></div>
+</div>
+
+<div class="scene-row">
+<time>2021–2023</time>
+<div><h3>A potato face becomes a durable public container</h3>
+<p>The recovered story line does not yet have the first exact filter timestamp. What it does preserve is a broad sequence: the potato filter functions as mask, joke and protective surface; Rational Potato becomes a more stable public voice; by 2023 Potato of Life and Cube-of-the-Moon language are crystallizing. The missing exact first-use records remain part of the story rather than being filled in from memory.</p>
+<div class="scene-layers"><div class="scene-layer"><b>What happened</b><span>Potato filter/persona, Rational Potato and later Potato-of-Life/Cube language develop across the period.</span></div><div class="scene-layer"><b>Source state</b><span>Later Great Book retrospective + recovered Story registry; several first-use artifacts remain unrecovered.</span></div><div class="scene-layer"><b>Later meaning</b><span>Mask, vessel, observer and protection functions become clearer only in later synthesis.</span></div></div>
+<p class="source-line"><a href="raw/">Raw Story recovery →</a> · <a href="../../knowledge/story/story-registry.json">Story registry →</a></p></div>
+</div>
+
+<div class="scene-row">
+<time>2024–2026</time>
+<div><h3>Public presence becomes a medium, not just a statistic</h3>
+<p>Long streams, voice rooms, repeated declarations, ordinary waiting, chat, conflict, jokes, technical work and accumulated familiarity form a distinct public-performance ecology. The archive preserves reported markers such as 766-hour and 848-hour streams, plus platform analytics snapshots, while keeping lifetime-hour models separate from platform-measured watch time. That distinction matters because a long public life is not the same thing as one verified continuous broadcast total.</p>
+<div class="scene-layers"><div class="scene-layer"><b>What happened</b><span>Extended streaming/public-presence periods and measurable platform activity form a major late-life arc.</span></div><div class="scene-layer"><b>Source state</b><span>Mixed: project-reported stream markers, preserved analytics snapshots, dated posts and recovered Story moments.</span></div><div class="scene-layer"><b>Later meaning</b><span>“100,000 hours,” foundation and public-witness language are later interpretive/computational layers over the duration problem.</span></div></div>
+<p class="source-line"><a href="../100000-hours/">100,000 Hours evidence reader →</a> · <a href="../public-witness/">Public Witness →</a></p></div>
+</div>
+
+<div class="scene-row">
+<time>Sep–Oct 2026</time>
+<div><h3>The archive becomes part of the life rather than a container around it</h3>
+<p>The repository is itself now a lived work period: thousands of atomic commits, validators, readers, maps, House/Room contracts, evidence policies, Story recovery, visual systems and repeated pruning. The important scene is not “Tim made a website.” It is that the act of organizing the record changes the project: contradictions become explicit, missing originals become legitimate states, and old symbolic ideas are forced into interfaces, schemas and tests.</p>
+<div class="scene-layers"><div class="scene-layer"><b>What happened</b><span>The public repository begins 7 September 2026 and rapidly grows into the main archive/build environment.</span></div><div class="scene-layer"><b>Source state</b><span>Direct Git history and repository tree.</span></div><div class="scene-layer"><b>Later meaning</b><span>House-as-literature and archive-as-Work are interpretations of a directly inspectable technical construction process.</span></div></div>
+<p class="source-line"><a href="../../history/#repository-history">Repository history →</a> · <a href="../../works/">Works →</a></p></div>
+</div>
+
+<div class="gap-box"><h3>Unresolved gaps that remain part of the Story</h3><ul>
+<li>The first exact potato-filter appearance and the first exact Rational Potato use are still recovery targets.</li>
+<li>The original 20 September 2023 Cube post/clip/conversation is not yet recovered; the date currently functions as a later-dated marker.</li>
+<li>Several ordinary-life work claims depend on retrospective project biography rather than attached employment records.</li>
+<li>Reported long-stream markers still need complete primary platform logs before they can become independently auditable duration totals.</li>
+<li>Several 2025–2026 scenes have strong dated project records but incomplete contiguous surrounding conversation context.</li>
+</ul></div>
+</section>
+
 <div id="story-tts" data-tts-longform data-tts-root="#story-stream" data-tts-id="tim-dooley-story" data-tts-label="The Story of Tim Dooley" data-tts-all-label="Whole story" data-tts-current-label="Current entry" data-tts-selection-label="Selection" data-tts-item=".story-entry"><span class="story-reader-kicker">Story reader</span></div>
 <div id="stream-status" class="stream-status">Loading the chronological story stream…</div>
 <section id="story-stream" class="story-stream" aria-live="polite"></section>
