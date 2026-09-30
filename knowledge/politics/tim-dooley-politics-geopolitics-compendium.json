@@ -1,8 +1,8 @@
 {
   "id": "tim-dooley-politics-geopolitics-compendium",
   "title": "Tim Dooley — Politics & Geopolitics Compendium",
-  "version": "1.1.0",
-  "updated": "2026-09-19",
+  "version": "1.2.0",
+  "updated": "2026-09-30",
   "kind": "reader-facing political statement synthesis and provenance ledger",
   "method": {
     "principle": "Separate what Tim explicitly says from accepted formulations, policy proposals, programme design, thought experiments, predictions, research leads, moral judgments, satire, mythology and archive inference.",
@@ -22,7 +22,18 @@
       "conceptual_model",
       "biographical_context",
       "uncertain"
-    ]
+    ],
+    "provenance_contract": {
+      "canonical_rule": "Each entry remains typed by mode, stance, confidence and date. A direct/recovered Tim statement is distinct from archive synthesis, external institutional fact, prediction resolution and symbolic framing.",
+      "evidence_routes": [
+        "data/evidence/public-statement-root-manifest.json",
+        "knowledge/timeline/prediction-foresight-master-index.json",
+        "knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json",
+        "knowledge/politics/tim-dooley-political-alignment-map.json"
+      ],
+      "derived_domain_view": "knowledge/politics/tim-dooley-politics-policy-domain-index.json",
+      "external_context_rule": "Official institutional sources may contextualize how law, governance or current policy works, but overlap never establishes influence, causation or endorsement."
+    }
   },
   "entries": [
     {
@@ -420,6 +431,7 @@
     "comprehensive nuclear-energy doctrine"
   ],
   "connections": [
+    "knowledge/politics/tim-dooley-politics-policy-domain-index.json",
     "knowledge/politics/tim-dooley-political-alignment-map.json",
     "knowledge/timeline/prediction-epiphany-causal-genealogy-2026.json"
   ]
