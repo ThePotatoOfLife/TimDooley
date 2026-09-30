@@ -203,14 +203,77 @@ def main()->int:
         if not internal:
             warnings.append({"code":"authored-dead-end","surface":rel})
 
-    report={"version":"1.2.0","registry_version":data.get("version"),"surface_count":len(rows),"errors":errors,"warnings":warnings,"overlap_pairs":overlaps,"dead_ends":dead_ends,"short_cycles":short_cycles,"authored_surfaces":standalone,"metrics":metrics,"notes":["Density budgets are page-type heuristics, not release-failure thresholds.","First-nav link-wall warns above four links; mobile pre-content stack score combines first-nav links, buttons and extra nav rows before the first substantive H2.","Registered outdegree counts only links to other registered public surfaces; deep records and anchors remain separate.","Two-way cycles are review signals: reciprocal orientation may be healthy, repeated hub bouncing may not be.","Overlap is a review signal for redundant reader jobs, not proof that two surfaces should merge.","Read/Enter CTAs and mismatched Open CTAs pointing to hub/explorer shells are review signals; a named Open X → X hub is treated as valid navigation.","Bare More/Deep/Explore/Context/Archive labels are flagged when they do not state destination intent."]}
+    built_graph={"available":False,"page_count":0,"edge_count":0,"orphans":[],"dead_ends":[],"cycles":[]}
+    built_root=ROOT/"_site"
+    if built_root.is_dir():
+        built_pages={}
+        for path in built_root.rglob("*.html"):
+            rel=path.relative_to(built_root)
+            raw=path.read_text(encoding="utf-8",errors="replace")
+            if "<main" not in raw.lower():
+                continue
+            if 'name="robots" content="noindex,follow"' in raw and ("location.replace(" in raw or 'http-equiv="refresh"' in raw.lower()):
+                continue
+            if rel.name=="index.html":
+                parent=rel.parent.as_posix().strip("/")
+                route="/" if not parent else f"/{parent}/"
+            else:
+                route=f"/{rel.as_posix()}"
+            built_pages[normalize_route(route)]=(path,raw)
+        built_routes=set(built_pages)
+        outbound={route:set() for route in built_routes}
+        inbound={route:set() for route in built_routes}
+        edge_count=0
+        for route,(path,raw) in built_pages.items():
+            visible=STYLE_SCRIPT.sub("",raw)
+            base=effective_base_route(route,raw)
+            for href in ANCHOR_HREF.findall(visible):
+                target=resolve_href(base,href)
+                if not target or target not in built_routes or target==route:
+                    continue
+                if target not in outbound[route]:
+                    edge_count+=1
+                outbound[route].add(target)
+                inbound[target].add(route)
+        orphan_routes=sorted(route for route in built_routes if route!="/" and not inbound[route])
+        dead_routes=sorted(route for route in built_routes if route!="/" and not outbound[route])
+        cycles=set()
+        def walk_cycle(start,current,path,depth):
+            if depth>4:
+                return
+            for nxt in outbound.get(current,set()):
+                if nxt==start and len(path)>=2:
+                    canonical=tuple(path)
+                    rotations=[canonical[i:]+canonical[:i] for i in range(len(canonical))]
+                    reverse=tuple(reversed(canonical))
+                    rotations += [reverse[i:]+reverse[:i] for i in range(len(reverse))]
+                    cycles.add(min(rotations))
+                    continue
+                if nxt in path or len(path)>=4:
+                    continue
+                walk_cycle(start,nxt,path+(nxt,),depth+1)
+        for route in sorted(built_routes):
+            walk_cycle(route,route,(route,),1)
+        built_graph={
+            "available":True,
+            "page_count":len(built_routes),
+            "edge_count":edge_count,
+            "orphans":[{"route":route} for route in orphan_routes],
+            "dead_ends":[{"route":route} for route in dead_routes],
+            "cycles":[{"length":len(cycle),"routes":list(cycle)} for cycle in sorted(cycles,key=lambda c:(len(c),c))[:200]],
+        }
+        for route in orphan_routes:
+            warnings.append({"code":"built-orphan","surface":route})
+        for route in dead_routes:
+            warnings.append({"code":"built-dead-end","surface":route})
+    report={"version":"1.3.0","registry_version":data.get("version"),"surface_count":len(rows),"errors":errors,"warnings":warnings,"overlap_pairs":overlaps,"dead_ends":dead_ends,"short_cycles":short_cycles,"authored_surfaces":standalone,"built_site_graph":built_graph,"metrics":metrics,"notes":["Density budgets are page-type heuristics, not release-failure thresholds.","First-nav link-wall warns above four links; mobile pre-content stack score combines first-nav links, buttons and extra nav rows before the first substantive H2.","Registered outdegree counts only links to other registered public surfaces; deep records and anchors remain separate.","Two-way cycles are review signals: reciprocal orientation may be healthy, repeated hub bouncing may not be.","When _site exists, the audit also records the complete built-site graph, including unregistered orphans, dead ends and cycles up to length four.","Overlap is a review signal for redundant reader jobs, not proof that two surfaces should merge.","Read/Enter CTAs and mismatched Open CTAs pointing to hub/explorer shells are review signals; a named Open X → X hub is treated as valid navigation.","Bare More/Deep/Explore/Context/Archive labels are flagged when they do not state destination intent."]}
     REPORT.parent.mkdir(parents=True,exist_ok=True); REPORT.write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
     print(f"SITE ARCHITECTURE AUDIT: {len(rows)} active surfaces · {len(errors)} errors · {len(warnings)} warnings · {len(overlaps)} high-overlap pairs")
     warning_counts=Counter(item.get("code","unknown") for item in warnings)
     if warning_counts:
         print("- Warning classes: " + " · ".join(f"{code}={count}" for code,count in sorted(warning_counts.items())))
-    priority_codes={"authored-dead-end","registered-dead-end","promise-cta-to-hub","vague-link-label","first-nav-link-wall","mobile-precontent-stack","live-link-to-legacy-route"}
-    priority_rank={"live-link-to-legacy-route":0,"authored-dead-end":1,"registered-dead-end":2,"vague-link-label":3,"promise-cta-to-hub":4,"first-nav-link-wall":5,"mobile-precontent-stack":6}
+    priority_codes={"authored-dead-end","registered-dead-end","built-orphan","built-dead-end","promise-cta-to-hub","vague-link-label","first-nav-link-wall","mobile-precontent-stack","live-link-to-legacy-route"}
+    priority_rank={"live-link-to-legacy-route":0,"built-orphan":1,"built-dead-end":2,"authored-dead-end":3,"registered-dead-end":4,"vague-link-label":5,"promise-cta-to-hub":6,"first-nav-link-wall":7,"mobile-precontent-stack":8}
     priority=sorted((item for item in warnings if item.get("code") in priority_codes),key=lambda item:(priority_rank.get(item.get("code"),99),item.get("surface","")))
     for item in priority[:30]:
         detail=item.get("label") or item.get("target") or item.get("count") or item.get("score") or ""
