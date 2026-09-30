@@ -8,6 +8,7 @@ visible so editors can decide whether the reader is learning the subject or the 
 from __future__ import annotations
 import json, re
 from collections import Counter, defaultdict
+from difflib import SequenceMatcher
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -45,7 +46,7 @@ def norm(txt:str)->str:
 def main():
     data=json.loads(SURFACES.read_text(encoding="utf-8"))
     surfaces=[s for s in data.get("surfaces",[]) if s.get("status")=="active"]
-    report={"generated_by":"scripts/audit_reader_directness.py","terms":TERMS,"surfaces":[],"exact_duplicate_paragraphs":[]}
+    report={"generated_by":"scripts/audit_reader_directness.py","terms":TERMS,"surfaces":[],"exact_duplicate_paragraphs":[],"near_duplicate_paragraphs":[]}
     dup=defaultdict(list)
 
     for s in surfaces:
@@ -71,6 +72,33 @@ def main():
         routes=sorted({r["route"] for r in rows})
         if len(routes)>1:
             report["exact_duplicate_paragraphs"].append({"routes":routes,"text":rows[0]["text"]})
+    # Near-duplicate crawl: compare long normalized paragraphs across different routes.
+    # SequenceMatcher is deliberately conservative so ordinary shared vocabulary does not flood the report.
+    para_rows=[]
+    for key, rows in dup.items():
+        for row in rows[:1]:
+            if len(key) >= 180:
+                para_rows.append((key,row))
+    for i in range(len(para_rows)):
+        a_key,a=para_rows[i]
+        for j in range(i+1,len(para_rows)):
+            b_key,b=para_rows[j]
+            if a["route"]==b["route"]:
+                continue
+            # Skip very different lengths cheaply.
+            ratio_len=min(len(a_key),len(b_key))/max(len(a_key),len(b_key))
+            if ratio_len < .72:
+                continue
+            score=SequenceMatcher(None,a_key,b_key,autojunk=True).ratio()
+            if score >= .84 and a_key != b_key:
+                report["near_duplicate_paragraphs"].append({
+                    "similarity":round(score,3),
+                    "routes":[a["route"],b["route"]],
+                    "a":a["text"],
+                    "b":b["text"]
+                })
+    report["near_duplicate_paragraphs"].sort(key=lambda x:-x["similarity"])
+
     report["exact_duplicate_paragraphs"].sort(key=lambda x:(-len(x["text"]),x["routes"]))
     report["surfaces"].sort(key=lambda x:-x.get("maintenance_hit_total",0))
     OUT.parent.mkdir(parents=True,exist_ok=True)
@@ -78,7 +106,7 @@ def main():
     print(f"wrote {OUT.relative_to(ROOT)}")
     for row in report["surfaces"][:12]:
         print(f"{row.get('maintenance_hit_total',0):3}  {row.get('route')}  {row.get('maintenance_term_hits',{})}")
-    print(f"exact cross-surface duplicate paragraphs: {len(report['exact_duplicate_paragraphs'])}")
+    print(f"exact cross-surface duplicate paragraphs: {len(report['exact_duplicate_paragraphs'])}")\n    print(f"near-duplicate paragraph pairs (>= .84): {len(report['near_duplicate_paragraphs'])}")
 
 if __name__=="__main__":
     main()
