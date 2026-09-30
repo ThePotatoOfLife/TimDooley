@@ -42,6 +42,25 @@ def test_breadcrumb_contract() -> None:
     if len(items) < 2:
         fail("internal BreadcrumbList must contain at least two ListItems")
 
+    politics_payload = json.loads(optimize.site_graph_schema(optimize.OUT / "politics" / "index.html", "Politics & Geopolitics"))
+    politics_breadcrumbs = [node for node in politics_payload.get("@graph", []) if node.get("@type") == "BreadcrumbList"]
+    politics_items = politics_breadcrumbs[0].get("itemListElement", []) if politics_breadcrumbs else []
+    politics_names = [item.get("name") for item in politics_items]
+    if politics_names != ["The Potato of Life", "World", "Politics & Geopolitics"]:
+        fail(f"Politics breadcrumb must follow semantic public-surface hierarchy; got {politics_names!r}")
+
+
+
+def test_primary_gateway_contract() -> None:
+    expected = (("tim-dooley", "Tim Dooley"), ("religion", "Religion"), ("philosophy", "Philosophy"), ("science", "Science"), ("world", "World"))
+    if optimize.PRIMARY_DOORS != expected:
+        fail(f"SEO primary gateways must come from canonical public-surface authority; got {optimize.PRIMARY_DOORS!r}")
+    website = json.loads(optimize.site_graph_schema(optimize.OUT / "science" / "index.html", "Science"))
+    nodes = website.get("@graph", [])
+    site = next((node for node in nodes if node.get("@type") == "WebSite"), None)
+    if not site or site.get("alternateName") != "Potato of Life":
+        fail("WebSite structured data must preserve stable alternateName for site identity")
+
 
 def test_primary_schema_contract() -> None:
     paper_url = semantic.page_url("science/papers/demo")
@@ -127,6 +146,7 @@ def test_homepage_authority_contract() -> None:
 def main() -> int:
     checks = (
         test_breadcrumb_contract,
+        test_primary_gateway_contract,
         test_primary_schema_contract,
         test_authored_question_schema_contract,
         test_repository_robots_contract,
