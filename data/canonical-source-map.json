@@ -1,5 +1,5 @@
 {
-  "version": "1.7.0",
+  "version": "1.7.1",
   "updated": "2026-09-30",
   "purpose": "Canonical ownership map for overlapping repository datasets. One family may have multiple technical layers, but only one layer owns each kind of fact; indexes, evidence, graph projections and research waves reference rather than duplicate the owner.",
   "rule": "Canonical ownership is about authority for a record type, not about which file happens to be largest.",
@@ -198,7 +198,8 @@
       "source_evidence": [
         "data/evidence/public-statement-root-manifest.json"
       ],
-      "policy": "The political compendium owns dated Tim-attributed political positions, proposals, programme designs, forecasts, research leads, symbolic models and unresolved issues. Alignment and domain files are derived views. Prediction resolution remains owned by Prediction Time evidence, and external institutional facts remain owned by their world/source records. Public pages project this material without upgrading a proposal into law, a forecast into a position, or a research lead into a finding."
+      "policy": "The political compendium owns dated Tim-attributed political positions, proposals, programme designs, forecasts, research leads, symbolic models and unresolved issues. Alignment and domain files are derived views. Prediction resolution remains owned by Prediction Time evidence, and external institutional facts remain owned by their world/source records. Public pages project this material without upgrading a proposal into law, a forecast into a position, or a research lead into a finding.",
+      "source_recovery_queue": "knowledge/politics/tim-dooley-politics-source-recovery-queue.json"
     }
   },
   "consolidation_actions": [
