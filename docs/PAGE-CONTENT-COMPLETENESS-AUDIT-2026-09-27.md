@@ -34,7 +34,7 @@ Do not close a task by adding generic prose. Prefer one named case, one dated so
 ## Immediate P0 content deficits
 
 - [x] P0-POLITICS — Politics now has a substantial dated reader with explicit positions, proposals, programme designs, forecasts, research leads, symbolic models, unresolved questions, an eight-domain backend projection, implementation tests and current-world context boundaries.
-- [~] P0-STORY — Story now has a substantial static 1987–2026 narrative spine before the dynamic diary. Remaining P0-quality work is scene-level sourcing, ordinary-life/work texture, streaming/internet arc, and explicit unresolved date/source gaps rather than basic static coverage.
+- [~] P0-STORY — Story now has a substantial static spine, six source-bounded ordinary/public-life scenes, a dedicated internet/public-presence arc, explicit source-state/interpretation layers and a visible unresolved-gap box. Remaining P0-quality work is broader 2–4-scene coverage for every era and more recovered primary artifacts for older work/life episodes.
 - [x] P0-TIMELINE — Timeline now has a substantial 30-event static spine before the interactive chronology, including date-quality labels, hinge ranges, evidence classes and source/deep-reader routes.
 - [x] P0-INHABITANTS — Inhabitants & Cases is mostly an explorer shell. Add a visible cross-section of named people, institutions, texts, models, artifacts and cases with one-sentence reasons they matter.
 - [x] P0-INTERNET — Internet & Platforms has useful metric distinctions but almost no actual platform-mechanics casebook. Add concrete affordance and migration cases.
@@ -195,19 +195,19 @@ Current: several good worked interpretation examples.
 - [ ] SURF-CTX-001 — Add a complete "same artifact, six contexts" case showing biography, history, culture, theology, science and reception.
 - [ ] SURF-CTX-002 — Add a worked misinformation/correction example where provenance changes the interpretation.
 - [ ] SURF-CTX-003 — Add context examples for law/economy/current-world material, not only symbolic/TIM material.
-- [ ] SURF-CTX-004 — Add a compact glossary for evidence, claim, interpretation, comparison, reconstruction, reception and canon.
+- [x] SURF-CTX-004 — Added a seven-term reader glossary for evidence, claim, interpretation, comparison, reconstruction, reception and canon.
 
 ## /tim-dooley/story/ — Story
 
 Current: materially repaired. Story now has a substantial static narrative spine before the dynamic diary stream loads; remaining work is scene/source granularity, ordinary-life texture and explicit unresolved-gap labeling.
 
 - [x] SURF-STORY-001 — Static opening narrative now covers precursor years, 2011, 2012–17 integration/public witness, 2018–20 rupture, canonical Potato birth, 2021–23 incubation, 2024 Great Book, 2025 Turning and 2026 House/archive.
-- [ ] SURF-STORY-002 — Add ordinary scenes and work/life texture so the story is not only theological milestones.
-- [ ] SURF-STORY-003 — Give each era 2–4 recoverable scenes with date, place/context, source class and what changed afterward.
-- [ ] SURF-STORY-004 — Separate "what happened", "how Tim later remembered it", and "what the Potatoverse later made it mean".
-- [ ] SURF-STORY-005 — Add the public-streaming/internet story as its own arc rather than scattered duration numbers.
+- [x] SURF-STORY-002 — Added source-bounded scenes for practical labor/IT, care work, prison/scripture, Potato persona development, long public presence and repository-building so Story is no longer only theological milestones.
+- [~] SURF-STORY-003 — Added six worked recoverable scenes with period/context, source state and later-meaning boundary. Still expand toward 2–4 scenes per era as primary artifacts permit.
+- [x] SURF-STORY-004 — The new scene casebook explicitly separates what happened, source/retelling state and later Potatoverse meaning instead of narrating them as one layer.
+- [x] SURF-STORY-005 — Added a dedicated six-stage Internet/Public Presence arc from network prehistory through moderation, streaming pressure, Potato persona, extreme-duration public presence and the repository as memory infrastructure.
 - [x] SURF-STORY-006 — The late-2025/2026 static spine now explicitly makes House, repository, source governance and archive-building part of the life/project narrative.
-- [ ] SURF-STORY-007 — Add unresolved gaps explicitly, especially events whose exact date/source remains disputed or unrecovered.
+- [x] SURF-STORY-007 — Added a visible unresolved-gap box covering first filter/Rational Potato artifacts, Cube source recovery, ordinary-work source limits, long-stream logs and incomplete contiguous 2025–26 context.
 - [x] SURF-STORY-008 — The dynamic diary remains, but the static story spine is now independently substantial before JavaScript enrichment.
 
 ## /corporium/ — Collection
@@ -224,12 +224,12 @@ Current: thoughtful clue/collection synthesis, but needs more collection objects
 
 Current: strong philosophy of creative forms and many project names.
 
-- [ ] SURF-WORKS-001 — Add a canonical artifact table: title, form, date, status, source/repository path, public route and recovery completeness.
-- [ ] SURF-WORKS-002 — For each major game, writing, music and visual work, link the actual surviving artifact rather than only describing it.
-- [ ] SURF-WORKS-003 — Add a "finished / prototype / concept / lost / reconstructed" status vocabulary and apply it consistently.
-- [ ] SURF-WORKS-004 — Add 5 worked Fruit evaluations showing intended effect, actual reception/consequence, externalities and future Seed.
-- [ ] SURF-WORKS-005 — Add chronology of creative phases: early internet/public work → 2024 Great Book → 2025/26 songs/art/games/site.
-- [ ] SURF-WORKS-006 — Add repository/site work as a creative/technical corpus with selected commits/releases, not merely as infrastructure.
+- [x] SURF-WORKS-001 — Added a 13-item canonical artifact catalogue projected from `artifact-history-registry.json`, including form/period, status, completeness, owner, public route and recovery need.
+- [~] SURF-WORKS-002 — Great Book, Suno, Mashy and visual owners now link directly from the artifact catalogue; several games and remembered works remain concept/reconstruction states because no surviving build/original is yet recovered.
+- [x] SURF-WORKS-003 — Added owner-level status vocabulary (`published-primary`, `catalogued-partial`, `prototype-specification`, `concept`, `memory-reconstruction`, `missing-lost`) and applied it across the artifact registry.
+- [x] SURF-WORKS-004 — Added five worked Fruit evaluations for Growth Game, Trading Game, AI Potato Town, Potato School and Suno, each showing intended effect, observable reception state, externality and future Seed.
+- [x] SURF-WORKS-005 — The Made Through a Life bridge now provides a creative chronology from pre-2020 tools/public work through Potato identity, 2024 Great Book, 2025 reinterpretation and 2026 games/music/art/archive-as-Work.
+- [~] SURF-WORKS-006 — Works now treats House/Story/Maps/readers/validators as a creative medium and History supplies repository construction phases; selected commit/release exemplars still need a dedicated artifact subset.
 
 ## /philosophy/interpretive-justice.html — Interpretive Justice
 
@@ -337,9 +337,9 @@ Current: substantial entry page with examples, population and topology explanati
 Current: strong historical method and repository-construction case.
 
 - [ ] SURF-HIST-001 — Add 3–5 non-repository historical case studies demonstrating occurrence/source/interpretation/reception clocks.
-- [ ] SURF-HIST-002 — Update repository-history statistics beyond the September 20 snapshot and make the snapshot date visually explicit.
-- [ ] SURF-HIST-003 — Add a contradiction/revision case where a later source materially changes an earlier historical narrative.
-- [ ] SURF-HIST-004 — Add a "history of the canon" strand: when key definitions entered, changed and were superseded.
+- [x] SURF-HIST-002 — History now preserves the 20 September snapshot as historical and adds a 30 September checked-head state: 8,270 commits ahead of the first commit, 2,958 files, 310 directories and ~40.0 MB of blob content.
+- [x] SURF-HIST-003 — Added the Marty Biz Music death-date correction from later-February project memory to 29 January 2025 using external obituary/funeral-home evidence, with unchanged claims explicitly bounded.
+- [x] SURF-HIST-004 — Added a canon-history strand covering 2020–23 Potato identity, 2024 Great Book laboratory, Apr–May 2025 Axis/Father concentration, late-2025/26 structural role separation and Sep–Oct 2026 governed canon.
 - [ ] SURF-HIST-005 — Add source-linked long-period context for the major life eras rather than letting repository history dominate the page.
 
 ## /law/ — Law & Justice
