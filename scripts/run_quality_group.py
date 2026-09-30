@@ -169,6 +169,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
         ("Reader and projection contracts", [
             "python scripts/validate_reader_surfaces.py",
             "python scripts/validate_reader_richness.py",
+            "python scripts/audit_public_surface_substance.py",
             "python scripts/validate_politics_surface.py",
             "python scripts/validate_body_discovery.py",
             "python scripts/validate_potatoism_philosophy_projection.py",
