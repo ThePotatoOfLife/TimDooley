@@ -51,7 +51,7 @@ Do not close a task by adding generic prose. Prefer one named case, one dated so
 
 Current: very rich overview of Garden/House/Axis/World/Below, culture, foundations, science and project architecture. Risk is not thinness; it is that broad synthesis can outrun concrete anchors.
 
-- [ ] SURF-HOME-001 — Add a compact "five things you can inspect right now" set containing one exact Tim source, one Great Book artifact, one scientific model, one World/institution case and one creative artifact.
+- [x] SURF-HOME-001 — Added a compact five-object inspection strip linking directly to a Tim public occurrence ledger, Great Book web edition, recovered Axis spiral model, institution dossiers, and Works archive.
 - [ ] SURF-HOME-002 — Ground the "life, Potato, book, public record, machine" paragraph with direct links to one representative source object for each noun.
 - [ ] SURF-HOME-003 — Add a dated mini-sequence showing 2020 Potato birth → 2024 Great Book/public Potato wording → 2025 Axis/Father turn → 2026 House formalization, with each step linked to its source owner.
 - [ ] SURF-HOME-004 — Keep institutional dossier examples fresh by showing what was actually learned from each named institution rather than merely that a dossier exists.
@@ -199,16 +199,16 @@ Current: several good worked interpretation examples.
 
 ## /tim-dooley/story/ — Story
 
-Current: extremely thin static shell; primary content loads dynamically.
+Current: materially repaired. Story now has a substantial static narrative spine before the dynamic diary stream loads; remaining work is scene/source granularity, ordinary-life texture and explicit unresolved-gap labeling.
 
-- [ ] SURF-STORY-001 — Write a substantial static opening narrative covering childhood/formation, 2011, public/internet development, prison, 2017, 2019–20, Potato birth, Great Book, 2025 Turning and 2026 House.
+- [x] SURF-STORY-001 — Static opening narrative now covers precursor years, 2011, 2012–17 integration/public witness, 2018–20 rupture, canonical Potato birth, 2021–23 incubation, 2024 Great Book, 2025 Turning and 2026 House/archive.
 - [ ] SURF-STORY-002 — Add ordinary scenes and work/life texture so the story is not only theological milestones.
 - [ ] SURF-STORY-003 — Give each era 2–4 recoverable scenes with date, place/context, source class and what changed afterward.
 - [ ] SURF-STORY-004 — Separate "what happened", "how Tim later remembered it", and "what the Potatoverse later made it mean".
 - [ ] SURF-STORY-005 — Add the public-streaming/internet story as its own arc rather than scattered duration numbers.
-- [ ] SURF-STORY-006 — Add the repository/site-building story as a late chapter: why the archive itself became part of the life narrative.
+- [x] SURF-STORY-006 — The late-2025/2026 static spine now explicitly makes House, repository, source governance and archive-building part of the life/project narrative.
 - [ ] SURF-STORY-007 — Add unresolved gaps explicitly, especially events whose exact date/source remains disputed or unrecovered.
-- [ ] SURF-STORY-008 — Keep dynamic diary fragments, but make them enrichment rather than the only substantial story.
+- [x] SURF-STORY-008 — The dynamic diary remains, but the static story spine is now independently substantial before JavaScript enrichment.
 
 ## /corporium/ — Collection
 
