@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "updated": "2026-09-21",
+  "version": "1.1.0",
+  "updated": "2026-10-01",
   "authority": "public-surface-editorial-mission",
   "registry": "data/house/public-surfaces.json",
   "principle": "Every active public surface must know what it is trying to become, what it must not become, where a reader should go next, and how much first-party substance it should carry. Mission contracts guide architecture; they do not replace canonical knowledge owners.",
@@ -28,18 +28,18 @@
       "title": "Home",
       "route": "/",
       "narrative_stage": "orientation",
-      "become": "A calm five-minute orientation to the project, Tim, Potato of Life and the five canonical gateways.",
+      "become": "A calm five-minute orientation to the project, Tim, the Potato of Life semantic center, and the five canonical gateways.",
       "must_not_become": "A compressed duplicate of House, Tim, Potatoism, World and Shadow.",
       "primary_next_surface_ids": [
-        "tim",
         "potato-of-life",
+        "tim",
         "religion",
         "philosophy",
         "science",
         "world"
       ],
       "density_intent": "compact",
-      "reader_job": "Orient a new reader quickly, state what the project is, and open the five canonical gateways without becoming a directory."
+      "reader_job": "Orient a new reader quickly, state what the project is, introduce Potato of Life as the semantic center, and open the five canonical gateways without becoming a directory."
     },
     "potato-of-life": {
       "title": "Potato of Life",
