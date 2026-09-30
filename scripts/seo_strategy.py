@@ -3,8 +3,14 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
+
+from house_public_surfaces import surface_rows
 
 SITE_NAME = "The Potato of Life"
+ROOT = Path(__file__).resolve().parents[1]
+PUBLIC_SURFACE_ROWS = surface_rows(ROOT)
+PUBLIC_SURFACE_BY_ROUTE = {(row.get("canonical_route") or row.get("route") or "").strip("/"): row for row in PUBLIC_SURFACE_ROWS if row.get("canonical_route") or row.get("route")}
 
 
 @dataclass(frozen=True)
@@ -134,6 +140,16 @@ def classify_route(route: str) -> str:
     route = _normalize(route)
     if route in ROUTE_STRATEGIES:
         return ROUTE_STRATEGIES[route].kind
+    surface = PUBLIC_SURFACE_BY_ROUTE.get(route)
+    if surface:
+        surface_type = surface.get("surface_type")
+        if surface_type == "hub":
+            return "hub"
+        if surface_type in {"guide", "evidence"}:
+            return "article"
+        if surface_type == "explorer":
+            return "explorer"
+        return "support"
     if route.startswith("science/papers/"):
         return "science-paper"
     if route.startswith("questions/") or route == "questions":
@@ -183,12 +199,17 @@ def _looks_generic_description(description: str) -> bool:
 def metadata_for(route: str, current_title: str, current_description: str) -> dict[str, str]:
     route = _normalize(route)
     strategy = ROUTE_STRATEGIES.get(route)
+    surface = PUBLIC_SURFACE_BY_ROUTE.get(route)
     title = " ".join(current_title.split()).strip()
     description = " ".join(current_description.split()).strip()
     if strategy and strategy.title and _looks_generic_title(title):
         title = strategy.title
+    elif surface and surface.get("title") and _looks_generic_title(title):
+        title = f"{surface['title']} — {SITE_NAME}"
     if strategy and strategy.description and _looks_generic_description(description):
         description = strategy.description
+    elif surface and surface.get("reader_job") and _looks_generic_description(description):
+        description = " ".join(str(surface["reader_job"]).split())
     return {"title": title, "description": description}
 
 
@@ -196,9 +217,14 @@ def schema_profile(route: str) -> dict[str, object]:
     route = _normalize(route)
     kind = classify_route(route)
     strategy = ROUTE_STRATEGIES.get(route)
+    surface = PUBLIC_SURFACE_BY_ROUTE.get(route)
     if strategy:
         schema_type = strategy.schema_type
         topic = strategy.topic
+    elif surface:
+        surface_type = surface.get("surface_type")
+        schema_type = "CollectionPage" if surface_type == "hub" else ("Article" if surface_type in {"guide", "evidence"} else "WebPage")
+        topic = surface.get("title") or route.replace("-", " ")
     elif kind == "science-paper":
         schema_type, topic = "ScholarlyArticle", "research paper"
     elif kind in {"question", "support"}:
@@ -219,6 +245,13 @@ def related_routes(route: str) -> tuple[str, ...]:
     route = _normalize(route)
     if route in CURATED_READER_ROUTES:
         return ()
+    surface = PUBLIC_SURFACE_BY_ROUTE.get(route)
+    if surface:
+        parent_id = surface.get("primary_parent")
+        parent = next((row for row in PUBLIC_SURFACE_ROWS if row.get("id") == parent_id), None)
+        parent_route = ((parent or {}).get("canonical_route") or (parent or {}).get("route") or "").strip("/")
+        if parent_route and parent_route != route:
+            return (parent_route,)
     if route in RELATED:
         return RELATED[route]
     kind = classify_route(route)
