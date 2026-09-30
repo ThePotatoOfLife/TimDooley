@@ -99,6 +99,23 @@ Acceptance rule: **a reader who knows the noun should be able to find the noun w
 - [x] **NAV-011 · Timeline deep-link vocabulary:** added stable era anchors and a compact jump rail for 1987–2010, 2011, 2016, 2019–20, 2021–23, 2024, 2025 and 2026 so other pages can target the actual chronological position.
 - [~] **NAV-012 · Navigation dead-end crawl:** added `scripts/audit_navigation_dead_ends.py` to inspect every active public surface and hard-fail major readers that lose a literal Home route or become too sparse. Remaining: review the report for specialist dead ends and ambiguous back arrows.
 
+## Fact ownership & stale-twin audit — 2026-10-01
+
+Rule: **detailed facts live with the strongest owner; secondary readers carry meaning + route, not a second mutable copy.**
+
+- [x] **OWNER-001 · Source-method ownership:** Sources owns general provenance/independence/correction rules. Context, Bible Comparison, Interpretive Justice and Paths now keep only domain-specific consequences plus routes back to Sources.
+- [x] **OWNER-002 · Correction-history ownership:** History owns the full Marty date correction chronology; Sources now keeps only the correction principle and routes to History/ledger.
+- [x] **OWNER-003 · Exact chronology ownership:** Timeline owns exact developmental dates/attestations. Story keeps narrative phase/source state and routes exact chronology back to Timeline.
+- [~] **OWNER-004 · Room-directory ownership:** Rooms is the placement directory, not a second source/timeline/anatomy/world database. Several detailed copies still need direct-text cleanup.
+- [x] **OWNER-005 · Anatomy ownership:** Life & Body owns vertebral/cord/CSF/neural facts. Collection and Research Lab now preserve symbolic/model consequences and route literal anatomy back to Life & Body.
+- [x] **OWNER-006 · Trinity/Spirit ownership:** Trinity remains the full Father/Son/Spirit role definition; Spirit defines only Spirit's contribution and links to Trinity for the complete triad.
+- [x] **OWNER-007 · Axis/North ownership:** Axis owns Plane/Cross/Door/Ladder mechanics; North keeps source-facing orientation/North-of-North meaning without re-teaching the whole vertical grammar.
+- [ ] **OWNER-008 · Metrics/count sweep:** audit Economy, Culture, public-duration pages, World/Map and repository-history readers for mutable external/current counts repeated outside their strongest dated owner.
+- [ ] **OWNER-009 · Political-date sweep:** Politics/North/World may legitimately share programme phases, but exact proposal dates and current external facts should have one dated owner with secondary pages summarizing the phase.
+- [ ] **OWNER-010 · Role-definition sweep:** continue through Elevator, Paths, Inhabitants and A–Z for long Father/Son/Axis/House/Room definitions that should become short labels + canonical-reader links.
+- [ ] **OWNER-011 · Method-boundary sweep:** specialist readers may retain one domain-specific evidence boundary, but repeated general archive methodology should link to Sources/Context instead of being restated in full.
+- [ ] **OWNER-012 · Automated stale-twin candidates:** extend directness audit to extract repeated dates/numbers + surrounding sentence, then report same hard fact across several routes even when prose differs.
+
 ## Reader directness & redundancy audit — 2026-10-01
 
 Rule: **say the thing before explaining the system that stores, routes or renders the thing.** Reader pages may expose evidence and provenance, but maintenance vocabulary should not become the foreground.
