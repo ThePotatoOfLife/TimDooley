@@ -245,6 +245,8 @@ def related_routes(route: str) -> tuple[str, ...]:
     route = _normalize(route)
     if route in CURATED_READER_ROUTES:
         return ()
+    if route in RELATED:
+        return RELATED[route]
     surface = PUBLIC_SURFACE_BY_ROUTE.get(route)
     if surface:
         parent_id = surface.get("primary_parent")
@@ -252,8 +254,6 @@ def related_routes(route: str) -> tuple[str, ...]:
         parent_route = ((parent or {}).get("canonical_route") or (parent or {}).get("route") or "").strip("/")
         if parent_route and parent_route != route:
             return (parent_route,)
-    if route in RELATED:
-        return RELATED[route]
     kind = classify_route(route)
     if kind == "science-paper":
         return ("science", "science/research-map", "context/source-authority")
