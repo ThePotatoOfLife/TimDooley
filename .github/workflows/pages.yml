@@ -197,7 +197,8 @@ jobs:
           for asset in             "app/site-elevator.js"             "app/site-elevator.css"             "data/house/elevator-spatial-projection.json" \
             "knowledge/core/spudlight-field-manual.json" \
             "knowledge/core/lower-field-orientation.json" \
-            "knowledge/world/lower-field-population-severity-estimate.json"; do
+            "knowledge/world/lower-field-population-severity-estimate.json" \
+            "knowledge/world/exploitation-coercion-trafficking-crosswalk.json"; do
             safe_name="${asset//\//_}"
             fetch_live "${base}${asset}" ".live-smoke/${safe_name}"
             test -s ".live-smoke/${safe_name}"
@@ -214,6 +215,9 @@ jobs:
               'id="tim-thought-development"',
               'id="tim-publicness-endurance"',
               'id="tim-mythic-self-description"',
+              'id="sold-exploitation-crosswalk"',
+              'id="tree-of-strife-deep-reading"',
+              'id="josh-moon-role-reading"',
               'id="field-instruments"',
               'id="what-tim-is-teaching"',
               'id="swamp-lessons"',
@@ -243,6 +247,10 @@ jobs:
           required_shadow=[
               'id="population-and-deaths"',
               'id="field-manual-human-reading"',
+              'id="sold-trafficking-boundary"',
+              'id="tree-of-strife-anatomy"',
+              'id="josh-moon-operator-paradox"',
+              'id="networked-harm-escalation"',
               'id="belief-permission-bridge"',
               "In memory of",
           ]
@@ -261,6 +269,7 @@ jobs:
           assert 'id="field-manual-bridge"' in roots, "live Roots missing Field Manual bridge"
           assert 'id="teaching-programme"' in forge, "live Forge missing teaching programme"
           assert 'id="epistemic-delegation-programme"' in forge, "live Forge missing epistemic delegation programme"
+          assert 'id="exploitation-language-forge"' in forge, "live Forge missing exploitation-language programme"
           for marker in required_below:
               assert marker in below, f"live Below missing {marker}"
           for marker in required_shadow:
