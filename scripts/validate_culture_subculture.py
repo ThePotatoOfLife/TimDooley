@@ -24,6 +24,9 @@ def main()->int:
         "belonging",
         "subcultural capital",
         "social influence &amp; group identity",
+        "Roles are learned socially.",
+        "Centrality is not personality essence.",
+        "watch → imitate → receive feedback",
     ):
         if marker not in page:
             errors.append(f"Culture reader missing field-model marker: {marker}")
