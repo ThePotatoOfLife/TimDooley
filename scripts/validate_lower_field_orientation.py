@@ -46,7 +46,7 @@ def main()->int:
         'id="dog-farmer-field-guide"',
         "Farmer ↔ lolcow is the primary Farm pair",
         "Dog is adjacent rather than opposite.",
-        "Dog and Farmer are easier to understand as verbs",
+        "Now read Dog and Farmer as verbs",
         "Translate the rhetoric into testable mechanisms",
         'id="harm-literacy"',
         "Serious words need serious evidence",
