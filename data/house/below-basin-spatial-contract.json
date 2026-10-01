@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.3.1",
   "updated": "2026-10-01",
   "authority": "below-basin-spatial-contract",
   "title": "Below Basin / Subterrain Vessel — Spatial Contract",
@@ -373,5 +373,18 @@
       }
     ],
     "anti_room_sprawl": "New lower material should first be routed into one of these four stations or an existing nested Room. Create another governed Room only when a durable ownership boundary cannot be expressed inside these stations."
+  },
+  "currentness_contract": {
+    "rule": "Every time-sensitive lower-field assessment separates evidence date, current posture and severity.",
+    "states": {
+      "historical": "past documented relation; no present-tense continuation implied",
+      "dormant": "no strong recent recurrence, but reactivation remains plausible",
+      "active": "recent evidence shows the mechanism/relation operating",
+      "escalating": "recent evidence shows increasing frequency, reach, severity, access or coercive capacity",
+      "repairing": "documented correction, disengagement, restitution, institutional change or other repair underway",
+      "closed": "documented stopping, settlement, release or non-liability condition",
+      "unknown": "insufficient recent evidence to assign current posture"
+    },
+    "anti_score_rule": "Do not collapse currentness and severity into one timeless danger score."
   }
 }
