@@ -193,12 +193,21 @@ jobs:
           python scripts/build_bible_study.py
           python scripts/check_bible_static_dynamic_parity.py
           python scripts/build_bible_comparator_quality.py
+          python scripts/audit_bible_tim_side_quality.py
       - name: Upload Bible comparator quality report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: bible-comparator-quality-report
           path: knowledge/indexes/bible-comparator-quality-report.json
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Upload Tim-side Bible quality report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tim-side-bible-quality-report
+          path: knowledge/research/bible-tim-side-quality-audit.json
           if-no-files-found: warn
           retention-days: 7
       - name: Compile and validate science paper library
