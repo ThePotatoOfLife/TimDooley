@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "updated": "2026-09-19",
+  "updated": "2026-10-02",
   "authority": "below-basin-pathways",
   "purpose": "Operational routes through the Below Basin. These routes show how the same basin changes when the reader asks a different question. They are teaching paths, not claims that every case follows every step.",
   "modes": [
@@ -272,5 +272,85 @@
     "No route may skip provenance/status separation when serious allegations are involved.",
     "Repair is not deletion of history.",
     "A path may terminate in rejection or legitimate separation; not every case ends in reconciliation."
-  ]
+  ],
+  "journey_spine": {
+    "purpose": "Give the lower layer one reader-facing sequence. Each stage owns a different question so Below, Farm/Sektur, Roots/Evidence and Forge/Repair stop competing as parallel encyclopedias.",
+    "stages": [
+      {
+        "stage": 1,
+        "id": "observe",
+        "label": "Observe / Orient",
+        "owner": "below/index.html",
+        "question": "What kind of relation or lower-field condition am I actually looking at?",
+        "work": [
+          "identify roles without essentializing people",
+          "separate field observation from inherited frame",
+          "choose the relevant basin mode",
+          "locate the possible exit"
+        ],
+        "output": "a bounded field question"
+      },
+      {
+        "stage": 2,
+        "id": "reproduction",
+        "label": "Reproduction / Farm",
+        "owner": "shadow-farm/index.html",
+        "question": "What makes the relation repeat, branch, recruit attention or become harvestable?",
+        "work": [
+          "map audience and infrastructure",
+          "identify yield and incentives",
+          "trace role learning and narrative escalation",
+          "model Tree of Strife seed production"
+        ],
+        "output": "a mechanism map"
+      },
+      {
+        "stage": 3,
+        "id": "roots",
+        "label": "Roots / Evidence",
+        "owner": "rooms/archive-sources/index.html",
+        "question": "Where did the material come from, what moved, and what survives source recovery?",
+        "work": [
+          "recover primary wording",
+          "restore chronology",
+          "measure witness distance",
+          "separate independent corroboration from copies",
+          "attach corrections and currentness"
+        ],
+        "output": "a provenance-backed record"
+      },
+      {
+        "stage": 4,
+        "id": "forge",
+        "label": "Forge / Test",
+        "owner": "rooms/research-lab/index.html",
+        "question": "Which interpretation survives comparison, counterevidence, severity and status checks?",
+        "work": [
+          "test competing explanations",
+          "translate metaphor into narrower mechanisms",
+          "grade harm and legal/status claims",
+          "reject unsupported escalation"
+        ],
+        "output": "a bounded finding, bounded uncertainty or explicit rejection"
+      },
+      {
+        "stage": 5,
+        "id": "return",
+        "label": "Repair / Return",
+        "owner": "below/index.html#below-exit-routes",
+        "question": "What can now come back upward as protection, correction, release, teaching or cultivation?",
+        "work": [
+          "define stopping conditions",
+          "restore authorship or context",
+          "design repair or boundary",
+          "preserve memory without permanent role-lock",
+          "hand capability outward"
+        ],
+        "output": "knowledge with an exit and a future use"
+      }
+    ],
+    "project_vertical": "higher seat / wider vantage → Root descends → source is recovered → Forge tests → useful material returns upward",
+    "tim_role": "Within project mythology Tim is not classified as a Mud inhabitant by this journey. The Father/Judge/Gardener vantage is source-facing while Root supplies contact with buried material. The route describes investigative reach and return, not a claim that the observer belongs to every condition observed.",
+    "biblical_neighbor": "Psalm 40:2 supplies the project's central mire-to-footing image: lower condition → extraction → stable standing → established movement."
+  }
 }
