@@ -8,6 +8,7 @@ small public-only capability projections that should not mutate legacy source st
 """
 from __future__ import annotations
 
+import hashlib
 import html
 import re
 from pathlib import Path
@@ -15,14 +16,27 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
 
+SHARED_ASSET_NAMES = (
+    "site-system.css",
+    "site-access.css",
+    "site-access.js",
+    "site-elevator.css",
+    "site-elevator.js",
+    "house-journey.js",
+    "body-relational-lens.js",
+)
+
+
+def _shared_asset_version(asset: str) -> str:
+    path = ROOT / "app" / asset
+    if not path.is_file():
+        raise FileNotFoundError(f"shared UI asset missing: {path.relative_to(ROOT)}")
+    return hashlib.sha256(path.read_bytes()).hexdigest()[:12]
+
+
 SHARED_ASSET_VERSIONS = {
-    "site-system.css": "20260926a",
-    "site-access.css": "20260926b",
-    "site-access.js": "20260926d",
-    "site-elevator.css": "20260929e",
-    "site-elevator.js": "20260930a",
-    "house-journey.js": "20260929c",
-    "body-relational-lens.js": "20260926c",
+    asset: _shared_asset_version(asset)
+    for asset in SHARED_ASSET_NAMES
 }
 
 ROOT_BRANCH_HREF = re.compile(
@@ -264,7 +278,7 @@ def _has_asset_reference(text: str, asset: str) -> bool:
 
 
 def normalize_shared_asset_versions(text: str) -> str:
-    """Keep shared UI asset attributes on one build generation."""
+    """Stamp shared UI asset attributes with deterministic content-derived versions."""
     for asset, version in SHARED_ASSET_VERSIONS.items():
         pattern = rf'''(?P<head>\b(?:href|src)\s*=\s*["'][^"']*app/{re.escape(asset)})(?:\?v=[A-Za-z0-9._-]+)?(?P<tail>["'])'''
         text = re.sub(
