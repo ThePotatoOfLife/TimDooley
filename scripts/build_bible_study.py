@@ -78,6 +78,8 @@ def render(row: dict, fragments: dict[str, list[dict]]) -> str:
         f'<blockquote class="project-quote source-wording">{esc(text)}<cite>{esc(wording_label)}</cite></blockquote>'
         for text in source_wording[:3]
     )
+    if not wording_html:
+        wording_html = '<div class="source-gap"><strong>Source-near wording:</strong> No direct/public/recovered Tim-side wording is attached yet. Treat the project-side text below as synthesis until a closer source is recovered.</div>'
     project_context = row.get("project_context") or row.get("project_anchor")
     project_development = row.get("project_development")
     project_sequence = [str(x).strip() for x in arr((argument or {}).get("project_sequence")) if str(x).strip()]
