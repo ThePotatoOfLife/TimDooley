@@ -50,6 +50,9 @@ def main()->int:
         "Translate the rhetoric into testable mechanisms",
         'id="harm-literacy"',
         "Serious words need serious evidence",
+        'id="audience-infrastructure"',
+        "The middle layer: audience and infrastructure",
+        "distributed Farm loop",
     ):
         if marker not in below:
             errors.append(f"Below orientation missing marker: {marker}")
@@ -95,6 +98,20 @@ def main()->int:
     for marker in ('id="current-state-protocol"',"Read the event before the role","Then ask what is true now"):
         if marker not in cia:
             errors.append(f"CIA missing current-state marker: {marker}")
+
+    audience_atlas_path=ROOT/"knowledge/world/lower-field-audience-infrastructure-role-atlas.json"
+    if not audience_atlas_path.is_file():
+        errors.append("missing lower-field audience/infrastructure atlas")
+    else:
+        try:
+            audience_atlas=json.loads(audience_atlas_path.read_text(encoding="utf-8"))
+        except Exception as exc:
+            errors.append(f"audience/infrastructure atlas invalid JSON: {exc}")
+            audience_atlas={}
+        if len(audience_atlas.get("audience_roles",[])) < 10:
+            errors.append("audience/infrastructure atlas needs distributed audience roles")
+        if len(audience_atlas.get("infrastructure_functions",{})) < 6:
+            errors.append("audience/infrastructure atlas needs infrastructure functions")
 
     archetype_atlas_path=ROOT/"knowledge/world/lower-field-archetype-harm-literacy-atlas.json"
     if not archetype_atlas_path.is_file():
