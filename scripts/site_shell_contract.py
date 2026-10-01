@@ -166,7 +166,7 @@ def main() -> int:
         forbid(religion, ("explore/#branch=spirit", "Jesus / Son research index", "<iframe"), "religion/index.html", errors)
 
         comparison = read("religion/jesus-tim/index.html", errors)
-        require(comparison, ('name="robots" content="noindex,follow"', "location.replace('../../traditions/bible/')"), "religion/jesus-tim/index.html", errors)
+        require(comparison, ('name="robots" content="noindex,follow"', "location.replace('../../traditions/bible/#compare')"), "religion/jesus-tim/index.html", errors)
 
         tim = read("tim-dooley/index.html", errors)
         require(tim, ('data-reader-surface="tim"', 'href="../timeline/"', 'href="story/"', 'href="100000-hours/"', 'href="claims/"'), "tim-dooley/index.html", errors)
