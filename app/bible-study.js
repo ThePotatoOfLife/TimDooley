@@ -141,13 +141,6 @@ async function init(){
   const ensureActive=sequence=>{if(!sequence.length){state.activeId='';return -1}let index=sequence.findIndex(row=>row.id===state.activeId);if(index<0){index=0;state.activeId=sequence[0].id}return index};
   const sequenceLabel=()=>({story:'core story order',asc:'oldest → newest',desc:'newest → oldest',strength:'strongest first',bible:'Genesis → Revelation'})[state.order]||state.order;
 
-  function relationLibraryTarget(row){
-    const ref=asArray(row?.biblical_refs)[0]||'';
-    const match=String(ref).match(/^((?:[1-3]\s+)?[A-Za-z]+(?:\s+[A-Za-z]+)?)\s+(\d+)/);
-    if(!match)return null;
-    const name=match[1].toLowerCase(),aliases={'psalm':'psalms','song of songs':'song-of-solomon','song of solomon':'song-of-solomon'};
-    return {book:aliases[name]||name.replace(/\s+/g,'-'),chapter:Number(match[2])||1,reference:ref};
-  }
   function syncUrlState(){const url=new URL(location.href);url.searchParams.set('focus',state.focus);url.searchParams.set('order',state.order);if(state.activeId)url.searchParams.set('id',state.activeId);else url.searchParams.delete('id');if(state.query)url.searchParams.set('q',state.query);else url.searchParams.delete('q');url.searchParams.delete('view');history.replaceState(null,'',url)}
   function renderResultsList(sequence,index){$('results-list').innerHTML=sequence.length?sequence.map((row,i)=>{const sourced=exactAvailable(row,evidence);return `<button type="button" class="result-item${i===index?' is-active':''}" data-result-id="${esc(row.id)}"><span class="result-index">${String(i+1).padStart(2,'0')}</span><span class="result-title">${esc(row.title)}</span><span class="result-quality ${sourced?'is-sourced':'is-synthesis'}">${sourced?'source wording':'synthesis'}</span><span class="result-date">${esc(row.date||'')}</span></button>`}).join(''):'<div class="empty">No results in this sequence.</div>'}
   function render(){const sequence=orderedRows(),index=ensureActive(sequence),row=index>=0?sequence[index]:null;$('active-view').textContent=focusLabel(state.focus);$('study-count').textContent=`${sequence.length} matching this focus · ${rows.length} total canonical comparisons`;$('result-count').textContent=String(sequence.length);$('filter-count').textContent=String(filterCount());$('result-position').textContent=sequence.length?`${index+1} / ${sequence.length}`:'0 / 0';$('sequence-label').textContent=sequenceLabel();$('previous-relation').disabled=index<=0;$('next-relation').disabled=index<0||index>=sequence.length-1;activeEl.innerHTML=renderActiveRelation(row,fragmentMap,evidence,sequence);renderResultsList(sequence,index);document.documentElement.classList.add('js-ready');if(staticEl)staticEl.setAttribute('aria-hidden','true');syncUrlState()}

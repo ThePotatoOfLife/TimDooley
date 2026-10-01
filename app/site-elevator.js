@@ -257,20 +257,23 @@
       });
     };
 
-    const enforceFloorLocalPageNavigation=()=>{
-      if(!projection||!roomContract)return;
-      enforceFloorLocalLinks([
-        'main > nav.page-nav a[href]',
-        'main > nav.nav a[href]',
-        'main > header nav a[href]',
-        'main .page-header > nav a[href]',
-        'main nav.room-floor-nav a[href]'
-      ].join(', '));
-    };
+    const FLOOR_LOCAL_LINK_SELECTOR=[
+      'main > nav.page-nav a[href]',
+      'main > nav.nav a[href]',
+      'main > header nav a[href]',
+      'main .page-header > nav a[href]',
+      '.door-grid a[href]',
+      '.room-actions a[href]',
+      '.deep a[href]',
+      '.deep-links a[href]',
+      '.dwelling-links a[href]',
+      '.adj-grid a[href]',
+      '.side-routes a[href]'
+    ].join(', ');
 
-    const enforceFloorLocalSecondaryNavigation=()=>{
+    const enforceFloorLocalNavigation=()=>{
       if(!projection||!roomContract)return;
-      enforceFloorLocalLinks('.door-grid a[href], .room-actions a[href], .deep a[href], .deep-links a[href], .dwelling-links a[href], .adj-grid a[href], .side-routes a[href]');
+      enforceFloorLocalLinks(FLOOR_LOCAL_LINK_SELECTOR);
     };
 
     const render=(direction='')=>{
@@ -368,8 +371,7 @@
       header.dataset.elevatorReady='true';
       header.setAttribute('aria-busy','false');
       render('hydrate');
-      enforceFloorLocalPageNavigation();
-      enforceFloorLocalSecondaryNavigation();
+      enforceFloorLocalNavigation();
     }).catch(()=>{
       header.dataset.elevatorReady='error';
       header.setAttribute('aria-busy','false');

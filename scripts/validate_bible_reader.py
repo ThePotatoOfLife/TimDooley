@@ -197,6 +197,13 @@ def main() -> int:
         'app/bible-library.css', errors,
     )
 
+    forbid(
+        library_app,
+        ("bible:relation-reference", "function relationReference", "relationReference("),
+        "app/bible-library.js",
+        errors,
+    )
+
     require(
         app,
         (

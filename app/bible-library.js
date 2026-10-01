@@ -147,23 +147,6 @@ function selectBook(id,chapter=1,update=true){
 }
 
 
-function relationReference(reference){
-  const raw=String(reference||'').trim();
-  const match=raw.match(/^((?:[1-3]\s+)?[A-Za-z]+(?:\s+[A-Za-z]+)?)\s+(\d+)/);
-  if(!match||!state.catalog)return false;
-  const wanted=match[1].toLowerCase();
-  const aliases={'psalm':'psalms','song of songs':'song-of-solomon','song of solomon':'song-of-solomon'};
-  const id=aliases[wanted]||wanted.replace(/\s+/g,'-');
-  const chapter=Number(match[2])||1;
-  if(!state.catalog.books.some(book=>book.id===id))return false;
-  selectBook(id,chapter,false);
-  return true;
-}
-
-window.addEventListener('bible:relation-reference',event=>{
-  relationReference(event.detail?.reference);
-});
-
 function openSelected(){
   if(!state.selected||!webReadable(state.selected))return;
   window.BibleScriptureReader?.openReference(`${state.selected.name} ${state.chapter}`);

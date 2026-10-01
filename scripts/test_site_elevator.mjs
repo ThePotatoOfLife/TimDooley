@@ -249,14 +249,16 @@ assert.ok(source.includes('role="group" aria-label="Change House floor"'),'floor
 assert.ok(source.includes("'Move to '+levelLabel(upTarget"),'up control should announce its destination floor');
 assert.ok(source.includes("'Move to '+levelLabel(downTarget"),'down control should announce its destination floor');
 assert.ok(source.includes("'ORIENTATION OFFLINE'"),'failed governance hydration needs a visible fallback state');
-assert.ok(source.includes('const enforceFloorLocalPageNavigation='),'runtime must enforce floor-local page/header navigation');
+assert.ok(source.includes('const FLOOR_LOCAL_LINK_SELECTOR='),'runtime must own one floor-local link selector for page and secondary navigation');
+assert.ok(source.includes('const enforceFloorLocalNavigation='),'runtime must enforce floor boundaries through one shared pass');
 assert.ok(source.includes("'main > nav.page-nav a[href]'"),'page navigation must participate in floor-boundary enforcement');
 assert.ok(source.includes("'main > header nav a[href]'"),'header-local navigation must participate in floor-boundary enforcement');
+assert.ok(source.includes("'.door-grid a[href]'"),'secondary Room doors must participate in the shared floor-boundary selector');
+assert.ok(source.includes("'.side-routes a[href]'"),'secondary side routes must participate in the shared floor-boundary selector');
+assert.ok(source.includes('enforceFloorLocalLinks(FLOOR_LOCAL_LINK_SELECTOR)'),'all local navigation must use the same floor filter');
+assert.ok(source.includes('enforceFloorLocalNavigation();'),'shared floor filtering must run after spatial hydration');
 assert.ok(source.includes("link.hidden=true"),'cross-floor page/header links must be hidden rather than offered as ordinary doors');
 assert.ok(source.includes("link.dataset.elevatorFloorHidden='true'"),'runtime must only unhide links that it hid for floor enforcement');
-assert.ok(source.includes('const enforceFloorLocalSecondaryNavigation='),'runtime must enforce the same floor boundary on secondary navigation grids');
-assert.ok(source.includes("enforceFloorLocalLinks('.door-grid a[href], .room-actions a[href], .deep a[href], .deep-links a[href], .dwelling-links a[href], .adj-grid a[href], .side-routes a[href]')"),'secondary navigation must use the same floor-local filter as page navigation');
-assert.ok(source.includes('enforceFloorLocalSecondaryNavigation();'),'secondary floor filtering must run after spatial hydration');
 assert.ok(source.includes('const crossFloor=target.levelId!==spatial.levelId'),'floor enforcement must compare every local door against the page floor');
 
 console.log('Site elevator resolver + visual contract passed.');
