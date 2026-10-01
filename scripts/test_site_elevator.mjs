@@ -252,8 +252,9 @@ assert.equal(source.includes('ROOM PROJECTION · ENTER VIA'),false,'single-floor
 assert.ok(source.includes("'BROWSING FLOOR'"),'non-actual floor must be clearly marked as browsing');
 assert.ok(source.includes("data-elevator-level','pending"),'pre-hydration header must not falsely present Plane');
 assert.ok(source.includes('Finding your Room…'),'pre-hydration header needs a neutral orientation label');
-assert.ok(source.includes("sessionStorage.getItem(key)"),'elevator governance data should be cached per deployed asset version');
-assert.ok(source.includes("cache:'no-cache'"),'first governance fetch should revalidate rather than bypass all caching');
+assert.equal(source.includes("sessionStorage.getItem(key)"),false,'elevator governance data must not be pinned to stale session data');
+assert.ok(source.includes("cache:'no-store'"),'governance fetch should always read the currently deployed floor data');
+assert.ok(source.includes('House topology changes independently of this JavaScript asset'),'runtime should document why governance data bypasses the old asset-version session cache');
 assert.ok(source.includes("requestAnimationFrame(publishClearance)"),'every render must republish top clearance after Room wrapping');
 assert.ok(source.includes("setAttribute('aria-busy','true')"),'loading header should expose busy state');
 assert.ok(source.includes('const runtimeScript='),'elevator must capture its script URL before deferred context can disappear');
