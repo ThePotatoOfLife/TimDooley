@@ -1,8 +1,8 @@
 {
   "id": "information-ecology-mechanics-atlas",
   "title": "Information Ecology Mechanics — Attention, Repetition, Memory, Correction and Forgetting",
-  "version": "1.0.0",
-  "updated": "2026-09-18",
+  "version": "1.1.0",
+  "updated": "2026-10-02",
   "owner_room": "information-ecology",
   "purpose": "Describe how information survives, spreads, mutates, concentrates, disappears and becomes collective memory across people, platforms, institutions and archives.",
   "unit_of_analysis": "A claim/object plus its copies, framings, audiences, corrections, sources and memory traces.",
@@ -150,6 +150,41 @@
     "memory-recovery",
     "subculture-group-formation",
     "culture-ontology",
-    "below-intelligence-shadow-observatory"
-  ]
+    "below-intelligence-shadow-observatory",
+    "lower-field-orientation",
+    "roots-evidence",
+    "digital-memory-forgetting-restoration"
+  ],
+  "lower_state_crosswalk": {
+    "artifact_history": "Dated preservation of an event/object without implying current activity.",
+    "Mud": "Context-poor, status-mixed or unresolved residue that remains active in interpretation.",
+    "Root": "Traceable provenance that still supports a present relation, claim, obligation or understanding.",
+    "Swamp": "Coupled archive/repetition regime in which old unresolved representations materially govern new interpretation.",
+    "Soil": "Sourced and integrated memory that can nourish future judgment without requiring recurrence of the old conflict.",
+    "Seed_return": "Portable lesson or capability produced after provenance, correction and currentness work."
+  },
+  "orphaned_information": {
+    "definition": "A circulating information object whose source, chronology, speaker, correction, scope or living-current context has become weak enough that interpretation outruns parentage.",
+    "not_equal_to": "false information",
+    "repair": [
+      "restore source lineage",
+      "attach date/sequence",
+      "link corrections and superseding records",
+      "separate historical from current identity",
+      "make the repaired context retrievable beside the fragment"
+    ]
+  },
+  "currentness_contract": {
+    "principle": "Historical truth and current identity are different propositions.",
+    "fields": [
+      "event_date",
+      "publication_date",
+      "last_verified",
+      "current_status",
+      "superseded_by",
+      "correction_state",
+      "present_relevance"
+    ],
+    "role_expiry": "A durable role must have a representable path to changed status; otherwise archive persistence becomes identity lock."
+  }
 }
