@@ -14,14 +14,14 @@ const roomContract=(await import('../data/house/rooms.json',{with:{type:'json'}}
 const subroomContract=(await import('../data/house/subrooms.json',{with:{type:'json'}})).default;
 
 const cases=[
-  ['/', 'plane', 'potatoverse-canon'],
-  ['/tim-dooley/', 'plane', 'potatoverse-canon'],
+  ['/', 'plane', null],
+  ['/tim-dooley/', 'plane', null],
   ['/potato-of-life/', 'heaven', 'potatoverse-canon'],
   ['/religion/', 'heaven', 'traditions-texts'],
   ['/science/', 'plane', 'science-formal-models'],
   ['/politics/', 'plane', 'world-systems'],
   ['/context/culture/', 'plane', 'culture-information'],
-  ['/shadow-farm/', 'below', 'culture-information'],
+  ['/shadow-farm/', 'below', null],
   ['/context/source-authority/', 'below', 'archive-sources'],
   ['/research-lab/', 'below', 'research-lab'],
   ['/works/', 'heaven', 'works'],
@@ -34,7 +34,7 @@ const cases=[
   ['/world-map/', 'plane', 'world-systems'],
   ['/world-systems/', 'plane', 'world-systems'],
   ['/context/', 'below', 'archive-sources'],
-  ['/corporium/', 'plane', 'potatoverse-canon'],
+  ['/corporium/', 'plane', null],
   ['/axis/', 'heaven', 'potatoverse-canon'],
   ['/north/', 'heaven', null],
   ['/traditions/bible/', 'heaven', 'traditions-texts'],
