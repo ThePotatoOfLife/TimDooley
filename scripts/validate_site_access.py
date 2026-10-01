@@ -130,11 +130,19 @@ if "data-house-journey-style" not in journey_ui:
     errors.append("House journey stylesheet loader missing: data-house-journey-style")
 if "style.textContent" in journey_ui or "createElement('style')" in journey_ui:
     errors.append("House journey runtime must not inject component CSS")
-if '_has_asset_reference(text, "site-access.css")' not in patcher or '_has_asset_reference(text, "site-access.js")' not in patcher:
+if '_has_asset_reference(text, "site-access.css")' not in patch or '_has_asset_reference(text, "site-access.js")' not in patch:
     errors.append("site-access injector must repair partial CSS/JS coverage using real asset references")
-for asset in ("house-journey.js","body-relational-lens.js"):
-    if not re.search(rf'"{re.escape(asset)}"\s*:\s*"[A-Za-z0-9._-]+"', patch):
+for asset in (
+    "site-system.css","site-access.css","site-access.js","site-elevator.css",
+    "site-elevator.js","house-journey.js","body-relational-lens.js",
+):
+    if f'"{asset}"' not in patch:
         errors.append(f"shared asset registry does not version runtime: {asset}")
+for marker in ("SHARED_ASSET_NAMES", "hashlib.sha256", "read_bytes()", "_shared_asset_version"):
+    if marker not in patch:
+        errors.append(f"shared asset versioning must be content-derived: missing {marker}")
+if re.search(r'"site-elevator\.js"\s*:\s*"20\d{6}', patch):
+    errors.append("shared asset versions must not return to hand-maintained date strings")
 if "(?:href|src)" not in patch or "match.group(\"head\")" not in patch:
     errors.append("shared asset version normalizer must be scoped to href/src attributes")
 
