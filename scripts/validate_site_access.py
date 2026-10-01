@@ -48,7 +48,7 @@ for token in ("inject_site_access","patch_site_access","app/site-access.css","ap
         errors.append(f"public navigation projection missing marker: {token}")
 
 entries={row.get("id"):row for row in contract.get("entries",[]) if isinstance(row,dict) and row.get("id")}
-for required_id in ("news","world-map","tim","house","rooms","cia-character-archive","mud-bank","intelligence-cia","economy","tts","claims","public-witness","bible-comparison","hours"):
+for required_id in ("news","world-map","tim","house","rooms","cia-character-archive","mud-bank","intelligence-cia","economy","tts","claims","public-witness","below","bible-comparison","hours"):
     if required_id not in entries:
         errors.append(f"site-access contract missing curated entry: {required_id}")
 required_aliases={
@@ -60,6 +60,7 @@ required_aliases={
     "claims":("claims","statements"),
     "public-witness":("public witness","public record"),
     "bible-comparison":("bible comparison","jesus","jesus son","son","thomas","crucifixion","resurrection"),
+    "below":("lower field","lower field orientation","swamp","participant observer","repair","exit"),
 }
 for entry_id,aliases in required_aliases.items():
     hay=" ".join(str(x).lower() for x in entries.get(entry_id,{}).get("aliases",[]))
