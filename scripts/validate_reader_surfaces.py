@@ -231,11 +231,11 @@ def main() -> int:
     compare_pos = bible.find('id="compare"')
     study_pos = bible.find('id="study-tool"')
     story_pos = bible.find('id="story-first"')
-    masthead_pos = bible.find('class="comparison-masthead"')
-    if not (0 <= study_pos < compare_pos < masthead_pos < story_pos):
-        errors.append("Bible study shell must own the first substantive reader surface")
-    if 'class="bible-header"' in bible or 'class="tool-intro"' in bible:
-        errors.append("Bible page must not put legacy hero/tool-intro blocks ahead of Tim/Son")
+    toolbar_pos = bible.find('class="reader-toolbar"')
+    if not (0 <= study_pos < compare_pos < toolbar_pos < story_pos):
+        errors.append("Bible study shell must begin with the comparator controls")
+    if 'class="bible-header"' in bible or 'class="tool-intro"' in bible or 'class="comparison-masthead"' in bible:
+        errors.append("Bible page must not put a hero/introduction block ahead of the comparator controls")
     require(bible_js, 'class="tim-first"', "app/bible-study.js", errors)
     require(bible_js, 'class="bible-under"', "app/bible-study.js", errors)
     require_absent(bible, 'class="featured-arcs"', "traditions/bible/index.html", errors)
