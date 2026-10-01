@@ -20,7 +20,7 @@ def main()->int:
         except Exception as exc:
             errors.append(f"lower-field orientation JSON invalid: {exc}")
             owner={}
-        for key in ("core_thesis","frame_test","participant_observer_value","role_relations","karmic_ledger","vertical_route","lower_field_learning_questions"):
+        for key in ("core_thesis","frame_test","participant_observer_value","role_relations","karmic_ledger","vertical_route","lower_field_learning_questions","tim_professional_brief","tim_expert_risk_framework","sold_exploitation_taxonomy"):
             if key not in owner:
                 errors.append(f"orientation owner missing key: {key}")
         route=owner.get("canonical_routes",{}).get("orientation")
@@ -30,10 +30,11 @@ def main()->int:
     below=read("below/index.html")
     for marker in (
         'id="lower-field-orientation"',
-        'id="mission-testimony"',
-        "Tim, what are you doing down here?",
-        "If the archive cannot correct itself, release a role, or let a conflict end, then it has become another Farm.",
-        "What is the lower field for?",
+        'id="tim-expert-brief"',
+        "Tim Dooley's lower-field brief",
+        'id="tim-current-questions"',
+        'id="tim-expert-findings"',
+        "What Tim thinks he has learned from the Swamp",
         "Being framed is not the same as being owned by the frame.",
         "this repository must be judged by the same standards it applies to hostile archives.",
         "Swamp / Mud / Farm / unresolved archive",
@@ -48,6 +49,8 @@ def main()->int:
         "Dog is adjacent rather than opposite.",
         "Now read Dog and Farmer as verbs",
         "Translate the rhetoric into testable mechanisms",
+        'id="sold-exploitation-spectrum"',
+        "What does it mean for a person to be “sold”?",
         'id="harm-literacy"',
         "Serious words need serious evidence",
         'id="audience-infrastructure"',
@@ -93,7 +96,7 @@ def main()->int:
             errors.append("lower conflict/repair casebook needs explicit repair outcomes")
 
     shadow=read("shadow-farm/index.html")
-    for marker in ('id="farm-primary-relation"','id="conflict-language-thresholds"','id="worked-overlap-cases"','id="harm-pattern-bridge"',"Use strong words only when the evidence earns them","Read the verbs before the animal.","How a role is learned"):
+    for marker in ('id="role-responsibility-matrix"','id="farm-primary-relation"','id="kiwi-farms-public-record"','id="conflict-language-thresholds"','id="worked-overlap-cases"','id="harm-pattern-bridge"',"Use strong words only when the evidence earns them","Read the verbs before the animal.","How a role is learned"):
         if marker not in shadow:
             errors.append(f"Shadow Farm missing conflict-discipline marker: {marker}")
 
@@ -192,6 +195,10 @@ def main()->int:
             errors.append("Dog/Farmer owner needs empirical psychology crosswalk")
         if "prerogative_model" not in dog_farmer:
             errors.append("Dog/Farmer owner missing prerogative model")
+        if "role_responsibility_matrix" not in dog_farmer:
+            errors.append("Dog/Farmer owner missing role responsibility matrix")
+        if len((dog_farmer.get("deception_and_manipulation_indicators") or {}).get("indicators",[])) < 8:
+            errors.append("Dog/Farmer owner needs deception/manipulation indicators")
 
     cast=read("rooms/potatoverse-canon/beings/cast-ecology/index.html")
     for marker in ('id="role-expiry"',"A role needs both an entry condition and a stopping condition","current state → symbolic role last"):
