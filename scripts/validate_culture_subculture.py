@@ -31,6 +31,8 @@ def main()->int:
         "A role-name can behave like a miniature algorithm",
         'id="ritual-to-norm"',
         "Ritualized scripts can become norms without anyone writing a rulebook",
+        'id="information-control-stack"',
+        "Who controls the story depends on where in the chain they have leverage",
     ):
         if marker not in page:
             errors.append(f"Culture reader missing field-model marker: {marker}")
