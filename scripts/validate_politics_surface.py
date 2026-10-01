@@ -35,7 +35,10 @@ def main()->int:
         if marker not in page:
             errors.append(f"politics/index.html missing marker: {marker}")
 
-    if page.find("~2015") > page.find("2026-01-15"):
+    early_index=page.find("~2015")
+    later_candidates=[i for i in (page.find("15 January 2026"),page.find("2026-01-15")) if i>=0]
+    later_index=min(later_candidates) if later_candidates else -1
+    if early_index < 0 or later_index < 0 or early_index > later_index:
         errors.append("static politics corpus should present early political history before 2026 material where chronology is intended")
 
     if part1.find("<td>~2015</td>") > part1.find("<td>2026-01-15</td>"):
@@ -77,7 +80,7 @@ def main()->int:
         if politics_family.get("source_recovery_queue")!="knowledge/politics/tim-dooley-politics-source-recovery-queue.json":
             errors.append("canonical-source-map politics source recovery queue is wrong")
 
-    for marker in ('"politics": Strategy(', '"Article"', '"politics",\n        "Tim Dooley politics and geopolitics"', '    "politics",\n    "world",'):
+    for marker in ('"politics": Strategy(', '"Article"', '"Tim Dooley politics and geopolitics"', '"politics": ("world", "north", "economy", "law", "context/source-authority")'):
         if marker not in seo:
             errors.append(f"seo_strategy.py missing Politics first-class route marker: {marker}")
 

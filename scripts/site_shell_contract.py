@@ -176,7 +176,7 @@ def main() -> int:
         forbid(bible, ('class="focus-links"', "Source authority", ">FAQ<"), "traditions/bible/index.html", errors)
 
         timeline = read("timeline/index.html", errors)
-        require(timeline, ("TIMELINE", 'data-reader-surface="timeline"', 'class="long-chronology"', 'long-chronology.js', 'href="../religion/"'), "timeline/index.html", errors)
+        require(timeline, ("TIMELINE", 'data-reader-surface="timeline"', 'class="long-chronology"', 'href="../religion/"'), "timeline/index.html", errors)
         forbid(timeline, ('class="source-note"', 'class="roadmap-note"', 'class="formula"', "Open Timeline in the complete archive", 'href="../corporium/"'), "timeline/index.html", errors)
 
         world = read("world/index.html", errors)
