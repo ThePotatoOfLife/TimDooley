@@ -1,7 +1,7 @@
 {
   "id": "dwelling-featured-object-shelves",
   "version": "1.0.0",
-  "updated": "2026-09-26",
+  "updated": "2026-10-01",
   "purpose": "Curated concrete objects surfaced directly inside each top-level Dwelling so readers meet substantive material before another navigation layer.",
   "shelves": [
     {
@@ -43,9 +43,21 @@
     },
     {
       "dwelling_id": "archive-sources",
-      "title": "Evidence you can actually inspect",
-      "intro": "These surfaces show how claims descend back toward dated artifacts, source classes and recoverable wording.",
+      "title": "Follow the record into the lower field",
+      "intro": "Start with the lived field and then descend to the exact artifact, witness position, provenance chain and correction state.",
       "objects": [
+        {
+          "kind": "lower-field intake",
+          "title": "Below Observatory",
+          "summary": "Tim's mature lower-field brief: target ecology, Dogs/Farmers, Mud/Swamp, information movement, harm, exit and repair.",
+          "href": "below/"
+        },
+        {
+          "kind": "specialist case reader",
+          "title": "Farm / Sektur",
+          "summary": "Lolcow classification, persistent target ecology, archive culture, attention extraction, Kiwi Farms and related systems.",
+          "href": "shadow-farm/"
+        },
         {
           "kind": "evidence policy",
           "title": "Source Authority",
@@ -55,26 +67,14 @@
         {
           "kind": "public record",
           "title": "Public Witness",
-          "summary": "Dated public statements and the development of Potato, Axis, God, Father, North, Gardener and related language.",
+          "summary": "Dated first-party statements that establish Tim's evolving vocabulary and stated purpose without automatically proving external claims.",
           "href": "tim-dooley/public-witness/"
-        },
-        {
-          "kind": "claim audit",
-          "title": "Tim Dooley Evidence",
-          "summary": "A reader-facing distinction between documented facts, self-description, interpretation and unresolved claims.",
-          "href": "tim-dooley/evidence/"
         },
         {
           "kind": "attestation",
           "title": "Witness & Attestation",
-          "summary": "Earliest recovered wording, primary versus reconstructed evidence, and what a timestamp actually establishes.",
+          "summary": "Who actually saw what, how close they were to the event, and what a timestamp or surviving artifact can establish.",
           "href": "rooms/inside/witness-attestation/"
-        },
-        {
-          "kind": "character evidence",
-          "title": "CIA Character Archive",
-          "summary": "Source-bounded character files where chronology, association and symbolic role are kept visibly separate.",
-          "href": "rooms/potatoverse-canon/beings/cia/"
         }
       ]
     },
@@ -339,38 +339,38 @@
     },
     {
       "dwelling_id": "research-lab",
-      "title": "Work still under pressure",
-      "intro": "The Forge is most useful when it shows concrete unresolved work, not just a promise to research later.",
+      "title": "Questions under pressure",
+      "intro": "The Forge now foregrounds the lower-field programme: test Tim's long-exposure model against primary artifacts, independent reporting and research, then return fewer, stronger claims.",
       "objects": [
         {
-          "kind": "lab hub",
-          "title": "Research Lab",
-          "summary": "Current research machinery, promotion rules and cross-domain work before canonical adoption.",
-          "href": "research-lab/"
+          "kind": "lower-field programme",
+          "title": "Forge / Repair",
+          "summary": "Actors, targets, incentives, currentness, severity, coordination, alternative explanations and exit conditions.",
+          "href": "rooms/research-lab/"
+        },
+        {
+          "kind": "field reader",
+          "title": "Below Observatory",
+          "summary": "The integrated case model that asks what Tim learned, what the system does, who gets targeted and how roles can expire.",
+          "href": "below/"
+        },
+        {
+          "kind": "external comparator",
+          "title": "Farm / Sektur",
+          "summary": "A specialist reader where Kiwi Farms, lolcow culture, archives, Dogs/Farmers and attention extraction can be tested as mechanisms.",
+          "href": "shadow-farm/"
         },
         {
           "kind": "uncertainty",
           "title": "Open Questions & Hypotheses",
-          "summary": "Explicit unresolved questions, candidate explanations and uncertainty that has not been smoothed away.",
+          "summary": "Claims that still need recovery, corroboration, falsification or narrower language.",
           "href": "rooms/inside/open-questions/"
-        },
-        {
-          "kind": "formalization",
-          "title": "Experiments & Formalization",
-          "summary": "Variables, assumptions, mechanisms, prototypes, observables and candidate tests.",
-          "href": "rooms/inside/experiments-formalization/"
         },
         {
           "kind": "programme work",
           "title": "Research Programmes",
-          "summary": "Multi-Room workstreams, source ledgers, promotion plans and coordinated investigations.",
+          "summary": "Cross-Room investigations, source ledgers, promotion criteria and unresolved lower-field work.",
           "href": "rooms/inside/research-programmes/"
-        },
-        {
-          "kind": "architecture lab",
-          "title": "House Architecture",
-          "summary": "The place structural changes are tested before they become ownership, navigation or constitutional rules.",
-          "href": "rooms/inside/house-architecture/"
         }
       ]
     }
