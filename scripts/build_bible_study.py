@@ -62,11 +62,23 @@ def render(row: dict, fragments: dict[str, list[dict]]) -> str:
     direction = row.get("source_direction") or (row.get("discovery_history") or {}).get("source_direction")
     scene = row.get("scene_context") or {}
     argument = row.get("relation_argument") or {}
-    recovered = [str(x).strip() for x in arr(row.get("recovered_wording")) if str(x).strip()]
-    recovered_html = "".join(
-        f'<blockquote class="project-quote recovered-wording">{esc(text)}<cite>Recovered wording</cite></blockquote>'
-        for text in recovered
+    source_wording = []
+    for value in (
+        *arr(row.get("project_quote")),
+        *arr(row.get("exact_wording")),
+        *arr(row.get("public_wording")),
+        *arr(row.get("recovered_wording")),
+        row.get("quote"),
+    ):
+        text = str(value or "").strip()
+        if text and text not in source_wording:
+            source_wording.append(text)
+    wording_html = "".join(
+        f'<blockquote class="project-quote source-wording">{esc(text)}<cite>Project-side wording</cite></blockquote>'
+        for text in source_wording[:3]
     )
+    project_context = row.get("project_context") or row.get("project_anchor")
+    project_development = row.get("project_development")
     boundary = f'<p><strong>Where it breaks:</strong> {esc(mismatch)}</p>' if mismatch else ""
     direction_html = f'<p><strong>Source direction:</strong> {esc(direction)}</p>' if direction else ""
     scene_html = f'<p><strong>What was happening:</strong> {esc(scene.get("summary"))}</p>' if scene.get("summary") else ""
@@ -77,9 +89,10 @@ def render(row: dict, fragments: dict[str, list[dict]]) -> str:
     return f'''<details class="static-relation" data-static-relation="{esc(row.get('id'))}">
 <summary><strong>{esc(title)}</strong> <span>{esc(meta)}</span></summary>
 <div class="static-relation-body">
+{wording_html}
 {scene_html}
-<p><strong>Project anchor:</strong> {esc(row.get('project_anchor'))}</p>
-{recovered_html}
+<p><strong>What happened / what the project is saying:</strong> {esc(project_context)}</p>
+{f'<p><strong>What it later becomes:</strong> {esc(project_development)}</p>' if project_development else ''}
 <p><strong>Scripture scope:</strong> {esc(scope)}</p>
 {scripture}
 {why_html}
