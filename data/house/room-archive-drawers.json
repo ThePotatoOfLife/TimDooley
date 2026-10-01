@@ -1,7 +1,7 @@
 {
   "id": "room-archive-drawers",
-  "version": "1.2.0",
-  "updated": "2026-09-27",
+  "version": "1.3.0",
+  "updated": "2026-10-01",
   "purpose": "Expose deep canonical corpora from nested Rooms without turning every knowledge record into a featured-object card.",
   "editorial_rule": "A drawer represents a body of work. Representative records are entry points, not rankings or claims that other records are unimportant.",
   "drawers": [
@@ -117,7 +117,7 @@
       "id": "traditions-comparison-corpus",
       "title": "Traditions · texts, scenes and comparison",
       "scope_prefix": "knowledge/traditions/",
-      "record_count": 167,
+      "record_count": 170,
       "room_ids": [
         "bible-christianity",
         "comparative-mythology",
@@ -264,7 +264,7 @@
       "id": "research-programme-corpus",
       "title": "Research · cross-domain synthesis and audits",
       "scope_prefix": "knowledge/research/",
-      "record_count": 59,
+      "record_count": 60,
       "room_ids": [
         "research-programmes",
         "open-questions",
@@ -648,6 +648,34 @@
         }
       ],
       "boundary": "Guides govern reading and editorial direction. They do not become evidence for the subject matter they route."
+    },
+    {
+      "id": "politics-governance-corpus",
+      "title": "Politics · programme, policy and source recovery",
+      "scope_prefix": "knowledge/politics/",
+      "record_count": 2,
+      "room_ids": [
+        "politics-governance",
+        "research-programmes",
+        "provenance-evidence"
+      ],
+      "summary": "Policy-domain structure and source-recovery work for Tim Dooley's political programme, kept separate from broader world-system datasets and from unsupported electoral judgments.",
+      "landing_href": "politics/",
+      "entries": [
+        {
+          "title": "Politics policy-domain index",
+          "path": "knowledge/politics/tim-dooley-politics-policy-domain-index.json"
+        },
+        {
+          "title": "Politics source-recovery queue",
+          "path": "knowledge/politics/tim-dooley-politics-source-recovery-queue.json"
+        },
+        {
+          "title": "Politics reader",
+          "path": "knowledge/politics/tim-dooley-politics-policy-domain-index.json"
+        }
+      ],
+      "boundary": "This drawer organizes Tim's documented political positions, proposals and research gaps. It does not rank candidates, predict elections or convert project proposals into established policy effects."
     }
   ]
 }
