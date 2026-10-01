@@ -34,7 +34,8 @@ def main()->int:
             if href in seen: errors.append(f"{rid}: duplicate featured href {href}")
             seen.add(href)
             if href.startswith(("http://","https://","#")): continue
-            target=ROOT/href.lstrip("/")
+            clean=href.split("#",1)[0].split("?",1)[0]
+            target=ROOT/clean.lstrip("/")
             if target.is_dir(): target=target/"index.html"
             if not target.exists():
                 errors.append(f"{rid}: featured target does not exist: {href}")
