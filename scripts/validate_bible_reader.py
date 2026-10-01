@@ -209,7 +209,15 @@ def main() -> int:
         ),
         "app/bible-study.js", errors,
     )
-    forbid(app,("visible.map(row=>renderRelation","deepMatches(","overlapCount(","deepCandidates","wordScore","refScore","scrollIntoView("),"app/bible-study.js",errors)
+    forbid(
+        app,
+        (
+            "visible.map(row=>renderRelation","deepMatches(","overlapCount(","deepCandidates","wordScore","refScore","scrollIntoView(",
+            "url.searchParams.set('libraryBook'","url.searchParams.set('libraryChapter'","state.focus='view:all'","bible:relation-reference",
+        ),
+        "app/bible-study.js",
+        errors,
+    )
 
     require(
         dossier_app,
