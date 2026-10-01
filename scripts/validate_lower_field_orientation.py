@@ -43,6 +43,9 @@ def main()->int:
         "Diagnosis is unfinished until the relation has a closure path",
         "The creditor is tested too.",
         "lower-field-conflict-repair-casebook.json",
+        'id="dog-farmer-field-guide"',
+        "Dog and Farmer are easier to understand as verbs",
+        "Translate the rhetoric into testable mechanisms",
     ):
         if marker not in below:
             errors.append(f"Below orientation missing marker: {marker}")
@@ -75,7 +78,7 @@ def main()->int:
             errors.append("lower conflict/repair casebook needs explicit repair outcomes")
 
     shadow=read("shadow-farm/index.html")
-    for marker in ('id="conflict-language-thresholds"','id="worked-overlap-cases"',"Use strong words only when the evidence earns them"):
+    for marker in ('id="conflict-language-thresholds"','id="worked-overlap-cases"',"Use strong words only when the evidence earns them","Read the verbs before the animal.","How a role is learned"):
         if marker not in shadow:
             errors.append(f"Shadow Farm missing conflict-discipline marker: {marker}")
 
@@ -88,6 +91,25 @@ def main()->int:
     for marker in ('id="current-state-protocol"',"Read the event before the role","Then ask what is true now"):
         if marker not in cia:
             errors.append(f"CIA missing current-state marker: {marker}")
+
+    dog_farmer_path=ROOT/"knowledge/world/dog-farmer-role-ecology.json"
+    if not dog_farmer_path.is_file():
+        errors.append("missing Dog/Farmer role ecology owner")
+    else:
+        try:
+            dog_farmer=json.loads(dog_farmer_path.read_text(encoding="utf-8"))
+        except Exception as exc:
+            errors.append(f"Dog/Farmer role ecology invalid JSON: {exc}")
+            dog_farmer={}
+        guide=dog_farmer.get("public_field_guide",{})
+        if len(guide.get("dog_action_lexicon",[])) < 10:
+            errors.append("Dog/Farmer owner needs expanded Dog action lexicon")
+        if len(guide.get("farmer_action_lexicon",[])) < 10:
+            errors.append("Dog/Farmer owner needs expanded Farmer action lexicon")
+        if len(guide.get("rhetoric_translation",{})) < 6:
+            errors.append("Dog/Farmer owner needs rhetoric translation")
+        if len(guide.get("empirical_crosswalk",{})) < 5:
+            errors.append("Dog/Farmer owner needs empirical psychology crosswalk")
 
     cast=read("rooms/potatoverse-canon/beings/cast-ecology/index.html")
     for marker in ('id="role-expiry"',"A role needs both an entry condition and a stopping condition","current state → symbolic role last"):
