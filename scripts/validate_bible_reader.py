@@ -248,6 +248,27 @@ def main() -> int:
             scenes = assemble_scenes(ROOT, manifest)
             redirects = load_relation_redirects(ROOT)
             active_ids = {row.get('id') for row in rows}
+            core_story_ids = {
+                'tree-ordeal-hanging-curse-redemption-2011',
+                'yahya-john-lamb-recognition-2016',
+                'crucify-me-hesitation-trial-neighbor-2017',
+                'son-meme-crucifixion-burial-2019-2020',
+                'potato-axis-turning-ladder-2025-04-21',
+                'self-resurrection-witnesses-2025-09-30',
+                'father-after-crucified-son-2025-12-17',
+                'bread-door-tomb-resurrection-2026-04-23',
+                'ladder-door-specialization-2026-05-19',
+                'passover-house-door-lamb-threshold-2026-07-24',
+                'john14-15-house-thomas-way-gardener-vine-sequence-2026-07-23',
+                'son-cornerstone-2026-08-17',
+                'psalm82-gods-sons-mosthigh-justice-test-2026-09-13',
+                'oct1-father-internet-ladder-swamp',
+                'oct1-prophetic-name-witness-deaf-blind',
+                'oct1-jesus-dead-countertext',
+            }
+            missing_core = sorted(core_story_ids - active_ids)
+            if missing_core:
+                errors.append(f"curated Tim/Son core story is missing active relations: {missing_core}")
             if len(rows) < 45:
                 errors.append(f"manifest-defined Bible corpus unexpectedly thin: {len(rows)} active relations")
             if len(scenes) < 10:
