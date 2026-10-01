@@ -78,9 +78,9 @@ Rule: **cultural, spiritual and informational conflict may overlap, but the site
 - [x] **LOWER-WAR-003 · Spiritual-war human boundary:** Religion now explicitly follows the Ephesians “not flesh and blood” boundary so spiritual warfare cannot silently become a permanent demon-label for human opponents.
 - [x] **LOWER-WAR-004 · Culture bridge:** Culture now acknowledges culture-war dynamics while preserving the empirical caution that visible activists/media conflict do not imply a population is uniformly divided into two camps.
 - [x] **LOWER-WAR-005 · Farm interface:** Shadow Farm now distinguishes cultural meaning, spiritual moralization and information manipulation when a conflict crosses media/politics/state interfaces.
-- [ ] **LOWER-WAR-006 · Worked overlap cases:** add 2–3 source-bounded examples where all three layers can be shown without partisan scoring—one internet/subculture case, one religious-cultural case, and one state/non-state information-operation case.
-- [ ] **LOWER-WAR-007 · War-language threshold:** audit lower pages for casual use of “war,” “enemy,” “demon,” “propaganda” and “operation”; require either symbolic labeling or evidence of intent/coordination appropriate to the term.
-- [ ] **LOWER-WAR-008 · Repair outcomes:** connect the three-layer model more explicitly to correction, apology, exit, de-escalation, reconciliation and institutional resilience so the lower site does not end at diagnosis.
+- [x] **LOWER-WAR-006 · Worked overlap cases:** Shadow Farm now carries three source-bounded examples—online harassment/reputation, ritual-abuse moral panic, and the documented Internet Research Agency influence case—each split into cultural, spiritual/moral and informational layers without turning the case into a partisan score.
+- [x] **LOWER-WAR-007 · War-language threshold:** the lower field now has a canonical strong-language threshold for war, information operation, disinformation, propaganda, operation, enemy, demon, cult and ownership; a word-boundary audit tightened remaining loose phrasing in Below.
+- [x] **LOWER-WAR-008 · Repair outcomes:** Below now owns explicit closure states from clarification/correction through harm-stopping, restoration, institutional repair, disengagement, release, non-liability, safe separation or reconciliation; Bank and CIA route into the same grammar.
 
 ## Navigation & findability recovery — 2026-10-01
 
