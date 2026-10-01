@@ -1,6 +1,6 @@
 {
-  "version": "1.8.0",
-  "updated": "2026-09-20",
+  "version": "1.8.1",
+  "updated": "2026-10-01",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
   "principle": "Every substantive knowledge file has at most one primary Room owner. Cross-Room meaning travels through interfaces, collections and references rather than duplicate ownership. Curated navigation/reader/story/corporium material is classified separately.",
@@ -247,7 +247,7 @@
       "title": "Practice & Ethics",
       "dwelling_id": "potatoverse-canon",
       "purpose": "Translate the philosophy into conduct, cultivation, responsibility, boundaries, repair and repeatable practice.",
-      "primary_file_count": 28,
+      "primary_file_count": 30,
       "featured_holdings": [
         {
           "path": "knowledge/core/knowledge-fork-discernment-atlas.json",
@@ -296,6 +296,12 @@
           "id": "gift-preparation-receptivity-sorting",
           "kind": "room holding",
           "basis": "core-topic"
+        },
+        {
+          "path": "knowledge/ethics/practice-ethics-repair-agency-atlas.json",
+          "id": "practice-ethics-repair-agency-atlas",
+          "kind": "repair, agency, procedure and protective-boundaries atlas",
+          "basis": "ethics-topic"
         }
       ],
       "public_surface_ids": [
@@ -390,7 +396,7 @@
       "title": "Witness & Attestation",
       "dwelling_id": "archive-sources",
       "purpose": "Track public wording, first attestation, source-bearing witness, captures and what was actually said or published when.",
-      "primary_file_count": 21,
+      "primary_file_count": 22,
       "featured_holdings": [
         {
           "path": "knowledge/timeline/conversation-archaeology-miscellany-march-september-2026.json",
@@ -439,6 +445,12 @@
           "id": "conversation-archaeology-wave-009-mire-rope-root",
           "kind": "room holding",
           "basis": "timeline-topic"
+        },
+        {
+          "path": "knowledge/archive/witness-attestation-digital-provenance-atlas.json",
+          "id": "witness-attestation-digital-provenance-atlas",
+          "kind": "digital provenance, derivation and authenticity atlas",
+          "basis": "archive-topic"
         }
       ],
       "public_surface_ids": [
@@ -604,7 +616,7 @@
       "title": "Prediction, Revelation & Interpretation Time",
       "dwelling_id": "time-history",
       "purpose": "Separate earliest prediction/revelation wording, event timing, claimed fulfillment and retrospective interpretation.",
-      "primary_file_count": 23,
+      "primary_file_count": 24,
       "featured_holdings": [
         {
           "path": "knowledge/prophecy/mai-mercado-retrospective-karma-interpretation.json",
@@ -653,6 +665,12 @@
           "id": "moloch-moon-cow-precedence-prediction-audit",
           "kind": "room holding",
           "basis": "timeline-topic"
+        },
+        {
+          "path": "knowledge/prophecy/prediction-audit-and-forecast-scoring-atlas.json",
+          "id": "prediction-audit-and-forecast-scoring-atlas",
+          "kind": "forecast audit, scoring and hindsight-control atlas",
+          "basis": "prophecy-family"
         }
       ],
       "public_surface_ids": [
@@ -6387,6 +6405,21 @@
       "path": "knowledge/politics/tim-dooley-political-alignment-map.json",
       "primary_owner_room_id": "politics-governance",
       "basis": "politics-family"
+    },
+    {
+      "path": "knowledge/archive/witness-attestation-digital-provenance-atlas.json",
+      "primary_owner_room_id": "witness-attestation",
+      "basis": "archive-topic"
+    },
+    {
+      "path": "knowledge/ethics/practice-ethics-repair-agency-atlas.json",
+      "primary_owner_room_id": "practice-ethics",
+      "basis": "ethics-topic"
+    },
+    {
+      "path": "knowledge/prophecy/prediction-audit-and-forecast-scoring-atlas.json",
+      "primary_owner_room_id": "prediction-revelation-time",
+      "basis": "prophecy-family"
     }
   ],
   "curated_unowned_paths": [

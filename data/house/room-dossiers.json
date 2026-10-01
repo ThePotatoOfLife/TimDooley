@@ -1,5 +1,5 @@
 {
-  "version": "3.5.3",
+  "version": "3.5.4",
   "updated": "2026-10-01",
   "authority": "house-room-dossiers",
   "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
@@ -811,7 +811,7 @@
       ],
       "epistemic_boundary": "Practice principles do not override medical, legal or domain-specific professional standards.",
       "knowledge_holdings": {
-        "primary_file_count": 28,
+        "primary_file_count": 30,
         "featured": [
           {
             "path": "knowledge/core/knowledge-fork-discernment-atlas.json",
@@ -860,6 +860,12 @@
             "id": "gift-preparation-receptivity-sorting",
             "kind": "room holding",
             "basis": "core-topic"
+          },
+          {
+            "path": "knowledge/ethics/practice-ethics-repair-agency-atlas.json",
+            "id": "practice-ethics-repair-agency-atlas",
+            "kind": "repair, agency, procedure and protective-boundaries atlas",
+            "basis": "ethics-topic"
           }
         ]
       },
@@ -1371,7 +1377,7 @@
       ],
       "epistemic_boundary": "Attestation proves wording/timing, not the truth of every claim in the wording.",
       "knowledge_holdings": {
-        "primary_file_count": 21,
+        "primary_file_count": 22,
         "featured": [
           {
             "path": "knowledge/timeline/conversation-archaeology-miscellany-march-september-2026.json",
@@ -1420,6 +1426,12 @@
             "id": "conversation-archaeology-wave-009-mire-rope-root",
             "kind": "room holding",
             "basis": "timeline-topic"
+          },
+          {
+            "path": "knowledge/archive/witness-attestation-digital-provenance-atlas.json",
+            "id": "witness-attestation-digital-provenance-atlas",
+            "kind": "digital provenance, derivation and authenticity atlas",
+            "basis": "archive-topic"
           }
         ]
       },
@@ -1993,7 +2005,7 @@
       ],
       "epistemic_boundary": "A later match must not be backdated into an earlier prediction, and project claims remain distinguishable from verified forecasting.",
       "knowledge_holdings": {
-        "primary_file_count": 23,
+        "primary_file_count": 24,
         "featured": [
           {
             "path": "knowledge/prophecy/mai-mercado-retrospective-karma-interpretation.json",
@@ -2042,6 +2054,12 @@
             "id": "moloch-moon-cow-precedence-prediction-audit",
             "kind": "room holding",
             "basis": "timeline-topic"
+          },
+          {
+            "path": "knowledge/prophecy/prediction-audit-and-forecast-scoring-atlas.json",
+            "id": "prediction-audit-and-forecast-scoring-atlas",
+            "kind": "forecast audit, scoring and hindsight-control atlas",
+            "basis": "prophecy-family"
           }
         ]
       },
