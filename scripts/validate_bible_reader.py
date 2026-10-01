@@ -204,8 +204,8 @@ def main() -> int:
             "biblical-syncretism-field.json","biblical-passage-fragments.json","tim-biblical-vocabulary-attestation-ledger.json",
             "reverse-biblical-overlap-timeline-2025-2026.json","rational-potato-x-occurrence-ledger-2024-2026.json","timeline-events.json",
             "BIBLE_BOOK_ORDER","renderActiveRelation","renderResultsList","syncUrlState","selectRelative","relatedRows","ArrowLeft","ArrowRight",
-            "Same-date public wording","Biblical vocabulary / revelation context","Evidence & chronology","Sources & provenance","Related comparisons",
-            "Source-near wording","What happened / what the project is saying","Why this matters / what it later becomes","project_sequence",
+            "Same-date public wording","Biblical vocabulary / revelation context","Evidence & chronology","Provenance & owners","Related comparisons",
+            "Source-near wording",'class="tim-first"','class="bible-under"',"Situation / event","What it later becomes in the project","project_sequence",
             "exact-wording-only","minimum-strength","bible-book","timeline_event_ids",
         ),
         "app/bible-study.js", errors,
@@ -216,14 +216,16 @@ def main() -> int:
         dossier_app,
         (
             "biblical-syncretism-dossiers.json","biblical-syncretism-dossiers-promotions.json","biblical-passage-fragments-dossiers.json",
-            "Two scenes, one structural comparison","Tim / Son scene","Biblical scene","Where the stories rhyme","Where the rhyme stops",
-            "What this comparison can actually establish","Evidence in the open","Modern circumstances","Biblical context","Dating &amp; provenance",
-            "Exact / recovered wording","Timestamp &amp; discovery history","The timestamp establishes when the modern-side material is attested.",
-            "paired-narrative","paired-scenes","dossier-open-evidence","evidence-panel","correspondence-list","relation_argument","scene_context","MutationObserver",
+            "relation_argument","mergeField","mergeFragments","window.fetch",
         ),
         "app/bible-dossier-loader.js", errors,
     )
-    forbid(dossier_app,("scrollIntoView(",),"app/bible-dossier-loader.js",errors)
+    forbid(
+        dossier_app,
+        ("MutationObserver","active-relation","paired-narrative","dossier-open-evidence","scrollIntoView("),
+        "app/bible-dossier-loader.js",
+        errors,
+    )
 
     require(
         mining_app,
