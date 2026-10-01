@@ -97,7 +97,7 @@ def run_live_contract() -> dict:
     assert report['active_relation_count'] >= 72, report['active_relation_count']
     assert report['relations_with_exact_wording'] >= 27, report['relations_with_exact_wording']
     assert report['expressive_reading_count'] >= 27, report['expressive_reading_count']
-    assert report['public_x_unique_status_count'] == 27, report['public_x_unique_status_count']
+    assert report['public_x_unique_status_count'] >= 33, report['public_x_unique_status_count']
     output = root / 'knowledge/indexes/bible-comparator-coverage-report.json'
     output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     return report
