@@ -34,6 +34,7 @@ def main()->int:
         'id="tim-expert-brief"',
         'id="tim-expertise-ledger"',
         'id="tim-dooley-thinks"',
+        'id="tim-thought-development"',
         'id="tim-publicness-endurance"',
         'id="tim-mythic-self-description"',
         'id="field-competencies"',
