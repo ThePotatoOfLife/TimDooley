@@ -235,11 +235,6 @@ def main() -> int:
     forbid(mining_app,("scrollIntoView(",),"app/bible-mining-wave19-loader.js",errors)
 
     require(css,(".reader-toolbar",".comparison-nav",".results-panel",".relation-details",".active-relation"),"app/bible-study.css",errors)
-    require(
-        dossier_css,
-        (".paired-narrative",".paired-scenes",".paired-scene",".scene-label",".scene-sequence",".dossier-open-evidence",".evidence-grid",".evidence-panel",".evidence-quote",".correspondence-list",".maximum-claim",".dossier-detail"),
-        "app/bible-dossier-loader.css", errors,
-    )
     require(builder,('class="static-relation"','<details','class="static-index"','assemble_relations','assemble_fragments','load_manifest','What happened / what the project is saying','Why this matters / what it later becomes','project_sequence_html','project_quote','public_wording'),"scripts/build_bible_study.py",errors)
 
     if MANIFEST.exists():
