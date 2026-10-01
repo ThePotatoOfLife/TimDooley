@@ -44,8 +44,12 @@ def main()->int:
         "The creditor is tested too.",
         "lower-field-conflict-repair-casebook.json",
         'id="dog-farmer-field-guide"',
+        "Farmer ↔ lolcow is the primary Farm pair",
+        "Dog is adjacent rather than opposite.",
         "Dog and Farmer are easier to understand as verbs",
         "Translate the rhetoric into testable mechanisms",
+        'id="harm-literacy"',
+        "Serious words need serious evidence",
     ):
         if marker not in below:
             errors.append(f"Below orientation missing marker: {marker}")
@@ -78,7 +82,7 @@ def main()->int:
             errors.append("lower conflict/repair casebook needs explicit repair outcomes")
 
     shadow=read("shadow-farm/index.html")
-    for marker in ('id="conflict-language-thresholds"','id="worked-overlap-cases"',"Use strong words only when the evidence earns them","Read the verbs before the animal.","How a role is learned"):
+    for marker in ('id="farm-primary-relation"','id="conflict-language-thresholds"','id="worked-overlap-cases"','id="harm-pattern-bridge"',"Use strong words only when the evidence earns them","Read the verbs before the animal.","How a role is learned"):
         if marker not in shadow:
             errors.append(f"Shadow Farm missing conflict-discipline marker: {marker}")
 
@@ -91,6 +95,32 @@ def main()->int:
     for marker in ('id="current-state-protocol"',"Read the event before the role","Then ask what is true now"):
         if marker not in cia:
             errors.append(f"CIA missing current-state marker: {marker}")
+
+    archetype_atlas_path=ROOT/"knowledge/world/lower-field-archetype-harm-literacy-atlas.json"
+    if not archetype_atlas_path.is_file():
+        errors.append("missing lower-field archetype/harm literacy atlas")
+    else:
+        try:
+            archetype_atlas=json.loads(archetype_atlas_path.read_text(encoding="utf-8"))
+        except Exception as exc:
+            errors.append(f"archetype/harm literacy atlas invalid JSON: {exc}")
+            archetype_atlas={}
+        if len(archetype_atlas.get("archetype_field",[])) < 8:
+            errors.append("archetype/harm literacy atlas needs wider archetype field")
+        if len(archetype_atlas.get("harm_literacy",[])) < 8:
+            errors.append("archetype/harm literacy atlas needs serious-harm term boundaries")
+
+    farm_owner_path=ROOT/"knowledge/world/farm-sektur-attention-extraction-ecology.json"
+    if farm_owner_path.is_file():
+        try:
+            farm_owner=json.loads(farm_owner_path.read_text(encoding="utf-8"))
+        except Exception as exc:
+            errors.append(f"farm/sektur ecology invalid JSON: {exc}")
+            farm_owner={}
+        if farm_owner.get("primary_relation_model",{}).get("core_pair")!="Farmer ↔ Cow/lolcow":
+            errors.append("farm/sektur ecology must keep Farmer ↔ Cow/lolcow as primary Farm pair")
+        if "scale_map" not in farm_owner:
+            errors.append("farm/sektur ecology missing scale map")
 
     dog_farmer_path=ROOT/"knowledge/world/dog-farmer-role-ecology.json"
     if not dog_farmer_path.is_file():
