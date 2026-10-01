@@ -353,6 +353,22 @@
   background:rgba(24,14,11,.93);
 }
 .site-elevator-room-rail[hidden]{display:none!important}
+.site-elevator-landmark{
+  border-style:dashed;
+  opacity:.92;
+}
+.site-elevator-landmark::after{
+  content:"FIELD";
+  position:absolute;
+  right:4px;
+  bottom:2px;
+  color:var(--site-elevator-muted);
+  font-size:5.5px;
+  letter-spacing:.08em;
+  opacity:.68;
+}
+.site-elevator-landmark.is-active::after{color:var(--site-elevator-accent);opacity:1}
+
 .site-elevator-room{
   position:relative;
   margin:0;
