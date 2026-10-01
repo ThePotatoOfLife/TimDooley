@@ -23,10 +23,10 @@ const PATHS={
 };
 
 const VIEW_DEFS={
- jesus:{label:'Jesus / Son',terms:['jesus','christ','son','thomas','messiah','lion','lamb','cross','crucif','resurrection','tomb','bread','grain','cornerstone','son of man']},
- 'tim-said':{label:'Tim said it',modes:['tim-explicit','public-occurrence','conversation-recovery','book-explicit']},
- 'tim-lived':{label:'Tim lived it',terms:['tree ordeal','prison','custody','rejected','death','return','burial','root','garden','stone','ladder','carry','orphan']},
- prophecy:{label:'Prophecy / foresight',terms:['prophecy','foresight','prediction','predicted','warning before']},
+ jesus:{label:'Jesus / Gospel parallels',terms:['jesus','christ','son','thomas','messiah','lion','lamb','cross','crucif','resurrection','tomb','bread','grain','cornerstone','son of man']},
+ 'tim-said':{label:'What Tim said',modes:['tim-explicit','public-occurrence','conversation-recovery','book-explicit']},
+ 'tim-lived':{label:'Tim / Son story',terms:['tree ordeal','prison','custody','rejected','death','return','burial','root','garden','stone','ladder','carry','orphan']},
+ prophecy:{label:'Prophecy / public signs',terms:['prophecy','foresight','prediction','predicted','warning before']},
  'father-house':{label:'Father / House',terms:['father','house','gardener','vinedresser','throne','most high','seat','rooms','mansions','source','davidic house']},
  'door-ladder':{label:'Door / Ladder',terms:['door','gate','ladder','needle','heaven','jacob','guardians','way','veil','threshold']},
  'death-return':{label:'Death / return',terms:['death','dead','crucif','tomb','burial','resurrection','return','grain','seed','womb']},
@@ -101,7 +101,7 @@ async function init(){
   if(!field||!fragmentData)throw new Error('canonical Bible relation field or passage fragments unavailable');
   const fieldRows=asArray(field.relations).map(normalizeFieldRow),atlasRows=[...asArray(atlas&&atlas.overlaps).map(item=>normalizeOverlap(item,atlas.updated)),...asArray(atlas&&atlas.meta_arcs).map(item=>normalizeMetaArc(item,atlas.updated))],rowMap=new Map();[...fieldRows,...atlasRows].forEach(row=>{if(row&&row.id&&!rowMap.has(row.id))rowMap.set(row.id,row)});
   const rows=[...rowMap.values()],fragmentMap=fragmentIndex(fragmentData),occurrences=asArray(occurrenceData&&occurrenceData.occurrences),attestations=asArray(attestationData&&attestationData.entries),reversals=asArray(reverseData&&reverseData.events),timelineEvents=asArray(timelineData&&timelineData.events),evidence={occurrenceById:new Map(occurrences.map(item=>[item.id,item])),occurrenceByDate:groupByDate(occurrences,item=>item.date||item.timestamp),attestationByDate:groupByDate(attestations,item=>item.date||item.datetime_utc),reverseByDate:groupByDate(reversals,item=>item.date||item.timestamp),eventById:new Map(timelineEvents.map(item=>[item.id,item])),timelineByDate:groupByDate(timelineEvents,item=>item.date||item.timestamp)};
-  const params=new URLSearchParams(location.search),legacyView=params.get('view'),initialFocus=params.get('focus')||(legacyView&&VIEW_DEFS[legacyView]?`view:${legacyView}`:'view:jesus');
+  const params=new URLSearchParams(location.search),legacyView=params.get('view'),initialFocus=params.get('focus')||(legacyView&&VIEW_DEFS[legacyView]?`view:${legacyView}`:'view:tim-lived');
   const state={focus:initialFocus,query:params.get('q')||'',operator:'',actor:'',evidence:'',mode:'',klass:'',book:'',minStrength:0,fromYear:0,toYear:0,exactOnly:false,order:['asc','desc','strength','bible'].includes(params.get('order'))?params.get('order'):'asc',activeId:params.get('id')||''};
   const populate=(id,values,label=x=>x)=>{const el=$(id);if(!el)return;unique(values).filter(Boolean).sort().forEach(value=>{const option=document.createElement('option');option.value=value;option.textContent=label(value);el.appendChild(option)})};
   populate('operator',rows.flatMap(row=>asArray(row.operators)));populate('actor',rows.map(row=>row.actor));populate('evidence-kind',rows.map(row=>row.evidence_kind));populate('discovery-mode',rows.map(row=>row.discovery_mode),x=>String(x).replaceAll('-',' '));populate('relation-class',rows.map(row=>row.relation_class),x=>String(x).replaceAll('-',' '));populate('bible-book',rows.flatMap(row=>asArray(row.biblical_refs).map(bookFromRef)));$('minimum-strength').innerHTML='<option value="0">Any strength</option>'+[1,2,3,4,5].map(n=>`<option value="${n}">${n}+</option>`).join('');
