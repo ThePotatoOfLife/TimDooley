@@ -81,3 +81,67 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v5
+
+      - name: Verify live Pages deployment
+        shell: bash
+        env:
+          LIVE_BASE: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          set -euo pipefail
+          base="${LIVE_BASE%/}/"
+          mkdir -p .live-smoke
+
+          expected_sha="$(python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path("_site/build-provenance.json").read_text(encoding="utf-8"))
+          value=str(data.get("source_sha","")).strip()
+          if not value:
+              raise SystemExit("validated artifact has no source_sha")
+          print(value)
+          PY
+          )"
+
+          fetch_live() {
+            local url="$1"
+            local out="$2"
+            local attempt
+            for attempt in {1..12}; do
+              if curl -fsSL --connect-timeout 10 --max-time 30 "$url" -o "$out"; then
+                return 0
+              fi
+              echo "Live check attempt $attempt failed for $url"
+              sleep 5
+            done
+            echo "Live Pages did not become healthy: $url" >&2
+            return 1
+          }
+
+          fetch_live "${base}build-provenance.json" ".live-smoke/build-provenance.json"
+
+          python - "$expected_sha" <<'PY'
+          import json, sys
+          from pathlib import Path
+          expected=sys.argv[1]
+          live=json.loads(Path(".live-smoke/build-provenance.json").read_text(encoding="utf-8"))
+          actual=str(live.get("source_sha","")).strip()
+          if actual != expected:
+              raise SystemExit(f"live source_sha mismatch: expected {expected}, got {actual}")
+          if live.get("artifact") != "validated-pages-site":
+              raise SystemExit(f"unexpected live artifact: {live.get('artifact')!r}")
+          print("Live provenance verified:",actual)
+          PY
+
+          for route in "" "tim-dooley/" "religion/" "science/" "world/" "traditions/bible/"; do
+            safe_name="${route//\//_}"
+            [ -n "$safe_name" ] || safe_name="home"
+            fetch_live "${base}${route}" ".live-smoke/${safe_name}.html"
+          done
+
+          for asset in             "app/site-elevator.js"             "app/site-elevator.css"             "data/house/elevator-spatial-projection.json"; do
+            safe_name="${asset//\//_}"
+            fetch_live "${base}${asset}" ".live-smoke/${safe_name}"
+            test -s ".live-smoke/${safe_name}"
+          done
+
+          echo "Live Pages smoke test passed for $base"
