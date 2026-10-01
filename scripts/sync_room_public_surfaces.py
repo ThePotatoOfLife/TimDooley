@@ -28,6 +28,7 @@ def main():
     surfaces=load(ROOT/"data/house/public-surfaces.json")
     canonical={r["id"]:list(r.get("public_surface_ids",[])) for r in subs.get("subrooms",[]) if isinstance(r,dict) and r.get("id")}
     surface_by_id={r["id"]:r for r in surfaces.get("surfaces",[]) if isinstance(r,dict) and r.get("id")}
+    holding_counts={r.get("room_id"):int(r.get("primary_file_count",0)) for r in holds.get("holdings",[]) if isinstance(r,dict) and r.get("room_id")}
     changes=[]
 
     for row in holds.get("holdings",[]):
@@ -43,8 +44,13 @@ def main():
         if rid not in canonical: continue
         want=projected_dossier_surfaces(canonical[rid],surface_by_id)
         if row.get("public_surfaces",[])!=want:
-            changes.append(f"dossiers:{rid}")
+            changes.append(f"dossiers-surfaces:{rid}")
             row["public_surfaces"]=want
+        holding=row.setdefault("knowledge_holdings",{})
+        want_count=holding_counts.get(rid,0)
+        if holding.get("primary_file_count")!=want_count:
+            changes.append(f"dossiers-holding-count:{rid}")
+            holding["primary_file_count"]=want_count
 
     if args.check:
         if changes:
