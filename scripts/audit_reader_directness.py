@@ -111,7 +111,9 @@ def main():
     print(f"wrote {OUT.relative_to(ROOT)}")
     for row in report["surfaces"][:12]:
         print(f"{row.get('maintenance_hit_total',0):3}  {row.get('route')}  {row.get('maintenance_term_hits',{})}")
-    print(f"exact cross-surface duplicate paragraphs: {len(report['exact_duplicate_paragraphs'])}")\n    print(f"near-duplicate paragraph pairs (>= .84): {len(report['near_duplicate_paragraphs'])}")\n    print(f"hard-fact candidate paragraphs: {len(report['hard_fact_candidates'])}")
+    print(f"exact cross-surface duplicate paragraphs: {len(report['exact_duplicate_paragraphs'])}")
+    print(f"near-duplicate paragraph pairs (>= .84): {len(report['near_duplicate_paragraphs'])}")
+    print(f"hard-fact candidate paragraphs: {len(report['hard_fact_candidates'])}")
 
 if __name__=="__main__":
     main()
