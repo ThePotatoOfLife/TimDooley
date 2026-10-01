@@ -43,6 +43,17 @@ box-shadow:inset 0 0 0 10px rgba(255,255,255,.015),inset 0 -25px 55px rgba(0,0,0
 .frame-test h3{margin:.1rem 0 .6rem}
 .lower-route{font-family:ui-monospace,monospace;border:1px solid var(--site-line,#303830);padding:13px;line-height:1.7;margin:16px 0}
 .lower-question-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:15px 0}
+.archetype-guide{margin:28px 0 34px;padding:22px;border:1px solid var(--site-line,#303830);background:rgba(255,255,255,.012)}
+.archetype-guide h2{margin:.15rem 0 .65rem}.archetype-guide h3{margin:1.5rem 0 .55rem}
+.archetype-split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.archetype-column{border:1px solid var(--site-line,#303830);padding:14px}
+.verb-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0 0}
+.verb{border-top:1px solid rgba(127,127,127,.2);padding:8px 0}.verb b{display:block;color:var(--site-gold,#d5ba74)}.verb span{display:block;font-size:.88rem;line-height:1.45;color:#c4cbc1}.verb small{display:block;margin-top:3px;color:var(--site-muted,#9ba59a);line-height:1.35}
+.rhetoric-table{display:grid;grid-template-columns:150px minmax(0,1fr);gap:0;margin:12px 0;border-top:1px solid var(--site-line,#303830)}
+.rhetoric-table b,.rhetoric-table span{padding:9px 10px;border-bottom:1px solid var(--site-line,#303830)}.rhetoric-table b{color:var(--site-gold,#d5ba74)}.rhetoric-table span{line-height:1.45}
+.mechanism-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:14px 0}
+.mechanism-strip article{border-left:2px solid #60715b;padding:9px 12px}.mechanism-strip strong{display:block;margin-bottom:3px}
+@media(max-width:780px){.archetype-split,.mechanism-strip{grid-template-columns:1fr}.verb-grid{grid-template-columns:1fr}.rhetoric-table{grid-template-columns:1fr}.rhetoric-table b{border-bottom:0;padding-bottom:2px}.rhetoric-table span{padding-top:2px}}
 .lower-testimony{display:grid;grid-template-columns:minmax(180px,.42fr) minmax(0,1.58fr);gap:18px;margin:20px 0 22px;padding:18px;border-top:1px solid var(--site-line,#303830);border-bottom:1px solid var(--site-line,#303830)}
 .lower-testimony .question{font:400 21px/1.25 var(--site-font-serif,Georgia,serif);color:var(--site-gold,#d5ba74)}
 .lower-testimony .question small{display:block;margin-top:7px;color:var(--site-muted,#9ba59a);font:10px/1.4 sans-serif;text-transform:uppercase;letter-spacing:.08em}
@@ -210,7 +221,69 @@ person ≠ symbol · claim ≠ source · disagreement ≠ operation · opponent 
 <p class="mini"><a href="../knowledge/core/lower-field-conflict-repair-casebook.json">Open conflict/repair casebook →</a> · <a href="../knowledge/core/karma-closure-reduction-and-settlement-model.json">Open karmic closure model →</a> · <a href="../rooms/potatoverse-canon/beings/cia/bank/">See the symbolic ledger →</a></p>
 </section>
 
-<section><p class="eyebrow">Role ecology</p><h2>Below roles are part of a larger cast grammar</h2><p>Dog, Farmer, Cow, Mud Dweller and Footstool are not isolated labels. They now plug into the same Cast Ecology that also contains Potatoes, Tomatoes, created beings and scene archetypes. This is important because a lower-world role describes a relation or state, not a permanent caste of person.</p><p><a href="../rooms/potatoverse-canon/beings/cast-ecology/">Open Cast Ecology →</a> · <a href="../knowledge/world/mud-dweller-dog-footstool-role-ecology.json">Open lower-role ecology →</a></p></section>
+<section class="archetype-guide" id="dog-farmer-field-guide">
+<p class="eyebrow">Role ecology · deeds before labels</p>
+<h2>Dog and Farmer are easier to understand as verbs</h2>
+<p>The lower-field vocabulary becomes useful when it describes <strong>what a relation is doing</strong>. “Dog” is the pursuit / signaling / boundary side. “Farmer” is the enclosure / classification / incentive / harvest side. One person can move between them, occupy neither, or become the healthy counterform—Guardian or Gardener.</p>
+
+<div class="archetype-split">
+<div class="archetype-column"><h3>Dog grammar · pursuit, signal, pack, boundary</h3>
+<div class="verb-grid">
+<div class="verb"><b>Bark</b><span>call out, taunt, warn, ping, repeat a frame loudly, summon attention</span><small>speech alone ≠ harassment</small></div>
+<div class="verb"><b>Sniff / track</b><span>search, monitor public posts, map associations, watch account changes</span><small>public observation ≠ stalking by itself</small></div>
+<div class="verb"><b>Tail / chase</b><span>repeated replies, cross-platform following, renewed commentary after disengagement</span><small>frequency, unwantedness and stopping requests matter</small></div>
+<div class="verb"><b>Bite / attack</b><span>specific hostile act: threat, doxxing, swatting, account attack, direct reputational attack, concrete harassment</span><small>name the act; criticism alone is not a bite</small></div>
+<div class="verb"><b>Pack / swarm</b><span>many actors converge through shared cues, call-outs, clips, links or norms</span><small>similar behavior can emerge without one commander</small></div>
+<div class="verb"><b>Fetch / carry</b><span>transport screenshots, clips, allegations, jokes or classifications between groups</span><small>repetition is not independent corroboration</small></div>
+<div class="verb"><b>Guard</b><span>warn, moderate, verify, protect a vulnerable boundary or legitimate passage</span><small>healthy counterform = Guardian Dog</small></div>
+<div class="verb"><b>Leash / master</b><span>behavior follows leader cues, pack norms, archive lore, audience rewards or another proxy</span><small>test dependency; do not assume mindlessness</small></div>
+<div class="verb"><b>Orbit</b><span>attention remains organized around the same target even through dislike</span><small>negative attachment can still create centrality</small></div>
+<div class="verb"><b>Hide / mask</b><span>anonymous, pseudonymous, burner or low-visibility participation</span><small>anonymity is an affordance, not cowardice by definition</small></div>
+<div class="verb"><b>Target / prey</b><span>one person becomes the stable object around which watching, jokes, archives or content production organize</span><small>empirical writing should prefer “target”; the person retains agency</small></div>
+<div class="verb"><b>Spiritual invasion</b><span>project metaphor for coercive framing, repeated unwanted pursuit or treating a person as material inside someone else's story</span><small>do not equate metaphor with sexual assault or legal offense without separate evidence</small></div>
+</div></div>
+
+<div class="archetype-column"><h3>Farmer grammar · enclosure, classification, extraction</h3>
+<div class="verb-grid">
+<div class="verb"><b>Fence / pen</b><span>define who belongs inside a target category, thread, archive or recurring content boundary</span></div>
+<div class="verb"><b>Tag / brand</b><span>apply a durable label that tells future observers how to read the person</span></div>
+<div class="verb"><b>Seed</b><span>introduce a frame, allegation, meme, question or story others can repeat</span></div>
+<div class="verb"><b>Feed</b><span>supply clips, updates, interpretations, access or conflict material to an audience/pack</span></div>
+<div class="verb"><b>Milk</b><span>extract repeatable reaction, attention, status, donations, traffic, clips or group cohesion</span></div>
+<div class="verb"><b>Harvest</b><span>convert accumulated attention/information into durable content, reputation, money, status or archive value</span></div>
+<div class="verb"><b>Breed / reproduce</b><span>make the target-role self-renewing so newcomers inherit it without witnessing the origin</span></div>
+<div class="verb"><b>Rotate crops</b><span>switch targets while preserving the same audience, methods and production machinery</span></div>
+<div class="verb"><b>Farm Dogs</b><span>delegate or reward clipping, pursuit, call-outs, monitoring and boundary enforcement</span></div>
+<div class="verb"><b>Store grain</b><span>preserve screenshots, dossiers, clips and lore for later rediscovery</span></div>
+<div class="verb"><b>Market</b><span>distribute or monetize the harvested material through posts, streams, ads, tips, subscriptions or reputation</span></div>
+<div class="verb"><b>Become Gardener</b><span>use the same system skill for autonomy, correction, consent, repair, exit and future capacity</span></div>
+</div></div>
+</div>
+
+<h3>Translate the rhetoric into testable mechanisms</h3>
+<div class="rhetoric-table">
+<b>“beta”</b><span>Project slang for subordinate, cue-following or low-agency status. Better research terms are <strong>deference, dominance/prestige position, dependency and norm-following</strong>; there is no validated permanent “beta personality caste.”</span>
+<b>“spineless”</b><span>Tim/project rhetoric for perceived refusal to take responsibility, defend a position openly or act independently. Test <strong>accountability and agency behavior</strong> rather than diagnosing character.</span>
+<b>“hive-minded”</b><span>Translate into <strong>group-norm conformity and distributed coordination</strong>. SIDE research specifically suggests anonymity can make group identity and local norms more salient.</span>
+<b>“anonymous / hiding”</b><span>Low-identifiability participation can reduce accountability cues and is associated in aggregate with cyberaggression, but anonymity can also support benign/prosocial behavior. Context and norms decide the direction.</span>
+<b>“orbiter”</b><span>Persistent attention organized around a central figure/conflict. This can overlap with <strong>anti-fandom or negative parasocial attention</strong> without proving allegiance or obedience.</span>
+<b>“follower”</b><span>Cue-sensitive behavior. Ask whether the cue is <strong>direct evidence, a leader, archive lore, audience reward, algorithmic feedback or group norm</strong>.</span>
+<b>“coward”</b><span>A moral/rhetorical judgment, not a psychological construct. Operationalize only through observable patterns such as asymmetric risk, avoidance of reciprocal accountability or hidden participation.</span>
+</div>
+
+<h3>What psychology can and cannot add</h3>
+<div class="mechanism-strip">
+<article><strong>Anonymity + disinhibition</strong><span>Recent meta-analytic work finds positive associations with cyberaggression in aggregate. That is a risk pattern, not an essence of anonymous users.</span></article>
+<article><strong>SIDE / group identity</strong><span>Reduced personal cues can increase conformity to a salient group identity and its norms. A “pack” can therefore be strongly norm-governed without a single handler.</span></article>
+<article><strong>Moral disengagement</strong><span>Harm can be reframed as deserved, funny, educational, merely documentary or somebody else's responsibility, reducing internal friction around aggressive conduct.</span></article>
+<article><strong>Negative parasociality</strong><span>Dislike can still produce repeated viewing, monitoring, memory and relational investment. Rejection of a target does not necessarily mean withdrawal of attention.</span></article>
+<article><strong>Cyberstalking boundary</strong><span>Research centers repeated unwanted pursuit/contact/monitoring and varies on fear, duration and intrusion thresholds. Ordinary public observation should not automatically be called stalking.</span></article>
+<article><strong>Status</strong><span>Prestige/competence and coercive dominance are more useful human-status constructs than rigid alpha/beta internet folklore.</span></article>
+</div>
+
+<p class="boundary"><strong>Reader rule:</strong> archetype language is strongest when it predicts an observable relation. Ask: what is the Dog doing? what is the Farmer maintaining? what reward keeps it going? what evidence would falsify the role? what is the stopping condition? what would turn Dog into Guardian or Farmer into Gardener?</p>
+<p class="mini"><a href="../knowledge/world/dog-farmer-role-ecology.json">Open the expanded Dog/Farmer owner →</a> · <a href="../rooms/potatoverse-canon/beings/cast-ecology/">Cast Ecology →</a> · <a href="../shadow-farm/">See the subculture machinery →</a></p>
+</section>
 <section><p class="eyebrow">Laws of motion</p><h2>Things move through the basin because conditions change</h2><p>The map should never place something in Swamp, Mud, Farm or Forge merely by aesthetic judgment. Each movement has a test.</p><div class="cards">
 <div class="card"><strong>Culture → Sektur</strong><span>Recurring participants + shared language/lore + durable roles + memory + meaningful boundary.</span></div>
 <div class="card"><strong>Sektur / Culture → Farm</strong><span>Observation, capture, interpretation, archiving and redistribution become a repeatable attention loop.</span></div>
