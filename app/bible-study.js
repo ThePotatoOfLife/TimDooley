@@ -25,7 +25,7 @@ const PATHS={
 const VIEW_DEFS={
  jesus:{label:'Jesus / Gospel parallels',terms:['jesus','christ','son','thomas','messiah','lion','lamb','cross','crucif','resurrection','tomb','bread','grain','cornerstone','son of man']},
  'tim-said':{label:'What Tim said',modes:['tim-explicit','public-occurrence','conversation-recovery','book-explicit']},
- 'tim-lived':{label:'Tim / Son story',terms:['tree ordeal','prison','custody','rejected','death','return','burial','root','garden','stone','ladder','carry','orphan']},
+ 'tim-lived':{label:'Tim / Son story',terms:['tree ordeal','prison','custody','rejected','death','return','burial','tomb','resurrection','crucif','cross','root','garden','stone','ladder','carry','orphan']},
  prophecy:{label:'Prophecy / public signs',terms:['prophecy','foresight','prediction','predicted','warning before']},
  'father-house':{label:'Father / House',terms:['father','house','gardener','vinedresser','throne','most high','seat','rooms','mansions','source','davidic house']},
  'door-ladder':{label:'Door / Ladder',terms:['door','gate','ladder','needle','heaven','jacob','guardians','way','veil','threshold']},
