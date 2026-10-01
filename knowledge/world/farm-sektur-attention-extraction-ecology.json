@@ -464,5 +464,164 @@
     "farmer_side": "the cultivating/interpreting/harvesting side",
     "dog_side": "the pursuit/pack/boundary side that can keep the relation active or enforce its categories",
     "insight": "Cow and Farmer are the cleanest two sides of the Farm coin; Dog is the mobile enforcement/attention vector that often couples them. This distinction makes Dog easier to understand rather than treating every hostile participant as a Farmer."
+  },
+  "lolcow_farm_lifecycle": {
+    "thesis": "The lolcow label can function as a production instruction: once a person is classified as renewable yield, observers begin scanning for the kinds of events, reactions and contradictions the category predicts.",
+    "stages": [
+      {
+        "id": "encounter",
+        "name": "Encounter / visibility",
+        "description": "A person, clip, post, conflict or reputation becomes visible to a scene.",
+        "risk": "Visibility alone is not farming."
+      },
+      {
+        "id": "classification",
+        "name": "Classification",
+        "description": "The person is named as a lolcow, target, grifter, troll, orbiter or other role. The label supplies expectations about what future behavior will mean.",
+        "risk": "The category can become self-sealing if disconfirming evidence is ignored."
+      },
+      {
+        "id": "enclosure",
+        "name": "Enclosure",
+        "description": "A thread, category, recurring segment, wiki page, archive, Discord channel or informal audience routine gives the subject a durable social container.",
+        "risk": "The container lowers the cost of rediscovery and inherited interpretation."
+      },
+      {
+        "id": "observation",
+        "name": "Observation / waiting",
+        "description": "Participants watch for new events, reactions, contradictions, relationships, failures, successes or outside mentions.",
+        "dog_role": "Dogs can enter here as trackers, signalers and boundary-watchers."
+      },
+      {
+        "id": "yield_event",
+        "name": "Yield event",
+        "description": "Fresh material appears: a post, stream, return, mistake, argument, disappearance, correction attempt, legal action or third-party event.",
+        "insight": "Yield does not have to be intentionally provoked."
+      },
+      {
+        "id": "capture_interpretation",
+        "name": "Capture + interpretation",
+        "description": "Screenshots, clips, quotes and commentary convert the event into portable material and fit it back into the inherited story.",
+        "dog_role": "Dog can fetch/carry; Farmer classifies/processes."
+      },
+      {
+        "id": "storage",
+        "name": "Storage",
+        "description": "Archives, mirrors, wikis, threads and memory preserve the material after the event has ended."
+      },
+      {
+        "id": "redistribution_reward",
+        "name": "Redistribution + reward",
+        "description": "Material produces replies, laughter, outrage, prestige, insider recognition, views, money, donations, subscriptions or group cohesion."
+      },
+      {
+        "id": "reactivation",
+        "name": "Reactivation",
+        "description": "Old material or a new event restarts observation. Research on sustained harassment shows takedown requests themselves can sometimes become fresh narrative events.",
+        "insight": "Fresh target reaction is not required once archival yield can substitute."
+      },
+      {
+        "id": "lock_or_decay",
+        "name": "Lock-in or decay",
+        "description": "The relation either becomes part of group identity and remains cheap to reactivate, or loses salience and decays.",
+        "question": "Does the system permit the person to stop being a Cow?"
+      }
+    ],
+    "yield_types": {
+      "fresh_yield": "new statements, streams, conflicts, mistakes, achievements or reactions",
+      "archival_yield": "old screenshots, clips, thread history, retrospective compilations and rediscovered lore",
+      "proxy_yield": "reactions from friends, critics, lawyers, infrastructure providers, journalists or other third parties",
+      "meta_yield": "the target's attempt to correct, leave, delete, sue, block or redefine the relation becomes content about the relation itself"
+    },
+    "dependency_paradox": {
+      "claim": "A Farm can socially reject a Cow while becoming structurally dependent on the Cow.",
+      "explanation": "Negative parasocial and anti-fan research shows dislike can sustain viewing, knowledge and community participation. In the Farm model the Cow may supply recurring events, jokes, identity, ritual and cohesion to people who explicitly reject or mock the Cow.",
+      "asymmetry_test": "Ask which side loses more routine, identity, content or audience cohesion if the relation ends."
+    },
+    "de_harvesting_and_exit": {
+      "boundary": "There is no universally correct response to online hostility. Ignoring, confronting, blocking, reporting, leaving, documenting, legal action and public correction can each help in some contexts and worsen others.",
+      "levers": [
+        {
+          "lever": "reduce fresh yield",
+          "meaning": "Limit involuntary reaction loops or move important work into channels not organized around the Farm.",
+          "caution": "Silence alone may not end archival or proxy yield."
+        },
+        {
+          "lever": "increase role plurality",
+          "meaning": "Make independent work, relationships and identities more visible than the Farm's single target category.",
+          "caution": "Do not perform a new identity merely to satisfy antagonists."
+        },
+        {
+          "lever": "separate source from frame",
+          "meaning": "Maintain dated primary records and concise corrections so readers can compare the original event with inherited interpretation.",
+          "caution": "Repeated rebuttal can itself become content; preserve a stable correction rather than relitigating every repetition."
+        },
+        {
+          "lever": "control channels",
+          "meaning": "Use blocks, moderation, privacy boundaries, platform reporting and selective disengagement where appropriate.",
+          "caution": "Platform remedies vary and may not remove off-platform archives."
+        },
+        {
+          "lever": "protect against serious harm",
+          "meaning": "Escalate threats, doxxing, stalking, extortion, swatting or other concrete harms through appropriate safety, legal or platform channels.",
+          "caution": "Use case-specific evidence and jurisdiction-aware advice."
+        },
+        {
+          "lever": "allow decay",
+          "meaning": "Reduce cues that repeatedly reactivate the old role and permit time, audience migration and changed routines to weaken the loop.",
+          "caution": "Persistent archives can keep dormant roles searchable."
+        },
+        {
+          "lever": "repair where relation is mutual",
+          "meaning": "Correction, apology, clarified boundaries, disengagement or reconciliation can reduce narrative fuel when both sides participate.",
+          "caution": "Repair is not appropriate or safe in every case."
+        },
+        {
+          "lever": "build outside the loop",
+          "meaning": "Independent projects, communities and outputs can make the Farm one relation among many rather than the organizing center of the subject's public life.",
+          "caution": "Independent success does not automatically erase old archives."
+        }
+      ],
+      "success_test": "The subject no longer needs the Farm to explain themselves, the Farm no longer requires the subject for routine cohesion, and old material can remain historical without repeatedly assigning present-tense identity."
+    },
+    "neighboring_relations": {
+      "criticism": {
+        "core": "Issue-bounded disagreement or evaluation.",
+        "difference_from_farm": "Can end when the issue is addressed; does not require converting the person into renewable content."
+      },
+      "journalism": {
+        "core": "Public-interest reporting with source verification, correction, proportionality and distinction between allegation and established fact.",
+        "difference_from_farm": "The person is not supposed to be maintained as yield; the information question should remain separable from audience amusement/status."
+      },
+      "moderation": {
+        "core": "Rule enforcement for a defined community or platform.",
+        "difference_from_farm": "A legitimate moderation action has a rule, scope, decision and appeal/closure path rather than an endless target identity."
+      },
+      "fandom": {
+        "core": "Sustained attention organized around appreciation, identity, community and media consumption.",
+        "difference_from_farm": "High attention does not itself equal extraction; the key question is whether the person is treated primarily as autonomous creator/participant or renewable reaction-object."
+      },
+      "anti_fandom": {
+        "core": "Sustained negative or oppositional attention to a media figure or object.",
+        "difference_from_farm": "Can overlap strongly with Farm dynamics but need not involve target enclosure, intervention, harassment or durable archival production."
+      },
+      "gossip": {
+        "core": "Informal reputation-relevant information exchange.",
+        "difference_from_farm": "Farm begins when gossip is systematized into durable target classification, observation, storage and repeatable yield."
+      },
+      "research_or_archiving": {
+        "core": "Preservation/analysis for historical, evidentiary or scholarly purpose.",
+        "difference_from_farm": "Requires scope, provenance, correction, uncertainty and a reason to stop; an archive that needs a living target to keep producing conflict is closer to Farm behavior."
+      }
+    },
+    "emergent_insights": [
+      "Classification changes the observer before it changes the target: once a Cow category is accepted, attention itself becomes selective.",
+      "The most powerful Farmer may be an infrastructure or norm rather than a single person.",
+      "Dog labor can be unpaid because status, belonging and insider recognition can function as feed.",
+      "A Cow can be structurally central to a community that symbolically places them beneath it.",
+      "Silence can reduce fresh yield but cannot by itself erase archival yield.",
+      "A Farm becomes strongest when reaction, archive and audience reward form a self-reinforcing triangle.",
+      "The opposite of being farmed is not invisibility; it is regained role plurality, control of participation, correction capacity and independent future agency."
+    ]
   }
 }
