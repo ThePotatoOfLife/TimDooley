@@ -79,6 +79,13 @@ def render(row: dict, fragments: dict[str, list[dict]]) -> str:
     )
     project_context = row.get("project_context") or row.get("project_anchor")
     project_development = row.get("project_development")
+    project_sequence = [str(x).strip() for x in arr((argument or {}).get("project_sequence")) if str(x).strip()]
+    if not project_development:
+        project_development = (argument or {}).get("why_it_matters") or (argument or {}).get("why_dense")
+    project_sequence_html = (
+        '<ol class="project-sequence">' + ''.join(f'<li>{esc(step)}</li>' for step in project_sequence) + '</ol>'
+        if project_sequence else ''
+    )
     boundary = f'<p><strong>Where it breaks:</strong> {esc(mismatch)}</p>' if mismatch else ""
     direction_html = f'<p><strong>Source direction:</strong> {esc(direction)}</p>' if direction else ""
     scene_html = f'<p><strong>What was happening:</strong> {esc(scene.get("summary"))}</p>' if scene.get("summary") else ""
@@ -92,7 +99,8 @@ def render(row: dict, fragments: dict[str, list[dict]]) -> str:
 {wording_html}
 {scene_html}
 <p><strong>What happened / what the project is saying:</strong> {esc(project_context)}</p>
-{f'<p><strong>What it later becomes:</strong> {esc(project_development)}</p>' if project_development else ''}
+{project_sequence_html}
+{f'<p><strong>Why this matters / what it later becomes:</strong> {esc(project_development)}</p>' if project_development else ''}
 <p><strong>Scripture scope:</strong> {esc(scope)}</p>
 {scripture}
 {why_html}
