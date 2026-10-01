@@ -30,3 +30,17 @@
 #tim-son-story .life-stop strong{font-size:17px}
 #prophetic-unity{border-color:#4f5338}
 @media(max-width:760px){.identity-key-grid{grid-template-columns:1fr}}
+
+.story-meaning{margin:30px 0 34px;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.story-meaning-head{max-width:860px;margin-bottom:16px}
+.story-meaning-head h2{font:400 clamp(30px,4.5vw,46px)/1.04 Georgia,serif;letter-spacing:-.03em;margin:0 0 8px}
+.story-meaning-head p{margin:0;color:#b7c0b3;max-width:760px}
+.story-arc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.story-arc-grid article{position:relative;padding:16px;border:1px solid #354033;border-radius:14px;background:#0c100d}
+.story-arc-grid article:last-child{grid-column:1/-1}
+.arc-no{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:#7f897a;margin-bottom:5px}
+.story-arc-grid h3{font:400 21px/1.18 Georgia,serif;color:#e2d39e;margin:0 0 9px}
+.story-arc-grid p{margin:6px 0;color:#aeb7aa;font-size:12px;line-height:1.52}
+.story-arc-grid p strong{color:#d5ddd0}
+.story-arc-grid a{display:inline-block;margin-top:7px;font-size:11px;text-decoration:none}
+@media(max-width:760px){.story-arc-grid{grid-template-columns:1fr}.story-arc-grid article:last-child{grid-column:auto}}
