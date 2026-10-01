@@ -284,7 +284,7 @@ def main() -> int:
         if forbidden in question_block:
             errors.append(f"generated question template regressed to taxonomy-first output: {forbidden}")
     for required in (
-        '"@type": "Article"',
+        '"@type": "WebPage"',
         'class="question-answer"',
         "What that means",
         "data-question-machine-meta",
