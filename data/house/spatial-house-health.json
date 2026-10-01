@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.3.1",
   "checked": "2026-09-20",
   "authority": "spatial-house-health",
   "scope": "recursive spatial House",
@@ -7,11 +7,12 @@
     "dwellings": 10,
     "nested_rooms": 38,
     "nested_room_interiors": 38,
-    "inhabitants": 59,
+    "inhabitants": 141,
     "inhabitant_maturity": {
-      "described": 21,
-      "case-ready": 26,
-      "faceted": 12
+      "described": 39,
+      "case-ready": 89,
+      "faceted": 12,
+      "seeded": 1
     }
   },
   "checks": {
@@ -57,5 +58,6 @@
     "data/house/object-focus-contract.json",
     "data/house/object-facet-contract.json",
     "data/house/object-facet-maturity.json"
-  ]
+  ],
+  "updated": "2026-10-01"
 }

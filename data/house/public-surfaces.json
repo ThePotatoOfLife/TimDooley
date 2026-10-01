@@ -1,6 +1,6 @@
 {
-  "version": "2.7.0",
-  "updated": "2026-09-27",
+  "version": "2.7.1",
+  "updated": "2026-10-01",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
   "primary_gateway_ids": [
@@ -902,8 +902,6 @@
         "timeline",
         "explore",
         "sources",
-        "questions",
-        "index-a-z",
         "house"
       ]
     },
@@ -914,7 +912,6 @@
         "axis",
         "rooms",
         "research-lab",
-        "paths",
         "elevator"
       ]
     },
@@ -990,6 +987,15 @@
       "child_rule": "Use Rooms for entity/object entry surfaces that resolve House inhabitants rather than explain overall topology.",
       "allowed_child_ids": [
         "inhabitants"
+      ]
+    },
+    "explore": {
+      "meaning": "Cross-project discovery owner for retrieval, question-led entry, intentional reading paths and alphabetical lookup.",
+      "child_rule": "Use Explore when the reader's main job is to discover or retrieve across canonical owners rather than enter a single subject domain.",
+      "allowed_child_ids": [
+        "questions",
+        "index-a-z",
+        "paths"
       ]
     }
   }
