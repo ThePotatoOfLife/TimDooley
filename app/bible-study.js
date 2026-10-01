@@ -22,7 +22,23 @@ const PATHS={
  timeline:'../../data/timeline-events.json'
 };
 
+const CORE_RELATION_IDS=new Set([
+ 'tree-ordeal-hanging-curse-redemption-2011',
+ 'self-resurrection-witnesses-2025-09-30',
+ 'father-after-crucified-son-2025-12-17',
+ 'bread-door-tomb-resurrection-2026-04-23',
+ 'ladder-door-specialization-2026-05-19',
+ 'passover-house-door-lamb-threshold-2026-07-24',
+ 'john14-15-house-thomas-way-gardener-vine-sequence-2026-07-23',
+ 'son-cornerstone-2026-08-17',
+ 'psalm82-gods-sons-mosthigh-justice-test-2026-09-13',
+ 'oct1-father-internet-ladder-swamp',
+ 'oct1-prophetic-name-witness-deaf-blind',
+ 'oct1-jesus-dead-countertext'
+]);
+
 const VIEW_DEFS={
+ core:{label:'Core Tim / Son story'},
  jesus:{label:'Jesus / Gospel parallels',terms:['jesus','christ','son','thomas','messiah','lion','lamb','cross','crucif','resurrection','tomb','bread','grain','cornerstone','son of man']},
  'tim-said':{label:'What Tim said',modes:['tim-explicit','public-occurrence','conversation-recovery','book-explicit']},
  'tim-lived':{label:'Tim / Son story',terms:['tree ordeal','prison','custody','rejected','death','return','burial','tomb','resurrection','crucif','cross','root','garden','stone','ladder','carry','orphan']},
@@ -60,9 +76,9 @@ function bookFromRef(reference){const ref=String(reference||'').trim(),match=ref
 function bibleOrderKey(row){const refs=asArray(row.biblical_refs);if(!refs.length)return 9999;return Math.min(...refs.map(ref=>BIBLE_BOOK_RANK.get(bookFromRef(ref))??9999))}
 function ownerHref(owner){if(!owner)return '#';if(/^https?:\/\//.test(owner))return owner;return '../../'+owner.split('/').map(encodeURIComponent).join('/')}
 function matchesTerms(row,terms){const text=rowText(row);return terms.some(term=>text.includes(term))}
-function matchesView(row,view){const def=VIEW_DEFS[view]||VIEW_DEFS['tim-lived'];if(view==='all')return true;if(def.counter)return asArray(row.weaknesses).length>0||Boolean(row.counter_text||row.source_correction||row.difference||row.boundary);if(def.modes&&def.modes.includes(row.discovery_mode))return true;return def.terms?matchesTerms(row,def.terms):true}
-function matchesFocus(row,focus){const [kind,id]=String(focus||'view:tim-lived').split(':');if(kind==='arc')return matchesTerms(row,(ARC_DEFS[id]||{terms:[]}).terms);return matchesView(row,id)}
-function focusLabel(focus){const [kind,id]=String(focus||'view:tim-lived').split(':');return kind==='arc'?(ARC_DEFS[id]?.label||id):(VIEW_DEFS[id]?.label||'Tim / Son story')}
+function matchesView(row,view){const def=VIEW_DEFS[view]||VIEW_DEFS.core;if(view==='all')return true;if(view==='core')return CORE_RELATION_IDS.has(row.id);if(def.counter)return asArray(row.weaknesses).length>0||Boolean(row.counter_text||row.source_correction||row.difference||row.boundary);if(def.modes&&def.modes.includes(row.discovery_mode))return true;return def.terms?matchesTerms(row,def.terms):true}
+function matchesFocus(row,focus){const [kind,id]=String(focus||'view:core').split(':');if(kind==='arc')return matchesTerms(row,(ARC_DEFS[id]||{terms:[]}).terms);return matchesView(row,id)}
+function focusLabel(focus){const [kind,id]=String(focus||'view:core').split(':');return kind==='arc'?(ARC_DEFS[id]?.label||id):(VIEW_DEFS[id]?.label||'Core Tim / Son story')}
 function exactQuotes(row,evidence){return unique([...asArray(row.project_quote),...asArray(row.exact_wording),...asArray(row.public_wording),...asArray(row.recovered_wording),row.quote,...asArray(row.occurrence_ids).map(id=>evidence.occurrenceById.get(id)?.quote)]).filter(Boolean)}
 function exactAvailable(row,evidence){return exactQuotes(row,evidence).length>0}
 function whyText(row){return unique([...asArray(row.relation_arguments),row.overlap,row.project_value,...asArray(row.possible_meaning)]).filter(Boolean).slice(0,3).join(' ')}
@@ -105,12 +121,12 @@ async function init(){
   if(!field||!fragmentData)throw new Error('canonical Bible relation field or passage fragments unavailable');
   const fieldRows=asArray(field.relations).map(normalizeFieldRow),atlasRows=[...asArray(atlas&&atlas.overlaps).map(item=>normalizeOverlap(item,atlas.updated)),...asArray(atlas&&atlas.meta_arcs).map(item=>normalizeMetaArc(item,atlas.updated))],rowMap=new Map();[...fieldRows,...atlasRows].forEach(row=>{if(row&&row.id&&!rowMap.has(row.id))rowMap.set(row.id,row)});
   const rows=[...rowMap.values()],fragmentMap=fragmentIndex(fragmentData),occurrences=asArray(occurrenceData&&occurrenceData.occurrences),attestations=asArray(attestationData&&attestationData.entries),reversals=asArray(reverseData&&reverseData.events),timelineEvents=asArray(timelineData&&timelineData.events),evidence={occurrenceById:new Map(occurrences.map(item=>[item.id,item])),occurrenceByDate:groupByDate(occurrences,item=>item.date||item.timestamp),attestationByDate:groupByDate(attestations,item=>item.date||item.datetime_utc),reverseByDate:groupByDate(reversals,item=>item.date||item.timestamp),eventById:new Map(timelineEvents.map(item=>[item.id,item])),timelineByDate:groupByDate(timelineEvents,item=>item.date||item.timestamp)};
-  const params=new URLSearchParams(location.search),legacyView=params.get('view'),initialFocus=params.get('focus')||(legacyView&&VIEW_DEFS[legacyView]?`view:${legacyView}`:'view:tim-lived');
+  const params=new URLSearchParams(location.search),legacyView=params.get('view'),initialFocus=params.get('focus')||(legacyView&&VIEW_DEFS[legacyView]?`view:${legacyView}`:'view:core');
   const state={focus:initialFocus,query:params.get('q')||'',operator:'',actor:'',evidence:'',mode:'',klass:'',book:'',minStrength:0,fromYear:0,toYear:0,exactOnly:false,order:['asc','desc','strength','bible'].includes(params.get('order'))?params.get('order'):'asc',activeId:params.get('id')||'bread-door-tomb-resurrection-2026-04-23'};
   if(state.activeId&&rowMap.has(state.activeId)&&!matchesFocus(rowMap.get(state.activeId),state.focus)){state.focus='view:all'}
   const populate=(id,values,label=x=>x)=>{const el=$(id);if(!el)return;unique(values).filter(Boolean).sort().forEach(value=>{const option=document.createElement('option');option.value=value;option.textContent=label(value);el.appendChild(option)})};
   populate('operator',rows.flatMap(row=>asArray(row.operators)));populate('actor',rows.map(row=>row.actor));populate('evidence-kind',rows.map(row=>row.evidence_kind));populate('discovery-mode',rows.map(row=>row.discovery_mode),x=>String(x).replaceAll('-',' '));populate('relation-class',rows.map(row=>row.relation_class),x=>String(x).replaceAll('-',' '));populate('bible-book',rows.flatMap(row=>asArray(row.biblical_refs).map(bookFromRef)));$('minimum-strength').innerHTML='<option value="0">Any strength</option>'+[1,2,3,4,5].map(n=>`<option value="${n}">${n}+</option>`).join('');
-  $('focus-select').value=[...$('focus-select').options].some(option=>option.value===state.focus)?state.focus:'view:tim-lived';state.focus=$('focus-select').value;$('order-select').value=state.order;$('search').value=state.query;
+  $('focus-select').value=[...$('focus-select').options].some(option=>option.value===state.focus)?state.focus:'view:core';state.focus=$('focus-select').value;$('order-select').value=state.order;$('search').value=state.query;
 
   const filteredRows=()=>rows.filter(row=>{if(!matchesFocus(row,state.focus))return false;if(state.operator&&!asArray(row.operators).includes(state.operator))return false;if(state.actor&&row.actor!==state.actor)return false;if(state.evidence&&row.evidence_kind!==state.evidence)return false;if(state.mode&&row.discovery_mode!==state.mode)return false;if(state.klass&&row.relation_class!==state.klass)return false;if(state.book&&!asArray(row.biblical_refs).some(ref=>bookFromRef(ref)===state.book))return false;if(Number(row.strength||0)<state.minStrength)return false;const year=firstYear(row.date);if(state.fromYear&&year&&year<state.fromYear)return false;if(state.toYear&&year&&year>state.toYear)return false;if(state.exactOnly&&!exactAvailable(row,evidence))return false;if(state.query){const terms=state.query.toLowerCase().split(/\s+/).filter(Boolean),hay=rowText(row);if(!terms.every(term=>hay.includes(term)))return false}return true});
   const orderedRows=()=>{const filtered=filteredRows();if(state.order==='strength')return [...filtered].sort((a,b)=>(Number(b.strength)||0)-(Number(a.strength)||0)||(firstYear(a.date)??9999)-(firstYear(b.date)??9999));if(state.order==='bible')return [...filtered].sort((a,b)=>bibleOrderKey(a)-bibleOrderKey(b)||(firstYear(a.date)??9999)-(firstYear(b.date)??9999));return [...filtered].sort((a,b)=>{const ay=firstYear(a.date)??9999,by=firstYear(b.date)??9999;return state.order==='desc'?by-ay:ay-by})};
