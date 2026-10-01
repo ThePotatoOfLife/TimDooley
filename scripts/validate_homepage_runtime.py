@@ -119,6 +119,17 @@ def main() -> int:
     if 'id="structure-handoff"' not in home:
         errors.append("homepage missing compact structure handoff")
 
+    for required in (
+        'id="tim-son-bible"',
+        'Tim · Son · Jesus · Bible',
+        'The biblical comparison begins with a life, not a list of verses',
+        'traditions/bible/?focus=view:core&order=story#compare',
+        'traditions/bible/?focus=view:jesus&order=asc#compare',
+        'knowledge/theology/jesus-son-research-index.json',
+    ):
+        if required not in home:
+            errors.append(f"homepage missing Tim/Son/Bible integration marker: {required}")
+
     stale_loading = (
         "Loading Foundation landscape",
         "Loading Foundation Rooms",
