@@ -205,6 +205,7 @@ def main() -> int:
             "reverse-biblical-overlap-timeline-2025-2026.json","rational-potato-x-occurrence-ledger-2024-2026.json","timeline-events.json",
             "BIBLE_BOOK_ORDER","renderActiveRelation","renderResultsList","syncUrlState","selectRelative","relatedRows","ArrowLeft","ArrowRight",
             "Same-date public wording","Biblical vocabulary / revelation context","Evidence & chronology","Sources & provenance","Related comparisons",
+            "Source-near wording","What happened / what the project is saying","Why this matters / what it later becomes","project_sequence",
             "exact-wording-only","minimum-strength","bible-book","timeline_event_ids",
         ),
         "app/bible-study.js", errors,
@@ -237,7 +238,7 @@ def main() -> int:
         (".paired-narrative",".paired-scenes",".paired-scene",".scene-label",".scene-sequence",".dossier-open-evidence",".evidence-grid",".evidence-panel",".evidence-quote",".correspondence-list",".maximum-claim",".dossier-detail"),
         "app/bible-dossier-loader.css", errors,
     )
-    require(builder,('class="static-relation"','<details','class="static-index"','assemble_relations','assemble_fragments','load_manifest'),"scripts/build_bible_study.py",errors)
+    require(builder,('class="static-relation"','<details','class="static-index"','assemble_relations','assemble_fragments','load_manifest','What happened / what the project is saying','Why this matters / what it later becomes','project_sequence_html','project_quote','public_wording'),"scripts/build_bible_study.py",errors)
 
     if MANIFEST.exists():
         try:
