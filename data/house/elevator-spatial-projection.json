@@ -1,5 +1,5 @@
 {
-  "version": "1.5.1",
+  "version": "1.5.2",
   "updated": "2026-10-01",
   "authority": "elevator-spatial-projection",
   "title": "Door / Axis Elevator — Three-Floor House Projection",
@@ -442,7 +442,7 @@
     {
       "match": "/shadow-farm/",
       "level_id": "below",
-      "room_id": "culture-information"
+      "room_id": null
     },
     {
       "match": "/philosophy/",
@@ -452,12 +452,12 @@
     {
       "match": "/tim-dooley/",
       "level_id": "plane",
-      "room_id": "potatoverse-canon"
+      "room_id": null
     },
     {
       "match": "/corporium/",
       "level_id": "plane",
-      "room_id": "potatoverse-canon"
+      "room_id": null
     },
     {
       "match": "/index-a-z/",
@@ -577,7 +577,7 @@
     {
       "match": "/",
       "level_id": "plane",
-      "room_id": "potatoverse-canon"
+      "room_id": null
     }
   ]
 }
