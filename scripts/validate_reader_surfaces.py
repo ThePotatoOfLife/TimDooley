@@ -211,8 +211,13 @@ def main() -> int:
         'id="active-relation"',
     ):
         require(bible, marker, "traditions/bible/index.html", errors)
-    for label in ("Jesus / Son", "Father / House", "Door / Ladder", "God / Presence", "Garden / Spirit"):
+    for label in ("Tim / Son story", "Jesus / Gospel parallels", "Father / House", "Door / Ladder", "God / Presence", "Garden / Spirit"):
         require_any(bible, (label,), "traditions/bible/index.html", f"comparison focus {label}", errors)
+    compare_pos = bible.find('id="compare"')
+    study_pos = bible.find('id="study-tool"')
+    story_pos = bible.find('id="story-first"')
+    if not (0 <= compare_pos < study_pos < story_pos):
+        errors.append("Bible comparison tool must be the first substantive reader surface after the page header")
     require_absent(bible, 'class="featured-arcs"', "traditions/bible/index.html", errors)
     require_absent(bible, 'id="shuffle-comparisons"', "traditions/bible/index.html", errors)
     require(bible_js, "biblical-syncretism-field.json", "app/bible-study.js", errors)
