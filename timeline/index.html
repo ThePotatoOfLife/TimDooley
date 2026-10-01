@@ -107,51 +107,58 @@
   </div>
 </section>
 
-<section class="long-chronology" id="timeline-explorer" aria-label="Full chronology explorer">
+<section class="long-chronology" id="timeline-explorer" aria-label="Long chronology explorer">
 <div class="chron-intro">
-<div><p class="eyebrow">Full chronology explorer</p><h2>Zoom out beyond the Tim / project timeline</h2></div>
-<p>The default view keeps the whole arc available. Presets can collapse it into a sparse spine, faith genealogy, foundation history, or the existing Tim/Son project chronology.</p>
+<div><p class="eyebrow">Long chronology</p><h2>Choose the kind of time you want to see</h2></div>
+<p>The dated Tim/Son chronology above stays the simple spine. This lower explorer is for comparison: biblical material in the life, wider faith history, foundations, or the complete archive.</p>
 </div>
 
-<div class="chron-presetbar" aria-label="Timeline presets">
-<button data-mode="arc" class="active">Whole arc</button>
-<button data-mode="road">Sparse spine</button>
-<button data-mode="faith">Faiths & origin figures</button>
+<div class="chron-presetbar" aria-label="Timeline views">
+<button data-mode="project">Life &amp; project</button>
+<button data-mode="bible">Bible in the life</button>
+<button data-mode="faith">Faith history</button>
 <button data-mode="foundations">Foundations</button>
-<button data-mode="project">Life & project</button>
+<button data-mode="road">Sparse spine</button>
+<button data-mode="arc" class="active">Whole archive</button>
 </div>
+<p class="chron-preset-help">Start with a view. The controls below are optional refinements, not another navigation system.</p>
 
-<div class="chron-panel">
-<div class="chron-panel-head"><div><h3>Lenses</h3><p>Turn entire kinds of history on and off without changing the underlying records.</p></div><button data-reset>Reset</button></div>
+<details class="chron-panel chron-advanced" id="chronAdvanced">
+<summary><span><strong>Advanced filters</strong><small>sources · people/tracks · eras · search · event type</small></span><span class="chron-summary-cue">open</span></summary>
+<div class="chron-panel-body">
+<div class="chron-panel-head"><div><h3>Refine this view</h3><p>Turn layers on or off without changing the underlying records.</p></div><button type="button" data-reset>Reset</button></div>
 
 <div class="chron-section-label">Sources of chronology</div>
-<div class="chron-toggle-grid" id="chronSources"></div>
+<div class="chron-toggle-grid" id="chronSources"><span class="chron-placeholder">Available after chronology loads.</span></div>
 
 <div class="chron-section-label">Life / project track</div>
-<div class="chron-toggle-grid" id="chronActors" aria-label="Filter project events by actor track"></div>
-<p class="chron-filter-note">Track labels come from existing event metadata. No track selected means show all project events, including material that has not yet been classified as Tim/Father-side, Son, Shared or Project/system.</p>
+<div class="chron-toggle-grid" id="chronActors" aria-label="Filter project events by actor track"><span class="chron-placeholder">Son, Tim/Father-side, Shared and Project tracks load here.</span></div>
+<p class="chron-filter-note">No track selected means show every project event in the chosen view.</p>
 
 <div class="chron-section-label">Historical span</div>
-<div class="chron-toggle-grid" id="chronEras"></div>
+<div class="chron-toggle-grid" id="chronEras"><span class="chron-placeholder">Historical periods load here.</span></div>
 
 <div class="chron-fields">
-<label>Search<input id="chronSearch" type="search" placeholder='Jesus Buddha constitution "first operation" -company'></label>
-<label>Domain<select id="chronDomain"><option>Loading…</option></select></label>
-<label>Faith family<select id="chronFamily"><option>Loading…</option></select></label>
-<label>Event type<select id="chronClock"><option>Loading…</option></select></label>
+<label>Search<input id="chronSearch" type="search" placeholder='Jesus, Buddha, "first operation"…'></label>
+<label>Domain<select id="chronDomain"><option value="">All domains</option></select></label>
+<label>Faith family<select id="chronFamily"><option value="">All faith families</option></select></label>
+<label>Event type<select id="chronClock"><option value="">All event types</option></select></label>
 <label>Order<select id="chronSort"><option value="asc">Oldest first</option><option value="desc">Newest first</option></select></label>
-<label class="check"><input id="chronDetail" type="checkbox"> Show detail & sources</label>
+<label class="check"><input id="chronDetail" type="checkbox"> Show detail &amp; sources</label>
 </div>
 </div>
+</details>
 
 <div class="chron-note">
-<article><b>People</b><span>Prophets, founders, teachers and reformers get their own dated tracks rather than being used as shorthand for an entire later tradition.</span></article>
-<article><b>Lineages</b><span>Faiths can unfold as trunks, phases, schools, schisms, reforms and communions, with uncertain periods shown as ranges. <a href="../religion/">Religion reader →</a></span></article>
-<article><b>Foundations</b><span>Seed, authorization, operation, consolidation and refoundation can all have different dates and places.</span></article>
+<article><b>Life / Bible</b><span>Project events keep scripture-at-the-time, later parallels and later research unlocks distinct instead of backdating them.</span></article>
+<article><b>Faith history</b><span>People and traditions are dated separately; one founder is not shorthand for everything a later religion became.</span></article>
+<article><b>Foundations</b><span>Seed, authorization, first operation, consolidation and refoundation can have different dates.</span></article>
 </div>
 
-<p class="chron-readout" id="chronReadout">Preparing chronology…</p>
-<details class="chron-source-fallback"><summary>Underlying timeline records</summary><p>If the interactive chronology is unavailable, the core records remain directly readable: <a href="../data/timeline-events.json">project timeline events</a> · <a href="../data/religious-foundation-timeline.json">religious foundation lineage</a> · <a href="../data/history-origin-figures.json">origin figures</a> · <a href="../data/house/foundation-timeline-wave-001.json">foundation events</a>.</p></details><div class="chron-loading" id="chronLoading">Loading the long chronology…</div>
+<p class="chron-readout" id="chronReadout" aria-live="polite">Loading the selected chronology…</p>
+<details class="chron-source-fallback"><summary>Underlying timeline records</summary><p>The source records stay readable even if the interactive explorer is unavailable: <a href="../data/timeline-events.json">project timeline events</a> · <a href="../data/religious-foundation-timeline.json">religious foundation lineage</a> · <a href="../data/history-origin-figures.json">origin figures</a> · <a href="../data/house/foundation-timeline-wave-001.json">foundation events</a>.</p></details>
+<div class="chron-loading" id="chronLoading">Loading chronology data…</div>
+<noscript><p class="chron-loading error">Interactive filtering needs JavaScript. The dated Tim/project spine above and the source records here remain readable.</p></noscript>
 <div id="chronTimeline"></div>
 </section>
 </main>
