@@ -1,5 +1,5 @@
 {
-  "version": "1.5.2",
+  "version": "1.5.3",
   "updated": "2026-10-01",
   "authority": "elevator-spatial-projection",
   "title": "Door / Axis Elevator — Three-Floor House Projection",
@@ -92,32 +92,40 @@
         {
           "id": "below",
           "label": "Below Basin",
-          "route": "/below/#basin"
+          "route": "/below/#basin",
+          "show_in_header": true,
+          "header_label": "Below Basin"
         },
         {
           "id": "roots",
           "label": "Roots / Provenance",
-          "route": "/below/#roots"
+          "route": "/below/#roots",
+          "show_in_header": false
         },
         {
           "id": "ash",
           "label": "Ash / Rupture",
-          "route": "/below/#ash"
+          "route": "/below/#ash",
+          "show_in_header": false
         },
         {
           "id": "swamp",
           "label": "Swamp",
-          "route": "/below/#swamp"
+          "route": "/below/#swamp",
+          "show_in_header": false
         },
         {
           "id": "shadow-farm",
           "label": "Farm / Sektur",
-          "route": "/shadow-farm/"
+          "route": "/shadow-farm/",
+          "show_in_header": true,
+          "header_label": "Farm / Sektur"
         },
         {
           "id": "forge",
           "label": "Forge / Research",
-          "route": "/research-lab/"
+          "route": "/research-lab/",
+          "show_in_header": false
         }
       ]
     }
@@ -166,7 +174,8 @@
       "primary_level": "below",
       "projection_notes": {
         "below": "Raw captures, provenance, recovery state and source lineage—the root system beneath later synthesis."
-      }
+      },
+      "header_label": "Roots / Evidence"
     },
     {
       "id": "time-history",
@@ -329,7 +338,8 @@
       "primary_level": "below",
       "projection_notes": {
         "below": "Unresolved questions, failed attempts, recovered fragments and raw research material before promotion to an owner."
-      }
+      },
+      "header_label": "Forge / Repair"
     }
   ],
   "local_center_behavior": {
