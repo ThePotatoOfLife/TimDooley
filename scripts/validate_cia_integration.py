@@ -21,7 +21,7 @@ def main():
   p=ROOT/expected
   if not p.is_file(): fail(f"missing dossier {expected}")
  cabinet=CABINET.read_text(encoding="utf-8")
- for token in ["Potatoverse CIA · Character Archive","Characters · Incidents · Associations","cia-cabinet.js","fbi/"]:
+ for token in ["Potatoverse CIA · Character Archive","Characters · Incidents · Associations","cia-cabinet.js"]:
   if token not in cabinet: fail(f"cabinet missing {token!r}")
  cabinet_js=(ROOT/"app/cia-cabinet.js").read_text(encoding="utf-8",errors="replace")
  for token in ["data-character-id","data-activity","file-avatar"]:

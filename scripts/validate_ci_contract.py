@@ -7,6 +7,7 @@ import re
 ROOT=Path(__file__).resolve().parents[1]
 QUALITY=ROOT/".github/workflows/quality-checks.yml"
 PAGES=ROOT/".github/workflows/pages.yml"
+QUALITY_RUNNER=ROOT/"scripts/run_quality_group.py"
 
 def main()->int:
     errors=[]
@@ -17,6 +18,8 @@ def main()->int:
         return 1
     quality=QUALITY.read_text(encoding="utf-8",errors="replace")
     pages=PAGES.read_text(encoding="utf-8",errors="replace")
+    runner=QUALITY_RUNNER.read_text(encoding="utf-8",errors="replace") if QUALITY_RUNNER.is_file() else ""
+    quality_contract=quality+"\n"+runner
 
     for marker in (
         "name: Repository quality checks",
@@ -26,12 +29,17 @@ def main()->int:
         "CONTENT_RESULT:",
         "BUILD_RESULT:",
         "cancel-in-progress: true",
+    ):
+        if marker not in quality:
+            errors.append(f"quality workflow missing contract marker: {marker}")
+
+    for marker in (
         "python scripts/validate_reader_richness.py",
         "python scripts/validate_seo_pipeline.py",
         "python scripts/validate_repo_hygiene.py",
     ):
-        if marker not in quality:
-            errors.append(f"quality workflow missing contract marker: {marker}")
+        if marker not in quality_contract:
+            errors.append(f"quality pipeline missing contract marker: {marker}")
 
     if re.search(r"(?m)^\s*push:\s*$", pages):
         errors.append("Pages workflow must not deploy directly from push; deploy only validated workflow_run revisions or explicit manual dispatch")

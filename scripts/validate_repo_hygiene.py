@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,6 +35,7 @@ FORBIDDEN_GENERATED_GLOBS = (
 
 def main() -> int:
     errors: list[str] = []
+    tracked = set(subprocess.run(["git","ls-files"], cwd=ROOT, text=True, capture_output=True, check=True).stdout.splitlines())
 
     actual = {p.name for p in WORKFLOWS.glob("*.yml")} | {p.name for p in WORKFLOWS.glob("*.yaml")}
     missing = sorted(EXPECTED_WORKFLOWS - actual)
@@ -44,17 +46,18 @@ def main() -> int:
         errors.append("unexpected workflow sprawl: " + ", ".join(extra))
 
     for rel in sorted(FORBIDDEN_TEMPORARY):
-        if (ROOT / rel).exists():
+        if rel in tracked:
             errors.append(f"temporary migration debris remains: {rel}")
 
     for rel in FORBIDDEN_GENERATED_PATTERNS:
-        path=ROOT/rel
-        if path.exists():
+        prefix=rel.rstrip("/")+"/"
+        if rel in tracked or any(path.startswith(prefix) for path in tracked):
             errors.append(f"generated build/CI directory must not be committed: {rel}")
     for pattern in FORBIDDEN_GENERATED_GLOBS:
         for path in ROOT.glob(pattern):
-            if path.exists():
-                errors.append(f"generated build/CI report must not be committed: {path.relative_to(ROOT)}")
+            rel=path.relative_to(ROOT).as_posix()
+            if rel in tracked:
+                errors.append(f"generated build/CI report must not be committed: {rel}")
 
     legacy = ROOT / "chronology" / "index.html"
     if not legacy.exists():

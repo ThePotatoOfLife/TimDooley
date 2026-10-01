@@ -75,6 +75,12 @@ def _merge_group(records: list[dict], match_basis: str) -> dict:
             result["timestamp_utc"] = row["timestamp_utc"]
         if not result.get("date") and row.get("date"):
             result["date"] = row["date"]
+    status_id = str(result.get("status_id") or "").strip()
+    if status_id:
+        external_ids = list(result.get("external_ids") or [])
+        external_ids = [item for item in external_ids if item.get("scheme") != "x_status_id"]
+        external_ids.append({"scheme": "x_status_id", "value": status_id})
+        result["external_ids"] = sorted(external_ids, key=lambda item: (str(item.get("scheme") or ""), str(item.get("value") or "")))
     return result
 
 
