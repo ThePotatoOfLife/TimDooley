@@ -32,21 +32,17 @@ jobs:
         with:
           python-version: '3.x'
       - name: Validate explicit repository contracts
-        run: |
-          python scripts/validate_reader_richness.py
-          python scripts/validate_room_holdings.py
-          python scripts/validate_room_inhabitants.py
-          python scripts/validate_room_featured_objects.py
-          python scripts/validate_room_archive_drawers.py
-          python scripts/validate_corpus_surface_coverage.py
-          python scripts/validate_dwelling_featured_objects.py
-          python scripts/validate_public_reader_completeness.py
-          python scripts/validate_room_interfaces.py
-          python scripts/validate_legacy_fbi_redirects.py
-          python scripts/validate_seo_pipeline.py
-          python scripts/validate_repo_hygiene.py
-          python scripts/validate_tradition_routes.py
-          python scripts/validate_entity_facets.py
+        run: python scripts/run_explicit_contracts.py
+      - name: Upload explicit-contract diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-explicit-contracts
+          path: |
+            quality-report-explicit-contracts.json
+            .quality-logs/explicit-contracts/
+          if-no-files-found: warn
+          retention-days: 7
       - name: Run Core · House · Atlas quality group
         run: python scripts/run_quality_group.py core
       - name: Upload Core · House · Atlas diagnostics
