@@ -129,11 +129,17 @@ def main() -> int:
             'id="relations"',
             'id="search"',
             'Explore without searching',
-            'Choose a way in',
+            'The main tool',
+            'Put one Tim / Son event beside the biblical text',
         ),
         "traditions/bible/index.html",
         errors,
     )
+    compare_pos = page.find('id="compare"')
+    study_pos = page.find('id="study-tool"')
+    story_pos = page.find('id="story-first"')
+    if not (0 <= compare_pos < study_pos < story_pos):
+        errors.append("traditions/bible/index.html: comparison tool must remain before story/context layers")
     if page.find('src="../../app/bible-mining-wave19-loader.js"') > page.find('src="../../app/bible-dossier-loader.js"'):
         errors.append("traditions/bible/index.html: mining layer must load before dossier decorator so mergedRows sees wave19 relations")
     if page.find('src="../../app/bible-corpus-loader.js"') > page.find('src="../../app/bible-relation-redirects.js"'):
