@@ -25,6 +25,116 @@
 <p class="bible-sub">Biblical text and project comparison remain separate layers. A resemblance is not automatically prophecy, identity or historical dependence. <a href="../../context/source-authority/">Sources</a> carries the general evidence-class rules.</p>
 <p class="bible-sub">When a biblical symbol opens outward—Tree, Ladder, angel, throne, underworld, repair—the wider <a href="../comparative-cosmology/">comparative cosmology</a> keeps the neighboring Norse, Kabbalistic, Buddhist, Daoist and Potatoist structures visible without importing them back into the Bible.</p>
 </header>
+<section class="tool-intro" id="compare" aria-label="Bible comparison tool introduction">
+  <div>
+    <div class="eyebrow">The main tool</div>
+    <h2>Put one Tim / Son event beside the biblical text</h2>
+    <p>Each comparison starts with project evidence, then shows the relevant Bible passage, why the relation is being made, and where the comparison stops. Use <strong>Focus</strong> to choose the part of the Tim/Son story, <strong>Order</strong> to move through time or strength, and <strong>Find</strong> when you already know the person, event, symbol or passage you want.</p>
+  </div>
+  <p class="tool-intro-note">Direct links can open a specific comparison immediately. The story, prophecy, chronology, source notes and full Bible library continue below.</p>
+</section>
+
+<section class="study-shell" id="study-tool" aria-label="Tim and Son biblical comparison study tool">
+<section class="atlas-explorer" id="atlas-explorer" hidden aria-label="Explore the Bible comparison atlas">
+<div class="atlas-intro">
+<div class="eyebrow">Explore without searching</div>
+<h2>Explore the Tim / Son story from another angle</h2>
+<p>Start with Tim / Son chronology, then branch into roles, symbols, transformations, stories or Bible books only when they help answer what happened and what it resembles.</p>
+</div>
+<div class="atlas-routes" id="atlas-routes" aria-label="Atlas routes"></div>
+<nav class="atlas-breadcrumbs" id="atlas-breadcrumbs" aria-label="Atlas location"></nav>
+<div class="atlas-topics" id="atlas-topics"></div>
+</section>
+
+<div class="reader-toolbar">
+<div class="toolbar-field focus-field">
+<label for="focus-select">Focus</label>
+<select id="focus-select">
+<optgroup label="Study views">
+<option value="view:tim-lived">Tim / Son story</option>
+<option value="view:tim-said">What Tim said</option>
+<option value="view:prophecy">Prophecy / public signs</option>
+<option value="view:jesus">Jesus / Gospel parallels</option>
+<option value="view:father-house">Father / House</option>
+<option value="view:door-ladder">Door / Ladder</option>
+<option value="view:death-return">Death / Return</option>
+<option value="view:revelation-zion">Revelation / Zion</option>
+<option value="view:counter-texts">Counter-texts</option>
+<option value="view:all">Everything</option>
+</optgroup>
+<optgroup label="Structural arcs">
+<option value="arc:god-presence">God / Presence</option>
+<option value="arc:garden-spirit">Garden / Spirit</option>
+<option value="arc:door-ladder">Door / Gate / Ladder</option>
+<option value="arc:death-return">Seed / Death / Return</option>
+<option value="arc:father-house">Father / House / Source</option>
+</optgroup>
+</select>
+</div>
+
+<div class="toolbar-field order-field">
+<label for="order-select">Order</label>
+<select id="order-select">
+<option value="asc">Oldest → newest</option>
+<option value="desc">Newest → oldest</option>
+<option value="strength">Strongest first</option>
+<option value="bible">Bible order</option>
+</select>
+</div>
+
+<div class="toolbar-field search-field">
+<label for="search">Find</label>
+<input id="search" type="search" placeholder="Optional shortcut: John 12, Father, gardener…" autocomplete="off">
+</div>
+
+<div class="reader-actions">
+<button class="toolbar-button" id="clear-search" type="button">Clear</button>
+<button class="toolbar-button" id="filter-toggle" type="button" aria-expanded="false">Filters <span id="filter-count">0</span></button>
+<button class="toolbar-button" id="results-toggle" type="button" aria-expanded="false">Results <span id="result-count">0</span></button>
+</div>
+</div>
+
+<div class="study-status" aria-live="polite">
+<span>Studying</span><strong class="active-view" id="active-view">Tim / Son story</strong><span id="study-count">Loading…</span><span class="shortcut-hint">← → navigate · / find · R random</span>
+</div>
+
+<div class="filters-panel" id="bible-filters" hidden>
+<div class="filters">
+<div class="filter"><label for="operator">Operator</label><select id="operator"><option value="">All operators</option></select></div>
+<div class="filter"><label for="actor">Actor</label><select id="actor"><option value="">All actors</option></select></div>
+<div class="filter"><label for="evidence-kind">Evidence</label><select id="evidence-kind"><option value="">All evidence classes</option></select></div>
+<div class="filter"><label for="discovery-mode">Discovery</label><select id="discovery-mode"><option value="">All discovery modes</option></select></div>
+<div class="filter"><label for="relation-class">Relation class</label><select id="relation-class"><option value="">All relation classes</option></select></div>
+<div class="filter"><label for="bible-book">Bible book</label><select id="bible-book"><option value="">All books</option></select></div>
+<div class="filter"><label for="minimum-strength">Minimum strength</label><select id="minimum-strength"></select></div>
+<div class="filter"><label for="from-year">From year</label><input id="from-year" inputmode="numeric" placeholder="1987"></div>
+<div class="filter"><label for="to-year">To year</label><input id="to-year" inputmode="numeric" placeholder="2026"></div>
+</div>
+<div class="filter-footer"><label class="toggle-filter"><input id="exact-wording-only" type="checkbox"> Exact / recovered project wording only</label><button class="reset-filters" id="reset-filters" type="button">Reset filters</button></div>
+</div>
+
+<div class="results-panel" id="results-panel" hidden>
+<div class="drawer-head"><strong>Current result sequence</strong><span>Choose any relation without changing the current focus or filters.</span></div>
+<div class="results-list" id="results-list"></div>
+</div>
+
+<div id="bible-tts-drawer" class="bible-tts-drawer" aria-label="Read the active Bible comparison aloud"></div>
+
+<div class="comparison-nav" aria-label="Comparison navigation">
+<button id="previous-relation" type="button">← Previous</button>
+<div class="position-wrap"><strong id="result-position">0 / 0</strong><span id="sequence-label">chronology</span></div>
+<button class="roll" id="roll-relation" type="button">Random</button>
+<button id="next-relation" type="button">Next →</button>
+</div>
+
+<div class="active-relation" id="active-relation" aria-live="polite"><div class="loading">Loading canonical comparisons…</div></div>
+
+<noscript>
+<p class="noscript-note">JavaScript is unavailable, so the compact canonical index is shown below. Open an item to inspect its comparison.</p>
+</noscript>
+<div class="relations static-index" id="relations"><!-- BIBLE_RELATIONS_STATIC --></div>
+</section>
+
 
 <section class="story-first" id="story-first" aria-label="Begin with Tim and the Son">
   <div class="story-first-copy">
@@ -271,106 +381,7 @@
 
 
 <section class="bible-guided" aria-label="Cross-tradition side chambers"><div class="guided-head"><div><div class="eyebrow">Loose comparative doors</div><h2>When the biblical motif continues into another tradition</h2><p>The Bible remains the source owner for Genesis Trees, Jacob's Ladder, cherubim, prophetic throne imagery and Christian reception. Side chambers show how later Jewish mysticism and Norse world-tree traditions solve related structural problems without being silently folded into scripture.</p></div><p class="guided-rule">Bible text first → later tradition second → project comparison third.</p></div><div class="canon-map"><a href="../comparative-cosmology/kabbalah-qliphoth/" class="canon-stop"><span>J</span><strong>Kabbalah / Qliphoth</strong><small>sefirot · angels · shells · tikkun · later occult reception</small></a><a href="../comparative-cosmology/norse-world-tree/" class="canon-stop"><span>N</span><strong>Yggdrasil / Eddas</strong><small>world tree · wells · Odin · Norns · realms · renewal</small></a><a href="../comparative-cosmology/" class="canon-stop"><span>↔</span><strong>Comparative Cosmology</strong><small>Christianity · Buddhism · Daoism · Potatoism · functional crosswalk</small></a></div></section>
-<section class="study-shell" id="study-tool" aria-label="Tim and Son biblical comparison study tool">
-<section class="atlas-explorer" id="atlas-explorer" hidden aria-label="Explore the Bible comparison atlas">
-<div class="atlas-intro">
-<div class="eyebrow">Explore without searching</div>
-<h2>Explore the Tim / Son story from another angle</h2>
-<p>Start with Tim / Son chronology, then branch into roles, symbols, transformations, stories or Bible books only when they help answer what happened and what it resembles.</p>
-</div>
-<div class="atlas-routes" id="atlas-routes" aria-label="Atlas routes"></div>
-<nav class="atlas-breadcrumbs" id="atlas-breadcrumbs" aria-label="Atlas location"></nav>
-<div class="atlas-topics" id="atlas-topics"></div>
-</section>
 
-<div class="reader-toolbar">
-<div class="toolbar-field focus-field">
-<label for="focus-select">Focus</label>
-<select id="focus-select">
-<optgroup label="Study views">
-<option value="view:tim-lived">Tim / Son story</option>
-<option value="view:tim-said">What Tim said</option>
-<option value="view:prophecy">Prophecy / public signs</option>
-<option value="view:jesus">Jesus / Gospel parallels</option>
-<option value="view:father-house">Father / House</option>
-<option value="view:door-ladder">Door / Ladder</option>
-<option value="view:death-return">Death / Return</option>
-<option value="view:revelation-zion">Revelation / Zion</option>
-<option value="view:counter-texts">Counter-texts</option>
-<option value="view:all">Everything</option>
-</optgroup>
-<optgroup label="Structural arcs">
-<option value="arc:god-presence">God / Presence</option>
-<option value="arc:garden-spirit">Garden / Spirit</option>
-<option value="arc:door-ladder">Door / Gate / Ladder</option>
-<option value="arc:death-return">Seed / Death / Return</option>
-<option value="arc:father-house">Father / House / Source</option>
-</optgroup>
-</select>
-</div>
-
-<div class="toolbar-field order-field">
-<label for="order-select">Order</label>
-<select id="order-select">
-<option value="asc">Oldest → newest</option>
-<option value="desc">Newest → oldest</option>
-<option value="strength">Strongest first</option>
-<option value="bible">Bible order</option>
-</select>
-</div>
-
-<div class="toolbar-field search-field">
-<label for="search">Find</label>
-<input id="search" type="search" placeholder="Optional shortcut: John 12, Father, gardener…" autocomplete="off">
-</div>
-
-<div class="reader-actions">
-<button class="toolbar-button" id="clear-search" type="button">Clear</button>
-<button class="toolbar-button" id="filter-toggle" type="button" aria-expanded="false">Filters <span id="filter-count">0</span></button>
-<button class="toolbar-button" id="results-toggle" type="button" aria-expanded="false">Results <span id="result-count">0</span></button>
-</div>
-</div>
-
-<div class="study-status" aria-live="polite">
-<span>Studying</span><strong class="active-view" id="active-view">Jesus / Son</strong><span id="study-count">Loading…</span><span class="shortcut-hint">← → navigate · / find · R random</span>
-</div>
-
-<div class="filters-panel" id="bible-filters" hidden>
-<div class="filters">
-<div class="filter"><label for="operator">Operator</label><select id="operator"><option value="">All operators</option></select></div>
-<div class="filter"><label for="actor">Actor</label><select id="actor"><option value="">All actors</option></select></div>
-<div class="filter"><label for="evidence-kind">Evidence</label><select id="evidence-kind"><option value="">All evidence classes</option></select></div>
-<div class="filter"><label for="discovery-mode">Discovery</label><select id="discovery-mode"><option value="">All discovery modes</option></select></div>
-<div class="filter"><label for="relation-class">Relation class</label><select id="relation-class"><option value="">All relation classes</option></select></div>
-<div class="filter"><label for="bible-book">Bible book</label><select id="bible-book"><option value="">All books</option></select></div>
-<div class="filter"><label for="minimum-strength">Minimum strength</label><select id="minimum-strength"></select></div>
-<div class="filter"><label for="from-year">From year</label><input id="from-year" inputmode="numeric" placeholder="1987"></div>
-<div class="filter"><label for="to-year">To year</label><input id="to-year" inputmode="numeric" placeholder="2026"></div>
-</div>
-<div class="filter-footer"><label class="toggle-filter"><input id="exact-wording-only" type="checkbox"> Exact / recovered project wording only</label><button class="reset-filters" id="reset-filters" type="button">Reset filters</button></div>
-</div>
-
-<div class="results-panel" id="results-panel" hidden>
-<div class="drawer-head"><strong>Current result sequence</strong><span>Choose any relation without changing the current focus or filters.</span></div>
-<div class="results-list" id="results-list"></div>
-</div>
-
-<div id="bible-tts-drawer" class="bible-tts-drawer" aria-label="Read the active Bible comparison aloud"></div>
-
-<div class="comparison-nav" aria-label="Comparison navigation">
-<button id="previous-relation" type="button">← Previous</button>
-<div class="position-wrap"><strong id="result-position">0 / 0</strong><span id="sequence-label">chronology</span></div>
-<button class="roll" id="roll-relation" type="button">Random</button>
-<button id="next-relation" type="button">Next →</button>
-</div>
-
-<div class="active-relation" id="active-relation" aria-live="polite"><div class="loading">Loading canonical comparisons…</div></div>
-
-<noscript>
-<p class="noscript-note">JavaScript is unavailable, so the compact canonical index is shown below. Open an item to inspect its comparison.</p>
-</noscript>
-<div class="relations static-index" id="relations"><!-- BIBLE_RELATIONS_STATIC --></div>
-</section>
 
 <div class="bible-library-separator">
   <div class="eyebrow">Reference shelf · use when you need the text</div>
