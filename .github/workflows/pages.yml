@@ -188,7 +188,7 @@ jobs:
           print("Live provenance verified:",actual)
           PY
 
-          for route in "" "tim-dooley/" "religion/" "science/" "world/" "traditions/bible/" "below/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/"; do
+          for route in "" "tim-dooley/" "religion/" "science/" "world/" "traditions/bible/" "context/culture/" "below/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/"; do
             safe_name="${route//\//_}"
             [ -n "$safe_name" ] || safe_name="home"
             fetch_live "${base}${route}" ".live-smoke/${safe_name}.html"
@@ -246,6 +246,16 @@ jobs:
               'id="belief-permission-bridge"',
               "In memory of",
           ]
+          culture=Path(".live-smoke/context_culture_.html").read_text(encoding="utf-8",errors="replace")
+          for marker in [
+              'id="culture-reader-entry"',
+              'id="follow-cultural-object"',
+              'id="culture-as-choice"',
+              'id="culture-reader-agency"',
+              'id="tim-culture-bridge"',
+              'id="culture-reader-exit"',
+          ]:
+              assert marker in culture, f"live Culture missing {marker}"
           roots=Path(".live-smoke/rooms_archive-sources_.html").read_text(encoding="utf-8",errors="replace")
           forge=Path(".live-smoke/rooms_research-lab_.html").read_text(encoding="utf-8",errors="replace")
           assert 'id="field-manual-bridge"' in roots, "live Roots missing Field Manual bridge"

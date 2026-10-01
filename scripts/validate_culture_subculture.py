@@ -15,6 +15,11 @@ def main()->int:
     owner_path=ROOT/"knowledge/culture/culture-subculture-field-model.json"
 
     for marker in (
+        'id="culture-reader-entry"',
+        "Culture is not something other people have",
+        'id="culture-purpose"',
+        'id="follow-cultural-object"',
+        'id="culture-as-choice"',
         'id="culture-field-checklist"',
         "Eight things make a culture legible",
         "Subculture is a relation, not a sealed box",
@@ -33,6 +38,10 @@ def main()->int:
         "Ritualized scripts can become norms without anyone writing a rulebook",
         'id="information-control-stack"',
         "Who controls the story depends on where in the chain they have leverage",
+        'id="culture-reader-agency"',
+        'id="tim-culture-bridge"',
+        'id="culture-reader-exit"',
+        "Tim Dooley thinks culture is what repetition teaches the next person.",
     ):
         if marker not in page:
             errors.append(f"Culture reader missing field-model marker: {marker}")
@@ -55,6 +64,9 @@ def main()->int:
         for key in ("participation_vs_identification","centrality_vs_belonging","boundary_vs_seal","role_vs_essence"):
             if key not in distinctions:
                 errors.append(f"culture field model missing distinction: {key}")
+        for key in ("reader_purpose","reader_journey","cultural_object_trace","reader_agency","conflict_to_culture","reader_exit"):
+            if not owner.get(key):
+                errors.append(f"culture field model missing reader-first layer: {key}")
 
     if errors:
         print("CULTURE / SUBCULTURE FIELD MODEL: FAIL")
