@@ -29,19 +29,32 @@ CHECKS = [
 ]
 
 def main() -> int:
+    # Hygiene must inspect the checkout before this runner creates diagnostic directories.
+    hygiene_rel = "scripts/validate_repo_hygiene.py"
+    hygiene_preflight = subprocess.run(
+        ["python", hygiene_rel],
+        cwd=ROOT,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
     LOG_DIR.mkdir(parents=True, exist_ok=True)
     rows = []
     for index, rel in enumerate(CHECKS, start=1):
         started = time.time()
         log = LOG_DIR / ("%02d-%s.log" % (index, Path(rel).stem))
-        proc = subprocess.run(
-            ["python", rel],
-            cwd=ROOT,
-            text=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            check=False,
-        )
+        if rel == hygiene_rel:
+            proc = hygiene_preflight
+        else:
+            proc = subprocess.run(
+                ["python", rel],
+                cwd=ROOT,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                check=False,
+            )
         log.write_text(proc.stdout or "", encoding="utf-8")
         row = {
             "validator": rel,
