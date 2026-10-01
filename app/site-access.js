@@ -65,6 +65,7 @@
     {id:'public-witness',label:'Public Witness',route:'/tim-dooley/public-witness/',kind:'direct',note:'Public record and witness material',aliases:['public witness','public record','witness']},
     {id:'science',label:'Science',route:'/science/',kind:'project',note:'Models, evidence, falsifiers',aliases:['science','physics','biology','research']},
     {id:'religion',label:'Religion',route:'/religion/',kind:'project',note:'Theology and comparisons',aliases:['religion','bible','trinity','theology']},
+    {id:'bible-comparison',label:'Tim, the Son & the Bible',route:'/traditions/bible/',kind:'project',note:'Life-first Bible, Jesus/Son, prophecy and counter-text comparison',aliases:['bible comparison','jesus','jesus son','son','thomas','twin','crucifixion','resurrection','gospel parallels','tim son bible']},
     {id:'hours',label:'100,000 Hours',route:'/tim-dooley/100000-hours/',kind:'direct',note:'Public-presence model',aliases:['100000 hours','100,000 hours','streaming','livestream']}
   ];
   let curatedEntries=[...fallbackEntries];
