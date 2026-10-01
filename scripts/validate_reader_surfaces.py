@@ -231,8 +231,13 @@ def main() -> int:
     compare_pos = bible.find('id="compare"')
     study_pos = bible.find('id="study-tool"')
     story_pos = bible.find('id="story-first"')
-    if not (0 <= compare_pos < study_pos < story_pos):
-        errors.append("Bible comparison tool must be the first substantive reader surface after the page header")
+    masthead_pos = bible.find('class="comparison-masthead"')
+    if not (0 <= study_pos < compare_pos < masthead_pos < story_pos):
+        errors.append("Bible study shell must own the first substantive reader surface")
+    if 'class="bible-header"' in bible or 'class="tool-intro"' in bible:
+        errors.append("Bible page must not put legacy hero/tool-intro blocks ahead of Tim/Son")
+    require(bible_js, 'class="tim-first"', "app/bible-study.js", errors)
+    require(bible_js, 'class="bible-under"', "app/bible-study.js", errors)
     require_absent(bible, 'class="featured-arcs"', "traditions/bible/index.html", errors)
     require_absent(bible, 'id="shuffle-comparisons"', "traditions/bible/index.html", errors)
     require(bible_js, "biblical-syncretism-field.json", "app/bible-study.js", errors)
