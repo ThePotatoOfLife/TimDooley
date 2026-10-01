@@ -94,10 +94,25 @@
       .filter(dwelling=>(dwelling.primary_level||'plane')===levelId&&roomById[dwelling.id])
       .map((dwelling,index)=>({
         ...roomById[dwelling.id],
+        title:dwelling.header_label||roomById[dwelling.id].title,
         homepage:dwelling.homepage||('/rooms/'+dwelling.id+'/'),
         primaryLevel:dwelling.primary_level||'plane',
         projections:Array.isArray(dwelling.projections)?[...dwelling.projections]:[levelId],
         isPrimaryProjection:true,
+        projectionOrder:index
+      }));
+  }
+
+  function landmarksForLevel(levelId,projection){
+    const level=(projection?.levels||[]).find(row=>row?.id===levelId);
+    return (level?.landmarks||[])
+      .filter(row=>row&&row.show_in_header===true&&row.route)
+      .map((row,index)=>({
+        id:row.id,
+        title:row.header_label||row.label||row.id,
+        homepage:row.route,
+        primaryLevel:levelId,
+        isFloorLandmark:true,
         projectionOrder:index
       }));
   }
@@ -204,8 +219,23 @@
         roomRail.replaceChildren();
         return;
       }
+      const landmarks=landmarksForLevel(selectedLevel,projection);
       const rows=roomsForLevel(selectedLevel,projection,roomContract);
       const fragment=document.createDocumentFragment();
+      const currentRoute=normalizeRoute(location.pathname,new URL(context.siteBase).pathname);
+      for(const landmark of landmarks){
+        const link=document.createElement('a');
+        link.className='site-elevator-room site-elevator-landmark';
+        link.href=siteHref(landmark.homepage,context.siteBase);
+        link.textContent=landmark.title||landmark.id;
+        link.dataset.landmarkId=landmark.id;
+        const targetRoute=normalizeRoute(new URL(link.href,document.baseURI).pathname,new URL(context.siteBase).pathname);
+        if(selectedLevel===spatial.levelId&&currentRoute===targetRoute){
+          link.setAttribute('aria-current','location');
+          link.classList.add('is-active');
+        }
+        fragment.appendChild(link);
+      }
       for(const room of rows){
         const link=document.createElement('a');
         link.className='site-elevator-room is-primary';
@@ -219,7 +249,7 @@
         fragment.appendChild(link);
       }
       roomRail.replaceChildren(fragment);
-      roomRail.hidden=!rows.length;
+      roomRail.hidden=!(landmarks.length||rows.length);
     };
 
     const linkSpatialTarget=link=>{
