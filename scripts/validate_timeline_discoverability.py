@@ -44,6 +44,33 @@ if event_count < 25:
 if 'class="static-events"' not in timeline or '.static-events:before' not in timeline:
     errors.append("Timeline static chronology must retain visible vertical-rail styling")
 
+
+js=read("app/long-chronology.js")
+css=read("app/long-chronology.css")
+for marker in (
+    'data-mode="bible"',
+    'Advanced filters',
+    'All domains',
+    'All faith families',
+    'All event types',
+    'chron-placeholder',
+):
+    if marker not in timeline:
+        errors.append(f"Timeline explorer missing progressive/readable marker: {marker}")
+
+for marker in (
+    "legacyView==='bible'",
+    "state.mode==='bible'",
+    "scripture-at-time",
+    "biblical-parallel",
+    "biblical-unlock",
+):
+    if marker not in js:
+        errors.append(f"Timeline Bible mode missing runtime marker: {marker}")
+
+if ".chron-advanced>summary" not in css or ".chron-presetbar{display:grid" not in css:
+    errors.append("Timeline long chronology must keep simplified progressive control styling")
+
 if errors:
     print("Timeline discoverability validation failed:")
     for e in errors:
