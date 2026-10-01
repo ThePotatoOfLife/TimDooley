@@ -1,12 +1,12 @@
 (()=>{
 'use strict';
 const routes=[
-{id:'stories',label:'Stories'},
+{id:'timeline',label:'Tim / Son Story'},
 {id:'roles',label:'People & Roles'},
+{id:'actions',label:'Changes & Transformations'},
 {id:'symbols',label:'Symbols & Images'},
-{id:'actions',label:'Actions & Transformations'},
-{id:'books',label:'Bible Books'},
-{id:'timeline',label:'Tim / Son Timeline'}
+{id:'stories',label:'Biblical Story Parallels'},
+{id:'books',label:'Bible Books'}
 ];
 const curatedTopics={
  roles:[
