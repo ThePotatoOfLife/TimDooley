@@ -54,6 +54,11 @@ def main()->int:
         "actions/download-artifact@v5",
         "name: validated-pages-site",
         "run-id:",
+        "Check quality run is still current main",
+        "id: freshness",
+        "steps.freshness.outputs.deploy_allowed == 'true'",
+        "/branches/main",
+        "Stale quality run; deployment suppressed",
         "Verify validated artifact provenance",
         "_site/build-provenance.json",
         "Upload exact validated Pages artifact",
@@ -79,6 +84,7 @@ def main()->int:
     print("CI CONTRACT VALIDATION PASSED")
     print("- quality summary depends on core, world_map, content and build")
     print("- stale quality runs cancel during rapid pushes")
+    print("- Pages re-checks current main before deploying, so out-of-order Actions runs cannot roll production backward")
     print("- quality build uploads the exact validated-pages-site artifact")
     print("- Pages downloads and verifies that artifact instead of rebuilding")
     print("- manual dispatch remains an explicit operator escape hatch")
