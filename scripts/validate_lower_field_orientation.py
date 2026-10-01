@@ -66,6 +66,8 @@ def main()->int:
         'id="culture-choice-consequence"',
         'id="research-bridge"',
         'id="reader-takeaway"',
+        'id="case-grammar"',
+        'id="below-exit-routes"',
         'id="field-notes"',
         'id="professional-mythic-crosswalk"',
         'id="tim-current-questions"',
@@ -140,7 +142,7 @@ def main()->int:
             errors.append("lower conflict/repair casebook needs explicit repair outcomes")
 
     shadow=read("shadow-farm/index.html")
-    for marker in ('id="tim-expert-reading"','id="belief-permission-bridge"','id="role-responsibility-matrix"','id="farm-primary-relation"','id="kiwi-farms-public-record"','id="conflict-language-thresholds"','id="worked-overlap-cases"','id="harm-pattern-bridge"',"Use strong words only when the evidence earns them","Read the verbs before the animal.","How a role is learned"):
+    for marker in ('id="tim-expert-reading"','id="belief-permission-bridge"','id="role-responsibility-matrix"','id="farm-primary-relation"','id="tim-countermethod"','id="kiwi-farms-public-record"','id="conflict-language-thresholds"','id="worked-overlap-cases"','id="harm-pattern-bridge"',"Use strong words only when the evidence earns them","Read the verbs before the animal.","How a role is learned"):
         if marker not in shadow:
             errors.append(f"Shadow Farm missing conflict-discipline marker: {marker}")
 

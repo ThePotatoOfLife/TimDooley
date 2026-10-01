@@ -1,6 +1,6 @@
 {
   "id": "spudlight-field-manual",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "updated": "2026-10-01",
   "title": "The Spudlight Field Manual",
   "status": "project method / interpretive framework",
@@ -532,5 +532,83 @@
       "mercy",
       "independent future capacity"
     ]
-  }
+  },
+  "three_voice_model": {
+    "expert": {
+      "function": "resolution",
+      "test": "separate mechanisms, claim types, time and degree"
+    },
+    "teacher": {
+      "function": "transfer",
+      "test": "lesson still works when project-specific proper nouns are removed"
+    },
+    "mythmaker": {
+      "function": "compression",
+      "test": "symbol translates back into observable human behavior"
+    },
+    "failure_modes": {
+      "expert_without_teacher": "sterile taxonomy",
+      "teacher_without_expert": "slogan",
+      "myth_without_translation": "self-sealing lore"
+    }
+  },
+  "reputation_model": {
+    "definition": "versioned distributed social memory",
+    "healthy_components": [
+      "event",
+      "provenance",
+      "consequence",
+      "reply",
+      "correction",
+      "later conduct",
+      "current status",
+      "role expiry"
+    ],
+    "failure_modes": [
+      "compression",
+      "inheritance without relationship",
+      "update lag",
+      "search asymmetry",
+      "status capture",
+      "permanent role"
+    ],
+    "formula": "identity capture = salient event + repeated summary + search persistence - update - expiry"
+  },
+  "depth_sections": {
+    "Sigma-1": "Soil / material consequence",
+    "Sigma-2": "Roots / provenance and dependencies",
+    "Sigma-3": "Swamp / recurrence and entanglement",
+    "Sigma-4": "Deep basin / difficult investigation and preserved uncertainty",
+    "return": "deep context → provenance → clarified recurrence → repaired consequence → operative present"
+  },
+  "case_grammar": {
+    "entity": "who/what is studied",
+    "claim": "what is asserted, by whom and when",
+    "relationship": "documented connection/event",
+    "case": "formal investigative/moderation/legal/adjudicative process if any",
+    "access_state": "who can inspect underlying information",
+    "evidentiary_status": "support and uncertainty for the proposition",
+    "legal_status": "formal jurisdiction-specific action/finding",
+    "interpretation": "Tim/project/outside synthesis after factual layers remain typed"
+  },
+  "return_outputs": [
+    "return as knowledge",
+    "return as protection",
+    "return as release",
+    "return as cultivation",
+    "return as refusal / rejection",
+    "return as witness / proportional memory"
+  ],
+  "field_outputs": [
+    "field interpretation",
+    "case map",
+    "source tree",
+    "role history",
+    "severity ledger",
+    "incentive map",
+    "translation tool",
+    "threshold warning",
+    "teaching object",
+    "repair route"
+  ]
 }
