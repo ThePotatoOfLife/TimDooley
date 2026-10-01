@@ -114,7 +114,7 @@ function updateUrl(){
   history.replaceState(null,'',url);
 }
 
-function renderSelected(){
+function renderSelected(update=true){
   const book=state.selected;
   const panel=$('#bible-library-reader');
   if(!book){panel.hidden=true;return}
@@ -134,7 +134,7 @@ function renderSelected(){
     ?'Exact chapter text opens from the <strong>World English Bible</strong> public-domain source. The 80-book catalogue itself records the <strong>1611 KJV arrangement</strong>; these source layers are deliberately not conflated.'
     :'This book is catalogued in the <strong>1611 KJV Apocrypha</strong> section, but it is not in the current 66-book WEB reader index. The atlas keeps that difference visible rather than substituting another text silently.';
   document.querySelectorAll('[data-book]').forEach(button=>button.classList.toggle('is-selected',button.dataset.book===book.id));
-  updateUrl();
+  if(update)updateUrl();
 }
 
 function selectBook(id,chapter=1,update=true){
@@ -142,10 +142,27 @@ function selectBook(id,chapter=1,update=true){
   if(!book)return;
   state.selected=book;
   state.chapter=Math.min(Math.max(Number(chapter)||1,1),book.chapters);
-  renderSelected();
+  renderSelected(update);
   renderBooks();
-  if(update)updateUrl();
 }
+
+
+function relationReference(reference){
+  const raw=String(reference||'').trim();
+  const match=raw.match(/^((?:[1-3]\s+)?[A-Za-z]+(?:\s+[A-Za-z]+)?)\s+(\d+)/);
+  if(!match||!state.catalog)return false;
+  const wanted=match[1].toLowerCase();
+  const aliases={'psalm':'psalms','song of songs':'song-of-solomon','song of solomon':'song-of-solomon'};
+  const id=aliases[wanted]||wanted.replace(/\s+/g,'-');
+  const chapter=Number(match[2])||1;
+  if(!state.catalog.books.some(book=>book.id===id))return false;
+  selectBook(id,chapter,false);
+  return true;
+}
+
+window.addEventListener('bible:relation-reference',event=>{
+  relationReference(event.detail?.reference);
+});
 
 function openSelected(){
   if(!state.selected||!webReadable(state.selected))return;
