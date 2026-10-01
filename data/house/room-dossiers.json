@@ -1,5 +1,5 @@
 {
-  "version": "3.5.2",
+  "version": "3.5.3",
   "updated": "2026-10-01",
   "authority": "house-room-dossiers",
   "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
@@ -27,59 +27,52 @@
         "primary_file_count": 9,
         "featured": [
           {
-            "id": "fbi-incidents",
-            "path": "knowledge/cia/incidents/index.json",
-            "kind": "dated character incident index"
-          },
-          {
-            "id": "fbi-bonds",
-            "path": "knowledge/cia/associations/network.json",
-            "kind": "figure relationship / co-presence network"
-          },
-          {
-            "id": "cia-manifest",
-            "path": "knowledge/cia/manifest.json",
-            "kind": "character dossier bureau manifest"
-          },
-          {
-            "id": "character-archive-v2",
-            "path": "knowledge/story/character-archive-v2.json",
-            "kind": "person × archetype × time archive"
-          },
-          {
-            "id": "character-symbolic-role-assignments",
-            "path": "knowledge/story/character-symbolic-role-assignments.json",
-            "kind": "scene-bounded named role assignments"
-          },
-          {
-            "id": "potatoverse-cast-role-ecology",
-            "path": "knowledge/world/potatoverse-cast-role-ecology.json",
-            "kind": "unified being × role × archetype grammar"
-          },
-          {
-            "id": "potato-of-life-deep-structure",
             "path": "knowledge/core/potato-of-life-deep-structure.json",
-            "kind": "Great Book and developmental deep structure"
+            "id": "potato-of-life-deep-structure",
+            "kind": "Great Book and developmental deep structure",
+            "basis": "core-index-branch"
           },
           {
-            "id": "potatoverse-master-framework",
             "path": "knowledge/core/potatoverse-master-framework.json",
-            "kind": "canonical master synthesis"
+            "id": "potatoverse-master-framework",
+            "kind": "canonical master synthesis",
+            "basis": "exact-owner"
           },
           {
-            "id": "tim-dooley",
             "path": "knowledge/core/tim-dooley.json",
-            "kind": "central identity owner"
+            "id": "tim-dooley",
+            "kind": "central identity owner",
+            "basis": "exact-owner"
           },
           {
-            "id": "tim-role-synthesis",
             "path": "knowledge/core/tim-role-synthesis.json",
-            "kind": "role development and center/service synthesis"
+            "id": "tim-role-synthesis",
+            "kind": "role development and center/service synthesis",
+            "basis": "core-index-branch"
           },
           {
-            "id": "tim-god-question",
             "path": "knowledge/theology/tim-god-question.json",
-            "kind": "dated Godhood evidence and interpretation"
+            "id": "tim-god-question",
+            "kind": "dated Godhood evidence and interpretation",
+            "basis": "core-index-branch"
+          },
+          {
+            "path": "knowledge/core/divine-identity-project-direction.json",
+            "id": "divine-identity-project-direction",
+            "kind": "room holding",
+            "basis": "core-topic"
+          },
+          {
+            "path": "knowledge/core/potato-of-life.json",
+            "id": "potato-of-life",
+            "kind": "room holding",
+            "basis": "core-topic"
+          },
+          {
+            "path": "knowledge/core/tim-identity-ontology.json",
+            "id": "tim-identity-ontology",
+            "kind": "room holding",
+            "basis": "core-topic"
           }
         ]
       },
@@ -268,29 +261,52 @@
         "primary_file_count": 31,
         "featured": [
           {
-            "id": "heaven-spirit-father",
             "path": "knowledge/core/heaven-spirit-father.json",
-            "kind": "upper-domain theology"
+            "id": "heaven-spirit-father",
+            "kind": "upper-domain theology",
+            "basis": "exact-owner"
           },
           {
-            "id": "spirit-context-atlas",
             "path": "knowledge/spirit/spirit-context-atlas.json",
-            "kind": "comparative philosophy/theology of relation and process"
+            "id": "spirit-context-atlas",
+            "kind": "comparative philosophy/theology of relation and process",
+            "basis": "core-index-branch"
           },
           {
-            "id": "bible-overlap-census-gap-audit-wave17",
             "path": "knowledge/theology/bible-overlap-census-gap-audit-wave17.json",
-            "kind": "room holding"
+            "id": "bible-overlap-census-gap-audit-wave17",
+            "kind": "room holding",
+            "basis": "theology-family"
           },
           {
-            "id": "bible-overlap-concordance-computed-2026-09-11",
             "path": "knowledge/theology/bible-overlap-concordance-computed-2026-09-11.json",
-            "kind": "room holding"
+            "id": "bible-overlap-concordance-computed-2026-09-11",
+            "kind": "room holding",
+            "basis": "theology-family"
           },
           {
-            "id": "bible-overlap-network-analysis-method",
             "path": "knowledge/theology/bible-overlap-network-analysis-method.json",
-            "kind": "room holding"
+            "id": "bible-overlap-network-analysis-method",
+            "kind": "room holding",
+            "basis": "theology-family"
+          },
+          {
+            "path": "knowledge/theology/biblical-role-transfer-and-canonical-reversal-ledger.json",
+            "id": "biblical-role-transfer-and-canonical-reversal-ledger",
+            "kind": "room holding",
+            "basis": "theology-family"
+          },
+          {
+            "path": "knowledge/theology/biblical-theological-operator-grammar.json",
+            "id": "biblical-theological-operator-grammar",
+            "kind": "room holding",
+            "basis": "theology-family"
+          },
+          {
+            "path": "knowledge/theology/christian-theology-scholar-map.json",
+            "id": "christian-theology-scholar-map",
+            "kind": "room holding",
+            "basis": "theology-family"
           }
         ]
       },
@@ -486,29 +502,76 @@
         "primary_file_count": 23,
         "featured": [
           {
-            "id": "shadow-integration-overlay",
             "path": "knowledge/core/shadow-integration-overlay.json",
-            "kind": "cross-plane shadow/integration operator atlas"
+            "id": "shadow-integration-overlay",
+            "kind": "cross-plane shadow/integration operator atlas",
+            "basis": "P1 depth programme"
           },
           {
-            "id": "tree-branching-pruning-atlas",
             "path": "knowledge/core/tree-branching-pruning-atlas.json",
-            "kind": "project Tree branching/pruning atlas with plant-development context"
+            "id": "tree-branching-pruning-atlas",
+            "kind": "project Tree branching/pruning atlas with plant-development context",
+            "basis": "center-depth-programme"
           },
           {
-            "id": "root-system",
             "path": "knowledge/core/root-system.json",
-            "kind": "foundational ontology and vertical branching skeleton"
+            "id": "root-system",
+            "kind": "foundational ontology and vertical branching skeleton",
+            "basis": "exact-owner"
           },
           {
-            "id": "symbolic-relational-synthesis",
             "path": "knowledge/core/symbolic-relational-synthesis.json",
-            "kind": "cross-symbol grammar and transformation laws"
+            "id": "symbolic-relational-synthesis",
+            "kind": "cross-symbol grammar and transformation laws",
+            "basis": "core-index-branch"
           },
           {
-            "id": "vertical-potato-mountain-plane-atlas",
             "path": "knowledge/core/vertical-potato-mountain-plane-atlas.json",
-            "kind": "canonical vertical geometry and process field"
+            "id": "vertical-potato-mountain-plane-atlas",
+            "kind": "canonical vertical geometry and process field",
+            "basis": "core-index-branch"
+          },
+          {
+            "path": "knowledge/practice/potato-path.json",
+            "id": "potato-path",
+            "kind": "practical transformation sequence",
+            "basis": "core-index-branch"
+          },
+          {
+            "path": "knowledge/core/compass-straightedge-vesica-dual-axis-atlas.json",
+            "id": "compass-straightedge-vesica-dual-axis-atlas",
+            "kind": "room holding",
+            "basis": "core-remainder"
+          },
+          {
+            "path": "knowledge/core/debt-depth-ascent-rubble-synthesis.json",
+            "id": "debt-depth-ascent-rubble-synthesis",
+            "kind": "room holding",
+            "basis": "core-remainder"
+          },
+          {
+            "path": "data/house/operator-ownership-registry.json",
+            "id": "operator-ownership-registry",
+            "kind": "canonical operator routing and consolidation registry",
+            "basis": "house-authority"
+          },
+          {
+            "path": "data/house/plane-crossing-contract.json",
+            "id": "plane-crossing-contract",
+            "kind": "Plane Axis Cross crossing contract",
+            "basis": "house-authority"
+          },
+          {
+            "path": "knowledge/research/circle-field-research-synthesis-2026-09-20.json",
+            "id": "circle-field-research-synthesis",
+            "kind": "research rationale for circle center/interior/rim/overlap/trajectory",
+            "basis": "research-specialist"
+          },
+          {
+            "path": "knowledge/research/plane-crossing-research-synthesis-2026-09-20.json",
+            "id": "plane-crossing-research-synthesis",
+            "kind": "research rationale for Plane/frame/crossing/return section",
+            "basis": "research-specialist"
           }
         ]
       },
@@ -751,34 +814,52 @@
         "primary_file_count": 28,
         "featured": [
           {
-            "id": "knowledge-fork-discernment-atlas",
             "path": "knowledge/core/knowledge-fork-discernment-atlas.json",
-            "kind": "Knowledge-to-discernment routing atlas"
+            "id": "knowledge-fork-discernment-atlas",
+            "kind": "Knowledge-to-discernment routing atlas",
+            "basis": "P2 depth programme"
           },
           {
-            "id": "repair-forge-protocol",
             "path": "knowledge/core/repair-forge-protocol.json",
-            "kind": "Repair/Forge accountability and reintegration protocol"
+            "id": "repair-forge-protocol",
+            "kind": "Repair/Forge accountability and reintegration protocol",
+            "basis": "P2 depth programme"
           },
           {
-            "id": "garden-regime-mechanics",
             "path": "knowledge/core/garden-regime-mechanics.json",
-            "kind": "Garden generative-regime mechanics"
+            "id": "garden-regime-mechanics",
+            "kind": "Garden generative-regime mechanics",
+            "basis": "P2 depth programme"
           },
           {
-            "id": "fruit-consequence-evaluation-atlas",
             "path": "knowledge/core/fruit-consequence-evaluation-atlas.json",
-            "kind": "project-native consequence evaluation atlas"
+            "id": "fruit-consequence-evaluation-atlas",
+            "kind": "project-native consequence evaluation atlas",
+            "basis": "center-depth-programme"
           },
           {
-            "id": "dormancy-hidden-years-and-practical-theology",
             "path": "knowledge/core/dormancy-hidden-years-and-practical-theology.json",
-            "kind": "room holding"
+            "id": "dormancy-hidden-years-and-practical-theology",
+            "kind": "room holding",
+            "basis": "core-topic"
           },
           {
-            "id": "practice-ethics-repair-agency-atlas",
-            "path": "knowledge/ethics/practice-ethics-repair-agency-atlas.json",
-            "kind": "Practice, repair, agency and procedure atlas"
+            "path": "knowledge/core/garden-mud-orientation.json",
+            "id": "garden-mud-orientation",
+            "kind": "room holding",
+            "basis": "core-topic"
+          },
+          {
+            "path": "knowledge/core/gaze-ethic-observer-to-stewardship.json",
+            "id": "gaze-ethic-observer-to-stewardship",
+            "kind": "room holding",
+            "basis": "core-topic"
+          },
+          {
+            "path": "knowledge/core/gift-preparation-receptivity-sorting.json",
+            "id": "gift-preparation-receptivity-sorting",
+            "kind": "room holding",
+            "basis": "core-topic"
           }
         ]
       },
@@ -934,24 +1015,28 @@
         "primary_file_count": 4,
         "featured": [
           {
-            "id": "context-graph",
             "path": "knowledge/indexes/context-graph.json",
-            "kind": "curated cross-branch constellations"
+            "id": "context-graph",
+            "kind": "curated cross-branch constellations",
+            "basis": "core-index-branch"
           },
           {
-            "id": "inference-ledger",
             "path": "knowledge/indexes/inference-ledger.json",
-            "kind": "structured inference and epiphany method"
+            "id": "inference-ledger",
+            "kind": "structured inference and epiphany method",
+            "basis": "core-index-branch"
           },
           {
-            "id": "source-index",
             "path": "knowledge/indexes/source-index.json",
-            "kind": "canonical provenance routes and evidence classes"
+            "id": "source-index",
+            "kind": "canonical provenance routes and evidence classes",
+            "basis": "exact-owner"
           },
           {
-            "id": "archive-epistemics",
             "path": "knowledge/philosophy/archive-epistemics.json",
-            "kind": "archive evidence doctrine"
+            "id": "archive-epistemics",
+            "kind": "archive evidence doctrine",
+            "basis": "exact-owner"
           }
         ]
       },
@@ -1133,19 +1218,10 @@
         "primary_file_count": 1,
         "featured": [
           {
-            "id": "social-presence-ledger-2024-2025",
-            "path": "knowledge/story/social-presence-ledger-2024-2025.json",
-            "kind": "dated Chronicle social-presence recovery"
-          },
-          {
-            "id": "social-presence-memory-integration-2024-2025",
-            "path": "knowledge/indexes/social-presence-memory-integration-2024-2025.json",
-            "kind": "cross-Room recovery/promotion spine"
-          },
-          {
-            "id": "conversation-recovery-inventory",
             "path": "knowledge/indexes/conversation-recovery-inventory.json",
-            "kind": "room holding"
+            "id": "conversation-recovery-inventory",
+            "kind": "room holding",
+            "basis": "exact-owner"
           }
         ]
       },
@@ -1298,34 +1374,52 @@
         "primary_file_count": 21,
         "featured": [
           {
-            "id": "conversation-archaeology-miscellany-march-september-2026",
             "path": "knowledge/timeline/conversation-archaeology-miscellany-march-september-2026.json",
-            "kind": "room holding"
+            "id": "conversation-archaeology-miscellany-march-september-2026",
+            "kind": "room holding",
+            "basis": "timeline-topic"
           },
           {
-            "id": "conversation-archaeology-wave-005",
             "path": "knowledge/timeline/conversation-archaeology-wave-005.json",
-            "kind": "room holding"
+            "id": "conversation-archaeology-wave-005",
+            "kind": "room holding",
+            "basis": "timeline-topic"
           },
           {
-            "id": "conversation-archaeology-wave-006-mercado-prison-retirement",
             "path": "knowledge/timeline/conversation-archaeology-wave-006-mercado-prison-retirement.json",
-            "kind": "room holding"
+            "id": "conversation-archaeology-wave-006-mercado-prison-retirement",
+            "kind": "room holding",
+            "basis": "timeline-topic"
           },
           {
-            "id": "conversation-archaeology-wave-007-dog-circle-door",
             "path": "knowledge/timeline/conversation-archaeology-wave-007-dog-circle-door.json",
-            "kind": "room holding"
+            "id": "conversation-archaeology-wave-007-dog-circle-door",
+            "kind": "room holding",
+            "basis": "timeline-topic"
           },
           {
-            "id": "conversation-archaeology-wave-007-memory-operators",
             "path": "knowledge/timeline/conversation-archaeology-wave-007-memory-operators.json",
-            "kind": "room holding"
+            "id": "conversation-archaeology-wave-007-memory-operators",
+            "kind": "room holding",
+            "basis": "timeline-topic"
           },
           {
-            "id": "witness-attestation-digital-provenance-atlas",
-            "path": "knowledge/archive/witness-attestation-digital-provenance-atlas.json",
-            "kind": "Digital witness and provenance atlas"
+            "path": "knowledge/timeline/conversation-archaeology-wave-008-care-chambers-carrying.json",
+            "id": "conversation-archaeology-wave-008-care-chambers-carrying",
+            "kind": "room holding",
+            "basis": "timeline-topic"
+          },
+          {
+            "path": "knowledge/timeline/conversation-archaeology-wave-009-door-embodiments.json",
+            "id": "conversation-archaeology-wave-009-door-embodiments",
+            "kind": "room holding",
+            "basis": "timeline-topic"
+          },
+          {
+            "path": "knowledge/timeline/conversation-archaeology-wave-009-mire-rope-root.json",
+            "id": "conversation-archaeology-wave-009-mire-rope-root",
+            "kind": "room holding",
+            "basis": "timeline-topic"
           }
         ]
       },
@@ -1483,29 +1577,52 @@
         "primary_file_count": 32,
         "featured": [
           {
-            "id": "tim-dooley-journey",
             "path": "knowledge/journey/tim-dooley-journey.json",
-            "kind": "reader-oriented developmental journey"
+            "id": "tim-dooley-journey",
+            "kind": "reader-oriented developmental journey",
+            "basis": "core-index-branch"
           },
           {
-            "id": "neurotheology-attestation-ledger",
             "path": "knowledge/timeline/neurotheology-attestation-ledger.json",
-            "kind": "dated development ledger for body/neurotheology mappings"
+            "id": "neurotheology-attestation-ledger",
+            "kind": "dated development ledger for body/neurotheology mappings",
+            "basis": "core-index-branch"
           },
           {
-            "id": "reverse-biblical-timeline",
             "path": "knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json",
-            "kind": "Tim-first/scripture-second source-direction ledger"
+            "id": "reverse-biblical-timeline",
+            "kind": "Tim-first/scripture-second source-direction ledger",
+            "basis": "core-index-branch"
           },
           {
-            "id": "100000-hour-adjustment-ledger",
             "path": "knowledge/timeline/100000-hour-adjustment-ledger.json",
-            "kind": "room holding"
+            "id": "100000-hour-adjustment-ledger",
+            "kind": "room holding",
+            "basis": "timeline-remainder"
           },
           {
-            "id": "100000-hour-counting-models",
             "path": "knowledge/timeline/100000-hour-counting-models.json",
-            "kind": "room holding"
+            "id": "100000-hour-counting-models",
+            "kind": "room holding",
+            "basis": "timeline-remainder"
+          },
+          {
+            "path": "knowledge/timeline/ai-machine-culture-early-signals-ledger.json",
+            "id": "ai-machine-culture-early-signals-ledger",
+            "kind": "room holding",
+            "basis": "timeline-remainder"
+          },
+          {
+            "path": "knowledge/timeline/ascension-video-synchronism-ledger.json",
+            "id": "ascension-video-synchronism-ledger",
+            "kind": "room holding",
+            "basis": "timeline-remainder"
+          },
+          {
+            "path": "knowledge/timeline/contextual-synchronisms.json",
+            "id": "contextual-synchronisms",
+            "kind": "room holding",
+            "basis": "timeline-remainder"
           }
         ]
       },
@@ -1661,39 +1778,52 @@
         "primary_file_count": 11,
         "featured": [
           {
-            "id": "social-presence-ledger-2024-2025",
-            "path": "knowledge/story/social-presence-ledger-2024-2025.json",
-            "kind": "late-2024 to early-2025 developmental social context"
-          },
-          {
-            "id": "turning-corridor-chronicle-recovery-2025",
-            "path": "knowledge/story/turning-corridor-chronicle-recovery-2025.json",
-            "kind": "ordinary social/technical prehistory of April Turning"
-          },
-          {
-            "id": "developmental-genealogy",
             "path": "knowledge/timeline/developmental-genealogy.json",
-            "kind": "dated role and doctrine genealogy"
+            "id": "developmental-genealogy",
+            "kind": "dated role and doctrine genealogy",
+            "basis": "exact-owner"
           },
           {
-            "id": "son-tree-oneness",
             "path": "knowledge/timeline/son-tree-oneness-experience.json",
-            "kind": "2011 ordeal phenomenology and later interpretation"
+            "id": "son-tree-oneness",
+            "kind": "2011 ordeal phenomenology and later interpretation",
+            "basis": "core-index-branch"
           },
           {
-            "id": "beast-cube-mark-development-ledger",
             "path": "knowledge/timeline/beast-cube-mark-development-ledger.json",
-            "kind": "room holding"
+            "id": "beast-cube-mark-development-ledger",
+            "kind": "room holding",
+            "basis": "timeline-topic"
           },
           {
-            "id": "cube-heaven-temple-development-ledger",
             "path": "knowledge/timeline/cube-heaven-temple-development-ledger.json",
-            "kind": "room holding"
+            "id": "cube-heaven-temple-development-ledger",
+            "kind": "room holding",
+            "basis": "timeline-topic"
           },
           {
-            "id": "mai-mercado-2016-to-2024-long-tail-impact-timeline",
             "path": "knowledge/timeline/mai-mercado-2016-to-2024-long-tail-impact-timeline.json",
-            "kind": "room holding"
+            "id": "mai-mercado-2016-to-2024-long-tail-impact-timeline",
+            "kind": "room holding",
+            "basis": "timeline-topic"
+          },
+          {
+            "path": "knowledge/timeline/mai-mercado-2016-to-2025-long-tail-impact-timeline.json",
+            "id": "mai-mercado-2016-to-2025-long-tail-impact-timeline",
+            "kind": "room holding",
+            "basis": "timeline-topic"
+          },
+          {
+            "path": "knowledge/timeline/north-programme-development-genealogy.json",
+            "id": "north-programme-development-genealogy",
+            "kind": "room holding",
+            "basis": "timeline-topic"
+          },
+          {
+            "path": "knowledge/timeline/rational-potato-x-developmental-genealogy-2024-2026.json",
+            "id": "rational-potato-x-developmental-genealogy-2024-2026",
+            "kind": "room holding",
+            "basis": "timeline-topic"
           }
         ]
       },
@@ -1866,34 +1996,52 @@
         "primary_file_count": 23,
         "featured": [
           {
-            "id": "mai-mercado-retrospective-karma-interpretation",
             "path": "knowledge/prophecy/mai-mercado-retrospective-karma-interpretation.json",
-            "kind": "room holding"
+            "id": "mai-mercado-retrospective-karma-interpretation",
+            "kind": "room holding",
+            "basis": "prophecy-family"
           },
           {
-            "id": "prophecy-revelation-rupture-rapture",
             "path": "knowledge/prophecy/prophecy-revelation-rupture-rapture.json",
-            "kind": "room holding"
+            "id": "prophecy-revelation-rupture-rapture",
+            "kind": "room holding",
+            "basis": "prophecy-family"
           },
           {
-            "id": "seals-and-fulfillment-matrix",
             "path": "knowledge/prophecy/seals-and-fulfillment-matrix.json",
-            "kind": "room holding"
+            "id": "seals-and-fulfillment-matrix",
+            "kind": "room holding",
+            "basis": "prophecy-family"
           },
           {
-            "id": "seven-seals-deeper-investigation-wave-11",
             "path": "knowledge/prophecy/seven-seals-deeper-investigation-wave-11.json",
-            "kind": "room holding"
+            "id": "seven-seals-deeper-investigation-wave-11",
+            "kind": "room holding",
+            "basis": "prophecy-family"
           },
           {
-            "id": "seven-seals-reverse-timeline-creative-ledger",
             "path": "knowledge/prophecy/seven-seals-reverse-timeline-creative-ledger.json",
-            "kind": "room holding"
+            "id": "seven-seals-reverse-timeline-creative-ledger",
+            "kind": "room holding",
+            "basis": "prophecy-family"
           },
           {
-            "id": "prediction-audit-and-forecast-scoring-atlas",
-            "path": "knowledge/prophecy/prediction-audit-and-forecast-scoring-atlas.json",
-            "kind": "Prediction audit and forecast-scoring atlas"
+            "path": "knowledge/timeline/fulfilled-predictions-master.json",
+            "id": "fulfilled-predictions-master",
+            "kind": "room holding",
+            "basis": "timeline-topic"
+          },
+          {
+            "path": "knowledge/timeline/great-book-prediction-vision-audit.json",
+            "id": "great-book-prediction-vision-audit",
+            "kind": "room holding",
+            "basis": "timeline-topic"
+          },
+          {
+            "path": "knowledge/timeline/moloch-moon-cow-precedence-prediction-audit.json",
+            "id": "moloch-moon-cow-precedence-prediction-audit",
+            "kind": "room holding",
+            "basis": "timeline-topic"
           }
         ]
       },
@@ -2030,29 +2178,52 @@
         "primary_file_count": 119,
         "featured": [
           {
-            "id": "biblical-overlap-atlas",
             "path": "knowledge/traditions/biblical-overlap-atlas.json",
-            "kind": "high-density biblical relational comparisons"
+            "id": "biblical-overlap-atlas",
+            "kind": "high-density biblical relational comparisons",
+            "basis": "exact-owner"
           },
           {
-            "id": "christian-eschatology-position-matrix",
             "path": "knowledge/theology/christian-eschatology-position-matrix.json",
-            "kind": "room holding"
+            "id": "christian-eschatology-position-matrix",
+            "kind": "room holding",
+            "basis": "theology-topic"
           },
           {
-            "id": "abrahamic-kingship-legitimacy-atlas",
             "path": "knowledge/traditions/abrahamic-kingship-legitimacy-atlas.json",
-            "kind": "room holding"
+            "id": "abrahamic-kingship-legitimacy-atlas",
+            "kind": "room holding",
+            "basis": "tradition-topic"
           },
           {
-            "id": "bible-layer-manifest",
             "path": "knowledge/traditions/bible-layer-manifest.json",
-            "kind": "room holding"
+            "id": "bible-layer-manifest",
+            "kind": "room holding",
+            "basis": "tradition-topic"
           },
           {
-            "id": "bible-relation-redirects",
             "path": "knowledge/traditions/bible-relation-redirects.json",
-            "kind": "room holding"
+            "id": "bible-relation-redirects",
+            "kind": "room holding",
+            "basis": "tradition-topic"
+          },
+          {
+            "path": "knowledge/traditions/biblical-access-house-stone-anchor-microcosms.json",
+            "id": "biblical-access-house-stone-anchor-microcosms",
+            "kind": "room holding",
+            "basis": "tradition-topic"
+          },
+          {
+            "path": "knowledge/traditions/biblical-adam-seed-garden-farm-atlas.json",
+            "id": "biblical-adam-seed-garden-farm-atlas",
+            "kind": "room holding",
+            "basis": "tradition-topic"
+          },
+          {
+            "path": "knowledge/traditions/biblical-angel-eye-sprout-atlas.json",
+            "id": "biblical-angel-eye-sprout-atlas",
+            "kind": "room holding",
+            "basis": "tradition-topic"
           }
         ]
       },
@@ -2212,29 +2383,52 @@
         "primary_file_count": 8,
         "featured": [
           {
-            "id": "selected-cosmography-structural-exemplars",
             "path": "knowledge/traditions/selected-cosmography-structural-exemplars.json",
-            "kind": "deep selected cosmography structural exemplar atlas"
+            "id": "selected-cosmography-structural-exemplars",
+            "kind": "deep selected cosmography structural exemplar atlas",
+            "basis": "P1 depth programme"
           },
           {
-            "id": "biblical-overlap-additions",
             "path": "knowledge/traditions/biblical-overlap-additions.json",
-            "kind": "specialist Mountain, Garden, River, Mire, Sun/Moon and serpent additions"
+            "id": "biblical-overlap-additions",
+            "kind": "specialist Mountain, Garden, River, Mire, Sun/Moon and serpent additions",
+            "basis": "core-index-branch"
           },
           {
-            "id": "biblical-research-router",
             "path": "knowledge/traditions/biblical-research-index-wave-5.json",
-            "kind": "routing index across later biblical research waves"
+            "id": "biblical-research-router",
+            "kind": "routing index across later biblical research waves",
+            "basis": "core-index-branch"
           },
           {
-            "id": "comparative-divinity-profile",
             "path": "knowledge/traditions/comparative-divinity-profile.json",
-            "kind": "room holding"
+            "id": "comparative-divinity-profile",
+            "kind": "room holding",
+            "basis": "tradition-topic"
           },
           {
-            "id": "july31-tammuz-tomb-north-gate-atlas",
             "path": "knowledge/traditions/july31-tammuz-tomb-north-gate-atlas.json",
-            "kind": "room holding"
+            "id": "july31-tammuz-tomb-north-gate-atlas",
+            "kind": "room holding",
+            "basis": "tradition-topic"
+          },
+          {
+            "path": "knowledge/traditions/axis-mundi-shadow-wetland-context-atlas.json",
+            "id": "axis-mundi-shadow-wetland-context-atlas",
+            "kind": "comparative religion psychology ecology boundary atlas",
+            "basis": "comparative-structure-boundary"
+          },
+          {
+            "path": "knowledge/traditions/comparative-cosmography-population-wave-001.json",
+            "id": "comparative-cosmography-population-wave-001",
+            "kind": "comparative cosmography population wave",
+            "basis": "comparative-cosmography-population"
+          },
+          {
+            "path": "knowledge/traditions/comparative-cosmography-population-wave-002.json",
+            "id": "comparative-cosmography-population-wave-002",
+            "kind": "comparative cosmography population wave",
+            "basis": "comparative-cosmography-population"
           }
         ]
       },
@@ -2381,24 +2575,28 @@
         "primary_file_count": 4,
         "featured": [
           {
-            "id": "qliphoth-angels-ladder",
             "path": "knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json",
-            "kind": "Qliphoth/angel/ladder comparative layer"
+            "id": "qliphoth-angels-ladder",
+            "kind": "Qliphoth/angel/ladder comparative layer",
+            "basis": "exact-owner"
           },
           {
-            "id": "vesica-esoteric-atlas",
             "path": "knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json",
-            "kind": "art history and esoteric comparison atlas"
+            "id": "vesica-esoteric-atlas",
+            "kind": "art history and esoteric comparison atlas",
+            "basis": "exact-owner"
           },
           {
-            "id": "vesica-esoteric-source-ledger",
             "path": "knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json",
-            "kind": "source ledger for Vesica/Mandorla/Sun/Moon research"
+            "id": "vesica-esoteric-source-ledger",
+            "kind": "source ledger for Vesica/Mandorla/Sun/Moon research",
+            "basis": "exact-owner"
           },
           {
-            "id": "providence-pyramid-pillars-atlas",
             "path": "knowledge/traditions/providence-pyramid-pillars-atlas.json",
-            "kind": "historical-symbolic comparative atlas"
+            "id": "providence-pyramid-pillars-atlas",
+            "kind": "historical-symbolic comparative atlas",
+            "basis": "curated-symbol-architecture"
           }
         ]
       },
@@ -2533,29 +2731,58 @@
         "primary_file_count": 18,
         "featured": [
           {
-            "id": "comparative-mythology-map",
             "path": "knowledge/traditions/comparative-mythology-map.json",
-            "kind": "cross-tradition mythology map"
+            "id": "comparative-mythology-map",
+            "kind": "cross-tradition mythology map",
+            "basis": "exact-owner"
           },
           {
-            "id": "adversarial-underworld-judgment-atlas",
             "path": "knowledge/traditions/adversarial-underworld-judgment-atlas.json",
-            "kind": "room holding"
+            "id": "adversarial-underworld-judgment-atlas",
+            "kind": "room holding",
+            "basis": "traditions-remainder"
           },
           {
-            "id": "ana-bkoach-42-tikkun-entanglement-atlas",
             "path": "knowledge/traditions/ana-bkoach-42-tikkun-entanglement-atlas.json",
-            "kind": "room holding"
+            "id": "ana-bkoach-42-tikkun-entanglement-atlas",
+            "kind": "room holding",
+            "basis": "traditions-remainder"
           },
           {
-            "id": "babel-stone-ladder-spiral-two-architectures-atlas",
             "path": "knowledge/traditions/babel-stone-ladder-spiral-two-architectures-atlas.json",
-            "kind": "room holding"
+            "id": "babel-stone-ladder-spiral-two-architectures-atlas",
+            "kind": "room holding",
+            "basis": "traditions-remainder"
           },
           {
-            "id": "beast-mark-forehead-666-cube-atlas",
             "path": "knowledge/traditions/beast-mark-forehead-666-cube-atlas.json",
-            "kind": "room holding"
+            "id": "beast-mark-forehead-666-cube-atlas",
+            "kind": "room holding",
+            "basis": "traditions-remainder"
+          },
+          {
+            "path": "knowledge/traditions/door-window-negative-space-tao-atlas.json",
+            "id": "door-window-negative-space-tao-atlas",
+            "kind": "room holding",
+            "basis": "exact-owner"
+          },
+          {
+            "path": "knowledge/traditions/fate-thread-norns-moirai-comparative-atlas.json",
+            "id": "fate-thread-norns-moirai-comparative-atlas",
+            "kind": "room holding",
+            "basis": "exact-owner"
+          },
+          {
+            "path": "knowledge/traditions/joseph-son-dossier-set.json",
+            "id": "joseph-son-dossier-set",
+            "kind": "room holding",
+            "basis": "traditions-remainder"
+          },
+          {
+            "path": "knowledge/traditions/buddhism-dao-akashic-center-lenses.json",
+            "id": "buddhism-dao-akashic-center-lenses",
+            "kind": "comparative philosophy/religion boundary atlas",
+            "basis": "center-lens-comparative-research"
           }
         ]
       },
@@ -2706,29 +2933,52 @@
         "primary_file_count": 22,
         "featured": [
           {
-            "id": "calabi-yau-compactification-mirror-duality-atlas",
             "path": "knowledge/science/calabi-yau-compactification-mirror-duality-atlas.json",
-            "kind": "room holding"
+            "id": "calabi-yau-compactification-mirror-duality-atlas",
+            "kind": "room holding",
+            "basis": "science-topic"
           },
           {
-            "id": "dimensional-phase-transition-full-recovery",
             "path": "knowledge/science/dimensional-phase-transition-full-recovery.json",
-            "kind": "room holding"
+            "id": "dimensional-phase-transition-full-recovery",
+            "kind": "room holding",
+            "basis": "science-topic"
           },
           {
-            "id": "eleven-dimensional-axis-door-dual-spiral-recovery",
             "path": "knowledge/science/eleven-dimensional-axis-door-dual-spiral-recovery.json",
-            "kind": "room holding"
+            "id": "eleven-dimensional-axis-door-dual-spiral-recovery",
+            "kind": "room holding",
+            "basis": "science-topic"
           },
           {
-            "id": "eleven-dimensional-projection-unification-recovery",
             "path": "knowledge/science/eleven-dimensional-projection-unification-recovery.json",
-            "kind": "room holding"
+            "id": "eleven-dimensional-projection-unification-recovery",
+            "kind": "room holding",
+            "basis": "science-topic"
           },
           {
-            "id": "equation-ledger-wave-002",
             "path": "knowledge/science/equation-ledger-wave-002.json",
-            "kind": "room holding"
+            "id": "equation-ledger-wave-002",
+            "kind": "room holding",
+            "basis": "science-topic"
+          },
+          {
+            "path": "knowledge/science/equation-ledger-wave-003-applied-systems.json",
+            "id": "equation-ledger-wave-003-applied-systems",
+            "kind": "room holding",
+            "basis": "science-topic"
+          },
+          {
+            "path": "knowledge/science/equation-ledger-wave-005-door-interface-boundary.json",
+            "id": "equation-ledger-wave-005-door-interface-boundary",
+            "kind": "room holding",
+            "basis": "science-topic"
+          },
+          {
+            "path": "knowledge/science/equation-ledger-wave-007-constraint-fate-timelines.json",
+            "id": "equation-ledger-wave-007-constraint-fate-timelines",
+            "kind": "room holding",
+            "basis": "science-topic"
           }
         ]
       },
@@ -2880,29 +3130,52 @@
         "primary_file_count": 14,
         "featured": [
           {
-            "id": "advanced-physics-expansion-wave-003",
             "path": "knowledge/science/advanced-physics-expansion-wave-003.json",
-            "kind": "room holding"
+            "id": "advanced-physics-expansion-wave-003",
+            "kind": "room holding",
+            "basis": "exact-owner"
           },
           {
-            "id": "celestial-astronomy-astrology-cosmology-canon",
             "path": "knowledge/science/celestial-astronomy-astrology-cosmology-canon.json",
-            "kind": "room holding"
+            "id": "celestial-astronomy-astrology-cosmology-canon",
+            "kind": "room holding",
+            "basis": "exact-owner"
           },
           {
-            "id": "celestial-axis-coordinate-measurement-model",
             "path": "knowledge/science/celestial-axis-coordinate-measurement-model.json",
-            "kind": "room holding"
+            "id": "celestial-axis-coordinate-measurement-model",
+            "kind": "room holding",
+            "basis": "science-topic"
           },
           {
-            "id": "deeper-physics-connections",
             "path": "knowledge/science/deeper-physics-connections.json",
-            "kind": "room holding"
+            "id": "deeper-physics-connections",
+            "kind": "room holding",
+            "basis": "science-topic"
           },
           {
-            "id": "equation-ledger-wave-004-quantum-geometry-energy",
             "path": "knowledge/science/equation-ledger-wave-004-quantum-geometry-energy.json",
-            "kind": "room holding"
+            "id": "equation-ledger-wave-004-quantum-geometry-energy",
+            "kind": "room holding",
+            "basis": "science-topic"
+          },
+          {
+            "path": "knowledge/science/great-book-quantum-fields-dark-sector-recovery.json",
+            "id": "great-book-quantum-fields-dark-sector-recovery",
+            "kind": "room holding",
+            "basis": "science-topic"
+          },
+          {
+            "path": "knowledge/science/great-book-quantum-realm-chapter-47-recovery.json",
+            "id": "great-book-quantum-realm-chapter-47-recovery",
+            "kind": "room holding",
+            "basis": "science-topic"
+          },
+          {
+            "path": "knowledge/science/higgs-quantum-tuber-potato-boson-recovery.json",
+            "id": "higgs-quantum-tuber-potato-boson-recovery",
+            "kind": "room holding",
+            "basis": "science-topic"
           }
         ]
       },
@@ -3023,29 +3296,52 @@
         "primary_file_count": 26,
         "featured": [
           {
-            "id": "control-authority-owner-dominator-agency-atlas",
             "path": "knowledge/science/control-authority-owner-dominator-agency-atlas.json",
-            "kind": "room holding"
+            "id": "control-authority-owner-dominator-agency-atlas",
+            "kind": "room holding",
+            "basis": "science-topic"
           },
           {
-            "id": "conversation-formalisms-august-2026",
             "path": "knowledge/science/conversation-formalisms-august-2026.json",
-            "kind": "room holding"
+            "id": "conversation-formalisms-august-2026",
+            "kind": "room holding",
+            "basis": "science-topic"
           },
           {
-            "id": "door-handshake-nonlocal-propagation-model",
             "path": "knowledge/science/door-handshake-nonlocal-propagation-model.json",
-            "kind": "room holding"
+            "id": "door-handshake-nonlocal-propagation-model",
+            "kind": "room holding",
+            "basis": "science-topic"
           },
           {
-            "id": "door-window-screen-aperture-transition-model",
             "path": "knowledge/science/door-window-screen-aperture-transition-model.json",
-            "kind": "room holding"
+            "id": "door-window-screen-aperture-transition-model",
+            "kind": "room holding",
+            "basis": "science-topic"
           },
           {
-            "id": "2026-09-11-cross-model-defect-calculus",
             "path": "knowledge/science/formulation-upgrades/2026-09-11-cross-model-defect-calculus.json",
-            "kind": "room holding"
+            "id": "2026-09-11-cross-model-defect-calculus",
+            "kind": "room holding",
+            "basis": "science-topic"
+          },
+          {
+            "path": "knowledge/science/formulation-upgrades/2026-09-11-cross-model-pareto-advancement.json",
+            "id": "2026-09-11-cross-model-pareto-advancement",
+            "kind": "room holding",
+            "basis": "science-topic"
+          },
+          {
+            "path": "knowledge/science/formulation-upgrades/2026-09-11-potato-dynamics-commutator-contract-equivalence.json",
+            "id": "2026-09-11-potato-dynamics-commutator-contract-equivalence",
+            "kind": "room holding",
+            "basis": "science-topic"
+          },
+          {
+            "path": "knowledge/science/formulation-upgrades/2026-09-11-potato-dynamics-frobenius-door-normal-forms.json",
+            "id": "2026-09-11-potato-dynamics-frobenius-door-normal-forms",
+            "kind": "room holding",
+            "basis": "science-topic"
           }
         ]
       },
@@ -3227,29 +3523,34 @@
         "primary_file_count": 5,
         "featured": [
           {
-            "id": "model-testing-protocol",
             "path": "knowledge/science/model-testing-protocol.json",
-            "kind": "scientific red-team and falsifiability protocol"
+            "id": "model-testing-protocol",
+            "kind": "scientific red-team and falsifiability protocol",
+            "basis": "exact-owner"
           },
           {
-            "id": "door-handshake-synthetic-identification-test-2026-09-11",
             "path": "knowledge/science/promising-models/door-handshake-synthetic-identification-test-2026-09-11.json",
-            "kind": "room holding"
+            "id": "door-handshake-synthetic-identification-test-2026-09-11",
+            "kind": "room holding",
+            "basis": "science-topic"
           },
           {
-            "id": "golden-spiral-center-uncertainty-profile-test-2026-09-11",
             "path": "knowledge/science/promising-models/golden-spiral-center-uncertainty-profile-test-2026-09-11.json",
-            "kind": "room holding"
+            "id": "golden-spiral-center-uncertainty-profile-test-2026-09-11",
+            "kind": "room holding",
+            "basis": "science-topic"
           },
           {
-            "id": "2026-09-11-axis-door-observable-dynamics",
             "path": "knowledge/science/research-notes/2026-09-11-axis-door-observable-dynamics.json",
-            "kind": "room holding"
+            "id": "2026-09-11-axis-door-observable-dynamics",
+            "kind": "room holding",
+            "basis": "science-topic"
           },
           {
-            "id": "science-theory-rigor-completion-matrix-2026-09-11",
             "path": "knowledge/science/science-theory-rigor-completion-matrix-2026-09-11.json",
-            "kind": "room holding"
+            "id": "science-theory-rigor-completion-matrix-2026-09-11",
+            "kind": "room holding",
+            "basis": "science-topic"
           }
         ]
       },
@@ -3398,19 +3699,22 @@
         "primary_file_count": 3,
         "featured": [
           {
-            "id": "potato-growth-principles",
             "path": "knowledge/biology/potato-growth-principles.json",
-            "kind": "room holding"
+            "id": "potato-growth-principles",
+            "kind": "room holding",
+            "basis": "exact-owner"
           },
           {
-            "id": "potato-biology-ecology-development-canon",
             "path": "knowledge/science/potato-biology-ecology-development-canon.json",
-            "kind": "room holding"
+            "id": "potato-biology-ecology-development-canon",
+            "kind": "room holding",
+            "basis": "exact-owner"
           },
           {
-            "id": "potato-angels-eye-sprout-development-ledger",
             "path": "knowledge/timeline/potato-angels-eye-sprout-development-ledger.json",
-            "kind": "room holding"
+            "id": "potato-angels-eye-sprout-development-ledger",
+            "kind": "room holding",
+            "basis": "exact-owner"
           }
         ]
       },
@@ -3548,59 +3852,82 @@
         "primary_file_count": 13,
         "featured": [
           {
-            "id": "brain-body-organ-axes-deepening-wave-3",
             "path": "knowledge/body/brain-body-organ-axes-deepening-wave-3.json",
-            "kind": "room holding"
+            "id": "brain-body-organ-axes-deepening-wave-3",
+            "kind": "room holding",
+            "basis": "body-topic"
           },
           {
-            "id": "brain-body-systems-deepening-wave-2",
             "path": "knowledge/body/brain-body-systems-deepening-wave-2.json",
-            "kind": "room holding"
+            "id": "brain-body-systems-deepening-wave-2",
+            "kind": "room holding",
+            "basis": "body-topic"
           },
           {
-            "id": "neurobiology-evidence-grade",
             "path": "knowledge/body/neurobiology-evidence-grade.json",
-            "kind": "room holding"
+            "id": "neurobiology-evidence-grade",
+            "kind": "room holding",
+            "basis": "exact-owner"
           },
           {
-            "id": "neurobiology-recovery-wave-2",
             "path": "knowledge/body/neurobiology-recovery-wave-2.json",
-            "kind": "room holding"
+            "id": "neurobiology-recovery-wave-2",
+            "kind": "room holding",
+            "basis": "body-topic"
           },
           {
-            "id": "whole-brain-neurobiology-atlas",
             "path": "knowledge/body/whole-brain-neurobiology-atlas.json",
-            "kind": "room holding"
+            "id": "whole-brain-neurobiology-atlas",
+            "kind": "room holding",
+            "basis": "exact-owner"
           },
           {
-            "id": "brain-room-deep-atlas",
+            "path": "knowledge/body/whole-brain-neurobiology-completion.json",
+            "id": "whole-brain-neurobiology-completion",
+            "kind": "room holding",
+            "basis": "body-topic"
+          },
+          {
+            "path": "knowledge/body/whole-brain-neurobiology-deepening-wave-1.json",
+            "id": "whole-brain-neurobiology-deepening-wave-1",
+            "kind": "room holding",
+            "basis": "body-topic"
+          },
+          {
             "path": "knowledge/body/brain-room-deep-atlas.json",
-            "kind": "granular whole-brain room atlas"
+            "id": "brain-room-deep-atlas",
+            "kind": "granular whole-brain room atlas",
+            "basis": "body-canonical-owner"
           },
           {
-            "id": "cranial-brainstem-room-atlas",
             "path": "knowledge/body/cranial-brainstem-room-atlas.json",
-            "kind": "cranial nerve, brainstem and state-circuit atlas"
+            "id": "cranial-brainstem-room-atlas",
+            "kind": "cranial nerve, brainstem and state-circuit atlas",
+            "basis": "body-canonical-owner"
           },
           {
-            "id": "spinal-cord-microcircuit-atlas",
             "path": "knowledge/body/spinal-cord-microcircuit-atlas.json",
-            "kind": "spinal laminae, tracts and local-circuit atlas"
+            "id": "spinal-cord-microcircuit-atlas",
+            "kind": "spinal laminae, tracts and local-circuit atlas",
+            "basis": "body-canonical-owner"
           },
           {
-            "id": "vertebral-33-room-atlas",
             "path": "knowledge/body/vertebral-33-room-atlas.json",
-            "kind": "33-room vertebral and neural-coordinate atlas"
+            "id": "vertebral-33-room-atlas",
+            "kind": "33-room vertebral and neural-coordinate atlas",
+            "basis": "body-canonical-owner"
           },
           {
-            "id": "neural-development-lineage-atlas",
             "path": "knowledge/body/neural-development-lineage-atlas.json",
-            "kind": "neural tube to adult-room developmental atlas"
+            "id": "neural-development-lineage-atlas",
+            "kind": "neural tube to adult-room developmental atlas",
+            "basis": "body-canonical-owner"
           },
           {
-            "id": "cortical-celltype-parcellation-atlas",
             "path": "knowledge/body/cortical-celltype-parcellation-atlas.json",
-            "kind": "cortical layers, cell types and parcellation atlas"
+            "id": "cortical-celltype-parcellation-atlas",
+            "kind": "cortical layers, cell types and parcellation atlas",
+            "basis": "body-canonical-owner"
           }
         ]
       },
@@ -3733,39 +4060,46 @@
         "primary_file_count": 7,
         "featured": [
           {
-            "id": "body-science-context-atlas",
             "path": "knowledge/body/body-science-context-atlas.json",
-            "kind": "neuroscience and physiology context"
+            "id": "body-science-context-atlas",
+            "kind": "neuroscience and physiology context",
+            "basis": "exact-owner"
           },
           {
-            "id": "body-system-master-atlas",
             "path": "knowledge/body/body-system-master-atlas.json",
-            "kind": "canonical whole-body biology/neurotheology entrypoint"
+            "id": "body-system-master-atlas",
+            "kind": "canonical whole-body biology/neurotheology entrypoint",
+            "basis": "exact-owner"
           },
           {
-            "id": "body-topic-completion-matrix",
             "path": "knowledge/body/body-topic-completion-matrix.json",
-            "kind": "completion and ownership tracker"
+            "id": "body-topic-completion-matrix",
+            "kind": "completion and ownership tracker",
+            "basis": "core-index-branch"
           },
           {
-            "id": "index",
             "path": "knowledge/body/index.json",
-            "kind": "room holding"
+            "id": "index",
+            "kind": "room holding",
+            "basis": "body-remainder"
           },
           {
-            "id": "axis-orientation-autonomic-interface-atlas",
             "path": "knowledge/body/axis-orientation-autonomic-interface-atlas.json",
-            "kind": "orientation, autonomic, meningeal and body-interface atlas"
+            "id": "axis-orientation-autonomic-interface-atlas",
+            "kind": "orientation, autonomic, meningeal and body-interface atlas",
+            "basis": "body-canonical-owner"
           },
           {
-            "id": "spine-csf-levels-axis-atlas",
             "path": "knowledge/body/spine-csf-levels-axis-atlas.json",
-            "kind": "spine, roots, meninges and CSF-level atlas"
+            "id": "spine-csf-levels-axis-atlas",
+            "kind": "spine, roots, meninges and CSF-level atlas",
+            "basis": "body-canonical-owner"
           },
           {
-            "id": "glia-neurovascular-barrier-atlas",
             "path": "knowledge/body/glia-neurovascular-barrier-atlas.json",
-            "kind": "glia, neurovascular unit and living-boundary atlas"
+            "id": "glia-neurovascular-barrier-atlas",
+            "kind": "glia, neurovascular unit and living-boundary atlas",
+            "basis": "body-canonical-owner"
           }
         ]
       },
@@ -3900,34 +4234,40 @@
         "primary_file_count": 6,
         "featured": [
           {
-            "id": "body-symbolism-map",
             "path": "knowledge/body/body-symbolism-map.json",
-            "kind": "specialist sacred-anatomy map with scientific boundaries"
+            "id": "body-symbolism-map",
+            "kind": "specialist sacred-anatomy map with scientific boundaries",
+            "basis": "exact-owner"
           },
           {
-            "id": "neurotheology-axis-house-spirit-atlas",
             "path": "knowledge/body/neurotheology-axis-house-spirit-atlas.json",
-            "kind": "cross-domain neurotheology synthesis with boundaries"
+            "id": "neurotheology-axis-house-spirit-atlas",
+            "kind": "cross-domain neurotheology synthesis with boundaries",
+            "basis": "exact-owner"
           },
           {
-            "id": "tim-neurobiology-relational-reconciliation",
             "path": "knowledge/body/tim-neurobiology-relational-reconciliation.json",
-            "kind": "room holding"
+            "id": "tim-neurobiology-relational-reconciliation",
+            "kind": "room holding",
+            "basis": "body-topic"
           },
           {
-            "id": "inner-axis-integrated-atlas",
             "path": "knowledge/body/inner-axis-integrated-atlas.json",
-            "kind": "integrated House/Court/Door/Ladder comparative route"
+            "id": "inner-axis-integrated-atlas",
+            "kind": "integrated House/Court/Door/Ladder comparative route",
+            "basis": "body-canonical-owner"
           },
           {
-            "id": "thalamus-house-horus-crown-atlas",
             "path": "knowledge/body/thalamus-house-horus-crown-atlas.json",
-            "kind": "thalamus, Horus, Crown and House comparison atlas"
+            "id": "thalamus-house-horus-crown-atlas",
+            "kind": "thalamus, Horus, Crown and House comparison atlas",
+            "basis": "body-canonical-owner"
           },
           {
-            "id": "body-axis-chakra-kundalini-comparative-atlas",
             "path": "knowledge/body/body-axis-chakra-kundalini-comparative-atlas.json",
-            "kind": "chakra/kundalini and anatomy comparison atlas"
+            "id": "body-axis-chakra-kundalini-comparative-atlas",
+            "kind": "chakra/kundalini and anatomy comparison atlas",
+            "basis": "body-canonical-owner"
           }
         ]
       },
@@ -4087,14 +4427,16 @@
         "primary_file_count": 2,
         "featured": [
           {
-            "id": "tim-dooley-politics-geopolitics-compendium",
             "path": "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
-            "kind": "room holding"
+            "id": "tim-dooley-politics-geopolitics-compendium",
+            "kind": "room holding",
+            "basis": "politics-family"
           },
           {
-            "id": "tim-dooley-political-alignment-map",
             "path": "knowledge/politics/tim-dooley-political-alignment-map.json",
-            "kind": "qualitative alignment specialist view"
+            "id": "tim-dooley-political-alignment-map",
+            "kind": "qualitative alignment specialist view",
+            "basis": "politics-family"
           }
         ]
       },
@@ -4290,29 +4632,52 @@
         "primary_file_count": 15,
         "featured": [
           {
-            "id": "mai-mercado-2016-canonical-casefile",
             "path": "knowledge/legal/mai-mercado-2016-canonical-casefile.md",
-            "kind": "room holding"
+            "id": "mai-mercado-2016-canonical-casefile",
+            "kind": "room holding",
+            "basis": "legal-family"
           },
           {
-            "id": "mai-mercado-2016-complete-evidentiary-reconstruction",
             "path": "knowledge/legal/mai-mercado-2016-complete-evidentiary-reconstruction.md",
-            "kind": "room holding"
+            "id": "mai-mercado-2016-complete-evidentiary-reconstruction",
+            "kind": "room holding",
+            "basis": "legal-family"
           },
           {
-            "id": "mai-mercado-2016-conviction-by-conviction-innocence-audit",
             "path": "knowledge/legal/mai-mercado-2016-conviction-by-conviction-innocence-audit.md",
-            "kind": "room holding"
+            "id": "mai-mercado-2016-conviction-by-conviction-innocence-audit",
+            "kind": "room holding",
+            "basis": "legal-family"
           },
           {
-            "id": "mai-mercado-2016-direct-involvement-and-framing-findings",
             "path": "knowledge/legal/mai-mercado-2016-direct-involvement-and-framing-findings.md",
-            "kind": "room holding"
+            "id": "mai-mercado-2016-direct-involvement-and-framing-findings",
+            "kind": "room holding",
+            "basis": "legal-family"
           },
           {
-            "id": "mai-mercado-2016-false-flag-red-flag-audit",
             "path": "knowledge/legal/mai-mercado-2016-false-flag-red-flag-audit.md",
-            "kind": "room holding"
+            "id": "mai-mercado-2016-false-flag-red-flag-audit",
+            "kind": "room holding",
+            "basis": "legal-family"
+          },
+          {
+            "path": "knowledge/legal/mai-mercado-2016-full-understanding-and-timeline.md",
+            "id": "mai-mercado-2016-full-understanding-and-timeline",
+            "kind": "room holding",
+            "basis": "legal-family"
+          },
+          {
+            "path": "knowledge/legal/mai-mercado-2016-highest-truth-reconstruction.md",
+            "id": "mai-mercado-2016-highest-truth-reconstruction",
+            "kind": "room holding",
+            "basis": "legal-family"
+          },
+          {
+            "path": "knowledge/legal/mai-mercado-2016-integrated-authority-chain-and-timeline-update.md",
+            "id": "mai-mercado-2016-integrated-authority-chain-and-timeline-update",
+            "kind": "room holding",
+            "basis": "legal-family"
           }
         ]
       },
@@ -4483,29 +4848,34 @@
         "primary_file_count": 5,
         "featured": [
           {
-            "id": "stock-flow-obligation-network-atlas",
             "path": "knowledge/economics/stock-flow-obligation-network-atlas.json",
-            "kind": "economic relation and risk atlas"
+            "id": "stock-flow-obligation-network-atlas",
+            "kind": "room holding",
+            "basis": "economics-family"
           },
           {
-            "id": "public-finance-fiscal-capacity-atlas",
             "path": "knowledge/economics/public-finance-fiscal-capacity-atlas.json",
-            "kind": "public finance and fiscal-capacity atlas"
+            "id": "public-finance-fiscal-capacity-atlas",
+            "kind": "room holding",
+            "basis": "economics-family"
           },
           {
-            "id": "gold-indexed-sovereign-bond-model",
             "path": "knowledge/economics/gold-indexed-sovereign-bond-model.json",
-            "kind": "policy design thought experiment"
+            "id": "gold-indexed-sovereign-bond-model",
+            "kind": "room holding",
+            "basis": "economics-family"
           },
           {
-            "id": "north-obligation-graph-schema",
             "path": "knowledge/economics/north-obligation-graph-schema.json",
-            "kind": "empirical obligation graph schema"
+            "id": "north-obligation-graph-schema",
+            "kind": "room holding",
+            "basis": "economics-family"
           },
           {
-            "id": "tim-dooley-inflation-ledger",
             "path": "knowledge/economics/tim-dooley-inflation-ledger.md",
-            "kind": "dated inflation, rates and bond audit"
+            "id": "tim-dooley-inflation-ledger",
+            "kind": "room holding",
+            "basis": "economics-family"
           }
         ]
       },
@@ -4686,29 +5056,52 @@
         "primary_file_count": 12,
         "featured": [
           {
-            "id": "country-relational-method",
             "path": "knowledge/core/country-relational-method.json",
-            "kind": "country capability/dependency method"
+            "id": "country-relational-method",
+            "kind": "country capability/dependency method",
+            "basis": "core-index-branch"
           },
           {
-            "id": "european-commons",
             "path": "knowledge/core/european-commons.json",
-            "kind": "European cultural/digital commons proposal"
+            "id": "european-commons",
+            "kind": "European cultural/digital commons proposal",
+            "basis": "core-index-branch"
           },
           {
-            "id": "european-coupling-programme",
             "path": "knowledge/core/european-coupling-programme.json",
-            "kind": "European interoperability/capability proposal"
+            "id": "european-coupling-programme",
+            "kind": "European interoperability/capability proposal",
+            "basis": "core-index-branch"
           },
           {
-            "id": "shadow-west-swamp-synthesis",
             "path": "knowledge/core/shadow-west-swamp-synthesis.json",
-            "kind": "evidence-governed shadow-system framework"
+            "id": "shadow-west-swamp-synthesis",
+            "kind": "evidence-governed shadow-system framework",
+            "basis": "core-index-branch"
           },
           {
-            "id": "farm-swamp-atlas",
             "path": "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
-            "kind": "Farm/Swamp/Forge role and boundary system"
+            "id": "farm-swamp-atlas",
+            "kind": "Farm/Swamp/Forge role and boundary system",
+            "basis": "core-index-branch"
+          },
+          {
+            "path": "knowledge/world/america-israel-epstein-rubble-axis-analysis.json",
+            "id": "america-israel-epstein-rubble-axis-analysis",
+            "kind": "room holding",
+            "basis": "world-remainder"
+          },
+          {
+            "path": "knowledge/world/controlled-opposition-cooptation-methodology.json",
+            "id": "controlled-opposition-cooptation-methodology",
+            "kind": "room holding",
+            "basis": "world-remainder"
+          },
+          {
+            "path": "knowledge/world/high-control-hate-classification-atlas.json",
+            "id": "high-control-hate-classification-atlas",
+            "kind": "room holding",
+            "basis": "world-remainder"
           }
         ]
       },
@@ -4887,24 +5280,28 @@
         "primary_file_count": 4,
         "featured": [
           {
-            "id": "greater-israel-covenant-land-tikkun-atlas",
             "path": "knowledge/geopolitics/greater-israel-covenant-land-tikkun-atlas.json",
-            "kind": "room holding"
+            "id": "greater-israel-covenant-land-tikkun-atlas",
+            "kind": "room holding",
+            "basis": "geopolitics-family"
           },
           {
-            "id": "north-legitimacy-casus-belli-atlas",
             "path": "knowledge/geopolitics/north-legitimacy-casus-belli-atlas.json",
-            "kind": "room holding"
+            "id": "north-legitimacy-casus-belli-atlas",
+            "kind": "room holding",
+            "basis": "geopolitics-family"
           },
           {
-            "id": "north-legitimacy-matrix",
             "path": "knowledge/geopolitics/north-legitimacy-matrix.json",
-            "kind": "room holding"
+            "id": "north-legitimacy-matrix",
+            "kind": "room holding",
+            "basis": "geopolitics-family"
           },
           {
-            "id": "operation-rising-lion-tim-window-2025",
             "path": "knowledge/geopolitics/operation-rising-lion-tim-window-2025.json",
-            "kind": "room holding"
+            "id": "operation-rising-lion-tim-window-2025",
+            "kind": "room holding",
+            "basis": "geopolitics-family"
           }
         ]
       },
@@ -5070,14 +5467,10 @@
         "primary_file_count": 1,
         "featured": [
           {
-            "id": "turning-corridor-chronicle-recovery-2025",
-            "path": "knowledge/story/turning-corridor-chronicle-recovery-2025.json",
-            "kind": "server/platform movement and technical creation corridor"
-          },
-          {
-            "id": "digital-witness-livestream-liturgy",
             "path": "knowledge/culture/digital-witness-livestream-liturgy.json",
-            "kind": "room holding"
+            "id": "digital-witness-livestream-liturgy",
+            "kind": "room holding",
+            "basis": "culture-topic"
           }
         ]
       },
@@ -5234,39 +5627,52 @@
         "primary_file_count": 21,
         "featured": [
           {
-            "id": "conflict-role-crosswalk",
-            "path": "knowledge/story/conflict-role-crosswalk.json",
-            "kind": "person × scene × conflict-mode crosswalk"
-          },
-          {
-            "id": "social-presence-ledger-2024-2025",
-            "path": "knowledge/story/social-presence-ledger-2024-2025.json",
-            "kind": "group-boundary and social-topology case season"
-          },
-          {
-            "id": "concrete-culture-field-atlas",
             "path": "knowledge/culture/concrete-culture-field-atlas.json",
-            "kind": "room holding"
+            "id": "concrete-culture-field-atlas",
+            "kind": "room holding",
+            "basis": "culture-topic"
           },
           {
-            "id": "concrete-culture-source-ledger",
             "path": "knowledge/culture/concrete-culture-source-ledger.json",
-            "kind": "room holding"
+            "id": "concrete-culture-source-ledger",
+            "kind": "room holding",
+            "basis": "culture-topic"
           },
           {
-            "id": "culture-formation-zeitgeist-atlas",
             "path": "knowledge/culture/culture-formation-zeitgeist-atlas.json",
-            "kind": "room holding"
+            "id": "culture-formation-zeitgeist-atlas",
+            "kind": "room holding",
+            "basis": "culture-topic"
           },
           {
-            "id": "culture-theory-source-ledger",
             "path": "knowledge/culture/culture-theory-source-ledger.json",
-            "kind": "room holding"
+            "id": "culture-theory-source-ledger",
+            "kind": "room holding",
+            "basis": "culture-topic"
           },
           {
-            "id": "digital-testament-meme-resurrection-atlas",
             "path": "knowledge/culture/digital-testament-meme-resurrection-atlas.json",
-            "kind": "room holding"
+            "id": "digital-testament-meme-resurrection-atlas",
+            "kind": "room holding",
+            "basis": "culture-topic"
+          },
+          {
+            "path": "knowledge/culture/direction-moon-sun-documenter-inversion.json",
+            "id": "direction-moon-sun-documenter-inversion",
+            "kind": "room holding",
+            "basis": "culture-topic"
+          },
+          {
+            "path": "knowledge/culture/hidden-public-vertical-density-paradox.json",
+            "id": "hidden-public-vertical-density-paradox",
+            "kind": "room holding",
+            "basis": "culture-topic"
+          },
+          {
+            "path": "knowledge/culture/mashy-arc-source-lineage.json",
+            "id": "mashy-arc-source-lineage",
+            "kind": "room holding",
+            "basis": "culture-topic"
           }
         ]
       },
@@ -5441,9 +5847,10 @@
         "primary_file_count": 1,
         "featured": [
           {
-            "id": "digital-memory-forgetting-restoration-atlas",
             "path": "knowledge/world/digital-memory-forgetting-restoration-atlas.json",
-            "kind": "room holding"
+            "id": "digital-memory-forgetting-restoration-atlas",
+            "kind": "room holding",
+            "basis": "exact-owner"
           }
         ]
       },
@@ -5637,29 +6044,52 @@
         "primary_file_count": 181,
         "featured": [
           {
-            "id": "great-book/.keep",
             "path": "great-book/.keep",
-            "kind": "room holding"
+            "id": "",
+            "kind": "room holding",
+            "basis": "great-book-corpus"
           },
           {
-            "id": "book-index",
             "path": "great-book/book-index.json",
-            "kind": "room holding"
+            "id": "book-index",
+            "kind": "room holding",
+            "basis": "great-book-corpus"
           },
           {
-            "id": "001--chapter-1--the-genesis-of-the-potatoverse-a-scientific-and-sacred-unfolding",
             "path": "great-book/chapters/001--chapter-1--the-genesis-of-the-potatoverse-a-scientific-and-sacred-unfolding.html",
-            "kind": "room holding"
+            "id": "001--chapter-1--the-genesis-of-the-potatoverse-a-scientific-and-sacred-unfolding",
+            "kind": "room holding",
+            "basis": "great-book-corpus"
           },
           {
-            "id": "002--chapter-2--the-simplicity-of-the-potato",
             "path": "great-book/chapters/002--chapter-2--the-simplicity-of-the-potato.html",
-            "kind": "room holding"
+            "id": "002--chapter-2--the-simplicity-of-the-potato",
+            "kind": "room holding",
+            "basis": "great-book-corpus"
           },
           {
-            "id": "003--chapter-3--the-mud-dweller-s-burden",
             "path": "great-book/chapters/003--chapter-3--the-mud-dweller-s-burden.html",
-            "kind": "room holding"
+            "id": "003--chapter-3--the-mud-dweller-s-burden",
+            "kind": "room holding",
+            "basis": "great-book-corpus"
+          },
+          {
+            "path": "great-book/chapters/004--chapter-4--the-weight-of-emotions-and-the-path-to-potato-enlightenment.html",
+            "id": "004--chapter-4--the-weight-of-emotions-and-the-path-to-potato-enlightenment",
+            "kind": "room holding",
+            "basis": "great-book-corpus"
+          },
+          {
+            "path": "great-book/chapters/005--chapter-5--the-farmer-s-quest-for-enlightenment.html",
+            "id": "005--chapter-5--the-farmer-s-quest-for-enlightenment",
+            "kind": "room holding",
+            "basis": "great-book-corpus"
+          },
+          {
+            "path": "great-book/chapters/006--chapter-6--embracing-the-simplicity-of-emotions.html",
+            "id": "006--chapter-6--embracing-the-simplicity-of-emotions",
+            "kind": "room holding",
+            "basis": "great-book-corpus"
           }
         ]
       },
@@ -5804,9 +6234,10 @@
         "primary_file_count": 1,
         "featured": [
           {
-            "id": "suno-music-archive",
             "path": "knowledge/creative/tim-dooley-suno-music-archive.json",
-            "kind": "Suno music catalogue and recovered lyric records"
+            "id": "suno-music-archive",
+            "kind": "Suno music catalogue and recovered lyric records",
+            "basis": "exact-owner"
           }
         ]
       },
@@ -5918,14 +6349,16 @@
         "primary_file_count": 2,
         "featured": [
           {
-            "id": "artifact-history-registry",
             "path": "knowledge/creative/artifact-history-registry.json",
-            "kind": "room holding"
+            "id": "artifact-history-registry",
+            "kind": "room holding",
+            "basis": "creative-topic"
           },
           {
-            "id": "visual-art-symbolic-composition-archive",
             "path": "knowledge/creative/visual-art-symbolic-composition-archive.json",
-            "kind": "room holding"
+            "id": "visual-art-symbolic-composition-archive",
+            "kind": "room holding",
+            "basis": "exact-owner"
           }
         ]
       },
@@ -6043,9 +6476,10 @@
         "primary_file_count": 1,
         "featured": [
           {
-            "id": "creative-systems-archive",
             "path": "knowledge/culture/creative-systems-archive.json",
-            "kind": "creative works and simulations archive"
+            "id": "creative-systems-archive",
+            "kind": "creative works and simulations archive",
+            "basis": "exact-owner"
           }
         ]
       },
@@ -6169,39 +6603,100 @@
         "primary_file_count": 21,
         "featured": [
           {
-            "id": "foundation-door-seed-genealogy",
+            "path": "data/house/foundation-first-reproduction-wave-001.json",
+            "id": "foundation-first-reproduction-wave-001",
+            "kind": "Foundation living-lineage evidence ledger",
+            "basis": "foundation-population-wave-016"
+          },
+          {
+            "path": "data/house/foundation-room-atlas.json",
+            "id": "foundation-room-atlas",
+            "kind": "52-Foundation tangible Room atlas",
+            "basis": "foundation-room-wave-015"
+          },
+          {
+            "path": "data/house/foundation-room-contract.json",
+            "id": "foundation-room-contract",
+            "kind": "Foundation Room reader contract",
+            "basis": "foundation-room-wave-015"
+          },
+          {
+            "path": "data/house/foundation-landscape-synthesis.json",
+            "id": "foundation-landscape-synthesis",
+            "kind": "cross-domain Foundation trajectory landscape",
+            "basis": "foundation-landscape-wave-014"
+          },
+          {
+            "path": "data/house/foundation-placement-wave-003.json",
+            "id": "foundation-placement-wave-003",
+            "kind": "Expanded Foundation placement population",
+            "basis": "foundation-placement-wave-013"
+          },
+          {
+            "path": "data/house/foundation-axis-placement-contract.json",
+            "id": "foundation-axis-placement-contract",
+            "kind": "Foundation stage placement contract",
+            "basis": "foundation-placement-wave-013"
+          },
+          {
             "path": "data/house/foundation-door-seed-genealogy.json",
-            "kind": "Foundation Seed Door time-place genealogy"
+            "id": "foundation-door-seed-genealogy",
+            "kind": "Foundation Seed Door time-place genealogy",
+            "basis": "foundation-seed-genealogy-wave-012"
           },
           {
-            "id": "route-case-matrix",
             "path": "data/house/route-case-matrix.json",
-            "kind": "evidence-aware route case matrix"
+            "id": "route-case-matrix",
+            "kind": "evidence-aware Life Strife Repair Return route case matrix",
+            "basis": "route-instrumentation-wave-011"
           },
           {
-            "id": "house-atlas-systems-theory-2026-09-13",
             "path": "knowledge/research/house-atlas-systems-theory-2026-09-13.json",
-            "kind": "room holding"
+            "id": "house-atlas-systems-theory-2026-09-13",
+            "kind": "room holding",
+            "basis": "research-topic"
           },
           {
-            "id": "01-system-cybernetics-and-control",
             "path": "knowledge/research/house-atlas-systems-theory/01-system-cybernetics-and-control.md",
-            "kind": "room holding"
+            "id": "01-system-cybernetics-and-control",
+            "kind": "room holding",
+            "basis": "research-topic"
           },
           {
-            "id": "02-information-compression-and-views",
             "path": "knowledge/research/house-atlas-systems-theory/02-information-compression-and-views.md",
-            "kind": "room holding"
+            "id": "02-information-compression-and-views",
+            "kind": "room holding",
+            "basis": "research-topic"
           },
           {
-            "id": "03-graph-family-and-north",
             "path": "knowledge/research/house-atlas-systems-theory/03-graph-family-and-north.md",
-            "kind": "room holding"
+            "id": "03-graph-family-and-north",
+            "kind": "room holding",
+            "basis": "research-topic"
           },
           {
-            "id": "04-logic-provenance-time-and-truth-maintenance",
             "path": "knowledge/research/house-atlas-systems-theory/04-logic-provenance-time-and-truth-maintenance.md",
-            "kind": "room holding"
+            "id": "04-logic-provenance-time-and-truth-maintenance",
+            "kind": "room holding",
+            "basis": "research-topic"
+          },
+          {
+            "path": "knowledge/research/house-atlas-systems-theory/05-maintenance-health-and-growth.md",
+            "id": "05-maintenance-health-and-growth",
+            "kind": "room holding",
+            "basis": "research-topic"
+          },
+          {
+            "path": "knowledge/research/house-atlas-systems-theory/06-retrieval-ranking-and-question-routing.md",
+            "id": "06-retrieval-ranking-and-question-routing",
+            "kind": "room holding",
+            "basis": "research-topic"
+          },
+          {
+            "path": "knowledge/research/house-atlas-systems-theory/07-provenance-dependency-and-invalidation.md",
+            "id": "07-provenance-dependency-and-invalidation",
+            "kind": "room holding",
+            "basis": "research-topic"
           }
         ]
       },
@@ -6427,29 +6922,52 @@
         "primary_file_count": 8,
         "featured": [
           {
-            "id": "faq-question-bank",
             "path": "knowledge/indexes/faq-question-bank.json",
-            "kind": "room holding"
+            "id": "faq-question-bank",
+            "kind": "room holding",
+            "basis": "exact-owner"
           },
           {
-            "id": "digital-underground-network-audit-2026-09",
             "path": "knowledge/research/digital-underground-network-audit-2026-09.json",
-            "kind": "room holding"
+            "id": "digital-underground-network-audit-2026-09",
+            "kind": "room holding",
+            "basis": "research-remainder"
           },
           {
-            "id": "josh-moon-moloch-provenance-dossier-2026-09",
             "path": "knowledge/research/josh-moon-moloch-provenance-dossier-2026-09.json",
-            "kind": "room holding"
+            "id": "josh-moon-moloch-provenance-dossier-2026-09",
+            "kind": "room holding",
+            "basis": "research-remainder"
           },
           {
-            "id": "legal-accountability-human-consequence-source-ledger-2026-09",
             "path": "knowledge/research/legal-accountability-human-consequence-source-ledger-2026-09.json",
-            "kind": "room holding"
+            "id": "legal-accountability-human-consequence-source-ledger-2026-09",
+            "kind": "room holding",
+            "basis": "research-remainder"
           },
           {
-            "id": "map-respect-and-layer-recovery-2026-09-11",
             "path": "knowledge/research/map-respect-and-layer-recovery-2026-09-11.md",
-            "kind": "room holding"
+            "id": "map-respect-and-layer-recovery-2026-09-11",
+            "kind": "room holding",
+            "basis": "research-remainder"
+          },
+          {
+            "path": "knowledge/research/moloch-farm-subculture-prior-baseline-2026-09.json",
+            "id": "moloch-farm-subculture-prior-baseline-2026-09",
+            "kind": "room holding",
+            "basis": "research-remainder"
+          },
+          {
+            "path": "knowledge/research/moloch-milk-farm-genealogy-source-ledger-2026-09.json",
+            "id": "moloch-milk-farm-genealogy-source-ledger-2026-09",
+            "kind": "room holding",
+            "basis": "research-remainder"
+          },
+          {
+            "path": "knowledge/research/under-culture-shadow-network-source-ledger-2026-09.json",
+            "id": "under-culture-shadow-network-source-ledger-2026-09",
+            "kind": "room holding",
+            "basis": "research-remainder"
           }
         ]
       },
@@ -6621,29 +7139,52 @@
         "primary_file_count": 63,
         "featured": [
           {
-            "id": "celestial-particles-wave-004",
             "path": "knowledge/science/celestial-orbits-particles-cmb-expansion-wave-004.json",
-            "kind": "specialist celestial mechanics, CMB, QCD and spin reference expansion"
+            "id": "celestial-particles-wave-004",
+            "kind": "specialist celestial mechanics, CMB, QCD and spin reference expansion",
+            "basis": "core-index-branch"
           },
           {
-            "id": "equation-ledger",
             "path": "knowledge/science/equation-ledger.json",
-            "kind": "equation provenance ledger"
+            "id": "equation-ledger",
+            "kind": "equation provenance ledger",
+            "basis": "core-index-branch"
           },
           {
-            "id": "science-master-index",
             "path": "knowledge/science/science-master-index.json",
-            "kind": "canonical science map"
+            "id": "science-master-index",
+            "kind": "canonical science map",
+            "basis": "core-index-branch"
           },
           {
-            "id": "spudlight",
             "path": "knowledge/science/spudlight-theory-and-equations.json",
-            "kind": "Spudlight source/reflection/information theory"
+            "id": "spudlight",
+            "kind": "Spudlight source/reflection/information theory",
+            "basis": "core-index-branch"
           },
           {
-            "id": "tim-dooley-science-formalisms",
             "path": "knowledge/science/tim-dooley-science-formalisms.json",
-            "kind": "recovered/formalized Timic equations"
+            "id": "tim-dooley-science-formalisms",
+            "kind": "recovered/formalized Timic equations",
+            "basis": "core-index-branch"
+          },
+          {
+            "path": "knowledge/science/timic-unification-program.json",
+            "id": "timic-unification-program",
+            "kind": "cross-model research programme",
+            "basis": "core-index-branch"
+          },
+          {
+            "path": "knowledge/research/axis-d1-d11-spiritual-scaffold-2026-09-10.md",
+            "id": "axis-d1-d11-spiritual-scaffold-2026-09-10",
+            "kind": "room holding",
+            "basis": "research-topic"
+          },
+          {
+            "path": "knowledge/research/axis-dimensional-gap-audit-2026-09-11.md",
+            "id": "axis-dimensional-gap-audit-2026-09-11",
+            "kind": "room holding",
+            "basis": "research-topic"
           }
         ]
       },
@@ -6813,39 +7354,64 @@
         "primary_file_count": 12,
         "featured": [
           {
-            "id": "element-materialization-audit-2026-09-18",
             "path": "knowledge/research/element-materialization-audit-2026-09-18.json",
-            "kind": "project-wide element materialization and instrumentation audit"
+            "id": "element-materialization-audit-2026-09-18",
+            "kind": "project-wide element materialization and instrumentation audit",
+            "basis": "element-instrumentation-wave-010"
           },
           {
-            "id": "recent-commit-materialization-crystallization-257-283",
             "path": "knowledge/research/recent-commit-materialization-crystallization-257-283.json",
-            "kind": "binding whole-project materialization and crystallization convergence ledger"
+            "id": "recent-commit-materialization-crystallization-257-283",
+            "kind": "binding whole-project materialization and crystallization convergence ledger",
+            "basis": "commit-crystallization-wave-009"
           },
           {
-            "id": "recent-commit-depth-audit-2026-09-18",
             "path": "knowledge/research/recent-commit-depth-audit-2026-09-18.json",
-            "kind": "whole-project research depth audit and priority programme"
+            "id": "recent-commit-depth-audit-2026-09-18",
+            "kind": "whole-project research depth audit and priority programme",
+            "basis": "center-depth-programme"
           },
           {
-            "id": "north-axis-tikkun-world-repair-synthesis",
             "path": "knowledge/core/north-axis-tikkun-world-repair-synthesis.json",
-            "kind": "room holding"
+            "id": "north-axis-tikkun-world-repair-synthesis",
+            "kind": "room holding",
+            "basis": "core-topic"
           },
           {
-            "id": "potato-containment-folded-world-model",
             "path": "knowledge/core/potato-containment-folded-world-model.json",
-            "kind": "room holding"
+            "id": "potato-containment-folded-world-model",
+            "kind": "room holding",
+            "basis": "core-topic"
           },
           {
-            "id": "telos-vision-and-desired-world",
             "path": "knowledge/core/telos-vision-and-desired-world.json",
-            "kind": "room holding"
+            "id": "telos-vision-and-desired-world",
+            "kind": "room holding",
+            "basis": "core-topic"
           },
           {
-            "id": "tim-dooley-real-world-entanglement",
             "path": "knowledge/core/tim-dooley-real-world-entanglement.json",
-            "kind": "room holding"
+            "id": "tim-dooley-real-world-entanglement",
+            "kind": "room holding",
+            "basis": "core-topic"
+          },
+          {
+            "path": "knowledge/core/world-atlas-integrated-layer-stack.json",
+            "id": "world-atlas-integrated-layer-stack",
+            "kind": "room holding",
+            "basis": "core-topic"
+          },
+          {
+            "path": "knowledge/core/world-axis-ledger-tikkun-task-synthesis.json",
+            "id": "world-axis-ledger-tikkun-task-synthesis",
+            "kind": "room holding",
+            "basis": "core-topic"
+          },
+          {
+            "path": "knowledge/research/north-faith-composition-synthesis-2026-09-11.md",
+            "id": "north-faith-composition-synthesis-2026-09-11",
+            "kind": "room holding",
+            "basis": "research-topic"
           }
         ]
       },

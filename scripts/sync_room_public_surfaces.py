@@ -28,7 +28,8 @@ def main():
     surfaces=load(ROOT/"data/house/public-surfaces.json")
     canonical={r["id"]:list(r.get("public_surface_ids",[])) for r in subs.get("subrooms",[]) if isinstance(r,dict) and r.get("id")}
     surface_by_id={r["id"]:r for r in surfaces.get("surfaces",[]) if isinstance(r,dict) and r.get("id")}
-    holding_counts={r.get("room_id"):int(r.get("primary_file_count",0)) for r in holds.get("holdings",[]) if isinstance(r,dict) and r.get("room_id")}
+    holding_rows={r.get("room_id"):r for r in holds.get("holdings",[]) if isinstance(r,dict) and r.get("room_id")}
+    holding_counts={rid:int(row.get("primary_file_count",0)) for rid,row in holding_rows.items()}
     changes=[]
 
     for row in holds.get("holdings",[]):
@@ -51,6 +52,10 @@ def main():
         if holding.get("primary_file_count")!=want_count:
             changes.append(f"dossiers-holding-count:{rid}")
             holding["primary_file_count"]=want_count
+        want_featured=list((holding_rows.get(rid) or {}).get("featured_holdings",[]))
+        if holding.get("featured",[])!=want_featured:
+            changes.append(f"dossiers-featured-holdings:{rid}")
+            holding["featured"]=want_featured
 
     if args.check:
         if changes:
