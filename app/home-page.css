@@ -81,3 +81,19 @@
 .home-visual-card span{display:block;color:var(--site-muted);font-size:9px;line-height:1.4;margin-top:3px}.home-visual-card small{display:block;color:var(--site-faint);font-size:8px;line-height:1.35;margin-top:6px}
 .home-visual-card:hover{border-color:#60715b}.home-visual-card:hover b{color:var(--site-green)}
 
+.home-bible-bridge{position:relative}
+.home-bible-river{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:20px 0 18px;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
+.home-bible-river a{position:relative;display:block;padding:17px 13px 18px 0;text-decoration:none;color:inherit;border-right:1px solid var(--site-line)}
+.home-bible-river a:not(:first-child){padding-left:13px}.home-bible-river a:last-child{border-right:0}
+.home-bible-river time{display:block;color:var(--site-green);font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.home-bible-river strong{display:block;margin-top:5px;color:var(--site-gold);font:400 17px/1.12 var(--site-font-serif)}
+.home-bible-river span{display:block;margin-top:6px;color:var(--site-muted);font-size:10px;line-height:1.48}
+.home-bible-river a:hover strong,.home-bible-river a:focus-visible strong{color:var(--site-green)}
+.home-bible-identity{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--site-line);margin-top:10px}
+.home-bible-identity div{padding:14px 16px 3px 0}.home-bible-identity div+div{padding-left:16px;border-left:1px solid var(--site-line)}
+.home-bible-identity strong{color:var(--site-ink);font:400 18px/1.15 var(--site-font-serif)}
+.home-bible-identity p{margin:5px 0 0;color:var(--site-muted);font-size:10px;line-height:1.5}
+.home-bible-route{display:flex;flex-wrap:wrap;gap:8px 16px;margin:18px 0 7px;font-size:11px}
+.home-bible-route a{text-decoration:none;border-bottom:1px solid #364034}.home-bible-route a:first-child{color:var(--site-gold)}
+@media(max-width:900px){.home-bible-river{grid-template-columns:repeat(3,minmax(0,1fr))}.home-bible-river a:nth-child(3){border-right:0}.home-bible-river a:nth-child(-n+3){border-bottom:1px solid var(--site-line)}}
+@media(max-width:620px){.home-bible-river{grid-template-columns:1fr}.home-bible-river a,.home-bible-river a:not(:first-child){padding:13px 0;border-right:0;border-bottom:1px solid var(--site-line)}.home-bible-river a:last-child{border-bottom:0}.home-bible-identity{grid-template-columns:1fr}.home-bible-identity div,.home-bible-identity div+div{padding:12px 0;border-left:0;border-bottom:1px solid var(--site-line)}.home-bible-identity div:last-child{border-bottom:0}}
