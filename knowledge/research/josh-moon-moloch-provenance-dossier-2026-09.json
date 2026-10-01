@@ -1,7 +1,7 @@
 {
   "id": "josh-moon-moloch-provenance-dossier-2026-09",
-  "version": "1.2.0",
-  "updated": "2026-10-01",
+  "version": "1.3.0",
+  "updated": "2026-10-02",
   "status": "active-unresolved-primary-source-investigation",
   "purpose": "Consolidate the provenance of Tim's reported Josh Moon/Moloch material while separating public prior vocabulary, earlier Timic symbolism, Josh-specific relational precursors, later Tim recollection, public MATI context and the still-missing primary excerpt.",
   "canonical_conclusion": {
@@ -192,5 +192,27 @@
   "human_trafficking_boundary": {
     "crosswalk_owner": "knowledge/world/exploitation-coercion-trafficking-crosswalk.json",
     "rule": "Do not call Joshua Moon a human trafficker as a factual/legal conclusion unless jurisdiction-specific trafficking elements and evidence are established or an authoritative charge/finding exists. Tim's sold language remains project metaphor unless separately substantiated."
-  }
+  },
+  "evidence_status_ladder": {
+    "established_public_record": {
+      "meaning": "Facts supported by court records, direct operator material or comparably reliable public documentation.",
+      "current_example": "Joshua Moon's operator/website-owner role is directly supportable."
+    },
+    "subcultural_record": {
+      "meaning": "Material preserved by partisan, adversarial or participant archives that can document reception/role history but requires source-class labeling.",
+      "current_example": "CWCki Guard Dogs material."
+    },
+    "tim_testimony": {
+      "meaning": "Tim's own recollection, contemporaneous statement or later report. It is primary evidence for Tim's testimony and interpretation, not automatically for the external proposition.",
+      "current_example": "Later Josh/Moloch/sacrifice/government-language reconstruction."
+    },
+    "unsupported_rumor": {
+      "meaning": "A claim reported as circulating but lacking reliable substantiation. Preserve provenance of the assertion if relevant; do not adopt it as biography.",
+      "rule": "No hidden government/law-enforcement affiliation claim may be promoted without reliable direct evidence."
+    },
+    "potatoverse_interpretation": {
+      "meaning": "Project-symbolic mapping such as Farmer/Moloch/Moon/proxy. Analytically meaningful inside the mythology; not empirical proof of occult, criminal or government identity."
+    }
+  },
+  "promotion_rule": "A claim moves upward only when stronger source evidence is recovered. Repetition, copied summaries or later symbolic fit do not increase source independence."
 }
