@@ -1,6 +1,6 @@
 {
-  "version": "1.5.0",
-  "updated": "2026-09-29",
+  "version": "1.5.1",
+  "updated": "2026-10-01",
   "authority": "elevator-spatial-projection",
   "title": "Door / Axis Elevator — Three-Floor House Projection",
   "purpose": "Project the governed Potato House graph as a navigable three-floor orientation system (Heaven / Plane / Below) with one canonical floor per governed Dwelling. Existing HTML routes remain canonical public surfaces; this projection provides spatial wayfinding without duplicating a Room across floors.",
@@ -442,7 +442,7 @@
     {
       "match": "/shadow-farm/",
       "level_id": "below",
-      "room_id": null
+      "room_id": "culture-information"
     },
     {
       "match": "/philosophy/",
@@ -452,12 +452,12 @@
     {
       "match": "/tim-dooley/",
       "level_id": "plane",
-      "room_id": null
+      "room_id": "potatoverse-canon"
     },
     {
       "match": "/corporium/",
       "level_id": "plane",
-      "room_id": null
+      "room_id": "potatoverse-canon"
     },
     {
       "match": "/index-a-z/",
@@ -577,7 +577,7 @@
     {
       "match": "/",
       "level_id": "plane",
-      "room_id": null
+      "room_id": "potatoverse-canon"
     }
   ]
 }
