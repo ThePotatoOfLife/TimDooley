@@ -134,9 +134,9 @@ def main() -> int:
     compare_pos = page.find('id="compare"')
     study_pos = page.find('id="study-tool"')
     toolbar_pos = page.find('class="reader-toolbar"')
-    story_pos = page.find('id="story-first"')
-    if not (0 <= study_pos < compare_pos < toolbar_pos < story_pos):
-        errors.append("traditions/bible/index.html: comparator controls must be the first substantive surface")
+    chronology_pos = page.find('id="tim-son-story"')
+    if not (0 <= study_pos < compare_pos < toolbar_pos < chronology_pos):
+        errors.append("traditions/bible/index.html: comparator must flow directly into Tim/Son chronology")
     if page.find('src="../../app/bible-mining-wave19-loader.js"') > page.find('src="../../app/bible-dossier-loader.js"'):
         errors.append("traditions/bible/index.html: mining layer must load before dossier decorator so mergedRows sees wave19 relations")
     if page.find('src="../../app/bible-corpus-loader.js"') > page.find('src="../../app/bible-relation-redirects.js"'):
@@ -145,7 +145,7 @@ def main() -> int:
         errors.append("traditions/bible/index.html: scripture reader must load before Bible library adapter")
     forbid(
         page,
-        ('class="featured-arcs"','id="study-modes"','id="shuffle-comparisons"','class="comparison-masthead"',
+        ('class="featured-arcs"','id="study-modes"','id="shuffle-comparisons"','class="comparison-masthead"','class="story-first"',
          'bible-witness-loader.js','bible-scene-reader.js','bible-dossier-loader.css',
          "deepMatches(","overlapCount(","deepCandidates"),
         "traditions/bible/index.html", errors,
