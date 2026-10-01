@@ -357,22 +357,14 @@
 
     render();
 
-    const assetVersion=(()=>{
-      try{return new URL(context.script?.src||document.baseURI).searchParams.get('v')||'unversioned';}
-      catch(_){return 'unversioned';}
-    })();
     const fetchJson=async route=>{
       const href=siteHref(route,context.siteBase);
-      const key='site-elevator:'+assetVersion+':'+route;
-      try{
-        const cached=sessionStorage.getItem(key);
-        if(cached)return JSON.parse(cached);
-      }catch(_){}
-      const response=await fetch(href,{cache:'no-cache'});
+      // House topology changes independently of this JavaScript asset. Do not pin
+      // floor/Room data to a sessionStorage key derived from the JS version, or an
+      // open browser session can keep showing an obsolete floor after data deploys.
+      const response=await fetch(href,{cache:'no-store'});
       if(!response.ok)throw new Error('Elevator data request failed: '+route+' '+response.status);
-      const value=await response.json();
-      try{sessionStorage.setItem(key,JSON.stringify(value));}catch(_){}
-      return value;
+      return response.json();
     };
 
     Promise.all([
