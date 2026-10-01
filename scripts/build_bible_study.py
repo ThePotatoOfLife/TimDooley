@@ -73,8 +73,9 @@ def render(row: dict, fragments: dict[str, list[dict]]) -> str:
         text = str(value or "").strip()
         if text and text not in source_wording:
             source_wording.append(text)
+    wording_label = row.get("wording_status") or row.get("discovery_mode") or row.get("evidence_kind") or "project-side wording"
     wording_html = "".join(
-        f'<blockquote class="project-quote source-wording">{esc(text)}<cite>Project-side wording</cite></blockquote>'
+        f'<blockquote class="project-quote source-wording">{esc(text)}<cite>{esc(wording_label)}</cite></blockquote>'
         for text in source_wording[:3]
     )
     project_context = row.get("project_context") or row.get("project_anchor")
