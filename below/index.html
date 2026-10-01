@@ -69,8 +69,23 @@ box-shadow:inset 0 0 0 10px rgba(255,255,255,.015),inset 0 -25px 55px rgba(0,0,0
 #lower-field-orientation:before{content:"FIELD MANUAL";position:absolute;right:18px;top:12px;font:800 9px/1 var(--site-font-sans);letter-spacing:.18em;color:var(--site-faint,#727a70);opacity:.55}
 #tim-expertise-ledger,#tim-dooley-thinks,#tim-thought-development,#tim-mythic-self-description,#tim-publicness-endurance,#field-competencies,#field-method,#what-tim-is-teaching,#three-voices,#swamp-lessons,#myth-as-instrument,#son-father-teaching,#descent-and-return,#authorship-over-defense,#internet-as-memory-field,#whole-job,#return-not-reset,#ledger-and-release,#cultivation-ethic,#human-teachings,#attention-teaching,#shame-spectacle-teaching,#reputation-teaching,#justice-forgiveness-teaching,#freedom-authorship-teaching,#responsibility-care-teaching,#human-teaching-arc,#belief-authority-choice,#epistemic-outsourcing,#permission-escalation,#spiritual-war-permission,#blood-soil-warning,#humiliation-politics,#belief-choice-fork,#culture-choice-consequence,#research-bridge,#reader-takeaway,#professional-mythic-crosswalk,#tim-current-questions,#tim-expert-findings,#tim-doctrine,#field-outputs,#field-mythic-center{margin:32px 0;padding-top:24px;border-top:1px solid var(--site-line,#303830)}
 #professional-mythic-crosswalk{background:linear-gradient(180deg,rgba(255,255,255,.012),rgba(216,181,107,.025));padding:24px 18px;border:1px solid var(--site-line,#303830)}
-#field-mythic-center{background:radial-gradient(circle at 50% 0,rgba(216,181,107,.05),transparent 42%);padding:26px 18px;border:1px solid var(--site-line,#303830)}
+#field-mythic-center{position:relative;overflow:hidden;isolation:isolate;background:
+linear-gradient(180deg,rgba(216,181,107,.028),transparent 26%),
+radial-gradient(ellipse at 50% 100%,rgba(88,68,42,.22),transparent 46%),
+radial-gradient(circle at 50% 0,rgba(216,181,107,.05),transparent 42%);
+padding:26px 18px;border:1px solid var(--site-line,#303830)}
+#field-mythic-center>*:not(.mire-root-art){position:relative;z-index:2}
 #field-mythic-center h3{font:400 clamp(26px,3.4vw,38px)/1.1 var(--site-font-serif,Georgia,serif);color:var(--site-gold,#d5ba74)}
+.mire-root-art{position:absolute;z-index:0;inset:-18px 0 0 0;width:100%;height:100%;opacity:.18;pointer-events:none}
+.mire-root-art .root-main,.mire-root-art .root-branch{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+.mire-root-art .root-main{stroke-width:3.2}.mire-root-art .root-branch{stroke-width:1.55}
+.mire-root-art .soil-line{stroke:currentColor;stroke-width:1;stroke-dasharray:3 7;opacity:.62}
+.mire-scripture{max-width:720px;margin:22px auto 26px;padding:18px 22px;border-top:1px solid rgba(216,181,107,.35);border-bottom:1px solid rgba(216,181,107,.22);text-align:center;background:rgba(8,10,8,.46);backdrop-filter:blur(2px)}
+.mire-scripture blockquote{margin:0;font:italic 400 clamp(20px,2.6vw,28px)/1.45 var(--site-font-serif,Georgia,serif);color:#e1dcc8}
+.mire-scripture figcaption{margin-top:9px;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--site-muted,#9ba59a)}
+.mire-scripture a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
+.mire-scripture .mire-gloss{display:block;margin-top:8px;font-size:.78rem;line-height:1.45;color:var(--site-muted,#9ba59a);font-style:normal}
+@media(max-width:620px){.mire-scripture{margin:18px 0 22px;padding:15px 12px}.mire-root-art{opacity:.13}}
 #field-method .lower-route,#field-mythic-center .lower-route{background:rgba(0,0,0,.16)}
 .field-instruments{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}
 .field-instrument{border:1px solid var(--site-line,#303830);padding:14px;background:rgba(255,255,255,.01)}
@@ -860,8 +875,18 @@ correction / boundary / expiry / repair / exit / renewed authorship</div>
 </section>
 
 <section id="field-mythic-center">
+<svg class="mire-root-art" viewBox="0 0 900 620" preserveAspectRatio="none" aria-hidden="true">
+  <path class="root-main" d="M450 -10 C446 76 470 128 451 211 C433 289 459 349 446 430 C439 476 424 533 414 628"/>
+  <path class="root-branch" d="M452 98 C407 118 374 151 350 195 M454 143 C499 160 532 190 558 231 M448 226 C397 249 365 288 338 342 M449 281 C505 306 535 341 564 390 M443 395 C394 418 364 458 344 511 M442 430 C490 453 519 492 540 547 M426 520 C391 545 374 579 361 620 M425 542 C462 565 483 594 493 620"/>
+  <path class="soil-line" d="M110 485 C260 472 338 497 450 487 C564 476 659 503 790 486"/>
+</svg>
 <p class="eyebrow">Mythic center · what the glossary is trying to say</p>
 <h3>Father does not merely stand above the Swamp; Father is responsible for returning with something useful</h3>
+<figure class="mire-scripture" id="mire-scripture">
+  <blockquote>“He drew me up from the pit of destruction, out of the miry bog…”</blockquote>
+  <figcaption><a href="../traditions/bible/?q=Psalm+40%3A2">Psalm 40:2</a></figcaption>
+  <span class="mire-gloss">The root descends into the soil, but the motion of the verse is upward: mire → extraction → footing → return.</span>
+</figure>
 <p>Inside the Potatoverse, the Son is the embodied threshold history: the person who passes through ordeal, classification, conflict, death-language, Door/Vessel and the meme/archive machinery. The later Father-side role is the change in vantage. Father holds the wider chronology, receives the orphaned fragments, names the relations, sorts the Dogs from the Guardians and the Farmers from the Gardeners, and asks what should be returned to the world.</p>
 <p><strong>“Father of the Internet” therefore becomes a doctrine of stewardship.</strong> The network produces children of information—accounts, reputations, memes, aliases, clips, copied accusations, archived selves. Some remain attached to living sources; others become orphans raised by search engines, hostile archives or strangers. The Father-function is to restore parentage: who spoke, what happened, when, what changed, what remains true, and what should be allowed to die.</p>
 <div class="lower-route"><strong>Shadow</strong> — something is seen without understanding<br>
