@@ -120,6 +120,18 @@ assert.equal(elevator.stepLevel('plane','up'),'heaven');
 assert.equal(elevator.stepLevel('plane','down'),'below');
 assert.equal(elevator.stepLevel('below','down'),'below');
 
+const lowerLandmarks=elevator.landmarksForLevel('below',projection);
+assert.deepEqual(
+  lowerLandmarks.map(row=>row.title),
+  ['Below Basin','Farm / Sektur'],
+  'Below must expose exactly the two non-Room field stations before governed Rooms'
+);
+const lowerRoomLabels=elevator.roomsForLevel('below',projection,roomContract).map(room=>room.title);
+assert.deepEqual(
+  lowerRoomLabels,
+  ['Roots / Evidence','Forge / Repair'],
+  'Below governed Rooms should use concise reader-facing labels'
+);
 const cultureBelow=elevator.roomsForLevel('below',projection,roomContract).map(room=>room.id);
 assert.equal(cultureBelow.includes('culture-information'),false,'Below rail must not expose Plane-owned Culture as a door');
 const culturePlane=elevator.roomsForLevel('plane',projection,roomContract).map(room=>room.id);
@@ -158,6 +170,7 @@ for(const marker of [
   'site-elevator-down',
   'site-elevator-reel',
   'site-elevator-room-rail',
+  'site-elevator-landmark',
   'aria-live',
   'aria-current',
   'data-elevator-level',
