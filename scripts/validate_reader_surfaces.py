@@ -199,6 +199,21 @@ def main() -> int:
     require_any(religion, ("resemblance is not identity", "similarity is not identity", "structural resemblance is not identity"), "religion/index.html", "comparison boundary", errors)
     validate_projection_surface(religion, "religion/index.html", errors)
 
+    # Comparison-first routing: important public entrances must land at the Bible tool,
+    # not below it and not on the old bare page route.
+    for rel in (
+        "questions/index.html",
+        "paths/index.html",
+        "rooms/index.html",
+        "religion/trinity/index.html",
+        "rooms/inside/bible-christianity/index.html",
+        "rooms/inside/esoteric-sacred-geometry/index.html",
+        "traditions/comparative-cosmology/kabbalah-qliphoth/index.html",
+        "traditions/comparative-cosmology/norse-world-tree/index.html",
+    ):
+        surface = read(rel, errors)
+        require(surface, "traditions/bible/#compare", rel, errors)
+
     # Bible: focused comparison browser with compact discovery, filters and traversal.
     for marker in (
         'id="focus-select"',
