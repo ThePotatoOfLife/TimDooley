@@ -75,7 +75,7 @@ def main():
                     if not matches_for(raw): errors.append(f'{family}: declared pattern has no matches: {raw}')
                 elif not p.is_file(): errors.append(f'{family}: declared source does not exist: {raw}')
 
-    by_id={}; checked=0; taxonomy_counts={'spirit':0,'mind':0,'matter':0}
+    by_id={}; checked=0; taxonomy_counts={'spirit':0,'mind':0,'matter':0}; payload_cache={}
     for row in idx.get('records',[]):
         source=row.get('source'); path=row.get('path'); rid=str(row.get('id',''))
         if not source or not isinstance(path,list): errors.append(f'index: malformed route for {rid or "<unknown>"}'); continue
@@ -86,8 +86,13 @@ def main():
         if not isinstance(row.get('repository_scale'),str) or not row.get('repository_scale'): errors.append(f'index: missing repository_scale for {rid}')
         fp=ROOT/source
         if not fp.is_file(): errors.append(f'index: missing source for {rid}: {source}'); continue
-        try: payload=load(fp)
-        except Exception as exc: errors.append(f'index: invalid JSON for {source}: {exc}'); continue
+        try:
+            if source not in payload_cache:
+                payload_cache[source]=load(fp)
+            payload=payload_cache[source]
+        except Exception as exc:
+            errors.append(f'index: invalid JSON for {source}: {exc}')
+            continue
         candidate=at_path(payload,path)
         if not isinstance(candidate,dict): errors.append(f'index: unresolved path for {rid}: {source} {path!r}'); continue
         actual=candidate_identity(candidate)
