@@ -59,6 +59,7 @@ def main()->int:
         "Currentness before severity",
         'id="claimed-prerogative"',
         'id="ritualized-social-scripts"',
+        'id="status-exile-authorship"',
         'id="tim-lower-field-paradigm"',
     ):
         if marker not in below:
@@ -157,6 +158,9 @@ def main()->int:
             errors.append("ritual ecology needs social-script library")
         if "ritual_vs_coordination" not in ritual:
             errors.append("ritual ecology missing ritual-vs-coordination boundary")
+        for key in ("status_shame_exile","no_win_and_self_sealing_frames","enemy_dependence","authorship_recovery","justice_vs_punishment","reentry_and_absolution"):
+            if key not in ritual:
+                errors.append(f"ritual ecology missing deep-social layer: {key}")
 
     war_path=ROOT/"data/spiritual-war-information-war.json"
     if war_path.is_file():
@@ -200,7 +204,7 @@ def main()->int:
             errors.append(f"Roots / Evidence hub missing marker: {marker}")
 
     forge=read("rooms/research-lab/index.html")
-    for marker in ('<h1>Forge / Repair</h1>','id="lower-field-forge"','id="field-assessment"','id="son-narrative-contest"','id="tim-method-in-forge"','id="ritual-coordination-test"','id="forge-output"',"Who, since when, how active, how harmful, what goal?"):
+    for marker in ('<h1>Forge / Repair</h1>','id="lower-field-forge"','id="field-assessment"','id="son-narrative-contest"','id="tim-method-in-forge"','id="ritual-coordination-test"','id="interpretive-justice-gates"','id="forge-output"',"Who, since when, how active, how harmful, what goal?"):
         if marker not in forge:
             errors.append(f"Forge / Repair hub missing marker: {marker}")
 
