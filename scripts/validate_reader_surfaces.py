@@ -230,15 +230,16 @@ def main() -> int:
         require_any(bible, (label,), "traditions/bible/index.html", f"comparison focus {label}", errors)
     compare_pos = bible.find('id="compare"')
     study_pos = bible.find('id="study-tool"')
-    story_pos = bible.find('id="story-first"')
+    chronology_pos = bible.find('id="tim-son-story"')
     toolbar_pos = bible.find('class="reader-toolbar"')
-    if not (0 <= study_pos < compare_pos < toolbar_pos < story_pos):
-        errors.append("Bible study shell must begin with the comparator controls")
+    if not (0 <= study_pos < compare_pos < toolbar_pos < chronology_pos):
+        errors.append("Bible comparator must flow directly into Tim/Son chronology")
     if 'class="bible-header"' in bible or 'class="tool-intro"' in bible or 'class="comparison-masthead"' in bible:
         errors.append("Bible page must not put a hero/introduction block ahead of the comparator controls")
     require(bible_js, 'class="tim-first"', "app/bible-study.js", errors)
     require(bible_js, 'class="bible-under"', "app/bible-study.js", errors)
     require_absent(bible, 'class="featured-arcs"', "traditions/bible/index.html", errors)
+    require_absent(bible, 'class="story-first"', "traditions/bible/index.html", errors)
     require_absent(bible, 'id="shuffle-comparisons"', "traditions/bible/index.html", errors)
     require(bible_js, "biblical-syncretism-field.json", "app/bible-study.js", errors)
     require(bible_js, "renderActiveRelation", "app/bible-study.js", errors)
