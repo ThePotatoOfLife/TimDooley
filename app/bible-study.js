@@ -63,7 +63,7 @@ function matchesTerms(row,terms){const text=rowText(row);return terms.some(term=
 function matchesView(row,view){const def=VIEW_DEFS[view]||VIEW_DEFS.jesus;if(view==='all')return true;if(def.counter)return asArray(row.weaknesses).length>0||Boolean(row.counter_text||row.source_correction||row.difference||row.boundary);if(def.modes&&def.modes.includes(row.discovery_mode))return true;return def.terms?matchesTerms(row,def.terms):true}
 function matchesFocus(row,focus){const [kind,id]=String(focus||'view:jesus').split(':');if(kind==='arc')return matchesTerms(row,(ARC_DEFS[id]||{terms:[]}).terms);return matchesView(row,id)}
 function focusLabel(focus){const [kind,id]=String(focus||'view:jesus').split(':');return kind==='arc'?(ARC_DEFS[id]?.label||id):(VIEW_DEFS[id]?.label||'Jesus / Son')}
-function exactQuotes(row,evidence){return unique([...asArray(row.project_quote),...asArray(row.exact_wording),row.quote,...asArray(row.occurrence_ids).map(id=>evidence.occurrenceById.get(id)?.quote)]).filter(Boolean)}
+function exactQuotes(row,evidence){return unique([...asArray(row.project_quote),...asArray(row.exact_wording),...asArray(row.public_wording),...asArray(row.recovered_wording),row.quote,...asArray(row.occurrence_ids).map(id=>evidence.occurrenceById.get(id)?.quote)]).filter(Boolean)}
 function exactAvailable(row,evidence){return exactQuotes(row,evidence).length>0}
 function whyText(row){return unique([...asArray(row.relation_arguments),row.overlap,row.project_value,...asArray(row.possible_meaning)]).filter(Boolean).slice(0,3).join(' ')}
 function mismatchText(row){return unique([...asArray(row.weaknesses),row.counter_text,row.source_correction,row.difference,row.boundary]).filter(Boolean).slice(0,3).join(' ')}
