@@ -66,16 +66,18 @@
   };
   const defaultSources=['project','lineage','figures','foundations'];
   const defaultEras=Object.keys(eraLabels).filter(x=>x!=='undated');
-  const allowedModes=new Set(['arc','road','faith','foundations','project']);
+  const allowedModes=new Set(['arc','road','faith','foundations','project','bible']);
   const allowedSources=new Set(defaultSources);
   const allowedEras=new Set(defaultEras);
   const initialParams=new URLSearchParams(location.search);
+  const legacyView=initialParams.get('view');
+  if(legacyView==='bible'&&!initialParams.get('mode'))initialParams.set('mode','bible');
   const requestedMode=initialParams.get('mode');
   if(allowedModes.has(requestedMode)){
     state.mode=requestedMode;
     if(requestedMode==='faith') state.sources=new Set(['lineage','figures']);
     if(requestedMode==='foundations') state.sources=new Set(['foundations']);
-    if(requestedMode==='project') state.sources=new Set(['project']);
+    if(requestedMode==='project'||requestedMode==='bible') state.sources=new Set(['project']);
   }
   const parseList=(key,allowed)=>{
     const raw=initialParams.get(key);
@@ -102,6 +104,7 @@
     const p=u.searchParams;
     const setOrDelete=(key,value)=>value?p.set(key,value):p.delete(key);
     setOrDelete('mode',state.mode==='arc'?'':state.mode);
+    p.delete('view');
     setOrDelete('sources',sameSet(state.sources,defaultSources)?'':(state.sources.size?[...state.sources].sort().join(','):'none'));
     setOrDelete('eras',sameSet(state.eras,defaultEras)?'':(state.eras.size?[...state.eras].sort().join(','):'none'));
     setOrDelete('domain',state.domains.size?[...state.domains][0]:'');
@@ -233,6 +236,12 @@
     if(state.mode==='faith'&&!['lineage','figures'].includes(r.source)) return false;
     if(state.mode==='foundations'&&r.source!=='foundations') return false;
     if(state.mode==='project'&&r.source!=='project') return false;
+    if(state.mode==='bible'){
+      if(r.source!=='project') return false;
+      const layers=new Set(r.raw?.layers||[]);
+      const bibleRelated=layers.has('scripture-at-time')||layers.has('biblical-parallel')||layers.has('biblical-unlock')||String(r.raw?.bible_relation||'').length>0;
+      if(!bibleRelated) return false;
+    }
     return true;
   }
   function sorted(){
@@ -312,7 +321,8 @@
   function render(){
     const list=sorted();
     const ys=list.flatMap(r=>[r.start,r.end]).filter(Number.isFinite);
-    $('#chronReadout').innerHTML='<strong>'+list.length+'</strong> visible points · <strong>'+(ys.length?fmtYear(Math.min(...ys))+' → '+fmtYear(Math.max(...ys)):'—')+'</strong> · '+Object.entries(sourceLabels).filter(([k])=>state.sources.has(k)).map(([,v])=>v).join(' + ');
+    const viewLabels={arc:'Whole archive',road:'Sparse spine',faith:'Faith history',foundations:'Foundations',project:'Life & project',bible:'Bible in the life'};
+    $('#chronReadout').innerHTML='<strong>'+esc(viewLabels[state.mode]||'Timeline')+'</strong> · '+list.length+' visible point'+(list.length===1?'':'s')+' · <strong>'+(ys.length?fmtYear(Math.min(...ys))+' → '+fmtYear(Math.max(...ys)):'—')+'</strong>';
     $('#chronTimeline').innerHTML=timelineHTML(list);
     document.querySelectorAll('[data-source]').forEach(b=>{const on=state.sources.has(b.dataset.source);b.classList.toggle('active',on);b.setAttribute('aria-pressed',on)});
     document.querySelectorAll('[data-era]').forEach(b=>{const on=state.eras.has(b.dataset.era);b.classList.toggle('active',on);b.setAttribute('aria-pressed',on)});
@@ -328,7 +338,7 @@
     if(name==='road'){state.sources=new Set(['project','lineage','figures','foundations'])}
     if(name==='faith'){state.sources=new Set(['lineage','figures'])}
     if(name==='foundations'){state.sources=new Set(['foundations'])}
-    if(name==='project'){state.sources=new Set(['project'])}
+    if(name==='project'||name==='bible'){state.sources=new Set(['project'])}
     render();
   }
   async function load(){
