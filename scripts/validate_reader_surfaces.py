@@ -192,7 +192,7 @@ def main() -> int:
         ("Islam/Qur'an", ("Islam", "Qur’an", "Qur'an")),
     ):
         require_any(religion, markers, "religion/index.html", label, errors)
-    require(religion, 'href="../traditions/bible/"', "religion/index.html", errors)
+    require(religion, 'href="../traditions/bible/#compare"', "religion/index.html", errors)
     require(religion, 'class="bible-lab-cta"', "religion/index.html", errors)
     require_any(religion, ("Bible comparison", "comparison laboratory", "parallels"), "religion/index.html", "prominent Bible comparison introduction", errors)
     require_any(religion, ("filter", "shuffle", "explore"), "religion/index.html", "Bible lab interaction description", errors)
