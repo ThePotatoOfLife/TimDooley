@@ -89,6 +89,11 @@ def main()->int:
         if marker not in cia:
             errors.append(f"CIA missing current-state marker: {marker}")
 
+    cast=read("rooms/potatoverse-canon/beings/cast-ecology/index.html")
+    for marker in ('id="role-expiry"',"A role needs both an entry condition and a stopping condition","current state → symbolic role last"):
+        if marker not in cast:
+            errors.append(f"Cast Ecology missing role-expiry marker: {marker}")
+
     access=json.loads(read("data/house/site-access.json"))
     entry=next((row for row in access.get("entries",[]) if row.get("id")=="below"),None)
     if not entry:
