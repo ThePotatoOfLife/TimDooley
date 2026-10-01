@@ -35,6 +35,7 @@ function parseReference(reference,bookNames){
     if(m){selectors.push({start:point(m[1],m[2]),end:point(m[1],m[2])});inheritedChapter=Number(m[1]);continue;}
     m=raw.match(/^(\d+)\s*-\s*(\d+)$/);
     if(m&&inheritedChapter){selectors.push({start:point(inheritedChapter,m[1]),end:point(inheritedChapter,m[2])});continue;}
+    if(m&&!inheritedChapter){selectors.push({start:point(m[1],null),end:point(m[2],null)});inheritedChapter=Number(m[2]);continue;}
     m=raw.match(/^(\d+)$/);
     if(m&&inheritedChapter){selectors.push({start:point(inheritedChapter,m[1]),end:point(inheritedChapter,m[1])});continue;}
     if(m){const ch=Number(m[1]);selectors.push({start:point(ch,null),end:point(ch,null)});inheritedChapter=ch;continue;}
@@ -52,7 +53,7 @@ async function loadBook(book){
   cache.set(book,promise);return promise;
 }
 function cmp(v,p){if(v.chapter!==p.chapter)return v.chapter-p.chapter;if(p.verse==null)return 0;return v.verse-p.verse}
-function inSelector(v,s){if(s.start.verse==null&&s.end.verse==null)return v.chapter===s.start.chapter;return cmp(v,s.start)>=0&&cmp(v,s.end)<=0}
+function inSelector(v,s){if(s.start.verse==null&&s.end.verse==null)return v.chapter>=s.start.chapter&&v.chapter<=s.end.chapter;return cmp(v,s.start)>=0&&cmp(v,s.end)<=0}
 function selectVerses(verses,parsed){return (verses||[]).filter(v=>parsed.selectors.some(s=>inSelector(v,s)))}
 async function referenceVerses(reference){
   const parts=splitReferences(reference);
