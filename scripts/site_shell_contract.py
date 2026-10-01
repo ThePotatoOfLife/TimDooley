@@ -172,8 +172,13 @@ def main() -> int:
         require(tim, ('data-reader-surface="tim"', 'href="../timeline/"', 'href="story/"', 'href="100000-hours/"', 'href="claims/"'), "tim-dooley/index.html", errors)
 
         bible = read("traditions/bible/index.html", errors)
-        require(bible, ("TIM, THE SON", 'id="compare"', 'id="study-tool"', 'id="search"', 'id="relations"', 'href="../../religion/"', 'href="../../timeline/'), "traditions/bible/index.html", errors)
-        forbid(bible, ('class="focus-links"', "Source authority", ">FAQ<"), "traditions/bible/index.html", errors)
+        require(bible, ("TIM &amp; THE SON", 'class="comparison-masthead"', 'id="compare"', 'id="study-tool"', 'id="search"', 'id="relations"', 'href="../../religion/"', 'href="../../timeline/'), "traditions/bible/index.html", errors)
+        forbid(bible, ('class="bible-header"', 'class="tool-intro"', 'class="focus-links"', "Source authority", ">FAQ<"), "traditions/bible/index.html", errors)
+        study_pos = bible.find('id="study-tool"')
+        compare_pos = bible.find('id="compare"')
+        masthead_pos = bible.find('class="comparison-masthead"')
+        if not (0 <= study_pos < compare_pos < masthead_pos):
+            errors.append("traditions/bible/index.html must begin with the Tim/Son-owned study shell")
 
         timeline = read("timeline/index.html", errors)
         require(timeline, ("TIMELINE", 'data-reader-surface="timeline"', 'class="long-chronology"', 'href="../religion/"'), "timeline/index.html", errors)
