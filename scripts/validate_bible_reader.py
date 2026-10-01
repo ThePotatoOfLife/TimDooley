@@ -23,7 +23,6 @@ ATLAS_APP = ROOT / "app" / "bible-atlas-navigation.js"
 ATLAS_UI = ROOT / "app" / "bible-atlas-ui.js"
 DOSSIER_APP = ROOT / "app" / "bible-dossier-loader.js"
 MINING_APP = ROOT / "app" / "bible-mining-wave19-loader.js"
-DOSSIER_CSS = ROOT / "app" / "bible-dossier-loader.css"
 FIELD = ROOT / "knowledge" / "traditions" / "biblical-syncretism-field.json"
 MANIFEST = ROOT / "knowledge" / "traditions" / "bible-layer-manifest.json"
 REDIRECTS = ROOT / "knowledge" / "traditions" / "bible-relation-redirects.json"
@@ -62,7 +61,7 @@ def main() -> int:
     errors: list[str] = []
     required_paths = (
         PAGE, APP, CSS, ATLAS_CSS, LIBRARY_CSS, LIBRARY_APP, CORPUS_APP, REDIRECT_APP, TTS_ADAPTER, ATLAS_APP, ATLAS_UI,
-        DOSSIER_APP, MINING_APP, DOSSIER_CSS, FIELD, MANIFEST, REDIRECTS, SCENES,
+        DOSSIER_APP, MINING_APP, FIELD, MANIFEST, REDIRECTS, SCENES,
         SCENES_MAJOR, SCENE_LINKS, DOSSIERS, PROMOTIONS, MINING_DOSSIERS,
         MINING_OWNER, DOSSIER_FRAGMENTS, MINING_FRAGMENTS, BUILDER,
         CORPUS_PY, CORPUS_TEST, PARITY_CHECK, SCENE_CHECK, CHRISTIANITY_INDEX, KJV_CATALOG, WEB_BOOK_INDEX,
@@ -84,7 +83,6 @@ def main() -> int:
     atlas_ui = ATLAS_UI.read_text(encoding="utf-8") if ATLAS_UI.exists() else ""
     dossier_app = DOSSIER_APP.read_text(encoding="utf-8") if DOSSIER_APP.exists() else ""
     mining_app = MINING_APP.read_text(encoding="utf-8") if MINING_APP.exists() else ""
-    dossier_css = DOSSIER_CSS.read_text(encoding="utf-8") if DOSSIER_CSS.exists() else ""
     builder = BUILDER.read_text(encoding="utf-8") if BUILDER.exists() else ""
 
     require(
@@ -93,7 +91,6 @@ def main() -> int:
             'href="../../app/bible-study.css"',
             'href="../../app/bible-library.css"',
             'href="../../app/bible-atlas-navigation.css"',
-            'href="../../app/bible-dossier-loader.css"',
             'src="../../app/bible-corpus-loader.js"',
             'src="../../app/bible-relation-redirects.js"',
             'src="../../app/bible-atlas-navigation.js"',
@@ -129,17 +126,17 @@ def main() -> int:
             'id="relations"',
             'id="search"',
             'Explore without searching',
-            'The main tool',
-            'Put one Tim / Son event beside the biblical text',
+            'class="reader-toolbar"',
         ),
         "traditions/bible/index.html",
         errors,
     )
     compare_pos = page.find('id="compare"')
     study_pos = page.find('id="study-tool"')
+    toolbar_pos = page.find('class="reader-toolbar"')
     story_pos = page.find('id="story-first"')
-    if not (0 <= compare_pos < study_pos < story_pos):
-        errors.append("traditions/bible/index.html: comparison tool must remain before story/context layers")
+    if not (0 <= study_pos < compare_pos < toolbar_pos < story_pos):
+        errors.append("traditions/bible/index.html: comparator controls must be the first substantive surface")
     if page.find('src="../../app/bible-mining-wave19-loader.js"') > page.find('src="../../app/bible-dossier-loader.js"'):
         errors.append("traditions/bible/index.html: mining layer must load before dossier decorator so mergedRows sees wave19 relations")
     if page.find('src="../../app/bible-corpus-loader.js"') > page.find('src="../../app/bible-relation-redirects.js"'):
@@ -148,7 +145,9 @@ def main() -> int:
         errors.append("traditions/bible/index.html: scripture reader must load before Bible library adapter")
     forbid(
         page,
-        ('class="featured-arcs"','id="study-modes"','id="shuffle-comparisons"',"deepMatches(","overlapCount(","deepCandidates"),
+        ('class="featured-arcs"','id="study-modes"','id="shuffle-comparisons"','class="comparison-masthead"',
+         'bible-witness-loader.js','bible-scene-reader.js','bible-dossier-loader.css',
+         "deepMatches(","overlapCount(","deepCandidates"),
         "traditions/bible/index.html", errors,
     )
 
