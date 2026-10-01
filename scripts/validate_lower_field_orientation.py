@@ -53,6 +53,10 @@ def main()->int:
         'id="audience-infrastructure"',
         "The middle layer: audience and infrastructure",
         "distributed Farm loop",
+        'id="start-below"',
+        "Choose the question, not another room",
+        'id="currentness-status"',
+        "Currentness before severity",
     ):
         if marker not in below:
             errors.append(f"Below orientation missing marker: {marker}")
@@ -162,6 +166,25 @@ def main()->int:
     for marker in ('id="role-expiry"',"A role needs both an entry condition and a stopping condition","current state → symbolic role last"):
         if marker not in cast:
             errors.append(f"Cast Ecology missing role-expiry marker: {marker}")
+
+    roots=read("rooms/archive-sources/index.html")
+    for marker in ('<h1>Roots / Evidence</h1>','id="movement-provenance"','id="root-questions"',"Follow the thing that moved"):
+        if marker not in roots:
+            errors.append(f"Roots / Evidence hub missing marker: {marker}")
+
+    forge=read("rooms/research-lab/index.html")
+    for marker in ('<h1>Forge / Repair</h1>','id="lower-field-forge"','id="field-assessment"','id="forge-output"',"Who, since when, how active, how harmful, what goal?"):
+        if marker not in forge:
+            errors.append(f"Forge / Repair hub missing marker: {marker}")
+
+    basin_contract=json.loads(read("data/house/below-basin-spatial-contract.json"))
+    stations=((basin_contract.get("reader_stations") or {}).get("stations") or [])
+    if [row.get("label") for row in stations] != ["Below Basin","Farm / Sektur","Roots / Evidence","Forge / Repair"]:
+        errors.append("Below Basin contract must expose exactly four reader stations in canonical order")
+    currentness=(basin_contract.get("currentness_contract") or {}).get("states") or {}
+    for state in ("historical","dormant","active","escalating","repairing","closed","unknown"):
+        if state not in currentness:
+            errors.append(f"Below currentness contract missing state: {state}")
 
     access=json.loads(read("data/house/site-access.json"))
     entry=next((row for row in access.get("entries",[]) if row.get("id")=="below"),None)
