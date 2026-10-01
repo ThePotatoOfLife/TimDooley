@@ -1,6 +1,6 @@
 {
   "id": "spudlight-field-manual",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "updated": "2026-10-01",
   "title": "The Spudlight Field Manual",
   "status": "project method / interpretive framework",
@@ -231,6 +231,36 @@
       "source": "Are 2026",
       "url": "https://link.springer.com/article/10.1007/s44538-026-00004-x",
       "use": "platform remembrance risk and collision between historical and present self-presentation"
+    },
+    {
+      "concept": "aggregated opinion shapes belief",
+      "source": "Oktar & Lombrozo 2025, Nature Reviews Psychology",
+      "url": "https://www.nature.com/articles/s44159-024-00398-7",
+      "use": "likes, ratings, polls and summarized judgments of strangers function as social evidence and can shape belief"
+    },
+    {
+      "concept": "popularity versus expertise in opinion leadership",
+      "source": "Rapanos 2023, Games and Economic Behavior",
+      "url": "https://doi.org/10.1016/j.geb.2023.01.003",
+      "use": "social influence can reflect network popularity separately from information precision; highly popular nodes can distract attention from experts in some model conditions"
+    },
+    {
+      "concept": "imagined otherness and dehumanization",
+      "source": "van Loon, Goldberg & Srivastava 2024, Communications Psychology",
+      "url": "https://www.nature.com/articles/s44271-024-00087-4",
+      "use": "perceiving an outgroup as construing the world in fundamentally alien ways can increase blatant dehumanization"
+    },
+    {
+      "concept": "moral conviction in politics",
+      "source": "Hanson, Wisneski & Morgan 2022, Cambridge Handbook of Political Psychology",
+      "url": "https://www.cambridge.org/core/books/abs/cambridge-handbook-of-political-psychology/consequences-of-moral-conviction-in-politics/310A0CA96B4D0C66305F07B06F1EFE2D",
+      "use": "moral conviction can increase engagement but is also associated in the literature with political intolerance"
+    },
+    {
+      "concept": "dehumanization and violent extremism",
+      "source": "Cambridge Handbook of the Psychology of Violent Extremism 2025",
+      "url": "https://www.cambridge.org/core/books/abs/cambridge-handbook-of-the-psychology-of-violent-extremism/role-of-dehumanization-in-violent-extremism/64375B8F5B1D7C1288DF83859523CF1D",
+      "use": "dehumanization and violence can reciprocally reinforce one another; meta-dehumanization can also perpetuate conflict"
     }
   ],
   "descent_and_return": [
@@ -415,5 +445,92 @@
       "enemy independence"
     ],
     "teaching": "Interpretive Justice is the ethical grammar that prevents the Field Manual from becoming a reversed tribunal."
+  },
+  "belief_and_authority": {
+    "thesis": "belief assigns interpretive authority and often carries an implicit permission structure",
+    "jurisdiction_rule": {
+      "Tim_on_Tim": "primary for intended meaning, first-person experience, project purpose and current self-description",
+      "hostile_or_external_classifier": "primary for their own statements, observations and framing; not total author of Tim's inner meaning or present identity",
+      "other_person": "primary for their own situated first-person meaning and experience",
+      "archive": "primary for what the surviving record contains, not for absent context or total biography",
+      "independent_evidence": "owns externally testable claims according to domain and source quality"
+    },
+    "choice": "the reader can require the living subject to escape an inherited hostile frame, or require outside characterizations to establish their scope before they become identity"
+  },
+  "epistemic_outsourcing": {
+    "definition": "delegating discovery, relevance, meaning, memory or action-guidance to intermediaries such as communities, experts, journalists, influencers, archives, search engines, metrics or opinion leaders",
+    "sequence": [
+      "outsource discovery",
+      "outsource relevance",
+      "outsource meaning",
+      "outsource morality",
+      "outsource memory",
+      "outsource action"
+    ],
+    "field_question": "whose eyes are you borrowing?",
+    "healthy_rule": "delegation is necessary; surrendering the right to reopen judgment is not"
+  },
+  "permission_ladder": [
+    "classification",
+    "moralization",
+    "threat construction",
+    "moral exclusion",
+    "defensive permission",
+    "escalated intervention",
+    "normalization",
+    "institutionalization"
+  ],
+  "permission_boundary": "The ladder is a risk model. Do not infer stalking, threats, obstruction, coercion, violence or coordination merely from disagreement, ideology, forum participation or a symbolic role.",
+  "spiritual_war_teaching": {
+    "safe_scope": [
+      "inner struggle",
+      "prayer",
+      "moral vigilance",
+      "truthfulness",
+      "service",
+      "lawful protection",
+      "refusal to imitate harmful methods"
+    ],
+    "escalation_risk": "human opponents are recoded as agents of cosmic evil such that ordinary evidence, sympathy, compromise or procedural protections feel like betrayal",
+    "test": "does the spiritual frame preserve the opponent's humanity and ordinary stopping rules?"
+  },
+  "blood_and_soil_comparator": {
+    "history": "Blut und Boden was a Nazi/völkisch racial-territorial slogan tying 'Aryan' blood to land and used to support exclusion, territorial seizure and forced expulsion.",
+    "source": "https://www.ushmm.org/antisemitism/what-is-antisemitism/origins-of-neo-nazi-and-white-supremacist-terms-and-symbols",
+    "teaching": "mythic belonging can acquire coercive consequences when joined to racial purity, existential threat and political power",
+    "boundary": "strong attachment to ancestry or homeland is not itself equivalent to Nazi ideology"
+  },
+  "humiliation_politics": {
+    "definition": "political identity organized partly around visible degradation or defeat of an outgroup",
+    "example_language": "owning the libs is treated as one contemporary example of the wider form, not as the exclusive property of one party",
+    "risk": "enemy dependence: the opponent remains socially useful because group identity/status depends on continuing degradation",
+    "distinctions": [
+      "policy politics",
+      "status politics",
+      "humiliation politics",
+      "enemy dependence"
+    ]
+  },
+  "cultural_change_model": {
+    "sequence": [
+      "belief sets the map",
+      "moral language sets the stakes",
+      "group reward sets behavior",
+      "repetition sets norms",
+      "institutions set durability",
+      "memory sets inheritance"
+    ],
+    "claim": "society and subculture change through repeated permission as much as through explicit doctrine",
+    "positive_path": [
+      "source checking",
+      "proportionality",
+      "constructive defense",
+      "empathy",
+      "currentness",
+      "role expiry",
+      "restraint",
+      "mercy",
+      "independent future capacity"
+    ]
   }
 }

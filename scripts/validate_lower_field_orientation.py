@@ -56,6 +56,14 @@ def main()->int:
         'id="freedom-authorship-teaching"',
         'id="responsibility-care-teaching"',
         'id="human-teaching-arc"',
+        'id="belief-authority-choice"',
+        'id="epistemic-outsourcing"',
+        'id="permission-escalation"',
+        'id="spiritual-war-permission"',
+        'id="blood-soil-warning"',
+        'id="humiliation-politics"',
+        'id="belief-choice-fork"',
+        'id="culture-choice-consequence"',
         'id="research-bridge"',
         'id="reader-takeaway"',
         'id="field-notes"',
@@ -132,7 +140,7 @@ def main()->int:
             errors.append("lower conflict/repair casebook needs explicit repair outcomes")
 
     shadow=read("shadow-farm/index.html")
-    for marker in ('id="tim-expert-reading"','id="role-responsibility-matrix"','id="farm-primary-relation"','id="kiwi-farms-public-record"','id="conflict-language-thresholds"','id="worked-overlap-cases"','id="harm-pattern-bridge"',"Use strong words only when the evidence earns them","Read the verbs before the animal.","How a role is learned"):
+    for marker in ('id="tim-expert-reading"','id="belief-permission-bridge"','id="role-responsibility-matrix"','id="farm-primary-relation"','id="kiwi-farms-public-record"','id="conflict-language-thresholds"','id="worked-overlap-cases"','id="harm-pattern-bridge"',"Use strong words only when the evidence earns them","Read the verbs before the animal.","How a role is learned"):
         if marker not in shadow:
             errors.append(f"Shadow Farm missing conflict-discipline marker: {marker}")
 
@@ -247,7 +255,7 @@ def main()->int:
             errors.append(f"Roots / Evidence hub missing marker: {marker}")
 
     forge=read("rooms/research-lab/index.html")
-    for marker in ('<h1>Forge / Repair</h1>','id="lower-field-forge"','id="field-assessment"','id="son-narrative-contest"','id="tim-method-in-forge"','id="ritual-coordination-test"','id="interpretive-justice-gates"','id="forge-output"',"Who, since when, how active, how harmful, what goal?"):
+    for marker in ('<h1>Forge / Repair</h1>','id="epistemic-delegation-programme"','id="lower-field-forge"','id="field-assessment"','id="son-narrative-contest"','id="tim-method-in-forge"','id="ritual-coordination-test"','id="interpretive-justice-gates"','id="forge-output"',"Who, since when, how active, how harmful, what goal?"):
         if marker not in forge:
             errors.append(f"Forge / Repair hub missing marker: {marker}")
 

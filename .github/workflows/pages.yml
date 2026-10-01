@@ -223,6 +223,14 @@ jobs:
               'id="justice-forgiveness-teaching"',
               'id="responsibility-care-teaching"',
               'id="human-teaching-arc"',
+              'id="belief-authority-choice"',
+              'id="epistemic-outsourcing"',
+              'id="permission-escalation"',
+              'id="spiritual-war-permission"',
+              'id="blood-soil-warning"',
+              'id="humiliation-politics"',
+              'id="belief-choice-fork"',
+              'id="culture-choice-consequence"',
               'id="reader-takeaway"',
               'id="professional-mythic-crosswalk"',
               'id="field-mythic-center"',
@@ -230,12 +238,14 @@ jobs:
           required_shadow=[
               'id="population-and-deaths"',
               'id="field-manual-human-reading"',
+              'id="belief-permission-bridge"',
               "In memory of",
           ]
           roots=Path(".live-smoke/rooms_archive-sources_.html").read_text(encoding="utf-8",errors="replace")
           forge=Path(".live-smoke/rooms_research-lab_.html").read_text(encoding="utf-8",errors="replace")
           assert 'id="field-manual-bridge"' in roots, "live Roots missing Field Manual bridge"
           assert 'id="teaching-programme"' in forge, "live Forge missing teaching programme"
+          assert 'id="epistemic-delegation-programme"' in forge, "live Forge missing epistemic delegation programme"
           for marker in required_below:
               assert marker in below, f"live Below missing {marker}"
           for marker in required_shadow:
