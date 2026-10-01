@@ -45,7 +45,7 @@ def main() -> int:
         if marker not in js:
             errors.append(f"Timeline reader lost shareable-state marker: {marker}")
 
-    if "allowedModes=new Set(['arc','road','faith','foundations','project'])" not in js:
+    if "allowedModes=new Set(['arc','road','faith','foundations','project','bible'])" not in js:
         errors.append("Timeline reader lost legacy/current mode compatibility")
 
     handoff_pages = {
