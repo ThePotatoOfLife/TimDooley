@@ -169,7 +169,10 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
         ("Reader and projection contracts", [
             "python scripts/validate_reader_surfaces.py",
             "python scripts/validate_reader_richness.py",
-            "python scripts/audit_public_surface_substance.py",\n            "python scripts/audit_reader_directness.py",\n            "python scripts/validate_timeline_discoverability.py",\n            "python scripts/audit_navigation_dead_ends.py",
+            "python scripts/audit_public_surface_substance.py",
+            "python scripts/audit_reader_directness.py",
+            "python scripts/validate_timeline_discoverability.py",
+            "python scripts/audit_navigation_dead_ends.py",
             "python scripts/validate_politics_surface.py",
             "python scripts/validate_body_discovery.py",
             "python scripts/validate_potatoism_philosophy_projection.py",
