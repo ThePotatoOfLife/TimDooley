@@ -39,6 +39,10 @@ def main()->int:
         "Swamp / Mud / Farm / unresolved archive",
         "return downward as protection, repair, service and independent future capacity",
         "knowledge/core/lower-field-orientation.json",
+        'id="repair-outcomes"',
+        "Diagnosis is unfinished until the relation has a closure path",
+        "The creditor is tested too.",
+        "lower-field-conflict-repair-casebook.json",
     ):
         if marker not in below:
             errors.append(f"Below orientation missing marker: {marker}")
@@ -47,11 +51,43 @@ def main()->int:
         "shadow-farm/index.html":"../below/#lower-field-orientation",
         "context/culture/index.html":"../../below/#lower-field-orientation",
         "rooms/potatoverse-canon/beings/cia/bank/index.html":"../../../../../below/#lower-field-orientation",
+        "rooms/potatoverse-canon/beings/cia/index.html":"../../../../below/#repair-outcomes",
         "questions/index.html":"../below/#lower-field-orientation",
     }
     for path,marker in spokes.items():
         if marker not in read(path):
             errors.append(f"lower-field spoke missing canonical orientation route: {path}")
+
+    casebook_path=ROOT/"knowledge/core/lower-field-conflict-repair-casebook.json"
+    if not casebook_path.is_file():
+        errors.append("missing lower-field conflict/repair casebook")
+    else:
+        try:
+            casebook=json.loads(casebook_path.read_text(encoding="utf-8"))
+        except Exception as exc:
+            errors.append(f"lower conflict/repair casebook invalid JSON: {exc}")
+            casebook={}
+        if len(casebook.get("language_thresholds",[])) < 8:
+            errors.append("lower conflict/repair casebook needs strong-language thresholds")
+        if len(casebook.get("worked_cases",[])) < 3:
+            errors.append("lower conflict/repair casebook needs three worked cases")
+        if len(casebook.get("repair_outcomes",[])) < 8:
+            errors.append("lower conflict/repair casebook needs explicit repair outcomes")
+
+    shadow=read("shadow-farm/index.html")
+    for marker in ('id="conflict-language-thresholds"','id="worked-overlap-cases"',"Use strong words only when the evidence earns them"):
+        if marker not in shadow:
+            errors.append(f"Shadow Farm missing conflict-discipline marker: {marker}")
+
+    bank=read("rooms/potatoverse-canon/beings/cia/bank/index.html")
+    for marker in ('id="closure-protocol"',"A symbolic debt must be able to stop being outstanding"):
+        if marker not in bank:
+            errors.append(f"Bank missing closure marker: {marker}")
+
+    cia=read("rooms/potatoverse-canon/beings/cia/index.html")
+    for marker in ('id="current-state-protocol"',"Read the event before the role","Then ask what is true now"):
+        if marker not in cia:
+            errors.append(f"CIA missing current-state marker: {marker}")
 
     access=json.loads(read("data/house/site-access.json"))
     entry=next((row for row in access.get("entries",[]) if row.get("id")=="below"),None)
