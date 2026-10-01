@@ -209,6 +209,10 @@ jobs:
           shadow=Path(".live-smoke/shadow-farm_.html").read_text(encoding="utf-8",errors="replace")
           required_below=[
               "THE SPUDLIGHT FIELD MANUAL",
+              'id="tim-expertise-ledger"',
+              'id="tim-dooley-thinks"',
+              'id="tim-publicness-endurance"',
+              'id="tim-mythic-self-description"',
               'id="field-instruments"',
               'id="what-tim-is-teaching"',
               'id="swamp-lessons"',
