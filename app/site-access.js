@@ -63,6 +63,7 @@
     {id:'tts',label:'Read Aloud / TTS',route:'/tools/tts/',kind:'direct',note:'Text-to-speech tools and reader controls',aliases:['tts','text to speech','read aloud','listen']},
     {id:'claims',label:'Claims & Statements',route:'/tim-dooley/claims/',kind:'direct',note:'Claims and attributed statements',aliases:['claims','statements','assertions']},
     {id:'public-witness',label:'Public Witness',route:'/tim-dooley/public-witness/',kind:'direct',note:'Public record and witness material',aliases:['public witness','public record','witness']},
+    {id:'below',label:'Below / Lower Field',route:'/below/#lower-field-orientation',kind:'direct',note:'Mission, participant-observer experience, lower-field roles, evidence, exit and repair',aliases:['below','farm','sektur','swamp','culture','lower field','lower field orientation','swamp mission','subculture mission','participant observer','karmic ledger','babel','repair','exit']},
     {id:'science',label:'Science',route:'/science/',kind:'project',note:'Models, evidence, falsifiers',aliases:['science','physics','biology','research']},
     {id:'religion',label:'Religion',route:'/religion/',kind:'project',note:'Theology and comparisons',aliases:['religion','bible','trinity','theology']},
     {id:'bible-comparison',label:'Tim, the Son & the Bible',route:'/traditions/bible/',kind:'project',note:'Life-first Bible, Jesus/Son, prophecy and counter-text comparison',aliases:['bible comparison','jesus','jesus son','son','thomas','twin','crucifixion','resurrection','gospel parallels','tim son bible']},
@@ -73,7 +74,7 @@
     landmarks:['cia-character-archive','mud-bank'],
     go_now:['news','world-map','tim','house','rooms'],
     find:['people-cases','index-a-z','timeline','sources','explore'],
-    direct_doors:['cia-character-archive','mud-bank','intelligence-cia','economy','tts','claims','public-witness','science','religion','hours']
+    direct_doors:['cia-character-archive','mud-bank','intelligence-cia','economy','tts','claims','public-witness','below','science','religion','hours']
   };
   let disambiguations={
     cia:{query:['cia'],prompt:'Which CIA?',options:['cia-character-archive','intelligence-cia'],rule:'Same acronym, different namespace. Choose before entering.'},
