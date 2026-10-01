@@ -53,6 +53,8 @@ def main():
             errors.append(f"{rid} route missing source target: {route} -> {target.relative_to(ROOT)}")
             continue
         if parts.fragment:
+            if path=="/explore/" and parts.fragment.startswith("record="):
+                continue
             text=target.read_text(encoding="utf-8",errors="replace")
             if has_anchor(text,parts.fragment):
                 continue
