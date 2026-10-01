@@ -1,6 +1,6 @@
 {
-  "version": "1.2.0",
-  "updated": "2026-09-20",
+  "version": "1.3.0",
+  "updated": "2026-10-01",
   "authority": "below-basin-spatial-contract",
   "title": "Below Basin / Subterrain Vessel — Spatial Contract",
   "purpose": "Define the round lower Potato platform as one coherent navigational vessel that can host subculture, Sektur, Farm, Swamp, Mud, Ash, Roots, intelligence, media, money, classifiers, law, harm and Forge processing without turning unlike concepts into synonyms.",
@@ -335,5 +335,43 @@
     "time scrubber for showing how a case moved between zones",
     "case comparison mode for two ecologies without merging them"
   ],
-  "swamp_contract": "data/house/swamp-regime-contract.json"
+  "swamp_contract": "data/house/swamp-regime-contract.json",
+  "reader_stations": {
+    "rule": "Below exposes four reader stations, only two of which are governed Rooms. Stations are editorial entrances into one basin, not four ontological floors.",
+    "stations": [
+      {
+        "id": "field-map",
+        "label": "Below Basin",
+        "route": "/below/#basin",
+        "kind": "field station",
+        "question": "What is moving, accumulating or changing down here?",
+        "owns_in_reader": "system map, currents, roles, targets, materials, currentness, severity and routes between lower mechanisms"
+      },
+      {
+        "id": "farm-culture",
+        "label": "Farm / Sektur",
+        "route": "/shadow-farm/",
+        "kind": "field station",
+        "question": "How do subcultures, Farmer↔lolcow relations, Dogs, audiences, labels, archives and incentives reproduce attention?",
+        "owns_in_reader": "subculture/Farm mechanisms, role learning, extraction, archetypes, harmful-pattern boundaries and attention production"
+      },
+      {
+        "id": "roots-evidence",
+        "label": "Roots / Evidence",
+        "route": "/rooms/archive-sources/",
+        "kind": "governed Room entrance",
+        "question": "Where did this come from, who carried it, what changed in transit, and what can the evidence establish?",
+        "owns_in_reader": "provenance, source chains, information movement, archive memory, evidence classes, first/last attestation and currentness"
+      },
+      {
+        "id": "forge-repair",
+        "label": "Forge / Repair",
+        "route": "/rooms/research-lab/",
+        "kind": "governed Room entrance",
+        "question": "What kind of conflict/harm is this, how strong is the evidence, what is the goal/capability, and what should happen next?",
+        "owns_in_reader": "layer separation, hypothesis testing, severity, targets/goals, information/spiritual/cultural conflict crosswalks, repair, rejection and promotion"
+      }
+    ],
+    "anti_room_sprawl": "New lower material should first be routed into one of these four stations or an existing nested Room. Create another governed Room only when a durable ownership boundary cannot be expressed inside these stations."
+  }
 }
