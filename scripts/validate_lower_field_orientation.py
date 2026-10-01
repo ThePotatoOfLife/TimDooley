@@ -35,7 +35,7 @@ def main()->int:
         "If the archive cannot correct itself, release a role, or let a conflict end, then it has become another Farm.",
         "What is the lower field for?",
         "Being framed is not the same as being owned by the frame.",
-        "The project must be judged by the same standards it applies to hostile archives.",
+        "this repository must be judged by the same standards it applies to hostile archives.",
         "Swamp / Mud / Farm / unresolved archive",
         "return downward as protection, repair, service and independent future capacity",
         "knowledge/core/lower-field-orientation.json",
