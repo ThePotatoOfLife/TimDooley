@@ -162,7 +162,7 @@ def main() -> int:
                 errors.append(f"homepage primary navigation must contain exactly five canonical entrances; found {hrefs}")
 
         religion = read("religion/index.html", errors)
-        require(religion, ("RELIGION", 'href="../traditions/bible/"', 'href="../timeline/', 'href="../world-map/"'), "religion/index.html", errors)
+        require(religion, ("RELIGION", 'href="../traditions/bible/#compare"', 'href="../timeline/', 'href="../world-map/"'), "religion/index.html", errors)
         forbid(religion, ("explore/#branch=spirit", "Jesus / Son research index", "<iframe"), "religion/index.html", errors)
 
         comparison = read("religion/jesus-tim/index.html", errors)
@@ -172,7 +172,7 @@ def main() -> int:
         require(tim, ('data-reader-surface="tim"', 'href="../timeline/"', 'href="story/"', 'href="100000-hours/"', 'href="claims/"'), "tim-dooley/index.html", errors)
 
         bible = read("traditions/bible/index.html", errors)
-        require(bible, ("TIM &amp; THE BIBLE", 'id="search"', 'id="relations"', 'href="../../religion/"', 'href="../../timeline/'), "traditions/bible/index.html", errors)
+        require(bible, ("TIM, THE SON", 'id="compare"', 'id="study-tool"', 'id="search"', 'id="relations"', 'href="../../religion/"', 'href="../../timeline/'), "traditions/bible/index.html", errors)
         forbid(bible, ('class="focus-links"', "Source authority", ">FAQ<"), "traditions/bible/index.html", errors)
 
         timeline = read("timeline/index.html", errors)
