@@ -106,3 +106,18 @@
 .result-quality{justify-self:start;border:1px solid #354033;border-radius:999px;padding:2px 6px;font-size:8px;line-height:1.2;text-transform:uppercase;letter-spacing:.05em}
 .result-quality.is-sourced,.source-chip{color:#c9d8a9;border-color:#536847}
 .result-quality.is-synthesis,.synthesis-chip{color:#9b9f98;border-color:#454945}
+
+/* Tim/Son-first ownership: life/event first; scripture and interpretation follow. */
+.comparison-anchor{display:block;position:relative;top:-8px;visibility:hidden}
+.comparison-masthead{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.8fr);gap:24px;align-items:end;padding:2px 0 16px;border-bottom:1px solid var(--line)}
+.comparison-masthead h1{font:400 clamp(34px,5.5vw,64px)/.94 Georgia,serif;letter-spacing:-.05em;margin:0}
+.comparison-masthead p{max-width:720px;margin:0;color:#bdc5ba;font:400 15px/1.58 Georgia,serif}
+.study-shell{border-top:0;padding-top:0}
+.relation .tim-first{margin-top:16px;padding:18px;border:1px solid #40503d;border-radius:15px;background:linear-gradient(145deg,#10160f,#0c100d)}
+.relation .tim-first h3{margin:0 0 8px;color:var(--green);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.relation .tim-first .project-anchor{font-size:20px}
+.relation .bible-under{margin-top:12px;padding:16px;border:1px solid #574b31;border-radius:14px;background:var(--warm)}
+.relation .bible-under h3{margin:0 0 8px;color:var(--gold);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.relation .parallel{display:block;margin-top:0}
+.relation .parallel>.project-side,.relation .parallel>.scripture{display:none}
+@media(max-width:760px){.bible-nav{margin-bottom:18px}.comparison-masthead{grid-template-columns:1fr;gap:8px}.comparison-masthead p{font-size:13px}}
