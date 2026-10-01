@@ -1,7 +1,7 @@
 {
   "id": "biblical-syncretism-field",
   "title": "Biblical Syncretism Field — Tim / Son / Scripture / Discovery Map",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "updated": "2026-10-01",
   "status": "canonical relational index; specialist analyses remain in their owner files",
   "purpose": "Provide one non-redundant surface for studying how Tim Dooley / the Son encounter, quote, reuse, discover or are later compared with biblical texts. This file stores relation metadata and routes outward; it does not duplicate the full specialist analysis.",
@@ -34,6 +34,11 @@
     {
       "id": "research-unlock",
       "meaning": "Date when the archive formally recognizes a comparison or larger biblical structure."
+    },
+    {
+      "id": "prophetic-rhetorical-parallel",
+      "label": "Prophetic rhetorical parallel",
+      "meaning": "A modern proclamation or rebuke shares rhetorical structure with biblical prophetic speech without establishing divine commission, prediction fulfillment or identity."
     }
   ],
   "discovery_modes": [
