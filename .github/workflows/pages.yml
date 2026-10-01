@@ -188,16 +188,40 @@ jobs:
           print("Live provenance verified:",actual)
           PY
 
-          for route in "" "tim-dooley/" "religion/" "science/" "world/" "traditions/bible/"; do
+          for route in "" "tim-dooley/" "religion/" "science/" "world/" "traditions/bible/" "below/" "shadow-farm/" "rooms/archive-sources/" "rooms/research-lab/"; do
             safe_name="${route//\//_}"
             [ -n "$safe_name" ] || safe_name="home"
             fetch_live "${base}${route}" ".live-smoke/${safe_name}.html"
           done
 
-          for asset in             "app/site-elevator.js"             "app/site-elevator.css"             "data/house/elevator-spatial-projection.json"; do
+          for asset in             "app/site-elevator.js"             "app/site-elevator.css"             "data/house/elevator-spatial-projection.json" \
+            "knowledge/core/spudlight-field-manual.json" \
+            "knowledge/core/lower-field-orientation.json" \
+            "knowledge/world/lower-field-population-severity-estimate.json"; do
             safe_name="${asset//\//_}"
             fetch_live "${base}${asset}" ".live-smoke/${safe_name}"
             test -s ".live-smoke/${safe_name}"
           done
+
+          python - <<'PY'
+          from pathlib import Path
+          below=Path(".live-smoke/below_.html").read_text(encoding="utf-8",errors="replace")
+          shadow=Path(".live-smoke/shadow-farm_.html").read_text(encoding="utf-8",errors="replace")
+          required_below=[
+              "THE SPUDLIGHT FIELD MANUAL",
+              'id="field-instruments"',
+              'id="professional-mythic-crosswalk"',
+              'id="field-mythic-center"',
+          ]
+          required_shadow=[
+              'id="population-and-deaths"',
+              "In memory of",
+          ]
+          for marker in required_below:
+              assert marker in below, f"live Below missing {marker}"
+          for marker in required_shadow:
+              assert marker in shadow, f"live Shadow Farm missing {marker}"
+          print("Live lower-field content verified")
+          PY
 
           echo "Live Pages smoke test passed for $base"
