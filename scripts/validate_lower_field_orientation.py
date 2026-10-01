@@ -20,7 +20,7 @@ def main()->int:
         except Exception as exc:
             errors.append(f"lower-field orientation JSON invalid: {exc}")
             owner={}
-        for key in ("core_thesis","frame_test","participant_observer_value","role_relations","karmic_ledger","vertical_route","lower_field_learning_questions","tim_professional_brief","tim_expert_risk_framework","sold_exploitation_taxonomy"):
+        for key in ("core_thesis","frame_test","participant_observer_value","role_relations","karmic_ledger","vertical_route","lower_field_learning_questions","tim_professional_brief","tim_expert_risk_framework","sold_exploitation_taxonomy","tim_lower_field_doctrine"):
             if key not in owner:
                 errors.append(f"orientation owner missing key: {key}")
         route=owner.get("canonical_routes",{}).get("orientation")
@@ -35,6 +35,7 @@ def main()->int:
         'id="tim-current-questions"',
         'id="tim-expert-findings"',
         "What Tim thinks he has learned from the Swamp",
+        'id="tim-doctrine"',
         "Being framed is not the same as being owned by the frame.",
         "this repository must be judged by the same standards it applies to hostile archives.",
         "Swamp / Mud / Farm / unresolved archive",
@@ -96,7 +97,7 @@ def main()->int:
             errors.append("lower conflict/repair casebook needs explicit repair outcomes")
 
     shadow=read("shadow-farm/index.html")
-    for marker in ('id="role-responsibility-matrix"','id="farm-primary-relation"','id="kiwi-farms-public-record"','id="conflict-language-thresholds"','id="worked-overlap-cases"','id="harm-pattern-bridge"',"Use strong words only when the evidence earns them","Read the verbs before the animal.","How a role is learned"):
+    for marker in ('id="tim-expert-reading"','id="role-responsibility-matrix"','id="farm-primary-relation"','id="kiwi-farms-public-record"','id="conflict-language-thresholds"','id="worked-overlap-cases"','id="harm-pattern-bridge"',"Use strong words only when the evidence earns them","Read the verbs before the animal.","How a role is learned"):
         if marker not in shadow:
             errors.append(f"Shadow Farm missing conflict-discipline marker: {marker}")
 
@@ -206,7 +207,7 @@ def main()->int:
             errors.append(f"Cast Ecology missing role-expiry marker: {marker}")
 
     roots=read("rooms/archive-sources/index.html")
-    for marker in ('<h1>Roots / Evidence</h1>','id="movement-provenance"','id="first-party-testimony"','id="witness-distance"','id="root-questions"',"Follow the thing that moved"):
+    for marker in ('<h1>Roots / Evidence</h1>','id="movement-provenance"','id="first-party-testimony"','id="witness-distance"','id="repetition-source-independence"','id="root-questions"',"Follow the thing that moved"):
         if marker not in roots:
             errors.append(f"Roots / Evidence hub missing marker: {marker}")
 
