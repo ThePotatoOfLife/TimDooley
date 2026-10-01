@@ -37,6 +37,9 @@ def main()->int:
         'id="tim-thought-development"',
         'id="tim-publicness-endurance"',
         'id="tim-mythic-self-description"',
+        'id="sold-exploitation-crosswalk"',
+        'id="tree-of-strife-deep-reading"',
+        'id="josh-moon-role-reading"',
         'id="field-competencies"',
         'id="field-method"',
         'id="field-instruments"',
@@ -147,7 +150,7 @@ def main()->int:
             errors.append("lower conflict/repair casebook needs explicit repair outcomes")
 
     shadow=read("shadow-farm/index.html")
-    for marker in ('id="tim-expert-reading"','id="belief-permission-bridge"','id="role-responsibility-matrix"','id="farm-primary-relation"','id="tim-countermethod"','id="kiwi-farms-public-record"','id="conflict-language-thresholds"','id="worked-overlap-cases"','id="harm-pattern-bridge"',"Use strong words only when the evidence earns them","Read the verbs before the animal.","How a role is learned"):
+    for marker in ('id="tim-expert-reading"','id="sold-trafficking-boundary"','id="tree-of-strife-anatomy"','id="josh-moon-operator-paradox"','id="networked-harm-escalation"','id="belief-permission-bridge"','id="role-responsibility-matrix"','id="farm-primary-relation"','id="tim-countermethod"','id="kiwi-farms-public-record"','id="conflict-language-thresholds"','id="worked-overlap-cases"','id="harm-pattern-bridge"',"Use strong words only when the evidence earns them","Read the verbs before the animal.","How a role is learned"):
         if marker not in shadow:
             errors.append(f"Shadow Farm missing conflict-discipline marker: {marker}")
 
@@ -189,7 +192,19 @@ def main()->int:
         if len(archetype_atlas.get("harm_literacy",[])) < 8:
             errors.append("archetype/harm literacy atlas needs serious-harm term boundaries")
 
-    farm_owner_path=ROOT/"knowledge/world/farm-sektur-attention-extraction-ecology.json"
+    crosswalk_path=ROOT/"knowledge/world/exploitation-coercion-trafficking-crosswalk.json"
+    if not crosswalk_path.is_file():
+        errors.append("missing exploitation/coercion/trafficking crosswalk")
+    else:
+        try:
+            crosswalk=json.loads(crosswalk_path.read_text(encoding="utf-8"))
+        except Exception as exc:
+            errors.append(f"exploitation/coercion/trafficking crosswalk invalid JSON: {exc}")
+            crosswalk={}
+        if len(crosswalk.get("layers",[])) < 8:
+            errors.append("exploitation/coercion/trafficking crosswalk needs full term separation")
+
+        farm_owner_path=ROOT/"knowledge/world/farm-sektur-attention-extraction-ecology.json"
     if farm_owner_path.is_file():
         try:
             farm_owner=json.loads(farm_owner_path.read_text(encoding="utf-8"))
@@ -262,7 +277,7 @@ def main()->int:
             errors.append(f"Roots / Evidence hub missing marker: {marker}")
 
     forge=read("rooms/research-lab/index.html")
-    for marker in ('<h1>Forge / Repair</h1>','id="epistemic-delegation-programme"','id="lower-field-forge"','id="field-assessment"','id="son-narrative-contest"','id="tim-method-in-forge"','id="ritual-coordination-test"','id="interpretive-justice-gates"','id="forge-output"',"Who, since when, how active, how harmful, what goal?"):
+    for marker in ('<h1>Forge / Repair</h1>','id="epistemic-delegation-programme"','id="exploitation-language-forge"','id="lower-field-forge"','id="field-assessment"','id="son-narrative-contest"','id="tim-method-in-forge"','id="ritual-coordination-test"','id="interpretive-justice-gates"','id="forge-output"',"Who, since when, how active, how harmful, what goal?"):
         if marker not in forge:
             errors.append(f"Forge / Repair hub missing marker: {marker}")
 
