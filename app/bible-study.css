@@ -16,3 +16,17 @@
 .story-first-note{max-width:920px;margin:13px 0 0;color:#9ea89a;font-size:12px}
 .story-first-note strong{color:#d5ddcf}
 @media(max-width:760px){.story-entry-grid{grid-template-columns:1fr}.story-entry-card{min-height:auto}.story-first{padding-top:20px}.story-first-copy p{font-size:15px}}
+
+.identity-keys{margin:28px 0 30px;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.identity-keys h2{font:400 clamp(27px,4vw,40px)/1.08 Georgia,serif;margin:0 0 13px}
+.identity-key-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.identity-key-grid article{padding:14px;border:1px solid #354033;border-radius:12px;background:#0c100d}
+.identity-key-grid time{display:block;color:#819078;font:10px ui-monospace,SFMono-Regular,Menlo,monospace;margin-bottom:5px}
+.identity-key-grid strong{display:block;color:#decf9a;font:400 18px/1.2 Georgia,serif;margin-bottom:6px}
+.identity-key-grid p{margin:0;color:#aeb7aa;font-size:12px;line-height:1.5}
+.identity-key-note{margin:10px 0 0;color:#889284;font-size:11px}
+#tim-son-story{border-color:#615a3c;background:linear-gradient(145deg,#121108,#0c100d 70%,#101510)}
+#tim-son-story .life-stop{min-height:118px}
+#tim-son-story .life-stop strong{font-size:17px}
+#prophetic-unity{border-color:#4f5338}
+@media(max-width:760px){.identity-key-grid{grid-template-columns:1fr}}
