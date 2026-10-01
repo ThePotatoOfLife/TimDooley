@@ -33,7 +33,46 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - name: Check quality run is still current main
+        id: freshness
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EXPECTED_SHA: ${{ github.event.workflow_run.head_sha || '' }}
+          REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          from pathlib import Path
+
+          output=Path(os.environ["GITHUB_OUTPUT"])
+          if os.environ.get("EVENT_NAME") != "workflow_run":
+              output.write_text("deploy_allowed=true\n",encoding="utf-8")
+              raise SystemExit(0)
+
+          expected=os.environ.get("EXPECTED_SHA","").strip()
+          repo=os.environ["REPOSITORY"]
+          request=urllib.request.Request(
+              f"https://api.github.com/repos/{repo}/branches/main",
+              headers={
+                  "Accept":"application/vnd.github+json",
+                  "Authorization":f"Bearer {os.environ['GITHUB_TOKEN']}",
+                  "User-Agent":"TimDooley-Pages-Freshness/1.0",
+              },
+          )
+          with urllib.request.urlopen(request,timeout=30) as response:
+              current=json.load(response)["commit"]["sha"]
+          allowed=current == expected
+          output.write_text(f"deploy_allowed={'true' if allowed else 'false'}\n",encoding="utf-8")
+          if allowed:
+              print("Fresh quality run:",expected)
+          else:
+              print("Stale quality run; deployment suppressed:",expected,"current main:",current)
+          PY
+
       - name: Download exact validated site artifact
+        if: steps.freshness.outputs.deploy_allowed == 'true'
         uses: actions/download-artifact@v5
         with:
           name: validated-pages-site
@@ -42,6 +81,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Verify validated artifact provenance
+        if: steps.freshness.outputs.deploy_allowed == 'true'
         shell: bash
         env:
           EXPECTED_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || '' }}
@@ -71,18 +111,22 @@ jobs:
           PY
 
       - name: Configure Pages
+        if: steps.freshness.outputs.deploy_allowed == 'true'
         uses: actions/configure-pages@v5
 
       - name: Upload exact validated Pages artifact
+        if: steps.freshness.outputs.deploy_allowed == 'true'
         uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
       - name: Deploy
+        if: steps.freshness.outputs.deploy_allowed == 'true'
         id: deployment
         uses: actions/deploy-pages@v5
 
       - name: Verify live Pages deployment
+        if: steps.freshness.outputs.deploy_allowed == 'true'
         shell: bash
         env:
           LIVE_BASE: ${{ steps.deployment.outputs.page_url }}
