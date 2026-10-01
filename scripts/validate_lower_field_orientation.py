@@ -106,6 +106,15 @@ def main()->int:
         if marker not in read(path):
             errors.append(f"lower-field spoke missing canonical orientation route: {path}")
 
+    for path,marker in {
+        "shadow-farm/index.html":"../below/#attention-teaching",
+        "rooms/archive-sources/index.html":"../../below/#human-teaching-arc",
+        "rooms/research-lab/index.html":"../../below/#human-teachings",
+    }.items():
+        if marker not in read(path):
+            errors.append(f"lower-field teaching bridge missing: {path} -> {marker}")
+
+
     casebook_path=ROOT/"knowledge/core/lower-field-conflict-repair-casebook.json"
     if not casebook_path.is_file():
         errors.append("missing lower-field conflict/repair casebook")

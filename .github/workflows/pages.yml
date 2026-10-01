@@ -229,8 +229,13 @@ jobs:
           ]
           required_shadow=[
               'id="population-and-deaths"',
+              'id="field-manual-human-reading"',
               "In memory of",
           ]
+          roots=Path(".live-smoke/rooms_archive-sources_.html").read_text(encoding="utf-8",errors="replace")
+          forge=Path(".live-smoke/rooms_research-lab_.html").read_text(encoding="utf-8",errors="replace")
+          assert 'id="field-manual-bridge"' in roots, "live Roots missing Field Manual bridge"
+          assert 'id="teaching-programme"' in forge, "live Forge missing teaching programme"
           for marker in required_below:
               assert marker in below, f"live Below missing {marker}"
           for marker in required_shadow:
