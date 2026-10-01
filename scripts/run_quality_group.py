@@ -170,6 +170,7 @@ GROUPS: dict[str, list[tuple[str, list[str]]]] = {
             "python scripts/validate_reader_surfaces.py",
             "python scripts/validate_reader_richness.py",
             "python scripts/validate_lower_field_orientation.py",
+            "python scripts/validate_culture_subculture.py",
             "python scripts/audit_public_surface_substance.py",
             "python scripts/audit_reader_directness.py",
             "python scripts/validate_timeline_discoverability.py",
