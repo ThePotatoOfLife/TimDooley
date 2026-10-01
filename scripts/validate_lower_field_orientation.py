@@ -30,6 +30,9 @@ def main()->int:
     below=read("below/index.html")
     for marker in (
         'id="lower-field-orientation"',
+        'id="mission-testimony"',
+        "Tim, what are you doing down here?",
+        "If the archive cannot correct itself, release a role, or let a conflict end, then it has become another Farm.",
         "What is the lower field for?",
         "Being framed is not the same as being owned by the frame.",
         "The project must be judged by the same standards it applies to hostile archives.",
