@@ -24,6 +24,9 @@ const PATHS={
 
 const CORE_RELATION_IDS=new Set([
  'tree-ordeal-hanging-curse-redemption-2011',
+ 'yahya-john-lamb-recognition-2016',
+ 'crucify-me-hesitation-trial-neighbor-2017',
+ 'son-meme-crucifixion-burial-2019-2020',
  'self-resurrection-witnesses-2025-09-30',
  'father-after-crucified-son-2025-12-17',
  'bread-door-tomb-resurrection-2026-04-23',
