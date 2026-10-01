@@ -15,6 +15,7 @@ DYNAMIC_ANCHOR_SOURCES={
 SOURCE_ROUTE_ALIASES={
     "/": ROOT/"index.html",
 }
+FILE_ROUTE_SUFFIXES={".json",".md",".txt",".xml",".csv",".yaml",".yml"}
 
 def load(p): return json.loads(p.read_text(encoding="utf-8"))
 
@@ -22,7 +23,9 @@ def source_path_for(route_path:str):
     if route_path in SOURCE_ROUTE_ALIASES: return SOURCE_ROUTE_ALIASES[route_path]
     rel=route_path.lstrip("/")
     if not rel: return ROOT/"index.html"
-    if rel.endswith(".html"): return ROOT/rel
+    suffix=Path(rel).suffix.lower()
+    if rel.endswith(".html") or suffix in FILE_ROUTE_SUFFIXES:
+        return ROOT/rel
     return ROOT/rel/"index.html"
 
 def has_anchor(text:str,anchor:str)->bool:
