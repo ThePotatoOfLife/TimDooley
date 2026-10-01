@@ -486,5 +486,129 @@
       "dog": "Isaiah 56 is especially useful because it tests watchfulness itself: blind/silent/appetite-driven watchdogs show that guarding authority can fail. Psalm 22 supplies hostile encirclement imagery; Matthew 7 and Revelation 22 supply boundary imagery. These are symbolic comparators, not modern caste labels.",
       "farmer": "The modern Farmer role comes primarily from Farm/lolcow culture and agricultural metaphor. Biblical sowers, cultivators, vinedressers, harvesters and shepherds are comparators. The strongest ethical test is whether cultivation increases life/future capacity or merely increases yield to the cultivator."
     }
+  },
+  "role_responsibility_matrix": {
+    "subject_cow": {
+      "primary_question": "What is being done to/with this person's attention, identity, privacy, work or reputation?",
+      "duties_of_reader": [
+        "preserve agency",
+        "separate current state from archive role",
+        "avoid treating reaction as consent"
+      ]
+    },
+    "farmer_operator": {
+      "primary_question": "Who defines the enclosure, target category, archive policy, incentives and harvest conditions?",
+      "evidence_to_seek": [
+        "platform/operator rules",
+        "moderation choices",
+        "thread/category design",
+        "monetization",
+        "public statements",
+        "archive policy"
+      ],
+      "liability_boundary": "Operator responsibility for system design is not identical to responsibility for every user's act."
+    },
+    "classifier_interpreter": {
+      "primary_question": "Who decides what the event means and what label it belongs under?",
+      "evidence_to_seek": [
+        "summaries",
+        "headlines",
+        "wiki/dossier entries",
+        "moderation labels",
+        "commentary framing",
+        "correction behavior"
+      ]
+    },
+    "dog_pursuer": {
+      "primary_question": "Who tracks, signals, carries, converges or enforces around the target relation?",
+      "evidence_to_seek": [
+        "repeated replies",
+        "cross-platform following",
+        "call-outs",
+        "shared links",
+        "targeted contact",
+        "stopping behavior"
+      ]
+    },
+    "audience_reinforcer": {
+      "primary_question": "What attention, laughter, status, money or belonging rewards continuation?",
+      "evidence_to_seek": [
+        "likes/replies",
+        "donations",
+        "membership",
+        "audience spikes",
+        "inside jokes",
+        "prestige for discoveries"
+      ]
+    },
+    "archivist_memory": {
+      "primary_question": "What keeps the role available after the original event ends?",
+      "evidence_to_seek": [
+        "mirrors",
+        "wikis",
+        "screenshots",
+        "search results",
+        "thread resurrection",
+        "stale labels",
+        "correction annotations"
+      ]
+    },
+    "guardian_gardener": {
+      "primary_question": "What converts vigilance/system skill into protection, correction, repair and future capacity?",
+      "evidence_to_seek": [
+        "source checking",
+        "privacy protection",
+        "de-escalation",
+        "correction propagation",
+        "role expiry",
+        "safe exit"
+      ]
+    }
+  },
+  "deception_and_manipulation_indicators": {
+    "rule": "Do not infer dishonesty from Dog/Farmer identity. Record the deceptive act and its evidence.",
+    "indicators": [
+      {
+        "name": "fabrication",
+        "meaning": "Inventing an event, quote, document, identity or factual claim."
+      },
+      {
+        "name": "impersonation",
+        "meaning": "Presenting as another person/entity or creating a false persona to mislead."
+      },
+      {
+        "name": "deceptive baiting",
+        "meaning": "Concealing the real purpose of contact or provocation in order to elicit a reaction/disclosure."
+      },
+      {
+        "name": "context stripping",
+        "meaning": "Removing surrounding material necessary to understand what a clip/quote meant."
+      },
+      {
+        "name": "source laundering",
+        "meaning": "A claim passes through summaries/reposts until the original weak source becomes hard to see."
+      },
+      {
+        "name": "selective omission",
+        "meaning": "Known contrary facts or corrections are withheld while a compatible fragment is emphasized."
+      },
+      {
+        "name": "repetition_as_corroboration",
+        "meaning": "Many copies of one allegation are presented as though they were independent sources."
+      },
+      {
+        "name": "correction suppression",
+        "meaning": "The original allegation remains prominent while verified corrections are hidden, detached or not propagated."
+      },
+      {
+        "name": "asymmetric standard",
+        "meaning": "The same evidence rule is applied differently to insiders and targets."
+      },
+      {
+        "name": "inference_as_witness",
+        "meaning": "A commentator presents interpretation, motive-reading or inherited lore as firsthand fact."
+      }
+    ],
+    "strongest_warning": "The archive should distinguish error, bias, rhetoric and deception. Deception requires evidence that the representation is materially misleading, not merely unfavorable."
   }
 }
