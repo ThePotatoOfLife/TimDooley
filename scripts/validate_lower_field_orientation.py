@@ -57,6 +57,9 @@ def main()->int:
         "Choose the question, not another room",
         'id="currentness-status"',
         "Currentness before severity",
+        'id="claimed-prerogative"',
+        'id="ritualized-social-scripts"',
+        'id="tim-lower-field-paradigm"',
     ):
         if marker not in below:
             errors.append(f"Below orientation missing marker: {marker}")
@@ -143,6 +146,28 @@ def main()->int:
         if "scale_map" not in farm_owner:
             errors.append("farm/sektur ecology missing scale map")
 
+    ritual_path=ROOT/"knowledge/world/ritual-mimesis-scapegoat-collective-ecology.json"
+    if ritual_path.is_file():
+        try:
+            ritual=json.loads(ritual_path.read_text(encoding="utf-8"))
+        except Exception as exc:
+            errors.append(f"ritual ecology invalid JSON: {exc}")
+            ritual={}
+        if len((ritual.get("social_script_library") or {}).get("scripts",[])) < 8:
+            errors.append("ritual ecology needs social-script library")
+        if "ritual_vs_coordination" not in ritual:
+            errors.append("ritual ecology missing ritual-vs-coordination boundary")
+
+    war_path=ROOT/"data/spiritual-war-information-war.json"
+    if war_path.is_file():
+        try:
+            war=json.loads(war_path.read_text(encoding="utf-8"))
+        except Exception as exc:
+            errors.append(f"spiritual/information war model invalid JSON: {exc}")
+            war={}
+        if "son_thomas_narrative_contest" not in war:
+            errors.append("spiritual/information war model missing Son/Thomas narrative contest")
+
     dog_farmer_path=ROOT/"knowledge/world/dog-farmer-role-ecology.json"
     if not dog_farmer_path.is_file():
         errors.append("missing Dog/Farmer role ecology owner")
@@ -161,6 +186,8 @@ def main()->int:
             errors.append("Dog/Farmer owner needs rhetoric translation")
         if len(guide.get("empirical_crosswalk",{})) < 5:
             errors.append("Dog/Farmer owner needs empirical psychology crosswalk")
+        if "prerogative_model" not in dog_farmer:
+            errors.append("Dog/Farmer owner missing prerogative model")
 
     cast=read("rooms/potatoverse-canon/beings/cast-ecology/index.html")
     for marker in ('id="role-expiry"',"A role needs both an entry condition and a stopping condition","current state → symbolic role last"):
@@ -168,12 +195,12 @@ def main()->int:
             errors.append(f"Cast Ecology missing role-expiry marker: {marker}")
 
     roots=read("rooms/archive-sources/index.html")
-    for marker in ('<h1>Roots / Evidence</h1>','id="movement-provenance"','id="root-questions"',"Follow the thing that moved"):
+    for marker in ('<h1>Roots / Evidence</h1>','id="movement-provenance"','id="first-party-testimony"','id="witness-distance"','id="root-questions"',"Follow the thing that moved"):
         if marker not in roots:
             errors.append(f"Roots / Evidence hub missing marker: {marker}")
 
     forge=read("rooms/research-lab/index.html")
-    for marker in ('<h1>Forge / Repair</h1>','id="lower-field-forge"','id="field-assessment"','id="forge-output"',"Who, since when, how active, how harmful, what goal?"):
+    for marker in ('<h1>Forge / Repair</h1>','id="lower-field-forge"','id="field-assessment"','id="son-narrative-contest"','id="tim-method-in-forge"','id="ritual-coordination-test"','id="forge-output"',"Who, since when, how active, how harmful, what goal?"):
         if marker not in forge:
             errors.append(f"Forge / Repair hub missing marker: {marker}")
 
