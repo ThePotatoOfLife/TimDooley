@@ -413,12 +413,13 @@
     return header;
   }
 
-  const api={LEVELS,normalizeRoute,resolveSpatialContext,roomsForLevel,stepLevel,inheritParentContext,mount};
+  const api={LEVELS,normalizeRoute,resolveSpatialContext,roomsForLevel,landmarksForLevel,stepLevel,inheritParentContext,mount};
   if(typeof exports==='object'){
     exports.LEVELS=LEVELS;
     exports.normalizeRoute=normalizeRoute;
     exports.resolveSpatialContext=resolveSpatialContext;
     exports.roomsForLevel=roomsForLevel;
+    exports.landmarksForLevel=landmarksForLevel;
     exports.stepLevel=stepLevel;
     exports.inheritParentContext=inheritParentContext;
     exports.mount=mount;
