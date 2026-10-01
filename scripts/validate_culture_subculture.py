@@ -27,6 +27,8 @@ def main()->int:
         "Roles are learned socially.",
         "Centrality is not personality essence.",
         "watch → imitate → receive feedback",
+        'id="language-as-infrastructure"',
+        "A role-name can behave like a miniature algorithm",
     ):
         if marker not in page:
             errors.append(f"Culture reader missing field-model marker: {marker}")
