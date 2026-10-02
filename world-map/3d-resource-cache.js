@@ -31,9 +31,12 @@ function fetchJson(url, options = {}) {
   const reload = options.reload === true;
   if (!reload && records.has(key)) {
     const row = records.get(key);
-    row.hits = Number(row.hits || 0) + 1;
-    publish();
-    return row.promise;
+    if (row.status !== 'failed' || options.retryFailed === false) {
+      row.hits = Number(row.hits || 0) + 1;
+      publish();
+      return row.promise;
+    }
+    records.delete(key);
   }
 
   const row = {
@@ -45,7 +48,9 @@ function fetchJson(url, options = {}) {
     error:null,
     promise:null,
   };
-  row.promise = fetch(key, { cache:options.cache || 'force-cache', signal:options.signal })
+  // Shared requests intentionally do not inherit a caller AbortSignal: one consumer
+  // must not cancel the canonical in-flight read for every other module.
+  row.promise = fetch(key, { cache:options.cache || 'force-cache' })
     .then(response => {
       if (!response.ok) throw new Error(`${response.status} ${key}`);
       return response.json();
