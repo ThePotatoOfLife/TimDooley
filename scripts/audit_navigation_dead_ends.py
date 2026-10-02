@@ -8,7 +8,13 @@ REG=ROOT/"data/house/public-surfaces.json"
 OUT=ROOT/".quality-logs/navigation-dead-end-audit.json"
 
 def route_path(route):
-    return ROOT/"index.html" if route=="/" else ROOT/route.strip("/")/"index.html"
+    route=(route or "/").strip()
+    if route=="/":
+        return ROOT/"index.html"
+    clean=route.strip("/")
+    if clean.endswith(".html"):
+        return ROOT/clean
+    return ROOT/clean/"index.html"
 
 def main():
     data=json.loads(REG.read_text(encoding="utf-8"))
