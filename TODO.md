@@ -1294,3 +1294,15 @@ Shared implementation: `app/terrain-circle.css`
 - [x] **VISUAL-TERRAIN-005:** Integrate shared Swamp terrain into the existing Below Basin rather than duplicating the diagram.
 - [x] **VISUAL-TERRAIN-006:** Add Forge → Door → canonical owner movement visual to Research Lab.
 - [x] **VISUAL-TERRAIN-007:** Review North and explicitly defer a large terrain emblem because it could blur symbolic orientation with empirical/political programme material.
+
+
+## Lower-floor visual salvage — 2026-10-02
+
+- [x] **LOWER-VIS-001 · Recover the descending-root motif:** promote the 2026-10-01 Psalm 40 / mire root idea from one local Below section into the shared lower-floor environment without duplicating the SVG.
+- [x] **LOWER-VIS-002 · One underground substrate:** Below, Farm / Sektur, Roots / Evidence and Forge / Repair now share one brown-black soil/stone/root floor instead of diverging green/black page backgrounds.
+- [x] **LOWER-VIS-003 · Deep strata continuation:** roots, sediment shelves, stones and slow coils continue beyond the first viewport so the lower floor reads as an inhabitable side-view excavation rather than a flat theme.
+- [x] **LOWER-VIS-004 · Local regimes, not four themes:** Farm adds restrained pooled/moss recurrence, Roots emphasizes provenance/excavation lines, Forge adds local ember/pressure seams, and Below remains the neutral observatory/basin.
+- [x] **LOWER-VIS-005 · CSS ownership:** floor terrain lives in `app/lower-layer.css`; page components live in scoped page stylesheets; lower-field validation rejects regression to giant inline style blocks or missing shared terrain ownership.
+- [ ] **LOWER-VIS-006 · Visual continuity check on deployed Pages:** inspect the four routes at desktop/mobile widths and tune root visibility, text contrast, pebble density and coil strength after the next successful validated deployment.
+- [ ] **LOWER-VIS-007 · Drain depth landmark:** give the deepest/exit portions of Below a stronger but restrained narrowing/drain landmark without turning the entire floor into Hell or Swamp.
+- [ ] **LOWER-VIS-008 · Root state cues:** test subtle living/dead/cut/cross-root visual distinctions on Roots / Evidence where they reinforce provenance states without becoming decorative labels.
