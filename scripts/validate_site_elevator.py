@@ -80,7 +80,15 @@ def main() -> int:
     if ".app{height:calc(100%-var(--site-elevator-clearance,0px))" not in world_map_source.replace(" ",""):
         errors.append("World Map full-screen app must reserve measured site-elevator top clearance")
 
-    for token in ("inject_site_elevator", "patch_site_elevator", "app/site-elevator.css", "app/site-elevator.js"):
+    for token in (
+        "inject_site_floor",
+        "patch_site_floors",
+        "_site_floor_for_route",
+        "inject_site_elevator",
+        "patch_site_elevator",
+        "app/site-elevator.css",
+        "app/site-elevator.js",
+    ):
         if token not in patcher:
             errors.append(f"public navigation projection missing elevator marker: {token}")
 
@@ -363,6 +371,10 @@ def main() -> int:
                 errors.append(f"{rel}: expected exactly one elevator CSS + JS asset")
             if "site-access.css" not in text or "site-access.js" not in text:
                 errors.append(f"{rel}: elevator rollout must preserve the bottom site-access dock")
+            route = "/" if rel == "index.html" else "/" + rel.removesuffix("index.html")
+            expected_floor = REPRESENTATIVE_CONTEXTS.get(route, ("plane", None))[0]
+            if f'data-site-floor="{expected_floor}"' not in text:
+                errors.append(f"{rel}: built HTML must carry first-paint floor {expected_floor!r}")
 
     if errors:
         print(f"SITE ELEVATOR DATA VALIDATION FAILED: {len(errors)} issue(s)")
