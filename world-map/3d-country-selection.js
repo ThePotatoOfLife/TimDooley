@@ -363,6 +363,10 @@ async function fetchJson(url) {
   return response.json();
 }
 async function loadRestRuntime() {
+  if (window.__potatoAtlasCoreData?.countries) {
+    try { return await window.__potatoAtlasCoreData.countries(); }
+    catch (error) { console.warn('Shared country runtime unavailable; automatic relation lines will be limited.', error); return []; }
+  }
   try { return await fetchJson(REST_LOCAL); }
   catch (localError) {
     try { return await fetchJson(REST_REMOTE); }
