@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import hashlib
 import html
+import json
 import re
 from pathlib import Path
 
@@ -191,6 +192,85 @@ def patch_site_access(out: Path = OUT) -> set[Path]:
 SITE_ELEVATOR_QUIET_PREFIXES = (
     "tools/tts/",
 )
+
+_ELEVATOR_PROJECTION = json.loads((ROOT / "data" / "house" / "elevator-spatial-projection.json").read_text(encoding="utf-8"))
+_ELEVATOR_SUBROOMS = json.loads((ROOT / "data" / "house" / "subrooms.json").read_text(encoding="utf-8"))
+_ELEVATOR_DWELLING_LEVEL = {
+    str(row.get("id")): str(row.get("primary_level") or "plane")
+    for row in _ELEVATOR_PROJECTION.get("dwellings", [])
+    if isinstance(row, dict) and row.get("id")
+}
+_ELEVATOR_SUBROOM_PARENT = {
+    str(row.get("route_id") or row.get("id")): str(row.get("parent_room_id"))
+    for row in _ELEVATOR_SUBROOMS.get("subrooms", [])
+    if isinstance(row, dict) and row.get("status") == "active" and row.get("id") and row.get("parent_room_id")
+}
+_ELEVATOR_ROUTE_CONTEXTS = sorted(
+    [
+        row for row in _ELEVATOR_PROJECTION.get("route_contexts", [])
+        if isinstance(row, dict) and isinstance(row.get("match"), str) and row.get("level_id") in {"heaven", "plane", "below"}
+    ],
+    key=lambda row: len(str(row.get("match") or "")),
+    reverse=True,
+)
+
+def _public_route_for_page(page: Path) -> str:
+    rel = page.relative_to(OUT).as_posix()
+    if rel == "index.html":
+        return "/"
+    if rel.endswith("/index.html"):
+        return "/" + rel[:-10]
+    return "/" + rel
+
+def _site_floor_for_route(route: str) -> str:
+    normalized = "/" + str(route or "/").lstrip("/")
+    if not normalized.endswith("/") and "." not in normalized.rsplit("/", 1)[-1]:
+        normalized += "/"
+
+    inside = re.match(r"^/rooms/inside/([^/]+)(?:/|$)", normalized)
+    if inside:
+        parent = _ELEVATOR_SUBROOM_PARENT.get(inside.group(1))
+        if parent:
+            return _ELEVATOR_DWELLING_LEVEL.get(parent, "plane")
+
+    room = re.match(r"^/rooms/([^/]+)(?:/|$)", normalized)
+    if room and room.group(1) != "inside":
+        return _ELEVATOR_DWELLING_LEVEL.get(room.group(1), "plane")
+
+    for row in _ELEVATOR_ROUTE_CONTEXTS:
+        match = str(row.get("match") or "")
+        if match == "/":
+            if normalized == "/":
+                return str(row.get("level_id") or "plane")
+            continue
+        if normalized == match or normalized.startswith(match):
+            return str(row.get("level_id") or "plane")
+    return "plane"
+
+def inject_site_floor(text: str, page: Path) -> str:
+    """Stamp the canonical floor into built HTML so scenery exists at first paint."""
+    if not re.search(r"<html\b", text, flags=re.I):
+        return text
+    floor = _site_floor_for_route(_public_route_for_page(page))
+    html_open = re.search(r"<html\b[^>]*>", text, flags=re.I)
+    if not html_open:
+        return text
+    tag = html_open.group(0)
+    if re.search(r"\bdata-site-floor\s*=", tag, flags=re.I):
+        tag = re.sub(r'\bdata-site-floor\s*=\s*["\'][^"\']*["\']', f'data-site-floor="{floor}"', tag, count=1, flags=re.I)
+    else:
+        tag = tag[:-1] + f' data-site-floor="{floor}">'
+    return text[:html_open.start()] + tag + text[html_open.end():]
+
+def patch_site_floors(out: Path = OUT) -> set[Path]:
+    changed: set[Path] = set()
+    for page in out.rglob("*.html"):
+        text = page.read_text(encoding="utf-8", errors="replace")
+        projected = inject_site_floor(text, page)
+        if projected != text:
+            page.write_text(projected, encoding="utf-8")
+            changed.add(page)
+    return changed
 
 def inject_site_elevator(text: str, page: Path) -> str:
     """Add the universal three-floor House orientation header."""
@@ -459,6 +539,7 @@ def main() -> None:
 
     changed.update(patch_shared_asset_versions(OUT))
     changed.update(patch_legacy_tts_readers(OUT))
+    changed.update(patch_site_floors(OUT))
     changed.update(patch_site_elevator(OUT))
     changed.update(patch_site_access(OUT))
     changed.update(patch_universal_tts(OUT))
