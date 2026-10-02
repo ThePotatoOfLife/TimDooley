@@ -305,3 +305,181 @@ The next highest-value work is to follow actual edges:
 Then search for repeated mechanisms across domains.
 
 That lets the project become smarter over time without needing to decide in advance that everything connects.
+## 16. Information funnels: how signals move upward, downward and sideways
+
+The project has often used phrases like “information war,” “narrative control” or “hidden network.” Those phrases become more useful when replaced by a chain of transformations.
+
+A raw event rarely reaches a decision-maker unchanged. A post, clip, transaction, sensor reading, complaint or incident may first be collected, then archived, categorized, summarized, scored, modeled, briefed, reported, litigated, campaigned on or turned into a public message. The public response to that message then becomes new data.
+
+A generic funnel looks like this:
+
+**event / post / signal -> collector -> archive or dataset -> analyst / classifier / vendor -> report / dashboard / brief -> institutional or media decision -> public message or action -> reaction -> new signal**.
+
+The important analytical question is not “is the information fake?” but **what happened to it at each handoff?**
+
+Possible improvements include corroboration, deduplication, context recovery and professional verification.
+
+Possible distortions include selective sampling, inherited categories, commercial incentives, duplicated sources that look independent, context loss, political messaging and the compression of ambiguity into one headline or score.
+
+This is a better model of “top” and “bottom” than a pyramid with one controller. Different actors have different partial powers over collection, interpretation, distribution and consequence.
+
+## 17. AIPAC / UDP: visible political influence, not invisible omnipotence
+
+AIPAC belongs in the atlas because it is an unusually important and measurable U.S. foreign-policy advocacy organization. Its own public mission is to encourage and persuade the U.S. government to adopt policies strengthening the U.S.-Israel relationship. AIPAC PAC and United Democracy Project are legally distinct electoral-spending vehicles whose FEC filings make receipts, contributions and independent expenditures measurable.
+
+That gives a concrete influence chain:
+
+**donor -> PAC / Super PAC -> contribution or independent expenditure -> election -> officeholder / policy environment**.
+
+This is real political power. It is also narrower than “control.” Campaign spending can change incentives, visibility and electoral risk without proving that an organization secretly commands candidates, intelligence agencies, media companies or unrelated Jewish or Israeli institutions.
+
+AIPAC should therefore be compared with other large advocacy and electoral networks rather than treated as a mystical exception. The point is to understand lobbying and political finance as mechanisms.
+
+## 18. Unit 8200: institutional skill can migrate without proving permanent command
+
+Unit 8200 belongs in a different lane. The IDF describes it as a central collection unit within Israeli Military Intelligence with signals-intelligence, cyber, analysis and technological functions. The IDF and outside reporting also describe a substantial alumni presence in Israel's technology sector.
+
+This creates a genuine network effect:
+
+**intelligence institution -> training / selection / relationships -> alumni -> private technology -> commercial and government markets**.
+
+That pathway matters because institutions can seed technical culture, trust networks and talent pools long after individuals leave formal service.
+
+But the edge must be typed correctly. Former service is not evidence that every later company remains directed by the state. Alumni networks can produce influence, access and shared expertise without constituting a secret chain of command.
+
+The project should therefore map:
+
+- service history;
+- founders and senior personnel;
+- company creation;
+- funding;
+- government contracts;
+- documented partnerships;
+- publicly acknowledged intelligence relationships;
+- and specific allegations of misuse separately.
+
+## 19. Psy-Group: the private market for influence operations
+
+Psy-Group is one of the clearest examples of why “information operations” should not be reserved for states.
+
+Investigative reporting describes the Israeli firm as a private intelligence/influence company that recruited people with intelligence backgrounds and used covert personas and targeted influence techniques. The firm also discussed proposed election-influence work with people connected to the 2016 Trump campaign; reporting and later investigations must distinguish those proposals from actual completed operations and from measurable effect on the election.
+
+The mechanism is nevertheless important:
+
+**client -> private influence firm -> personas / targeting / content / collection -> audience -> measurement / report**.
+
+That means capabilities historically associated with intelligence, propaganda or political campaigning can be purchased as services.
+
+Psy-Group should therefore sit beside Black Cube, not beside AIPAC: one is a private influence/intelligence capability case; the other is an overt political-advocacy network.
+
+## 20. Israel365 Action: overt religious-political mobilization
+
+Israel365 Action belongs in yet another lane because its politics are public rather than hidden.
+
+The organization describes itself as mobilizing Jews and Christians in support of Israel, Judeo-Christian values and Israeli sovereignty claims in Judea and Samaria. It also explicitly discusses advocacy against what it regards as misinformation and reports winning representation in the 2025 World Zionist Congress election.
+
+That creates a visible mobilization chain:
+
+**religious worldview -> media / education -> audience -> conference / rally / action alert -> political or institutional participation**.
+
+This is useful for understanding how theology becomes politics without requiring a covert-network theory.
+
+The project should preserve the organization's own wording, opponents' descriptions and independently observable activity separately.
+
+## 21. NCRI, SPLC and ADL: classification is itself a form of power
+
+The Network Contagion Research Institute, SPLC and ADL differ substantially, but all illustrate a layer the project should take seriously: **classification power**.
+
+NCRI describes and studies cyber-social contagion, manipulation, extremism and misinformation; Rutgers has partnered with it in threat-analysis research and training. SPLC classifies organizations under its own hate-group methodology. ADL maintains incident and extremism datasets and publishes movement research.
+
+The common mechanism is:
+
+**raw public material -> methodology -> category / report -> journalist, platform, institution or policymaker -> downstream consequence**.
+
+A classifier can therefore shape the field it studies even when it has no legal authority. A label can change discoverability, reputational risk, platform attention, donor behavior or institutional response.
+
+This does not make the classifier a truth oracle or a conspirator. It means methodology, funding, error correction, category definitions and institutional uptake become part of the power map.
+
+The April 2026 federal indictment involving SPLC's alleged use of paid informants is a particularly strong reason to keep two layers separate: SPLC's classification outputs are one analytical object; the criminal allegations and SPLC's denials are another. An indictment is not a conviction.
+
+## 22. Groypers: distributed ideological networks can route around platform restrictions
+
+The Groyper / America First milieu is relevant because it shows how a political subculture can operate as a distributed memetic network rather than a formal membership organization.
+
+Current watchdog research describes networks of affiliated or sympathetic accounts clipping, reposting and collaborating around Nick Fuentes' content even when Fuentes himself faces platform restrictions.
+
+The mechanism is familiar from older troll culture but politically sharper:
+
+**figure / ideology -> clips / memes / affiliated accounts -> platform distribution -> audience -> replication -> recruitment / factional identity**.
+
+This is a useful bridge between the earlier Sektur analysis and contemporary political culture. The techniques—irony, clipping, adversarial identity, distributed amplification—can persist while the ideological content changes.
+
+Affiliation still needs careful typing. Watching a stream, sharing a meme, appearing on a show and being an organized participant are not the same edge.
+
+## 23. Palantir: information power becomes operational when data can be joined and acted on
+
+Palantir belongs in the infrastructure layer.
+
+The company's public filings document extensive government business and a strategic partnership with Israel's Ministry of Defense after October 7, 2023. Palantir has also publicly disputed allegations that it built or participated in specific automated targeting systems in Gaza; those denials should be stored as company claims rather than treated as independent resolution of contested reporting.
+
+The important general mechanism is:
+
+**many data sources -> integrated model / operational interface -> institutional user -> decision or action**.
+
+That is qualitatively different from lobbying or propaganda. Data-integration firms can make already-existing government information easier to query, correlate and operationalize.
+
+The relevant questions are therefore about procurement, data provenance, permissions, model design, human review, deployment context, auditability and documented misuse—not whether “Palantir” is a synonym for an intelligence agency.
+
+## 24. Epstein: elite access is a network problem, but adjacency is not guilt
+
+The Epstein corpus belongs in the atlas because it demonstrates how wealth, social access, intermediaries, travel, finance, institutions and exploitation can coexist in a real criminal network.
+
+It is also one of the clearest examples of why careless network visualization can become defamatory.
+
+Every edge must preserve its type:
+
+**contact record != travel record != business relation != witness allegation != investigation != charge != conviction**.
+
+A name appearing in released material establishes only the relation actually shown by the material.
+
+The strongest research questions are institutional:
+
+- who enabled access;
+- where complaints or warnings failed;
+- which financial, legal or social structures reduced accountability;
+- which claims were established in court;
+- and how victim protection can be improved.
+
+The weak question is “who appears near Epstein?” The stronger question is “what documented mechanism converted elite access into reduced friction for exploitation or reduced accountability?”
+
+## 25. Shivat Zion: a useful dead end because it teaches entity resolution
+
+“Shivat Zion” currently illustrates a different research lesson.
+
+Publicly identifiable organizations under that name include an aliyah/integration nonprofit and a separate charitable/security-support organization. The shared name does not establish common legal identity, political coordination or an information-war role.
+
+This is exactly the kind of lead that should sometimes remain a dead end.
+
+A good hidden-network atlas becomes more trustworthy when it records **failed connections** as well as successful ones. The absence of an evidenced edge is information.
+
+## 26. What the reader should now be able to see
+
+These cases do not resolve into one master network. They resolve into several recurring power forms:
+
+- **money power** — donors, PACs, grants, procurement;
+- **intelligence power** — collection, analysis, secrecy, institutional expertise;
+- **influence power** — persuasion, covert personas, targeted messaging, narrative testing;
+- **classification power** — defining categories that institutions and media later reuse;
+- **infrastructure power** — joining data, controlling access, hosting, payment and technical continuity;
+- **mobilization power** — turning religious, political or cultural identity into coordinated public action;
+- **archive power** — deciding which past remains easy to retrieve;
+- **network power** — moving through personal, professional and alumni relationships;
+- **criminal power** — exploiting secrecy, access, money and institutional failure;
+- **state power** — law, intelligence, procurement, coercion and adjudication.
+
+The phrase **hidden network** is most useful when it means: a set of real edges that are not obvious from the public surface but can be reconstructed from filings, contracts, personnel, grants, technical infrastructure, court records and documented communications.
+
+It becomes least useful when it means: everything disliked belongs to one invisible controller.
+
+The project's job is therefore to make hidden edges visible without inventing edges that are not there.
+
