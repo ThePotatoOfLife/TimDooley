@@ -23,24 +23,38 @@ const PATHS={
 };
 
 const CORE_RELATION_ORDER=[
+ 'childhood-cultivation-gardener-precursor-1992',
+ 'christian-vocabulary-enters-age12-1999',
+ 'light-collapse-return-2003',
+ 'motorcycle-blood-unbroken-bones-2005',
+ 'care-home-rise-walk-witness-2009-era',
  'tree-ordeal-hanging-curse-redemption-2011',
  'yahya-john-lamb-recognition-2016',
  'crucify-me-hesitation-trial-neighbor-2017',
+ 'persona-death-old-new-self-2018',
  'son-meme-crucifixion-burial-2019-2020',
+ 'potato-birth-hidden-life-2020-12-25',
+ 'chosen-gentile-potato-2024-10-02',
+ 'potatoes-die-for-sins-2024-10-03',
  'potato-axis-turning-ladder-2025-04-21',
  'self-resurrection-witnesses-2025-09-30',
  'father-after-crucified-son-2025-12-17',
  'bread-door-tomb-resurrection-2026-04-23',
  'ladder-door-specialization-2026-05-19',
- 'passover-house-door-lamb-threshold-2026-07-24',
  'john14-15-house-thomas-way-gardener-vine-sequence-2026-07-23',
+ 'passover-house-door-lamb-threshold-2026-07-24',
  'son-cornerstone-2026-08-17',
  'psalm82-gods-sons-mosthigh-justice-test-2026-09-13',
+ 'emmaus-return-before-recognition-bread',
+ 'mary-gardener-misrecognition-return',
+ 'acts-forty-days-resurrection-to-ascension',
+ 'john21-shore-recognition-feeding-after-return',
  'oct1-father-internet-ladder-swamp',
  'oct1-prophetic-name-witness-deaf-blind',
  'oct1-jesus-dead-countertext'
-];
+]
 const CORE_RELATION_IDS=new Set(CORE_RELATION_ORDER);
+const TIM_LIVED_ACTORS=new Set(['tim','son','tim-shared','son-shared']);
 const CORE_RELATION_RANK=new Map(CORE_RELATION_ORDER.map((id,index)=>[id,index]));
 
 const VIEW_DEFS={
@@ -82,7 +96,7 @@ function bookFromRef(reference){const ref=String(reference||'').trim(),match=ref
 function bibleOrderKey(row){const refs=asArray(row.biblical_refs);if(!refs.length)return 9999;return Math.min(...refs.map(ref=>BIBLE_BOOK_RANK.get(bookFromRef(ref))??9999))}
 function ownerHref(owner){if(!owner)return '#';if(/^https?:\/\//.test(owner))return owner;return '../../'+owner.split('/').map(encodeURIComponent).join('/')}
 function matchesTerms(row,terms){const text=rowText(row);return terms.some(term=>text.includes(term))}
-function matchesView(row,view){const def=VIEW_DEFS[view]||VIEW_DEFS.core;if(view==='all')return true;if(view==='core')return CORE_RELATION_IDS.has(row.id);if(def.counter)return asArray(row.weaknesses).length>0||Boolean(row.counter_text||row.source_correction||row.difference||row.boundary);if(def.modes&&def.modes.includes(row.discovery_mode))return true;return def.terms?matchesTerms(row,def.terms):true}
+function matchesView(row,view){const def=VIEW_DEFS[view]||VIEW_DEFS.core;if(view==='all')return true;if(view==='core')return CORE_RELATION_IDS.has(row.id);if(view==='tim-lived')return CORE_RELATION_IDS.has(row.id)||TIM_LIVED_ACTORS.has(norm(row.actor));if(def.counter)return asArray(row.weaknesses).length>0||Boolean(row.counter_text||row.source_correction||row.difference||row.boundary);if(def.modes&&def.modes.includes(row.discovery_mode))return true;return def.terms?matchesTerms(row,def.terms):true}
 function matchesFocus(row,focus){const [kind,id]=String(focus||'view:core').split(':');if(kind==='arc')return matchesTerms(row,(ARC_DEFS[id]||{terms:[]}).terms);return matchesView(row,id)}
 function focusLabel(focus){const [kind,id]=String(focus||'view:core').split(':');return kind==='arc'?(ARC_DEFS[id]?.label||id):(VIEW_DEFS[id]?.label||'Core Tim / Son story')}
 function exactQuotes(row,evidence){return unique([...asArray(row.project_quote),...asArray(row.exact_wording),...asArray(row.public_wording),...asArray(row.recovered_wording),row.quote,...asArray(row.occurrence_ids).map(id=>evidence.occurrenceById.get(id)?.quote)]).filter(Boolean)}
