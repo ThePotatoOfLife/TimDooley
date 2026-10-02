@@ -33,22 +33,17 @@ def validate_built_site(errors: list[str], notes: list[str]) -> None:
     if not out.exists():
         notes.append("_site not present; built-site TTS audit skipped")
         return
-    quiet_prefixes = ("world-map/", "rooms/objects/", "index-a-z/", "tools/tts/")
     checked = 0
     for path in out.rglob("*.html"):
         rel = path.relative_to(out).as_posix()
         text = path.read_text(encoding="utf-8", errors="replace")
         if not ("<html" in text.lower() and "<main" in text.lower()):
             continue
-        if rel.startswith(quiet_prefixes):
-            continue
         checked += 1
-        if not (
-            "site-tts.js" in text
-            or "data-tts-longform" in text
-            or "tts-drawer.js" in text
-        ):
-            errors.append(f"built page missing TTS coverage: {rel}")
+        has_bootstrap = "site-tts.js" in text
+        has_full_stack = all(marker in text for marker in ("tts-reader.js","tts-drawer.js","longform-tts-adapter.js"))
+        if not (has_bootstrap or has_full_stack):
+            errors.append(f"built page missing usable TTS path: {rel}")
     notes.append(f"built-site TTS documents checked: {checked}")
 
 def main() -> int:
@@ -73,8 +68,7 @@ def main() -> int:
 
         text = path.read_text(encoding="utf-8")
         if sid in QUIET:
-            notes.append(f"{sid}: intentionally quiet explorer; use selected-content TTS")
-            continue
+            notes.append(f"{sid}: control-heavy explorer; requires selection-only TTS instead of whole-page reading")
 
         if not covered(text):
             errors.append(
@@ -89,7 +83,7 @@ def main() -> int:
         errors.append("missing app/site-tts.js")
     else:
         text = site_tts.read_text(encoding="utf-8")
-        for marker in ("QUIET_ROUTES", "INTERACTIVE_EXCLUDE", "data-tts-longform", "PotatoLongformTTS"):
+        for marker in ("QUIET_ROUTES", "INTERACTIVE_EXCLUDE", "data-tts-longform", "PotatoLongformTTS", "selectionOnly:quiet", "ttsSelectionOnly"):
             if marker not in text:
                 errors.append(f"app/site-tts.js missing {marker}")
 
@@ -102,7 +96,7 @@ def main() -> int:
         errors.append("missing long-form TTS adapter")
     else:
         text = longform.read_text(encoding="utf-8")
-        for marker in ("MutationObserver", "potato:tts-prepare", "mountSelectionAction", "createPageHighlighter"):
+        for marker in ("MutationObserver", "potato:tts-prepare", "mountSelectionAction", "createPageHighlighter", "selectionOnly"):
             if marker not in text:
                 errors.append(f"long-form adapter missing {marker}")
 
@@ -119,7 +113,7 @@ def main() -> int:
         errors.append("missing TTS drawer")
     else:
         text = drawer.read_text(encoding="utf-8")
-        for marker in ("followReading", "voiceIdentity", "mountSelectionAction", "createPageHighlighter"):
+        for marker in ("followReading", "voiceIdentity", "mountSelectionAction", "createPageHighlighter", "ptts-follow-escape", "setFollowReading"):
             if marker not in text:
                 errors.append(f"TTS drawer missing {marker}")
 
