@@ -424,7 +424,7 @@ def main() -> int:
         if reader_voice_count < 8:
             errors.append(f"Tim/Son narrative wave lost reverent reader voice coverage: {reader_voice_count}")
         reader_scene_count=sum(1 for row in [*narrative_wave.get("new_relations",[]),*narrative_wave.get("enrichments",[])] if row.get("reader_scene"))
-        if reader_scene_count < 12:
+        if reader_scene_count < 20:
             errors.append(f"Tim/Son narrative wave lost chronicle-scene coverage: {reader_scene_count}")
 
     if errors:
