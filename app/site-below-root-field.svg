@@ -1,58 +1,167 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2400" role="img" aria-labelledby="title desc">
-<title id="title">Ground-to-depth root scene</title>
-<desc id="desc">A side-view lower world beginning at grass and topsoil, then descending through circles, spirals, tangled roots, stones and darker earth.</desc>
-<defs>
-  <linearGradient id="root" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0" stop-color="#d5a36f" stop-opacity=".34"/>
-    <stop offset=".46" stop-color="#a26543" stop-opacity=".32"/>
-    <stop offset="1" stop-color="#673e2d" stop-opacity=".18"/>
-  </linearGradient>
-</defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2400" role="img" aria-labelledby="title desc" shape-rendering="crispEdges">
+<title id="title">Pixel roots and underground caverns</title>
+<desc id="desc">A cozy low-resolution RPG-style underground cross-section beginning at grass and topsoil, descending through roots, stones, lantern caverns, water pockets, spirals and a dark lower basin.</desc>
 
-<!-- touchable surface / grass: broken, not a straight ruler -->
-<g fill="#7f925a" fill-opacity=".34">
-  <path d="M0 105 L32 82 L52 111 L88 66 L110 110 L148 76 L172 112 L210 68 L235 108 L270 78 L300 112 L340 62 L364 110 L405 73 L430 112 L470 64 L495 108 L530 80 L560 111 L600 68 L630 110 L665 73 L694 112 L735 65 L760 109 L802 72 L830 112 L868 65 L895 108 L935 77 L962 111 L1000 67 L1025 110 L1064 74 L1090 112 L1130 64 L1160 109 L1195 78 L1220 112 L1260 66 L1288 108 L1330 72 L1358 112 L1400 64 L1425 110 L1465 76 L1490 110 L1530 68 L1560 108 L1600 80 V145 H0 Z"/>
+<!--
+  BELOW SCENE PLATE
+  -----------------
+  This is the underside of the Plane, not a separate wallpaper.
+  It begins with the same grassy soil lip, then turns into a Zelda-like cave/cellar world.
+  Warm lanterns keep it inhabited and cozy; darkness increases with depth.
+-->
+
+<!-- touchable surface / grass -->
+<rect width="1600" height="2400" fill="#26140e"/>
+<rect width="1600" height="126" fill="#4e6d3b"/>
+<g fill="#86b45a">
+  <rect x="0" y="78" width="72" height="48"/><rect x="92" y="62" width="70" height="64"/>
+  <rect x="190" y="84" width="88" height="42"/><rect x="350" y="66" width="78" height="60"/>
+  <rect x="528" y="78" width="84" height="48"/><rect x="744" y="58" width="88" height="68"/>
+  <rect x="990" y="80" width="90" height="46"/><rect x="1200" y="66" width="84" height="60"/>
+  <rect x="1434" y="76" width="104" height="50"/>
 </g>
-<g fill="#b28c5e" fill-opacity=".18">
-  <ellipse cx="180" cy="160" rx="180" ry="68"/><ellipse cx="520" cy="175" rx="230" ry="85"/>
-  <ellipse cx="930" cy="162" rx="245" ry="78"/><ellipse cx="1390" cy="175" rx="225" ry="82"/>
+<rect y="126" width="1600" height="250" fill="#704b32"/>
+<rect y="376" width="1600" height="460" fill="#4e3023"/>
+<rect y="836" width="1600" height="620" fill="#392119"/>
+<rect y="1456" width="1600" height="944" fill="#21120f"/>
+
+<!-- dirt pixels and stones -->
+<g fill="#916647">
+  <rect x="90" y="184" width="42" height="26"/><rect x="214" y="242" width="28" height="20"/>
+  <rect x="410" y="166" width="50" height="30"/><rect x="586" y="286" width="36" height="24"/>
+  <rect x="842" y="198" width="46" height="28"/><rect x="1034" y="274" width="32" height="22"/>
+  <rect x="1284" y="184" width="44" height="28"/><rect x="1462" y="302" width="50" height="30"/>
+</g>
+<g fill="#6f6257">
+  <rect x="154" y="326" width="54" height="32"/><rect x="520" y="432" width="64" height="38"/>
+  <rect x="930" y="348" width="58" height="34"/><rect x="1388" y="506" width="70" height="42"/>
 </g>
 
-<!-- five major roots -->
-<g fill="none" stroke="url(#root)" stroke-linecap="round">
-  <path d="M150 120 C80 300 285 365 175 560 C85 720 300 840 178 1040 C65 1230 300 1400 160 1650 C65 1825 285 2010 150 2410" stroke-width="40"/>
-  <path d="M455 120 C565 285 360 410 490 585 C602 735 390 900 510 1080 C620 1245 385 1440 485 1660 C570 1850 400 2070 455 2410" stroke-width="31"/>
-  <path d="M790 115 C660 300 930 410 785 600 C650 775 930 930 790 1120 C655 1300 925 1480 790 1710 C670 1910 910 2120 790 2415" stroke-width="47"/>
-  <path d="M1120 120 C1015 310 1245 430 1110 620 C990 790 1230 940 1115 1130 C1000 1320 1238 1495 1110 1718 C995 1915 1220 2115 1120 2410" stroke-width="34"/>
-  <path d="M1450 120 C1555 300 1335 430 1462 615 C1578 785 1350 945 1450 1140 C1540 1325 1355 1500 1460 1720 C1550 1910 1360 2120 1450 2410" stroke-width="40"/>
+<!-- main tree roots: broad pixels near surface, narrowing with depth -->
+<g fill="#6f402b">
+  <path d="M690 126h220v220h-52v184h-58v180h-70V530h-40V346h-54V190h54z"/>
+  <path d="M650 250H530v98H420v92H292v110H164v122H76v-98h74v-108h120V362h130v-96h132v-86h118z"/>
+  <path d="M950 256h124v92h122v102h128v108h118v118h86v-98h-70V472h-112V366h-128v-96h-126v-88H950z"/>
+</g>
+<g fill="#9b6340">
+  <rect x="724" y="126" width="42" height="770"/><rect x="824" y="126" width="38" height="760"/>
+  <rect x="498" y="268" width="34" height="194"/><rect x="1054" y="270" width="34" height="202"/>
 </g>
 
 <!-- crossing / entangling roots -->
-<g fill="none" stroke="#c48656" stroke-opacity=".20" stroke-linecap="round">
-  <path d="M-60 470 C170 330 320 610 540 470 C760 330 925 625 1160 460 C1360 320 1510 540 1660 420" stroke-width="15"/>
-  <path d="M-70 850 C145 710 330 980 550 845 C760 710 930 1000 1160 845 C1360 710 1510 920 1670 805" stroke-width="11"/>
-  <path d="M-80 1260 C120 1110 335 1390 545 1250 C755 1110 940 1410 1160 1248 C1370 1095 1520 1340 1680 1210" stroke-width="13"/>
-  <path d="M-70 1740 C130 1590 320 1880 560 1730 C770 1595 940 1900 1160 1730 C1365 1570 1515 1820 1680 1685" stroke-width="10"/>
+<g fill="#75462f">
+  <path d="M0 660h180v-48h132v62h142v-58h154v66h150v54h-214v-44H402v52H246v-56H108v46H0z"/>
+  <path d="M1600 746h-172v-52h-134v60h-148v-54H998v62h-156v56h210v-44h150v52h150v-58h132v46h116z"/>
+  <path d="M0 1180h204v-54h158v66h160v-62h182v70h198v58H660v-46H484v56H320v-60H166v48H0z"/>
+  <path d="M1600 1286h-190v-58h-158v68h-174v-62H886v72H688v62h238v-48h176v58h172v-62h154v48h172z"/>
+</g>
+
+<!-- cave cutouts -->
+<g fill="#15100f">
+  <path d="M0 570h118v-72h126v-92h190v-54h168v110h112v138h-82v114h-130v104H318v80H150v-64H0z"/>
+  <path d="M1600 632h-116v-78h-118v-100h-180v-68h-156v116h-106v136h78v120h124v96h176v72h168v-58h130z"/>
+  <path d="M0 1490h128v-96h148v-108h190v-88h192v132h126v152h-100v132h-150v102H310v84H126v-64H0z"/>
+  <path d="M1600 1572h-132v-92h-152v-114h-194v-86H930v132H806v156h104v126h154v100h214v82h184v-60h138z"/>
+</g>
+
+<!-- stalactites / stalagmites, square RPG cave silhouette -->
+<g fill="#4c2c21">
+  <path d="M0 376h110v116l42-54 44 98 56-126 50 96 60-130 54 118 72-118 58 102 66-102 58 120 82-120 62 106 68-106 58 124 70-124 62 104 72-104 56 118 64-118 54 108 74-108 52 90 78-90v270H0z" opacity=".85"/>
+  <path d="M0 2400v-124l82-112 56 96 72-142 62 118 70-154 64 126 74-148 60 116 78-152 66 130 80-146 62 116 76-142 64 118 82-130 58 108 74-122 62 100 70-114 54 92 72-102 62 84 70-92v482z" opacity=".9"/>
+</g>
+
+<!-- upper left cave room -->
+<g>
+  <rect x="132" y="618" width="330" height="250" fill="#2b1b16"/>
+  <rect x="154" y="640" width="286" height="206" fill="#38251c"/>
+  <rect x="192" y="756" width="156" height="28" fill="#74553a"/>
+  <rect x="214" y="724" width="26" height="32" fill="#bd8a53"/>
+  <rect x="310" y="716" width="24" height="40" fill="#bd8a53"/>
+</g>
+
+<!-- lanterns -->
+<g>
+  <g transform="translate(252 636)">
+    <rect x="0" y="0" width="14" height="54" fill="#5b4636"/><rect x="-18" y="50" width="50" height="56" fill="#b76a34"/>
+    <rect x="-8" y="62" width="30" height="32" fill="#ffd66f"/><rect x="-2" y="68" width="18" height="20" fill="#fff0a8"/>
+  </g>
+  <g transform="translate(1240 676)">
+    <rect x="0" y="0" width="14" height="54" fill="#5b4636"/><rect x="-18" y="50" width="50" height="56" fill="#b76a34"/>
+    <rect x="-8" y="62" width="30" height="32" fill="#ffd66f"/><rect x="-2" y="68" width="18" height="20" fill="#fff0a8"/>
+  </g>
+  <g transform="translate(474 1336)">
+    <rect x="0" y="0" width="14" height="54" fill="#5b4636"/><rect x="-18" y="50" width="50" height="56" fill="#b76a34"/>
+    <rect x="-8" y="62" width="30" height="32" fill="#ffd66f"/><rect x="-2" y="68" width="18" height="20" fill="#fff0a8"/>
+  </g>
+  <g transform="translate(1124 1510)">
+    <rect x="0" y="0" width="14" height="54" fill="#5b4636"/><rect x="-18" y="50" width="50" height="56" fill="#b76a34"/>
+    <rect x="-8" y="62" width="30" height="32" fill="#ffd66f"/><rect x="-2" y="68" width="18" height="20" fill="#fff0a8"/>
+  </g>
+</g>
+
+<!-- underground water pockets -->
+<g>
+  <rect x="256" y="982" width="396" height="122" fill="#315f67"/>
+  <rect x="286" y="960" width="334" height="46" fill="#4f8e91"/>
+  <rect x="348" y="976" width="182" height="14" fill="#9ac8b9"/>
+  <rect x="960" y="1060" width="420" height="136" fill="#2d5b63"/>
+  <rect x="996" y="1038" width="350" height="46" fill="#4d888d"/>
+  <rect x="1058" y="1054" width="190" height="14" fill="#97c4b7"/>
+</g>
+
+<!-- stepping ledges -->
+<g fill="#72513a">
+  <rect x="70" y="930" width="244" height="42"/><rect x="426" y="866" width="220" height="42"/>
+  <rect x="742" y="936" width="214" height="42"/><rect x="1180" y="900" width="270" height="42"/>
+  <rect x="160" y="1268" width="272" height="42"/><rect x="616" y="1338" width="242" height="42"/>
+  <rect x="1014" y="1286" width="280" height="42"/>
+</g>
+<g fill="#9a7652">
+  <rect x="92" y="918" width="92" height="16"/><rect x="468" y="854" width="86" height="16"/>
+  <rect x="774" y="924" width="88" height="16"/><rect x="1220" y="888" width="104" height="16"/>
 </g>
 
 <!-- loops / spirals / stones become denser with depth -->
-<g fill="none" stroke="#d39460" stroke-linecap="round">
-  <path d="M560 620 C635 540 755 580 730 675 C704 768 565 745 580 650 C590 580 700 555 768 630 C842 710 798 830 690 846" stroke-opacity=".24" stroke-width="10"/>
-  <path d="M1030 1000 C1110 910 1235 960 1190 1060 C1150 1150 1025 1115 1048 1028 C1068 950 1170 938 1230 1010 C1280 1070 1250 1175 1175 1220" stroke-opacity=".20" stroke-width="9"/>
-  <path d="M315 1435 C390 1350 505 1400 475 1490 C444 1580 315 1545 335 1460 C350 1395 450 1378 510 1445" stroke-opacity=".18" stroke-width="8"/>
-  <path d="M760 1850 C850 1740 1010 1795 985 1910 C958 2035 785 2005 800 1888 C814 1790 952 1760 1040 1845" stroke-opacity=".15" stroke-width="12"/>
+<g fill="none" stroke="#c28757" stroke-width="14">
+  <path d="M548 1110h120v-42h84v94h-48v72H602v-40h-54v-84h44"/>
+  <path d="M1034 1362h138v-48h92v104h-52v76h-116v-42h-62v-90h46"/>
+  <path d="M348 1628h126v-44h88v98h-50v74H404v-40h-56v-88h44"/>
+  <path d="M790 1884h148v-52h98v112h-56v82H854v-46h-64v-96h48"/>
 </g>
 
-<g fill="none" stroke="#9e806d" stroke-opacity=".11">
-  <circle cx="265" cy="730" r="58" stroke-width="9"/><circle cx="905" cy="520" r="71" stroke-width="9"/>
-  <circle cx="1370" cy="1180" r="64" stroke-width="8"/><ellipse cx="650" cy="1570" rx="96" ry="61" stroke-width="8"/>
-  <circle cx="320" cy="2050" r="42" stroke-width="7"/><circle cx="1260" cy="2140" r="52" stroke-width="8"/>
+<!-- deeper cave chambers -->
+<g fill="#160d0c">
+  <rect x="90" y="1598" width="404" height="360"/>
+  <rect x="112" y="1620" width="360" height="316" fill="#241511"/>
+  <rect x="1070" y="1666" width="420" height="328"/>
+  <rect x="1092" y="1688" width="376" height="284" fill="#221410"/>
 </g>
+
+<!-- forge / fire hint -->
+<g>
+  <rect x="220" y="1822" width="174" height="70" fill="#503223"/>
+  <rect x="248" y="1778" width="116" height="56" fill="#7d4226"/>
+  <rect x="276" y="1748" width="60" height="54" fill="#d1662d"/>
+  <rect x="290" y="1724" width="32" height="46" fill="#f6a33d"/>
+  <rect x="298" y="1710" width="16" height="30" fill="#ffe576"/>
+</g>
+
+<!-- lower stream -->
+<path d="M520 1988h560v64h-94v66h-120v68H734v70H602v144H470v-174h104v-74h114v-70h114v-64H520z" fill="#244b51"/>
+<path d="M566 2004h446v18h-86v64h-106v68H698v70H584v116h-54v-128h96v-74h112v-70h110v-64z" fill="#4d8887"/>
 
 <!-- depth voids -->
-<g fill="#000" fill-opacity=".12">
-  <ellipse cx="160" cy="1120" rx="90" ry="54"/><ellipse cx="590" cy="1320" rx="115" ry="68"/>
-  <ellipse cx="1000" cy="1500" rx="125" ry="72"/><ellipse cx="1420" cy="1840" rx="110" ry="70"/>
-  <ellipse cx="760" cy="2200" rx="160" ry="90"/>
+<g fill="#090707">
+  <rect x="0" y="2200" width="226" height="200"/><rect x="1374" y="2180" width="226" height="220"/>
+  <rect x="634" y="2280" width="332" height="120"/>
+</g>
+
+<!-- last visible root threads -->
+<g fill="#6d402d">
+  <rect x="704" y="760" width="24" height="1530"/><rect x="862" y="748" width="22" height="1540"/>
+  <rect x="438" y="1180" width="18" height="900"/><rect x="1158" y="1200" width="18" height="910"/>
+</g>
+<g fill="#b07045">
+  <rect x="712" y="820" width="8" height="1390"/><rect x="868" y="820" width="8" height="1400"/>
 </g>
 </svg>
