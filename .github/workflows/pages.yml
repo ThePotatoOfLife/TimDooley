@@ -194,7 +194,7 @@ jobs:
             fetch_live "${base}${route}" ".live-smoke/${safe_name}.html"
           done
 
-          for asset in             "app/site-elevator.js"             "app/site-elevator.css"             "data/house/elevator-spatial-projection.json" \
+          for asset in             "app/site-elevator.js"             "app/site-elevator.css"             "app/site-tree-perspective.svg"             "data/house/elevator-spatial-projection.json" \
             "knowledge/core/spudlight-field-manual.json" \
             "knowledge/core/lower-field-orientation.json" \
             "knowledge/world/lower-field-population-severity-estimate.json" \
@@ -205,6 +205,14 @@ jobs:
           done
 
           python - <<'PY'
+          from pathlib import Path
+          elevator_css=Path(".live-smoke/app_site-elevator.css").read_text(encoding="utf-8",errors="replace")
+          tree_svg=Path(".live-smoke/app_site-tree-perspective.svg").read_text(encoding="utf-8",errors="replace")
+          assert 'html[data-site-floor="plane"]' in elevator_css, "live elevator CSS missing Plane canvas"
+          assert 'body:not(.lower-layer-page)::before' in elevator_css, "live elevator CSS missing body-mounted tree layer"
+          assert 'site-tree-perspective.svg?v=' in elevator_css, "live elevator CSS missing fingerprinted tree artwork"
+          assert 'light rising from broad roots' in tree_svg, "live tree artwork is stale or incomplete"
+
           from pathlib import Path
           below=Path(".live-smoke/below_.html").read_text(encoding="utf-8",errors="replace")
           shadow=Path(".live-smoke/shadow-farm_.html").read_text(encoding="utf-8",errors="replace")
