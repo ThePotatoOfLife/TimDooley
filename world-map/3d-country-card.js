@@ -204,10 +204,18 @@ function governmentRows(record) {
   return rows.slice(0, 3);
 }
 
+async function ensureContextModules() {
+  await Promise.all([
+    window.__potatoAtlasLoadModule?.('System Intelligence', './3d-gateways.js'),
+    window.__potatoAtlasLoadModule?.('Functional Chains', './3d-chain-explorer.js'),
+    window.__potatoAtlasLoadModule?.('Infrastructure Context', './3d-infrastructure.js'),
+  ]);
+}
 function activateTab(tab) {
   const card = document.getElementById('atlasCountryCard');
   if (!card || !['overview','context','connections'].includes(tab)) return;
   activeTab = tab;
+  if (tab === 'context') void ensureContextModules();
   card.querySelectorAll('[data-country-tab]').forEach(button => {
     const selected = button.dataset.countryTab === tab;
     button.classList.toggle('active', selected);
@@ -217,7 +225,13 @@ function activateTab(tab) {
 }
 
 function openInspector() { document.getElementById('atlasApp')?.classList.remove('panel-collapsed'); }
-async function showDetails() { selection.inspect?.(); openInspector(); }
+async function showDetails() {
+  openInspector();
+  if (!window.__potatoAtlasEvidence) {
+    await window.__potatoAtlasLoadModule?.('Evidence', './3d-evidence.js');
+  }
+  selection.inspect?.();
+}
 async function showStatistics() {
   const code = selection.current?.activeCode || selection.current?.code;
   if (!code) return;
@@ -247,7 +261,12 @@ async function showPath() {
 async function showImpact() {
   const code = selection.current?.activeCode || selection.current?.code;
   if (!code) return;
-  if (!window.__potatoAtlasImpactTrace && window.__potatoAtlasLoadModule) await window.__potatoAtlasLoadModule('Impact Trace', './3d-impact-trace.js');
+  if (!window.__potatoAtlasImpactTrace && window.__potatoAtlasLoadModule) {
+    await window.__potatoAtlasLoadModule('Impact Trace', './3d-impact-trace.js');
+  }
+  if (!window.__potatoAtlasImpactActions && window.__potatoAtlasLoadModule) {
+    await window.__potatoAtlasLoadModule('Impact Actions', './3d-impact-actions.js');
+  }
   await window.__potatoAtlasImpactTrace?.showEntity?.(code);
 }
 function syncTraceAction() {
