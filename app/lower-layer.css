@@ -121,15 +121,24 @@ body.lower-layer-page::after{
   width:min(1440px,100vw);
   transform:translateX(-50%);
   pointer-events:none;
-  opacity:.38;
+  opacity:.46;
   background:
-    linear-gradient(96deg,transparent 0 49.1%,rgba(138,97,56,.24) 49.45% 50.35%,transparent 50.7%) 4% 90px/210px 1050px repeat-y,
-    linear-gradient(83deg,transparent 0 49.2%,rgba(122,84,48,.20) 49.55% 50.3%,transparent 50.65%) 26% 390px/260px 1220px repeat-y,
-    linear-gradient(101deg,transparent 0 49.1%,rgba(152,107,61,.21) 49.5% 50.4%,transparent 50.75%) 54% 190px/230px 1120px repeat-y,
-    linear-gradient(78deg,transparent 0 49.2%,rgba(110,77,46,.19) 49.55% 50.35%,transparent 50.7%) 79% 480px/280px 1280px repeat-y,
-    linear-gradient(94deg,transparent 0 49.1%,rgba(147,103,58,.18) 49.5% 50.4%,transparent 50.75%) 96% 260px/190px 1080px repeat-y,
-    repeating-linear-gradient(180deg,transparent 0 410px,rgba(111,79,49,.055) 411px 413px,transparent 414px 835px);
-  mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
+    /* long tap roots */
+    linear-gradient(96deg,transparent 0 48.7%,rgba(67,34,21,.36) 49%,rgba(165,94,51,.34) 49.35% 50.2%,rgba(73,37,22,.31) 50.45%,transparent 50.8%) 4% 90px/210px 1110px repeat-y,
+    linear-gradient(83deg,transparent 0 48.9%,rgba(61,31,20,.31) 49.15%,rgba(146,81,45,.30) 49.5% 50.15%,rgba(67,34,21,.28) 50.4%,transparent 50.75%) 26% 390px/260px 1290px repeat-y,
+    linear-gradient(101deg,transparent 0 48.8%,rgba(70,35,21,.34) 49.1%,rgba(176,97,52,.32) 49.45% 50.25%,rgba(73,37,22,.30) 50.5%,transparent 50.8%) 54% 190px/230px 1180px repeat-y,
+    linear-gradient(78deg,transparent 0 48.9%,rgba(59,30,20,.30) 49.15%,rgba(140,78,45,.27) 49.5% 50.18%,rgba(64,33,21,.27) 50.42%,transparent 50.75%) 79% 480px/280px 1350px repeat-y,
+    linear-gradient(94deg,transparent 0 48.8%,rgba(66,34,21,.32) 49.1%,rgba(168,92,49,.29) 49.45% 50.2%,rgba(70,35,21,.28) 50.45%,transparent 50.78%) 96% 260px/190px 1140px repeat-y,
+    /* irregular feeder roots */
+    linear-gradient(137deg,transparent 0 49.2%,rgba(170,94,51,.15) 49.45% 50%,transparent 50.3%) 10% 330px/165px 360px repeat-y,
+    linear-gradient(43deg,transparent 0 49.2%,rgba(150,80,46,.14) 49.45% 50%,transparent 50.3%) 31% 610px/190px 420px repeat-y,
+    linear-gradient(132deg,transparent 0 49.2%,rgba(184,101,54,.13) 49.45% 50%,transparent 50.3%) 57% 470px/180px 390px repeat-y,
+    linear-gradient(39deg,transparent 0 49.2%,rgba(144,77,44,.13) 49.45% 50%,transparent 50.3%) 82% 720px/170px 430px repeat-y,
+    /* pockets and warmer mineral seams */
+    radial-gradient(ellipse at 15% 18%,rgba(0,0,0,.22) 0 28px,transparent 52px) 0 0/430px 610px repeat,
+    radial-gradient(ellipse at 77% 46%,rgba(0,0,0,.18) 0 36px,transparent 62px) 0 0/520px 720px repeat,
+    repeating-linear-gradient(180deg,transparent 0 370px,rgba(158,79,42,.045) 371px 373px,transparent 374px 790px);
+  mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
 }
 
 /* A restrained block/stone texture behind all four lower pages. */
