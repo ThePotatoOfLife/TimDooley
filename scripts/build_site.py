@@ -289,11 +289,11 @@ def generate_branch_pages(manifest, contexts, core_index, bridge):
         related = [c for c in contexts.get("clusters", []) if bid in c.get("branches", [])]
         body = []
         if children:
-            body.append("<section><h2>Canonical substructure</h2><div class=\"chips\">" + "".join(f"<span class=\"chip\">{esc(x)}</span>" for x in children) + "</div></section>")
+            body.append("<section><h2>Key subtopics</h2><div class=\"chips\">" + "".join(f"<span class=\"chip\">{esc(x)}</span>" for x in children) + "</div></section>")
         if related:
-            body.append("<section><h2>Contextual constellations</h2><ul>" + "".join(f"<li><a href=\"{esc(BASE_URL + '/context/' + slug(c['id']) + '/')}\">{esc(c['title'])}</a> — {esc(c.get('summary', ''))}</li>" for c in related) + "</ul></section>")
+            body.append("<section><h2>Related contexts</h2><ul>" + "".join(f"<li><a href=\"{esc(BASE_URL + '/context/' + slug(c['id']) + '/')}\">{esc(c['title'])}</a> — {esc(c.get('summary', ''))}</li>" for c in related) + "</ul></section>")
         if records:
-            body.append("<section><h2>Canonical records</h2><ul>" + "".join(record_link(p, record_id_by_path) for p in records) + "</ul></section>")
+            body.append("<section><h2>Source records</h2><ul>" + "".join(record_link(p, record_id_by_path) for p in records) + "</ul></section>")
         parent_label, parent_path = parent_for_branch(bid, bridge)
         canonical = f"{BASE_URL}/topics/{slug(bid)}/"
         urls.append(write_page(f"topics/{slug(bid)}", page_shell(title, desc, canonical, "".join(body), page_type="CollectionPage", about=[title, *children], parent_label=parent_label, parent_path=parent_path)))
@@ -309,13 +309,13 @@ def generate_context_pages(contexts, core_index):
         body = []
         concepts = c.get("concepts", [])
         if concepts:
-            body.append("<section><h2>Concepts in this constellation</h2><div class=\"chips\">" + "".join(f"<span class=\"chip\">{esc(x)}</span>" for x in concepts) + "</div></section>")
+            body.append("<section><h2>Ideas in this context</h2><div class=\"chips\">" + "".join(f"<span class=\"chip\">{esc(x)}</span>" for x in concepts) + "</div></section>")
         if c.get("epistemic_mix"):
-            body.append("<section><h2>Epistemic layers</h2><p>" + esc(", ".join(c["epistemic_mix"])) + "</p></section>")
+            body.append("<section><h2>Kinds of evidence and interpretation</h2><p>" + esc(", ".join(c["epistemic_mix"])) + "</p></section>")
         if c.get("branches"):
-            body.append("<section><h2>Connected branches</h2><ul>" + "".join(f"<li><a href=\"{esc(BASE_URL + '/topics/' + slug(b) + '/')}\">{esc(b)}</a></li>" for b in c["branches"]) + "</ul></section>")
+            body.append("<section><h2>Connected subjects</h2><ul>" + "".join(f"<li><a href=\"{esc(BASE_URL + '/topics/' + slug(b) + '/')}\">{esc(b)}</a></li>" for b in c["branches"]) + "</ul></section>")
         if c.get("records"):
-            body.append("<section><h2>Records carrying this context</h2><ul>" + "".join(record_link(p, record_id_by_path) for p in c["records"]) + "</ul></section>")
+            body.append("<section><h2>Source records for this context</h2><ul>" + "".join(record_link(p, record_id_by_path) for p in c["records"]) + "</ul></section>")
         canonical = f"{BASE_URL}/context/{slug(c['id'])}/"
         urls.append(write_page(f"context/{slug(c['id'])}", page_shell(title, desc, canonical, "".join(body), page_type="CollectionPage", about=concepts, parent_label="Explore", parent_path="explore/")))
     return urls
