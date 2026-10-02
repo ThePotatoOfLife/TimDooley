@@ -175,13 +175,13 @@ def question_page(entry):
     # Human reader: answer the question before exposing archive machinery.
     body = f'<section class="question-answer"><h2>Answer</h2><p>{esc(short or deep)}</p></section>'
     if deep and deep != short:
-        body += f'<section class="question-deep"><h2>What that means</h2><p>{esc(deep)}</p></section>'
+        body += f'<section class="question-deep"><h2>What this means</h2><p>{esc(deep)}</p></section>'
 
     context_bits = []
     if entry.get("dates"):
         context_bits.append("Dates: " + " · ".join(map(str, entry["dates"])))
     if entry.get("epistemic_class"):
-        context_bits.append("Archive status: " + " · ".join(map(str, entry["epistemic_class"])))
+        context_bits.append("Type of claim / evidence: " + " · ".join(map(str, entry["epistemic_class"])))
     if context_bits:
         body += '<p class="question-context"><strong>Context:</strong> ' + esc(" · ".join(context_bits)) + "</p>"
 
@@ -229,7 +229,7 @@ def build_questions(entries):
         items = "".join(f'<li><a href="{BASE_URL}/questions/{slug(e.get("id", e.get("question", "")))}/">{esc(e.get("question", ""))}</a></li>' for e in families[family])
         write(f"questions/{family}/index.html", shell(f"{label} questions", f"Canonical {label.lower()} questions across Tim Dooley, religion, philosophy, science, world systems and the Potato of Life archive.", f"{BASE_URL}/questions/{family}/", f"<section><ul>{items}</ul></section>"))
         urls.append(f"{BASE_URL}/questions/{family}/")
-    write("questions/index.html", shell("Questions across the Potato of Life archive", f"A crawlable question index containing {len(entries)} canonical answers, organized by natural search intent and routed into the five main reader branches.", f"{BASE_URL}/questions/", '<section class="grid">' + "".join(cards) + "</section>"))
+    write("questions/index.html", shell("Questions across the Potato of Life archive", f"A question index containing {len(entries)} answers, organized by natural search intent and connected to the main reader areas.", f"{BASE_URL}/questions/", '<section class="grid">' + "".join(cards) + "</section>"))
     urls.append(f"{BASE_URL}/questions/")
     return urls, families
 
@@ -296,7 +296,7 @@ def build_az(entries):
             seen.add(term.lower())
             items.append(f'<li><a href="{esc(target_url)}">{esc(term)}</a></li>')
         sections.append(f'<section id="{quote(letter)}"><h2>{esc(letter)}</h2><ul>{"".join(items)}</ul></section>')
-    write("index-a-z/index.html", shell("Tim Dooley / Potato of Life A–Z Index", "Alphabetical discovery index for names, aliases, concepts, symbols, search terms and canonical questions across the Potato of Life archive.", f"{BASE_URL}/index-a-z/", "".join(sections)))
+    write("index-a-z/index.html", shell("Tim Dooley / Potato of Life A–Z Index", "Alphabetical index for names, aliases, concepts, symbols, search terms and questions across the Potato of Life archive.", f"{BASE_URL}/index-a-z/", "".join(sections)))
     return f"{BASE_URL}/index-a-z/"
 
 
