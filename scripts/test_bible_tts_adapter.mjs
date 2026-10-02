@@ -5,23 +5,28 @@ import adapter from '../app/bible-tts-adapter.js';
 const payload = adapter.buildBiblePayload({
   id:'rel-7',
   title:'Seed / Return',
+  scene:'At that time the Son entered the scene.',
   project:'Project anchor. Project quote.',
   scripture:'John 12 text.',
+  movement:'House becomes Way, then abiding.',
   why:'The grain pattern connects the two.',
   mismatch:'Where it breaks: roles differ.',
   selection:'grain pattern'
 });
 
 assert.equal(payload.id,'rel-7');
-assert.deepEqual(payload.sections.map(x=>x.id),['both','project','scripture','why','selection']);
+assert.deepEqual(payload.sections.map(x=>x.id),['both','scene','project','scripture','movement','why','selection']);
+assert.match(payload.sections[0].text,/At that time/);
 assert.match(payload.sections[0].text,/Project anchor/);
 assert.match(payload.sections[0].text,/John 12 text./);
 assert.match(payload.sections[0].text,/roles differ/);
-assert.equal(payload.sections[1].text,'Project anchor. Project quote.');
-assert.equal(payload.sections[2].text,'John 12 text.');
-assert.match(payload.sections[3].text,/grain pattern/);
-assert.match(payload.sections[3].text,/roles differ/);
-assert.equal(payload.sections[4].text,'grain pattern');
+assert.equal(payload.sections[1].text,'At that time the Son entered the scene.');
+assert.equal(payload.sections[2].text,'Project anchor. Project quote.');
+assert.equal(payload.sections[3].text,'John 12 text.');
+assert.match(payload.sections[4].text,/House becomes Way/);
+assert.match(payload.sections[5].text,/grain pattern/);
+assert.match(payload.sections[5].text,/roles differ/);
+assert.equal(payload.sections[6].text,'grain pattern');
 
 const bible = fs.readFileSync(new URL('../traditions/bible/index.html', import.meta.url),'utf8');
 for (const marker of [
@@ -48,7 +53,9 @@ assert.ok(adapterSource.includes("host.dataset.ttsPrimary=''"),'Bible page-level
 assert.ok(adapterSource.includes('selectionInsideActive'),'Bible adapter must constrain selection reading to the active relation');
 assert.ok(adapterSource.includes('mountSelectionAction'),'Bible comparator must use the shared read-selection action');
 assert.ok(adapterSource.includes('createPageHighlighter'),'Bible comparator must use shared actual-page word highlighting');
+assert.ok(adapterSource.includes("event.sectionId==='scene'"),'Bible word highlighting must target the chronicle scene for Scene scope');
 assert.ok(adapterSource.includes("event.sectionId==='project'"),'Bible word highlighting must target the project side for Project scope');
+assert.ok(adapterSource.includes("event.sectionId==='movement'"),'Bible word highlighting must target the continuous sequence for Movement scope');
 assert.ok(adapterSource.includes("event.sectionId==='scripture'"),'Bible word highlighting must target the scripture side for Scripture scope');
 assert.ok(adapterSource.includes("event.sectionId==='why'"),'Bible word highlighting must map the Why scope back to explanation/boundary text');
 assert.ok(adapterSource.includes('pageHighlighter.clear()'),'Bible page highlighting must clear at speech end or relation change');
