@@ -11,7 +11,6 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 STYLE = ROOT / "app" / "style.css"
 SITE_SYSTEM = ROOT / "app" / "site-system.css"
-READER = ROOT / "app" / "reader.css"
 HOME = ROOT / "index.html"
 
 MIGRATED_SHELL_REQUIREMENTS = {
@@ -119,16 +118,13 @@ for path in html_files:
     if "var(--site-green" in text or "--site-green" in text:
         errors.append(f"{path.relative_to(ROOT)} still references retired --site-green")
 
+EXPLORE_PAGE = ROOT / "explore" / "index.html"
 for path in html_files:
     text = path.read_text(encoding="utf-8", errors="ignore")
-    if "app/style.css" not in text and "../app/style.css" not in text and "../../app/style.css" not in text:
-        continue
-    classes = re.findall(r'class=["\']([^"\']+)["\']', text)
-    uses_standalone_legacy_nav = any("nav" in value.split() for value in classes)
-    if uses_standalone_legacy_nav:
-        protected = "reader.css" in text or "layout-guard.css" in text or "page-nav" in text
-        if not protected:
-            errors.append(f"{path.relative_to(ROOT)} uses legacy .nav with shared app CSS but no reader/layout guard")
+    if "app/style.css" in text and path != EXPLORE_PAGE:
+        errors.append(
+            f"{path.relative_to(ROOT)} loads app/style.css; archive application CSS is owned only by explore/index.html"
+        )
 
 if warnings:
     print("CSS namespace warnings:")

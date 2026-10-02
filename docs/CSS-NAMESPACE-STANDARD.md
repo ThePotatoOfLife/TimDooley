@@ -101,13 +101,13 @@ Timeline, Bible comparison, archive/explorer, and World Map/full-screen tools ma
 
 Never force `.page` article-width behavior onto a full-screen map or application surface merely to make the CSS look more uniform.
 
-## Compatibility guard
+## Compatibility policy
 
-`app/reader.css` imports The former `app/layout-guard.css` compatibility layer has been retired because static readers no longer load archive layout CSS.
+The former `app/layout-guard.css` layer is retired. Static readers no longer need a defensive guard because they do not load the Explore/archive application stylesheet.
 
-The guard exists only for older static readers that still use local `.nav` / `.grid` names. The active archive sidebar does not depend on it; `.archive-nav` is owned directly by `app/style.css`.
+`app/style.css` belongs only to `/explore/`. `app/reader.css` may provide reusable reader components, but it must not recreate archive layout or act as a compatibility escape hatch for generic structural selectors.
 
-This is a compatibility layer, not permission to keep creating generic structural selectors.
+If an older reader still uses local `.nav`, `.grid`, or similar names, keep those rules page-local until the page is migrated to an explicit `.page-*` or module namespace.
 
 ## Automated check
 
@@ -119,14 +119,13 @@ python scripts/check_css_namespace_collisions.py
 
 The check verifies:
 
-- the layout guard exists;
-- `reader.css` loads it;
+- only `/explore/` loads `app/style.css`;
 - `app/site-system.css` exists and does not own layout through risky generic selectors;
 - all six migrated primary pages retain their required shared-shell markers;
 - migrated local styles do not silently recreate the canonical palette in local `:root` blocks;
 - the homepage archive uses `.archive-nav` if an archive explorer is present;
 - `app/style.css` does not reintroduce global `.nav` layout behavior;
-- static pages that combine shared app CSS with legacy `.nav` are protected;
+- static pages cannot accidentally opt back into archive application layout;
 - other risky global structural selectors are surfaced for review.
 
 CI runs the same check.

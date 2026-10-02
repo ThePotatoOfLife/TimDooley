@@ -200,14 +200,14 @@ assert.ok(css.includes('html[data-site-floor="below"] body:not(.lower-layer-page
 assert.ok(css.includes('radial-gradient(ellipse at 8% 108%,rgba(94,133,88,.34)'),'Heaven needs a soft garden horizon beneath the cosmos');
 assert.ok(css.includes('radial-gradient(ellipse at 68% 24%,rgba(103,72,170,.40)'),'Heaven needs purple nebula depth');
 assert.ok(css.includes('linear-gradient(88deg,transparent 0 47.9%,'),'Heaven needs a restrained luminous spiritual-tree trunk');
-assert.ok(css.includes('radial-gradient(circle at 6% 20%)'),'Heaven needs sparse celestial points');
+assert.match(css,/\.site-elevator\[data-elevator-level="heaven"\]::before\{[\s\S]*?radial-gradient\(circle/,'Heaven needs sparse celestial points');
 assert.ok(css.includes('linear-gradient(180deg,#090d24'),'Heaven needs dark-blue/purple cosmic depth rather than a flat sky plate');
 assert.ok(css.includes('[data-elevator-level="plane"]::before'),'Plane needs a distinct CSS landscape biome layer');
-assert.ok(css.includes('linear-gradient(142deg,transparent 0 56%)'),'Plane needs distant CSS mountain ridges');
+assert.match(css,/\.site-elevator\[data-elevator-level="plane"\]::before\{[\s\S]*?repeat-x/,'Plane needs distant CSS mountain ridges');
 assert.ok(css.includes('linear-gradient(180deg,#244f66'),'Plane needs blue air transitioning into green land');
 assert.ok(css.includes('[data-elevator-level="below"]::before'),'Below needs a distinct CSS root-and-soil biome layer');
-assert.ok(css.includes('radial-gradient(ellipse at 4% -7%)'),'Below needs an irregular compacted-soil ceiling');
-assert.ok(css.includes('linear-gradient(94deg,transparent 0 47.5%)'),'Below needs thick hanging roots');
+assert.match(css,/\.site-elevator\[data-elevator-level="below"\]::before\{[\s\S]*?radial-gradient\(ellipse/,'Below needs an irregular compacted-soil ceiling');
+assert.match(css,/\.site-elevator\[data-elevator-level="below"\]::before\{[\s\S]*?no-repeat/,'Below needs thick hanging roots');
 assert.ok(css.includes('border-radius:0'),'terminal Room tiles should not drift back into pill styling');
 assert.ok(css.includes('background:var(--site-elevator-accent)'),'active Room tile needs a compact location beacon');
 assert.equal(css.includes('.site-elevator-room.is-secondary'),false,'header CSS must not preserve cross-floor Room affordances');

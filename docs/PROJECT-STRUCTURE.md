@@ -149,10 +149,10 @@ Shared CSS must not use generic structural names to own unrelated layouts.
 
 - `.archive-nav` belongs to the interactive archive sidebar.
 - `.page-nav` is the preferred static-reader navigation class.
-- `.quicknav` belongs to homepage destination cards.
+- `.home-*` classes belong to homepage-only composition.
 - `.tl-*` belongs to the timeline module.
 
-Older static pages may still use local `.nav` or `.grid`; `app/layout-guard.css` protects those until they are progressively renamed. `scripts/check_css_namespace_collisions.py` prevents global `.nav` layout behavior from returning.
+Older static pages may still use local `.nav` or `.grid`, but they no longer load archive application CSS. `app/style.css` is reserved for `/explore/`, while `scripts/check_css_namespace_collisions.py` prevents generic archive layout rules from leaking back into public readers.
 
 ## The public reading architecture
 
