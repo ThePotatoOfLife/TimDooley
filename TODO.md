@@ -1396,3 +1396,12 @@ Shared implementation: `app/terrain-circle.css`
 
 - [x] Spoken-continuity pass: ordinary dispute through Law, loaf through Economy, recurring conflict through Axis, source descent through Below, lost traveler through North.
 - [ ] Next connective scenes: guest/host House, correction in Spirit, disconfirming Below case, grief Axis case, due-process Law case, recalibration North case.
+
+
+### Voice discernment / fit-the-place pass
+- [x] Add flexible editorial modes instead of making every section teach in the same voice.
+- [x] Potato: restrained mythic interlude.
+- [x] Tim: ordinary-scale, non-symbolizing interlude.
+- [x] House: hospitality/privacy/exit scene.
+- [x] Science: plain uncertainty / “we do not know yet” passage.
+- [ ] Continue tone-fit audit across Religion, Philosophy, Story, Timeline, Great Book, Below, World Systems, Body and Works.

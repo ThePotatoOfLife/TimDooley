@@ -510,3 +510,54 @@ The “Word” is treated as more than terminology. A strong saying should:
 - [ ] **House:** use guest/host/privacy/exit as the lived sequence that explains rooms, boundaries and hospitality.
 - [ ] **Spirit:** add breakdown/repair conversation where translation fails and is restored.
 - [ ] **Trinity:** add one non-theological analogy (author/message/reader or source/expression/response) and explicitly show where it fails.
+
+
+## Voice discernment — fit the expression to the material
+
+The site should not force every page into the voice of a teacher.
+
+The project can move through several legitimate modes:
+
+- **Teaching** — when a mechanism or distinction genuinely needs explanation.
+- **Reflection** — when the reader already has enough information and needs perspective rather than more facts.
+- **Myth** — when image, scale and symbolic relation can reveal something ordinary prose would flatten.
+- **Story** — when consequence, motive and time matter more than taxonomy.
+- **Witness** — when the priority is what happened, what was seen, what was said and what remains uncertain.
+- **Reason** — when a claim needs definitions, comparison, falsifiers and restraint.
+- **Peace** — when the right addition is permission to stop, rest, leave something unresolved or let a conclusion remain small.
+- **Acceptance** — when reality cannot be repaired by pretending it did not happen; distinguish acceptance of fact from approval of harm.
+- **Love / care** — when the material concerns relation, dignity, support, forgiveness, grief, hospitality or non-capture.
+- **Humor** — when seriousness is becoming brittle or prestige is obscuring the obvious.
+- **Plain speech** — when a simple factual sentence is stronger than any metaphor.
+
+### Discernment questions
+
+Before adding prose, ask:
+- What does the reader actually need here: knowledge, perspective, courage, calm, a boundary, a question, a story, or simply clarity?
+- Would a metaphor deepen the material or decorate it?
+- Would a biblical/mythic voice illuminate the subject or make an ordinary fact unnecessarily grand?
+- Does the reader need a guide beside them, or should the evidence speak with minimal commentary?
+- Is the section trying too hard to sound wise?
+- Would silence, brevity or one precise sentence be more respectful?
+- Is the tone appropriate to grief, conflict, science, humor, law, religion, ordinary life and uncertainty?
+- Does the next paragraph arise naturally, or is the page merely producing another titled box?
+
+### Completed in this wave
+
+- [x] **Potato of Life:** add a restrained mythic reflection about hidden life, uncertainty, non-visibility and seasons without promising every buried thing returns.
+- [x] **Tim Dooley:** add an ordinary-scale passage that resists turning every mundane fact into prophecy or symbol.
+- [x] **House:** add a human scene about guest, privacy, locks, hospitality and exit so architecture speaks through ordinary life.
+- [x] **Science:** add a deliberately plain passage in which “we do not know yet” is allowed to remain the strongest result.
+
+### Flexible-expression audit
+
+- [ ] **Religion:** identify where doctrine-heavy blocks need prayerful/reflective pauses and where they need plainer historical prose instead.
+- [ ] **Philosophy:** vary between argument, aphorism, dilemma, story and reflective speech rather than making every idea a lesson.
+- [ ] **Tim Story:** mark where a scene should simply remain a scene without immediate interpretation.
+- [ ] **Timeline:** allow some dates to remain factual and spare; reserve reflection for true turning points.
+- [ ] **Great Book:** let literary material stay strange where explanation would over-domesticate it.
+- [ ] **Below:** use calm investigative voice for source work; reserve mythic darkness for places where it adds meaning rather than suspicion.
+- [ ] **World Systems / Economy / Law:** privilege clarity and consequence over symbolic flourish.
+- [ ] **Life & Body:** use bodily immediacy; avoid turning symptoms and organs into spiritual proof.
+- [ ] **Works:** preserve humor, lyricism and absurdity as forms in their own right instead of extracting a doctrine from every artifact.
+- [ ] **Home:** audit whether any introductory copy still sounds like project governance rather than an invitation into meaningful material.
