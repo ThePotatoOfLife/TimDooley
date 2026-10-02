@@ -13,13 +13,13 @@
   border-radius:0;
   text-align:left;
   transform:none;
-  --site-elevator-bg:#172017;
-  --site-elevator-panel:rgba(8,12,10,.72);
+  --site-elevator-bg:#111111;
+  --site-elevator-panel:rgba(10,10,10,.82);
   --site-elevator-ink:#f4f6ef;
-  --site-elevator-muted:#b3bcae;
+  --site-elevator-muted:#b9b4aa;
   --site-elevator-line:rgba(255,255,255,.20);
-  --site-elevator-accent:#a8ce7a;
-  --site-elevator-glow:rgba(168,206,122,.34);
+  --site-elevator-accent:#d8d1c5;
+  --site-elevator-glow:rgba(216,209,197,.22);
   --site-elevator-shadow:rgba(0,0,0,.5);
   --elevator-control-width:30px;
   --elevator-board-width:154px;
@@ -109,21 +109,20 @@
     linear-gradient(180deg,#285f94 0%,#4f8fc0 38%,#78acd0 60%,#a9cfe3 78%,#d9eaf1 100%);
 }
 .site-elevator[data-elevator-level="plane"]{
-  --site-elevator-bg:#493628;
-  --site-elevator-panel:rgba(31,31,23,.76);
-  --site-elevator-ink:#f3f1df;
-  --site-elevator-muted:#c9cfb8;
-  --site-elevator-line:rgba(173,205,126,.34);
-  --site-elevator-accent:#9fcf65;
-  --site-elevator-glow:rgba(159,207,101,.43);
+  --site-elevator-bg:#111111;
+  --site-elevator-panel:rgba(12,12,12,.84);
+  --site-elevator-ink:#f2eee7;
+  --site-elevator-muted:#bdb7ad;
+  --site-elevator-line:rgba(255,255,255,.18);
+  --site-elevator-accent:#d8d1c5;
+  --site-elevator-glow:rgba(216,209,197,.20);
   --site-elevator-shadow:rgba(20,16,10,.54);
 }
 .site-elevator[data-elevator-level="plane"]::before{
   background-image:
-    linear-gradient(180deg,#8fbd5a 0 6px,#4f7535 6px 10px,#62472e 10px 100%),
-    repeating-linear-gradient(90deg,transparent 0 15px,rgba(22,18,12,.25) 15px 16px),
-    repeating-linear-gradient(0deg,transparent 0 15px,rgba(229,210,165,.10) 15px 16px),
-    linear-gradient(135deg,transparent 0 68%,rgba(115,86,55,.30) 68% 73%,transparent 73% 100%);
+    linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008)),
+    repeating-linear-gradient(90deg,transparent 0 15px,rgba(255,255,255,.018) 15px 16px),
+    linear-gradient(180deg,#171717 0,#111 52%,#0b0b0b 100%);
 }
 .site-elevator[data-elevator-level="below"]{
   --site-elevator-bg:#241711;
