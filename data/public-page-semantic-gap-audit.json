@@ -1,7 +1,7 @@
 {
   "id": "public-page-semantic-gap-audit",
-  "version": "1.2.0",
-  "updated": "2026-09-26",
+  "version": "1.3.0",
+  "updated": "2026-10-02",
   "purpose": "Track older public pages that are technically reachable but still need coherence, fallback substance, consolidation or authored synthesis. This audit targets semantic gaps, not raw word count.",
   "principles": [
     "Do not solve thinness by adding more links.",
@@ -94,29 +94,24 @@
   ],
   "next_wave": [
     {
-      "path": "science/axis-11d-sun-spiral/index.html",
-      "issue": "isolated_substantive",
-      "question": "Audit whether speculative 11D/Axis physics is sufficiently separated from established M-theory and from symbolic Axis geometry throughout the full long page."
-    },
-    {
       "path": "science/index.html",
       "issue": "strong_no_action",
       "question": "Re-review only for compression after specialist ownership changes; do not lengthen unless a genuine gap appears."
     },
     {
-      "path": "explore/index.html",
-      "issue": "generic_hub",
-      "question": "Check whether archive navigation has enough explanatory orientation for non-expert readers."
-    },
-    {
-      "path": "index-a-z/index.html",
-      "issue": "generic_hub",
-      "question": "Assess whether alphabetical discovery exposes definitions/context rather than only labels."
+      "path": "rooms/potatoverse-canon/beings/*/index.html",
+      "issue": "duplicate_owner_risk",
+      "question": "Audit named-being dossiers for provenance, role development, uncertainty and overlap with canonical character/archive owners."
     },
     {
       "path": "rooms/potatoverse-canon/beings/*/index.html",
       "issue": "duplicate_owner_risk",
-      "question": "Audit named-being dossiers for provenance, role development, uncertainty and overlap with canonical character/archive owners."
+      "question": "Continue named-being provenance/ownership audit; distinguish documentary person data, created-being canon, and later symbolic roles."
+    },
+    {
+      "path": "dynamic public surfaces",
+      "issue": "no_js_shell",
+      "question": "Audit data-driven pages for useful static subject meaning when fetch/JavaScript fails."
     }
   ],
   "long_term": [
@@ -133,6 +128,29 @@
       "date": "2026-09-26",
       "finding": "Expected celestial-matter and entanglement public routes do not exist on current main.",
       "decision": "Do not create them. Consolidate dark-sector astronomy into Celestial + Particles and entanglement/nonlocality into Quantum; use Research Map to make ownership explicit."
+    }
+  ],
+  "wave_002": [
+    {
+      "path": "science/axis-11d-sun-spiral/index.html",
+      "issue": "isolated_substantive",
+      "question": "Audit whether speculative 11D/Axis physics is sufficiently separated from established M-theory and from symbolic Axis geometry throughout the full long page.",
+      "status": "fixed",
+      "action": "Added an explicit four-way boundary between established physics, project models, structural comparators and the promotion threshold for literal physical claims."
+    },
+    {
+      "path": "explore/index.html",
+      "issue": "generic_hub",
+      "question": "Check whether archive navigation has enough explanatory orientation for non-expert readers.",
+      "status": "fixed",
+      "action": "Added a compact object-type key distinguishing reader, primary/recovered source, later synthesis and tool/dataset before deep archive browsing."
+    },
+    {
+      "path": "index-a-z/index.html",
+      "issue": "generic_hub",
+      "question": "Assess whether alphabetical discovery exposes definitions/context rather than only labels.",
+      "status": "fixed",
+      "action": "Added literal Home wayfinding and an entry-type orientation layer so people/handles, project concepts, tradition terms and evidence systems route differently."
     }
   ]
 }
