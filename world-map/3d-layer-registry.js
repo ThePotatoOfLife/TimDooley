@@ -115,9 +115,13 @@ function restoreFromUrl() {
 
 async function loadRegistry() {
   try {
-    const response = await fetch(REGISTRY_URL, { cache: 'no-cache' });
-    if (!response.ok) throw new Error(`${response.status} ${REGISTRY_URL}`);
-    registry = await response.json();
+    const shared = window.__potatoAtlasResources;
+    registry = shared?.fetchJson
+      ? await shared.fetchJson(REGISTRY_URL)
+      : await fetch(REGISTRY_URL, { cache:'force-cache' }).then(response => {
+          if (!response.ok) throw new Error(`${response.status} ${REGISTRY_URL}`);
+          return response.json();
+        });
     normalizeEntries(registry);
     restoreFromUrl();
     emit('ready');
