@@ -39,7 +39,7 @@ const TYPE_PRIORITY = new Map([
 ]);
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
-  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
 }[char]));
 
 let pinnedCodes = [];
@@ -355,6 +355,8 @@ function adoptExternalSelection(event) {
 }
 
 async function fetchJson(url) {
+  const shared = window.__potatoAtlasResources;
+  if (shared?.fetchJson) return shared.fetchJson(url);
   const response = await fetch(url);
   if (!response.ok) throw new Error(`${response.status} ${url}`);
   return response.json();
