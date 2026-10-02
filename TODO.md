@@ -1337,3 +1337,14 @@ Shared implementation: `app/terrain-circle.css`
 - [ ] Prioritize substance before navigation: question/scene → mechanism → project articulation → comparison → boundary → meaningful next question.
 - [ ] Build out Garden, Door, Root, Tree, Forge, Swamp, Mountain, River, Eye, Seed, Soil, Crown, North and Plane as full teaching environments.
 - [ ] Audit pages for “navigation explaining navigation” and fold maintenance/registry/topology prose behind optional detail when it is not part of the reader's lesson.
+
+
+### Reader-first fat pass · wave 2
+- [x] Deepen Door as an inhabited threshold: frame, hinge, permission, exit, correction and state-change.
+- [x] Deepen Garden as a real generative ecology: diversity, feedback, pruning, support, independence and succession.
+- [x] Deepen Tree of Life / Tree of Strife as competing reproduction systems, not merely route diagrams.
+- [x] Deepen Forge as pressure + cooling + stopping condition.
+- [x] Deepen North as bearing/calibration rather than status.
+- [x] Deepen Eye / embodied orientation through perception, blind spots and multisensory navigation.
+- [x] Deepen Seed / Soil / Holy Soil through viability, dormancy, conditions, decomposition and portable teaching.
+- [ ] Continue with River/Spirit, Mountain, House/Shell, Wells, Crown/Heaven, Drain, Ash and a denser ordinary Plane.

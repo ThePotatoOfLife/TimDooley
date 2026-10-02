@@ -214,20 +214,20 @@ A mature symbolic-place page should answer:
 - [x] **Axis** — add inhabited Tree/traffic/maintenance interpretation before dimensional navigation.
 - [x] **Below** — add sediment/root-cause/Swamp/Forge interpretation before investigative taxonomy.
 - [x] **Religion** — add God-language → ordinary consequence / Fruit reflection before doctrine.
-- [ ] **Garden** — write it as an ecology of soil, water, seed, weeds, boundaries, pollination, pruning, harvest and seasons. Ask what freedom needs in order to remain fertile.
-- [ ] **Door** — hinge, frame, threshold, key, guard, consent, timing, opening, closing, two rooms and the risk of becoming a wall. Teach relation without collapse.
+- [x] **Garden** — first inhabited ecology pass added; continue it as an ecology of soil, water, seed, weeds, boundaries, pollination, pruning, harvest and seasons. Ask what freedom needs in order to remain fertile.
+- [x] **Door** — first inhabited threshold pass added: hinge, frame, threshold, key, guard, consent, timing, opening, closing, two rooms and the risk of becoming a wall. Teach relation without collapse.
 - [ ] **House** — foundation, hearth, roof, rooms, guests, locks, windows, maintenance, inheritance and exit. Expand House vs Shell through lived domestic logic.
 - [ ] **Root** — branching search, soil, fungi, water, hidden support, rot and cut roots. Connect provenance, ancestry, memory and causal depth.
-- [ ] **Tree of Life** — root/trunk/crown/branch/fruit/seed plus sap flow, seasons, damage, pruning and mutualism. Make circulation more important than height.
-- [ ] **Tree of Strife** — show how conflict becomes organism: roots = unresolved causes, trunk = stable narrative, branches = roles, fruit = reproduced conflict, seed = transmission to new participants.
-- [ ] **Forge** — fuel, heat, hammering, slag, quench, tempering, annealing and cooling. Make explicit why pressure without cooling produces brittleness.
+- [x] **Tree of Life** — first reproduction/circulation pass added; continue root/trunk/crown/branch/fruit/seed plus sap flow, seasons, damage, pruning and mutualism. Make circulation more important than height.
+- [x] **Tree of Strife** — first reproduction-organism pass added; continue how conflict becomes organism: roots = unresolved causes, trunk = stable narrative, branches = roles, fruit = reproduced conflict, seed = transmission to new participants.
+- [x] **Forge** — first pressure/cooling pass added; continue fuel, heat, hammering, slag, quench, tempering, annealing and cooling. Make explicit why pressure without cooling produces brittleness.
 - [ ] **Swamp** — distinguish project Swamp from literal wetland ecology. Write symbolic Swamp as obscured footing, recirculation, extraction of movement-energy, hidden depth and adaptation.
 - [ ] **Mountain** — slope, weather, treeline, visibility, exhaustion, watershed, false summit and descent. Perspective must cost something and return as service.
-- [ ] **North** — compass, star, magnetic/geographic distinction, bearing, drift and recalibration. Orientation is useful because it stabilizes comparison, not because a direction is morally superior.
+- [x] **North** — first bearing/calibration pass added; continue compass, star, magnetic/geographic distinction, bearing, drift and recalibration. Orientation is useful because it stabilizes comparison, not because a direction is morally superior.
 - [ ] **River / Spirit** — source, tributary, bank, current, sediment, floodplain, delta, evaporation/return. Explore continuity that changes form without becoming static.
-- [ ] **Eye** — field of view, focus, saccade, blind spot, adaptation, interpretation and limited access. Turn Eye into epistemic humility, not merely surveillance or omniscience.
-- [ ] **Seed** — coat, dormancy, viability, dispersal, germination, stored embryo, timing and conditions. Potential is not accomplishment.
-- [ ] **Soil** — decomposition, microbes, retained minerals, aeration, water, fertility and contamination. Memory as transformed material.
+- [x] **Eye** — first embodied perception pass added: field of view, focus, saccade, blind spot, adaptation, interpretation and limited access. Turn Eye into epistemic humility, not merely surveillance or omniscience.
+- [x] **Seed** — first viability/conditions pass added; continue coat, dormancy, dispersal, dispersal, germination, stored embryo, timing and conditions. Potential is not accomplishment.
+- [x] **Soil** — first fertility/decomposition pass added; continue microbes, retained minerals, aeration, water, fertility and contamination. Memory as transformed material.
 - [ ] **Ash** — residue after transformation; what is lost, what remains chemically/materially available, what cannot simply be reconstructed.
 - [ ] **Crown / Heaven** — canopy, exposure, light, weather, fruit, birds, branching and vulnerability. Heaven as responsibility/perspective rather than escape.
 - [ ] **Drain** — write as a failure/exit geometry carefully: what cannot circulate, what gets rejected, where one-way movement differs from repair/return.
@@ -274,3 +274,28 @@ A mature symbolic-place page should answer:
 - [ ] Timeline: add “what the world looked like from inside this date” around major events.
 - [ ] Works: embed creative artifacts where their themes live rather than keeping them only in a Works silo.
 - [ ] Below: each method section should eventually have at least one worked case showing descent → source → mechanism → Forge → return.
+
+
+## Fat-pass wave 3 — remaining high-gravity places
+
+- [ ] **River / Spirit** — write continuity as flow with banks, tributaries, sediment, flood, drought, delta and return. Ask what must remain continuous when the material changes.
+- [ ] **Mountain** — develop false summit, weather, exposure, watershed, treeline, acclimatization and descent. Perspective must have costs and blind spots.
+- [ ] **House / Shell** — deepen hospitality, locks, windows, inheritance, maintenance, privacy, guests, eviction, refuge and the right to leave.
+- [ ] **Wells** — build a full comparative “wisdom below the surface” reader: Mímir, Urðr, biblical wells, aquifers, memory and source-access.
+- [ ] **Crown / Heaven** — write canopy ecology, exposure, fruiting, nesting, light capture and vulnerability. Heaven should be responsibility plus perspective, not escape.
+- [ ] **Drain** — clarify one-way loss, rejection, waste stream, failed circulation and the difference between disposal, exit and repair.
+- [ ] **Ash** — distinguish what remains chemically/materially after fire from what is gone; use it to teach residue without resurrection-by-metaphor.
+- [ ] **Plane / World** — add more ordinary scenes: commuting, cooking, contracts, ports, care work, school, rent, power grids, weather and family. The middle world needs density.
+- [ ] **Spiral / Ring** — give recurrence a human story: argument, addiction, ritual, maintenance, seasons, learning. Distinguish repetition from changed return.
+- [ ] **Crown ↔ Root circulation** — create a reader that follows one piece of information/value from buried source to public fruit and back into archive/soil.
+
+### Meaning-density audit
+
+For every major symbolic page:
+- [ ] At least one passage should be understandable with all Potatoverse vocabulary removed.
+- [ ] At least one concrete mechanism should be explained in ordinary language.
+- [ ] At least one external comparator should add friction rather than validation.
+- [ ] At least one shadow/failure mode should be named.
+- [ ] At least one ordinary-life example should show why the symbol matters.
+- [ ] At least one sentence should say what returns to the Plane.
+- [ ] Navigation/meta prose should occupy less reader attention than the teaching.
