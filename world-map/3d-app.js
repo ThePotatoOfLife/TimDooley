@@ -6,8 +6,6 @@ const urlState = window.__potatoAtlasUrlState;
 urlState.claim('selection-inspector', ['country','compare','rel','depth']);
 
 const URL = {
-  geo: 'https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json',
-  rest: 'https://restcountries.com/v3.1/all?fields=name,cca3,population,area,latlng,capital,region,subregion,borders',
   index: '../data/countries/index.json',
   world: '../data/world-relational-map.json'
 };
@@ -22,7 +20,9 @@ const motion = window.__potatoAtlasMotion;
 if (!motion?.easeTo || !motion?.fitBounds) throw new Error('World Map motion policy unavailable.');
 
 const resources = window.__potatoAtlasResources;
+const coreData = window.__potatoAtlasCoreData;
 if (!resources?.fetchJson) throw new Error('World Map shared resource cache unavailable.');
+if (!coreData?.geometry || !coreData?.countries) throw new Error('World Map core data service unavailable.');
 const status = $('#status');
 function setStatus(message, kind='info') {
   if (!status) return;
@@ -34,7 +34,12 @@ function setStatus(message, kind='info') {
 let geo, rest, index, worldCfg;
 try {
   setStatus('Loading geography and canonical country data…');
-  [geo, rest, index, worldCfg] = await Promise.all(Object.values(URL).map(url => resources.fetchJson(url)));
+  [geo, rest, index, worldCfg] = await Promise.all([
+    coreData.geometry(),
+    coreData.countries(),
+    resources.fetchJson(URL.index),
+    resources.fetchJson(URL.world),
+  ]);
   setStatus('');
 } catch (error) {
   console.error(error);
