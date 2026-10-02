@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2600" role="img" aria-labelledby="title desc">
+  <title id="title">Atmospheric world-tree perspective</title>
+  <desc id="desc">A quiet tall tree composition designed to be panned from stars and crown through trunk to ground and roots as a page scrolls.</desc>
+  <defs>
+    <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5c4634" stop-opacity=".16"/>
+      <stop offset=".28" stop-color="#9b7654" stop-opacity=".38"/>
+      <stop offset=".51" stop-color="#d2b07b" stop-opacity=".5"/>
+      <stop offset=".72" stop-color="#8a6548" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#4a392d" stop-opacity=".12"/>
+    </linearGradient>
+    <linearGradient id="root" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b68b5c" stop-opacity=".46"/>
+      <stop offset=".58" stop-color="#82593e" stop-opacity=".32"/>
+      <stop offset="1" stop-color="#513828" stop-opacity=".08"/>
+    </linearGradient>
+    <radialGradient id="leaf" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#b8c79c" stop-opacity=".24"/>
+      <stop offset=".62" stop-color="#829775" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#657260" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="halo" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#f2dfae" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#f2dfae" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="12"/></filter>
+    <filter id="softer"><feGaussianBlur stdDeviation="34"/></filter>
+  </defs>
+
+  <!-- high sky and stars -->
+  <g fill="#f3ead4">
+    <circle cx="166" cy="116" r="3" opacity=".55"/><circle cx="336" cy="244" r="2.2" opacity=".38"/>
+    <circle cx="515" cy="88" r="2.6" opacity=".5"/><circle cx="736" cy="176" r="2.3" opacity=".34"/>
+    <circle cx="931" cy="92" r="3.2" opacity=".55"/><circle cx="1128" cy="223" r="2.1" opacity=".42"/>
+    <circle cx="1335" cy="110" r="2.8" opacity=".48"/><circle cx="1460" cy="292" r="2.2" opacity=".36"/>
+    <circle cx="250" cy="420" r="1.8" opacity=".3"/><circle cx="1264" cy="452" r="1.9" opacity=".32"/>
+  </g>
+  <ellipse cx="800" cy="330" rx="620" ry="360" fill="url(#halo)" filter="url(#softer)"/>
+
+  <!-- crown seen from beneath: broad, open, and peripheral -->
+  <g fill="url(#leaf)" filter="url(#soft)">
+    <ellipse cx="260" cy="505" rx="330" ry="265"/>
+    <ellipse cx="560" cy="390" rx="380" ry="300"/>
+    <ellipse cx="980" cy="395" rx="405" ry="310"/>
+    <ellipse cx="1350" cy="535" rx="350" ry="280"/>
+    <ellipse cx="805" cy="670" rx="610" ry="310" opacity=".74"/>
+  </g>
+
+  <!-- main branches converge toward the trunk; the open center protects text readability -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M785 1375 C760 1185 720 1030 625 900 C520 760 365 662 170 590" stroke="url(#trunk)" stroke-width="58"/>
+    <path d="M808 1368 C845 1168 902 1020 1005 880 C1112 735 1260 650 1472 575" stroke="url(#trunk)" stroke-width="62"/>
+    <path d="M770 1180 C645 1080 520 1010 338 960" stroke="#a7835d" stroke-opacity=".28" stroke-width="31"/>
+    <path d="M840 1155 C1000 1055 1125 1008 1324 975" stroke="#a7835d" stroke-opacity=".27" stroke-width="30"/>
+    <path d="M674 932 C545 815 434 746 265 704" stroke="#b18c62" stroke-opacity=".22" stroke-width="18"/>
+    <path d="M1000 905 C1118 808 1240 748 1390 712" stroke="#b18c62" stroke-opacity=".22" stroke-width="18"/>
+    <path d="M570 812 C462 706 376 606 320 478" stroke="#a9825b" stroke-opacity=".18" stroke-width="12"/>
+    <path d="M1105 806 C1210 690 1292 592 1335 462" stroke="#a9825b" stroke-opacity=".18" stroke-width="12"/>
+  </g>
+
+  <!-- massive lower trunk: deliberately understated in the middle -->
+  <path d="M708 1840 C710 1680 725 1515 770 1340 C792 1252 814 1248 836 1340 C880 1518 894 1685 902 1840 Z" fill="url(#trunk)"/>
+  <path d="M775 1836 C785 1630 792 1480 805 1320 C820 1480 830 1630 838 1836" fill="none" stroke="#e0c28d" stroke-opacity=".15" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- ground arrives late in the page -->
+  <path d="M0 1870 C290 1835 500 1892 790 1860 C1080 1828 1300 1889 1600 1852 L1600 1930 C1285 1968 1060 1912 790 1942 C500 1976 272 1918 0 1950 Z" fill="#6f563d" opacity=".14"/>
+  <path d="M0 1912 C305 1882 525 1937 792 1907 C1086 1874 1312 1930 1600 1896" fill="none" stroke="#c09b68" stroke-opacity=".18" stroke-width="6"/>
+
+  <!-- roots fan toward the reader; thicker and wider lower down gives the approach/scale cue -->
+  <g fill="none" stroke="url(#root)" stroke-linecap="round">
+    <path d="M760 1870 C690 1980 560 2090 320 2255 C220 2324 126 2394 40 2508" stroke-width="62"/>
+    <path d="M840 1870 C930 1980 1065 2098 1284 2250 C1392 2325 1483 2398 1566 2518" stroke-width="66"/>
+    <path d="M785 1880 C752 2040 688 2195 585 2392 C550 2456 520 2516 500 2575" stroke-width="42"/>
+    <path d="M822 1880 C862 2038 930 2192 1035 2390 C1070 2455 1103 2512 1128 2578" stroke-width="44"/>
+    <path d="M798 1890 C800 2080 798 2300 800 2595" stroke-width="34"/>
+    <path d="M640 2075 C520 2140 418 2170 282 2182" stroke-width="18" opacity=".62"/>
+    <path d="M966 2080 C1085 2142 1205 2174 1352 2187" stroke-width="18" opacity=".58"/>
+    <path d="M562 2290 C420 2325 306 2378 212 2470" stroke-width="14" opacity=".5"/>
+    <path d="M1045 2295 C1195 2330 1320 2390 1410 2480" stroke-width="14" opacity=".5"/>
+  </g>
+
+  <!-- close-ground stones and fine roots -->
+  <g fill="#a79882">
+    <ellipse cx="210" cy="2220" rx="18" ry="10" opacity=".12"/>
+    <ellipse cx="410" cy="2420" rx="13" ry="8" opacity=".1"/>
+    <ellipse cx="1192" cy="2355" rx="16" ry="9" opacity=".1"/>
+    <ellipse cx="1438" cy="2208" rx="19" ry="11" opacity=".11"/>
+  </g>
+  <g fill="none" stroke="#9e744e" stroke-opacity=".18" stroke-linecap="round">
+    <path d="M318 2258 C260 2310 240 2385 232 2468" stroke-width="7"/>
+    <path d="M1280 2258 C1348 2318 1370 2392 1382 2472" stroke-width="7"/>
+    <path d="M585 2390 C530 2435 490 2500 470 2582" stroke-width="6"/>
+    <path d="M1034 2392 C1088 2442 1124 2502 1143 2585" stroke-width="6"/>
+  </g>
+</svg>
