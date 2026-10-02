@@ -31,7 +31,9 @@ let renderQueued = false;
 let lastRenderCode = '';
 
 async function fetchJson(url) {
-  const response = await fetch(url);
+  const shared = window.__potatoAtlasResources;
+  if (shared?.fetchJson) return shared.fetchJson(url);
+  const response = await fetch(url, {cache:'force-cache'});
   if (!response.ok) throw new Error(`${response.status} ${url}`);
   return response.json();
 }
