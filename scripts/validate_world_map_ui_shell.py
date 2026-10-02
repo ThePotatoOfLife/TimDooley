@@ -45,7 +45,7 @@ def main() -> int:
             errors.append("World Map must expose one canonical top header")
         for token in ('id="compare"', 'id="panelToggle"'):
             if token not in header:
-                errors.append(f"World Map header must keep core browse control visible: {token}")
+                errors.append(f"World Map source must retain movable workspace control: {token}")
         for menu_id in ("layersMenu", "traceMenu", "timeMenu", "viewMenu"):
             if f'id="{menu_id}"' not in html:
                 errors.append(f"World Map source must retain compatibility control host {menu_id}")
@@ -131,7 +131,8 @@ def main() -> int:
         for token in (
             "__potatoAtlasLoadModule", "3d-time.js", "potato-atlas-active-view-change",
             "atlas-time-change", "Projection", "Time", "Matches", "Pinned", "Connections",
-            "Coverage", "Period", "Current map view", "Interior modules",
+            "Coverage", "Period", "Current map view", "Extra map modules",
+            "Countries", "Now", "History", "Map", "Active conflicts",
         ):
             if token not in world_bar:
                 errors.append(f"unified header/current-view contract missing marker: {token}")
@@ -147,9 +148,12 @@ def main() -> int:
                 errors.append(f"Analyze menu must own actionable connection filters: {token}")
         if "['groups','Groups'],['religion','Religion'],['stats','Stats'],['relations','Relations']" in world_bar:
             errors.append("Relations must not return as a separate top-level registry menu")
-        for token in ("atlas-axis-cluster", "Project axis lenses", "width:26px", "atlas-compact-icon"):
+        for token in ("atlasCountriesMenu", "atlasNowMenu", "Project lenses", "Compare countries", "Details panel", "Reset map"):
             if token not in world_bar:
-                errors.append(f"compact World Bar density contract missing marker: {token}")
+                errors.append(f"purpose-first World Bar missing marker: {token}")
+        for forbidden in ("atlas-axis-cluster", "const FAMILIES = [['groups','Groups']", "geographyMenu()"):
+            if forbidden in world_bar:
+                errors.append(f"first-screen internal taxonomy returned: {forbidden}")
         if " · ${count}" in world_bar or "summary.textContent = count ?" in world_bar:
             errors.append("Groups, Religion and Stats menu labels must remain static when selections change")
         if "Relations · ${relationLabel(mode)}" in world_bar or "summary.textContent = mode === 'all' ? 'Relations'" in world_bar:
@@ -163,9 +167,10 @@ def main() -> int:
 
     if top_bar_audit:
         for token in (
-            "frequent direct action", "independent map dimension", "global navigation/reset",
-            "**Relations** — merged into **Analyze**", "N/W/E/S remain a grouped control",
-            "No drastic redesign is warranted",
+            "What is happening where, and how is it connected?",
+            "Countries", "Now", "Connections", "History", "Map",
+            "Progressive-disclosure rules", "Runtime-weight rule",
+            "spatial doorway into the world knowledge system",
         ):
             if token not in top_bar_audit:
                 errors.append(f"top-bar justification audit missing contract marker: {token}")
