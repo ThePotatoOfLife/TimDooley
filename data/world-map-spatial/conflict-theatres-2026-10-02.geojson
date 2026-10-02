@@ -1,0 +1,580 @@
+{
+  "type": "FeatureCollection",
+  "name": "world-map-current-conflict-theatres",
+  "snapshot_date": "2026-10-02",
+  "purpose": "Curated theatre-level anchors for major active armed conflicts and war zones. Deliberately coarse and non-tactical.",
+  "boundary": "These points are broad theatre anchors, not live front lines, control maps, troop locations, strike targets, routes or sovereignty claims.",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "conflict-ukraine-2026-10",
+      "properties": {
+        "feature_id": "conflict-ukraine-2026-10",
+        "overlay_id": "conflict.active-theatres",
+        "label": "War in Ukraine",
+        "short_label": "Ukraine",
+        "epistemic_type": "event_observed",
+        "confidence": "broad-context",
+        "geometry_version": "2026-10-02",
+        "measurement_policy": "theatre-anchor-not-frontline",
+        "snapshot_date": "2026-10-02",
+        "started": "2014; full-scale invasion began 24 Feb 2022",
+        "current_status": "Active interstate war; CFR status: unchanging (updated 1 Sep 2026).",
+        "conflict_type": "Interstate war",
+        "human_toll": "CFR reports more than 1 million people killed since the full-scale war began. UN Human Rights verified 2,222 civilians killed and 13,058 injured in Jan–Aug 2026; September figures were still preliminary.",
+        "countries": [
+          "Ukraine",
+          "Russia"
+        ],
+        "status_note": "Theatre-level anchor for the Russia–Ukraine war. It does not depict a current front line, force disposition, occupied-area boundary or strike location.",
+        "source_ids": [
+          "cfr-global-conflict-tracker-ukraine",
+          "ohchr-ukraine-civilian-casualties-2026"
+        ],
+        "source_links": [
+          "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine",
+          "https://ukraine.ohchr.org/en/reports/protection-of-civilians"
+        ],
+        "source_updated": "2026-09-24",
+        "not_live": true,
+        "administrative_independence": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.2,
+          49
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "conflict-israel-palestine-2026-10",
+      "properties": {
+        "feature_id": "conflict-israel-palestine-2026-10",
+        "overlay_id": "conflict.active-theatres",
+        "label": "Israeli–Palestinian conflict · Gaza",
+        "short_label": "Gaza",
+        "epistemic_type": "event_observed",
+        "confidence": "broad-context",
+        "geometry_version": "2026-10-02",
+        "measurement_policy": "theatre-anchor-not-frontline",
+        "snapshot_date": "2026-10-02",
+        "started": "Current war began 7 Oct 2023",
+        "current_status": "Active conflict and humanitarian crisis; CFR status: unchanging (updated 3 Aug 2026).",
+        "conflict_type": "Territorial dispute / armed conflict",
+        "human_toll": "CFR reports more than 70,000 Palestinian civilians and fighters killed since Oct 2023. OCHA reported 24 Palestinians killed and 126 injured between 16 and 23 Sep 2026, citing Gaza health authorities.",
+        "countries": [
+          "Israel",
+          "State of Palestine / Gaza Strip"
+        ],
+        "status_note": "Theatre-level Gaza anchor. It does not represent a live strike map, military position, control line or legal boundary.",
+        "source_ids": [
+          "cfr-global-conflict-tracker-israel-palestine",
+          "ocha-opt-2026-09-25"
+        ],
+        "source_links": [
+          "https://www.cfr.org/global-conflict-tracker/conflict/israeli-palestinian-conflict",
+          "https://www.ochaopt.org/content/humanitarian-situation-report-25-september-2026"
+        ],
+        "source_updated": "2026-09-25",
+        "not_live": true,
+        "administrative_independence": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.45,
+          31.45
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "conflict-israel-lebanon-2026-10",
+      "properties": {
+        "feature_id": "conflict-israel-lebanon-2026-10",
+        "overlay_id": "conflict.active-theatres",
+        "label": "Israel–Hezbollah conflict · Lebanon",
+        "short_label": "Lebanon",
+        "epistemic_type": "event_observed",
+        "confidence": "broad-context",
+        "geometry_version": "2026-10-02",
+        "measurement_policy": "theatre-anchor-not-frontline",
+        "snapshot_date": "2026-10-02",
+        "started": "Cross-border war phase began Oct 2023; Israeli ground invasion began Mar 2026",
+        "current_status": "Active interstate/non-state conflict; CFR status: unchanging (updated 3 Aug 2026).",
+        "conflict_type": "Interstate war / armed non-state conflict",
+        "human_toll": "CFR reports more than 1 million Lebanese displaced during the 2026 offensive.",
+        "countries": [
+          "Lebanon",
+          "Israel"
+        ],
+        "status_note": "Broad southern-Lebanon theatre anchor only; it does not show current troop locations, a control line or individual strikes.",
+        "source_ids": [
+          "cfr-global-conflict-tracker-lebanon"
+        ],
+        "source_links": [
+          "https://www.cfr.org/global-conflict-tracker/conflict/political-instability-lebanon"
+        ],
+        "source_updated": "2026-08-03",
+        "not_live": true,
+        "administrative_independence": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.55,
+          33.45
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "conflict-iran-israel-us-2026-10",
+      "properties": {
+        "feature_id": "conflict-iran-israel-us-2026-10",
+        "overlay_id": "conflict.active-theatres",
+        "label": "Iran–Israel–United States conflict",
+        "short_label": "Iran",
+        "epistemic_type": "event_observed",
+        "confidence": "broad-context",
+        "geometry_version": "2026-10-02",
+        "measurement_policy": "theatre-anchor-not-frontline",
+        "snapshot_date": "2026-10-02",
+        "started": "Direct war resumed 28 Feb 2026 after the June 2025 war",
+        "current_status": "Large-scale fighting paused under a ceasefire/MOU, but strikes and disputes continued; CFR status: worsening (updated 11 Sep 2026).",
+        "conflict_type": "Interstate war",
+        "human_toll": "No single comparable current casualty total is used here; reporting is fragmented across the 2025 and 2026 rounds of fighting and domestic unrest.",
+        "countries": [
+          "Iran",
+          "Israel",
+          "United States"
+        ],
+        "status_note": "Country-scale conflict anchor. It intentionally avoids nuclear-site, base, naval, aircraft or unit locations.",
+        "source_ids": [
+          "cfr-global-conflict-tracker-iran"
+        ],
+        "source_links": [
+          "https://www.cfr.org/global-conflict-tracker/conflict/confrontation-between-united-states-and-iran"
+        ],
+        "source_updated": "2026-09-11",
+        "not_live": true,
+        "administrative_independence": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          53.5,
+          32.5
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "conflict-yemen-red-sea-2026-10",
+      "properties": {
+        "feature_id": "conflict-yemen-red-sea-2026-10",
+        "overlay_id": "conflict.active-theatres",
+        "label": "Yemen and Red Sea conflict",
+        "short_label": "Yemen",
+        "epistemic_type": "event_observed",
+        "confidence": "broad-context",
+        "geometry_version": "2026-10-02",
+        "measurement_policy": "theatre-anchor-not-frontline",
+        "snapshot_date": "2026-10-02",
+        "started": "Civil war began 2014; regional Red Sea phase expanded after 2023",
+        "current_status": "Renewed escalation in 2026; CFR status: worsening (updated 24 Sep 2026).",
+        "conflict_type": "Civil war / regional maritime conflict",
+        "human_toll": "CFR’s 22 Sep 2026 update reported at least 154 people killed over three days of fighting around several Yemeni fronts, citing news reporting.",
+        "countries": [
+          "Yemen",
+          "Saudi Arabia",
+          "Red Sea shipping corridor"
+        ],
+        "status_note": "National/theatre anchor only. It does not show current ships, missile sites, air-defence positions or front lines.",
+        "source_ids": [
+          "cfr-global-conflict-tracker-yemen"
+        ],
+        "source_links": [
+          "https://www.cfr.org/global-conflict-tracker/conflict/war-yemen"
+        ],
+        "source_updated": "2026-09-24",
+        "not_live": true,
+        "administrative_independence": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.2,
+          15.4
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "conflict-sudan-2026-10",
+      "properties": {
+        "feature_id": "conflict-sudan-2026-10",
+        "overlay_id": "conflict.active-theatres",
+        "label": "Civil War in Sudan",
+        "short_label": "Sudan",
+        "epistemic_type": "event_observed",
+        "confidence": "broad-context",
+        "geometry_version": "2026-10-02",
+        "measurement_policy": "theatre-anchor-not-frontline",
+        "snapshot_date": "2026-10-02",
+        "started": "15 Apr 2023",
+        "current_status": "Active civil war; CFR status: worsening (updated 17 Aug 2026).",
+        "conflict_type": "Civil war",
+        "human_toll": "UNHCR reported 11.3 million people forcibly displaced by 21 Sep 2026, including more than 6.4 million internally displaced within Sudan.",
+        "countries": [
+          "Sudan"
+        ],
+        "status_note": "Country-scale conflict anchor. It does not map SAF/RSF control, siege lines or individual battles.",
+        "source_ids": [
+          "cfr-global-conflict-tracker-sudan",
+          "unhcr-sudan-situation"
+        ],
+        "source_links": [
+          "https://www.cfr.org/global-conflict-tracker/conflict/power-struggle-sudan",
+          "https://data.unhcr.org/en/situations/sudansituation"
+        ],
+        "source_updated": "2026-09-21",
+        "not_live": true,
+        "administrative_independence": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30,
+          15.2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "conflict-myanmar-2026-10",
+      "properties": {
+        "feature_id": "conflict-myanmar-2026-10",
+        "overlay_id": "conflict.active-theatres",
+        "label": "Civil War in Myanmar",
+        "short_label": "Myanmar",
+        "epistemic_type": "event_observed",
+        "confidence": "broad-context",
+        "geometry_version": "2026-10-02",
+        "measurement_policy": "theatre-anchor-not-frontline",
+        "snapshot_date": "2026-10-02",
+        "started": "Current civil-war phase followed the 1 Feb 2021 military coup",
+        "current_status": "Active civil war; CFR status: unchanging (updated 27 Aug 2026).",
+        "conflict_type": "Civil war",
+        "human_toll": "CFR reports more than 100,000 people killed and 5.2 million displaced.",
+        "countries": [
+          "Myanmar"
+        ],
+        "status_note": "Country-scale conflict anchor; it does not map current territorial control or armed-group positions.",
+        "source_ids": [
+          "cfr-global-conflict-tracker-myanmar"
+        ],
+        "source_links": [
+          "https://www.cfr.org/global-conflict-tracker/conflict/rohingya-crisis-myanmar"
+        ],
+        "source_updated": "2026-08-27",
+        "not_live": true,
+        "administrative_independence": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          96.7,
+          20.4
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "conflict-drc-east-2026-10",
+      "properties": {
+        "feature_id": "conflict-drc-east-2026-10",
+        "overlay_id": "conflict.active-theatres",
+        "label": "Conflict in eastern DR Congo",
+        "short_label": "E. DRC",
+        "epistemic_type": "event_observed",
+        "confidence": "broad-context",
+        "geometry_version": "2026-10-02",
+        "measurement_policy": "theatre-anchor-not-frontline",
+        "snapshot_date": "2026-10-02",
+        "started": "Long-running regional conflict; current M23 offensive intensified from 2021 and seized Goma/Bukavu in 2025",
+        "current_status": "Active armed conflict in eastern DRC; CFR status: worsening (updated 3 Aug 2026).",
+        "conflict_type": "Armed conflict / political instability",
+        "human_toll": "CFR reports more than 7 million people displaced in the DRC conflict.",
+        "countries": [
+          "Democratic Republic of the Congo",
+          "Rwanda (regional involvement)"
+        ],
+        "status_note": "Eastern-DRC theatre anchor only. It does not depict M23 or government control lines, troop concentrations or routes.",
+        "source_ids": [
+          "cfr-global-conflict-tracker-drc"
+        ],
+        "source_links": [
+          "https://www.cfr.org/global-conflict-tracker/conflict/violence-democratic-republic-congo"
+        ],
+        "source_updated": "2026-08-03",
+        "not_live": true,
+        "administrative_independence": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.5,
+          -1.3
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "conflict-sahel-2026-10",
+      "properties": {
+        "feature_id": "conflict-sahel-2026-10",
+        "overlay_id": "conflict.active-theatres",
+        "label": "Violent extremism in the Sahel",
+        "short_label": "Sahel",
+        "epistemic_type": "event_observed",
+        "confidence": "broad-context",
+        "geometry_version": "2026-10-02",
+        "measurement_policy": "theatre-anchor-not-frontline",
+        "snapshot_date": "2026-10-02",
+        "started": "Regional insurgencies expanded after the 2012 Mali crisis",
+        "current_status": "Active multi-country insurgency; CFR status: worsening (updated 29 Jul 2026).",
+        "conflict_type": "Insurgency / terrorism / political instability",
+        "human_toll": "CFR reports that the Liptako–Gourma borderlands of Burkina Faso, Mali and Niger account for more than half of global terrorism-related deaths.",
+        "countries": [
+          "Burkina Faso",
+          "Mali",
+          "Niger",
+          "Chad",
+          "Nigeria"
+        ],
+        "status_note": "Regional anchor for the Sahel conflict system. It does not locate armed groups, patrols, bases or attack routes.",
+        "source_ids": [
+          "cfr-global-conflict-tracker-sahel"
+        ],
+        "source_links": [
+          "https://www.cfr.org/global-conflict-tracker/conflict/violent-extremism-sahel"
+        ],
+        "source_updated": "2026-07-29",
+        "not_live": true,
+        "administrative_independence": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0.2,
+          14.2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "conflict-somalia-2026-10",
+      "properties": {
+        "feature_id": "conflict-somalia-2026-10",
+        "overlay_id": "conflict.active-theatres",
+        "label": "Conflict with Al-Shabaab in Somalia",
+        "short_label": "Somalia",
+        "epistemic_type": "event_observed",
+        "confidence": "broad-context",
+        "geometry_version": "2026-10-02",
+        "measurement_policy": "theatre-anchor-not-frontline",
+        "snapshot_date": "2026-10-02",
+        "started": "Insurgency has persisted since the mid-2000s; current government offensive began 2022",
+        "current_status": "Active insurgency; CFR status: unchanging (updated 30 Jul 2026).",
+        "conflict_type": "Insurgency / terrorism",
+        "human_toll": "Casualty reporting is episodic and not presented as a single current total here; fighting and attacks continued in 2026.",
+        "countries": [
+          "Somalia",
+          "Kenya (cross-border impact)"
+        ],
+        "status_note": "Country-scale conflict anchor only. It does not identify militant camps, government positions or strike coordinates.",
+        "source_ids": [
+          "cfr-global-conflict-tracker-somalia"
+        ],
+        "source_links": [
+          "https://www.cfr.org/global-conflict-tracker/conflict/al-shabab-somalia"
+        ],
+        "source_updated": "2026-09-17",
+        "not_live": true,
+        "administrative_independence": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.2,
+          4.4
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "conflict-ethiopia-north-2026-10",
+      "properties": {
+        "feature_id": "conflict-ethiopia-north-2026-10",
+        "overlay_id": "conflict.active-theatres",
+        "label": "Renewed conflict in northern Ethiopia",
+        "short_label": "Ethiopia",
+        "epistemic_type": "event_observed",
+        "confidence": "broad-context",
+        "geometry_version": "2026-10-02",
+        "measurement_policy": "theatre-anchor-not-frontline",
+        "snapshot_date": "2026-10-02",
+        "started": "2020–22 Tigray war; major renewed fighting in Sep 2026",
+        "current_status": "Renewed war in Tigray/Afar/Amhara; CFR status: worsening (updated 29 Sep 2026).",
+        "conflict_type": "Armed conflict / political instability",
+        "human_toll": "AP reported about 150,000 newly displaced and more than 700 wounded treated in three hospitals as fighting intensified in late Sep 2026.",
+        "countries": [
+          "Ethiopia",
+          "Eritrea (regional tension)"
+        ],
+        "status_note": "Northern-Ethiopia theatre anchor only. It does not plot forces, airports, artillery, borders of control or operational movements.",
+        "source_ids": [
+          "cfr-global-conflict-tracker-ethiopia",
+          "ap-ethiopia-2026-09-28"
+        ],
+        "source_links": [
+          "https://www.cfr.org/global-conflict-tracker/conflict/conflict-ethiopia",
+          "https://apnews.com/article/6b3208122a4221f3c2e8dcbe21630016"
+        ],
+        "source_updated": "2026-10-02",
+        "not_live": true,
+        "administrative_independence": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.3,
+          13.5
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "conflict-afghanistan-pakistan-2026-10",
+      "properties": {
+        "feature_id": "conflict-afghanistan-pakistan-2026-10",
+        "overlay_id": "conflict.active-theatres",
+        "label": "Afghanistan–Pakistan conflict",
+        "short_label": "AfPak",
+        "epistemic_type": "event_observed",
+        "confidence": "broad-context",
+        "geometry_version": "2026-10-02",
+        "measurement_policy": "theatre-anchor-not-frontline",
+        "snapshot_date": "2026-10-02",
+        "started": "Cross-border conflict escalated in Oct 2025; Pakistan declared open war in Feb 2026",
+        "current_status": "Active interstate and militant conflict; CFR status: unchanging (updated 28 Sep 2026).",
+        "conflict_type": "Interstate war / terrorism",
+        "human_toll": "UNAMA confirmed at least 269 civilian deaths in a 16 Mar 2026 strike on a Kabul rehabilitation hospital; separate border clashes and strikes continued in September.",
+        "countries": [
+          "Afghanistan",
+          "Pakistan"
+        ],
+        "status_note": "Broad border-theatre anchor. It does not map military posts, drone routes, strike targets or militant locations.",
+        "source_ids": [
+          "cfr-global-conflict-tracker-afghanistan-pakistan"
+        ],
+        "source_links": [
+          "https://www.cfr.org/global-conflict-tracker/conflict/war-afghanistan"
+        ],
+        "source_updated": "2026-09-28",
+        "not_live": true,
+        "administrative_independence": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.7,
+          32.8
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "conflict-south-sudan-2026-10",
+      "properties": {
+        "feature_id": "conflict-south-sudan-2026-10",
+        "overlay_id": "conflict.active-theatres",
+        "label": "Renewed conflict in South Sudan",
+        "short_label": "S. Sudan",
+        "epistemic_type": "event_observed",
+        "confidence": "broad-context",
+        "geometry_version": "2026-10-02",
+        "measurement_policy": "theatre-anchor-not-frontline",
+        "snapshot_date": "2026-10-02",
+        "started": "Civil war began 2013; peace process collapsed and fighting renewed in 2025–26",
+        "current_status": "Renewed armed conflict and political crisis; CFR status: worsening (updated 29 Jul 2026).",
+        "conflict_type": "Armed conflict / political instability",
+        "human_toll": "CFR reports up to 280,000 people displaced across central and eastern South Sudan during the renewed 2026 fighting, with more than 2 million internally displaced overall.",
+        "countries": [
+          "South Sudan"
+        ],
+        "status_note": "Country-scale conflict anchor only. It does not map opposition positions, government forces or airstrike locations.",
+        "source_ids": [
+          "cfr-global-conflict-tracker-south-sudan"
+        ],
+        "source_links": [
+          "https://www.cfr.org/global-conflict-tracker/conflict/civil-war-south-sudan"
+        ],
+        "source_updated": "2026-07-29",
+        "not_live": true,
+        "administrative_independence": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31,
+          7.4
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "conflict-syria-2026-10",
+      "properties": {
+        "feature_id": "conflict-syria-2026-10",
+        "overlay_id": "conflict.active-theatres",
+        "label": "Post-Assad instability and armed violence in Syria",
+        "short_label": "Syria",
+        "epistemic_type": "event_observed",
+        "confidence": "broad-context",
+        "geometry_version": "2026-10-02",
+        "measurement_policy": "theatre-anchor-not-frontline",
+        "snapshot_date": "2026-10-02",
+        "started": "Civil war began 2011; post-Assad transition began Dec 2024",
+        "current_status": "Fragile transition with recurring armed violence and external military activity; CFR status: unchanging (updated 26 Aug 2026).",
+        "conflict_type": "Political instability / armed violence",
+        "human_toll": "CFR reports approximately 1,400 Alawites, mostly civilians, killed in March 2025 violence and at least 1,000 people killed in southern clashes in summer 2025; sporadic deadly incidents continued in 2026.",
+        "countries": [
+          "Syria",
+          "Israel",
+          "Turkey (cross-border military activity)"
+        ],
+        "status_note": "Country-scale instability/conflict anchor. It does not depict current Israeli patrols, Turkish forces, Syrian units or strike coordinates.",
+        "source_ids": [
+          "cfr-global-conflict-tracker-syria"
+        ],
+        "source_links": [
+          "https://www.cfr.org/global-conflict-tracker/conflict/conflict-syria"
+        ],
+        "source_updated": "2026-10-01",
+        "not_live": true,
+        "administrative_independence": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38,
+          35
+        ]
+      }
+    }
+  ]
+}
