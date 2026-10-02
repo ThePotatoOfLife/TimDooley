@@ -46,7 +46,7 @@
     {id:'world-map',label:'World Map',route:'/world-map/',kind:'world',note:'Interactive atlas',aliases:['map','countries','atlas']},
     {id:'tim',label:'Tim Dooley',route:'/tim-dooley/',kind:'project',note:'Main portrait',aliases:['tim','father','potato']},
     {id:'house',label:'House',route:'/house/',kind:'project',note:'How the project fits together',aliases:['house','architecture','structure']},
-    {id:'rooms',label:'Rooms',route:'/rooms/',kind:'project',note:'Knowledge owners',aliases:['rooms','dwellings']},
+    {id:'rooms',label:'Rooms',route:'/rooms/',kind:'project',note:'Browse the subjects and Rooms',aliases:['rooms','dwellings']},
     {id:'people-cases',label:'People & Cases',route:'/rooms/objects/',kind:'find',note:'Search House inhabitants',aliases:['people','cases','objects','entities','find','search']},
     {id:'questions',label:'Questions',route:'/questions/',kind:'find',note:'Find by question',aliases:['questions','ask','answers','find']},
     {id:'index-a-z',label:'A–Z',route:'/index-a-z/',kind:'find',note:'Find by known term',aliases:['index','terms','glossary','find']},
@@ -159,8 +159,8 @@
         label:row.title||row.id,
         route:row.route,
         kind:'page',
-        note:row.surface_type||'public surface',
-        context:row.primary_parent?'Under '+row.primary_parent:'Public surface',
+        note:row.description||row.summary||'Open this reader',
+        context:row.primary_parent?'Under '+(roomNames[row.primary_parent]||row.primary_parent):'Public reader',
         aliases:row.id
       });
       for(const row of inhabitants?.inhabitants||[])if(row?.route){
@@ -169,8 +169,8 @@
           label:row.label||row.id,
           route:row.route,
           kind:row.kind||'object',
-          note:row.summary||'House object',
-          context:rooms.length?'Rooms: '+rooms.join(' · '):'House object',
+          note:row.summary||'Open this object',
+          context:rooms.length?'Found in '+rooms.join(' · '):'House item',
           aliases:(row.id||'')+' '+(row.room_ids||[]).join(' ')
         });
       }
@@ -208,7 +208,7 @@
       const rows=(disambiguation.options||[]).map(id=>curatedEntries.find(e=>e.id===id)).filter(Boolean);
       if(rows.length){
         content.className='site-access-results site-access-disambiguation';
-        content.innerHTML='<div class="site-access-choice-head"><b>'+esc(disambiguation.prompt||'Choose a destination')+'</b><small>'+esc(disambiguation.rule||'Choose the intended namespace before entering.')+'</small></div>'+rows.map(e=>'<a class="site-access-result" href="'+esc(href(e.route))+'"><span><b>'+esc(e.label)+'</b><small>'+esc(e.note||'')+'</small></span><em>'+esc(e.scope||e.kind||'result')+'</em></a>').join('');
+        content.innerHTML='<div class="site-access-choice-head"><b>'+esc(disambiguation.prompt||'Choose a destination')+'</b><small>'+esc(disambiguation.rule||'Choose the intended namespace before entering.')+'</small></div>'+rows.map(e=>'<a class="site-access-result" href="'+esc(href(e.route))+'"><span><b>'+esc(e.label)+'</b><small>'+esc(e.note||'')+'</small></span><em>'+esc(e.scope||(e.kind==='world'?'WORLD':e.kind==='project'?'PROJECT':e.kind==='find'?'FIND':'OPEN'))+'</em></a>').join('');
         return;
       }
     }
