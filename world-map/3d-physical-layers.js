@@ -233,7 +233,7 @@ async function reset() {
   return { ok:failed.length === 0, failed };
 }
 
-function menuHost() { return document.getElementById('atlasWorldBar'); }
+function menuHost() { return document.querySelector('#viewMenu .atlas-world-menu-pop'); }
 function phaseLabel(record, row) {
   if (row.availability !== 'current') return 'planned';
   const labels = { idle:'off', loading:'loading', active:'active', 'zoom-needed':'zoom in', partial:'partial', error:'provider unavailable' };
@@ -241,19 +241,16 @@ function phaseLabel(record, row) {
 }
 
 function renderMenu() {
-  const bar = menuHost();
-  if (!bar) return false;
-  let details = document.getElementById('atlasPhysicalMenu');
-  if (!details) {
-    details = document.createElement('details');
-    details.id = 'atlasPhysicalMenu';
-    details.className = 'atlas-world-menu';
-    details.innerHTML = '<summary>Physical</summary><div class="atlas-world-menu-pop"></div>';
-    const geography = document.getElementById('atlasGeographyMenu');
-    if (geography?.nextSibling) bar.insertBefore(details, geography.nextSibling);
-    else if (geography) geography.after(details);
-    else bar.appendChild(details);
-    details.addEventListener('click', async event => {
+  const host = menuHost();
+  if (!host) return false;
+  let section = document.getElementById('atlasPhysicalMenu');
+  if (!section) {
+    section = document.createElement('section');
+    section.id = 'atlasPhysicalMenu';
+    section.className = 'atlas-world-section';
+    section.innerHTML = '<div class="menu-sep"></div><div class="menu-title">Physical world</div><div data-physical-menu-body></div>';
+    host.appendChild(section);
+    section.addEventListener('click', async event => {
       const clear = event.target.closest('[data-physical-clear]');
       if (clear) { event.preventDefault(); await reset(); return; }
       if (event.target.closest('[data-physical-opacity]')) return;
@@ -261,14 +258,14 @@ function renderMenu() {
       if (!button || button.disabled) return;
       await toggle(button.dataset.physicalLayer);
     });
-    details.addEventListener('input', async event => {
+    section.addEventListener('input', async event => {
       const slider = event.target.closest('[data-physical-opacity]');
       if (!slider) return;
       event.stopPropagation();
       await setOpacity(slider.dataset.physicalOpacity, Number(slider.value) / 100);
     });
   }
-  const pop = details.querySelector('.atlas-world-menu-pop');
+  const pop = section.querySelector('[data-physical-menu-body]');
   if (!pop) return false;
   const rows = entries().map(row => {
     const current = row.availability === 'current';
@@ -281,7 +278,7 @@ function renderMenu() {
   }).join('');
   const footer = active.size ? '<button type="button" class="atlas-world-option atlas-physical-clear" data-physical-clear><span>Clear physical<small>disable all Physical layers</small></span></button>' : '';
   pop.innerHTML = `<style>.atlas-physical-row{border-bottom:1px solid #1e2928;padding-bottom:3px}.atlas-physical-opacity{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:6px;padding:0 7px 6px;color:#9eaaa4;font-size:9px}.atlas-physical-opacity input{width:100%;min-width:80px}.atlas-physical-opacity output{min-width:30px;text-align:right}.atlas-physical-clear{margin-top:6px!important}</style><div class="atlas-world-static"><span>Physical world</span><small>${active.size ? `${active.size} active` : 'lazy · stackable'}</small></div>${rows}${footer}`;
-  details.classList.toggle('active', active.size > 0);
+  section.classList.toggle('active', active.size > 0);
   return true;
 }
 
