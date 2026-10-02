@@ -22,9 +22,13 @@ TERMS=[
 ]
 
 def route_to_path(route:str)->Path:
+    route=(route or "/").strip()
     if route=="/":
         return ROOT/"index.html"
-    return ROOT/route.strip("/")/"index.html"
+    clean=route.strip("/")
+    if clean.endswith(".html"):
+        return ROOT/clean
+    return ROOT/clean/"index.html"
 
 def strip_html(html:str)->str:
     html=re.sub(r"<script\b[\s\S]*?</script>"," ",html,flags=re.I)
