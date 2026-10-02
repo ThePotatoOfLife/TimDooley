@@ -43,7 +43,7 @@ body.lower-layer-page::before{
   inset:-8vh 0 auto;
   height:var(--site-scene-box-height,320vh);
   pointer-events:none;
-  opacity:.80;
+  opacity:.88;
   background:url("./site-below-root-field.svg") var(--site-scene-x,50%) 0/auto 100% no-repeat;
   transform:translate3d(0,var(--site-scene-y,0px),0) scale(var(--site-scene-scale,1));
   transform-origin:50% 24%;
@@ -116,7 +116,7 @@ body.lower-layer-page::after{
   body.lower-layer-page::before{
     inset:-6vh 0 auto;
     height:var(--site-scene-box-height,295vh);
-    opacity:.68;
+    opacity:.76;
   }
 }
 
