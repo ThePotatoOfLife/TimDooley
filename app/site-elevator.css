@@ -81,24 +81,21 @@ html[data-site-floor="heaven"]{
   --site-line:rgba(214,204,236,.24);
   --site-muted:#c3bfd0;
   --site-faint:#918ba1;
-  background-color:#0b1028;
+  background-color:#24104c;
   background:
-    radial-gradient(circle at 84% 9%,rgba(255,225,151,.55) 0 1px,transparent 2.5px),
-    radial-gradient(circle at 18% 13%,rgba(255,247,220,.38) 0 1px,transparent 2.1px),
-    radial-gradient(circle at 53% 24%,rgba(220,205,255,.34) 0 1px,transparent 2.1px),
-    radial-gradient(circle at 71% 37%,rgba(255,183,204,.25) 0 1px,transparent 2.3px),
-    radial-gradient(circle at 31% 8%,rgba(255,201,133,.28) 0 1px,transparent 2.1px),
-    radial-gradient(ellipse at 76% 17%,rgba(126,86,191,.38),transparent 36%),
-    radial-gradient(ellipse at 26% 28%,rgba(61,118,184,.34),transparent 42%),
-    radial-gradient(ellipse at 55% 61%,rgba(227,113,157,.22),transparent 44%),
-    radial-gradient(ellipse at 61% 84%,rgba(225,145,88,.13),transparent 36%),
-    linear-gradient(88deg,transparent 0 48%,rgba(230,185,117,.10) 48.2% 49%,rgba(255,221,151,.18) 49.1% 49.65%,transparent 49.9%) 13% 58vh/90px 42vh no-repeat,
-    linear-gradient(128deg,transparent 0 49.2%,rgba(228,179,118,.12) 49.4% 50.1%,transparent 50.3%) 9% 55vh/150px 24vh no-repeat,
-    linear-gradient(52deg,transparent 0 49.2%,rgba(211,150,123,.11) 49.4% 50.1%,transparent 50.3%) 17% 54vh/150px 25vh no-repeat,
-    radial-gradient(ellipse at 18% 108%,rgba(88,129,82,.34) 0 23%,transparent 48%),
-    radial-gradient(ellipse at 48% 110%,rgba(70,111,91,.29) 0 22%,transparent 46%),
-    radial-gradient(ellipse at 79% 108%,rgba(97,113,81,.30) 0 21%,transparent 45%),
-    linear-gradient(180deg,#0b1028 0%,#17143e 26%,#302052 50%,#7a3f45 72%,#c26b43 88%,#e29458 100%);
+    radial-gradient(circle at 84% 9%,rgba(255,238,177,.62) 0 1px,transparent 2.5px),
+    radial-gradient(circle at 18% 13%,rgba(255,247,220,.42) 0 1px,transparent 2.1px),
+    radial-gradient(circle at 53% 24%,rgba(220,205,255,.42) 0 1px,transparent 2.1px),
+    radial-gradient(circle at 71% 37%,rgba(255,183,204,.28) 0 1px,transparent 2.3px),
+    radial-gradient(circle at 31% 8%,rgba(255,201,133,.30) 0 1px,transparent 2.1px),
+    radial-gradient(ellipse at 76% 17%,rgba(126,86,191,.46),transparent 36%),
+    radial-gradient(ellipse at 26% 28%,rgba(74,93,177,.28),transparent 42%),
+    radial-gradient(ellipse at 55% 61%,rgba(235,137,166,.24),transparent 44%),
+    radial-gradient(ellipse at 61% 84%,rgba(240,177,117,.20),transparent 36%),
+    radial-gradient(ellipse at 18% 108%,rgba(88,129,82,.30) 0 23%,transparent 48%),
+    radial-gradient(ellipse at 48% 110%,rgba(70,111,91,.26) 0 22%,transparent 46%),
+    radial-gradient(ellipse at 79% 108%,rgba(97,113,81,.26) 0 21%,transparent 45%),
+    linear-gradient(180deg,#24104c 0%,#342064 25%,#594783 48%,#936b94 67%,#c9848e 82%,#e4a079 100%);
 }
 
 /* PLANE — the static side-view scene owns the village/mountain drawing.
@@ -124,11 +121,13 @@ html[data-site-floor="below"]{
   --site-line:rgba(165,95,59,.30);
   --site-muted:#c0a08f;
   --site-faint:#8e6d5d;
-  background-color:#3a2117;
+  background-color:#806047;
   background:
-    radial-gradient(ellipse at 22% 0%,rgba(129,69,39,.20),transparent 24%),
-    radial-gradient(ellipse at 78% 4%,rgba(102,54,35,.18),transparent 28%),
-    linear-gradient(180deg,#3a2117 0%,#25130e 42%,#130907 72%,#070404 100%);
+    radial-gradient(ellipse at 22% 0%,rgba(158,125,82,.24),transparent 24%),
+    radial-gradient(ellipse at 78% 4%,rgba(129,94,62,.20),transparent 28%),
+    radial-gradient(ellipse at 18% 82%,rgba(146,58,31,.10),transparent 26%),
+    radial-gradient(ellipse at 82% 92%,rgba(178,65,30,.10),transparent 24%),
+    linear-gradient(180deg,#806047 0%,#604431 18%,#422c24 40%,#2c1a16 62%,#190c0a 82%,#080404 100%);
 }
 
 .site-elevator[data-elevator-ready="false"]{
@@ -163,9 +162,9 @@ html[data-site-floor="below"]{
 .site-elevator[data-elevator-level="heaven"]::before{
   opacity:.94;
   background:
-    linear-gradient(180deg,rgba(9,13,36,.46),rgba(53,28,63,.30) 68%,rgba(139,72,49,.22)),
+    linear-gradient(180deg,rgba(36,16,76,.42),rgba(83,53,114,.26) 60%,rgba(196,122,104,.20)),
     url("./site-tree-perspective.svg") 50% 12%/125% auto no-repeat,
-    #111631;
+    #24104c;
 }
 
 .site-elevator[data-elevator-level="plane"]{
@@ -199,9 +198,9 @@ html[data-site-floor="below"]{
 .site-elevator[data-elevator-level="below"]::before{
   opacity:.96;
   background:
-    linear-gradient(180deg,rgba(66,45,28,.28),rgba(20,9,7,.52)),
+    linear-gradient(180deg,rgba(122,91,62,.18),rgba(56,31,24,.34) 46%,rgba(35,9,6,.60)),
     url("./site-below-root-field.svg") 50% 2%/122% auto no-repeat,
-    #27130d;
+    #4f3426;
 }
 
 /* compact wrapped elevator layout: terminal board + pixel biome, never a horizontal Room scroller */
