@@ -168,8 +168,14 @@ if css.count("@media(max-width:680px)") != 1 or css.count("@media(max-width:420p
 if journey_css.count("@media(max-width:720px)") != 1:
     errors.append("House journey 720px breakpoint must be consolidated into one block")
 
-if "changed.update(patch_project_compass(OUT))" in patch:
-    errors.append("legacy Project Compass must not be injected alongside the quick-access dock")
+if "inject_project_compass" in patch or "patch_project_compass" in patch or "project-compass.js" in patch or "project-compass.css" in patch:
+    errors.append("retired Project Compass code/assets must not remain in the active public-navigation patcher")
+for bad_regex in ('r"<html\\\\b"', 'r"</head\\\\s*>"', 'r"</body\\\\s*>"'):
+    if bad_regex in patch:
+        errors.append(f"public navigation injector contains double-escaped HTML regex: {bad_regex}")
+for good_regex in ('r"<html\\b"', 'r"</head\\s*>"', 'r"</body\\s*>"'):
+    if good_regex not in patch:
+        errors.append(f"public navigation injector missing active HTML regex: {good_regex}")
 
 if OUT.exists():
     required=[
