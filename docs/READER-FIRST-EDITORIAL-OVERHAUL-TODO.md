@@ -380,3 +380,30 @@ For every major symbolic page:
 - [ ] **Tim · relationships:** strengthen people as changing relations with boundaries and history, not only names orbiting Tim.
 - [ ] **Tim · creative method:** explain how jokes, streams, images, books, code and archive-building function as different thinking media.
 - [ ] **Tim · unresolved tensions:** give the reader productive contradictions—independence/network, exposure/privacy, certainty/correction, myth/person, endurance/rest—without forcing a final synthesis.
+
+
+## Reader experience overhaul — chronology, source work and lived systems
+
+### Completed in this wave
+
+- [x] **Timeline:** add an “inside the date” reader explaining hindsight bias, contemporary knowledge, recollection vs attestation and clock vs developmental time.
+- [x] **Great Book:** add eight inhabited teaching chambers so a reader can enter through philosophical/mythic questions before navigating 167 chapters.
+- [x] **Story:** explain how memory, archives and retrospective interpretation turn a life into narrative while protecting ordinary human events from symbolic inflation.
+- [x] **World Systems:** begin with lived dependencies—light, water, food, payments and hospital supply—before abstract system families.
+- [x] **Culture:** explain social learning, imitation, sanction, status and pluralistic ignorance before returning to the project's culture model.
+
+### Purposeful-reader next steps
+
+- [ ] **Timeline:** add 6–8 era essays that answer “what did the future not exist yet?” for 2011, 2016, 2019, 2024, Apr 2025, late 2025 and Sep 2026.
+- [ ] **Great Book:** add a second chamber set for humor, politics, inner-room/body symbolism, comparative religion, authorship/reader relation and Quiet Triumph.
+- [ ] **Great Book:** add “what aged well / what changed / what was abandoned” crosswalks without rewriting the source edition.
+- [ ] **Story:** add relationship arcs that track how the meaning of one person changes across scenes rather than creating isolated incident cards.
+- [ ] **Story:** add ordinary temporal texture—workday, waiting, boredom, food, sleep, making, repair—where sources allow it.
+- [ ] **World Systems:** add a “failure travels” casebook: grid outage, port closure, medicine shortage, cyber incident and housing bottleneck.
+- [ ] **World Systems:** add a “redundancy is not waste” essay explaining resilience, spare capacity, inventories and optionality.
+- [ ] **Culture:** add conformity vs coordination vs genuine agreement; show why the same outward behavior can arise from different mechanisms.
+- [ ] **Culture:** add role escape / identity update: what social practices allow an archived role to stop governing the present person.
+- [ ] **Works:** create a “creative method” reader showing which medium Tim uses for which kind of thinking—prose, jokes, stream, music, image, game, code.
+- [ ] **Science:** add a short reader on correlation, causation, measurement and model selection using ordinary examples before project equations.
+- [ ] **Life & Body:** add ordinary embodied scenes: balance in darkness, hunger, pain, fatigue, circadian timing and recovery as lived entrances to physiology.
+- [ ] **FAQ:** reorganize the growing answer corpus into 5–7 teaching constellations so the reader encounters a lesson, not a database of questions.

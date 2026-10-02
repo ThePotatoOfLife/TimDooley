@@ -1361,3 +1361,12 @@ Shared implementation: `app/terrain-circle.css`
 - [x] Give Potatoism a fuller religious practice and theological humility layer.
 - [x] Give Tim Dooley a skeptical/curious reader synthesis that does not require belief in the mythology.
 - [ ] Next: love, justice, work, happiness, death, truth, prayer, ritual, community, grace, hope, ordinary Tim scenes, changed-mind cases, relationships and creative method.
+
+
+### Reader purpose · chronology and lived systems
+- [x] Timeline now teaches hindsight, contemporary knowledge and developmental time.
+- [x] Great Book now has eight teaching chambers before the giant chapter map.
+- [x] Story now teaches how lives become narratives without turning hindsight into destiny.
+- [x] World Systems now begins from ordinary material dependencies.
+- [x] Culture now explains how norms are socially learned and can persist through pluralistic ignorance.
+- [ ] Next: era essays, more Great Book chambers/crosswalks, relationship arcs, failure-propagation stories, resilience/redundancy, creative-method reader, ordinary physiology scenes and FAQ teaching constellations.
