@@ -28,6 +28,40 @@ def route_to_path(route: str) -> Path:
 def covered(text: str) -> bool:
     return any(marker in text for marker in DIRECT_MARKERS) or INHERITED_MARKER in text
 
+LOWER_READER_PATHS = (
+    "below/index.html",
+    "shadow-farm/index.html",
+    "shadow-farm/dim/index.html",
+    "shadow-farm/txt/index.html",
+    "research-lab/index.html",
+    "rooms/archive-sources/index.html",
+    "rooms/research-lab/index.html",
+    "rooms/inside/comparative-mythology/index.html",
+    "rooms/inside/prediction-revelation-time/index.html",
+    "rooms/inside/subculture-group-formation/index.html",
+    "rooms/inside/symbolic-architecture/index.html",
+    "rooms/inside/symbolic-body-comparison/index.html",
+    "context/index.html",
+    "context/source-authority/index.html",
+    "context/culture/index.html",
+    "context/culture/turbles/index.html",
+)
+
+def validate_lower_floor_sources(errors: list[str], notes: list[str]) -> None:
+    checked = 0
+    for rel in LOWER_READER_PATHS:
+        path = ROOT / rel
+        if not path.exists():
+            errors.append(f"lower-floor TTS source missing: {rel}")
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        checked += 1
+        has_site = "site-tts.js" in text
+        has_specialist = all(marker in text for marker in ("tts-reader.js","tts-drawer.js","longform-tts-adapter.js"))
+        if not (has_site or has_specialist):
+            errors.append(f"lower-floor reader lacks direct usable TTS bootstrap: {rel}")
+    notes.append(f"lower-floor TTS source documents checked: {checked}")
+
 def validate_built_site(errors: list[str], notes: list[str]) -> None:
     out = ROOT / "_site"
     if not out.exists():
@@ -143,6 +177,7 @@ def main() -> int:
             if marker not in builder_text:
                 errors.append(f"generated discovery TTS contract missing {marker}")
 
+    validate_lower_floor_sources(errors, notes)
     validate_built_site(errors, notes)
 
     print(f"checked {len(active)} active public surfaces")
