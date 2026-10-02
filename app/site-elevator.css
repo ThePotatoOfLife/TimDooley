@@ -99,11 +99,12 @@ html[data-site-floor="heaven"]{
     radial-gradient(ellipse at 18% 108%,rgba(88,129,82,.34) 0 23%,transparent 48%),
     radial-gradient(ellipse at 48% 110%,rgba(70,111,91,.29) 0 22%,transparent 46%),
     radial-gradient(ellipse at 79% 108%,rgba(97,113,81,.30) 0 21%,transparent 45%),
-    linear-gradient(180deg,#0b1028 0%,#171b45 30%,#2a2053 57%,#261a3e 75%,#111729 100%);
+    linear-gradient(180deg,#0b1028 0%,#17143e 26%,#302052 50%,#7a3f45 72%,#c26b43 88%,#e29458 100%);
   background-attachment:fixed;
 }
 
-/* PLANE — blue air, mountain horizon, village glints and living green ground. */
+/* PLANE — the static side-view scene owns the village/mountain drawing.
+   The root canvas only supplies air, haze and the field colour beneath it. */
 html[data-site-floor="plane"]{
   --site-panel:rgba(13,29,25,.80);
   --site-panel-strong:rgba(20,42,34,.90);
@@ -112,15 +113,10 @@ html[data-site-floor="plane"]{
   --site-faint:#87958a;
   background-color:#244f66;
   background:
-    radial-gradient(circle at 84% 9%,rgba(255,225,151,.34),transparent 11%),
-    radial-gradient(ellipse at 50% 12%,rgba(124,187,220,.34),transparent 50%),
-    radial-gradient(ellipse at 21% 19%,rgba(182,215,220,.16),transparent 30%),
-    linear-gradient(145deg,transparent 0 60%,rgba(55,84,70,.42) 60.5% 69%,transparent 69.5%) 0 48vh/44% 36vh repeat-x,
-    linear-gradient(35deg,transparent 0 62%,rgba(43,78,58,.38) 62.5% 71%,transparent 71.5%) 15% 52vh/39% 34vh repeat-x,
-    linear-gradient(148deg,transparent 0 63%,rgba(89,104,77,.26) 63.5% 70%,transparent 70.5%) 8% 56vh/52% 31vh repeat-x,
-    repeating-linear-gradient(90deg,rgba(235,207,145,.16) 0 2px,transparent 2px 30px) 0 68vh/100% 16px no-repeat,
-    linear-gradient(180deg,transparent 0 53%,rgba(92,132,84,.14) 54% 62%,rgba(67,108,63,.30) 63% 78%,rgba(29,51,31,.48) 79% 100%),
-    linear-gradient(180deg,#1f4b63 0%,#3f788b 31%,#6f9181 52%,#4f7448 72%,#213822 100%);
+    radial-gradient(circle at 84% 10%,rgba(255,225,151,.30),transparent 12%),
+    radial-gradient(ellipse at 50% 16%,rgba(139,199,223,.26),transparent 52%),
+    radial-gradient(ellipse at 20% 22%,rgba(205,231,228,.12),transparent 34%),
+    linear-gradient(180deg,#244f66 0%,#4d8091 36%,#87a59b 55%,#667f59 72%,#2d4630 100%);
   background-attachment:fixed;
 }
 
@@ -730,28 +726,25 @@ html[data-site-floor="below"]{
 }
 
 
-/* Scroll-depth world tree
-   -----------------------
-   This is atmosphere, not navigation and not a Tree UI system.
-   On long Heaven/Plane pages the reader begins under the high crown and stars.
-   Root scrolling pans the same tall composition downward while gently enlarging it,
-   so the visual point of view approaches trunk, ground and roots without moving text.
-   Below keeps its dedicated cut-earth/root treatment in lower-layer.css. */
-html[data-site-floor="heaven"],
-html[data-site-floor="plane"]{
-  --site-depth-tree-opacity:.145;
-  --site-depth-ground-rgb:66,52,36;
+/* 2.5D floor scenes
+   ------------------
+   Reading layer = normal document flow.
+   Scene layer = one static side-view plate moved by JS at ~half page speed.
+   Background layer = floor colour / atmosphere.
+   Only transform + opacity are changed while scrolling, so motion stays compositor-friendly. */
+html[data-site-floor]{
+  --site-scene-y:0px;
+  --site-scene-scale:1;
+  --site-depth-progress:0;
 }
 html[data-site-floor="heaven"]{
-  --site-depth-tree-opacity:.16;
-  --site-depth-ground-rgb:76,55,48;
+  --site-depth-tree-opacity:.17;
+  --site-depth-ground-rgb:176,91,61;
 }
 html[data-site-floor="plane"]{
-  --site-depth-tree-opacity:.135;
-  --site-depth-ground-rgb:44,62,39;
+  --site-depth-tree-opacity:.08;
+  --site-depth-ground-rgb:58,82,51;
 }
-
-/* Keep the atmospheric root pseudos behind ordinary page content. */
 html[data-site-floor="heaven"] body:not(.lower-layer-page),
 html[data-site-floor="plane"] body:not(.lower-layer-page){
   position:relative;
@@ -759,30 +752,42 @@ html[data-site-floor="plane"] body:not(.lower-layer-page){
   z-index:0;
 }
 
-/* One tall under-tree plate. A soft radial mask keeps the reading column quiet
-   while allowing branches and the widening lower tree to remain perceptible. */
+/* Heaven keeps the luminous world-tree plate. Plane uses one simple side-view scene. */
 html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
 html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
   content:"";
   position:fixed;
-  inset:-10vh -9vw;
+  left:-10vw;
+  right:-10vw;
+  top:-16vh;
+  height:250vh;
   z-index:-2;
   pointer-events:none;
-  background-image:url("./site-tree-perspective.svg");
   background-repeat:no-repeat;
-  background-position:50% 0%;
-  background-size:max(1040px,124vw) auto;
+  background-position:50% 0;
+  background-size:max(1040px,120vw) auto;
+  transform:translate3d(0,var(--site-scene-y),0) scale(var(--site-scene-scale));
+  transform-origin:50% 30%;
+  will-change:transform;
+  contain:paint;
+}
+html[data-site-floor="heaven"] body:not(.lower-layer-page)::before{
+  background-image:url("./site-tree-perspective.svg");
   opacity:var(--site-depth-tree-opacity);
-  transform:translate3d(0,0,0) scale(.88);
-  transform-origin:50% 72%;
-  filter:saturate(.82) contrast(.96);
-  -webkit-mask-image:radial-gradient(ellipse at 50% 48%,rgba(0,0,0,.24) 0 28%,rgba(0,0,0,.58) 50%,#000 78%);
-  mask-image:radial-gradient(ellipse at 50% 48%,rgba(0,0,0,.24) 0 28%,rgba(0,0,0,.58) 50%,#000 78%);
-  will-change:transform,background-position,opacity;
+  filter:saturate(.86) contrast(.96);
+  -webkit-mask-image:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,.20) 0 25%,rgba(0,0,0,.62) 50%,#000 80%);
+  mask-image:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,.20) 0 25%,rgba(0,0,0,.62) 50%,#000 80%);
+}
+html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
+  background-image:url("./site-plane-organic-field.svg");
+  opacity:.72;
+  background-size:max(1100px,112vw) auto;
+  filter:saturate(.82) contrast(.94);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);
 }
 
-/* The page colour does not jump between zones. It slowly grows more terrestrial
-   as the same page moves from crown to ground. */
+/* A quiet colour wash carries the vertical journey even when the scene itself is subtle. */
 html[data-site-floor="heaven"] body:not(.lower-layer-page)::after,
 html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
   content:"";
@@ -790,76 +795,41 @@ html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
   inset:0;
   z-index:-1;
   pointer-events:none;
-  opacity:.035;
-  background:
-    radial-gradient(ellipse at 50% 112%,rgba(var(--site-depth-ground-rgb),.34) 0 18%,transparent 58%),
-    linear-gradient(180deg,transparent 0 40%,rgba(var(--site-depth-ground-rgb),.06) 67%,rgba(var(--site-depth-ground-rgb),.18) 100%);
   will-change:opacity,transform;
 }
-
-@keyframes site-tree-descent{
-  0%{
-    background-position:50% 7%;
-    transform:translate3d(0,0,0) scale(.90);
-    opacity:var(--site-depth-tree-opacity);
-  }
-  50%{
-    background-position:50% 34%;
-    transform:translate3d(0,-.7vh,0) scale(1);
-    opacity:var(--site-depth-tree-opacity);
-  }
-  100%{
-    background-position:50% 62%;
-    transform:translate3d(0,-1.6vh,0) scale(1.16);
-    opacity:var(--site-depth-tree-opacity);
-  }
+html[data-site-floor="heaven"] body:not(.lower-layer-page)::after{
+  opacity:calc(.04 + (var(--site-depth-progress) * .18));
+  background:
+    radial-gradient(ellipse at 50% 105%,rgba(255,171,88,.30) 0 15%,transparent 58%),
+    linear-gradient(180deg,rgba(38,20,75,.04),rgba(174,75,53,.10) 68%,rgba(246,154,78,.22) 100%);
 }
-
-@keyframes site-ground-approach{
-  0%{opacity:.02;transform:translate3d(0,1.5vh,0)}
-  56%{opacity:.055;transform:translate3d(0,0,0)}
-  100%{opacity:.18;transform:translate3d(0,-1vh,0)}
-}
-
-/* Scroll-driven animation is progressive enhancement. The visual travel is
-   intentionally much shorter than the document travel: the page passes the tree
-   while the huge distant tree lags behind it. Unsupported browsers keep the quiet
-   crown view rather than losing the floor background. */
-@supports (animation-timeline:scroll(root block)){
-  html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
-  html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
-    animation:site-tree-descent 1s linear both;
-    animation-timeline:scroll(root block);
-  }
-  html[data-site-floor="heaven"] body:not(.lower-layer-page)::after,
-  html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
-    animation:site-ground-approach 1s linear both;
-    animation-timeline:scroll(root block);
-  }
+html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
+  opacity:calc(.04 + (var(--site-depth-progress) * .12));
+  background:
+    radial-gradient(ellipse at 50% 108%,rgba(73,107,57,.24) 0 22%,transparent 62%),
+    linear-gradient(180deg,rgba(115,175,196,.03),rgba(67,102,64,.08) 72%,rgba(39,64,40,.16) 100%);
 }
 
 @media(max-width:700px){
   html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
   html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
-    inset:-6vh -24vw;
-    background-size:max(920px,178vw) auto;
-    opacity:calc(var(--site-depth-tree-opacity) * .8);
-    -webkit-mask-image:radial-gradient(ellipse at 50% 46%,rgba(0,0,0,.16) 0 24%,rgba(0,0,0,.5) 48%,#000 76%);
-    mask-image:radial-gradient(ellipse at 50% 46%,rgba(0,0,0,.16) 0 24%,rgba(0,0,0,.5) 48%,#000 76%);
+    left:-28vw;
+    right:-28vw;
+    height:235vh;
+    background-size:max(920px,175vw) auto;
   }
 }
 
 @media(prefers-reduced-motion:reduce){
-  html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
-  html[data-site-floor="plane"] body:not(.lower-layer-page)::before,
-  html[data-site-floor="heaven"] body:not(.lower-layer-page)::after,
-  html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
-    animation:none;
-    will-change:auto;
+  html[data-site-floor]{
+    --site-scene-y:0px;
+    --site-scene-scale:1;
+    --site-depth-progress:.25;
   }
   html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
   html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
-    background-position:50% 18%;
     transform:none;
+    will-change:auto;
   }
 }
+
