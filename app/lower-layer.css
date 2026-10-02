@@ -13,29 +13,21 @@ body.lower-layer-page{
   --lower-root-lit:#c48755;
   --lower-soil:#24130d;
   --lower-stone:#71645a;
-  --site-depth-start:.14;
-  --site-depth-max:.44;
   position:relative;
   isolation:isolate;
   min-height:100vh;
   overflow-x:hidden;
   color:var(--site-ink);
-  background:
-    radial-gradient(ellipse at 18% 2%,rgba(120,145,77,.18) 0 7%,transparent 18%),
-    radial-gradient(ellipse at 72% 3%,rgba(108,133,70,.14) 0 8%,transparent 20%),
-    linear-gradient(180deg,
-      #40553a 0%,
-      #6d6b45 4%,
-      #806047 9%,
-      #654633 18%,
-      #4a3228 31%,
-      #36241f 47%,
-      #281714 63%,
-      #1b0d0b 79%,
-      #0b0504 100%);
+  background:linear-gradient(180deg,
+    #6d6b45 0%,
+    #654633 18%,
+    #36241f 50%,
+    #1b0d0b 78%,
+    #0b0504 100%);
 }
 
-/* One curved root plate replaces the former stack of stripe-built tap roots. */
+/* The SVG owns sediment, roots, stones, swamp, steam and heat.
+   CSS contributes only the moving plate and the fallback floor gradient. */
 body.lower-layer-page::before{
   content:"";
   position:fixed;
@@ -43,72 +35,24 @@ body.lower-layer-page::before{
   inset:-8vh 0 auto;
   height:var(--site-scene-box-height,320vh);
   pointer-events:none;
-  opacity:.88;
+  opacity:.90;
   background:url("./site-below-root-field.svg") var(--site-scene-x,50%) 0/auto 100% no-repeat;
-  transform:translate3d(0,var(--site-scene-y,0px),0) scale(var(--site-scene-scale,1));
-  transform-origin:50% 24%;
+  transform:translate3d(0,var(--site-scene-y,0px),0);
   contain:paint;
   backface-visibility:hidden;
   image-rendering:pixelated;
 }
 
-/* Depth wash: sparse circles and darkness only. The SVG owns roots and spirals. */
-body.lower-layer-page::after{
-  content:"";
-  position:fixed;
-  z-index:0;
-  inset:0;
-  pointer-events:none;
-  opacity:calc(.14 + (var(--site-depth-progress,0) * .30));
-  background:
-    radial-gradient(circle at 14% 24%,rgba(0,0,0,.16) 0 22px,transparent 58px),
-    radial-gradient(circle at 82% 42%,rgba(0,0,0,.15) 0 31px,transparent 72px),
-    radial-gradient(circle at 32% 74%,rgba(111,93,78,.10) 0 7px,transparent 9px),
-    radial-gradient(circle at 76% 86%,rgba(125,105,84,.09) 0 8px,transparent 10px),
-    radial-gradient(ellipse at 22% 82%,rgba(150,64,34,.08) 0 11%,transparent 28%),
-    radial-gradient(ellipse at 78% 91%,rgba(188,73,34,.09) 0 10%,transparent 26%),
-    linear-gradient(180deg,transparent 0 12%,rgba(0,0,0,.06) 38%,rgba(40,8,4,.34) 100%);
-}
-
-/* The reader stays above the atmosphere. Scene/wash are z=0, reader surfaces z=1.
-   These two small fields prevent blank stretches on very long pages without
-   reintroducing a second root wallpaper. */
 .lower-layer-page .lower-layer-surface,
 .lower-layer-page main.page{
   position:relative;
   z-index:1;
   background:transparent;
 }
-.lower-layer-page .lower-layer-surface::before,
-.lower-layer-page .lower-layer-surface::after{
-  content:"";
-  position:absolute;
-  z-index:-1;
-  inset:0 calc(50% - 50vw);
-  pointer-events:none;
-}
-.lower-layer-page .lower-layer-surface::before{
-  opacity:.16;
-  background:
-    radial-gradient(ellipse at 14% 20%,rgba(0,0,0,.17) 0 28px,transparent 58px) 0 0/520px 690px repeat,
-    radial-gradient(ellipse at 78% 48%,rgba(0,0,0,.14) 0 38px,transparent 72px) 0 0/630px 810px repeat;
-}
-.lower-layer-page .lower-layer-surface::after{
-  opacity:.10;
-  background:
-    radial-gradient(circle at 10% 14%,rgba(132,124,109,.10) 0 5px,transparent 6px) 0 0/340px 390px,
-    radial-gradient(circle at 90% 29%,rgba(146,132,107,.08) 0 7px,transparent 8px) 0 0/430px 490px,
-    radial-gradient(circle at 18% 61%,rgba(105,101,92,.09) 0 6px,transparent 7px) 0 0/390px 460px,
-    radial-gradient(circle at 82% 79%,rgba(127,117,99,.07) 0 8px,transparent 9px) 0 0/500px 570px;
-}
 
 @supports (animation-timeline:scroll(root block)){
   body.lower-layer-page::before{
     animation:site-scene-parallax 1s linear both;
-    animation-timeline:scroll(root block);
-  }
-  body.lower-layer-page::after{
-    animation:site-depth-wash 1s linear both;
     animation-timeline:scroll(root block);
   }
 }
@@ -117,7 +61,7 @@ body.lower-layer-page::after{
   body.lower-layer-page::before{
     inset:-6vh 0 auto;
     height:var(--site-scene-box-height,295vh);
-    opacity:.76;
+    opacity:.80;
   }
 }
 
@@ -126,7 +70,6 @@ body.lower-layer-page::after{
     animation:none;
     transform:none;
   }
-  body.lower-layer-page::after{animation:none}
 }
 
 /* Shared typography/surfaces. */
