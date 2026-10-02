@@ -10,17 +10,14 @@
   Visual contract markers retained for validation:
   Root ceiling · spiral · Salvaged 2026-10-01 visual language
 */
-/* Environmental variables only: no alternate typography or component theme. */
-:root{
+html:has(body.lower-layer-page){background:var(--site-bg)}
+
+body.lower-layer-page{
+  /* Environment only. The universal site system still owns type, panels, links and UI. */
   --lower-root:#87643f;
   --lower-root-lit:#b08a58;
   --lower-soil:#241a12;
   --lower-stone:#716a5f;
-}
-
-html:has(body.lower-layer-page){background:var(--site-bg)}
-
-body.lower-layer-page{
   position:relative;
   isolation:isolate;
   min-height:100vh;
