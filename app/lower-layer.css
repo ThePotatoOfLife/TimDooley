@@ -24,15 +24,15 @@ body.lower-layer-page{
     radial-gradient(ellipse at 18% 2%,rgba(120,145,77,.18) 0 7%,transparent 18%),
     radial-gradient(ellipse at 72% 3%,rgba(108,133,70,.14) 0 8%,transparent 20%),
     linear-gradient(180deg,
-      #354a2e 0%,
-      #465536 3%,
-      #5a4a31 7%,
-      #422c20 15%,
-      #2c1b15 28%,
-      #1d100d 45%,
-      #120908 64%,
-      #0a0505 82%,
-      #050303 100%);
+      #40553a 0%,
+      #6d6b45 4%,
+      #806047 9%,
+      #654633 18%,
+      #4a3228 31%,
+      #36241f 47%,
+      #281714 63%,
+      #1b0d0b 79%,
+      #0b0504 100%);
 }
 
 /* One curved root plate replaces the former stack of stripe-built tap roots. */
@@ -61,11 +61,13 @@ body.lower-layer-page::after{
   pointer-events:none;
   opacity:calc(.14 + (var(--site-depth-progress,0) * .30));
   background:
-    radial-gradient(circle at 14% 24%,rgba(0,0,0,.20) 0 22px,transparent 58px),
-    radial-gradient(circle at 82% 42%,rgba(0,0,0,.18) 0 31px,transparent 72px),
-    radial-gradient(circle at 32% 74%,rgba(111,93,78,.08) 0 7px,transparent 9px),
-    radial-gradient(circle at 76% 86%,rgba(125,105,84,.07) 0 8px,transparent 10px),
-    linear-gradient(180deg,transparent 0 12%,rgba(0,0,0,.08) 38%,rgba(0,0,0,.32) 100%);
+    radial-gradient(circle at 14% 24%,rgba(0,0,0,.16) 0 22px,transparent 58px),
+    radial-gradient(circle at 82% 42%,rgba(0,0,0,.15) 0 31px,transparent 72px),
+    radial-gradient(circle at 32% 74%,rgba(111,93,78,.10) 0 7px,transparent 9px),
+    radial-gradient(circle at 76% 86%,rgba(125,105,84,.09) 0 8px,transparent 10px),
+    radial-gradient(ellipse at 22% 82%,rgba(150,64,34,.08) 0 11%,transparent 28%),
+    radial-gradient(ellipse at 78% 91%,rgba(188,73,34,.09) 0 10%,transparent 26%),
+    linear-gradient(180deg,transparent 0 12%,rgba(0,0,0,.06) 38%,rgba(40,8,4,.34) 100%);
 }
 
 /* The reader stays above the atmosphere. These two small fields prevent blank
