@@ -226,8 +226,23 @@ jobs:
           assert 'site-tree-perspective.svg?v=' in journey_css, "live House journey CSS missing fingerprinted Heaven scene"
 
           from pathlib import Path
+          home=Path(".live-smoke/home.html").read_text(encoding="utf-8",errors="replace")
+          religion=Path(".live-smoke/religion_.html").read_text(encoding="utf-8",errors="replace")
+          science=Path(".live-smoke/science_.html").read_text(encoding="utf-8",errors="replace")
           below=Path(".live-smoke/below_.html").read_text(encoding="utf-8",errors="replace")
           shadow=Path(".live-smoke/shadow-farm_.html").read_text(encoding="utf-8",errors="replace")
+          culture=Path(".live-smoke/context_culture_.html").read_text(encoding="utf-8",errors="replace")
+          for label, html, floor in (
+              ("home", home, "plane"),
+              ("religion", religion, "heaven"),
+              ("science", science, "plane"),
+              ("below", below, "below"),
+              ("shadow-farm", shadow, "below"),
+              ("culture", culture, "plane"),
+          ):
+              assert f'data-site-floor="{floor}"' in html, f"live {label} missing first-paint floor {floor}"
+              assert "site-elevator.css?v=" in html, f"live {label} missing fingerprinted elevator CSS"
+              assert "site-elevator.js?v=" in html, f"live {label} missing fingerprinted elevator JS"
           required_below=[
               "THE SPUDLIGHT FIELD MANUAL",
               'id="tim-expertise-ledger"',
@@ -274,7 +289,6 @@ jobs:
               'id="belief-permission-bridge"',
               "In memory of",
           ]
-          culture=Path(".live-smoke/context_culture_.html").read_text(encoding="utf-8",errors="replace")
           for marker in [
               'id="culture-reader-entry"',
               'id="follow-cultural-object"',
