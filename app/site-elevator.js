@@ -160,13 +160,23 @@
     if(typeof window==='undefined'||typeof document==='undefined')return ()=>{};
     const root=document.documentElement;
     const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const nativeScrollTimeline=typeof CSS!=='undefined'&&typeof CSS.supports==='function'&&(
+      CSS.supports('animation-timeline: scroll(root block)')||
+      CSS.supports('animation-timeline: scroll()')
+    );
     if(reduced){
       root.style.setProperty('--site-scene-y','0px');
       root.style.setProperty('--site-scene-scale','1');
       root.style.setProperty('--site-depth-progress','.25');
+      root.dataset.sceneParallax='reduced';
+      return ()=>{};
+    }
+    if(nativeScrollTimeline){
+      root.dataset.sceneParallax='native';
       return ()=>{};
     }
 
+    root.dataset.sceneParallax='fallback';
     let frame=0;
     const update=()=>{
       frame=0;
