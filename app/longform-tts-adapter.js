@@ -123,6 +123,7 @@
       selectionLabel:data.ttsSelectionLabel||'Selection',
       itemSelector:data.ttsItem||'',
       excludeSelector:data.ttsExclude||'',
+      selectionOnly:data.ttsSelectionOnly==='true',
     };
   }
 
@@ -150,8 +151,8 @@
         allLabel:config.allLabel||'Whole story',
         currentLabel:config.currentLabel||'Current entry',
         selectionLabel:config.selectionLabel||'Selection',
-        whole:readableText(container,config.excludeSelector||''),
-        current:readableText(currentItem,config.excludeSelector||''),
+        whole:config.selectionOnly?'':readableText(container,config.excludeSelector||''),
+        current:config.selectionOnly?'':readableText(currentItem,config.excludeSelector||''),
         selection:selectionInside(doc,container),
       });
     };
