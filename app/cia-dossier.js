@@ -5,7 +5,17 @@ const q=new URLSearchParams(location.search);let current=q.get('character')||'ma
 let manifest,roles,roleCensus,stories,associations,incidents,enhancements,dossier,accountContract,mudBankContract,symbolicPool;
 async function get(path){const r=await fetch(BASE+path);if(!r.ok)throw new Error(path);return r.json()}
 const arr=x=>Array.isArray(x)?x:[];
-function route(path){if(!path)return'#';if(/^https?:/.test(path))return path;return BASE+path.replace(/^\/+/, '')}
+function route(path){
+ const value=String(path||'').trim();if(!value)return'#';
+ if(/^https?:/i.test(value))return value;
+ if(value===BASE.slice(0,-1)||value.startsWith(BASE))return value;
+ return BASE+value.replace(/^\/+/, '');
+}
+function sourceRef(value,label){
+ const path=String(value||'').trim();if(!path)return'<span class="empty">source path unavailable</span>';
+ const linkable=/^https?:\/\//i.test(path)||/^(?:\/?(?:data|knowledge|rooms|story-content|docs|context|traditions|world|tim-dooley|religion|philosophy|science|north|axis|below|shadow-farm|great-book)\/)/i.test(path)||/\.(?:json|html|md)(?:[#?].*)?$/i.test(path);
+ return linkable?'<a class="route-link" href="'+esc(route(path))+'">'+esc(label||path)+'</a>':'<span class="route-label">'+esc(label||path)+'</span>';
+}
 function roleMatches(id){const out=[];for(const role of arr(roles?.roles))for(const m of arr(role.matches))if(m.entity_id===id)out.push({role_id:role.id,role_family:role.family,role_definition:role.definition,role:role.label,...m});return out}
 function roleCensusFor(id){return arr(roleCensus?.entities).find(x=>x.character_id===id)||null}
 function roleBoundary(label){
@@ -130,7 +140,7 @@ function mediaHtml(){
  return'<div class="block"><h2>Images & visual evidence</h2><p class="muted">Documentary images require dossier-owned provenance. Symbolic proxies come from the shared Commons pool and are always labeled as non-likeness illustrations.</p>'+evidence+proxies+'</div>';
 }
 function enhancementsHtml(){const e=enhancementFor(current);if(!e)return'<p class="empty">No enhancement/capability sheet recovered yet.</p>';const ordinary=arr(e.ordinary),creative=arr(e.creative);return'<div class="two"><div class="block"><h2>Ordinary / documentary capabilities</h2>'+(ordinary.length?'<ul>'+ordinary.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'<p class="empty">none recovered</p>')+'</div><div class="block"><h2>Creative / project enhancements</h2>'+(creative.length?'<ul>'+creative.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'<p class="empty">none recovered</p>')+'</div></div><p class="stamp">SOURCE BOUNDARY</p><p>'+esc(e.boundary||'Keep documentary and creative traits separate.')+'</p>'}
-function sourcesHtml(){const ss=arr(dossier.source_strata),leads=arr(dossier.recovery_leads);return'<div class="two"><div class="block"><h2>Source strata</h2>'+(ss.length?ss.map(s=>'<a class="route-link" href="'+route(s.path)+'">'+esc(s.type)+' → '+esc(s.path)+'</a>').join(''):'<p class="empty">No source routes indexed.</p>')+'</div><div class="block"><h2>Open recovery leads</h2>'+(leads.length?'<ul>'+leads.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>':'<p class="empty">No current recovery leads.</p>')+'</div></div>'}
+function sourcesHtml(){const ss=arr(dossier.source_strata),leads=arr(dossier.recovery_leads);return'<div class="two"><div class="block"><h2>Source strata</h2>'+(ss.length?ss.map(s=>sourceRef(s.path,(s.type||'source')+' → '+(s.path||'path unavailable'))).join(''):'<p class="empty">No source routes indexed.</p>')+'</div><div class="block"><h2>Open recovery leads</h2>'+(leads.length?'<ul>'+leads.map(x=>'<li>'+esc(x)+'</li>').join(''):'<p class="empty">No current recovery leads.</p>')+'</div></div>'}
 function render(){
  const a=activityBand();document.title=(dossier.display_name||current)+' — CIA File';document.getElementById('sheet').dataset.activity=a[0];document.getElementById('fileId').textContent='FILE '+current.toUpperCase()+' · '+(dossier.entity_class||'ENTITY');document.getElementById('name').textContent=dossier.display_name||current;document.getElementById('summary').textContent=dossier.tim_relation?.editorial_reading||'Persistent Potatoverse dossier.';
  const census=roleCensusFor(current),roleBadges=arr(census?.symbolic_roles).slice(0,2).map(x=>'role: '+x);
