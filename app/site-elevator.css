@@ -630,29 +630,37 @@ html[data-site-floor="below"]{
 html[data-site-floor]{
   --site-scene-y:0px;
   --site-scene-scale:1;
-  --site-scene-travel:-112vh;
-  --site-scene-travel-vh:112;
-  --site-scene-zoom:1.035;
+  --site-scene-box-height:300vh;
+  --site-scene-x:50%;
+  --site-scene-travel:-190vh;
+  --site-scene-travel-vh:190;
+  --site-scene-zoom:1.012;
   --site-depth-progress:0;
   --site-depth-max:.18;
 }
 html[data-site-floor="heaven"]{
-  --site-depth-tree-opacity:.34;
-  --site-scene-travel:-96vh;
-  --site-scene-travel-vh:96;
-  --site-scene-zoom:1.024;
+  --site-depth-tree-opacity:.36;
+  --site-scene-box-height:300vh;
+  --site-scene-x:50%;
+  --site-scene-travel:-190vh;
+  --site-scene-travel-vh:190;
+  --site-scene-zoom:1.012;
   --site-depth-max:.22;
 }
 html[data-site-floor="plane"]{
-  --site-scene-travel:-108vh;
-  --site-scene-travel-vh:108;
-  --site-scene-zoom:1.030;
+  --site-scene-box-height:290vh;
+  --site-scene-x:48%;
+  --site-scene-travel:-180vh;
+  --site-scene-travel-vh:180;
+  --site-scene-zoom:1.010;
   --site-depth-max:.16;
 }
 html[data-site-floor="below"]{
-  --site-scene-travel:-126vh;
-  --site-scene-travel-vh:126;
-  --site-scene-zoom:1.040;
+  --site-scene-box-height:320vh;
+  --site-scene-x:50%;
+  --site-scene-travel:-210vh;
+  --site-scene-travel-vh:210;
+  --site-scene-zoom:1.014;
 }
 html[data-site-floor="heaven"] body:not(.lower-layer-page),
 html[data-site-floor="plane"] body:not(.lower-layer-page){
@@ -665,15 +673,15 @@ html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
 html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
   content:"";
   position:fixed;
-  left:-10vw;
-  right:-10vw;
-  top:-16vh;
-  height:250vh;
+  left:0;
+  right:0;
+  top:-8vh;
+  height:var(--site-scene-box-height,300vh);
   z-index:-2;
   pointer-events:none;
   background-repeat:no-repeat;
-  background-position:50% 0;
-  background-size:max(1040px,120vw) auto;
+  background-position:var(--site-scene-x,50%) 0;
+  background-size:auto 100%;
   transform:translate3d(0,var(--site-scene-y),0) scale(var(--site-scene-scale));
   transform-origin:50% 30%;
   contain:paint;
@@ -689,8 +697,7 @@ html[data-site-floor="heaven"] body:not(.lower-layer-page)::before{
 }
 html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
   background-image:url("./site-plane-organic-field.svg");
-  opacity:.72;
-  background-size:max(1100px,112vw) auto;
+  opacity:.74;
 }
 
 html[data-site-floor="heaven"] body:not(.lower-layer-page)::after,
@@ -737,12 +744,21 @@ html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
 }
 
 @media(max-width:700px){
-  html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
-  html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
-    left:-28vw;
-    right:-28vw;
-    height:235vh;
-    background-size:max(920px,175vw) auto;
+  html[data-site-floor="heaven"]{
+    --site-scene-box-height:280vh;
+    --site-scene-travel:-170vh;
+    --site-scene-travel-vh:170;
+  }
+  html[data-site-floor="plane"]{
+    --site-scene-box-height:275vh;
+    --site-scene-x:45%;
+    --site-scene-travel:-165vh;
+    --site-scene-travel-vh:165;
+  }
+  html[data-site-floor="below"]{
+    --site-scene-box-height:295vh;
+    --site-scene-travel:-185vh;
+    --site-scene-travel-vh:185;
   }
 }
 
