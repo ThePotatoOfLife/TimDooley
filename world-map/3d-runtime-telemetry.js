@@ -57,12 +57,20 @@ function createRuntimeTelemetry(map, options = {}) {
     const sources = Object.values(sourcesObject);
     const layers = Array.isArray(style.layers) ? style.layers : [];
     const visibleLayers = layers.filter(layer => layer?.layout?.visibility !== 'none');
+    const moduleRows = Object.values(window.__potatoAtlasDiagnostics?.modules || {});
     return {
       sourceCount:Object.keys(sourcesObject).length,
       layerCount:layers.length,
       visibleLayerCount:visibleLayers.length,
       sourceTypes:countTypes(sources),
       layerTypes:countTypes(layers),
+      modules:{
+        loaded:moduleRows.filter(row => row?.status === 'loaded').length,
+        loading:moduleRows.filter(row => row?.status === 'loading').length,
+        failed:moduleRows.filter(row => row?.status === 'failed').length,
+        dormant:moduleRows.filter(row => row?.status === 'dormant').length,
+      },
+      resources:window.__potatoAtlasResources?.diagnostics?.() || null,
       interaction:getInteraction()?.diagnostics?.() || null,
       style:getStyleLifecycle()?.state?.() || null,
       tooltip:getTooltip()?.state?.() || null,
