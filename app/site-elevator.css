@@ -818,8 +818,10 @@ html[data-site-floor="plane"]::after{
   100%{opacity:.18;transform:translate3d(0,-1vh,0)}
 }
 
-/* Scroll-driven animation is progressive enhancement. Unsupported browsers keep
-   the quiet crown view rather than losing the floor background. */
+/* Scroll-driven animation is progressive enhancement. The visual travel is
+   intentionally much shorter than the document travel: the page passes the tree
+   while the huge distant tree lags behind it. Unsupported browsers keep the quiet
+   crown view rather than losing the floor background. */
 @supports (animation-timeline:scroll(root block)){
   html[data-site-floor="heaven"]::before,
   html[data-site-floor="plane"]::before{
