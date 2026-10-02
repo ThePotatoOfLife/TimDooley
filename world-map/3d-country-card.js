@@ -20,7 +20,7 @@ let activeTab = 'overview';
 const records = new Map();
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-async function fetchJson(url) { const response = await fetch(url, { cache:'no-cache' }); if (!response.ok) throw new Error(`${response.status} ${url}`); return response.json(); }
+async function fetchJson(url) { const shared = window.__potatoAtlasResources; if (shared?.fetchJson) return shared.fetchJson(url); const response = await fetch(url, { cache:'force-cache' }); if (!response.ok) throw new Error(`${response.status} ${url}`); return response.json(); }
 async function indexData() { if (!index) index = await fetchJson(INDEX_URL); return index; }
 function runtime() { return window.__potatoAtlasDataRuntime; }
 async function populationObservation(code) { return runtime()?.populationObservation?.(code) || null; }
