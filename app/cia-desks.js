@@ -3,7 +3,12 @@ const BASE='/TimDooley/';
 const esc=s=>String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 const arr=x=>Array.isArray(x)?x:[];
 async function get(path){const r=await fetch(BASE+path);if(!r.ok)throw new Error(path);return r.json()}
-function route(path){if(!path)return'#';if(/^https?:/i.test(path))return path;return BASE+String(path).replace(/^\/+/, '')}
+function route(path){
+ const value=String(path||'').trim();if(!value)return'#';
+ if(/^https?:/i.test(value))return value;
+ if(value===BASE.slice(0,-1)||value.startsWith(BASE))return value;
+ return BASE+value.replace(/^\/+/, '');
+}
 function dossierHref(id){return BASE+'rooms/potatoverse-canon/beings/cia/file/?character='+encodeURIComponent(id)}
 function dayValue(x){const m=String(x||'').match(/\d{4}-\d{2}-\d{2}/);return m?m[0]:String(x||'')}
 function newestFirst(a,b){return dayValue(b).localeCompare(dayValue(a))}
