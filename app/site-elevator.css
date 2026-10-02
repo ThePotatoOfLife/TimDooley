@@ -68,7 +68,6 @@
 html[data-site-floor]{
   min-height:100%;
   color-scheme:dark;
-  background-attachment:fixed;
 }
 html[data-site-floor] body:not(.lower-layer-page){
   min-height:100vh;
@@ -100,7 +99,6 @@ html[data-site-floor="heaven"]{
     radial-gradient(ellipse at 48% 110%,rgba(70,111,91,.29) 0 22%,transparent 46%),
     radial-gradient(ellipse at 79% 108%,rgba(97,113,81,.30) 0 21%,transparent 45%),
     linear-gradient(180deg,#0b1028 0%,#17143e 26%,#302052 50%,#7a3f45 72%,#c26b43 88%,#e29458 100%);
-  background-attachment:fixed;
 }
 
 /* PLANE — the static side-view scene owns the village/mountain drawing.
@@ -117,7 +115,6 @@ html[data-site-floor="plane"]{
     radial-gradient(ellipse at 50% 16%,rgba(139,199,223,.26),transparent 52%),
     radial-gradient(ellipse at 20% 22%,rgba(205,231,228,.12),transparent 34%),
     linear-gradient(180deg,#244f66 0%,#4d8091 36%,#87a59b 55%,#667f59 72%,#2d4630 100%);
-  background-attachment:fixed;
 }
 
 /* BELOW — compacted earth, root ceiling, cavities and reddish-black depth. */
@@ -141,7 +138,6 @@ html[data-site-floor="below"]{
     radial-gradient(ellipse at 76% 46%,rgba(0,0,0,.24) 0 42px,transparent 68px),
     repeating-linear-gradient(180deg,transparent 0 88px,rgba(158,79,43,.065) 89px 92px,transparent 93px 176px),
     linear-gradient(180deg,#3a1d14 0%,#28120d 34%,#170b08 68%,#090504 100%);
-  background-attachment:fixed;
 }
 
 .site-elevator[data-elevator-ready="false"]{
@@ -728,22 +724,26 @@ html[data-site-floor="below"]{
 
 /* 2.5D floor scenes
    ------------------
-   Reading layer = normal document flow.
-   Scene layer = one static side-view plate moved by JS at ~half page speed.
-   Background layer = floor colour / atmosphere.
-   Only transform + opacity are changed while scrolling, so motion stays compositor-friendly. */
+   Foreground: ordinary document flow.
+   Midground: one tall static scene plate.
+   Background: one inexpensive colour atmosphere.
+   Modern browsers bind transform/opacity directly to root scrolling; JavaScript is
+   only a fallback, so scrolling does not normally execute application code. */
 html[data-site-floor]{
   --site-scene-y:0px;
   --site-scene-scale:1;
   --site-depth-progress:0;
+  --site-depth-max:.18;
 }
 html[data-site-floor="heaven"]{
   --site-depth-tree-opacity:.17;
   --site-depth-ground-rgb:176,91,61;
+  --site-depth-max:.22;
 }
 html[data-site-floor="plane"]{
   --site-depth-tree-opacity:.08;
   --site-depth-ground-rgb:58,82,51;
+  --site-depth-max:.16;
 }
 html[data-site-floor="heaven"] body:not(.lower-layer-page),
 html[data-site-floor="plane"] body:not(.lower-layer-page){
@@ -752,7 +752,6 @@ html[data-site-floor="plane"] body:not(.lower-layer-page){
   z-index:0;
 }
 
-/* Heaven keeps the luminous world-tree plate. Plane uses one simple side-view scene. */
 html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
 html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
   content:"";
@@ -770,6 +769,7 @@ html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
   transform-origin:50% 30%;
   will-change:transform;
   contain:paint;
+  backface-visibility:hidden;
 }
 html[data-site-floor="heaven"] body:not(.lower-layer-page)::before{
   background-image:url("./site-tree-perspective.svg");
@@ -787,7 +787,6 @@ html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
   mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);
 }
 
-/* A quiet colour wash carries the vertical journey even when the scene itself is subtle. */
 html[data-site-floor="heaven"] body:not(.lower-layer-page)::after,
 html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
   content:"";
@@ -795,19 +794,40 @@ html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
   inset:0;
   z-index:-1;
   pointer-events:none;
-  will-change:opacity,transform;
+  opacity:calc(.04 + (var(--site-depth-progress) * .18));
 }
 html[data-site-floor="heaven"] body:not(.lower-layer-page)::after{
-  opacity:calc(.04 + (var(--site-depth-progress) * .18));
   background:
     radial-gradient(ellipse at 50% 105%,rgba(255,171,88,.30) 0 15%,transparent 58%),
     linear-gradient(180deg,rgba(38,20,75,.04),rgba(174,75,53,.10) 68%,rgba(246,154,78,.22) 100%);
 }
 html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
-  opacity:calc(.04 + (var(--site-depth-progress) * .12));
   background:
     radial-gradient(ellipse at 50% 108%,rgba(73,107,57,.24) 0 22%,transparent 62%),
     linear-gradient(180deg,rgba(115,175,196,.03),rgba(67,102,64,.08) 72%,rgba(39,64,40,.16) 100%);
+}
+
+@keyframes site-scene-parallax{
+  from{transform:translate3d(0,0,0) scale(1)}
+  to{transform:translate3d(0,-112vh,0) scale(1.035)}
+}
+@keyframes site-depth-wash{
+  from{opacity:.04}
+  to{opacity:var(--site-depth-max,.18)}
+}
+
+/* Native scroll timelines are the cheapest path: no scroll handler, no style writes. */
+@supports (animation-timeline:scroll(root block)){
+  html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
+  html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
+    animation:site-scene-parallax 1s linear both;
+    animation-timeline:scroll(root block);
+  }
+  html[data-site-floor="heaven"] body:not(.lower-layer-page)::after,
+  html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
+    animation:site-depth-wash 1s linear both;
+    animation-timeline:scroll(root block);
+  }
 }
 
 @media(max-width:700px){
@@ -827,9 +847,13 @@ html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
     --site-depth-progress:.25;
   }
   html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
-  html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
-    transform:none;
+  html[data-site-floor="plane"] body:not(.lower-layer-page)::before,
+  html[data-site-floor="heaven"] body:not(.lower-layer-page)::after,
+  html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
+    animation:none;
     will-change:auto;
   }
+  html[data-site-floor="heaven"] body:not(.lower-layer-page)::before,
+  html[data-site-floor="plane"] body:not(.lower-layer-page)::before{transform:none}
 }
 
