@@ -72,16 +72,30 @@ def fingerprint_shared_assets() -> dict[str, str]:
         versions[rel] = digest
         basename = Path(rel).name
         pattern = re.compile(rf"({re.escape(basename)})(?:\\?v=[^\"'<>\\s]+)?")
-        replacement = rf"\\1?v={digest}"
         changed = 0
         targets = [*OUT.rglob("*.html"), *OUT.rglob("*.css")]
         for page in targets:
             text = page.read_text(encoding="utf-8", errors="replace")
-            updated, count = pattern.subn(replacement, text)
+            updated, count = pattern.subn(
+                lambda match: f"{match.group(1)}?v={digest}",
+                text,
+            )
             if count:
                 page.write_text(updated, encoding="utf-8")
                 changed += count
         print(f"Fingerprint {rel}: {digest} · {changed} references")
+
+    # Never ship a literal regex backreference in a URL. This catches failures in
+    # the fingerprint rewrite itself before the validated Pages artifact is uploaded.
+    bad_backrefs = []
+    for page in [*OUT.rglob("*.html"), *OUT.rglob("*.css")]:
+        if "\\1?v=" in page.read_text(encoding="utf-8", errors="replace"):
+            bad_backrefs.append(page.relative_to(OUT).as_posix())
+    if bad_backrefs:
+        raise SystemExit(
+            "Shared asset fingerprinting emitted a literal regex backreference: "
+            + ", ".join(bad_backrefs[:20])
+        )
     return versions
 
 
