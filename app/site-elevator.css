@@ -63,60 +63,88 @@
 }
 
 /* Floor atmosphere: one shared site foundation, three environmental projections.
-   These are CSS-only biomes. They tint the page substrate without redefining the
-   global palette or turning each floor into a separate theme system. */
-html[data-site-floor="heaven"] body:not(.lower-layer-page){
-  background-color:#080b18;
-  background-image:
-    /* visible golden stars over the universal black substrate */
-    radial-gradient(circle at 84% 9%,rgba(255,225,151,.50) 0 1px,transparent 2.4px),
-    radial-gradient(circle at 18% 13%,rgba(255,247,220,.34) 0 1px,transparent 2px),
-    radial-gradient(circle at 53% 24%,rgba(220,205,255,.30) 0 1px,transparent 2px),
-    radial-gradient(circle at 71% 37%,rgba(255,183,204,.22) 0 1px,transparent 2.2px),
-    radial-gradient(circle at 31% 8%,rgba(255,201,133,.25) 0 1px,transparent 2px),
-    /* broad cosmic fields */
-    radial-gradient(ellipse at 76% 17%,rgba(126,86,191,.34),transparent 36%),
-    radial-gradient(ellipse at 26% 28%,rgba(61,118,184,.30),transparent 42%),
-    radial-gradient(ellipse at 55% 61%,rgba(227,113,157,.18),transparent 44%),
-    radial-gradient(ellipse at 61% 84%,rgba(225,145,88,.10),transparent 36%),
-    /* heavenly garden / spiritual-tree horizon */
-    radial-gradient(ellipse at 18% 105%,rgba(88,129,82,.28) 0 23%,transparent 48%),
-    radial-gradient(ellipse at 48% 108%,rgba(70,111,91,.23) 0 22%,transparent 46%),
-    radial-gradient(ellipse at 79% 106%,rgba(97,113,81,.24) 0 21%,transparent 45%),
+   The root canvas owns the environment. The body is transparent on governed pages,
+   so page-local black backgrounds cannot cover the active floor. */
+html[data-site-floor]{
+  min-height:100%;
+  color-scheme:dark;
+  background-attachment:fixed;
+}
+html[data-site-floor] body:not(.lower-layer-page){
+  min-height:100vh;
+  background:transparent!important;
+}
+
+/* HEAVEN — cosmic canopy, starlight, spiritual tree and garden horizon. */
+html[data-site-floor="heaven"]{
+  --site-panel:rgba(14,16,38,.80);
+  --site-panel-strong:rgba(23,21,51,.90);
+  --site-line:rgba(214,204,236,.24);
+  --site-muted:#c3bfd0;
+  --site-faint:#918ba1;
+  background:
+    radial-gradient(circle at 84% 9%,rgba(255,225,151,.55) 0 1px,transparent 2.5px),
+    radial-gradient(circle at 18% 13%,rgba(255,247,220,.38) 0 1px,transparent 2.1px),
+    radial-gradient(circle at 53% 24%,rgba(220,205,255,.34) 0 1px,transparent 2.1px),
+    radial-gradient(circle at 71% 37%,rgba(255,183,204,.25) 0 1px,transparent 2.3px),
+    radial-gradient(circle at 31% 8%,rgba(255,201,133,.28) 0 1px,transparent 2.1px),
+    radial-gradient(ellipse at 76% 17%,rgba(126,86,191,.38),transparent 36%),
+    radial-gradient(ellipse at 26% 28%,rgba(61,118,184,.34),transparent 42%),
+    radial-gradient(ellipse at 55% 61%,rgba(227,113,157,.22),transparent 44%),
+    radial-gradient(ellipse at 61% 84%,rgba(225,145,88,.13),transparent 36%),
+    linear-gradient(88deg,transparent 0 48%,rgba(230,185,117,.10) 48.2% 49%,rgba(255,221,151,.18) 49.1% 49.65%,transparent 49.9%) 13% 58vh/90px 42vh no-repeat,
+    linear-gradient(128deg,transparent 0 49.2%,rgba(228,179,118,.12) 49.4% 50.1%,transparent 50.3%) 9% 55vh/150px 24vh no-repeat,
+    linear-gradient(52deg,transparent 0 49.2%,rgba(211,150,123,.11) 49.4% 50.1%,transparent 50.3%) 17% 54vh/150px 25vh no-repeat,
+    radial-gradient(ellipse at 18% 108%,rgba(88,129,82,.34) 0 23%,transparent 48%),
+    radial-gradient(ellipse at 48% 110%,rgba(70,111,91,.29) 0 22%,transparent 46%),
+    radial-gradient(ellipse at 79% 108%,rgba(97,113,81,.30) 0 21%,transparent 45%),
     linear-gradient(180deg,#0b1028 0%,#171b45 30%,#2a2053 57%,#261a3e 75%,#111729 100%);
   background-attachment:fixed;
 }
-html[data-site-floor="plane"] body:not(.lower-layer-page){
-  background-color:#0c1513;
-  background-image:
-    /* sky light */
-    radial-gradient(circle at 84% 9%,rgba(255,225,151,.30),transparent 11%),
-    radial-gradient(ellipse at 50% 12%,rgba(124,187,220,.30),transparent 50%),
-    radial-gradient(ellipse at 21% 19%,rgba(182,215,220,.13),transparent 30%),
-    /* distant mountain ranges */
-    linear-gradient(145deg,transparent 0 60%,rgba(55,84,70,.38) 60.5% 69%,transparent 69.5%) 0 160px/44% 360px repeat-x,
-    linear-gradient(35deg,transparent 0 62%,rgba(43,78,58,.34) 62.5% 71%,transparent 71.5%) 15% 205px/39% 340px repeat-x,
-    linear-gradient(148deg,transparent 0 63%,rgba(89,104,77,.22) 63.5% 70%,transparent 70.5%) 8% 225px/52% 320px repeat-x,
-    /* tiny village rhythm at the horizon */
-    repeating-linear-gradient(90deg,rgba(235,207,145,.13) 0 2px,transparent 2px 30px) 0 280px/100% 16px no-repeat,
-    /* green middle plane */
-    linear-gradient(180deg,rgba(55,112,140,.34) 0%,rgba(73,132,146,.24) 30%,rgba(91,128,82,.25) 52%,rgba(55,93,57,.34) 70%,rgba(24,40,26,.46) 100%),
+
+/* PLANE — blue air, mountain horizon, village glints and living green ground. */
+html[data-site-floor="plane"]{
+  --site-panel:rgba(13,29,25,.80);
+  --site-panel-strong:rgba(20,42,34,.90);
+  --site-line:rgba(184,205,185,.22);
+  --site-muted:#bdc9bf;
+  --site-faint:#87958a;
+  background:
+    radial-gradient(circle at 84% 9%,rgba(255,225,151,.34),transparent 11%),
+    radial-gradient(ellipse at 50% 12%,rgba(124,187,220,.34),transparent 50%),
+    radial-gradient(ellipse at 21% 19%,rgba(182,215,220,.16),transparent 30%),
+    linear-gradient(145deg,transparent 0 60%,rgba(55,84,70,.42) 60.5% 69%,transparent 69.5%) 0 48vh/44% 36vh repeat-x,
+    linear-gradient(35deg,transparent 0 62%,rgba(43,78,58,.38) 62.5% 71%,transparent 71.5%) 15% 52vh/39% 34vh repeat-x,
+    linear-gradient(148deg,transparent 0 63%,rgba(89,104,77,.26) 63.5% 70%,transparent 70.5%) 8% 56vh/52% 31vh repeat-x,
+    repeating-linear-gradient(90deg,rgba(235,207,145,.16) 0 2px,transparent 2px 30px) 0 68vh/100% 16px no-repeat,
+    linear-gradient(180deg,transparent 0 53%,rgba(92,132,84,.14) 54% 62%,rgba(67,108,63,.30) 63% 78%,rgba(29,51,31,.48) 79% 100%),
     linear-gradient(180deg,#183647 0%,#2e6171 32%,#526f66 52%,#3c5c3e 72%,#182619 100%);
   background-attachment:fixed;
 }
-html[data-site-floor="below"] body:not(.lower-layer-page){
-  background-color:#080504;
-  background-image:
-    radial-gradient(ellipse at 12% -1%,rgba(143,76,42,.32) 0 34px,transparent 39px),
-    radial-gradient(ellipse at 38% 1%,rgba(103,51,31,.30) 0 50px,transparent 55px),
-    radial-gradient(ellipse at 69% -1%,rgba(151,76,39,.28) 0 42px,transparent 47px),
-    radial-gradient(ellipse at 92% 2%,rgba(112,53,31,.27) 0 48px,transparent 53px),
-    radial-gradient(ellipse at 24% 30%,rgba(0,0,0,.24) 0 34px,transparent 58px),
-    radial-gradient(ellipse at 76% 46%,rgba(0,0,0,.20) 0 42px,transparent 68px),
-    repeating-linear-gradient(180deg,transparent 0 88px,rgba(158,79,43,.055) 89px 92px,transparent 93px 176px),
+
+/* BELOW — compacted earth, root ceiling, cavities and reddish-black depth. */
+html[data-site-floor="below"]{
+  --site-panel:rgba(24,11,8,.84);
+  --site-panel-strong:rgba(36,16,10,.92);
+  --site-line:rgba(165,95,59,.30);
+  --site-muted:#c0a08f;
+  --site-faint:#8e6d5d;
+  background:
+    radial-gradient(ellipse at 12% -1%,rgba(143,76,42,.36) 0 34px,transparent 39px),
+    radial-gradient(ellipse at 38% 1%,rgba(103,51,31,.34) 0 50px,transparent 55px),
+    radial-gradient(ellipse at 69% -1%,rgba(151,76,39,.32) 0 42px,transparent 47px),
+    radial-gradient(ellipse at 92% 2%,rgba(112,53,31,.31) 0 48px,transparent 53px),
+    linear-gradient(94deg,transparent 0 48.1%,rgba(78,36,20,.28) 48.3% 48.9%,rgba(197,118,64,.28) 49.1% 50.2%,rgba(84,39,22,.26) 50.4% 51%,transparent 51.3%) 8% -4vh/58px 88vh no-repeat,
+    linear-gradient(84deg,transparent 0 48.2%,rgba(71,32,19,.24) 48.4% 49%,rgba(174,98,54,.25) 49.2% 50.2%,rgba(76,35,21,.24) 50.4% 51%,transparent 51.3%) 35% -10vh/52px 94vh no-repeat,
+    linear-gradient(101deg,transparent 0 48%,rgba(76,34,20,.25) 48.3% 48.9%,rgba(201,121,65,.27) 49.1% 50.2%,rgba(82,37,21,.24) 50.4% 51%,transparent 51.3%) 68% -7vh/64px 91vh no-repeat,
+    linear-gradient(80deg,transparent 0 48.2%,rgba(68,31,19,.23) 48.4% 49%,rgba(171,96,53,.24) 49.2% 50.2%,rgba(75,34,21,.23) 50.4% 51%,transparent 51.3%) 91% -12vh/48px 96vh no-repeat,
+    radial-gradient(ellipse at 24% 30%,rgba(0,0,0,.28) 0 34px,transparent 58px),
+    radial-gradient(ellipse at 76% 46%,rgba(0,0,0,.24) 0 42px,transparent 68px),
+    repeating-linear-gradient(180deg,transparent 0 88px,rgba(158,79,43,.065) 89px 92px,transparent 93px 176px),
     linear-gradient(180deg,#3a1d14 0%,#28120d 34%,#170b08 68%,#090504 100%);
   background-attachment:fixed;
 }
+
 .site-elevator[data-elevator-ready="false"]{
   --site-elevator-bg:#1a211f;
   --site-elevator-panel:rgba(13,18,17,.96);
