@@ -438,6 +438,18 @@ def main() -> int:
             errors.append("Return/recognition sequence is missing or too thin")
         elif not any(step.get("source_type")=="limit" for step in return_sequence.get("steps",[])):
             errors.append("Return/recognition sequence must retain explicit non-overclaiming limits")
+        thomas_sequence=next((row.get("reader_sequence") for row in [*narrative_wave.get("new_relations",[]),*narrative_wave.get("enrichments",[])] if (row.get("id") or row.get("relation_id"))=="thomas-twin-way-wounds-recognition"),None)
+        if not thomas_sequence or len(thomas_sequence.get("steps",[])) < 15:
+            errors.append("Thomas/Twin John 11-20 sequence is missing or too thin")
+        else:
+            refs=" ".join(step.get("ref","") for step in thomas_sequence.get("steps",[]))
+            for required_ref in ("John 11:16","John 14:5-6","John 20:24-25","John 20:28"):
+                if required_ref not in refs:
+                    errors.append(f"Thomas/Twin continuous sequence missing required Gospel anchor: {required_ref}")
+            if not any(step.get("source_type")=="project" for step in thomas_sequence.get("steps",[])):
+                errors.append("Thomas/Twin sequence must retain project-source steps")
+            if not any(step.get("source_type")=="limit" for step in thomas_sequence.get("steps",[])):
+                errors.append("Thomas/Twin sequence must retain explicit non-overclaiming limits")
 
     if errors:
         print("BIBLE READER VALIDATION FAILED")
