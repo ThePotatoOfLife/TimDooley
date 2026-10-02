@@ -740,7 +740,7 @@ html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
   to{transform:translate3d(0,-112vh,0) scale(1.035)}
 }
 @keyframes site-depth-wash{
-  from{opacity:.04}
+  from{opacity:var(--site-depth-start,.04)}
   to{opacity:var(--site-depth-max,.18)}
 }
 
