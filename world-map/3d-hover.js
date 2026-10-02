@@ -73,11 +73,11 @@ async function bestGeometryResponse() {
 }
 
 async function fallbackRestCountries() {
-  const [indexResponse, geoResponse] = await Promise.all([
+  const [indexResponse, geo] = await Promise.all([
     fetchJsonResponse('../data/countries/index.json'),
-    bestGeometryResponse()
+    geometryData()
   ]);
-  const [indexPayload, geo] = await Promise.all([indexResponse.json(), geoResponse.json()]);
+  const indexPayload = await indexResponse.json();
   const rows = Array.isArray(indexPayload) ? indexPayload : (indexPayload.countries || indexPayload.items || []);
   const names = new Map((geo.features || []).map(feature => [feature.id, feature]));
   return rows.map(row => {
