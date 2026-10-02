@@ -171,7 +171,7 @@ if not (ROOT / "index.html").exists():
 if not (ROOT / "app" / "app.js").exists():
     errors.append("Missing app/app.js archive explorer entry point")
 if not (ROOT / "app" / "style.css").exists():
-    errors.append("Missing app/style.css primary site stylesheet")
+    errors.append("Missing app/style.css Explore archive stylesheet")
 
 lines = [
     "Public application root: /TimDooley/",
