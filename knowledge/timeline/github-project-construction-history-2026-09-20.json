@@ -231,5 +231,26 @@
     "timeline": "/timeline/",
     "house": "/house/",
     "world_map": "/world-map/"
+  },
+  "later_snapshots": [
+    {
+      "id": "2026-10-03-pre-edit",
+      "observed_at_local": "2026-10-03T00:10:00+02:00",
+      "head_sha": "5b2a8540eb78c98178172be49bee898299cd2df2",
+      "first_commit_sha": "73fb399ca73d34e83ec49a05765241a91aad98d0",
+      "commits_after_first_commit": 9269,
+      "files_in_recursive_main_tree": 2962,
+      "directories_in_recursive_main_tree": 310,
+      "tree_truncated": false,
+      "method": [
+        "GitHub compare API from first commit to main for commits_after_first_commit",
+        "GitHub recursive main tree for file and directory counts"
+      ],
+      "interpretation": "Dated documentary snapshot only. Do not display these values as permanently current repository totals."
+    }
+  ],
+  "snapshot_policy": {
+    "rule": "Repository counts are preserved as dated observations tied to a head SHA. Public prose must not present an old snapshot as a live current total.",
+    "why": "The repository changes quickly and commit/file/directory counts have different update behavior."
   }
 }
