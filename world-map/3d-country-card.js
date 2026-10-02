@@ -372,11 +372,11 @@ async function render(code = selection.current?.activeCode || selection.current?
 }
 
 install();
-window.addEventListener('potato-atlas-working-selection-change', event => render(event?.detail?.activeCode || event?.detail?.code));
-window.addEventListener('potato-atlas-pin-change', () => { if (renderedCode) render(renderedCode); });
-window.addEventListener('potato-atlas-active-view-change', event => { const code = event?.detail?.code; if (!code || code === renderedCode) render(renderedCode); });
-window.addEventListener('potato-atlas-query-change', () => { if (renderedCode) render(renderedCode); });
-window.addEventListener('potato-atlas-relation-mode-change', () => { if (renderedCode) render(renderedCode); });
+window.addEventListener('potato-atlas-active-view-change', event => {
+  const code = String(event?.detail?.code || '').toUpperCase();
+  if (code) render(code);
+  else if (renderedCode) render(renderedCode);
+});
 window.addEventListener('potato-atlas-entity-trace-change', syncTraceAction);
 if (selection.current?.selected) render(selection.current.activeCode || selection.current.code);
 
