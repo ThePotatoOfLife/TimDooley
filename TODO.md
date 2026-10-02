@@ -335,7 +335,7 @@ Canonical diagnosis: `docs/WORLD-MAP-QUALITY-AUDIT-2026-09-20.md`. Execution led
 - [x] Confirm there are no orphaned nested Rooms: every Room has 3–6 registered adjacencies and at least one public surface.
 - [x] Preserve the distinction between broad adjacency and guarded interfaces; related Rooms do not automatically become state-changing Doors.
 - [x] Populate the four previously uninhabited Rooms with existing connective project objects: Esoteric & Sacred Geometry, Physics & Cosmology, Economy & Finance, and Research Programmes.
-- [x] Refresh the spatial House health snapshot to the live 59-object registry and current maturity counts.
+- [x] Refresh the spatial House health snapshot to the then-live 59-object registry and current maturity counts; the live registry has since expanded and is validated separately.
 - [x] Add `scripts/validate_house_harmony.py` and run it inside the Core · House · Atlas quality group so parent/Room/object/projection drift fails CI.
 - [x] Consolidate obvious specialist public parents: Axis → House, Culture → World, History → Timeline, Research Lab → House, Current World News → World.
 - [x] Verify the archive manifest remains a pathway/branch projection rather than a competing ownership layer; House/navigation authority stays canonical for public structure.
@@ -1260,7 +1260,7 @@ The previous `inhabited` milestone only eliminated corridor-only shells. It is *
 
 - [x] Information / Great Book / Music / Visual concrete wave: Information Ecology now has changing-memory cases; Great Book has three chapter specimens; Music exposes 62 recovered generations / 59 titles and named tracks; Visual Art exposes dated/recovery-typed compositions rather than motif summaries.
 
-- [x] Games / House / Questions / Experiments / Programmes concrete wave: Games now exposes recovered mechanics; House shows live 10/38/59 counts and an ownership walk; Open Questions shows live recovery/test items; Experiments carries three worked project formalisms; Research Programmes shows five active artifact-producing programmes with gates and negative results.
+- [x] Games / House / Questions / Experiments / Programmes concrete wave: Games now exposes recovered mechanics; House shows live 10/38/141 counts and an ownership walk; Open Questions shows live recovery/test items; Experiments carries three worked project formalisms; Research Programmes shows five active artifact-producing programmes with gates and negative results.
 
 - [x] All 38 nested Rooms have now passed the first concrete-population **coverage review**. This is not a completion claim: it means every Room was reread under the stricter object/date/mechanism/artifact standard; Potato Biology was verified as pre-existing deep, while the other Rooms were either concretely enriched in this wave or already contained named cases and were re-reviewed.
 - [x] Neurobiology concrete specimen pass: VPL/VPM, LGN visual route and CSF production/circulation quantities added.
