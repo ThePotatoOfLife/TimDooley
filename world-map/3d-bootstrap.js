@@ -114,10 +114,10 @@ try {
     ['Interaction Router', './3d-interaction-router.js'],
     ['URL State', './3d-url-state.js'],
     ['Inspector Router', './3d-inspector-router.js'],
-  ]);
-  await loadBatchAfterPaint([
     ['Inspector URL', './3d-inspector-url.js'],
     ['Inspector Visibility', './3d-inspector-visibility.js'],
+  ]);
+  await loadBatchAfterPaint([
     ['Country selection', './3d-country-selection.js'],
     ['Layer Registry', './3d-layer-registry.js'],
   ]);
