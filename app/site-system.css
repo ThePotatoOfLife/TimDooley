@@ -1,3 +1,7 @@
+/* Universal site system.
+   Owns the site foundation: palette, typography, spacing, widths and base elements.
+   Room/floor CSS may add scoped environment or components, but must not redefine
+   :root or body. Custom rooms should scope variables to their room root. */
 :root {
   --site-bg: #070707;
   --site-ink: #f4f0e5;
@@ -29,6 +33,7 @@
   --site-content-reading: 980px;
   --site-content-standard: 1060px;
   --site-content-wide: 1160px;
+  --site-content-shell: 1320px;
   --site-gutter: clamp(16px, 3vw, 24px);
   --site-focus: #e0c17c;
   --site-z-elevator: 9997;
