@@ -34,7 +34,7 @@ Load order for migrated public pages is:
 
 The six primary public surfaces—Home, Tim Dooley, Religion, Philosophy, Science, and World—use this shared foundation. Their content layouts remain intentionally different beneath the common shell.
 
-The archive is a deliberate exception. `app/style.css` retains its slightly different application palette, wider shell, sticky navigation, search, explorer grid, and record-reader behavior. Do not import or alias shared tokens into the archive merely for numerical uniformity unless the resulting change is proven layout-neutral and visually appropriate.
+`app/style.css` is now an Explore-only application stylesheet. Static readers load `site-system.css` directly. Archive-specific layout uses explicit `archive-*` component names so generic reader classes do not need compatibility guards.
 
 ## Permanent ownership rules
 
@@ -66,7 +66,7 @@ Do **not** add new global sticky/absolute/grid rules to generic names such as:
 - `.status`
 - `.card`
 
-Legacy generic uses still exist on some static pages. `app/layout-guard.css` protects those pages while they are progressively migrated.
+Legacy generic uses still exist on some static pages. The former `app/layout-guard.css` compatibility layer has been retired because static readers no longer load archive layout CSS.
 
 ### Static reader-page structural classes
 Prefer explicit `.page-*` names rather than generic structural names:
@@ -103,7 +103,7 @@ Never force `.page` article-width behavior onto a full-screen map or application
 
 ## Compatibility guard
 
-`app/reader.css` imports `app/layout-guard.css`.
+`app/reader.css` imports The former `app/layout-guard.css` compatibility layer has been retired because static readers no longer load archive layout CSS.
 
 The guard exists only for older static readers that still use local `.nav` / `.grid` names. The active archive sidebar does not depend on it; `.archive-nav` is owned directly by `app/style.css`.
 
