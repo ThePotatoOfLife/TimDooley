@@ -117,7 +117,7 @@ def main() -> int:
         errors.append("missing app/site-tts.js")
     else:
         text = site_tts.read_text(encoding="utf-8")
-        for marker in ("QUIET_ROUTES", "INTERACTIVE_EXCLUDE", "data-tts-longform", "PotatoLongformTTS", "selectionOnly:quiet", "ttsSelectionOnly"):
+        for marker in ("QUIET_ROUTES", "INTERACTIVE_EXCLUDE", "data-tts-longform", "PotatoLongformTTS", "selectionOnly:quiet", "ttsSelectionOnly", "options.selectionOnly?doc.body:null"):
             if marker not in text:
                 errors.append(f"app/site-tts.js missing {marker}")
 
