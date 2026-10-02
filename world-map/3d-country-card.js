@@ -226,16 +226,16 @@ function activateTab(tab) {
 
 function openInspector() { document.getElementById('atlasApp')?.classList.remove('panel-collapsed'); }
 async function showDetails() {
-  openInspector();
   if (!window.__potatoAtlasEvidence) {
     await window.__potatoAtlasLoadModule?.('Evidence', './3d-evidence.js');
   }
-  selection.inspect?.();
+  await window.__potatoAtlasEvidence?.open?.();
 }
 async function showStatistics() {
   const code = selection.current?.activeCode || selection.current?.code;
   if (!code) return;
-  await showDetails();
+  openInspector();
+  selection.inspect?.();
   if (!window.__potatoAtlasCountryPulse) {
     if (window.__potatoAtlasLoadModule) await window.__potatoAtlasLoadModule('Country Pulse', './3d-country-pulse.js');
     else await import('./3d-country-pulse.js').catch(() => false);
@@ -358,7 +358,7 @@ async function render(code = selection.current?.activeCode || selection.current?
     <section class="atlas-country-tab-panel" data-country-panel="connections" role="tabpanel">
       <div class="atlas-country-section"><small>${esc(RELATION_LABELS[relationMode] || relationMode)} · ${connections.length} represented</small>${connections.length ? connections.map(row => `<div class="atlas-country-connection"><button type="button" data-connection-country="${esc(row.partner)}">${esc(row.name)}</button><span>${esc(row.types)}</span></div>`).join('') : '<div class="atlas-country-empty">No represented relationships match this filter.</div>'}</div>
     </section>
-    <div class="atlas-country-actions">${regionActionHtml}<button type="button" data-atlas-statistics>Statistics</button><button type="button" data-country-action="details">More data</button><button type="button" data-country-action="entity-trace">Trace</button><button type="button" data-country-action="path">Path</button><button type="button" data-country-action="impact">Impact</button></div>
+    <div class="atlas-country-actions">${regionActionHtml}<button type="button" data-atlas-statistics>Statistics</button><button type="button" data-country-action="details">Sources</button><button type="button" data-country-action="entity-trace">Trace</button><button type="button" data-country-action="path">Path</button><button type="button" data-country-action="impact">Impact</button></div>
     <div class="atlas-country-source">${refreshed ? `Country record · ${esc(refreshed)}` : 'Country record'} · missing values remain unavailable</div>`;
   card.hidden = false;
   card.querySelector('.atlas-country-close')?.addEventListener('click', () => {
