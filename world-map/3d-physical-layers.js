@@ -290,11 +290,12 @@ async function restoreUrlState() {
   persist();
 }
 
-const ready = fetch(MANIFEST_URL, { cache:'no-cache' })
-  .then(response => {
-    if (!response.ok) throw new Error(`Physical manifest HTTP ${response.status}`);
-    return response.json();
-  })
+const ready = (window.__potatoAtlasResources?.fetchJson
+  ? window.__potatoAtlasResources.fetchJson(MANIFEST_URL)
+  : fetch(MANIFEST_URL, { cache:'force-cache' }).then(response => {
+      if (!response.ok) throw new Error(`Physical manifest HTTP ${response.status}`);
+      return response.json();
+    }))
   .then(data => {
     manifest = data || { entries:[] };
     for (const row of entries()) ensureStatus(row);
