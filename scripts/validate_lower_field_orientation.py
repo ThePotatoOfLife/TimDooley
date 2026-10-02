@@ -309,7 +309,7 @@ def main()->int:
         errors.append("missing shared lower-layer visual system: app/lower-layer.css")
     else:
         lower_css=lower_css_path.read_text(encoding="utf-8",errors="replace")
-        for marker in ("body.lower-layer-page","Root ceiling","spiral","--lower-soil","--lower-root","--lower-stone"):
+        for marker in ("body.lower-layer-page","Root ceiling","spiral","--lower-soil","--lower-root","--lower-stone","Salvaged 2026-10-01 visual language","lower-layer-surface::before","lower-layer-surface::after"):
             if marker not in lower_css:
                 errors.append(f"lower-layer visual system missing marker: {marker}")
 
