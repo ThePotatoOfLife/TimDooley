@@ -312,7 +312,7 @@ def inject_universal_tts(text: str, page: Path) -> str:
         return text
     if not re.search(r"<html\b", text, flags=re.I):
         return text
-    if not re.search(r"<main\b", text, flags=re.I):
+    if not quiet and not re.search(r"<main\b", text, flags=re.I):
         return text
     if not re.search(r"</body\s*>", text, flags=re.I):
         return text
