@@ -47,6 +47,7 @@ def copy_tree() -> None:
 
 
 SHARED_ASSETS = (
+    "app/site-tree-perspective.svg",
     "app/room-interior.css",
     "app/bidirectional-spiral-field.css",
     "app/bidirectional-spiral-field.js",
@@ -73,7 +74,8 @@ def fingerprint_shared_assets() -> dict[str, str]:
         pattern = re.compile(rf"({re.escape(basename)})(?:\\?v=[^\"'<>\\s]+)?")
         replacement = rf"\\1?v={digest}"
         changed = 0
-        for page in OUT.rglob("*.html"):
+        targets = [*OUT.rglob("*.html"), *OUT.rglob("*.css")]
+        for page in targets:
             text = page.read_text(encoding="utf-8", errors="replace")
             updated, count = pattern.subn(replacement, text)
             if count:
