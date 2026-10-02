@@ -109,6 +109,7 @@ Public structure: **Countries / Now / Connections / History / Map**. Keep the un
 - [ ] **BUG-BUILD-015 · Build-only feature ownership:** inventory mature features that exist only because `patch_public_navigation.py` mutates generated HTML; move stable features into source/generator ownership and leave the patcher for true universal projection.
 - [ ] **ENH-TTS-016 · Browser interaction audit:** test real play/pause/selection/follow behavior on Bible, Shadow Farm, Below, World Map, A–Z, Beings, Timeline and mobile layouts—not only static marker contracts.
 - [x] **ENH-LINK-017 · Theology → Great Book source link:** link “The Great Book” in the 2024 theology-development paragraph directly to the canonical Great Book reader without changing the surrounding sentence.
+- [x] **BUG-ACCESS-018 · Shared quick-access injector:** repaired double-escaped HTML regexes that prevented the active `site-access` CSS/JS from being injected into built pages; added a regression guard and removed the retired Project Compass runtime/styles.
 
 ## Lower-field conflict integration — 2026-10-01
 
@@ -136,7 +137,7 @@ Acceptance rule: **a reader who knows the noun should be able to find the noun w
 - [x] **NAV-007 · Cross-reader wayfinding:** Tim, Religion, Philosophy, Science, World, Story, Works and Sources now expose an explicit Home route plus obvious sibling/deeper readers while retaining specialist exits.
 - [ ] **NAV-008 · Mobile navigation test:** verify the top routes and Timeline shortcuts remain obvious at narrow widths and do not wrap into an unreadable wall.
 - [ ] **NAV-009 · Breadcrumb consistency:** subject readers should identify where the reader is now, not only where they can go next.
-- [ ] **NAV-010 · Search-to-noun landing test:** for high-value nouns (Tim Dooley, Potato of Life, Timeline, Story, Works, Religion, Science, World, Sources), verify the canonical page title/H1 matches what a search result or human link calls it.
+- [x] **NAV-010 · Search-to-noun landing test:** verified Tim Dooley, Potato of Life, Timeline, Story, Works, Religion, Philosophy, Science, World and Sources; canonical titles/H1s now lead with the noun readers search for. Sources was normalized from an essay-style headline to `SOURCES` on 2026-10-02.
 - [x] **NAV-011 · Timeline deep-link vocabulary:** added stable era anchors and a compact jump rail for 1987–2010, 2011, 2016, 2019–20, 2021–23, 2024, 2025 and 2026 so other pages can target the actual chronological position.
 - [~] **NAV-012 · Navigation dead-end crawl:** added `scripts/audit_navigation_dead_ends.py` to inspect every active public surface and hard-fail major readers that lose a literal Home route or become too sparse. Remaining: review the report for specialist dead ends and ambiguous back arrows.
 
