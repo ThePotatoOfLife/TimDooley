@@ -24,6 +24,11 @@ SHARED_ASSET_NAMES = (
     "site-elevator.js",
     "house-journey.js",
     "body-relational-lens.js",
+    "tts-drawer.css",
+    "tts-reader.js",
+    "tts-drawer.js",
+    "longform-tts-adapter.js",
+    "site-tts.js",
 )
 
 
@@ -311,7 +316,7 @@ def inject_universal_tts(text: str, page: Path) -> str:
     """
     rel = page.relative_to(OUT).as_posix()
     quiet = any(rel.startswith(prefix) for prefix in UNIVERSAL_TTS_QUIET_PREFIXES)
-    if "site-tts.js" in text or "data-tts-longform" in text or "tts-drawer.js" in text:
+    if "site-tts.js" in text or "tts-drawer.js" in text:
         return text
     if not re.search(r"<html\b", text, flags=re.I):
         return text
