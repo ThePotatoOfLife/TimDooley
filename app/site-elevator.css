@@ -630,15 +630,29 @@ html[data-site-floor="below"]{
 html[data-site-floor]{
   --site-scene-y:0px;
   --site-scene-scale:1;
+  --site-scene-travel:-112vh;
+  --site-scene-travel-vh:112;
+  --site-scene-zoom:1.035;
   --site-depth-progress:0;
   --site-depth-max:.18;
 }
 html[data-site-floor="heaven"]{
   --site-depth-tree-opacity:.34;
+  --site-scene-travel:-96vh;
+  --site-scene-travel-vh:96;
+  --site-scene-zoom:1.024;
   --site-depth-max:.22;
 }
 html[data-site-floor="plane"]{
+  --site-scene-travel:-108vh;
+  --site-scene-travel-vh:108;
+  --site-scene-zoom:1.030;
   --site-depth-max:.16;
+}
+html[data-site-floor="below"]{
+  --site-scene-travel:-126vh;
+  --site-scene-travel-vh:126;
+  --site-scene-zoom:1.040;
 }
 html[data-site-floor="heaven"] body:not(.lower-layer-page),
 html[data-site-floor="plane"] body:not(.lower-layer-page){
@@ -701,7 +715,7 @@ html[data-site-floor="plane"] body:not(.lower-layer-page)::after{
 
 @keyframes site-scene-parallax{
   from{transform:translate3d(0,0,0) scale(1)}
-  to{transform:translate3d(0,-112vh,0) scale(1.035)}
+  to{transform:translate3d(0,var(--site-scene-travel,-112vh),0) scale(var(--site-scene-zoom,1.035))}
 }
 @keyframes site-depth-wash{
   from{opacity:var(--site-depth-start,.04)}
