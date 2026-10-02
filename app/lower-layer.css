@@ -49,6 +49,7 @@ body.lower-layer-page::before{
   transform-origin:50% 24%;
   contain:paint;
   backface-visibility:hidden;
+  image-rendering:pixelated;
 }
 
 /* Depth wash: sparse circles and darkness only. The SVG owns roots and spirals. */
