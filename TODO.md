@@ -1414,3 +1414,13 @@ Shared implementation: `app/terrain-circle.css`
 - [x] Add income/wealth/liquidity household example to Economy.
 - [x] Add domain-specific trust model to Philosophy.
 - [ ] Future prose must add a fact, mechanism, distinction, worked example, source or genuinely new synthesis—not just another wise-sounding paragraph.
+
+
+### Concrete completion wave 2
+- [x] Science: causal confounder/collider worked examples and a four-level replication ladder.
+- [x] World Systems: maintenance/P-F logic and a quantified inventory buffer tradeoff.
+- [x] Life & Body: acute-vs-chronic allostasis and a bounded reconsolidation example.
+- [x] Economy: ten-year compounding at 3% vs 7% and identical-mean/different-distribution example.
+- [x] Philosophy: forgiveness/reconciliation separation and finite-resource scarcity case.
+- [x] Culture: cross-domain prestige bias and a stepwise norm-repair mechanism.
+- [ ] Next batch is now specified down to mediator bias, multiple comparisons, common-cause failure, sleep-process dynamics, opportunity cost, courage, pluralistic ignorance and archive-correction propagation.

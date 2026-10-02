@@ -66,6 +66,37 @@
 <p>This generalizes beyond medicine. A system searching millions of transactions for rare fraud, or millions of posts for rare coordinated behavior, must care about the base rate. <strong>The rarer the target, the more carefully a “hit” has to be interpreted.</strong></p>
 <p class="boundary">The numbers above are illustrative, not a diagnostic recommendation. Real tests require condition-specific validation and clinical interpretation.</p>
 </section>
+<section class="science-worked" id="causal-graphs">
+<p class="eyebrow">Association changes when you condition on the wrong variable</p>
+<h2>Two three-variable diagrams explain why “controlling for more things” can either remove bias or create it</h2>
+<p class="lead">Causal graphs are useful because the direction of an arrow matters. The same act—conditioning, stratifying or selecting on a variable—can help in one graph and hurt in another.</p>
+
+<article class="science-case"><div><h3>Confounder</h3><p class="status">Temperature → ice cream · Temperature → drowning</p></div><div>
+<p>Suppose hot weather increases both ice-cream sales and swimming. More swimming creates more opportunity for drowning incidents. If you compare ice-cream sales with drownings without accounting for temperature or season, the two can move together even though buying ice cream is not the causal pathway.</p>
+<p>Graphically: <code>Ice cream ← Temperature → Drowning</code>. Temperature opens a backdoor association between the two observed variables. Comparing within similar temperature conditions, or otherwise adjusting appropriately for the confounder, can reduce that bias.</p>
+</div></article>
+
+<article class="science-case"><div><h3>Collider</h3><p class="status">Ability → selection ← connections</p></div><div>
+<p>Now imagine a hypothetical selection process in which both demonstrated ability and personal connections independently increase the chance of being admitted. In the full applicant pool, ability and connections might be unrelated. But if you examine only the admitted group, you have conditioned on a common effect—a <strong>collider</strong>.</p>
+<p>Among admitted people, someone with weaker connections may have needed stronger ability to cross the threshold, while someone with stronger connections may have crossed with less. Selection itself can therefore create a negative association that did not exist in the full population.</p>
+<p>Graphically: <code>Ability → Admitted ← Connections</code>. Conditioning on the collider can create bias rather than remove it.</p>
+</div></article>
+
+<p><strong>The practical lesson:</strong> “we controlled for more variables” is not automatically a strength. You need a causal reason for why the variable belongs in the adjustment set.</p>
+</section>
+
+<section class="science-worked" id="replication-ladder">
+<p class="eyebrow">Four things that are often called “replication” but prove different things</p>
+<h2>Running the same analysis again is useful—but it is not independent confirmation</h2>
+<div class="science-method">
+<article><b>Re-run the same code</b><p>Checks computational reproducibility: can the same inputs produce the same outputs?</p></article>
+<article><b>Re-analyse the same data</b><p>Checks robustness or sensitivity: do reasonable modelling choices materially change the result?</p></article>
+<article><b>Collect a new sample</b><p>Tests whether a specified finding appears again in new data under similar conditions.</p></article>
+<article><b>Test the idea differently</b><p>Conceptual replication asks whether the underlying claim survives a different operationalization, setting or method.</p></article>
+</div>
+<p>If the project runs ten models on the same archive, that can reveal sensitivity to assumptions; it does not create ten independent observations. If another dataset, population, time period or measurement method produces a similar result, the evidential situation changes more substantially.</p>
+<p><strong>Replication gains strength from new opportunities to be wrong.</strong> Independence matters because repeated exposure to the same hidden error can reproduce the same answer perfectly.</p>
+</section>
 <section class="science-worked" id="plain-sentence">
 <p class="eyebrow">Sometimes the most intelligent sentence is the least enchanted one</p>
 <h2>“We do not know yet” is a result</h2>

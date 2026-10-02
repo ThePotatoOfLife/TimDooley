@@ -58,6 +58,24 @@
 <p>The lesson is not that every hospital, port or help desk follows this exact model. Real systems have multiple servers, priorities, batching, scheduled arrivals and many other complications. The useful point is structural: when arrivals vary, <strong>removing nearly all spare capacity can make waiting explode non-linearly</strong>.</p>
 <p>This is why “idle” capacity is sometimes doing hidden work. Empty beds, spare technicians, reserve transformers, available customer-service staff or slack in a schedule may look inefficient until variability arrives. A system designed only for average load can fail during ordinary peaks without any dramatic external shock.</p>
 </section>
+<section class="systems-reader" id="maintenance-before-failure">
+<p class="eyebrow">Maintenance is the work that keeps success boring</p>
+<h2>A pump does not become reliable on the day somebody repairs it after failure</h2>
+<p>Imagine a municipal water pump with a bearing that gradually wears. Long before the pump stops, inspection may reveal rising vibration, heat or noise. That early detectable change is a <strong>potential failure</strong>; the later point where the pump can no longer perform its required function is a <strong>functional failure</strong>.</p>
+<p>Maintenance engineering often treats the interval between those points as an opportunity. Inspect too rarely and the warning may be missed. Replace everything too early and useful life is thrown away. Wait for breakdown and the repair occurs under pressure, potentially with service interruption and secondary damage.</p>
+<p><strong>Preventive maintenance</strong> acts on a schedule or usage threshold. <strong>Condition-based maintenance</strong> acts on measured deterioration. <strong>Corrective maintenance</strong> restores function after a fault is found or failure occurs. None is universally best; the choice depends on consequence, detectability, replacement time and cost.</p>
+<p>The systems lesson is simple: reliability is often produced by work whose success is invisible because the dramatic event never happens.</p>
+</section>
+
+<section class="systems-reader" id="inventory-buffer">
+<p class="eyebrow">A buffer has a visible cost and an invisible option</p>
+<h2>Quantify one small resilience decision</h2>
+<p>Suppose a workshop consumes 100 units of a critical input per day and normal replenishment takes two days. Ignoring variability, it needs roughly 200 units to cover normal lead time.</p>
+<p>Now add 300 units of safety stock. That extra inventory can cover approximately <strong>three additional days</strong> of demand if a supplier shipment is delayed. If holding that inventory costs a hypothetical 0.10 monetary units per item per day, the buffer costs <strong>30 units per day</strong> to maintain.</p>
+<p>The tradeoff is now visible. Without the buffer, normal operation is cheaper but a three-day supply interruption can halt production. With the buffer, the system pays every day for an option it may rarely use.</p>
+<p>A good resilience analysis asks more than “is inventory wasteful?” It compares carrying cost, disruption probability, interruption cost, replenishment time, perishability and whether the backup supply shares the same failure mode as the primary supplier.</p>
+<p class="boundary">The numbers are illustrative. Real inventory policy depends on demand variability, service targets, lead-time distributions and the cost structure of the specific system.</p>
+</section>
 <section class="systems-reader" id="how-systems-work">
 <p class="eyebrow">Relationship-first analysis</p>
 <h2>A system becomes visible when you follow what depends on what</h2>

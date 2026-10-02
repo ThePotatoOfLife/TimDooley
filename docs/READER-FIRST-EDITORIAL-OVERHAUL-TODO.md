@@ -414,7 +414,7 @@ For every major symbolic page:
 The new sections expose another set of gaps worth turning into work.
 
 - [ ] **Philosophy · Trust:** distinguish confidence, reliability, vulnerability, verification and forgiveness. Trust should be domain-specific rather than a single yes/no status.
-- [ ] **Philosophy · Forgiveness:** distinguish releasing vengeance, moral pardon, restored trust and reconciliation.
+- [x] **Philosophy · Forgiveness:** distinguish releasing vengeance, moral pardon, restored trust and reconciliation.
 - [ ] **Philosophy · Scarcity:** explain how scarcity changes ethics, coordination, hoarding, price and perceived threat; connect abundance language to real resource constraints.
 - [ ] **Philosophy · Attention:** deepen attention as a scarce cognitive resource with opportunity cost, habit formation and salience.
 - [ ] **Philosophy · Courage:** distinguish courage from risk-seeking; courage requires a valued aim under acknowledged risk.
@@ -426,14 +426,14 @@ The new sections expose another set of gaps worth turning into work.
 - [ ] **Tim · relationships:** still needed. Build arcs around changing relation rather than static role labels.
 - [ ] **Tim · unresolved tensions:** still needed: independence/network, exposure/privacy, certainty/correction, endurance/rest.
 - [ ] **Science · base rates:** teach why rare-event claims require attention to prevalence, false positives and selection.
-- [ ] **Science · causal graphs:** introduce collider/confounder/mediator using ordinary examples before project network models.
-- [ ] **Science · replication:** explain why repeating an analysis on the same archive is not independent replication.
-- [ ] **Body · stress/recovery:** deepen acute versus chronic stress, allostasis and why adaptation has costs.
-- [ ] **Body · memory:** explain reconsolidation carefully: recall can update memories without implying memories are arbitrary.
-- [ ] **World Systems · maintenance:** write a reader on why boring maintenance often produces more resilience than spectacular construction.
+- [x] **Science · causal graphs:** introduce collider/confounder/mediator using ordinary examples before project network models.
+- [x] **Science · replication:** explain why repeating an analysis on the same archive is not independent replication.
+- [x] **Body · stress/recovery:** deepen acute versus chronic stress, allostasis and why adaptation has costs.
+- [x] **Body · memory:** explain reconsolidation carefully: recall can update memories without implying memories are arbitrary.
+- [x] **World Systems · maintenance:** write a reader on why boring maintenance often produces more resilience than spectacular construction.
 - [ ] **World Systems · queues:** explain why utilization near 100% can cause waiting times to rise sharply in variable systems.
-- [ ] **Culture · prestige bias:** deepen why people copy high-status actors even when status was earned in another domain.
-- [ ] **Culture · norm repair:** concrete mechanisms for changing a norm without merely declaring a new rule.
+- [x] **Culture · prestige bias:** deepen why people copy high-status actors even when status was earned in another domain.
+- [x] **Culture · norm repair:** concrete mechanisms for changing a norm without merely declaring a new rule.
 - [ ] **Works · medium cross-test:** take one concept (Door or Garden) through prose, image, song, game and code to show what each medium reveals.
 - [ ] **FAQ · reading modes:** let readers choose skeptical, devotional, historical, scientific or creative paths without changing underlying evidence.
 
@@ -592,15 +592,54 @@ Do **not** add prose merely because:
 
 ### Next items must be this concrete
 
-- [ ] **Science · causal graphs:** one three-variable confounder example and one collider example, with explicit “conditioning here creates/removes bias” explanation.
-- [ ] **Science · replication:** distinguish re-running code, re-analyzing the same dataset, collecting a new sample and independent conceptual replication.
-- [ ] **World Systems · maintenance:** one infrastructure asset whose failure probability grows when inspection/replacement is deferred; explain preventive vs corrective maintenance.
-- [ ] **World Systems · buffers:** quantify one inventory-buffer example so resilience has a visible cost/benefit tradeoff.
-- [ ] **Life & Body · allostasis:** show one day of acute stress versus weeks of chronic activation; name what adapts and what the adaptation costs.
-- [ ] **Life & Body · memory:** use one ordinary recalled event to explain retrieval + reconsolidation without implying memory is freely editable fiction.
-- [ ] **Economy · interest compounding:** one fixed principal at two interest rates over ten years; make time cost visible.
-- [ ] **Economy · distribution:** construct two populations with the same average income but different distributions.
-- [ ] **Philosophy · forgiveness:** one concrete harm scenario separating vengeance release, pardon, trust restoration and reconciliation.
-- [ ] **Philosophy · scarcity:** one resource-allocation case where abundance rhetoric collides with finite beds/time/energy.
-- [ ] **Culture · prestige bias:** one case where expertise in domain A is incorrectly imported into domain B.
-- [ ] **Culture · norm repair:** one before/after mechanism—private dissent → visible dissent → changed expectation → new norm—without assuming declarations alone change behavior.
+- [x] **Science · causal graphs:** one three-variable confounder example and one collider example, with explicit “conditioning here creates/removes bias” explanation.
+- [x] **Science · replication:** distinguish re-running code, re-analyzing the same dataset, collecting a new sample and independent conceptual replication.
+- [x] **World Systems · maintenance:** one infrastructure asset whose failure probability grows when inspection/replacement is deferred; explain preventive vs corrective maintenance.
+- [x] **World Systems · buffers:** quantify one inventory-buffer example so resilience has a visible cost/benefit tradeoff.
+- [x] **Life & Body · allostasis:** show one day of acute stress versus weeks of chronic activation; name what adapts and what the adaptation costs.
+- [x] **Life & Body · memory:** use one ordinary recalled event to explain retrieval + reconsolidation without implying memory is freely editable fiction.
+- [x] **Economy · interest compounding:** one fixed principal at two interest rates over ten years; make time cost visible.
+- [x] **Economy · distribution:** construct two populations with the same average income but different distributions.
+- [x] **Philosophy · forgiveness:** one concrete harm scenario separating vengeance release, pardon, trust restoration and reconciliation.
+- [x] **Philosophy · scarcity:** one resource-allocation case where abundance rhetoric collides with finite beds/time/energy.
+- [x] **Culture · prestige bias:** one case where expertise in domain A is incorrectly imported into domain B.
+- [x] **Culture · norm repair:** one before/after mechanism—private dissent → visible dissent → changed expectation → new norm—without assuming declarations alone change behavior.
+
+
+## Next concrete wave — now specific enough to build
+
+### Science
+- [ ] **Mediator vs confounder:** use exercise → fitness → resting heart rate to show why adjusting for a mediator can erase part of the effect one is trying to estimate.
+- [ ] **Multiple comparisons:** simulate 20 independent tests at a 5% threshold and explain why at least one false positive becomes unsurprising; distinguish exploratory from confirmatory analysis.
+- [ ] **Calibration:** give two forecasters who are both 70% accurate but differently calibrated; explain why confidence quality matters beyond hit rate.
+- [ ] **Measurement error:** show how noisy measurement can attenuate an observed relationship and why repeated measurements can help.
+
+### World Systems
+- [ ] **Common-cause failure:** two “redundant” backup systems both depend on the same substation; show why duplication is not independence.
+- [ ] **Recovery time:** compare a cheap part with a six-month replacement lead time against an expensive part stocked locally; make recovery-time objective explicit.
+- [ ] **Preventive-maintenance economics:** one asset with inspection cost, expected downtime cost and replacement threshold; show how maintenance decisions become expected-cost questions.
+- [ ] **Capacity planning:** distinguish average load, peak load and tail risk with one simple service-demand series.
+
+### Life & Body
+- [ ] **Two-process sleep model:** one day showing circadian wake drive and homeostatic sleep pressure moving separately.
+- [ ] **Interoception:** use heartbeat, breathlessness and hunger to explain how internal signals become perception rather than raw meters.
+- [ ] **Adaptation vs damage:** one exercise example where repeated load builds capacity and one overuse example where insufficient recovery accumulates injury.
+- [ ] **Memory source monitoring:** show how remembering a fact can become separated from remembering where the fact came from.
+
+### Economy
+- [ ] **Opportunity cost:** one evening with three mutually exclusive uses of time; explain why the cost of a choice is the best foregone alternative, not every alternative added together.
+- [ ] **Risk diversification:** compare one concentrated asset with five imperfectly correlated assets using simple hypothetical returns.
+- [ ] **Inflation composition:** show identical headline inflation produced by different baskets, making household experience diverge.
+- [ ] **Fixed vs variable debt:** same principal, same starting rate, different reset structure; show why refinancing risk matters.
+
+### Philosophy
+- [ ] **Attention:** give a finite-hour day and show why every sustained attention commitment excludes alternatives; connect salience, habit and chosen value.
+- [ ] **Courage:** one case where fear is appropriate but action remains justified; contrast with thrill-seeking where risk itself is the reward.
+- [ ] **Responsibility:** separate causal responsibility, role responsibility, moral blame and repair obligation using one workplace mistake.
+- [ ] **Acceptance:** one irreversible event where accepting the fact is necessary for action but does not imply approval or forgiveness.
+
+### Culture
+- [ ] **Pluralistic ignorance with numbers:** ten-person group where eight privately disagree but each estimates most others agree; show how one public signal can update expectations.
+- [ ] **Information cascade:** sequential choices where later people copy earlier choices despite private contrary signals.
+- [ ] **Archive correction propagation:** one false caption spreads to five reposts; correction reaches only two; show why correction must attach to the durable object, not only the original post.
+- [ ] **Role retirement:** define explicit closure criteria for when a descriptive label should become historical rather than current.
