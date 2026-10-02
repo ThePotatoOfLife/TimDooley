@@ -174,8 +174,10 @@
       const maxScroll=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);
       const progress=Math.max(0,Math.min(1,scrollY/maxScroll));
       const viewport=Math.max(1,window.innerHeight);
-      const maxTravel=viewport*1.08;
-      const parallax=-Math.min(scrollY*.46,maxTravel);
+      const maxTravel=viewport*1.12;
+      const halfSpeedTravel=scrollY*.46;
+      const fullPageTravel=progress*maxTravel;
+      const parallax=-Math.min(halfSpeedTravel,fullPageTravel);
       const scale=1+(progress*.035);
       root.style.setProperty('--site-scene-y',parallax.toFixed(2)+'px');
       root.style.setProperty('--site-scene-scale',scale.toFixed(4));
