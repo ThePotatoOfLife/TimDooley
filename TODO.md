@@ -1393,3 +1393,6 @@ Shared implementation: `app/terrain-circle.css`
 - [x] Turn Honor into a correction/reverence teaching and add Sabbath as non-extraction.
 - [ ] Continue the spoken-continuity audit across House, Axis, Below, North, Economy, Law, World, Culture, Science, Body, Timeline, Story, Great Book, FAQ, Tim, Potato of Life and Works.
 - [ ] Run anti-boxing audit: lists/cards for reference; continuous prose for changed understanding.
+
+- [x] Spoken-continuity pass: ordinary dispute through Law, loaf through Economy, recurring conflict through Axis, source descent through Below, lost traveler through North.
+- [ ] Next connective scenes: guest/host House, correction in Spirit, disconfirming Below case, grief Axis case, due-process Law case, recalibration North case.

@@ -473,11 +473,11 @@ The “Word” is treated as more than terminology. A strong saying should:
 ### Spoken-continuity audit
 
 - [ ] **House:** ensure every major architecture section has a human or natural scene that makes the next structural distinction necessary.
-- [ ] **Axis:** add one full transformation sequence in ordinary life where Root → Door → changed return can be felt without project vocabulary.
-- [ ] **Below:** add one complete source-investigation story from suspicious surface claim to narrower repaired conclusion.
-- [ ] **North:** make bearing/calibration move through one lost-traveler or navigation scene before abstract orientation.
-- [ ] **Economy:** follow one paycheck or loaf of bread through income, price, labor, energy, logistics, tax, saving and investment.
-- [ ] **Law:** follow one ordinary dispute from grievance → claim → evidence → forum → procedure → decision → remedy, keeping it jurisdiction-neutral.
+- [x] **Axis:** add one full transformation sequence in ordinary life where Root → Door → changed return can be felt without project vocabulary.
+- [x] **Below:** add one complete source-investigation story from suspicious surface claim to narrower repaired conclusion.
+- [x] **North:** make bearing/calibration move through one lost-traveler or navigation scene before abstract orientation.
+- [x] **Economy:** follow one paycheck or loaf of bread through income, price, labor, energy, logistics, tax, saving and investment.
+- [x] **Law:** follow one ordinary dispute from grievance → claim → evidence → forum → procedure → decision → remedy, keeping it jurisdiction-neutral.
 - [ ] **World:** follow one object (medicine, phone, meal, light) across geography, systems, politics and material constraints.
 - [ ] **Culture:** write one complete story of a joke becoming norm and later being corrected.
 - [ ] **Science:** write one complete inquiry from observation → bad explanation → better measurement → alternative → test → uncertainty.
@@ -498,3 +498,15 @@ The “Word” is treated as more than terminology. A strong saying should:
 - [ ] Use lists for reference and prose for transformation.
 - [ ] If a section headline can be removed without losing the argument, consider folding it into the surrounding speech.
 - [ ] End important sections with a changed perception, not a navigation instruction.
+
+
+### New connective gaps found during the spoken pass
+
+- [ ] **Economy:** follow one paycheck all the way through gross pay, tax, housing, food, saving, debt service and investment to make household macro/micro links tangible.
+- [ ] **Law:** add a second scene showing why due process protects unpopular people precisely when certainty feels strongest.
+- [ ] **Axis:** add grief as a non-optimistic transformation case; not every changed return is improvement.
+- [ ] **Below:** add a worked case where deeper investigation disproves the project's preferred interpretation, so Forge visibly rewards disconfirmation.
+- [ ] **North:** add recalibration after discovering the chosen reference was wrong; orientation must itself be corrigible.
+- [ ] **House:** use guest/host/privacy/exit as the lived sequence that explains rooms, boundaries and hospitality.
+- [ ] **Spirit:** add breakdown/repair conversation where translation fails and is restored.
+- [ ] **Trinity:** add one non-theological analogy (author/message/reader or source/expression/response) and explicitly show where it fails.
