@@ -771,11 +771,8 @@ html[data-site-floor="heaven"] body:not(.lower-layer-page)::before{
 }
 html[data-site-floor="plane"] body:not(.lower-layer-page)::before{
   background-image:url("./site-plane-organic-field.svg");
-  opacity:.72;
+  opacity:.68;
   background-size:max(1100px,112vw) auto;
-  filter:saturate(.82) contrast(.94);
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);
-  mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);
 }
 
 html[data-site-floor="heaven"] body:not(.lower-layer-page)::after,
