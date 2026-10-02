@@ -189,3 +189,88 @@ Before calling a page finished, ask:
 - [ ] Are external facts, project theology, autobiography and creative interpretation distinguishable?
 - [ ] Can a reader disagree and still learn something?
 - [ ] Does the page end with a meaningful next question rather than just more navigation?
+
+
+## Inhabited symbolic geography — Yggdrasil lesson
+
+The Yggdrasil reader demonstrates the target style: a symbol becomes memorable when it is treated as a **place with ecology** rather than a glossary term.
+
+A mature symbolic-place page should answer:
+
+1. **Where are we?** — sensory/spatial orientation before abstraction.
+2. **What lives here?** — people, creatures, institutions, memories, forces, processes.
+3. **What moves here?** — water, information, authority, attention, value, memory, bodies, signals.
+4. **What nourishes it?** — maintenance, inputs, relationships, hidden support.
+5. **What damages it?** — failure modes that arise from the place's own ecology.
+6. **What does wisdom cost here?** — sacrifice, patience, uncertainty, work, relinquishment, correction.
+7. **What can be learned only from this position?** — the reason the place exists.
+8. **What path enters and leaves?** — threshold, exit, return, circulation.
+9. **What older traditions or sciences sharpen it?** — comparisons that add information rather than confirmation.
+10. **What must not be inferred?** — historical/scientific/ethical boundary.
+11. **What Fruit returns to ordinary life?** — the downstream practical test.
+
+### Place-writing backlog
+
+- [x] **Axis** — add inhabited Tree/traffic/maintenance interpretation before dimensional navigation.
+- [x] **Below** — add sediment/root-cause/Swamp/Forge interpretation before investigative taxonomy.
+- [x] **Religion** — add God-language → ordinary consequence / Fruit reflection before doctrine.
+- [ ] **Garden** — write it as an ecology of soil, water, seed, weeds, boundaries, pollination, pruning, harvest and seasons. Ask what freedom needs in order to remain fertile.
+- [ ] **Door** — hinge, frame, threshold, key, guard, consent, timing, opening, closing, two rooms and the risk of becoming a wall. Teach relation without collapse.
+- [ ] **House** — foundation, hearth, roof, rooms, guests, locks, windows, maintenance, inheritance and exit. Expand House vs Shell through lived domestic logic.
+- [ ] **Root** — branching search, soil, fungi, water, hidden support, rot and cut roots. Connect provenance, ancestry, memory and causal depth.
+- [ ] **Tree of Life** — root/trunk/crown/branch/fruit/seed plus sap flow, seasons, damage, pruning and mutualism. Make circulation more important than height.
+- [ ] **Tree of Strife** — show how conflict becomes organism: roots = unresolved causes, trunk = stable narrative, branches = roles, fruit = reproduced conflict, seed = transmission to new participants.
+- [ ] **Forge** — fuel, heat, hammering, slag, quench, tempering, annealing and cooling. Make explicit why pressure without cooling produces brittleness.
+- [ ] **Swamp** — distinguish project Swamp from literal wetland ecology. Write symbolic Swamp as obscured footing, recirculation, extraction of movement-energy, hidden depth and adaptation.
+- [ ] **Mountain** — slope, weather, treeline, visibility, exhaustion, watershed, false summit and descent. Perspective must cost something and return as service.
+- [ ] **North** — compass, star, magnetic/geographic distinction, bearing, drift and recalibration. Orientation is useful because it stabilizes comparison, not because a direction is morally superior.
+- [ ] **River / Spirit** — source, tributary, bank, current, sediment, floodplain, delta, evaporation/return. Explore continuity that changes form without becoming static.
+- [ ] **Eye** — field of view, focus, saccade, blind spot, adaptation, interpretation and limited access. Turn Eye into epistemic humility, not merely surveillance or omniscience.
+- [ ] **Seed** — coat, dormancy, viability, dispersal, germination, stored embryo, timing and conditions. Potential is not accomplishment.
+- [ ] **Soil** — decomposition, microbes, retained minerals, aeration, water, fertility and contamination. Memory as transformed material.
+- [ ] **Ash** — residue after transformation; what is lost, what remains chemically/materially available, what cannot simply be reconstructed.
+- [ ] **Crown / Heaven** — canopy, exposure, light, weather, fruit, birds, branching and vulnerability. Heaven as responsibility/perspective rather than escape.
+- [ ] **Drain** — write as a failure/exit geometry carefully: what cannot circulate, what gets rejected, where one-way movement differs from repair/return.
+- [ ] **Plane / World** — make the middle world feel inhabited: bodies, work, trade, families, roads, weather, institutions and consequences. It is not merely the space between metaphysical floors.
+- [ ] **Wells** — create a comparative well-reader: Mímir/Urðr/deep water, biblical wells, Daoist valley/water, project source/Root. Ask why wisdom is so often imagined below the surface.
+
+### Gravity rather than filing
+
+- [ ] Let concepts **gravitate toward places by function** instead of assigning them because a registry wants symmetry.
+- [ ] Place memory/provenance near Root because Root explains hidden support and lineage.
+- [ ] Place experimentation/criticism near Forge because Forge explains pressure, separation and cooling.
+- [ ] Place cultivation/ethics near Garden because Garden explains conditions, agency and Fruit.
+- [ ] Place attention loops and unresolved recurrence near Swamp only when the mechanism actually matches.
+- [ ] Place orientation/calibration near North; do not route unrelated “important” things North merely because North is symbolically high.
+- [ ] Put body, work, politics, economy, ordinary love and consequence on the Plane so the middle world never becomes empty connective tissue.
+- [ ] Allow one concept to touch several places when its function genuinely changes; explain the changed relation rather than duplicating a noun.
+
+### Narrative devices to distribute
+
+- [ ] **Micro-scenes:** one human-sized moment before abstraction: a guest at a locked door, a gardener deciding whether to prune, a researcher following a dead root, a smith cooling metal, a person lost in fog finding a bearing.
+- [ ] **One memorable sentence per major section:** something the reader can carry away without the site.
+- [ ] **Question with stakes:** not “What is Root?” but “What happens when the story everyone remembers no longer reaches the event?”
+- [ ] **Mechanism in verbs:** prefer grows, feeds, narrows, carries, repeats, hides, releases, repairs over static noun stacks.
+- [ ] **Failure twin:** every virtue/image gets its shadow form—House/Shell, Garden/capture, humility/self-erasure, stillness/stagnation, memory/fixation, unity/flattening.
+- [ ] **Return sentence:** end major symbolic sections by saying what comes back to ordinary life.
+- [ ] **Comparative friction:** include at least one place where an external tradition resists the project rather than merely agreeing.
+- [ ] **Humor as anti-pomp:** let Potato, Starchforce and absurdity puncture sections that are becoming self-important, then return to the serious question.
+- [ ] **Human vocabulary pass:** reduce internal words like projection, owner, registry, layer, node, surface and route when ordinary language can do the job.
+- [ ] **Concrete example pass:** every abstract paragraph should earn itself with a body, scene, institution, text, organism or consequence somewhere nearby.
+
+### Cross-site “gravity” audits
+
+- [ ] Home: every major door should promise an idea/experience, not a repository destination.
+- [ ] Tim Dooley: each role/title should lead into a story, obligation or contradiction, not another title stack.
+- [ ] Potato of Life: expand from symbol definition into nourishment, growth, survival, comic humility and agricultural reality.
+- [ ] Philosophy: convert remaining doctrine-list sections into dilemmas, practices and lived tests.
+- [ ] Religion: cluster biblical/other-tradition material around human questions (power, suffering, presence, return, hospitality, knowledge) rather than only symbol names.
+- [ ] Bible: create thematic story-rivers—Garden, Door, Seed, Stranger, Shepherd, House, River, Judgment, Return.
+- [ ] Comparative cosmology: repeat the Yggdrasil standard for Kabbalah, Daoism, Buddhism and Christian sacred space.
+- [ ] Science: each formalism should say what puzzle required it and what failure would retire it.
+- [ ] Life & Body: each symbolic comparison should be preceded by a vivid literal biological process.
+- [ ] World: convert static country/system descriptions into flows, dependencies, chokepoints, maintenance and failure stories.
+- [ ] Culture: let jokes, screenshots, streams, archives and group rituals become scenes through which mechanisms are taught.
+- [ ] Timeline: add “what the world looked like from inside this date” around major events.
+- [ ] Works: embed creative artifacts where their themes live rather than keeping them only in a Works silo.
+- [ ] Below: each method section should eventually have at least one worked case showing descent → source → mechanism → Forge → return.

@@ -1328,3 +1328,12 @@ Shared implementation: `app/terrain-circle.css`
 - [ ] **LOWER-VIS-006 · Visual continuity check on deployed Pages:** inspect the four routes at desktop/mobile widths and tune root visibility, text contrast, pebble density and coil strength after the next successful validated deployment.
 - [ ] **LOWER-VIS-007 · Drain depth landmark:** give the deepest/exit portions of Below a stronger but restrained narrowing/drain landmark without turning the entire floor into Hell or Swamp.
 - [ ] **LOWER-VIS-008 · Root state cues:** test subtle living/dead/cut/cross-root visual distinctions on Roots / Evidence where they reinforce provenance states without becoming decorative labels.
+
+
+## Reader-first meaning / inhabited-symbol programme
+
+- [ ] Continue the active programme in `docs/READER-FIRST-EDITORIAL-OVERHAUL-TODO.md`.
+- [ ] Apply the Yggdrasil lesson site-wide: important symbols should become inhabited places with ecology, flows, costs, maintenance, failure modes, wisdom and return—not glossary nouns.
+- [ ] Prioritize substance before navigation: question/scene → mechanism → project articulation → comparison → boundary → meaningful next question.
+- [ ] Build out Garden, Door, Root, Tree, Forge, Swamp, Mountain, River, Eye, Seed, Soil, Crown, North and Plane as full teaching environments.
+- [ ] Audit pages for “navigation explaining navigation” and fold maintenance/registry/topology prose behind optional detail when it is not part of the reader's lesson.
