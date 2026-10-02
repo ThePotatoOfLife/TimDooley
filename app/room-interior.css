@@ -21,3 +21,17 @@
 .room-ledger h3{font:400 21px var(--site-font-serif);color:var(--site-gold);margin:0 0 7px}
 .room-ledger p{color:var(--site-muted);margin:0 0 16px;line-height:1.7}
 .inline-route{display:inline-block;margin-right:12px;margin-top:6px}
+
+
+/* Room language: each Room should teach a native vocabulary, not only contain facts. */
+.room-language{max-width:860px;margin:30px 0 36px;padding:22px 0;border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line)}
+.room-language-head{display:grid;grid-template-columns:minmax(180px,.52fr) minmax(0,1.48fr);gap:22px;align-items:start;margin-bottom:16px}
+.room-language-head h2{margin:2px 0 0;font:400 clamp(27px,4vw,40px)/1.08 var(--site-font-serif);color:var(--site-gold)}
+.room-language-head p{margin:3px 0 0;color:var(--site-muted);line-height:1.6}
+.room-language-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.room-word{padding:13px 14px;border:1px solid var(--site-line);border-radius:10px;background:color-mix(in srgb,var(--site-panel) 82%,transparent)}
+.room-word b{display:block;color:var(--site-ink);font:400 18px/1.18 var(--site-font-serif);margin-bottom:4px}
+.room-word em{display:block;color:var(--site-gold);font:700 9px/1.35 var(--site-font-sans);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+.room-word p{margin:0;color:var(--site-muted);font-size:12px;line-height:1.52}
+.room-language-carry{margin:15px 0 0;color:#d6d1c7;font:400 15px/1.62 var(--site-font-serif)}
+@media(max-width:700px){.room-language-head,.room-language-grid{grid-template-columns:1fr}.room-language{margin:24px 0 30px}}
