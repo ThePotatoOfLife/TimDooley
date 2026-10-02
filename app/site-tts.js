@@ -76,7 +76,7 @@
     return host;
   }
 
-  function configureAutomaticHost(){
+  function configureAutomaticHost(options={}){
     if(doc.querySelector('[data-tts-longform]'))return false;
     const main=chooseRoot();if(!main||main.matches('[data-tts-skip]'))return false;
     const id=ensureId(main);
@@ -89,14 +89,15 @@
     host.dataset.ttsAllLabel='Whole page';
     host.dataset.ttsCurrentLabel='Current section';
     host.dataset.ttsSelectionLabel='Selection';
-    host.dataset.ttsItem='[data-site-tts-section]';
+    if(options.selectionOnly)host.dataset.ttsSelectionOnly='true';
+    host.dataset.ttsItem=options.selectionOnly?'':'[data-site-tts-section]';
     host.dataset.ttsExclude=INTERACTIVE_EXCLUDE;
     return true;
   }
 
   async function boot(){
-    if(QUIET_ROUTES.some(route=>location.pathname.includes(route)))return;
-    configureAutomaticHost();
+    const quiet=QUIET_ROUTES.some(route=>location.pathname.includes(route));
+    configureAutomaticHost({selectionOnly:quiet});
     if(!doc.querySelector('[data-tts-longform]'))return;
     const hosts=[...doc.querySelectorAll('[data-tts-longform]')];
     const duplicatePrimary=hosts.filter(x=>x.dataset?.ttsPrimary!==undefined);
