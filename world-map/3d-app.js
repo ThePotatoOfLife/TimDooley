@@ -21,6 +21,8 @@ if (!geoKernel?.antimeridianAwareBounds) throw new Error('World Map geospatial k
 const motion = window.__potatoAtlasMotion;
 if (!motion?.easeTo || !motion?.fitBounds) throw new Error('World Map motion policy unavailable.');
 
+const resources = window.__potatoAtlasResources;
+if (!resources?.fetchJson) throw new Error('World Map shared resource cache unavailable.');
 const status = $('#status');
 function setStatus(message, kind='info') {
   if (!status) return;
@@ -32,11 +34,7 @@ function setStatus(message, kind='info') {
 let geo, rest, index, worldCfg;
 try {
   setStatus('Loading geography and canonical country data…');
-  [geo, rest, index, worldCfg] = await Promise.all(Object.values(URL).map(async u => {
-    const r = await fetch(u);
-    if (!r.ok) throw new Error(`${r.status} ${u}`);
-    return r.json();
-  }));
+  [geo, rest, index, worldCfg] = await Promise.all(Object.values(URL).map(url => resources.fetchJson(url)));
   setStatus('');
 } catch (error) {
   console.error(error);
