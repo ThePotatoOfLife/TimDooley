@@ -99,7 +99,7 @@ window.__potatoAtlasDiagnostics = {
   startedAt:now(), startedAtIso:new Date().toISOString(), deploymentVersion:ATLAS_VERSION || 'unversioned-source',
   coreReadyMs:null, interactiveMs:null, modules:{},
   scalarCompositions:0, scalarFeatureStateBatches:0, countryCardRenders:0, inspectorRenders:0,
-  cardEnhancementPasses:0, inspectorEnhancementPasses:0, specialistLazyLoads:0,
+  cardEnhancementPasses:0, inspectorEnhancementPasses:0,
 };
 window.__potatoAtlasReady = false;
 window.__potatoAtlasLoadModule = loadAfterPaint;
