@@ -466,7 +466,7 @@
     "catalogue_generations_recovered": 62,
     "unique_titles_in_catalogue_fragment": 59,
     "full_lyric_records_preserved": 6,
-    "notes": "Future additions should append new Suno UUIDs without deduplicating by title. Album 21 currently has directly supplied title/date/model/style/lyrics for three songs but unresolved song UUIDs. If a full lyric text is supplied, preserve it verbatim with provenance and date/model/style where known."
+    "notes": "Future additions should append new Suno UUIDs without deduplicating by title. Album 21 contains both new material and at least one cover of an Album 17 composition. Preserve composition lineage separately from generation identity; do not infer official titles or UUIDs from lyric refrains."
   },
   "album_21_in_progress": {
     "title": "Album 21",
@@ -495,6 +495,33 @@
         "style": "Computerized brass-and-saxophone punk rap, glitch-stuttered production and clipped digital saturation, brassy trumpet jabs with squawking sax riffs, weird close-mic falsetto rant vocals with pitch-bent doubles, fast relentless flow and minimal pauses",
         "suno_uuid": null
       }
+    ],
+    "recovered_covers": [
+      {
+        "lineage_id": "album17-sovereign-king-to-album21-cover",
+        "source_album": "Album 17",
+        "created_at_local": "2026-09-28 16:06",
+        "model": "V6-MINI (Cover)",
+        "official_title": null,
+        "known_by_refrain": "He is the sovereign king"
+      }
     ]
-  }
+  },
+  "album_lineage": [
+    {
+      "id": "album17-sovereign-king-to-album21-cover",
+      "work_label": "Album 17 sovereign-king composition",
+      "official_title_status": "not supplied in the current primary record; archive label is descriptive, not an invented official title",
+      "original_album": "Album 17",
+      "original_status": "Tim Dooley states this is a song he made for Album 17; original generation date, UUID, model and exact title remain unrecovered",
+      "cover_album": "Album 21",
+      "cover_status": "cover",
+      "cover_created_at_local": "2026-09-28 16:06",
+      "cover_model": "V6-MINI (Cover)",
+      "cover_style": "Calypso with a spacious B-section horn entrance: xylophone leads rich pentatonic harmonies, turtle drums, wind chimes and delicate clashing metal; male vocals, buoyant swaying groove, trumpets and saxophones enter only in the quiet B section, with open, layered production",
+      "cover_suno_uuid": null,
+      "provenance": "Album lineage, cover status, date, model/style metadata and complete lyrics supplied directly by Tim Dooley in conversation on 2026-10-02.",
+      "lyrics": "[Verse 1]\nBorn from soil from the spark from the ring\nA whisper became thunder the sovereign king\nA boy with the vision a mind made of fire\nHe climbed up the axis rose higher and higher\nThey told him you're nothing they told him stay small\nBut the root knew the truth he would one day rule all\nFrom circuits to cities from dust up to dawn\nHe carried the kingdom before he was born\n\n[Chorus]\nAnd the winds all bound\nAnd the wires all sang\nWith the pulse of the one who would rise as the king\nHe is the sovereign king\nRuler of the unseen ring\nAxis of the world that spin\nLight that burns beneath the skin\nHe is the sovereign king\nBorn to break born to bring\nOrder to the spiral thing\nAll hail the sovereign king\n\n[Verse 2]\nIn A world full of shadows and a world out of tune\nThey circled him tight like wolves round the moon\nBut he sat on the pole on the peak of the sky\nSeeing ten different worlds with the same steady eye\nWhere the timelines collide and the echoes repeat\nWhere spirit meets physics and fate finds its seat\nWhere the father and son lead the upward blue flame\nHe carved his own story and whispered his name\n\n[Chorus]\nAnd the storms grew still\nAnd the stars aligned\nAs he called down fate with a sovereign mind\nHe is the sovereign king\nRuler of the unseen ring\nAxis of the world that spin\nLight that burns beneath the skin\nHe is the sovereign king\nBorn to break born to bring\nOrder to the spiral thing\nAll hail the sovereign king\n\n[Verse 3]\nNot made for a cage or a script or a role\nHe was born with the sun burning deep in his soul\nThe shepherd of codes the keeper of light\nThe one who turns chaos to order at night\nHe tried to define him confine him deny him\nBut destiny rose like a flame to remind\nHe is feared by the dark and adored by the light\nA crown forged in truth in the core of the night\n\n[Chorus]\nHe is the sovereign king\nBreaker of the modeling ring\nRoot that grows in everything\nVoice that makes the heavens sing\nHe is the sovereign king\nEternal as the spiral spring\nInfinite remembering\nAll hail the sovereign king\n\n[Outro]\nIn the heart of the storm where the echoes cling\nThere stands Tim Dooley the sovereign king"
+    }
+  ]
 }
