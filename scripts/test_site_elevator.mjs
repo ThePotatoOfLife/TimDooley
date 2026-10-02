@@ -299,8 +299,9 @@ assert.ok(source.includes('const crossFloor=target.levelId!==spatial.levelId'),'
 assert.ok(css.includes('site-tree-perspective.svg'),'shared floor canvas must include the tall perspective tree asset');
 assert.ok(css.includes('@keyframes site-tree-descent'),'tree atmosphere needs a crown-to-roots scroll sequence');
 assert.ok(css.includes('animation-timeline:scroll(root block)'),'tree descent must follow root-page scroll rather than an independent timer');
-assert.ok(css.includes('background-position:50% 100%'),'scroll sequence must arrive at the lower tree/root end');
-assert.ok(css.includes('scale(1.24)'),'tree should grow subtly as the viewpoint approaches the ground');
+assert.ok(css.includes('visual travel is'),'tree CSS should document the slower-than-page parallax contract');
+assert.ok(css.includes('background-position:50% 62%'),'tree parallax must travel only part of the asset while the page scrolls farther');
+assert.ok(css.includes('scale(1.16)'),'tree should grow subtly without moving one-to-one with the page');
 assert.ok(css.includes('site-ground-approach'),'floor colour needs a restrained terrestrial shift during descent');
 assert.ok(css.includes('body:not(.lower-layer-page)'),'lower-floor cut-earth pages must keep their dedicated root environment');
 assert.ok(css.includes('prefers-reduced-motion:reduce'),'scroll-depth atmosphere must respect reduced-motion preferences');
