@@ -47,7 +47,6 @@ body.lower-layer-page::before{
   background:url("./site-below-root-field.svg") 50% 0/max(1080px,116vw) auto no-repeat;
   transform:translate3d(0,var(--site-scene-y,0px),0) scale(var(--site-scene-scale,1));
   transform-origin:50% 24%;
-  will-change:transform;
   contain:paint;
   backface-visibility:hidden;
 }
@@ -123,7 +122,6 @@ body.lower-layer-page::after{
   body.lower-layer-page::before{
     animation:none;
     transform:none;
-    will-change:auto;
   }
   body.lower-layer-page::after{animation:none}
 }
