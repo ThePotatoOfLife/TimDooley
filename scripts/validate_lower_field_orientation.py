@@ -327,10 +327,18 @@ def main()->int:
         if "lower-layer-surface" not in html:
             errors.append(f"lower-layer content surface missing from {path}")
 
-    if '<style>' in below:
-        errors.append("Below Observatory must not regress to a monolithic inline stylesheet")
-    if "../app/below-page.css" not in below:
-        errors.append("Below Observatory must load extracted app/below-page.css")
+    page_styles={
+        "below/index.html":"../app/below-page.css",
+        "shadow-farm/index.html":"../app/shadow-farm-page.css",
+        "rooms/archive-sources/index.html":"../../app/roots-evidence-page.css",
+        "rooms/research-lab/index.html":"../../app/forge-repair-page.css",
+    }
+    for path,stylesheet in page_styles.items():
+        html=read(path)
+        if '<style>' in html:
+            errors.append(f"{path} must not regress to a monolithic inline stylesheet")
+        if stylesheet not in html:
+            errors.append(f"{path} must load extracted page stylesheet: {stylesheet}")
 
     if errors:
         print("LOWER FIELD ORIENTATION: FAIL")
