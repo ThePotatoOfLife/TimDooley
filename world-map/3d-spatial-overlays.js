@@ -237,6 +237,26 @@ function installRenderedLayers(row, fc) {
         metadata:{atlasSpatialOverlay:row.id, epistemic_type:row.epistemic_type},
       }, beforeId);
       layerIds.push(haloId);
+      const labelId = `${sourceId}-label`;
+      addMapLayer({
+        id:labelId, type:'symbol', source:sourceId, minzoom:1.8,
+        layout:{
+          'text-field':['get','short_label'],
+          'text-size':['interpolate',['linear'],['zoom'],2,10,5,12],
+          'text-offset':[0,1.55],
+          'text-anchor':'top',
+          'text-allow-overlap':false,
+          'text-ignore-placement':false,
+        },
+        paint:{
+          'text-color':'#ffe6a0',
+          'text-halo-color':'#17140d',
+          'text-halo-width':1.4,
+          'text-halo-blur':.2,
+        },
+        metadata:{atlasSpatialOverlay:row.id, epistemic_type:row.epistemic_type},
+      }, beforeId);
+      layerIds.push(labelId);
     }
   }
 
