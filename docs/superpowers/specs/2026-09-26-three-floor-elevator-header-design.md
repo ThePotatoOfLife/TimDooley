@@ -225,6 +225,18 @@ near-black depth
 
 The reader should feel that scrolling moves through different depths of one mythic body rather than swapping wallpaper packs.
 
+### Scroll framing rule
+
+Each canonical scene plate is a **tall vertical strip**. The site should fit that strip by scene height (`background-size: auto 100%`) inside a floor-specific scroll-stage box, then translate the whole box upward as the document scrolls. Do not fit the artwork primarily by viewport width: doing so can leave most of the vertical world permanently below the viewport on long, narrow scene plates.
+
+At the end of the ordinary scroll range, retain roughly one viewport of scene material rather than scrolling the art completely away. Current desktop staging is intentionally simple:
+
+- Heaven: about `300vh` scene box / `190vh` travel
+- Plane: about `290vh` scene box / `180vh` travel
+- Below: about `320vh` scene box / `210vh` travel
+
+This is not a cinematic timeline engine. It is one compositor transform, with floor-specific constants, so the implementation remains cheap and understandable.
+
 ### Style rule
 
 Use the supplied fantasy-pixel references for **resolution, warmth and old-RPG readability**, not for literal composition. Project cosmology and the existing House / Axis / Tree / Root / Swamp / Forge structure outrank any reference image.
