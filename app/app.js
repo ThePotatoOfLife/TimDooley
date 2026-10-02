@@ -181,7 +181,7 @@ async function showRecord(path){
   if(!isKnownRecord(path)){selectBranch('root',{force:true});return false}
   const target=$('#record-detail');if(!target)return false;
   const token=++recordRequestToken;
-  target.innerHTML=`<div class="status">Loading ${esc(path)}…</div>`;
+  target.innerHTML=`<div class="archive-status">Loading ${esc(path)}…</div>`;
   try{
     const resource=await loadResource(path);
     if(!isCurrentRecordLoad(token,target))return false;
@@ -191,11 +191,11 @@ async function showRecord(path){
     const title=isJSON?(data.title||data.name||data.id||path):(String(data).match(/^#\s+(.+)$/m)?.[1]||path.split('/').pop().replace(/\.md$/i,''));
     const body=isJSON?renderValue(data):renderMarkdown(data);
     if(!isCurrentRecordLoad(token,target))return false;
-    target.innerHTML=`<article class="record"><div class="recordhead"><div><span class="recordtype">${isJSON?'CANONICAL RECORD':'ARCHIVE DOCUMENT'}</span><h3>${esc(title)}</h3></div><code>${esc(path)}</code></div>${branches.length?`<div class="recordcontext"><span>Appears in</span>${branches.map(b=>`<button data-branch="${esc(b.id)}">${esc(b.title)}</button>`).join('')}</div>`:''}${clusters.length?`<div class="section mini"><h3>Context clusters</h3><div class="contexts">${clusters.map(contextCard).join('')}</div></div>`:''}${body}</article>`;
+    target.innerHTML=`<article class="archive-record"><div class="recordhead"><div><span class="recordtype">${isJSON?'CANONICAL RECORD':'ARCHIVE DOCUMENT'}</span><h3>${esc(title)}</h3></div><code>${esc(path)}</code></div>${branches.length?`<div class="recordcontext"><span>Appears in</span>${branches.map(b=>`<button data-branch="${esc(b.id)}">${esc(b.title)}</button>`).join('')}</div>`:''}${clusters.length?`<div class="archive-section mini"><h3>Context clusters</h3><div class="contexts">${clusters.map(contextCard).join('')}</div></div>`:''}${body}</article>`;
     viewType='record';setHash(`#record=${encodeURIComponent(path)}`);emitNavigation('record',path);return true;
   }catch(e){
     if(!isCurrentRecordLoad(token,target))return false;
-    target.innerHTML=`<div class="record"><div class="status">Could not load ${esc(path)}: ${esc(e.message)}</div></div>`;return false;
+    target.innerHTML=`<div class="archive-record"><div class="archive-status">Could not load ${esc(path)}: ${esc(e.message)}</div></div>`;return false;
   }
 }
 
@@ -205,17 +205,17 @@ function branchHTML(b){
   const dirs=[...(b.directories||[]),...(b.directory?[b.directory]:[])];
   const related=relatedTo(b.id).map(r=>relationCard(r,b.id)).join('');
   const contexts=contextForBranch(b.id).map(contextCard).join('');
-  return `<div class="branchhero" data-branch-view="${esc(b.id)}"><span class="branchmark">${esc(b.title.slice(0,1))}</span><div><div class="eyebrow">Connected branch</div><h2>${esc(b.title)}</h2><p class="summary">${esc(b.description||'')}</p></div></div>${contexts?`<div class="section"><h3>Contextual constellations</h3><div class="contexts">${contexts}</div></div>`:''}${children?`<div class="section"><h3>Canonical substructure</h3><div class="chips">${children}</div></div>`:''}${related?`<div class="section"><h3>Relationships</h3><div class="relations">${related}</div></div>`:''}${records?`<div class="section"><h3>Canonical records</h3>${records}</div>`:''}${dirs.length?`<div class="section"><h3>Mapped directories</h3>${dirs.map(d=>`<div class="directory"><code>${esc(d)}</code></div>`).join('')}</div>`:''}<div id="record-detail"></div>`;
+  return `<div class="branchhero" data-branch-view="${esc(b.id)}"><span class="branchmark">${esc(b.title.slice(0,1))}</span><div><div class="eyebrow">Connected branch</div><h2>${esc(b.title)}</h2><p class="summary">${esc(b.description||'')}</p></div></div>${contexts?`<div class="archive-section"><h3>Contextual constellations</h3><div class="contexts">${contexts}</div></div>`:''}${children?`<div class="archive-section"><h3>Canonical substructure</h3><div class="chips">${children}</div></div>`:''}${related?`<div class="archive-section"><h3>Relationships</h3><div class="relations">${related}</div></div>`:''}${records?`<div class="archive-section"><h3>Canonical records</h3>${records}</div>`:''}${dirs.length?`<div class="archive-section"><h3>Mapped directories</h3>${dirs.map(d=>`<div class="directory"><code>${esc(d)}</code></div>`).join('')}</div>`:''}<div id="record-detail"></div>`;
 }
 function rootHTML(){
   const paths=(manifest.pathways||[]).map(pathwayCard).join('');const contexts=(contextGraph.clusters||[]).map(contextCard).join('');const relationCount=(manifest.relations||[]).length;
-  return `<div class="rootintro"><div><div class="eyebrow">Relationship-first knowledge system</div><h2>${esc(manifest.root.title)}</h2><p class="summary">${esc(manifest.root.summary)}</p></div><div class="rootstats"><div><strong>${manifest.branches.length}</strong><span>branches</span></div><div><strong>${relationCount}</strong><span>explicit relations</span></div><div><strong>${(contextGraph.clusters||[]).length}</strong><span>context clusters</span></div></div></div>${contexts?`<div class="section"><h3>Contextual constellations</h3><p class="sectionnote">These clusters combine records because their structures illuminate one another while preserving evidence class.</p><div class="contexts">${contexts}</div></div>`:''}${paths?`<div class="section"><h3>Ways through the archive</h3><div class="pathways">${paths}</div></div>`:''}<div class="section"><h3>Branch field</h3><div class="branchfield">${manifest.branches.map(b=>`<button class="branchnode" data-branch="${esc(b.id)}"><span>${esc(b.title)}</span><small>${esc((b.children||[]).slice(0,4).join(' · ')||b.description)}</small></button>`).join('')}</div></div><div class="section"><h3>Architecture rules</h3><div class="chips">${manifest.principles.map(p=>`<span class="chip">${esc(p)}</span>`).join('')}</div></div><div class="section"><h3>Root record</h3><button class="record-link" data-record="${esc(manifest.root.record)}"><span class="recordtype">OPEN ROOT</span><strong>Potato of Life</strong><code>${esc(manifest.root.record)}</code></button></div><div id="record-detail"></div>`;
+  return `<div class="rootintro"><div><div class="eyebrow">Relationship-first knowledge system</div><h2>${esc(manifest.root.title)}</h2><p class="summary">${esc(manifest.root.summary)}</p></div><div class="rootstats"><div><strong>${manifest.branches.length}</strong><span>branches</span></div><div><strong>${relationCount}</strong><span>explicit relations</span></div><div><strong>${(contextGraph.clusters||[]).length}</strong><span>context clusters</span></div></div></div>${contexts?`<div class="archive-section"><h3>Contextual constellations</h3><p class="sectionnote">These clusters combine records because their structures illuminate one another while preserving evidence class.</p><div class="contexts">${contexts}</div></div>`:''}${paths?`<div class="archive-section"><h3>Ways through the archive</h3><div class="pathways">${paths}</div></div>`:''}<div class="archive-section"><h3>Branch field</h3><div class="branchfield">${manifest.branches.map(b=>`<button class="branchnode" data-branch="${esc(b.id)}"><span>${esc(b.title)}</span><small>${esc((b.children||[]).slice(0,4).join(' · ')||b.description)}</small></button>`).join('')}</div></div><div class="archive-section"><h3>Architecture rules</h3><div class="chips">${manifest.principles.map(p=>`<span class="chip">${esc(p)}</span>`).join('')}</div></div><div class="archive-section"><h3>Root record</h3><button class="record-link" data-record="${esc(manifest.root.record)}"><span class="recordtype">OPEN ROOT</span><strong>Potato of Life</strong><code>${esc(manifest.root.record)}</code></button></div><div id="record-detail"></div>`;
 }
 function showContext(id){
   const c=(contextGraph.clusters||[]).find(x=>x.id===id);if(!c){selectBranch('root',{force:true});return false}cancelRecordLoad();searching=false;
   const branchButtons=(c.branches||[]).map(branchId=>{const b=branchById(branchId);return b?`<button class="branchnode" data-branch="${esc(branchId)}"><span>${esc(b.title)}</span><small>${esc(b.description)}</small></button>`:''}).join('');
   const records=(c.records||[]).map(p=>`<button class="record-link" data-record="${esc(p)}"><span class="recordtype">OPEN CONTEXT RECORD</span><strong>${esc(p.split('/').pop().replace(/\.(json|md)$/,''))}</strong><code>${esc(p)}</code></button>`).join('');
-  $('#reader').innerHTML=`<div class="eyebrow">Context cluster</div><h2>${esc(c.title)}</h2><p class="summary">${esc(c.summary)}</p><div class="section"><h3>Concepts in this constellation</h3><div class="chips">${(c.concepts||[]).map(x=>`<span class="chip">${esc(x)}</span>`).join('')}</div></div><div class="section"><h3>Epistemic layers</h3><div class="chips">${(c.epistemic_mix||[]).map(x=>`<span class="chip epistemic">${esc(human(x))}</span>`).join('')}</div></div><div class="section"><h3>Connected branches</h3><div class="branchfield">${branchButtons}</div></div><div class="section"><h3>Records that carry this context</h3>${records}</div><div id="record-detail"></div>`;
+  $('#reader').innerHTML=`<div class="eyebrow">Context cluster</div><h2>${esc(c.title)}</h2><p class="summary">${esc(c.summary)}</p><div class="archive-section"><h3>Concepts in this constellation</h3><div class="chips">${(c.concepts||[]).map(x=>`<span class="chip">${esc(x)}</span>`).join('')}</div></div><div class="archive-section"><h3>Epistemic layers</h3><div class="chips">${(c.epistemic_mix||[]).map(x=>`<span class="chip epistemic">${esc(human(x))}</span>`).join('')}</div></div><div class="archive-section"><h3>Connected branches</h3><div class="branchfield">${branchButtons}</div></div><div class="archive-section"><h3>Records that carry this context</h3>${records}</div><div id="record-detail"></div>`;
   viewType='context';setHash(`#context=${encodeURIComponent(id)}`);emitNavigation('context',id);return true;
 }
 function showPathway(id){
@@ -242,8 +242,8 @@ function applySearch(raw){
   const matches=(contextGraph.clusters||[]).filter(c=>[c.title,c.summary,...(c.concepts||[]),...(c.epistemic_mix||[])].join(' ').toLowerCase().includes(q));
   const recordMatches=registrySearch(q);
   searching=true;viewType='search';
-  const contextHTML=matches.length?`<div class="section"><h3>Context matches</h3><div class="contexts">${matches.map(contextCard).join('')}</div></div>`:'';
-  const recordHTML=recordMatches.length?`<div class="section"><h3>Record matches</h3>${recordMatches.map(registryResultCard).join('')}</div>`:'';
+  const contextHTML=matches.length?`<div class="archive-section"><h3>Context matches</h3><div class="contexts">${matches.map(contextCard).join('')}</div></div>`:'';
+  const recordHTML=recordMatches.length?`<div class="archive-section"><h3>Record matches</h3>${recordMatches.map(registryResultCard).join('')}</div>`:'';
   $('#reader').innerHTML=(matches.length||recordMatches.length)?`<div class="eyebrow">Archive search</div><h2>Contexts + records</h2><p class="summary">Search reaches branch vocabulary, contextual constellations and indexed records across both data/ and knowledge/.</p>${contextHTML}${recordHTML}`:`<div class="eyebrow">Archive search</div><h2>No matches</h2><p class="summary">Try a broader term or choose a branch from the left navigation.</p>`;
   emitNavigation('search',q);
 }
@@ -296,6 +296,6 @@ async function init(){
     $('#q')?.addEventListener('input',e=>scheduleSearch(e.target.value));
     window.addEventListener('hashchange',routeHash);
     await routeHash();
-  }catch(e){const reader=$('#reader');if(reader)reader.innerHTML=`<div class="status">Archive failed to load: ${esc(e.message)}</div>`}
+  }catch(e){const reader=$('#reader');if(reader)reader.innerHTML=`<div class="archive-status">Archive failed to load: ${esc(e.message)}</div>`}
 }
 init();
