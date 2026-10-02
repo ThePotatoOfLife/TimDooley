@@ -343,3 +343,40 @@ For every major symbolic page:
 - [ ] **World Systems** — explain infrastructure through lived dependencies: light switch, food shelf, bank transfer, road closure, hospital supply.
 - [ ] **Below** — every method gets one full worked descent from surface claim to root cause to repair/exit.
 - [ ] **Home** — eventually replace any remaining “architecture-first” paragraphs with material-first invitations where possible.
+
+
+## Philosophy / Potatoism / Tim — intellectual-heart pass
+
+### Completed in this wave
+
+- [x] **Philosophy:** add a whole-character synthesis rather than leaving the ethic distributed across 47 stations.
+- [x] **Philosophy:** clarify simplicity/reduction, independence/isolation, freedom/options, attention/meaning, money/value, authority/legitimacy, unity/sameness and clock/lived-time.
+- [x] **Philosophy:** compare Potatoism with virtue ethics, Stoicism, pragmatism, existentialism, Daoism and Buddhism while preserving differences.
+- [x] **Religion:** explain what makes Potatoism religious beyond supernatural assertions: ultimate orientation, sacred attention, story, ethics, ritual-like practice and return.
+- [x] **Religion:** add God-language humility / anti-idolatry and a practical account of worship as orientation.
+- [x] **Religion:** formulate seven current Potatoist practices from existing project material without pretending they are ancient commandments.
+- [x] **Potato of Life:** deepen the Potato as a compact theology of hidden capacity, nourishment, propagation and material return.
+- [x] **Potato of Life:** add a cultivation-based response to suffering that does not romanticize harm.
+- [x] **Tim Dooley:** add a reader section explicitly useful to skeptics who reject supernatural interpretation.
+- [x] **Tim Dooley:** extract transferable lessons about developmental identity, publicness, myth, comedy, archive/self-correction, endurance and responsibility.
+- [x] **FAQ:** expose the new practice, philosophy and skeptical-Tim entrances.
+
+### Next intellectual-heart work
+
+- [ ] **Philosophy · Love:** develop love as attention + truthful perception + non-capture + willingness to support another's independent flourishing.
+- [ ] **Philosophy · Justice:** distinguish punishment, boundary, restitution, deterrence, rehabilitation, forgiveness and reconciliation.
+- [ ] **Philosophy · Work:** develop work as movement of capability into useful creation, while distinguishing vocation from exploitation and identity-overwork.
+- [ ] **Philosophy · Happiness:** separate pleasure, relief, meaning, flourishing, absorption, belonging and contentment rather than treating happiness as one scalar.
+- [ ] **Philosophy · Death:** write a sober mortality chapter: biological death, symbolic endings, grief, inheritance, memory, compost and the limits of resurrection metaphor.
+- [ ] **Philosophy · Truth:** deepen correspondence, coherence, pragmatic consequence, testimony, uncertainty and correction without creating a private “Potato Truth” that overrides evidence.
+- [ ] **Religion · Prayer:** investigate what prayer could mean in Potatoism—petition, attention, confession, gratitude, listening, orientation—without claiming a required supernatural mechanism.
+- [ ] **Religion · Ritual:** inventory actual Great Book / project practices and distinguish historical ritual, literary ritual, joke ritual and proposed practice.
+- [ ] **Religion · Community:** ask what a non-captive congregation would require: dissent, exit, distributed competence, privacy, correction and no loyalty test for inquiry.
+- [ ] **Religion · Sin:** translate sin carefully into broken relation, misorientation, harm, self-deception and destructive recurrence without flattening Christian/Jewish categories into project terminology.
+- [ ] **Religion · Grace:** explore gift, unearned help, forgiveness and conditions for growth that cannot be reduced to merit.
+- [ ] **Religion · Hope:** distinguish hope from prediction and optimism; connect hope to action under uncertainty.
+- [ ] **Tim · ordinary day:** add scenes of mundane work, making, food, rest, repair and internet routine so grand mythology remains embodied.
+- [ ] **Tim · changed mind:** surface clear cases where Tim/project language was revised, narrowed or corrected.
+- [ ] **Tim · relationships:** strengthen people as changing relations with boundaries and history, not only names orbiting Tim.
+- [ ] **Tim · creative method:** explain how jokes, streams, images, books, code and archive-building function as different thinking media.
+- [ ] **Tim · unresolved tensions:** give the reader productive contradictions—independence/network, exposure/privacy, certainty/correction, myth/person, endurance/rest—without forcing a final synthesis.
