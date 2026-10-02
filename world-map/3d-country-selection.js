@@ -45,6 +45,7 @@ const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
 let pinnedCodes = [];
 let activeCode = null;
 let world = { curated_edges: [] };
+let relationAdjacency = new Map();
 let by3 = {};
 let names = {};
 let entityNames = {};
@@ -148,7 +149,7 @@ function displayScore(edge) {
   return typeScore + evidenceBonus + quantifiedBonus;
 }
 function rankedEdges(root, budget) {
-  const candidates = (world.curated_edges || []).filter(edge => (edge.a === root || edge.b === root) && edgeMatchesRelationMode(edge)).map(edge => ({ edge, bucket: relationBucket(edge), score: displayScore(edge), key: edgeKey(edge) })).sort((a, b) => b.score - a.score || a.key.localeCompare(b.key));
+  const candidates = (relationAdjacency.get(String(root || '').toUpperCase()) || []).filter(edge => edgeMatchesRelationMode(edge)).map(edge => ({ edge, bucket: relationBucket(edge), score: displayScore(edge), key: edgeKey(edge) })).sort((a, b) => b.score - a.score || a.key.localeCompare(b.key));
   const chosen = [], used = new Set();
   const buckets = relationMode === 'all' ? ['money', 'systems', 'institutions', 'project', 'other'] : [relationMode];
   for (const bucket of buckets) {
@@ -376,6 +377,14 @@ async function loadData() {
     fetchJson(WORLD_URL), fetchJson(INDEX_URL), fetchJson(ENTITY_URL).catch(() => ({entities:{}})), loadRestRuntime()
   ]);
   world = worldResult;
+  relationAdjacency = new Map();
+  for (const edge of world.curated_edges || []) {
+    for (const code of [edge.a, edge.b]) {
+      if (!code) continue;
+      if (!relationAdjacency.has(code)) relationAdjacency.set(code, []);
+      relationAdjacency.get(code).push(edge);
+    }
+  }
   names = Object.fromEntries((indexResult.countries || []).map(row => [row.iso3, row.name]));
   entityNames = Object.fromEntries(Object.entries(entityResult.entities || {}).filter(([, row]) => row?.render_status === 'current').map(([code, row]) => [code, row.name || code]));
   by3 = Object.fromEntries((rest || []).filter(row => row.cca3).map(row => [row.cca3, row]));
